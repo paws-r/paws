@@ -13,6 +13,7 @@ imagebuilder_import_vm_image(
   platform,
   osVersion = NULL,
   vmImportTaskId,
+  loggingConfiguration = NULL,
   tags = NULL,
   clientToken
 )
@@ -48,6 +49,8 @@ process.}
 import process. Image Builder retrieves information from the import
 process to pull in the AMI that is created from the VM source as the
 base image for your recipe.}
+
+\item{loggingConfiguration}{Define logging configuration for the image build process.}
 
 \item{tags}{Tags that are attached to the import resources.}
 

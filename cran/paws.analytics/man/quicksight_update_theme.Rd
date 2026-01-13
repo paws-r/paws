@@ -21,8 +21,8 @@ you're updating.}
 
 \item{Name}{The name for the theme.}
 
-\item{BaseThemeId}{[required] The theme ID, defined by Amazon QuickSight, that a custom theme inherits
-from. All themes initially inherit from a default Amazon QuickSight
+\item{BaseThemeId}{[required] The theme ID, defined by Amazon Quick Sight, that a custom theme
+inherits from. All themes initially inherit from a default Quick Sight
 theme.}
 
 \item{VersionDescription}{A description of the theme version that you're updating Every time that

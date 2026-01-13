@@ -11,6 +11,7 @@ pinpointsmsvoicev2_update_phone_number(
   TwoWayChannelRole = NULL,
   SelfManagedOptOutsEnabled = NULL,
   OptOutListName = NULL,
+  InternationalSendingEnabled = NULL,
   DeletionProtectionEnabled = NULL
 )
 }
@@ -18,8 +19,8 @@ pinpointsmsvoicev2_update_phone_number(
 \item{PhoneNumberId}{[required] The unique identifier of the phone number. Valid values for this field
 can be either the PhoneNumberId or PhoneNumberArn.
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 
 \item{TwoWayEnabled}{By default this is set to false. When set to true you can receive
 incoming text messages from your end recipients.}
@@ -29,15 +30,18 @@ incoming text messages from your end recipients.}
 \item{TwoWayChannelRole}{An optional IAM Role Arn for a service to assume, to be able to post
 inbound SMS messages.}
 
-\item{SelfManagedOptOutsEnabled}{By default this is set to false. When an end recipient sends a message
-that begins with HELP or STOP to one of your dedicated numbers, AWS End
-User Messaging SMS and Voice automatically replies with a customizable
-message and adds the end recipient to the OptOutList. When set to true
-you're responsible for responding to HELP and STOP requests. You're also
-responsible for tracking and honoring opt-out requests.}
+\item{SelfManagedOptOutsEnabled}{By default this is set to false. When set to false and an end recipient
+sends a message that begins with HELP or STOP to one of your dedicated
+numbers, End User Messaging SMS automatically replies with a
+customizable message and adds the end recipient to the OptOutList. When
+set to true you're responsible for responding to HELP and STOP requests.
+You're also responsible for tracking and honoring opt-out requests.}
 
-\item{OptOutListName}{The OptOutList to add the phone number to. Valid values for this field
-can be either the OutOutListName or OutOutListArn.}
+\item{OptOutListName}{The OptOutList to add the phone number to. You can use either the opt
+out list name or the opt out list ARN.}
+
+\item{InternationalSendingEnabled}{By default this is set to false. When set to true the international
+sending of phone number is Enabled.}
 
 \item{DeletionProtectionEnabled}{By default this is set to false. When set to true the phone number can't
 be deleted.}

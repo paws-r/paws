@@ -59,10 +59,9 @@ CloudFormation allows you to create and manage Amazon Web Services
 infrastructure deployments predictably and repeatedly. You can use
 CloudFormation to leverage Amazon Web Services products, such as Amazon
 Elastic Compute Cloud, Amazon Elastic Block Store, Amazon Simple
-Notification Service, Elastic Load Balancing, and Amazon EC2 Auto
-Scaling to build highly reliable, highly scalable, cost-effective
-applications without creating or configuring the underlying Amazon Web
-Services infrastructure.
+Notification Service, ELB, and Amazon EC2 Auto Scaling to build highly
+reliable, highly scalable, cost-effective applications without creating
+or configuring the underlying Amazon Web Services infrastructure.
 
 With CloudFormation, you declare all your resources and dependencies in
 a template file. The template defines a collection of resources as a
@@ -117,27 +116,28 @@ Services product, you can find the product's technical documentation at
 
 \tabular{ll}{
 \link[paws.management:cloudformation_activate_organizations_access]{activate_organizations_access} \tab Activate trusted access with Organizations\cr
-\link[paws.management:cloudformation_activate_type]{activate_type} \tab Activates a public third-party extension, making it available for use in stack templates\cr
-\link[paws.management:cloudformation_batch_describe_type_configurations]{batch_describe_type_configurations} \tab Returns configuration data for the specified CloudFormation extensions, from the CloudFormation registry for the account and Region\cr
+\link[paws.management:cloudformation_activate_type]{activate_type} \tab Activates a public third-party extension, such as a resource or module, to make it available for use in stack templates in your current account and Region\cr
+\link[paws.management:cloudformation_batch_describe_type_configurations]{batch_describe_type_configurations} \tab Returns configuration data for the specified CloudFormation extensions, from the CloudFormation registry in your current account and Region\cr
 \link[paws.management:cloudformation_cancel_update_stack]{cancel_update_stack} \tab Cancels an update on the specified stack\cr
-\link[paws.management:cloudformation_continue_update_rollback]{continue_update_rollback} \tab For a specified stack that's in the UPDATE_ROLLBACK_FAILED state, continues rolling it back to the UPDATE_ROLLBACK_COMPLETE state\cr
+\link[paws.management:cloudformation_continue_update_rollback]{continue_update_rollback} \tab Continues rolling back a stack from UPDATE_ROLLBACK_FAILED to UPDATE_ROLLBACK_COMPLETE state\cr
 \link[paws.management:cloudformation_create_change_set]{create_change_set} \tab Creates a list of changes that will be applied to a stack so that you can review the changes before executing them\cr
 \link[paws.management:cloudformation_create_generated_template]{create_generated_template} \tab Creates a template from existing resources that are not already managed with CloudFormation\cr
 \link[paws.management:cloudformation_create_stack]{create_stack} \tab Creates a stack as specified in the template\cr
 \link[paws.management:cloudformation_create_stack_instances]{create_stack_instances} \tab Creates stack instances for the specified accounts, within the specified Amazon Web Services Regions\cr
 \link[paws.management:cloudformation_create_stack_refactor]{create_stack_refactor} \tab Creates a refactor across multiple stacks, with the list of stacks and resources that are affected\cr
-\link[paws.management:cloudformation_create_stack_set]{create_stack_set} \tab Creates a stack set\cr
+\link[paws.management:cloudformation_create_stack_set]{create_stack_set} \tab Creates a StackSet\cr
 \link[paws.management:cloudformation_deactivate_organizations_access]{deactivate_organizations_access} \tab Deactivates trusted access with Organizations\cr
-\link[paws.management:cloudformation_deactivate_type]{deactivate_type} \tab Deactivates a public extension that was previously activated in this account and Region\cr
+\link[paws.management:cloudformation_deactivate_type]{deactivate_type} \tab Deactivates a public third-party extension, such as a resource or module, or a CloudFormation Hook when you no longer use it\cr
 \link[paws.management:cloudformation_delete_change_set]{delete_change_set} \tab Deletes the specified change set\cr
 \link[paws.management:cloudformation_delete_generated_template]{delete_generated_template} \tab Deleted a generated template\cr
 \link[paws.management:cloudformation_delete_stack]{delete_stack} \tab Deletes a specified stack\cr
 \link[paws.management:cloudformation_delete_stack_instances]{delete_stack_instances} \tab Deletes stack instances for the specified accounts, in the specified Amazon Web Services Regions\cr
-\link[paws.management:cloudformation_delete_stack_set]{delete_stack_set} \tab Deletes a stack set\cr
+\link[paws.management:cloudformation_delete_stack_set]{delete_stack_set} \tab Deletes a StackSet\cr
 \link[paws.management:cloudformation_deregister_type]{deregister_type} \tab Marks an extension or extension version as DEPRECATED in the CloudFormation registry, removing it from active use\cr
 \link[paws.management:cloudformation_describe_account_limits]{describe_account_limits} \tab Retrieves your account's CloudFormation limits, such as the maximum number of stacks that you can create in your account\cr
 \link[paws.management:cloudformation_describe_change_set]{describe_change_set} \tab Returns the inputs for the change set and a list of changes that CloudFormation will make if you execute the change set\cr
-\link[paws.management:cloudformation_describe_change_set_hooks]{describe_change_set_hooks} \tab Returns hook-related information for the change set and a list of changes that CloudFormation makes when you run the change set\cr
+\link[paws.management:cloudformation_describe_change_set_hooks]{describe_change_set_hooks} \tab Returns Hook-related information for the change set and a list of changes that CloudFormation makes when you run the change set\cr
+\link[paws.management:cloudformation_describe_events]{describe_events} \tab Returns CloudFormation events based on flexible query criteria\cr
 \link[paws.management:cloudformation_describe_generated_template]{describe_generated_template} \tab Describes a generated template\cr
 \link[paws.management:cloudformation_describe_organizations_access]{describe_organizations_access} \tab Retrieves information about the account's OrganizationAccess status\cr
 \link[paws.management:cloudformation_describe_publisher]{describe_publisher} \tab Returns information about a CloudFormation extension publisher\cr
@@ -152,39 +152,40 @@ Services product, you can find the product's technical documentation at
 \link[paws.management:cloudformation_describe_stacks]{describe_stacks} \tab Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created\cr
 \link[paws.management:cloudformation_describe_stack_set]{describe_stack_set} \tab Returns the description of the specified StackSet\cr
 \link[paws.management:cloudformation_describe_stack_set_operation]{describe_stack_set_operation} \tab Returns the description of the specified StackSet operation\cr
-\link[paws.management:cloudformation_describe_type]{describe_type} \tab Returns detailed information about an extension that has been registered\cr
+\link[paws.management:cloudformation_describe_type]{describe_type} \tab Returns detailed information about an extension from the CloudFormation registry in your current account and Region\cr
 \link[paws.management:cloudformation_describe_type_registration]{describe_type_registration} \tab Returns information about an extension's registration, including its current status and type and version identifiers\cr
 \link[paws.management:cloudformation_detect_stack_drift]{detect_stack_drift} \tab Detects whether a stack's actual configuration differs, or has drifted, from its expected configuration, as defined in the stack template and any values specified as template parameters\cr
 \link[paws.management:cloudformation_detect_stack_resource_drift]{detect_stack_resource_drift} \tab Returns information about whether a resource's actual configuration differs, or has drifted, from its expected configuration, as defined in the stack template and any values specified as template parameters\cr
-\link[paws.management:cloudformation_detect_stack_set_drift]{detect_stack_set_drift} \tab Detect drift on a stack set\cr
+\link[paws.management:cloudformation_detect_stack_set_drift]{detect_stack_set_drift} \tab Detect drift on a StackSet\cr
 \link[paws.management:cloudformation_estimate_template_cost]{estimate_template_cost} \tab Returns the estimated monthly cost of a template\cr
 \link[paws.management:cloudformation_execute_change_set]{execute_change_set} \tab Updates a stack using the input information that was provided when the specified change set was created\cr
 \link[paws.management:cloudformation_execute_stack_refactor]{execute_stack_refactor} \tab Executes the stack refactor operation\cr
 \link[paws.management:cloudformation_get_generated_template]{get_generated_template} \tab Retrieves a generated template\cr
+\link[paws.management:cloudformation_get_hook_result]{get_hook_result} \tab Retrieves detailed information and remediation guidance for a Hook invocation result\cr
 \link[paws.management:cloudformation_get_stack_policy]{get_stack_policy} \tab Returns the stack policy for a specified stack\cr
 \link[paws.management:cloudformation_get_template]{get_template} \tab Returns the template body for a specified stack\cr
 \link[paws.management:cloudformation_get_template_summary]{get_template_summary} \tab Returns information about a new or existing template\cr
-\link[paws.management:cloudformation_import_stacks_to_stack_set]{import_stacks_to_stack_set} \tab Import existing stacks into a new stack sets\cr
+\link[paws.management:cloudformation_import_stacks_to_stack_set]{import_stacks_to_stack_set} \tab Import existing stacks into a new StackSets\cr
 \link[paws.management:cloudformation_list_change_sets]{list_change_sets} \tab Returns the ID and status of each active change set for a stack\cr
 \link[paws.management:cloudformation_list_exports]{list_exports} \tab Lists all exported output values in the account and Region in which you call this action\cr
 \link[paws.management:cloudformation_list_generated_templates]{list_generated_templates} \tab Lists your generated templates in this Region\cr
-\link[paws.management:cloudformation_list_hook_results]{list_hook_results} \tab Returns summaries of invoked Hooks when a change set or Cloud Control API operation target is provided\cr
+\link[paws.management:cloudformation_list_hook_results]{list_hook_results} \tab Returns summaries of invoked Hooks\cr
 \link[paws.management:cloudformation_list_imports]{list_imports} \tab Lists all stacks that are importing an exported output value\cr
 \link[paws.management:cloudformation_list_resource_scan_related_resources]{list_resource_scan_related_resources} \tab Lists the related resources for a list of resources from a resource scan\cr
 \link[paws.management:cloudformation_list_resource_scan_resources]{list_resource_scan_resources} \tab Lists the resources from a resource scan\cr
 \link[paws.management:cloudformation_list_resource_scans]{list_resource_scans} \tab List the resource scans from newest to oldest\cr
 \link[paws.management:cloudformation_list_stack_instance_resource_drifts]{list_stack_instance_resource_drifts} \tab Returns drift information for resources in a stack instance\cr
-\link[paws.management:cloudformation_list_stack_instances]{list_stack_instances} \tab Returns summary information about stack instances that are associated with the specified stack set\cr
+\link[paws.management:cloudformation_list_stack_instances]{list_stack_instances} \tab Returns summary information about stack instances that are associated with the specified StackSet\cr
 \link[paws.management:cloudformation_list_stack_refactor_actions]{list_stack_refactor_actions} \tab Lists the stack refactor actions that will be taken after calling the ExecuteStackRefactor action\cr
 \link[paws.management:cloudformation_list_stack_refactors]{list_stack_refactors} \tab Lists all account stack refactor operations and their statuses\cr
 \link[paws.management:cloudformation_list_stack_resources]{list_stack_resources} \tab Returns descriptions of all resources of the specified stack\cr
 \link[paws.management:cloudformation_list_stacks]{list_stacks} \tab Returns the summary information for stacks whose status matches the specified StackStatusFilter\cr
-\link[paws.management:cloudformation_list_stack_set_auto_deployment_targets]{list_stack_set_auto_deployment_targets} \tab Returns summary information about deployment targets for a stack set\cr
-\link[paws.management:cloudformation_list_stack_set_operation_results]{list_stack_set_operation_results} \tab Returns summary information about the results of a stack set operation\cr
-\link[paws.management:cloudformation_list_stack_set_operations]{list_stack_set_operations} \tab Returns summary information about operations performed on a stack set\cr
-\link[paws.management:cloudformation_list_stack_sets]{list_stack_sets} \tab Returns summary information about stack sets that are associated with the user\cr
+\link[paws.management:cloudformation_list_stack_set_auto_deployment_targets]{list_stack_set_auto_deployment_targets} \tab Returns summary information about deployment targets for a StackSet\cr
+\link[paws.management:cloudformation_list_stack_set_operation_results]{list_stack_set_operation_results} \tab Returns summary information about the results of a StackSet operation\cr
+\link[paws.management:cloudformation_list_stack_set_operations]{list_stack_set_operations} \tab Returns summary information about operations performed on a StackSet\cr
+\link[paws.management:cloudformation_list_stack_sets]{list_stack_sets} \tab Returns summary information about StackSets that are associated with the user\cr
 \link[paws.management:cloudformation_list_type_registrations]{list_type_registrations} \tab Returns a list of registration tokens for the specified extension(s)\cr
-\link[paws.management:cloudformation_list_types]{list_types} \tab Returns summary information about extension that have been registered with CloudFormation\cr
+\link[paws.management:cloudformation_list_types]{list_types} \tab Returns summary information about all extensions, including your private resource types, modules, and Hooks as well as all public extensions from Amazon Web Services and third-party publishers\cr
 \link[paws.management:cloudformation_list_type_versions]{list_type_versions} \tab Returns summary information about the versions of an extension\cr
 \link[paws.management:cloudformation_publish_type]{publish_type} \tab Publishes the specified extension to the CloudFormation registry as a public extension in this Region\cr
 \link[paws.management:cloudformation_record_handler_progress]{record_handler_progress} \tab Reports progress of a resource handler to CloudFormation\cr
@@ -192,16 +193,16 @@ Services product, you can find the product's technical documentation at
 \link[paws.management:cloudformation_register_type]{register_type} \tab Registers an extension with the CloudFormation service\cr
 \link[paws.management:cloudformation_rollback_stack]{rollback_stack} \tab When specifying RollbackStack, you preserve the state of previously provisioned resources when an operation fails\cr
 \link[paws.management:cloudformation_set_stack_policy]{set_stack_policy} \tab Sets a stack policy for a specified stack\cr
-\link[paws.management:cloudformation_set_type_configuration]{set_type_configuration} \tab Specifies the configuration data for a registered CloudFormation extension, in the given account and Region\cr
+\link[paws.management:cloudformation_set_type_configuration]{set_type_configuration} \tab Specifies the configuration data for a CloudFormation extension, such as a resource or Hook, in the given account and Region\cr
 \link[paws.management:cloudformation_set_type_default_version]{set_type_default_version} \tab Specify the default version of an extension\cr
 \link[paws.management:cloudformation_signal_resource]{signal_resource} \tab Sends a signal to the specified resource with a success or failure status\cr
 \link[paws.management:cloudformation_start_resource_scan]{start_resource_scan} \tab Starts a scan of the resources in this account in this Region\cr
-\link[paws.management:cloudformation_stop_stack_set_operation]{stop_stack_set_operation} \tab Stops an in-progress operation on a stack set and its associated stack instances\cr
+\link[paws.management:cloudformation_stop_stack_set_operation]{stop_stack_set_operation} \tab Stops an in-progress operation on a StackSet and its associated stack instances\cr
 \link[paws.management:cloudformation_test_type]{test_type} \tab Tests a registered extension to make sure it meets all necessary requirements for being published in the CloudFormation registry\cr
 \link[paws.management:cloudformation_update_generated_template]{update_generated_template} \tab Updates a generated template\cr
 \link[paws.management:cloudformation_update_stack]{update_stack} \tab Updates a stack as specified in the template\cr
 \link[paws.management:cloudformation_update_stack_instances]{update_stack_instances} \tab Updates the parameter values for stack instances for the specified accounts, within the specified Amazon Web Services Regions\cr
-\link[paws.management:cloudformation_update_stack_set]{update_stack_set} \tab Updates the stack set and associated stack instances in the specified accounts and Amazon Web Services Regions\cr
+\link[paws.management:cloudformation_update_stack_set]{update_stack_set} \tab Updates the StackSet and associated stack instances in the specified accounts and Amazon Web Services Regions\cr
 \link[paws.management:cloudformation_update_termination_protection]{update_termination_protection} \tab Updates termination protection for the specified stack\cr
 \link[paws.management:cloudformation_validate_template]{validate_template} \tab Validates a specified template
 }

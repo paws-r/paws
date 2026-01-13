@@ -2,8 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_attach_volume}
 \alias{ec2_attach_volume}
-\title{Attaches an EBS volume to a running or stopped instance and exposes it
-to the instance with the specified device name}
+\title{Attaches an Amazon EBS volume to a running or stopped instance, and
+exposes it to the instance with the specified device name}
 \usage{
 ec2_attach_volume(Device, InstanceId, VolumeId, DryRun = NULL)
 }
@@ -21,7 +21,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name.
+Attaches an Amazon EBS volume to a \code{running} or \code{stopped} instance, and exposes it to the instance with the specified device name.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_attach_volume/} for full documentation.
 }

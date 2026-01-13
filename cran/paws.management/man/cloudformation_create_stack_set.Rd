@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_create_stack_set}
 \alias{cloudformation_create_stack_set}
-\title{Creates a stack set}
+\title{Creates a StackSet}
 \usage{
 cloudformation_create_stack_set(
   StackSetName,
@@ -23,44 +23,44 @@ cloudformation_create_stack_set(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name to associate with the stack set. The name must be unique in the
-Region where you create your stack set.
+\item{StackSetName}{[required] The name to associate with the StackSet. The name must be unique in the
+Region where you create your StackSet.
 
 A stack name can contain only alphanumeric characters (case-sensitive)
 and hyphens. It must start with an alphabetic character and can't be
 longer than 128 characters.}
 
-\item{Description}{A description of the stack set. You can use the description to identify
-the stack set's purpose or other important information.}
+\item{Description}{A description of the StackSet. You can use the description to identify
+the StackSet's purpose or other important information.}
 
 \item{TemplateBody}{The structure that contains the template body, with a minimum length of
 1 byte and a maximum length of 51,200 bytes.
 
-Conditional: You must specify either the TemplateBody or the TemplateURL
-parameter, but not both.}
+Conditional: You must specify either the \code{TemplateBody} or the
+\code{TemplateURL} parameter, but not both.}
 
 \item{TemplateURL}{The URL of a file that contains the template body. The URL must point to
 a template (maximum size: 1 MB) that's located in an Amazon S3 bucket or
 a Systems Manager document. The location for an Amazon S3 bucket must
-start with \verb{https://}.
+start with \verb{https://}. S3 static website URLs are not supported.
 
-Conditional: You must specify either the TemplateBody or the TemplateURL
-parameter, but not both.}
+Conditional: You must specify either the \code{TemplateBody} or the
+\code{TemplateURL} parameter, but not both.}
 
-\item{StackId}{The stack ID you are importing into a new stack set. Specify the Amazon
+\item{StackId}{The stack ID you are importing into a new StackSet. Specify the Amazon
 Resource Name (ARN) of the stack.}
 
-\item{Parameters}{The input parameters for the stack set template.}
+\item{Parameters}{The input parameters for the StackSet template.}
 
-\item{Capabilities}{In some cases, you must explicitly acknowledge that your stack set
+\item{Capabilities}{In some cases, you must explicitly acknowledge that your StackSet
 template contains certain capabilities in order for CloudFormation to
-create the stack set and related stack instances.
+create the StackSet and related stack instances.
 \itemize{
 \item \code{CAPABILITY_IAM} and \code{CAPABILITY_NAMED_IAM}
 
 Some stack templates might include resources that can affect
 permissions in your Amazon Web Services account; for example, by
-creating new IAM users. For those stack sets, you must explicitly
+creating new IAM users. For those StackSets, you must explicitly
 acknowledge this by specifying one of these capabilities.
 
 The following IAM resources require you to specify either the
@@ -77,37 +77,36 @@ If your stack template contains these resources, we recommend that
 you review all permissions associated with them and edit their
 permissions if necessary.
 \itemize{
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM::Policy}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-group.html}{AWS::IAM::Group}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-policy.html}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-role.html}{AWS::IAM::Role}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-user.html}{AWS::IAM::User}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities}{Acknowledging IAM resources in CloudFormation templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
-Some templates reference macros. If your stack set template
-references one or more macros, you must create the stack set
-directly from the processed template, without first reviewing the
-resulting changes in a change set. To create the stack set directly,
-you must acknowledge this capability. For more information, see
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Perform custom processing on CloudFormation templates with template macros}.
+Some templates reference macros. If your StackSet template
+references one or more macros, you must create the StackSet directly
+from the processed template, without first reviewing the resulting
+changes in a change set. To create the StackSet directly, you must
+acknowledge this capability. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Perform custom processing on CloudFormation templates with template macros}.
 
-Stack sets with service-managed permissions don't currently support
+StackSets with service-managed permissions don't currently support
 the use of macros in templates. (This includes the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-include.html}{AWS::Include}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-include.html}{AWS::Include}
 and
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-serverless.html}{AWS::Serverless}
 transforms, which are macros hosted by CloudFormation.) Even if you
-specify this capability for a stack set with service-managed
-permissions, if you reference a macro in your template the stack set
+specify this capability for a StackSet with service-managed
+permissions, if you reference a macro in your template the StackSet
 operation will fail.
 }}
 
-\item{Tags}{The key-value pairs to associate with this stack set and the stacks
+\item{Tags}{The key-value pairs to associate with this StackSet and the stacks
 created from it. CloudFormation also propagates these tags to supported
 resources that are created in the stacks. A maximum number of 50 tags
 can be specified.
@@ -117,30 +116,30 @@ If you specify tags as part of a
 CloudFormation checks to see if you have the required IAM permission to
 tag resources. If you don't, the entire
 \code{\link[=cloudformation_create_stack_set]{create_stack_set}} action fails with
-an \verb{access denied} error, and the stack set is not created.}
+an \verb{access denied} error, and the StackSet is not created.}
 
 \item{AdministrationRoleARN}{The Amazon Resource Name (ARN) of the IAM role to use to create this
-stack set.
+StackSet.
 
 Specify an IAM role only if you are using customized administrator roles
-to control which users or groups can manage specific stack sets within
+to control which users or groups can manage specific StackSets within
 the same administrator account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html}{Grant self-managed permissions}
 in the \emph{CloudFormation User Guide}.
 
 Valid only if the permissions model is \code{SELF_MANAGED}.}
 
-\item{ExecutionRoleName}{The name of the IAM execution role to use to create the stack set. If
-you do not specify an execution role, CloudFormation uses the
-\code{AWSCloudFormationStackSetExecutionRole} role for the stack set
+\item{ExecutionRoleName}{The name of the IAM execution role to use to create the StackSet. If you
+do not specify an execution role, CloudFormation uses the
+\code{AWSCloudFormationStackSetExecutionRole} role for the StackSet
 operation.
 
 Specify an IAM role only if you are using customized execution roles to
 control which stack resources users and groups can include in their
-stack sets.
+StackSets.
 
 Valid only if the permissions model is \code{SELF_MANAGED}.}
 
-\item{PermissionModel}{Describes how the IAM roles required for stack set operations are
+\item{PermissionModel}{Describes how the IAM roles required for StackSet operations are
 created. By default, \code{SELF-MANAGED} is specified.
 \itemize{
 \item With \code{self-managed} permissions, you must create the administrator
@@ -148,12 +147,12 @@ and execution roles required to deploy to target accounts. For more
 information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html}{Grant self-managed permissions}.
 \item With \code{service-managed} permissions, StackSets automatically creates
 the IAM roles required to deploy to accounts managed by
-Organizations. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-activate-trusted-access.html}{Activate trusted access for stack sets with Organizations}.
+Organizations. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-activate-trusted-access.html}{Activate trusted access for StackSets with Organizations}.
 }}
 
 \item{AutoDeployment}{Describes whether StackSets automatically deploys to Organizations
 accounts that are added to the target organization or organizational
-unit (OU). For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-manage-auto-deployment.html}{Manage automatic deployments for CloudFormation StackSets that use service-managed permissions}
+unit (OU). For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-manage-auto-deployment.html}{Enable or disable automatic deployments for StackSets in Organizations}
 in the \emph{CloudFormation User Guide}.
 
 Required if the permissions model is \code{SERVICE_MANAGED}. (Not used with
@@ -163,12 +162,12 @@ self-managed permissions.)}
 organization's management account or as a delegated administrator in a
 member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
-\item To create a stack set with service-managed permissions while signed
+\item To create a StackSet with service-managed permissions while signed
 in to the management account, specify \code{SELF}.
-\item To create a stack set with service-managed permissions while signed
+\item To create a StackSet with service-managed permissions while signed
 in to a delegated administrator account, specify \code{DELEGATED_ADMIN}.
 
 Your Amazon Web Services account must be registered as a delegated
@@ -176,8 +175,8 @@ admin in the management account. For more information, see \href{https://docs.aw
 in the \emph{CloudFormation User Guide}.
 }
 
-Stack sets with service-managed permissions are created in the
-management account, including stack sets that are created by delegated
+StackSets with service-managed permissions are created in the management
+account, including StackSets that are created by delegated
 administrators.
 
 Valid only if the permissions model is \code{SERVICE_MANAGED}.}
@@ -185,7 +184,7 @@ Valid only if the permissions model is \code{SERVICE_MANAGED}.}
 \item{ClientRequestToken}{A unique identifier for this
 \code{\link[=cloudformation_create_stack_set]{create_stack_set}} request. Specify
 this token if you plan to retry requests so that CloudFormation knows
-that you're not attempting to create another stack set with the same
+that you're not attempting to create another StackSet with the same
 name. You might retry
 \code{\link[=cloudformation_create_stack_set]{create_stack_set}} requests to ensure
 that CloudFormation successfully received them.
@@ -193,11 +192,11 @@ that CloudFormation successfully received them.
 If you don't specify an operation ID, the SDK generates one
 automatically.}
 
-\item{ManagedExecution}{Describes whether StackSets performs non-conflicting operations
+\item{ManagedExecution}{Describes whether CloudFormation performs non-conflicting operations
 concurrently and queues conflicting operations.}
 }
 \description{
-Creates a stack set.
+Creates a StackSet.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_create_stack_set/} for full documentation.
 }

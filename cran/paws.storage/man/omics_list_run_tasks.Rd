@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_list_run_tasks}
 \alias{omics_list_run_tasks}
-\title{Retrieves a list of tasks for a run}
+\title{Returns a list of tasks and status information within their specified
+run}
 \usage{
 omics_list_run_tasks(
   id,
@@ -22,7 +23,7 @@ next page of results.}
 \item{maxResults}{The maximum number of run tasks to return in one page of results.}
 }
 \description{
-Retrieves a list of tasks for a run.
+Returns a list of tasks and status information within their specified run. Use this operation to monitor runs and to identify which specific tasks have failed.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_list_run_tasks/} for full documentation.
 }

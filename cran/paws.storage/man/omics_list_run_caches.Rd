@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_list_run_caches}
 \alias{omics_list_run_caches}
-\title{Retrieves a list of your run caches}
+\title{Retrieves a list of your run caches and the metadata for each cache}
 \usage{
 omics_list_run_caches(maxResults = NULL, startingToken = NULL)
 }
@@ -13,7 +13,7 @@ omics_list_run_caches(maxResults = NULL, startingToken = NULL)
 \code{\link[=omics_list_run_caches]{list_run_caches}} API operation.}
 }
 \description{
-Retrieves a list of your run caches.
+Retrieves a list of your run caches and the metadata for each cache.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_list_run_caches/} for full documentation.
 }

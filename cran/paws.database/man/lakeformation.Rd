@@ -110,7 +110,7 @@ Defines the public endpoint for the Lake Formation service.
 \link[=lakeformation_delete_data_cells_filter]{delete_data_cells_filter} \tab Deletes a data cell filter\cr
 \link[=lakeformation_delete_lake_formation_identity_center_configuration]{delete_lake_formation_identity_center_configuration} \tab Deletes an IAM Identity Center connection with Lake Formation\cr
 \link[=lakeformation_delete_lake_formation_opt_in]{delete_lake_formation_opt_in} \tab Remove the Lake Formation permissions enforcement of the given databases, tables, and principals\cr
-\link[=lakeformation_delete_lf_tag]{delete_lf_tag} \tab Deletes the specified LF-tag given a key name\cr
+\link[=lakeformation_delete_lf_tag]{delete_lf_tag} \tab Deletes an LF-tag by its key name\cr
 \link[=lakeformation_delete_lf_tag_expression]{delete_lf_tag_expression} \tab Deletes the LF-Tag expression\cr
 \link[=lakeformation_delete_objects_on_cancel]{delete_objects_on_cancel} \tab For a specific governed table, provides a list of Amazon S3 objects that will be written during the current transaction and that can be automatically deleted if the transaction is canceled\cr
 \link[=lakeformation_deregister_resource]{deregister_resource} \tab Deregisters the resource as managed by the Data Catalog\cr

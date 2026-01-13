@@ -4,12 +4,12 @@
 \alias{bedrockagent_get_data_source}
 \title{Gets information about a data source}
 \usage{
-bedrockagent_get_data_source(dataSourceId, knowledgeBaseId)
+bedrockagent_get_data_source(knowledgeBaseId, dataSourceId)
 }
 \arguments{
-\item{dataSourceId}{[required] The unique identifier of the data source.}
-
 \item{knowledgeBaseId}{[required] The unique identifier of the knowledge base for the data source.}
+
+\item{dataSourceId}{[required] The unique identifier of the data source.}
 }
 \description{
 Gets information about a data source.

@@ -3,7 +3,7 @@
 \name{quicksight_create_template}
 \alias{quicksight_create_template}
 \title{Creates a template either from a TemplateDefinition or from an existing
-Amazon QuickSight analysis or template}
+Quick Sight analysis or template}
 \usage{
 quicksight_create_template(
   AwsAccountId,
@@ -20,7 +20,7 @@ quicksight_create_template(
 \arguments{
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the group is in. You use
 the ID for the Amazon Web Services account that contains your Amazon
-QuickSight account.}
+Quick Sight account.}
 
 \item{TemplateId}{[required] An ID for the template that you want to create. This template is unique
 per Amazon Web Services Region; in each Amazon Web Services account.}
@@ -36,7 +36,7 @@ analysis. Both of these require an Amazon Resource Name (ARN). For
 \code{SourceTemplate}, specify the ARN of the source template. For
 \code{SourceAnalysis}, specify the ARN of the source analysis. The
 \code{SourceTemplate} ARN can contain any Amazon Web Services account and any
-Amazon QuickSight-supported Amazon Web Services Region.
+Quick Sight-supported Amazon Web Services Region.
 
 Use the \code{DataSetReferences} entity within \code{SourceTemplate} or
 \code{SourceAnalysis} to list the replacement datasets for the placeholders
@@ -67,7 +67,7 @@ the request to be valid.}
 definition objects. This skips the validation step for specific errors.}
 }
 \description{
-Creates a template either from a \code{TemplateDefinition} or from an existing Amazon QuickSight analysis or template. You can use the resulting template to create additional dashboards, templates, or analyses.
+Creates a template either from a \code{TemplateDefinition} or from an existing Quick Sight analysis or template. You can use the resulting template to create additional dashboards, templates, or analyses.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_create_template/} for full documentation.
 }

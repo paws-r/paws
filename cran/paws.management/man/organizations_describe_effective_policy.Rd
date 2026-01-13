@@ -16,6 +16,12 @@ of the following values:
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html}{CHATBOT_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES_OPT_OUT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html}{SECURITYHUB_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_upgrade_rollout.html}{UPGRADE_ROLLOUT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inspector.html}{INSPECTOR_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html}{BEDROCK_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html}{S3_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html}{NETWORK_SECURITY_DIRECTOR_POLICY}
 }}
 
 \item{TargetId}{When you're signed in as the management account, specify the ID of the

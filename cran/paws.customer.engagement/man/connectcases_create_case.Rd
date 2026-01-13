@@ -5,27 +5,27 @@
 \title{If you provide a value for PerformedBy}
 \usage{
 connectcases_create_case(
-  clientToken = NULL,
   domainId,
+  templateId,
   fields,
-  performedBy = NULL,
-  templateId
+  clientToken = NULL,
+  performedBy = NULL
 )
 }
 \arguments{
+\item{domainId}{[required] The unique identifier of the Cases domain.}
+
+\item{templateId}{[required] A unique identifier of a template.}
+
+\item{fields}{[required] An array of objects with field ID (matching ListFields/DescribeField)
+and value union data.}
+
 \item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. If not provided, the Amazon Web Services SDK
 populates this field. For more information about idempotency, see
 \href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 
-\item{domainId}{[required] The unique identifier of the Cases domain.}
-
-\item{fields}{[required] An array of objects with field ID (matching ListFields/DescribeField)
-and value union data.}
-
 \item{performedBy}{}
-
-\item{templateId}{[required] A unique identifier of a template.}
 }
 \description{
 If you provide a value for \code{PerformedBy.UserArn} you must also have \href{https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html}{connect:DescribeUser} permission on the User ARN resource that you provide

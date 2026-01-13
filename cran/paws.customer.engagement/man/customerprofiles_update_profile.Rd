@@ -29,7 +29,9 @@ customerprofiles_update_profile(
   BillingAddress = NULL,
   Attributes = NULL,
   PartyTypeString = NULL,
-  GenderString = NULL
+  GenderString = NULL,
+  ProfileType = NULL,
+  EngagementPreferences = NULL
 )
 }
 \arguments{
@@ -39,7 +41,7 @@ customerprofiles_update_profile(
 
 \item{AdditionalInformation}{Any additional information relevant to the customer’s profile.}
 
-\item{AccountNumber}{An account number that you have given to the customer.}
+\item{AccountNumber}{An account number that you have assigned to the customer.}
 
 \item{PartyType}{The type of profile used to describe the customer.}
 
@@ -85,6 +87,10 @@ shipping, or billing.}
 \item{PartyTypeString}{An alternative to \code{PartyType} which accepts any string as input.}
 
 \item{GenderString}{An alternative to \code{Gender} which accepts any string as input.}
+
+\item{ProfileType}{Determines the type of the profile.}
+
+\item{EngagementPreferences}{Object that defines users preferred methods of engagement.}
 }
 \description{
 Updates the properties of a profile. The ProfileId is required for updating a customer profile.

@@ -171,6 +171,7 @@ directoryservice_accept_shared_directory <- function(SharedDirectoryId) {
 #'   IpRoutes = list(
 #'     list(
 #'       CidrIp = "string",
+#'       CidrIpv6 = "string",
 #'       Description = "string"
 #'     )
 #'   ),
@@ -377,7 +378,7 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #'
 #' @usage
 #' directoryservice_connect_directory(Name, ShortName, Password,
-#'   Description, Size, ConnectSettings, Tags)
+#'   Description, Size, ConnectSettings, Tags, NetworkType)
 #'
 #' @param Name &#91;required&#93; The fully qualified name of your self-managed directory, such as
 #' `corp.example.com`.
@@ -388,6 +389,8 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #' @param ConnectSettings &#91;required&#93; A DirectoryConnectSettings object that contains additional information
 #' for the operation.
 #' @param Tags The tags to be assigned to AD Connector.
+#' @param NetworkType The network type for your directory. The default value is `IPv4` or
+#' `IPv6` based on the provided subnet capabilities.
 #'
 #' @return
 #' A list with the following syntax:
@@ -413,6 +416,9 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #'     CustomerDnsIps = list(
 #'       "string"
 #'     ),
+#'     CustomerDnsIpsV6 = list(
+#'       "string"
+#'     ),
 #'     CustomerUserName = "string"
 #'   ),
 #'   Tags = list(
@@ -420,7 +426,8 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   NetworkType = "Dual-stack"|"IPv4"|"IPv6"
 #' )
 #' ```
 #'
@@ -429,7 +436,7 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #' @rdname directoryservice_connect_directory
 #'
 #' @aliases directoryservice_connect_directory
-directoryservice_connect_directory <- function(Name, ShortName = NULL, Password, Description = NULL, Size, ConnectSettings, Tags = NULL) {
+directoryservice_connect_directory <- function(Name, ShortName = NULL, Password, Description = NULL, Size, ConnectSettings, Tags = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "ConnectDirectory",
     http_method = "POST",
@@ -438,7 +445,7 @@ directoryservice_connect_directory <- function(Name, ShortName = NULL, Password,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directoryservice$connect_directory_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, Size = Size, ConnectSettings = ConnectSettings, Tags = Tags)
+  input <- .directoryservice$connect_directory_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, Size = Size, ConnectSettings = ConnectSettings, Tags = Tags, NetworkType = NetworkType)
   output <- .directoryservice$connect_directory_output()
   config <- get_config()
   svc <- .directoryservice$service(config, op)
@@ -595,13 +602,15 @@ directoryservice_create_computer <- function(DirectoryId, ComputerName, Password
 #'
 #' @usage
 #' directoryservice_create_conditional_forwarder(DirectoryId,
-#'   RemoteDomainName, DnsIpAddrs)
+#'   RemoteDomainName, DnsIpAddrs, DnsIpv6Addrs)
 #'
 #' @param DirectoryId &#91;required&#93; The directory ID of the Amazon Web Services directory for which you are
 #' creating the conditional forwarder.
 #' @param RemoteDomainName &#91;required&#93; The fully qualified domain name (FQDN) of the remote domain with which
 #' you will set up a trust relationship.
-#' @param DnsIpAddrs &#91;required&#93; The IP addresses of the remote DNS server associated with
+#' @param DnsIpAddrs The IP addresses of the remote DNS server associated with
+#' RemoteDomainName.
+#' @param DnsIpv6Addrs The IPv6 addresses of the remote DNS server associated with
 #' RemoteDomainName.
 #'
 #' @return
@@ -614,6 +623,9 @@ directoryservice_create_computer <- function(DirectoryId, ComputerName, Password
 #'   RemoteDomainName = "string",
 #'   DnsIpAddrs = list(
 #'     "string"
+#'   ),
+#'   DnsIpv6Addrs = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -623,7 +635,7 @@ directoryservice_create_computer <- function(DirectoryId, ComputerName, Password
 #' @rdname directoryservice_create_conditional_forwarder
 #'
 #' @aliases directoryservice_create_conditional_forwarder
-directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDomainName, DnsIpAddrs) {
+directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDomainName, DnsIpAddrs = NULL, DnsIpv6Addrs = NULL) {
   op <- new_operation(
     name = "CreateConditionalForwarder",
     http_method = "POST",
@@ -632,7 +644,7 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directoryservice$create_conditional_forwarder_input(DirectoryId = DirectoryId, RemoteDomainName = RemoteDomainName, DnsIpAddrs = DnsIpAddrs)
+  input <- .directoryservice$create_conditional_forwarder_input(DirectoryId = DirectoryId, RemoteDomainName = RemoteDomainName, DnsIpAddrs = DnsIpAddrs, DnsIpv6Addrs = DnsIpv6Addrs)
   output <- .directoryservice$create_conditional_forwarder_output()
   config <- get_config()
   svc <- .directoryservice$service(config, op)
@@ -659,7 +671,7 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #'
 #' @usage
 #' directoryservice_create_directory(Name, ShortName, Password,
-#'   Description, Size, VpcSettings, Tags)
+#'   Description, Size, VpcSettings, Tags, NetworkType)
 #'
 #' @param Name &#91;required&#93; The fully qualified name for the directory, such as `corp.example.com`.
 #' @param ShortName The NetBIOS name of the directory, such as `CORP`.
@@ -700,6 +712,8 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @param VpcSettings A DirectoryVpcSettings object that contains additional information for
 #' the operation.
 #' @param Tags The tags to be assigned to the Simple AD directory.
+#' @param NetworkType The network type for your directory. Simple AD supports IPv4 and
+#' Dual-stack only.
 #'
 #' @return
 #' A list with the following syntax:
@@ -728,7 +742,8 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   NetworkType = "Dual-stack"|"IPv4"|"IPv6"
 #' )
 #' ```
 #'
@@ -737,7 +752,7 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @rdname directoryservice_create_directory
 #'
 #' @aliases directoryservice_create_directory
-directoryservice_create_directory <- function(Name, ShortName = NULL, Password, Description = NULL, Size, VpcSettings = NULL, Tags = NULL) {
+directoryservice_create_directory <- function(Name, ShortName = NULL, Password, Description = NULL, Size, VpcSettings = NULL, Tags = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "CreateDirectory",
     http_method = "POST",
@@ -746,7 +761,7 @@ directoryservice_create_directory <- function(Name, ShortName = NULL, Password, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directoryservice$create_directory_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, Size = Size, VpcSettings = VpcSettings, Tags = Tags)
+  input <- .directoryservice$create_directory_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, Size = Size, VpcSettings = VpcSettings, Tags = Tags, NetworkType = NetworkType)
   output <- .directoryservice$create_directory_output()
   config <- get_config()
   svc <- .directoryservice$service(config, op)
@@ -755,6 +770,85 @@ directoryservice_create_directory <- function(Name, ShortName = NULL, Password, 
   return(response)
 }
 .directoryservice$operations$create_directory <- directoryservice_create_directory
+
+#' Creates a hybrid directory that connects your self-managed Active
+#' Directory (AD) infrastructure and Amazon Web Services
+#'
+#' @description
+#' Creates a hybrid directory that connects your self-managed Active
+#' Directory (AD) infrastructure and Amazon Web Services.
+#' 
+#' You must have a successful directory assessment using
+#' [`start_ad_assessment`][directoryservice_start_ad_assessment] to
+#' validate your environment compatibility before you use this operation.
+#' 
+#' Updates are applied asynchronously. Use
+#' [`describe_directories`][directoryservice_describe_directories] to
+#' monitor the progress of directory creation.
+#'
+#' @usage
+#' directoryservice_create_hybrid_ad(SecretArn, AssessmentId, Tags)
+#'
+#' @param SecretArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services Secrets
+#' Manager secret that contains the credentials for the service account
+#' used to join hybrid domain controllers to your self-managed AD domain.
+#' This secret is used once and not stored.
+#' 
+#' The secret must contain key-value pairs with keys matching
+#' `customerAdAdminDomainUsername` and `customerAdAdminDomainPassword`. For
+#' example:
+#' `{"customerAdAdminDomainUsername":"carlos_salazar","customerAdAdminDomainPassword":"ExamplePassword123!"}`.
+#' @param AssessmentId &#91;required&#93; The unique identifier of the successful directory assessment that
+#' validates your self-managed AD environment. You must have a successful
+#' directory assessment before you create a hybrid directory.
+#' @param Tags The tags to be assigned to the directory. Each tag consists of a key and
+#' value pair. You can specify multiple tags as a list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_hybrid_ad(
+#'   SecretArn = "string",
+#'   AssessmentId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_create_hybrid_ad
+#'
+#' @aliases directoryservice_create_hybrid_ad
+directoryservice_create_hybrid_ad <- function(SecretArn, AssessmentId, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateHybridAD",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directoryservice$create_hybrid_ad_input(SecretArn = SecretArn, AssessmentId = AssessmentId, Tags = Tags)
+  output <- .directoryservice$create_hybrid_ad_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$create_hybrid_ad <- directoryservice_create_hybrid_ad
 
 #' Creates a subscription to forward real-time Directory Service domain
 #' controller security logs to the specified Amazon CloudWatch log group in
@@ -825,7 +919,7 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #'
 #' @usage
 #' directoryservice_create_microsoft_ad(Name, ShortName, Password,
-#'   Description, VpcSettings, Edition, Tags)
+#'   Description, VpcSettings, Edition, Tags, NetworkType)
 #'
 #' @param Name &#91;required&#93; The fully qualified domain name for the Managed Microsoft AD directory,
 #' such as `corp.example.com`. This name will resolve inside your VPC only.
@@ -847,6 +941,8 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #' @param Edition Managed Microsoft AD is available in two editions: `Standard` and
 #' `Enterprise`. `Enterprise` is the default.
 #' @param Tags The tags to be assigned to the Managed Microsoft AD directory.
+#' @param NetworkType The network type for your domain. The default value is `IPv4` or `IPv6`
+#' based on the provided subnet capabilities.
 #'
 #' @return
 #' A list with the following syntax:
@@ -869,13 +965,14 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #'       "string"
 #'     )
 #'   ),
-#'   Edition = "Enterprise"|"Standard",
+#'   Edition = "Enterprise"|"Standard"|"Hybrid",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   NetworkType = "Dual-stack"|"IPv4"|"IPv6"
 #' )
 #' ```
 #'
@@ -884,7 +981,7 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #' @rdname directoryservice_create_microsoft_ad
 #'
 #' @aliases directoryservice_create_microsoft_ad
-directoryservice_create_microsoft_ad <- function(Name, ShortName = NULL, Password, Description = NULL, VpcSettings, Edition = NULL, Tags = NULL) {
+directoryservice_create_microsoft_ad <- function(Name, ShortName = NULL, Password, Description = NULL, VpcSettings, Edition = NULL, Tags = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "CreateMicrosoftAD",
     http_method = "POST",
@@ -893,7 +990,7 @@ directoryservice_create_microsoft_ad <- function(Name, ShortName = NULL, Passwor
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directoryservice$create_microsoft_ad_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, VpcSettings = VpcSettings, Edition = Edition, Tags = Tags)
+  input <- .directoryservice$create_microsoft_ad_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, VpcSettings = VpcSettings, Edition = Edition, Tags = Tags, NetworkType = NetworkType)
   output <- .directoryservice$create_microsoft_ad_output()
   config <- get_config()
   svc <- .directoryservice$service(config, op)
@@ -976,7 +1073,7 @@ directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
 #' @usage
 #' directoryservice_create_trust(DirectoryId, RemoteDomainName,
 #'   TrustPassword, TrustDirection, TrustType, ConditionalForwarderIpAddrs,
-#'   SelectiveAuth)
+#'   ConditionalForwarderIpv6Addrs, SelectiveAuth)
 #'
 #' @param DirectoryId &#91;required&#93; The Directory ID of the Managed Microsoft AD directory for which to
 #' establish the trust relationship.
@@ -987,6 +1084,8 @@ directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
 #' @param TrustDirection &#91;required&#93; The direction of the trust relationship.
 #' @param TrustType The trust relationship type. `Forest` is the default.
 #' @param ConditionalForwarderIpAddrs The IP addresses of the remote DNS server associated with
+#' RemoteDomainName.
+#' @param ConditionalForwarderIpv6Addrs The IPv6 addresses of the remote DNS server associated with
 #' RemoteDomainName.
 #' @param SelectiveAuth Optional parameter to enable selective authentication for the trust.
 #'
@@ -1009,6 +1108,9 @@ directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
 #'   ConditionalForwarderIpAddrs = list(
 #'     "string"
 #'   ),
+#'   ConditionalForwarderIpv6Addrs = list(
+#'     "string"
+#'   ),
 #'   SelectiveAuth = "Enabled"|"Disabled"
 #' )
 #' ```
@@ -1018,7 +1120,7 @@ directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
 #' @rdname directoryservice_create_trust
 #'
 #' @aliases directoryservice_create_trust
-directoryservice_create_trust <- function(DirectoryId, RemoteDomainName, TrustPassword, TrustDirection, TrustType = NULL, ConditionalForwarderIpAddrs = NULL, SelectiveAuth = NULL) {
+directoryservice_create_trust <- function(DirectoryId, RemoteDomainName, TrustPassword, TrustDirection, TrustType = NULL, ConditionalForwarderIpAddrs = NULL, ConditionalForwarderIpv6Addrs = NULL, SelectiveAuth = NULL) {
   op <- new_operation(
     name = "CreateTrust",
     http_method = "POST",
@@ -1027,7 +1129,7 @@ directoryservice_create_trust <- function(DirectoryId, RemoteDomainName, TrustPa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directoryservice$create_trust_input(DirectoryId = DirectoryId, RemoteDomainName = RemoteDomainName, TrustPassword = TrustPassword, TrustDirection = TrustDirection, TrustType = TrustType, ConditionalForwarderIpAddrs = ConditionalForwarderIpAddrs, SelectiveAuth = SelectiveAuth)
+  input <- .directoryservice$create_trust_input(DirectoryId = DirectoryId, RemoteDomainName = RemoteDomainName, TrustPassword = TrustPassword, TrustDirection = TrustDirection, TrustType = TrustType, ConditionalForwarderIpAddrs = ConditionalForwarderIpAddrs, ConditionalForwarderIpv6Addrs = ConditionalForwarderIpv6Addrs, SelectiveAuth = SelectiveAuth)
   output <- .directoryservice$create_trust_output()
   config <- get_config()
   svc <- .directoryservice$service(config, op)
@@ -1036,6 +1138,60 @@ directoryservice_create_trust <- function(DirectoryId, RemoteDomainName, TrustPa
   return(response)
 }
 .directoryservice$operations$create_trust <- directoryservice_create_trust
+
+#' Deletes a directory assessment and all associated data
+#'
+#' @description
+#' Deletes a directory assessment and all associated data. This operation
+#' permanently removes the assessment results, validation reports, and
+#' configuration information.
+#' 
+#' You cannot delete system-initiated assessments. You can delete
+#' customer-created assessments even if they are in progress.
+#'
+#' @usage
+#' directoryservice_delete_ad_assessment(AssessmentId)
+#'
+#' @param AssessmentId &#91;required&#93; The unique identifier of the directory assessment to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssessmentId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_ad_assessment(
+#'   AssessmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_delete_ad_assessment
+#'
+#' @aliases directoryservice_delete_ad_assessment
+directoryservice_delete_ad_assessment <- function(AssessmentId) {
+  op <- new_operation(
+    name = "DeleteADAssessment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directoryservice$delete_ad_assessment_input(AssessmentId = AssessmentId)
+  output <- .directoryservice$delete_ad_assessment_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$delete_ad_assessment <- directoryservice_delete_ad_assessment
 
 #' Deletes a conditional forwarder that has been set up for your Amazon Web
 #' Services directory
@@ -1389,6 +1545,166 @@ directoryservice_deregister_event_topic <- function(DirectoryId, TopicName) {
 }
 .directoryservice$operations$deregister_event_topic <- directoryservice_deregister_event_topic
 
+#' Retrieves detailed information about a directory assessment, including
+#' its current status, validation results, and configuration details
+#'
+#' @description
+#' Retrieves detailed information about a directory assessment, including
+#' its current status, validation results, and configuration details. Use
+#' this operation to monitor assessment progress and review results.
+#'
+#' @usage
+#' directoryservice_describe_ad_assessment(AssessmentId)
+#'
+#' @param AssessmentId &#91;required&#93; The identifier of the directory assessment to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Assessment = list(
+#'     AssessmentId = "string",
+#'     DirectoryId = "string",
+#'     DnsName = "string",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdateDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "string",
+#'     StatusCode = "string",
+#'     StatusReason = "string",
+#'     CustomerDnsIps = list(
+#'       "string"
+#'     ),
+#'     VpcId = "string",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     SelfManagedInstanceIds = list(
+#'       "string"
+#'     ),
+#'     ReportType = "string",
+#'     Version = "string"
+#'   ),
+#'   AssessmentReports = list(
+#'     list(
+#'       DomainControllerIp = "string",
+#'       Validations = list(
+#'         list(
+#'           Category = "string",
+#'           Name = "string",
+#'           Status = "string",
+#'           StatusCode = "string",
+#'           StatusReason = "string",
+#'           StartTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           LastUpdateDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_ad_assessment(
+#'   AssessmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_describe_ad_assessment
+#'
+#' @aliases directoryservice_describe_ad_assessment
+directoryservice_describe_ad_assessment <- function(AssessmentId) {
+  op <- new_operation(
+    name = "DescribeADAssessment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directoryservice$describe_ad_assessment_input(AssessmentId = AssessmentId)
+  output <- .directoryservice$describe_ad_assessment_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$describe_ad_assessment <- directoryservice_describe_ad_assessment
+
+#' Retrieves detailed information about the certificate authority (CA)
+#' enrollment policy for the specified directory
+#'
+#' @description
+#' Retrieves detailed information about the certificate authority (CA)
+#' enrollment policy for the specified directory. This policy determines
+#' how client certificates are automatically enrolled and managed through
+#' Amazon Web Services Private Certificate Authority.
+#'
+#' @usage
+#' directoryservice_describe_ca_enrollment_policy(DirectoryId)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory for which to retrieve the CA enrollment
+#' policy information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryId = "string",
+#'   PcaConnectorArn = "string",
+#'   CaEnrollmentPolicyStatus = "InProgress"|"Success"|"Failed"|"Disabling"|"Disabled"|"Impaired",
+#'   LastUpdatedDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CaEnrollmentPolicyStatusReason = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_ca_enrollment_policy(
+#'   DirectoryId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_describe_ca_enrollment_policy
+#'
+#' @aliases directoryservice_describe_ca_enrollment_policy
+directoryservice_describe_ca_enrollment_policy <- function(DirectoryId) {
+  op <- new_operation(
+    name = "DescribeCAEnrollmentPolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directoryservice$describe_ca_enrollment_policy_input(DirectoryId = DirectoryId)
+  output <- .directoryservice$describe_ca_enrollment_policy_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$describe_ca_enrollment_policy <- directoryservice_describe_ca_enrollment_policy
+
 #' Displays information about the certificate registered for secure LDAP or
 #' client certificate authentication
 #'
@@ -1562,6 +1878,9 @@ directoryservice_describe_client_authentication_settings <- function(DirectoryId
 #'       DnsIpAddrs = list(
 #'         "string"
 #'       ),
+#'       DnsIpv6Addrs = list(
+#'         "string"
+#'       ),
 #'       ReplicationScope = "Domain"
 #'     )
 #'   )
@@ -1646,11 +1965,14 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #'       Name = "string",
 #'       ShortName = "string",
 #'       Size = "Small"|"Large",
-#'       Edition = "Enterprise"|"Standard",
+#'       Edition = "Enterprise"|"Standard"|"Hybrid",
 #'       Alias = "string",
 #'       AccessUrl = "string",
 #'       Description = "string",
 #'       DnsIpAddrs = list(
+#'         "string"
+#'       ),
+#'       DnsIpv6Addrs = list(
 #'         "string"
 #'       ),
 #'       Stage = "Requested"|"Creating"|"Created"|"Active"|"Inoperable"|"Impaired"|"Restoring"|"RestoreFailed"|"Deleting"|"Deleted"|"Failed"|"Updating",
@@ -1686,10 +2008,16 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #'         ),
 #'         ConnectIps = list(
 #'           "string"
+#'         ),
+#'         ConnectIpsV6 = list(
+#'           "string"
 #'         )
 #'       ),
 #'       RadiusSettings = list(
 #'         RadiusServers = list(
+#'           "string"
+#'         ),
+#'         RadiusServersIpv6 = list(
 #'           "string"
 #'         ),
 #'         RadiusPort = 123,
@@ -1710,6 +2038,9 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #'         DnsIpAddrs = list(
 #'           "string"
 #'         ),
+#'         DnsIpv6Addrs = list(
+#'           "string"
+#'         ),
 #'         VpcSettings = list(
 #'           VpcId = "string",
 #'           SubnetIds = list(
@@ -1724,6 +2055,9 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #'           RadiusServers = list(
 #'             "string"
 #'           ),
+#'           RadiusServersIpv6 = list(
+#'             "string"
+#'           ),
 #'           RadiusPort = 123,
 #'           RadiusTimeout = 123,
 #'           RadiusRetries = 123,
@@ -1732,7 +2066,8 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #'           DisplayLabel = "string",
 #'           UseSameUsername = TRUE|FALSE
 #'         ),
-#'         RadiusStatus = "Creating"|"Completed"|"Failed"
+#'         RadiusStatus = "Creating"|"Completed"|"Failed",
+#'         NetworkType = "Dual-stack"|"IPv4"|"IPv6"
 #'       ),
 #'       RegionsInfo = list(
 #'         PrimaryRegion = "string",
@@ -1740,7 +2075,16 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #'           "string"
 #'         )
 #'       ),
-#'       OsVersion = "SERVER_2012"|"SERVER_2019"
+#'       OsVersion = "SERVER_2012"|"SERVER_2019",
+#'       HybridSettings = list(
+#'         SelfManagedDnsIpAddrs = list(
+#'           "string"
+#'         ),
+#'         SelfManagedInstanceIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       NetworkType = "Dual-stack"|"IPv4"|"IPv6"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1860,6 +2204,7 @@ directoryservice_describe_directory_data_access <- function(DirectoryId) {
 #'       DirectoryId = "string",
 #'       DomainControllerId = "string",
 #'       DnsIpAddr = "string",
+#'       DnsIpv6Addr = "string",
 #'       VpcId = "string",
 #'       SubnetId = "string",
 #'       AvailabilityZone = "string",
@@ -1986,6 +2331,129 @@ directoryservice_describe_event_topics <- function(DirectoryId = NULL, TopicName
   return(response)
 }
 .directoryservice$operations$describe_event_topics <- directoryservice_describe_event_topics
+
+#' Retrieves information about update activities for a hybrid directory
+#'
+#' @description
+#' Retrieves information about update activities for a hybrid directory.
+#' This operation provides details about configuration changes,
+#' administrator account updates, and self-managed instance settings (IDs
+#' and DNS IPs).
+#'
+#' @usage
+#' directoryservice_describe_hybrid_ad_update(DirectoryId, UpdateType,
+#'   NextToken)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the hybrid directory for which to retrieve update
+#' information.
+#' @param UpdateType The type of update activities to retrieve. Valid values include
+#' `SelfManagedInstances` and `HybridAdministratorAccount`.
+#' @param NextToken The pagination token from a previous request to
+#' [`describe_hybrid_ad_update`][directoryservice_describe_hybrid_ad_update].
+#' Pass null if this is the first request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpdateActivities = list(
+#'     SelfManagedInstances = list(
+#'       list(
+#'         Status = "Updated"|"Updating"|"UpdateFailed",
+#'         StatusReason = "string",
+#'         InitiatedBy = "string",
+#'         NewValue = list(
+#'           InstanceIds = list(
+#'             "string"
+#'           ),
+#'           DnsIps = list(
+#'             "string"
+#'           )
+#'         ),
+#'         PreviousValue = list(
+#'           InstanceIds = list(
+#'             "string"
+#'           ),
+#'           DnsIps = list(
+#'             "string"
+#'           )
+#'         ),
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastUpdatedDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         AssessmentId = "string"
+#'       )
+#'     ),
+#'     HybridAdministratorAccount = list(
+#'       list(
+#'         Status = "Updated"|"Updating"|"UpdateFailed",
+#'         StatusReason = "string",
+#'         InitiatedBy = "string",
+#'         NewValue = list(
+#'           InstanceIds = list(
+#'             "string"
+#'           ),
+#'           DnsIps = list(
+#'             "string"
+#'           )
+#'         ),
+#'         PreviousValue = list(
+#'           InstanceIds = list(
+#'             "string"
+#'           ),
+#'           DnsIps = list(
+#'             "string"
+#'           )
+#'         ),
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastUpdatedDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         AssessmentId = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_hybrid_ad_update(
+#'   DirectoryId = "string",
+#'   UpdateType = "SelfManagedInstances"|"HybridAdministratorAccount",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_describe_hybrid_ad_update
+#'
+#' @aliases directoryservice_describe_hybrid_ad_update
+directoryservice_describe_hybrid_ad_update <- function(DirectoryId, UpdateType = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeHybridADUpdate",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directoryservice$describe_hybrid_ad_update_input(DirectoryId = DirectoryId, UpdateType = UpdateType, NextToken = NextToken)
+  output <- .directoryservice$describe_hybrid_ad_update_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$describe_hybrid_ad_update <- directoryservice_describe_hybrid_ad_update
 
 #' Describes the status of LDAP security for the specified directory
 #'
@@ -2521,7 +2989,7 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
 #' ```
 #' svc$describe_update_directory(
 #'   DirectoryId = "string",
-#'   UpdateType = "OS",
+#'   UpdateType = "OS"|"NETWORK"|"SIZE",
 #'   RegionName = "string",
 #'   NextToken = "string"
 #' )
@@ -2550,6 +3018,59 @@ directoryservice_describe_update_directory <- function(DirectoryId, UpdateType, 
   return(response)
 }
 .directoryservice$operations$describe_update_directory <- directoryservice_describe_update_directory
+
+#' Disables the certificate authority (CA) enrollment policy for the
+#' specified directory
+#'
+#' @description
+#' Disables the certificate authority (CA) enrollment policy for the
+#' specified directory. This stops automatic certificate enrollment and
+#' management for domain-joined clients, but does not affect existing
+#' certificates.
+#' 
+#' Disabling the CA enrollment policy prevents new certificates from being
+#' automatically enrolled, but existing certificates remain valid and
+#' functional until they expire.
+#'
+#' @usage
+#' directoryservice_disable_ca_enrollment_policy(DirectoryId)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory for which to disable the CA enrollment
+#' policy.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_ca_enrollment_policy(
+#'   DirectoryId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_disable_ca_enrollment_policy
+#'
+#' @aliases directoryservice_disable_ca_enrollment_policy
+directoryservice_disable_ca_enrollment_policy <- function(DirectoryId) {
+  op <- new_operation(
+    name = "DisableCAEnrollmentPolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directoryservice$disable_ca_enrollment_policy_input(DirectoryId = DirectoryId)
+  output <- .directoryservice$disable_ca_enrollment_policy_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$disable_ca_enrollment_policy <- directoryservice_disable_ca_enrollment_policy
 
 #' Disables alternative client authentication methods for the specified
 #' directory
@@ -2801,6 +3322,67 @@ directoryservice_disable_sso <- function(DirectoryId, UserName = NULL, Password 
 }
 .directoryservice$operations$disable_sso <- directoryservice_disable_sso
 
+#' Enables certificate authority (CA) enrollment policy for the specified
+#' directory
+#'
+#' @description
+#' Enables certificate authority (CA) enrollment policy for the specified
+#' directory. This allows domain-joined clients to automatically request
+#' and receive certificates from the specified Amazon Web Services Private
+#' Certificate Authority.
+#' 
+#' Before enabling CA enrollment, ensure that the PCA connector is properly
+#' configured and accessible from the directory. The connector must be in
+#' an active state and have the necessary permissions.
+#'
+#' @usage
+#' directoryservice_enable_ca_enrollment_policy(DirectoryId,
+#'   PcaConnectorArn)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory for which to enable the CA enrollment
+#' policy.
+#' @param PcaConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the Private Certificate Authority
+#' (PCA) connector to use for automatic certificate enrollment. This
+#' connector must be properly configured and accessible from the directory.
+#' 
+#' The ARN format is:
+#' `arn:aws:pca-connector-ad:region:account-id:connector/connector-id `
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_ca_enrollment_policy(
+#'   DirectoryId = "string",
+#'   PcaConnectorArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_enable_ca_enrollment_policy
+#'
+#' @aliases directoryservice_enable_ca_enrollment_policy
+directoryservice_enable_ca_enrollment_policy <- function(DirectoryId, PcaConnectorArn) {
+  op <- new_operation(
+    name = "EnableCAEnrollmentPolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directoryservice$enable_ca_enrollment_policy_input(DirectoryId = DirectoryId, PcaConnectorArn = PcaConnectorArn)
+  output <- .directoryservice$enable_ca_enrollment_policy_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$enable_ca_enrollment_policy <- directoryservice_enable_ca_enrollment_policy
+
 #' Enables alternative client authentication methods for the specified
 #' directory
 #'
@@ -2974,6 +3556,9 @@ directoryservice_enable_ldaps <- function(DirectoryId, Type) {
 #'   DirectoryId = "string",
 #'   RadiusSettings = list(
 #'     RadiusServers = list(
+#'       "string"
+#'     ),
+#'     RadiusServersIpv6 = list(
 #'       "string"
 #'     ),
 #'     RadiusPort = 123,
@@ -3182,6 +3767,83 @@ directoryservice_get_snapshot_limits <- function(DirectoryId) {
 }
 .directoryservice$operations$get_snapshot_limits <- directoryservice_get_snapshot_limits
 
+#' Retrieves a list of directory assessments for the specified directory or
+#' all assessments in your account
+#'
+#' @description
+#' Retrieves a list of directory assessments for the specified directory or
+#' all assessments in your account. Use this operation to monitor
+#' assessment status and manage multiple assessments.
+#'
+#' @usage
+#' directoryservice_list_ad_assessments(DirectoryId, NextToken, Limit)
+#'
+#' @param DirectoryId The identifier of the directory for which to list assessments. If not
+#' specified, all assessments in your account are returned.
+#' @param NextToken The pagination token from a previous request to
+#' [`list_ad_assessments`][directoryservice_list_ad_assessments]. Pass null
+#' if this is the first request.
+#' @param Limit The maximum number of assessment summaries to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Assessments = list(
+#'     list(
+#'       AssessmentId = "string",
+#'       DirectoryId = "string",
+#'       DnsName = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdateDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "string",
+#'       CustomerDnsIps = list(
+#'         "string"
+#'       ),
+#'       ReportType = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_ad_assessments(
+#'   DirectoryId = "string",
+#'   NextToken = "string",
+#'   Limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_list_ad_assessments
+#'
+#' @aliases directoryservice_list_ad_assessments
+directoryservice_list_ad_assessments <- function(DirectoryId = NULL, NextToken = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListADAssessments",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Assessments"),
+    stream_api = FALSE
+  )
+  input <- .directoryservice$list_ad_assessments_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
+  output <- .directoryservice$list_ad_assessments_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$list_ad_assessments <- directoryservice_list_ad_assessments
+
 #' For the specified directory, lists all the certificates registered for a
 #' secure LDAP or client certificate authentication
 #'
@@ -3275,6 +3937,7 @@ directoryservice_list_certificates <- function(DirectoryId, NextToken = NULL, Li
 #'     list(
 #'       DirectoryId = "string",
 #'       CidrIp = "string",
+#'       CidrIpv6 = "string",
 #'       IpRouteStatusMsg = "Adding"|"Added"|"Removing"|"Removed"|"AddFailed"|"RemoveFailed",
 #'       AddedDateTime = as.POSIXct(
 #'         "2015-01-01"
@@ -3691,11 +4354,12 @@ directoryservice_reject_shared_directory <- function(SharedDirectoryId) {
 #' Removes IP address blocks from a directory.
 #'
 #' @usage
-#' directoryservice_remove_ip_routes(DirectoryId, CidrIps)
+#' directoryservice_remove_ip_routes(DirectoryId, CidrIps, CidrIpv6s)
 #'
 #' @param DirectoryId &#91;required&#93; Identifier (ID) of the directory from which you want to remove the IP
 #' addresses.
-#' @param CidrIps &#91;required&#93; IP address blocks that you want to remove.
+#' @param CidrIps IP address blocks that you want to remove.
+#' @param CidrIpv6s IPv6 address blocks that you want to remove.
 #'
 #' @return
 #' An empty list.
@@ -3706,6 +4370,9 @@ directoryservice_reject_shared_directory <- function(SharedDirectoryId) {
 #'   DirectoryId = "string",
 #'   CidrIps = list(
 #'     "string"
+#'   ),
+#'   CidrIpv6s = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -3715,7 +4382,7 @@ directoryservice_reject_shared_directory <- function(SharedDirectoryId) {
 #' @rdname directoryservice_remove_ip_routes
 #'
 #' @aliases directoryservice_remove_ip_routes
-directoryservice_remove_ip_routes <- function(DirectoryId, CidrIps) {
+directoryservice_remove_ip_routes <- function(DirectoryId, CidrIps = NULL, CidrIpv6s = NULL) {
   op <- new_operation(
     name = "RemoveIpRoutes",
     http_method = "POST",
@@ -3724,7 +4391,7 @@ directoryservice_remove_ip_routes <- function(DirectoryId, CidrIps) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directoryservice$remove_ip_routes_input(DirectoryId = DirectoryId, CidrIps = CidrIps)
+  input <- .directoryservice$remove_ip_routes_input(DirectoryId = DirectoryId, CidrIps = CidrIps, CidrIpv6s = CidrIpv6s)
   output <- .directoryservice$remove_ip_routes_output()
   config <- get_config()
   svc <- .directoryservice$service(config, op)
@@ -4041,6 +4708,102 @@ directoryservice_share_directory <- function(DirectoryId, ShareNotes = NULL, Sha
 }
 .directoryservice$operations$share_directory <- directoryservice_share_directory
 
+#' Initiates a directory assessment to validate your self-managed AD
+#' environment for hybrid domain join
+#'
+#' @description
+#' Initiates a directory assessment to validate your self-managed AD
+#' environment for hybrid domain join. The assessment checks compatibility
+#' and connectivity of the self-managed AD environment.
+#' 
+#' A directory assessment is automatically created when you create a hybrid
+#' directory. There are two types of assessments: `CUSTOMER` and `SYSTEM`.
+#' Your Amazon Web Services account has a limit of 100 `CUSTOMER` directory
+#' assessments.
+#' 
+#' The assessment process typically takes 30 minutes or more to complete.
+#' The assessment process is asynchronous and you can monitor it with
+#' [`describe_ad_assessment`][directoryservice_describe_ad_assessment].
+#' 
+#' The `InstanceIds` must have a one-to-one correspondence with
+#' `CustomerDnsIps`, meaning that if the IP address for instance i-10243410
+#' is 10.24.34.100 and the IP address for instance i-10243420 is
+#' 10.24.34.200, then the input arrays must maintain the same order
+#' relationship, either \[10.24.34.100, 10.24.34.200\] paired with
+#' \[i-10243410, i-10243420\] or \[10.24.34.200, 10.24.34.100\] paired with
+#' \[i-10243420, i-10243410\].
+#' 
+#' Note: You must provide exactly one `DirectoryId` or
+#' `AssessmentConfiguration`.
+#'
+#' @usage
+#' directoryservice_start_ad_assessment(AssessmentConfiguration,
+#'   DirectoryId)
+#'
+#' @param AssessmentConfiguration Configuration parameters for the directory assessment, including DNS
+#' server information, domain name, Amazon VPC subnet, and Amazon Web
+#' Services System Manager managed node details.
+#' @param DirectoryId The identifier of the directory for which to perform the assessment.
+#' This should be an existing directory. If the assessment is not for an
+#' existing directory, this parameter should be omitted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssessmentId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_ad_assessment(
+#'   AssessmentConfiguration = list(
+#'     CustomerDnsIps = list(
+#'       "string"
+#'     ),
+#'     DnsName = "string",
+#'     VpcSettings = list(
+#'       VpcId = "string",
+#'       SubnetIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     InstanceIds = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DirectoryId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_start_ad_assessment
+#'
+#' @aliases directoryservice_start_ad_assessment
+directoryservice_start_ad_assessment <- function(AssessmentConfiguration = NULL, DirectoryId = NULL) {
+  op <- new_operation(
+    name = "StartADAssessment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directoryservice$start_ad_assessment_input(AssessmentConfiguration = AssessmentConfiguration, DirectoryId = DirectoryId)
+  output <- .directoryservice$start_ad_assessment_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$start_ad_assessment <- directoryservice_start_ad_assessment
+
 #' Applies a schema extension to a Microsoft AD directory
 #'
 #' @description
@@ -4169,13 +4932,15 @@ directoryservice_unshare_directory <- function(DirectoryId, UnshareTarget) {
 #'
 #' @usage
 #' directoryservice_update_conditional_forwarder(DirectoryId,
-#'   RemoteDomainName, DnsIpAddrs)
+#'   RemoteDomainName, DnsIpAddrs, DnsIpv6Addrs)
 #'
 #' @param DirectoryId &#91;required&#93; The directory ID of the Amazon Web Services directory for which to
 #' update the conditional forwarder.
 #' @param RemoteDomainName &#91;required&#93; The fully qualified domain name (FQDN) of the remote domain with which
 #' you will set up a trust relationship.
-#' @param DnsIpAddrs &#91;required&#93; The updated IP addresses of the remote DNS server associated with the
+#' @param DnsIpAddrs The updated IP addresses of the remote DNS server associated with the
+#' conditional forwarder.
+#' @param DnsIpv6Addrs The updated IPv6 addresses of the remote DNS server associated with the
 #' conditional forwarder.
 #'
 #' @return
@@ -4188,6 +4953,9 @@ directoryservice_unshare_directory <- function(DirectoryId, UnshareTarget) {
 #'   RemoteDomainName = "string",
 #'   DnsIpAddrs = list(
 #'     "string"
+#'   ),
+#'   DnsIpv6Addrs = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -4197,7 +4965,7 @@ directoryservice_unshare_directory <- function(DirectoryId, UnshareTarget) {
 #' @rdname directoryservice_update_conditional_forwarder
 #'
 #' @aliases directoryservice_update_conditional_forwarder
-directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDomainName, DnsIpAddrs) {
+directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDomainName, DnsIpAddrs = NULL, DnsIpv6Addrs = NULL) {
   op <- new_operation(
     name = "UpdateConditionalForwarder",
     http_method = "POST",
@@ -4206,7 +4974,7 @@ directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDom
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directoryservice$update_conditional_forwarder_input(DirectoryId = DirectoryId, RemoteDomainName = RemoteDomainName, DnsIpAddrs = DnsIpAddrs)
+  input <- .directoryservice$update_conditional_forwarder_input(DirectoryId = DirectoryId, RemoteDomainName = RemoteDomainName, DnsIpAddrs = DnsIpAddrs, DnsIpv6Addrs = DnsIpv6Addrs)
   output <- .directoryservice$update_conditional_forwarder_output()
   config <- get_config()
   svc <- .directoryservice$service(config, op)
@@ -4216,22 +4984,24 @@ directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDom
 }
 .directoryservice$operations$update_conditional_forwarder <- directoryservice_update_conditional_forwarder
 
-#' Updates the directory for a particular update type
+#' Updates directory configuration for the specified update type
 #'
 #' @description
-#' Updates the directory for a particular update type.
+#' Updates directory configuration for the specified update type.
 #'
 #' @usage
 #' directoryservice_update_directory_setup(DirectoryId, UpdateType,
-#'   OSUpdateSettings, CreateSnapshotBeforeUpdate)
+#'   OSUpdateSettings, DirectorySizeUpdateSettings, NetworkUpdateSettings,
+#'   CreateSnapshotBeforeUpdate)
 #'
-#' @param DirectoryId &#91;required&#93; The identifier of the directory on which you want to perform the update.
-#' @param UpdateType &#91;required&#93; The type of update that needs to be performed on the directory. For
-#' example, OS.
-#' @param OSUpdateSettings The settings for the OS update that needs to be performed on the
-#' directory.
-#' @param CreateSnapshotBeforeUpdate The boolean that specifies if a snapshot for the directory needs to be
-#' taken before updating the directory.
+#' @param DirectoryId &#91;required&#93; The identifier of the directory to update.
+#' @param UpdateType &#91;required&#93; The type of update to perform on the directory.
+#' @param OSUpdateSettings Operating system configuration to apply during the directory update
+#' operation.
+#' @param DirectorySizeUpdateSettings Directory size configuration to apply during the update operation.
+#' @param NetworkUpdateSettings Network configuration to apply during the directory update operation.
+#' @param CreateSnapshotBeforeUpdate Specifies whether to create a directory snapshot before performing the
+#' update.
 #'
 #' @return
 #' An empty list.
@@ -4240,9 +5010,18 @@ directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' ```
 #' svc$update_directory_setup(
 #'   DirectoryId = "string",
-#'   UpdateType = "OS",
+#'   UpdateType = "OS"|"NETWORK"|"SIZE",
 #'   OSUpdateSettings = list(
 #'     OSVersion = "SERVER_2012"|"SERVER_2019"
+#'   ),
+#'   DirectorySizeUpdateSettings = list(
+#'     DirectorySize = "Small"|"Large"
+#'   ),
+#'   NetworkUpdateSettings = list(
+#'     NetworkType = "Dual-stack"|"IPv4"|"IPv6",
+#'     CustomerDnsIpsV6 = list(
+#'       "string"
+#'     )
 #'   ),
 #'   CreateSnapshotBeforeUpdate = TRUE|FALSE
 #' )
@@ -4253,7 +5032,7 @@ directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @rdname directoryservice_update_directory_setup
 #'
 #' @aliases directoryservice_update_directory_setup
-directoryservice_update_directory_setup <- function(DirectoryId, UpdateType, OSUpdateSettings = NULL, CreateSnapshotBeforeUpdate = NULL) {
+directoryservice_update_directory_setup <- function(DirectoryId, UpdateType, OSUpdateSettings = NULL, DirectorySizeUpdateSettings = NULL, NetworkUpdateSettings = NULL, CreateSnapshotBeforeUpdate = NULL) {
   op <- new_operation(
     name = "UpdateDirectorySetup",
     http_method = "POST",
@@ -4262,7 +5041,7 @@ directoryservice_update_directory_setup <- function(DirectoryId, UpdateType, OSU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directoryservice$update_directory_setup_input(DirectoryId = DirectoryId, UpdateType = UpdateType, OSUpdateSettings = OSUpdateSettings, CreateSnapshotBeforeUpdate = CreateSnapshotBeforeUpdate)
+  input <- .directoryservice$update_directory_setup_input(DirectoryId = DirectoryId, UpdateType = UpdateType, OSUpdateSettings = OSUpdateSettings, DirectorySizeUpdateSettings = DirectorySizeUpdateSettings, NetworkUpdateSettings = NetworkUpdateSettings, CreateSnapshotBeforeUpdate = CreateSnapshotBeforeUpdate)
   output <- .directoryservice$update_directory_setup_output()
   config <- get_config()
   svc <- .directoryservice$service(config, op)
@@ -4271,6 +5050,102 @@ directoryservice_update_directory_setup <- function(DirectoryId, UpdateType, OSU
   return(response)
 }
 .directoryservice$operations$update_directory_setup <- directoryservice_update_directory_setup
+
+#' Updates the configuration of an existing hybrid directory
+#'
+#' @description
+#' Updates the configuration of an existing hybrid directory. You can
+#' recover hybrid directory administrator account or modify self-managed
+#' instance settings.
+#' 
+#' Updates are applied asynchronously. Use
+#' [`describe_hybrid_ad_update`][directoryservice_describe_hybrid_ad_update]
+#' to monitor the progress of configuration changes.
+#' 
+#' The `InstanceIds` must have a one-to-one correspondence with
+#' `CustomerDnsIps`, meaning that if the IP address for instance i-10243410
+#' is 10.24.34.100 and the IP address for instance i-10243420 is
+#' 10.24.34.200, then the input arrays must maintain the same order
+#' relationship, either \[10.24.34.100, 10.24.34.200\] paired with
+#' \[i-10243410, i-10243420\] or \[10.24.34.200, 10.24.34.100\] paired with
+#' \[i-10243420, i-10243410\].
+#' 
+#' You must provide at least one update to
+#' UpdateHybridADRequest$HybridAdministratorAccountUpdate or
+#' UpdateHybridADRequest$SelfManagedInstancesSettings.
+#'
+#' @usage
+#' directoryservice_update_hybrid_ad(DirectoryId,
+#'   HybridAdministratorAccountUpdate, SelfManagedInstancesSettings)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the hybrid directory to update.
+#' @param HybridAdministratorAccountUpdate We create a hybrid directory administrator account when we create a
+#' hybrid directory. Use `HybridAdministratorAccountUpdate` to recover the
+#' hybrid directory administrator account if you have deleted it.
+#' 
+#' To recover your hybrid directory administrator account, we need
+#' temporary access to a user in your self-managed AD with administrator
+#' permissions in the form of a secret from Amazon Web Services Secrets
+#' Manager. We use these credentials once during recovery and don't store
+#' them.
+#' 
+#' If your hybrid directory administrator account exists, then you don’t
+#' need to use `HybridAdministratorAccountUpdate`, even if you have updated
+#' your self-managed AD administrator user.
+#' @param SelfManagedInstancesSettings Updates to the self-managed AD configuration, including DNS server IP
+#' addresses and Amazon Web Services System Manager managed node
+#' identifiers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryId = "string",
+#'   AssessmentId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_hybrid_ad(
+#'   DirectoryId = "string",
+#'   HybridAdministratorAccountUpdate = list(
+#'     SecretArn = "string"
+#'   ),
+#'   SelfManagedInstancesSettings = list(
+#'     CustomerDnsIps = list(
+#'       "string"
+#'     ),
+#'     InstanceIds = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_update_hybrid_ad
+#'
+#' @aliases directoryservice_update_hybrid_ad
+directoryservice_update_hybrid_ad <- function(DirectoryId, HybridAdministratorAccountUpdate = NULL, SelfManagedInstancesSettings = NULL) {
+  op <- new_operation(
+    name = "UpdateHybridAD",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directoryservice$update_hybrid_ad_input(DirectoryId = DirectoryId, HybridAdministratorAccountUpdate = HybridAdministratorAccountUpdate, SelfManagedInstancesSettings = SelfManagedInstancesSettings)
+  output <- .directoryservice$update_hybrid_ad_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$update_hybrid_ad <- directoryservice_update_hybrid_ad
 
 #' Adds or removes domain controllers to or from the directory
 #'
@@ -4349,6 +5224,9 @@ directoryservice_update_number_of_domain_controllers <- function(DirectoryId, De
 #'   DirectoryId = "string",
 #'   RadiusSettings = list(
 #'     RadiusServers = list(
+#'       "string"
+#'     ),
+#'     RadiusServersIpv6 = list(
 #'       "string"
 #'     ),
 #'     RadiusPort = 123,

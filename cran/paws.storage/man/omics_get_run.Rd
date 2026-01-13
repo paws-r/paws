@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_run}
 \alias{omics_get_run}
-\title{Gets information about a workflow run}
+\title{Gets detailed information about a specific run using its ID}
 \usage{
 omics_get_run(id, export = NULL)
 }
@@ -12,7 +12,7 @@ omics_get_run(id, export = NULL)
 \item{export}{The run's export format.}
 }
 \description{
-Gets information about a workflow run.
+Gets detailed information about a specific run using its ID.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_run/} for full documentation.
 }

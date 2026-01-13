@@ -95,8 +95,10 @@ The Billing API provides the following endpoint:
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.cost.management:billing_associate_source_views]{associate_source_views} \tab Associates one or more source billing views with an existing billing view\cr
 \link[paws.cost.management:billing_create_billing_view]{create_billing_view} \tab Creates a billing view with the specified billing view attributes\cr
 \link[paws.cost.management:billing_delete_billing_view]{delete_billing_view} \tab Deletes the specified billing view\cr
+\link[paws.cost.management:billing_disassociate_source_views]{disassociate_source_views} \tab Removes the association between one or more source billing views and an existing billing view\cr
 \link[paws.cost.management:billing_get_billing_view]{get_billing_view} \tab Returns the metadata associated to the specified billing view ARN\cr
 \link[paws.cost.management:billing_get_resource_policy]{get_resource_policy} \tab Returns the resource-based policy document attached to the resource in JSON format\cr
 \link[paws.cost.management:billing_list_billing_views]{list_billing_views} \tab Lists the billing views available for a given time period\cr
@@ -111,7 +113,7 @@ The Billing API provides the following endpoint:
 \examples{
 \dontrun{
 svc <- billing()
-svc$create_billing_view(
+svc$associate_source_views(
   Foo = 123
 )
 }

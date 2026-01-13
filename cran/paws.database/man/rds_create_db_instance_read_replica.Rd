@@ -14,6 +14,7 @@ rds_create_db_instance_read_replica(
   MultiAZ = NULL,
   AutoMinorVersionUpgrade = NULL,
   Iops = NULL,
+  StorageThroughput = NULL,
   OptionGroupName = NULL,
   DBParameterGroupName = NULL,
   PubliclyAccessible = NULL,
@@ -42,16 +43,18 @@ rds_create_db_instance_read_replica(
   DomainAuthSecretArn = NULL,
   DomainDnsIps = NULL,
   ReplicaMode = NULL,
-  MaxAllocatedStorage = NULL,
-  CustomIamInstanceProfile = NULL,
-  NetworkType = NULL,
-  StorageThroughput = NULL,
   EnableCustomerOwnedIp = NULL,
+  NetworkType = NULL,
+  MaxAllocatedStorage = NULL,
+  BackupTarget = NULL,
+  CustomIamInstanceProfile = NULL,
   AllocatedStorage = NULL,
   SourceDBClusterIdentifier = NULL,
   DedicatedLogVolume = NULL,
   UpgradeStorageConfig = NULL,
-  CACertificateIdentifier = NULL
+  CACertificateIdentifier = NULL,
+  TagSpecifications = NULL,
+  AdditionalStorageVolumes = NULL
 )
 }
 \arguments{
@@ -60,8 +63,13 @@ unique key that identifies a DB instance. This parameter is stored as a
 lowercase string.}
 
 \item{SourceDBInstanceIdentifier}{The identifier of the DB instance that will act as the source for the
-read replica. Each DB instance can have up to 15 read replicas, with the
-exception of Oracle and SQL Server, which can have up to five.
+read replica. Each DB instance can have up to 15 read replicas, except
+for the following engines:
+\itemize{
+\item Db2 - Can have up to three replicas.
+\item Oracle - Can have up to five read replicas.
+\item SQL Server - Can have up to five read replicas.
+}
 
 Constraints:
 \itemize{
@@ -128,6 +136,10 @@ For more information about automatic minor version upgrades, see
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
 initially allocate for the DB instance.}
 
+\item{StorageThroughput}{Specifies the storage throughput value for the read replica.
+
+This setting doesn't apply to RDS Custom or Amazon Aurora DB instances.}
+
 \item{OptionGroupName}{The option group to associate the DB instance with. If not specified,
 RDS uses the option group associated with the source DB instance or
 cluster.
@@ -139,6 +151,15 @@ This setting doesn't apply to RDS Custom DB instances.}
 
 \item{DBParameterGroupName}{The name of the DB parameter group to associate with this read replica
 DB instance.
+
+For the Db2 DB engine, if your source DB instance uses the bring your
+own license (BYOL) model, then a custom parameter group must be
+associated with the replica. For a same Amazon Web Services Region
+replica, if you don't specify a custom parameter group, Amazon RDS
+associates the custom parameter group associated with the source DB
+instance. For a cross-Region replica, you must specify a custom
+parameter group. This custom parameter group must include your IBM Site
+ID and IBM Customer ID. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/db2-licensing.html#db2-prereqs-ibm-info}{IBM IDs for bring your own license (BYOL) for Db2}.
 
 For Single-AZ or Multi-AZ DB instance read replica instances, if you
 don't specify a value for \code{DBParameterGroupName}, then Amazon RDS uses
@@ -152,9 +173,9 @@ default \code{DBParameterGroup}.
 
 Specifying a parameter group for this operation is only supported for
 MySQL DB instances for cross-Region read replicas, for Multi-AZ DB
-cluster read replica instances, and for Oracle DB instances. It isn't
-supported for MySQL DB instances for same Region read replicas or for
-RDS Custom.
+cluster read replica instances, for Db2 DB instances, and for Oracle DB
+instances. It isn't supported for MySQL DB instances for same Region
+read replicas or for RDS Custom.
 
 Constraints:
 \itemize{
@@ -467,9 +488,26 @@ both entries in the list.
 
 Example: \verb{123.124.125.126,234.235.236.237}}
 
-\item{ReplicaMode}{The open mode of the replica database: mounted or read-only.
+\item{ReplicaMode}{The open mode of the replica database.
 
-This parameter is only supported for Oracle DB instances.
+This parameter is only supported for Db2 DB instances and Oracle DB
+instances.
+
+\strong{Db2}
+
+Standby DB replicas are included in Db2 Advanced Edition (AE) and Db2
+Standard Edition (SE). The main use case for standby replicas is
+cross-Region disaster recovery. Because it doesn't accept user
+connections, a standby replica can't serve a read-only workload.
+
+You can create a combination of standby and read-only DB replicas for
+the same primary DB instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/db2-replication.html}{Working with replicas for Amazon RDS for Db2}
+in the \emph{Amazon RDS User Guide}.
+
+To create standby DB replicas for RDS for Db2, set this parameter to
+\code{mounted}.
+
+\strong{Oracle}
 
 Mounted DB replicas are included in Oracle Database Enterprise Edition.
 The main use case for mounted replicas is cross-Region disaster
@@ -478,35 +516,26 @@ information to the mounted replica. Because it doesn't accept user
 connections, a mounted replica can't serve a read-only workload.
 
 You can create a combination of mounted and read-only DB replicas for
-the same primary DB instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html}{Working with Oracle Read Replicas for Amazon RDS}
+the same primary DB instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html}{Working with read replicas for Amazon RDS for Oracle}
 in the \emph{Amazon RDS User Guide}.
 
 For RDS Custom, you must specify this parameter and set it to \code{mounted}.
 The value won't be set by default. After replica creation, you can
 manage the open mode manually.}
 
-\item{MaxAllocatedStorage}{The upper limit in gibibytes (GiB) to which Amazon RDS can automatically
-scale the storage of the DB instance.
+\item{EnableCustomerOwnedIp}{Specifies whether to enable a customer-owned IP address (CoIP) for an
+RDS on Outposts read replica.
 
-For more information about this setting, including limitations that
-apply to it, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling}{Managing capacity automatically with Amazon RDS storage autoscaling}
-in the \emph{Amazon RDS User Guide}.}
+A \emph{CoIP} provides local or external connectivity to resources in your
+Outpost subnets through your on-premises network. For some use cases, a
+CoIP can provide lower latency for connections to the read replica from
+outside of its virtual private cloud (VPC) on your local network.
 
-\item{CustomIamInstanceProfile}{The instance profile associated with the underlying Amazon EC2 instance
-of an RDS Custom DB instance. The instance profile must meet the
-following requirements:
-\itemize{
-\item The profile must exist in your account.
-\item The profile must have an IAM role that Amazon EC2 has permissions to
-assume.
-\item The instance profile name and the associated IAM role name must
-start with the prefix \code{AWSRDSCustom}.
-}
-
-For the list of permissions required for the IAM role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc}{Configure IAM and your VPC}
+For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
 in the \emph{Amazon RDS User Guide}.
 
-This setting is required for RDS Custom DB instances.}
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/routing.html#ip-addressing}{Customer-owned IP addresses}
+in the \emph{Amazon Web Services Outposts User Guide}.}
 
 \item{NetworkType}{The network type of the DB instance.
 
@@ -523,23 +552,36 @@ IPv4 and the IPv6 protocols (\code{DUAL}).
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
 in the \emph{Amazon RDS User Guide.}}
 
-\item{StorageThroughput}{Specifies the storage throughput value for the read replica.
+\item{MaxAllocatedStorage}{The upper limit in gibibytes (GiB) to which Amazon RDS can automatically
+scale the storage of the DB instance.
 
-This setting doesn't apply to RDS Custom or Amazon Aurora DB instances.}
+For more information about this setting, including limitations that
+apply to it, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling}{Managing capacity automatically with Amazon RDS storage autoscaling}
+in the \emph{Amazon RDS User Guide}.}
 
-\item{EnableCustomerOwnedIp}{Specifies whether to enable a customer-owned IP address (CoIP) for an
-RDS on Outposts read replica.
+\item{BackupTarget}{The location where RDS stores automated backups and manual snapshots.
 
-A \emph{CoIP} provides local or external connectivity to resources in your
-Outpost subnets through your on-premises network. For some use cases, a
-CoIP can provide lower latency for connections to the read replica from
-outside of its virtual private cloud (VPC) on your local network.
+Valid Values:
+\itemize{
+\item \code{local} for Dedicated Local Zones
+\item \code{region} for Amazon Web Services Region
+}}
 
-For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
+\item{CustomIamInstanceProfile}{The instance profile associated with the underlying Amazon EC2 instance
+of an RDS Custom DB instance. The instance profile must meet the
+following requirements:
+\itemize{
+\item The profile must exist in your account.
+\item The profile must have an IAM role that Amazon EC2 has permissions to
+assume.
+\item The instance profile name and the associated IAM role name must
+start with the prefix \code{AWSRDSCustom}.
+}
+
+For the list of permissions required for the IAM role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc}{Configure IAM and your VPC}
 in the \emph{Amazon RDS User Guide}.
 
-For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/routing.html#ip-addressing}{Customer-owned IP addresses}
-in the \emph{Amazon Web Services Outposts User Guide}.}
+This setting is required for RDS Custom DB instances.}
 
 \item{AllocatedStorage}{The amount of storage (in gibibytes) to allocate initially for the read
 replica. Follow the allocation rules specified in
@@ -580,6 +622,19 @@ This setting doesn't apply to RDS Custom DB instances.
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB instance}
 in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB cluster}
 in the \emph{Amazon Aurora User Guide}.}
+
+\item{TagSpecifications}{Tags to assign to resources associated with the DB instance.
+
+Valid Values:
+\itemize{
+\item \code{auto-backup} - The DB instance's automated backup.
+}}
+
+\item{AdditionalStorageVolumes}{A list of additional storage volumes to create for the DB instance. You
+can create up to three additional storage volumes using the names
+\code{rdsdbdata2}, \code{rdsdbdata3}, and \code{rdsdbdata4}. Additional storage volumes
+are supported for RDS for Oracle and RDS for SQL Server DB instances
+only.}
 }
 \description{
 Creates a new DB instance that acts as a read replica for an existing source DB instance or Multi-AZ DB cluster. You can create a read replica for a DB instance running Db2, MariaDB, MySQL, Oracle, PostgreSQL, or SQL Server. You can create a read replica for a Multi-AZ DB cluster running MySQL or PostgreSQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html}{Working with read replicas} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html#multi-az-db-clusters-migrating-to-instance-with-read-replica}{Migrating from a Multi-AZ DB cluster to a DB instance using a read replica} in the \emph{Amazon RDS User Guide}.

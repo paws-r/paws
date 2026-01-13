@@ -22,7 +22,7 @@ connector.}
 \item{currentVersion}{[required] The current version of the connector that you want to update.}
 }
 \description{
-Updates the specified connector.
+Updates the specified connector. For request body, specify only one parameter: either \code{capacity} or \code{connectorConfiguration}.
 
 See \url{https://www.paws-r-sdk.com/docs/kafkaconnect_update_connector/} for full documentation.
 }

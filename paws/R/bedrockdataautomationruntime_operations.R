@@ -22,7 +22,14 @@ NULL
 #'   errorMessage = "string",
 #'   outputConfiguration = list(
 #'     s3Uri = "string"
-#'   )
+#'   ),
+#'   jobSubmissionTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   jobCompletionTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   jobDurationInSeconds = 123
 #' )
 #' ```
 #'
@@ -56,6 +63,89 @@ bedrockdataautomationruntime_get_data_automation_status <- function(invocationAr
   return(response)
 }
 .bedrockdataautomationruntime$operations$get_data_automation_status <- bedrockdataautomationruntime_get_data_automation_status
+
+#' Sync API: Invoke data automation
+#'
+#' @description
+#' Sync API: Invoke data automation.
+#'
+#' @usage
+#' bedrockdataautomationruntime_invoke_data_automation(inputConfiguration,
+#'   dataAutomationConfiguration, blueprints, dataAutomationProfileArn,
+#'   encryptionConfiguration)
+#'
+#' @param inputConfiguration &#91;required&#93; Input configuration.
+#' @param dataAutomationConfiguration Data automation configuration.
+#' @param blueprints Blueprint list.
+#' @param dataAutomationProfileArn &#91;required&#93; Data automation profile ARN
+#' @param encryptionConfiguration Encryption configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   semanticModality = "DOCUMENT"|"IMAGE"|"AUDIO"|"VIDEO",
+#'   outputSegments = list(
+#'     list(
+#'       customOutputStatus = "MATCH"|"NO_MATCH",
+#'       customOutput = "string",
+#'       standardOutput = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$invoke_data_automation(
+#'   inputConfiguration = list(
+#'     bytes = raw,
+#'     s3Uri = "string"
+#'   ),
+#'   dataAutomationConfiguration = list(
+#'     dataAutomationProjectArn = "string",
+#'     stage = "LIVE"|"DEVELOPMENT"
+#'   ),
+#'   blueprints = list(
+#'     list(
+#'       blueprintArn = "string",
+#'       version = "string",
+#'       stage = "DEVELOPMENT"|"LIVE"
+#'     )
+#'   ),
+#'   dataAutomationProfileArn = "string",
+#'   encryptionConfiguration = list(
+#'     kmsKeyId = "string",
+#'     kmsEncryptionContext = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomationruntime_invoke_data_automation
+#'
+#' @aliases bedrockdataautomationruntime_invoke_data_automation
+bedrockdataautomationruntime_invoke_data_automation <- function(inputConfiguration, dataAutomationConfiguration = NULL, blueprints = NULL, dataAutomationProfileArn, encryptionConfiguration = NULL) {
+  op <- new_operation(
+    name = "InvokeDataAutomation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomationruntime$invoke_data_automation_input(inputConfiguration = inputConfiguration, dataAutomationConfiguration = dataAutomationConfiguration, blueprints = blueprints, dataAutomationProfileArn = dataAutomationProfileArn, encryptionConfiguration = encryptionConfiguration)
+  output <- .bedrockdataautomationruntime$invoke_data_automation_output()
+  config <- get_config()
+  svc <- .bedrockdataautomationruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomationruntime$operations$invoke_data_automation <- bedrockdataautomationruntime_invoke_data_automation
 
 #' Async API: Invoke data automation
 #'
@@ -91,7 +181,17 @@ bedrockdataautomationruntime_get_data_automation_status <- function(invocationAr
 #' svc$invoke_data_automation_async(
 #'   clientToken = "string",
 #'   inputConfiguration = list(
-#'     s3Uri = "string"
+#'     s3Uri = "string",
+#'     assetProcessingConfiguration = list(
+#'       video = list(
+#'         segmentConfiguration = list(
+#'           timestampSegment = list(
+#'             startTimeMillis = 123,
+#'             endTimeMillis = 123
+#'           )
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   outputConfiguration = list(
 #'     s3Uri = "string"

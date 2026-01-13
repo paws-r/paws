@@ -439,6 +439,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cognitoidentityprovider$create_terms_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(UserPoolId = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), TermsName = structure(logical(0), tags = list(type = "string")), TermsSource = structure(logical(0), tags = list(type = "string")), Enforcement = structure(logical(0), tags = list(type = "string")), Links = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cognitoidentityprovider$create_terms_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Terms = structure(list(TermsId = structure(logical(0), tags = list(type = "string")), UserPoolId = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), TermsName = structure(logical(0), tags = list(type = "string")), TermsSource = structure(logical(0), tags = list(type = "string")), Enforcement = structure(logical(0), tags = list(type = "string")), Links = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), LastModifiedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cognitoidentityprovider$create_user_import_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(JobName = structure(logical(0), tags = list(type = "string")), UserPoolId = structure(logical(0), tags = list(type = "string")), CloudWatchLogsRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -524,6 +536,16 @@ NULL
 }
 
 .cognitoidentityprovider$delete_resource_server_output <- function(...) {
+  list()
+}
+
+.cognitoidentityprovider$delete_terms_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TermsId = structure(logical(0), tags = list(type = "string")), UserPoolId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cognitoidentityprovider$delete_terms_output <- function(...) {
   list()
 }
 
@@ -650,6 +672,18 @@ NULL
 .cognitoidentityprovider$describe_risk_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RiskConfiguration = structure(list(UserPoolId = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CompromisedCredentialsRiskConfiguration = structure(list(EventFilter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Actions = structure(list(EventAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), AccountTakeoverRiskConfiguration = structure(list(NotifyConfiguration = structure(list(From = structure(logical(0), tags = list(type = "string")), ReplyTo = structure(logical(0), tags = list(type = "string")), SourceArn = structure(logical(0), tags = list(type = "string")), BlockEmail = structure(list(Subject = structure(logical(0), tags = list(type = "string")), HtmlBody = structure(logical(0), tags = list(type = "string")), TextBody = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NoActionEmail = structure(list(Subject = structure(logical(0), tags = list(type = "string")), HtmlBody = structure(logical(0), tags = list(type = "string")), TextBody = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MfaEmail = structure(list(Subject = structure(logical(0), tags = list(type = "string")), HtmlBody = structure(logical(0), tags = list(type = "string")), TextBody = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Actions = structure(list(LowAction = structure(list(Notify = structure(logical(0), tags = list(type = "boolean")), EventAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MediumAction = structure(list(Notify = structure(logical(0), tags = list(type = "boolean")), EventAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HighAction = structure(list(Notify = structure(logical(0), tags = list(type = "boolean")), EventAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), RiskExceptionConfiguration = structure(list(BlockedIPRangeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SkippedIPRangeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), LastModifiedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cognitoidentityprovider$describe_terms_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TermsId = structure(logical(0), tags = list(type = "string")), UserPoolId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cognitoidentityprovider$describe_terms_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Terms = structure(list(TermsId = structure(logical(0), tags = list(type = "string")), UserPoolId = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), TermsName = structure(logical(0), tags = list(type = "string")), TermsSource = structure(logical(0), tags = list(type = "string")), Enforcement = structure(logical(0), tags = list(type = "string")), Links = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), LastModifiedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -948,6 +982,18 @@ NULL
 .cognitoidentityprovider$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cognitoidentityprovider$list_terms_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(UserPoolId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cognitoidentityprovider$list_terms_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Terms = structure(list(structure(list(TermsId = structure(logical(0), tags = list(type = "string")), TermsName = structure(logical(0), tags = list(type = "string")), Enforcement = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), LastModifiedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1272,6 +1318,18 @@ NULL
 .cognitoidentityprovider$update_resource_server_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResourceServer = structure(list(UserPoolId = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Scopes = structure(list(structure(list(ScopeName = structure(logical(0), tags = list(type = "string")), ScopeDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cognitoidentityprovider$update_terms_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TermsId = structure(logical(0), tags = list(type = "string")), UserPoolId = structure(logical(0), tags = list(type = "string")), TermsName = structure(logical(0), tags = list(type = "string")), TermsSource = structure(logical(0), tags = list(type = "string")), Enforcement = structure(logical(0), tags = list(type = "string")), Links = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cognitoidentityprovider$update_terms_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Terms = structure(list(TermsId = structure(logical(0), tags = list(type = "string")), UserPoolId = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), TermsName = structure(logical(0), tags = list(type = "string")), TermsSource = structure(logical(0), tags = list(type = "string")), Enforcement = structure(logical(0), tags = list(type = "string")), Links = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), LastModifiedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

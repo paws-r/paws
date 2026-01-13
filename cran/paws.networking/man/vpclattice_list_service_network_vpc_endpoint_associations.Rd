@@ -5,18 +5,18 @@
 \title{Lists the associations between a service network and a VPC endpoint}
 \usage{
 vpclattice_list_service_network_vpc_endpoint_associations(
+  serviceNetworkIdentifier,
   maxResults = NULL,
-  nextToken = NULL,
-  serviceNetworkIdentifier
+  nextToken = NULL
 )
 }
 \arguments{
+\item{serviceNetworkIdentifier}{[required] The ID of the service network associated with the VPC endpoint.}
+
 \item{maxResults}{The maximum page size.}
 
 \item{nextToken}{If there are additional results, a pagination token for the next page of
 results.}
-
-\item{serviceNetworkIdentifier}{[required] The ID of the service network associated with the VPC endpoint.}
 }
 \description{
 Lists the associations between a service network and a VPC endpoint.

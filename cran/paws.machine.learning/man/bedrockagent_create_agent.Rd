@@ -7,42 +7,33 @@ models, data sources, software applications, user conversations, and
 APIs to carry out tasks to help customers}
 \usage{
 bedrockagent_create_agent(
-  agentCollaboration = NULL,
   agentName,
-  agentResourceRoleArn = NULL,
   clientToken = NULL,
-  customOrchestration = NULL,
-  customerEncryptionKeyArn = NULL,
-  description = NULL,
-  foundationModel = NULL,
-  guardrailConfiguration = NULL,
-  idleSessionTTLInSeconds = NULL,
   instruction = NULL,
-  memoryConfiguration = NULL,
+  foundationModel = NULL,
+  description = NULL,
   orchestrationType = NULL,
+  customOrchestration = NULL,
+  idleSessionTTLInSeconds = NULL,
+  agentResourceRoleArn = NULL,
+  customerEncryptionKeyArn = NULL,
+  tags = NULL,
   promptOverrideConfiguration = NULL,
-  tags = NULL
+  guardrailConfiguration = NULL,
+  memoryConfiguration = NULL,
+  agentCollaboration = NULL
 )
 }
 \arguments{
-\item{agentCollaboration}{The agent's collaboration role.}
-
 \item{agentName}{[required] A name for the agent that you create.}
-
-\item{agentResourceRoleArn}{The Amazon Resource Name (ARN) of the IAM role with permissions to
-invoke API operations on the agent.}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the API request
 completes no more than one time. If this token matches a previous
 request, Amazon Bedrock ignores the request, but does not return an
 error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
-\item{customOrchestration}{Contains details of the custom orchestration configured for the agent.}
-
-\item{customerEncryptionKeyArn}{The Amazon Resource Name (ARN) of the KMS key with which to encrypt the
-agent.}
-
-\item{description}{A description of the agent.}
+\item{instruction}{Instructions that tell the agent what it should do and how it should
+interact with users.}
 
 \item{foundationModel}{The identifier for the model that you want to be used for orchestration
 by the agent you create.
@@ -70,8 +61,12 @@ from a successful call to
 or from the Imported models page in the Amazon Bedrock console.
 }}
 
-\item{guardrailConfiguration}{The unique Guardrail configuration assigned to the agent when it is
-created.}
+\item{description}{A description of the agent.}
+
+\item{orchestrationType}{Specifies the type of orchestration strategy for the agent. This is set
+to \code{DEFAULT} orchestration type, by default.}
+
+\item{customOrchestration}{Contains details of the custom orchestration configured for the agent.}
 
 \item{idleSessionTTLInSeconds}{The number of seconds for which Amazon Bedrock keeps information about a
 user's conversation with the agent.
@@ -80,18 +75,23 @@ A user interaction remains active for the amount of time specified. If
 no conversation occurs during this time, the session expires and Amazon
 Bedrock deletes any data provided before the timeout.}
 
-\item{instruction}{Instructions that tell the agent what it should do and how it should
-interact with users.}
+\item{agentResourceRoleArn}{The Amazon Resource Name (ARN) of the IAM role with permissions to
+invoke API operations on the agent.}
 
-\item{memoryConfiguration}{Contains the details of the memory configured for the agent.}
+\item{customerEncryptionKeyArn}{The Amazon Resource Name (ARN) of the KMS key with which to encrypt the
+agent.}
 
-\item{orchestrationType}{Specifies the type of orchestration strategy for the agent. This is set
-to \code{DEFAULT} orchestration type, by default.}
+\item{tags}{Any tags that you want to attach to the agent.}
 
 \item{promptOverrideConfiguration}{Contains configurations to override prompts in different parts of an
 agent sequence. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html}{Advanced prompts}.}
 
-\item{tags}{Any tags that you want to attach to the agent.}
+\item{guardrailConfiguration}{The unique Guardrail configuration assigned to the agent when it is
+created.}
+
+\item{memoryConfiguration}{Contains the details of the memory configured for the agent.}
+
+\item{agentCollaboration}{The agent's collaboration role.}
 }
 \description{
 Creates an agent that orchestrates interactions between foundation models, data sources, software applications, user conversations, and APIs to carry out tasks to help customers.

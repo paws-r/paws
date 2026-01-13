@@ -4,7 +4,13 @@
 \alias{elbv2_modify_rule}
 \title{Replaces the specified properties of the specified rule}
 \usage{
-elbv2_modify_rule(RuleArn, Conditions = NULL, Actions = NULL)
+elbv2_modify_rule(
+  RuleArn,
+  Conditions = NULL,
+  Actions = NULL,
+  Transforms = NULL,
+  ResetTransforms = NULL
+)
 }
 \arguments{
 \item{RuleArn}{[required] The Amazon Resource Name (ARN) of the rule.}
@@ -12,6 +18,13 @@ elbv2_modify_rule(RuleArn, Conditions = NULL, Actions = NULL)
 \item{Conditions}{The conditions.}
 
 \item{Actions}{The actions.}
+
+\item{Transforms}{The transforms to apply to requests that match this rule. You can add
+one host header rewrite transform and one URL rewrite transform. If you
+specify \code{Transforms}, you can't specify \code{ResetTransforms}.}
+
+\item{ResetTransforms}{Indicates whether to remove all transforms from the rule. If you specify
+\code{ResetTransforms}, you can't specify \code{Transforms}.}
 }
 \description{
 Replaces the specified properties of the specified rule. Any properties that you do not specify are unchanged.

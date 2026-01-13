@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_delete_variant_store}
 \alias{omics_delete_variant_store}
-\title{Deletes a variant store}
+\title{Amazon Web Services HealthOmics variant stores and annotation stores
+will no longer be open to new customers starting November 7, 2025}
 \usage{
 omics_delete_variant_store(name, force = NULL)
 }
@@ -12,7 +13,7 @@ omics_delete_variant_store(name, force = NULL)
 \item{force}{Whether to force deletion.}
 }
 \description{
-Deletes a variant store.
+Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html}{Amazon Web Services HealthOmics variant store and annotation store availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_delete_variant_store/} for full documentation.
 }

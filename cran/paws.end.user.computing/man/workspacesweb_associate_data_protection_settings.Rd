@@ -5,14 +5,14 @@
 \title{Associates a data protection settings resource with a web portal}
 \usage{
 workspacesweb_associate_data_protection_settings(
-  dataProtectionSettingsArn,
-  portalArn
+  portalArn,
+  dataProtectionSettingsArn
 )
 }
 \arguments{
-\item{dataProtectionSettingsArn}{[required] The ARN of the data protection settings.}
-
 \item{portalArn}{[required] The ARN of the web portal.}
+
+\item{dataProtectionSettingsArn}{[required] The ARN of the data protection settings.}
 }
 \description{
 Associates a data protection settings resource with a web portal.

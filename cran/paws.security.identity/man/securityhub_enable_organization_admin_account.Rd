@@ -4,11 +4,14 @@
 \alias{securityhub_enable_organization_admin_account}
 \title{Designates the Security Hub administrator account for an organization}
 \usage{
-securityhub_enable_organization_admin_account(AdminAccountId)
+securityhub_enable_organization_admin_account(AdminAccountId, Feature = NULL)
 }
 \arguments{
 \item{AdminAccountId}{[required] The Amazon Web Services account identifier of the account to designate
 as the Security Hub administrator account.}
+
+\item{Feature}{The feature for which the delegated admin account is enabled. Defaults
+to Security Hub if not specified.}
 }
 \description{
 Designates the Security Hub administrator account for an organization. Can only be called by the organization management account.

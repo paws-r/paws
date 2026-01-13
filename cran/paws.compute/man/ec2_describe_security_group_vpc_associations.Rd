@@ -16,17 +16,10 @@ ec2_describe_security_group_vpc_associations(
 \item{Filters}{Security group VPC association filters.
 \itemize{
 \item \code{group-id}: The security group ID.
+\item \code{group-owner-id}: The group owner ID.
+\item \code{state}: The state of the association.
 \item \code{vpc-id}: The ID of the associated VPC.
 \item \code{vpc-owner-id}: The account ID of the VPC owner.
-\item \code{state}: The state of the association.
-\item \verb{tag:<key>}: The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
-\item \code{tag-key}: The key of a tag assigned to the resource. Use this
-filter to find all resources assigned a tag with a specific key,
-regardless of the tag value.
 }}
 
 \item{NextToken}{The token returned from a previous paginated request. Pagination

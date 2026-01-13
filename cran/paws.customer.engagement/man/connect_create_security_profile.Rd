@@ -14,7 +14,9 @@ connect_create_security_profile(
   TagRestrictedResources = NULL,
   Applications = NULL,
   HierarchyRestrictedResources = NULL,
-  AllowedAccessControlHierarchyGroupId = NULL
+  AllowedAccessControlHierarchyGroupId = NULL,
+  AllowedFlowModules = NULL,
+  GranularAccessControlConfiguration = NULL
 )
 }
 \arguments{
@@ -39,8 +41,8 @@ to in Amazon Connect. For a list of Amazon Connect resources that you
 can tag, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/tagging.html}{Add tags to resources in Amazon Connect}
 in the \emph{Amazon Connect Administrator Guide}.}
 
-\item{Applications}{A list of third-party applications that the security profile will give
-access to.}
+\item{Applications}{A list of third-party applications or MCP Servers that the security
+profile will give access to.}
 
 \item{HierarchyRestrictedResources}{The list of resources that a security profile applies hierarchy
 restrictions to in Amazon Connect. Following are acceptable
@@ -48,6 +50,11 @@ ResourceNames: \code{User}.}
 
 \item{AllowedAccessControlHierarchyGroupId}{The identifier of the hierarchy group that a security profile uses to
 restrict access to resources in Amazon Connect.}
+
+\item{AllowedFlowModules}{A list of Flow Modules an AI Agent can invoke as a tool.}
+
+\item{GranularAccessControlConfiguration}{The granular access control configuration for the security profile,
+including data table permissions.}
 }
 \description{
 Creates a security profile.

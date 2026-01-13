@@ -18,7 +18,7 @@ NULL
 #' in the *Amazon SQS Developer Guide.*
 #' 
 #' You can use [Amazon Web Services
-#' SDKs](https://aws.amazon.com/developer/tools/#sdk) to access Amazon SQS
+#' SDKs](https://builder.aws.com/build/tools#sdk) to access Amazon SQS
 #' using your favorite programming language. The SDKs perform tasks such as
 #' the following automatically:
 #' 
@@ -43,8 +43,8 @@ NULL
 #'     -   [Amazon SQS Dead-Letter
 #'         Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #' 
-#' -   [Amazon SQS in the *Command Line
-#'     Interface*](https://docs.aws.amazon.com/cli/latest/reference/sqs/)
+#' -   [Amazon SQS in the Command Line
+#'     Interface](https://docs.aws.amazon.com/cli/latest/reference/sqs/)
 #' 
 #' -   *Amazon Web Services General Reference*
 #' 

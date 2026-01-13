@@ -2,8 +2,9 @@
 % Please edit documentation in R/codestarnotifications_operations.R
 \name{codestarnotifications_subscribe}
 \alias{codestarnotifications_subscribe}
-\title{Creates an association between a notification rule and an Chatbot topic
-or Chatbot client so that the associated target can receive
+\title{Creates an association between a notification rule and an Amazon Q
+Developer in chat applications topic or Amazon Q Developer in chat
+applications client so that the associated target can receive
 notifications when the events described in the rule are triggered}
 \usage{
 codestarnotifications_subscribe(Arn, Target, ClientRequestToken = NULL)
@@ -18,7 +19,7 @@ want to create the association.}
 batch of the results.}
 }
 \description{
-Creates an association between a notification rule and an Chatbot topic or Chatbot client so that the associated target can receive notifications when the events described in the rule are triggered.
+Creates an association between a notification rule and an Amazon Q Developer in chat applications topic or Amazon Q Developer in chat applications client so that the associated target can receive notifications when the events described in the rule are triggered.
 
 See \url{https://www.paws-r-sdk.com/docs/codestarnotifications_subscribe/} for full documentation.
 }

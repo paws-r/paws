@@ -6,6 +6,7 @@
 \usage{
 autoscaling_describe_auto_scaling_groups(
   AutoScalingGroupNames = NULL,
+  IncludeInstances = NULL,
   NextToken = NULL,
   MaxRecords = NULL,
   Filters = NULL
@@ -17,6 +18,10 @@ up to 50 names. You can optionally increase this limit using the
 \code{MaxRecords} property.
 
 If you omit this property, all Auto Scaling groups are described.}
+
+\item{IncludeInstances}{Specifies whether to include information about Amazon EC2 instances in
+the response. When set to \code{true} (default), the response includes
+instance details.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}

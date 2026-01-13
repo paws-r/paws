@@ -1,3 +1,0 @@
-svc <- paws::qldbsession()
-
-

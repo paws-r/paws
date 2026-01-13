@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_groups}
 \alias{quicksight_list_groups}
-\title{Lists all user groups in Amazon QuickSight}
+\title{Lists all user groups in Amazon Quick Sight}
 \usage{
 quicksight_list_groups(
   AwsAccountId,
@@ -14,7 +14,7 @@ quicksight_list_groups(
 \arguments{
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the group is in.
 Currently, you use the ID for the Amazon Web Services account that
-contains your Amazon QuickSight account.}
+contains your Amazon Quick Sight account.}
 
 \item{NextToken}{A pagination token that can be used in a subsequent request.}
 
@@ -23,7 +23,7 @@ contains your Amazon QuickSight account.}
 \item{Namespace}{[required] The namespace that you want a list of groups from.}
 }
 \description{
-Lists all user groups in Amazon QuickSight.
+Lists all user groups in Amazon Quick Sight.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_list_groups/} for full documentation.
 }

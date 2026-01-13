@@ -8,8 +8,8 @@ criteria}
 resourceexplorer_list_resources(
   Filters = NULL,
   MaxResults = NULL,
-  NextToken = NULL,
-  ViewArn = NULL
+  ViewArn = NULL,
+  NextToken = NULL
 )
 }
 \arguments{
@@ -42,6 +42,14 @@ An API operation can return fewer results than the maximum even when
 there are more results available. You should check \code{NextToken} after
 every operation to ensure that you receive all of the results.}
 
+\item{ViewArn}{Specifies the Amazon resource name (ARN) of the view to use for the
+query. If you don't specify a value for this parameter, then the
+operation automatically uses the default view for the Amazon Web
+Services Region in which you called this operation. If the Region either
+doesn't have a default view or if you don't have permission to use the
+default view, then the operation fails with a 401 Unauthorized
+exception.}
+
 \item{NextToken}{The parameter for receiving additional results if you receive a
 \code{NextToken} response in a previous request. A \code{NextToken} response
 indicates that more output is available. Set this parameter to the value
@@ -50,14 +58,6 @@ should continue from. The pagination tokens expire after 24 hours.
 
 The \code{\link[=resourceexplorer_list_resources]{list_resources}} operation does
 not generate a \code{NextToken} if you set \code{MaxResults} to 1000.}
-
-\item{ViewArn}{Specifies the Amazon resource name (ARN) of the view to use for the
-query. If you don't specify a value for this parameter, then the
-operation automatically uses the default view for the Amazon Web
-Services Region in which you called this operation. If the Region either
-doesn't have a default view or if you don't have permission to use the
-default view, then the operation fails with a 401 Unauthorized
-exception.}
 }
 \description{
 Returns a list of resources and their details that match the specified criteria. This query must use a view. If you don’t explicitly specify a view, then Resource Explorer uses the default view for the Amazon Web Services Region in which you call this operation.

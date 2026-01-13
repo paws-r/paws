@@ -11,7 +11,8 @@ opensearchingestion_update_pipeline(
   PipelineConfigurationBody = NULL,
   LogPublishingOptions = NULL,
   BufferOptions = NULL,
-  EncryptionAtRestOptions = NULL
+  EncryptionAtRestOptions = NULL,
+  PipelineRoleArn = NULL
 )
 }
 \arguments{
@@ -32,6 +33,9 @@ with \verb{\\\\n}.}
 
 \item{EncryptionAtRestOptions}{Key-value pairs to configure encryption for data that is written to a
 persistent buffer.}
+
+\item{PipelineRoleArn}{The Amazon Resource Name (ARN) of the IAM role that grants the pipeline
+permission to access Amazon Web Services resources.}
 }
 \description{
 Updates an OpenSearch Ingestion pipeline. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/update-pipeline.html}{Updating Amazon OpenSearch Ingestion pipelines}.

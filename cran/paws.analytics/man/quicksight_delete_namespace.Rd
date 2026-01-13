@@ -9,7 +9,7 @@ quicksight_delete_namespace(AwsAccountId, Namespace)
 }
 \arguments{
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to delete the
-Amazon QuickSight namespace from.}
+Quick Sight namespace from.}
 
 \item{Namespace}{[required] The namespace that you want to delete.}
 }

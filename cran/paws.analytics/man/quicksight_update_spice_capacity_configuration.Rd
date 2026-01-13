@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_spice_capacity_configuration}
 \alias{quicksight_update_spice_capacity_configuration}
-\title{Updates the SPICE capacity configuration for a Amazon QuickSight account}
+\title{Updates the SPICE capacity configuration for a Quick Sight account}
 \usage{
 quicksight_update_spice_capacity_configuration(AwsAccountId, PurchaseMode)
 }
@@ -20,7 +20,7 @@ with this option.
 }}
 }
 \description{
-Updates the SPICE capacity configuration for a Amazon QuickSight account.
+Updates the SPICE capacity configuration for a Quick Sight account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_spice_capacity_configuration/} for full documentation.
 }

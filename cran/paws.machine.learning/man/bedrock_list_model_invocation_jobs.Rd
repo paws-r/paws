@@ -54,7 +54,7 @@ your records could be processed in time. View the output files in
 the output S3 location.
 \item Failed – This job has failed. Check the failure message for any
 further details. For further assistance, reach out to the Amazon Web
-ServicesSupport Center.
+Services Support Center.
 \item Stopped – This job was stopped by a user.
 \item Stopping – This job is being stopped by a user.
 }}

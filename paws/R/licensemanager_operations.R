@@ -561,6 +561,289 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 }
 .licensemanager$operations$create_license <- licensemanager_create_license
 
+#' Creates a license asset group
+#'
+#' @description
+#' Creates a license asset group.
+#'
+#' @usage
+#' licensemanager_create_license_asset_group(Name, Description,
+#'   LicenseAssetGroupConfigurations, AssociatedLicenseAssetRulesetARNs,
+#'   Properties, Tags, ClientToken)
+#'
+#' @param Name &#91;required&#93; License asset group name.
+#' @param Description License asset group description.
+#' @param LicenseAssetGroupConfigurations &#91;required&#93; License asset group configurations.
+#' @param AssociatedLicenseAssetRulesetARNs &#91;required&#93; ARNs of associated license asset rulesets.
+#' @param Properties License asset group properties.
+#' @param Tags Tags to add to the license asset group.
+#' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseAssetGroupArn = "string",
+#'   Status = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_license_asset_group(
+#'   Name = "string",
+#'   Description = "string",
+#'   LicenseAssetGroupConfigurations = list(
+#'     list(
+#'       UsageDimension = "string"
+#'     )
+#'   ),
+#'   AssociatedLicenseAssetRulesetARNs = list(
+#'     "string"
+#'   ),
+#'   Properties = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_create_license_asset_group
+#'
+#' @aliases licensemanager_create_license_asset_group
+licensemanager_create_license_asset_group <- function(Name, Description = NULL, LicenseAssetGroupConfigurations, AssociatedLicenseAssetRulesetARNs, Properties = NULL, Tags = NULL, ClientToken) {
+  op <- new_operation(
+    name = "CreateLicenseAssetGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$create_license_asset_group_input(Name = Name, Description = Description, LicenseAssetGroupConfigurations = LicenseAssetGroupConfigurations, AssociatedLicenseAssetRulesetARNs = AssociatedLicenseAssetRulesetARNs, Properties = Properties, Tags = Tags, ClientToken = ClientToken)
+  output <- .licensemanager$create_license_asset_group_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$create_license_asset_group <- licensemanager_create_license_asset_group
+
+#' Creates a license asset ruleset
+#'
+#' @description
+#' Creates a license asset ruleset.
+#'
+#' @usage
+#' licensemanager_create_license_asset_ruleset(Name, Description, Rules,
+#'   Tags, ClientToken)
+#'
+#' @param Name &#91;required&#93; License asset ruleset name.
+#' @param Description License asset ruleset description.
+#' @param Rules &#91;required&#93; License asset rules.
+#' @param Tags Tags to add to the license asset ruleset.
+#' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseAssetRulesetArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_license_asset_ruleset(
+#'   Name = "string",
+#'   Description = "string",
+#'   Rules = list(
+#'     list(
+#'       RuleStatement = list(
+#'         LicenseConfigurationRuleStatement = list(
+#'           AndRuleStatement = list(
+#'             MatchingRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             ScriptRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Script = "string"
+#'               )
+#'             )
+#'           ),
+#'           OrRuleStatement = list(
+#'             MatchingRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             ScriptRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Script = "string"
+#'               )
+#'             )
+#'           ),
+#'           MatchingRuleStatement = list(
+#'             KeyToMatch = "string",
+#'             Constraint = "string",
+#'             ValueToMatch = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         LicenseRuleStatement = list(
+#'           AndRuleStatement = list(
+#'             MatchingRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             ScriptRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Script = "string"
+#'               )
+#'             )
+#'           ),
+#'           OrRuleStatement = list(
+#'             MatchingRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             ScriptRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Script = "string"
+#'               )
+#'             )
+#'           ),
+#'           MatchingRuleStatement = list(
+#'             KeyToMatch = "string",
+#'             Constraint = "string",
+#'             ValueToMatch = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         InstanceRuleStatement = list(
+#'           AndRuleStatement = list(
+#'             MatchingRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             ScriptRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Script = "string"
+#'               )
+#'             )
+#'           ),
+#'           OrRuleStatement = list(
+#'             MatchingRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             ScriptRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Script = "string"
+#'               )
+#'             )
+#'           ),
+#'           MatchingRuleStatement = list(
+#'             KeyToMatch = "string",
+#'             Constraint = "string",
+#'             ValueToMatch = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ScriptRuleStatement = list(
+#'             KeyToMatch = "string",
+#'             Script = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_create_license_asset_ruleset
+#'
+#' @aliases licensemanager_create_license_asset_ruleset
+licensemanager_create_license_asset_ruleset <- function(Name, Description = NULL, Rules, Tags = NULL, ClientToken) {
+  op <- new_operation(
+    name = "CreateLicenseAssetRuleset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$create_license_asset_ruleset_input(Name = Name, Description = Description, Rules = Rules, Tags = Tags, ClientToken = ClientToken)
+  output <- .licensemanager$create_license_asset_ruleset_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$create_license_asset_ruleset <- licensemanager_create_license_asset_ruleset
+
 #' Creates a license configuration
 #'
 #' @description
@@ -577,7 +860,7 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #' @usage
 #' licensemanager_create_license_configuration(Name, Description,
 #'   LicenseCountingType, LicenseCount, LicenseCountHardLimit, LicenseRules,
-#'   Tags, DisassociateWhenNotFound, ProductInformationList)
+#'   Tags, DisassociateWhenNotFound, ProductInformationList, LicenseExpiry)
 #'
 #' @param Name &#91;required&#93; Name of the license configuration.
 #' @param Description Description of the license configuration.
@@ -608,6 +891,7 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #' @param Tags Tags to add to the license configuration.
 #' @param DisassociateWhenNotFound When true, disassociates a resource when software is uninstalled.
 #' @param ProductInformationList Product information.
+#' @param LicenseExpiry License configuration expiry.
 #'
 #' @return
 #' A list with the following syntax:
@@ -648,7 +932,8 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   LicenseExpiry = 123
 #' )
 #' ```
 #'
@@ -657,7 +942,7 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #' @rdname licensemanager_create_license_configuration
 #'
 #' @aliases licensemanager_create_license_configuration
-licensemanager_create_license_configuration <- function(Name, Description = NULL, LicenseCountingType, LicenseCount = NULL, LicenseCountHardLimit = NULL, LicenseRules = NULL, Tags = NULL, DisassociateWhenNotFound = NULL, ProductInformationList = NULL) {
+licensemanager_create_license_configuration <- function(Name, Description = NULL, LicenseCountingType, LicenseCount = NULL, LicenseCountHardLimit = NULL, LicenseRules = NULL, Tags = NULL, DisassociateWhenNotFound = NULL, ProductInformationList = NULL, LicenseExpiry = NULL) {
   op <- new_operation(
     name = "CreateLicenseConfiguration",
     http_method = "POST",
@@ -666,7 +951,7 @@ licensemanager_create_license_configuration <- function(Name, Description = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanager$create_license_configuration_input(Name = Name, Description = Description, LicenseCountingType = LicenseCountingType, LicenseCount = LicenseCount, LicenseCountHardLimit = LicenseCountHardLimit, LicenseRules = LicenseRules, Tags = Tags, DisassociateWhenNotFound = DisassociateWhenNotFound, ProductInformationList = ProductInformationList)
+  input <- .licensemanager$create_license_configuration_input(Name = Name, Description = Description, LicenseCountingType = LicenseCountingType, LicenseCount = LicenseCount, LicenseCountHardLimit = LicenseCountHardLimit, LicenseRules = LicenseRules, Tags = Tags, DisassociateWhenNotFound = DisassociateWhenNotFound, ProductInformationList = ProductInformationList, LicenseExpiry = LicenseExpiry)
   output <- .licensemanager$create_license_configuration_output()
   config <- get_config()
   svc <- .licensemanager$service(config, op)
@@ -711,10 +996,22 @@ licensemanager_create_license_configuration <- function(Name, Description = NULL
 #' svc$create_license_conversion_task_for_resource(
 #'   ResourceArn = "string",
 #'   SourceLicenseContext = list(
-#'     UsageOperation = "string"
+#'     UsageOperation = "string",
+#'     ProductCodes = list(
+#'       list(
+#'         ProductCodeId = "string",
+#'         ProductCodeType = "marketplace"
+#'       )
+#'     )
 #'   ),
 #'   DestinationLicenseContext = list(
-#'     UsageOperation = "string"
+#'     UsageOperation = "string",
+#'     ProductCodes = list(
+#'       list(
+#'         ProductCodeId = "string",
+#'         ProductCodeType = "marketplace"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -782,16 +1079,25 @@ licensemanager_create_license_conversion_task_for_resource <- function(ResourceA
 #' svc$create_license_manager_report_generator(
 #'   ReportGeneratorName = "string",
 #'   Type = list(
-#'     "LicenseConfigurationSummaryReport"|"LicenseConfigurationUsageReport"
+#'     "LicenseConfigurationSummaryReport"|"LicenseConfigurationUsageReport"|"LicenseAssetGroupUsageReport"
 #'   ),
 #'   ReportContext = list(
 #'     licenseConfigurationArns = list(
 #'       "string"
+#'     ),
+#'     licenseAssetGroupArns = list(
+#'       "string"
+#'     ),
+#'     reportStartDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     reportEndDate = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   ),
 #'   ReportFrequency = list(
 #'     value = 123,
-#'     period = "DAY"|"WEEK"|"MONTH"
+#'     period = "DAY"|"WEEK"|"MONTH"|"ONE_TIME"
 #'   ),
 #'   ClientToken = "string",
 #'   Description = "string",
@@ -1116,6 +1422,99 @@ licensemanager_delete_license <- function(LicenseArn, SourceVersion) {
   return(response)
 }
 .licensemanager$operations$delete_license <- licensemanager_delete_license
+
+#' Deletes a license asset group
+#'
+#' @description
+#' Deletes a license asset group.
+#'
+#' @usage
+#' licensemanager_delete_license_asset_group(LicenseAssetGroupArn)
+#'
+#' @param LicenseAssetGroupArn &#91;required&#93; Amazon Resource Name (ARN) of the license asset group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "ACTIVE"|"DISABLED"|"DELETED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_license_asset_group(
+#'   LicenseAssetGroupArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_delete_license_asset_group
+#'
+#' @aliases licensemanager_delete_license_asset_group
+licensemanager_delete_license_asset_group <- function(LicenseAssetGroupArn) {
+  op <- new_operation(
+    name = "DeleteLicenseAssetGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$delete_license_asset_group_input(LicenseAssetGroupArn = LicenseAssetGroupArn)
+  output <- .licensemanager$delete_license_asset_group_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$delete_license_asset_group <- licensemanager_delete_license_asset_group
+
+#' Deletes a license asset ruleset
+#'
+#' @description
+#' Deletes a license asset ruleset.
+#'
+#' @usage
+#' licensemanager_delete_license_asset_ruleset(LicenseAssetRulesetArn)
+#'
+#' @param LicenseAssetRulesetArn &#91;required&#93; Amazon Resource Name (ARN) of the license asset ruleset.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_license_asset_ruleset(
+#'   LicenseAssetRulesetArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_delete_license_asset_ruleset
+#'
+#' @aliases licensemanager_delete_license_asset_ruleset
+licensemanager_delete_license_asset_ruleset <- function(LicenseAssetRulesetArn) {
+  op <- new_operation(
+    name = "DeleteLicenseAssetRuleset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$delete_license_asset_ruleset_input(LicenseAssetRulesetArn = LicenseAssetRulesetArn)
+  output <- .licensemanager$delete_license_asset_ruleset_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$delete_license_asset_ruleset <- licensemanager_delete_license_asset_ruleset
 
 #' Deletes the specified license configuration
 #'
@@ -1528,6 +1927,273 @@ licensemanager_get_license <- function(LicenseArn, Version = NULL) {
 }
 .licensemanager$operations$get_license <- licensemanager_get_license
 
+#' Gets a license asset group
+#'
+#' @description
+#' Gets a license asset group.
+#'
+#' @usage
+#' licensemanager_get_license_asset_group(LicenseAssetGroupArn)
+#'
+#' @param LicenseAssetGroupArn &#91;required&#93; Amazon Resource Name (ARN) of the license asset group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseAssetGroup = list(
+#'     Name = "string",
+#'     Description = "string",
+#'     LicenseAssetGroupConfigurations = list(
+#'       list(
+#'         UsageDimension = "string"
+#'       )
+#'     ),
+#'     AssociatedLicenseAssetRulesetARNs = list(
+#'       "string"
+#'     ),
+#'     Properties = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     LicenseAssetGroupArn = "string",
+#'     Status = "ACTIVE"|"DISABLED"|"DELETED",
+#'     StatusMessage = "string",
+#'     LatestUsageAnalysisTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LatestResourceDiscoveryTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_license_asset_group(
+#'   LicenseAssetGroupArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_get_license_asset_group
+#'
+#' @aliases licensemanager_get_license_asset_group
+licensemanager_get_license_asset_group <- function(LicenseAssetGroupArn) {
+  op <- new_operation(
+    name = "GetLicenseAssetGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$get_license_asset_group_input(LicenseAssetGroupArn = LicenseAssetGroupArn)
+  output <- .licensemanager$get_license_asset_group_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$get_license_asset_group <- licensemanager_get_license_asset_group
+
+#' Gets a license asset ruleset
+#'
+#' @description
+#' Gets a license asset ruleset.
+#'
+#' @usage
+#' licensemanager_get_license_asset_ruleset(LicenseAssetRulesetArn)
+#'
+#' @param LicenseAssetRulesetArn &#91;required&#93; Amazon Resource Name (ARN) of the license asset ruleset.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseAssetRuleset = list(
+#'     Name = "string",
+#'     Description = "string",
+#'     Rules = list(
+#'       list(
+#'         RuleStatement = list(
+#'           LicenseConfigurationRuleStatement = list(
+#'             AndRuleStatement = list(
+#'               MatchingRuleStatements = list(
+#'                 list(
+#'                   KeyToMatch = "string",
+#'                   Constraint = "string",
+#'                   ValueToMatch = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               ScriptRuleStatements = list(
+#'                 list(
+#'                   KeyToMatch = "string",
+#'                   Script = "string"
+#'                 )
+#'               )
+#'             ),
+#'             OrRuleStatement = list(
+#'               MatchingRuleStatements = list(
+#'                 list(
+#'                   KeyToMatch = "string",
+#'                   Constraint = "string",
+#'                   ValueToMatch = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               ScriptRuleStatements = list(
+#'                 list(
+#'                   KeyToMatch = "string",
+#'                   Script = "string"
+#'                 )
+#'               )
+#'             ),
+#'             MatchingRuleStatement = list(
+#'               KeyToMatch = "string",
+#'               Constraint = "string",
+#'               ValueToMatch = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           LicenseRuleStatement = list(
+#'             AndRuleStatement = list(
+#'               MatchingRuleStatements = list(
+#'                 list(
+#'                   KeyToMatch = "string",
+#'                   Constraint = "string",
+#'                   ValueToMatch = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               ScriptRuleStatements = list(
+#'                 list(
+#'                   KeyToMatch = "string",
+#'                   Script = "string"
+#'                 )
+#'               )
+#'             ),
+#'             OrRuleStatement = list(
+#'               MatchingRuleStatements = list(
+#'                 list(
+#'                   KeyToMatch = "string",
+#'                   Constraint = "string",
+#'                   ValueToMatch = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               ScriptRuleStatements = list(
+#'                 list(
+#'                   KeyToMatch = "string",
+#'                   Script = "string"
+#'                 )
+#'               )
+#'             ),
+#'             MatchingRuleStatement = list(
+#'               KeyToMatch = "string",
+#'               Constraint = "string",
+#'               ValueToMatch = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           InstanceRuleStatement = list(
+#'             AndRuleStatement = list(
+#'               MatchingRuleStatements = list(
+#'                 list(
+#'                   KeyToMatch = "string",
+#'                   Constraint = "string",
+#'                   ValueToMatch = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               ScriptRuleStatements = list(
+#'                 list(
+#'                   KeyToMatch = "string",
+#'                   Script = "string"
+#'                 )
+#'               )
+#'             ),
+#'             OrRuleStatement = list(
+#'               MatchingRuleStatements = list(
+#'                 list(
+#'                   KeyToMatch = "string",
+#'                   Constraint = "string",
+#'                   ValueToMatch = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               ScriptRuleStatements = list(
+#'                 list(
+#'                   KeyToMatch = "string",
+#'                   Script = "string"
+#'                 )
+#'               )
+#'             ),
+#'             MatchingRuleStatement = list(
+#'               KeyToMatch = "string",
+#'               Constraint = "string",
+#'               ValueToMatch = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             ScriptRuleStatement = list(
+#'               KeyToMatch = "string",
+#'               Script = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     LicenseAssetRulesetArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_license_asset_ruleset(
+#'   LicenseAssetRulesetArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_get_license_asset_ruleset
+#'
+#' @aliases licensemanager_get_license_asset_ruleset
+licensemanager_get_license_asset_ruleset <- function(LicenseAssetRulesetArn) {
+  op <- new_operation(
+    name = "GetLicenseAssetRuleset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$get_license_asset_ruleset_input(LicenseAssetRulesetArn = LicenseAssetRulesetArn)
+  output <- .licensemanager$get_license_asset_ruleset_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$get_license_asset_ruleset <- licensemanager_get_license_asset_ruleset
+
 #' Gets detailed information about the specified license configuration
 #'
 #' @description
@@ -1592,7 +2258,8 @@ licensemanager_get_license <- function(LicenseArn, Version = NULL) {
 #'       "2015-01-01"
 #'     )
 #'   ),
-#'   DisassociateWhenNotFound = TRUE|FALSE
+#'   DisassociateWhenNotFound = TRUE|FALSE,
+#'   LicenseExpiry = 123
 #' )
 #' ```
 #'
@@ -1644,10 +2311,22 @@ licensemanager_get_license_configuration <- function(LicenseConfigurationArn) {
 #'   LicenseConversionTaskId = "string",
 #'   ResourceArn = "string",
 #'   SourceLicenseContext = list(
-#'     UsageOperation = "string"
+#'     UsageOperation = "string",
+#'     ProductCodes = list(
+#'       list(
+#'         ProductCodeId = "string",
+#'         ProductCodeType = "marketplace"
+#'       )
+#'     )
 #'   ),
 #'   DestinationLicenseContext = list(
-#'     UsageOperation = "string"
+#'     UsageOperation = "string",
+#'     ProductCodes = list(
+#'       list(
+#'         ProductCodeId = "string",
+#'         ProductCodeType = "marketplace"
+#'       )
+#'     )
 #'   ),
 #'   StatusMessage = "string",
 #'   Status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
@@ -1712,16 +2391,25 @@ licensemanager_get_license_conversion_task <- function(LicenseConversionTaskId) 
 #'   ReportGenerator = list(
 #'     ReportGeneratorName = "string",
 #'     ReportType = list(
-#'       "LicenseConfigurationSummaryReport"|"LicenseConfigurationUsageReport"
+#'       "LicenseConfigurationSummaryReport"|"LicenseConfigurationUsageReport"|"LicenseAssetGroupUsageReport"
 #'     ),
 #'     ReportContext = list(
 #'       licenseConfigurationArns = list(
 #'         "string"
+#'       ),
+#'       licenseAssetGroupArns = list(
+#'         "string"
+#'       ),
+#'       reportStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       reportEndDate = as.POSIXct(
+#'         "2015-01-01"
 #'       )
 #'     ),
 #'     ReportFrequency = list(
 #'       value = 123,
-#'       period = "DAY"|"WEEK"|"MONTH"
+#'       period = "DAY"|"WEEK"|"MONTH"|"ONE_TIME"
 #'     ),
 #'     LicenseManagerReportGeneratorArn = "string",
 #'     LastRunStatus = "string",
@@ -1853,7 +2541,23 @@ licensemanager_get_license_usage <- function(LicenseArn) {
 #'     EnableIntegration = TRUE|FALSE
 #'   ),
 #'   EnableCrossAccountsDiscovery = TRUE|FALSE,
-#'   LicenseManagerResourceShareArn = "string"
+#'   LicenseManagerResourceShareArn = "string",
+#'   CrossRegionDiscoveryHomeRegion = "string",
+#'   CrossRegionDiscoverySourceRegions = list(
+#'     "string"
+#'   ),
+#'   ServiceStatus = list(
+#'     CrossAccountDiscovery = list(
+#'       Message = "string"
+#'     ),
+#'     CrossRegionDiscovery = list(
+#'       Message = list(
+#'         list(
+#'           Status = "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1885,6 +2589,71 @@ licensemanager_get_service_settings <- function() {
   return(response)
 }
 .licensemanager$operations$get_service_settings <- licensemanager_get_service_settings
+
+#' Lists assets for a license asset group
+#'
+#' @description
+#' Lists assets for a license asset group.
+#'
+#' @usage
+#' licensemanager_list_assets_for_license_asset_group(LicenseAssetGroupArn,
+#'   AssetType, MaxResults, NextToken)
+#'
+#' @param LicenseAssetGroupArn &#91;required&#93; Amazon Resource Name (ARN) of the license asset group.
+#' @param AssetType &#91;required&#93; Asset type. The possible values are `Instance` | `License` |
+#' `LicenseConfiguration`.
+#' @param MaxResults Maximum number of results to return in a single call.
+#' @param NextToken Token for the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Assets = list(
+#'     list(
+#'       AssetArn = "string",
+#'       LatestAssetDiscoveryTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_assets_for_license_asset_group(
+#'   LicenseAssetGroupArn = "string",
+#'   AssetType = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_list_assets_for_license_asset_group
+#'
+#' @aliases licensemanager_list_assets_for_license_asset_group
+licensemanager_list_assets_for_license_asset_group <- function(LicenseAssetGroupArn, AssetType, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAssetsForLicenseAssetGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$list_assets_for_license_asset_group_input(LicenseAssetGroupArn = LicenseAssetGroupArn, AssetType = AssetType, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .licensemanager$list_assets_for_license_asset_group_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$list_assets_for_license_asset_group <- licensemanager_list_assets_for_license_asset_group
 
 #' Lists the resource associations for the specified license configuration
 #'
@@ -2122,6 +2891,309 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 }
 .licensemanager$operations$list_failures_for_license_configuration_operations <- licensemanager_list_failures_for_license_configuration_operations
 
+#' Lists license asset groups
+#'
+#' @description
+#' Lists license asset groups.
+#'
+#' @usage
+#' licensemanager_list_license_asset_groups(Filters, MaxResults, NextToken)
+#'
+#' @param Filters Filters to scope the results. Following filters are supported
+#' 
+#' -   `LicenseAssetRulesetArn`
+#' @param MaxResults Maximum number of results to return in a single call.
+#' @param NextToken Token for the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseAssetGroups = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string",
+#'       LicenseAssetGroupConfigurations = list(
+#'         list(
+#'           UsageDimension = "string"
+#'         )
+#'       ),
+#'       AssociatedLicenseAssetRulesetARNs = list(
+#'         "string"
+#'       ),
+#'       Properties = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       LicenseAssetGroupArn = "string",
+#'       Status = "ACTIVE"|"DISABLED"|"DELETED",
+#'       StatusMessage = "string",
+#'       LatestUsageAnalysisTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LatestResourceDiscoveryTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_license_asset_groups(
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_list_license_asset_groups
+#'
+#' @aliases licensemanager_list_license_asset_groups
+licensemanager_list_license_asset_groups <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListLicenseAssetGroups",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$list_license_asset_groups_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .licensemanager$list_license_asset_groups_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$list_license_asset_groups <- licensemanager_list_license_asset_groups
+
+#' Lists license asset rulesets
+#'
+#' @description
+#' Lists license asset rulesets.
+#'
+#' @usage
+#' licensemanager_list_license_asset_rulesets(Filters,
+#'   ShowAWSManagedLicenseAssetRulesets, MaxResults, NextToken)
+#'
+#' @param Filters Filters to scope the results. Following filters are supported
+#' 
+#' -   `Name`
+#' @param ShowAWSManagedLicenseAssetRulesets Specifies whether to show License Manager managed license asset
+#' rulesets.
+#' @param MaxResults Maximum number of results to return in a single call.
+#' @param NextToken Token for the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseAssetRulesets = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string",
+#'       Rules = list(
+#'         list(
+#'           RuleStatement = list(
+#'             LicenseConfigurationRuleStatement = list(
+#'               AndRuleStatement = list(
+#'                 MatchingRuleStatements = list(
+#'                   list(
+#'                     KeyToMatch = "string",
+#'                     Constraint = "string",
+#'                     ValueToMatch = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 ScriptRuleStatements = list(
+#'                   list(
+#'                     KeyToMatch = "string",
+#'                     Script = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               OrRuleStatement = list(
+#'                 MatchingRuleStatements = list(
+#'                   list(
+#'                     KeyToMatch = "string",
+#'                     Constraint = "string",
+#'                     ValueToMatch = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 ScriptRuleStatements = list(
+#'                   list(
+#'                     KeyToMatch = "string",
+#'                     Script = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               MatchingRuleStatement = list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             LicenseRuleStatement = list(
+#'               AndRuleStatement = list(
+#'                 MatchingRuleStatements = list(
+#'                   list(
+#'                     KeyToMatch = "string",
+#'                     Constraint = "string",
+#'                     ValueToMatch = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 ScriptRuleStatements = list(
+#'                   list(
+#'                     KeyToMatch = "string",
+#'                     Script = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               OrRuleStatement = list(
+#'                 MatchingRuleStatements = list(
+#'                   list(
+#'                     KeyToMatch = "string",
+#'                     Constraint = "string",
+#'                     ValueToMatch = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 ScriptRuleStatements = list(
+#'                   list(
+#'                     KeyToMatch = "string",
+#'                     Script = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               MatchingRuleStatement = list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             InstanceRuleStatement = list(
+#'               AndRuleStatement = list(
+#'                 MatchingRuleStatements = list(
+#'                   list(
+#'                     KeyToMatch = "string",
+#'                     Constraint = "string",
+#'                     ValueToMatch = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 ScriptRuleStatements = list(
+#'                   list(
+#'                     KeyToMatch = "string",
+#'                     Script = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               OrRuleStatement = list(
+#'                 MatchingRuleStatements = list(
+#'                   list(
+#'                     KeyToMatch = "string",
+#'                     Constraint = "string",
+#'                     ValueToMatch = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 ScriptRuleStatements = list(
+#'                   list(
+#'                     KeyToMatch = "string",
+#'                     Script = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               MatchingRuleStatement = list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               ScriptRuleStatement = list(
+#'                 KeyToMatch = "string",
+#'                 Script = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       LicenseAssetRulesetArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_license_asset_rulesets(
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ShowAWSManagedLicenseAssetRulesets = TRUE|FALSE,
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_list_license_asset_rulesets
+#'
+#' @aliases licensemanager_list_license_asset_rulesets
+licensemanager_list_license_asset_rulesets <- function(Filters = NULL, ShowAWSManagedLicenseAssetRulesets = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListLicenseAssetRulesets",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$list_license_asset_rulesets_input(Filters = Filters, ShowAWSManagedLicenseAssetRulesets = ShowAWSManagedLicenseAssetRulesets, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .licensemanager$list_license_asset_rulesets_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$list_license_asset_rulesets <- licensemanager_list_license_asset_rulesets
+
 #' Lists the license configurations for your account
 #'
 #' @description
@@ -2197,7 +3269,8 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 #'         LastRunTime = as.POSIXct(
 #'           "2015-01-01"
 #'         )
-#'       )
+#'       ),
+#'       LicenseExpiry = 123
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2247,6 +3320,121 @@ licensemanager_list_license_configurations <- function(LicenseConfigurationArns 
 }
 .licensemanager$operations$list_license_configurations <- licensemanager_list_license_configurations
 
+#' Lists license configurations for an organization
+#'
+#' @description
+#' Lists license configurations for an organization.
+#'
+#' @usage
+#' licensemanager_list_license_configurations_for_organization(
+#'   LicenseConfigurationArns, MaxResults, NextToken, Filters)
+#'
+#' @param LicenseConfigurationArns License configuration ARNs.
+#' @param MaxResults Maximum number of results to return in a single call.
+#' @param NextToken Token for the next set of results.
+#' @param Filters Filters to scope the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseConfigurations = list(
+#'     list(
+#'       LicenseConfigurationId = "string",
+#'       LicenseConfigurationArn = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       LicenseCountingType = "vCPU"|"Instance"|"Core"|"Socket",
+#'       LicenseRules = list(
+#'         "string"
+#'       ),
+#'       LicenseCount = 123,
+#'       LicenseCountHardLimit = TRUE|FALSE,
+#'       DisassociateWhenNotFound = TRUE|FALSE,
+#'       ConsumedLicenses = 123,
+#'       Status = "string",
+#'       OwnerAccountId = "string",
+#'       ConsumedLicenseSummaryList = list(
+#'         list(
+#'           ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+#'           ConsumedLicenses = 123
+#'         )
+#'       ),
+#'       ManagedResourceSummaryList = list(
+#'         list(
+#'           ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+#'           AssociationCount = 123
+#'         )
+#'       ),
+#'       ProductInformationList = list(
+#'         list(
+#'           ResourceType = "string",
+#'           ProductInformationFilterList = list(
+#'             list(
+#'               ProductInformationFilterName = "string",
+#'               ProductInformationFilterValue = list(
+#'                 "string"
+#'               ),
+#'               ProductInformationFilterComparator = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       AutomatedDiscoveryInformation = list(
+#'         LastRunTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       LicenseExpiry = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_license_configurations_for_organization(
+#'   LicenseConfigurationArns = list(
+#'     "string"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_list_license_configurations_for_organization
+#'
+#' @aliases licensemanager_list_license_configurations_for_organization
+licensemanager_list_license_configurations_for_organization <- function(LicenseConfigurationArns = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListLicenseConfigurationsForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$list_license_configurations_for_organization_input(LicenseConfigurationArns = LicenseConfigurationArns, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  output <- .licensemanager$list_license_configurations_for_organization_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$list_license_configurations_for_organization <- licensemanager_list_license_configurations_for_organization
+
 #' Lists the license type conversion tasks for your account
 #'
 #' @description
@@ -2270,10 +3458,22 @@ licensemanager_list_license_configurations <- function(LicenseConfigurationArns 
 #'       LicenseConversionTaskId = "string",
 #'       ResourceArn = "string",
 #'       SourceLicenseContext = list(
-#'         UsageOperation = "string"
+#'         UsageOperation = "string",
+#'         ProductCodes = list(
+#'           list(
+#'             ProductCodeId = "string",
+#'             ProductCodeType = "marketplace"
+#'           )
+#'         )
 #'       ),
 #'       DestinationLicenseContext = list(
-#'         UsageOperation = "string"
+#'         UsageOperation = "string",
+#'         ProductCodes = list(
+#'           list(
+#'             ProductCodeId = "string",
+#'             ProductCodeType = "marketplace"
+#'           )
+#'         )
 #'       ),
 #'       Status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
 #'       StatusMessage = "string",
@@ -2355,16 +3555,25 @@ licensemanager_list_license_conversion_tasks <- function(NextToken = NULL, MaxRe
 #'     list(
 #'       ReportGeneratorName = "string",
 #'       ReportType = list(
-#'         "LicenseConfigurationSummaryReport"|"LicenseConfigurationUsageReport"
+#'         "LicenseConfigurationSummaryReport"|"LicenseConfigurationUsageReport"|"LicenseAssetGroupUsageReport"
 #'       ),
 #'       ReportContext = list(
 #'         licenseConfigurationArns = list(
 #'           "string"
+#'         ),
+#'         licenseAssetGroupArns = list(
+#'           "string"
+#'         ),
+#'         reportStartDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         reportEndDate = as.POSIXct(
+#'           "2015-01-01"
 #'         )
 #'       ),
 #'       ReportFrequency = list(
 #'         value = 123,
-#'         period = "DAY"|"WEEK"|"MONTH"
+#'         period = "DAY"|"WEEK"|"MONTH"|"ONE_TIME"
 #'       ),
 #'       LicenseManagerReportGeneratorArn = "string",
 #'       LastRunStatus = "string",
@@ -3190,7 +4399,15 @@ licensemanager_list_received_licenses_for_organization <- function(Filters = NUL
 #'       ResourceArn = "string",
 #'       Platform = "string",
 #'       PlatformVersion = "string",
-#'       ResourceOwningAccountId = "string"
+#'       ResourceOwningAccountId = "string",
+#'       MarketplaceProductCodes = list(
+#'         "string"
+#'       ),
+#'       UsageOperation = "string",
+#'       AmiId = "string",
+#'       HostId = "string",
+#'       Region = "string",
+#'       InstanceType = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3632,6 +4849,282 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .licensemanager$operations$untag_resource <- licensemanager_untag_resource
 
+#' Updates a license asset group
+#'
+#' @description
+#' Updates a license asset group.
+#'
+#' @usage
+#' licensemanager_update_license_asset_group(Name, Description,
+#'   LicenseAssetGroupConfigurations, AssociatedLicenseAssetRulesetARNs,
+#'   Properties, LicenseAssetGroupArn, Status, ClientToken)
+#'
+#' @param Name License asset group name.
+#' @param Description License asset group description.
+#' @param LicenseAssetGroupConfigurations License asset group configurations.
+#' @param AssociatedLicenseAssetRulesetARNs &#91;required&#93; ARNs of associated license asset rulesets.
+#' @param Properties License asset group properties.
+#' @param LicenseAssetGroupArn &#91;required&#93; Amazon Resource Name (ARN) of the license asset group.
+#' @param Status License asset group status. The possible values are `ACTIVE` |
+#' `DISABLED`.
+#' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseAssetGroupArn = "string",
+#'   Status = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_license_asset_group(
+#'   Name = "string",
+#'   Description = "string",
+#'   LicenseAssetGroupConfigurations = list(
+#'     list(
+#'       UsageDimension = "string"
+#'     )
+#'   ),
+#'   AssociatedLicenseAssetRulesetARNs = list(
+#'     "string"
+#'   ),
+#'   Properties = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   LicenseAssetGroupArn = "string",
+#'   Status = "ACTIVE"|"DISABLED"|"DELETED",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_update_license_asset_group
+#'
+#' @aliases licensemanager_update_license_asset_group
+licensemanager_update_license_asset_group <- function(Name = NULL, Description = NULL, LicenseAssetGroupConfigurations = NULL, AssociatedLicenseAssetRulesetARNs, Properties = NULL, LicenseAssetGroupArn, Status = NULL, ClientToken) {
+  op <- new_operation(
+    name = "UpdateLicenseAssetGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$update_license_asset_group_input(Name = Name, Description = Description, LicenseAssetGroupConfigurations = LicenseAssetGroupConfigurations, AssociatedLicenseAssetRulesetARNs = AssociatedLicenseAssetRulesetARNs, Properties = Properties, LicenseAssetGroupArn = LicenseAssetGroupArn, Status = Status, ClientToken = ClientToken)
+  output <- .licensemanager$update_license_asset_group_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$update_license_asset_group <- licensemanager_update_license_asset_group
+
+#' Updates a license asset ruleset
+#'
+#' @description
+#' Updates a license asset ruleset.
+#'
+#' @usage
+#' licensemanager_update_license_asset_ruleset(Name, Description, Rules,
+#'   LicenseAssetRulesetArn, ClientToken)
+#'
+#' @param Name License asset ruleset name.
+#' @param Description License asset ruleset description.
+#' @param Rules &#91;required&#93; License asset rules.
+#' @param LicenseAssetRulesetArn &#91;required&#93; Amazon Resource Name (ARN) of the license asset ruleset.
+#' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseAssetRulesetArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_license_asset_ruleset(
+#'   Name = "string",
+#'   Description = "string",
+#'   Rules = list(
+#'     list(
+#'       RuleStatement = list(
+#'         LicenseConfigurationRuleStatement = list(
+#'           AndRuleStatement = list(
+#'             MatchingRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             ScriptRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Script = "string"
+#'               )
+#'             )
+#'           ),
+#'           OrRuleStatement = list(
+#'             MatchingRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             ScriptRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Script = "string"
+#'               )
+#'             )
+#'           ),
+#'           MatchingRuleStatement = list(
+#'             KeyToMatch = "string",
+#'             Constraint = "string",
+#'             ValueToMatch = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         LicenseRuleStatement = list(
+#'           AndRuleStatement = list(
+#'             MatchingRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             ScriptRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Script = "string"
+#'               )
+#'             )
+#'           ),
+#'           OrRuleStatement = list(
+#'             MatchingRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             ScriptRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Script = "string"
+#'               )
+#'             )
+#'           ),
+#'           MatchingRuleStatement = list(
+#'             KeyToMatch = "string",
+#'             Constraint = "string",
+#'             ValueToMatch = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         InstanceRuleStatement = list(
+#'           AndRuleStatement = list(
+#'             MatchingRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             ScriptRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Script = "string"
+#'               )
+#'             )
+#'           ),
+#'           OrRuleStatement = list(
+#'             MatchingRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Constraint = "string",
+#'                 ValueToMatch = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             ScriptRuleStatements = list(
+#'               list(
+#'                 KeyToMatch = "string",
+#'                 Script = "string"
+#'               )
+#'             )
+#'           ),
+#'           MatchingRuleStatement = list(
+#'             KeyToMatch = "string",
+#'             Constraint = "string",
+#'             ValueToMatch = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ScriptRuleStatement = list(
+#'             KeyToMatch = "string",
+#'             Script = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   LicenseAssetRulesetArn = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_update_license_asset_ruleset
+#'
+#' @aliases licensemanager_update_license_asset_ruleset
+licensemanager_update_license_asset_ruleset <- function(Name = NULL, Description = NULL, Rules, LicenseAssetRulesetArn, ClientToken) {
+  op <- new_operation(
+    name = "UpdateLicenseAssetRuleset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$update_license_asset_ruleset_input(Name = Name, Description = Description, Rules = Rules, LicenseAssetRulesetArn = LicenseAssetRulesetArn, ClientToken = ClientToken)
+  output <- .licensemanager$update_license_asset_ruleset_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$update_license_asset_ruleset <- licensemanager_update_license_asset_ruleset
+
 #' Modifies the attributes of an existing license configuration
 #'
 #' @description
@@ -3641,7 +5134,7 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
 #' licensemanager_update_license_configuration(LicenseConfigurationArn,
 #'   LicenseConfigurationStatus, LicenseRules, LicenseCount,
 #'   LicenseCountHardLimit, Name, Description, ProductInformationList,
-#'   DisassociateWhenNotFound)
+#'   DisassociateWhenNotFound, LicenseExpiry)
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #' @param LicenseConfigurationStatus New status of the license configuration.
@@ -3653,6 +5146,7 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param Description New description of the license configuration.
 #' @param ProductInformationList New product information.
 #' @param DisassociateWhenNotFound When true, disassociates a resource when software is uninstalled.
+#' @param LicenseExpiry License configuration expiry time.
 #'
 #' @return
 #' An empty list.
@@ -3683,7 +5177,8 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
 #'       )
 #'     )
 #'   ),
-#'   DisassociateWhenNotFound = TRUE|FALSE
+#'   DisassociateWhenNotFound = TRUE|FALSE,
+#'   LicenseExpiry = 123
 #' )
 #' ```
 #'
@@ -3692,7 +5187,7 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
 #' @rdname licensemanager_update_license_configuration
 #'
 #' @aliases licensemanager_update_license_configuration
-licensemanager_update_license_configuration <- function(LicenseConfigurationArn, LicenseConfigurationStatus = NULL, LicenseRules = NULL, LicenseCount = NULL, LicenseCountHardLimit = NULL, Name = NULL, Description = NULL, ProductInformationList = NULL, DisassociateWhenNotFound = NULL) {
+licensemanager_update_license_configuration <- function(LicenseConfigurationArn, LicenseConfigurationStatus = NULL, LicenseRules = NULL, LicenseCount = NULL, LicenseCountHardLimit = NULL, Name = NULL, Description = NULL, ProductInformationList = NULL, DisassociateWhenNotFound = NULL, LicenseExpiry = NULL) {
   op <- new_operation(
     name = "UpdateLicenseConfiguration",
     http_method = "POST",
@@ -3701,7 +5196,7 @@ licensemanager_update_license_configuration <- function(LicenseConfigurationArn,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanager$update_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn, LicenseConfigurationStatus = LicenseConfigurationStatus, LicenseRules = LicenseRules, LicenseCount = LicenseCount, LicenseCountHardLimit = LicenseCountHardLimit, Name = Name, Description = Description, ProductInformationList = ProductInformationList, DisassociateWhenNotFound = DisassociateWhenNotFound)
+  input <- .licensemanager$update_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn, LicenseConfigurationStatus = LicenseConfigurationStatus, LicenseRules = LicenseRules, LicenseCount = LicenseCount, LicenseCountHardLimit = LicenseCountHardLimit, Name = Name, Description = Description, ProductInformationList = ProductInformationList, DisassociateWhenNotFound = DisassociateWhenNotFound, LicenseExpiry = LicenseExpiry)
   output <- .licensemanager$update_license_configuration_output()
   config <- get_config()
   svc <- .licensemanager$service(config, op)
@@ -3748,16 +5243,25 @@ licensemanager_update_license_configuration <- function(LicenseConfigurationArn,
 #'   LicenseManagerReportGeneratorArn = "string",
 #'   ReportGeneratorName = "string",
 #'   Type = list(
-#'     "LicenseConfigurationSummaryReport"|"LicenseConfigurationUsageReport"
+#'     "LicenseConfigurationSummaryReport"|"LicenseConfigurationUsageReport"|"LicenseAssetGroupUsageReport"
 #'   ),
 #'   ReportContext = list(
 #'     licenseConfigurationArns = list(
 #'       "string"
+#'     ),
+#'     licenseAssetGroupArns = list(
+#'       "string"
+#'     ),
+#'     reportStartDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     reportEndDate = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   ),
 #'   ReportFrequency = list(
 #'     value = 123,
-#'     period = "DAY"|"WEEK"|"MONTH"
+#'     period = "DAY"|"WEEK"|"MONTH"|"ONE_TIME"
 #'   ),
 #'   ClientToken = "string",
 #'   Description = "string"
@@ -3861,7 +5365,8 @@ licensemanager_update_license_specifications_for_resource <- function(ResourceAr
 #'
 #' @usage
 #' licensemanager_update_service_settings(S3BucketArn, SnsTopicArn,
-#'   OrganizationConfiguration, EnableCrossAccountsDiscovery)
+#'   OrganizationConfiguration, EnableCrossAccountsDiscovery,
+#'   EnabledDiscoverySourceRegions)
 #'
 #' @param S3BucketArn Amazon Resource Name (ARN) of the Amazon S3 bucket where the License
 #' Manager information is stored.
@@ -3869,6 +5374,7 @@ licensemanager_update_license_specifications_for_resource <- function(ResourceAr
 #' Manager alerts.
 #' @param OrganizationConfiguration Enables integration with Organizations for cross-account discovery.
 #' @param EnableCrossAccountsDiscovery Activates cross-account discovery.
+#' @param EnabledDiscoverySourceRegions Cross region discovery enabled source regions.
 #'
 #' @return
 #' An empty list.
@@ -3881,7 +5387,10 @@ licensemanager_update_license_specifications_for_resource <- function(ResourceAr
 #'   OrganizationConfiguration = list(
 #'     EnableIntegration = TRUE|FALSE
 #'   ),
-#'   EnableCrossAccountsDiscovery = TRUE|FALSE
+#'   EnableCrossAccountsDiscovery = TRUE|FALSE,
+#'   EnabledDiscoverySourceRegions = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -3890,7 +5399,7 @@ licensemanager_update_license_specifications_for_resource <- function(ResourceAr
 #' @rdname licensemanager_update_service_settings
 #'
 #' @aliases licensemanager_update_service_settings
-licensemanager_update_service_settings <- function(S3BucketArn = NULL, SnsTopicArn = NULL, OrganizationConfiguration = NULL, EnableCrossAccountsDiscovery = NULL) {
+licensemanager_update_service_settings <- function(S3BucketArn = NULL, SnsTopicArn = NULL, OrganizationConfiguration = NULL, EnableCrossAccountsDiscovery = NULL, EnabledDiscoverySourceRegions = NULL) {
   op <- new_operation(
     name = "UpdateServiceSettings",
     http_method = "POST",
@@ -3899,7 +5408,7 @@ licensemanager_update_service_settings <- function(S3BucketArn = NULL, SnsTopicA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanager$update_service_settings_input(S3BucketArn = S3BucketArn, SnsTopicArn = SnsTopicArn, OrganizationConfiguration = OrganizationConfiguration, EnableCrossAccountsDiscovery = EnableCrossAccountsDiscovery)
+  input <- .licensemanager$update_service_settings_input(S3BucketArn = S3BucketArn, SnsTopicArn = SnsTopicArn, OrganizationConfiguration = OrganizationConfiguration, EnableCrossAccountsDiscovery = EnableCrossAccountsDiscovery, EnabledDiscoverySourceRegions = EnabledDiscoverySourceRegions)
   output <- .licensemanager$update_service_settings_output()
   config <- get_config()
   svc <- .licensemanager$service(config, op)

@@ -9,7 +9,8 @@ datazone_start_metadata_generation_run(
   domainIdentifier,
   owningProjectIdentifier,
   target,
-  type
+  type = NULL,
+  types = NULL
 )
 }
 \arguments{
@@ -24,7 +25,9 @@ metadata generation run.}
 
 \item{target}{[required] The asset for which you want to start a metadata generation run.}
 
-\item{type}{[required] The type of the metadata generation run.}
+\item{type}{The type of the metadata generation run.}
+
+\item{types}{The types of the metadata generation run.}
 }
 \description{
 Starts the metadata generation run.

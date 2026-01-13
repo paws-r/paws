@@ -19,7 +19,7 @@ powered by AppConfig}. Client-side evaluation allows your application to
 assign variations to user sessions locally instead of by calling the
 \code{\link[=cloudwatchevidently_evaluate_feature]{evaluate_feature}} operation.
 This mitigates the latency and availability risks that come with an API
-call. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-client-side-evaluation.html}{Client-side evaluation - powered by AppConfig.}
+call. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/}{Client-side evaluation - powered by AppConfig.}
 
 This parameter is a structure that contains information about the
 AppConfig application and environment that will be used as for

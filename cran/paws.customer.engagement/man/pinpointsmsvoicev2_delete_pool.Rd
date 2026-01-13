@@ -11,8 +11,8 @@ pinpointsmsvoicev2_delete_pool(PoolId)
 \code{\link[=pinpointsmsvoicev2_describe_pools]{describe_pools}} to find the values
 for PoolId and PoolArn .
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 }
 \description{
 Deletes an existing pool. Deleting a pool disassociates all origination identities from that pool.

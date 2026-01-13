@@ -7,6 +7,7 @@
 sagemaker_create_training_plan(
   TrainingPlanName,
   TrainingPlanOfferingId,
+  SpareInstanceCountPerUltraServer = NULL,
   Tags = NULL
 )
 }
@@ -15,6 +16,9 @@ sagemaker_create_training_plan(
 
 \item{TrainingPlanOfferingId}{[required] The unique identifier of the training plan offering to use for creating
 this plan.}
+
+\item{SpareInstanceCountPerUltraServer}{Number of spare instances to reserve per UltraServer for enhanced
+resiliency. Default is 1.}
 
 \item{Tags}{An array of key-value pairs to apply to this training plan.}
 }

@@ -58,11 +58,24 @@ s3tables_create_namespace <- function(tableBucketARN, namespace) {
 #' maintenance principal access to your KMS key. For more information, see
 #' [Permissions requirements for S3 Tables SSE-KMS
 #' encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-kms-permissions.html).
+#' @param storageClassConfiguration The storage class configuration for the table. If not specified, the
+#' table inherits the storage class configuration from its table bucket.
+#' Specify this parameter to override the bucket's default storage class
+#' for this table.
+#' @param tags A map of user-defined tags that you would like to apply to the table
+#' that you are creating. A tag is a key-value pair that you apply to your
+#' resources. Tags can help you organize, track costs for, and control
+#' access to resources. For more information, see [Tagging for cost
+#' allocation or attribute-based access control
+#' (ABAC)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html).
+#' 
+#' You must have the `s3tables:TagResource` permission in addition to
+#' `s3tables:CreateTable` permission to create a table with tags.
 #'
 #' @keywords internal
 #'
 #' @rdname s3tables_create_table
-s3tables_create_table <- function(tableBucketARN, namespace, name, format, metadata = NULL, encryptionConfiguration = NULL) {
+s3tables_create_table <- function(tableBucketARN, namespace, name, format, metadata = NULL, encryptionConfiguration = NULL, storageClassConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "PUT",
@@ -71,7 +84,7 @@ s3tables_create_table <- function(tableBucketARN, namespace, name, format, metad
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3tables$create_table_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name, format = format, metadata = metadata, encryptionConfiguration = encryptionConfiguration)
+  input <- .s3tables$create_table_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name, format = format, metadata = metadata, encryptionConfiguration = encryptionConfiguration, storageClassConfiguration = storageClassConfiguration, tags = tags)
   output <- .s3tables$create_table_output()
   config <- get_config()
   svc <- .s3tables$service(config, op)
@@ -94,11 +107,25 @@ s3tables_create_table <- function(tableBucketARN, namespace, name, format, metad
 #' applied to all tables created in this bucket unless overridden at the
 #' table level. The configuration includes the encryption algorithm and, if
 #' using SSE-KMS, the KMS key to use.
+#' @param storageClassConfiguration The default storage class configuration for the table bucket. This
+#' configuration will be applied to all new tables created in this bucket
+#' unless overridden at the table level. If not specified, the service
+#' default storage class will be used.
+#' @param tags A map of user-defined tags that you would like to apply to the table
+#' bucket that you are creating. A tag is a key-value pair that you apply
+#' to your resources. Tags can help you organize and control access to
+#' resources. For more information, see [Tagging for cost allocation or
+#' attribute-based access control
+#' (ABAC)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html).
+#' 
+#' You must have the `s3tables:TagResource` permission in addition to
+#' `s3tables:CreateTableBucket` permisson to create a table bucket with
+#' tags.
 #'
 #' @keywords internal
 #'
 #' @rdname s3tables_create_table_bucket
-s3tables_create_table_bucket <- function(name, encryptionConfiguration = NULL) {
+s3tables_create_table_bucket <- function(name, encryptionConfiguration = NULL, storageClassConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateTableBucket",
     http_method = "PUT",
@@ -107,7 +134,7 @@ s3tables_create_table_bucket <- function(name, encryptionConfiguration = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3tables$create_table_bucket_input(name = name, encryptionConfiguration = encryptionConfiguration)
+  input <- .s3tables$create_table_bucket_input(name = name, encryptionConfiguration = encryptionConfiguration, storageClassConfiguration = storageClassConfiguration, tags = tags)
   output <- .s3tables$create_table_bucket_output()
   config <- get_config()
   svc <- .s3tables$service(config, op)
@@ -247,6 +274,37 @@ s3tables_delete_table_bucket_encryption <- function(tableBucketARN) {
 }
 .s3tables$operations$delete_table_bucket_encryption <- s3tables_delete_table_bucket_encryption
 
+#' Deletes the metrics configuration for a table bucket
+#'
+#' @description
+#' Deletes the metrics configuration for a table bucket.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_delete_table_bucket_metrics_configuration/](https://www.paws-r-sdk.com/docs/s3tables_delete_table_bucket_metrics_configuration/) for full documentation.
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_delete_table_bucket_metrics_configuration
+s3tables_delete_table_bucket_metrics_configuration <- function(tableBucketARN) {
+  op <- new_operation(
+    name = "DeleteTableBucketMetricsConfiguration",
+    http_method = "DELETE",
+    http_path = "/buckets/{tableBucketARN}/metrics",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$delete_table_bucket_metrics_configuration_input(tableBucketARN = tableBucketARN)
+  output <- .s3tables$delete_table_bucket_metrics_configuration_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$delete_table_bucket_metrics_configuration <- s3tables_delete_table_bucket_metrics_configuration
+
 #' Deletes a table bucket policy
 #'
 #' @description
@@ -277,6 +335,40 @@ s3tables_delete_table_bucket_policy <- function(tableBucketARN) {
   return(response)
 }
 .s3tables$operations$delete_table_bucket_policy <- s3tables_delete_table_bucket_policy
+
+#' Deletes the replication configuration for a table bucket
+#'
+#' @description
+#' Deletes the replication configuration for a table bucket. After deletion, new table updates will no longer be replicated to destination buckets, though existing replicated tables will remain in destination buckets.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_delete_table_bucket_replication/](https://www.paws-r-sdk.com/docs/s3tables_delete_table_bucket_replication/) for full documentation.
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket.
+#' @param versionToken A version token from a previous GetTableBucketReplication call. Use this
+#' token to ensure you're deleting the expected version of the
+#' configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_delete_table_bucket_replication
+s3tables_delete_table_bucket_replication <- function(tableBucketARN, versionToken = NULL) {
+  op <- new_operation(
+    name = "DeleteTableBucketReplication",
+    http_method = "DELETE",
+    http_path = "/table-bucket-replication",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$delete_table_bucket_replication_input(tableBucketARN = tableBucketARN, versionToken = versionToken)
+  output <- .s3tables$delete_table_bucket_replication_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$delete_table_bucket_replication <- s3tables_delete_table_bucket_replication
 
 #' Deletes a table policy
 #'
@@ -311,6 +403,39 @@ s3tables_delete_table_policy <- function(tableBucketARN, namespace, name) {
   return(response)
 }
 .s3tables$operations$delete_table_policy <- s3tables_delete_table_policy
+
+#' Deletes the replication configuration for a specific table
+#'
+#' @description
+#' Deletes the replication configuration for a specific table. After deletion, new updates to this table will no longer be replicated to destination tables, though existing replicated copies will remain in destination buckets.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_delete_table_replication/](https://www.paws-r-sdk.com/docs/s3tables_delete_table_replication/) for full documentation.
+#'
+#' @param tableArn &#91;required&#93; The Amazon Resource Name (ARN) of the table.
+#' @param versionToken &#91;required&#93; A version token from a previous GetTableReplication call. Use this token
+#' to ensure you're deleting the expected version of the configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_delete_table_replication
+s3tables_delete_table_replication <- function(tableArn, versionToken) {
+  op <- new_operation(
+    name = "DeleteTableReplication",
+    http_method = "DELETE",
+    http_path = "/table-replication",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$delete_table_replication_input(tableArn = tableArn, versionToken = versionToken)
+  output <- .s3tables$delete_table_replication_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$delete_table_replication <- s3tables_delete_table_replication
 
 #' Gets details about a namespace
 #'
@@ -351,24 +476,25 @@ s3tables_get_namespace <- function(tableBucketARN, namespace) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3tables_get_table/](https://www.paws-r-sdk.com/docs/s3tables_get_table/) for full documentation.
 #'
-#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket associated with the
+#' @param tableBucketARN The Amazon Resource Name (ARN) of the table bucket associated with the
 #' table.
-#' @param namespace &#91;required&#93; The name of the namespace the table is associated with.
-#' @param name &#91;required&#93; The name of the table.
+#' @param namespace The name of the namespace the table is associated with.
+#' @param name The name of the table.
+#' @param tableArn The Amazon Resource Name (ARN) of the table.
 #'
 #' @keywords internal
 #'
 #' @rdname s3tables_get_table
-s3tables_get_table <- function(tableBucketARN, namespace, name) {
+s3tables_get_table <- function(tableBucketARN = NULL, namespace = NULL, name = NULL, tableArn = NULL) {
   op <- new_operation(
     name = "GetTable",
     http_method = "GET",
-    http_path = "/tables/{tableBucketARN}/{namespace}/{name}",
+    http_path = "/get-table",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3tables$get_table_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name)
+  input <- .s3tables$get_table_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name, tableArn = tableArn)
   output <- .s3tables$get_table_output()
   config <- get_config()
   svc <- .s3tables$service(config, op)
@@ -472,6 +598,37 @@ s3tables_get_table_bucket_maintenance_configuration <- function(tableBucketARN) 
 }
 .s3tables$operations$get_table_bucket_maintenance_configuration <- s3tables_get_table_bucket_maintenance_configuration
 
+#' Gets the metrics configuration for a table bucket
+#'
+#' @description
+#' Gets the metrics configuration for a table bucket.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_get_table_bucket_metrics_configuration/](https://www.paws-r-sdk.com/docs/s3tables_get_table_bucket_metrics_configuration/) for full documentation.
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_get_table_bucket_metrics_configuration
+s3tables_get_table_bucket_metrics_configuration <- function(tableBucketARN) {
+  op <- new_operation(
+    name = "GetTableBucketMetricsConfiguration",
+    http_method = "GET",
+    http_path = "/buckets/{tableBucketARN}/metrics",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$get_table_bucket_metrics_configuration_input(tableBucketARN = tableBucketARN)
+  output <- .s3tables$get_table_bucket_metrics_configuration_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$get_table_bucket_metrics_configuration <- s3tables_get_table_bucket_metrics_configuration
+
 #' Gets details about a table bucket policy
 #'
 #' @description
@@ -502,6 +659,68 @@ s3tables_get_table_bucket_policy <- function(tableBucketARN) {
   return(response)
 }
 .s3tables$operations$get_table_bucket_policy <- s3tables_get_table_bucket_policy
+
+#' Retrieves the replication configuration for a table bucket
+#'
+#' @description
+#' Retrieves the replication configuration for a table bucket.This operation returns the IAM role, `versionToken`, and replication rules that define how tables in this bucket are replicated to other buckets.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_get_table_bucket_replication/](https://www.paws-r-sdk.com/docs/s3tables_get_table_bucket_replication/) for full documentation.
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_get_table_bucket_replication
+s3tables_get_table_bucket_replication <- function(tableBucketARN) {
+  op <- new_operation(
+    name = "GetTableBucketReplication",
+    http_method = "GET",
+    http_path = "/table-bucket-replication",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$get_table_bucket_replication_input(tableBucketARN = tableBucketARN)
+  output <- .s3tables$get_table_bucket_replication_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$get_table_bucket_replication <- s3tables_get_table_bucket_replication
+
+#' Retrieves the storage class configuration for a specific table
+#'
+#' @description
+#' Retrieves the storage class configuration for a specific table. This allows you to view the storage class settings that apply to an individual table, which may differ from the table bucket's default configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_get_table_bucket_storage_class/](https://www.paws-r-sdk.com/docs/s3tables_get_table_bucket_storage_class/) for full documentation.
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_get_table_bucket_storage_class
+s3tables_get_table_bucket_storage_class <- function(tableBucketARN) {
+  op <- new_operation(
+    name = "GetTableBucketStorageClass",
+    http_method = "GET",
+    http_path = "/buckets/{tableBucketARN}/storage-class",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$get_table_bucket_storage_class_input(tableBucketARN = tableBucketARN)
+  output <- .s3tables$get_table_bucket_storage_class_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$get_table_bucket_storage_class <- s3tables_get_table_bucket_storage_class
 
 #' Gets the encryption configuration for a table
 #'
@@ -578,9 +797,8 @@ s3tables_get_table_maintenance_configuration <- function(tableBucketARN, namespa
 #'
 #' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket.
 #' @param namespace &#91;required&#93; The name of the namespace the table is associated with.
-#' 
-#'     </p> 
-#' @param name &#91;required&#93; The name of the maintenance job.
+#' @param name &#91;required&#93; The name of the table containing the maintenance job status you want to
+#' check.
 #'
 #' @keywords internal
 #'
@@ -671,6 +889,167 @@ s3tables_get_table_policy <- function(tableBucketARN, namespace, name) {
 }
 .s3tables$operations$get_table_policy <- s3tables_get_table_policy
 
+#' Retrieves the expiration configuration settings for records in a table,
+#' and the status of the configuration
+#'
+#' @description
+#' Retrieves the expiration configuration settings for records in a table, and the status of the configuration. If the status of the configuration is `enabled`, records expire and are automatically removed from the table after the specified number of days.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_get_table_record_expiration_configuration/](https://www.paws-r-sdk.com/docs/s3tables_get_table_record_expiration_configuration/) for full documentation.
+#'
+#' @param tableArn &#91;required&#93; The Amazon Resource Name (ARN) of the table.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_get_table_record_expiration_configuration
+s3tables_get_table_record_expiration_configuration <- function(tableArn) {
+  op <- new_operation(
+    name = "GetTableRecordExpirationConfiguration",
+    http_method = "GET",
+    http_path = "/table-record-expiration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$get_table_record_expiration_configuration_input(tableArn = tableArn)
+  output <- .s3tables$get_table_record_expiration_configuration_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$get_table_record_expiration_configuration <- s3tables_get_table_record_expiration_configuration
+
+#' Retrieves the status, metrics, and details of the latest record
+#' expiration job for a table
+#'
+#' @description
+#' Retrieves the status, metrics, and details of the latest record expiration job for a table. This includes when the job ran, and whether it succeeded or failed. If the job ran successfully, this also includes statistics about the records that were removed.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_get_table_record_expiration_job_status/](https://www.paws-r-sdk.com/docs/s3tables_get_table_record_expiration_job_status/) for full documentation.
+#'
+#' @param tableArn &#91;required&#93; The Amazon Resource Name (ARN) of the table.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_get_table_record_expiration_job_status
+s3tables_get_table_record_expiration_job_status <- function(tableArn) {
+  op <- new_operation(
+    name = "GetTableRecordExpirationJobStatus",
+    http_method = "GET",
+    http_path = "/table-record-expiration-job-status",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$get_table_record_expiration_job_status_input(tableArn = tableArn)
+  output <- .s3tables$get_table_record_expiration_job_status_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$get_table_record_expiration_job_status <- s3tables_get_table_record_expiration_job_status
+
+#' Retrieves the replication configuration for a specific table
+#'
+#' @description
+#' Retrieves the replication configuration for a specific table.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_get_table_replication/](https://www.paws-r-sdk.com/docs/s3tables_get_table_replication/) for full documentation.
+#'
+#' @param tableArn &#91;required&#93; The Amazon Resource Name (ARN) of the table.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_get_table_replication
+s3tables_get_table_replication <- function(tableArn) {
+  op <- new_operation(
+    name = "GetTableReplication",
+    http_method = "GET",
+    http_path = "/table-replication",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$get_table_replication_input(tableArn = tableArn)
+  output <- .s3tables$get_table_replication_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$get_table_replication <- s3tables_get_table_replication
+
+#' Retrieves the replication status for a table, including the status of
+#' replication to each destination
+#'
+#' @description
+#' Retrieves the replication status for a table, including the status of replication to each destination. This operation provides visibility into replication health and progress.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_get_table_replication_status/](https://www.paws-r-sdk.com/docs/s3tables_get_table_replication_status/) for full documentation.
+#'
+#' @param tableArn &#91;required&#93; The Amazon Resource Name (ARN) of the table.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_get_table_replication_status
+s3tables_get_table_replication_status <- function(tableArn) {
+  op <- new_operation(
+    name = "GetTableReplicationStatus",
+    http_method = "GET",
+    http_path = "/replication-status",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$get_table_replication_status_input(tableArn = tableArn)
+  output <- .s3tables$get_table_replication_status_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$get_table_replication_status <- s3tables_get_table_replication_status
+
+#' Retrieves the storage class configuration for a specific table
+#'
+#' @description
+#' Retrieves the storage class configuration for a specific table. This allows you to view the storage class settings that apply to an individual table, which may differ from the table bucket's default configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_get_table_storage_class/](https://www.paws-r-sdk.com/docs/s3tables_get_table_storage_class/) for full documentation.
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket that contains the
+#' table.
+#' @param namespace &#91;required&#93; The namespace associated with the table.
+#' @param name &#91;required&#93; The name of the table.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_get_table_storage_class
+s3tables_get_table_storage_class <- function(tableBucketARN, namespace, name) {
+  op <- new_operation(
+    name = "GetTableStorageClass",
+    http_method = "GET",
+    http_path = "/tables/{tableBucketARN}/{namespace}/{name}/storage-class",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$get_table_storage_class_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name)
+  output <- .s3tables$get_table_storage_class_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$get_table_storage_class <- s3tables_get_table_storage_class
+
 #' Lists the namespaces within a table bucket
 #'
 #' @description
@@ -721,11 +1100,12 @@ s3tables_list_namespaces <- function(tableBucketARN, prefix = NULL, continuation
 #' and is not a real key. You can use this `ContinuationToken` for
 #' pagination of the list results.
 #' @param maxBuckets The maximum number of table buckets to return in the list.
+#' @param type The type of table buckets to filter by in the list.
 #'
 #' @keywords internal
 #'
 #' @rdname s3tables_list_table_buckets
-s3tables_list_table_buckets <- function(prefix = NULL, continuationToken = NULL, maxBuckets = NULL) {
+s3tables_list_table_buckets <- function(prefix = NULL, continuationToken = NULL, maxBuckets = NULL, type = NULL) {
   op <- new_operation(
     name = "ListTableBuckets",
     http_method = "GET",
@@ -734,7 +1114,7 @@ s3tables_list_table_buckets <- function(prefix = NULL, continuationToken = NULL,
     paginator = list(input_token = "continuationToken", output_token = "continuationToken", limit_key = "maxBuckets", result_key = "tableBuckets"),
     stream_api = FALSE
   )
-  input <- .s3tables$list_table_buckets_input(prefix = prefix, continuationToken = continuationToken, maxBuckets = maxBuckets)
+  input <- .s3tables$list_table_buckets_input(prefix = prefix, continuationToken = continuationToken, maxBuckets = maxBuckets, type = type)
   output <- .s3tables$list_table_buckets_output()
   config <- get_config()
   svc <- .s3tables$service(config, op)
@@ -781,6 +1161,41 @@ s3tables_list_tables <- function(tableBucketARN, namespace = NULL, prefix = NULL
   return(response)
 }
 .s3tables$operations$list_tables <- s3tables_list_tables
+
+#' Lists all of the tags applied to a specified Amazon S3 Tables resource
+#'
+#' @description
+#' Lists all of the tags applied to a specified Amazon S3 Tables resource. Each tag is a label consisting of a key and value pair. Tags can help you organize, track costs for, and control access to resources.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/s3tables_list_tags_for_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon S3 Tables resource that you
+#' want to list tags for. The tagged resource can be a table bucket or a
+#' table. For a list of all S3 resources that support tagging, see
+#' [Managing tags for Amazon S3
+#' resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html#manage-tags).
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_list_tags_for_resource
+s3tables_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tag/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .s3tables$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$list_tags_for_resource <- s3tables_list_tags_for_resource
 
 #' Sets the encryption configuration for a table bucket
 #'
@@ -850,11 +1265,42 @@ s3tables_put_table_bucket_maintenance_configuration <- function(tableBucketARN, 
 }
 .s3tables$operations$put_table_bucket_maintenance_configuration <- s3tables_put_table_bucket_maintenance_configuration
 
-#' Creates a new maintenance configuration or replaces an existing table
-#' bucket policy for a table bucket
+#' Sets the metrics configuration for a table bucket
 #'
 #' @description
-#' Creates a new maintenance configuration or replaces an existing table bucket policy for a table bucket. For more information, see [Adding a table bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-bucket-policy.html#table-bucket-policy-add) in the *Amazon Simple Storage Service User Guide*.
+#' Sets the metrics configuration for a table bucket.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_put_table_bucket_metrics_configuration/](https://www.paws-r-sdk.com/docs/s3tables_put_table_bucket_metrics_configuration/) for full documentation.
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_put_table_bucket_metrics_configuration
+s3tables_put_table_bucket_metrics_configuration <- function(tableBucketARN) {
+  op <- new_operation(
+    name = "PutTableBucketMetricsConfiguration",
+    http_method = "PUT",
+    http_path = "/buckets/{tableBucketARN}/metrics",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$put_table_bucket_metrics_configuration_input(tableBucketARN = tableBucketARN)
+  output <- .s3tables$put_table_bucket_metrics_configuration_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$put_table_bucket_metrics_configuration <- s3tables_put_table_bucket_metrics_configuration
+
+#' Creates a new table bucket policy or replaces an existing table bucket
+#' policy for a table bucket
+#'
+#' @description
+#' Creates a new table bucket policy or replaces an existing table bucket policy for a table bucket. For more information, see [Adding a table bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-bucket-policy.html#table-bucket-policy-add) in the *Amazon Simple Storage Service User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3tables_put_table_bucket_policy/](https://www.paws-r-sdk.com/docs/s3tables_put_table_bucket_policy/) for full documentation.
 #'
@@ -883,6 +1329,76 @@ s3tables_put_table_bucket_policy <- function(tableBucketARN, resourcePolicy) {
 }
 .s3tables$operations$put_table_bucket_policy <- s3tables_put_table_bucket_policy
 
+#' Creates or updates the replication configuration for a table bucket
+#'
+#' @description
+#' Creates or updates the replication configuration for a table bucket. This operation defines how tables in the source bucket are replicated to destination buckets. Replication helps ensure data availability and disaster recovery across regions or accounts.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_put_table_bucket_replication/](https://www.paws-r-sdk.com/docs/s3tables_put_table_bucket_replication/) for full documentation.
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the source table bucket.
+#' @param versionToken A version token from a previous GetTableBucketReplication call. Use this
+#' token to ensure you're updating the expected version of the
+#' configuration.
+#' @param configuration &#91;required&#93; The replication configuration to apply, including the IAM role and
+#' replication rules.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_put_table_bucket_replication
+s3tables_put_table_bucket_replication <- function(tableBucketARN, versionToken = NULL, configuration) {
+  op <- new_operation(
+    name = "PutTableBucketReplication",
+    http_method = "PUT",
+    http_path = "/table-bucket-replication",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$put_table_bucket_replication_input(tableBucketARN = tableBucketARN, versionToken = versionToken, configuration = configuration)
+  output <- .s3tables$put_table_bucket_replication_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$put_table_bucket_replication <- s3tables_put_table_bucket_replication
+
+#' Sets or updates the storage class configuration for a table bucket
+#'
+#' @description
+#' Sets or updates the storage class configuration for a table bucket. This configuration serves as the default storage class for all new tables created in the bucket, allowing you to optimize storage costs at the bucket level.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_put_table_bucket_storage_class/](https://www.paws-r-sdk.com/docs/s3tables_put_table_bucket_storage_class/) for full documentation.
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket.
+#' @param storageClassConfiguration &#91;required&#93; The storage class configuration to apply to the table bucket. This
+#' configuration will serve as the default for new tables created in this
+#' bucket.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_put_table_bucket_storage_class
+s3tables_put_table_bucket_storage_class <- function(tableBucketARN, storageClassConfiguration) {
+  op <- new_operation(
+    name = "PutTableBucketStorageClass",
+    http_method = "PUT",
+    http_path = "/buckets/{tableBucketARN}/storage-class",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$put_table_bucket_storage_class_input(tableBucketARN = tableBucketARN, storageClassConfiguration = storageClassConfiguration)
+  output <- .s3tables$put_table_bucket_storage_class_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$put_table_bucket_storage_class <- s3tables_put_table_bucket_storage_class
+
 #' Creates a new maintenance configuration or replaces an existing
 #' maintenance configuration for a table
 #'
@@ -894,7 +1410,7 @@ s3tables_put_table_bucket_policy <- function(tableBucketARN, resourcePolicy) {
 #' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table associated with the
 #' maintenance configuration.
 #' @param namespace &#91;required&#93; The namespace of the table.
-#' @param name &#91;required&#93; The name of the maintenance configuration.
+#' @param name &#91;required&#93; The name of the table.
 #' @param type &#91;required&#93; The type of the maintenance configuration.
 #' @param value &#91;required&#93; Defines the values of the maintenance configuration for the table.
 #'
@@ -920,11 +1436,11 @@ s3tables_put_table_maintenance_configuration <- function(tableBucketARN, namespa
 }
 .s3tables$operations$put_table_maintenance_configuration <- s3tables_put_table_maintenance_configuration
 
-#' Creates a new maintenance configuration or replaces an existing table
-#' policy for a table
+#' Creates a new table policy or replaces an existing table policy for a
+#' table
 #'
 #' @description
-#' Creates a new maintenance configuration or replaces an existing table policy for a table. For more information, see [Adding a table policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-table-policy.html#table-policy-add) in the *Amazon Simple Storage Service User Guide*.
+#' Creates a new table policy or replaces an existing table policy for a table. For more information, see [Adding a table policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-table-policy.html#table-policy-add) in the *Amazon Simple Storage Service User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3tables_put_table_policy/](https://www.paws-r-sdk.com/docs/s3tables_put_table_policy/) for full documentation.
 #'
@@ -955,6 +1471,75 @@ s3tables_put_table_policy <- function(tableBucketARN, namespace, name, resourceP
   return(response)
 }
 .s3tables$operations$put_table_policy <- s3tables_put_table_policy
+
+#' Creates or updates the expiration configuration settings for records in
+#' a table, including the status of the configuration
+#'
+#' @description
+#' Creates or updates the expiration configuration settings for records in a table, including the status of the configuration. If you enable record expiration for a table, records expire and are automatically removed from the table after the number of days that you specify.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_put_table_record_expiration_configuration/](https://www.paws-r-sdk.com/docs/s3tables_put_table_record_expiration_configuration/) for full documentation.
+#'
+#' @param tableArn &#91;required&#93; The Amazon Resource Name (ARN) of the table.
+#' @param value &#91;required&#93; The record expiration configuration to apply to the table, including the
+#' status (`enabled` or `disabled`) and retention period in days.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_put_table_record_expiration_configuration
+s3tables_put_table_record_expiration_configuration <- function(tableArn, value) {
+  op <- new_operation(
+    name = "PutTableRecordExpirationConfiguration",
+    http_method = "PUT",
+    http_path = "/table-record-expiration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$put_table_record_expiration_configuration_input(tableArn = tableArn, value = value)
+  output <- .s3tables$put_table_record_expiration_configuration_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$put_table_record_expiration_configuration <- s3tables_put_table_record_expiration_configuration
+
+#' Creates or updates the replication configuration for a specific table
+#'
+#' @description
+#' Creates or updates the replication configuration for a specific table. This operation allows you to define table-level replication independently of bucket-level replication, providing granular control over which tables are replicated and where.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_put_table_replication/](https://www.paws-r-sdk.com/docs/s3tables_put_table_replication/) for full documentation.
+#'
+#' @param tableArn &#91;required&#93; The Amazon Resource Name (ARN) of the source table.
+#' @param versionToken A version token from a previous GetTableReplication call. Use this token
+#' to ensure you're updating the expected version of the configuration.
+#' @param configuration &#91;required&#93; The replication configuration to apply to the table, including the IAM
+#' role and replication rules.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_put_table_replication
+s3tables_put_table_replication <- function(tableArn, versionToken = NULL, configuration) {
+  op <- new_operation(
+    name = "PutTableReplication",
+    http_method = "PUT",
+    http_path = "/table-replication",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$put_table_replication_input(tableArn = tableArn, versionToken = versionToken, configuration = configuration)
+  output <- .s3tables$put_table_replication_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$put_table_replication <- s3tables_put_table_replication
 
 #' Renames a table or a namespace
 #'
@@ -991,6 +1576,86 @@ s3tables_rename_table <- function(tableBucketARN, namespace, name, newNamespaceN
   return(response)
 }
 .s3tables$operations$rename_table <- s3tables_rename_table
+
+#' Applies one or more user-defined tags to an Amazon S3 Tables resource or
+#' updates existing tags
+#'
+#' @description
+#' Applies one or more user-defined tags to an Amazon S3 Tables resource or updates existing tags. Each tag is a label consisting of a key and value pair. Tags can help you organize, track costs for, and control access to your resources. You can add up to 50 tags for each S3 resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_tag_resource/](https://www.paws-r-sdk.com/docs/s3tables_tag_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon S3 Tables resource that
+#' you're applying tags to. The tagged resource can be a table bucket or a
+#' table. For a list of all S3 resources that support tagging, see
+#' [Managing tags for Amazon S3
+#' resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html#manage-tags).
+#' @param tags &#91;required&#93; The user-defined tag that you want to add to the specified S3 Tables
+#' resource. For more information, see [Tagging for cost allocation or
+#' attribute-based access control
+#' (ABAC)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html).
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_tag_resource
+s3tables_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tag/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .s3tables$tag_resource_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$tag_resource <- s3tables_tag_resource
+
+#' Removes the specified user-defined tags from an Amazon S3 Tables
+#' resource
+#'
+#' @description
+#' Removes the specified user-defined tags from an Amazon S3 Tables resource. You can pass one or more tag keys.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_untag_resource/](https://www.paws-r-sdk.com/docs/s3tables_untag_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon S3 Tables resource that
+#' you're removing tags from. The tagged resource can be a table bucket or
+#' a table. For a list of all S3 resources that support tagging, see
+#' [Managing tags for Amazon S3
+#' resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html#manage-tags).
+#' @param tagKeys &#91;required&#93; The array of tag keys that you're removing from the S3 Tables resource.
+#' For more information, see [Tagging for cost allocation or
+#' attribute-based access control
+#' (ABAC)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html).
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_untag_resource
+s3tables_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tag/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .s3tables$untag_resource_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$untag_resource <- s3tables_untag_resource
 
 #' Updates the metadata location for a table
 #'

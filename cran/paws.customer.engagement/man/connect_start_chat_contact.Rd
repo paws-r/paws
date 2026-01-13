@@ -9,6 +9,7 @@ connect_start_chat_contact(
   ContactFlowId,
   Attributes = NULL,
   ParticipantDetails,
+  ParticipantConfiguration = NULL,
   InitialMessage = NULL,
   ClientToken = NULL,
   ChatDurationInMinutes = NULL,
@@ -16,7 +17,8 @@ connect_start_chat_contact(
   PersistentChat = NULL,
   RelatedContactId = NULL,
   SegmentAttributes = NULL,
-  CustomerId = NULL
+  CustomerId = NULL,
+  DisconnectOnCustomerExit = NULL
 )
 }
 \arguments{
@@ -41,9 +43,9 @@ underscore characters.}
 
 \item{ParticipantDetails}{[required] Information identifying the participant.}
 
-\item{InitialMessage}{The initial message to be sent to the newly created chat. If you have a
-Lex bot in your flow, the initial message is not delivered to the Lex
-bot.}
+\item{ParticipantConfiguration}{The configuration of the participant.}
+
+\item{InitialMessage}{The initial message to be sent to the newly created chat.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -96,6 +98,10 @@ to set \code{SegmentAttributes} as
 
 \item{CustomerId}{The customer's identification number. For example, the \code{CustomerId} may
 be a customer number from your CRM.}
+
+\item{DisconnectOnCustomerExit}{A list of participant types to automatically disconnect when the end
+customer ends the chat session, allowing them to continue through
+disconnect flows such as surveys or feedback forms.}
 }
 \description{
 Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the \href{https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_CreateParticipantConnection.html}{CreateParticipantConnection} API in the Amazon Connect Participant Service.

@@ -68,6 +68,8 @@ which the network interface is attached.
 \code{attached} | \code{detaching} | \code{detached}).
 \item \code{availability-zone} - The Availability Zone of the network
 interface.
+\item \code{availability-zone-id} - The ID of the Availability Zone of the
+network interface.
 \item \code{description} - The description of the network interface.
 \item \code{group-id} - The ID of a security group associated with the network
 interface.
@@ -76,10 +78,11 @@ network interface.
 \item \code{interface-type} - The type of network interface
 (\code{api_gateway_managed} | \code{aws_codestar_connections_managed} |
 \code{branch} | \code{ec2_instance_connect_endpoint} | \code{efa} | \code{efa-only} |
-\code{efs} | \code{gateway_load_balancer} | \code{gateway_load_balancer_endpoint} |
-\code{global_accelerator_managed} | \code{interface} | \code{iot_rules_managed} |
-\code{lambda} | \code{load_balancer} | \code{nat_gateway} | \code{network_load_balancer}
-| \code{quicksight} | \code{transit_gateway} | \code{trunk} | \code{vpc_endpoint}).
+\code{efs} | \code{evs} | \code{gateway_load_balancer} |
+\code{gateway_load_balancer_endpoint} | \code{global_accelerator_managed} |
+\code{interface} | \code{iot_rules_managed} | \code{lambda} | \code{load_balancer} |
+\code{nat_gateway} | \code{network_load_balancer} | \code{quicksight} |
+\code{transit_gateway} | \code{trunk} | \code{vpc_endpoint}).
 \item \code{mac-address} - The MAC address of the network interface.
 \item \code{network-interface-id} - The ID of the network interface.
 \item \code{operator.managed} - A Boolean that indicates whether this is a

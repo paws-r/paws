@@ -5,10 +5,13 @@
 \title{Creates a NAT gateway in the specified subnet}
 \usage{
 ec2_create_nat_gateway(
+  AvailabilityMode = NULL,
   AllocationId = NULL,
   ClientToken = NULL,
   DryRun = NULL,
-  SubnetId,
+  SubnetId = NULL,
+  VpcId = NULL,
+  AvailabilityZoneAddresses = NULL,
   TagSpecifications = NULL,
   ConnectivityType = NULL,
   PrivateIpAddress = NULL,
@@ -18,6 +21,18 @@ ec2_create_nat_gateway(
 )
 }
 \arguments{
+\item{AvailabilityMode}{Specifies whether to create a zonal (single-AZ) or regional (multi-AZ)
+NAT gateway. Defaults to \code{zonal}.
+
+A zonal NAT gateway is a NAT Gateway that provides redundancy and
+scalability within a single availability zone. A regional NAT gateway is
+a single NAT Gateway that works across multiple availability zones (AZs)
+in your VPC, providing redundancy, scalability and availability across
+all the AZs in a Region.
+
+For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateways-regional.html}{Regional NAT gateways for automatic multi-AZ expansion}
+in the \emph{Amazon VPC User Guide}.}
+
 \item{AllocationId}{[Public NAT gateways only] The allocation ID of an Elastic IP address
 to associate with the NAT gateway. You cannot specify an Elastic IP
 address with a private NAT gateway. If the Elastic IP address is
@@ -33,7 +48,25 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{SubnetId}{[required] The ID of the subnet in which to create the NAT gateway.}
+\item{SubnetId}{The ID of the subnet in which to create the NAT gateway.}
+
+\item{VpcId}{The ID of the VPC where you want to create a regional NAT gateway.}
+
+\item{AvailabilityZoneAddresses}{For regional NAT gateways only: Specifies which Availability Zones you
+want the NAT gateway to support and the Elastic IP addresses (EIPs) to
+use in each AZ. The regional NAT gateway uses these EIPs to handle
+outbound NAT traffic from their respective AZs. If not specified, the
+NAT gateway will automatically expand to new AZs and associate EIPs upon
+detection of an elastic network interface. If you specify this
+parameter, auto-expansion is disabled and you must manually manage AZ
+coverage.
+
+A regional NAT gateway is a single NAT Gateway that works across
+multiple availability zones (AZs) in your VPC, providing redundancy,
+scalability and availability across all the AZs in a Region.
+
+For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateways-regional.html}{Regional NAT gateways for automatic multi-AZ expansion}
+in the \emph{Amazon VPC User Guide}.}
 
 \item{TagSpecifications}{The tags to assign to the NAT gateway.}
 

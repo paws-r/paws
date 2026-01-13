@@ -1380,7 +1380,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' Creates a Lightsail load balancer
 #'
 #' @description
-#' Creates a Lightsail load balancer. To learn more about deciding whether to load balance your application, see [Configure your Lightsail instances for load balancing](https://docs.aws.amazon.com/lightsail/latest/userguide/configure-lightsail-instances-for-load-balancing.html). You can create up to 5 load balancers per AWS Region in your account.
+#' Creates a Lightsail load balancer. To learn more about deciding whether to load balance your application, see [Configure your Lightsail instances for load balancing](https://docs.aws.amazon.com/lightsail/latest/userguide/configure-lightsail-instances-for-load-balancing.html). You can create up to 10 load balancers per AWS Region in your account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/lightsail_create_load_balancer/](https://www.paws-r-sdk.com/docs/lightsail_create_load_balancer/) for full documentation.
 #'
@@ -3162,11 +3162,18 @@ lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, 
 #' that were given access to the bucket using the
 #' [`set_resource_access_for_bucket`][lightsail_set_resource_access_for_bucket]
 #' action.
+#' @param includeCors A Boolean value that indicates whether to include Lightsail bucket CORS
+#' configuration in the response. For more information, see [Configuring
+#' cross-origin resource sharing
+#' (CORS)](https://docs.aws.amazon.com/lightsail/latest/userguide/configure-cors.html).
+#' 
+#' This parameter is only supported when getting a single bucket with
+#' `bucketName` specified. The default value for this parameter is `False`.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_get_buckets
-lightsail_get_buckets <- function(bucketName = NULL, pageToken = NULL, includeConnectedResources = NULL) {
+lightsail_get_buckets <- function(bucketName = NULL, pageToken = NULL, includeConnectedResources = NULL, includeCors = NULL) {
   op <- new_operation(
     name = "GetBuckets",
     http_method = "POST",
@@ -3175,7 +3182,7 @@ lightsail_get_buckets <- function(bucketName = NULL, pageToken = NULL, includeCo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lightsail$get_buckets_input(bucketName = bucketName, pageToken = pageToken, includeConnectedResources = includeConnectedResources)
+  input <- .lightsail$get_buckets_input(bucketName = bucketName, pageToken = pageToken, includeConnectedResources = includeConnectedResources, includeCors = includeCors)
   output <- .lightsail$get_buckets_output()
   config <- get_config()
   svc <- .lightsail$service(config, op)
@@ -6874,11 +6881,20 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #' You can give a maximum of 10 Amazon Web Services accounts access to a
 #' bucket.
 #' @param accessLogConfig An object that describes the access log configuration for the bucket.
+#' @param cors Sets the cross-origin resource sharing (CORS) configuration for your
+#' bucket. If a CORS configuration exists, it is replaced with the
+#' specified configuration. For AWS CLI operations, this parameter can also
+#' be passed as a file. For more information, see [Configuring cross-origin
+#' resource sharing
+#' (CORS)](https://docs.aws.amazon.com/lightsail/latest/userguide/configure-cors.html).
+#' 
+#' CORS information is only returned in a response when you update the CORS
+#' policy.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_update_bucket
-lightsail_update_bucket <- function(bucketName, accessRules = NULL, versioning = NULL, readonlyAccessAccounts = NULL, accessLogConfig = NULL) {
+lightsail_update_bucket <- function(bucketName, accessRules = NULL, versioning = NULL, readonlyAccessAccounts = NULL, accessLogConfig = NULL, cors = NULL) {
   op <- new_operation(
     name = "UpdateBucket",
     http_method = "POST",
@@ -6887,7 +6903,7 @@ lightsail_update_bucket <- function(bucketName, accessRules = NULL, versioning =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lightsail$update_bucket_input(bucketName = bucketName, accessRules = accessRules, versioning = versioning, readonlyAccessAccounts = readonlyAccessAccounts, accessLogConfig = accessLogConfig)
+  input <- .lightsail$update_bucket_input(bucketName = bucketName, accessRules = accessRules, versioning = versioning, readonlyAccessAccounts = readonlyAccessAccounts, accessLogConfig = accessLogConfig, cors = cors)
   output <- .lightsail$update_bucket_output()
   config <- get_config()
   svc <- .lightsail$service(config, op)

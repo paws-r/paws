@@ -5,34 +5,34 @@
 \title{Updates the attributes of an existing template}
 \usage{
 connectcases_update_template(
-  description = NULL,
   domainId,
-  layoutConfiguration = NULL,
+  templateId,
   name = NULL,
+  description = NULL,
+  layoutConfiguration = NULL,
   requiredFields = NULL,
-  rules = NULL,
   status = NULL,
-  templateId
+  rules = NULL
 )
 }
 \arguments{
-\item{description}{A brief description of the template.}
-
 \item{domainId}{[required] The unique identifier of the Cases domain.}
 
-\item{layoutConfiguration}{Configuration of layouts associated to the template.}
+\item{templateId}{[required] A unique identifier for the template.}
 
 \item{name}{The name of the template. It must be unique per domain.}
+
+\item{description}{A brief description of the template.}
+
+\item{layoutConfiguration}{Configuration of layouts associated to the template.}
 
 \item{requiredFields}{A list of fields that must contain a value for a case to be successfully
 created with this template.}
 
-\item{rules}{A list of case rules (also known as \href{https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html}{case field conditions})
-on a template.}
-
 \item{status}{The status of the template.}
 
-\item{templateId}{[required] A unique identifier for the template.}
+\item{rules}{A list of case rules (also known as \href{https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html}{case field conditions})
+on a template.}
 }
 \description{
 Updates the attributes of an existing template. The template attributes that can be modified include \code{name}, \code{description}, \code{layoutConfiguration}, \code{requiredFields}, and \code{status}. At least one of these attributes must not be null. If a null value is provided for a given attribute, that attribute is ignored and its current value is preserved.

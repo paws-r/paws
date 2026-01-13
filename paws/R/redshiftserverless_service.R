@@ -126,6 +126,7 @@ NULL
 #'  \link[=redshiftserverless_get_credentials]{get_credentials} \tab Returns a database user name and temporary password with temporary authorization to log in to Amazon Redshift Serverless\cr
 #'  \link[=redshiftserverless_get_custom_domain_association]{get_custom_domain_association} \tab Gets information about a specific custom domain association\cr
 #'  \link[=redshiftserverless_get_endpoint_access]{get_endpoint_access} \tab Returns information, such as the name, about a VPC endpoint\cr
+#'  \link[=redshiftserverless_get_identity_center_auth_token]{get_identity_center_auth_token} \tab Returns an Identity Center authentication token for accessing Amazon Redshift Serverless workgroups\cr
 #'  \link[=redshiftserverless_get_namespace]{get_namespace} \tab Returns information about a namespace in Amazon Redshift Serverless\cr
 #'  \link[=redshiftserverless_get_recovery_point]{get_recovery_point} \tab Returns information about a recovery point\cr
 #'  \link[=redshiftserverless_get_reservation]{get_reservation} \tab Gets an Amazon Redshift Serverless reservation\cr
@@ -161,6 +162,7 @@ NULL
 #'  \link[=redshiftserverless_untag_resource]{untag_resource} \tab Removes a tag or set of tags from a resource\cr
 #'  \link[=redshiftserverless_update_custom_domain_association]{update_custom_domain_association} \tab Updates an Amazon Redshift Serverless certificate associated with a custom domain\cr
 #'  \link[=redshiftserverless_update_endpoint_access]{update_endpoint_access} \tab Updates an Amazon Redshift Serverless managed endpoint\cr
+#'  \link[=redshiftserverless_update_lakehouse_configuration]{update_lakehouse_configuration} \tab Modifies the lakehouse configuration for a namespace\cr
 #'  \link[=redshiftserverless_update_namespace]{update_namespace} \tab Updates a namespace with the specified settings\cr
 #'  \link[=redshiftserverless_update_scheduled_action]{update_scheduled_action} \tab Updates a scheduled action\cr
 #'  \link[=redshiftserverless_update_snapshot]{update_snapshot} \tab Updates a snapshot\cr

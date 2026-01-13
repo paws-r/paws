@@ -509,9 +509,8 @@ workdocs_create_labels <- function(ResourceId, Labels, AuthenticationToken = NUL
 #' Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint
 #' receives a confirmation message, and must confirm the subscription.
 #' 
-#' For more information, see [Setting up notifications for an IAM user or
-#' role](https://docs.aws.amazon.com/workdocs/latest/developerguide/manage-notifications.html)
-#' in the *Amazon WorkDocs Developer Guide*.
+#' For more information, see Setting up notifications for an IAM user or
+#' role in the *Amazon WorkDocs Developer Guide*.
 #'
 #' @usage
 #' workdocs_create_notification_subscription(OrganizationId, Endpoint,
@@ -1904,8 +1903,7 @@ workdocs_describe_resource_permissions <- function(AuthenticationToken = NULL, R
 #' 
 #' This action requires an authentication token. To get an authentication
 #' token, register an application with Amazon WorkDocs. For more
-#' information, see [Authentication and Access Control for User
-#' Applications](https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html)
+#' information, see Authentication and Access Control for User Applications
 #' in the *Amazon WorkDocs Developer Guide*.
 #'
 #' @usage
@@ -2111,8 +2109,7 @@ workdocs_describe_users <- function(AuthenticationToken = NULL, OrganizationId =
 #' 
 #' This action requires an authentication token. To get an authentication
 #' token, register an application with Amazon WorkDocs. For more
-#' information, see [Authentication and Access Control for User
-#' Applications](https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html)
+#' information, see Authentication and Access Control for User Applications
 #' in the *Amazon WorkDocs Developer Guide*.
 #'
 #' @usage

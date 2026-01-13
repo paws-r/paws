@@ -367,6 +367,12 @@ codebuild_batch_get_sandboxes <- function(ids) {
 #'     types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.types)
 #'     in the *CodeBuild User Guide*.
 #' 
+#' -   `CUSTOM_INSTANCE_TYPE`: Specify the instance type for your compute
+#'     fleet. For a list of supported instance types, see [Supported
+#'     instance
+#'     families](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.instance-types)
+#'     in the *CodeBuild User Guide*.
+#' 
 #' -   `BUILD_GENERAL1_SMALL`: Use up to 4 GiB memory and 2 vCPUs for
 #'     builds.
 #' 
@@ -429,7 +435,8 @@ codebuild_batch_get_sandboxes <- function(ids) {
 #' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types)
 #' in the *CodeBuild User Guide.*
 #' @param computeConfiguration The compute configuration of the compute fleet. This is only required if
-#' `computeType` is set to `ATTRIBUTE_BASED_COMPUTE`.
+#' `computeType` is set to `ATTRIBUTE_BASED_COMPUTE` or
+#' `CUSTOM_INSTANCE_TYPE`.
 #' @param scalingConfiguration The scaling configuration of the compute fleet.
 #' @param overflowBehavior The compute fleet overflow behavior.
 #' 
@@ -674,11 +681,15 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #' 
 #' Global or organization webhooks are only available for GitHub and Github
 #' Enterprise webhooks.
+#' @param pullRequestBuildPolicy A PullRequestBuildPolicy object that defines comment-based approval
+#' requirements for triggering builds on pull requests. This policy helps
+#' control when automated builds are executed based on contributor
+#' permissions and approval workflows.
 #'
 #' @keywords internal
 #'
 #' @rdname codebuild_create_webhook
-codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGroups = NULL, buildType = NULL, manualCreation = NULL, scopeConfiguration = NULL) {
+codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGroups = NULL, buildType = NULL, manualCreation = NULL, scopeConfiguration = NULL, pullRequestBuildPolicy = NULL) {
   op <- new_operation(
     name = "CreateWebhook",
     http_method = "POST",
@@ -687,7 +698,7 @@ codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGro
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codebuild$create_webhook_input(projectName = projectName, branchFilter = branchFilter, filterGroups = filterGroups, buildType = buildType, manualCreation = manualCreation, scopeConfiguration = scopeConfiguration)
+  input <- .codebuild$create_webhook_input(projectName = projectName, branchFilter = branchFilter, filterGroups = filterGroups, buildType = buildType, manualCreation = manualCreation, scopeConfiguration = scopeConfiguration, pullRequestBuildPolicy = pullRequestBuildPolicy)
   output <- .codebuild$create_webhook_output()
   config <- get_config()
   svc <- .codebuild$service(config, op)
@@ -2151,6 +2162,9 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' ability to call this API and set this parameter can override the default
 #' settings. Moreover, we encourage that you use a trustworthy buildspec
 #' location like a file in your source repository or a Amazon S3 bucket.
+#' Alternatively, you can restrict overrides to the buildspec by using a
+#' condition key: [Prevent unauthorized modifications to project
+#' buildspec](https://docs.aws.amazon.com/codebuild/latest/userguide/action-context-keys.html#action-context-keys-example-overridebuildspec.html).
 #' @param insecureSslOverride Enable this flag to override the insecure SSL setting that is specified
 #' in the build project. The insecure SSL setting determines whether to
 #' ignore SSL warnings while connecting to the project source code. This
@@ -2696,6 +2710,12 @@ codebuild_stop_sandbox <- function(id) {
 #'     types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.types)
 #'     in the *CodeBuild User Guide*.
 #' 
+#' -   `CUSTOM_INSTANCE_TYPE`: Specify the instance type for your compute
+#'     fleet. For a list of supported instance types, see [Supported
+#'     instance
+#'     families](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.instance-types)
+#'     in the *CodeBuild User Guide*.
+#' 
 #' -   `BUILD_GENERAL1_SMALL`: Use up to 4 GiB memory and 2 vCPUs for
 #'     builds.
 #' 
@@ -2758,7 +2778,8 @@ codebuild_stop_sandbox <- function(id) {
 #' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types)
 #' in the *CodeBuild User Guide.*
 #' @param computeConfiguration The compute configuration of the compute fleet. This is only required if
-#' `computeType` is set to `ATTRIBUTE_BASED_COMPUTE`.
+#' `computeType` is set to `ATTRIBUTE_BASED_COMPUTE` or
+#' `CUSTOM_INSTANCE_TYPE`.
 #' @param scalingConfiguration The scaling configuration of the compute fleet.
 #' @param overflowBehavior The compute fleet overflow behavior.
 #' 
@@ -3030,11 +3051,15 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #' a CodeBuild-hosted Buildkite
 #' runner](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-runner-buildkite.html)
 #' in the *CodeBuild user guide*.
+#' @param pullRequestBuildPolicy A PullRequestBuildPolicy object that defines comment-based approval
+#' requirements for triggering builds on pull requests. This policy helps
+#' control when automated builds are executed based on contributor
+#' permissions and approval workflows.
 #'
 #' @keywords internal
 #'
 #' @rdname codebuild_update_webhook
-codebuild_update_webhook <- function(projectName, branchFilter = NULL, rotateSecret = NULL, filterGroups = NULL, buildType = NULL) {
+codebuild_update_webhook <- function(projectName, branchFilter = NULL, rotateSecret = NULL, filterGroups = NULL, buildType = NULL, pullRequestBuildPolicy = NULL) {
   op <- new_operation(
     name = "UpdateWebhook",
     http_method = "POST",
@@ -3043,7 +3068,7 @@ codebuild_update_webhook <- function(projectName, branchFilter = NULL, rotateSec
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codebuild$update_webhook_input(projectName = projectName, branchFilter = branchFilter, rotateSecret = rotateSecret, filterGroups = filterGroups, buildType = buildType)
+  input <- .codebuild$update_webhook_input(projectName = projectName, branchFilter = branchFilter, rotateSecret = rotateSecret, filterGroups = filterGroups, buildType = buildType, pullRequestBuildPolicy = pullRequestBuildPolicy)
   output <- .codebuild$update_webhook_output()
   config <- get_config()
   svc <- .codebuild$service(config, op)

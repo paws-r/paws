@@ -5,10 +5,18 @@
 \title{Creates a default subnet with a size /20 IPv4 CIDR block in the
 specified Availability Zone in your default VPC}
 \usage{
-ec2_create_default_subnet(AvailabilityZone, DryRun = NULL, Ipv6Native = NULL)
+ec2_create_default_subnet(
+  AvailabilityZone = NULL,
+  DryRun = NULL,
+  Ipv6Native = NULL,
+  AvailabilityZoneId = NULL
+)
 }
 \arguments{
-\item{AvailabilityZone}{[required] The Availability Zone in which to create the default subnet.}
+\item{AvailabilityZone}{The Availability Zone in which to create the default subnet.
+
+Either \code{AvailabilityZone} or \code{AvailabilityZoneId} must be specified, but
+not both.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -18,6 +26,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Ipv6Native}{Indicates whether to create an IPv6 only subnet. If you already have a
 default subnet for this Availability Zone, you must delete it before you
 can create an IPv6 only subnet.}
+
+\item{AvailabilityZoneId}{The ID of the Availability Zone.
+
+Either \code{AvailabilityZone} or \code{AvailabilityZoneId} must be specified, but
+not both.}
 }
 \description{
 Creates a default subnet with a size \verb{/20} IPv4 CIDR block in the specified Availability Zone in your default VPC. You can have only one default subnet per Availability Zone. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/work-with-default-vpc.html#create-default-subnet}{Create a default subnet} in the \emph{Amazon VPC User Guide}.

@@ -9,8 +9,8 @@ sagemaker_create_domain(
   AuthMode,
   DefaultUserSettings,
   DomainSettings = NULL,
-  SubnetIds,
-  VpcId,
+  SubnetIds = NULL,
+  VpcId = NULL,
   Tags = NULL,
   AppNetworkAccessType = NULL,
   HomeEfsFileSystemKmsKeyId = NULL,
@@ -36,10 +36,18 @@ over those specified in \code{\link[=sagemaker_create_domain]{create_domain}}.}
 
 \item{DomainSettings}{A collection of \code{Domain} settings.}
 
-\item{SubnetIds}{[required] The VPC subnets that the domain uses for communication.}
+\item{SubnetIds}{The VPC subnets that the domain uses for communication.
 
-\item{VpcId}{[required] The ID of the Amazon Virtual Private Cloud (VPC) that the domain uses
-for communication.}
+The field is optional when the \code{AppNetworkAccessType} parameter is set
+to \code{PublicInternetOnly} for domains created from Amazon SageMaker
+Unified Studio.}
+
+\item{VpcId}{The ID of the Amazon Virtual Private Cloud (VPC) that the domain uses
+for communication.
+
+The field is optional when the \code{AppNetworkAccessType} parameter is set
+to \code{PublicInternetOnly} for domains created from Amazon SageMaker
+Unified Studio.}
 
 \item{Tags}{Tags to associated with the Domain. Each tag consists of a key and an
 optional value. Tag keys must be unique per resource. Tags are

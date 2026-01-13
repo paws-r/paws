@@ -20,6 +20,8 @@ lambda_update_event_source_mapping(
   TumblingWindowInSeconds = NULL,
   FunctionResponseTypes = NULL,
   ScalingConfig = NULL,
+  AmazonManagedKafkaEventSourceConfig = NULL,
+  SelfManagedKafkaEventSourceConfig = NULL,
   DocumentDBEventSourceConfig = NULL,
   KMSKeyArn = NULL,
   MetricsConfig = NULL,
@@ -86,19 +88,21 @@ Related setting: For Kinesis, DynamoDB, and Amazon SQS event sources,
 when you set \code{BatchSize} to a value greater than 10, you must set
 \code{MaximumBatchingWindowInSeconds} to at least 1.}
 
-\item{DestinationConfig}{(Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Kafka only) A
+\item{DestinationConfig}{(Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka) A
 configuration object that specifies the destination of an event after
 Lambda processes it.}
 
-\item{MaximumRecordAgeInSeconds}{(Kinesis and DynamoDB Streams only) Discard records older than the
-specified age. The default value is infinite (-1).}
+\item{MaximumRecordAgeInSeconds}{(Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka)
+Discard records older than the specified age. The default value is
+infinite (-1).}
 
-\item{BisectBatchOnFunctionError}{(Kinesis and DynamoDB Streams only) If the function returns an error,
-split the batch in two and retry.}
+\item{BisectBatchOnFunctionError}{(Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka)
+If the function returns an error, split the batch in two and retry.}
 
-\item{MaximumRetryAttempts}{(Kinesis and DynamoDB Streams only) Discard records after the specified
-number of retries. The default value is infinite (-1). When set to
-infinite (-1), failed records are retried until the record expires.}
+\item{MaximumRetryAttempts}{(Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka)
+Discard records after the specified number of retries. The default value
+is infinite (-1). When set to infinite (-1), failed records are retried
+until the record expires.}
 
 \item{ParallelizationFactor}{(Kinesis and DynamoDB Streams only) The number of batches to process
 from each shard concurrently.}
@@ -110,11 +114,16 @@ secure your event source.}
 processing window for DynamoDB and Kinesis Streams event sources. A
 value of 0 seconds indicates no tumbling window.}
 
-\item{FunctionResponseTypes}{(Kinesis, DynamoDB Streams, and Amazon SQS) A list of current response
-type enums applied to the event source mapping.}
+\item{FunctionResponseTypes}{(Kinesis, DynamoDB Streams, Amazon MSK, self-managed Apache Kafka, and
+Amazon SQS) A list of current response type enums applied to the event
+source mapping.}
 
 \item{ScalingConfig}{(Amazon SQS only) The scaling configuration for the event source. For
 more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-max-concurrency}{Configuring maximum concurrency for Amazon SQS event sources}.}
+
+\item{AmazonManagedKafkaEventSourceConfig}{}
+
+\item{SelfManagedKafkaEventSourceConfig}{}
 
 \item{DocumentDBEventSourceConfig}{Specific configuration settings for a DocumentDB event source.}
 
@@ -126,9 +135,9 @@ this property to encrypt data using your own customer managed key.}
 \item{MetricsConfig}{The metrics configuration for your event source. For more information,
 see \href{https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics}{Event source mapping metrics}.}
 
-\item{ProvisionedPollerConfig}{(Amazon MSK and self-managed Apache Kafka only) The provisioned mode
-configuration for the event source. For more information, see
-\href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode}{provisioned mode}.}
+\item{ProvisionedPollerConfig}{(Amazon SQS, Amazon MSK, and self-managed Apache Kafka only) The
+provisioned mode configuration for the event source. For more
+information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode}{provisioned mode}.}
 }
 \description{
 Updates an event source mapping. You can change the function that Lambda invokes, or pause invocation and resume later from the same location.

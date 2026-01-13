@@ -18,8 +18,8 @@ quicksight_update_role_custom_permission(
 
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to create a
 group in. The Amazon Web Services account ID that you provide must be
-the same Amazon Web Services account that contains your Amazon
-QuickSight account.}
+the same Amazon Web Services account that contains your Amazon Quick
+Sight account.}
 
 \item{Namespace}{[required] The namespace that contains the role that you want to update.}
 }

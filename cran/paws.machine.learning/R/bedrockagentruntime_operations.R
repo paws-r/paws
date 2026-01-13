@@ -253,6 +253,73 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 }
 .bedrockagentruntime$operations$get_agent_memory <- bedrockagentruntime_get_agent_memory
 
+#' Retrieves the flow definition snapshot used for a flow execution
+#'
+#' @description
+#' Retrieves the flow definition snapshot used for a flow execution. The snapshot represents the flow metadata and definition as it existed at the time the execution was started. Note that even if the flow is edited after an execution starts, the snapshot connected to the execution remains unchanged.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_get_execution_flow_snapshot/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_get_execution_flow_snapshot/) for full documentation.
+#'
+#' @param executionIdentifier &#91;required&#93; The unique identifier of the flow execution.
+#' @param flowAliasIdentifier &#91;required&#93; The unique identifier of the flow alias used for the flow execution.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_get_execution_flow_snapshot
+bedrockagentruntime_get_execution_flow_snapshot <- function(executionIdentifier, flowAliasIdentifier, flowIdentifier) {
+  op <- new_operation(
+    name = "GetExecutionFlowSnapshot",
+    http_method = "GET",
+    http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}/flowsnapshot",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$get_execution_flow_snapshot_input(executionIdentifier = executionIdentifier, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier)
+  output <- .bedrockagentruntime$get_execution_flow_snapshot_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$get_execution_flow_snapshot <- bedrockagentruntime_get_execution_flow_snapshot
+
+#' Retrieves details about a specific flow execution, including its status,
+#' start and end times, and any errors that occurred during execution
+#'
+#' @description
+#' Retrieves details about a specific flow execution, including its status, start and end times, and any errors that occurred during execution.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_get_flow_execution/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_get_flow_execution/) for full documentation.
+#'
+#' @param executionIdentifier &#91;required&#93; The unique identifier of the flow execution to retrieve.
+#' @param flowAliasIdentifier &#91;required&#93; The unique identifier of the flow alias used for the execution.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_get_flow_execution
+bedrockagentruntime_get_flow_execution <- function(executionIdentifier, flowAliasIdentifier, flowIdentifier) {
+  op <- new_operation(
+    name = "GetFlowExecution",
+    http_method = "GET",
+    http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$get_flow_execution_input(executionIdentifier = executionIdentifier, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier)
+  output <- .bedrockagentruntime$get_flow_execution_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$get_flow_execution <- bedrockagentruntime_get_flow_execution
+
 #' Retrieves the details of a specific invocation step within an invocation
 #' in a session
 #'
@@ -341,6 +408,12 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #' If you include `returnControlInvocationResults` in the `sessionState`
 #' field, the `inputText` field will be ignored.
 #' @param memoryId The unique identifier of the agent memory.
+#' @param promptCreationConfigurations Specifies parameters that control how the service populates the agent
+#' prompt for an [`invoke_agent`][bedrockagentruntime_invoke_agent]
+#' request. You can control which aspects of previous invocations in the
+#' same agent session the service uses to populate the agent prompt. This
+#' gives you more granular control over the contextual history that is used
+#' to process the current request.
 #' @param sessionId &#91;required&#93; The unique identifier of the session. Use the same value across requests
 #' to continue the same conversation.
 #' @param sessionState Contains parameters that specify various attributes of the session. For
@@ -358,7 +431,7 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #' @keywords internal
 #'
 #' @rdname bedrockagentruntime_invoke_agent
-bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModelConfigurations = NULL, enableTrace = NULL, endSession = NULL, inputText = NULL, memoryId = NULL, sessionId, sessionState = NULL, sourceArn = NULL, streamingConfigurations = NULL) {
+bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModelConfigurations = NULL, enableTrace = NULL, endSession = NULL, inputText = NULL, memoryId = NULL, promptCreationConfigurations = NULL, sessionId, sessionState = NULL, sourceArn = NULL, streamingConfigurations = NULL) {
   op <- new_operation(
     name = "InvokeAgent",
     http_method = "POST",
@@ -367,7 +440,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$invoke_agent_input(agentAliasId = agentAliasId, agentId = agentId, bedrockModelConfigurations = bedrockModelConfigurations, enableTrace = enableTrace, endSession = endSession, inputText = inputText, memoryId = memoryId, sessionId = sessionId, sessionState = sessionState, sourceArn = sourceArn, streamingConfigurations = streamingConfigurations)
+  input <- .bedrockagentruntime$invoke_agent_input(agentAliasId = agentAliasId, agentId = agentId, bedrockModelConfigurations = bedrockModelConfigurations, enableTrace = enableTrace, endSession = endSession, inputText = inputText, memoryId = memoryId, promptCreationConfigurations = promptCreationConfigurations, sessionId = sessionId, sessionState = sessionState, sourceArn = sourceArn, streamingConfigurations = streamingConfigurations)
   output <- .bedrockagentruntime$invoke_agent_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -476,6 +549,13 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #' @param knowledgeBases Contains information of the knowledge bases to associate with.
 #' @param orchestrationType Specifies the type of orchestration strategy for the agent. This is set
 #' to DEFAULT orchestration type, by default.
+#' @param promptCreationConfigurations Specifies parameters that control how the service populates the agent
+#' prompt for an
+#' [`invoke_inline_agent`][bedrockagentruntime_invoke_inline_agent]
+#' request. You can control which aspects of previous invocations in the
+#' same agent session the service uses to populate the agent prompt. This
+#' gives you more granular control over the contextual history that is used
+#' to process the current request.
 #' @param promptOverrideConfiguration Configurations for advanced prompts used to override the default prompts
 #' to enhance the accuracy of the inline agent.
 #' @param sessionId &#91;required&#93; The unique identifier of the session. Use the same value across requests
@@ -488,7 +568,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #' @keywords internal
 #'
 #' @rdname bedrockagentruntime_invoke_inline_agent
-bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCollaboration = NULL, agentName = NULL, bedrockModelConfigurations = NULL, collaboratorConfigurations = NULL, collaborators = NULL, customOrchestration = NULL, customerEncryptionKeyArn = NULL, enableTrace = NULL, endSession = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, inlineSessionState = NULL, inputText = NULL, instruction, knowledgeBases = NULL, orchestrationType = NULL, promptOverrideConfiguration = NULL, sessionId, streamingConfigurations = NULL) {
+bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCollaboration = NULL, agentName = NULL, bedrockModelConfigurations = NULL, collaboratorConfigurations = NULL, collaborators = NULL, customOrchestration = NULL, customerEncryptionKeyArn = NULL, enableTrace = NULL, endSession = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, inlineSessionState = NULL, inputText = NULL, instruction, knowledgeBases = NULL, orchestrationType = NULL, promptCreationConfigurations = NULL, promptOverrideConfiguration = NULL, sessionId, streamingConfigurations = NULL) {
   op <- new_operation(
     name = "InvokeInlineAgent",
     http_method = "POST",
@@ -497,7 +577,7 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCo
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, agentCollaboration = agentCollaboration, agentName = agentName, bedrockModelConfigurations = bedrockModelConfigurations, collaboratorConfigurations = collaboratorConfigurations, collaborators = collaborators, customOrchestration = customOrchestration, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, orchestrationType = orchestrationType, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId, streamingConfigurations = streamingConfigurations)
+  input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, agentCollaboration = agentCollaboration, agentName = agentName, bedrockModelConfigurations = bedrockModelConfigurations, collaboratorConfigurations = collaboratorConfigurations, collaborators = collaborators, customOrchestration = customOrchestration, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, orchestrationType = orchestrationType, promptCreationConfigurations = promptCreationConfigurations, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId, streamingConfigurations = streamingConfigurations)
   output <- .bedrockagentruntime$invoke_inline_agent_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -506,6 +586,83 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCo
   return(response)
 }
 .bedrockagentruntime$operations$invoke_inline_agent <- bedrockagentruntime_invoke_inline_agent
+
+#' Lists events that occurred during a flow execution
+#'
+#' @description
+#' Lists events that occurred during a flow execution. Events provide detailed information about the execution progress, including node inputs and outputs, flow inputs and outputs, condition results, and failure events.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_list_flow_execution_events/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_list_flow_execution_events/) for full documentation.
+#'
+#' @param eventType &#91;required&#93; The type of events to retrieve. Specify `Node` for node-level events or
+#' `Flow` for flow-level events.
+#' @param executionIdentifier &#91;required&#93; The unique identifier of the flow execution.
+#' @param flowAliasIdentifier &#91;required&#93; The unique identifier of the flow alias used for the execution.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
+#' @param maxResults The maximum number of events to return in a single response. If more
+#' events exist than the specified maxResults value, a token is included in
+#' the response so that the remaining results can be retrieved.
+#' @param nextToken A token to retrieve the next set of results. This value is returned in
+#' the response if more results are available.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_list_flow_execution_events
+bedrockagentruntime_list_flow_execution_events <- function(eventType, executionIdentifier, flowAliasIdentifier, flowIdentifier, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListFlowExecutionEvents",
+    http_method = "GET",
+    http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}/events",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "flowExecutionEvents"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$list_flow_execution_events_input(eventType = eventType, executionIdentifier = executionIdentifier, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier, maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrockagentruntime$list_flow_execution_events_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$list_flow_execution_events <- bedrockagentruntime_list_flow_execution_events
+
+#' Lists all executions of a flow
+#'
+#' @description
+#' Lists all executions of a flow. Results can be paginated and include summary information about each execution, such as status, start and end times, and the execution's Amazon Resource Name (ARN).
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_list_flow_executions/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_list_flow_executions/) for full documentation.
+#'
+#' @param flowAliasIdentifier The unique identifier of the flow alias to list executions for.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow to list executions for.
+#' @param maxResults The maximum number of flow executions to return in a single response. If
+#' more executions exist than the specified `maxResults` value, a token is
+#' included in the response so that the remaining results can be retrieved.
+#' @param nextToken A token to retrieve the next set of results. This value is returned in
+#' the response if more results are available.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_list_flow_executions
+bedrockagentruntime_list_flow_executions <- function(flowAliasIdentifier = NULL, flowIdentifier, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListFlowExecutions",
+    http_method = "GET",
+    http_path = "/flows/{flowIdentifier}/executions",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "flowExecutionSummaries"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$list_flow_executions_input(flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier, maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrockagentruntime$list_flow_executions_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$list_flow_executions <- bedrockagentruntime_list_flow_executions
 
 #' Lists all invocation steps associated with a session and optionally, an
 #' invocation within the session
@@ -892,6 +1049,77 @@ bedrockagentruntime_retrieve_and_generate_stream <- function(input, retrieveAndG
   return(response)
 }
 .bedrockagentruntime$operations$retrieve_and_generate_stream <- bedrockagentruntime_retrieve_and_generate_stream
+
+#' Starts an execution of an Amazon Bedrock flow
+#'
+#' @description
+#' Starts an execution of an Amazon Bedrock flow. Unlike flows that run until completion or time out after five minutes, flow executions let you run flows asynchronously for longer durations. Flow executions also yield control so that your application can perform other tasks.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_start_flow_execution/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_start_flow_execution/) for full documentation.
+#'
+#' @param flowAliasIdentifier &#91;required&#93; The unique identifier of the flow alias to use for the flow execution.
+#' @param flowExecutionName The unique name for the flow execution. If you don't provide one, a
+#' system-generated name is used.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow to execute.
+#' @param inputs &#91;required&#93; The input data required for the flow execution. This must match the
+#' input schema defined in the flow.
+#' @param modelPerformanceConfiguration The performance settings for the foundation model used in the flow
+#' execution.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_start_flow_execution
+bedrockagentruntime_start_flow_execution <- function(flowAliasIdentifier, flowExecutionName = NULL, flowIdentifier, inputs, modelPerformanceConfiguration = NULL) {
+  op <- new_operation(
+    name = "StartFlowExecution",
+    http_method = "POST",
+    http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$start_flow_execution_input(flowAliasIdentifier = flowAliasIdentifier, flowExecutionName = flowExecutionName, flowIdentifier = flowIdentifier, inputs = inputs, modelPerformanceConfiguration = modelPerformanceConfiguration)
+  output <- .bedrockagentruntime$start_flow_execution_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$start_flow_execution <- bedrockagentruntime_start_flow_execution
+
+#' Stops an Amazon Bedrock flow's execution
+#'
+#' @description
+#' Stops an Amazon Bedrock flow's execution. This operation prevents further processing of the flow and changes the execution status to `Aborted`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_stop_flow_execution/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_stop_flow_execution/) for full documentation.
+#'
+#' @param executionIdentifier &#91;required&#93; The unique identifier of the flow execution to stop.
+#' @param flowAliasIdentifier &#91;required&#93; The unique identifier of the flow alias used for the execution.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_stop_flow_execution
+bedrockagentruntime_stop_flow_execution <- function(executionIdentifier, flowAliasIdentifier, flowIdentifier) {
+  op <- new_operation(
+    name = "StopFlowExecution",
+    http_method = "POST",
+    http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}/stop",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$stop_flow_execution_input(executionIdentifier = executionIdentifier, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier)
+  output <- .bedrockagentruntime$stop_flow_execution_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$stop_flow_execution <- bedrockagentruntime_stop_flow_execution
 
 #' Associate tags with a resource
 #'

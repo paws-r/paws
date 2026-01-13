@@ -9,7 +9,7 @@ quicksight_describe_brand(AwsAccountId, BrandId, VersionId = NULL)
 \arguments{
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account that owns the brand.}
 
-\item{BrandId}{[required] The ID of the Amazon QuickSight brand.}
+\item{BrandId}{[required] The ID of the Quick Suite brand.}
 
 \item{VersionId}{The ID of the specific version. The default value is the latest version.}
 }

@@ -9,7 +9,7 @@ quicksight_describe_brand_published_version(AwsAccountId, BrandId)
 \arguments{
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account that owns the brand.}
 
-\item{BrandId}{[required] The ID of the Amazon QuickSight brand.}
+\item{BrandId}{[required] The ID of the Quick Suite brand.}
 }
 \description{
 Describes the published version of the brand.

@@ -27,7 +27,7 @@ encryption context is supported only on operations with symmetric
 encryption KMS keys. On operations with symmetric encryption KMS keys,
 an encryption context is optional, but it is strongly recommended.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption context}
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html}{Encryption context}
 in the \emph{Key Management Service Developer Guide}.}
 
 \item{KeyId}{[required] Specifies the symmetric encryption KMS key that encrypts the private key
@@ -57,22 +57,23 @@ get the alias name and alias ARN, use
 \item{KeyPairSpec}{[required] Determines the type of data key pair that is generated.
 
 The KMS rule that restricts the use of asymmetric RSA and SM2 KMS keys
-to encrypt and decrypt or to sign and verify (but not both), and the
-rule that permits you to use ECC KMS keys only to sign and verify, are
-not effective on data key pairs, which are used outside of KMS. The SM2
-key spec is only available in China Regions.}
+to encrypt and decrypt or to sign and verify (but not both), the rule
+that permits you to use ECC KMS keys only to sign and verify, and the
+rule that permits you to use ML-DSA key pairs to sign and verify only
+are not effective on data key pairs, which are used outside of KMS. The
+SM2 key spec is only available in China Regions.}
 
 \item{GrantTokens}{A list of grant tokens.
 
 Use a grant token when your permission to call this operation comes from
 a new grant that has not yet achieved \emph{eventual consistency}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token}{Using a grant token}
+and \href{https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html}{Using a grant token}
 in the \emph{Key Management Service Developer Guide}.}
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
 
-To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your KMS API calls}
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions}
 in the \emph{Key Management Service Developer Guide}.}
 }
 \description{

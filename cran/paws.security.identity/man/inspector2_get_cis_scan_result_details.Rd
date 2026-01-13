@@ -5,34 +5,34 @@
 \title{Retrieves CIS scan result details}
 \usage{
 inspector2_get_cis_scan_result_details(
+  scanArn,
+  targetResourceId,
   accountId,
   filterCriteria = NULL,
-  maxResults = NULL,
-  nextToken = NULL,
-  scanArn,
   sortBy = NULL,
   sortOrder = NULL,
-  targetResourceId
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
+\item{scanArn}{[required] The scan ARN.}
+
+\item{targetResourceId}{[required] The target resource ID.}
+
 \item{accountId}{[required] The account ID.}
 
 \item{filterCriteria}{The filter criteria.}
-
-\item{maxResults}{The maximum number of CIS scan result details to be returned in a single
-page of results.}
-
-\item{nextToken}{The pagination token from a previous request that's used to retrieve the
-next page of results.}
-
-\item{scanArn}{[required] The scan ARN.}
 
 \item{sortBy}{The sort by order.}
 
 \item{sortOrder}{The sort order.}
 
-\item{targetResourceId}{[required] The target resource ID.}
+\item{nextToken}{The pagination token from a previous request that's used to retrieve the
+next page of results.}
+
+\item{maxResults}{The maximum number of CIS scan result details to be returned in a single
+page of results.}
 }
 \description{
 Retrieves CIS scan result details.

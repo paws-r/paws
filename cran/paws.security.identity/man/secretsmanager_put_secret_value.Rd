@@ -2,8 +2,8 @@
 % Please edit documentation in R/secretsmanager_operations.R
 \name{secretsmanager_put_secret_value}
 \alias{secretsmanager_put_secret_value}
-\title{Creates a new version with a new encrypted secret value and attaches it
-to the secret}
+\title{Creates a new version of your secret by creating a new encrypted value
+and attaching it to the secret}
 \usage{
 secretsmanager_put_secret_value(
   SecretId,
@@ -92,19 +92,21 @@ version that \code{AWSCURRENT} was removed from.
 If you don't include \code{VersionStages}, then Secrets Manager automatically
 moves the staging label \code{AWSCURRENT} to this version.}
 
-\item{RotationToken}{A unique identifier that indicates the source of the request. For
-cross-account rotation (when you rotate a secret in one account by using
-a Lambda rotation function in another account) and the Lambda rotation
-function assumes an IAM role to call Secrets Manager, Secrets Manager
-validates the identity with the rotation token. For more information,
-see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html}{How rotation works}.
+\item{RotationToken}{A unique identifier that indicates the source of the request. Required
+for secret rotations using an IAM assumed role or cross-account
+rotation, in which you rotate a secret in one account by using a Lambda
+rotation function in another account. In both cases, the rotation
+function assumes an IAM role to call Secrets Manager, and then Secrets
+Manager validates the identity using the token. For more information,
+see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html}{How rotation works}
+and \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_lambda.html}{Rotation by Lambda functions}.
 
 Sensitive: This field contains sensitive information, so the service
 does not include it in CloudTrail log entries. If you create your own
 log entries, you must also avoid logging the information in this field.}
 }
 \description{
-Creates a new version with a new encrypted secret value and attaches it to the secret. The version can contain a new \code{SecretString} value or a new \code{SecretBinary} value.
+Creates a new version of your secret by creating a new encrypted value and attaching it to the secret. version can contain a new \code{SecretString} value or a new \code{SecretBinary} value.
 
 See \url{https://www.paws-r-sdk.com/docs/secretsmanager_put_secret_value/} for full documentation.
 }

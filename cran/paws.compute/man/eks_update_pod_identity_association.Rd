@@ -8,7 +8,9 @@ eks_update_pod_identity_association(
   clusterName,
   associationId,
   roleArn = NULL,
-  clientRequestToken = NULL
+  clientRequestToken = NULL,
+  disableSessionTags = NULL,
+  targetRoleArn = NULL
 )
 }
 \arguments{
@@ -16,13 +18,49 @@ eks_update_pod_identity_association(
 
 \item{associationId}{[required] The ID of the association to be updated.}
 
-\item{roleArn}{The new IAM role to change the}
+\item{roleArn}{The new IAM role to change in the association.}
 
 \item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
+
+\item{disableSessionTags}{Disable the automatic sessions tags that are appended by EKS Pod
+Identity.
+
+EKS Pod Identity adds a pre-defined set of session tags when it assumes
+the role. You can use these tags to author a single role that can work
+across resources by allowing access to Amazon Web Services resources
+based on matching tags. By default, EKS Pod Identity attaches six tags,
+including tags for cluster name, namespace, and service account name.
+For the list of tags added by EKS Pod Identity, see \href{https://docs.aws.amazon.com/eks/latest/userguide/pod-id-abac.html#pod-id-abac-tags}{List of session tags added by EKS Pod Identity}
+in the \emph{Amazon EKS User Guide}.
+
+Amazon Web Services compresses inline session policies, managed policy
+ARNs, and session tags into a packed binary format that has a separate
+limit. If you receive a \code{PackedPolicyTooLarge} error indicating the
+packed binary format has exceeded the size limit, you can attempt to
+reduce the size by disabling the session tags added by EKS Pod Identity.}
+
+\item{targetRoleArn}{The Amazon Resource Name (ARN) of the target IAM role to associate with
+the service account. This role is assumed by using the EKS Pod Identity
+association role, then the credentials for this role are injected into
+the Pod.
+
+When you run applications on Amazon EKS, your application might need to
+access Amazon Web Services resources from a different role that exists
+in the same or different Amazon Web Services account. For example, your
+application running in “Account A” might need to access resources, such
+as buckets in “Account B” or within “Account A” itself. You can create a
+association to access Amazon Web Services resources in “Account B” by
+creating two IAM roles: a role in “Account A” and a role in “Account B”
+(which can be the same or different account), each with the necessary
+trust and permission policies. After you provide these roles in the \emph{IAM
+role} and \emph{Target IAM role} fields, EKS will perform role chaining to
+ensure your application gets the required permissions. This means Role A
+will assume Role B, allowing your Pods to securely access resources like
+S3 buckets in the target account.}
 }
 \description{
-Updates a EKS Pod Identity association. Only the IAM role can be changed; an association can't be moved between clusters, namespaces, or service accounts. If you need to edit the namespace or service account, you need to delete the association and then create a new association with your desired settings.
+Updates a EKS Pod Identity association. In an update, you can change the IAM role, the target IAM role, or \code{disableSessionTags}. You must change at least one of these in an update. An association can't be moved between clusters, namespaces, or service accounts. If you need to edit the namespace or service account, you need to delete the association and then create a new association with your desired settings.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_update_pod_identity_association/} for full documentation.
 }

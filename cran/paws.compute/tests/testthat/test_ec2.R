@@ -52,12 +52,44 @@ test_that("describe_capacity_block_extension_history", {
   expect_error(svc$describe_capacity_block_extension_history(MaxResults = 20), NA)
 })
 
+test_that("describe_capacity_block_status", {
+  expect_error(svc$describe_capacity_block_status(), NA)
+})
+
+test_that("describe_capacity_block_status", {
+  expect_error(svc$describe_capacity_block_status(MaxResults = 20), NA)
+})
+
+test_that("describe_capacity_blocks", {
+  expect_error(svc$describe_capacity_blocks(), NA)
+})
+
+test_that("describe_capacity_blocks", {
+  expect_error(svc$describe_capacity_blocks(MaxResults = 20), NA)
+})
+
+test_that("describe_capacity_manager_data_exports", {
+  expect_error(svc$describe_capacity_manager_data_exports(), NA)
+})
+
+test_that("describe_capacity_manager_data_exports", {
+  expect_error(svc$describe_capacity_manager_data_exports(MaxResults = 20), NA)
+})
+
 test_that("describe_capacity_reservation_fleets", {
   expect_error(svc$describe_capacity_reservation_fleets(), NA)
 })
 
 test_that("describe_capacity_reservation_fleets", {
   expect_error(svc$describe_capacity_reservation_fleets(MaxResults = 20), NA)
+})
+
+test_that("describe_capacity_reservation_topology", {
+  expect_error(svc$describe_capacity_reservation_topology(), NA)
+})
+
+test_that("describe_capacity_reservation_topology", {
+  expect_error(svc$describe_capacity_reservation_topology(MaxResults = 20), NA)
 })
 
 test_that("describe_capacity_reservations", {
@@ -228,6 +260,22 @@ test_that("describe_id_format", {
   expect_error(svc$describe_id_format(), NA)
 })
 
+test_that("describe_image_usage_report_entries", {
+  expect_error(svc$describe_image_usage_report_entries(), NA)
+})
+
+test_that("describe_image_usage_report_entries", {
+  expect_error(svc$describe_image_usage_report_entries(MaxResults = 20), NA)
+})
+
+test_that("describe_image_usage_reports", {
+  expect_error(svc$describe_image_usage_reports(), NA)
+})
+
+test_that("describe_image_usage_reports", {
+  expect_error(svc$describe_image_usage_reports(MaxResults = 20), NA)
+})
+
 test_that("describe_import_image_tasks", {
   expect_error(svc$describe_import_image_tasks(), NA)
 })
@@ -278,6 +326,22 @@ test_that("describe_instance_image_metadata", {
 
 test_that("describe_instance_image_metadata", {
   expect_error(svc$describe_instance_image_metadata(MaxResults = 20), NA)
+})
+
+test_that("describe_instance_sql_ha_history_states", {
+  expect_error(svc$describe_instance_sql_ha_history_states(), NA)
+})
+
+test_that("describe_instance_sql_ha_history_states", {
+  expect_error(svc$describe_instance_sql_ha_history_states(MaxResults = 20), NA)
+})
+
+test_that("describe_instance_sql_ha_states", {
+  expect_error(svc$describe_instance_sql_ha_states(), NA)
+})
+
+test_that("describe_instance_sql_ha_states", {
+  expect_error(svc$describe_instance_sql_ha_states(MaxResults = 20), NA)
 })
 
 test_that("describe_instance_status", {
@@ -344,12 +408,36 @@ test_that("describe_ipam_external_resource_verification_tokens", {
   expect_error(svc$describe_ipam_external_resource_verification_tokens(MaxResults = 20), NA)
 })
 
+test_that("describe_ipam_policies", {
+  expect_error(svc$describe_ipam_policies(), NA)
+})
+
+test_that("describe_ipam_policies", {
+  expect_error(svc$describe_ipam_policies(MaxResults = 20), NA)
+})
+
 test_that("describe_ipam_pools", {
   expect_error(svc$describe_ipam_pools(), NA)
 })
 
 test_that("describe_ipam_pools", {
   expect_error(svc$describe_ipam_pools(MaxResults = 20), NA)
+})
+
+test_that("describe_ipam_prefix_list_resolver_targets", {
+  expect_error(svc$describe_ipam_prefix_list_resolver_targets(), NA)
+})
+
+test_that("describe_ipam_prefix_list_resolver_targets", {
+  expect_error(svc$describe_ipam_prefix_list_resolver_targets(MaxResults = 20), NA)
+})
+
+test_that("describe_ipam_prefix_list_resolvers", {
+  expect_error(svc$describe_ipam_prefix_list_resolvers(), NA)
+})
+
+test_that("describe_ipam_prefix_list_resolvers", {
+  expect_error(svc$describe_ipam_prefix_list_resolvers(MaxResults = 20), NA)
 })
 
 test_that("describe_ipam_resource_discoveries", {
@@ -466,6 +554,14 @@ test_that("describe_mac_hosts", {
 
 test_that("describe_mac_hosts", {
   expect_error(svc$describe_mac_hosts(MaxResults = 20), NA)
+})
+
+test_that("describe_mac_modification_tasks", {
+  expect_error(svc$describe_mac_modification_tasks(), NA)
+})
+
+test_that("describe_mac_modification_tasks", {
+  expect_error(svc$describe_mac_modification_tasks(MaxResults = 20), NA)
 })
 
 test_that("describe_managed_prefix_lists", {
@@ -796,6 +892,14 @@ test_that("describe_transit_gateway_connects", {
   expect_error(svc$describe_transit_gateway_connects(MaxResults = 20), NA)
 })
 
+test_that("describe_transit_gateway_metering_policies", {
+  expect_error(svc$describe_transit_gateway_metering_policies(), NA)
+})
+
+test_that("describe_transit_gateway_metering_policies", {
+  expect_error(svc$describe_transit_gateway_metering_policies(MaxResults = 20), NA)
+})
+
 test_that("describe_transit_gateway_multicast_domains", {
   expect_error(svc$describe_transit_gateway_multicast_domains(), NA)
 })
@@ -948,6 +1052,14 @@ test_that("describe_vpc_classic_link_dns_support", {
   expect_error(svc$describe_vpc_classic_link_dns_support(MaxResults = 20), NA)
 })
 
+test_that("describe_vpc_encryption_controls", {
+  expect_error(svc$describe_vpc_encryption_controls(), NA)
+})
+
+test_that("describe_vpc_encryption_controls", {
+  expect_error(svc$describe_vpc_encryption_controls(MaxResults = 20), NA)
+})
+
 test_that("describe_vpc_endpoint_associations", {
   expect_error(svc$describe_vpc_endpoint_associations(), NA)
 })
@@ -1012,6 +1124,14 @@ test_that("describe_vpcs", {
   expect_error(svc$describe_vpcs(MaxResults = 20), NA)
 })
 
+test_that("describe_vpn_concentrators", {
+  expect_error(svc$describe_vpn_concentrators(), NA)
+})
+
+test_that("describe_vpn_concentrators", {
+  expect_error(svc$describe_vpn_concentrators(MaxResults = 20), NA)
+})
+
 test_that("describe_vpn_connections", {
   expect_error(svc$describe_vpn_connections(), NA)
 })
@@ -1034,4 +1154,12 @@ test_that("list_snapshots_in_recycle_bin", {
 
 test_that("list_snapshots_in_recycle_bin", {
   expect_error(svc$list_snapshots_in_recycle_bin(MaxResults = 20), NA)
+})
+
+test_that("list_volumes_in_recycle_bin", {
+  expect_error(svc$list_volumes_in_recycle_bin(), NA)
+})
+
+test_that("list_volumes_in_recycle_bin", {
+  expect_error(svc$list_volumes_in_recycle_bin(MaxResults = 20), NA)
 })

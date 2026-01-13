@@ -11,7 +11,8 @@ directoryservice_connect_directory(
   Description = NULL,
   Size,
   ConnectSettings,
-  Tags = NULL
+  Tags = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -30,6 +31,9 @@ directoryservice_connect_directory(
 for the operation.}
 
 \item{Tags}{The tags to be assigned to AD Connector.}
+
+\item{NetworkType}{The network type for your directory. The default value is \code{IPv4} or
+\code{IPv6} based on the provided subnet capabilities.}
 }
 \description{
 Creates an AD Connector to connect to a self-managed directory.

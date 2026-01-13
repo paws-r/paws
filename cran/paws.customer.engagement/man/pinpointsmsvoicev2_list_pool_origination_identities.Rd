@@ -15,8 +15,8 @@ pinpointsmsvoicev2_list_pool_origination_identities(
 \item{PoolId}{[required] The unique identifier for the pool. This value can be either the PoolId
 or PoolArn.
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 
 \item{Filters}{An array of PoolOriginationIdentitiesFilter objects to filter the
 results..}

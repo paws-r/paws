@@ -75,9 +75,11 @@ NULL
 #' not be able to create VPC endpoints in VPCs that are not owned by your
 #' Amazon Web Services account.
 #' @param Tags Create tags when creating the broker.
-#' @param Users &#91;required&#93; The list of broker users (persons or applications) who can access queues
-#' and topics. For Amazon MQ for RabbitMQ brokers, one and only one
-#' administrative user is accepted and created when a broker is first
+#' @param Users The list of broker users (persons or applications) who can access queues
+#' and topics. For Amazon MQ for RabbitMQ brokers, an administrative user
+#' is required if using simple authentication and authorization. For
+#' brokers using OAuth2, this user is optional. When provided, one and only
+#' one administrative user is accepted and created when a broker is first
 #' provisioned. All subsequent broker users are created by making RabbitMQ
 #' API calls directly to brokers or via the RabbitMQ web console.
 #' @param DataReplicationMode Defines whether this broker is a part of a data replication pair.
@@ -88,7 +90,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname mq_create_broker
-mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerName, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode, EncryptionOptions = NULL, EngineType, EngineVersion = NULL, HostInstanceType, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users, DataReplicationMode = NULL, DataReplicationPrimaryBrokerArn = NULL) {
+mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerName, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode, EncryptionOptions = NULL, EngineType, EngineVersion = NULL, HostInstanceType, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users = NULL, DataReplicationMode = NULL, DataReplicationPrimaryBrokerArn = NULL) {
   op <- new_operation(
     name = "CreateBroker",
     http_method = "POST",

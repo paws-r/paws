@@ -4,12 +4,12 @@
 \alias{braket_cancel_quantum_task}
 \title{Cancels the specified task}
 \usage{
-braket_cancel_quantum_task(clientToken, quantumTaskArn)
+braket_cancel_quantum_task(quantumTaskArn, clientToken)
 }
 \arguments{
-\item{clientToken}{[required] The client token associated with the request.}
+\item{quantumTaskArn}{[required] The ARN of the quantum task to cancel.}
 
-\item{quantumTaskArn}{[required] The ARN of the task to cancel.}
+\item{clientToken}{[required] The client token associated with the cancellation request.}
 }
 \description{
 Cancels the specified task.

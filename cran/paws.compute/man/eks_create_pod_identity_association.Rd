@@ -11,22 +11,24 @@ eks_create_pod_identity_association(
   serviceAccount,
   roleArn,
   clientRequestToken = NULL,
-  tags = NULL
+  tags = NULL,
+  disableSessionTags = NULL,
+  targetRoleArn = NULL
 )
 }
 \arguments{
-\item{clusterName}{[required] The name of the cluster to create the association in.}
+\item{clusterName}{[required] The name of the cluster to create the EKS Pod Identity association in.}
 
 \item{namespace}{[required] The name of the Kubernetes namespace inside the cluster to create the
-association in. The service account and the pods that use the service
-account must be in this namespace.}
+EKS Pod Identity association in. The service account and the Pods that
+use the service account must be in this namespace.}
 
 \item{serviceAccount}{[required] The name of the Kubernetes service account inside the cluster to
 associate the IAM credentials with.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to associate with the
 service account. The EKS Pod Identity agent manages credentials to
-assume this role for applications in the containers in the pods that use
+assume this role for applications in the containers in the Pods that use
 this service account.}
 
 \item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
@@ -55,9 +57,45 @@ Amazon Web Services use. You cannot edit or delete tag keys or
 values with this prefix. Tags with this prefix do not count against
 your tags per resource limit.
 }}
+
+\item{disableSessionTags}{Disable the automatic sessions tags that are appended by EKS Pod
+Identity.
+
+EKS Pod Identity adds a pre-defined set of session tags when it assumes
+the role. You can use these tags to author a single role that can work
+across resources by allowing access to Amazon Web Services resources
+based on matching tags. By default, EKS Pod Identity attaches six tags,
+including tags for cluster name, namespace, and service account name.
+For the list of tags added by EKS Pod Identity, see \href{https://docs.aws.amazon.com/eks/latest/userguide/pod-id-abac.html#pod-id-abac-tags}{List of session tags added by EKS Pod Identity}
+in the \emph{Amazon EKS User Guide}.
+
+Amazon Web Services compresses inline session policies, managed policy
+ARNs, and session tags into a packed binary format that has a separate
+limit. If you receive a \code{PackedPolicyTooLarge} error indicating the
+packed binary format has exceeded the size limit, you can attempt to
+reduce the size by disabling the session tags added by EKS Pod Identity.}
+
+\item{targetRoleArn}{The Amazon Resource Name (ARN) of the target IAM role to associate with
+the service account. This role is assumed by using the EKS Pod Identity
+association role, then the credentials for this role are injected into
+the Pod.
+
+When you run applications on Amazon EKS, your application might need to
+access Amazon Web Services resources from a different role that exists
+in the same or different Amazon Web Services account. For example, your
+application running in “Account A” might need to access resources, such
+as Amazon S3 buckets in “Account B” or within “Account A” itself. You
+can create a association to access Amazon Web Services resources in
+“Account B” by creating two IAM roles: a role in “Account A” and a role
+in “Account B” (which can be the same or different account), each with
+the necessary trust and permission policies. After you provide these
+roles in the \emph{IAM role} and \emph{Target IAM role} fields, EKS will perform
+role chaining to ensure your application gets the required permissions.
+This means Role A will assume Role B, allowing your Pods to securely
+access resources like S3 buckets in the target account.}
 }
 \description{
-Creates an EKS Pod Identity association between a service account in an Amazon EKS cluster and an IAM role with \emph{EKS Pod Identity}. Use EKS Pod Identity to give temporary IAM credentials to pods and the credentials are rotated automatically.
+Creates an EKS Pod Identity association between a service account in an Amazon EKS cluster and an IAM role with \emph{EKS Pod Identity}. Use EKS Pod Identity to give temporary IAM credentials to Pods and the credentials are rotated automatically.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_create_pod_identity_association/} for full documentation.
 }

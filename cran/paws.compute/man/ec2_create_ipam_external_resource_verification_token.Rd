@@ -25,7 +25,7 @@ you have the required permissions, the error response is
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 }
 \description{
-Create a verification token. A verification token is an Amazon Web Services-generated random value that you can use to prove ownership of an external resource. For example, you can use a verification token to validate that you control a public IP address range when you bring an IP address range to Amazon Web Services (BYOIP).
+Create a verification token.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_ipam_external_resource_verification_token/} for full documentation.
 }

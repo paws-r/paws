@@ -14,7 +14,8 @@ sesv2_send_bulk_email(
   DefaultContent,
   BulkEmailEntries,
   ConfigurationSetName = NULL,
-  EndpointId = NULL
+  EndpointId = NULL,
+  TenantName = NULL
 )
 }
 \arguments{
@@ -68,6 +69,12 @@ template message.}
 \item{ConfigurationSetName}{The name of the configuration set to use when sending the email.}
 
 \item{EndpointId}{The ID of the multi-region endpoint (global-endpoint).}
+
+\item{TenantName}{The name of the tenant through which this bulk email will be sent.
+
+The email sending operation will only succeed if all referenced
+resources (identities, configuration sets, and templates) are associated
+with this tenant.}
 }
 \description{
 Composes an email message to multiple destinations.

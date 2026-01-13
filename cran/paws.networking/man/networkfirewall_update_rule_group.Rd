@@ -15,7 +15,8 @@ networkfirewall_update_rule_group(
   DryRun = NULL,
   EncryptionConfiguration = NULL,
   SourceMetadata = NULL,
-  AnalyzeRuleGroup = NULL
+  AnalyzeRuleGroup = NULL,
+  SummaryConfiguration = NULL
 )
 }
 \arguments{
@@ -92,6 +93,11 @@ rules in the rule group for rule behavior such as asymmetric routing. If
 set to \code{TRUE}, Network Firewall runs the analysis and then updates the
 rule group for you. To run the stateless rule group analyzer without
 updating the rule group, set \code{DryRun} to \code{TRUE}.}
+
+\item{SummaryConfiguration}{Updates the selected summary configuration for a rule group.
+
+Changes affect subsequent responses from
+\code{\link[=networkfirewall_describe_rule_group_summary]{describe_rule_group_summary}}.}
 }
 \description{
 Updates the rule settings for the specified rule group. You use a rule group by reference in one or more firewall policies. When you modify a rule group, you modify all firewall policies that use the rule group.

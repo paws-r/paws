@@ -18,6 +18,12 @@ rds_modify_db_snapshot(
 The following are the database engines and engine versions that are
 available when you upgrade a DB snapshot.
 
+\strong{MariaDB}
+
+For the list of engine versions that are available for upgrading a DB
+snapshot, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/mariadb-upgrade-snapshot.html}{Upgrading a MariaDB DB snapshot engine version}
+in the \emph{Amazon RDS User Guide.}
+
 \strong{MySQL}
 
 For the list of engine versions that are available for upgrading a DB
@@ -26,6 +32,17 @@ in the \emph{Amazon RDS User Guide.}
 
 \strong{Oracle}
 \itemize{
+\item \verb{21.0.0.0.ru-2025-04.rur-2025-04.r1} (supported for
+21.0.0.0.ru-2022-01.rur-2022-01.r1,
+21.0.0.0.ru-2022-04.rur-2022-04.r1,
+21.0.0.0.ru-2022-07.rur-2022-07.r1,
+21.0.0.0.ru-2022-10.rur-2022-10.r1,
+21.0.0.0.ru-2023-01.rur-2023-01.r1 and
+21.0.0.0.ru-2023-01.rur-2023-01.r2 DB snapshots)
+\item \verb{19.0.0.0.ru-2025-04.rur-2025-04.r1} (supported for
+19.0.0.0.ru-2019-07.rur-2019-07.r1,
+19.0.0.0.ru-2019-10.rur-2019-10.r1 and
+0.0.0.ru-2020-01.rur-2020-01.r1 DB snapshots)
 \item \verb{19.0.0.0.ru-2022-01.rur-2022-01.r1} (supported for 12.2.0.1 DB
 snapshots)
 \item \verb{19.0.0.0.ru-2022-07.rur-2022-07.r1} (supported for 12.1.0.2 DB

@@ -210,7 +210,10 @@ Replication, see
 time of the restored object copy.}
 
 \item{ServerSideEncryption}{The server-side encryption algorithm used when storing requested object
-in Amazon S3 (for example, AES256, \code{aws:kms}).}
+in Amazon S3 or Amazon FSx.
+
+When accessing data stored in Amazon FSx file systems using S3 access
+points, the only valid server side encryption option is \code{aws:fsx}.}
 
 \item{SSECustomerAlgorithm}{Encryption algorithm used if server-side encryption with a
 customer-provided encryption key was specified for object stored in

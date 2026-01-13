@@ -118,11 +118,11 @@ analytics, feed real-time dashboards, and create real-time metrics.
 \link[=kinesisanalyticsv2_delete_application_snapshot]{delete_application_snapshot} \tab Deletes a snapshot of application state\cr
 \link[=kinesisanalyticsv2_delete_application_vpc_configuration]{delete_application_vpc_configuration} \tab Removes a VPC configuration from a Managed Service for Apache Flink application\cr
 \link[=kinesisanalyticsv2_describe_application]{describe_application} \tab Returns information about a specific Managed Service for Apache Flink application\cr
-\link[=kinesisanalyticsv2_describe_application_operation]{describe_application_operation} \tab Returns information about a specific operation performed on a Managed Service for Apache Flink application\cr
+\link[=kinesisanalyticsv2_describe_application_operation]{describe_application_operation} \tab Provides a detailed description of a specified application operation\cr
 \link[=kinesisanalyticsv2_describe_application_snapshot]{describe_application_snapshot} \tab Returns information about a snapshot of application state data\cr
 \link[=kinesisanalyticsv2_describe_application_version]{describe_application_version} \tab Provides a detailed description of a specified version of the application\cr
 \link[=kinesisanalyticsv2_discover_input_schema]{discover_input_schema} \tab Infers a schema for a SQL-based Kinesis Data Analytics application by evaluating sample records on the specified streaming source (Kinesis data stream or Kinesis Data Firehose delivery stream) or Amazon S3 object\cr
-\link[=kinesisanalyticsv2_list_application_operations]{list_application_operations} \tab Lists information about operations performed on a Managed Service for Apache Flink application\cr
+\link[=kinesisanalyticsv2_list_application_operations]{list_application_operations} \tab Lists all the operations performed for the specified application such as UpdateApplication, StartApplication etc\cr
 \link[=kinesisanalyticsv2_list_applications]{list_applications} \tab Returns a list of Managed Service for Apache Flink applications in your account\cr
 \link[=kinesisanalyticsv2_list_application_snapshots]{list_application_snapshots} \tab Lists information about the current application snapshots\cr
 \link[=kinesisanalyticsv2_list_application_versions]{list_application_versions} \tab Lists all the versions for the specified application, including versions that were rolled back\cr

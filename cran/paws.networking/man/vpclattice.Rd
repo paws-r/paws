@@ -103,7 +103,7 @@ more information, see the \href{https://docs.aws.amazon.com/vpc-lattice/latest/u
 \link[=vpclattice_create_access_log_subscription]{create_access_log_subscription} \tab Enables access logs to be sent to Amazon CloudWatch, Amazon S3, and Amazon Kinesis Data Firehose\cr
 \link[=vpclattice_create_listener]{create_listener} \tab Creates a listener for a service\cr
 \link[=vpclattice_create_resource_configuration]{create_resource_configuration} \tab Creates a resource configuration\cr
-\link[=vpclattice_create_resource_gateway]{create_resource_gateway} \tab Creates a resource gateway\cr
+\link[=vpclattice_create_resource_gateway]{create_resource_gateway} \tab A resource gateway is a point of ingress into the VPC where a resource resides\cr
 \link[=vpclattice_create_rule]{create_rule} \tab Creates a listener rule\cr
 \link[=vpclattice_create_service]{create_service} \tab Creates a service\cr
 \link[=vpclattice_create_service_network]{create_service_network} \tab Creates a service network\cr
@@ -113,6 +113,7 @@ more information, see the \href{https://docs.aws.amazon.com/vpc-lattice/latest/u
 \link[=vpclattice_create_target_group]{create_target_group} \tab Creates a target group\cr
 \link[=vpclattice_delete_access_log_subscription]{delete_access_log_subscription} \tab Deletes the specified access log subscription\cr
 \link[=vpclattice_delete_auth_policy]{delete_auth_policy} \tab Deletes the specified auth policy\cr
+\link[=vpclattice_delete_domain_verification]{delete_domain_verification} \tab Deletes the specified domain verification\cr
 \link[=vpclattice_delete_listener]{delete_listener} \tab Deletes the specified listener\cr
 \link[=vpclattice_delete_resource_configuration]{delete_resource_configuration} \tab Deletes the specified resource configuration\cr
 \link[=vpclattice_delete_resource_endpoint_association]{delete_resource_endpoint_association} \tab Disassociates the resource configuration from the resource VPC endpoint\cr
@@ -128,6 +129,7 @@ more information, see the \href{https://docs.aws.amazon.com/vpc-lattice/latest/u
 \link[=vpclattice_deregister_targets]{deregister_targets} \tab Deregisters the specified targets from the specified target group\cr
 \link[=vpclattice_get_access_log_subscription]{get_access_log_subscription} \tab Retrieves information about the specified access log subscription\cr
 \link[=vpclattice_get_auth_policy]{get_auth_policy} \tab Retrieves information about the auth policy for the specified service or service network\cr
+\link[=vpclattice_get_domain_verification]{get_domain_verification} \tab Retrieves information about a domain verification\cr
 \link[=vpclattice_get_listener]{get_listener} \tab Retrieves information about the specified listener for the specified service\cr
 \link[=vpclattice_get_resource_configuration]{get_resource_configuration} \tab Retrieves information about the specified resource configuration\cr
 \link[=vpclattice_get_resource_gateway]{get_resource_gateway} \tab Retrieves information about the specified resource gateway\cr
@@ -140,6 +142,7 @@ more information, see the \href{https://docs.aws.amazon.com/vpc-lattice/latest/u
 \link[=vpclattice_get_service_network_vpc_association]{get_service_network_vpc_association} \tab Retrieves information about the specified association between a service network and a VPC\cr
 \link[=vpclattice_get_target_group]{get_target_group} \tab Retrieves information about the specified target group\cr
 \link[=vpclattice_list_access_log_subscriptions]{list_access_log_subscriptions} \tab Lists the access log subscriptions for the specified service network or service\cr
+\link[=vpclattice_list_domain_verifications]{list_domain_verifications} \tab Lists the domain verifications\cr
 \link[=vpclattice_list_listeners]{list_listeners} \tab Lists the listeners for the specified service\cr
 \link[=vpclattice_list_resource_configurations]{list_resource_configurations} \tab Lists the resource configurations owned by or shared with this account\cr
 \link[=vpclattice_list_resource_endpoint_associations]{list_resource_endpoint_associations} \tab Lists the associations for the specified VPC endpoint\cr
@@ -157,6 +160,7 @@ more information, see the \href{https://docs.aws.amazon.com/vpc-lattice/latest/u
 \link[=vpclattice_put_auth_policy]{put_auth_policy} \tab Creates or updates the auth policy\cr
 \link[=vpclattice_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based permission policy to a service or service network\cr
 \link[=vpclattice_register_targets]{register_targets} \tab Registers the targets with the target group\cr
+\link[=vpclattice_start_domain_verification]{start_domain_verification} \tab Starts the domain verification process for a custom domain name\cr
 \link[=vpclattice_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 \link[=vpclattice_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
 \link[=vpclattice_update_access_log_subscription]{update_access_log_subscription} \tab Updates the specified access log subscription\cr

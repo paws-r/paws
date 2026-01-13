@@ -6,6 +6,7 @@
 \usage{
 ecs_describe_capacity_providers(
   capacityProviders = NULL,
+  cluster = NULL,
   include = NULL,
   maxResults = NULL,
   nextToken = NULL
@@ -15,6 +16,10 @@ ecs_describe_capacity_providers(
 \item{capacityProviders}{The short name or full Amazon Resource Name (ARN) of one or more
 capacity providers. Up to \code{100} capacity providers can be described in
 an action.}
+
+\item{cluster}{The name of the cluster to describe capacity providers for. When
+specified, only capacity providers associated with this cluster are
+returned, including Amazon ECS Managed Instances capacity providers.}
 
 \item{include}{Specifies whether or not you want to see the resource tags for the
 capacity provider. If \code{TAGS} is specified, the tags are included in the

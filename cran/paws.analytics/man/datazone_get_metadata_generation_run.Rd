@@ -4,13 +4,15 @@
 \alias{datazone_get_metadata_generation_run}
 \title{Gets a metadata generation run in Amazon DataZone}
 \usage{
-datazone_get_metadata_generation_run(domainIdentifier, identifier)
+datazone_get_metadata_generation_run(domainIdentifier, identifier, type = NULL)
 }
 \arguments{
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain the metadata generation run of
 which you want to get.}
 
 \item{identifier}{[required] The identifier of the metadata generation run.}
+
+\item{type}{The type of the metadata generation run.}
 }
 \description{
 Gets a metadata generation run in Amazon DataZone.

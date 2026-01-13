@@ -6,7 +6,8 @@
 \usage{
 securityhub_list_organization_admin_accounts(
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  Feature = NULL
 )
 }
 \arguments{
@@ -17,6 +18,9 @@ securityhub_list_organization_admin_accounts(
 operation, set the value of this parameter to \code{NULL}. For subsequent
 calls to the operation, to continue listing data, set the value of this
 parameter to the value returned from the previous response.}
+
+\item{Feature}{The feature where the delegated administrator account is listed.
+Defaults to Security Hub if not specified.}
 }
 \description{
 Lists the Security Hub administrator accounts. Can only be called by the organization management account.

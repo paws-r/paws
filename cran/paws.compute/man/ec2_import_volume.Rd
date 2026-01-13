@@ -5,20 +5,29 @@
 \title{This API action supports only single-volume VMs}
 \usage{
 ec2_import_volume(
+  AvailabilityZoneId = NULL,
   DryRun = NULL,
-  AvailabilityZone,
+  AvailabilityZone = NULL,
   Image,
   Description = NULL,
   Volume
 )
 }
 \arguments{
+\item{AvailabilityZoneId}{The ID of the Availability Zone for the resulting EBS volume.
+
+Either \code{AvailabilityZone} or \code{AvailabilityZoneId} must be specified, but
+not both.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{AvailabilityZone}{[required] The Availability Zone for the resulting EBS volume.}
+\item{AvailabilityZone}{The Availability Zone for the resulting EBS volume.
+
+Either \code{AvailabilityZone} or \code{AvailabilityZoneId} must be specified, but
+not both.}
 
 \item{Image}{[required] The disk image.}
 

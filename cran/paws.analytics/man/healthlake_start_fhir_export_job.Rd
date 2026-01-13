@@ -2,7 +2,7 @@
 % Please edit documentation in R/healthlake_operations.R
 \name{healthlake_start_fhir_export_job}
 \alias{healthlake_start_fhir_export_job}
-\title{Begins a FHIR export job}
+\title{Start a FHIR export job}
 \usage{
 healthlake_start_fhir_export_job(
   JobName = NULL,
@@ -13,20 +13,18 @@ healthlake_start_fhir_export_job(
 )
 }
 \arguments{
-\item{JobName}{The user generated name for an export job.}
+\item{JobName}{The export job name.}
 
-\item{OutputDataConfig}{[required] The output data configuration that was supplied when the export job was
-created.}
+\item{OutputDataConfig}{[required] The output data configuration supplied when the export job was started.}
 
-\item{DatastoreId}{[required] The AWS generated ID for the data store from which files are being
-exported for an export job.}
+\item{DatastoreId}{[required] The data store identifier from which files are being exported.}
 
-\item{DataAccessRoleArn}{[required] The Amazon Resource Name used during the initiation of the job.}
+\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) used during initiation of the export job.}
 
-\item{ClientToken}{An optional user provided token used for ensuring idempotency.}
+\item{ClientToken}{An optional user provided token used for ensuring API idempotency.}
 }
 \description{
-Begins a FHIR export job.
+Start a FHIR export job.
 
 See \url{https://www.paws-r-sdk.com/docs/healthlake_start_fhir_export_job/} for full documentation.
 }

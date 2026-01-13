@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_brands}
 \alias{quicksight_list_brands}
-\title{Lists all brands in an Amazon QuickSight account}
+\title{Lists all brands in an Quick Sight account}
 \usage{
 quicksight_list_brands(AwsAccountId, MaxResults = NULL, NextToken = NULL)
 }
@@ -16,7 +16,7 @@ want to list.}
 results.}
 }
 \description{
-Lists all brands in an Amazon QuickSight account.
+Lists all brands in an Quick Sight account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_list_brands/} for full documentation.
 }

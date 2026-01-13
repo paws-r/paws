@@ -6,21 +6,27 @@
 configuration}
 \usage{
 vpclattice_list_service_network_resource_associations(
+  serviceNetworkIdentifier = NULL,
+  resourceConfigurationIdentifier = NULL,
   maxResults = NULL,
   nextToken = NULL,
-  resourceConfigurationIdentifier = NULL,
-  serviceNetworkIdentifier = NULL
+  includeChildren = NULL
 )
 }
 \arguments{
+\item{serviceNetworkIdentifier}{The ID of the service network.}
+
+\item{resourceConfigurationIdentifier}{The ID of the resource configuration.}
+
 \item{maxResults}{The maximum page size.}
 
 \item{nextToken}{If there are additional results, a pagination token for the next page of
 results.}
 
-\item{resourceConfigurationIdentifier}{The ID of the resource configurationk.}
+\item{includeChildren}{Include service network resource associations of the child resource
+configuration with the grouped resource configuration.
 
-\item{serviceNetworkIdentifier}{The ID of the service network.}
+The type is boolean and the default value is false.}
 }
 \description{
 Lists the associations between a service network and a resource configuration.

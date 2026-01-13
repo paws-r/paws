@@ -105,6 +105,7 @@ Amazon Web Services accounts, Regions, and on-premises locations.
 \link[paws.networking:networkmanager_create_connection]{create_connection} \tab Creates a connection between two devices\cr
 \link[paws.networking:networkmanager_create_connect_peer]{create_connect_peer} \tab Creates a core network Connect peer for a specified core network connect attachment between a core network and an appliance\cr
 \link[paws.networking:networkmanager_create_core_network]{create_core_network} \tab Creates a core network as part of your global network, and optionally, with a core network policy\cr
+\link[paws.networking:networkmanager_create_core_network_prefix_list_association]{create_core_network_prefix_list_association} \tab Creates an association between a core network and a prefix list for routing control\cr
 \link[paws.networking:networkmanager_create_device]{create_device} \tab Creates a new device in a global network\cr
 \link[paws.networking:networkmanager_create_direct_connect_gateway_attachment]{create_direct_connect_gateway_attachment} \tab Creates an Amazon Web Services Direct Connect gateway attachment\cr
 \link[paws.networking:networkmanager_create_global_network]{create_global_network} \tab Creates a new, empty global network\cr
@@ -119,6 +120,7 @@ Amazon Web Services accounts, Regions, and on-premises locations.
 \link[paws.networking:networkmanager_delete_connect_peer]{delete_connect_peer} \tab Deletes a Connect peer\cr
 \link[paws.networking:networkmanager_delete_core_network]{delete_core_network} \tab Deletes a core network along with all core network policies\cr
 \link[paws.networking:networkmanager_delete_core_network_policy_version]{delete_core_network_policy_version} \tab Deletes a policy version from a core network\cr
+\link[paws.networking:networkmanager_delete_core_network_prefix_list_association]{delete_core_network_prefix_list_association} \tab Deletes an association between a core network and a prefix list\cr
 \link[paws.networking:networkmanager_delete_device]{delete_device} \tab Deletes an existing device\cr
 \link[paws.networking:networkmanager_delete_global_network]{delete_global_network} \tab Deletes an existing global network\cr
 \link[paws.networking:networkmanager_delete_link]{delete_link} \tab Deletes an existing link\cr
@@ -159,17 +161,22 @@ Amazon Web Services accounts, Regions, and on-premises locations.
 \link[paws.networking:networkmanager_get_transit_gateway_registrations]{get_transit_gateway_registrations} \tab Gets information about the transit gateway registrations in a specified global network\cr
 \link[paws.networking:networkmanager_get_transit_gateway_route_table_attachment]{get_transit_gateway_route_table_attachment} \tab Returns information about a transit gateway route table attachment\cr
 \link[paws.networking:networkmanager_get_vpc_attachment]{get_vpc_attachment} \tab Returns information about a VPC attachment\cr
+\link[paws.networking:networkmanager_list_attachment_routing_policy_associations]{list_attachment_routing_policy_associations} \tab Lists the routing policy associations for attachments in a core network\cr
 \link[paws.networking:networkmanager_list_attachments]{list_attachments} \tab Returns a list of core network attachments\cr
 \link[paws.networking:networkmanager_list_connect_peers]{list_connect_peers} \tab Returns a list of core network Connect peers\cr
 \link[paws.networking:networkmanager_list_core_network_policy_versions]{list_core_network_policy_versions} \tab Returns a list of core network policy versions\cr
+\link[paws.networking:networkmanager_list_core_network_prefix_list_associations]{list_core_network_prefix_list_associations} \tab Lists the prefix list associations for a core network\cr
+\link[paws.networking:networkmanager_list_core_network_routing_information]{list_core_network_routing_information} \tab Lists routing information for a core network, including routes and their attributes\cr
 \link[paws.networking:networkmanager_list_core_networks]{list_core_networks} \tab Returns a list of owned and shared core networks\cr
 \link[paws.networking:networkmanager_list_organization_service_access_status]{list_organization_service_access_status} \tab Gets the status of the Service Linked Role (SLR) deployment for the accounts in a given Amazon Web Services Organization\cr
 \link[paws.networking:networkmanager_list_peerings]{list_peerings} \tab Lists the peerings for a core network\cr
 \link[paws.networking:networkmanager_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for a specified resource\cr
+\link[paws.networking:networkmanager_put_attachment_routing_policy_label]{put_attachment_routing_policy_label} \tab Applies a routing policy label to an attachment for traffic routing decisions\cr
 \link[paws.networking:networkmanager_put_core_network_policy]{put_core_network_policy} \tab Creates a new, immutable version of a core network policy\cr
 \link[paws.networking:networkmanager_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource policy\cr
 \link[paws.networking:networkmanager_register_transit_gateway]{register_transit_gateway} \tab Registers a transit gateway in your global network\cr
 \link[paws.networking:networkmanager_reject_attachment]{reject_attachment} \tab Rejects a core network attachment request\cr
+\link[paws.networking:networkmanager_remove_attachment_routing_policy_label]{remove_attachment_routing_policy_label} \tab Removes a routing policy label from an attachment\cr
 \link[paws.networking:networkmanager_restore_core_network_policy_version]{restore_core_network_policy_version} \tab Restores a previous policy version as a new, immutable version of a core network policy\cr
 \link[paws.networking:networkmanager_start_organization_service_access_update]{start_organization_service_access_update} \tab Enables the Network Manager service for an Amazon Web Services Organization\cr
 \link[paws.networking:networkmanager_start_route_analysis]{start_route_analysis} \tab Starts analyzing the routing path between the specified source and destination\cr

@@ -5,15 +5,15 @@
 \title{Returns details about a scan, including whether or not a scan has
 completed}
 \usage{
-codegurusecurity_get_scan(runId = NULL, scanName)
+codegurusecurity_get_scan(scanName, runId = NULL)
 }
 \arguments{
+\item{scanName}{[required] The name of the scan you want to view details about.}
+
 \item{runId}{UUID that identifies the individual scan run you want to view details
 about. You retrieve this when you call the
 \code{\link[=codegurusecurity_create_scan]{create_scan}} operation. Defaults to the
 latest scan run if missing.}
-
-\item{scanName}{[required] The name of the scan you want to view details about.}
 }
 \description{
 Returns details about a scan, including whether or not a scan has completed.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_describe_group}
 \alias{quicksight_describe_group}
-\title{Returns an Amazon QuickSight group's description and Amazon Resource
+\title{Returns an Amazon Quick Sight group's description and Amazon Resource
 Name (ARN)}
 \usage{
 quicksight_describe_group(GroupName, AwsAccountId, Namespace)
@@ -12,12 +12,12 @@ quicksight_describe_group(GroupName, AwsAccountId, Namespace)
 
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the group is in.
 Currently, you use the ID for the Amazon Web Services account that
-contains your Amazon QuickSight account.}
+contains your Amazon Quick Sight account.}
 
 \item{Namespace}{[required] The namespace of the group that you want described.}
 }
 \description{
-Returns an Amazon QuickSight group's description and Amazon Resource Name (ARN).
+Returns an Amazon Quick Sight group's description and Amazon Resource Name (ARN).
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_group/} for full documentation.
 }

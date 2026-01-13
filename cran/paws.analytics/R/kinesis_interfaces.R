@@ -15,7 +15,7 @@ NULL
 
 .kinesis$create_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), ShardCount = structure(logical(0), tags = list(type = "integer")), StreamModeDetails = structure(list(StreamMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), ShardCount = structure(logical(0), tags = list(type = "integer")), StreamModeDetails = structure(list(StreamMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), WarmThroughputMiBps = structure(logical(0), tags = list(type = "integer")), MaxRecordSizeInKiB = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -63,6 +63,18 @@ NULL
   list()
 }
 
+.kinesis$describe_account_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesis$describe_account_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MinimumThroughputBillingCommitment = structure(list(Status = structure(logical(0), tags = list(type = "string")), StartedAt = structure(logical(0), tags = list(type = "timestamp")), EndedAt = structure(logical(0), tags = list(type = "timestamp")), EarliestAllowedEndAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .kinesis$describe_limits_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
@@ -107,7 +119,7 @@ NULL
 
 .kinesis$describe_stream_summary_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamDescriptionSummary = structure(list(StreamName = structure(logical(0), tags = list(type = "string")), StreamARN = structure(logical(0), tags = list(type = "string")), StreamStatus = structure(logical(0), tags = list(type = "string")), StreamModeDetails = structure(list(StreamMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer")), StreamCreationTimestamp = structure(logical(0), tags = list(type = "timestamp")), EnhancedMonitoring = structure(list(structure(list(ShardLevelMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), OpenShardCount = structure(logical(0), tags = list(type = "integer")), ConsumerCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamDescriptionSummary = structure(list(StreamName = structure(logical(0), tags = list(type = "string")), StreamARN = structure(logical(0), tags = list(type = "string")), StreamStatus = structure(logical(0), tags = list(type = "string")), StreamModeDetails = structure(list(StreamMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer")), StreamCreationTimestamp = structure(logical(0), tags = list(type = "timestamp")), EnhancedMonitoring = structure(list(structure(list(ShardLevelMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), OpenShardCount = structure(logical(0), tags = list(type = "integer")), ConsumerCount = structure(logical(0), tags = list(type = "integer")), WarmThroughput = structure(list(TargetMiBps = structure(logical(0), tags = list(type = "integer")), CurrentMiBps = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), MaxRecordSizeInKiB = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -369,6 +381,28 @@ NULL
   list()
 }
 
+.kinesis$update_account_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MinimumThroughputBillingCommitment = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesis$update_account_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MinimumThroughputBillingCommitment = structure(list(Status = structure(logical(0), tags = list(type = "string")), StartedAt = structure(logical(0), tags = list(type = "timestamp")), EndedAt = structure(logical(0), tags = list(type = "timestamp")), EarliestAllowedEndAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesis$update_max_record_size_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StreamARN = structure(logical(0), tags = list(type = "string")), MaxRecordSizeInKiB = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesis$update_max_record_size_output <- function(...) {
+  list()
+}
+
 .kinesis$update_shard_count_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), TargetShardCount = structure(logical(0), tags = list(type = "integer")), ScalingType = structure(logical(0), tags = list(type = "string")), StreamARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -383,10 +417,22 @@ NULL
 
 .kinesis$update_stream_mode_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamARN = structure(logical(0), tags = list(type = "string")), StreamModeDetails = structure(list(StreamMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamARN = structure(logical(0), tags = list(type = "string")), StreamModeDetails = structure(list(StreamMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), WarmThroughputMiBps = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$update_stream_mode_output <- function(...) {
   list()
+}
+
+.kinesis$update_stream_warm_throughput_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StreamARN = structure(logical(0), tags = list(type = "string")), StreamName = structure(logical(0), tags = list(type = "string")), WarmThroughputMiBps = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesis$update_stream_warm_throughput_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StreamARN = structure(logical(0), tags = list(type = "string")), StreamName = structure(logical(0), tags = list(type = "string")), WarmThroughput = structure(list(TargetMiBps = structure(logical(0), tags = list(type = "integer")), CurrentMiBps = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }

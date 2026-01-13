@@ -4,17 +4,17 @@
 \alias{bedrockagent_get_ingestion_job}
 \title{Gets information about a data ingestion job}
 \usage{
-bedrockagent_get_ingestion_job(dataSourceId, ingestionJobId, knowledgeBaseId)
+bedrockagent_get_ingestion_job(knowledgeBaseId, dataSourceId, ingestionJobId)
 }
 \arguments{
+\item{knowledgeBaseId}{[required] The unique identifier of the knowledge base for the data ingestion job
+you want to get information on.}
+
 \item{dataSourceId}{[required] The unique identifier of the data source for the data ingestion job you
 want to get information on.}
 
 \item{ingestionJobId}{[required] The unique identifier of the data ingestion job you want to get
 information on.}
-
-\item{knowledgeBaseId}{[required] The unique identifier of the knowledge base for the data ingestion job
-you want to get information on.}
 }
 \description{
 Gets information about a data ingestion job. Data sources are ingested into your knowledge base so that Large Language Models (LLMs) can use your data.

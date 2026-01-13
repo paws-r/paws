@@ -570,11 +570,12 @@ workspaces_create_workspaces <- function(Workspaces) {
 #' @param Tags The tags for the pool.
 #' @param ApplicationSettings Indicates the application settings of the pool.
 #' @param TimeoutSettings Indicates the timeout settings of the pool.
+#' @param RunningMode The running mode for the pool.
 #'
 #' @keywords internal
 #'
 #' @rdname workspaces_create_workspaces_pool
-workspaces_create_workspaces_pool <- function(PoolName, Description, BundleId, DirectoryId, Capacity, Tags = NULL, ApplicationSettings = NULL, TimeoutSettings = NULL) {
+workspaces_create_workspaces_pool <- function(PoolName, Description, BundleId, DirectoryId, Capacity, Tags = NULL, ApplicationSettings = NULL, TimeoutSettings = NULL, RunningMode = NULL) {
   op <- new_operation(
     name = "CreateWorkspacesPool",
     http_method = "POST",
@@ -583,7 +584,7 @@ workspaces_create_workspaces_pool <- function(PoolName, Description, BundleId, D
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspaces$create_workspaces_pool_input(PoolName = PoolName, Description = Description, BundleId = BundleId, DirectoryId = DirectoryId, Capacity = Capacity, Tags = Tags, ApplicationSettings = ApplicationSettings, TimeoutSettings = TimeoutSettings)
+  input <- .workspaces$create_workspaces_pool_input(PoolName = PoolName, Description = Description, BundleId = BundleId, DirectoryId = DirectoryId, Capacity = Capacity, Tags = Tags, ApplicationSettings = ApplicationSettings, TimeoutSettings = TimeoutSettings, RunningMode = RunningMode)
   output <- .workspaces$create_workspaces_pool_output()
   config <- get_config()
   svc <- .workspaces$service(config, op)
@@ -1260,6 +1261,38 @@ workspaces_describe_connection_aliases <- function(AliasIds = NULL, ResourceId =
 }
 .workspaces$operations$describe_connection_aliases <- workspaces_describe_connection_aliases
 
+#' Retrieves information about a WorkSpace BYOL image being imported via
+#' ImportCustomWorkspaceImage
+#'
+#' @description
+#' Retrieves information about a WorkSpace BYOL image being imported via ImportCustomWorkspaceImage.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_custom_workspace_image_import/](https://www.paws-r-sdk.com/docs/workspaces_describe_custom_workspace_image_import/) for full documentation.
+#'
+#' @param ImageId &#91;required&#93; The identifier of the WorkSpace image.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_custom_workspace_image_import
+workspaces_describe_custom_workspace_image_import <- function(ImageId) {
+  op <- new_operation(
+    name = "DescribeCustomWorkspaceImageImport",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workspaces$describe_custom_workspace_image_import_input(ImageId = ImageId)
+  output <- .workspaces$describe_custom_workspace_image_import_output()
+  config <- get_config()
+  svc <- .workspaces$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_custom_workspace_image_import <- workspaces_describe_custom_workspace_image_import
+
 #' Describes the associations between the applications and the specified
 #' image
 #'
@@ -1895,6 +1928,49 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 .workspaces$operations$import_client_branding <- workspaces_import_client_branding
 
 #' Imports the specified Windows 10 or 11 Bring Your Own License (BYOL)
+#' image into Amazon WorkSpaces using EC2 Image Builder
+#'
+#' @description
+#' Imports the specified Windows 10 or 11 Bring Your Own License (BYOL) image into Amazon WorkSpaces using EC2 Image Builder. The image must be an already licensed image that is in your Amazon Web Services account, and you must own the image. For more information about creating BYOL images, see [Bring Your Own Windows Desktop Licenses](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspaces_import_custom_workspace_image/](https://www.paws-r-sdk.com/docs/workspaces_import_custom_workspace_image/) for full documentation.
+#'
+#' @param ImageName &#91;required&#93; The name of the WorkSpace image.
+#' @param ImageDescription &#91;required&#93; The description of the WorkSpace image.
+#' @param ComputeType &#91;required&#93; The supported compute type for the WorkSpace image.
+#' @param Protocol &#91;required&#93; The supported protocol for the WorkSpace image. Windows 11 does not
+#' support PCOIP protocol.
+#' @param ImageSource &#91;required&#93; The options for image import source.
+#' @param InfrastructureConfigurationArn &#91;required&#93; The infrastructure configuration ARN that specifies how the WorkSpace
+#' image is built.
+#' @param Platform &#91;required&#93; The platform for the WorkSpace image source.
+#' @param OsVersion &#91;required&#93; The OS version for the WorkSpace image source.
+#' @param Tags The resource tags. Each WorkSpaces resource can have a maximum of 50
+#' tags.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_import_custom_workspace_image
+workspaces_import_custom_workspace_image <- function(ImageName, ImageDescription, ComputeType, Protocol, ImageSource, InfrastructureConfigurationArn, Platform, OsVersion, Tags = NULL) {
+  op <- new_operation(
+    name = "ImportCustomWorkspaceImage",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workspaces$import_custom_workspace_image_input(ImageName = ImageName, ImageDescription = ImageDescription, ComputeType = ComputeType, Protocol = Protocol, ImageSource = ImageSource, InfrastructureConfigurationArn = InfrastructureConfigurationArn, Platform = Platform, OsVersion = OsVersion, Tags = Tags)
+  output <- .workspaces$import_custom_workspace_image_output()
+  config <- get_config()
+  svc <- .workspaces$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$import_custom_workspace_image <- workspaces_import_custom_workspace_image
+
+#' Imports the specified Windows 10 or 11 Bring Your Own License (BYOL)
 #' image into Amazon WorkSpaces
 #'
 #' @description
@@ -1916,7 +1992,7 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 #' The `BYOL_REGULAR_BYOP` and `BYOL_GRAPHICS_G4DN_BYOP` values are only
 #' supported by Amazon WorkSpaces Core. Contact your account team to be
 #' allow-listed to use these values. For more information, see [Amazon
-#' WorkSpaces Core](https://aws.amazon.com/workspaces-family/core/).
+#' WorkSpaces Core](https://aws.amazon.com/workspaces/vdi-partners/).
 #' @param ImageName &#91;required&#93; The name of the WorkSpace image.
 #' @param ImageDescription &#91;required&#93; The description of the WorkSpace image.
 #' @param Tags The tags. Each WorkSpaces resource can have a maximum of 50 tags.
@@ -3057,11 +3133,13 @@ workspaces_update_workspace_image_permission <- function(ImageId, AllowCopyImage
 #' @param Capacity The desired capacity for the pool.
 #' @param ApplicationSettings The persistent application settings for users in the pool.
 #' @param TimeoutSettings Indicates the timeout settings of the specified pool.
+#' @param RunningMode The desired running mode for the pool. The running mode can only be
+#' updated when the pool is in a stopped state.
 #'
 #' @keywords internal
 #'
 #' @rdname workspaces_update_workspaces_pool
-workspaces_update_workspaces_pool <- function(PoolId, Description = NULL, BundleId = NULL, DirectoryId = NULL, Capacity = NULL, ApplicationSettings = NULL, TimeoutSettings = NULL) {
+workspaces_update_workspaces_pool <- function(PoolId, Description = NULL, BundleId = NULL, DirectoryId = NULL, Capacity = NULL, ApplicationSettings = NULL, TimeoutSettings = NULL, RunningMode = NULL) {
   op <- new_operation(
     name = "UpdateWorkspacesPool",
     http_method = "POST",
@@ -3070,7 +3148,7 @@ workspaces_update_workspaces_pool <- function(PoolId, Description = NULL, Bundle
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspaces$update_workspaces_pool_input(PoolId = PoolId, Description = Description, BundleId = BundleId, DirectoryId = DirectoryId, Capacity = Capacity, ApplicationSettings = ApplicationSettings, TimeoutSettings = TimeoutSettings)
+  input <- .workspaces$update_workspaces_pool_input(PoolId = PoolId, Description = Description, BundleId = BundleId, DirectoryId = DirectoryId, Capacity = Capacity, ApplicationSettings = ApplicationSettings, TimeoutSettings = TimeoutSettings, RunningMode = RunningMode)
   output <- .workspaces$update_workspaces_pool_output()
   config <- get_config()
   svc <- .workspaces$service(config, op)

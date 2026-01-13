@@ -107,6 +107,7 @@ NULL
 #'  \link[=opensearchservice_cancel_service_software_update]{cancel_service_software_update} \tab Cancels a scheduled service software update for an Amazon OpenSearch Service domain\cr
 #'  \link[=opensearchservice_create_application]{create_application} \tab Creates an OpenSearch UI application\cr
 #'  \link[=opensearchservice_create_domain]{create_domain} \tab Creates an Amazon OpenSearch Service domain\cr
+#'  \link[=opensearchservice_create_index]{create_index} \tab Creates an OpenSearch index with optional automatic semantic enrichment for specified text fields\cr
 #'  \link[=opensearchservice_create_outbound_connection]{create_outbound_connection} \tab Creates a new cross-cluster search connection from a source Amazon OpenSearch Service domain to a destination domain\cr
 #'  \link[=opensearchservice_create_package]{create_package} \tab Creates a package for use with Amazon OpenSearch Service domains\cr
 #'  \link[=opensearchservice_create_vpc_endpoint]{create_vpc_endpoint} \tab Creates an Amazon OpenSearch Service-managed VPC endpoint\cr
@@ -115,6 +116,7 @@ NULL
 #'  \link[=opensearchservice_delete_direct_query_data_source]{delete_direct_query_data_source} \tab Deletes a previously configured direct query data source from Amazon OpenSearch Service\cr
 #'  \link[=opensearchservice_delete_domain]{delete_domain} \tab Deletes an Amazon OpenSearch Service domain and all of its data\cr
 #'  \link[=opensearchservice_delete_inbound_connection]{delete_inbound_connection} \tab Allows the destination Amazon OpenSearch Service domain owner to delete an existing inbound cross-cluster search connection\cr
+#'  \link[=opensearchservice_delete_index]{delete_index} \tab Deletes an OpenSearch index\cr
 #'  \link[=opensearchservice_delete_outbound_connection]{delete_outbound_connection} \tab Allows the source Amazon OpenSearch Service domain owner to delete an existing outbound cross-cluster search connection\cr
 #'  \link[=opensearchservice_delete_package]{delete_package} \tab Deletes an Amazon OpenSearch Service package\cr
 #'  \link[=opensearchservice_delete_vpc_endpoint]{delete_vpc_endpoint} \tab Deletes an Amazon OpenSearch Service-managed interface VPC endpoint\cr
@@ -134,12 +136,14 @@ NULL
 #'  \link[=opensearchservice_describe_reserved_instances]{describe_reserved_instances} \tab Describes the Amazon OpenSearch Service instances that you have reserved in a given Region\cr
 #'  \link[=opensearchservice_describe_vpc_endpoints]{describe_vpc_endpoints} \tab Describes one or more Amazon OpenSearch Service-managed VPC endpoints\cr
 #'  \link[=opensearchservice_dissociate_package]{dissociate_package} \tab Removes a package from the specified Amazon OpenSearch Service domain\cr
-#'  \link[=opensearchservice_dissociate_packages]{dissociate_packages} \tab Dissociates multiple packages from a domain simulatneously\cr
+#'  \link[=opensearchservice_dissociate_packages]{dissociate_packages} \tab Dissociates multiple packages from a domain simultaneously\cr
 #'  \link[=opensearchservice_get_application]{get_application} \tab Retrieves the configuration and status of an existing OpenSearch application\cr
 #'  \link[=opensearchservice_get_compatible_versions]{get_compatible_versions} \tab Returns a map of OpenSearch or Elasticsearch versions and the versions you can upgrade them to\cr
 #'  \link[=opensearchservice_get_data_source]{get_data_source} \tab Retrieves information about a direct query data source\cr
+#'  \link[=opensearchservice_get_default_application_setting]{get_default_application_setting} \tab Gets the ARN of the current default application\cr
 #'  \link[=opensearchservice_get_direct_query_data_source]{get_direct_query_data_source} \tab Returns detailed configuration information for a specific direct query data source in Amazon OpenSearch Service\cr
 #'  \link[=opensearchservice_get_domain_maintenance_status]{get_domain_maintenance_status} \tab The status of the maintenance action\cr
+#'  \link[=opensearchservice_get_index]{get_index} \tab Retrieves information about an OpenSearch index including its schema and semantic enrichment configuration\cr
 #'  \link[=opensearchservice_get_package_version_history]{get_package_version_history} \tab Returns a list of Amazon OpenSearch Service package versions, along with their creation time, commit message, and plugin properties (if the package is a zip plugin package)\cr
 #'  \link[=opensearchservice_get_upgrade_history]{get_upgrade_history} \tab Retrieves the complete history of the last 10 upgrades performed on an Amazon OpenSearch Service domain\cr
 #'  \link[=opensearchservice_get_upgrade_status]{get_upgrade_status} \tab Returns the most recent status of the last upgrade or upgrade eligibility check performed on an Amazon OpenSearch Service domain\cr
@@ -158,6 +162,7 @@ NULL
 #'  \link[=opensearchservice_list_vpc_endpoints]{list_vpc_endpoints} \tab Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current Amazon Web Services account and Region\cr
 #'  \link[=opensearchservice_list_vpc_endpoints_for_domain]{list_vpc_endpoints_for_domain} \tab Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain\cr
 #'  \link[=opensearchservice_purchase_reserved_instance_offering]{purchase_reserved_instance_offering} \tab Allows you to purchase Amazon OpenSearch Service Reserved Instances\cr
+#'  \link[=opensearchservice_put_default_application_setting]{put_default_application_setting} \tab Sets the default application to the application with the specified ARN\cr
 #'  \link[=opensearchservice_reject_inbound_connection]{reject_inbound_connection} \tab Allows the remote Amazon OpenSearch Service domain owner to reject an inbound cross-cluster connection request\cr
 #'  \link[=opensearchservice_remove_tags]{remove_tags} \tab Removes the specified set of tags from an Amazon OpenSearch Service domain, data source, or application\cr
 #'  \link[=opensearchservice_revoke_vpc_endpoint_access]{revoke_vpc_endpoint_access} \tab Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint\cr
@@ -167,6 +172,7 @@ NULL
 #'  \link[=opensearchservice_update_data_source]{update_data_source} \tab Updates a direct-query data source\cr
 #'  \link[=opensearchservice_update_direct_query_data_source]{update_direct_query_data_source} \tab Updates the configuration or properties of an existing direct query data source in Amazon OpenSearch Service\cr
 #'  \link[=opensearchservice_update_domain_config]{update_domain_config} \tab Modifies the cluster configuration of the specified Amazon OpenSearch Service domain\cr
+#'  \link[=opensearchservice_update_index]{update_index} \tab Updates an existing OpenSearch index schema and semantic enrichment configuration\cr
 #'  \link[=opensearchservice_update_package]{update_package} \tab Updates a package for use with Amazon OpenSearch Service domains\cr
 #'  \link[=opensearchservice_update_package_scope]{update_package_scope} \tab Updates the scope of a package\cr
 #'  \link[=opensearchservice_update_scheduled_action]{update_scheduled_action} \tab Reschedules a planned domain configuration change for a later time\cr

@@ -8,7 +8,9 @@ s3control_list_access_points(
   AccountId,
   Bucket = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  DataSourceId = NULL,
+  DataSourceType = NULL
 )
 }
 \arguments{
@@ -40,6 +42,12 @@ list. If the specified bucket has more than this number of access
 points, then the response will include a continuation token in the
 \code{NextToken} field that you can use to retrieve the next page of access
 points.}
+
+\item{DataSourceId}{The unique identifier for the data source of the access point.}
+
+\item{DataSourceType}{The type of the data source that the access point is attached to.
+Returns only access points attached to S3 buckets by default. To return
+all access points specify \code{DataSourceType} as \code{ALL}.}
 }
 \description{
 This operation is not supported by directory buckets.

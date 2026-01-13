@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_identity_propagation_configs}
 \alias{quicksight_list_identity_propagation_configs}
-\title{Lists all services and authorized targets that the Amazon QuickSight IAM
+\title{Lists all services and authorized targets that the Quick Sight IAM
 Identity Center application can access}
 \usage{
 quicksight_list_identity_propagation_configs(
@@ -21,7 +21,7 @@ propagation configurations of.}
 results.}
 }
 \description{
-Lists all services and authorized targets that the Amazon QuickSight IAM Identity Center application can access.
+Lists all services and authorized targets that the Quick Sight IAM Identity Center application can access.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_list_identity_propagation_configs/} for full documentation.
 }

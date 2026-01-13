@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_participant}
 \alias{connect_create_participant}
-\title{Adds a new participant into an on-going chat contact}
+\title{Adds a new participant into an on-going chat contact or webRTC call}
 \usage{
 connect_create_participant(
   InstanceId,
@@ -15,8 +15,11 @@ connect_create_participant(
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
 in the Amazon Resource Name (ARN) of the instance.}
 
-\item{ContactId}{[required] The identifier of the contact in this instance of Amazon Connect. Only
-contacts in the CHAT channel are supported.}
+\item{ContactId}{[required] The identifier of the contact in this instance of Amazon Connect.
+Supports contacts in the CHAT channel and VOICE (WebRTC) channels. For
+WebRTC calls, this should be the initial contact ID that was generated
+when the contact was first created (from the StartWebRTCContact API) in
+the VOICE channel}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -25,12 +28,11 @@ populates this field. For more information about idempotency, see
 
 \item{ParticipantDetails}{[required] Information identifying the participant.
 
-The only Valid value for \code{ParticipantRole} is \code{CUSTOM_BOT}.
-
-\code{DisplayName} is \strong{Required}.}
+The only valid value for \code{ParticipantRole} is \code{CUSTOM_BOT} for chat
+contact and \code{CUSTOMER} for voice contact.}
 }
 \description{
-Adds a new participant into an on-going chat contact. For more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/chat-customize-flow.html}{Customize chat flow experiences by integrating custom participants}.
+Adds a new participant into an on-going chat contact or webRTC call. For more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/chat-customize-flow.html}{Customize chat flow experiences by integrating custom participants} or \href{https://docs.aws.amazon.com/connect/latest/adminguide/enable-multiuser-inapp.html}{Enable multi-user web, in-app, and video calling}.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_create_participant/} for full documentation.
 }

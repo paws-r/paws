@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_start_query}
 \alias{cloudwatchlogs_start_query}
-\title{Starts a query of one or more log groups using CloudWatch Logs Insights}
+\title{Starts a query of one or more log groups or data sources using
+CloudWatch Logs Insights}
 \usage{
 cloudwatchlogs_start_query(
   queryLanguage = NULL,
@@ -69,7 +70,7 @@ string uses the \code{fields} command, only the specified fields and their
 values are returned. The default is 10,000.}
 }
 \description{
-Starts a query of one or more log groups using CloudWatch Logs Insights. You specify the log groups and time range to query and the query string to use.
+Starts a query of one or more log groups or data sources using CloudWatch Logs Insights. You specify the log groups or data sources and time range to query and the query string to use. You can query up to 10 data sources in a single query.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_start_query/} for full documentation.
 }

@@ -7,6 +7,7 @@
 networkmanager_create_direct_connect_gateway_attachment(
   CoreNetworkId,
   DirectConnectGatewayArn,
+  RoutingPolicyLabel = NULL,
   EdgeLocations,
   Tags = NULL,
   ClientToken = NULL
@@ -17,6 +18,9 @@ networkmanager_create_direct_connect_gateway_attachment(
 attachment should be attached to.}
 
 \item{DirectConnectGatewayArn}{[required] The ARN of the Direct Connect gateway attachment.}
+
+\item{RoutingPolicyLabel}{The routing policy label to apply to the Direct Connect Gateway
+attachment for traffic routing decisions.}
 
 \item{EdgeLocations}{[required] One or more core network edge locations that the Direct Connect gateway
 attachment is associated with.}

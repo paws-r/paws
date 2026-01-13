@@ -17,7 +17,7 @@ cloudformation_create_stack_instances(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name or unique ID of the stack set that you want to create stack
+\item{StackSetName}{[required] The name or unique ID of the StackSet that you want to create stack
 instances from.}
 
 \item{Accounts}{[Self-managed permissions] The account IDs of one or more Amazon Web
@@ -26,7 +26,7 @@ specified Region(s) for.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
-\item{DeploymentTargets}{[Service-managed permissions] The Organizations accounts for which to
+\item{DeploymentTargets}{[Service-managed permissions] The Organizations accounts in which to
 create stack instances in the specified Amazon Web Services Regions.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
@@ -34,7 +34,7 @@ You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 \item{Regions}{[required] The names of one or more Amazon Web Services Regions where you want to
 create stack instances using the specified Amazon Web Services accounts.}
 
-\item{ParameterOverrides}{A list of stack set parameters whose values you want to override in the
+\item{ParameterOverrides}{A list of StackSet parameters whose values you want to override in the
 selected stack instances.
 
 Any overridden parameter values will be applied to all stack instances
@@ -48,40 +48,40 @@ and specify its value.
 the parameter and specify \code{UsePreviousValue} as \code{true}. (You can't
 specify both a value and set \code{UsePreviousValue} to \code{true}.)
 \item To set an overridden parameter back to the value specified in the
-stack set, specify a parameter list but don't include the parameter
+StackSet, specify a parameter list but don't include the parameter
 in the list.
 \item To leave all parameters set to their present values, don't specify
 this property at all.
 }
 
-During stack set updates, any parameter values overridden for a stack
+During StackSet updates, any parameter values overridden for a stack
 instance aren't updated, but retain their overridden value.
 
 You can only override the parameter \emph{values} that are specified in the
-stack set; to add or delete a parameter itself, use
+StackSet; to add or delete a parameter itself, use
 \code{\link[=cloudformation_update_stack_set]{update_stack_set}} to update the
-stack set template.}
+StackSet template.}
 
-\item{OperationPreferences}{Preferences for how CloudFormation performs this stack set operation.}
+\item{OperationPreferences}{Preferences for how CloudFormation performs this StackSet operation.}
 
-\item{OperationId}{The unique identifier for this stack set operation.
+\item{OperationId}{The unique identifier for this StackSet operation.
 
 The operation ID also functions as an idempotency token, to ensure that
-CloudFormation performs the stack set operation only once, even if you
-retry the request multiple times. You might retry stack set operation
+CloudFormation performs the StackSet operation only once, even if you
+retry the request multiple times. You might retry StackSet operation
 requests to ensure that CloudFormation successfully received them.
 
 If you don't specify an operation ID, the SDK generates one
 automatically.
 
-Repeating this stack set operation with a new operation ID retries all
+Repeating this StackSet operation with a new operation ID retries all
 stack instances whose status is \code{OUTDATED}.}
 
 \item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
 account administrator in the organization's management account or as a
 delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.

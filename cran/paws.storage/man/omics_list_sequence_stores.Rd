@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_list_sequence_stores}
 \alias{omics_list_sequence_stores}
-\title{Retrieves a list of sequence stores}
+\title{Retrieves a list of sequence stores and returns each sequence store's
+metadata}
 \usage{
 omics_list_sequence_stores(maxResults = NULL, nextToken = NULL, filter = NULL)
 }
@@ -15,7 +16,7 @@ next page of results.}
 \item{filter}{A filter to apply to the list.}
 }
 \description{
-Retrieves a list of sequence stores.
+Retrieves a list of sequence stores and returns each sequence store's metadata.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_list_sequence_stores/} for full documentation.
 }

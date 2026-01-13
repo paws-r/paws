@@ -144,7 +144,7 @@ licensemanagerusersubscriptions <- function(config = list(), credentials = list(
   service_id = "License Manager User Subscriptions",
   api_version = "2018-05-10",
   signing_name = "license-manager-user-subscriptions",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

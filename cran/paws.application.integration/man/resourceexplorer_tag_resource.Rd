@@ -5,14 +5,14 @@
 \title{Adds one or more tag key and value pairs to an Amazon Web Services
 Resource Explorer view or index}
 \usage{
-resourceexplorer_tag_resource(Tags = NULL, resourceArn)
+resourceexplorer_tag_resource(resourceArn, Tags = NULL)
 }
 \arguments{
-\item{Tags}{A list of tag key and value pairs that you want to attach to the
-specified view or index.}
-
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the view or index that you want to
 attach tags to.}
+
+\item{Tags}{A list of tag key and value pairs that you want to attach to the
+specified view or index.}
 }
 \description{
 Adds one or more tag key and value pairs to an Amazon Web Services Resource Explorer view or index.

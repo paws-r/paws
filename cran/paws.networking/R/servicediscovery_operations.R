@@ -166,9 +166,12 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #' be distinguished. However, if you use a namespace that's only accessible
 #' by API calls, then you can create services that with names that differ
 #' only by case.
-#' @param NamespaceId The ID of the namespace that you want to use to create the service. The
-#' namespace ID must be specified, but it can be specified either here or
-#' in the `DnsConfig` object.
+#' @param NamespaceId The ID or Amazon Resource Name (ARN) of the namespace that you want to
+#' use to create the service. For namespaces shared with your Amazon Web
+#' Services account, specify the namespace ARN. For more information about
+#' shared namespaces, see [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param CreatorRequestId A unique string that identifies the request and that allows failed
 #' [`create_service`][servicediscovery_create_service] requests to be
 #' retried without the risk of running the operation twice.
@@ -232,7 +235,8 @@ servicediscovery_create_service <- function(Name, NamespaceId = NULL, CreatorReq
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_delete_namespace/](https://www.paws-r-sdk.com/docs/servicediscovery_delete_namespace/) for full documentation.
 #'
-#' @param Id &#91;required&#93; The ID of the namespace that you want to delete.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the namespace that you want to
+#' delete.
 #'
 #' @keywords internal
 #'
@@ -263,7 +267,12 @@ servicediscovery_delete_namespace <- function(Id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_delete_service/](https://www.paws-r-sdk.com/docs/servicediscovery_delete_service/) for full documentation.
 #'
-#' @param Id &#91;required&#93; The ID of the service that you want to delete.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that you want to
+#' delete. If the namespace associated with the service is shared with your
+#' Amazon Web Services account, specify the service ARN. For more
+#' information about shared namespaces, see [Cross-account Cloud Map
+#' namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html).
 #'
 #' @keywords internal
 #'
@@ -294,7 +303,13 @@ servicediscovery_delete_service <- function(Id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_delete_service_attributes/](https://www.paws-r-sdk.com/docs/servicediscovery_delete_service_attributes/) for full documentation.
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service from which the attributes will be deleted.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service from which the
+#' attributes will be deleted. For services created in a namespace shared
+#' with your Amazon Web Services account, specify the service ARN. For more
+#' information about shared namespaces, see [Cross-account Cloud Map
+#' namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param Attributes &#91;required&#93; A list of keys corresponding to each attribute that you want to delete.
 #'
 #' @keywords internal
@@ -327,7 +342,12 @@ servicediscovery_delete_service_attributes <- function(ServiceId, Attributes) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_deregister_instance/](https://www.paws-r-sdk.com/docs/servicediscovery_deregister_instance/) for full documentation.
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that the instance is associated with.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that the instance is
+#' associated with. If the namespace associated with the service is shared
+#' with your account, specify the service ARN. For more information about
+#' shared namespaces, see [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param InstanceId &#91;required&#93; The value that you specified for `Id` in the
 #' [`register_instance`][servicediscovery_register_instance] request.
 #'
@@ -360,11 +380,11 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_discover_instances/](https://www.paws-r-sdk.com/docs/servicediscovery_discover_instances/) for full documentation.
 #'
-#' @param NamespaceName &#91;required&#93; The `HttpName` name of the namespace. It's found in the `HttpProperties`
-#' member of the `Properties` member of the namespace. In most cases,
-#' `Name` and `HttpName` match. However, if you reuse `Name` for namespace
-#' creation, a generated hash is added to `HttpName` to distinguish the
-#' two.
+#' @param NamespaceName &#91;required&#93; The `HttpName` name of the namespace. The `HttpName` is found in the
+#' `HttpProperties` member of the `Properties` member of the namespace. In
+#' most cases, `Name` and `HttpName` match. However, if you reuse `Name`
+#' for namespace creation, a generated hash is added to `HttpName` to
+#' distinguish the two.
 #' @param ServiceName &#91;required&#93; The name of the service that you specified when you registered the
 #' instance.
 #' @param MaxResults The maximum number of instances that you want Cloud Map to return in the
@@ -401,11 +421,15 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
 #' 
 #' Returns healthy instances, unless none are reporting a healthy state. In
 #' that case, return all instances. This is also called failing open.
+#' @param OwnerAccount The ID of the Amazon Web Services account that owns the namespace
+#' associated with the instance, as specified in the namespace
+#' `ResourceOwner` field. For instances associated with namespaces that are
+#' shared with your account, you must specify an `OwnerAccount`.
 #'
 #' @keywords internal
 #'
 #' @rdname servicediscovery_discover_instances
-servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxResults = NULL, QueryParameters = NULL, OptionalParameters = NULL, HealthStatus = NULL) {
+servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxResults = NULL, QueryParameters = NULL, OptionalParameters = NULL, HealthStatus = NULL, OwnerAccount = NULL) {
   op <- new_operation(
     name = "DiscoverInstances",
     http_method = "POST",
@@ -414,7 +438,7 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .servicediscovery$discover_instances_input(NamespaceName = NamespaceName, ServiceName = ServiceName, MaxResults = MaxResults, QueryParameters = QueryParameters, OptionalParameters = OptionalParameters, HealthStatus = HealthStatus)
+  input <- .servicediscovery$discover_instances_input(NamespaceName = NamespaceName, ServiceName = ServiceName, MaxResults = MaxResults, QueryParameters = QueryParameters, OptionalParameters = OptionalParameters, HealthStatus = HealthStatus, OwnerAccount = OwnerAccount)
   output <- .servicediscovery$discover_instances_output()
   config <- get_config()
   svc <- .servicediscovery$service(config, op)
@@ -431,15 +455,23 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_discover_instances_revision/](https://www.paws-r-sdk.com/docs/servicediscovery_discover_instances_revision/) for full documentation.
 #'
-#' @param NamespaceName &#91;required&#93; The `HttpName` name of the namespace. It's found in the `HttpProperties`
-#' member of the `Properties` member of the namespace.
+#' @param NamespaceName &#91;required&#93; The `HttpName` name of the namespace. The `HttpName` is found in the
+#' `HttpProperties` member of the `Properties` member of the namespace.
 #' @param ServiceName &#91;required&#93; The name of the service that you specified when you registered the
 #' instance.
+#' @param OwnerAccount The ID of the Amazon Web Services account that owns the namespace
+#' associated with the instance, as specified in the namespace
+#' `ResourceOwner` field. For instances associated with namespaces that are
+#' shared with your account, you must specify an `OwnerAccount`. For more
+#' information about shared namespaces, see [Cross-account Cloud Map
+#' namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname servicediscovery_discover_instances_revision
-servicediscovery_discover_instances_revision <- function(NamespaceName, ServiceName) {
+servicediscovery_discover_instances_revision <- function(NamespaceName, ServiceName, OwnerAccount = NULL) {
   op <- new_operation(
     name = "DiscoverInstancesRevision",
     http_method = "POST",
@@ -448,7 +480,7 @@ servicediscovery_discover_instances_revision <- function(NamespaceName, ServiceN
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .servicediscovery$discover_instances_revision_input(NamespaceName = NamespaceName, ServiceName = ServiceName)
+  input <- .servicediscovery$discover_instances_revision_input(NamespaceName = NamespaceName, ServiceName = ServiceName, OwnerAccount = OwnerAccount)
   output <- .servicediscovery$discover_instances_revision_output()
   config <- get_config()
   svc <- .servicediscovery$service(config, op)
@@ -465,7 +497,12 @@ servicediscovery_discover_instances_revision <- function(NamespaceName, ServiceN
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_get_instance/](https://www.paws-r-sdk.com/docs/servicediscovery_get_instance/) for full documentation.
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that the instance is associated with.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that the instance is
+#' associated with. For services created in a shared namespace, specify the
+#' service ARN. For more information about shared namespaces, see
+#' [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param InstanceId &#91;required&#93; The ID of the instance that you want to get information about.
 #'
 #' @keywords internal
@@ -498,7 +535,12 @@ servicediscovery_get_instance <- function(ServiceId, InstanceId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_get_instances_health_status/](https://www.paws-r-sdk.com/docs/servicediscovery_get_instances_health_status/) for full documentation.
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that the instance is associated with.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that the instance is
+#' associated with. For services created in a shared namespace, specify the
+#' service ARN. For more information about shared namespaces, see
+#' [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param Instances An array that contains the IDs of all the instances that you want to get
 #' the health status for.
 #' 
@@ -552,7 +594,12 @@ servicediscovery_get_instances_health_status <- function(ServiceId, Instances = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_get_namespace/](https://www.paws-r-sdk.com/docs/servicediscovery_get_namespace/) for full documentation.
 #'
-#' @param Id &#91;required&#93; The ID of the namespace that you want to get information about.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the namespace that you want to
+#' get information about. For namespaces shared with your Amazon Web
+#' Services account, specify the namespace ARN. For more information about
+#' shared namespaces, see [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*
 #'
 #' @keywords internal
 #'
@@ -585,11 +632,15 @@ servicediscovery_get_namespace <- function(Id) {
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_get_operation/](https://www.paws-r-sdk.com/docs/servicediscovery_get_operation/) for full documentation.
 #'
 #' @param OperationId &#91;required&#93; The ID of the operation that you want to get more information about.
+#' @param OwnerAccount The ID of the Amazon Web Services account that owns the namespace
+#' associated with the operation, as specified in the namespace
+#' `ResourceOwner` field. For operations associated with namespaces that
+#' are shared with your account, you must specify an `OwnerAccount`.
 #'
 #' @keywords internal
 #'
 #' @rdname servicediscovery_get_operation
-servicediscovery_get_operation <- function(OperationId) {
+servicediscovery_get_operation <- function(OperationId, OwnerAccount = NULL) {
   op <- new_operation(
     name = "GetOperation",
     http_method = "POST",
@@ -598,7 +649,7 @@ servicediscovery_get_operation <- function(OperationId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .servicediscovery$get_operation_input(OperationId = OperationId)
+  input <- .servicediscovery$get_operation_input(OperationId = OperationId, OwnerAccount = OwnerAccount)
   output <- .servicediscovery$get_operation_output()
   config <- get_config()
   svc <- .servicediscovery$service(config, op)
@@ -615,7 +666,12 @@ servicediscovery_get_operation <- function(OperationId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_get_service/](https://www.paws-r-sdk.com/docs/servicediscovery_get_service/) for full documentation.
 #'
-#' @param Id &#91;required&#93; The ID of the service that you want to get settings for.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that you want to get
+#' settings for. For services created by consumers in a shared namespace,
+#' specify the service ARN. For more information about shared namespaces,
+#' see [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -646,7 +702,13 @@ servicediscovery_get_service <- function(Id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_get_service_attributes/](https://www.paws-r-sdk.com/docs/servicediscovery_get_service_attributes/) for full documentation.
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that you want to get attributes for.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that you want to get
+#' attributes for. For services created in a namespace shared with your
+#' Amazon Web Services account, specify the service ARN. For more
+#' information about shared namespaces, see [Cross-account Cloud Map
+#' namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -678,7 +740,12 @@ servicediscovery_get_service_attributes <- function(ServiceId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_list_instances/](https://www.paws-r-sdk.com/docs/servicediscovery_list_instances/) for full documentation.
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that you want to list instances for.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that you want to
+#' list instances for. For services created in a shared namespace, specify
+#' the service ARN. For more information about shared namespaces, see
+#' [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param NextToken For the first [`list_instances`][servicediscovery_list_instances]
 #' request, omit this value.
 #' 
@@ -714,10 +781,11 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
 .servicediscovery$operations$list_instances <- servicediscovery_list_instances
 
 #' Lists summary information about the namespaces that were created by the
-#' current Amazon Web Services account
+#' current Amazon Web Services account and shared with the current Amazon
+#' Web Services account
 #'
 #' @description
-#' Lists summary information about the namespaces that were created by the current Amazon Web Services account.
+#' Lists summary information about the namespaces that were created by the current Amazon Web Services account and shared with the current Amazon Web Services account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_list_namespaces/](https://www.paws-r-sdk.com/docs/servicediscovery_list_namespaces/) for full documentation.
 #'
@@ -912,8 +980,12 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_register_instance/](https://www.paws-r-sdk.com/docs/servicediscovery_register_instance/) for full documentation.
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that you want to use for settings for the
-#' instance.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that you want to use
+#' for settings for the instance. For services created in a shared
+#' namespace, specify the service ARN. For more information about shared
+#' namespaces, see [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param InstanceId &#91;required&#93; An identifier that you want to associate with the instance. Note the
 #' following:
 #' 
@@ -1156,7 +1228,8 @@ servicediscovery_untag_resource <- function(ResourceARN, TagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_update_http_namespace/](https://www.paws-r-sdk.com/docs/servicediscovery_update_http_namespace/) for full documentation.
 #'
-#' @param Id &#91;required&#93; The ID of the namespace that you want to update.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the namespace that you want to
+#' update.
 #' @param UpdaterRequestId A unique string that identifies the request and that allows failed
 #' [`update_http_namespace`][servicediscovery_update_http_namespace]
 #' requests to be retried without the risk of running the operation twice.
@@ -1194,8 +1267,13 @@ servicediscovery_update_http_namespace <- function(Id, UpdaterRequestId = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_update_instance_custom_health_status/](https://www.paws-r-sdk.com/docs/servicediscovery_update_instance_custom_health_status/) for full documentation.
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that includes the configuration for the custom
-#' health check that you want to change the status for.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that includes the
+#' configuration for the custom health check that you want to change the
+#' status for. For services created in a shared namespace, specify the
+#' service ARN. For more information about shared namespaces, see
+#' [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param InstanceId &#91;required&#93; The ID of the instance that you want to change the health status for.
 #' @param Status &#91;required&#93; The new status of the instance, `HEALTHY` or `UNHEALTHY`.
 #'
@@ -1228,7 +1306,8 @@ servicediscovery_update_instance_custom_health_status <- function(ServiceId, Ins
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_update_private_dns_namespace/](https://www.paws-r-sdk.com/docs/servicediscovery_update_private_dns_namespace/) for full documentation.
 #'
-#' @param Id &#91;required&#93; The ID of the namespace that you want to update.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the namespace that you want to
+#' update.
 #' @param UpdaterRequestId A unique string that identifies the request and that allows failed
 #' [`update_private_dns_namespace`][servicediscovery_update_private_dns_namespace]
 #' requests to be retried without the risk of running the operation twice.
@@ -1265,7 +1344,7 @@ servicediscovery_update_private_dns_namespace <- function(Id, UpdaterRequestId =
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_update_public_dns_namespace/](https://www.paws-r-sdk.com/docs/servicediscovery_update_public_dns_namespace/) for full documentation.
 #'
-#' @param Id &#91;required&#93; The ID of the namespace being updated.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the namespace being updated.
 #' @param UpdaterRequestId A unique string that identifies the request and that allows failed
 #' [`update_public_dns_namespace`][servicediscovery_update_public_dns_namespace]
 #' requests to be retried without the risk of running the operation twice.
@@ -1302,7 +1381,13 @@ servicediscovery_update_public_dns_namespace <- function(Id, UpdaterRequestId = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_update_service/](https://www.paws-r-sdk.com/docs/servicediscovery_update_service/) for full documentation.
 #'
-#' @param Id &#91;required&#93; The ID of the service that you want to update.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that you want to
+#' update. If the namespace associated with the service is shared with your
+#' Amazon Web Services account, specify the service ARN. For more
+#' information about shared namespaces, see [Cross-account Cloud Map
+#' namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*
 #' @param Service &#91;required&#93; A complex type that contains the new settings for the service. You can
 #' specify a maximum of 30 attributes (key-value pairs).
 #'
@@ -1336,7 +1421,9 @@ servicediscovery_update_service <- function(Id, Service) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_update_service_attributes/](https://www.paws-r-sdk.com/docs/servicediscovery_update_service_attributes/) for full documentation.
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that you want to update.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that you want to
+#' update. For services created in a namespace shared with your Amazon Web
+#' Services account, specify the service ARN.
 #' @param Attributes &#91;required&#93; A string map that contains attribute key-value pairs.
 #'
 #' @keywords internal

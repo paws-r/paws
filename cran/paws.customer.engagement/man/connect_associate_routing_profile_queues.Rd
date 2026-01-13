@@ -7,7 +7,8 @@
 connect_associate_routing_profile_queues(
   InstanceId,
   RoutingProfileId,
-  QueueConfigs
+  QueueConfigs = NULL,
+  ManualAssignmentQueueConfigs = NULL
 )
 }
 \arguments{
@@ -16,7 +17,9 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{RoutingProfileId}{[required] The identifier of the routing profile.}
 
-\item{QueueConfigs}{[required] The queues to associate with this routing profile.}
+\item{QueueConfigs}{The queues to associate with this routing profile.}
+
+\item{ManualAssignmentQueueConfigs}{The manual assignment queues to associate with this routing profile.}
 }
 \description{
 Associates a set of queues with a routing profile.

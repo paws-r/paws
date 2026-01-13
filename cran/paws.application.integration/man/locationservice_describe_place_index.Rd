@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_describe_place_index}
 \alias{locationservice_describe_place_index}
-\title{Retrieves the place index resource details}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_describe_place_index(IndexName)
 }
@@ -10,7 +10,7 @@ locationservice_describe_place_index(IndexName)
 \item{IndexName}{[required] The name of the place index resource.}
 }
 \description{
-Retrieves the place index resource details.
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Places API V2 unless you require Grab data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_describe_place_index/} for full documentation.
 }

@@ -11,7 +11,10 @@ lexmodelsv2_create_bot_locale(
   description = NULL,
   nluIntentConfidenceThreshold,
   voiceSettings = NULL,
-  generativeAISettings = NULL
+  unifiedSpeechSettings = NULL,
+  speechRecognitionSettings = NULL,
+  generativeAISettings = NULL,
+  speechDetectionSensitivity = NULL
 )
 }
 \arguments{
@@ -49,7 +52,16 @@ alternative intents with the following confidence scores: IntentA
 \item{voiceSettings}{The Amazon Polly voice ID that Amazon Lex uses for voice interaction
 with the user.}
 
+\item{unifiedSpeechSettings}{Unified speech settings to configure for the new bot locale.}
+
+\item{speechRecognitionSettings}{Speech-to-text settings to configure for the new bot locale.}
+
 \item{generativeAISettings}{}
+
+\item{speechDetectionSensitivity}{The sensitivity level for voice activity detection (VAD) in the bot
+locale. This setting helps optimize speech recognition accuracy by
+adjusting how the system responds to background noise during voice
+interactions.}
 }
 \description{
 Creates a locale in the bot. The locale contains the intents and slot types that the bot uses in conversations with users in the specified language and locale. You must add a locale to a bot before you can add intents and slot types to the bot.

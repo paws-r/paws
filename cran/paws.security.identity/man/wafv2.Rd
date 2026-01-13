@@ -93,7 +93,7 @@ listed for US East (N. Virginia): us-east-1.
 
 Alternatively, you can use one of the Amazon Web Services SDKs to access
 an API that's tailored to the programming language or platform that
-you're using. For more information, see \href{https://aws.amazon.com/developer/tools/#SDKs}{Amazon Web Services SDKs}.
+you're using. For more information, see \href{https://builder.aws.com/build/tools#SDKs}{Amazon Web Services SDKs}.
 }
 \section{Service syntax}{
 

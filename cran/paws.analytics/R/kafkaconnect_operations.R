@@ -22,6 +22,9 @@ NULL
 #' @param kafkaConnectVersion &#91;required&#93; The version of Kafka Connect. It has to be compatible with both the
 #' Apache Kafka cluster's version and the plugins.
 #' @param logDelivery Details about log delivery.
+#' @param networkType The network type of the connector. It gives connectors connectivity to
+#' either IPv4 (IPV4) or IPv4 and IPv6 (DUAL) destinations. Defaults to
+#' IPV4.
 #' @param plugins &#91;required&#93; Amazon MSK Connect does not currently support specifying multiple
 #' plugins as a list. To use more than one plugin for your connector, you
 #' can create a single custom plugin using a ZIP file that bundles multiple
@@ -40,7 +43,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_create_connector
-kafkaconnect_create_connector <- function(capacity, connectorConfiguration, connectorDescription = NULL, connectorName, kafkaCluster, kafkaClusterClientAuthentication, kafkaClusterEncryptionInTransit, kafkaConnectVersion, logDelivery = NULL, plugins, serviceExecutionRoleArn, workerConfiguration = NULL, tags = NULL) {
+kafkaconnect_create_connector <- function(capacity, connectorConfiguration, connectorDescription = NULL, connectorName, kafkaCluster, kafkaClusterClientAuthentication, kafkaClusterEncryptionInTransit, kafkaConnectVersion, logDelivery = NULL, networkType = NULL, plugins, serviceExecutionRoleArn, workerConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateConnector",
     http_method = "POST",
@@ -49,7 +52,7 @@ kafkaconnect_create_connector <- function(capacity, connectorConfiguration, conn
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kafkaconnect$create_connector_input(capacity = capacity, connectorConfiguration = connectorConfiguration, connectorDescription = connectorDescription, connectorName = connectorName, kafkaCluster = kafkaCluster, kafkaClusterClientAuthentication = kafkaClusterClientAuthentication, kafkaClusterEncryptionInTransit = kafkaClusterEncryptionInTransit, kafkaConnectVersion = kafkaConnectVersion, logDelivery = logDelivery, plugins = plugins, serviceExecutionRoleArn = serviceExecutionRoleArn, workerConfiguration = workerConfiguration, tags = tags)
+  input <- .kafkaconnect$create_connector_input(capacity = capacity, connectorConfiguration = connectorConfiguration, connectorDescription = connectorDescription, connectorName = connectorName, kafkaCluster = kafkaCluster, kafkaClusterClientAuthentication = kafkaClusterClientAuthentication, kafkaClusterEncryptionInTransit = kafkaClusterEncryptionInTransit, kafkaConnectVersion = kafkaConnectVersion, logDelivery = logDelivery, networkType = networkType, plugins = plugins, serviceExecutionRoleArn = serviceExecutionRoleArn, workerConfiguration = workerConfiguration, tags = tags)
   output <- .kafkaconnect$create_connector_output()
   config <- get_config()
   svc <- .kafkaconnect$service(config, op)
@@ -594,7 +597,7 @@ kafkaconnect_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates the specified connector
 #'
 #' @description
-#' Updates the specified connector.
+#' Updates the specified connector. For request body, specify only one parameter: either `capacity` or `connectorConfiguration`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kafkaconnect_update_connector/](https://www.paws-r-sdk.com/docs/kafkaconnect_update_connector/) for full documentation.
 #'

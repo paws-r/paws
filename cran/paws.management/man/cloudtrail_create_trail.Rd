@@ -75,10 +75,10 @@ Not required unless you specify \code{CloudWatchLogsRoleArn}.}
 \item{CloudWatchLogsRoleArn}{Specifies the role for the CloudWatch Logs endpoint to assume to write
 to a user's log group. You must use a role that exists in your account.}
 
-\item{KmsKeyId}{Specifies the KMS key ID to use to encrypt the logs delivered by
-CloudTrail. The value can be an alias name prefixed by \verb{alias/}, a fully
-specified ARN to an alias, a fully specified ARN to a key, or a globally
-unique identifier.
+\item{KmsKeyId}{Specifies the KMS key ID to use to encrypt the logs and digest files
+delivered by CloudTrail. The value can be an alias name prefixed by
+\verb{alias/}, a fully specified ARN to an alias, a fully specified ARN to a
+key, or a globally unique identifier.
 
 CloudTrail also supports KMS multi-Region keys. For more information
 about multi-Region keys, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html}{Using multi-Region keys}

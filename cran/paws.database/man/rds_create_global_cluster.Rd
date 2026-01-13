@@ -6,7 +6,7 @@
 Services Regions}
 \usage{
 rds_create_global_cluster(
-  GlobalClusterIdentifier = NULL,
+  GlobalClusterIdentifier,
   SourceDBClusterIdentifier = NULL,
   Engine = NULL,
   EngineVersion = NULL,
@@ -18,7 +18,7 @@ rds_create_global_cluster(
 )
 }
 \arguments{
-\item{GlobalClusterIdentifier}{The cluster identifier for this global database cluster. This parameter
+\item{GlobalClusterIdentifier}{[required] The cluster identifier for this global database cluster. This parameter
 is stored as a lowercase string.}
 
 \item{SourceDBClusterIdentifier}{The Amazon Resource Name (ARN) to use as the primary cluster of the
@@ -67,7 +67,7 @@ This setting only applies to Aurora PostgreSQL-based global databases.
 You can use this setting to enroll your global cluster into Amazon RDS
 Extended Support. With RDS Extended Support, you can run the selected
 major engine version on your global cluster past the end of standard
-support for that engine version. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+support for that engine version. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon Aurora}
 in the \emph{Amazon Aurora User Guide}.
 
 Valid Values:

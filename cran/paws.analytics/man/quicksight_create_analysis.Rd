@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_create_analysis}
 \alias{quicksight_create_analysis}
-\title{Creates an analysis in Amazon QuickSight}
+\title{Creates an analysis in Amazon Quick Sight}
 \usage{
 quicksight_create_analysis(
   AwsAccountId,
@@ -26,7 +26,7 @@ analysis.}
 URL of the analysis.}
 
 \item{Name}{[required] A descriptive name for the analysis that you're creating. This name
-displays for the analysis in the Amazon QuickSight console.}
+displays for the analysis in the Amazon Quick Sight console.}
 
 \item{Parameters}{The parameter names and override values that you want to use. An
 analysis can have any parameter type, and some parameters might accept
@@ -48,7 +48,7 @@ Either a \code{SourceEntity} or a \code{Definition} must be provided in order fo
 the request to be valid.}
 
 \item{ThemeArn}{The ARN for the theme to apply to the analysis that you're creating. To
-see the theme in the Amazon QuickSight console, make sure that you have
+see the theme in the Amazon Quick Sight console, make sure that you have
 access to it.}
 
 \item{Tags}{Contains a map of the key-value pairs for the resource tag or tags
@@ -65,11 +65,11 @@ the request to be valid.}
 \item{ValidationStrategy}{The option to relax the validation needed to create an analysis with
 definition objects. This skips the validation step for specific errors.}
 
-\item{FolderArns}{When you create the analysis, Amazon QuickSight adds the analysis to
+\item{FolderArns}{When you create the analysis, Amazon Quick Sight adds the analysis to
 these folders.}
 }
 \description{
-Creates an analysis in Amazon QuickSight. Analyses can be created either from a template or from an \code{AnalysisDefinition}.
+Creates an analysis in Amazon Quick Sight. Analyses can be created either from a template or from an \code{AnalysisDefinition}.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_create_analysis/} for full documentation.
 }

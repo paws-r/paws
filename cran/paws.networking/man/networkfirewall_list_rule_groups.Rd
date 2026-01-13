@@ -9,6 +9,7 @@ networkfirewall_list_rule_groups(
   MaxResults = NULL,
   Scope = NULL,
   ManagedType = NULL,
+  SubscriptionStatus = NULL,
   Type = NULL
 )
 }
@@ -30,6 +31,10 @@ of \code{NULL} returns all of the rule groups in your account. A setting of
 
 \item{ManagedType}{Indicates the general category of the Amazon Web Services managed rule
 group.}
+
+\item{SubscriptionStatus}{Filters the results to show only rule groups with the specified
+subscription status. Use this to find subscribed or unsubscribed rule
+groups.}
 
 \item{Type}{Indicates whether the rule group is stateless or stateful. If the rule
 group is stateless, it contains stateless rules. If it is stateful, it

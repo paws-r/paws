@@ -16,9 +16,8 @@ connectcases_get_case_audit_events(
 
 \item{domainId}{[required] The unique identifier of the Cases domain.}
 
-\item{maxResults}{The maximum number of audit events to return. The current maximum
-supported value is 25. This is also the default when no other value is
-provided.}
+\item{maxResults}{The maximum number of audit events to return. When no value is provided,
+25 is the default.}
 
 \item{nextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of

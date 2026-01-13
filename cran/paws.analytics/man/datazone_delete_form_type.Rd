@@ -2,7 +2,7 @@
 % Please edit documentation in R/datazone_operations.R
 \name{datazone_delete_form_type}
 \alias{datazone_delete_form_type}
-\title{Delets and metadata form type in Amazon DataZone}
+\title{Deletes and metadata form type in Amazon DataZone}
 \usage{
 datazone_delete_form_type(domainIdentifier, formTypeIdentifier)
 }
@@ -13,7 +13,7 @@ deleted.}
 \item{formTypeIdentifier}{[required] The ID of the metadata form type that is deleted.}
 }
 \description{
-Delets and metadata form type in Amazon DataZone.
+Deletes and metadata form type in Amazon DataZone.
 
 See \url{https://www.paws-r-sdk.com/docs/datazone_delete_form_type/} for full documentation.
 }

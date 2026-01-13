@@ -7,12 +7,14 @@
 glue_update_table(
   CatalogId = NULL,
   DatabaseName,
-  TableInput,
+  Name = NULL,
+  TableInput = NULL,
   SkipArchive = NULL,
   TransactionId = NULL,
   VersionId = NULL,
   ViewUpdateAction = NULL,
-  Force = NULL
+  Force = NULL,
+  UpdateOpenTableFormatInput = NULL
 )
 }
 \arguments{
@@ -22,7 +24,10 @@ the Amazon Web Services account ID is used by default.}
 \item{DatabaseName}{[required] The name of the catalog database in which the table resides. For Hive
 compatibility, this name is entirely lowercase.}
 
-\item{TableInput}{[required] An updated \code{TableInput} object to define the metadata table in the
+\item{Name}{The unique identifier for the table within the specified database that
+will be created in the Glue Data Catalog.}
+
+\item{TableInput}{An updated \code{TableInput} object to define the metadata table in the
 catalog.}
 
 \item{SkipArchive}{By default, \code{\link[=glue_update_table]{update_table}} always creates an
@@ -38,6 +43,10 @@ not create the archived version.}
 
 \item{Force}{A flag that can be set to true to ignore matching storage descriptor and
 subobject matching requirements.}
+
+\item{UpdateOpenTableFormatInput}{Input parameters for updating open table format tables in GlueData
+Catalog, serving as a wrapper for format-specific update operations such
+as Apache Iceberg.}
 }
 \description{
 Updates a metadata table in the Data Catalog.

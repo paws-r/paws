@@ -36,7 +36,13 @@ If you provide an individual checksum, Amazon S3 ignores any provided
 \code{ChecksumAlgorithm} parameter.}
 
 \item{MFA}{The concatenation of the authentication device's serial number, a space,
-and the value that is displayed on your authentication device.}
+and the value that is displayed on your authentication device. The
+serial number is the number that uniquely identifies the MFA device. For
+physical MFA devices, this is the unique serial number that's provided
+with the device. For virtual MFA devices, the serial number is the
+device ARN. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/manage-versioning-examples.html}{Enabling versioning on buckets}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html}{Configuring MFA delete}
+in the \emph{Amazon Simple Storage Service User Guide}.}
 
 \item{VersioningConfiguration}{[required] Container for setting the versioning state.}
 

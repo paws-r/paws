@@ -8,6 +8,7 @@ glue_get_user_defined_functions(
   CatalogId = NULL,
   DatabaseName = NULL,
   Pattern,
+  FunctionType = NULL,
   NextToken = NULL,
   MaxResults = NULL
 )
@@ -23,6 +24,13 @@ will be returned.}
 
 \item{Pattern}{[required] An optional function-name pattern string that filters the function
 definitions returned.}
+
+\item{FunctionType}{An optional function-type pattern string that filters the function
+definitions returned from Amazon Redshift Federated Permissions Catalog.
+
+Specify a value of \code{REGULAR_FUNCTION} or \code{STORED_PROCEDURE}. The
+\code{STORED_PROCEDURE} function type is only compatible with Amazon Redshift
+Federated Permissions Catalog.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 

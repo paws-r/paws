@@ -18,8 +18,8 @@ pinpointsmsvoicev2_describe_opted_out_numbers(
 \code{\link[=pinpointsmsvoicev2_describe_opt_out_lists]{describe_opt_out_lists}} to
 find the values for OptOutListName and OptOutListArn.
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 
 \item{OptedOutNumbers}{An array of phone numbers to search for in the OptOutList.
 

@@ -7,6 +7,7 @@
 s3_put_bucket_intelligent_tiering_configuration(
   Bucket,
   Id,
+  ExpectedBucketOwner = NULL,
   IntelligentTieringConfiguration
 )
 }
@@ -15,6 +16,10 @@ s3_put_bucket_intelligent_tiering_configuration(
 or retrieve.}
 
 \item{Id}{[required] The ID used to identify the S3 Intelligent-Tiering configuration.}
+
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 
 \item{IntelligentTieringConfiguration}{[required] Container for S3 Intelligent-Tiering configuration.}
 }

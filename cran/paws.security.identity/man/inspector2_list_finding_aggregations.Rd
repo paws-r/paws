@@ -6,26 +6,15 @@
 criteria}
 \usage{
 inspector2_list_finding_aggregations(
-  accountIds = NULL,
-  aggregationRequest = NULL,
   aggregationType,
+  nextToken = NULL,
   maxResults = NULL,
-  nextToken = NULL
+  accountIds = NULL,
+  aggregationRequest = NULL
 )
 }
 \arguments{
-\item{accountIds}{The Amazon Web Services account IDs to retrieve finding aggregation data
-for.}
-
-\item{aggregationRequest}{Details of the aggregation request that is used to filter your
-aggregation results.}
-
 \item{aggregationType}{[required] The type of the aggregation request.}
-
-\item{maxResults}{The maximum number of results the response can return. If your request
-would return more than the maximum the response will return a
-\code{nextToken} value, use this value when you call the action again to get
-the remaining results.}
 
 \item{nextToken}{A token to use for paginating results that are returned in the response.
 Set the value of this parameter to null for the first request to a list
@@ -33,6 +22,17 @@ action. If your response returns more than the \code{maxResults} maximum
 value it will also return a \code{nextToken} value. For subsequent calls, use
 the \code{nextToken} value returned from the previous request to continue
 listing results after the first page.}
+
+\item{maxResults}{The maximum number of results the response can return. If your request
+would return more than the maximum the response will return a
+\code{nextToken} value, use this value when you call the action again to get
+the remaining results.}
+
+\item{accountIds}{The Amazon Web Services account IDs to retrieve finding aggregation data
+for.}
+
+\item{aggregationRequest}{Details of the aggregation request that is used to filter your
+aggregation results.}
 }
 \description{
 Lists aggregated finding data for your environment based on specific criteria.

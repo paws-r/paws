@@ -252,8 +252,8 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' @param Catalog &#91;required&#93; The catalog related to the request. Fixed value: `AWSMarketplace`
 #' @param EntityType &#91;required&#93; The type of entities to retrieve. Valid values are: `AmiProduct`,
 #' `ContainerProduct`, `DataProduct`, `SaaSProduct`, `ProcurementPolicy`,
-#' `Experience`, `Audience`, `BrandingSettings`, `Offer`, `Seller`,
-#' `ResaleAuthorization`.
+#' `Experience`, `Audience`, `BrandingSettings`, `Offer`, `OfferSet`,
+#' `Seller`, `ResaleAuthorization`, `Solution`.
 #' @param FilterList An array of filter objects. Each filter object contains two attributes,
 #' `filterName` and `filterValues`.
 #' @param Sort An object that contains two attributes, `SortBy` and `SortOrder`.

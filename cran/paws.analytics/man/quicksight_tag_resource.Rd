@@ -2,8 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_tag_resource}
 \alias{quicksight_tag_resource}
-\title{Assigns one or more tags (key-value pairs) to the specified Amazon
-QuickSight resource}
+\title{Assigns one or more tags (key-value pairs) to the specified Amazon Quick
+Sight resource}
 \usage{
 quicksight_tag_resource(ResourceArn, Tags)
 }
@@ -14,7 +14,7 @@ quicksight_tag_resource(ResourceArn, Tags)
 assigned to the resource.}
 }
 \description{
-Assigns one or more tags (key-value pairs) to the specified Amazon QuickSight resource.
+Assigns one or more tags (key-value pairs) to the specified Amazon Quick Sight resource.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_tag_resource/} for full documentation.
 }

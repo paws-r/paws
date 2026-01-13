@@ -31,7 +31,7 @@ NULL
 #'     Support](https://docs.aws.amazon.com/awssupport/latest/user/joining-a-live-chat-session.html)
 #' 
 #' -   [Requesting service quota
-#'     increases](https://docs.aws.amazon.com/awssupport/latest/user/service-quota-increase.html)
+#'     increases](https://docs.aws.amazon.com/awssupport/latest/user/)
 #' 
 #' -   [Amazon Web Services Support App commands in
 #'     Slack](https://docs.aws.amazon.com/awssupport/latest/user/support-app-commands.html)

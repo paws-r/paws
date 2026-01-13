@@ -25,9 +25,12 @@ expected template values.
 \item \code{IN_SYNC}: The resource's actual configuration matches its expected
 template configuration.
 \item \code{NOT_CHECKED}: CloudFormation doesn't currently return this value.
+\item \code{UNKNOWN}: CloudFormation could not run drift detection for the
+resource.
 }}
 
-\item{NextToken}{A string that identifies the next page of stack resource drift results.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 
 \item{MaxResults}{The maximum number of results to be returned with a single call. If the
 number of available results exceeds this maximum, the response includes

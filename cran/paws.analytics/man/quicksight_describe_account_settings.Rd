@@ -2,8 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_describe_account_settings}
 \alias{quicksight_describe_account_settings}
-\title{Describes the settings that were used when your Amazon QuickSight
-subscription was first created in this Amazon Web Services account}
+\title{Describes the settings that were used when your Quick Sight subscription
+was first created in this Amazon Web Services account}
 \usage{
 quicksight_describe_account_settings(AwsAccountId)
 }
@@ -12,7 +12,7 @@ quicksight_describe_account_settings(AwsAccountId)
 that you want to list.}
 }
 \description{
-Describes the settings that were used when your Amazon QuickSight subscription was first created in this Amazon Web Services account.
+Describes the settings that were used when your Quick Sight subscription was first created in this Amazon Web Services account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_account_settings/} for full documentation.
 }

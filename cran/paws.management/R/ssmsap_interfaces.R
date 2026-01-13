@@ -51,6 +51,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ssmsap$get_configuration_check_operation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$get_configuration_check_operation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationCheckOperation = structure(list(Id = structure(logical(0), tags = list(type = "string")), ApplicationId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), ConfigurationCheckId = structure(logical(0), tags = list(type = "string")), ConfigurationCheckName = structure(logical(0), tags = list(type = "string")), ConfigurationCheckDescription = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), RuleStatusCounts = structure(list(Failed = structure(logical(0), tags = list(type = "integer", box = TRUE)), Warning = structure(logical(0), tags = list(type = "integer", box = TRUE)), Info = structure(logical(0), tags = list(type = "integer", box = TRUE)), Passed = structure(logical(0), tags = list(type = "integer", box = TRUE)), Unknown = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ssmsap$get_database_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), ComponentId = structure(logical(0), tags = list(type = "string")), DatabaseId = structure(logical(0), tags = list(type = "string")), DatabaseArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -111,6 +123,30 @@ NULL
   return(populate(args, shape))
 }
 
+.ssmsap$list_configuration_check_definitions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$list_configuration_check_definitions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationChecks = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ApplicableApplicationTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$list_configuration_check_operations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), ListMode = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$list_configuration_check_operations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationCheckOperations = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ApplicationId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), ConfigurationCheckId = structure(logical(0), tags = list(type = "string")), ConfigurationCheckName = structure(logical(0), tags = list(type = "string")), ConfigurationCheckDescription = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), RuleStatusCounts = structure(list(Failed = structure(logical(0), tags = list(type = "integer", box = TRUE)), Warning = structure(logical(0), tags = list(type = "integer", box = TRUE)), Info = structure(logical(0), tags = list(type = "integer", box = TRUE)), Passed = structure(logical(0), tags = list(type = "integer", box = TRUE)), Unknown = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ssmsap$list_databases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), ComponentId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
@@ -144,6 +180,30 @@ NULL
 .ssmsap$list_operations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Operations = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$list_sub_check_results_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$list_sub_check_results_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SubCheckResults = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), References = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$list_sub_check_rule_results_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SubCheckResultId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$list_sub_check_rule_results_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RuleResults = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -204,6 +264,18 @@ NULL
 .ssmsap$start_application_refresh_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$start_configuration_checks_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), ConfigurationCheckIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$start_configuration_checks_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationCheckOperations = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ApplicationId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), ConfigurationCheckId = structure(logical(0), tags = list(type = "string")), ConfigurationCheckName = structure(logical(0), tags = list(type = "string")), ConfigurationCheckDescription = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), RuleStatusCounts = structure(list(Failed = structure(logical(0), tags = list(type = "integer", box = TRUE)), Warning = structure(logical(0), tags = list(type = "integer", box = TRUE)), Info = structure(logical(0), tags = list(type = "integer", box = TRUE)), Passed = structure(logical(0), tags = list(type = "integer", box = TRUE)), Unknown = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -6,7 +6,7 @@ NULL
 #' Creates an EFS access point
 #'
 #' @description
-#' Creates an EFS access point. An access point is an application-specific view into an EFS file system that applies an operating system user and group, and a file system path, to any file system request made through the access point. The operating system user and group override any identity information provided by the NFS client. The file system path is exposed as the access point's root directory. Applications using the access point can only access data in the application's own directory and any subdirectories. To learn more, see [Mounting a file system using EFS access points](https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html).
+#' Creates an EFS access point. An access point is an application-specific view into an EFS file system that applies an operating system user and group, and a file system path, to any file system request made through the access point. The operating system user and group override any identity information provided by the NFS client. The file system path is exposed as the access point's root directory. Applications using the access point can only access data in the application's own directory and any subdirectories. A file system can have a maximum of 10,000 access points unless you request an increase. To learn more, see [Mounting a file system using EFS access points](https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/efs_create_access_point/](https://www.paws-r-sdk.com/docs/efs_create_access_point/) for full documentation.
 #'
@@ -120,7 +120,7 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' to provision for a file system that you're creating. Required if
 #' `ThroughputMode` is set to `provisioned`. Valid values are 1-3414 MiBps,
 #' with the upper limit depending on Region. To increase this limit,
-#' contact Amazon Web Services Support. For more information, see [Amazon
+#' contact Amazon Web ServicesSupport. For more information, see [Amazon
 #' EFS quotas that you can
 #' increase](https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits)
 #' in the *Amazon EFS User Guide*.
@@ -185,14 +185,33 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #' @param SubnetId &#91;required&#93; The ID of the subnet to add the mount target in. For One Zone file
 #' systems, use the subnet that is associated with the file system's
 #' Availability Zone.
-#' @param IpAddress Valid IPv4 address within the address range of the specified subnet.
-#' @param SecurityGroups Up to five VPC security group IDs, of the form `sg-xxxxxxxx`. These must
-#' be for the same VPC as subnet specified.
+#' @param IpAddress If the IP address type for the mount target is IPv4, then specify the
+#' IPv4 address within the address range of the specified subnet.
+#' @param Ipv6Address If the IP address type for the mount target is IPv6, then specify the
+#' IPv6 address within the address range of the specified subnet.
+#' @param IpAddressType Specify the type of IP address of the mount target you are creating.
+#' Options are IPv4, dual stack, or IPv6. If you don’t specify an
+#' IpAddressType, then IPv4 is used.
+#' 
+#' -   IPV4_ONLY – Create mount target with IPv4 only subnet or dual-stack
+#'     subnet.
+#' 
+#' -   DUAL_STACK – Create mount target with dual-stack subnet.
+#' 
+#' -   IPV6_ONLY – Create mount target with IPv6 only subnet.
+#' 
+#' Creating IPv6 mount target only ENI in dual-stack subnet is not
+#' supported.
+#' @param SecurityGroups VPC security group IDs, of the form `sg-xxxxxxxx`. These must be for the
+#' same VPC as the subnet specified. The maximum number of security groups
+#' depends on account quota. For more information, see [Amazon VPC
+#' Quotas](https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html)
+#' in the *Amazon VPC User Guide* (see the **Security Groups** table).
 #'
 #' @keywords internal
 #'
 #' @rdname efs_create_mount_target
-efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, SecurityGroups = NULL) {
+efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Ipv6Address = NULL, IpAddressType = NULL, SecurityGroups = NULL) {
   op <- new_operation(
     name = "CreateMountTarget",
     http_method = "POST",
@@ -201,7 +220,7 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .efs$create_mount_target_input(FileSystemId = FileSystemId, SubnetId = SubnetId, IpAddress = IpAddress, SecurityGroups = SecurityGroups)
+  input <- .efs$create_mount_target_input(FileSystemId = FileSystemId, SubnetId = SubnetId, IpAddress = IpAddress, Ipv6Address = Ipv6Address, IpAddressType = IpAddressType, SecurityGroups = SecurityGroups)
   output <- .efs$create_mount_target_output()
   config <- get_config()
   svc <- .efs$service(config, op)
@@ -671,11 +690,11 @@ efs_describe_file_systems <- function(MaxItems = NULL, Marker = NULL, CreationTo
 }
 .efs$operations$describe_file_systems <- efs_describe_file_systems
 
-#' Returns the current LifecycleConfiguration object for the specified
-#' Amazon EFS file system
+#' Returns the current LifecycleConfiguration object for the specified EFS
+#' file system
 #'
 #' @description
-#' Returns the current `LifecycleConfiguration` object for the specified Amazon EFS file system. Lifecycle management uses the `LifecycleConfiguration` object to identify when to move files between storage classes. For a file system without a `LifecycleConfiguration` object, the call returns an empty array in the response.
+#' Returns the current `LifecycleConfiguration` object for the specified EFS file system. Lifecycle management uses the `LifecycleConfiguration` object to identify when to move files between storage classes. For a file system without a `LifecycleConfiguration` object, the call returns an empty array in the response.
 #'
 #' See [https://www.paws-r-sdk.com/docs/efs_describe_lifecycle_configuration/](https://www.paws-r-sdk.com/docs/efs_describe_lifecycle_configuration/) for full documentation.
 #'
@@ -907,7 +926,7 @@ efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken 
 #' See [https://www.paws-r-sdk.com/docs/efs_modify_mount_target_security_groups/](https://www.paws-r-sdk.com/docs/efs_modify_mount_target_security_groups/) for full documentation.
 #'
 #' @param MountTargetId &#91;required&#93; The ID of the mount target whose security groups you want to modify.
-#' @param SecurityGroups An array of up to five VPC security group IDs.
+#' @param SecurityGroups An array of VPC security group IDs.
 #'
 #' @keywords internal
 #'
@@ -1196,7 +1215,7 @@ efs_untag_resource <- function(ResourceId, TagKeys) {
 #' that you want to provision for a file system that you're creating.
 #' Required if `ThroughputMode` is set to `provisioned`. Valid values are
 #' 1-3414 MiBps, with the upper limit depending on Region. To increase this
-#' limit, contact Amazon Web Services Support. For more information, see
+#' limit, contact Amazon Web ServicesSupport. For more information, see
 #' [Amazon EFS quotas that you can
 #' increase](https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits)
 #' in the *Amazon EFS User Guide*.

@@ -5,7 +5,7 @@ NULL
 
 .dynamodbstreams$describe_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamArn = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), ExclusiveStartShardId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamArn = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), ExclusiveStartShardId = structure(logical(0), tags = list(type = "string")), ShardFilter = structure(list(Type = structure(logical(0), tags = list(type = "string")), ShardId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

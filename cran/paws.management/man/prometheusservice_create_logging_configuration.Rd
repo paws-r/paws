@@ -2,26 +2,26 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_create_logging_configuration}
 \alias{prometheusservice_create_logging_configuration}
-\title{The CreateLoggingConfiguration operation creates a logging configuration
-for the workspace}
+\title{The CreateLoggingConfiguration operation creates rules and alerting
+logging configuration for the workspace}
 \usage{
 prometheusservice_create_logging_configuration(
-  clientToken = NULL,
+  workspaceId,
   logGroupArn,
-  workspaceId
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
-the request. Case-sensitive.}
+\item{workspaceId}{[required] The ID of the workspace to create the logging configuration for.}
 
 \item{logGroupArn}{[required] The ARN of the CloudWatch log group to which the vended log data will be
 published. This log group must exist prior to calling this operation.}
 
-\item{workspaceId}{[required] The ID of the workspace to create the logging configuration for.}
+\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
+the request. Case-sensitive.}
 }
 \description{
-The \code{\link[=prometheusservice_create_logging_configuration]{create_logging_configuration}} operation creates a logging configuration for the workspace. Use this operation to set the CloudWatch log group to which the logs will be published to.
+The \code{\link[=prometheusservice_create_logging_configuration]{create_logging_configuration}} operation creates rules and alerting logging configuration for the workspace. Use this operation to set the CloudWatch log group to which the logs will be published to.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_create_logging_configuration/} for full documentation.
 }

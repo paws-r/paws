@@ -203,6 +203,14 @@ sesv2_cancel_export_job <- function(JobId) {
 #'   SuppressionOptions = list(
 #'     SuppressedReasons = list(
 #'       "BOUNCE"|"COMPLAINT"
+#'     ),
+#'     ValidationOptions = list(
+#'       ConditionThreshold = list(
+#'         ConditionThresholdEnabled = "ENABLED"|"DISABLED",
+#'         OverallConfidenceThreshold = list(
+#'           ConfidenceVerdictThreshold = "MEDIUM"|"HIGH"|"MANAGED"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   VdmOptions = list(
@@ -464,7 +472,7 @@ sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #'
 #' @usage
 #' sesv2_create_custom_verification_email_template(TemplateName,
-#'   FromEmailAddress, TemplateSubject, TemplateContent,
+#'   FromEmailAddress, TemplateSubject, TemplateContent, Tags,
 #'   SuccessRedirectionURL, FailureRedirectionURL)
 #'
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template.
@@ -476,6 +484,8 @@ sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' frequently asked
 #' questions](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom-faq)
 #' in the *Amazon SES Developer Guide*.
+#' @param Tags An array of objects that define the tags (keys and values) to associate
+#' with the custom verification email template.
 #' @param SuccessRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
 #' or her address is successfully verified.
 #' @param FailureRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
@@ -491,6 +501,12 @@ sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #'   FromEmailAddress = "string",
 #'   TemplateSubject = "string",
 #'   TemplateContent = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
 #'   SuccessRedirectionURL = "string",
 #'   FailureRedirectionURL = "string"
 #' )
@@ -501,7 +517,7 @@ sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' @rdname sesv2_create_custom_verification_email_template
 #'
 #' @aliases sesv2_create_custom_verification_email_template
-sesv2_create_custom_verification_email_template <- function(TemplateName, FromEmailAddress, TemplateSubject, TemplateContent, SuccessRedirectionURL, FailureRedirectionURL) {
+sesv2_create_custom_verification_email_template <- function(TemplateName, FromEmailAddress, TemplateSubject, TemplateContent, Tags = NULL, SuccessRedirectionURL, FailureRedirectionURL) {
   op <- new_operation(
     name = "CreateCustomVerificationEmailTemplate",
     http_method = "POST",
@@ -510,7 +526,7 @@ sesv2_create_custom_verification_email_template <- function(TemplateName, FromEm
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$create_custom_verification_email_template_input(TemplateName = TemplateName, FromEmailAddress = FromEmailAddress, TemplateSubject = TemplateSubject, TemplateContent = TemplateContent, SuccessRedirectionURL = SuccessRedirectionURL, FailureRedirectionURL = FailureRedirectionURL)
+  input <- .sesv2$create_custom_verification_email_template_input(TemplateName = TemplateName, FromEmailAddress = FromEmailAddress, TemplateSubject = TemplateSubject, TemplateContent = TemplateContent, Tags = Tags, SuccessRedirectionURL = SuccessRedirectionURL, FailureRedirectionURL = FailureRedirectionURL)
   output <- .sesv2$create_custom_verification_email_template_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -788,7 +804,8 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #'     Tokens = list(
 #'       "string"
 #'     ),
-#'     SigningAttributesOrigin = "AWS_SES"|"EXTERNAL"|"AWS_SES_AF_SOUTH_1"|"AWS_SES_EU_NORTH_1"|"AWS_SES_AP_SOUTH_1"|"AWS_SES_EU_WEST_3"|"AWS_SES_EU_WEST_2"|"AWS_SES_EU_SOUTH_1"|"AWS_SES_EU_WEST_1"|"AWS_SES_AP_NORTHEAST_3"|"AWS_SES_AP_NORTHEAST_2"|"AWS_SES_ME_SOUTH_1"|"AWS_SES_AP_NORTHEAST_1"|"AWS_SES_IL_CENTRAL_1"|"AWS_SES_SA_EAST_1"|"AWS_SES_CA_CENTRAL_1"|"AWS_SES_AP_SOUTHEAST_1"|"AWS_SES_AP_SOUTHEAST_2"|"AWS_SES_AP_SOUTHEAST_3"|"AWS_SES_EU_CENTRAL_1"|"AWS_SES_US_EAST_1"|"AWS_SES_US_EAST_2"|"AWS_SES_US_WEST_1"|"AWS_SES_US_WEST_2",
+#'     SigningHostedZone = "string",
+#'     SigningAttributesOrigin = "AWS_SES"|"EXTERNAL"|"AWS_SES_AF_SOUTH_1"|"AWS_SES_EU_NORTH_1"|"AWS_SES_AP_SOUTH_1"|"AWS_SES_EU_WEST_3"|"AWS_SES_EU_WEST_2"|"AWS_SES_EU_SOUTH_1"|"AWS_SES_EU_WEST_1"|"AWS_SES_AP_NORTHEAST_3"|"AWS_SES_AP_NORTHEAST_2"|"AWS_SES_ME_SOUTH_1"|"AWS_SES_AP_NORTHEAST_1"|"AWS_SES_IL_CENTRAL_1"|"AWS_SES_SA_EAST_1"|"AWS_SES_CA_CENTRAL_1"|"AWS_SES_AP_SOUTHEAST_1"|"AWS_SES_AP_SOUTHEAST_2"|"AWS_SES_AP_SOUTHEAST_3"|"AWS_SES_EU_CENTRAL_1"|"AWS_SES_US_EAST_1"|"AWS_SES_US_EAST_2"|"AWS_SES_US_WEST_1"|"AWS_SES_US_WEST_2"|"AWS_SES_ME_CENTRAL_1"|"AWS_SES_AP_SOUTH_2"|"AWS_SES_EU_CENTRAL_2"|"AWS_SES_AP_SOUTHEAST_5"|"AWS_SES_CA_WEST_1",
 #'     NextSigningKeyLength = "RSA_1024_BIT"|"RSA_2048_BIT",
 #'     CurrentSigningKeyLength = "RSA_1024_BIT"|"RSA_2048_BIT",
 #'     LastKeyGenerationTimestamp = as.POSIXct(
@@ -812,7 +829,7 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #'     DomainSigningSelector = "string",
 #'     DomainSigningPrivateKey = "string",
 #'     NextSigningKeyLength = "RSA_1024_BIT"|"RSA_2048_BIT",
-#'     DomainSigningAttributesOrigin = "AWS_SES"|"EXTERNAL"|"AWS_SES_AF_SOUTH_1"|"AWS_SES_EU_NORTH_1"|"AWS_SES_AP_SOUTH_1"|"AWS_SES_EU_WEST_3"|"AWS_SES_EU_WEST_2"|"AWS_SES_EU_SOUTH_1"|"AWS_SES_EU_WEST_1"|"AWS_SES_AP_NORTHEAST_3"|"AWS_SES_AP_NORTHEAST_2"|"AWS_SES_ME_SOUTH_1"|"AWS_SES_AP_NORTHEAST_1"|"AWS_SES_IL_CENTRAL_1"|"AWS_SES_SA_EAST_1"|"AWS_SES_CA_CENTRAL_1"|"AWS_SES_AP_SOUTHEAST_1"|"AWS_SES_AP_SOUTHEAST_2"|"AWS_SES_AP_SOUTHEAST_3"|"AWS_SES_EU_CENTRAL_1"|"AWS_SES_US_EAST_1"|"AWS_SES_US_EAST_2"|"AWS_SES_US_WEST_1"|"AWS_SES_US_WEST_2"
+#'     DomainSigningAttributesOrigin = "AWS_SES"|"EXTERNAL"|"AWS_SES_AF_SOUTH_1"|"AWS_SES_EU_NORTH_1"|"AWS_SES_AP_SOUTH_1"|"AWS_SES_EU_WEST_3"|"AWS_SES_EU_WEST_2"|"AWS_SES_EU_SOUTH_1"|"AWS_SES_EU_WEST_1"|"AWS_SES_AP_NORTHEAST_3"|"AWS_SES_AP_NORTHEAST_2"|"AWS_SES_ME_SOUTH_1"|"AWS_SES_AP_NORTHEAST_1"|"AWS_SES_IL_CENTRAL_1"|"AWS_SES_SA_EAST_1"|"AWS_SES_CA_CENTRAL_1"|"AWS_SES_AP_SOUTHEAST_1"|"AWS_SES_AP_SOUTHEAST_2"|"AWS_SES_AP_SOUTHEAST_3"|"AWS_SES_EU_CENTRAL_1"|"AWS_SES_US_EAST_1"|"AWS_SES_US_EAST_2"|"AWS_SES_US_WEST_1"|"AWS_SES_US_WEST_2"|"AWS_SES_ME_CENTRAL_1"|"AWS_SES_AP_SOUTH_2"|"AWS_SES_EU_CENTRAL_2"|"AWS_SES_AP_SOUTHEAST_5"|"AWS_SES_CA_WEST_1"
 #'   ),
 #'   ConfigurationSetName = "string"
 #' )
@@ -920,11 +937,13 @@ sesv2_create_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
 #' You can execute this operation no more than once per second.
 #'
 #' @usage
-#' sesv2_create_email_template(TemplateName, TemplateContent)
+#' sesv2_create_email_template(TemplateName, TemplateContent, Tags)
 #'
 #' @param TemplateName &#91;required&#93; The name of the template.
 #' @param TemplateContent &#91;required&#93; The content of the email template, composed of a subject line, an HTML
 #' part, and a text-only part.
+#' @param Tags An array of objects that define the tags (keys and values) to associate
+#' with the email template.
 #'
 #' @return
 #' An empty list.
@@ -937,6 +956,12 @@ sesv2_create_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
 #'     Subject = "string",
 #'     Text = "string",
 #'     Html = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -946,7 +971,7 @@ sesv2_create_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
 #' @rdname sesv2_create_email_template
 #'
 #' @aliases sesv2_create_email_template
-sesv2_create_email_template <- function(TemplateName, TemplateContent) {
+sesv2_create_email_template <- function(TemplateName, TemplateContent, Tags = NULL) {
   op <- new_operation(
     name = "CreateEmailTemplate",
     http_method = "POST",
@@ -955,7 +980,7 @@ sesv2_create_email_template <- function(TemplateName, TemplateContent) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$create_email_template_input(TemplateName = TemplateName, TemplateContent = TemplateContent)
+  input <- .sesv2$create_email_template_input(TemplateName = TemplateName, TemplateContent = TemplateContent, Tags = Tags)
   output <- .sesv2$create_email_template_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -1226,6 +1251,139 @@ sesv2_create_multi_region_endpoint <- function(EndpointName, Details, Tags = NUL
   return(response)
 }
 .sesv2$operations$create_multi_region_endpoint <- sesv2_create_multi_region_endpoint
+
+#' Create a tenant
+#'
+#' @description
+#' Create a tenant.
+#' 
+#' *Tenants* are logical containers that group related SES resources
+#' together. Each tenant can have its own set of resources like email
+#' identities, configuration sets, and templates, along with reputation
+#' metrics and sending status. This helps isolate and manage email sending
+#' for different customers or business units within your Amazon SES API v2
+#' account.
+#'
+#' @usage
+#' sesv2_create_tenant(TenantName, Tags)
+#'
+#' @param TenantName &#91;required&#93; The name of the tenant to create. The name can contain up to 64
+#' alphanumeric characters, including letters, numbers, hyphens (-) and
+#' underscores (_) only.
+#' @param Tags An array of objects that define the tags (keys and values) to associate
+#' with the tenant
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TenantName = "string",
+#'   TenantId = "string",
+#'   TenantArn = "string",
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   SendingStatus = "ENABLED"|"REINSTATED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_tenant(
+#'   TenantName = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_create_tenant
+#'
+#' @aliases sesv2_create_tenant
+sesv2_create_tenant <- function(TenantName, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateTenant",
+    http_method = "POST",
+    http_path = "/v2/email/tenants",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$create_tenant_input(TenantName = TenantName, Tags = Tags)
+  output <- .sesv2$create_tenant_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$create_tenant <- sesv2_create_tenant
+
+#' Associate a resource with a tenant
+#'
+#' @description
+#' Associate a resource with a tenant.
+#' 
+#' *Resources* can be email identities, configuration sets, or email
+#' templates. When you associate a resource with a tenant, you can use that
+#' resource when sending emails on behalf of that tenant.
+#' 
+#' A single resource can be associated with multiple tenants, allowing for
+#' resource sharing across different tenants while maintaining isolation in
+#' email sending operations.
+#'
+#' @usage
+#' sesv2_create_tenant_resource_association(TenantName, ResourceArn)
+#'
+#' @param TenantName &#91;required&#93; The name of the tenant to associate the resource with.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to associate with the
+#' tenant.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_tenant_resource_association(
+#'   TenantName = "string",
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_create_tenant_resource_association
+#'
+#' @aliases sesv2_create_tenant_resource_association
+sesv2_create_tenant_resource_association <- function(TenantName, ResourceArn) {
+  op <- new_operation(
+    name = "CreateTenantResourceAssociation",
+    http_method = "POST",
+    http_path = "/v2/email/tenants/resources",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$create_tenant_resource_association_input(TenantName = TenantName, ResourceArn = ResourceArn)
+  output <- .sesv2$create_tenant_resource_association_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$create_tenant_resource_association <- sesv2_create_tenant_resource_association
 
 #' Delete an existing configuration set
 #'
@@ -1767,6 +1925,105 @@ sesv2_delete_suppressed_destination <- function(EmailAddress) {
 }
 .sesv2$operations$delete_suppressed_destination <- sesv2_delete_suppressed_destination
 
+#' Delete an existing tenant
+#'
+#' @description
+#' Delete an existing tenant.
+#' 
+#' When you delete a tenant, its associations with resources are removed,
+#' but the resources themselves are not deleted.
+#'
+#' @usage
+#' sesv2_delete_tenant(TenantName)
+#'
+#' @param TenantName &#91;required&#93; The name of the tenant to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_tenant(
+#'   TenantName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_delete_tenant
+#'
+#' @aliases sesv2_delete_tenant
+sesv2_delete_tenant <- function(TenantName) {
+  op <- new_operation(
+    name = "DeleteTenant",
+    http_method = "POST",
+    http_path = "/v2/email/tenants/delete",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$delete_tenant_input(TenantName = TenantName)
+  output <- .sesv2$delete_tenant_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$delete_tenant <- sesv2_delete_tenant
+
+#' Delete an association between a tenant and a resource
+#'
+#' @description
+#' Delete an association between a tenant and a resource.
+#' 
+#' When you delete a tenant-resource association, the resource itself is
+#' not deleted, only its association with the specific tenant is removed.
+#' After removal, the resource will no longer be available for use with
+#' that tenant's email sending operations.
+#'
+#' @usage
+#' sesv2_delete_tenant_resource_association(TenantName, ResourceArn)
+#'
+#' @param TenantName &#91;required&#93; The name of the tenant to remove the resource association from.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove from the tenant
+#' association.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_tenant_resource_association(
+#'   TenantName = "string",
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_delete_tenant_resource_association
+#'
+#' @aliases sesv2_delete_tenant_resource_association
+sesv2_delete_tenant_resource_association <- function(TenantName, ResourceArn) {
+  op <- new_operation(
+    name = "DeleteTenantResourceAssociation",
+    http_method = "POST",
+    http_path = "/v2/email/tenants/resources/delete",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$delete_tenant_resource_association_input(TenantName = TenantName, ResourceArn = ResourceArn)
+  output <- .sesv2$delete_tenant_resource_association_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$delete_tenant_resource_association <- sesv2_delete_tenant_resource_association
+
 #' Obtain information about the email-sending status and capabilities of
 #' your Amazon SES account in the current Amazon Web Services Region
 #'
@@ -1795,6 +2052,14 @@ sesv2_delete_suppressed_destination <- function(EmailAddress) {
 #'   SuppressionAttributes = list(
 #'     SuppressedReasons = list(
 #'       "BOUNCE"|"COMPLAINT"
+#'     ),
+#'     ValidationAttributes = list(
+#'       ConditionThreshold = list(
+#'         ConditionThresholdEnabled = "ENABLED"|"DISABLED",
+#'         OverallConfidenceThreshold = list(
+#'           ConfidenceVerdictThreshold = "MEDIUM"|"HIGH"|"MANAGED"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   Details = list(
@@ -1968,6 +2233,14 @@ sesv2_get_blacklist_reports <- function(BlacklistItemNames) {
 #'   SuppressionOptions = list(
 #'     SuppressedReasons = list(
 #'       "BOUNCE"|"COMPLAINT"
+#'     ),
+#'     ValidationOptions = list(
+#'       ConditionThreshold = list(
+#'         ConditionThresholdEnabled = "ENABLED"|"DISABLED",
+#'         OverallConfidenceThreshold = list(
+#'           ConfidenceVerdictThreshold = "MEDIUM"|"HIGH"|"MANAGED"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   VdmOptions = list(
@@ -2273,6 +2546,12 @@ sesv2_get_contact_list <- function(ContactListName) {
 #'   FromEmailAddress = "string",
 #'   TemplateSubject = "string",
 #'   TemplateContent = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
 #'   SuccessRedirectionURL = "string",
 #'   FailureRedirectionURL = "string"
 #' )
@@ -2331,7 +2610,7 @@ sesv2_get_custom_verification_email_template <- function(TemplateName) {
 #' list(
 #'   DedicatedIp = list(
 #'     Ip = "string",
-#'     WarmupStatus = "IN_PROGRESS"|"DONE",
+#'     WarmupStatus = "IN_PROGRESS"|"DONE"|"NOT_APPLICABLE",
 #'     WarmupPercentage = 123,
 #'     PoolName = "string"
 #'   )
@@ -2448,7 +2727,7 @@ sesv2_get_dedicated_ip_pool <- function(PoolName) {
 #'   DedicatedIps = list(
 #'     list(
 #'       Ip = "string",
-#'       WarmupStatus = "IN_PROGRESS"|"DONE",
+#'       WarmupStatus = "IN_PROGRESS"|"DONE"|"NOT_APPLICABLE",
 #'       WarmupPercentage = 123,
 #'       PoolName = "string"
 #'     )
@@ -2841,6 +3120,83 @@ sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
 }
 .sesv2$operations$get_domain_statistics_report <- sesv2_get_domain_statistics_report
 
+#' Provides validation insights about a specific email address, including
+#' syntax validation, DNS record checks, mailbox existence, and other
+#' deliverability factors
+#'
+#' @description
+#' Provides validation insights about a specific email address, including
+#' syntax validation, DNS record checks, mailbox existence, and other
+#' deliverability factors.
+#'
+#' @usage
+#' sesv2_get_email_address_insights(EmailAddress)
+#'
+#' @param EmailAddress &#91;required&#93; The email address to analyze for validation insights.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MailboxValidation = list(
+#'     IsValid = list(
+#'       ConfidenceVerdict = "LOW"|"MEDIUM"|"HIGH"
+#'     ),
+#'     Evaluations = list(
+#'       HasValidSyntax = list(
+#'         ConfidenceVerdict = "LOW"|"MEDIUM"|"HIGH"
+#'       ),
+#'       HasValidDnsRecords = list(
+#'         ConfidenceVerdict = "LOW"|"MEDIUM"|"HIGH"
+#'       ),
+#'       MailboxExists = list(
+#'         ConfidenceVerdict = "LOW"|"MEDIUM"|"HIGH"
+#'       ),
+#'       IsRoleAddress = list(
+#'         ConfidenceVerdict = "LOW"|"MEDIUM"|"HIGH"
+#'       ),
+#'       IsDisposable = list(
+#'         ConfidenceVerdict = "LOW"|"MEDIUM"|"HIGH"
+#'       ),
+#'       IsRandomInput = list(
+#'         ConfidenceVerdict = "LOW"|"MEDIUM"|"HIGH"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_email_address_insights(
+#'   EmailAddress = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_get_email_address_insights
+#'
+#' @aliases sesv2_get_email_address_insights
+sesv2_get_email_address_insights <- function(EmailAddress) {
+  op <- new_operation(
+    name = "GetEmailAddressInsights",
+    http_method = "POST",
+    http_path = "/v2/email/email-address-insights/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$get_email_address_insights_input(EmailAddress = EmailAddress)
+  output <- .sesv2$get_email_address_insights_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$get_email_address_insights <- sesv2_get_email_address_insights
+
 #' Provides information about a specific identity, including the identity's
 #' verification status, sending authorization policies, its DKIM
 #' authentication status, and its custom Mail-From settings
@@ -2868,7 +3224,8 @@ sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
 #'     Tokens = list(
 #'       "string"
 #'     ),
-#'     SigningAttributesOrigin = "AWS_SES"|"EXTERNAL"|"AWS_SES_AF_SOUTH_1"|"AWS_SES_EU_NORTH_1"|"AWS_SES_AP_SOUTH_1"|"AWS_SES_EU_WEST_3"|"AWS_SES_EU_WEST_2"|"AWS_SES_EU_SOUTH_1"|"AWS_SES_EU_WEST_1"|"AWS_SES_AP_NORTHEAST_3"|"AWS_SES_AP_NORTHEAST_2"|"AWS_SES_ME_SOUTH_1"|"AWS_SES_AP_NORTHEAST_1"|"AWS_SES_IL_CENTRAL_1"|"AWS_SES_SA_EAST_1"|"AWS_SES_CA_CENTRAL_1"|"AWS_SES_AP_SOUTHEAST_1"|"AWS_SES_AP_SOUTHEAST_2"|"AWS_SES_AP_SOUTHEAST_3"|"AWS_SES_EU_CENTRAL_1"|"AWS_SES_US_EAST_1"|"AWS_SES_US_EAST_2"|"AWS_SES_US_WEST_1"|"AWS_SES_US_WEST_2",
+#'     SigningHostedZone = "string",
+#'     SigningAttributesOrigin = "AWS_SES"|"EXTERNAL"|"AWS_SES_AF_SOUTH_1"|"AWS_SES_EU_NORTH_1"|"AWS_SES_AP_SOUTH_1"|"AWS_SES_EU_WEST_3"|"AWS_SES_EU_WEST_2"|"AWS_SES_EU_SOUTH_1"|"AWS_SES_EU_WEST_1"|"AWS_SES_AP_NORTHEAST_3"|"AWS_SES_AP_NORTHEAST_2"|"AWS_SES_ME_SOUTH_1"|"AWS_SES_AP_NORTHEAST_1"|"AWS_SES_IL_CENTRAL_1"|"AWS_SES_SA_EAST_1"|"AWS_SES_CA_CENTRAL_1"|"AWS_SES_AP_SOUTHEAST_1"|"AWS_SES_AP_SOUTHEAST_2"|"AWS_SES_AP_SOUTHEAST_3"|"AWS_SES_EU_CENTRAL_1"|"AWS_SES_US_EAST_1"|"AWS_SES_US_EAST_2"|"AWS_SES_US_WEST_1"|"AWS_SES_US_WEST_2"|"AWS_SES_ME_CENTRAL_1"|"AWS_SES_AP_SOUTH_2"|"AWS_SES_EU_CENTRAL_2"|"AWS_SES_AP_SOUTHEAST_5"|"AWS_SES_CA_WEST_1",
 #'     NextSigningKeyLength = "RSA_1024_BIT"|"RSA_2048_BIT",
 #'     CurrentSigningKeyLength = "RSA_1024_BIT"|"RSA_2048_BIT",
 #'     LastKeyGenerationTimestamp = as.POSIXct(
@@ -3027,6 +3384,12 @@ sesv2_get_email_identity_policies <- function(EmailIdentity) {
 #'     Subject = "string",
 #'     Text = "string",
 #'     Html = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -3431,6 +3794,90 @@ sesv2_get_multi_region_endpoint <- function(EndpointName) {
 }
 .sesv2$operations$get_multi_region_endpoint <- sesv2_get_multi_region_endpoint
 
+#' Retrieve information about a specific reputation entity, including its
+#' reputation management policy, customer-managed status, Amazon Web
+#' Services Amazon SES-managed status, and aggregate sending status
+#'
+#' @description
+#' Retrieve information about a specific reputation entity, including its
+#' reputation management policy, customer-managed status, Amazon Web
+#' Services Amazon SES-managed status, and aggregate sending status.
+#' 
+#' *Reputation entities* represent resources in your Amazon SES account
+#' that have reputation tracking and management capabilities. The
+#' reputation impact reflects the highest impact reputation finding for the
+#' entity. Reputation findings can be retrieved using the
+#' [`list_recommendations`][sesv2_list_recommendations] operation.
+#'
+#' @usage
+#' sesv2_get_reputation_entity(ReputationEntityReference,
+#'   ReputationEntityType)
+#'
+#' @param ReputationEntityReference &#91;required&#93; The unique identifier for the reputation entity. For resource-type
+#' entities, this is the Amazon Resource Name (ARN) of the resource.
+#' @param ReputationEntityType &#91;required&#93; The type of reputation entity. Currently, only `RESOURCE` type entities
+#' are supported.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReputationEntity = list(
+#'     ReputationEntityReference = "string",
+#'     ReputationEntityType = "RESOURCE",
+#'     ReputationManagementPolicy = "string",
+#'     CustomerManagedStatus = list(
+#'       Status = "ENABLED"|"REINSTATED"|"DISABLED",
+#'       Cause = "string",
+#'       LastUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     AwsSesManagedStatus = list(
+#'       Status = "ENABLED"|"REINSTATED"|"DISABLED",
+#'       Cause = "string",
+#'       LastUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     SendingStatusAggregate = "ENABLED"|"REINSTATED"|"DISABLED",
+#'     ReputationImpact = "LOW"|"HIGH"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_reputation_entity(
+#'   ReputationEntityReference = "string",
+#'   ReputationEntityType = "RESOURCE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_get_reputation_entity
+#'
+#' @aliases sesv2_get_reputation_entity
+sesv2_get_reputation_entity <- function(ReputationEntityReference, ReputationEntityType) {
+  op <- new_operation(
+    name = "GetReputationEntity",
+    http_method = "GET",
+    http_path = "/v2/email/reputation/entities/{ReputationEntityType}/{ReputationEntityReference}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$get_reputation_entity_input(ReputationEntityReference = ReputationEntityReference, ReputationEntityType = ReputationEntityType)
+  output <- .sesv2$get_reputation_entity_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$get_reputation_entity <- sesv2_get_reputation_entity
+
 #' Retrieves information about a specific email address that's on the
 #' suppression list for your account
 #'
@@ -3491,6 +3938,71 @@ sesv2_get_suppressed_destination <- function(EmailAddress) {
   return(response)
 }
 .sesv2$operations$get_suppressed_destination <- sesv2_get_suppressed_destination
+
+#' Get information about a specific tenant, including the tenant's name,
+#' ID, ARN, creation timestamp, tags, and sending status
+#'
+#' @description
+#' Get information about a specific tenant, including the tenant's name,
+#' ID, ARN, creation timestamp, tags, and sending status.
+#'
+#' @usage
+#' sesv2_get_tenant(TenantName)
+#'
+#' @param TenantName &#91;required&#93; The name of the tenant to retrieve information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tenant = list(
+#'     TenantName = "string",
+#'     TenantId = "string",
+#'     TenantArn = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     SendingStatus = "ENABLED"|"REINSTATED"|"DISABLED"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_tenant(
+#'   TenantName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_get_tenant
+#'
+#' @aliases sesv2_get_tenant
+sesv2_get_tenant <- function(TenantName) {
+  op <- new_operation(
+    name = "GetTenant",
+    http_method = "POST",
+    http_path = "/v2/email/tenants/get",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$get_tenant_input(TenantName = TenantName)
+  output <- .sesv2$get_tenant_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$get_tenant <- sesv2_get_tenant
 
 #' List all of the configuration sets associated with your account in the
 #' current region
@@ -4449,7 +4961,7 @@ sesv2_list_multi_region_endpoints <- function(NextToken = NULL, PageSize = NULL)
 #'   Recommendations = list(
 #'     list(
 #'       ResourceArn = "string",
-#'       Type = "DKIM"|"DMARC"|"SPF"|"BIMI"|"COMPLAINT",
+#'       Type = "DKIM"|"DMARC"|"SPF"|"BIMI"|"COMPLAINT"|"BOUNCE"|"FEEDBACK_3P"|"IP_LISTING",
 #'       Description = "string",
 #'       Status = "OPEN"|"FIXED",
 #'       CreatedTimestamp = as.POSIXct(
@@ -4499,6 +5011,174 @@ sesv2_list_recommendations <- function(Filter = NULL, NextToken = NULL, PageSize
   return(response)
 }
 .sesv2$operations$list_recommendations <- sesv2_list_recommendations
+
+#' List reputation entities in your Amazon SES account in the current
+#' Amazon Web Services Region
+#'
+#' @description
+#' List reputation entities in your Amazon SES account in the current
+#' Amazon Web Services Region. You can filter the results by entity type,
+#' reputation impact, sending status, or entity reference prefix.
+#' 
+#' *Reputation entities* represent resources in your account that have
+#' reputation tracking and management capabilities. Use this operation to
+#' get an overview of all entities and their current reputation status.
+#'
+#' @usage
+#' sesv2_list_reputation_entities(Filter, NextToken, PageSize)
+#'
+#' @param Filter An object that contains filters to apply when listing reputation
+#' entities. You can filter by entity type, reputation impact, sending
+#' status, or entity reference prefix.
+#' @param NextToken A token returned from a previous call to
+#' [`list_reputation_entities`][sesv2_list_reputation_entities] to indicate
+#' the position in the list of reputation entities.
+#' @param PageSize The number of results to show in a single call to
+#' [`list_reputation_entities`][sesv2_list_reputation_entities]. If the
+#' number of results is larger than the number you specified in this
+#' parameter, then the response includes a `NextToken` element, which you
+#' can use to obtain additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReputationEntities = list(
+#'     list(
+#'       ReputationEntityReference = "string",
+#'       ReputationEntityType = "RESOURCE",
+#'       ReputationManagementPolicy = "string",
+#'       CustomerManagedStatus = list(
+#'         Status = "ENABLED"|"REINSTATED"|"DISABLED",
+#'         Cause = "string",
+#'         LastUpdatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       AwsSesManagedStatus = list(
+#'         Status = "ENABLED"|"REINSTATED"|"DISABLED",
+#'         Cause = "string",
+#'         LastUpdatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       SendingStatusAggregate = "ENABLED"|"REINSTATED"|"DISABLED",
+#'       ReputationImpact = "LOW"|"HIGH"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_reputation_entities(
+#'   Filter = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string",
+#'   PageSize = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_list_reputation_entities
+#'
+#' @aliases sesv2_list_reputation_entities
+sesv2_list_reputation_entities <- function(Filter = NULL, NextToken = NULL, PageSize = NULL) {
+  op <- new_operation(
+    name = "ListReputationEntities",
+    http_method = "POST",
+    http_path = "/v2/email/reputation/entities",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize", result_key = "ReputationEntities"),
+    stream_api = FALSE
+  )
+  input <- .sesv2$list_reputation_entities_input(Filter = Filter, NextToken = NextToken, PageSize = PageSize)
+  output <- .sesv2$list_reputation_entities_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$list_reputation_entities <- sesv2_list_reputation_entities
+
+#' List all tenants associated with a specific resource
+#'
+#' @description
+#' List all tenants associated with a specific resource.
+#' 
+#' This operation returns a list of tenants that are associated with the
+#' specified resource. This is useful for understanding which tenants are
+#' currently using a particular resource such as an email identity,
+#' configuration set, or email template.
+#'
+#' @usage
+#' sesv2_list_resource_tenants(ResourceArn, PageSize, NextToken)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to list associated
+#' tenants for.
+#' @param PageSize The number of results to show in a single call to
+#' [`list_resource_tenants`][sesv2_list_resource_tenants]. If the number of
+#' results is larger than the number you specified in this parameter, then
+#' the response includes a `NextToken` element, which you can use to obtain
+#' additional results.
+#' @param NextToken A token returned from a previous call to
+#' [`list_resource_tenants`][sesv2_list_resource_tenants] to indicate the
+#' position in the list of resource tenants.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceTenants = list(
+#'     list(
+#'       TenantName = "string",
+#'       TenantId = "string",
+#'       ResourceArn = "string",
+#'       AssociatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resource_tenants(
+#'   ResourceArn = "string",
+#'   PageSize = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_list_resource_tenants
+#'
+#' @aliases sesv2_list_resource_tenants
+sesv2_list_resource_tenants <- function(ResourceArn, PageSize = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListResourceTenants",
+    http_method = "POST",
+    http_path = "/v2/email/resources/tenants/list",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize", result_key = "ResourceTenants"),
+    stream_api = FALSE
+  )
+  input <- .sesv2$list_resource_tenants_input(ResourceArn = ResourceArn, PageSize = PageSize, NextToken = NextToken)
+  output <- .sesv2$list_resource_tenants_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$list_resource_tenants <- sesv2_list_resource_tenants
 
 #' Retrieves a list of email addresses that are on the suppression list for
 #' your account
@@ -4643,6 +5323,153 @@ sesv2_list_tags_for_resource <- function(ResourceArn) {
   return(response)
 }
 .sesv2$operations$list_tags_for_resource <- sesv2_list_tags_for_resource
+
+#' List all resources associated with a specific tenant
+#'
+#' @description
+#' List all resources associated with a specific tenant.
+#' 
+#' This operation returns a list of resources (email identities,
+#' configuration sets, or email templates) that are associated with the
+#' specified tenant. You can optionally filter the results by resource
+#' type.
+#'
+#' @usage
+#' sesv2_list_tenant_resources(TenantName, Filter, PageSize, NextToken)
+#'
+#' @param TenantName &#91;required&#93; The name of the tenant to list resources for.
+#' @param Filter A map of filter keys and values for filtering the list of tenant
+#' resources. Currently, the only supported filter key is `RESOURCE_TYPE`.
+#' @param PageSize The number of results to show in a single call to
+#' [`list_tenant_resources`][sesv2_list_tenant_resources]. If the number of
+#' results is larger than the number you specified in this parameter, then
+#' the response includes a `NextToken` element, which you can use to obtain
+#' additional results.
+#' @param NextToken A token returned from a previous call to
+#' [`list_tenant_resources`][sesv2_list_tenant_resources] to indicate the
+#' position in the list of tenant resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TenantResources = list(
+#'     list(
+#'       ResourceType = "EMAIL_IDENTITY"|"CONFIGURATION_SET"|"EMAIL_TEMPLATE",
+#'       ResourceArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tenant_resources(
+#'   TenantName = "string",
+#'   Filter = list(
+#'     "string"
+#'   ),
+#'   PageSize = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_list_tenant_resources
+#'
+#' @aliases sesv2_list_tenant_resources
+sesv2_list_tenant_resources <- function(TenantName, Filter = NULL, PageSize = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListTenantResources",
+    http_method = "POST",
+    http_path = "/v2/email/tenants/resources/list",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize", result_key = "TenantResources"),
+    stream_api = FALSE
+  )
+  input <- .sesv2$list_tenant_resources_input(TenantName = TenantName, Filter = Filter, PageSize = PageSize, NextToken = NextToken)
+  output <- .sesv2$list_tenant_resources_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$list_tenant_resources <- sesv2_list_tenant_resources
+
+#' List all tenants associated with your account in the current Amazon Web
+#' Services Region
+#'
+#' @description
+#' List all tenants associated with your account in the current Amazon Web
+#' Services Region.
+#' 
+#' This operation returns basic information about each tenant, such as
+#' tenant name, ID, ARN, and creation timestamp.
+#'
+#' @usage
+#' sesv2_list_tenants(NextToken, PageSize)
+#'
+#' @param NextToken A token returned from a previous call to
+#' [`list_tenants`][sesv2_list_tenants] to indicate the position in the
+#' list of tenants.
+#' @param PageSize The number of results to show in a single call to
+#' [`list_tenants`][sesv2_list_tenants]. If the number of results is larger
+#' than the number you specified in this parameter, then the response
+#' includes a `NextToken` element, which you can use to obtain additional
+#' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tenants = list(
+#'     list(
+#'       TenantName = "string",
+#'       TenantId = "string",
+#'       TenantArn = "string",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tenants(
+#'   NextToken = "string",
+#'   PageSize = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_list_tenants
+#'
+#' @aliases sesv2_list_tenants
+sesv2_list_tenants <- function(NextToken = NULL, PageSize = NULL) {
+  op <- new_operation(
+    name = "ListTenants",
+    http_method = "POST",
+    http_path = "/v2/email/tenants/list",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize", result_key = "Tenants"),
+    stream_api = FALSE
+  )
+  input <- .sesv2$list_tenants_input(NextToken = NextToken, PageSize = PageSize)
+  output <- .sesv2$list_tenants_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$list_tenants <- sesv2_list_tenants
 
 #' Enable or disable the automatic warm-up feature for dedicated IP
 #' addresses
@@ -4817,7 +5644,8 @@ sesv2_put_account_sending_attributes <- function(SendingEnabled = NULL) {
 #' Change the settings for the account-level suppression list.
 #'
 #' @usage
-#' sesv2_put_account_suppression_attributes(SuppressedReasons)
+#' sesv2_put_account_suppression_attributes(SuppressedReasons,
+#'   ValidationAttributes)
 #'
 #' @param SuppressedReasons A list that contains the reasons that email addresses will be
 #' automatically added to the suppression list for your account. This list
@@ -4830,6 +5658,8 @@ sesv2_put_account_sending_attributes <- function(SendingEnabled = NULL) {
 #' -   `BOUNCE` – Amazon SES adds an email address to the suppression list
 #'     for your account when a message sent to that address results in a
 #'     hard bounce.
+#' @param ValidationAttributes An object that contains additional suppression attributes for your
+#' account.
 #'
 #' @return
 #' An empty list.
@@ -4839,6 +5669,14 @@ sesv2_put_account_sending_attributes <- function(SendingEnabled = NULL) {
 #' svc$put_account_suppression_attributes(
 #'   SuppressedReasons = list(
 #'     "BOUNCE"|"COMPLAINT"
+#'   ),
+#'   ValidationAttributes = list(
+#'     ConditionThreshold = list(
+#'       ConditionThresholdEnabled = "ENABLED"|"DISABLED",
+#'       OverallConfidenceThreshold = list(
+#'         ConfidenceVerdictThreshold = "MEDIUM"|"HIGH"|"MANAGED"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -4848,7 +5686,7 @@ sesv2_put_account_sending_attributes <- function(SendingEnabled = NULL) {
 #' @rdname sesv2_put_account_suppression_attributes
 #'
 #' @aliases sesv2_put_account_suppression_attributes
-sesv2_put_account_suppression_attributes <- function(SuppressedReasons = NULL) {
+sesv2_put_account_suppression_attributes <- function(SuppressedReasons = NULL, ValidationAttributes = NULL) {
   op <- new_operation(
     name = "PutAccountSuppressionAttributes",
     http_method = "PUT",
@@ -4857,7 +5695,7 @@ sesv2_put_account_suppression_attributes <- function(SuppressedReasons = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$put_account_suppression_attributes_input(SuppressedReasons = SuppressedReasons)
+  input <- .sesv2$put_account_suppression_attributes_input(SuppressedReasons = SuppressedReasons, ValidationAttributes = ValidationAttributes)
   output <- .sesv2$put_account_suppression_attributes_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -5147,7 +5985,7 @@ sesv2_put_configuration_set_sending_options <- function(ConfigurationSetName, Se
 #'
 #' @usage
 #' sesv2_put_configuration_set_suppression_options(ConfigurationSetName,
-#'   SuppressedReasons)
+#'   SuppressedReasons, ValidationOptions)
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set to change the suppression list
 #' preferences for.
@@ -5162,6 +6000,9 @@ sesv2_put_configuration_set_sending_options <- function(ConfigurationSetName, Se
 #' -   `BOUNCE` – Amazon SES adds an email address to the suppression list
 #'     for your account when a message sent to that address results in a
 #'     hard bounce.
+#' @param ValidationOptions An object that contains information about the email address suppression
+#' preferences for the configuration set in the current Amazon Web Services
+#' Region.
 #'
 #' @return
 #' An empty list.
@@ -5172,6 +6013,14 @@ sesv2_put_configuration_set_sending_options <- function(ConfigurationSetName, Se
 #'   ConfigurationSetName = "string",
 #'   SuppressedReasons = list(
 #'     "BOUNCE"|"COMPLAINT"
+#'   ),
+#'   ValidationOptions = list(
+#'     ConditionThreshold = list(
+#'       ConditionThresholdEnabled = "ENABLED"|"DISABLED",
+#'       OverallConfidenceThreshold = list(
+#'         ConfidenceVerdictThreshold = "MEDIUM"|"HIGH"|"MANAGED"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -5181,7 +6030,7 @@ sesv2_put_configuration_set_sending_options <- function(ConfigurationSetName, Se
 #' @rdname sesv2_put_configuration_set_suppression_options
 #'
 #' @aliases sesv2_put_configuration_set_suppression_options
-sesv2_put_configuration_set_suppression_options <- function(ConfigurationSetName, SuppressedReasons = NULL) {
+sesv2_put_configuration_set_suppression_options <- function(ConfigurationSetName, SuppressedReasons = NULL, ValidationOptions = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetSuppressionOptions",
     http_method = "PUT",
@@ -5190,7 +6039,7 @@ sesv2_put_configuration_set_suppression_options <- function(ConfigurationSetName
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$put_configuration_set_suppression_options_input(ConfigurationSetName = ConfigurationSetName, SuppressedReasons = SuppressedReasons)
+  input <- .sesv2$put_configuration_set_suppression_options_input(ConfigurationSetName = ConfigurationSetName, SuppressedReasons = SuppressedReasons, ValidationOptions = ValidationOptions)
   output <- .sesv2$put_configuration_set_suppression_options_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -5679,7 +6528,8 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
 #'   DkimStatus = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE"|"NOT_STARTED",
 #'   DkimTokens = list(
 #'     "string"
-#'   )
+#'   ),
+#'   SigningHostedZone = "string"
 #' )
 #' ```
 #'
@@ -5687,12 +6537,12 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
 #' ```
 #' svc$put_email_identity_dkim_signing_attributes(
 #'   EmailIdentity = "string",
-#'   SigningAttributesOrigin = "AWS_SES"|"EXTERNAL"|"AWS_SES_AF_SOUTH_1"|"AWS_SES_EU_NORTH_1"|"AWS_SES_AP_SOUTH_1"|"AWS_SES_EU_WEST_3"|"AWS_SES_EU_WEST_2"|"AWS_SES_EU_SOUTH_1"|"AWS_SES_EU_WEST_1"|"AWS_SES_AP_NORTHEAST_3"|"AWS_SES_AP_NORTHEAST_2"|"AWS_SES_ME_SOUTH_1"|"AWS_SES_AP_NORTHEAST_1"|"AWS_SES_IL_CENTRAL_1"|"AWS_SES_SA_EAST_1"|"AWS_SES_CA_CENTRAL_1"|"AWS_SES_AP_SOUTHEAST_1"|"AWS_SES_AP_SOUTHEAST_2"|"AWS_SES_AP_SOUTHEAST_3"|"AWS_SES_EU_CENTRAL_1"|"AWS_SES_US_EAST_1"|"AWS_SES_US_EAST_2"|"AWS_SES_US_WEST_1"|"AWS_SES_US_WEST_2",
+#'   SigningAttributesOrigin = "AWS_SES"|"EXTERNAL"|"AWS_SES_AF_SOUTH_1"|"AWS_SES_EU_NORTH_1"|"AWS_SES_AP_SOUTH_1"|"AWS_SES_EU_WEST_3"|"AWS_SES_EU_WEST_2"|"AWS_SES_EU_SOUTH_1"|"AWS_SES_EU_WEST_1"|"AWS_SES_AP_NORTHEAST_3"|"AWS_SES_AP_NORTHEAST_2"|"AWS_SES_ME_SOUTH_1"|"AWS_SES_AP_NORTHEAST_1"|"AWS_SES_IL_CENTRAL_1"|"AWS_SES_SA_EAST_1"|"AWS_SES_CA_CENTRAL_1"|"AWS_SES_AP_SOUTHEAST_1"|"AWS_SES_AP_SOUTHEAST_2"|"AWS_SES_AP_SOUTHEAST_3"|"AWS_SES_EU_CENTRAL_1"|"AWS_SES_US_EAST_1"|"AWS_SES_US_EAST_2"|"AWS_SES_US_WEST_1"|"AWS_SES_US_WEST_2"|"AWS_SES_ME_CENTRAL_1"|"AWS_SES_AP_SOUTH_2"|"AWS_SES_EU_CENTRAL_2"|"AWS_SES_AP_SOUTHEAST_5"|"AWS_SES_CA_WEST_1",
 #'   SigningAttributes = list(
 #'     DomainSigningSelector = "string",
 #'     DomainSigningPrivateKey = "string",
 #'     NextSigningKeyLength = "RSA_1024_BIT"|"RSA_2048_BIT",
-#'     DomainSigningAttributesOrigin = "AWS_SES"|"EXTERNAL"|"AWS_SES_AF_SOUTH_1"|"AWS_SES_EU_NORTH_1"|"AWS_SES_AP_SOUTH_1"|"AWS_SES_EU_WEST_3"|"AWS_SES_EU_WEST_2"|"AWS_SES_EU_SOUTH_1"|"AWS_SES_EU_WEST_1"|"AWS_SES_AP_NORTHEAST_3"|"AWS_SES_AP_NORTHEAST_2"|"AWS_SES_ME_SOUTH_1"|"AWS_SES_AP_NORTHEAST_1"|"AWS_SES_IL_CENTRAL_1"|"AWS_SES_SA_EAST_1"|"AWS_SES_CA_CENTRAL_1"|"AWS_SES_AP_SOUTHEAST_1"|"AWS_SES_AP_SOUTHEAST_2"|"AWS_SES_AP_SOUTHEAST_3"|"AWS_SES_EU_CENTRAL_1"|"AWS_SES_US_EAST_1"|"AWS_SES_US_EAST_2"|"AWS_SES_US_WEST_1"|"AWS_SES_US_WEST_2"
+#'     DomainSigningAttributesOrigin = "AWS_SES"|"EXTERNAL"|"AWS_SES_AF_SOUTH_1"|"AWS_SES_EU_NORTH_1"|"AWS_SES_AP_SOUTH_1"|"AWS_SES_EU_WEST_3"|"AWS_SES_EU_WEST_2"|"AWS_SES_EU_SOUTH_1"|"AWS_SES_EU_WEST_1"|"AWS_SES_AP_NORTHEAST_3"|"AWS_SES_AP_NORTHEAST_2"|"AWS_SES_ME_SOUTH_1"|"AWS_SES_AP_NORTHEAST_1"|"AWS_SES_IL_CENTRAL_1"|"AWS_SES_SA_EAST_1"|"AWS_SES_CA_CENTRAL_1"|"AWS_SES_AP_SOUTHEAST_1"|"AWS_SES_AP_SOUTHEAST_2"|"AWS_SES_AP_SOUTHEAST_3"|"AWS_SES_EU_CENTRAL_1"|"AWS_SES_US_EAST_1"|"AWS_SES_US_EAST_2"|"AWS_SES_US_WEST_1"|"AWS_SES_US_WEST_2"|"AWS_SES_ME_CENTRAL_1"|"AWS_SES_AP_SOUTH_2"|"AWS_SES_EU_CENTRAL_2"|"AWS_SES_AP_SOUTHEAST_5"|"AWS_SES_CA_WEST_1"
 #'   )
 #' )
 #' ```
@@ -5706,7 +6556,7 @@ sesv2_put_email_identity_dkim_signing_attributes <- function(EmailIdentity, Sign
   op <- new_operation(
     name = "PutEmailIdentityDkimSigningAttributes",
     http_method = "PUT",
-    http_path = "/v1/email/identities/{EmailIdentity}/dkim/signing",
+    http_path = "/v2/email/identities/{EmailIdentity}/dkim/signing",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -5914,7 +6764,8 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' sesv2_send_bulk_email(FromEmailAddress, FromEmailAddressIdentityArn,
 #'   ReplyToAddresses, FeedbackForwardingEmailAddress,
 #'   FeedbackForwardingEmailAddressIdentityArn, DefaultEmailTags,
-#'   DefaultContent, BulkEmailEntries, ConfigurationSetName, EndpointId)
+#'   DefaultContent, BulkEmailEntries, ConfigurationSetName, EndpointId,
+#'   TenantName)
 #'
 #' @param FromEmailAddress The email address to use as the "From" address for the email. The
 #' address that you specify has to be verified.
@@ -5961,6 +6812,11 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' @param BulkEmailEntries &#91;required&#93; The list of bulk email entry objects.
 #' @param ConfigurationSetName The name of the configuration set to use when sending the email.
 #' @param EndpointId The ID of the multi-region endpoint (global-endpoint).
+#' @param TenantName The name of the tenant through which this bulk email will be sent.
+#' 
+#' The email sending operation will only succeed if all referenced
+#' resources (identities, configuration sets, and templates) are associated
+#' with this tenant.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6054,7 +6910,8 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #'     )
 #'   ),
 #'   ConfigurationSetName = "string",
-#'   EndpointId = "string"
+#'   EndpointId = "string",
+#'   TenantName = "string"
 #' )
 #' ```
 #'
@@ -6063,7 +6920,7 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' @rdname sesv2_send_bulk_email
 #'
 #' @aliases sesv2_send_bulk_email
-sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, DefaultEmailTags = NULL, DefaultContent, BulkEmailEntries, ConfigurationSetName = NULL, EndpointId = NULL) {
+sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, DefaultEmailTags = NULL, DefaultContent, BulkEmailEntries, ConfigurationSetName = NULL, EndpointId = NULL, TenantName = NULL) {
   op <- new_operation(
     name = "SendBulkEmail",
     http_method = "POST",
@@ -6072,7 +6929,7 @@ sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdent
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$send_bulk_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, DefaultEmailTags = DefaultEmailTags, DefaultContent = DefaultContent, BulkEmailEntries = BulkEmailEntries, ConfigurationSetName = ConfigurationSetName, EndpointId = EndpointId)
+  input <- .sesv2$send_bulk_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, DefaultEmailTags = DefaultEmailTags, DefaultContent = DefaultContent, BulkEmailEntries = BulkEmailEntries, ConfigurationSetName = ConfigurationSetName, EndpointId = EndpointId, TenantName = TenantName)
   output <- .sesv2$send_bulk_email_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -6174,7 +7031,7 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' sesv2_send_email(FromEmailAddress, FromEmailAddressIdentityArn,
 #'   Destination, ReplyToAddresses, FeedbackForwardingEmailAddress,
 #'   FeedbackForwardingEmailAddressIdentityArn, Content, EmailTags,
-#'   ConfigurationSetName, EndpointId, ListManagementOptions)
+#'   ConfigurationSetName, EndpointId, TenantName, ListManagementOptions)
 #'
 #' @param FromEmailAddress The email address to use as the "From" address for the email. The
 #' address that you specify has to be verified.
@@ -6225,6 +7082,11 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' can publish email sending events.
 #' @param ConfigurationSetName The name of the configuration set to use when sending the email.
 #' @param EndpointId The ID of the multi-region endpoint (global-endpoint).
+#' @param TenantName The name of the tenant through which this email will be sent.
+#' 
+#' The email sending operation will only succeed if all referenced
+#' resources (identities, configuration sets, and templates) are associated
+#' with this tenant.
 #' @param ListManagementOptions An object used to specify a list or topic to which an email belongs,
 #' which will be used when a contact chooses to unsubscribe.
 #'
@@ -6330,6 +7192,7 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #'   ),
 #'   ConfigurationSetName = "string",
 #'   EndpointId = "string",
+#'   TenantName = "string",
 #'   ListManagementOptions = list(
 #'     ContactListName = "string",
 #'     TopicName = "string"
@@ -6342,7 +7205,7 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' @rdname sesv2_send_email
 #'
 #' @aliases sesv2_send_email
-sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, Destination = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, Content, EmailTags = NULL, ConfigurationSetName = NULL, EndpointId = NULL, ListManagementOptions = NULL) {
+sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, Destination = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, Content, EmailTags = NULL, ConfigurationSetName = NULL, EndpointId = NULL, TenantName = NULL, ListManagementOptions = NULL) {
   op <- new_operation(
     name = "SendEmail",
     http_method = "POST",
@@ -6351,7 +7214,7 @@ sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityAr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$send_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, Destination = Destination, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, Content = Content, EmailTags = EmailTags, ConfigurationSetName = ConfigurationSetName, EndpointId = EndpointId, ListManagementOptions = ListManagementOptions)
+  input <- .sesv2$send_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, Destination = Destination, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, Content = Content, EmailTags = EmailTags, ConfigurationSetName = ConfigurationSetName, EndpointId = EndpointId, TenantName = TenantName, ListManagementOptions = ListManagementOptions)
   output <- .sesv2$send_email_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -6936,3 +7799,133 @@ sesv2_update_email_template <- function(TemplateName, TemplateContent) {
   return(response)
 }
 .sesv2$operations$update_email_template <- sesv2_update_email_template
+
+#' Update the customer-managed sending status for a reputation entity
+#'
+#' @description
+#' Update the customer-managed sending status for a reputation entity. This
+#' allows you to enable, disable, or reinstate sending for the entity.
+#' 
+#' The customer-managed status works in conjunction with the Amazon Web
+#' Services Amazon SES-managed status to determine the overall sending
+#' capability. When you update the customer-managed status, the Amazon Web
+#' Services Amazon SES-managed status remains unchanged. If Amazon Web
+#' Services Amazon SES has disabled the entity, it will not be allowed to
+#' send regardless of the customer-managed status setting. When you
+#' reinstate an entity through the customer-managed status, it can continue
+#' sending only if the Amazon Web Services Amazon SES-managed status also
+#' permits sending, even if there are active reputation findings, until the
+#' findings are resolved or new violations occur.
+#'
+#' @usage
+#' sesv2_update_reputation_entity_customer_managed_status(
+#'   ReputationEntityType, ReputationEntityReference, SendingStatus)
+#'
+#' @param ReputationEntityType &#91;required&#93; The type of reputation entity. Currently, only `RESOURCE` type entities
+#' are supported.
+#' @param ReputationEntityReference &#91;required&#93; The unique identifier for the reputation entity. For resource-type
+#' entities, this is the Amazon Resource Name (ARN) of the resource.
+#' @param SendingStatus &#91;required&#93; The new customer-managed sending status for the reputation entity. This
+#' can be one of the following:
+#' 
+#' -   `ENABLED` – Allow sending for this entity.
+#' 
+#' -   `DISABLED` – Prevent sending for this entity.
+#' 
+#' -   `REINSTATED` – Allow sending even if there are active reputation
+#'     findings.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_reputation_entity_customer_managed_status(
+#'   ReputationEntityType = "RESOURCE",
+#'   ReputationEntityReference = "string",
+#'   SendingStatus = "ENABLED"|"REINSTATED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_update_reputation_entity_customer_managed_status
+#'
+#' @aliases sesv2_update_reputation_entity_customer_managed_status
+sesv2_update_reputation_entity_customer_managed_status <- function(ReputationEntityType, ReputationEntityReference, SendingStatus) {
+  op <- new_operation(
+    name = "UpdateReputationEntityCustomerManagedStatus",
+    http_method = "PUT",
+    http_path = "/v2/email/reputation/entities/{ReputationEntityType}/{ReputationEntityReference}/customer-managed-status",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$update_reputation_entity_customer_managed_status_input(ReputationEntityType = ReputationEntityType, ReputationEntityReference = ReputationEntityReference, SendingStatus = SendingStatus)
+  output <- .sesv2$update_reputation_entity_customer_managed_status_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$update_reputation_entity_customer_managed_status <- sesv2_update_reputation_entity_customer_managed_status
+
+#' Update the reputation management policy for a reputation entity
+#'
+#' @description
+#' Update the reputation management policy for a reputation entity. The
+#' policy determines how the entity responds to reputation findings, such
+#' as automatically pausing sending when certain thresholds are exceeded.
+#' 
+#' Reputation management policies are Amazon Web Services Amazon
+#' SES-managed (predefined policies). You can select from none, standard,
+#' and strict policies.
+#'
+#' @usage
+#' sesv2_update_reputation_entity_policy(ReputationEntityType,
+#'   ReputationEntityReference, ReputationEntityPolicy)
+#'
+#' @param ReputationEntityType &#91;required&#93; The type of reputation entity. Currently, only `RESOURCE` type entities
+#' are supported.
+#' @param ReputationEntityReference &#91;required&#93; The unique identifier for the reputation entity. For resource-type
+#' entities, this is the Amazon Resource Name (ARN) of the resource.
+#' @param ReputationEntityPolicy &#91;required&#93; The Amazon Resource Name (ARN) of the reputation management policy to
+#' apply to this entity. This is an Amazon Web Services Amazon SES-managed
+#' policy.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_reputation_entity_policy(
+#'   ReputationEntityType = "RESOURCE",
+#'   ReputationEntityReference = "string",
+#'   ReputationEntityPolicy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_update_reputation_entity_policy
+#'
+#' @aliases sesv2_update_reputation_entity_policy
+sesv2_update_reputation_entity_policy <- function(ReputationEntityType, ReputationEntityReference, ReputationEntityPolicy) {
+  op <- new_operation(
+    name = "UpdateReputationEntityPolicy",
+    http_method = "PUT",
+    http_path = "/v2/email/reputation/entities/{ReputationEntityType}/{ReputationEntityReference}/policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$update_reputation_entity_policy_input(ReputationEntityType = ReputationEntityType, ReputationEntityReference = ReputationEntityReference, ReputationEntityPolicy = ReputationEntityPolicy)
+  output <- .sesv2$update_reputation_entity_policy_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$update_reputation_entity_policy <- sesv2_update_reputation_entity_policy

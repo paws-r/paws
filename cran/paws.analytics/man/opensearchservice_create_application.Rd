@@ -10,7 +10,8 @@ opensearchservice_create_application(
   dataSources = NULL,
   iamIdentityCenterOptions = NULL,
   appConfigs = NULL,
-  tagList = NULL
+  tagList = NULL,
+  kmsKeyArn = NULL
 )
 }
 \arguments{
@@ -28,6 +29,12 @@ Center with the OpenSearch application.}
 administrative options.}
 
 \item{tagList}{}
+
+\item{kmsKeyArn}{The Amazon Resource Name (ARN) of the KMS key used to encrypt the
+application's data at rest. If provided, the application uses your
+customer-managed key for encryption. If omitted, the application uses an
+AWS-managed key. The KMS key must be in the same region as the
+application.}
 }
 \description{
 Creates an OpenSearch UI application. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/application.html}{Using the OpenSearch user interface in Amazon OpenSearch Service}.

@@ -5,26 +5,26 @@
 \title{Enable (apply) a Baseline to a Target}
 \usage{
 controltower_enable_baseline(
-  baselineIdentifier,
   baselineVersion,
   parameters = NULL,
-  tags = NULL,
-  targetIdentifier
+  baselineIdentifier,
+  targetIdentifier,
+  tags = NULL
 )
 }
 \arguments{
-\item{baselineIdentifier}{[required] The ARN of the baseline to be enabled.}
-
 \item{baselineVersion}{[required] The specific version to be enabled of the specified baseline.}
 
 \item{parameters}{A list of \code{key-value} objects that specify enablement parameters, where
 \code{key} is a string and \code{value} is a document of any type.}
 
-\item{tags}{Tags associated with input to
-\code{\link[=controltower_enable_baseline]{enable_baseline}}.}
+\item{baselineIdentifier}{[required] The ARN of the baseline to be enabled.}
 
 \item{targetIdentifier}{[required] The ARN of the target on which the baseline will be enabled. Only OUs
 are supported as targets.}
+
+\item{tags}{Tags associated with input to
+\code{\link[=controltower_enable_baseline]{enable_baseline}}.}
 }
 \description{
 Enable (apply) a \code{Baseline} to a Target. This API starts an asynchronous operation to deploy resources specified by the \code{Baseline} to the specified Target. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{\emph{the Amazon Web Services Control Tower User Guide}} .

@@ -32,6 +32,12 @@ rds_create_db_cluster(
   EngineMode = NULL,
   ScalingConfiguration = NULL,
   RdsCustomClusterConfiguration = NULL,
+  DBClusterInstanceClass = NULL,
+  AllocatedStorage = NULL,
+  StorageType = NULL,
+  Iops = NULL,
+  PubliclyAccessible = NULL,
+  AutoMinorVersionUpgrade = NULL,
   DeletionProtection = NULL,
   GlobalClusterIdentifier = NULL,
   EnableHttpEndpoint = NULL,
@@ -39,12 +45,8 @@ rds_create_db_cluster(
   Domain = NULL,
   DomainIAMRoleName = NULL,
   EnableGlobalWriteForwarding = NULL,
-  DBClusterInstanceClass = NULL,
-  AllocatedStorage = NULL,
-  StorageType = NULL,
-  Iops = NULL,
-  PubliclyAccessible = NULL,
-  AutoMinorVersionUpgrade = NULL,
+  NetworkType = NULL,
+  ServerlessV2ScalingConfiguration = NULL,
   MonitoringInterval = NULL,
   MonitoringRoleArn = NULL,
   DatabaseInsightsMode = NULL,
@@ -52,22 +54,32 @@ rds_create_db_cluster(
   PerformanceInsightsKMSKeyId = NULL,
   PerformanceInsightsRetentionPeriod = NULL,
   EnableLimitlessDatabase = NULL,
-  ServerlessV2ScalingConfiguration = NULL,
-  NetworkType = NULL,
   ClusterScalabilityType = NULL,
   DBSystemId = NULL,
   ManageMasterUserPassword = NULL,
-  MasterUserSecretKmsKeyId = NULL,
   EnableLocalWriteForwarding = NULL,
+  MasterUserSecretKmsKeyId = NULL,
   CACertificateIdentifier = NULL,
-  EngineLifecycleSupport = NULL
+  EngineLifecycleSupport = NULL,
+  TagSpecifications = NULL,
+  MasterUserAuthenticationType = NULL
 )
 }
 \arguments{
 \item{AvailabilityZones}{A list of Availability Zones (AZs) where you specifically want to create
 DB instances in the DB cluster.
 
-For information on AZs, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html#Concepts.RegionsAndAvailabilityZones.AvailabilityZones}{Availability Zones}
+For the first three DB instances that you create, RDS distributes each
+DB instance to a different AZ that you specify. For additional DB
+instances that you create, RDS randomly distributes them to the AZs that
+you specified. For example, if you create a DB cluster with one writer
+instance and three reader instances, RDS might distribute the writer
+instance to AZ 1, the first reader instance to AZ 2, the second reader
+instance to AZ 3, and the third reader instance to either AZ 1, AZ 2, or
+AZ 3.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html#Concepts.RegionsAndAvailabilityZones.AvailabilityZones}{Availability Zones}
+and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html#Concepts.AuroraHighAvailability.Instances}{High availability for Aurora DB instances}
 in the \emph{Amazon Aurora User Guide}.
 
 Valid for Cluster Type: Aurora DB clusters only
@@ -427,65 +439,6 @@ Valid for Cluster Type: Aurora DB clusters only}
 
 \item{RdsCustomClusterConfiguration}{Reserved for future use.}
 
-\item{DeletionProtection}{Specifies whether the DB cluster has deletion protection enabled. The
-database can't be deleted when deletion protection is enabled. By
-default, deletion protection isn't enabled.
-
-Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
-
-\item{GlobalClusterIdentifier}{The global cluster ID of an Aurora cluster that becomes the primary
-cluster in the new global database cluster.
-
-Valid for Cluster Type: Aurora DB clusters only}
-
-\item{EnableHttpEndpoint}{Specifies whether to enable the HTTP endpoint for the DB cluster. By
-default, the HTTP endpoint isn't enabled.
-
-When enabled, the HTTP endpoint provides a connectionless web service
-API (RDS Data API) for running SQL queries on the DB cluster. You can
-also query your database from inside the RDS console with the RDS query
-editor.
-
-For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html}{Using RDS Data API}
-in the \emph{Amazon Aurora User Guide}.
-
-Valid for Cluster Type: Aurora DB clusters only}
-
-\item{CopyTagsToSnapshot}{Specifies whether to copy all tags from the DB cluster to snapshots of
-the DB cluster. The default is not to copy them.
-
-Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
-
-\item{Domain}{The Active Directory directory ID to create the DB cluster in.
-
-For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
-authentication to authenticate users that connect to the DB cluster.
-
-For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/database-authentication.html}{Kerberos authentication}
-in the \emph{Amazon Aurora User Guide}.
-
-Valid for Cluster Type: Aurora DB clusters only}
-
-\item{DomainIAMRoleName}{The name of the IAM role to use when making API calls to the Directory
-Service.
-
-Valid for Cluster Type: Aurora DB clusters only}
-
-\item{EnableGlobalWriteForwarding}{Specifies whether to enable this DB cluster to forward write operations
-to the primary cluster of a global cluster (Aurora global database). By
-default, write operations are not allowed on Aurora DB clusters that are
-secondary clusters in an Aurora global database.
-
-You can set this value only on Aurora DB clusters that are members of an
-Aurora global database. With this parameter enabled, a secondary cluster
-can forward writes to the current primary cluster, and the resulting
-changes are replicated back to this cluster. For the primary DB cluster
-of an Aurora global database, this value is used immediately if the
-primary is demoted by a global cluster API operation, but it does
-nothing until then.
-
-Valid for Cluster Type: Aurora DB clusters only}
-
 \item{DBClusterInstanceClass}{The compute and memory capacity of each DB instance in the Multi-AZ DB
 cluster, for example \code{db.m6gd.xlarge}. Not all DB instance classes are
 available in all Amazon Web Services Regions, or for all database
@@ -552,39 +505,31 @@ DB cluster.
 
 \item{PubliclyAccessible}{Specifies whether the DB cluster is publicly accessible.
 
+Valid for Cluster Type: Multi-AZ DB clusters only
+
 When the DB cluster is publicly accessible and you connect from outside
-of the DB cluster's virtual private cloud (VPC), its Domain Name System
+of the DB cluster's virtual private cloud (VPC), its domain name system
 (DNS) endpoint resolves to the public IP address. When you connect from
 within the same VPC as the DB cluster, the endpoint resolves to the
-private IP address. Access to the DB cluster is ultimately controlled by
-the security group it uses. That public access isn't permitted if the
-security group assigned to the DB cluster doesn't permit it.
+private IP address. Access to the DB cluster is controlled by its
+security group settings.
 
 When the DB cluster isn't publicly accessible, it is an internal DB
 cluster with a DNS name that resolves to a private IP address.
 
-Valid for Cluster Type: Multi-AZ DB clusters only
+The default behavior when \code{PubliclyAccessible} is not specified depends
+on whether a \code{DBSubnetGroup} is specified.
 
-Default: The default behavior varies depending on whether
-\code{DBSubnetGroupName} is specified.
+If \code{DBSubnetGroup} isn't specified, \code{PubliclyAccessible} defaults to
+\code{true}.
 
-If \code{DBSubnetGroupName} isn't specified, and \code{PubliclyAccessible} isn't
-specified, the following applies:
-\itemize{
-\item If the default VPC in the target Region doesn’t have an internet
-gateway attached to it, the DB cluster is private.
-\item If the default VPC in the target Region has an internet gateway
-attached to it, the DB cluster is public.
-}
+If \code{DBSubnetGroup} is specified, \code{PubliclyAccessible} defaults to
+\code{false} unless the value of \code{DBSubnetGroup} is \code{default}, in which case
+\code{PubliclyAccessible} defaults to \code{true}.
 
-If \code{DBSubnetGroupName} is specified, and \code{PubliclyAccessible} isn't
-specified, the following applies:
-\itemize{
-\item If the subnets are part of a VPC that doesn’t have an internet
-gateway attached to it, the DB cluster is private.
-\item If the subnets are part of a VPC that has an internet gateway
-attached to it, the DB cluster is public.
-}}
+If \code{PubliclyAccessible} is true and the VPC that the \code{DBSubnetGroup} is
+in doesn't have an internet gateway attached to it, Amazon RDS returns
+an error.}
 
 \item{AutoMinorVersionUpgrade}{Specifies whether minor engine upgrades are applied automatically to the
 DB cluster during the maintenance window. By default, minor engine
@@ -594,6 +539,80 @@ Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB cluster.
 
 For more information about automatic minor version upgrades, see
 \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades}{Automatically upgrading the minor engine version}.}
+
+\item{DeletionProtection}{Specifies whether the DB cluster has deletion protection enabled. The
+database can't be deleted when deletion protection is enabled. By
+default, deletion protection isn't enabled.
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
+
+\item{GlobalClusterIdentifier}{The global cluster ID of an Aurora cluster that becomes the primary
+cluster in the new global database cluster.
+
+Valid for Cluster Type: Aurora DB clusters only}
+
+\item{EnableHttpEndpoint}{Specifies whether to enable the HTTP endpoint for the DB cluster. By
+default, the HTTP endpoint isn't enabled.
+
+When enabled, the HTTP endpoint provides a connectionless web service
+API (RDS Data API) for running SQL queries on the DB cluster. You can
+also query your database from inside the RDS console with the RDS query
+editor.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html}{Using RDS Data API}
+in the \emph{Amazon Aurora User Guide}.
+
+Valid for Cluster Type: Aurora DB clusters only}
+
+\item{CopyTagsToSnapshot}{Specifies whether to copy all tags from the DB cluster to snapshots of
+the DB cluster. The default is not to copy them.
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
+
+\item{Domain}{The Active Directory directory ID to create the DB cluster in.
+
+For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
+authentication to authenticate users that connect to the DB cluster.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/database-authentication.html}{Kerberos authentication}
+in the \emph{Amazon Aurora User Guide}.
+
+Valid for Cluster Type: Aurora DB clusters only}
+
+\item{DomainIAMRoleName}{The name of the IAM role to use when making API calls to the Directory
+Service.
+
+Valid for Cluster Type: Aurora DB clusters only}
+
+\item{EnableGlobalWriteForwarding}{Specifies whether to enable this DB cluster to forward write operations
+to the primary cluster of a global cluster (Aurora global database). By
+default, write operations are not allowed on Aurora DB clusters that are
+secondary clusters in an Aurora global database.
+
+You can set this value only on Aurora DB clusters that are members of an
+Aurora global database. With this parameter enabled, a secondary cluster
+can forward writes to the current primary cluster, and the resulting
+changes are replicated back to this cluster. For the primary DB cluster
+of an Aurora global database, this value is used immediately if the
+primary is demoted by a global cluster API operation, but it does
+nothing until then.
+
+Valid for Cluster Type: Aurora DB clusters only}
+
+\item{NetworkType}{The network type of the DB cluster.
+
+The network type is determined by the \code{DBSubnetGroup} specified for the
+DB cluster. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
+IPv4 and the IPv6 protocols (\code{DUAL}).
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
+in the \emph{Amazon Aurora User Guide.}
+
+Valid for Cluster Type: Aurora DB clusters only
+
+Valid Values: \code{IPV4 | DUAL}}
+
+\item{ServerlessV2ScalingConfiguration}{}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB cluster. To turn off collecting
@@ -673,21 +692,6 @@ Valid for: Aurora DB clusters only
 This setting is no longer used. Instead use the \code{ClusterScalabilityType}
 setting.}
 
-\item{ServerlessV2ScalingConfiguration}{}
-
-\item{NetworkType}{The network type of the DB cluster.
-
-The network type is determined by the \code{DBSubnetGroup} specified for the
-DB cluster. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
-IPv4 and the IPv6 protocols (\code{DUAL}).
-
-For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
-in the \emph{Amazon Aurora User Guide.}
-
-Valid for Cluster Type: Aurora DB clusters only
-
-Valid Values: \code{IPV4 | DUAL}}
-
 \item{ClusterScalabilityType}{Specifies the scalability mode of the Aurora DB cluster. When set to
 \code{limitless}, the cluster operates as an Aurora Limitless Database. When
 set to \code{standard} (the default), the cluster uses normal DB instance
@@ -714,6 +718,12 @@ Constraints:
 Secrets Manager if \code{MasterUserPassword} is specified.
 }}
 
+\item{EnableLocalWriteForwarding}{Specifies whether read replicas can forward write operations to the
+writer DB instance in the DB cluster. By default, write operations
+aren't allowed on reader DB instances.
+
+Valid for: Aurora DB clusters only}
+
 \item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is
 automatically generated and managed in Amazon Web Services Secrets
 Manager.
@@ -736,12 +746,6 @@ Amazon Web Services account has a different default KMS key for each
 Amazon Web Services Region.
 
 Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
-
-\item{EnableLocalWriteForwarding}{Specifies whether read replicas can forward write operations to the
-writer DB instance in the DB cluster. By default, write operations
-aren't allowed on reader DB instances.
-
-Valid for: Aurora DB clusters only}
 
 \item{CACertificateIdentifier}{The CA certificate identifier to use for the DB cluster's server
 certificate.
@@ -766,9 +770,9 @@ major engine version on your DB cluster past the end of standard support
 for that engine version. For more information, see the following
 sections:
 \itemize{
-\item Amazon Aurora - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+\item Amazon Aurora - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon Aurora}
 in the \emph{Amazon Aurora User Guide}
-\item Amazon RDS - \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+\item Amazon RDS - \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon RDS}
 in the \emph{Amazon RDS User Guide}
 }
 
@@ -778,6 +782,28 @@ Valid Values:
 \code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
 
 Default: \code{open-source-rds-extended-support}}
+
+\item{TagSpecifications}{Tags to assign to resources associated with the DB cluster.
+
+Valid Values:
+\itemize{
+\item \code{cluster-auto-backup} - The DB cluster's automated backup.
+}}
+
+\item{MasterUserAuthenticationType}{Specifies the authentication type for the master user. With IAM master
+user authentication, you can configure the master DB user with IAM
+database authentication when you create a DB cluster.
+
+You can specify one of the following values:
+\itemize{
+\item \code{password} - Use standard database authentication with a password.
+\item \code{iam-db-auth} - Use IAM database authentication for the master user.
+}
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
+This option is only valid for RDS for PostgreSQL and Aurora PostgreSQL
+engines.}
 }
 \description{
 Creates a new Amazon Aurora DB cluster or Multi-AZ DB cluster.

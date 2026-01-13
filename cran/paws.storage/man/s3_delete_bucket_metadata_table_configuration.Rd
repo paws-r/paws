@@ -2,7 +2,8 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_bucket_metadata_table_configuration}
 \alias{s3_delete_bucket_metadata_table_configuration}
-\title{Deletes a metadata table configuration from a general purpose bucket}
+\title{We recommend that you delete your S3 Metadata configurations by using
+the V2 DeleteBucketMetadataTableConfiguration API operation}
 \usage{
 s3_delete_bucket_metadata_table_configuration(
   Bucket,
@@ -17,7 +18,7 @@ configuration from.}
 remove the metadata table configuration from.}
 }
 \description{
-Deletes a metadata table configuration from a general purpose bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html}{Accelerating data discovery with S3 Metadata} in the \emph{Amazon S3 User Guide}.
+We recommend that you delete your S3 Metadata configurations by using the V2 \code{\link[=s3_delete_bucket_metadata_table_configuration]{delete_bucket_metadata_table_configuration}} API operation. We no longer recommend using the V1 \code{\link[=s3_delete_bucket_metadata_table_configuration]{delete_bucket_metadata_table_configuration}} API operation.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_metadata_table_configuration/} for full documentation.
 }

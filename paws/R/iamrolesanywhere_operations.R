@@ -14,34 +14,55 @@ NULL
 #' **Required permissions:** `rolesanywhere:CreateProfile`.
 #'
 #' @usage
-#' iamrolesanywhere_create_profile(acceptRoleSessionName, durationSeconds,
-#'   enabled, managedPolicyArns, name, requireInstanceProperties, roleArns,
-#'   sessionPolicy, tags)
+#' iamrolesanywhere_create_profile(name, requireInstanceProperties,
+#'   sessionPolicy, roleArns, managedPolicyArns, durationSeconds, enabled,
+#'   tags, acceptRoleSessionName)
 #'
-#' @param acceptRoleSessionName Used to determine if a custom role session name will be accepted in a
-#' temporary credential request.
+#' @param name &#91;required&#93; The name of the profile.
+#' @param requireInstanceProperties Unused, saved for future use. Will likely specify whether instance
+#' properties are required in temporary credential requests with this
+#' profile.
+#' @param sessionPolicy A session policy that applies to the trust boundary of the vended
+#' session credentials.
+#' @param roleArns &#91;required&#93; A list of IAM roles that this profile can assume in a temporary
+#' credential request.
+#' @param managedPolicyArns A list of managed policy ARNs that apply to the vended session
+#' credentials.
 #' @param durationSeconds Used to determine how long sessions vended using this profile are valid
 #' for. See the `Expiration` section of the [CreateSession API
 #' documentation](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/authentication-create-session.html#credentials-object)
 #' page for more details. In requests, if this value is not provided, the
 #' default value will be 3600.
 #' @param enabled Specifies whether the profile is enabled.
-#' @param managedPolicyArns A list of managed policy ARNs that apply to the vended session
-#' credentials.
-#' @param name &#91;required&#93; The name of the profile.
-#' @param requireInstanceProperties Specifies whether instance properties are required in temporary
-#' credential requests with this profile.
-#' @param roleArns &#91;required&#93; A list of IAM roles that this profile can assume in a temporary
-#' credential request.
-#' @param sessionPolicy A session policy that applies to the trust boundary of the vended
-#' session credentials.
 #' @param tags The tags to attach to the profile.
+#' @param acceptRoleSessionName Used to determine if a custom role session name will be accepted in a
+#' temporary credential request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   profile = list(
+#'     profileId = "string",
+#'     profileArn = "string",
+#'     name = "string",
+#'     requireInstanceProperties = TRUE|FALSE,
+#'     enabled = TRUE|FALSE,
+#'     createdBy = "string",
+#'     sessionPolicy = "string",
+#'     roleArns = list(
+#'       "string"
+#'     ),
+#'     managedPolicyArns = list(
+#'       "string"
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     durationSeconds = 123,
 #'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
@@ -52,26 +73,6 @@ NULL
 #'           )
 #'         )
 #'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     createdBy = "string",
-#'     durationSeconds = 123,
-#'     enabled = TRUE|FALSE,
-#'     managedPolicyArns = list(
-#'       "string"
-#'     ),
-#'     name = "string",
-#'     profileArn = "string",
-#'     profileId = "string",
-#'     requireInstanceProperties = TRUE|FALSE,
-#'     roleArns = list(
-#'       "string"
-#'     ),
-#'     sessionPolicy = "string",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -80,24 +81,24 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$create_profile(
-#'   acceptRoleSessionName = TRUE|FALSE,
-#'   durationSeconds = 123,
-#'   enabled = TRUE|FALSE,
-#'   managedPolicyArns = list(
-#'     "string"
-#'   ),
 #'   name = "string",
 #'   requireInstanceProperties = TRUE|FALSE,
+#'   sessionPolicy = "string",
 #'   roleArns = list(
 #'     "string"
 #'   ),
-#'   sessionPolicy = "string",
+#'   managedPolicyArns = list(
+#'     "string"
+#'   ),
+#'   durationSeconds = 123,
+#'   enabled = TRUE|FALSE,
 #'   tags = list(
 #'     list(
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   acceptRoleSessionName = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -106,7 +107,7 @@ NULL
 #' @rdname iamrolesanywhere_create_profile
 #'
 #' @aliases iamrolesanywhere_create_profile
-iamrolesanywhere_create_profile <- function(acceptRoleSessionName = NULL, durationSeconds = NULL, enabled = NULL, managedPolicyArns = NULL, name, requireInstanceProperties = NULL, roleArns, sessionPolicy = NULL, tags = NULL) {
+iamrolesanywhere_create_profile <- function(name, requireInstanceProperties = NULL, sessionPolicy = NULL, roleArns, managedPolicyArns = NULL, durationSeconds = NULL, enabled = NULL, tags = NULL, acceptRoleSessionName = NULL) {
   op <- new_operation(
     name = "CreateProfile",
     http_method = "POST",
@@ -115,7 +116,7 @@ iamrolesanywhere_create_profile <- function(acceptRoleSessionName = NULL, durati
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$create_profile_input(acceptRoleSessionName = acceptRoleSessionName, durationSeconds = durationSeconds, enabled = enabled, managedPolicyArns = managedPolicyArns, name = name, requireInstanceProperties = requireInstanceProperties, roleArns = roleArns, sessionPolicy = sessionPolicy, tags = tags)
+  input <- .iamrolesanywhere$create_profile_input(name = name, requireInstanceProperties = requireInstanceProperties, sessionPolicy = sessionPolicy, roleArns = roleArns, managedPolicyArns = managedPolicyArns, durationSeconds = durationSeconds, enabled = enabled, tags = tags, acceptRoleSessionName = acceptRoleSessionName)
   output <- .iamrolesanywhere$create_profile_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -139,45 +140,45 @@ iamrolesanywhere_create_profile <- function(acceptRoleSessionName = NULL, durati
 #' **Required permissions:** `rolesanywhere:CreateTrustAnchor`.
 #'
 #' @usage
-#' iamrolesanywhere_create_trust_anchor(enabled, name,
-#'   notificationSettings, source, tags)
+#' iamrolesanywhere_create_trust_anchor(name, source, enabled, tags,
+#'   notificationSettings)
 #'
-#' @param enabled Specifies whether the trust anchor is enabled.
 #' @param name &#91;required&#93; The name of the trust anchor.
-#' @param notificationSettings A list of notification settings to be associated to the trust anchor.
 #' @param source &#91;required&#93; The trust anchor type and its related certificate data.
+#' @param enabled Specifies whether the trust anchor is enabled.
 #' @param tags The tags to attach to the trust anchor.
+#' @param notificationSettings A list of notification settings to be associated to the trust anchor.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   trustAnchor = list(
+#'     trustAnchorId = "string",
+#'     trustAnchorArn = "string",
+#'     name = "string",
+#'     source = list(
+#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY",
+#'       sourceData = list(
+#'         x509CertificateData = "string",
+#'         acmPcaArn = "string"
+#'       )
+#'     ),
+#'     enabled = TRUE|FALSE,
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     enabled = TRUE|FALSE,
-#'     name = "string",
-#'     notificationSettings = list(
-#'       list(
-#'         channel = "ALL",
-#'         configuredBy = "string",
-#'         enabled = TRUE|FALSE,
-#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
-#'         threshold = 123
-#'       )
-#'     ),
-#'     source = list(
-#'       sourceData = list(
-#'         acmPcaArn = "string",
-#'         x509CertificateData = "string"
-#'       ),
-#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY"
-#'     ),
-#'     trustAnchorArn = "string",
-#'     trustAnchorId = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     notificationSettings = list(
+#'       list(
+#'         enabled = TRUE|FALSE,
+#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
+#'         threshold = 123,
+#'         channel = "ALL",
+#'         configuredBy = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -186,27 +187,27 @@ iamrolesanywhere_create_profile <- function(acceptRoleSessionName = NULL, durati
 #' @section Request syntax:
 #' ```
 #' svc$create_trust_anchor(
-#'   enabled = TRUE|FALSE,
 #'   name = "string",
-#'   notificationSettings = list(
-#'     list(
-#'       channel = "ALL",
-#'       enabled = TRUE|FALSE,
-#'       event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
-#'       threshold = 123
+#'   source = list(
+#'     sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY",
+#'     sourceData = list(
+#'       x509CertificateData = "string",
+#'       acmPcaArn = "string"
 #'     )
 #'   ),
-#'   source = list(
-#'     sourceData = list(
-#'       acmPcaArn = "string",
-#'       x509CertificateData = "string"
-#'     ),
-#'     sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY"
-#'   ),
+#'   enabled = TRUE|FALSE,
 #'   tags = list(
 #'     list(
 #'       key = "string",
 #'       value = "string"
+#'     )
+#'   ),
+#'   notificationSettings = list(
+#'     list(
+#'       enabled = TRUE|FALSE,
+#'       event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
+#'       threshold = 123,
+#'       channel = "ALL"
 #'     )
 #'   )
 #' )
@@ -217,7 +218,7 @@ iamrolesanywhere_create_profile <- function(acceptRoleSessionName = NULL, durati
 #' @rdname iamrolesanywhere_create_trust_anchor
 #'
 #' @aliases iamrolesanywhere_create_trust_anchor
-iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificationSettings = NULL, source, tags = NULL) {
+iamrolesanywhere_create_trust_anchor <- function(name, source, enabled = NULL, tags = NULL, notificationSettings = NULL) {
   op <- new_operation(
     name = "CreateTrustAnchor",
     http_method = "POST",
@@ -226,7 +227,7 @@ iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$create_trust_anchor_input(enabled = enabled, name = name, notificationSettings = notificationSettings, source = source, tags = tags)
+  input <- .iamrolesanywhere$create_trust_anchor_input(name = name, source = source, enabled = enabled, tags = tags, notificationSettings = notificationSettings)
   output <- .iamrolesanywhere$create_trust_anchor_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -244,11 +245,11 @@ iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificat
 #' profile.
 #'
 #' @usage
-#' iamrolesanywhere_delete_attribute_mapping(certificateField, profileId,
+#' iamrolesanywhere_delete_attribute_mapping(profileId, certificateField,
 #'   specifiers)
 #'
-#' @param certificateField &#91;required&#93; Fields (x509Subject, x509Issuer and x509SAN) within X.509 certificates.
 #' @param profileId &#91;required&#93; The unique identifier of the profile.
+#' @param certificateField &#91;required&#93; Fields (x509Subject, x509Issuer and x509SAN) within X.509 certificates.
 #' @param specifiers A list of specifiers of a certificate field; for example, CN, OU, UID
 #' from a Subject.
 #'
@@ -257,6 +258,26 @@ iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificat
 #' ```
 #' list(
 #'   profile = list(
+#'     profileId = "string",
+#'     profileArn = "string",
+#'     name = "string",
+#'     requireInstanceProperties = TRUE|FALSE,
+#'     enabled = TRUE|FALSE,
+#'     createdBy = "string",
+#'     sessionPolicy = "string",
+#'     roleArns = list(
+#'       "string"
+#'     ),
+#'     managedPolicyArns = list(
+#'       "string"
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     durationSeconds = 123,
 #'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
@@ -267,26 +288,6 @@ iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificat
 #'           )
 #'         )
 #'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     createdBy = "string",
-#'     durationSeconds = 123,
-#'     enabled = TRUE|FALSE,
-#'     managedPolicyArns = list(
-#'       "string"
-#'     ),
-#'     name = "string",
-#'     profileArn = "string",
-#'     profileId = "string",
-#'     requireInstanceProperties = TRUE|FALSE,
-#'     roleArns = list(
-#'       "string"
-#'     ),
-#'     sessionPolicy = "string",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -295,8 +296,8 @@ iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificat
 #' @section Request syntax:
 #' ```
 #' svc$delete_attribute_mapping(
-#'   certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
 #'   profileId = "string",
+#'   certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
 #'   specifiers = list(
 #'     "string"
 #'   )
@@ -308,7 +309,7 @@ iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificat
 #' @rdname iamrolesanywhere_delete_attribute_mapping
 #'
 #' @aliases iamrolesanywhere_delete_attribute_mapping
-iamrolesanywhere_delete_attribute_mapping <- function(certificateField, profileId, specifiers = NULL) {
+iamrolesanywhere_delete_attribute_mapping <- function(profileId, certificateField, specifiers = NULL) {
   op <- new_operation(
     name = "DeleteAttributeMapping",
     http_method = "DELETE",
@@ -317,7 +318,7 @@ iamrolesanywhere_delete_attribute_mapping <- function(certificateField, profileI
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$delete_attribute_mapping_input(certificateField = certificateField, profileId = profileId, specifiers = specifiers)
+  input <- .iamrolesanywhere$delete_attribute_mapping_input(profileId = profileId, certificateField = certificateField, specifiers = specifiers)
   output <- .iamrolesanywhere$delete_attribute_mapping_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -344,15 +345,15 @@ iamrolesanywhere_delete_attribute_mapping <- function(certificateField, profileI
 #' ```
 #' list(
 #'   crl = list(
+#'     crlId = "string",
+#'     crlArn = "string",
+#'     name = "string",
+#'     enabled = TRUE|FALSE,
+#'     crlData = raw,
+#'     trustAnchorArn = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     crlArn = "string",
-#'     crlData = raw,
-#'     crlId = "string",
-#'     enabled = TRUE|FALSE,
-#'     name = "string",
-#'     trustAnchorArn = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -408,6 +409,26 @@ iamrolesanywhere_delete_crl <- function(crlId) {
 #' ```
 #' list(
 #'   profile = list(
+#'     profileId = "string",
+#'     profileArn = "string",
+#'     name = "string",
+#'     requireInstanceProperties = TRUE|FALSE,
+#'     enabled = TRUE|FALSE,
+#'     createdBy = "string",
+#'     sessionPolicy = "string",
+#'     roleArns = list(
+#'       "string"
+#'     ),
+#'     managedPolicyArns = list(
+#'       "string"
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     durationSeconds = 123,
 #'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
@@ -418,26 +439,6 @@ iamrolesanywhere_delete_crl <- function(crlId) {
 #'           )
 #'         )
 #'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     createdBy = "string",
-#'     durationSeconds = 123,
-#'     enabled = TRUE|FALSE,
-#'     managedPolicyArns = list(
-#'       "string"
-#'     ),
-#'     name = "string",
-#'     profileArn = "string",
-#'     profileId = "string",
-#'     requireInstanceProperties = TRUE|FALSE,
-#'     roleArns = list(
-#'       "string"
-#'     ),
-#'     sessionPolicy = "string",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -491,31 +492,31 @@ iamrolesanywhere_delete_profile <- function(profileId) {
 #' ```
 #' list(
 #'   trustAnchor = list(
+#'     trustAnchorId = "string",
+#'     trustAnchorArn = "string",
+#'     name = "string",
+#'     source = list(
+#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY",
+#'       sourceData = list(
+#'         x509CertificateData = "string",
+#'         acmPcaArn = "string"
+#'       )
+#'     ),
+#'     enabled = TRUE|FALSE,
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     enabled = TRUE|FALSE,
-#'     name = "string",
-#'     notificationSettings = list(
-#'       list(
-#'         channel = "ALL",
-#'         configuredBy = "string",
-#'         enabled = TRUE|FALSE,
-#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
-#'         threshold = 123
-#'       )
-#'     ),
-#'     source = list(
-#'       sourceData = list(
-#'         acmPcaArn = "string",
-#'         x509CertificateData = "string"
-#'       ),
-#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY"
-#'     ),
-#'     trustAnchorArn = "string",
-#'     trustAnchorId = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     notificationSettings = list(
+#'       list(
+#'         enabled = TRUE|FALSE,
+#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
+#'         threshold = 123,
+#'         channel = "ALL",
+#'         configuredBy = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -569,15 +570,15 @@ iamrolesanywhere_delete_trust_anchor <- function(trustAnchorId) {
 #' ```
 #' list(
 #'   crl = list(
+#'     crlId = "string",
+#'     crlArn = "string",
+#'     name = "string",
+#'     enabled = TRUE|FALSE,
+#'     crlData = raw,
+#'     trustAnchorArn = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     crlArn = "string",
-#'     crlData = raw,
-#'     crlId = "string",
-#'     enabled = TRUE|FALSE,
-#'     name = "string",
-#'     trustAnchorArn = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -634,6 +635,26 @@ iamrolesanywhere_disable_crl <- function(crlId) {
 #' ```
 #' list(
 #'   profile = list(
+#'     profileId = "string",
+#'     profileArn = "string",
+#'     name = "string",
+#'     requireInstanceProperties = TRUE|FALSE,
+#'     enabled = TRUE|FALSE,
+#'     createdBy = "string",
+#'     sessionPolicy = "string",
+#'     roleArns = list(
+#'       "string"
+#'     ),
+#'     managedPolicyArns = list(
+#'       "string"
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     durationSeconds = 123,
 #'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
@@ -644,26 +665,6 @@ iamrolesanywhere_disable_crl <- function(crlId) {
 #'           )
 #'         )
 #'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     createdBy = "string",
-#'     durationSeconds = 123,
-#'     enabled = TRUE|FALSE,
-#'     managedPolicyArns = list(
-#'       "string"
-#'     ),
-#'     name = "string",
-#'     profileArn = "string",
-#'     profileId = "string",
-#'     requireInstanceProperties = TRUE|FALSE,
-#'     roleArns = list(
-#'       "string"
-#'     ),
-#'     sessionPolicy = "string",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -718,31 +719,31 @@ iamrolesanywhere_disable_profile <- function(profileId) {
 #' ```
 #' list(
 #'   trustAnchor = list(
+#'     trustAnchorId = "string",
+#'     trustAnchorArn = "string",
+#'     name = "string",
+#'     source = list(
+#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY",
+#'       sourceData = list(
+#'         x509CertificateData = "string",
+#'         acmPcaArn = "string"
+#'       )
+#'     ),
+#'     enabled = TRUE|FALSE,
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     enabled = TRUE|FALSE,
-#'     name = "string",
-#'     notificationSettings = list(
-#'       list(
-#'         channel = "ALL",
-#'         configuredBy = "string",
-#'         enabled = TRUE|FALSE,
-#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
-#'         threshold = 123
-#'       )
-#'     ),
-#'     source = list(
-#'       sourceData = list(
-#'         acmPcaArn = "string",
-#'         x509CertificateData = "string"
-#'       ),
-#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY"
-#'     ),
-#'     trustAnchorArn = "string",
-#'     trustAnchorId = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     notificationSettings = list(
+#'       list(
+#'         enabled = TRUE|FALSE,
+#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
+#'         threshold = 123,
+#'         channel = "ALL",
+#'         configuredBy = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -797,15 +798,15 @@ iamrolesanywhere_disable_trust_anchor <- function(trustAnchorId) {
 #' ```
 #' list(
 #'   crl = list(
+#'     crlId = "string",
+#'     crlArn = "string",
+#'     name = "string",
+#'     enabled = TRUE|FALSE,
+#'     crlData = raw,
+#'     trustAnchorArn = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     crlArn = "string",
-#'     crlData = raw,
-#'     crlId = "string",
-#'     enabled = TRUE|FALSE,
-#'     name = "string",
-#'     trustAnchorArn = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -861,6 +862,26 @@ iamrolesanywhere_enable_crl <- function(crlId) {
 #' ```
 #' list(
 #'   profile = list(
+#'     profileId = "string",
+#'     profileArn = "string",
+#'     name = "string",
+#'     requireInstanceProperties = TRUE|FALSE,
+#'     enabled = TRUE|FALSE,
+#'     createdBy = "string",
+#'     sessionPolicy = "string",
+#'     roleArns = list(
+#'       "string"
+#'     ),
+#'     managedPolicyArns = list(
+#'       "string"
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     durationSeconds = 123,
 #'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
@@ -871,26 +892,6 @@ iamrolesanywhere_enable_crl <- function(crlId) {
 #'           )
 #'         )
 #'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     createdBy = "string",
-#'     durationSeconds = 123,
-#'     enabled = TRUE|FALSE,
-#'     managedPolicyArns = list(
-#'       "string"
-#'     ),
-#'     name = "string",
-#'     profileArn = "string",
-#'     profileId = "string",
-#'     requireInstanceProperties = TRUE|FALSE,
-#'     roleArns = list(
-#'       "string"
-#'     ),
-#'     sessionPolicy = "string",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -945,31 +946,31 @@ iamrolesanywhere_enable_profile <- function(profileId) {
 #' ```
 #' list(
 #'   trustAnchor = list(
+#'     trustAnchorId = "string",
+#'     trustAnchorArn = "string",
+#'     name = "string",
+#'     source = list(
+#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY",
+#'       sourceData = list(
+#'         x509CertificateData = "string",
+#'         acmPcaArn = "string"
+#'       )
+#'     ),
+#'     enabled = TRUE|FALSE,
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     enabled = TRUE|FALSE,
-#'     name = "string",
-#'     notificationSettings = list(
-#'       list(
-#'         channel = "ALL",
-#'         configuredBy = "string",
-#'         enabled = TRUE|FALSE,
-#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
-#'         threshold = 123
-#'       )
-#'     ),
-#'     source = list(
-#'       sourceData = list(
-#'         acmPcaArn = "string",
-#'         x509CertificateData = "string"
-#'       ),
-#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY"
-#'     ),
-#'     trustAnchorArn = "string",
-#'     trustAnchorId = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     notificationSettings = list(
+#'       list(
+#'         enabled = TRUE|FALSE,
+#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
+#'         threshold = 123,
+#'         channel = "ALL",
+#'         configuredBy = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1023,15 +1024,15 @@ iamrolesanywhere_enable_trust_anchor <- function(trustAnchorId) {
 #' ```
 #' list(
 #'   crl = list(
+#'     crlId = "string",
+#'     crlArn = "string",
+#'     name = "string",
+#'     enabled = TRUE|FALSE,
+#'     crlData = raw,
+#'     trustAnchorArn = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     crlArn = "string",
-#'     crlData = raw,
-#'     crlId = "string",
-#'     enabled = TRUE|FALSE,
-#'     name = "string",
-#'     trustAnchorArn = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -1087,6 +1088,26 @@ iamrolesanywhere_get_crl <- function(crlId) {
 #' ```
 #' list(
 #'   profile = list(
+#'     profileId = "string",
+#'     profileArn = "string",
+#'     name = "string",
+#'     requireInstanceProperties = TRUE|FALSE,
+#'     enabled = TRUE|FALSE,
+#'     createdBy = "string",
+#'     sessionPolicy = "string",
+#'     roleArns = list(
+#'       "string"
+#'     ),
+#'     managedPolicyArns = list(
+#'       "string"
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     durationSeconds = 123,
 #'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
@@ -1097,26 +1118,6 @@ iamrolesanywhere_get_crl <- function(crlId) {
 #'           )
 #'         )
 #'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     createdBy = "string",
-#'     durationSeconds = 123,
-#'     enabled = TRUE|FALSE,
-#'     managedPolicyArns = list(
-#'       "string"
-#'     ),
-#'     name = "string",
-#'     profileArn = "string",
-#'     profileId = "string",
-#'     requireInstanceProperties = TRUE|FALSE,
-#'     roleArns = list(
-#'       "string"
-#'     ),
-#'     sessionPolicy = "string",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -1175,42 +1176,42 @@ iamrolesanywhere_get_profile <- function(profileId) {
 #' ```
 #' list(
 #'   subject = list(
+#'     subjectArn = "string",
+#'     subjectId = "string",
+#'     enabled = TRUE|FALSE,
+#'     x509Subject = "string",
+#'     lastSeenAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     credentials = list(
 #'       list(
-#'         enabled = TRUE|FALSE,
-#'         failed = TRUE|FALSE,
-#'         issuer = "string",
 #'         seenAt = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
 #'         serialNumber = "string",
-#'         x509CertificateData = "string"
+#'         issuer = "string",
+#'         enabled = TRUE|FALSE,
+#'         x509CertificateData = "string",
+#'         failed = TRUE|FALSE
 #'       )
 #'     ),
-#'     enabled = TRUE|FALSE,
 #'     instanceProperties = list(
 #'       list(
-#'         failed = TRUE|FALSE,
+#'         seenAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
 #'         properties = list(
 #'           "string"
 #'         ),
-#'         seenAt = as.POSIXct(
-#'           "2015-01-01"
-#'         )
+#'         failed = TRUE|FALSE
 #'       )
-#'     ),
-#'     lastSeenAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     subjectArn = "string",
-#'     subjectId = "string",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     x509Subject = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1263,31 +1264,31 @@ iamrolesanywhere_get_subject <- function(subjectId) {
 #' ```
 #' list(
 #'   trustAnchor = list(
+#'     trustAnchorId = "string",
+#'     trustAnchorArn = "string",
+#'     name = "string",
+#'     source = list(
+#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY",
+#'       sourceData = list(
+#'         x509CertificateData = "string",
+#'         acmPcaArn = "string"
+#'       )
+#'     ),
+#'     enabled = TRUE|FALSE,
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     enabled = TRUE|FALSE,
-#'     name = "string",
-#'     notificationSettings = list(
-#'       list(
-#'         channel = "ALL",
-#'         configuredBy = "string",
-#'         enabled = TRUE|FALSE,
-#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
-#'         threshold = 123
-#'       )
-#'     ),
-#'     source = list(
-#'       sourceData = list(
-#'         acmPcaArn = "string",
-#'         x509CertificateData = "string"
-#'       ),
-#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY"
-#'     ),
-#'     trustAnchorArn = "string",
-#'     trustAnchorId = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     notificationSettings = list(
+#'       list(
+#'         enabled = TRUE|FALSE,
+#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
+#'         threshold = 123,
+#'         channel = "ALL",
+#'         configuredBy = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1335,12 +1336,12 @@ iamrolesanywhere_get_trust_anchor <- function(trustAnchorId) {
 #' **Required permissions:** `rolesanywhere:ImportCrl`.
 #'
 #' @usage
-#' iamrolesanywhere_import_crl(crlData, enabled, name, tags,
+#' iamrolesanywhere_import_crl(name, crlData, enabled, tags,
 #'   trustAnchorArn)
 #'
+#' @param name &#91;required&#93; The name of the certificate revocation list (CRL).
 #' @param crlData &#91;required&#93; The x509 v3 specified certificate revocation list (CRL).
 #' @param enabled Specifies whether the certificate revocation list (CRL) is enabled.
-#' @param name &#91;required&#93; The name of the certificate revocation list (CRL).
 #' @param tags A list of tags to attach to the certificate revocation list (CRL).
 #' @param trustAnchorArn &#91;required&#93; The ARN of the TrustAnchor the certificate revocation list (CRL) will
 #' provide revocation for.
@@ -1350,15 +1351,15 @@ iamrolesanywhere_get_trust_anchor <- function(trustAnchorId) {
 #' ```
 #' list(
 #'   crl = list(
+#'     crlId = "string",
+#'     crlArn = "string",
+#'     name = "string",
+#'     enabled = TRUE|FALSE,
+#'     crlData = raw,
+#'     trustAnchorArn = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     crlArn = "string",
-#'     crlData = raw,
-#'     crlId = "string",
-#'     enabled = TRUE|FALSE,
-#'     name = "string",
-#'     trustAnchorArn = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -1369,9 +1370,9 @@ iamrolesanywhere_get_trust_anchor <- function(trustAnchorId) {
 #' @section Request syntax:
 #' ```
 #' svc$import_crl(
+#'   name = "string",
 #'   crlData = raw,
 #'   enabled = TRUE|FALSE,
-#'   name = "string",
 #'   tags = list(
 #'     list(
 #'       key = "string",
@@ -1387,7 +1388,7 @@ iamrolesanywhere_get_trust_anchor <- function(trustAnchorId) {
 #' @rdname iamrolesanywhere_import_crl
 #'
 #' @aliases iamrolesanywhere_import_crl
-iamrolesanywhere_import_crl <- function(crlData, enabled = NULL, name, tags = NULL, trustAnchorArn) {
+iamrolesanywhere_import_crl <- function(name, crlData, enabled = NULL, tags = NULL, trustAnchorArn) {
   op <- new_operation(
     name = "ImportCrl",
     http_method = "POST",
@@ -1396,7 +1397,7 @@ iamrolesanywhere_import_crl <- function(crlData, enabled = NULL, name, tags = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$import_crl_input(crlData = crlData, enabled = enabled, name = name, tags = tags, trustAnchorArn = trustAnchorArn)
+  input <- .iamrolesanywhere$import_crl_input(name = name, crlData = crlData, enabled = enabled, tags = tags, trustAnchorArn = trustAnchorArn)
   output <- .iamrolesanywhere$import_crl_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -1427,23 +1428,23 @@ iamrolesanywhere_import_crl <- function(crlData, enabled = NULL, name, tags = NU
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   nextToken = "string",
 #'   crls = list(
 #'     list(
+#'       crlId = "string",
+#'       crlArn = "string",
+#'       name = "string",
+#'       enabled = TRUE|FALSE,
+#'       crlData = raw,
+#'       trustAnchorArn = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       crlArn = "string",
-#'       crlData = raw,
-#'       crlId = "string",
-#'       enabled = TRUE|FALSE,
-#'       name = "string",
-#'       trustAnchorArn = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
 #'     )
-#'   ),
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -1503,6 +1504,26 @@ iamrolesanywhere_list_crls <- function(nextToken = NULL, pageSize = NULL) {
 #'   nextToken = "string",
 #'   profiles = list(
 #'     list(
+#'       profileId = "string",
+#'       profileArn = "string",
+#'       name = "string",
+#'       requireInstanceProperties = TRUE|FALSE,
+#'       enabled = TRUE|FALSE,
+#'       createdBy = "string",
+#'       sessionPolicy = "string",
+#'       roleArns = list(
+#'         "string"
+#'       ),
+#'       managedPolicyArns = list(
+#'         "string"
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       durationSeconds = 123,
 #'       acceptRoleSessionName = TRUE|FALSE,
 #'       attributeMappings = list(
 #'         list(
@@ -1513,26 +1534,6 @@ iamrolesanywhere_list_crls <- function(nextToken = NULL, pageSize = NULL) {
 #'             )
 #'           )
 #'         )
-#'       ),
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       createdBy = "string",
-#'       durationSeconds = 123,
-#'       enabled = TRUE|FALSE,
-#'       managedPolicyArns = list(
-#'         "string"
-#'       ),
-#'       name = "string",
-#'       profileArn = "string",
-#'       profileId = "string",
-#'       requireInstanceProperties = TRUE|FALSE,
-#'       roleArns = list(
-#'         "string"
-#'       ),
-#'       sessionPolicy = "string",
-#'       updatedAt = as.POSIXct(
-#'         "2015-01-01"
 #'       )
 #'     )
 #'   )
@@ -1592,24 +1593,24 @@ iamrolesanywhere_list_profiles <- function(nextToken = NULL, pageSize = NULL) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   subjects = list(
 #'     list(
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
+#'       subjectArn = "string",
+#'       subjectId = "string",
 #'       enabled = TRUE|FALSE,
+#'       x509Subject = "string",
 #'       lastSeenAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       subjectArn = "string",
-#'       subjectId = "string",
-#'       updatedAt = as.POSIXct(
+#'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       x509Subject = "string"
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -1725,31 +1726,31 @@ iamrolesanywhere_list_tags_for_resource <- function(resourceArn) {
 #'   nextToken = "string",
 #'   trustAnchors = list(
 #'     list(
+#'       trustAnchorId = "string",
+#'       trustAnchorArn = "string",
+#'       name = "string",
+#'       source = list(
+#'         sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY",
+#'         sourceData = list(
+#'           x509CertificateData = "string",
+#'           acmPcaArn = "string"
+#'         )
+#'       ),
+#'       enabled = TRUE|FALSE,
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       enabled = TRUE|FALSE,
-#'       name = "string",
-#'       notificationSettings = list(
-#'         list(
-#'           channel = "ALL",
-#'           configuredBy = "string",
-#'           enabled = TRUE|FALSE,
-#'           event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
-#'           threshold = 123
-#'         )
-#'       ),
-#'       source = list(
-#'         sourceData = list(
-#'           acmPcaArn = "string",
-#'           x509CertificateData = "string"
-#'         ),
-#'         sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY"
-#'       ),
-#'       trustAnchorArn = "string",
-#'       trustAnchorId = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       notificationSettings = list(
+#'         list(
+#'           enabled = TRUE|FALSE,
+#'           event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
+#'           threshold = 123,
+#'           channel = "ALL",
+#'           configuredBy = "string"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -1797,18 +1798,38 @@ iamrolesanywhere_list_trust_anchors <- function(nextToken = NULL, pageSize = NUL
 #' specifiers that have contextual meanings.
 #'
 #' @usage
-#' iamrolesanywhere_put_attribute_mapping(certificateField, mappingRules,
-#'   profileId)
+#' iamrolesanywhere_put_attribute_mapping(profileId, certificateField,
+#'   mappingRules)
 #'
+#' @param profileId &#91;required&#93; The unique identifier of the profile.
 #' @param certificateField &#91;required&#93; Fields (x509Subject, x509Issuer and x509SAN) within X.509 certificates.
 #' @param mappingRules &#91;required&#93; A list of mapping entries for every supported specifier or sub-field.
-#' @param profileId &#91;required&#93; The unique identifier of the profile.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   profile = list(
+#'     profileId = "string",
+#'     profileArn = "string",
+#'     name = "string",
+#'     requireInstanceProperties = TRUE|FALSE,
+#'     enabled = TRUE|FALSE,
+#'     createdBy = "string",
+#'     sessionPolicy = "string",
+#'     roleArns = list(
+#'       "string"
+#'     ),
+#'     managedPolicyArns = list(
+#'       "string"
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     durationSeconds = 123,
 #'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
@@ -1819,26 +1840,6 @@ iamrolesanywhere_list_trust_anchors <- function(nextToken = NULL, pageSize = NUL
 #'           )
 #'         )
 #'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     createdBy = "string",
-#'     durationSeconds = 123,
-#'     enabled = TRUE|FALSE,
-#'     managedPolicyArns = list(
-#'       "string"
-#'     ),
-#'     name = "string",
-#'     profileArn = "string",
-#'     profileId = "string",
-#'     requireInstanceProperties = TRUE|FALSE,
-#'     roleArns = list(
-#'       "string"
-#'     ),
-#'     sessionPolicy = "string",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -1847,13 +1848,13 @@ iamrolesanywhere_list_trust_anchors <- function(nextToken = NULL, pageSize = NUL
 #' @section Request syntax:
 #' ```
 #' svc$put_attribute_mapping(
+#'   profileId = "string",
 #'   certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
 #'   mappingRules = list(
 #'     list(
 #'       specifier = "string"
 #'     )
-#'   ),
-#'   profileId = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -1862,7 +1863,7 @@ iamrolesanywhere_list_trust_anchors <- function(nextToken = NULL, pageSize = NUL
 #' @rdname iamrolesanywhere_put_attribute_mapping
 #'
 #' @aliases iamrolesanywhere_put_attribute_mapping
-iamrolesanywhere_put_attribute_mapping <- function(certificateField, mappingRules, profileId) {
+iamrolesanywhere_put_attribute_mapping <- function(profileId, certificateField, mappingRules) {
   op <- new_operation(
     name = "PutAttributeMapping",
     http_method = "PUT",
@@ -1871,7 +1872,7 @@ iamrolesanywhere_put_attribute_mapping <- function(certificateField, mappingRule
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$put_attribute_mapping_input(certificateField = certificateField, mappingRules = mappingRules, profileId = profileId)
+  input <- .iamrolesanywhere$put_attribute_mapping_input(profileId = profileId, certificateField = certificateField, mappingRules = mappingRules)
   output <- .iamrolesanywhere$put_attribute_mapping_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -1893,42 +1894,42 @@ iamrolesanywhere_put_attribute_mapping <- function(certificateField, mappingRule
 #' **Required permissions:** `rolesanywhere:PutNotificationSettings`.
 #'
 #' @usage
-#' iamrolesanywhere_put_notification_settings(notificationSettings,
-#'   trustAnchorId)
+#' iamrolesanywhere_put_notification_settings(trustAnchorId,
+#'   notificationSettings)
 #'
-#' @param notificationSettings &#91;required&#93; A list of notification settings to be associated to the trust anchor.
 #' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
+#' @param notificationSettings &#91;required&#93; A list of notification settings to be associated to the trust anchor.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   trustAnchor = list(
+#'     trustAnchorId = "string",
+#'     trustAnchorArn = "string",
+#'     name = "string",
+#'     source = list(
+#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY",
+#'       sourceData = list(
+#'         x509CertificateData = "string",
+#'         acmPcaArn = "string"
+#'       )
+#'     ),
+#'     enabled = TRUE|FALSE,
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     enabled = TRUE|FALSE,
-#'     name = "string",
-#'     notificationSettings = list(
-#'       list(
-#'         channel = "ALL",
-#'         configuredBy = "string",
-#'         enabled = TRUE|FALSE,
-#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
-#'         threshold = 123
-#'       )
-#'     ),
-#'     source = list(
-#'       sourceData = list(
-#'         acmPcaArn = "string",
-#'         x509CertificateData = "string"
-#'       ),
-#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY"
-#'     ),
-#'     trustAnchorArn = "string",
-#'     trustAnchorId = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     notificationSettings = list(
+#'       list(
+#'         enabled = TRUE|FALSE,
+#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
+#'         threshold = 123,
+#'         channel = "ALL",
+#'         configuredBy = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1937,15 +1938,15 @@ iamrolesanywhere_put_attribute_mapping <- function(certificateField, mappingRule
 #' @section Request syntax:
 #' ```
 #' svc$put_notification_settings(
+#'   trustAnchorId = "string",
 #'   notificationSettings = list(
 #'     list(
-#'       channel = "ALL",
 #'       enabled = TRUE|FALSE,
 #'       event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
-#'       threshold = 123
+#'       threshold = 123,
+#'       channel = "ALL"
 #'     )
-#'   ),
-#'   trustAnchorId = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -1954,7 +1955,7 @@ iamrolesanywhere_put_attribute_mapping <- function(certificateField, mappingRule
 #' @rdname iamrolesanywhere_put_notification_settings
 #'
 #' @aliases iamrolesanywhere_put_notification_settings
-iamrolesanywhere_put_notification_settings <- function(notificationSettings, trustAnchorId) {
+iamrolesanywhere_put_notification_settings <- function(trustAnchorId, notificationSettings) {
   op <- new_operation(
     name = "PutNotificationSettings",
     http_method = "PATCH",
@@ -1963,7 +1964,7 @@ iamrolesanywhere_put_notification_settings <- function(notificationSettings, tru
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$put_notification_settings_input(notificationSettings = notificationSettings, trustAnchorId = trustAnchorId)
+  input <- .iamrolesanywhere$put_notification_settings_input(trustAnchorId = trustAnchorId, notificationSettings = notificationSettings)
   output <- .iamrolesanywhere$put_notification_settings_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -1983,43 +1984,43 @@ iamrolesanywhere_put_notification_settings <- function(notificationSettings, tru
 #' **Required permissions:** `rolesanywhere:ResetNotificationSettings`.
 #'
 #' @usage
-#' iamrolesanywhere_reset_notification_settings(notificationSettingKeys,
-#'   trustAnchorId)
+#' iamrolesanywhere_reset_notification_settings(trustAnchorId,
+#'   notificationSettingKeys)
 #'
+#' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
 #' @param notificationSettingKeys &#91;required&#93; A list of notification setting keys to reset. A notification setting key
 #' includes the event and the channel.
-#' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   trustAnchor = list(
+#'     trustAnchorId = "string",
+#'     trustAnchorArn = "string",
+#'     name = "string",
+#'     source = list(
+#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY",
+#'       sourceData = list(
+#'         x509CertificateData = "string",
+#'         acmPcaArn = "string"
+#'       )
+#'     ),
+#'     enabled = TRUE|FALSE,
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     enabled = TRUE|FALSE,
-#'     name = "string",
-#'     notificationSettings = list(
-#'       list(
-#'         channel = "ALL",
-#'         configuredBy = "string",
-#'         enabled = TRUE|FALSE,
-#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
-#'         threshold = 123
-#'       )
-#'     ),
-#'     source = list(
-#'       sourceData = list(
-#'         acmPcaArn = "string",
-#'         x509CertificateData = "string"
-#'       ),
-#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY"
-#'     ),
-#'     trustAnchorArn = "string",
-#'     trustAnchorId = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     notificationSettings = list(
+#'       list(
+#'         enabled = TRUE|FALSE,
+#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
+#'         threshold = 123,
+#'         channel = "ALL",
+#'         configuredBy = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -2028,13 +2029,13 @@ iamrolesanywhere_put_notification_settings <- function(notificationSettings, tru
 #' @section Request syntax:
 #' ```
 #' svc$reset_notification_settings(
+#'   trustAnchorId = "string",
 #'   notificationSettingKeys = list(
 #'     list(
-#'       channel = "ALL",
-#'       event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY"
+#'       event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
+#'       channel = "ALL"
 #'     )
-#'   ),
-#'   trustAnchorId = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -2043,7 +2044,7 @@ iamrolesanywhere_put_notification_settings <- function(notificationSettings, tru
 #' @rdname iamrolesanywhere_reset_notification_settings
 #'
 #' @aliases iamrolesanywhere_reset_notification_settings
-iamrolesanywhere_reset_notification_settings <- function(notificationSettingKeys, trustAnchorId) {
+iamrolesanywhere_reset_notification_settings <- function(trustAnchorId, notificationSettingKeys) {
   op <- new_operation(
     name = "ResetNotificationSettings",
     http_method = "PATCH",
@@ -2052,7 +2053,7 @@ iamrolesanywhere_reset_notification_settings <- function(notificationSettingKeys
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$reset_notification_settings_input(notificationSettingKeys = notificationSettingKeys, trustAnchorId = trustAnchorId)
+  input <- .iamrolesanywhere$reset_notification_settings_input(trustAnchorId = trustAnchorId, notificationSettingKeys = notificationSettingKeys)
   output <- .iamrolesanywhere$reset_notification_settings_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -2176,26 +2177,26 @@ iamrolesanywhere_untag_resource <- function(resourceArn, tagKeys) {
 #' **Required permissions:** `rolesanywhere:UpdateCrl`.
 #'
 #' @usage
-#' iamrolesanywhere_update_crl(crlData, crlId, name)
+#' iamrolesanywhere_update_crl(crlId, name, crlData)
 #'
-#' @param crlData The x509 v3 specified certificate revocation list (CRL).
 #' @param crlId &#91;required&#93; The unique identifier of the certificate revocation list (CRL).
 #' @param name The name of the Crl.
+#' @param crlData The x509 v3 specified certificate revocation list (CRL).
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   crl = list(
+#'     crlId = "string",
+#'     crlArn = "string",
+#'     name = "string",
+#'     enabled = TRUE|FALSE,
+#'     crlData = raw,
+#'     trustAnchorArn = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     crlArn = "string",
-#'     crlData = raw,
-#'     crlId = "string",
-#'     enabled = TRUE|FALSE,
-#'     name = "string",
-#'     trustAnchorArn = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -2206,9 +2207,9 @@ iamrolesanywhere_untag_resource <- function(resourceArn, tagKeys) {
 #' @section Request syntax:
 #' ```
 #' svc$update_crl(
-#'   crlData = raw,
 #'   crlId = "string",
-#'   name = "string"
+#'   name = "string",
+#'   crlData = raw
 #' )
 #' ```
 #'
@@ -2217,7 +2218,7 @@ iamrolesanywhere_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname iamrolesanywhere_update_crl
 #'
 #' @aliases iamrolesanywhere_update_crl
-iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
+iamrolesanywhere_update_crl <- function(crlId, name = NULL, crlData = NULL) {
   op <- new_operation(
     name = "UpdateCrl",
     http_method = "PATCH",
@@ -2226,7 +2227,7 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$update_crl_input(crlData = crlData, crlId = crlId, name = name)
+  input <- .iamrolesanywhere$update_crl_input(crlId = crlId, name = name, crlData = crlData)
   output <- .iamrolesanywhere$update_crl_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -2247,30 +2248,50 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #' **Required permissions:** `rolesanywhere:UpdateProfile`.
 #'
 #' @usage
-#' iamrolesanywhere_update_profile(acceptRoleSessionName, durationSeconds,
-#'   managedPolicyArns, name, profileId, roleArns, sessionPolicy)
+#' iamrolesanywhere_update_profile(profileId, name, sessionPolicy,
+#'   roleArns, managedPolicyArns, durationSeconds, acceptRoleSessionName)
 #'
-#' @param acceptRoleSessionName Used to determine if a custom role session name will be accepted in a
-#' temporary credential request.
+#' @param profileId &#91;required&#93; The unique identifier of the profile.
+#' @param name The name of the profile.
+#' @param sessionPolicy A session policy that applies to the trust boundary of the vended
+#' session credentials.
+#' @param roleArns A list of IAM roles that this profile can assume in a temporary
+#' credential request.
+#' @param managedPolicyArns A list of managed policy ARNs that apply to the vended session
+#' credentials.
 #' @param durationSeconds Used to determine how long sessions vended using this profile are valid
 #' for. See the `Expiration` section of the [CreateSession API
 #' documentation](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/authentication-create-session.html#credentials-object)
 #' page for more details. In requests, if this value is not provided, the
 #' default value will be 3600.
-#' @param managedPolicyArns A list of managed policy ARNs that apply to the vended session
-#' credentials.
-#' @param name The name of the profile.
-#' @param profileId &#91;required&#93; The unique identifier of the profile.
-#' @param roleArns A list of IAM roles that this profile can assume in a temporary
-#' credential request.
-#' @param sessionPolicy A session policy that applies to the trust boundary of the vended
-#' session credentials.
+#' @param acceptRoleSessionName Used to determine if a custom role session name will be accepted in a
+#' temporary credential request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   profile = list(
+#'     profileId = "string",
+#'     profileArn = "string",
+#'     name = "string",
+#'     requireInstanceProperties = TRUE|FALSE,
+#'     enabled = TRUE|FALSE,
+#'     createdBy = "string",
+#'     sessionPolicy = "string",
+#'     roleArns = list(
+#'       "string"
+#'     ),
+#'     managedPolicyArns = list(
+#'       "string"
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     durationSeconds = 123,
 #'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
@@ -2281,26 +2302,6 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #'           )
 #'         )
 #'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     createdBy = "string",
-#'     durationSeconds = 123,
-#'     enabled = TRUE|FALSE,
-#'     managedPolicyArns = list(
-#'       "string"
-#'     ),
-#'     name = "string",
-#'     profileArn = "string",
-#'     profileId = "string",
-#'     requireInstanceProperties = TRUE|FALSE,
-#'     roleArns = list(
-#'       "string"
-#'     ),
-#'     sessionPolicy = "string",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -2309,17 +2310,17 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$update_profile(
-#'   acceptRoleSessionName = TRUE|FALSE,
-#'   durationSeconds = 123,
-#'   managedPolicyArns = list(
-#'     "string"
-#'   ),
-#'   name = "string",
 #'   profileId = "string",
+#'   name = "string",
+#'   sessionPolicy = "string",
 #'   roleArns = list(
 #'     "string"
 #'   ),
-#'   sessionPolicy = "string"
+#'   managedPolicyArns = list(
+#'     "string"
+#'   ),
+#'   durationSeconds = 123,
+#'   acceptRoleSessionName = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2328,7 +2329,7 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #' @rdname iamrolesanywhere_update_profile
 #'
 #' @aliases iamrolesanywhere_update_profile
-iamrolesanywhere_update_profile <- function(acceptRoleSessionName = NULL, durationSeconds = NULL, managedPolicyArns = NULL, name = NULL, profileId, roleArns = NULL, sessionPolicy = NULL) {
+iamrolesanywhere_update_profile <- function(profileId, name = NULL, sessionPolicy = NULL, roleArns = NULL, managedPolicyArns = NULL, durationSeconds = NULL, acceptRoleSessionName = NULL) {
   op <- new_operation(
     name = "UpdateProfile",
     http_method = "PATCH",
@@ -2337,7 +2338,7 @@ iamrolesanywhere_update_profile <- function(acceptRoleSessionName = NULL, durati
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$update_profile_input(acceptRoleSessionName = acceptRoleSessionName, durationSeconds = durationSeconds, managedPolicyArns = managedPolicyArns, name = name, profileId = profileId, roleArns = roleArns, sessionPolicy = sessionPolicy)
+  input <- .iamrolesanywhere$update_profile_input(profileId = profileId, name = name, sessionPolicy = sessionPolicy, roleArns = roleArns, managedPolicyArns = managedPolicyArns, durationSeconds = durationSeconds, acceptRoleSessionName = acceptRoleSessionName)
   output <- .iamrolesanywhere$update_profile_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -2361,42 +2362,42 @@ iamrolesanywhere_update_profile <- function(acceptRoleSessionName = NULL, durati
 #' **Required permissions:** `rolesanywhere:UpdateTrustAnchor`.
 #'
 #' @usage
-#' iamrolesanywhere_update_trust_anchor(name, source, trustAnchorId)
+#' iamrolesanywhere_update_trust_anchor(trustAnchorId, name, source)
 #'
+#' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
 #' @param name The name of the trust anchor.
 #' @param source The trust anchor type and its related certificate data.
-#' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   trustAnchor = list(
+#'     trustAnchorId = "string",
+#'     trustAnchorArn = "string",
+#'     name = "string",
+#'     source = list(
+#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY",
+#'       sourceData = list(
+#'         x509CertificateData = "string",
+#'         acmPcaArn = "string"
+#'       )
+#'     ),
+#'     enabled = TRUE|FALSE,
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     enabled = TRUE|FALSE,
-#'     name = "string",
-#'     notificationSettings = list(
-#'       list(
-#'         channel = "ALL",
-#'         configuredBy = "string",
-#'         enabled = TRUE|FALSE,
-#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
-#'         threshold = 123
-#'       )
-#'     ),
-#'     source = list(
-#'       sourceData = list(
-#'         acmPcaArn = "string",
-#'         x509CertificateData = "string"
-#'       ),
-#'       sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY"
-#'     ),
-#'     trustAnchorArn = "string",
-#'     trustAnchorId = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     notificationSettings = list(
+#'       list(
+#'         enabled = TRUE|FALSE,
+#'         event = "CA_CERTIFICATE_EXPIRY"|"END_ENTITY_CERTIFICATE_EXPIRY",
+#'         threshold = 123,
+#'         channel = "ALL",
+#'         configuredBy = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -2405,15 +2406,15 @@ iamrolesanywhere_update_profile <- function(acceptRoleSessionName = NULL, durati
 #' @section Request syntax:
 #' ```
 #' svc$update_trust_anchor(
+#'   trustAnchorId = "string",
 #'   name = "string",
 #'   source = list(
+#'     sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY",
 #'     sourceData = list(
-#'       acmPcaArn = "string",
-#'       x509CertificateData = "string"
-#'     ),
-#'     sourceType = "AWS_ACM_PCA"|"CERTIFICATE_BUNDLE"|"SELF_SIGNED_REPOSITORY"
-#'   ),
-#'   trustAnchorId = "string"
+#'       x509CertificateData = "string",
+#'       acmPcaArn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2422,7 +2423,7 @@ iamrolesanywhere_update_profile <- function(acceptRoleSessionName = NULL, durati
 #' @rdname iamrolesanywhere_update_trust_anchor
 #'
 #' @aliases iamrolesanywhere_update_trust_anchor
-iamrolesanywhere_update_trust_anchor <- function(name = NULL, source = NULL, trustAnchorId) {
+iamrolesanywhere_update_trust_anchor <- function(trustAnchorId, name = NULL, source = NULL) {
   op <- new_operation(
     name = "UpdateTrustAnchor",
     http_method = "PATCH",
@@ -2431,7 +2432,7 @@ iamrolesanywhere_update_trust_anchor <- function(name = NULL, source = NULL, tru
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$update_trust_anchor_input(name = name, source = source, trustAnchorId = trustAnchorId)
+  input <- .iamrolesanywhere$update_trust_anchor_input(trustAnchorId = trustAnchorId, name = name, source = source)
   output <- .iamrolesanywhere$update_trust_anchor_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)

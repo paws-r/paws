@@ -12,6 +12,7 @@ bedrockagentruntime_invoke_agent(
   endSession = NULL,
   inputText = NULL,
   memoryId = NULL,
+  promptCreationConfigurations = NULL,
   sessionId,
   sessionState = NULL,
   sourceArn = NULL,
@@ -36,6 +37,13 @@ If you include \code{returnControlInvocationResults} in the \code{sessionState}
 field, the \code{inputText} field will be ignored.}
 
 \item{memoryId}{The unique identifier of the agent memory.}
+
+\item{promptCreationConfigurations}{Specifies parameters that control how the service populates the agent
+prompt for an \code{\link[=bedrockagentruntime_invoke_agent]{invoke_agent}}
+request. You can control which aspects of previous invocations in the
+same agent session the service uses to populate the agent prompt. This
+gives you more granular control over the contextual history that is used
+to process the current request.}
 
 \item{sessionId}{[required] The unique identifier of the session. Use the same value across requests
 to continue the same conversation.}

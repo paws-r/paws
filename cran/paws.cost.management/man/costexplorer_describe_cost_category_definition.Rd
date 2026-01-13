@@ -3,7 +3,7 @@
 \name{costexplorer_describe_cost_category_definition}
 \alias{costexplorer_describe_cost_category_definition}
 \title{Returns the name, Amazon Resource Name (ARN), rules, definition, and
-effective dates of a Cost Category that's defined in the account}
+effective dates of a cost category that's defined in the account}
 \usage{
 costexplorer_describe_cost_category_definition(
   CostCategoryArn,
@@ -11,12 +11,12 @@ costexplorer_describe_cost_category_definition(
 )
 }
 \arguments{
-\item{CostCategoryArn}{[required] The unique identifier for your Cost Category.}
+\item{CostCategoryArn}{[required] The unique identifier for your cost category.}
 
-\item{EffectiveOn}{The date when the Cost Category was effective.}
+\item{EffectiveOn}{The date when the cost category was effective.}
 }
 \description{
-Returns the name, Amazon Resource Name (ARN), rules, definition, and effective dates of a Cost Category that's defined in the account.
+Returns the name, Amazon Resource Name (ARN), rules, definition, and effective dates of a cost category that's defined in the account.
 
 See \url{https://www.paws-r-sdk.com/docs/costexplorer_describe_cost_category_definition/} for full documentation.
 }

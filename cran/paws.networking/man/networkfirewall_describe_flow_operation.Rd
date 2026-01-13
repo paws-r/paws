@@ -7,6 +7,8 @@
 networkfirewall_describe_flow_operation(
   FirewallArn,
   AvailabilityZone = NULL,
+  VpcEndpointAssociationArn = NULL,
+  VpcEndpointId = NULL,
   FlowOperationId
 )
 }
@@ -18,6 +20,10 @@ example, \verb{us-east-2a}.
 
 Defines the scope a flow operation. You can use up to 20 filters to
 configure a single flow operation.}
+
+\item{VpcEndpointAssociationArn}{The Amazon Resource Name (ARN) of a VPC endpoint association.}
+
+\item{VpcEndpointId}{A unique identifier for the primary endpoint associated with a firewall.}
 
 \item{FlowOperationId}{[required] A unique identifier for the flow operation. This ID is returned in the
 responses to start and list commands. You provide to describe commands.}

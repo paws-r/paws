@@ -123,19 +123,27 @@ including how to enable and configure the service, see the \href{https://docs.aw
 \link[paws.application.integration:resourceexplorer_associate_default_view]{associate_default_view} \tab Sets the specified view as the default for the Amazon Web Services Region in which you call this operation\cr
 \link[paws.application.integration:resourceexplorer_batch_get_view]{batch_get_view} \tab Retrieves details about a list of views\cr
 \link[paws.application.integration:resourceexplorer_create_index]{create_index} \tab Turns on Amazon Web Services Resource Explorer in the Amazon Web Services Region in which you called this operation by creating an index\cr
+\link[paws.application.integration:resourceexplorer_create_resource_explorer_setup]{create_resource_explorer_setup} \tab Creates a Resource Explorer setup configuration across multiple Amazon Web Services Regions\cr
 \link[paws.application.integration:resourceexplorer_create_view]{create_view} \tab Creates a view that users can query by using the Search operation\cr
 \link[paws.application.integration:resourceexplorer_delete_index]{delete_index} \tab Deletes the specified index and turns off Amazon Web Services Resource Explorer in the specified Amazon Web Services Region\cr
+\link[paws.application.integration:resourceexplorer_delete_resource_explorer_setup]{delete_resource_explorer_setup} \tab Deletes a Resource Explorer setup configuration\cr
 \link[paws.application.integration:resourceexplorer_delete_view]{delete_view} \tab Deletes the specified view\cr
 \link[paws.application.integration:resourceexplorer_disassociate_default_view]{disassociate_default_view} \tab After you call this operation, the affected Amazon Web Services Region no longer has a default view\cr
 \link[paws.application.integration:resourceexplorer_get_account_level_service_configuration]{get_account_level_service_configuration} \tab Retrieves the status of your account's Amazon Web Services service access, and validates the service linked role required to access the multi-account search feature\cr
 \link[paws.application.integration:resourceexplorer_get_default_view]{get_default_view} \tab Retrieves the Amazon Resource Name (ARN) of the view that is the default for the Amazon Web Services Region in which you call this operation\cr
 \link[paws.application.integration:resourceexplorer_get_index]{get_index} \tab Retrieves details about the Amazon Web Services Resource Explorer index in the Amazon Web Services Region in which you invoked the operation\cr
 \link[paws.application.integration:resourceexplorer_get_managed_view]{get_managed_view} \tab Retrieves details of the specified Amazon Web Services-managed view\cr
+\link[paws.application.integration:resourceexplorer_get_resource_explorer_setup]{get_resource_explorer_setup} \tab Retrieves the status and details of a Resource Explorer setup operation\cr
+\link[paws.application.integration:resourceexplorer_get_service_index]{get_service_index} \tab Retrieves information about the Resource Explorer index in the current Amazon Web Services Region\cr
+\link[paws.application.integration:resourceexplorer_get_service_view]{get_service_view} \tab Retrieves details about a specific Resource Explorer service view\cr
 \link[paws.application.integration:resourceexplorer_get_view]{get_view} \tab Retrieves details of the specified view\cr
 \link[paws.application.integration:resourceexplorer_list_indexes]{list_indexes} \tab Retrieves a list of all of the indexes in Amazon Web Services Regions that are currently collecting resource information for Amazon Web Services Resource Explorer\cr
 \link[paws.application.integration:resourceexplorer_list_indexes_for_members]{list_indexes_for_members} \tab Retrieves a list of a member's indexes in all Amazon Web Services Regions that are currently collecting resource information for Amazon Web Services Resource Explorer\cr
 \link[paws.application.integration:resourceexplorer_list_managed_views]{list_managed_views} \tab Lists the Amazon resource names (ARNs) of the Amazon Web Services-managed views available in the Amazon Web Services Region in which you call this operation\cr
 \link[paws.application.integration:resourceexplorer_list_resources]{list_resources} \tab Returns a list of resources and their details that match the specified criteria\cr
+\link[paws.application.integration:resourceexplorer_list_service_indexes]{list_service_indexes} \tab Lists all Resource Explorer indexes across the specified Amazon Web Services Regions\cr
+\link[paws.application.integration:resourceexplorer_list_service_views]{list_service_views} \tab Lists all Resource Explorer service views available in the current Amazon Web Services account\cr
+\link[paws.application.integration:resourceexplorer_list_streaming_access_for_services]{list_streaming_access_for_services} \tab Returns a list of Amazon Web Services services that have been granted streaming access to your Resource Explorer data\cr
 \link[paws.application.integration:resourceexplorer_list_supported_resource_types]{list_supported_resource_types} \tab Retrieves a list of all resource types currently supported by Amazon Web Services Resource Explorer\cr
 \link[paws.application.integration:resourceexplorer_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are attached to the specified resource\cr
 \link[paws.application.integration:resourceexplorer_list_views]{list_views} \tab Lists the Amazon resource names (ARNs) of the views available in the Amazon Web Services Region in which you call this operation\cr

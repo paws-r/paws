@@ -124,6 +124,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_create_database]{create_database} \tab Creates a new database in a Data Catalog\cr
 \link[paws.analytics:glue_create_data_quality_ruleset]{create_data_quality_ruleset} \tab Creates a data quality ruleset with DQDL rules applied to a specified Glue table\cr
 \link[paws.analytics:glue_create_dev_endpoint]{create_dev_endpoint} \tab Creates a new development endpoint\cr
+\link[paws.analytics:glue_create_glue_identity_center_configuration]{create_glue_identity_center_configuration} \tab Creates a new Glue Identity Center configuration to enable integration between Glue and Amazon Web Services IAM Identity Center for authentication and authorization\cr
 \link[paws.analytics:glue_create_integration]{create_integration} \tab Creates a Zero-ETL integration in the caller's account between two resources with Amazon Resource Names (ARNs): the SourceArn and TargetArn\cr
 \link[paws.analytics:glue_create_integration_resource_property]{create_integration_resource_property} \tab This API can be used for setting up the ResourceProperty of the Glue connection (for the source) or Glue database ARN (for the target)\cr
 \link[paws.analytics:glue_create_integration_table_properties]{create_integration_table_properties} \tab This API is used to provide optional override properties for the the tables that need to be replicated\cr
@@ -154,7 +155,9 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_delete_database]{delete_database} \tab Removes a specified database from a Data Catalog\cr
 \link[paws.analytics:glue_delete_data_quality_ruleset]{delete_data_quality_ruleset} \tab Deletes a data quality ruleset\cr
 \link[paws.analytics:glue_delete_dev_endpoint]{delete_dev_endpoint} \tab Deletes a specified development endpoint\cr
+\link[paws.analytics:glue_delete_glue_identity_center_configuration]{delete_glue_identity_center_configuration} \tab Deletes the existing Glue Identity Center configuration, removing the integration between Glue and Amazon Web Services IAM Identity Center\cr
 \link[paws.analytics:glue_delete_integration]{delete_integration} \tab Deletes the specified Zero-ETL integration\cr
+\link[paws.analytics:glue_delete_integration_resource_property]{delete_integration_resource_property} \tab This API is used for deleting the ResourceProperty of the Glue connection (for the source) or Glue database ARN (for the target)\cr
 \link[paws.analytics:glue_delete_integration_table_properties]{delete_integration_table_properties} \tab Deletes the table properties that have been created for the tables that need to be replicated\cr
 \link[paws.analytics:glue_delete_job]{delete_job} \tab Deletes a specified job definition\cr
 \link[paws.analytics:glue_delete_ml_transform]{delete_ml_transform} \tab Deletes an Glue machine learning transform\cr
@@ -209,6 +212,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_get_dev_endpoint]{get_dev_endpoint} \tab Retrieves information about a specified development endpoint\cr
 \link[paws.analytics:glue_get_dev_endpoints]{get_dev_endpoints} \tab Retrieves all the development endpoints in this Amazon Web Services account\cr
 \link[paws.analytics:glue_get_entity_records]{get_entity_records} \tab This API is used to query preview data from a given connection type or from a native Amazon S3 based Glue Data Catalog\cr
+\link[paws.analytics:glue_get_glue_identity_center_configuration]{get_glue_identity_center_configuration} \tab Retrieves the current Glue Identity Center configuration details, including the associated Identity Center instance and application information\cr
 \link[paws.analytics:glue_get_integration_resource_property]{get_integration_resource_property} \tab This API is used for fetching the ResourceProperty of the Glue connection (for the source) or Glue database ARN (for the target)\cr
 \link[paws.analytics:glue_get_integration_table_properties]{get_integration_table_properties} \tab This API is used to retrieve optional override properties for the tables that need to be replicated\cr
 \link[paws.analytics:glue_get_job]{get_job} \tab Retrieves an existing job definition\cr
@@ -269,6 +273,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_list_data_quality_statistics]{list_data_quality_statistics} \tab Retrieves a list of data quality statistics\cr
 \link[paws.analytics:glue_list_dev_endpoints]{list_dev_endpoints} \tab Retrieves the names of all DevEndpoint resources in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[paws.analytics:glue_list_entities]{list_entities} \tab Returns the available entities supported by the connection type\cr
+\link[paws.analytics:glue_list_integration_resource_properties]{list_integration_resource_properties} \tab List integration resource properties for a single customer\cr
 \link[paws.analytics:glue_list_jobs]{list_jobs} \tab Retrieves the names of all job resources in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[paws.analytics:glue_list_ml_transforms]{list_ml_transforms} \tab Retrieves a sortable, filterable list of existing Glue machine learning transforms in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[paws.analytics:glue_list_registries]{list_registries} \tab Returns a list of registries that you have created, with minimal registry information\cr
@@ -329,6 +334,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_update_database]{update_database} \tab Updates an existing database definition in a Data Catalog\cr
 \link[paws.analytics:glue_update_data_quality_ruleset]{update_data_quality_ruleset} \tab Updates the specified data quality ruleset\cr
 \link[paws.analytics:glue_update_dev_endpoint]{update_dev_endpoint} \tab Updates a specified development endpoint\cr
+\link[paws.analytics:glue_update_glue_identity_center_configuration]{update_glue_identity_center_configuration} \tab Updates the existing Glue Identity Center configuration, allowing modification of scopes and permissions for the integration\cr
 \link[paws.analytics:glue_update_integration_resource_property]{update_integration_resource_property} \tab This API can be used for updating the ResourceProperty of the Glue connection (for the source) or Glue database ARN (for the target)\cr
 \link[paws.analytics:glue_update_integration_table_properties]{update_integration_table_properties} \tab This API is used to provide optional override properties for the tables that need to be replicated\cr
 \link[paws.analytics:glue_update_job]{update_job} \tab Updates an existing job definition\cr

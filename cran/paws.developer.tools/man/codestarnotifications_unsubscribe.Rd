@@ -2,19 +2,21 @@
 % Please edit documentation in R/codestarnotifications_operations.R
 \name{codestarnotifications_unsubscribe}
 \alias{codestarnotifications_unsubscribe}
-\title{Removes an association between a notification rule and an Chatbot topic
-so that subscribers to that topic stop receiving notifications when the
-events described in the rule are triggered}
+\title{Removes an association between a notification rule and an Amazon Q
+Developer in chat applications topic so that subscribers to that topic
+stop receiving notifications when the events described in the rule are
+triggered}
 \usage{
 codestarnotifications_unsubscribe(Arn, TargetAddress)
 }
 \arguments{
 \item{Arn}{[required] The Amazon Resource Name (ARN) of the notification rule.}
 
-\item{TargetAddress}{[required] The ARN of the Chatbot topic to unsubscribe from the notification rule.}
+\item{TargetAddress}{[required] The ARN of the Amazon Q Developer in chat applications topic to
+unsubscribe from the notification rule.}
 }
 \description{
-Removes an association between a notification rule and an Chatbot topic so that subscribers to that topic stop receiving notifications when the events described in the rule are triggered.
+Removes an association between a notification rule and an Amazon Q Developer in chat applications topic so that subscribers to that topic stop receiving notifications when the events described in the rule are triggered.
 
 See \url{https://www.paws-r-sdk.com/docs/codestarnotifications_unsubscribe/} for full documentation.
 }

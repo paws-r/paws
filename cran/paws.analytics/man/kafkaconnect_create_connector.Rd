@@ -14,6 +14,7 @@ kafkaconnect_create_connector(
   kafkaClusterEncryptionInTransit,
   kafkaConnectVersion,
   logDelivery = NULL,
+  networkType = NULL,
   plugins,
   serviceExecutionRoleArn,
   workerConfiguration = NULL,
@@ -41,6 +42,10 @@ connector.}
 Apache Kafka cluster's version and the plugins.}
 
 \item{logDelivery}{Details about log delivery.}
+
+\item{networkType}{The network type of the connector. It gives connectors connectivity to
+either IPv4 (IPV4) or IPv4 and IPv6 (DUAL) destinations. Defaults to
+IPV4.}
 
 \item{plugins}{[required] Amazon MSK Connect does not currently support specifying multiple
 plugins as a list. To use more than one plugin for your connector, you

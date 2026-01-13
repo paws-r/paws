@@ -37,14 +37,6 @@ Enter the Region ID, such as \code{us-east-1} or \code{ap-southeast-2}. For a li
 of Amazon Web Services Regions in which KMS is supported, see \href{https://docs.aws.amazon.com/general/latest/gr/kms.html#kms_region}{KMS service endpoints}
 in the \emph{Amazon Web Services General Reference}.
 
-HMAC KMS keys are not supported in all Amazon Web Services Regions. If
-you try to replicate an HMAC KMS key in an Amazon Web Services Region in
-which HMAC keys are not supported, the
-\code{\link[=kms_replicate_key]{replicate_key}} operation returns an
-\code{UnsupportedOperationException}. For a list of Regions in which HMAC KMS
-keys are supported, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html}{HMAC keys in KMS} in
-the \emph{Key Management Service Developer Guide}.
-
 The replica must be in a different Amazon Web Services Region than its
 primary key and other replicas of that primary key, but in the same
 Amazon Web Services partition. KMS must be available in the replica
@@ -57,7 +49,7 @@ and \href{https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regi
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{Policy}{The key policy to attach to the KMS key. This parameter is optional. If
-you do not provide a key policy, KMS attaches the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default}{default key policy}
+you do not provide a key policy, KMS attaches the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html}{default key policy}
 to the KMS key.
 
 The key policy is not a shared property of multi-Region keys. You can
@@ -150,7 +142,7 @@ the current tag value with the specified one.
 When you add tags to an Amazon Web Services resource, Amazon Web
 Services generates a cost allocation report with usage and costs
 aggregated by tags. Tags can also be used to control access to a KMS
-key. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html}{Tagging Keys}.}
+key. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html}{Tags in KMS}.}
 }
 \description{
 Replicates a multi-Region key into the specified Region. This operation creates a multi-Region replica key based on a multi-Region primary key in a different Region of the same Amazon Web Services partition. You can create multiple replicas of a primary key, but each must be in a different Region. To create a multi-Region primary key, use the \code{\link[=kms_create_key]{create_key}} operation.

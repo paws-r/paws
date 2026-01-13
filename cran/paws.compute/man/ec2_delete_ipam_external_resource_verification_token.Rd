@@ -18,7 +18,7 @@ you have the required permissions, the error response is
 \item{IpamExternalResourceVerificationTokenId}{[required] The token ID.}
 }
 \description{
-Delete a verification token. A verification token is an Amazon Web Services-generated random value that you can use to prove ownership of an external resource. For example, you can use a verification token to validate that you control a public IP address range when you bring an IP address range to Amazon Web Services (BYOIP).
+Delete a verification token.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_delete_ipam_external_resource_verification_token/} for full documentation.
 }

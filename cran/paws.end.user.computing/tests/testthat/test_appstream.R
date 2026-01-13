@@ -79,3 +79,11 @@ test_that("describe_usage_report_subscriptions", {
 test_that("describe_usage_report_subscriptions", {
   expect_error(svc$describe_usage_report_subscriptions(MaxResults = 20), NA)
 })
+
+test_that("list_export_image_tasks", {
+  expect_error(svc$list_export_image_tasks(), NA)
+})
+
+test_that("list_export_image_tasks", {
+  expect_error(svc$list_export_image_tasks(MaxResults = 20), NA)
+})

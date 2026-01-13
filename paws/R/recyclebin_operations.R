@@ -37,9 +37,13 @@ NULL
 #' @param Description The retention rule description.
 #' @param Tags Information about the tags to assign to the retention rule.
 #' @param ResourceType &#91;required&#93; The resource type to be retained by the retention rule. Currently, only
-#' Amazon EBS snapshots and EBS-backed AMIs are supported. To retain
-#' snapshots, specify `EBS_SNAPSHOT`. To retain EBS-backed AMIs, specify
-#' `EC2_IMAGE`.
+#' EBS volumes, EBS snapshots, and EBS-backed AMIs are supported.
+#' 
+#' -   To retain EBS volumes, specify `EBS_VOLUME`.
+#' 
+#' -   To retain EBS snapshots, specify `EBS_SNAPSHOT`
+#' 
+#' -   To retain EBS-backed AMIs, specify `EC2_IMAGE`.
 #' @param ResourceTags \[Tag-level retention rules only\] Specifies the resource tags to use to
 #' identify resources that are to be retained by a tag-level retention
 #' rule. For tag-level retention rules, only deleted resources, of the
@@ -80,7 +84,7 @@ NULL
 #'       Value = "string"
 #'     )
 #'   ),
-#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE",
+#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE"|"EBS_VOLUME",
 #'   ResourceTags = list(
 #'     list(
 #'       ResourceTagKey = "string",
@@ -119,7 +123,7 @@ NULL
 #'       Value = "string"
 #'     )
 #'   ),
-#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE",
+#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE"|"EBS_VOLUME",
 #'   ResourceTags = list(
 #'     list(
 #'       ResourceTagKey = "string",
@@ -228,7 +232,7 @@ recyclebin_delete_rule <- function(Identifier) {
 #' list(
 #'   Identifier = "string",
 #'   Description = "string",
-#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE",
+#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE"|"EBS_VOLUME",
 #'   RetentionPeriod = list(
 #'     RetentionPeriodValue = 123,
 #'     RetentionPeriodUnit = "DAYS"
@@ -305,10 +309,17 @@ recyclebin_get_rule <- function(Identifier) {
 #' value.
 #' @param NextToken The token for the next page of results.
 #' @param ResourceType &#91;required&#93; The resource type retained by the retention rule. Only retention rules
-#' that retain the specified resource type are listed. Currently, only
-#' Amazon EBS snapshots and EBS-backed AMIs are supported. To list
-#' retention rules that retain snapshots, specify `EBS_SNAPSHOT`. To list
-#' retention rules that retain EBS-backed AMIs, specify `EC2_IMAGE`.
+#' that retain the specified resource type are listed. Currently, only EBS
+#' volumes, EBS snapshots, and EBS-backed AMIs are supported.
+#' 
+#' -   To list retention rules that retain EBS volumes, specify
+#'     `EBS_VOLUME`.
+#' 
+#' -   To list retention rules that retain EBS snapshots, specify
+#'     `EBS_SNAPSHOT`.
+#' 
+#' -   To list retention rules that retain EBS-backed AMIs, specify
+#'     `EC2_IMAGE`.
 #' @param ResourceTags \[Tag-level retention rules only\] Information about the resource tags
 #' used to identify resources that are retained by the retention rule.
 #' @param LockState The lock state of the retention rules to list. Only retention rules with
@@ -342,7 +353,7 @@ recyclebin_get_rule <- function(Identifier) {
 #' svc$list_rules(
 #'   MaxResults = 123,
 #'   NextToken = "string",
-#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE",
+#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE"|"EBS_VOLUME",
 #'   ResourceTags = list(
 #'     list(
 #'       ResourceTagKey = "string",
@@ -458,7 +469,7 @@ recyclebin_list_tags_for_resource <- function(ResourceArn) {
 #' list(
 #'   Identifier = "string",
 #'   Description = "string",
-#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE",
+#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE"|"EBS_VOLUME",
 #'   RetentionPeriod = list(
 #'     RetentionPeriodValue = 123,
 #'     RetentionPeriodUnit = "DAYS"
@@ -592,7 +603,7 @@ recyclebin_tag_resource <- function(ResourceArn, Tags) {
 #' list(
 #'   Identifier = "string",
 #'   Description = "string",
-#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE",
+#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE"|"EBS_VOLUME",
 #'   RetentionPeriod = list(
 #'     RetentionPeriodValue = 123,
 #'     RetentionPeriodUnit = "DAYS"
@@ -757,7 +768,7 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #'     RetentionPeriodUnit = "DAYS"
 #'   ),
 #'   Description = "string",
-#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE",
+#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE"|"EBS_VOLUME",
 #'   ResourceTags = list(
 #'     list(
 #'       ResourceTagKey = "string",
@@ -788,7 +799,7 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #'     RetentionPeriodUnit = "DAYS"
 #'   ),
 #'   Description = "string",
-#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE",
+#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE"|"EBS_VOLUME",
 #'   ResourceTags = list(
 #'     list(
 #'       ResourceTagKey = "string",

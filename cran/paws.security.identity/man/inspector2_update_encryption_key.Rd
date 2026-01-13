@@ -4,14 +4,14 @@
 \alias{inspector2_update_encryption_key}
 \title{Updates an encryption key}
 \usage{
-inspector2_update_encryption_key(kmsKeyId, resourceType, scanType)
+inspector2_update_encryption_key(kmsKeyId, scanType, resourceType)
 }
 \arguments{
 \item{kmsKeyId}{[required] A KMS key ID for the encryption key.}
 
-\item{resourceType}{[required] The resource type for the encryption key.}
-
 \item{scanType}{[required] The scan type for the encryption key.}
+
+\item{resourceType}{[required] The resource type for the encryption key.}
 }
 \description{
 Updates an encryption key. A \code{ResourceNotFoundException} means that an Amazon Web Services owned key is being used for encryption.

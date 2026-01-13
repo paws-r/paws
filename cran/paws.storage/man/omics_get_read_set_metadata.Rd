@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_read_set_metadata}
 \alias{omics_get_read_set_metadata}
-\title{Gets details about a read set}
+\title{Retrieves the metadata for a read set from a sequence store in JSON
+format}
 \usage{
 omics_get_read_set_metadata(id, sequenceStoreId)
 }
@@ -12,7 +13,7 @@ omics_get_read_set_metadata(id, sequenceStoreId)
 \item{sequenceStoreId}{[required] The read set's sequence store ID.}
 }
 \description{
-Gets details about a read set.
+Retrieves the metadata for a read set from a sequence store in JSON format. This operation does not return tags. To retrieve the list of tags for a read set, use the \code{\link[=omics_list_tags_for_resource]{list_tags_for_resource}} API operation.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_read_set_metadata/} for full documentation.
 }

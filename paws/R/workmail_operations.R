@@ -4612,8 +4612,9 @@ workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges
 #'
 #' @param OrganizationId &#91;required&#93; The ID of the organization for which the email monitoring configuration
 #' is set.
-#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM Role associated with the email
-#' monitoring configuration.
+#' @param RoleArn The Amazon Resource Name (ARN) of the IAM Role associated with the email
+#' monitoring configuration. If absent, the IAM Role Arn of
+#' AWSServiceRoleForAmazonWorkMailEvents will be used.
 #' @param LogGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudWatch Log group associated
 #' with the email monitoring configuration.
 #'
@@ -4634,7 +4635,7 @@ workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges
 #' @rdname workmail_put_email_monitoring_configuration
 #'
 #' @aliases workmail_put_email_monitoring_configuration
-workmail_put_email_monitoring_configuration <- function(OrganizationId, RoleArn, LogGroupArn) {
+workmail_put_email_monitoring_configuration <- function(OrganizationId, RoleArn = NULL, LogGroupArn) {
   op <- new_operation(
     name = "PutEmailMonitoringConfiguration",
     http_method = "POST",

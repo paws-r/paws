@@ -8,8 +8,8 @@ single VPC from Amazon Virtual Private Cloud}
 route53resolver_update_resolver_config(ResourceId, AutodefinedReverseFlag)
 }
 \arguments{
-\item{ResourceId}{[required] Resource ID of the Amazon VPC that you want to update the Resolver
-configuration for.}
+\item{ResourceId}{[required] The ID of the Amazon Virtual Private Cloud VPC or a Route 53 Profile
+that you're configuring Resolver for.}
 
 \item{AutodefinedReverseFlag}{[required] Indicates whether or not the Resolver will create autodefined rules for
 reverse DNS lookups. This is enabled by default. Disabling this option

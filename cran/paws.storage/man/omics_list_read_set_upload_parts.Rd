@@ -2,8 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_list_read_set_upload_parts}
 \alias{omics_list_read_set_upload_parts}
-\title{This operation will list all parts in a requested multipart upload for a
-sequence store}
+\title{Lists all parts in a multipart read set upload for a sequence store and
+returns the metadata in a JSON formatted output}
 \usage{
 omics_list_read_set_upload_parts(
   sequenceStoreId,
@@ -31,7 +31,7 @@ results.}
 uploads.}
 }
 \description{
-This operation will list all parts in a requested multipart upload for a sequence store.
+Lists all parts in a multipart read set upload for a sequence store and returns the metadata in a JSON formatted output.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_list_read_set_upload_parts/} for full documentation.
 }

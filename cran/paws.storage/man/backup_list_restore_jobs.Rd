@@ -15,7 +15,8 @@ backup_list_restore_jobs(
   ByStatus = NULL,
   ByCompleteBefore = NULL,
   ByCompleteAfter = NULL,
-  ByRestoreTestingPlanArn = NULL
+  ByRestoreTestingPlanArn = NULL,
+  ByParentJobId = NULL
 )
 }
 \arguments{
@@ -65,6 +66,9 @@ and Coordinated Universal Time (UTC).}
 
 \item{ByRestoreTestingPlanArn}{This returns only restore testing jobs that match the specified resource
 Amazon Resource Name (ARN).}
+
+\item{ByParentJobId}{This is a filter to list child (nested) restore jobs based on parent
+restore job ID.}
 }
 \description{
 Returns a list of jobs that Backup initiated to restore a saved resource, including details about the recovery process.

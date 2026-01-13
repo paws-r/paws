@@ -64,6 +64,8 @@ for the Spot Instance.
 \item \code{launch.ramdisk-id} - The RAM disk ID.
 \item \code{launched-availability-zone} - The Availability Zone in which the
 request is launched.
+\item \code{launched-availability-zone-id} - The ID of the Availability Zone in
+which the request is launched.
 \item \code{network-interface.addresses.primary} - Indicates whether the IP
 address is the primary private IP address.
 \item \code{network-interface.delete-on-termination} - Indicates whether the

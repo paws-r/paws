@@ -11,8 +11,8 @@ sts_assume_root(TargetPrincipal, TaskPolicyArn, DurationSeconds = NULL)
 \item{TargetPrincipal}{[required] The member account principal ARN or account ID.}
 
 \item{TaskPolicyArn}{[required] The identity based policy that scopes the session to the privileged
-tasks that can be performed. You can use one of following Amazon Web
-Services managed policies to scope root session actions.
+tasks that can be performed. You must use one of following Amazon Web
+Services managed policies to scope root session actions:
 \itemize{
 \item \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/security-iam-awsmanpol.html#security-iam-awsmanpol-IAMAuditRootUserCredentials}{IAMAuditRootUserCredentials}
 \item \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/security-iam-awsmanpol.html#security-iam-awsmanpol-IAMCreateRootUserPassword}{IAMCreateRootUserPassword}
@@ -29,7 +29,7 @@ fails.
 By default, the value is set to \code{900} seconds.}
 }
 \description{
-Returns a set of short term credentials you can use to perform privileged tasks on a member account in your organization.
+Returns a set of short term credentials you can use to perform privileged tasks on a member account in your organization. You must use credentials from an Organizations management account or a delegated administrator account for IAM to call \code{\link[=sts_assume_root]{assume_root}}. You cannot use root user credentials to make this call.
 
 See \url{https://www.paws-r-sdk.com/docs/sts_assume_root/} for full documentation.
 }

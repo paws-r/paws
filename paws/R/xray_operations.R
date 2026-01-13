@@ -287,6 +287,10 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
 #'       Version = 123,
 #'       Attributes = list(
 #'         "string"
+#'       ),
+#'       SamplingRateBoost = list(
+#'         MaxRate = 123.0,
+#'         CooldownWindowMinutes = 123
 #'       )
 #'     ),
 #'     CreatedAt = as.POSIXct(
@@ -317,6 +321,10 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
 #'     Version = 123,
 #'     Attributes = list(
 #'       "string"
+#'     ),
+#'     SamplingRateBoost = list(
+#'       MaxRate = 123.0,
+#'       CooldownWindowMinutes = 123
 #'     )
 #'   ),
 #'   Tags = list(
@@ -480,6 +488,10 @@ xray_delete_resource_policy <- function(PolicyName, PolicyRevisionId = NULL) {
 #'       Version = 123,
 #'       Attributes = list(
 #'         "string"
+#'       ),
+#'       SamplingRateBoost = list(
+#'         MaxRate = 123.0,
+#'         CooldownWindowMinutes = 123
 #'       )
 #'     ),
 #'     CreatedAt = as.POSIXct(
@@ -1378,6 +1390,10 @@ xray_get_retrieved_traces_graph <- function(RetrievalToken, NextToken = NULL) {
 #'         Version = 123,
 #'         Attributes = list(
 #'           "string"
+#'         ),
+#'         SamplingRateBoost = list(
+#'           MaxRate = 123.0,
+#'           CooldownWindowMinutes = 123
 #'         )
 #'       ),
 #'       CreatedAt = as.POSIXct(
@@ -1493,9 +1509,12 @@ xray_get_sampling_statistic_summaries <- function(NextToken = NULL) {
 #' requests.
 #'
 #' @usage
-#' xray_get_sampling_targets(SamplingStatisticsDocuments)
+#' xray_get_sampling_targets(SamplingStatisticsDocuments,
+#'   SamplingBoostStatisticsDocuments)
 #'
 #' @param SamplingStatisticsDocuments &#91;required&#93; Information about rules that the service is using to sample requests.
+#' @param SamplingBoostStatisticsDocuments Information about rules that the service is using to boost sampling
+#' rate.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1509,13 +1528,26 @@ xray_get_sampling_statistic_summaries <- function(NextToken = NULL) {
 #'       ReservoirQuotaTTL = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       Interval = 123
+#'       Interval = 123,
+#'       SamplingBoost = list(
+#'         BoostRate = 123.0,
+#'         BoostRateTTL = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   LastRuleModification = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   UnprocessedStatistics = list(
+#'     list(
+#'       RuleName = "string",
+#'       ErrorCode = "string",
+#'       Message = "string"
+#'     )
+#'   ),
+#'   UnprocessedBoostStatistics = list(
 #'     list(
 #'       RuleName = "string",
 #'       ErrorCode = "string",
@@ -1539,6 +1571,18 @@ xray_get_sampling_statistic_summaries <- function(NextToken = NULL) {
 #'       SampledCount = 123,
 #'       BorrowCount = 123
 #'     )
+#'   ),
+#'   SamplingBoostStatisticsDocuments = list(
+#'     list(
+#'       RuleName = "string",
+#'       ServiceName = "string",
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AnomalyCount = 123,
+#'       TotalCount = 123,
+#'       SampledAnomalyCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -1548,7 +1592,7 @@ xray_get_sampling_statistic_summaries <- function(NextToken = NULL) {
 #' @rdname xray_get_sampling_targets
 #'
 #' @aliases xray_get_sampling_targets
-xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
+xray_get_sampling_targets <- function(SamplingStatisticsDocuments, SamplingBoostStatisticsDocuments = NULL) {
   op <- new_operation(
     name = "GetSamplingTargets",
     http_method = "POST",
@@ -1557,7 +1601,7 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .xray$get_sampling_targets_input(SamplingStatisticsDocuments = SamplingStatisticsDocuments)
+  input <- .xray$get_sampling_targets_input(SamplingStatisticsDocuments = SamplingStatisticsDocuments, SamplingBoostStatisticsDocuments = SamplingBoostStatisticsDocuments)
   output <- .xray$get_sampling_targets_output()
   config <- get_config()
   svc <- .xray$service(config, op)
@@ -2003,13 +2047,13 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 .xray$operations$get_trace_graph <- xray_get_trace_graph
 
 #' Retrieves the current destination of data sent to PutTraceSegments and
-#' OpenTelemetry API
+#' OpenTelemetry protocol (OTLP) endpoint
 #'
 #' @description
 #' Retrieves the current destination of data sent to
-#' [`put_trace_segments`][xray_put_trace_segments] and *OpenTelemetry* API.
-#' The Transaction Search feature requires a CloudWatchLogs destination.
-#' For more information, see [Transaction
+#' [`put_trace_segments`][xray_put_trace_segments] and *OpenTelemetry
+#' protocol (OTLP)* endpoint. The Transaction Search feature requires a
+#' CloudWatchLogs destination. For more information, see [Transaction
 #' Search](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Transaction-Search.html)
 #' and
 #' [OpenTelemetry](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-OpenTelemetry-Sections.html).
@@ -2397,21 +2441,21 @@ xray_list_resource_policies <- function(NextToken = NULL) {
 #' what each trace returns, see
 #' [`batch_get_traces`][xray_batch_get_traces].
 #' 
-#' This API does not initiate a retrieval job. To start a trace retrieval,
-#' use [`start_trace_retrieval`][xray_start_trace_retrieval], which
-#' generates the required `RetrievalToken`.
+#' This API does not initiate a retrieval process. To start a trace
+#' retrieval, use [`start_trace_retrieval`][xray_start_trace_retrieval],
+#' which generates the required `RetrievalToken`.
 #' 
 #' When the `RetrievalStatus` is not *COMPLETE*, the API will return an
 #' empty response. Retry the request once the retrieval has completed to
 #' access the full list of traces.
 #' 
 #' For cross-account observability, this API can retrieve traces from
-#' linked accounts when CloudWatch log is the destination across relevant
-#' accounts. For more details, see [CloudWatch cross-account
+#' linked accounts when CloudWatch log is set as the destination across
+#' relevant accounts. For more details, see [CloudWatch cross-account
 #' observability](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html).
 #' 
-#' For retrieving data from X-Ray directly as opposed to the
-#' Transaction-Search Log group, see
+#' For retrieving data from X-Ray directly as opposed to the Transaction
+#' Search generated log group, see
 #' [`batch_get_traces`][xray_batch_get_traces].
 #'
 #' @usage
@@ -2881,12 +2925,12 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
 .xray$operations$put_trace_segments <- xray_put_trace_segments
 
 #' Initiates a trace retrieval process using the specified time range and
-#' for the give trace IDs on Transaction Search generated by the CloudWatch
+#' for the given trace IDs in the Transaction Search generated CloudWatch
 #' log group
 #'
 #' @description
 #' Initiates a trace retrieval process using the specified time range and
-#' for the give trace IDs on Transaction Search generated by the CloudWatch
+#' for the given trace IDs in the Transaction Search generated CloudWatch
 #' log group. For more information, see [Transaction
 #' Search](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Transaction-Search.html).
 #' 
@@ -3262,6 +3306,10 @@ xray_update_indexing_rule <- function(Name, Rule) {
 #'       Version = 123,
 #'       Attributes = list(
 #'         "string"
+#'       ),
+#'       SamplingRateBoost = list(
+#'         MaxRate = 123.0,
+#'         CooldownWindowMinutes = 123
 #'       )
 #'     ),
 #'     CreatedAt = as.POSIXct(
@@ -3291,6 +3339,10 @@ xray_update_indexing_rule <- function(Name, Rule) {
 #'     URLPath = "string",
 #'     Attributes = list(
 #'       "string"
+#'     ),
+#'     SamplingRateBoost = list(
+#'       MaxRate = 123.0,
+#'       CooldownWindowMinutes = 123
 #'     )
 #'   )
 #' )

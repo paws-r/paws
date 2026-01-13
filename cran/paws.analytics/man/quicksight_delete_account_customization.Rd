@@ -2,22 +2,19 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_delete_account_customization}
 \alias{quicksight_delete_account_customization}
-\title{Deletes all Amazon QuickSight customizations in this Amazon Web Services
-Region for the specified Amazon Web Services account and Amazon
-QuickSight namespace}
+\title{This API permanently deletes all Quick Sight customizations for the
+specified Amazon Web Services account and namespace}
 \usage{
 quicksight_delete_account_customization(AwsAccountId, Namespace = NULL)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to delete
-Amazon QuickSight customizations from in this Amazon Web Services
-Region.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to delete Quick
+Sight customizations from.}
 
-\item{Namespace}{The Amazon QuickSight namespace that you're deleting the customizations
-from.}
+\item{Namespace}{The Quick Sight namespace that you're deleting the customizations from.}
 }
 \description{
-Deletes all Amazon QuickSight customizations in this Amazon Web Services Region for the specified Amazon Web Services account and Amazon QuickSight namespace.
+This API permanently deletes all Quick Sight customizations for the specified Amazon Web Services account and namespace. When you delete account customizations:
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_account_customization/} for full documentation.
 }

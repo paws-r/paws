@@ -11,27 +11,45 @@ rds_create_custom_db_engine_version(
   DatabaseInstallationFilesS3Prefix = NULL,
   ImageId = NULL,
   KMSKeyId = NULL,
+  SourceCustomDbEngineVersionIdentifier = NULL,
+  UseAwsProvidedLatestImage = NULL,
   Description = NULL,
   Manifest = NULL,
   Tags = NULL,
-  SourceCustomDbEngineVersionIdentifier = NULL,
-  UseAwsProvidedLatestImage = NULL
+  DatabaseInstallationFiles = NULL
 )
 }
 \arguments{
-\item{Engine}{[required] The database engine. RDS Custom for Oracle supports the following
-values:
+\item{Engine}{[required] The database engine.
+
+RDS Custom for Oracle supports the following values:
 \itemize{
 \item \code{custom-oracle-ee}
 \item \code{custom-oracle-ee-cdb}
 \item \code{custom-oracle-se2}
 \item \code{custom-oracle-se2-cdb}
-}}
+}
 
-\item{EngineVersion}{[required] The name of your CEV. The name format is 19.\emph{customized_string}. For
-example, a valid CEV name is \verb{19.my_cev1}. This setting is required for
-RDS Custom for Oracle, but optional for Amazon RDS. The combination of
-\code{Engine} and \code{EngineVersion} is unique per customer per Region.}
+RDS Custom for SQL Server supports the following values:
+\itemize{
+\item \code{custom-sqlserver-ee}
+\item \code{custom-sqlserver-se}
+\item \code{ccustom-sqlserver-web}
+\item \code{custom-sqlserver-dev}
+}
+
+RDS for SQL Server supports only \code{sqlserver-dev-ee}.}
+
+\item{EngineVersion}{[required] The name of your custom engine version (CEV).
+
+For RDS Custom for Oracle, the name format is \verb{19.*customized_string*}.
+For example, a valid CEV name is \verb{19.my_cev1}.
+
+For RDS for SQL Server and RDS Custom for SQL Server, the name format is
+\verb{major engine_version*.*minor_engine_version*.*customized_string*}. For
+example, a valid CEV name is \verb{16.00.4215.2.my_cev1}.
+
+The CEV name is unique per customer per Amazon Web Services Regions.}
 
 \item{DatabaseInstallationFilesS3BucketName}{The name of an Amazon S3 bucket that contains database installation
 files for your CEV. For example, a valid bucket name is
@@ -61,6 +79,15 @@ in the \emph{Amazon Web Services Key Management Service Developer Guide}.
 
 You can choose the same symmetric encryption key when you create a CEV
 and a DB instance, or choose different keys.}
+
+\item{SourceCustomDbEngineVersionIdentifier}{The ARN of a CEV to use as a source for creating a new CEV. You can
+specify a different Amazon Machine Imagine (AMI) by using either
+\code{Source} or \code{UseAwsProvidedLatestImage}. You can't specify a different
+JSON manifest when you specify \code{SourceCustomDbEngineVersionIdentifier}.}
+
+\item{UseAwsProvidedLatestImage}{Specifies whether to use the latest service-provided Amazon Machine
+Image (AMI) for the CEV. If you specify \code{UseAwsProvidedLatestImage}, you
+can't also specify \code{ImageId}.}
 
 \item{Description}{An optional description of your CEV.}
 
@@ -97,14 +124,8 @@ in the \emph{Amazon RDS User Guide}.}
 
 \item{Tags}{}
 
-\item{SourceCustomDbEngineVersionIdentifier}{The ARN of a CEV to use as a source for creating a new CEV. You can
-specify a different Amazon Machine Imagine (AMI) by using either
-\code{Source} or \code{UseAwsProvidedLatestImage}. You can't specify a different
-JSON manifest when you specify \code{SourceCustomDbEngineVersionIdentifier}.}
-
-\item{UseAwsProvidedLatestImage}{Specifies whether to use the latest service-provided Amazon Machine
-Image (AMI) for the CEV. If you specify \code{UseAwsProvidedLatestImage}, you
-can't also specify \code{ImageId}.}
+\item{DatabaseInstallationFiles}{The database installation files (ISO and EXE) uploaded to Amazon S3 for
+your database engine version to import to Amazon RDS.}
 }
 \description{
 Creates a custom DB engine version (CEV).

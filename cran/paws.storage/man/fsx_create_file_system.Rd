@@ -17,7 +17,8 @@ fsx_create_file_system(
   LustreConfiguration = NULL,
   OntapConfiguration = NULL,
   FileSystemTypeVersion = NULL,
-  OpenZFSConfiguration = NULL
+  OpenZFSConfiguration = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -67,16 +68,17 @@ values are \code{SSD}, \code{HDD}, and \code{INTELLIGENT_TIERING}.
 \itemize{
 \item Set to \code{SSD} to use solid state drive storage. SSD is supported on
 all Windows, Lustre, ONTAP, and OpenZFS deployment types.
-\item Set to \code{HDD} to use hard disk drive storage. HDD is supported on
+\item Set to \code{HDD} to use hard disk drive storage, which is supported on
 \code{SINGLE_AZ_2} and \code{MULTI_AZ_1} Windows file system deployment types,
 and on \code{PERSISTENT_1} Lustre file system deployment types.
 \item Set to \code{INTELLIGENT_TIERING} to use fully elastic,
 intelligently-tiered storage. Intelligent-Tiering is only available
-for OpenZFS file systems with the Multi-AZ deployment type.
+for OpenZFS file systems with the Multi-AZ deployment type and for
+Lustre file systems with the Persistent_2 deployment type.
 }
 
 Default value is \code{SSD}. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#optimize-storage-costs}{Storage type options}
-in the \emph{FSx for Windows File Server User Guide}, \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options}{Multiple storage options}
+in the \emph{FSx for Windows File Server User Guide}, \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-fsx-lustre.html#lustre-storage-classes}{FSx for Lustre storage classes}
 in the \emph{FSx for Lustre User Guide}, and \href{https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/performance-intelligent-tiering.html}{Working with Intelligent-Tiering}
 in the \emph{Amazon FSx for OpenZFS User Guide}.}
 
@@ -134,6 +136,12 @@ Default value is \code{2.10}, except for the following deployments:
 }}
 
 \item{OpenZFSConfiguration}{The OpenZFS configuration for the file system that's being created.}
+
+\item{NetworkType}{The network type of the Amazon FSx file system that you are creating.
+Valid values are \code{IPV4} (which supports IPv4 only) and \code{DUAL} (for
+dual-stack mode, which supports both IPv4 and IPv6). The default is
+\code{IPV4}. Supported for FSx for OpenZFS, FSx for ONTAP, and FSx for
+Windows File Server file systems.}
 }
 \description{
 Creates a new, empty Amazon FSx file system. You can create the following supported Amazon FSx file systems using the \code{\link[=fsx_create_file_system]{create_file_system}} API operation:

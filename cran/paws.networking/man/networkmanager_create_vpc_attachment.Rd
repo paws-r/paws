@@ -9,6 +9,7 @@ networkmanager_create_vpc_attachment(
   VpcArn,
   SubnetArns,
   Options = NULL,
+  RoutingPolicyLabel = NULL,
   Tags = NULL,
   ClientToken = NULL
 )
@@ -21,6 +22,9 @@ networkmanager_create_vpc_attachment(
 \item{SubnetArns}{[required] The subnet ARN of the VPC attachment.}
 
 \item{Options}{Options for the VPC attachment.}
+
+\item{RoutingPolicyLabel}{The routing policy label to apply to the VPC attachment for traffic
+routing decisions.}
 
 \item{Tags}{The key-value tags associated with the request.}
 

@@ -9,6 +9,7 @@ sagemaker_create_notebook_instance(
   InstanceType,
   SubnetId = NULL,
   SecurityGroupIds = NULL,
+  IpAddressType = NULL,
   RoleArn,
   KmsKeyId = NULL,
   Tags = NULL,
@@ -33,6 +34,11 @@ connectivity from your ML compute instance.}
 
 \item{SecurityGroupIds}{The VPC security group IDs, in the form sg-xxxxxxxx. The security groups
 must be for the same VPC as specified in the subnet.}
+
+\item{IpAddressType}{The IP address type for the notebook instance. Specify \code{ipv4} for
+IPv4-only connectivity or \code{dualstack} for both IPv4 and IPv6
+connectivity. When you specify \code{dualstack}, the subnet must support IPv6
+CIDR blocks. If not specified, defaults to \code{ipv4}.}
 
 \item{RoleArn}{[required] When you send any requests to Amazon Web Services resources from the
 notebook instance, SageMaker AI assumes this role to perform tasks on
@@ -98,7 +104,8 @@ notebook instance. Because of this, lifecycle configurations associated
 with a notebook instance always run with root access even if you disable
 root access for users.}
 
-\item{PlatformIdentifier}{The platform identifier of the notebook instance runtime environment.}
+\item{PlatformIdentifier}{The platform identifier of the notebook instance runtime environment.
+The default value is \code{notebook-al2-v2}.}
 
 \item{InstanceMetadataServiceConfiguration}{Information on the IMDS configuration of the notebook instance}
 }

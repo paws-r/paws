@@ -12,7 +12,8 @@ guardduty_create_ip_set(
   Location,
   Activate,
   ClientToken = NULL,
-  Tags = NULL
+  Tags = NULL,
+  ExpectedBucketOwner = NULL
 )
 }
 \arguments{
@@ -38,6 +39,9 @@ uploaded IPSet.}
 \item{ClientToken}{The idempotency token for the create request.}
 
 \item{Tags}{The tags to be added to a new IP set resource.}
+
+\item{ExpectedBucketOwner}{The Amazon Web Services account ID that owns the Amazon S3 bucket
+specified in the \strong{location} parameter.}
 }
 \description{
 Creates a new IPSet, which is called a trusted IP list in the console user interface. An IPSet is a list of IP addresses that are trusted for secure communication with Amazon Web Services infrastructure and applications. GuardDuty doesn't generate findings for IP addresses that are included in IPSets. Only users from the administrator account can use this operation.

@@ -116,10 +116,10 @@ acm_describe_certificate <- function(CertificateArn) {
 .acm$operations$describe_certificate <- acm_describe_certificate
 
 #' Exports a private certificate issued by a private certificate authority
-#' (CA) for use anywhere
+#' (CA) or public certificate for use anywhere
 #'
 #' @description
-#' Exports a private certificate issued by a private certificate authority (CA) for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private 2048-bit RSA key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it.
+#' Exports a private certificate issued by a private certificate authority (CA) or public certificate for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it.
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_export_certificate/](https://www.paws-r-sdk.com/docs/acm_export_certificate/) for full documentation.
 #'
@@ -431,7 +431,7 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' Renews an eligible ACM certificate
 #'
 #' @description
-#' Renews an eligible ACM certificate. At this time, only exported private certificates can be renewed with this operation. In order to renew your Amazon Web Services Private CA certificates with ACM, you must first [grant the ACM service principal permission to do so](https://docs.aws.amazon.com/privateca/latest/userguide/). For more information, see [Testing Managed Renewal](https://docs.aws.amazon.com/acm/latest/userguide/) in the ACM User Guide.
+#' Renews an [eligible ACM certificate](https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html). In order to renew your Amazon Web Services Private CA certificates with ACM, you must first [grant the ACM service principal permission to do so](https://docs.aws.amazon.com/privateca/latest/userguide/). For more information, see [Testing Managed Renewal](https://docs.aws.amazon.com/acm/latest/userguide/) in the ACM User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_renew_certificate/](https://www.paws-r-sdk.com/docs/acm_renew_certificate/) for full documentation.
 #'
@@ -526,13 +526,20 @@ acm_renew_certificate <- function(CertificateArn) {
 #' requesting multiple certificates.
 #' @param DomainValidationOptions The domain name that you want ACM to use to send you emails so that you
 #' can validate domain ownership.
-#' @param Options Currently, you can use this parameter to specify whether to add the
-#' certificate to a certificate transparency log. Certificate transparency
-#' makes it possible to detect SSL/TLS certificates that have been
-#' mistakenly or maliciously issued. Certificates that have not been logged
-#' typically produce an error message in a browser. For more information,
-#' see [Opting Out of Certificate Transparency
+#' @param Options You can use this parameter to specify whether to add the certificate to
+#' a certificate transparency log and export your certificate.
+#' 
+#' Certificate transparency makes it possible to detect SSL/TLS
+#' certificates that have been mistakenly or maliciously issued.
+#' Certificates that have not been logged typically produce an error
+#' message in a browser. For more information, see [Opting Out of
+#' Certificate Transparency
 #' Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+#' 
+#' You can export public ACM certificates to use with Amazon Web Services
+#' services as well as outside the Amazon Web Services Cloud. For more
+#' information, see [Certificate Manager exportable public
+#' certificate](https://docs.aws.amazon.com/acm/latest/userguide/acm-exportable-certificates.html).
 #' @param CertificateAuthorityArn The Amazon Resource Name (ARN) of the private certificate authority (CA)
 #' that will be used to issue the certificate. If you do not provide an ARN
 #' and you are trying to request a private certificate, ACM will attempt to
@@ -653,10 +660,45 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
 }
 .acm$operations$resend_validation_email <- acm_resend_validation_email
 
+#' Revokes a public ACM certificate
+#'
+#' @description
+#' Revokes a public ACM certificate. You can only revoke certificates that have been previously exported.
+#'
+#' See [https://www.paws-r-sdk.com/docs/acm_revoke_certificate/](https://www.paws-r-sdk.com/docs/acm_revoke_certificate/) for full documentation.
+#'
+#' @param CertificateArn &#91;required&#93; The Amazon Resource Name (ARN) of the public or private certificate that
+#' will be revoked. The ARN must have the following form:
+#' 
+#' `arn:aws:acm:region:account:certificate/12345678-1234-1234-1234-123456789012`
+#' @param RevocationReason &#91;required&#93; Specifies why you revoked the certificate.
+#'
+#' @keywords internal
+#'
+#' @rdname acm_revoke_certificate
+acm_revoke_certificate <- function(CertificateArn, RevocationReason) {
+  op <- new_operation(
+    name = "RevokeCertificate",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$revoke_certificate_input(CertificateArn = CertificateArn, RevocationReason = RevocationReason)
+  output <- .acm$revoke_certificate_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$revoke_certificate <- acm_revoke_certificate
+
 #' Updates a certificate
 #'
 #' @description
-#' Updates a certificate. Currently, you can use this function to specify whether to opt in to or out of recording your certificate in a certificate transparency log. For more information, see [Opting Out of Certificate Transparency Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+#' Updates a certificate. You can use this function to specify whether to opt in to or out of recording your certificate in a certificate transparency log and exporting. For more information, see [Opting Out of Certificate Transparency Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency) and [Certificate Manager Exportable Managed Certificates](https://docs.aws.amazon.com/acm/latest/userguide/acm-exportable-certificates.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_update_certificate_options/](https://www.paws-r-sdk.com/docs/acm_update_certificate_options/) for full documentation.
 #'
@@ -664,9 +706,9 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
 #' 
 #' `arn:aws:acm:us-east-1:account:certificate/12345678-1234-1234-1234-123456789012 `
 #' @param Options &#91;required&#93; Use to update the options for your certificate. Currently, you can
-#' specify whether to add your certificate to a transparency log.
-#' Certificate transparency makes it possible to detect SSL/TLS
-#' certificates that have been mistakenly or maliciously issued.
+#' specify whether to add your certificate to a transparency log or export
+#' your certificate. Certificate transparency makes it possible to detect
+#' SSL/TLS certificates that have been mistakenly or maliciously issued.
 #' Certificates that have not been logged typically produce an error
 #' message in a browser.
 #'

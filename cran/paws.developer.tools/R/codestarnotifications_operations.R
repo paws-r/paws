@@ -6,7 +6,7 @@ NULL
 #' Creates a notification rule for a resource
 #'
 #' @description
-#' Creates a notification rule for a resource. The rule specifies the events you want notifications about and the targets (such as Chatbot topics or Chatbot clients configured for Slack) where you want to receive them.
+#' Creates a notification rule for a resource. The rule specifies the events you want notifications about and the targets (such as Amazon Q Developer in chat applications topics or Amazon Q Developer in chat applications clients configured for Slack) where you want to receive them.
 #'
 #' See [https://www.paws-r-sdk.com/docs/codestarnotifications_create_notification_rule/](https://www.paws-r-sdk.com/docs/codestarnotifications_create_notification_rule/) for full documentation.
 #'
@@ -19,13 +19,13 @@ NULL
 #' CodePipeline, repositories in CodeCommit, and build projects in
 #' CodeBuild.
 #' @param Targets &#91;required&#93; A list of Amazon Resource Names (ARNs) of Amazon Simple Notification
-#' Service topics and Chatbot clients to associate with the notification
-#' rule.
+#' Service topics and Amazon Q Developer in chat applications clients to
+#' associate with the notification rule.
 #' @param DetailType &#91;required&#93; The level of detail to include in the notifications for this resource.
 #' `BASIC` will include only the contents of the event as it would appear
 #' in Amazon CloudWatch. `FULL` will include any supplemental information
-#' provided by AWS CodeStar Notifications and/or the service for the
-#' resource for which the notification is created.
+#' provided by CodeStar Notifications and/or the service for the resource
+#' for which the notification is created.
 #' @param ClientRequestToken A unique, client-generated idempotency token that, when provided in a
 #' request, ensures the request cannot be repeated with a changed
 #' parameter. If a request with the same parameters is received and a token
@@ -102,12 +102,13 @@ codestarnotifications_delete_notification_rule <- function(Arn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/codestarnotifications_delete_target/](https://www.paws-r-sdk.com/docs/codestarnotifications_delete_target/) for full documentation.
 #'
-#' @param TargetAddress &#91;required&#93; The Amazon Resource Name (ARN) of the Chatbot topic or Chatbot client to
+#' @param TargetAddress &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Q Developer in chat
+#' applications topic or Amazon Q Developer in chat applications client to
 #' delete.
 #' @param ForceUnsubscribeAll A Boolean value that can be used to delete all associations with this
-#' Chatbot topic. The default value is FALSE. If set to TRUE, all
-#' associations between that target and every notification rule in your
-#' Amazon Web Services account are deleted.
+#' Amazon Q Developer in chat applications topic. The default value is
+#' FALSE. If set to TRUE, all associations between that target and every
+#' notification rule in your Amazon Web Services account are deleted.
 #'
 #' @keywords internal
 #'
@@ -312,12 +313,13 @@ codestarnotifications_list_targets <- function(Filters = NULL, NextToken = NULL,
 }
 .codestarnotifications$operations$list_targets <- codestarnotifications_list_targets
 
-#' Creates an association between a notification rule and an Chatbot topic
-#' or Chatbot client so that the associated target can receive
+#' Creates an association between a notification rule and an Amazon Q
+#' Developer in chat applications topic or Amazon Q Developer in chat
+#' applications client so that the associated target can receive
 #' notifications when the events described in the rule are triggered
 #'
 #' @description
-#' Creates an association between a notification rule and an Chatbot topic or Chatbot client so that the associated target can receive notifications when the events described in the rule are triggered.
+#' Creates an association between a notification rule and an Amazon Q Developer in chat applications topic or Amazon Q Developer in chat applications client so that the associated target can receive notifications when the events described in the rule are triggered.
 #'
 #' See [https://www.paws-r-sdk.com/docs/codestarnotifications_subscribe/](https://www.paws-r-sdk.com/docs/codestarnotifications_subscribe/) for full documentation.
 #'
@@ -382,17 +384,19 @@ codestarnotifications_tag_resource <- function(Arn, Tags) {
 }
 .codestarnotifications$operations$tag_resource <- codestarnotifications_tag_resource
 
-#' Removes an association between a notification rule and an Chatbot topic
-#' so that subscribers to that topic stop receiving notifications when the
-#' events described in the rule are triggered
+#' Removes an association between a notification rule and an Amazon Q
+#' Developer in chat applications topic so that subscribers to that topic
+#' stop receiving notifications when the events described in the rule are
+#' triggered
 #'
 #' @description
-#' Removes an association between a notification rule and an Chatbot topic so that subscribers to that topic stop receiving notifications when the events described in the rule are triggered.
+#' Removes an association between a notification rule and an Amazon Q Developer in chat applications topic so that subscribers to that topic stop receiving notifications when the events described in the rule are triggered.
 #'
 #' See [https://www.paws-r-sdk.com/docs/codestarnotifications_unsubscribe/](https://www.paws-r-sdk.com/docs/codestarnotifications_unsubscribe/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule.
-#' @param TargetAddress &#91;required&#93; The ARN of the Chatbot topic to unsubscribe from the notification rule.
+#' @param TargetAddress &#91;required&#93; The ARN of the Amazon Q Developer in chat applications topic to
+#' unsubscribe from the notification rule.
 #'
 #' @keywords internal
 #'
@@ -470,8 +474,8 @@ codestarnotifications_untag_resource <- function(Arn, TagKeys) {
 #' @param DetailType The level of detail to include in the notifications for this resource.
 #' BASIC will include only the contents of the event as it would appear in
 #' Amazon CloudWatch. FULL will include any supplemental information
-#' provided by AWS CodeStar Notifications and/or the service for the
-#' resource for which the notification is created.
+#' provided by CodeStar Notifications and/or the service for the resource
+#' for which the notification is created.
 #'
 #' @keywords internal
 #'

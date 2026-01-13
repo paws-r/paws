@@ -44,9 +44,11 @@ be distinguished. However, if you use a namespace that's only accessible
 by API calls, then you can create services that with names that differ
 only by case.}
 
-\item{NamespaceId}{The ID of the namespace that you want to use to create the service. The
-namespace ID must be specified, but it can be specified either here or
-in the \code{DnsConfig} object.}
+\item{NamespaceId}{The ID or Amazon Resource Name (ARN) of the namespace that you want to
+use to create the service. For namespaces shared with your Amazon Web
+Services account, specify the namespace ARN. For more information about
+shared namespaces, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html}{Cross-account Cloud Map namespace sharing}
+in the \emph{Cloud Map Developer Guide}.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and that allows failed
 \code{\link[=servicediscovery_create_service]{create_service}} requests to be

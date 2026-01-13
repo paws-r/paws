@@ -18,7 +18,9 @@ docdb_restore_db_cluster_from_snapshot(
   EnableCloudwatchLogsExports = NULL,
   DeletionProtection = NULL,
   DBClusterParameterGroupName = NULL,
-  StorageType = NULL
+  ServerlessV2ScalingConfiguration = NULL,
+  StorageType = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -112,6 +114,9 @@ parameter group. The string must consist of from 1 to 255 letters,
 numbers or hyphens. Its first character must be a letter, and it cannot
 end with a hyphen or contain two consecutive hyphens.}
 
+\item{ServerlessV2ScalingConfiguration}{Contains the scaling configuration of an Amazon DocumentDB Serverless
+cluster.}
+
 \item{StorageType}{The storage type to associate with the DB cluster.
 
 For information on storage types for Amazon DocumentDB clusters, see
@@ -121,6 +126,17 @@ Guide}.
 Valid values for storage type - \code{standard | iopt1}
 
 Default value is \code{standard }}
+
+\item{NetworkType}{The network type of the cluster.
+
+The network type is determined by the \code{DBSubnetGroup} specified for the
+cluster. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
+IPv4 and the IPv6 protocols (\code{DUAL}).
+
+For more information, see \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/vpc-clusters.html}{DocumentDB clusters in a VPC}
+in the Amazon DocumentDB Developer Guide.
+
+Valid Values: \code{IPV4} | \code{DUAL}}
 }
 \description{
 Creates a new cluster from a snapshot or cluster snapshot.

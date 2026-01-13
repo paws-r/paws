@@ -51,7 +51,7 @@ in the \emph{Identity and Access Management User Guide} .
 
 The grant determines the retiring principal. Other principals might have
 permission to retire the grant or revoke the grant. For details, see
-\code{\link[=kms_revoke_grant]{revoke_grant}} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant-delete}{Retiring and revoking grants}
+\code{\link[=kms_revoke_grant]{revoke_grant}} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-delete.html}{Retiring and revoking grants}
 in the \emph{Key Management Service Developer Guide}.}
 
 \item{Operations}{[required] A list of operations that the grant permits.
@@ -103,7 +103,7 @@ in the \emph{Key Management Service Developer Guide} .}
 Use a grant token when your permission to call this operation comes from
 a new grant that has not yet achieved \emph{eventual consistency}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token}{Using a grant token}
+and \href{https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html}{Using a grant token}
 in the \emph{Key Management Service Developer Guide}.}
 
 \item{Name}{A friendly name for the grant. Use this value to prevent the unintended
@@ -128,7 +128,7 @@ used interchangeably.}
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
 
-To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your KMS API calls}
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions}
 in the \emph{Key Management Service Developer Guide}.}
 }
 \description{

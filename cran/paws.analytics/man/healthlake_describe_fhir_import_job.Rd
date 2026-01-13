@@ -2,18 +2,18 @@
 % Please edit documentation in R/healthlake_operations.R
 \name{healthlake_describe_fhir_import_job}
 \alias{healthlake_describe_fhir_import_job}
-\title{Displays the properties of a FHIR import job, including the ID, ARN,
-name, and the status of the job}
+\title{Get the import job properties to learn more about the job or job
+progress}
 \usage{
 healthlake_describe_fhir_import_job(DatastoreId, JobId)
 }
 \arguments{
-\item{DatastoreId}{[required] The AWS-generated ID of the data store.}
+\item{DatastoreId}{[required] The data store identifier.}
 
-\item{JobId}{[required] The AWS-generated job ID.}
+\item{JobId}{[required] The import job identifier.}
 }
 \description{
-Displays the properties of a FHIR import job, including the ID, ARN, name, and the status of the job.
+Get the import job properties to learn more about the job or job progress.
 
 See \url{https://www.paws-r-sdk.com/docs/healthlake_describe_fhir_import_job/} for full documentation.
 }

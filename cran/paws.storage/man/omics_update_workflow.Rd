@@ -9,7 +9,8 @@ omics_update_workflow(
   name = NULL,
   description = NULL,
   storageType = NULL,
-  storageCapacity = NULL
+  storageCapacity = NULL,
+  readmeMarkdown = NULL
 )
 }
 \arguments{
@@ -27,9 +28,12 @@ Web Services HealthOmics User Guide}.}
 
 \item{storageCapacity}{The default static storage capacity (in gibibytes) for runs that use
 this workflow or workflow version.}
+
+\item{readmeMarkdown}{The markdown content for the workflow's README file. This provides
+documentation and usage information for users of the workflow.}
 }
 \description{
-Updates information about a workflow. For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/update-private-workflow.html}{Update a private workflow} in the Amazon Web Services HealthOmics User Guide.
+Updates information about a workflow.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_update_workflow/} for full documentation.
 }

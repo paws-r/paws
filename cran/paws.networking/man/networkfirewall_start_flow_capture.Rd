@@ -8,6 +8,8 @@ define}
 networkfirewall_start_flow_capture(
   FirewallArn,
   AvailabilityZone = NULL,
+  VpcEndpointAssociationArn = NULL,
+  VpcEndpointId = NULL,
   MinimumFlowAgeInSeconds = NULL,
   FlowFilters
 )
@@ -20,6 +22,10 @@ example, \verb{us-east-2a}.
 
 Defines the scope a flow operation. You can use up to 20 filters to
 configure a single flow operation.}
+
+\item{VpcEndpointAssociationArn}{The Amazon Resource Name (ARN) of a VPC endpoint association.}
+
+\item{VpcEndpointId}{A unique identifier for the primary endpoint associated with a firewall.}
 
 \item{MinimumFlowAgeInSeconds}{The reqested \code{FlowOperation} ignores flows with an age (in seconds)
 lower than \code{MinimumFlowAgeInSeconds}. You provide this for start

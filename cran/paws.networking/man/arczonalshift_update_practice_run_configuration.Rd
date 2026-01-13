@@ -7,25 +7,18 @@ following: add, change, or remove the blocking alarm; change the outcome
 alarm; or add, change, or remove blocking dates or time windows}
 \usage{
 arczonalshift_update_practice_run_configuration(
-  blockedDates = NULL,
+  resourceIdentifier,
   blockedWindows = NULL,
+  blockedDates = NULL,
   blockingAlarms = NULL,
-  outcomeAlarms = NULL,
-  resourceIdentifier
+  allowedWindows = NULL,
+  outcomeAlarms = NULL
 )
 }
 \arguments{
-\item{blockedDates}{Add, change, or remove blocked dates for a practice run in zonal
-autoshift.
-
-Optionally, you can block practice runs for specific calendar dates. The
-format for blocked dates is: YYYY-MM-DD. Keep in mind, when you specify
-dates, that dates and times for practice runs are in UTC. Separate
-multiple blocked dates with spaces.
-
-For example, if you have an application update scheduled to launch on
-May 1, 2024, and you don't want practice runs to shift traffic away at
-that time, you could set a blocked date for \code{2024-05-01}.}
+\item{resourceIdentifier}{[required] The identifier for the resource that you want to update the practice run
+configuration for. The identifier is the Amazon Resource Name (ARN) for
+the resource.}
 
 \item{blockedWindows}{Add, change, or remove windows of days and times for when you can,
 optionally, block ARC from starting a practice run for a resource.
@@ -41,15 +34,40 @@ For this scenario, you might set the following recurring days and times
 as blocked windows, for example:
 \verb{MON-20:30-21:30 WED-20:30-21:30 FRI-20:30-21:30}.}
 
-\item{blockingAlarms}{Add, change, or remove the Amazon CloudWatch alarm that you optionally
-specify as the blocking alarm for practice runs.}
+\item{blockedDates}{Add, change, or remove blocked dates for a practice run in zonal
+autoshift.
 
-\item{outcomeAlarms}{Specify a new the Amazon CloudWatch alarm as the outcome alarm for
+Optionally, you can block practice runs for specific calendar dates. The
+format for blocked dates is: YYYY-MM-DD. Keep in mind, when you specify
+dates, that dates and times for practice runs are in UTC. Separate
+multiple blocked dates with spaces.
+
+For example, if you have an application update scheduled to launch on
+May 1, 2024, and you don't want practice runs to shift traffic away at
+that time, you could set a blocked date for \code{2024-05-01}.}
+
+\item{blockingAlarms}{Add, change, or remove the Amazon CloudWatch alarms that you optionally
+specify as the blocking alarms for practice runs.}
+
+\item{allowedWindows}{Add, change, or remove windows of days and times for when you can,
+optionally, allow ARC to start a practice run for a resource.
+
+The format for allowed windows is: DAY:HH:SS-DAY:HH:SS. Keep in mind,
+when you specify dates, that dates and times for practice runs are in
+UTC. Also, be aware of potential time adjustments that might be required
+for daylight saving time differences. Separate multiple allowed windows
+with spaces.
+
+For example, say you want to allow practice runs only on Wednesdays and
+Fridays from noon to 5 p.m. For this scenario, you could set the
+following recurring days and times as allowed windows, for example:
+\verb{Wed-12:00-Wed:17:00 Fri-12:00-Fri:17:00}.
+
+The \code{allowedWindows} have to start and end on the same day. Windows that
+span multiple days aren't supported.}
+
+\item{outcomeAlarms}{Specify one or more Amazon CloudWatch alarms as the outcome alarms for
 practice runs.}
-
-\item{resourceIdentifier}{[required] The identifier for the resource that you want to update the practice run
-configuration for. The identifier is the Amazon Resource Name (ARN) for
-the resource.}
 }
 \description{
 Update a practice run configuration to change one or more of the following: add, change, or remove the blocking alarm; change the outcome alarm; or add, change, or remove blocking dates or time windows.

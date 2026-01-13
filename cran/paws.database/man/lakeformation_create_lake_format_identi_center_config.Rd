@@ -9,7 +9,8 @@ lakeformation_create_lake_formation_identity_center_configuration(
   CatalogId = NULL,
   InstanceArn = NULL,
   ExternalFiltering = NULL,
-  ShareRecipients = NULL
+  ShareRecipients = NULL,
+  ServiceIntegrations = NULL
 )
 }
 \arguments{
@@ -35,6 +36,9 @@ created with the principals you want to have access to the resources.
 
 If the \code{ShareRecipients} value is null or the list is empty, no resource
 share is created.}
+
+\item{ServiceIntegrations}{A list of service integrations for enabling trusted identity propagation
+with external services such as Redshift.}
 }
 \description{
 Creates an IAM Identity Center connection with Lake Formation to allow IAM Identity Center users and groups to access Data Catalog resources.

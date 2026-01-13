@@ -7,6 +7,8 @@
 networkfirewall_list_flow_operations(
   FirewallArn,
   AvailabilityZone = NULL,
+  VpcEndpointAssociationArn = NULL,
+  VpcEndpointId = NULL,
   FlowOperationType = NULL,
   NextToken = NULL,
   MaxResults = NULL
@@ -20,6 +22,10 @@ example, \verb{us-east-2a}.
 
 Defines the scope a flow operation. You can use up to 20 filters to
 configure a single flow operation.}
+
+\item{VpcEndpointAssociationArn}{The Amazon Resource Name (ARN) of a VPC endpoint association.}
+
+\item{VpcEndpointId}{A unique identifier for the primary endpoint associated with a firewall.}
 
 \item{FlowOperationType}{An optional string that defines whether any or all operation types are
 returned.}

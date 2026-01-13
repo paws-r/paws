@@ -118,6 +118,7 @@ specific IT standards.
 \link[=imagebuilder_delete_infrastructure_configuration]{delete_infrastructure_configuration} \tab Deletes an infrastructure configuration\cr
 \link[=imagebuilder_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Delete the specified lifecycle policy resource\cr
 \link[=imagebuilder_delete_workflow]{delete_workflow} \tab Deletes a specific workflow resource\cr
+\link[=imagebuilder_distribute_image]{distribute_image} \tab DistributeImage distributes existing AMIs to additional regions and accounts without rebuilding the image\cr
 \link[=imagebuilder_get_component]{get_component} \tab Gets a component object\cr
 \link[=imagebuilder_get_component_policy]{get_component_policy} \tab Gets a component policy\cr
 \link[=imagebuilder_get_container_recipe]{get_container_recipe} \tab Retrieves a container recipe\cr
@@ -164,6 +165,7 @@ specific IT standards.
 \link[=imagebuilder_put_container_recipe_policy]{put_container_recipe_policy} \tab Applies a policy to a container image\cr
 \link[=imagebuilder_put_image_policy]{put_image_policy} \tab Applies a policy to an image\cr
 \link[=imagebuilder_put_image_recipe_policy]{put_image_recipe_policy} \tab Applies a policy to an image recipe\cr
+\link[=imagebuilder_retry_image]{retry_image} \tab RetryImage retries an image distribution without rebuilding the image\cr
 \link[=imagebuilder_send_workflow_step_action]{send_workflow_step_action} \tab Pauses or resumes image creation when the associated workflow runs a WaitForAction step\cr
 \link[=imagebuilder_start_image_pipeline_execution]{start_image_pipeline_execution} \tab Manually triggers a pipeline to create an image\cr
 \link[=imagebuilder_start_resource_state_update]{start_resource_state_update} \tab Begin asynchronous resource state update for lifecycle changes to the specified image resources\cr

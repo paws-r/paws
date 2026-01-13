@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_associate_queue_quick_connects}
 \alias{connect_associate_queue_quick_connects}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Associates a set of quick connects with a queue}
 \usage{
 connect_associate_queue_quick_connects(InstanceId, QueueId, QuickConnectIds)
 }
@@ -16,7 +15,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 \item{QuickConnectIds}{[required] The quick connects to associate with this queue.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Associates a set of quick connects with a queue.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_associate_queue_quick_connects/} for full documentation.
 }

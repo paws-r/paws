@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_dashboard_versions}
 \alias{quicksight_list_dashboard_versions}
-\title{Lists all the versions of the dashboards in the Amazon QuickSight
+\title{Lists all the versions of the dashboards in the Amazon Quick Sight
 subscription}
 \usage{
 quicksight_list_dashboard_versions(
@@ -24,7 +24,7 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \description{
-Lists all the versions of the dashboards in the Amazon QuickSight subscription.
+Lists all the versions of the dashboards in the Amazon Quick Sight subscription.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_list_dashboard_versions/} for full documentation.
 }

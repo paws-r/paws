@@ -50,8 +50,8 @@ this parameter isn't used, then
 the \code{DRAINING} status, the results include only container instances that
 have been set to \code{DRAINING} using
 \code{\link[=ecs_update_container_instances_state]{update_container_instances_state}}.
-If you don't specify this parameter, the default is to include container
-instances set to all states other than \code{INACTIVE}.}
+If you don't specify this parameter, the The default is to include
+container instances set to all states other than \code{INACTIVE}.}
 }
 \description{
 Returns a list of container instances in a specified cluster. You can filter the results of a \code{\link[=ecs_list_container_instances]{list_container_instances}} operation with cluster query language statements inside the \code{filter} parameter. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html}{Cluster Query Language} in the \emph{Amazon Elastic Container Service Developer Guide}.

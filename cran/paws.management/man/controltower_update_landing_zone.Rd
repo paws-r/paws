@@ -4,18 +4,26 @@
 \alias{controltower_update_landing_zone}
 \title{This API call updates the landing zone}
 \usage{
-controltower_update_landing_zone(landingZoneIdentifier, manifest, version)
+controltower_update_landing_zone(
+  version,
+  remediationTypes = NULL,
+  landingZoneIdentifier,
+  manifest = NULL
+)
 }
 \arguments{
+\item{version}{[required] The landing zone version, for example, 3.2.}
+
+\item{remediationTypes}{Specifies the types of remediation actions to apply when updating the
+landing zone configuration.}
+
 \item{landingZoneIdentifier}{[required] The unique identifier of the landing zone.}
 
-\item{manifest}{[required] The manifest file (JSON) is a text file that describes your Amazon Web
+\item{manifest}{The manifest file (JSON) is a text file that describes your Amazon Web
 Services resources. For an example, review \href{https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html}{Launch your landing zone}.
 The example manifest file contains each of the available parameters. The
 schema for the landing zone's JSON manifest file is not published, by
 design.}
-
-\item{version}{[required] The landing zone version, for example, 3.2.}
 }
 \description{
 This API call updates the landing zone. It starts an asynchronous operation that updates the landing zone based on the new landing zone version, or on the changed parameters specified in the updated manifest file.

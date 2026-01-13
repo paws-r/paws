@@ -5,13 +5,13 @@
 \title{Returns the landing zone ARN for the landing zone deployed in your
 managed account}
 \usage{
-controltower_list_landing_zones(maxResults = NULL, nextToken = NULL)
+controltower_list_landing_zones(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{maxResults}{The maximum number of returned landing zone ARNs, which is one.}
-
 \item{nextToken}{The token to continue the list from a previous API call with the same
 parameters.}
+
+\item{maxResults}{The maximum number of returned landing zone ARNs, which is one.}
 }
 \description{
 Returns the landing zone ARN for the landing zone deployed in your managed account. This API also creates an ARN for existing accounts that do not yet have a landing zone ARN.

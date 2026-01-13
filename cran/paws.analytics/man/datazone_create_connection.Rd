@@ -9,9 +9,11 @@ datazone_create_connection(
   clientToken = NULL,
   description = NULL,
   domainIdentifier,
-  environmentIdentifier,
+  enableTrustedIdentityPropagation = NULL,
+  environmentIdentifier = NULL,
   name,
-  props = NULL
+  props = NULL,
+  scope = NULL
 )
 }
 \arguments{
@@ -24,11 +26,15 @@ idempotency of the request.}
 
 \item{domainIdentifier}{[required] The ID of the domain where the connection is created.}
 
-\item{environmentIdentifier}{[required] The ID of the environment where the connection is created.}
+\item{enableTrustedIdentityPropagation}{Specifies whether the trusted identity propagation is enabled.}
+
+\item{environmentIdentifier}{The ID of the environment where the connection is created.}
 
 \item{name}{[required] The connection name.}
 
 \item{props}{The connection props.}
+
+\item{scope}{The scope of the connection.}
 }
 \description{
 Creates a new connection. In Amazon DataZone, a connection enables you to connect your resources (domains, projects, and environments) to external resources and services.

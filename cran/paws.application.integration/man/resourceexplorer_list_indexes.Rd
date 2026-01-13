@@ -7,13 +7,21 @@ that are currently collecting resource information for Amazon Web
 Services Resource Explorer}
 \usage{
 resourceexplorer_list_indexes(
-  MaxResults = NULL,
-  NextToken = NULL,
+  Type = NULL,
   Regions = NULL,
-  Type = NULL
+  MaxResults = NULL,
+  NextToken = NULL
 )
 }
 \arguments{
+\item{Type}{If specified, limits the output to only indexes of the specified Type,
+either \code{LOCAL} or \code{AGGREGATOR}.
+
+Use this option to discover the aggregator index for your account.}
+
+\item{Regions}{If specified, limits the response to only information about the index in
+the specified list of Amazon Web Services Regions.}
+
 \item{MaxResults}{The maximum number of results that you want included on each page of the
 response. If you do not include this parameter, it defaults to a value
 appropriate to the operation. If additional items exist beyond those
@@ -31,14 +39,6 @@ every operation to ensure that you receive all of the results.}
 indicates that more output is available. Set this parameter to the value
 of the previous call's \code{NextToken} response to indicate where the output
 should continue from. The pagination tokens expire after 24 hours.}
-
-\item{Regions}{If specified, limits the response to only information about the index in
-the specified list of Amazon Web Services Regions.}
-
-\item{Type}{If specified, limits the output to only indexes of the specified Type,
-either \code{LOCAL} or \code{AGGREGATOR}.
-
-Use this option to discover the aggregator index for your account.}
 }
 \description{
 Retrieves a list of all of the indexes in Amazon Web Services Regions that are currently collecting resource information for Amazon Web Services Resource Explorer.

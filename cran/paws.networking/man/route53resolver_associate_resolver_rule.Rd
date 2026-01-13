@@ -12,7 +12,11 @@ list the existing Resolver rules, use
 \code{\link[=route53resolver_list_resolver_rules]{list_resolver_rules}}.}
 
 \item{Name}{A name for the association that you're creating between a Resolver rule
-and a VPC.}
+and a VPC.
+
+The name can be up to 64 characters long and can contain letters (a-z,
+A-Z), numbers (0-9), hyphens (-), underscores (_), and spaces. The name
+cannot consist of only numbers.}
 
 \item{VPCId}{[required] The ID of the VPC that you want to associate the Resolver rule with.}
 }

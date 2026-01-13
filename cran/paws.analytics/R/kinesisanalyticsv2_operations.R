@@ -703,11 +703,10 @@ kinesisanalyticsv2_describe_application <- function(ApplicationName, IncludeAddi
 }
 .kinesisanalyticsv2$operations$describe_application <- kinesisanalyticsv2_describe_application
 
-#' Returns information about a specific operation performed on a Managed
-#' Service for Apache Flink application
+#' Provides a detailed description of a specified application operation
 #'
 #' @description
-#' Returns information about a specific operation performed on a Managed Service for Apache Flink application
+#' Provides a detailed description of a specified application operation. To see a list of all the operations of an application, invoke the [`list_application_operations`][kinesisanalyticsv2_list_application_operations] operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application_operation/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application_operation/) for full documentation.
 #'
@@ -845,11 +844,11 @@ kinesisanalyticsv2_discover_input_schema <- function(ResourceARN = NULL, Service
 }
 .kinesisanalyticsv2$operations$discover_input_schema <- kinesisanalyticsv2_discover_input_schema
 
-#' Lists information about operations performed on a Managed Service for
-#' Apache Flink application
+#' Lists all the operations performed for the specified application such as
+#' UpdateApplication, StartApplication etc
 #'
 #' @description
-#' Lists information about operations performed on a Managed Service for Apache Flink application
+#' Lists all the operations performed for the specified application such as UpdateApplication, StartApplication etc. The response also includes a summary of the operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_application_operations/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_application_operations/) for full documentation.
 #'

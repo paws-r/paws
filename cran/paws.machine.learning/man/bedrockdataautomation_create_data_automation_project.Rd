@@ -8,6 +8,7 @@ bedrockdataautomation_create_data_automation_project(
   projectName,
   projectDescription = NULL,
   projectStage = NULL,
+  projectType = NULL,
   standardOutputConfiguration,
   customOutputConfiguration = NULL,
   overrideConfiguration = NULL,
@@ -22,6 +23,8 @@ bedrockdataautomation_create_data_automation_project(
 \item{projectDescription}{}
 
 \item{projectStage}{}
+
+\item{projectType}{}
 
 \item{standardOutputConfiguration}{[required]}
 

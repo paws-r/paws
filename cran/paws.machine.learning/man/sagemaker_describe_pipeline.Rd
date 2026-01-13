@@ -4,10 +4,12 @@
 \alias{sagemaker_describe_pipeline}
 \title{Describes the details of a pipeline}
 \usage{
-sagemaker_describe_pipeline(PipelineName)
+sagemaker_describe_pipeline(PipelineName, PipelineVersionId = NULL)
 }
 \arguments{
 \item{PipelineName}{[required] The name or Amazon Resource Name (ARN) of the pipeline to describe.}
+
+\item{PipelineVersionId}{The ID of the pipeline version to describe.}
 }
 \description{
 Describes the details of a pipeline.

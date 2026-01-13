@@ -51,7 +51,7 @@ NULL
 #' -   `DELETE*, CANCEL`
 #' 
 #' For information about Amazon WorkDocs API pricing, see [Amazon WorkDocs
-#' Pricing](https://aws.amazon.com/workdocs/pricing/).
+#' Pricing](https://aws.amazon.com/).
 #'
 #' @param
 #' config

@@ -10,6 +10,7 @@ sagemaker_create_model_package(
   ModelPackageName = NULL,
   ModelPackageGroupName = NULL,
   ModelPackageDescription = NULL,
+  ModelPackageRegistrationType = NULL,
   InferenceSpecification = NULL,
   ValidationSpecification = NULL,
   SourceAlgorithmSpecification = NULL,
@@ -46,6 +47,8 @@ This parameter is required for versioned models, and does not apply to
 unversioned models.}
 
 \item{ModelPackageDescription}{A description of the model package.}
+
+\item{ModelPackageRegistrationType}{The package registration type of the model package input.}
 
 \item{InferenceSpecification}{Specifies details about inference jobs that you can run with models
 based on this model package, including the following information:

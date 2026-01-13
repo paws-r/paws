@@ -52,15 +52,8 @@ key ARN, key ID, alias ARN, or alias name for the KMS key. The caller of
 this operation must be authorized to run the following operations. These
 can be set in the Amazon Web Services KMS key policy:
 \itemize{
-\item kms:Encrypt
-\item kms:Decrypt
-\item kms:GenerateDataKey
-\item kms:GenerateDataKeyWithoutPlaintext
-\item kms:ReEncryptFrom
-\item kms:ReEncryptTo
 \item kms:CreateGrant
 \item kms:DescribeKey
-\item kms:RetireGrant
 }}
 
 \item{S3Prefix}{The Amazon S3 bucket prefix to use as the file name and path of the

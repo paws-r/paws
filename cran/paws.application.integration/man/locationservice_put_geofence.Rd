@@ -19,12 +19,14 @@ locationservice_put_geofence(
 \item{GeofenceId}{[required] An identifier for the geofence. For example, \code{ExampleGeofence-1}.}
 
 \item{Geometry}{[required] Contains the details to specify the position of the geofence. Can be a
-polygon, a circle or a polygon encoded in Geobuf format. Including
-multiple selections will return a validation error.
+circle, a polygon, or a multipolygon. \code{Polygon} and \code{MultiPolygon}
+geometries can be defined using their respective parameters, or encoded
+in Geobuf format using the \code{Geobuf} parameter. Including multiple
+geometry types in the same request will return a validation error.
 
-The \href{https://docs.aws.amazon.com/location/latest/APIReference/}{geofence polygon}
-format supports a maximum of 1,000 vertices. The \href{https://docs.aws.amazon.com/location/latest/APIReference/}{Geofence Geobuf}
-format supports a maximum of 100,000 vertices.}
+The geofence \code{Polygon} and \code{MultiPolygon} formats support a maximum of
+1,000 total vertices. The \code{Geobuf} format supports a maximum of 100,000
+vertices.}
 
 \item{GeofenceProperties}{Associates one of more properties with the geofence. A property is a
 key-value pair stored with the geofence and added to any geofence event

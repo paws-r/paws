@@ -24,22 +24,23 @@ rds_restore_db_cluster_to_point_in_time(
   CopyTagsToSnapshot = NULL,
   Domain = NULL,
   DomainIAMRoleName = NULL,
-  ScalingConfiguration = NULL,
-  EngineMode = NULL,
   DBClusterInstanceClass = NULL,
   StorageType = NULL,
   PubliclyAccessible = NULL,
   Iops = NULL,
-  ServerlessV2ScalingConfiguration = NULL,
   NetworkType = NULL,
   SourceDbClusterResourceId = NULL,
+  ServerlessV2ScalingConfiguration = NULL,
+  ScalingConfiguration = NULL,
+  EngineMode = NULL,
   RdsCustomClusterConfiguration = NULL,
   MonitoringInterval = NULL,
   MonitoringRoleArn = NULL,
   EnablePerformanceInsights = NULL,
   PerformanceInsightsKMSKeyId = NULL,
   PerformanceInsightsRetentionPeriod = NULL,
-  EngineLifecycleSupport = NULL
+  EngineLifecycleSupport = NULL,
+  TagSpecifications = NULL
 )
 }
 \arguments{
@@ -257,22 +258,6 @@ Directory Service.
 
 Valid for: Aurora DB clusters only}
 
-\item{ScalingConfiguration}{For DB clusters in \code{serverless} DB engine mode, the scaling properties
-of the DB cluster.
-
-Valid for: Aurora DB clusters only}
-
-\item{EngineMode}{The engine mode of the new cluster. Specify \code{provisioned} or
-\code{serverless}, depending on the type of the cluster you are creating. You
-can create an Aurora Serverless v1 clone from a provisioned cluster, or
-a provisioned clone from an Aurora Serverless v1 cluster. To create a
-clone that is an Aurora Serverless v1 cluster, the original cluster must
-be an Aurora Serverless v1 cluster or an encrypted provisioned cluster.
-To create a full copy that is an Aurora Serverless v1 cluster, specify
-the engine mode \code{serverless}.
-
-Valid for: Aurora DB clusters only}
-
 \item{DBClusterInstanceClass}{The compute and memory capacity of the each DB instance in the Multi-AZ
 DB cluster, for example db.m6gd.xlarge. Not all DB instance classes are
 available in all Amazon Web Services Regions, or for all database
@@ -343,8 +328,6 @@ for the DB instance.
 
 Valid for: Multi-AZ DB clusters only}
 
-\item{ServerlessV2ScalingConfiguration}{}
-
 \item{NetworkType}{The network type of the DB cluster.
 
 Valid Values:
@@ -363,6 +346,24 @@ in the \emph{Amazon Aurora User Guide.}
 Valid for: Aurora DB clusters only}
 
 \item{SourceDbClusterResourceId}{The resource ID of the source DB cluster from which to restore.}
+
+\item{ServerlessV2ScalingConfiguration}{}
+
+\item{ScalingConfiguration}{For DB clusters in \code{serverless} DB engine mode, the scaling properties
+of the DB cluster.
+
+Valid for: Aurora DB clusters only}
+
+\item{EngineMode}{The engine mode of the new cluster. Specify \code{provisioned} or
+\code{serverless}, depending on the type of the cluster you are creating. You
+can create an Aurora Serverless v1 clone from a provisioned cluster, or
+a provisioned clone from an Aurora Serverless v1 cluster. To create a
+clone that is an Aurora Serverless v1 cluster, the original cluster must
+be an Aurora Serverless v1 cluster or an encrypted provisioned cluster.
+To create a full copy that is an Aurora Serverless v1 cluster, specify
+the engine mode \code{serverless}.
+
+Valid for: Aurora DB clusters only}
 
 \item{RdsCustomClusterConfiguration}{Reserved for future use.}
 
@@ -429,9 +430,9 @@ major engine version on your DB cluster past the end of standard support
 for that engine version. For more information, see the following
 sections:
 \itemize{
-\item Amazon Aurora - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+\item Amazon Aurora - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon Aurora}
 in the \emph{Amazon Aurora User Guide}
-\item Amazon RDS - \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+\item Amazon RDS - \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon RDS}
 in the \emph{Amazon RDS User Guide}
 }
 
@@ -441,6 +442,13 @@ Valid Values:
 \code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
 
 Default: \code{open-source-rds-extended-support}}
+
+\item{TagSpecifications}{Tags to assign to resources associated with the DB cluster.
+
+Valid Values:
+\itemize{
+\item \code{cluster-auto-backup} - The DB cluster's automated backup.
+}}
 }
 \description{
 Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group. Unless the \code{RestoreType} is set to \code{copy-on-write}, the restore may occur in a different Availability Zone (AZ) from the original DB cluster. The AZ where RDS restores the DB cluster depends on the AZs in the specified subnet group.

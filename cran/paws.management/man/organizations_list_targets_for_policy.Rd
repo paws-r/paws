@@ -12,8 +12,7 @@ organizations_list_targets_for_policy(
 )
 }
 \arguments{
-\item{PolicyId}{[required] The unique identifier (ID) of the policy whose attachments you want to
-know.
+\item{PolicyId}{[required] ID for the policy whose attachments you want to know.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lowercase or uppercase
@@ -25,16 +24,9 @@ indicates that more output is available. Set this parameter to the value
 of the previous call's \code{NextToken} response to indicate where the output
 should continue from.}
 
-\item{MaxResults}{The total number of results that you want included on each page of the
-response. If you do not include this parameter, it defaults to a value
-that is specific to the operation. If additional items exist beyond the
-maximum you specify, the \code{NextToken} response element is present and has
-a value (is not null). Include that value as the \code{NextToken} request
-parameter in the next call to the operation to get the next part of the
-results. Note that Organizations might return fewer results than the
-maximum even when there are more results available. You should check
-\code{NextToken} after every operation to ensure that you receive all of the
-results.}
+\item{MaxResults}{The maximum number of items to return in the response. If more results
+exist than the specified \code{MaxResults} value, a token is included in the
+response so that you can retrieve the remaining results.}
 }
 \description{
 Lists all the roots, organizational units (OUs), and accounts that the specified policy is attached to.

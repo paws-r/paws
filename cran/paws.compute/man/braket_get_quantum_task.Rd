@@ -4,12 +4,13 @@
 \alias{braket_get_quantum_task}
 \title{Retrieves the specified quantum task}
 \usage{
-braket_get_quantum_task(additionalAttributeNames = NULL, quantumTaskArn)
+braket_get_quantum_task(quantumTaskArn, additionalAttributeNames = NULL)
 }
 \arguments{
-\item{additionalAttributeNames}{A list of attributes to return information for.}
+\item{quantumTaskArn}{[required] The ARN of the quantum task to retrieve.}
 
-\item{quantumTaskArn}{[required] The ARN of the task to retrieve.}
+\item{additionalAttributeNames}{A list of attributes to return additional information for. Only the
+QueueInfo additional attribute name is currently supported.}
 }
 \description{
 Retrieves the specified quantum task.

@@ -5,7 +5,7 @@
 \title{Modifies a setting for an Amazon Aurora global database cluster}
 \usage{
 rds_modify_global_cluster(
-  GlobalClusterIdentifier = NULL,
+  GlobalClusterIdentifier,
   NewGlobalClusterIdentifier = NULL,
   DeletionProtection = NULL,
   EngineVersion = NULL,
@@ -13,7 +13,7 @@ rds_modify_global_cluster(
 )
 }
 \arguments{
-\item{GlobalClusterIdentifier}{The cluster identifier for the global cluster to modify. This parameter
+\item{GlobalClusterIdentifier}{[required] The cluster identifier for the global cluster to modify. This parameter
 isn't case-sensitive.
 
 Constraints:

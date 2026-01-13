@@ -4,12 +4,19 @@
 \alias{emrserverless_cancel_job_run}
 \title{Cancels a job run}
 \usage{
-emrserverless_cancel_job_run(applicationId, jobRunId)
+emrserverless_cancel_job_run(
+  applicationId,
+  jobRunId,
+  shutdownGracePeriodInSeconds = NULL
+)
 }
 \arguments{
 \item{applicationId}{[required] The ID of the application on which the job run will be canceled.}
 
 \item{jobRunId}{[required] The ID of the job run to cancel.}
+
+\item{shutdownGracePeriodInSeconds}{The duration in seconds to wait before forcefully terminating the job
+after cancellation is requested.}
 }
 \description{
 Cancels a job run.

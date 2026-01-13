@@ -13,7 +13,8 @@ codebuild_create_webhook(
   filterGroups = NULL,
   buildType = NULL,
   manualCreation = NULL,
-  scopeConfiguration = NULL
+  scopeConfiguration = NULL,
+  pullRequestBuildPolicy = NULL
 )
 }
 \arguments{
@@ -52,6 +53,11 @@ manually create a webhook within GitHub.
 
 Global or organization webhooks are only available for GitHub and Github
 Enterprise webhooks.}
+
+\item{pullRequestBuildPolicy}{A PullRequestBuildPolicy object that defines comment-based approval
+requirements for triggering builds on pull requests. This policy helps
+control when automated builds are executed based on contributor
+permissions and approval workflows.}
 }
 \description{
 For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables CodeBuild to start rebuilding the source code every time a code change is pushed to the repository.

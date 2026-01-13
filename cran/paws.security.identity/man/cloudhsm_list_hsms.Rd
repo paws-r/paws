@@ -11,7 +11,7 @@ cloudhsm_list_hsms(NextToken = NULL)
 \code{\link[=cloudhsm_list_hsms]{list_hsms}}. Pass null if this is the first call.}
 }
 \description{
-This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the AWS CloudHSM Classic User Guide, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
+This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the AWS CloudHSM Classic User Guide, and the AWS CloudHSM Classic API Reference.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsm_list_hsms/} for full documentation.
 }

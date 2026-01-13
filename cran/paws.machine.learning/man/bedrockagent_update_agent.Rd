@@ -5,38 +5,29 @@
 \title{Updates the configuration of an agent}
 \usage{
 bedrockagent_update_agent(
-  agentCollaboration = NULL,
   agentId,
   agentName,
-  agentResourceRoleArn,
-  customOrchestration = NULL,
-  customerEncryptionKeyArn = NULL,
-  description = NULL,
-  foundationModel,
-  guardrailConfiguration = NULL,
-  idleSessionTTLInSeconds = NULL,
   instruction = NULL,
-  memoryConfiguration = NULL,
+  foundationModel,
+  description = NULL,
   orchestrationType = NULL,
-  promptOverrideConfiguration = NULL
+  customOrchestration = NULL,
+  idleSessionTTLInSeconds = NULL,
+  agentResourceRoleArn,
+  customerEncryptionKeyArn = NULL,
+  promptOverrideConfiguration = NULL,
+  guardrailConfiguration = NULL,
+  memoryConfiguration = NULL,
+  agentCollaboration = NULL
 )
 }
 \arguments{
-\item{agentCollaboration}{The agent's collaboration role.}
-
 \item{agentId}{[required] The unique identifier of the agent.}
 
 \item{agentName}{[required] Specifies a new name for the agent.}
 
-\item{agentResourceRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role with permissions to
-invoke API operations on the agent.}
-
-\item{customOrchestration}{Contains details of the custom orchestration configured for the agent.}
-
-\item{customerEncryptionKeyArn}{The Amazon Resource Name (ARN) of the KMS key with which to encrypt the
-agent.}
-
-\item{description}{Specifies a new description of the agent.}
+\item{instruction}{Specifies new instructions that tell the agent what it should do and how
+it should interact with users.}
 
 \item{foundationModel}{[required] The identifier for the model that you want to be used for orchestration
 by the agent you create.
@@ -64,8 +55,12 @@ from a successful call to
 or from the Imported models page in the Amazon Bedrock console.
 }}
 
-\item{guardrailConfiguration}{The unique Guardrail configuration assigned to the agent when it is
-updated.}
+\item{description}{Specifies a new description of the agent.}
+
+\item{orchestrationType}{Specifies the type of orchestration strategy for the agent. This is set
+to \code{DEFAULT} orchestration type, by default.}
+
+\item{customOrchestration}{Contains details of the custom orchestration configured for the agent.}
 
 \item{idleSessionTTLInSeconds}{The number of seconds for which Amazon Bedrock keeps information about a
 user's conversation with the agent.
@@ -74,16 +69,21 @@ A user interaction remains active for the amount of time specified. If
 no conversation occurs during this time, the session expires and Amazon
 Bedrock deletes any data provided before the timeout.}
 
-\item{instruction}{Specifies new instructions that tell the agent what it should do and how
-it should interact with users.}
+\item{agentResourceRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role with permissions to
+invoke API operations on the agent.}
 
-\item{memoryConfiguration}{Specifies the new memory configuration for the agent.}
-
-\item{orchestrationType}{Specifies the type of orchestration strategy for the agent. This is set
-to \code{DEFAULT} orchestration type, by default.}
+\item{customerEncryptionKeyArn}{The Amazon Resource Name (ARN) of the KMS key with which to encrypt the
+agent.}
 
 \item{promptOverrideConfiguration}{Contains configurations to override prompts in different parts of an
 agent sequence. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html}{Advanced prompts}.}
+
+\item{guardrailConfiguration}{The unique Guardrail configuration assigned to the agent when it is
+updated.}
+
+\item{memoryConfiguration}{Specifies the new memory configuration for the agent.}
+
+\item{agentCollaboration}{The agent's collaboration role.}
 }
 \description{
 Updates the configuration of an agent.

@@ -577,6 +577,9 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' Web Services accounts where you want to run the association. Use this
 #' action to create an association in multiple Regions and multiple
 #' accounts.
+#' 
+#' The `IncludeChildOrganizationUnits` parameter is not supported by State
+#' Manager.
 #' @param ScheduleOffset Number of days to wait after the scheduled day to run an association.
 #' For example, if you specified a cron schedule of
 #' `cron(0 0 ? * THU#2 *)`, you could specify an offset of 3 to run the
@@ -1310,7 +1313,7 @@ ssm_create_association_batch <- function(Entries) {
 #' the document can run on all types of resources. If you don't specify a
 #' value, the document can't run on any resources. For a list of valid
 #' resource types, see [Amazon Web Services resource and property types
-#' reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+#' reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-template-resource-type-ref.html)
 #' in the *CloudFormation User Guide*.
 #' @param Tags Optional metadata that you assign to a resource. Tags enable you to
 #' categorize a resource in different ways, such as by purpose, owner, or
@@ -1630,15 +1633,23 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #'     This type of OpsItem is used for default OpsItems created by
 #'     OpsCenter.
 #' 
+#' -   `/aws/insight`
+#' 
+#'     This type of OpsItem is used by OpsCenter for aggregating and
+#'     reporting on duplicate OpsItems.
+#' 
 #' -   `/aws/changerequest`
 #' 
 #'     This type of OpsItem is used by Change Manager for reviewing and
 #'     approving or rejecting change requests.
 #' 
-#' -   `/aws/insight`
-#' 
-#'     This type of OpsItem is used by OpsCenter for aggregating and
-#'     reporting on duplicate OpsItems.
+#'     Amazon Web Services Systems Manager Change Manager will no longer be
+#'     open to new customers starting November 7, 2025. If you would like
+#'     to use Change Manager, sign up prior to that date. Existing
+#'     customers can continue to use the service as normal. For more
+#'     information, see [Amazon Web Services Systems Manager Change Manager
+#'     availability
+#'     change](https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html).
 #' @param OperationalData Operational data is custom data that provides useful reference details
 #' about the OpsItem. For example, you can specify log files, error
 #' strings, license keys, troubleshooting tips, or other relevant data. You
@@ -1923,10 +1934,19 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
 #' 
 #' **All OSs**: Packages in the rejected patches list, and packages that
 #' include them as dependencies, aren't installed by Patch Manager under
-#' any circumstances. If a package was installed before it was added to the
-#' rejected patches list, or is installed outside of Patch Manager
-#' afterward, it's considered noncompliant with the patch baseline and its
-#' status is reported as `INSTALLED_REJECTED`.
+#' any circumstances.
+#' 
+#' State value assignment for patch compliance:
+#' 
+#' -   If a package was installed before it was added to the rejected
+#'     patches list, or is installed outside of Patch Manager afterward,
+#'     it's considered noncompliant with the patch baseline and its status
+#'     is reported as `INSTALLED_REJECTED`.
+#' 
+#' -   If an update attempts to install a dependency package that is now
+#'     rejected by the baseline, when previous versions of the package were
+#'     not rejected, the package being updated is reported as `MISSING` for
+#'     `SCAN` operations and as `FAILED` for `INSTALL` operations.
 #' @param Description A description of the patch baseline.
 #' @param Sources Information about the patches to use to update the managed nodes,
 #' including target operating systems and source repositories. Applies to
@@ -4132,6 +4152,10 @@ ssm_describe_available_patches <- function(Filters = NULL, MaxResults = NULL, Ne
 #' ssm_describe_document(Name, DocumentVersion, VersionName)
 #'
 #' @param Name &#91;required&#93; The name of the SSM document.
+#' 
+#' If you're calling a shared SSM document from a different Amazon Web
+#' Services account, `Name` is the full Amazon Resource Name (ARN) of the
+#' document.
 #' @param DocumentVersion The document version for which you want information. Can be a specific
 #' version or the default version.
 #' @param VersionName An optional field specifying the version of the artifact associated with
@@ -6133,6 +6157,11 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
 #' the matching values up to that point and a `NextToken`. You can specify
 #' the `NextToken` in a subsequent call to get the next set of results.
 #' 
+#' Parameter names can't contain spaces. The service removes any spaces
+#' specified for the beginning or end of a parameter name. If the specified
+#' name for a parameter contains spaces between characters, the request
+#' fails with a `ValidationException` error.
+#' 
 #' If you change the KMS key alias for the KMS key used to encrypt a
 #' parameter, then you must also update the key alias the parameter uses to
 #' reference KMS. Otherwise,
@@ -6648,7 +6677,8 @@ ssm_describe_patch_properties <- function(OperatingSystem, Property, PatchSet = 
 #'         S3OutputUrl = "string",
 #'         CloudWatchOutputUrl = "string"
 #'       ),
-#'       MaxSessionDuration = "string"
+#'       MaxSessionDuration = "string",
+#'       AccessType = "Standard"|"JustInTime"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -6663,7 +6693,7 @@ ssm_describe_patch_properties <- function(OperatingSystem, Property, PatchSet = 
 #'   NextToken = "string",
 #'   Filters = list(
 #'     list(
-#'       key = "InvokedAfter"|"InvokedBefore"|"Target"|"Owner"|"Status"|"SessionId",
+#'       key = "InvokedAfter"|"InvokedBefore"|"Target"|"Owner"|"Status"|"SessionId"|"AccessType",
 #'       value = "string"
 #'     )
 #'   )
@@ -7447,13 +7477,18 @@ ssm_get_default_patch_baseline <- function(OperatingSystem = NULL) {
 #'
 #' @usage
 #' ssm_get_deployable_patch_snapshot_for_instance(InstanceId, SnapshotId,
-#'   BaselineOverride)
+#'   BaselineOverride, UseS3DualStackEndpoint)
 #'
 #' @param InstanceId &#91;required&#93; The ID of the managed node for which the appropriate patch snapshot
 #' should be retrieved.
 #' @param SnapshotId &#91;required&#93; The snapshot ID provided by the user when running
 #' `AWS-RunPatchBaseline`.
 #' @param BaselineOverride Defines the basic information about a patch baseline override.
+#' @param UseS3DualStackEndpoint Specifies whether to use S3 dualstack endpoints for the patch snapshot
+#' download URL. Set to `true` to receive a presigned URL that supports
+#' both IPv4 and IPv6 connectivity. Set to `false` to use standard
+#' IPv4-only endpoints. Default is `false`. This parameter is required for
+#' managed nodes in IPv6-only environments.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7522,7 +7557,8 @@ ssm_get_default_patch_baseline <- function(OperatingSystem = NULL) {
 #'       )
 #'     ),
 #'     AvailableSecurityUpdatesComplianceStatus = "COMPLIANT"|"NON_COMPLIANT"
-#'   )
+#'   ),
+#'   UseS3DualStackEndpoint = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -7531,7 +7567,7 @@ ssm_get_default_patch_baseline <- function(OperatingSystem = NULL) {
 #' @rdname ssm_get_deployable_patch_snapshot_for_instance
 #'
 #' @aliases ssm_get_deployable_patch_snapshot_for_instance
-ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotId, BaselineOverride = NULL) {
+ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotId, BaselineOverride = NULL, UseS3DualStackEndpoint = NULL) {
   op <- new_operation(
     name = "GetDeployablePatchSnapshotForInstance",
     http_method = "POST",
@@ -7540,7 +7576,7 @@ ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotI
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssm$get_deployable_patch_snapshot_for_instance_input(InstanceId = InstanceId, SnapshotId = SnapshotId, BaselineOverride = BaselineOverride)
+  input <- .ssm$get_deployable_patch_snapshot_for_instance_input(InstanceId = InstanceId, SnapshotId = SnapshotId, BaselineOverride = BaselineOverride, UseS3DualStackEndpoint = UseS3DualStackEndpoint)
   output <- .ssm$get_deployable_patch_snapshot_for_instance_output()
   config <- get_config()
   svc <- .ssm$service(config, op)
@@ -8641,6 +8677,11 @@ ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = N
 #' Get information about a single parameter by specifying the parameter
 #' name.
 #' 
+#' Parameter names can't contain spaces. The service removes any spaces
+#' specified for the beginning or end of a parameter name. If the specified
+#' name for a parameter contains spaces between characters, the request
+#' fails with a `ValidationException` error.
+#' 
 #' To get information about more than one parameter at a time, use the
 #' [`get_parameters`][ssm_get_parameters] operation.
 #'
@@ -8716,6 +8757,11 @@ ssm_get_parameter <- function(Name, WithDecryption = NULL) {
 #'
 #' @description
 #' Retrieves the history of all changes to a parameter.
+#' 
+#' Parameter names can't contain spaces. The service removes any spaces
+#' specified for the beginning or end of a parameter name. If the specified
+#' name for a parameter contains spaces between characters, the request
+#' fails with a `ValidationException` error.
 #' 
 #' If you change the KMS key alias for the KMS key used to encrypt a
 #' parameter, then you must also update the key alias the parameter uses to
@@ -8815,6 +8861,11 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
 #' 
 #' To get information about a single parameter, you can use the
 #' [`get_parameter`][ssm_get_parameter] operation instead.
+#' 
+#' Parameter names can't contain spaces. The service removes any spaces
+#' specified for the beginning or end of a parameter name. If the specified
+#' name for a parameter contains spaces between characters, the request
+#' fails with a `ValidationException` error.
 #'
 #' @usage
 #' ssm_get_parameters(Names, WithDecryption)
@@ -8909,6 +8960,11 @@ ssm_get_parameters <- function(Names, WithDecryption = NULL) {
 #' limit while processing the results, it stops the operation and returns
 #' the matching values up to that point and a `NextToken`. You can specify
 #' the `NextToken` in a subsequent call to get the next set of results.
+#' 
+#' Parameter names can't contain spaces. The service removes any spaces
+#' specified for the beginning or end of a parameter name. If the specified
+#' name for a parameter contains spaces between characters, the request
+#' fails with a `ValidationException` error.
 #'
 #' @usage
 #' ssm_get_parameters_by_path(Path, Recursive, ParameterFilters,
@@ -9381,6 +9437,11 @@ ssm_get_service_setting <- function(SettingId) {
 #'     sensitive). If a label fails to meet these requirements, then the
 #'     label isn't associated with a parameter and the system displays it
 #'     in the list of InvalidLabels.
+#' 
+#' -   Parameter names can't contain spaces. The service removes any spaces
+#'     specified for the beginning or end of a parameter name. If the
+#'     specified name for a parameter contains spaces between characters,
+#'     the request fails with a `ValidationException` error.
 #'
 #' @usage
 #' ssm_label_parameter_version(Name, ParameterVersion, Labels)
@@ -10153,10 +10214,17 @@ ssm_list_compliance_summaries <- function(Filters = NULL, NextToken = NULL, MaxR
 }
 .ssm$operations$list_compliance_summaries <- ssm_list_compliance_summaries
 
-#' Information about approval reviews for a version of a change template in
-#' Change Manager
+#' Amazon Web Services Systems Manager Change Manager will no longer be
+#' open to new customers starting November 7, 2025
 #'
 #' @description
+#' Amazon Web Services Systems Manager Change Manager will no longer be
+#' open to new customers starting November 7, 2025. If you would like to
+#' use Change Manager, sign up prior to that date. Existing customers can
+#' continue to use the service as normal. For more information, see [Amazon
+#' Web Services Systems Manager Change Manager availability
+#' change](https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html).
+#' 
 #' Information about approval reviews for a version of a change template in
 #' Change Manager.
 #'
@@ -11338,6 +11406,14 @@ ssm_modify_document_permission <- function(Name, PermissionType, AccountIdsToAdd
 #' -   ExecutionTime. The time the patch, association, or custom compliance
 #'     item was applied to the managed node.
 #' 
+#'     For State Manager associations, this represents the time when
+#'     compliance status was captured by the Systems Manager service during
+#'     its internal compliance aggregation workflow, not necessarily when
+#'     the association was executed on the managed node. State Manager
+#'     updates compliance information for all associations on an instance
+#'     whenever any association executes, which may result in multiple
+#'     associations showing the same execution time.
+#' 
 #' -   Id: The patch, association, or custom compliance ID.
 #' 
 #' -   Title: A title.
@@ -11560,7 +11636,10 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #'     hierarchies in parameter names. For example:
 #'     `/Dev/Production/East/Project-ABC/MyParameter`
 #' 
-#' -   A parameter name can't include spaces.
+#' -   Parameter names can't contain spaces. The service removes any spaces
+#'     specified for the beginning or end of a parameter name. If the
+#'     specified name for a parameter contains spaces between characters,
+#'     the request fails with a `ValidationException` error.
 #' 
 #' -   Parameter hierarchies are limited to a maximum depth of fifteen
 #'     levels.
@@ -13247,9 +13326,17 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 }
 .ssm$operations$start_automation_execution <- ssm_start_automation_execution
 
-#' Creates a change request for Change Manager
+#' Amazon Web Services Systems Manager Change Manager will no longer be
+#' open to new customers starting November 7, 2025
 #'
 #' @description
+#' Amazon Web Services Systems Manager Change Manager will no longer be
+#' open to new customers starting November 7, 2025. If you would like to
+#' use Change Manager, sign up prior to that date. Existing customers can
+#' continue to use the service as normal. For more information, see [Amazon
+#' Web Services Systems Manager Change Manager availability
+#' change](https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html).
+#' 
 #' Creates a change request for Change Manager. The Automation runbooks
 #' specified in the change request run only after all required approvals
 #' for the change request have been received.
@@ -13754,6 +13841,11 @@ ssm_terminate_session <- function(SessionId) {
 #'
 #' @description
 #' Remove a label or labels from a parameter.
+#' 
+#' Parameter names can't contain spaces. The service removes any spaces
+#' specified for the beginning or end of a parameter name. If the specified
+#' name for a parameter contains spaces between characters, the request
+#' fails with a `ValidationException` error.
 #'
 #' @usage
 #' ssm_unlabel_parameter_version(Name, ParameterVersion, Labels)
@@ -13977,6 +14069,9 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' Web Services accounts where you want to run the association. Use this
 #' action to update an association in multiple Regions and multiple
 #' accounts.
+#' 
+#' The `IncludeChildOrganizationUnits` parameter is not supported by State
+#' Manager.
 #' @param ScheduleOffset Number of days to wait after the scheduled day to run an association.
 #' For example, if you specified a cron schedule of
 #' `cron(0 0 ? * THU#2 *)`, you could specify an offset of 3 to run the
@@ -14662,10 +14757,17 @@ ssm_update_document_default_version <- function(Name, DocumentVersion) {
 }
 .ssm$operations$update_document_default_version <- ssm_update_document_default_version
 
-#' Updates information related to approval reviews for a specific version
-#' of a change template in Change Manager
+#' Amazon Web Services Systems Manager Change Manager will no longer be
+#' open to new customers starting November 7, 2025
 #'
 #' @description
+#' Amazon Web Services Systems Manager Change Manager will no longer be
+#' open to new customers starting November 7, 2025. If you would like to
+#' use Change Manager, sign up prior to that date. Existing customers can
+#' continue to use the service as normal. For more information, see [Amazon
+#' Web Services Systems Manager Change Manager availability
+#' change](https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html).
+#' 
 #' Updates information related to approval reviews for a specific version
 #' of a change template in Change Manager.
 #'
@@ -15652,10 +15754,19 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' 
 #' **All OSs**: Packages in the rejected patches list, and packages that
 #' include them as dependencies, aren't installed by Patch Manager under
-#' any circumstances. If a package was installed before it was added to the
-#' rejected patches list, or is installed outside of Patch Manager
-#' afterward, it's considered noncompliant with the patch baseline and its
-#' status is reported as `INSTALLED_REJECTED`.
+#' any circumstances.
+#' 
+#' State value assignment for patch compliance:
+#' 
+#' -   If a package was installed before it was added to the rejected
+#'     patches list, or is installed outside of Patch Manager afterward,
+#'     it's considered noncompliant with the patch baseline and its status
+#'     is reported as `INSTALLED_REJECTED`.
+#' 
+#' -   If an update attempts to install a dependency package that is now
+#'     rejected by the baseline, when previous versions of the package were
+#'     not rejected, the package being updated is reported as `MISSING` for
+#'     `SCAN` operations and as `FAILED` for `INSTALL` operations.
 #' @param Description A description of the patch baseline.
 #' @param Sources Information about the patches to use to update the managed nodes,
 #' including target operating systems and source repositories. Applies to

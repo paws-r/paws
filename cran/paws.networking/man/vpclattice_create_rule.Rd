@@ -5,17 +5,31 @@
 \title{Creates a listener rule}
 \usage{
 vpclattice_create_rule(
+  serviceIdentifier,
+  listenerIdentifier,
+  name,
+  match,
+  priority,
   action,
   clientToken = NULL,
-  listenerIdentifier,
-  match,
-  name,
-  priority,
-  serviceIdentifier,
   tags = NULL
 )
 }
 \arguments{
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
+
+\item{listenerIdentifier}{[required] The ID or ARN of the listener.}
+
+\item{name}{[required] The name of the rule. The name must be unique within the listener. The
+valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen
+as the first or last character, or immediately after another hyphen.}
+
+\item{match}{[required] The rule match.}
+
+\item{priority}{[required] The priority assigned to the rule. Each rule for a specific listener
+must have a unique priority. The lower the priority number the higher
+the priority.}
+
 \item{action}{[required] The action for the default rule.}
 
 \item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
@@ -23,20 +37,6 @@ idempotency of the request. If you retry a request that completed
 successfully using the same client token and parameters, the retry
 succeeds without performing any actions. If the parameters aren't
 identical, the retry fails.}
-
-\item{listenerIdentifier}{[required] The ID or ARN of the listener.}
-
-\item{match}{[required] The rule match.}
-
-\item{name}{[required] The name of the rule. The name must be unique within the listener. The
-valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen
-as the first or last character, or immediately after another hyphen.}
-
-\item{priority}{[required] The priority assigned to the rule. Each rule for a specific listener
-must have a unique priority. The lower the priority number the higher
-the priority.}
-
-\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 
 \item{tags}{The tags for the rule.}
 }

@@ -3,6 +3,40 @@
 #' @include billing_service.R
 NULL
 
+#' Associates one or more source billing views with an existing billing
+#' view
+#'
+#' @description
+#' Associates one or more source billing views with an existing billing view. This allows creating aggregate billing views that combine data from multiple sources.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_associate_source_views/](https://www.paws-r-sdk.com/docs/billing_associate_source_views/) for full documentation.
+#'
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the billing view to associate source
+#' views with.
+#' @param sourceViews &#91;required&#93; A list of ARNs of the source billing views to associate.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_associate_source_views
+billing_associate_source_views <- function(arn, sourceViews) {
+  op <- new_operation(
+    name = "AssociateSourceViews",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$associate_source_views_input(arn = arn, sourceViews = sourceViews)
+  output <- .billing$associate_source_views_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$associate_source_views <- billing_associate_source_views
+
 #' Creates a billing view with the specified billing view attributes
 #'
 #' @description
@@ -15,7 +49,7 @@ NULL
 #' @param sourceViews &#91;required&#93; A list of billing views used as the data source for the custom billing
 #' view.
 #' @param dataFilterExpression See
-#' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html).
+#' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_Expression.html).
 #' Billing view only supports `LINKED_ACCOUNT` and `Tags`.
 #' @param clientToken A unique, case-sensitive identifier you specify to ensure idempotency of
 #' the request. Idempotency ensures that an API request completes no more
@@ -56,11 +90,14 @@ billing_create_billing_view <- function(name, description = NULL, sourceViews, d
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) that can be used to uniquely identify the
 #' billing view.
+#' @param force If set to true, forces deletion of the billing view even if it has
+#' derived resources (e.g. other billing views or budgets). Use with
+#' caution as this may break dependent resources.
 #'
 #' @keywords internal
 #'
 #' @rdname billing_delete_billing_view
-billing_delete_billing_view <- function(arn) {
+billing_delete_billing_view <- function(arn, force = NULL) {
   op <- new_operation(
     name = "DeleteBillingView",
     http_method = "POST",
@@ -69,7 +106,7 @@ billing_delete_billing_view <- function(arn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .billing$delete_billing_view_input(arn = arn)
+  input <- .billing$delete_billing_view_input(arn = arn, force = force)
   output <- .billing$delete_billing_view_output()
   config <- get_config()
   svc <- .billing$service(config, op)
@@ -78,6 +115,40 @@ billing_delete_billing_view <- function(arn) {
   return(response)
 }
 .billing$operations$delete_billing_view <- billing_delete_billing_view
+
+#' Removes the association between one or more source billing views and an
+#' existing billing view
+#'
+#' @description
+#' Removes the association between one or more source billing views and an existing billing view. This allows modifying the composition of aggregate billing views.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_disassociate_source_views/](https://www.paws-r-sdk.com/docs/billing_disassociate_source_views/) for full documentation.
+#'
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the billing view to disassociate
+#' source views from.
+#' @param sourceViews &#91;required&#93; A list of ARNs of the source billing views to disassociate.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_disassociate_source_views
+billing_disassociate_source_views <- function(arn, sourceViews) {
+  op <- new_operation(
+    name = "DisassociateSourceViews",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$disassociate_source_views_input(arn = arn, sourceViews = sourceViews)
+  output <- .billing$disassociate_source_views_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$disassociate_source_views <- billing_disassociate_source_views
 
 #' Returns the metadata associated to the specified billing view ARN
 #'
@@ -158,7 +229,12 @@ billing_get_resource_policy <- function(resourceArn) {
 #' @param arns The Amazon Resource Name (ARN) that can be used to uniquely identify the
 #' billing view.
 #' @param billingViewTypes The type of billing view.
+#' @param names Filters the list of billing views by name. You can specify search
+#' criteria to match billing view names based on the search option
+#' provided.
 #' @param ownerAccountId The list of owners of the billing view.
+#' @param sourceAccountId Filters the results to include only billing views that use the specified
+#' account as a source.
 #' @param maxResults The maximum number of billing views to retrieve. Default is 100.
 #' @param nextToken The pagination token that is used on subsequent calls to list billing
 #' views.
@@ -166,7 +242,7 @@ billing_get_resource_policy <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname billing_list_billing_views
-billing_list_billing_views <- function(activeTimeRange = NULL, arns = NULL, billingViewTypes = NULL, ownerAccountId = NULL, maxResults = NULL, nextToken = NULL) {
+billing_list_billing_views <- function(activeTimeRange = NULL, arns = NULL, billingViewTypes = NULL, names = NULL, ownerAccountId = NULL, sourceAccountId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListBillingViews",
     http_method = "POST",
@@ -175,7 +251,7 @@ billing_list_billing_views <- function(activeTimeRange = NULL, arns = NULL, bill
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "billingViews"),
     stream_api = FALSE
   )
-  input <- .billing$list_billing_views_input(activeTimeRange = activeTimeRange, arns = arns, billingViewTypes = billingViewTypes, ownerAccountId = ownerAccountId, maxResults = maxResults, nextToken = nextToken)
+  input <- .billing$list_billing_views_input(activeTimeRange = activeTimeRange, arns = arns, billingViewTypes = billingViewTypes, names = names, ownerAccountId = ownerAccountId, sourceAccountId = sourceAccountId, maxResults = maxResults, nextToken = nextToken)
   output <- .billing$list_billing_views_output()
   config <- get_config()
   svc <- .billing$service(config, op)
@@ -329,7 +405,7 @@ billing_untag_resource <- function(resourceArn, resourceTagKeys) {
 #' @param name The name of the billing view.
 #' @param description The description of the billing view.
 #' @param dataFilterExpression See
-#' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html).
+#' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_Expression.html).
 #' Billing view only supports `LINKED_ACCOUNT` and `Tags`.
 #'
 #' @keywords internal

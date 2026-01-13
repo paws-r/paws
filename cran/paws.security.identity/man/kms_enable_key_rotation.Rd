@@ -12,8 +12,9 @@ kms_enable_key_rotation(KeyId, RotationPeriodInDays = NULL)
 rotation of \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{asymmetric KMS keys},
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html}{HMAC KMS keys},
 KMS keys with \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material},
-or KMS keys in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{custom key store}. To
-enable or disable automatic rotation of a set of related \href{https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html#multi-region-rotate}{multi-Region keys},
+or KMS keys in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store}.
+To enable or disable automatic rotation of a set of related
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#multi-region-rotate}{multi-Region keys},
 set the property on the primary key.
 
 Specify the key ID or key ARN of the KMS key.
@@ -41,7 +42,7 @@ condition key to further constrain the values that principals can
 specify in the \code{RotationPeriodInDays} parameter.}
 }
 \description{
-Enables \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-enable-disable}{automatic rotation of the key material} of the specified symmetric encryption KMS key.
+Enables \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{automatic rotation of the key material} of the specified symmetric encryption KMS key.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_enable_key_rotation/} for full documentation.
 }

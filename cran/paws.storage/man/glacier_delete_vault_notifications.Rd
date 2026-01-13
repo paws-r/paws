@@ -9,14 +9,14 @@ glacier_delete_vault_notifications(accountId, vaultName)
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
 vault. You can either specify an AWS account ID or optionally a single
-'\code{-}' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+'\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID
 associated with the credentials used to sign the request. If you use an
 account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
 \description{
-This operation deletes the notification configuration set for a vault. The operation is eventually consistent; that is, it might take some time for Amazon S3 Glacier to completely disable the notifications and you might still receive some notifications for a short time after you send the delete request.
+This operation deletes the notification configuration set for a vault. The operation is eventually consistent; that is, it might take some time for Amazon Glacier to completely disable the notifications and you might still receive some notifications for a short time after you send the delete request.
 
 See \url{https://www.paws-r-sdk.com/docs/glacier_delete_vault_notifications/} for full documentation.
 }

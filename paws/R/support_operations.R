@@ -235,7 +235,7 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' case correspondence. Amazon Web Services Support identifies the account
 #' that creates the case when you specify your Amazon Web Services
 #' credentials in an HTTP POST method or use the [Amazon Web Services
-#' SDKs](https://aws.amazon.com/developer/tools/).
+#' SDKs](https://builder.aws.com/build/tools).
 #' @param language The language in which Amazon Web Services Support handles the case.
 #' Amazon Web Services Support currently supports Chinese (“zh”), English
 #' ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO

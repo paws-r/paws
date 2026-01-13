@@ -5,18 +5,18 @@
 \title{Lists the targets for the target group}
 \usage{
 vpclattice_list_targets(
+  targetGroupIdentifier,
   maxResults = NULL,
   nextToken = NULL,
-  targetGroupIdentifier,
   targets = NULL
 )
 }
 \arguments{
+\item{targetGroupIdentifier}{[required] The ID or ARN of the target group.}
+
 \item{maxResults}{The maximum number of results to return.}
 
 \item{nextToken}{A pagination token for the next page of results.}
-
-\item{targetGroupIdentifier}{[required] The ID or ARN of the target group.}
 
 \item{targets}{The targets.}
 }

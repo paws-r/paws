@@ -46,7 +46,7 @@ Load Balancer or a Network Load Balancer.}
 set. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html}{Service discovery}.}
 
 \item{launchType}{The launch type that new tasks in the task set uses. For more
-information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS launch types}
+information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-configuration.html}{Amazon ECS launch types}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 If a \code{launchType} is specified, the \code{capacityProviderStrategy} parameter

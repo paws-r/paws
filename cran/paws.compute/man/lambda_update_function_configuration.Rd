@@ -23,7 +23,9 @@ lambda_update_function_configuration(
   ImageConfig = NULL,
   EphemeralStorage = NULL,
   SnapStart = NULL,
-  LoggingConfig = NULL
+  LoggingConfig = NULL,
+  CapacityProviderConfig = NULL,
+  DurableConfig = NULL
 )
 }
 \arguments{
@@ -127,6 +129,12 @@ information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-funct
 setting.}
 
 \item{LoggingConfig}{The function's Amazon CloudWatch Logs configuration settings.}
+
+\item{CapacityProviderConfig}{Configuration for the capacity provider that manages compute resources
+for Lambda functions.}
+
+\item{DurableConfig}{Configuration settings for durable functions. Allows updating execution
+timeout and retention period for functions with durability enabled.}
 }
 \description{
 Modify the version-specific settings of a Lambda function.

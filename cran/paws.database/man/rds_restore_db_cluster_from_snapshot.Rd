@@ -31,15 +31,16 @@ rds_restore_db_cluster_from_snapshot(
   StorageType = NULL,
   Iops = NULL,
   PubliclyAccessible = NULL,
-  ServerlessV2ScalingConfiguration = NULL,
   NetworkType = NULL,
+  ServerlessV2ScalingConfiguration = NULL,
   RdsCustomClusterConfiguration = NULL,
   MonitoringInterval = NULL,
   MonitoringRoleArn = NULL,
   EnablePerformanceInsights = NULL,
   PerformanceInsightsKMSKeyId = NULL,
   PerformanceInsightsRetentionPeriod = NULL,
-  EngineLifecycleSupport = NULL
+  EngineLifecycleSupport = NULL,
+  TagSpecifications = NULL
 )
 }
 \arguments{
@@ -364,8 +365,6 @@ attached to it, the DB cluster is public.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{ServerlessV2ScalingConfiguration}{}
-
 \item{NetworkType}{The network type of the DB cluster.
 
 Valid Values:
@@ -382,6 +381,8 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Aur
 in the \emph{Amazon Aurora User Guide.}
 
 Valid for: Aurora DB clusters only}
+
+\item{ServerlessV2ScalingConfiguration}{}
 
 \item{RdsCustomClusterConfiguration}{Reserved for future use.}
 
@@ -448,9 +449,9 @@ major engine version on your DB cluster past the end of standard support
 for that engine version. For more information, see the following
 sections:
 \itemize{
-\item Amazon Aurora - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+\item Amazon Aurora - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon Aurora}
 in the \emph{Amazon Aurora User Guide}
-\item Amazon RDS - \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+\item Amazon RDS - \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon RDS}
 in the \emph{Amazon RDS User Guide}
 }
 
@@ -460,6 +461,13 @@ Valid Values:
 \code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
 
 Default: \code{open-source-rds-extended-support}}
+
+\item{TagSpecifications}{Tags to assign to resources associated with the DB cluster.
+
+Valid Values:
+\itemize{
+\item \code{cluster-auto-backup} - The DB cluster's automated backup.
+}}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.

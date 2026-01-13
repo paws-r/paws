@@ -7,8 +7,8 @@
 organizations_describe_organizational_unit(OrganizationalUnitId)
 }
 \arguments{
-\item{OrganizationalUnitId}{[required] The unique identifier (ID) of the organizational unit that you want
-details about. You can get the ID from the
+\item{OrganizationalUnitId}{[required] ID for the organizational unit that you want details about. You can get
+the ID from the
 \code{\link[=organizations_list_organizational_units_for_parent]{list_organizational_units_for_parent}}
 operation.
 

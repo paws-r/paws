@@ -2,8 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_calculate_route}
 \alias{locationservice_calculate_route}
-\title{Calculates a route given the following required parameters:
-DeparturePosition and DestinationPosition}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_calculate_route(
   CalculatorName,
@@ -33,9 +32,10 @@ format: \verb{[longitude, latitude]}.
 }
 
 If you specify a departure that's not located on a road, Amazon Location
-\href{https://docs.aws.amazon.com/location/latest/developerguide/}{moves the position to the nearest road}. If
-Esri is the provider for your route calculator, specifying a route that
-is longer than 400 km returns a \verb{400 RoutesValidationException} error.
+\href{https://docs.aws.amazon.com/location/previous/developerguide/snap-to-nearby-road.html}{moves the position to the nearest road}.
+If Esri is the provider for your route calculator, specifying a route
+that is longer than 400 km returns a \verb{400 RoutesValidationException}
+error.
 
 Valid Values: \verb{[-180 to 180,-90 to 90]}}
 
@@ -46,7 +46,7 @@ format: \verb{[longitude, latitude]}.
 }
 
 If you specify a destination that's not located on a road, Amazon
-Location \href{https://docs.aws.amazon.com/location/latest/developerguide/}{moves the position to the nearest road}.
+Location \href{https://docs.aws.amazon.com/location/previous/developerguide/snap-to-nearby-road.html}{moves the position to the nearest road}.
 
 Valid Values: \verb{[-180 to 180,-90 to 90]}}
 
@@ -59,7 +59,7 @@ route follows the order that the waypoint positions are given
 }
 
 If you specify a waypoint position that's not located on a road, Amazon
-Location \href{https://docs.aws.amazon.com/location/latest/developerguide/}{moves the position to the nearest road}.
+Location \href{https://docs.aws.amazon.com/location/previous/developerguide/snap-to-nearby-road.html}{moves the position to the nearest road}.
 
 Specifying more than 23 waypoints returns a \verb{400 ValidationException}
 error.
@@ -82,7 +82,7 @@ provider, and only within Southeast Asia.
 
 For more details on the using Grab for routing, including areas of
 coverage, see
-\href{https://docs.aws.amazon.com/location/latest/developerguide/}{GrabMaps}
+\href{https://docs.aws.amazon.com/location/previous/developerguide/grab.html}{GrabMaps}
 in the \emph{Amazon Location Service Developer Guide}.
 
 The \code{TravelMode} you specify also determines how you specify route
@@ -141,11 +141,11 @@ ArrivalTime is not supported Esri.}
 
 \item{OptimizeFor}{Specifies the distance to optimize for when calculating a route.}
 
-\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html}{API key}
 to authorize the request.}
 }
 \description{
-\href{https://docs.aws.amazon.com/location/latest/developerguide/}{Calculates a route} given the following required parameters: \code{DeparturePosition} and \code{DestinationPosition}. Requires that you first \href{https://docs.aws.amazon.com/location/latest/APIReference/}{create a route calculator resource}.
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to \code{CalculateRoutes} or \code{CalculateIsolines} unless you require Grab data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_calculate_route/} for full documentation.
 }

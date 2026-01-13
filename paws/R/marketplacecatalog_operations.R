@@ -472,8 +472,8 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' @param Catalog &#91;required&#93; The catalog related to the request. Fixed value: `AWSMarketplace`
 #' @param EntityType &#91;required&#93; The type of entities to retrieve. Valid values are: `AmiProduct`,
 #' `ContainerProduct`, `DataProduct`, `SaaSProduct`, `ProcurementPolicy`,
-#' `Experience`, `Audience`, `BrandingSettings`, `Offer`, `Seller`,
-#' `ResaleAuthorization`.
+#' `Experience`, `Audience`, `BrandingSettings`, `Offer`, `OfferSet`,
+#' `Seller`, `ResaleAuthorization`, `Solution`.
 #' @param FilterList An array of filter objects. Each filter object contains two attributes,
 #' `filterName` and `filterValues`.
 #' @param Sort An object that contains two attributes, `SortBy` and `SortOrder`.
@@ -535,7 +535,8 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'         State = "Draft"|"Released",
 #'         Targeting = list(
 #'           "BuyerAccounts"|"ParticipatingPrograms"|"CountryCodes"|"None"
-#'         )
+#'         ),
+#'         OfferSetId = "string"
 #'       ),
 #'       ResaleAuthorizationSummary = list(
 #'         Name = "string",
@@ -549,6 +550,19 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'         OfferExtendedStatus = "string",
 #'         CreatedDate = "string",
 #'         AvailabilityEndDate = "string"
+#'       ),
+#'       MachineLearningProductSummary = list(
+#'         ProductTitle = "string",
+#'         Visibility = "Limited"|"Public"|"Restricted"|"Draft"
+#'       ),
+#'       OfferSetSummary = list(
+#'         Name = "string",
+#'         State = "Draft"|"Released",
+#'         ReleaseDate = "string",
+#'         AssociatedOfferIds = list(
+#'           "string"
+#'         ),
+#'         SolutionId = "string"
 #'       )
 #'     )
 #'   ),
@@ -701,6 +715,11 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'           AfterValue = "string",
 #'           BeforeValue = "string"
 #'         )
+#'       ),
+#'       OfferSetId = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
 #'       )
 #'     ),
 #'     ContainerProductFilters = list(
@@ -809,6 +828,69 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'           BeforeValue = "string"
 #'         )
 #'       )
+#'     ),
+#'     MachineLearningProductFilters = list(
+#'       EntityId = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       LastModifiedDate = list(
+#'         DateRange = list(
+#'           AfterValue = "string",
+#'           BeforeValue = "string"
+#'         )
+#'       ),
+#'       ProductTitle = list(
+#'         ValueList = list(
+#'           "string"
+#'         ),
+#'         WildCardValue = "string"
+#'       ),
+#'       Visibility = list(
+#'         ValueList = list(
+#'           "Limited"|"Public"|"Restricted"|"Draft"
+#'         )
+#'       )
+#'     ),
+#'     OfferSetFilters = list(
+#'       EntityId = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Name = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       State = list(
+#'         ValueList = list(
+#'           "Draft"|"Released"
+#'         )
+#'       ),
+#'       ReleaseDate = list(
+#'         DateRange = list(
+#'           AfterValue = "string",
+#'           BeforeValue = "string"
+#'         )
+#'       ),
+#'       AssociatedOfferIds = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       SolutionId = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       LastModifiedDate = list(
+#'         DateRange = list(
+#'           AfterValue = "string",
+#'           BeforeValue = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   EntityTypeSort = list(
@@ -817,7 +899,7 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'       SortOrder = "ASCENDING"|"DESCENDING"
 #'     ),
 #'     SaaSProductSort = list(
-#'       SortBy = "EntityId"|"ProductTitle"|"Visibility"|"LastModifiedDate",
+#'       SortBy = "EntityId"|"ProductTitle"|"Visibility"|"LastModifiedDate"|"DeliveryOptionTypes",
 #'       SortOrder = "ASCENDING"|"DESCENDING"
 #'     ),
 #'     AmiProductSort = list(
@@ -825,15 +907,23 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'       SortOrder = "ASCENDING"|"DESCENDING"
 #'     ),
 #'     OfferSort = list(
-#'       SortBy = "EntityId"|"Name"|"ProductId"|"ResaleAuthorizationId"|"ReleaseDate"|"AvailabilityEndDate"|"BuyerAccounts"|"State"|"Targeting"|"LastModifiedDate",
+#'       SortBy = "EntityId"|"Name"|"ProductId"|"ResaleAuthorizationId"|"ReleaseDate"|"AvailabilityEndDate"|"BuyerAccounts"|"State"|"Targeting"|"LastModifiedDate"|"OfferSetId",
 #'       SortOrder = "ASCENDING"|"DESCENDING"
 #'     ),
 #'     ContainerProductSort = list(
-#'       SortBy = "EntityId"|"LastModifiedDate"|"ProductTitle"|"Visibility",
+#'       SortBy = "EntityId"|"LastModifiedDate"|"ProductTitle"|"Visibility"|"CompatibleAWSServices",
 #'       SortOrder = "ASCENDING"|"DESCENDING"
 #'     ),
 #'     ResaleAuthorizationSort = list(
 #'       SortBy = "EntityId"|"Name"|"ProductId"|"ProductName"|"ManufacturerAccountId"|"ManufacturerLegalName"|"ResellerAccountID"|"ResellerLegalName"|"Status"|"OfferExtendedStatus"|"CreatedDate"|"AvailabilityEndDate"|"LastModifiedDate",
+#'       SortOrder = "ASCENDING"|"DESCENDING"
+#'     ),
+#'     MachineLearningProductSort = list(
+#'       SortBy = "EntityId"|"LastModifiedDate"|"ProductTitle"|"Visibility",
+#'       SortOrder = "ASCENDING"|"DESCENDING"
+#'     ),
+#'     OfferSetSort = list(
+#'       SortBy = "Name"|"State"|"ReleaseDate"|"SolutionId"|"EntityId"|"LastModifiedDate",
 #'       SortOrder = "ASCENDING"|"DESCENDING"
 #'     )
 #'   )
@@ -997,6 +1087,12 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
 #' Also, for more information about change types available for
 #' container-based products, see [Working with container
 #' products](https://docs.aws.amazon.com/marketplace/latest/APIReference/work-with-container-products.html#working-with-container-products).
+#' 
+#' To download "DetailsDocument" shapes, see
+#' [Python](https://github.com/awslabs/aws-marketplace-catalog-api-shapes-for-python)
+#' and
+#' [Java](https://github.com/awslabs/aws-marketplace-catalog-api-shapes-for-java/tree/main)
+#' shapes on GitHub.
 #'
 #' @usage
 #' marketplacecatalog_start_change_set(Catalog, ChangeSet, ChangeSetName,

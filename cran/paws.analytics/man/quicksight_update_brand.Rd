@@ -9,7 +9,7 @@ quicksight_update_brand(AwsAccountId, BrandId, BrandDefinition = NULL)
 \arguments{
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account that owns the brand.}
 
-\item{BrandId}{[required] The ID of the Amazon QuickSight brand.}
+\item{BrandId}{[required] The ID of the Quick Suite brand.}
 
 \item{BrandDefinition}{The definition of the brand.}
 }

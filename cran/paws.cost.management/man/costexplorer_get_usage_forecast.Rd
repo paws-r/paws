@@ -35,7 +35,7 @@ following:
 }}
 
 \item{Granularity}{[required] How granular you want the forecast to be. You can get 3 months of
-\code{DAILY} forecasts or 12 months of \code{MONTHLY} forecasts.
+\code{DAILY} forecasts or 18 months of \code{MONTHLY} forecasts.
 
 The \code{\link[=costexplorer_get_usage_forecast]{get_usage_forecast}} operation
 supports only \code{DAILY} and \code{MONTHLY} granularities.}

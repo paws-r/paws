@@ -2,27 +2,50 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_list_hook_results}
 \alias{cloudformation_list_hook_results}
-\title{Returns summaries of invoked Hooks when a change set or Cloud Control
-API operation target is provided}
+\title{Returns summaries of invoked Hooks}
 \usage{
-cloudformation_list_hook_results(TargetType, TargetId, NextToken = NULL)
+cloudformation_list_hook_results(
+  TargetType = NULL,
+  TargetId = NULL,
+  TypeArn = NULL,
+  Status = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{TargetType}{[required] The type of operation being targeted by the Hook.}
+\item{TargetType}{Filters results by target type. Currently, only \code{CHANGE_SET} and
+\code{CLOUD_CONTROL} are supported filter options.
 
-\item{TargetId}{[required] The logical ID of the target the operation is acting on by the Hook. If
-the target is a change set, it's the ARN of the change set.
+Required when \code{TargetId} is specified and cannot be used otherwise.}
 
-If the target is a Cloud Control API operation, this will be the
-\code{HookRequestToken} returned by the Cloud Control API operation request.
-For more information on the \code{HookRequestToken}, see
-\href{https://docs.aws.amazon.com/cloudcontrolapi/latest/APIReference/API_ProgressEvent.html}{ProgressEvent}.}
+\item{TargetId}{Filters results by the unique identifier of the target the Hook was
+invoked against.
 
-\item{NextToken}{A string that identifies the next page of events that you want to
-retrieve.}
+For change sets, this is the change set ARN. When the target is a Cloud
+Control API operation, this value must be the \code{HookRequestToken}
+returned by the Cloud Control API request. For more information on the
+\code{HookRequestToken}, see
+\href{https://docs.aws.amazon.com/cloudcontrolapi/latest/APIReference/API_ProgressEvent.html}{ProgressEvent}.
+
+Required when \code{TargetType} is specified and cannot be used otherwise.}
+
+\item{TypeArn}{Filters results by the ARN of the Hook. Can be used alone or in
+combination with \code{Status}.}
+
+\item{Status}{Filters results by the status of Hook invocations. Can only be used in
+combination with \code{TypeArn}. Valid values are:
+\itemize{
+\item \code{HOOK_IN_PROGRESS}: The Hook is currently running.
+\item \code{HOOK_COMPLETE_SUCCEEDED}: The Hook completed successfully.
+\item \code{HOOK_COMPLETE_FAILED}: The Hook completed but failed validation.
+\item \code{HOOK_FAILED}: The Hook encountered an error during execution.
+}}
+
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 }
 \description{
-Returns summaries of invoked Hooks when a change set or Cloud Control API operation target is provided.
+Returns summaries of invoked Hooks. For more information, see \href{https://docs.aws.amazon.com/cloudformation-cli/latest/hooks-userguide/hooks-view-invocations.html}{View invocation summaries for CloudFormation Hooks} in the \emph{CloudFormation Hooks User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_list_hook_results/} for full documentation.
 }

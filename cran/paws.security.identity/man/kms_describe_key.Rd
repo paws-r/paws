@@ -10,7 +10,7 @@ kms_describe_key(KeyId, GrantTokens = NULL)
 \item{KeyId}{[required] Describes the specified KMS key.
 
 If you specify a predefined Amazon Web Services alias (an Amazon Web
-Services alias with no key ID), KMS associates the alias with an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html##aws-managed-cmk}{Amazon Web Services managed key}
+Services alias with no key ID), KMS associates the alias with an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key}{Amazon Web Services managed key}
 and returns its \code{KeyId} and \code{Arn} in the response.
 
 To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
@@ -37,11 +37,11 @@ get the alias name and alias ARN, use
 Use a grant token when your permission to call this operation comes from
 a new grant that has not yet achieved \emph{eventual consistency}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token}{Using a grant token}
+and \href{https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html}{Using a grant token}
 in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
-Provides detailed information about a KMS key. You can run \code{\link[=kms_describe_key]{describe_key}} on a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key} or an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed key}.
+Provides detailed information about a KMS key. You can run \code{\link[=kms_describe_key]{describe_key}} on a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key}{customer managed key} or an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key}{Amazon Web Services managed key}.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_describe_key/} for full documentation.
 }

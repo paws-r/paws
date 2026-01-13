@@ -7,7 +7,7 @@
 healthlake_list_tags_for_resource(ResourceARN)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name(ARN) of the data store for which tags are being
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the data store to which tags are being
 added.}
 }
 \description{

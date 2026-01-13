@@ -72,11 +72,15 @@ Unit: SECONDS
 
 Statistic: AVG
 
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-queue-abandon-time}{Average queue abandon time}
+
 \strong{AFTER_CONTACT_WORK_TIME}
 
 Unit: SECONDS
 
 Statistic: AVG
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#after-contact-work-time}{After contact work time}
 
 \strong{API_CONTACTS_HANDLED}
 
@@ -84,11 +88,23 @@ Unit: COUNT
 
 Statistic: SUM
 
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#api-contacts-handled}{API contacts handled}
+
+\strong{AVG_HOLD_TIME}
+
+Unit: SECONDS
+
+Statistic: AVG
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-customer-hold-time}{Average customer hold time}
+
 \strong{CALLBACK_CONTACTS_HANDLED}
 
 Unit: COUNT
 
 Statistic: SUM
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#callback-contacts-handled}{Callback contacts handled}
 
 \strong{CONTACTS_ABANDONED}
 
@@ -96,11 +112,15 @@ Unit: COUNT
 
 Statistic: SUM
 
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-abandoned}{Contacts abandoned}
+
 \strong{CONTACTS_AGENT_HUNG_UP_FIRST}
 
 Unit: COUNT
 
 Statistic: SUM
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-agent-hung-up-first}{Contacts agent hung up first}
 
 \strong{CONTACTS_CONSULTED}
 
@@ -108,11 +128,15 @@ Unit: COUNT
 
 Statistic: SUM
 
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-consulted}{Contacts consulted}
+
 \strong{CONTACTS_HANDLED}
 
 Unit: COUNT
 
 Statistic: SUM
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-handled}{Contacts handled}
 
 \strong{CONTACTS_HANDLED_INCOMING}
 
@@ -120,11 +144,15 @@ Unit: COUNT
 
 Statistic: SUM
 
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-handled-incoming}{Contacts handled incoming}
+
 \strong{CONTACTS_HANDLED_OUTBOUND}
 
 Unit: COUNT
 
 Statistic: SUM
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-handled-outbound}{Contacts handled outbound}
 
 \strong{CONTACTS_HOLD_ABANDONS}
 
@@ -132,11 +160,16 @@ Unit: COUNT
 
 Statistic: SUM
 
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-hold-disconnect}{Contacts hold disconnect}
+
 \strong{CONTACTS_MISSED}
 
 Unit: COUNT
 
 Statistic: SUM
+
+UI name:
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#agent-non-response}{AGENT_NON_RESPONSE}
 
 \strong{CONTACTS_QUEUED}
 
@@ -144,11 +177,15 @@ Unit: COUNT
 
 Statistic: SUM
 
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-queued}{Contacts queued}
+
 \strong{CONTACTS_TRANSFERRED_IN}
 
 Unit: COUNT
 
 Statistic: SUM
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-transferred-in}{Contacts transferred in}
 
 \strong{CONTACTS_TRANSFERRED_IN_FROM_QUEUE}
 
@@ -156,11 +193,15 @@ Unit: COUNT
 
 Statistic: SUM
 
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-transferred-out-queue}{Contacts transferred out queue}
+
 \strong{CONTACTS_TRANSFERRED_OUT}
 
 Unit: COUNT
 
 Statistic: SUM
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-transferred-out}{Contacts transferred out}
 
 \strong{CONTACTS_TRANSFERRED_OUT_FROM_QUEUE}
 
@@ -168,17 +209,15 @@ Unit: COUNT
 
 Statistic: SUM
 
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-transferred-out-queue}{Contacts transferred out queue}
+
 \strong{HANDLE_TIME}
 
 Unit: SECONDS
 
 Statistic: AVG
 
-\strong{HOLD_TIME}
-
-Unit: SECONDS
-
-Statistic: AVG
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-handle-time}{Average handle time}
 
 \strong{INTERACTION_AND_HOLD_TIME}
 
@@ -186,11 +225,15 @@ Unit: SECONDS
 
 Statistic: AVG
 
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-agent-interaction-and-customer-hold-time}{Average agent interaction and customer hold time}
+
 \strong{INTERACTION_TIME}
 
 Unit: SECONDS
 
 Statistic: AVG
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#aaverage-agent-interaction-time}{Average agent interaction time}
 
 \strong{OCCUPANCY}
 
@@ -198,17 +241,24 @@ Unit: PERCENT
 
 Statistic: AVG
 
+UI name:
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#occupancy}{Occupancy}
+
 \strong{QUEUE_ANSWER_TIME}
 
 Unit: SECONDS
 
 Statistic: AVG
 
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html##average-queue-answer-time}{Average queue answer time}
+
 \strong{QUEUED_TIME}
 
 Unit: SECONDS
 
 Statistic: MAX
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#minimum-flow-time}{Minimum flow time}
 
 \strong{SERVICE_LEVEL}
 
@@ -220,7 +270,9 @@ Statistic: AVG
 
 Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
 (inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
-"Less than").}
+"Less than").
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-queue-abandon-time}{Average queue abandon time}}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of

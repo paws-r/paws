@@ -29,7 +29,7 @@ GraphicsPro), specify \code{BYOL_REGULAR}, \code{BYOL_REGULAR_WSP}, or
 
 The \code{BYOL_REGULAR_BYOP} and \code{BYOL_GRAPHICS_G4DN_BYOP} values are only
 supported by Amazon WorkSpaces Core. Contact your account team to be
-allow-listed to use these values. For more information, see \href{https://aws.amazon.com/workspaces-family/core/}{Amazon WorkSpaces Core}.}
+allow-listed to use these values. For more information, see \href{https://aws.amazon.com/workspaces/vdi-partners/}{Amazon WorkSpaces Core}.}
 
 \item{ImageName}{[required] The name of the WorkSpace image.}
 

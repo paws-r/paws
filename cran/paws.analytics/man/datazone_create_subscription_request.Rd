@@ -5,6 +5,8 @@
 \title{Creates a subscription request in Amazon DataZone}
 \usage{
 datazone_create_subscription_request(
+  assetPermissions = NULL,
+  assetScopes = NULL,
   clientToken = NULL,
   domainIdentifier,
   metadataForms = NULL,
@@ -14,6 +16,10 @@ datazone_create_subscription_request(
 )
 }
 \arguments{
+\item{assetPermissions}{The asset permissions of the subscription request.}
+
+\item{assetScopes}{The asset scopes of the subscription request.}
+
 \item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
 idempotency of the request.}
 

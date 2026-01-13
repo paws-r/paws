@@ -49,27 +49,42 @@ are considered to be the same message.}
 
 \item{MessageType}{Tells KMS whether the value of the \code{Message} parameter should be hashed
 as part of the signing algorithm. Use \code{RAW} for unhashed messages; use
-\code{DIGEST} for message digests, which are already hashed.
+\code{DIGEST} for message digests, which are already hashed; use
+\code{EXTERNAL_MU} for 64-byte representative μ used in ML-DSA signing as
+defined in NIST FIPS 204 Section 6.2.
 
 When the value of \code{MessageType} is \code{RAW}, KMS uses the standard signing
 algorithm, which begins with a hash function. When the value is
-\code{DIGEST}, KMS skips the hashing step in the signing algorithm.
+\code{DIGEST}, KMS skips the hashing step in the signing algorithm. When the
+value is \code{EXTERNAL_MU} KMS skips the concatenated hashing of the public
+key hash and the message done in the ML-DSA signing algorithm.
 
-Use the \code{DIGEST} value only when the value of the \code{Message} parameter is
-a message digest. If you use the \code{DIGEST} value with an unhashed
-message, the security of the verification operation can be compromised.
+Use the \code{DIGEST} or \code{EXTERNAL_MU} value only when the value of the
+\code{Message} parameter is a message digest. If you use the \code{DIGEST} value
+with an unhashed message, the security of the signing operation can be
+compromised.
 
-When the value of \code{MessageType}is \code{DIGEST}, the length of the \code{Message}
+When using ECC_NIST_EDWARDS25519 KMS keys:
+\itemize{
+\item ED25519_SHA_512 signing algorithm requires KMS \code{MessageType:RAW}
+\item ED25519_PH_SHA_512 signing algorithm requires KMS
+\code{MessageType:DIGEST}
+}
+
+When the value of \code{MessageType} is \code{DIGEST}, the length of the \code{Message}
 value must match the length of hashed messages for the specified signing
 algorithm.
+
+When the value of \code{MessageType} is \code{EXTERNAL_MU} the length of the
+\code{Message} value must be 64 bytes.
 
 You can submit a message digest and omit the \code{MessageType} or specify
 \code{RAW} so the digest is hashed again while signing. However, if the
 signed message is hashed once while signing, but twice while verifying,
 verification fails, even when the message hasn't changed.
 
-The hashing algorithm in that \code{\link[=kms_verify]{verify}} uses is based on
-the \code{SigningAlgorithm} value.
+The hashing algorithm that \code{\link[=kms_verify]{verify}} uses is based on the
+\code{SigningAlgorithm} value.
 \itemize{
 \item Signing algorithms that end in SHA_256 use the SHA_256 hashing
 algorithm.
@@ -77,7 +92,9 @@ algorithm.
 algorithm.
 \item Signing algorithms that end in SHA_512 use the SHA_512 hashing
 algorithm.
-\item SM2DSA uses the SM3 hashing algorithm. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose-key-spec.html#key-spec-sm-offline-verification}{Offline verification with SM2 key pairs}.
+\item Signing algorithms that end in SHAKE_256 use the SHAKE_256 hashing
+algorithm.
+\item SM2DSA uses the SM3 hashing algorithm. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/offline-operations.html#key-spec-sm-offline-verification}{Offline verification with SM2 key pairs}.
 }}
 
 \item{Signature}{[required] The signature that the \code{\link[=kms_sign]{sign}} operation generated.}
@@ -90,12 +107,12 @@ different algorithm, the signature verification fails.}
 Use a grant token when your permission to call this operation comes from
 a new grant that has not yet achieved \emph{eventual consistency}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token}{Using a grant token}
+and \href{https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html}{Using a grant token}
 in the \emph{Key Management Service Developer Guide}.}
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
 
-To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your KMS API calls}
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions}
 in the \emph{Key Management Service Developer Guide}.}
 }
 \description{

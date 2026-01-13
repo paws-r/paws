@@ -11,7 +11,8 @@ directoryservice_create_directory(
   Description = NULL,
   Size,
   VpcSettings = NULL,
-  Tags = NULL
+  Tags = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -58,6 +59,9 @@ on the Microsoft website.}
 the operation.}
 
 \item{Tags}{The tags to be assigned to the Simple AD directory.}
+
+\item{NetworkType}{The network type for your directory. Simple AD supports IPv4 and
+Dual-stack only.}
 }
 \description{
 Creates a Simple AD directory. For more information, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html}{Simple Active Directory} in the \emph{Directory Service Admin Guide}.

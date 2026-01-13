@@ -67,7 +67,9 @@ If you provide an individual checksum, Amazon S3 ignores any provided
 provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
 
-\item{RequestPayer}{}
+\item{RequestPayer}{Confirms that the requester knows that she or he will be charged for the
+tagging object request. Bucket owners need not specify this parameter in
+their requests.}
 }
 \description{
 This operation is not supported for directory buckets.

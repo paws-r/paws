@@ -2,7 +2,7 @@
 % Please edit documentation in R/entityresolution_operations.R
 \name{entityresolution_update_matching_workflow}
 \alias{entityresolution_update_matching_workflow}
-\title{Updates an existing MatchingWorkflow}
+\title{Updates an existing matching workflow}
 \usage{
 entityresolution_update_matching_workflow(
   workflowName,
@@ -23,20 +23,24 @@ entityresolution_update_matching_workflow(
 and \code{SchemaName}.}
 
 \item{outputSourceConfig}{[required] A list of \code{OutputSource} objects, each of which contains fields
-\code{OutputS3Path}, \code{ApplyNormalization}, and \code{Output}.}
+\code{outputS3Path}, \code{applyNormalization}, \code{KMSArn}, and \code{output}.}
 
 \item{resolutionTechniques}{[required] An object which defines the \code{resolutionType} and the
 \code{ruleBasedProperties}.}
 
-\item{incrementalRunConfig}{An object which defines an incremental run type and has only
-\code{incrementalRunType} as a field.}
+\item{incrementalRunConfig}{Optional. An object that defines the incremental run type. This object
+contains only the \code{incrementalRunType} field, which appears as
+"Automatic" in the console.
+
+For workflows where \code{resolutionType} is \code{ML_MATCHING} or \code{PROVIDER},
+incremental processing is not supported.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 assumes this role to create resources on your behalf as part of workflow
 execution.}
 }
 \description{
-Updates an existing \code{MatchingWorkflow}. This method is identical to \code{\link[=entityresolution_create_matching_workflow]{create_matching_workflow}}, except it uses an HTTP \code{PUT} request instead of a \code{POST} request, and the \code{MatchingWorkflow} must already exist for the method to succeed.
+Updates an existing matching workflow. The workflow must already exist for this operation to succeed.
 
 See \url{https://www.paws-r-sdk.com/docs/entityresolution_update_matching_workflow/} for full documentation.
 }

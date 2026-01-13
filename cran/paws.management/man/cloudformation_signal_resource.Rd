@@ -14,10 +14,11 @@ want to signal.}
 \item{LogicalResourceId}{[required] The logical ID of the resource that you want to signal. The logical ID
 is the name of the resource that given in the template.}
 
-\item{UniqueId}{[required] A unique ID of the signal. When you signal Amazon EC2 instances or Auto
-Scaling groups, specify the instance ID that you are signaling as the
-unique ID. If you send multiple signals to a single resource (such as
-signaling a wait condition), each signal requires a different unique ID.}
+\item{UniqueId}{[required] A unique ID of the signal. When you signal Amazon EC2 instances or
+Amazon EC2 Auto Scaling groups, specify the instance ID that you are
+signaling as the unique ID. If you send multiple signals to a single
+resource (such as signaling a wait condition), each signal requires a
+different unique ID.}
 
 \item{Status}{[required] The status of the signal, which is either success or failure. A failure
 signal causes CloudFormation to immediately fail the stack creation or

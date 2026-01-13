@@ -115,6 +115,7 @@ performance, and operational health.
 \link[paws.management:cloudwatch_delete_dashboards]{delete_dashboards} \tab Deletes all dashboards that you specify\cr
 \link[paws.management:cloudwatch_delete_insight_rules]{delete_insight_rules} \tab Permanently deletes the specified Contributor Insights rules\cr
 \link[paws.management:cloudwatch_delete_metric_stream]{delete_metric_stream} \tab Permanently deletes the metric stream that you specify\cr
+\link[paws.management:cloudwatch_describe_alarm_contributors]{describe_alarm_contributors} \tab Returns the information of the current alarm contributors that are in ALARM state\cr
 \link[paws.management:cloudwatch_describe_alarm_history]{describe_alarm_history} \tab Retrieves the history for the specified alarm\cr
 \link[paws.management:cloudwatch_describe_alarms]{describe_alarms} \tab Retrieves the specified alarms\cr
 \link[paws.management:cloudwatch_describe_alarms_for_metric]{describe_alarms_for_metric} \tab Retrieves the alarms for the specified metric\cr

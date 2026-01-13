@@ -2954,11 +2954,13 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
 #' (ARN) of the table in this parameter.
 #' @param IndexName The global secondary index name, if applicable.
 #' @param ContributorInsightsAction &#91;required&#93; Represents the contributor insights action.
+#' @param ContributorInsightsMode Specifies whether to track all access and throttled events or throttled
+#' events only for the DynamoDB table or index.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_contributor_insights
-dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, ContributorInsightsAction) {
+dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, ContributorInsightsAction, ContributorInsightsMode = NULL) {
   op <- new_operation(
     name = "UpdateContributorInsights",
     http_method = "POST",
@@ -2967,7 +2969,7 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodb$update_contributor_insights_input(TableName = TableName, IndexName = IndexName, ContributorInsightsAction = ContributorInsightsAction)
+  input <- .dynamodb$update_contributor_insights_input(TableName = TableName, IndexName = IndexName, ContributorInsightsAction = ContributorInsightsAction, ContributorInsightsMode = ContributorInsightsMode)
   output <- .dynamodb$update_contributor_insights_output()
   config <- get_config()
   svc <- .dynamodb$service(config, op)
@@ -3397,9 +3399,6 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' @param SSESpecification The new server-side encryption settings for the specified table.
 #' @param ReplicaUpdates A list of replica update actions (create, delete, or update) for the
 #' table.
-#' 
-#' For global tables, this property only applies to global tables using
-#' Version 2019.11.21 (Current version).
 #' @param TableClass The table class of the table to be updated. Valid values are `STANDARD`
 #' and `STANDARD_INFREQUENT_ACCESS`.
 #' @param DeletionProtectionEnabled Indicates whether deletion protection is to be enabled (true) or
@@ -3414,18 +3413,31 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' You can specify one of the following consistency modes:
 #' 
 #' -   `EVENTUAL`: Configures a new global table for multi-Region eventual
-#'     consistency. This is the default consistency mode for global tables.
+#'     consistency (MREC). This is the default consistency mode for global
+#'     tables.
 #' 
 #' -   `STRONG`: Configures a new global table for multi-Region strong
-#'     consistency (preview).
+#'     consistency (MRSC).
 #' 
-#'     Multi-Region strong consistency (MRSC) is a new DynamoDB global
-#'     tables capability currently available in preview mode. For more
-#'     information, see [Global tables multi-Region strong
-#'     consistency](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/#multi-region-strong-consistency-gt).
+#' If you don't specify this field, the global table consistency mode
+#' defaults to `EVENTUAL`. For more information about global tables
+#' consistency modes, see Consistency modes in DynamoDB developer guide.
+#' @param GlobalTableWitnessUpdates A list of witness updates for a MRSC global table. A witness provides a
+#' cost-effective alternative to a full replica in a MRSC global table by
+#' maintaining replicated change data written to global table replicas. You
+#' cannot perform read or write operations on a witness. For each witness,
+#' you can request one action:
 #' 
-#' If you don't specify this parameter, the global table consistency mode
-#' defaults to `EVENTUAL`.
+#' -   `Create` - add a new witness to the global table.
+#' 
+#' -   `Delete` - remove a witness from the global table.
+#' 
+#' You can create or delete only one witness per
+#' [`update_table`][dynamodb_update_table] operation.
+#' 
+#' For more information, see [Multi-Region strong consistency
+#' (MRSC)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_HowItWorks.html#V2globaltables_HowItWorks.consistency-modes)
+#' in the Amazon DynamoDB Developer Guide
 #' @param OnDemandThroughput Updates the maximum number of read and write units for the specified
 #' table in on-demand capacity mode. If you use this parameter, you must
 #' specify `MaxReadRequestUnits`, `MaxWriteRequestUnits`, or both.
@@ -3435,7 +3447,7 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_table
-dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, MultiRegionConsistency = NULL, OnDemandThroughput = NULL, WarmThroughput = NULL) {
+dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, MultiRegionConsistency = NULL, GlobalTableWitnessUpdates = NULL, OnDemandThroughput = NULL, WarmThroughput = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
@@ -3444,7 +3456,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, MultiRegionConsistency = MultiRegionConsistency, OnDemandThroughput = OnDemandThroughput, WarmThroughput = WarmThroughput)
+  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, MultiRegionConsistency = MultiRegionConsistency, GlobalTableWitnessUpdates = GlobalTableWitnessUpdates, OnDemandThroughput = OnDemandThroughput, WarmThroughput = WarmThroughput)
   output <- .dynamodb$update_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config, op)

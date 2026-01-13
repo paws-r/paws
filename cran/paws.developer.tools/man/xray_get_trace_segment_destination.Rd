@@ -3,12 +3,12 @@
 \name{xray_get_trace_segment_destination}
 \alias{xray_get_trace_segment_destination}
 \title{Retrieves the current destination of data sent to PutTraceSegments and
-OpenTelemetry API}
+OpenTelemetry protocol (OTLP) endpoint}
 \usage{
 xray_get_trace_segment_destination()
 }
 \description{
-Retrieves the current destination of data sent to \code{\link[=xray_put_trace_segments]{put_trace_segments}} and \emph{OpenTelemetry} API. The Transaction Search feature requires a CloudWatchLogs destination. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Transaction-Search.html}{Transaction Search} and \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-OpenTelemetry-Sections.html}{OpenTelemetry}.
+Retrieves the current destination of data sent to \code{\link[=xray_put_trace_segments]{put_trace_segments}} and \emph{OpenTelemetry protocol (OTLP)} endpoint. The Transaction Search feature requires a CloudWatchLogs destination. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Transaction-Search.html}{Transaction Search} and \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-OpenTelemetry-Sections.html}{OpenTelemetry}.
 
 See \url{https://www.paws-r-sdk.com/docs/xray_get_trace_segment_destination/} for full documentation.
 }

@@ -4,7 +4,12 @@
 \alias{s3tables_create_table_bucket}
 \title{Creates a table bucket}
 \usage{
-s3tables_create_table_bucket(name, encryptionConfiguration = NULL)
+s3tables_create_table_bucket(
+  name,
+  encryptionConfiguration = NULL,
+  storageClassConfiguration = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name for the table bucket.}
@@ -14,6 +19,20 @@ configuration specifies the default encryption settings that will be
 applied to all tables created in this bucket unless overridden at the
 table level. The configuration includes the encryption algorithm and, if
 using SSE-KMS, the KMS key to use.}
+
+\item{storageClassConfiguration}{The default storage class configuration for the table bucket. This
+configuration will be applied to all new tables created in this bucket
+unless overridden at the table level. If not specified, the service
+default storage class will be used.}
+
+\item{tags}{A map of user-defined tags that you would like to apply to the table
+bucket that you are creating. A tag is a key-value pair that you apply
+to your resources. Tags can help you organize and control access to
+resources. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html}{Tagging for cost allocation or attribute-based access control (ABAC)}.
+
+You must have the \code{s3tables:TagResource} permission in addition to
+\code{s3tables:CreateTableBucket} permisson to create a table bucket with
+tags.}
 }
 \description{
 Creates a table bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets-create.html}{Creating a table bucket} in the \emph{Amazon Simple Storage Service User Guide}.

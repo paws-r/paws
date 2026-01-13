@@ -2,16 +2,18 @@
 % Please edit documentation in R/arczonalshift_operations.R
 \name{arczonalshift_update_zonal_shift}
 \alias{arczonalshift_update_zonal_shift}
-\title{Update an active zonal shift in Amazon Route 53 Application Recovery
-Controller in your Amazon Web Services account}
+\title{Update an active zonal shift in Amazon Application Recovery Controller
+in your Amazon Web Services account}
 \usage{
 arczonalshift_update_zonal_shift(
+  zonalShiftId,
   comment = NULL,
-  expiresIn = NULL,
-  zonalShiftId
+  expiresIn = NULL
 )
 }
 \arguments{
+\item{zonalShiftId}{[required] The identifier of a zonal shift.}
+
 \item{comment}{A comment that you enter about the zonal shift. Only the latest comment
 is retained; no comment history is maintained. A new comment overwrites
 any existing comment string.}
@@ -35,11 +37,9 @@ number, and then one of the following, with no space:
 
 For example: \verb{20h} means the zonal shift expires in 20 hours. \verb{120m}
 means the zonal shift expires in 120 minutes (2 hours).}
-
-\item{zonalShiftId}{[required] The identifier of a zonal shift.}
 }
 \description{
-Update an active zonal shift in Amazon Route 53 Application Recovery Controller in your Amazon Web Services account. You can update a zonal shift to set a new expiration, or edit or replace the comment for the zonal shift.
+Update an active zonal shift in Amazon Application Recovery Controller in your Amazon Web Services account. You can update a zonal shift to set a new expiration, or edit or replace the comment for the zonal shift.
 
 See \url{https://www.paws-r-sdk.com/docs/arczonalshift_update_zonal_shift/} for full documentation.
 }

@@ -10,7 +10,7 @@ paymentcryptographydataplane_verify_pin_data(
   EncryptionKeyIdentifier,
   VerificationAttributes,
   EncryptedPinBlock,
-  PrimaryAccountNumber,
+  PrimaryAccountNumber = NULL,
   PinBlockFormat,
   PinDataLength = NULL,
   DukptAttributes = NULL,
@@ -28,7 +28,7 @@ encrypted. This key type can be PEK or BDK.}
 \item{EncryptedPinBlock}{[required] The encrypted PIN block data that Amazon Web Services Payment
 Cryptography verifies.}
 
-\item{PrimaryAccountNumber}{[required] The Primary Account Number (PAN), a unique identifier for a payment
+\item{PrimaryAccountNumber}{The Primary Account Number (PAN), a unique identifier for a payment
 credit or debit card that associates the card with a specific account
 holder.}
 

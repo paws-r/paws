@@ -5,18 +5,18 @@
 \title{Retrieves a CIS scan report}
 \usage{
 inspector2_get_cis_scan_report(
-  reportFormat = NULL,
   scanArn,
-  targetAccounts = NULL
+  targetAccounts = NULL,
+  reportFormat = NULL
 )
 }
 \arguments{
-\item{reportFormat}{The format of the report. Valid values are \code{PDF} and \code{CSV}. If no value
-is specified, the report format defaults to \code{PDF}.}
-
 \item{scanArn}{[required] The scan ARN.}
 
 \item{targetAccounts}{The target accounts.}
+
+\item{reportFormat}{The format of the report. Valid values are \code{PDF} and \code{CSV}. If no value
+is specified, the report format defaults to \code{PDF}.}
 }
 \description{
 Retrieves a CIS scan report.

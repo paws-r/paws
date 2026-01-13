@@ -21,8 +21,8 @@ quicksight_list_role_memberships(
 
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to create a
 group in. The Amazon Web Services account ID that you provide must be
-the same Amazon Web Services account that contains your Amazon
-QuickSight account.}
+the same Amazon Web Services account that contains your Amazon Quick
+Sight account.}
 
 \item{Namespace}{[required] The namespace that includes the role.}
 }

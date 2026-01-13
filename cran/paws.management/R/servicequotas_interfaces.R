@@ -15,6 +15,18 @@ NULL
   return(populate(args, shape))
 }
 
+.servicequotas$create_support_case_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$create_support_case_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .servicequotas$delete_service_quota_increase_request_from_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), AwsRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -63,6 +75,30 @@ NULL
   return(populate(args, shape))
 }
 
+.servicequotas$get_auto_management_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$get_auto_management_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OptInLevel = structure(logical(0), tags = list(type = "string")), OptInType = structure(logical(0), tags = list(type = "string")), NotificationArn = structure(logical(0), tags = list(type = "string")), OptInStatus = structure(logical(0), tags = list(type = "string")), ExclusionList = structure(list(structure(list(structure(list(QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$get_quota_utilization_report_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReportId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$get_quota_utilization_report_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReportId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), GeneratedAt = structure(logical(0), tags = list(type = "timestamp")), TotalCount = structure(logical(0), tags = list(type = "integer")), Quotas = structure(list(structure(list(QuotaCode = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Utilization = structure(logical(0), tags = list(type = "double")), DefaultValue = structure(logical(0), tags = list(type = "double")), AppliedValue = structure(logical(0), tags = list(type = "double")), ServiceName = structure(logical(0), tags = list(type = "string")), Adjustable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .servicequotas$get_requested_service_quota_change_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -71,7 +107,7 @@ NULL
 
 .servicequotas$get_requested_service_quota_change_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestedQuota = structure(list(Id = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), Requester = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), QuotaRequestedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(RequestedQuota = structure(list(Id = structure(logical(0), tags = list(type = "string")), RequestType = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), Requester = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), QuotaRequestedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -119,7 +155,7 @@ NULL
 
 .servicequotas$list_requested_service_quota_change_history_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RequestedQuotas = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), Requester = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), QuotaRequestedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RequestedQuotas = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), RequestType = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), Requester = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), QuotaRequestedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -131,7 +167,7 @@ NULL
 
 .servicequotas$list_requested_service_quota_change_history_by_quota_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RequestedQuotas = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), Requester = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), QuotaRequestedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RequestedQuotas = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), RequestType = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), Requester = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), QuotaRequestedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -203,7 +239,43 @@ NULL
 
 .servicequotas$request_service_quota_increase_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestedQuota = structure(list(Id = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), Requester = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), QuotaRequestedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(RequestedQuota = structure(list(Id = structure(logical(0), tags = list(type = "string")), RequestType = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), Requester = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), QuotaRequestedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$start_auto_management_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OptInLevel = structure(logical(0), tags = list(type = "string")), OptInType = structure(logical(0), tags = list(type = "string")), NotificationArn = structure(logical(0), tags = list(type = "string")), ExclusionList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$start_auto_management_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$start_quota_utilization_report_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$start_quota_utilization_report_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReportId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$stop_auto_management_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$stop_auto_management_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -226,6 +298,18 @@ NULL
 }
 
 .servicequotas$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$update_auto_management_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OptInType = structure(logical(0), tags = list(type = "string")), NotificationArn = structure(logical(0), tags = list(type = "string")), ExclusionList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$update_auto_management_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

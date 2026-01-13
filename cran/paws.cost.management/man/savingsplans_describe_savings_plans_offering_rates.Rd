@@ -2,7 +2,8 @@
 % Please edit documentation in R/savingsplans_operations.R
 \name{savingsplans_describe_savings_plans_offering_rates}
 \alias{savingsplans_describe_savings_plans_offering_rates}
-\title{Describes the offering rates for the specified Savings Plans}
+\title{Describes the offering rates for Savings Plans you might want to
+purchase}
 \usage{
 savingsplans_describe_savings_plans_offering_rates(
   savingsPlanOfferingIds = NULL,
@@ -41,7 +42,7 @@ billing report.}
 additional results, make another call with the returned token value.}
 }
 \description{
-Describes the offering rates for the specified Savings Plans.
+Describes the offering rates for Savings Plans you might want to purchase.
 
 See \url{https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plans_offering_rates/} for full documentation.
 }

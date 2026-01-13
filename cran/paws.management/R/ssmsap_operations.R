@@ -133,6 +133,38 @@ ssmsap_get_component <- function(ApplicationId, ComponentId) {
 }
 .ssmsap$operations$get_component <- ssmsap_get_component
 
+#' Gets the details of a configuration check operation by specifying the
+#' operation ID
+#'
+#' @description
+#' Gets the details of a configuration check operation by specifying the operation ID.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmsap_get_configuration_check_operation/](https://www.paws-r-sdk.com/docs/ssmsap_get_configuration_check_operation/) for full documentation.
+#'
+#' @param OperationId &#91;required&#93; The ID of the configuration check operation.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmsap_get_configuration_check_operation
+ssmsap_get_configuration_check_operation <- function(OperationId) {
+  op <- new_operation(
+    name = "GetConfigurationCheckOperation",
+    http_method = "POST",
+    http_path = "/get-configuration-check-operation",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssmsap$get_configuration_check_operation_input(OperationId = OperationId)
+  output <- .ssmsap$get_configuration_check_operation_output()
+  config <- get_config()
+  svc <- .ssmsap$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmsap$operations$get_configuration_check_operation <- ssmsap_get_configuration_check_operation
+
 #' Gets the SAP HANA database of an application registered with AWS Systems
 #' Manager for SAP
 #'
@@ -304,6 +336,86 @@ ssmsap_list_components <- function(ApplicationId = NULL, NextToken = NULL, MaxRe
 }
 .ssmsap$operations$list_components <- ssmsap_list_components
 
+#' Lists all configuration check types supported by AWS Systems Manager for
+#' SAP
+#'
+#' @description
+#' Lists all configuration check types supported by AWS Systems Manager for SAP.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmsap_list_configuration_check_definitions/](https://www.paws-r-sdk.com/docs/ssmsap_list_configuration_check_definitions/) for full documentation.
+#'
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned nextToken
+#' value.
+#' @param NextToken The token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmsap_list_configuration_check_definitions
+ssmsap_list_configuration_check_definitions <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListConfigurationCheckDefinitions",
+    http_method = "POST",
+    http_path = "/list-configuration-check-definitions",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConfigurationChecks"),
+    stream_api = FALSE
+  )
+  input <- .ssmsap$list_configuration_check_definitions_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .ssmsap$list_configuration_check_definitions_output()
+  config <- get_config()
+  svc <- .ssmsap$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmsap$operations$list_configuration_check_definitions <- ssmsap_list_configuration_check_definitions
+
+#' Lists the configuration check operations performed by AWS Systems
+#' Manager for SAP
+#'
+#' @description
+#' Lists the configuration check operations performed by AWS Systems Manager for SAP.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmsap_list_configuration_check_operations/](https://www.paws-r-sdk.com/docs/ssmsap_list_configuration_check_operations/) for full documentation.
+#'
+#' @param ApplicationId &#91;required&#93; The ID of the application.
+#' @param ListMode The mode for listing configuration check operations. Defaults to
+#' "LATEST_PER_CHECK".
+#' 
+#' -   LATEST_PER_CHECK - Will list the latest configuration check
+#'     operation per check type.
+#' 
+#' -   ALL_OPERATIONS - Will list all configuration check operations
+#'     performed on the application.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned nextToken
+#' value.
+#' @param NextToken The token for the next page of results.
+#' @param Filters The filters of an operation.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmsap_list_configuration_check_operations
+ssmsap_list_configuration_check_operations <- function(ApplicationId, ListMode = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListConfigurationCheckOperations",
+    http_method = "POST",
+    http_path = "/list-configuration-check-operations",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConfigurationCheckOperations"),
+    stream_api = FALSE
+  )
+  input <- .ssmsap$list_configuration_check_operations_input(ApplicationId = ApplicationId, ListMode = ListMode, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  output <- .ssmsap$list_configuration_check_operations_output()
+  config <- get_config()
+  svc <- .ssmsap$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmsap$operations$list_configuration_check_operations <- ssmsap_list_configuration_check_operations
+
 #' Lists the SAP HANA databases of an application registered with AWS
 #' Systems Manager for SAP
 #'
@@ -421,6 +533,77 @@ ssmsap_list_operations <- function(ApplicationId, MaxResults = NULL, NextToken =
   return(response)
 }
 .ssmsap$operations$list_operations <- ssmsap_list_operations
+
+#' Lists the sub-check results of a specified configuration check operation
+#'
+#' @description
+#' Lists the sub-check results of a specified configuration check operation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmsap_list_sub_check_results/](https://www.paws-r-sdk.com/docs/ssmsap_list_sub_check_results/) for full documentation.
+#'
+#' @param OperationId &#91;required&#93; The ID of the configuration check operation.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned nextToken
+#' value.
+#' @param NextToken The token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmsap_list_sub_check_results
+ssmsap_list_sub_check_results <- function(OperationId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListSubCheckResults",
+    http_method = "POST",
+    http_path = "/list-sub-check-results",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SubCheckResults"),
+    stream_api = FALSE
+  )
+  input <- .ssmsap$list_sub_check_results_input(OperationId = OperationId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .ssmsap$list_sub_check_results_output()
+  config <- get_config()
+  svc <- .ssmsap$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmsap$operations$list_sub_check_results <- ssmsap_list_sub_check_results
+
+#' Lists the rules of a specified sub-check belonging to a configuration
+#' check operation
+#'
+#' @description
+#' Lists the rules of a specified sub-check belonging to a configuration check operation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmsap_list_sub_check_rule_results/](https://www.paws-r-sdk.com/docs/ssmsap_list_sub_check_rule_results/) for full documentation.
+#'
+#' @param SubCheckResultId &#91;required&#93; The ID of the sub check result.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned nextToken
+#' value.
+#' @param NextToken The token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmsap_list_sub_check_rule_results
+ssmsap_list_sub_check_rule_results <- function(SubCheckResultId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListSubCheckRuleResults",
+    http_method = "POST",
+    http_path = "/list-sub-check-rule-results",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RuleResults"),
+    stream_api = FALSE
+  )
+  input <- .ssmsap$list_sub_check_rule_results_input(SubCheckResultId = SubCheckResultId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .ssmsap$list_sub_check_rule_results_output()
+  config <- get_config()
+  svc <- .ssmsap$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmsap$operations$list_sub_check_rule_results <- ssmsap_list_sub_check_rule_results
 
 #' Lists all tags on an SAP HANA application and/or database registered
 #' with AWS Systems Manager for SAP
@@ -591,6 +774,38 @@ ssmsap_start_application_refresh <- function(ApplicationId) {
   return(response)
 }
 .ssmsap$operations$start_application_refresh <- ssmsap_start_application_refresh
+
+#' Initiates configuration check operations against a specified application
+#'
+#' @description
+#' Initiates configuration check operations against a specified application.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmsap_start_configuration_checks/](https://www.paws-r-sdk.com/docs/ssmsap_start_configuration_checks/) for full documentation.
+#'
+#' @param ApplicationId &#91;required&#93; The ID of the application.
+#' @param ConfigurationCheckIds The list of configuration checks to perform.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmsap_start_configuration_checks
+ssmsap_start_configuration_checks <- function(ApplicationId, ConfigurationCheckIds = NULL) {
+  op <- new_operation(
+    name = "StartConfigurationChecks",
+    http_method = "POST",
+    http_path = "/start-configuration-checks",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssmsap$start_configuration_checks_input(ApplicationId = ApplicationId, ConfigurationCheckIds = ConfigurationCheckIds)
+  output <- .ssmsap$start_configuration_checks_output()
+  config <- get_config()
+  svc <- .ssmsap$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmsap$operations$start_configuration_checks <- ssmsap_start_configuration_checks
 
 #' Request is an operation to stop an application
 #'

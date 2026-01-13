@@ -5,15 +5,13 @@
 \title{Lists findings for your environment}
 \usage{
 inspector2_list_findings(
-  filterCriteria = NULL,
   maxResults = NULL,
   nextToken = NULL,
+  filterCriteria = NULL,
   sortCriteria = NULL
 )
 }
 \arguments{
-\item{filterCriteria}{Details on the filters to apply to your finding results.}
-
 \item{maxResults}{The maximum number of results the response can return. If your request
 would return more than the maximum the response will return a
 \code{nextToken} value, use this value when you call the action again to get
@@ -25,6 +23,8 @@ action. If your response returns more than the \code{maxResults} maximum
 value it will also return a \code{nextToken} value. For subsequent calls, use
 the \code{nextToken} value returned from the previous request to continue
 listing results after the first page.}
+
+\item{filterCriteria}{Details on the filters to apply to your finding results.}
 
 \item{sortCriteria}{Details on the sort criteria to apply to your finding results.}
 }

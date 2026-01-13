@@ -16,7 +16,18 @@ sending logs. For example,
 
 \item{logType}{[required] Defines the type of log that the source is sending.
 \itemize{
-\item For Amazon Bedrock, the valid value is \code{APPLICATION_LOGS}.
+\item For Amazon Bedrock Agents, the valid values are \code{APPLICATION_LOGS}
+and \code{EVENT_LOGS}.
+\item For Amazon Bedrock Knowledge Bases, the valid value is
+\code{APPLICATION_LOGS}.
+\item For Amazon Bedrock AgentCore Runtime, the valid values are
+\code{APPLICATION_LOGS}, \code{USAGE_LOGS} and \code{TRACES}.
+\item For Amazon Bedrock AgentCore Tools, the valid values are
+\code{APPLICATION_LOGS}, \code{USAGE_LOGS} and \code{TRACES}.
+\item For Amazon Bedrock AgentCore Identity, the valid values are
+\code{APPLICATION_LOGS} and \code{TRACES}.
+\item For Amazon Bedrock AgentCore Gateway, the valid values are
+\code{APPLICATION_LOGS} and \code{TRACES}.
 \item For CloudFront, the valid value is \code{ACCESS_LOGS}.
 \item For Amazon CodeWhisperer, the valid value is \code{EVENT_LOGS}.
 \item For Elemental MediaPackage, the valid values are
@@ -24,13 +35,25 @@ sending logs. For example,
 \item For Elemental MediaTailor, the valid values are
 \code{AD_DECISION_SERVER_LOGS}, \code{MANIFEST_SERVICE_LOGS}, and
 \code{TRANSCODE_LOGS}.
+\item For Entity Resolution, the valid value is \code{WORKFLOW_LOGS}.
 \item For IAM Identity Center, the valid value is \code{ERROR_LOGS}.
-\item For Amazon Q, the valid value is \code{EVENT_LOGS}.
-\item For Amazon SES mail manager, the valid value is \code{APPLICATION_LOG}.
+\item For Network Firewall Proxy, the valid values are \code{ALERT_LOGS},
+\code{ALLOW_LOGS}, and \code{DENY_LOGS}.
+\item For Network Load Balancer, the valid value is \code{NLB_ACCESS_LOGS}.
+\item For PCS, the valid values are \code{PCS_SCHEDULER_LOGS} and
+\code{PCS_JOBCOMP_LOGS}.
+\item For Quick Suite, the valid values are \code{CHAT_LOGS} and
+\code{FEEDBACK_LOGS}.
+\item For Amazon Web Services RTB Fabric, the valid values is
+\code{APPLICATION_LOGS}.
+\item For Amazon Q, the valid values are \code{EVENT_LOGS} and \code{SYNC_JOB_LOGS}.
+\item For Amazon SES mail manager, the valid values are \code{APPLICATION_LOGS}
+and \code{TRAFFIC_POLICY_DEBUG_LOGS}.
 \item For Amazon WorkMail, the valid values are \code{ACCESS_CONTROL_LOGS},
 \code{AUTHENTICATION_LOGS}, \code{WORKMAIL_AVAILABILITY_PROVIDER_LOGS},
 \code{WORKMAIL_MAILBOX_ACCESS_LOGS}, and
 \code{WORKMAIL_PERSONAL_ACCESS_TOKEN_LOGS}.
+\item For Amazon VPC Route Server, the valid value is \code{EVENT_LOGS}.
 }}
 
 \item{tags}{An optional list of key-value pairs to associate with the resource.
@@ -38,7 +61,7 @@ sending logs. For example,
 For more information about tagging, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}}
 }
 \description{
-Creates or updates a logical \emph{delivery source}. A delivery source represents an Amazon Web Services resource that sends logs to an logs delivery destination. The destination can be CloudWatch Logs, Amazon S3, or Firehose.
+Creates or updates a logical \emph{delivery source}. A delivery source represents an Amazon Web Services resource that sends logs to an logs delivery destination. The destination can be CloudWatch Logs, Amazon S3, Firehose or X-Ray for sending traces.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_source/} for full documentation.
 }

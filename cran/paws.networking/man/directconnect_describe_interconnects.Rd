@@ -5,10 +5,23 @@
 \title{Lists the interconnects owned by the Amazon Web Services account or only
 the specified interconnect}
 \usage{
-directconnect_describe_interconnects(interconnectId = NULL)
+directconnect_describe_interconnects(
+  interconnectId = NULL,
+  maxResults = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{interconnectId}{The ID of the interconnect.}
+
+\item{maxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.
+
+If \code{MaxResults} is given a value larger than 100, only 100 results are
+returned.}
+
+\item{nextToken}{The token for the next page of results.}
 }
 \description{
 Lists the interconnects owned by the Amazon Web Services account or only the specified interconnect.

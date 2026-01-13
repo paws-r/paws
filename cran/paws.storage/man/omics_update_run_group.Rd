@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_update_run_group}
 \alias{omics_update_run_group}
-\title{Updates a run group}
+\title{Updates the settings of a run group and returns a response with no body
+if the operation is successful}
 \usage{
 omics_update_run_group(
   id,
@@ -27,7 +28,7 @@ omics_update_run_group(
 \item{maxGpus}{The maximum GPUs that can be used by a run group.}
 }
 \description{
-Updates a run group.
+Updates the settings of a run group and returns a response with no body if the operation is successful.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_update_run_group/} for full documentation.
 }

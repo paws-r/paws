@@ -125,7 +125,7 @@ Clean Rooms, see the \href{https://docs.aws.amazon.com/clean-rooms/latest/sql-re
 \link[paws.security.identity:cleanroomsml_delete_configured_model_algorithm_association]{delete_configured_model_algorithm_association} \tab Deletes a configured model algorithm association\cr
 \link[paws.security.identity:cleanroomsml_delete_ml_configuration]{delete_ml_configuration} \tab Deletes a ML modeling configuration\cr
 \link[paws.security.identity:cleanroomsml_delete_ml_input_channel_data]{delete_ml_input_channel_data} \tab Provides the information necessary to delete an ML input channel\cr
-\link[paws.security.identity:cleanroomsml_delete_trained_model_output]{delete_trained_model_output} \tab Deletes the output of a trained model\cr
+\link[paws.security.identity:cleanroomsml_delete_trained_model_output]{delete_trained_model_output} \tab Deletes the model artifacts stored by the service\cr
 \link[paws.security.identity:cleanroomsml_delete_training_dataset]{delete_training_dataset} \tab Specifies a training dataset that you want to delete\cr
 \link[paws.security.identity:cleanroomsml_get_audience_generation_job]{get_audience_generation_job} \tab Returns information about an audience generation job\cr
 \link[paws.security.identity:cleanroomsml_get_audience_model]{get_audience_model} \tab Returns information about an audience model\cr
@@ -156,6 +156,7 @@ Clean Rooms, see the \href{https://docs.aws.amazon.com/clean-rooms/latest/sql-re
 \link[paws.security.identity:cleanroomsml_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for a provided resource\cr
 \link[paws.security.identity:cleanroomsml_list_trained_model_inference_jobs]{list_trained_model_inference_jobs} \tab Returns a list of trained model inference jobs that match the request parameters\cr
 \link[paws.security.identity:cleanroomsml_list_trained_models]{list_trained_models} \tab Returns a list of trained models\cr
+\link[paws.security.identity:cleanroomsml_list_trained_model_versions]{list_trained_model_versions} \tab Returns a list of trained model versions for a specified trained model\cr
 \link[paws.security.identity:cleanroomsml_list_training_datasets]{list_training_datasets} \tab Returns a list of training datasets\cr
 \link[paws.security.identity:cleanroomsml_put_configured_audience_model_policy]{put_configured_audience_model_policy} \tab Create or update the resource policy for a configured audience model\cr
 \link[paws.security.identity:cleanroomsml_put_ml_configuration]{put_ml_configuration} \tab Assigns information about an ML configuration\cr

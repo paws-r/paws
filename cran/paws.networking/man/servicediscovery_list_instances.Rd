@@ -8,7 +8,11 @@ using a specified service}
 servicediscovery_list_instances(ServiceId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{ServiceId}{[required] The ID of the service that you want to list instances for.}
+\item{ServiceId}{[required] The ID or Amazon Resource Name (ARN) of the service that you want to
+list instances for. For services created in a shared namespace, specify
+the service ARN. For more information about shared namespaces, see
+\href{https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html}{Cross-account Cloud Map namespace sharing}
+in the \emph{Cloud Map Developer Guide}.}
 
 \item{NextToken}{For the first \code{\link[=servicediscovery_list_instances]{list_instances}}
 request, omit this value.

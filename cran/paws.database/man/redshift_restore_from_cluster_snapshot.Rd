@@ -41,7 +41,9 @@ redshift_restore_from_cluster_snapshot(
   ManageMasterPassword = NULL,
   MasterPasswordSecretKmsKeyId = NULL,
   IpAddressType = NULL,
-  MultiAZ = NULL
+  MultiAZ = NULL,
+  CatalogName = NULL,
+  RedshiftIdcApplicationArn = NULL
 )
 }
 \arguments{
@@ -253,6 +255,25 @@ if \code{ManageMasterPassword} is true.}
 
 \item{MultiAZ}{If true, the snapshot will be restored to a cluster deployed in two
 Availability Zones.}
+
+\item{CatalogName}{The name of the Glue Data Catalog that will be associated with the
+cluster enabled with Amazon Redshift federated permissions.
+
+Constraints:
+\itemize{
+\item Must contain at least one lowercase letter.
+\item Can only contain lowercase letters (a-z), numbers (0-9), underscores
+(_), and hyphens (-).
+}
+
+Pattern: \verb{^[a-z0-9_-]*[a-z]+[a-z0-9_-]*$}
+
+Example: \code{my-catalog_01}}
+
+\item{RedshiftIdcApplicationArn}{The Amazon Resource Name (ARN) of the IAM Identity Center application
+used for enabling Amazon Web Services IAM Identity Center trusted
+identity propagation on a cluster enabled with Amazon Redshift federated
+permissions.}
 }
 \description{
 Creates a new cluster from a snapshot. By default, Amazon Redshift creates the resulting cluster with the same configuration as the original cluster from which the snapshot was created, except that the new cluster is created with the default cluster security and parameter groups. After Amazon Redshift creates the cluster, you can use the \code{\link[=redshift_modify_cluster]{modify_cluster}} API to associate a different security group and different parameter group with the restored cluster. If you are using a DS node type, you can also choose to change to another DS node type of the same size during restore.

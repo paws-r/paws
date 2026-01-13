@@ -8,7 +8,8 @@ cloudwatch_put_insight_rule(
   RuleName,
   RuleState = NULL,
   RuleDefinition,
-  Tags = NULL
+  Tags = NULL,
+  ApplyOnTransformedLogs = NULL
 )
 }
 \arguments{
@@ -34,6 +35,20 @@ If you are using this operation to update an existing Contributor
 Insights rule, any tags you specify in this parameter are ignored. To
 change the tags of an existing rule, use
 \code{\link[=cloudwatch_tag_resource]{tag_resource}}.}
+
+\item{ApplyOnTransformedLogs}{Specify \code{true} to have this rule evaluate log events after they have
+been transformed by \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html}{Log transformation}.
+If you specify \code{true}, then the log events in log groups that have
+transformers will be evaluated by Contributor Insights after being
+transformed. Log groups that don't have transformers will still have
+their original log events evaluated by Contributor Insights.
+
+The default is \code{false}
+
+If a log group has a transformer, and transformation fails for some log
+events, those log events won't be evaluated by Contributor Insights. For
+information about investigating log transformation failures, see
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Transformation-Errors-Metrics.html}{Transformation metrics and errors}.}
 }
 \description{
 Creates a Contributor Insights rule. Rules evaluate log events in a CloudWatch Logs log group, enabling you to find contributor data for the log events in that log group. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html}{Using Contributor Insights to Analyze High-Cardinality Data}.

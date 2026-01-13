@@ -8,7 +8,8 @@ directory}
 directoryservice_create_conditional_forwarder(
   DirectoryId,
   RemoteDomainName,
-  DnsIpAddrs
+  DnsIpAddrs = NULL,
+  DnsIpv6Addrs = NULL
 )
 }
 \arguments{
@@ -18,7 +19,10 @@ creating the conditional forwarder.}
 \item{RemoteDomainName}{[required] The fully qualified domain name (FQDN) of the remote domain with which
 you will set up a trust relationship.}
 
-\item{DnsIpAddrs}{[required] The IP addresses of the remote DNS server associated with
+\item{DnsIpAddrs}{The IP addresses of the remote DNS server associated with
+RemoteDomainName.}
+
+\item{DnsIpv6Addrs}{The IPv6 addresses of the remote DNS server associated with
 RemoteDomainName.}
 }
 \description{

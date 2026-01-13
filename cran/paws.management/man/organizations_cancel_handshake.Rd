@@ -2,13 +2,13 @@
 % Please edit documentation in R/organizations_operations.R
 \name{organizations_cancel_handshake}
 \alias{organizations_cancel_handshake}
-\title{Cancels a handshake}
+\title{Cancels a Handshake}
 \usage{
 organizations_cancel_handshake(HandshakeId)
 }
 \arguments{
-\item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want to cancel. You
-can get the ID from the
+\item{HandshakeId}{[required] ID for the handshake that you want to cancel. You can get the ID from
+the
 \code{\link[=organizations_list_handshakes_for_organization]{list_handshakes_for_organization}}
 operation.
 
@@ -17,7 +17,7 @@ ID string requires "h-" followed by from 8 to 32 lowercase letters or
 digits.}
 }
 \description{
-Cancels a handshake. Canceling a handshake sets the handshake state to \code{CANCELED}.
+Cancels a Handshake.
 
 See \url{https://www.paws-r-sdk.com/docs/organizations_cancel_handshake/} for full documentation.
 }

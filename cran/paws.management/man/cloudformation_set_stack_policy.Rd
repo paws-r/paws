@@ -13,16 +13,19 @@ cloudformation_set_stack_policy(
 \arguments{
 \item{StackName}{[required] The name or unique stack ID that you want to associate a policy with.}
 
-\item{StackPolicyBody}{Structure containing the stack policy body. For more information, see
+\item{StackPolicyBody}{Structure that contains the stack policy body. For more information, see
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html}{Prevent updates to stack resources}
 in the \emph{CloudFormation User Guide}. You can specify either the
 \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.}
 
-\item{StackPolicyURL}{Location of a file containing the stack policy. The URL must point to a
-policy (maximum size: 16 KB) located in an Amazon S3 bucket in the same
-Amazon Web Services Region as the stack. The location for an Amazon S3
-bucket must start with \verb{https://}. You can specify either the
-\code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.}
+\item{StackPolicyURL}{Location of a file that contains the stack policy. The URL must point to
+a policy (maximum size: 16 KB) located in an Amazon S3 bucket in the
+same Amazon Web Services Region as the stack. The location for an Amazon
+S3 bucket must start with \verb{https://}. URLs from S3 static websites are
+not supported.
+
+You can specify either the \code{StackPolicyBody} or the \code{StackPolicyURL}
+parameter, but not both.}
 }
 \description{
 Sets a stack policy for a specified stack.

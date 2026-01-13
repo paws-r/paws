@@ -154,6 +154,7 @@ NULL
 #'  \link[=workspaces_describe_connect_client_add_ins]{describe_connect_client_add_ins} \tab Retrieves a list of Amazon Connect client add-ins that have been created\cr
 #'  \link[=workspaces_describe_connection_aliases]{describe_connection_aliases} \tab Retrieves a list that describes the connection aliases used for cross-Region redirection\cr
 #'  \link[=workspaces_describe_connection_alias_permissions]{describe_connection_alias_permissions} \tab Describes the permissions that the owner of a connection alias has granted to another Amazon Web Services account for the specified connection alias\cr
+#'  \link[=workspaces_describe_custom_workspace_image_import]{describe_custom_workspace_image_import} \tab Retrieves information about a WorkSpace BYOL image being imported via ImportCustomWorkspaceImage\cr
 #'  \link[=workspaces_describe_image_associations]{describe_image_associations} \tab Describes the associations between the applications and the specified image\cr
 #'  \link[=workspaces_describe_ip_groups]{describe_ip_groups} \tab Describes one or more of your IP access control groups\cr
 #'  \link[=workspaces_describe_tags]{describe_tags} \tab Describes the specified tags for the specified WorkSpaces resource\cr
@@ -172,6 +173,7 @@ NULL
 #'  \link[=workspaces_disassociate_workspace_application]{disassociate_workspace_application} \tab Disassociates the specified application from a WorkSpace\cr
 #'  \link[=workspaces_get_account_link]{get_account_link} \tab Retrieves account link information\cr
 #'  \link[=workspaces_import_client_branding]{import_client_branding} \tab Imports client branding\cr
+#'  \link[=workspaces_import_custom_workspace_image]{import_custom_workspace_image} \tab Imports the specified Windows 10 or 11 Bring Your Own License (BYOL) image into Amazon WorkSpaces using EC2 Image Builder\cr
 #'  \link[=workspaces_import_workspace_image]{import_workspace_image} \tab Imports the specified Windows 10 or 11 Bring Your Own License (BYOL) image into Amazon WorkSpaces\cr
 #'  \link[=workspaces_list_account_links]{list_account_links} \tab Lists all account links\cr
 #'  \link[=workspaces_list_available_management_cidr_ranges]{list_available_management_cidr_ranges} \tab Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable Bring Your Own License (BYOL)\cr

@@ -19,6 +19,9 @@ ssmcontacts_create_rotation(
 
 \item{ContactIds}{[required] The Amazon Resource Names (ARNs) of the contacts to add to the rotation.
 
+Only the \code{PERSONAL} contact type is supported. The contact types
+\code{ESCALATION} and \code{ONCALL_SCHEDULE} are not supported for this operation.
+
 The order that you list the contacts in is their shift order in the
 rotation schedule. To change the order of the contact's shifts, use the
 \code{\link[=ssmcontacts_update_rotation]{update_rotation}} operation.}
@@ -30,8 +33,7 @@ Numbers Authority (IANA) format. For example: "America/Los_Angeles",
 "UTC", or "Asia/Seoul". For more information, see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA website.
 
 Designators for time zones that don’t support Daylight Savings Time
-rules, such as Pacific Standard Time (PST) and Pacific Daylight Time
-(PDT), are not supported.}
+rules, such as Pacific Standard Time (PST), are not supported.}
 
 \item{Recurrence}{[required] Information about the rule that specifies when a shift's team members
 rotate.}

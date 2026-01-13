@@ -100,9 +100,9 @@ for that usage. For more information, see the \href{https://docs.aws.amazon.com/
 \tabular{ll}{
 \link[=savingsplans_create_savings_plan]{create_savings_plan} \tab Creates a Savings Plan\cr
 \link[=savingsplans_delete_queued_savings_plan]{delete_queued_savings_plan} \tab Deletes the queued purchase for the specified Savings Plan\cr
-\link[=savingsplans_describe_savings_plan_rates]{describe_savings_plan_rates} \tab Describes the rates for the specified Savings Plan\cr
+\link[=savingsplans_describe_savings_plan_rates]{describe_savings_plan_rates} \tab Describes the rates for a specific, existing Savings Plan\cr
 \link[=savingsplans_describe_savings_plans]{describe_savings_plans} \tab Describes the specified Savings Plans\cr
-\link[=savingsplans_describe_savings_plans_offering_rates]{describe_savings_plans_offering_rates} \tab Describes the offering rates for the specified Savings Plans\cr
+\link[=savingsplans_describe_savings_plans_offering_rates]{describe_savings_plans_offering_rates} \tab Describes the offering rates for Savings Plans you might want to purchase\cr
 \link[=savingsplans_describe_savings_plans_offerings]{describe_savings_plans_offerings} \tab Describes the offerings for the specified Savings Plans\cr
 \link[=savingsplans_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
 \link[=savingsplans_return_savings_plan]{return_savings_plan} \tab Returns the specified Savings Plan\cr

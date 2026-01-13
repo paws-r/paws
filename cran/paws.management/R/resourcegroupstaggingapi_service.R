@@ -95,6 +95,7 @@ NULL
 #'  \link[=resourcegroupstaggingapi_get_resources]{get_resources} \tab Returns all the tagged or previously tagged resources that are located in the specified Amazon Web Services Region for the account\cr
 #'  \link[=resourcegroupstaggingapi_get_tag_keys]{get_tag_keys} \tab Returns all tag keys currently in use in the specified Amazon Web Services Region for the calling account\cr
 #'  \link[=resourcegroupstaggingapi_get_tag_values]{get_tag_values} \tab Returns all tag values for the specified key that are used in the specified Amazon Web Services Region for the calling account\cr
+#'  \link[=resourcegroupstaggingapi_list_required_tags]{list_required_tags} \tab Lists the required tags for supported resource types in an Amazon Web Services account\cr
 #'  \link[=resourcegroupstaggingapi_start_report_creation]{start_report_creation} \tab Generates a report that lists all tagged resources in the accounts across your organization and tells whether each resource is compliant with the effective tag policy\cr
 #'  \link[=resourcegroupstaggingapi_tag_resources]{tag_resources} \tab Applies one or more tags to the specified resources\cr
 #'  \link[=resourcegroupstaggingapi_untag_resources]{untag_resources} \tab Removes the specified tags from the specified resources

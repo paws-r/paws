@@ -195,8 +195,8 @@ fail for Amazon Route 53 to change the current status of the endpoint
 from unhealthy to healthy or vice versa. For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html}{How Amazon Route 53 Determines Whether an Endpoint Is Healthy}
 in the \emph{Amazon Route 53 Developer Guide}.
 
-If you don't specify a value for \code{FailureThreshold}, the default value
-is three health checks.}
+Otherwise, if you don't specify a value for \code{FailureThreshold}, the
+default value is three health checks.}
 
 \item{Inverted}{Specify whether you want Amazon Route 53 to invert the status of a
 health check, for example, to consider a health check unhealthy when it
@@ -215,8 +215,9 @@ monitoring the corresponding CloudWatch metrics.
 
 After you disable a health check, Route 53 considers the status of the
 health check to always be healthy. If you configured DNS failover, Route
-53 continues to route traffic to the corresponding resources. If you
-want to stop routing traffic to a resource, change the value of
+53 continues to route traffic to the corresponding resources.
+Additionally, in disabled state, you can also invert the status of the
+health check to route traffic differently. For more information, see
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-Inverted}{Inverted}.
 
 Charges for a health check still apply when the health check is

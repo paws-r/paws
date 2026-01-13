@@ -354,7 +354,7 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' @param jobName &#91;required&#93; The name for the dataset import job.
 #' @param datasetArn &#91;required&#93; The ARN of the dataset that receives the imported data.
 #' @param dataSource &#91;required&#93; The Amazon S3 bucket that contains the training data to import.
-#' @param roleArn &#91;required&#93; The ARN of the IAM role that has permissions to read from the Amazon S3
+#' @param roleArn The ARN of the IAM role that has permissions to read from the Amazon S3
 #' data source.
 #' @param tags A list of
 #' [tags](https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html)
@@ -375,7 +375,7 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' @keywords internal
 #'
 #' @rdname personalize_create_dataset_import_job
-personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSource, roleArn, tags = NULL, importMode = NULL, publishAttributionMetricsToS3 = NULL) {
+personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSource, roleArn = NULL, tags = NULL, importMode = NULL, publishAttributionMetricsToS3 = NULL) {
   op <- new_operation(
     name = "CreateDatasetImportJob",
     http_method = "POST",
@@ -632,6 +632,11 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' [`list_solution_versions`][personalize_list_solution_versions] API
 #' operation. To get its status, use the
 #' [`describe_solution_version`][personalize_describe_solution_version].
+#' @param performIncrementalUpdate Whether to perform incremental training updates on your model. When
+#' enabled, this allows the model to learn from new data more frequently
+#' without requiring full retraining, which enables near real-time
+#' personalization. This parameter is supported only for solutions that use
+#' the semantic-similarity recipe.
 #' @param recipeArn The Amazon Resource Name (ARN) of the recipe to use for model training.
 #' This is required when `performAutoML` is false. For information about
 #' different Amazon Personalize recipes and their ARNs, see [Choosing a
@@ -657,7 +662,7 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' @keywords internal
 #'
 #' @rdname personalize_create_solution
-personalize_create_solution <- function(name, performHPO = NULL, performAutoML = NULL, performAutoTraining = NULL, recipeArn = NULL, datasetGroupArn, eventType = NULL, solutionConfig = NULL, tags = NULL) {
+personalize_create_solution <- function(name, performHPO = NULL, performAutoML = NULL, performAutoTraining = NULL, performIncrementalUpdate = NULL, recipeArn = NULL, datasetGroupArn, eventType = NULL, solutionConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSolution",
     http_method = "POST",
@@ -666,7 +671,7 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .personalize$create_solution_input(name = name, performHPO = performHPO, performAutoML = performAutoML, performAutoTraining = performAutoTraining, recipeArn = recipeArn, datasetGroupArn = datasetGroupArn, eventType = eventType, solutionConfig = solutionConfig, tags = tags)
+  input <- .personalize$create_solution_input(name = name, performHPO = performHPO, performAutoML = performAutoML, performAutoTraining = performAutoTraining, performIncrementalUpdate = performIncrementalUpdate, recipeArn = recipeArn, datasetGroupArn = datasetGroupArn, eventType = eventType, solutionConfig = solutionConfig, tags = tags)
   output <- .personalize$create_solution_output()
   config <- get_config()
   svc <- .personalize$service(config, op)
@@ -2587,12 +2592,17 @@ personalize_update_recommender <- function(recommenderArn, recommenderConfig) {
 #' [`list_solution_versions`][personalize_list_solution_versions] API
 #' operation. To get its status, use the
 #' [`describe_solution_version`][personalize_describe_solution_version].
+#' @param performIncrementalUpdate Whether to perform incremental training updates on your model. When
+#' enabled, this allows the model to learn from new data more frequently
+#' without requiring full retraining, which enables near real-time
+#' personalization. This parameter is supported only for solutions that use
+#' the semantic-similarity recipe.
 #' @param solutionUpdateConfig The new configuration details of the solution.
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_update_solution
-personalize_update_solution <- function(solutionArn, performAutoTraining = NULL, solutionUpdateConfig = NULL) {
+personalize_update_solution <- function(solutionArn, performAutoTraining = NULL, performIncrementalUpdate = NULL, solutionUpdateConfig = NULL) {
   op <- new_operation(
     name = "UpdateSolution",
     http_method = "POST",
@@ -2601,7 +2611,7 @@ personalize_update_solution <- function(solutionArn, performAutoTraining = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .personalize$update_solution_input(solutionArn = solutionArn, performAutoTraining = performAutoTraining, solutionUpdateConfig = solutionUpdateConfig)
+  input <- .personalize$update_solution_input(solutionArn = solutionArn, performAutoTraining = performAutoTraining, performIncrementalUpdate = performIncrementalUpdate, solutionUpdateConfig = solutionUpdateConfig)
   output <- .personalize$update_solution_output()
   config <- get_config()
   svc <- .personalize$service(config, op)

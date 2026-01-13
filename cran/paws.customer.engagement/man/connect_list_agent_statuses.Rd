@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_list_agent_statuses}
 \alias{connect_list_agent_statuses}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Lists agent statuses}
 \usage{
 connect_list_agent_statuses(
   InstanceId,
@@ -25,7 +24,7 @@ results.}
 \item{AgentStatusTypes}{Available agent status types.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Lists agent statuses.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_list_agent_statuses/} for full documentation.
 }

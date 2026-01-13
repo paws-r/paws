@@ -1,5 +1,9 @@
 svc <- paws::vpclattice()
 
+test_that("list_domain_verifications", {
+  expect_error(svc$list_domain_verifications(), NA)
+})
+
 test_that("list_resource_configurations", {
   expect_error(svc$list_resource_configurations(), NA)
 })

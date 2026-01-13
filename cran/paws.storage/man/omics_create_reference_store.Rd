@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_create_reference_store}
 \alias{omics_create_reference_store}
-\title{Creates a reference store}
+\title{Creates a reference store and returns metadata in JSON format}
 \usage{
 omics_create_reference_store(
   name,
@@ -25,7 +25,7 @@ omics_create_reference_store(
 for each request.}
 }
 \description{
-Creates a reference store.
+Creates a reference store and returns metadata in JSON format. Reference stores are used to store reference genomes in FASTA format. A reference store is created when the first reference genome is imported. To import additional reference genomes from an Amazon S3 bucket, use the \code{\link[=omics_start_reference_import_job]{start_reference_import_job}} API operation.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_create_reference_store/} for full documentation.
 }

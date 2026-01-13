@@ -13,7 +13,8 @@ secretsmanager_create_secret(
   SecretString = NULL,
   Tags = NULL,
   AddReplicaRegions = NULL,
-  ForceOverwriteReplicaSecret = NULL
+  ForceOverwriteReplicaSecret = NULL,
+  Type = NULL
 )
 }
 \arguments{
@@ -136,6 +137,9 @@ in the \emph{Amazon Web Services General Reference guide}.}
 
 \item{ForceOverwriteReplicaSecret}{Specifies whether to overwrite a secret with the same name in the
 destination Region. By default, secrets aren't overwritten.}
+
+\item{Type}{The exact string that identifies the partner that holds the external
+secret. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/managed-external-secrets.html}{Using Secrets Manager managed external secrets}.}
 }
 \description{
 Creates a new secret. A \emph{secret} can be a password, a set of credentials such as a user name and password, an OAuth token, or other secret information that you store in an encrypted form in Secrets Manager. The secret also includes the connection information to access a database or other service, which Secrets Manager doesn't encrypt. A secret in Secrets Manager consists of both the protected secret data and the important information needed to manage the secret.

@@ -4,12 +4,12 @@
 \alias{bedrockagent_delete_agent_alias}
 \title{Deletes an alias of an agent}
 \usage{
-bedrockagent_delete_agent_alias(agentAliasId, agentId)
+bedrockagent_delete_agent_alias(agentId, agentAliasId)
 }
 \arguments{
-\item{agentAliasId}{[required] The unique identifier of the alias to delete.}
-
 \item{agentId}{[required] The unique identifier of the agent that the alias belongs to.}
+
+\item{agentAliasId}{[required] The unique identifier of the alias to delete.}
 }
 \description{
 Deletes an alias of an agent.

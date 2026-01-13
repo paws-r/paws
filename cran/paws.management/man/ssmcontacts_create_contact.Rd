@@ -21,8 +21,12 @@ contact alias must be unique and identifiable.}
 
 \item{DisplayName}{The full name of the contact or escalation plan.}
 
-\item{Type}{[required] To create an escalation plan use \code{ESCALATION}. To create a contact use
-\code{PERSONAL}.}
+\item{Type}{[required] The type of contact to create.
+\itemize{
+\item \code{PERSONAL}: A single, individual contact.
+\item \code{ESCALATION}: An escalation plan.
+\item \code{ONCALL_SCHEDULE}: An on-call schedule.
+}}
 
 \item{Plan}{[required] A list of stages. A contact has an engagement plan with stages that
 contact specified contact channels. An escalation plan uses stages that

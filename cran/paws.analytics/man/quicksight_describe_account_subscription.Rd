@@ -3,16 +3,16 @@
 \name{quicksight_describe_account_subscription}
 \alias{quicksight_describe_account_subscription}
 \title{Use the DescribeAccountSubscription operation to receive a description
-of an Amazon QuickSight account's subscription}
+of an Quick Sight account's subscription}
 \usage{
 quicksight_describe_account_subscription(AwsAccountId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The Amazon Web Services account ID associated with your Amazon
-QuickSight account.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID associated with your Quick Sight
+account.}
 }
 \description{
-Use the DescribeAccountSubscription operation to receive a description of an Amazon QuickSight account's subscription. A successful API call returns an \code{AccountInfo} object that includes an account's name, subscription status, authentication type, edition, and notification email address.
+Use the DescribeAccountSubscription operation to receive a description of an Quick Sight account's subscription. A successful API call returns an \code{AccountInfo} object that includes an account's name, subscription status, authentication type, edition, and notification email address.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_account_subscription/} for full documentation.
 }

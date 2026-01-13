@@ -13,9 +13,9 @@ quicksight_update_q_personalization_configuration(
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account account that contains the
 personalization configuration that the user wants to update.}
 
-\item{PersonalizationMode}{[required] An option to allow Amazon QuickSight to customize data stories with user
-specific metadata, specifically location and job information, in your
-IAM Identity Center instance.}
+\item{PersonalizationMode}{[required] An option to allow Amazon Quick Sight to customize data stories with
+user specific metadata, specifically location and job information, in
+your IAM Identity Center instance.}
 }
 \description{
 Updates a personalization configuration.

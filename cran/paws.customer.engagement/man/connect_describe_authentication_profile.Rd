@@ -14,7 +14,7 @@ connect_describe_authentication_profile(AuthenticationProfileId, InstanceId)
 in the Amazon Resource Name (ARN) of the instance.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web ServicesSupport.
+This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web Services Support.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_describe_authentication_profile/} for full documentation.
 }

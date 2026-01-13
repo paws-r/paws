@@ -16,8 +16,8 @@ pinpointsmsvoicev2_describe_sender_ids(
 \arguments{
 \item{SenderIds}{An array of SenderIdAndCountry objects to search for.
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 
 \item{Filters}{An array of SenderIdFilter objects to filter the results.}
 

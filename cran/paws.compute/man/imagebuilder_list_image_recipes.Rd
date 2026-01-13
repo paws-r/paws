@@ -12,11 +12,10 @@ imagebuilder_list_image_recipes(
 )
 }
 \arguments{
-\item{owner}{The owner defines which image recipes you want to list. By default, this
-request will only show image recipes owned by your account. You can use
-this field to specify if you want to view image recipes owned by
-yourself, by Amazon, or those image recipes that have been shared with
-you by other customers.}
+\item{owner}{You can specify the recipe owner to filter results by that owner. By
+default, this request will only show image recipes owned by your
+account. To filter by a different owner, specify one of the
+\verb{Valid Values} that are listed for this parameter.}
 
 \item{filters}{Use the following filters to streamline results:
 \itemize{
@@ -25,7 +24,7 @@ you by other customers.}
 \item \code{platform}
 }}
 
-\item{maxResults}{The maximum items to return in a request.}
+\item{maxResults}{Specify the maximum number of items to return in a request.}
 
 \item{nextToken}{A token to specify where to start paginating. This is the nextToken from
 a previously truncated response.}

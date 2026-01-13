@@ -9,8 +9,8 @@ inspector2_create_filter(
   description = NULL,
   filterCriteria,
   name,
-  reason = NULL,
-  tags = NULL
+  tags = NULL,
+  reason = NULL
 )
 }
 \arguments{
@@ -25,9 +25,9 @@ filter.}
 characters include alphanumeric characters, dot (.), underscore (_),
 and dash (-). Spaces are not allowed.}
 
-\item{reason}{The reason for creating the filter.}
-
 \item{tags}{A list of tags for the filter.}
+
+\item{reason}{The reason for creating the filter.}
 }
 \description{
 Creates a filter resource using specified filter criteria. When the filter action is set to \code{SUPPRESS} this action creates a suppression rule.

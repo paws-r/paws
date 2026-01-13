@@ -171,6 +171,7 @@ For more information, see \href{https://docs.aws.amazon.com/Route53/latest/Devel
 \link[=route53_test_dns_answer]{test_dns_answer} \tab Gets the value that Amazon Route 53 returns in response to a DNS request for a specified record name and type\cr
 \link[=route53_update_health_check]{update_health_check} \tab Updates an existing health check\cr
 \link[=route53_update_hosted_zone_comment]{update_hosted_zone_comment} \tab Updates the comment for a specified hosted zone\cr
+\link[=route53_update_hosted_zone_features]{update_hosted_zone_features} \tab Updates the features configuration for a hosted zone\cr
 \link[=route53_update_traffic_policy_comment]{update_traffic_policy_comment} \tab Updates the comment for a specified traffic policy version\cr
 \link[=route53_update_traffic_policy_instance]{update_traffic_policy_instance} \tab After you submit a UpdateTrafficPolicyInstance request, there's a brief delay while Route 53 creates the resource record sets that are specified in the traffic policy definition
 }

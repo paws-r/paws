@@ -3,6 +3,37 @@
 #' @include iam_service.R
 NULL
 
+#' Accepts a delegation request, granting the requested temporary access
+#'
+#' @description
+#' Accepts a delegation request, granting the requested temporary access.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_accept_delegation_request/](https://www.paws-r-sdk.com/docs/iam_accept_delegation_request/) for full documentation.
+#'
+#' @param DelegationRequestId &#91;required&#93; The unique identifier of the delegation request to accept.
+#'
+#' @keywords internal
+#'
+#' @rdname iam_accept_delegation_request
+iam_accept_delegation_request <- function(DelegationRequestId) {
+  op <- new_operation(
+    name = "AcceptDelegationRequest",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$accept_delegation_request_input(DelegationRequestId = DelegationRequestId)
+  output <- .iam$accept_delegation_request_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$accept_delegation_request <- iam_accept_delegation_request
+
 #' Adds a new client ID (also known as audience) to the list of client IDs
 #' already registered for the specified IAM OpenID Connect (OIDC) provider
 #' resource
@@ -125,6 +156,37 @@ iam_add_user_to_group <- function(GroupName, UserName) {
   return(response)
 }
 .iam$operations$add_user_to_group <- iam_add_user_to_group
+
+#' Associates a delegation request with the current identity
+#'
+#' @description
+#' Associates a delegation request with the current identity.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_associate_delegation_request/](https://www.paws-r-sdk.com/docs/iam_associate_delegation_request/) for full documentation.
+#'
+#' @param DelegationRequestId &#91;required&#93; The unique identifier of the delegation request to associate.
+#'
+#' @keywords internal
+#'
+#' @rdname iam_associate_delegation_request
+iam_associate_delegation_request <- function(DelegationRequestId) {
+  op <- new_operation(
+    name = "AssociateDelegationRequest",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$associate_delegation_request_input(DelegationRequestId = DelegationRequestId)
+  output <- .iam$associate_delegation_request_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$associate_delegation_request <- iam_associate_delegation_request
 
 #' Attaches the specified managed policy to the specified IAM group
 #'
@@ -365,6 +427,87 @@ iam_create_account_alias <- function(AccountAlias) {
   return(response)
 }
 .iam$operations$create_account_alias <- iam_create_account_alias
+
+#' Creates an IAM delegation request for temporary access delegation
+#'
+#' @description
+#' Creates an IAM delegation request for temporary access delegation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_create_delegation_request/](https://www.paws-r-sdk.com/docs/iam_create_delegation_request/) for full documentation.
+#'
+#' @param OwnerAccountId The Amazon Web Services account ID this delegation request is targeted
+#' to.
+#' 
+#' If the account ID is not known, this parameter can be omitted, resulting
+#' in a request that can be associated by any account. If the account ID
+#' passed, then the created delegation request can only be associated with
+#' an identity of that target account.
+#' @param Description &#91;required&#93; A description of the delegation request.
+#' @param Permissions &#91;required&#93; The permissions to be delegated in this delegation request.
+#' @param RequestMessage A message explaining the reason for the delegation request.
+#' 
+#' Requesters can utilize this field to add a custom note to the delegation
+#' request. This field is different from the description such that this is
+#' to be utilized for a custom messaging on a case-by-case basis.
+#' 
+#' For example, if the current delegation request is in response to a
+#' previous request being rejected, this explanation can be added to the
+#' request via this field.
+#' @param RequestorWorkflowId &#91;required&#93; The workflow ID associated with the requestor.
+#' 
+#' This is the unique identifier on the partner side that can be used to
+#' track the progress of the request.
+#' 
+#' IAM maintains a uniqueness check on this workflow id for each request -
+#' if a workflow id for an existing request is passed, this API call will
+#' fail.
+#' @param RedirectUrl The URL to redirect to after the delegation request is processed.
+#' 
+#' This URL is used by the IAM console to show a link to the customer to
+#' re-load the partner workflow.
+#' @param NotificationChannel &#91;required&#93; The notification channel for updates about the delegation request.
+#' 
+#' At this time,only SNS topic ARNs are accepted for notification. This
+#' topic ARN must have a resource policy granting `SNS:Publish` permission
+#' to the IAM service principal (`iam.amazonaws.com`). See [partner
+#' onboarding
+#' documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-temporary-delegation-partner-guide.html)
+#' for more details.
+#' @param SessionDuration &#91;required&#93; The duration for which the delegated session should remain active, in
+#' seconds.
+#' 
+#' The active time window for the session starts when the customer calls
+#' the [`send_delegation_token`][iam_send_delegation_token] API.
+#' @param OnlySendByOwner Specifies whether the delegation token should only be sent by the owner.
+#' 
+#' This flag prevents any party other than the owner from calling
+#' [`send_delegation_token`][iam_send_delegation_token] API for this
+#' delegation request. This behavior becomes useful when the delegation
+#' request owner needs to be present for subsequent partner interactions,
+#' but the delegation request was sent to a more privileged user for
+#' approval due to the owner lacking sufficient delegation permissions.
+#'
+#' @keywords internal
+#'
+#' @rdname iam_create_delegation_request
+iam_create_delegation_request <- function(OwnerAccountId = NULL, Description, Permissions, RequestMessage = NULL, RequestorWorkflowId, RedirectUrl = NULL, NotificationChannel, SessionDuration, OnlySendByOwner = NULL) {
+  op <- new_operation(
+    name = "CreateDelegationRequest",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$create_delegation_request_input(OwnerAccountId = OwnerAccountId, Description = Description, Permissions = Permissions, RequestMessage = RequestMessage, RequestorWorkflowId = RequestorWorkflowId, RedirectUrl = RedirectUrl, NotificationChannel = NotificationChannel, SessionDuration = SessionDuration, OnlySendByOwner = OnlySendByOwner)
+  output <- .iam$create_delegation_request_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$create_delegation_request <- iam_create_delegation_request
 
 #' Creates a new group
 #'
@@ -1044,11 +1187,14 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
 #' @param ServiceName &#91;required&#93; The name of the Amazon Web Services service that is to be associated
 #' with the credentials. The service you specify here is the only service
 #' that can be accessed using these credentials.
+#' @param CredentialAgeDays The number of days until the service specific credential expires. This
+#' field is only valid for Bedrock API keys and must be a positive integer.
+#' When not specified, the credential will not expire.
 #'
 #' @keywords internal
 #'
 #' @rdname iam_create_service_specific_credential
-iam_create_service_specific_credential <- function(UserName, ServiceName) {
+iam_create_service_specific_credential <- function(UserName, ServiceName, CredentialAgeDays = NULL) {
   op <- new_operation(
     name = "CreateServiceSpecificCredential",
     http_method = "POST",
@@ -1057,7 +1203,7 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iam$create_service_specific_credential_input(UserName = UserName, ServiceName = ServiceName)
+  input <- .iam$create_service_specific_credential_input(UserName = UserName, ServiceName = ServiceName, CredentialAgeDays = CredentialAgeDays)
   output <- .iam$create_service_specific_credential_output()
   config <- get_config()
   svc <- .iam$service(config, op)
@@ -1475,11 +1621,11 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
 }
 .iam$operations$delete_instance_profile <- iam_delete_instance_profile
 
-#' Deletes the password for the specified IAM user, For more information,
-#' see Managing passwords for IAM users
+#' Deletes the password for the specified IAM user or root user, For more
+#' information, see Managing passwords for IAM users
 #'
 #' @description
-#' Deletes the password for the specified IAM user, For more information, see [Managing passwords for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html).
+#' Deletes the password for the specified IAM user or root user, For more information, see [Managing passwords for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_delete_login_profile/](https://www.paws-r-sdk.com/docs/iam_delete_login_profile/) for full documentation.
 #'
@@ -2313,6 +2459,38 @@ iam_disable_organizations_root_sessions <- function() {
 }
 .iam$operations$disable_organizations_root_sessions <- iam_disable_organizations_root_sessions
 
+#' Disables the outbound identity federation feature for your Amazon Web
+#' Services account
+#'
+#' @description
+#' Disables the outbound identity federation feature for your Amazon Web Services account. When disabled, IAM principals in the account cannot use the `GetWebIdentityToken` API to obtain JSON Web Tokens (JWTs) for authentication with external services. This operation does not affect tokens that were issued before the feature was disabled.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_disable_outbound_web_identity_federation/](https://www.paws-r-sdk.com/docs/iam_disable_outbound_web_identity_federation/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname iam_disable_outbound_web_identity_federation
+iam_disable_outbound_web_identity_federation <- function() {
+  op <- new_operation(
+    name = "DisableOutboundWebIdentityFederation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$disable_outbound_web_identity_federation_input()
+  output <- .iam$disable_outbound_web_identity_federation_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$disable_outbound_web_identity_federation <- iam_disable_outbound_web_identity_federation
+
 #' Enables the specified MFA device and associates it with the specified
 #' IAM user
 #'
@@ -2442,6 +2620,38 @@ iam_enable_organizations_root_sessions <- function() {
   return(response)
 }
 .iam$operations$enable_organizations_root_sessions <- iam_enable_organizations_root_sessions
+
+#' Enables the outbound identity federation feature for your Amazon Web
+#' Services account
+#'
+#' @description
+#' Enables the outbound identity federation feature for your Amazon Web Services account. When enabled, IAM principals in your account can use the `GetWebIdentityToken` API to obtain JSON Web Tokens (JWTs) for secure authentication with external services. This operation also generates a unique issuer URL for your Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_enable_outbound_web_identity_federation/](https://www.paws-r-sdk.com/docs/iam_enable_outbound_web_identity_federation/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname iam_enable_outbound_web_identity_federation
+iam_enable_outbound_web_identity_federation <- function() {
+  op <- new_operation(
+    name = "EnableOutboundWebIdentityFederation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$enable_outbound_web_identity_federation_input()
+  output <- .iam$enable_outbound_web_identity_federation_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$enable_outbound_web_identity_federation <- iam_enable_outbound_web_identity_federation
 
 #' Generates a credential report for the Amazon Web Services account
 #'
@@ -2843,6 +3053,49 @@ iam_get_credential_report <- function() {
 }
 .iam$operations$get_credential_report <- iam_get_credential_report
 
+#' Retrieves information about a specific delegation request
+#'
+#' @description
+#' Retrieves information about a specific delegation request.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_get_delegation_request/](https://www.paws-r-sdk.com/docs/iam_get_delegation_request/) for full documentation.
+#'
+#' @param DelegationRequestId &#91;required&#93; The unique identifier of the delegation request to retrieve.
+#' @param DelegationPermissionCheck Specifies whether to perform a permission check for the delegation
+#' request.
+#' 
+#' If set to true, the
+#' [`get_delegation_request`][iam_get_delegation_request] API call will
+#' start a permission check process. This process calculates whether the
+#' caller has sufficient permissions to cover the asks from this delegation
+#' request.
+#' 
+#' Setting this parameter to true does not guarantee an answer in the
+#' response. See the `PermissionCheckStatus` and the
+#' `PermissionCheckResult` response attributes for further details.
+#'
+#' @keywords internal
+#'
+#' @rdname iam_get_delegation_request
+iam_get_delegation_request <- function(DelegationRequestId, DelegationPermissionCheck = NULL) {
+  op <- new_operation(
+    name = "GetDelegationRequest",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$get_delegation_request_input(DelegationRequestId = DelegationRequestId, DelegationPermissionCheck = DelegationPermissionCheck)
+  output <- .iam$get_delegation_request_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$get_delegation_request <- iam_get_delegation_request
+
 #' Returns a list of IAM users that are in the specified IAM group
 #'
 #' @description
@@ -2934,6 +3187,41 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
   return(response)
 }
 .iam$operations$get_group_policy <- iam_get_group_policy
+
+#' Retrieves a human readable summary for a given entity
+#'
+#' @description
+#' Retrieves a human readable summary for a given entity. At this time, the only supported entity type is `delegation-request`
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_get_human_readable_summary/](https://www.paws-r-sdk.com/docs/iam_get_human_readable_summary/) for full documentation.
+#'
+#' @param EntityArn &#91;required&#93; Arn of the entity to be summarized. At this time, the only supported
+#' entity type is `delegation-request`
+#' @param Locale A string representing the locale to use for the summary generation. The
+#' supported locale strings are based on the Supported languages of the
+#' Amazon Web Services Management Console .
+#'
+#' @keywords internal
+#'
+#' @rdname iam_get_human_readable_summary
+iam_get_human_readable_summary <- function(EntityArn, Locale = NULL) {
+  op <- new_operation(
+    name = "GetHumanReadableSummary",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$get_human_readable_summary_input(EntityArn = EntityArn, Locale = Locale)
+  output <- .iam$get_human_readable_summary_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$get_human_readable_summary <- iam_get_human_readable_summary
 
 #' Retrieves information about the specified instance profile, including
 #' the instance profile's path, GUID, ARN, and role
@@ -3138,6 +3426,38 @@ iam_get_organizations_access_report <- function(JobId, MaxItems = NULL, Marker =
   return(response)
 }
 .iam$operations$get_organizations_access_report <- iam_get_organizations_access_report
+
+#' Retrieves the configuration information for the outbound identity
+#' federation feature in your Amazon Web Services account
+#'
+#' @description
+#' Retrieves the configuration information for the outbound identity federation feature in your Amazon Web Services account. The response includes the unique issuer URL for your Amazon Web Services account and the current enabled/disabled status of the feature. Use this operation to obtain the issuer URL that you need to configure trust relationships with external services.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_get_outbound_web_identity_federation_info/](https://www.paws-r-sdk.com/docs/iam_get_outbound_web_identity_federation_info/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname iam_get_outbound_web_identity_federation_info
+iam_get_outbound_web_identity_federation_info <- function() {
+  op <- new_operation(
+    name = "GetOutboundWebIdentityFederationInfo",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$get_outbound_web_identity_federation_info_input()
+  output <- .iam$get_outbound_web_identity_federation_info_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$get_outbound_web_identity_federation_info <- iam_get_outbound_web_identity_federation_info
 
 #' Retrieves information about the specified managed policy, including the
 #' policy's default version and the total number of IAM users, groups, and
@@ -3494,7 +3814,7 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' example, `(service prefix: a4b)`. For more information about service
 #' namespaces, see [Amazon Web Services service
 #' namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces)
-#' in the *Amazon Web Services General Reference*.
+#' in the *Amazon Web Services General Reference*.
 #' @param MaxItems Use this only when paginating results to indicate the maximum number of
 #' items you want in the response. If additional items exist beyond the
 #' maximum you specify, the `IsTruncated` response element is `true`.
@@ -3920,6 +4240,50 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
 }
 .iam$operations$list_attached_user_policies <- iam_list_attached_user_policies
 
+#' Lists delegation requests based on the specified criteria
+#'
+#' @description
+#' Lists delegation requests based on the specified criteria.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_list_delegation_requests/](https://www.paws-r-sdk.com/docs/iam_list_delegation_requests/) for full documentation.
+#'
+#' @param OwnerId The owner ID to filter delegation requests by.
+#' @param Marker Use this parameter only when paginating results and only after you
+#' receive a response indicating that the results are truncated. Set it to
+#' the value of the `Marker` element in the response that you received to
+#' indicate where the next call should start.
+#' @param MaxItems Use this only when paginating results to indicate the maximum number of
+#' items you want in the response. If additional items exist beyond the
+#' maximum you specify, the `IsTruncated` response element is `true`.
+#' 
+#' If you do not include this parameter, the number of items defaults to
+#' 100. Note that IAM may return fewer results, even when there are more
+#' results available. In that case, the `IsTruncated` response element
+#' returns `true`, and `Marker` contains a value to include in the
+#' subsequent call that tells the service where to continue from.
+#'
+#' @keywords internal
+#'
+#' @rdname iam_list_delegation_requests
+iam_list_delegation_requests <- function(OwnerId = NULL, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListDelegationRequests",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$list_delegation_requests_input(OwnerId = OwnerId, Marker = Marker, MaxItems = MaxItems)
+  output <- .iam$list_delegation_requests_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$list_delegation_requests <- iam_list_delegation_requests
+
 #' Lists all IAM users, groups, and roles that the specified managed policy
 #' is attached to
 #'
@@ -3953,10 +4317,9 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
 #' lowercased letters.
 #' @param PolicyUsageFilter The policy usage method to use for filtering the results.
 #' 
-#' To list only permissions policies,
-#' set `PolicyUsageFilter` to `PermissionsPolicy`. To list only the
-#' policies used to set permissions boundaries, set the value
-#' to `PermissionsBoundary`.
+#' To list only permissions policies, set `PolicyUsageFilter` to
+#' `PermissionsPolicy`. To list only the policies used to set permissions
+#' boundaries, set the value to `PermissionsBoundary`.
 #' 
 #' This parameter is optional. If it is not included, all policies are
 #' returned.
@@ -4552,10 +4915,9 @@ iam_list_organizations_features <- function() {
 #' lowercased letters.
 #' @param PolicyUsageFilter The policy usage method to use for filtering the results.
 #' 
-#' To list only permissions policies,
-#' set `PolicyUsageFilter` to `PermissionsPolicy`. To list only the
-#' policies used to set permissions boundaries, set the value
-#' to `PermissionsBoundary`.
+#' To list only permissions policies, set `PolicyUsageFilter` to
+#' `PermissionsPolicy`. To list only the policies used to set permissions
+#' boundaries, set the value to `PermissionsBoundary`.
 #' 
 #' This parameter is optional. If it is not included, all policies are
 #' returned.
@@ -4620,7 +4982,7 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' example, `(service prefix: a4b)`. For more information about service
 #' namespaces, see [Amazon Web Services service
 #' namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces)
-#' in the *Amazon Web Services General Reference*.
+#' in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
 #'
@@ -5157,11 +5519,21 @@ iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxIt
 #' @param ServiceName Filters the returned results to only those for the specified Amazon Web
 #' Services service. If not specified, then Amazon Web Services returns
 #' service-specific credentials for all services.
+#' @param AllUsers A flag indicating whether to list service specific credentials for all
+#' users. This parameter cannot be specified together with UserName. When
+#' true, returns all credentials associated with the specified service.
+#' @param Marker Use this parameter only when paginating results and only after you
+#' receive a response indicating that the results are truncated. Set it to
+#' the value of the Marker from the response that you received to indicate
+#' where the next call should start.
+#' @param MaxItems Use this only when paginating results to indicate the maximum number of
+#' items you want in the response. If additional items exist beyond the
+#' maximum you specify, the IsTruncated response element is true.
 #'
 #' @keywords internal
 #'
 #' @rdname iam_list_service_specific_credentials
-iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName = NULL) {
+iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName = NULL, AllUsers = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListServiceSpecificCredentials",
     http_method = "POST",
@@ -5170,7 +5542,7 @@ iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iam$list_service_specific_credentials_input(UserName = UserName, ServiceName = ServiceName)
+  input <- .iam$list_service_specific_credentials_input(UserName = UserName, ServiceName = ServiceName, AllUsers = AllUsers, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_service_specific_credentials_output()
   config <- get_config()
   svc <- .iam$service(config, op)
@@ -5711,6 +6083,39 @@ iam_put_user_policy <- function(UserName, PolicyName, PolicyDocument) {
 }
 .iam$operations$put_user_policy <- iam_put_user_policy
 
+#' Rejects a delegation request, denying the requested temporary access
+#'
+#' @description
+#' Rejects a delegation request, denying the requested temporary access.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_reject_delegation_request/](https://www.paws-r-sdk.com/docs/iam_reject_delegation_request/) for full documentation.
+#'
+#' @param DelegationRequestId &#91;required&#93; The unique identifier of the delegation request to reject.
+#' @param Notes Optional notes explaining the reason for rejecting the delegation
+#' request.
+#'
+#' @keywords internal
+#'
+#' @rdname iam_reject_delegation_request
+iam_reject_delegation_request <- function(DelegationRequestId, Notes = NULL) {
+  op <- new_operation(
+    name = "RejectDelegationRequest",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$reject_delegation_request_input(DelegationRequestId = DelegationRequestId, Notes = Notes)
+  output <- .iam$reject_delegation_request_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$reject_delegation_request <- iam_reject_delegation_request
+
 #' Removes the specified client ID (also known as audience) from the list
 #' of client IDs registered for the specified IAM OpenID Connect (OIDC)
 #' provider resource object
@@ -5931,6 +6336,38 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
   return(response)
 }
 .iam$operations$resync_mfa_device <- iam_resync_mfa_device
+
+#' Sends the exchange token for an accepted delegation request
+#'
+#' @description
+#' Sends the exchange token for an accepted delegation request.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_send_delegation_token/](https://www.paws-r-sdk.com/docs/iam_send_delegation_token/) for full documentation.
+#'
+#' @param DelegationRequestId &#91;required&#93; The unique identifier of the delegation request for which to send the
+#' token.
+#'
+#' @keywords internal
+#'
+#' @rdname iam_send_delegation_token
+iam_send_delegation_token <- function(DelegationRequestId) {
+  op <- new_operation(
+    name = "SendDelegationToken",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$send_delegation_token_input(DelegationRequestId = DelegationRequestId)
+  output <- .iam$send_delegation_token_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$send_delegation_token <- iam_send_delegation_token
 
 #' Sets the specified version of the specified policy as the policy's
 #' default (operative) version
@@ -7272,6 +7709,38 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
   return(response)
 }
 .iam$operations$update_assume_role_policy <- iam_update_assume_role_policy
+
+#' Updates an existing delegation request with additional information
+#'
+#' @description
+#' Updates an existing delegation request with additional information. When the delegation request is updated, it reaches the `PENDING_APPROVAL` state.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_update_delegation_request/](https://www.paws-r-sdk.com/docs/iam_update_delegation_request/) for full documentation.
+#'
+#' @param DelegationRequestId &#91;required&#93; The unique identifier of the delegation request to update.
+#' @param Notes Additional notes or comments to add to the delegation request.
+#'
+#' @keywords internal
+#'
+#' @rdname iam_update_delegation_request
+iam_update_delegation_request <- function(DelegationRequestId, Notes = NULL) {
+  op <- new_operation(
+    name = "UpdateDelegationRequest",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$update_delegation_request_input(DelegationRequestId = DelegationRequestId, Notes = Notes)
+  output <- .iam$update_delegation_request_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$update_delegation_request <- iam_update_delegation_request
 
 #' Updates the name and/or the path of the specified IAM group
 #'

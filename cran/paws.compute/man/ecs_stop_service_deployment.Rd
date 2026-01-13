@@ -11,7 +11,7 @@ ecs_stop_service_deployment(serviceDeploymentArn, stopType = NULL)
 
 \item{stopType}{How you want Amazon ECS to stop the service.
 
-The ROLLBACK and ABORT stopType aren't supported.}
+The valid values are \code{ROLLBACK}.}
 }
 \description{
 Stops an ongoing service deployment.

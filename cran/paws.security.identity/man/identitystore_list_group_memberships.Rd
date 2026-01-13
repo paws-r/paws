@@ -19,7 +19,7 @@ identitystore_list_group_memberships(
 \item{GroupId}{[required] The identifier for a group in the identity store.}
 
 \item{MaxResults}{The maximum number of results to be returned per request. This parameter
-is used in all \code{List} requests to specify how many results to return in
+is used in all \code{ List} requests to specify how many results to return in
 one page.}
 
 \item{NextToken}{The pagination token used for the
@@ -32,7 +32,7 @@ of one page. This token is also returned when it is used in the API
 request to search for the next page.}
 }
 \description{
-For the specified group in the specified identity store, returns the list of all \code{GroupMembership} objects and returns results in paginated form.
+For the specified group in the specified identity store, returns the list of all \code{ GroupMembership} objects and returns results in paginated form.
 
 See \url{https://www.paws-r-sdk.com/docs/identitystore_list_group_memberships/} for full documentation.
 }

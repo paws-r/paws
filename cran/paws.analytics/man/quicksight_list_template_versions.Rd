@@ -2,8 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_template_versions}
 \alias{quicksight_list_template_versions}
-\title{Lists all the versions of the templates in the current Amazon QuickSight
-account}
+\title{Lists all the versions of the templates in the current Amazon Quick
+Sight account}
 \usage{
 quicksight_list_template_versions(
   AwsAccountId,
@@ -24,7 +24,7 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \description{
-Lists all the versions of the templates in the current Amazon QuickSight account.
+Lists all the versions of the templates in the current Amazon Quick Sight account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_list_template_versions/} for full documentation.
 }

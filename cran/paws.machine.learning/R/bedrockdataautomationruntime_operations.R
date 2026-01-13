@@ -34,6 +34,41 @@ bedrockdataautomationruntime_get_data_automation_status <- function(invocationAr
 }
 .bedrockdataautomationruntime$operations$get_data_automation_status <- bedrockdataautomationruntime_get_data_automation_status
 
+#' Sync API: Invoke data automation
+#'
+#' @description
+#' Sync API: Invoke data automation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomationruntime_invoke_data_automation/](https://www.paws-r-sdk.com/docs/bedrockdataautomationruntime_invoke_data_automation/) for full documentation.
+#'
+#' @param inputConfiguration &#91;required&#93; Input configuration.
+#' @param dataAutomationConfiguration Data automation configuration.
+#' @param blueprints Blueprint list.
+#' @param dataAutomationProfileArn &#91;required&#93; Data automation profile ARN
+#' @param encryptionConfiguration Encryption configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomationruntime_invoke_data_automation
+bedrockdataautomationruntime_invoke_data_automation <- function(inputConfiguration, dataAutomationConfiguration = NULL, blueprints = NULL, dataAutomationProfileArn, encryptionConfiguration = NULL) {
+  op <- new_operation(
+    name = "InvokeDataAutomation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomationruntime$invoke_data_automation_input(inputConfiguration = inputConfiguration, dataAutomationConfiguration = dataAutomationConfiguration, blueprints = blueprints, dataAutomationProfileArn = dataAutomationProfileArn, encryptionConfiguration = encryptionConfiguration)
+  output <- .bedrockdataautomationruntime$invoke_data_automation_output()
+  config <- get_config()
+  svc <- .bedrockdataautomationruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomationruntime$operations$invoke_data_automation <- bedrockdataautomationruntime_invoke_data_automation
+
 #' Async API: Invoke data automation
 #'
 #' @description

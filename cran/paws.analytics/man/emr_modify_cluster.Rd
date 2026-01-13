@@ -5,7 +5,11 @@
 \title{Modifies the number of steps that can be executed concurrently for the
 cluster specified using ClusterID}
 \usage{
-emr_modify_cluster(ClusterId, StepConcurrencyLevel = NULL)
+emr_modify_cluster(
+  ClusterId,
+  StepConcurrencyLevel = NULL,
+  ExtendedSupport = NULL
+)
 }
 \arguments{
 \item{ClusterId}{[required] The unique identifier of the cluster.}
@@ -15,6 +19,8 @@ minimum of 1 step and a maximum of 256 steps. We recommend that you do
 not change this parameter while steps are running or the
 \code{ActionOnFailure} setting may not behave as expected. For more
 information see Step$ActionOnFailure.}
+
+\item{ExtendedSupport}{Reserved.}
 }
 \description{
 Modifies the number of steps that can be executed concurrently for the cluster specified using ClusterID.

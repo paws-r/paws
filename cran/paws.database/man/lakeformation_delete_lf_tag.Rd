@@ -2,7 +2,7 @@
 % Please edit documentation in R/lakeformation_operations.R
 \name{lakeformation_delete_lf_tag}
 \alias{lakeformation_delete_lf_tag}
-\title{Deletes the specified LF-tag given a key name}
+\title{Deletes an LF-tag by its key name}
 \usage{
 lakeformation_delete_lf_tag(CatalogId = NULL, TagKey)
 }
@@ -15,7 +15,7 @@ your Lake Formation environment.}
 \item{TagKey}{[required] The key-name for the LF-tag to delete.}
 }
 \description{
-Deletes the specified LF-tag given a key name. If the input parameter tag key was not found, then the operation will throw an exception. When you delete an LF-tag, the \code{LFTagPolicy} attached to the LF-tag becomes invalid. If the deleted LF-tag was still assigned to any resource, the tag policy attach to the deleted LF-tag will no longer be applied to the resource.
+Deletes an LF-tag by its key name. The operation fails if the specified tag key doesn't exist. When you delete an LF-Tag:
 
 See \url{https://www.paws-r-sdk.com/docs/lakeformation_delete_lf_tag/} for full documentation.
 }

@@ -128,12 +128,16 @@ it.
 
 \tabular{ll}{
 \link[=cloudwatchlogs_associate_kms_key]{associate_kms_key} \tab Associates the specified KMS key with either one log group in the account, or with all stored CloudWatch Logs query insights results in the account\cr
+\link[=cloudwatchlogs_associate_source_to_s3_table_integration]{associate_source_to_s3_table_integration} \tab Associates a data source with an S3 Table Integration for query access in the 'logs' namespace\cr
 \link[=cloudwatchlogs_cancel_export_task]{cancel_export_task} \tab Cancels the specified export task\cr
+\link[=cloudwatchlogs_cancel_import_task]{cancel_import_task} \tab Cancels an active import task and stops importing data from the CloudTrail Lake Event Data Store\cr
 \link[=cloudwatchlogs_create_delivery]{create_delivery} \tab Creates a delivery\cr
 \link[=cloudwatchlogs_create_export_task]{create_export_task} \tab Creates an export task so that you can efficiently export data from a log group to an Amazon S3 bucket\cr
+\link[=cloudwatchlogs_create_import_task]{create_import_task} \tab Starts an import from a data source to CloudWatch Log and creates a managed log group as the destination for the imported data\cr
 \link[=cloudwatchlogs_create_log_anomaly_detector]{create_log_anomaly_detector} \tab Creates an anomaly detector that regularly scans one or more log groups and look for patterns and anomalies in the logs\cr
 \link[=cloudwatchlogs_create_log_group]{create_log_group} \tab Creates a log group with the specified name\cr
 \link[=cloudwatchlogs_create_log_stream]{create_log_stream} \tab Creates a log stream for the specified log group\cr
+\link[=cloudwatchlogs_create_scheduled_query]{create_scheduled_query} \tab Creates a scheduled query that runs CloudWatch Logs Insights queries at regular intervals\cr
 \link[=cloudwatchlogs_delete_account_policy]{delete_account_policy} \tab Deletes a CloudWatch Logs account policy\cr
 \link[=cloudwatchlogs_delete_data_protection_policy]{delete_data_protection_policy} \tab Deletes the data protection policy from the specified log group\cr
 \link[=cloudwatchlogs_delete_delivery]{delete_delivery} \tab Deletes a delivery\cr
@@ -150,6 +154,7 @@ it.
 \link[=cloudwatchlogs_delete_query_definition]{delete_query_definition} \tab Deletes a saved CloudWatch Logs Insights query definition\cr
 \link[=cloudwatchlogs_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource policy from this account\cr
 \link[=cloudwatchlogs_delete_retention_policy]{delete_retention_policy} \tab Deletes the specified retention policy\cr
+\link[=cloudwatchlogs_delete_scheduled_query]{delete_scheduled_query} \tab Deletes a scheduled query and stops all future executions\cr
 \link[=cloudwatchlogs_delete_subscription_filter]{delete_subscription_filter} \tab Deletes the specified subscription filter\cr
 \link[=cloudwatchlogs_delete_transformer]{delete_transformer} \tab Deletes the log transformer for the specified log group\cr
 \link[=cloudwatchlogs_describe_account_policies]{describe_account_policies} \tab Returns a list of all CloudWatch Logs account policies in the account\cr
@@ -159,9 +164,11 @@ it.
 \link[=cloudwatchlogs_describe_delivery_sources]{describe_delivery_sources} \tab Retrieves a list of the delivery sources that have been created in the account\cr
 \link[=cloudwatchlogs_describe_destinations]{describe_destinations} \tab Lists all your destinations\cr
 \link[=cloudwatchlogs_describe_export_tasks]{describe_export_tasks} \tab Lists the specified export tasks\cr
-\link[=cloudwatchlogs_describe_field_indexes]{describe_field_indexes} \tab Returns a list of field indexes listed in the field index policies of one or more log groups\cr
-\link[=cloudwatchlogs_describe_index_policies]{describe_index_policies} \tab Returns the field index policies of one or more log groups\cr
-\link[=cloudwatchlogs_describe_log_groups]{describe_log_groups} \tab Returns information about log groups\cr
+\link[=cloudwatchlogs_describe_field_indexes]{describe_field_indexes} \tab Returns a list of custom and default field indexes which are discovered in log data\cr
+\link[=cloudwatchlogs_describe_import_task_batches]{describe_import_task_batches} \tab Gets detailed information about the individual batches within an import task, including their status and any error messages\cr
+\link[=cloudwatchlogs_describe_import_tasks]{describe_import_tasks} \tab Lists and describes import tasks, with optional filtering by import status and source ARN\cr
+\link[=cloudwatchlogs_describe_index_policies]{describe_index_policies} \tab Returns the field index policies of the specified log group\cr
+\link[=cloudwatchlogs_describe_log_groups]{describe_log_groups} \tab Returns information about log groups, including data sources that ingest into each log group\cr
 \link[=cloudwatchlogs_describe_log_streams]{describe_log_streams} \tab Lists the log streams for the specified log group\cr
 \link[=cloudwatchlogs_describe_metric_filters]{describe_metric_filters} \tab Lists the specified metric filters\cr
 \link[=cloudwatchlogs_describe_queries]{describe_queries} \tab Returns a list of CloudWatch Logs Insights queries that are scheduled, running, or have been run recently in this account\cr
@@ -169,6 +176,7 @@ it.
 \link[=cloudwatchlogs_describe_resource_policies]{describe_resource_policies} \tab Lists the resource policies in this account\cr
 \link[=cloudwatchlogs_describe_subscription_filters]{describe_subscription_filters} \tab Lists the subscription filters for the specified log group\cr
 \link[=cloudwatchlogs_disassociate_kms_key]{disassociate_kms_key} \tab Disassociates the specified KMS key from the specified log group or from all CloudWatch Logs Insights query results in the account\cr
+\link[=cloudwatchlogs_disassociate_source_from_s3_table_integration]{disassociate_source_from_s3_table_integration} \tab Disassociates a data source from an S3 Table Integration, removing query access and deleting all associated data from the integration\cr
 \link[=cloudwatchlogs_filter_log_events]{filter_log_events} \tab Lists log events from the specified log group\cr
 \link[=cloudwatchlogs_get_data_protection_policy]{get_data_protection_policy} \tab Returns information about a log group data protection policy\cr
 \link[=cloudwatchlogs_get_delivery]{get_delivery} \tab Returns complete information about one logical delivery\cr
@@ -178,18 +186,25 @@ it.
 \link[=cloudwatchlogs_get_integration]{get_integration} \tab Returns information about one integration between CloudWatch Logs and OpenSearch Service\cr
 \link[=cloudwatchlogs_get_log_anomaly_detector]{get_log_anomaly_detector} \tab Retrieves information about the log anomaly detector that you specify\cr
 \link[=cloudwatchlogs_get_log_events]{get_log_events} \tab Lists log events from the specified log stream\cr
+\link[=cloudwatchlogs_get_log_fields]{get_log_fields} \tab Discovers available fields for a specific data source and type\cr
 \link[=cloudwatchlogs_get_log_group_fields]{get_log_group_fields} \tab Returns a list of the fields that are included in log events in the specified log group\cr
+\link[=cloudwatchlogs_get_log_object]{get_log_object} \tab Retrieves a large logging object (LLO) and streams it back\cr
 \link[=cloudwatchlogs_get_log_record]{get_log_record} \tab Retrieves all of the fields and values of a single log event\cr
 \link[=cloudwatchlogs_get_query_results]{get_query_results} \tab Returns the results from the specified query\cr
+\link[=cloudwatchlogs_get_scheduled_query]{get_scheduled_query} \tab Retrieves details about a specific scheduled query, including its configuration, execution status, and metadata\cr
+\link[=cloudwatchlogs_get_scheduled_query_history]{get_scheduled_query_history} \tab Retrieves the execution history of a scheduled query within a specified time range, including query results and destination processing status\cr
 \link[=cloudwatchlogs_get_transformer]{get_transformer} \tab Returns the information about the log transformer associated with this log group\cr
+\link[=cloudwatchlogs_list_aggregate_log_group_summaries]{list_aggregate_log_group_summaries} \tab Returns an aggregate summary of all log groups in the Region grouped by specified data source characteristics\cr
 \link[=cloudwatchlogs_list_anomalies]{list_anomalies} \tab Returns a list of anomalies that log anomaly detectors have found\cr
 \link[=cloudwatchlogs_list_integrations]{list_integrations} \tab Returns a list of integrations between CloudWatch Logs and other services in this account\cr
 \link[=cloudwatchlogs_list_log_anomaly_detectors]{list_log_anomaly_detectors} \tab Retrieves a list of the log anomaly detectors in the account\cr
 \link[=cloudwatchlogs_list_log_groups]{list_log_groups} \tab Returns a list of log groups in the Region in your account\cr
 \link[=cloudwatchlogs_list_log_groups_for_query]{list_log_groups_for_query} \tab Returns a list of the log groups that were analyzed during a single CloudWatch Logs Insights query\cr
+\link[=cloudwatchlogs_list_scheduled_queries]{list_scheduled_queries} \tab Lists all scheduled queries in your account and region\cr
+\link[=cloudwatchlogs_list_sources_for_s3_table_integration]{list_sources_for_s3_table_integration} \tab Returns a list of data source associations for a specified S3 Table Integration, showing which data sources are currently associated for query access\cr
 \link[=cloudwatchlogs_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch Logs resource\cr
 \link[=cloudwatchlogs_list_tags_log_group]{list_tags_log_group} \tab The ListTagsLogGroup operation is on the path to deprecation\cr
-\link[=cloudwatchlogs_put_account_policy]{put_account_policy} \tab Creates an account-level data protection policy, subscription filter policy, or field index policy that applies to all log groups or a subset of log groups in the account\cr
+\link[=cloudwatchlogs_put_account_policy]{put_account_policy} \tab Creates an account-level data protection policy, subscription filter policy, field index policy, transformer policy, or metric extraction policy that applies to all log groups, a subset of log groups, or a data source name and type combination in the account\cr
 \link[=cloudwatchlogs_put_data_protection_policy]{put_data_protection_policy} \tab Creates a data protection policy for the specified log group\cr
 \link[=cloudwatchlogs_put_delivery_destination]{put_delivery_destination} \tab Creates or updates a logical delivery destination\cr
 \link[=cloudwatchlogs_put_delivery_destination_policy]{put_delivery_destination_policy} \tab Creates and assigns an IAM policy that grants permissions to CloudWatch Logs to deliver logs cross-account to a specified destination in this account\cr
@@ -199,6 +214,7 @@ it.
 \link[=cloudwatchlogs_put_index_policy]{put_index_policy} \tab Creates or updates a field index policy for the specified log group\cr
 \link[=cloudwatchlogs_put_integration]{put_integration} \tab Creates an integration between CloudWatch Logs and another service in this account\cr
 \link[=cloudwatchlogs_put_log_events]{put_log_events} \tab Uploads a batch of log events to the specified log stream\cr
+\link[=cloudwatchlogs_put_log_group_deletion_protection]{put_log_group_deletion_protection} \tab Enables or disables deletion protection for the specified log group\cr
 \link[=cloudwatchlogs_put_metric_filter]{put_metric_filter} \tab Creates or updates a metric filter and associates it with the specified log group\cr
 \link[=cloudwatchlogs_put_query_definition]{put_query_definition} \tab Creates or updates a query definition for CloudWatch Logs Insights\cr
 \link[=cloudwatchlogs_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource policy allowing other Amazon Web Services services to put log events to this account, such as Amazon Route 53\cr
@@ -206,7 +222,7 @@ it.
 \link[=cloudwatchlogs_put_subscription_filter]{put_subscription_filter} \tab Creates or updates a subscription filter and associates it with the specified log group\cr
 \link[=cloudwatchlogs_put_transformer]{put_transformer} \tab Creates or updates a log transformer for a single log group\cr
 \link[=cloudwatchlogs_start_live_tail]{start_live_tail} \tab Starts a Live Tail streaming session for one or more log groups\cr
-\link[=cloudwatchlogs_start_query]{start_query} \tab Starts a query of one or more log groups using CloudWatch Logs Insights\cr
+\link[=cloudwatchlogs_start_query]{start_query} \tab Starts a query of one or more log groups or data sources using CloudWatch Logs Insights\cr
 \link[=cloudwatchlogs_stop_query]{stop_query} \tab Stops a CloudWatch Logs Insights query that is in progress\cr
 \link[=cloudwatchlogs_tag_log_group]{tag_log_group} \tab The TagLogGroup operation is on the path to deprecation\cr
 \link[=cloudwatchlogs_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch Logs resource\cr
@@ -216,7 +232,8 @@ it.
 \link[=cloudwatchlogs_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
 \link[=cloudwatchlogs_update_anomaly]{update_anomaly} \tab Use this operation to suppress anomaly detection for a specified anomaly or pattern\cr
 \link[=cloudwatchlogs_update_delivery_configuration]{update_delivery_configuration} \tab Use this operation to update the configuration of a delivery to change either the S3 path pattern or the format of the delivered logs\cr
-\link[=cloudwatchlogs_update_log_anomaly_detector]{update_log_anomaly_detector} \tab Updates an existing log anomaly detector
+\link[=cloudwatchlogs_update_log_anomaly_detector]{update_log_anomaly_detector} \tab Updates an existing log anomaly detector\cr
+\link[=cloudwatchlogs_update_scheduled_query]{update_scheduled_query} \tab Updates an existing scheduled query with new configuration
 }
 }
 

@@ -2,8 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_search_groups}
 \alias{quicksight_search_groups}
-\title{Use the SearchGroups operation to search groups in a specified Amazon
-QuickSight namespace using the supplied filters}
+\title{Use the SearchGroups operation to search groups in a specified Quick
+Sight namespace using the supplied filters}
 \usage{
 quicksight_search_groups(
   AwsAccountId,
@@ -16,7 +16,7 @@ quicksight_search_groups(
 \arguments{
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the group is in.
 Currently, you use the ID for the Amazon Web Services account that
-contains your Amazon QuickSight account.}
+contains your Amazon Quick Sight account.}
 
 \item{NextToken}{A pagination token that can be used in a subsequent request.}
 
@@ -28,7 +28,7 @@ contains your Amazon QuickSight account.}
 search.}
 }
 \description{
-Use the \code{\link[=quicksight_search_groups]{search_groups}} operation to search groups in a specified Amazon QuickSight namespace using the supplied filters.
+Use the \code{\link[=quicksight_search_groups]{search_groups}} operation to search groups in a specified Quick Sight namespace using the supplied filters.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_search_groups/} for full documentation.
 }

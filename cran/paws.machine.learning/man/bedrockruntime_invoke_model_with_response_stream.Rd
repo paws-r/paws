@@ -13,7 +13,8 @@ bedrockruntime_invoke_model_with_response_stream(
   trace = NULL,
   guardrailIdentifier = NULL,
   guardrailVersion = NULL,
-  performanceConfigLatency = NULL
+  performanceConfigLatency = NULL,
+  serviceTier = NULL
 )
 }
 \arguments{
@@ -44,9 +45,9 @@ in the Amazon Bedrock User Guide.
 \item If you use a provisioned model, specify the ARN of the Provisioned
 Throughput. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html}{Run inference using a Provisioned Throughput}
 in the Amazon Bedrock User Guide.
-\item If you use a custom model, first purchase Provisioned Throughput for
-it. Then specify the ARN of the resulting provisioned model. For
-more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html}{Use a custom model in Amazon Bedrock}
+\item If you use a custom model, specify the ARN of the custom model
+deployment (for on-demand inference) or the ARN of your provisioned
+model (for Provisioned Throughput). For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html}{Use a custom model in Amazon Bedrock}
 in the Amazon Bedrock User Guide.
 \item If you use an \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html}{imported model},
 specify the ARN of the imported model. You can get the model ARN
@@ -74,6 +75,8 @@ specified.
 \item{guardrailVersion}{The version number for the guardrail. The value can also be \code{DRAFT}.}
 
 \item{performanceConfigLatency}{Model performance settings for the request.}
+
+\item{serviceTier}{Specifies the processing tier type used for serving the request.}
 }
 \description{
 Invoke the specified Amazon Bedrock model to run inference using the prompt and inference parameters provided in the request body. The response is returned in a stream.

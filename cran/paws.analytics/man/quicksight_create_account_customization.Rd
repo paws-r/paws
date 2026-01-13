@@ -2,8 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_create_account_customization}
 \alias{quicksight_create_account_customization}
-\title{Creates Amazon QuickSight customizations for the current Amazon Web
-Services Region}
+\title{Creates Amazon Quick Sight customizations}
 \usage{
 quicksight_create_account_customization(
   AwsAccountId,
@@ -14,13 +13,12 @@ quicksight_create_account_customization(
 }
 \arguments{
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to customize
-Amazon QuickSight for.}
+Quick Sight for.}
 
-\item{Namespace}{The Amazon QuickSight namespace that you want to add customizations to.}
+\item{Namespace}{The Quick Sight namespace that you want to add customizations to.}
 
-\item{AccountCustomization}{[required] The Amazon QuickSight customizations you're adding in the current Amazon
-Web Services Region. You can add these to an Amazon Web Services account
-and a QuickSight namespace.
+\item{AccountCustomization}{[required] The Quick Sight customizations you're adding. You can add these to an
+Amazon Web Services account and a QuickSight namespace.
 
 For example, you can add a default theme by setting
 \code{AccountCustomization} to the midnight theme:
@@ -31,7 +29,7 @@ Or, you can add a custom theme by specifying
 \item{Tags}{A list of the tags that you want to attach to this resource.}
 }
 \description{
-Creates Amazon QuickSight customizations for the current Amazon Web Services Region. Currently, you can add a custom default theme by using the \code{\link[=quicksight_create_account_customization]{create_account_customization}} or \code{\link[=quicksight_update_account_customization]{update_account_customization}} API operation. To further customize Amazon QuickSight by removing Amazon QuickSight sample assets and videos for all new users, see \href{https://docs.aws.amazon.com/quicksight/latest/user/customizing-quicksight.html}{Customizing Amazon QuickSight} in the \emph{Amazon QuickSight User Guide.}
+Creates Amazon Quick Sight customizations. Currently, you can add a custom default theme by using the \code{\link[=quicksight_create_account_customization]{create_account_customization}} or \code{\link[=quicksight_update_account_customization]{update_account_customization}} API operation. To further customize Amazon Quick Sight by removing Amazon Quick Sight sample assets and videos for all new users, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/customizations.html}{Customizing Quick Sight} in the \emph{Amazon Quick Sight User Guide.}
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_create_account_customization/} for full documentation.
 }

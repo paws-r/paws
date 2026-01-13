@@ -2,8 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_search_place_index_for_suggestions}
 \alias{locationservice_search_place_index_for_suggestions}
-\title{Generates suggestions for addresses and points of interest based on
-partial or misspelled free-form text}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_search_place_index_for_suggestions(
   IndexName,
@@ -90,14 +89,14 @@ places. If you include more than one category, the results will include
 results that match \emph{any} of the categories listed.
 
 For more information about using categories, including a list of Amazon
-Location categories, see \href{https://docs.aws.amazon.com/location/latest/developerguide/}{Categories and filtering},
-in the \emph{Amazon Location Service Developer Guide}.}
+Location categories, see \href{https://docs.aws.amazon.com/location/previous/developerguide/category-filtering.html}{Categories and filtering},
+in the \emph{Amazon Location Service developer guide}.}
 
-\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html}{API key}
 to authorize the request.}
 }
 \description{
-Generates suggestions for addresses and points of interest based on partial or misspelled free-form text. This operation is also known as autocomplete, autosuggest, or fuzzy matching.
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to \code{Suggest} or \code{Autocomplete} unless you require Grab data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_search_place_index_for_suggestions/} for full documentation.
 }

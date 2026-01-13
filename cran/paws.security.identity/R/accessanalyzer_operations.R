@@ -248,10 +248,9 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_create_analyzer/](https://www.paws-r-sdk.com/docs/accessanalyzer_create_analyzer/) for full documentation.
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to create.
-#' @param type &#91;required&#93; The type of analyzer to create. Only `ACCOUNT`, `ORGANIZATION`,
-#' `ACCOUNT_UNUSED_ACCESS`, and `ORGANIZATION_UNUSED_ACCESS` analyzers are
-#' supported. You can create only one analyzer per account per Region. You
-#' can create up to 5 analyzers per organization per Region.
+#' @param type &#91;required&#93; The type of analyzer to create. You can create only one analyzer per
+#' account per Region. You can create up to 5 analyzers per organization
+#' per Region.
 #' @param archiveRules Specifies the archive rules to add for the analyzer. Archive rules
 #' automatically archive findings that meet the criteria you define for the
 #' rule.
@@ -267,7 +266,8 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #' @param clientToken A client token.
 #' @param configuration Specifies the configuration of the analyzer. If the analyzer is an
 #' unused access analyzer, the specified scope of unused access is used for
-#' the configuration.
+#' the configuration. If the analyzer is an internal access analyzer, the
+#' specified internal access analysis rules are used for the configuration.
 #'
 #' @keywords internal
 #'

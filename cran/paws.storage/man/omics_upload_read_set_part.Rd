@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_upload_read_set_part}
 \alias{omics_upload_read_set_part}
-\title{This operation uploads a specific part of a read set}
+\title{Uploads a specific part of a read set into a sequence store}
 \usage{
 omics_upload_read_set_part(
   sequenceStoreId,
@@ -24,7 +24,7 @@ omics_upload_read_set_part(
 \item{payload}{[required] The read set data to upload for a part.}
 }
 \description{
-This operation uploads a specific part of a read set. If you upload a new part using a previously used part number, the previously uploaded part will be overwritten.
+Uploads a specific part of a read set into a sequence store. When you a upload a read set part with a part number that already exists, the new part replaces the existing one. This operation returns a JSON formatted response containing a string identifier that is used to confirm that parts are being added to the intended upload.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_upload_read_set_part/} for full documentation.
 }

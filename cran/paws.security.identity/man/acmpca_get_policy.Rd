@@ -9,10 +9,7 @@ acmpca_get_policy(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Number (ARN) of the private CA that will have its
 policy retrieved. You can find the CA's ARN by calling the
-ListCertificateAuthorities action.
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ </p>
-}\if{html}{\out{</div>}}}
+ListCertificateAuthorities action.}
 }
 \description{
 Retrieves the resource-based policy attached to a private CA. If either the private CA resource or the policy cannot be found, this action returns a \code{ResourceNotFoundException}.

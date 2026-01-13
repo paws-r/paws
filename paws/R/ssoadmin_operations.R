@@ -1721,7 +1721,14 @@ ssoadmin_describe_application_provider <- function(ApplicationProviderArn) {
 #'   CreatedDate = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   Status = "CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"ACTIVE"
+#'   Status = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_IN_PROGRESS"|"ACTIVE",
+#'   StatusReason = "string",
+#'   EncryptionConfigurationDetails = list(
+#'     KeyType = "AWS_OWNED_KMS_KEY"|"CUSTOMER_MANAGED_KEY",
+#'     KmsKeyArn = "string",
+#'     EncryptionStatus = "UPDATING"|"ENABLED"|"UPDATE_FAILED",
+#'     EncryptionStatusReason = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -2367,6 +2374,64 @@ ssoadmin_get_application_grant <- function(ApplicationArn, GrantType) {
   return(response)
 }
 .ssoadmin$operations$get_application_grant <- ssoadmin_get_application_grant
+
+#' Retrieves the session configuration for an application in IAM Identity
+#' Center
+#'
+#' @description
+#' Retrieves the session configuration for an application in IAM Identity
+#' Center.
+#' 
+#' The session configuration determines how users can access an
+#' application. This includes whether user background sessions are enabled.
+#' User background sessions allow users to start a job on a supported
+#' Amazon Web Services managed application without having to remain signed
+#' in to an active session while the job runs.
+#'
+#' @usage
+#' ssoadmin_get_application_session_configuration(ApplicationArn)
+#'
+#' @param ApplicationArn &#91;required&#93; The Amazon Resource Name (ARN) of the application for which to retrieve
+#' the session configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserBackgroundSessionApplicationStatus = "ENABLED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_application_session_configuration(
+#'   ApplicationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssoadmin_get_application_session_configuration
+#'
+#' @aliases ssoadmin_get_application_session_configuration
+ssoadmin_get_application_session_configuration <- function(ApplicationArn) {
+  op <- new_operation(
+    name = "GetApplicationSessionConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssoadmin$get_application_session_configuration_input(ApplicationArn = ApplicationArn)
+  output <- .ssoadmin$get_application_session_configuration_output()
+  config <- get_config()
+  svc <- .ssoadmin$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssoadmin$operations$get_application_session_configuration <- ssoadmin_get_application_session_configuration
 
 #' Obtains the inline policy assigned to the permission set
 #'
@@ -3522,7 +3587,8 @@ ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(I
 #'       CreatedDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       Status = "CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"ACTIVE"
+#'       Status = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_IN_PROGRESS"|"ACTIVE",
+#'       StatusReason = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4332,6 +4398,62 @@ ssoadmin_put_application_grant <- function(ApplicationArn, GrantType, Grant) {
 }
 .ssoadmin$operations$put_application_grant <- ssoadmin_put_application_grant
 
+#' Updates the session configuration for an application in IAM Identity
+#' Center
+#'
+#' @description
+#' Updates the session configuration for an application in IAM Identity
+#' Center.
+#' 
+#' The session configuration determines how users can access an
+#' application. This includes whether user background sessions are enabled.
+#' User background sessions allow users to start a job on a supported
+#' Amazon Web Services managed application without having to remain signed
+#' in to an active session while the job runs.
+#'
+#' @usage
+#' ssoadmin_put_application_session_configuration(ApplicationArn,
+#'   UserBackgroundSessionApplicationStatus)
+#'
+#' @param ApplicationArn &#91;required&#93; The Amazon Resource Name (ARN) of the application for which to update
+#' the session configuration.
+#' @param UserBackgroundSessionApplicationStatus The status of user background sessions for the application.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_application_session_configuration(
+#'   ApplicationArn = "string",
+#'   UserBackgroundSessionApplicationStatus = "ENABLED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssoadmin_put_application_session_configuration
+#'
+#' @aliases ssoadmin_put_application_session_configuration
+ssoadmin_put_application_session_configuration <- function(ApplicationArn, UserBackgroundSessionApplicationStatus = NULL) {
+  op <- new_operation(
+    name = "PutApplicationSessionConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssoadmin$put_application_session_configuration_input(ApplicationArn = ApplicationArn, UserBackgroundSessionApplicationStatus = UserBackgroundSessionApplicationStatus)
+  output <- .ssoadmin$put_application_session_configuration_output()
+  config <- get_config()
+  svc <- .ssoadmin$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssoadmin$operations$put_application_session_configuration <- ssoadmin_put_application_session_configuration
+
 #' Attaches an inline policy to a permission set
 #'
 #' @description
@@ -4626,13 +4748,16 @@ ssoadmin_update_application <- function(ApplicationArn, Name = NULL, Description
 #' by the Amazon Web Services account.
 #'
 #' @usage
-#' ssoadmin_update_instance(Name, InstanceArn)
+#' ssoadmin_update_instance(Name, InstanceArn, EncryptionConfiguration)
 #'
-#' @param Name &#91;required&#93; Updates the instance name.
+#' @param Name Updates the instance name.
 #' @param InstanceArn &#91;required&#93; The ARN of the instance of IAM Identity Center under which the operation
 #' will run. For more information about ARNs, see Amazon Resource Names
 #' (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web
 #' Services General Reference*.
+#' @param EncryptionConfiguration Specifies the encryption configuration for your IAM Identity Center
+#' instance. You can use this to configure customer managed KMS keys (CMK)
+#' or Amazon Web Services owned KMS keys for encrypting your instance data.
 #'
 #' @return
 #' An empty list.
@@ -4641,7 +4766,11 @@ ssoadmin_update_application <- function(ApplicationArn, Name = NULL, Description
 #' ```
 #' svc$update_instance(
 #'   Name = "string",
-#'   InstanceArn = "string"
+#'   InstanceArn = "string",
+#'   EncryptionConfiguration = list(
+#'     KeyType = "AWS_OWNED_KMS_KEY"|"CUSTOMER_MANAGED_KEY",
+#'     KmsKeyArn = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -4650,7 +4779,7 @@ ssoadmin_update_application <- function(ApplicationArn, Name = NULL, Description
 #' @rdname ssoadmin_update_instance
 #'
 #' @aliases ssoadmin_update_instance
-ssoadmin_update_instance <- function(Name, InstanceArn) {
+ssoadmin_update_instance <- function(Name = NULL, InstanceArn, EncryptionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateInstance",
     http_method = "POST",
@@ -4659,7 +4788,7 @@ ssoadmin_update_instance <- function(Name, InstanceArn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$update_instance_input(Name = Name, InstanceArn = InstanceArn)
+  input <- .ssoadmin$update_instance_input(Name = Name, InstanceArn = InstanceArn, EncryptionConfiguration = EncryptionConfiguration)
   output <- .ssoadmin$update_instance_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)

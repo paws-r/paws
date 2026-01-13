@@ -10,7 +10,7 @@ ssmcontacts_delete_contact(ContactId)
 \item{ContactId}{[required] The Amazon Resource Name (ARN) of the contact that you're deleting.}
 }
 \description{
-To remove a contact from Incident Manager, you can delete the contact. Deleting a contact removes them from all escalation plans and related response plans. Deleting an escalation plan removes it from all related response plans. You will have to recreate the contact and its contact channels before you can use it again.
+To remove a contact from Incident Manager, you can delete the contact. However, deleting a contact does not remove it from escalation plans and related response plans. Deleting an escalation plan also does not remove it from all related response plans. To modify an escalation plan, we recommend using the \code{\link[=ssmcontacts_update_contact]{update_contact}} action to specify a different existing contact.
 
 See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_delete_contact/} for full documentation.
 }

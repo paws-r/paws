@@ -7,7 +7,8 @@
 apigatewayv2_update_domain_name(
   DomainName,
   DomainNameConfigurations = NULL,
-  MutualTlsAuthentication = NULL
+  MutualTlsAuthentication = NULL,
+  RoutingMode = NULL
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ apigatewayv2_update_domain_name(
 \item{DomainNameConfigurations}{The domain name configurations.}
 
 \item{MutualTlsAuthentication}{The mutual TLS authentication configuration for a custom domain name.}
+
+\item{RoutingMode}{The routing mode.}
 }
 \description{
 Updates a domain name.

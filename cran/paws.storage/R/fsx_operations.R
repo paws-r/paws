@@ -198,6 +198,47 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 }
 .fsx$operations$copy_snapshot_and_update_volume <- fsx_copy_snapshot_and_update_volume
 
+#' Creates an S3 access point and attaches it to an Amazon FSx volume
+#'
+#' @description
+#' Creates an S3 access point and attaches it to an Amazon FSx volume. For FSx for OpenZFS file systems, the volume must be hosted on a high-availability file system, either Single-AZ or Multi-AZ. For more information, see [Accessing your data using Amazon S3 access points](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/s3accesspoints-for-FSx.html). in the Amazon FSx for OpenZFS User Guide.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fsx_create_and_attach_s3_access_point/](https://www.paws-r-sdk.com/docs/fsx_create_and_attach_s3_access_point/) for full documentation.
+#'
+#' @param ClientRequestToken 
+#' @param Name &#91;required&#93; The name you want to assign to this S3 access point.
+#' @param Type &#91;required&#93; The type of S3 access point you want to create. Only `OpenZFS` is
+#' supported.
+#' @param OpenZFSConfiguration Specifies the configuration to use when creating and attaching an S3
+#' access point to an FSx for OpenZFS volume.
+#' @param OntapConfiguration 
+#' @param S3AccessPoint Specifies the virtual private cloud (VPC) configuration if you're
+#' creating an access point that is restricted to a VPC. For more
+#' information, see [Creating access points restricted to a virtual private
+#' cloud](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/access-points-vpc.html).
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_create_and_attach_s3_access_point
+fsx_create_and_attach_s3_access_point <- function(ClientRequestToken = NULL, Name, Type, OpenZFSConfiguration = NULL, OntapConfiguration = NULL, S3AccessPoint = NULL) {
+  op <- new_operation(
+    name = "CreateAndAttachS3AccessPoint",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .fsx$create_and_attach_s3_access_point_input(ClientRequestToken = ClientRequestToken, Name = Name, Type = Type, OpenZFSConfiguration = OpenZFSConfiguration, OntapConfiguration = OntapConfiguration, S3AccessPoint = S3AccessPoint)
+  output <- .fsx$create_and_attach_s3_access_point_output()
+  config <- get_config()
+  svc <- .fsx$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$create_and_attach_s3_access_point <- fsx_create_and_attach_s3_access_point
+
 #' Creates a backup of an existing Amazon FSx for Windows File Server file
 #' system, Amazon FSx for Lustre file system, Amazon FSx for NetApp ONTAP
 #' volume, or Amazon FSx for OpenZFS file system
@@ -528,18 +569,19 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #' -   Set to `SSD` to use solid state drive storage. SSD is supported on
 #'     all Windows, Lustre, ONTAP, and OpenZFS deployment types.
 #' 
-#' -   Set to `HDD` to use hard disk drive storage. HDD is supported on
+#' -   Set to `HDD` to use hard disk drive storage, which is supported on
 #'     `SINGLE_AZ_2` and `MULTI_AZ_1` Windows file system deployment types,
 #'     and on `PERSISTENT_1` Lustre file system deployment types.
 #' 
 #' -   Set to `INTELLIGENT_TIERING` to use fully elastic,
 #'     intelligently-tiered storage. Intelligent-Tiering is only available
-#'     for OpenZFS file systems with the Multi-AZ deployment type.
+#'     for OpenZFS file systems with the Multi-AZ deployment type and for
+#'     Lustre file systems with the Persistent_2 deployment type.
 #' 
 #' Default value is `SSD`. For more information, see [Storage type
 #' options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#optimize-storage-costs)
-#' in the *FSx for Windows File Server User Guide*, [Multiple storage
-#' options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options)
+#' in the *FSx for Windows File Server User Guide*, [FSx for Lustre storage
+#' classes](https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-fsx-lustre.html#lustre-storage-classes)
 #' in the *FSx for Lustre User Guide*, and [Working with
 #' Intelligent-Tiering](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/performance-intelligent-tiering.html)
 #' in the *Amazon FSx for OpenZFS User Guide*.
@@ -593,11 +635,16 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #' -   Default value is `2.15` when `DeploymentType` is set to
 #'     `PERSISTENT_2` with a metadata configuration mode.
 #' @param OpenZFSConfiguration The OpenZFS configuration for the file system that's being created.
+#' @param NetworkType The network type of the Amazon FSx file system that you are creating.
+#' Valid values are `IPV4` (which supports IPv4 only) and `DUAL` (for
+#' dual-stack mode, which supports both IPv4 and IPv6). The default is
+#' `IPV4`. Supported for FSx for OpenZFS, FSx for ONTAP, and FSx for
+#' Windows File Server file systems.
 #'
 #' @keywords internal
 #'
 #' @rdname fsx_create_file_system
-fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, StorageCapacity = NULL, StorageType = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL) {
+fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, StorageCapacity = NULL, StorageType = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "CreateFileSystem",
     http_method = "POST",
@@ -606,7 +653,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .fsx$create_file_system_input(ClientRequestToken = ClientRequestToken, FileSystemType = FileSystemType, StorageCapacity = StorageCapacity, StorageType = StorageType, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, FileSystemTypeVersion = FileSystemTypeVersion, OpenZFSConfiguration = OpenZFSConfiguration)
+  input <- .fsx$create_file_system_input(ClientRequestToken = ClientRequestToken, FileSystemType = FileSystemType, StorageCapacity = StorageCapacity, StorageType = StorageType, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, FileSystemTypeVersion = FileSystemTypeVersion, OpenZFSConfiguration = OpenZFSConfiguration, NetworkType = NetworkType)
   output <- .fsx$create_file_system_output()
   config <- get_config()
   svc <- .fsx$service(config, op)
@@ -648,8 +695,9 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' name.
 #' @param WindowsConfiguration The configuration for this Microsoft Windows file system.
 #' @param LustreConfiguration 
-#' @param StorageType Sets the storage type for the Windows or OpenZFS file system that you're
-#' creating from a backup. Valid values are `SSD` and `HDD`.
+#' @param StorageType Sets the storage type for the Windows, OpenZFS, or Lustre file system
+#' that you're creating from a backup. Valid values are `SSD`, `HDD`, and
+#' `INTELLIGENT_TIERING`.
 #' 
 #' -   Set to `SSD` to use solid state drive storage. SSD is supported on
 #'     all Windows and OpenZFS deployment types.
@@ -657,6 +705,11 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' -   Set to `HDD` to use hard disk drive storage. HDD is supported on
 #'     `SINGLE_AZ_2` and `MULTI_AZ_1` FSx for Windows File Server file
 #'     system deployment types.
+#' 
+#' -   Set to `INTELLIGENT_TIERING` to use fully elastic,
+#'     intelligently-tiered storage. Intelligent-Tiering is only available
+#'     for OpenZFS file systems with the Multi-AZ deployment type and for
+#'     Lustre file systems with the Persistent_2 deployment type.
 #' 
 #' The default value is `SSD`.
 #' 
@@ -684,11 +737,13 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' value that matches the backup's `StorageCapacity` value. If you provide
 #' any other value, Amazon FSx responds with an HTTP status code 400 Bad
 #' Request.
+#' @param NetworkType Sets the network type for the Amazon FSx for OpenZFS file system that
+#' you're creating from a backup.
 #'
 #' @keywords internal
 #'
 #' @rdname fsx_create_file_system_from_backup
-fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, StorageType = NULL, KmsKeyId = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL, StorageCapacity = NULL) {
+fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, StorageType = NULL, KmsKeyId = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL, StorageCapacity = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "CreateFileSystemFromBackup",
     http_method = "POST",
@@ -697,7 +752,7 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .fsx$create_file_system_from_backup_input(BackupId = BackupId, ClientRequestToken = ClientRequestToken, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, StorageType = StorageType, KmsKeyId = KmsKeyId, FileSystemTypeVersion = FileSystemTypeVersion, OpenZFSConfiguration = OpenZFSConfiguration, StorageCapacity = StorageCapacity)
+  input <- .fsx$create_file_system_from_backup_input(BackupId = BackupId, ClientRequestToken = ClientRequestToken, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, StorageType = StorageType, KmsKeyId = KmsKeyId, FileSystemTypeVersion = FileSystemTypeVersion, OpenZFSConfiguration = OpenZFSConfiguration, StorageCapacity = StorageCapacity, NetworkType = NetworkType)
   output <- .fsx$create_file_system_from_backup_output()
   config <- get_config()
   svc <- .fsx$service(config, op)
@@ -1352,6 +1407,42 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 }
 .fsx$operations$describe_file_systems <- fsx_describe_file_systems
 
+#' Describes one or more S3 access points attached to Amazon FSx volumes
+#'
+#' @description
+#' Describes one or more S3 access points attached to Amazon FSx volumes.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fsx_describe_s3_access_point_attachments/](https://www.paws-r-sdk.com/docs/fsx_describe_s3_access_point_attachments/) for full documentation.
+#'
+#' @param Names The names of the S3 access point attachments whose descriptions you want
+#' to retrieve.
+#' @param Filters Enter a filter Name and Values pair to view a select set of S3 access
+#' point attachments.
+#' @param MaxResults 
+#' @param NextToken 
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_describe_s3_access_point_attachments
+fsx_describe_s3_access_point_attachments <- function(Names = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeS3AccessPointAttachments",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "S3AccessPointAttachments"),
+    stream_api = FALSE
+  )
+  input <- .fsx$describe_s3_access_point_attachments_input(Names = Names, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .fsx$describe_s3_access_point_attachments_output()
+  config <- get_config()
+  svc <- .fsx$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$describe_s3_access_point_attachments <- fsx_describe_s3_access_point_attachments
+
 #' Indicates whether participant accounts in your organization can create
 #' Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are
 #' shared by a virtual private cloud (VPC) owner
@@ -1496,6 +1587,39 @@ fsx_describe_volumes <- function(VolumeIds = NULL, Filters = NULL, MaxResults = 
   return(response)
 }
 .fsx$operations$describe_volumes <- fsx_describe_volumes
+
+#' Detaches an S3 access point from an Amazon FSx volume and deletes the S3
+#' access point
+#'
+#' @description
+#' Detaches an S3 access point from an Amazon FSx volume and deletes the S3 access point.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fsx_detach_and_delete_s3_access_point/](https://www.paws-r-sdk.com/docs/fsx_detach_and_delete_s3_access_point/) for full documentation.
+#'
+#' @param ClientRequestToken 
+#' @param Name &#91;required&#93; The name of the S3 access point attachment that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_detach_and_delete_s3_access_point
+fsx_detach_and_delete_s3_access_point <- function(ClientRequestToken = NULL, Name) {
+  op <- new_operation(
+    name = "DetachAndDeleteS3AccessPoint",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .fsx$detach_and_delete_s3_access_point_input(ClientRequestToken = ClientRequestToken, Name = Name)
+  output <- .fsx$detach_and_delete_s3_access_point_output()
+  config <- get_config()
+  svc <- .fsx$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$detach_and_delete_s3_access_point <- fsx_detach_and_delete_s3_access_point
 
 #' Use this action to disassociate, or remove, one or more Domain Name
 #' Service (DNS) aliases from an Amazon FSx for Windows File Server file
@@ -1848,8 +1972,9 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' SDK.
 #' @param StorageCapacity Use this parameter to increase the storage capacity of an FSx for
 #' Windows File Server, FSx for Lustre, FSx for OpenZFS, or FSx for ONTAP
-#' file system. Specifies the storage capacity target value, in GiB, to
-#' increase the storage capacity for the file system that you're updating.
+#' file system. For second-generation FSx for ONTAP file systems, you can
+#' also decrease the storage capacity. Specifies the storage capacity
+#' target value, in GiB, for the file system that you're updating.
 #' 
 #' You can't make a storage capacity increase request if there is an
 #' existing storage capacity increase request in progress.
@@ -1886,11 +2011,14 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' capacity](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#managing-storage-capacity)
 #' in the *Amazon FSxfor Windows File Server User Guide*.
 #' 
-#' For ONTAP file systems, the storage capacity target value must be at
-#' least 10 percent greater than the current storage capacity value. For
-#' more information, see [Managing storage capacity and provisioned
-#' IOPS](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/managing-storage-capacity.html)
-#' in the *Amazon FSx for NetApp ONTAP User Guide*.
+#' For ONTAP file systems, when increasing storage capacity, the storage
+#' capacity target value must be at least 10 percent greater than the
+#' current storage capacity value. When decreasing storage capacity on
+#' second-generation file systems, the target value must be at least 9
+#' percent smaller than the current SSD storage capacity. For more
+#' information, see [File system storage capacity and
+#' IOPS](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/storage-capacity-and-IOPS.html)
+#' in the Amazon FSx for NetApp ONTAP User Guide.
 #' @param WindowsConfiguration The configuration updates for an Amazon FSx for Windows File Server file
 #' system.
 #' @param LustreConfiguration 
@@ -1900,11 +2028,12 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' @param FileSystemTypeVersion The Lustre version you are updating an FSx for Lustre file system to.
 #' Valid values are `2.12` and `2.15`. The value you choose must be newer
 #' than the file system's current Lustre version.
+#' @param NetworkType Changes the network type of an FSx for OpenZFS file system.
 #'
 #' @keywords internal
 #'
 #' @rdname fsx_update_file_system
-fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, OpenZFSConfiguration = NULL, StorageType = NULL, FileSystemTypeVersion = NULL) {
+fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, OpenZFSConfiguration = NULL, StorageType = NULL, FileSystemTypeVersion = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "UpdateFileSystem",
     http_method = "POST",
@@ -1913,7 +2042,7 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .fsx$update_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, StorageCapacity = StorageCapacity, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, OpenZFSConfiguration = OpenZFSConfiguration, StorageType = StorageType, FileSystemTypeVersion = FileSystemTypeVersion)
+  input <- .fsx$update_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, StorageCapacity = StorageCapacity, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, OpenZFSConfiguration = OpenZFSConfiguration, StorageType = StorageType, FileSystemTypeVersion = FileSystemTypeVersion, NetworkType = NetworkType)
   output <- .fsx$update_file_system_output()
   config <- get_config()
   svc <- .fsx$service(config, op)

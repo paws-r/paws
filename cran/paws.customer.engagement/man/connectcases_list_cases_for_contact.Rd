@@ -5,16 +5,16 @@
 \title{Lists cases for a given contact}
 \usage{
 connectcases_list_cases_for_contact(
-  contactArn,
   domainId,
+  contactArn,
   maxResults = NULL,
   nextToken = NULL
 )
 }
 \arguments{
-\item{contactArn}{[required] A unique identifier of a contact in Amazon Connect.}
-
 \item{domainId}{[required] The unique identifier of the Cases domain.}
+
+\item{contactArn}{[required] A unique identifier of a contact in Amazon Connect.}
 
 \item{maxResults}{The maximum number of results to return per page.}
 

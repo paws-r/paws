@@ -23,6 +23,8 @@ s3_copy_object(
   GrantRead = NULL,
   GrantReadACP = NULL,
   GrantWriteACP = NULL,
+  IfMatch = NULL,
+  IfNoneMatch = NULL,
   Key,
   Metadata = NULL,
   MetadataDirective = NULL,
@@ -292,6 +294,27 @@ object.
 \item This functionality is not supported for Amazon S3 on Outposts.
 }}
 
+\item{IfMatch}{Copies the object if the entity tag (ETag) of the destination object
+matches the specified tag. If the ETag values do not match, the
+operation returns a \verb{412 Precondition Failed} error. If a concurrent
+operation occurs during the upload S3 returns a
+\verb{409 ConditionalRequestConflict} response. On a 409 failure you should
+fetch the object's ETag and retry the upload.
+
+Expects the ETag value as a string.
+
+For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.}
+
+\item{IfNoneMatch}{Copies the object only if the object key name at the destination does
+not already exist in the bucket specified. Otherwise, Amazon S3 returns
+a \verb{412 Precondition Failed} error. If a concurrent operation occurs
+during the upload S3 returns a \verb{409 ConditionalRequestConflict}
+response. On a 409 failure you should retry the upload.
+
+Expects the '*' (asterisk) character.
+
+For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.}
+
 \item{Key}{[required] The key of the destination object.}
 
 \item{Metadata}{A map of metadata to store with the object in S3.}
@@ -421,6 +444,13 @@ copies with SSE-KMS in the encryption-related request headers, you
 must ensure the encryption key is the same customer managed key that
 you specified for the directory bucket's default encryption
 configuration.
+\item \strong{S3 access points for Amazon FSx} - When accessing data stored in
+Amazon FSx file systems using S3 access points, the only valid
+server side encryption option is \code{aws:fsx}. All Amazon FSx file
+systems have encryption configured by default and are encrypted at
+rest. Data is automatically encrypted before being written to the
+file system, and automatically decrypted as it is read. These
+processes are handled transparently by Amazon FSx.
 }}
 
 \item{StorageClass}{If the \code{x-amz-storage-class} header is not used, the copied object will

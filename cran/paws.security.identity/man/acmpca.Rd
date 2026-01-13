@@ -56,7 +56,7 @@ private certificate authority (CA) for your organization.
 The documentation for each action shows the API request parameters and
 the JSON response. Alternatively, you can use one of the Amazon Web
 Services SDKs to access an API that is tailored to the programming
-language or platform that you prefer. For more information, see \href{https://aws.amazon.com/developer/tools/#SDKs}{Amazon Web Services SDKs}.
+language or platform that you prefer. For more information, see \href{https://builder.aws.com/build/tools#SDKs}{Amazon Web Services SDKs}.
 
 Each Amazon Web Services Private CA API operation has a quota that
 determines the number of times the operation can be called per second.

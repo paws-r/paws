@@ -69,7 +69,7 @@ NULL
 #'     ),
 #'     LastModificationErrors = list(
 #'       list(
-#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'         Message = "string",
 #'         ResourceArn = "string",
 #'         RequestId = "string"
@@ -398,11 +398,13 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 #'
 #' @usage
 #' networkmanager_create_connect_attachment(CoreNetworkId, EdgeLocation,
-#'   TransportAttachmentId, Options, Tags, ClientToken)
+#'   TransportAttachmentId, RoutingPolicyLabel, Options, Tags, ClientToken)
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network where you want to create the attachment.
 #' @param EdgeLocation &#91;required&#93; The Region where the edge is located.
 #' @param TransportAttachmentId &#91;required&#93; The ID of the attachment between the two connections.
+#' @param RoutingPolicyLabel The routing policy label to apply to the Connect attachment for traffic
+#' routing decisions.
 #' @param Options &#91;required&#93; Options for creating an attachment.
 #' @param Tags The list of key-value tags associated with the request.
 #' @param ClientToken The client token associated with the request.
@@ -461,7 +463,7 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -482,6 +484,7 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 #'   CoreNetworkId = "string",
 #'   EdgeLocation = "string",
 #'   TransportAttachmentId = "string",
+#'   RoutingPolicyLabel = "string",
 #'   Options = list(
 #'     Protocol = "GRE"|"NO_ENCAP"
 #'   ),
@@ -500,7 +503,7 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 #' @rdname networkmanager_create_connect_attachment
 #'
 #' @aliases networkmanager_create_connect_attachment
-networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation, TransportAttachmentId, Options, Tags = NULL, ClientToken = NULL) {
+networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation, TransportAttachmentId, RoutingPolicyLabel = NULL, Options, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateConnectAttachment",
     http_method = "POST",
@@ -509,7 +512,7 @@ networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .networkmanager$create_connect_attachment_input(CoreNetworkId = CoreNetworkId, EdgeLocation = EdgeLocation, TransportAttachmentId = TransportAttachmentId, Options = Options, Tags = Tags, ClientToken = ClientToken)
+  input <- .networkmanager$create_connect_attachment_input(CoreNetworkId = CoreNetworkId, EdgeLocation = EdgeLocation, TransportAttachmentId = TransportAttachmentId, RoutingPolicyLabel = RoutingPolicyLabel, Options = Options, Tags = Tags, ClientToken = ClientToken)
   output <- .networkmanager$create_connect_attachment_output()
   config <- get_config()
   svc <- .networkmanager$service(config, op)
@@ -847,6 +850,67 @@ networkmanager_create_core_network <- function(GlobalNetworkId, Description = NU
 }
 .networkmanager$operations$create_core_network <- networkmanager_create_core_network
 
+#' Creates an association between a core network and a prefix list for
+#' routing control
+#'
+#' @description
+#' Creates an association between a core network and a prefix list for
+#' routing control.
+#'
+#' @usage
+#' networkmanager_create_core_network_prefix_list_association(
+#'   CoreNetworkId, PrefixListArn, PrefixListAlias, ClientToken)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of the core network to associate with the prefix list.
+#' @param PrefixListArn &#91;required&#93; The ARN of the prefix list to associate with the core network.
+#' @param PrefixListAlias &#91;required&#93; An optional alias for the prefix list association.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetworkId = "string",
+#'   PrefixListArn = "string",
+#'   PrefixListAlias = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_core_network_prefix_list_association(
+#'   CoreNetworkId = "string",
+#'   PrefixListArn = "string",
+#'   PrefixListAlias = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_create_core_network_prefix_list_association
+#'
+#' @aliases networkmanager_create_core_network_prefix_list_association
+networkmanager_create_core_network_prefix_list_association <- function(CoreNetworkId, PrefixListArn, PrefixListAlias, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateCoreNetworkPrefixListAssociation",
+    http_method = "POST",
+    http_path = "/prefix-list",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkmanager$create_core_network_prefix_list_association_input(CoreNetworkId = CoreNetworkId, PrefixListArn = PrefixListArn, PrefixListAlias = PrefixListAlias, ClientToken = ClientToken)
+  output <- .networkmanager$create_core_network_prefix_list_association_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$create_core_network_prefix_list_association <- networkmanager_create_core_network_prefix_list_association
+
 #' Creates a new device in a global network
 #'
 #' @description
@@ -974,11 +1038,14 @@ networkmanager_create_device <- function(GlobalNetworkId, AWSLocation = NULL, De
 #'
 #' @usage
 #' networkmanager_create_direct_connect_gateway_attachment(CoreNetworkId,
-#'   DirectConnectGatewayArn, EdgeLocations, Tags, ClientToken)
+#'   DirectConnectGatewayArn, RoutingPolicyLabel, EdgeLocations, Tags,
+#'   ClientToken)
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of the Cloud WAN core network that the Direct Connect gateway
 #' attachment should be attached to.
 #' @param DirectConnectGatewayArn &#91;required&#93; The ARN of the Direct Connect gateway attachment.
+#' @param RoutingPolicyLabel The routing policy label to apply to the Direct Connect Gateway
+#' attachment for traffic routing decisions.
 #' @param EdgeLocations &#91;required&#93; One or more core network edge locations that the Direct Connect gateway
 #' attachment is associated with.
 #' @param Tags The key value tags to apply to the Direct Connect gateway attachment
@@ -1039,7 +1106,7 @@ networkmanager_create_device <- function(GlobalNetworkId, AWSLocation = NULL, De
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -1056,6 +1123,7 @@ networkmanager_create_device <- function(GlobalNetworkId, AWSLocation = NULL, De
 #' svc$create_direct_connect_gateway_attachment(
 #'   CoreNetworkId = "string",
 #'   DirectConnectGatewayArn = "string",
+#'   RoutingPolicyLabel = "string",
 #'   EdgeLocations = list(
 #'     "string"
 #'   ),
@@ -1074,7 +1142,7 @@ networkmanager_create_device <- function(GlobalNetworkId, AWSLocation = NULL, De
 #' @rdname networkmanager_create_direct_connect_gateway_attachment
 #'
 #' @aliases networkmanager_create_direct_connect_gateway_attachment
-networkmanager_create_direct_connect_gateway_attachment <- function(CoreNetworkId, DirectConnectGatewayArn, EdgeLocations, Tags = NULL, ClientToken = NULL) {
+networkmanager_create_direct_connect_gateway_attachment <- function(CoreNetworkId, DirectConnectGatewayArn, RoutingPolicyLabel = NULL, EdgeLocations, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateDirectConnectGatewayAttachment",
     http_method = "POST",
@@ -1083,7 +1151,7 @@ networkmanager_create_direct_connect_gateway_attachment <- function(CoreNetworkI
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .networkmanager$create_direct_connect_gateway_attachment_input(CoreNetworkId = CoreNetworkId, DirectConnectGatewayArn = DirectConnectGatewayArn, EdgeLocations = EdgeLocations, Tags = Tags, ClientToken = ClientToken)
+  input <- .networkmanager$create_direct_connect_gateway_attachment_input(CoreNetworkId = CoreNetworkId, DirectConnectGatewayArn = DirectConnectGatewayArn, RoutingPolicyLabel = RoutingPolicyLabel, EdgeLocations = EdgeLocations, Tags = Tags, ClientToken = ClientToken)
   output <- .networkmanager$create_direct_connect_gateway_attachment_output()
   config <- get_config()
   svc <- .networkmanager$service(config, op)
@@ -1368,11 +1436,13 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
 #'
 #' @usage
 #' networkmanager_create_site_to_site_vpn_attachment(CoreNetworkId,
-#'   VpnConnectionArn, Tags, ClientToken)
+#'   VpnConnectionArn, RoutingPolicyLabel, Tags, ClientToken)
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network where you're creating a site-to-site VPN
 #' attachment.
 #' @param VpnConnectionArn &#91;required&#93; The ARN identifying the VPN attachment.
+#' @param RoutingPolicyLabel The routing policy label to apply to the Site-to-Site VPN attachment for
+#' traffic routing decisions.
 #' @param Tags The tags associated with the request.
 #' @param ClientToken The client token associated with the request.
 #'
@@ -1430,7 +1500,7 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -1447,6 +1517,7 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
 #' svc$create_site_to_site_vpn_attachment(
 #'   CoreNetworkId = "string",
 #'   VpnConnectionArn = "string",
+#'   RoutingPolicyLabel = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -1462,7 +1533,7 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
 #' @rdname networkmanager_create_site_to_site_vpn_attachment
 #'
 #' @aliases networkmanager_create_site_to_site_vpn_attachment
-networkmanager_create_site_to_site_vpn_attachment <- function(CoreNetworkId, VpnConnectionArn, Tags = NULL, ClientToken = NULL) {
+networkmanager_create_site_to_site_vpn_attachment <- function(CoreNetworkId, VpnConnectionArn, RoutingPolicyLabel = NULL, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateSiteToSiteVpnAttachment",
     http_method = "POST",
@@ -1471,7 +1542,7 @@ networkmanager_create_site_to_site_vpn_attachment <- function(CoreNetworkId, Vpn
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .networkmanager$create_site_to_site_vpn_attachment_input(CoreNetworkId = CoreNetworkId, VpnConnectionArn = VpnConnectionArn, Tags = Tags, ClientToken = ClientToken)
+  input <- .networkmanager$create_site_to_site_vpn_attachment_input(CoreNetworkId = CoreNetworkId, VpnConnectionArn = VpnConnectionArn, RoutingPolicyLabel = RoutingPolicyLabel, Tags = Tags, ClientToken = ClientToken)
   output <- .networkmanager$create_site_to_site_vpn_attachment_output()
   config <- get_config()
   svc <- .networkmanager$service(config, op)
@@ -1582,12 +1653,14 @@ networkmanager_create_transit_gateway_peering <- function(CoreNetworkId, Transit
 #'
 #' @usage
 #' networkmanager_create_transit_gateway_route_table_attachment(PeeringId,
-#'   TransitGatewayRouteTableArn, Tags, ClientToken)
+#'   TransitGatewayRouteTableArn, RoutingPolicyLabel, Tags, ClientToken)
 #'
 #' @param PeeringId &#91;required&#93; The ID of the peer for the
 #' @param TransitGatewayRouteTableArn &#91;required&#93; The ARN of the transit gateway route table for the attachment request.
 #' For example,
 #' `"TransitGatewayRouteTableArn": "arn:aws:ec2:us-west-2:123456789012:transit-gateway-route-table/tgw-rtb-9876543210123456"`.
+#' @param RoutingPolicyLabel The routing policy label to apply to the Transit Gateway route table
+#' attachment for traffic routing decisions.
 #' @param Tags The list of key-value tags associated with the request.
 #' @param ClientToken The client token associated with the request.
 #'
@@ -1645,7 +1718,7 @@ networkmanager_create_transit_gateway_peering <- function(CoreNetworkId, Transit
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -1663,6 +1736,7 @@ networkmanager_create_transit_gateway_peering <- function(CoreNetworkId, Transit
 #' svc$create_transit_gateway_route_table_attachment(
 #'   PeeringId = "string",
 #'   TransitGatewayRouteTableArn = "string",
+#'   RoutingPolicyLabel = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -1678,7 +1752,7 @@ networkmanager_create_transit_gateway_peering <- function(CoreNetworkId, Transit
 #' @rdname networkmanager_create_transit_gateway_route_table_attachment
 #'
 #' @aliases networkmanager_create_transit_gateway_route_table_attachment
-networkmanager_create_transit_gateway_route_table_attachment <- function(PeeringId, TransitGatewayRouteTableArn, Tags = NULL, ClientToken = NULL) {
+networkmanager_create_transit_gateway_route_table_attachment <- function(PeeringId, TransitGatewayRouteTableArn, RoutingPolicyLabel = NULL, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateTransitGatewayRouteTableAttachment",
     http_method = "POST",
@@ -1687,7 +1761,7 @@ networkmanager_create_transit_gateway_route_table_attachment <- function(Peering
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .networkmanager$create_transit_gateway_route_table_attachment_input(PeeringId = PeeringId, TransitGatewayRouteTableArn = TransitGatewayRouteTableArn, Tags = Tags, ClientToken = ClientToken)
+  input <- .networkmanager$create_transit_gateway_route_table_attachment_input(PeeringId = PeeringId, TransitGatewayRouteTableArn = TransitGatewayRouteTableArn, RoutingPolicyLabel = RoutingPolicyLabel, Tags = Tags, ClientToken = ClientToken)
   output <- .networkmanager$create_transit_gateway_route_table_attachment_output()
   config <- get_config()
   svc <- .networkmanager$service(config, op)
@@ -1704,12 +1778,14 @@ networkmanager_create_transit_gateway_route_table_attachment <- function(Peering
 #'
 #' @usage
 #' networkmanager_create_vpc_attachment(CoreNetworkId, VpcArn, SubnetArns,
-#'   Options, Tags, ClientToken)
+#'   Options, RoutingPolicyLabel, Tags, ClientToken)
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network for the VPC attachment.
 #' @param VpcArn &#91;required&#93; The ARN of the VPC.
 #' @param SubnetArns &#91;required&#93; The subnet ARN of the VPC attachment.
 #' @param Options Options for the VPC attachment.
+#' @param RoutingPolicyLabel The routing policy label to apply to the VPC attachment for traffic
+#' routing decisions.
 #' @param Tags The key-value tags associated with the request.
 #' @param ClientToken The client token associated with the request.
 #'
@@ -1767,7 +1843,7 @@ networkmanager_create_transit_gateway_route_table_attachment <- function(Peering
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -1779,7 +1855,9 @@ networkmanager_create_transit_gateway_route_table_attachment <- function(Peering
 #'     ),
 #'     Options = list(
 #'       Ipv6Support = TRUE|FALSE,
-#'       ApplianceModeSupport = TRUE|FALSE
+#'       ApplianceModeSupport = TRUE|FALSE,
+#'       DnsSupport = TRUE|FALSE,
+#'       SecurityGroupReferencingSupport = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -1795,8 +1873,11 @@ networkmanager_create_transit_gateway_route_table_attachment <- function(Peering
 #'   ),
 #'   Options = list(
 #'     Ipv6Support = TRUE|FALSE,
-#'     ApplianceModeSupport = TRUE|FALSE
+#'     ApplianceModeSupport = TRUE|FALSE,
+#'     DnsSupport = TRUE|FALSE,
+#'     SecurityGroupReferencingSupport = TRUE|FALSE
 #'   ),
+#'   RoutingPolicyLabel = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -1812,7 +1893,7 @@ networkmanager_create_transit_gateway_route_table_attachment <- function(Peering
 #' @rdname networkmanager_create_vpc_attachment
 #'
 #' @aliases networkmanager_create_vpc_attachment
-networkmanager_create_vpc_attachment <- function(CoreNetworkId, VpcArn, SubnetArns, Options = NULL, Tags = NULL, ClientToken = NULL) {
+networkmanager_create_vpc_attachment <- function(CoreNetworkId, VpcArn, SubnetArns, Options = NULL, RoutingPolicyLabel = NULL, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateVpcAttachment",
     http_method = "POST",
@@ -1821,7 +1902,7 @@ networkmanager_create_vpc_attachment <- function(CoreNetworkId, VpcArn, SubnetAr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .networkmanager$create_vpc_attachment_input(CoreNetworkId = CoreNetworkId, VpcArn = VpcArn, SubnetArns = SubnetArns, Options = Options, Tags = Tags, ClientToken = ClientToken)
+  input <- .networkmanager$create_vpc_attachment_input(CoreNetworkId = CoreNetworkId, VpcArn = VpcArn, SubnetArns = SubnetArns, Options = Options, RoutingPolicyLabel = RoutingPolicyLabel, Tags = Tags, ClientToken = ClientToken)
   output <- .networkmanager$create_vpc_attachment_output()
   config <- get_config()
   svc <- .networkmanager$service(config, op)
@@ -1894,7 +1975,7 @@ networkmanager_create_vpc_attachment <- function(CoreNetworkId, VpcArn, SubnetAr
 #'     ),
 #'     LastModificationErrors = list(
 #'       list(
-#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'         Message = "string",
 #'         ResourceArn = "string",
 #'         RequestId = "string"
@@ -2264,6 +2345,60 @@ networkmanager_delete_core_network_policy_version <- function(CoreNetworkId, Pol
   return(response)
 }
 .networkmanager$operations$delete_core_network_policy_version <- networkmanager_delete_core_network_policy_version
+
+#' Deletes an association between a core network and a prefix list
+#'
+#' @description
+#' Deletes an association between a core network and a prefix list.
+#'
+#' @usage
+#' networkmanager_delete_core_network_prefix_list_association(
+#'   CoreNetworkId, PrefixListArn)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of the core network from which to delete the prefix list
+#' association.
+#' @param PrefixListArn &#91;required&#93; The ARN of the prefix list to disassociate from the core network.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetworkId = "string",
+#'   PrefixListArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_core_network_prefix_list_association(
+#'   CoreNetworkId = "string",
+#'   PrefixListArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_delete_core_network_prefix_list_association
+#'
+#' @aliases networkmanager_delete_core_network_prefix_list_association
+networkmanager_delete_core_network_prefix_list_association <- function(CoreNetworkId, PrefixListArn) {
+  op <- new_operation(
+    name = "DeleteCoreNetworkPrefixListAssociation",
+    http_method = "DELETE",
+    http_path = "/prefix-list/{prefixListArn}/core-network/{coreNetworkId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkmanager$delete_core_network_prefix_list_association_input(CoreNetworkId = CoreNetworkId, PrefixListArn = PrefixListArn)
+  output <- .networkmanager$delete_core_network_prefix_list_association_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$delete_core_network_prefix_list_association <- networkmanager_delete_core_network_prefix_list_association
 
 #' Deletes an existing device
 #'
@@ -3162,7 +3297,7 @@ networkmanager_execute_core_network_change_set <- function(CoreNetworkId, Policy
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -3568,7 +3703,7 @@ networkmanager_get_core_network <- function(CoreNetworkId) {
 #' list(
 #'   CoreNetworkChangeEvents = list(
 #'     list(
-#'       Type = "CORE_NETWORK_SEGMENT"|"NETWORK_FUNCTION_GROUP"|"CORE_NETWORK_EDGE"|"ATTACHMENT_MAPPING"|"ATTACHMENT_ROUTE_PROPAGATION"|"ATTACHMENT_ROUTE_STATIC"|"CORE_NETWORK_CONFIGURATION"|"SEGMENTS_CONFIGURATION"|"SEGMENT_ACTIONS_CONFIGURATION"|"ATTACHMENT_POLICIES_CONFIGURATION",
+#'       Type = "CORE_NETWORK_SEGMENT"|"NETWORK_FUNCTION_GROUP"|"CORE_NETWORK_EDGE"|"ATTACHMENT_MAPPING"|"ATTACHMENT_ROUTE_PROPAGATION"|"ATTACHMENT_ROUTE_STATIC"|"ROUTING_POLICY"|"ROUTING_POLICY_SEGMENT_ASSOCIATION"|"ROUTING_POLICY_EDGE_ASSOCIATION"|"ROUTING_POLICY_ATTACHMENT_ASSOCIATION"|"CORE_NETWORK_CONFIGURATION"|"SEGMENTS_CONFIGURATION"|"SEGMENT_ACTIONS_CONFIGURATION"|"ATTACHMENT_POLICIES_CONFIGURATION",
 #'       Action = "ADD"|"MODIFY"|"REMOVE",
 #'       IdentifierPath = "string",
 #'       EventTime = as.POSIXct(
@@ -3577,10 +3712,22 @@ networkmanager_get_core_network <- function(CoreNetworkId) {
 #'       Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"FAILED",
 #'       Values = list(
 #'         EdgeLocation = "string",
+#'         PeerEdgeLocation = "string",
+#'         RoutingPolicyDirection = "inbound"|"outbound",
 #'         SegmentName = "string",
 #'         NetworkFunctionGroupName = "string",
 #'         AttachmentId = "string",
-#'         Cidr = "string"
+#'         Cidr = "string",
+#'         RoutingPolicyAssociationDetails = list(
+#'           list(
+#'             RoutingPolicyNames = list(
+#'               "string"
+#'             ),
+#'             SharedSegments = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -3644,7 +3791,7 @@ networkmanager_get_core_network_change_events <- function(CoreNetworkId, PolicyV
 #' list(
 #'   CoreNetworkChanges = list(
 #'     list(
-#'       Type = "CORE_NETWORK_SEGMENT"|"NETWORK_FUNCTION_GROUP"|"CORE_NETWORK_EDGE"|"ATTACHMENT_MAPPING"|"ATTACHMENT_ROUTE_PROPAGATION"|"ATTACHMENT_ROUTE_STATIC"|"CORE_NETWORK_CONFIGURATION"|"SEGMENTS_CONFIGURATION"|"SEGMENT_ACTIONS_CONFIGURATION"|"ATTACHMENT_POLICIES_CONFIGURATION",
+#'       Type = "CORE_NETWORK_SEGMENT"|"NETWORK_FUNCTION_GROUP"|"CORE_NETWORK_EDGE"|"ATTACHMENT_MAPPING"|"ATTACHMENT_ROUTE_PROPAGATION"|"ATTACHMENT_ROUTE_STATIC"|"ROUTING_POLICY"|"ROUTING_POLICY_SEGMENT_ASSOCIATION"|"ROUTING_POLICY_EDGE_ASSOCIATION"|"ROUTING_POLICY_ATTACHMENT_ASSOCIATION"|"CORE_NETWORK_CONFIGURATION"|"SEGMENTS_CONFIGURATION"|"SEGMENT_ACTIONS_CONFIGURATION"|"ATTACHMENT_POLICIES_CONFIGURATION",
 #'       Action = "ADD"|"MODIFY"|"REMOVE",
 #'       Identifier = "string",
 #'       PreviousValues = list(
@@ -3689,6 +3836,25 @@ networkmanager_get_core_network_change_events <- function(CoreNetworkId, PolicyV
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         VpnEcmpSupport = TRUE|FALSE,
+#'         DnsSupport = TRUE|FALSE,
+#'         SecurityGroupReferencingSupport = TRUE|FALSE,
+#'         RoutingPolicyDirection = "inbound"|"outbound",
+#'         RoutingPolicy = "string",
+#'         PeerEdgeLocations = list(
+#'           "string"
+#'         ),
+#'         AttachmentId = "string",
+#'         RoutingPolicyAssociationDetails = list(
+#'           list(
+#'             RoutingPolicyNames = list(
+#'               "string"
+#'             ),
+#'             SharedSegments = list(
+#'               "string"
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       NewValues = list(
@@ -3731,6 +3897,25 @@ networkmanager_get_core_network_change_events <- function(CoreNetworkId, PolicyV
 #'                   UseEdge = "string"
 #'                 )
 #'               )
+#'             )
+#'           )
+#'         ),
+#'         VpnEcmpSupport = TRUE|FALSE,
+#'         DnsSupport = TRUE|FALSE,
+#'         SecurityGroupReferencingSupport = TRUE|FALSE,
+#'         RoutingPolicyDirection = "inbound"|"outbound",
+#'         RoutingPolicy = "string",
+#'         PeerEdgeLocations = list(
+#'           "string"
+#'         ),
+#'         AttachmentId = "string",
+#'         RoutingPolicyAssociationDetails = list(
+#'           list(
+#'             RoutingPolicyNames = list(
+#'               "string"
+#'             ),
+#'             SharedSegments = list(
+#'               "string"
 #'             )
 #'           )
 #'         )
@@ -4077,7 +4262,7 @@ networkmanager_get_devices <- function(GlobalNetworkId, DeviceIds = NULL, SiteId
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -5083,7 +5268,7 @@ networkmanager_get_route_analysis <- function(GlobalNetworkId, RouteAnalysisId) 
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -5493,7 +5678,7 @@ networkmanager_get_transit_gateway_registrations <- function(GlobalNetworkId, Tr
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -5601,7 +5786,7 @@ networkmanager_get_transit_gateway_route_table_attachment <- function(Attachment
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -5613,7 +5798,9 @@ networkmanager_get_transit_gateway_route_table_attachment <- function(Attachment
 #'     ),
 #'     Options = list(
 #'       Ipv6Support = TRUE|FALSE,
-#'       ApplianceModeSupport = TRUE|FALSE
+#'       ApplianceModeSupport = TRUE|FALSE,
+#'       DnsSupport = TRUE|FALSE,
+#'       SecurityGroupReferencingSupport = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -5649,6 +5836,76 @@ networkmanager_get_vpc_attachment <- function(AttachmentId) {
   return(response)
 }
 .networkmanager$operations$get_vpc_attachment <- networkmanager_get_vpc_attachment
+
+#' Lists the routing policy associations for attachments in a core network
+#'
+#' @description
+#' Lists the routing policy associations for attachments in a core network.
+#'
+#' @usage
+#' networkmanager_list_attachment_routing_policy_associations(
+#'   CoreNetworkId, AttachmentId, MaxResults, NextToken)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of the core network to list attachment routing policy
+#' associations for.
+#' @param AttachmentId The ID of a specific attachment to filter the routing policy
+#' associations.
+#' @param MaxResults The maximum number of results to return in a single page.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AttachmentRoutingPolicyAssociations = list(
+#'     list(
+#'       AttachmentId = "string",
+#'       PendingRoutingPolicies = list(
+#'         "string"
+#'       ),
+#'       AssociatedRoutingPolicies = list(
+#'         "string"
+#'       ),
+#'       RoutingPolicyLabel = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_attachment_routing_policy_associations(
+#'   CoreNetworkId = "string",
+#'   AttachmentId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_list_attachment_routing_policy_associations
+#'
+#' @aliases networkmanager_list_attachment_routing_policy_associations
+networkmanager_list_attachment_routing_policy_associations <- function(CoreNetworkId, AttachmentId = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAttachmentRoutingPolicyAssociations",
+    http_method = "GET",
+    http_path = "/routing-policy-label/core-network/{coreNetworkId}",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AttachmentRoutingPolicyAssociations"),
+    stream_api = FALSE
+  )
+  input <- .networkmanager$list_attachment_routing_policy_associations_input(CoreNetworkId = CoreNetworkId, AttachmentId = AttachmentId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$list_attachment_routing_policy_associations_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$list_attachment_routing_policy_associations <- networkmanager_list_attachment_routing_policy_associations
 
 #' Returns a list of core network attachments
 #'
@@ -5720,7 +5977,7 @@ networkmanager_get_vpc_attachment <- function(AttachmentId) {
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -5908,6 +6165,175 @@ networkmanager_list_core_network_policy_versions <- function(CoreNetworkId, MaxR
   return(response)
 }
 .networkmanager$operations$list_core_network_policy_versions <- networkmanager_list_core_network_policy_versions
+
+#' Lists the prefix list associations for a core network
+#'
+#' @description
+#' Lists the prefix list associations for a core network.
+#'
+#' @usage
+#' networkmanager_list_core_network_prefix_list_associations(CoreNetworkId,
+#'   PrefixListArn, MaxResults, NextToken)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of the core network to list prefix list associations for.
+#' @param PrefixListArn The ARN of a specific prefix list to filter the associations.
+#' @param MaxResults The maximum number of results to return in a single page.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PrefixListAssociations = list(
+#'     list(
+#'       CoreNetworkId = "string",
+#'       PrefixListArn = "string",
+#'       PrefixListAlias = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_core_network_prefix_list_associations(
+#'   CoreNetworkId = "string",
+#'   PrefixListArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_list_core_network_prefix_list_associations
+#'
+#' @aliases networkmanager_list_core_network_prefix_list_associations
+networkmanager_list_core_network_prefix_list_associations <- function(CoreNetworkId, PrefixListArn = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListCoreNetworkPrefixListAssociations",
+    http_method = "GET",
+    http_path = "/prefix-list/core-network/{coreNetworkId}",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PrefixListAssociations"),
+    stream_api = FALSE
+  )
+  input <- .networkmanager$list_core_network_prefix_list_associations_input(CoreNetworkId = CoreNetworkId, PrefixListArn = PrefixListArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$list_core_network_prefix_list_associations_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$list_core_network_prefix_list_associations <- networkmanager_list_core_network_prefix_list_associations
+
+#' Lists routing information for a core network, including routes and their
+#' attributes
+#'
+#' @description
+#' Lists routing information for a core network, including routes and their
+#' attributes.
+#'
+#' @usage
+#' networkmanager_list_core_network_routing_information(CoreNetworkId,
+#'   SegmentName, EdgeLocation, NextHopFilters, LocalPreferenceMatches,
+#'   ExactAsPathMatches, MedMatches, CommunityMatches, MaxResults, NextToken)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of the core network to retrieve routing information for.
+#' @param SegmentName &#91;required&#93; The name of the segment to filter routing information by.
+#' @param EdgeLocation &#91;required&#93; The edge location to filter routing information by.
+#' @param NextHopFilters Filters to apply based on next hop information.
+#' @param LocalPreferenceMatches Local preference values to match when filtering routing information.
+#' @param ExactAsPathMatches Exact AS path values to match when filtering routing information.
+#' @param MedMatches Multi-Exit Discriminator (MED) values to match when filtering routing
+#' information.
+#' @param CommunityMatches BGP community values to match when filtering routing information.
+#' @param MaxResults The maximum number of routing information entries to return in a single
+#' page.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetworkRoutingInformation = list(
+#'     list(
+#'       Prefix = "string",
+#'       NextHop = list(
+#'         IpAddress = "string",
+#'         CoreNetworkAttachmentId = "string",
+#'         ResourceId = "string",
+#'         ResourceType = "string",
+#'         SegmentName = "string",
+#'         EdgeLocation = "string"
+#'       ),
+#'       LocalPreference = "string",
+#'       Med = "string",
+#'       AsPath = list(
+#'         "string"
+#'       ),
+#'       Communities = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_core_network_routing_information(
+#'   CoreNetworkId = "string",
+#'   SegmentName = "string",
+#'   EdgeLocation = "string",
+#'   NextHopFilters = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   LocalPreferenceMatches = list(
+#'     "string"
+#'   ),
+#'   ExactAsPathMatches = list(
+#'     "string"
+#'   ),
+#'   MedMatches = list(
+#'     "string"
+#'   ),
+#'   CommunityMatches = list(
+#'     "string"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_list_core_network_routing_information
+#'
+#' @aliases networkmanager_list_core_network_routing_information
+networkmanager_list_core_network_routing_information <- function(CoreNetworkId, SegmentName, EdgeLocation, NextHopFilters = NULL, LocalPreferenceMatches = NULL, ExactAsPathMatches = NULL, MedMatches = NULL, CommunityMatches = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListCoreNetworkRoutingInformation",
+    http_method = "POST",
+    http_path = "/core-networks/{coreNetworkId}/core-network-routing-information",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CoreNetworkRoutingInformation"),
+    stream_api = FALSE
+  )
+  input <- .networkmanager$list_core_network_routing_information_input(CoreNetworkId = CoreNetworkId, SegmentName = SegmentName, EdgeLocation = EdgeLocation, NextHopFilters = NextHopFilters, LocalPreferenceMatches = LocalPreferenceMatches, ExactAsPathMatches = ExactAsPathMatches, MedMatches = MedMatches, CommunityMatches = CommunityMatches, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$list_core_network_routing_information_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$list_core_network_routing_information <- networkmanager_list_core_network_routing_information
 
 #' Returns a list of owned and shared core networks
 #'
@@ -6187,6 +6613,67 @@ networkmanager_list_tags_for_resource <- function(ResourceArn) {
 }
 .networkmanager$operations$list_tags_for_resource <- networkmanager_list_tags_for_resource
 
+#' Applies a routing policy label to an attachment for traffic routing
+#' decisions
+#'
+#' @description
+#' Applies a routing policy label to an attachment for traffic routing
+#' decisions.
+#'
+#' @usage
+#' networkmanager_put_attachment_routing_policy_label(CoreNetworkId,
+#'   AttachmentId, RoutingPolicyLabel, ClientToken)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of the core network containing the attachment.
+#' @param AttachmentId &#91;required&#93; The ID of the attachment to apply the routing policy label to.
+#' @param RoutingPolicyLabel &#91;required&#93; The routing policy label to apply to the attachment.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetworkId = "string",
+#'   AttachmentId = "string",
+#'   RoutingPolicyLabel = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_attachment_routing_policy_label(
+#'   CoreNetworkId = "string",
+#'   AttachmentId = "string",
+#'   RoutingPolicyLabel = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_put_attachment_routing_policy_label
+#'
+#' @aliases networkmanager_put_attachment_routing_policy_label
+networkmanager_put_attachment_routing_policy_label <- function(CoreNetworkId, AttachmentId, RoutingPolicyLabel, ClientToken = NULL) {
+  op <- new_operation(
+    name = "PutAttachmentRoutingPolicyLabel",
+    http_method = "POST",
+    http_path = "/routing-policy-label",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkmanager$put_attachment_routing_policy_label_input(CoreNetworkId = CoreNetworkId, AttachmentId = AttachmentId, RoutingPolicyLabel = RoutingPolicyLabel, ClientToken = ClientToken)
+  output <- .networkmanager$put_attachment_routing_policy_label_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$put_attachment_routing_policy_label <- networkmanager_put_attachment_routing_policy_label
+
 #' Creates a new, immutable version of a core network policy
 #'
 #' @description
@@ -6440,7 +6927,7 @@ networkmanager_register_transit_gateway <- function(GlobalNetworkId, TransitGate
 #'     ),
 #'     LastModificationErrors = list(
 #'       list(
-#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'         Message = "string",
 #'         ResourceArn = "string",
 #'         RequestId = "string"
@@ -6480,6 +6967,60 @@ networkmanager_reject_attachment <- function(AttachmentId) {
   return(response)
 }
 .networkmanager$operations$reject_attachment <- networkmanager_reject_attachment
+
+#' Removes a routing policy label from an attachment
+#'
+#' @description
+#' Removes a routing policy label from an attachment.
+#'
+#' @usage
+#' networkmanager_remove_attachment_routing_policy_label(CoreNetworkId,
+#'   AttachmentId)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of the core network containing the attachment.
+#' @param AttachmentId &#91;required&#93; The ID of the attachment to remove the routing policy label from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetworkId = "string",
+#'   AttachmentId = "string",
+#'   RoutingPolicyLabel = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_attachment_routing_policy_label(
+#'   CoreNetworkId = "string",
+#'   AttachmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_remove_attachment_routing_policy_label
+#'
+#' @aliases networkmanager_remove_attachment_routing_policy_label
+networkmanager_remove_attachment_routing_policy_label <- function(CoreNetworkId, AttachmentId) {
+  op <- new_operation(
+    name = "RemoveAttachmentRoutingPolicyLabel",
+    http_method = "DELETE",
+    http_path = "/routing-policy-label/core-network/{coreNetworkId}/attachment/{attachmentId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkmanager$remove_attachment_routing_policy_label_input(CoreNetworkId = CoreNetworkId, AttachmentId = AttachmentId)
+  output <- .networkmanager$remove_attachment_routing_policy_label_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$remove_attachment_routing_policy_label <- networkmanager_remove_attachment_routing_policy_label
 
 #' Restores a previous policy version as a new, immutable version of a core
 #' network policy
@@ -7217,7 +7758,7 @@ networkmanager_update_device <- function(GlobalNetworkId, DeviceId, AWSLocation 
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -7639,7 +8180,7 @@ networkmanager_update_site <- function(GlobalNetworkId, SiteId, Description = NU
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"|"VPN_EXISTING_ASSOCIATIONS"|"VPC_UNSUPPORTED_FEATURES",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -7651,7 +8192,9 @@ networkmanager_update_site <- function(GlobalNetworkId, SiteId, Description = NU
 #'     ),
 #'     Options = list(
 #'       Ipv6Support = TRUE|FALSE,
-#'       ApplianceModeSupport = TRUE|FALSE
+#'       ApplianceModeSupport = TRUE|FALSE,
+#'       DnsSupport = TRUE|FALSE,
+#'       SecurityGroupReferencingSupport = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -7669,7 +8212,9 @@ networkmanager_update_site <- function(GlobalNetworkId, SiteId, Description = NU
 #'   ),
 #'   Options = list(
 #'     Ipv6Support = TRUE|FALSE,
-#'     ApplianceModeSupport = TRUE|FALSE
+#'     ApplianceModeSupport = TRUE|FALSE,
+#'     DnsSupport = TRUE|FALSE,
+#'     SecurityGroupReferencingSupport = TRUE|FALSE
 #'   )
 #' )
 #' ```

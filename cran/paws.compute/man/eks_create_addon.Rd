@@ -13,7 +13,8 @@ eks_create_addon(
   clientRequestToken = NULL,
   tags = NULL,
   configurationValues = NULL,
-  podIdentityAssociations = NULL
+  podIdentityAssociations = NULL,
+  namespaceConfig = NULL
 )
 }
 \arguments{
@@ -75,11 +76,14 @@ propagate to any other cluster or Amazon Web Services resources.}
 values that you provide are validated against the schema returned by
 \code{\link[=eks_describe_addon_configuration]{describe_addon_configuration}}.}
 
-\item{podIdentityAssociations}{An array of Pod Identity Assocations to be created. Each EKS Pod
-Identity association maps a Kubernetes service account to an IAM Role.
+\item{podIdentityAssociations}{An array of EKS Pod Identity associations to be created. Each
+association maps a Kubernetes service account to an IAM role.
 
-For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html}{Attach an IAM Role to an Amazon EKS add-on using Pod Identity}
+For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html}{Attach an IAM Role to an Amazon EKS add-on using EKS Pod Identity}
 in the \emph{Amazon EKS User Guide}.}
+
+\item{namespaceConfig}{The namespace configuration for the addon. If specified, this will
+override the default namespace for the addon.}
 }
 \description{
 Creates an Amazon EKS add-on.

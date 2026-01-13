@@ -48,7 +48,7 @@ Create Case page.}
 \item{ccEmailAddresses}{A list of email addresses that Amazon Web Services Support copies on
 case correspondence. Amazon Web Services Support identifies the account
 that creates the case when you specify your Amazon Web Services
-credentials in an HTTP POST method or use the \href{https://aws.amazon.com/developer/tools/}{Amazon Web Services SDKs}.}
+credentials in an HTTP POST method or use the \href{https://builder.aws.com/build/tools}{Amazon Web Services SDKs}.}
 
 \item{language}{The language in which Amazon Web Services Support handles the case.
 Amazon Web Services Support currently supports Chinese (“zh”), English

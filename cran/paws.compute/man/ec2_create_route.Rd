@@ -11,6 +11,7 @@ ec2_create_route(
   LocalGatewayId = NULL,
   CarrierGatewayId = NULL,
   CoreNetworkArn = NULL,
+  OdbNetworkArn = NULL,
   DryRun = NULL,
   RouteTableId,
   DestinationCidrBlock = NULL,
@@ -39,6 +40,8 @@ You can only use this option when the VPC contains a subnet which is
 associated with a Wavelength Zone.}
 
 \item{CoreNetworkArn}{The Amazon Resource Name (ARN) of the core network.}
+
+\item{OdbNetworkArn}{The Amazon Resource Name (ARN) of the ODB network.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

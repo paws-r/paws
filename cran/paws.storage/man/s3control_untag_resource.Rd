@@ -2,8 +2,8 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_untag_resource}
 \alias{s3control_untag_resource}
-\title{This operation removes the specified Amazon Web Services resource tags
-from an S3 resource}
+\title{This operation removes the specified user-defined tags from an S3
+resource}
 \usage{
 s3control_untag_resource(AccountId, ResourceArn, TagKeys)
 }
@@ -11,14 +11,15 @@ s3control_untag_resource(AccountId, ResourceArn, TagKeys)
 \item{AccountId}{[required] The Amazon Web Services account ID that owns the resource that you're
 trying to remove the tags from.}
 
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the S3 resource that you're trying to
-remove the tags from.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the S3 resource that you're removing
+tags from. The tagged resource can be a directory bucket, S3 Storage
+Lens group or S3 Access Grants instance, registered location, or grant.}
 
 \item{TagKeys}{[required] The array of tag key-value pairs that you're trying to remove from of
 the S3 resource.}
 }
 \description{
-This operation removes the specified Amazon Web Services resource tags from an S3 resource. Each tag is a label consisting of a user-defined key and value. Tags can help you manage, identify, organize, search for, and filter resources.
+This operation removes the specified user-defined tags from an S3 resource. You can pass one or more tag keys.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_untag_resource/} for full documentation.
 }

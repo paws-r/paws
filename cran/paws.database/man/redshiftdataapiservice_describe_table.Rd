@@ -7,14 +7,14 @@ cluster}
 \usage{
 redshiftdataapiservice_describe_table(
   ClusterIdentifier = NULL,
-  ConnectedDatabase = NULL,
-  Database,
-  DbUser = NULL,
-  MaxResults = NULL,
-  NextToken = NULL,
-  Schema = NULL,
   SecretArn = NULL,
+  DbUser = NULL,
+  Database,
+  ConnectedDatabase = NULL,
+  Schema = NULL,
   Table = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
   WorkgroupName = NULL
 )
 }
@@ -23,20 +23,26 @@ redshiftdataapiservice_describe_table(
 cluster and authenticating using either Secrets Manager or temporary
 credentials.}
 
-\item{ConnectedDatabase}{A database name. The connected database is specified when you connect
-with your authentication credentials.}
-
-\item{Database}{[required] The name of the database that contains the tables to be described. If
-\code{ConnectedDatabase} is not specified, this is also the database to
-connect to with your authentication credentials.}
+\item{SecretArn}{The name or ARN of the secret that enables access to the database. This
+parameter is required when authenticating using Secrets Manager.}
 
 \item{DbUser}{The database user name. This parameter is required when connecting to a
 cluster as a database user and authenticating using temporary
 credentials.}
 
-\item{MaxResults}{The maximum number of tables to return in the response. If more tables
-exist than fit in one response, then \code{NextToken} is returned to page
-through the results.}
+\item{Database}{[required] The name of the database that contains the tables to be described. If
+\code{ConnectedDatabase} is not specified, this is also the database to
+connect to with your authentication credentials.}
+
+\item{ConnectedDatabase}{A database name. The connected database is specified when you connect
+with your authentication credentials.}
+
+\item{Schema}{The schema that contains the table. If no schema is specified, then
+matching tables for all schemas are returned.}
+
+\item{Table}{The table name. If no table is specified, then all tables for all
+matching schemas are returned. If no table and no schema is specified,
+then all tables for all schemas in the database are returned}
 
 \item{NextToken}{A value that indicates the starting point for the next set of response
 records in a subsequent request. If a value is returned in a response,
@@ -45,15 +51,9 @@ NextToken value in the next NextToken parameter and retrying the
 command. If the NextToken field is empty, all response records have been
 retrieved for the request.}
 
-\item{Schema}{The schema that contains the table. If no schema is specified, then
-matching tables for all schemas are returned.}
-
-\item{SecretArn}{The name or ARN of the secret that enables access to the database. This
-parameter is required when authenticating using Secrets Manager.}
-
-\item{Table}{The table name. If no table is specified, then all tables for all
-matching schemas are returned. If no table and no schema is specified,
-then all tables for all schemas in the database are returned}
+\item{MaxResults}{The maximum number of tables to return in the response. If more tables
+exist than fit in one response, then \code{NextToken} is returned to page
+through the results.}
 
 \item{WorkgroupName}{The serverless workgroup name or Amazon Resource Name (ARN). This
 parameter is required when connecting to a serverless workgroup and

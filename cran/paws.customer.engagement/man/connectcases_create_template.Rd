@@ -5,31 +5,31 @@
 \title{Creates a template in the Cases domain}
 \usage{
 connectcases_create_template(
-  description = NULL,
   domainId,
-  layoutConfiguration = NULL,
   name,
+  description = NULL,
+  layoutConfiguration = NULL,
   requiredFields = NULL,
-  rules = NULL,
-  status = NULL
+  status = NULL,
+  rules = NULL
 )
 }
 \arguments{
-\item{description}{A brief description of the template.}
-
 \item{domainId}{[required] The unique identifier of the Cases domain.}
 
-\item{layoutConfiguration}{Configuration of layouts associated to the template.}
-
 \item{name}{[required] A name for the template. It must be unique per domain.}
+
+\item{description}{A brief description of the template.}
+
+\item{layoutConfiguration}{Configuration of layouts associated to the template.}
 
 \item{requiredFields}{A list of fields that must contain a value for a case to be successfully
 created with this template.}
 
+\item{status}{The status of the template.}
+
 \item{rules}{A list of case rules (also known as \href{https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html}{case field conditions})
 on a template.}
-
-\item{status}{The status of the template.}
 }
 \description{
 Creates a template in the Cases domain. This template is used to define the case object model (that is, to define what data can be captured on cases) in a Cases domain. A template must have a unique name within a domain, and it must reference existing field IDs and layout IDs. Additionally, multiple fields with same IDs are not allowed within the same Template. A template can be either Active or Inactive, as indicated by its status. Inactive templates cannot be used to create cases.

@@ -27,6 +27,7 @@ rds_restore_db_instance_from_s3(
   AutoMinorVersionUpgrade = NULL,
   LicenseModel = NULL,
   Iops = NULL,
+  StorageThroughput = NULL,
   OptionGroupName = NULL,
   PubliclyAccessible = NULL,
   Tags = NULL,
@@ -52,12 +53,13 @@ rds_restore_db_instance_from_s3(
   DeletionProtection = NULL,
   MaxAllocatedStorage = NULL,
   NetworkType = NULL,
-  StorageThroughput = NULL,
   ManageMasterUserPassword = NULL,
   MasterUserSecretKmsKeyId = NULL,
   DedicatedLogVolume = NULL,
   CACertificateIdentifier = NULL,
-  EngineLifecycleSupport = NULL
+  EngineLifecycleSupport = NULL,
+  TagSpecifications = NULL,
+  AdditionalStorageVolumes = NULL
 )
 }
 \arguments{
@@ -221,6 +223,10 @@ For more information about automatic minor version upgrades, see
 allocate initially for the DB instance. For information about valid IOPS
 values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS storage}
 in the \emph{Amazon RDS User Guide.}}
+
+\item{StorageThroughput}{Specifies the storage throughput value for the DB instance.
+
+This setting doesn't apply to RDS Custom or Amazon Aurora.}
 
 \item{OptionGroupName}{The name of the option group to associate with this DB instance. If this
 argument is omitted, the default option group for the specified engine
@@ -397,10 +403,6 @@ IPv4 and the IPv6 protocols (\code{DUAL}).
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
 in the \emph{Amazon RDS User Guide.}}
 
-\item{StorageThroughput}{Specifies the storage throughput value for the DB instance.
-
-This setting doesn't apply to RDS Custom or Amazon Aurora.}
-
 \item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
 Services Secrets Manager.
 
@@ -459,7 +461,7 @@ standard support date.
 You can use this setting to enroll your DB instance into Amazon RDS
 Extended Support. With RDS Extended Support, you can run the selected
 major engine version on your DB instance past the end of standard
-support for that engine version. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+support for that engine version. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Amazon RDS Extended Support Amazon RDS}
 in the \emph{Amazon RDS User Guide}.
 
 This setting applies only to RDS for MySQL and RDS for PostgreSQL. For
@@ -470,9 +472,22 @@ Valid Values:
 \code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
 
 Default: \code{open-source-rds-extended-support}}
+
+\item{TagSpecifications}{Tags to assign to resources associated with the DB instance.
+
+Valid Values:
+\itemize{
+\item \code{auto-backup} - The DB instance's automated backup.
+}}
+
+\item{AdditionalStorageVolumes}{A list of additional storage volumes to modify or delete for the DB
+instance. You can modify or delete up to three additional storage
+volumes using the names \code{rdsdbdata2}, \code{rdsdbdata3}, and \code{rdsdbdata4}.
+Additional storage volumes are supported for RDS for Oracle and RDS for
+SQL Server DB instances only.}
 }
 \description{
-Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files. You can create a backup of your on-premises database, store it on Amazon Simple Storage Service (Amazon S3), and then restore the backup file onto a new Amazon RDS DB instance running MySQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html}{Importing Data into an Amazon RDS MySQL DB Instance} in the \emph{Amazon RDS User Guide.}
+Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files. You can create a backup of your on-premises database, store it on Amazon Simple Storage Service (Amazon S3), and then restore the backup file onto a new Amazon RDS DB instance running MySQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html}{Restoring a backup into an Amazon RDS for MySQL DB instance} in the \emph{Amazon RDS User Guide.}
 
 See \url{https://www.paws-r-sdk.com/docs/rds_restore_db_instance_from_s3/} for full documentation.
 }

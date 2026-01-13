@@ -4,12 +4,12 @@
 \alias{inspector2_reset_encryption_key}
 \title{Resets an encryption key}
 \usage{
-inspector2_reset_encryption_key(resourceType, scanType)
+inspector2_reset_encryption_key(scanType, resourceType)
 }
 \arguments{
-\item{resourceType}{[required] The resource type the key encrypts.}
-
 \item{scanType}{[required] The scan type the key encrypts.}
+
+\item{resourceType}{[required] The resource type the key encrypts.}
 }
 \description{
 Resets an encryption key. After the key is reset your resources will be encrypted by an Amazon Web Services owned key.

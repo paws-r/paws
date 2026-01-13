@@ -213,7 +213,17 @@ codebuild_batch_delete_builds <- function(ids) {
 #'           credential = "string",
 #'           credentialProvider = "SECRETS_MANAGER"
 #'         ),
-#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'         dockerServer = list(
+#'           computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'           securityGroupIds = list(
+#'             "string"
+#'           ),
+#'           status = list(
+#'             status = "string",
+#'             message = "string"
+#'           )
+#'         )
 #'       ),
 #'       serviceRole = "string",
 #'       logConfig = list(
@@ -514,7 +524,17 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'           credential = "string",
 #'           credentialProvider = "SECRETS_MANAGER"
 #'         ),
-#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'         dockerServer = list(
+#'           computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'           securityGroupIds = list(
+#'             "string"
+#'           ),
+#'           status = list(
+#'             status = "string",
+#'             message = "string"
+#'           )
+#'         )
 #'       ),
 #'       serviceRole = "string",
 #'       logs = list(
@@ -985,7 +1005,17 @@ codebuild_batch_get_fleets <- function(names) {
 #'           credential = "string",
 #'           credentialProvider = "SECRETS_MANAGER"
 #'         ),
-#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'         dockerServer = list(
+#'           computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'           securityGroupIds = list(
+#'             "string"
+#'           ),
+#'           status = list(
+#'             status = "string",
+#'             message = "string"
+#'           )
+#'         )
 #'       ),
 #'       serviceRole = "string",
 #'       timeoutInMinutes = 123,
@@ -1028,7 +1058,13 @@ codebuild_batch_get_fleets <- function(names) {
 #'           scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
 #'         ),
 #'         status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"DELETING",
-#'         statusMessage = "string"
+#'         statusMessage = "string",
+#'         pullRequestBuildPolicy = list(
+#'           requiresCommentApproval = "DISABLED"|"ALL_PULL_REQUESTS"|"FORK_PULL_REQUESTS",
+#'           approverRoles = list(
+#'             "GITHUB_READ"|"GITHUB_TRIAGE"|"GITHUB_WRITE"|"GITHUB_MAINTAIN"|"GITHUB_ADMIN"|"GITLAB_GUEST"|"GITLAB_PLANNER"|"GITLAB_REPORTER"|"GITLAB_DEVELOPER"|"GITLAB_MAINTAINER"|"GITLAB_OWNER"|"BITBUCKET_READ"|"BITBUCKET_WRITE"|"BITBUCKET_ADMIN"
+#'           )
+#'         )
 #'       ),
 #'       vpcConfig = list(
 #'         vpcId = "string",
@@ -1411,7 +1447,17 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'           credential = "string",
 #'           credentialProvider = "SECRETS_MANAGER"
 #'         ),
-#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'         dockerServer = list(
+#'           computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'           securityGroupIds = list(
+#'             "string"
+#'           ),
+#'           status = list(
+#'             status = "string",
+#'             message = "string"
+#'           )
+#'         )
 #'       ),
 #'       fileSystemLocations = list(
 #'         list(
@@ -1628,6 +1674,12 @@ codebuild_batch_get_sandboxes <- function(ids) {
 #'     types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.types)
 #'     in the *CodeBuild User Guide*.
 #' 
+#' -   `CUSTOM_INSTANCE_TYPE`: Specify the instance type for your compute
+#'     fleet. For a list of supported instance types, see [Supported
+#'     instance
+#'     families](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.instance-types)
+#'     in the *CodeBuild User Guide*.
+#' 
 #' -   `BUILD_GENERAL1_SMALL`: Use up to 4 GiB memory and 2 vCPUs for
 #'     builds.
 #' 
@@ -1690,7 +1742,8 @@ codebuild_batch_get_sandboxes <- function(ids) {
 #' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types)
 #' in the *CodeBuild User Guide.*
 #' @param computeConfiguration The compute configuration of the compute fleet. This is only required if
-#' `computeType` is set to `ATTRIBUTE_BASED_COMPUTE`.
+#' `computeType` is set to `ATTRIBUTE_BASED_COMPUTE` or
+#' `CUSTOM_INSTANCE_TYPE`.
 #' @param scalingConfiguration The scaling configuration of the compute fleet.
 #' @param overflowBehavior The compute fleet overflow behavior.
 #' 
@@ -2090,7 +2143,17 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'         credential = "string",
 #'         credentialProvider = "SECRETS_MANAGER"
 #'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'       dockerServer = list(
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'         securityGroupIds = list(
+#'           "string"
+#'         ),
+#'         status = list(
+#'           status = "string",
+#'           message = "string"
+#'         )
+#'       )
 #'     ),
 #'     serviceRole = "string",
 #'     timeoutInMinutes = 123,
@@ -2133,7 +2196,13 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'         scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
 #'       ),
 #'       status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"DELETING",
-#'       statusMessage = "string"
+#'       statusMessage = "string",
+#'       pullRequestBuildPolicy = list(
+#'         requiresCommentApproval = "DISABLED"|"ALL_PULL_REQUESTS"|"FORK_PULL_REQUESTS",
+#'         approverRoles = list(
+#'           "GITHUB_READ"|"GITHUB_TRIAGE"|"GITHUB_WRITE"|"GITHUB_MAINTAIN"|"GITHUB_ADMIN"|"GITLAB_GUEST"|"GITLAB_PLANNER"|"GITLAB_REPORTER"|"GITLAB_DEVELOPER"|"GITLAB_MAINTAINER"|"GITLAB_OWNER"|"BITBUCKET_READ"|"BITBUCKET_WRITE"|"BITBUCKET_ADMIN"
+#'         )
+#'       )
 #'     ),
 #'     vpcConfig = list(
 #'       vpcId = "string",
@@ -2309,7 +2378,17 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'       credential = "string",
 #'       credentialProvider = "SECRETS_MANAGER"
 #'     ),
-#'     imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'     imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'     dockerServer = list(
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'       securityGroupIds = list(
+#'         "string"
+#'       ),
+#'       status = list(
+#'         status = "string",
+#'         message = "string"
+#'       )
+#'     )
 #'   ),
 #'   serviceRole = "string",
 #'   timeoutInMinutes = 123,
@@ -2522,7 +2601,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'
 #' @usage
 #' codebuild_create_webhook(projectName, branchFilter, filterGroups,
-#'   buildType, manualCreation, scopeConfiguration)
+#'   buildType, manualCreation, scopeConfiguration, pullRequestBuildPolicy)
 #'
 #' @param projectName &#91;required&#93; The name of the CodeBuild project.
 #' @param branchFilter A regular expression used to determine which repository branches are
@@ -2556,6 +2635,10 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #' 
 #' Global or organization webhooks are only available for GitHub and Github
 #' Enterprise webhooks.
+#' @param pullRequestBuildPolicy A PullRequestBuildPolicy object that defines comment-based approval
+#' requirements for triggering builds on pull requests. This policy helps
+#' control when automated builds are executed based on contributor
+#' permissions and approval workflows.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2586,7 +2669,13 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'       scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
 #'     ),
 #'     status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"DELETING",
-#'     statusMessage = "string"
+#'     statusMessage = "string",
+#'     pullRequestBuildPolicy = list(
+#'       requiresCommentApproval = "DISABLED"|"ALL_PULL_REQUESTS"|"FORK_PULL_REQUESTS",
+#'       approverRoles = list(
+#'         "GITHUB_READ"|"GITHUB_TRIAGE"|"GITHUB_WRITE"|"GITHUB_MAINTAIN"|"GITHUB_ADMIN"|"GITLAB_GUEST"|"GITLAB_PLANNER"|"GITLAB_REPORTER"|"GITLAB_DEVELOPER"|"GITLAB_MAINTAINER"|"GITLAB_OWNER"|"BITBUCKET_READ"|"BITBUCKET_WRITE"|"BITBUCKET_ADMIN"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2611,6 +2700,12 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'     name = "string",
 #'     domain = "string",
 #'     scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
+#'   ),
+#'   pullRequestBuildPolicy = list(
+#'     requiresCommentApproval = "DISABLED"|"ALL_PULL_REQUESTS"|"FORK_PULL_REQUESTS",
+#'     approverRoles = list(
+#'       "GITHUB_READ"|"GITHUB_TRIAGE"|"GITHUB_WRITE"|"GITHUB_MAINTAIN"|"GITHUB_ADMIN"|"GITLAB_GUEST"|"GITLAB_PLANNER"|"GITLAB_REPORTER"|"GITLAB_DEVELOPER"|"GITLAB_MAINTAINER"|"GITLAB_OWNER"|"BITBUCKET_READ"|"BITBUCKET_WRITE"|"BITBUCKET_ADMIN"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2620,7 +2715,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #' @rdname codebuild_create_webhook
 #'
 #' @aliases codebuild_create_webhook
-codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGroups = NULL, buildType = NULL, manualCreation = NULL, scopeConfiguration = NULL) {
+codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGroups = NULL, buildType = NULL, manualCreation = NULL, scopeConfiguration = NULL, pullRequestBuildPolicy = NULL) {
   op <- new_operation(
     name = "CreateWebhook",
     http_method = "POST",
@@ -2629,7 +2724,7 @@ codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGro
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codebuild$create_webhook_input(projectName = projectName, branchFilter = branchFilter, filterGroups = filterGroups, buildType = buildType, manualCreation = manualCreation, scopeConfiguration = scopeConfiguration)
+  input <- .codebuild$create_webhook_input(projectName = projectName, branchFilter = branchFilter, filterGroups = filterGroups, buildType = buildType, manualCreation = manualCreation, scopeConfiguration = scopeConfiguration, pullRequestBuildPolicy = pullRequestBuildPolicy)
   output <- .codebuild$create_webhook_output()
   config <- get_config()
   svc <- .codebuild$service(config, op)
@@ -4852,7 +4947,17 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'         credential = "string",
 #'         credentialProvider = "SECRETS_MANAGER"
 #'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'       dockerServer = list(
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'         securityGroupIds = list(
+#'           "string"
+#'         ),
+#'         status = list(
+#'           status = "string",
+#'           message = "string"
+#'         )
+#'       )
 #'     ),
 #'     serviceRole = "string",
 #'     logs = list(
@@ -5117,7 +5222,17 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'         credential = "string",
 #'         credentialProvider = "SECRETS_MANAGER"
 #'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'       dockerServer = list(
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'         securityGroupIds = list(
+#'           "string"
+#'         ),
+#'         status = list(
+#'           status = "string",
+#'           message = "string"
+#'         )
+#'       )
 #'     ),
 #'     serviceRole = "string",
 #'     logConfig = list(
@@ -5370,6 +5485,9 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' ability to call this API and set this parameter can override the default
 #' settings. Moreover, we encourage that you use a trustworthy buildspec
 #' location like a file in your source repository or a Amazon S3 bucket.
+#' Alternatively, you can restrict overrides to the buildspec by using a
+#' condition key: [Prevent unauthorized modifications to project
+#' buildspec](https://docs.aws.amazon.com/codebuild/latest/userguide/action-context-keys.html#action-context-keys-example-overridebuildspec.html).
 #' @param insecureSslOverride Enable this flag to override the insecure SSL setting that is specified
 #' in the build project. The insecure SSL setting determines whether to
 #' ignore SSL warnings while connecting to the project source code. This
@@ -5593,7 +5711,17 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'         credential = "string",
 #'         credentialProvider = "SECRETS_MANAGER"
 #'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'       dockerServer = list(
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'         securityGroupIds = list(
+#'           "string"
+#'         ),
+#'         status = list(
+#'           status = "string",
+#'           message = "string"
+#'         )
+#'       )
 #'     ),
 #'     serviceRole = "string",
 #'     logs = list(
@@ -6118,7 +6246,17 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'         credential = "string",
 #'         credentialProvider = "SECRETS_MANAGER"
 #'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'       dockerServer = list(
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'         securityGroupIds = list(
+#'           "string"
+#'         ),
+#'         status = list(
+#'           status = "string",
+#'           message = "string"
+#'         )
+#'       )
 #'     ),
 #'     serviceRole = "string",
 #'     logConfig = list(
@@ -6584,7 +6722,17 @@ codebuild_start_command_execution <- function(sandboxId, command, type = NULL) {
 #'         credential = "string",
 #'         credentialProvider = "SECRETS_MANAGER"
 #'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'       dockerServer = list(
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'         securityGroupIds = list(
+#'           "string"
+#'         ),
+#'         status = list(
+#'           status = "string",
+#'           message = "string"
+#'         )
+#'       )
 #'     ),
 #'     fileSystemLocations = list(
 #'       list(
@@ -6915,7 +7063,17 @@ codebuild_start_sandbox_connection <- function(sandboxId) {
 #'         credential = "string",
 #'         credentialProvider = "SECRETS_MANAGER"
 #'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'       dockerServer = list(
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'         securityGroupIds = list(
+#'           "string"
+#'         ),
+#'         status = list(
+#'           status = "string",
+#'           message = "string"
+#'         )
+#'       )
 #'     ),
 #'     serviceRole = "string",
 #'     logs = list(
@@ -7169,7 +7327,17 @@ codebuild_stop_build <- function(id) {
 #'         credential = "string",
 #'         credentialProvider = "SECRETS_MANAGER"
 #'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'       dockerServer = list(
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'         securityGroupIds = list(
+#'           "string"
+#'         ),
+#'         status = list(
+#'           status = "string",
+#'           message = "string"
+#'         )
+#'       )
 #'     ),
 #'     serviceRole = "string",
 #'     logConfig = list(
@@ -7416,7 +7584,17 @@ codebuild_stop_build_batch <- function(id) {
 #'         credential = "string",
 #'         credentialProvider = "SECRETS_MANAGER"
 #'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'       dockerServer = list(
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'         securityGroupIds = list(
+#'           "string"
+#'         ),
+#'         status = list(
+#'           status = "string",
+#'           message = "string"
+#'         )
+#'       )
 #'     ),
 #'     fileSystemLocations = list(
 #'       list(
@@ -7627,6 +7805,12 @@ codebuild_stop_sandbox <- function(id) {
 #'     types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.types)
 #'     in the *CodeBuild User Guide*.
 #' 
+#' -   `CUSTOM_INSTANCE_TYPE`: Specify the instance type for your compute
+#'     fleet. For a list of supported instance types, see [Supported
+#'     instance
+#'     families](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.instance-types)
+#'     in the *CodeBuild User Guide*.
+#' 
 #' -   `BUILD_GENERAL1_SMALL`: Use up to 4 GiB memory and 2 vCPUs for
 #'     builds.
 #' 
@@ -7689,7 +7873,8 @@ codebuild_stop_sandbox <- function(id) {
 #' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types)
 #' in the *CodeBuild User Guide.*
 #' @param computeConfiguration The compute configuration of the compute fleet. This is only required if
-#' `computeType` is set to `ATTRIBUTE_BASED_COMPUTE`.
+#' `computeType` is set to `ATTRIBUTE_BASED_COMPUTE` or
+#' `CUSTOM_INSTANCE_TYPE`.
 #' @param scalingConfiguration The scaling configuration of the compute fleet.
 #' @param overflowBehavior The compute fleet overflow behavior.
 #' 
@@ -8093,7 +8278,17 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'         credential = "string",
 #'         credentialProvider = "SECRETS_MANAGER"
 #'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'       dockerServer = list(
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'         securityGroupIds = list(
+#'           "string"
+#'         ),
+#'         status = list(
+#'           status = "string",
+#'           message = "string"
+#'         )
+#'       )
 #'     ),
 #'     serviceRole = "string",
 #'     timeoutInMinutes = 123,
@@ -8136,7 +8331,13 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'         scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
 #'       ),
 #'       status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"DELETING",
-#'       statusMessage = "string"
+#'       statusMessage = "string",
+#'       pullRequestBuildPolicy = list(
+#'         requiresCommentApproval = "DISABLED"|"ALL_PULL_REQUESTS"|"FORK_PULL_REQUESTS",
+#'         approverRoles = list(
+#'           "GITHUB_READ"|"GITHUB_TRIAGE"|"GITHUB_WRITE"|"GITHUB_MAINTAIN"|"GITHUB_ADMIN"|"GITLAB_GUEST"|"GITLAB_PLANNER"|"GITLAB_REPORTER"|"GITLAB_DEVELOPER"|"GITLAB_MAINTAINER"|"GITLAB_OWNER"|"BITBUCKET_READ"|"BITBUCKET_WRITE"|"BITBUCKET_ADMIN"
+#'         )
+#'       )
 #'     ),
 #'     vpcConfig = list(
 #'       vpcId = "string",
@@ -8312,7 +8513,17 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'       credential = "string",
 #'       credentialProvider = "SECRETS_MANAGER"
 #'     ),
-#'     imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'     imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE",
+#'     dockerServer = list(
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'       securityGroupIds = list(
+#'         "string"
+#'       ),
+#'       status = list(
+#'         status = "string",
+#'         message = "string"
+#'       )
+#'     )
 #'   ),
 #'   serviceRole = "string",
 #'   timeoutInMinutes = 123,
@@ -8602,7 +8813,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #'
 #' @usage
 #' codebuild_update_webhook(projectName, branchFilter, rotateSecret,
-#'   filterGroups, buildType)
+#'   filterGroups, buildType, pullRequestBuildPolicy)
 #'
 #' @param projectName &#91;required&#93; The name of the CodeBuild project.
 #' @param branchFilter A regular expression used to determine which repository branches are
@@ -8625,6 +8836,10 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #' a CodeBuild-hosted Buildkite
 #' runner](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-runner-buildkite.html)
 #' in the *CodeBuild user guide*.
+#' @param pullRequestBuildPolicy A PullRequestBuildPolicy object that defines comment-based approval
+#' requirements for triggering builds on pull requests. This policy helps
+#' control when automated builds are executed based on contributor
+#' permissions and approval workflows.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8655,7 +8870,13 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #'       scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
 #'     ),
 #'     status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"DELETING",
-#'     statusMessage = "string"
+#'     statusMessage = "string",
+#'     pullRequestBuildPolicy = list(
+#'       requiresCommentApproval = "DISABLED"|"ALL_PULL_REQUESTS"|"FORK_PULL_REQUESTS",
+#'       approverRoles = list(
+#'         "GITHUB_READ"|"GITHUB_TRIAGE"|"GITHUB_WRITE"|"GITHUB_MAINTAIN"|"GITHUB_ADMIN"|"GITLAB_GUEST"|"GITLAB_PLANNER"|"GITLAB_REPORTER"|"GITLAB_DEVELOPER"|"GITLAB_MAINTAINER"|"GITLAB_OWNER"|"BITBUCKET_READ"|"BITBUCKET_WRITE"|"BITBUCKET_ADMIN"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -8675,7 +8896,13 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #'       )
 #'     )
 #'   ),
-#'   buildType = "BUILD"|"BUILD_BATCH"|"RUNNER_BUILDKITE_BUILD"
+#'   buildType = "BUILD"|"BUILD_BATCH"|"RUNNER_BUILDKITE_BUILD",
+#'   pullRequestBuildPolicy = list(
+#'     requiresCommentApproval = "DISABLED"|"ALL_PULL_REQUESTS"|"FORK_PULL_REQUESTS",
+#'     approverRoles = list(
+#'       "GITHUB_READ"|"GITHUB_TRIAGE"|"GITHUB_WRITE"|"GITHUB_MAINTAIN"|"GITHUB_ADMIN"|"GITLAB_GUEST"|"GITLAB_PLANNER"|"GITLAB_REPORTER"|"GITLAB_DEVELOPER"|"GITLAB_MAINTAINER"|"GITLAB_OWNER"|"BITBUCKET_READ"|"BITBUCKET_WRITE"|"BITBUCKET_ADMIN"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -8684,7 +8911,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #' @rdname codebuild_update_webhook
 #'
 #' @aliases codebuild_update_webhook
-codebuild_update_webhook <- function(projectName, branchFilter = NULL, rotateSecret = NULL, filterGroups = NULL, buildType = NULL) {
+codebuild_update_webhook <- function(projectName, branchFilter = NULL, rotateSecret = NULL, filterGroups = NULL, buildType = NULL, pullRequestBuildPolicy = NULL) {
   op <- new_operation(
     name = "UpdateWebhook",
     http_method = "POST",
@@ -8693,7 +8920,7 @@ codebuild_update_webhook <- function(projectName, branchFilter = NULL, rotateSec
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codebuild$update_webhook_input(projectName = projectName, branchFilter = branchFilter, rotateSecret = rotateSecret, filterGroups = filterGroups, buildType = buildType)
+  input <- .codebuild$update_webhook_input(projectName = projectName, branchFilter = branchFilter, rotateSecret = rotateSecret, filterGroups = filterGroups, buildType = buildType, pullRequestBuildPolicy = pullRequestBuildPolicy)
   output <- .codebuild$update_webhook_output()
   config <- get_config()
   svc <- .codebuild$service(config, op)

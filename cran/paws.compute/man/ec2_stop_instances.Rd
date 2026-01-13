@@ -4,15 +4,30 @@
 \alias{ec2_stop_instances}
 \title{Stops an Amazon EBS-backed instance}
 \usage{
-ec2_stop_instances(InstanceIds, Hibernate = NULL, DryRun = NULL, Force = NULL)
+ec2_stop_instances(
+  InstanceIds,
+  Hibernate = NULL,
+  SkipOsShutdown = NULL,
+  DryRun = NULL,
+  Force = NULL
+)
 }
 \arguments{
 \item{InstanceIds}{[required] The IDs of the instances.}
 
 \item{Hibernate}{Hibernates the instance if the instance was enabled for hibernation at
 launch. If the instance cannot hibernate successfully, a normal shutdown
-occurs. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html}{Hibernate your instance}
+occurs. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html}{Hibernate your Amazon EC2 instance}
 in the \emph{Amazon EC2 User Guide}.
+
+Default: \code{false}}
+
+\item{SkipOsShutdown}{Specifies whether to bypass the graceful OS shutdown process when the
+instance is stopped.
+
+Bypassing the graceful OS shutdown might result in data loss or
+corruption (for example, memory contents not flushed to disk or loss of
+in-flight IOs) or skipped shutdown scripts.
 
 Default: \code{false}}
 
@@ -35,7 +50,7 @@ in the \emph{Amazon EC2 User Guide}.
 Default: \code{false}}
 }
 \description{
-Stops an Amazon EBS-backed instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html}{Stop and start Amazon EC2 instances} in the \emph{Amazon EC2 User Guide}.
+Stops an Amazon EBS-backed instance. You can restart your instance at any time using the \code{\link[=ec2_start_instances]{start_instances}} API. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html}{Stop and start Amazon EC2 instances} in the \emph{Amazon EC2 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_stop_instances/} for full documentation.
 }

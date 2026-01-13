@@ -5,14 +5,19 @@
 \title{Updates a web portal}
 \usage{
 workspacesweb_update_portal(
-  authenticationType = NULL,
+  portalArn,
   displayName = NULL,
+  authenticationType = NULL,
   instanceType = NULL,
-  maxConcurrentSessions = NULL,
-  portalArn
+  maxConcurrentSessions = NULL
 )
 }
 \arguments{
+\item{portalArn}{[required] The ARN of the web portal.}
+
+\item{displayName}{The name of the web portal. This is not visible to users who log into
+the web portal.}
+
 \item{authenticationType}{The type of authentication integration points used when signing into the
 web portal. Defaults to \code{Standard}.
 
@@ -27,14 +32,9 @@ Center. Identity sources (including external identity provider
 integration), plus user and group access to your web portal, can be
 configured in the IAM Identity Center.}
 
-\item{displayName}{The name of the web portal. This is not visible to users who log into
-the web portal.}
-
 \item{instanceType}{The type and resources of the underlying instance.}
 
 \item{maxConcurrentSessions}{The maximum number of concurrent sessions for the portal.}
-
-\item{portalArn}{[required] The ARN of the web portal.}
 }
 \description{
 Updates a web portal.

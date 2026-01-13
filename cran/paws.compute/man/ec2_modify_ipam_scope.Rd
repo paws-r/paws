@@ -4,7 +4,13 @@
 \alias{ec2_modify_ipam_scope}
 \title{Modify an IPAM scope}
 \usage{
-ec2_modify_ipam_scope(DryRun = NULL, IpamScopeId, Description = NULL)
+ec2_modify_ipam_scope(
+  DryRun = NULL,
+  IpamScopeId,
+  Description = NULL,
+  ExternalAuthorityConfiguration = NULL,
+  RemoveExternalAuthorityConfiguration = NULL
+)
 }
 \arguments{
 \item{DryRun}{A check for whether you have the required permissions for the action
@@ -15,6 +21,20 @@ you have the required permissions, the error response is
 \item{IpamScopeId}{[required] The ID of the scope you want to modify.}
 
 \item{Description}{The description of the scope you want to modify.}
+
+\item{ExternalAuthorityConfiguration}{The configuration that links an Amazon VPC IPAM scope to an external
+authority system. It specifies the type of external system and the
+external resource identifier that identifies your account or instance in
+that system.
+
+In IPAM, an external authority is a third-party IP address management
+system that provides CIDR blocks when you provision address space for
+top-level IPAM pools. This allows you to use your existing IP management
+system to control which address ranges are allocated to Amazon Web
+Services while using Amazon VPC IPAM to manage subnets within those
+ranges.}
+
+\item{RemoveExternalAuthorityConfiguration}{Remove the external authority configuration. \code{true} to remove.}
 }
 \description{
 Modify an IPAM scope.

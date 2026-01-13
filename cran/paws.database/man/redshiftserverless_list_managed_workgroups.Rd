@@ -19,7 +19,7 @@ return. You can use nextToken to display the next page of results.}
 can include the returned nextToken in following ListManagedWorkgroups
 operations, which returns results in the next page.}
 
-\item{sourceArn}{The Amazon Resource Name (ARN) for the managed workgroup in the AWS Glue
+\item{sourceArn}{The Amazon Resource Name (ARN) for the managed workgroup in the Glue
 Data Catalog.}
 }
 \description{

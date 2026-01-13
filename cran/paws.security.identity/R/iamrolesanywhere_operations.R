@@ -11,29 +11,30 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_create_profile/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_create_profile/) for full documentation.
 #'
-#' @param acceptRoleSessionName Used to determine if a custom role session name will be accepted in a
-#' temporary credential request.
+#' @param name &#91;required&#93; The name of the profile.
+#' @param requireInstanceProperties Unused, saved for future use. Will likely specify whether instance
+#' properties are required in temporary credential requests with this
+#' profile.
+#' @param sessionPolicy A session policy that applies to the trust boundary of the vended
+#' session credentials.
+#' @param roleArns &#91;required&#93; A list of IAM roles that this profile can assume in a temporary
+#' credential request.
+#' @param managedPolicyArns A list of managed policy ARNs that apply to the vended session
+#' credentials.
 #' @param durationSeconds Used to determine how long sessions vended using this profile are valid
 #' for. See the `Expiration` section of the [CreateSession API
 #' documentation](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/authentication-create-session.html#credentials-object)
 #' page for more details. In requests, if this value is not provided, the
 #' default value will be 3600.
 #' @param enabled Specifies whether the profile is enabled.
-#' @param managedPolicyArns A list of managed policy ARNs that apply to the vended session
-#' credentials.
-#' @param name &#91;required&#93; The name of the profile.
-#' @param requireInstanceProperties Specifies whether instance properties are required in temporary
-#' credential requests with this profile.
-#' @param roleArns &#91;required&#93; A list of IAM roles that this profile can assume in a temporary
-#' credential request.
-#' @param sessionPolicy A session policy that applies to the trust boundary of the vended
-#' session credentials.
 #' @param tags The tags to attach to the profile.
+#' @param acceptRoleSessionName Used to determine if a custom role session name will be accepted in a
+#' temporary credential request.
 #'
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_create_profile
-iamrolesanywhere_create_profile <- function(acceptRoleSessionName = NULL, durationSeconds = NULL, enabled = NULL, managedPolicyArns = NULL, name, requireInstanceProperties = NULL, roleArns, sessionPolicy = NULL, tags = NULL) {
+iamrolesanywhere_create_profile <- function(name, requireInstanceProperties = NULL, sessionPolicy = NULL, roleArns, managedPolicyArns = NULL, durationSeconds = NULL, enabled = NULL, tags = NULL, acceptRoleSessionName = NULL) {
   op <- new_operation(
     name = "CreateProfile",
     http_method = "POST",
@@ -42,7 +43,7 @@ iamrolesanywhere_create_profile <- function(acceptRoleSessionName = NULL, durati
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$create_profile_input(acceptRoleSessionName = acceptRoleSessionName, durationSeconds = durationSeconds, enabled = enabled, managedPolicyArns = managedPolicyArns, name = name, requireInstanceProperties = requireInstanceProperties, roleArns = roleArns, sessionPolicy = sessionPolicy, tags = tags)
+  input <- .iamrolesanywhere$create_profile_input(name = name, requireInstanceProperties = requireInstanceProperties, sessionPolicy = sessionPolicy, roleArns = roleArns, managedPolicyArns = managedPolicyArns, durationSeconds = durationSeconds, enabled = enabled, tags = tags, acceptRoleSessionName = acceptRoleSessionName)
   output <- .iamrolesanywhere$create_profile_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -60,16 +61,16 @@ iamrolesanywhere_create_profile <- function(acceptRoleSessionName = NULL, durati
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_create_trust_anchor/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_create_trust_anchor/) for full documentation.
 #'
-#' @param enabled Specifies whether the trust anchor is enabled.
 #' @param name &#91;required&#93; The name of the trust anchor.
-#' @param notificationSettings A list of notification settings to be associated to the trust anchor.
 #' @param source &#91;required&#93; The trust anchor type and its related certificate data.
+#' @param enabled Specifies whether the trust anchor is enabled.
 #' @param tags The tags to attach to the trust anchor.
+#' @param notificationSettings A list of notification settings to be associated to the trust anchor.
 #'
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_create_trust_anchor
-iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificationSettings = NULL, source, tags = NULL) {
+iamrolesanywhere_create_trust_anchor <- function(name, source, enabled = NULL, tags = NULL, notificationSettings = NULL) {
   op <- new_operation(
     name = "CreateTrustAnchor",
     http_method = "POST",
@@ -78,7 +79,7 @@ iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$create_trust_anchor_input(enabled = enabled, name = name, notificationSettings = notificationSettings, source = source, tags = tags)
+  input <- .iamrolesanywhere$create_trust_anchor_input(name = name, source = source, enabled = enabled, tags = tags, notificationSettings = notificationSettings)
   output <- .iamrolesanywhere$create_trust_anchor_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -96,15 +97,15 @@ iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificat
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_delete_attribute_mapping/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_delete_attribute_mapping/) for full documentation.
 #'
-#' @param certificateField &#91;required&#93; Fields (x509Subject, x509Issuer and x509SAN) within X.509 certificates.
 #' @param profileId &#91;required&#93; The unique identifier of the profile.
+#' @param certificateField &#91;required&#93; Fields (x509Subject, x509Issuer and x509SAN) within X.509 certificates.
 #' @param specifiers A list of specifiers of a certificate field; for example, CN, OU, UID
 #' from a Subject.
 #'
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_delete_attribute_mapping
-iamrolesanywhere_delete_attribute_mapping <- function(certificateField, profileId, specifiers = NULL) {
+iamrolesanywhere_delete_attribute_mapping <- function(profileId, certificateField, specifiers = NULL) {
   op <- new_operation(
     name = "DeleteAttributeMapping",
     http_method = "DELETE",
@@ -113,7 +114,7 @@ iamrolesanywhere_delete_attribute_mapping <- function(certificateField, profileI
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$delete_attribute_mapping_input(certificateField = certificateField, profileId = profileId, specifiers = specifiers)
+  input <- .iamrolesanywhere$delete_attribute_mapping_input(profileId = profileId, certificateField = certificateField, specifiers = specifiers)
   output <- .iamrolesanywhere$delete_attribute_mapping_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -534,9 +535,9 @@ iamrolesanywhere_get_trust_anchor <- function(trustAnchorId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_import_crl/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_import_crl/) for full documentation.
 #'
+#' @param name &#91;required&#93; The name of the certificate revocation list (CRL).
 #' @param crlData &#91;required&#93; The x509 v3 specified certificate revocation list (CRL).
 #' @param enabled Specifies whether the certificate revocation list (CRL) is enabled.
-#' @param name &#91;required&#93; The name of the certificate revocation list (CRL).
 #' @param tags A list of tags to attach to the certificate revocation list (CRL).
 #' @param trustAnchorArn &#91;required&#93; The ARN of the TrustAnchor the certificate revocation list (CRL) will
 #' provide revocation for.
@@ -544,7 +545,7 @@ iamrolesanywhere_get_trust_anchor <- function(trustAnchorId) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_import_crl
-iamrolesanywhere_import_crl <- function(crlData, enabled = NULL, name, tags = NULL, trustAnchorArn) {
+iamrolesanywhere_import_crl <- function(name, crlData, enabled = NULL, tags = NULL, trustAnchorArn) {
   op <- new_operation(
     name = "ImportCrl",
     http_method = "POST",
@@ -553,7 +554,7 @@ iamrolesanywhere_import_crl <- function(crlData, enabled = NULL, name, tags = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$import_crl_input(crlData = crlData, enabled = enabled, name = name, tags = tags, trustAnchorArn = trustAnchorArn)
+  input <- .iamrolesanywhere$import_crl_input(name = name, crlData = crlData, enabled = enabled, tags = tags, trustAnchorArn = trustAnchorArn)
   output <- .iamrolesanywhere$import_crl_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -742,14 +743,14 @@ iamrolesanywhere_list_trust_anchors <- function(nextToken = NULL, pageSize = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_put_attribute_mapping/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_put_attribute_mapping/) for full documentation.
 #'
+#' @param profileId &#91;required&#93; The unique identifier of the profile.
 #' @param certificateField &#91;required&#93; Fields (x509Subject, x509Issuer and x509SAN) within X.509 certificates.
 #' @param mappingRules &#91;required&#93; A list of mapping entries for every supported specifier or sub-field.
-#' @param profileId &#91;required&#93; The unique identifier of the profile.
 #'
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_put_attribute_mapping
-iamrolesanywhere_put_attribute_mapping <- function(certificateField, mappingRules, profileId) {
+iamrolesanywhere_put_attribute_mapping <- function(profileId, certificateField, mappingRules) {
   op <- new_operation(
     name = "PutAttributeMapping",
     http_method = "PUT",
@@ -758,7 +759,7 @@ iamrolesanywhere_put_attribute_mapping <- function(certificateField, mappingRule
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$put_attribute_mapping_input(certificateField = certificateField, mappingRules = mappingRules, profileId = profileId)
+  input <- .iamrolesanywhere$put_attribute_mapping_input(profileId = profileId, certificateField = certificateField, mappingRules = mappingRules)
   output <- .iamrolesanywhere$put_attribute_mapping_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -775,13 +776,13 @@ iamrolesanywhere_put_attribute_mapping <- function(certificateField, mappingRule
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_put_notification_settings/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_put_notification_settings/) for full documentation.
 #'
-#' @param notificationSettings &#91;required&#93; A list of notification settings to be associated to the trust anchor.
 #' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
+#' @param notificationSettings &#91;required&#93; A list of notification settings to be associated to the trust anchor.
 #'
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_put_notification_settings
-iamrolesanywhere_put_notification_settings <- function(notificationSettings, trustAnchorId) {
+iamrolesanywhere_put_notification_settings <- function(trustAnchorId, notificationSettings) {
   op <- new_operation(
     name = "PutNotificationSettings",
     http_method = "PATCH",
@@ -790,7 +791,7 @@ iamrolesanywhere_put_notification_settings <- function(notificationSettings, tru
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$put_notification_settings_input(notificationSettings = notificationSettings, trustAnchorId = trustAnchorId)
+  input <- .iamrolesanywhere$put_notification_settings_input(trustAnchorId = trustAnchorId, notificationSettings = notificationSettings)
   output <- .iamrolesanywhere$put_notification_settings_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -808,14 +809,14 @@ iamrolesanywhere_put_notification_settings <- function(notificationSettings, tru
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_reset_notification_settings/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_reset_notification_settings/) for full documentation.
 #'
+#' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
 #' @param notificationSettingKeys &#91;required&#93; A list of notification setting keys to reset. A notification setting key
 #' includes the event and the channel.
-#' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
 #'
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_reset_notification_settings
-iamrolesanywhere_reset_notification_settings <- function(notificationSettingKeys, trustAnchorId) {
+iamrolesanywhere_reset_notification_settings <- function(trustAnchorId, notificationSettingKeys) {
   op <- new_operation(
     name = "ResetNotificationSettings",
     http_method = "PATCH",
@@ -824,7 +825,7 @@ iamrolesanywhere_reset_notification_settings <- function(notificationSettingKeys
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$reset_notification_settings_input(notificationSettingKeys = notificationSettingKeys, trustAnchorId = trustAnchorId)
+  input <- .iamrolesanywhere$reset_notification_settings_input(trustAnchorId = trustAnchorId, notificationSettingKeys = notificationSettingKeys)
   output <- .iamrolesanywhere$reset_notification_settings_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -905,14 +906,14 @@ iamrolesanywhere_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_crl/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_crl/) for full documentation.
 #'
-#' @param crlData The x509 v3 specified certificate revocation list (CRL).
 #' @param crlId &#91;required&#93; The unique identifier of the certificate revocation list (CRL).
 #' @param name The name of the Crl.
+#' @param crlData The x509 v3 specified certificate revocation list (CRL).
 #'
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_update_crl
-iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
+iamrolesanywhere_update_crl <- function(crlId, name = NULL, crlData = NULL) {
   op <- new_operation(
     name = "UpdateCrl",
     http_method = "PATCH",
@@ -921,7 +922,7 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$update_crl_input(crlData = crlData, crlId = crlId, name = name)
+  input <- .iamrolesanywhere$update_crl_input(crlId = crlId, name = name, crlData = crlData)
   output <- .iamrolesanywhere$update_crl_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -939,26 +940,26 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_profile/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_profile/) for full documentation.
 #'
-#' @param acceptRoleSessionName Used to determine if a custom role session name will be accepted in a
-#' temporary credential request.
+#' @param profileId &#91;required&#93; The unique identifier of the profile.
+#' @param name The name of the profile.
+#' @param sessionPolicy A session policy that applies to the trust boundary of the vended
+#' session credentials.
+#' @param roleArns A list of IAM roles that this profile can assume in a temporary
+#' credential request.
+#' @param managedPolicyArns A list of managed policy ARNs that apply to the vended session
+#' credentials.
 #' @param durationSeconds Used to determine how long sessions vended using this profile are valid
 #' for. See the `Expiration` section of the [CreateSession API
 #' documentation](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/authentication-create-session.html#credentials-object)
 #' page for more details. In requests, if this value is not provided, the
 #' default value will be 3600.
-#' @param managedPolicyArns A list of managed policy ARNs that apply to the vended session
-#' credentials.
-#' @param name The name of the profile.
-#' @param profileId &#91;required&#93; The unique identifier of the profile.
-#' @param roleArns A list of IAM roles that this profile can assume in a temporary
-#' credential request.
-#' @param sessionPolicy A session policy that applies to the trust boundary of the vended
-#' session credentials.
+#' @param acceptRoleSessionName Used to determine if a custom role session name will be accepted in a
+#' temporary credential request.
 #'
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_update_profile
-iamrolesanywhere_update_profile <- function(acceptRoleSessionName = NULL, durationSeconds = NULL, managedPolicyArns = NULL, name = NULL, profileId, roleArns = NULL, sessionPolicy = NULL) {
+iamrolesanywhere_update_profile <- function(profileId, name = NULL, sessionPolicy = NULL, roleArns = NULL, managedPolicyArns = NULL, durationSeconds = NULL, acceptRoleSessionName = NULL) {
   op <- new_operation(
     name = "UpdateProfile",
     http_method = "PATCH",
@@ -967,7 +968,7 @@ iamrolesanywhere_update_profile <- function(acceptRoleSessionName = NULL, durati
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$update_profile_input(acceptRoleSessionName = acceptRoleSessionName, durationSeconds = durationSeconds, managedPolicyArns = managedPolicyArns, name = name, profileId = profileId, roleArns = roleArns, sessionPolicy = sessionPolicy)
+  input <- .iamrolesanywhere$update_profile_input(profileId = profileId, name = name, sessionPolicy = sessionPolicy, roleArns = roleArns, managedPolicyArns = managedPolicyArns, durationSeconds = durationSeconds, acceptRoleSessionName = acceptRoleSessionName)
   output <- .iamrolesanywhere$update_profile_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -984,14 +985,14 @@ iamrolesanywhere_update_profile <- function(acceptRoleSessionName = NULL, durati
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_trust_anchor/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_trust_anchor/) for full documentation.
 #'
+#' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
 #' @param name The name of the trust anchor.
 #' @param source The trust anchor type and its related certificate data.
-#' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
 #'
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_update_trust_anchor
-iamrolesanywhere_update_trust_anchor <- function(name = NULL, source = NULL, trustAnchorId) {
+iamrolesanywhere_update_trust_anchor <- function(trustAnchorId, name = NULL, source = NULL) {
   op <- new_operation(
     name = "UpdateTrustAnchor",
     http_method = "PATCH",
@@ -1000,7 +1001,7 @@ iamrolesanywhere_update_trust_anchor <- function(name = NULL, source = NULL, tru
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iamrolesanywhere$update_trust_anchor_input(name = name, source = source, trustAnchorId = trustAnchorId)
+  input <- .iamrolesanywhere$update_trust_anchor_input(trustAnchorId = trustAnchorId, name = name, source = source)
   output <- .iamrolesanywhere$update_trust_anchor_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)

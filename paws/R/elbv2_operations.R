@@ -13,10 +13,10 @@ NULL
 #' If the certificate in already in the certificate list, the call is
 #' successful but the certificate is not added again.
 #' 
-#' For more information, see [HTTPS
-#' listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html)
-#' in the *Application Load Balancers Guide* or [TLS
-#' listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/)
+#' For more information, see [SSL
+#' certificates](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/https-listener-certificates.html)
+#' in the *Application Load Balancers Guide* or [Server
+#' certificates](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/tls-listener-certificates.html)
 #' in the *Network Load Balancers Guide*.
 #'
 #' @usage
@@ -251,18 +251,18 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #' @param Protocol The protocol for connections from clients to the load balancer. For
 #' Application Load Balancers, the supported protocols are HTTP and HTTPS.
 #' For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
-#' and TCP_UDP. You can’t specify the UDP or TCP_UDP protocol if dual-stack
-#' mode is enabled. You can't specify a protocol for a Gateway Load
-#' Balancer.
+#' TCP_UDP, QUIC, and TCP_QUIC. You can’t specify the UDP, TCP_UDP, QUIC,
+#' or TCP_QUIC protocol if dual-stack mode is enabled. You can't specify a
+#' protocol for a Gateway Load Balancer.
 #' @param Port The port on which the load balancer is listening. You can't specify a
 #' port for a Gateway Load Balancer.
 #' @param SslPolicy \[HTTPS and TLS listeners\] The security policy that defines which
 #' protocols and ciphers are supported.
 #' 
 #' For more information, see [Security
-#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/describe-ssl-policies.html)
 #' in the *Application Load Balancers Guide* and [Security
-#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#describe-ssl-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/describe-ssl-policies.html)
 #' in the *Network Load Balancers Guide*.
 #' @param Certificates \[HTTPS and TLS listeners\] The default certificate for the listener.
 #' You must provide exactly one certificate. Set `CertificateArn` to the
@@ -283,10 +283,10 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #' -   `None`
 #' 
 #' For more information, see [ALPN
-#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#alpn-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html#alpn-policies)
 #' in the *Network Load Balancers Guide*.
 #' @param Tags The tags to assign to the listener.
-#' @param MutualAuthentication The mutual authentication configuration information.
+#' @param MutualAuthentication \[HTTPS listeners\] The mutual authentication configuration information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -297,7 +297,7 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #'       ListenerArn = "string",
 #'       LoadBalancerArn = "string",
 #'       Port = 123,
-#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE"|"QUIC"|"TCP_QUIC",
 #'       Certificates = list(
 #'         list(
 #'           CertificateArn = "string",
@@ -307,7 +307,7 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #'       SslPolicy = "string",
 #'       DefaultActions = list(
 #'         list(
-#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response"|"jwt-validation",
 #'           TargetGroupArn = "string",
 #'           AuthenticateOidcConfig = list(
 #'             Issuer = "string",
@@ -362,6 +362,19 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #'               Enabled = TRUE|FALSE,
 #'               DurationSeconds = 123
 #'             )
+#'           ),
+#'           JwtValidationConfig = list(
+#'             JwksEndpoint = "string",
+#'             Issuer = "string",
+#'             AdditionalClaims = list(
+#'               list(
+#'                 Format = "single-string"|"string-array"|"space-separated-values",
+#'                 Name = "string",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -384,7 +397,7 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #' ```
 #' svc$create_listener(
 #'   LoadBalancerArn = "string",
-#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE"|"QUIC"|"TCP_QUIC",
 #'   Port = 123,
 #'   SslPolicy = "string",
 #'   Certificates = list(
@@ -395,7 +408,7 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #'   ),
 #'   DefaultActions = list(
 #'     list(
-#'       Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+#'       Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response"|"jwt-validation",
 #'       TargetGroupArn = "string",
 #'       AuthenticateOidcConfig = list(
 #'         Issuer = "string",
@@ -449,6 +462,19 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #'         TargetGroupStickinessConfig = list(
 #'           Enabled = TRUE|FALSE,
 #'           DurationSeconds = 123
+#'         )
+#'       ),
+#'       JwtValidationConfig = list(
+#'         JwksEndpoint = "string",
+#'         Issuer = "string",
+#'         AdditionalClaims = list(
+#'           list(
+#'             Format = "single-string"|"string-array"|"space-separated-values",
+#'             Name = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     )
@@ -790,17 +816,18 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' Creates a rule for the specified listener. The listener must be
 #' associated with an Application Load Balancer.
 #' 
-#' Each rule consists of a priority, one or more actions, and one or more
-#' conditions. Rules are evaluated in priority order, from the lowest value
-#' to the highest value. When the conditions for a rule are met, its
-#' actions are performed. If the conditions for no rules are met, the
-#' actions for the default rule are performed. For more information, see
-#' [Listener
+#' Each rule consists of a priority, one or more actions, one or more
+#' conditions, and up to two optional transforms. Rules are evaluated in
+#' priority order, from the lowest value to the highest value. When the
+#' conditions for a rule are met, its actions are performed. If the
+#' conditions for no rules are met, the actions for the default rule are
+#' performed. For more information, see [Listener
 #' rules](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
 #' in the *Application Load Balancers Guide*.
 #'
 #' @usage
-#' elbv2_create_rule(ListenerArn, Conditions, Priority, Actions, Tags)
+#' elbv2_create_rule(ListenerArn, Conditions, Priority, Actions, Tags,
+#'   Transforms)
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param Conditions &#91;required&#93; The conditions.
@@ -808,6 +835,8 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' priority.
 #' @param Actions &#91;required&#93; The actions.
 #' @param Tags The tags to assign to the rule.
+#' @param Transforms The transforms to apply to requests that match this rule. You can add
+#' one host header rewrite transform and one URL rewrite transform.
 #'
 #' @return
 #' A list with the following syntax:
@@ -826,16 +855,25 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'           HostHeaderConfig = list(
 #'             Values = list(
 #'               "string"
+#'             ),
+#'             RegexValues = list(
+#'               "string"
 #'             )
 #'           ),
 #'           PathPatternConfig = list(
 #'             Values = list(
+#'               "string"
+#'             ),
+#'             RegexValues = list(
 #'               "string"
 #'             )
 #'           ),
 #'           HttpHeaderConfig = list(
 #'             HttpHeaderName = "string",
 #'             Values = list(
+#'               "string"
+#'             ),
+#'             RegexValues = list(
 #'               "string"
 #'             )
 #'           ),
@@ -856,12 +894,15 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'             Values = list(
 #'               "string"
 #'             )
+#'           ),
+#'           RegexValues = list(
+#'             "string"
 #'           )
 #'         )
 #'       ),
 #'       Actions = list(
 #'         list(
-#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response"|"jwt-validation",
 #'           TargetGroupArn = "string",
 #'           AuthenticateOidcConfig = list(
 #'             Issuer = "string",
@@ -916,10 +957,44 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'               Enabled = TRUE|FALSE,
 #'               DurationSeconds = 123
 #'             )
+#'           ),
+#'           JwtValidationConfig = list(
+#'             JwksEndpoint = "string",
+#'             Issuer = "string",
+#'             AdditionalClaims = list(
+#'               list(
+#'                 Format = "single-string"|"string-array"|"space-separated-values",
+#'                 Name = "string",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
-#'       IsDefault = TRUE|FALSE
+#'       IsDefault = TRUE|FALSE,
+#'       Transforms = list(
+#'         list(
+#'           Type = "host-header-rewrite"|"url-rewrite",
+#'           HostHeaderRewriteConfig = list(
+#'             Rewrites = list(
+#'               list(
+#'                 Regex = "string",
+#'                 Replace = "string"
+#'               )
+#'             )
+#'           ),
+#'           UrlRewriteConfig = list(
+#'             Rewrites = list(
+#'               list(
+#'                 Regex = "string",
+#'                 Replace = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -938,16 +1013,25 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'       HostHeaderConfig = list(
 #'         Values = list(
 #'           "string"
+#'         ),
+#'         RegexValues = list(
+#'           "string"
 #'         )
 #'       ),
 #'       PathPatternConfig = list(
 #'         Values = list(
+#'           "string"
+#'         ),
+#'         RegexValues = list(
 #'           "string"
 #'         )
 #'       ),
 #'       HttpHeaderConfig = list(
 #'         HttpHeaderName = "string",
 #'         Values = list(
+#'           "string"
+#'         ),
+#'         RegexValues = list(
 #'           "string"
 #'         )
 #'       ),
@@ -968,13 +1052,16 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'         Values = list(
 #'           "string"
 #'         )
+#'       ),
+#'       RegexValues = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
 #'   Priority = 123,
 #'   Actions = list(
 #'     list(
-#'       Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+#'       Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response"|"jwt-validation",
 #'       TargetGroupArn = "string",
 #'       AuthenticateOidcConfig = list(
 #'         Issuer = "string",
@@ -1029,6 +1116,19 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'           Enabled = TRUE|FALSE,
 #'           DurationSeconds = 123
 #'         )
+#'       ),
+#'       JwtValidationConfig = list(
+#'         JwksEndpoint = "string",
+#'         Issuer = "string",
+#'         AdditionalClaims = list(
+#'           list(
+#'             Format = "single-string"|"string-array"|"space-separated-values",
+#'             Name = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1036,6 +1136,27 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'     list(
 #'       Key = "string",
 #'       Value = "string"
+#'     )
+#'   ),
+#'   Transforms = list(
+#'     list(
+#'       Type = "host-header-rewrite"|"url-rewrite",
+#'       HostHeaderRewriteConfig = list(
+#'         Rewrites = list(
+#'           list(
+#'             Regex = "string",
+#'             Replace = "string"
+#'           )
+#'         )
+#'       ),
+#'       UrlRewriteConfig = list(
+#'         Rewrites = list(
+#'           list(
+#'             Regex = "string",
+#'             Replace = "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -1071,7 +1192,7 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' @rdname elbv2_create_rule
 #'
 #' @aliases elbv2_create_rule
-elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags = NULL) {
+elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags = NULL, Transforms = NULL) {
   op <- new_operation(
     name = "CreateRule",
     http_method = "POST",
@@ -1080,7 +1201,7 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .elbv2$create_rule_input(ListenerArn = ListenerArn, Conditions = Conditions, Priority = Priority, Actions = Actions, Tags = Tags)
+  input <- .elbv2$create_rule_input(ListenerArn = ListenerArn, Conditions = Conditions, Priority = Priority, Actions = Actions, Tags = Tags, Transforms = Transforms)
   output <- .elbv2$create_rule_output()
   config <- get_config()
   svc <- .elbv2$service(config, op)
@@ -1115,7 +1236,7 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #'   HealthCheckProtocol, HealthCheckPort, HealthCheckEnabled,
 #'   HealthCheckPath, HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds,
 #'   HealthyThresholdCount, UnhealthyThresholdCount, Matcher, TargetType,
-#'   Tags, IpAddressType)
+#'   Tags, IpAddressType, TargetControlPort)
 #'
 #' @param Name &#91;required&#93; The name of the target group.
 #' 
@@ -1124,10 +1245,12 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' must not begin or end with a hyphen.
 #' @param Protocol The protocol to use for routing traffic to the targets. For Application
 #' Load Balancers, the supported protocols are HTTP and HTTPS. For Network
-#' Load Balancers, the supported protocols are TCP, TLS, UDP, or TCP_UDP.
-#' For Gateway Load Balancers, the supported protocol is GENEVE. A TCP_UDP
-#' listener must be associated with a TCP_UDP target group. If the target
-#' is a Lambda function, this parameter does not apply.
+#' Load Balancers, the supported protocols are TCP, TLS, UDP, TCP_UDP,
+#' QUIC, or TCP_QUIC. For Gateway Load Balancers, the supported protocol is
+#' GENEVE. A TCP_UDP listener must be associated with a TCP_UDP target
+#' group. A TCP_QUIC listener must be associated with a TCP_QUIC target
+#' group. If the target is a Lambda function, this parameter does not
+#' apply.
 #' @param ProtocolVersion \[HTTP/HTTPS protocol\] The protocol version. Specify `GRPC` to send
 #' requests to targets using gRPC. Specify `HTTP2` to send requests to
 #' targets using HTTP/2. The default is `HTTP1`, which sends requests to
@@ -1143,13 +1266,13 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' targets. For Application Load Balancers, the default is HTTP. For
 #' Network Load Balancers and Gateway Load Balancers, the default is TCP.
 #' The TCP protocol is not supported for health checks if the protocol of
-#' the target group is HTTP or HTTPS. The GENEVE, TLS, UDP, and TCP_UDP
-#' protocols are not supported for health checks.
+#' the target group is HTTP or HTTPS. The GENEVE, TLS, UDP, TCP_UDP, QUIC,
+#' and TCP_QUIC protocols are not supported for health checks.
 #' @param HealthCheckPort The port the load balancer uses when performing health checks on
-#' targets. If the protocol is HTTP, HTTPS, TCP, TLS, UDP, or TCP_UDP, the
-#' default is `traffic-port`, which is the port on which each target
-#' receives traffic from the load balancer. If the protocol is GENEVE, the
-#' default is port 80.
+#' targets. If the protocol is HTTP, HTTPS, TCP, TLS, UDP, TCP_UDP, QUIC,
+#' or TCP_QUIC the default is `traffic-port`, which is the port on which
+#' each target receives traffic from the load balancer. If the protocol is
+#' GENEVE, the default is port 80.
 #' @param HealthCheckEnabled Indicates whether health checks are enabled. If the target type is
 #' `lambda`, health checks are disabled by default but can be enabled. If
 #' the target type is `instance`, `ip`, or `alb`, health checks are always
@@ -1164,9 +1287,9 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' Services.ALB/healthcheck.
 #' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an
 #' individual target. The range is 5-300. If the target group protocol is
-#' TCP, TLS, UDP, TCP_UDP, HTTP or HTTPS, the default is 30 seconds. If the
-#' target group protocol is GENEVE, the default is 10 seconds. If the
-#' target type is `lambda`, the default is 35 seconds.
+#' TCP, TLS, UDP, TCP_UDP, QUIC, TCP_QUIC, HTTP or HTTPS, the default is 30
+#' seconds. If the target group protocol is GENEVE, the default is 10
+#' seconds. If the target type is `lambda`, the default is 35 seconds.
 #' @param HealthCheckTimeoutSeconds The amount of time, in seconds, during which no response from a target
 #' means a failed health check. The range is 2–120 seconds. For target
 #' groups with a protocol of HTTP, the default is 6 seconds. For target
@@ -1180,14 +1303,15 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' type is `lambda`, the default is 5.
 #' @param UnhealthyThresholdCount The number of consecutive health check failures required before
 #' considering a target unhealthy. The range is 2-10. If the target group
-#' protocol is TCP, TCP_UDP, UDP, TLS, HTTP or HTTPS, the default is 2. For
-#' target groups with a protocol of GENEVE, the default is 2. If the target
-#' type is `lambda`, the default is 5.
+#' protocol is TCP, TCP_UDP, UDP, TLS, QUIC, TCP_QUIC, HTTP or HTTPS, the
+#' default is 2. For target groups with a protocol of GENEVE, the default
+#' is 2. If the target type is `lambda`, the default is 5.
 #' @param Matcher \[HTTP/HTTPS health checks\] The HTTP or gRPC codes to use when checking
 #' for a successful response from a target. For target groups with a
-#' protocol of TCP, TCP_UDP, UDP or TLS the range is 200-599. For target
-#' groups with a protocol of HTTP or HTTPS, the range is 200-499. For
-#' target groups with a protocol of GENEVE, the range is 200-399.
+#' protocol of TCP, TCP_UDP, UDP, QUIC, TCP_QUIC, or TLS the range is
+#' 200-599. For target groups with a protocol of HTTP or HTTPS, the range
+#' is 200-499. For target groups with a protocol of GENEVE, the range is
+#' 200-399.
 #' @param TargetType The type of target that you must specify when registering targets with
 #' this target group. You can't specify targets for a target group using
 #' more than one target type.
@@ -1206,6 +1330,8 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' -   `alb` - Register a single Application Load Balancer as a target.
 #' @param Tags The tags to assign to the target group.
 #' @param IpAddressType The IP address type. The default value is `ipv4`.
+#' @param TargetControlPort The port on which the target control agent and application load balancer
+#' exchange management traffic for the target optimizer feature.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1215,10 +1341,10 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #'     list(
 #'       TargetGroupArn = "string",
 #'       TargetGroupName = "string",
-#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE"|"QUIC"|"TCP_QUIC",
 #'       Port = 123,
 #'       VpcId = "string",
-#'       HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'       HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE"|"QUIC"|"TCP_QUIC",
 #'       HealthCheckPort = "string",
 #'       HealthCheckEnabled = TRUE|FALSE,
 #'       HealthCheckIntervalSeconds = 123,
@@ -1235,7 +1361,8 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #'       ),
 #'       TargetType = "instance"|"ip"|"lambda"|"alb",
 #'       ProtocolVersion = "string",
-#'       IpAddressType = "ipv4"|"ipv6"
+#'       IpAddressType = "ipv4"|"ipv6",
+#'       TargetControlPort = 123
 #'     )
 #'   )
 #' )
@@ -1245,11 +1372,11 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' ```
 #' svc$create_target_group(
 #'   Name = "string",
-#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE"|"QUIC"|"TCP_QUIC",
 #'   ProtocolVersion = "string",
 #'   Port = 123,
 #'   VpcId = "string",
-#'   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE"|"QUIC"|"TCP_QUIC",
 #'   HealthCheckPort = "string",
 #'   HealthCheckEnabled = TRUE|FALSE,
 #'   HealthCheckPath = "string",
@@ -1268,7 +1395,8 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #'       Value = "string"
 #'     )
 #'   ),
-#'   IpAddressType = "ipv4"|"ipv6"
+#'   IpAddressType = "ipv4"|"ipv6",
+#'   TargetControlPort = 123
 #' )
 #' ```
 #'
@@ -1290,7 +1418,7 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' @rdname elbv2_create_target_group
 #'
 #' @aliases elbv2_create_target_group
-elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = NULL, Port = NULL, VpcId = NULL, HealthCheckProtocol = NULL, HealthCheckPort = NULL, HealthCheckEnabled = NULL, HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL, Matcher = NULL, TargetType = NULL, Tags = NULL, IpAddressType = NULL) {
+elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = NULL, Port = NULL, VpcId = NULL, HealthCheckProtocol = NULL, HealthCheckPort = NULL, HealthCheckEnabled = NULL, HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL, Matcher = NULL, TargetType = NULL, Tags = NULL, IpAddressType = NULL, TargetControlPort = NULL) {
   op <- new_operation(
     name = "CreateTargetGroup",
     http_method = "POST",
@@ -1299,7 +1427,7 @@ elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .elbv2$create_target_group_input(Name = Name, Protocol = Protocol, ProtocolVersion = ProtocolVersion, Port = Port, VpcId = VpcId, HealthCheckProtocol = HealthCheckProtocol, HealthCheckPort = HealthCheckPort, HealthCheckEnabled = HealthCheckEnabled, HealthCheckPath = HealthCheckPath, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds, HealthyThresholdCount = HealthyThresholdCount, UnhealthyThresholdCount = UnhealthyThresholdCount, Matcher = Matcher, TargetType = TargetType, Tags = Tags, IpAddressType = IpAddressType)
+  input <- .elbv2$create_target_group_input(Name = Name, Protocol = Protocol, ProtocolVersion = ProtocolVersion, Port = Port, VpcId = VpcId, HealthCheckProtocol = HealthCheckProtocol, HealthCheckPort = HealthCheckPort, HealthCheckEnabled = HealthCheckEnabled, HealthCheckPath = HealthCheckPath, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds, HealthyThresholdCount = HealthyThresholdCount, UnhealthyThresholdCount = UnhealthyThresholdCount, Matcher = Matcher, TargetType = TargetType, Tags = Tags, IpAddressType = IpAddressType, TargetControlPort = TargetControlPort)
   output <- .elbv2$create_target_group_output()
   config <- get_config()
   svc <- .elbv2$service(config, op)
@@ -1313,6 +1441,9 @@ elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = N
 #'
 #' @description
 #' Creates a trust store.
+#' 
+#' For more information, see [Mutual TLS for Application Load
+#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/mutual-authentication.html).
 #'
 #' @usage
 #' elbv2_create_trust_store(Name, CaCertificatesBundleS3Bucket,
@@ -1719,15 +1850,15 @@ elbv2_delete_trust_store <- function(TrustStoreArn) {
 #' For more information, see the following:
 #' 
 #' -   [Deregistration
-#'     delay](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#deregistration-delay)
+#'     delay](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/edit-target-group-attributes.html#deregistration-delay)
 #'     in the *Application Load Balancers User Guide*
 #' 
 #' -   [Deregistration
-#'     delay](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#deregistration-delay)
+#'     delay](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/edit-target-group-attributes.html#deregistration-delay)
 #'     in the *Network Load Balancers User Guide*
 #' 
 #' -   [Deregistration
-#'     delay](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html#deregistration-delay)
+#'     delay](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/edit-target-group-attributes.html#deregistration-delay)
 #'     in the *Gateway Load Balancers User Guide*
 #' 
 #' Note: If the specified target does not exist, the action returns
@@ -1752,7 +1883,8 @@ elbv2_delete_trust_store <- function(TrustStoreArn) {
 #'     list(
 #'       Id = "string",
 #'       Port = 123,
-#'       AvailabilityZone = "string"
+#'       AvailabilityZone = "string",
+#'       QuicServerId = "string"
 #'     )
 #'   )
 #' )
@@ -2000,9 +2132,9 @@ elbv2_describe_listener_attributes <- function(ListenerArn) {
 #' `IsDefault` set to false).
 #' 
 #' For more information, see [SSL
-#' certificates](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates)
+#' certificates](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/https-listener-certificates.html)
 #' in the *Application Load Balancers Guide* or [Server
-#' certificates](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#tls-listener-certificate)
+#' certificates](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/tls-listener-certificates.html)
 #' in the *Network Load Balancers Guide*.
 #'
 #' @usage
@@ -2089,7 +2221,7 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
 #'       ListenerArn = "string",
 #'       LoadBalancerArn = "string",
 #'       Port = 123,
-#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE"|"QUIC"|"TCP_QUIC",
 #'       Certificates = list(
 #'         list(
 #'           CertificateArn = "string",
@@ -2099,7 +2231,7 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
 #'       SslPolicy = "string",
 #'       DefaultActions = list(
 #'         list(
-#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response"|"jwt-validation",
 #'           TargetGroupArn = "string",
 #'           AuthenticateOidcConfig = list(
 #'             Issuer = "string",
@@ -2153,6 +2285,19 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
 #'             TargetGroupStickinessConfig = list(
 #'               Enabled = TRUE|FALSE,
 #'               DurationSeconds = 123
+#'             )
+#'           ),
+#'           JwtValidationConfig = list(
+#'             JwksEndpoint = "string",
+#'             Issuer = "string",
+#'             AdditionalClaims = list(
+#'               list(
+#'                 Format = "single-string"|"string-array"|"space-separated-values",
+#'                 Name = "string",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
@@ -2418,7 +2563,7 @@ elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL,
 #'
 #' @description
 #' Describes the specified rules or the rules for the specified listener.
-#' You must specify either a listener or one or more rules.
+#' You must specify either a listener or rules.
 #'
 #' @usage
 #' elbv2_describe_rules(ListenerArn, RuleArns, Marker, PageSize)
@@ -2446,16 +2591,25 @@ elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL,
 #'           HostHeaderConfig = list(
 #'             Values = list(
 #'               "string"
+#'             ),
+#'             RegexValues = list(
+#'               "string"
 #'             )
 #'           ),
 #'           PathPatternConfig = list(
 #'             Values = list(
+#'               "string"
+#'             ),
+#'             RegexValues = list(
 #'               "string"
 #'             )
 #'           ),
 #'           HttpHeaderConfig = list(
 #'             HttpHeaderName = "string",
 #'             Values = list(
+#'               "string"
+#'             ),
+#'             RegexValues = list(
 #'               "string"
 #'             )
 #'           ),
@@ -2476,12 +2630,15 @@ elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL,
 #'             Values = list(
 #'               "string"
 #'             )
+#'           ),
+#'           RegexValues = list(
+#'             "string"
 #'           )
 #'         )
 #'       ),
 #'       Actions = list(
 #'         list(
-#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response"|"jwt-validation",
 #'           TargetGroupArn = "string",
 #'           AuthenticateOidcConfig = list(
 #'             Issuer = "string",
@@ -2536,10 +2693,44 @@ elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL,
 #'               Enabled = TRUE|FALSE,
 #'               DurationSeconds = 123
 #'             )
+#'           ),
+#'           JwtValidationConfig = list(
+#'             JwksEndpoint = "string",
+#'             Issuer = "string",
+#'             AdditionalClaims = list(
+#'               list(
+#'                 Format = "single-string"|"string-array"|"space-separated-values",
+#'                 Name = "string",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
-#'       IsDefault = TRUE|FALSE
+#'       IsDefault = TRUE|FALSE,
+#'       Transforms = list(
+#'         list(
+#'           Type = "host-header-rewrite"|"url-rewrite",
+#'           HostHeaderRewriteConfig = list(
+#'             Rewrites = list(
+#'               list(
+#'                 Regex = "string",
+#'                 Replace = "string"
+#'               )
+#'             )
+#'           ),
+#'           UrlRewriteConfig = list(
+#'             Rewrites = list(
+#'               list(
+#'                 Regex = "string",
+#'                 Replace = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextMarker = "string"
@@ -2600,9 +2791,9 @@ elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = N
 #' negotiation.
 #' 
 #' For more information, see [Security
-#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
-#' in the *Application Load Balancers Guide* or [Security
-#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#describe-ssl-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/describe-ssl-policies.html)
+#' in the *Application Load Balancers Guide* and [Security
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/describe-ssl-policies.html)
 #' in the *Network Load Balancers Guide*.
 #'
 #' @usage
@@ -2865,10 +3056,10 @@ elbv2_describe_target_group_attributes <- function(TargetGroupArn) {
 #'     list(
 #'       TargetGroupArn = "string",
 #'       TargetGroupName = "string",
-#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE"|"QUIC"|"TCP_QUIC",
 #'       Port = 123,
 #'       VpcId = "string",
-#'       HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'       HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE"|"QUIC"|"TCP_QUIC",
 #'       HealthCheckPort = "string",
 #'       HealthCheckEnabled = TRUE|FALSE,
 #'       HealthCheckIntervalSeconds = 123,
@@ -2885,7 +3076,8 @@ elbv2_describe_target_group_attributes <- function(TargetGroupArn) {
 #'       ),
 #'       TargetType = "instance"|"ip"|"lambda"|"alb",
 #'       ProtocolVersion = "string",
-#'       IpAddressType = "ipv4"|"ipv6"
+#'       IpAddressType = "ipv4"|"ipv6",
+#'       TargetControlPort = 123
 #'     )
 #'   ),
 #'   NextMarker = "string"
@@ -2962,7 +3154,8 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #'       Target = list(
 #'         Id = "string",
 #'         Port = 123,
-#'         AvailabilityZone = "string"
+#'         AvailabilityZone = "string",
+#'         QuicServerId = "string"
 #'       ),
 #'       HealthCheckPort = "string",
 #'       TargetHealth = list(
@@ -2992,7 +3185,8 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #'     list(
 #'       Id = "string",
 #'       Port = 123,
-#'       AvailabilityZone = "string"
+#'       AvailabilityZone = "string",
+#'       QuicServerId = "string"
 #'     )
 #'   ),
 #'   Include = list(
@@ -3093,7 +3287,7 @@ elbv2_describe_trust_store_associations <- function(TrustStoreArn, Marker = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "TrustStoreAssociations"),
     stream_api = FALSE
   )
   input <- .elbv2$describe_trust_store_associations_input(TrustStoreArn = TrustStoreArn, Marker = Marker, PageSize = PageSize)
@@ -3162,7 +3356,7 @@ elbv2_describe_trust_store_revocations <- function(TrustStoreArn, RevocationIds 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "TrustStoreRevocations"),
     stream_api = FALSE
   )
   input <- .elbv2$describe_trust_store_revocations_input(TrustStoreArn = TrustStoreArn, RevocationIds = RevocationIds, Marker = Marker, PageSize = PageSize)
@@ -3231,7 +3425,7 @@ elbv2_describe_trust_stores <- function(TrustStoreArns = NULL, Names = NULL, Mar
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "TrustStores"),
     stream_api = FALSE
   )
   input <- .elbv2$describe_trust_stores_input(TrustStoreArns = TrustStoreArns, Names = Names, Marker = Marker, PageSize = PageSize)
@@ -3557,16 +3751,17 @@ elbv2_modify_ip_pools <- function(LoadBalancerArn, IpamPools = NULL, RemoveIpamP
 #' specify a port for a Gateway Load Balancer.
 #' @param Protocol The protocol for connections from clients to the load balancer.
 #' Application Load Balancers support the HTTP and HTTPS protocols. Network
-#' Load Balancers support the TCP, TLS, UDP, and TCP_UDP protocols. You
-#' can’t change the protocol to UDP or TCP_UDP if dual-stack mode is
-#' enabled. You can't specify a protocol for a Gateway Load Balancer.
+#' Load Balancers support the TCP, TLS, UDP, TCP_UDP, QUIC, and TCP_QUIC
+#' protocols. You can’t change the protocol to UDP, TCP_UDP, QUIC, or
+#' TCP_QUIC if dual-stack mode is enabled. You can't specify a protocol for
+#' a Gateway Load Balancer.
 #' @param SslPolicy \[HTTPS and TLS listeners\] The security policy that defines which
 #' protocols and ciphers are supported.
 #' 
 #' For more information, see [Security
-#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/describe-ssl-policies.html)
 #' in the *Application Load Balancers Guide* or [Security
-#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#describe-ssl-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/describe-ssl-policies.html)
 #' in the *Network Load Balancers Guide*.
 #' @param Certificates \[HTTPS and TLS listeners\] The default certificate for the listener.
 #' You must provide exactly one certificate. Set `CertificateArn` to the
@@ -3587,9 +3782,9 @@ elbv2_modify_ip_pools <- function(LoadBalancerArn, IpamPools = NULL, RemoveIpamP
 #' -   `None`
 #' 
 #' For more information, see [ALPN
-#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#alpn-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html#alpn-policies)
 #' in the *Network Load Balancers Guide*.
-#' @param MutualAuthentication The mutual authentication configuration information.
+#' @param MutualAuthentication \[HTTPS listeners\] The mutual authentication configuration information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3600,7 +3795,7 @@ elbv2_modify_ip_pools <- function(LoadBalancerArn, IpamPools = NULL, RemoveIpamP
 #'       ListenerArn = "string",
 #'       LoadBalancerArn = "string",
 #'       Port = 123,
-#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE"|"QUIC"|"TCP_QUIC",
 #'       Certificates = list(
 #'         list(
 #'           CertificateArn = "string",
@@ -3610,7 +3805,7 @@ elbv2_modify_ip_pools <- function(LoadBalancerArn, IpamPools = NULL, RemoveIpamP
 #'       SslPolicy = "string",
 #'       DefaultActions = list(
 #'         list(
-#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response"|"jwt-validation",
 #'           TargetGroupArn = "string",
 #'           AuthenticateOidcConfig = list(
 #'             Issuer = "string",
@@ -3665,6 +3860,19 @@ elbv2_modify_ip_pools <- function(LoadBalancerArn, IpamPools = NULL, RemoveIpamP
 #'               Enabled = TRUE|FALSE,
 #'               DurationSeconds = 123
 #'             )
+#'           ),
+#'           JwtValidationConfig = list(
+#'             JwksEndpoint = "string",
+#'             Issuer = "string",
+#'             AdditionalClaims = list(
+#'               list(
+#'                 Format = "single-string"|"string-array"|"space-separated-values",
+#'                 Name = "string",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -3688,7 +3896,7 @@ elbv2_modify_ip_pools <- function(LoadBalancerArn, IpamPools = NULL, RemoveIpamP
 #' svc$modify_listener(
 #'   ListenerArn = "string",
 #'   Port = 123,
-#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE"|"QUIC"|"TCP_QUIC",
 #'   SslPolicy = "string",
 #'   Certificates = list(
 #'     list(
@@ -3698,7 +3906,7 @@ elbv2_modify_ip_pools <- function(LoadBalancerArn, IpamPools = NULL, RemoveIpamP
 #'   ),
 #'   DefaultActions = list(
 #'     list(
-#'       Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+#'       Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response"|"jwt-validation",
 #'       TargetGroupArn = "string",
 #'       AuthenticateOidcConfig = list(
 #'         Issuer = "string",
@@ -3752,6 +3960,19 @@ elbv2_modify_ip_pools <- function(LoadBalancerArn, IpamPools = NULL, RemoveIpamP
 #'         TargetGroupStickinessConfig = list(
 #'           Enabled = TRUE|FALSE,
 #'           DurationSeconds = 123
+#'         )
+#'       ),
+#'       JwtValidationConfig = list(
+#'         JwksEndpoint = "string",
+#'         Issuer = "string",
+#'         AdditionalClaims = list(
+#'           list(
+#'             Format = "single-string"|"string-array"|"space-separated-values",
+#'             Name = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     )
@@ -4006,11 +4227,17 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #' action, specify a list with the current actions plus the new action.
 #'
 #' @usage
-#' elbv2_modify_rule(RuleArn, Conditions, Actions)
+#' elbv2_modify_rule(RuleArn, Conditions, Actions, Transforms,
+#'   ResetTransforms)
 #'
 #' @param RuleArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule.
 #' @param Conditions The conditions.
 #' @param Actions The actions.
+#' @param Transforms The transforms to apply to requests that match this rule. You can add
+#' one host header rewrite transform and one URL rewrite transform. If you
+#' specify `Transforms`, you can't specify `ResetTransforms`.
+#' @param ResetTransforms Indicates whether to remove all transforms from the rule. If you specify
+#' `ResetTransforms`, you can't specify `Transforms`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4029,16 +4256,25 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #'           HostHeaderConfig = list(
 #'             Values = list(
 #'               "string"
+#'             ),
+#'             RegexValues = list(
+#'               "string"
 #'             )
 #'           ),
 #'           PathPatternConfig = list(
 #'             Values = list(
+#'               "string"
+#'             ),
+#'             RegexValues = list(
 #'               "string"
 #'             )
 #'           ),
 #'           HttpHeaderConfig = list(
 #'             HttpHeaderName = "string",
 #'             Values = list(
+#'               "string"
+#'             ),
+#'             RegexValues = list(
 #'               "string"
 #'             )
 #'           ),
@@ -4059,12 +4295,15 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #'             Values = list(
 #'               "string"
 #'             )
+#'           ),
+#'           RegexValues = list(
+#'             "string"
 #'           )
 #'         )
 #'       ),
 #'       Actions = list(
 #'         list(
-#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response"|"jwt-validation",
 #'           TargetGroupArn = "string",
 #'           AuthenticateOidcConfig = list(
 #'             Issuer = "string",
@@ -4119,10 +4358,44 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #'               Enabled = TRUE|FALSE,
 #'               DurationSeconds = 123
 #'             )
+#'           ),
+#'           JwtValidationConfig = list(
+#'             JwksEndpoint = "string",
+#'             Issuer = "string",
+#'             AdditionalClaims = list(
+#'               list(
+#'                 Format = "single-string"|"string-array"|"space-separated-values",
+#'                 Name = "string",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
-#'       IsDefault = TRUE|FALSE
+#'       IsDefault = TRUE|FALSE,
+#'       Transforms = list(
+#'         list(
+#'           Type = "host-header-rewrite"|"url-rewrite",
+#'           HostHeaderRewriteConfig = list(
+#'             Rewrites = list(
+#'               list(
+#'                 Regex = "string",
+#'                 Replace = "string"
+#'               )
+#'             )
+#'           ),
+#'           UrlRewriteConfig = list(
+#'             Rewrites = list(
+#'               list(
+#'                 Regex = "string",
+#'                 Replace = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -4141,16 +4414,25 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #'       HostHeaderConfig = list(
 #'         Values = list(
 #'           "string"
+#'         ),
+#'         RegexValues = list(
+#'           "string"
 #'         )
 #'       ),
 #'       PathPatternConfig = list(
 #'         Values = list(
+#'           "string"
+#'         ),
+#'         RegexValues = list(
 #'           "string"
 #'         )
 #'       ),
 #'       HttpHeaderConfig = list(
 #'         HttpHeaderName = "string",
 #'         Values = list(
+#'           "string"
+#'         ),
+#'         RegexValues = list(
 #'           "string"
 #'         )
 #'       ),
@@ -4171,12 +4453,15 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #'         Values = list(
 #'           "string"
 #'         )
+#'       ),
+#'       RegexValues = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
 #'   Actions = list(
 #'     list(
-#'       Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+#'       Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response"|"jwt-validation",
 #'       TargetGroupArn = "string",
 #'       AuthenticateOidcConfig = list(
 #'         Issuer = "string",
@@ -4231,9 +4516,44 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #'           Enabled = TRUE|FALSE,
 #'           DurationSeconds = 123
 #'         )
+#'       ),
+#'       JwtValidationConfig = list(
+#'         JwksEndpoint = "string",
+#'         Issuer = "string",
+#'         AdditionalClaims = list(
+#'           list(
+#'             Format = "single-string"|"string-array"|"space-separated-values",
+#'             Name = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   Transforms = list(
+#'     list(
+#'       Type = "host-header-rewrite"|"url-rewrite",
+#'       HostHeaderRewriteConfig = list(
+#'         Rewrites = list(
+#'           list(
+#'             Regex = "string",
+#'             Replace = "string"
+#'           )
+#'         )
+#'       ),
+#'       UrlRewriteConfig = list(
+#'         Rewrites = list(
+#'           list(
+#'             Regex = "string",
+#'             Replace = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ResetTransforms = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4258,7 +4578,7 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #' @rdname elbv2_modify_rule
 #'
 #' @aliases elbv2_modify_rule
-elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
+elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL, Transforms = NULL, ResetTransforms = NULL) {
   op <- new_operation(
     name = "ModifyRule",
     http_method = "POST",
@@ -4267,7 +4587,7 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .elbv2$modify_rule_input(RuleArn = RuleArn, Conditions = Conditions, Actions = Actions)
+  input <- .elbv2$modify_rule_input(RuleArn = RuleArn, Conditions = Conditions, Actions = Actions, Transforms = Transforms, ResetTransforms = ResetTransforms)
   output <- .elbv2$modify_rule_output()
   config <- get_config()
   svc <- .elbv2$service(config, op)
@@ -4297,8 +4617,8 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' The TCP protocol is not supported for health checks if the protocol of
 #' the target group is HTTP or HTTPS. It is supported for health checks
 #' only if the protocol of the target group is TCP, TLS, UDP, or TCP_UDP.
-#' The GENEVE, TLS, UDP, and TCP_UDP protocols are not supported for health
-#' checks.
+#' The GENEVE, TLS, UDP, TCP_UDP, QUIC, and TCP_QUIC protocols are not
+#' supported for health checks.
 #' @param HealthCheckPort The port the load balancer uses when performing health checks on
 #' targets.
 #' @param HealthCheckPath \[HTTP/HTTPS health checks\] The destination for health checks on the
@@ -4309,7 +4629,10 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' \[GRPC protocol version\] The path of a custom health check method with
 #' the format /package.service/method. The default is /Amazon Web
 #' Services.ALB/healthcheck.
-#' @param HealthCheckEnabled Indicates whether health checks are enabled.
+#' @param HealthCheckEnabled Indicates whether health checks are enabled. If the target type is
+#' `lambda`, health checks are disabled by default but can be enabled. If
+#' the target type is `instance`, `ip`, or `alb`, health checks are always
+#' enabled and can't be disabled.
 #' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an
 #' individual target.
 #' @param HealthCheckTimeoutSeconds \[HTTP/HTTPS health checks\] The amount of time, in seconds, during
@@ -4332,10 +4655,10 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #'     list(
 #'       TargetGroupArn = "string",
 #'       TargetGroupName = "string",
-#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE"|"QUIC"|"TCP_QUIC",
 #'       Port = 123,
 #'       VpcId = "string",
-#'       HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'       HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE"|"QUIC"|"TCP_QUIC",
 #'       HealthCheckPort = "string",
 #'       HealthCheckEnabled = TRUE|FALSE,
 #'       HealthCheckIntervalSeconds = 123,
@@ -4352,7 +4675,8 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #'       ),
 #'       TargetType = "instance"|"ip"|"lambda"|"alb",
 #'       ProtocolVersion = "string",
-#'       IpAddressType = "ipv4"|"ipv6"
+#'       IpAddressType = "ipv4"|"ipv6",
+#'       TargetControlPort = 123
 #'     )
 #'   )
 #' )
@@ -4362,7 +4686,7 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' ```
 #' svc$modify_target_group(
 #'   TargetGroupArn = "string",
-#'   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE"|"QUIC"|"TCP_QUIC",
 #'   HealthCheckPort = "string",
 #'   HealthCheckPath = "string",
 #'   HealthCheckEnabled = TRUE|FALSE,
@@ -4567,10 +4891,16 @@ elbv2_modify_trust_store <- function(TrustStoreArn, CaCertificatesBundleS3Bucket
 #' each EC2 instance or IP address with the same target group multiple
 #' times using different ports.
 #' 
-#' With a Network Load Balancer, you can't register instances by instance
-#' ID if they have the following instance types: C1, CC1, CC2, CG1, CG2,
-#' CR1, CS1, G1, G2, HI1, HS1, M1, M2, M3, and T1. You can register
-#' instances of these types by IP address.
+#' For more information, see the following:
+#' 
+#' -   [Register targets for your Application Load
+#'     Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-register-targets.html)
+#' 
+#' -   [Register targets for your Network Load
+#'     Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/target-group-register-targets.html)
+#' 
+#' -   [Register targets for your Gateway Load
+#'     Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-group-register-targets.html)
 #'
 #' @usage
 #' elbv2_register_targets(TargetGroupArn, Targets)
@@ -4589,7 +4919,8 @@ elbv2_modify_trust_store <- function(TrustStoreArn, CaCertificatesBundleS3Bucket
 #'     list(
 #'       Id = "string",
 #'       Port = 123,
-#'       AvailabilityZone = "string"
+#'       AvailabilityZone = "string",
+#'       QuicServerId = "string"
 #'     )
 #'   )
 #' )
@@ -4922,16 +5253,25 @@ elbv2_set_ip_address_type <- function(LoadBalancerArn, IpAddressType) {
 #'           HostHeaderConfig = list(
 #'             Values = list(
 #'               "string"
+#'             ),
+#'             RegexValues = list(
+#'               "string"
 #'             )
 #'           ),
 #'           PathPatternConfig = list(
 #'             Values = list(
+#'               "string"
+#'             ),
+#'             RegexValues = list(
 #'               "string"
 #'             )
 #'           ),
 #'           HttpHeaderConfig = list(
 #'             HttpHeaderName = "string",
 #'             Values = list(
+#'               "string"
+#'             ),
+#'             RegexValues = list(
 #'               "string"
 #'             )
 #'           ),
@@ -4952,12 +5292,15 @@ elbv2_set_ip_address_type <- function(LoadBalancerArn, IpAddressType) {
 #'             Values = list(
 #'               "string"
 #'             )
+#'           ),
+#'           RegexValues = list(
+#'             "string"
 #'           )
 #'         )
 #'       ),
 #'       Actions = list(
 #'         list(
-#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response"|"jwt-validation",
 #'           TargetGroupArn = "string",
 #'           AuthenticateOidcConfig = list(
 #'             Issuer = "string",
@@ -5012,10 +5355,44 @@ elbv2_set_ip_address_type <- function(LoadBalancerArn, IpAddressType) {
 #'               Enabled = TRUE|FALSE,
 #'               DurationSeconds = 123
 #'             )
+#'           ),
+#'           JwtValidationConfig = list(
+#'             JwksEndpoint = "string",
+#'             Issuer = "string",
+#'             AdditionalClaims = list(
+#'               list(
+#'                 Format = "single-string"|"string-array"|"space-separated-values",
+#'                 Name = "string",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
-#'       IsDefault = TRUE|FALSE
+#'       IsDefault = TRUE|FALSE,
+#'       Transforms = list(
+#'         list(
+#'           Type = "host-header-rewrite"|"url-rewrite",
+#'           HostHeaderRewriteConfig = list(
+#'             Rewrites = list(
+#'               list(
+#'                 Regex = "string",
+#'                 Replace = "string"
+#'               )
+#'             )
+#'           ),
+#'           UrlRewriteConfig = list(
+#'             Rewrites = list(
+#'               list(
+#'                 Regex = "string",
+#'                 Replace = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -5091,7 +5468,8 @@ elbv2_set_rule_priorities <- function(RulePriorities) {
 #' @param SecurityGroups &#91;required&#93; The IDs of the security groups.
 #' @param EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic Indicates whether to evaluate inbound security group rules for traffic
 #' sent to a Network Load Balancer through Amazon Web Services PrivateLink.
-#' The default is `on`.
+#' Applies only if the load balancer has an associated security group. The
+#' default is `on`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5160,10 +5538,6 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
 #' specified Application Load Balancer, Network Load Balancer or Gateway
 #' Load Balancer. The specified subnets replace the previously enabled
 #' subnets.
-#' 
-#' When you specify subnets for a Network Load Balancer, or Gateway Load
-#' Balancer you must include all subnets that were enabled previously, with
-#' their existing configurations, plus any additional subnets.
 #'
 #' @usage
 #' elbv2_set_subnets(LoadBalancerArn, Subnets, SubnetMappings,
@@ -5182,8 +5556,13 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
 #' \[Application Load Balancers on Local Zones\] You can specify subnets
 #' from one or more Local Zones.
 #' 
-#' \[Network Load Balancers and Gateway Load Balancers\] You can specify
-#' subnets from one or more Availability Zones.
+#' \[Network Load Balancers\] You can specify subnets from one or more
+#' Availability Zones.
+#' 
+#' \[Gateway Load Balancers\] You can specify subnets from one or more
+#' Availability Zones. You must include all subnets that were enabled
+#' previously, with their existing configurations, plus any additional
+#' subnets.
 #' @param SubnetMappings The IDs of the public subnets. You can specify only one subnet per
 #' Availability Zone. You must specify either subnets or subnet mappings.
 #' 

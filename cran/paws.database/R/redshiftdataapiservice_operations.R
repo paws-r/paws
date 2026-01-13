@@ -11,39 +11,41 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftdataapiservice_batch_execute_statement/](https://www.paws-r-sdk.com/docs/redshiftdataapiservice_batch_execute_statement/) for full documentation.
 #'
-#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' @param Sqls &#91;required&#93; One or more SQL statements to run. The SQL statements are run as a
+#' single transaction. They run serially in the order of the array.
+#' Subsequent SQL statements don't start until the previous statement in
+#' the array completes. If any SQL statement fails, then because they are
+#' run as one transaction, all work is rolled back.
 #' @param ClusterIdentifier The cluster identifier. This parameter is required when connecting to a
 #' cluster and authenticating using either Secrets Manager or temporary
 #' credentials.
-#' @param Database The name of the database. This parameter is required when authenticating
-#' using either Secrets Manager or temporary credentials.
+#' @param SecretArn The name or ARN of the secret that enables access to the database. This
+#' parameter is required when authenticating using Secrets Manager.
 #' @param DbUser The database user name. This parameter is required when connecting to a
 #' cluster as a database user and authenticating using temporary
 #' credentials.
-#' @param ResultFormat The data format of the result of the SQL statement. If no format is
-#' specified, the default is JSON.
-#' @param SecretArn The name or ARN of the secret that enables access to the database. This
-#' parameter is required when authenticating using Secrets Manager.
-#' @param SessionId The session identifier of the query.
-#' @param SessionKeepAliveSeconds The number of seconds to keep the session alive after the query
-#' finishes. The maximum time a session can keep alive is 24 hours. After
-#' 24 hours, the session is forced closed and the query is terminated.
-#' @param Sqls &#91;required&#93; One or more SQL statements to run.
-#' 
-#'      The SQL statements are run as a single transaction. They run serially in the order of the array. Subsequent SQL statements don\'t start until the previous statement in the array completes. If any SQL statement fails, then because they are run as one transaction, all work is rolled back.</p> 
-#' @param StatementName The name of the SQL statements. You can name the SQL statements when you
-#' create them to identify the query.
+#' @param Database The name of the database. This parameter is required when authenticating
+#' using either Secrets Manager or temporary credentials.
 #' @param WithEvent A value that indicates whether to send an event to the Amazon
 #' EventBridge event bus after the SQL statements run.
+#' @param StatementName The name of the SQL statements. You can name the SQL statements when you
+#' create them to identify the query.
 #' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). This
 #' parameter is required when connecting to a serverless workgroup and
 #' authenticating using either Secrets Manager or temporary credentials.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param ResultFormat The data format of the result of the SQL statement. If no format is
+#' specified, the default is JSON.
+#' @param SessionKeepAliveSeconds The number of seconds to keep the session alive after the query
+#' finishes. The maximum time a session can keep alive is 24 hours. After
+#' 24 hours, the session is forced closed and the query is terminated.
+#' @param SessionId The session identifier of the query.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_batch_execute_statement
-redshiftdataapiservice_batch_execute_statement <- function(ClientToken = NULL, ClusterIdentifier = NULL, Database = NULL, DbUser = NULL, ResultFormat = NULL, SecretArn = NULL, SessionId = NULL, SessionKeepAliveSeconds = NULL, Sqls, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
+redshiftdataapiservice_batch_execute_statement <- function(Sqls, ClusterIdentifier = NULL, SecretArn = NULL, DbUser = NULL, Database = NULL, WithEvent = NULL, StatementName = NULL, WorkgroupName = NULL, ClientToken = NULL, ResultFormat = NULL, SessionKeepAliveSeconds = NULL, SessionId = NULL) {
   op <- new_operation(
     name = "BatchExecuteStatement",
     http_method = "POST",
@@ -52,7 +54,7 @@ redshiftdataapiservice_batch_execute_statement <- function(ClientToken = NULL, C
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$batch_execute_statement_input(ClientToken = ClientToken, ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, ResultFormat = ResultFormat, SecretArn = SecretArn, SessionId = SessionId, SessionKeepAliveSeconds = SessionKeepAliveSeconds, Sqls = Sqls, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
+  input <- .redshiftdataapiservice$batch_execute_statement_input(Sqls = Sqls, ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, WithEvent = WithEvent, StatementName = StatementName, WorkgroupName = WorkgroupName, ClientToken = ClientToken, ResultFormat = ResultFormat, SessionKeepAliveSeconds = SessionKeepAliveSeconds, SessionId = SessionId)
   output <- .redshiftdataapiservice$batch_execute_statement_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)
@@ -147,30 +149,30 @@ redshiftdataapiservice_describe_statement <- function(Id) {
 #' @param ClusterIdentifier The cluster identifier. This parameter is required when connecting to a
 #' cluster and authenticating using either Secrets Manager or temporary
 #' credentials.
-#' @param ConnectedDatabase A database name. The connected database is specified when you connect
-#' with your authentication credentials.
-#' @param Database &#91;required&#93; The name of the database that contains the tables to be described. If
-#' `ConnectedDatabase` is not specified, this is also the database to
-#' connect to with your authentication credentials.
+#' @param SecretArn The name or ARN of the secret that enables access to the database. This
+#' parameter is required when authenticating using Secrets Manager.
 #' @param DbUser The database user name. This parameter is required when connecting to a
 #' cluster as a database user and authenticating using temporary
 #' credentials.
-#' @param MaxResults The maximum number of tables to return in the response. If more tables
-#' exist than fit in one response, then `NextToken` is returned to page
-#' through the results.
+#' @param Database &#91;required&#93; The name of the database that contains the tables to be described. If
+#' `ConnectedDatabase` is not specified, this is also the database to
+#' connect to with your authentication credentials.
+#' @param ConnectedDatabase A database name. The connected database is specified when you connect
+#' with your authentication credentials.
+#' @param Schema The schema that contains the table. If no schema is specified, then
+#' matching tables for all schemas are returned.
+#' @param Table The table name. If no table is specified, then all tables for all
+#' matching schemas are returned. If no table and no schema is specified,
+#' then all tables for all schemas in the database are returned
 #' @param NextToken A value that indicates the starting point for the next set of response
 #' records in a subsequent request. If a value is returned in a response,
 #' you can retrieve the next set of records by providing this returned
 #' NextToken value in the next NextToken parameter and retrying the
 #' command. If the NextToken field is empty, all response records have been
 #' retrieved for the request.
-#' @param Schema The schema that contains the table. If no schema is specified, then
-#' matching tables for all schemas are returned.
-#' @param SecretArn The name or ARN of the secret that enables access to the database. This
-#' parameter is required when authenticating using Secrets Manager.
-#' @param Table The table name. If no table is specified, then all tables for all
-#' matching schemas are returned. If no table and no schema is specified,
-#' then all tables for all schemas in the database are returned
+#' @param MaxResults The maximum number of tables to return in the response. If more tables
+#' exist than fit in one response, then `NextToken` is returned to page
+#' through the results.
 #' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). This
 #' parameter is required when connecting to a serverless workgroup and
 #' authenticating using either Secrets Manager or temporary credentials.
@@ -178,7 +180,7 @@ redshiftdataapiservice_describe_statement <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_describe_table
-redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, ConnectedDatabase = NULL, Database, DbUser = NULL, MaxResults = NULL, NextToken = NULL, Schema = NULL, SecretArn = NULL, Table = NULL, WorkgroupName = NULL) {
+redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, SecretArn = NULL, DbUser = NULL, Database, ConnectedDatabase = NULL, Schema = NULL, Table = NULL, NextToken = NULL, MaxResults = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "DescribeTable",
     http_method = "POST",
@@ -187,7 +189,7 @@ redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, Conn
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ColumnList"),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$describe_table_input(ClusterIdentifier = ClusterIdentifier, ConnectedDatabase = ConnectedDatabase, Database = Database, DbUser = DbUser, MaxResults = MaxResults, NextToken = NextToken, Schema = Schema, SecretArn = SecretArn, Table = Table, WorkgroupName = WorkgroupName)
+  input <- .redshiftdataapiservice$describe_table_input(ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, ConnectedDatabase = ConnectedDatabase, Schema = Schema, Table = Table, NextToken = NextToken, MaxResults = MaxResults, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$describe_table_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)
@@ -205,38 +207,38 @@ redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, Conn
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftdataapiservice_execute_statement/](https://www.paws-r-sdk.com/docs/redshiftdataapiservice_execute_statement/) for full documentation.
 #'
-#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' @param Sql &#91;required&#93; The SQL statement text to run.
 #' @param ClusterIdentifier The cluster identifier. This parameter is required when connecting to a
 #' cluster and authenticating using either Secrets Manager or temporary
 #' credentials.
-#' @param Database The name of the database. This parameter is required when authenticating
-#' using either Secrets Manager or temporary credentials.
+#' @param SecretArn The name or ARN of the secret that enables access to the database. This
+#' parameter is required when authenticating using Secrets Manager.
 #' @param DbUser The database user name. This parameter is required when connecting to a
 #' cluster as a database user and authenticating using temporary
 #' credentials.
-#' @param Parameters The parameters for the SQL statement.
-#' @param ResultFormat The data format of the result of the SQL statement. If no format is
-#' specified, the default is JSON.
-#' @param SecretArn The name or ARN of the secret that enables access to the database. This
-#' parameter is required when authenticating using Secrets Manager.
-#' @param SessionId The session identifier of the query.
-#' @param SessionKeepAliveSeconds The number of seconds to keep the session alive after the query
-#' finishes. The maximum time a session can keep alive is 24 hours. After
-#' 24 hours, the session is forced closed and the query is terminated.
-#' @param Sql &#91;required&#93; The SQL statement text to run.
-#' @param StatementName The name of the SQL statement. You can name the SQL statement when you
-#' create it to identify the query.
+#' @param Database The name of the database. This parameter is required when authenticating
+#' using either Secrets Manager or temporary credentials.
 #' @param WithEvent A value that indicates whether to send an event to the Amazon
 #' EventBridge event bus after the SQL statement runs.
+#' @param StatementName The name of the SQL statement. You can name the SQL statement when you
+#' create it to identify the query.
+#' @param Parameters The parameters for the SQL statement.
 #' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). This
 #' parameter is required when connecting to a serverless workgroup and
 #' authenticating using either Secrets Manager or temporary credentials.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param ResultFormat The data format of the result of the SQL statement. If no format is
+#' specified, the default is JSON.
+#' @param SessionKeepAliveSeconds The number of seconds to keep the session alive after the query
+#' finishes. The maximum time a session can keep alive is 24 hours. After
+#' 24 hours, the session is forced closed and the query is terminated.
+#' @param SessionId The session identifier of the query.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_execute_statement
-redshiftdataapiservice_execute_statement <- function(ClientToken = NULL, ClusterIdentifier = NULL, Database = NULL, DbUser = NULL, Parameters = NULL, ResultFormat = NULL, SecretArn = NULL, SessionId = NULL, SessionKeepAliveSeconds = NULL, Sql, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
+redshiftdataapiservice_execute_statement <- function(Sql, ClusterIdentifier = NULL, SecretArn = NULL, DbUser = NULL, Database = NULL, WithEvent = NULL, StatementName = NULL, Parameters = NULL, WorkgroupName = NULL, ClientToken = NULL, ResultFormat = NULL, SessionKeepAliveSeconds = NULL, SessionId = NULL) {
   op <- new_operation(
     name = "ExecuteStatement",
     http_method = "POST",
@@ -245,7 +247,7 @@ redshiftdataapiservice_execute_statement <- function(ClientToken = NULL, Cluster
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$execute_statement_input(ClientToken = ClientToken, ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, Parameters = Parameters, ResultFormat = ResultFormat, SecretArn = SecretArn, SessionId = SessionId, SessionKeepAliveSeconds = SessionKeepAliveSeconds, Sql = Sql, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
+  input <- .redshiftdataapiservice$execute_statement_input(Sql = Sql, ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, WithEvent = WithEvent, StatementName = StatementName, Parameters = Parameters, WorkgroupName = WorkgroupName, ClientToken = ClientToken, ResultFormat = ResultFormat, SessionKeepAliveSeconds = SessionKeepAliveSeconds, SessionId = SessionId)
   output <- .redshiftdataapiservice$execute_statement_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)
@@ -353,20 +355,20 @@ redshiftdataapiservice_get_statement_result_v2 <- function(Id, NextToken = NULL)
 #' credentials.
 #' @param Database &#91;required&#93; The name of the database. This parameter is required when authenticating
 #' using either Secrets Manager or temporary credentials.
+#' @param SecretArn The name or ARN of the secret that enables access to the database. This
+#' parameter is required when authenticating using Secrets Manager.
 #' @param DbUser The database user name. This parameter is required when connecting to a
 #' cluster as a database user and authenticating using temporary
 #' credentials.
-#' @param MaxResults The maximum number of databases to return in the response. If more
-#' databases exist than fit in one response, then `NextToken` is returned
-#' to page through the results.
 #' @param NextToken A value that indicates the starting point for the next set of response
 #' records in a subsequent request. If a value is returned in a response,
 #' you can retrieve the next set of records by providing this returned
 #' NextToken value in the next NextToken parameter and retrying the
 #' command. If the NextToken field is empty, all response records have been
 #' retrieved for the request.
-#' @param SecretArn The name or ARN of the secret that enables access to the database. This
-#' parameter is required when authenticating using Secrets Manager.
+#' @param MaxResults The maximum number of databases to return in the response. If more
+#' databases exist than fit in one response, then `NextToken` is returned
+#' to page through the results.
 #' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). This
 #' parameter is required when connecting to a serverless workgroup and
 #' authenticating using either Secrets Manager or temporary credentials.
@@ -374,7 +376,7 @@ redshiftdataapiservice_get_statement_result_v2 <- function(Id, NextToken = NULL)
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_list_databases
-redshiftdataapiservice_list_databases <- function(ClusterIdentifier = NULL, Database, DbUser = NULL, MaxResults = NULL, NextToken = NULL, SecretArn = NULL, WorkgroupName = NULL) {
+redshiftdataapiservice_list_databases <- function(ClusterIdentifier = NULL, Database, SecretArn = NULL, DbUser = NULL, NextToken = NULL, MaxResults = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "ListDatabases",
     http_method = "POST",
@@ -383,7 +385,7 @@ redshiftdataapiservice_list_databases <- function(ClusterIdentifier = NULL, Data
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Databases"),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$list_databases_input(ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, MaxResults = MaxResults, NextToken = NextToken, SecretArn = SecretArn, WorkgroupName = WorkgroupName)
+  input <- .redshiftdataapiservice$list_databases_input(ClusterIdentifier = ClusterIdentifier, Database = Database, SecretArn = SecretArn, DbUser = DbUser, NextToken = NextToken, MaxResults = MaxResults, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$list_databases_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)
@@ -403,29 +405,29 @@ redshiftdataapiservice_list_databases <- function(ClusterIdentifier = NULL, Data
 #' @param ClusterIdentifier The cluster identifier. This parameter is required when connecting to a
 #' cluster and authenticating using either Secrets Manager or temporary
 #' credentials.
-#' @param ConnectedDatabase A database name. The connected database is specified when you connect
-#' with your authentication credentials.
-#' @param Database &#91;required&#93; The name of the database that contains the schemas to list. If
-#' `ConnectedDatabase` is not specified, this is also the database to
-#' connect to with your authentication credentials.
+#' @param SecretArn The name or ARN of the secret that enables access to the database. This
+#' parameter is required when authenticating using Secrets Manager.
 #' @param DbUser The database user name. This parameter is required when connecting to a
 #' cluster as a database user and authenticating using temporary
 #' credentials.
-#' @param MaxResults The maximum number of schemas to return in the response. If more schemas
-#' exist than fit in one response, then `NextToken` is returned to page
-#' through the results.
+#' @param Database &#91;required&#93; The name of the database that contains the schemas to list. If
+#' `ConnectedDatabase` is not specified, this is also the database to
+#' connect to with your authentication credentials.
+#' @param ConnectedDatabase A database name. The connected database is specified when you connect
+#' with your authentication credentials.
+#' @param SchemaPattern A pattern to filter results by schema name. Within a schema pattern, "%"
+#' means match any substring of 0 or more characters and "_" means match
+#' any one character. Only schema name entries matching the search pattern
+#' are returned.
 #' @param NextToken A value that indicates the starting point for the next set of response
 #' records in a subsequent request. If a value is returned in a response,
 #' you can retrieve the next set of records by providing this returned
 #' NextToken value in the next NextToken parameter and retrying the
 #' command. If the NextToken field is empty, all response records have been
 #' retrieved for the request.
-#' @param SchemaPattern A pattern to filter results by schema name. Within a schema pattern, "%"
-#' means match any substring of 0 or more characters and "_" means match
-#' any one character. Only schema name entries matching the search pattern
-#' are returned.
-#' @param SecretArn The name or ARN of the secret that enables access to the database. This
-#' parameter is required when authenticating using Secrets Manager.
+#' @param MaxResults The maximum number of schemas to return in the response. If more schemas
+#' exist than fit in one response, then `NextToken` is returned to page
+#' through the results.
 #' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). This
 #' parameter is required when connecting to a serverless workgroup and
 #' authenticating using either Secrets Manager or temporary credentials.
@@ -433,7 +435,7 @@ redshiftdataapiservice_list_databases <- function(ClusterIdentifier = NULL, Data
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_list_schemas
-redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, ConnectedDatabase = NULL, Database, DbUser = NULL, MaxResults = NULL, NextToken = NULL, SchemaPattern = NULL, SecretArn = NULL, WorkgroupName = NULL) {
+redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, SecretArn = NULL, DbUser = NULL, Database, ConnectedDatabase = NULL, SchemaPattern = NULL, NextToken = NULL, MaxResults = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "ListSchemas",
     http_method = "POST",
@@ -442,7 +444,7 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, Connec
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Schemas"),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$list_schemas_input(ClusterIdentifier = ClusterIdentifier, ConnectedDatabase = ConnectedDatabase, Database = Database, DbUser = DbUser, MaxResults = MaxResults, NextToken = NextToken, SchemaPattern = SchemaPattern, SecretArn = SecretArn, WorkgroupName = WorkgroupName)
+  input <- .redshiftdataapiservice$list_schemas_input(ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, ConnectedDatabase = ConnectedDatabase, SchemaPattern = SchemaPattern, NextToken = NextToken, MaxResults = MaxResults, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$list_schemas_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)
@@ -459,24 +461,15 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, Connec
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftdataapiservice_list_statements/](https://www.paws-r-sdk.com/docs/redshiftdataapiservice_list_statements/) for full documentation.
 #'
-#' @param ClusterIdentifier The cluster identifier. Only statements that ran on this cluster are
-#' returned. When providing `ClusterIdentifier`, then `WorkgroupName` can't
-#' be specified.
-#' @param Database The name of the database when listing statements run against a
-#' `ClusterIdentifier` or `WorkgroupName`.
-#' @param MaxResults The maximum number of SQL statements to return in the response. If more
-#' SQL statements exist than fit in one response, then `NextToken` is
-#' returned to page through the results.
 #' @param NextToken A value that indicates the starting point for the next set of response
 #' records in a subsequent request. If a value is returned in a response,
 #' you can retrieve the next set of records by providing this returned
 #' NextToken value in the next NextToken parameter and retrying the
 #' command. If the NextToken field is empty, all response records have been
 #' retrieved for the request.
-#' @param RoleLevel A value that filters which statements to return in the response. If
-#' true, all statements run by the caller's IAM role are returned. If
-#' false, only statements run by the caller's IAM role in the current IAM
-#' session are returned. The default is true.
+#' @param MaxResults The maximum number of SQL statements to return in the response. If more
+#' SQL statements exist than fit in one response, then `NextToken` is
+#' returned to page through the results.
 #' @param StatementName The name of the SQL statement specified as input to
 #' [`batch_execute_statement`][redshiftdataapiservice_batch_execute_statement]
 #' or [`execute_statement`][redshiftdataapiservice_execute_statement] to
@@ -502,6 +495,15 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, Connec
 #' -   STARTED - The query run has started.
 #' 
 #' -   SUBMITTED - The query was submitted, but not yet processed.
+#' @param RoleLevel A value that filters which statements to return in the response. If
+#' true, all statements run by the caller's IAM role are returned. If
+#' false, only statements run by the caller's IAM role in the current IAM
+#' session are returned. The default is true.
+#' @param Database The name of the database when listing statements run against a
+#' `ClusterIdentifier` or `WorkgroupName`.
+#' @param ClusterIdentifier The cluster identifier. Only statements that ran on this cluster are
+#' returned. When providing `ClusterIdentifier`, then `WorkgroupName` can't
+#' be specified.
 #' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). Only
 #' statements that ran on this workgroup are returned. When providing
 #' `WorkgroupName`, then `ClusterIdentifier` can't be specified.
@@ -509,7 +511,7 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, Connec
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_list_statements
-redshiftdataapiservice_list_statements <- function(ClusterIdentifier = NULL, Database = NULL, MaxResults = NULL, NextToken = NULL, RoleLevel = NULL, StatementName = NULL, Status = NULL, WorkgroupName = NULL) {
+redshiftdataapiservice_list_statements <- function(NextToken = NULL, MaxResults = NULL, StatementName = NULL, Status = NULL, RoleLevel = NULL, Database = NULL, ClusterIdentifier = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "ListStatements",
     http_method = "POST",
@@ -518,7 +520,7 @@ redshiftdataapiservice_list_statements <- function(ClusterIdentifier = NULL, Dat
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Statements"),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$list_statements_input(ClusterIdentifier = ClusterIdentifier, Database = Database, MaxResults = MaxResults, NextToken = NextToken, RoleLevel = RoleLevel, StatementName = StatementName, Status = Status, WorkgroupName = WorkgroupName)
+  input <- .redshiftdataapiservice$list_statements_input(NextToken = NextToken, MaxResults = MaxResults, StatementName = StatementName, Status = Status, RoleLevel = RoleLevel, Database = Database, ClusterIdentifier = ClusterIdentifier, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$list_statements_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)
@@ -538,37 +540,37 @@ redshiftdataapiservice_list_statements <- function(ClusterIdentifier = NULL, Dat
 #' @param ClusterIdentifier The cluster identifier. This parameter is required when connecting to a
 #' cluster and authenticating using either Secrets Manager or temporary
 #' credentials.
-#' @param ConnectedDatabase A database name. The connected database is specified when you connect
-#' with your authentication credentials.
-#' @param Database &#91;required&#93; The name of the database that contains the tables to list. If
-#' `ConnectedDatabase` is not specified, this is also the database to
-#' connect to with your authentication credentials.
+#' @param SecretArn The name or ARN of the secret that enables access to the database. This
+#' parameter is required when authenticating using Secrets Manager.
 #' @param DbUser The database user name. This parameter is required when connecting to a
 #' cluster as a database user and authenticating using temporary
 #' credentials.
-#' @param MaxResults The maximum number of tables to return in the response. If more tables
-#' exist than fit in one response, then `NextToken` is returned to page
-#' through the results.
-#' @param NextToken A value that indicates the starting point for the next set of response
-#' records in a subsequent request. If a value is returned in a response,
-#' you can retrieve the next set of records by providing this returned
-#' NextToken value in the next NextToken parameter and retrying the
-#' command. If the NextToken field is empty, all response records have been
-#' retrieved for the request.
+#' @param Database &#91;required&#93; The name of the database that contains the tables to list. If
+#' `ConnectedDatabase` is not specified, this is also the database to
+#' connect to with your authentication credentials.
+#' @param ConnectedDatabase A database name. The connected database is specified when you connect
+#' with your authentication credentials.
 #' @param SchemaPattern A pattern to filter results by schema name. Within a schema pattern, "%"
 #' means match any substring of 0 or more characters and "_" means match
 #' any one character. Only schema name entries matching the search pattern
 #' are returned. If `SchemaPattern` is not specified, then all tables that
 #' match `TablePattern` are returned. If neither `SchemaPattern` or
 #' `TablePattern` are specified, then all tables are returned.
-#' @param SecretArn The name or ARN of the secret that enables access to the database. This
-#' parameter is required when authenticating using Secrets Manager.
 #' @param TablePattern A pattern to filter results by table name. Within a table pattern, "%"
 #' means match any substring of 0 or more characters and "_" means match
 #' any one character. Only table name entries matching the search pattern
 #' are returned. If `TablePattern` is not specified, then all tables that
 #' match `SchemaPattern`are returned. If neither `SchemaPattern` or
 #' `TablePattern` are specified, then all tables are returned.
+#' @param NextToken A value that indicates the starting point for the next set of response
+#' records in a subsequent request. If a value is returned in a response,
+#' you can retrieve the next set of records by providing this returned
+#' NextToken value in the next NextToken parameter and retrying the
+#' command. If the NextToken field is empty, all response records have been
+#' retrieved for the request.
+#' @param MaxResults The maximum number of tables to return in the response. If more tables
+#' exist than fit in one response, then `NextToken` is returned to page
+#' through the results.
 #' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). This
 #' parameter is required when connecting to a serverless workgroup and
 #' authenticating using either Secrets Manager or temporary credentials.
@@ -576,7 +578,7 @@ redshiftdataapiservice_list_statements <- function(ClusterIdentifier = NULL, Dat
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_list_tables
-redshiftdataapiservice_list_tables <- function(ClusterIdentifier = NULL, ConnectedDatabase = NULL, Database, DbUser = NULL, MaxResults = NULL, NextToken = NULL, SchemaPattern = NULL, SecretArn = NULL, TablePattern = NULL, WorkgroupName = NULL) {
+redshiftdataapiservice_list_tables <- function(ClusterIdentifier = NULL, SecretArn = NULL, DbUser = NULL, Database, ConnectedDatabase = NULL, SchemaPattern = NULL, TablePattern = NULL, NextToken = NULL, MaxResults = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "ListTables",
     http_method = "POST",
@@ -585,7 +587,7 @@ redshiftdataapiservice_list_tables <- function(ClusterIdentifier = NULL, Connect
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tables"),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$list_tables_input(ClusterIdentifier = ClusterIdentifier, ConnectedDatabase = ConnectedDatabase, Database = Database, DbUser = DbUser, MaxResults = MaxResults, NextToken = NextToken, SchemaPattern = SchemaPattern, SecretArn = SecretArn, TablePattern = TablePattern, WorkgroupName = WorkgroupName)
+  input <- .redshiftdataapiservice$list_tables_input(ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, ConnectedDatabase = ConnectedDatabase, SchemaPattern = SchemaPattern, TablePattern = TablePattern, NextToken = NextToken, MaxResults = MaxResults, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$list_tables_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)

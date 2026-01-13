@@ -14,7 +14,8 @@ route53resolver_create_resolver_rule(
   DomainName = NULL,
   TargetIps = NULL,
   ResolverEndpointId = NULL,
-  Tags = NULL
+  Tags = NULL,
+  DelegationRecord = NULL
 )
 }
 \arguments{
@@ -24,10 +25,14 @@ requests to be retried without the risk of running the operation twice.
 stamp.}
 
 \item{Name}{A friendly name that lets you easily find a rule in the Resolver
-dashboard in the Route 53 console.}
+dashboard in the Route 53 console.
+
+The name can be up to 64 characters long and can contain letters (a-z,
+A-Z), numbers (0-9), hyphens (-), underscores (_), and spaces. The name
+cannot consist of only numbers.}
 
 \item{RuleType}{[required] When you want to forward DNS queries for specified domain name to
-resolvers on your network, specify \code{FORWARD}.
+resolvers on your network, specify \code{FORWARD} or \code{DELEGATE}.
 
 When you have a forwarding rule to forward DNS queries for a domain to
 your network and you want Resolver to process queries for a subdomain of
@@ -52,13 +57,22 @@ specify either Ipv4 or Ipv6 addresses but not both in the same rule.
 Separate IP addresses with a space.
 
 \code{TargetIps} is available only when the value of \verb{Rule type} is
-\code{FORWARD}.}
+\code{FORWARD}. You should not provide TargetIps when the Rule type is
+\code{DELEGATE}.
+
+when creating a DELEGATE rule, you must not provide the \code{TargetIps}
+parameter. If you provide the \code{TargetIps}, you may receive an ERROR
+message similar to "Delegate resolver rules need to specify a nameserver
+name". This error means you should not provide \code{TargetIps}.}
 
 \item{ResolverEndpointId}{The ID of the outbound Resolver endpoint that you want to use to route
 DNS queries to the IP addresses that you specify in \code{TargetIps}.}
 
 \item{Tags}{A list of the tag keys and values that you want to associate with the
 endpoint.}
+
+\item{DelegationRecord}{DNS queries with the delegation records that match this domain name are
+forwarded to the resolvers on your network.}
 }
 \description{
 For DNS queries that originate in your VPCs, specifies which Resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network.

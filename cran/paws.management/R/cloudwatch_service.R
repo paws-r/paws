@@ -111,6 +111,7 @@ NULL
 #'  \link[=cloudwatch_delete_dashboards]{delete_dashboards} \tab Deletes all dashboards that you specify\cr
 #'  \link[=cloudwatch_delete_insight_rules]{delete_insight_rules} \tab Permanently deletes the specified Contributor Insights rules\cr
 #'  \link[=cloudwatch_delete_metric_stream]{delete_metric_stream} \tab Permanently deletes the metric stream that you specify\cr
+#'  \link[=cloudwatch_describe_alarm_contributors]{describe_alarm_contributors} \tab Returns the information of the current alarm contributors that are in ALARM state\cr
 #'  \link[=cloudwatch_describe_alarm_history]{describe_alarm_history} \tab Retrieves the history for the specified alarm\cr
 #'  \link[=cloudwatch_describe_alarms]{describe_alarms} \tab Retrieves the specified alarms\cr
 #'  \link[=cloudwatch_describe_alarms_for_metric]{describe_alarms_for_metric} \tab Retrieves the alarms for the specified metric\cr
@@ -179,11 +180,11 @@ cloudwatch <- function(config = list(), credentials = list(), endpoint = NULL, r
   service_id = "CloudWatch",
   api_version = "2010-08-01",
   signing_name = "monitoring",
-  json_version = "",
-  target_prefix = ""
+  json_version = "1.0",
+  target_prefix = "GraniteServiceVersion20100801"
 )
 
 .cloudwatch$service <- function(config = list(), op = NULL) {
-  handlers <- new_handlers("query", "v4")
+  handlers <- new_handlers("smithyrpcv2cbor", "v4")
   new_service(.cloudwatch$metadata, handlers, config, op)
 }

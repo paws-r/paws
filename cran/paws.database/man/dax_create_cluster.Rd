@@ -18,7 +18,8 @@ dax_create_cluster(
   ParameterGroupName = NULL,
   Tags = NULL,
   SSESpecification = NULL,
-  ClusterEndpointEncryptionType = NULL
+  ClusterEndpointEncryptionType = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -43,7 +44,8 @@ read replicas. To do this, set \code{ReplicationFactor} to a number between 3
 replicas). \verb{If the AvailabilityZones} parameter is provided, its length
 must equal the \code{ReplicationFactor}.
 
-AWS recommends that you have at least two read replicas per cluster.}
+Amazon Web Services recommends that you have at least two read replicas
+per cluster.}
 
 \item{AvailabilityZones}{The Availability Zones (AZs) in which the cluster nodes will reside
 after the cluster has been created or updated. If provided, the length
@@ -104,6 +106,18 @@ are:
 \item \code{NONE} for no encryption
 \item \code{TLS} for Transport Layer Security
 }}
+
+\item{NetworkType}{Specifies the IP protocol(s) the cluster uses for network
+communications. Values are:
+\itemize{
+\item \code{ipv4} - The cluster is accessible only through IPv4 addresses
+\item \code{ipv6} - The cluster is accessible only through IPv6 addresses
+\item \code{dual_stack} - The cluster is accessible through both IPv4 and IPv6
+addresses.
+}
+
+If no explicit \code{NetworkType} is provided, the network type is derived
+based on the subnet group's configuration.}
 }
 \description{
 Creates a DAX cluster. All nodes in the cluster run the same DAX caching software.

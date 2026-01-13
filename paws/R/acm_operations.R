@@ -263,7 +263,8 @@ acm_delete_certificate <- function(CertificateArn) {
 #'     CertificateAuthorityArn = "string",
 #'     RenewalEligibility = "ELIGIBLE"|"INELIGIBLE",
 #'     Options = list(
-#'       CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED"
+#'       CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED",
+#'       Export = "ENABLED"|"DISABLED"
 #'     )
 #'   )
 #' )
@@ -301,18 +302,21 @@ acm_describe_certificate <- function(CertificateArn) {
 .acm$operations$describe_certificate <- acm_describe_certificate
 
 #' Exports a private certificate issued by a private certificate authority
-#' (CA) for use anywhere
+#' (CA) or public certificate for use anywhere
 #'
 #' @description
 #' Exports a private certificate issued by a private certificate authority
-#' (CA) for use anywhere. The exported file contains the certificate, the
-#' certificate chain, and the encrypted private 2048-bit RSA key associated
-#' with the public key that is embedded in the certificate. For security,
-#' you must assign a passphrase for the private key when exporting it.
+#' (CA) or public certificate for use anywhere. The exported file contains
+#' the certificate, the certificate chain, and the encrypted private key
+#' associated with the public key that is embedded in the certificate. For
+#' security, you must assign a passphrase for the private key when
+#' exporting it.
 #' 
 #' For information about exporting and formatting a certificate using the
-#' ACM console or CLI, see [Export a Private
-#' Certificate](https://docs.aws.amazon.com/acm/latest/userguide/).
+#' ACM console or CLI, see [Export a private
+#' certificate](https://docs.aws.amazon.com/acm/latest/userguide/export-private.html)
+#' and [Export a public
+#' certificate](https://docs.aws.amazon.com/acm/latest/userguide/export-public-certificate.html).
 #'
 #' @usage
 #' acm_export_certificate(CertificateArn, Passphrase)
@@ -662,6 +666,7 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #'       ExtendedKeyUsages = list(
 #'         "TLS_WEB_SERVER_AUTHENTICATION"|"TLS_WEB_CLIENT_AUTHENTICATION"|"CODE_SIGNING"|"EMAIL_PROTECTION"|"TIME_STAMPING"|"OCSP_SIGNING"|"IPSEC_END_SYSTEM"|"IPSEC_TUNNEL"|"IPSEC_USER"|"ANY"|"NONE"|"CUSTOM"
 #'       ),
+#'       ExportOption = "ENABLED"|"DISABLED",
 #'       InUse = TRUE|FALSE,
 #'       Exported = TRUE|FALSE,
 #'       RenewalEligibility = "ELIGIBLE"|"INELIGIBLE",
@@ -705,6 +710,7 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #'     keyTypes = list(
 #'       "RSA_1024"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"
 #'     ),
+#'     exportOption = "ENABLED"|"DISABLED",
 #'     managedBy = "CLOUDFRONT"
 #'   ),
 #'   NextToken = "string",
@@ -934,10 +940,10 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' Renews an eligible ACM certificate
 #'
 #' @description
-#' Renews an eligible ACM certificate. At this time, only exported private
-#' certificates can be renewed with this operation. In order to renew your
-#' Amazon Web Services Private CA certificates with ACM, you must first
-#' [grant the ACM service principal permission to do
+#' Renews an [eligible ACM
+#' certificate](https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html).
+#' In order to renew your Amazon Web Services Private CA certificates with
+#' ACM, you must first [grant the ACM service principal permission to do
 #' so](https://docs.aws.amazon.com/privateca/latest/userguide/). For more
 #' information, see [Testing Managed
 #' Renewal](https://docs.aws.amazon.com/acm/latest/userguide/) in the ACM
@@ -1004,8 +1010,7 @@ acm_renew_certificate <- function(CertificateArn) {
 #' validation](https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html)
 #' or [email
 #' validation](https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html).
-#' We recommend that you use DNS validation. ACM issues public certificates
-#' after receiving approval from the domain owner.
+#' We recommend that you use DNS validation.
 #' 
 #' ACM behavior differs from the [RFC
 #' 6125](https://datatracker.ietf.org/doc/html/rfc6125#appendix-B.2)
@@ -1076,13 +1081,20 @@ acm_renew_certificate <- function(CertificateArn) {
 #' requesting multiple certificates.
 #' @param DomainValidationOptions The domain name that you want ACM to use to send you emails so that you
 #' can validate domain ownership.
-#' @param Options Currently, you can use this parameter to specify whether to add the
-#' certificate to a certificate transparency log. Certificate transparency
-#' makes it possible to detect SSL/TLS certificates that have been
-#' mistakenly or maliciously issued. Certificates that have not been logged
-#' typically produce an error message in a browser. For more information,
-#' see [Opting Out of Certificate Transparency
+#' @param Options You can use this parameter to specify whether to add the certificate to
+#' a certificate transparency log and export your certificate.
+#' 
+#' Certificate transparency makes it possible to detect SSL/TLS
+#' certificates that have been mistakenly or maliciously issued.
+#' Certificates that have not been logged typically produce an error
+#' message in a browser. For more information, see [Opting Out of
+#' Certificate Transparency
 #' Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+#' 
+#' You can export public ACM certificates to use with Amazon Web Services
+#' services as well as outside the Amazon Web Services Cloud. For more
+#' information, see [Certificate Manager exportable public
+#' certificate](https://docs.aws.amazon.com/acm/latest/userguide/acm-exportable-certificates.html).
 #' @param CertificateAuthorityArn The Amazon Resource Name (ARN) of the private certificate authority (CA)
 #' that will be used to issue the certificate. If you do not provide an ARN
 #' and you are trying to request a private certificate, ACM will attempt to
@@ -1148,7 +1160,8 @@ acm_renew_certificate <- function(CertificateArn) {
 #'     )
 #'   ),
 #'   Options = list(
-#'     CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED"
+#'     CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED",
+#'     Export = "ENABLED"|"DISABLED"
 #'   ),
 #'   CertificateAuthorityArn = "string",
 #'   Tags = list(
@@ -1269,14 +1282,71 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
 }
 .acm$operations$resend_validation_email <- acm_resend_validation_email
 
+#' Revokes a public ACM certificate
+#'
+#' @description
+#' Revokes a public ACM certificate. You can only revoke certificates that
+#' have been previously exported.
+#'
+#' @usage
+#' acm_revoke_certificate(CertificateArn, RevocationReason)
+#'
+#' @param CertificateArn &#91;required&#93; The Amazon Resource Name (ARN) of the public or private certificate that
+#' will be revoked. The ARN must have the following form:
+#' 
+#' `arn:aws:acm:region:account:certificate/12345678-1234-1234-1234-123456789012`
+#' @param RevocationReason &#91;required&#93; Specifies why you revoked the certificate.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CertificateArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$revoke_certificate(
+#'   CertificateArn = "string",
+#'   RevocationReason = "UNSPECIFIED"|"KEY_COMPROMISE"|"CA_COMPROMISE"|"AFFILIATION_CHANGED"|"SUPERCEDED"|"SUPERSEDED"|"CESSATION_OF_OPERATION"|"CERTIFICATE_HOLD"|"REMOVE_FROM_CRL"|"PRIVILEGE_WITHDRAWN"|"A_A_COMPROMISE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_revoke_certificate
+#'
+#' @aliases acm_revoke_certificate
+acm_revoke_certificate <- function(CertificateArn, RevocationReason) {
+  op <- new_operation(
+    name = "RevokeCertificate",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$revoke_certificate_input(CertificateArn = CertificateArn, RevocationReason = RevocationReason)
+  output <- .acm$revoke_certificate_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$revoke_certificate <- acm_revoke_certificate
+
 #' Updates a certificate
 #'
 #' @description
-#' Updates a certificate. Currently, you can use this function to specify
-#' whether to opt in to or out of recording your certificate in a
-#' certificate transparency log. For more information, see [Opting Out of
+#' Updates a certificate. You can use this function to specify whether to
+#' opt in to or out of recording your certificate in a certificate
+#' transparency log and exporting. For more information, see [Opting Out of
 #' Certificate Transparency
-#' Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+#' Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency)
+#' and [Certificate Manager Exportable Managed
+#' Certificates](https://docs.aws.amazon.com/acm/latest/userguide/acm-exportable-certificates.html).
 #'
 #' @usage
 #' acm_update_certificate_options(CertificateArn, Options)
@@ -1285,9 +1355,9 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
 #' 
 #' `arn:aws:acm:us-east-1:account:certificate/12345678-1234-1234-1234-123456789012 `
 #' @param Options &#91;required&#93; Use to update the options for your certificate. Currently, you can
-#' specify whether to add your certificate to a transparency log.
-#' Certificate transparency makes it possible to detect SSL/TLS
-#' certificates that have been mistakenly or maliciously issued.
+#' specify whether to add your certificate to a transparency log or export
+#' your certificate. Certificate transparency makes it possible to detect
+#' SSL/TLS certificates that have been mistakenly or maliciously issued.
 #' Certificates that have not been logged typically produce an error
 #' message in a browser.
 #'
@@ -1299,7 +1369,8 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
 #' svc$update_certificate_options(
 #'   CertificateArn = "string",
 #'   Options = list(
-#'     CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED"
+#'     CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED",
+#'     Export = "ENABLED"|"DISABLED"
 #'   )
 #' )
 #' ```

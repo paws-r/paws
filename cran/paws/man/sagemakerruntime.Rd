@@ -53,7 +53,7 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-The Amazon SageMaker runtime API.
+The Amazon SageMaker AI runtime API.
 }
 \section{Service syntax}{
 
@@ -94,8 +94,8 @@ The Amazon SageMaker runtime API.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.machine.learning:sagemakerruntime_invoke_endpoint]{invoke_endpoint} \tab After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint\cr
-\link[paws.machine.learning:sagemakerruntime_invoke_endpoint_async]{invoke_endpoint_async} \tab After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint in an asynchronous manner\cr
+\link[paws.machine.learning:sagemakerruntime_invoke_endpoint]{invoke_endpoint} \tab After you deploy a model into production using Amazon SageMaker AI hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint\cr
+\link[paws.machine.learning:sagemakerruntime_invoke_endpoint_async]{invoke_endpoint_async} \tab After you deploy a model into production using Amazon SageMaker AI hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint in an asynchronous manner\cr
 \link[paws.machine.learning:sagemakerruntime_invoke_endpoint_with_response_stream]{invoke_endpoint_with_response_stream} \tab Invokes a model at the specified endpoint to return the inference response as a stream
 }
 }

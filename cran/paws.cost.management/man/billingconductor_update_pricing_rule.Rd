@@ -23,7 +23,8 @@ pricing rule.}
 
 \item{Type}{The new pricing rule type.}
 
-\item{ModifierPercentage}{The new modifier to show pricing plan rates as a percentage.}
+\item{ModifierPercentage}{The new modifier to show pricing plan rates as a percentage. Your entry
+will be rounded to the nearest 2 decimal places.}
 
 \item{Tiering}{The set of tiering configurations for the pricing rule.}
 }

@@ -24,6 +24,10 @@ test_that("describe_export_tasks", {
   expect_error(svc$describe_export_tasks(), NA)
 })
 
+test_that("describe_import_tasks", {
+  expect_error(svc$describe_import_tasks(), NA)
+})
+
 test_that("describe_log_groups", {
   expect_error(svc$describe_log_groups(), NA)
 })
@@ -62,4 +66,8 @@ test_that("list_log_anomaly_detectors", {
 
 test_that("list_log_groups", {
   expect_error(svc$list_log_groups(), NA)
+})
+
+test_that("list_scheduled_queries", {
+  expect_error(svc$list_scheduled_queries(), NA)
 })

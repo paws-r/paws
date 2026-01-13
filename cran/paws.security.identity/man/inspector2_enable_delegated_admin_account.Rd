@@ -6,15 +6,15 @@
 Organizations organization}
 \usage{
 inspector2_enable_delegated_admin_account(
-  clientToken = NULL,
-  delegatedAdminAccountId
+  delegatedAdminAccountId,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{The idempotency token for the request.}
-
 \item{delegatedAdminAccountId}{[required] The Amazon Web Services account ID of the Amazon Inspector delegated
 administrator.}
+
+\item{clientToken}{The idempotency token for the request.}
 }
 \description{
 Enables the Amazon Inspector delegated administrator for your Organizations organization.

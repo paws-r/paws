@@ -4,12 +4,12 @@
 \alias{connectcases_update_case}
 \title{If you provide a value for PerformedBy}
 \usage{
-connectcases_update_case(caseId, domainId, fields, performedBy = NULL)
+connectcases_update_case(domainId, caseId, fields, performedBy = NULL)
 }
 \arguments{
-\item{caseId}{[required] A unique identifier of the case.}
-
 \item{domainId}{[required] The unique identifier of the Cases domain.}
+
+\item{caseId}{[required] A unique identifier of the case.}
 
 \item{fields}{[required] An array of objects with \code{fieldId} (matching ListFields/DescribeField)
 and value union data, structured identical to

@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_create_group}
 \alias{quicksight_create_group}
-\title{Use the CreateGroup operation to create a group in Amazon QuickSight}
+\title{Use the CreateGroup operation to create a group in Quick Sight}
 \usage{
 quicksight_create_group(GroupName, Description = NULL, AwsAccountId, Namespace)
 }
@@ -13,12 +13,12 @@ quicksight_create_group(GroupName, Description = NULL, AwsAccountId, Namespace)
 
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the group is in.
 Currently, you use the ID for the Amazon Web Services account that
-contains your Amazon QuickSight account.}
+contains your Amazon Quick Sight account.}
 
 \item{Namespace}{[required] The namespace that you want the group to be a part of.}
 }
 \description{
-Use the \code{\link[=quicksight_create_group]{create_group}} operation to create a group in Amazon QuickSight. You can create up to 10,000 groups in a namespace. If you want to create more than 10,000 groups in a namespace, contact Amazon Web Services Support.
+Use the \code{\link[=quicksight_create_group]{create_group}} operation to create a group in Quick Sight. You can create up to 10,000 groups in a namespace. If you want to create more than 10,000 groups in a namespace, contact Amazon Web Services Support.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_create_group/} for full documentation.
 }

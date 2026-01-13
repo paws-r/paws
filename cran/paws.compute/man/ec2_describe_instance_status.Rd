@@ -39,6 +39,8 @@ you have the required permissions, the error response is
 \item{Filters}{The filters.
 \itemize{
 \item \code{availability-zone} - The Availability Zone of the instance.
+\item \code{availability-zone-id} - The ID of the Availability Zone of the
+instance.
 \item \code{event.code} - The code for the scheduled event (\code{instance-reboot} |
 \code{system-reboot} | \code{system-maintenance} | \code{instance-retirement} |
 \code{instance-stop}).

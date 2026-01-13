@@ -86,9 +86,10 @@ operations retrieve and add communications and attachments to Amazon
 Web Services Support cases.
 \item The \code{describe_services} and
 \code{describe_severity_levels}
-operations return Amazon Web Service names, service codes, service
-categories, and problem severity levels. You use these values when
-you call the \code{create_case} operation.
+operations return Amazon Web Services service names, service codes,
+service categories, and problem severity levels. You use these
+values when you call the \code{create_case}
+operation.
 }
 
 You can also use the Amazon Web Services Support API to call the Trusted

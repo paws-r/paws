@@ -119,6 +119,85 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 }
 .sagemaker$operations$associate_trial_component <- sagemaker_associate_trial_component
 
+#' Attaches your Amazon Elastic Block Store (Amazon EBS) volume to a node
+#' in your EKS orchestrated HyperPod cluster
+#'
+#' @description
+#' Attaches your Amazon Elastic Block Store (Amazon EBS) volume to a node in your EKS orchestrated HyperPod cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_attach_cluster_node_volume/](https://www.paws-r-sdk.com/docs/sagemaker_attach_cluster_node_volume/) for full documentation.
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of your SageMaker HyperPod cluster
+#' containing the target node. Your cluster must use EKS as the
+#' orchestration and be in the `InService` state.
+#' @param NodeId &#91;required&#93; The unique identifier of the cluster node to which you want to attach
+#' the volume. The node must belong to your specified HyperPod cluster and
+#' cannot be part of a Restricted Instance Group (RIG).
+#' @param VolumeId &#91;required&#93; The unique identifier of your EBS volume to attach. The volume must be
+#' in the `available` state.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_attach_cluster_node_volume
+sagemaker_attach_cluster_node_volume <- function(ClusterArn, NodeId, VolumeId) {
+  op <- new_operation(
+    name = "AttachClusterNodeVolume",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$attach_cluster_node_volume_input(ClusterArn = ClusterArn, NodeId = NodeId, VolumeId = VolumeId)
+  output <- .sagemaker$attach_cluster_node_volume_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$attach_cluster_node_volume <- sagemaker_attach_cluster_node_volume
+
+#' Adds nodes to a HyperPod cluster by incrementing the target count for
+#' one or more instance groups
+#'
+#' @description
+#' Adds nodes to a HyperPod cluster by incrementing the target count for one or more instance groups. This operation returns a unique `NodeLogicalId` for each node being added, which can be used to track the provisioning status of the node. This API provides a safer alternative to [`update_cluster`][sagemaker_update_cluster] for scaling operations by avoiding unintended configuration changes.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_batch_add_cluster_nodes/](https://www.paws-r-sdk.com/docs/sagemaker_batch_add_cluster_nodes/) for full documentation.
+#'
+#' @param ClusterName &#91;required&#93; The name of the HyperPod cluster to which you want to add nodes.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. This token is valid for 8 hours. If you
+#' retry the request with the same client token within this timeframe and
+#' the same parameters, the API returns the same set of `NodeLogicalIds`
+#' with their latest status.
+#' @param NodesToAdd &#91;required&#93; A list of instance groups and the number of nodes to add to each. You
+#' can specify up to 5 instance groups in a single request, with a maximum
+#' of 50 nodes total across all instance groups.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_batch_add_cluster_nodes
+sagemaker_batch_add_cluster_nodes <- function(ClusterName, ClientToken = NULL, NodesToAdd) {
+  op <- new_operation(
+    name = "BatchAddClusterNodes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$batch_add_cluster_nodes_input(ClusterName = ClusterName, ClientToken = ClientToken, NodesToAdd = NodesToAdd)
+  output <- .sagemaker$batch_add_cluster_nodes_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$batch_add_cluster_nodes <- sagemaker_batch_add_cluster_nodes
+
 #' Deletes specific nodes within a SageMaker HyperPod cluster
 #'
 #' @description
@@ -128,7 +207,7 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #'
 #' @param ClusterName &#91;required&#93; The name of the SageMaker HyperPod cluster from which to delete the
 #' specified nodes.
-#' @param NodeIds &#91;required&#93; A list of node IDs to be deleted from the specified cluster.
+#' @param NodeIds A list of node IDs to be deleted from the specified cluster.
 #' 
 #' -   For SageMaker HyperPod clusters using the Slurm workload manager,
 #'     you cannot remove instances that are configured as Slurm controller
@@ -136,11 +215,15 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #' 
 #' -   If you need to delete more than 99 instances, contact
 #'     [Support](https://aws.amazon.com/contact-us/) for assistance.
+#' @param NodeLogicalIds A list of `NodeLogicalIds` identifying the nodes to be deleted. You can
+#' specify up to 50 `NodeLogicalIds`. You must specify either
+#' `NodeLogicalIds`, `InstanceIds`, or both, with a combined maximum of 50
+#' identifiers.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_batch_delete_cluster_nodes
-sagemaker_batch_delete_cluster_nodes <- function(ClusterName, NodeIds) {
+sagemaker_batch_delete_cluster_nodes <- function(ClusterName, NodeIds = NULL, NodeLogicalIds = NULL) {
   op <- new_operation(
     name = "BatchDeleteClusterNodes",
     http_method = "POST",
@@ -149,7 +232,7 @@ sagemaker_batch_delete_cluster_nodes <- function(ClusterName, NodeIds) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$batch_delete_cluster_nodes_input(ClusterName = ClusterName, NodeIds = NodeIds)
+  input <- .sagemaker$batch_delete_cluster_nodes_input(ClusterName = ClusterName, NodeIds = NodeIds, NodeLogicalIds = NodeLogicalIds)
   output <- .sagemaker$batch_delete_cluster_nodes_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -189,6 +272,125 @@ sagemaker_batch_describe_model_package <- function(ModelPackageArnList) {
   return(response)
 }
 .sagemaker$operations$batch_describe_model_package <- sagemaker_batch_describe_model_package
+
+#' Reboots specific nodes within a SageMaker HyperPod cluster using a soft
+#' recovery mechanism
+#'
+#' @description
+#' Reboots specific nodes within a SageMaker HyperPod cluster using a soft recovery mechanism. [`batch_reboot_cluster_nodes`][sagemaker_batch_reboot_cluster_nodes] performs a graceful reboot of the specified nodes by calling the Amazon Elastic Compute Cloud `RebootInstances` API, which attempts to cleanly shut down the operating system before restarting the instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_batch_reboot_cluster_nodes/](https://www.paws-r-sdk.com/docs/sagemaker_batch_reboot_cluster_nodes/) for full documentation.
+#'
+#' @param ClusterName &#91;required&#93; The name or Amazon Resource Name (ARN) of the SageMaker HyperPod cluster
+#' containing the nodes to reboot.
+#' @param NodeIds A list of EC2 instance IDs to reboot using soft recovery. You can
+#' specify between 1 and 25 instance IDs.
+#' 
+#' -   Either `NodeIds` or `NodeLogicalIds` must be provided (or both), but
+#'     at least one is required.
+#' 
+#' -   Each instance ID must follow the pattern `i-` followed by 17
+#'     hexadecimal characters (for example, `i-0123456789abcdef0`).
+#' @param NodeLogicalIds A list of logical node IDs to reboot using soft recovery. You can
+#' specify between 1 and 25 logical node IDs.
+#' 
+#' The `NodeLogicalId` is a unique identifier that persists throughout the
+#' node's lifecycle and can be used to track nodes that are still being
+#' provisioned and don't yet have an EC2 instance ID assigned.
+#' 
+#' -   This parameter is only supported for clusters using `Continuous` as
+#'     the `NodeProvisioningMode`. For clusters using the default
+#'     provisioning mode, use `NodeIds` instead.
+#' 
+#' -   Either `NodeIds` or `NodeLogicalIds` must be provided (or both), but
+#'     at least one is required.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_batch_reboot_cluster_nodes
+sagemaker_batch_reboot_cluster_nodes <- function(ClusterName, NodeIds = NULL, NodeLogicalIds = NULL) {
+  op <- new_operation(
+    name = "BatchRebootClusterNodes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$batch_reboot_cluster_nodes_input(ClusterName = ClusterName, NodeIds = NodeIds, NodeLogicalIds = NodeLogicalIds)
+  output <- .sagemaker$batch_reboot_cluster_nodes_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$batch_reboot_cluster_nodes <- sagemaker_batch_reboot_cluster_nodes
+
+#' Replaces specific nodes within a SageMaker HyperPod cluster with new
+#' hardware
+#'
+#' @description
+#' Replaces specific nodes within a SageMaker HyperPod cluster with new hardware. [`batch_replace_cluster_nodes`][sagemaker_batch_replace_cluster_nodes] terminates the specified instances and provisions new replacement instances with the same configuration but fresh hardware. The Amazon Machine Image (AMI) and instance configuration remain the same.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_batch_replace_cluster_nodes/](https://www.paws-r-sdk.com/docs/sagemaker_batch_replace_cluster_nodes/) for full documentation.
+#'
+#' @param ClusterName &#91;required&#93; The name or Amazon Resource Name (ARN) of the SageMaker HyperPod cluster
+#' containing the nodes to replace.
+#' @param NodeIds A list of EC2 instance IDs to replace with new hardware. You can specify
+#' between 1 and 25 instance IDs.
+#' 
+#' Replace operations destroy all instance volumes (root and secondary).
+#' Ensure you have backed up any important data before proceeding.
+#' 
+#' -   Either `NodeIds` or `NodeLogicalIds` must be provided (or both), but
+#'     at least one is required.
+#' 
+#' -   Each instance ID must follow the pattern `i-` followed by 17
+#'     hexadecimal characters (for example, `i-0123456789abcdef0`).
+#' 
+#' -   For SageMaker HyperPod clusters using the Slurm workload manager,
+#'     you cannot replace instances that are configured as Slurm controller
+#'     nodes.
+#' @param NodeLogicalIds A list of logical node IDs to replace with new hardware. You can specify
+#' between 1 and 25 logical node IDs.
+#' 
+#' The `NodeLogicalId` is a unique identifier that persists throughout the
+#' node's lifecycle and can be used to track nodes that are still being
+#' provisioned and don't yet have an EC2 instance ID assigned.
+#' 
+#' -   Replace operations destroy all instance volumes (root and
+#'     secondary). Ensure you have backed up any important data before
+#'     proceeding.
+#' 
+#' -   This parameter is only supported for clusters using `Continuous` as
+#'     the `NodeProvisioningMode`. For clusters using the default
+#'     provisioning mode, use `NodeIds` instead.
+#' 
+#' -   Either `NodeIds` or `NodeLogicalIds` must be provided (or both), but
+#'     at least one is required.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_batch_replace_cluster_nodes
+sagemaker_batch_replace_cluster_nodes <- function(ClusterName, NodeIds = NULL, NodeLogicalIds = NULL) {
+  op <- new_operation(
+    name = "BatchReplaceClusterNodes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$batch_replace_cluster_nodes_input(ClusterName = ClusterName, NodeIds = NodeIds, NodeLogicalIds = NodeLogicalIds)
+  output <- .sagemaker$batch_replace_cluster_nodes_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$batch_replace_cluster_nodes <- sagemaker_batch_replace_cluster_nodes
 
 #' Creates an action
 #'
@@ -591,15 +793,17 @@ sagemaker_create_auto_ml_job_v2 <- function(AutoMLJobName, AutoMLJobInputDataCon
 }
 .sagemaker$operations$create_auto_ml_job_v2 <- sagemaker_create_auto_ml_job_v2
 
-#' Creates a SageMaker HyperPod cluster
+#' Creates an Amazon SageMaker HyperPod cluster
 #'
 #' @description
-#' Creates a SageMaker HyperPod cluster. SageMaker HyperPod is a capability of SageMaker for creating and managing persistent clusters for developing large machine learning models, such as large language models (LLMs) and diffusion models. To learn more, see [Amazon SageMaker HyperPod](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod.html) in the *Amazon SageMaker Developer Guide*.
+#' Creates an Amazon SageMaker HyperPod cluster. SageMaker HyperPod is a capability of SageMaker for creating and managing persistent clusters for developing large machine learning models, such as large language models (LLMs) and diffusion models. To learn more, see [Amazon SageMaker HyperPod](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod.html) in the *Amazon SageMaker Developer Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_cluster/](https://www.paws-r-sdk.com/docs/sagemaker_create_cluster/) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The name for the new SageMaker HyperPod cluster.
-#' @param InstanceGroups &#91;required&#93; The instance groups to be created in the SageMaker HyperPod cluster.
+#' @param InstanceGroups The instance groups to be created in the SageMaker HyperPod cluster.
+#' @param RestrictedInstanceGroups The specialized instance groups for training models like Amazon Nova to
+#' be created in the SageMaker HyperPod cluster.
 #' @param VpcConfig Specifies the Amazon Virtual Private Cloud (VPC) that is associated with
 #' the Amazon SageMaker HyperPod cluster. You can control access to and
 #' from your resources by configuring your VPC. For more information, see
@@ -640,17 +844,40 @@ sagemaker_create_auto_ml_job_v2 <- function(AutoMLJobName, AutoMLJobInputDataCon
 #' Guide](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' @param Orchestrator The type of orchestrator to use for the SageMaker HyperPod cluster.
 #' Currently, the only supported value is `"eks"`, which is to use an
-#' Amazon Elastic Kubernetes Service (EKS) cluster as the orchestrator.
+#' Amazon Elastic Kubernetes Service cluster as the orchestrator.
 #' @param NodeRecovery The node recovery mode for the SageMaker HyperPod cluster. When set to
 #' `Automatic`, SageMaker HyperPod will automatically reboot or replace
 #' faulty nodes when issues are detected. When set to `None`, cluster
 #' administrators will need to manually manage any faulty cluster
 #' instances.
+#' @param TieredStorageConfig The configuration for managed tier checkpointing on the HyperPod
+#' cluster. When enabled, this feature uses a multi-tier storage approach
+#' for storing model checkpoints, providing faster checkpoint operations
+#' and improved fault tolerance across cluster nodes.
+#' @param NodeProvisioningMode The mode for provisioning nodes in the cluster. You can specify the
+#' following modes:
+#' 
+#' -   **Continuous**: Scaling behavior that enables 1) concurrent
+#'     operation execution within instance groups, 2) continuous retry
+#'     mechanisms for failed operations, 3) enhanced customer visibility
+#'     into cluster events through detailed event streams, 4) partial
+#'     provisioning capabilities. Your clusters and instance groups remain
+#'     `InService` while scaling. This mode is only supported for EKS
+#'     orchestrated clusters.
+#' @param ClusterRole The Amazon Resource Name (ARN) of the IAM role that HyperPod assumes to
+#' perform cluster autoscaling operations. This role must have permissions
+#' for `sagemaker:BatchAddClusterNodes` and
+#' `sagemaker:BatchDeleteClusterNodes`. This is only required when
+#' autoscaling is enabled and when HyperPod is performing autoscaling
+#' operations.
+#' @param AutoScaling The autoscaling configuration for the cluster. Enables automatic scaling
+#' of cluster nodes based on workload demand using a Karpenter-based
+#' system.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_cluster
-sagemaker_create_cluster <- function(ClusterName, InstanceGroups, VpcConfig = NULL, Tags = NULL, Orchestrator = NULL, NodeRecovery = NULL) {
+sagemaker_create_cluster <- function(ClusterName, InstanceGroups = NULL, RestrictedInstanceGroups = NULL, VpcConfig = NULL, Tags = NULL, Orchestrator = NULL, NodeRecovery = NULL, TieredStorageConfig = NULL, NodeProvisioningMode = NULL, ClusterRole = NULL, AutoScaling = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -659,7 +886,7 @@ sagemaker_create_cluster <- function(ClusterName, InstanceGroups, VpcConfig = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_cluster_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups, VpcConfig = VpcConfig, Tags = Tags, Orchestrator = Orchestrator, NodeRecovery = NodeRecovery)
+  input <- .sagemaker$create_cluster_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups, RestrictedInstanceGroups = RestrictedInstanceGroups, VpcConfig = VpcConfig, Tags = Tags, Orchestrator = Orchestrator, NodeRecovery = NodeRecovery, TieredStorageConfig = TieredStorageConfig, NodeProvisioningMode = NodeProvisioningMode, ClusterRole = ClusterRole, AutoScaling = AutoScaling)
   output <- .sagemaker$create_cluster_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -1002,9 +1229,17 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' [`create_user_profile`][sagemaker_create_user_profile] take precedence
 #' over those specified in [`create_domain`][sagemaker_create_domain].
 #' @param DomainSettings A collection of `Domain` settings.
-#' @param SubnetIds &#91;required&#93; The VPC subnets that the domain uses for communication.
-#' @param VpcId &#91;required&#93; The ID of the Amazon Virtual Private Cloud (VPC) that the domain uses
+#' @param SubnetIds The VPC subnets that the domain uses for communication.
+#' 
+#' The field is optional when the `AppNetworkAccessType` parameter is set
+#' to `PublicInternetOnly` for domains created from Amazon SageMaker
+#' Unified Studio.
+#' @param VpcId The ID of the Amazon Virtual Private Cloud (VPC) that the domain uses
 #' for communication.
+#' 
+#' The field is optional when the `AppNetworkAccessType` parameter is set
+#' to `PublicInternetOnly` for domains created from Amazon SageMaker
+#' Unified Studio.
 #' @param Tags Tags to associated with the Domain. Each tag consists of a key and an
 #' optional value. Tag keys must be unique per resource. Tags are
 #' searchable using the [`search`][sagemaker_search] API.
@@ -1035,7 +1270,7 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_domain
-sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, DomainSettings = NULL, SubnetIds, VpcId, Tags = NULL, AppNetworkAccessType = NULL, HomeEfsFileSystemKmsKeyId = NULL, KmsKeyId = NULL, AppSecurityGroupManagement = NULL, TagPropagation = NULL, DefaultSpaceSettings = NULL) {
+sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, DomainSettings = NULL, SubnetIds = NULL, VpcId = NULL, Tags = NULL, AppNetworkAccessType = NULL, HomeEfsFileSystemKmsKeyId = NULL, KmsKeyId = NULL, AppSecurityGroupManagement = NULL, TagPropagation = NULL, DefaultSpaceSettings = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
@@ -1288,11 +1523,12 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #' @param EnableNetworkIsolation Sets whether all model containers deployed to the endpoint are isolated.
 #' If they are, no inbound or outbound network calls can be made to or from
 #' the model containers.
+#' @param MetricsConfig The configuration parameters for utilization metrics.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_endpoint_config
-sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVariants, DataCaptureConfig = NULL, Tags = NULL, KmsKeyId = NULL, AsyncInferenceConfig = NULL, ExplainerConfig = NULL, ShadowProductionVariants = NULL, ExecutionRoleArn = NULL, VpcConfig = NULL, EnableNetworkIsolation = NULL) {
+sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVariants, DataCaptureConfig = NULL, Tags = NULL, KmsKeyId = NULL, AsyncInferenceConfig = NULL, ExplainerConfig = NULL, ShadowProductionVariants = NULL, ExecutionRoleArn = NULL, VpcConfig = NULL, EnableNetworkIsolation = NULL, MetricsConfig = NULL) {
   op <- new_operation(
     name = "CreateEndpointConfig",
     http_method = "POST",
@@ -1301,7 +1537,7 @@ sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVaria
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_endpoint_config_input(EndpointConfigName = EndpointConfigName, ProductionVariants = ProductionVariants, DataCaptureConfig = DataCaptureConfig, Tags = Tags, KmsKeyId = KmsKeyId, AsyncInferenceConfig = AsyncInferenceConfig, ExplainerConfig = ExplainerConfig, ShadowProductionVariants = ShadowProductionVariants, ExecutionRoleArn = ExecutionRoleArn, VpcConfig = VpcConfig, EnableNetworkIsolation = EnableNetworkIsolation)
+  input <- .sagemaker$create_endpoint_config_input(EndpointConfigName = EndpointConfigName, ProductionVariants = ProductionVariants, DataCaptureConfig = DataCaptureConfig, Tags = Tags, KmsKeyId = KmsKeyId, AsyncInferenceConfig = AsyncInferenceConfig, ExplainerConfig = ExplainerConfig, ShadowProductionVariants = ShadowProductionVariants, ExecutionRoleArn = ExecutionRoleArn, VpcConfig = VpcConfig, EnableNetworkIsolation = EnableNetworkIsolation, MetricsConfig = MetricsConfig)
   output <- .sagemaker$create_endpoint_config_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -1546,6 +1782,52 @@ sagemaker_create_hub <- function(HubName, HubDescription, HubDisplayName = NULL,
   return(response)
 }
 .sagemaker$operations$create_hub <- sagemaker_create_hub
+
+#' Creates presigned URLs for accessing hub content artifacts
+#'
+#' @description
+#' Creates presigned URLs for accessing hub content artifacts. This operation generates time-limited, secure URLs that allow direct download of model artifacts and associated files from Amazon SageMaker hub content, including gated models that require end-user license agreement acceptance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_hub_content_presigned_urls/](https://www.paws-r-sdk.com/docs/sagemaker_create_hub_content_presigned_urls/) for full documentation.
+#'
+#' @param HubName &#91;required&#93; The name or Amazon Resource Name (ARN) of the hub that contains the
+#' content. For public content, use `SageMakerPublicHub`.
+#' @param HubContentType &#91;required&#93; The type of hub content to access. Valid values include `Model`,
+#' `Notebook`, and `ModelReference`.
+#' @param HubContentName &#91;required&#93; The name of the hub content for which to generate presigned URLs. This
+#' identifies the specific model or content within the hub.
+#' @param HubContentVersion The version of the hub content. If not specified, the latest version is
+#' used.
+#' @param AccessConfig Configuration settings for accessing the hub content, including end-user
+#' license agreement acceptance for gated models and expected S3 URL
+#' validation.
+#' @param MaxResults The maximum number of presigned URLs to return in the response. Default
+#' value is 100. Large models may contain hundreds of files, requiring
+#' pagination to retrieve all URLs.
+#' @param NextToken A token for pagination. Use this token to retrieve the next set of
+#' presigned URLs when the response is truncated.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_hub_content_presigned_urls
+sagemaker_create_hub_content_presigned_urls <- function(HubName, HubContentType, HubContentName, HubContentVersion = NULL, AccessConfig = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "CreateHubContentPresignedUrls",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AuthorizedUrlConfigs"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$create_hub_content_presigned_urls_input(HubName = HubName, HubContentType = HubContentType, HubContentName = HubContentName, HubContentVersion = HubContentVersion, AccessConfig = AccessConfig, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .sagemaker$create_hub_content_presigned_urls_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_hub_content_presigned_urls <- sagemaker_create_hub_content_presigned_urls
 
 #' Create a hub content reference in order to add a model in the JumpStart
 #' public hub to a private hub
@@ -2051,16 +2333,14 @@ sagemaker_create_inference_recommendations_job <- function(JobName, JobType, Rol
 #' 
 #' -   The name can't end with "-metadata".
 #' 
-#' -   If you are using one of the following [built-in task
-#'     types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html),
-#'     the attribute name *must* end with "-ref". If the task type you are
-#'     using is not listed below, the attribute name *must not* end with
-#'     "-ref".
+#' -   If you are using one of the [built-in task
+#'     types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)
+#'     or one of the following, the attribute name *must* end with "-ref".
 #' 
-#'     -   Image semantic segmentation (`SemanticSegmentation)`, and
-#'         adjustment (`AdjustmentSemanticSegmentation`) and verification
-#'         (`VerificationSemanticSegmentation`) labeling jobs for this task
-#'         type.
+#'     -   Image semantic segmentation (`SemanticSegmentation)` and
+#'         adjustment (`AdjustmentSemanticSegmentation`) labeling jobs for
+#'         this task type. One exception is that verification
+#'         (`VerificationSemanticSegmentation`) *must not* end with -"ref".
 #' 
 #'     -   Video frame object detection (`VideoObjectDetection`), and
 #'         adjustment and verification (`AdjustmentVideoObjectDetection`)
@@ -2198,6 +2478,58 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
   return(response)
 }
 .sagemaker$operations$create_labeling_job <- sagemaker_create_labeling_job
+
+#' Creates an MLflow Tracking Server using a general purpose Amazon S3
+#' bucket as the artifact store
+#'
+#' @description
+#' Creates an MLflow Tracking Server using a general purpose Amazon S3 bucket as the artifact store.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_mlflow_app/](https://www.paws-r-sdk.com/docs/sagemaker_create_mlflow_app/) for full documentation.
+#'
+#' @param Name &#91;required&#93; A string identifying the MLflow app name. This string is not part of the
+#' tracking server ARN.
+#' @param ArtifactStoreUri &#91;required&#93; The S3 URI for a general purpose bucket to use as the MLflow App
+#' artifact store.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) for an IAM role in your account that the
+#' MLflow App uses to access the artifact store in Amazon S3. The role
+#' should have the `AmazonS3FullAccess` permission.
+#' @param ModelRegistrationMode Whether to enable or disable automatic registration of new MLflow models
+#' to the SageMaker Model Registry. To enable automatic model registration,
+#' set this value to `AutoModelRegistrationEnabled`. To disable automatic
+#' model registration, set this value to `AutoModelRegistrationDisabled`.
+#' If not specified, `AutomaticModelRegistration` defaults to
+#' `AutoModelRegistrationDisabled`.
+#' @param WeeklyMaintenanceWindowStart The day and time of the week in Coordinated Universal Time (UTC) 24-hour
+#' standard time that weekly maintenance updates are scheduled. For
+#' example: TUE:03:30.
+#' @param AccountDefaultStatus Indicates whether this MLflow app is the default for the entire account.
+#' @param DefaultDomainIdList List of SageMaker domain IDs for which this MLflow App is used as the
+#' default.
+#' @param Tags Tags consisting of key-value pairs used to manage metadata for the
+#' MLflow App.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_mlflow_app
+sagemaker_create_mlflow_app <- function(Name, ArtifactStoreUri, RoleArn, ModelRegistrationMode = NULL, WeeklyMaintenanceWindowStart = NULL, AccountDefaultStatus = NULL, DefaultDomainIdList = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateMlflowApp",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$create_mlflow_app_input(Name = Name, ArtifactStoreUri = ArtifactStoreUri, RoleArn = RoleArn, ModelRegistrationMode = ModelRegistrationMode, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart, AccountDefaultStatus = AccountDefaultStatus, DefaultDomainIdList = DefaultDomainIdList, Tags = Tags)
+  output <- .sagemaker$create_mlflow_app_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_mlflow_app <- sagemaker_create_mlflow_app
 
 #' Creates an MLflow Tracking Server using a general purpose Amazon S3
 #' bucket as the artifact store
@@ -2522,6 +2854,7 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' This parameter is required for versioned models, and does not apply to
 #' unversioned models.
 #' @param ModelPackageDescription A description of the model package.
+#' @param ModelPackageRegistrationType The package registration type of the model package input.
 #' @param InferenceSpecification Specifies details about inference jobs that you can run with models
 #' based on this model package, including the following information:
 #' 
@@ -2609,7 +2942,7 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_model_package
-sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackageGroupName = NULL, ModelPackageDescription = NULL, InferenceSpecification = NULL, ValidationSpecification = NULL, SourceAlgorithmSpecification = NULL, CertifyForMarketplace = NULL, Tags = NULL, ModelApprovalStatus = NULL, MetadataProperties = NULL, ModelMetrics = NULL, ClientToken = NULL, Domain = NULL, Task = NULL, SamplePayloadUrl = NULL, CustomerMetadataProperties = NULL, DriftCheckBaselines = NULL, AdditionalInferenceSpecifications = NULL, SkipModelValidation = NULL, SourceUri = NULL, SecurityConfig = NULL, ModelCard = NULL, ModelLifeCycle = NULL) {
+sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackageGroupName = NULL, ModelPackageDescription = NULL, ModelPackageRegistrationType = NULL, InferenceSpecification = NULL, ValidationSpecification = NULL, SourceAlgorithmSpecification = NULL, CertifyForMarketplace = NULL, Tags = NULL, ModelApprovalStatus = NULL, MetadataProperties = NULL, ModelMetrics = NULL, ClientToken = NULL, Domain = NULL, Task = NULL, SamplePayloadUrl = NULL, CustomerMetadataProperties = NULL, DriftCheckBaselines = NULL, AdditionalInferenceSpecifications = NULL, SkipModelValidation = NULL, SourceUri = NULL, SecurityConfig = NULL, ModelCard = NULL, ModelLifeCycle = NULL) {
   op <- new_operation(
     name = "CreateModelPackage",
     http_method = "POST",
@@ -2618,7 +2951,7 @@ sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackage
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_model_package_input(ModelPackageName = ModelPackageName, ModelPackageGroupName = ModelPackageGroupName, ModelPackageDescription = ModelPackageDescription, InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, SourceAlgorithmSpecification = SourceAlgorithmSpecification, CertifyForMarketplace = CertifyForMarketplace, Tags = Tags, ModelApprovalStatus = ModelApprovalStatus, MetadataProperties = MetadataProperties, ModelMetrics = ModelMetrics, ClientToken = ClientToken, Domain = Domain, Task = Task, SamplePayloadUrl = SamplePayloadUrl, CustomerMetadataProperties = CustomerMetadataProperties, DriftCheckBaselines = DriftCheckBaselines, AdditionalInferenceSpecifications = AdditionalInferenceSpecifications, SkipModelValidation = SkipModelValidation, SourceUri = SourceUri, SecurityConfig = SecurityConfig, ModelCard = ModelCard, ModelLifeCycle = ModelLifeCycle)
+  input <- .sagemaker$create_model_package_input(ModelPackageName = ModelPackageName, ModelPackageGroupName = ModelPackageGroupName, ModelPackageDescription = ModelPackageDescription, ModelPackageRegistrationType = ModelPackageRegistrationType, InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, SourceAlgorithmSpecification = SourceAlgorithmSpecification, CertifyForMarketplace = CertifyForMarketplace, Tags = Tags, ModelApprovalStatus = ModelApprovalStatus, MetadataProperties = MetadataProperties, ModelMetrics = ModelMetrics, ClientToken = ClientToken, Domain = Domain, Task = Task, SamplePayloadUrl = SamplePayloadUrl, CustomerMetadataProperties = CustomerMetadataProperties, DriftCheckBaselines = DriftCheckBaselines, AdditionalInferenceSpecifications = AdditionalInferenceSpecifications, SkipModelValidation = SkipModelValidation, SourceUri = SourceUri, SecurityConfig = SecurityConfig, ModelCard = ModelCard, ModelLifeCycle = ModelLifeCycle)
   output <- .sagemaker$create_model_package_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -2760,6 +3093,10 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' connectivity from your ML compute instance.
 #' @param SecurityGroupIds The VPC security group IDs, in the form sg-xxxxxxxx. The security groups
 #' must be for the same VPC as specified in the subnet.
+#' @param IpAddressType The IP address type for the notebook instance. Specify `ipv4` for
+#' IPv4-only connectivity or `dualstack` for both IPv4 and IPv6
+#' connectivity. When you specify `dualstack`, the subnet must support IPv6
+#' CIDR blocks. If not specified, defaults to `ipv4`.
 #' @param RoleArn &#91;required&#93; When you send any requests to Amazon Web Services resources from the
 #' notebook instance, SageMaker AI assumes this role to perform tasks on
 #' your behalf. You must grant this role necessary permissions so SageMaker
@@ -2830,12 +3167,13 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' with a notebook instance always run with root access even if you disable
 #' root access for users.
 #' @param PlatformIdentifier The platform identifier of the notebook instance runtime environment.
+#' The default value is `notebook-al2-v2`.
 #' @param InstanceMetadataServiceConfiguration Information on the IMDS configuration of the notebook instance
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_notebook_instance
-sagemaker_create_notebook_instance <- function(NotebookInstanceName, InstanceType, SubnetId = NULL, SecurityGroupIds = NULL, RoleArn, KmsKeyId = NULL, Tags = NULL, LifecycleConfigName = NULL, DirectInternetAccess = NULL, VolumeSizeInGB = NULL, AcceleratorTypes = NULL, DefaultCodeRepository = NULL, AdditionalCodeRepositories = NULL, RootAccess = NULL, PlatformIdentifier = NULL, InstanceMetadataServiceConfiguration = NULL) {
+sagemaker_create_notebook_instance <- function(NotebookInstanceName, InstanceType, SubnetId = NULL, SecurityGroupIds = NULL, IpAddressType = NULL, RoleArn, KmsKeyId = NULL, Tags = NULL, LifecycleConfigName = NULL, DirectInternetAccess = NULL, VolumeSizeInGB = NULL, AcceleratorTypes = NULL, DefaultCodeRepository = NULL, AdditionalCodeRepositories = NULL, RootAccess = NULL, PlatformIdentifier = NULL, InstanceMetadataServiceConfiguration = NULL) {
   op <- new_operation(
     name = "CreateNotebookInstance",
     http_method = "POST",
@@ -2844,7 +3182,7 @@ sagemaker_create_notebook_instance <- function(NotebookInstanceName, InstanceTyp
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_notebook_instance_input(NotebookInstanceName = NotebookInstanceName, InstanceType = InstanceType, SubnetId = SubnetId, SecurityGroupIds = SecurityGroupIds, RoleArn = RoleArn, KmsKeyId = KmsKeyId, Tags = Tags, LifecycleConfigName = LifecycleConfigName, DirectInternetAccess = DirectInternetAccess, VolumeSizeInGB = VolumeSizeInGB, AcceleratorTypes = AcceleratorTypes, DefaultCodeRepository = DefaultCodeRepository, AdditionalCodeRepositories = AdditionalCodeRepositories, RootAccess = RootAccess, PlatformIdentifier = PlatformIdentifier, InstanceMetadataServiceConfiguration = InstanceMetadataServiceConfiguration)
+  input <- .sagemaker$create_notebook_instance_input(NotebookInstanceName = NotebookInstanceName, InstanceType = InstanceType, SubnetId = SubnetId, SecurityGroupIds = SecurityGroupIds, IpAddressType = IpAddressType, RoleArn = RoleArn, KmsKeyId = KmsKeyId, Tags = Tags, LifecycleConfigName = LifecycleConfigName, DirectInternetAccess = DirectInternetAccess, VolumeSizeInGB = VolumeSizeInGB, AcceleratorTypes = AcceleratorTypes, DefaultCodeRepository = DefaultCodeRepository, AdditionalCodeRepositories = AdditionalCodeRepositories, RootAccess = RootAccess, PlatformIdentifier = PlatformIdentifier, InstanceMetadataServiceConfiguration = InstanceMetadataServiceConfiguration)
   output <- .sagemaker$create_notebook_instance_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -2925,6 +3263,7 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' @param ModelSource &#91;required&#93; The location of the source model to optimize with an optimization job.
 #' @param DeploymentInstanceType &#91;required&#93; The type of instance that hosts the optimized model that you create with
 #' the optimization job.
+#' @param MaxInstanceCount The maximum number of instances to use for the optimization job.
 #' @param OptimizationEnvironment The environment variables to set in the model container.
 #' @param OptimizationConfigs &#91;required&#93; Settings for each of the optimization techniques that the job applies.
 #' @param OutputConfig &#91;required&#93; Details for where to store the optimized model that you create with the
@@ -2939,7 +3278,7 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_optimization_job
-sagemaker_create_optimization_job <- function(OptimizationJobName, RoleArn, ModelSource, DeploymentInstanceType, OptimizationEnvironment = NULL, OptimizationConfigs, OutputConfig, StoppingCondition, Tags = NULL, VpcConfig = NULL) {
+sagemaker_create_optimization_job <- function(OptimizationJobName, RoleArn, ModelSource, DeploymentInstanceType, MaxInstanceCount = NULL, OptimizationEnvironment = NULL, OptimizationConfigs, OutputConfig, StoppingCondition, Tags = NULL, VpcConfig = NULL) {
   op <- new_operation(
     name = "CreateOptimizationJob",
     http_method = "POST",
@@ -2948,7 +3287,7 @@ sagemaker_create_optimization_job <- function(OptimizationJobName, RoleArn, Mode
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_optimization_job_input(OptimizationJobName = OptimizationJobName, RoleArn = RoleArn, ModelSource = ModelSource, DeploymentInstanceType = DeploymentInstanceType, OptimizationEnvironment = OptimizationEnvironment, OptimizationConfigs = OptimizationConfigs, OutputConfig = OutputConfig, StoppingCondition = StoppingCondition, Tags = Tags, VpcConfig = VpcConfig)
+  input <- .sagemaker$create_optimization_job_input(OptimizationJobName = OptimizationJobName, RoleArn = RoleArn, ModelSource = ModelSource, DeploymentInstanceType = DeploymentInstanceType, MaxInstanceCount = MaxInstanceCount, OptimizationEnvironment = OptimizationEnvironment, OptimizationConfigs = OptimizationConfigs, OutputConfig = OutputConfig, StoppingCondition = StoppingCondition, Tags = Tags, VpcConfig = VpcConfig)
   output <- .sagemaker$create_optimization_job_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -2982,6 +3321,9 @@ sagemaker_create_optimization_job <- function(OptimizationJobName, RoleArn, Mode
 #' @param EnableIamSessionBasedIdentity When set to `TRUE`, the SageMaker Partner AI App sets the Amazon Web
 #' Services IAM session name or the authenticated IAM user as the identity
 #' of the SageMaker Partner AI App user.
+#' @param EnableAutoMinorVersionUpgrade When set to `TRUE`, the SageMaker Partner AI App is automatically
+#' upgraded to the latest minor version during the next scheduled
+#' maintenance window, if one is available. Default is `FALSE`.
 #' @param ClientToken A unique token that guarantees that the call to this API is idempotent.
 #' @param Tags Each tag consists of a key and an optional value. Tag keys must be
 #' unique per resource.
@@ -2989,7 +3331,7 @@ sagemaker_create_optimization_job <- function(OptimizationJobName, RoleArn, Mode
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_partner_app
-sagemaker_create_partner_app <- function(Name, Type, ExecutionRoleArn, KmsKeyId = NULL, MaintenanceConfig = NULL, Tier, ApplicationConfig = NULL, AuthType, EnableIamSessionBasedIdentity = NULL, ClientToken = NULL, Tags = NULL) {
+sagemaker_create_partner_app <- function(Name, Type, ExecutionRoleArn, KmsKeyId = NULL, MaintenanceConfig = NULL, Tier, ApplicationConfig = NULL, AuthType, EnableIamSessionBasedIdentity = NULL, EnableAutoMinorVersionUpgrade = NULL, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePartnerApp",
     http_method = "POST",
@@ -2998,7 +3340,7 @@ sagemaker_create_partner_app <- function(Name, Type, ExecutionRoleArn, KmsKeyId 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_partner_app_input(Name = Name, Type = Type, ExecutionRoleArn = ExecutionRoleArn, KmsKeyId = KmsKeyId, MaintenanceConfig = MaintenanceConfig, Tier = Tier, ApplicationConfig = ApplicationConfig, AuthType = AuthType, EnableIamSessionBasedIdentity = EnableIamSessionBasedIdentity, ClientToken = ClientToken, Tags = Tags)
+  input <- .sagemaker$create_partner_app_input(Name = Name, Type = Type, ExecutionRoleArn = ExecutionRoleArn, KmsKeyId = KmsKeyId, MaintenanceConfig = MaintenanceConfig, Tier = Tier, ApplicationConfig = ApplicationConfig, AuthType = AuthType, EnableIamSessionBasedIdentity = EnableIamSessionBasedIdentity, EnableAutoMinorVersionUpgrade = EnableAutoMinorVersionUpgrade, ClientToken = ClientToken, Tags = Tags)
   output <- .sagemaker$create_partner_app_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -3148,6 +3490,42 @@ sagemaker_create_presigned_domain_url <- function(DomainId, UserProfileName, Ses
   return(response)
 }
 .sagemaker$operations$create_presigned_domain_url <- sagemaker_create_presigned_domain_url
+
+#' Returns a presigned URL that you can use to connect to the MLflow UI
+#' attached to your MLflow App
+#'
+#' @description
+#' Returns a presigned URL that you can use to connect to the MLflow UI attached to your MLflow App. For more information, see [Launch the MLflow UI using a presigned URL](https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow-launch-ui.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_presigned_mlflow_app_url/](https://www.paws-r-sdk.com/docs/sagemaker_create_presigned_mlflow_app_url/) for full documentation.
+#'
+#' @param Arn &#91;required&#93; The ARN of the MLflow App to connect to your MLflow UI.
+#' @param ExpiresInSeconds The duration in seconds that your presigned URL is valid. The presigned
+#' URL can be used only once.
+#' @param SessionExpirationDurationInSeconds The duration in seconds that your presigned URL is valid. The presigned
+#' URL can be used only once.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_presigned_mlflow_app_url
+sagemaker_create_presigned_mlflow_app_url <- function(Arn, ExpiresInSeconds = NULL, SessionExpirationDurationInSeconds = NULL) {
+  op <- new_operation(
+    name = "CreatePresignedMlflowAppUrl",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$create_presigned_mlflow_app_url_input(Arn = Arn, ExpiresInSeconds = ExpiresInSeconds, SessionExpirationDurationInSeconds = SessionExpirationDurationInSeconds)
+  output <- .sagemaker$create_presigned_mlflow_app_url_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_presigned_mlflow_app_url <- sagemaker_create_presigned_mlflow_app_url
 
 #' Returns a presigned URL that you can use to connect to the MLflow UI
 #' attached to your tracking server
@@ -3306,11 +3684,13 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #' [Tagging Amazon Web Services
 #' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
+#' @param TemplateProviders An array of template provider configurations for creating infrastructure
+#' resources for the project.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_project
-sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, ServiceCatalogProvisioningDetails = NULL, Tags = NULL) {
+sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, ServiceCatalogProvisioningDetails = NULL, Tags = NULL, TemplateProviders = NULL) {
   op <- new_operation(
     name = "CreateProject",
     http_method = "POST",
@@ -3319,7 +3699,7 @@ sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, Ser
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_project_input(ProjectName = ProjectName, ProjectDescription = ProjectDescription, ServiceCatalogProvisioningDetails = ServiceCatalogProvisioningDetails, Tags = Tags)
+  input <- .sagemaker$create_project_input(ProjectName = ProjectName, ProjectDescription = ProjectDescription, ServiceCatalogProvisioningDetails = ServiceCatalogProvisioningDetails, Tags = Tags, TemplateProviders = TemplateProviders)
   output <- .sagemaker$create_project_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -3432,7 +3812,7 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' exposure, unauthorized access, or compromise of your sensitive data if
 #' caused by any security-sensitive information included in the request
 #' hyperparameter variable or plain text fields.
-#' @param AlgorithmSpecification &#91;required&#93; The registry path of the Docker image that contains the training
+#' @param AlgorithmSpecification The registry path of the Docker image that contains the training
 #' algorithm and algorithm-specific metadata, including the input mode. For
 #' more information about algorithms provided by SageMaker, see
 #' [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
@@ -3472,7 +3852,7 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' training job.
 #' @param OutputDataConfig &#91;required&#93; Specifies the path to the S3 location where you want to store model
 #' artifacts. SageMaker creates subfolders for the artifacts.
-#' @param ResourceConfig &#91;required&#93; The resources, including the ML compute instances and ML storage
+#' @param ResourceConfig The resources, including the ML compute instances and ML storage
 #' volumes, to use for model training.
 #' 
 #' ML storage volumes store model artifacts and incremental states.
@@ -3488,7 +3868,7 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' the VPC. For more information, see [Protect Training Jobs by Using an
 #' Amazon Virtual Private
 #' Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
-#' @param StoppingCondition &#91;required&#93; Specifies a limit to how long a model training job can run. It also
+#' @param StoppingCondition Specifies a limit to how long a model training job can run. It also
 #' specifies how long a managed Spot training job has to complete. When the
 #' job reaches the time limit, SageMaker ends the training job. Use this
 #' API to cap model training costs.
@@ -3562,11 +3942,14 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' for the training job.
 #' @param SessionChainingConfig Contains information about attribute-based access control (ABAC) for the
 #' training job.
+#' @param ServerlessJobConfig The configuration for serverless training jobs.
+#' @param MlflowConfig The MLflow configuration using SageMaker managed MLflow.
+#' @param ModelPackageConfig The configuration for the model package.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_training_job
-sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NULL, AlgorithmSpecification, RoleArn, InputDataConfig = NULL, OutputDataConfig, ResourceConfig, VpcConfig = NULL, StoppingCondition, Tags = NULL, EnableNetworkIsolation = NULL, EnableInterContainerTrafficEncryption = NULL, EnableManagedSpotTraining = NULL, CheckpointConfig = NULL, DebugHookConfig = NULL, DebugRuleConfigurations = NULL, TensorBoardOutputConfig = NULL, ExperimentConfig = NULL, ProfilerConfig = NULL, ProfilerRuleConfigurations = NULL, Environment = NULL, RetryStrategy = NULL, RemoteDebugConfig = NULL, InfraCheckConfig = NULL, SessionChainingConfig = NULL) {
+sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NULL, AlgorithmSpecification = NULL, RoleArn, InputDataConfig = NULL, OutputDataConfig, ResourceConfig = NULL, VpcConfig = NULL, StoppingCondition = NULL, Tags = NULL, EnableNetworkIsolation = NULL, EnableInterContainerTrafficEncryption = NULL, EnableManagedSpotTraining = NULL, CheckpointConfig = NULL, DebugHookConfig = NULL, DebugRuleConfigurations = NULL, TensorBoardOutputConfig = NULL, ExperimentConfig = NULL, ProfilerConfig = NULL, ProfilerRuleConfigurations = NULL, Environment = NULL, RetryStrategy = NULL, RemoteDebugConfig = NULL, InfraCheckConfig = NULL, SessionChainingConfig = NULL, ServerlessJobConfig = NULL, MlflowConfig = NULL, ModelPackageConfig = NULL) {
   op <- new_operation(
     name = "CreateTrainingJob",
     http_method = "POST",
@@ -3575,7 +3958,7 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_training_job_input(TrainingJobName = TrainingJobName, HyperParameters = HyperParameters, AlgorithmSpecification = AlgorithmSpecification, RoleArn = RoleArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ResourceConfig = ResourceConfig, VpcConfig = VpcConfig, StoppingCondition = StoppingCondition, Tags = Tags, EnableNetworkIsolation = EnableNetworkIsolation, EnableInterContainerTrafficEncryption = EnableInterContainerTrafficEncryption, EnableManagedSpotTraining = EnableManagedSpotTraining, CheckpointConfig = CheckpointConfig, DebugHookConfig = DebugHookConfig, DebugRuleConfigurations = DebugRuleConfigurations, TensorBoardOutputConfig = TensorBoardOutputConfig, ExperimentConfig = ExperimentConfig, ProfilerConfig = ProfilerConfig, ProfilerRuleConfigurations = ProfilerRuleConfigurations, Environment = Environment, RetryStrategy = RetryStrategy, RemoteDebugConfig = RemoteDebugConfig, InfraCheckConfig = InfraCheckConfig, SessionChainingConfig = SessionChainingConfig)
+  input <- .sagemaker$create_training_job_input(TrainingJobName = TrainingJobName, HyperParameters = HyperParameters, AlgorithmSpecification = AlgorithmSpecification, RoleArn = RoleArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ResourceConfig = ResourceConfig, VpcConfig = VpcConfig, StoppingCondition = StoppingCondition, Tags = Tags, EnableNetworkIsolation = EnableNetworkIsolation, EnableInterContainerTrafficEncryption = EnableInterContainerTrafficEncryption, EnableManagedSpotTraining = EnableManagedSpotTraining, CheckpointConfig = CheckpointConfig, DebugHookConfig = DebugHookConfig, DebugRuleConfigurations = DebugRuleConfigurations, TensorBoardOutputConfig = TensorBoardOutputConfig, ExperimentConfig = ExperimentConfig, ProfilerConfig = ProfilerConfig, ProfilerRuleConfigurations = ProfilerRuleConfigurations, Environment = Environment, RetryStrategy = RetryStrategy, RemoteDebugConfig = RemoteDebugConfig, InfraCheckConfig = InfraCheckConfig, SessionChainingConfig = SessionChainingConfig, ServerlessJobConfig = ServerlessJobConfig, MlflowConfig = MlflowConfig, ModelPackageConfig = ModelPackageConfig)
   output <- .sagemaker$create_training_job_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -3595,12 +3978,14 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' @param TrainingPlanName &#91;required&#93; The name of the training plan to create.
 #' @param TrainingPlanOfferingId &#91;required&#93; The unique identifier of the training plan offering to use for creating
 #' this plan.
+#' @param SpareInstanceCountPerUltraServer Number of spare instances to reserve per UltraServer for enhanced
+#' resiliency. Default is 1.
 #' @param Tags An array of key-value pairs to apply to this training plan.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_training_plan
-sagemaker_create_training_plan <- function(TrainingPlanName, TrainingPlanOfferingId, Tags = NULL) {
+sagemaker_create_training_plan <- function(TrainingPlanName, TrainingPlanOfferingId, SpareInstanceCountPerUltraServer = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTrainingPlan",
     http_method = "POST",
@@ -3609,7 +3994,7 @@ sagemaker_create_training_plan <- function(TrainingPlanName, TrainingPlanOfferin
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_training_plan_input(TrainingPlanName = TrainingPlanName, TrainingPlanOfferingId = TrainingPlanOfferingId, Tags = Tags)
+  input <- .sagemaker$create_training_plan_input(TrainingPlanName = TrainingPlanName, TrainingPlanOfferingId = TrainingPlanOfferingId, SpareInstanceCountPerUltraServer = SpareInstanceCountPerUltraServer, Tags = Tags)
   output <- .sagemaker$create_training_plan_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -3878,11 +4263,13 @@ sagemaker_create_user_profile <- function(DomainId, UserProfileName, SingleSignO
 #' and organize our workforce. Each tag consists of a key and a value, both
 #' of which you define.
 #' @param WorkforceVpcConfig Use this parameter to configure a workforce using VPC.
+#' @param IpAddressType Use this parameter to specify whether you want `IPv4` only or
+#' `dualstack` (`IPv4` and `IPv6`) to support your labeling workforce.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_workforce
-sagemaker_create_workforce <- function(CognitoConfig = NULL, OidcConfig = NULL, SourceIpConfig = NULL, WorkforceName, Tags = NULL, WorkforceVpcConfig = NULL) {
+sagemaker_create_workforce <- function(CognitoConfig = NULL, OidcConfig = NULL, SourceIpConfig = NULL, WorkforceName, Tags = NULL, WorkforceVpcConfig = NULL, IpAddressType = NULL) {
   op <- new_operation(
     name = "CreateWorkforce",
     http_method = "POST",
@@ -3891,7 +4278,7 @@ sagemaker_create_workforce <- function(CognitoConfig = NULL, OidcConfig = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_workforce_input(CognitoConfig = CognitoConfig, OidcConfig = OidcConfig, SourceIpConfig = SourceIpConfig, WorkforceName = WorkforceName, Tags = Tags, WorkforceVpcConfig = WorkforceVpcConfig)
+  input <- .sagemaker$create_workforce_input(CognitoConfig = CognitoConfig, OidcConfig = OidcConfig, SourceIpConfig = SourceIpConfig, WorkforceName = WorkforceName, Tags = Tags, WorkforceVpcConfig = WorkforceVpcConfig, IpAddressType = IpAddressType)
   output <- .sagemaker$create_workforce_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -3941,7 +4328,7 @@ sagemaker_create_workforce <- function(CognitoConfig = NULL, OidcConfig = NULL, 
 #' @param Tags An array of key-value pairs.
 #' 
 #' For more information, see [Resource
-#' Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)
+#' Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-properties-resource-tags.html)
 #' and [Using Cost Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 #' in the *Amazon Web Services Billing and Cost Management User Guide*.
@@ -4959,6 +5346,37 @@ sagemaker_delete_inference_experiment <- function(Name) {
 }
 .sagemaker$operations$delete_inference_experiment <- sagemaker_delete_inference_experiment
 
+#' Deletes an MLflow App
+#'
+#' @description
+#' Deletes an MLflow App.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_mlflow_app/](https://www.paws-r-sdk.com/docs/sagemaker_delete_mlflow_app/) for full documentation.
+#'
+#' @param Arn &#91;required&#93; The ARN of the MLflow App to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_mlflow_app
+sagemaker_delete_mlflow_app <- function(Arn) {
+  op <- new_operation(
+    name = "DeleteMlflowApp",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$delete_mlflow_app_input(Arn = Arn)
+  output <- .sagemaker$delete_mlflow_app_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_mlflow_app <- sagemaker_delete_mlflow_app
+
 #' Deletes an MLflow Tracking Server
 #'
 #' @description
@@ -5431,6 +5849,37 @@ sagemaker_delete_pipeline <- function(PipelineName, ClientRequestToken) {
 }
 .sagemaker$operations$delete_pipeline <- sagemaker_delete_pipeline
 
+#' Deletes a processing job
+#'
+#' @description
+#' Deletes a processing job. After Amazon SageMaker deletes a processing job, all of the metadata for the processing job is lost. You can delete only processing jobs that are in a terminal state (`Stopped`, `Failed`, or `Completed`). You cannot delete a job that is in the `InProgress` or `Stopping` state. After deleting the job, you can reuse its name to create another processing job.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_processing_job/](https://www.paws-r-sdk.com/docs/sagemaker_delete_processing_job/) for full documentation.
+#'
+#' @param ProcessingJobName &#91;required&#93; The name of the processing job to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_processing_job
+sagemaker_delete_processing_job <- function(ProcessingJobName) {
+  op <- new_operation(
+    name = "DeleteProcessingJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$delete_processing_job_input(ProcessingJobName = ProcessingJobName)
+  output <- .sagemaker$delete_processing_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_processing_job <- sagemaker_delete_processing_job
+
 #' Delete the specified project
 #'
 #' @description
@@ -5558,6 +6007,37 @@ sagemaker_delete_tags <- function(ResourceArn, TagKeys) {
   return(response)
 }
 .sagemaker$operations$delete_tags <- sagemaker_delete_tags
+
+#' Deletes a training job
+#'
+#' @description
+#' Deletes a training job. After SageMaker deletes a training job, all of the metadata for the training job is lost. You can delete only training jobs that are in a terminal state (`Stopped`, `Failed`, or `Completed`) and don't retain an `Available` [managed warm pool](https://docs.aws.amazon.com/sagemaker/latest/dg/train-warm-pools.html). You cannot delete a job that is in the `InProgress` or `Stopping` state. After deleting the job, you can reuse its name to create another training job.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_training_job/](https://www.paws-r-sdk.com/docs/sagemaker_delete_training_job/) for full documentation.
+#'
+#' @param TrainingJobName &#91;required&#93; The name of the training job to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_training_job
+sagemaker_delete_training_job <- function(TrainingJobName) {
+  op <- new_operation(
+    name = "DeleteTrainingJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$delete_training_job_input(TrainingJobName = TrainingJobName)
+  output <- .sagemaker$delete_training_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_training_job <- sagemaker_delete_training_job
 
 #' Deletes the specified trial
 #'
@@ -6003,6 +6483,42 @@ sagemaker_describe_cluster <- function(ClusterName) {
 }
 .sagemaker$operations$describe_cluster <- sagemaker_describe_cluster
 
+#' Retrieves detailed information about a specific event for a given
+#' HyperPod cluster
+#'
+#' @description
+#' Retrieves detailed information about a specific event for a given HyperPod cluster. This functionality is only supported when the `NodeProvisioningMode` is set to `Continuous`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_cluster_event/](https://www.paws-r-sdk.com/docs/sagemaker_describe_cluster_event/) for full documentation.
+#'
+#' @param EventId &#91;required&#93; The unique identifier (UUID) of the event to describe. This ID can be
+#' obtained from the [`list_cluster_events`][sagemaker_list_cluster_events]
+#' operation.
+#' @param ClusterName &#91;required&#93; The name or Amazon Resource Name (ARN) of the HyperPod cluster
+#' associated with the event.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_cluster_event
+sagemaker_describe_cluster_event <- function(EventId, ClusterName) {
+  op <- new_operation(
+    name = "DescribeClusterEvent",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$describe_cluster_event_input(EventId = EventId, ClusterName = ClusterName)
+  output <- .sagemaker$describe_cluster_event_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_cluster_event <- sagemaker_describe_cluster_event
+
 #' Retrieves information of a node (also called a instance interchangeably)
 #' of a SageMaker HyperPod cluster
 #'
@@ -6013,12 +6529,16 @@ sagemaker_describe_cluster <- function(ClusterName) {
 #'
 #' @param ClusterName &#91;required&#93; The string name or the Amazon Resource Name (ARN) of the SageMaker
 #' HyperPod cluster in which the node is.
-#' @param NodeId &#91;required&#93; The ID of the SageMaker HyperPod cluster node.
+#' @param NodeId The ID of the SageMaker HyperPod cluster node.
+#' @param NodeLogicalId The logical identifier of the node to describe. You can specify either
+#' `NodeLogicalId` or `InstanceId`, but not both. `NodeLogicalId` can be
+#' used to describe nodes that are still being provisioned and don't yet
+#' have an `InstanceId` assigned.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_cluster_node
-sagemaker_describe_cluster_node <- function(ClusterName, NodeId) {
+sagemaker_describe_cluster_node <- function(ClusterName, NodeId = NULL, NodeLogicalId = NULL) {
   op <- new_operation(
     name = "DescribeClusterNode",
     http_method = "POST",
@@ -6027,7 +6547,7 @@ sagemaker_describe_cluster_node <- function(ClusterName, NodeId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$describe_cluster_node_input(ClusterName = ClusterName, NodeId = NodeId)
+  input <- .sagemaker$describe_cluster_node_input(ClusterName = ClusterName, NodeId = NodeId, NodeLogicalId = NodeLogicalId)
   output <- .sagemaker$describe_cluster_node_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -6928,6 +7448,37 @@ sagemaker_describe_lineage_group <- function(LineageGroupName) {
 }
 .sagemaker$operations$describe_lineage_group <- sagemaker_describe_lineage_group
 
+#' Returns information about an MLflow App
+#'
+#' @description
+#' Returns information about an MLflow App.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_mlflow_app/](https://www.paws-r-sdk.com/docs/sagemaker_describe_mlflow_app/) for full documentation.
+#'
+#' @param Arn &#91;required&#93; The ARN of the MLflow App for which to get information.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_mlflow_app
+sagemaker_describe_mlflow_app <- function(Arn) {
+  op <- new_operation(
+    name = "DescribeMlflowApp",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$describe_mlflow_app_input(Arn = Arn)
+  output <- .sagemaker$describe_mlflow_app_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_mlflow_app <- sagemaker_describe_mlflow_app
+
 #' Returns information about an MLflow Tracking Server
 #'
 #' @description
@@ -7350,11 +7901,13 @@ sagemaker_describe_optimization_job <- function(OptimizationJobName) {
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_partner_app/](https://www.paws-r-sdk.com/docs/sagemaker_describe_partner_app/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN of the SageMaker Partner AI App to describe.
+#' @param IncludeAvailableUpgrade When set to `TRUE`, the response includes available upgrade information
+#' for the SageMaker Partner AI App. Default is `FALSE`.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_partner_app
-sagemaker_describe_partner_app <- function(Arn) {
+sagemaker_describe_partner_app <- function(Arn, IncludeAvailableUpgrade = NULL) {
   op <- new_operation(
     name = "DescribePartnerApp",
     http_method = "POST",
@@ -7363,7 +7916,7 @@ sagemaker_describe_partner_app <- function(Arn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$describe_partner_app_input(Arn = Arn)
+  input <- .sagemaker$describe_partner_app_input(Arn = Arn, IncludeAvailableUpgrade = IncludeAvailableUpgrade)
   output <- .sagemaker$describe_partner_app_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -7381,11 +7934,12 @@ sagemaker_describe_partner_app <- function(Arn) {
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_pipeline/](https://www.paws-r-sdk.com/docs/sagemaker_describe_pipeline/) for full documentation.
 #'
 #' @param PipelineName &#91;required&#93; The name or Amazon Resource Name (ARN) of the pipeline to describe.
+#' @param PipelineVersionId The ID of the pipeline version to describe.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_pipeline
-sagemaker_describe_pipeline <- function(PipelineName) {
+sagemaker_describe_pipeline <- function(PipelineName, PipelineVersionId = NULL) {
   op <- new_operation(
     name = "DescribePipeline",
     http_method = "POST",
@@ -7394,7 +7948,7 @@ sagemaker_describe_pipeline <- function(PipelineName) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$describe_pipeline_input(PipelineName = PipelineName)
+  input <- .sagemaker$describe_pipeline_input(PipelineName = PipelineName, PipelineVersionId = PipelineVersionId)
   output <- .sagemaker$describe_pipeline_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -7528,6 +8082,37 @@ sagemaker_describe_project <- function(ProjectName) {
   return(response)
 }
 .sagemaker$operations$describe_project <- sagemaker_describe_project
+
+#' Retrieves details about a reserved capacity
+#'
+#' @description
+#' Retrieves details about a reserved capacity.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_reserved_capacity/](https://www.paws-r-sdk.com/docs/sagemaker_describe_reserved_capacity/) for full documentation.
+#'
+#' @param ReservedCapacityArn &#91;required&#93; ARN of the reserved capacity to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_reserved_capacity
+sagemaker_describe_reserved_capacity <- function(ReservedCapacityArn) {
+  op <- new_operation(
+    name = "DescribeReservedCapacity",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$describe_reserved_capacity_input(ReservedCapacityArn = ReservedCapacityArn)
+  output <- .sagemaker$describe_reserved_capacity_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_reserved_capacity <- sagemaker_describe_reserved_capacity
 
 #' Describes the space
 #'
@@ -7876,6 +8461,44 @@ sagemaker_describe_workteam <- function(WorkteamName) {
   return(response)
 }
 .sagemaker$operations$describe_workteam <- sagemaker_describe_workteam
+
+#' Detaches your Amazon Elastic Block Store (Amazon EBS) volume from a node
+#' in your EKS orchestrated SageMaker HyperPod cluster
+#'
+#' @description
+#' Detaches your Amazon Elastic Block Store (Amazon EBS) volume from a node in your EKS orchestrated SageMaker HyperPod cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_detach_cluster_node_volume/](https://www.paws-r-sdk.com/docs/sagemaker_detach_cluster_node_volume/) for full documentation.
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of your SageMaker HyperPod cluster
+#' containing the target node. Your cluster must use EKS as the
+#' orchestration and be in the `InService` state.
+#' @param NodeId &#91;required&#93; The unique identifier of the cluster node from which you want to detach
+#' the volume.
+#' @param VolumeId &#91;required&#93; The unique identifier of your EBS volume that you want to detach. Your
+#' volume must be currently attached to the specified node.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_detach_cluster_node_volume
+sagemaker_detach_cluster_node_volume <- function(ClusterArn, NodeId, VolumeId) {
+  op <- new_operation(
+    name = "DetachClusterNodeVolume",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$detach_cluster_node_volume_input(ClusterArn = ClusterArn, NodeId = NodeId, VolumeId = VolumeId)
+  output <- .sagemaker$detach_cluster_node_volume_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$detach_cluster_node_volume <- sagemaker_detach_cluster_node_volume
 
 #' Disables using Service Catalog in SageMaker
 #'
@@ -8611,6 +9234,57 @@ sagemaker_list_candidates_for_auto_ml_job <- function(AutoMLJobName, StatusEqual
 }
 .sagemaker$operations$list_candidates_for_auto_ml_job <- sagemaker_list_candidates_for_auto_ml_job
 
+#' Retrieves a list of event summaries for a specified HyperPod cluster
+#'
+#' @description
+#' Retrieves a list of event summaries for a specified HyperPod cluster. The operation supports filtering, sorting, and pagination of results. This functionality is only supported when the `NodeProvisioningMode` is set to `Continuous`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_cluster_events/](https://www.paws-r-sdk.com/docs/sagemaker_list_cluster_events/) for full documentation.
+#'
+#' @param ClusterName &#91;required&#93; The name or Amazon Resource Name (ARN) of the HyperPod cluster for which
+#' to list events.
+#' @param InstanceGroupName The name of the instance group to filter events. If specified, only
+#' events related to this instance group are returned.
+#' @param NodeId The EC2 instance ID to filter events. If specified, only events related
+#' to this instance are returned.
+#' @param EventTimeAfter The start of the time range for filtering events. Only events that
+#' occurred after this time are included in the results.
+#' @param EventTimeBefore The end of the time range for filtering events. Only events that
+#' occurred before this time are included in the results.
+#' @param SortBy The field to use for sorting the event list. Currently, the only
+#' supported value is `EventTime`.
+#' @param SortOrder The order in which to sort the results. Valid values are `Ascending` or
+#' `Descending` (the default is `Descending`).
+#' @param ResourceType The type of resource for which to filter events. Valid values are
+#' `Cluster`, `InstanceGroup`, or `Instance`.
+#' @param MaxResults The maximum number of events to return in the response. Valid range is 1
+#' to 100.
+#' @param NextToken A token to retrieve the next set of results. This token is obtained from
+#' the output of a previous
+#' [`list_cluster_events`][sagemaker_list_cluster_events] call.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_cluster_events
+sagemaker_list_cluster_events <- function(ClusterName, InstanceGroupName = NULL, NodeId = NULL, EventTimeAfter = NULL, EventTimeBefore = NULL, SortBy = NULL, SortOrder = NULL, ResourceType = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListClusterEvents",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Events"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$list_cluster_events_input(ClusterName = ClusterName, InstanceGroupName = InstanceGroupName, NodeId = NodeId, EventTimeAfter = EventTimeAfter, EventTimeBefore = EventTimeBefore, SortBy = SortBy, SortOrder = SortOrder, ResourceType = ResourceType, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .sagemaker$list_cluster_events_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_cluster_events <- sagemaker_list_cluster_events
+
 #' Retrieves the list of instances (also called nodes interchangeably) in a
 #' SageMaker HyperPod cluster
 #'
@@ -8658,11 +9332,15 @@ sagemaker_list_candidates_for_auto_ml_job <- function(AutoMLJobName, StatusEqual
 #' @param SortBy The field by which to sort results. The default value is
 #' `CREATION_TIME`.
 #' @param SortOrder The sort order for results. The default value is `Ascending`.
+#' @param IncludeNodeLogicalIds Specifies whether to include nodes that are still being provisioned in
+#' the response. When set to true, the response includes all nodes
+#' regardless of their provisioning status. When set to `False` (default),
+#' only nodes with assigned `InstanceIds` are returned.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_cluster_nodes
-sagemaker_list_cluster_nodes <- function(ClusterName, CreationTimeAfter = NULL, CreationTimeBefore = NULL, InstanceGroupNameContains = NULL, MaxResults = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
+sagemaker_list_cluster_nodes <- function(ClusterName, CreationTimeAfter = NULL, CreationTimeBefore = NULL, InstanceGroupNameContains = NULL, MaxResults = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL, IncludeNodeLogicalIds = NULL) {
   op <- new_operation(
     name = "ListClusterNodes",
     http_method = "POST",
@@ -8671,7 +9349,7 @@ sagemaker_list_cluster_nodes <- function(ClusterName, CreationTimeAfter = NULL, 
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterNodeSummaries"),
     stream_api = FALSE
   )
-  input <- .sagemaker$list_cluster_nodes_input(ClusterName = ClusterName, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, InstanceGroupNameContains = InstanceGroupNameContains, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
+  input <- .sagemaker$list_cluster_nodes_input(ClusterName = ClusterName, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, InstanceGroupNameContains = InstanceGroupNameContains, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder, IncludeNodeLogicalIds = IncludeNodeLogicalIds)
   output <- .sagemaker$list_cluster_nodes_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -8763,7 +9441,12 @@ sagemaker_list_cluster_scheduler_configs <- function(CreatedAfter = NULL, Create
 #' For more information about the timestamp format, see
 #' [Timestamp](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-types.html#parameter-type-timestamp)
 #' in the *Amazon Web Services Command Line Interface User Guide*.
-#' @param MaxResults Set the maximum number of SageMaker HyperPod clusters to list.
+#' @param MaxResults Specifies the maximum number of clusters to evaluate for the operation
+#' (not necessarily the number of matching items). After SageMaker
+#' processes the number of clusters up to `MaxResults`, it stops the
+#' operation and returns the matching clusters up to that point. If all the
+#' matching clusters are desired, SageMaker will go through all the
+#' clusters until `NextToken` is empty.
 #' @param NameContains Set the maximum number of instances to print in the list.
 #' @param NextToken Set the next token to retrieve the list of SageMaker HyperPod clusters.
 #' @param SortBy The field by which to sort results. The default value is
@@ -10092,6 +10775,56 @@ sagemaker_list_lineage_groups <- function(CreatedAfter = NULL, CreatedBefore = N
 }
 .sagemaker$operations$list_lineage_groups <- sagemaker_list_lineage_groups
 
+#' Lists all MLflow Apps
+#'
+#' @description
+#' Lists all MLflow Apps
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_mlflow_apps/](https://www.paws-r-sdk.com/docs/sagemaker_list_mlflow_apps/) for full documentation.
+#'
+#' @param CreatedAfter Use the `CreatedAfter` filter to only list MLflow Apps created after a
+#' specific date and time. Listed MLflow Apps are shown with a date and
+#' time such as `"2024-03-16T01:46:56+00:00"`. The `CreatedAfter` parameter
+#' takes in a Unix timestamp.
+#' @param CreatedBefore Use the `CreatedBefore` filter to only list MLflow Apps created before a
+#' specific date and time. Listed MLflow Apps are shown with a date and
+#' time such as `"2024-03-16T01:46:56+00:00"`. The `CreatedAfter` parameter
+#' takes in a Unix timestamp.
+#' @param Status Filter for Mlflow apps with a specific creation status.
+#' @param MlflowVersion Filter for Mlflow Apps with the specified version.
+#' @param DefaultForDomainId Filter for MLflow Apps with the specified default SageMaker Domain ID.
+#' @param AccountDefaultStatus Filter for MLflow Apps with the specified `AccountDefaultStatus`.
+#' @param SortBy Filter for MLflow Apps sorting by name, creation time, or creation
+#' status.
+#' @param SortOrder Change the order of the listed MLflow Apps. By default, MLflow Apps are
+#' listed in `Descending` order by creation time. To change the list order,
+#' specify `SortOrder` to be `Ascending`.
+#' @param NextToken If the previous response was truncated, use this token in your next
+#' request to receive the next set of results.
+#' @param MaxResults The maximum number of MLflow Apps to list.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_mlflow_apps
+sagemaker_list_mlflow_apps <- function(CreatedAfter = NULL, CreatedBefore = NULL, Status = NULL, MlflowVersion = NULL, DefaultForDomainId = NULL, AccountDefaultStatus = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListMlflowApps",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Summaries"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$list_mlflow_apps_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, Status = Status, MlflowVersion = MlflowVersion, DefaultForDomainId = DefaultForDomainId, AccountDefaultStatus = AccountDefaultStatus, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_mlflow_apps_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_mlflow_apps <- sagemaker_list_mlflow_apps
+
 #' Lists all MLflow Tracking Servers
 #'
 #' @description
@@ -11112,6 +11845,47 @@ sagemaker_list_pipeline_parameters_for_execution <- function(PipelineExecutionAr
 }
 .sagemaker$operations$list_pipeline_parameters_for_execution <- sagemaker_list_pipeline_parameters_for_execution
 
+#' Gets a list of all versions of the pipeline
+#'
+#' @description
+#' Gets a list of all versions of the pipeline.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_pipeline_versions/](https://www.paws-r-sdk.com/docs/sagemaker_list_pipeline_versions/) for full documentation.
+#'
+#' @param PipelineName &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline.
+#' @param CreatedAfter A filter that returns the pipeline versions that were created after a
+#' specified time.
+#' @param CreatedBefore A filter that returns the pipeline versions that were created before a
+#' specified time.
+#' @param SortOrder The sort order for the results.
+#' @param NextToken If the result of the previous
+#' [`list_pipeline_versions`][sagemaker_list_pipeline_versions] request was
+#' truncated, the response includes a `NextToken`. To retrieve the next set
+#' of pipeline versions, use this token in your next request.
+#' @param MaxResults The maximum number of pipeline versions to return in the response.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_pipeline_versions
+sagemaker_list_pipeline_versions <- function(PipelineName, CreatedAfter = NULL, CreatedBefore = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListPipelineVersions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineVersionSummaries"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$list_pipeline_versions_input(PipelineName = PipelineName, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_pipeline_versions_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_pipeline_versions <- sagemaker_list_pipeline_versions
+
 #' Gets a list of pipelines
 #'
 #' @description
@@ -11771,6 +12545,41 @@ sagemaker_list_trials <- function(ExperimentName = NULL, TrialComponentName = NU
 }
 .sagemaker$operations$list_trials <- sagemaker_list_trials
 
+#' Lists all UltraServers that are part of a specified reserved capacity
+#'
+#' @description
+#' Lists all UltraServers that are part of a specified reserved capacity.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_ultra_servers_by_reserved_capacity/](https://www.paws-r-sdk.com/docs/sagemaker_list_ultra_servers_by_reserved_capacity/) for full documentation.
+#'
+#' @param ReservedCapacityArn &#91;required&#93; The ARN of the reserved capacity to list UltraServers for.
+#' @param MaxResults The maximum number of UltraServers to return in the response. The
+#' default value is 10.
+#' @param NextToken If the previous response was truncated, you receive this token. Use it
+#' in your next request to receive the next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_ultra_servers_by_reserved_capacity
+sagemaker_list_ultra_servers_by_reserved_capacity <- function(ReservedCapacityArn, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListUltraServersByReservedCapacity",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "UltraServers"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$list_ultra_servers_by_reserved_capacity_input(ReservedCapacityArn = ReservedCapacityArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .sagemaker$list_ultra_servers_by_reserved_capacity_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_ultra_servers_by_reserved_capacity <- sagemaker_list_ultra_servers_by_reserved_capacity
+
 #' Lists user profiles
 #'
 #' @description
@@ -12166,13 +12975,15 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
 #' needed for your SageMaker training jobs or SageMaker HyperPod clusters,
 #' helping you find reserved capacity offerings that match your
 #' requirements.
+#' @param UltraServerType The type of UltraServer to search for, such as ml.u-p6e-gb200x72.
+#' @param UltraServerCount The number of UltraServers to search for.
 #' @param StartTimeAfter A filter to search for training plan offerings with a start time after a
 #' specified date.
 #' @param EndTimeBefore A filter to search for reserved capacity offerings with an end time
 #' before a specified date.
 #' @param DurationHours &#91;required&#93; The desired duration in hours for the training plan offerings.
-#' @param TargetResources &#91;required&#93; The target resources (e.g., SageMaker Training Jobs, SageMaker HyperPod)
-#' to search for in the offerings.
+#' @param TargetResources &#91;required&#93; The target resources (e.g., SageMaker Training Jobs, SageMaker HyperPod,
+#' SageMaker Endpoints) to search for in the offerings.
 #' 
 #' Training plans are specific to their target resource.
 #' 
@@ -12181,11 +12992,15 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
 #' 
 #' -   A training plan for HyperPod clusters can be used exclusively to
 #'     provide compute resources to a cluster's instance group.
+#' 
+#' -   A training plan for SageMaker endpoints can be used exclusively to
+#'     provide compute resources to SageMaker endpoints for model
+#'     deployment.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_search_training_plan_offerings
-sagemaker_search_training_plan_offerings <- function(InstanceType = NULL, InstanceCount = NULL, StartTimeAfter = NULL, EndTimeBefore = NULL, DurationHours, TargetResources) {
+sagemaker_search_training_plan_offerings <- function(InstanceType = NULL, InstanceCount = NULL, UltraServerType = NULL, UltraServerCount = NULL, StartTimeAfter = NULL, EndTimeBefore = NULL, DurationHours, TargetResources) {
   op <- new_operation(
     name = "SearchTrainingPlanOfferings",
     http_method = "POST",
@@ -12194,7 +13009,7 @@ sagemaker_search_training_plan_offerings <- function(InstanceType = NULL, Instan
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$search_training_plan_offerings_input(InstanceType = InstanceType, InstanceCount = InstanceCount, StartTimeAfter = StartTimeAfter, EndTimeBefore = EndTimeBefore, DurationHours = DurationHours, TargetResources = TargetResources)
+  input <- .sagemaker$search_training_plan_offerings_input(InstanceType = InstanceType, InstanceCount = InstanceCount, UltraServerType = UltraServerType, UltraServerCount = UltraServerCount, StartTimeAfter = StartTimeAfter, EndTimeBefore = EndTimeBefore, DurationHours = DurationHours, TargetResources = TargetResources)
   output <- .sagemaker$search_training_plan_offerings_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -12450,11 +13265,13 @@ sagemaker_start_notebook_instance <- function(NotebookInstanceName) {
 #' @param ParallelismConfiguration This configuration, if specified, overrides the parallelism
 #' configuration of the parent pipeline for this specific run.
 #' @param SelectiveExecutionConfig The selective execution configuration applied to the pipeline run.
+#' @param PipelineVersionId The ID of the pipeline version to start execution from.
+#' @param MlflowExperimentName The MLflow experiment name of the start execution.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_start_pipeline_execution
-sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDisplayName = NULL, PipelineParameters = NULL, PipelineExecutionDescription = NULL, ClientRequestToken, ParallelismConfiguration = NULL, SelectiveExecutionConfig = NULL) {
+sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDisplayName = NULL, PipelineParameters = NULL, PipelineExecutionDescription = NULL, ClientRequestToken, ParallelismConfiguration = NULL, SelectiveExecutionConfig = NULL, PipelineVersionId = NULL, MlflowExperimentName = NULL) {
   op <- new_operation(
     name = "StartPipelineExecution",
     http_method = "POST",
@@ -12463,7 +13280,7 @@ sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$start_pipeline_execution_input(PipelineName = PipelineName, PipelineExecutionDisplayName = PipelineExecutionDisplayName, PipelineParameters = PipelineParameters, PipelineExecutionDescription = PipelineExecutionDescription, ClientRequestToken = ClientRequestToken, ParallelismConfiguration = ParallelismConfiguration, SelectiveExecutionConfig = SelectiveExecutionConfig)
+  input <- .sagemaker$start_pipeline_execution_input(PipelineName = PipelineName, PipelineExecutionDisplayName = PipelineExecutionDisplayName, PipelineParameters = PipelineParameters, PipelineExecutionDescription = PipelineExecutionDescription, ClientRequestToken = ClientRequestToken, ParallelismConfiguration = ParallelismConfiguration, SelectiveExecutionConfig = SelectiveExecutionConfig, PipelineVersionId = PipelineVersionId, MlflowExperimentName = MlflowExperimentName)
   output <- .sagemaker$start_pipeline_execution_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -12472,6 +13289,41 @@ sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDi
   return(response)
 }
 .sagemaker$operations$start_pipeline_execution <- sagemaker_start_pipeline_execution
+
+#' Initiates a remote connection session between a local integrated
+#' development environments (IDEs) and a remote SageMaker space
+#'
+#' @description
+#' Initiates a remote connection session between a local integrated development environments (IDEs) and a remote SageMaker space.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_start_session/](https://www.paws-r-sdk.com/docs/sagemaker_start_session/) for full documentation.
+#'
+#' @param ResourceIdentifier &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which the remote
+#' connection will be established. For example, this identifies the
+#' specific ARN space application you want to connect to from your local
+#' IDE.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_start_session
+sagemaker_start_session <- function(ResourceIdentifier) {
+  op <- new_operation(
+    name = "StartSession",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$start_session_input(ResourceIdentifier = ResourceIdentifier)
+  output <- .sagemaker$start_session_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$start_session <- sagemaker_start_session
 
 #' A method for forcing a running job to shut down
 #'
@@ -13104,15 +13956,32 @@ sagemaker_update_artifact <- function(ArtifactArn, ArtifactName = NULL, Properti
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_update_cluster/](https://www.paws-r-sdk.com/docs/sagemaker_update_cluster/) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; Specify the name of the SageMaker HyperPod cluster you want to update.
-#' @param InstanceGroups &#91;required&#93; Specify the instance groups to update.
+#' @param InstanceGroups Specify the instance groups to update.
+#' @param RestrictedInstanceGroups The specialized instance groups for training models like Amazon Nova to
+#' be created in the SageMaker HyperPod cluster.
+#' @param TieredStorageConfig Updates the configuration for managed tier checkpointing on the HyperPod
+#' cluster. For example, you can enable or disable the feature and modify
+#' the percentage of cluster memory allocated for checkpoint storage.
 #' @param NodeRecovery The node recovery mode to be applied to the SageMaker HyperPod cluster.
 #' @param InstanceGroupsToDelete Specify the names of the instance groups to delete. Use a single `,` as
 #' the separator between multiple names.
+#' @param NodeProvisioningMode Determines how instance provisioning is handled during cluster
+#' operations. In `Continuous` mode, the cluster provisions available
+#' instances incrementally and retries until the target count is reached.
+#' The cluster becomes operational once cluster-level resources are ready.
+#' Use `CurrentCount` and `TargetCount` in
+#' [`describe_cluster`][sagemaker_describe_cluster] to track provisioning
+#' progress.
+#' @param ClusterRole The Amazon Resource Name (ARN) of the IAM role that HyperPod assumes for
+#' cluster autoscaling operations. Cannot be updated while autoscaling is
+#' enabled.
+#' @param AutoScaling Updates the autoscaling configuration for the cluster. Use to enable or
+#' disable automatic node scaling.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_cluster
-sagemaker_update_cluster <- function(ClusterName, InstanceGroups, NodeRecovery = NULL, InstanceGroupsToDelete = NULL) {
+sagemaker_update_cluster <- function(ClusterName, InstanceGroups = NULL, RestrictedInstanceGroups = NULL, TieredStorageConfig = NULL, NodeRecovery = NULL, InstanceGroupsToDelete = NULL, NodeProvisioningMode = NULL, ClusterRole = NULL, AutoScaling = NULL) {
   op <- new_operation(
     name = "UpdateCluster",
     http_method = "POST",
@@ -13121,7 +13990,7 @@ sagemaker_update_cluster <- function(ClusterName, InstanceGroups, NodeRecovery =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_cluster_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups, NodeRecovery = NodeRecovery, InstanceGroupsToDelete = InstanceGroupsToDelete)
+  input <- .sagemaker$update_cluster_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups, RestrictedInstanceGroups = RestrictedInstanceGroups, TieredStorageConfig = TieredStorageConfig, NodeRecovery = NodeRecovery, InstanceGroupsToDelete = InstanceGroupsToDelete, NodeProvisioningMode = NodeProvisioningMode, ClusterRole = ClusterRole, AutoScaling = AutoScaling)
   output <- .sagemaker$update_cluster_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -13177,11 +14046,38 @@ sagemaker_update_cluster_scheduler_config <- function(ClusterSchedulerConfigId, 
 #' HyperPod cluster you want to update for security patching.
 #' @param InstanceGroups The array of instance groups for which to update AMI versions.
 #' @param DeploymentConfig The configuration to use when updating the AMI versions.
+#' @param ImageId When configuring your HyperPod cluster, you can specify an image ID
+#' using one of the following options:
+#' 
+#' -   `HyperPodPublicAmiId`: Use a HyperPod public AMI
+#' 
+#' -   `CustomAmiId`: Use your custom AMI
+#' 
+#' -   `default`: Use the default latest system image
+#' 
+#' If you choose to use a custom AMI (`CustomAmiId`), ensure it meets the
+#' following requirements:
+#' 
+#' -   Encryption: The custom AMI must be unencrypted.
+#' 
+#' -   Ownership: The custom AMI must be owned by the same Amazon Web
+#'     Services account that is creating the HyperPod cluster.
+#' 
+#' -   Volume support: Only the primary AMI snapshot volume is supported;
+#'     additional AMI volumes are not supported.
+#' 
+#' When updating the instance group's AMI through the
+#' [`update_cluster_software`][sagemaker_update_cluster_software]
+#' operation, if an instance group uses a custom AMI, you must provide an
+#' `ImageId` or use the default as input. Note that if you don't specify an
+#' instance group in your
+#' [`update_cluster_software`][sagemaker_update_cluster_software] request,
+#' then all of the instance groups are patched with the specified image.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_cluster_software
-sagemaker_update_cluster_software <- function(ClusterName, InstanceGroups = NULL, DeploymentConfig = NULL) {
+sagemaker_update_cluster_software <- function(ClusterName, InstanceGroups = NULL, DeploymentConfig = NULL, ImageId = NULL) {
   op <- new_operation(
     name = "UpdateClusterSoftware",
     http_method = "POST",
@@ -13190,7 +14086,7 @@ sagemaker_update_cluster_software <- function(ClusterName, InstanceGroups = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_cluster_software_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups, DeploymentConfig = DeploymentConfig)
+  input <- .sagemaker$update_cluster_software_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups, DeploymentConfig = DeploymentConfig, ImageId = ImageId)
   output <- .sagemaker$update_cluster_software_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -13422,11 +14318,17 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #' is provided as part of the same request.
 #' @param TagPropagation Indicates whether custom tag propagation is supported for the domain.
 #' Defaults to `DISABLED`.
+#' @param VpcId The identifier for the VPC used by the domain for network communication.
+#' Use this field only when adding VPC configuration to a SageMaker AI
+#' domain used in Amazon SageMaker Unified Studio that was created without
+#' VPC settings. SageMaker AI doesn't automatically apply VPC updates to
+#' existing applications. Stop and restart your applications to apply the
+#' changes.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_domain
-sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL, DomainSettingsForUpdate = NULL, AppSecurityGroupManagement = NULL, DefaultSpaceSettings = NULL, SubnetIds = NULL, AppNetworkAccessType = NULL, TagPropagation = NULL) {
+sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL, DomainSettingsForUpdate = NULL, AppSecurityGroupManagement = NULL, DefaultSpaceSettings = NULL, SubnetIds = NULL, AppNetworkAccessType = NULL, TagPropagation = NULL, VpcId = NULL) {
   op <- new_operation(
     name = "UpdateDomain",
     http_method = "POST",
@@ -13435,7 +14337,7 @@ sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL, Domain
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_domain_input(DomainId = DomainId, DefaultUserSettings = DefaultUserSettings, DomainSettingsForUpdate = DomainSettingsForUpdate, AppSecurityGroupManagement = AppSecurityGroupManagement, DefaultSpaceSettings = DefaultSpaceSettings, SubnetIds = SubnetIds, AppNetworkAccessType = AppNetworkAccessType, TagPropagation = TagPropagation)
+  input <- .sagemaker$update_domain_input(DomainId = DomainId, DefaultUserSettings = DefaultUserSettings, DomainSettingsForUpdate = DomainSettingsForUpdate, AppSecurityGroupManagement = AppSecurityGroupManagement, DefaultSpaceSettings = DefaultSpaceSettings, SubnetIds = SubnetIds, AppNetworkAccessType = AppNetworkAccessType, TagPropagation = TagPropagation, VpcId = VpcId)
   output <- .sagemaker$update_domain_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -13985,6 +14887,51 @@ sagemaker_update_inference_experiment <- function(Name, Schedule = NULL, Descrip
 }
 .sagemaker$operations$update_inference_experiment <- sagemaker_update_inference_experiment
 
+#' Updates an MLflow App
+#'
+#' @description
+#' Updates an MLflow App.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_mlflow_app/](https://www.paws-r-sdk.com/docs/sagemaker_update_mlflow_app/) for full documentation.
+#'
+#' @param Arn &#91;required&#93; The ARN of the MLflow App to update.
+#' @param Name The name of the MLflow App to update.
+#' @param ArtifactStoreUri The new S3 URI for the general purpose bucket to use as the artifact
+#' store for the MLflow App.
+#' @param ModelRegistrationMode Whether to enable or disable automatic registration of new MLflow models
+#' to the SageMaker Model Registry. To enable automatic model registration,
+#' set this value to `AutoModelRegistrationEnabled`. To disable automatic
+#' model registration, set this value to `AutoModelRegistrationDisabled`.
+#' If not specified, `AutomaticModelRegistration` defaults to
+#' `AutoModelRegistrationEnabled`
+#' @param WeeklyMaintenanceWindowStart The new weekly maintenance window start day and time to update. The
+#' maintenance window day and time should be in Coordinated Universal Time
+#' (UTC) 24-hour standard time. For example: TUE:03:30.
+#' @param DefaultDomainIdList List of SageMaker Domain IDs for which this MLflow App is the default.
+#' @param AccountDefaultStatus Indicates whether this this MLflow App is the default for the account.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_mlflow_app
+sagemaker_update_mlflow_app <- function(Arn, Name = NULL, ArtifactStoreUri = NULL, ModelRegistrationMode = NULL, WeeklyMaintenanceWindowStart = NULL, DefaultDomainIdList = NULL, AccountDefaultStatus = NULL) {
+  op <- new_operation(
+    name = "UpdateMlflowApp",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$update_mlflow_app_input(Arn = Arn, Name = Name, ArtifactStoreUri = ArtifactStoreUri, ModelRegistrationMode = ModelRegistrationMode, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart, DefaultDomainIdList = DefaultDomainIdList, AccountDefaultStatus = AccountDefaultStatus)
+  output <- .sagemaker$update_mlflow_app_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_mlflow_app <- sagemaker_update_mlflow_app
+
 #' Updates properties of an existing MLflow Tracking Server
 #'
 #' @description
@@ -14085,6 +15032,7 @@ sagemaker_update_model_card <- function(ModelCardName, Content = NULL, ModelCard
 #'
 #' @param ModelPackageArn &#91;required&#93; The Amazon Resource Name (ARN) of the model package.
 #' @param ModelApprovalStatus The approval status of the model.
+#' @param ModelPackageRegistrationType The package registration type of the model package input.
 #' @param ApprovalDescription A description for the approval status of the model.
 #' @param CustomerMetadataProperties The metadata properties associated with the model package versions.
 #' @param CustomerMetadataPropertiesToRemove The metadata properties associated with the model package versions to
@@ -14124,7 +15072,7 @@ sagemaker_update_model_card <- function(ModelCardName, Content = NULL, ModelCard
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_model_package
-sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus = NULL, ApprovalDescription = NULL, CustomerMetadataProperties = NULL, CustomerMetadataPropertiesToRemove = NULL, AdditionalInferenceSpecificationsToAdd = NULL, InferenceSpecification = NULL, SourceUri = NULL, ModelCard = NULL, ModelLifeCycle = NULL, ClientToken = NULL) {
+sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus = NULL, ModelPackageRegistrationType = NULL, ApprovalDescription = NULL, CustomerMetadataProperties = NULL, CustomerMetadataPropertiesToRemove = NULL, AdditionalInferenceSpecificationsToAdd = NULL, InferenceSpecification = NULL, SourceUri = NULL, ModelCard = NULL, ModelLifeCycle = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "UpdateModelPackage",
     http_method = "POST",
@@ -14133,7 +15081,7 @@ sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_model_package_input(ModelPackageArn = ModelPackageArn, ModelApprovalStatus = ModelApprovalStatus, ApprovalDescription = ApprovalDescription, CustomerMetadataProperties = CustomerMetadataProperties, CustomerMetadataPropertiesToRemove = CustomerMetadataPropertiesToRemove, AdditionalInferenceSpecificationsToAdd = AdditionalInferenceSpecificationsToAdd, InferenceSpecification = InferenceSpecification, SourceUri = SourceUri, ModelCard = ModelCard, ModelLifeCycle = ModelLifeCycle, ClientToken = ClientToken)
+  input <- .sagemaker$update_model_package_input(ModelPackageArn = ModelPackageArn, ModelApprovalStatus = ModelApprovalStatus, ModelPackageRegistrationType = ModelPackageRegistrationType, ApprovalDescription = ApprovalDescription, CustomerMetadataProperties = CustomerMetadataProperties, CustomerMetadataPropertiesToRemove = CustomerMetadataPropertiesToRemove, AdditionalInferenceSpecificationsToAdd = AdditionalInferenceSpecificationsToAdd, InferenceSpecification = InferenceSpecification, SourceUri = SourceUri, ModelCard = ModelCard, ModelLifeCycle = ModelLifeCycle, ClientToken = ClientToken)
   output <- .sagemaker$update_model_package_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -14222,6 +15170,12 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #'
 #' @param NotebookInstanceName &#91;required&#93; The name of the notebook instance to update.
 #' @param InstanceType The Amazon ML compute instance type.
+#' @param IpAddressType The IP address type for the notebook instance. Specify `ipv4` for
+#' IPv4-only connectivity or `dualstack` for both IPv4 and IPv6
+#' connectivity. The notebook instance must be stopped before updating this
+#' setting. When you specify `dualstack`, the subnet must support IPv6
+#' addressing.
+#' @param PlatformIdentifier The platform identifier of the notebook instance runtime environment.
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM role that SageMaker AI can
 #' assume to access the notebook instance. For more information, see
 #' [SageMaker AI
@@ -14294,7 +15248,7 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_notebook_instance
-sagemaker_update_notebook_instance <- function(NotebookInstanceName, InstanceType = NULL, RoleArn = NULL, LifecycleConfigName = NULL, DisassociateLifecycleConfig = NULL, VolumeSizeInGB = NULL, DefaultCodeRepository = NULL, AdditionalCodeRepositories = NULL, AcceleratorTypes = NULL, DisassociateAcceleratorTypes = NULL, DisassociateDefaultCodeRepository = NULL, DisassociateAdditionalCodeRepositories = NULL, RootAccess = NULL, InstanceMetadataServiceConfiguration = NULL) {
+sagemaker_update_notebook_instance <- function(NotebookInstanceName, InstanceType = NULL, IpAddressType = NULL, PlatformIdentifier = NULL, RoleArn = NULL, LifecycleConfigName = NULL, DisassociateLifecycleConfig = NULL, VolumeSizeInGB = NULL, DefaultCodeRepository = NULL, AdditionalCodeRepositories = NULL, AcceleratorTypes = NULL, DisassociateAcceleratorTypes = NULL, DisassociateDefaultCodeRepository = NULL, DisassociateAdditionalCodeRepositories = NULL, RootAccess = NULL, InstanceMetadataServiceConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateNotebookInstance",
     http_method = "POST",
@@ -14303,7 +15257,7 @@ sagemaker_update_notebook_instance <- function(NotebookInstanceName, InstanceTyp
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_notebook_instance_input(NotebookInstanceName = NotebookInstanceName, InstanceType = InstanceType, RoleArn = RoleArn, LifecycleConfigName = LifecycleConfigName, DisassociateLifecycleConfig = DisassociateLifecycleConfig, VolumeSizeInGB = VolumeSizeInGB, DefaultCodeRepository = DefaultCodeRepository, AdditionalCodeRepositories = AdditionalCodeRepositories, AcceleratorTypes = AcceleratorTypes, DisassociateAcceleratorTypes = DisassociateAcceleratorTypes, DisassociateDefaultCodeRepository = DisassociateDefaultCodeRepository, DisassociateAdditionalCodeRepositories = DisassociateAdditionalCodeRepositories, RootAccess = RootAccess, InstanceMetadataServiceConfiguration = InstanceMetadataServiceConfiguration)
+  input <- .sagemaker$update_notebook_instance_input(NotebookInstanceName = NotebookInstanceName, InstanceType = InstanceType, IpAddressType = IpAddressType, PlatformIdentifier = PlatformIdentifier, RoleArn = RoleArn, LifecycleConfigName = LifecycleConfigName, DisassociateLifecycleConfig = DisassociateLifecycleConfig, VolumeSizeInGB = VolumeSizeInGB, DefaultCodeRepository = DefaultCodeRepository, AdditionalCodeRepositories = AdditionalCodeRepositories, AcceleratorTypes = AcceleratorTypes, DisassociateAcceleratorTypes = DisassociateAcceleratorTypes, DisassociateDefaultCodeRepository = DisassociateDefaultCodeRepository, DisassociateAdditionalCodeRepositories = DisassociateAdditionalCodeRepositories, RootAccess = RootAccess, InstanceMetadataServiceConfiguration = InstanceMetadataServiceConfiguration)
   output <- .sagemaker$update_notebook_instance_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -14365,6 +15319,13 @@ sagemaker_update_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' @param EnableIamSessionBasedIdentity When set to `TRUE`, the SageMaker Partner AI App sets the Amazon Web
 #' Services IAM session name or the authenticated IAM user as the identity
 #' of the SageMaker Partner AI App user.
+#' @param EnableAutoMinorVersionUpgrade When set to `TRUE`, the SageMaker Partner AI App is automatically
+#' upgraded to the latest minor version during the next scheduled
+#' maintenance window, if one is available.
+#' @param AppVersion The semantic version to upgrade the SageMaker Partner AI App to. Must be
+#' the same semantic version returned in the `AvailableUpgrade` field from
+#' [`describe_partner_app`][sagemaker_describe_partner_app]. Version
+#' skipping and downgrades are not supported.
 #' @param ClientToken A unique token that guarantees that the call to this API is idempotent.
 #' @param Tags Each tag consists of a key and an optional value. Tag keys must be
 #' unique per resource.
@@ -14372,7 +15333,7 @@ sagemaker_update_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_partner_app
-sagemaker_update_partner_app <- function(Arn, MaintenanceConfig = NULL, Tier = NULL, ApplicationConfig = NULL, EnableIamSessionBasedIdentity = NULL, ClientToken = NULL, Tags = NULL) {
+sagemaker_update_partner_app <- function(Arn, MaintenanceConfig = NULL, Tier = NULL, ApplicationConfig = NULL, EnableIamSessionBasedIdentity = NULL, EnableAutoMinorVersionUpgrade = NULL, AppVersion = NULL, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "UpdatePartnerApp",
     http_method = "POST",
@@ -14381,7 +15342,7 @@ sagemaker_update_partner_app <- function(Arn, MaintenanceConfig = NULL, Tier = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_partner_app_input(Arn = Arn, MaintenanceConfig = MaintenanceConfig, Tier = Tier, ApplicationConfig = ApplicationConfig, EnableIamSessionBasedIdentity = EnableIamSessionBasedIdentity, ClientToken = ClientToken, Tags = Tags)
+  input <- .sagemaker$update_partner_app_input(Arn = Arn, MaintenanceConfig = MaintenanceConfig, Tier = Tier, ApplicationConfig = ApplicationConfig, EnableIamSessionBasedIdentity = EnableIamSessionBasedIdentity, EnableAutoMinorVersionUpgrade = EnableAutoMinorVersionUpgrade, AppVersion = AppVersion, ClientToken = ClientToken, Tags = Tags)
   output <- .sagemaker$update_partner_app_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -14465,6 +15426,40 @@ sagemaker_update_pipeline_execution <- function(PipelineExecutionArn, PipelineEx
 }
 .sagemaker$operations$update_pipeline_execution <- sagemaker_update_pipeline_execution
 
+#' Updates a pipeline version
+#'
+#' @description
+#' Updates a pipeline version.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_pipeline_version/](https://www.paws-r-sdk.com/docs/sagemaker_update_pipeline_version/) for full documentation.
+#'
+#' @param PipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline.
+#' @param PipelineVersionId &#91;required&#93; The pipeline version ID to update.
+#' @param PipelineVersionDisplayName The display name of the pipeline version.
+#' @param PipelineVersionDescription The description of the pipeline version.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_pipeline_version
+sagemaker_update_pipeline_version <- function(PipelineArn, PipelineVersionId, PipelineVersionDisplayName = NULL, PipelineVersionDescription = NULL) {
+  op <- new_operation(
+    name = "UpdatePipelineVersion",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$update_pipeline_version_input(PipelineArn = PipelineArn, PipelineVersionId = PipelineVersionId, PipelineVersionDisplayName = PipelineVersionDisplayName, PipelineVersionDescription = PipelineVersionDescription)
+  output <- .sagemaker$update_pipeline_version_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_pipeline_version <- sagemaker_update_pipeline_version
+
 #' Updates a machine learning (ML) project that is created from a template
 #' that sets up an ML pipeline from training to deploying an approved model
 #'
@@ -14490,11 +15485,12 @@ sagemaker_update_pipeline_execution <- function(PipelineExecutionArn, PipelineEx
 #' to include this parameter in the request. For more information, see
 #' [Amazon Web Services Service Catalog Tag Update
 #' Constraints](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/constraints-resourceupdate.html).
+#' @param TemplateProvidersToUpdate The template providers to update in the project.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_project
-sagemaker_update_project <- function(ProjectName, ProjectDescription = NULL, ServiceCatalogProvisioningUpdateDetails = NULL, Tags = NULL) {
+sagemaker_update_project <- function(ProjectName, ProjectDescription = NULL, ServiceCatalogProvisioningUpdateDetails = NULL, Tags = NULL, TemplateProvidersToUpdate = NULL) {
   op <- new_operation(
     name = "UpdateProject",
     http_method = "POST",
@@ -14503,7 +15499,7 @@ sagemaker_update_project <- function(ProjectName, ProjectDescription = NULL, Ser
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_project_input(ProjectName = ProjectName, ProjectDescription = ProjectDescription, ServiceCatalogProvisioningUpdateDetails = ServiceCatalogProvisioningUpdateDetails, Tags = Tags)
+  input <- .sagemaker$update_project_input(ProjectName = ProjectName, ProjectDescription = ProjectDescription, ServiceCatalogProvisioningUpdateDetails = ServiceCatalogProvisioningUpdateDetails, Tags = Tags, TemplateProvidersToUpdate = TemplateProvidersToUpdate)
   output <- .sagemaker$update_project_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -14728,11 +15724,13 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
 #' @param OidcConfig Use this parameter to update your OIDC Identity Provider (IdP)
 #' configuration for a workforce made using your own IdP.
 #' @param WorkforceVpcConfig Use this parameter to update your VPC configuration for a workforce.
+#' @param IpAddressType Use this parameter to specify whether you want `IPv4` only or
+#' `dualstack` (`IPv4` and `IPv6`) to support your labeling workforce.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_workforce
-sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL, OidcConfig = NULL, WorkforceVpcConfig = NULL) {
+sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL, OidcConfig = NULL, WorkforceVpcConfig = NULL, IpAddressType = NULL) {
   op <- new_operation(
     name = "UpdateWorkforce",
     http_method = "POST",
@@ -14741,7 +15739,7 @@ sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL, Oid
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_workforce_input(WorkforceName = WorkforceName, SourceIpConfig = SourceIpConfig, OidcConfig = OidcConfig, WorkforceVpcConfig = WorkforceVpcConfig)
+  input <- .sagemaker$update_workforce_input(WorkforceName = WorkforceName, SourceIpConfig = SourceIpConfig, OidcConfig = OidcConfig, WorkforceVpcConfig = WorkforceVpcConfig, IpAddressType = IpAddressType)
   output <- .sagemaker$update_workforce_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)

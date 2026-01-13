@@ -7,7 +7,8 @@
 rds_promote_read_replica(
   DBInstanceIdentifier,
   BackupRetentionPeriod = NULL,
-  PreferredBackupWindow = NULL
+  PreferredBackupWindow = NULL,
+  TagSpecifications = NULL
 )
 }
 \arguments{
@@ -47,6 +48,13 @@ Constraints:
 \item Must be in Universal Coordinated Time (UTC).
 \item Must not conflict with the preferred maintenance window.
 \item Must be at least 30 minutes.
+}}
+
+\item{TagSpecifications}{Tags to assign to resources associated with the DB instance.
+
+Valid Values:
+\itemize{
+\item \code{auto-backup} - The DB instance's automated backup.
 }}
 }
 \description{

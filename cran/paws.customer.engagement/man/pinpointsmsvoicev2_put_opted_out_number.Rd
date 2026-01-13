@@ -9,8 +9,8 @@ pinpointsmsvoicev2_put_opted_out_number(OptOutListName, OptedOutNumber)
 \arguments{
 \item{OptOutListName}{[required] The OptOutListName or OptOutListArn to add the phone number to.
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 
 \item{OptedOutNumber}{[required] The phone number to add to the OptOutList in E.164 format.}
 }

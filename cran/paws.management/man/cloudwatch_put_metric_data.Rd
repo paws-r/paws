@@ -60,8 +60,8 @@ allowed is 2.
 the \code{KeyAttributes} for the provided \code{Type}.
 }
 
-For details of the requirements for specifying an entity, see How to
-add related information to telemetry in the \emph{CloudWatch User Guide}.
+For details of the requirements for specifying an entity, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/adding-your-own-related-telemetry.html}{How to add related information to telemetry}
+in the \emph{CloudWatch User Guide}.
 }
 
 This parameter is \emph{required} when \code{EntityMetricData} is included.}

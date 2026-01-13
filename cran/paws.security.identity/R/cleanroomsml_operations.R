@@ -13,11 +13,17 @@ NULL
 #' @param membershipIdentifier &#91;required&#93; The membership ID of the trained model job that you want to cancel.
 #' @param trainedModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the trained model job that you want to
 #' cancel.
+#' @param versionIdentifier The version identifier of the trained model to cancel. This parameter
+#' allows you to specify which version of the trained model you want to
+#' cancel when multiple versions exist.
+#' 
+#' If `versionIdentifier` is not specified, the base model will be
+#' cancelled.
 #'
 #' @keywords internal
 #'
 #' @rdname cleanroomsml_cancel_trained_model
-cleanroomsml_cancel_trained_model <- function(membershipIdentifier, trainedModelArn) {
+cleanroomsml_cancel_trained_model <- function(membershipIdentifier, trainedModelArn, versionIdentifier = NULL) {
   op <- new_operation(
     name = "CancelTrainedModel",
     http_method = "PATCH",
@@ -26,7 +32,7 @@ cleanroomsml_cancel_trained_model <- function(membershipIdentifier, trainedModel
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$cancel_trained_model_input(membershipIdentifier = membershipIdentifier, trainedModelArn = trainedModelArn)
+  input <- .cleanroomsml$cancel_trained_model_input(membershipIdentifier = membershipIdentifier, trainedModelArn = trainedModelArn, versionIdentifier = versionIdentifier)
   output <- .cleanroomsml$cancel_trained_model_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -460,8 +466,34 @@ cleanroomsml_create_ml_input_channel <- function(membershipIdentifier, configure
 #' @param environment The environment variables to set in the Docker container.
 #' @param resourceConfig &#91;required&#93; Information about the EC2 resources that are used to train this model.
 #' @param stoppingCondition The criteria that is used to stop model training.
+#' @param incrementalTrainingDataChannels Specifies the incremental training data channels for the trained model.
+#' 
+#' Incremental training allows you to create a new trained model with
+#' updates without retraining from scratch. You can specify up to one
+#' incremental training data channel that references a previously trained
+#' model and its version.
+#' 
+#' Limit: Maximum of 20 channels total (including both
+#' `incrementalTrainingDataChannels` and `dataChannels`).
 #' @param dataChannels &#91;required&#93; Defines the data channels that are used as input for the trained model
 #' request.
+#' 
+#' Limit: Maximum of 20 channels total (including both `dataChannels` and
+#' `incrementalTrainingDataChannels`).
+#' @param trainingInputMode The input mode for accessing the training data. This parameter
+#' determines how the training data is made available to the training
+#' algorithm. Valid values are:
+#' 
+#' -   `File` - The training data is downloaded to the training instance
+#'     and made available as files.
+#' 
+#' -   `FastFile` - The training data is streamed directly from Amazon S3
+#'     to the training algorithm, providing faster access for large
+#'     datasets.
+#' 
+#' -   `Pipe` - The training data is streamed to the training algorithm
+#'     using named pipes, which can improve performance for certain
+#'     algorithms.
 #' @param description The description of the trained model.
 #' @param kmsKeyArn The Amazon Resource Name (ARN) of the KMS key. This key is used to
 #' encrypt and decrypt customer-owned data in the trained ML model and the
@@ -500,7 +532,7 @@ cleanroomsml_create_ml_input_channel <- function(membershipIdentifier, configure
 #' @keywords internal
 #'
 #' @rdname cleanroomsml_create_trained_model
-cleanroomsml_create_trained_model <- function(membershipIdentifier, name, configuredModelAlgorithmAssociationArn, hyperparameters = NULL, environment = NULL, resourceConfig, stoppingCondition = NULL, dataChannels, description = NULL, kmsKeyArn = NULL, tags = NULL) {
+cleanroomsml_create_trained_model <- function(membershipIdentifier, name, configuredModelAlgorithmAssociationArn, hyperparameters = NULL, environment = NULL, resourceConfig, stoppingCondition = NULL, incrementalTrainingDataChannels = NULL, dataChannels, trainingInputMode = NULL, description = NULL, kmsKeyArn = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateTrainedModel",
     http_method = "POST",
@@ -509,7 +541,7 @@ cleanroomsml_create_trained_model <- function(membershipIdentifier, name, config
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$create_trained_model_input(membershipIdentifier = membershipIdentifier, name = name, configuredModelAlgorithmAssociationArn = configuredModelAlgorithmAssociationArn, hyperparameters = hyperparameters, environment = environment, resourceConfig = resourceConfig, stoppingCondition = stoppingCondition, dataChannels = dataChannels, description = description, kmsKeyArn = kmsKeyArn, tags = tags)
+  input <- .cleanroomsml$create_trained_model_input(membershipIdentifier = membershipIdentifier, name = name, configuredModelAlgorithmAssociationArn = configuredModelAlgorithmAssociationArn, hyperparameters = hyperparameters, environment = environment, resourceConfig = resourceConfig, stoppingCondition = stoppingCondition, incrementalTrainingDataChannels = incrementalTrainingDataChannels, dataChannels = dataChannels, trainingInputMode = trainingInputMode, description = description, kmsKeyArn = kmsKeyArn, tags = tags)
   output <- .cleanroomsml$create_trained_model_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -851,10 +883,10 @@ cleanroomsml_delete_ml_input_channel_data <- function(mlInputChannelArn, members
 }
 .cleanroomsml$operations$delete_ml_input_channel_data <- cleanroomsml_delete_ml_input_channel_data
 
-#' Deletes the output of a trained model
+#' Deletes the model artifacts stored by the service
 #'
 #' @description
-#' Deletes the output of a trained model.
+#' Deletes the model artifacts stored by the service.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cleanroomsml_delete_trained_model_output/](https://www.paws-r-sdk.com/docs/cleanroomsml_delete_trained_model_output/) for full documentation.
 #'
@@ -862,11 +894,14 @@ cleanroomsml_delete_ml_input_channel_data <- function(mlInputChannelArn, members
 #' want to delete.
 #' @param membershipIdentifier &#91;required&#93; The membership ID of the member that is deleting the trained model
 #' output.
+#' @param versionIdentifier The version identifier of the trained model to delete. If not specified,
+#' the operation will delete the base version of the trained model. When
+#' specified, only the particular version will be deleted.
 #'
 #' @keywords internal
 #'
 #' @rdname cleanroomsml_delete_trained_model_output
-cleanroomsml_delete_trained_model_output <- function(trainedModelArn, membershipIdentifier) {
+cleanroomsml_delete_trained_model_output <- function(trainedModelArn, membershipIdentifier, versionIdentifier = NULL) {
   op <- new_operation(
     name = "DeleteTrainedModelOutput",
     http_method = "DELETE",
@@ -875,7 +910,7 @@ cleanroomsml_delete_trained_model_output <- function(trainedModelArn, membership
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$delete_trained_model_output_input(trainedModelArn = trainedModelArn, membershipIdentifier = membershipIdentifier)
+  input <- .cleanroomsml$delete_trained_model_output_input(trainedModelArn = trainedModelArn, membershipIdentifier = membershipIdentifier, versionIdentifier = versionIdentifier)
   output <- .cleanroomsml$delete_trained_model_output_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -1061,11 +1096,14 @@ cleanroomsml_get_collaboration_ml_input_channel <- function(mlInputChannelArn, c
 #' return information about.
 #' @param collaborationIdentifier &#91;required&#93; The collaboration ID that contains the trained model that you want to
 #' return information about.
+#' @param versionIdentifier The version identifier of the trained model to retrieve. If not
+#' specified, the operation returns information about the latest version of
+#' the trained model.
 #'
 #' @keywords internal
 #'
 #' @rdname cleanroomsml_get_collaboration_trained_model
-cleanroomsml_get_collaboration_trained_model <- function(trainedModelArn, collaborationIdentifier) {
+cleanroomsml_get_collaboration_trained_model <- function(trainedModelArn, collaborationIdentifier, versionIdentifier = NULL) {
   op <- new_operation(
     name = "GetCollaborationTrainedModel",
     http_method = "GET",
@@ -1074,7 +1112,7 @@ cleanroomsml_get_collaboration_trained_model <- function(trainedModelArn, collab
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$get_collaboration_trained_model_input(trainedModelArn = trainedModelArn, collaborationIdentifier = collaborationIdentifier)
+  input <- .cleanroomsml$get_collaboration_trained_model_input(trainedModelArn = trainedModelArn, collaborationIdentifier = collaborationIdentifier, versionIdentifier = versionIdentifier)
   output <- .cleanroomsml$get_collaboration_trained_model_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -1291,11 +1329,14 @@ cleanroomsml_get_ml_input_channel <- function(mlInputChannelArn, membershipIdent
 #' interested in.
 #' @param membershipIdentifier &#91;required&#93; The membership ID of the member that created the trained model that you
 #' are interested in.
+#' @param versionIdentifier The version identifier of the trained model to retrieve. If not
+#' specified, the operation returns information about the latest version of
+#' the trained model.
 #'
 #' @keywords internal
 #'
 #' @rdname cleanroomsml_get_trained_model
-cleanroomsml_get_trained_model <- function(trainedModelArn, membershipIdentifier) {
+cleanroomsml_get_trained_model <- function(trainedModelArn, membershipIdentifier, versionIdentifier = NULL) {
   op <- new_operation(
     name = "GetTrainedModel",
     http_method = "GET",
@@ -1304,7 +1345,7 @@ cleanroomsml_get_trained_model <- function(trainedModelArn, membershipIdentifier
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$get_trained_model_input(trainedModelArn = trainedModelArn, membershipIdentifier = membershipIdentifier)
+  input <- .cleanroomsml$get_trained_model_input(trainedModelArn = trainedModelArn, membershipIdentifier = membershipIdentifier, versionIdentifier = versionIdentifier)
   output <- .cleanroomsml$get_trained_model_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -1570,11 +1611,14 @@ cleanroomsml_list_collaboration_ml_input_channels <- function(nextToken = NULL, 
 #' model export jobs that you are interested in.
 #' @param trainedModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the trained model that was used to
 #' create the export jobs that you are interested in.
+#' @param trainedModelVersionIdentifier The version identifier of the trained model to filter export jobs by.
+#' When specified, only export jobs for this specific version of the
+#' trained model are returned.
 #'
 #' @keywords internal
 #'
 #' @rdname cleanroomsml_list_collaboration_trained_model_export_jobs
-cleanroomsml_list_collaboration_trained_model_export_jobs <- function(nextToken = NULL, maxResults = NULL, collaborationIdentifier, trainedModelArn) {
+cleanroomsml_list_collaboration_trained_model_export_jobs <- function(nextToken = NULL, maxResults = NULL, collaborationIdentifier, trainedModelArn, trainedModelVersionIdentifier = NULL) {
   op <- new_operation(
     name = "ListCollaborationTrainedModelExportJobs",
     http_method = "GET",
@@ -1583,7 +1627,7 @@ cleanroomsml_list_collaboration_trained_model_export_jobs <- function(nextToken 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "collaborationTrainedModelExportJobs"),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$list_collaboration_trained_model_export_jobs_input(nextToken = nextToken, maxResults = maxResults, collaborationIdentifier = collaborationIdentifier, trainedModelArn = trainedModelArn)
+  input <- .cleanroomsml$list_collaboration_trained_model_export_jobs_input(nextToken = nextToken, maxResults = maxResults, collaborationIdentifier = collaborationIdentifier, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier)
   output <- .cleanroomsml$list_collaboration_trained_model_export_jobs_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -1608,11 +1652,14 @@ cleanroomsml_list_collaboration_trained_model_export_jobs <- function(nextToken 
 #' model inference jobs that you are interested in.
 #' @param trainedModelArn The Amazon Resource Name (ARN) of the trained model that was used to
 #' create the trained model inference jobs that you are interested in.
+#' @param trainedModelVersionIdentifier The version identifier of the trained model to filter inference jobs by.
+#' When specified, only inference jobs that used this specific version of
+#' the trained model are returned.
 #'
 #' @keywords internal
 #'
 #' @rdname cleanroomsml_list_collaboration_trained_model_inference_jobs
-cleanroomsml_list_collaboration_trained_model_inference_jobs <- function(nextToken = NULL, maxResults = NULL, collaborationIdentifier, trainedModelArn = NULL) {
+cleanroomsml_list_collaboration_trained_model_inference_jobs <- function(nextToken = NULL, maxResults = NULL, collaborationIdentifier, trainedModelArn = NULL, trainedModelVersionIdentifier = NULL) {
   op <- new_operation(
     name = "ListCollaborationTrainedModelInferenceJobs",
     http_method = "GET",
@@ -1621,7 +1668,7 @@ cleanroomsml_list_collaboration_trained_model_inference_jobs <- function(nextTok
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "collaborationTrainedModelInferenceJobs"),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$list_collaboration_trained_model_inference_jobs_input(nextToken = nextToken, maxResults = maxResults, collaborationIdentifier = collaborationIdentifier, trainedModelArn = trainedModelArn)
+  input <- .cleanroomsml$list_collaboration_trained_model_inference_jobs_input(nextToken = nextToken, maxResults = maxResults, collaborationIdentifier = collaborationIdentifier, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier)
   output <- .cleanroomsml$list_collaboration_trained_model_inference_jobs_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -1848,11 +1895,14 @@ cleanroomsml_list_tags_for_resource <- function(resourceArn) {
 #' @param membershipIdentifier &#91;required&#93; The membership
 #' @param trainedModelArn The Amazon Resource Name (ARN) of a trained model that was used to
 #' create the trained model inference jobs that you are interested in.
+#' @param trainedModelVersionIdentifier The version identifier of the trained model to filter inference jobs by.
+#' When specified, only inference jobs that used this specific version of
+#' the trained model are returned.
 #'
 #' @keywords internal
 #'
 #' @rdname cleanroomsml_list_trained_model_inference_jobs
-cleanroomsml_list_trained_model_inference_jobs <- function(nextToken = NULL, maxResults = NULL, membershipIdentifier, trainedModelArn = NULL) {
+cleanroomsml_list_trained_model_inference_jobs <- function(nextToken = NULL, maxResults = NULL, membershipIdentifier, trainedModelArn = NULL, trainedModelVersionIdentifier = NULL) {
   op <- new_operation(
     name = "ListTrainedModelInferenceJobs",
     http_method = "GET",
@@ -1861,7 +1911,7 @@ cleanroomsml_list_trained_model_inference_jobs <- function(nextToken = NULL, max
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "trainedModelInferenceJobs"),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$list_trained_model_inference_jobs_input(nextToken = nextToken, maxResults = maxResults, membershipIdentifier = membershipIdentifier, trainedModelArn = trainedModelArn)
+  input <- .cleanroomsml$list_trained_model_inference_jobs_input(nextToken = nextToken, maxResults = maxResults, membershipIdentifier = membershipIdentifier, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier)
   output <- .cleanroomsml$list_trained_model_inference_jobs_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -1870,6 +1920,48 @@ cleanroomsml_list_trained_model_inference_jobs <- function(nextToken = NULL, max
   return(response)
 }
 .cleanroomsml$operations$list_trained_model_inference_jobs <- cleanroomsml_list_trained_model_inference_jobs
+
+#' Returns a list of trained model versions for a specified trained model
+#'
+#' @description
+#' Returns a list of trained model versions for a specified trained model. This operation allows you to view all versions of a trained model, including information about their status and creation details. You can use this to track the evolution of your trained models and select specific versions for inference or further training.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cleanroomsml_list_trained_model_versions/](https://www.paws-r-sdk.com/docs/cleanroomsml_list_trained_model_versions/) for full documentation.
+#'
+#' @param nextToken The pagination token from a previous
+#' [`list_trained_model_versions`][cleanroomsml_list_trained_model_versions]
+#' request. Use this token to retrieve the next page of results.
+#' @param maxResults The maximum number of trained model versions to return in a single page.
+#' The default value is 10, and the maximum value is 100.
+#' @param membershipIdentifier &#91;required&#93; The membership identifier for the collaboration that contains the
+#' trained model.
+#' @param trainedModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the trained model for which to list
+#' versions.
+#' @param status Filter the results to only include trained model versions with the
+#' specified status. Valid values include `CREATE_PENDING`,
+#' `CREATE_IN_PROGRESS`, `ACTIVE`, `CREATE_FAILED`, and others.
+#'
+#' @keywords internal
+#'
+#' @rdname cleanroomsml_list_trained_model_versions
+cleanroomsml_list_trained_model_versions <- function(nextToken = NULL, maxResults = NULL, membershipIdentifier, trainedModelArn, status = NULL) {
+  op <- new_operation(
+    name = "ListTrainedModelVersions",
+    http_method = "GET",
+    http_path = "/memberships/{membershipIdentifier}/trained-models/{trainedModelArn}/versions",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "trainedModels"),
+    stream_api = FALSE
+  )
+  input <- .cleanroomsml$list_trained_model_versions_input(nextToken = nextToken, maxResults = maxResults, membershipIdentifier = membershipIdentifier, trainedModelArn = trainedModelArn, status = status)
+  output <- .cleanroomsml$list_trained_model_versions_output()
+  config <- get_config()
+  svc <- .cleanroomsml$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cleanroomsml$operations$list_trained_model_versions <- cleanroomsml_list_trained_model_versions
 
 #' Returns a list of trained models
 #'
@@ -2122,6 +2214,9 @@ cleanroomsml_start_audience_generation_job <- function(name, configuredAudienceM
 #' @param name &#91;required&#93; The name of the trained model export job.
 #' @param trainedModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the trained model that you want to
 #' export.
+#' @param trainedModelVersionIdentifier The version identifier of the trained model to export. This specifies
+#' which version of the trained model should be exported to the specified
+#' destination.
 #' @param membershipIdentifier &#91;required&#93; The membership ID of the member that is receiving the exported trained
 #' model artifacts.
 #' @param outputConfiguration &#91;required&#93; The output configuration information for the trained model export job.
@@ -2130,7 +2225,7 @@ cleanroomsml_start_audience_generation_job <- function(name, configuredAudienceM
 #' @keywords internal
 #'
 #' @rdname cleanroomsml_start_trained_model_export_job
-cleanroomsml_start_trained_model_export_job <- function(name, trainedModelArn, membershipIdentifier, outputConfiguration, description = NULL) {
+cleanroomsml_start_trained_model_export_job <- function(name, trainedModelArn, trainedModelVersionIdentifier = NULL, membershipIdentifier, outputConfiguration, description = NULL) {
   op <- new_operation(
     name = "StartTrainedModelExportJob",
     http_method = "POST",
@@ -2139,7 +2234,7 @@ cleanroomsml_start_trained_model_export_job <- function(name, trainedModelArn, m
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$start_trained_model_export_job_input(name = name, trainedModelArn = trainedModelArn, membershipIdentifier = membershipIdentifier, outputConfiguration = outputConfiguration, description = description)
+  input <- .cleanroomsml$start_trained_model_export_job_input(name = name, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier, membershipIdentifier = membershipIdentifier, outputConfiguration = outputConfiguration, description = description)
   output <- .cleanroomsml$start_trained_model_export_job_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -2161,6 +2256,9 @@ cleanroomsml_start_trained_model_export_job <- function(name, trainedModelArn, m
 #' @param name &#91;required&#93; The name of the trained model inference job.
 #' @param trainedModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the trained model that is used for
 #' this trained model inference job.
+#' @param trainedModelVersionIdentifier The version identifier of the trained model to use for inference. This
+#' specifies which version of the trained model should be used to generate
+#' predictions on the input data.
 #' @param configuredModelAlgorithmAssociationArn The Amazon Resource Name (ARN) of the configured model algorithm
 #' association that is used for this trained model inference job.
 #' @param resourceConfig &#91;required&#93; Defines the resource configuration for the trained model inference job.
@@ -2208,7 +2306,7 @@ cleanroomsml_start_trained_model_export_job <- function(name, trainedModelArn, m
 #' @keywords internal
 #'
 #' @rdname cleanroomsml_start_trained_model_inference_job
-cleanroomsml_start_trained_model_inference_job <- function(membershipIdentifier, name, trainedModelArn, configuredModelAlgorithmAssociationArn = NULL, resourceConfig, outputConfiguration, dataSource, description = NULL, containerExecutionParameters = NULL, environment = NULL, kmsKeyArn = NULL, tags = NULL) {
+cleanroomsml_start_trained_model_inference_job <- function(membershipIdentifier, name, trainedModelArn, trainedModelVersionIdentifier = NULL, configuredModelAlgorithmAssociationArn = NULL, resourceConfig, outputConfiguration, dataSource, description = NULL, containerExecutionParameters = NULL, environment = NULL, kmsKeyArn = NULL, tags = NULL) {
   op <- new_operation(
     name = "StartTrainedModelInferenceJob",
     http_method = "POST",
@@ -2217,7 +2315,7 @@ cleanroomsml_start_trained_model_inference_job <- function(membershipIdentifier,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$start_trained_model_inference_job_input(membershipIdentifier = membershipIdentifier, name = name, trainedModelArn = trainedModelArn, configuredModelAlgorithmAssociationArn = configuredModelAlgorithmAssociationArn, resourceConfig = resourceConfig, outputConfiguration = outputConfiguration, dataSource = dataSource, description = description, containerExecutionParameters = containerExecutionParameters, environment = environment, kmsKeyArn = kmsKeyArn, tags = tags)
+  input <- .cleanroomsml$start_trained_model_inference_job_input(membershipIdentifier = membershipIdentifier, name = name, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier, configuredModelAlgorithmAssociationArn = configuredModelAlgorithmAssociationArn, resourceConfig = resourceConfig, outputConfiguration = outputConfiguration, dataSource = dataSource, description = description, containerExecutionParameters = containerExecutionParameters, environment = environment, kmsKeyArn = kmsKeyArn, tags = tags)
   output <- .cleanroomsml$start_trained_model_inference_job_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)

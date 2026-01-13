@@ -2,15 +2,17 @@
 % Please edit documentation in R/ssmcontacts_operations.R
 \name{ssmcontacts_list_tags_for_resource}
 \alias{ssmcontacts_list_tags_for_resource}
-\title{Lists the tags of an escalation plan or contact}
+\title{Lists the tags of a contact, escalation plan, rotation, or on-call
+schedule}
 \usage{
 ssmcontacts_list_tags_for_resource(ResourceARN)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the contact or escalation plan.}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the contact, escalation plan,
+rotation, or on-call schedule.}
 }
 \description{
-Lists the tags of an escalation plan or contact.
+Lists the tags of a contact, escalation plan, rotation, or on-call schedule.
 
 See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_list_tags_for_resource/} for full documentation.
 }

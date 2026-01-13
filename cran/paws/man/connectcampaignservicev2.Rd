@@ -106,12 +106,14 @@ Provide APIs to create and manage Amazon Connect Campaigns.
 \link[paws.customer.engagement:connectcampaignservicev2_get_campaign_state]{get_campaign_state} \tab Get state of a campaign for the specified Amazon Connect account\cr
 \link[paws.customer.engagement:connectcampaignservicev2_get_campaign_state_batch]{get_campaign_state_batch} \tab Get state of campaigns for the specified Amazon Connect account\cr
 \link[paws.customer.engagement:connectcampaignservicev2_get_connect_instance_config]{get_connect_instance_config} \tab Get the specific Connect instance config\cr
+\link[paws.customer.engagement:connectcampaignservicev2_get_instance_communication_limits]{get_instance_communication_limits} \tab Get the instance communication limits\cr
 \link[paws.customer.engagement:connectcampaignservicev2_get_instance_onboarding_job_status]{get_instance_onboarding_job_status} \tab Get the specific instance onboarding job status\cr
 \link[paws.customer.engagement:connectcampaignservicev2_list_campaigns]{list_campaigns} \tab Provides summary information about the campaigns under the specified Amazon Connect account\cr
 \link[paws.customer.engagement:connectcampaignservicev2_list_connect_instance_integrations]{list_connect_instance_integrations} \tab Provides summary information about the integration under the specified Connect instance\cr
 \link[paws.customer.engagement:connectcampaignservicev2_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a resource\cr
 \link[paws.customer.engagement:connectcampaignservicev2_pause_campaign]{pause_campaign} \tab Pauses a campaign for the specified Amazon Connect account\cr
 \link[paws.customer.engagement:connectcampaignservicev2_put_connect_instance_integration]{put_connect_instance_integration} \tab Put or update the integration for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connectcampaignservicev2_put_instance_communication_limits]{put_instance_communication_limits} \tab Put the instance communication limits\cr
 \link[paws.customer.engagement:connectcampaignservicev2_put_outbound_request_batch]{put_outbound_request_batch} \tab Creates outbound requests for the specified campaign Amazon Connect account\cr
 \link[paws.customer.engagement:connectcampaignservicev2_put_profile_outbound_request_batch]{put_profile_outbound_request_batch} \tab Takes in a list of profile outbound requests to be placed as part of an outbound campaign\cr
 \link[paws.customer.engagement:connectcampaignservicev2_resume_campaign]{resume_campaign} \tab Stops a campaign for the specified Amazon Connect account\cr

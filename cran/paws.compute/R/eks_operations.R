@@ -270,18 +270,20 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' @param configurationValues The set of configuration values for the add-on that's created. The
 #' values that you provide are validated against the schema returned by
 #' [`describe_addon_configuration`][eks_describe_addon_configuration].
-#' @param podIdentityAssociations An array of Pod Identity Assocations to be created. Each EKS Pod
-#' Identity association maps a Kubernetes service account to an IAM Role.
+#' @param podIdentityAssociations An array of EKS Pod Identity associations to be created. Each
+#' association maps a Kubernetes service account to an IAM role.
 #' 
 #' For more information, see [Attach an IAM Role to an Amazon EKS add-on
-#' using Pod
+#' using EKS Pod
 #' Identity](https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html)
 #' in the *Amazon EKS User Guide*.
+#' @param namespaceConfig The namespace configuration for the addon. If specified, this will
+#' override the default namespace for the addon.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_create_addon
-eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, serviceAccountRoleArn = NULL, resolveConflicts = NULL, clientRequestToken = NULL, tags = NULL, configurationValues = NULL, podIdentityAssociations = NULL) {
+eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, serviceAccountRoleArn = NULL, resolveConflicts = NULL, clientRequestToken = NULL, tags = NULL, configurationValues = NULL, podIdentityAssociations = NULL, namespaceConfig = NULL) {
   op <- new_operation(
     name = "CreateAddon",
     http_method = "POST",
@@ -290,7 +292,7 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$create_addon_input(clusterName = clusterName, addonName = addonName, addonVersion = addonVersion, serviceAccountRoleArn = serviceAccountRoleArn, resolveConflicts = resolveConflicts, clientRequestToken = clientRequestToken, tags = tags, configurationValues = configurationValues, podIdentityAssociations = podIdentityAssociations)
+  input <- .eks$create_addon_input(clusterName = clusterName, addonName = addonName, addonVersion = addonVersion, serviceAccountRoleArn = serviceAccountRoleArn, resolveConflicts = resolveConflicts, clientRequestToken = clientRequestToken, tags = tags, configurationValues = configurationValues, podIdentityAssociations = podIdentityAssociations, namespaceConfig = namespaceConfig)
   output <- .eks$create_addon_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -299,6 +301,81 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
   return(response)
 }
 .eks$operations$create_addon <- eks_create_addon
+
+#' Creates a managed capability resource for an Amazon EKS cluster
+#'
+#' @description
+#' Creates a managed capability resource for an Amazon EKS cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_create_capability/](https://www.paws-r-sdk.com/docs/eks_create_capability/) for full documentation.
+#'
+#' @param capabilityName &#91;required&#93; A unique name for the capability. The name must be unique within your
+#' cluster and can contain alphanumeric characters, hyphens, and
+#' underscores.
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster where you want to create the
+#' capability.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. This token is valid for 24 hours after
+#' creation. If you retry a request with the same client request token and
+#' the same parameters after the original request has completed
+#' successfully, the result of the original request is returned.
+#' @param type &#91;required&#93; The type of capability to create. Valid values are:
+#' 
+#' -   `ACK` – Amazon Web Services Controllers for Kubernetes (ACK), which
+#'     lets you manage resources directly from Kubernetes.
+#' 
+#' -   `ARGOCD` – Argo CD for GitOps-based continuous delivery.
+#' 
+#' -   `KRO` – Kube Resource Orchestrator (KRO) for composing and managing
+#'     custom Kubernetes resources.
+#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that the capability uses
+#' to interact with Amazon Web Services services. This role must have a
+#' trust policy that allows the EKS service principal to assume it, and it
+#' must have the necessary permissions for the capability type you're
+#' creating.
+#' 
+#' For ACK capabilities, the role needs permissions to manage the resources
+#' you want to control through Kubernetes. For Argo CD capabilities, the
+#' role needs permissions to access Git repositories and Secrets Manager.
+#' For KRO capabilities, the role needs permissions based on the resources
+#' you'll be orchestrating.
+#' @param configuration The configuration settings for the capability. The structure of this
+#' object varies depending on the capability type. For Argo CD
+#' capabilities, you can configure IAM Identity CenterIAM; Identity Center
+#' integration, RBAC role mappings, and network access settings.
+#' @param tags 
+#' @param deletePropagationPolicy &#91;required&#93; Specifies how Kubernetes resources managed by the capability should be
+#' handled when the capability is deleted. Currently, the only supported
+#' value is `RETAIN` which retains all Kubernetes resources managed by the
+#' capability when the capability is deleted.
+#' 
+#' Because resources are retained, all Kubernetes resources created by the
+#' capability should be deleted from the cluster before deleting the
+#' capability itself. After the capability is deleted, these resources
+#' become difficult to manage because the controller is no longer
+#' available.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_create_capability
+eks_create_capability <- function(capabilityName, clusterName, clientRequestToken = NULL, type, roleArn, configuration = NULL, tags = NULL, deletePropagationPolicy) {
+  op <- new_operation(
+    name = "CreateCapability",
+    http_method = "POST",
+    http_path = "/clusters/{name}/capabilities",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$create_capability_input(capabilityName = capabilityName, clusterName = clusterName, clientRequestToken = clientRequestToken, type = type, roleArn = roleArn, configuration = configuration, tags = tags, deletePropagationPolicy = deletePropagationPolicy)
+  output <- .eks$create_capability_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$create_capability <- eks_create_capability
 
 #' Creates an Amazon EKS control plane
 #'
@@ -360,7 +437,8 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @param bootstrapSelfManagedAddons If you set this value to `False` when creating a cluster, the default
 #' networking add-ons will not be installed.
 #' 
-#' The default networking addons include vpc-cni, coredns, and kube-proxy.
+#' The default networking add-ons include `vpc-cni`, `coredns`, and
+#' `kube-proxy`.
 #' 
 #' Use this option when you plan to install third-party alternative add-ons
 #' or self-manage the default networking add-ons.
@@ -397,11 +475,17 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' creating your EKS Auto Mode cluster. If the block storage capability is
 #' enabled, EKS Auto Mode will create and delete EBS volumes in your Amazon
 #' Web Services account.
+#' @param deletionProtection Indicates whether to enable deletion protection for the cluster. When
+#' enabled, the cluster cannot be deleted unless deletion protection is
+#' first disabled. This helps prevent accidental cluster deletion. Default
+#' value is `false`.
+#' @param controlPlaneScalingConfig The control plane scaling tier configuration. For more information, see
+#' EKS Provisioned Control Plane in the Amazon EKS User Guide.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_create_cluster
-eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL, accessConfig = NULL, bootstrapSelfManagedAddons = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, remoteNetworkConfig = NULL, computeConfig = NULL, storageConfig = NULL) {
+eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL, accessConfig = NULL, bootstrapSelfManagedAddons = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, remoteNetworkConfig = NULL, computeConfig = NULL, storageConfig = NULL, deletionProtection = NULL, controlPlaneScalingConfig = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -410,7 +494,7 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig, accessConfig = accessConfig, bootstrapSelfManagedAddons = bootstrapSelfManagedAddons, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, remoteNetworkConfig = remoteNetworkConfig, computeConfig = computeConfig, storageConfig = storageConfig)
+  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig, accessConfig = accessConfig, bootstrapSelfManagedAddons = bootstrapSelfManagedAddons, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, remoteNetworkConfig = remoteNetworkConfig, computeConfig = computeConfig, storageConfig = storageConfig, deletionProtection = deletionProtection, controlPlaneScalingConfig = controlPlaneScalingConfig)
   output <- .eks$create_cluster_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -672,19 +756,19 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #' Amazon EKS cluster and an IAM role with EKS Pod Identity
 #'
 #' @description
-#' Creates an EKS Pod Identity association between a service account in an Amazon EKS cluster and an IAM role with *EKS Pod Identity*. Use EKS Pod Identity to give temporary IAM credentials to pods and the credentials are rotated automatically.
+#' Creates an EKS Pod Identity association between a service account in an Amazon EKS cluster and an IAM role with *EKS Pod Identity*. Use EKS Pod Identity to give temporary IAM credentials to Pods and the credentials are rotated automatically.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_create_pod_identity_association/](https://www.paws-r-sdk.com/docs/eks_create_pod_identity_association/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the cluster to create the association in.
+#' @param clusterName &#91;required&#93; The name of the cluster to create the EKS Pod Identity association in.
 #' @param namespace &#91;required&#93; The name of the Kubernetes namespace inside the cluster to create the
-#' association in. The service account and the pods that use the service
-#' account must be in this namespace.
+#' EKS Pod Identity association in. The service account and the Pods that
+#' use the service account must be in this namespace.
 #' @param serviceAccount &#91;required&#93; The name of the Kubernetes service account inside the cluster to
 #' associate the IAM credentials with.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to associate with the
 #' service account. The EKS Pod Identity agent manages credentials to
-#' assume this role for applications in the containers in the pods that use
+#' assume this role for applications in the containers in the Pods that use
 #' this service account.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
@@ -716,11 +800,47 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #'     Amazon Web Services use. You cannot edit or delete tag keys or
 #'     values with this prefix. Tags with this prefix do not count against
 #'     your tags per resource limit.
+#' @param disableSessionTags Disable the automatic sessions tags that are appended by EKS Pod
+#' Identity.
+#' 
+#' EKS Pod Identity adds a pre-defined set of session tags when it assumes
+#' the role. You can use these tags to author a single role that can work
+#' across resources by allowing access to Amazon Web Services resources
+#' based on matching tags. By default, EKS Pod Identity attaches six tags,
+#' including tags for cluster name, namespace, and service account name.
+#' For the list of tags added by EKS Pod Identity, see [List of session
+#' tags added by EKS Pod
+#' Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-id-abac.html#pod-id-abac-tags)
+#' in the *Amazon EKS User Guide*.
+#' 
+#' Amazon Web Services compresses inline session policies, managed policy
+#' ARNs, and session tags into a packed binary format that has a separate
+#' limit. If you receive a `PackedPolicyTooLarge` error indicating the
+#' packed binary format has exceeded the size limit, you can attempt to
+#' reduce the size by disabling the session tags added by EKS Pod Identity.
+#' @param targetRoleArn The Amazon Resource Name (ARN) of the target IAM role to associate with
+#' the service account. This role is assumed by using the EKS Pod Identity
+#' association role, then the credentials for this role are injected into
+#' the Pod.
+#' 
+#' When you run applications on Amazon EKS, your application might need to
+#' access Amazon Web Services resources from a different role that exists
+#' in the same or different Amazon Web Services account. For example, your
+#' application running in “Account A” might need to access resources, such
+#' as Amazon S3 buckets in “Account B” or within “Account A” itself. You
+#' can create a association to access Amazon Web Services resources in
+#' “Account B” by creating two IAM roles: a role in “Account A” and a role
+#' in “Account B” (which can be the same or different account), each with
+#' the necessary trust and permission policies. After you provide these
+#' roles in the *IAM role* and *Target IAM role* fields, EKS will perform
+#' role chaining to ensure your application gets the required permissions.
+#' This means Role A will assume Role B, allowing your Pods to securely
+#' access resources like S3 buckets in the target account.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_create_pod_identity_association
-eks_create_pod_identity_association <- function(clusterName, namespace, serviceAccount, roleArn, clientRequestToken = NULL, tags = NULL) {
+eks_create_pod_identity_association <- function(clusterName, namespace, serviceAccount, roleArn, clientRequestToken = NULL, tags = NULL, disableSessionTags = NULL, targetRoleArn = NULL) {
   op <- new_operation(
     name = "CreatePodIdentityAssociation",
     http_method = "POST",
@@ -729,7 +849,7 @@ eks_create_pod_identity_association <- function(clusterName, namespace, serviceA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$create_pod_identity_association_input(clusterName = clusterName, namespace = namespace, serviceAccount = serviceAccount, roleArn = roleArn, clientRequestToken = clientRequestToken, tags = tags)
+  input <- .eks$create_pod_identity_association_input(clusterName = clusterName, namespace = namespace, serviceAccount = serviceAccount, roleArn = roleArn, clientRequestToken = clientRequestToken, tags = tags, disableSessionTags = disableSessionTags, targetRoleArn = targetRoleArn)
   output <- .eks$create_pod_identity_association_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -807,6 +927,39 @@ eks_delete_addon <- function(clusterName, addonName, preserve = NULL) {
   return(response)
 }
 .eks$operations$delete_addon <- eks_delete_addon
+
+#' Deletes a managed capability from your Amazon EKS cluster
+#'
+#' @description
+#' Deletes a managed capability from your Amazon EKS cluster. When you delete a capability, Amazon EKS removes the capability infrastructure but retains all resources that were managed by the capability.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_delete_capability/](https://www.paws-r-sdk.com/docs/eks_delete_capability/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that contains the capability you want
+#' to delete.
+#' @param capabilityName &#91;required&#93; The name of the capability to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_delete_capability
+eks_delete_capability <- function(clusterName, capabilityName) {
+  op <- new_operation(
+    name = "DeleteCapability",
+    http_method = "DELETE",
+    http_path = "/clusters/{name}/capabilities/{capabilityName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$delete_capability_input(clusterName = clusterName, capabilityName = capabilityName)
+  output <- .eks$delete_capability_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$delete_capability <- eks_delete_capability
 
 #' Deletes an Amazon EKS cluster control plane
 #'
@@ -1155,6 +1308,41 @@ eks_describe_addon_versions <- function(kubernetesVersion = NULL, maxResults = N
 }
 .eks$operations$describe_addon_versions <- eks_describe_addon_versions
 
+#' Returns detailed information about a specific managed capability in your
+#' Amazon EKS cluster, including its current status, configuration, health
+#' information, and any issues that may be affecting its operation
+#'
+#' @description
+#' Returns detailed information about a specific managed capability in your Amazon EKS cluster, including its current status, configuration, health information, and any issues that may be affecting its operation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_capability/](https://www.paws-r-sdk.com/docs/eks_describe_capability/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that contains the capability you want
+#' to describe.
+#' @param capabilityName &#91;required&#93; The name of the capability to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_capability
+eks_describe_capability <- function(clusterName, capabilityName) {
+  op <- new_operation(
+    name = "DescribeCapability",
+    http_method = "GET",
+    http_path = "/clusters/{name}/capabilities/{capabilityName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$describe_capability_input(clusterName = clusterName, capabilityName = capabilityName)
+  output <- .eks$describe_capability_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_capability <- eks_describe_capability
+
 #' Describes an Amazon EKS cluster
 #'
 #' @description
@@ -1354,6 +1542,38 @@ eks_describe_insight <- function(clusterName, id) {
 }
 .eks$operations$describe_insight <- eks_describe_insight
 
+#' Returns the status of the latest on-demand cluster insights refresh
+#' operation
+#'
+#' @description
+#' Returns the status of the latest on-demand cluster insights refresh operation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_insights_refresh/](https://www.paws-r-sdk.com/docs/eks_describe_insights_refresh/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the cluster associated with the insights refresh operation.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_insights_refresh
+eks_describe_insights_refresh <- function(clusterName) {
+  op <- new_operation(
+    name = "DescribeInsightsRefresh",
+    http_method = "GET",
+    http_path = "/clusters/{name}/insights-refresh",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$describe_insights_refresh_input(clusterName = clusterName)
+  output <- .eks$describe_insights_refresh_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_insights_refresh <- eks_describe_insights_refresh
+
 #' Describes a managed node group
 #'
 #' @description
@@ -1432,11 +1652,12 @@ eks_describe_pod_identity_association <- function(clusterName, associationId) {
 #' @param addonName The name of the add-on. The name must match one of the names returned by
 #' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' . This parameter is required if the update is an add-on update.
+#' @param capabilityName The name of the capability for which you want to describe updates.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_describe_update
-eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName = NULL) {
+eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName = NULL, capabilityName = NULL) {
   op <- new_operation(
     name = "DescribeUpdate",
     http_method = "GET",
@@ -1445,7 +1666,7 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$describe_update_input(name = name, updateId = updateId, nodegroupName = nodegroupName, addonName = addonName)
+  input <- .eks$describe_update_input(name = name, updateId = updateId, nodegroupName = nodegroupName, addonName = addonName, capabilityName = capabilityName)
   output <- .eks$describe_update_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -1712,6 +1933,46 @@ eks_list_associated_access_policies <- function(clusterName, principalArn, maxRe
 }
 .eks$operations$list_associated_access_policies <- eks_list_associated_access_policies
 
+#' Lists all managed capabilities in your Amazon EKS cluster
+#'
+#' @description
+#' Lists all managed capabilities in your Amazon EKS cluster. You can use this operation to get an overview of all capabilities and their current status.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_list_capabilities/](https://www.paws-r-sdk.com/docs/eks_list_capabilities/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster for which you want to list
+#' capabilities.
+#' @param nextToken The `nextToken` value returned from a previous paginated request, where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is null when there are
+#' no more results to return.
+#' @param maxResults The maximum number of results to return in a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value. If you don't specify a value, the default is 100 results.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_list_capabilities
+eks_list_capabilities <- function(clusterName, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListCapabilities",
+    http_method = "GET",
+    http_path = "/clusters/{name}/capabilities",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "capabilities"),
+    stream_api = FALSE
+  )
+  input <- .eks$list_capabilities_input(clusterName = clusterName, nextToken = nextToken, maxResults = maxResults)
+  output <- .eks$list_capabilities_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$list_capabilities <- eks_list_capabilities
+
 #' Lists the Amazon EKS clusters in your Amazon Web Services account in the
 #' specified Amazon Web Services Region
 #'
@@ -1904,7 +2165,7 @@ eks_list_identity_provider_configs <- function(clusterName, maxResults = NULL, n
 #' Returns a list of all insights checked for against the specified cluster
 #'
 #' @description
-#' Returns a list of all insights checked for against the specified cluster. You can filter which insights are returned by category, associated Kubernetes version, and status.
+#' Returns a list of all insights checked for against the specified cluster. You can filter which insights are returned by category, associated Kubernetes version, and status. The default filter lists all categories and every status.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_list_insights/](https://www.paws-r-sdk.com/docs/eks_list_insights/) for full documentation.
 #'
@@ -2095,6 +2356,7 @@ eks_list_tags_for_resource <- function(resourceArn) {
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to list updates for.
 #' @param nodegroupName The name of the Amazon EKS managed node group to list updates for.
 #' @param addonName The names of the installed add-ons that have available updates.
+#' @param capabilityName The name of the capability for which you want to list updates.
 #' @param nextToken The `nextToken` value returned from a previous paginated request, where
 #' `maxResults` was used and the results exceeded the value of that
 #' parameter. Pagination continues from the end of the previous results
@@ -2114,7 +2376,7 @@ eks_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname eks_list_updates
-eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, nextToken = NULL, maxResults = NULL) {
+eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, capabilityName = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListUpdates",
     http_method = "GET",
@@ -2123,7 +2385,7 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, nextT
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "updateIds"),
     stream_api = FALSE
   )
-  input <- .eks$list_updates_input(name = name, nodegroupName = nodegroupName, addonName = addonName, nextToken = nextToken, maxResults = maxResults)
+  input <- .eks$list_updates_input(name = name, nodegroupName = nodegroupName, addonName = addonName, capabilityName = capabilityName, nextToken = nextToken, maxResults = maxResults)
   output <- .eks$list_updates_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -2170,6 +2432,38 @@ eks_register_cluster <- function(name, connectorConfig, clientRequestToken = NUL
   return(response)
 }
 .eks$operations$register_cluster <- eks_register_cluster
+
+#' Initiates an on-demand refresh operation for cluster insights, getting
+#' the latest analysis outside of the standard refresh schedule
+#'
+#' @description
+#' Initiates an on-demand refresh operation for cluster insights, getting the latest analysis outside of the standard refresh schedule.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_start_insights_refresh/](https://www.paws-r-sdk.com/docs/eks_start_insights_refresh/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the cluster for the refresh insights operation.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_start_insights_refresh
+eks_start_insights_refresh <- function(clusterName) {
+  op <- new_operation(
+    name = "StartInsightsRefresh",
+    http_method = "POST",
+    http_path = "/clusters/{name}/insights-refresh",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$start_insights_refresh_input(clusterName = clusterName)
+  output <- .eks$start_insights_refresh_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$start_insights_refresh <- eks_start_insights_refresh
 
 #' Associates the specified tags to an Amazon EKS resource with the
 #' specified resourceArn
@@ -2346,13 +2640,13 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' @param configurationValues The set of configuration values for the add-on that's created. The
 #' values that you provide are validated against the schema returned by
 #' [`describe_addon_configuration`][eks_describe_addon_configuration].
-#' @param podIdentityAssociations An array of Pod Identity Assocations to be updated. Each EKS Pod
-#' Identity association maps a Kubernetes service account to an IAM Role.
-#' If this value is left blank, no change. If an empty array is provided,
-#' existing Pod Identity Assocations owned by the Addon are deleted.
+#' @param podIdentityAssociations An array of EKS Pod Identity associations to be updated. Each
+#' association maps a Kubernetes service account to an IAM role. If this
+#' value is left blank, no change. If an empty array is provided, existing
+#' associations owned by the add-on are deleted.
 #' 
 #' For more information, see [Attach an IAM Role to an Amazon EKS add-on
-#' using Pod
+#' using EKS Pod
 #' Identity](https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html)
 #' in the *Amazon EKS User Guide*.
 #'
@@ -2377,6 +2671,53 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
   return(response)
 }
 .eks$operations$update_addon <- eks_update_addon
+
+#' Updates the configuration of a managed capability in your Amazon EKS
+#' cluster
+#'
+#' @description
+#' Updates the configuration of a managed capability in your Amazon EKS cluster. You can update the IAM role, configuration settings, and delete propagation policy for a capability.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_update_capability/](https://www.paws-r-sdk.com/docs/eks_update_capability/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that contains the capability you want
+#' to update configuration for.
+#' @param capabilityName &#91;required&#93; The name of the capability to update configuration for.
+#' @param roleArn The Amazon Resource Name (ARN) of the IAM role that the capability uses
+#' to interact with Amazon Web Services services. If you specify a new role
+#' ARN, the capability will start using the new role for all subsequent
+#' operations.
+#' @param configuration The updated configuration settings for the capability. You only need to
+#' specify the configuration parameters you want to change. For Argo CD
+#' capabilities, you can update RBAC role mappings and network access
+#' settings.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. This token is valid for 24 hours after
+#' creation.
+#' @param deletePropagationPolicy The updated delete propagation policy for the capability. Currently, the
+#' only supported value is `RETAIN`.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_update_capability
+eks_update_capability <- function(clusterName, capabilityName, roleArn = NULL, configuration = NULL, clientRequestToken = NULL, deletePropagationPolicy = NULL) {
+  op <- new_operation(
+    name = "UpdateCapability",
+    http_method = "POST",
+    http_path = "/clusters/{name}/capabilities/{capabilityName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$update_capability_input(clusterName = clusterName, capabilityName = capabilityName, roleArn = roleArn, configuration = configuration, clientRequestToken = clientRequestToken, deletePropagationPolicy = deletePropagationPolicy)
+  output <- .eks$update_capability_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$update_capability <- eks_update_capability
 
 #' Updates an Amazon EKS cluster configuration
 #'
@@ -2430,11 +2771,17 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @param storageConfig Update the configuration of the block storage capability of your EKS
 #' Auto Mode cluster. For example, enable the capability.
 #' @param remoteNetworkConfig 
+#' @param deletionProtection Specifies whether to enable or disable deletion protection for the
+#' cluster. When enabled (`true`), the cluster cannot be deleted until
+#' deletion protection is explicitly disabled. When disabled (`false`), the
+#' cluster can be deleted normally.
+#' @param controlPlaneScalingConfig The control plane scaling tier configuration. For more information, see
+#' EKS Provisioned Control Plane in the Amazon EKS User Guide.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_update_cluster_config
-eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, computeConfig = NULL, kubernetesNetworkConfig = NULL, storageConfig = NULL, remoteNetworkConfig = NULL) {
+eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, computeConfig = NULL, kubernetesNetworkConfig = NULL, storageConfig = NULL, remoteNetworkConfig = NULL, deletionProtection = NULL, controlPlaneScalingConfig = NULL) {
   op <- new_operation(
     name = "UpdateClusterConfig",
     http_method = "POST",
@@ -2443,7 +2790,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, computeConfig = computeConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, storageConfig = storageConfig, remoteNetworkConfig = remoteNetworkConfig)
+  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, computeConfig = computeConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, storageConfig = storageConfig, remoteNetworkConfig = remoteNetworkConfig, deletionProtection = deletionProtection, controlPlaneScalingConfig = controlPlaneScalingConfig)
   output <- .eks$update_cluster_config_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -2578,13 +2925,14 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param nodegroupName &#91;required&#93; The name of the managed node group to update.
 #' @param version The Kubernetes version to update to. If no version is specified, then
-#' the Kubernetes version of the node group does not change. You can
-#' specify the Kubernetes version of the cluster to update the node group
-#' to the latest AMI version of the cluster's Kubernetes version. If you
-#' specify `launchTemplate`, and your launch template uses a custom AMI,
-#' then don't specify `version`, or the node group update will fail. For
-#' more information about using launch templates with Amazon EKS, see
-#' [Customizing managed nodes with launch
+#' the node group will be updated to match the cluster's current Kubernetes
+#' version, and the latest available AMI for that version will be used. You
+#' can also specify the Kubernetes version of the cluster to update the
+#' node group to the latest AMI version of the cluster's Kubernetes
+#' version. If you specify `launchTemplate`, and your launch template uses
+#' a custom AMI, then don't specify `version`, or the node group update
+#' will fail. For more information about using launch templates with Amazon
+#' EKS, see [Customizing managed nodes with launch
 #' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param releaseVersion The AMI version of the Amazon EKS optimized AMI to use for the update.
@@ -2643,20 +2991,56 @@ eks_update_nodegroup_version <- function(clusterName, nodegroupName, version = N
 #' Updates a EKS Pod Identity association
 #'
 #' @description
-#' Updates a EKS Pod Identity association. Only the IAM role can be changed; an association can't be moved between clusters, namespaces, or service accounts. If you need to edit the namespace or service account, you need to delete the association and then create a new association with your desired settings.
+#' Updates a EKS Pod Identity association. In an update, you can change the IAM role, the target IAM role, or `disableSessionTags`. You must change at least one of these in an update. An association can't be moved between clusters, namespaces, or service accounts. If you need to edit the namespace or service account, you need to delete the association and then create a new association with your desired settings.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_update_pod_identity_association/](https://www.paws-r-sdk.com/docs/eks_update_pod_identity_association/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster that you want to update the association in.
 #' @param associationId &#91;required&#93; The ID of the association to be updated.
-#' @param roleArn The new IAM role to change the
+#' @param roleArn The new IAM role to change in the association.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#' @param disableSessionTags Disable the automatic sessions tags that are appended by EKS Pod
+#' Identity.
+#' 
+#' EKS Pod Identity adds a pre-defined set of session tags when it assumes
+#' the role. You can use these tags to author a single role that can work
+#' across resources by allowing access to Amazon Web Services resources
+#' based on matching tags. By default, EKS Pod Identity attaches six tags,
+#' including tags for cluster name, namespace, and service account name.
+#' For the list of tags added by EKS Pod Identity, see [List of session
+#' tags added by EKS Pod
+#' Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-id-abac.html#pod-id-abac-tags)
+#' in the *Amazon EKS User Guide*.
+#' 
+#' Amazon Web Services compresses inline session policies, managed policy
+#' ARNs, and session tags into a packed binary format that has a separate
+#' limit. If you receive a `PackedPolicyTooLarge` error indicating the
+#' packed binary format has exceeded the size limit, you can attempt to
+#' reduce the size by disabling the session tags added by EKS Pod Identity.
+#' @param targetRoleArn The Amazon Resource Name (ARN) of the target IAM role to associate with
+#' the service account. This role is assumed by using the EKS Pod Identity
+#' association role, then the credentials for this role are injected into
+#' the Pod.
+#' 
+#' When you run applications on Amazon EKS, your application might need to
+#' access Amazon Web Services resources from a different role that exists
+#' in the same or different Amazon Web Services account. For example, your
+#' application running in “Account A” might need to access resources, such
+#' as buckets in “Account B” or within “Account A” itself. You can create a
+#' association to access Amazon Web Services resources in “Account B” by
+#' creating two IAM roles: a role in “Account A” and a role in “Account B”
+#' (which can be the same or different account), each with the necessary
+#' trust and permission policies. After you provide these roles in the *IAM
+#' role* and *Target IAM role* fields, EKS will perform role chaining to
+#' ensure your application gets the required permissions. This means Role A
+#' will assume Role B, allowing your Pods to securely access resources like
+#' S3 buckets in the target account.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_update_pod_identity_association
-eks_update_pod_identity_association <- function(clusterName, associationId, roleArn = NULL, clientRequestToken = NULL) {
+eks_update_pod_identity_association <- function(clusterName, associationId, roleArn = NULL, clientRequestToken = NULL, disableSessionTags = NULL, targetRoleArn = NULL) {
   op <- new_operation(
     name = "UpdatePodIdentityAssociation",
     http_method = "POST",
@@ -2665,7 +3049,7 @@ eks_update_pod_identity_association <- function(clusterName, associationId, role
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_pod_identity_association_input(clusterName = clusterName, associationId = associationId, roleArn = roleArn, clientRequestToken = clientRequestToken)
+  input <- .eks$update_pod_identity_association_input(clusterName = clusterName, associationId = associationId, roleArn = roleArn, clientRequestToken = clientRequestToken, disableSessionTags = disableSessionTags, targetRoleArn = targetRoleArn)
   output <- .eks$update_pod_identity_association_output()
   config <- get_config()
   svc <- .eks$service(config, op)

@@ -13,10 +13,13 @@ arn:aws:logs:\emph{region}:\emph{account-id}:log-group:\emph{log_group_name} Don
 include an * at the end.}
 
 \item{policyDocument}{[required] The index policy document, in JSON format. The following is an example
-of an index policy document that creates two indexes, \code{RequestId} and
-\code{TransactionId}.
+of an index policy document that creates indexes with different types.
 
-\verb{"policyDocument": "\{ "Fields": [ "RequestId", "TransactionId" ] \}"}
+\verb{"policyDocument": "\{"Fields": [ "TransactionId" ], "FieldsV2": \{"RequestId": \{"type": "FIELD_INDEX"\}, "APIName": \{"type": "FACET"\}, "StatusCode": \{"type": "FACET"\}\}\}"}
+
+You can use \code{FieldsV2} to specify the type for each field. Supported
+types are \code{FIELD_INDEX} and \code{FACET}. Field names within \code{Fields} and
+\code{FieldsV2} must be mutually exclusive.
 
 The policy document must include at least one field index. For more
 information about the fields that can be included and other

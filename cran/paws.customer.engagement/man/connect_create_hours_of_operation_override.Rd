@@ -27,12 +27,12 @@ connect_create_hours_of_operation_override(
 \item{Config}{[required] Configuration information for the hours of operation override: day,
 start time, and end time.}
 
-\item{EffectiveFrom}{[required] The date from when the hours of operation override would be effective.}
+\item{EffectiveFrom}{[required] The date from when the hours of operation override is effective.}
 
-\item{EffectiveTill}{[required] The date until when the hours of operation override would be effective.}
+\item{EffectiveTill}{[required] The date until when the hours of operation override is effective.}
 }
 \description{
-Creates an hours of operation override in an Amazon Connect hours of operation resource
+Creates an hours of operation override in an Amazon Connect hours of operation resource.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_create_hours_of_operation_override/} for full documentation.
 }

@@ -1074,10 +1074,10 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #' 
 #' To determine which version you're using, see [Determining the global
 #' table version you are
-#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
 #' version 2019.11.21 (Current), see [Upgrading global
-#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/).
 #' 
 #' If you want to add a new replica table to a global table, each of the
 #' following conditions must be true:
@@ -1132,7 +1132,7 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #'     ReplicationGroup = list(
 #'       list(
 #'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -1145,7 +1145,7 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #'         WarmThroughput = list(
 #'           ReadUnitsPerSecond = 123,
 #'           WriteUnitsPerSecond = 123,
-#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
@@ -1467,7 +1467,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'         KeyType = "HASH"|"RANGE"
 #'       )
 #'     ),
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
+#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'     CreationDateTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -1564,7 +1564,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'     Replicas = list(
 #'       list(
 #'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -1577,7 +1577,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'         WarmThroughput = list(
 #'           ReadUnitsPerSecond = 123,
 #'           WriteUnitsPerSecond = 123,
-#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
@@ -1604,6 +1604,12 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'             "2015-01-01"
 #'           )
 #'         )
+#'       )
+#'     ),
+#'     GlobalTableWitnesses = list(
+#'       list(
+#'         RegionName = "string",
+#'         WitnessStatus = "CREATING"|"DELETING"|"ACTIVE"
 #'       )
 #'     ),
 #'     RestoreSummary = list(
@@ -1643,7 +1649,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'     WarmThroughput = list(
 #'       ReadUnitsPerSecond = 123,
 #'       WriteUnitsPerSecond = 123,
-#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'     ),
 #'     MultiRegionConsistency = "EVENTUAL"|"STRONG"
 #'   )
@@ -2434,9 +2440,6 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #' not exist, DynamoDB returns a `ResourceNotFoundException`. If table is
 #' already in the `DELETING` state, no error is returned.
 #' 
-#' For global tables, this operation only applies to global tables using
-#' Version 2019.11.21 (Current version).
-#' 
 #' DynamoDB might continue to accept data read and write operations, such
 #' as [`get_item`][dynamodb_get_item] and [`put_item`][dynamodb_put_item],
 #' on a table in the `DELETING` state until the table deletion is complete.
@@ -2476,7 +2479,7 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'         KeyType = "HASH"|"RANGE"
 #'       )
 #'     ),
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
+#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'     CreationDateTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -2573,7 +2576,7 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'     Replicas = list(
 #'       list(
 #'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -2586,7 +2589,7 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'         WarmThroughput = list(
 #'           ReadUnitsPerSecond = 123,
 #'           WriteUnitsPerSecond = 123,
-#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
@@ -2613,6 +2616,12 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'             "2015-01-01"
 #'           )
 #'         )
+#'       )
+#'     ),
+#'     GlobalTableWitnesses = list(
+#'       list(
+#'         RegionName = "string",
+#'         WitnessStatus = "CREATING"|"DELETING"|"ACTIVE"
 #'       )
 #'     ),
 #'     RestoreSummary = list(
@@ -2652,7 +2661,7 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'     WarmThroughput = list(
 #'       ReadUnitsPerSecond = 123,
 #'       WriteUnitsPerSecond = 123,
-#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'     ),
 #'     MultiRegionConsistency = "EVENTUAL"|"STRONG"
 #'   )
@@ -2961,7 +2970,8 @@ dynamodb_describe_continuous_backups <- function(TableName) {
 #'   FailureException = list(
 #'     ExceptionName = "string",
 #'     ExceptionDescription = "string"
-#'   )
+#'   ),
+#'   ContributorInsightsMode = "ACCESSED_AND_THROTTLED_KEYS"|"THROTTLED_KEYS"
 #' )
 #' ```
 #'
@@ -3150,10 +3160,10 @@ dynamodb_describe_export <- function(ExportArn) {
 #' 
 #' To determine which version you're using, see [Determining the global
 #' table version you are
-#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
 #' version 2019.11.21 (Current), see [Upgrading global
-#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/).
 #'
 #' @usage
 #' dynamodb_describe_global_table(GlobalTableName)
@@ -3168,7 +3178,7 @@ dynamodb_describe_export <- function(ExportArn) {
 #'     ReplicationGroup = list(
 #'       list(
 #'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -3181,7 +3191,7 @@ dynamodb_describe_export <- function(ExportArn) {
 #'         WarmThroughput = list(
 #'           ReadUnitsPerSecond = 123,
 #'           WriteUnitsPerSecond = 123,
-#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
@@ -3265,10 +3275,10 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
 #' 
 #' To determine which version you're using, see [Determining the global
 #' table version you are
-#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
 #' version 2019.11.21 (Current), see [Upgrading global
-#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/).
 #'
 #' @usage
 #' dynamodb_describe_global_table_settings(GlobalTableName)
@@ -3283,7 +3293,7 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
 #'   ReplicaSettings = list(
 #'     list(
 #'       RegionName = "string",
-#'       ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+#'       ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'       ReplicaBillingModeSummary = list(
 #'         BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
 #'         LastUpdateToPayPerRequestDateTime = as.POSIXct(
@@ -3748,9 +3758,6 @@ dynamodb_describe_limits <- function() {
 #' table, when it was created, the primary key schema, and any indexes on
 #' the table.
 #' 
-#' For global tables, this operation only applies to global tables using
-#' Version 2019.11.21 (Current version).
-#' 
 #' If you issue a [`describe_table`][dynamodb_describe_table] request
 #' immediately after a [`create_table`][dynamodb_create_table] request,
 #' DynamoDB might return a `ResourceNotFoundException`. This is because
@@ -3783,7 +3790,7 @@ dynamodb_describe_limits <- function() {
 #'         KeyType = "HASH"|"RANGE"
 #'       )
 #'     ),
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
+#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'     CreationDateTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -3880,7 +3887,7 @@ dynamodb_describe_limits <- function() {
 #'     Replicas = list(
 #'       list(
 #'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -3893,7 +3900,7 @@ dynamodb_describe_limits <- function() {
 #'         WarmThroughput = list(
 #'           ReadUnitsPerSecond = 123,
 #'           WriteUnitsPerSecond = 123,
-#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
@@ -3920,6 +3927,12 @@ dynamodb_describe_limits <- function() {
 #'             "2015-01-01"
 #'           )
 #'         )
+#'       )
+#'     ),
+#'     GlobalTableWitnesses = list(
+#'       list(
+#'         RegionName = "string",
+#'         WitnessStatus = "CREATING"|"DELETING"|"ACTIVE"
 #'       )
 #'     ),
 #'     RestoreSummary = list(
@@ -3959,7 +3972,7 @@ dynamodb_describe_limits <- function() {
 #'     WarmThroughput = list(
 #'       ReadUnitsPerSecond = 123,
 #'       WriteUnitsPerSecond = 123,
-#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'     ),
 #'     MultiRegionConsistency = "EVENTUAL"|"STRONG"
 #'   )
@@ -4011,9 +4024,6 @@ dynamodb_describe_table <- function(TableName) {
 #' @description
 #' Describes auto scaling settings across replicas of the global table at
 #' once.
-#' 
-#' For global tables, this operation only applies to global tables using
-#' Version 2019.11.21 (Current version).
 #'
 #' @usage
 #' dynamodb_describe_table_replica_auto_scaling(TableName)
@@ -4027,7 +4037,7 @@ dynamodb_describe_table <- function(TableName) {
 #' list(
 #'   TableAutoScalingDescription = list(
 #'     TableName = "string",
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
+#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'     Replicas = list(
 #'       list(
 #'         RegionName = "string",
@@ -4105,7 +4115,7 @@ dynamodb_describe_table <- function(TableName) {
 #'             )
 #'           )
 #'         ),
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"
+#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'       )
 #'     )
 #'   )
@@ -5507,7 +5517,8 @@ dynamodb_list_backups <- function(TableName = NULL, Limit = NULL, TimeRangeLower
 #'     list(
 #'       TableName = "string",
 #'       IndexName = "string",
-#'       ContributorInsightsStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED"
+#'       ContributorInsightsStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED",
+#'       ContributorInsightsMode = "ACCESSED_AND_THROTTLED_KEYS"|"THROTTLED_KEYS"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -5623,10 +5634,10 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
 #' 
 #' To determine which version you're using, see [Determining the global
 #' table version you are
-#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
 #' version 2019.11.21 (Current), see [Upgrading global
-#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/).
 #'
 #' @usage
 #' dynamodb_list_global_tables(ExclusiveStartGlobalTableName, Limit,
@@ -7095,7 +7106,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'         KeyType = "HASH"|"RANGE"
 #'       )
 #'     ),
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
+#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'     CreationDateTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -7192,7 +7203,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'     Replicas = list(
 #'       list(
 #'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -7205,7 +7216,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'         WarmThroughput = list(
 #'           ReadUnitsPerSecond = 123,
 #'           WriteUnitsPerSecond = 123,
-#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
@@ -7232,6 +7243,12 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'             "2015-01-01"
 #'           )
 #'         )
+#'       )
+#'     ),
+#'     GlobalTableWitnesses = list(
+#'       list(
+#'         RegionName = "string",
+#'         WitnessStatus = "CREATING"|"DELETING"|"ACTIVE"
 #'       )
 #'     ),
 #'     RestoreSummary = list(
@@ -7271,7 +7288,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'     WarmThroughput = list(
 #'       ReadUnitsPerSecond = 123,
 #'       WriteUnitsPerSecond = 123,
-#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'     ),
 #'     MultiRegionConsistency = "EVENTUAL"|"STRONG"
 #'   )
@@ -7459,7 +7476,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'         KeyType = "HASH"|"RANGE"
 #'       )
 #'     ),
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
+#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'     CreationDateTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -7556,7 +7573,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'     Replicas = list(
 #'       list(
 #'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -7569,7 +7586,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'         WarmThroughput = list(
 #'           ReadUnitsPerSecond = 123,
 #'           WriteUnitsPerSecond = 123,
-#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
@@ -7596,6 +7613,12 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'             "2015-01-01"
 #'           )
 #'         )
+#'       )
+#'     ),
+#'     GlobalTableWitnesses = list(
+#'       list(
+#'         RegionName = "string",
+#'         WitnessStatus = "CREATING"|"DELETING"|"ACTIVE"
 #'       )
 #'     ),
 #'     RestoreSummary = list(
@@ -7635,7 +7658,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'     WarmThroughput = list(
 #'       ReadUnitsPerSecond = 123,
 #'       WriteUnitsPerSecond = 123,
-#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'     ),
 #'     MultiRegionConsistency = "EVENTUAL"|"STRONG"
 #'   )
@@ -9106,12 +9129,14 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
 #'
 #' @usage
 #' dynamodb_update_contributor_insights(TableName, IndexName,
-#'   ContributorInsightsAction)
+#'   ContributorInsightsAction, ContributorInsightsMode)
 #'
 #' @param TableName &#91;required&#93; The name of the table. You can also provide the Amazon Resource Name
 #' (ARN) of the table in this parameter.
 #' @param IndexName The global secondary index name, if applicable.
 #' @param ContributorInsightsAction &#91;required&#93; Represents the contributor insights action.
+#' @param ContributorInsightsMode Specifies whether to track all access and throttled events or throttled
+#' events only for the DynamoDB table or index.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9119,7 +9144,8 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
 #' list(
 #'   TableName = "string",
 #'   IndexName = "string",
-#'   ContributorInsightsStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED"
+#'   ContributorInsightsStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED",
+#'   ContributorInsightsMode = "ACCESSED_AND_THROTTLED_KEYS"|"THROTTLED_KEYS"
 #' )
 #' ```
 #'
@@ -9128,7 +9154,8 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
 #' svc$update_contributor_insights(
 #'   TableName = "string",
 #'   IndexName = "string",
-#'   ContributorInsightsAction = "ENABLE"|"DISABLE"
+#'   ContributorInsightsAction = "ENABLE"|"DISABLE",
+#'   ContributorInsightsMode = "ACCESSED_AND_THROTTLED_KEYS"|"THROTTLED_KEYS"
 #' )
 #' ```
 #'
@@ -9137,7 +9164,7 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
 #' @rdname dynamodb_update_contributor_insights
 #'
 #' @aliases dynamodb_update_contributor_insights
-dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, ContributorInsightsAction) {
+dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, ContributorInsightsAction, ContributorInsightsMode = NULL) {
   op <- new_operation(
     name = "UpdateContributorInsights",
     http_method = "POST",
@@ -9146,7 +9173,7 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodb$update_contributor_insights_input(TableName = TableName, IndexName = IndexName, ContributorInsightsAction = ContributorInsightsAction)
+  input <- .dynamodb$update_contributor_insights_input(TableName = TableName, IndexName = IndexName, ContributorInsightsAction = ContributorInsightsAction, ContributorInsightsMode = ContributorInsightsMode)
   output <- .dynamodb$update_contributor_insights_output()
   config <- get_config()
   svc <- .dynamodb$service(config, op)
@@ -9174,16 +9201,14 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #' 
 #' To determine which version you're using, see [Determining the global
 #' table version you are
-#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
 #' version 2019.11.21 (Current), see [Upgrading global
-#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/).
 #' 
-#' For global tables, this operation only applies to global tables using
-#' Version 2019.11.21 (Current version). If you are using global tables
-#' [Version
+#' If you are using global tables [Version
 #' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html)
-#' you can use [`update_table`][dynamodb_update_table] instead.
+#' (Current) you can use [`update_table`][dynamodb_update_table] instead.
 #' 
 #' Although you can use
 #' [`update_global_table`][dynamodb_update_global_table] to add replicas
@@ -9215,7 +9240,7 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #'     ReplicationGroup = list(
 #'       list(
 #'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -9228,7 +9253,7 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #'         WarmThroughput = list(
 #'           ReadUnitsPerSecond = 123,
 #'           WriteUnitsPerSecond = 123,
-#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
@@ -9322,10 +9347,10 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #' 
 #' To determine which version you're using, see [Determining the global
 #' table version you are
-#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
 #' version 2019.11.21 (Current), see [Upgrading global
-#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/).
 #'
 #' @usage
 #' dynamodb_update_global_table_settings(GlobalTableName,
@@ -9364,7 +9389,7 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #'   ReplicaSettings = list(
 #'     list(
 #'       RegionName = "string",
-#'       ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+#'       ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'       ReplicaBillingModeSummary = list(
 #'         BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
 #'         LastUpdateToPayPerRequestDateTime = as.POSIXct(
@@ -10163,9 +10188,6 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' Modifies the provisioned throughput settings, global secondary indexes,
 #' or DynamoDB Streams settings for a given table.
 #' 
-#' For global tables, this operation only applies to global tables using
-#' Version 2019.11.21 (Current version).
-#' 
 #' You can only perform one of the following operations at once:
 #' 
 #' -   Modify the provisioned throughput settings of the table.
@@ -10187,7 +10209,8 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' dynamodb_update_table(AttributeDefinitions, TableName, BillingMode,
 #'   ProvisionedThroughput, GlobalSecondaryIndexUpdates, StreamSpecification,
 #'   SSESpecification, ReplicaUpdates, TableClass, DeletionProtectionEnabled,
-#'   MultiRegionConsistency, OnDemandThroughput, WarmThroughput)
+#'   MultiRegionConsistency, GlobalTableWitnessUpdates, OnDemandThroughput,
+#'   WarmThroughput)
 #'
 #' @param AttributeDefinitions An array of attributes that describe the key schema for the table and
 #' indexes. If you are adding a new global secondary index to the table,
@@ -10237,9 +10260,6 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' @param SSESpecification The new server-side encryption settings for the specified table.
 #' @param ReplicaUpdates A list of replica update actions (create, delete, or update) for the
 #' table.
-#' 
-#' For global tables, this property only applies to global tables using
-#' Version 2019.11.21 (Current version).
 #' @param TableClass The table class of the table to be updated. Valid values are `STANDARD`
 #' and `STANDARD_INFREQUENT_ACCESS`.
 #' @param DeletionProtectionEnabled Indicates whether deletion protection is to be enabled (true) or
@@ -10254,18 +10274,31 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' You can specify one of the following consistency modes:
 #' 
 #' -   `EVENTUAL`: Configures a new global table for multi-Region eventual
-#'     consistency. This is the default consistency mode for global tables.
+#'     consistency (MREC). This is the default consistency mode for global
+#'     tables.
 #' 
 #' -   `STRONG`: Configures a new global table for multi-Region strong
-#'     consistency (preview).
+#'     consistency (MRSC).
 #' 
-#'     Multi-Region strong consistency (MRSC) is a new DynamoDB global
-#'     tables capability currently available in preview mode. For more
-#'     information, see [Global tables multi-Region strong
-#'     consistency](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/#multi-region-strong-consistency-gt).
+#' If you don't specify this field, the global table consistency mode
+#' defaults to `EVENTUAL`. For more information about global tables
+#' consistency modes, see Consistency modes in DynamoDB developer guide.
+#' @param GlobalTableWitnessUpdates A list of witness updates for a MRSC global table. A witness provides a
+#' cost-effective alternative to a full replica in a MRSC global table by
+#' maintaining replicated change data written to global table replicas. You
+#' cannot perform read or write operations on a witness. For each witness,
+#' you can request one action:
 #' 
-#' If you don't specify this parameter, the global table consistency mode
-#' defaults to `EVENTUAL`.
+#' -   `Create` - add a new witness to the global table.
+#' 
+#' -   `Delete` - remove a witness from the global table.
+#' 
+#' You can create or delete only one witness per
+#' [`update_table`][dynamodb_update_table] operation.
+#' 
+#' For more information, see [Multi-Region strong consistency
+#' (MRSC)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_HowItWorks.html#V2globaltables_HowItWorks.consistency-modes)
+#' in the Amazon DynamoDB Developer Guide
 #' @param OnDemandThroughput Updates the maximum number of read and write units for the specified
 #' table in on-demand capacity mode. If you use this parameter, you must
 #' specify `MaxReadRequestUnits`, `MaxWriteRequestUnits`, or both.
@@ -10290,7 +10323,7 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'         KeyType = "HASH"|"RANGE"
 #'       )
 #'     ),
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
+#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'     CreationDateTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -10387,7 +10420,7 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'     Replicas = list(
 #'       list(
 #'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -10400,7 +10433,7 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'         WarmThroughput = list(
 #'           ReadUnitsPerSecond = 123,
 #'           WriteUnitsPerSecond = 123,
-#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
@@ -10427,6 +10460,12 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'             "2015-01-01"
 #'           )
 #'         )
+#'       )
+#'     ),
+#'     GlobalTableWitnesses = list(
+#'       list(
+#'         RegionName = "string",
+#'         WitnessStatus = "CREATING"|"DELETING"|"ACTIVE"
 #'       )
 #'     ),
 #'     RestoreSummary = list(
@@ -10466,7 +10505,7 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'     WarmThroughput = list(
 #'       ReadUnitsPerSecond = 123,
 #'       WriteUnitsPerSecond = 123,
-#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'     ),
 #'     MultiRegionConsistency = "EVENTUAL"|"STRONG"
 #'   )
@@ -10600,6 +10639,16 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'   TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
 #'   DeletionProtectionEnabled = TRUE|FALSE,
 #'   MultiRegionConsistency = "EVENTUAL"|"STRONG",
+#'   GlobalTableWitnessUpdates = list(
+#'     list(
+#'       Create = list(
+#'         RegionName = "string"
+#'       ),
+#'       Delete = list(
+#'         RegionName = "string"
+#'       )
+#'     )
+#'   ),
 #'   OnDemandThroughput = list(
 #'     MaxReadRequestUnits = 123,
 #'     MaxWriteRequestUnits = 123
@@ -10629,7 +10678,7 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' @rdname dynamodb_update_table
 #'
 #' @aliases dynamodb_update_table
-dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, MultiRegionConsistency = NULL, OnDemandThroughput = NULL, WarmThroughput = NULL) {
+dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, MultiRegionConsistency = NULL, GlobalTableWitnessUpdates = NULL, OnDemandThroughput = NULL, WarmThroughput = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
@@ -10638,7 +10687,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, MultiRegionConsistency = MultiRegionConsistency, OnDemandThroughput = OnDemandThroughput, WarmThroughput = WarmThroughput)
+  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, MultiRegionConsistency = MultiRegionConsistency, GlobalTableWitnessUpdates = GlobalTableWitnessUpdates, OnDemandThroughput = OnDemandThroughput, WarmThroughput = WarmThroughput)
   output <- .dynamodb$update_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config, op)
@@ -10652,9 +10701,6 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #'
 #' @description
 #' Updates auto scaling settings on your global tables at once.
-#' 
-#' For global tables, this operation only applies to global tables using
-#' Version 2019.11.21 (Current version).
 #'
 #' @usage
 #' dynamodb_update_table_replica_auto_scaling(GlobalSecondaryIndexUpdates,
@@ -10674,7 +10720,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #' list(
 #'   TableAutoScalingDescription = list(
 #'     TableName = "string",
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
+#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
 #'     Replicas = list(
 #'       list(
 #'         RegionName = "string",
@@ -10752,7 +10798,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #'             )
 #'           )
 #'         ),
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"
+#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED"
 #'       )
 #'     )
 #'   )

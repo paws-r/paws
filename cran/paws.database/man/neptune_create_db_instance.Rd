@@ -183,7 +183,18 @@ be initially allocated for the DB instance.}
 
 \item{CharacterSetName}{\emph{(Not supported by Neptune)}}
 
-\item{PubliclyAccessible}{This flag should no longer be used.}
+\item{PubliclyAccessible}{Indicates whether the DB instance is publicly accessible.
+
+When the DB instance is publicly accessible and you connect from outside
+of the DB instance's virtual private cloud (VPC), its Domain Name System
+(DNS) endpoint resolves to the public IP address. When you connect from
+within the same VPC as the DB instance, the endpoint resolves to the
+private IP address. Access to the DB instance is ultimately controlled
+by the security group it uses. That public access isn't permitted if the
+security group assigned to the DB cluster doesn't permit it.
+
+When the DB instance isn't publicly accessible, it is an internal DB
+instance with a DNS name that resolves to a private IP address.}
 
 \item{Tags}{The tags to assign to the new instance.}
 
@@ -194,9 +205,8 @@ For information on creating a DB cluster, see
 
 Type: String}
 
-\item{StorageType}{Specifies the storage type to be associated with the DB instance.
-
-Not applicable. Storage is managed by the DB Cluster.}
+\item{StorageType}{Not applicable. In Neptune the storage type is managed at the DB Cluster
+level.}
 
 \item{TdeCredentialArn}{The ARN from the key store with which to associate the instance for TDE
 encryption.}

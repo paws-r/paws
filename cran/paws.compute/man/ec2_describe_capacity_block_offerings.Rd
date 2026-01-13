@@ -13,7 +13,9 @@ ec2_describe_capacity_block_offerings(
   EndDateRange = NULL,
   CapacityDurationHours,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  UltraserverType = NULL,
+  UltraserverCount = NULL
 )
 }
 \arguments{
@@ -43,9 +45,13 @@ increments up to 182 days.}
 page of items, make another request with the token returned in the
 output. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
+
+\item{UltraserverType}{The EC2 UltraServer type of the Capacity Block offerings.}
+
+\item{UltraserverCount}{The number of EC2 UltraServers in the offerings.}
 }
 \description{
-Describes Capacity Block offerings available for purchase in the Amazon Web Services Region that you're currently using. With Capacity Blocks, you purchase a specific instance type for a period of time.
+Describes Capacity Block offerings available for purchase in the Amazon Web Services Region that you're currently using. With Capacity Blocks, you can purchase a specific GPU instance type or EC2 UltraServer for a period of time.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_capacity_block_offerings/} for full documentation.
 }

@@ -11,7 +11,8 @@ lambda_invoke_with_response_stream(
   LogType = NULL,
   ClientContext = NULL,
   Qualifier = NULL,
-  Payload = NULL
+  Payload = NULL,
+  TenantId = NULL
 )
 }
 \arguments{
@@ -51,6 +52,8 @@ pass to the function in the context object.}
 You can enter the JSON directly. For example,
 \verb{--payload '\{ "key": "value" \}'}. You can also specify a file path. For
 example, \verb{--payload file://payload.json}.}
+
+\item{TenantId}{The identifier of the tenant in a multi-tenant Lambda function.}
 }
 \description{
 Configure your Lambda functions to stream response payloads back to clients. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-response-streaming.html}{Configuring a Lambda function to stream responses}.

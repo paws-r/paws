@@ -44,7 +44,11 @@ NULL
 #' 
 #' -   special characters `` \" # % \ ^ | ~ \` $ & , ; : / ``
 #' 
-#' -   control characters (`U+0000-001F`, `U+007F-009F`)
+#' -   control characters (`U+0000-001F`, `U+007F-009F`, `U+FFFE-FFFF`)
+#' 
+#' -   surrogates (`U+D800-DFFF`)
+#' 
+#' -   invalid characters (` U+10FFFF`)
 #' 
 #' To enable logging with CloudWatch Logs, the name should only contain
 #' 0-9, A-Z, a-z, - and _.
@@ -166,7 +170,11 @@ sfn_create_activity <- function(name, tags = NULL, encryptionConfiguration = NUL
 #' 
 #' -   special characters `` \" # % \ ^ | ~ \` $ & , ; : / ``
 #' 
-#' -   control characters (`U+0000-001F`, `U+007F-009F`)
+#' -   control characters (`U+0000-001F`, `U+007F-009F`, `U+FFFE-FFFF`)
+#' 
+#' -   surrogates (`U+D800-DFFF`)
+#' 
+#' -   invalid characters (` U+10FFFF`)
 #' 
 #' To enable logging with CloudWatch Logs, the name should only contain
 #' 0-9, A-Z, a-z, - and _.
@@ -1699,6 +1707,14 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' parameter.
 #' @param statusFilter If specified, only list the executions whose current execution status
 #' matches the given filter.
+#' 
+#' If you provide a `PENDING_REDRIVE` statusFilter, you must specify
+#' `mapRunArn`. For more information, see [Child workflow execution redrive
+#' behaviour](https://docs.aws.amazon.com/step-functions/latest/dg/redrive-map-run.html#redrive-child-workflow-behavior)
+#' in the *Step Functions Developer Guide*.
+#' 
+#' If you provide a stateMachineArn and a `PENDING_REDRIVE` statusFilter,
+#' the API returns a validation exception.
 #' @param maxResults The maximum number of results that are returned per call. You can use
 #' `nextToken` to obtain further pages of results. The default is 100 and
 #' the maximum allowed page size is 1000. A value of 0 uses the default.
@@ -2722,22 +2738,35 @@ sfn_send_task_success <- function(taskToken, output) {
 #' 
 #' -   special characters `` \" # % \ ^ | ~ \` $ & , ; : / ``
 #' 
-#' -   control characters (`U+0000-001F`, `U+007F-009F`)
+#' -   control characters (`U+0000-001F`, `U+007F-009F`, `U+FFFE-FFFF`)
+#' 
+#' -   surrogates (`U+D800-DFFF`)
+#' 
+#' -   invalid characters (` U+10FFFF`)
 #' 
 #' To enable logging with CloudWatch Logs, the name should only contain
 #' 0-9, A-Z, a-z, - and _.
 #' @param input The string that contains the JSON input data for the execution, for
 #' example:
 #' 
-#' `"input": "{\"first_name\" : \"test\"}"`
+#' `"{\"first_name\" : \"Alejandro\"}"`
 #' 
 #' If you don't include any JSON input data, you still must include the two
-#' braces, for example: `"input": "{}"`
+#' braces, for example: `"{}"`
 #' 
 #' Length constraints apply to the payload size, and are expressed as bytes
 #' in UTF-8 encoding.
 #' @param traceHeader Passes the X-Ray trace header. The trace header can also be passed in
 #' the request payload.
+#' 
+#' For X-Ray traces, all Amazon Web Services services use the
+#' `X-Amzn-Trace-Id` header from the HTTP request. Using the header is the
+#' preferred mechanism to identify a trace.
+#' [`start_execution`][sfn_start_execution] and
+#' [`start_sync_execution`][sfn_start_sync_execution] API operations can
+#' also use `traceHeader` from the body of the request payload. If **both**
+#' sources are provided, Step Functions will use the **header value**
+#' (preferred) over the value in the request body.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2809,15 +2838,24 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, trac
 #' @param input The string that contains the JSON input data for the execution, for
 #' example:
 #' 
-#' `"input": "{\"first_name\" : \"test\"}"`
+#' `"{\"first_name\" : \"Alejandro\"}"`
 #' 
 #' If you don't include any JSON input data, you still must include the two
-#' braces, for example: `"input": "{}"`
+#' braces, for example: `"{}"`
 #' 
 #' Length constraints apply to the payload size, and are expressed as bytes
 #' in UTF-8 encoding.
 #' @param traceHeader Passes the X-Ray trace header. The trace header can also be passed in
 #' the request payload.
+#' 
+#' For X-Ray traces, all Amazon Web Services services use the
+#' `X-Amzn-Trace-Id` header from the HTTP request. Using the header is the
+#' preferred mechanism to identify a trace.
+#' [`start_execution`][sfn_start_execution] and
+#' [`start_sync_execution`][sfn_start_sync_execution] API operations can
+#' also use `traceHeader` from the body of the request payload. If **both**
+#' sources are provided, Step Functions will use the **header value**
+#' (preferred) over the value in the request body.
 #' @param includedData If your state machine definition is encrypted with a KMS key, callers
 #' must have `kms:Decrypt` permission to decrypt the definition.
 #' Alternatively, you can call the API with `includedData = METADATA_ONLY`
@@ -3066,7 +3104,8 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #' If the execution of a state exceeds this duration, it fails with the
 #' `States.Timeout` error.
 #' 
-#' [`test_state`][sfn_test_state] doesn't support [Activity
+#' [`test_state`][sfn_test_state] only supports the following when a mock
+#' is specified: [Activity
 #' tasks](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-activities.html),
 #' `.sync` or `.waitForTaskToken` [service integration
 #' patterns](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html),
@@ -3077,11 +3116,11 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #'
 #' @usage
 #' sfn_test_state(definition, roleArn, input, inspectionLevel,
-#'   revealSecrets, variables)
+#'   revealSecrets, variables, stateName, mock, context, stateConfiguration)
 #'
 #' @param definition &#91;required&#93; The [Amazon States
 #' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
-#' (ASL) definition of the state.
+#' (ASL) definition of the state or state machine.
 #' @param roleArn The Amazon Resource Name (ARN) of the execution role with the required
 #' IAM permissions for the state.
 #' @param input A string that contains the JSON input data for the state.
@@ -3117,6 +3156,17 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #' By default, `revealSecrets` is set to `false`.
 #' @param variables JSON object literal that sets variables used in the state under test.
 #' Object keys are the variable names and values are the variable values.
+#' @param stateName Denotes the particular state within a state machine definition to be
+#' tested. If this field is specified, the `definition` must contain a
+#' fully-formed state machine definition.
+#' @param mock Defines a mocked result or error for the state under test.
+#' 
+#' A mock can only be specified for Task, Map, or Parallel states. If it is
+#' specified for another state type, an exception will be thrown.
+#' @param context A JSON string representing a valid Context object for the state under
+#' test. This field may only be specified if a mock is specified in the
+#' same request.
+#' @param stateConfiguration Contains configurations for the state under test.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3147,7 +3197,19 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #'       headers = "string",
 #'       body = "string"
 #'     ),
-#'     variables = "string"
+#'     variables = "string",
+#'     errorDetails = list(
+#'       catchIndex = 123,
+#'       retryIndex = 123,
+#'       retryBackoffIntervalSeconds = 123
+#'     ),
+#'     afterItemsPath = "string",
+#'     afterItemSelector = "string",
+#'     afterItemBatcher = "string",
+#'     afterItemsPointer = "string",
+#'     toleratedFailureCount = 123,
+#'     toleratedFailurePercentage = 123.0,
+#'     maxConcurrency = 123
 #'   ),
 #'   nextState = "string",
 #'   status = "SUCCEEDED"|"FAILED"|"RETRIABLE"|"CAUGHT_ERROR"
@@ -3162,7 +3224,23 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #'   input = "string",
 #'   inspectionLevel = "INFO"|"DEBUG"|"TRACE",
 #'   revealSecrets = TRUE|FALSE,
-#'   variables = "string"
+#'   variables = "string",
+#'   stateName = "string",
+#'   mock = list(
+#'     result = "string",
+#'     errorOutput = list(
+#'       error = "string",
+#'       cause = "string"
+#'     ),
+#'     fieldValidationMode = "STRICT"|"PRESENT"|"NONE"
+#'   ),
+#'   context = "string",
+#'   stateConfiguration = list(
+#'     retrierRetryCount = 123,
+#'     errorCausedByState = "string",
+#'     mapIterationFailureCount = 123,
+#'     mapItemReaderData = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -3171,7 +3249,7 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #' @rdname sfn_test_state
 #'
 #' @aliases sfn_test_state
-sfn_test_state <- function(definition, roleArn = NULL, input = NULL, inspectionLevel = NULL, revealSecrets = NULL, variables = NULL) {
+sfn_test_state <- function(definition, roleArn = NULL, input = NULL, inspectionLevel = NULL, revealSecrets = NULL, variables = NULL, stateName = NULL, mock = NULL, context = NULL, stateConfiguration = NULL) {
   op <- new_operation(
     name = "TestState",
     http_method = "POST",
@@ -3180,7 +3258,7 @@ sfn_test_state <- function(definition, roleArn = NULL, input = NULL, inspectionL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sfn$test_state_input(definition = definition, roleArn = roleArn, input = input, inspectionLevel = inspectionLevel, revealSecrets = revealSecrets, variables = variables)
+  input <- .sfn$test_state_input(definition = definition, roleArn = roleArn, input = input, inspectionLevel = inspectionLevel, revealSecrets = revealSecrets, variables = variables, stateName = stateName, mock = mock, context = context, stateConfiguration = stateConfiguration)
   output <- .sfn$test_state_output()
   config <- get_config()
   svc <- .sfn$service(config, op)

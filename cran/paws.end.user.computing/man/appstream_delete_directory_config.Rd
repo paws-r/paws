@@ -2,7 +2,8 @@
 % Please edit documentation in R/appstream_operations.R
 \name{appstream_delete_directory_config}
 \alias{appstream_delete_directory_config}
-\title{Deletes the specified Directory Config object from AppStream 2}
+\title{Deletes the specified Directory Config object from WorkSpaces
+Applications}
 \usage{
 appstream_delete_directory_config(DirectoryName)
 }
@@ -10,7 +11,7 @@ appstream_delete_directory_config(DirectoryName)
 \item{DirectoryName}{[required] The name of the directory configuration.}
 }
 \description{
-Deletes the specified Directory Config object from AppStream 2.0. This object includes the information required to join streaming instances to an Active Directory domain.
+Deletes the specified Directory Config object from WorkSpaces Applications. This object includes the information required to join streaming instances to an Active Directory domain.
 
 See \url{https://www.paws-r-sdk.com/docs/appstream_delete_directory_config/} for full documentation.
 }

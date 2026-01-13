@@ -101,6 +101,7 @@ NULL
 #'  \link[=workspacesweb_associate_data_protection_settings]{associate_data_protection_settings} \tab Associates a data protection settings resource with a web portal\cr
 #'  \link[=workspacesweb_associate_ip_access_settings]{associate_ip_access_settings} \tab Associates an IP access settings resource with a web portal\cr
 #'  \link[=workspacesweb_associate_network_settings]{associate_network_settings} \tab Associates a network settings resource with a web portal\cr
+#'  \link[=workspacesweb_associate_session_logger]{associate_session_logger} \tab Associates a session logger with a portal\cr
 #'  \link[=workspacesweb_associate_trust_store]{associate_trust_store} \tab Associates a trust store with a web portal\cr
 #'  \link[=workspacesweb_associate_user_access_logging_settings]{associate_user_access_logging_settings} \tab Associates a user access logging settings resource with a web portal\cr
 #'  \link[=workspacesweb_associate_user_settings]{associate_user_settings} \tab Associates a user settings resource with a web portal\cr
@@ -110,6 +111,7 @@ NULL
 #'  \link[=workspacesweb_create_ip_access_settings]{create_ip_access_settings} \tab Creates an IP access settings resource that can be associated with a web portal\cr
 #'  \link[=workspacesweb_create_network_settings]{create_network_settings} \tab Creates a network settings resource that can be associated with a web portal\cr
 #'  \link[=workspacesweb_create_portal]{create_portal} \tab Creates a web portal\cr
+#'  \link[=workspacesweb_create_session_logger]{create_session_logger} \tab Creates a session logger\cr
 #'  \link[=workspacesweb_create_trust_store]{create_trust_store} \tab Creates a trust store that can be associated with a web portal\cr
 #'  \link[=workspacesweb_create_user_access_logging_settings]{create_user_access_logging_settings} \tab Creates a user access logging settings resource that can be associated with a web portal\cr
 #'  \link[=workspacesweb_create_user_settings]{create_user_settings} \tab Creates a user settings resource that can be associated with a web portal\cr
@@ -119,6 +121,7 @@ NULL
 #'  \link[=workspacesweb_delete_ip_access_settings]{delete_ip_access_settings} \tab Deletes IP access settings\cr
 #'  \link[=workspacesweb_delete_network_settings]{delete_network_settings} \tab Deletes network settings\cr
 #'  \link[=workspacesweb_delete_portal]{delete_portal} \tab Deletes a web portal\cr
+#'  \link[=workspacesweb_delete_session_logger]{delete_session_logger} \tab Deletes a session logger resource\cr
 #'  \link[=workspacesweb_delete_trust_store]{delete_trust_store} \tab Deletes the trust store\cr
 #'  \link[=workspacesweb_delete_user_access_logging_settings]{delete_user_access_logging_settings} \tab Deletes user access logging settings\cr
 #'  \link[=workspacesweb_delete_user_settings]{delete_user_settings} \tab Deletes user settings\cr
@@ -126,6 +129,7 @@ NULL
 #'  \link[=workspacesweb_disassociate_data_protection_settings]{disassociate_data_protection_settings} \tab Disassociates data protection settings from a web portal\cr
 #'  \link[=workspacesweb_disassociate_ip_access_settings]{disassociate_ip_access_settings} \tab Disassociates IP access settings from a web portal\cr
 #'  \link[=workspacesweb_disassociate_network_settings]{disassociate_network_settings} \tab Disassociates network settings from a web portal\cr
+#'  \link[=workspacesweb_disassociate_session_logger]{disassociate_session_logger} \tab Disassociates a session logger from a portal\cr
 #'  \link[=workspacesweb_disassociate_trust_store]{disassociate_trust_store} \tab Disassociates a trust store from a web portal\cr
 #'  \link[=workspacesweb_disassociate_user_access_logging_settings]{disassociate_user_access_logging_settings} \tab Disassociates user access logging settings from a web portal\cr
 #'  \link[=workspacesweb_disassociate_user_settings]{disassociate_user_settings} \tab Disassociates user settings from a web portal\cr
@@ -138,6 +142,7 @@ NULL
 #'  \link[=workspacesweb_get_portal]{get_portal} \tab Gets the web portal\cr
 #'  \link[=workspacesweb_get_portal_service_provider_metadata]{get_portal_service_provider_metadata} \tab Gets the service provider metadata\cr
 #'  \link[=workspacesweb_get_session]{get_session} \tab Gets information for a secure browser session\cr
+#'  \link[=workspacesweb_get_session_logger]{get_session_logger} \tab Gets details about a specific session logger resource\cr
 #'  \link[=workspacesweb_get_trust_store]{get_trust_store} \tab Gets the trust store\cr
 #'  \link[=workspacesweb_get_trust_store_certificate]{get_trust_store_certificate} \tab Gets the trust store certificate\cr
 #'  \link[=workspacesweb_get_user_access_logging_settings]{get_user_access_logging_settings} \tab Gets user access logging settings\cr
@@ -148,6 +153,7 @@ NULL
 #'  \link[=workspacesweb_list_ip_access_settings]{list_ip_access_settings} \tab Retrieves a list of IP access settings\cr
 #'  \link[=workspacesweb_list_network_settings]{list_network_settings} \tab Retrieves a list of network settings\cr
 #'  \link[=workspacesweb_list_portals]{list_portals} \tab Retrieves a list or web portals\cr
+#'  \link[=workspacesweb_list_session_loggers]{list_session_loggers} \tab Lists all available session logger resources\cr
 #'  \link[=workspacesweb_list_sessions]{list_sessions} \tab Lists information for multiple secure browser sessions from a specific portal\cr
 #'  \link[=workspacesweb_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves a list of tags for a resource\cr
 #'  \link[=workspacesweb_list_trust_store_certificates]{list_trust_store_certificates} \tab Retrieves a list of trust store certificates\cr
@@ -162,6 +168,7 @@ NULL
 #'  \link[=workspacesweb_update_ip_access_settings]{update_ip_access_settings} \tab Updates IP access settings\cr
 #'  \link[=workspacesweb_update_network_settings]{update_network_settings} \tab Updates network settings\cr
 #'  \link[=workspacesweb_update_portal]{update_portal} \tab Updates a web portal\cr
+#'  \link[=workspacesweb_update_session_logger]{update_session_logger} \tab Updates the details of a session logger\cr
 #'  \link[=workspacesweb_update_trust_store]{update_trust_store} \tab Updates the trust store\cr
 #'  \link[=workspacesweb_update_user_access_logging_settings]{update_user_access_logging_settings} \tab Updates the user access logging settings\cr
 #'  \link[=workspacesweb_update_user_settings]{update_user_settings} \tab Updates the user settings
@@ -200,7 +207,7 @@ workspacesweb <- function(config = list(), credentials = list(), endpoint = NULL
   service_id = "WorkSpaces Web",
   api_version = "2020-07-08",
   signing_name = "workspaces-web",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

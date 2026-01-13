@@ -19,7 +19,7 @@ that you creating an alias for.}
 
 \item{AliasName}{[required] The name that you want to give to the template alias that you're
 creating. Don't start the alias name with the \code{$} character. Alias names
-that start with \code{$} are reserved by Amazon QuickSight.}
+that start with \code{$} are reserved by Quick Sight.}
 
 \item{TemplateVersionNumber}{[required] The version number of the template.}
 }

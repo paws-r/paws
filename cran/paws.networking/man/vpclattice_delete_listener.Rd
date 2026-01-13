@@ -4,12 +4,12 @@
 \alias{vpclattice_delete_listener}
 \title{Deletes the specified listener}
 \usage{
-vpclattice_delete_listener(listenerIdentifier, serviceIdentifier)
+vpclattice_delete_listener(serviceIdentifier, listenerIdentifier)
 }
 \arguments{
-\item{listenerIdentifier}{[required] The ID or ARN of the listener.}
-
 \item{serviceIdentifier}{[required] The ID or ARN of the service.}
+
+\item{listenerIdentifier}{[required] The ID or ARN of the listener.}
 }
 \description{
 Deletes the specified listener.

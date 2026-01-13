@@ -8,6 +8,8 @@ criteria}
 sagemaker_search_training_plan_offerings(
   InstanceType = NULL,
   InstanceCount = NULL,
+  UltraServerType = NULL,
+  UltraServerCount = NULL,
   StartTimeAfter = NULL,
   EndTimeBefore = NULL,
   DurationHours,
@@ -28,6 +30,10 @@ needed for your SageMaker training jobs or SageMaker HyperPod clusters,
 helping you find reserved capacity offerings that match your
 requirements.}
 
+\item{UltraServerType}{The type of UltraServer to search for, such as ml.u-p6e-gb200x72.}
+
+\item{UltraServerCount}{The number of UltraServers to search for.}
+
 \item{StartTimeAfter}{A filter to search for training plan offerings with a start time after a
 specified date.}
 
@@ -36,8 +42,8 @@ before a specified date.}
 
 \item{DurationHours}{[required] The desired duration in hours for the training plan offerings.}
 
-\item{TargetResources}{[required] The target resources (e.g., SageMaker Training Jobs, SageMaker HyperPod)
-to search for in the offerings.
+\item{TargetResources}{[required] The target resources (e.g., SageMaker Training Jobs, SageMaker HyperPod,
+SageMaker Endpoints) to search for in the offerings.
 
 Training plans are specific to their target resource.
 \itemize{
@@ -45,6 +51,9 @@ Training plans are specific to their target resource.
 used to schedule and run training jobs.
 \item A training plan for HyperPod clusters can be used exclusively to
 provide compute resources to a cluster's instance group.
+\item A training plan for SageMaker endpoints can be used exclusively to
+provide compute resources to SageMaker endpoints for model
+deployment.
 }}
 }
 \description{

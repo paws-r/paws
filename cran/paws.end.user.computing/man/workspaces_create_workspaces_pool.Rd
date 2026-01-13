@@ -12,7 +12,8 @@ workspaces_create_workspaces_pool(
   Capacity,
   Tags = NULL,
   ApplicationSettings = NULL,
-  TimeoutSettings = NULL
+  TimeoutSettings = NULL,
+  RunningMode = NULL
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ workspaces_create_workspaces_pool(
 \item{ApplicationSettings}{Indicates the application settings of the pool.}
 
 \item{TimeoutSettings}{Indicates the timeout settings of the pool.}
+
+\item{RunningMode}{The running mode for the pool.}
 }
 \description{
 Creates a pool of WorkSpaces.

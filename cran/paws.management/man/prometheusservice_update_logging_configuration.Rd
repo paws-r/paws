@@ -2,26 +2,26 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_update_logging_configuration}
 \alias{prometheusservice_update_logging_configuration}
-\title{Updates the log group ARN or the workspace ID of the current logging
-configuration}
+\title{Updates the log group ARN or the workspace ID of the current rules and
+alerting logging configuration}
 \usage{
 prometheusservice_update_logging_configuration(
-  clientToken = NULL,
+  workspaceId,
   logGroupArn,
-  workspaceId
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
-the request. Case-sensitive.}
+\item{workspaceId}{[required] The ID of the workspace to update the logging configuration for.}
 
 \item{logGroupArn}{[required] The ARN of the CloudWatch log group to which the vended log data will be
 published.}
 
-\item{workspaceId}{[required] The ID of the workspace to update the logging configuration for.}
+\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
+the request. Case-sensitive.}
 }
 \description{
-Updates the log group ARN or the workspace ID of the current logging configuration.
+Updates the log group ARN or the workspace ID of the current rules and alerting logging configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_update_logging_configuration/} for full documentation.
 }

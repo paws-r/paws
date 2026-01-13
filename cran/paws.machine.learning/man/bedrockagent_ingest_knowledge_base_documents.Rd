@@ -6,26 +6,26 @@
 the data source}
 \usage{
 bedrockagent_ingest_knowledge_base_documents(
-  clientToken = NULL,
+  knowledgeBaseId,
   dataSourceId,
-  documents,
-  knowledgeBaseId
+  clientToken = NULL,
+  documents
 )
 }
 \arguments{
+\item{knowledgeBaseId}{[required] The unique identifier of the knowledge base to ingest the documents
+into.}
+
+\item{dataSourceId}{[required] The unique identifier of the data source connected to the knowledge base
+that you're adding documents to.}
+
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the API request
 completes no more than one time. If this token matches a previous
 request, Amazon Bedrock ignores the request, but does not return an
 error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
-\item{dataSourceId}{[required] The unique identifier of the data source connected to the knowledge base
-that you're adding documents to.}
-
 \item{documents}{[required] A list of objects, each of which contains information about the
 documents to add.}
-
-\item{knowledgeBaseId}{[required] The unique identifier of the knowledge base to ingest the documents
-into.}
 }
 \description{
 Ingests documents directly into the knowledge base that is connected to the data source. The \code{dataSourceType} specified in the content for each document must match the type of the data source that you specify in the header. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/kb-direct-ingestion.html}{Ingest changes directly into a knowledge base} in the Amazon Bedrock User Guide.

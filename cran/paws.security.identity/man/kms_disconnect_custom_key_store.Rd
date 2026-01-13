@@ -13,7 +13,7 @@ ID of a custom key store, use the
 operation.}
 }
 \description{
-Disconnects the \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{custom key store} from its backing key store. This operation disconnects an CloudHSM key store from its associated CloudHSM cluster or disconnects an external key store from the external key store proxy that communicates with your external key manager.
+Disconnects the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store} from its backing key store. This operation disconnects an CloudHSM key store from its associated CloudHSM cluster or disconnects an external key store from the external key store proxy that communicates with your external key manager.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_disconnect_custom_key_store/} for full documentation.
 }

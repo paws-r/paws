@@ -99,7 +99,10 @@ These tags can be updated or removed using the
 don't propagate to the underlying compute resources.}
 
 \item{eksConfiguration}{The details for the Amazon EKS cluster that supports the compute
-environment.}
+environment.
+
+To create a compute environment that uses EKS resources, the caller must
+have permissions to call \code{eks:DescribeCluster}.}
 
 \item{context}{Reserved.}
 }

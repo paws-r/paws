@@ -3,22 +3,22 @@
 #' @include braket_service.R
 NULL
 
-#' Cancels an Amazon Braket job
+#' Cancels an Amazon Braket hybrid job
 #'
 #' @description
-#' Cancels an Amazon Braket job.
+#' Cancels an Amazon Braket hybrid job.
 #'
 #' @usage
 #' braket_cancel_job(jobArn)
 #'
-#' @param jobArn &#91;required&#93; The ARN of the Amazon Braket job to cancel.
+#' @param jobArn &#91;required&#93; The ARN of the Amazon Braket hybrid job to cancel.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   cancellationStatus = "CANCELLING"|"CANCELLED",
-#'   jobArn = "string"
+#'   jobArn = "string",
+#'   cancellationStatus = "CANCELLING"|"CANCELLED"
 #' )
 #' ```
 #'
@@ -59,25 +59,25 @@ braket_cancel_job <- function(jobArn) {
 #' Cancels the specified task.
 #'
 #' @usage
-#' braket_cancel_quantum_task(clientToken, quantumTaskArn)
+#' braket_cancel_quantum_task(quantumTaskArn, clientToken)
 #'
-#' @param clientToken &#91;required&#93; The client token associated with the request.
-#' @param quantumTaskArn &#91;required&#93; The ARN of the task to cancel.
+#' @param quantumTaskArn &#91;required&#93; The ARN of the quantum task to cancel.
+#' @param clientToken &#91;required&#93; The client token associated with the cancellation request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   cancellationStatus = "CANCELLING"|"CANCELLED",
-#'   quantumTaskArn = "string"
+#'   quantumTaskArn = "string",
+#'   cancellationStatus = "CANCELLING"|"CANCELLED"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_quantum_task(
-#'   clientToken = "string",
-#'   quantumTaskArn = "string"
+#'   quantumTaskArn = "string",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -86,7 +86,7 @@ braket_cancel_job <- function(jobArn) {
 #' @rdname braket_cancel_quantum_task
 #'
 #' @aliases braket_cancel_quantum_task
-braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
+braket_cancel_quantum_task <- function(quantumTaskArn, clientToken) {
   op <- new_operation(
     name = "CancelQuantumTask",
     http_method = "PUT",
@@ -95,7 +95,7 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .braket$cancel_quantum_task_input(clientToken = clientToken, quantumTaskArn = quantumTaskArn)
+  input <- .braket$cancel_quantum_task_input(quantumTaskArn = quantumTaskArn, clientToken = clientToken)
   output <- .braket$cancel_quantum_task_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -105,43 +105,50 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
 }
 .braket$operations$cancel_quantum_task <- braket_cancel_quantum_task
 
-#' Creates an Amazon Braket job
+#' Creates an Amazon Braket hybrid job
 #'
 #' @description
-#' Creates an Amazon Braket job.
+#' Creates an Amazon Braket hybrid job.
 #'
 #' @usage
-#' braket_create_job(algorithmSpecification, associations,
-#'   checkpointConfig, clientToken, deviceConfig, hyperParameters,
-#'   inputDataConfig, instanceConfig, jobName, outputDataConfig, roleArn,
-#'   stoppingCondition, tags)
+#' braket_create_job(clientToken, algorithmSpecification, inputDataConfig,
+#'   outputDataConfig, checkpointConfig, jobName, roleArn, stoppingCondition,
+#'   instanceConfig, hyperParameters, deviceConfig, tags, associations)
 #'
+#' @param clientToken &#91;required&#93; The client token associated with this request that guarantees that the
+#' request is idempotent.
 #' @param algorithmSpecification &#91;required&#93; Definition of the Amazon Braket job to be created. Specifies the
 #' container image the job uses and information about the Python scripts
 #' used for entry and training.
-#' @param associations The list of Amazon Braket resources associated with the hybrid job.
-#' @param checkpointConfig Information about the output locations for job checkpoint data.
-#' @param clientToken &#91;required&#93; A unique token that guarantees that the call to this API is idempotent.
-#' @param deviceConfig &#91;required&#93; The quantum processing unit (QPU) or simulator used to create an Amazon
-#' Braket job.
-#' @param hyperParameters Algorithm-specific parameters used by an Amazon Braket job that
-#' influence the quality of the training job. The values are set with a
-#' string of JSON key:value pairs, where the key is the name of the
-#' hyperparameter and the value is the value of th hyperparameter.
 #' @param inputDataConfig A list of parameters that specify the name and type of input data and
 #' where it is located.
-#' @param instanceConfig &#91;required&#93; Configuration of the resource instances to use while running the hybrid
-#' job on Amazon Braket.
-#' @param jobName &#91;required&#93; The name of the Amazon Braket job.
-#' @param outputDataConfig &#91;required&#93; The path to the S3 location where you want to store job artifacts and
-#' the encryption key used to store them.
+#' @param outputDataConfig &#91;required&#93; The path to the S3 location where you want to store hybrid job artifacts
+#' and the encryption key used to store them.
+#' @param checkpointConfig Information about the output locations for hybrid job checkpoint data.
+#' @param jobName &#91;required&#93; The name of the Amazon Braket hybrid job.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon Braket can
 #' assume to perform tasks on behalf of a user. It can access user
 #' resources, run an Amazon Braket job container on behalf of user, and
-#' output resources to the users' s3 buckets.
-#' @param stoppingCondition The user-defined criteria that specifies when a job stops running.
-#' @param tags A tag object that consists of a key and an optional value, used to
-#' manage metadata for Amazon Braket resources.
+#' output results and hybrid job details to the users' s3 buckets.
+#' @param stoppingCondition The user-defined criteria that specifies when a hybrid job stops
+#' running.
+#' @param instanceConfig &#91;required&#93; Configuration of the resource instances to use while running the hybrid
+#' job on Amazon Braket.
+#' @param hyperParameters Algorithm-specific parameters used by an Amazon Braket hybrid job that
+#' influence the quality of the training job. The values are set with a map
+#' of JSON key:value pairs, where the key is the name of the hyperparameter
+#' and the value is the value of the hyperparameter.
+#' 
+#' Do not include any security-sensitive information including account
+#' access IDs, secrets, or tokens in any hyperparameter fields. As part of
+#' the shared responsibility model, you are responsible for any potential
+#' exposure, unauthorized access, or compromise of your sensitive data if
+#' caused by security-sensitive information included in the request
+#' hyperparameter variable or plain text fields.
+#' @param deviceConfig &#91;required&#93; The quantum processing unit (QPU) or simulator used to create an Amazon
+#' Braket hybrid job.
+#' @param tags Tags to be added to the hybrid job you're creating.
+#' @param associations The list of Amazon Braket resources associated with the hybrid job.
 #'
 #' @return
 #' A list with the following syntax:
@@ -154,32 +161,16 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
 #' @section Request syntax:
 #' ```
 #' svc$create_job(
+#'   clientToken = "string",
 #'   algorithmSpecification = list(
+#'     scriptModeConfig = list(
+#'       entryPoint = "string",
+#'       s3Uri = "string",
+#'       compressionType = "NONE"|"GZIP"
+#'     ),
 #'     containerImage = list(
 #'       uri = "string"
-#'     ),
-#'     scriptModeConfig = list(
-#'       compressionType = "NONE"|"GZIP",
-#'       entryPoint = "string",
-#'       s3Uri = "string"
 #'     )
-#'   ),
-#'   associations = list(
-#'     list(
-#'       arn = "string",
-#'       type = "RESERVATION_TIME_WINDOW_ARN"
-#'     )
-#'   ),
-#'   checkpointConfig = list(
-#'     localPath = "string",
-#'     s3Uri = "string"
-#'   ),
-#'   clientToken = "string",
-#'   deviceConfig = list(
-#'     device = "string"
-#'   ),
-#'   hyperParameters = list(
-#'     "string"
 #'   ),
 #'   inputDataConfig = list(
 #'     list(
@@ -192,22 +183,38 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
 #'       )
 #'     )
 #'   ),
-#'   instanceConfig = list(
-#'     instanceCount = 123,
-#'     instanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
-#'     volumeSizeInGb = 123
-#'   ),
-#'   jobName = "string",
 #'   outputDataConfig = list(
 #'     kmsKeyId = "string",
 #'     s3Path = "string"
 #'   ),
+#'   checkpointConfig = list(
+#'     localPath = "string",
+#'     s3Uri = "string"
+#'   ),
+#'   jobName = "string",
 #'   roleArn = "string",
 #'   stoppingCondition = list(
 #'     maxRuntimeInSeconds = 123
 #'   ),
+#'   instanceConfig = list(
+#'     instanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
+#'     volumeSizeInGb = 123,
+#'     instanceCount = 123
+#'   ),
+#'   hyperParameters = list(
+#'     "string"
+#'   ),
+#'   deviceConfig = list(
+#'     device = "string"
+#'   ),
 #'   tags = list(
 #'     "string"
+#'   ),
+#'   associations = list(
+#'     list(
+#'       arn = "string",
+#'       type = "RESERVATION_TIME_WINDOW_ARN"
+#'     )
 #'   )
 #' )
 #' ```
@@ -217,7 +224,7 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
 #' @rdname braket_create_job
 #'
 #' @aliases braket_create_job
-braket_create_job <- function(algorithmSpecification, associations = NULL, checkpointConfig = NULL, clientToken, deviceConfig, hyperParameters = NULL, inputDataConfig = NULL, instanceConfig, jobName, outputDataConfig, roleArn, stoppingCondition = NULL, tags = NULL) {
+braket_create_job <- function(clientToken, algorithmSpecification, inputDataConfig = NULL, outputDataConfig, checkpointConfig = NULL, jobName, roleArn, stoppingCondition = NULL, instanceConfig, hyperParameters = NULL, deviceConfig, tags = NULL, associations = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "POST",
@@ -226,7 +233,7 @@ braket_create_job <- function(algorithmSpecification, associations = NULL, check
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .braket$create_job_input(algorithmSpecification = algorithmSpecification, associations = associations, checkpointConfig = checkpointConfig, clientToken = clientToken, deviceConfig = deviceConfig, hyperParameters = hyperParameters, inputDataConfig = inputDataConfig, instanceConfig = instanceConfig, jobName = jobName, outputDataConfig = outputDataConfig, roleArn = roleArn, stoppingCondition = stoppingCondition, tags = tags)
+  input <- .braket$create_job_input(clientToken = clientToken, algorithmSpecification = algorithmSpecification, inputDataConfig = inputDataConfig, outputDataConfig = outputDataConfig, checkpointConfig = checkpointConfig, jobName = jobName, roleArn = roleArn, stoppingCondition = stoppingCondition, instanceConfig = instanceConfig, hyperParameters = hyperParameters, deviceConfig = deviceConfig, tags = tags, associations = associations)
   output <- .braket$create_job_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -242,22 +249,23 @@ braket_create_job <- function(algorithmSpecification, associations = NULL, check
 #' Creates a quantum task.
 #'
 #' @usage
-#' braket_create_quantum_task(action, associations, clientToken, deviceArn,
-#'   deviceParameters, jobToken, outputS3Bucket, outputS3KeyPrefix, shots,
-#'   tags)
+#' braket_create_quantum_task(clientToken, deviceArn, deviceParameters,
+#'   shots, outputS3Bucket, outputS3KeyPrefix, action, tags, jobToken,
+#'   associations, experimentalCapabilities)
 #'
-#' @param action &#91;required&#93; The action associated with the task.
-#' @param associations The list of Amazon Braket resources associated with the quantum task.
 #' @param clientToken &#91;required&#93; The client token associated with the request.
-#' @param deviceArn &#91;required&#93; The ARN of the device to run the task on.
-#' @param deviceParameters The parameters for the device to run the task on.
-#' @param jobToken The token for an Amazon Braket job that associates it with the quantum
-#' task.
-#' @param outputS3Bucket &#91;required&#93; The S3 bucket to store task result files in.
-#' @param outputS3KeyPrefix &#91;required&#93; The key prefix for the location in the S3 bucket to store task results
-#' in.
-#' @param shots &#91;required&#93; The number of shots to use for the task.
+#' @param deviceArn &#91;required&#93; The ARN of the device to run the quantum task on.
+#' @param deviceParameters The parameters for the device to run the quantum task on.
+#' @param shots &#91;required&#93; The number of shots to use for the quantum task.
+#' @param outputS3Bucket &#91;required&#93; The S3 bucket to store quantum task result files in.
+#' @param outputS3KeyPrefix &#91;required&#93; The key prefix for the location in the S3 bucket to store quantum task
+#' results in.
+#' @param action &#91;required&#93; The action associated with the quantum task.
 #' @param tags Tags to be added to the quantum task you're creating.
+#' @param jobToken The token for an Amazon Braket hybrid job that associates it with the
+#' quantum task.
+#' @param associations The list of Amazon Braket resources associated with the quantum task.
+#' @param experimentalCapabilities Enable experimental capabilities for the quantum task.
 #'
 #' @return
 #' A list with the following syntax:
@@ -270,22 +278,25 @@ braket_create_job <- function(algorithmSpecification, associations = NULL, check
 #' @section Request syntax:
 #' ```
 #' svc$create_quantum_task(
+#'   clientToken = "string",
+#'   deviceArn = "string",
+#'   deviceParameters = "string",
+#'   shots = 123,
+#'   outputS3Bucket = "string",
+#'   outputS3KeyPrefix = "string",
 #'   action = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   jobToken = "string",
 #'   associations = list(
 #'     list(
 #'       arn = "string",
 #'       type = "RESERVATION_TIME_WINDOW_ARN"
 #'     )
 #'   ),
-#'   clientToken = "string",
-#'   deviceArn = "string",
-#'   deviceParameters = "string",
-#'   jobToken = "string",
-#'   outputS3Bucket = "string",
-#'   outputS3KeyPrefix = "string",
-#'   shots = 123,
-#'   tags = list(
-#'     "string"
+#'   experimentalCapabilities = list(
+#'     enabled = "ALL"|"NONE"
 #'   )
 #' )
 #' ```
@@ -295,7 +306,7 @@ braket_create_job <- function(algorithmSpecification, associations = NULL, check
 #' @rdname braket_create_quantum_task
 #'
 #' @aliases braket_create_quantum_task
-braket_create_quantum_task <- function(action, associations = NULL, clientToken, deviceArn, deviceParameters = NULL, jobToken = NULL, outputS3Bucket, outputS3KeyPrefix, shots, tags = NULL) {
+braket_create_quantum_task <- function(clientToken, deviceArn, deviceParameters = NULL, shots, outputS3Bucket, outputS3KeyPrefix, action, tags = NULL, jobToken = NULL, associations = NULL, experimentalCapabilities = NULL) {
   op <- new_operation(
     name = "CreateQuantumTask",
     http_method = "POST",
@@ -304,7 +315,7 @@ braket_create_quantum_task <- function(action, associations = NULL, clientToken,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .braket$create_quantum_task_input(action = action, associations = associations, clientToken = clientToken, deviceArn = deviceArn, deviceParameters = deviceParameters, jobToken = jobToken, outputS3Bucket = outputS3Bucket, outputS3KeyPrefix = outputS3KeyPrefix, shots = shots, tags = tags)
+  input <- .braket$create_quantum_task_input(clientToken = clientToken, deviceArn = deviceArn, deviceParameters = deviceParameters, shots = shots, outputS3Bucket = outputS3Bucket, outputS3KeyPrefix = outputS3KeyPrefix, action = action, tags = tags, jobToken = jobToken, associations = associations, experimentalCapabilities = experimentalCapabilities)
   output <- .braket$create_quantum_task_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -313,6 +324,128 @@ braket_create_quantum_task <- function(action, associations = NULL, clientToken,
   return(response)
 }
 .braket$operations$create_quantum_task <- braket_create_quantum_task
+
+#' Creates a spending limit for a specified quantum device
+#'
+#' @description
+#' Creates a spending limit for a specified quantum device. Spending limits
+#' help you control costs by setting maximum amounts that can be spent on
+#' quantum computing tasks within a specified time period. Simulators do
+#' not support spending limits.
+#'
+#' @usage
+#' braket_create_spending_limit(clientToken, deviceArn, spendingLimit,
+#'   timePeriod, tags)
+#'
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier to ensure that the operation
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Braket ignores the request, but does not return an
+#' error.
+#' @param deviceArn &#91;required&#93; The Amazon Resource Name (ARN) of the quantum device to apply the
+#' spending limit to.
+#' @param spendingLimit &#91;required&#93; The maximum amount that can be spent on the specified device, in USD.
+#' @param timePeriod The time period during which the spending limit is active, including
+#' start and end dates.
+#' @param tags The tags to apply to the spending limit. Each tag consists of a key and
+#' an optional value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   spendingLimitArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_spending_limit(
+#'   clientToken = "string",
+#'   deviceArn = "string",
+#'   spendingLimit = "string",
+#'   timePeriod = list(
+#'     startAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname braket_create_spending_limit
+#'
+#' @aliases braket_create_spending_limit
+braket_create_spending_limit <- function(clientToken, deviceArn, spendingLimit, timePeriod = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateSpendingLimit",
+    http_method = "POST",
+    http_path = "/spending-limit",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .braket$create_spending_limit_input(clientToken = clientToken, deviceArn = deviceArn, spendingLimit = spendingLimit, timePeriod = timePeriod, tags = tags)
+  output <- .braket$create_spending_limit_output()
+  config <- get_config()
+  svc <- .braket$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.braket$operations$create_spending_limit <- braket_create_spending_limit
+
+#' Deletes an existing spending limit
+#'
+#' @description
+#' Deletes an existing spending limit. This operation permanently removes
+#' the spending limit and cannot be undone. After deletion, the associated
+#' device becomes unrestricted for spending.
+#'
+#' @usage
+#' braket_delete_spending_limit(spendingLimitArn)
+#'
+#' @param spendingLimitArn &#91;required&#93; The Amazon Resource Name (ARN) of the spending limit to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_spending_limit(
+#'   spendingLimitArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname braket_delete_spending_limit
+#'
+#' @aliases braket_delete_spending_limit
+braket_delete_spending_limit <- function(spendingLimitArn) {
+  op <- new_operation(
+    name = "DeleteSpendingLimit",
+    http_method = "DELETE",
+    http_path = "/spending-limit/{spendingLimitArn}/delete",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .braket$delete_spending_limit_input(spendingLimitArn = spendingLimitArn)
+  output <- .braket$delete_spending_limit_output()
+  config <- get_config()
+  svc <- .braket$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.braket$operations$delete_spending_limit <- braket_delete_spending_limit
 
 #' Retrieves the devices available in Amazon Braket
 #'
@@ -339,18 +472,18 @@ braket_create_quantum_task <- function(action, associations = NULL, clientToken,
 #' ```
 #' list(
 #'   deviceArn = "string",
-#'   deviceCapabilities = "string",
 #'   deviceName = "string",
+#'   providerName = "string",
+#'   deviceType = "QPU"|"SIMULATOR",
+#'   deviceStatus = "ONLINE"|"OFFLINE"|"RETIRED",
+#'   deviceCapabilities = "string",
 #'   deviceQueueInfo = list(
 #'     list(
 #'       queue = "QUANTUM_TASKS_QUEUE"|"JOBS_QUEUE",
-#'       queuePriority = "Normal"|"Priority",
-#'       queueSize = "string"
+#'       queueSize = "string",
+#'       queuePriority = "Normal"|"Priority"
 #'     )
-#'   ),
-#'   deviceStatus = "ONLINE"|"OFFLINE"|"RETIRED",
-#'   deviceType = "QPU"|"SIMULATOR",
-#'   providerName = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -385,61 +518,27 @@ braket_get_device <- function(deviceArn) {
 }
 .braket$operations$get_device <- braket_get_device
 
-#' Retrieves the specified Amazon Braket job
+#' Retrieves the specified Amazon Braket hybrid job
 #'
 #' @description
-#' Retrieves the specified Amazon Braket job.
+#' Retrieves the specified Amazon Braket hybrid job.
 #'
 #' @usage
-#' braket_get_job(additionalAttributeNames, jobArn)
+#' braket_get_job(jobArn, additionalAttributeNames)
 #'
-#' @param additionalAttributeNames A list of attributes to return information for.
-#' @param jobArn &#91;required&#93; The ARN of the job to retrieve.
+#' @param jobArn &#91;required&#93; The ARN of the hybrid job to retrieve.
+#' @param additionalAttributeNames A list of attributes to return additional information for. Only the
+#' QueueInfo additional attribute name is currently supported.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   algorithmSpecification = list(
-#'     containerImage = list(
-#'       uri = "string"
-#'     ),
-#'     scriptModeConfig = list(
-#'       compressionType = "NONE"|"GZIP",
-#'       entryPoint = "string",
-#'       s3Uri = "string"
-#'     )
-#'   ),
-#'   associations = list(
-#'     list(
-#'       arn = "string",
-#'       type = "RESERVATION_TIME_WINDOW_ARN"
-#'     )
-#'   ),
-#'   billableDuration = 123,
-#'   checkpointConfig = list(
-#'     localPath = "string",
-#'     s3Uri = "string"
-#'   ),
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   deviceConfig = list(
-#'     device = "string"
-#'   ),
-#'   endedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   events = list(
-#'     list(
-#'       eventType = "WAITING_FOR_PRIORITY"|"QUEUED_FOR_EXECUTION"|"STARTING_INSTANCE"|"DOWNLOADING_DATA"|"RUNNING"|"DEPRIORITIZED_DUE_TO_INACTIVITY"|"UPLOADING_RESULTS"|"COMPLETED"|"FAILED"|"MAX_RUNTIME_EXCEEDED"|"CANCELLED",
-#'       message = "string",
-#'       timeOfEvent = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
+#'   status = "QUEUED"|"RUNNING"|"COMPLETED"|"FAILED"|"CANCELLING"|"CANCELLED",
+#'   jobArn = "string",
+#'   roleArn = "string",
 #'   failureReason = "string",
+#'   jobName = "string",
 #'   hyperParameters = list(
 #'     "string"
 #'   ),
@@ -454,32 +553,67 @@ braket_get_device <- function(deviceArn) {
 #'       )
 #'     )
 #'   ),
-#'   instanceConfig = list(
-#'     instanceCount = 123,
-#'     instanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
-#'     volumeSizeInGb = 123
-#'   ),
-#'   jobArn = "string",
-#'   jobName = "string",
 #'   outputDataConfig = list(
 #'     kmsKeyId = "string",
 #'     s3Path = "string"
 #'   ),
-#'   queueInfo = list(
-#'     message = "string",
-#'     position = "string",
-#'     queue = "QUANTUM_TASKS_QUEUE"|"JOBS_QUEUE"
-#'   ),
-#'   roleArn = "string",
-#'   startedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   status = "QUEUED"|"RUNNING"|"COMPLETED"|"FAILED"|"CANCELLING"|"CANCELLED",
 #'   stoppingCondition = list(
 #'     maxRuntimeInSeconds = 123
 #'   ),
+#'   checkpointConfig = list(
+#'     localPath = "string",
+#'     s3Uri = "string"
+#'   ),
+#'   algorithmSpecification = list(
+#'     scriptModeConfig = list(
+#'       entryPoint = "string",
+#'       s3Uri = "string",
+#'       compressionType = "NONE"|"GZIP"
+#'     ),
+#'     containerImage = list(
+#'       uri = "string"
+#'     )
+#'   ),
+#'   instanceConfig = list(
+#'     instanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
+#'     volumeSizeInGb = 123,
+#'     instanceCount = 123
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   startedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   billableDuration = 123,
+#'   deviceConfig = list(
+#'     device = "string"
+#'   ),
+#'   events = list(
+#'     list(
+#'       eventType = "WAITING_FOR_PRIORITY"|"QUEUED_FOR_EXECUTION"|"STARTING_INSTANCE"|"DOWNLOADING_DATA"|"RUNNING"|"DEPRIORITIZED_DUE_TO_INACTIVITY"|"UPLOADING_RESULTS"|"COMPLETED"|"FAILED"|"MAX_RUNTIME_EXCEEDED"|"CANCELLED",
+#'       timeOfEvent = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       message = "string"
+#'     )
+#'   ),
 #'   tags = list(
 #'     "string"
+#'   ),
+#'   queueInfo = list(
+#'     queue = "QUANTUM_TASKS_QUEUE"|"JOBS_QUEUE",
+#'     position = "string",
+#'     message = "string"
+#'   ),
+#'   associations = list(
+#'     list(
+#'       arn = "string",
+#'       type = "RESERVATION_TIME_WINDOW_ARN"
+#'     )
 #'   )
 #' )
 #' ```
@@ -487,10 +621,10 @@ braket_get_device <- function(deviceArn) {
 #' @section Request syntax:
 #' ```
 #' svc$get_job(
+#'   jobArn = "string",
 #'   additionalAttributeNames = list(
 #'     "QueueInfo"
-#'   ),
-#'   jobArn = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -499,7 +633,7 @@ braket_get_device <- function(deviceArn) {
 #' @rdname braket_get_job
 #'
 #' @aliases braket_get_job
-braket_get_job <- function(additionalAttributeNames = NULL, jobArn) {
+braket_get_job <- function(jobArn, additionalAttributeNames = NULL) {
   op <- new_operation(
     name = "GetJob",
     http_method = "GET",
@@ -508,7 +642,7 @@ braket_get_job <- function(additionalAttributeNames = NULL, jobArn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .braket$get_job_input(additionalAttributeNames = additionalAttributeNames, jobArn = jobArn)
+  input <- .braket$get_job_input(jobArn = jobArn, additionalAttributeNames = additionalAttributeNames)
   output <- .braket$get_job_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -524,44 +658,54 @@ braket_get_job <- function(additionalAttributeNames = NULL, jobArn) {
 #' Retrieves the specified quantum task.
 #'
 #' @usage
-#' braket_get_quantum_task(additionalAttributeNames, quantumTaskArn)
+#' braket_get_quantum_task(quantumTaskArn, additionalAttributeNames)
 #'
-#' @param additionalAttributeNames A list of attributes to return information for.
-#' @param quantumTaskArn &#91;required&#93; The ARN of the task to retrieve.
+#' @param quantumTaskArn &#91;required&#93; The ARN of the quantum task to retrieve.
+#' @param additionalAttributeNames A list of attributes to return additional information for. Only the
+#' QueueInfo additional attribute name is currently supported.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   quantumTaskArn = "string",
+#'   status = "CREATED"|"QUEUED"|"RUNNING"|"COMPLETED"|"FAILED"|"CANCELLING"|"CANCELLED",
+#'   failureReason = "string",
+#'   deviceArn = "string",
+#'   deviceParameters = "string",
+#'   shots = 123,
+#'   outputS3Bucket = "string",
+#'   outputS3Directory = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   jobArn = "string",
+#'   queueInfo = list(
+#'     queue = "QUANTUM_TASKS_QUEUE"|"JOBS_QUEUE",
+#'     position = "string",
+#'     queuePriority = "Normal"|"Priority",
+#'     message = "string"
+#'   ),
 #'   associations = list(
 #'     list(
 #'       arn = "string",
 #'       type = "RESERVATION_TIME_WINDOW_ARN"
 #'     )
 #'   ),
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
+#'   numSuccessfulShots = 123,
+#'   actionMetadata = list(
+#'     actionType = "string",
+#'     programCount = 123,
+#'     executableCount = 123
 #'   ),
-#'   deviceArn = "string",
-#'   deviceParameters = "string",
-#'   endedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   failureReason = "string",
-#'   jobArn = "string",
-#'   outputS3Bucket = "string",
-#'   outputS3Directory = "string",
-#'   quantumTaskArn = "string",
-#'   queueInfo = list(
-#'     message = "string",
-#'     position = "string",
-#'     queue = "QUANTUM_TASKS_QUEUE"|"JOBS_QUEUE",
-#'     queuePriority = "Normal"|"Priority"
-#'   ),
-#'   shots = 123,
-#'   status = "CREATED"|"QUEUED"|"RUNNING"|"COMPLETED"|"FAILED"|"CANCELLING"|"CANCELLED",
-#'   tags = list(
-#'     "string"
+#'   experimentalCapabilities = list(
+#'     enabled = "ALL"|"NONE"
 #'   )
 #' )
 #' ```
@@ -569,10 +713,10 @@ braket_get_job <- function(additionalAttributeNames = NULL, jobArn) {
 #' @section Request syntax:
 #' ```
 #' svc$get_quantum_task(
+#'   quantumTaskArn = "string",
 #'   additionalAttributeNames = list(
 #'     "QueueInfo"
-#'   ),
-#'   quantumTaskArn = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -581,7 +725,7 @@ braket_get_job <- function(additionalAttributeNames = NULL, jobArn) {
 #' @rdname braket_get_quantum_task
 #'
 #' @aliases braket_get_quantum_task
-braket_get_quantum_task <- function(additionalAttributeNames = NULL, quantumTaskArn) {
+braket_get_quantum_task <- function(quantumTaskArn, additionalAttributeNames = NULL) {
   op <- new_operation(
     name = "GetQuantumTask",
     http_method = "GET",
@@ -590,7 +734,7 @@ braket_get_quantum_task <- function(additionalAttributeNames = NULL, quantumTask
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .braket$get_quantum_task_input(additionalAttributeNames = additionalAttributeNames, quantumTaskArn = quantumTaskArn)
+  input <- .braket$get_quantum_task_input(quantumTaskArn = quantumTaskArn, additionalAttributeNames = additionalAttributeNames)
   output <- .braket$get_quantum_task_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -657,13 +801,13 @@ braket_list_tags_for_resource <- function(resourceArn) {
 #' Searches for devices using the specified filters.
 #'
 #' @usage
-#' braket_search_devices(filters, maxResults, nextToken)
+#' braket_search_devices(nextToken, maxResults, filters)
 #'
-#' @param filters &#91;required&#93; The filter values to use to search for a device.
-#' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned in the response. Use the
-#' token returned from the previous request continue results where the
+#' token returned from the previous request to continue search where the
 #' previous request ended.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param filters &#91;required&#93; Array of SearchDevicesFilter objects to use when searching for devices.
 #'
 #' @return
 #' A list with the following syntax:
@@ -673,9 +817,9 @@ braket_list_tags_for_resource <- function(resourceArn) {
 #'     list(
 #'       deviceArn = "string",
 #'       deviceName = "string",
-#'       deviceStatus = "ONLINE"|"OFFLINE"|"RETIRED",
+#'       providerName = "string",
 #'       deviceType = "QPU"|"SIMULATOR",
-#'       providerName = "string"
+#'       deviceStatus = "ONLINE"|"OFFLINE"|"RETIRED"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -685,6 +829,8 @@ braket_list_tags_for_resource <- function(resourceArn) {
 #' @section Request syntax:
 #' ```
 #' svc$search_devices(
+#'   nextToken = "string",
+#'   maxResults = 123,
 #'   filters = list(
 #'     list(
 #'       name = "string",
@@ -692,9 +838,7 @@ braket_list_tags_for_resource <- function(resourceArn) {
 #'         "string"
 #'       )
 #'     )
-#'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -703,7 +847,7 @@ braket_list_tags_for_resource <- function(resourceArn) {
 #' @rdname braket_search_devices
 #'
 #' @aliases braket_search_devices
-braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) {
+braket_search_devices <- function(nextToken = NULL, maxResults = NULL, filters) {
   op <- new_operation(
     name = "SearchDevices",
     http_method = "POST",
@@ -712,7 +856,7 @@ braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "devices"),
     stream_api = FALSE
   )
-  input <- .braket$search_devices_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
+  input <- .braket$search_devices_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
   output <- .braket$search_devices_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -722,19 +866,21 @@ braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) 
 }
 .braket$operations$search_devices <- braket_search_devices
 
-#' Searches for Amazon Braket jobs that match the specified filter values
+#' Searches for Amazon Braket hybrid jobs that match the specified filter
+#' values
 #'
 #' @description
-#' Searches for Amazon Braket jobs that match the specified filter values.
+#' Searches for Amazon Braket hybrid jobs that match the specified filter
+#' values.
 #'
 #' @usage
-#' braket_search_jobs(filters, maxResults, nextToken)
+#' braket_search_jobs(nextToken, maxResults, filters)
 #'
-#' @param filters &#91;required&#93; The filter values to use when searching for a job.
-#' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned in the response. Use the
-#' token returned from the previous request to continue results where the
+#' token returned from the previous request to continue search where the
 #' previous request ended.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param filters &#91;required&#93; Array of SearchJobsFilter objects to use when searching for hybrid jobs.
 #'
 #' @return
 #' A list with the following syntax:
@@ -742,19 +888,19 @@ braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) 
 #' list(
 #'   jobs = list(
 #'     list(
+#'       status = "QUEUED"|"RUNNING"|"COMPLETED"|"FAILED"|"CANCELLING"|"CANCELLED",
+#'       jobArn = "string",
+#'       jobName = "string",
+#'       device = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       device = "string",
-#'       endedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       jobArn = "string",
-#'       jobName = "string",
 #'       startedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       status = "QUEUED"|"RUNNING"|"COMPLETED"|"FAILED"|"CANCELLING"|"CANCELLED",
+#'       endedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       tags = list(
 #'         "string"
 #'       )
@@ -767,17 +913,17 @@ braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) 
 #' @section Request syntax:
 #' ```
 #' svc$search_jobs(
+#'   nextToken = "string",
+#'   maxResults = 123,
 #'   filters = list(
 #'     list(
 #'       name = "string",
-#'       operator = "LT"|"LTE"|"EQUAL"|"GT"|"GTE"|"BETWEEN"|"CONTAINS",
 #'       values = list(
 #'         "string"
-#'       )
+#'       ),
+#'       operator = "LT"|"LTE"|"EQUAL"|"GT"|"GTE"|"BETWEEN"|"CONTAINS"
 #'     )
-#'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -786,7 +932,7 @@ braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) 
 #' @rdname braket_search_jobs
 #'
 #' @aliases braket_search_jobs
-braket_search_jobs <- function(filters, maxResults = NULL, nextToken = NULL) {
+braket_search_jobs <- function(nextToken = NULL, maxResults = NULL, filters) {
   op <- new_operation(
     name = "SearchJobs",
     http_method = "POST",
@@ -795,7 +941,7 @@ braket_search_jobs <- function(filters, maxResults = NULL, nextToken = NULL) {
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs"),
     stream_api = FALSE
   )
-  input <- .braket$search_jobs_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
+  input <- .braket$search_jobs_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
   output <- .braket$search_jobs_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -811,55 +957,56 @@ braket_search_jobs <- function(filters, maxResults = NULL, nextToken = NULL) {
 #' Searches for tasks that match the specified filter values.
 #'
 #' @usage
-#' braket_search_quantum_tasks(filters, maxResults, nextToken)
+#' braket_search_quantum_tasks(nextToken, maxResults, filters)
 #'
-#' @param filters &#91;required&#93; Array of `SearchQuantumTasksFilter` objects.
-#' @param maxResults Maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned in the response. Use the
-#' token returned from the previous request continue results where the
+#' token returned from the previous request to continue search where the
 #' previous request ended.
+#' @param maxResults Maximum number of results to return in the response.
+#' @param filters &#91;required&#93; Array of `SearchQuantumTasksFilter` objects to use when searching for
+#' quantum tasks.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   quantumTasks = list(
 #'     list(
+#'       quantumTaskArn = "string",
+#'       status = "CREATED"|"QUEUED"|"RUNNING"|"COMPLETED"|"FAILED"|"CANCELLING"|"CANCELLED",
+#'       deviceArn = "string",
+#'       shots = 123,
+#'       outputS3Bucket = "string",
+#'       outputS3Directory = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       deviceArn = "string",
 #'       endedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       outputS3Bucket = "string",
-#'       outputS3Directory = "string",
-#'       quantumTaskArn = "string",
-#'       shots = 123,
-#'       status = "CREATED"|"QUEUED"|"RUNNING"|"COMPLETED"|"FAILED"|"CANCELLING"|"CANCELLED",
 #'       tags = list(
 #'         "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$search_quantum_tasks(
+#'   nextToken = "string",
+#'   maxResults = 123,
 #'   filters = list(
 #'     list(
 #'       name = "string",
-#'       operator = "LT"|"LTE"|"EQUAL"|"GT"|"GTE"|"BETWEEN",
 #'       values = list(
 #'         "string"
-#'       )
+#'       ),
+#'       operator = "LT"|"LTE"|"EQUAL"|"GT"|"GTE"|"BETWEEN"
 #'     )
-#'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -868,7 +1015,7 @@ braket_search_jobs <- function(filters, maxResults = NULL, nextToken = NULL) {
 #' @rdname braket_search_quantum_tasks
 #'
 #' @aliases braket_search_quantum_tasks
-braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = NULL) {
+braket_search_quantum_tasks <- function(nextToken = NULL, maxResults = NULL, filters) {
   op <- new_operation(
     name = "SearchQuantumTasks",
     http_method = "POST",
@@ -877,7 +1024,7 @@ braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "quantumTasks"),
     stream_api = FALSE
   )
-  input <- .braket$search_quantum_tasks_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
+  input <- .braket$search_quantum_tasks_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
   output <- .braket$search_quantum_tasks_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -886,6 +1033,100 @@ braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = 
   return(response)
 }
 .braket$operations$search_quantum_tasks <- braket_search_quantum_tasks
+
+#' Searches and lists spending limits based on specified filters
+#'
+#' @description
+#' Searches and lists spending limits based on specified filters. This
+#' operation supports pagination and allows filtering by various criteria
+#' to find specific spending limits. We recommend using pagination to
+#' ensure that the operation returns quickly and successfully.
+#'
+#' @usage
+#' braket_search_spending_limits(nextToken, maxResults, filters)
+#'
+#' @param nextToken The token to retrieve the next page of results. This value is returned
+#' from a previous call to SearchSpendingLimits when there are more results
+#' available.
+#' @param maxResults The maximum number of results to return in a single call. Minimum value
+#' of 1, maximum value of 100. Default is 20.
+#' @param filters The filters to apply when searching for spending limits. Use filters to
+#' narrow down the results based on specific criteria.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   spendingLimits = list(
+#'     list(
+#'       spendingLimitArn = "string",
+#'       deviceArn = "string",
+#'       timePeriod = list(
+#'         startAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endAt = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       spendingLimit = "string",
+#'       queuedSpend = "string",
+#'       totalSpend = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_spending_limits(
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   filters = list(
+#'     list(
+#'       name = "string",
+#'       values = list(
+#'         "string"
+#'       ),
+#'       operator = "EQUAL"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname braket_search_spending_limits
+#'
+#' @aliases braket_search_spending_limits
+braket_search_spending_limits <- function(nextToken = NULL, maxResults = NULL, filters = NULL) {
+  op <- new_operation(
+    name = "SearchSpendingLimits",
+    http_method = "POST",
+    http_path = "/spending-limits",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "spendingLimits"),
+    stream_api = FALSE
+  )
+  input <- .braket$search_spending_limits_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
+  output <- .braket$search_spending_limits_output()
+  config <- get_config()
+  svc <- .braket$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.braket$operations$search_spending_limits <- braket_search_spending_limits
 
 #' Add a tag to the specified resource
 #'
@@ -896,7 +1137,8 @@ braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = 
 #' braket_tag_resource(resourceArn, tags)
 #'
 #' @param resourceArn &#91;required&#93; Specify the `resourceArn` of the resource to which a tag will be added.
-#' @param tags &#91;required&#93; Specify the tags to add to the resource.
+#' @param tags &#91;required&#93; Specify the tags to add to the resource. Tags can be specified as a
+#' key-value map.
 #'
 #' @return
 #' An empty list.
@@ -983,3 +1225,67 @@ braket_untag_resource <- function(resourceArn, tagKeys) {
   return(response)
 }
 .braket$operations$untag_resource <- braket_untag_resource
+
+#' Updates an existing spending limit
+#'
+#' @description
+#' Updates an existing spending limit. You can modify the spending amount
+#' or time period. Changes take effect immediately.
+#'
+#' @usage
+#' braket_update_spending_limit(spendingLimitArn, clientToken,
+#'   spendingLimit, timePeriod)
+#'
+#' @param spendingLimitArn &#91;required&#93; The Amazon Resource Name (ARN) of the spending limit to update.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier to ensure that the operation
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Braket ignores the request, but does not return an
+#' error.
+#' @param spendingLimit The new maximum amount that can be spent on the specified device, in
+#' USD.
+#' @param timePeriod The new time period during which the spending limit is active, including
+#' start and end dates.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_spending_limit(
+#'   spendingLimitArn = "string",
+#'   clientToken = "string",
+#'   spendingLimit = "string",
+#'   timePeriod = list(
+#'     startAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname braket_update_spending_limit
+#'
+#' @aliases braket_update_spending_limit
+braket_update_spending_limit <- function(spendingLimitArn, clientToken, spendingLimit = NULL, timePeriod = NULL) {
+  op <- new_operation(
+    name = "UpdateSpendingLimit",
+    http_method = "PATCH",
+    http_path = "/spending-limit/{spendingLimitArn}/update",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .braket$update_spending_limit_input(spendingLimitArn = spendingLimitArn, clientToken = clientToken, spendingLimit = spendingLimit, timePeriod = timePeriod)
+  output <- .braket$update_spending_limit_output()
+  config <- get_config()
+  svc <- .braket$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.braket$operations$update_spending_limit <- braket_update_spending_limit

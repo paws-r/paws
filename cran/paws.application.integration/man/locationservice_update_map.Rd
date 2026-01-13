@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_update_map}
 \alias{locationservice_update_map}
-\title{Updates the specified properties of a given map resource}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_update_map(
   MapName,
@@ -23,7 +23,7 @@ locationservice_update_map(
 including the political view.}
 }
 \description{
-Updates the specified properties of a given map resource.
+This operation is no longer current and may be deprecated in the future. We recommend upgrading to the Maps API V2 unless you require \code{Grab} data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_update_map/} for full documentation.
 }

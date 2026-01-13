@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_start_read_set_export_job}
 \alias{omics_start_read_set_export_job}
-\title{Exports a read set to Amazon S3}
+\title{Starts a read set export job}
 \usage{
 omics_start_read_set_export_job(
   sequenceStoreId,
@@ -25,7 +25,7 @@ each job.}
 \item{sources}{[required] The job's source files.}
 }
 \description{
-Exports a read set to Amazon S3.
+Starts a read set export job. When the export job is finished, the read set is exported to an Amazon S3 bucket which can be retrieved using the \code{\link[=omics_get_read_set_export_job]{get_read_set_export_job}} API operation.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_start_read_set_export_job/} for full documentation.
 }

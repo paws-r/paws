@@ -5,14 +5,14 @@
 \title{Enables Amazon Inspector scans for one or more Amazon Web Services
 accounts}
 \usage{
-inspector2_enable(accountIds = NULL, clientToken = NULL, resourceTypes)
+inspector2_enable(accountIds = NULL, resourceTypes, clientToken = NULL)
 }
 \arguments{
 \item{accountIds}{A list of account IDs you want to enable Amazon Inspector scans for.}
 
-\item{clientToken}{The idempotency token for the request.}
-
 \item{resourceTypes}{[required] The resource scan types you want to enable.}
+
+\item{clientToken}{The idempotency token for the request.}
 }
 \description{
 Enables Amazon Inspector scans for one or more Amazon Web Services accounts.

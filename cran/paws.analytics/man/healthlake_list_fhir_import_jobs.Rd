@@ -2,7 +2,7 @@
 % Please edit documentation in R/healthlake_operations.R
 \name{healthlake_list_fhir_import_jobs}
 \alias{healthlake_list_fhir_import_jobs}
-\title{Lists all FHIR import jobs associated with an account and their statuses}
+\title{List all FHIR import jobs associated with an account and their statuses}
 \usage{
 healthlake_list_fhir_import_jobs(
   DatastoreId,
@@ -15,29 +15,27 @@ healthlake_list_fhir_import_jobs(
 )
 }
 \arguments{
-\item{DatastoreId}{[required] This parameter limits the response to the import job with the specified
-data store ID.}
+\item{DatastoreId}{[required] Limits the response to the import job with the specified data store ID.}
 
-\item{NextToken}{A pagination token used to identify the next page of results to return
-for a ListFHIRImportJobs query.}
+\item{NextToken}{The pagination token used to identify the next page of results to
+return.}
 
-\item{MaxResults}{This parameter limits the number of results returned for a
-ListFHIRImportJobs to a maximum quantity specified by the user.}
+\item{MaxResults}{Limits the number of results returned for
+\code{\link[=healthlake_list_fhir_import_jobs]{list_fhir_import_jobs}} to a maximum
+quantity specified by the user.}
 
-\item{JobName}{This parameter limits the response to the import job with the specified
-job name.}
+\item{JobName}{Limits the response to the import job with the specified job name.}
 
-\item{JobStatus}{This parameter limits the response to the import job with the specified
-job status.}
+\item{JobStatus}{Limits the response to the import job with the specified job status.}
 
-\item{SubmittedBefore}{This parameter limits the response to FHIR import jobs submitted before
-a user specified date.}
+\item{SubmittedBefore}{Limits the response to FHIR import jobs submitted before a user-
+specified date.}
 
-\item{SubmittedAfter}{This parameter limits the response to FHIR import jobs submitted after a
-user specified date.}
+\item{SubmittedAfter}{Limits the response to FHIR import jobs submitted after a user-specified
+date.}
 }
 \description{
-Lists all FHIR import jobs associated with an account and their statuses.
+List all FHIR import jobs associated with an account and their statuses.
 
 See \url{https://www.paws-r-sdk.com/docs/healthlake_list_fhir_import_jobs/} for full documentation.
 }

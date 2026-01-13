@@ -2,9 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_create_map}
 \alias{locationservice_create_map}
-\title{Creates a map resource in your Amazon Web Services account, which
-provides map tiles of different styles sourced from global location data
-providers}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_create_map(
   MapName,
@@ -52,7 +50,7 @@ characters: + - = . _ : / @.
 }}
 }
 \description{
-Creates a map resource in your Amazon Web Services account, which provides map tiles of different styles sourced from global location data providers.
+This operation is no longer current and may be deprecated in the future. We recommend upgrading to the Maps API V2 unless you require \code{Grab} data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_create_map/} for full documentation.
 }

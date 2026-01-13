@@ -23,6 +23,7 @@ rds_modify_db_instance(
   AutoMinorVersionUpgrade = NULL,
   LicenseModel = NULL,
   Iops = NULL,
+  StorageThroughput = NULL,
   OptionGroupName = NULL,
   NewDBInstanceIdentifier = NULL,
   StorageType = NULL,
@@ -34,13 +35,13 @@ rds_modify_db_instance(
   DomainOu = NULL,
   DomainAuthSecretArn = NULL,
   DomainDnsIps = NULL,
+  DisableDomain = NULL,
   CopyTagsToSnapshot = NULL,
   MonitoringInterval = NULL,
   DBPortNumber = NULL,
   PubliclyAccessible = NULL,
   MonitoringRoleArn = NULL,
   DomainIAMRoleName = NULL,
-  DisableDomain = NULL,
   PromotionTier = NULL,
   EnableIAMDatabaseAuthentication = NULL,
   DatabaseInsightsMode = NULL,
@@ -54,18 +55,20 @@ rds_modify_db_instance(
   MaxAllocatedStorage = NULL,
   CertificateRotationRestart = NULL,
   ReplicaMode = NULL,
-  EnableCustomerOwnedIp = NULL,
-  AwsBackupRecoveryPointArn = NULL,
   AutomationMode = NULL,
   ResumeFullAutomationModeMinutes = NULL,
+  EnableCustomerOwnedIp = NULL,
   NetworkType = NULL,
-  StorageThroughput = NULL,
+  AwsBackupRecoveryPointArn = NULL,
   ManageMasterUserPassword = NULL,
   RotateMasterUserPassword = NULL,
   MasterUserSecretKmsKeyId = NULL,
-  Engine = NULL,
+  MultiTenant = NULL,
   DedicatedLogVolume = NULL,
-  MultiTenant = NULL
+  Engine = NULL,
+  TagSpecifications = NULL,
+  MasterUserAuthenticationType = NULL,
+  AdditionalStorageVolumes = NULL
 )
 }
 \arguments{
@@ -441,6 +444,12 @@ current value.
 
 Default: Uses existing setting}
 
+\item{StorageThroughput}{The storage throughput value for the DB instance.
+
+This setting applies only to the \code{gp3} storage type.
+
+This setting doesn't apply to Amazon Aurora or RDS Custom DB instances.}
+
 \item{OptionGroupName}{The option group to associate the DB instance with.
 
 Changing this parameter doesn't result in an outage, with one exception.
@@ -542,7 +551,6 @@ Example: \code{mymanagedADtest.mymanagedAD.mydomain}}
 Constraints:
 \itemize{
 \item Must be in the distinguished name format.
-\item Can't be longer than 64 characters.
 }
 
 Example:
@@ -565,6 +573,9 @@ both entries in the list.
 }
 
 Example: \verb{123.124.125.126,234.235.236.237}}
+
+\item{DisableDomain}{Specifies whether to remove the DB instance from the Active Directory
+domain.}
 
 \item{CopyTagsToSnapshot}{Specifies whether to copy all tags from the DB instance to snapshots of
 the DB instance. By default, tags aren't copied.
@@ -651,9 +662,6 @@ This setting doesn't apply to RDS Custom DB instances.}
 Service.
 
 This setting doesn't apply to RDS Custom DB instances.}
-
-\item{DisableDomain}{Specifies whether to remove the DB instance from the Active Directory
-domain.}
 
 \item{PromotionTier}{The order of priority in which an Aurora Replica is promoted to the
 primary instance after a failure of the existing primary instance. For
@@ -801,39 +809,40 @@ in the \emph{Amazon Aurora User Guide}.
 
 This setting doesn't apply to RDS Custom DB instances.}
 
-\item{ReplicaMode}{A value that sets the open mode of a replica database to either mounted
-or read-only.
+\item{ReplicaMode}{The open mode of a replica database.
 
-Currently, this parameter is only supported for Oracle DB instances.
+This parameter is only supported for Db2 DB instances and Oracle DB
+instances.
 
-Mounted DB replicas are included in Oracle Enterprise Edition. The main
-use case for mounted replicas is cross-Region disaster recovery. The
-primary database doesn't use Active Data Guard to transmit information
-to the mounted replica. Because it doesn't accept user connections, a
-mounted replica can't serve a read-only workload. For more information,
-see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html}{Working with Oracle Read Replicas for Amazon RDS}
+\strong{Db2}
+
+Standby DB replicas are included in Db2 Advanced Edition (AE) and Db2
+Standard Edition (SE). The main use case for standby replicas is
+cross-Region disaster recovery. Because it doesn't accept user
+connections, a standby replica can't serve a read-only workload.
+
+You can create a combination of standby and read-only DB replicas for
+the same primary DB instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/db2-replication.html}{Working with replicas for Amazon RDS for Db2}
 in the \emph{Amazon RDS User Guide}.
 
-This setting doesn't apply to RDS Custom DB instances.}
+To create standby DB replicas for RDS for Db2, set this parameter to
+\code{mounted}.
 
-\item{EnableCustomerOwnedIp}{Specifies whether to enable a customer-owned IP address (CoIP) for an
-RDS on Outposts DB instance.
+\strong{Oracle}
 
-A \emph{CoIP} provides local or external connectivity to resources in your
-Outpost subnets through your on-premises network. For some use cases, a
-CoIP can provide lower latency for connections to the DB instance from
-outside of its virtual private cloud (VPC) on your local network.
+Mounted DB replicas are included in Oracle Database Enterprise Edition.
+The main use case for mounted replicas is cross-Region disaster
+recovery. The primary database doesn't use Active Data Guard to transmit
+information to the mounted replica. Because it doesn't accept user
+connections, a mounted replica can't serve a read-only workload.
 
-For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
+You can create a combination of mounted and read-only DB replicas for
+the same primary DB instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html}{Working with read replicas for Amazon RDS for Oracle}
 in the \emph{Amazon RDS User Guide}.
 
-For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/routing.html#ip-addressing}{Customer-owned IP addresses}
-in the \emph{Amazon Web Services Outposts User Guide}.}
-
-\item{AwsBackupRecoveryPointArn}{The Amazon Resource Name (ARN) of the recovery point in Amazon Web
-Services Backup.
-
-This setting doesn't apply to RDS Custom DB instances.}
+For RDS Custom, you must specify this parameter and set it to \code{mounted}.
+The value won't be set by default. After replica creation, you can
+manage the open mode manually.}
 
 \item{AutomationMode}{The automation mode of the RDS Custom DB instance. If \code{full}, the DB
 instance automates monitoring and instance recovery. If \verb{all paused},
@@ -851,6 +860,20 @@ Constraints:
 \item Must be no more than 1,440.
 }}
 
+\item{EnableCustomerOwnedIp}{Specifies whether to enable a customer-owned IP address (CoIP) for an
+RDS on Outposts DB instance.
+
+A \emph{CoIP} provides local or external connectivity to resources in your
+Outpost subnets through your on-premises network. For some use cases, a
+CoIP can provide lower latency for connections to the DB instance from
+outside of its virtual private cloud (VPC) on your local network.
+
+For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
+in the \emph{Amazon RDS User Guide}.
+
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/routing.html#ip-addressing}{Customer-owned IP addresses}
+in the \emph{Amazon Web Services Outposts User Guide}.}
+
 \item{NetworkType}{The network type of the DB instance.
 
 The network type is determined by the \code{DBSubnetGroup} specified for the
@@ -862,11 +885,10 @@ in the \emph{Amazon RDS User Guide.}
 
 Valid Values: \code{IPV4 | DUAL}}
 
-\item{StorageThroughput}{The storage throughput value for the DB instance.
+\item{AwsBackupRecoveryPointArn}{The Amazon Resource Name (ARN) of the recovery point in Amazon Web
+Services Backup.
 
-This setting applies only to the \code{gp3} storage type.
-
-This setting doesn't apply to Amazon Aurora or RDS Custom DB instances.}
+This setting doesn't apply to RDS Custom DB instances.}
 
 \item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
 Services Secrets Manager.
@@ -943,6 +965,25 @@ There is a default KMS key for your Amazon Web Services account. Your
 Amazon Web Services account has a different default KMS key for each
 Amazon Web Services Region.}
 
+\item{MultiTenant}{Specifies whether the to convert your DB instance from the single-tenant
+configuration to the multi-tenant configuration. This parameter is
+supported only for RDS for Oracle CDB instances.
+
+During the conversion, RDS creates an initial tenant database and
+associates the DB name, master user name, character set, and national
+character set metadata with this database. The tags associated with the
+instance also propagate to the initial tenant database. You can add more
+tenant databases to your DB instance by using the
+\code{\link[=rds_create_tenant_database]{create_tenant_database}} operation.
+
+The conversion to the multi-tenant configuration is permanent and
+irreversible, so you can't later convert back to the single-tenant
+configuration. When you specify this parameter, you must also specify
+\code{ApplyImmediately}.}
+
+\item{DedicatedLogVolume}{Indicates whether the DB instance has a dedicated log volume (DLV)
+enabled.}
+
 \item{Engine}{The target Oracle DB engine when you convert a non-CDB to a CDB. This
 intermediate step is necessary to upgrade an Oracle Database 19c non-CDB
 to an Oracle Database 21c CDB.
@@ -968,24 +1009,30 @@ parameter group with \code{--db-parameter-group-name} and a new option
 group with \code{--option-group-name}.
 }}
 
-\item{DedicatedLogVolume}{Indicates whether the DB instance has a dedicated log volume (DLV)
-enabled.}
+\item{TagSpecifications}{Tags to assign to resources associated with the DB instance.
 
-\item{MultiTenant}{Specifies whether the to convert your DB instance from the single-tenant
-configuration to the multi-tenant configuration. This parameter is
-supported only for RDS for Oracle CDB instances.
+Valid Values:
+\itemize{
+\item \code{auto-backup} - The DB instance's automated backup.
+}}
 
-During the conversion, RDS creates an initial tenant database and
-associates the DB name, master user name, character set, and national
-character set metadata with this database. The tags associated with the
-instance also propagate to the initial tenant database. You can add more
-tenant databases to your DB instance by using the
-\code{\link[=rds_create_tenant_database]{create_tenant_database}} operation.
+\item{MasterUserAuthenticationType}{Specifies the authentication type for the master user. With IAM master
+user authentication, you can change the master DB user to use IAM
+database authentication.
 
-The conversion to the multi-tenant configuration is permanent and
-irreversible, so you can't later convert back to the single-tenant
-configuration. When you specify this parameter, you must also specify
-\code{ApplyImmediately}.}
+You can specify one of the following values:
+\itemize{
+\item \code{password} - Use standard database authentication with a password.
+\item \code{iam-db-auth} - Use IAM database authentication for the master user.
+}
+
+This option is only valid for RDS for PostgreSQL and Aurora PostgreSQL
+engines.}
+
+\item{AdditionalStorageVolumes}{A list of additional storage volumes to modify or delete for the DB
+instance. You can create up to 3 additional storage volumes. Additional
+storage volumes are supported for RDS for Oracle and RDS for SQL Server
+DB instances only.}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. To learn what modifications you can make to your DB instance, call \code{\link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}} before you call \code{\link[=rds_modify_db_instance]{modify_db_instance}}.

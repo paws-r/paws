@@ -5,36 +5,17 @@
 \title{Updates the configuration of an existing app monitor}
 \usage{
 cloudwatchrum_update_app_monitor(
-  AppMonitorConfiguration = NULL,
-  CustomEvents = NULL,
-  CwLogEnabled = NULL,
-  DeobfuscationConfiguration = NULL,
+  Name,
   Domain = NULL,
   DomainList = NULL,
-  Name
+  AppMonitorConfiguration = NULL,
+  CwLogEnabled = NULL,
+  CustomEvents = NULL,
+  DeobfuscationConfiguration = NULL
 )
 }
 \arguments{
-\item{AppMonitorConfiguration}{A structure that contains much of the configuration data for the app
-monitor. If you are using Amazon Cognito for authorization, you must
-include this structure in your request, and it must include the ID of
-the Amazon Cognito identity pool to use for authorization. If you don't
-include \code{AppMonitorConfiguration}, you must set up your own
-authorization method. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-get-started-authorization.html}{Authorize your application to send data to Amazon Web Services}.}
-
-\item{CustomEvents}{Specifies whether this app monitor allows the web client to define and
-send custom events. The default is for custom events to be \code{DISABLED}.
-
-For more information about custom events, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html}{Send custom events}.}
-
-\item{CwLogEnabled}{Data collected by RUM is kept by RUM for 30 days and then deleted. This
-parameter specifies whether RUM sends a copy of this telemetry data to
-Amazon CloudWatch Logs in your account. This enables you to keep the
-telemetry data for more than 30 days, but it does incur Amazon
-CloudWatch Logs charges.}
-
-\item{DeobfuscationConfiguration}{A structure that contains the configuration for how an app monitor can
-deobfuscate stack traces.}
+\item{Name}{[required] The name of the app monitor to update.}
 
 \item{Domain}{The top-level internet domain name for which your application has
 administrative authority.}
@@ -43,7 +24,26 @@ administrative authority.}
 authority. The \code{\link[=cloudwatchrum_update_app_monitor]{update_app_monitor}}
 allows either the domain or the domain list.}
 
-\item{Name}{[required] The name of the app monitor to update.}
+\item{AppMonitorConfiguration}{A structure that contains much of the configuration data for the app
+monitor. If you are using Amazon Cognito for authorization, you must
+include this structure in your request, and it must include the ID of
+the Amazon Cognito identity pool to use for authorization. If you don't
+include \code{AppMonitorConfiguration}, you must set up your own
+authorization method. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-get-started-authorization.html}{Authorize your application to send data to Amazon Web Services}.}
+
+\item{CwLogEnabled}{Data collected by RUM is kept by RUM for 30 days and then deleted. This
+parameter specifies whether RUM sends a copy of this telemetry data to
+Amazon CloudWatch Logs in your account. This enables you to keep the
+telemetry data for more than 30 days, but it does incur Amazon
+CloudWatch Logs charges.}
+
+\item{CustomEvents}{Specifies whether this app monitor allows the web client to define and
+send custom events. The default is for custom events to be \code{DISABLED}.
+
+For more information about custom events, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html}{Send custom events}.}
+
+\item{DeobfuscationConfiguration}{A structure that contains the configuration for how an app monitor can
+deobfuscate stack traces.}
 }
 \description{
 Updates the configuration of an existing app monitor. When you use this operation, only the parts of the app monitor configuration that you specify in this operation are changed. For any parameters that you omit, the existing values are kept.
