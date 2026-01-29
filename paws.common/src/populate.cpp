@@ -518,24 +518,33 @@ SEXP populate_scalar_cpp(SEXP input, SEXP interface, SEXP parent) {
   // Strip custom class attributes if interface doesn't have one
   // Preserve only R built-in temporal classes (POSIXct, POSIXt, Date) needed for serialization
   if (class_attr == R_NilValue && input_class != R_NilValue && Rf_isString(input_class)) {
-    bool should_preserve = false;
     int n_classes = Rf_length(input_class);
+    std::vector<const char*> preserved_classes;
 
-    // Check if any class is in the preserve list (temporal types)
+    // Filter to keep only temporal classes
     for (int i = 0; i < n_classes; i++) {
       const char* cls = CHAR(STRING_ELT(input_class, i));
       if (strcmp(cls, "POSIXct") == 0 ||
           strcmp(cls, "POSIXt") == 0 ||
           strcmp(cls, "Date") == 0) {
-        should_preserve = true;
-        break;
+        preserved_classes.push_back(cls);
       }
     }
 
-    // Strip class unless it's in the preserve list
-    if (!should_preserve) {
+    // Update class attribute based on filtered results
+    if (preserved_classes.empty()) {
+      // No temporal classes found - strip all classes
       Rf_setAttrib(result, R_ClassSymbol, R_NilValue);
+    } else if (preserved_classes.size() < static_cast<size_t>(n_classes)) {
+      // Some classes were filtered out - set to preserved classes only
+      SEXP new_class = PROTECT(Rf_allocVector(STRSXP, preserved_classes.size()));
+      for (size_t i = 0; i < preserved_classes.size(); i++) {
+        SET_STRING_ELT(new_class, i, Rf_mkChar(preserved_classes[i]));
+      }
+      Rf_setAttrib(result, R_ClassSymbol, new_class);
+      UNPROTECT(1);
     }
+    // else: all classes are temporal, keep the original class vector
   }
 
   // Copy all attributes from interface to result

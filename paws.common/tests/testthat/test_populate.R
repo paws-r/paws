@@ -326,22 +326,41 @@ test_that("populate handles NULL input with interface containing attributes", {
 
 test_that("check populate with child classes", {
   child_classes <- list(
-    Body = structure("R/cache.R", class = c("myclass", "character")),
-    Bucket = "mybucket",
-    Key = structure("cache.R", class = c("myclass2", "character"))
+    var1 = structure("foo", class = c("myclass1", "character")),
+    var2 = structure(1L, class = c("myclass2", "integer")),
+    var3 = structure(1, class = c("myclass3", "double")),
+    var4 = structure(
+      as.POSIXct("01-01-2026", tz = "GMT"),
+      class = c("myclass4", "POSIXct", "POSIXt")
+    ),
+    var5 = structure(TRUE, class = c("myclass5", "logical")),
+    var6 = structure(as.Date("2026-01-01"), class = c("myclass6", "Date")),
+    var7 = structure(I(c(1, 2, 3)), class = c("myclass7", "AsIs"))
   )
-  base_r_class <- list(Body = "R/cache.R", Bucket = "mybucket", Key = "cache.R")
+  base_r_class <- list(
+    var1 = "foo",
+    var2 = 1L,
+    var3 = 1,
+    var4 = as.POSIXct("01-01-2026", tz = "GMT"),
+    var5 = TRUE,
+    var6 = as.Date("2026-01-01"),
+    var7 = I(c(1, 2, 3))
+  )
 
   interface <- Structure(
-    Body = Scalar(type = "string"),
-    Bucket = Scalar(type = "string"),
-    Key = Scalar(type = "string")
+    var1 = Scalar(type = "string"),
+    var2 = Scalar(type = "integer"),
+    var3 = Scalar(type = "double"),
+    var4 = Scalar(type = "timestamp"),
+    var5 = Scalar(type = "bool"),
+    var6 = Scalar(type = "timestamp"),
+    var7 = Scalar(type = "double")
   )
   actual <- populate(child_classes, interface)
   expected <- populate(base_r_class, interface)
 
   expect_equal(actual, expected)
-  expect_equal(attributes(actual$Body), attributes(expected$Body))
-  expect_equal(attributes(actual$Bucket), attributes(expected$Bucket))
-  expect_equal(attributes(actual$Key), attributes(expected$Key))
+  for (i in seq_along(actual)) {
+    expect_equal(attributes(actual[[i]]), attributes(expected[[i]]))
+  }
 })
