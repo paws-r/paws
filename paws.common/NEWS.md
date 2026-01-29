@@ -1,5 +1,5 @@
 # paws.common 0.8.9
-* fix `populate` function to normalize custom subclasses (e.g., `fs_path`, `glue`) of any base type (character, integer, numeric, etc.) to match interface specification, while preserving R built-in temporal classes (POSIXct, Date) needed for proper serialization.
+* fix `populate` function to normalize custom subclasses of any base type to match interface specification. Custom classes (e.g., `fs_path`, `glue`, custom integer/numeric subclasses) are stripped to their base types, while R built-in temporal classes (POSIXct, POSIXt, Date) are preserved for proper serialization. When custom classes inherit from temporal classes, only the temporal portion is retained.
 
 # paws.common 0.8.8
 * fix C++ compilation issues on older R versions by refactoring code to use C++11 standard and requiring R >= 4.1.0 (#957). Thanks to @detule for raising the issue.
