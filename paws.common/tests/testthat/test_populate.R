@@ -322,3 +322,26 @@ test_that("populate handles NULL input with interface containing attributes", {
   expect_equal(tag_get(result, "type"), "string")
   expect_equal(tag_get(result, "locationName"), "test_field")
 })
+
+
+test_that("check populate with child classes", {
+  child_classes <- list(
+    Body = structure("R/cache.R", class = c("myclass", "character")),
+    Bucket = "mybucket",
+    Key = structure("cache.R", class = c("myclass2", "character"))
+  )
+  base_r_class <- list(Body = "R/cache.R", Bucket = "mybucket", Key = "cache.R")
+
+  interface <- Structure(
+    Body = Scalar(type = "string"),
+    Bucket = Scalar(type = "string"),
+    Key = Scalar(type = "string")
+  )
+  actual <- populate(child_classes, interface)
+  expected <- populate(base_r_class, interface)
+
+  expect_equal(actual, expected)
+  expect_equal(attributes(actual$Body), attributes(expected$Body))
+  expect_equal(attributes(actual$Bucket), attributes(expected$Bucket))
+  expect_equal(attributes(actual$Key), attributes(expected$Key))
+})

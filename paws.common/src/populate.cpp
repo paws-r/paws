@@ -512,8 +512,31 @@ SEXP populate_scalar_cpp(SEXP input, SEXP interface, SEXP parent) {
     }
   }
 
-  // General case: clone and merge attributes
+  // General case: clone and apply interface attributes
   SEXP result = PROTECT(Rf_duplicate(input));
+
+  // Strip custom class attributes if interface doesn't have one
+  // Preserve only R built-in temporal classes (POSIXct, POSIXt, Date) needed for serialization
+  if (class_attr == R_NilValue && input_class != R_NilValue && Rf_isString(input_class)) {
+    bool should_preserve = false;
+    int n_classes = Rf_length(input_class);
+
+    // Check if any class is in the preserve list (temporal types)
+    for (int i = 0; i < n_classes; i++) {
+      const char* cls = CHAR(STRING_ELT(input_class, i));
+      if (strcmp(cls, "POSIXct") == 0 ||
+          strcmp(cls, "POSIXt") == 0 ||
+          strcmp(cls, "Date") == 0) {
+        should_preserve = true;
+        break;
+      }
+    }
+
+    // Strip class unless it's in the preserve list
+    if (!should_preserve) {
+      Rf_setAttrib(result, R_ClassSymbol, R_NilValue);
+    }
+  }
 
   // Copy all attributes from interface to result
   copy_all_attributes(result, interface);
