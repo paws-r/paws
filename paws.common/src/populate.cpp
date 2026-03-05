@@ -281,7 +281,7 @@ SEXP populate_structure_cpp(SEXP input, SEXP interface, SEXP parent) {
       } else {
         // Name not found in either map - invalid name
         UNPROTECT(1);
-        Rf_error("invalid name: %s", input_name);
+        Rcpp::stop("invalid name: %s", input_name);
       }
     }
   }
