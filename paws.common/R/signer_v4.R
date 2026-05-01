@@ -390,6 +390,18 @@ build_body_digest <- function(ctx) {
 build_canonical_headers <- function(ctx, header, ignored_headers) {
   headers <- c("host")
   header_names <- names(header)
+
+  method <- toupper(ctx$request$method %||% "GET")
+
+# Do not sign content-length for empty-body GET/HEAD
+  if (method %in% c("GET", "HEAD")) {
+    cl <- header[["Content-Length"]] %||% header[["content-length"]]
+  if (!is.null(cl) && as.numeric(cl) == 0) {
+      header[["Content-Length"]] <- NULL
+      header[["content-length"]] <- NULL
+    }
+  }
+  
   for (key in header_names[!(header_names %in% ignored_headers)]) {
     lower_case_key <- tolower(key)
     ctx$signed_header_vals[[lower_case_key]] <- header[[key]]
