@@ -45,10 +45,10 @@ op <- new_operation(
 
 }
 \seealso{
-Other API request functions: 
-\code{\link{new_handlers}()},
-\code{\link{new_request}()},
-\code{\link{new_service}()},
-\code{\link{send_request}()}
+Other API request functions:
+\code{\link[=new_handlers]{new_handlers()}},
+\code{\link[=new_request]{new_request()}},
+\code{\link[=new_service]{new_service()}},
+\code{\link[=send_request]{send_request()}}
 }
 \concept{API request functions}
