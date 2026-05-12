@@ -1122,9 +1122,9 @@ sqs_purge_queue <- function(QueueUrl) {
 #' [`receive_message`][sqs_receive_message] requests is longer than the
 #' `WaitTimeSeconds` parameter. For example, with the Java SDK, you can set
 #' HTTP transport settings using the
-#' [NettyNioAsyncHttpClient](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/nio/netty/NettyNioAsyncHttpClient.html)
+#' [NettyNioAsyncHttpClient](https://docs.aws.amazon.com/java/api/latest/software/amazon/awssdk/http/nio/netty/NettyNioAsyncHttpClient.html)
 #' for asynchronous clients, or the
-#' [ApacheHttpClient](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/apache/ApacheHttpClient.html)
+#' [ApacheHttpClient](https://docs.aws.amazon.com/java/api/latest/software/amazon/awssdk/http/apache/ApacheHttpClient.html)
 #' for synchronous clients.
 #' @param ReceiveRequestAttemptId This parameter applies only to FIFO (first-in-first-out) queues.
 #' 

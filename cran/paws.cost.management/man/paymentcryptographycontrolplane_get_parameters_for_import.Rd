@@ -9,7 +9,8 @@ Cryptography}
 \usage{
 paymentcryptographycontrolplane_get_parameters_for_import(
   KeyMaterialType,
-  WrappingKeyAlgorithm
+  WrappingKeyAlgorithm,
+  ReuseLastGeneratedToken = NULL
 )
 }
 \arguments{
@@ -26,6 +27,14 @@ certificate wraps the key under import.
 At this time, \code{RSA_2048} is the allowed algorithm for TR-34
 WrappedKeyBlock import. Additionally, \code{RSA_2048}, \code{RSA_3072}, \code{RSA_4096}
 are the allowed algorithms for RSA WrappedKeyCryptogram import.}
+
+\item{ReuseLastGeneratedToken}{Specifies whether to reuse the existing import token and wrapping key
+certificate. If set to \code{true} and a valid import token exists for the
+same key material type and wrapping key algorithm with at least 7 days
+of remaining validity, the existing token and wrapping key certificate
+are returned. Otherwise, a new import token and wrapping key certificate
+are generated. The default value is \code{false}, which generates a new
+import token and wrapping key certificate on every call.}
 }
 \description{
 Gets the import token and the wrapping key certificate in PEM format (base64 encoded) to initiate a TR-34 WrappedKeyBlock or a RSA WrappedKeyCryptogram import into Amazon Web Services Payment Cryptography.

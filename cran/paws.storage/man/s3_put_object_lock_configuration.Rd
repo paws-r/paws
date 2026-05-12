@@ -21,8 +21,6 @@ replace.}
 \item{ObjectLockConfiguration}{The Object Lock configuration that you want to apply to the specified
 bucket.}
 
-\item{RequestPayer}{}
-
 \item{Token}{A token to allow Object Lock to be enabled for an existing bucket.}
 
 \item{ContentMD5}{The MD5 hash for the request body.

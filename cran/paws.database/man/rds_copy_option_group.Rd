@@ -32,8 +32,6 @@ Constraints:
 Example: \code{my-option-group}}
 
 \item{TargetOptionGroupDescription}{[required] The description for the copied option group.}
-
-\item{Tags}{}
 }
 \description{
 Copies the specified option group.

@@ -3,12 +3,12 @@
 \name{securityhub_describe_organization_configuration}
 \alias{securityhub_describe_organization_configuration}
 \title{Returns information about the way your organization is configured in
-Security Hub}
+Security Hub CSPM}
 \usage{
 securityhub_describe_organization_configuration()
 }
 \description{
-Returns information about the way your organization is configured in Security Hub. Only the Security Hub administrator account can invoke this operation.
+Returns information about the way your organization is configured in Security Hub CSPM. Only the Security Hub CSPM administrator account can invoke this operation.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_describe_organization_configuration/} for full documentation.
 }

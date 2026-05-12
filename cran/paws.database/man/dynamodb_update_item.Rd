@@ -71,8 +71,6 @@ larger response. No read capacity units are consumed.
 
 The values returned are strongly consistent.}
 
-\item{ReturnConsumedCapacity}{}
-
 \item{ReturnItemCollectionMetrics}{Determines whether item collection metrics are returned. If set to
 \code{SIZE}, the response includes statistics about item collections, if any,
 that were modified during the operation are returned in the response. If
@@ -138,9 +136,7 @@ if the existing data type is a set of strings, the \code{Value} must
 also be a set of strings.
 }
 
-The \code{ADD} action only supports Number and set data types. In
-addition, \code{ADD} can only be used on top-level attributes, not nested
-attributes.
+The \code{ADD} action only supports Number and set data types.
 \item \code{DELETE} - Deletes an element from a set.
 
 If a set of values is specified, then those values are subtracted
@@ -148,9 +144,7 @@ from the old set. For example, if the attribute value was the set
 \verb{[a,b,c]} and the \code{DELETE} action specifies \verb{[a,c]}, then the final
 attribute value is \verb{[b]}. Specifying an empty set is an error.
 
-The \code{DELETE} action only supports set data types. In addition,
-\code{DELETE} can only be used on top-level attributes, not nested
-attributes.
+The \code{DELETE} action only supports set data types.
 }
 
 You can have many actions in a single expression, such as the following:

@@ -23,8 +23,6 @@ update operation is successful, it generates a new cluster version.}
 Amazon CloudWatch for this cluster.}
 
 \item{OpenMonitoring}{The settings for open monitoring.}
-
-\item{LoggingInfo}{}
 }
 \description{
 Updates the monitoring settings for the cluster. You can use this operation to specify which Apache Kafka metrics you want Amazon MSK to send to Amazon CloudWatch. You can also specify settings for open monitoring with Prometheus.

@@ -171,11 +171,12 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
 #' @param ServiceExecutionRoleArn &#91;required&#93; The ARN of the IAM role used by the replicator to access resources in
 #' the customer's account (e.g source and target clusters)
 #' @param Tags List of tags to attach to created Replicator.
+#' @param LogDelivery Configuration for delivering replicator logs to customer destinations.
 #'
 #' @keywords internal
 #'
 #' @rdname kafka_create_replicator
-kafka_create_replicator <- function(Description = NULL, KafkaClusters, ReplicationInfoList, ReplicatorName, ServiceExecutionRoleArn, Tags = NULL) {
+kafka_create_replicator <- function(Description = NULL, KafkaClusters, ReplicationInfoList, ReplicatorName, ServiceExecutionRoleArn, Tags = NULL, LogDelivery = NULL) {
   op <- new_operation(
     name = "CreateReplicator",
     http_method = "POST",
@@ -184,7 +185,7 @@ kafka_create_replicator <- function(Description = NULL, KafkaClusters, Replicati
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kafka$create_replicator_input(Description = Description, KafkaClusters = KafkaClusters, ReplicationInfoList = ReplicationInfoList, ReplicatorName = ReplicatorName, ServiceExecutionRoleArn = ServiceExecutionRoleArn, Tags = Tags)
+  input <- .kafka$create_replicator_input(Description = Description, KafkaClusters = KafkaClusters, ReplicationInfoList = ReplicationInfoList, ReplicatorName = ReplicatorName, ServiceExecutionRoleArn = ServiceExecutionRoleArn, Tags = Tags, LogDelivery = LogDelivery)
   output <- .kafka$create_replicator_output()
   config <- get_config()
   svc <- .kafka$service(config, op)
@@ -193,6 +194,41 @@ kafka_create_replicator <- function(Description = NULL, KafkaClusters, Replicati
   return(response)
 }
 .kafka$operations$create_replicator <- kafka_create_replicator
+
+#' Creates a topic in the specified MSK cluster
+#'
+#' @description
+#' Creates a topic in the specified MSK cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_create_topic/](https://www.paws-r-sdk.com/docs/kafka_create_topic/) for full documentation.
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param TopicName &#91;required&#93; The name of the topic to create.
+#' @param PartitionCount &#91;required&#93; The number of partitions for the topic.
+#' @param ReplicationFactor &#91;required&#93; The replication factor for the topic.
+#' @param Configs Topic configurations encoded as a Base64 string.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_create_topic
+kafka_create_topic <- function(ClusterArn, TopicName, PartitionCount, ReplicationFactor, Configs = NULL) {
+  op <- new_operation(
+    name = "CreateTopic",
+    http_method = "POST",
+    http_path = "/v1/clusters/{clusterArn}/topics",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafka$create_topic_input(ClusterArn = ClusterArn, TopicName = TopicName, PartitionCount = PartitionCount, ReplicationFactor = ReplicationFactor, Configs = Configs)
+  output <- .kafka$create_topic_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$create_topic <- kafka_create_topic
 
 #' Creates a new MSK VPC connection
 #'
@@ -358,6 +394,38 @@ kafka_delete_replicator <- function(CurrentVersion = NULL, ReplicatorArn) {
   return(response)
 }
 .kafka$operations$delete_replicator <- kafka_delete_replicator
+
+#' Deletes a topic in the specified MSK cluster
+#'
+#' @description
+#' Deletes a topic in the specified MSK cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_delete_topic/](https://www.paws-r-sdk.com/docs/kafka_delete_topic/) for full documentation.
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param TopicName &#91;required&#93; The name of the topic to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_delete_topic
+kafka_delete_topic <- function(ClusterArn, TopicName) {
+  op <- new_operation(
+    name = "DeleteTopic",
+    http_method = "DELETE",
+    http_path = "/v1/clusters/{clusterArn}/topics/{topicName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafka$delete_topic_input(ClusterArn = ClusterArn, TopicName = TopicName)
+  output <- .kafka$delete_topic_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$delete_topic <- kafka_delete_topic
 
 #' Deletes a MSK VPC connection
 #'
@@ -1668,15 +1736,16 @@ kafka_update_configuration <- function(Arn, Description = NULL, ServerProperties
 #' See [https://www.paws-r-sdk.com/docs/kafka_update_connectivity/](https://www.paws-r-sdk.com/docs/kafka_update_connectivity/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the configuration.
-#' @param ConnectivityInfo &#91;required&#93; Information about the broker access configuration.
+#' @param ConnectivityInfo Information about the broker access configuration.
 #' @param CurrentVersion &#91;required&#93; The version of the MSK cluster to update. Cluster versions aren't simple
 #' numbers. You can describe an MSK cluster to find its version. When this
 #' update operation is successful, it generates a new cluster version.
+#' @param ZookeeperAccess Access control settings for zookeeper
 #'
 #' @keywords internal
 #'
 #' @rdname kafka_update_connectivity
-kafka_update_connectivity <- function(ClusterArn, ConnectivityInfo, CurrentVersion) {
+kafka_update_connectivity <- function(ClusterArn, ConnectivityInfo = NULL, CurrentVersion, ZookeeperAccess = NULL) {
   op <- new_operation(
     name = "UpdateConnectivity",
     http_method = "PUT",
@@ -1685,7 +1754,7 @@ kafka_update_connectivity <- function(ClusterArn, ConnectivityInfo, CurrentVersi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kafka$update_connectivity_input(ClusterArn = ClusterArn, ConnectivityInfo = ConnectivityInfo, CurrentVersion = CurrentVersion)
+  input <- .kafka$update_connectivity_input(ClusterArn = ClusterArn, ConnectivityInfo = ConnectivityInfo, CurrentVersion = CurrentVersion, ZookeeperAccess = ZookeeperAccess)
   output <- .kafka$update_connectivity_output()
   config <- get_config()
   svc <- .kafka$service(config, op)
@@ -1849,14 +1918,17 @@ kafka_update_rebalancing <- function(ClusterArn, CurrentVersion, Rebalancing) {
 #' @param ConsumerGroupReplication Updated consumer group replication information.
 #' @param CurrentVersion &#91;required&#93; Current replicator version.
 #' @param ReplicatorArn &#91;required&#93; The Amazon Resource Name (ARN) of the replicator to be updated.
-#' @param SourceKafkaClusterArn &#91;required&#93; The ARN of the source Kafka cluster.
-#' @param TargetKafkaClusterArn &#91;required&#93; The ARN of the target Kafka cluster.
+#' @param SourceKafkaClusterArn The ARN of the source Kafka cluster.
+#' @param SourceKafkaClusterId The ID of the source Kafka cluster.
+#' @param TargetKafkaClusterArn The ARN of the target Kafka cluster.
+#' @param TargetKafkaClusterId The ID of the target Kafka cluster.
 #' @param TopicReplication Updated topic replication information.
+#' @param LogDelivery Configuration for delivering replicator logs to customer destinations.
 #'
 #' @keywords internal
 #'
 #' @rdname kafka_update_replication_info
-kafka_update_replication_info <- function(ConsumerGroupReplication = NULL, CurrentVersion, ReplicatorArn, SourceKafkaClusterArn, TargetKafkaClusterArn, TopicReplication = NULL) {
+kafka_update_replication_info <- function(ConsumerGroupReplication = NULL, CurrentVersion, ReplicatorArn, SourceKafkaClusterArn = NULL, SourceKafkaClusterId = NULL, TargetKafkaClusterArn = NULL, TargetKafkaClusterId = NULL, TopicReplication = NULL, LogDelivery = NULL) {
   op <- new_operation(
     name = "UpdateReplicationInfo",
     http_method = "PUT",
@@ -1865,7 +1937,7 @@ kafka_update_replication_info <- function(ConsumerGroupReplication = NULL, Curre
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kafka$update_replication_info_input(ConsumerGroupReplication = ConsumerGroupReplication, CurrentVersion = CurrentVersion, ReplicatorArn = ReplicatorArn, SourceKafkaClusterArn = SourceKafkaClusterArn, TargetKafkaClusterArn = TargetKafkaClusterArn, TopicReplication = TopicReplication)
+  input <- .kafka$update_replication_info_input(ConsumerGroupReplication = ConsumerGroupReplication, CurrentVersion = CurrentVersion, ReplicatorArn = ReplicatorArn, SourceKafkaClusterArn = SourceKafkaClusterArn, SourceKafkaClusterId = SourceKafkaClusterId, TargetKafkaClusterArn = TargetKafkaClusterArn, TargetKafkaClusterId = TargetKafkaClusterId, TopicReplication = TopicReplication, LogDelivery = LogDelivery)
   output <- .kafka$update_replication_info_output()
   config <- get_config()
   svc <- .kafka$service(config, op)
@@ -1947,3 +2019,37 @@ kafka_update_storage <- function(ClusterArn, CurrentVersion, ProvisionedThroughp
   return(response)
 }
 .kafka$operations$update_storage <- kafka_update_storage
+
+#' Updates the configuration of the specified topic
+#'
+#' @description
+#' Updates the configuration of the specified topic.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_update_topic/](https://www.paws-r-sdk.com/docs/kafka_update_topic/) for full documentation.
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param TopicName &#91;required&#93; The name of the topic to update configuration for.
+#' @param Configs The new topic configurations encoded as a Base64 string.
+#' @param PartitionCount The new total number of partitions for the topic.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_topic
+kafka_update_topic <- function(ClusterArn, TopicName, Configs = NULL, PartitionCount = NULL) {
+  op <- new_operation(
+    name = "UpdateTopic",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/topics/{topicName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafka$update_topic_input(ClusterArn = ClusterArn, TopicName = TopicName, Configs = Configs, PartitionCount = PartitionCount)
+  output <- .kafka$update_topic_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_topic <- kafka_update_topic

@@ -3,7 +3,7 @@
 \name{account_get_account_information}
 \alias{account_get_account_information}
 \title{Retrieves information about the specified account including its account
-name, account ID, and account creation date and time}
+name, account ID, account creation date and time, and account state}
 \usage{
 account_get_account_information(AccountId = NULL)
 }
@@ -33,7 +33,7 @@ using an identity belonging to the account whose contacts you wish to
 retrieve or modify.}
 }
 \description{
-Retrieves information about the specified account including its account name, account ID, and account creation date and time. To use this API, an IAM user or role must have the \code{account:GetAccountInformation} IAM permission.
+Retrieves information about the specified account including its account name, account ID, account creation date and time, and account state. To use this API, an IAM user or role must have the \code{account:GetAccountInformation} IAM permission.
 
 See \url{https://www.paws-r-sdk.com/docs/account_get_account_information/} for full documentation.
 }

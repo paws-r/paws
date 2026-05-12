@@ -363,6 +363,18 @@ NULL
   return(populate(args, shape))
 }
 
+.wafv2$get_top_path_statistics_by_traffic_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WebAclArn = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), UriPathPrefix = structure(logical(0), tags = list(type = "string")), TimeWindow = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), BotCategory = structure(logical(0), tags = list(type = "string")), BotOrganization = structure(logical(0), tags = list(type = "string")), BotName = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), NumberOfTopTrafficBotsPerPath = structure(logical(0), tags = list(type = "integer")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.wafv2$get_top_path_statistics_by_traffic_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PathStatistics = structure(list(structure(list(Source = structure(list(BotCategory = structure(logical(0), tags = list(type = "string")), BotOrganization = structure(logical(0), tags = list(type = "string")), BotName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Path = structure(logical(0), tags = list(type = "string")), RequestCount = structure(logical(0), tags = list(type = "long")), Percentage = structure(logical(0), tags = list(type = "double")), TopBots = structure(list(structure(list(BotName = structure(logical(0), tags = list(type = "string")), RequestCount = structure(logical(0), tags = list(type = "long")), Percentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), TotalRequestCount = structure(logical(0), tags = list(type = "long")), NextMarker = structure(logical(0), tags = list(type = "string")), TopCategories = structure(list(structure(list(Source = structure(list(BotCategory = structure(logical(0), tags = list(type = "string")), BotOrganization = structure(logical(0), tags = list(type = "string")), BotName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Path = structure(logical(0), tags = list(type = "string")), RequestCount = structure(logical(0), tags = list(type = "long")), Percentage = structure(logical(0), tags = list(type = "double")), TopBots = structure(list(structure(list(BotName = structure(logical(0), tags = list(type = "string")), RequestCount = structure(logical(0), tags = list(type = "long")), Percentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .wafv2$get_web_acl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

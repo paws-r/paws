@@ -31,7 +31,7 @@ dataset, specify the following:
 \code{{"item_id" : "client_21"}}
 
 To get the full forecast, use the
-\href{https://docs.aws.amazon.com/en_us/forecast/latest/dg/API_CreateForecastExportJob.html}{CreateForecastExportJob}
+\href{https://docs.aws.amazon.com/forecast/latest/dg/API_CreateForecastExportJob.html}{CreateForecastExportJob}
 operation.}
 
 \item{NextToken}{If the result of the previous request was truncated, the response

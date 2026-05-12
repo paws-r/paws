@@ -12,6 +12,7 @@ ivsrealtime_create_ingest_configuration(
   attributes = NULL,
   ingestProtocol,
   insecureIngest = NULL,
+  redundantIngest = NULL,
   tags = NULL
 )
 }
@@ -38,6 +39,9 @@ set to \code{RTMP}, \code{insecureIngest} must be set to \code{true}.}
 
 \item{insecureIngest}{Whether the stage allows insecure RTMP ingest. This must be set to
 \code{true}, if \code{ingestProtocol} is set to \code{RTMP}. Default: \code{false}.}
+
+\item{redundantIngest}{Indicates whether redundant ingest is enabled for the ingest
+configuration. Default: \code{false}.}
 
 \item{tags}{Tags attached to the resource. Array of maps, each of the form
 \code{string:string (key:value)}. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html}{Best practices and strategies}

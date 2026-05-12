@@ -62,7 +62,8 @@ rds_create_db_cluster(
   CACertificateIdentifier = NULL,
   EngineLifecycleSupport = NULL,
   TagSpecifications = NULL,
-  MasterUserAuthenticationType = NULL
+  MasterUserAuthenticationType = NULL,
+  WithExpressConfiguration = NULL
 )
 }
 \arguments{
@@ -426,7 +427,7 @@ mode.
 For information about limitations and requirements for Serverless DB
 clusters, see the following sections in the \emph{Amazon Aurora User Guide}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html#aurora-serverless.limitations}{Limitations of Aurora Serverless v1}
+\item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/#aurora-serverless.limitations}{Limitations of Aurora Serverless v1}
 \item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.requirements.html}{Requirements for Aurora Serverless v2}
 }
 
@@ -611,8 +612,6 @@ in the \emph{Amazon Aurora User Guide.}
 Valid for Cluster Type: Aurora DB clusters only
 
 Valid Values: \code{IPV4 | DUAL}}
-
-\item{ServerlessV2ScalingConfiguration}{}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB cluster. To turn off collecting
@@ -804,6 +803,13 @@ Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 This option is only valid for RDS for PostgreSQL and Aurora PostgreSQL
 engines.}
+
+\item{WithExpressConfiguration}{Specifies to create an Aurora DB Cluster with express configuration in
+seconds. Express configuration provides a cluster with a writer instance
+and feature specific values set to all other input parameters of this
+API.
+
+Valid for Cluster Type: Aurora DB clusters}
 }
 \description{
 Creates a new Amazon Aurora DB cluster or Multi-AZ DB cluster.

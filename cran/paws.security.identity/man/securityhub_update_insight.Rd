@@ -2,7 +2,8 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_update_insight}
 \alias{securityhub_update_insight}
-\title{Updates the Security Hub insight identified by the specified insight ARN}
+\title{Updates the Security Hub CSPM insight identified by the specified
+insight ARN}
 \usage{
 securityhub_update_insight(
   InsightArn,
@@ -21,7 +22,7 @@ securityhub_update_insight(
 \item{GroupByAttribute}{The updated \code{GroupBy} attribute that defines this insight.}
 }
 \description{
-Updates the Security Hub insight identified by the specified insight ARN.
+Updates the Security Hub CSPM insight identified by the specified insight ARN.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_update_insight/} for full documentation.
 }

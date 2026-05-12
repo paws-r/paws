@@ -13,8 +13,6 @@ pinpointsmsvoice_update_configuration_set_event_destination(
 \arguments{
 \item{ConfigurationSetName}{[required] ConfigurationSetName}
 
-\item{EventDestination}{}
-
 \item{EventDestinationName}{[required] EventDestinationName}
 }
 \description{

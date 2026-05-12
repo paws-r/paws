@@ -116,6 +116,7 @@ identitystore_create_group_membership <- function(IdentityStoreId, GroupId, Memb
 #' provide a link to their personal or professional website.
 #' @param Birthdate The user's birthdate in YYYY-MM-DD format. This field supports standard
 #' date format for storing personal information.
+#' @param Roles A list of `Role` objects containing roles associated with the user.
 #' @param Extensions A map with additional attribute extensions for the user. Each map key
 #' corresponds to an extension name, while map values represent extension
 #' data in `Document` type (not supported by Java V1, Go V1 and older
@@ -125,7 +126,7 @@ identitystore_create_group_membership <- function(IdentityStoreId, GroupId, Memb
 #' @keywords internal
 #'
 #' @rdname identitystore_create_user
-identitystore_create_user <- function(IdentityStoreId, UserName = NULL, Name = NULL, DisplayName = NULL, NickName = NULL, ProfileUrl = NULL, Emails = NULL, Addresses = NULL, PhoneNumbers = NULL, UserType = NULL, Title = NULL, PreferredLanguage = NULL, Locale = NULL, Timezone = NULL, Photos = NULL, Website = NULL, Birthdate = NULL, Extensions = NULL) {
+identitystore_create_user <- function(IdentityStoreId, UserName = NULL, Name = NULL, DisplayName = NULL, NickName = NULL, ProfileUrl = NULL, Emails = NULL, Addresses = NULL, PhoneNumbers = NULL, UserType = NULL, Title = NULL, PreferredLanguage = NULL, Locale = NULL, Timezone = NULL, Photos = NULL, Website = NULL, Birthdate = NULL, Roles = NULL, Extensions = NULL) {
   op <- new_operation(
     name = "CreateUser",
     http_method = "POST",
@@ -134,7 +135,7 @@ identitystore_create_user <- function(IdentityStoreId, UserName = NULL, Name = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .identitystore$create_user_input(IdentityStoreId = IdentityStoreId, UserName = UserName, Name = Name, DisplayName = DisplayName, NickName = NickName, ProfileUrl = ProfileUrl, Emails = Emails, Addresses = Addresses, PhoneNumbers = PhoneNumbers, UserType = UserType, Title = Title, PreferredLanguage = PreferredLanguage, Locale = Locale, Timezone = Timezone, Photos = Photos, Website = Website, Birthdate = Birthdate, Extensions = Extensions)
+  input <- .identitystore$create_user_input(IdentityStoreId = IdentityStoreId, UserName = UserName, Name = Name, DisplayName = DisplayName, NickName = NickName, ProfileUrl = ProfileUrl, Emails = Emails, Addresses = Addresses, PhoneNumbers = PhoneNumbers, UserType = UserType, Title = Title, PreferredLanguage = PreferredLanguage, Locale = Locale, Timezone = Timezone, Photos = Photos, Website = Website, Birthdate = Birthdate, Roles = Roles, Extensions = Extensions)
   output <- .identitystore$create_user_output()
   config <- get_config()
   svc <- .identitystore$service(config, op)

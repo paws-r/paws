@@ -25,7 +25,7 @@ associations. The results also include a \code{NextToken} parameter that you
 can use in a subsequent API call to get the next 25 associations. This
 repeats until all associations for the specified control are returned.
 The number of results is limited by the number of supported Security Hub
-standards that you've enabled in the calling account.}
+CSPM standards that you've enabled in the calling account.}
 }
 \description{
 Specifies whether a control is currently enabled or disabled in each enabled standard in the calling account.

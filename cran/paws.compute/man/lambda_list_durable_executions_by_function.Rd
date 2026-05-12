@@ -23,7 +23,7 @@ a partial ARN, or a full ARN.}
 \item{Qualifier}{The function version or alias. If not specified, lists executions for
 the $LATEST version.}
 
-\item{DurableExecutionName}{Filter executions by name. Only executions with names that contain this
+\item{DurableExecutionName}{Filter executions by name. Only executions with names that matches this
 string are returned.}
 
 \item{Statuses}{Filter executions by status. Valid values: RUNNING, SUCCEEDED, FAILED,

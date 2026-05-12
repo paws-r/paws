@@ -11,10 +11,6 @@ wafregional_list_tags_for_resource(
 )
 }
 \arguments{
-\item{NextMarker}{}
-
-\item{Limit}{}
-
 \item{ResourceARN}{[required]}
 }
 \description{

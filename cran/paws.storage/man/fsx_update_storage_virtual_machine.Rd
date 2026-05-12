@@ -15,8 +15,6 @@ fsx_update_storage_virtual_machine(
 \item{ActiveDirectoryConfiguration}{Specifies updates to an SVM's Microsoft Active Directory (AD)
 configuration.}
 
-\item{ClientRequestToken}{}
-
 \item{StorageVirtualMachineId}{[required] The ID of the SVM that you want to update, in the format
 \verb{svm-0123456789abcdef0}.}
 

@@ -12,7 +12,8 @@ cloudwatchlogs_list_log_groups(
   nextToken = NULL,
   limit = NULL,
   dataSources = NULL,
-  fieldIndexNames = NULL
+  fieldIndexNames = NULL,
+  logGroupTags = NULL
 )
 }
 \arguments{
@@ -53,8 +54,6 @@ The default for this parameter is \code{false}.}
 specify the list of accounts to search. You can specify as many as 20
 account IDs in the array.}
 
-\item{nextToken}{}
-
 \item{limit}{The maximum number of log groups to return. If you omit this parameter,
 the default is up to 50 log groups.}
 
@@ -67,6 +66,9 @@ while filters across different dimensions are combined with AND logic.}
 field indexes. Only log groups containing all specified field indexes
 are returned. You can specify 1 to 20 field index names, each with 1 to
 512 characters.}
+
+\item{logGroupTags}{An array of tag filters to return only log groups that have specific
+tags. Multiple filters are combined with AND logic.}
 }
 \description{
 Returns a list of log groups in the Region in your account. If you are performing this action in a monitoring account, you can choose to also return log groups from source accounts that are linked to the monitoring account. For more information about using cross-account observability to set up monitoring accounts and source accounts, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html}{CloudWatch cross-account observability}.

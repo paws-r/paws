@@ -14,8 +14,6 @@ route53recoveryreadiness_create_readiness_check(
 \item{ReadinessCheckName}{[required] The name of the readiness check to create.}
 
 \item{ResourceSetName}{[required] The name of the resource set to check.}
-
-\item{Tags}{}
 }
 \description{
 Creates a readiness check in an account. A readiness check monitors a resource set in your application, such as a set of Amazon Aurora instances, that Application Recovery Controller is auditing recovery readiness for. The audits run once every minute on every resource that's associated with a readiness check.

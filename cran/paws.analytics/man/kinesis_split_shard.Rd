@@ -9,7 +9,8 @@ kinesis_split_shard(
   StreamName = NULL,
   ShardToSplit,
   NewStartingHashKey,
-  StreamARN = NULL
+  StreamARN = NULL,
+  StreamId = NULL
 )
 }
 \arguments{
@@ -27,6 +28,8 @@ All the lower hash key values in the range are distributed to the other
 child shard.}
 
 \item{StreamARN}{The ARN of the stream.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Splits a shard into two new shards in the Kinesis data stream, to increase the stream's capacity to ingest and transport data. \code{\link[=kinesis_split_shard]{split_shard}} is called when there is a need to increase the overall capacity of a stream because of an expected increase in the volume of data records being ingested. This API is only supported for the data streams with the provisioned capacity mode.

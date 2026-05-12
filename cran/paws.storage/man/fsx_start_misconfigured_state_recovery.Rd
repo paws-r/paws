@@ -9,8 +9,6 @@ the process of Amazon FSx attempting to reconnect to the file system}
 fsx_start_misconfigured_state_recovery(ClientRequestToken = NULL, FileSystemId)
 }
 \arguments{
-\item{ClientRequestToken}{}
-
 \item{FileSystemId}{[required]}
 }
 \description{

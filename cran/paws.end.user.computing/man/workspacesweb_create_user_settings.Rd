@@ -77,7 +77,7 @@ retain control over their toolbar preferences.}
 
 \item{brandingConfigurationInput}{The branding configuration input that customizes the appearance of the
 web portal for end users. This includes a custom logo, favicon,
-wallpaper, localized strings, color theme, and an optional terms of
+localized strings, color theme, and optionally a wallpaper and terms of
 service.}
 
 \item{webAuthnAllowed}{Specifies whether the user can use WebAuthn redirection for passwordless

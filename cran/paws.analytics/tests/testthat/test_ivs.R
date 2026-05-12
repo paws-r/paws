@@ -1,5 +1,9 @@
 svc <- paws::ivs()
 
+test_that("list_ad_configurations", {
+  expect_error(svc$list_ad_configurations(), NA)
+})
+
 test_that("list_channels", {
   expect_error(svc$list_channels(), NA)
 })

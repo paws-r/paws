@@ -15,7 +15,8 @@ lightsail_put_alarm(
   treatMissingData = NULL,
   contactProtocols = NULL,
   notificationTriggers = NULL,
-  notificationEnabled = NULL
+  notificationEnabled = NULL,
+  tags = NULL
 )
 }
 \arguments{
@@ -138,6 +139,11 @@ parameter.}
 
 Notifications are enabled by default if you don't specify this
 parameter.}
+
+\item{tags}{The tag keys and optional values to add to the alarm during create.
+
+Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
+resource after it's created.}
 }
 \description{
 Creates or updates an alarm, and associates it with the specified metric.

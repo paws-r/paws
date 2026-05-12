@@ -15,8 +15,6 @@ sesv2_put_configuration_set_tracking_options(
 \item{ConfigurationSetName}{[required] The name of the configuration set.}
 
 \item{CustomRedirectDomain}{The domain to use to track open and click events.}
-
-\item{HttpsPolicy}{}
 }
 \description{
 Specify a custom domain to use for open and click tracking elements in email that you send.

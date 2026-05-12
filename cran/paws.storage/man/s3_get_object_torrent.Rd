@@ -17,8 +17,6 @@ torrent files.}
 
 \item{Key}{[required] The object key for which to get the information.}
 
-\item{RequestPayer}{}
-
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
 provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}

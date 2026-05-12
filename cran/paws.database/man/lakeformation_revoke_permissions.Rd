@@ -27,8 +27,6 @@ your Lake Formation environment.}
 \item{Permissions}{[required] The permissions revoked to the principal on the resource. For
 information about permissions, see \href{https://docs.aws.amazon.com/lake-formation/latest/dg/}{Security and Access Control to Metadata and Data}.}
 
-\item{Condition}{}
-
 \item{PermissionsWithGrantOption}{Indicates a list of permissions for which to revoke the grant option
 allowing the principal to pass permissions to other principals.}
 }

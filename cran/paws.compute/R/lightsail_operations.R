@@ -552,11 +552,16 @@ lightsail_create_cloud_formation_stack <- function(instances) {
 #' and the country code. For example, a U.S. phone number in E.164 format
 #' would be specified as +1XXX5550100. For more information, see
 #' [E.164](https://en.wikipedia.org/wiki/E.164) on *Wikipedia*.
+#' @param tags The tag keys and optional values to add to the contact method during
+#' create.
+#' 
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_create_contact_method
-lightsail_create_contact_method <- function(protocol, contactEndpoint) {
+lightsail_create_contact_method <- function(protocol, contactEndpoint, tags = NULL) {
   op <- new_operation(
     name = "CreateContactMethod",
     http_method = "POST",
@@ -565,7 +570,7 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lightsail$create_contact_method_input(protocol = protocol, contactEndpoint = contactEndpoint)
+  input <- .lightsail$create_contact_method_input(protocol = protocol, contactEndpoint = contactEndpoint, tags = tags)
   output <- .lightsail$create_contact_method_output()
   config <- get_config()
   svc <- .lightsail$service(config, op)
@@ -1547,7 +1552,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #'     For more information about reserved words in MySQL, see the Keywords
 #'     and Reserved Words articles for [MySQL
-#'     5.6](https://dev.mysql.com/doc/refman/8.4/en/keywords.html), [MySQL
+#'     5.6](https://dev.mysql.com/doc/refman/9.7/en/keywords.html), [MySQL
 #'     5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html), and
 #'     [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
 #' 
@@ -1591,7 +1596,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #'     For more information about reserved words in MySQL 5.6 or 5.7, see
 #'     the Keywords and Reserved Words articles for [MySQL
-#'     5.6](https://dev.mysql.com/doc/refman/8.4/en/keywords.html), [MySQL
+#'     5.6](https://dev.mysql.com/doc/refman/9.7/en/keywords.html), [MySQL
 #'     5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html), or
 #'     [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
 #' 
@@ -6110,11 +6115,15 @@ lightsail_peer_vpc <- function() {
 #' 
 #' Notifications are enabled by default if you don't specify this
 #' parameter.
+#' @param tags The tag keys and optional values to add to the alarm during create.
+#' 
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_put_alarm
-lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, comparisonOperator, threshold, evaluationPeriods, datapointsToAlarm = NULL, treatMissingData = NULL, contactProtocols = NULL, notificationTriggers = NULL, notificationEnabled = NULL) {
+lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, comparisonOperator, threshold, evaluationPeriods, datapointsToAlarm = NULL, treatMissingData = NULL, contactProtocols = NULL, notificationTriggers = NULL, notificationEnabled = NULL, tags = NULL) {
   op <- new_operation(
     name = "PutAlarm",
     http_method = "POST",
@@ -6123,7 +6132,7 @@ lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, co
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lightsail$put_alarm_input(alarmName = alarmName, metricName = metricName, monitoredResourceName = monitoredResourceName, comparisonOperator = comparisonOperator, threshold = threshold, evaluationPeriods = evaluationPeriods, datapointsToAlarm = datapointsToAlarm, treatMissingData = treatMissingData, contactProtocols = contactProtocols, notificationTriggers = notificationTriggers, notificationEnabled = notificationEnabled)
+  input <- .lightsail$put_alarm_input(alarmName = alarmName, metricName = metricName, monitoredResourceName = monitoredResourceName, comparisonOperator = comparisonOperator, threshold = threshold, evaluationPeriods = evaluationPeriods, datapointsToAlarm = datapointsToAlarm, treatMissingData = treatMissingData, contactProtocols = contactProtocols, notificationTriggers = notificationTriggers, notificationEnabled = notificationEnabled, tags = tags)
   output <- .lightsail$put_alarm_output()
   config <- get_config()
   svc <- .lightsail$service(config, op)

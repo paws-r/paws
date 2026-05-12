@@ -24,6 +24,10 @@ test_that("describe_insight_rules", {
   expect_error(svc$describe_insight_rules(MaxResults = 20), NA)
 })
 
+test_that("list_alarm_mute_rules", {
+  expect_error(svc$list_alarm_mute_rules(), NA)
+})
+
 test_that("list_dashboards", {
   expect_error(svc$list_dashboards(), NA)
 })

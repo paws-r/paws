@@ -5,42 +5,42 @@
 \title{Updates the specified project in Amazon DataZone}
 \usage{
 datazone_update_project(
-  description = NULL,
   domainIdentifier,
-  domainUnitId = NULL,
-  environmentDeploymentDetails = NULL,
-  glossaryTerms = NULL,
   identifier,
   name = NULL,
-  projectProfileVersion = NULL,
+  description = NULL,
   resourceTags = NULL,
-  userParameters = NULL
+  glossaryTerms = NULL,
+  domainUnitId = NULL,
+  environmentDeploymentDetails = NULL,
+  userParameters = NULL,
+  projectProfileVersion = NULL
 )
 }
 \arguments{
-\item{description}{The description to be updated as part of the
-\code{\link[=datazone_update_project]{update_project}} action.}
-
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain where a project is being updated.}
-
-\item{domainUnitId}{The ID of the domain unit.}
-
-\item{environmentDeploymentDetails}{The environment deployment details of the project.}
-
-\item{glossaryTerms}{The glossary terms to be updated as part of the
-\code{\link[=datazone_update_project]{update_project}} action.}
 
 \item{identifier}{[required] The identifier of the project that is to be updated.}
 
 \item{name}{The name to be updated as part of the
 \code{\link[=datazone_update_project]{update_project}} action.}
 
-\item{projectProfileVersion}{The project profile version to which the project should be updated. You
-can only specify the following string for this parameter: \code{latest}.}
+\item{description}{The description to be updated as part of the
+\code{\link[=datazone_update_project]{update_project}} action.}
 
 \item{resourceTags}{The resource tags of the project.}
 
+\item{glossaryTerms}{The glossary terms to be updated as part of the
+\code{\link[=datazone_update_project]{update_project}} action.}
+
+\item{domainUnitId}{The ID of the domain unit.}
+
+\item{environmentDeploymentDetails}{The environment deployment details of the project.}
+
 \item{userParameters}{The user parameters of the project.}
+
+\item{projectProfileVersion}{The project profile version to which the project should be updated. You
+can only specify the following string for this parameter: \code{latest}.}
 }
 \description{
 Updates the specified project in Amazon DataZone.

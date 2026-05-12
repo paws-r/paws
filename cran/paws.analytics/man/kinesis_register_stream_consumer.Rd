@@ -4,7 +4,12 @@
 \alias{kinesis_register_stream_consumer}
 \title{Registers a consumer with a Kinesis data stream}
 \usage{
-kinesis_register_stream_consumer(StreamARN, ConsumerName, Tags = NULL)
+kinesis_register_stream_consumer(
+  StreamARN,
+  ConsumerName,
+  StreamId = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{StreamARN}{[required] The ARN of the Kinesis data stream that you want to register the
@@ -12,6 +17,8 @@ consumer with. For more info, see \href{https://docs.aws.amazon.com/IAM/latest/U
 
 \item{ConsumerName}{[required] For a given Kinesis data stream, each consumer must have a unique name.
 However, consumer names don't have to be unique across data streams.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 
 \item{Tags}{A set of up to 50 key-value pairs. A tag consists of a required key and
 an optional value.}

@@ -1709,7 +1709,9 @@ lakeformation_describe_lake_formation_identity_center_configuration <- function(
 #'     ),
 #'     WithFederation = TRUE|FALSE,
 #'     HybridAccessEnabled = TRUE|FALSE,
-#'     WithPrivilegedAccess = TRUE|FALSE
+#'     WithPrivilegedAccess = TRUE|FALSE,
+#'     VerificationStatus = "VERIFIED"|"VERIFICATION_FAILED"|"NOT_VERIFIED",
+#'     ExpectedResourceOwnerAccount = "string"
 #'   )
 #' )
 #' ```
@@ -2711,6 +2713,113 @@ lakeformation_get_table_objects <- function(CatalogId = NULL, DatabaseName, Tabl
   return(response)
 }
 .lakeformation$operations$get_table_objects <- lakeformation_get_table_objects
+
+#' Allows a user or application in a secure environment to access data in a
+#' specific Amazon S3 location registered with Lake Formation by providing
+#' temporary scoped credentials that are limited to the requested data
+#' location and the caller's authorized access level
+#'
+#' @description
+#' Allows a user or application in a secure environment to access data in a
+#' specific Amazon S3 location registered with Lake Formation by providing
+#' temporary scoped credentials that are limited to the requested data
+#' location and the caller's authorized access level.
+#' 
+#' `GetDataAccess` is logged in CloudTrail whenever a principal requests
+#' temporary data location credentials to access data in a data lake
+#' location that is registered with Lake Formation.
+#' 
+#' The API operation returns an error in the following scenarios:
+#' 
+#' -   The data location is not registered with Lake Formation.
+#' 
+#' -   No Glue table is associated with the data location.
+#' 
+#' -   The caller doesn't have required permissions on the associated
+#'     table. The caller must have `SELECT` or `SUPER` permissions on the
+#'     associated table, and credential vending for full table access must
+#'     be enabled in the data lake settings.
+#' 
+#'     For more information, see [Application integration for full table
+#'     access](https://docs.aws.amazon.com/lake-formation/latest/dg/full-table-credential-vending.html).
+#' 
+#' -   The data location is in a different Amazon Web Services Region. Lake
+#'     Formation doesn't support cross-Region access when vending
+#'     credentials for a data location. Lake Formation only supports Amazon
+#'     S3 paths registered within the same Region as the API call.
+#'
+#' @usage
+#' lakeformation_get_temporary_data_location_credentials(DurationSeconds,
+#'   AuditContext, DataLocations, CredentialsScope)
+#'
+#' @param DurationSeconds The time period, between 900 and 43,200 seconds, for the timeout of the
+#' temporary credentials.
+#' @param AuditContext 
+#' @param DataLocations The Amazon S3 data location that you want to access.
+#' @param CredentialsScope The credential scope is determined by the caller's Lake Formation
+#' permission on the associated table. Credential scope can be either:
+#' 
+#' -   READ - Provides read-only access to the data location.
+#' 
+#' -   READ_WRITE - Provides both read and write access to the data
+#'     location.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Credentials = list(
+#'     AccessKeyId = "string",
+#'     SecretAccessKey = "string",
+#'     SessionToken = "string",
+#'     Expiration = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   AccessibleDataLocations = list(
+#'     "string"
+#'   ),
+#'   CredentialsScope = "READ"|"READWRITE"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_temporary_data_location_credentials(
+#'   DurationSeconds = 123,
+#'   AuditContext = list(
+#'     AdditionalAuditContext = "string"
+#'   ),
+#'   DataLocations = list(
+#'     "string"
+#'   ),
+#'   CredentialsScope = "READ"|"READWRITE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_get_temporary_data_location_credentials
+#'
+#' @aliases lakeformation_get_temporary_data_location_credentials
+lakeformation_get_temporary_data_location_credentials <- function(DurationSeconds = NULL, AuditContext = NULL, DataLocations = NULL, CredentialsScope = NULL) {
+  op <- new_operation(
+    name = "GetTemporaryDataLocationCredentials",
+    http_method = "POST",
+    http_path = "/GetTemporaryDataLocationCredentials",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lakeformation$get_temporary_data_location_credentials_input(DurationSeconds = DurationSeconds, AuditContext = AuditContext, DataLocations = DataLocations, CredentialsScope = CredentialsScope)
+  output <- .lakeformation$get_temporary_data_location_credentials_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$get_temporary_data_location_credentials <- lakeformation_get_temporary_data_location_credentials
 
 #' This API is identical to GetTemporaryTableCredentials except that this
 #' is used when the target Data Catalog resource is of type Partition
@@ -3857,7 +3966,9 @@ lakeformation_list_permissions <- function(CatalogId = NULL, Principal = NULL, R
 #'       ),
 #'       WithFederation = TRUE|FALSE,
 #'       HybridAccessEnabled = TRUE|FALSE,
-#'       WithPrivilegedAccess = TRUE|FALSE
+#'       WithPrivilegedAccess = TRUE|FALSE,
+#'       VerificationStatus = "VERIFIED"|"VERIFICATION_FAILED"|"NOT_VERIFIED",
+#'       ExpectedResourceOwnerAccount = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4186,7 +4297,8 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #'
 #' @usage
 #' lakeformation_register_resource(ResourceArn, UseServiceLinkedRole,
-#'   RoleArn, WithFederation, HybridAccessEnabled, WithPrivilegedAccess)
+#'   RoleArn, WithFederation, HybridAccessEnabled, WithPrivilegedAccess,
+#'   ExpectedResourceOwnerAccount)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to
 #' register.
@@ -4203,6 +4315,8 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' bucket policies.
 #' @param WithPrivilegedAccess Grants the calling principal the permissions to perform all supported
 #' Lake Formation operations on the registered data location.
+#' @param ExpectedResourceOwnerAccount The Amazon Web Services account that owns the Glue tables associated
+#' with specific Amazon S3 locations.
 #'
 #' @return
 #' An empty list.
@@ -4215,7 +4329,8 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #'   RoleArn = "string",
 #'   WithFederation = TRUE|FALSE,
 #'   HybridAccessEnabled = TRUE|FALSE,
-#'   WithPrivilegedAccess = TRUE|FALSE
+#'   WithPrivilegedAccess = TRUE|FALSE,
+#'   ExpectedResourceOwnerAccount = "string"
 #' )
 #' ```
 #'
@@ -4224,7 +4339,7 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' @rdname lakeformation_register_resource
 #'
 #' @aliases lakeformation_register_resource
-lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = NULL, RoleArn = NULL, WithFederation = NULL, HybridAccessEnabled = NULL, WithPrivilegedAccess = NULL) {
+lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = NULL, RoleArn = NULL, WithFederation = NULL, HybridAccessEnabled = NULL, WithPrivilegedAccess = NULL, ExpectedResourceOwnerAccount = NULL) {
   op <- new_operation(
     name = "RegisterResource",
     http_method = "POST",
@@ -4233,7 +4348,7 @@ lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lakeformation$register_resource_input(ResourceArn = ResourceArn, UseServiceLinkedRole = UseServiceLinkedRole, RoleArn = RoleArn, WithFederation = WithFederation, HybridAccessEnabled = HybridAccessEnabled, WithPrivilegedAccess = WithPrivilegedAccess)
+  input <- .lakeformation$register_resource_input(ResourceArn = ResourceArn, UseServiceLinkedRole = UseServiceLinkedRole, RoleArn = RoleArn, WithFederation = WithFederation, HybridAccessEnabled = HybridAccessEnabled, WithPrivilegedAccess = WithPrivilegedAccess, ExpectedResourceOwnerAccount = ExpectedResourceOwnerAccount)
   output <- .lakeformation$register_resource_output()
   config <- get_config()
   svc <- .lakeformation$service(config, op)
@@ -5127,7 +5242,7 @@ lakeformation_update_lake_formation_identity_center_configuration <- function(Ca
 #'
 #' @usage
 #' lakeformation_update_resource(RoleArn, ResourceArn, WithFederation,
-#'   HybridAccessEnabled)
+#'   HybridAccessEnabled, ExpectedResourceOwnerAccount)
 #'
 #' @param RoleArn &#91;required&#93; The new role to use for the given resource registered in Lake Formation.
 #' @param ResourceArn &#91;required&#93; The resource ARN.
@@ -5135,6 +5250,8 @@ lakeformation_update_lake_formation_identity_center_configuration <- function(Ca
 #' @param HybridAccessEnabled Specifies whether the data access of tables pointing to the location can
 #' be managed by both Lake Formation permissions as well as Amazon S3
 #' bucket policies.
+#' @param ExpectedResourceOwnerAccount The Amazon Web Services account that owns the Glue tables associated
+#' with specific Amazon S3 locations.
 #'
 #' @return
 #' An empty list.
@@ -5145,7 +5262,8 @@ lakeformation_update_lake_formation_identity_center_configuration <- function(Ca
 #'   RoleArn = "string",
 #'   ResourceArn = "string",
 #'   WithFederation = TRUE|FALSE,
-#'   HybridAccessEnabled = TRUE|FALSE
+#'   HybridAccessEnabled = TRUE|FALSE,
+#'   ExpectedResourceOwnerAccount = "string"
 #' )
 #' ```
 #'
@@ -5154,7 +5272,7 @@ lakeformation_update_lake_formation_identity_center_configuration <- function(Ca
 #' @rdname lakeformation_update_resource
 #'
 #' @aliases lakeformation_update_resource
-lakeformation_update_resource <- function(RoleArn, ResourceArn, WithFederation = NULL, HybridAccessEnabled = NULL) {
+lakeformation_update_resource <- function(RoleArn, ResourceArn, WithFederation = NULL, HybridAccessEnabled = NULL, ExpectedResourceOwnerAccount = NULL) {
   op <- new_operation(
     name = "UpdateResource",
     http_method = "POST",
@@ -5163,7 +5281,7 @@ lakeformation_update_resource <- function(RoleArn, ResourceArn, WithFederation =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lakeformation$update_resource_input(RoleArn = RoleArn, ResourceArn = ResourceArn, WithFederation = WithFederation, HybridAccessEnabled = HybridAccessEnabled)
+  input <- .lakeformation$update_resource_input(RoleArn = RoleArn, ResourceArn = ResourceArn, WithFederation = WithFederation, HybridAccessEnabled = HybridAccessEnabled, ExpectedResourceOwnerAccount = ExpectedResourceOwnerAccount)
   output <- .lakeformation$update_resource_output()
   config <- get_config()
   svc <- .lakeformation$service(config, op)

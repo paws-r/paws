@@ -2,8 +2,8 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_associate_resource_share}
 \alias{ram_associate_resource_share}
-\title{Adds the specified list of principals and list of resources to a
-resource share}
+\title{Adds the specified list of principals, resources, and source constraints
+to a resource share}
 \usage{
 ram_associate_resource_share(
   resourceShareArn,
@@ -39,6 +39,7 @@ of an organization in Organizations, for example:
 \item An ARN of an IAM role, for example:
 \verb{iam::123456789012:role/rolename}
 \item An ARN of an IAM user, for example: \verb{iam::123456789012user/username}
+\item A service principal name, for example: \code{service-id.amazonaws.com}
 }
 
 Not all resource types can be shared with IAM roles and users. For more
@@ -59,11 +60,16 @@ If you retry the operation with the same \code{ClientToken}, but with
 different parameters, the retry fails with an
 \code{IdempotentParameterMismatch} error.}
 
-\item{sources}{Specifies from which source accounts the service principal has access to
-the resources in this resource share.}
+\item{sources}{Specifies source constraints (accounts, ARNs, organization IDs, or
+organization paths) that limit when service principals can access
+resources in this resource share. When a service principal attempts to
+access a shared resource, validation is performed to ensure the request
+originates from one of the specified sources. This helps prevent
+confused deputy attacks by applying constraints on where service
+principals can access resources from.}
 }
 \description{
-Adds the specified list of principals and list of resources to a resource share. Principals that already have access to this resource share immediately receive access to the added resources. Newly added principals immediately receive access to the resources shared in this resource share.
+Adds the specified list of principals, resources, and source constraints to a resource share. Principals that already have access to this resource share immediately receive access to the added resources. Newly added principals immediately receive access to the resources shared in this resource share.
 
 See \url{https://www.paws-r-sdk.com/docs/ram_associate_resource_share/} for full documentation.
 }

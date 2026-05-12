@@ -20,10 +20,6 @@ idempotent deletion. This token is automatically filled on your behalf
 when using the Command Line Interface (CLI) or an Amazon Web Services
 SDK.}
 
-\item{WindowsConfiguration}{}
-
-\item{LustreConfiguration}{}
-
 \item{OpenZFSConfiguration}{The configuration object for the OpenZFS file system used in the
 \code{\link[=fsx_delete_file_system]{delete_file_system}} operation.}
 }

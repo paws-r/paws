@@ -34,8 +34,6 @@ the bot. When you enable conversation logs, text logs store text input,
 transcripts of audio input, and associated metadata in Amazon CloudWatch
 Logs. Audio logs store audio input in Amazon S3.}
 
-\item{sentimentAnalysisSettings}{}
-
 \item{botId}{[required] The unique identifier of the bot that the alias applies to.}
 
 \item{tags}{A list of tags to add to the bot alias. You can only add tags when you

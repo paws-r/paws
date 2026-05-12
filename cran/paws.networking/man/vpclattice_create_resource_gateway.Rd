@@ -13,6 +13,7 @@ vpclattice_create_resource_gateway(
   securityGroupIds = NULL,
   ipAddressType = NULL,
   ipv4AddressesPerEni = NULL,
+  resourceConfigDnsResolution = NULL,
   tags = NULL
 )
 }
@@ -54,6 +55,22 @@ address type of the client or the VPC endpoint through which the
 resource is accessed.}
 
 \item{ipv4AddressesPerEni}{The number of IPv4 addresses in each ENI for the resource gateway.}
+
+\item{resourceConfigDnsResolution}{Indicates how DNS is resolved for resource configurations associated to
+this resource gateway. ResourceConfigDnsResolution is set at creation
+time and cannot be changed.
+\itemize{
+\item \code{IN_VPC} - DNS resolution occurs privately within the resource
+gateway's VPC. DNS queries for resources behind this resource
+gateway resolve using the DNS resolvers defined in the VPC's DHCP
+option sets. Use this when your resource domain names are hosted in
+private Route 53 hosted zones or on-premises DNS servers reachable
+from the VPC.
+\item \code{PUBLIC} - DNS resolution occurs against public DNS resolvers. DNS
+queries for resources behind this resource gateway resolve using
+standard public DNS. Use this when your resource domain names are
+publicly resolvable.
+}}
 
 \item{tags}{The tags for the resource gateway.}
 }

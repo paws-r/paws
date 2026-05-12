@@ -200,6 +200,7 @@ policies, by using the console.
 \link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext} \tab Returns a unique symmetric data key for use outside of KMS\cr
 \link[=kms_generate_mac]{generate_mac} \tab Generates a hash-based message authentication code (HMAC) for a message using an HMAC KMS key and a MAC algorithm that the key supports\cr
 \link[=kms_generate_random]{generate_random} \tab Returns a random byte string that is cryptographically secure\cr
+\link[=kms_get_key_last_usage]{get_key_last_usage} \tab Returns usage information about the last successful cryptographic operation performed with a specified KMS key, including the operation type, timestamp, and associated CloudTrail event ID\cr
 \link[=kms_get_key_policy]{get_key_policy} \tab Gets a key policy attached to the specified KMS key\cr
 \link[=kms_get_key_rotation_status]{get_key_rotation_status} \tab Provides detailed information about the rotation status for a KMS key, including whether automatic rotation of the key material is enabled for the specified KMS key, the rotation period, and the next scheduled rotation date\cr
 \link[=kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the public key and an import token you need to import or reimport key material for a KMS key\cr

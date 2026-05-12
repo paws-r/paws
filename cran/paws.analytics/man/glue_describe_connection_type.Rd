@@ -11,7 +11,7 @@ glue_describe_connection_type(ConnectionType)
 \item{ConnectionType}{[required] The name of the connection type to be described.}
 }
 \description{
-The \code{\link[=glue_describe_connection_type]{describe_connection_type}} API provides full details of the supported options for a given connection type in Glue.
+The \code{\link[=glue_describe_connection_type]{describe_connection_type}} API provides full details of the supported options for a given connection type in Glue. The response includes authentication configuration details that show supported authentication types and properties, and RestConfiguration for custom REST-based connection types registered via \code{\link[=glue_register_connection_type]{register_connection_type}}.
 
 See \url{https://www.paws-r-sdk.com/docs/glue_describe_connection_type/} for full documentation.
 }

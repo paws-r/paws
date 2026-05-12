@@ -14,8 +14,6 @@ billingconductor_batch_associate_resources_to_custom_line_item(
 \item{TargetArn}{[required] A percentage custom line item ARN to associate the resources to.}
 
 \item{ResourceArns}{[required] A list containing the ARNs of the resources to be associated.}
-
-\item{BillingPeriodRange}{}
 }
 \description{
 Associates a batch of resources to a percentage custom line item.

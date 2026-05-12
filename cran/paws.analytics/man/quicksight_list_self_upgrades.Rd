@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_self_upgrades}
 \alias{quicksight_list_self_upgrades}
-\title{Lists all self-upgrade requests for a Quick Suite account}
+\title{Lists all self-upgrade requests for a Quick account}
 \usage{
 quicksight_list_self_upgrades(
   AwsAccountId,
@@ -15,7 +15,7 @@ quicksight_list_self_upgrades(
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the self-upgrade
 requests.}
 
-\item{Namespace}{[required] The Quick Suite namespace for the self-upgrade requests.}
+\item{Namespace}{[required] The Quick namespace for the self-upgrade requests.}
 
 \item{NextToken}{The token for the next set of results, or null if there are no more
 results.}
@@ -23,7 +23,7 @@ results.}
 \item{MaxResults}{The maximum number of results to return.}
 }
 \description{
-Lists all self-upgrade requests for a Quick Suite account.
+Lists all self-upgrade requests for a Quick account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_list_self_upgrades/} for full documentation.
 }

@@ -18,8 +18,6 @@ associations for.}
 
 \item{maxResults}{The maximum number of associations to return in a single call. Valid
 range is 1 to 100.}
-
-\item{nextToken}{}
 }
 \description{
 Returns a list of data source associations for a specified S3 Table Integration, showing which data sources are currently associated for query access.

@@ -26,15 +26,9 @@ synthetics_start_canary_dry_run(
 \item{Name}{[required] The name of the canary that you want to dry run. To find canary names,
 use \code{\link[=synthetics_describe_canaries]{describe_canaries}}.}
 
-\item{Code}{}
-
 \item{RuntimeVersion}{Specifies the runtime version to use for the canary. For a list of valid
 runtime versions and for more information about runtime versions, see
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html}{Canary Runtime Versions}.}
-
-\item{RunConfig}{}
-
-\item{VpcConfig}{}
 
 \item{ExecutionRoleArn}{The ARN of the IAM role to be used to run the canary. This role must
 already exist, and must include \code{lambda.amazonaws.com} as a principal in
@@ -56,14 +50,10 @@ This setting affects the range of information returned by
 \code{\link[=synthetics_get_canary_runs]{get_canary_runs}}, as well as the range of
 information displayed in the Synthetics console.}
 
-\item{VisualReference}{}
-
 \item{ArtifactS3Location}{The location in Amazon S3 where Synthetics stores artifacts from the
 test runs of this canary. Artifacts include the log file, screenshots,
 and HAR files. The name of the Amazon S3 bucket can't include a period
 (.).}
-
-\item{ArtifactConfig}{}
 
 \item{ProvisionedResourceCleanup}{Specifies whether to also delete the Lambda functions and layers used by
 this canary when the canary is deleted. If you omit this parameter, the

@@ -102,8 +102,6 @@ to 99 percent.
 To learn more about this parameter, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OfflineStoreConfig.html}{OfflineStoreConfig}.}
 
-\item{ThroughputConfig}{}
-
 \item{RoleArn}{The Amazon Resource Name (ARN) of the IAM execution role used to persist
 data into the \code{OfflineStore} if an \code{OfflineStoreConfig} is provided.}
 

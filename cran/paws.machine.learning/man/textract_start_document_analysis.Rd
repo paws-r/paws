@@ -53,8 +53,6 @@ be used for server-side encryption of the objects in the customer
 bucket. When this parameter is not enabled, the result will be encrypted
 server side,using SSE-S3.}
 
-\item{QueriesConfig}{}
-
 \item{AdaptersConfig}{Specifies the adapter to be used when analyzing a document.}
 }
 \description{

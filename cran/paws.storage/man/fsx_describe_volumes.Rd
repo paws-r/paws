@@ -16,10 +16,6 @@ fsx_describe_volumes(
 \item{VolumeIds}{The IDs of the volumes whose descriptions you want to retrieve.}
 
 \item{Filters}{Enter a filter \code{Name} and \code{Values} pair to view a select set of volumes.}
-
-\item{MaxResults}{}
-
-\item{NextToken}{}
 }
 \description{
 Describes one or more Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volumes.

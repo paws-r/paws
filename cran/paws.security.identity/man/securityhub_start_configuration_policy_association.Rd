@@ -19,7 +19,7 @@ value of \code{SELF_MANAGED_SECURITY_HUB} for a self-managed configuration.}
 to associate with the specified configuration.}
 }
 \description{
-Associates a target account, organizational unit, or the root with a specified configuration. The target can be associated with a configuration policy or self-managed behavior. Only the Security Hub delegated administrator can invoke this operation from the home Region.
+Associates a target account, organizational unit, or the root with a specified configuration. The target can be associated with a configuration policy or self-managed behavior. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_start_configuration_policy_association/} for full documentation.
 }

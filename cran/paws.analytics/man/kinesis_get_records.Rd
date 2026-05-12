@@ -4,7 +4,12 @@
 \alias{kinesis_get_records}
 \title{Gets data records from a Kinesis data stream's shard}
 \usage{
-kinesis_get_records(ShardIterator, Limit = NULL, StreamARN = NULL)
+kinesis_get_records(
+  ShardIterator,
+  Limit = NULL,
+  StreamARN = NULL,
+  StreamId = NULL
+)
 }
 \arguments{
 \item{ShardIterator}{[required] The position in the shard from which you want to start sequentially
@@ -17,6 +22,8 @@ sequence number of a data record in the shard.}
 The default value is 10,000.}
 
 \item{StreamARN}{The ARN of the stream.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Gets data records from a Kinesis data stream's shard.

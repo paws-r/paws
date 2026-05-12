@@ -15,8 +15,6 @@ fsx_update_data_repository_association(
 \arguments{
 \item{AssociationId}{[required] The ID of the data repository association that you are updating.}
 
-\item{ClientRequestToken}{}
-
 \item{ImportedFileChunkSize}{For files imported from a data repository, this value determines the
 stripe count and maximum amount of data per file (in MiB) stored on a
 single physical disk. The maximum number of disks that a single file can

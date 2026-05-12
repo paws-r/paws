@@ -2,8 +2,8 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_start_change_request_execution}
 \alias{ssm_start_change_request_execution}
-\title{Amazon Web Services Systems Manager Change Manager will no longer be
-open to new customers starting November 7, 2025}
+\title{Amazon Web Services Systems Manager Change Manager is no longer open to
+new customers}
 \usage{
 ssm_start_change_request_execution(
   ScheduledTime = NULL,
@@ -88,7 +88,7 @@ content specified in the \strong{Template information} section of the
 associated change template is added.}
 }
 \description{
-Amazon Web Services Systems Manager Change Manager will no longer be open to new customers starting November 7, 2025. If you would like to use Change Manager, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html}{Amazon Web Services Systems Manager Change Manager availability change}.
+Amazon Web Services Systems Manager Change Manager is no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html}{Amazon Web Services Systems Manager Change Manager availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/ssm_start_change_request_execution/} for full documentation.
 }

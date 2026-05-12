@@ -7,6 +7,7 @@ and their associated security findings}
 \usage{
 securityhub_get_resources_statistics_v2(
   GroupByRules,
+  Scopes = NULL,
   SortOrder = NULL,
   MaxStatisticResults = NULL
 )
@@ -14,6 +15,18 @@ securityhub_get_resources_statistics_v2(
 \arguments{
 \item{GroupByRules}{[required] How resource statistics should be aggregated and organized in the
 response.}
+
+\item{Scopes}{Limits the results to resources from specific organizational units or
+from the delegated administrator's organization. Only the delegated
+administrator account can use this parameter. Other accounts receive an
+\code{AccessDeniedException}.
+
+This parameter is optional. If you omit it, the delegated administrator
+sees statistics from all accounts across the entire organization. Other
+accounts see only statistics for their own resources.
+
+You can specify up to 10 entries in \code{Scopes.AwsOrganizations}. If
+multiple entries are specified, the entries are combined using OR logic.}
 
 \item{SortOrder}{Sorts aggregated statistics.}
 

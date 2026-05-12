@@ -5,40 +5,40 @@
 \title{Updates a LaunchConfiguration by Source Server ID}
 \usage{
 drs_update_launch_configuration(
+  sourceServerID,
+  name = NULL,
+  launchDisposition = NULL,
+  targetInstanceTypeRightSizingMethod = NULL,
   copyPrivateIp = NULL,
   copyTags = NULL,
-  launchDisposition = NULL,
-  launchIntoInstanceProperties = NULL,
   licensing = NULL,
-  name = NULL,
   postLaunchEnabled = NULL,
-  sourceServerID,
-  targetInstanceTypeRightSizingMethod = NULL
+  launchIntoInstanceProperties = NULL
 )
 }
 \arguments{
+\item{sourceServerID}{[required] The ID of the Source Server that we want to retrieve a Launch
+Configuration for.}
+
+\item{name}{The name of the launch configuration.}
+
+\item{launchDisposition}{The state of the Recovery Instance in EC2 after the recovery operation.}
+
+\item{targetInstanceTypeRightSizingMethod}{Whether Elastic Disaster Recovery should try to automatically choose the
+instance type that best matches the OS, CPU, and RAM of your Source
+Server.}
+
 \item{copyPrivateIp}{Whether we should copy the Private IP of the Source Server to the
 Recovery Instance.}
 
 \item{copyTags}{Whether we want to copy the tags of the Source Server to the EC2 machine
 of the Recovery Instance.}
 
-\item{launchDisposition}{The state of the Recovery Instance in EC2 after the recovery operation.}
-
-\item{launchIntoInstanceProperties}{Launch into existing instance properties.}
-
 \item{licensing}{The licensing configuration to be used for this launch configuration.}
-
-\item{name}{The name of the launch configuration.}
 
 \item{postLaunchEnabled}{Whether we want to enable post-launch actions for the Source Server.}
 
-\item{sourceServerID}{[required] The ID of the Source Server that we want to retrieve a Launch
-Configuration for.}
-
-\item{targetInstanceTypeRightSizingMethod}{Whether Elastic Disaster Recovery should try to automatically choose the
-instance type that best matches the OS, CPU, and RAM of your Source
-Server.}
+\item{launchIntoInstanceProperties}{Launch into existing instance properties.}
 }
 \description{
 Updates a LaunchConfiguration by Source Server ID.

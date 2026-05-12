@@ -6,15 +6,20 @@
 \usage{
 datazone_search_user_profiles(
   domainIdentifier,
-  maxResults = NULL,
-  nextToken = NULL,
+  userType,
   searchText = NULL,
-  userType
+  maxResults = NULL,
+  nextToken = NULL
 )
 }
 \arguments{
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which you want to search
 user profiles.}
+
+\item{userType}{[required] Specifies the user type for the
+\code{\link[=datazone_search_user_profiles]{search_user_profiles}} action.}
+
+\item{searchText}{Specifies the text for which to search.}
 
 \item{maxResults}{The maximum number of results to return in a single call to
 \code{\link[=datazone_search_user_profiles]{search_user_profiles}}. When the number
@@ -30,11 +35,6 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{NextToken} value in a subsequent call to
 \code{\link[=datazone_search_user_profiles]{search_user_profiles}} to list the next
 set of results.}
-
-\item{searchText}{Specifies the text for which to search.}
-
-\item{userType}{[required] Specifies the user type for the
-\code{\link[=datazone_search_user_profiles]{search_user_profiles}} action.}
 }
 \description{
 Searches user profiles in Amazon DataZone.

@@ -22,8 +22,6 @@ must assign a name that is unique in the account and region.}
 
 \item{ParallelDataConfig}{[required] Specifies the format and S3 location of the parallel data input file.}
 
-\item{EncryptionKey}{}
-
 \item{ClientToken}{[required] A unique identifier for the request. This token is automatically
 generated when you use Amazon Translate through an AWS SDK.}
 

@@ -10,7 +10,8 @@ paymentcryptographycontrolplane_import_key(
   KeyCheckValueAlgorithm = NULL,
   Enabled = NULL,
   Tags = NULL,
-  ReplicationRegions = NULL
+  ReplicationRegions = NULL,
+  RequesterComment = NULL
 )
 }
 \arguments{
@@ -49,7 +50,11 @@ other output.
 Tagging or untagging an Amazon Web Services Payment Cryptography key can
 allow or deny permission to the key.}
 
-\item{ReplicationRegions}{}
+\item{RequesterComment}{The comment from the requester explaining the reason for the import.
+
+Don't include personal, confidential or sensitive information in this
+field. This field may be displayed in plaintext in CloudTrail logs and
+other output.}
 }
 \description{
 Imports symmetric keys and public key certificates in PEM format (base64 encoded) into Amazon Web Services Payment Cryptography.

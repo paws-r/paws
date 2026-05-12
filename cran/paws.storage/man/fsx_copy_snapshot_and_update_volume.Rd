@@ -14,8 +14,6 @@ fsx_copy_snapshot_and_update_volume(
 )
 }
 \arguments{
-\item{ClientRequestToken}{}
-
 \item{VolumeId}{[required] Specifies the ID of the volume that you are copying the snapshot to.}
 
 \item{SourceSnapshotARN}{[required]}

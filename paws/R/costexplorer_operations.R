@@ -3109,7 +3109,8 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
 #'               DeploymentOption = "string",
 #'               LicenseModel = "string",
 #'               CurrentGeneration = TRUE|FALSE,
-#'               SizeFlexEligible = TRUE|FALSE
+#'               SizeFlexEligible = TRUE|FALSE,
+#'               DeploymentModel = "string"
 #'             ),
 #'             RedshiftInstanceDetails = list(
 #'               Family = "string",
@@ -3247,7 +3248,7 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "PageSize", result_key = "Recommendations"),
     stream_api = FALSE
   )
   input <- .costexplorer$get_reservation_purchase_recommendation_input(AccountId = AccountId, Service = Service, Filter = Filter, AccountScope = AccountScope, LookbackPeriodInDays = LookbackPeriodInDays, TermInYears = TermInYears, PaymentOption = PaymentOption, ServiceSpecification = ServiceSpecification, PageSize = PageSize, NextPageToken = NextPageToken)
@@ -3779,7 +3780,7 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "PageSize", result_key = "RightsizingRecommendations"),
     stream_api = FALSE
   )
   input <- .costexplorer$get_rightsizing_recommendation_input(Filter = Filter, Configuration = Configuration, Service = Service, PageSize = PageSize, NextPageToken = NextPageToken)
@@ -5059,7 +5060,7 @@ costexplorer_list_commitment_purchase_analyses <- function(AnalysisStatus = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "PageSize", result_key = "AnalysisSummaryList"),
     stream_api = FALSE
   )
   input <- .costexplorer$list_commitment_purchase_analyses_input(AnalysisStatus = AnalysisStatus, NextPageToken = NextPageToken, PageSize = PageSize, AnalysisIds = AnalysisIds)
@@ -5243,7 +5244,7 @@ costexplorer_list_cost_allocation_tags <- function(Status = NULL, TagKeys = NULL
 #' types based on the latest version. If the filter is present, the result
 #' only includes Cost Categories that supports input resource type. If the
 #' filter isn't provided, no filtering is applied. The valid values are
-#' `billing:rispgroupsharing`.
+#' `billing:rispgroupsharing` and `billing:billingview`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5437,7 +5438,7 @@ costexplorer_list_savings_plans_purchase_recommendation_generation <- function(G
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "PageSize", result_key = "GenerationSummaryList"),
     stream_api = FALSE
   )
   input <- .costexplorer$list_savings_plans_purchase_recommendation_generation_input(GenerationStatus = GenerationStatus, RecommendationIds = RecommendationIds, PageSize = PageSize, NextPageToken = NextPageToken)

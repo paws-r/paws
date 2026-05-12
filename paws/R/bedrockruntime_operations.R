@@ -540,7 +540,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' bedrockruntime_converse(modelId, messages, system, inferenceConfig,
 #'   toolConfig, guardrailConfig, additionalModelRequestFields,
 #'   promptVariables, additionalModelResponseFieldPaths, requestMetadata,
-#'   performanceConfig, serviceTier)
+#'   performanceConfig, serviceTier, outputConfig)
 #'
 #' @param modelId &#91;required&#93; Specifies the model or throughput with which to run inference, or the
 #' prompt resource to use in inference. The value depends on the resource
@@ -628,6 +628,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' @param performanceConfig Model performance settings for the request.
 #' @param serviceTier Specifies the processing tier configuration used for serving the
 #' request.
+#' @param outputConfig Output configuration for a model response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -784,7 +785,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'             )
 #'           ),
 #'           cachePoint = list(
-#'             type = "default"
+#'             type = "default",
+#'             ttl = "5m"|"1h"
 #'           ),
 #'           reasoningContent = list(
 #'             reasoningText = list(
@@ -859,7 +861,13 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'     outputTokens = 123,
 #'     totalTokens = 123,
 #'     cacheReadInputTokens = 123,
-#'     cacheWriteInputTokens = 123
+#'     cacheWriteInputTokens = 123,
+#'     cacheDetails = list(
+#'       list(
+#'         ttl = "5m"|"1h",
+#'         inputTokens = 123
+#'       )
+#'     )
 #'   ),
 #'   metrics = list(
 #'     latencyMs = 123
@@ -1774,7 +1782,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'             )
 #'           ),
 #'           cachePoint = list(
-#'             type = "default"
+#'             type = "default",
+#'             ttl = "5m"|"1h"
 #'           ),
 #'           reasoningContent = list(
 #'             reasoningText = list(
@@ -1861,7 +1870,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'         )
 #'       ),
 #'       cachePoint = list(
-#'         type = "default"
+#'         type = "default",
+#'         ttl = "5m"|"1h"
 #'       )
 #'     )
 #'   ),
@@ -1881,13 +1891,15 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'           description = "string",
 #'           inputSchema = list(
 #'             json = list()
-#'           )
+#'           ),
+#'           strict = TRUE|FALSE
 #'         ),
 #'         systemTool = list(
 #'           name = "string"
 #'         ),
 #'         cachePoint = list(
-#'           type = "default"
+#'           type = "default",
+#'           ttl = "5m"|"1h"
 #'         )
 #'       )
 #'     ),
@@ -1921,6 +1933,18 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'   ),
 #'   serviceTier = list(
 #'     type = "priority"|"default"|"flex"|"reserved"
+#'   ),
+#'   outputConfig = list(
+#'     textFormat = list(
+#'       type = "json_schema",
+#'       structure = list(
+#'         jsonSchema = list(
+#'           schema = "string",
+#'           name = "string",
+#'           description = "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1930,7 +1954,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' @rdname bedrockruntime_converse
 #'
 #' @aliases bedrockruntime_converse
-bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL, serviceTier = NULL) {
+bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL, serviceTier = NULL, outputConfig = NULL) {
   op <- new_operation(
     name = "Converse",
     http_method = "POST",
@@ -1939,7 +1963,7 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockruntime$converse_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig, serviceTier = serviceTier)
+  input <- .bedrockruntime$converse_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig, serviceTier = serviceTier, outputConfig = outputConfig)
   output <- .bedrockruntime$converse_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -2018,7 +2042,7 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'   inferenceConfig, toolConfig, guardrailConfig,
 #'   additionalModelRequestFields, promptVariables,
 #'   additionalModelResponseFieldPaths, requestMetadata, performanceConfig,
-#'   serviceTier)
+#'   serviceTier, outputConfig)
 #'
 #' @param modelId &#91;required&#93; Specifies the model or throughput with which to run inference, or the
 #' prompt resource to use in inference. The value depends on the resource
@@ -2106,6 +2130,7 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #' @param performanceConfig Model performance settings for the request.
 #' @param serviceTier Specifies the processing tier configuration used for serving the
 #' request.
+#' @param outputConfig Output configuration for a model response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2213,7 +2238,13 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'         outputTokens = 123,
 #'         totalTokens = 123,
 #'         cacheReadInputTokens = 123,
-#'         cacheWriteInputTokens = 123
+#'         cacheWriteInputTokens = 123,
+#'         cacheDetails = list(
+#'           list(
+#'             ttl = "5m"|"1h",
+#'             inputTokens = 123
+#'           )
+#'         )
 #'       ),
 #'       metrics = list(
 #'         latencyMs = 123
@@ -3146,7 +3177,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'             )
 #'           ),
 #'           cachePoint = list(
-#'             type = "default"
+#'             type = "default",
+#'             ttl = "5m"|"1h"
 #'           ),
 #'           reasoningContent = list(
 #'             reasoningText = list(
@@ -3233,7 +3265,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'         )
 #'       ),
 #'       cachePoint = list(
-#'         type = "default"
+#'         type = "default",
+#'         ttl = "5m"|"1h"
 #'       )
 #'     )
 #'   ),
@@ -3253,13 +3286,15 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'           description = "string",
 #'           inputSchema = list(
 #'             json = list()
-#'           )
+#'           ),
+#'           strict = TRUE|FALSE
 #'         ),
 #'         systemTool = list(
 #'           name = "string"
 #'         ),
 #'         cachePoint = list(
-#'           type = "default"
+#'           type = "default",
+#'           ttl = "5m"|"1h"
 #'         )
 #'       )
 #'     ),
@@ -3294,6 +3329,18 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'   ),
 #'   serviceTier = list(
 #'     type = "priority"|"default"|"flex"|"reserved"
+#'   ),
+#'   outputConfig = list(
+#'     textFormat = list(
+#'       type = "json_schema",
+#'       structure = list(
+#'         jsonSchema = list(
+#'           schema = "string",
+#'           name = "string",
+#'           description = "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -3303,7 +3350,7 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #' @rdname bedrockruntime_converse_stream
 #'
 #' @aliases bedrockruntime_converse_stream
-bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL, serviceTier = NULL) {
+bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL, serviceTier = NULL, outputConfig = NULL) {
   op <- new_operation(
     name = "ConverseStream",
     http_method = "POST",
@@ -3312,7 +3359,7 @@ bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NU
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockruntime$converse_stream_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig, serviceTier = serviceTier)
+  input <- .bedrockruntime$converse_stream_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig, serviceTier = serviceTier, outputConfig = outputConfig)
   output <- .bedrockruntime$converse_stream_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -3546,7 +3593,8 @@ bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NU
 #'                 )
 #'               ),
 #'               cachePoint = list(
-#'                 type = "default"
+#'                 type = "default",
+#'                 ttl = "5m"|"1h"
 #'               ),
 #'               reasoningContent = list(
 #'                 reasoningText = list(
@@ -3633,7 +3681,8 @@ bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NU
 #'             )
 #'           ),
 #'           cachePoint = list(
-#'             type = "default"
+#'             type = "default",
+#'             ttl = "5m"|"1h"
 #'           )
 #'         )
 #'       ),
@@ -3645,13 +3694,15 @@ bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NU
 #'               description = "string",
 #'               inputSchema = list(
 #'                 json = list()
-#'               )
+#'               ),
+#'               strict = TRUE|FALSE
 #'             ),
 #'             systemTool = list(
 #'               name = "string"
 #'             ),
 #'             cachePoint = list(
-#'               type = "default"
+#'               type = "default",
+#'               ttl = "5m"|"1h"
 #'             )
 #'           )
 #'         ),

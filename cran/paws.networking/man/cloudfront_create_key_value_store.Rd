@@ -4,7 +4,12 @@
 \alias{cloudfront_create_key_value_store}
 \title{Specifies the key value store resource to add to your account}
 \usage{
-cloudfront_create_key_value_store(Name, Comment = NULL, ImportSource = NULL)
+cloudfront_create_key_value_store(
+  Name,
+  Comment = NULL,
+  ImportSource = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the key value store. The minimum length is 1 character and

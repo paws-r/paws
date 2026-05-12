@@ -22,6 +22,7 @@ identitystore_create_user(
   Photos = NULL,
   Website = NULL,
   Birthdate = NULL,
+  Roles = NULL,
   Extensions = NULL
 )
 }
@@ -77,6 +78,8 @@ provide a link to their personal or professional website.}
 
 \item{Birthdate}{The user's birthdate in YYYY-MM-DD format. This field supports standard
 date format for storing personal information.}
+
+\item{Roles}{A list of \code{Role} objects containing roles associated with the user.}
 
 \item{Extensions}{A map with additional attribute extensions for the user. Each map key
 corresponds to an extension name, while map values represent extension

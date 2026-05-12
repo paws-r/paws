@@ -560,11 +560,12 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #' function, see [Writing function code for CloudFront
 #' Functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/writing-function-code.html)
 #' in the *Amazon CloudFront Developer Guide*.
+#' @param Tags 
 #'
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_function
-cloudfront_create_function <- function(Name, FunctionConfig, FunctionCode) {
+cloudfront_create_function <- function(Name, FunctionConfig, FunctionCode, Tags = NULL) {
   op <- new_operation(
     name = "CreateFunction",
     http_method = "POST",
@@ -573,7 +574,7 @@ cloudfront_create_function <- function(Name, FunctionConfig, FunctionCode) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudfront$create_function_input(Name = Name, FunctionConfig = FunctionConfig, FunctionCode = FunctionCode)
+  input <- .cloudfront$create_function_input(Name = Name, FunctionConfig = FunctionConfig, FunctionCode = FunctionCode, Tags = Tags)
   output <- .cloudfront$create_function_output()
   config <- get_config()
   svc <- .cloudfront$service(config, op)
@@ -691,11 +692,12 @@ cloudfront_create_key_group <- function(KeyGroupConfig) {
 #' @param Comment The comment of the key value store.
 #' @param ImportSource The S3 bucket that provides the source for the import. The source must
 #' be in a valid JSON format.
+#' @param Tags 
 #'
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_key_value_store
-cloudfront_create_key_value_store <- function(Name, Comment = NULL, ImportSource = NULL) {
+cloudfront_create_key_value_store <- function(Name, Comment = NULL, ImportSource = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateKeyValueStore",
     http_method = "POST",
@@ -704,7 +706,7 @@ cloudfront_create_key_value_store <- function(Name, Comment = NULL, ImportSource
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudfront$create_key_value_store_input(Name = Name, Comment = Comment, ImportSource = ImportSource)
+  input <- .cloudfront$create_key_value_store_input(Name = Name, Comment = Comment, ImportSource = ImportSource, Tags = Tags)
   output <- .cloudfront$create_key_value_store_output()
   config <- get_config()
   svc <- .cloudfront$service(config, op)
@@ -4986,13 +4988,15 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 #' -   `ipv6` only
 #' 
 #' -   `dualstack` - Allocate a list of both IPv4 and IPv6 addresses
+#' @param IpamCidrConfigs A list of IPAM CIDR configurations that specify the IP address ranges
+#' and IPAM pool settings for updating the Anycast static IP list.
 #' @param IfMatch &#91;required&#93; The current version (ETag value) of the Anycast static IP list that you
 #' are updating.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudfront_update_anycast_ip_list
-cloudfront_update_anycast_ip_list <- function(Id, IpAddressType = NULL, IfMatch) {
+cloudfront_update_anycast_ip_list <- function(Id, IpAddressType = NULL, IpamCidrConfigs = NULL, IfMatch) {
   op <- new_operation(
     name = "UpdateAnycastIpList",
     http_method = "PUT",
@@ -5001,7 +5005,7 @@ cloudfront_update_anycast_ip_list <- function(Id, IpAddressType = NULL, IfMatch)
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudfront$update_anycast_ip_list_input(Id = Id, IpAddressType = IpAddressType, IfMatch = IfMatch)
+  input <- .cloudfront$update_anycast_ip_list_input(Id = Id, IpAddressType = IpAddressType, IpamCidrConfigs = IpamCidrConfigs, IfMatch = IfMatch)
   output <- .cloudfront$update_anycast_ip_list_output()
   config <- get_config()
   svc <- .cloudfront$service(config, op)

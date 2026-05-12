@@ -14,8 +14,6 @@ fsx_update_volume(
 )
 }
 \arguments{
-\item{ClientRequestToken}{}
-
 \item{VolumeId}{[required] The ID of the volume that you want to update, in the format
 \verb{fsvol-0123456789abcdef0}.}
 

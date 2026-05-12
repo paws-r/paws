@@ -17,6 +17,7 @@ NULL
 #' @param source 
 #' @param connectCampaignFlowArn 
 #' @param schedule 
+#' @param entryLimitsConfig 
 #' @param communicationTimeConfig 
 #' @param communicationLimitsOverride 
 #' @param tags 
@@ -24,7 +25,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname connectcampaignservicev2_create_campaign
-connectcampaignservicev2_create_campaign <- function(name, connectInstanceId, channelSubtypeConfig = NULL, type = NULL, source = NULL, connectCampaignFlowArn = NULL, schedule = NULL, communicationTimeConfig = NULL, communicationLimitsOverride = NULL, tags = NULL) {
+connectcampaignservicev2_create_campaign <- function(name, connectInstanceId, channelSubtypeConfig = NULL, type = NULL, source = NULL, connectCampaignFlowArn = NULL, schedule = NULL, entryLimitsConfig = NULL, communicationTimeConfig = NULL, communicationLimitsOverride = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateCampaign",
     http_method = "PUT",
@@ -33,7 +34,7 @@ connectcampaignservicev2_create_campaign <- function(name, connectInstanceId, ch
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcampaignservicev2$create_campaign_input(name = name, connectInstanceId = connectInstanceId, channelSubtypeConfig = channelSubtypeConfig, type = type, source = source, connectCampaignFlowArn = connectCampaignFlowArn, schedule = schedule, communicationTimeConfig = communicationTimeConfig, communicationLimitsOverride = communicationLimitsOverride, tags = tags)
+  input <- .connectcampaignservicev2$create_campaign_input(name = name, connectInstanceId = connectInstanceId, channelSubtypeConfig = channelSubtypeConfig, type = type, source = source, connectCampaignFlowArn = connectCampaignFlowArn, schedule = schedule, entryLimitsConfig = entryLimitsConfig, communicationTimeConfig = communicationTimeConfig, communicationLimitsOverride = communicationLimitsOverride, tags = tags)
   output <- .connectcampaignservicev2$create_campaign_output()
   config <- get_config()
   svc <- .connectcampaignservicev2$service(config, op)
@@ -169,6 +170,37 @@ connectcampaignservicev2_delete_campaign_communication_time <- function(id, conf
   return(response)
 }
 .connectcampaignservicev2$operations$delete_campaign_communication_time <- connectcampaignservicev2_delete_campaign_communication_time
+
+#' Deletes the entry limits config for a campaign
+#'
+#' @description
+#' Deletes the entry limits config for a campaign. This API is idempotent.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservicev2_delete_campaign_entry_limits/](https://www.paws-r-sdk.com/docs/connectcampaignservicev2_delete_campaign_entry_limits/) for full documentation.
+#'
+#' @param id &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname connectcampaignservicev2_delete_campaign_entry_limits
+connectcampaignservicev2_delete_campaign_entry_limits <- function(id) {
+  op <- new_operation(
+    name = "DeleteCampaignEntryLimits",
+    http_method = "DELETE",
+    http_path = "/v2/campaigns/{id}/entry-limits",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connectcampaignservicev2$delete_campaign_entry_limits_input(id = id)
+  output <- .connectcampaignservicev2$delete_campaign_entry_limits_output()
+  config <- get_config()
+  svc <- .connectcampaignservicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcampaignservicev2$operations$delete_campaign_entry_limits <- connectcampaignservicev2_delete_campaign_entry_limits
 
 #' Deletes a connect instance config from the specified AWS account
 #'
@@ -996,6 +1028,38 @@ connectcampaignservicev2_update_campaign_communication_time <- function(id, comm
   return(response)
 }
 .connectcampaignservicev2$operations$update_campaign_communication_time <- connectcampaignservicev2_update_campaign_communication_time
+
+#' Updates the entry limits config for a campaign
+#'
+#' @description
+#' Updates the entry limits config for a campaign. This API is idempotent.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservicev2_update_campaign_entry_limits/](https://www.paws-r-sdk.com/docs/connectcampaignservicev2_update_campaign_entry_limits/) for full documentation.
+#'
+#' @param id &#91;required&#93; 
+#' @param entryLimitsConfig &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname connectcampaignservicev2_update_campaign_entry_limits
+connectcampaignservicev2_update_campaign_entry_limits <- function(id, entryLimitsConfig) {
+  op <- new_operation(
+    name = "UpdateCampaignEntryLimits",
+    http_method = "POST",
+    http_path = "/v2/campaigns/{id}/entry-limits",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connectcampaignservicev2$update_campaign_entry_limits_input(id = id, entryLimitsConfig = entryLimitsConfig)
+  output <- .connectcampaignservicev2$update_campaign_entry_limits_output()
+  config <- get_config()
+  svc <- .connectcampaignservicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcampaignservicev2$operations$update_campaign_entry_limits <- connectcampaignservicev2_update_campaign_entry_limits
 
 #' Updates the campaign flow associated with a campaign
 #'

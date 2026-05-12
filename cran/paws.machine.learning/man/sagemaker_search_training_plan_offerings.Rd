@@ -12,8 +12,9 @@ sagemaker_search_training_plan_offerings(
   UltraServerCount = NULL,
   StartTimeAfter = NULL,
   EndTimeBefore = NULL,
-  DurationHours,
-  TargetResources
+  DurationHours = NULL,
+  TargetResources = NULL,
+  TrainingPlanArn = NULL
 )
 }
 \arguments{
@@ -40,9 +41,9 @@ specified date.}
 \item{EndTimeBefore}{A filter to search for reserved capacity offerings with an end time
 before a specified date.}
 
-\item{DurationHours}{[required] The desired duration in hours for the training plan offerings.}
+\item{DurationHours}{The desired duration in hours for the training plan offerings.}
 
-\item{TargetResources}{[required] The target resources (e.g., SageMaker Training Jobs, SageMaker HyperPod,
+\item{TargetResources}{The target resources (e.g., SageMaker Training Jobs, SageMaker HyperPod,
 SageMaker Endpoints) to search for in the offerings.
 
 Training plans are specific to their target resource.
@@ -55,6 +56,10 @@ provide compute resources to a cluster's instance group.
 provide compute resources to SageMaker endpoints for model
 deployment.
 }}
+
+\item{TrainingPlanArn}{The Amazon Resource Name (ARN); of an existing training plan to search
+for extension offerings. When specified, the API returns extension
+offerings that can be used to extend the specified training plan.}
 }
 \description{
 Searches for available training plan offerings based on specified criteria.

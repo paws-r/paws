@@ -48,8 +48,9 @@ NULL
 #'
 #' @usage
 #' redshiftdataapiservice_batch_execute_statement(Sqls, ClusterIdentifier,
-#'   SecretArn, DbUser, Database, WithEvent, StatementName, WorkgroupName,
-#'   ClientToken, ResultFormat, SessionKeepAliveSeconds, SessionId)
+#'   SecretArn, DbUser, Database, WithEvent, StatementName, Parameters,
+#'   WorkgroupName, ClientToken, ResultFormat, SessionKeepAliveSeconds,
+#'   SessionId)
 #'
 #' @param Sqls &#91;required&#93; One or more SQL statements to run. The SQL statements are run as a
 #' single transaction. They run serially in the order of the array.
@@ -70,6 +71,8 @@ NULL
 #' EventBridge event bus after the SQL statements run.
 #' @param StatementName The name of the SQL statements. You can name the SQL statements when you
 #' create them to identify the query.
+#' @param Parameters The parameters for the SQL statements. The parameters are shared across
+#' all SQL statements in the batch.
 #' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). This
 #' parameter is required when connecting to a serverless workgroup and
 #' authenticating using either Secrets Manager or temporary credentials.
@@ -114,6 +117,12 @@ NULL
 #'   Database = "string",
 #'   WithEvent = TRUE|FALSE,
 #'   StatementName = "string",
+#'   Parameters = list(
+#'     list(
+#'       name = "string",
+#'       value = "string"
+#'     )
+#'   ),
 #'   WorkgroupName = "string",
 #'   ClientToken = "string",
 #'   ResultFormat = "JSON"|"CSV",
@@ -127,7 +136,7 @@ NULL
 #' @rdname redshiftdataapiservice_batch_execute_statement
 #'
 #' @aliases redshiftdataapiservice_batch_execute_statement
-redshiftdataapiservice_batch_execute_statement <- function(Sqls, ClusterIdentifier = NULL, SecretArn = NULL, DbUser = NULL, Database = NULL, WithEvent = NULL, StatementName = NULL, WorkgroupName = NULL, ClientToken = NULL, ResultFormat = NULL, SessionKeepAliveSeconds = NULL, SessionId = NULL) {
+redshiftdataapiservice_batch_execute_statement <- function(Sqls, ClusterIdentifier = NULL, SecretArn = NULL, DbUser = NULL, Database = NULL, WithEvent = NULL, StatementName = NULL, Parameters = NULL, WorkgroupName = NULL, ClientToken = NULL, ResultFormat = NULL, SessionKeepAliveSeconds = NULL, SessionId = NULL) {
   op <- new_operation(
     name = "BatchExecuteStatement",
     http_method = "POST",
@@ -136,7 +145,7 @@ redshiftdataapiservice_batch_execute_statement <- function(Sqls, ClusterIdentifi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$batch_execute_statement_input(Sqls = Sqls, ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, WithEvent = WithEvent, StatementName = StatementName, WorkgroupName = WorkgroupName, ClientToken = ClientToken, ResultFormat = ResultFormat, SessionKeepAliveSeconds = SessionKeepAliveSeconds, SessionId = SessionId)
+  input <- .redshiftdataapiservice$batch_execute_statement_input(Sqls = Sqls, ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, WithEvent = WithEvent, StatementName = StatementName, Parameters = Parameters, WorkgroupName = WorkgroupName, ClientToken = ClientToken, ResultFormat = ResultFormat, SessionKeepAliveSeconds = SessionKeepAliveSeconds, SessionId = SessionId)
   output <- .redshiftdataapiservice$batch_execute_statement_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)

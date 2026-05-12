@@ -21,8 +21,6 @@ token with multiple
 same \code{JobId} is returned. Use \code{ClientRequestToken} to prevent the same
 job from being accidentaly started more than once.}
 
-\item{NotificationChannel}{}
-
 \item{JobTag}{An identifier returned in the completion status published by your Amazon
 Simple Notification Service topic. For example, you can use \code{JobTag} to
 group related jobs and identify them in the completion notification.}

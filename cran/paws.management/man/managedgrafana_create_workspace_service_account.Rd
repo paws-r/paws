@@ -4,17 +4,17 @@
 \alias{managedgrafana_create_workspace_service_account}
 \title{Creates a service account for the workspace}
 \usage{
-managedgrafana_create_workspace_service_account(grafanaRole, name, workspaceId)
+managedgrafana_create_workspace_service_account(name, grafanaRole, workspaceId)
 }
 \arguments{
+\item{name}{[required] A name for the service account. The name must be unique within the
+workspace, as it determines the ID associated with the service account.}
+
 \item{grafanaRole}{[required] The permission level to use for this service account.
 
 For more information about the roles and the permissions each has, see
 \href{https://docs.aws.amazon.com/grafana/latest/userguide/Grafana-user-roles.html}{User roles}
 in the \emph{Amazon Managed Grafana User Guide}.}
-
-\item{name}{[required] A name for the service account. The name must be unique within the
-workspace, as it determines the ID associated with the service account.}
 
 \item{workspaceId}{[required] The ID of the workspace within which to create the service account.}
 }

@@ -10,7 +10,8 @@ kafka_create_replicator(
   ReplicationInfoList,
   ReplicatorName,
   ServiceExecutionRoleArn,
-  Tags = NULL
+  Tags = NULL,
+  LogDelivery = NULL
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ allowed.}
 the customer's account (e.g source and target clusters)}
 
 \item{Tags}{List of tags to attach to created Replicator.}
+
+\item{LogDelivery}{Configuration for delivering replicator logs to customer destinations.}
 }
 \description{
 Creates the replicator.

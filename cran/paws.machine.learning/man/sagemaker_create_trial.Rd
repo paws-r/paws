@@ -21,8 +21,6 @@ If \code{DisplayName} isn't specified, \code{TrialName} is displayed.}
 
 \item{ExperimentName}{[required] The name of the experiment to associate the trial with.}
 
-\item{MetadataProperties}{}
-
 \item{Tags}{A list of tags to associate with the trial. You can use
 \code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }

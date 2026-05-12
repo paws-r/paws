@@ -112,6 +112,7 @@ NULL
 #' \tabular{ll}{
 #'  \link[=ecs_create_capacity_provider]{create_capacity_provider} \tab Creates a capacity provider\cr
 #'  \link[=ecs_create_cluster]{create_cluster} \tab Creates a new Amazon ECS cluster\cr
+#'  \link[=ecs_create_daemon]{create_daemon} \tab Creates a new daemon in the specified cluster and capacity providers\cr
 #'  \link[=ecs_create_express_gateway_service]{create_express_gateway_service} \tab Creates an Express service that simplifies deploying containerized web applications on Amazon ECS with managed Amazon Web Services infrastructure\cr
 #'  \link[=ecs_create_service]{create_service} \tab Runs and maintains your desired number of tasks from a specified task definition\cr
 #'  \link[=ecs_create_task_set]{create_task_set} \tab Create a task set in the specified cluster and service\cr
@@ -119,6 +120,8 @@ NULL
 #'  \link[=ecs_delete_attributes]{delete_attributes} \tab Deletes one or more custom attributes from an Amazon ECS resource\cr
 #'  \link[=ecs_delete_capacity_provider]{delete_capacity_provider} \tab Deletes the specified capacity provider\cr
 #'  \link[=ecs_delete_cluster]{delete_cluster} \tab Deletes the specified cluster\cr
+#'  \link[=ecs_delete_daemon]{delete_daemon} \tab Deletes the specified daemon\cr
+#'  \link[=ecs_delete_daemon_task_definition]{delete_daemon_task_definition} \tab Deletes the specified daemon task definition\cr
 #'  \link[=ecs_delete_express_gateway_service]{delete_express_gateway_service} \tab Deletes an Express service and removes all associated Amazon Web Services resources\cr
 #'  \link[=ecs_delete_service]{delete_service} \tab Deletes a specified service within a cluster\cr
 #'  \link[=ecs_delete_task_definitions]{delete_task_definitions} \tab Deletes one or more task definitions\cr
@@ -128,6 +131,10 @@ NULL
 #'  \link[=ecs_describe_capacity_providers]{describe_capacity_providers} \tab Describes one or more of your capacity providers\cr
 #'  \link[=ecs_describe_clusters]{describe_clusters} \tab Describes one or more of your clusters\cr
 #'  \link[=ecs_describe_container_instances]{describe_container_instances} \tab Describes one or more container instances\cr
+#'  \link[=ecs_describe_daemon]{describe_daemon} \tab Describes the specified daemon\cr
+#'  \link[=ecs_describe_daemon_deployments]{describe_daemon_deployments} \tab Describes one or more of your daemon deployments\cr
+#'  \link[=ecs_describe_daemon_revisions]{describe_daemon_revisions} \tab Describes one or more of your daemon revisions\cr
+#'  \link[=ecs_describe_daemon_task_definition]{describe_daemon_task_definition} \tab Describes a daemon task definition\cr
 #'  \link[=ecs_describe_express_gateway_service]{describe_express_gateway_service} \tab Retrieves detailed information about an Express service, including current status, configuration, managed infrastructure, and service revisions\cr
 #'  \link[=ecs_describe_service_deployments]{describe_service_deployments} \tab Describes one or more of your service deployments\cr
 #'  \link[=ecs_describe_service_revisions]{describe_service_revisions} \tab Describes one or more service revisions\cr
@@ -142,6 +149,9 @@ NULL
 #'  \link[=ecs_list_attributes]{list_attributes} \tab Lists the attributes for Amazon ECS resources within a specified target type and cluster\cr
 #'  \link[=ecs_list_clusters]{list_clusters} \tab Returns a list of existing clusters\cr
 #'  \link[=ecs_list_container_instances]{list_container_instances} \tab Returns a list of container instances in a specified cluster\cr
+#'  \link[=ecs_list_daemon_deployments]{list_daemon_deployments} \tab Returns a list of daemon deployments for a specified daemon\cr
+#'  \link[=ecs_list_daemons]{list_daemons} \tab Returns a list of daemons\cr
+#'  \link[=ecs_list_daemon_task_definitions]{list_daemon_task_definitions} \tab Returns a list of daemon task definitions that are registered to your account\cr
 #'  \link[=ecs_list_service_deployments]{list_service_deployments} \tab This operation lists all the service deployments that meet the specified filter criteria\cr
 #'  \link[=ecs_list_services]{list_services} \tab Returns a list of services\cr
 #'  \link[=ecs_list_services_by_namespace]{list_services_by_namespace} \tab This operation lists all of the services that are associated with a Cloud Map namespace\cr
@@ -154,6 +164,7 @@ NULL
 #'  \link[=ecs_put_attributes]{put_attributes} \tab Create or update an attribute on an Amazon ECS resource\cr
 #'  \link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers} \tab Modifies the available capacity providers and the default capacity provider strategy for a cluster\cr
 #'  \link[=ecs_register_container_instance]{register_container_instance} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent\cr
+#'  \link[=ecs_register_daemon_task_definition]{register_daemon_task_definition} \tab Registers a new daemon task definition from the supplied family and containerDefinitions\cr
 #'  \link[=ecs_register_task_definition]{register_task_definition} \tab Registers a new task definition from the supplied family and containerDefinitions\cr
 #'  \link[=ecs_run_task]{run_task} \tab Starts a new task using the specified task definition\cr
 #'  \link[=ecs_start_task]{start_task} \tab Starts a new task from the specified task definition on the specified container instance or instances\cr
@@ -169,6 +180,7 @@ NULL
 #'  \link[=ecs_update_cluster_settings]{update_cluster_settings} \tab Modifies the settings to use for a cluster\cr
 #'  \link[=ecs_update_container_agent]{update_container_agent} \tab Updates the Amazon ECS container agent on a specified container instance\cr
 #'  \link[=ecs_update_container_instances_state]{update_container_instances_state} \tab Modifies the status of an Amazon ECS container instance\cr
+#'  \link[=ecs_update_daemon]{update_daemon} \tab Updates the specified daemon\cr
 #'  \link[=ecs_update_express_gateway_service]{update_express_gateway_service} \tab Updates an existing Express service configuration\cr
 #'  \link[=ecs_update_service]{update_service} \tab Modifies the parameters of a service\cr
 #'  \link[=ecs_update_service_primary_task_set]{update_service_primary_task_set} \tab Modifies which task set in a service is the primary task set\cr

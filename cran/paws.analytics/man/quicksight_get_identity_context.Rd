@@ -10,7 +10,8 @@ quicksight_get_identity_context(
   AwsAccountId,
   UserIdentifier,
   Namespace = NULL,
-  SessionExpiresAt = NULL
+  SessionExpiresAt = NULL,
+  ContextRegion = NULL
 )
 }
 \arguments{
@@ -25,6 +26,21 @@ This parameter is required when the UserIdentifier is specified using
 Email or UserName.}
 
 \item{SessionExpiresAt}{The timestamp at which the session will expire.}
+
+\item{ContextRegion}{The region in which the context is to be used. Use this parameter to
+obtain an identity context for cross-region use.
+
+The specified region must meet the following conditions:
+\itemize{
+\item The region must be in the same Amazon Web Services partition as the
+region you are calling from. Cross-partition requests are not
+supported. For example, you cannot specify a region in the \code{aws-cn}
+partition when calling from a region in the \code{aws} partition.
+\item It must be a valid Amazon QuickSight supported region.
+\item The calling customer account must be enabled in the specified
+context region.
+\item This parameter is not supported when calling from an opt-in region.
+}}
 }
 \description{
 Retrieves the identity context for a Quick Sight user in a specified namespace, allowing you to obtain identity tokens that can be used with identity-enhanced IAM role sessions to call identity-aware APIs.

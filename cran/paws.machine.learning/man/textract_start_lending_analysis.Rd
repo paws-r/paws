@@ -28,10 +28,6 @@ notification published to the Amazon SNS topic. For example, you can use
 \code{JobTag} to identify the type of document that the completion
 notification corresponds to (such as a tax form or a receipt).}
 
-\item{NotificationChannel}{}
-
-\item{OutputConfig}{}
-
 \item{KMSKeyId}{The KMS key used to encrypt the inference results. This can be in either
 Key ID or Key Alias format. When a KMS key is provided, the KMS key will
 be used for server-side encryption of the objects in the customer

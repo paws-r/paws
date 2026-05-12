@@ -4,12 +4,12 @@
 \alias{drs_start_recovery}
 \title{Launches Recovery Instances for the specified Source Servers}
 \usage{
-drs_start_recovery(isDrill = NULL, sourceServers, tags = NULL)
+drs_start_recovery(sourceServers, isDrill = NULL, tags = NULL)
 }
 \arguments{
-\item{isDrill}{Whether this Source Server Recovery operation is a drill or not.}
-
 \item{sourceServers}{[required] The Source Servers that we want to start a Recovery Job for.}
+
+\item{isDrill}{Whether this Source Server Recovery operation is a drill or not.}
 
 \item{tags}{The tags to be associated with the Recovery Job.}
 }

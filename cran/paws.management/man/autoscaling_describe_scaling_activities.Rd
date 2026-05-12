@@ -9,18 +9,23 @@ autoscaling_describe_scaling_activities(
   AutoScalingGroupName = NULL,
   IncludeDeletedGroups = NULL,
   MaxRecords = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  Filters = NULL
 )
 }
 \arguments{
-\item{ActivityIds}{The activity IDs of the desired scaling activities. If you omit this
-property, all activities for the past six weeks are described. If
-unknown activities are requested, they are ignored with no error. If you
-specify an Auto Scaling group, the results are limited to that group.
+\item{ActivityIds}{The activity IDs of the desired scaling activities. If unknown activity
+IDs are requested, they are ignored with no error. Only activities
+started within the last six weeks can be returned regardless of the
+activity IDs specified. If other filters are specified with the request,
+only results matching all filter criteria can be returned.
 
 Array Members: Maximum number of 50 IDs.}
 
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{The name of the Auto Scaling group.
+
+Omitting this property performs an account-wide operation, which can
+result in slower or timed-out requests.}
 
 \item{IncludeDeletedGroups}{Indicates whether to include scaling activity from deleted Auto Scaling
 groups.}
@@ -30,6 +35,34 @@ is \code{100} and the maximum value is \code{100}.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
+
+\item{Filters}{One or more filters to limit the results based on specific criteria. The
+following filters are supported:
+\itemize{
+\item \code{StartTimeLowerBound} - The earliest scaling activities to return
+based on the activity start time. Scaling activities with a start
+time earlier than this value are not included in the results. Only
+activities started within the last six weeks can be returned
+regardless of the value specified.
+\item \code{StartTimeUpperBound} - The latest scaling activities to return
+based on the activity start time. Scaling activities with a start
+time later than this value are not included in the results. Only
+activities started within the last six weeks can be returned
+regardless of the value specified.
+\item \code{Status} - The \code{StatusCode} value of the scaling activity. This
+filter can only be used in combination with the
+\code{AutoScalingGroupName} parameter. For valid \code{StatusCode} values, see
+\href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_Activity.html}{Activity}
+in the \emph{Amazon EC2 Auto Scaling API Reference}.
+}
+
+\code{StartTimeLowerBound} and \code{StartTimeUpperBound} accept ISO 8601
+formatted timestamps. Timestamps without a timezone offset are assumed
+to be UTC.
+\itemize{
+\item \verb{2000-01-18T08:15:00Z}
+\item \verb{2000-01-18T16:15:00+08:00}
+}}
 }
 \description{
 Gets information about the scaling activities in the account and Region.

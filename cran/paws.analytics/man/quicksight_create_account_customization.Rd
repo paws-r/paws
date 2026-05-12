@@ -29,7 +29,7 @@ Or, you can add a custom theme by specifying
 \item{Tags}{A list of the tags that you want to attach to this resource.}
 }
 \description{
-Creates Amazon Quick Sight customizations. Currently, you can add a custom default theme by using the \code{\link[=quicksight_create_account_customization]{create_account_customization}} or \code{\link[=quicksight_update_account_customization]{update_account_customization}} API operation. To further customize Amazon Quick Sight by removing Amazon Quick Sight sample assets and videos for all new users, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/customizations.html}{Customizing Quick Sight} in the \emph{Amazon Quick Sight User Guide.}
+Creates Amazon Quick Sight customizations. Currently, you can add a custom default theme by using the \code{\link[=quicksight_create_account_customization]{create_account_customization}} or \code{\link[=quicksight_update_account_customization]{update_account_customization}} API operation. To further customize Amazon Quick Sight by removing Amazon Quick Sight sample assets and videos for all new users, see \href{https://docs.aws.amazon.com/quick/latest/userguide/customizations.html}{Customizing Quick Sight} in the \emph{Amazon Quick Sight User Guide.}
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_create_account_customization/} for full documentation.
 }

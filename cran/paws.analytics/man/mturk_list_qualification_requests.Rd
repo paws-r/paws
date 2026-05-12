@@ -14,8 +14,6 @@ mturk_list_qualification_requests(
 \arguments{
 \item{QualificationTypeId}{The ID of the QualificationType.}
 
-\item{NextToken}{}
-
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \description{

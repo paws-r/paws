@@ -1125,6 +1125,11 @@ emr_delete_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       S3LoggingConfiguration = list(
+#'         LogTypeUploadPolicy = list(
+#'           "emr-managed"|"on-customer-s3only"|"disabled"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -4273,9 +4278,9 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'
 #' @usage
 #' emr_run_job_flow(Name, LogUri, LogEncryptionKmsKeyId, AdditionalInfo,
-#'   AmiVersion, ReleaseLabel, Instances, Steps, BootstrapActions,
-#'   SupportedProducts, NewSupportedProducts, Applications, Configurations,
-#'   VisibleToAllUsers, JobFlowRole, ServiceRole, Tags,
+#'   AmiVersion, ReleaseLabel, Instances, Steps, StepExecutionRoleArn,
+#'   BootstrapActions, SupportedProducts, NewSupportedProducts, Applications,
+#'   Configurations, VisibleToAllUsers, JobFlowRole, ServiceRole, Tags,
 #'   SecurityConfiguration, AutoScalingRole, ScaleDownBehavior, CustomAmiId,
 #'   EbsRootVolumeSize, RepoUpgradeOnBoot, KerberosAttributes,
 #'   StepConcurrencyLevel, ManagedScalingPolicy, PlacementGroupConfigs,
@@ -4302,6 +4307,18 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' versions use `AmiVersion`.
 #' @param Instances &#91;required&#93; A specification of the number and type of Amazon EC2 instances.
 #' @param Steps A list of steps to run.
+#' @param StepExecutionRoleArn The Amazon Resource Name (ARN) of the runtime role for steps specified
+#' in the RunJobFlow request. The runtime role can be a cross-account IAM
+#' role. The runtime role ARN is a combination of account ID, role name,
+#' and role type using the following format:
+#' `arn:partition:iam::account-id:role/role-name`.
+#' 
+#' For example, `arn:aws:iam::1234567890:role/ReadOnly` is a correctly
+#' formatted runtime role ARN.
+#' 
+#' This parameter applies only to steps included in the `Steps` parameter
+#' of this RunJobFlow request. It does not apply to steps added later to
+#' the cluster.
 #' @param BootstrapActions A list of bootstrap actions to run before Hadoop starts on the cluster
 #' nodes.
 #' @param SupportedProducts For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
@@ -4662,6 +4679,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'       )
 #'     )
 #'   ),
+#'   StepExecutionRoleArn = "string",
 #'   BootstrapActions = list(
 #'     list(
 #'       Name = "string",
@@ -4763,6 +4781,11 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     S3LoggingConfiguration = list(
+#'       LogTypeUploadPolicy = list(
+#'         "emr-managed"|"on-customer-s3only"|"disabled"
+#'       )
 #'     )
 #'   )
 #' )
@@ -4773,7 +4796,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' @rdname emr_run_job_flow
 #'
 #' @aliases emr_run_job_flow
-emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL, ManagedScalingPolicy = NULL, PlacementGroupConfigs = NULL, AutoTerminationPolicy = NULL, OSReleaseLabel = NULL, EbsRootVolumeIops = NULL, EbsRootVolumeThroughput = NULL, ExtendedSupport = NULL, MonitoringConfiguration = NULL) {
+emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, StepExecutionRoleArn = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL, ManagedScalingPolicy = NULL, PlacementGroupConfigs = NULL, AutoTerminationPolicy = NULL, OSReleaseLabel = NULL, EbsRootVolumeIops = NULL, EbsRootVolumeThroughput = NULL, ExtendedSupport = NULL, MonitoringConfiguration = NULL) {
   op <- new_operation(
     name = "RunJobFlow",
     http_method = "POST",
@@ -4782,7 +4805,7 @@ emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy, PlacementGroupConfigs = PlacementGroupConfigs, AutoTerminationPolicy = AutoTerminationPolicy, OSReleaseLabel = OSReleaseLabel, EbsRootVolumeIops = EbsRootVolumeIops, EbsRootVolumeThroughput = EbsRootVolumeThroughput, ExtendedSupport = ExtendedSupport, MonitoringConfiguration = MonitoringConfiguration)
+  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, StepExecutionRoleArn = StepExecutionRoleArn, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy, PlacementGroupConfigs = PlacementGroupConfigs, AutoTerminationPolicy = AutoTerminationPolicy, OSReleaseLabel = OSReleaseLabel, EbsRootVolumeIops = EbsRootVolumeIops, EbsRootVolumeThroughput = EbsRootVolumeThroughput, ExtendedSupport = ExtendedSupport, MonitoringConfiguration = MonitoringConfiguration)
   output <- .emr$run_job_flow_output()
   config <- get_config()
   svc <- .emr$service(config, op)

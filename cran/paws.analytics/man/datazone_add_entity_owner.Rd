@@ -5,24 +5,24 @@
 \title{Adds the owner of an entity (a domain unit)}
 \usage{
 datazone_add_entity_owner(
-  clientToken = NULL,
   domainIdentifier,
-  entityIdentifier,
   entityType,
-  owner
+  entityIdentifier,
+  owner,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
 \item{domainIdentifier}{[required] The ID of the domain in which you want to add the entity owner.}
-
-\item{entityIdentifier}{[required] The ID of the entity to which you want to add an owner.}
 
 \item{entityType}{[required] The type of an entity.}
 
+\item{entityIdentifier}{[required] The ID of the entity to which you want to add an owner.}
+
 \item{owner}{[required] The owner that you want to add to the entity.}
+
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Adds the owner of an entity (a domain unit).

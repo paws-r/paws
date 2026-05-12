@@ -6,6 +6,7 @@
 \usage{
 ec2_describe_instances(
   InstanceIds = NULL,
+  IncludeManagedResources = NULL,
   DryRun = NULL,
   Filters = NULL,
   NextToken = NULL,
@@ -16,6 +17,11 @@ ec2_describe_instances(
 \item{InstanceIds}{The instance IDs.
 
 Default: Describes all your instances.}
+
+\item{IncludeManagedResources}{Indicates whether to include managed resources in the output. If this
+parameter is set to \code{true}, the output includes resources that are
+managed by Amazon Web Services services, even if managed resource
+visibility is set to hidden.}
 
 \item{DryRun}{Checks whether you have the required permissions for the operation,
 without actually making the request, and provides an error response. If

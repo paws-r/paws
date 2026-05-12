@@ -202,15 +202,18 @@ in the \emph{AWS General Reference}.
 \link[=ivs_batch_get_channel]{batch_get_channel} \tab Performs GetChannel on multiple ARNs simultaneously\cr
 \link[=ivs_batch_get_stream_key]{batch_get_stream_key} \tab Performs GetStreamKey on multiple ARNs simultaneously\cr
 \link[=ivs_batch_start_viewer_session_revocation]{batch_start_viewer_session_revocation} \tab Performs StartViewerSessionRevocation on multiple channel ARN and viewer ID pairs simultaneously\cr
+\link[=ivs_create_ad_configuration]{create_ad_configuration} \tab Creates a new ad configuration to be used for server-side ad insertion\cr
 \link[=ivs_create_channel]{create_channel} \tab Creates a new channel and an associated stream key to start streaming\cr
 \link[=ivs_create_playback_restriction_policy]{create_playback_restriction_policy} \tab Creates a new playback restriction policy, for constraining playback by countries and/or origins\cr
 \link[=ivs_create_recording_configuration]{create_recording_configuration} \tab Creates a new recording configuration, used to enable recording to Amazon S3\cr
 \link[=ivs_create_stream_key]{create_stream_key} \tab Creates a stream key, used to initiate a stream, for the specified channel ARN\cr
+\link[=ivs_delete_ad_configuration]{delete_ad_configuration} \tab Deletes the specified ad configuration\cr
 \link[=ivs_delete_channel]{delete_channel} \tab Deletes the specified channel and its associated stream keys\cr
 \link[=ivs_delete_playback_key_pair]{delete_playback_key_pair} \tab Deletes a specified authorization key pair\cr
 \link[=ivs_delete_playback_restriction_policy]{delete_playback_restriction_policy} \tab Deletes the specified playback restriction policy\cr
 \link[=ivs_delete_recording_configuration]{delete_recording_configuration} \tab Deletes the recording configuration for the specified ARN\cr
 \link[=ivs_delete_stream_key]{delete_stream_key} \tab Deletes the stream key for the specified ARN, so it can no longer be used to stream\cr
+\link[=ivs_get_ad_configuration]{get_ad_configuration} \tab Gets the ad configuration represented by the specified ARN\cr
 \link[=ivs_get_channel]{get_channel} \tab Gets the channel configuration for the specified channel ARN\cr
 \link[=ivs_get_playback_key_pair]{get_playback_key_pair} \tab Gets a specified playback authorization key pair and returns the arn and fingerprint\cr
 \link[=ivs_get_playback_restriction_policy]{get_playback_restriction_policy} \tab Gets the specified playback restriction policy\cr
@@ -219,6 +222,8 @@ in the \emph{AWS General Reference}.
 \link[=ivs_get_stream_key]{get_stream_key} \tab Gets stream-key information for a specified ARN\cr
 \link[=ivs_get_stream_session]{get_stream_session} \tab Gets metadata on a specified stream\cr
 \link[=ivs_import_playback_key_pair]{import_playback_key_pair} \tab Imports the public portion of a new key pair and returns its arn and fingerprint\cr
+\link[=ivs_insert_ad_break]{insert_ad_break} \tab Inserts an ad marker in the playlist for the specified channel and duration using the ad configuration associated with the channel\cr
+\link[=ivs_list_ad_configurations]{list_ad_configurations} \tab Gets summary information about all ad configurations in your account, in the AWS region where the API request is processed\cr
 \link[=ivs_list_channels]{list_channels} \tab Gets summary information about all channels in your account, in the Amazon Web Services region where the API request is processed\cr
 \link[=ivs_list_playback_key_pairs]{list_playback_key_pairs} \tab Gets summary information about playback key pairs\cr
 \link[=ivs_list_playback_restriction_policies]{list_playback_restriction_policies} \tab Gets summary information about playback restriction policies\cr

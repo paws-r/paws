@@ -5,15 +5,15 @@
 \title{Deletes a token for the workspace service account}
 \usage{
 managedgrafana_delete_workspace_service_account_token(
-  serviceAccountId,
   tokenId,
+  serviceAccountId,
   workspaceId
 )
 }
 \arguments{
-\item{serviceAccountId}{[required] The ID of the service account from which to delete the token.}
-
 \item{tokenId}{[required] The ID of the token to delete.}
+
+\item{serviceAccountId}{[required] The ID of the service account from which to delete the token.}
 
 \item{workspaceId}{[required] The ID of the workspace from which to delete the token.}
 }

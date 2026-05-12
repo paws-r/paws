@@ -9,6 +9,7 @@ verifiedpermissions_create_policy_store(
   validationSettings,
   description = NULL,
   deletionProtection = NULL,
+  encryptionSettings = NULL,
   tags = NULL
 )
 }
@@ -50,6 +51,13 @@ current policy store.}
 policy store can't be deleted.
 
 The default state is \code{DISABLED}.}
+
+\item{encryptionSettings}{Specifies the encryption settings used to encrypt the policy store and
+their child resources. Allows for the ability to use a customer owned
+KMS key for encryption of data.
+
+This is an optional field to be used when providing a customer-managed
+KMS key for encryption.}
 
 \item{tags}{The list of key-value pairs to associate with the policy store.}
 }

@@ -9,7 +9,8 @@ opensearchservice_update_direct_query_data_source(
   DataSourceName,
   DataSourceType,
   Description = NULL,
-  OpenSearchArns
+  OpenSearchArns = NULL,
+  DataSourceAccessPolicy = NULL
 )
 }
 \arguments{
@@ -22,8 +23,14 @@ source for direct queries in OpenSearch Service.}
 \item{Description}{An optional text field for providing additional context and details
 about the data source.}
 
-\item{OpenSearchArns}{[required] A list of Amazon Resource Names (ARNs) for the OpenSearch collections
-that are associated with the direct query data source.}
+\item{OpenSearchArns}{An optional list of Amazon Resource Names (ARNs) for the OpenSearch
+collections that are associated with the direct query data source. This
+field is required for CloudWatchLogs and SecurityLake datasource types.}
+
+\item{DataSourceAccessPolicy}{An optional IAM access policy document that defines the updated
+permissions for accessing the direct query data source. The policy
+document must be in valid JSON format and follow IAM policy syntax. If
+not specified, the existing access policy if present remains unchanged.}
 }
 \description{
 Updates the configuration or properties of an existing direct query data source in Amazon OpenSearch Service.

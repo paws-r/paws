@@ -15,14 +15,6 @@ kinesisanalyticsv2_list_application_operations(
 }
 \arguments{
 \item{ApplicationName}{[required]}
-
-\item{Limit}{}
-
-\item{NextToken}{}
-
-\item{Operation}{}
-
-\item{OperationStatus}{}
 }
 \description{
 Lists all the operations performed for the specified application such as UpdateApplication, StartApplication etc. The response also includes a summary of the operation.

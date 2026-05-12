@@ -15,7 +15,17 @@ verifiedpermissions_batch_is_authorized_with_token(
 }
 \arguments{
 \item{policyStoreId}{[required] Specifies the ID of the policy store. Policies in this policy store will
-be used to make an authorization decision for the input.}
+be used to make an authorization decision for the input.
+
+To specify a policy store, use its ID or alias name. When using an alias
+name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use
+\code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
 
 \item{identityToken}{Specifies an identity (ID) token for the principal that you want to
 authorize in each request. This token is provided to you by the identity

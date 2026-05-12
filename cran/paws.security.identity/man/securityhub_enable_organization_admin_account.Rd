@@ -2,19 +2,20 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_enable_organization_admin_account}
 \alias{securityhub_enable_organization_admin_account}
-\title{Designates the Security Hub administrator account for an organization}
+\title{Designates the Security Hub CSPM administrator account for an
+organization}
 \usage{
 securityhub_enable_organization_admin_account(AdminAccountId, Feature = NULL)
 }
 \arguments{
 \item{AdminAccountId}{[required] The Amazon Web Services account identifier of the account to designate
-as the Security Hub administrator account.}
+as the Security Hub CSPM administrator account.}
 
 \item{Feature}{The feature for which the delegated admin account is enabled. Defaults
-to Security Hub if not specified.}
+to Security Hub CSPM if not specified.}
 }
 \description{
-Designates the Security Hub administrator account for an organization. Can only be called by the organization management account.
+Designates the Security Hub CSPM administrator account for an organization. Can only be called by the organization management account.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_enable_organization_admin_account/} for full documentation.
 }

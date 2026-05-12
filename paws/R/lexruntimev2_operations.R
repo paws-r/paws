@@ -927,7 +927,7 @@ lexruntimev2_recognize_utterance <- function(botId, botAliasId, localeId, sessio
 #'     C++](https://docs.aws.amazon.com/sdk-for-cpp/latest/api/crosslink_redirect.html?uid=runtime.lex.v2-2020-08-07&type=StartConversation)
 #' 
 #' -   [AWS SDK for Java
-#'     V2](https://sdk.amazonaws.com/java/api/latest/crosslink_redirect.html?uid=runtime.lex.v2-2020-08-07&type=StartConversation)
+#'     V2](https://docs.aws.amazon.com/java/api/latest/crosslink_redirect.html)
 #' 
 #' -   [AWS SDK for Ruby
 #'     V3](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/LexRuntimeV2/Client.html#start_conversation-instance_method)

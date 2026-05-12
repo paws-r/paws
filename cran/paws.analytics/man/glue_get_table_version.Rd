@@ -8,7 +8,8 @@ glue_get_table_version(
   CatalogId = NULL,
   DatabaseName,
   TableName,
-  VersionId = NULL
+  VersionId = NULL,
+  AuditContext = NULL
 )
 }
 \arguments{

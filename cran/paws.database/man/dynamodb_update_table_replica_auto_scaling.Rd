@@ -18,8 +18,6 @@ the replica to be updated.}
 \item{TableName}{[required] The name of the global table to be updated. You can also provide the
 Amazon Resource Name (ARN) of the table in this parameter.}
 
-\item{ProvisionedWriteCapacityAutoScalingUpdate}{}
-
 \item{ReplicaUpdates}{Represents the auto scaling settings of replicas of the table that will
 be modified.}
 }

@@ -361,9 +361,10 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @usage
 #' s3_complete_multipart_upload(Bucket, Key, MultipartUpload, UploadId,
 #'   ChecksumCRC32, ChecksumCRC32C, ChecksumCRC64NVME, ChecksumSHA1,
-#'   ChecksumSHA256, ChecksumType, MpuObjectSize, RequestPayer,
-#'   ExpectedBucketOwner, IfMatch, IfNoneMatch, SSECustomerAlgorithm,
-#'   SSECustomerKey, SSECustomerKeyMD5)
+#'   ChecksumSHA256, ChecksumSHA512, ChecksumMD5, ChecksumXXHASH64,
+#'   ChecksumXXHASH3, ChecksumXXHASH128, ChecksumType, MpuObjectSize,
+#'   RequestPayer, ExpectedBucketOwner, IfMatch, IfNoneMatch,
+#'   SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5)
 #'
 #' @param Bucket &#91;required&#93; Name of the bucket to which the multipart upload was initiated.
 #' 
@@ -436,6 +437,34 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
+#' @param ChecksumSHA512 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 512-bit `SHA512` digest of the object. For
+#' more information, see [Checking object integrity in the Amazon S3 User
+#' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
+#' @param ChecksumMD5 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 128-bit `MD5` digest of the object. For
+#' more information, see [Checking object integrity in the Amazon S3 User
+#' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
+#' @param ChecksumXXHASH64 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 64-bit `XXHASH64` checksum of the object.
+#' For more information, see [Checking object integrity in the Amazon S3
+#' User
+#' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
+#' @param ChecksumXXHASH3 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 64-bit `XXHASH3` checksum of the object.
+#' For more information, see [Checking object integrity in the Amazon S3
+#' User
+#' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
+#' @param ChecksumXXHASH128 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 128-bit `XXHASH128` checksum of the
+#' object. For more information, see [Checking object integrity in the
+#' Amazon S3 User
+#' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
 #' @param ChecksumType This header specifies the checksum type of the object, which determines
 #' how part-level checksums are combined to create an object-level checksum
 #' for multipart objects. You can use this header as a data integrity check
@@ -523,6 +552,11 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #'   ChecksumCRC64NVME = "string",
 #'   ChecksumSHA1 = "string",
 #'   ChecksumSHA256 = "string",
+#'   ChecksumSHA512 = "string",
+#'   ChecksumMD5 = "string",
+#'   ChecksumXXHASH64 = "string",
+#'   ChecksumXXHASH3 = "string",
+#'   ChecksumXXHASH128 = "string",
 #'   ChecksumType = "COMPOSITE"|"FULL_OBJECT",
 #'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'   VersionId = "string",
@@ -546,6 +580,11 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #'         ChecksumCRC64NVME = "string",
 #'         ChecksumSHA1 = "string",
 #'         ChecksumSHA256 = "string",
+#'         ChecksumSHA512 = "string",
+#'         ChecksumMD5 = "string",
+#'         ChecksumXXHASH64 = "string",
+#'         ChecksumXXHASH3 = "string",
+#'         ChecksumXXHASH128 = "string",
 #'         PartNumber = 123
 #'       )
 #'     )
@@ -556,6 +595,11 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #'   ChecksumCRC64NVME = "string",
 #'   ChecksumSHA1 = "string",
 #'   ChecksumSHA256 = "string",
+#'   ChecksumSHA512 = "string",
+#'   ChecksumMD5 = "string",
+#'   ChecksumXXHASH64 = "string",
+#'   ChecksumXXHASH3 = "string",
+#'   ChecksumXXHASH128 = "string",
 #'   ChecksumType = "COMPOSITE"|"FULL_OBJECT",
 #'   MpuObjectSize = 123,
 #'   RequestPayer = "requester",
@@ -595,7 +639,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @rdname s3_complete_multipart_upload
 #'
 #' @aliases s3_complete_multipart_upload
-s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, UploadId, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumCRC64NVME = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, ChecksumType = NULL, MpuObjectSize = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, IfMatch = NULL, IfNoneMatch = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
+s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, UploadId, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumCRC64NVME = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, ChecksumSHA512 = NULL, ChecksumMD5 = NULL, ChecksumXXHASH64 = NULL, ChecksumXXHASH3 = NULL, ChecksumXXHASH128 = NULL, ChecksumType = NULL, MpuObjectSize = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, IfMatch = NULL, IfNoneMatch = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
   op <- new_operation(
     name = "CompleteMultipartUpload",
     http_method = "POST",
@@ -604,7 +648,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$complete_multipart_upload_input(Bucket = Bucket, Key = Key, MultipartUpload = MultipartUpload, UploadId = UploadId, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumCRC64NVME = ChecksumCRC64NVME, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, ChecksumType = ChecksumType, MpuObjectSize = MpuObjectSize, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, IfMatch = IfMatch, IfNoneMatch = IfNoneMatch, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5)
+  input <- .s3$complete_multipart_upload_input(Bucket = Bucket, Key = Key, MultipartUpload = MultipartUpload, UploadId = UploadId, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumCRC64NVME = ChecksumCRC64NVME, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, ChecksumSHA512 = ChecksumSHA512, ChecksumMD5 = ChecksumMD5, ChecksumXXHASH64 = ChecksumXXHASH64, ChecksumXXHASH3 = ChecksumXXHASH3, ChecksumXXHASH128 = ChecksumXXHASH128, ChecksumType = ChecksumType, MpuObjectSize = MpuObjectSize, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, IfMatch = IfMatch, IfNoneMatch = IfNoneMatch, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5)
   output <- .s3$complete_multipart_upload_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -714,10 +758,12 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'     -   If the source object that you want to copy is in a directory
 #'         bucket, you must have the **`s3express:CreateSession`**
 #'         permission in the `Action` element of a policy to read the
-#'         object. By default, the session is in the `ReadWrite` mode. If
-#'         you want to restrict the access, you can explicitly set the
-#'         `s3express:SessionMode` condition key to `ReadOnly` on the copy
-#'         source bucket.
+#'         object. If no session mode is specified, the session will be
+#'         created with the maximum allowable privilege, attempting
+#'         `ReadWrite` first, then `ReadOnly` if `ReadWrite` is not
+#'         permitted. If you want to explicitly restrict the access to be
+#'         read-only, you can set the `s3express:SessionMode` condition key
+#'         to `ReadOnly` on the copy source bucket.
 #' 
 #'     -   If the copy destination is a directory bucket, you must have the
 #'         **`s3express:CreateSession`** permission in the `Action` element
@@ -1465,7 +1511,12 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'     ChecksumCRC32C = "string",
 #'     ChecksumCRC64NVME = "string",
 #'     ChecksumSHA1 = "string",
-#'     ChecksumSHA256 = "string"
+#'     ChecksumSHA256 = "string",
+#'     ChecksumSHA512 = "string",
+#'     ChecksumMD5 = "string",
+#'     ChecksumXXHASH64 = "string",
+#'     ChecksumXXHASH3 = "string",
+#'     ChecksumXXHASH128 = "string"
 #'   ),
 #'   Expiration = "string",
 #'   CopySourceVersionId = "string",
@@ -1486,7 +1537,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
 #'   Bucket = "string",
 #'   CacheControl = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ContentDisposition = "string",
 #'   ContentEncoding = "string",
 #'   ContentLanguage = "string",
@@ -1589,6 +1640,20 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #' configuring, and working with Amazon S3
 #' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' General purpose buckets exist in a global namespace, which means that
+#' each bucket name must be unique across all Amazon Web Services accounts
+#' in all the Amazon Web Services Regions within a partition. A partition
+#' is a grouping of Regions. Amazon Web Services currently has four
+#' partitions: `aws` (Standard Regions), `aws-cn` (China Regions),
+#' `aws-us-gov` (Amazon Web Services GovCloud (US)), and `aws-eusc`
+#' (European Sovereign Cloud). When you create a general purpose bucket,
+#' you can choose to create a bucket in the shared global namespace or you
+#' can choose to create a bucket in your account regional namespace. Your
+#' account regional namespace is a subdivision of the global namespace that
+#' only your account can create buckets in. For more information on account
+#' regional namespaces, see [Namespaces for general purpose
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/gpbucketnamespaces.html).
 #' 
 #' -   **General purpose buckets** - If you send your
 #'     [`create_bucket`][s3_create_bucket] request to the
@@ -1719,7 +1784,7 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #' @usage
 #' s3_create_bucket(ACL, Bucket, CreateBucketConfiguration,
 #'   GrantFullControl, GrantRead, GrantReadACP, GrantWrite, GrantWriteACP,
-#'   ObjectLockEnabledForBucket, ObjectOwnership)
+#'   ObjectLockEnabledForBucket, ObjectOwnership, BucketNamespace)
 #'
 #' @param ACL The canned ACL to apply to the bucket.
 #' 
@@ -1767,6 +1832,27 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #' 
 #' This functionality is not supported for directory buckets.
 #' @param ObjectOwnership 
+#' @param BucketNamespace Specifies the namespace where you want to create your general purpose
+#' bucket. When you create a general purpose bucket, you can choose to
+#' create a bucket in the shared global namespace or you can choose to
+#' create a bucket in your account regional namespace. Your account
+#' regional namespace is a subdivision of the global namespace that only
+#' your account can create buckets in. For more information on bucket
+#' namespaces, see [Namespaces for general purpose
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/gpbucketnamespaces.html).
+#' 
+#' General purpose buckets in your account regional namespace must follow a
+#' specific naming convention. These buckets consist of a bucket name
+#' prefix that you create, and a suffix that contains your 12-digit Amazon
+#' Web Services Account ID, the Amazon Web Services Region code, and ends
+#' with `-an`. Bucket names must follow the format
+#' `bucket-name-prefix-accountId-region-an` (for example,
+#' `amzn-s3-demo-bucket-111122223333-us-west-2-an`). For information about
+#' bucket naming restrictions, see [Account regional namespace naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html#account-regional-naming-rules)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1783,7 +1869,7 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #'   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read",
 #'   Bucket = "string",
 #'   CreateBucketConfiguration = list(
-#'     LocationConstraint = "af-south-1"|"ap-east-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ap-south-1"|"ap-south-2"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-southeast-4"|"ap-southeast-5"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"EU"|"eu-central-1"|"eu-central-2"|"eu-north-1"|"eu-south-1"|"eu-south-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"il-central-1"|"me-central-1"|"me-south-1"|"sa-east-1"|"us-east-2"|"us-gov-east-1"|"us-gov-west-1"|"us-west-1"|"us-west-2",
+#'     LocationConstraint = "af-south-1"|"ap-east-1"|"ap-east-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ap-south-1"|"ap-south-2"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-southeast-4"|"ap-southeast-5"|"ap-southeast-6"|"ap-southeast-7"|"ca-central-1"|"ca-west-1"|"cn-north-1"|"cn-northwest-1"|"EU"|"eu-central-1"|"eu-central-2"|"eu-north-1"|"eu-south-1"|"eu-south-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"il-central-1"|"me-central-1"|"me-south-1"|"mx-central-1"|"sa-east-1"|"us-east-2"|"us-gov-east-1"|"us-gov-west-1"|"us-west-1"|"us-west-2",
 #'     Location = list(
 #'       Type = "AvailabilityZone"|"LocalZone",
 #'       Name = "string"
@@ -1805,7 +1891,8 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #'   GrantWrite = "string",
 #'   GrantWriteACP = "string",
 #'   ObjectLockEnabledForBucket = TRUE|FALSE,
-#'   ObjectOwnership = "BucketOwnerPreferred"|"ObjectWriter"|"BucketOwnerEnforced"
+#'   ObjectOwnership = "BucketOwnerPreferred"|"ObjectWriter"|"BucketOwnerEnforced",
+#'   BucketNamespace = "account-regional"|"global"
 #' )
 #' ```
 #'
@@ -1831,7 +1918,7 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #' @rdname s3_create_bucket
 #'
 #' @aliases s3_create_bucket
-s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWrite = NULL, GrantWriteACP = NULL, ObjectLockEnabledForBucket = NULL, ObjectOwnership = NULL) {
+s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWrite = NULL, GrantWriteACP = NULL, ObjectLockEnabledForBucket = NULL, ObjectOwnership = NULL, BucketNamespace = NULL) {
   op <- new_operation(
     name = "CreateBucket",
     http_method = "PUT",
@@ -1840,7 +1927,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$create_bucket_input(ACL = ACL, Bucket = Bucket, CreateBucketConfiguration = CreateBucketConfiguration, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWrite = GrantWrite, GrantWriteACP = GrantWriteACP, ObjectLockEnabledForBucket = ObjectLockEnabledForBucket, ObjectOwnership = ObjectOwnership)
+  input <- .s3$create_bucket_input(ACL = ACL, Bucket = Bucket, CreateBucketConfiguration = CreateBucketConfiguration, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWrite = GrantWrite, GrantWriteACP = GrantWriteACP, ObjectLockEnabledForBucket = ObjectLockEnabledForBucket, ObjectOwnership = ObjectOwnership, BucketNamespace = BucketNamespace)
   output <- .s3$create_bucket_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -1939,7 +2026,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' svc$create_bucket_metadata_configuration(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   MetadataConfiguration = list(
 #'     JournalTableConfiguration = list(
 #'       RecordExpiration = list(
@@ -2071,7 +2158,7 @@ s3_create_bucket_metadata_configuration <- function(Bucket, ContentMD5 = NULL, C
 #' svc$create_bucket_metadata_table_configuration(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   MetadataTableConfiguration = list(
 #'     S3TablesDestination = list(
 #'       TableBucketArn = "string",
@@ -2876,7 +2963,7 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #'   SSEKMSEncryptionContext = "string",
 #'   BucketKeyEnabled = TRUE|FALSE,
 #'   RequestCharged = "requester",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ChecksumType = "COMPOSITE"|"FULL_OBJECT"
 #' )
 #' ```
@@ -2917,7 +3004,7 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #'   ),
 #'   ObjectLockLegalHoldStatus = "ON"|"OFF",
 #'   ExpectedBucketOwner = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ChecksumType = "COMPOSITE"|"FULL_OBJECT"
 #' )
 #' ```
@@ -3130,11 +3217,16 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #'   SSEKMSKeyId, SSEKMSEncryptionContext, BucketKeyEnabled)
 #'
 #' @param SessionMode Specifies the mode of the session that will be created, either
-#' `ReadWrite` or `ReadOnly`. By default, a `ReadWrite` session is created.
-#' A `ReadWrite` session is capable of executing all the Zonal endpoint API
-#' operations on a directory bucket. A `ReadOnly` session is constrained to
-#' execute the following Zonal endpoint API operations:
-#' [`get_object`][s3_get_object], [`head_object`][s3_head_object],
+#' `ReadWrite` or `ReadOnly`. If no session mode is specified, the default
+#' behavior attempts to create a session with the maximum allowable
+#' privilege. It will first attempt to create a `ReadWrite` session, and if
+#' that is not allowed by permissions, it will attempt to create a
+#' `ReadOnly` session. If neither session type is allowed, the request will
+#' return an Access Denied error. A `ReadWrite` session is capable of
+#' executing all the Zonal endpoint API operations on a directory bucket. A
+#' `ReadOnly` session is constrained to execute the following Zonal
+#' endpoint API operations: [`get_object`][s3_get_object],
+#' [`head_object`][s3_head_object],
 #' [`list_objects_v2`][s3_list_objects_v2],
 #' [`get_object_attributes`][s3_get_object_attributes],
 #' [`list_parts`][s3_list_parts], and
@@ -3748,13 +3840,27 @@ s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Expec
 }
 .s3$operations$delete_bucket_intelligent_tiering_configuration <- s3_delete_bucket_intelligent_tiering_configuration
 
-#' This operation is not supported for directory buckets
+#' Deletes an S3 Inventory configuration (identified by the inventory ID)
+#' from the bucket
 #'
 #' @description
-#' This operation is not supported for directory buckets.
-#' 
 #' Deletes an S3 Inventory configuration (identified by the inventory ID)
 #' from the bucket.
+#' 
+#' **Directory buckets** - For directory buckets, you must make requests
+#' for this API operation to the Regional endpoint. These endpoints support
+#' path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. For more information
+#' about endpoints in Availability Zones, see [Regional and Zonal endpoints
+#' for directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Concepts for directory buckets in Local
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' ### Permissions
 #' 
 #' To use this operation, you must have permissions to perform the
 #' `s3:PutInventoryConfiguration` action. The bucket owner has this
@@ -3765,8 +3871,33 @@ s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Expec
 #' and [Managing Access Permissions to Your Amazon S3
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
+#' -   **General purpose bucket permissions** - The
+#'     `s3:PutInventoryConfiguration` permission is required in a policy.
+#'     For more information about general purpose buckets permissions, see
+#'     [Using Bucket Policies and User
+#'     Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' -   **Directory bucket permissions** - To grant access to this API
+#'     operation, you must have the `s3express:PutInventoryConfiguration`
+#'     permission in an IAM identity-based policy instead of a bucket
+#'     policy. For more information about directory bucket policies and
+#'     permissions, see [Amazon Web Services Identity and Access Management
+#'     (IAM) for S3 Express One
+#'     Zone](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' `s3express-control.region-code.amazonaws.com`.
+#' 
 #' For information about the Amazon S3 inventory feature, see [Amazon S3
 #' Inventory](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html).
+#' 
+#' After deleting a configuration, Amazon S3 might still deliver one
+#' additional inventory report during a brief transition period while the
+#' system processes the deletion.
 #' 
 #' Operations related to
 #' [`delete_bucket_inventory_configuration`][s3_delete_bucket_inventory_configuration]
@@ -3787,10 +3918,26 @@ s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Expec
 #'   ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the inventory configuration to delete.
+#' 
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. Directory bucket names
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*
 #' @param Id &#91;required&#93; The ID used to identify the inventory configuration.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' For directory buckets, this header is not supported in this API
+#' operation. If you specify this header, the request fails with the HTTP
+#' status code `501 Not Implemented`.
 #'
 #' @return
 #' An empty list.
@@ -4137,14 +4284,28 @@ s3_delete_bucket_metadata_table_configuration <- function(Bucket, ExpectedBucket
 }
 .s3$operations$delete_bucket_metadata_table_configuration <- s3_delete_bucket_metadata_table_configuration
 
-#' This operation is not supported for directory buckets
+#' Deletes a metrics configuration for the Amazon CloudWatch request
+#' metrics (specified by the metrics configuration ID) from the bucket
 #'
 #' @description
-#' This operation is not supported for directory buckets.
-#' 
 #' Deletes a metrics configuration for the Amazon CloudWatch request
 #' metrics (specified by the metrics configuration ID) from the bucket.
 #' Note that this doesn't include the daily storage metrics.
+#' 
+#' **Directory buckets** - For directory buckets, you must make requests
+#' for this API operation to the Regional endpoint. These endpoints support
+#' path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. For more information
+#' about endpoints in Availability Zones, see [Regional and Zonal endpoints
+#' for directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Concepts for directory buckets in Local
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' ### Permissions
 #' 
 #' To use this operation, you must have permissions to perform the
 #' `s3:PutMetricsConfiguration` action. The bucket owner has this
@@ -4154,6 +4315,29 @@ s3_delete_bucket_metadata_table_configuration <- function(Bucket, ExpectedBucket
 #' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
+#' 
+#' -   **General purpose bucket permissions** - The
+#'     `s3:PutMetricsConfiguration` permission is required in a policy. For
+#'     more information about general purpose buckets permissions, see
+#'     [Using Bucket Policies and User
+#'     Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' -   **Directory bucket permissions** - To grant access to this API
+#'     operation, you must have the `s3express:PutMetricsConfiguration`
+#'     permission in an IAM identity-based policy instead of a bucket
+#'     policy. Cross-account access to this API operation isn't supported.
+#'     This operation can only be performed by the Amazon Web Services
+#'     account that owns the resource. For more information about directory
+#'     bucket policies and permissions, see [Amazon Web Services Identity
+#'     and Access Management (IAM) for S3 Express One
+#'     Zone](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' For information about CloudWatch request metrics for Amazon S3, see
 #' [Monitoring Metrics with Amazon
@@ -4179,12 +4363,28 @@ s3_delete_bucket_metadata_table_configuration <- function(Bucket, ExpectedBucket
 #' s3_delete_bucket_metrics_configuration(Bucket, Id, ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the metrics configuration to delete.
+#' 
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. Directory bucket names
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*
 #' @param Id &#91;required&#93; The ID used to identify the metrics configuration. The ID has a 64
 #' character limit and can only contain letters, numbers, periods, dashes,
 #' and underscores.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' For directory buckets, this header is not supported in this API
+#' operation. If you specify this header, the request fails with the HTTP
+#' status code `501 Not Implemented`.
 #'
 #' @return
 #' An empty list.
@@ -4526,13 +4726,6 @@ s3_delete_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Deletes tags from the general purpose bucket if attribute based access
 #' control (ABAC) is not enabled for the bucket. When you [enable ABAC for
 #' a general purpose
-#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html),
-#' you can no longer use this operation for that bucket and must use
-#' [UntagResource](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UntagResource.html)
-#' instead.
-#' 
-#' if ABAC is not enabled for the bucket. When you [enable ABAC for a
-#' general purpose
 #' bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html),
 #' you can no longer use this operation for that bucket and must use
 #' [UntagResource](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UntagResource.html)
@@ -5308,9 +5501,19 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' 
 #' -   `CRC64NVME`
 #' 
+#' -   `MD5`
+#' 
 #' -   `SHA1`
 #' 
 #' -   `SHA256`
+#' 
+#' -   `SHA512`
+#' 
+#' -   `XXHASH3`
+#' 
+#' -   `XXHASH64`
+#' 
+#' -   `XXHASH128`
 #' 
 #' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -5370,7 +5573,7 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #'   RequestPayer = "requester",
 #'   BypassGovernanceRetention = TRUE|FALSE,
 #'   ExpectedBucketOwner = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128"
 #' )
 #' ```
 #'
@@ -6284,22 +6487,57 @@ s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Expected
 }
 .s3$operations$get_bucket_intelligent_tiering_configuration <- s3_get_bucket_intelligent_tiering_configuration
 
-#' This operation is not supported for directory buckets
+#' Returns an S3 Inventory configuration (identified by the inventory
+#' configuration ID) from the bucket
 #'
 #' @description
-#' This operation is not supported for directory buckets.
-#' 
 #' Returns an S3 Inventory configuration (identified by the inventory
 #' configuration ID) from the bucket.
 #' 
+#' **Directory buckets** - For directory buckets, you must make requests
+#' for this API operation to the Regional endpoint. These endpoints support
+#' path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. For more information
+#' about endpoints in Availability Zones, see [Regional and Zonal endpoints
+#' for directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Concepts for directory buckets in Local
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' ### Permissions
+#' 
 #' To use this operation, you must have permissions to perform the
 #' `s3:GetInventoryConfiguration` action. The bucket owner has this
-#' permission by default and can grant this permission to others. For more
-#' information about permissions, see [Permissions Related to Bucket
-#' Subresource
+#' permission by default. The bucket owner can grant this permission to
+#' others. For more information about permissions, see [Permissions Related
+#' to Bucket Subresource
 #' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
+#' 
+#' -   **General purpose bucket permissions** - The
+#'     `s3:GetInventoryConfiguration` permission is required in a policy.
+#'     For more information about general purpose buckets permissions, see
+#'     [Using Bucket Policies and User
+#'     Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' -   **Directory bucket permissions** - To grant access to this API
+#'     operation, you must have the `s3express:GetInventoryConfiguration`
+#'     permission in an IAM identity-based policy instead of a bucket
+#'     policy. For more information about directory bucket policies and
+#'     permissions, see [Amazon Web Services Identity and Access Management
+#'     (IAM) for S3 Express One
+#'     Zone](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' For information about the Amazon S3 inventory feature, see [Amazon S3
 #' Inventory](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html).
@@ -6322,10 +6560,26 @@ s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Expected
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the inventory configuration to
 #' retrieve.
+#' 
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. Directory bucket names
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*
 #' @param Id &#91;required&#93; The ID used to identify the inventory configuration.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' For directory buckets, this header is not supported in this API
+#' operation. If you specify this header, the request fails with the HTTP
+#' status code `501 Not Implemented`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6811,7 +7065,7 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = 
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   LocationConstraint = "af-south-1"|"ap-east-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ap-south-1"|"ap-south-2"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-southeast-4"|"ap-southeast-5"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"EU"|"eu-central-1"|"eu-central-2"|"eu-north-1"|"eu-south-1"|"eu-south-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"il-central-1"|"me-central-1"|"me-south-1"|"sa-east-1"|"us-east-2"|"us-gov-east-1"|"us-gov-west-1"|"us-west-1"|"us-west-2"
+#'   LocationConstraint = "af-south-1"|"ap-east-1"|"ap-east-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ap-south-1"|"ap-south-2"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-southeast-4"|"ap-southeast-5"|"ap-southeast-6"|"ap-southeast-7"|"ca-central-1"|"ca-west-1"|"cn-north-1"|"cn-northwest-1"|"EU"|"eu-central-1"|"eu-central-2"|"eu-north-1"|"eu-south-1"|"eu-south-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"il-central-1"|"me-central-1"|"me-south-1"|"mx-central-1"|"sa-east-1"|"us-east-2"|"us-gov-east-1"|"us-gov-west-1"|"us-west-1"|"us-west-2"
 #' )
 #' ```
 #'
@@ -7182,14 +7436,28 @@ s3_get_bucket_metadata_table_configuration <- function(Bucket, ExpectedBucketOwn
 }
 .s3$operations$get_bucket_metadata_table_configuration <- s3_get_bucket_metadata_table_configuration
 
-#' This operation is not supported for directory buckets
+#' Gets a metrics configuration (specified by the metrics configuration ID)
+#' from the bucket
 #'
 #' @description
-#' This operation is not supported for directory buckets.
-#' 
 #' Gets a metrics configuration (specified by the metrics configuration ID)
 #' from the bucket. Note that this doesn't include the daily storage
 #' metrics.
+#' 
+#' **Directory buckets** - For directory buckets, you must make requests
+#' for this API operation to the Regional endpoint. These endpoints support
+#' path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. For more information
+#' about endpoints in Availability Zones, see [Regional and Zonal endpoints
+#' for directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Concepts for directory buckets in Local
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' ### Permissions
 #' 
 #' To use this operation, you must have permissions to perform the
 #' `s3:GetMetricsConfiguration` action. The bucket owner has this
@@ -7199,6 +7467,29 @@ s3_get_bucket_metadata_table_configuration <- function(Bucket, ExpectedBucketOwn
 #' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
+#' 
+#' -   **General purpose bucket permissions** - The
+#'     `s3:GetMetricsConfiguration` permission is required in a policy. For
+#'     more information about general purpose buckets permissions, see
+#'     [Using Bucket Policies and User
+#'     Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' -   **Directory bucket permissions** - To grant access to this API
+#'     operation, you must have the `s3express:GetMetricsConfiguration`
+#'     permission in an IAM identity-based policy instead of a bucket
+#'     policy. Cross-account access to this API operation isn't supported.
+#'     This operation can only be performed by the Amazon Web Services
+#'     account that owns the resource. For more information about directory
+#'     bucket policies and permissions, see [Amazon Web Services Identity
+#'     and Access Management (IAM) for S3 Express One
+#'     Zone](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' For information about CloudWatch request metrics for Amazon S3, see
 #' [Monitoring Metrics with Amazon
@@ -7224,12 +7515,28 @@ s3_get_bucket_metadata_table_configuration <- function(Bucket, ExpectedBucketOwn
 #' s3_get_bucket_metrics_configuration(Bucket, Id, ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the metrics configuration to retrieve.
+#' 
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. Directory bucket names
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*
 #' @param Id &#91;required&#93; The ID used to identify the metrics configuration. The ID has a 64
 #' character limit and can only contain letters, numbers, periods, dashes,
 #' and underscores.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' For directory buckets, this header is not supported in this API
+#' operation. If you specify this header, the request fails with the HTTP
+#' status code `501 Not Implemented`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8145,13 +8452,6 @@ s3_get_bucket_request_payment <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' Returns the tag set associated with the general purpose bucket.
 #' 
-#' if ABAC is not enabled for the bucket. When you [enable ABAC for a
-#' general purpose
-#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html),
-#' you can no longer use this operation for that bucket and must use
-#' [ListTagsForResource](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListTagsForResource.html)
-#' instead.
-#' 
 #' To use this operation, you must have permission to perform the
 #' `s3:GetBucketTagging` action. By default, the bucket owner has this
 #' permission and can grant this permission to others.
@@ -8833,6 +9133,11 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   ChecksumCRC64NVME = "string",
 #'   ChecksumSHA1 = "string",
 #'   ChecksumSHA256 = "string",
+#'   ChecksumSHA512 = "string",
+#'   ChecksumMD5 = "string",
+#'   ChecksumXXHASH64 = "string",
+#'   ChecksumXXHASH3 = "string",
+#'   ChecksumXXHASH128 = "string",
 #'   ChecksumType = "COMPOSITE"|"FULL_OBJECT",
 #'   MissingMeta = 123,
 #'   VersionId = "string",
@@ -9366,6 +9671,11 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #'     ChecksumCRC64NVME = "string",
 #'     ChecksumSHA1 = "string",
 #'     ChecksumSHA256 = "string",
+#'     ChecksumSHA512 = "string",
+#'     ChecksumMD5 = "string",
+#'     ChecksumXXHASH64 = "string",
+#'     ChecksumXXHASH3 = "string",
+#'     ChecksumXXHASH128 = "string",
 #'     ChecksumType = "COMPOSITE"|"FULL_OBJECT"
 #'   ),
 #'   ObjectParts = list(
@@ -9382,7 +9692,12 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #'         ChecksumCRC32C = "string",
 #'         ChecksumCRC64NVME = "string",
 #'         ChecksumSHA1 = "string",
-#'         ChecksumSHA256 = "string"
+#'         ChecksumSHA256 = "string",
+#'         ChecksumSHA512 = "string",
+#'         ChecksumMD5 = "string",
+#'         ChecksumXXHASH64 = "string",
+#'         ChecksumXXHASH3 = "string",
+#'         ChecksumXXHASH128 = "string"
 #'       )
 #'     )
 #'   ),
@@ -10086,8 +10401,10 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' -   **Directory bucket permissions** - You must have the
 #'     **`s3express:CreateSession`** permission in the `Action` element of
-#'     a policy. By default, the session is in the `ReadWrite` mode. If you
-#'     want to restrict the access, you can explicitly set the
+#'     a policy. If no session mode is specified, the session will be
+#'     created with the maximum allowable privilege, attempting `ReadWrite`
+#'     first, then `ReadOnly` if `ReadWrite` is not permitted. If you want
+#'     to explicitly restrict the access to be read-only, you can set the
 #'     `s3express:SessionMode` condition key to `ReadOnly` on the bucket.
 #' 
 #'     For more information about example bucket policies, see [Example
@@ -10547,6 +10864,11 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   ChecksumCRC64NVME = "string",
 #'   ChecksumSHA1 = "string",
 #'   ChecksumSHA256 = "string",
+#'   ChecksumSHA512 = "string",
+#'   ChecksumMD5 = "string",
+#'   ChecksumXXHASH64 = "string",
+#'   ChecksumXXHASH3 = "string",
+#'   ChecksumXXHASH128 = "string",
 #'   ChecksumType = "COMPOSITE"|"FULL_OBJECT",
 #'   ETag = "string",
 #'   MissingMeta = 123,
@@ -10903,11 +11225,9 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 }
 .s3$operations$list_bucket_intelligent_tiering_configurations <- s3_list_bucket_intelligent_tiering_configurations
 
-#' This operation is not supported for directory buckets
+#' Returns a list of S3 Inventory configurations for the bucket
 #'
 #' @description
-#' This operation is not supported for directory buckets.
-#' 
 #' Returns a list of S3 Inventory configurations for the bucket. You can
 #' have up to 1,000 inventory configurations per bucket.
 #' 
@@ -10920,6 +11240,21 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 #' by passing the value in continuation-token in the request to `GET` the
 #' next page.
 #' 
+#' **Directory buckets** - For directory buckets, you must make requests
+#' for this API operation to the Regional endpoint. These endpoints support
+#' path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. For more information
+#' about endpoints in Availability Zones, see [Regional and Zonal endpoints
+#' for directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Concepts for directory buckets in Local
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' ### Permissions
+#' 
 #' To use this operation, you must have permissions to perform the
 #' `s3:GetInventoryConfiguration` action. The bucket owner has this
 #' permission by default. The bucket owner can grant this permission to
@@ -10928,6 +11263,27 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 #' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
+#' 
+#' -   **General purpose bucket permissions** - The
+#'     `s3:GetInventoryConfiguration` permission is required in a policy.
+#'     For more information about general purpose buckets permissions, see
+#'     [Using Bucket Policies and User
+#'     Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' -   **Directory bucket permissions** - To grant access to this API
+#'     operation, you must have the `s3express:GetInventoryConfiguration`
+#'     permission in an IAM identity-based policy instead of a bucket
+#'     policy. For more information about directory bucket policies and
+#'     permissions, see [Amazon Web Services Identity and Access Management
+#'     (IAM) for S3 Express One
+#'     Zone](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' For information about the Amazon S3 inventory feature, see [Amazon S3
 #' Inventory](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html)
@@ -10951,6 +11307,18 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the inventory configurations to
 #' retrieve.
+#' 
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. Directory bucket names
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*
 #' @param ContinuationToken The marker used to continue an inventory configuration listing that has
 #' been truncated. Use the `NextContinuationToken` from a previously
 #' truncated list response to continue the listing. The continuation token
@@ -10958,6 +11326,10 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' For directory buckets, this header is not supported in this API
+#' operation. If you specify this header, the request fails with the HTTP
+#' status code `501 Not Implemented`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -11032,15 +11404,26 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 }
 .s3$operations$list_bucket_inventory_configurations <- s3_list_bucket_inventory_configurations
 
-#' This operation is not supported for directory buckets
+#' Lists the metrics configurations for the bucket
 #'
 #' @description
-#' This operation is not supported for directory buckets.
-#' 
 #' Lists the metrics configurations for the bucket. The metrics
 #' configurations are only for the request metrics of the bucket and do not
 #' provide information on daily storage metrics. You can have up to 1,000
 #' configurations per bucket.
+#' 
+#' **Directory buckets** - For directory buckets, you must make requests
+#' for this API operation to the Regional endpoint. These endpoints support
+#' path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. For more information
+#' about endpoints in Availability Zones, see [Regional and Zonal endpoints
+#' for directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Concepts for directory buckets in Local
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' This action supports list pagination and does not return more than 100
 #' configurations at a time. Always check the `IsTruncated` element in the
@@ -11051,6 +11434,8 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 #' by passing the value in `continuation-token` in the request to `GET` the
 #' next page.
 #' 
+#' ### Permissions
+#' 
 #' To use this operation, you must have permissions to perform the
 #' `s3:GetMetricsConfiguration` action. The bucket owner has this
 #' permission by default. The bucket owner can grant this permission to
@@ -11059,6 +11444,29 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 #' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
+#' 
+#' -   **General purpose bucket permissions** - The
+#'     `s3:GetMetricsConfiguration` permission is required in a policy. For
+#'     more information about general purpose buckets permissions, see
+#'     [Using Bucket Policies and User
+#'     Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' -   **Directory bucket permissions** - To grant access to this API
+#'     operation, you must have the `s3express:GetMetricsConfiguration`
+#'     permission in an IAM identity-based policy instead of a bucket
+#'     policy. Cross-account access to this API operation isn't supported.
+#'     This operation can only be performed by the Amazon Web Services
+#'     account that owns the resource. For more information about directory
+#'     bucket policies and permissions, see [Amazon Web Services Identity
+#'     and Access Management (IAM) for S3 Express One
+#'     Zone](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' For more information about metrics configurations and CloudWatch request
 #' metrics, see [Monitoring Metrics with Amazon
@@ -11083,6 +11491,18 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the metrics configurations to
 #' retrieve.
+#' 
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. Directory bucket names
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*
 #' @param ContinuationToken The marker that is used to continue a metrics configuration listing that
 #' has been truncated. Use the `NextContinuationToken` from a previously
 #' truncated list response to continue the listing. The continuation token
@@ -11090,6 +11510,10 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' For directory buckets, this header is not supported in this API
+#' operation. If you specify this header, the request fails with the HTTP
+#' status code `501 Not Implemented`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -11644,7 +12068,7 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #'         ID = "string",
 #'         DisplayName = "string"
 #'       ),
-#'       ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'       ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'       ChecksumType = "COMPOSITE"|"FULL_OBJECT"
 #'     )
 #'   ),
@@ -11798,7 +12222,7 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 #'     list(
 #'       ETag = "string",
 #'       ChecksumAlgorithm = list(
-#'         "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"
+#'         "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128"
 #'       ),
 #'       ChecksumType = "COMPOSITE"|"FULL_OBJECT",
 #'       Size = 123,
@@ -12015,7 +12439,7 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #'       ),
 #'       ETag = "string",
 #'       ChecksumAlgorithm = list(
-#'         "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"
+#'         "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128"
 #'       ),
 #'       ChecksumType = "COMPOSITE"|"FULL_OBJECT",
 #'       Size = 123,
@@ -12316,7 +12740,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #'       ),
 #'       ETag = "string",
 #'       ChecksumAlgorithm = list(
-#'         "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"
+#'         "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128"
 #'       ),
 #'       ChecksumType = "COMPOSITE"|"FULL_OBJECT",
 #'       Size = 123,
@@ -12599,7 +13023,12 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #'       ChecksumCRC32C = "string",
 #'       ChecksumCRC64NVME = "string",
 #'       ChecksumSHA1 = "string",
-#'       ChecksumSHA256 = "string"
+#'       ChecksumSHA256 = "string",
+#'       ChecksumSHA512 = "string",
+#'       ChecksumMD5 = "string",
+#'       ChecksumXXHASH64 = "string",
+#'       ChecksumXXHASH3 = "string",
+#'       ChecksumXXHASH128 = "string"
 #'     )
 #'   ),
 #'   Initiator = list(
@@ -12612,7 +13041,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #'   ),
 #'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
 #'   RequestCharged = "requester",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ChecksumType = "COMPOSITE"|"FULL_OBJECT"
 #' )
 #' ```
@@ -12718,7 +13147,7 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 #' svc$put_bucket_abac(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ExpectedBucketOwner = "string",
 #'   AbacStatus = list(
 #'     Status = "Enabled"|"Disabled"
@@ -12832,7 +13261,7 @@ s3_put_bucket_abac <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NU
 #'     Status = "Enabled"|"Suspended"
 #'   ),
 #'   ExpectedBucketOwner = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128"
 #' )
 #' ```
 #'
@@ -13103,7 +13532,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #'   ),
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   GrantFullControl = "string",
 #'   GrantRead = "string",
 #'   GrantReadACP = "string",
@@ -13419,7 +13848,7 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #'     )
 #'   ),
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ExpectedBucketOwner = "string"
 #' )
 #' ```
@@ -13694,7 +14123,7 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' svc$put_bucket_encryption(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ServerSideEncryptionConfiguration = list(
 #'     Rules = list(
 #'       list(
@@ -13881,11 +14310,10 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Expected
 }
 .s3$operations$put_bucket_intelligent_tiering_configuration <- s3_put_bucket_intelligent_tiering_configuration
 
-#' This operation is not supported for directory buckets
+#' This implementation of the PUT action adds an S3 Inventory configuration
+#' (identified by the inventory ID) to the bucket
 #'
 #' @description
-#' This operation is not supported for directory buckets.
-#' 
 #' This implementation of the `PUT` action adds an S3 Inventory
 #' configuration (identified by the inventory ID) to the bucket. You can
 #' have up to 1,000 inventory configurations per bucket.
@@ -13912,6 +14340,19 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Expected
 #' Inventory and Storage Class
 #' Analysis](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html#example-bucket-policies-use-case-9).
 #' 
+#' **Directory buckets** - For directory buckets, you must make requests
+#' for this API operation to the Regional endpoint. These endpoints support
+#' path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. For more information
+#' about endpoints in Availability Zones, see [Regional and Zonal endpoints
+#' for directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Concepts for directory buckets in Local
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
+#' in the *Amazon S3 User Guide*.
+#' 
 #' ### Permissions
 #' 
 #' To use this operation, you must have permission to perform the
@@ -13926,9 +14367,25 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Expected
 #' to objects in the destination bucket can also access all object metadata
 #' fields that are available in the inventory report.
 #' 
+#' -   **General purpose bucket permissions** - The
+#'     `s3:PutInventoryConfiguration` permission is required in a policy.
+#'     For more information about general purpose buckets permissions, see
+#'     [Using Bucket Policies and User
+#'     Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' -   **Directory bucket permissions** - To grant access to this API
+#'     operation, you must have the `s3express:PutInventoryConfiguration`
+#'     permission in an IAM identity-based policy instead of a bucket
+#'     policy. For more information about directory bucket policies and
+#'     permissions, see [Amazon Web Services Identity and Access Management
+#'     (IAM) for S3 Express One
+#'     Zone](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
 #' To restrict access to an inventory report, see [Restricting access to an
 #' Amazon S3 Inventory
-#' report](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html#example-bucket-policies-use-case-10)
+#' report](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html#example-bucket-policies-s3-inventory)
 #' in the *Amazon S3 User Guide*. For more information about the metadata
 #' fields available in S3 Inventory, see [Amazon S3 Inventory
 #' lists](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html#storage-inventory-contents)
@@ -13938,6 +14395,11 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Expected
 #' and [Identity and access management in Amazon
 #' S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' [`put_bucket_inventory_configuration`][s3_put_bucket_inventory_configuration]
 #' has the following special errors:
@@ -13979,11 +14441,27 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Expected
 #'   InventoryConfiguration, ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket where the inventory configuration will be stored.
+#' 
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. Directory bucket names
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*
 #' @param Id &#91;required&#93; The ID used to identify the inventory configuration.
 #' @param InventoryConfiguration &#91;required&#93; Specifies the inventory configuration.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' For directory buckets, this header is not supported in this API
+#' operation. If you specify this header, the request fails with the HTTP
+#' status code `501 Not Implemented`.
 #'
 #' @return
 #' An empty list.
@@ -14152,7 +14630,7 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 #' svc$put_bucket_lifecycle(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   LifecycleConfiguration = list(
 #'     Rules = list(
 #'       list(
@@ -14238,10 +14716,6 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' 
 #' ### Rules
 #' 
-#' ### Permissions
-#' 
-#' ### HTTP Host header syntax
-#' 
 #' You specify the lifecycle configuration in your request body. The
 #' lifecycle configuration is specified as XML consisting of one or more
 #' rules. An Amazon S3 Lifecycle configuration can have up to 1,000 rules.
@@ -14279,6 +14753,8 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' Management](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html)
 #' and [Lifecycle Configuration
 #' Elements](https://docs.aws.amazon.com/AmazonS3/latest/userguide/intro-lifecycle-rules.html).
+#' 
+#' ### Permissions
 #' 
 #' -   **General purpose bucket permissions** - By default, all Amazon S3
 #'     resources are private, including buckets, objects, and related
@@ -14330,6 +14806,8 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #'     in Local Zones, see [Concepts for directory buckets in Local
 #'     Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #'     in the *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
 #' `s3express-control.region.amazonaws.com`.
@@ -14400,7 +14878,7 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' ```
 #' svc$put_bucket_lifecycle_configuration(
 #'   Bucket = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   LifecycleConfiguration = list(
 #'     Rules = list(
 #'       list(
@@ -14666,7 +15144,7 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, ChecksumAlgorithm = NU
 #'     )
 #'   ),
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ExpectedBucketOwner = "string"
 #' )
 #' ```
@@ -14720,16 +15198,30 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 }
 .s3$operations$put_bucket_logging <- s3_put_bucket_logging
 
-#' This operation is not supported for directory buckets
+#' Sets a metrics configuration (specified by the metrics configuration ID)
+#' for the bucket
 #'
 #' @description
-#' This operation is not supported for directory buckets.
-#' 
 #' Sets a metrics configuration (specified by the metrics configuration ID)
 #' for the bucket. You can have up to 1,000 metrics configurations per
 #' bucket. If you're updating an existing metrics configuration, note that
 #' this is a full replacement of the existing metrics configuration. If you
 #' don't include the elements you want to keep, they are erased.
+#' 
+#' **Directory buckets** - For directory buckets, you must make requests
+#' for this API operation to the Regional endpoint. These endpoints support
+#' path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. For more information
+#' about endpoints in Availability Zones, see [Regional and Zonal endpoints
+#' for directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Concepts for directory buckets in Local
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' ### Permissions
 #' 
 #' To use this operation, you must have permissions to perform the
 #' `s3:PutMetricsConfiguration` action. The bucket owner has this
@@ -14739,6 +15231,29 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 #' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
+#' 
+#' -   **General purpose bucket permissions** - The
+#'     `s3:PutMetricsConfiguration` permission is required in a policy. For
+#'     more information about general purpose buckets permissions, see
+#'     [Using Bucket Policies and User
+#'     Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' -   **Directory bucket permissions** - To grant access to this API
+#'     operation, you must have the `s3express:PutMetricsConfiguration`
+#'     permission in an IAM identity-based policy instead of a bucket
+#'     policy. Cross-account access to this API operation isn't supported.
+#'     This operation can only be performed by the Amazon Web Services
+#'     account that owns the resource. For more information about directory
+#'     bucket policies and permissions, see [Amazon Web Services Identity
+#'     and Access Management (IAM) for S3 Express One
+#'     Zone](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' For information about CloudWatch request metrics for Amazon S3, see
 #' [Monitoring Metrics with Amazon
@@ -14772,6 +15287,18 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 #'   ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which the metrics configuration is set.
+#' 
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use path-style requests in the format
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. Directory bucket names
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*
 #' @param Id &#91;required&#93; The ID used to identify the metrics configuration. The ID has a 64
 #' character limit and can only contain letters, numbers, periods, dashes,
 #' and underscores.
@@ -14779,6 +15306,10 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' For directory buckets, this header is not supported in this API
+#' operation. If you specify this header, the request fails with the HTTP
+#' status code `501 Not Implemented`.
 #'
 #' @return
 #' An empty list.
@@ -14881,7 +15412,7 @@ s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration
 #' svc$put_bucket_notification(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   NotificationConfiguration = list(
 #'     TopicConfiguration = list(
 #'       Id = "string",
@@ -15148,7 +15679,7 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #' policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions).
 #' 
 #' For information about Amazon S3 Object Ownership, see [Using object
-#' ownership](https://docs.aws.amazon.com/AmazonS3/latest/userguide//about-object-ownership.html).
+#' ownership](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html).
 #' 
 #' The following operations are related to
 #' [`put_bucket_ownership_controls`][s3_put_bucket_ownership_controls]:
@@ -15205,7 +15736,7 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #'       )
 #'     )
 #'   ),
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128"
 #' )
 #' ```
 #'
@@ -15361,9 +15892,19 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' 
 #' -   `CRC64NVME`
 #' 
+#' -   `MD5`
+#' 
 #' -   `SHA1`
 #' 
 #' -   `SHA256`
+#' 
+#' -   `SHA512`
+#' 
+#' -   `XXHASH3`
+#' 
+#' -   `XXHASH64`
+#' 
+#' -   `XXHASH128`
 #' 
 #' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -15400,7 +15941,7 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' svc$put_bucket_policy(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ConfirmRemoveSelfBucketAccess = TRUE|FALSE,
 #'   Policy = "string",
 #'   ExpectedBucketOwner = "string"
@@ -15563,7 +16104,7 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #' svc$put_bucket_replication(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ReplicationConfiguration = list(
 #'     Role = "string",
 #'     Rules = list(
@@ -15738,7 +16279,7 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorit
 #' svc$put_bucket_request_payment(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   RequestPaymentConfiguration = list(
 #'     Payer = "Requester"|"BucketOwner"
 #'   ),
@@ -15886,7 +16427,7 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #' svc$put_bucket_tagging(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   Tagging = list(
 #'     TagSet = list(
 #'       list(
@@ -16047,7 +16588,7 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' svc$put_bucket_versioning(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   MFA = "string",
 #'   VersioningConfiguration = list(
 #'     MFADelete = "Enabled"|"Disabled",
@@ -16212,7 +16753,7 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' svc$put_bucket_website(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   WebsiteConfiguration = list(
 #'     ErrorDocument = list(
 #'       Key = "string"
@@ -16427,6 +16968,20 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' **Directory buckets** - The HTTP Host header syntax is
 #' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
+#' ### Errors
+#' 
+#' -   You might receive an `InvalidRequest` error for several reasons.
+#'     Depending on the reason for the error, you might receive one of the
+#'     following messages:
+#' 
+#'     -   Cannot specify both a write offset value and user-defined object
+#'         metadata for existing objects.
+#' 
+#'     -   Checksum Type mismatch occurred, expected checksum Type: sha1,
+#'         actual checksum Type: crc32c.
+#' 
+#'     -   Request body cannot be empty when 'write offset' is specified.
+#' 
 #' For more information about related Amazon S3 APIs, see the following:
 #' 
 #' -   [`copy_object`][s3_copy_object]
@@ -16441,13 +16996,14 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' s3_put_object(ACL, Body, Bucket, CacheControl, ContentDisposition,
 #'   ContentEncoding, ContentLanguage, ContentLength, ContentMD5,
 #'   ContentType, ChecksumAlgorithm, ChecksumCRC32, ChecksumCRC32C,
-#'   ChecksumCRC64NVME, ChecksumSHA1, ChecksumSHA256, Expires, IfMatch,
-#'   IfNoneMatch, GrantFullControl, GrantRead, GrantReadACP, GrantWriteACP,
-#'   Key, WriteOffsetBytes, Metadata, ServerSideEncryption, StorageClass,
-#'   WebsiteRedirectLocation, SSECustomerAlgorithm, SSECustomerKey,
-#'   SSECustomerKeyMD5, SSEKMSKeyId, SSEKMSEncryptionContext,
-#'   BucketKeyEnabled, RequestPayer, Tagging, ObjectLockMode,
-#'   ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus,
+#'   ChecksumCRC64NVME, ChecksumSHA1, ChecksumSHA256, ChecksumSHA512,
+#'   ChecksumMD5, ChecksumXXHASH64, ChecksumXXHASH3, ChecksumXXHASH128,
+#'   Expires, IfMatch, IfNoneMatch, GrantFullControl, GrantRead,
+#'   GrantReadACP, GrantWriteACP, Key, WriteOffsetBytes, Metadata,
+#'   ServerSideEncryption, StorageClass, WebsiteRedirectLocation,
+#'   SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5, SSEKMSKeyId,
+#'   SSEKMSEncryptionContext, BucketKeyEnabled, RequestPayer, Tagging,
+#'   ObjectLockMode, ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus,
 #'   ExpectedBucketOwner)
 #'
 #' @param ACL The canned ACL to apply to the object. For more information, see [Canned
@@ -16568,9 +17124,19 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' 
 #' -   `CRC64NVME`
 #' 
+#' -   `MD5`
+#' 
 #' -   `SHA1`
 #' 
 #' -   `SHA256`
+#' 
+#' -   `SHA512`
+#' 
+#' -   `XXHASH3`
+#' 
+#' -   `XXHASH64`
+#' 
+#' -   `XXHASH128`
 #' 
 #' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -16620,6 +17186,34 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
+#' @param ChecksumSHA512 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 512-bit `SHA512` digest of the object. For
+#' more information, see [Checking object integrity in the Amazon S3 User
+#' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
+#' @param ChecksumMD5 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 128-bit `MD5` digest of the object. For
+#' more information, see [Checking object integrity in the Amazon S3 User
+#' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
+#' @param ChecksumXXHASH64 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 64-bit `XXHASH64` checksum of the object.
+#' For more information, see [Checking object integrity in the Amazon S3
+#' User
+#' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
+#' @param ChecksumXXHASH3 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 64-bit `XXHASH3` checksum of the object.
+#' For more information, see [Checking object integrity in the Amazon S3
+#' User
+#' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
+#' @param ChecksumXXHASH128 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 128-bit `XXHASH128` checksum of the
+#' object. For more information, see [Checking object integrity in the
+#' Amazon S3 User
+#' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
 #' @param Expires The date and time at which the object is no longer cacheable. For more
 #' information, see <https://www.rfc-editor.org/rfc/rfc7234#section-5.3>.
 #' @param IfMatch Uploads the object only if the ETag (entity tag) value provided during
@@ -16901,6 +17495,11 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   ChecksumCRC64NVME = "string",
 #'   ChecksumSHA1 = "string",
 #'   ChecksumSHA256 = "string",
+#'   ChecksumSHA512 = "string",
+#'   ChecksumMD5 = "string",
+#'   ChecksumXXHASH64 = "string",
+#'   ChecksumXXHASH3 = "string",
+#'   ChecksumXXHASH128 = "string",
 #'   ChecksumType = "COMPOSITE"|"FULL_OBJECT",
 #'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'   VersionId = "string",
@@ -16927,12 +17526,17 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   ContentLength = 123,
 #'   ContentMD5 = "string",
 #'   ContentType = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ChecksumCRC32 = "string",
 #'   ChecksumCRC32C = "string",
 #'   ChecksumCRC64NVME = "string",
 #'   ChecksumSHA1 = "string",
 #'   ChecksumSHA256 = "string",
+#'   ChecksumSHA512 = "string",
+#'   ChecksumMD5 = "string",
+#'   ChecksumXXHASH64 = "string",
+#'   ChecksumXXHASH3 = "string",
+#'   ChecksumXXHASH128 = "string",
 #'   Expires = "string",
 #'   IfMatch = "string",
 #'   IfNoneMatch = "string",
@@ -17047,7 +17651,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @rdname s3_put_object
 #'
 #' @aliases s3_put_object
-s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentMD5 = NULL, ContentType = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumCRC64NVME = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, Expires = NULL, IfMatch = NULL, IfNoneMatch = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, WriteOffsetBytes = NULL, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL) {
+s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentMD5 = NULL, ContentType = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumCRC64NVME = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, ChecksumSHA512 = NULL, ChecksumMD5 = NULL, ChecksumXXHASH64 = NULL, ChecksumXXHASH3 = NULL, ChecksumXXHASH128 = NULL, Expires = NULL, IfMatch = NULL, IfNoneMatch = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, WriteOffsetBytes = NULL, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutObject",
     http_method = "PUT",
@@ -17056,7 +17660,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$put_object_input(ACL = ACL, Body = Body, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentMD5 = ContentMD5, ContentType = ContentType, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumCRC64NVME = ChecksumCRC64NVME, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, Expires = Expires, IfMatch = IfMatch, IfNoneMatch = IfNoneMatch, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, WriteOffsetBytes = WriteOffsetBytes, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$put_object_input(ACL = ACL, Body = Body, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentMD5 = ContentMD5, ContentType = ContentType, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumCRC64NVME = ChecksumCRC64NVME, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, ChecksumSHA512 = ChecksumSHA512, ChecksumMD5 = ChecksumMD5, ChecksumXXHASH64 = ChecksumXXHASH64, ChecksumXXHASH3 = ChecksumXXHASH3, ChecksumXXHASH128 = ChecksumXXHASH128, Expires = Expires, IfMatch = IfMatch, IfNoneMatch = IfNoneMatch, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, WriteOffsetBytes = WriteOffsetBytes, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$put_object_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -17355,7 +17959,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #'   ),
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   GrantFullControl = "string",
 #'   GrantRead = "string",
 #'   GrantReadACP = "string",
@@ -17490,7 +18094,7 @@ s3_put_object_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #'   RequestPayer = "requester",
 #'   VersionId = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ExpectedBucketOwner = "string"
 #' )
 #' ```
@@ -17599,7 +18203,7 @@ s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer
 #'   RequestPayer = "requester",
 #'   Token = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ExpectedBucketOwner = "string"
 #' )
 #' ```
@@ -17719,7 +18323,7 @@ s3_put_object_lock_configuration <- function(Bucket, ObjectLockConfiguration = N
 #'   VersionId = "string",
 #'   BypassGovernanceRetention = TRUE|FALSE,
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ExpectedBucketOwner = "string"
 #' )
 #' ```
@@ -17873,7 +18477,7 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #'   Key = "string",
 #'   VersionId = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   Tagging = list(
 #'     TagSet = list(
 #'       list(
@@ -18013,7 +18617,7 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' svc$put_public_access_block(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   PublicAccessBlockConfiguration = list(
 #'     BlockPublicAcls = TRUE|FALSE,
 #'     IgnorePublicAcls = TRUE|FALSE,
@@ -18541,7 +19145,7 @@ s3_rename_object <- function(Bucket, Key, RenameSource, DestinationIfMatch = NUL
 #'     )
 #'   ),
 #'   RequestPayer = "requester",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ExpectedBucketOwner = "string"
 #' )
 #' ```
@@ -18930,7 +19534,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' svc$update_bucket_metadata_inventory_table_configuration(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   InventoryTableConfiguration = list(
 #'     ConfigurationState = "ENABLED"|"DISABLED",
 #'     EncryptionConfiguration = list(
@@ -19022,7 +19626,7 @@ s3_update_bucket_metadata_inventory_table_configuration <- function(Bucket, Cont
 #' svc$update_bucket_metadata_journal_table_configuration(
 #'   Bucket = "string",
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   JournalTableConfiguration = list(
 #'     RecordExpiration = list(
 #'       Expiration = "ENABLED"|"DISABLED",
@@ -19056,6 +19660,254 @@ s3_update_bucket_metadata_journal_table_configuration <- function(Bucket, Conten
   return(response)
 }
 .s3$operations$update_bucket_metadata_journal_table_configuration <- s3_update_bucket_metadata_journal_table_configuration
+
+#' This operation is not supported for directory buckets or Amazon S3 on
+#' Outposts buckets
+#'
+#' @description
+#' This operation is not supported for directory buckets or Amazon S3 on
+#' Outposts buckets.
+#' 
+#' Updates the server-side encryption type of an existing encrypted object
+#' in a general purpose bucket. You can use the
+#' [`update_object_encryption`][s3_update_object_encryption] operation to
+#' change encrypted objects from server-side encryption with Amazon S3
+#' managed keys (SSE-S3) to server-side encryption with Key Management
+#' Service (KMS) keys (SSE-KMS), or to apply S3 Bucket Keys. You can also
+#' use the [`update_object_encryption`][s3_update_object_encryption]
+#' operation to change the customer-managed KMS key used to encrypt your
+#' data so that you can comply with custom key-rotation standards.
+#' 
+#' Using the [`update_object_encryption`][s3_update_object_encryption]
+#' operation, you can atomically update the server-side encryption type of
+#' an existing object in a general purpose bucket without any data
+#' movement. The [`update_object_encryption`][s3_update_object_encryption]
+#' operation uses envelope encryption to re-encrypt the data key used to
+#' encrypt and decrypt your object with your newly specified server-side
+#' encryption type. In other words, when you use the
+#' [`update_object_encryption`][s3_update_object_encryption] operation,
+#' your data isn't copied, archived objects in the S3 Glacier Flexible
+#' Retrieval and S3 Glacier Deep Archive storage classes aren't restored,
+#' and objects in the S3 Intelligent-Tiering storage class aren't moved
+#' between tiers. Additionally, the
+#' [`update_object_encryption`][s3_update_object_encryption] operation
+#' preserves all object metadata properties, including the storage class,
+#' creation date, last modified date, ETag, and checksum properties. For
+#' more information, see [Updating server-side encryption for existing
+#' objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/update-sse-encryption.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' By default, all
+#' [`update_object_encryption`][s3_update_object_encryption] requests that
+#' specify a customer-managed KMS key are restricted to KMS keys that are
+#' owned by the bucket owner's Amazon Web Services account. If you're using
+#' Organizations, you can request the ability to use KMS keys owned by
+#' other member accounts within your organization by contacting Amazon Web
+#' Services Support.
+#' 
+#' Source objects that are unencrypted, or encrypted with either dual-layer
+#' server-side encryption with KMS keys (DSSE-KMS) or server-side
+#' encryption with customer-provided keys (SSE-C) aren't supported by this
+#' operation. Additionally, you cannot specify SSE-S3 encryption as the
+#' requested new encryption type
+#' [`update_object_encryption`][s3_update_object_encryption] request.
+#' 
+#' ### Permissions
+#' 
+#' -   To use the [`update_object_encryption`][s3_update_object_encryption]
+#'     operation, you must have the following permissions:
+#' 
+#'     -   `s3:PutObject`
+#' 
+#'     -   `s3:UpdateObjectEncryption`
+#' 
+#'     -   `kms:Encrypt`
+#' 
+#'     -   `kms:Decrypt`
+#' 
+#'     -   `kms:GenerateDataKey`
+#' 
+#'     -   `kms:ReEncrypt*`
+#' 
+#' -   If you're using Organizations, to use this operation with
+#'     customer-managed KMS keys from other Amazon Web Services accounts
+#'     within your organization, you must have the
+#'     `organizations:DescribeAccount` permission.
+#' 
+#' ### Errors
+#' 
+#' -   You might receive an `InvalidRequest` error for several reasons.
+#'     Depending on the reason for the error, you might receive one of the
+#'     following messages:
+#' 
+#'     -   The [`update_object_encryption`][s3_update_object_encryption]
+#'         operation doesn't supported unencrypted source objects. Only
+#'         source objects encrypted with SSE-S3 or SSE-KMS are supported.
+#' 
+#'     -   The [`update_object_encryption`][s3_update_object_encryption]
+#'         operation doesn't support source objects with the encryption
+#'         type DSSE-KMS or SSE-C. Only source objects encrypted with
+#'         SSE-S3 or SSE-KMS are supported.
+#' 
+#'     -   The [`update_object_encryption`][s3_update_object_encryption]
+#'         operation doesn't support updating the encryption type to
+#'         DSSE-KMS or SSE-C. Modify the request to specify SSE-KMS for the
+#'         updated encryption type, and then try again.
+#' 
+#'     -   Requests that modify an object encryption configuration require
+#'         Amazon Web Services Signature Version 4. Modify the request to
+#'         use Amazon Web Services Signature Version 4, and then try again.
+#' 
+#'     -   Requests that modify an object encryption configuration require
+#'         a valid new encryption type. Valid values are `SSEKMS`. Modify
+#'         the request to specify SSE-KMS for the updated encryption type,
+#'         and then try again.
+#' 
+#'     -   Requests that modify an object's encryption type to SSE-KMS
+#'         require an Amazon Web Services KMS key Amazon Resource Name
+#'         (ARN). Modify the request to specify a KMS key ARN, and then try
+#'         again.
+#' 
+#'     -   Requests that modify an object's encryption type to SSE-KMS
+#'         require a valid Amazon Web Services KMS key Amazon Resource Name
+#'         (ARN). Confirm that you have a correctly formatted KMS key ARN
+#'         in your request, and then try again.
+#' 
+#'     -   The `BucketKeyEnabled` value isn't valid. Valid values are
+#'         `true` or `false`. Modify the request to specify a valid value,
+#'         and then try again.
+#' 
+#' -   You might receive an `AccessDenied` error for several reasons.
+#'     Depending on the reason for the error, you might receive one of the
+#'     following messages:
+#' 
+#'     -   The Amazon Web Services KMS key in the request must be owned by
+#'         the same account as the bucket. Modify the request to specify a
+#'         KMS key from the same account, and then try again.
+#' 
+#'     -   The bucket owner's account was approved to make
+#'         [`update_object_encryption`][s3_update_object_encryption]
+#'         requests that use any Amazon Web Services KMS key in their
+#'         organization, but the bucket owner's account isn't part of an
+#'         organization in Organizations. Make sure that the bucket owner's
+#'         account and the specified KMS key belong to the same
+#'         organization, and then try again.
+#' 
+#'     -   The specified Amazon Web Services KMS key must be from the same
+#'         organization in Organizations as the bucket. Specify a KMS key
+#'         that belongs to the same organization as the bucket, and then
+#'         try again.
+#' 
+#'     -   The encryption type for the specified object can’t be updated
+#'         because that object is protected by S3 Object Lock. If the
+#'         object has a governance-mode retention period or a legal hold,
+#'         you must first remove the Object Lock status on the object
+#'         before you issue your
+#'         [`update_object_encryption`][s3_update_object_encryption]
+#'         request. You can't use the
+#'         [`update_object_encryption`][s3_update_object_encryption]
+#'         operation with objects that have an Object Lock compliance mode
+#'         retention period applied to them.
+#'
+#' @usage
+#' s3_update_object_encryption(Bucket, Key, VersionId, ObjectEncryption,
+#'   RequestPayer, ExpectedBucketOwner, ContentMD5, ChecksumAlgorithm)
+#'
+#' @param Bucket &#91;required&#93; The name of the general purpose bucket that contains the specified
+#' object key name.
+#' 
+#' When you use this operation with an access point attached to a general
+#' purpose bucket, you must either provide the alias of the access point in
+#' place of the bucket name or you must specify the access point Amazon
+#' Resource Name (ARN). When using the access point ARN, you must direct
+#' requests to the access point hostname. The access point hostname takes
+#' the form
+#' ` AccessPointName-AccountId.s3-accesspoint.Region.amazonaws.com`. When
+#' using this operation with an access point through the Amazon Web
+#' Services SDKs, you provide the access point ARN in place of the bucket
+#' name. For more information about access point ARNs, see [Referencing
+#' access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-naming.html)
+#' in the *Amazon S3 User Guide*.
+#' @param Key &#91;required&#93; The key name of the object that you want to update the server-side
+#' encryption type for.
+#' @param VersionId The version ID of the object that you want to update the server-side
+#' encryption type for.
+#' @param ObjectEncryption &#91;required&#93; The updated server-side encryption type for this object. The
+#' [`update_object_encryption`][s3_update_object_encryption] operation
+#' supports the SSE-S3 and SSE-KMS encryption types.
+#' 
+#' Valid Values: `SSES3` | `SSEKMS`
+#' @param RequestPayer 
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide doesn't match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
+#' @param ContentMD5 The MD5 hash for the request body. For requests made using the Amazon
+#' Web Services Command Line Interface (CLI) or Amazon Web Services SDKs,
+#' this field is calculated automatically.
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' you use an Amazon Web Services SDK. This header doesn't provide any
+#' additional functionality if you don't use the SDK. When you send this
+#' header, there must be a corresponding `x-amz-checksum` or
+#' `x-amz-trailer` header sent. Otherwise, Amazon S3 fails the request with
+#' the HTTP status code `400 Bad Request`. For more information, see
+#' [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' If you provide an individual checksum, Amazon S3 ignores any provided
+#' `ChecksumAlgorithm` parameter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RequestCharged = "requester"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_object_encryption(
+#'   Bucket = "string",
+#'   Key = "string",
+#'   VersionId = "string",
+#'   ObjectEncryption = list(
+#'     SSEKMS = list(
+#'       KMSKeyArn = "string",
+#'       BucketKeyEnabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   RequestPayer = "requester",
+#'   ExpectedBucketOwner = "string",
+#'   ContentMD5 = "string",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_update_object_encryption
+#'
+#' @aliases s3_update_object_encryption
+s3_update_object_encryption <- function(Bucket, Key, VersionId = NULL, ObjectEncryption, RequestPayer = NULL, ExpectedBucketOwner = NULL, ContentMD5 = NULL, ChecksumAlgorithm = NULL) {
+  op <- new_operation(
+    name = "UpdateObjectEncryption",
+    http_method = "PUT",
+    http_path = "/{Bucket}/{Key+}?encryption",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$update_object_encryption_input(Bucket = Bucket, Key = Key, VersionId = VersionId, ObjectEncryption = ObjectEncryption, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm)
+  output <- .s3$update_object_encryption_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$update_object_encryption <- s3_update_object_encryption
 
 #' Uploads a part in a multipart upload
 #'
@@ -19256,9 +20108,10 @@ s3_update_bucket_metadata_journal_table_configuration <- function(Bucket, Conten
 #' @usage
 #' s3_upload_part(Body, Bucket, ContentLength, ContentMD5,
 #'   ChecksumAlgorithm, ChecksumCRC32, ChecksumCRC32C, ChecksumCRC64NVME,
-#'   ChecksumSHA1, ChecksumSHA256, Key, PartNumber, UploadId,
-#'   SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5, RequestPayer,
-#'   ExpectedBucketOwner)
+#'   ChecksumSHA1, ChecksumSHA256, ChecksumSHA512, ChecksumMD5,
+#'   ChecksumXXHASH64, ChecksumXXHASH3, ChecksumXXHASH128, Key, PartNumber,
+#'   UploadId, SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5,
+#'   RequestPayer, ExpectedBucketOwner)
 #'
 #' @param Body Object data.
 #' @param Bucket &#91;required&#93; The name of the bucket to which the multipart upload was initiated.
@@ -19351,6 +20204,36 @@ s3_update_bucket_metadata_journal_table_configuration <- function(Bucket, Conten
 #' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
+#' @param ChecksumSHA512 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 512-bit `SHA512` digest of the part. For
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' @param ChecksumMD5 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 128-bit `MD5` digest of the part. For more
+#' information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' @param ChecksumXXHASH64 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 64-bit `XXHASH64` checksum of the part.
+#' For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' @param ChecksumXXHASH3 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 64-bit `XXHASH3` checksum of the part. For
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' @param ChecksumXXHASH128 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 128-bit `XXHASH128` checksum of the part.
+#' For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
 #' @param PartNumber &#91;required&#93; Part number of part being uploaded. This is a positive integer between 1
 #' and 10,000.
@@ -19389,6 +20272,11 @@ s3_update_bucket_metadata_journal_table_configuration <- function(Bucket, Conten
 #'   ChecksumCRC64NVME = "string",
 #'   ChecksumSHA1 = "string",
 #'   ChecksumSHA256 = "string",
+#'   ChecksumSHA512 = "string",
+#'   ChecksumMD5 = "string",
+#'   ChecksumXXHASH64 = "string",
+#'   ChecksumXXHASH3 = "string",
+#'   ChecksumXXHASH128 = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
@@ -19404,12 +20292,17 @@ s3_update_bucket_metadata_journal_table_configuration <- function(Bucket, Conten
 #'   Bucket = "string",
 #'   ContentLength = 123,
 #'   ContentMD5 = "string",
-#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ChecksumCRC32 = "string",
 #'   ChecksumCRC32C = "string",
 #'   ChecksumCRC64NVME = "string",
 #'   ChecksumSHA1 = "string",
 #'   ChecksumSHA256 = "string",
+#'   ChecksumSHA512 = "string",
+#'   ChecksumMD5 = "string",
+#'   ChecksumXXHASH64 = "string",
+#'   ChecksumXXHASH3 = "string",
+#'   ChecksumXXHASH128 = "string",
 #'   Key = "string",
 #'   PartNumber = 123,
 #'   UploadId = "string",
@@ -19440,7 +20333,7 @@ s3_update_bucket_metadata_journal_table_configuration <- function(Bucket, Conten
 #' @rdname s3_upload_part
 #'
 #' @aliases s3_upload_part
-s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumCRC64NVME = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, Key, PartNumber, UploadId, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
+s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumCRC64NVME = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, ChecksumSHA512 = NULL, ChecksumMD5 = NULL, ChecksumXXHASH64 = NULL, ChecksumXXHASH3 = NULL, ChecksumXXHASH128 = NULL, Key, PartNumber, UploadId, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "UploadPart",
     http_method = "PUT",
@@ -19449,7 +20342,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$upload_part_input(Body = Body, Bucket = Bucket, ContentLength = ContentLength, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumCRC64NVME = ChecksumCRC64NVME, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, Key = Key, PartNumber = PartNumber, UploadId = UploadId, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$upload_part_input(Body = Body, Bucket = Bucket, ContentLength = ContentLength, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumCRC64NVME = ChecksumCRC64NVME, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, ChecksumSHA512 = ChecksumSHA512, ChecksumMD5 = ChecksumMD5, ChecksumXXHASH64 = ChecksumXXHASH64, ChecksumXXHASH3 = ChecksumXXHASH3, ChecksumXXHASH128 = ChecksumXXHASH128, Key = Key, PartNumber = PartNumber, UploadId = UploadId, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$upload_part_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -19566,10 +20459,12 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'     -   If the source object that you want to copy is in a directory
 #'         bucket, you must have the **`s3express:CreateSession`**
 #'         permission in the `Action` element of a policy to read the
-#'         object. By default, the session is in the `ReadWrite` mode. If
-#'         you want to restrict the access, you can explicitly set the
-#'         `s3express:SessionMode` condition key to `ReadOnly` on the copy
-#'         source bucket.
+#'         object. If no session mode is specified, the session will be
+#'         created with the maximum allowable privilege, attempting
+#'         `ReadWrite` first, then `ReadOnly` if `ReadWrite` is not
+#'         permitted. If you want to explicitly restrict the access to be
+#'         read-only, you can set the `s3express:SessionMode` condition key
+#'         to `ReadOnly` on the copy source bucket.
 #' 
 #'     -   If the copy destination is a directory bucket, you must have the
 #'         **`s3express:CreateSession`** permission in the `Action` element
@@ -19890,7 +20785,12 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'     ChecksumCRC32C = "string",
 #'     ChecksumCRC64NVME = "string",
 #'     ChecksumSHA1 = "string",
-#'     ChecksumSHA256 = "string"
+#'     ChecksumSHA256 = "string",
+#'     ChecksumSHA512 = "string",
+#'     ChecksumMD5 = "string",
+#'     ChecksumXXHASH64 = "string",
+#'     ChecksumXXHASH3 = "string",
+#'     ChecksumXXHASH128 = "string"
 #'   ),
 #'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'   SSECustomerAlgorithm = "string",
@@ -20047,12 +20947,14 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #'   StatusCode, ErrorCode, ErrorMessage, AcceptRanges, CacheControl,
 #'   ContentDisposition, ContentEncoding, ContentLanguage, ContentLength,
 #'   ContentRange, ContentType, ChecksumCRC32, ChecksumCRC32C,
-#'   ChecksumCRC64NVME, ChecksumSHA1, ChecksumSHA256, DeleteMarker, ETag,
-#'   Expires, Expiration, LastModified, MissingMeta, Metadata,
-#'   ObjectLockMode, ObjectLockLegalHoldStatus, ObjectLockRetainUntilDate,
-#'   PartsCount, ReplicationStatus, RequestCharged, Restore,
-#'   ServerSideEncryption, SSECustomerAlgorithm, SSEKMSKeyId,
-#'   SSECustomerKeyMD5, StorageClass, TagCount, VersionId, BucketKeyEnabled)
+#'   ChecksumCRC64NVME, ChecksumSHA1, ChecksumSHA256, ChecksumSHA512,
+#'   ChecksumMD5, ChecksumXXHASH64, ChecksumXXHASH3, ChecksumXXHASH128,
+#'   DeleteMarker, ETag, Expires, Expiration, LastModified, MissingMeta,
+#'   Metadata, ObjectLockMode, ObjectLockLegalHoldStatus,
+#'   ObjectLockRetainUntilDate, PartsCount, ReplicationStatus,
+#'   RequestCharged, Restore, ServerSideEncryption, SSECustomerAlgorithm,
+#'   SSEKMSKeyId, SSECustomerKeyMD5, StorageClass, TagCount, VersionId,
+#'   BucketKeyEnabled)
 #'
 #' @param RequestRoute &#91;required&#93; Route prefix to the HTTP URL generated.
 #' @param RequestToken &#91;required&#93; A single use encrypted token that maps
@@ -20168,6 +21070,36 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' 
 #' Only one checksum header can be specified at a time. If you supply
 #' multiple checksum headers, this request will fail.
+#' @param ChecksumSHA512 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 512-bit `SHA512` digest of the part. For
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' @param ChecksumMD5 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 128-bit `MD5` digest of the part. For more
+#' information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' @param ChecksumXXHASH64 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 64-bit `XXHASH64` checksum of the part.
+#' For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' @param ChecksumXXHASH3 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 64-bit `XXHASH3` checksum of the part. For
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' @param ChecksumXXHASH128 This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 128-bit `XXHASH128` checksum of the part.
+#' For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param DeleteMarker Specifies whether an object stored in Amazon S3 is (`true`) or is not
 #' (`false`) a delete marker. To learn more about delete markers, see
 #' [Working with delete
@@ -20251,6 +21183,11 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #'   ChecksumCRC64NVME = "string",
 #'   ChecksumSHA1 = "string",
 #'   ChecksumSHA256 = "string",
+#'   ChecksumSHA512 = "string",
+#'   ChecksumMD5 = "string",
+#'   ChecksumXXHASH64 = "string",
+#'   ChecksumXXHASH3 = "string",
+#'   ChecksumXXHASH128 = "string",
 #'   DeleteMarker = TRUE|FALSE,
 #'   ETag = "string",
 #'   Expires = "string",
@@ -20287,7 +21224,7 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' @rdname s3_write_get_object_response
 #'
 #' @aliases s3_write_get_object_response
-s3_write_get_object_response <- function(RequestRoute, RequestToken, Body = NULL, StatusCode = NULL, ErrorCode = NULL, ErrorMessage = NULL, AcceptRanges = NULL, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentRange = NULL, ContentType = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumCRC64NVME = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, DeleteMarker = NULL, ETag = NULL, Expires = NULL, Expiration = NULL, LastModified = NULL, MissingMeta = NULL, Metadata = NULL, ObjectLockMode = NULL, ObjectLockLegalHoldStatus = NULL, ObjectLockRetainUntilDate = NULL, PartsCount = NULL, ReplicationStatus = NULL, RequestCharged = NULL, Restore = NULL, ServerSideEncryption = NULL, SSECustomerAlgorithm = NULL, SSEKMSKeyId = NULL, SSECustomerKeyMD5 = NULL, StorageClass = NULL, TagCount = NULL, VersionId = NULL, BucketKeyEnabled = NULL) {
+s3_write_get_object_response <- function(RequestRoute, RequestToken, Body = NULL, StatusCode = NULL, ErrorCode = NULL, ErrorMessage = NULL, AcceptRanges = NULL, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentRange = NULL, ContentType = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumCRC64NVME = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, ChecksumSHA512 = NULL, ChecksumMD5 = NULL, ChecksumXXHASH64 = NULL, ChecksumXXHASH3 = NULL, ChecksumXXHASH128 = NULL, DeleteMarker = NULL, ETag = NULL, Expires = NULL, Expiration = NULL, LastModified = NULL, MissingMeta = NULL, Metadata = NULL, ObjectLockMode = NULL, ObjectLockLegalHoldStatus = NULL, ObjectLockRetainUntilDate = NULL, PartsCount = NULL, ReplicationStatus = NULL, RequestCharged = NULL, Restore = NULL, ServerSideEncryption = NULL, SSECustomerAlgorithm = NULL, SSEKMSKeyId = NULL, SSECustomerKeyMD5 = NULL, StorageClass = NULL, TagCount = NULL, VersionId = NULL, BucketKeyEnabled = NULL) {
   op <- new_operation(
     name = "WriteGetObjectResponse",
     http_method = "POST",
@@ -20296,7 +21233,7 @@ s3_write_get_object_response <- function(RequestRoute, RequestToken, Body = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$write_get_object_response_input(RequestRoute = RequestRoute, RequestToken = RequestToken, Body = Body, StatusCode = StatusCode, ErrorCode = ErrorCode, ErrorMessage = ErrorMessage, AcceptRanges = AcceptRanges, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentRange = ContentRange, ContentType = ContentType, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumCRC64NVME = ChecksumCRC64NVME, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, DeleteMarker = DeleteMarker, ETag = ETag, Expires = Expires, Expiration = Expiration, LastModified = LastModified, MissingMeta = MissingMeta, Metadata = Metadata, ObjectLockMode = ObjectLockMode, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, PartsCount = PartsCount, ReplicationStatus = ReplicationStatus, RequestCharged = RequestCharged, Restore = Restore, ServerSideEncryption = ServerSideEncryption, SSECustomerAlgorithm = SSECustomerAlgorithm, SSEKMSKeyId = SSEKMSKeyId, SSECustomerKeyMD5 = SSECustomerKeyMD5, StorageClass = StorageClass, TagCount = TagCount, VersionId = VersionId, BucketKeyEnabled = BucketKeyEnabled)
+  input <- .s3$write_get_object_response_input(RequestRoute = RequestRoute, RequestToken = RequestToken, Body = Body, StatusCode = StatusCode, ErrorCode = ErrorCode, ErrorMessage = ErrorMessage, AcceptRanges = AcceptRanges, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentRange = ContentRange, ContentType = ContentType, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumCRC64NVME = ChecksumCRC64NVME, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, ChecksumSHA512 = ChecksumSHA512, ChecksumMD5 = ChecksumMD5, ChecksumXXHASH64 = ChecksumXXHASH64, ChecksumXXHASH3 = ChecksumXXHASH3, ChecksumXXHASH128 = ChecksumXXHASH128, DeleteMarker = DeleteMarker, ETag = ETag, Expires = Expires, Expiration = Expiration, LastModified = LastModified, MissingMeta = MissingMeta, Metadata = Metadata, ObjectLockMode = ObjectLockMode, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, PartsCount = PartsCount, ReplicationStatus = ReplicationStatus, RequestCharged = RequestCharged, Restore = Restore, ServerSideEncryption = ServerSideEncryption, SSECustomerAlgorithm = SSECustomerAlgorithm, SSEKMSKeyId = SSEKMSKeyId, SSECustomerKeyMD5 = SSECustomerKeyMD5, StorageClass = StorageClass, TagCount = TagCount, VersionId = VersionId, BucketKeyEnabled = BucketKeyEnabled)
   output <- .s3$write_get_object_response_output()
   config <- get_config()
   svc <- .s3$service(config, op)

@@ -24,6 +24,22 @@ test_that("describe_configuration_sets", {
   expect_error(svc$describe_configuration_sets(MaxResults = 20), NA)
 })
 
+test_that("describe_notify_configurations", {
+  expect_error(svc$describe_notify_configurations(), NA)
+})
+
+test_that("describe_notify_configurations", {
+  expect_error(svc$describe_notify_configurations(MaxResults = 20), NA)
+})
+
+test_that("describe_notify_templates", {
+  expect_error(svc$describe_notify_templates(), NA)
+})
+
+test_that("describe_notify_templates", {
+  expect_error(svc$describe_notify_templates(MaxResults = 20), NA)
+})
+
 test_that("describe_opt_out_lists", {
   expect_error(svc$describe_opt_out_lists(), NA)
 })
@@ -54,6 +70,14 @@ test_that("describe_protect_configurations", {
 
 test_that("describe_protect_configurations", {
   expect_error(svc$describe_protect_configurations(MaxResults = 20), NA)
+})
+
+test_that("describe_rcs_agents", {
+  expect_error(svc$describe_rcs_agents(), NA)
+})
+
+test_that("describe_rcs_agents", {
+  expect_error(svc$describe_rcs_agents(MaxResults = 20), NA)
 })
 
 test_that("describe_registration_attachments", {
@@ -102,4 +126,12 @@ test_that("describe_verified_destination_numbers", {
 
 test_that("describe_verified_destination_numbers", {
   expect_error(svc$describe_verified_destination_numbers(MaxResults = 20), NA)
+})
+
+test_that("list_notify_countries", {
+  expect_error(svc$list_notify_countries(), NA)
+})
+
+test_that("list_notify_countries", {
+  expect_error(svc$list_notify_countries(MaxResults = 20), NA)
 })

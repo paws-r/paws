@@ -20,8 +20,6 @@ connectcampaignservice_create_campaign(
 \item{dialerConfig}{[required]}
 
 \item{outboundCallConfig}{[required]}
-
-\item{tags}{}
 }
 \description{
 Creates a campaign for the specified Amazon Connect account. This API is idempotent.

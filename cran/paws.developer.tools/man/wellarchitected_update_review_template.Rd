@@ -20,8 +20,6 @@ wellarchitected_update_review_template(
 
 \item{Description}{The review template description.}
 
-\item{Notes}{}
-
 \item{LensesToAssociate}{A list of lens aliases or ARNs to apply to the review template.}
 
 \item{LensesToDisassociate}{A list of lens aliases or ARNs to unapply to the review template. The

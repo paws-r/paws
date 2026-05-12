@@ -16,8 +16,6 @@ storagegateway_update_gateway_information(
 \arguments{
 \item{GatewayARN}{[required]}
 
-\item{GatewayName}{}
-
 \item{GatewayTimezone}{A value that indicates the time zone of the gateway.}
 
 \item{CloudWatchLogGroupARN}{The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that

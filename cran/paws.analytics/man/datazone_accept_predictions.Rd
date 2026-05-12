@@ -6,30 +6,30 @@
 Amazon DataZone assets}
 \usage{
 datazone_accept_predictions(
-  acceptChoices = NULL,
-  acceptRule = NULL,
-  clientToken = NULL,
   domainIdentifier,
   identifier,
-  revision = NULL
+  revision = NULL,
+  acceptRule = NULL,
+  acceptChoices = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{acceptChoices}{Specifies the prediction (aka, the automatically generated piece of
-metadata) and the target (for example, a column name) that can be
-accepted.}
-
-\item{acceptRule}{Specifies the rule (or the conditions) under which a prediction can be
-accepted.}
-
-\item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the
-request. This field is automatically populated if not provided.}
-
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain.}
 
 \item{identifier}{[required] The identifier of the asset.}
 
 \item{revision}{The revision that is to be made to the asset.}
+
+\item{acceptRule}{Specifies the rule (or the conditions) under which a prediction can be
+accepted.}
+
+\item{acceptChoices}{Specifies the prediction (aka, the automatically generated piece of
+metadata) and the target (for example, a column name) that can be
+accepted.}
+
+\item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the
+request. This field is automatically populated if not provided.}
 }
 \description{
 Accepts automatically generated business-friendly metadata for your Amazon DataZone assets.

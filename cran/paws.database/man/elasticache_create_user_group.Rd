@@ -7,7 +7,7 @@
 elasticache_create_user_group(UserGroupId, Engine, UserIds = NULL, Tags = NULL)
 }
 \arguments{
-\item{UserGroupId}{[required] The ID of the user group.}
+\item{UserGroupId}{[required] The ID of the user group. This value is stored as a lowercase string.}
 
 \item{Engine}{[required] Sets the engine listed in a user group. The options are valkey or redis.}
 

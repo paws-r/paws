@@ -12,7 +12,8 @@ elasticache_create_cache_parameter_group(
 )
 }
 \arguments{
-\item{CacheParameterGroupName}{[required] A user-specified name for the cache parameter group.}
+\item{CacheParameterGroupName}{[required] A user-specified name for the cache parameter group. This value is
+stored as a lowercase string.}
 
 \item{CacheParameterGroupFamily}{[required] The name of the cache parameter group family that the cache parameter
 group can be used with.

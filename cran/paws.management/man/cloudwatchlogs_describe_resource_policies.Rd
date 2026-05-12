@@ -12,8 +12,6 @@ cloudwatchlogs_describe_resource_policies(
 )
 }
 \arguments{
-\item{nextToken}{}
-
 \item{limit}{The maximum number of resource policies to be displayed with one call of
 this API.}
 

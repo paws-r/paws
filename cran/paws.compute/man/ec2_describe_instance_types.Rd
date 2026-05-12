@@ -9,7 +9,8 @@ ec2_describe_instance_types(
   InstanceTypes = NULL,
   Filters = NULL,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  IncludeUnsupportedInRegion = NULL
 )
 }
 \arguments{
@@ -153,9 +154,13 @@ output. For more information, see
 
 \item{NextToken}{The token returned from a previous paginated request. Pagination
 continues from the end of the items returned by the previous request.}
+
+\item{IncludeUnsupportedInRegion}{If \code{true}, the response includes instance types that are not supported
+in the current Region, in addition to the supported types. Default:
+\code{false}.}
 }
 \description{
-Describes the specified instance types. By default, all instance types for the current Region are described. Alternatively, you can filter the results.
+Describes the specified instance types. By default, all instance types for the current Region are described. Alternatively, you can filter the results. To include instance types that are not supported in the current Region, set \code{IncludeUnsupportedInRegion} to \code{true}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_instance_types/} for full documentation.
 }

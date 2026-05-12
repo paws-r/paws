@@ -41,7 +41,7 @@ additional information about
 \href{https://docs.aws.amazon.com/location/previous/developerguide/grab.html}{GrabMaps}'
 coverage, see \href{https://docs.aws.amazon.com/location/previous/developerguide/grab.html#grab-coverage-area}{GrabMaps countries and areas covered}.
 \item \code{Here} – For additional information about \href{https://docs.aws.amazon.com/location/previous/developerguide/HERE.html}{HERE Technologies}'
-coverage in your region of interest, see \href{https://www.here.com/docs/}{HERE car routing coverage} and \href{https://www.here.com/docs/}{HERE truck routing coverage}.
+coverage in your region of interest, see \href{https://docs.here.com/}{HERE car routing coverage} and \href{https://docs.here.com/}{HERE truck routing coverage}.
 }
 
 For additional information , see \href{https://docs.aws.amazon.com/location/previous/developerguide/what-is-data-provider.html}{Data providers}

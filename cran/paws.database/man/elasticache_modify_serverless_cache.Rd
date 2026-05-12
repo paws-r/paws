@@ -52,7 +52,7 @@ Memcached only. The default is NULL, i.e. the existing snapshot time
 configured for the cluster is not removed.}
 
 \item{Engine}{Modifies the engine listed in a serverless cache request. The options
-are redis, memcached or valkey.}
+are valkey, memcached or redis.}
 
 \item{MajorEngineVersion}{Modifies the engine vesion listed in a serverless cache request.}
 }

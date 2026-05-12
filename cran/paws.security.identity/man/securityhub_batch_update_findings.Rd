@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_batch_update_findings}
 \alias{securityhub_batch_update_findings}
-\title{Used by Security Hub customers to update information about their
+\title{Used by Security Hub CSPM customers to update information about their
 investigation into one or more findings}
 \usage{
 securityhub_batch_update_findings(
@@ -25,8 +25,6 @@ to update up to 100 findings at a time.
 
 For each finding, the list provides the finding identifier and the ARN
 of the finding provider.}
-
-\item{Note}{}
 
 \item{Severity}{Used to update the finding severity.}
 
@@ -78,7 +76,7 @@ finding.}
 \item{RelatedFindings}{A list of findings that are related to the updated findings.}
 }
 \description{
-Used by Security Hub customers to update information about their investigation into one or more findings. Requested by administrator accounts or member accounts. Administrator accounts can update findings for their account and their member accounts. A member account can update findings only for their own account. Administrator and member accounts can use this operation to update the following fields and objects for one or more findings:
+Used by Security Hub CSPM customers to update information about their investigation into one or more findings. Requested by administrator accounts or member accounts. Administrator accounts can update findings for their account and their member accounts. A member account can update findings only for their own account. Administrator and member accounts can use this operation to update the following fields and objects for one or more findings:
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_batch_update_findings/} for full documentation.
 }

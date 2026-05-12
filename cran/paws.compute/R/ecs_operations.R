@@ -191,6 +191,90 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 }
 .ecs$operations$create_cluster <- ecs_create_cluster
 
+#' Creates a new daemon in the specified cluster and capacity providers
+#'
+#' @description
+#' Creates a new daemon in the specified cluster and capacity providers. A daemon deploys cross-cutting software agents such as security monitoring, telemetry, and logging independently across your Amazon ECS infrastructure.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecs_create_daemon/](https://www.paws-r-sdk.com/docs/ecs_create_daemon/) for full documentation.
+#'
+#' @param daemonName &#91;required&#93; The name of the daemon. Up to 255 letters (uppercase and lowercase),
+#' numbers, underscores, and hyphens are allowed.
+#' @param clusterArn The Amazon Resource Name (ARN) of the cluster to create the daemon in.
+#' @param daemonTaskDefinitionArn &#91;required&#93; The Amazon Resource Name (ARN) of the daemon task definition to use for
+#' the daemon.
+#' @param capacityProviderArns &#91;required&#93; The Amazon Resource Names (ARNs) of the capacity providers to associate
+#' with the daemon. The daemon deploys tasks on container instances managed
+#' by these capacity providers.
+#' @param deploymentConfiguration Optional deployment parameters that control how the daemon rolls out
+#' updates, including the drain percentage, alarm-based rollback, and bake
+#' time.
+#' @param tags The metadata that you apply to the daemon to help you categorize and
+#' organize them. Each tag consists of a key and an optional value. You
+#' define both of them.
+#' 
+#' The following basic restrictions apply to tags:
+#' 
+#' -   Maximum number of tags per resource - 50
+#' 
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
+#' 
+#' -   Maximum key length - 128 Unicode characters in UTF-8
+#' 
+#' -   Maximum value length - 256 Unicode characters in UTF-8
+#' 
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . _ : / @@.
+#' 
+#' -   Tag keys and values are case-sensitive.
+#' 
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for either keys or values as it is reserved for
+#'     Amazon Web Services use. You cannot edit or delete tag keys or
+#'     values with this prefix. Tags with this prefix do not count against
+#'     your tags per resource limit.
+#' @param propagateTags Specifies whether to propagate the tags from the daemon to the daemon
+#' tasks. If you don't specify a value, the tags aren't propagated. You can
+#' only propagate tags to daemon tasks during task creation. To add tags to
+#' a task after task creation, use the [`tag_resource`][ecs_tag_resource]
+#' API action.
+#' @param enableECSManagedTags Specifies whether to turn on Amazon ECS managed tags for the tasks in
+#' the daemon. For more information, see [Tagging your Amazon ECS
+#' resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#' @param enableExecuteCommand Determines whether the execute command functionality is turned on for
+#' the daemon. If `true`, the execute command functionality is turned on
+#' for all tasks in the daemon.
+#' @param clientToken An identifier that you provide to ensure the idempotency of the request.
+#' It must be unique and is case sensitive. Up to 36 ASCII characters in
+#' the range of 33-126 (inclusive) are allowed.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_create_daemon
+ecs_create_daemon <- function(daemonName, clusterArn = NULL, daemonTaskDefinitionArn, capacityProviderArns, deploymentConfiguration = NULL, tags = NULL, propagateTags = NULL, enableECSManagedTags = NULL, enableExecuteCommand = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "CreateDaemon",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$create_daemon_input(daemonName = daemonName, clusterArn = clusterArn, daemonTaskDefinitionArn = daemonTaskDefinitionArn, capacityProviderArns = capacityProviderArns, deploymentConfiguration = deploymentConfiguration, tags = tags, propagateTags = propagateTags, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, clientToken = clientToken)
+  output <- .ecs$create_daemon_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$create_daemon <- ecs_create_daemon
+
 #' Creates an Express service that simplifies deploying containerized web
 #' applications on Amazon ECS with managed Amazon Web Services
 #' infrastructure
@@ -896,6 +980,69 @@ ecs_delete_cluster <- function(cluster) {
 }
 .ecs$operations$delete_cluster <- ecs_delete_cluster
 
+#' Deletes the specified daemon
+#'
+#' @description
+#' Deletes the specified daemon. The daemon must be in an `ACTIVE` state to be deleted. Deleting a daemon stops all running daemon tasks on the associated container instances. Amazon ECS drains existing container instances and provisions new instances without the deleted daemon. Amazon ECS automatically launches replacement tasks for your Amazon ECS services.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecs_delete_daemon/](https://www.paws-r-sdk.com/docs/ecs_delete_daemon/) for full documentation.
+#'
+#' @param daemonArn &#91;required&#93; The Amazon Resource Name (ARN) of the daemon to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_delete_daemon
+ecs_delete_daemon <- function(daemonArn) {
+  op <- new_operation(
+    name = "DeleteDaemon",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$delete_daemon_input(daemonArn = daemonArn)
+  output <- .ecs$delete_daemon_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$delete_daemon <- ecs_delete_daemon
+
+#' Deletes the specified daemon task definition
+#'
+#' @description
+#' Deletes the specified daemon task definition. After a daemon task definition is deleted, no new daemons can be created using this definition. Existing daemons that reference the deleted daemon task definition continue to run.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecs_delete_daemon_task_definition/](https://www.paws-r-sdk.com/docs/ecs_delete_daemon_task_definition/) for full documentation.
+#'
+#' @param daemonTaskDefinition &#91;required&#93; The `family` and `revision` (`family:revision`) or full Amazon Resource
+#' Name (ARN) of the daemon task definition to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_delete_daemon_task_definition
+ecs_delete_daemon_task_definition <- function(daemonTaskDefinition) {
+  op <- new_operation(
+    name = "DeleteDaemonTaskDefinition",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$delete_daemon_task_definition_input(daemonTaskDefinition = daemonTaskDefinition)
+  output <- .ecs$delete_daemon_task_definition_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$delete_daemon_task_definition <- ecs_delete_daemon_task_definition
+
 #' Deletes an Express service and removes all associated Amazon Web
 #' Services resources
 #'
@@ -1277,6 +1424,134 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
   return(response)
 }
 .ecs$operations$describe_container_instances <- ecs_describe_container_instances
+
+#' Describes the specified daemon
+#'
+#' @description
+#' Describes the specified daemon.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecs_describe_daemon/](https://www.paws-r-sdk.com/docs/ecs_describe_daemon/) for full documentation.
+#'
+#' @param daemonArn &#91;required&#93; The Amazon Resource Name (ARN) of the daemon to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_describe_daemon
+ecs_describe_daemon <- function(daemonArn) {
+  op <- new_operation(
+    name = "DescribeDaemon",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$describe_daemon_input(daemonArn = daemonArn)
+  output <- .ecs$describe_daemon_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$describe_daemon <- ecs_describe_daemon
+
+#' Describes one or more of your daemon deployments
+#'
+#' @description
+#' Describes one or more of your daemon deployments.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecs_describe_daemon_deployments/](https://www.paws-r-sdk.com/docs/ecs_describe_daemon_deployments/) for full documentation.
+#'
+#' @param daemonDeploymentArns &#91;required&#93; The ARN of the daemon deployments to describe. You can specify up to 20
+#' ARNs.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_describe_daemon_deployments
+ecs_describe_daemon_deployments <- function(daemonDeploymentArns) {
+  op <- new_operation(
+    name = "DescribeDaemonDeployments",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$describe_daemon_deployments_input(daemonDeploymentArns = daemonDeploymentArns)
+  output <- .ecs$describe_daemon_deployments_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$describe_daemon_deployments <- ecs_describe_daemon_deployments
+
+#' Describes one or more of your daemon revisions
+#'
+#' @description
+#' Describes one or more of your daemon revisions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecs_describe_daemon_revisions/](https://www.paws-r-sdk.com/docs/ecs_describe_daemon_revisions/) for full documentation.
+#'
+#' @param daemonRevisionArns &#91;required&#93; The ARN of the daemon revisions to describe. You can specify up to 20
+#' ARNs.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_describe_daemon_revisions
+ecs_describe_daemon_revisions <- function(daemonRevisionArns) {
+  op <- new_operation(
+    name = "DescribeDaemonRevisions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$describe_daemon_revisions_input(daemonRevisionArns = daemonRevisionArns)
+  output <- .ecs$describe_daemon_revisions_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$describe_daemon_revisions <- ecs_describe_daemon_revisions
+
+#' Describes a daemon task definition
+#'
+#' @description
+#' Describes a daemon task definition. You can specify a `family` and `revision` to find information about a specific daemon task definition, or you can simply specify the family to find the latest `ACTIVE` revision in that family.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecs_describe_daemon_task_definition/](https://www.paws-r-sdk.com/docs/ecs_describe_daemon_task_definition/) for full documentation.
+#'
+#' @param daemonTaskDefinition &#91;required&#93; The `family` for the latest `ACTIVE` revision, `family` and `revision`
+#' (`family:revision`) for a specific revision in the family, or full
+#' Amazon Resource Name (ARN) of the daemon task definition to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_describe_daemon_task_definition
+ecs_describe_daemon_task_definition <- function(daemonTaskDefinition) {
+  op <- new_operation(
+    name = "DescribeDaemonTaskDefinition",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$describe_daemon_task_definition_input(daemonTaskDefinition = daemonTaskDefinition)
+  output <- .ecs$describe_daemon_task_definition_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$describe_daemon_task_definition <- ecs_describe_daemon_task_definition
 
 #' Retrieves detailed information about an Express service, including
 #' current status, configuration, managed infrastructure, and service
@@ -1884,6 +2159,188 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
 }
 .ecs$operations$list_container_instances <- ecs_list_container_instances
 
+#' Returns a list of daemon deployments for a specified daemon
+#'
+#' @description
+#' Returns a list of daemon deployments for a specified daemon. You can filter the results by status or creation time.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecs_list_daemon_deployments/](https://www.paws-r-sdk.com/docs/ecs_list_daemon_deployments/) for full documentation.
+#'
+#' @param daemonArn &#91;required&#93; The Amazon Resource Name (ARN) of the daemon to list deployments for.
+#' @param status An optional filter to narrow the
+#' [`list_daemon_deployments`][ecs_list_daemon_deployments] results by
+#' deployment status. If you don't specify a status, all deployments are
+#' returned.
+#' @param createdAt An optional filter to narrow the
+#' [`list_daemon_deployments`][ecs_list_daemon_deployments] results by
+#' creation time. If you don't specify a time range, all deployments are
+#' returned.
+#' @param maxResults The maximum number of daemon deployment results that
+#' [`list_daemon_deployments`][ecs_list_daemon_deployments] returned in
+#' paginated output. When this parameter is used,
+#' [`list_daemon_deployments`][ecs_list_daemon_deployments] only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another [`list_daemon_deployments`][ecs_list_daemon_deployments]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If this parameter isn't used, then
+#' [`list_daemon_deployments`][ecs_list_daemon_deployments] returns up to
+#' 20 results and a `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value returned from a
+#' [`list_daemon_deployments`][ecs_list_daemon_deployments] request
+#' indicating that more results are available to fulfill the request and
+#' further calls will be needed. If `maxResults` was provided, it's
+#' possible for the number of results to be fewer than `maxResults`.
+#' 
+#' This token should be treated as an opaque identifier that is only used
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_list_daemon_deployments
+ecs_list_daemon_deployments <- function(daemonArn, status = NULL, createdAt = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListDaemonDeployments",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$list_daemon_deployments_input(daemonArn = daemonArn, status = status, createdAt = createdAt, maxResults = maxResults, nextToken = nextToken)
+  output <- .ecs$list_daemon_deployments_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$list_daemon_deployments <- ecs_list_daemon_deployments
+
+#' Returns a list of daemon task definitions that are registered to your
+#' account
+#'
+#' @description
+#' Returns a list of daemon task definitions that are registered to your account. You can filter the results by family name, status, or both to find daemon task definitions that match your criteria.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecs_list_daemon_task_definitions/](https://www.paws-r-sdk.com/docs/ecs_list_daemon_task_definitions/) for full documentation.
+#'
+#' @param familyPrefix The full family name to filter the
+#' [`list_daemon_task_definitions`][ecs_list_daemon_task_definitions]
+#' results with. Specifying a `familyPrefix` limits the listed daemon task
+#' definitions to daemon task definition families that start with the
+#' `familyPrefix` string.
+#' @param family The exact name of the daemon task definition family to filter results
+#' with.
+#' @param revision The revision filter to apply. Specify `LAST_REGISTERED` to return only
+#' the last registered revision for each daemon task definition family.
+#' @param status The daemon task definition status to filter the
+#' [`list_daemon_task_definitions`][ecs_list_daemon_task_definitions]
+#' results with. By default, only `ACTIVE` daemon task definitions are
+#' listed. If you set this parameter to `DELETE_IN_PROGRESS`, only daemon
+#' task definitions that are in the process of being deleted are listed. If
+#' you set this parameter to `ALL`, all daemon task definitions are listed
+#' regardless of status.
+#' @param sort The order to sort the results. Valid values are `ASC` and `DESC`. By
+#' default (`ASC`), daemon task definitions are listed in ascending order
+#' by family name and revision number.
+#' @param nextToken The `nextToken` value returned from a
+#' [`list_daemon_task_definitions`][ecs_list_daemon_task_definitions]
+#' request indicating that more results are available to fulfill the
+#' request and further calls will be needed. If `maxResults` was provided,
+#' it's possible for the number of results to be fewer than `maxResults`.
+#' 
+#' This token should be treated as an opaque identifier that is only used
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
+#' @param maxResults The maximum number of daemon task definition results that
+#' [`list_daemon_task_definitions`][ecs_list_daemon_task_definitions]
+#' returned in paginated output. When this parameter is used,
+#' [`list_daemon_task_definitions`][ecs_list_daemon_task_definitions] only
+#' returns `maxResults` results in a single page along with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another
+#' [`list_daemon_task_definitions`][ecs_list_daemon_task_definitions]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If this parameter isn't used, then
+#' [`list_daemon_task_definitions`][ecs_list_daemon_task_definitions]
+#' returns up to 100 results and a `nextToken` value if applicable.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_list_daemon_task_definitions
+ecs_list_daemon_task_definitions <- function(familyPrefix = NULL, family = NULL, revision = NULL, status = NULL, sort = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListDaemonTaskDefinitions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$list_daemon_task_definitions_input(familyPrefix = familyPrefix, family = family, revision = revision, status = status, sort = sort, nextToken = nextToken, maxResults = maxResults)
+  output <- .ecs$list_daemon_task_definitions_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$list_daemon_task_definitions <- ecs_list_daemon_task_definitions
+
+#' Returns a list of daemons
+#'
+#' @description
+#' Returns a list of daemons. You can filter the results by cluster or capacity provider.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecs_list_daemons/](https://www.paws-r-sdk.com/docs/ecs_list_daemons/) for full documentation.
+#'
+#' @param clusterArn The Amazon Resource Name (ARN) of the cluster to filter daemons by. If
+#' not specified, daemons from all clusters are returned.
+#' @param capacityProviderArns The Amazon Resource Names (ARNs) of the capacity providers to filter
+#' daemons by. Only daemons associated with the specified capacity
+#' providers are returned.
+#' @param maxResults The maximum number of daemon results that
+#' [`list_daemons`][ecs_list_daemons] returned in paginated output. When
+#' this parameter is used, [`list_daemons`][ecs_list_daemons] only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another [`list_daemons`][ecs_list_daemons] request with the
+#' returned `nextToken` value. This value can be between 1 and 100. If this
+#' parameter isn't used, then [`list_daemons`][ecs_list_daemons] returns up
+#' to 100 results and a `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value returned from a [`list_daemons`][ecs_list_daemons]
+#' request indicating that more results are available to fulfill the
+#' request and further calls will be needed. If `maxResults` was provided,
+#' it's possible for the number of results to be fewer than `maxResults`.
+#' 
+#' This token should be treated as an opaque identifier that is only used
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_list_daemons
+ecs_list_daemons <- function(clusterArn = NULL, capacityProviderArns = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListDaemons",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$list_daemons_input(clusterArn = clusterArn, capacityProviderArns = capacityProviderArns, maxResults = maxResults, nextToken = nextToken)
+  output <- .ecs$list_daemons_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$list_daemons <- ecs_list_daemons
+
 #' This operation lists all the service deployments that meet the specified
 #' filter criteria
 #'
@@ -2283,11 +2740,14 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
 #' value of `PENDING`).
 #' @param launchType The launch type to use when filtering the [`list_tasks`][ecs_list_tasks]
 #' results.
+#' @param daemonName The name of the daemon to use when filtering the
+#' [`list_tasks`][ecs_list_tasks] results. Specifying a `daemonName` limits
+#' the results to tasks that belong to that daemon.
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_list_tasks
-ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NULL, nextToken = NULL, maxResults = NULL, startedBy = NULL, serviceName = NULL, desiredStatus = NULL, launchType = NULL) {
+ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NULL, nextToken = NULL, maxResults = NULL, startedBy = NULL, serviceName = NULL, desiredStatus = NULL, launchType = NULL, daemonName = NULL) {
   op <- new_operation(
     name = "ListTasks",
     http_method = "POST",
@@ -2296,7 +2756,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "taskArns"),
     stream_api = FALSE
   )
-  input <- .ecs$list_tasks_input(cluster = cluster, containerInstance = containerInstance, family = family, nextToken = nextToken, maxResults = maxResults, startedBy = startedBy, serviceName = serviceName, desiredStatus = desiredStatus, launchType = launchType)
+  input <- .ecs$list_tasks_input(cluster = cluster, containerInstance = containerInstance, family = family, nextToken = nextToken, maxResults = maxResults, startedBy = startedBy, serviceName = serviceName, desiredStatus = desiredStatus, launchType = launchType, daemonName = daemonName)
   output <- .ecs$list_tasks_output()
   config <- get_config()
   svc <- .ecs$service(config, op)
@@ -2851,6 +3311,85 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
   return(response)
 }
 .ecs$operations$register_container_instance <- ecs_register_container_instance
+
+#' Registers a new daemon task definition from the supplied family and
+#' containerDefinitions
+#'
+#' @description
+#' Registers a new daemon task definition from the supplied `family` and `containerDefinitions`. Optionally, you can add data volumes to your containers with the `volumes` parameter. For more information, see [Daemon task definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in the *Amazon Elastic Container Service Developer Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecs_register_daemon_task_definition/](https://www.paws-r-sdk.com/docs/ecs_register_daemon_task_definition/) for full documentation.
+#'
+#' @param family &#91;required&#93; You must specify a `family` for a daemon task definition. This family is
+#' used as a name for your daemon task definition. Up to 255 letters
+#' (uppercase and lowercase), numbers, underscores, and hyphens are
+#' allowed.
+#' @param taskRoleArn The short name or full Amazon Resource Name (ARN) of the IAM role that
+#' containers in this daemon task can assume. All containers in this daemon
+#' task are granted the permissions that are specified in this role.
+#' @param executionRoleArn The Amazon Resource Name (ARN) of the task execution role that grants
+#' the Amazon ECS container agent permission to make Amazon Web Services
+#' API calls on your behalf. The task execution role is required for daemon
+#' tasks that pull container images from Amazon ECR or send container logs
+#' to CloudWatch.
+#' @param containerDefinitions &#91;required&#93; A list of container definitions in JSON format that describe the
+#' containers that make up your daemon task.
+#' @param cpu The number of CPU units used by the daemon task. It can be expressed as
+#' an integer using CPU units (for example, `1024`).
+#' @param memory The amount of memory (in MiB) used by the daemon task. It can be
+#' expressed as an integer using MiB (for example, `1024`).
+#' @param volumes A list of volume definitions in JSON format that containers in your
+#' daemon task can use.
+#' @param tags The metadata that you apply to the daemon task definition to help you
+#' categorize and organize them. Each tag consists of a key and an optional
+#' value. You define both of them.
+#' 
+#' The following basic restrictions apply to tags:
+#' 
+#' -   Maximum number of tags per resource - 50
+#' 
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
+#' 
+#' -   Maximum key length - 128 Unicode characters in UTF-8
+#' 
+#' -   Maximum value length - 256 Unicode characters in UTF-8
+#' 
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . _ : / @@.
+#' 
+#' -   Tag keys and values are case-sensitive.
+#' 
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for either keys or values as it is reserved for
+#'     Amazon Web Services use. You cannot edit or delete tag keys or
+#'     values with this prefix. Tags with this prefix do not count against
+#'     your tags per resource limit.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_register_daemon_task_definition
+ecs_register_daemon_task_definition <- function(family, taskRoleArn = NULL, executionRoleArn = NULL, containerDefinitions, cpu = NULL, memory = NULL, volumes = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "RegisterDaemonTaskDefinition",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$register_daemon_task_definition_input(family = family, taskRoleArn = taskRoleArn, executionRoleArn = executionRoleArn, containerDefinitions = containerDefinitions, cpu = cpu, memory = memory, volumes = volumes, tags = tags)
+  output <- .ecs$register_daemon_task_definition_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$register_daemon_task_definition <- ecs_register_daemon_task_definition
 
 #' Registers a new task definition from the supplied family and
 #' containerDefinitions
@@ -3935,6 +4474,54 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
   return(response)
 }
 .ecs$operations$update_container_instances_state <- ecs_update_container_instances_state
+
+#' Updates the specified daemon
+#'
+#' @description
+#' Updates the specified daemon. When you update a daemon, a new deployment is triggered that progressively rolls out the changes to the container instances associated with the daemon's capacity providers. For more information, see [Daemon deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in the *Amazon Elastic Container Service Developer Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecs_update_daemon/](https://www.paws-r-sdk.com/docs/ecs_update_daemon/) for full documentation.
+#'
+#' @param daemonArn &#91;required&#93; The Amazon Resource Name (ARN) of the daemon to update.
+#' @param daemonTaskDefinitionArn &#91;required&#93; The Amazon Resource Name (ARN) of the daemon task definition to use for
+#' the updated daemon.
+#' @param capacityProviderArns &#91;required&#93; The Amazon Resource Names (ARNs) of the capacity providers to associate
+#' with the daemon.
+#' @param deploymentConfiguration Optional deployment parameters that control how the daemon rolls out
+#' updates, including the drain percentage, alarm-based rollback, and bake
+#' time.
+#' @param propagateTags Specifies whether to propagate the tags from the daemon to the daemon
+#' tasks. If you don't specify a value, the tags aren't propagated. You can
+#' only propagate tags to daemon tasks during task creation.
+#' @param enableECSManagedTags Specifies whether to turn on Amazon ECS managed tags for the tasks in
+#' the daemon. For more information, see [Tagging your Amazon ECS
+#' resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#' @param enableExecuteCommand If `true`, the execute command functionality is turned on for all tasks
+#' in the daemon. If `false`, the execute command functionality is turned
+#' off.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_update_daemon
+ecs_update_daemon <- function(daemonArn, daemonTaskDefinitionArn, capacityProviderArns, deploymentConfiguration = NULL, propagateTags = NULL, enableECSManagedTags = NULL, enableExecuteCommand = NULL) {
+  op <- new_operation(
+    name = "UpdateDaemon",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$update_daemon_input(daemonArn = daemonArn, daemonTaskDefinitionArn = daemonTaskDefinitionArn, capacityProviderArns = capacityProviderArns, deploymentConfiguration = deploymentConfiguration, propagateTags = propagateTags, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand)
+  output <- .ecs$update_daemon_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$update_daemon <- ecs_update_daemon
 
 #' Updates an existing Express service configuration
 #'

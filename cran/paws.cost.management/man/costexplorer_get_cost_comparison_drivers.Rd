@@ -39,8 +39,6 @@ of exactly one month.}
 \code{BlendedCost}, \code{NetAmortizedCost}, \code{NetUnblendedCost},
 \code{NormalizedUsageAmount}, \code{UnblendedCost}, and \code{UsageQuantity}.}
 
-\item{Filter}{}
-
 \item{GroupBy}{You can group results using the attributes \code{DIMENSION}, \code{TAG}, and
 \code{COST_CATEGORY}. Note that \code{SERVICE} and \code{USAGE_TYPE} dimensions are
 automatically included in the cost comparison drivers analysis.}

@@ -5,27 +5,27 @@
 \title{Connect to a hypervisor by importing its configuration}
 \usage{
 backupgateway_import_hypervisor_configuration(
-  Host,
-  KmsKeyArn = NULL,
   Name,
+  Host,
+  Username = NULL,
   Password = NULL,
-  Tags = NULL,
-  Username = NULL
+  KmsKeyArn = NULL,
+  Tags = NULL
 )
 }
 \arguments{
+\item{Name}{[required] The name of the hypervisor.}
+
 \item{Host}{[required] The server host of the hypervisor. This can be either an IP address or a
 fully-qualified domain name (FQDN).}
 
-\item{KmsKeyArn}{The Key Management Service for the hypervisor.}
-
-\item{Name}{[required] The name of the hypervisor.}
+\item{Username}{The username for the hypervisor.}
 
 \item{Password}{The password for the hypervisor.}
 
-\item{Tags}{The tags of the hypervisor configuration to import.}
+\item{KmsKeyArn}{The Key Management Service for the hypervisor.}
 
-\item{Username}{The username for the hypervisor.}
+\item{Tags}{The tags of the hypervisor configuration to import.}
 }
 \description{
 Connect to a hypervisor by importing its configuration.

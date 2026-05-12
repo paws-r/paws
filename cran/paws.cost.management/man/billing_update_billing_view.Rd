@@ -21,7 +21,8 @@ billing view.}
 
 \item{dataFilterExpression}{See
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_Expression.html}{Expression}.
-Billing view only supports \code{LINKED_ACCOUNT} and \code{Tags}.}
+Billing view only supports \code{LINKED_ACCOUNT}, \code{Tags}, and
+\code{CostCategories}.}
 }
 \description{
 An API to update the attributes of the billing view.

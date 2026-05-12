@@ -5,39 +5,39 @@
 \title{Updates a project profile}
 \usage{
 datazone_update_project_profile(
-  allowCustomProjectResourceTags = NULL,
-  description = NULL,
   domainIdentifier,
-  domainUnitIdentifier = NULL,
-  environmentConfigurations = NULL,
   identifier,
   name = NULL,
+  description = NULL,
+  status = NULL,
   projectResourceTags = NULL,
+  allowCustomProjectResourceTags = NULL,
   projectResourceTagsDescription = NULL,
-  status = NULL
+  environmentConfigurations = NULL,
+  domainUnitIdentifier = NULL
 )
 }
 \arguments{
-\item{allowCustomProjectResourceTags}{Specifies whether custom project resource tags are supported.}
-
-\item{description}{The description of a project profile.}
-
 \item{domainIdentifier}{[required] The ID of the domain where a project profile is to be updated.}
-
-\item{domainUnitIdentifier}{The ID of the domain unit where a project profile is to be updated.}
-
-\item{environmentConfigurations}{The environment configurations of a project profile.}
 
 \item{identifier}{[required] The ID of a project profile that is to be updated.}
 
 \item{name}{The name of a project profile.}
 
+\item{description}{The description of a project profile.}
+
+\item{status}{The status of a project profile.}
+
 \item{projectResourceTags}{The resource tags of the project profile.}
+
+\item{allowCustomProjectResourceTags}{Specifies whether custom project resource tags are supported.}
 
 \item{projectResourceTagsDescription}{Field viewable through the UI that provides a project user with the
 allowed resource tag specifications.}
 
-\item{status}{The status of a project profile.}
+\item{environmentConfigurations}{The environment configurations of a project profile.}
+
+\item{domainUnitIdentifier}{The ID of the domain unit where a project profile is to be updated.}
 }
 \description{
 Updates a project profile.

@@ -2,28 +2,29 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_update_global_settings}
 \alias{backup_update_global_settings}
-\title{Updates whether the Amazon Web Services account is opted in to
-cross-account backup}
+\title{Updates whether the Amazon Web Services account has enabled different
+cross-account management options, including cross-account backup,
+multi-party approval, and delegated administrator}
 \usage{
 backup_update_global_settings(GlobalSettings = NULL)
 }
 \arguments{
 \item{GlobalSettings}{Inputs can include:
 
-A value for \code{isCrossAccountBackupEnabled} and a Region. Example:
-\verb{update-global-settings --global-settings isCrossAccountBackupEnabled=false --region us-west-2}.
-
-A value for Multi-party approval, styled as "Mpa": \code{isMpaEnabled}.
-Values can be true or false. Example:
-\verb{update-global-settings --global-settings isMpaEnabled=false --region us-west-2}.
-
-A value for Backup Service-Linked Role creation, styled
-as\code{isDelegatedAdministratorEnabled}. Values can be true or false.
+A value for \code{isCrossAccountBackupEnabled}. Values can be true or false.
 Example:
-\verb{update-global-settings --global-settings isDelegatedAdministratorEnabled=false --region us-west-2}.}
+\verb{update-global-settings --global-settings isCrossAccountBackupEnabled=false}.
+
+A value for Multi-party approval, styled as \code{isMpaEnabled}. Values can
+be true or false. Example:
+\verb{update-global-settings --global-settings isMpaEnabled=false}.
+
+A value for Backup Service-Linked Role creation, styled as
+\code{isDelegatedAdministratorEnabled}. Values can be true or false. Example:
+\verb{update-global-settings --global-settings isDelegatedAdministratorEnabled=false}.}
 }
 \description{
-Updates whether the Amazon Web Services account is opted in to cross-account backup. Returns an error if the account is not an Organizations management account. Use the \code{\link[=backup_describe_global_settings]{describe_global_settings}} API to determine the current settings.
+Updates whether the Amazon Web Services account has enabled different cross-account management options, including cross-account backup, multi-party approval, and delegated administrator. Returns an error if the account is not an Organizations management account. Use the \code{\link[=backup_describe_global_settings]{describe_global_settings}} API to determine the current settings.
 
 See \url{https://www.paws-r-sdk.com/docs/backup_update_global_settings/} for full documentation.
 }

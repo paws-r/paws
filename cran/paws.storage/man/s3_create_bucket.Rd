@@ -14,7 +14,8 @@ s3_create_bucket(
   GrantWrite = NULL,
   GrantWriteACP = NULL,
   ObjectLockEnabledForBucket = NULL,
-  ObjectOwnership = NULL
+  ObjectOwnership = NULL,
+  BucketNamespace = NULL
 )
 }
 \arguments{
@@ -70,7 +71,25 @@ bucket.
 
 This functionality is not supported for directory buckets.}
 
-\item{ObjectOwnership}{}
+\item{BucketNamespace}{Specifies the namespace where you want to create your general purpose
+bucket. When you create a general purpose bucket, you can choose to
+create a bucket in the shared global namespace or you can choose to
+create a bucket in your account regional namespace. Your account
+regional namespace is a subdivision of the global namespace that only
+your account can create buckets in. For more information on bucket
+namespaces, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/gpbucketnamespaces.html}{Namespaces for general purpose buckets}.
+
+General purpose buckets in your account regional namespace must follow a
+specific naming convention. These buckets consist of a bucket name
+prefix that you create, and a suffix that contains your 12-digit Amazon
+Web Services Account ID, the Amazon Web Services Region code, and ends
+with \code{-an}. Bucket names must follow the format
+\code{bucket-name-prefix-accountId-region-an} (for example,
+\code{amzn-s3-demo-bucket-111122223333-us-west-2-an}). For information about
+bucket naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html#account-regional-naming-rules}{Account regional namespace naming rules}
+in the \emph{Amazon S3 User Guide}.
+
+This functionality is not supported for directory buckets.}
 }
 \description{
 This action creates an Amazon S3 bucket. To create an Amazon S3 on Outposts bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html}{\code{create_bucket}} .

@@ -26,10 +26,6 @@ create the Explainability.}
 \item{ExplainabilityConfig}{[required] The configuration settings that define the granularity of time series
 and time points for the Explainability.}
 
-\item{DataSource}{}
-
-\item{Schema}{}
-
 \item{EnableVisualization}{Create an Explainability visualization that is viewable within the
 Amazon Web Services console.}
 

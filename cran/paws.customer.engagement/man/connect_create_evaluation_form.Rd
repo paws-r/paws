@@ -14,6 +14,7 @@ connect_create_evaluation_form(
   ClientToken = NULL,
   AsDraft = NULL,
   Tags = NULL,
+  ReviewConfiguration = NULL,
   TargetConfiguration = NULL,
   LanguageConfiguration = NULL
 )
@@ -44,6 +45,8 @@ state.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
 For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
+
+\item{ReviewConfiguration}{Configuration information about evaluation reviews.}
 
 \item{TargetConfiguration}{Configuration that specifies the target for the evaluation form.}
 

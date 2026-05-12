@@ -10,6 +10,7 @@ ec2_modify_vpn_connection_options(
   RemoteIpv4NetworkCidr = NULL,
   LocalIpv6NetworkCidr = NULL,
   RemoteIpv6NetworkCidr = NULL,
+  TunnelBandwidth = NULL,
   DryRun = NULL
 )
 }
@@ -33,6 +34,12 @@ Default: \verb{::/0}}
 \item{RemoteIpv6NetworkCidr}{The IPv6 CIDR on the Amazon Web Services side of the VPN connection.
 
 Default: \verb{::/0}}
+
+\item{TunnelBandwidth}{The desired bandwidth specification for the VPN connection. \code{standard}
+supports up to 1.25 Gbps per tunnel, while \code{large} supports up to 5 Gbps
+per tunnel. Large bandwidth is only available for VPN connections
+attached to a transit gateway or to Cloud WAN. The default value is
+\code{standard}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

@@ -7,8 +7,8 @@
 datazone_list_accounts_in_account_pool(
   domainIdentifier,
   identifier,
-  maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
@@ -17,18 +17,18 @@ are to be listed.}
 
 \item{identifier}{[required] The ID of the account pool whose accounts are to be listed.}
 
-\item{maxResults}{The maximum number of accounts to return in a single call to
-ListAccountsInAccountPool. When the number of accounts to be listed is
-greater than the value of MaxResults, the response contains a NextToken
-value that you can use in a subsequent call to ListAccountsInAccountPool
-to list the next set of accounts.}
-
 \item{nextToken}{When the number of accounts is greater than the default value for the
 MaxResults parameter, or if you explicitly specify a value for
 MaxResults that is less than the number of accounts, the response
 includes a pagination token named NextToken. You can specify this
 NextToken value in a subsequent call to ListAccountsInAccountPool to
 list the next set of accounts.}
+
+\item{maxResults}{The maximum number of accounts to return in a single call to
+ListAccountsInAccountPool. When the number of accounts to be listed is
+greater than the value of MaxResults, the response contains a NextToken
+value that you can use in a subsequent call to ListAccountsInAccountPool
+to list the next set of accounts.}
 }
 \description{
 Lists the accounts in the specified account pool.

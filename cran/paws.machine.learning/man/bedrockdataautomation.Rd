@@ -97,19 +97,29 @@ Amazon Bedrock Data Automation BuildTime
 \link[=bedrockdataautomation_copy_blueprint_stage]{copy_blueprint_stage} \tab Copies a Blueprint from one stage to another\cr
 \link[=bedrockdataautomation_create_blueprint]{create_blueprint} \tab Creates an Amazon Bedrock Data Automation Blueprint\cr
 \link[=bedrockdataautomation_create_blueprint_version]{create_blueprint_version} \tab Creates a new version of an existing Amazon Bedrock Data Automation Blueprint\cr
+\link[=bedrockdataautomation_create_data_automation_library]{create_data_automation_library} \tab Creates an Amazon Bedrock Data Automation Library\cr
 \link[=bedrockdataautomation_create_data_automation_project]{create_data_automation_project} \tab Creates an Amazon Bedrock Data Automation Project\cr
 \link[=bedrockdataautomation_delete_blueprint]{delete_blueprint} \tab Deletes an existing Amazon Bedrock Data Automation Blueprint\cr
+\link[=bedrockdataautomation_delete_data_automation_library]{delete_data_automation_library} \tab Deletes an existing Amazon Bedrock Data Automation Library\cr
 \link[=bedrockdataautomation_delete_data_automation_project]{delete_data_automation_project} \tab Deletes an existing Amazon Bedrock Data Automation Project\cr
 \link[=bedrockdataautomation_get_blueprint]{get_blueprint} \tab Gets an existing Amazon Bedrock Data Automation Blueprint\cr
 \link[=bedrockdataautomation_get_blueprint_optimization_status]{get_blueprint_optimization_status} \tab API used to get blueprint optimization status\cr
+\link[=bedrockdataautomation_get_data_automation_library]{get_data_automation_library} \tab Gets an existing Amazon Bedrock Data Automation Library\cr
+\link[=bedrockdataautomation_get_data_automation_library_entity]{get_data_automation_library_entity} \tab Gets an existing entity based on entity type from the library\cr
+\link[=bedrockdataautomation_get_data_automation_library_ingestion_job]{get_data_automation_library_ingestion_job} \tab API used to get status of data automation library ingestion job\cr
 \link[=bedrockdataautomation_get_data_automation_project]{get_data_automation_project} \tab Gets an existing Amazon Bedrock Data Automation Project\cr
 \link[=bedrockdataautomation_invoke_blueprint_optimization_async]{invoke_blueprint_optimization_async} \tab Invoke an async job to perform Blueprint Optimization\cr
+\link[=bedrockdataautomation_invoke_data_automation_library_ingestion_job]{invoke_data_automation_library_ingestion_job} \tab Async API: Invoke data automation library ingestion job\cr
 \link[=bedrockdataautomation_list_blueprints]{list_blueprints} \tab Lists all existing Amazon Bedrock Data Automation Blueprints\cr
+\link[=bedrockdataautomation_list_data_automation_libraries]{list_data_automation_libraries} \tab Lists all existing Amazon Bedrock Data Automation Libraries\cr
+\link[=bedrockdataautomation_list_data_automation_library_entities]{list_data_automation_library_entities} \tab Lists all stored entities in the library\cr
+\link[=bedrockdataautomation_list_data_automation_library_ingestion_jobs]{list_data_automation_library_ingestion_jobs} \tab Lists all data automation library ingestion jobs\cr
 \link[=bedrockdataautomation_list_data_automation_projects]{list_data_automation_projects} \tab Lists all existing Amazon Bedrock Data Automation Projects\cr
 \link[=bedrockdataautomation_list_tags_for_resource]{list_tags_for_resource} \tab List tags for an Amazon Bedrock Data Automation resource\cr
 \link[=bedrockdataautomation_tag_resource]{tag_resource} \tab Tag an Amazon Bedrock Data Automation resource\cr
 \link[=bedrockdataautomation_untag_resource]{untag_resource} \tab Untag an Amazon Bedrock Data Automation resource\cr
 \link[=bedrockdataautomation_update_blueprint]{update_blueprint} \tab Updates an existing Amazon Bedrock Data Automation Blueprint\cr
+\link[=bedrockdataautomation_update_data_automation_library]{update_data_automation_library} \tab Updates an existing Amazon Bedrock Data Automation Library\cr
 \link[=bedrockdataautomation_update_data_automation_project]{update_data_automation_project} \tab Updates an existing Amazon Bedrock Data Automation Project
 }
 }

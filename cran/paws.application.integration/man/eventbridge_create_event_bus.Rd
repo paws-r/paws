@@ -62,8 +62,6 @@ a customer managed key for any archives for the event bus as well.
 For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/encryption-archives.html}{Encrypting archives}
 in the \emph{Amazon EventBridge User Guide}.}
 
-\item{DeadLetterConfig}{}
-
 \item{LogConfig}{The logging configuration settings for the event bus.
 
 For more information, see Configuring logs for event buses in the

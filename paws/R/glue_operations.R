@@ -2888,13 +2888,15 @@ glue_batch_get_jobs <- function(JobNames) {
 #'
 #' @usage
 #' glue_batch_get_partition(CatalogId, DatabaseName, TableName,
-#'   PartitionsToGet)
+#'   PartitionsToGet, AuditContext, QuerySessionContext)
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
 #' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param PartitionsToGet &#91;required&#93; A list of partition values identifying the partitions to retrieve.
+#' @param AuditContext 
+#' @param QuerySessionContext 
 #'
 #' @return
 #' A list with the following syntax:
@@ -3004,6 +3006,24 @@ glue_batch_get_jobs <- function(JobNames) {
 #'         "string"
 #'       )
 #'     )
+#'   ),
+#'   AuditContext = list(
+#'     AdditionalAuditContext = "string",
+#'     RequestedColumns = list(
+#'       "string"
+#'     ),
+#'     AllColumnsRequested = TRUE|FALSE
+#'   ),
+#'   QuerySessionContext = list(
+#'     QueryId = "string",
+#'     QueryStartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ClusterId = "string",
+#'     QueryAuthorizationId = "string",
+#'     AdditionalContext = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -3013,7 +3033,7 @@ glue_batch_get_jobs <- function(JobNames) {
 #' @rdname glue_batch_get_partition
 #'
 #' @aliases glue_batch_get_partition
-glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionsToGet) {
+glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionsToGet, AuditContext = NULL, QuerySessionContext = NULL) {
   op <- new_operation(
     name = "BatchGetPartition",
     http_method = "POST",
@@ -3022,7 +3042,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$batch_get_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionsToGet = PartitionsToGet)
+  input <- .glue$batch_get_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionsToGet = PartitionsToGet, AuditContext = AuditContext, QuerySessionContext = QuerySessionContext)
   output <- .glue$batch_get_partition_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -4313,7 +4333,8 @@ glue_create_blueprint <- function(Name, Description = NULL, BlueprintLocation, T
 #'         )
 #'       )
 #'     ),
-#'     AllowFullTableExternalDataAccess = "True"|"False"
+#'     AllowFullTableExternalDataAccess = "True"|"False",
+#'     OverwriteChildResourcePermissionsWithDefault = "Accept"|"Deny"
 #'   ),
 #'   Tags = list(
 #'     "string"
@@ -5699,7 +5720,7 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #' developer guide.
 #' 
 #' Jobs that are created without specifying a Glue version default to Glue
-#' 0.9.
+#' 5.1.
 #' @param NumberOfWorkers The number of workers of a defined `workerType` that are allocated when
 #' a job runs.
 #' @param WorkerType The type of predefined worker that is allocated when a job runs. Accepts
@@ -9526,6 +9547,56 @@ glue_delete_connection <- function(CatalogId = NULL, ConnectionName) {
 }
 .glue$operations$delete_connection <- glue_delete_connection
 
+#' Deletes a custom connection type in Glue
+#'
+#' @description
+#' Deletes a custom connection type in Glue.
+#' 
+#' The connection type must exist and be registered before it can be
+#' deleted. This operation supports cleanup of connection type resources
+#' and helps maintain proper lifecycle management of custom connection
+#' types.
+#'
+#' @usage
+#' glue_delete_connection_type(ConnectionType)
+#'
+#' @param ConnectionType &#91;required&#93; The name of the connection type to delete. Must reference an existing
+#' registered connection type.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connection_type(
+#'   ConnectionType = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_connection_type
+#'
+#' @aliases glue_delete_connection_type
+glue_delete_connection_type <- function(ConnectionType) {
+  op <- new_operation(
+    name = "DeleteConnectionType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_connection_type_input(ConnectionType = ConnectionType)
+  output <- .glue$delete_connection_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_connection_type <- glue_delete_connection_type
+
 #' Removes a specified crawler from the Glue Data Catalog, unless the
 #' crawler state is RUNNING
 #'
@@ -10921,7 +10992,14 @@ glue_delete_workflow <- function(Name) {
 #' @description
 #' The [`describe_connection_type`][glue_describe_connection_type] API
 #' provides full details of the supported options for a given connection
-#' type in Glue.
+#' type in Glue. The response includes authentication configuration details
+#' that show supported authentication types and properties, and
+#' RestConfiguration for custom REST-based connection types registered via
+#' [`register_connection_type`][glue_register_connection_type].
+#' 
+#' See also: [`list_connection_types`][glue_list_connection_types],
+#' [`register_connection_type`][glue_register_connection_type],
+#' [`delete_connection_type`][glue_delete_connection_type]
 #'
 #' @usage
 #' glue_describe_connection_type(ConnectionType)
@@ -10962,7 +11040,9 @@ glue_delete_workflow <- function(Name) {
 #'       ),
 #'       DataOperationScopes = list(
 #'         "READ"|"WRITE"
-#'       )
+#'       ),
+#'       KeyOverride = "string",
+#'       PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH"
 #'     )
 #'   ),
 #'   ConnectionOptions = list(
@@ -10982,7 +11062,9 @@ glue_delete_workflow <- function(Name) {
 #'       ),
 #'       DataOperationScopes = list(
 #'         "READ"|"WRITE"
-#'       )
+#'       ),
+#'       KeyOverride = "string",
+#'       PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH"
 #'     )
 #'   ),
 #'   AuthenticationConfiguration = list(
@@ -11002,7 +11084,9 @@ glue_delete_workflow <- function(Name) {
 #'       ),
 #'       DataOperationScopes = list(
 #'         "READ"|"WRITE"
-#'       )
+#'       ),
+#'       KeyOverride = "string",
+#'       PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH"
 #'     ),
 #'     SecretArn = list(
 #'       Name = "string",
@@ -11020,7 +11104,9 @@ glue_delete_workflow <- function(Name) {
 #'       ),
 #'       DataOperationScopes = list(
 #'         "READ"|"WRITE"
-#'       )
+#'       ),
+#'       KeyOverride = "string",
+#'       PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH"
 #'     ),
 #'     OAuth2Properties = list(
 #'       list(
@@ -11039,7 +11125,9 @@ glue_delete_workflow <- function(Name) {
 #'         ),
 #'         DataOperationScopes = list(
 #'           "READ"|"WRITE"
-#'         )
+#'         ),
+#'         KeyOverride = "string",
+#'         PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH"
 #'       )
 #'     ),
 #'     BasicAuthenticationProperties = list(
@@ -11059,7 +11147,9 @@ glue_delete_workflow <- function(Name) {
 #'         ),
 #'         DataOperationScopes = list(
 #'           "READ"|"WRITE"
-#'         )
+#'         ),
+#'         KeyOverride = "string",
+#'         PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH"
 #'       )
 #'     ),
 #'     CustomAuthenticationProperties = list(
@@ -11079,7 +11169,9 @@ glue_delete_workflow <- function(Name) {
 #'         ),
 #'         DataOperationScopes = list(
 #'           "READ"|"WRITE"
-#'         )
+#'         ),
+#'         KeyOverride = "string",
+#'         PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH"
 #'       )
 #'     )
 #'   ),
@@ -11108,7 +11200,9 @@ glue_delete_workflow <- function(Name) {
 #'           ),
 #'           DataOperationScopes = list(
 #'             "READ"|"WRITE"
-#'           )
+#'           ),
+#'           KeyOverride = "string",
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH"
 #'         )
 #'       ),
 #'       ConnectionPropertyNameOverrides = list(
@@ -11140,7 +11234,9 @@ glue_delete_workflow <- function(Name) {
 #'       ),
 #'       DataOperationScopes = list(
 #'         "READ"|"WRITE"
-#'       )
+#'       ),
+#'       KeyOverride = "string",
+#'       PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH"
 #'     )
 #'   ),
 #'   AthenaConnectionProperties = list(
@@ -11160,7 +11256,9 @@ glue_delete_workflow <- function(Name) {
 #'       ),
 #'       DataOperationScopes = list(
 #'         "READ"|"WRITE"
-#'       )
+#'       ),
+#'       KeyOverride = "string",
+#'       PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH"
 #'     )
 #'   ),
 #'   PythonConnectionProperties = list(
@@ -11180,7 +11278,9 @@ glue_delete_workflow <- function(Name) {
 #'       ),
 #'       DataOperationScopes = list(
 #'         "READ"|"WRITE"
-#'       )
+#'       ),
+#'       KeyOverride = "string",
+#'       PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH"
 #'     )
 #'   ),
 #'   SparkConnectionProperties = list(
@@ -11200,6 +11300,209 @@ glue_delete_workflow <- function(Name) {
 #'       ),
 #'       DataOperationScopes = list(
 #'         "READ"|"WRITE"
+#'       ),
+#'       KeyOverride = "string",
+#'       PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH"
+#'     )
+#'   ),
+#'   RestConfiguration = list(
+#'     GlobalSourceConfiguration = list(
+#'       RequestMethod = "GET"|"POST",
+#'       RequestPath = "string",
+#'       RequestParameters = list(
+#'         list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         )
+#'       ),
+#'       ResponseConfiguration = list(
+#'         ResultPath = "string",
+#'         ErrorPath = "string"
+#'       ),
+#'       PaginationConfiguration = list(
+#'         CursorConfiguration = list(
+#'           NextPage = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           ),
+#'           LimitParameter = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           )
+#'         ),
+#'         OffsetConfiguration = list(
+#'           OffsetParameter = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           ),
+#'           LimitParameter = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ValidationEndpointConfiguration = list(
+#'       RequestMethod = "GET"|"POST",
+#'       RequestPath = "string",
+#'       RequestParameters = list(
+#'         list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         )
+#'       ),
+#'       ResponseConfiguration = list(
+#'         ResultPath = "string",
+#'         ErrorPath = "string"
+#'       ),
+#'       PaginationConfiguration = list(
+#'         CursorConfiguration = list(
+#'           NextPage = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           ),
+#'           LimitParameter = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           )
+#'         ),
+#'         OffsetConfiguration = list(
+#'           OffsetParameter = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           ),
+#'           LimitParameter = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     EntityConfigurations = list(
+#'       list(
+#'         SourceConfiguration = list(
+#'           RequestMethod = "GET"|"POST",
+#'           RequestPath = "string",
+#'           RequestParameters = list(
+#'             list(
+#'               Name = "string",
+#'               KeyOverride = "string",
+#'               Required = TRUE|FALSE,
+#'               DefaultValue = "string",
+#'               AllowedValues = list(
+#'                 "string"
+#'               ),
+#'               PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'               PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'             )
+#'           ),
+#'           ResponseConfiguration = list(
+#'             ResultPath = "string",
+#'             ErrorPath = "string"
+#'           ),
+#'           PaginationConfiguration = list(
+#'             CursorConfiguration = list(
+#'               NextPage = list(
+#'                 Key = "string",
+#'                 DefaultValue = "string",
+#'                 PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'                 Value = list(
+#'                   ContentPath = "string",
+#'                   HeaderKey = "string"
+#'                 )
+#'               ),
+#'               LimitParameter = list(
+#'                 Key = "string",
+#'                 DefaultValue = "string",
+#'                 PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'                 Value = list(
+#'                   ContentPath = "string",
+#'                   HeaderKey = "string"
+#'                 )
+#'               )
+#'             ),
+#'             OffsetConfiguration = list(
+#'               OffsetParameter = list(
+#'                 Key = "string",
+#'                 DefaultValue = "string",
+#'                 PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'                 Value = list(
+#'                   ContentPath = "string",
+#'                   HeaderKey = "string"
+#'                 )
+#'               ),
+#'               LimitParameter = list(
+#'                 Key = "string",
+#'                 DefaultValue = "string",
+#'                 PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'                 Value = list(
+#'                   ContentPath = "string",
+#'                   HeaderKey = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Schema = list(
+#'           list(
+#'             Name = "string",
+#'             FieldDataType = "INT"|"SMALLINT"|"BIGINT"|"FLOAT"|"LONG"|"DATE"|"BOOLEAN"|"MAP"|"ARRAY"|"STRING"|"TIMESTAMP"|"DECIMAL"|"BYTE"|"SHORT"|"DOUBLE"|"STRUCT"|"BINARY"|"UNION"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   )
@@ -11270,7 +11573,7 @@ glue_describe_connection_type <- function(ConnectionType) {
 #'       FieldName = "string",
 #'       Label = "string",
 #'       Description = "string",
-#'       FieldType = "INT"|"SMALLINT"|"BIGINT"|"FLOAT"|"LONG"|"DATE"|"BOOLEAN"|"MAP"|"ARRAY"|"STRING"|"TIMESTAMP"|"DECIMAL"|"BYTE"|"SHORT"|"DOUBLE"|"STRUCT",
+#'       FieldType = "INT"|"SMALLINT"|"BIGINT"|"FLOAT"|"LONG"|"DATE"|"BOOLEAN"|"MAP"|"ARRAY"|"STRING"|"TIMESTAMP"|"DECIMAL"|"BYTE"|"SHORT"|"DOUBLE"|"STRUCT"|"BINARY"|"UNION",
 #'       IsPrimaryKey = TRUE|FALSE,
 #'       IsNullable = TRUE|FALSE,
 #'       IsRetrievable = TRUE|FALSE,
@@ -14053,7 +14356,8 @@ glue_get_data_quality_ruleset <- function(Name) {
 #'   AdditionalRunOptions = list(
 #'     CloudWatchMetricsEnabled = TRUE|FALSE,
 #'     ResultsS3Prefix = "string",
-#'     CompositeRuleEvaluationMethod = "COLUMN"|"ROW"
+#'     CompositeRuleEvaluationMethod = "COLUMN"|"ROW",
+#'     CustomLogGroupPrefix = "string"
 #'   ),
 #'   Status = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
 #'   ErrorString = "string",
@@ -19426,19 +19730,100 @@ glue_get_mapping <- function(Source, Sinks = NULL, Location = NULL) {
 }
 .glue$operations$get_mapping <- glue_get_mapping
 
+#' Get the associated metadata/information for a task run, given a task run
+#' ID
+#'
+#' @description
+#' Get the associated metadata/information for a task run, given a task run
+#' ID.
+#'
+#' @usage
+#' glue_get_materialized_view_refresh_task_run(CatalogId,
+#'   MaterializedViewRefreshTaskRunId)
+#'
+#' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the table resides. If none is supplied,
+#' the account ID is used by default.
+#' @param MaterializedViewRefreshTaskRunId &#91;required&#93; The identifier for the particular materialized view refresh task run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MaterializedViewRefreshTaskRun = list(
+#'     CustomerId = "string",
+#'     MaterializedViewRefreshTaskRunId = "string",
+#'     DatabaseName = "string",
+#'     TableName = "string",
+#'     CatalogId = "string",
+#'     Role = "string",
+#'     Status = "STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"STOPPED",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ErrorMessage = "string",
+#'     DPUSeconds = 123.0,
+#'     RefreshType = "FULL"|"INCREMENTAL",
+#'     ProcessedBytes = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_materialized_view_refresh_task_run(
+#'   CatalogId = "string",
+#'   MaterializedViewRefreshTaskRunId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_materialized_view_refresh_task_run
+#'
+#' @aliases glue_get_materialized_view_refresh_task_run
+glue_get_materialized_view_refresh_task_run <- function(CatalogId, MaterializedViewRefreshTaskRunId) {
+  op <- new_operation(
+    name = "GetMaterializedViewRefreshTaskRun",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_materialized_view_refresh_task_run_input(CatalogId = CatalogId, MaterializedViewRefreshTaskRunId = MaterializedViewRefreshTaskRunId)
+  output <- .glue$get_materialized_view_refresh_task_run_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_materialized_view_refresh_task_run <- glue_get_materialized_view_refresh_task_run
+
 #' Retrieves information about a specified partition
 #'
 #' @description
 #' Retrieves information about a specified partition.
 #'
 #' @usage
-#' glue_get_partition(CatalogId, DatabaseName, TableName, PartitionValues)
+#' glue_get_partition(CatalogId, DatabaseName, TableName, PartitionValues,
+#'   AuditContext)
 #'
 #' @param CatalogId The ID of the Data Catalog where the partition in question resides. If
 #' none is provided, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partition resides.
 #' @param TableName &#91;required&#93; The name of the partition's table.
 #' @param PartitionValues &#91;required&#93; The values that define the partition.
+#' @param AuditContext 
 #'
 #' @return
 #' A list with the following syntax:
@@ -19535,6 +19920,13 @@ glue_get_mapping <- function(Source, Sinks = NULL, Location = NULL) {
 #'   TableName = "string",
 #'   PartitionValues = list(
 #'     "string"
+#'   ),
+#'   AuditContext = list(
+#'     AdditionalAuditContext = "string",
+#'     RequestedColumns = list(
+#'       "string"
+#'     ),
+#'     AllColumnsRequested = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -19544,7 +19936,7 @@ glue_get_mapping <- function(Source, Sinks = NULL, Location = NULL) {
 #' @rdname glue_get_partition
 #'
 #' @aliases glue_get_partition
-glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionValues) {
+glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionValues, AuditContext = NULL) {
   op <- new_operation(
     name = "GetPartition",
     http_method = "POST",
@@ -19553,7 +19945,7 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$get_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues)
+  input <- .glue$get_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, AuditContext = AuditContext)
   output <- .glue$get_partition_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -19653,7 +20045,7 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' @usage
 #' glue_get_partitions(CatalogId, DatabaseName, TableName, Expression,
 #'   NextToken, Segment, MaxResults, ExcludeColumnSchema, TransactionId,
-#'   QueryAsOfTime)
+#'   QueryAsOfTime, AuditContext)
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is provided, the Amazon Web Services account ID is used by default.
@@ -19757,6 +20149,7 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' @param QueryAsOfTime The time as of when to read the partition contents. If not set, the most
 #' recent transaction commit time will be used. Cannot be specified along
 #' with `TransactionId`.
+#' @param AuditContext 
 #'
 #' @return
 #' A list with the following syntax:
@@ -19865,6 +20258,13 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #'   TransactionId = "string",
 #'   QueryAsOfTime = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   AuditContext = list(
+#'     AdditionalAuditContext = "string",
+#'     RequestedColumns = list(
+#'       "string"
+#'     ),
+#'     AllColumnsRequested = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -19874,7 +20274,7 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' @rdname glue_get_partitions
 #'
 #' @aliases glue_get_partitions
-glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expression = NULL, NextToken = NULL, Segment = NULL, MaxResults = NULL, ExcludeColumnSchema = NULL, TransactionId = NULL, QueryAsOfTime = NULL) {
+glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expression = NULL, NextToken = NULL, Segment = NULL, MaxResults = NULL, ExcludeColumnSchema = NULL, TransactionId = NULL, QueryAsOfTime = NULL, AuditContext = NULL) {
   op <- new_operation(
     name = "GetPartitions",
     http_method = "POST",
@@ -19883,7 +20283,7 @@ glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expre
     paginator = list(result_key = "Partitions", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
-  input <- .glue$get_partitions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults, ExcludeColumnSchema = ExcludeColumnSchema, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime)
+  input <- .glue$get_partitions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults, ExcludeColumnSchema = ExcludeColumnSchema, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, AuditContext = AuditContext)
   output <- .glue$get_partitions_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -21193,7 +21593,8 @@ glue_get_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type) {
 #' Retrieves a specified version of a table.
 #'
 #' @usage
-#' glue_get_table_version(CatalogId, DatabaseName, TableName, VersionId)
+#' glue_get_table_version(CatalogId, DatabaseName, TableName, VersionId,
+#'   AuditContext)
 #'
 #' @param CatalogId The ID of the Data Catalog where the tables reside. If none is provided,
 #' the Amazon Web Services account ID is used by default.
@@ -21203,6 +21604,7 @@ glue_get_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type) {
 #' lowercase.
 #' @param VersionId The ID value of the table version to be retrieved. A `VersionID` is a
 #' string representation of an integer. Each version is incremented by 1.
+#' @param AuditContext 
 #'
 #' @return
 #' A list with the following syntax:
@@ -21391,7 +21793,14 @@ glue_get_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type) {
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
-#'   VersionId = "string"
+#'   VersionId = "string",
+#'   AuditContext = list(
+#'     AdditionalAuditContext = "string",
+#'     RequestedColumns = list(
+#'       "string"
+#'     ),
+#'     AllColumnsRequested = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -21400,7 +21809,7 @@ glue_get_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type) {
 #' @rdname glue_get_table_version
 #'
 #' @aliases glue_get_table_version
-glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, VersionId = NULL) {
+glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, VersionId = NULL, AuditContext = NULL) {
   op <- new_operation(
     name = "GetTableVersion",
     http_method = "POST",
@@ -21409,7 +21818,7 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$get_table_version_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, VersionId = VersionId)
+  input <- .glue$get_table_version_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, VersionId = VersionId, AuditContext = AuditContext)
   output <- .glue$get_table_version_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -21428,7 +21837,7 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #'
 #' @usage
 #' glue_get_table_versions(CatalogId, DatabaseName, TableName, NextToken,
-#'   MaxResults)
+#'   MaxResults, AuditContext)
 #'
 #' @param CatalogId The ID of the Data Catalog where the tables reside. If none is provided,
 #' the Amazon Web Services account ID is used by default.
@@ -21438,6 +21847,7 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #' lowercase.
 #' @param NextToken A continuation token, if this is not the first call.
 #' @param MaxResults The maximum number of table versions to return in one response.
+#' @param AuditContext 
 #'
 #' @return
 #' A list with the following syntax:
@@ -21630,7 +22040,14 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #'   DatabaseName = "string",
 #'   TableName = "string",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   AuditContext = list(
+#'     AdditionalAuditContext = "string",
+#'     RequestedColumns = list(
+#'       "string"
+#'     ),
+#'     AllColumnsRequested = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -21639,7 +22056,7 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #' @rdname glue_get_table_versions
 #'
 #' @aliases glue_get_table_versions
-glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, NextToken = NULL, MaxResults = NULL) {
+glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, NextToken = NULL, MaxResults = NULL, AuditContext = NULL) {
   op <- new_operation(
     name = "GetTableVersions",
     http_method = "POST",
@@ -21648,7 +22065,7 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
     paginator = list(result_key = "TableVersions", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
-  input <- .glue$get_table_versions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .glue$get_table_versions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, NextToken = NextToken, MaxResults = MaxResults, AuditContext = AuditContext)
   output <- .glue$get_table_versions_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -24154,9 +24571,16 @@ glue_list_column_statistics_task_runs <- function(MaxResults = NULL, NextToken =
 #' The [`list_connection_types`][glue_list_connection_types] API provides a
 #' discovery mechanism to learn available connection types in Glue. The
 #' response contains a list of connection types with high-level details of
-#' what is supported for each connection type. The connection types listed
-#' are the set of supported options for the `ConnectionType` value in the
+#' what is supported for each connection type, including both built-in
+#' connection types and custom connection types registered via
+#' [`register_connection_type`][glue_register_connection_type]. The
+#' connection types listed are the set of supported options for the
+#' `ConnectionType` value in the
 #' [`create_connection`][glue_create_connection] API.
+#' 
+#' See also: [`describe_connection_type`][glue_describe_connection_type],
+#' [`register_connection_type`][glue_register_connection_type],
+#' [`delete_connection_type`][glue_delete_connection_type]
 #'
 #' @usage
 #' glue_list_connection_types(MaxResults, NextToken)
@@ -24772,7 +25196,8 @@ glue_list_data_quality_rule_recommendation_runs <- function(Filter = NULL, NextT
 #'     ),
 #'     StartedAfter = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     RulesetName = "string"
 #'   ),
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -25456,6 +25881,92 @@ glue_list_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter 
   return(response)
 }
 .glue$operations$list_ml_transforms <- glue_list_ml_transforms
+
+#' List all task runs for a particular account
+#'
+#' @description
+#' List all task runs for a particular account.
+#'
+#' @usage
+#' glue_list_materialized_view_refresh_task_runs(CatalogId, DatabaseName,
+#'   TableName, MaxResults, NextToken)
+#'
+#' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the table resides. If none is supplied,
+#' the account ID is used by default.
+#' @param DatabaseName The database where the table resides.
+#' @param TableName The name of the table for which statistics is generated.
+#' @param MaxResults The maximum size of the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MaterializedViewRefreshTaskRuns = list(
+#'     list(
+#'       CustomerId = "string",
+#'       MaterializedViewRefreshTaskRunId = "string",
+#'       DatabaseName = "string",
+#'       TableName = "string",
+#'       CatalogId = "string",
+#'       Role = "string",
+#'       Status = "STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"STOPPED",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ErrorMessage = "string",
+#'       DPUSeconds = 123.0,
+#'       RefreshType = "FULL"|"INCREMENTAL",
+#'       ProcessedBytes = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_materialized_view_refresh_task_runs(
+#'   CatalogId = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_materialized_view_refresh_task_runs
+#'
+#' @aliases glue_list_materialized_view_refresh_task_runs
+glue_list_materialized_view_refresh_task_runs <- function(CatalogId, DatabaseName = NULL, TableName = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListMaterializedViewRefreshTaskRuns",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MaterializedViewRefreshTaskRuns"),
+    stream_api = FALSE
+  )
+  input <- .glue$list_materialized_view_refresh_task_runs_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_materialized_view_refresh_task_runs_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_materialized_view_refresh_task_runs <- glue_list_materialized_view_refresh_task_runs
 
 #' Returns a list of registries that you have created, with minimal
 #' registry information
@@ -26644,6 +27155,571 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 }
 .glue$operations$query_schema_version_metadata <- glue_query_schema_version_metadata
 
+#' Registers a custom connection type in Glue based on the configuration
+#' provided
+#'
+#' @description
+#' Registers a custom connection type in Glue based on the configuration
+#' provided. This operation enables customers to configure custom
+#' connectors for any data source with REST-based APIs, eliminating the
+#' need for building custom Lambda connectors.
+#' 
+#' The registered connection type stores details about how requests and
+#' responses are interpreted by REST sources, including connection
+#' properties, authentication configuration, and REST configuration with
+#' entity definitions. Once registered, customers can create connections
+#' using this connection type and work with them the same way as natively
+#' supported Glue connectors.
+#' 
+#' Supports multiple authentication types including Basic, OAuth2 (Client
+#' Credentials, JWT Bearer, Authorization Code), and Custom Auth
+#' configurations.
+#'
+#' @usage
+#' glue_register_connection_type(ConnectionType, IntegrationType,
+#'   Description, ConnectionProperties, ConnectorAuthenticationConfiguration,
+#'   RestConfiguration, Tags)
+#'
+#' @param ConnectionType &#91;required&#93; The name of the connection type. Must be between 1 and 255 characters
+#' and must be prefixed with "REST-" to indicate it is a REST-based
+#' connector.
+#' @param IntegrationType &#91;required&#93; The integration type for the connection. Currently only "REST" protocol
+#' is supported.
+#' @param Description A description of the connection type. Can be up to 2048 characters and
+#' provides details about the purpose and functionality of the connection
+#' type.
+#' @param ConnectionProperties &#91;required&#93; Defines the base URL and additional request parameters needed during
+#' connection creation for this connection type.
+#' @param ConnectorAuthenticationConfiguration &#91;required&#93; Defines the supported authentication types and required properties for
+#' this connection type, including Basic, OAuth2, and Custom authentication
+#' methods.
+#' @param RestConfiguration &#91;required&#93; Defines the HTTP request and response configuration, validation
+#' endpoint, and entity configurations for REST API interactions.
+#' @param Tags The tags you assign to the connection type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionTypeArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$register_connection_type(
+#'   ConnectionType = "string",
+#'   IntegrationType = "REST",
+#'   Description = "string",
+#'   ConnectionProperties = list(
+#'     Url = list(
+#'       Name = "string",
+#'       KeyOverride = "string",
+#'       Required = TRUE|FALSE,
+#'       DefaultValue = "string",
+#'       AllowedValues = list(
+#'         "string"
+#'       ),
+#'       PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'       PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'     ),
+#'     AdditionalRequestParameters = list(
+#'       list(
+#'         Name = "string",
+#'         KeyOverride = "string",
+#'         Required = TRUE|FALSE,
+#'         DefaultValue = "string",
+#'         AllowedValues = list(
+#'           "string"
+#'         ),
+#'         PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'         PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'       )
+#'     )
+#'   ),
+#'   ConnectorAuthenticationConfiguration = list(
+#'     AuthenticationTypes = list(
+#'       "BASIC"|"OAUTH2"|"CUSTOM"|"IAM"
+#'     ),
+#'     OAuth2Properties = list(
+#'       OAuth2GrantType = "CLIENT_CREDENTIALS"|"JWT_BEARER"|"AUTHORIZATION_CODE",
+#'       ClientCredentialsProperties = list(
+#'         TokenUrl = list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         RequestMethod = "GET"|"POST",
+#'         ContentType = "APPLICATION_JSON"|"URL_ENCODED",
+#'         ClientId = list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         ClientSecret = list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         Scope = list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         TokenUrlParameters = list(
+#'           list(
+#'             Name = "string",
+#'             KeyOverride = "string",
+#'             Required = TRUE|FALSE,
+#'             DefaultValue = "string",
+#'             AllowedValues = list(
+#'               "string"
+#'             ),
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           )
+#'         )
+#'       ),
+#'       JWTBearerProperties = list(
+#'         TokenUrl = list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         RequestMethod = "GET"|"POST",
+#'         ContentType = "APPLICATION_JSON"|"URL_ENCODED",
+#'         JwtToken = list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         TokenUrlParameters = list(
+#'           list(
+#'             Name = "string",
+#'             KeyOverride = "string",
+#'             Required = TRUE|FALSE,
+#'             DefaultValue = "string",
+#'             AllowedValues = list(
+#'               "string"
+#'             ),
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           )
+#'         )
+#'       ),
+#'       AuthorizationCodeProperties = list(
+#'         AuthorizationCodeUrl = list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         AuthorizationCode = list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         RedirectUri = list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         TokenUrl = list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         RequestMethod = "GET"|"POST",
+#'         ContentType = "APPLICATION_JSON"|"URL_ENCODED",
+#'         ClientId = list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         ClientSecret = list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         Scope = list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         Prompt = list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         TokenUrlParameters = list(
+#'           list(
+#'             Name = "string",
+#'             KeyOverride = "string",
+#'             Required = TRUE|FALSE,
+#'             DefaultValue = "string",
+#'             AllowedValues = list(
+#'               "string"
+#'             ),
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     BasicAuthenticationProperties = list(
+#'       Username = list(
+#'         Name = "string",
+#'         KeyOverride = "string",
+#'         Required = TRUE|FALSE,
+#'         DefaultValue = "string",
+#'         AllowedValues = list(
+#'           "string"
+#'         ),
+#'         PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'         PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'       ),
+#'       Password = list(
+#'         Name = "string",
+#'         KeyOverride = "string",
+#'         Required = TRUE|FALSE,
+#'         DefaultValue = "string",
+#'         AllowedValues = list(
+#'           "string"
+#'         ),
+#'         PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'         PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'       )
+#'     ),
+#'     CustomAuthenticationProperties = list(
+#'       AuthenticationParameters = list(
+#'         list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   RestConfiguration = list(
+#'     GlobalSourceConfiguration = list(
+#'       RequestMethod = "GET"|"POST",
+#'       RequestPath = "string",
+#'       RequestParameters = list(
+#'         list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         )
+#'       ),
+#'       ResponseConfiguration = list(
+#'         ResultPath = "string",
+#'         ErrorPath = "string"
+#'       ),
+#'       PaginationConfiguration = list(
+#'         CursorConfiguration = list(
+#'           NextPage = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           ),
+#'           LimitParameter = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           )
+#'         ),
+#'         OffsetConfiguration = list(
+#'           OffsetParameter = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           ),
+#'           LimitParameter = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ValidationEndpointConfiguration = list(
+#'       RequestMethod = "GET"|"POST",
+#'       RequestPath = "string",
+#'       RequestParameters = list(
+#'         list(
+#'           Name = "string",
+#'           KeyOverride = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           AllowedValues = list(
+#'             "string"
+#'           ),
+#'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         )
+#'       ),
+#'       ResponseConfiguration = list(
+#'         ResultPath = "string",
+#'         ErrorPath = "string"
+#'       ),
+#'       PaginationConfiguration = list(
+#'         CursorConfiguration = list(
+#'           NextPage = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           ),
+#'           LimitParameter = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           )
+#'         ),
+#'         OffsetConfiguration = list(
+#'           OffsetParameter = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           ),
+#'           LimitParameter = list(
+#'             Key = "string",
+#'             DefaultValue = "string",
+#'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'             Value = list(
+#'               ContentPath = "string",
+#'               HeaderKey = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     EntityConfigurations = list(
+#'       list(
+#'         SourceConfiguration = list(
+#'           RequestMethod = "GET"|"POST",
+#'           RequestPath = "string",
+#'           RequestParameters = list(
+#'             list(
+#'               Name = "string",
+#'               KeyOverride = "string",
+#'               Required = TRUE|FALSE,
+#'               DefaultValue = "string",
+#'               AllowedValues = list(
+#'                 "string"
+#'               ),
+#'               PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'               PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'             )
+#'           ),
+#'           ResponseConfiguration = list(
+#'             ResultPath = "string",
+#'             ErrorPath = "string"
+#'           ),
+#'           PaginationConfiguration = list(
+#'             CursorConfiguration = list(
+#'               NextPage = list(
+#'                 Key = "string",
+#'                 DefaultValue = "string",
+#'                 PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'                 Value = list(
+#'                   ContentPath = "string",
+#'                   HeaderKey = "string"
+#'                 )
+#'               ),
+#'               LimitParameter = list(
+#'                 Key = "string",
+#'                 DefaultValue = "string",
+#'                 PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'                 Value = list(
+#'                   ContentPath = "string",
+#'                   HeaderKey = "string"
+#'                 )
+#'               )
+#'             ),
+#'             OffsetConfiguration = list(
+#'               OffsetParameter = list(
+#'                 Key = "string",
+#'                 DefaultValue = "string",
+#'                 PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'                 Value = list(
+#'                   ContentPath = "string",
+#'                   HeaderKey = "string"
+#'                 )
+#'               ),
+#'               LimitParameter = list(
+#'                 Key = "string",
+#'                 DefaultValue = "string",
+#'                 PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
+#'                 Value = list(
+#'                   ContentPath = "string",
+#'                   HeaderKey = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Schema = list(
+#'           list(
+#'             Name = "string",
+#'             FieldDataType = "INT"|"SMALLINT"|"BIGINT"|"FLOAT"|"LONG"|"DATE"|"BOOLEAN"|"MAP"|"ARRAY"|"STRING"|"TIMESTAMP"|"DECIMAL"|"BYTE"|"SHORT"|"DOUBLE"|"STRUCT"|"BINARY"|"UNION"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_register_connection_type
+#'
+#' @aliases glue_register_connection_type
+glue_register_connection_type <- function(ConnectionType, IntegrationType, Description = NULL, ConnectionProperties, ConnectorAuthenticationConfiguration, RestConfiguration, Tags = NULL) {
+  op <- new_operation(
+    name = "RegisterConnectionType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$register_connection_type_input(ConnectionType = ConnectionType, IntegrationType = IntegrationType, Description = Description, ConnectionProperties = ConnectionProperties, ConnectorAuthenticationConfiguration = ConnectorAuthenticationConfiguration, RestConfiguration = RestConfiguration, Tags = Tags)
+  output <- .glue$register_connection_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$register_connection_type <- glue_register_connection_type
+
 #' Adds a new version to the existing schema
 #'
 #' @description
@@ -27692,7 +28768,8 @@ glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, Nu
 #'   AdditionalRunOptions = list(
 #'     CloudWatchMetricsEnabled = TRUE|FALSE,
 #'     ResultsS3Prefix = "string",
-#'     CompositeRuleEvaluationMethod = "COLUMN"|"ROW"
+#'     CompositeRuleEvaluationMethod = "COLUMN"|"ROW",
+#'     CustomLogGroupPrefix = "string"
 #'   ),
 #'   RulesetNames = list(
 #'     "string"
@@ -28242,6 +29319,66 @@ glue_start_ml_labeling_set_generation_task_run <- function(TransformId, OutputS3
 }
 .glue$operations$start_ml_labeling_set_generation_task_run <- glue_start_ml_labeling_set_generation_task_run
 
+#' Starts a materialized view refresh task run, for a specified table and
+#' columns
+#'
+#' @description
+#' Starts a materialized view refresh task run, for a specified table and
+#' columns.
+#'
+#' @usage
+#' glue_start_materialized_view_refresh_task_run(CatalogId, DatabaseName,
+#'   TableName, FullRefresh)
+#'
+#' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the table reside. If none is supplied,
+#' the account ID is used by default.
+#' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
+#' @param TableName &#91;required&#93; The name of the table to generate run the materialized view refresh
+#' task.
+#' @param FullRefresh Specifies whether this is a full refresh of the task run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MaterializedViewRefreshTaskRunId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_materialized_view_refresh_task_run(
+#'   CatalogId = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   FullRefresh = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_start_materialized_view_refresh_task_run
+#'
+#' @aliases glue_start_materialized_view_refresh_task_run
+glue_start_materialized_view_refresh_task_run <- function(CatalogId, DatabaseName, TableName, FullRefresh = NULL) {
+  op <- new_operation(
+    name = "StartMaterializedViewRefreshTaskRun",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$start_materialized_view_refresh_task_run_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, FullRefresh = FullRefresh)
+  output <- .glue$start_materialized_view_refresh_task_run_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$start_materialized_view_refresh_task_run <- glue_start_materialized_view_refresh_task_run
+
 #' Starts an existing trigger
 #'
 #' @description
@@ -28533,6 +29670,58 @@ glue_stop_crawler_schedule <- function(CrawlerName) {
   return(response)
 }
 .glue$operations$stop_crawler_schedule <- glue_stop_crawler_schedule
+
+#' Stops a materialized view refresh task run, for a specified table and
+#' columns
+#'
+#' @description
+#' Stops a materialized view refresh task run, for a specified table and
+#' columns.
+#'
+#' @usage
+#' glue_stop_materialized_view_refresh_task_run(CatalogId, DatabaseName,
+#'   TableName)
+#'
+#' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the table reside. If none is supplied,
+#' the account ID is used by default.
+#' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
+#' @param TableName &#91;required&#93; The name of the table to generate statistics.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_materialized_view_refresh_task_run(
+#'   CatalogId = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_stop_materialized_view_refresh_task_run
+#'
+#' @aliases glue_stop_materialized_view_refresh_task_run
+glue_stop_materialized_view_refresh_task_run <- function(CatalogId, DatabaseName, TableName) {
+  op <- new_operation(
+    name = "StopMaterializedViewRefreshTaskRun",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$stop_materialized_view_refresh_task_run_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName)
+  output <- .glue$stop_materialized_view_refresh_task_run_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$stop_materialized_view_refresh_task_run <- glue_stop_materialized_view_refresh_task_run
 
 #' Stops the session
 #'
@@ -29007,7 +30196,8 @@ glue_update_blueprint <- function(Name, Description = NULL, BlueprintLocation) {
 #'         )
 #'       )
 #'     ),
-#'     AllowFullTableExternalDataAccess = "True"|"False"
+#'     AllowFullTableExternalDataAccess = "True"|"False",
+#'     OverwriteChildResourcePermissionsWithDefault = "Accept"|"Deny"
 #'   )
 #' )
 #' ```

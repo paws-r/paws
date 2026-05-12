@@ -14,7 +14,7 @@ NULL
 #' 
 #' For information on the permissions you need to use this API, see
 #' [Identity and access
-#' management](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.html)
+#' management](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/)
 #' in the *Amazon SQS Developer Guide.*
 #' 
 #' You can use [Amazon Web Services

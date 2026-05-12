@@ -21,8 +21,6 @@ to join the SVM. Joining an Active Directory provides user
 authentication and access control for SMB clients, including Microsoft
 Windows and macOS clients accessing the file system.}
 
-\item{ClientRequestToken}{}
-
 \item{FileSystemId}{[required]}
 
 \item{Name}{[required] The name of the SVM.}
@@ -30,8 +28,6 @@ Windows and macOS clients accessing the file system.}
 \item{SvmAdminPassword}{The password to use when managing the SVM using the NetApp ONTAP CLI or
 REST API. If you do not specify a password, you can still use the file
 system's \code{fsxadmin} user to manage the SVM.}
-
-\item{Tags}{}
 
 \item{RootVolumeSecurityStyle}{The security style of the root volume of the SVM. Specify one of the
 following values:

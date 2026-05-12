@@ -36,8 +36,6 @@ send using the configuration set.}
 \item{Tags}{An array of objects that define the tags (keys and values) to associate
 with the configuration set.}
 
-\item{SuppressionOptions}{}
-
 \item{VdmOptions}{An object that defines the VDM options for emails that you send using
 the configuration set.}
 

@@ -13,12 +13,6 @@ connectcampaignservice_update_campaign_outbound_call_config(
 }
 \arguments{
 \item{id}{[required]}
-
-\item{connectContactFlowId}{}
-
-\item{connectSourcePhoneNumber}{}
-
-\item{answerMachineDetectionConfig}{}
 }
 \description{
 Updates the outbound call config of a campaign. This API is idempotent.

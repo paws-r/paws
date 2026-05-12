@@ -2135,7 +2135,17 @@ athena_start_calculation_execution <- function(SessionId, Description = NULL, Ca
 #' sequentially to the parameters in the query in the order in which the
 #' parameters occur.
 #' @param ResultReuseConfiguration Specifies the query result reuse behavior for the query.
-#' @param EngineConfiguration 
+#' @param EngineConfiguration The engine configuration for the workgroup, which includes the
+#' minimum/maximum number of Data Processing Units (DPU) that queries
+#' should use when running in provisioned capacity. If not specified,
+#' Athena uses default values (Default value for min is 4 and for max is
+#' Minimum of 124 and allocated DPUs).
+#' 
+#' To specify minimum and maximum DPU values for Capacity Reservations
+#' queries, the workgroup containing `EngineConfiguration` should have the
+#' following values: The name of the `Classifications` should be
+#' `athena-query-engine-properties`, with the only allowed properties as
+#' `max-dpu-count` and `min-dpu-count`.
 #'
 #' @keywords internal
 #'

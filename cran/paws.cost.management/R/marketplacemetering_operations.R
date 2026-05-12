@@ -3,25 +3,26 @@
 #' @include marketplacemetering_service.R
 NULL
 
-#' The CustomerIdentifier parameter is scheduled for deprecation on March
-#' 31, 2026
+#' Amazon Web Services Marketplace is introducing Concurrent Agreements,
+#' enabling buyers to make multiple purchases per Amazon Web Services
+#' account
 #'
 #' @description
-#' The `CustomerIdentifier` parameter is scheduled for deprecation on March 31, 2026. Use `CustomerAWSAccountID` instead.
+#' Amazon Web Services Marketplace is introducing Concurrent Agreements, enabling buyers to make multiple purchases per Amazon Web Services account. Starting June 1, 2026, new SaaS products must use `CustomerAWSAccountId` (instead of `CustomerIdentifier`), `LicenseArn` (instead of `ProductCode`) to support this feature. Existing integrations will continue to work. Review the new integration for Concurrent Agreements [here](https://catalog.workshops.aws/mpseller/en-US/saas/integration-for-concurrent-agreements).
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacemetering_batch_meter_usage/](https://www.paws-r-sdk.com/docs/marketplacemetering_batch_meter_usage/) for full documentation.
 #'
 #' @param UsageRecords &#91;required&#93; The set of `UsageRecords` to submit.
 #' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] accepts up
 #' to 25 `UsageRecords` at a time.
-#' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in Amazon Web
+#' @param ProductCode Product code is used to uniquely identify a product in Amazon Web
 #' Services Marketplace. The product code should be the same as the one
 #' used during the publishing of a new product.
 #'
 #' @keywords internal
 #'
 #' @rdname marketplacemetering_batch_meter_usage
-marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
+marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode = NULL) {
   op <- new_operation(
     name = "BatchMeterUsage",
     http_method = "POST",
@@ -40,10 +41,12 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 }
 .marketplacemetering$operations$batch_meter_usage <- marketplacemetering_batch_meter_usage
 
-#' API to emit metering records
+#' As a seller, your software hosted in the buyer's Amazon Web Services
+#' account uses this API action to emit metering records directly to Amazon
+#' Web Services Marketplace
 #'
 #' @description
-#' API to emit metering records. For identical requests, the API is idempotent and returns the metering record ID. This is used for metering flexible consumption pricing (FCP) Amazon Machine Images (AMI) and container products.
+#' As a seller, your software hosted in the buyer's Amazon Web Services account uses this API action to emit metering records directly to Amazon Web Services Marketplace. You must use the following buyer Amazon Web Services account credentials to sign the API request.
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacemetering_meter_usage/](https://www.paws-r-sdk.com/docs/marketplacemetering_meter_usage/) for full documentation.
 #'
@@ -146,14 +149,14 @@ marketplacemetering_register_usage <- function(ProductCode, PublicKeyVersion, No
 #' process
 #'
 #' @description
-#' [`resolve_customer`][marketplacemetering_resolve_customer] is called by a SaaS application during the registration process. When a buyer visits your website during the registration process, the buyer submits a registration token through their browser. The registration token is resolved through this API to obtain a `CustomerIdentifier` along with the `CustomerAWSAccountId` and `ProductCode`.
+#' [`resolve_customer`][marketplacemetering_resolve_customer] is called by a SaaS application during the registration process. When a buyer visits your website during the registration process, the buyer submits a registration token through their browser. The registration token is resolved through this API to obtain a `CustomerIdentifier` along with the `CustomerAWSAccountId`, `ProductCode`, and `LicenseArn`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacemetering_resolve_customer/](https://www.paws-r-sdk.com/docs/marketplacemetering_resolve_customer/) for full documentation.
 #'
 #' @param RegistrationToken &#91;required&#93; When a buyer visits your website during the registration process, the
 #' buyer submits a registration token through the browser. The registration
 #' token is resolved to obtain a `CustomerIdentifier` along with the
-#' `CustomerAWSAccountId` and `ProductCode`.
+#' `CustomerAWSAccountId`, `ProductCode`, and `LicenseArn`.
 #'
 #' @keywords internal
 #'

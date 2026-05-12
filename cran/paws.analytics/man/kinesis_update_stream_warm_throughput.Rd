@@ -8,6 +8,7 @@ Kinesis Data Streams on-demand data stream}
 kinesis_update_stream_warm_throughput(
   StreamARN = NULL,
   StreamName = NULL,
+  StreamId = NULL,
   WarmThroughputMiBps
 )
 }
@@ -15,6 +16,8 @@ kinesis_update_stream_warm_throughput(
 \item{StreamARN}{The ARN of the stream to be updated.}
 
 \item{StreamName}{The name of the stream to be updated.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 
 \item{WarmThroughputMiBps}{[required] The target warm throughput in MB/s that the stream should be scaled to
 handle. This represents the throughput capacity that will be immediately

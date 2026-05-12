@@ -5,12 +5,12 @@
 \title{Associate a Source Network to an existing CloudFormation Stack and
 modify launch templates to use this network}
 \usage{
-drs_associate_source_network_stack(cfnStackName, sourceNetworkID)
+drs_associate_source_network_stack(sourceNetworkID, cfnStackName)
 }
 \arguments{
-\item{cfnStackName}{[required] CloudFormation template to associate with a Source Network.}
-
 \item{sourceNetworkID}{[required] The Source Network ID to associate with CloudFormation template.}
+
+\item{cfnStackName}{[required] CloudFormation template to associate with a Source Network.}
 }
 \description{
 Associate a Source Network to an existing CloudFormation Stack and modify launch templates to use this network. Can be used for reverting to previously deployed CloudFormation stacks.

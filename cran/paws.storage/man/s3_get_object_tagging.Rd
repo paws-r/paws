@@ -45,8 +45,6 @@ in the \emph{Amazon S3 User Guide}.}
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
 provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
-
-\item{RequestPayer}{}
 }
 \description{
 This operation is not supported for directory buckets.

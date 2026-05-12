@@ -18,11 +18,7 @@ wellarchitected_list_lens_shares(
 \item{SharedWithPrefix}{The Amazon Web Services account ID, organization ID, or organizational
 unit (OU) ID with which the lens is shared.}
 
-\item{NextToken}{}
-
 \item{MaxResults}{The maximum number of results to return for this request.}
-
-\item{Status}{}
 }
 \description{
 List the lens shares associated with the lens.

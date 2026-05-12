@@ -463,6 +463,50 @@ cloudwatchlogs_create_log_stream <- function(logGroupName, logStreamName) {
 }
 .cloudwatchlogs$operations$create_log_stream <- cloudwatchlogs_create_log_stream
 
+#' Creates a lookup table by uploading CSV data
+#'
+#' @description
+#' Creates a lookup table by uploading CSV data. You can use lookup tables to enrich log data in CloudWatch Logs Insights queries with reference data such as user details, application names, or error descriptions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_lookup_table/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_lookup_table/) for full documentation.
+#'
+#' @param lookupTableName &#91;required&#93; The name of the lookup table. The name must be unique within your
+#' account and Region. The name can contain only alphanumeric characters
+#' and underscores, and can be up to 256 characters long.
+#' @param description A description of the lookup table. The description can be up to 1024
+#' characters long.
+#' @param tableBody &#91;required&#93; The CSV content of the lookup table. The first row must be a header row
+#' with column names. The content must use UTF-8 encoding and not exceed 10
+#' MB.
+#' @param kmsKeyId The ARN of the KMS key to use to encrypt the lookup table data. If you
+#' don't specify a key, the data is encrypted with an Amazon Web
+#' Services-owned key.
+#' @param tags A list of key-value pairs to associate with the lookup table. You can
+#' associate as many as 50 tags with a lookup table. Tags can help you
+#' organize and categorize your resources.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_create_lookup_table
+cloudwatchlogs_create_lookup_table <- function(lookupTableName, description = NULL, tableBody, kmsKeyId = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateLookupTable",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$create_lookup_table_input(lookupTableName = lookupTableName, description = description, tableBody = tableBody, kmsKeyId = kmsKeyId, tags = tags)
+  output <- .cloudwatchlogs$create_lookup_table_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$create_lookup_table <- cloudwatchlogs_create_lookup_table
+
 #' Creates a scheduled query that runs CloudWatch Logs Insights queries at
 #' regular intervals
 #'
@@ -478,7 +522,7 @@ cloudwatchlogs_create_log_stream <- function(logGroupName, logStreamName) {
 #' @param description An optional description for the scheduled query to help identify its
 #' purpose and functionality.
 #' @param queryLanguage &#91;required&#93; The query language to use for the scheduled query. Valid values are
-#' `LogsQL`, `PPL`, and `SQL`.
+#' `CWLI`, `PPL`, and `SQL`.
 #' @param queryString &#91;required&#93; The query string to execute. This is the same query syntax used in
 #' CloudWatch Logs Insights. Maximum length is 10,000 characters.
 #' @param logGroupIdentifiers An array of log group names or ARNs to query. You can specify between 1
@@ -922,6 +966,37 @@ cloudwatchlogs_delete_log_stream <- function(logGroupName, logStreamName) {
   return(response)
 }
 .cloudwatchlogs$operations$delete_log_stream <- cloudwatchlogs_delete_log_stream
+
+#' Deletes a lookup table permanently
+#'
+#' @description
+#' Deletes a lookup table permanently. This operation cannot be undone.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_lookup_table/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_lookup_table/) for full documentation.
+#'
+#' @param lookupTableArn &#91;required&#93; The ARN of the lookup table to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_lookup_table
+cloudwatchlogs_delete_lookup_table <- function(lookupTableArn) {
+  op <- new_operation(
+    name = "DeleteLookupTable",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$delete_lookup_table_input(lookupTableArn = lookupTableArn)
+  output <- .cloudwatchlogs$delete_lookup_table_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_lookup_table <- cloudwatchlogs_delete_lookup_table
 
 #' Deletes the specified metric filter
 #'
@@ -1712,6 +1787,43 @@ cloudwatchlogs_describe_log_streams <- function(logGroupName = NULL, logGroupIde
 }
 .cloudwatchlogs$operations$describe_log_streams <- cloudwatchlogs_describe_log_streams
 
+#' Retrieves metadata about lookup tables in your account
+#'
+#' @description
+#' Retrieves metadata about lookup tables in your account. You can optionally filter the results by table name prefix. Results are sorted by table name in ascending order.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_lookup_tables/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_lookup_tables/) for full documentation.
+#'
+#' @param lookupTableNamePrefix A prefix to filter lookup tables by name. Only tables whose names start
+#' with this prefix are returned. If you don't specify a prefix, all tables
+#' in the account and Region are returned.
+#' @param maxResults The maximum number of lookup tables to return in the response. The
+#' default value is 50 and the maximum value is 100.
+#' @param nextToken The token for the next set of items to return. (You received this token
+#' from a previous call.)
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_describe_lookup_tables
+cloudwatchlogs_describe_lookup_tables <- function(lookupTableNamePrefix = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeLookupTables",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$describe_lookup_tables_input(lookupTableNamePrefix = lookupTableNamePrefix, maxResults = maxResults, nextToken = nextToken)
+  output <- .cloudwatchlogs$describe_lookup_tables_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$describe_lookup_tables <- cloudwatchlogs_describe_lookup_tables
+
 #' Lists the specified metric filters
 #'
 #' @description
@@ -2467,7 +2579,7 @@ cloudwatchlogs_get_log_object <- function(unmask = NULL, logObjectPointer) {
     name = "GetLogObject",
     http_method = "POST",
     http_path = "/",
-    host_prefix = "streaming-",
+    host_prefix = "stream-",
     paginator = list(),
     stream_api = TRUE
   )
@@ -2522,6 +2634,37 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer, unmask = NULL) {
 }
 .cloudwatchlogs$operations$get_log_record <- cloudwatchlogs_get_log_record
 
+#' Retrieves the full content of a lookup table, including the CSV data
+#'
+#' @description
+#' Retrieves the full content of a lookup table, including the CSV data.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_lookup_table/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_lookup_table/) for full documentation.
+#'
+#' @param lookupTableArn &#91;required&#93; The ARN of the lookup table to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_get_lookup_table
+cloudwatchlogs_get_lookup_table <- function(lookupTableArn) {
+  op <- new_operation(
+    name = "GetLookupTable",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$get_lookup_table_input(lookupTableArn = lookupTableArn)
+  output <- .cloudwatchlogs$get_lookup_table_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$get_lookup_table <- cloudwatchlogs_get_lookup_table
+
 #' Returns the results from the specified query
 #'
 #' @description
@@ -2530,11 +2673,15 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer, unmask = NULL) {
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_query_results/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_query_results/) for full documentation.
 #'
 #' @param queryId &#91;required&#93; The ID number of the query.
+#' @param nextToken The token for the next set of items to return. The token expires after 1
+#' hour.
+#' @param maxItems The maximum number of log events to return in the response. The maximum
+#' is 10,000 log events.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_get_query_results
-cloudwatchlogs_get_query_results <- function(queryId) {
+cloudwatchlogs_get_query_results <- function(queryId, nextToken = NULL, maxItems = NULL) {
   op <- new_operation(
     name = "GetQueryResults",
     http_method = "POST",
@@ -2543,7 +2690,7 @@ cloudwatchlogs_get_query_results <- function(queryId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchlogs$get_query_results_input(queryId = queryId)
+  input <- .cloudwatchlogs$get_query_results_input(queryId = queryId, nextToken = nextToken, maxItems = maxItems)
   output <- .cloudwatchlogs$get_query_results_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -2889,11 +3036,13 @@ cloudwatchlogs_list_log_anomaly_detectors <- function(filterLogGroupArn = NULL, 
 #' field indexes. Only log groups containing all specified field indexes
 #' are returned. You can specify 1 to 20 field index names, each with 1 to
 #' 512 characters.
+#' @param logGroupTags An array of tag filters to return only log groups that have specific
+#' tags. Multiple filters are combined with AND logic.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_list_log_groups
-cloudwatchlogs_list_log_groups <- function(logGroupNamePattern = NULL, logGroupClass = NULL, includeLinkedAccounts = NULL, accountIdentifiers = NULL, nextToken = NULL, limit = NULL, dataSources = NULL, fieldIndexNames = NULL) {
+cloudwatchlogs_list_log_groups <- function(logGroupNamePattern = NULL, logGroupClass = NULL, includeLinkedAccounts = NULL, accountIdentifiers = NULL, nextToken = NULL, limit = NULL, dataSources = NULL, fieldIndexNames = NULL, logGroupTags = NULL) {
   op <- new_operation(
     name = "ListLogGroups",
     http_method = "POST",
@@ -2902,7 +3051,7 @@ cloudwatchlogs_list_log_groups <- function(logGroupNamePattern = NULL, logGroupC
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchlogs$list_log_groups_input(logGroupNamePattern = logGroupNamePattern, logGroupClass = logGroupClass, includeLinkedAccounts = includeLinkedAccounts, accountIdentifiers = accountIdentifiers, nextToken = nextToken, limit = limit, dataSources = dataSources, fieldIndexNames = fieldIndexNames)
+  input <- .cloudwatchlogs$list_log_groups_input(logGroupNamePattern = logGroupNamePattern, logGroupClass = logGroupClass, includeLinkedAccounts = includeLinkedAccounts, accountIdentifiers = accountIdentifiers, nextToken = nextToken, limit = limit, dataSources = dataSources, fieldIndexNames = fieldIndexNames, logGroupTags = logGroupTags)
   output <- .cloudwatchlogs$list_log_groups_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -3267,6 +3416,51 @@ cloudwatchlogs_put_account_policy <- function(policyName, policyDocument, policy
 }
 .cloudwatchlogs$operations$put_account_policy <- cloudwatchlogs_put_account_policy
 
+#' Enables or disables bearer token authentication for the specified log
+#' group
+#'
+#' @description
+#' Enables or disables bearer token authentication for the specified log group. When enabled on a log group, bearer token authentication is enabled on operations until it is explicitly disabled.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_bearer_token_authentication/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_bearer_token_authentication/) for full documentation.
+#'
+#' @param logGroupIdentifier &#91;required&#93; The name or ARN of the log group.
+#' 
+#' Type: String
+#' 
+#' Length Constraints: Minimum length of 1. Maximum length of 512.
+#' 
+#' Pattern: `[\.\-_/#A-Za-z0-9]+`
+#' 
+#' Required: Yes
+#' @param bearerTokenAuthenticationEnabled &#91;required&#93; Whether to enable bearer token authentication.
+#' 
+#' Type: Boolean
+#' 
+#' Required: Yes
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_put_bearer_token_authentication
+cloudwatchlogs_put_bearer_token_authentication <- function(logGroupIdentifier, bearerTokenAuthenticationEnabled) {
+  op <- new_operation(
+    name = "PutBearerTokenAuthentication",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$put_bearer_token_authentication_input(logGroupIdentifier = logGroupIdentifier, bearerTokenAuthenticationEnabled = bearerTokenAuthenticationEnabled)
+  output <- .cloudwatchlogs$put_bearer_token_authentication_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$put_bearer_token_authentication <- cloudwatchlogs_put_bearer_token_authentication
+
 #' Creates a data protection policy for the specified log group
 #'
 #' @description
@@ -3441,6 +3635,12 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
 #' @param resourceArn &#91;required&#93; The ARN of the Amazon Web Services resource that is generating and
 #' sending logs. For example,
 #' `arn:aws:workmail:us-east-1:123456789012:organization/m-1234EXAMPLEabcd1234abcd1234abcd1234`
+#' 
+#' For the `SECURITY_FINDING_LOGS` logType, use a wildcard ARN for the hub
+#' resource. For Amazon Web Services Security Hub CSPM, use
+#' `arn:aws:securityhub:us-east-1:111122223333:hub/*` and for Amazon Web
+#' Services Security Hub, use
+#' `arn:aws:securityhub:us-east-1:111122223333:hubv2/*`
 #' @param logType &#91;required&#93; Defines the type of log that the source is sending.
 #' 
 #' -   For Amazon Bedrock Agents, the valid values are `APPLICATION_LOGS`
@@ -3458,10 +3658,15 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
 #' -   For Amazon Bedrock AgentCore Identity, the valid values are
 #'     `APPLICATION_LOGS` and `TRACES`.
 #' 
+#' -   For Amazon Bedrock AgentCore Memory, the valid values are
+#'     `APPLICATION_LOGS` and `TRACES`.
+#' 
 #' -   For Amazon Bedrock AgentCore Gateway, the valid values are
 #'     `APPLICATION_LOGS` and `TRACES`.
 #' 
 #' -   For CloudFront, the valid value is `ACCESS_LOGS`.
+#' 
+#' -   For DevOps Agent, the valid value is `APPLICATION_LOGS`.
 #' 
 #' -   For Amazon CodeWhisperer, the valid value is `EVENT_LOGS`.
 #' 
@@ -3472,6 +3677,10 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
 #'     `AD_DECISION_SERVER_LOGS`, `MANIFEST_SERVICE_LOGS`, and
 #'     `TRANSCODE_LOGS`.
 #' 
+#' -   For Amazon EKS Auto Mode, the valid values are
+#'     `AUTO_MODE_BLOCK_STORAGE_LOGS`, `AUTO_MODE_COMPUTE_LOGS`,
+#'     `AUTO_MODE_IPAM_LOGS`, and `AUTO_MODE_LOAD_BALANCING_LOGS`.
+#' 
 #' -   For Entity Resolution, the valid value is `WORKFLOW_LOGS`.
 #' 
 #' -   For IAM Identity Center, the valid value is `ERROR_LOGS`.
@@ -3481,16 +3690,21 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
 #' 
 #' -   For Network Load Balancer, the valid value is `NLB_ACCESS_LOGS`.
 #' 
-#' -   For PCS, the valid values are `PCS_SCHEDULER_LOGS` and
-#'     `PCS_JOBCOMP_LOGS`.
+#' -   For PCS, the valid values are `PCS_SCHEDULER_LOGS`,
+#'     `PCS_JOBCOMP_LOGS`, and `PCS_SCHEDULER_AUDIT_LOGS`.
 #' 
-#' -   For Quick Suite, the valid values are `CHAT_LOGS` and
-#'     `FEEDBACK_LOGS`.
+#' -   For Quick, the valid values are `CHAT_LOGS` and `FEEDBACK_LOGS`.
 #' 
 #' -   For Amazon Web Services RTB Fabric, the valid values is
 #'     `APPLICATION_LOGS`.
 #' 
 #' -   For Amazon Q, the valid values are `EVENT_LOGS` and `SYNC_JOB_LOGS`.
+#' 
+#' -   For Amazon Web Services Security Hub CSPM, the valid value is
+#'     `SECURITY_FINDING_LOGS`.
+#' 
+#' -   For Amazon Web Services Security Hub, the valid value is
+#'     `SECURITY_FINDING_LOGS`.
 #' 
 #' -   For Amazon SES mail manager, the valid values are `APPLICATION_LOGS`
 #'     and `TRAFFIC_POLICY_DEBUG_LOGS`.
@@ -3505,11 +3719,14 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
 #' 
 #' For more information about tagging, see [Tagging Amazon Web Services
 #' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' @param deliverySourceConfiguration A map of key-value pairs to configure the delivery source. Both keys and
+#' values must be between 1 and 255 characters in length. For example,
+#' `{"samplingRate": "50"}`.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_delivery_source
-cloudwatchlogs_put_delivery_source <- function(name, resourceArn, logType, tags = NULL) {
+cloudwatchlogs_put_delivery_source <- function(name, resourceArn, logType, tags = NULL, deliverySourceConfiguration = NULL) {
   op <- new_operation(
     name = "PutDeliverySource",
     http_method = "POST",
@@ -3518,7 +3735,7 @@ cloudwatchlogs_put_delivery_source <- function(name, resourceArn, logType, tags 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchlogs$put_delivery_source_input(name = name, resourceArn = resourceArn, logType = logType, tags = tags)
+  input <- .cloudwatchlogs$put_delivery_source_input(name = name, resourceArn = resourceArn, logType = logType, tags = tags, deliverySourceConfiguration = deliverySourceConfiguration)
   output <- .cloudwatchlogs$put_delivery_source_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -3874,11 +4091,17 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
 #' @param clientToken Used as an idempotency token, to avoid returning an exception if the
 #' service receives the same request twice because of a network error.
+#' @param parameters Use this parameter to include specific query parameters as part of your
+#' query definition. Query parameters are supported only for Logs Insights
+#' QL queries. Query parameters allow you to use placeholder variables in
+#' your query string that are substituted with values at execution time.
+#' Use the `{{parameterName}}` syntax in your query string to reference a
+#' parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_query_definition
-cloudwatchlogs_put_query_definition <- function(queryLanguage = NULL, name, queryDefinitionId = NULL, logGroupNames = NULL, queryString, clientToken = NULL) {
+cloudwatchlogs_put_query_definition <- function(queryLanguage = NULL, name, queryDefinitionId = NULL, logGroupNames = NULL, queryString, clientToken = NULL, parameters = NULL) {
   op <- new_operation(
     name = "PutQueryDefinition",
     http_method = "POST",
@@ -3887,7 +4110,7 @@ cloudwatchlogs_put_query_definition <- function(queryLanguage = NULL, name, quer
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchlogs$put_query_definition_input(queryLanguage = queryLanguage, name = name, queryDefinitionId = queryDefinitionId, logGroupNames = logGroupNames, queryString = queryString, clientToken = clientToken)
+  input <- .cloudwatchlogs$put_query_definition_input(queryLanguage = queryLanguage, name = name, queryDefinitionId = queryDefinitionId, logGroupNames = logGroupNames, queryString = queryString, clientToken = clientToken, parameters = parameters)
   output <- .cloudwatchlogs$put_query_definition_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -4157,7 +4380,7 @@ cloudwatchlogs_start_live_tail <- function(logGroupIdentifiers, logStreamNames =
     name = "StartLiveTail",
     http_method = "POST",
     http_path = "/",
-    host_prefix = "streaming-",
+    host_prefix = "stream-",
     paginator = list(),
     stream_api = TRUE
   )
@@ -4631,6 +4854,45 @@ cloudwatchlogs_update_log_anomaly_detector <- function(anomalyDetectorArn, evalu
   return(response)
 }
 .cloudwatchlogs$operations$update_log_anomaly_detector <- cloudwatchlogs_update_log_anomaly_detector
+
+#' Updates an existing lookup table by replacing all of its CSV content
+#'
+#' @description
+#' Updates an existing lookup table by replacing all of its CSV content. After the update completes, queries that use this table will use the new data.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_update_lookup_table/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_update_lookup_table/) for full documentation.
+#'
+#' @param lookupTableArn &#91;required&#93; The ARN of the lookup table to update.
+#' @param description An updated description of the lookup table.
+#' @param tableBody &#91;required&#93; The new CSV content to replace the existing data. The first row must be
+#' a header row with column names. The content must use UTF-8 encoding and
+#' not exceed 10 MB.
+#' @param kmsKeyId The ARN of the KMS key to use to encrypt the lookup table data. You can
+#' use this parameter to add, update, or remove the KMS key. To remove the
+#' KMS key and use an Amazon Web Services-owned key instead, specify an
+#' empty string.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_update_lookup_table
+cloudwatchlogs_update_lookup_table <- function(lookupTableArn, description = NULL, tableBody, kmsKeyId = NULL) {
+  op <- new_operation(
+    name = "UpdateLookupTable",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$update_lookup_table_input(lookupTableArn = lookupTableArn, description = description, tableBody = tableBody, kmsKeyId = kmsKeyId)
+  output <- .cloudwatchlogs$update_lookup_table_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$update_lookup_table <- cloudwatchlogs_update_lookup_table
 
 #' Updates an existing scheduled query with new configuration
 #'

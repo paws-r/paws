@@ -5,26 +5,26 @@
 \title{Updates an asset filter}
 \usage{
 datazone_update_asset_filter(
-  assetIdentifier,
-  configuration = NULL,
-  description = NULL,
   domainIdentifier,
+  assetIdentifier,
   identifier,
-  name = NULL
+  name = NULL,
+  description = NULL,
+  configuration = NULL
 )
 }
 \arguments{
-\item{assetIdentifier}{[required] The ID of the data asset.}
-
-\item{configuration}{The configuration of the asset filter.}
-
-\item{description}{The description of the asset filter.}
-
 \item{domainIdentifier}{[required] The ID of the domain where you want to update an asset filter.}
+
+\item{assetIdentifier}{[required] The ID of the data asset.}
 
 \item{identifier}{[required] The ID of the asset filter.}
 
 \item{name}{The name of the asset filter.}
+
+\item{description}{The description of the asset filter.}
+
+\item{configuration}{The configuration of the asset filter.}
 }
 \description{
 Updates an asset filter.

@@ -13,8 +13,6 @@ fsx_describe_file_system_aliases(
 )
 }
 \arguments{
-\item{ClientRequestToken}{}
-
 \item{FileSystemId}{[required] The ID of the file system to return the associated DNS aliases for
 (String).}
 

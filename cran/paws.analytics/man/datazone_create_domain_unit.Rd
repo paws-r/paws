@@ -5,24 +5,24 @@
 \title{Creates a domain unit in Amazon DataZone}
 \usage{
 datazone_create_domain_unit(
-  clientToken = NULL,
-  description = NULL,
   domainIdentifier,
   name,
-  parentDomainUnitIdentifier
+  parentDomainUnitIdentifier,
+  description = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
-\item{description}{The description of the domain unit.}
-
 \item{domainIdentifier}{[required] The ID of the domain where you want to crate a domain unit.}
 
 \item{name}{[required] The name of the domain unit.}
 
 \item{parentDomainUnitIdentifier}{[required] The ID of the parent domain unit.}
+
+\item{description}{The description of the domain unit.}
+
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Creates a domain unit in Amazon DataZone.

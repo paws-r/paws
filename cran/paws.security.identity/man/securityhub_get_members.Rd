@@ -2,17 +2,17 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_members}
 \alias{securityhub_get_members}
-\title{Returns the details for the Security Hub member accounts for the
+\title{Returns the details for the Security Hub CSPM member accounts for the
 specified account IDs}
 \usage{
 securityhub_get_members(AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] The list of account IDs for the Security Hub member accounts to return
-the details for.}
+\item{AccountIds}{[required] The list of account IDs for the Security Hub CSPM member accounts to
+return the details for.}
 }
 \description{
-Returns the details for the Security Hub member accounts for the specified account IDs.
+Returns the details for the Security Hub CSPM member accounts for the specified account IDs.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_get_members/} for full documentation.
 }

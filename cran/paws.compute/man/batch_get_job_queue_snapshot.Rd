@@ -2,8 +2,8 @@
 % Please edit documentation in R/batch_operations.R
 \name{batch_get_job_queue_snapshot}
 \alias{batch_get_job_queue_snapshot}
-\title{Provides a list of the first 100 RUNNABLE jobs associated to a single
-job queue}
+\title{Provides a snapshot of job queue state, including ordering of RUNNABLE
+jobs, as well as capacity utilization for already dispatched jobs}
 \usage{
 batch_get_job_queue_snapshot(jobQueue)
 }
@@ -11,7 +11,7 @@ batch_get_job_queue_snapshot(jobQueue)
 \item{jobQueue}{[required] The job queue’s name or full queue Amazon Resource Name (ARN).}
 }
 \description{
-Provides a list of the first 100 \code{RUNNABLE} jobs associated to a single job queue.
+Provides a snapshot of job queue state, including ordering of \code{RUNNABLE} jobs, as well as capacity utilization for already dispatched jobs. The first 100 \code{RUNNABLE} jobs in the job queue are listed in order of dispatch. For job queues with an attached quota-share policy, the first \code{RUNNABLE} job in each quota share is also listed. Capacity utilization for the job queue is provided, as well as break downs by share for job queues with attached fair-share or quota-share scheduling policies.
 
 See \url{https://www.paws-r-sdk.com/docs/batch_get_job_queue_snapshot/} for full documentation.
 }

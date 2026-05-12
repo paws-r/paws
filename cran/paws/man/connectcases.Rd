@@ -145,6 +145,7 @@ in the \emph{Amazon Connect Administrator Guide}.
 \link[paws.customer.engagement:connectcases_update_case_rule]{update_case_rule} \tab Updates a case rule\cr
 \link[paws.customer.engagement:connectcases_update_field]{update_field} \tab Updates the properties of an existing field\cr
 \link[paws.customer.engagement:connectcases_update_layout]{update_layout} \tab Updates the attributes of an existing layout\cr
+\link[paws.customer.engagement:connectcases_update_related_item]{update_related_item} \tab Updates the content of a related item associated with a case\cr
 \link[paws.customer.engagement:connectcases_update_template]{update_template} \tab Updates the attributes of an existing template
 }
 }

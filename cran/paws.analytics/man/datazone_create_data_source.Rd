@@ -5,61 +5,61 @@
 \title{Creates an Amazon DataZone data source}
 \usage{
 datazone_create_data_source(
-  assetFormsInput = NULL,
-  clientToken = NULL,
-  configuration = NULL,
-  connectionIdentifier = NULL,
+  name,
   description = NULL,
   domainIdentifier,
-  enableSetting = NULL,
-  environmentIdentifier = NULL,
-  name,
   projectIdentifier,
-  publishOnImport = NULL,
+  environmentIdentifier = NULL,
+  connectionIdentifier = NULL,
+  type,
+  configuration = NULL,
   recommendation = NULL,
+  enableSetting = NULL,
   schedule = NULL,
-  type
+  publishOnImport = NULL,
+  assetFormsInput = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{assetFormsInput}{The metadata forms that are to be attached to the assets that this data
-source works with.}
-
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
-\item{configuration}{Specifies the configuration of the data source. It can be set to either
-\code{glueRunConfiguration} or \code{redshiftRunConfiguration}.}
-
-\item{connectionIdentifier}{The ID of the connection.}
+\item{name}{[required] The name of the data source.}
 
 \item{description}{The description of the data source.}
 
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain where the data source is created.}
 
-\item{enableSetting}{Specifies whether the data source is enabled.}
+\item{projectIdentifier}{[required] The identifier of the Amazon DataZone project in which you want to add
+this data source.}
 
 \item{environmentIdentifier}{The unique identifier of the Amazon DataZone environment to which the
 data source publishes assets.}
 
-\item{name}{[required] The name of the data source.}
-
-\item{projectIdentifier}{[required] The identifier of the Amazon DataZone project in which you want to add
-this data source.}
-
-\item{publishOnImport}{Specifies whether the assets that this data source creates in the
-inventory are to be also automatically published to the catalog.}
-
-\item{recommendation}{Specifies whether the business name generation is to be enabled for this
-data source.}
-
-\item{schedule}{The schedule of the data source runs.}
+\item{connectionIdentifier}{The ID of the connection.}
 
 \item{type}{[required] The type of the data source. In Amazon DataZone, you can use data
 sources to import technical metadata of assets (data) from the source
 databases or data warehouses into Amazon DataZone. In the current
 release of Amazon DataZone, you can create and run data sources for
 Amazon Web Services Glue and Amazon Redshift.}
+
+\item{configuration}{Specifies the configuration of the data source. It can be set to either
+\code{glueRunConfiguration} or \code{redshiftRunConfiguration}.}
+
+\item{recommendation}{Specifies whether the business name generation is to be enabled for this
+data source.}
+
+\item{enableSetting}{Specifies whether the data source is enabled.}
+
+\item{schedule}{The schedule of the data source runs.}
+
+\item{publishOnImport}{Specifies whether the assets that this data source creates in the
+inventory are to be also automatically published to the catalog.}
+
+\item{assetFormsInput}{The metadata forms that are to be attached to the assets that this data
+source works with.}
+
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Creates an Amazon DataZone data source.

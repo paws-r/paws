@@ -11,10 +11,6 @@ wellarchitected_list_workloads(
 )
 }
 \arguments{
-\item{WorkloadNamePrefix}{}
-
-\item{NextToken}{}
-
 \item{MaxResults}{The maximum number of results to return for this request.}
 }
 \description{

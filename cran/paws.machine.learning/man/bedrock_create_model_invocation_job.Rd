@@ -13,7 +13,8 @@ bedrock_create_model_invocation_job(
   outputDataConfig,
   vpcConfig = NULL,
   timeoutDurationInHours = NULL,
-  tags = NULL
+  tags = NULL,
+  modelInvocationType = NULL
 )
 }
 \arguments{
@@ -43,6 +44,8 @@ out.}
 
 \item{tags}{Any tags to associate with the batch inference job. For more
 information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html}{Tagging Amazon Bedrock resources}.}
+
+\item{modelInvocationType}{The invocation endpoint for ModelInvocationJob}
 }
 \description{
 Creates a batch inference job to invoke a model on multiple prompts. Format your data according to \href{https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-data.html}{Format your inference data} and upload it to an Amazon S3 bucket. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference.html}{Process multiple prompts with batch inference}.

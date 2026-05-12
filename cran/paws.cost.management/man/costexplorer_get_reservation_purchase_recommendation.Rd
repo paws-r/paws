@@ -22,8 +22,6 @@ costexplorer_get_reservation_purchase_recommendation(
 
 \item{Service}{[required] The specific service that you want recommendations for.}
 
-\item{Filter}{}
-
 \item{AccountScope}{The account scope that you want your recommendations for. Amazon Web
 Services calculates recommendations including the management account and
 member accounts if the value is set to \code{PAYER}. If the value is

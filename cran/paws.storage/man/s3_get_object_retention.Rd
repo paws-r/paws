@@ -35,8 +35,6 @@ retrieve.}
 \item{VersionId}{The version ID for the object whose retention settings you want to
 retrieve.}
 
-\item{RequestPayer}{}
-
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
 provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}

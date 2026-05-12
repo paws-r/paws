@@ -20,8 +20,6 @@ only anomalies that are currently either suppressed or unsuppressed.}
 
 \item{limit}{The maximum number of items to return. If you don't specify a value, the
 default maximum value of 50 items is used.}
-
-\item{nextToken}{}
 }
 \description{
 Returns a list of anomalies that log anomaly detectors have found. For details about the structure format of each anomaly object that is returned, see the example in this section.

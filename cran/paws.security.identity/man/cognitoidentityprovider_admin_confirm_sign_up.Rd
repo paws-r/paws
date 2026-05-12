@@ -21,19 +21,18 @@ pool, this value must be the \code{sub} of a local user or the username of a
 user from a third-party IdP.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
-custom workflows that this action triggers.
+custom workflows that this action triggers. You create custom workflows
+by assigning Lambda functions to user pool triggers.
 
-If your user pool configuration includes triggers, the
-AdminConfirmSignUp API action invokes the Lambda function that is
-specified for the \emph{post confirmation} trigger. When Amazon Cognito
-invokes this function, it passes a JSON payload, which the function
-receives as input. In this payload, the \code{clientMetadata} attribute
-provides the data that you assigned to the ClientMetadata parameter in
-your AdminConfirmSignUp request. In your function code in Lambda, you
-can process the ClientMetadata value to enhance your workflow for your
+When Amazon Cognito invokes any of these functions, it passes a JSON
+payload, which the function receives as input. This payload contains a
+\code{clientMetadata} attribute that provides the data that you assigned to
+the ClientMetadata parameter in your request. In your function code, you
+can process the \code{clientMetadata} value to enhance your workflow for your
 specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Using Lambda triggers}
+To review the Lambda trigger types that Amazon Cognito invokes at
+runtime with API requests, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html#lambda-triggers-by-event}{Connecting API actions to Lambda triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
 When you use the \code{ClientMetadata} parameter, note that Amazon Cognito

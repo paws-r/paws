@@ -19,8 +19,6 @@ can operate on items in different tables, but the tables must reside in
 the same Amazon Web Services account and Region, and no two of them can
 operate on the same item.}
 
-\item{ReturnConsumedCapacity}{}
-
 \item{ReturnItemCollectionMetrics}{Determines whether item collection metrics are returned. If set to
 \code{SIZE}, the response includes statistics about item collections (if
 any), that were modified during the operation and are returned in the

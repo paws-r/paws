@@ -25,7 +25,8 @@ opensearchservice_create_domain(
   AutoTuneOptions = NULL,
   OffPeakWindowOptions = NULL,
   SoftwareUpdateOptions = NULL,
-  AIMLOptions = NULL
+  AIMLOptions = NULL,
+  DeploymentStrategyOptions = NULL
 )
 }
 \arguments{
@@ -114,6 +115,8 @@ time (for the Region that the domain is created in) is used.}
 \item{SoftwareUpdateOptions}{Software update options for the domain.}
 
 \item{AIMLOptions}{Options for all machine learning features for the specified domain.}
+
+\item{DeploymentStrategyOptions}{Specifies the deployment strategy options for the domain.}
 }
 \description{
 Creates an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html}{Creating and managing Amazon OpenSearch Service domains}.

@@ -138,8 +138,7 @@ operation. If you do not specify \code{createVersion}, the default is
 
 \item{kendraConfiguration}{Configuration information required to use the
 \code{AMAZON.KendraSearchIntent} intent to connect to an Amazon Kendra index.
-For more information, see
-\href{https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-kendra-search.html}{AMAZON.KendraSearchIntent}.}
+For more information, see AMAZON.KendraSearchIntent.}
 
 \item{inputContexts}{An array of \code{InputContext} objects that lists the contexts that must be
 active for Amazon Lex to choose the intent in a conversation with the

@@ -13,7 +13,8 @@ sagemaker_update_cluster(
   InstanceGroupsToDelete = NULL,
   NodeProvisioningMode = NULL,
   ClusterRole = NULL,
-  AutoScaling = NULL
+  AutoScaling = NULL,
+  Orchestrator = NULL
 )
 }
 \arguments{

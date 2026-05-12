@@ -97,6 +97,45 @@ ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
 }
 .ivs$operations$batch_start_viewer_session_revocation <- ivs_batch_start_viewer_session_revocation
 
+#' Creates a new ad configuration to be used for server-side ad insertion
+#'
+#' @description
+#' Creates a new ad configuration to be used for server-side ad insertion.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivs_create_ad_configuration/](https://www.paws-r-sdk.com/docs/ivs_create_ad_configuration/) for full documentation.
+#'
+#' @param name Ad configuration name. Defaults to “”.
+#' @param mediaTailorPlaybackConfigurations &#91;required&#93; List of integration configurations with media tailor resources.
+#' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`. See
+#' [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging Amazon Web Services Resources and Tag Editor* for details,
+#' including restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS has no service-specific constraints beyond
+#' what is documented there.
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_create_ad_configuration
+ivs_create_ad_configuration <- function(name = NULL, mediaTailorPlaybackConfigurations, tags = NULL) {
+  op <- new_operation(
+    name = "CreateAdConfiguration",
+    http_method = "POST",
+    http_path = "/CreateAdConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ivs$create_ad_configuration_input(name = name, mediaTailorPlaybackConfigurations = mediaTailorPlaybackConfigurations, tags = tags)
+  output <- .ivs$create_ad_configuration_output()
+  config <- get_config()
+  svc <- .ivs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$create_ad_configuration <- ivs_create_ad_configuration
+
 #' Creates a new channel and an associated stream key to start streaming
 #'
 #' @description
@@ -104,28 +143,17 @@ ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivs_create_channel/](https://www.paws-r-sdk.com/docs/ivs_create_channel/) for full documentation.
 #'
-#' @param authorized Whether the channel is private (enabled for playback authorization).
-#' Default: `false`.
-#' @param containerFormat Indicates which content-packaging format is used (MPEG-TS or fMP4). If
-#' `multitrackInputConfiguration` is specified and `enabled` is `true`,
-#' then `containerFormat` is required and must be set to `FRAGMENTED_MP4`.
-#' Otherwise, `containerFormat` may be set to `TS` or `FRAGMENTED_MP4`.
-#' Default: `TS`.
-#' @param insecureIngest Whether the channel allows insecure RTMP and SRT ingest. Default:
-#' `false`.
+#' @param name Channel name.
 #' @param latencyMode Channel latency mode. Use `NORMAL` to broadcast and deliver live video
 #' up to Full HD. Use `LOW` for near-real-time interaction with viewers.
 #' Default: `LOW`.
-#' @param multitrackInputConfiguration Object specifying multitrack input configuration. Default: no multitrack
-#' input configuration is specified.
-#' @param name Channel name.
-#' @param playbackRestrictionPolicyArn Playback-restriction-policy ARN. A valid ARN value here both specifies
-#' the ARN and enables playback restriction. Default: "" (empty string, no
-#' playback restriction policy is applied).
-#' @param preset Optional transcode preset for the channel. This is selectable only for
-#' `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types,
-#' the default `preset` is `HIGHER_BANDWIDTH_DELIVERY`. For other channel
-#' types (`BASIC` and `STANDARD`), `preset` is the empty string (`""`).
+#' @param type Channel type, which determines the allowable resolution and bitrate. *If
+#' you exceed the allowable input resolution or bitrate, the stream
+#' probably will disconnect immediately.* Default: `STANDARD`. For details,
+#' see [Channel
+#' Types](https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/).
+#' @param authorized Whether the channel is private (enabled for playback authorization).
+#' Default: `false`.
 #' @param recordingConfigurationArn Recording-configuration ARN. A valid ARN value here both specifies the
 #' ARN and enables recording. Default: "" (empty string, recording is
 #' disabled).
@@ -136,16 +164,28 @@ ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
 #' including restrictions that apply to tags and "Tag naming limits and
 #' requirements"; Amazon IVS has no service-specific constraints beyond
 #' what is documented there.
-#' @param type Channel type, which determines the allowable resolution and bitrate. *If
-#' you exceed the allowable input resolution or bitrate, the stream
-#' probably will disconnect immediately.* Default: `STANDARD`. For details,
-#' see [Channel
-#' Types](https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/channel-types.html).
+#' @param insecureIngest Whether the channel allows insecure RTMP and SRT ingest. Default:
+#' `false`.
+#' @param preset Optional transcode preset for the channel. This is selectable only for
+#' `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types,
+#' the default `preset` is `HIGHER_BANDWIDTH_DELIVERY`. For other channel
+#' types (`BASIC` and `STANDARD`), `preset` is the empty string (`""`).
+#' @param playbackRestrictionPolicyArn Playback-restriction-policy ARN. A valid ARN value here both specifies
+#' the ARN and enables playback restriction. Default: "" (empty string, no
+#' playback restriction policy is applied).
+#' @param multitrackInputConfiguration Object specifying multitrack input configuration. Default: no multitrack
+#' input configuration is specified.
+#' @param containerFormat Indicates which content-packaging format is used (MPEG-TS or fMP4). If
+#' `multitrackInputConfiguration` is specified and `enabled` is `true`,
+#' then `containerFormat` is required and must be set to `FRAGMENTED_MP4`.
+#' Otherwise, `containerFormat` may be set to `TS` or `FRAGMENTED_MP4`.
+#' Default: `TS`.
+#' @param adConfigurationArn ARN of the ad configuration associated with the channel.
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_create_channel
-ivs_create_channel <- function(authorized = NULL, containerFormat = NULL, insecureIngest = NULL, latencyMode = NULL, multitrackInputConfiguration = NULL, name = NULL, playbackRestrictionPolicyArn = NULL, preset = NULL, recordingConfigurationArn = NULL, tags = NULL, type = NULL) {
+ivs_create_channel <- function(name = NULL, latencyMode = NULL, type = NULL, authorized = NULL, recordingConfigurationArn = NULL, tags = NULL, insecureIngest = NULL, preset = NULL, playbackRestrictionPolicyArn = NULL, multitrackInputConfiguration = NULL, containerFormat = NULL, adConfigurationArn = NULL) {
   op <- new_operation(
     name = "CreateChannel",
     http_method = "POST",
@@ -154,7 +194,7 @@ ivs_create_channel <- function(authorized = NULL, containerFormat = NULL, insecu
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ivs$create_channel_input(authorized = authorized, containerFormat = containerFormat, insecureIngest = insecureIngest, latencyMode = latencyMode, multitrackInputConfiguration = multitrackInputConfiguration, name = name, playbackRestrictionPolicyArn = playbackRestrictionPolicyArn, preset = preset, recordingConfigurationArn = recordingConfigurationArn, tags = tags, type = type)
+  input <- .ivs$create_channel_input(name = name, latencyMode = latencyMode, type = type, authorized = authorized, recordingConfigurationArn = recordingConfigurationArn, tags = tags, insecureIngest = insecureIngest, preset = preset, playbackRestrictionPolicyArn = playbackRestrictionPolicyArn, multitrackInputConfiguration = multitrackInputConfiguration, containerFormat = containerFormat, adConfigurationArn = adConfigurationArn)
   output <- .ivs$create_channel_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -221,13 +261,9 @@ ivs_create_playback_restriction_policy <- function(allowedCountries = NULL, allo
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivs_create_recording_configuration/](https://www.paws-r-sdk.com/docs/ivs_create_recording_configuration/) for full documentation.
 #'
+#' @param name Recording-configuration name. The value does not need to be unique.
 #' @param destinationConfiguration &#91;required&#93; A complex type that contains a destination configuration for where
 #' recorded video will be stored.
-#' @param name Recording-configuration name. The value does not need to be unique.
-#' @param recordingReconnectWindowSeconds If a broadcast disconnects and then reconnects within the specified
-#' interval, the multiple streams will be considered a single broadcast and
-#' merged together. Default: 0.
-#' @param renditionConfiguration Object that describes which renditions should be recorded for a stream.
 #' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`. See
 #' [Best practices and
 #' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
@@ -238,11 +274,15 @@ ivs_create_playback_restriction_policy <- function(allowedCountries = NULL, allo
 #' @param thumbnailConfiguration A complex type that allows you to enable/disable the recording of
 #' thumbnails for a live session and modify the interval at which
 #' thumbnails are generated for the live session.
+#' @param recordingReconnectWindowSeconds If a broadcast disconnects and then reconnects within the specified
+#' interval, the multiple streams will be considered a single broadcast and
+#' merged together. Default: 0.
+#' @param renditionConfiguration Object that describes which renditions should be recorded for a stream.
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_create_recording_configuration
-ivs_create_recording_configuration <- function(destinationConfiguration, name = NULL, recordingReconnectWindowSeconds = NULL, renditionConfiguration = NULL, tags = NULL, thumbnailConfiguration = NULL) {
+ivs_create_recording_configuration <- function(name = NULL, destinationConfiguration, tags = NULL, thumbnailConfiguration = NULL, recordingReconnectWindowSeconds = NULL, renditionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateRecordingConfiguration",
     http_method = "POST",
@@ -251,7 +291,7 @@ ivs_create_recording_configuration <- function(destinationConfiguration, name = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ivs$create_recording_configuration_input(destinationConfiguration = destinationConfiguration, name = name, recordingReconnectWindowSeconds = recordingReconnectWindowSeconds, renditionConfiguration = renditionConfiguration, tags = tags, thumbnailConfiguration = thumbnailConfiguration)
+  input <- .ivs$create_recording_configuration_input(name = name, destinationConfiguration = destinationConfiguration, tags = tags, thumbnailConfiguration = thumbnailConfiguration, recordingReconnectWindowSeconds = recordingReconnectWindowSeconds, renditionConfiguration = renditionConfiguration)
   output <- .ivs$create_recording_configuration_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -299,6 +339,37 @@ ivs_create_stream_key <- function(channelArn, tags = NULL) {
   return(response)
 }
 .ivs$operations$create_stream_key <- ivs_create_stream_key
+
+#' Deletes the specified ad configuration
+#'
+#' @description
+#' Deletes the specified ad configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivs_delete_ad_configuration/](https://www.paws-r-sdk.com/docs/ivs_delete_ad_configuration/) for full documentation.
+#'
+#' @param arn &#91;required&#93; ARN of the ad configuration to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_delete_ad_configuration
+ivs_delete_ad_configuration <- function(arn) {
+  op <- new_operation(
+    name = "DeleteAdConfiguration",
+    http_method = "POST",
+    http_path = "/DeleteAdConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ivs$delete_ad_configuration_input(arn = arn)
+  output <- .ivs$delete_ad_configuration_output()
+  config <- get_config()
+  svc <- .ivs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$delete_ad_configuration <- ivs_delete_ad_configuration
 
 #' Deletes the specified channel and its associated stream keys
 #'
@@ -455,6 +526,37 @@ ivs_delete_stream_key <- function(arn) {
   return(response)
 }
 .ivs$operations$delete_stream_key <- ivs_delete_stream_key
+
+#' Gets the ad configuration represented by the specified ARN
+#'
+#' @description
+#' Gets the ad configuration represented by the specified ARN.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivs_get_ad_configuration/](https://www.paws-r-sdk.com/docs/ivs_get_ad_configuration/) for full documentation.
+#'
+#' @param arn &#91;required&#93; ARN of the ad configuration to be retrieved.
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_get_ad_configuration
+ivs_get_ad_configuration <- function(arn) {
+  op <- new_operation(
+    name = "GetAdConfiguration",
+    http_method = "POST",
+    http_path = "/GetAdConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ivs$get_ad_configuration_input(arn = arn)
+  output <- .ivs$get_ad_configuration_output()
+  config <- get_config()
+  svc <- .ivs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$get_ad_configuration <- ivs_get_ad_configuration
 
 #' Gets the channel configuration for the specified channel ARN
 #'
@@ -685,8 +787,8 @@ ivs_get_stream_session <- function(channelArn, streamId = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivs_import_playback_key_pair/](https://www.paws-r-sdk.com/docs/ivs_import_playback_key_pair/) for full documentation.
 #'
-#' @param name Playback-key-pair name. The value does not need to be unique.
 #' @param publicKeyMaterial &#91;required&#93; The public portion of a customer-generated key pair.
+#' @param name Playback-key-pair name. The value does not need to be unique.
 #' @param tags Any tags provided with the request are added to the playback key pair
 #' tags. See [Best practices and
 #' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
@@ -698,7 +800,7 @@ ivs_get_stream_session <- function(channelArn, streamId = NULL) {
 #' @keywords internal
 #'
 #' @rdname ivs_import_playback_key_pair
-ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = NULL) {
+ivs_import_playback_key_pair <- function(publicKeyMaterial, name = NULL, tags = NULL) {
   op <- new_operation(
     name = "ImportPlaybackKeyPair",
     http_method = "POST",
@@ -707,7 +809,7 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ivs$import_playback_key_pair_input(name = name, publicKeyMaterial = publicKeyMaterial, tags = tags)
+  input <- .ivs$import_playback_key_pair_input(publicKeyMaterial = publicKeyMaterial, name = name, tags = tags)
   output <- .ivs$import_playback_key_pair_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -716,6 +818,74 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
   return(response)
 }
 .ivs$operations$import_playback_key_pair <- ivs_import_playback_key_pair
+
+#' Inserts an ad marker in the playlist for the specified channel and
+#' duration using the ad configuration associated with the channel
+#'
+#' @description
+#' Inserts an ad marker in the playlist for the specified channel and duration using the ad configuration associated with the channel.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivs_insert_ad_break/](https://www.paws-r-sdk.com/docs/ivs_insert_ad_break/) for full documentation.
+#'
+#' @param channelArn &#91;required&#93; ARN of the channel into which the ad break is inserted.
+#' @param durationSeconds &#91;required&#93; Maximum duration of the ad break, in seconds.
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_insert_ad_break
+ivs_insert_ad_break <- function(channelArn, durationSeconds) {
+  op <- new_operation(
+    name = "InsertAdBreak",
+    http_method = "POST",
+    http_path = "/InsertAdBreak",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ivs$insert_ad_break_input(channelArn = channelArn, durationSeconds = durationSeconds)
+  output <- .ivs$insert_ad_break_output()
+  config <- get_config()
+  svc <- .ivs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$insert_ad_break <- ivs_insert_ad_break
+
+#' Gets summary information about all ad configurations in your account, in
+#' the AWS region where the API request is processed
+#'
+#' @description
+#' Gets summary information about all ad configurations in your account, in the AWS region where the API request is processed.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivs_list_ad_configurations/](https://www.paws-r-sdk.com/docs/ivs_list_ad_configurations/) for full documentation.
+#'
+#' @param nextToken The first ad configuration to retrieve. This is used for pagination; see
+#' the `nextToken` response field.
+#' @param maxResults Maximum number of ad configurations to return. Default: your service
+#' quota or 100, whichever is smaller.
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_list_ad_configurations
+ivs_list_ad_configurations <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListAdConfigurations",
+    http_method = "POST",
+    http_path = "/ListAdConfigurations",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "adConfigurations"),
+    stream_api = FALSE
+  )
+  input <- .ivs$list_ad_configurations_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .ivs$list_ad_configurations_output()
+  config <- get_config()
+  svc <- .ivs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$list_ad_configurations <- ivs_list_ad_configurations
 
 #' Gets summary information about all channels in your account, in the
 #' Amazon Web Services region where the API request is processed
@@ -726,17 +896,18 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
 #' See [https://www.paws-r-sdk.com/docs/ivs_list_channels/](https://www.paws-r-sdk.com/docs/ivs_list_channels/) for full documentation.
 #'
 #' @param filterByName Filters the channel list to match the specified name.
-#' @param filterByPlaybackRestrictionPolicyArn Filters the channel list to match the specified policy.
 #' @param filterByRecordingConfigurationArn Filters the channel list to match the specified recording-configuration
 #' ARN.
-#' @param maxResults Maximum number of channels to return. Default: 100.
+#' @param filterByPlaybackRestrictionPolicyArn Filters the channel list to match the specified policy.
+#' @param filterByAdConfigurationArn Filters the channel list to match the specified ad configuration ARN.
 #' @param nextToken The first channel to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of channels to return. Default: 100.
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_list_channels
-ivs_list_channels <- function(filterByName = NULL, filterByPlaybackRestrictionPolicyArn = NULL, filterByRecordingConfigurationArn = NULL, maxResults = NULL, nextToken = NULL) {
+ivs_list_channels <- function(filterByName = NULL, filterByRecordingConfigurationArn = NULL, filterByPlaybackRestrictionPolicyArn = NULL, filterByAdConfigurationArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListChannels",
     http_method = "POST",
@@ -745,7 +916,7 @@ ivs_list_channels <- function(filterByName = NULL, filterByPlaybackRestrictionPo
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "channels"),
     stream_api = FALSE
   )
-  input <- .ivs$list_channels_input(filterByName = filterByName, filterByPlaybackRestrictionPolicyArn = filterByPlaybackRestrictionPolicyArn, filterByRecordingConfigurationArn = filterByRecordingConfigurationArn, maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_channels_input(filterByName = filterByName, filterByRecordingConfigurationArn = filterByRecordingConfigurationArn, filterByPlaybackRestrictionPolicyArn = filterByPlaybackRestrictionPolicyArn, filterByAdConfigurationArn = filterByAdConfigurationArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_channels_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -762,15 +933,15 @@ ivs_list_channels <- function(filterByName = NULL, filterByPlaybackRestrictionPo
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivs_list_playback_key_pairs/](https://www.paws-r-sdk.com/docs/ivs_list_playback_key_pairs/) for full documentation.
 #'
-#' @param maxResults Maximum number of key pairs to return. Default: your service quota or
-#' 100, whichever is smaller.
 #' @param nextToken The first key pair to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of key pairs to return. Default: your service quota or
+#' 100, whichever is smaller.
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_list_playback_key_pairs
-ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
+ivs_list_playback_key_pairs <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListPlaybackKeyPairs",
     http_method = "POST",
@@ -779,7 +950,7 @@ ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "keyPairs"),
     stream_api = FALSE
   )
-  input <- .ivs$list_playback_key_pairs_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_playback_key_pairs_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_playback_key_pairs_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -796,14 +967,14 @@ ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivs_list_playback_restriction_policies/](https://www.paws-r-sdk.com/docs/ivs_list_playback_restriction_policies/) for full documentation.
 #'
-#' @param maxResults Maximum number of policies to return. Default: 1.
 #' @param nextToken The first policy to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of policies to return. Default: 1.
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_list_playback_restriction_policies
-ivs_list_playback_restriction_policies <- function(maxResults = NULL, nextToken = NULL) {
+ivs_list_playback_restriction_policies <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListPlaybackRestrictionPolicies",
     http_method = "POST",
@@ -812,7 +983,7 @@ ivs_list_playback_restriction_policies <- function(maxResults = NULL, nextToken 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .ivs$list_playback_restriction_policies_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_playback_restriction_policies_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_playback_restriction_policies_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -831,15 +1002,15 @@ ivs_list_playback_restriction_policies <- function(maxResults = NULL, nextToken 
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivs_list_recording_configurations/](https://www.paws-r-sdk.com/docs/ivs_list_recording_configurations/) for full documentation.
 #'
-#' @param maxResults Maximum number of recording configurations to return. Default: your
-#' service quota or 100, whichever is smaller.
 #' @param nextToken The first recording configuration to retrieve. This is used for
 #' pagination; see the `nextToken` response field.
+#' @param maxResults Maximum number of recording configurations to return. Default: your
+#' service quota or 100, whichever is smaller.
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_list_recording_configurations
-ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NULL) {
+ivs_list_recording_configurations <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListRecordingConfigurations",
     http_method = "POST",
@@ -848,7 +1019,7 @@ ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NUL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recordingConfigurations"),
     stream_api = FALSE
   )
-  input <- .ivs$list_recording_configurations_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_recording_configurations_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_recording_configurations_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -866,14 +1037,14 @@ ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NUL
 #' See [https://www.paws-r-sdk.com/docs/ivs_list_stream_keys/](https://www.paws-r-sdk.com/docs/ivs_list_stream_keys/) for full documentation.
 #'
 #' @param channelArn &#91;required&#93; Channel ARN used to filter the list.
-#' @param maxResults Maximum number of streamKeys to return. Default: 1.
 #' @param nextToken The first stream key to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of streamKeys to return. Default: 1.
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_list_stream_keys
-ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL) {
+ivs_list_stream_keys <- function(channelArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListStreamKeys",
     http_method = "POST",
@@ -882,7 +1053,7 @@ ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "streamKeys"),
     stream_api = FALSE
   )
-  input <- .ivs$list_stream_keys_input(channelArn = channelArn, maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_stream_keys_input(channelArn = channelArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_stream_keys_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -901,14 +1072,14 @@ ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL
 #' See [https://www.paws-r-sdk.com/docs/ivs_list_stream_sessions/](https://www.paws-r-sdk.com/docs/ivs_list_stream_sessions/) for full documentation.
 #'
 #' @param channelArn &#91;required&#93; Channel ARN used to filter the list.
-#' @param maxResults Maximum number of streams to return. Default: 100.
 #' @param nextToken The first stream to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of streams to return. Default: 100.
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_list_stream_sessions
-ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = NULL) {
+ivs_list_stream_sessions <- function(channelArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListStreamSessions",
     http_method = "POST",
@@ -917,7 +1088,7 @@ ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .ivs$list_stream_sessions_input(channelArn = channelArn, maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_stream_sessions_input(channelArn = channelArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_stream_sessions_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -936,14 +1107,14 @@ ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = 
 #' See [https://www.paws-r-sdk.com/docs/ivs_list_streams/](https://www.paws-r-sdk.com/docs/ivs_list_streams/) for full documentation.
 #'
 #' @param filterBy Filters the stream list to match the specified criterion.
-#' @param maxResults Maximum number of streams to return. Default: 100.
 #' @param nextToken The first stream to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of streams to return. Default: 100.
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_list_streams
-ivs_list_streams <- function(filterBy = NULL, maxResults = NULL, nextToken = NULL) {
+ivs_list_streams <- function(filterBy = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListStreams",
     http_method = "POST",
@@ -952,7 +1123,7 @@ ivs_list_streams <- function(filterBy = NULL, maxResults = NULL, nextToken = NUL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "streams"),
     stream_api = FALSE
   )
-  input <- .ivs$list_streams_input(filterBy = filterBy, maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_streams_input(filterBy = filterBy, nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_streams_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -1144,8 +1315,8 @@ ivs_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; ARN of the resource for which tags are to be removed. The ARN must be
 #' URL-encoded.
-#' @param tagKeys &#91;required&#93; Array of tags to be removed. Array of maps, each of the form
-#' `string:string (key:value)`. See [Best practices and
+#' @param tagKeys &#91;required&#93; Array of tag keys (strings) for the tags to be removed. See [Best
+#' practices and
 #' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
 #' in *Tagging Amazon Web Services Resources and Tag Editor* for details,
 #' including restrictions that apply to tags and "Tag naming limits and
@@ -1182,39 +1353,40 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' See [https://www.paws-r-sdk.com/docs/ivs_update_channel/](https://www.paws-r-sdk.com/docs/ivs_update_channel/) for full documentation.
 #'
 #' @param arn &#91;required&#93; ARN of the channel to be updated.
+#' @param name Channel name.
+#' @param latencyMode Channel latency mode. Use `NORMAL` to broadcast and deliver live video
+#' up to Full HD. Use `LOW` for near-real-time interaction with viewers.
+#' @param type Channel type, which determines the allowable resolution and bitrate. *If
+#' you exceed the allowable input resolution or bitrate, the stream
+#' probably will disconnect immediately.* Default: `STANDARD`. For details,
+#' see [Channel
+#' Types](https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/).
 #' @param authorized Whether the channel is private (enabled for playback authorization).
+#' @param recordingConfigurationArn Recording-configuration ARN. A valid ARN value here both specifies the
+#' ARN and enables recording. If this is set to an empty string, recording
+#' is disabled.
+#' @param insecureIngest Whether the channel allows insecure RTMP and SRT ingest. Default:
+#' `false`.
+#' @param preset Optional transcode preset for the channel. This is selectable only for
+#' `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types,
+#' the default `preset` is `HIGHER_BANDWIDTH_DELIVERY`. For other channel
+#' types (`BASIC` and `STANDARD`), `preset` is the empty string (`""`).
+#' @param playbackRestrictionPolicyArn Playback-restriction-policy ARN. A valid ARN value here both specifies
+#' the ARN and enables playback restriction. If this is set to an empty
+#' string, playback restriction policy is disabled.
+#' @param multitrackInputConfiguration Object specifying multitrack input configuration. Default: no multitrack
+#' input configuration is specified.
 #' @param containerFormat Indicates which content-packaging format is used (MPEG-TS or fMP4). If
 #' `multitrackInputConfiguration` is specified and `enabled` is `true`,
 #' then `containerFormat` is required and must be set to `FRAGMENTED_MP4`.
 #' Otherwise, `containerFormat` may be set to `TS` or `FRAGMENTED_MP4`.
 #' Default: `TS`.
-#' @param insecureIngest Whether the channel allows insecure RTMP and SRT ingest. Default:
-#' `false`.
-#' @param latencyMode Channel latency mode. Use `NORMAL` to broadcast and deliver live video
-#' up to Full HD. Use `LOW` for near-real-time interaction with viewers.
-#' @param multitrackInputConfiguration Object specifying multitrack input configuration. Default: no multitrack
-#' input configuration is specified.
-#' @param name Channel name.
-#' @param playbackRestrictionPolicyArn Playback-restriction-policy ARN. A valid ARN value here both specifies
-#' the ARN and enables playback restriction. If this is set to an empty
-#' string, playback restriction policy is disabled.
-#' @param preset Optional transcode preset for the channel. This is selectable only for
-#' `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types,
-#' the default `preset` is `HIGHER_BANDWIDTH_DELIVERY`. For other channel
-#' types (`BASIC` and `STANDARD`), `preset` is the empty string (`""`).
-#' @param recordingConfigurationArn Recording-configuration ARN. A valid ARN value here both specifies the
-#' ARN and enables recording. If this is set to an empty string, recording
-#' is disabled.
-#' @param type Channel type, which determines the allowable resolution and bitrate. *If
-#' you exceed the allowable input resolution or bitrate, the stream
-#' probably will disconnect immediately.* Default: `STANDARD`. For details,
-#' see [Channel
-#' Types](https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/channel-types.html).
+#' @param adConfigurationArn ARN of the ad configuration associated with the channel.
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_update_channel
-ivs_update_channel <- function(arn, authorized = NULL, containerFormat = NULL, insecureIngest = NULL, latencyMode = NULL, multitrackInputConfiguration = NULL, name = NULL, playbackRestrictionPolicyArn = NULL, preset = NULL, recordingConfigurationArn = NULL, type = NULL) {
+ivs_update_channel <- function(arn, name = NULL, latencyMode = NULL, type = NULL, authorized = NULL, recordingConfigurationArn = NULL, insecureIngest = NULL, preset = NULL, playbackRestrictionPolicyArn = NULL, multitrackInputConfiguration = NULL, containerFormat = NULL, adConfigurationArn = NULL) {
   op <- new_operation(
     name = "UpdateChannel",
     http_method = "POST",
@@ -1223,7 +1395,7 @@ ivs_update_channel <- function(arn, authorized = NULL, containerFormat = NULL, i
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ivs$update_channel_input(arn = arn, authorized = authorized, containerFormat = containerFormat, insecureIngest = insecureIngest, latencyMode = latencyMode, multitrackInputConfiguration = multitrackInputConfiguration, name = name, playbackRestrictionPolicyArn = playbackRestrictionPolicyArn, preset = preset, recordingConfigurationArn = recordingConfigurationArn, type = type)
+  input <- .ivs$update_channel_input(arn = arn, name = name, latencyMode = latencyMode, type = type, authorized = authorized, recordingConfigurationArn = recordingConfigurationArn, insecureIngest = insecureIngest, preset = preset, playbackRestrictionPolicyArn = playbackRestrictionPolicyArn, multitrackInputConfiguration = multitrackInputConfiguration, containerFormat = containerFormat, adConfigurationArn = adConfigurationArn)
   output <- .ivs$update_channel_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -1240,6 +1412,7 @@ ivs_update_channel <- function(arn, authorized = NULL, containerFormat = NULL, i
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivs_update_playback_restriction_policy/](https://www.paws-r-sdk.com/docs/ivs_update_playback_restriction_policy/) for full documentation.
 #'
+#' @param arn &#91;required&#93; ARN of the playback-restriction-policy to be updated.
 #' @param allowedCountries A list of country codes that control geoblocking restriction. Allowed
 #' values are the officially assigned [ISO 3166-1
 #' alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes.
@@ -1248,7 +1421,6 @@ ivs_update_channel <- function(arn, authorized = NULL, containerFormat = NULL, i
 #' the same as valid values of the Origin header defined at
 #' [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin).
 #' Default: All origins (an empty array).
-#' @param arn &#91;required&#93; ARN of the playback-restriction-policy to be updated.
 #' @param enableStrictOriginEnforcement Whether channel playback is constrained by origin site. Default:
 #' `false`.
 #' @param name Playback-restriction-policy name. The value does not need to be unique.
@@ -1256,7 +1428,7 @@ ivs_update_channel <- function(arn, authorized = NULL, containerFormat = NULL, i
 #' @keywords internal
 #'
 #' @rdname ivs_update_playback_restriction_policy
-ivs_update_playback_restriction_policy <- function(allowedCountries = NULL, allowedOrigins = NULL, arn, enableStrictOriginEnforcement = NULL, name = NULL) {
+ivs_update_playback_restriction_policy <- function(arn, allowedCountries = NULL, allowedOrigins = NULL, enableStrictOriginEnforcement = NULL, name = NULL) {
   op <- new_operation(
     name = "UpdatePlaybackRestrictionPolicy",
     http_method = "POST",
@@ -1265,7 +1437,7 @@ ivs_update_playback_restriction_policy <- function(allowedCountries = NULL, allo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ivs$update_playback_restriction_policy_input(allowedCountries = allowedCountries, allowedOrigins = allowedOrigins, arn = arn, enableStrictOriginEnforcement = enableStrictOriginEnforcement, name = name)
+  input <- .ivs$update_playback_restriction_policy_input(arn = arn, allowedCountries = allowedCountries, allowedOrigins = allowedOrigins, enableStrictOriginEnforcement = enableStrictOriginEnforcement, name = name)
   output <- .ivs$update_playback_restriction_policy_output()
   config <- get_config()
   svc <- .ivs$service(config, op)

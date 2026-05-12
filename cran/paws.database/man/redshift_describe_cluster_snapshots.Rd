@@ -100,8 +100,6 @@ cluster are returned.
 \item If \code{ClusterExists} is set to \code{false} and \code{ClusterIdentifier} is
 specified for an existing cluster, no snapshots are returned.
 }}
-
-\item{SortingEntities}{}
 }
 \description{
 Returns one or more snapshot objects, which contain metadata about your cluster snapshots. By default, this operation returns information about all snapshots of all clusters that are owned by your Amazon Web Services account. No information is returned for snapshots owned by inactive Amazon Web Services accounts.

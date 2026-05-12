@@ -2828,11 +2828,13 @@ configservice_put_configuration_recorder <- function(ConfigurationRecorder, Tags
 #' or the Amazon Resource Name (ARN) of the Amazon Web Services Systems
 #' Manager document (SSM document) and the version of the SSM document that
 #' is used to create a conformance pack.
+#' @param Tags The tags for the conformance pack. Each tag consists of a key and an
+#' optional value, both of which you define.
 #'
 #' @keywords internal
 #'
 #' @rdname configservice_put_conformance_pack
-configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Uri = NULL, TemplateBody = NULL, DeliveryS3Bucket = NULL, DeliveryS3KeyPrefix = NULL, ConformancePackInputParameters = NULL, TemplateSSMDocumentDetails = NULL) {
+configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Uri = NULL, TemplateBody = NULL, DeliveryS3Bucket = NULL, DeliveryS3KeyPrefix = NULL, ConformancePackInputParameters = NULL, TemplateSSMDocumentDetails = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutConformancePack",
     http_method = "POST",
@@ -2841,7 +2843,7 @@ configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Ur
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .configservice$put_conformance_pack_input(ConformancePackName = ConformancePackName, TemplateS3Uri = TemplateS3Uri, TemplateBody = TemplateBody, DeliveryS3Bucket = DeliveryS3Bucket, DeliveryS3KeyPrefix = DeliveryS3KeyPrefix, ConformancePackInputParameters = ConformancePackInputParameters, TemplateSSMDocumentDetails = TemplateSSMDocumentDetails)
+  input <- .configservice$put_conformance_pack_input(ConformancePackName = ConformancePackName, TemplateS3Uri = TemplateS3Uri, TemplateBody = TemplateBody, DeliveryS3Bucket = DeliveryS3Bucket, DeliveryS3KeyPrefix = DeliveryS3KeyPrefix, ConformancePackInputParameters = ConformancePackInputParameters, TemplateSSMDocumentDetails = TemplateSSMDocumentDetails, Tags = Tags)
   output <- .configservice$put_conformance_pack_output()
   config <- get_config()
   svc <- .configservice$service(config, op)

@@ -11,13 +11,6 @@ connectcampaignservice_list_campaigns(
   filters = NULL
 )
 }
-\arguments{
-\item{maxResults}{}
-
-\item{nextToken}{}
-
-\item{filters}{}
-}
 \description{
 Provides summary information about the campaigns under the specified Amazon Connect account.
 

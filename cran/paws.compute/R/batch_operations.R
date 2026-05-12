@@ -289,6 +289,56 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyA
 }
 .batch$operations$create_job_queue <- batch_create_job_queue
 
+#' Creates an Batch quota share
+#'
+#' @description
+#' Creates an Batch quota share. Each quota share operates as a virtual queue with a configured compute capacity, resource sharing strategy, and borrow limits.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_create_quota_share/](https://www.paws-r-sdk.com/docs/batch_create_quota_share/) for full documentation.
+#'
+#' @param quotaShareName &#91;required&#93; The name of the quota share. It can be up to 128 characters long. It can
+#' contain uppercase and lowercase letters, numbers, hyphens (-), and
+#' underscores (_).
+#' @param jobQueue &#91;required&#93; The Batch job queue associated with the quota share. This can be the job
+#' queue name or ARN. A job queue must be in the `VALID` state before you
+#' can associate it with a quota share.
+#' @param capacityLimits &#91;required&#93; A list that specifies the quantity and type of compute capacity
+#' allocated to the quota share.
+#' @param resourceSharingConfiguration &#91;required&#93; Specifies whether a quota share reserves, lends, or both lends and
+#' borrows idle compute capacity.
+#' @param preemptionConfiguration &#91;required&#93; Specifies the preemption behavior for jobs in a quota share.
+#' @param state The state of the quota share. If the quota share is `ENABLED`, it is
+#' able to accept jobs. If the quota share is `DISABLED`, new jobs won't be
+#' accepted but jobs already submitted can finish. The default state is
+#' `ENABLED`.
+#' @param tags The tags that you apply to the quota share to help you categorize and
+#' organize your resources. Each tag consists of a key and an optional
+#' value. For more information, see [Tagging your Batch
+#' resources](https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html)
+#' in *Batch User Guide*.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_create_quota_share
+batch_create_quota_share <- function(quotaShareName, jobQueue, capacityLimits, resourceSharingConfiguration, preemptionConfiguration, state = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateQuotaShare",
+    http_method = "POST",
+    http_path = "/v1/createquotashare",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$create_quota_share_input(quotaShareName = quotaShareName, jobQueue = jobQueue, capacityLimits = capacityLimits, resourceSharingConfiguration = resourceSharingConfiguration, preemptionConfiguration = preemptionConfiguration, state = state, tags = tags)
+  output <- .batch$create_quota_share_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$create_quota_share <- batch_create_quota_share
+
 #' Creates an Batch scheduling policy
 #'
 #' @description
@@ -299,7 +349,12 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyA
 #' @param name &#91;required&#93; The name of the fair-share scheduling policy. It can be up to 128
 #' letters long. It can contain uppercase and lowercase letters, numbers,
 #' hyphens (-), and underscores (_).
-#' @param fairsharePolicy The fair-share scheduling policy details.
+#' @param quotaSharePolicy The quota share scheduling policy details. Only one of fairsharePolicy
+#' or quotaSharePolicy can be set. Once set, this policy type cannot be
+#' removed or changed to a fairSharePolicy.
+#' @param fairsharePolicy The fair-share scheduling policy details. Only one of fairsharePolicy or
+#' quotaSharePolicy can be set. Once set, this policy type cannot be
+#' removed or changed to a quotaSharePolicy.
 #' @param tags The tags that you apply to the scheduling policy to help you categorize
 #' and organize your resources. Each tag consists of a key and an optional
 #' value. For more information, see [Tagging Amazon Web Services
@@ -313,7 +368,7 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyA
 #' @keywords internal
 #'
 #' @rdname batch_create_scheduling_policy
-batch_create_scheduling_policy <- function(name, fairsharePolicy = NULL, tags = NULL) {
+batch_create_scheduling_policy <- function(name, quotaSharePolicy = NULL, fairsharePolicy = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSchedulingPolicy",
     http_method = "POST",
@@ -322,7 +377,7 @@ batch_create_scheduling_policy <- function(name, fairsharePolicy = NULL, tags = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .batch$create_scheduling_policy_input(name = name, fairsharePolicy = fairsharePolicy, tags = tags)
+  input <- .batch$create_scheduling_policy_input(name = name, quotaSharePolicy = quotaSharePolicy, fairsharePolicy = fairsharePolicy, tags = tags)
   output <- .batch$create_scheduling_policy_output()
   config <- get_config()
   svc <- .batch$service(config, op)
@@ -442,7 +497,7 @@ batch_delete_consumable_resource <- function(consumableResource) {
 #' Deletes the specified job queue
 #'
 #' @description
-#' Deletes the specified job queue. You must first disable submissions for a queue with the [`update_job_queue`][batch_update_job_queue] operation. All jobs in the queue are eventually terminated when you delete a job queue. The jobs are terminated at a rate of about 16 jobs each second.
+#' Deletes the specified job queue. You must first disable submissions for a queue with the [`update_job_queue`][batch_update_job_queue] operation. All jobs in the queue are eventually terminated when you delete a job queue.
 #'
 #' See [https://www.paws-r-sdk.com/docs/batch_delete_job_queue/](https://www.paws-r-sdk.com/docs/batch_delete_job_queue/) for full documentation.
 #'
@@ -470,6 +525,37 @@ batch_delete_job_queue <- function(jobQueue) {
   return(response)
 }
 .batch$operations$delete_job_queue <- batch_delete_job_queue
+
+#' Deletes the specified quota share
+#'
+#' @description
+#' Deletes the specified quota share. You must first disable submissions for the share by updating the state to `DISABLED` using the [`update_quota_share`][batch_update_quota_share] operation. All jobs in the share are eventually terminated when you delete a quota share.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_delete_quota_share/](https://www.paws-r-sdk.com/docs/batch_delete_quota_share/) for full documentation.
+#'
+#' @param quotaShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the quota share.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_delete_quota_share
+batch_delete_quota_share <- function(quotaShareArn) {
+  op <- new_operation(
+    name = "DeleteQuotaShare",
+    http_method = "POST",
+    http_path = "/v1/deletequotashare",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$delete_quota_share_input(quotaShareArn = quotaShareArn)
+  output <- .batch$delete_quota_share_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$delete_quota_share <- batch_delete_quota_share
 
 #' Deletes the specified scheduling policy
 #'
@@ -791,6 +877,37 @@ batch_describe_jobs <- function(jobs) {
 }
 .batch$operations$describe_jobs <- batch_describe_jobs
 
+#' Returns a description of the specified quota share
+#'
+#' @description
+#' Returns a description of the specified quota share.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_describe_quota_share/](https://www.paws-r-sdk.com/docs/batch_describe_quota_share/) for full documentation.
+#'
+#' @param quotaShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the quota share.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_describe_quota_share
+batch_describe_quota_share <- function(quotaShareArn) {
+  op <- new_operation(
+    name = "DescribeQuotaShare",
+    http_method = "POST",
+    http_path = "/v1/describequotashare",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$describe_quota_share_input(quotaShareArn = quotaShareArn)
+  output <- .batch$describe_quota_share_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$describe_quota_share <- batch_describe_quota_share
+
 #' Describes one or more of your scheduling policies
 #'
 #' @description
@@ -906,11 +1023,11 @@ batch_describe_service_job <- function(jobId) {
 }
 .batch$operations$describe_service_job <- batch_describe_service_job
 
-#' Provides a list of the first 100 RUNNABLE jobs associated to a single
-#' job queue
+#' Provides a snapshot of job queue state, including ordering of RUNNABLE
+#' jobs, as well as capacity utilization for already dispatched jobs
 #'
 #' @description
-#' Provides a list of the first 100 `RUNNABLE` jobs associated to a single job queue.
+#' Provides a snapshot of job queue state, including ordering of `RUNNABLE` jobs, as well as capacity utilization for already dispatched jobs. The first 100 `RUNNABLE` jobs in the job queue are listed in order of dispatch. For job queues with an attached quota-share policy, the first `RUNNABLE` job in each quota share is also listed. Capacity utilization for the job queue is provided, as well as break downs by share for job queues with attached fair-share or quota-share scheduling policies.
 #'
 #' See [https://www.paws-r-sdk.com/docs/batch_get_job_queue_snapshot/](https://www.paws-r-sdk.com/docs/batch_get_job_queue_snapshot/) for full documentation.
 #'
@@ -1015,8 +1132,14 @@ batch_list_consumable_resources <- function(filters = NULL, maxResults = NULL, n
 #' with the specified job.
 #' @param jobStatus The job status used to filter jobs in the specified queue. If the
 #' `filters` parameter is specified, the `jobStatus` parameter is ignored
-#' and jobs with any status are returned. If you don't specify a status,
-#' only `RUNNING` jobs are returned.
+#' and jobs with any status are returned. The exception is the
+#' `SHARE_IDENTIFIER` filter and `jobStatus` can be used together. If you
+#' don't specify a status, only `RUNNING` jobs are returned.
+#' 
+#' Array job parents are updated to `PENDING` when any child job is updated
+#' to `RUNNABLE` and remain in `PENDING` status while child jobs are
+#' running. To view these jobs, filter by `PENDING` status until all child
+#' jobs reach a terminal state.
 #' @param maxResults The maximum number of results returned by [`list_jobs`][batch_list_jobs]
 #' in a paginated output. When this parameter is used,
 #' [`list_jobs`][batch_list_jobs] returns up to `maxResults` results in a
@@ -1045,10 +1168,14 @@ batch_list_consumable_resources <- function(filters = NULL, maxResults = NULL, n
 #' Treat this token as an opaque identifier that's only used to retrieve
 #' the next items in a list and not for other programmatic purposes.
 #' @param filters The filter to apply to the query. Only one filter can be used at a time.
-#' When the filter is used, `jobStatus` is ignored. The filter doesn't
-#' apply to child jobs in an array or multi-node parallel (MNP) jobs. The
-#' results are sorted by the `createdAt` field, with the most recent jobs
-#' being first.
+#' When the filter is used, `jobStatus` is ignored with the exception that
+#' `SHARE_IDENTIFIER` and `jobStatus` can be used together. The filter
+#' doesn't apply to child jobs in an array or multi-node parallel (MNP)
+#' jobs. The results are sorted by the `createdAt` field, with the most
+#' recent jobs being first.
+#' 
+#' The `SHARE_IDENTIFIER` filter and the `jobStatus` field can be used
+#' together to filter results.
 #' 
 #' **JOB_NAME**
 #' 
@@ -1088,6 +1215,10 @@ batch_list_consumable_resources <- function(filters = NULL, maxResults = NULL, n
 #' This corresponds to the `createdAt` value. The value is a string
 #' representation of the number of milliseconds since 00:00:00 UTC
 #' (midnight) on January 1, 1970.
+#' 
+#' **SHARE_IDENTIFIER**
+#' 
+#' The value for the filter is the fairshare scheduling share identifier.
 #'
 #' @keywords internal
 #'
@@ -1178,6 +1309,57 @@ batch_list_jobs_by_consumable_resource <- function(consumableResource, filters =
 }
 .batch$operations$list_jobs_by_consumable_resource <- batch_list_jobs_by_consumable_resource
 
+#' Returns a list of Batch quota shares associated with a job queue
+#'
+#' @description
+#' Returns a list of Batch quota shares associated with a job queue.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_list_quota_shares/](https://www.paws-r-sdk.com/docs/batch_list_quota_shares/) for full documentation.
+#'
+#' @param jobQueue &#91;required&#93; The name or full Amazon Resource Name (ARN) of the job queue used to
+#' list quota shares.
+#' @param maxResults The maximum number of results returned by
+#' [`list_quota_shares`][batch_list_quota_shares] in paginated output. When
+#' this parameter is used, [`list_quota_shares`][batch_list_quota_shares]
+#' only returns `maxResults` results in a single page and a `nextToken`
+#' response element. You can see the remaining results of the initial
+#' request by sending another
+#' [`list_quota_shares`][batch_list_quota_shares] request with the returned
+#' `nextToken` value. This value can be between 1 and 100. If this
+#' parameter isn't used, [`list_quota_shares`][batch_list_quota_shares]
+#' returns up to 100 results and a `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value that's returned from a previous paginated
+#' [`list_quota_shares`][batch_list_quota_shares] request where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is `null` when there are
+#' no more results to return.
+#' 
+#' Treat this token as an opaque identifier that's only used to retrieve
+#' the next items in a list and not for other programmatic purposes.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_list_quota_shares
+batch_list_quota_shares <- function(jobQueue, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListQuotaShares",
+    http_method = "POST",
+    http_path = "/v1/listquotashares",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "quotaShares"),
+    stream_api = FALSE
+  )
+  input <- .batch$list_quota_shares_input(jobQueue = jobQueue, maxResults = maxResults, nextToken = nextToken)
+  output <- .batch$list_quota_shares_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$list_quota_shares <- batch_list_quota_shares
+
 #' Returns a list of Batch scheduling policies
 #'
 #' @description
@@ -1237,7 +1419,15 @@ batch_list_scheduling_policies <- function(maxResults = NULL, nextToken = NULL) 
 #' See [https://www.paws-r-sdk.com/docs/batch_list_service_jobs/](https://www.paws-r-sdk.com/docs/batch_list_service_jobs/) for full documentation.
 #'
 #' @param jobQueue The name or ARN of the job queue with which to list service jobs.
-#' @param jobStatus The job status with which to filter service jobs.
+#' @param jobStatus The job status used to filter service jobs in the specified queue. If
+#' the `filters` parameter is specified, the `jobStatus` parameter is
+#' ignored and jobs with any status are returned. The exceptions are the
+#' `SHARE_IDENTIFIER` filter and `QUOTA_SHARE_NAME` filter, which can be
+#' used with `jobStatus`. If you don't specify a status, only `RUNNING`
+#' jobs are returned.
+#' 
+#' The `SHARE_IDENTIFIER` filter or `QUOTA_SHARE_NAME` filter can be used
+#' with the `jobStatus` field to filter results.
 #' @param maxResults The maximum number of results returned by
 #' [`list_service_jobs`][batch_list_service_jobs] in paginated output. When
 #' this parameter is used, [`list_service_jobs`][batch_list_service_jobs]
@@ -1258,8 +1448,13 @@ batch_list_scheduling_policies <- function(maxResults = NULL, nextToken = NULL) 
 #' Treat this token as an opaque identifier that's only used to retrieve
 #' the next items in a list and not for other programmatic purposes.
 #' @param filters The filter to apply to the query. Only one filter can be used at a time.
-#' When the filter is used, `jobStatus` is ignored. The results are sorted
-#' by the `createdAt` field, with the most recent jobs being first.
+#' When the filter is used, `jobStatus` is ignored with the exception that
+#' `SHARE_IDENTIFIER` or `QUOTA_SHARE_NAME` and `jobStatus` can be used
+#' together. The results are sorted by the `createdAt` field, with the most
+#' recent jobs being first.
+#' 
+#' The `SHARE_IDENTIFIER` or `QUOTA_SHARE_NAME` filter and the `jobStatus`
+#' field can be used together to filter results.
 #' 
 #' **JOB_NAME**
 #' 
@@ -1283,6 +1478,14 @@ batch_list_scheduling_policies <- function(maxResults = NULL, nextToken = NULL) 
 #' This corresponds to the `createdAt` value. The value is a string
 #' representation of the number of milliseconds since 00:00:00 UTC
 #' (midnight) on January 1, 1970.
+#' 
+#' **SHARE_IDENTIFIER**
+#' 
+#' The value for the filter is the fairshare scheduling share identifier.
+#' 
+#' **QUOTA_SHARE_NAME**
+#' 
+#' The value for the filter is the quota management share name.
 #'
 #' @keywords internal
 #'
@@ -1601,6 +1804,11 @@ batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, scheduli
 #' if the job queue doesn't have a fair-share scheduling policy. If the job
 #' queue has a fair-share scheduling policy, then this parameter must be
 #' specified.
+#' @param quotaShareName The quota share for the service job. Don't specify this parameter if the
+#' job queue doesn't have a quota share scheduling policy. If the job queue
+#' has a quota share scheduling policy, then this parameter must be
+#' specified.
+#' @param preemptionConfiguration Specifies the service job behavior when preempted.
 #' @param timeoutConfig The timeout configuration for the service job. If none is specified,
 #' Batch defers to the default timeout of the underlying service handling
 #' the job.
@@ -1617,7 +1825,7 @@ batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, scheduli
 #' @keywords internal
 #'
 #' @rdname batch_submit_service_job
-batch_submit_service_job <- function(jobName, jobQueue, retryStrategy = NULL, schedulingPriority = NULL, serviceRequestPayload, serviceJobType, shareIdentifier = NULL, timeoutConfig = NULL, tags = NULL, clientToken = NULL) {
+batch_submit_service_job <- function(jobName, jobQueue, retryStrategy = NULL, schedulingPriority = NULL, serviceRequestPayload, serviceJobType, shareIdentifier = NULL, quotaShareName = NULL, preemptionConfiguration = NULL, timeoutConfig = NULL, tags = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "SubmitServiceJob",
     http_method = "POST",
@@ -1626,7 +1834,7 @@ batch_submit_service_job <- function(jobName, jobQueue, retryStrategy = NULL, sc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .batch$submit_service_job_input(jobName = jobName, jobQueue = jobQueue, retryStrategy = retryStrategy, schedulingPriority = schedulingPriority, serviceRequestPayload = serviceRequestPayload, serviceJobType = serviceJobType, shareIdentifier = shareIdentifier, timeoutConfig = timeoutConfig, tags = tags, clientToken = clientToken)
+  input <- .batch$submit_service_job_input(jobName = jobName, jobQueue = jobQueue, retryStrategy = retryStrategy, schedulingPriority = schedulingPriority, serviceRequestPayload = serviceRequestPayload, serviceJobType = serviceJobType, shareIdentifier = shareIdentifier, quotaShareName = quotaShareName, preemptionConfiguration = preemptionConfiguration, timeoutConfig = timeoutConfig, tags = tags, clientToken = clientToken)
   output <- .batch$submit_service_job_output()
   config <- get_config()
   svc <- .batch$service(config, op)
@@ -2006,6 +2214,45 @@ batch_update_job_queue <- function(jobQueue, state = NULL, schedulingPolicyArn =
 }
 .batch$operations$update_job_queue <- batch_update_job_queue
 
+#' Updates a quota share
+#'
+#' @description
+#' Updates a quota share.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_update_quota_share/](https://www.paws-r-sdk.com/docs/batch_update_quota_share/) for full documentation.
+#'
+#' @param quotaShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the quota share to update.
+#' @param capacityLimits A list that specifies the quantity and type of compute capacity
+#' allocated to the quota share.
+#' @param resourceSharingConfiguration Specifies whether a quota share reserves, lends, or both lends and
+#' borrows idle compute capacity.
+#' @param preemptionConfiguration Specifies the preemption behavior for jobs in a quota share.
+#' @param state The state of the quota share. If the quota share is `ENABLED`, it is
+#' able to accept jobs. If the quota share is `DISABLED`, new jobs won't be
+#' accepted but jobs already submitted can finish.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_update_quota_share
+batch_update_quota_share <- function(quotaShareArn, capacityLimits = NULL, resourceSharingConfiguration = NULL, preemptionConfiguration = NULL, state = NULL) {
+  op <- new_operation(
+    name = "UpdateQuotaShare",
+    http_method = "POST",
+    http_path = "/v1/updatequotashare",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$update_quota_share_input(quotaShareArn = quotaShareArn, capacityLimits = capacityLimits, resourceSharingConfiguration = resourceSharingConfiguration, preemptionConfiguration = preemptionConfiguration, state = state)
+  output <- .batch$update_quota_share_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$update_quota_share <- batch_update_quota_share
+
 #' Updates a scheduling policy
 #'
 #' @description
@@ -2014,12 +2261,15 @@ batch_update_job_queue <- function(jobQueue, state = NULL, schedulingPolicyArn =
 #' See [https://www.paws-r-sdk.com/docs/batch_update_scheduling_policy/](https://www.paws-r-sdk.com/docs/batch_update_scheduling_policy/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the scheduling policy to update.
-#' @param fairsharePolicy The fair-share policy scheduling details.
+#' @param quotaSharePolicy The quota share scheduling policy details. Once set during creation, a
+#' quotaSharePolicy cannot be removed or changed to a fairsharePolicy.
+#' @param fairsharePolicy The fair-share policy scheduling details. Once set during creation, a
+#' fairsharePolicy cannot be removed or changed to a quotaSharePolicy.
 #'
 #' @keywords internal
 #'
 #' @rdname batch_update_scheduling_policy
-batch_update_scheduling_policy <- function(arn, fairsharePolicy = NULL) {
+batch_update_scheduling_policy <- function(arn, quotaSharePolicy = NULL, fairsharePolicy = NULL) {
   op <- new_operation(
     name = "UpdateSchedulingPolicy",
     http_method = "POST",
@@ -2028,7 +2278,7 @@ batch_update_scheduling_policy <- function(arn, fairsharePolicy = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .batch$update_scheduling_policy_input(arn = arn, fairsharePolicy = fairsharePolicy)
+  input <- .batch$update_scheduling_policy_input(arn = arn, quotaSharePolicy = quotaSharePolicy, fairsharePolicy = fairsharePolicy)
   output <- .batch$update_scheduling_policy_output()
   config <- get_config()
   svc <- .batch$service(config, op)
@@ -2071,3 +2321,41 @@ batch_update_service_environment <- function(serviceEnvironment, state = NULL, c
   return(response)
 }
 .batch$operations$update_service_environment <- batch_update_service_environment
+
+#' Updates the priority of a specified service job in an Batch job queue
+#'
+#' @description
+#' Updates the priority of a specified service job in an Batch job queue.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_update_service_job/](https://www.paws-r-sdk.com/docs/batch_update_service_job/) for full documentation.
+#'
+#' @param jobId &#91;required&#93; The Batch job ID of the job to update.
+#' @param schedulingPriority &#91;required&#93; The scheduling priority for the job. This only affects jobs in job
+#' queues with a quota-share or fair-share scheduling policy. Jobs with a
+#' higher scheduling priority are scheduled before jobs with a lower
+#' scheduling priority within a share.
+#' 
+#' The minimum supported value is 0 and the maximum supported value is
+#' 9999.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_update_service_job
+batch_update_service_job <- function(jobId, schedulingPriority) {
+  op <- new_operation(
+    name = "UpdateServiceJob",
+    http_method = "POST",
+    http_path = "/v1/updateservicejob",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$update_service_job_input(jobId = jobId, schedulingPriority = schedulingPriority)
+  output <- .batch$update_service_job_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$update_service_job <- batch_update_service_job

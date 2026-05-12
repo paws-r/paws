@@ -116,10 +116,12 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_associate_default_vocabulary]{associate_default_vocabulary} \tab Associates an existing vocabulary as the default\cr
 \link[paws.customer.engagement:connect_associate_email_address_alias]{associate_email_address_alias} \tab Associates an email address alias with an existing email address in an Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_associate_flow]{associate_flow} \tab Associates a connect resource to a flow\cr
+\link[paws.customer.engagement:connect_associate_hours_of_operations]{associate_hours_of_operations} \tab Associates a set of hours of operations with another hours of operation\cr
 \link[paws.customer.engagement:connect_associate_instance_storage_config]{associate_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_associate_lambda_function]{associate_lambda_function} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_associate_lex_bot]{associate_lex_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_associate_phone_number_contact_flow]{associate_phone_number_contact_flow} \tab Associates a flow with a phone number claimed to your Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_associate_queue_email_addresses]{associate_queue_email_addresses} \tab Associates a set of email addresses with a queue to enable agents to select different "From" (system) email addresses when replying to inbound email contacts or initiating outbound email contacts\cr
 \link[paws.customer.engagement:connect_associate_queue_quick_connects]{associate_queue_quick_connects} \tab Associates a set of quick connects with a queue\cr
 \link[paws.customer.engagement:connect_associate_routing_profile_queues]{associate_routing_profile_queues} \tab Associates a set of queues with a routing profile\cr
 \link[paws.customer.engagement:connect_associate_security_key]{associate_security_key} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -153,6 +155,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_create_hours_of_operation_override]{create_hours_of_operation_override} \tab Creates an hours of operation override in an Amazon Connect hours of operation resource\cr
 \link[paws.customer.engagement:connect_create_instance]{create_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_create_integration_association]{create_integration_association} \tab Creates an Amazon Web Services resource association with an Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_create_notification]{create_notification} \tab Creates a new notification to be delivered to specified recipients\cr
 \link[paws.customer.engagement:connect_create_participant]{create_participant} \tab Adds a new participant into an on-going chat contact or webRTC call\cr
 \link[paws.customer.engagement:connect_create_persistent_contact_association]{create_persistent_contact_association} \tab Enables rehydration of chats for the lifespan of a contact\cr
 \link[paws.customer.engagement:connect_create_predefined_attribute]{create_predefined_attribute} \tab Creates a new predefined attribute for the specified Amazon Connect instance\cr
@@ -164,6 +167,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_create_rule]{create_rule} \tab Creates a rule for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_create_security_profile]{create_security_profile} \tab Creates a security profile\cr
 \link[paws.customer.engagement:connect_create_task_template]{create_task_template} \tab Creates a new task template in the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_create_test_case]{create_test_case} \tab Creates a test case with its content and metadata for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_create_traffic_distribution_group]{create_traffic_distribution_group} \tab Creates a traffic distribution group given an Amazon Connect instance that has been replicated\cr
 \link[paws.customer.engagement:connect_create_use_case]{create_use_case} \tab Creates a use case for an integration association\cr
 \link[paws.customer.engagement:connect_create_user]{create_user} \tab Creates a user account for the specified Amazon Connect instance\cr
@@ -189,6 +193,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_delete_hours_of_operation_override]{delete_hours_of_operation_override} \tab Deletes an hours of operation override in an Amazon Connect hours of operation resource\cr
 \link[paws.customer.engagement:connect_delete_instance]{delete_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_delete_integration_association]{delete_integration_association} \tab Deletes an Amazon Web Services resource association from an Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_delete_notification]{delete_notification} \tab Deletes a notification\cr
 \link[paws.customer.engagement:connect_delete_predefined_attribute]{delete_predefined_attribute} \tab Deletes a predefined attribute from the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_delete_prompt]{delete_prompt} \tab Deletes a prompt\cr
 \link[paws.customer.engagement:connect_delete_push_notification_registration]{delete_push_notification_registration} \tab Deletes registration for a device token and a chat contact\cr
@@ -198,6 +203,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_delete_rule]{delete_rule} \tab Deletes a rule for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_delete_security_profile]{delete_security_profile} \tab Deletes a security profile\cr
 \link[paws.customer.engagement:connect_delete_task_template]{delete_task_template} \tab Deletes the task template\cr
+\link[paws.customer.engagement:connect_delete_test_case]{delete_test_case} \tab Deletes the test case that has already been created for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_delete_traffic_distribution_group]{delete_traffic_distribution_group} \tab Deletes a traffic distribution group\cr
 \link[paws.customer.engagement:connect_delete_use_case]{delete_use_case} \tab Deletes a use case from an integration association\cr
 \link[paws.customer.engagement:connect_delete_user]{delete_user} \tab Deletes a user account from the specified Amazon Connect instance\cr
@@ -209,6 +215,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_delete_workspace_media]{delete_workspace_media} \tab Deletes a media asset (such as a logo) from a workspace\cr
 \link[paws.customer.engagement:connect_delete_workspace_page]{delete_workspace_page} \tab Removes the association between a view and a page in a workspace\cr
 \link[paws.customer.engagement:connect_describe_agent_status]{describe_agent_status} \tab Describes an agent status\cr
+\link[paws.customer.engagement:connect_describe_attached_files_configuration]{describe_attached_files_configuration} \tab Describes the attached files configuration for the specified Amazon Connect instance and attachment scope\cr
 \link[paws.customer.engagement:connect_describe_authentication_profile]{describe_authentication_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_describe_contact]{describe_contact} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_describe_contact_evaluation]{describe_contact_evaluation} \tab Describes a contact evaluation in the specified Amazon Connect instance\cr
@@ -224,6 +231,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_describe_instance]{describe_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_describe_instance_attribute]{describe_instance_attribute} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_describe_instance_storage_config]{describe_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_describe_notification]{describe_notification} \tab Retrieves detailed information about a specific notification, including its content, priority, recipients, and metadata\cr
 \link[paws.customer.engagement:connect_describe_phone_number]{describe_phone_number} \tab Gets details and status of a phone number that’s claimed to your Amazon Connect instance or traffic distribution group\cr
 \link[paws.customer.engagement:connect_describe_predefined_attribute]{describe_predefined_attribute} \tab Describes a predefined attribute for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_describe_prompt]{describe_prompt} \tab Describes the prompt\cr
@@ -232,6 +240,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_describe_routing_profile]{describe_routing_profile} \tab Describes the specified routing profile\cr
 \link[paws.customer.engagement:connect_describe_rule]{describe_rule} \tab Describes a rule for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_describe_security_profile]{describe_security_profile} \tab Gets basic information about the security profile\cr
+\link[paws.customer.engagement:connect_describe_test_case]{describe_test_case} \tab Describes the specified test case and allows you to get the content and metadata of the test case for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_describe_traffic_distribution_group]{describe_traffic_distribution_group} \tab Gets details and status of a traffic distribution group\cr
 \link[paws.customer.engagement:connect_describe_user]{describe_user} \tab Describes the specified user\cr
 \link[paws.customer.engagement:connect_describe_user_hierarchy_group]{describe_user_hierarchy_group} \tab Describes the specified hierarchy group\cr
@@ -244,10 +253,12 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_disassociate_bot]{disassociate_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_disassociate_email_address_alias]{disassociate_email_address_alias} \tab Removes the alias association between two email addresses in an Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_disassociate_flow]{disassociate_flow} \tab Disassociates a connect resource from a flow\cr
+\link[paws.customer.engagement:connect_disassociate_hours_of_operations]{disassociate_hours_of_operations} \tab Disassociates a set of hours of operations with another hours of operation\cr
 \link[paws.customer.engagement:connect_disassociate_instance_storage_config]{disassociate_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_disassociate_lambda_function]{disassociate_lambda_function} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_disassociate_lex_bot]{disassociate_lex_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_disassociate_phone_number_contact_flow]{disassociate_phone_number_contact_flow} \tab Removes the flow association from a phone number claimed to your Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_disassociate_queue_email_addresses]{disassociate_queue_email_addresses} \tab Removes the association between a set of email addresses and a queue\cr
 \link[paws.customer.engagement:connect_disassociate_queue_quick_connects]{disassociate_queue_quick_connects} \tab Disassociates a set of quick connects from a queue\cr
 \link[paws.customer.engagement:connect_disassociate_routing_profile_queues]{disassociate_routing_profile_queues} \tab Disassociates a set of queues from a routing profile\cr
 \link[paws.customer.engagement:connect_disassociate_security_key]{disassociate_security_key} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -259,7 +270,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_evaluate_data_table_values]{evaluate_data_table_values} \tab Evaluates values at the time of the request and returns them\cr
 \link[paws.customer.engagement:connect_get_attached_file]{get_attached_file} \tab Provides a pre-signed URL for download of an approved attached file\cr
 \link[paws.customer.engagement:connect_get_contact_attributes]{get_contact_attributes} \tab Retrieves the contact attributes for the specified contact\cr
-\link[paws.customer.engagement:connect_get_contact_metrics]{get_contact_metrics} \tab Retrieves the position of the contact in the queue\cr
+\link[paws.customer.engagement:connect_get_contact_metrics]{get_contact_metrics} \tab Retrieves contact metric data for a specified contact\cr
 \link[paws.customer.engagement:connect_get_current_metric_data]{get_current_metric_data} \tab Gets the real-time metric data from the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_get_current_user_data]{get_current_user_data} \tab Gets the real-time active user data from the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_get_effective_hours_of_operations]{get_effective_hours_of_operations} \tab Get the hours of operations with the effective override applied\cr
@@ -269,6 +280,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_get_metric_data_v2]{get_metric_data_v2} \tab Gets metric data from the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_get_prompt_file]{get_prompt_file} \tab Gets the prompt file\cr
 \link[paws.customer.engagement:connect_get_task_template]{get_task_template} \tab Gets details about a specific task template in the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_get_test_case_execution_summary]{get_test_case_execution_summary} \tab Retrieves an overview of a test execution that includes the status of the execution, start and end time, and observation summary\cr
 \link[paws.customer.engagement:connect_get_traffic_distribution]{get_traffic_distribution} \tab Retrieves the current traffic distribution for a given traffic distribution group\cr
 \link[paws.customer.engagement:connect_import_phone_number]{import_phone_number} \tab Imports a claimed phone number from an external service, such as Amazon Web Services End User Messaging, into an Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_import_workspace_media]{import_workspace_media} \tab Imports a media asset (such as a logo) for use in a workspace\cr
@@ -277,8 +289,10 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_list_analytics_data_lake_data_sets]{list_analytics_data_lake_data_sets} \tab Lists the data lake datasets available to associate with for a given Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_approved_origins]{list_approved_origins} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_list_associated_contacts]{list_associated_contacts} \tab Provides information about contact tree, a list of associated contacts with a unique identifier\cr
+\link[paws.customer.engagement:connect_list_attached_files_configurations]{list_attached_files_configurations} \tab Provides summary information about the attached files configurations for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_authentication_profiles]{list_authentication_profiles} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_list_bots]{list_bots} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_list_child_hours_of_operations]{list_child_hours_of_operations} \tab Provides information about the child hours of operations for the specified parent hours of operation\cr
 \link[paws.customer.engagement:connect_list_contact_evaluations]{list_contact_evaluations} \tab Lists contact evaluations in the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_contact_flow_module_aliases]{list_contact_flow_module_aliases} \tab Lists all aliases associated with a contact flow module, showing their current version mappings and metadata\cr
 \link[paws.customer.engagement:connect_list_contact_flow_modules]{list_contact_flow_modules} \tab Provides information about the flow modules for the specified Amazon Connect instance\cr
@@ -303,10 +317,12 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_list_integration_associations]{list_integration_associations} \tab Provides summary information about the Amazon Web Services resource associations for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_lambda_functions]{list_lambda_functions} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_list_lex_bots]{list_lex_bots} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_list_notifications]{list_notifications} \tab Retrieves a paginated list of all notifications in the Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_phone_numbers]{list_phone_numbers} \tab Provides information about the phone numbers for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_phone_numbers_v2]{list_phone_numbers_v2} \tab Lists phone numbers claimed to your Amazon Connect instance or traffic distribution group\cr
 \link[paws.customer.engagement:connect_list_predefined_attributes]{list_predefined_attributes} \tab Lists predefined attributes for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_prompts]{list_prompts} \tab Provides information about the prompts for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_queue_email_addresses]{list_queue_email_addresses} \tab Lists all email addresses that are currently associated with a specific queue, providing details about which "From" email addresses agents can select when handling email contacts\cr
 \link[paws.customer.engagement:connect_list_queue_quick_connects]{list_queue_quick_connects} \tab Lists the quick connects associated with a queue\cr
 \link[paws.customer.engagement:connect_list_queues]{list_queues} \tab Provides information about the queues for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_quick_connects]{list_quick_connects} \tab Provides information about the quick connects for the specified Amazon Connect instance\cr
@@ -322,10 +338,14 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_list_security_profiles]{list_security_profiles} \tab Provides summary information about the security profiles for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
 \link[paws.customer.engagement:connect_list_task_templates]{list_task_templates} \tab Lists task templates for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_test_case_execution_records]{list_test_case_execution_records} \tab Lists detailed steps of test case execution that includes all observations along with actions taken and data associated in the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_test_case_executions]{list_test_case_executions} \tab Lists all test case executions and allows filtering by test case id, test case name, start time, end time or status of the execution for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_test_cases]{list_test_cases} \tab Lists the test cases present in the specific Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_traffic_distribution_groups]{list_traffic_distribution_groups} \tab Lists traffic distribution groups\cr
 \link[paws.customer.engagement:connect_list_traffic_distribution_group_users]{list_traffic_distribution_group_users} \tab Lists traffic distribution group users\cr
 \link[paws.customer.engagement:connect_list_use_cases]{list_use_cases} \tab Lists the use cases for the integration association\cr
 \link[paws.customer.engagement:connect_list_user_hierarchy_groups]{list_user_hierarchy_groups} \tab Provides summary information about the hierarchy groups for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_user_notifications]{list_user_notifications} \tab Retrieves a paginated list of notifications for a specific user, including the notification status for that user\cr
 \link[paws.customer.engagement:connect_list_user_proficiencies]{list_user_proficiencies} \tab Lists proficiencies associated with a user\cr
 \link[paws.customer.engagement:connect_list_users]{list_users} \tab Provides summary information about the users for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_views]{list_views} \tab Returns views in the given instance\cr
@@ -351,6 +371,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_search_evaluation_forms]{search_evaluation_forms} \tab Searches evaluation forms in an Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_hours_of_operation_overrides]{search_hours_of_operation_overrides} \tab Searches the hours of operation overrides\cr
 \link[paws.customer.engagement:connect_search_hours_of_operations]{search_hours_of_operations} \tab Searches the hours of operation in an Amazon Connect instance, with optional filtering\cr
+\link[paws.customer.engagement:connect_search_notifications]{search_notifications} \tab Searches for notifications based on specified criteria and filters\cr
 \link[paws.customer.engagement:connect_search_predefined_attributes]{search_predefined_attributes} \tab Searches predefined attributes that meet certain criteria\cr
 \link[paws.customer.engagement:connect_search_prompts]{search_prompts} \tab Searches prompts in an Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_queues]{search_queues} \tab Searches queues in an Amazon Connect instance, with optional filtering\cr
@@ -358,6 +379,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_search_resource_tags]{search_resource_tags} \tab Searches tags used in an Amazon Connect instance using optional search criteria\cr
 \link[paws.customer.engagement:connect_search_routing_profiles]{search_routing_profiles} \tab Searches routing profiles in an Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_security_profiles]{search_security_profiles} \tab Searches security profiles in an Amazon Connect instance, with optional filtering\cr
+\link[paws.customer.engagement:connect_search_test_cases]{search_test_cases} \tab Searches for test cases in the specified Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_user_hierarchy_groups]{search_user_hierarchy_groups} \tab Searches UserHierarchyGroups in an Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_users]{search_users} \tab Searches users in an Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_views]{search_views} \tab Searches views based on name, description, or tags\cr
@@ -378,11 +400,13 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_start_outbound_voice_contact]{start_outbound_voice_contact} \tab Places an outbound call to a contact, and then initiates the flow\cr
 \link[paws.customer.engagement:connect_start_screen_sharing]{start_screen_sharing} \tab Starts screen sharing for a contact\cr
 \link[paws.customer.engagement:connect_start_task_contact]{start_task_contact} \tab Initiates a flow to start a new task contact\cr
+\link[paws.customer.engagement:connect_start_test_case_execution]{start_test_case_execution} \tab Starts executing a published test case\cr
 \link[paws.customer.engagement:connect_start_web_rtc_contact]{start_web_rtc_contact} \tab Places an inbound in-app, web, or video call to a contact, and then initiates the flow\cr
 \link[paws.customer.engagement:connect_stop_contact]{stop_contact} \tab Ends the specified contact\cr
 \link[paws.customer.engagement:connect_stop_contact_media_processing]{stop_contact_media_processing} \tab Stops in-flight message processing for an ongoing chat session\cr
 \link[paws.customer.engagement:connect_stop_contact_recording]{stop_contact_recording} \tab Stops recording a call when a contact is being recorded\cr
 \link[paws.customer.engagement:connect_stop_contact_streaming]{stop_contact_streaming} \tab Ends message streaming on a specified contact\cr
+\link[paws.customer.engagement:connect_stop_test_case_execution]{stop_test_case_execution} \tab Stops a running test execution\cr
 \link[paws.customer.engagement:connect_submit_contact_evaluation]{submit_contact_evaluation} \tab Submits a contact evaluation in the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording whatever is selected in the flow configuration: call (IVR or agent), screen, or both\cr
 \link[paws.customer.engagement:connect_tag_contact]{tag_contact} \tab Adds the specified tags to the contact resource\cr
@@ -391,6 +415,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_untag_contact]{untag_contact} \tab Removes the specified tags from the contact resource\cr
 \link[paws.customer.engagement:connect_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
 \link[paws.customer.engagement:connect_update_agent_status]{update_agent_status} \tab Updates agent status\cr
+\link[paws.customer.engagement:connect_update_attached_files_configuration]{update_attached_files_configuration} \tab Updates the attached files configuration for the specified Amazon Connect instance and attachment scope\cr
 \link[paws.customer.engagement:connect_update_authentication_profile]{update_authentication_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_update_contact]{update_contact} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_update_contact_attributes]{update_contact_attributes} \tab Creates or updates user-defined contact attributes associated with the specified contact\cr
@@ -412,6 +437,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_update_hours_of_operation_override]{update_hours_of_operation_override} \tab Update the hours of operation override\cr
 \link[paws.customer.engagement:connect_update_instance_attribute]{update_instance_attribute} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_update_instance_storage_config]{update_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_update_notification_content]{update_notification_content} \tab Updates the localized content of an existing notification\cr
 \link[paws.customer.engagement:connect_update_participant_authentication]{update_participant_authentication} \tab Instructs Amazon Connect to resume the authentication process\cr
 \link[paws.customer.engagement:connect_update_participant_role_config]{update_participant_role_config} \tab Updates timeouts for when human chat participants are to be considered idle, and when agents are automatically disconnected from a chat due to idleness\cr
 \link[paws.customer.engagement:connect_update_phone_number]{update_phone_number} \tab Updates your claimed phone number from its current Amazon Connect instance or traffic distribution group to another Amazon Connect instance or traffic distribution group in the same Amazon Web Services Region\cr
@@ -434,11 +460,14 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_update_rule]{update_rule} \tab Updates a rule for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_update_security_profile]{update_security_profile} \tab Updates a security profile\cr
 \link[paws.customer.engagement:connect_update_task_template]{update_task_template} \tab Updates details about a specific task template in the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_update_test_case]{update_test_case} \tab Updates any of the metadata for a test case, such as the name, description, and status or content of an existing test case\cr
 \link[paws.customer.engagement:connect_update_traffic_distribution]{update_traffic_distribution} \tab Updates the traffic distribution for a given traffic distribution group\cr
+\link[paws.customer.engagement:connect_update_user_config]{update_user_config} \tab Updates the configuration settings for the specified user, including per-channel auto-accept and after contact work (ACW) timeout settings\cr
 \link[paws.customer.engagement:connect_update_user_hierarchy]{update_user_hierarchy} \tab Assigns the specified hierarchy group to the specified user\cr
 \link[paws.customer.engagement:connect_update_user_hierarchy_group_name]{update_user_hierarchy_group_name} \tab Updates the name of the user hierarchy group\cr
 \link[paws.customer.engagement:connect_update_user_hierarchy_structure]{update_user_hierarchy_structure} \tab Updates the user hierarchy structure: add, remove, and rename user hierarchy levels\cr
 \link[paws.customer.engagement:connect_update_user_identity_info]{update_user_identity_info} \tab Updates the identity information for the specified user\cr
+\link[paws.customer.engagement:connect_update_user_notification_status]{update_user_notification_status} \tab Updates the status of a notification for a specific user, such as marking it as read or hidden\cr
 \link[paws.customer.engagement:connect_update_user_phone_config]{update_user_phone_config} \tab Updates the phone configuration settings for the specified user\cr
 \link[paws.customer.engagement:connect_update_user_proficiencies]{update_user_proficiencies} \tab Updates the properties associated with the proficiencies of a user\cr
 \link[paws.customer.engagement:connect_update_user_routing_profile]{update_user_routing_profile} \tab Assigns the specified routing profile to the specified user\cr

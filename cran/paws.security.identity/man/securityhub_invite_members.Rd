@@ -2,17 +2,17 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_invite_members}
 \alias{securityhub_invite_members}
-\title{We recommend using Organizations instead of Security Hub invitations to
-manage your member accounts}
+\title{We recommend using Organizations instead of Security Hub CSPM
+invitations to manage your member accounts}
 \usage{
 securityhub_invite_members(AccountIds)
 }
 \arguments{
 \item{AccountIds}{[required] The list of account IDs of the Amazon Web Services accounts to invite to
-Security Hub as members.}
+Security Hub CSPM as members.}
 }
 \description{
-We recommend using Organizations instead of Security Hub invitations to manage your member accounts. For information, see \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html}{Managing Security Hub administrator and member accounts with Organizations} in the \emph{Security Hub User Guide}.
+We recommend using Organizations instead of Security Hub CSPM invitations to manage your member accounts. For information, see \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html}{Managing Security Hub CSPM administrator and member accounts with Organizations} in the \emph{Security Hub CSPM User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_invite_members/} for full documentation.
 }

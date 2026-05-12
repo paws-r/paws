@@ -39,7 +39,7 @@ For additional information about
 \href{https://docs.aws.amazon.com/location/previous/developerguide/grab.html}{GrabMaps}'
 coverage, see \href{https://docs.aws.amazon.com/location/previous/developerguide/grab.html#grab-coverage-area}{GrabMaps countries and areas covered}.
 \item \code{Here} – For additional information about \href{https://docs.aws.amazon.com/location/previous/developerguide/HERE.html}{HERE Technologies}'
-coverage in your region of interest, see \href{https://www.here.com/docs/}{HERE details on goecoding coverage}.
+coverage in your region of interest, see \href{https://docs.here.com/}{HERE details on goecoding coverage}.
 
 If you specify HERE Technologies (\code{Here}) as the data provider, you
 may not \href{https://docs.aws.amazon.com/location/latest/APIReference/}{store results}

@@ -13,8 +13,6 @@ fsx_restore_volume_from_snapshot(
 )
 }
 \arguments{
-\item{ClientRequestToken}{}
-
 \item{VolumeId}{[required] The ID of the volume that you are restoring.}
 
 \item{SnapshotId}{[required] The ID of the source snapshot. Specifies the snapshot that you are

@@ -942,7 +942,7 @@ s3control_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguratio
 #'         "2015-01-01"
 #'       ),
 #'       BucketKeyEnabled = TRUE|FALSE,
-#'       ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"
+#'       ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128"
 #'     ),
 #'     S3PutObjectAcl = list(
 #'       AccessControlPolicy = list(
@@ -994,8 +994,16 @@ s3control_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguratio
 #'     ),
 #'     S3ReplicateObject = list(),
 #'     S3ComputeObjectChecksum = list(
-#'       ChecksumAlgorithm = "CRC32"|"CRC32C"|"CRC64NVME"|"MD5"|"SHA1"|"SHA256",
+#'       ChecksumAlgorithm = "CRC32"|"CRC32C"|"CRC64NVME"|"MD5"|"SHA1"|"SHA256"|"SHA512"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'       ChecksumType = "FULL_OBJECT"|"COMPOSITE"
+#'     ),
+#'     S3UpdateObjectEncryption = list(
+#'       ObjectEncryption = list(
+#'         SSEKMS = list(
+#'           KMSKeyArn = "string",
+#'           BucketKeyEnabled = TRUE|FALSE
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   Report = list(
@@ -2616,7 +2624,7 @@ s3control_delete_public_access_block <- function(AccountId) {
 #' Deletes the Amazon S3 Storage Lens configuration. For more information
 #' about S3 Storage Lens, see [Assessing your storage activity and usage
 #' with Amazon S3 Storage
-#' Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html)
+#' Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html?refid=dce24f14-19b2-43e3-9ed9-edf2fc39378f)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' To use this action, you must have permission to perform the
@@ -2674,7 +2682,7 @@ s3control_delete_storage_lens_configuration <- function(ConfigId, AccountId) {
 #' Deletes the Amazon S3 Storage Lens configuration tags. For more
 #' information about S3 Storage Lens, see [Assessing your storage activity
 #' and usage with Amazon S3 Storage
-#' Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html)
+#' Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html?refid=dce24f14-19b2-43e3-9ed9-edf2fc39378f)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' To use this action, you must have permission to perform the
@@ -2897,7 +2905,7 @@ s3control_delete_storage_lens_group <- function(Name, AccountId) {
 #'           "2015-01-01"
 #'         ),
 #'         BucketKeyEnabled = TRUE|FALSE,
-#'         ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"
+#'         ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128"
 #'       ),
 #'       S3PutObjectAcl = list(
 #'         AccessControlPolicy = list(
@@ -2949,8 +2957,16 @@ s3control_delete_storage_lens_group <- function(Name, AccountId) {
 #'       ),
 #'       S3ReplicateObject = list(),
 #'       S3ComputeObjectChecksum = list(
-#'         ChecksumAlgorithm = "CRC32"|"CRC32C"|"CRC64NVME"|"MD5"|"SHA1"|"SHA256",
+#'         ChecksumAlgorithm = "CRC32"|"CRC32C"|"CRC64NVME"|"MD5"|"SHA1"|"SHA256"|"SHA512"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'         ChecksumType = "FULL_OBJECT"|"COMPOSITE"
+#'       ),
+#'       S3UpdateObjectEncryption = list(
+#'         ObjectEncryption = list(
+#'           SSEKMS = list(
+#'             KMSKeyArn = "string",
+#'             BucketKeyEnabled = TRUE|FALSE
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     Priority = 123,
@@ -4952,7 +4968,7 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
 #'
 #' @usage
 #' s3control_get_data_access(AccountId, Target, Permission,
-#'   DurationSeconds, Privilege, TargetType)
+#'   DurationSeconds, Privilege, TargetType, AuditContext)
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param Target &#91;required&#93; The S3 URI path of the data to which you are requesting temporary access
@@ -4985,6 +5001,9 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
 #' value if the target data that you would like to access is a path to an
 #' object. Do not pass this value if the target data is a bucket or a
 #' bucket and a prefix.
+#' @param AuditContext The context to identify the job or query associated with the credential
+#' request. This information will be displayed in CloudTrail log in your
+#' account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5014,7 +5033,8 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
 #'   Permission = "READ"|"WRITE"|"READWRITE",
 #'   DurationSeconds = 123,
 #'   Privilege = "Minimal"|"Default",
-#'   TargetType = "Object"
+#'   TargetType = "Object",
+#'   AuditContext = "string"
 #' )
 #' ```
 #'
@@ -5023,7 +5043,7 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
 #' @rdname s3control_get_data_access
 #'
 #' @aliases s3control_get_data_access
-s3control_get_data_access <- function(AccountId, Target, Permission, DurationSeconds = NULL, Privilege = NULL, TargetType = NULL) {
+s3control_get_data_access <- function(AccountId, Target, Permission, DurationSeconds = NULL, Privilege = NULL, TargetType = NULL, AuditContext = NULL) {
   op <- new_operation(
     name = "GetDataAccess",
     http_method = "GET",
@@ -5032,7 +5052,7 @@ s3control_get_data_access <- function(AccountId, Target, Permission, DurationSec
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3control$get_data_access_input(AccountId = AccountId, Target = Target, Permission = Permission, DurationSeconds = DurationSeconds, Privilege = Privilege, TargetType = TargetType)
+  input <- .s3control$get_data_access_input(AccountId = AccountId, Target = Target, Permission = Permission, DurationSeconds = DurationSeconds, Privilege = Privilege, TargetType = TargetType, AuditContext = AuditContext)
   output <- .s3control$get_data_access_output()
   config <- get_config()
   svc <- .s3control$service(config, op)
@@ -5518,7 +5538,7 @@ s3control_get_public_access_block <- function(AccountId) {
 #' 
 #' Gets the Amazon S3 Storage Lens configuration. For more information, see
 #' [Assessing your storage activity and usage with Amazon S3 Storage
-#' Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html)
+#' Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html?refid=dce24f14-19b2-43e3-9ed9-edf2fc39378f)
 #' in the *Amazon S3 User Guide*. For a complete list of S3 Storage Lens
 #' metrics, see [S3 Storage Lens metrics
 #' glossary](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_metrics_glossary.html)
@@ -5713,7 +5733,7 @@ s3control_get_storage_lens_configuration <- function(ConfigId, AccountId) {
 #' Gets the tags of Amazon S3 Storage Lens configuration. For more
 #' information about S3 Storage Lens, see [Assessing your storage activity
 #' and usage with Amazon S3 Storage
-#' Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html)
+#' Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html?refid=dce24f14-19b2-43e3-9ed9-edf2fc39378f)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' To use this action, you must have permission to perform the
@@ -6642,7 +6662,7 @@ s3control_list_caller_access_grants <- function(AccountId, GrantScope = NULL, Ne
 #'     list(
 #'       JobId = "string",
 #'       Description = "string",
-#'       Operation = "LambdaInvoke"|"S3PutObjectCopy"|"S3PutObjectAcl"|"S3PutObjectTagging"|"S3DeleteObjectTagging"|"S3InitiateRestoreObject"|"S3PutObjectLegalHold"|"S3PutObjectRetention"|"S3ReplicateObject"|"S3ComputeObjectChecksum",
+#'       Operation = "LambdaInvoke"|"S3PutObjectCopy"|"S3PutObjectAcl"|"S3PutObjectTagging"|"S3DeleteObjectTagging"|"S3InitiateRestoreObject"|"S3PutObjectLegalHold"|"S3PutObjectRetention"|"S3ReplicateObject"|"S3ComputeObjectChecksum"|"S3UpdateObjectEncryption",
 #'       Priority = 123,
 #'       Status = "Active"|"Cancelled"|"Cancelling"|"Complete"|"Completing"|"Failed"|"Failing"|"New"|"Paused"|"Pausing"|"Preparing"|"Ready"|"Suspended",
 #'       CreationTime = as.POSIXct(
@@ -6888,7 +6908,7 @@ s3control_list_regional_buckets <- function(AccountId, NextToken = NULL, MaxResu
 #' Gets a list of Amazon S3 Storage Lens configurations. For more
 #' information about S3 Storage Lens, see [Assessing your storage activity
 #' and usage with Amazon S3 Storage
-#' Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html)
+#' Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html?refid=dce24f14-19b2-43e3-9ed9-edf2fc39378f)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' To use this action, you must have permission to perform the
@@ -8463,7 +8483,7 @@ s3control_put_public_access_block <- function(PublicAccessBlockConfiguration, Ac
 #' 
 #' Puts an Amazon S3 Storage Lens configuration. For more information about
 #' S3 Storage Lens, see [Working with Amazon S3 Storage
-#' Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html)
+#' Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html?refid=dce24f14-19b2-43e3-9ed9-edf2fc39378f)
 #' in the *Amazon S3 User Guide*. For a complete list of S3 Storage Lens
 #' metrics, see [S3 Storage Lens metrics
 #' glossary](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_metrics_glossary.html)
@@ -8665,7 +8685,7 @@ s3control_put_storage_lens_configuration <- function(ConfigId, AccountId, Storag
 #' Put or replace tags on an existing Amazon S3 Storage Lens configuration.
 #' For more information about S3 Storage Lens, see [Assessing your storage
 #' activity and usage with Amazon S3 Storage
-#' Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html)
+#' Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html?refid=dce24f14-19b2-43e3-9ed9-edf2fc39378f)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' To use this action, you must have permission to perform the

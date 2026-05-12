@@ -65,7 +65,7 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
 #' response. To retrieve the next batch of results, reissue the search
 #' request and include the returned token. When all results have been
 #' returned, the response does not contain a pagination token value.
-#' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
+#' @param maxResults The maximum number of items to return in one batch, between 1 and 100,
 #' inclusive.
 #'
 #' @keywords internal
@@ -107,7 +107,7 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' response. To retrieve the next batch of results, reissue the search
 #' request and include the returned token. When all results have been
 #' returned, the response does not contain a pagination token value.
-#' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
+#' @param maxResults The maximum number of items to return in one batch, between 1 and 100,
 #' inclusive.
 #' @param organizationEntityAccountFilters A JSON set of elements including the `awsAccountId`, `eventArn` and a
 #' set of `statusCodes`.
@@ -367,7 +367,7 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 #' response. To retrieve the next batch of results, reissue the search
 #' request and include the returned token. When all results have been
 #' returned, the response does not contain a pagination token value.
-#' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
+#' @param maxResults The maximum number of items to return in one batch, between 1 and 100,
 #' inclusive.
 #' @param locale The locale (language) to return information in. English (en) is the
 #' default and the only supported value at this time.
@@ -408,7 +408,7 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' response. To retrieve the next batch of results, reissue the search
 #' request and include the returned token. When all results have been
 #' returned, the response does not contain a pagination token value.
-#' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
+#' @param maxResults The maximum number of items to return in one batch, between 1 and 100,
 #' inclusive.
 #' @param locale The locale (language) to return information in. English (en) is the
 #' default and the only supported value at this time.

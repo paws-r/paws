@@ -26,8 +26,6 @@ Constraints:
 \itemize{
 \item Must match the identifier of an existing DBInstance.
 }}
-
-\item{Tags}{}
 }
 \description{
 Creates a snapshot of a DB instance. The source DB instance must be in the \code{available} or \code{storage-optimization} state.

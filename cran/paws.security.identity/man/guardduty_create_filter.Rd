@@ -36,23 +36,697 @@ whitespace.
 [ ]: R:\%20}
 
 \item{Action}{Specifies the action that is to be applied to the findings that match
-the filter.}
+the filter.
+
+Default: NOOP}
 
 \item{Rank}{Specifies the position of the filter in the list of current filters.
 Also specifies the order in which this filter is applied to the
 findings.}
 
 \item{FindingCriteria}{[required] Represents the criteria to be used in the filter for querying findings.
-
-You can only use the following attributes to query findings:
+The following fields are available for filtering:
 \itemize{
 \item accountId
+\item arn
+\item associatedAttackSequenceArn
+\item confidence
+\item createdAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item description
 \item id
+\item partition
 \item region
+\item resource.accessKeyDetails.accessKeyId
+\item resource.accessKeyDetails.principalId
+\item resource.accessKeyDetails.userIdentity.accessKeyId
+\item resource.accessKeyDetails.userIdentity.accountId
+\item resource.accessKeyDetails.userIdentity.arn
+\item resource.accessKeyDetails.userIdentity.principalId
+\item resource.accessKeyDetails.userIdentity.sessionContext.attributes.mfaAuthenticated
+\item resource.accessKeyDetails.userIdentity.sessionContext.ec2RoleDelivery
+\item resource.accessKeyDetails.userIdentity.sessionContext.invokedBy
+\item resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.accountId
+\item resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.arn
+\item resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.principalId
+\item resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.type
+\item resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.userName
+\item resource.accessKeyDetails.userIdentity.sessionContext.sourceIdentity
+\item resource.accessKeyDetails.userIdentity.sessionContext.webIdFederationData.attributes
+\item resource.accessKeyDetails.userIdentity.sessionContext.webIdFederationData.federatedProvider
+\item resource.accessKeyDetails.userIdentity.type
+\item resource.accessKeyDetails.userIdentity.userName
+\item resource.accessKeyDetails.userName
+\item resource.accessKeyDetails.userType
+\item resource.bedrockGuardrailDetails.guardrailArn
+\item resource.bedrockGuardrailDetails.guardrailVersion
+\item resource.containerDetails.containerRuntime
+\item resource.containerDetails.id
+\item resource.containerDetails.image
+\item resource.containerDetails.imagePrefix
+\item resource.containerDetails.name
+\item resource.containerDetails.securityContext.allowPrivilegeEscalation
+\item resource.containerDetails.securityContext.privileged
+\item resource.containerDetails.volumeMounts.mountPath
+\item resource.containerDetails.volumeMounts.name
+\item resource.ebsSnapshotDetails.snapshotArn
+\item resource.ebsVolumeDetails.scannedVolumeDetails.deviceName
+\item resource.ebsVolumeDetails.scannedVolumeDetails.encryptionType
+\item resource.ebsVolumeDetails.scannedVolumeDetails.kmsKeyArn
+\item resource.ebsVolumeDetails.scannedVolumeDetails.snapshotArn
+\item resource.ebsVolumeDetails.scannedVolumeDetails.volumeArn
+\item resource.ebsVolumeDetails.scannedVolumeDetails.volumeSizeInGB
+\item resource.ebsVolumeDetails.scannedVolumeDetails.volumeType
+\item resource.ebsVolumeDetails.skippedVolumeDetails.deviceName
+\item resource.ebsVolumeDetails.skippedVolumeDetails.encryptionType
+\item resource.ebsVolumeDetails.skippedVolumeDetails.kmsKeyArn
+\item resource.ebsVolumeDetails.skippedVolumeDetails.snapshotArn
+\item resource.ebsVolumeDetails.skippedVolumeDetails.volumeArn
+\item resource.ebsVolumeDetails.skippedVolumeDetails.volumeSizeInGB
+\item resource.ebsVolumeDetails.skippedVolumeDetails.volumeType
+\item resource.ec2ImageDetails.imageArn
+\item resource.ecsClusterDetails.activeServicesCount
+\item resource.ecsClusterDetails.arn
+\item resource.ecsClusterDetails.name
+\item resource.ecsClusterDetails.registeredContainerInstancesCount
+\item resource.ecsClusterDetails.runningTasksCount
+\item resource.ecsClusterDetails.status
+\item resource.ecsClusterDetails.tags.key
+\item resource.ecsClusterDetails.tags.value
+\item resource.ecsClusterDetails.taskDetails.arn
+\item resource.ecsClusterDetails.taskDetails.containers.containerRuntime
+\item resource.ecsClusterDetails.taskDetails.containers.id
+\item resource.ecsClusterDetails.taskDetails.containers.image
+\item resource.ecsClusterDetails.taskDetails.containers.imagePrefix
+\item resource.ecsClusterDetails.taskDetails.containers.name
+\item resource.ecsClusterDetails.taskDetails.containers.securityContext.allowPrivilegeEscalation
+\item resource.ecsClusterDetails.taskDetails.containers.securityContext.privileged
+\item resource.ecsClusterDetails.taskDetails.containers.volumeMounts.mountPath
+\item resource.ecsClusterDetails.taskDetails.containers.volumeMounts.name
+\item resource.ecsClusterDetails.taskDetails.createdAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item resource.ecsClusterDetails.taskDetails.definitionArn
+\item resource.ecsClusterDetails.taskDetails.group
+\item resource.ecsClusterDetails.taskDetails.launchType
+\item resource.ecsClusterDetails.taskDetails.startedAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item resource.ecsClusterDetails.taskDetails.startedBy
+\item resource.ecsClusterDetails.taskDetails.tags.key
+\item resource.ecsClusterDetails.taskDetails.tags.value
+\item resource.ecsClusterDetails.taskDetails.version
+\item resource.ecsClusterDetails.taskDetails.volumes.hostPath.path
+\item resource.ecsClusterDetails.taskDetails.volumes.name
+\item resource.eksClusterDetails.arn
+\item resource.eksClusterDetails.createdAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item resource.eksClusterDetails.name
+\item resource.eksClusterDetails.status
+\item resource.eksClusterDetails.tags.key
+\item resource.eksClusterDetails.tags.value
+\item resource.eksClusterDetails.vpcId
+\item resource.instanceDetails.availabilityZone
+\item resource.instanceDetails.iamInstanceProfile.arn
+\item resource.instanceDetails.iamInstanceProfile.id
+\item resource.instanceDetails.imageDescription
+\item resource.instanceDetails.imageId
+\item resource.instanceDetails.instanceId
+\item resource.instanceDetails.instanceState
+\item resource.instanceDetails.instanceType
+\item resource.instanceDetails.launchTime
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item resource.instanceDetails.networkInterfaces.ipv6Addresses
+\item resource.instanceDetails.networkInterfaces.networkInterfaceId
+\item resource.instanceDetails.networkInterfaces.privateDnsName
+\item resource.instanceDetails.networkInterfaces.privateIpAddress
+\item resource.instanceDetails.networkInterfaces.privateIpAddresses.privateDnsName
+\item resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress
+\item resource.instanceDetails.networkInterfaces.publicDnsName
+\item resource.instanceDetails.networkInterfaces.publicIp
+\item resource.instanceDetails.networkInterfaces.securityGroups.groupId
+\item resource.instanceDetails.networkInterfaces.securityGroups.groupName
+\item resource.instanceDetails.networkInterfaces.subnetId
+\item resource.instanceDetails.networkInterfaces.vpcId
+\item resource.instanceDetails.outpostArn
+\item resource.instanceDetails.platform
+\item resource.instanceDetails.productCodes.productCodeId
+\item resource.instanceDetails.productCodes.productCodeType
+\item resource.instanceDetails.tags.key
+\item resource.instanceDetails.tags.value
+\item resource.kubernetesDetails.kubernetesUserDetails.groups
+\item resource.kubernetesDetails.kubernetesUserDetails.impersonatedUser.groups
+\item resource.kubernetesDetails.kubernetesUserDetails.impersonatedUser.username
+\item resource.kubernetesDetails.kubernetesUserDetails.sessionName
+\item resource.kubernetesDetails.kubernetesUserDetails.uid
+\item resource.kubernetesDetails.kubernetesUserDetails.username
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.containers.containerRuntime
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.containers.id
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.containers.image
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.containers.imagePrefix
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.containers.name
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.containers.securityContext.allowPrivilegeEscalation
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.containers.securityContext.privileged
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.containers.volumeMounts.mountPath
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.containers.volumeMounts.name
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.hostIpc
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.hostNetwork
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.hostPid
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.name
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.namespace
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.serviceAccountName
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.type
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.uid
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.volumes.hostPath.path
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.volumes.name
+\item resource.lambdaDetails.description
+\item resource.lambdaDetails.functionArn
+\item resource.lambdaDetails.functionName
+\item resource.lambdaDetails.functionVersion
+\item resource.lambdaDetails.lastModifiedAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item resource.lambdaDetails.revisionId
+\item resource.lambdaDetails.role
+\item resource.lambdaDetails.tags.key
+\item resource.lambdaDetails.tags.value
+\item resource.lambdaDetails.vpcConfig.securityGroups.groupId
+\item resource.lambdaDetails.vpcConfig.securityGroups.groupName
+\item resource.lambdaDetails.vpcConfig.subnetIds
+\item resource.lambdaDetails.vpcConfig.vpcId
+\item resource.rdsDbInstanceDetails.dbClusterIdentifier
+\item resource.rdsDbInstanceDetails.dbInstanceArn
+\item resource.rdsDbInstanceDetails.dbInstanceIdentifier
+\item resource.rdsDbInstanceDetails.dbSecurityGroups.name
+\item resource.rdsDbInstanceDetails.dbSecurityGroups.status
+\item resource.rdsDbInstanceDetails.dbiResourceId
+\item resource.rdsDbInstanceDetails.engine
+\item resource.rdsDbInstanceDetails.engineVersion
+\item resource.rdsDbInstanceDetails.iamDatabaseAuthenticationEnabled
+\item resource.rdsDbInstanceDetails.publiclyAccessible
+\item resource.rdsDbInstanceDetails.tags.key
+\item resource.rdsDbInstanceDetails.tags.value
+\item resource.rdsDbInstanceDetails.vpcId
+\item resource.rdsDbInstanceDetails.vpcSecurityGroups.status
+\item resource.rdsDbInstanceDetails.vpcSecurityGroups.vpcSecurityGroupId
+\item resource.rdsDbUserDetails.application
+\item resource.rdsDbUserDetails.authMethod
+\item resource.rdsDbUserDetails.database
+\item resource.rdsDbUserDetails.ssl
+\item resource.rdsDbUserDetails.user
+\item resource.rdsLimitlessDbDetails.dbClusterIdentifier
+\item resource.rdsLimitlessDbDetails.dbShardGroupArn
+\item resource.rdsLimitlessDbDetails.dbShardGroupIdentifier
+\item resource.rdsLimitlessDbDetails.dbShardGroupResourceId
+\item resource.rdsLimitlessDbDetails.engine
+\item resource.rdsLimitlessDbDetails.engineVersion
+\item resource.rdsLimitlessDbDetails.tags.key
+\item resource.rdsLimitlessDbDetails.tags.value
+\item resource.recoveryPointDetails.backupVaultName
+\item resource.recoveryPointDetails.recoveryPointArn
+\item resource.resourceType
+\item resource.s3BucketDetails.arn
+\item resource.s3BucketDetails.createdAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item resource.s3BucketDetails.defaultServerSideEncryption.encryptionType
+\item resource.s3BucketDetails.defaultServerSideEncryption.kmsMasterKeyArn
+\item resource.s3BucketDetails.name
+\item resource.s3BucketDetails.owner.id
+\item resource.s3BucketDetails.publicAccess.effectivePermission
+\item resource.s3BucketDetails.publicAccess.permissionConfiguration.accountLevelPermissions.blockPublicAccess.blockPublicAcls
+\item resource.s3BucketDetails.publicAccess.permissionConfiguration.accountLevelPermissions.blockPublicAccess.blockPublicPolicy
+\item resource.s3BucketDetails.publicAccess.permissionConfiguration.accountLevelPermissions.blockPublicAccess.ignorePublicAcls
+\item resource.s3BucketDetails.publicAccess.permissionConfiguration.accountLevelPermissions.blockPublicAccess.restrictPublicBuckets
+\item resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.accessControlList.allowsPublicReadAccess
+\item resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.accessControlList.allowsPublicWriteAccess
+\item resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.blockPublicAccess.blockPublicAcls
+\item resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.blockPublicAccess.blockPublicPolicy
+\item resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.blockPublicAccess.ignorePublicAcls
+\item resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.blockPublicAccess.restrictPublicBuckets
+\item resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.bucketPolicy.allowsPublicReadAccess
+\item resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.bucketPolicy.allowsPublicWriteAccess
+\item resource.s3BucketDetails.s3ObjectDetails.eTag
+\item resource.s3BucketDetails.s3ObjectDetails.hash
+\item resource.s3BucketDetails.s3ObjectDetails.key
+\item resource.s3BucketDetails.s3ObjectDetails.objectArn
+\item resource.s3BucketDetails.s3ObjectDetails.versionId
+\item resource.s3BucketDetails.tags.key
+\item resource.s3BucketDetails.tags.value
+\item resource.s3BucketDetails.type
+\item schemaVersion
+\item service.action.actionType
+\item service.action.awsApiCallAction.affectedResources
+\item service.action.awsApiCallAction.api
+\item service.action.awsApiCallAction.callerType
+\item service.action.awsApiCallAction.domainDetails.domain
+\item service.action.awsApiCallAction.errorCode
+\item service.action.awsApiCallAction.remoteAccountDetails.accountId
+\item service.action.awsApiCallAction.remoteAccountDetails.affiliated
+\item service.action.awsApiCallAction.remoteAccountDetails.awsServiceName
+\item service.action.awsApiCallAction.remoteIpDetails.city.cityName
+\item service.action.awsApiCallAction.remoteIpDetails.country.countryCode
+\item service.action.awsApiCallAction.remoteIpDetails.country.countryName
+\item service.action.awsApiCallAction.remoteIpDetails.geoLocation.lat
+\item service.action.awsApiCallAction.remoteIpDetails.geoLocation.lon
+\item service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
+\item service.action.awsApiCallAction.remoteIpDetails.ipAddressV6
+\item service.action.awsApiCallAction.remoteIpDetails.organization.asn
+\item service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
+\item service.action.awsApiCallAction.remoteIpDetails.organization.isp
+\item service.action.awsApiCallAction.remoteIpDetails.organization.org
+\item service.action.awsApiCallAction.serviceName
+\item service.action.awsApiCallAction.userAgent
+\item service.action.dnsRequestAction.blocked
+\item service.action.dnsRequestAction.domain
+\item service.action.dnsRequestAction.domainWithSuffix
+\item service.action.dnsRequestAction.protocol
+\item service.action.dnsRequestAction.vpcOwnerAccountId
+\item service.action.kubernetesApiCallAction.namespace
+\item service.action.kubernetesApiCallAction.parameters
+\item service.action.kubernetesApiCallAction.remoteIpDetails.city.cityName
+\item service.action.kubernetesApiCallAction.remoteIpDetails.country.countryCode
+\item service.action.kubernetesApiCallAction.remoteIpDetails.country.countryName
+\item service.action.kubernetesApiCallAction.remoteIpDetails.geoLocation.lat
+\item service.action.kubernetesApiCallAction.remoteIpDetails.geoLocation.lon
+\item service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4
+\item service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV6
+\item service.action.kubernetesApiCallAction.remoteIpDetails.organization.asn
+\item service.action.kubernetesApiCallAction.remoteIpDetails.organization.asnOrg
+\item service.action.kubernetesApiCallAction.remoteIpDetails.organization.isp
+\item service.action.kubernetesApiCallAction.remoteIpDetails.organization.org
+\item service.action.kubernetesApiCallAction.requestUri
+\item service.action.kubernetesApiCallAction.resource
+\item service.action.kubernetesApiCallAction.resourceName
+\item service.action.kubernetesApiCallAction.sourceIPs
+\item service.action.kubernetesApiCallAction.statusCode
+\item service.action.kubernetesApiCallAction.subresource
+\item service.action.kubernetesApiCallAction.userAgent
+\item service.action.kubernetesApiCallAction.verb
+\item service.action.kubernetesPermissionCheckedDetails.allowed
+\item service.action.kubernetesPermissionCheckedDetails.namespace
+\item service.action.kubernetesPermissionCheckedDetails.resource
+\item service.action.kubernetesPermissionCheckedDetails.verb
+\item service.action.kubernetesRoleBindingDetails.kind
+\item service.action.kubernetesRoleBindingDetails.name
+\item service.action.kubernetesRoleBindingDetails.roleRefKind
+\item service.action.kubernetesRoleBindingDetails.roleRefName
+\item service.action.kubernetesRoleBindingDetails.uid
+\item service.action.kubernetesRoleDetails.kind
+\item service.action.kubernetesRoleDetails.name
+\item service.action.kubernetesRoleDetails.uid
+\item service.action.networkConnectionAction.blocked
+\item service.action.networkConnectionAction.connectionDirection
+\item service.action.networkConnectionAction.localIpDetails.ipAddressV4
+\item service.action.networkConnectionAction.localIpDetails.ipAddressV6
+\item service.action.networkConnectionAction.localNetworkInterface
+\item service.action.networkConnectionAction.localPortDetails.port
+\item service.action.networkConnectionAction.localPortDetails.portName
+\item service.action.networkConnectionAction.protocol
+\item service.action.networkConnectionAction.remoteIpDetails.city.cityName
+\item service.action.networkConnectionAction.remoteIpDetails.country.countryCode
+\item service.action.networkConnectionAction.remoteIpDetails.country.countryName
+\item service.action.networkConnectionAction.remoteIpDetails.geoLocation.lat
+\item service.action.networkConnectionAction.remoteIpDetails.geoLocation.lon
+\item service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
+\item service.action.networkConnectionAction.remoteIpDetails.ipAddressV6
+\item service.action.networkConnectionAction.remoteIpDetails.organization.asn
+\item service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
+\item service.action.networkConnectionAction.remoteIpDetails.organization.isp
+\item service.action.networkConnectionAction.remoteIpDetails.organization.org
+\item service.action.networkConnectionAction.remotePortDetails.port
+\item service.action.networkConnectionAction.remotePortDetails.portName
+\item service.action.portProbeAction.blocked
+\item service.action.portProbeAction.portProbeDetails.localIpDetails.ipAddressV4
+\item service.action.portProbeAction.portProbeDetails.localIpDetails.ipAddressV6
+\item service.action.portProbeAction.portProbeDetails.localPortDetails.port
+\item service.action.portProbeAction.portProbeDetails.localPortDetails.portName
+\item service.action.portProbeAction.portProbeDetails.remoteIpDetails.city.cityName
+\item service.action.portProbeAction.portProbeDetails.remoteIpDetails.country.countryCode
+\item service.action.portProbeAction.portProbeDetails.remoteIpDetails.country.countryName
+\item service.action.portProbeAction.portProbeDetails.remoteIpDetails.geoLocation.lat
+\item service.action.portProbeAction.portProbeDetails.remoteIpDetails.geoLocation.lon
+\item service.action.portProbeAction.portProbeDetails.remoteIpDetails.ipAddressV4
+\item service.action.portProbeAction.portProbeDetails.remoteIpDetails.ipAddressV6
+\item service.action.portProbeAction.portProbeDetails.remoteIpDetails.organization.asn
+\item service.action.portProbeAction.portProbeDetails.remoteIpDetails.organization.asnOrg
+\item service.action.portProbeAction.portProbeDetails.remoteIpDetails.organization.isp
+\item service.action.portProbeAction.portProbeDetails.remoteIpDetails.organization.org
+\item service.action.rdsLoginAttemptAction.loginAttributes.application
+\item service.action.rdsLoginAttemptAction.loginAttributes.failedLoginAttempts
+\item service.action.rdsLoginAttemptAction.loginAttributes.successfulLoginAttempts
+\item service.action.rdsLoginAttemptAction.loginAttributes.user
+\item service.action.rdsLoginAttemptAction.remoteIpDetails.city.cityName
+\item service.action.rdsLoginAttemptAction.remoteIpDetails.country.countryCode
+\item service.action.rdsLoginAttemptAction.remoteIpDetails.country.countryName
+\item service.action.rdsLoginAttemptAction.remoteIpDetails.geoLocation.lat
+\item service.action.rdsLoginAttemptAction.remoteIpDetails.geoLocation.lon
+\item service.action.rdsLoginAttemptAction.remoteIpDetails.ipAddressV4
+\item service.action.rdsLoginAttemptAction.remoteIpDetails.ipAddressV6
+\item service.action.rdsLoginAttemptAction.remoteIpDetails.organization.asn
+\item service.action.rdsLoginAttemptAction.remoteIpDetails.organization.asnOrg
+\item service.action.rdsLoginAttemptAction.remoteIpDetails.organization.isp
+\item service.action.rdsLoginAttemptAction.remoteIpDetails.organization.org
+\item service.additionalInfo.agentDetails.agentId
+\item service.additionalInfo.agentDetails.agentVersion
+\item service.additionalInfo.anomalies.anomalousAPIs
+\item service.additionalInfo.authenticationMethod
+\item service.additionalInfo.averagePacketSizeIn
+\item service.additionalInfo.averagePacketSizeOut
+\item service.additionalInfo.context
+\item service.additionalInfo.domain
+\item service.additionalInfo.inBytes
+\item service.additionalInfo.localNetworkInterfaceOwner
+\item service.additionalInfo.localPort
+\item service.additionalInfo.outBytes
+\item service.additionalInfo.packetsIn
+\item service.additionalInfo.packetsOut
+\item service.additionalInfo.policyArn
+\item service.additionalInfo.policyName
+\item service.additionalInfo.remotePort
+\item service.additionalInfo.sample
+\item service.additionalInfo.scannedPort
+\item service.additionalInfo.threatFileSha256
+\item service.additionalInfo.threatListName
+\item service.additionalInfo.threatName
+\item service.additionalInfo.totalBytesIn
+\item service.additionalInfo.totalBytesOut
+\item service.additionalInfo.type
+\item service.additionalInfo.unusual.asnOrg
+\item service.additionalInfo.unusual.port
+\item service.additionalInfo.unusualProtocol
+\item service.additionalInfo.userAgent.fullUserAgent
+\item service.additionalInfo.userAgent.userAgentCategory
+\item service.additionalInfo.value
+\item service.additionalInfo.vpcOwnerAccountId
+\item service.archived
+\item service.count
+\item service.detection.anomaly.profiles
+\item service.detection.anomaly.unusual.behavior
+\item service.detection.sequence.actors.id
+\item service.detection.sequence.actors.process.name
+\item service.detection.sequence.actors.process.path
+\item service.detection.sequence.actors.process.sha256
+\item service.detection.sequence.actors.session.createdTime
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.detection.sequence.actors.session.issuer
+\item service.detection.sequence.actors.session.mfaStatus
+\item service.detection.sequence.actors.session.uid
+\item service.detection.sequence.actors.user.account.account
+\item service.detection.sequence.actors.user.account.uid
+\item service.detection.sequence.actors.user.credentialUid
+\item service.detection.sequence.actors.user.name
+\item service.detection.sequence.actors.user.type
+\item service.detection.sequence.actors.user.uid
+\item service.detection.sequence.additionalSequenceTypes
+\item service.detection.sequence.description
+\item service.detection.sequence.endpoints.autonomousSystem.name
+\item service.detection.sequence.endpoints.autonomousSystem.number
+\item service.detection.sequence.endpoints.connection.direction
+\item service.detection.sequence.endpoints.domain
+\item service.detection.sequence.endpoints.id
+\item service.detection.sequence.endpoints.ip
+\item service.detection.sequence.endpoints.location.city
+\item service.detection.sequence.endpoints.location.country
+\item service.detection.sequence.endpoints.location.lat
+\item service.detection.sequence.endpoints.location.lon
+\item service.detection.sequence.endpoints.port
+\item service.detection.sequence.resources.accountId
+\item service.detection.sequence.resources.cloudPartition
+\item service.detection.sequence.resources.data.accessKey.principalId
+\item service.detection.sequence.resources.data.accessKey.userName
+\item service.detection.sequence.resources.data.accessKey.userType
+\item service.detection.sequence.resources.data.autoscalingAutoScalingGroup.ec2InstanceUids
+\item service.detection.sequence.resources.data.cloudformationStack.ec2InstanceUids
+\item service.detection.sequence.resources.data.container.image
+\item service.detection.sequence.resources.data.container.imageUid
+\item service.detection.sequence.resources.data.ec2Image.ec2InstanceUids
+\item service.detection.sequence.resources.data.ec2Instance.availabilityZone
+\item service.detection.sequence.resources.data.ec2Instance.ec2NetworkInterfaceUids
+\item service.detection.sequence.resources.data.ec2Instance.iamInstanceProfile.arn
+\item service.detection.sequence.resources.data.ec2Instance.iamInstanceProfile.id
+\item service.detection.sequence.resources.data.ec2Instance.imageDescription
+\item service.detection.sequence.resources.data.ec2Instance.instanceState
+\item service.detection.sequence.resources.data.ec2Instance.instanceType
+\item service.detection.sequence.resources.data.ec2Instance.outpostArn
+\item service.detection.sequence.resources.data.ec2Instance.platform
+\item service.detection.sequence.resources.data.ec2Instance.productCodes.productCodeId
+\item service.detection.sequence.resources.data.ec2Instance.productCodes.productCodeType
+\item service.detection.sequence.resources.data.ec2LaunchTemplate.ec2InstanceUids
+\item service.detection.sequence.resources.data.ec2LaunchTemplate.version
+\item service.detection.sequence.resources.data.ec2NetworkInterface.ipv6Addresses
+\item service.detection.sequence.resources.data.ec2NetworkInterface.privateIpAddresses.privateDnsName
+\item service.detection.sequence.resources.data.ec2NetworkInterface.privateIpAddresses.privateIpAddress
+\item service.detection.sequence.resources.data.ec2NetworkInterface.publicIp
+\item service.detection.sequence.resources.data.ec2NetworkInterface.securityGroups.groupId
+\item service.detection.sequence.resources.data.ec2NetworkInterface.securityGroups.groupName
+\item service.detection.sequence.resources.data.ec2NetworkInterface.subNetId
+\item service.detection.sequence.resources.data.ec2NetworkInterface.vpcId
+\item service.detection.sequence.resources.data.ec2Vpc.ec2InstanceUids
+\item service.detection.sequence.resources.data.ecsCluster.ec2InstanceUids
+\item service.detection.sequence.resources.data.ecsCluster.status
+\item service.detection.sequence.resources.data.ecsTask.containerUids
+\item service.detection.sequence.resources.data.ecsTask.createdAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.detection.sequence.resources.data.ecsTask.launchType
+\item service.detection.sequence.resources.data.ecsTask.taskDefinitionArn
+\item service.detection.sequence.resources.data.eksCluster.arn
+\item service.detection.sequence.resources.data.eksCluster.createdAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.detection.sequence.resources.data.eksCluster.ec2InstanceUids
+\item service.detection.sequence.resources.data.eksCluster.status
+\item service.detection.sequence.resources.data.eksCluster.vpcId
+\item service.detection.sequence.resources.data.iamInstanceProfile.ec2InstanceUids
+\item service.detection.sequence.resources.data.iamInstanceProfile.id
+\item service.detection.sequence.resources.data.kubernetesWorkload.containerUids
+\item service.detection.sequence.resources.data.kubernetesWorkload.namespace
+\item service.detection.sequence.resources.data.kubernetesWorkload.type
+\item service.detection.sequence.resources.data.s3Bucket.accountPublicAccess.publicAclAccess
+\item service.detection.sequence.resources.data.s3Bucket.accountPublicAccess.publicAclIgnoreBehavior
+\item service.detection.sequence.resources.data.s3Bucket.accountPublicAccess.publicBucketRestrictBehavior
+\item service.detection.sequence.resources.data.s3Bucket.accountPublicAccess.publicPolicyAccess
+\item service.detection.sequence.resources.data.s3Bucket.bucketPublicAccess.publicAclAccess
+\item service.detection.sequence.resources.data.s3Bucket.bucketPublicAccess.publicAclIgnoreBehavior
+\item service.detection.sequence.resources.data.s3Bucket.bucketPublicAccess.publicBucketRestrictBehavior
+\item service.detection.sequence.resources.data.s3Bucket.bucketPublicAccess.publicPolicyAccess
+\item service.detection.sequence.resources.data.s3Bucket.createdAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.detection.sequence.resources.data.s3Bucket.effectivePermission
+\item service.detection.sequence.resources.data.s3Bucket.encryptionKeyArn
+\item service.detection.sequence.resources.data.s3Bucket.encryptionType
+\item service.detection.sequence.resources.data.s3Bucket.ownerId
+\item service.detection.sequence.resources.data.s3Bucket.publicReadAccess
+\item service.detection.sequence.resources.data.s3Bucket.publicWriteAccess
+\item service.detection.sequence.resources.data.s3Bucket.s3ObjectUids
+\item service.detection.sequence.resources.data.s3Object.eTag
+\item service.detection.sequence.resources.data.s3Object.key
+\item service.detection.sequence.resources.data.s3Object.versionId
+\item service.detection.sequence.resources.name
+\item service.detection.sequence.resources.region
+\item service.detection.sequence.resources.resourceType
+\item service.detection.sequence.resources.service
+\item service.detection.sequence.resources.tags.key
+\item service.detection.sequence.resources.tags.value
+\item service.detection.sequence.resources.uid
+\item service.detection.sequence.sequenceIndicators.key
+\item service.detection.sequence.sequenceIndicators.title
+\item service.detection.sequence.sequenceIndicators.values
+\item service.detection.sequence.signals.actorIds
+\item service.detection.sequence.signals.count
+\item service.detection.sequence.signals.createdAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.detection.sequence.signals.description
+\item service.detection.sequence.signals.endpointIds
+\item service.detection.sequence.signals.firstSeenAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.detection.sequence.signals.lastSeenAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.detection.sequence.signals.name
+\item service.detection.sequence.signals.resourceUids
+\item service.detection.sequence.signals.severity
+\item service.detection.sequence.signals.signalIndicators.key
+\item service.detection.sequence.signals.signalIndicators.title
+\item service.detection.sequence.signals.signalIndicators.values
+\item service.detection.sequence.signals.type
+\item service.detection.sequence.signals.uid
+\item service.detection.sequence.signals.updatedAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.detection.sequence.uid
+\item service.detectorId
+\item service.ebsVolumeScanDetails.scanCompletedAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.ebsVolumeScanDetails.scanDetections.highestSeverityThreatDetails.count
+\item service.ebsVolumeScanDetails.scanDetections.highestSeverityThreatDetails.severity
+\item service.ebsVolumeScanDetails.scanDetections.highestSeverityThreatDetails.threatName
+\item service.ebsVolumeScanDetails.scanDetections.scannedItemCount.files
+\item service.ebsVolumeScanDetails.scanDetections.scannedItemCount.totalGb
+\item service.ebsVolumeScanDetails.scanDetections.scannedItemCount.volumes
+\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.itemCount
+\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.shortened
+\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.fileName
+\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.filePath
+\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.hash
+\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.volumeArn
+\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.itemCount
+\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.name
+\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.severity
+\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.uniqueThreatNameCount
+\item service.ebsVolumeScanDetails.scanDetections.threatsDetectedItemCount.files
+\item service.ebsVolumeScanDetails.scanId
+\item service.ebsVolumeScanDetails.scanStartedAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.ebsVolumeScanDetails.scanType
+\item service.ebsVolumeScanDetails.sources
+\item service.ebsVolumeScanDetails.triggerFindingId
+\item service.eventFirstSeen
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.eventLastSeen
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.evidence.threatIntelligenceDetails.threatFileSha256
+\item service.evidence.threatIntelligenceDetails.threatListName
+\item service.evidence.threatIntelligenceDetails.threatNames
+\item service.featureName
+\item service.malwareScanDetails.scanCategory
+\item service.malwareScanDetails.scanConfiguration.incrementalScanDetails.baselineResourceArn
+\item service.malwareScanDetails.scanConfiguration.triggerType
+\item service.malwareScanDetails.scanId
+\item service.malwareScanDetails.scanType
+\item service.malwareScanDetails.threats.count
+\item service.malwareScanDetails.threats.hash
+\item service.malwareScanDetails.threats.itemDetails.additionalInfo.deviceName
+\item service.malwareScanDetails.threats.itemDetails.additionalInfo.versionId
+\item service.malwareScanDetails.threats.itemDetails.hash
+\item service.malwareScanDetails.threats.itemDetails.itemPath
+\item service.malwareScanDetails.threats.itemDetails.resourceArn
+\item service.malwareScanDetails.threats.itemPaths.hash
+\item service.malwareScanDetails.threats.itemPaths.nestedItemPath
+\item service.malwareScanDetails.threats.name
+\item service.malwareScanDetails.threats.source
+\item service.malwareScanDetails.uniqueThreatCount
+\item service.resourceRole
+\item service.runtimeDetails.context.addressFamily
+\item service.runtimeDetails.context.commandLineExample
+\item service.runtimeDetails.context.fileOperation
+\item service.runtimeDetails.context.filePath
+\item service.runtimeDetails.context.fileSystemType
+\item service.runtimeDetails.context.flags
+\item service.runtimeDetails.context.ianaProtocolNumber
+\item service.runtimeDetails.context.ldPreloadValue
+\item service.runtimeDetails.context.libraryPath
+\item service.runtimeDetails.context.memoryRegions
+\item service.runtimeDetails.context.modifiedAt
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.runtimeDetails.context.modifyingProcess.euid
+\item service.runtimeDetails.context.modifyingProcess.executablePath
+\item service.runtimeDetails.context.modifyingProcess.executableSha256
+\item service.runtimeDetails.context.modifyingProcess.lineage.euid
+\item service.runtimeDetails.context.modifyingProcess.lineage.executablePath
+\item service.runtimeDetails.context.modifyingProcess.lineage.name
+\item service.runtimeDetails.context.modifyingProcess.lineage.namespacePid
+\item service.runtimeDetails.context.modifyingProcess.lineage.parentUuid
+\item service.runtimeDetails.context.modifyingProcess.lineage.pid
+\item service.runtimeDetails.context.modifyingProcess.lineage.startTime
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.runtimeDetails.context.modifyingProcess.lineage.userId
+\item service.runtimeDetails.context.modifyingProcess.lineage.uuid
+\item service.runtimeDetails.context.modifyingProcess.name
+\item service.runtimeDetails.context.modifyingProcess.namespacePid
+\item service.runtimeDetails.context.modifyingProcess.parentUuid
+\item service.runtimeDetails.context.modifyingProcess.pid
+\item service.runtimeDetails.context.modifyingProcess.pwd
+\item service.runtimeDetails.context.modifyingProcess.startTime
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.runtimeDetails.context.modifyingProcess.user
+\item service.runtimeDetails.context.modifyingProcess.userId
+\item service.runtimeDetails.context.modifyingProcess.uuid
+\item service.runtimeDetails.context.moduleFilePath
+\item service.runtimeDetails.context.moduleName
+\item service.runtimeDetails.context.moduleSha256
+\item service.runtimeDetails.context.mountSource
+\item service.runtimeDetails.context.mountTarget
+\item service.runtimeDetails.context.relatedFilePaths
+\item service.runtimeDetails.context.releaseAgentPath
+\item service.runtimeDetails.context.runcBinaryPath
+\item service.runtimeDetails.context.scriptPath
+\item service.runtimeDetails.context.serviceName
+\item service.runtimeDetails.context.shellHistoryFilePath
+\item service.runtimeDetails.context.socketPath
+\item service.runtimeDetails.context.targetProcess.euid
+\item service.runtimeDetails.context.targetProcess.executablePath
+\item service.runtimeDetails.context.targetProcess.executableSha256
+\item service.runtimeDetails.context.targetProcess.lineage.euid
+\item service.runtimeDetails.context.targetProcess.lineage.executablePath
+\item service.runtimeDetails.context.targetProcess.lineage.name
+\item service.runtimeDetails.context.targetProcess.lineage.namespacePid
+\item service.runtimeDetails.context.targetProcess.lineage.parentUuid
+\item service.runtimeDetails.context.targetProcess.lineage.pid
+\item service.runtimeDetails.context.targetProcess.lineage.startTime
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.runtimeDetails.context.targetProcess.lineage.userId
+\item service.runtimeDetails.context.targetProcess.lineage.uuid
+\item service.runtimeDetails.context.targetProcess.name
+\item service.runtimeDetails.context.targetProcess.namespacePid
+\item service.runtimeDetails.context.targetProcess.parentUuid
+\item service.runtimeDetails.context.targetProcess.pid
+\item service.runtimeDetails.context.targetProcess.pwd
+\item service.runtimeDetails.context.targetProcess.startTime
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.runtimeDetails.context.targetProcess.user
+\item service.runtimeDetails.context.targetProcess.userId
+\item service.runtimeDetails.context.targetProcess.uuid
+\item service.runtimeDetails.context.threatFilePath
+\item service.runtimeDetails.context.toolCategory
+\item service.runtimeDetails.context.toolName
+\item service.runtimeDetails.process.euid
+\item service.runtimeDetails.process.executablePath
+\item service.runtimeDetails.process.executableSha256
+\item service.runtimeDetails.process.lineage.euid
+\item service.runtimeDetails.process.lineage.executablePath
+\item service.runtimeDetails.process.lineage.name
+\item service.runtimeDetails.process.lineage.namespacePid
+\item service.runtimeDetails.process.lineage.parentUuid
+\item service.runtimeDetails.process.lineage.pid
+\item service.runtimeDetails.process.lineage.startTime
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.runtimeDetails.process.lineage.userId
+\item service.runtimeDetails.process.lineage.uuid
+\item service.runtimeDetails.process.name
+\item service.runtimeDetails.process.namespacePid
+\item service.runtimeDetails.process.parentUuid
+\item service.runtimeDetails.process.pid
+\item service.runtimeDetails.process.pwd
+\item service.runtimeDetails.process.startTime
+
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+\item service.runtimeDetails.process.user
+\item service.runtimeDetails.process.userId
+\item service.runtimeDetails.process.uuid
+\item service.serviceName
+\item service.userFeedback
 \item severity
 
-To filter on the basis of severity, the API and CLI use the
-following input list for the
+To configure severity based filters, use the following for the
 \href{https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FindingCriteria.html}{FindingCriteria}
 condition:
 \itemize{
@@ -64,102 +738,11 @@ condition:
 
 For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html}{Findings severity levels}
 in the \emph{Amazon GuardDuty User Guide}.
+\item title
 \item type
 \item updatedAt
 
-Type: ISO 8601 string format: YYYY-MM-DDTHH:MM:SS.SSSZ or
-YYYY-MM-DDTHH:MM:SSZ depending on whether the value contains
-milliseconds.
-\item resource.accessKeyDetails.accessKeyId
-\item resource.accessKeyDetails.principalId
-\item resource.accessKeyDetails.userName
-\item resource.accessKeyDetails.userType
-\item resource.instanceDetails.iamInstanceProfile.id
-\item resource.instanceDetails.imageId
-\item resource.instanceDetails.instanceId
-\item resource.instanceDetails.tags.key
-\item resource.instanceDetails.tags.value
-\item resource.instanceDetails.networkInterfaces.ipv6Addresses
-\item resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress
-\item resource.instanceDetails.networkInterfaces.publicDnsName
-\item resource.instanceDetails.networkInterfaces.publicIp
-\item resource.instanceDetails.networkInterfaces.securityGroups.groupId
-\item resource.instanceDetails.networkInterfaces.securityGroups.groupName
-\item resource.instanceDetails.networkInterfaces.subnetId
-\item resource.instanceDetails.networkInterfaces.vpcId
-\item resource.instanceDetails.outpostArn
-\item resource.resourceType
-\item resource.s3BucketDetails.publicAccess.effectivePermissions
-\item resource.s3BucketDetails.name
-\item resource.s3BucketDetails.tags.key
-\item resource.s3BucketDetails.tags.value
-\item resource.s3BucketDetails.type
-\item service.action.actionType
-\item service.action.awsApiCallAction.api
-\item service.action.awsApiCallAction.callerType
-\item service.action.awsApiCallAction.errorCode
-\item service.action.awsApiCallAction.remoteIpDetails.city.cityName
-\item service.action.awsApiCallAction.remoteIpDetails.country.countryName
-\item service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
-\item service.action.awsApiCallAction.remoteIpDetails.ipAddressV6
-\item service.action.awsApiCallAction.remoteIpDetails.organization.asn
-\item service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
-\item service.action.awsApiCallAction.serviceName
-\item service.action.dnsRequestAction.domain
-\item service.action.dnsRequestAction.domainWithSuffix
-\item service.action.dnsRequestAction.vpcOwnerAccountId
-\item service.action.networkConnectionAction.blocked
-\item service.action.networkConnectionAction.connectionDirection
-\item service.action.networkConnectionAction.localPortDetails.port
-\item service.action.networkConnectionAction.protocol
-\item service.action.networkConnectionAction.remoteIpDetails.city.cityName
-\item service.action.networkConnectionAction.remoteIpDetails.country.countryName
-\item service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
-\item service.action.networkConnectionAction.remoteIpDetails.ipAddressV6
-\item service.action.networkConnectionAction.remoteIpDetails.organization.asn
-\item service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
-\item service.action.networkConnectionAction.remotePortDetails.port
-\item service.action.awsApiCallAction.remoteAccountDetails.affiliated
-\item service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4
-\item service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV6
-\item service.action.kubernetesApiCallAction.namespace
-\item service.action.kubernetesApiCallAction.remoteIpDetails.organization.asn
-\item service.action.kubernetesApiCallAction.requestUri
-\item service.action.kubernetesApiCallAction.statusCode
-\item service.action.networkConnectionAction.localIpDetails.ipAddressV4
-\item service.action.networkConnectionAction.localIpDetails.ipAddressV6
-\item service.action.networkConnectionAction.protocol
-\item service.action.awsApiCallAction.serviceName
-\item service.action.awsApiCallAction.remoteAccountDetails.accountId
-\item service.additionalInfo.threatListName
-\item service.resourceRole
-\item resource.eksClusterDetails.name
-\item resource.kubernetesDetails.kubernetesWorkloadDetails.name
-\item resource.kubernetesDetails.kubernetesWorkloadDetails.namespace
-\item resource.kubernetesDetails.kubernetesUserDetails.username
-\item resource.kubernetesDetails.kubernetesWorkloadDetails.containers.image
-\item resource.kubernetesDetails.kubernetesWorkloadDetails.containers.imagePrefix
-\item service.ebsVolumeScanDetails.scanId
-\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.name
-\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.severity
-\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.hash
-\item resource.ecsClusterDetails.name
-\item resource.ecsClusterDetails.taskDetails.containers.image
-\item resource.ecsClusterDetails.taskDetails.definitionArn
-\item resource.containerDetails.image
-\item resource.rdsDbInstanceDetails.dbInstanceIdentifier
-\item resource.rdsDbInstanceDetails.dbClusterIdentifier
-\item resource.rdsDbInstanceDetails.engine
-\item resource.rdsDbUserDetails.user
-\item resource.rdsDbInstanceDetails.tags.key
-\item resource.rdsDbInstanceDetails.tags.value
-\item service.runtimeDetails.process.executableSha256
-\item service.runtimeDetails.process.name
-\item service.runtimeDetails.process.executablePath
-\item resource.lambdaDetails.functionName
-\item resource.lambdaDetails.functionArn
-\item resource.lambdaDetails.tags.key
-\item resource.lambdaDetails.tags.value
+Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
 }}
 
 \item{ClientToken}{The idempotency token for the create request.}

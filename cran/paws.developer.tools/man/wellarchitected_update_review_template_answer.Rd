@@ -22,13 +22,7 @@ wellarchitected_update_review_template_answer(
 
 \item{QuestionId}{[required]}
 
-\item{SelectedChoices}{}
-
 \item{ChoiceUpdates}{A list of choices to be updated.}
-
-\item{Notes}{}
-
-\item{IsApplicable}{}
 
 \item{Reason}{The update reason.}
 }

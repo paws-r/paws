@@ -23,8 +23,6 @@ belong to the Amazon FSx delegated admin user group.}
 \item{Password}{The password of the user credential.}
 
 \item{AuditDestinationARN}{The Amazon Resource Name (ARN) of the storage used for the audit logs.}
-
-\item{CacheAttributes}{}
 }
 \description{
 Updates a file system association. This operation is only supported in the FSx File Gateways.

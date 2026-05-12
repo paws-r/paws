@@ -120,8 +120,6 @@ project. A \code{ProjectFileSystemLocation} object specifies the
 \code{identifier}, \code{location}, \code{mountOptions}, \code{mountPoint}, and \code{type} of a
 file system created using Amazon Elastic File System.}
 
-\item{buildBatchConfig}{}
-
 \item{concurrentBuildLimit}{The maximum number of concurrent builds that are allowed for this
 project.
 

@@ -2,8 +2,8 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_batch_get_configuration_policy_associations}
 \alias{securityhub_batch_get_configuration_policy_associations}
-\title{Returns associations between an Security Hub configuration and a batch
-of target accounts, organizational units, or the root}
+\title{Returns associations between an Security Hub CSPM configuration and a
+batch of target accounts, organizational units, or the root}
 \usage{
 securityhub_batch_get_configuration_policy_associations(
   ConfigurationPolicyAssociationIdentifiers
@@ -14,7 +14,7 @@ securityhub_batch_get_configuration_policy_associations(
 or the root ID to retrieve associations for.}
 }
 \description{
-Returns associations between an Security Hub configuration and a batch of target accounts, organizational units, or the root. Only the Security Hub delegated administrator can invoke this operation from the home Region. A configuration can refer to a configuration policy or to a self-managed configuration.
+Returns associations between an Security Hub CSPM configuration and a batch of target accounts, organizational units, or the root. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region. A configuration can refer to a configuration policy or to a self-managed configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_batch_get_configuration_policy_associations/} for full documentation.
 }

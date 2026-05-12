@@ -16,7 +16,9 @@ appstream_create_stack(
   Tags = NULL,
   AccessEndpoints = NULL,
   EmbedHostDomains = NULL,
-  StreamingExperienceSettings = NULL
+  StreamingExperienceSettings = NULL,
+  ContentRedirection = NULL,
+  AgentAccessConfig = NULL
 )
 }
 \arguments{
@@ -65,6 +67,9 @@ host embedded WorkSpaces Applications streaming sessions.}
 
 \item{StreamingExperienceSettings}{The streaming protocol you want your stack to prefer. This can be UDP or
 TCP. Currently, UDP is only supported in the Windows native client.}
+
+\item{AgentAccessConfig}{The configuration for agent access on the stack. If specified, agent
+access is enabled for the stack.}
 }
 \description{
 Creates a stack to start streaming applications to users. A stack consists of an associated fleet, user access policies, and storage configurations.

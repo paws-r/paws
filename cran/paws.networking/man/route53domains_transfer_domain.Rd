@@ -7,7 +7,7 @@
 route53domains_transfer_domain(
   DomainName,
   IdnLangCode = NULL,
-  DurationInYears,
+  DurationInYears = NULL,
   Nameservers = NULL,
   AuthCode = NULL,
   AutoRenew = NULL,
@@ -39,9 +39,12 @@ label.
 
 \item{IdnLangCode}{Reserved for future use.}
 
-\item{DurationInYears}{[required] The number of years that you want to register the domain for. Domains
-are registered for a minimum of one year. The maximum period depends on
-the top-level domain.
+\item{DurationInYears}{Reserved for future use.
+
+Currently, the effect of a domain transfer on the registration period
+varies by TLD. For information about how transferring a domain affects
+the expiration date, see the Transfer Term column in the pricing
+information at \href{https://aws.amazon.com/route53/pricing/}{Amazon Route 53 Pricing}.
 
 Default: 1}
 

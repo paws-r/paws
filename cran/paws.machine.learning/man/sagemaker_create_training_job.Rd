@@ -163,16 +163,8 @@ interrupted, resumed, or completed.}
 \item{CheckpointConfig}{Contains information about the output location for managed spot training
 checkpoint data.}
 
-\item{DebugHookConfig}{}
-
 \item{DebugRuleConfigurations}{Configuration information for Amazon SageMaker Debugger rules for
 debugging output tensors.}
-
-\item{TensorBoardOutputConfig}{}
-
-\item{ExperimentConfig}{}
-
-\item{ProfilerConfig}{}
 
 \item{ProfilerRuleConfigurations}{Configuration information for Amazon SageMaker Debugger rules for
 profiling system and framework metrics.}

@@ -14,7 +14,7 @@ autoscaling_start_instance_refresh(
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{Strategy}{The strategy to use for the instance refresh. The only valid value is
+\item{Strategy}{The strategy to use for the instance refresh. The default value is
 \code{Rolling}.}
 
 \item{DesiredConfiguration}{The desired configuration. For example, the desired configuration can

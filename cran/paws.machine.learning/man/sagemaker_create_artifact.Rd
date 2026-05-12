@@ -23,8 +23,6 @@ Web Services Region.}
 
 \item{Properties}{A list of properties to add to the artifact.}
 
-\item{MetadataProperties}{}
-
 \item{Tags}{A list of tags to apply to the artifact.}
 }
 \description{

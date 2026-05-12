@@ -14,8 +14,6 @@ fsx_delete_data_repository_association(
 \arguments{
 \item{AssociationId}{[required] The ID of the data repository association that you want to delete.}
 
-\item{ClientRequestToken}{}
-
 \item{DeleteDataInFileSystem}{Set to \code{true} to delete the data in the file system that corresponds to
 the data repository association.}
 }

@@ -5,21 +5,21 @@
 \title{Updates the owner of the root domain unit}
 \usage{
 datazone_update_root_domain_unit_owner(
-  clientToken = NULL,
-  currentOwner,
   domainIdentifier,
-  newOwner
+  currentOwner,
+  newOwner,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the
-request. This field is automatically populated if not provided.}
+\item{domainIdentifier}{[required] The ID of the domain where the root domain unit owner is to be updated.}
 
 \item{currentOwner}{[required] The current owner of the root domain unit.}
 
-\item{domainIdentifier}{[required] The ID of the domain where the root domain unit owner is to be updated.}
-
 \item{newOwner}{[required] The new owner of the root domain unit.}
+
+\item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the
+request. This field is automatically populated if not provided.}
 }
 \description{
 Updates the owner of the root domain unit.

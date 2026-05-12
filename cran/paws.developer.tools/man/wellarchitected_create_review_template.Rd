@@ -20,8 +20,6 @@ wellarchitected_create_review_template(
 
 \item{Lenses}{[required] Lenses applied to the review template.}
 
-\item{Notes}{}
-
 \item{Tags}{The tags assigned to the review template.}
 
 \item{ClientRequestToken}{[required]}

@@ -11,7 +11,7 @@ batch_delete_job_queue(jobQueue)
 delete.}
 }
 \description{
-Deletes the specified job queue. You must first disable submissions for a queue with the \code{\link[=batch_update_job_queue]{update_job_queue}} operation. All jobs in the queue are eventually terminated when you delete a job queue. The jobs are terminated at a rate of about 16 jobs each second.
+Deletes the specified job queue. You must first disable submissions for a queue with the \code{\link[=batch_update_job_queue]{update_job_queue}} operation. All jobs in the queue are eventually terminated when you delete a job queue.
 
 See \url{https://www.paws-r-sdk.com/docs/batch_delete_job_queue/} for full documentation.
 }

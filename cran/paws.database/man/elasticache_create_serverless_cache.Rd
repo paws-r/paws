@@ -17,7 +17,8 @@ elasticache_create_serverless_cache(
   UserGroupId = NULL,
   SubnetIds = NULL,
   SnapshotRetentionLimit = NULL,
-  DailySnapshotTime = NULL
+  DailySnapshotTime = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -59,15 +60,19 @@ cache. Available for Valkey and Redis OSS only. Default is NULL.}
 serverless cache will be deployed. All the subnetIds must belong to the
 same VPC.}
 
-\item{SnapshotRetentionLimit}{The number of snapshots that will be retained for the serverless cache
-that is being created. As new snapshots beyond this limit are added, the
-oldest snapshots will be deleted on a rolling basis. Available for
-Valkey, Redis OSS and Serverless Memcached only.}
+\item{SnapshotRetentionLimit}{The number of days for which ElastiCache retains automatic snapshots
+before deleting them. Available for Valkey, Redis OSS and Serverless
+Memcached only. The maximum value allowed is 35 days.}
 
 \item{DailySnapshotTime}{The daily time that snapshots will be created from the new serverless
 cache. By default this number is populated with 0, i.e. no snapshots
 will be created on an automatic daily basis. Available for Valkey, Redis
 OSS and Serverless Memcached only.}
+
+\item{NetworkType}{The IP protocol version used by the serverless cache. Must be either
+\code{ipv4} | \code{ipv6} | \code{dual_stack}. \code{ipv6} is only supported with ipv6-only
+subnets. If not specified, defaults to \code{ipv4}, unless all provided
+subnets are IPv6-only, in which case it defaults to \code{ipv6}.}
 }
 \description{
 Creates a serverless cache.

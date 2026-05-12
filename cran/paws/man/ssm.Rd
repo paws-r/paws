@@ -207,7 +207,7 @@ see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/userguid
 \link[paws.management:ssm_list_commands]{list_commands} \tab Lists the commands requested by users of the Amazon Web Services account\cr
 \link[paws.management:ssm_list_compliance_items]{list_compliance_items} \tab For a specified resource ID, this API operation returns a list of compliance statuses for different resource types\cr
 \link[paws.management:ssm_list_compliance_summaries]{list_compliance_summaries} \tab Returns a summary count of compliant and non-compliant resources for a compliance type\cr
-\link[paws.management:ssm_list_document_metadata_history]{list_document_metadata_history} \tab Amazon Web Services Systems Manager Change Manager will no longer be open to new customers starting November 7, 2025\cr
+\link[paws.management:ssm_list_document_metadata_history]{list_document_metadata_history} \tab Amazon Web Services Systems Manager Change Manager is no longer open to new customers\cr
 \link[paws.management:ssm_list_documents]{list_documents} \tab Returns all Systems Manager (SSM) documents in the current Amazon Web Services account and Amazon Web Services Region\cr
 \link[paws.management:ssm_list_document_versions]{list_document_versions} \tab List all versions for a document\cr
 \link[paws.management:ssm_list_inventory_entries]{list_inventory_entries} \tab A list of inventory items returned by the request\cr
@@ -236,7 +236,7 @@ see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/userguid
 \link[paws.management:ssm_start_access_request]{start_access_request} \tab Starts the workflow for just-in-time node access sessions\cr
 \link[paws.management:ssm_start_associations_once]{start_associations_once} \tab Runs an association immediately and only one time\cr
 \link[paws.management:ssm_start_automation_execution]{start_automation_execution} \tab Initiates execution of an Automation runbook\cr
-\link[paws.management:ssm_start_change_request_execution]{start_change_request_execution} \tab Amazon Web Services Systems Manager Change Manager will no longer be open to new customers starting November 7, 2025\cr
+\link[paws.management:ssm_start_change_request_execution]{start_change_request_execution} \tab Amazon Web Services Systems Manager Change Manager is no longer open to new customers\cr
 \link[paws.management:ssm_start_execution_preview]{start_execution_preview} \tab Initiates the process of creating a preview showing the effects that running a specified Automation runbook would have on the targeted resources\cr
 \link[paws.management:ssm_start_session]{start_session} \tab Initiates a connection to a target (for example, a managed node) for a Session Manager session\cr
 \link[paws.management:ssm_stop_automation_execution]{stop_automation_execution} \tab Stop an Automation that is currently running\cr
@@ -246,7 +246,7 @@ see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/userguid
 \link[paws.management:ssm_update_association_status]{update_association_status} \tab Updates the status of the Amazon Web Services Systems Manager document (SSM document) associated with the specified managed node\cr
 \link[paws.management:ssm_update_document]{update_document} \tab Updates one or more values for an SSM document\cr
 \link[paws.management:ssm_update_document_default_version]{update_document_default_version} \tab Set the default version of a document\cr
-\link[paws.management:ssm_update_document_metadata]{update_document_metadata} \tab Amazon Web Services Systems Manager Change Manager will no longer be open to new customers starting November 7, 2025\cr
+\link[paws.management:ssm_update_document_metadata]{update_document_metadata} \tab Amazon Web Services Systems Manager Change Manager is no longer open to new customers\cr
 \link[paws.management:ssm_update_maintenance_window]{update_maintenance_window} \tab Updates an existing maintenance window\cr
 \link[paws.management:ssm_update_maintenance_window_target]{update_maintenance_window_target} \tab Modifies the target of an existing maintenance window\cr
 \link[paws.management:ssm_update_maintenance_window_task]{update_maintenance_window_task} \tab Modifies a task assigned to a maintenance window\cr

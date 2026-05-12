@@ -8,8 +8,6 @@ fsx_delete_file_cache(FileCacheId, ClientRequestToken = NULL)
 }
 \arguments{
 \item{FileCacheId}{[required] The ID of the cache that's being deleted.}
-
-\item{ClientRequestToken}{}
 }
 \description{
 Deletes an Amazon File Cache resource. After deletion, the cache no longer exists, and its data is gone.

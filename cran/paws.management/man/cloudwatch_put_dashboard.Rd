@@ -5,7 +5,7 @@
 \title{Creates a dashboard if it does not already exist, or updates an existing
 dashboard}
 \usage{
-cloudwatch_put_dashboard(DashboardName, DashboardBody)
+cloudwatch_put_dashboard(DashboardName, DashboardBody, Tags = NULL)
 }
 \arguments{
 \item{DashboardName}{[required] The name of the dashboard. If a dashboard with this name already exists,
@@ -19,6 +19,19 @@ the widgets to include and their location on the dashboard. This
 parameter is required.
 
 For more information about the syntax, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html}{Dashboard Body Structure and Syntax}.}
+
+\item{Tags}{A list of key-value pairs to associate with the dashboard. You can
+associate as many as 50 tags with a dashboard.
+
+Tags can help you organize and categorize your dashboards. You can also
+use them to scope user permissions by granting a user permission to
+access or change only dashboards with certain tag values.
+
+You can use this parameter only when creating a new dashboard. If you
+specify \code{Tags} when updating an existing dashboard, the tag updates are
+ignored. To add or update tags on an existing dashboard, use
+\code{\link[=cloudwatch_tag_resource]{tag_resource}}. To remove tags, use
+\code{\link[=cloudwatch_untag_resource]{untag_resource}}.}
 }
 \description{
 Creates a dashboard if it does not already exist, or updates an existing dashboard. If you update a dashboard, the entire contents are replaced with what you specify here.

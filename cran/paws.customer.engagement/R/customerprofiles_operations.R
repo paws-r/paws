@@ -449,12 +449,14 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 #' @param RecommenderRecipeName &#91;required&#93; The name of the recommeder recipe.
 #' @param RecommenderConfig The recommender configuration.
 #' @param Description The description of the domain object type.
+#' @param RecommenderSchemaName The name of the recommender schema to use for this recommender. If not
+#' specified, the default schema is used.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @keywords internal
 #'
 #' @rdname customerprofiles_create_recommender
-customerprofiles_create_recommender <- function(DomainName, RecommenderName, RecommenderRecipeName, RecommenderConfig = NULL, Description = NULL, Tags = NULL) {
+customerprofiles_create_recommender <- function(DomainName, RecommenderName, RecommenderRecipeName, RecommenderConfig = NULL, Description = NULL, RecommenderSchemaName = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateRecommender",
     http_method = "POST",
@@ -463,7 +465,7 @@ customerprofiles_create_recommender <- function(DomainName, RecommenderName, Rec
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$create_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName, RecommenderRecipeName = RecommenderRecipeName, RecommenderConfig = RecommenderConfig, Description = Description, Tags = Tags)
+  input <- .customerprofiles$create_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName, RecommenderRecipeName = RecommenderRecipeName, RecommenderConfig = RecommenderConfig, Description = Description, RecommenderSchemaName = RecommenderSchemaName, Tags = Tags)
   output <- .customerprofiles$create_recommender_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -472,6 +474,82 @@ customerprofiles_create_recommender <- function(DomainName, RecommenderName, Rec
   return(response)
 }
 .customerprofiles$operations$create_recommender <- customerprofiles_create_recommender
+
+#' Creates a recommender filter
+#'
+#' @description
+#' Creates a recommender filter. A recommender filter specifies which items to include or exclude from recommendations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_create_recommender_filter/](https://www.paws-r-sdk.com/docs/customerprofiles_create_recommender_filter/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderFilterName &#91;required&#93; The name of the recommender filter. The name must be unique within the
+#' domain.
+#' @param RecommenderFilterExpression &#91;required&#93; The filter expression that defines which items to include or exclude
+#' from recommendations.
+#' @param RecommenderSchemaName The name of the recommender schema to use for this recommender filter.
+#' If not specified, the default schema is used.
+#' @param Description A description of the recommender filter.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_recommender_filter
+customerprofiles_create_recommender_filter <- function(DomainName, RecommenderFilterName, RecommenderFilterExpression, RecommenderSchemaName = NULL, Description = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateRecommenderFilter",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/recommender-filters/{RecommenderFilterName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$create_recommender_filter_input(DomainName = DomainName, RecommenderFilterName = RecommenderFilterName, RecommenderFilterExpression = RecommenderFilterExpression, RecommenderSchemaName = RecommenderSchemaName, Description = Description, Tags = Tags)
+  output <- .customerprofiles$create_recommender_filter_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_recommender_filter <- customerprofiles_create_recommender_filter
+
+#' Creates a recommender schema
+#'
+#' @description
+#' Creates a recommender schema. A recommender schema defines the set of data columns available for training recommenders and filters under a domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_create_recommender_schema/](https://www.paws-r-sdk.com/docs/customerprofiles_create_recommender_schema/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderSchemaName &#91;required&#93; The name of the recommender schema. The name must be unique within the
+#' domain.
+#' @param Fields &#91;required&#93; A map of dataset type to column definitions that specifies which data
+#' columns to include in the schema. Currently only the `_webAnalytics` key
+#' is supported.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_recommender_schema
+customerprofiles_create_recommender_schema <- function(DomainName, RecommenderSchemaName, Fields, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateRecommenderSchema",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/recommender-schemas/{RecommenderSchemaName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$create_recommender_schema_input(DomainName = DomainName, RecommenderSchemaName = RecommenderSchemaName, Fields = Fields, Tags = Tags)
+  output <- .customerprofiles$create_recommender_schema_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_recommender_schema <- customerprofiles_create_recommender_schema
 
 #' Creates a segment definition associated to the given domain
 #'
@@ -487,12 +565,13 @@ customerprofiles_create_recommender <- function(DomainName, RecommenderName, Rec
 #' @param SegmentGroups Specifies the base segments and dimensions for a segment definition
 #' along with their respective relationship.
 #' @param SegmentSqlQuery The segment SQL query.
+#' @param SegmentSort The segment sort.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @keywords internal
 #'
 #' @rdname customerprofiles_create_segment_definition
-customerprofiles_create_segment_definition <- function(DomainName, SegmentDefinitionName, DisplayName, Description = NULL, SegmentGroups = NULL, SegmentSqlQuery = NULL, Tags = NULL) {
+customerprofiles_create_segment_definition <- function(DomainName, SegmentDefinitionName, DisplayName, Description = NULL, SegmentGroups = NULL, SegmentSqlQuery = NULL, SegmentSort = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateSegmentDefinition",
     http_method = "POST",
@@ -501,7 +580,7 @@ customerprofiles_create_segment_definition <- function(DomainName, SegmentDefini
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$create_segment_definition_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, DisplayName = DisplayName, Description = Description, SegmentGroups = SegmentGroups, SegmentSqlQuery = SegmentSqlQuery, Tags = Tags)
+  input <- .customerprofiles$create_segment_definition_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, DisplayName = DisplayName, Description = Description, SegmentGroups = SegmentGroups, SegmentSqlQuery = SegmentSqlQuery, SegmentSort = SegmentSort, Tags = Tags)
   output <- .customerprofiles$create_segment_definition_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -1014,6 +1093,70 @@ customerprofiles_delete_recommender <- function(DomainName, RecommenderName) {
   return(response)
 }
 .customerprofiles$operations$delete_recommender <- customerprofiles_delete_recommender
+
+#' Deletes a recommender filter from a domain
+#'
+#' @description
+#' Deletes a recommender filter from a domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_delete_recommender_filter/](https://www.paws-r-sdk.com/docs/customerprofiles_delete_recommender_filter/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderFilterName &#91;required&#93; The name of the recommender filter to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_recommender_filter
+customerprofiles_delete_recommender_filter <- function(DomainName, RecommenderFilterName) {
+  op <- new_operation(
+    name = "DeleteRecommenderFilter",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/recommender-filters/{RecommenderFilterName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$delete_recommender_filter_input(DomainName = DomainName, RecommenderFilterName = RecommenderFilterName)
+  output <- .customerprofiles$delete_recommender_filter_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_recommender_filter <- customerprofiles_delete_recommender_filter
+
+#' Deletes a recommender schema from a domain
+#'
+#' @description
+#' Deletes a recommender schema from a domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_delete_recommender_schema/](https://www.paws-r-sdk.com/docs/customerprofiles_delete_recommender_schema/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderSchemaName &#91;required&#93; The name of the recommender schema to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_recommender_schema
+customerprofiles_delete_recommender_schema <- function(DomainName, RecommenderSchemaName) {
+  op <- new_operation(
+    name = "DeleteRecommenderSchema",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/recommender-schemas/{RecommenderSchemaName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$delete_recommender_schema_input(DomainName = DomainName, RecommenderSchemaName = RecommenderSchemaName)
+  output <- .customerprofiles$delete_recommender_schema_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_recommender_schema <- customerprofiles_delete_recommender_schema
 
 #' Deletes a segment definition from the domain
 #'
@@ -1623,13 +1766,25 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 #' @param RecommenderName &#91;required&#93; The unique name of the recommender.
 #' @param Context The contextual metadata used to provide dynamic runtime information to
 #' tailor recommendations.
+#' @param RecommenderFilters A list of filters to apply to the returned recommendations. Filters
+#' define criteria for including or excluding items from the recommendation
+#' results.
+#' @param RecommenderPromotionalFilters A list of promotional filters to apply to the recommendations.
+#' Promotional filters allow you to promote specific items within a
+#' configurable subset of recommendation results.
+#' @param CandidateIds A list of item IDs to rank for the user. Use this when you want to
+#' re-rank a specific set of items rather than getting recommendations from
+#' the full item catalog. Required for personalized-ranking use cases.
 #' @param MaxResults The maximum number of recommendations to return. The default value is
 #' 10.
+#' @param MetadataConfig Configuration for including item metadata in the recommendation
+#' response. Use this to specify which metadata columns to return alongside
+#' recommended items.
 #'
 #' @keywords internal
 #'
 #' @rdname customerprofiles_get_profile_recommendations
-customerprofiles_get_profile_recommendations <- function(DomainName, ProfileId, RecommenderName, Context = NULL, MaxResults = NULL) {
+customerprofiles_get_profile_recommendations <- function(DomainName, ProfileId, RecommenderName, Context = NULL, RecommenderFilters = NULL, RecommenderPromotionalFilters = NULL, CandidateIds = NULL, MaxResults = NULL, MetadataConfig = NULL) {
   op <- new_operation(
     name = "GetProfileRecommendations",
     http_method = "POST",
@@ -1638,7 +1793,7 @@ customerprofiles_get_profile_recommendations <- function(DomainName, ProfileId, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$get_profile_recommendations_input(DomainName = DomainName, ProfileId = ProfileId, RecommenderName = RecommenderName, Context = Context, MaxResults = MaxResults)
+  input <- .customerprofiles$get_profile_recommendations_input(DomainName = DomainName, ProfileId = ProfileId, RecommenderName = RecommenderName, Context = Context, RecommenderFilters = RecommenderFilters, RecommenderPromotionalFilters = RecommenderPromotionalFilters, CandidateIds = CandidateIds, MaxResults = MaxResults, MetadataConfig = MetadataConfig)
   output <- .customerprofiles$get_profile_recommendations_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -1680,6 +1835,70 @@ customerprofiles_get_recommender <- function(DomainName, RecommenderName, Traini
   return(response)
 }
 .customerprofiles$operations$get_recommender <- customerprofiles_get_recommender
+
+#' Retrieves information about a specific recommender filter in a domain
+#'
+#' @description
+#' Retrieves information about a specific recommender filter in a domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_recommender_filter/](https://www.paws-r-sdk.com/docs/customerprofiles_get_recommender_filter/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderFilterName &#91;required&#93; The name of the recommender filter to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_recommender_filter
+customerprofiles_get_recommender_filter <- function(DomainName, RecommenderFilterName) {
+  op <- new_operation(
+    name = "GetRecommenderFilter",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/recommender-filters/{RecommenderFilterName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_recommender_filter_input(DomainName = DomainName, RecommenderFilterName = RecommenderFilterName)
+  output <- .customerprofiles$get_recommender_filter_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_recommender_filter <- customerprofiles_get_recommender_filter
+
+#' Retrieves information about a specific recommender schema in a domain
+#'
+#' @description
+#' Retrieves information about a specific recommender schema in a domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_recommender_schema/](https://www.paws-r-sdk.com/docs/customerprofiles_get_recommender_schema/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderSchemaName &#91;required&#93; The name of the recommender schema to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_recommender_schema
+customerprofiles_get_recommender_schema <- function(DomainName, RecommenderSchemaName) {
+  op <- new_operation(
+    name = "GetRecommenderSchema",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/recommender-schemas/{RecommenderSchemaName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_recommender_schema_input(DomainName = DomainName, RecommenderSchemaName = RecommenderSchemaName)
+  output <- .customerprofiles$get_recommender_schema_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_recommender_schema <- customerprofiles_get_recommender_schema
 
 #' Gets a segment definition from the domain
 #'
@@ -2583,6 +2802,41 @@ customerprofiles_list_profile_objects <- function(NextToken = NULL, MaxResults =
 }
 .customerprofiles$operations$list_profile_objects <- customerprofiles_list_profile_objects
 
+#' Returns a list of recommender filters in the specified domain
+#'
+#' @description
+#' Returns a list of recommender filters in the specified domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_recommender_filters/](https://www.paws-r-sdk.com/docs/customerprofiles_list_recommender_filters/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param MaxResults The maximum number of recommender filters to return in the response. The
+#' default value is 100.
+#' @param NextToken A token received from a previous ListRecommenderFilters call to retrieve
+#' the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_recommender_filters
+customerprofiles_list_recommender_filters <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRecommenderFilters",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/recommender-filters",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecommenderFilters"),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_recommender_filters_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .customerprofiles$list_recommender_filters_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_recommender_filters <- customerprofiles_list_recommender_filters
+
 #' Returns a list of available recommender recipes that can be used to
 #' create recommenders
 #'
@@ -2617,6 +2871,41 @@ customerprofiles_list_recommender_recipes <- function(MaxResults = NULL, NextTok
   return(response)
 }
 .customerprofiles$operations$list_recommender_recipes <- customerprofiles_list_recommender_recipes
+
+#' Returns a list of recommender schemas in the specified domain
+#'
+#' @description
+#' Returns a list of recommender schemas in the specified domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_recommender_schemas/](https://www.paws-r-sdk.com/docs/customerprofiles_list_recommender_schemas/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param MaxResults The maximum number of recommender schemas to return in the response. The
+#' default value is 100.
+#' @param NextToken A token received from a previous ListRecommenderSchemas call to retrieve
+#' the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_recommender_schemas
+customerprofiles_list_recommender_schemas <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRecommenderSchemas",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/recommender-schemas",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecommenderSchemas"),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_recommender_schemas_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .customerprofiles$list_recommender_schemas_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_recommender_schemas <- customerprofiles_list_recommender_schemas
 
 #' Returns a list of recommenders in the specified domain
 #'
@@ -3015,6 +3304,10 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #' @param SourceLastUpdatedTimestampFormat The format of your `sourceLastUpdatedTimestamp` that was previously set
 #' up.
 #' @param MaxProfileObjectCount The amount of profile object max count assigned to the object type
+#' @param SourcePriority An integer that determines the priority of this object type when data
+#' from multiple sources is ingested. Lower values take priority. Object
+#' types without a specified source priority default to the lowest
+#' priority.
 #' @param Fields A map of the name and ObjectType field.
 #' @param Keys A list of unique keys that can be used to map data to the profile.
 #' @param Tags The tags used to organize, track, or control access for this resource.
@@ -3022,7 +3315,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #' @keywords internal
 #'
 #' @rdname customerprofiles_put_profile_object_type
-customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName, Description, TemplateId = NULL, ExpirationDays = NULL, EncryptionKey = NULL, AllowProfileCreation = NULL, SourceLastUpdatedTimestampFormat = NULL, MaxProfileObjectCount = NULL, Fields = NULL, Keys = NULL, Tags = NULL) {
+customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName, Description, TemplateId = NULL, ExpirationDays = NULL, EncryptionKey = NULL, AllowProfileCreation = NULL, SourceLastUpdatedTimestampFormat = NULL, MaxProfileObjectCount = NULL, SourcePriority = NULL, Fields = NULL, Keys = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutProfileObjectType",
     http_method = "PUT",
@@ -3031,7 +3324,7 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$put_profile_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Description = Description, TemplateId = TemplateId, ExpirationDays = ExpirationDays, EncryptionKey = EncryptionKey, AllowProfileCreation = AllowProfileCreation, SourceLastUpdatedTimestampFormat = SourceLastUpdatedTimestampFormat, MaxProfileObjectCount = MaxProfileObjectCount, Fields = Fields, Keys = Keys, Tags = Tags)
+  input <- .customerprofiles$put_profile_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Description = Description, TemplateId = TemplateId, ExpirationDays = ExpirationDays, EncryptionKey = EncryptionKey, AllowProfileCreation = AllowProfileCreation, SourceLastUpdatedTimestampFormat = SourceLastUpdatedTimestampFormat, MaxProfileObjectCount = MaxProfileObjectCount, SourcePriority = SourcePriority, Fields = Fields, Keys = Keys, Tags = Tags)
   output <- .customerprofiles$put_profile_object_type_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)

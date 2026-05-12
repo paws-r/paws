@@ -13,10 +13,6 @@ connectcampaignservicev2_list_connect_instance_integrations(
 }
 \arguments{
 \item{connectInstanceId}{[required]}
-
-\item{maxResults}{}
-
-\item{nextToken}{}
 }
 \description{
 Provides summary information about the integration under the specified Connect instance.

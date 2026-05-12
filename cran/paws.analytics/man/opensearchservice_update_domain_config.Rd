@@ -26,7 +26,8 @@ opensearchservice_update_domain_config(
   DryRunMode = NULL,
   OffPeakWindowOptions = NULL,
   SoftwareUpdateOptions = NULL,
-  AIMLOptions = NULL
+  AIMLOptions = NULL,
+  DeploymentStrategyOptions = NULL
 )
 }
 \arguments{
@@ -87,8 +88,6 @@ HTTPS for all traffic.}
 
 \item{AdvancedSecurityOptions}{Options for fine-grained access control.}
 
-\item{IdentityCenterOptions}{}
-
 \item{AutoTuneOptions}{Options for Auto-Tune.}
 
 \item{DryRun}{This flag, when set to True, specifies whether the \code{UpdateDomain}
@@ -109,6 +108,8 @@ making. For more information, see \href{https://docs.aws.amazon.com/opensearch-s
 \item{SoftwareUpdateOptions}{Service software update options for the domain.}
 
 \item{AIMLOptions}{Options for all machine learning features for the specified domain.}
+
+\item{DeploymentStrategyOptions}{Specifies the deployment strategy options for the domain.}
 }
 \description{
 Modifies the cluster configuration of the specified Amazon OpenSearch Service domain.

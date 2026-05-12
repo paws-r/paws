@@ -4,7 +4,12 @@
 \alias{cloudfront_update_anycast_ip_list}
 \title{Updates an Anycast static IP list}
 \usage{
-cloudfront_update_anycast_ip_list(Id, IpAddressType = NULL, IfMatch)
+cloudfront_update_anycast_ip_list(
+  Id,
+  IpAddressType = NULL,
+  IpamCidrConfigs = NULL,
+  IfMatch
+)
 }
 \arguments{
 \item{Id}{[required] The ID of the Anycast static IP list.}
@@ -16,6 +21,9 @@ of the following options:
 \item \code{ipv6} only
 \item \code{dualstack} - Allocate a list of both IPv4 and IPv6 addresses
 }}
+
+\item{IpamCidrConfigs}{A list of IPAM CIDR configurations that specify the IP address ranges
+and IPAM pool settings for updating the Anycast static IP list.}
 
 \item{IfMatch}{[required] The current version (ETag value) of the Anycast static IP list that you
 are updating.}

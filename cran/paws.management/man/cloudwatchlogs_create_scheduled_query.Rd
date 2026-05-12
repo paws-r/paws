@@ -32,7 +32,7 @@ characters.}
 purpose and functionality.}
 
 \item{queryLanguage}{[required] The query language to use for the scheduled query. Valid values are
-\code{LogsQL}, \code{PPL}, and \code{SQL}.}
+\code{CWLI}, \code{PPL}, and \code{SQL}.}
 
 \item{queryString}{[required] The query string to execute. This is the same query syntax used in
 CloudWatch Logs Insights. Maximum length is 10,000 characters.}

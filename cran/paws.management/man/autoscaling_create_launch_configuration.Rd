@@ -49,7 +49,8 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.}
 
 \item{UserData}{The user data to make available to the launched EC2 instances. For more
 information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data}
-(Linux) and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data}
+(Linux) and \link[=Instance metadata and user
+data]{Instance metadata and user data}(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html?fxf=\%3C/kj&showwysiwyg=\%3C/kj&prL=\%3C/kj&topic_showPostId=\%3C/kj&nyBrukerPersonaliaNameAndSsnForm.firstName=\%3C/kj&kkd=\%3C/kj&IdProducto=\%3C/kj&af_prt=\%3C/kj&s_page=\%3C/kj&Zip=\%3C/kj&xwu=\%3C/kj&noid=\%3C/kj&estilo=\%3C/kj&qubsts=\%3C/kj&PROD=\%3C/kj&ipprotocol=\%3C/kj&validateTicket=\%3C/kj&gjx=\%3C/kj&NewsCateId=\%3C/kj&searchParkId=\%3C/kj&spezialkurstermin=\%3C/kj&MustSelectLocation=\%3C/kj&PublicationFileName=\%3C/kj&send_approve=\%3C/kj&uxd=\%3C/kj&calID=\%3C/kj&druk=\%3C/kj&list_ch2_index=\%3C/kj&listing-priceTo=\%3C/kj&orig_url=\%3C/kj&idgal=\%3C/kj&zit=\%3C/kj&lak=\%3C/kj&lbq=\%3C/kj&wvb=\%3C/kj&0x=\%3C/kj&dogId=\%3C/kj&WY=\%3C/kj&_state=\%3C/kj&0p=\%3C/kj&productTypeId=\%3C/kj&questionCateId=\%3C/kj&frl=\%3C/kj&nRegionFK=\%3C/kj&openinshadowbox=\%3C/kj&advsrch=\%3C/kj&sel_crse_strt=\%3C/kj&elk=\%3C/kj&id_ct=\%3C/kj&filter_talla=\%3C/kj&hw_random=\%3C/kj&order2=\%3C/kj&vzz=\%3C/kj&qpg=\%3C/kj&timeEnd=\%3C/kj&nju=\%3C/kj&virtualCategories=
 (Windows). If you are using a command line tool, base64-encoding is
 performed for you, and you can load the text from a file. Otherwise, you
 must provide base64-encoded text. User data is limited to 16 KB.}

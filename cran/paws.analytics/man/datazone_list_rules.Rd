@@ -5,27 +5,35 @@
 \title{Lists existing rules}
 \usage{
 datazone_list_rules(
+  domainIdentifier,
+  targetType,
+  targetIdentifier,
+  ruleType = NULL,
   action = NULL,
+  projectIds = NULL,
   assetTypes = NULL,
   dataProduct = NULL,
-  domainIdentifier,
   includeCascaded = NULL,
   maxResults = NULL,
-  nextToken = NULL,
-  projectIds = NULL,
-  ruleType = NULL,
-  targetIdentifier,
-  targetType
+  nextToken = NULL
 )
 }
 \arguments{
+\item{domainIdentifier}{[required] The ID of the domain in which the rules are to be listed.}
+
+\item{targetType}{[required] The target type of the rule.}
+
+\item{targetIdentifier}{[required] The target ID of the rule.}
+
+\item{ruleType}{The type of the rule.}
+
 \item{action}{The action of the rule.}
+
+\item{projectIds}{The IDs of projects in which rules are to be listed.}
 
 \item{assetTypes}{The asset types of the rule.}
 
 \item{dataProduct}{The data product of the rule.}
-
-\item{domainIdentifier}{[required] The ID of the domain in which the rules are to be listed.}
 
 \item{includeCascaded}{Specifies whether to include cascading rules in the results.}
 
@@ -41,14 +49,6 @@ a \code{NextToken} value that you can use in a subsequent call to
 includes a pagination token named \code{NextToken}. You can specify this
 \code{NextToken} value in a subsequent call to
 \code{\link[=datazone_list_rules]{list_rules}} to list the next set of rules.}
-
-\item{projectIds}{The IDs of projects in which rules are to be listed.}
-
-\item{ruleType}{The type of the rule.}
-
-\item{targetIdentifier}{[required] The target ID of the rule.}
-
-\item{targetType}{[required] The target type of the rule.}
 }
 \description{
 Lists existing rules. In Amazon DataZone, a rule is a formal agreement that enforces specific requirements across user workflows (e.g., publishing assets to the catalog, requesting subscriptions, creating projects) within the Amazon DataZone data portal. These rules help maintain consistency, ensure compliance, and uphold governance standards in data management processes. For instance, a metadata enforcement rule can specify the required information for creating a subscription request or publishing a data asset to the catalog, ensuring alignment with organizational standards.

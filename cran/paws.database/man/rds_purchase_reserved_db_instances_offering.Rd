@@ -23,8 +23,6 @@ Example: myreservationID}
 \item{DBInstanceCount}{The number of instances to reserve.
 
 Default: \code{1}}
-
-\item{Tags}{}
 }
 \description{
 Purchases a reserved DB instance offering.

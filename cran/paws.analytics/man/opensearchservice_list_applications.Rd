@@ -11,12 +11,8 @@ opensearchservice_list_applications(
 )
 }
 \arguments{
-\item{nextToken}{}
-
 \item{statuses}{Filters the list of OpenSearch applications by status. Possible values:
 \code{CREATING}, \code{UPDATING}, \code{DELETING}, \code{FAILED}, \code{ACTIVE}, and \code{DELETED}.}
-
-\item{maxResults}{}
 }
 \description{
 Lists all OpenSearch applications under your account.

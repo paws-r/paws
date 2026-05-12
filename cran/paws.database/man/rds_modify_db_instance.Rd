@@ -66,9 +66,9 @@ rds_modify_db_instance(
   MultiTenant = NULL,
   DedicatedLogVolume = NULL,
   Engine = NULL,
+  AdditionalStorageVolumes = NULL,
   TagSpecifications = NULL,
-  MasterUserAuthenticationType = NULL,
-  AdditionalStorageVolumes = NULL
+  MasterUserAuthenticationType = NULL
 )
 }
 \arguments{
@@ -1009,6 +1009,11 @@ parameter group with \code{--db-parameter-group-name} and a new option
 group with \code{--option-group-name}.
 }}
 
+\item{AdditionalStorageVolumes}{A list of additional storage volumes to modify or delete for the DB
+instance. You can create up to 3 additional storage volumes. Additional
+storage volumes are supported for RDS for Oracle and RDS for SQL Server
+DB instances only.}
+
 \item{TagSpecifications}{Tags to assign to resources associated with the DB instance.
 
 Valid Values:
@@ -1028,11 +1033,6 @@ You can specify one of the following values:
 
 This option is only valid for RDS for PostgreSQL and Aurora PostgreSQL
 engines.}
-
-\item{AdditionalStorageVolumes}{A list of additional storage volumes to modify or delete for the DB
-instance. You can create up to 3 additional storage volumes. Additional
-storage volumes are supported for RDS for Oracle and RDS for SQL Server
-DB instances only.}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. To learn what modifications you can make to your DB instance, call \code{\link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}} before you call \code{\link[=rds_modify_db_instance]{modify_db_instance}}.

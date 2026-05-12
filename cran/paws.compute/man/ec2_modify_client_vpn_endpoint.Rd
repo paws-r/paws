@@ -20,7 +20,8 @@ ec2_modify_client_vpn_endpoint(
   SessionTimeoutHours = NULL,
   ClientLoginBannerOptions = NULL,
   ClientRouteEnforcementOptions = NULL,
-  DisconnectOnSessionTimeout = NULL
+  DisconnectOnSessionTimeout = NULL,
+  TransitGatewayConfiguration = NULL
 )
 }
 \arguments{
@@ -99,6 +100,9 @@ the expected route configurations.}
 maximum timeout specified in \code{sessionTimeoutHours} is reached. If
 \code{true}, users are prompted to reconnect client VPN. If \code{false}, client
 VPN attempts to reconnect automatically. The default value is \code{true}.}
+
+\item{TransitGatewayConfiguration}{The Transit Gateway configuration for the Client VPN endpoint. This
+option is currently not supported.}
 }
 \description{
 Modifies the specified Client VPN endpoint. Modifying the DNS server resets existing client connections.

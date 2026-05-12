@@ -293,19 +293,19 @@ backupgateway_disassociate_gateway_from_server <- function(GatewayArn) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   GatewayArn = "string",
 #'   BandwidthRateLimitIntervals = list(
 #'     list(
 #'       AverageUploadRateLimitInBitsPerSec = 123,
+#'       StartHourOfDay = 123,
+#'       EndHourOfDay = 123,
+#'       StartMinuteOfHour = 123,
+#'       EndMinuteOfHour = 123,
 #'       DaysOfWeek = list(
 #'         123
-#'       ),
-#'       EndHourOfDay = 123,
-#'       EndMinuteOfHour = 123,
-#'       StartHourOfDay = 123,
-#'       StartMinuteOfHour = 123
+#'       )
 #'     )
-#'   ),
-#'   GatewayArn = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -373,7 +373,11 @@ backupgateway_get_bandwidth_rate_limit_schedule <- function(GatewayArn) {
 #'     NextUpdateAvailabilityTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     VpcEndpoint = "string"
+#'     VpcEndpoint = "string",
+#'     DeprecationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SoftwareVersion = "string"
 #'   )
 #' )
 #' ```
@@ -431,14 +435,14 @@ backupgateway_get_gateway <- function(GatewayArn) {
 #'     Host = "string",
 #'     HypervisorArn = "string",
 #'     KmsKeyArn = "string",
+#'     Name = "string",
+#'     LogGroupArn = "string",
+#'     State = "PENDING"|"ONLINE"|"OFFLINE"|"ERROR",
 #'     LastSuccessfulMetadataSyncTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     LatestMetadataSyncStatus = "CREATED"|"RUNNING"|"FAILED"|"PARTIALLY_FAILED"|"SUCCEEDED",
 #'     LatestMetadataSyncStatusMessage = "string",
-#'     LogGroupArn = "string",
-#'     Name = "string",
-#'     State = "PENDING"|"ONLINE"|"OFFLINE"|"ERROR"
+#'     LatestMetadataSyncStatus = "CREATED"|"RUNNING"|"FAILED"|"PARTIALLY_FAILED"|"SUCCEEDED"
 #'   )
 #' )
 #' ```
@@ -479,8 +483,8 @@ backupgateway_get_hypervisor <- function(HypervisorArn) {
 #' @description
 #' This action retrieves the property mappings for the specified
 #' hypervisor. A hypervisor property mapping displays the relationship of
-#' entity properties available from the on-premises hypervisor to the
-#' properties available in Amazon Web Services.
+#' entity properties available from the hypervisor to the properties
+#' available in Amazon Web Services.
 #'
 #' @usage
 #' backupgateway_get_hypervisor_property_mappings(HypervisorArn)
@@ -492,15 +496,15 @@ backupgateway_get_hypervisor <- function(HypervisorArn) {
 #' ```
 #' list(
 #'   HypervisorArn = "string",
-#'   IamRoleArn = "string",
 #'   VmwareToAwsTagMappings = list(
 #'     list(
-#'       AwsTagKey = "string",
-#'       AwsTagValue = "string",
 #'       VmwareCategory = "string",
-#'       VmwareTagName = "string"
+#'       VmwareTagName = "string",
+#'       AwsTagKey = "string",
+#'       AwsTagValue = "string"
 #'     )
-#'   )
+#'   ),
+#'   IamRoleArn = "string"
 #' )
 #' ```
 #'
@@ -554,17 +558,17 @@ backupgateway_get_hypervisor_property_mappings <- function(HypervisorArn) {
 #'   VirtualMachine = list(
 #'     HostName = "string",
 #'     HypervisorId = "string",
-#'     LastBackupDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
 #'     Name = "string",
 #'     Path = "string",
 #'     ResourceArn = "string",
+#'     LastBackupDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     VmwareTags = list(
 #'       list(
 #'         VmwareCategory = "string",
-#'         VmwareTagDescription = "string",
-#'         VmwareTagName = "string"
+#'         VmwareTagName = "string",
+#'         VmwareTagDescription = "string"
 #'       )
 #'     )
 #'   )
@@ -608,16 +612,16 @@ backupgateway_get_virtual_machine <- function(ResourceArn) {
 #' Connect to a hypervisor by importing its configuration.
 #'
 #' @usage
-#' backupgateway_import_hypervisor_configuration(Host, KmsKeyArn, Name,
-#'   Password, Tags, Username)
+#' backupgateway_import_hypervisor_configuration(Name, Host, Username,
+#'   Password, KmsKeyArn, Tags)
 #'
+#' @param Name &#91;required&#93; The name of the hypervisor.
 #' @param Host &#91;required&#93; The server host of the hypervisor. This can be either an IP address or a
 #' fully-qualified domain name (FQDN).
-#' @param KmsKeyArn The Key Management Service for the hypervisor.
-#' @param Name &#91;required&#93; The name of the hypervisor.
-#' @param Password The password for the hypervisor.
-#' @param Tags The tags of the hypervisor configuration to import.
 #' @param Username The username for the hypervisor.
+#' @param Password The password for the hypervisor.
+#' @param KmsKeyArn The Key Management Service for the hypervisor.
+#' @param Tags The tags of the hypervisor configuration to import.
 #'
 #' @return
 #' A list with the following syntax:
@@ -630,17 +634,17 @@ backupgateway_get_virtual_machine <- function(ResourceArn) {
 #' @section Request syntax:
 #' ```
 #' svc$import_hypervisor_configuration(
-#'   Host = "string",
-#'   KmsKeyArn = "string",
 #'   Name = "string",
+#'   Host = "string",
+#'   Username = "string",
 #'   Password = "string",
+#'   KmsKeyArn = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   ),
-#'   Username = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -649,7 +653,7 @@ backupgateway_get_virtual_machine <- function(ResourceArn) {
 #' @rdname backupgateway_import_hypervisor_configuration
 #'
 #' @aliases backupgateway_import_hypervisor_configuration
-backupgateway_import_hypervisor_configuration <- function(Host, KmsKeyArn = NULL, Name, Password = NULL, Tags = NULL, Username = NULL) {
+backupgateway_import_hypervisor_configuration <- function(Name, Host, Username = NULL, Password = NULL, KmsKeyArn = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ImportHypervisorConfiguration",
     http_method = "POST",
@@ -658,7 +662,7 @@ backupgateway_import_hypervisor_configuration <- function(Host, KmsKeyArn = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .backupgateway$import_hypervisor_configuration_input(Host = Host, KmsKeyArn = KmsKeyArn, Name = Name, Password = Password, Tags = Tags, Username = Username)
+  input <- .backupgateway$import_hypervisor_configuration_input(Name = Name, Host = Host, Username = Username, Password = Password, KmsKeyArn = KmsKeyArn, Tags = Tags)
   output <- .backupgateway$import_hypervisor_configuration_output()
   config <- get_config()
   svc <- .backupgateway$service(config, op)
@@ -877,19 +881,19 @@ backupgateway_list_tags_for_resource <- function(ResourceArn) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   NextToken = "string",
 #'   VirtualMachines = list(
 #'     list(
 #'       HostName = "string",
 #'       HypervisorId = "string",
-#'       LastBackupDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
 #'       Name = "string",
 #'       Path = "string",
-#'       ResourceArn = "string"
+#'       ResourceArn = "string",
+#'       LastBackupDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -936,16 +940,16 @@ backupgateway_list_virtual_machines <- function(HypervisorArn = NULL, MaxResults
 #' to initiate a gateway's bandwidth rate limit schedule.
 #'
 #' @usage
-#' backupgateway_put_bandwidth_rate_limit_schedule(
-#'   BandwidthRateLimitIntervals, GatewayArn)
+#' backupgateway_put_bandwidth_rate_limit_schedule(GatewayArn,
+#'   BandwidthRateLimitIntervals)
 #'
-#' @param BandwidthRateLimitIntervals &#91;required&#93; An array containing bandwidth rate limit schedule intervals for a
-#' gateway. When no bandwidth rate limit intervals have been scheduled, the
-#' array is empty.
 #' @param GatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the gateway. Use the
 #' [`list_gateways`](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BGW_ListGateways.html)
 #' operation to return a list of gateways for your account and Amazon Web
 #' Services Region.
+#' @param BandwidthRateLimitIntervals &#91;required&#93; An array containing bandwidth rate limit schedule intervals for a
+#' gateway. When no bandwidth rate limit intervals have been scheduled, the
+#' array is empty.
 #'
 #' @return
 #' A list with the following syntax:
@@ -958,19 +962,19 @@ backupgateway_list_virtual_machines <- function(HypervisorArn = NULL, MaxResults
 #' @section Request syntax:
 #' ```
 #' svc$put_bandwidth_rate_limit_schedule(
+#'   GatewayArn = "string",
 #'   BandwidthRateLimitIntervals = list(
 #'     list(
 #'       AverageUploadRateLimitInBitsPerSec = 123,
+#'       StartHourOfDay = 123,
+#'       EndHourOfDay = 123,
+#'       StartMinuteOfHour = 123,
+#'       EndMinuteOfHour = 123,
 #'       DaysOfWeek = list(
 #'         123
-#'       ),
-#'       EndHourOfDay = 123,
-#'       EndMinuteOfHour = 123,
-#'       StartHourOfDay = 123,
-#'       StartMinuteOfHour = 123
+#'       )
 #'     )
-#'   ),
-#'   GatewayArn = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -979,7 +983,7 @@ backupgateway_list_virtual_machines <- function(HypervisorArn = NULL, MaxResults
 #' @rdname backupgateway_put_bandwidth_rate_limit_schedule
 #'
 #' @aliases backupgateway_put_bandwidth_rate_limit_schedule
-backupgateway_put_bandwidth_rate_limit_schedule <- function(BandwidthRateLimitIntervals, GatewayArn) {
+backupgateway_put_bandwidth_rate_limit_schedule <- function(GatewayArn, BandwidthRateLimitIntervals) {
   op <- new_operation(
     name = "PutBandwidthRateLimitSchedule",
     http_method = "POST",
@@ -988,7 +992,7 @@ backupgateway_put_bandwidth_rate_limit_schedule <- function(BandwidthRateLimitIn
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .backupgateway$put_bandwidth_rate_limit_schedule_input(BandwidthRateLimitIntervals = BandwidthRateLimitIntervals, GatewayArn = GatewayArn)
+  input <- .backupgateway$put_bandwidth_rate_limit_schedule_input(GatewayArn = GatewayArn, BandwidthRateLimitIntervals = BandwidthRateLimitIntervals)
   output <- .backupgateway$put_bandwidth_rate_limit_schedule_output()
   config <- get_config()
   svc <- .backupgateway$service(config, op)
@@ -1003,17 +1007,17 @@ backupgateway_put_bandwidth_rate_limit_schedule <- function(BandwidthRateLimitIn
 #' @description
 #' This action sets the property mappings for the specified hypervisor. A
 #' hypervisor property mapping displays the relationship of entity
-#' properties available from the on-premises hypervisor to the properties
-#' available in Amazon Web Services.
+#' properties available from the hypervisor to the properties available in
+#' Amazon Web Services.
 #'
 #' @usage
 #' backupgateway_put_hypervisor_property_mappings(HypervisorArn,
-#'   IamRoleArn, VmwareToAwsTagMappings)
+#'   VmwareToAwsTagMappings, IamRoleArn)
 #'
 #' @param HypervisorArn &#91;required&#93; The Amazon Resource Name (ARN) of the hypervisor.
+#' @param VmwareToAwsTagMappings &#91;required&#93; This action requests the mappings of VMware tags to the Amazon Web
+#' Services tags.
 #' @param IamRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role.
-#' @param VmwareToAwsTagMappings &#91;required&#93; This action requests the mappings of on-premises VMware tags to the
-#' Amazon Web Services tags.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1027,15 +1031,15 @@ backupgateway_put_bandwidth_rate_limit_schedule <- function(BandwidthRateLimitIn
 #' ```
 #' svc$put_hypervisor_property_mappings(
 #'   HypervisorArn = "string",
-#'   IamRoleArn = "string",
 #'   VmwareToAwsTagMappings = list(
 #'     list(
-#'       AwsTagKey = "string",
-#'       AwsTagValue = "string",
 #'       VmwareCategory = "string",
-#'       VmwareTagName = "string"
+#'       VmwareTagName = "string",
+#'       AwsTagKey = "string",
+#'       AwsTagValue = "string"
 #'     )
-#'   )
+#'   ),
+#'   IamRoleArn = "string"
 #' )
 #' ```
 #'
@@ -1044,7 +1048,7 @@ backupgateway_put_bandwidth_rate_limit_schedule <- function(BandwidthRateLimitIn
 #' @rdname backupgateway_put_hypervisor_property_mappings
 #'
 #' @aliases backupgateway_put_hypervisor_property_mappings
-backupgateway_put_hypervisor_property_mappings <- function(HypervisorArn, IamRoleArn, VmwareToAwsTagMappings) {
+backupgateway_put_hypervisor_property_mappings <- function(HypervisorArn, VmwareToAwsTagMappings, IamRoleArn) {
   op <- new_operation(
     name = "PutHypervisorPropertyMappings",
     http_method = "POST",
@@ -1053,7 +1057,7 @@ backupgateway_put_hypervisor_property_mappings <- function(HypervisorArn, IamRol
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .backupgateway$put_hypervisor_property_mappings_input(HypervisorArn = HypervisorArn, IamRoleArn = IamRoleArn, VmwareToAwsTagMappings = VmwareToAwsTagMappings)
+  input <- .backupgateway$put_hypervisor_property_mappings_input(HypervisorArn = HypervisorArn, VmwareToAwsTagMappings = VmwareToAwsTagMappings, IamRoleArn = IamRoleArn)
   output <- .backupgateway$put_hypervisor_property_mappings_output()
   config <- get_config()
   svc <- .backupgateway$service(config, op)
@@ -1069,17 +1073,17 @@ backupgateway_put_hypervisor_property_mappings <- function(HypervisorArn, IamRol
 #' Set the maintenance start time for a gateway.
 #'
 #' @usage
-#' backupgateway_put_maintenance_start_time(DayOfMonth, DayOfWeek,
-#'   GatewayArn, HourOfDay, MinuteOfHour)
+#' backupgateway_put_maintenance_start_time(GatewayArn, HourOfDay,
+#'   MinuteOfHour, DayOfWeek, DayOfMonth)
 #'
-#' @param DayOfMonth The day of the month start maintenance on a gateway.
-#' 
-#' Valid values range from `Sunday` to `Saturday`.
-#' @param DayOfWeek The day of the week to start maintenance on a gateway.
 #' @param GatewayArn &#91;required&#93; The Amazon Resource Name (ARN) for the gateway, used to specify its
 #' maintenance start time.
 #' @param HourOfDay &#91;required&#93; The hour of the day to start maintenance on a gateway.
 #' @param MinuteOfHour &#91;required&#93; The minute of the hour to start maintenance on a gateway.
+#' @param DayOfWeek The day of the week to start maintenance on a gateway.
+#' @param DayOfMonth The day of the month start maintenance on a gateway.
+#' 
+#' Valid values range from `Sunday` to `Saturday`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1092,11 +1096,11 @@ backupgateway_put_hypervisor_property_mappings <- function(HypervisorArn, IamRol
 #' @section Request syntax:
 #' ```
 #' svc$put_maintenance_start_time(
-#'   DayOfMonth = 123,
-#'   DayOfWeek = 123,
 #'   GatewayArn = "string",
 #'   HourOfDay = 123,
-#'   MinuteOfHour = 123
+#'   MinuteOfHour = 123,
+#'   DayOfWeek = 123,
+#'   DayOfMonth = 123
 #' )
 #' ```
 #'
@@ -1105,7 +1109,7 @@ backupgateway_put_hypervisor_property_mappings <- function(HypervisorArn, IamRol
 #' @rdname backupgateway_put_maintenance_start_time
 #'
 #' @aliases backupgateway_put_maintenance_start_time
-backupgateway_put_maintenance_start_time <- function(DayOfMonth = NULL, DayOfWeek = NULL, GatewayArn, HourOfDay, MinuteOfHour) {
+backupgateway_put_maintenance_start_time <- function(GatewayArn, HourOfDay, MinuteOfHour, DayOfWeek = NULL, DayOfMonth = NULL) {
   op <- new_operation(
     name = "PutMaintenanceStartTime",
     http_method = "POST",
@@ -1114,7 +1118,7 @@ backupgateway_put_maintenance_start_time <- function(DayOfMonth = NULL, DayOfWee
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .backupgateway$put_maintenance_start_time_input(DayOfMonth = DayOfMonth, DayOfWeek = DayOfWeek, GatewayArn = GatewayArn, HourOfDay = HourOfDay, MinuteOfHour = MinuteOfHour)
+  input <- .backupgateway$put_maintenance_start_time_input(GatewayArn = GatewayArn, HourOfDay = HourOfDay, MinuteOfHour = MinuteOfHour, DayOfWeek = DayOfWeek, DayOfMonth = DayOfMonth)
   output <- .backupgateway$put_maintenance_start_time_output()
   config <- get_config()
   svc <- .backupgateway$service(config, op)
@@ -1239,14 +1243,14 @@ backupgateway_tag_resource <- function(ResourceARN, Tags) {
 #' connect with the hypervisor and its resources.
 #'
 #' @usage
-#' backupgateway_test_hypervisor_configuration(GatewayArn, Host, Password,
-#'   Username)
+#' backupgateway_test_hypervisor_configuration(GatewayArn, Host, Username,
+#'   Password)
 #'
 #' @param GatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the gateway to the hypervisor to test.
 #' @param Host &#91;required&#93; The server host of the hypervisor. This can be either an IP address or a
 #' fully-qualified domain name (FQDN).
-#' @param Password The password for the hypervisor.
 #' @param Username The username for the hypervisor.
+#' @param Password The password for the hypervisor.
 #'
 #' @return
 #' An empty list.
@@ -1256,8 +1260,8 @@ backupgateway_tag_resource <- function(ResourceARN, Tags) {
 #' svc$test_hypervisor_configuration(
 #'   GatewayArn = "string",
 #'   Host = "string",
-#'   Password = "string",
-#'   Username = "string"
+#'   Username = "string",
+#'   Password = "string"
 #' )
 #' ```
 #'
@@ -1266,7 +1270,7 @@ backupgateway_tag_resource <- function(ResourceARN, Tags) {
 #' @rdname backupgateway_test_hypervisor_configuration
 #'
 #' @aliases backupgateway_test_hypervisor_configuration
-backupgateway_test_hypervisor_configuration <- function(GatewayArn, Host, Password = NULL, Username = NULL) {
+backupgateway_test_hypervisor_configuration <- function(GatewayArn, Host, Username = NULL, Password = NULL) {
   op <- new_operation(
     name = "TestHypervisorConfiguration",
     http_method = "POST",
@@ -1275,7 +1279,7 @@ backupgateway_test_hypervisor_configuration <- function(GatewayArn, Host, Passwo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .backupgateway$test_hypervisor_configuration_input(GatewayArn = GatewayArn, Host = Host, Password = Password, Username = Username)
+  input <- .backupgateway$test_hypervisor_configuration_input(GatewayArn = GatewayArn, Host = Host, Username = Username, Password = Password)
   output <- .backupgateway$test_hypervisor_configuration_output()
   config <- get_config()
   svc <- .backupgateway$service(config, op)
@@ -1454,17 +1458,17 @@ backupgateway_update_gateway_software_now <- function(GatewayArn) {
 #' Name (ARN) of the hypervisor in your request.
 #'
 #' @usage
-#' backupgateway_update_hypervisor(Host, HypervisorArn, LogGroupArn, Name,
-#'   Password, Username)
+#' backupgateway_update_hypervisor(HypervisorArn, Host, Username, Password,
+#'   Name, LogGroupArn)
 #'
+#' @param HypervisorArn &#91;required&#93; The Amazon Resource Name (ARN) of the hypervisor to update.
 #' @param Host The updated host of the hypervisor. This can be either an IP address or
 #' a fully-qualified domain name (FQDN).
-#' @param HypervisorArn &#91;required&#93; The Amazon Resource Name (ARN) of the hypervisor to update.
+#' @param Username The updated username for the hypervisor.
+#' @param Password The updated password for the hypervisor.
+#' @param Name The updated name for the hypervisor
 #' @param LogGroupArn The Amazon Resource Name (ARN) of the group of gateways within the
 #' requested log.
-#' @param Name The updated name for the hypervisor
-#' @param Password The updated password for the hypervisor.
-#' @param Username The updated username for the hypervisor.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1477,12 +1481,12 @@ backupgateway_update_gateway_software_now <- function(GatewayArn) {
 #' @section Request syntax:
 #' ```
 #' svc$update_hypervisor(
-#'   Host = "string",
 #'   HypervisorArn = "string",
-#'   LogGroupArn = "string",
-#'   Name = "string",
+#'   Host = "string",
+#'   Username = "string",
 #'   Password = "string",
-#'   Username = "string"
+#'   Name = "string",
+#'   LogGroupArn = "string"
 #' )
 #' ```
 #'
@@ -1491,7 +1495,7 @@ backupgateway_update_gateway_software_now <- function(GatewayArn) {
 #' @rdname backupgateway_update_hypervisor
 #'
 #' @aliases backupgateway_update_hypervisor
-backupgateway_update_hypervisor <- function(Host = NULL, HypervisorArn, LogGroupArn = NULL, Name = NULL, Password = NULL, Username = NULL) {
+backupgateway_update_hypervisor <- function(HypervisorArn, Host = NULL, Username = NULL, Password = NULL, Name = NULL, LogGroupArn = NULL) {
   op <- new_operation(
     name = "UpdateHypervisor",
     http_method = "POST",
@@ -1500,7 +1504,7 @@ backupgateway_update_hypervisor <- function(Host = NULL, HypervisorArn, LogGroup
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .backupgateway$update_hypervisor_input(Host = Host, HypervisorArn = HypervisorArn, LogGroupArn = LogGroupArn, Name = Name, Password = Password, Username = Username)
+  input <- .backupgateway$update_hypervisor_input(HypervisorArn = HypervisorArn, Host = Host, Username = Username, Password = Password, Name = Name, LogGroupArn = LogGroupArn)
   output <- .backupgateway$update_hypervisor_output()
   config <- get_config()
   svc <- .backupgateway$service(config, op)

@@ -1407,13 +1407,16 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 #'
 #' @usage
 #' customerprofiles_create_recommender(DomainName, RecommenderName,
-#'   RecommenderRecipeName, RecommenderConfig, Description, Tags)
+#'   RecommenderRecipeName, RecommenderConfig, Description,
+#'   RecommenderSchemaName, Tags)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param RecommenderName &#91;required&#93; The name of the recommender.
 #' @param RecommenderRecipeName &#91;required&#93; The name of the recommeder recipe.
 #' @param RecommenderConfig The recommender configuration.
 #' @param Description The description of the domain object type.
+#' @param RecommenderSchemaName The name of the recommender schema to use for this recommender. If not
+#' specified, the default schema is used.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @return
@@ -1432,19 +1435,29 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 #' svc$create_recommender(
 #'   DomainName = "string",
 #'   RecommenderName = "string",
-#'   RecommenderRecipeName = "recommended-for-you"|"similar-items"|"frequently-paired-items"|"popular-items"|"trending-now",
+#'   RecommenderRecipeName = "recommended-for-you"|"similar-items"|"frequently-paired-items"|"popular-items"|"trending-now"|"personalized-ranking",
 #'   RecommenderConfig = list(
 #'     EventsConfig = list(
 #'       EventParametersList = list(
 #'         list(
 #'           EventType = "string",
-#'           EventValueThreshold = 123.0
+#'           EventValueThreshold = 123.0,
+#'           EventWeight = 123.0
 #'         )
 #'       )
 #'     ),
-#'     TrainingFrequency = 123
+#'     TrainingFrequency = 123,
+#'     InferenceConfig = list(
+#'       MinProvisionedTPS = 123
+#'     ),
+#'     IncludedColumns = list(
+#'       list(
+#'         "string"
+#'       )
+#'     )
 #'   ),
 #'   Description = "string",
+#'   RecommenderSchemaName = "string",
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -1456,7 +1469,7 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 #' @rdname customerprofiles_create_recommender
 #'
 #' @aliases customerprofiles_create_recommender
-customerprofiles_create_recommender <- function(DomainName, RecommenderName, RecommenderRecipeName, RecommenderConfig = NULL, Description = NULL, Tags = NULL) {
+customerprofiles_create_recommender <- function(DomainName, RecommenderName, RecommenderRecipeName, RecommenderConfig = NULL, Description = NULL, RecommenderSchemaName = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateRecommender",
     http_method = "POST",
@@ -1465,7 +1478,7 @@ customerprofiles_create_recommender <- function(DomainName, RecommenderName, Rec
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$create_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName, RecommenderRecipeName = RecommenderRecipeName, RecommenderConfig = RecommenderConfig, Description = Description, Tags = Tags)
+  input <- .customerprofiles$create_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName, RecommenderRecipeName = RecommenderRecipeName, RecommenderConfig = RecommenderConfig, Description = Description, RecommenderSchemaName = RecommenderSchemaName, Tags = Tags)
   output <- .customerprofiles$create_recommender_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -1475,6 +1488,164 @@ customerprofiles_create_recommender <- function(DomainName, RecommenderName, Rec
 }
 .customerprofiles$operations$create_recommender <- customerprofiles_create_recommender
 
+#' Creates a recommender filter
+#'
+#' @description
+#' Creates a recommender filter. A recommender filter specifies which items
+#' to include or exclude from recommendations.
+#'
+#' @usage
+#' customerprofiles_create_recommender_filter(DomainName,
+#'   RecommenderFilterName, RecommenderFilterExpression,
+#'   RecommenderSchemaName, Description, Tags)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderFilterName &#91;required&#93; The name of the recommender filter. The name must be unique within the
+#' domain.
+#' @param RecommenderFilterExpression &#91;required&#93; The filter expression that defines which items to include or exclude
+#' from recommendations.
+#' @param RecommenderSchemaName The name of the recommender schema to use for this recommender filter.
+#' If not specified, the default schema is used.
+#' @param Description A description of the recommender filter.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecommenderFilterArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_recommender_filter(
+#'   DomainName = "string",
+#'   RecommenderFilterName = "string",
+#'   RecommenderFilterExpression = "string",
+#'   RecommenderSchemaName = "string",
+#'   Description = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_recommender_filter
+#'
+#' @aliases customerprofiles_create_recommender_filter
+customerprofiles_create_recommender_filter <- function(DomainName, RecommenderFilterName, RecommenderFilterExpression, RecommenderSchemaName = NULL, Description = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateRecommenderFilter",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/recommender-filters/{RecommenderFilterName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$create_recommender_filter_input(DomainName = DomainName, RecommenderFilterName = RecommenderFilterName, RecommenderFilterExpression = RecommenderFilterExpression, RecommenderSchemaName = RecommenderSchemaName, Description = Description, Tags = Tags)
+  output <- .customerprofiles$create_recommender_filter_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_recommender_filter <- customerprofiles_create_recommender_filter
+
+#' Creates a recommender schema
+#'
+#' @description
+#' Creates a recommender schema. A recommender schema defines the set of
+#' data columns available for training recommenders and filters under a
+#' domain.
+#'
+#' @usage
+#' customerprofiles_create_recommender_schema(DomainName,
+#'   RecommenderSchemaName, Fields, Tags)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderSchemaName &#91;required&#93; The name of the recommender schema. The name must be unique within the
+#' domain.
+#' @param Fields &#91;required&#93; A map of dataset type to column definitions that specifies which data
+#' columns to include in the schema. Currently only the `_webAnalytics` key
+#' is supported.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecommenderSchemaArn = "string",
+#'   RecommenderSchemaName = "string",
+#'   Fields = list(
+#'     list(
+#'       list(
+#'         TargetFieldName = "string",
+#'         ContentType = "STRING"|"NUMBER",
+#'         FeatureType = "TEXTUAL"|"CATEGORICAL"
+#'       )
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Status = "ACTIVE"|"DELETING",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_recommender_schema(
+#'   DomainName = "string",
+#'   RecommenderSchemaName = "string",
+#'   Fields = list(
+#'     list(
+#'       list(
+#'         TargetFieldName = "string",
+#'         ContentType = "STRING"|"NUMBER",
+#'         FeatureType = "TEXTUAL"|"CATEGORICAL"
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_recommender_schema
+#'
+#' @aliases customerprofiles_create_recommender_schema
+customerprofiles_create_recommender_schema <- function(DomainName, RecommenderSchemaName, Fields, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateRecommenderSchema",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/recommender-schemas/{RecommenderSchemaName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$create_recommender_schema_input(DomainName = DomainName, RecommenderSchemaName = RecommenderSchemaName, Fields = Fields, Tags = Tags)
+  output <- .customerprofiles$create_recommender_schema_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_recommender_schema <- customerprofiles_create_recommender_schema
+
 #' Creates a segment definition associated to the given domain
 #'
 #' @description
@@ -1483,7 +1654,7 @@ customerprofiles_create_recommender <- function(DomainName, RecommenderName, Rec
 #' @usage
 #' customerprofiles_create_segment_definition(DomainName,
 #'   SegmentDefinitionName, DisplayName, Description, SegmentGroups,
-#'   SegmentSqlQuery, Tags)
+#'   SegmentSqlQuery, SegmentSort, Tags)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param SegmentDefinitionName &#91;required&#93; The unique name of the segment definition.
@@ -1492,6 +1663,7 @@ customerprofiles_create_recommender <- function(DomainName, RecommenderName, Rec
 #' @param SegmentGroups Specifies the base segments and dimensions for a segment definition
 #' along with their respective relationship.
 #' @param SegmentSqlQuery The segment SQL query.
+#' @param SegmentSort The segment sort.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @return
@@ -1816,6 +1988,16 @@ customerprofiles_create_recommender <- function(DomainName, RecommenderName, Rec
 #'     Include = "ALL"|"ANY"|"NONE"
 #'   ),
 #'   SegmentSqlQuery = "string",
+#'   SegmentSort = list(
+#'     Attributes = list(
+#'       list(
+#'         Name = "string",
+#'         DataType = "STRING"|"NUMBER"|"DATE",
+#'         Order = "ASC"|"DESC",
+#'         Type = "PROFILE"|"CALCULATED"
+#'       )
+#'     )
+#'   ),
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -1827,7 +2009,7 @@ customerprofiles_create_recommender <- function(DomainName, RecommenderName, Rec
 #' @rdname customerprofiles_create_segment_definition
 #'
 #' @aliases customerprofiles_create_segment_definition
-customerprofiles_create_segment_definition <- function(DomainName, SegmentDefinitionName, DisplayName, Description = NULL, SegmentGroups = NULL, SegmentSqlQuery = NULL, Tags = NULL) {
+customerprofiles_create_segment_definition <- function(DomainName, SegmentDefinitionName, DisplayName, Description = NULL, SegmentGroups = NULL, SegmentSqlQuery = NULL, SegmentSort = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateSegmentDefinition",
     http_method = "POST",
@@ -1836,7 +2018,7 @@ customerprofiles_create_segment_definition <- function(DomainName, SegmentDefini
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$create_segment_definition_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, DisplayName = DisplayName, Description = Description, SegmentGroups = SegmentGroups, SegmentSqlQuery = SegmentSqlQuery, Tags = Tags)
+  input <- .customerprofiles$create_segment_definition_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, DisplayName = DisplayName, Description = Description, SegmentGroups = SegmentGroups, SegmentSqlQuery = SegmentSqlQuery, SegmentSort = SegmentSort, Tags = Tags)
   output <- .customerprofiles$create_segment_definition_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -2955,6 +3137,105 @@ customerprofiles_delete_recommender <- function(DomainName, RecommenderName) {
 }
 .customerprofiles$operations$delete_recommender <- customerprofiles_delete_recommender
 
+#' Deletes a recommender filter from a domain
+#'
+#' @description
+#' Deletes a recommender filter from a domain.
+#'
+#' @usage
+#' customerprofiles_delete_recommender_filter(DomainName,
+#'   RecommenderFilterName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderFilterName &#91;required&#93; The name of the recommender filter to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_recommender_filter(
+#'   DomainName = "string",
+#'   RecommenderFilterName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_recommender_filter
+#'
+#' @aliases customerprofiles_delete_recommender_filter
+customerprofiles_delete_recommender_filter <- function(DomainName, RecommenderFilterName) {
+  op <- new_operation(
+    name = "DeleteRecommenderFilter",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/recommender-filters/{RecommenderFilterName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$delete_recommender_filter_input(DomainName = DomainName, RecommenderFilterName = RecommenderFilterName)
+  output <- .customerprofiles$delete_recommender_filter_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_recommender_filter <- customerprofiles_delete_recommender_filter
+
+#' Deletes a recommender schema from a domain
+#'
+#' @description
+#' Deletes a recommender schema from a domain.
+#'
+#' @usage
+#' customerprofiles_delete_recommender_schema(DomainName,
+#'   RecommenderSchemaName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderSchemaName &#91;required&#93; The name of the recommender schema to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_recommender_schema(
+#'   DomainName = "string",
+#'   RecommenderSchemaName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_recommender_schema
+#'
+#' @aliases customerprofiles_delete_recommender_schema
+customerprofiles_delete_recommender_schema <- function(DomainName, RecommenderSchemaName) {
+  op <- new_operation(
+    name = "DeleteRecommenderSchema",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/recommender-schemas/{RecommenderSchemaName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$delete_recommender_schema_input(DomainName = DomainName, RecommenderSchemaName = RecommenderSchemaName)
+  output <- .customerprofiles$delete_recommender_schema_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_recommender_schema <- customerprofiles_delete_recommender_schema
+
 #' Deletes a segment definition from the domain
 #'
 #' @description
@@ -3085,7 +3366,7 @@ customerprofiles_delete_workflow <- function(DomainName, WorkflowId) {
 #'         list(
 #'           list(
 #'             StandardIdentifiers = list(
-#'               "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'               "PROFILE"|"ASSET"|"CASE"|"DEVICE"|"WEB_ANALYTICS"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'             ),
 #'             FieldNames = list(
 #'               "string"
@@ -4291,6 +4572,7 @@ customerprofiles_get_profile_history_record <- function(DomainName, ProfileId, I
 #'   SourceLastUpdatedTimestampFormat = "string",
 #'   MaxAvailableProfileObjectCount = 123,
 #'   MaxProfileObjectCount = 123,
+#'   SourcePriority = 123,
 #'   Fields = list(
 #'     list(
 #'       Source = "string",
@@ -4302,7 +4584,7 @@ customerprofiles_get_profile_history_record <- function(DomainName, ProfileId, I
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'           "PROFILE"|"ASSET"|"CASE"|"DEVICE"|"WEB_ANALYTICS"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -4390,7 +4672,7 @@ customerprofiles_get_profile_object_type <- function(DomainName, ObjectTypeName)
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'           "PROFILE"|"ASSET"|"CASE"|"DEVICE"|"WEB_ANALYTICS"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -4441,7 +4723,8 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 #'
 #' @usage
 #' customerprofiles_get_profile_recommendations(DomainName, ProfileId,
-#'   RecommenderName, Context, MaxResults)
+#'   RecommenderName, Context, RecommenderFilters,
+#'   RecommenderPromotionalFilters, CandidateIds, MaxResults, MetadataConfig)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ProfileId &#91;required&#93; The unique identifier of the profile for which to retrieve
@@ -4449,8 +4732,20 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 #' @param RecommenderName &#91;required&#93; The unique name of the recommender.
 #' @param Context The contextual metadata used to provide dynamic runtime information to
 #' tailor recommendations.
+#' @param RecommenderFilters A list of filters to apply to the returned recommendations. Filters
+#' define criteria for including or excluding items from the recommendation
+#' results.
+#' @param RecommenderPromotionalFilters A list of promotional filters to apply to the recommendations.
+#' Promotional filters allow you to promote specific items within a
+#' configurable subset of recommendation results.
+#' @param CandidateIds A list of item IDs to rank for the user. Use this when you want to
+#' re-rank a specific set of items rather than getting recommendations from
+#' the full item catalog. Required for personalized-ranking use cases.
 #' @param MaxResults The maximum number of recommendations to return. The default value is
 #' 10.
+#' @param MetadataConfig Configuration for including item metadata in the recommendation
+#' response. Use this to specify which metadata columns to return alongside
+#' recommended items.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4494,7 +4789,33 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 #'   Context = list(
 #'     "string"
 #'   ),
-#'   MaxResults = 123
+#'   RecommenderFilters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   RecommenderPromotionalFilters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       PromotionName = "string",
+#'       PercentPromotedItems = 123
+#'     )
+#'   ),
+#'   CandidateIds = list(
+#'     "string"
+#'   ),
+#'   MaxResults = 123,
+#'   MetadataConfig = list(
+#'     MetadataColumns = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4503,7 +4824,7 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 #' @rdname customerprofiles_get_profile_recommendations
 #'
 #' @aliases customerprofiles_get_profile_recommendations
-customerprofiles_get_profile_recommendations <- function(DomainName, ProfileId, RecommenderName, Context = NULL, MaxResults = NULL) {
+customerprofiles_get_profile_recommendations <- function(DomainName, ProfileId, RecommenderName, Context = NULL, RecommenderFilters = NULL, RecommenderPromotionalFilters = NULL, CandidateIds = NULL, MaxResults = NULL, MetadataConfig = NULL) {
   op <- new_operation(
     name = "GetProfileRecommendations",
     http_method = "POST",
@@ -4512,7 +4833,7 @@ customerprofiles_get_profile_recommendations <- function(DomainName, ProfileId, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$get_profile_recommendations_input(DomainName = DomainName, ProfileId = ProfileId, RecommenderName = RecommenderName, Context = Context, MaxResults = MaxResults)
+  input <- .customerprofiles$get_profile_recommendations_input(DomainName = DomainName, ProfileId = ProfileId, RecommenderName = RecommenderName, Context = Context, RecommenderFilters = RecommenderFilters, RecommenderPromotionalFilters = RecommenderPromotionalFilters, CandidateIds = CandidateIds, MaxResults = MaxResults, MetadataConfig = MetadataConfig)
   output <- .customerprofiles$get_profile_recommendations_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -4540,17 +4861,27 @@ customerprofiles_get_profile_recommendations <- function(DomainName, ProfileId, 
 #' ```
 #' list(
 #'   RecommenderName = "string",
-#'   RecommenderRecipeName = "recommended-for-you"|"similar-items"|"frequently-paired-items"|"popular-items"|"trending-now",
+#'   RecommenderRecipeName = "recommended-for-you"|"similar-items"|"frequently-paired-items"|"popular-items"|"trending-now"|"personalized-ranking",
+#'   RecommenderSchemaName = "string",
 #'   RecommenderConfig = list(
 #'     EventsConfig = list(
 #'       EventParametersList = list(
 #'         list(
 #'           EventType = "string",
-#'           EventValueThreshold = 123.0
+#'           EventValueThreshold = 123.0,
+#'           EventWeight = 123.0
 #'         )
 #'       )
 #'     ),
-#'     TrainingFrequency = 123
+#'     TrainingFrequency = 123,
+#'     InferenceConfig = list(
+#'       MinProvisionedTPS = 123
+#'     ),
+#'     IncludedColumns = list(
+#'       list(
+#'         "string"
+#'       )
+#'     )
 #'   ),
 #'   Description = "string",
 #'   Status = "PENDING"|"IN_PROGRESS"|"ACTIVE"|"FAILED"|"STOPPING"|"INACTIVE"|"STARTING"|"DELETING",
@@ -4567,11 +4898,20 @@ customerprofiles_get_profile_recommendations <- function(DomainName, ProfileId, 
 #'         EventParametersList = list(
 #'           list(
 #'             EventType = "string",
-#'             EventValueThreshold = 123.0
+#'             EventValueThreshold = 123.0,
+#'             EventWeight = 123.0
 #'           )
 #'         )
 #'       ),
-#'       TrainingFrequency = 123
+#'       TrainingFrequency = 123,
+#'       InferenceConfig = list(
+#'         MinProvisionedTPS = 123
+#'       ),
+#'       IncludedColumns = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
 #'     ),
 #'     Status = "PENDING"|"IN_PROGRESS"|"ACTIVE"|"FAILED"|"STOPPING"|"INACTIVE"|"STARTING"|"DELETING",
 #'     CreatedAt = as.POSIXct(
@@ -4630,6 +4970,134 @@ customerprofiles_get_recommender <- function(DomainName, RecommenderName, Traini
   return(response)
 }
 .customerprofiles$operations$get_recommender <- customerprofiles_get_recommender
+
+#' Retrieves information about a specific recommender filter in a domain
+#'
+#' @description
+#' Retrieves information about a specific recommender filter in a domain.
+#'
+#' @usage
+#' customerprofiles_get_recommender_filter(DomainName,
+#'   RecommenderFilterName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderFilterName &#91;required&#93; The name of the recommender filter to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecommenderFilterName = "string",
+#'   RecommenderFilterExpression = "string",
+#'   RecommenderSchemaName = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Status = "ACTIVE"|"PENDING"|"IN_PROGRESS"|"FAILED"|"DELETING",
+#'   Description = "string",
+#'   FailureReason = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_recommender_filter(
+#'   DomainName = "string",
+#'   RecommenderFilterName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_recommender_filter
+#'
+#' @aliases customerprofiles_get_recommender_filter
+customerprofiles_get_recommender_filter <- function(DomainName, RecommenderFilterName) {
+  op <- new_operation(
+    name = "GetRecommenderFilter",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/recommender-filters/{RecommenderFilterName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_recommender_filter_input(DomainName = DomainName, RecommenderFilterName = RecommenderFilterName)
+  output <- .customerprofiles$get_recommender_filter_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_recommender_filter <- customerprofiles_get_recommender_filter
+
+#' Retrieves information about a specific recommender schema in a domain
+#'
+#' @description
+#' Retrieves information about a specific recommender schema in a domain.
+#'
+#' @usage
+#' customerprofiles_get_recommender_schema(DomainName,
+#'   RecommenderSchemaName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderSchemaName &#91;required&#93; The name of the recommender schema to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecommenderSchemaName = "string",
+#'   Fields = list(
+#'     list(
+#'       list(
+#'         TargetFieldName = "string",
+#'         ContentType = "STRING"|"NUMBER",
+#'         FeatureType = "TEXTUAL"|"CATEGORICAL"
+#'       )
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Status = "ACTIVE"|"DELETING"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_recommender_schema(
+#'   DomainName = "string",
+#'   RecommenderSchemaName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_recommender_schema
+#'
+#' @aliases customerprofiles_get_recommender_schema
+customerprofiles_get_recommender_schema <- function(DomainName, RecommenderSchemaName) {
+  op <- new_operation(
+    name = "GetRecommenderSchema",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/recommender-schemas/{RecommenderSchemaName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_recommender_schema_input(DomainName = DomainName, RecommenderSchemaName = RecommenderSchemaName)
+  output <- .customerprofiles$get_recommender_schema_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_recommender_schema <- customerprofiles_get_recommender_schema
 
 #' Gets a segment definition from the domain
 #'
@@ -4946,6 +5414,16 @@ customerprofiles_get_recommender <- function(DomainName, RecommenderName, Traini
 #'       )
 #'     ),
 #'     Include = "ALL"|"ANY"|"NONE"
+#'   ),
+#'   SegmentSort = list(
+#'     Attributes = list(
+#'       list(
+#'         Name = "string",
+#'         DataType = "STRING"|"NUMBER"|"DATE",
+#'         Order = "ASC"|"DESC",
+#'         Type = "PROFILE"|"CALCULATED"
+#'       )
+#'     )
 #'   ),
 #'   SegmentDefinitionArn = "string",
 #'   CreatedAt = as.POSIXct(
@@ -6757,6 +7235,7 @@ customerprofiles_list_profile_object_type_templates <- function(NextToken = NULL
 #'       ),
 #'       MaxProfileObjectCount = 123,
 #'       MaxAvailableProfileObjectCount = 123,
+#'       SourcePriority = 123,
 #'       Tags = list(
 #'         "string"
 #'       )
@@ -6874,6 +7353,78 @@ customerprofiles_list_profile_objects <- function(NextToken = NULL, MaxResults =
 }
 .customerprofiles$operations$list_profile_objects <- customerprofiles_list_profile_objects
 
+#' Returns a list of recommender filters in the specified domain
+#'
+#' @description
+#' Returns a list of recommender filters in the specified domain.
+#'
+#' @usage
+#' customerprofiles_list_recommender_filters(DomainName, MaxResults,
+#'   NextToken)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param MaxResults The maximum number of recommender filters to return in the response. The
+#' default value is 100.
+#' @param NextToken A token received from a previous ListRecommenderFilters call to retrieve
+#' the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   RecommenderFilters = list(
+#'     list(
+#'       RecommenderFilterName = "string",
+#'       RecommenderSchemaName = "string",
+#'       RecommenderFilterExpression = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       Status = "ACTIVE"|"PENDING"|"IN_PROGRESS"|"FAILED"|"DELETING",
+#'       FailureReason = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_recommender_filters(
+#'   DomainName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_recommender_filters
+#'
+#' @aliases customerprofiles_list_recommender_filters
+customerprofiles_list_recommender_filters <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRecommenderFilters",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/recommender-filters",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecommenderFilters"),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_recommender_filters_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .customerprofiles$list_recommender_filters_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_recommender_filters <- customerprofiles_list_recommender_filters
+
 #' Returns a list of available recommender recipes that can be used to
 #' create recommenders
 #'
@@ -6896,7 +7447,7 @@ customerprofiles_list_profile_objects <- function(NextToken = NULL, MaxResults =
 #'   NextToken = "string",
 #'   RecommenderRecipes = list(
 #'     list(
-#'       name = "recommended-for-you"|"similar-items"|"frequently-paired-items"|"popular-items"|"trending-now",
+#'       name = "recommended-for-you"|"similar-items"|"frequently-paired-items"|"popular-items"|"trending-now"|"personalized-ranking",
 #'       description = "string"
 #'     )
 #'   )
@@ -6935,6 +7486,80 @@ customerprofiles_list_recommender_recipes <- function(MaxResults = NULL, NextTok
 }
 .customerprofiles$operations$list_recommender_recipes <- customerprofiles_list_recommender_recipes
 
+#' Returns a list of recommender schemas in the specified domain
+#'
+#' @description
+#' Returns a list of recommender schemas in the specified domain.
+#'
+#' @usage
+#' customerprofiles_list_recommender_schemas(DomainName, MaxResults,
+#'   NextToken)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param MaxResults The maximum number of recommender schemas to return in the response. The
+#' default value is 100.
+#' @param NextToken A token received from a previous ListRecommenderSchemas call to retrieve
+#' the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   RecommenderSchemas = list(
+#'     list(
+#'       RecommenderSchemaName = "string",
+#'       Fields = list(
+#'         list(
+#'           list(
+#'             TargetFieldName = "string",
+#'             ContentType = "STRING"|"NUMBER",
+#'             FeatureType = "TEXTUAL"|"CATEGORICAL"
+#'           )
+#'         )
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "ACTIVE"|"DELETING"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_recommender_schemas(
+#'   DomainName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_recommender_schemas
+#'
+#' @aliases customerprofiles_list_recommender_schemas
+customerprofiles_list_recommender_schemas <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRecommenderSchemas",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/recommender-schemas",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecommenderSchemas"),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_recommender_schemas_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .customerprofiles$list_recommender_schemas_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_recommender_schemas <- customerprofiles_list_recommender_schemas
+
 #' Returns a list of recommenders in the specified domain
 #'
 #' @description
@@ -6957,17 +7582,27 @@ customerprofiles_list_recommender_recipes <- function(MaxResults = NULL, NextTok
 #'   Recommenders = list(
 #'     list(
 #'       RecommenderName = "string",
-#'       RecipeName = "recommended-for-you"|"similar-items"|"frequently-paired-items"|"popular-items"|"trending-now",
+#'       RecipeName = "recommended-for-you"|"similar-items"|"frequently-paired-items"|"popular-items"|"trending-now"|"personalized-ranking",
+#'       RecommenderSchemaName = "string",
 #'       RecommenderConfig = list(
 #'         EventsConfig = list(
 #'           EventParametersList = list(
 #'             list(
 #'               EventType = "string",
-#'               EventValueThreshold = 123.0
+#'               EventValueThreshold = 123.0,
+#'               EventWeight = 123.0
 #'             )
 #'           )
 #'         ),
-#'         TrainingFrequency = 123
+#'         TrainingFrequency = 123,
+#'         InferenceConfig = list(
+#'           MinProvisionedTPS = 123
+#'         ),
+#'         IncludedColumns = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
 #'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -6987,11 +7622,20 @@ customerprofiles_list_recommender_recipes <- function(MaxResults = NULL, NextTok
 #'             EventParametersList = list(
 #'               list(
 #'                 EventType = "string",
-#'                 EventValueThreshold = 123.0
+#'                 EventValueThreshold = 123.0,
+#'                 EventWeight = 123.0
 #'               )
 #'             )
 #'           ),
-#'           TrainingFrequency = 123
+#'           TrainingFrequency = 123,
+#'           InferenceConfig = list(
+#'             MinProvisionedTPS = 123
+#'           ),
+#'           IncludedColumns = list(
+#'             list(
+#'               "string"
+#'             )
+#'           )
 #'         ),
 #'         Status = "PENDING"|"IN_PROGRESS"|"ACTIVE"|"FAILED"|"STOPPING"|"INACTIVE"|"STARTING"|"DELETING",
 #'         CreatedAt = as.POSIXct(
@@ -7844,7 +8488,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #' customerprofiles_put_profile_object_type(DomainName, ObjectTypeName,
 #'   Description, TemplateId, ExpirationDays, EncryptionKey,
 #'   AllowProfileCreation, SourceLastUpdatedTimestampFormat,
-#'   MaxProfileObjectCount, Fields, Keys, Tags)
+#'   MaxProfileObjectCount, SourcePriority, Fields, Keys, Tags)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
@@ -7869,6 +8513,10 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #' @param SourceLastUpdatedTimestampFormat The format of your `sourceLastUpdatedTimestamp` that was previously set
 #' up.
 #' @param MaxProfileObjectCount The amount of profile object max count assigned to the object type
+#' @param SourcePriority An integer that determines the priority of this object type when data
+#' from multiple sources is ingested. Lower values take priority. Object
+#' types without a specified source priority default to the lowest
+#' priority.
 #' @param Fields A map of the name and ObjectType field.
 #' @param Keys A list of unique keys that can be used to map data to the profile.
 #' @param Tags The tags used to organize, track, or control access for this resource.
@@ -7886,6 +8534,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #'   SourceLastUpdatedTimestampFormat = "string",
 #'   MaxProfileObjectCount = 123,
 #'   MaxAvailableProfileObjectCount = 123,
+#'   SourcePriority = 123,
 #'   Fields = list(
 #'     list(
 #'       Source = "string",
@@ -7897,7 +8546,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'           "PROFILE"|"ASSET"|"CASE"|"DEVICE"|"WEB_ANALYTICS"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -7929,6 +8578,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #'   AllowProfileCreation = TRUE|FALSE,
 #'   SourceLastUpdatedTimestampFormat = "string",
 #'   MaxProfileObjectCount = 123,
+#'   SourcePriority = 123,
 #'   Fields = list(
 #'     list(
 #'       Source = "string",
@@ -7940,7 +8590,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'           "PROFILE"|"ASSET"|"CASE"|"DEVICE"|"WEB_ANALYTICS"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -7959,7 +8609,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #' @rdname customerprofiles_put_profile_object_type
 #'
 #' @aliases customerprofiles_put_profile_object_type
-customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName, Description, TemplateId = NULL, ExpirationDays = NULL, EncryptionKey = NULL, AllowProfileCreation = NULL, SourceLastUpdatedTimestampFormat = NULL, MaxProfileObjectCount = NULL, Fields = NULL, Keys = NULL, Tags = NULL) {
+customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName, Description, TemplateId = NULL, ExpirationDays = NULL, EncryptionKey = NULL, AllowProfileCreation = NULL, SourceLastUpdatedTimestampFormat = NULL, MaxProfileObjectCount = NULL, SourcePriority = NULL, Fields = NULL, Keys = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutProfileObjectType",
     http_method = "PUT",
@@ -7968,7 +8618,7 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$put_profile_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Description = Description, TemplateId = TemplateId, ExpirationDays = ExpirationDays, EncryptionKey = EncryptionKey, AllowProfileCreation = AllowProfileCreation, SourceLastUpdatedTimestampFormat = SourceLastUpdatedTimestampFormat, MaxProfileObjectCount = MaxProfileObjectCount, Fields = Fields, Keys = Keys, Tags = Tags)
+  input <- .customerprofiles$put_profile_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Description = Description, TemplateId = TemplateId, ExpirationDays = ExpirationDays, EncryptionKey = EncryptionKey, AllowProfileCreation = AllowProfileCreation, SourceLastUpdatedTimestampFormat = SourceLastUpdatedTimestampFormat, MaxProfileObjectCount = MaxProfileObjectCount, SourcePriority = SourcePriority, Fields = Fields, Keys = Keys, Tags = Tags)
   output <- .customerprofiles$put_profile_object_type_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -9296,11 +9946,20 @@ customerprofiles_update_profile <- function(DomainName, ProfileId, AdditionalInf
 #'       EventParametersList = list(
 #'         list(
 #'           EventType = "string",
-#'           EventValueThreshold = 123.0
+#'           EventValueThreshold = 123.0,
+#'           EventWeight = 123.0
 #'         )
 #'       )
 #'     ),
-#'     TrainingFrequency = 123
+#'     TrainingFrequency = 123,
+#'     InferenceConfig = list(
+#'       MinProvisionedTPS = 123
+#'     ),
+#'     IncludedColumns = list(
+#'       list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```

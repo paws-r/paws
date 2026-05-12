@@ -41,8 +41,6 @@ action that is specified for this rule.}
 also use this value to query the status of the request. For more
 information, see
 \code{\link[=waf_get_change_token_status]{get_change_token_status}}.}
-
-\item{Tags}{}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

@@ -5,7 +5,12 @@
 \title{Writes multiple data records into a Kinesis data stream in a single call
 (also referred to as a PutRecords request)}
 \usage{
-kinesis_put_records(Records, StreamName = NULL, StreamARN = NULL)
+kinesis_put_records(
+  Records,
+  StreamName = NULL,
+  StreamARN = NULL,
+  StreamId = NULL
+)
 }
 \arguments{
 \item{Records}{[required] The records associated with the request.}
@@ -13,6 +18,8 @@ kinesis_put_records(Records, StreamName = NULL, StreamARN = NULL)
 \item{StreamName}{The stream name associated with the request.}
 
 \item{StreamARN}{The ARN of the stream.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Writes multiple data records into a Kinesis data stream in a single call (also referred to as a \code{\link[=kinesis_put_records]{put_records}} request). Use this operation to send data into the stream for data ingestion and processing.

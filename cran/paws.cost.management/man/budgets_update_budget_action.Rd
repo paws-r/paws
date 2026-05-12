@@ -23,18 +23,10 @@ budgets_update_budget_action(
 
 \item{ActionId}{[required] A system-generated universally unique identifier (UUID) for the action.}
 
-\item{NotificationType}{}
-
-\item{ActionThreshold}{}
-
-\item{Definition}{}
-
 \item{ExecutionRoleArn}{The role passed for action execution and reversion. Roles and actions
 must be in the same account.}
 
 \item{ApprovalModel}{This specifies if the action needs manual or automatic approval.}
-
-\item{Subscribers}{}
 }
 \description{
 Updates a budget action.

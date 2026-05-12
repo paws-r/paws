@@ -9,8 +9,6 @@ cloudwatchlogs_describe_index_policies(logGroupIdentifiers, nextToken = NULL)
 \arguments{
 \item{logGroupIdentifiers}{[required] An array containing the name or ARN of the log group that you want to
 retrieve field index policies for.}
-
-\item{nextToken}{}
 }
 \description{
 Returns the field index policies of the specified log group. For more information about field index policies, see \code{\link[=cloudwatchlogs_put_index_policy]{put_index_policy}}.

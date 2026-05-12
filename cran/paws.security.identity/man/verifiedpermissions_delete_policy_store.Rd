@@ -7,7 +7,10 @@
 verifiedpermissions_delete_policy_store(policyStoreId)
 }
 \arguments{
-\item{policyStoreId}{[required] Specifies the ID of the policy store that you want to delete.}
+\item{policyStoreId}{[required] Specifies the ID of the policy store that you want to delete.
+
+To specify a policy store, the alias name cannot be used. Only the ID
+can be used.}
 }
 \description{
 Deletes the specified policy store.

@@ -8,8 +8,6 @@ tape shelf (VTS)}
 storagegateway_list_tapes(TapeARNs = NULL, Marker = NULL, Limit = NULL)
 }
 \arguments{
-\item{TapeARNs}{}
-
 \item{Marker}{A string that indicates the position at which to begin the returned list
 of tapes.}
 

@@ -38,7 +38,7 @@ Default: \code{false}}
 \item{FinalDBSnapshotIdentifier}{The DBSnapshotIdentifier of the new DBSnapshot created when
 SkipFinalSnapshot is set to \code{false}.
 
-Specifying this parameter and also setting the SkipFinalShapshot
+Specifying this parameter and also setting the SkipFinalSnapshot
 parameter to true results in an error.
 
 Constraints:

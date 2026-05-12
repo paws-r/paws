@@ -11,7 +11,8 @@ s3control_get_data_access(
   Permission,
   DurationSeconds = NULL,
   Privilege = NULL,
-  TargetType = NULL
+  TargetType = NULL,
+  AuditContext = NULL
 )
 }
 \arguments{
@@ -50,6 +51,10 @@ the same as or a subset of the grant scope.
 value if the target data that you would like to access is a path to an
 object. Do not pass this value if the target data is a bucket or a
 bucket and a prefix.}
+
+\item{AuditContext}{The context to identify the job or query associated with the credential
+request. This information will be displayed in CloudTrail log in your
+account.}
 }
 \description{
 Returns a temporary access credential from S3 Access Grants to the grantee or client application. The \href{https://docs.aws.amazon.com/STS/latest/APIReference/API_Credentials.html}{temporary credential} is an Amazon Web Services STS token that grants them access to the S3 data.

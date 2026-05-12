@@ -141,7 +141,7 @@ Region, providing built-in high availability and data durability.
 \link[=dynamodb_import_table]{import_table} \tab Imports table data from an S3 bucket\cr
 \link[=dynamodb_list_backups]{list_backups} \tab List DynamoDB backups that are associated with an Amazon Web Services account and weren't made with Amazon Web Services Backup\cr
 \link[=dynamodb_list_contributor_insights]{list_contributor_insights} \tab Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes\cr
-\link[=dynamodb_list_exports]{list_exports} \tab Lists completed exports within the past 90 days\cr
+\link[=dynamodb_list_exports]{list_exports} \tab Lists completed exports within the past 90 days, in reverse alphanumeric order of ExportArn\cr
 \link[=dynamodb_list_global_tables]{list_global_tables} \tab Lists all global tables that have a replica in the specified Region\cr
 \link[=dynamodb_list_imports]{list_imports} \tab Lists completed imports within the past 90 days\cr
 \link[=dynamodb_list_tables]{list_tables} \tab Returns an array of table names associated with the current account and endpoint\cr

@@ -6,15 +6,19 @@
 \usage{
 ec2_associate_client_vpn_target_network(
   ClientVpnEndpointId,
-  SubnetId,
+  SubnetId = NULL,
   ClientToken = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  AvailabilityZone = NULL,
+  AvailabilityZoneId = NULL
 )
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
 
-\item{SubnetId}{[required] The ID of the subnet to associate with the Client VPN endpoint.}
+\item{SubnetId}{The ID of the subnet to associate with the Client VPN endpoint. Required
+for VPC-based endpoints. For Transit Gateway-based endpoints, use
+\code{AvailabilityZone} or \code{AvailabilityZoneId} instead.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
@@ -23,6 +27,16 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{AvailabilityZone}{The Availability Zone name for the Transit Gateway association. Required
+if when associating an Availability Zone with a Client VPN endpoint that
+uses a Transit Gateway. You cannot specify both \code{SubnetId} and
+\code{AvailabilityZone}.}
+
+\item{AvailabilityZoneId}{The Availability Zone ID for the Transit Gateway association. Required
+if when associating an Availability Zone with a Client VPN endpoint that
+uses a Transit Gateway. You cannot specify both \code{AvailabilityZone} and
+\code{AvailabilityZoneId}.}
 }
 \description{
 Associates a target network with a Client VPN endpoint. A target network is a subnet in a VPC. You can associate multiple subnets from the same VPC with a Client VPN endpoint. You can associate only one subnet in each Availability Zone. We recommend that you associate at least two subnets to provide Availability Zone redundancy.

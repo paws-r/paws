@@ -4,7 +4,13 @@
 \alias{cloudwatchlogs_put_delivery_source}
 \title{Creates or updates a logical delivery source}
 \usage{
-cloudwatchlogs_put_delivery_source(name, resourceArn, logType, tags = NULL)
+cloudwatchlogs_put_delivery_source(
+  name,
+  resourceArn,
+  logType,
+  tags = NULL,
+  deliverySourceConfiguration = NULL
+)
 }
 \arguments{
 \item{name}{[required] A name for this delivery source. This name must be unique for all
@@ -12,7 +18,13 @@ delivery sources in your account.}
 
 \item{resourceArn}{[required] The ARN of the Amazon Web Services resource that is generating and
 sending logs. For example,
-\verb{arn:aws:workmail:us-east-1:123456789012:organization/m-1234EXAMPLEabcd1234abcd1234abcd1234}}
+\verb{arn:aws:workmail:us-east-1:123456789012:organization/m-1234EXAMPLEabcd1234abcd1234abcd1234}
+
+For the \code{SECURITY_FINDING_LOGS} logType, use a wildcard ARN for the hub
+resource. For Amazon Web Services Security Hub CSPM, use
+\verb{arn:aws:securityhub:us-east-1:111122223333:hub/*} and for Amazon Web
+Services Security Hub, use
+\verb{arn:aws:securityhub:us-east-1:111122223333:hubv2/*}}
 
 \item{logType}{[required] Defines the type of log that the source is sending.
 \itemize{
@@ -26,27 +38,36 @@ and \code{EVENT_LOGS}.
 \code{APPLICATION_LOGS}, \code{USAGE_LOGS} and \code{TRACES}.
 \item For Amazon Bedrock AgentCore Identity, the valid values are
 \code{APPLICATION_LOGS} and \code{TRACES}.
+\item For Amazon Bedrock AgentCore Memory, the valid values are
+\code{APPLICATION_LOGS} and \code{TRACES}.
 \item For Amazon Bedrock AgentCore Gateway, the valid values are
 \code{APPLICATION_LOGS} and \code{TRACES}.
 \item For CloudFront, the valid value is \code{ACCESS_LOGS}.
+\item For DevOps Agent, the valid value is \code{APPLICATION_LOGS}.
 \item For Amazon CodeWhisperer, the valid value is \code{EVENT_LOGS}.
 \item For Elemental MediaPackage, the valid values are
 \code{EGRESS_ACCESS_LOGS} and \code{INGRESS_ACCESS_LOGS}.
 \item For Elemental MediaTailor, the valid values are
 \code{AD_DECISION_SERVER_LOGS}, \code{MANIFEST_SERVICE_LOGS}, and
 \code{TRANSCODE_LOGS}.
+\item For Amazon EKS Auto Mode, the valid values are
+\code{AUTO_MODE_BLOCK_STORAGE_LOGS}, \code{AUTO_MODE_COMPUTE_LOGS},
+\code{AUTO_MODE_IPAM_LOGS}, and \code{AUTO_MODE_LOAD_BALANCING_LOGS}.
 \item For Entity Resolution, the valid value is \code{WORKFLOW_LOGS}.
 \item For IAM Identity Center, the valid value is \code{ERROR_LOGS}.
 \item For Network Firewall Proxy, the valid values are \code{ALERT_LOGS},
 \code{ALLOW_LOGS}, and \code{DENY_LOGS}.
 \item For Network Load Balancer, the valid value is \code{NLB_ACCESS_LOGS}.
-\item For PCS, the valid values are \code{PCS_SCHEDULER_LOGS} and
-\code{PCS_JOBCOMP_LOGS}.
-\item For Quick Suite, the valid values are \code{CHAT_LOGS} and
-\code{FEEDBACK_LOGS}.
+\item For PCS, the valid values are \code{PCS_SCHEDULER_LOGS},
+\code{PCS_JOBCOMP_LOGS}, and \code{PCS_SCHEDULER_AUDIT_LOGS}.
+\item For Quick, the valid values are \code{CHAT_LOGS} and \code{FEEDBACK_LOGS}.
 \item For Amazon Web Services RTB Fabric, the valid values is
 \code{APPLICATION_LOGS}.
 \item For Amazon Q, the valid values are \code{EVENT_LOGS} and \code{SYNC_JOB_LOGS}.
+\item For Amazon Web Services Security Hub CSPM, the valid value is
+\code{SECURITY_FINDING_LOGS}.
+\item For Amazon Web Services Security Hub, the valid value is
+\code{SECURITY_FINDING_LOGS}.
 \item For Amazon SES mail manager, the valid values are \code{APPLICATION_LOGS}
 and \code{TRAFFIC_POLICY_DEBUG_LOGS}.
 \item For Amazon WorkMail, the valid values are \code{ACCESS_CONTROL_LOGS},
@@ -59,6 +80,10 @@ and \code{TRAFFIC_POLICY_DEBUG_LOGS}.
 \item{tags}{An optional list of key-value pairs to associate with the resource.
 
 For more information about tagging, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}}
+
+\item{deliverySourceConfiguration}{A map of key-value pairs to configure the delivery source. Both keys and
+values must be between 1 and 255 characters in length. For example,
+\code{{"samplingRate": "50"}}.}
 }
 \description{
 Creates or updates a logical \emph{delivery source}. A delivery source represents an Amazon Web Services resource that sends logs to an logs delivery destination. The destination can be CloudWatch Logs, Amazon S3, Firehose or X-Ray for sending traces.

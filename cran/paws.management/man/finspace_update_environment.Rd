@@ -26,8 +26,6 @@ your Identity provider.
 \item \code{LOCAL} - Users access FinSpace via email and password managed
 within the FinSpace environment.
 }}
-
-\item{federationParameters}{}
 }
 \description{
 Update your FinSpace environment.

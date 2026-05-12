@@ -15,10 +15,6 @@ timestreamwrite_create_batch_load_task(
 )
 }
 \arguments{
-\item{ClientToken}{}
-
-\item{DataModelConfiguration}{}
-
 \item{DataSourceConfiguration}{[required] Defines configuration details about the data source for a batch load
 task.}
 
@@ -27,8 +23,6 @@ task.}
 \item{TargetDatabaseName}{[required] Target Timestream database for a batch load task.}
 
 \item{TargetTableName}{[required] Target Timestream table for a batch load task.}
-
-\item{RecordVersion}{}
 }
 \description{
 Creates a new Timestream batch load task. A batch load task processes data from a CSV source in an S3 location and writes to a Timestream table. A mapping from source to target is defined in a batch load task. Errors and events are written to a report at an S3 location. For the report, if the KMS key is not specified, the report will be encrypted with an S3 managed key when \code{SSE_S3} is the option. Otherwise an error is thrown. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed keys}. \href{https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html}{Service quotas apply}. For details, see \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-batch-load.html}{code sample}.

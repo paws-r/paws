@@ -128,6 +128,7 @@ Defines the public endpoint for the Lake Formation service.
 \link[=lakeformation_get_query_statistics]{get_query_statistics} \tab Retrieves statistics on the planning and execution of a query\cr
 \link[=lakeformation_get_resource_lf_tags]{get_resource_lf_tags} \tab Returns the LF-tags applied to a resource\cr
 \link[=lakeformation_get_table_objects]{get_table_objects} \tab Returns the set of Amazon S3 objects that make up the specified governed table\cr
+\link[=lakeformation_get_temporary_data_location_credentials]{get_temporary_data_location_credentials} \tab Allows a user or application in a secure environment to access data in a specific Amazon S3 location registered with Lake Formation by providing temporary scoped credentials that are limited to the requested data location and the caller's authorized access level\cr
 \link[=lakeformation_get_temporary_glue_partition_credentials]{get_temporary_glue_partition_credentials} \tab This API is identical to GetTemporaryTableCredentials except that this is used when the target Data Catalog resource is of type Partition\cr
 \link[=lakeformation_get_temporary_glue_table_credentials]{get_temporary_glue_table_credentials} \tab Allows a caller in a secure environment to assume a role with permission to access Amazon S3\cr
 \link[=lakeformation_get_work_unit_results]{get_work_unit_results} \tab Returns the work units resulting from the query\cr

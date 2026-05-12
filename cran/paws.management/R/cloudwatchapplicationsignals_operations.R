@@ -107,11 +107,20 @@ cloudwatchapplicationsignals_batch_update_exclusion_windows <- function(SloIds, 
 #' @param BurnRateConfigurations Use this array to create *burn rates* for this SLO. Each burn rate is a
 #' metric that indicates how fast the service is consuming the error
 #' budget, relative to the attainment goal of the SLO.
+#' @param CreateRecommendedSlo Set this to `true` to create a recommended SLO out of the box. When set
+#' to `true`, you don't need to specify the `MetricThreshold` or
+#' `ComparisonOperator` in the `SliConfig` or `RequestBasedSliConfig`. The
+#' default value is `false`.
+#' 
+#' This is supported for SLOs on a service, service operation, or a
+#' dependency.
+#' @param AutoInvestigationEnabled Indicates whether DevOps Agent will automatically investigate this SLO
+#' when it is breached
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchapplicationsignals_create_service_level_objective
-cloudwatchapplicationsignals_create_service_level_objective <- function(Name, Description = NULL, SliConfig = NULL, RequestBasedSliConfig = NULL, Goal = NULL, Tags = NULL, BurnRateConfigurations = NULL) {
+cloudwatchapplicationsignals_create_service_level_objective <- function(Name, Description = NULL, SliConfig = NULL, RequestBasedSliConfig = NULL, Goal = NULL, Tags = NULL, BurnRateConfigurations = NULL, CreateRecommendedSlo = NULL, AutoInvestigationEnabled = NULL) {
   op <- new_operation(
     name = "CreateServiceLevelObjective",
     http_method = "POST",
@@ -120,7 +129,7 @@ cloudwatchapplicationsignals_create_service_level_objective <- function(Name, De
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchapplicationsignals$create_service_level_objective_input(Name = Name, Description = Description, SliConfig = SliConfig, RequestBasedSliConfig = RequestBasedSliConfig, Goal = Goal, Tags = Tags, BurnRateConfigurations = BurnRateConfigurations)
+  input <- .cloudwatchapplicationsignals$create_service_level_objective_input(Name = Name, Description = Description, SliConfig = SliConfig, RequestBasedSliConfig = RequestBasedSliConfig, Goal = Goal, Tags = Tags, BurnRateConfigurations = BurnRateConfigurations, CreateRecommendedSlo = CreateRecommendedSlo, AutoInvestigationEnabled = AutoInvestigationEnabled)
   output <- .cloudwatchapplicationsignals$create_service_level_objective_output()
   config <- get_config()
   svc <- .cloudwatchapplicationsignals$service(config, op)
@@ -335,6 +344,13 @@ cloudwatchapplicationsignals_get_service_level_objective <- function(Id) {
 #' -   `log` - LogAuditor: Extracts insights from application logs,
 #'     categorizing error types and ranking severity by frequency during
 #'     the Analysis phase
+#' 
+#' -   `change_indicator` - ChangeIndicatorAuditor: Detects change events
+#'     (deployments, configuration changes) that occurred within 10 minutes
+#'     before and during a detected anomaly, and surfaces them as findings
+#'     with deployment timestamps in the Analysis phase. When changes are
+#'     detected, the `top_contributor` auditor skips its analysis to avoid
+#'     redundancy.
 #' 
 #' `InitAuditor` and `Summarizer` auditors are not configurable as they are
 #' automatically triggered during the audit process.
@@ -685,6 +701,20 @@ cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows <- f
 #' this parameter, the default of 50 is used.
 #' @param NextToken Include this value, if it was returned by the previous operation, to get
 #' the next set of service level objectives.
+#' @param MetricSourceTypes Use this optional field to only include SLOs with the specified metric
+#' source types in the output. Supported types are:
+#' 
+#' -   Service operation
+#' 
+#' -   Service dependency
+#' 
+#' -   Service
+#' 
+#' -   CloudWatch metric
+#' 
+#' -   AppMonitor
+#' 
+#' -   Canary
 #' @param IncludeLinkedAccounts If you are using this operation in a monitoring account, specify `true`
 #' to include SLO from source accounts in the returned data.
 #' 
@@ -694,19 +724,12 @@ cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows <- f
 #' `IncludeLinkedAccounts` to filter the returned data to only a single
 #' source account.
 #' @param SloOwnerAwsAccountId SLO's Amazon Web Services account ID.
-#' @param MetricSourceTypes Use this optional field to only include SLOs with the specified metric
-#' source types in the output. Supported types are:
-#' 
-#' -   Service operation
-#' 
-#' -   Service dependency
-#' 
-#' -   CloudWatch metric
+#' @param MetricSource Identifies the metric source to filter SLOs by.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchapplicationsignals_list_service_level_objectives
-cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttributes = NULL, OperationName = NULL, DependencyConfig = NULL, MaxResults = NULL, NextToken = NULL, IncludeLinkedAccounts = NULL, SloOwnerAwsAccountId = NULL, MetricSourceTypes = NULL) {
+cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttributes = NULL, OperationName = NULL, DependencyConfig = NULL, MaxResults = NULL, NextToken = NULL, MetricSourceTypes = NULL, IncludeLinkedAccounts = NULL, SloOwnerAwsAccountId = NULL, MetricSource = NULL) {
   op <- new_operation(
     name = "ListServiceLevelObjectives",
     http_method = "POST",
@@ -715,7 +738,7 @@ cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttrib
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SloSummaries"),
     stream_api = FALSE
   )
-  input <- .cloudwatchapplicationsignals$list_service_level_objectives_input(KeyAttributes = KeyAttributes, OperationName = OperationName, DependencyConfig = DependencyConfig, MaxResults = MaxResults, NextToken = NextToken, IncludeLinkedAccounts = IncludeLinkedAccounts, SloOwnerAwsAccountId = SloOwnerAwsAccountId, MetricSourceTypes = MetricSourceTypes)
+  input <- .cloudwatchapplicationsignals$list_service_level_objectives_input(KeyAttributes = KeyAttributes, OperationName = OperationName, DependencyConfig = DependencyConfig, MaxResults = MaxResults, NextToken = NextToken, MetricSourceTypes = MetricSourceTypes, IncludeLinkedAccounts = IncludeLinkedAccounts, SloOwnerAwsAccountId = SloOwnerAwsAccountId, MetricSource = MetricSource)
   output <- .cloudwatchapplicationsignals$list_service_level_objectives_output()
   config <- get_config()
   svc <- .cloudwatchapplicationsignals$service(config, op)
@@ -1099,11 +1122,13 @@ cloudwatchapplicationsignals_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param BurnRateConfigurations Use this array to create *burn rates* for this SLO. Each burn rate is a
 #' metric that indicates how fast the service is consuming the error
 #' budget, relative to the attainment goal of the SLO.
+#' @param AutoInvestigationEnabled Indicates whether DevOps Agent will automatically investigate this SLO
+#' when it is breached
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchapplicationsignals_update_service_level_objective
-cloudwatchapplicationsignals_update_service_level_objective <- function(Id, Description = NULL, SliConfig = NULL, RequestBasedSliConfig = NULL, Goal = NULL, BurnRateConfigurations = NULL) {
+cloudwatchapplicationsignals_update_service_level_objective <- function(Id, Description = NULL, SliConfig = NULL, RequestBasedSliConfig = NULL, Goal = NULL, BurnRateConfigurations = NULL, AutoInvestigationEnabled = NULL) {
   op <- new_operation(
     name = "UpdateServiceLevelObjective",
     http_method = "PATCH",
@@ -1112,7 +1137,7 @@ cloudwatchapplicationsignals_update_service_level_objective <- function(Id, Desc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchapplicationsignals$update_service_level_objective_input(Id = Id, Description = Description, SliConfig = SliConfig, RequestBasedSliConfig = RequestBasedSliConfig, Goal = Goal, BurnRateConfigurations = BurnRateConfigurations)
+  input <- .cloudwatchapplicationsignals$update_service_level_objective_input(Id = Id, Description = Description, SliConfig = SliConfig, RequestBasedSliConfig = RequestBasedSliConfig, Goal = Goal, BurnRateConfigurations = BurnRateConfigurations, AutoInvestigationEnabled = AutoInvestigationEnabled)
   output <- .cloudwatchapplicationsignals$update_service_level_objective_output()
   config <- get_config()
   svc <- .cloudwatchapplicationsignals$service(config, op)

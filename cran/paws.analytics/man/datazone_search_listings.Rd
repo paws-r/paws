@@ -5,26 +5,23 @@
 \title{Searches listings in Amazon DataZone}
 \usage{
 datazone_search_listings(
-  additionalAttributes = NULL,
-  aggregations = NULL,
   domainIdentifier,
-  filters = NULL,
+  searchText = NULL,
+  searchIn = NULL,
   maxResults = NULL,
   nextToken = NULL,
-  searchIn = NULL,
-  searchText = NULL,
-  sort = NULL
+  filters = NULL,
+  aggregations = NULL,
+  sort = NULL,
+  additionalAttributes = NULL
 )
 }
 \arguments{
-\item{additionalAttributes}{Specifies additional attributes for the search.}
-
-\item{aggregations}{Enables you to specify one or more attributes to compute and return
-counts grouped by field values.}
-
 \item{domainIdentifier}{[required] The identifier of the domain in which to search listings.}
 
-\item{filters}{Specifies the filters for the search of listings.}
+\item{searchText}{Specifies the text for which to search.}
+
+\item{searchIn}{The details of the search.}
 
 \item{maxResults}{The maximum number of results to return in a single call to
 \code{\link[=datazone_search_listings]{search_listings}}. When the number of
@@ -41,11 +38,14 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{\link[=datazone_search_listings]{search_listings}} to list the next set of
 results.}
 
-\item{searchIn}{The details of the search.}
+\item{filters}{Specifies the filters for the search of listings.}
 
-\item{searchText}{Specifies the text for which to search.}
+\item{aggregations}{Enables you to specify one or more attributes to compute and return
+counts grouped by field values.}
 
 \item{sort}{Specifies the way for sorting the search results.}
+
+\item{additionalAttributes}{Specifies additional attributes for the search.}
 }
 \description{
 Searches listings in Amazon DataZone.

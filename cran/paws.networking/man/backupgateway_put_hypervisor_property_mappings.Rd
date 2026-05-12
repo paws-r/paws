@@ -6,20 +6,20 @@
 \usage{
 backupgateway_put_hypervisor_property_mappings(
   HypervisorArn,
-  IamRoleArn,
-  VmwareToAwsTagMappings
+  VmwareToAwsTagMappings,
+  IamRoleArn
 )
 }
 \arguments{
 \item{HypervisorArn}{[required] The Amazon Resource Name (ARN) of the hypervisor.}
 
-\item{IamRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role.}
+\item{VmwareToAwsTagMappings}{[required] This action requests the mappings of VMware tags to the Amazon Web
+Services tags.}
 
-\item{VmwareToAwsTagMappings}{[required] This action requests the mappings of on-premises VMware tags to the
-Amazon Web Services tags.}
+\item{IamRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role.}
 }
 \description{
-This action sets the property mappings for the specified hypervisor. A hypervisor property mapping displays the relationship of entity properties available from the on-premises hypervisor to the properties available in Amazon Web Services.
+This action sets the property mappings for the specified hypervisor. A hypervisor property mapping displays the relationship of entity properties available from the hypervisor to the properties available in Amazon Web Services.
 
 See \url{https://www.paws-r-sdk.com/docs/backupgateway_put_hypervisor_property_mappings/} for full documentation.
 }

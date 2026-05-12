@@ -3321,6 +3321,11 @@ elasticbeanstalk_rebuild_environment <- function(EnvironmentId = NULL, Environme
 #' files for every Amazon EC2 instance into a `.zip` file. Legacy and .NET
 #' containers do not support bundle logs.
 #' 
+#' Setting the `InfoType` to `analyze` collects recent events, instance
+#' health, and logs from your environment and sends them to Amazon Bedrock
+#' in your account to generate diagnostic insights and recommended next
+#' steps.
+#' 
 #' Use
 #' [`retrieve_environment_info`][elasticbeanstalk_retrieve_environment_info]
 #' to obtain the set of logs.
@@ -3361,7 +3366,7 @@ elasticbeanstalk_rebuild_environment <- function(EnvironmentId = NULL, Environme
 #' svc$request_environment_info(
 #'   EnvironmentId = "string",
 #'   EnvironmentName = "string",
-#'   InfoType = "tail"|"bundle"
+#'   InfoType = "tail"|"bundle"|"analyze"
 #' )
 #' ```
 #'
@@ -3502,7 +3507,7 @@ elasticbeanstalk_restart_app_server <- function(EnvironmentId = NULL, Environmen
 #' list(
 #'   EnvironmentInfo = list(
 #'     list(
-#'       InfoType = "tail"|"bundle",
+#'       InfoType = "tail"|"bundle"|"analyze",
 #'       Ec2InstanceId = "string",
 #'       SampleTimestamp = as.POSIXct(
 #'         "2015-01-01"
@@ -3518,7 +3523,7 @@ elasticbeanstalk_restart_app_server <- function(EnvironmentId = NULL, Environmen
 #' svc$retrieve_environment_info(
 #'   EnvironmentId = "string",
 #'   EnvironmentName = "string",
-#'   InfoType = "tail"|"bundle"
+#'   InfoType = "tail"|"bundle"|"analyze"
 #' )
 #' ```
 #'

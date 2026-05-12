@@ -32,10 +32,10 @@ from the Amazon Quick Sight console URL of the analysis
 \item{SessionLifetimeInMinutes}{How many minutes the session is valid. The session lifetime must be
 15-600 minutes.}
 
-\item{UserArn}{The Amazon Quick Suite user's Amazon Resource Name (ARN), for use with
+\item{UserArn}{The Amazon Quick user's Amazon Resource Name (ARN), for use with
 \code{QUICKSIGHT} identity type. You can use this for any type of Amazon
-Quick Suite users in your account (readers, authors, or admins). They
-need to be authenticated as one of the following:
+Quick users in your account (readers, authors, or admins). They need to
+be authenticated as one of the following:
 \enumerate{
 \item Active Directory (AD) users or group members
 \item Invited nonfederated users
@@ -48,7 +48,7 @@ Omit this parameter for users in the third group, IAM users and IAM
 role-based sessions.}
 }
 \description{
-Generates a session URL and authorization code that you can use to embed the Amazon Amazon Quick Sight console in your web server code. Use \code{\link[=quicksight_get_session_embed_url]{get_session_embed_url}} where you want to provide an authoring portal that allows users to create data sources, datasets, analyses, and dashboards. The users who access an embedded Amazon Quick Sight console need belong to the author or admin security cohort. If you want to restrict permissions to some of these features, add a custom permissions profile to the user with the \code{\link[=quicksight_update_user]{update_user}} API operation. Use \code{\link[=quicksight_register_user]{register_user}} API operation to add a new user with a custom permission profile attached. For more information, see the following sections in the \emph{Amazon Quick Suite User Guide}:
+Generates a session URL and authorization code that you can use to embed the Amazon Amazon Quick Sight console in your web server code. Use \code{\link[=quicksight_get_session_embed_url]{get_session_embed_url}} where you want to provide an authoring portal that allows users to create data sources, datasets, analyses, and dashboards. The users who access an embedded Amazon Quick Sight console need belong to the author or admin security cohort. If you want to restrict permissions to some of these features, add a custom permissions profile to the user with the \code{\link[=quicksight_update_user]{update_user}} API operation. Use \code{\link[=quicksight_register_user]{register_user}} API operation to add a new user with a custom permission profile attached. For more information, see the following sections in the \emph{Amazon Quick User Guide}:
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_get_session_embed_url/} for full documentation.
 }

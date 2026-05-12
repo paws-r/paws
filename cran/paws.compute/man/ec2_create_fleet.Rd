@@ -10,6 +10,7 @@ ec2_create_fleet(
   ClientToken = NULL,
   SpotOptions = NULL,
   OnDemandOptions = NULL,
+  ReservedCapacityOptions = NULL,
   ExcessCapacityTerminationPolicy = NULL,
   LaunchTemplateConfigs,
   TargetCapacitySpecification,
@@ -37,6 +38,11 @@ For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/
 \item{SpotOptions}{Describes the configuration of Spot Instances in an EC2 Fleet.}
 
 \item{OnDemandOptions}{Describes the configuration of On-Demand Instances in an EC2 Fleet.}
+
+\item{ReservedCapacityOptions}{Defines EC2 Fleet preferences for utilizing reserved capacity when
+DefaultTargetCapacityType is set to \code{reserved-capacity}.
+
+Supported only for fleets of type \code{instant}.}
 
 \item{ExcessCapacityTerminationPolicy}{Indicates whether running instances should be terminated if the total
 target capacity of the EC2 Fleet is decreased below the current size of

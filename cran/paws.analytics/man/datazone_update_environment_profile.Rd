@@ -5,26 +5,16 @@
 \title{Updates the specified environment profile in Amazon DataZone}
 \usage{
 datazone_update_environment_profile(
-  awsAccountId = NULL,
-  awsAccountRegion = NULL,
-  description = NULL,
   domainIdentifier,
   identifier,
   name = NULL,
-  userParameters = NULL
+  description = NULL,
+  userParameters = NULL,
+  awsAccountId = NULL,
+  awsAccountRegion = NULL
 )
 }
 \arguments{
-\item{awsAccountId}{The Amazon Web Services account in which a specified environment profile
-is to be udpated.}
-
-\item{awsAccountRegion}{The Amazon Web Services Region in which a specified environment profile
-is to be updated.}
-
-\item{description}{The description to be updated as part of the
-\code{\link[=datazone_update_environment_profile]{update_environment_profile}}
-action.}
-
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which an environment
 profile is to be updated.}
 
@@ -34,9 +24,19 @@ profile is to be updated.}
 \code{\link[=datazone_update_environment_profile]{update_environment_profile}}
 action.}
 
+\item{description}{The description to be updated as part of the
+\code{\link[=datazone_update_environment_profile]{update_environment_profile}}
+action.}
+
 \item{userParameters}{The user parameters to be updated as part of the
 \code{\link[=datazone_update_environment_profile]{update_environment_profile}}
 action.}
+
+\item{awsAccountId}{The Amazon Web Services account in which a specified environment profile
+is to be udpated.}
+
+\item{awsAccountRegion}{The Amazon Web Services Region in which a specified environment profile
+is to be updated.}
 }
 \description{
 Updates the specified environment profile in Amazon DataZone.

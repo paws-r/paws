@@ -178,6 +178,7 @@ NULL
 #'  \link[=appstream_disassociate_application_from_entitlement]{disassociate_application_from_entitlement} \tab Deletes the specified application from the specified entitlement\cr
 #'  \link[=appstream_disassociate_fleet]{disassociate_fleet} \tab Disassociates the specified fleet from the specified stack\cr
 #'  \link[=appstream_disassociate_software_from_image_builder]{disassociate_software_from_image_builder} \tab Removes license included application(s) association(s) from an image builder instance\cr
+#'  \link[=appstream_drain_session_instance]{drain_session_instance} \tab Drains the instance hosting the specified streaming session\cr
 #'  \link[=appstream_enable_user]{enable_user} \tab Enables a user in the user pool\cr
 #'  \link[=appstream_expire_session]{expire_session} \tab Immediately stops the specified streaming session\cr
 #'  \link[=appstream_get_export_image_task]{get_export_image_task} \tab Retrieves information about an export image task, including its current state, progress, and any error details\cr

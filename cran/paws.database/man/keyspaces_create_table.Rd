@@ -18,7 +18,8 @@ keyspaces_create_table(
   clientSideTimestamps = NULL,
   autoScalingSpecification = NULL,
   replicaSpecifications = NULL,
-  cdcSpecification = NULL
+  cdcSpecification = NULL,
+  warmThroughputSpecification = NULL
 )
 }
 \arguments{
@@ -160,6 +161,15 @@ for the table. (Optional)
 }}
 
 \item{cdcSpecification}{The CDC stream settings of the table.}
+
+\item{warmThroughputSpecification}{Specifies the warm throughput settings for the table. Pre-warming a
+table helps you avoid capacity exceeded exceptions by pre-provisioning
+read and write capacity units to reduce cold start latency when your
+table receives traffic.
+
+For more information about pre-warming in Amazon Keyspaces, see
+\href{https://docs.aws.amazon.com/keyspaces/latest/devguide/warm-throughput.html}{Pre-warm a table in Amazon Keyspaces}
+in the \emph{Amazon Keyspaces Developer Guide}.}
 }
 \description{
 The \code{\link[=keyspaces_create_table]{create_table}} operation adds a new table to the specified keyspace. Within a keyspace, table names must be unique.

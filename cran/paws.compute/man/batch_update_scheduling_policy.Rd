@@ -4,12 +4,20 @@
 \alias{batch_update_scheduling_policy}
 \title{Updates a scheduling policy}
 \usage{
-batch_update_scheduling_policy(arn, fairsharePolicy = NULL)
+batch_update_scheduling_policy(
+  arn,
+  quotaSharePolicy = NULL,
+  fairsharePolicy = NULL
+)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the scheduling policy to update.}
 
-\item{fairsharePolicy}{The fair-share policy scheduling details.}
+\item{quotaSharePolicy}{The quota share scheduling policy details. Once set during creation, a
+quotaSharePolicy cannot be removed or changed to a fairsharePolicy.}
+
+\item{fairsharePolicy}{The fair-share policy scheduling details. Once set during creation, a
+fairsharePolicy cannot be removed or changed to a quotaSharePolicy.}
 }
 \description{
 Updates a scheduling policy.

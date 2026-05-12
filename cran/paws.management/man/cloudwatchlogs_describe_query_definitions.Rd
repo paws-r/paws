@@ -20,8 +20,6 @@ query languages that CloudWatch Logs supports, see \href{https://docs.aws.amazon
 that have names that start with the prefix you specify.}
 
 \item{maxResults}{Limits the number of returned query definitions to the specified number.}
-
-\item{nextToken}{}
 }
 \description{
 This operation returns a paginated list of your saved CloudWatch Logs Insights query definitions. You can retrieve query definitions from the current account or from a source account that is linked to the current account.

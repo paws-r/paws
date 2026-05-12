@@ -63,6 +63,9 @@ Backup enforces a 72-hour cooling-off period before Vault Lock takes
 effect and becomes immutable. Therefore, you must set
 \code{ChangeableForDays} to 3 or greater.
 
+The maximum value you can specify is 36,500 days (approximately 100
+years).
+
 Before the lock date, you can delete Vault Lock from the vault using
 \code{\link[=backup_delete_backup_vault_lock_configuration]{delete_backup_vault_lock_configuration}}
 or change the Vault Lock configuration using

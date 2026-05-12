@@ -44,8 +44,6 @@ of an organization, use this parameter to return the Amazon Aurora and
 RDS database recommendations to specific member accounts.
 
 You can only specify one account ID per request.}
-
-\item{recommendationPreferences}{}
 }
 \description{
 Returns Amazon Aurora and RDS database recommendations.

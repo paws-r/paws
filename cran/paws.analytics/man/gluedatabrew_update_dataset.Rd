@@ -18,8 +18,6 @@ gluedatabrew_update_dataset(
 \item{Format}{The file format of a dataset that is created from an Amazon S3 file or
 folder.}
 
-\item{FormatOptions}{}
-
 \item{Input}{[required]}
 
 \item{PathOptions}{A set of options that defines how DataBrew interprets an Amazon S3 path

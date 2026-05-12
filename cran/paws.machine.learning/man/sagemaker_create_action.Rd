@@ -29,8 +29,6 @@ Services Region.}
 
 \item{Properties}{A list of properties to add to the action.}
 
-\item{MetadataProperties}{}
-
 \item{Tags}{A list of tags to apply to the action.}
 }
 \description{

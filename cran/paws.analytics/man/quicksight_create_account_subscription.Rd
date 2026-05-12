@@ -76,27 +76,27 @@ required if \code{ACTIVE_DIRECTORY} or \code{IAM_IDENTITY_CENTER} is the selecte
 authentication method of the new Quick Sight account.
 
 For more information about using IAM Identity Center in Amazon Quick
-Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
+Sight, see \href{https://docs.aws.amazon.com/quick/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
 in the Amazon Quick Sight User Guide. For more information about using
-Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
+Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quick/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
 in the Amazon Quick Sight User Guide.}
 
 \item{AuthorGroup}{The author group associated with your Active Directory or IAM Identity
 Center account.
 
 For more information about using IAM Identity Center in Amazon Quick
-Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
+Sight, see \href{https://docs.aws.amazon.com/quick/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
 in the Amazon Quick Sight User Guide. For more information about using
-Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
+Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quick/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
 in the Amazon Quick Sight User Guide.}
 
 \item{ReaderGroup}{The reader group associated with your Active Directory or IAM Identity
 Center account.
 
 For more information about using IAM Identity Center in Amazon Quick
-Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
+Sight, see \href{https://docs.aws.amazon.com/quick/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
 in the Amazon Quick Sight User Guide. For more information about using
-Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
+Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quick/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
 in the Amazon Quick Sight User Guide.}
 
 \item{AdminProGroup}{The admin pro group associated with your Active Directory or IAM
@@ -105,27 +105,27 @@ required if \code{ACTIVE_DIRECTORY} or \code{IAM_IDENTITY_CENTER} is the selecte
 authentication method of the new Quick Sight account.
 
 For more information about using IAM Identity Center in Amazon Quick
-Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
+Sight, see \href{https://docs.aws.amazon.com/quick/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
 in the Amazon Quick Sight User Guide. For more information about using
-Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
+Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quick/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
 in the Amazon Quick Sight User Guide.}
 
 \item{AuthorProGroup}{The author pro group associated with your Active Directory or IAM
 Identity Center account.
 
 For more information about using IAM Identity Center in Amazon Quick
-Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
+Sight, see \href{https://docs.aws.amazon.com/quick/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
 in the Amazon Quick Sight User Guide. For more information about using
-Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
+Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quick/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
 in the Amazon Quick Sight User Guide.}
 
 \item{ReaderProGroup}{The reader pro group associated with your Active Directory or IAM
 Identity Center account.
 
 For more information about using IAM Identity Center in Amazon Quick
-Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
+Sight, see \href{https://docs.aws.amazon.com/quick/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
 in the Amazon Quick Sight User Guide. For more information about using
-Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
+Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quick/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
 in the Amazon Quick Sight User Guide.}
 
 \item{FirstName}{The first name of the author of the Amazon Quick Sight account to use

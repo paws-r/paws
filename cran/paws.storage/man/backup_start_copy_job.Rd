@@ -33,8 +33,6 @@ example, \verb{arn:aws:iam::123456789012:role/S3Access}.}
 otherwise identical calls to \code{\link[=backup_start_copy_job]{start_copy_job}}.
 Retrying a successful request with the same idempotency token results in
 a success message with no action taken.}
-
-\item{Lifecycle}{}
 }
 \description{
 Starts a job to create a one-time copy of the specified resource.

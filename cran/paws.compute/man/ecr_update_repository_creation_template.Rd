@@ -30,8 +30,6 @@ an associated creation template, you can use \code{ROOT} as the prefix.}
 
 \item{description}{A description for the repository creation template.}
 
-\item{encryptionConfiguration}{}
-
 \item{resourceTags}{The metadata to apply to the repository to help you categorize and
 organize. Each tag consists of a key and an optional value, both of
 which you define. Tag keys can have a maximum character length of 128

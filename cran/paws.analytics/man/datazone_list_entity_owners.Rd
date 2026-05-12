@@ -6,8 +6,8 @@
 \usage{
 datazone_list_entity_owners(
   domainIdentifier,
-  entityIdentifier,
   entityType,
+  entityIdentifier,
   maxResults = NULL,
   nextToken = NULL
 )
@@ -15,9 +15,9 @@ datazone_list_entity_owners(
 \arguments{
 \item{domainIdentifier}{[required] The ID of the domain where you want to list entity owners.}
 
-\item{entityIdentifier}{[required] The ID of the entity that you want to list.}
-
 \item{entityType}{[required] The type of the entity that you want to list.}
+
+\item{entityIdentifier}{[required] The ID of the entity that you want to list.}
 
 \item{maxResults}{The maximum number of entities to return in a single call to
 \code{\link[=datazone_list_entity_owners]{list_entity_owners}}. When the number of

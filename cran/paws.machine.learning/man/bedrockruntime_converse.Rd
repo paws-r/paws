@@ -16,7 +16,8 @@ bedrockruntime_converse(
   additionalModelResponseFieldPaths = NULL,
   requestMetadata = NULL,
   performanceConfig = NULL,
-  serviceTier = NULL
+  serviceTier = NULL,
+  outputConfig = NULL
 )
 }
 \arguments{
@@ -100,6 +101,8 @@ model response, it is ignored by \code{\link[=bedrockruntime_converse]{converse}
 
 \item{serviceTier}{Specifies the processing tier configuration used for serving the
 request.}
+
+\item{outputConfig}{Output configuration for a model response.}
 }
 \description{
 Sends messages to the specified Amazon Bedrock model. \code{\link[=bedrockruntime_converse]{converse}} provides a consistent interface that works with all models that support messages. This allows you to write code once and use it with different models. If a model has unique inference parameters, you can also pass those unique parameters to the model.

@@ -41,7 +41,10 @@ from this routing profile. The limit of 10 array members applies to the
 maximum number of RoutingProfileManualAssignmentQueueConfig objects that
 can be passed during a CreateRoutingProfile API request. It is different
 from the quota of 50 queues per routing profile per instance that is
-listed in Amazon Connect service quotas.}
+listed in Amazon Connect service quotas.
+
+Note: Use this config for chat, email, and task contacts. It does not
+support voice contacts.}
 
 \item{MediaConcurrencies}{[required] The channels that agents can handle in the Contact Control Panel (CCP)
 for this routing profile.}

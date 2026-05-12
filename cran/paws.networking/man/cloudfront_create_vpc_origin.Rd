@@ -8,8 +8,6 @@ cloudfront_create_vpc_origin(VpcOriginEndpointConfig, Tags = NULL)
 }
 \arguments{
 \item{VpcOriginEndpointConfig}{[required] The VPC origin endpoint configuration.}
-
-\item{Tags}{}
 }
 \description{
 Create an Amazon CloudFront VPC origin.

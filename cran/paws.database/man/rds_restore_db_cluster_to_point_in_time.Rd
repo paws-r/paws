@@ -39,8 +39,12 @@ rds_restore_db_cluster_to_point_in_time(
   EnablePerformanceInsights = NULL,
   PerformanceInsightsKMSKeyId = NULL,
   PerformanceInsightsRetentionPeriod = NULL,
+  BackupRetentionPeriod = NULL,
+  PreferredBackupWindow = NULL,
   EngineLifecycleSupport = NULL,
-  TagSpecifications = NULL
+  TagSpecifications = NULL,
+  EnableVPCNetworking = NULL,
+  EnableInternetAccessGateway = NULL
 )
 }
 \arguments{
@@ -131,8 +135,6 @@ modified.}
 \item{VpcSecurityGroupIds}{A list of VPC security groups that the new DB cluster belongs to.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
-
-\item{Tags}{}
 
 \item{KmsKeyId}{The Amazon Web Services KMS key identifier to use when restoring an
 encrypted DB cluster from an encrypted DB cluster.
@@ -347,8 +349,6 @@ Valid for: Aurora DB clusters only}
 
 \item{SourceDbClusterResourceId}{The resource ID of the source DB cluster from which to restore.}
 
-\item{ServerlessV2ScalingConfiguration}{}
-
 \item{ScalingConfiguration}{For DB clusters in \code{serverless} DB engine mode, the scaling properties
 of the DB cluster.
 
@@ -414,6 +414,37 @@ Default: \code{7} days
 If you specify a retention period that isn't valid, such as \code{94}, Amazon
 RDS issues an error.}
 
+\item{BackupRetentionPeriod}{The number of days for which automated backups are retained. Specify a
+minimum value of \code{1}.
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
+Default: Uses existing setting
+
+Constraints:
+\itemize{
+\item Must be a value from 1 to 35.
+}}
+
+\item{PreferredBackupWindow}{The daily time range during which automated backups are created if
+automated backups are enabled, using the \code{BackupRetentionPeriod}
+parameter.
+
+The default is a 30-minute window selected at random from an 8-hour
+block of time for each Amazon Web Services Region. To view the time
+blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow}{Backup window}
+in the \emph{Amazon Aurora User Guide}.
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
+Constraints:
+\itemize{
+\item Must be in the format \code{hh24:mi-hh24:mi}.
+\item Must be in Universal Coordinated Time (UTC).
+\item Must not conflict with the preferred maintenance window.
+\item Must be at least 30 minutes.
+}}
+
 \item{EngineLifecycleSupport}{The life cycle type for this DB cluster.
 
 By default, this value is set to \code{open-source-rds-extended-support},
@@ -449,6 +480,26 @@ Valid Values:
 \itemize{
 \item \code{cluster-auto-backup} - The DB cluster's automated backup.
 }}
+
+\item{EnableVPCNetworking}{Specifies whether to enable VPC networking for the restored DB cluster.
+Set this parameter to \code{false} to create a cluster without the VPC
+network interface (ENI).
+
+This parameter must be used together with \code{EnableInternetAccessGateway}.
+When both parameters are specified, IAM database authentication is
+required. You must also specify \code{EnableIAMDatabaseAuthentication}.
+
+Valid for Cluster Type: Aurora PostgreSQL clusters}
+
+\item{EnableInternetAccessGateway}{Specifies that the restored DB cluster should use internet-based
+connectivity through an internet access gateway. This allows clients to
+connect to the cluster over the internet without requiring a VPC.
+
+This parameter must be used together with \code{EnableVPCNetworking} set to
+\code{false}. When both parameters are specified, IAM database authentication
+is required. You must also specify \code{EnableIAMDatabaseAuthentication}.
+
+Valid for Cluster Type: Aurora PostgreSQL clusters}
 }
 \description{
 Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group. Unless the \code{RestoreType} is set to \code{copy-on-write}, the restore may occur in a different Availability Zone (AZ) from the original DB cluster. The AZ where RDS restores the DB cluster depends on the AZs in the specified subnet group.

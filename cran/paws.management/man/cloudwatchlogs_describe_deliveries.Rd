@@ -7,8 +7,6 @@
 cloudwatchlogs_describe_deliveries(nextToken = NULL, limit = NULL)
 }
 \arguments{
-\item{nextToken}{}
-
 \item{limit}{Optionally specify the maximum number of deliveries to return in the
 response.}
 }

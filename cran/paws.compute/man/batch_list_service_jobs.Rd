@@ -15,7 +15,15 @@ batch_list_service_jobs(
 \arguments{
 \item{jobQueue}{The name or ARN of the job queue with which to list service jobs.}
 
-\item{jobStatus}{The job status with which to filter service jobs.}
+\item{jobStatus}{The job status used to filter service jobs in the specified queue. If
+the \code{filters} parameter is specified, the \code{jobStatus} parameter is
+ignored and jobs with any status are returned. The exceptions are the
+\code{SHARE_IDENTIFIER} filter and \code{QUOTA_SHARE_NAME} filter, which can be
+used with \code{jobStatus}. If you don't specify a status, only \code{RUNNING}
+jobs are returned.
+
+The \code{SHARE_IDENTIFIER} filter or \code{QUOTA_SHARE_NAME} filter can be used
+with the \code{jobStatus} field to filter results.}
 
 \item{maxResults}{The maximum number of results returned by
 \code{\link[=batch_list_service_jobs]{list_service_jobs}} in paginated output. When
@@ -39,8 +47,13 @@ Treat this token as an opaque identifier that's only used to retrieve
 the next items in a list and not for other programmatic purposes.}
 
 \item{filters}{The filter to apply to the query. Only one filter can be used at a time.
-When the filter is used, \code{jobStatus} is ignored. The results are sorted
-by the \code{createdAt} field, with the most recent jobs being first.
+When the filter is used, \code{jobStatus} is ignored with the exception that
+\code{SHARE_IDENTIFIER} or \code{QUOTA_SHARE_NAME} and \code{jobStatus} can be used
+together. The results are sorted by the \code{createdAt} field, with the most
+recent jobs being first.
+
+The \code{SHARE_IDENTIFIER} or \code{QUOTA_SHARE_NAME} filter and the \code{jobStatus}
+field can be used together to filter results.
 
 \strong{JOB_NAME}
 
@@ -63,7 +76,15 @@ representation of the number of milliseconds since 00:00:00 UTC
 The value for the filter is the time that's after the job was created.
 This corresponds to the \code{createdAt} value. The value is a string
 representation of the number of milliseconds since 00:00:00 UTC
-(midnight) on January 1, 1970.}
+(midnight) on January 1, 1970.
+
+\strong{SHARE_IDENTIFIER}
+
+The value for the filter is the fairshare scheduling share identifier.
+
+\strong{QUOTA_SHARE_NAME}
+
+The value for the filter is the quota management share name.}
 }
 \description{
 Returns a list of service jobs for a specified job queue.

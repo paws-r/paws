@@ -1421,7 +1421,8 @@ bedrockagent_create_data_source <- function(knowledgeBaseId, clientToken = NULL,
 #'                             description = "string",
 #'                             inputSchema = list(
 #'                               json = list()
-#'                             )
+#'                             ),
+#'                             strict = TRUE|FALSE
 #'                           ),
 #'                           cachePoint = list(
 #'                             type = "default"
@@ -1683,7 +1684,8 @@ bedrockagent_create_data_source <- function(knowledgeBaseId, clientToken = NULL,
 #'                             description = "string",
 #'                             inputSchema = list(
 #'                               json = list()
-#'                             )
+#'                             ),
+#'                             strict = TRUE|FALSE
 #'                           ),
 #'                           cachePoint = list(
 #'                             type = "default"
@@ -2101,7 +2103,8 @@ bedrockagent_create_flow_alias <- function(name, description = NULL, routingConf
 #'                             description = "string",
 #'                             inputSchema = list(
 #'                               json = list()
-#'                             )
+#'                             ),
+#'                             strict = TRUE|FALSE
 #'                           ),
 #'                           cachePoint = list(
 #'                             type = "default"
@@ -2822,7 +2825,8 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, name, descrip
 #'                   description = "string",
 #'                   inputSchema = list(
 #'                     json = list()
-#'                   )
+#'                   ),
+#'                   strict = TRUE|FALSE
 #'                 ),
 #'                 cachePoint = list(
 #'                   type = "default"
@@ -2934,7 +2938,8 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, name, descrip
 #'                   description = "string",
 #'                   inputSchema = list(
 #'                     json = list()
-#'                   )
+#'                   ),
+#'                   strict = TRUE|FALSE
 #'                 ),
 #'                 cachePoint = list(
 #'                   type = "default"
@@ -3092,7 +3097,8 @@ bedrockagent_create_prompt <- function(name, description = NULL, customerEncrypt
 #'                   description = "string",
 #'                   inputSchema = list(
 #'                     json = list()
-#'                   )
+#'                   ),
+#'                   strict = TRUE|FALSE
 #'                 ),
 #'                 cachePoint = list(
 #'                   type = "default"
@@ -4909,7 +4915,8 @@ bedrockagent_get_data_source <- function(knowledgeBaseId, dataSourceId) {
 #'                             description = "string",
 #'                             inputSchema = list(
 #'                               json = list()
-#'                             )
+#'                             ),
+#'                             strict = TRUE|FALSE
 #'                           ),
 #'                           cachePoint = list(
 #'                             type = "default"
@@ -5419,7 +5426,8 @@ bedrockagent_get_flow_alias <- function(flowIdentifier, aliasIdentifier) {
 #'                             description = "string",
 #'                             inputSchema = list(
 #'                               json = list()
-#'                             )
+#'                             ),
+#'                             strict = TRUE|FALSE
 #'                           ),
 #'                           cachePoint = list(
 #'                             type = "default"
@@ -6062,7 +6070,8 @@ bedrockagent_get_knowledge_base_documents <- function(knowledgeBaseId, dataSourc
 #'                   description = "string",
 #'                   inputSchema = list(
 #'                     json = list()
-#'                   )
+#'                   ),
+#'                   strict = TRUE|FALSE
 #'                 ),
 #'                 cachePoint = list(
 #'                   type = "default"
@@ -9148,7 +9157,8 @@ bedrockagent_update_data_source <- function(knowledgeBaseId, dataSourceId, name,
 #'                             description = "string",
 #'                             inputSchema = list(
 #'                               json = list()
-#'                             )
+#'                             ),
+#'                             strict = TRUE|FALSE
 #'                           ),
 #'                           cachePoint = list(
 #'                             type = "default"
@@ -9410,7 +9420,8 @@ bedrockagent_update_data_source <- function(knowledgeBaseId, dataSourceId, name,
 #'                             description = "string",
 #'                             inputSchema = list(
 #'                               json = list()
-#'                             )
+#'                             ),
+#'                             strict = TRUE|FALSE
 #'                           ),
 #'                           cachePoint = list(
 #'                             type = "default"
@@ -10178,7 +10189,8 @@ bedrockagent_update_knowledge_base <- function(knowledgeBaseId, name, descriptio
 #'                   description = "string",
 #'                   inputSchema = list(
 #'                     json = list()
-#'                   )
+#'                   ),
+#'                   strict = TRUE|FALSE
 #'                 ),
 #'                 cachePoint = list(
 #'                   type = "default"
@@ -10290,7 +10302,8 @@ bedrockagent_update_knowledge_base <- function(knowledgeBaseId, name, descriptio
 #'                   description = "string",
 #'                   inputSchema = list(
 #'                     json = list()
-#'                   )
+#'                   ),
+#'                   strict = TRUE|FALSE
 #'                 ),
 #'                 cachePoint = list(
 #'                   type = "default"
@@ -10646,7 +10659,8 @@ bedrockagent_update_prompt <- function(name, description = NULL, customerEncrypt
 #'                             description = "string",
 #'                             inputSchema = list(
 #'                               json = list()
-#'                             )
+#'                             ),
+#'                             strict = TRUE|FALSE
 #'                           ),
 #'                           cachePoint = list(
 #'                             type = "default"

@@ -11,7 +11,19 @@ NULL
 
 .opensearchserviceserverless$batch_get_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(collectionDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE)), collectionEndpoint = structure(logical(0), tags = list(type = "string")), dashboardEndpoint = structure(logical(0), tags = list(type = "string")), fipsEndpoints = structure(list(collectionEndpoint = structure(logical(0), tags = list(type = "string")), dashboardEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), failureCode = structure(logical(0), tags = list(type = "string")), failureMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), collectionErrorDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(collectionDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE)), collectionEndpoint = structure(logical(0), tags = list(type = "string")), dashboardEndpoint = structure(logical(0), tags = list(type = "string")), fipsEndpoints = structure(list(collectionEndpoint = structure(logical(0), tags = list(type = "string")), dashboardEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), failureCode = structure(logical(0), tags = list(type = "string")), failureMessage = structure(logical(0), tags = list(type = "string")), collectionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), collectionErrorDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$batch_get_collection_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ids = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$batch_get_collection_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(collectionGroupDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure")), numberOfCollections = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), collectionGroupErrorDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -65,13 +77,25 @@ NULL
 
 .opensearchserviceserverless$create_collection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), standbyReplicas = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), standbyReplicas = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), collectionGroupName = structure(logical(0), tags = list(type = "string")), encryptionConfig = structure(list(aWSOwnedKey = structure(logical(0), tags = list(type = "boolean", box = TRUE)), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .opensearchserviceserverless$create_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createCollectionDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(createCollectionDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE)), collectionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$create_collection_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$create_collection_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(createCollectionGroupDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -156,6 +180,18 @@ NULL
 .opensearchserviceserverless$delete_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(deleteCollectionDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$delete_collection_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$delete_collection_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -303,15 +339,27 @@ NULL
   return(populate(args, shape))
 }
 
+.opensearchserviceserverless$list_collection_groups_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$list_collection_groups_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(collectionGroupSummaries = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), numberOfCollections = structure(logical(0), tags = list(type = "integer", box = TRUE)), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .opensearchserviceserverless$list_collections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(collectionFilters = structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(collectionFilters = structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), collectionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .opensearchserviceserverless$list_collections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(collectionSummaries = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(collectionSummaries = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), collectionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -425,13 +473,25 @@ NULL
 
 .opensearchserviceserverless$update_collection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .opensearchserviceserverless$update_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(updateCollectionDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(updateCollectionDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), arn = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$update_collection_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$update_collection_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(updateCollectionGroupDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

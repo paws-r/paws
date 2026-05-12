@@ -49,8 +49,6 @@ in the \emph{Amazon EventBridge User Guide}.}
 
 \item{Description}{The event bus description.}
 
-\item{DeadLetterConfig}{}
-
 \item{LogConfig}{The logging configuration settings for the event bus.
 
 For more information, see Configuring logs for event buses in the

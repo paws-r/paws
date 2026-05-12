@@ -5,33 +5,33 @@
 \title{Creates a data product}
 \usage{
 datazone_create_data_product(
-  clientToken = NULL,
-  description = NULL,
   domainIdentifier,
-  formsInput = NULL,
-  glossaryTerms = NULL,
-  items = NULL,
   name,
-  owningProjectIdentifier
+  owningProjectIdentifier,
+  description = NULL,
+  glossaryTerms = NULL,
+  formsInput = NULL,
+  items = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
-\item{description}{The description of the data product.}
-
 \item{domainIdentifier}{[required] The ID of the domain where the data product is created.}
-
-\item{formsInput}{The metadata forms of the data product.}
-
-\item{glossaryTerms}{The glossary terms of the data product.}
-
-\item{items}{The data assets of the data product.}
 
 \item{name}{[required] The name of the data product.}
 
 \item{owningProjectIdentifier}{[required] The ID of the owning project of the data product.}
+
+\item{description}{The description of the data product.}
+
+\item{glossaryTerms}{The glossary terms of the data product.}
+
+\item{formsInput}{The metadata forms of the data product.}
+
+\item{items}{The data assets of the data product.}
+
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Creates a data product.

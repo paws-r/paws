@@ -6,11 +6,18 @@
 specify in the ConsumerARN parameter and the shard you specify in the
 ShardId parameter}
 \usage{
-kinesis_subscribe_to_shard(ConsumerARN, ShardId, StartingPosition)
+kinesis_subscribe_to_shard(
+  ConsumerARN,
+  StreamId = NULL,
+  ShardId,
+  StartingPosition
+)
 }
 \arguments{
 \item{ConsumerARN}{[required] For this parameter, use the value you obtained when you called
 \code{\link[=kinesis_register_stream_consumer]{register_stream_consumer}}.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 
 \item{ShardId}{[required] The ID of the shard you want to subscribe to. To see a list of all the
 shards for a given stream, use \code{\link[=kinesis_list_shards]{list_shards}}.}

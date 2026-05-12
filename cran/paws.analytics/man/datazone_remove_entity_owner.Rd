@@ -5,24 +5,24 @@
 \title{Removes an owner from an entity}
 \usage{
 datazone_remove_entity_owner(
-  clientToken = NULL,
   domainIdentifier,
-  entityIdentifier,
   entityType,
-  owner
+  entityIdentifier,
+  owner,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
 \item{domainIdentifier}{[required] The ID of the domain where you want to remove an owner from an entity.}
-
-\item{entityIdentifier}{[required] The ID of the entity from which you want to remove an owner.}
 
 \item{entityType}{[required] The type of the entity from which you want to remove an owner.}
 
+\item{entityIdentifier}{[required] The ID of the entity from which you want to remove an owner.}
+
 \item{owner}{[required] The owner that you want to remove from an entity.}
+
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Removes an owner from an entity.

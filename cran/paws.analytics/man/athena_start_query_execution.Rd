@@ -53,7 +53,17 @@ parameters occur.}
 
 \item{ResultReuseConfiguration}{Specifies the query result reuse behavior for the query.}
 
-\item{EngineConfiguration}{}
+\item{EngineConfiguration}{The engine configuration for the workgroup, which includes the
+minimum/maximum number of Data Processing Units (DPU) that queries
+should use when running in provisioned capacity. If not specified,
+Athena uses default values (Default value for min is 4 and for max is
+Minimum of 124 and allocated DPUs).
+
+To specify minimum and maximum DPU values for Capacity Reservations
+queries, the workgroup containing \code{EngineConfiguration} should have the
+following values: The name of the \code{Classifications} should be
+\code{athena-query-engine-properties}, with the only allowed properties as
+\code{max-dpu-count} and \code{min-dpu-count}.}
 }
 \description{
 Runs the SQL query statements contained in the \code{Query}. Requires you to have access to the workgroup in which the query ran. Running queries against an external catalog requires \code{\link[=athena_get_data_catalog]{get_data_catalog}} permission to the catalog. For code samples using the Amazon Web Services SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples} in the \emph{Amazon Athena User Guide}.

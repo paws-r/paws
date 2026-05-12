@@ -12,6 +12,7 @@ lexmodelsv2_create_bot_locale(
   nluIntentConfidenceThreshold,
   voiceSettings = NULL,
   unifiedSpeechSettings = NULL,
+  audioFillerSettings = NULL,
   speechRecognitionSettings = NULL,
   generativeAISettings = NULL,
   speechDetectionSensitivity = NULL
@@ -54,9 +55,12 @@ with the user.}
 
 \item{unifiedSpeechSettings}{Unified speech settings to configure for the new bot locale.}
 
-\item{speechRecognitionSettings}{Speech-to-text settings to configure for the new bot locale.}
+\item{audioFillerSettings}{Audio filler settings to configure for the new bot locale. When enabled,
+Amazon Lex plays a brief background audio filler during speech-to-speech
+interactions to mask processing delays. Requires \code{unifiedSpeechSettings}
+(speech-to-speech) to be configured on the bot locale.}
 
-\item{generativeAISettings}{}
+\item{speechRecognitionSettings}{Speech-to-text settings to configure for the new bot locale.}
 
 \item{speechDetectionSensitivity}{The sensitivity level for voice activity detection (VAD) in the bot
 locale. This setting helps optimize speech recognition accuracy by

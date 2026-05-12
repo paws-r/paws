@@ -47,7 +47,7 @@ element. The remaining results of the initial request can be seen by
 sending another \code{\link[=ecr_list_image_referrers]{list_image_referrers}}
 request with the returned \code{nextToken} value. This value can be between 1
 and 50. If this parameter is not used, then
-\code{\link[=ecr_list_image_referrers]{list_image_referrers}} returns up to 50
+\code{\link[=ecr_list_image_referrers]{list_image_referrers}} returns up to 20
 results and a \code{nextToken} value, if applicable.}
 }
 \description{

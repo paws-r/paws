@@ -33,7 +33,8 @@ redshift_modify_cluster(
   ManageMasterPassword = NULL,
   MasterPasswordSecretKmsKeyId = NULL,
   IpAddressType = NULL,
-  MultiAZ = NULL
+  MultiAZ = NULL,
+  ExtraComputeForAutomaticOptimization = NULL
 )
 }
 \arguments{
@@ -271,6 +272,11 @@ if \code{ManageMasterPassword} is true.}
 \item{MultiAZ}{If true and the cluster is currently only deployed in a single
 Availability Zone, the cluster will be modified to be deployed in two
 Availability Zones.}
+
+\item{ExtraComputeForAutomaticOptimization}{If \code{true}, allocates additional compute resources for running automatic
+optimization operations.
+
+Default: false}
 }
 \description{
 Modifies the settings for a cluster.

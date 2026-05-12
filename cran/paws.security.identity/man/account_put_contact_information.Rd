@@ -5,9 +5,12 @@
 \title{Updates the primary contact information of an Amazon Web Services
 account}
 \usage{
-account_put_contact_information(AccountId = NULL, ContactInformation)
+account_put_contact_information(ContactInformation, AccountId = NULL)
 }
 \arguments{
+\item{ContactInformation}{[required] Contains the details of the primary contact information associated with
+an Amazon Web Services account.}
+
 \item{AccountId}{Specifies the 12-digit account ID number of the Amazon Web Services
 account that you want to access or modify with this operation. If you
 don't specify this parameter, it defaults to the Amazon Web Services
@@ -27,9 +30,6 @@ To call this operation on an account that is not a member of an
 organization, don't specify this parameter. Instead, call the operation
 using an identity belonging to the account whose contacts you wish to
 retrieve or modify.}
-
-\item{ContactInformation}{[required] Contains the details of the primary contact information associated with
-an Amazon Web Services account.}
 }
 \description{
 Updates the primary contact information of an Amazon Web Services account.

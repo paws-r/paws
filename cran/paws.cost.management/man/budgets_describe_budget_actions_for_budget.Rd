@@ -15,10 +15,6 @@ budgets_describe_budget_actions_for_budget(
 \item{AccountId}{[required]}
 
 \item{BudgetName}{[required]}
-
-\item{MaxResults}{}
-
-\item{NextToken}{}
 }
 \description{
 Describes all of the budget actions for a budget.

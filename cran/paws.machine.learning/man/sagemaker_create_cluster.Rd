@@ -59,8 +59,13 @@ learn more about tagging Amazon Web Services resources in general, see
 \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources User Guide}.}
 
 \item{Orchestrator}{The type of orchestrator to use for the SageMaker HyperPod cluster.
-Currently, the only supported value is \code{"eks"}, which is to use an
-Amazon Elastic Kubernetes Service cluster as the orchestrator.}
+Currently, supported values are \code{"Eks"} and \code{"Slurm"}, which is to use
+an Amazon Elastic Kubernetes Service or Slurm cluster as the
+orchestrator.
+
+If you specify the \code{Orchestrator} field, you must provide exactly one
+orchestrator configuration: either \code{Eks} or \code{Slurm}. Specifying both or
+providing an empty configuration returns a validation error.}
 
 \item{NodeRecovery}{The node recovery mode for the SageMaker HyperPod cluster. When set to
 \code{Automatic}, SageMaker HyperPod will automatically reboot or replace

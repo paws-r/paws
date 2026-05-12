@@ -389,11 +389,13 @@ glue_batch_get_jobs <- function(JobNames) {
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
 #' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param PartitionsToGet &#91;required&#93; A list of partition values identifying the partitions to retrieve.
+#' @param AuditContext 
+#' @param QuerySessionContext 
 #'
 #' @keywords internal
 #'
 #' @rdname glue_batch_get_partition
-glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionsToGet) {
+glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionsToGet, AuditContext = NULL, QuerySessionContext = NULL) {
   op <- new_operation(
     name = "BatchGetPartition",
     http_method = "POST",
@@ -402,7 +404,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$batch_get_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionsToGet = PartitionsToGet)
+  input <- .glue$batch_get_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionsToGet = PartitionsToGet, AuditContext = AuditContext, QuerySessionContext = QuerySessionContext)
   output <- .glue$batch_get_partition_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -1534,7 +1536,7 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #' developer guide.
 #' 
 #' Jobs that are created without specifying a Glue version default to Glue
-#' 0.9.
+#' 5.1.
 #' @param NumberOfWorkers The number of workers of a defined `workerType` that are allocated when
 #' a job runs.
 #' @param WorkerType The type of predefined worker that is allocated when a job runs. Accepts
@@ -2583,6 +2585,38 @@ glue_delete_connection <- function(CatalogId = NULL, ConnectionName) {
 }
 .glue$operations$delete_connection <- glue_delete_connection
 
+#' Deletes a custom connection type in Glue
+#'
+#' @description
+#' Deletes a custom connection type in Glue.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_connection_type/](https://www.paws-r-sdk.com/docs/glue_delete_connection_type/) for full documentation.
+#'
+#' @param ConnectionType &#91;required&#93; The name of the connection type to delete. Must reference an existing
+#' registered connection type.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_connection_type
+glue_delete_connection_type <- function(ConnectionType) {
+  op <- new_operation(
+    name = "DeleteConnectionType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_connection_type_input(ConnectionType = ConnectionType)
+  output <- .glue$delete_connection_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_connection_type <- glue_delete_connection_type
+
 #' Removes a specified crawler from the Glue Data Catalog, unless the
 #' crawler state is RUNNING
 #'
@@ -3441,7 +3475,7 @@ glue_delete_workflow <- function(Name) {
 #' options for a given connection type in Glue
 #'
 #' @description
-#' The [`describe_connection_type`][glue_describe_connection_type] API provides full details of the supported options for a given connection type in Glue.
+#' The [`describe_connection_type`][glue_describe_connection_type] API provides full details of the supported options for a given connection type in Glue. The response includes authentication configuration details that show supported authentication types and properties, and RestConfiguration for custom REST-based connection types registered via [`register_connection_type`][glue_register_connection_type].
 #'
 #' See [https://www.paws-r-sdk.com/docs/glue_describe_connection_type/](https://www.paws-r-sdk.com/docs/glue_describe_connection_type/) for full documentation.
 #'
@@ -5109,6 +5143,40 @@ glue_get_mapping <- function(Source, Sinks = NULL, Location = NULL) {
 }
 .glue$operations$get_mapping <- glue_get_mapping
 
+#' Get the associated metadata/information for a task run, given a task run
+#' ID
+#'
+#' @description
+#' Get the associated metadata/information for a task run, given a task run ID.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_materialized_view_refresh_task_run/](https://www.paws-r-sdk.com/docs/glue_get_materialized_view_refresh_task_run/) for full documentation.
+#'
+#' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the table resides. If none is supplied,
+#' the account ID is used by default.
+#' @param MaterializedViewRefreshTaskRunId &#91;required&#93; The identifier for the particular materialized view refresh task run.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_materialized_view_refresh_task_run
+glue_get_materialized_view_refresh_task_run <- function(CatalogId, MaterializedViewRefreshTaskRunId) {
+  op <- new_operation(
+    name = "GetMaterializedViewRefreshTaskRun",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_materialized_view_refresh_task_run_input(CatalogId = CatalogId, MaterializedViewRefreshTaskRunId = MaterializedViewRefreshTaskRunId)
+  output <- .glue$get_materialized_view_refresh_task_run_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_materialized_view_refresh_task_run <- glue_get_materialized_view_refresh_task_run
+
 #' Retrieves information about a specified partition
 #'
 #' @description
@@ -5121,11 +5189,12 @@ glue_get_mapping <- function(Source, Sinks = NULL, Location = NULL) {
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partition resides.
 #' @param TableName &#91;required&#93; The name of the partition's table.
 #' @param PartitionValues &#91;required&#93; The values that define the partition.
+#' @param AuditContext 
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_partition
-glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionValues) {
+glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionValues, AuditContext = NULL) {
   op <- new_operation(
     name = "GetPartition",
     http_method = "POST",
@@ -5134,7 +5203,7 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$get_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues)
+  input <- .glue$get_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, AuditContext = AuditContext)
   output <- .glue$get_partition_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -5289,11 +5358,12 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' @param QueryAsOfTime The time as of when to read the partition contents. If not set, the most
 #' recent transaction commit time will be used. Cannot be specified along
 #' with `TransactionId`.
+#' @param AuditContext 
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_partitions
-glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expression = NULL, NextToken = NULL, Segment = NULL, MaxResults = NULL, ExcludeColumnSchema = NULL, TransactionId = NULL, QueryAsOfTime = NULL) {
+glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expression = NULL, NextToken = NULL, Segment = NULL, MaxResults = NULL, ExcludeColumnSchema = NULL, TransactionId = NULL, QueryAsOfTime = NULL, AuditContext = NULL) {
   op <- new_operation(
     name = "GetPartitions",
     http_method = "POST",
@@ -5302,7 +5372,7 @@ glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expre
     paginator = list(result_key = "Partitions", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
-  input <- .glue$get_partitions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults, ExcludeColumnSchema = ExcludeColumnSchema, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime)
+  input <- .glue$get_partitions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults, ExcludeColumnSchema = ExcludeColumnSchema, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, AuditContext = AuditContext)
   output <- .glue$get_partitions_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -5843,11 +5913,12 @@ glue_get_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type) {
 #' lowercase.
 #' @param VersionId The ID value of the table version to be retrieved. A `VersionID` is a
 #' string representation of an integer. Each version is incremented by 1.
+#' @param AuditContext 
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_table_version
-glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, VersionId = NULL) {
+glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, VersionId = NULL, AuditContext = NULL) {
   op <- new_operation(
     name = "GetTableVersion",
     http_method = "POST",
@@ -5856,7 +5927,7 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$get_table_version_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, VersionId = VersionId)
+  input <- .glue$get_table_version_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, VersionId = VersionId, AuditContext = AuditContext)
   output <- .glue$get_table_version_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -5882,11 +5953,12 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #' lowercase.
 #' @param NextToken A continuation token, if this is not the first call.
 #' @param MaxResults The maximum number of table versions to return in one response.
+#' @param AuditContext 
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_table_versions
-glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, NextToken = NULL, MaxResults = NULL) {
+glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, NextToken = NULL, MaxResults = NULL, AuditContext = NULL) {
   op <- new_operation(
     name = "GetTableVersions",
     http_method = "POST",
@@ -5895,7 +5967,7 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
     paginator = list(result_key = "TableVersions", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
-  input <- .glue$get_table_versions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .glue$get_table_versions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, NextToken = NextToken, MaxResults = MaxResults, AuditContext = AuditContext)
   output <- .glue$get_table_versions_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -6655,7 +6727,7 @@ glue_list_column_statistics_task_runs <- function(MaxResults = NULL, NextToken =
 #' available connection types in Glue
 #'
 #' @description
-#' The [`list_connection_types`][glue_list_connection_types] API provides a discovery mechanism to learn available connection types in Glue. The response contains a list of connection types with high-level details of what is supported for each connection type. The connection types listed are the set of supported options for the `ConnectionType` value in the [`create_connection`][glue_create_connection] API.
+#' The [`list_connection_types`][glue_list_connection_types] API provides a discovery mechanism to learn available connection types in Glue. The response contains a list of connection types with high-level details of what is supported for each connection type, including both built-in connection types and custom connection types registered via [`register_connection_type`][glue_register_connection_type]. The connection types listed are the set of supported options for the `ConnectionType` value in the [`create_connection`][glue_create_connection] API.
 #'
 #' See [https://www.paws-r-sdk.com/docs/glue_list_connection_types/](https://www.paws-r-sdk.com/docs/glue_list_connection_types/) for full documentation.
 #'
@@ -7169,6 +7241,42 @@ glue_list_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter 
   return(response)
 }
 .glue$operations$list_ml_transforms <- glue_list_ml_transforms
+
+#' List all task runs for a particular account
+#'
+#' @description
+#' List all task runs for a particular account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_list_materialized_view_refresh_task_runs/](https://www.paws-r-sdk.com/docs/glue_list_materialized_view_refresh_task_runs/) for full documentation.
+#'
+#' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the table resides. If none is supplied,
+#' the account ID is used by default.
+#' @param DatabaseName The database where the table resides.
+#' @param TableName The name of the table for which statistics is generated.
+#' @param MaxResults The maximum size of the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_materialized_view_refresh_task_runs
+glue_list_materialized_view_refresh_task_runs <- function(CatalogId, DatabaseName = NULL, TableName = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListMaterializedViewRefreshTaskRuns",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MaterializedViewRefreshTaskRuns"),
+    stream_api = FALSE
+  )
+  input <- .glue$list_materialized_view_refresh_task_runs_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_materialized_view_refresh_task_runs_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_materialized_view_refresh_task_runs <- glue_list_materialized_view_refresh_task_runs
 
 #' Returns a list of registries that you have created, with minimal
 #' registry information
@@ -7750,6 +7858,53 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
   return(response)
 }
 .glue$operations$query_schema_version_metadata <- glue_query_schema_version_metadata
+
+#' Registers a custom connection type in Glue based on the configuration
+#' provided
+#'
+#' @description
+#' Registers a custom connection type in Glue based on the configuration provided. This operation enables customers to configure custom connectors for any data source with REST-based APIs, eliminating the need for building custom Lambda connectors.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_register_connection_type/](https://www.paws-r-sdk.com/docs/glue_register_connection_type/) for full documentation.
+#'
+#' @param ConnectionType &#91;required&#93; The name of the connection type. Must be between 1 and 255 characters
+#' and must be prefixed with "REST-" to indicate it is a REST-based
+#' connector.
+#' @param IntegrationType &#91;required&#93; The integration type for the connection. Currently only "REST" protocol
+#' is supported.
+#' @param Description A description of the connection type. Can be up to 2048 characters and
+#' provides details about the purpose and functionality of the connection
+#' type.
+#' @param ConnectionProperties &#91;required&#93; Defines the base URL and additional request parameters needed during
+#' connection creation for this connection type.
+#' @param ConnectorAuthenticationConfiguration &#91;required&#93; Defines the supported authentication types and required properties for
+#' this connection type, including Basic, OAuth2, and Custom authentication
+#' methods.
+#' @param RestConfiguration &#91;required&#93; Defines the HTTP request and response configuration, validation
+#' endpoint, and entity configurations for REST API interactions.
+#' @param Tags The tags you assign to the connection type.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_register_connection_type
+glue_register_connection_type <- function(ConnectionType, IntegrationType, Description = NULL, ConnectionProperties, ConnectorAuthenticationConfiguration, RestConfiguration, Tags = NULL) {
+  op <- new_operation(
+    name = "RegisterConnectionType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$register_connection_type_input(ConnectionType = ConnectionType, IntegrationType = IntegrationType, Description = Description, ConnectionProperties = ConnectionProperties, ConnectorAuthenticationConfiguration = ConnectorAuthenticationConfiguration, RestConfiguration = RestConfiguration, Tags = Tags)
+  output <- .glue$register_connection_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$register_connection_type <- glue_register_connection_type
 
 #' Adds a new version to the existing schema
 #'
@@ -8554,6 +8709,43 @@ glue_start_ml_labeling_set_generation_task_run <- function(TransformId, OutputS3
 }
 .glue$operations$start_ml_labeling_set_generation_task_run <- glue_start_ml_labeling_set_generation_task_run
 
+#' Starts a materialized view refresh task run, for a specified table and
+#' columns
+#'
+#' @description
+#' Starts a materialized view refresh task run, for a specified table and columns.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_start_materialized_view_refresh_task_run/](https://www.paws-r-sdk.com/docs/glue_start_materialized_view_refresh_task_run/) for full documentation.
+#'
+#' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the table reside. If none is supplied,
+#' the account ID is used by default.
+#' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
+#' @param TableName &#91;required&#93; The name of the table to generate run the materialized view refresh
+#' task.
+#' @param FullRefresh Specifies whether this is a full refresh of the task run.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_start_materialized_view_refresh_task_run
+glue_start_materialized_view_refresh_task_run <- function(CatalogId, DatabaseName, TableName, FullRefresh = NULL) {
+  op <- new_operation(
+    name = "StartMaterializedViewRefreshTaskRun",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$start_materialized_view_refresh_task_run_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, FullRefresh = FullRefresh)
+  output <- .glue$start_materialized_view_refresh_task_run_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$start_materialized_view_refresh_task_run <- glue_start_materialized_view_refresh_task_run
+
 #' Starts an existing trigger
 #'
 #' @description
@@ -8749,6 +8941,41 @@ glue_stop_crawler_schedule <- function(CrawlerName) {
   return(response)
 }
 .glue$operations$stop_crawler_schedule <- glue_stop_crawler_schedule
+
+#' Stops a materialized view refresh task run, for a specified table and
+#' columns
+#'
+#' @description
+#' Stops a materialized view refresh task run, for a specified table and columns.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_stop_materialized_view_refresh_task_run/](https://www.paws-r-sdk.com/docs/glue_stop_materialized_view_refresh_task_run/) for full documentation.
+#'
+#' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the table reside. If none is supplied,
+#' the account ID is used by default.
+#' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
+#' @param TableName &#91;required&#93; The name of the table to generate statistics.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_stop_materialized_view_refresh_task_run
+glue_stop_materialized_view_refresh_task_run <- function(CatalogId, DatabaseName, TableName) {
+  op <- new_operation(
+    name = "StopMaterializedViewRefreshTaskRun",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$stop_materialized_view_refresh_task_run_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName)
+  output <- .glue$stop_materialized_view_refresh_task_run_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$stop_materialized_view_refresh_task_run <- glue_stop_materialized_view_refresh_task_run
 
 #' Stops the session
 #'

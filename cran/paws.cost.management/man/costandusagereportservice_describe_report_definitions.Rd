@@ -10,11 +10,6 @@ costandusagereportservice_describe_report_definitions(
   NextToken = NULL
 )
 }
-\arguments{
-\item{MaxResults}{}
-
-\item{NextToken}{}
-}
 \description{
 Lists the Amazon Web Services Cost and Usage Report available to this account.
 

@@ -27,8 +27,6 @@ updated after you create the distribution tenant.}
 \item{Domains}{[required] The domains associated with the distribution tenant. You must specify at
 least one domain in the request.}
 
-\item{Tags}{}
-
 \item{Customizations}{Customizations for the distribution tenant. For each distribution
 tenant, you can specify the geographic restrictions, and the Amazon
 Resource Names (ARNs) for the ACM certificate and WAF web ACL. These are

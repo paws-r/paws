@@ -13,8 +13,6 @@ fsx_update_file_cache(
 \arguments{
 \item{FileCacheId}{[required] The ID of the cache that you are updating.}
 
-\item{ClientRequestToken}{}
-
 \item{LustreConfiguration}{The configuration updates for an Amazon File Cache resource.}
 }
 \description{

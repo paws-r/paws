@@ -7,17 +7,22 @@ an instance}
 \usage{
 ec2_modify_instance_cpu_options(
   InstanceId,
-  CoreCount,
-  ThreadsPerCore,
+  CoreCount = NULL,
+  ThreadsPerCore = NULL,
+  NestedVirtualization = NULL,
   DryRun = NULL
 )
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance to update.}
 
-\item{CoreCount}{[required] The number of CPU cores to activate for the specified instance.}
+\item{CoreCount}{The number of CPU cores to activate for the specified instance.}
 
-\item{ThreadsPerCore}{[required] The number of threads to run for each CPU core.}
+\item{ThreadsPerCore}{The number of threads to run for each CPU core.}
+
+\item{NestedVirtualization}{Indicates whether to enable or disable nested virtualization for the
+instance. When nested virtualization is enabled, Virtual Secure Mode
+(VSM) is automatically disabled for the instance.}
 
 \item{DryRun}{Checks whether you have the required permissions for the operation,
 without actually making the request, and provides an error response. If

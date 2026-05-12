@@ -115,8 +115,7 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' with string keys and values. The total size of the `sessionAttributes`
 #' and `requestAttributes` headers is limited to 12 KB.
 #' 
-#' For more information, see [Setting Session
-#' Attributes](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
+#' For more information, see Setting Session Attributes.
 #' @param requestAttributes You pass this value as the `x-amz-lex-request-attributes` HTTP header.
 #' 
 #' Request-specific information passed between Amazon Lex and a client
@@ -127,8 +126,7 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' The namespace `x-amz-lex:` is reserved for special attributes. Don't
 #' create any request attributes with the prefix `x-amz-lex:`.
 #' 
-#' For more information, see [Setting Request
-#' Attributes](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
+#' For more information, see Setting Request Attributes.
 #' @param contentType &#91;required&#93; You pass this value as the `Content-Type` HTTP header.
 #' 
 #' Indicates the audio format or text. The header value must start with one
@@ -252,16 +250,14 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #' @param sessionAttributes Application-specific information passed between Amazon Lex and a client
 #' application.
 #' 
-#' For more information, see [Setting Session
-#' Attributes](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
+#' For more information, see Setting Session Attributes.
 #' @param requestAttributes Request-specific information passed between Amazon Lex and a client
 #' application.
 #' 
 #' The namespace `x-amz-lex:` is reserved for special attributes. Don't
 #' create any request attributes with the prefix `x-amz-lex:`.
 #' 
-#' For more information, see [Setting Request
-#' Attributes](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
+#' For more information, see Setting Request Attributes.
 #' @param inputText &#91;required&#93; The text that the user entered (Amazon Lex interprets this text).
 #' @param activeContexts A list of contexts active for the request. A context can be activated
 #' when a previous intent is fulfilled, or by including the context in the

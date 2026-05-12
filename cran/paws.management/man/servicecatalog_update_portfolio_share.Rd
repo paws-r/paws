@@ -26,8 +26,6 @@ updated.}
 \item{AccountId}{The Amazon Web Services account Id of the recipient account. This field
 is required when updating an external account to account type share.}
 
-\item{OrganizationNode}{}
-
 \item{ShareTagOptions}{Enables or disables \code{TagOptions} sharing for the portfolio share. If
 this field is not provided, the current state of TagOptions sharing on
 the portfolio share will not be modified.}

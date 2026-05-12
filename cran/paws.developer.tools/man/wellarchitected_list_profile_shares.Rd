@@ -18,11 +18,7 @@ wellarchitected_list_profile_shares(
 \item{SharedWithPrefix}{The Amazon Web Services account ID, organization ID, or organizational
 unit (OU) ID with which the profile is shared.}
 
-\item{NextToken}{}
-
 \item{MaxResults}{The maximum number of results to return for this request.}
-
-\item{Status}{}
 }
 \description{
 List profile shares.

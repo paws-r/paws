@@ -5,24 +5,21 @@
 \title{Creates an asset in Amazon DataZone catalog}
 \usage{
 datazone_create_asset(
-  clientToken = NULL,
-  description = NULL,
+  name,
   domainIdentifier,
   externalIdentifier = NULL,
-  formsInput = NULL,
+  typeIdentifier,
+  typeRevision = NULL,
+  description = NULL,
   glossaryTerms = NULL,
-  name,
+  formsInput = NULL,
   owningProjectIdentifier,
   predictionConfiguration = NULL,
-  typeIdentifier,
-  typeRevision = NULL
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
-\item{description}{Asset description.}
+\item{name}{[required] Asset name.}
 
 \item{domainIdentifier}{[required] Amazon DataZone domain where the asset is created.}
 
@@ -31,20 +28,23 @@ idempotency of the request.}
 If the value for the \code{externalIdentifier} parameter is specified, it
 must be a unique value.}
 
-\item{formsInput}{Metadata forms attached to the asset.}
+\item{typeIdentifier}{[required] The unique identifier of this asset's type.}
+
+\item{typeRevision}{The revision of this asset's type.}
+
+\item{description}{Asset description.}
 
 \item{glossaryTerms}{Glossary terms attached to the asset.}
 
-\item{name}{[required] Asset name.}
+\item{formsInput}{Metadata forms attached to the asset.}
 
 \item{owningProjectIdentifier}{[required] The unique identifier of the project that owns this asset.}
 
 \item{predictionConfiguration}{The configuration of the automatically generated business-friendly
 metadata for the asset.}
 
-\item{typeIdentifier}{[required] The unique identifier of this asset's type.}
-
-\item{typeRevision}{The revision of this asset's type.}
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Creates an asset in Amazon DataZone catalog.

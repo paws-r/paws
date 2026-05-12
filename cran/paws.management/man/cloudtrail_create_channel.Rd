@@ -21,8 +21,6 @@ in the CloudTrail User Guide.}
 
 \item{Destinations}{[required] One or more event data stores to which events arriving through a channel
 will be logged.}
-
-\item{Tags}{}
 }
 \description{
 Creates a channel for CloudTrail to ingest events from a partner or external source. After you create a channel, a CloudTrail Lake event data store can log events from the partner or source that you specify.

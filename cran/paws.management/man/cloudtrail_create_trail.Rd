@@ -98,8 +98,6 @@ Services account. The default is false, and cannot be true unless the
 call is made on behalf of an Amazon Web Services account that is the
 management account or delegated administrator account for an
 organization in Organizations.}
-
-\item{TagsList}{}
 }
 \description{
 Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket.

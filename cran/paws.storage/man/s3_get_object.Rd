@@ -217,8 +217,6 @@ in the \emph{Amazon S3 User Guide}.
 
 This functionality is not supported for directory buckets.}
 
-\item{RequestPayer}{}
-
 \item{PartNumber}{Part number of the object being read. This is a positive integer between
 1 and 10,000. Effectively performs a 'ranged' GET request for the part
 specified. Useful for downloading just a part of an object.}

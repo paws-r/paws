@@ -79,8 +79,6 @@ the Amazon Web Services Region that they are created in, and you can't
 use KMS keys from one Amazon Web Services Region in another Amazon Web
 Services Region.}
 
-\item{Tags}{}
-
 \item{CopyTags}{Specifies whether to copy all tags from the source DB snapshot to the
 target DB snapshot. By default, tags aren't copied.}
 

@@ -4,9 +4,11 @@
 \alias{datazone_list_domains}
 \title{Lists Amazon DataZone domains}
 \usage{
-datazone_list_domains(maxResults = NULL, nextToken = NULL, status = NULL)
+datazone_list_domains(status = NULL, maxResults = NULL, nextToken = NULL)
 }
 \arguments{
+\item{status}{The status of the data source.}
+
 \item{maxResults}{The maximum number of domains to return in a single call to
 \code{\link[=datazone_list_domains]{list_domains}}. When the number of domains to
 be listed is greater than the value of \code{MaxResults}, the response
@@ -19,8 +21,6 @@ contains a \code{NextToken} value that you can use in a subsequent call to
 includes a pagination token named \code{NextToken}. You can specify this
 \code{NextToken} value in a subsequent call to
 \code{\link[=datazone_list_domains]{list_domains}} to list the next set of domains.}
-
-\item{status}{The status of the data source.}
 }
 \description{
 Lists Amazon DataZone domains.

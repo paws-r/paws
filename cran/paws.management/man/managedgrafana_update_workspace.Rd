@@ -6,20 +6,20 @@
 \usage{
 managedgrafana_update_workspace(
   accountAccessType = NULL,
-  networkAccessControl = NULL,
   organizationRoleName = NULL,
   permissionType = NULL,
-  removeNetworkAccessConfiguration = NULL,
-  removeVpcConfiguration = NULL,
   stackSetName = NULL,
-  vpcConfiguration = NULL,
   workspaceDataSources = NULL,
   workspaceDescription = NULL,
   workspaceId,
   workspaceName = NULL,
   workspaceNotificationDestinations = NULL,
   workspaceOrganizationalUnits = NULL,
-  workspaceRoleArn = NULL
+  workspaceRoleArn = NULL,
+  vpcConfiguration = NULL,
+  removeVpcConfiguration = NULL,
+  networkAccessControl = NULL,
+  removeNetworkAccessConfiguration = NULL
 )
 }
 \arguments{
@@ -29,16 +29,6 @@ Amazon Web Services resources in other accounts in the same
 organization. If you specify \code{ORGANIZATION}, you must specify which
 organizational units the workspace can access in the
 \code{workspaceOrganizationalUnits} parameter.}
-
-\item{networkAccessControl}{The configuration settings for network access to your workspace.
-
-When this is configured, only listed IP addresses and VPC endpoints will
-be able to access your workspace. Standard Grafana authentication and
-authorization will still be required.
-
-If this is not configured, or is removed, then all IP addresses and VPC
-endpoints will be allowed. Standard Grafana authentication and
-authorization will still be required.}
 
 \item{organizationRoleName}{The name of an IAM role that already exists to use to access resources
 through Organizations. This can only be used with a workspace that has
@@ -67,25 +57,8 @@ You can convert a \code{CUSTOMER_MANAGED} workspace to \code{SERVICE_MANAGED}
 using the Amazon Managed Grafana console. For more information, see
 \href{https://docs.aws.amazon.com/grafana/latest/userguide/AMG-datasource-and-notification.html}{Managing permissions for data sources and notification channels}.}
 
-\item{removeNetworkAccessConfiguration}{Whether to remove the network access configuration from the workspace.
-
-Setting this to \code{true} and providing a \code{networkAccessControl} to set
-will return an error.
-
-If you remove this configuration by setting this to \code{true}, then all IP
-addresses and VPC endpoints will be allowed. Standard Grafana
-authentication and authorization will still be required.}
-
-\item{removeVpcConfiguration}{Whether to remove the VPC configuration from the workspace.
-
-Setting this to \code{true} and providing a \code{vpcConfiguration} to set will
-return an error.}
-
 \item{stackSetName}{The name of the CloudFormation stack set to use to generate IAM roles to
 be used for this workspace.}
-
-\item{vpcConfiguration}{The configuration settings for an Amazon VPC that contains data sources
-for your Grafana workspace to connect to.}
 
 \item{workspaceDataSources}{This parameter is for internal use only, and should not be used.}
 
@@ -109,6 +82,33 @@ organization.}
 resources that the workspace accesses, such as data sources and
 notification channels. If this workspace has \code{permissionType}
 \code{CUSTOMER_MANAGED}, then this role is required.}
+
+\item{vpcConfiguration}{The configuration settings for an Amazon VPC that contains data sources
+for your Grafana workspace to connect to.}
+
+\item{removeVpcConfiguration}{Whether to remove the VPC configuration from the workspace.
+
+Setting this to \code{true} and providing a \code{vpcConfiguration} to set will
+return an error.}
+
+\item{networkAccessControl}{The configuration settings for network access to your workspace.
+
+When this is configured, only listed IP addresses and VPC endpoints will
+be able to access your workspace. Standard Grafana authentication and
+authorization will still be required.
+
+If this is not configured, or is removed, then all IP addresses and VPC
+endpoints will be allowed. Standard Grafana authentication and
+authorization will still be required.}
+
+\item{removeNetworkAccessConfiguration}{Whether to remove the network access configuration from the workspace.
+
+Setting this to \code{true} and providing a \code{networkAccessControl} to set
+will return an error.
+
+If you remove this configuration by setting this to \code{true}, then all IP
+addresses and VPC endpoints will be allowed. Standard Grafana
+authentication and authorization will still be required.}
 }
 \description{
 Modifies an existing Amazon Managed Grafana workspace. If you use this operation and omit any optional parameters, the existing values of those parameters are not changed.

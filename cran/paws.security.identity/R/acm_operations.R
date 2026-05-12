@@ -44,7 +44,7 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 #' Deletes a certificate and its associated private key
 #'
 #' @description
-#' Deletes a certificate and its associated private key. If this action succeeds, the certificate no longer appears in the list that can be displayed by calling the [`list_certificates`][acm_list_certificates] action or be retrieved by calling the [`get_certificate`][acm_get_certificate] action. The certificate will not be available for use by Amazon Web Services services integrated with ACM.
+#' Deletes a certificate and its associated private key. If this action succeeds, the certificate is not available for use by Amazon Web Services services integrated with ACM. Deleting a certificate is eventually consistent. The may be a short delay before the certificate no longer appears in the list that can be displayed by calling the [`list_certificates`][acm_list_certificates] action or be retrieved by calling the [`get_certificate`][acm_get_certificate] action.
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_delete_certificate/](https://www.paws-r-sdk.com/docs/acm_delete_certificate/) for full documentation.
 #'
@@ -116,10 +116,10 @@ acm_describe_certificate <- function(CertificateArn) {
 .acm$operations$describe_certificate <- acm_describe_certificate
 
 #' Exports a private certificate issued by a private certificate authority
-#' (CA) or public certificate for use anywhere
+#' (CA) or a public certificate for use anywhere
 #'
 #' @description
-#' Exports a private certificate issued by a private certificate authority (CA) or public certificate for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it.
+#' Exports a private certificate issued by a private certificate authority (CA) or a public certificate for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it.
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_export_certificate/](https://www.paws-r-sdk.com/docs/acm_export_certificate/) for full documentation.
 #'
@@ -431,7 +431,7 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' Renews an eligible ACM certificate
 #'
 #' @description
-#' Renews an [eligible ACM certificate](https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html). In order to renew your Amazon Web Services Private CA certificates with ACM, you must first [grant the ACM service principal permission to do so](https://docs.aws.amazon.com/privateca/latest/userguide/). For more information, see [Testing Managed Renewal](https://docs.aws.amazon.com/acm/latest/userguide/) in the ACM User Guide.
+#' Renews an [eligible ACM certificate](https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html). In order to renew your Amazon Web Services Private CA certificates with ACM, you must first [grant the ACM service principal permission to do so](https://docs.aws.amazon.com/privateca/latest/userguide/assign-permissions.html#PcaPermissions). For more information, see [Testing Managed Renewal](https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html) in the ACM User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_renew_certificate/](https://www.paws-r-sdk.com/docs/acm_renew_certificate/) for full documentation.
 #'
@@ -561,7 +561,7 @@ acm_renew_certificate <- function(CertificateArn) {
 #' broken. Check the requirements for the Amazon Web Services service where
 #' you plan to deploy your certificate. For more information about
 #' selecting an algorithm, see [Key
-#' algorithms](https://docs.aws.amazon.com/acm/latest/userguide/#algorithms).
+#' algorithms](https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate-characteristics.html#algorithms-term).
 #' 
 #' Algorithms supported for an ACM certificate request include:
 #' 
@@ -625,8 +625,7 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 #' `Domain` value or a superdomain of the `Domain` value. For example, if
 #' you requested a certificate for `site.subdomain.example.com` and specify
 #' a **ValidationDomain** of `subdomain.example.com`, ACM sends email to
-#' the domain registrant, technical contact, and administrative contact in
-#' WHOIS and the following five addresses:
+#' the the following five addresses:
 #' 
 #' -   admin@@subdomain.example.com
 #' 
@@ -694,6 +693,50 @@ acm_revoke_certificate <- function(CertificateArn, RevocationReason) {
   return(response)
 }
 .acm$operations$revoke_certificate <- acm_revoke_certificate
+
+#' Retrieves a list of certificates matching search criteria
+#'
+#' @description
+#' Retrieves a list of certificates matching search criteria. You can filter certificates by X.509 attributes and ACM specific properties like certificate status, type and renewal eligibility. This operation provides more flexible filtering than [`list_certificates`][acm_list_certificates] by supporting complex filter statements.
+#'
+#' See [https://www.paws-r-sdk.com/docs/acm_search_certificates/](https://www.paws-r-sdk.com/docs/acm_search_certificates/) for full documentation.
+#'
+#' @param FilterStatement A filter statement that defines the search criteria. You can combine
+#' multiple filters using AND, OR, and NOT logical operators to create
+#' complex queries.
+#' @param MaxResults The maximum number of results to return in the response. Default is 100.
+#' @param NextToken Use this parameter only when paginating results and only in a subsequent
+#' request after you receive a response with truncated results. Set it to
+#' the value of `NextToken` from the response you just received.
+#' @param SortBy Specifies the field to sort results by. Valid values are CREATED_AT,
+#' NOT_AFTER, STATUS, RENEWAL_STATUS, EXPORTED, IN_USE, NOT_BEFORE,
+#' KEY_ALGORITHM, TYPE, CERTIFICATE_ARN, COMMON_NAME, REVOKED_AT,
+#' RENEWAL_ELIGIBILITY, ISSUED_AT, MANAGED_BY, EXPORT_OPTION,
+#' VALIDATION_METHOD, and IMPORTED_AT.
+#' @param SortOrder Specifies the order of sorted results. Valid values are ASCENDING or
+#' DESCENDING.
+#'
+#' @keywords internal
+#'
+#' @rdname acm_search_certificates
+acm_search_certificates <- function(FilterStatement = NULL, MaxResults = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "SearchCertificates",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results"),
+    stream_api = FALSE
+  )
+  input <- .acm$search_certificates_input(FilterStatement = FilterStatement, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .acm$search_certificates_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$search_certificates <- acm_search_certificates
 
 #' Updates a certificate
 #'

@@ -7,8 +7,6 @@
 fsx_update_snapshot(ClientRequestToken = NULL, Name, SnapshotId)
 }
 \arguments{
-\item{ClientRequestToken}{}
-
 \item{Name}{[required] The name of the snapshot to update.}
 
 \item{SnapshotId}{[required] The ID of the snapshot that you want to update, in the format

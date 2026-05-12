@@ -10,7 +10,8 @@ ec2_describe_launch_templates(
   LaunchTemplateNames = NULL,
   Filters = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  IncludeManagedResources = NULL
 )
 }
 \arguments{
@@ -42,6 +43,11 @@ regardless of the tag value.
 \item{MaxResults}{The maximum number of results to return in a single call. To retrieve
 the remaining results, make another call with the returned \code{NextToken}
 value. This value can be between 1 and 200.}
+
+\item{IncludeManagedResources}{Indicates whether to include managed resources in the output. If this
+parameter is set to \code{true}, the output includes resources that are
+managed by Amazon Web Services services, even if managed resource
+visibility is set to hidden.}
 }
 \description{
 Describes one or more launch templates.

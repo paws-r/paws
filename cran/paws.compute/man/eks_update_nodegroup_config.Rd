@@ -12,6 +12,7 @@ eks_update_nodegroup_config(
   scalingConfig = NULL,
   updateConfig = NULL,
   nodeRepairConfig = NULL,
+  warmPoolConfig = NULL,
   clientRequestToken = NULL
 )
 }
@@ -32,6 +33,10 @@ update.}
 \item{updateConfig}{The node group update configuration.}
 
 \item{nodeRepairConfig}{The node auto repair configuration for the node group.}
+
+\item{warmPoolConfig}{The warm pool configuration to apply to the node group. You can use this
+to add a warm pool to an existing node group or modify the settings of
+an existing warm pool.}
 
 \item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}

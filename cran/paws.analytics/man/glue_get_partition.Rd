@@ -4,7 +4,13 @@
 \alias{glue_get_partition}
 \title{Retrieves information about a specified partition}
 \usage{
-glue_get_partition(CatalogId = NULL, DatabaseName, TableName, PartitionValues)
+glue_get_partition(
+  CatalogId = NULL,
+  DatabaseName,
+  TableName,
+  PartitionValues,
+  AuditContext = NULL
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partition in question resides. If

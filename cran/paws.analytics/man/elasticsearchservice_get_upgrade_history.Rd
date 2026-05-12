@@ -13,10 +13,6 @@ elasticsearchservice_get_upgrade_history(
 }
 \arguments{
 \item{DomainName}{[required]}
-
-\item{MaxResults}{}
-
-\item{NextToken}{}
 }
 \description{
 Retrieves the complete history of the last 10 upgrades that were performed on the domain.

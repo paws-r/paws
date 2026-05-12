@@ -15,6 +15,7 @@ connect_update_evaluation_form(
   Items,
   ScoringStrategy = NULL,
   AutoEvaluationConfiguration = NULL,
+  ReviewConfiguration = NULL,
   AsDraft = NULL,
   ClientToken = NULL,
   TargetConfiguration = NULL,
@@ -42,6 +43,8 @@ section.}
 \item{ScoringStrategy}{A scoring strategy of the evaluation form.}
 
 \item{AutoEvaluationConfiguration}{Whether automated evaluations are enabled.}
+
+\item{ReviewConfiguration}{Configuration for evaluation review settings of the evaluation form.}
 
 \item{AsDraft}{A boolean flag indicating whether to update evaluation form to draft
 state.}

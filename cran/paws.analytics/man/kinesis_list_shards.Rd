@@ -11,7 +11,8 @@ kinesis_list_shards(
   MaxResults = NULL,
   StreamCreationTimestamp = NULL,
   ShardFilter = NULL,
-  StreamARN = NULL
+  StreamARN = NULL,
+  StreamId = NULL
 )
 }
 \arguments{
@@ -97,6 +98,8 @@ then all shards starting from the provided timestamp to TIP are
 returned.}
 
 \item{StreamARN}{The ARN of the stream.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Lists the shards in a stream and provides information about each shard. This operation has a limit of 1000 transactions per second per data stream.

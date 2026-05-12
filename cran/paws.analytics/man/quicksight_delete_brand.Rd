@@ -9,7 +9,7 @@ quicksight_delete_brand(AwsAccountId, BrandId)
 \arguments{
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account that owns the brand.}
 
-\item{BrandId}{[required] The ID of the Quick Suite brand.}
+\item{BrandId}{[required] The ID of the Quick brand.}
 }
 \description{
 This API permanently deletes the specified Quick Sight brand. When you delete a brand:

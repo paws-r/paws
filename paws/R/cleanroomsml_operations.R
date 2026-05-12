@@ -711,7 +711,12 @@ cleanroomsml_create_configured_model_algorithm_association <- function(membershi
 #'         computeConfiguration = list(
 #'           worker = list(
 #'             type = "CR.1X"|"CR.4X",
-#'             number = 123
+#'             number = 123,
+#'             properties = list(
+#'               spark = list(
+#'                 "string"
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         resultFormat = "CSV"|"PARQUET"
@@ -1557,7 +1562,12 @@ cleanroomsml_delete_training_dataset <- function(trainingDatasetArn) {
 #'     sqlComputeConfiguration = list(
 #'       worker = list(
 #'         type = "CR.1X"|"CR.4X",
-#'         number = 123
+#'         number = 123,
+#'         properties = list(
+#'           spark = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -2555,7 +2565,12 @@ cleanroomsml_get_ml_configuration <- function(membershipIdentifier) {
 #'         computeConfiguration = list(
 #'           worker = list(
 #'             type = "CR.1X"|"CR.4X",
-#'             number = 123
+#'             number = 123,
+#'             properties = list(
+#'               spark = list(
+#'                 "string"
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         resultFormat = "CSV"|"PARQUET"
@@ -4476,7 +4491,12 @@ cleanroomsml_start_audience_export_job <- function(name, audienceGenerationJobAr
 #'     sqlComputeConfiguration = list(
 #'       worker = list(
 #'         type = "CR.1X"|"CR.4X",
-#'         number = 123
+#'         number = 123,
+#'         properties = list(
+#'           spark = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),

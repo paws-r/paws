@@ -3,6 +3,18 @@
 #' @include ssoadmin_service.R
 NULL
 
+.ssoadmin$add_region_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceArn = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssoadmin$add_region_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ssoadmin$attach_customer_managed_policy_reference_to_permission_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceArn = structure(logical(0), tags = list(type = "string")), PermissionSetArn = structure(logical(0), tags = list(type = "string")), CustomerManagedPolicyReference = structure(list(Name = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -47,7 +59,7 @@ NULL
 
 .ssoadmin$create_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationArn = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), IdentityStoreArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -281,7 +293,7 @@ NULL
 
 .ssoadmin$describe_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationArn = structure(logical(0), tags = list(type = "string")), ApplicationProviderArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ApplicationAccount = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), PortalOptions = structure(list(SignInOptions = structure(list(Origin = structure(logical(0), tags = list(type = "string")), ApplicationUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Visibility = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationArn = structure(logical(0), tags = list(type = "string")), ApplicationProviderArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ApplicationAccount = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), IdentityStoreArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), PortalOptions = structure(list(SignInOptions = structure(list(Origin = structure(logical(0), tags = list(type = "string")), ApplicationUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Visibility = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), CreatedFrom = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -354,6 +366,18 @@ NULL
 .ssoadmin$describe_permission_set_provisioning_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PermissionSetProvisioningStatus = structure(list(Status = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), PermissionSetArn = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssoadmin$describe_region_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceArn = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssoadmin$describe_region_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RegionName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AddedDate = structure(logical(0), tags = list(type = "timestamp")), IsPrimaryRegion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -617,7 +641,7 @@ NULL
 
 .ssoadmin$list_applications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Applications = structure(list(structure(list(ApplicationArn = structure(logical(0), tags = list(type = "string")), ApplicationProviderArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ApplicationAccount = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), PortalOptions = structure(list(SignInOptions = structure(list(Origin = structure(logical(0), tags = list(type = "string")), ApplicationUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Visibility = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Applications = structure(list(structure(list(ApplicationArn = structure(logical(0), tags = list(type = "string")), ApplicationProviderArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ApplicationAccount = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), IdentityStoreArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), PortalOptions = structure(list(SignInOptions = structure(list(Origin = structure(logical(0), tags = list(type = "string")), ApplicationUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Visibility = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), CreatedFrom = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -690,6 +714,18 @@ NULL
 .ssoadmin$list_permission_sets_provisioned_to_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), PermissionSets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssoadmin$list_regions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssoadmin$list_regions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Regions = structure(list(structure(list(RegionName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AddedDate = structure(logical(0), tags = list(type = "timestamp")), IsPrimaryRegion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -804,6 +840,18 @@ NULL
 .ssoadmin$put_permissions_boundary_to_permission_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssoadmin$remove_region_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceArn = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssoadmin$remove_region_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

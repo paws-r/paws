@@ -30,8 +30,8 @@ Services account.
 Do not include confidential or sensitive information in this field. This
 field may be displayed in plaintext in CloudTrail logs and other output.
 
-To change this value, an CloudHSM key store must be disconnected. An
-external key store can be connected or disconnected.}
+To change this value, the custom key store can be connected or
+disconnected.}
 
 \item{KeyStorePassword}{Enter the current password of the \code{kmsuser} crypto user (CU) in the
 CloudHSM cluster that is associated with the custom key store. This

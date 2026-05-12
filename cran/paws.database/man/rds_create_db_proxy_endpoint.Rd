@@ -33,8 +33,6 @@ endpoint can be used for read/write or only read operations. The default
 is \code{READ_WRITE}. The only role that proxies for RDS for Microsoft SQL
 Server support is \code{READ_WRITE}.}
 
-\item{Tags}{}
-
 \item{EndpointNetworkType}{The network type of the DB proxy endpoint. The network type determines
 the IP version that the proxy endpoint supports.
 

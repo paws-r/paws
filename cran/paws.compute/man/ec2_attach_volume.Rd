@@ -5,7 +5,13 @@
 \title{Attaches an Amazon EBS volume to a running or stopped instance, and
 exposes it to the instance with the specified device name}
 \usage{
-ec2_attach_volume(Device, InstanceId, VolumeId, DryRun = NULL)
+ec2_attach_volume(
+  Device,
+  InstanceId,
+  VolumeId,
+  EbsCardIndex = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{Device}{[required] The device name (for example, \verb{/dev/sdh} or \code{xvdh}).}
@@ -14,6 +20,9 @@ ec2_attach_volume(Device, InstanceId, VolumeId, DryRun = NULL)
 
 \item{VolumeId}{[required] The ID of the EBS volume. The volume and instance must be within the
 same Availability Zone.}
+
+\item{EbsCardIndex}{The index of the EBS card. Some instance types support multiple EBS
+cards. The default EBS card index is 0.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

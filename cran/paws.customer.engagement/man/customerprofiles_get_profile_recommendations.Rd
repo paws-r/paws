@@ -10,7 +10,11 @@ customerprofiles_get_profile_recommendations(
   ProfileId,
   RecommenderName,
   Context = NULL,
-  MaxResults = NULL
+  RecommenderFilters = NULL,
+  RecommenderPromotionalFilters = NULL,
+  CandidateIds = NULL,
+  MaxResults = NULL,
+  MetadataConfig = NULL
 )
 }
 \arguments{
@@ -24,8 +28,24 @@ recommendations.}
 \item{Context}{The contextual metadata used to provide dynamic runtime information to
 tailor recommendations.}
 
+\item{RecommenderFilters}{A list of filters to apply to the returned recommendations. Filters
+define criteria for including or excluding items from the recommendation
+results.}
+
+\item{RecommenderPromotionalFilters}{A list of promotional filters to apply to the recommendations.
+Promotional filters allow you to promote specific items within a
+configurable subset of recommendation results.}
+
+\item{CandidateIds}{A list of item IDs to rank for the user. Use this when you want to
+re-rank a specific set of items rather than getting recommendations from
+the full item catalog. Required for personalized-ranking use cases.}
+
 \item{MaxResults}{The maximum number of recommendations to return. The default value is
 10.}
+
+\item{MetadataConfig}{Configuration for including item metadata in the recommendation
+response. Use this to specify which metadata columns to return alongside
+recommended items.}
 }
 \description{
 Fetches the recommendations for a profile in the input Customer Profiles domain. Fetches all the profile recommendations

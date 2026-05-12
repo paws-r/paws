@@ -8,7 +8,8 @@ kinesis_describe_stream(
   StreamName = NULL,
   Limit = NULL,
   ExclusiveStartShardId = NULL,
-  StreamARN = NULL
+  StreamARN = NULL,
+  StreamId = NULL
 )
 }
 \arguments{
@@ -29,6 +30,8 @@ If you don't specify this parameter, the default behavior for
 starting with the first shard in the stream.}
 
 \item{StreamARN}{The ARN of the stream.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Describes the specified Kinesis data stream.

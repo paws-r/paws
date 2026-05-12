@@ -2,13 +2,14 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_describe_global_settings}
 \alias{backup_describe_global_settings}
-\title{Describes whether the Amazon Web Services account is opted in to
-cross-account backup}
+\title{Describes whether the Amazon Web Services account has enabled different
+cross-account management options, including cross-account backup,
+multi-party approval, and delegated administrator}
 \usage{
 backup_describe_global_settings()
 }
 \description{
-Describes whether the Amazon Web Services account is opted in to cross-account backup. Returns an error if the account is not a member of an Organizations organization. Example: \verb{describe-global-settings --region us-west-2}
+Describes whether the Amazon Web Services account has enabled different cross-account management options, including cross-account backup, multi-party approval, and delegated administrator. Returns an error if the account is not a member of an Organizations organization. Example: \verb{describe-global-settings --region us-west-2}
 
 See \url{https://www.paws-r-sdk.com/docs/backup_describe_global_settings/} for full documentation.
 }

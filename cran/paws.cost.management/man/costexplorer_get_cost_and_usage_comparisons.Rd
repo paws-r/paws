@@ -38,8 +38,6 @@ of exactly one month.}
 \code{BlendedCost}, \code{NetAmortizedCost}, \code{NetUnblendedCost},
 \code{NormalizedUsageAmount}, \code{UnblendedCost}, and \code{UsageQuantity}.}
 
-\item{Filter}{}
-
 \item{GroupBy}{You can group results using the attributes \code{DIMENSION}, \code{TAG}, and
 \code{COST_CATEGORY}.}
 

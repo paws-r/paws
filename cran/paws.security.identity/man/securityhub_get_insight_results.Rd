@@ -2,8 +2,8 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_insight_results}
 \alias{securityhub_get_insight_results}
-\title{Lists the results of the Security Hub insight specified by the insight
-ARN}
+\title{Lists the results of the Security Hub CSPM insight specified by the
+insight ARN}
 \usage{
 securityhub_get_insight_results(InsightArn)
 }
@@ -11,7 +11,7 @@ securityhub_get_insight_results(InsightArn)
 \item{InsightArn}{[required] The ARN of the insight for which to return results.}
 }
 \description{
-Lists the results of the Security Hub insight specified by the insight ARN.
+Lists the results of the Security Hub CSPM insight specified by the insight ARN.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_get_insight_results/} for full documentation.
 }

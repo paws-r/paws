@@ -4,10 +4,12 @@
 \alias{kinesis_get_resource_policy}
 \title{Returns a policy attached to the specified data stream or consumer}
 \usage{
-kinesis_get_resource_policy(ResourceARN)
+kinesis_get_resource_policy(ResourceARN, StreamId = NULL)
 }
 \arguments{
 \item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the data stream or consumer.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Returns a policy attached to the specified data stream or consumer. Request patterns can be one of the following:

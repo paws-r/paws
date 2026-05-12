@@ -6,24 +6,22 @@
 \usage{
 datazone_list_project_memberships(
   domainIdentifier,
-  maxResults = NULL,
-  nextToken = NULL,
   projectIdentifier,
   sortBy = NULL,
-  sortOrder = NULL
+  sortOrder = NULL,
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which you want to list
 project memberships.}
 
-\item{maxResults}{The maximum number of memberships to return in a single call to
-\code{\link[=datazone_list_project_memberships]{list_project_memberships}}. When
-the number of memberships to be listed is greater than the value of
-\code{MaxResults}, the response contains a \code{NextToken} value that you can use
-in a subsequent call to
-\code{\link[=datazone_list_project_memberships]{list_project_memberships}} to list
-the next set of memberships.}
+\item{projectIdentifier}{[required] The identifier of the project whose memberships you want to list.}
+
+\item{sortBy}{The method by which you want to sort the project memberships.}
+
+\item{sortOrder}{The sort order of the project memberships.}
 
 \item{nextToken}{When the number of memberships is greater than the default value for the
 \code{MaxResults} parameter, or if you explicitly specify a value for
@@ -33,11 +31,13 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{\link[=datazone_list_project_memberships]{list_project_memberships}} to list
 the next set of memberships.}
 
-\item{projectIdentifier}{[required] The identifier of the project whose memberships you want to list.}
-
-\item{sortBy}{The method by which you want to sort the project memberships.}
-
-\item{sortOrder}{The sort order of the project memberships.}
+\item{maxResults}{The maximum number of memberships to return in a single call to
+\code{\link[=datazone_list_project_memberships]{list_project_memberships}}. When
+the number of memberships to be listed is greater than the value of
+\code{MaxResults}, the response contains a \code{NextToken} value that you can use
+in a subsequent call to
+\code{\link[=datazone_list_project_memberships]{list_project_memberships}} to list
+the next set of memberships.}
 }
 \description{
 Lists all members of the specified project.

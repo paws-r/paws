@@ -118,8 +118,6 @@ that can run in the source Amazon Web Services Region.}
 
 \item{CopyTags}{Specifies whether to copy all tags from the source DB cluster snapshot
 to the target DB cluster snapshot. By default, tags are not copied.}
-
-\item{Tags}{}
 }
 \description{
 Copies a snapshot of a DB cluster.

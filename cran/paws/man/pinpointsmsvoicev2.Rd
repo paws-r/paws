@@ -136,9 +136,11 @@ that are available in each Region, see \href{https://aws.amazon.com/about-aws/gl
 \link[paws.customer.engagement:pinpointsmsvoicev2_carrier_lookup]{carrier_lookup} \tab Returns information about a destination phone number, including whether the number type and whether it is valid, the carrier, and more\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_create_configuration_set]{create_configuration_set} \tab Creates a new configuration set\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_create_event_destination]{create_event_destination} \tab Creates a new event destination in a configuration set\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_create_notify_configuration]{create_notify_configuration} \tab Creates a new notify configuration for managed messaging\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_create_opt_out_list]{create_opt_out_list} \tab Creates a new opt-out list\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_create_pool]{create_pool} \tab Creates a new pool and associates the specified origination identity to the pool\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_create_protect_configuration]{create_protect_configuration} \tab Create a new protect configuration\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_create_rcs_agent]{create_rcs_agent} \tab Creates a new RCS agent for sending rich messages through the RCS channel\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_create_registration]{create_registration} \tab Creates a new registration based on the RegistrationType field\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_create_registration_association]{create_registration_association} \tab Associate the registration with an origination identity such as a phone number or sender ID\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_create_registration_attachment]{create_registration_attachment} \tab Create a new registration attachment to use for uploading a file or a URL to a file\cr
@@ -151,11 +153,14 @@ that are available in each Region, see \href{https://aws.amazon.com/about-aws/gl
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_event_destination]{delete_event_destination} \tab Deletes an existing event destination\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_keyword]{delete_keyword} \tab Deletes an existing keyword from an origination phone number or pool\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_media_message_spend_limit_override]{delete_media_message_spend_limit_override} \tab Deletes an account-level monthly spending limit override for sending multimedia messages (MMS)\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_delete_notify_configuration]{delete_notify_configuration} \tab Deletes an existing notify configuration\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_delete_notify_message_spend_limit_override]{delete_notify_message_spend_limit_override} \tab Deletes an account-level monthly spending limit override for sending notify messages\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_opted_out_number]{delete_opted_out_number} \tab Deletes an existing opted out destination phone number from the specified opt-out list\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_opt_out_list]{delete_opt_out_list} \tab Deletes an existing opt-out list\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_pool]{delete_pool} \tab Deletes an existing pool\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_protect_configuration]{delete_protect_configuration} \tab Permanently delete the protect configuration\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_protect_configuration_rule_set_number_override]{delete_protect_configuration_rule_set_number_override} \tab Permanently delete the protect configuration rule set number override\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_delete_rcs_agent]{delete_rcs_agent} \tab Deletes an existing RCS agent\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_registration]{delete_registration} \tab Permanently delete an existing registration from your account\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_registration_attachment]{delete_registration_attachment} \tab Permanently delete the specified registration attachment\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_registration_field_value]{delete_registration_field_value} \tab Delete the value in a registration form field\cr
@@ -167,11 +172,15 @@ that are available in each Region, see \href{https://aws.amazon.com/about-aws/gl
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_account_limits]{describe_account_limits} \tab Describes the current End User Messaging SMS SMS Voice V2 resource quotas for your account\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_configuration_sets]{describe_configuration_sets} \tab Describes the specified configuration sets or all in your account\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_keywords]{describe_keywords} \tab Describes the specified keywords or all keywords on your origination phone number or pool\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_describe_notify_configurations]{describe_notify_configurations} \tab Describes the specified notify configurations or all notify configurations in your account\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_describe_notify_templates]{describe_notify_templates} \tab Describes the specified notify templates or all notify templates in your account\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_opted_out_numbers]{describe_opted_out_numbers} \tab Describes the specified opted out destination numbers or all opted out destination numbers in an opt-out list\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_opt_out_lists]{describe_opt_out_lists} \tab Describes the specified opt-out list or all opt-out lists in your account\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_phone_numbers]{describe_phone_numbers} \tab Describes the specified origination phone number, or all the phone numbers in your account\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_pools]{describe_pools} \tab Retrieves the specified pools or all pools associated with your Amazon Web Services account\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_protect_configurations]{describe_protect_configurations} \tab Retrieves the protect configurations that match any of filters\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_describe_rcs_agent_country_launch_status]{describe_rcs_agent_country_launch_status} \tab Retrieves the per-country launch status of an RCS agent, including carrier-level details for each country\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_describe_rcs_agents]{describe_rcs_agents} \tab Retrieves the specified RCS agents or all RCS agents associated with your Amazon Web Services account\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_registration_attachments]{describe_registration_attachments} \tab Retrieves the specified registration attachments or all registration attachments associated with your Amazon Web Services account\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_registration_field_definitions]{describe_registration_field_definitions} \tab Retrieves the specified registration type field definitions\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_registration_field_values]{describe_registration_field_values} \tab Retrieves the specified registration field values\cr
@@ -187,6 +196,7 @@ that are available in each Region, see \href{https://aws.amazon.com/about-aws/gl
 \link[paws.customer.engagement:pinpointsmsvoicev2_discard_registration_version]{discard_registration_version} \tab Discard the current version of the registration\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_get_protect_configuration_country_rule_set]{get_protect_configuration_country_rule_set} \tab Retrieve the CountryRuleSet for the specified NumberCapability from a protect configuration\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document attached to the End User Messaging SMS resource\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_list_notify_countries]{list_notify_countries} \tab Lists countries that support notify messaging\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_list_pool_origination_identities]{list_pool_origination_identities} \tab Lists all associated origination identities in your pool\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_list_protect_configuration_rule_set_number_overrides]{list_protect_configuration_rule_set_number_overrides} \tab Retrieve all of the protect configuration rule set number overrides that match the filters\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_list_registration_associations]{list_registration_associations} \tab Retrieve all of the origination identities that are associated with a registration\cr
@@ -203,6 +213,8 @@ that are available in each Region, see \href{https://aws.amazon.com/about-aws/gl
 \link[paws.customer.engagement:pinpointsmsvoicev2_request_sender_id]{request_sender_id} \tab Request a new sender ID that doesn't require registration\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_send_destination_number_verification_code]{send_destination_number_verification_code} \tab Before you can send test messages to a verified destination phone number you need to opt-in the verified destination phone number\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_send_media_message]{send_media_message} \tab Creates a new multimedia message (MMS) and sends it to a recipient's phone number\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_send_notify_text_message]{send_notify_text_message} \tab Sends a templated text message through a notify configuration to a recipient's phone number\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_send_notify_voice_message]{send_notify_voice_message} \tab Sends a templated voice message through a notify configuration to a recipient's phone number\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_send_text_message]{send_text_message} \tab Creates a new text message and sends it to a recipient's phone number\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_send_voice_message]{send_voice_message} \tab Allows you to send a request that sends a voice message\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_set_account_default_protect_configuration]{set_account_default_protect_configuration} \tab Set a protect configuration as your account default\cr
@@ -210,16 +222,19 @@ that are available in each Region, see \href{https://aws.amazon.com/about-aws/gl
 \link[paws.customer.engagement:pinpointsmsvoicev2_set_default_message_type]{set_default_message_type} \tab Sets the default message type on a configuration set\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_set_default_sender_id]{set_default_sender_id} \tab Sets default sender ID on a configuration set\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_set_media_message_spend_limit_override]{set_media_message_spend_limit_override} \tab Sets an account level monthly spend limit override for sending MMS messages\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_set_notify_message_spend_limit_override]{set_notify_message_spend_limit_override} \tab Sets an account level monthly spend limit override for sending notify messages\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_set_text_message_spend_limit_override]{set_text_message_spend_limit_override} \tab Sets an account level monthly spend limit override for sending text messages\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_set_voice_message_spend_limit_override]{set_voice_message_spend_limit_override} \tab Sets an account level monthly spend limit override for sending voice messages\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_submit_registration_version]{submit_registration_version} \tab Submit the specified registration for review and approval\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_tag_resource]{tag_resource} \tab Adds or overwrites only the specified tags for the specified resource\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_untag_resource]{untag_resource} \tab Removes the association of the specified tags from a resource\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_update_event_destination]{update_event_destination} \tab Updates an existing event destination in a configuration set\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_update_notify_configuration]{update_notify_configuration} \tab Updates an existing notify configuration\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_update_phone_number]{update_phone_number} \tab Updates the configuration of an existing origination phone number\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_update_pool]{update_pool} \tab Updates the configuration of an existing pool\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_update_protect_configuration]{update_protect_configuration} \tab Update the setting for an existing protect configuration\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_update_protect_configuration_country_rule_set]{update_protect_configuration_country_rule_set} \tab Update a country rule set to ALLOW, BLOCK, MONITOR, or FILTER messages to be sent to the specified destination counties\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_update_rcs_agent]{update_rcs_agent} \tab Updates the configuration of an existing RCS agent\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_update_sender_id]{update_sender_id} \tab Updates the configuration of an existing sender ID\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_verify_destination_number]{verify_destination_number} \tab Use the verification code that was received by the verified destination phone number to opt-in the verified destination phone number to receive more messages
 }

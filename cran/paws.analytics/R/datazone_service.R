@@ -139,6 +139,7 @@ NULL
 #'  \link[=datazone_delete_asset_filter]{delete_asset_filter} \tab Deletes an asset filter\cr
 #'  \link[=datazone_delete_asset_type]{delete_asset_type} \tab Deletes an asset type in Amazon DataZone\cr
 #'  \link[=datazone_delete_connection]{delete_connection} \tab Deletes and connection\cr
+#'  \link[=datazone_delete_data_export_configuration]{delete_data_export_configuration} \tab Deletes data export configuration for a domain\cr
 #'  \link[=datazone_delete_data_product]{delete_data_product} \tab Deletes a data product in Amazon DataZone\cr
 #'  \link[=datazone_delete_data_source]{delete_data_source} \tab Deletes a data source in Amazon DataZone\cr
 #'  \link[=datazone_delete_domain]{delete_domain} \tab Deletes a Amazon DataZone domain\cr
@@ -189,6 +190,7 @@ NULL
 #'  \link[=datazone_get_lineage_node]{get_lineage_node} \tab Gets the data lineage node\cr
 #'  \link[=datazone_get_listing]{get_listing} \tab Gets a listing (a record of an asset at a given time)\cr
 #'  \link[=datazone_get_metadata_generation_run]{get_metadata_generation_run} \tab Gets a metadata generation run in Amazon DataZone\cr
+#'  \link[=datazone_get_notebook_run]{get_notebook_run} \tab Gets the details of a notebook run in an Amazon DataZone domain\cr
 #'  \link[=datazone_get_project]{get_project} \tab Gets a project in Amazon DataZone\cr
 #'  \link[=datazone_get_project_profile]{get_project_profile} \tab The details of the project profile\cr
 #'  \link[=datazone_get_rule]{get_rule} \tab Gets the details of a rule in Amazon DataZone\cr
@@ -219,6 +221,7 @@ NULL
 #'  \link[=datazone_list_lineage_events]{list_lineage_events} \tab Lists lineage events\cr
 #'  \link[=datazone_list_lineage_node_history]{list_lineage_node_history} \tab Lists the history of the specified data lineage node\cr
 #'  \link[=datazone_list_metadata_generation_runs]{list_metadata_generation_runs} \tab Lists all metadata generation runs\cr
+#'  \link[=datazone_list_notebook_runs]{list_notebook_runs} \tab Lists notebook runs in an Amazon DataZone domain\cr
 #'  \link[=datazone_list_notifications]{list_notifications} \tab Lists all Amazon DataZone notifications\cr
 #'  \link[=datazone_list_policy_grants]{list_policy_grants} \tab Lists policy grants\cr
 #'  \link[=datazone_list_project_memberships]{list_project_memberships} \tab Lists all members of the specified project\cr
@@ -235,6 +238,7 @@ NULL
 #'  \link[=datazone_post_time_series_data_points]{post_time_series_data_points} \tab Posts time series data points to Amazon DataZone for the specified asset\cr
 #'  \link[=datazone_put_data_export_configuration]{put_data_export_configuration} \tab Creates data export configuration details\cr
 #'  \link[=datazone_put_environment_blueprint_configuration]{put_environment_blueprint_configuration} \tab Writes the configuration for the specified environment blueprint in Amazon DataZone\cr
+#'  \link[=datazone_query_graph]{query_graph} \tab Queries entities in the graph store\cr
 #'  \link[=datazone_reject_predictions]{reject_predictions} \tab Rejects automatically generated business-friendly metadata for your Amazon DataZone assets\cr
 #'  \link[=datazone_reject_subscription_request]{reject_subscription_request} \tab Rejects the specified subscription request\cr
 #'  \link[=datazone_remove_entity_owner]{remove_entity_owner} \tab Removes an owner from an entity\cr
@@ -247,6 +251,8 @@ NULL
 #'  \link[=datazone_search_user_profiles]{search_user_profiles} \tab Searches user profiles in Amazon DataZone\cr
 #'  \link[=datazone_start_data_source_run]{start_data_source_run} \tab Start the run of the specified data source in Amazon DataZone\cr
 #'  \link[=datazone_start_metadata_generation_run]{start_metadata_generation_run} \tab Starts the metadata generation run\cr
+#'  \link[=datazone_start_notebook_run]{start_notebook_run} \tab Starts a notebook run in an Amazon DataZone domain\cr
+#'  \link[=datazone_stop_notebook_run]{stop_notebook_run} \tab Stops a running notebook run in an Amazon DataZone domain\cr
 #'  \link[=datazone_tag_resource]{tag_resource} \tab Tags a resource in Amazon DataZone\cr
 #'  \link[=datazone_untag_resource]{untag_resource} \tab Untags a resource in Amazon DataZone\cr
 #'  \link[=datazone_update_account_pool]{update_account_pool} \tab Updates the account pool\cr
@@ -305,7 +311,7 @@ datazone <- function(config = list(), credentials = list(), endpoint = NULL, reg
   service_id = "DataZone",
   api_version = "2018-05-10",
   signing_name = "datazone",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

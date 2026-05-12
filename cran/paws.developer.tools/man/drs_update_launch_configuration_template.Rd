@@ -5,37 +5,37 @@
 \title{Updates an existing Launch Configuration Template by ID}
 \usage{
 drs_update_launch_configuration_template(
-  copyPrivateIp = NULL,
-  copyTags = NULL,
-  exportBucketArn = NULL,
   launchConfigurationTemplateID,
   launchDisposition = NULL,
-  launchIntoSourceInstance = NULL,
+  targetInstanceTypeRightSizingMethod = NULL,
+  copyPrivateIp = NULL,
+  copyTags = NULL,
   licensing = NULL,
+  exportBucketArn = NULL,
   postLaunchEnabled = NULL,
-  targetInstanceTypeRightSizingMethod = NULL
+  launchIntoSourceInstance = NULL
 )
 }
 \arguments{
-\item{copyPrivateIp}{Copy private IP.}
-
-\item{copyTags}{Copy tags.}
-
-\item{exportBucketArn}{S3 bucket ARN to export Source Network templates.}
-
 \item{launchConfigurationTemplateID}{[required] Launch Configuration Template ID.}
 
 \item{launchDisposition}{Launch disposition.}
 
-\item{launchIntoSourceInstance}{DRS will set the 'launch into instance ID' of any source server when
-performing a drill, recovery or failback to the previous region or
-availability zone, using the instance ID of the source instance.}
+\item{targetInstanceTypeRightSizingMethod}{Target instance type right-sizing method.}
+
+\item{copyPrivateIp}{Copy private IP.}
+
+\item{copyTags}{Copy tags.}
 
 \item{licensing}{Licensing.}
 
+\item{exportBucketArn}{S3 bucket ARN to export Source Network templates.}
+
 \item{postLaunchEnabled}{Whether we want to activate post-launch actions.}
 
-\item{targetInstanceTypeRightSizingMethod}{Target instance type right-sizing method.}
+\item{launchIntoSourceInstance}{DRS will set the 'launch into instance ID' of any source server when
+performing a drill, recovery or failback to the previous region or
+availability zone, using the instance ID of the source instance.}
 }
 \description{
 Updates an existing Launch Configuration Template by ID.

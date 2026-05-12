@@ -17,10 +17,6 @@ wellarchitected_list_review_template_answers(
 
 \item{LensAlias}{[required]}
 
-\item{PillarId}{}
-
-\item{NextToken}{}
-
 \item{MaxResults}{The maximum number of results to return for this request.}
 }
 \description{

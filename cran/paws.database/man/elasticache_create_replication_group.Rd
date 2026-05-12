@@ -330,10 +330,10 @@ connections.}
 
 The Amazon SNS topic owner must be the same as the cluster owner.}
 
-\item{AutoMinorVersionUpgrade}{If you are running Valkey 7.2 and above or Redis OSS engine version 6.0
+\item{AutoMinorVersionUpgrade}{ If you are running Valkey 7.2 and above or Redis OSS engine version 6.0
 and above, set this parameter to yes to opt-in to the next auto minor
 version upgrade campaign. This parameter is disabled for previous
-versions.}
+versions. }
 
 \item{SnapshotRetentionLimit}{The number of days for which ElastiCache retains automatic snapshots
 before deleting them. For example, if you set \code{SnapshotRetentionLimit}
@@ -397,7 +397,7 @@ replication group you must set \code{AtRestEncryptionEnabled} to \code{true} whe
 you create the replication group.
 
 \strong{Required:} Only available when creating a replication group in an
-Amazon VPC using Valkey 7.2 and later, Redis OSS version \verb{3.2.6}, or
+Amazon VPC using Valkey \code{7.2} and later, Redis OSS version \verb{3.2.6}, or
 Redis OSS \verb{4.x} and later.
 
 Default: \code{true} when using Valkey, \code{false} when using Redis OSS}

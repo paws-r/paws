@@ -37,8 +37,6 @@ in the \emph{Amazon S3 User Guide}.}
 \item{LegalHold}{Container element for the legal hold configuration you want to apply to
 the specified object.}
 
-\item{RequestPayer}{}
-
 \item{VersionId}{The version ID of the object that you want to place a legal hold on.}
 
 \item{ContentMD5}{The MD5 hash for the request body.

@@ -11,10 +11,10 @@ marketplacemetering_resolve_customer(RegistrationToken)
 \item{RegistrationToken}{[required] When a buyer visits your website during the registration process, the
 buyer submits a registration token through the browser. The registration
 token is resolved to obtain a \code{CustomerIdentifier} along with the
-\code{CustomerAWSAccountId} and \code{ProductCode}.}
+\code{CustomerAWSAccountId}, \code{ProductCode}, and \code{LicenseArn}.}
 }
 \description{
-\code{\link[=marketplacemetering_resolve_customer]{resolve_customer}} is called by a SaaS application during the registration process. When a buyer visits your website during the registration process, the buyer submits a registration token through their browser. The registration token is resolved through this API to obtain a \code{CustomerIdentifier} along with the \code{CustomerAWSAccountId} and \code{ProductCode}.
+\code{\link[=marketplacemetering_resolve_customer]{resolve_customer}} is called by a SaaS application during the registration process. When a buyer visits your website during the registration process, the buyer submits a registration token through their browser. The registration token is resolved through this API to obtain a \code{CustomerIdentifier} along with the \code{CustomerAWSAccountId}, \code{ProductCode}, and \code{LicenseArn}.
 
 See \url{https://www.paws-r-sdk.com/docs/marketplacemetering_resolve_customer/} for full documentation.
 }

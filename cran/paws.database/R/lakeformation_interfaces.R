@@ -239,7 +239,7 @@ NULL
 
 .lakeformation$describe_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceInfo = structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), LastModified = structure(logical(0), tags = list(type = "timestamp")), WithFederation = structure(logical(0), tags = list(type = "boolean", box = TRUE)), HybridAccessEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), WithPrivilegedAccess = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ResourceInfo = structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), LastModified = structure(logical(0), tags = list(type = "timestamp")), WithFederation = structure(logical(0), tags = list(type = "boolean", box = TRUE)), HybridAccessEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), WithPrivilegedAccess = structure(logical(0), tags = list(type = "boolean", box = TRUE)), VerificationStatus = structure(logical(0), tags = list(type = "string")), ExpectedResourceOwnerAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -387,6 +387,18 @@ NULL
   return(populate(args, shape))
 }
 
+.lakeformation$get_temporary_data_location_credentials_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DurationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), AuditContext = structure(list(AdditionalAuditContext = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CredentialsScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lakeformation$get_temporary_data_location_credentials_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), AccessibleDataLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CredentialsScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .lakeformation$get_temporary_glue_partition_credentials_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(TableArn = structure(logical(0), tags = list(type = "string")), Partition = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Permissions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DurationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), AuditContext = structure(list(AdditionalAuditContext = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SupportedPermissionTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -515,7 +527,7 @@ NULL
 
 .lakeformation$list_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceInfoList = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), LastModified = structure(logical(0), tags = list(type = "timestamp")), WithFederation = structure(logical(0), tags = list(type = "boolean", box = TRUE)), HybridAccessEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), WithPrivilegedAccess = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ResourceInfoList = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), LastModified = structure(logical(0), tags = list(type = "timestamp")), WithFederation = structure(logical(0), tags = list(type = "boolean", box = TRUE)), HybridAccessEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), WithPrivilegedAccess = structure(logical(0), tags = list(type = "boolean", box = TRUE)), VerificationStatus = structure(logical(0), tags = list(type = "string")), ExpectedResourceOwnerAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -557,7 +569,7 @@ NULL
 
 .lakeformation$register_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), UseServiceLinkedRole = structure(logical(0), tags = list(type = "boolean", box = TRUE)), RoleArn = structure(logical(0), tags = list(type = "string")), WithFederation = structure(logical(0), tags = list(type = "boolean", box = TRUE)), HybridAccessEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), WithPrivilegedAccess = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), UseServiceLinkedRole = structure(logical(0), tags = list(type = "boolean", box = TRUE)), RoleArn = structure(logical(0), tags = list(type = "string")), WithFederation = structure(logical(0), tags = list(type = "boolean", box = TRUE)), HybridAccessEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), WithPrivilegedAccess = structure(logical(0), tags = list(type = "boolean")), ExpectedResourceOwnerAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -689,7 +701,7 @@ NULL
 
 .lakeformation$update_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), WithFederation = structure(logical(0), tags = list(type = "boolean", box = TRUE)), HybridAccessEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), WithFederation = structure(logical(0), tags = list(type = "boolean", box = TRUE)), HybridAccessEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ExpectedResourceOwnerAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -91,7 +91,7 @@ ivsrealtime_create_encoder_configuration <- function(name = NULL, video = NULL, 
 #'
 #' @usage
 #' ivsrealtime_create_ingest_configuration(name, stageArn, userId,
-#'   attributes, ingestProtocol, insecureIngest, tags)
+#'   attributes, ingestProtocol, insecureIngest, redundantIngest, tags)
 #'
 #' @param name Optional name that can be specified for the IngestConfiguration being
 #' created.
@@ -110,6 +110,8 @@ ivsrealtime_create_encoder_configuration <- function(name = NULL, video = NULL, 
 #' set to `RTMP`, `insecureIngest` must be set to `true`.
 #' @param insecureIngest Whether the stage allows insecure RTMP ingest. This must be set to
 #' `true`, if `ingestProtocol` is set to `RTMP`. Default: `false`.
+#' @param redundantIngest Indicates whether redundant ingest is enabled for the ingest
+#' configuration. Default: `false`.
 #' @param tags Tags attached to the resource. Array of maps, each of the form
 #' `string:string (key:value)`. See [Best practices and
 #' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
@@ -131,6 +133,13 @@ ivsrealtime_create_encoder_configuration <- function(name = NULL, video = NULL, 
 #'     participantId = "string",
 #'     state = "ACTIVE"|"INACTIVE",
 #'     userId = "string",
+#'     redundantIngest = TRUE|FALSE,
+#'     redundantIngestCredentials = list(
+#'       list(
+#'         participantId = "string",
+#'         streamKey = "string"
+#'       )
+#'     ),
 #'     attributes = list(
 #'       "string"
 #'     ),
@@ -152,6 +161,7 @@ ivsrealtime_create_encoder_configuration <- function(name = NULL, video = NULL, 
 #'   ),
 #'   ingestProtocol = "RTMP"|"RTMPS",
 #'   insecureIngest = TRUE|FALSE,
+#'   redundantIngest = TRUE|FALSE,
 #'   tags = list(
 #'     "string"
 #'   )
@@ -163,7 +173,7 @@ ivsrealtime_create_encoder_configuration <- function(name = NULL, video = NULL, 
 #' @rdname ivsrealtime_create_ingest_configuration
 #'
 #' @aliases ivsrealtime_create_ingest_configuration
-ivsrealtime_create_ingest_configuration <- function(name = NULL, stageArn = NULL, userId = NULL, attributes = NULL, ingestProtocol, insecureIngest = NULL, tags = NULL) {
+ivsrealtime_create_ingest_configuration <- function(name = NULL, stageArn = NULL, userId = NULL, attributes = NULL, ingestProtocol, insecureIngest = NULL, redundantIngest = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateIngestConfiguration",
     http_method = "POST",
@@ -172,7 +182,7 @@ ivsrealtime_create_ingest_configuration <- function(name = NULL, stageArn = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ivsrealtime$create_ingest_configuration_input(name = name, stageArn = stageArn, userId = userId, attributes = attributes, ingestProtocol = ingestProtocol, insecureIngest = insecureIngest, tags = tags)
+  input <- .ivsrealtime$create_ingest_configuration_input(name = name, stageArn = stageArn, userId = userId, attributes = attributes, ingestProtocol = ingestProtocol, insecureIngest = insecureIngest, redundantIngest = redundantIngest, tags = tags)
   output <- .ivsrealtime$create_ingest_configuration_output()
   config <- get_config()
   svc <- .ivsrealtime$service(config, op)
@@ -1001,6 +1011,13 @@ ivsrealtime_get_encoder_configuration <- function(arn) {
 #'     participantId = "string",
 #'     state = "ACTIVE"|"INACTIVE",
 #'     userId = "string",
+#'     redundantIngest = TRUE|FALSE,
+#'     redundantIngestCredentials = list(
+#'       list(
+#'         participantId = "string",
+#'         streamKey = "string"
+#'       )
+#'     ),
 #'     attributes = list(
 #'       "string"
 #'     ),
@@ -1084,7 +1101,9 @@ ivsrealtime_get_ingest_configuration <- function(arn) {
 #'     replicationType = "SOURCE"|"REPLICA"|"NONE",
 #'     replicationState = "ACTIVE"|"STOPPED",
 #'     sourceStageArn = "string",
-#'     sourceSessionId = "string"
+#'     sourceSessionId = "string",
+#'     redundantIngest = TRUE|FALSE,
+#'     ingestConfigurationArn = "string"
 #'   )
 #' )
 #' ```
@@ -1627,7 +1646,8 @@ ivsrealtime_list_encoder_configurations <- function(nextToken = NULL, maxResults
 #'       stageArn = "string",
 #'       participantId = "string",
 #'       state = "ACTIVE"|"INACTIVE",
-#'       userId = "string"
+#'       userId = "string",
+#'       redundantIngest = TRUE|FALSE
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1890,7 +1910,9 @@ ivsrealtime_list_participant_replicas <- function(sourceStageArn, participantId,
 #'       replicationType = "SOURCE"|"REPLICA"|"NONE",
 #'       replicationState = "ACTIVE"|"STOPPED",
 #'       sourceStageArn = "string",
-#'       sourceSessionId = "string"
+#'       sourceSessionId = "string",
+#'       redundantIngest = TRUE|FALSE,
+#'       ingestConfigurationArn = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2766,11 +2788,13 @@ ivsrealtime_untag_resource <- function(resourceArn, tagKeys) {
 #' active cannot be updated.
 #'
 #' @usage
-#' ivsrealtime_update_ingest_configuration(arn, stageArn)
+#' ivsrealtime_update_ingest_configuration(arn, stageArn, redundantIngest)
 #'
 #' @param arn &#91;required&#93; ARN of the IngestConfiguration, for which the related stage ARN needs to
 #' be updated.
 #' @param stageArn Stage ARN that needs to be updated.
+#' @param redundantIngest Indicates whether redundant ingest is enabled for the ingest
+#' configuration. Default: `false`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2785,6 +2809,13 @@ ivsrealtime_untag_resource <- function(resourceArn, tagKeys) {
 #'     participantId = "string",
 #'     state = "ACTIVE"|"INACTIVE",
 #'     userId = "string",
+#'     redundantIngest = TRUE|FALSE,
+#'     redundantIngestCredentials = list(
+#'       list(
+#'         participantId = "string",
+#'         streamKey = "string"
+#'       )
+#'     ),
 #'     attributes = list(
 #'       "string"
 #'     ),
@@ -2799,7 +2830,8 @@ ivsrealtime_untag_resource <- function(resourceArn, tagKeys) {
 #' ```
 #' svc$update_ingest_configuration(
 #'   arn = "string",
-#'   stageArn = "string"
+#'   stageArn = "string",
+#'   redundantIngest = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2808,7 +2840,7 @@ ivsrealtime_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname ivsrealtime_update_ingest_configuration
 #'
 #' @aliases ivsrealtime_update_ingest_configuration
-ivsrealtime_update_ingest_configuration <- function(arn, stageArn = NULL) {
+ivsrealtime_update_ingest_configuration <- function(arn, stageArn = NULL, redundantIngest = NULL) {
   op <- new_operation(
     name = "UpdateIngestConfiguration",
     http_method = "POST",
@@ -2817,7 +2849,7 @@ ivsrealtime_update_ingest_configuration <- function(arn, stageArn = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ivsrealtime$update_ingest_configuration_input(arn = arn, stageArn = stageArn)
+  input <- .ivsrealtime$update_ingest_configuration_input(arn = arn, stageArn = stageArn, redundantIngest = redundantIngest)
   output <- .ivsrealtime$update_ingest_configuration_output()
   config <- get_config()
   svc <- .ivsrealtime$service(config, op)

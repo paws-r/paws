@@ -28,8 +28,6 @@ Center with the OpenSearch application.}
 \item{appConfigs}{Configuration settings for the OpenSearch application, including
 administrative options.}
 
-\item{tagList}{}
-
 \item{kmsKeyArn}{The Amazon Resource Name (ARN) of the KMS key used to encrypt the
 application's data at rest. If provided, the application uses your
 customer-managed key for encryption. If omitted, the application uses an

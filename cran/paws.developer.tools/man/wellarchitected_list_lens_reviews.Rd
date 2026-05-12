@@ -13,12 +13,6 @@ wellarchitected_list_lens_reviews(
 }
 \arguments{
 \item{WorkloadId}{[required]}
-
-\item{MilestoneNumber}{}
-
-\item{NextToken}{}
-
-\item{MaxResults}{}
 }
 \description{
 List lens reviews for a particular workload.

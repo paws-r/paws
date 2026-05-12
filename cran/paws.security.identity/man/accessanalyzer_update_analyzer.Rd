@@ -8,8 +8,6 @@ accessanalyzer_update_analyzer(analyzerName, configuration = NULL)
 }
 \arguments{
 \item{analyzerName}{[required] The name of the analyzer to modify.}
-
-\item{configuration}{}
 }
 \description{
 Modifies the configuration of an existing analyzer.

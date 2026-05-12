@@ -12,8 +12,6 @@ elasticsearchservice_list_elasticsearch_versions(
 \arguments{
 \item{MaxResults}{Set this value to limit the number of results returned. Value provided
 must be greater than 10 else it wont be honored.}
-
-\item{NextToken}{}
 }
 \description{
 List all supported Elasticsearch versions

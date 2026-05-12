@@ -6,9 +6,6 @@
 \usage{
 storagegateway_list_automatic_tape_creation_policies(GatewayARN = NULL)
 }
-\arguments{
-\item{GatewayARN}{}
-}
 \description{
 Lists the automatic tape creation policies for a gateway. If there are no automatic tape creation policies for the gateway, it returns an empty list.
 

@@ -43,8 +43,6 @@ Constraints: Maximum length of 128 characters.}
 
 Constraints: Maximum length of 128 characters.}
 
-\item{Location}{}
-
 \item{SiteId}{The ID of the site.}
 }
 \description{

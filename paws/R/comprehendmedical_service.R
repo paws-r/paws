@@ -163,6 +163,6 @@ comprehendmedical <- function(config = list(), credentials = list(), endpoint = 
 )
 
 .comprehendmedical$service <- function(config = list(), op = NULL) {
-  handlers <- new_handlers("jsonrpc", "v4")
+  handlers <- new_handlers("smithyrpcv2cbor", "v4")
   new_service(.comprehendmedical$metadata, handlers, config, op)
 }

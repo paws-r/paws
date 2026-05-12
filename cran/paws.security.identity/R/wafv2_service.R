@@ -170,6 +170,7 @@ NULL
 #'  \link[=wafv2_get_regex_pattern_set]{get_regex_pattern_set} \tab Retrieves the specified RegexPatternSet\cr
 #'  \link[=wafv2_get_rule_group]{get_rule_group} \tab Retrieves the specified RuleGroup\cr
 #'  \link[=wafv2_get_sampled_requests]{get_sampled_requests} \tab Gets detailed information about a specified number of requests--a sample--that WAF randomly selects from among the first 5,000 requests that your Amazon Web Services resource received during a time range that you choose\cr
+#'  \link[=wafv2_get_top_path_statistics_by_traffic]{get_top_path_statistics_by_traffic} \tab Retrieves aggregated statistics about the top URI paths accessed by bot traffic for a specified web ACL and time window\cr
 #'  \link[=wafv2_get_web_acl]{get_web_acl} \tab Retrieves the specified WebACL\cr
 #'  \link[=wafv2_get_web_acl_for_resource]{get_web_acl_for_resource} \tab Retrieves the WebACL for the specified resource\cr
 #'  \link[=wafv2_list_api_keys]{list_api_keys} \tab Retrieves a list of the API keys that you've defined for the specified scope\cr

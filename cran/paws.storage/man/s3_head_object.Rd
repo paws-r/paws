@@ -165,8 +165,6 @@ that the encryption key was transmitted without error.
 
 This functionality is not supported for directory buckets.}
 
-\item{RequestPayer}{}
-
 \item{PartNumber}{Part number of the object being read. This is a positive integer between
 1 and 10,000. Effectively performs a 'ranged' HEAD request for the part
 specified. Useful querying about the size of the part and the number of

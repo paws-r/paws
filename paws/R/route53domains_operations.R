@@ -380,7 +380,7 @@ route53domains_check_domain_transferability <- function(DomainName, AuthCode = N
 #' 3.  When the registration has been deleted, we'll send you a
 #'     confirmation to the registrant contact. The email will come from
 #'     `noreply@@domainnameverification.net` or
-#'     `noreply@@registrar.amazon.com`.
+#'     `noreply@@emailverification.info` or `noreply@@registrar.amazon`.
 #'
 #' @usage
 #' route53domains_delete_domain(DomainName)
@@ -1022,7 +1022,8 @@ route53domains_get_domain_detail <- function(DomainName) {
 #' Amazon Route
 #' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html).
 #' @param SuggestionCount &#91;required&#93; The number of suggested domain names that you want Route 53 to return.
-#' Specify a value between 1 and 50.
+#' Specify a value between 1 and 50. Note that fewer than the requested
+#' number might be returned.
 #' @param OnlyAvailable &#91;required&#93; If `OnlyAvailable` is `true`, Route 53 returns only domain names that
 #' are available. If `OnlyAvailable` is `false`, Route 53 returns domain
 #' names without checking whether they're available to be registered. To
@@ -2175,9 +2176,13 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' -   Period (.) to separate the labels in the name, such as the `.` in
 #'     `example.com`.
 #' @param IdnLangCode Reserved for future use.
-#' @param DurationInYears &#91;required&#93; The number of years that you want to register the domain for. Domains
-#' are registered for a minimum of one year. The maximum period depends on
-#' the top-level domain.
+#' @param DurationInYears Reserved for future use.
+#' 
+#' Currently, the effect of a domain transfer on the registration period
+#' varies by TLD. For information about how transferring a domain affects
+#' the expiration date, see the Transfer Term column in the pricing
+#' information at [Amazon Route 53
+#' Pricing](https://aws.amazon.com/route53/pricing/).
 #' 
 #' Default: 1
 #' @param Nameservers Contains details for the host and glue IP addresses.
@@ -2349,7 +2354,7 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' @rdname route53domains_transfer_domain
 #'
 #' @aliases route53domains_transfer_domain
-route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, DurationInYears, Nameservers = NULL, AuthCode = NULL, AutoRenew = NULL, AdminContact, RegistrantContact, TechContact, PrivacyProtectAdminContact = NULL, PrivacyProtectRegistrantContact = NULL, PrivacyProtectTechContact = NULL, BillingContact = NULL, PrivacyProtectBillingContact = NULL) {
+route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, DurationInYears = NULL, Nameservers = NULL, AuthCode = NULL, AutoRenew = NULL, AdminContact, RegistrantContact, TechContact, PrivacyProtectAdminContact = NULL, PrivacyProtectRegistrantContact = NULL, PrivacyProtectTechContact = NULL, BillingContact = NULL, PrivacyProtectBillingContact = NULL) {
   op <- new_operation(
     name = "TransferDomain",
     http_method = "POST",

@@ -55,12 +55,6 @@ the chat session duration defaults to 25 hour. The minimum configurable
 time is 60 minutes. The maximum configurable time is 10,080 minutes (7
 days).}
 
-\item{ParticipantDetails}{}
-
-\item{InitialSystemMessage}{}
-
-\item{InitialTemplatedSystemMessage}{}
-
 \item{RelatedContactId}{The unique identifier for an Amazon Connect contact. This identifier is
 related to the contact starting.}
 

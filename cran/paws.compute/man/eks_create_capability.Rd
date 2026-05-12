@@ -55,8 +55,6 @@ object varies depending on the capability type. For Argo CD
 capabilities, you can configure IAM Identity CenterIAM; Identity Center
 integration, RBAC role mappings, and network access settings.}
 
-\item{tags}{}
-
 \item{deletePropagationPolicy}{[required] Specifies how Kubernetes resources managed by the capability should be
 handled when the capability is deleted. Currently, the only supported
 value is \code{RETAIN} which retains all Kubernetes resources managed by the

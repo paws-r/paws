@@ -58,8 +58,8 @@ rds_restore_db_instance_from_s3(
   DedicatedLogVolume = NULL,
   CACertificateIdentifier = NULL,
   EngineLifecycleSupport = NULL,
-  TagSpecifications = NULL,
-  AdditionalStorageVolumes = NULL
+  AdditionalStorageVolumes = NULL,
+  TagSpecifications = NULL
 )
 }
 \arguments{
@@ -473,18 +473,18 @@ Valid Values:
 
 Default: \code{open-source-rds-extended-support}}
 
+\item{AdditionalStorageVolumes}{A list of additional storage volumes to modify or delete for the DB
+instance. You can modify or delete up to three additional storage
+volumes using the names \code{rdsdbdata2}, \code{rdsdbdata3}, and \code{rdsdbdata4}.
+Additional storage volumes are supported for RDS for Oracle and RDS for
+SQL Server DB instances only.}
+
 \item{TagSpecifications}{Tags to assign to resources associated with the DB instance.
 
 Valid Values:
 \itemize{
 \item \code{auto-backup} - The DB instance's automated backup.
 }}
-
-\item{AdditionalStorageVolumes}{A list of additional storage volumes to modify or delete for the DB
-instance. You can modify or delete up to three additional storage
-volumes using the names \code{rdsdbdata2}, \code{rdsdbdata3}, and \code{rdsdbdata4}.
-Additional storage volumes are supported for RDS for Oracle and RDS for
-SQL Server DB instances only.}
 }
 \description{
 Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files. You can create a backup of your on-premises database, store it on Amazon Simple Storage Service (Amazon S3), and then restore the backup file onto a new Amazon RDS DB instance running MySQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html}{Restoring a backup into an Amazon RDS for MySQL DB instance} in the \emph{Amazon RDS User Guide.}

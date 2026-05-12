@@ -4,15 +4,22 @@
 \alias{datazone_get_user_profile}
 \title{Gets a user profile in Amazon DataZone}
 \usage{
-datazone_get_user_profile(domainIdentifier, type = NULL, userIdentifier)
+datazone_get_user_profile(
+  domainIdentifier,
+  userIdentifier,
+  type = NULL,
+  sessionName = NULL
+)
 }
 \arguments{
 \item{domainIdentifier}{[required] the ID of the Amazon DataZone domain the data portal of which you want
 to get.}
 
+\item{userIdentifier}{[required] The identifier of the user for which you want to get the user profile.}
+
 \item{type}{The type of the user profile.}
 
-\item{userIdentifier}{[required] The identifier of the user for which you want to get the user profile.}
+\item{sessionName}{The session name for IAM role sessions.}
 }
 \description{
 Gets a user profile in Amazon DataZone.

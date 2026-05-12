@@ -45,8 +45,6 @@ exclude some or all of the indexes at the time of restore.}
 
 \item{ProvisionedThroughputOverride}{Provisioned throughput settings for the restored table.}
 
-\item{OnDemandThroughputOverride}{}
-
 \item{SSESpecificationOverride}{The new server-side encryption settings for the restored table.}
 }
 \description{

@@ -4,10 +4,12 @@
 \alias{kinesis_put_resource_policy}
 \title{Attaches a resource-based policy to a data stream or registered consumer}
 \usage{
-kinesis_put_resource_policy(ResourceARN, Policy)
+kinesis_put_resource_policy(ResourceARN, StreamId = NULL, Policy)
 }
 \arguments{
 \item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the data stream or consumer.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 
 \item{Policy}{[required] Details of the resource policy. It must include the identity of the
 principal and the actions allowed on this resource. This is formatted as

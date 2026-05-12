@@ -5,39 +5,41 @@
 \title{Updates a ReplicationConfigurationTemplate by ID}
 \usage{
 drs_update_replication_configuration_template(
+  replicationConfigurationTemplateID,
   arn = NULL,
+  stagingAreaSubnetId = NULL,
   associateDefaultSecurityGroup = NULL,
-  autoReplicateNewDisks = NULL,
-  bandwidthThrottling = NULL,
-  createPublicIP = NULL,
-  dataPlaneRouting = NULL,
+  replicationServersSecurityGroupsIDs = NULL,
+  replicationServerInstanceType = NULL,
+  useDedicatedReplicationServer = NULL,
   defaultLargeStagingDiskType = NULL,
   ebsEncryption = NULL,
   ebsEncryptionKeyArn = NULL,
-  pitPolicy = NULL,
-  replicationConfigurationTemplateID,
-  replicationServerInstanceType = NULL,
-  replicationServersSecurityGroupsIDs = NULL,
-  stagingAreaSubnetId = NULL,
+  bandwidthThrottling = NULL,
+  dataPlaneRouting = NULL,
+  createPublicIP = NULL,
   stagingAreaTags = NULL,
-  useDedicatedReplicationServer = NULL
+  pitPolicy = NULL,
+  autoReplicateNewDisks = NULL,
+  internetProtocol = NULL
 )
 }
 \arguments{
+\item{replicationConfigurationTemplateID}{[required] The Replication Configuration Template ID.}
+
 \item{arn}{The Replication Configuration Template ARN.}
+
+\item{stagingAreaSubnetId}{The subnet to be used by the replication staging area.}
 
 \item{associateDefaultSecurityGroup}{Whether to associate the default Elastic Disaster Recovery Security
 group with the Replication Configuration Template.}
 
-\item{autoReplicateNewDisks}{Whether to allow the AWS replication agent to automatically replicate
-newly added disks.}
+\item{replicationServersSecurityGroupsIDs}{The security group IDs that will be used by the replication server.}
 
-\item{bandwidthThrottling}{Configure bandwidth throttling for the outbound data transfer rate of
-the Source Server in Mbps.}
+\item{replicationServerInstanceType}{The instance type to be used for the replication server.}
 
-\item{createPublicIP}{Whether to create a Public IP for the Recovery Instance by default.}
-
-\item{dataPlaneRouting}{The data plane routing mechanism that will be used for replication.}
+\item{useDedicatedReplicationServer}{Whether to use a dedicated Replication Server in the replication staging
+area.}
 
 \item{defaultLargeStagingDiskType}{The Staging Disk EBS volume type to be used during replication.}
 
@@ -45,23 +47,25 @@ the Source Server in Mbps.}
 
 \item{ebsEncryptionKeyArn}{The ARN of the EBS encryption key to be used during replication.}
 
-\item{pitPolicy}{The Point in time (PIT) policy to manage snapshots taken during
-replication.}
+\item{bandwidthThrottling}{Configure bandwidth throttling for the outbound data transfer rate of
+the Source Server in Mbps.}
 
-\item{replicationConfigurationTemplateID}{[required] The Replication Configuration Template ID.}
+\item{dataPlaneRouting}{The data plane routing mechanism that will be used for replication.}
 
-\item{replicationServerInstanceType}{The instance type to be used for the replication server.}
-
-\item{replicationServersSecurityGroupsIDs}{The security group IDs that will be used by the replication server.}
-
-\item{stagingAreaSubnetId}{The subnet to be used by the replication staging area.}
+\item{createPublicIP}{Whether to create a Public IP for the Recovery Instance by default.}
 
 \item{stagingAreaTags}{A set of tags to be associated with all resources created in the
 replication staging area: EC2 replication server, EBS volumes, EBS
 snapshots, etc.}
 
-\item{useDedicatedReplicationServer}{Whether to use a dedicated Replication Server in the replication staging
-area.}
+\item{pitPolicy}{The Point in time (PIT) policy to manage snapshots taken during
+replication.}
+
+\item{autoReplicateNewDisks}{Whether to allow the AWS replication agent to automatically replicate
+newly added disks.}
+
+\item{internetProtocol}{Which version of the Internet Protocol to use for replication of data.
+(IPv4 or IPv6)}
 }
 \description{
 Updates a ReplicationConfigurationTemplate by ID.

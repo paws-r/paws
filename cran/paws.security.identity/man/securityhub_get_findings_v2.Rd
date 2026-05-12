@@ -2,10 +2,11 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_findings_v2}
 \alias{securityhub_get_findings_v2}
-\title{Return a list of findings that match the specified criteria}
+\title{Returns a list of findings that match the specified criteria}
 \usage{
 securityhub_get_findings_v2(
   Filters = NULL,
+  Scopes = NULL,
   SortCriteria = NULL,
   NextToken = NULL,
   MaxResults = NULL
@@ -17,6 +18,18 @@ OCSF findings. You can filter up to 10 composite filters. For each
 filter type inside of a composite filter, you can provide up to 20
 filters.}
 
+\item{Scopes}{Limits the results to findings from specific organizational units or
+from the delegated administrator's organization. Only the delegated
+administrator account can use this parameter. Other accounts receive an
+\code{AccessDeniedException}.
+
+This parameter is optional. If you omit it, the delegated administrator
+sees findings from all accounts across the entire organization. Other
+accounts see only their own findings.
+
+You can specify up to 10 entries in \code{Scopes.AwsOrganizations}. If
+multiple entries are specified, the entries are combined using OR logic.}
+
 \item{SortCriteria}{The finding attributes used to sort the list of returned findings.}
 
 \item{NextToken}{The token required for pagination. On your first call, set the value of
@@ -27,7 +40,7 @@ previous response.}
 \item{MaxResults}{The maximum number of results to return.}
 }
 \description{
-Return a list of findings that match the specified criteria. \code{\link[=securityhub_get_findings]{get_findings}} and \code{\link[=securityhub_get_findings_v2]{get_findings_v2}} both use \code{securityhub:GetFindings} in the \code{Action} element of an IAM policy statement. You must have permission to perform the \code{securityhub:GetFindings} action.
+Returns a list of findings that match the specified criteria.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_get_findings_v2/} for full documentation.
 }

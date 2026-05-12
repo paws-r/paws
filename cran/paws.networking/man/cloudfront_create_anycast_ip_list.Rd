@@ -18,8 +18,6 @@ cloudfront_create_anycast_ip_list(
 \item{IpCount}{[required] The number of static IP addresses that are allocated to the Anycast
 static IP list. Valid values: 21 or 3.}
 
-\item{Tags}{}
-
 \item{IpAddressType}{The IP address type for the Anycast static IP list. You can specify one
 of the following options:
 \itemize{

@@ -31,8 +31,6 @@ specify here.}
 configuration templates that apply to the delivery destination types
 that you specify here.}
 
-\item{nextToken}{}
-
 \item{limit}{Use this parameter to limit the number of configuration templates that
 are returned in the response.}
 }

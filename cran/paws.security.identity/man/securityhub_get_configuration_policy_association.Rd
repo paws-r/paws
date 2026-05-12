@@ -12,7 +12,7 @@ securityhub_get_configuration_policy_association(Target)
 retrieve the association for.}
 }
 \description{
-Returns the association between a configuration and a target account, organizational unit, or the root. The configuration can be a configuration policy or self-managed behavior. Only the Security Hub delegated administrator can invoke this operation from the home Region.
+Returns the association between a configuration and a target account, organizational unit, or the root. The configuration can be a configuration policy or self-managed behavior. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_get_configuration_policy_association/} for full documentation.
 }

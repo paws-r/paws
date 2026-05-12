@@ -30,7 +30,7 @@ service.}
 \item{VpcConnectionArn}{The updated ARN of the VPC connection to use for secure connectivity.}
 }
 \description{
-Updates an existing action connector with new configuration details, authentication settings, or enabled actions. You can modify the connector's name, description, authentication configuration, and which actions are enabled. For more information, \url{https://docs.aws.amazon.com/quicksuite/latest/userguide/quick-action-auth.html}.
+Updates an existing action connector with new configuration details, authentication settings, or enabled actions. You can modify the connector's name, description, authentication configuration, and which actions are enabled. For more information, \href{https://docs.aws.amazon.com/quick/latest/userguide/quick-action-auth.html}{https://docs.aws.amazon.com/quicksuite/latest/userguide/quick-action-auth.html}.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_action_connector/} for full documentation.
 }

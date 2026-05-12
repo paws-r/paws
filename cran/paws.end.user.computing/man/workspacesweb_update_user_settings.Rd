@@ -71,9 +71,9 @@ retain control over their toolbar preferences.}
 
 \item{brandingConfigurationInput}{The branding configuration that customizes the appearance of the web
 portal for end users. When updating user settings without an existing
-branding configuration, all fields (logo, favicon, wallpaper, localized
-strings, and color theme) are required except for terms of service. When
-updating user settings with an existing branding configuration, all
+branding configuration, all fields (logo, favicon, localized strings,
+and color theme) are required except for wallpaper and terms of service.
+When updating user settings with an existing branding configuration, all
 fields are optional.}
 
 \item{webAuthnAllowed}{Specifies whether the user can use WebAuthn redirection for passwordless

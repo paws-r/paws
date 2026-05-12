@@ -15,7 +15,8 @@ elasticache_create_serverless_cache_snapshot(
 \arguments{
 \item{ServerlessCacheSnapshotName}{[required] The name for the snapshot being created. Must be unique for the customer
 account. Available for Valkey, Redis OSS and Serverless Memcached only.
-Must be between 1 and 255 characters.}
+Must be between 1 and 255 characters. This value is stored as a
+lowercase string.}
 
 \item{ServerlessCacheName}{[required] The name of an existing serverless cache. The snapshot is created from
 this cache. Available for Valkey, Redis OSS and Serverless Memcached

@@ -26,7 +26,8 @@ ssm_create_association(
   Duration = NULL,
   TargetMaps = NULL,
   Tags = NULL,
-  AlarmConfiguration = NULL
+  AlarmConfiguration = NULL,
+  AssociationDispatchAssumeRole = NULL
 )
 }
 \arguments{
@@ -202,7 +203,18 @@ resources. Tags enable you to categorize your resources in different
 ways, for example, by purpose, owner, or environment. Each tag consists
 of a key and an optional value, both of which you define.}
 
-\item{AlarmConfiguration}{}
+\item{AssociationDispatchAssumeRole}{A role used by association to take actions on your behalf. State Manager
+will assume this role and call required APIs when dispatching
+configurations to nodes. If not specified, \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html}{service-linked role for Systems Manager}
+will be used by default.
+
+It is recommended that you define a custom IAM role so that you have
+full control of the permissions that State Manager has when taking
+actions on your behalf.
+
+Service-linked role support in State Manager is being phased out.
+Associations relying on service-linked role may require updates in the
+future to continue functioning properly.}
 }
 \description{
 A State Manager association defines the state that you want to maintain on your managed nodes. For example, an association can specify that anti-virus software must be installed and running on your managed nodes, or that certain ports must be closed. For static targets, the association specifies a schedule for when the configuration is reapplied. For dynamic targets, such as an Amazon Web Services resource group or an Amazon Web Services autoscaling group, State Manager, a tool in Amazon Web Services Systems Manager applies the configuration when new managed nodes are added to the group. The association also specifies actions to take when applying the configuration. For example, an association for anti-virus software might run once a day. If the software isn't installed, then State Manager installs it. If the software is installed, but the service isn't running, then the association might instruct State Manager to start the service.

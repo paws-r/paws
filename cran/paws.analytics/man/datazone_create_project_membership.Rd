@@ -5,21 +5,21 @@
 \title{Creates a project membership in Amazon DataZone}
 \usage{
 datazone_create_project_membership(
-  designation,
   domainIdentifier,
+  projectIdentifier,
   member,
-  projectIdentifier
+  designation
 )
 }
 \arguments{
-\item{designation}{[required] The designation of the project membership.}
-
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain in which project membership is
 created.}
 
+\item{projectIdentifier}{[required] The ID of the project for which this project membership was created.}
+
 \item{member}{[required] The project member whose project membership was created.}
 
-\item{projectIdentifier}{[required] The ID of the project for which this project membership was created.}
+\item{designation}{[required] The designation of the project membership.}
 }
 \description{
 Creates a project membership in Amazon DataZone.

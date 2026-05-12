@@ -392,6 +392,151 @@ sagemaker_batch_replace_cluster_nodes <- function(ClusterName, NodeIds = NULL, N
 }
 .sagemaker$operations$batch_replace_cluster_nodes <- sagemaker_batch_replace_cluster_nodes
 
+#' Creates a benchmark job that runs performance benchmarks against
+#' inference infrastructure using a predefined AI workload configuration
+#'
+#' @description
+#' Creates a benchmark job that runs performance benchmarks against inference infrastructure using a predefined AI workload configuration. The benchmark job measures metrics such as latency, throughput, and cost for your generative AI inference endpoints.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_ai_benchmark_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_ai_benchmark_job/) for full documentation.
+#'
+#' @param AIBenchmarkJobName &#91;required&#93; The name of the AI benchmark job. The name must be unique within your
+#' Amazon Web Services account in the current Amazon Web Services Region.
+#' @param BenchmarkTarget &#91;required&#93; The target endpoint to benchmark. Specify a SageMaker endpoint by
+#' providing its name or Amazon Resource Name (ARN).
+#' @param OutputConfig &#91;required&#93; The output configuration for the benchmark job, including the Amazon S3
+#' location where benchmark results are stored.
+#' @param AIWorkloadConfigIdentifier &#91;required&#93; The name or Amazon Resource Name (ARN) of the AI workload configuration
+#' to use for this benchmark job.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that enables Amazon
+#' SageMaker AI to perform tasks on your behalf.
+#' @param NetworkConfig The network configuration for the benchmark job, including VPC settings.
+#' @param Tags The metadata that you apply to Amazon Web Services resources to help you
+#' categorize and organize them. Each tag consists of a key and a value,
+#' both of which you define.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_ai_benchmark_job
+sagemaker_create_ai_benchmark_job <- function(AIBenchmarkJobName, BenchmarkTarget, OutputConfig, AIWorkloadConfigIdentifier, RoleArn, NetworkConfig = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateAIBenchmarkJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$create_ai_benchmark_job_input(AIBenchmarkJobName = AIBenchmarkJobName, BenchmarkTarget = BenchmarkTarget, OutputConfig = OutputConfig, AIWorkloadConfigIdentifier = AIWorkloadConfigIdentifier, RoleArn = RoleArn, NetworkConfig = NetworkConfig, Tags = Tags)
+  output <- .sagemaker$create_ai_benchmark_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_ai_benchmark_job <- sagemaker_create_ai_benchmark_job
+
+#' Creates a recommendation job that generates intelligent optimization
+#' recommendations for generative AI inference deployments
+#'
+#' @description
+#' Creates a recommendation job that generates intelligent optimization recommendations for generative AI inference deployments. The job analyzes your model, workload configuration, and performance targets to recommend optimal instance types, model optimization techniques (such as quantization and speculative decoding), and deployment configurations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_ai_recommendation_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_ai_recommendation_job/) for full documentation.
+#'
+#' @param AIRecommendationJobName &#91;required&#93; The name of the AI recommendation job. The name must be unique within
+#' your Amazon Web Services account in the current Amazon Web Services
+#' Region.
+#' @param ModelSource &#91;required&#93; The source of the model to optimize. Specify the Amazon S3 location of
+#' the model artifacts.
+#' @param OutputConfig &#91;required&#93; The output configuration for the recommendation job, including the
+#' Amazon S3 location for results and an optional model package group where
+#' the optimized model is registered.
+#' @param AIWorkloadConfigIdentifier &#91;required&#93; The name or Amazon Resource Name (ARN) of the AI workload configuration
+#' to use for this recommendation job.
+#' @param PerformanceTarget &#91;required&#93; The performance targets for the recommendation job. Specify constraints
+#' on metrics such as time to first token (`ttft-ms`), `throughput`, or
+#' `cost`.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that enables Amazon
+#' SageMaker AI to perform tasks on your behalf.
+#' @param InferenceSpecification The inference framework configuration. Specify the framework (such as
+#' LMI or vLLM) for the recommendation job.
+#' @param OptimizeModel Whether to allow model optimization techniques such as quantization,
+#' speculative decoding, and kernel tuning. The default is `true`.
+#' @param ComputeSpec The compute resource specification for the recommendation job. You can
+#' specify up to 3 instance types to consider, and optionally provide
+#' capacity reservation configuration.
+#' @param Tags The metadata that you apply to Amazon Web Services resources to help you
+#' categorize and organize them.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_ai_recommendation_job
+sagemaker_create_ai_recommendation_job <- function(AIRecommendationJobName, ModelSource, OutputConfig, AIWorkloadConfigIdentifier, PerformanceTarget, RoleArn, InferenceSpecification = NULL, OptimizeModel = NULL, ComputeSpec = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateAIRecommendationJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$create_ai_recommendation_job_input(AIRecommendationJobName = AIRecommendationJobName, ModelSource = ModelSource, OutputConfig = OutputConfig, AIWorkloadConfigIdentifier = AIWorkloadConfigIdentifier, PerformanceTarget = PerformanceTarget, RoleArn = RoleArn, InferenceSpecification = InferenceSpecification, OptimizeModel = OptimizeModel, ComputeSpec = ComputeSpec, Tags = Tags)
+  output <- .sagemaker$create_ai_recommendation_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_ai_recommendation_job <- sagemaker_create_ai_recommendation_job
+
+#' Creates a reusable AI workload configuration that defines datasets, data
+#' sources, and benchmark tool settings for consistent performance testing
+#' of generative AI inference deployments on Amazon SageMaker AI
+#'
+#' @description
+#' Creates a reusable AI workload configuration that defines datasets, data sources, and benchmark tool settings for consistent performance testing of generative AI inference deployments on Amazon SageMaker AI.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_ai_workload_config/](https://www.paws-r-sdk.com/docs/sagemaker_create_ai_workload_config/) for full documentation.
+#'
+#' @param AIWorkloadConfigName &#91;required&#93; The name of the AI workload configuration. The name must be unique
+#' within your Amazon Web Services account in the current Amazon Web
+#' Services Region.
+#' @param DatasetConfig The dataset configuration for the workload. Specify input data channels
+#' with their data sources for benchmark workloads.
+#' @param AIWorkloadConfigs The benchmark tool configuration and workload specification. Provide the
+#' specification as an inline YAML or JSON string.
+#' @param Tags The metadata that you apply to Amazon Web Services resources to help you
+#' categorize and organize them. Each tag consists of a key and a value,
+#' both of which you define. For more information, see [Tagging Amazon Web
+#' Services
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' in the Amazon Web Services General Reference.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_ai_workload_config
+sagemaker_create_ai_workload_config <- function(AIWorkloadConfigName, DatasetConfig = NULL, AIWorkloadConfigs = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateAIWorkloadConfig",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$create_ai_workload_config_input(AIWorkloadConfigName = AIWorkloadConfigName, DatasetConfig = DatasetConfig, AIWorkloadConfigs = AIWorkloadConfigs, Tags = Tags)
+  output <- .sagemaker$create_ai_workload_config_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_ai_workload_config <- sagemaker_create_ai_workload_config
+
 #' Creates an action
 #'
 #' @description
@@ -843,8 +988,13 @@ sagemaker_create_auto_ml_job_v2 <- function(AutoMLJobName, AutoMLJobInputDataCon
 #' [Tagging Amazon Web Services Resources User
 #' Guide](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' @param Orchestrator The type of orchestrator to use for the SageMaker HyperPod cluster.
-#' Currently, the only supported value is `"eks"`, which is to use an
-#' Amazon Elastic Kubernetes Service cluster as the orchestrator.
+#' Currently, supported values are `"Eks"` and `"Slurm"`, which is to use
+#' an Amazon Elastic Kubernetes Service or Slurm cluster as the
+#' orchestrator.
+#' 
+#' If you specify the `Orchestrator` field, you must provide exactly one
+#' orchestrator configuration: either `Eks` or `Slurm`. Specifying both or
+#' providing an empty configuration returns a validation error.
 #' @param NodeRecovery The node recovery mode for the SageMaker HyperPod cluster. When set to
 #' `Automatic`, SageMaker HyperPod will automatically reboot or replace
 #' faulty nodes when issues are detected. When set to `None`, cluster
@@ -2122,8 +2272,13 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName, Al
 #' @param EndpointName &#91;required&#93; The name of an existing endpoint where you host the inference component.
 #' @param VariantName The name of an existing production variant where you host the inference
 #' component.
-#' @param Specification &#91;required&#93; Details about the resources to deploy with this inference component,
+#' @param Specification Details about the resources to deploy with this inference component,
 #' including the model, container, and compute resources.
+#' @param Specifications A list of specification objects for the inference component, one per
+#' instance type. Use this parameter when you want to deploy a different
+#' model or resource configuration for the inference component on each
+#' instance type. You can use either this parameter or the singular
+#' `Specification` parameter, but not both.
 #' @param RuntimeConfig Runtime settings for a model that is deployed with an inference
 #' component.
 #' @param Tags A list of key-value pairs associated with the model. For more
@@ -2134,7 +2289,7 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName, Al
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_inference_component
-sagemaker_create_inference_component <- function(InferenceComponentName, EndpointName, VariantName = NULL, Specification, RuntimeConfig = NULL, Tags = NULL) {
+sagemaker_create_inference_component <- function(InferenceComponentName, EndpointName, VariantName = NULL, Specification = NULL, Specifications = NULL, RuntimeConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateInferenceComponent",
     http_method = "POST",
@@ -2143,7 +2298,7 @@ sagemaker_create_inference_component <- function(InferenceComponentName, Endpoin
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_inference_component_input(InferenceComponentName = InferenceComponentName, EndpointName = EndpointName, VariantName = VariantName, Specification = Specification, RuntimeConfig = RuntimeConfig, Tags = Tags)
+  input <- .sagemaker$create_inference_component_input(InferenceComponentName = InferenceComponentName, EndpointName = EndpointName, VariantName = VariantName, Specification = Specification, Specifications = Specifications, RuntimeConfig = RuntimeConfig, Tags = Tags)
   output <- .sagemaker$create_inference_component_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -2571,11 +2726,16 @@ sagemaker_create_mlflow_app <- function(Name, ArtifactStoreUri, RoleArn, ModelRe
 #' example: TUE:03:30.
 #' @param Tags Tags consisting of key-value pairs used to manage metadata for the
 #' tracking server.
+#' @param S3BucketOwnerAccountId Expected Amazon Web Services account ID that owns the Amazon S3 bucket
+#' for artifact storage. Defaults to caller's account ID if not provided.
+#' @param S3BucketOwnerVerification Enable Amazon S3 Ownership checks when interacting with Amazon S3
+#' buckets from a SageMaker Managed MLflow Tracking Server. Defaults to
+#' `True` if not provided.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_mlflow_tracking_server
-sagemaker_create_mlflow_tracking_server <- function(TrackingServerName, ArtifactStoreUri, TrackingServerSize = NULL, MlflowVersion = NULL, RoleArn, AutomaticModelRegistration = NULL, WeeklyMaintenanceWindowStart = NULL, Tags = NULL) {
+sagemaker_create_mlflow_tracking_server <- function(TrackingServerName, ArtifactStoreUri, TrackingServerSize = NULL, MlflowVersion = NULL, RoleArn, AutomaticModelRegistration = NULL, WeeklyMaintenanceWindowStart = NULL, Tags = NULL, S3BucketOwnerAccountId = NULL, S3BucketOwnerVerification = NULL) {
   op <- new_operation(
     name = "CreateMlflowTrackingServer",
     http_method = "POST",
@@ -2584,7 +2744,7 @@ sagemaker_create_mlflow_tracking_server <- function(TrackingServerName, Artifact
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_mlflow_tracking_server_input(TrackingServerName = TrackingServerName, ArtifactStoreUri = ArtifactStoreUri, TrackingServerSize = TrackingServerSize, MlflowVersion = MlflowVersion, RoleArn = RoleArn, AutomaticModelRegistration = AutomaticModelRegistration, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart, Tags = Tags)
+  input <- .sagemaker$create_mlflow_tracking_server_input(TrackingServerName = TrackingServerName, ArtifactStoreUri = ArtifactStoreUri, TrackingServerSize = TrackingServerSize, MlflowVersion = MlflowVersion, RoleArn = RoleArn, AutomaticModelRegistration = AutomaticModelRegistration, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart, Tags = Tags, S3BucketOwnerAccountId = S3BucketOwnerAccountId, S3BucketOwnerVerification = S3BucketOwnerVerification)
   output <- .sagemaker$create_mlflow_tracking_server_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -4354,6 +4514,99 @@ sagemaker_create_workteam <- function(WorkteamName, WorkforceName = NULL, Member
   return(response)
 }
 .sagemaker$operations$create_workteam <- sagemaker_create_workteam
+
+#' Deletes the specified AI benchmark job
+#'
+#' @description
+#' Deletes the specified AI benchmark job.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_ai_benchmark_job/](https://www.paws-r-sdk.com/docs/sagemaker_delete_ai_benchmark_job/) for full documentation.
+#'
+#' @param AIBenchmarkJobName &#91;required&#93; The name of the AI benchmark job to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_ai_benchmark_job
+sagemaker_delete_ai_benchmark_job <- function(AIBenchmarkJobName) {
+  op <- new_operation(
+    name = "DeleteAIBenchmarkJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$delete_ai_benchmark_job_input(AIBenchmarkJobName = AIBenchmarkJobName)
+  output <- .sagemaker$delete_ai_benchmark_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_ai_benchmark_job <- sagemaker_delete_ai_benchmark_job
+
+#' Deletes the specified AI recommendation job
+#'
+#' @description
+#' Deletes the specified AI recommendation job.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_ai_recommendation_job/](https://www.paws-r-sdk.com/docs/sagemaker_delete_ai_recommendation_job/) for full documentation.
+#'
+#' @param AIRecommendationJobName &#91;required&#93; The name of the AI recommendation job to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_ai_recommendation_job
+sagemaker_delete_ai_recommendation_job <- function(AIRecommendationJobName) {
+  op <- new_operation(
+    name = "DeleteAIRecommendationJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$delete_ai_recommendation_job_input(AIRecommendationJobName = AIRecommendationJobName)
+  output <- .sagemaker$delete_ai_recommendation_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_ai_recommendation_job <- sagemaker_delete_ai_recommendation_job
+
+#' Deletes the specified AI workload configuration
+#'
+#' @description
+#' Deletes the specified AI workload configuration. You cannot delete a configuration that is referenced by an active benchmark job.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_ai_workload_config/](https://www.paws-r-sdk.com/docs/sagemaker_delete_ai_workload_config/) for full documentation.
+#'
+#' @param AIWorkloadConfigName &#91;required&#93; The name of the AI workload configuration to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_ai_workload_config
+sagemaker_delete_ai_workload_config <- function(AIWorkloadConfigName) {
+  op <- new_operation(
+    name = "DeleteAIWorkloadConfig",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$delete_ai_workload_config_input(AIWorkloadConfigName = AIWorkloadConfigName)
+  output <- .sagemaker$delete_ai_workload_config_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_ai_workload_config <- sagemaker_delete_ai_workload_config
 
 #' Deletes an action
 #'
@@ -6226,6 +6479,103 @@ sagemaker_deregister_devices <- function(DeviceFleetName, DeviceNames) {
   return(response)
 }
 .sagemaker$operations$deregister_devices <- sagemaker_deregister_devices
+
+#' Returns details of an AI benchmark job, including its status,
+#' configuration, target endpoint, and timing information
+#'
+#' @description
+#' Returns details of an AI benchmark job, including its status, configuration, target endpoint, and timing information.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_ai_benchmark_job/](https://www.paws-r-sdk.com/docs/sagemaker_describe_ai_benchmark_job/) for full documentation.
+#'
+#' @param AIBenchmarkJobName &#91;required&#93; The name of the AI benchmark job to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_ai_benchmark_job
+sagemaker_describe_ai_benchmark_job <- function(AIBenchmarkJobName) {
+  op <- new_operation(
+    name = "DescribeAIBenchmarkJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$describe_ai_benchmark_job_input(AIBenchmarkJobName = AIBenchmarkJobName)
+  output <- .sagemaker$describe_ai_benchmark_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_ai_benchmark_job <- sagemaker_describe_ai_benchmark_job
+
+#' Returns details of an AI recommendation job, including its status, model
+#' source, performance targets, optimization recommendations, and
+#' deployment configurations
+#'
+#' @description
+#' Returns details of an AI recommendation job, including its status, model source, performance targets, optimization recommendations, and deployment configurations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_ai_recommendation_job/](https://www.paws-r-sdk.com/docs/sagemaker_describe_ai_recommendation_job/) for full documentation.
+#'
+#' @param AIRecommendationJobName &#91;required&#93; The name of the AI recommendation job to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_ai_recommendation_job
+sagemaker_describe_ai_recommendation_job <- function(AIRecommendationJobName) {
+  op <- new_operation(
+    name = "DescribeAIRecommendationJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$describe_ai_recommendation_job_input(AIRecommendationJobName = AIRecommendationJobName)
+  output <- .sagemaker$describe_ai_recommendation_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_ai_recommendation_job <- sagemaker_describe_ai_recommendation_job
+
+#' Returns details of an AI workload configuration, including the dataset
+#' configuration, benchmark tool settings, tags, and creation time
+#'
+#' @description
+#' Returns details of an AI workload configuration, including the dataset configuration, benchmark tool settings, tags, and creation time.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_ai_workload_config/](https://www.paws-r-sdk.com/docs/sagemaker_describe_ai_workload_config/) for full documentation.
+#'
+#' @param AIWorkloadConfigName &#91;required&#93; The name of the AI workload configuration to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_ai_workload_config
+sagemaker_describe_ai_workload_config <- function(AIWorkloadConfigName) {
+  op <- new_operation(
+    name = "DescribeAIWorkloadConfig",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$describe_ai_workload_config_input(AIWorkloadConfigName = AIWorkloadConfigName)
+  output <- .sagemaker$describe_ai_workload_config_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_ai_workload_config <- sagemaker_describe_ai_workload_config
 
 #' Describes an action
 #'
@@ -8271,6 +8621,40 @@ sagemaker_describe_training_plan <- function(TrainingPlanName) {
 }
 .sagemaker$operations$describe_training_plan <- sagemaker_describe_training_plan
 
+#' Retrieves the extension history for a specified training plan
+#'
+#' @description
+#' Retrieves the extension history for a specified training plan. The response includes details about each extension, such as the offering ID, start and end dates, status, payment status, and cost information.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_training_plan_extension_history/](https://www.paws-r-sdk.com/docs/sagemaker_describe_training_plan_extension_history/) for full documentation.
+#'
+#' @param TrainingPlanArn &#91;required&#93; The Amazon Resource Name (ARN); of the training plan to retrieve
+#' extension history for.
+#' @param NextToken A token to continue pagination if more results are available.
+#' @param MaxResults The maximum number of extensions to return in the response.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_training_plan_extension_history
+sagemaker_describe_training_plan_extension_history <- function(TrainingPlanArn, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeTrainingPlanExtensionHistory",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrainingPlanExtensions"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$describe_training_plan_extension_history_input(TrainingPlanArn = TrainingPlanArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$describe_training_plan_extension_history_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_training_plan_extension_history <- sagemaker_describe_training_plan_extension_history
+
 #' Returns information about a transform job
 #'
 #' @description
@@ -8594,6 +8978,41 @@ sagemaker_enable_sagemaker_servicecatalog_portfolio <- function() {
 }
 .sagemaker$operations$enable_sagemaker_servicecatalog_portfolio <- sagemaker_enable_sagemaker_servicecatalog_portfolio
 
+#' Extends an existing training plan by purchasing an extension offering
+#'
+#' @description
+#' Extends an existing training plan by purchasing an extension offering. This allows you to add additional compute capacity time to your training plan without creating a new plan or reconfiguring your workloads.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_extend_training_plan/](https://www.paws-r-sdk.com/docs/sagemaker_extend_training_plan/) for full documentation.
+#'
+#' @param TrainingPlanExtensionOfferingId &#91;required&#93; The unique identifier of the extension offering to purchase. You can
+#' retrieve this ID from the `TrainingPlanExtensionOfferings` in the
+#' response of the
+#' [`search_training_plan_offerings`][sagemaker_search_training_plan_offerings]
+#' API.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_extend_training_plan
+sagemaker_extend_training_plan <- function(TrainingPlanExtensionOfferingId) {
+  op <- new_operation(
+    name = "ExtendTrainingPlan",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$extend_training_plan_input(TrainingPlanExtensionOfferingId = TrainingPlanExtensionOfferingId)
+  output <- .sagemaker$extend_training_plan_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$extend_training_plan <- sagemaker_extend_training_plan
+
 #' Describes a fleet
 #'
 #' @description
@@ -8842,6 +9261,135 @@ sagemaker_import_hub_content <- function(HubContentName, HubContentVersion = NUL
   return(response)
 }
 .sagemaker$operations$import_hub_content <- sagemaker_import_hub_content
+
+#' Returns a list of AI benchmark jobs in your account
+#'
+#' @description
+#' Returns a list of AI benchmark jobs in your account. You can filter the results by name, status, and creation time, and sort the results. The response is paginated.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_ai_benchmark_jobs/](https://www.paws-r-sdk.com/docs/sagemaker_list_ai_benchmark_jobs/) for full documentation.
+#'
+#' @param MaxResults The maximum number of benchmark jobs to return in the response.
+#' @param NextToken If the previous call to
+#' [`list_ai_benchmark_jobs`][sagemaker_list_ai_benchmark_jobs] didn't
+#' return the full set of jobs, the call returns a token for getting the
+#' next set.
+#' @param NameContains A string in the job name. This filter returns only jobs whose name
+#' contains the specified string.
+#' @param StatusEquals A filter that returns only benchmark jobs with the specified status.
+#' @param CreationTimeAfter A filter that returns only jobs created after the specified time.
+#' @param CreationTimeBefore A filter that returns only jobs created before the specified time.
+#' @param SortBy The field to sort results by. The default is `CreationTime`.
+#' @param SortOrder The sort order for results. The default is `Descending`.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_ai_benchmark_jobs
+sagemaker_list_ai_benchmark_jobs <- function(MaxResults = NULL, NextToken = NULL, NameContains = NULL, StatusEquals = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListAIBenchmarkJobs",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AIBenchmarkJobs"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$list_ai_benchmark_jobs_input(MaxResults = MaxResults, NextToken = NextToken, NameContains = NameContains, StatusEquals = StatusEquals, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .sagemaker$list_ai_benchmark_jobs_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_ai_benchmark_jobs <- sagemaker_list_ai_benchmark_jobs
+
+#' Returns a list of AI recommendation jobs in your account
+#'
+#' @description
+#' Returns a list of AI recommendation jobs in your account. You can filter the results by name, status, and creation time, and sort the results. The response is paginated.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_ai_recommendation_jobs/](https://www.paws-r-sdk.com/docs/sagemaker_list_ai_recommendation_jobs/) for full documentation.
+#'
+#' @param MaxResults The maximum number of recommendation jobs to return in the response.
+#' @param NextToken If the previous call to
+#' [`list_ai_recommendation_jobs`][sagemaker_list_ai_recommendation_jobs]
+#' didn't return the full set of jobs, the call returns a token for getting
+#' the next set.
+#' @param NameContains A string in the job name. This filter returns only jobs whose name
+#' contains the specified string.
+#' @param StatusEquals A filter that returns only recommendation jobs with the specified
+#' status.
+#' @param CreationTimeAfter A filter that returns only jobs created after the specified time.
+#' @param CreationTimeBefore A filter that returns only jobs created before the specified time.
+#' @param SortBy The field to sort results by. The default is `CreationTime`.
+#' @param SortOrder The sort order for results. The default is `Descending`.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_ai_recommendation_jobs
+sagemaker_list_ai_recommendation_jobs <- function(MaxResults = NULL, NextToken = NULL, NameContains = NULL, StatusEquals = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListAIRecommendationJobs",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AIRecommendationJobs"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$list_ai_recommendation_jobs_input(MaxResults = MaxResults, NextToken = NextToken, NameContains = NameContains, StatusEquals = StatusEquals, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .sagemaker$list_ai_recommendation_jobs_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_ai_recommendation_jobs <- sagemaker_list_ai_recommendation_jobs
+
+#' Returns a list of AI workload configurations in your account
+#'
+#' @description
+#' Returns a list of AI workload configurations in your account. You can filter the results by name and creation time, and sort the results. The response is paginated.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_ai_workload_configs/](https://www.paws-r-sdk.com/docs/sagemaker_list_ai_workload_configs/) for full documentation.
+#'
+#' @param MaxResults The maximum number of AI workload configurations to return in the
+#' response.
+#' @param NextToken If the previous call to
+#' [`list_ai_workload_configs`][sagemaker_list_ai_workload_configs] didn't
+#' return the full set of configurations, the call returns a token for
+#' getting the next set of configurations.
+#' @param NameContains A string in the configuration name. This filter returns only
+#' configurations whose name contains the specified string.
+#' @param CreationTimeAfter A filter that returns only configurations created after the specified
+#' time.
+#' @param CreationTimeBefore A filter that returns only configurations created before the specified
+#' time.
+#' @param SortBy The field to sort results by. The default is `CreationTime`.
+#' @param SortOrder The sort order for results. The default is `Descending`.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_ai_workload_configs
+sagemaker_list_ai_workload_configs <- function(MaxResults = NULL, NextToken = NULL, NameContains = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListAIWorkloadConfigs",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AIWorkloadConfigs"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$list_ai_workload_configs_input(MaxResults = MaxResults, NextToken = NextToken, NameContains = NameContains, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .sagemaker$list_ai_workload_configs_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_ai_workload_configs <- sagemaker_list_ai_workload_configs
 
 #' Lists the actions in your account and their properties
 #'
@@ -12981,8 +13529,8 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
 #' specified date.
 #' @param EndTimeBefore A filter to search for reserved capacity offerings with an end time
 #' before a specified date.
-#' @param DurationHours &#91;required&#93; The desired duration in hours for the training plan offerings.
-#' @param TargetResources &#91;required&#93; The target resources (e.g., SageMaker Training Jobs, SageMaker HyperPod,
+#' @param DurationHours The desired duration in hours for the training plan offerings.
+#' @param TargetResources The target resources (e.g., SageMaker Training Jobs, SageMaker HyperPod,
 #' SageMaker Endpoints) to search for in the offerings.
 #' 
 #' Training plans are specific to their target resource.
@@ -12996,11 +13544,14 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
 #' -   A training plan for SageMaker endpoints can be used exclusively to
 #'     provide compute resources to SageMaker endpoints for model
 #'     deployment.
+#' @param TrainingPlanArn The Amazon Resource Name (ARN); of an existing training plan to search
+#' for extension offerings. When specified, the API returns extension
+#' offerings that can be used to extend the specified training plan.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_search_training_plan_offerings
-sagemaker_search_training_plan_offerings <- function(InstanceType = NULL, InstanceCount = NULL, UltraServerType = NULL, UltraServerCount = NULL, StartTimeAfter = NULL, EndTimeBefore = NULL, DurationHours, TargetResources) {
+sagemaker_search_training_plan_offerings <- function(InstanceType = NULL, InstanceCount = NULL, UltraServerType = NULL, UltraServerCount = NULL, StartTimeAfter = NULL, EndTimeBefore = NULL, DurationHours = NULL, TargetResources = NULL, TrainingPlanArn = NULL) {
   op <- new_operation(
     name = "SearchTrainingPlanOfferings",
     http_method = "POST",
@@ -13009,7 +13560,7 @@ sagemaker_search_training_plan_offerings <- function(InstanceType = NULL, Instan
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$search_training_plan_offerings_input(InstanceType = InstanceType, InstanceCount = InstanceCount, UltraServerType = UltraServerType, UltraServerCount = UltraServerCount, StartTimeAfter = StartTimeAfter, EndTimeBefore = EndTimeBefore, DurationHours = DurationHours, TargetResources = TargetResources)
+  input <- .sagemaker$search_training_plan_offerings_input(InstanceType = InstanceType, InstanceCount = InstanceCount, UltraServerType = UltraServerType, UltraServerCount = UltraServerCount, StartTimeAfter = StartTimeAfter, EndTimeBefore = EndTimeBefore, DurationHours = DurationHours, TargetResources = TargetResources, TrainingPlanArn = TrainingPlanArn)
   output <- .sagemaker$search_training_plan_offerings_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -13090,6 +13641,40 @@ sagemaker_send_pipeline_execution_step_success <- function(CallbackToken, Output
   return(response)
 }
 .sagemaker$operations$send_pipeline_execution_step_success <- sagemaker_send_pipeline_execution_step_success
+
+#' Start deep health checks for a SageMaker HyperPod cluster
+#'
+#' @description
+#' Start deep health checks for a SageMaker HyperPod cluster. You can use [`describe_cluster_node`][sagemaker_describe_cluster_node] API to track progress of the deep health checks. The unhealthy nodes will be automatically rebooted or replaced. Please see [Resilience-related Kubernetes labels by SageMaker HyperPod](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-eks-resiliency-node-labels.html) for details.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_start_cluster_health_check/](https://www.paws-r-sdk.com/docs/sagemaker_start_cluster_health_check/) for full documentation.
+#'
+#' @param ClusterName &#91;required&#93; The string name or the Amazon Resource Name (ARN) of the SageMaker
+#' HyperPod cluster.
+#' @param DeepHealthCheckConfigurations &#91;required&#93; A list of configurations containing instance group names, EC2 instance
+#' IDs, and deep health checks to perform.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_start_cluster_health_check
+sagemaker_start_cluster_health_check <- function(ClusterName, DeepHealthCheckConfigurations) {
+  op <- new_operation(
+    name = "StartClusterHealthCheck",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$start_cluster_health_check_input(ClusterName = ClusterName, DeepHealthCheckConfigurations = DeepHealthCheckConfigurations)
+  output <- .sagemaker$start_cluster_health_check_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$start_cluster_health_check <- sagemaker_start_cluster_health_check
 
 #' Starts a stage in an edge deployment plan
 #'
@@ -13266,7 +13851,7 @@ sagemaker_start_notebook_instance <- function(NotebookInstanceName) {
 #' configuration of the parent pipeline for this specific run.
 #' @param SelectiveExecutionConfig The selective execution configuration applied to the pipeline run.
 #' @param PipelineVersionId The ID of the pipeline version to start execution from.
-#' @param MlflowExperimentName The MLflow experiment name of the start execution.
+#' @param MlflowExperimentName The MLflow experiment name of the pipeline execution.
 #'
 #' @keywords internal
 #'
@@ -13324,6 +13909,68 @@ sagemaker_start_session <- function(ResourceIdentifier) {
   return(response)
 }
 .sagemaker$operations$start_session <- sagemaker_start_session
+
+#' Stops a running AI benchmark job
+#'
+#' @description
+#' Stops a running AI benchmark job.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_ai_benchmark_job/](https://www.paws-r-sdk.com/docs/sagemaker_stop_ai_benchmark_job/) for full documentation.
+#'
+#' @param AIBenchmarkJobName &#91;required&#93; The name of the AI benchmark job to stop.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_stop_ai_benchmark_job
+sagemaker_stop_ai_benchmark_job <- function(AIBenchmarkJobName) {
+  op <- new_operation(
+    name = "StopAIBenchmarkJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$stop_ai_benchmark_job_input(AIBenchmarkJobName = AIBenchmarkJobName)
+  output <- .sagemaker$stop_ai_benchmark_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$stop_ai_benchmark_job <- sagemaker_stop_ai_benchmark_job
+
+#' Stops a running AI recommendation job
+#'
+#' @description
+#' Stops a running AI recommendation job.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_ai_recommendation_job/](https://www.paws-r-sdk.com/docs/sagemaker_stop_ai_recommendation_job/) for full documentation.
+#'
+#' @param AIRecommendationJobName &#91;required&#93; The name of the AI recommendation job to stop.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_stop_ai_recommendation_job
+sagemaker_stop_ai_recommendation_job <- function(AIRecommendationJobName) {
+  op <- new_operation(
+    name = "StopAIRecommendationJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$stop_ai_recommendation_job_input(AIRecommendationJobName = AIRecommendationJobName)
+  output <- .sagemaker$stop_ai_recommendation_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$stop_ai_recommendation_job <- sagemaker_stop_ai_recommendation_job
 
 #' A method for forcing a running job to shut down
 #'
@@ -13977,11 +14624,12 @@ sagemaker_update_artifact <- function(ArtifactArn, ArtifactName = NULL, Properti
 #' enabled.
 #' @param AutoScaling Updates the autoscaling configuration for the cluster. Use to enable or
 #' disable automatic node scaling.
+#' @param Orchestrator 
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_cluster
-sagemaker_update_cluster <- function(ClusterName, InstanceGroups = NULL, RestrictedInstanceGroups = NULL, TieredStorageConfig = NULL, NodeRecovery = NULL, InstanceGroupsToDelete = NULL, NodeProvisioningMode = NULL, ClusterRole = NULL, AutoScaling = NULL) {
+sagemaker_update_cluster <- function(ClusterName, InstanceGroups = NULL, RestrictedInstanceGroups = NULL, TieredStorageConfig = NULL, NodeRecovery = NULL, InstanceGroupsToDelete = NULL, NodeProvisioningMode = NULL, ClusterRole = NULL, AutoScaling = NULL, Orchestrator = NULL) {
   op <- new_operation(
     name = "UpdateCluster",
     http_method = "POST",
@@ -13990,7 +14638,7 @@ sagemaker_update_cluster <- function(ClusterName, InstanceGroups = NULL, Restric
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_cluster_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups, RestrictedInstanceGroups = RestrictedInstanceGroups, TieredStorageConfig = TieredStorageConfig, NodeRecovery = NodeRecovery, InstanceGroupsToDelete = InstanceGroupsToDelete, NodeProvisioningMode = NodeProvisioningMode, ClusterRole = ClusterRole, AutoScaling = AutoScaling)
+  input <- .sagemaker$update_cluster_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups, RestrictedInstanceGroups = RestrictedInstanceGroups, TieredStorageConfig = TieredStorageConfig, NodeRecovery = NodeRecovery, InstanceGroupsToDelete = InstanceGroupsToDelete, NodeProvisioningMode = NodeProvisioningMode, ClusterRole = ClusterRole, AutoScaling = AutoScaling, Orchestrator = Orchestrator)
   output <- .sagemaker$update_cluster_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -14780,6 +15428,11 @@ sagemaker_update_image_version <- function(ImageName, Alias = NULL, Version = NU
 #' @param InferenceComponentName &#91;required&#93; The name of the inference component.
 #' @param Specification Details about the resources to deploy with this inference component,
 #' including the model, container, and compute resources.
+#' @param Specifications A list of specification objects for the inference component, one per
+#' instance type. Use this parameter when you want to specify different
+#' model or resource configurations for the inference component on each
+#' instance type. You can use either this parameter or the singular
+#' `Specification` parameter, but not both.
 #' @param RuntimeConfig Runtime settings for a model that is deployed with an inference
 #' component.
 #' @param DeploymentConfig The deployment configuration for the inference component. The
@@ -14789,7 +15442,7 @@ sagemaker_update_image_version <- function(ImageName, Alias = NULL, Version = NU
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_inference_component
-sagemaker_update_inference_component <- function(InferenceComponentName, Specification = NULL, RuntimeConfig = NULL, DeploymentConfig = NULL) {
+sagemaker_update_inference_component <- function(InferenceComponentName, Specification = NULL, Specifications = NULL, RuntimeConfig = NULL, DeploymentConfig = NULL) {
   op <- new_operation(
     name = "UpdateInferenceComponent",
     http_method = "POST",
@@ -14798,7 +15451,7 @@ sagemaker_update_inference_component <- function(InferenceComponentName, Specifi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_inference_component_input(InferenceComponentName = InferenceComponentName, Specification = Specification, RuntimeConfig = RuntimeConfig, DeploymentConfig = DeploymentConfig)
+  input <- .sagemaker$update_inference_component_input(InferenceComponentName = InferenceComponentName, Specification = Specification, Specifications = Specifications, RuntimeConfig = RuntimeConfig, DeploymentConfig = DeploymentConfig)
   output <- .sagemaker$update_inference_component_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -14951,11 +15604,15 @@ sagemaker_update_mlflow_app <- function(Arn, Name = NULL, ArtifactStoreUri = NUL
 #' @param WeeklyMaintenanceWindowStart The new weekly maintenance window start day and time to update. The
 #' maintenance window day and time should be in Coordinated Universal Time
 #' (UTC) 24-hour standard time. For example: TUE:03:30.
+#' @param S3BucketOwnerAccountId The new expected Amazon Web Services account ID that owns the Amazon S3
+#' bucket for artifact storage.
+#' @param S3BucketOwnerVerification Whether to enable or disable Amazon S3 Bucket Owenrship Verifaction
+#' whenever the MLflow Tracking Server interacts with Amazon Amazon S3.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_mlflow_tracking_server
-sagemaker_update_mlflow_tracking_server <- function(TrackingServerName, ArtifactStoreUri = NULL, TrackingServerSize = NULL, AutomaticModelRegistration = NULL, WeeklyMaintenanceWindowStart = NULL) {
+sagemaker_update_mlflow_tracking_server <- function(TrackingServerName, ArtifactStoreUri = NULL, TrackingServerSize = NULL, AutomaticModelRegistration = NULL, WeeklyMaintenanceWindowStart = NULL, S3BucketOwnerAccountId = NULL, S3BucketOwnerVerification = NULL) {
   op <- new_operation(
     name = "UpdateMlflowTrackingServer",
     http_method = "POST",
@@ -14964,7 +15621,7 @@ sagemaker_update_mlflow_tracking_server <- function(TrackingServerName, Artifact
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_mlflow_tracking_server_input(TrackingServerName = TrackingServerName, ArtifactStoreUri = ArtifactStoreUri, TrackingServerSize = TrackingServerSize, AutomaticModelRegistration = AutomaticModelRegistration, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart)
+  input <- .sagemaker$update_mlflow_tracking_server_input(TrackingServerName = TrackingServerName, ArtifactStoreUri = ArtifactStoreUri, TrackingServerSize = TrackingServerSize, AutomaticModelRegistration = AutomaticModelRegistration, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart, S3BucketOwnerAccountId = S3BucketOwnerAccountId, S3BucketOwnerVerification = S3BucketOwnerVerification)
   output <- .sagemaker$update_mlflow_tracking_server_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)

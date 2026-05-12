@@ -130,7 +130,8 @@ to apply to the function.}
 to add to the function's execution environment. Specify each layer by
 its ARN, including the version.}
 
-\item{FileSystemConfigs}{Connection settings for an Amazon EFS file system.}
+\item{FileSystemConfigs}{Connection settings for an Amazon EFS file system or an Amazon S3 Files
+file system.}
 
 \item{ImageConfig}{Container image \href{https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms}{configuration values}
 that override the values in the container image Dockerfile.}

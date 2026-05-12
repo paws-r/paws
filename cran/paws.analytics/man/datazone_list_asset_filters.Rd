@@ -5,24 +5,19 @@
 \title{Lists asset filters}
 \usage{
 datazone_list_asset_filters(
-  assetIdentifier,
   domainIdentifier,
-  maxResults = NULL,
+  assetIdentifier,
+  status = NULL,
   nextToken = NULL,
-  status = NULL
+  maxResults = NULL
 )
 }
 \arguments{
-\item{assetIdentifier}{[required] The ID of the data asset.}
-
 \item{domainIdentifier}{[required] The ID of the domain where you want to list asset filters.}
 
-\item{maxResults}{The maximum number of asset filters to return in a single call to
-\code{\link[=datazone_list_asset_filters]{list_asset_filters}}. When the number of
-asset filters to be listed is greater than the value of \code{MaxResults},
-the response contains a \code{NextToken} value that you can use in a
-subsequent call to \code{\link[=datazone_list_asset_filters]{list_asset_filters}}
-to list the next set of asset filters.}
+\item{assetIdentifier}{[required] The ID of the data asset.}
+
+\item{status}{The status of the asset filter.}
 
 \item{nextToken}{When the number of asset filters is greater than the default value for
 the \code{MaxResults} parameter, or if you explicitly specify a value for
@@ -32,7 +27,12 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{\link[=datazone_list_asset_filters]{list_asset_filters}} to list the next set
 of asset filters.}
 
-\item{status}{The status of the asset filter.}
+\item{maxResults}{The maximum number of asset filters to return in a single call to
+\code{\link[=datazone_list_asset_filters]{list_asset_filters}}. When the number of
+asset filters to be listed is greater than the value of \code{MaxResults},
+the response contains a \code{NextToken} value that you can use in a
+subsequent call to \code{\link[=datazone_list_asset_filters]{list_asset_filters}}
+to list the next set of asset filters.}
 }
 \description{
 Lists asset filters.

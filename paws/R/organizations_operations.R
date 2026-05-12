@@ -130,7 +130,7 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' 
 #' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
 #' 
-#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_policies.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
@@ -370,11 +370,18 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #'     in the *Organizations User Guide*.
 #' 
 #' 
-#' -   You can close only 10% of member accounts, between 10 and 1000,
-#'     within a rolling 30 day period. This quota is not bound by a
-#'     calendar month, but starts when you close an account. After you
-#'     reach this limit, you can't close additional accounts. For more
-#'     information, see [Closing a member account in your
+#' -   Resources remaining within the account after closing will be
+#'     automatically deleted after 90 days. During this 90-day period, the
+#'     resources won't be available unless you contact Amazon Web Services
+#'     Support to reopen the account. After 90 days, you can't reopen an
+#'     account. You might still receive a bill after account closure.
+#' 
+#' -   Within a rolling 30 day period you can close the higher of either
+#'     250 or 20% of the member accounts in your organization, up to a
+#'     maximum of 1,000. This quota is not bound by a calendar month, but
+#'     starts when you close an account. After you reach this limit, you
+#'     can't close additional accounts. For more information, see [Closing
+#'     a member account in your
 #'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
 #'     and [Quotas for
 #'     Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html)
@@ -1148,7 +1155,8 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 #'   OrganizationalUnit = list(
 #'     Id = "string",
 #'     Arn = "string",
-#'     Name = "string"
+#'     Name = "string",
+#'     Path = "string"
 #'   )
 #' )
 #' ```
@@ -1244,7 +1252,7 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' 
 #' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
 #' 
-#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_policies.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
@@ -1770,6 +1778,9 @@ organizations_deregister_delegated_administrator <- function(AccountId, ServiceP
 #'     Name = "string",
 #'     Status = "ACTIVE"|"SUSPENDED"|"PENDING_CLOSURE",
 #'     State = "PENDING_ACTIVATION"|"ACTIVE"|"SUSPENDED"|"PENDING_CLOSURE"|"CLOSED",
+#'     Paths = list(
+#'       "string"
+#'     ),
 #'     JoinedMethod = "INVITED"|"CREATED",
 #'     JoinedTimestamp = as.POSIXct(
 #'       "2015-01-01"
@@ -1932,7 +1943,7 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' @param PolicyType &#91;required&#93; The type of policy that you want information about. You can specify one
 #' of the following values:
 #' 
-#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_policies.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
@@ -2202,7 +2213,8 @@ organizations_describe_organization <- function() {
 #'   OrganizationalUnit = list(
 #'     Id = "string",
 #'     Arn = "string",
-#'     Name = "string"
+#'     Name = "string",
+#'     Path = "string"
 #'   )
 #' )
 #' ```
@@ -2701,7 +2713,7 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' 
 #' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
 #' 
-#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_policies.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
@@ -3011,7 +3023,7 @@ organizations_enable_all_features <- function() {
 #' 
 #' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
 #' 
-#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_policies.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
@@ -3588,6 +3600,9 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
 #'       Name = "string",
 #'       Status = "ACTIVE"|"SUSPENDED"|"PENDING_CLOSURE",
 #'       State = "PENDING_ACTIVATION"|"ACTIVE"|"SUSPENDED"|"PENDING_CLOSURE"|"CLOSED",
+#'       Paths = list(
+#'         "string"
+#'       ),
 #'       JoinedMethod = "INVITED"|"CREATED",
 #'       JoinedTimestamp = as.POSIXct(
 #'         "2015-01-01"
@@ -3684,6 +3699,9 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #'       Name = "string",
 #'       Status = "ACTIVE"|"SUSPENDED"|"PENDING_CLOSURE",
 #'       State = "PENDING_ACTIVATION"|"ACTIVE"|"SUSPENDED"|"PENDING_CLOSURE"|"CLOSED",
+#'       Paths = list(
+#'         "string"
+#'       ),
 #'       JoinedMethod = "INVITED"|"CREATED",
 #'       JoinedTimestamp = as.POSIXct(
 #'         "2015-01-01"
@@ -3757,7 +3775,7 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #' @param PolicyType &#91;required&#93; The type of policy that you want information about. You can specify one
 #' of the following values:
 #' 
-#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_policies.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
@@ -3799,6 +3817,9 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #'       Name = "string",
 #'       Status = "ACTIVE"|"SUSPENDED"|"PENDING_CLOSURE",
 #'       State = "PENDING_ACTIVATION"|"ACTIVE"|"SUSPENDED"|"PENDING_CLOSURE"|"CLOSED",
+#'       Paths = list(
+#'         "string"
+#'       ),
 #'       JoinedMethod = "INVITED"|"CREATED",
 #'       JoinedTimestamp = as.POSIXct(
 #'         "2015-01-01"
@@ -4236,7 +4257,7 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
 #' @param PolicyType &#91;required&#93; The type of policy that you want information about. You can specify one
 #' of the following values:
 #' 
-#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_policies.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
@@ -4691,7 +4712,8 @@ organizations_list_inbound_responsibility_transfers <- function(Type, Id = NULL,
 #'     list(
 #'       Id = "string",
 #'       Arn = "string",
-#'       Name = "string"
+#'       Name = "string",
+#'       Path = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4962,7 +4984,7 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #' 
 #' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
 #' 
-#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_policies.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
@@ -5096,7 +5118,7 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' 
 #' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
 #' 
-#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_policies.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
@@ -6051,7 +6073,8 @@ organizations_untag_resource <- function(ResourceId, TagKeys) {
 #'   OrganizationalUnit = list(
 #'     Id = "string",
 #'     Arn = "string",
-#'     Name = "string"
+#'     Name = "string",
+#'     Path = "string"
 #'   )
 #' )
 #' ```

@@ -3,7 +3,7 @@
 \name{securityhub_update_action_target}
 \alias{securityhub_update_action_target}
 \title{Updates the name and description of a custom action target in Security
-Hub}
+Hub CSPM}
 \usage{
 securityhub_update_action_target(
   ActionTargetArn,
@@ -19,7 +19,7 @@ securityhub_update_action_target(
 \item{Description}{The updated description for the custom action target.}
 }
 \description{
-Updates the name and description of a custom action target in Security Hub.
+Updates the name and description of a custom action target in Security Hub CSPM.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_update_action_target/} for full documentation.
 }

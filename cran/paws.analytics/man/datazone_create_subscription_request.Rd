@@ -5,35 +5,35 @@
 \title{Creates a subscription request in Amazon DataZone}
 \usage{
 datazone_create_subscription_request(
-  assetPermissions = NULL,
-  assetScopes = NULL,
-  clientToken = NULL,
   domainIdentifier,
-  metadataForms = NULL,
-  requestReason,
+  subscribedPrincipals,
   subscribedListings,
-  subscribedPrincipals
+  requestReason,
+  clientToken = NULL,
+  metadataForms = NULL,
+  assetPermissions = NULL,
+  assetScopes = NULL
 )
 }
 \arguments{
-\item{assetPermissions}{The asset permissions of the subscription request.}
+\item{domainIdentifier}{[required] The ID of the Amazon DataZone domain in which the subscription request
+is created.}
 
-\item{assetScopes}{The asset scopes of the subscription request.}
+\item{subscribedPrincipals}{[required] The Amazon DataZone principals for whom the subscription request is
+created.}
+
+\item{subscribedListings}{[required] The published asset for which the subscription grant is to be created.}
+
+\item{requestReason}{[required] The reason for the subscription request.}
 
 \item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
 idempotency of the request.}
 
-\item{domainIdentifier}{[required] The ID of the Amazon DataZone domain in which the subscription request
-is created.}
-
 \item{metadataForms}{The metadata form included in the subscription request.}
 
-\item{requestReason}{[required] The reason for the subscription request.}
+\item{assetPermissions}{The asset permissions of the subscription request.}
 
-\item{subscribedListings}{[required] The published asset for which the subscription grant is to be created.}
-
-\item{subscribedPrincipals}{[required] The Amazon DataZone principals for whom the subscription request is
-created.}
+\item{assetScopes}{The asset scopes of the subscription request.}
 }
 \description{
 Creates a subscription request in Amazon DataZone.

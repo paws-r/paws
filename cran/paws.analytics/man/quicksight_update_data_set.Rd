@@ -55,8 +55,6 @@ experience.}
 
 \item{ColumnLevelPermissionRules}{A set of one or more definitions of a \code{ColumnLevelPermissionRule}.}
 
-\item{DataSetUsageConfiguration}{}
-
 \item{DatasetParameters}{The parameter declarations of the dataset.}
 
 \item{PerformanceConfiguration}{The configuration for the performance optimization of the dataset that

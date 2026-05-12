@@ -5,25 +5,22 @@
 \title{Searches for assets in Amazon DataZone}
 \usage{
 datazone_search(
-  additionalAttributes = NULL,
   domainIdentifier,
-  filters = NULL,
+  owningProjectIdentifier = NULL,
   maxResults = NULL,
   nextToken = NULL,
-  owningProjectIdentifier = NULL,
-  searchIn = NULL,
   searchScope,
   searchText = NULL,
-  sort = NULL
+  searchIn = NULL,
+  filters = NULL,
+  sort = NULL,
+  additionalAttributes = NULL
 )
 }
 \arguments{
-\item{additionalAttributes}{Specifies additional attributes for the \code{\link[=datazone_search]{search}}
-action.}
-
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain.}
 
-\item{filters}{Specifies the search filters.}
+\item{owningProjectIdentifier}{The identifier of the owning project specified for the search.}
 
 \item{maxResults}{The maximum number of results to return in a single call to
 \code{\link[=datazone_search]{search}}. When the number of results to be listed is
@@ -38,15 +35,18 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{NextToken} value in a subsequent call to \code{\link[=datazone_search]{search}} to
 list the next set of results.}
 
-\item{owningProjectIdentifier}{The identifier of the owning project specified for the search.}
-
-\item{searchIn}{The details of the search.}
-
 \item{searchScope}{[required] The scope of the search.}
 
 \item{searchText}{Specifies the text for which to search.}
 
+\item{searchIn}{The details of the search.}
+
+\item{filters}{Specifies the search filters.}
+
 \item{sort}{Specifies the way in which the search results are to be sorted.}
+
+\item{additionalAttributes}{Specifies additional attributes for the \code{\link[=datazone_search]{search}}
+action.}
 }
 \description{
 Searches for assets in Amazon DataZone.

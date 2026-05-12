@@ -38,9 +38,9 @@ Constraints:
 
 Example: \code{my-cluster-snapshot2}}
 
-\item{KmsKeyId}{The Amazon Amazon KMS key ID for an encrypted DB cluster snapshot. The
-KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the
-KMS key alias for the KMS encryption key.
+\item{KmsKeyId}{The Amazon KMS key ID for an encrypted DB cluster snapshot. The KMS key
+ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key
+alias for the KMS encryption key.
 
 If you copy an encrypted DB cluster snapshot from your Amazon account,
 you can specify a value for \code{KmsKeyId} to encrypt the copy with a new

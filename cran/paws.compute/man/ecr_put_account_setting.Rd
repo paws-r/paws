@@ -8,12 +8,12 @@ scope}
 ecr_put_account_setting(name, value)
 }
 \arguments{
-\item{name}{[required] The name of the account setting, such as \code{BASIC_SCAN_TYPE_VERSION} or
-\code{REGISTRY_POLICY_SCOPE}.}
+\item{name}{[required] The name of the account setting, such as \code{BASIC_SCAN_TYPE_VERSION},
+\code{REGISTRY_POLICY_SCOPE}, or \code{BLOB_MOUNTING}.}
 
-\item{value}{[required] Setting value that is specified. The following are valid values for the
-basic scan type being used: \code{AWS_NATIVE} or \code{CLAIR}. The following are
-valid values for the registry policy scope being used: \code{V1} or \code{V2}.}
+\item{value}{[required] Setting value that is specified. Valid value for basic scan type:
+\code{AWS_NATIVE}. Valid values for registry policy scope: \code{V2}. Valid values
+for blob mounting: \code{ENABLED} or \code{DISABLED}.}
 }
 \description{
 Allows you to change the basic scan type version or registry policy scope.

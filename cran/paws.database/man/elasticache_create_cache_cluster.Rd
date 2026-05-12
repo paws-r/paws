@@ -276,10 +276,10 @@ is a 60 minute period.}
 
 The Amazon SNS topic owner must be the same as the cluster owner.}
 
-\item{AutoMinorVersionUpgrade}{If you are running Valkey 7.2 and above or Redis OSS engine version 6.0
+\item{AutoMinorVersionUpgrade}{ If you are running Valkey 7.2 and above or Redis OSS engine version 6.0
 and above, set this parameter to yes to opt-in to the next auto minor
 version upgrade campaign. This parameter is disabled for previous
-versions.}
+versions. }
 
 \item{SnapshotRetentionLimit}{The number of days for which ElastiCache retains automatic snapshots
 before deleting them. For example, if you set \code{SnapshotRetentionLimit}

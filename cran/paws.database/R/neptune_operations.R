@@ -265,9 +265,9 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster-snapshot2`
-#' @param KmsKeyId The Amazon Amazon KMS key ID for an encrypted DB cluster snapshot. The
-#' KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the
-#' KMS key alias for the KMS encryption key.
+#' @param KmsKeyId The Amazon KMS key ID for an encrypted DB cluster snapshot. The KMS key
+#' ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key
+#' alias for the KMS encryption key.
 #' 
 #' If you copy an encrypted DB cluster snapshot from your Amazon account,
 #' you can specify a value for `KmsKeyId` to encrypt the copy with a new
@@ -847,7 +847,7 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' encryption key. If you are creating a DB instance with the same Amazon
 #' account that owns the KMS encryption key used to encrypt the new DB
 #' instance, then you can use the KMS key alias instead of the ARN for the
-#' KM encryption key.
+#' KMS encryption key.
 #' 
 #' Not applicable. The KMS key identifier is managed by the DB cluster. For
 #' more information, see [`create_db_cluster`][neptune_create_db_cluster].
@@ -1050,7 +1050,7 @@ neptune_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 #' -   If the source type is a DB snapshot, a `DBSnapshotIdentifier` must
 #'     be supplied.
 #' @param Enabled A Boolean value; set to **true** to activate the subscription, set to
-#' **false** to create the subscription but not active it.
+#' **false** to create the subscription but not activate it.
 #' @param Tags The tags to be applied to the new event subscription.
 #'
 #' @keywords internal
@@ -1093,12 +1093,15 @@ neptune_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sou
 #' Valid values: `1.2.0.0` or above.
 #' @param DeletionProtection The deletion protection setting for the new global database. The global
 #' database can't be deleted when deletion protection is enabled.
+#' @param DatabaseName The name for the new global database (up to 64 alpha-numeric
+#' characters).
+#' @param Tags Tags to assign to the global cluster.
 #' @param StorageEncrypted The storage encryption setting for the new global database cluster.
 #'
 #' @keywords internal
 #'
 #' @rdname neptune_create_global_cluster
-neptune_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClusterIdentifier = NULL, Engine = NULL, EngineVersion = NULL, DeletionProtection = NULL, StorageEncrypted = NULL) {
+neptune_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClusterIdentifier = NULL, Engine = NULL, EngineVersion = NULL, DeletionProtection = NULL, DatabaseName = NULL, Tags = NULL, StorageEncrypted = NULL) {
   op <- new_operation(
     name = "CreateGlobalCluster",
     http_method = "POST",
@@ -1107,7 +1110,7 @@ neptune_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClust
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .neptune$create_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, SourceDBClusterIdentifier = SourceDBClusterIdentifier, Engine = Engine, EngineVersion = EngineVersion, DeletionProtection = DeletionProtection, StorageEncrypted = StorageEncrypted)
+  input <- .neptune$create_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, SourceDBClusterIdentifier = SourceDBClusterIdentifier, Engine = Engine, EngineVersion = EngineVersion, DeletionProtection = DeletionProtection, DatabaseName = DatabaseName, Tags = Tags, StorageEncrypted = StorageEncrypted)
   output <- .neptune$create_global_cluster_output()
   config <- get_config()
   svc <- .neptune$service(config, op)
@@ -1142,7 +1145,7 @@ neptune_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClust
 #' @param FinalDBSnapshotIdentifier The DB cluster snapshot identifier of the new DB cluster snapshot
 #' created when `SkipFinalSnapshot` is set to `false`.
 #' 
-#' Specifying this parameter and also setting the `SkipFinalShapshot`
+#' Specifying this parameter and also setting the `SkipFinalSnapshot`
 #' parameter to true results in an error.
 #' 
 #' Constraints:
@@ -1312,7 +1315,7 @@ neptune_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' @param FinalDBSnapshotIdentifier The DBSnapshotIdentifier of the new DBSnapshot created when
 #' SkipFinalSnapshot is set to `false`.
 #' 
-#' Specifying this parameter and also setting the SkipFinalShapshot
+#' Specifying this parameter and also setting the SkipFinalSnapshot
 #' parameter to true results in an error.
 #' 
 #' Constraints:
@@ -2620,10 +2623,11 @@ neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInst
 #' If you don't specify `AllowDataLoss`, the global database cluster
 #' operation defaults to a switchover.
 #' 
-#' Constraints:Can't be specified together with the `Switchover` parameter.
+#' Constraints: Can't be specified together with the `Switchover`
+#' parameter.
 #' @param Switchover Specifies whether to switch over this global database cluster.
 #' 
-#' Constraints:Can't be specified together with the `AllowDataLoss`
+#' Constraints: Can't be specified together with the `AllowDataLoss`
 #' parameter.
 #'
 #' @keywords internal
@@ -3497,7 +3501,7 @@ neptune_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NUL
 #' Detaches a Neptune DB cluster from a Neptune global database
 #'
 #' @description
-#' Detaches a Neptune DB cluster from a Neptune global database. A secondary cluster becomes a normal standalone cluster with read-write capability instead of being read-only, and no longer receives data from a the primary cluster.
+#' Detaches a Neptune DB cluster from a Neptune global database. A secondary cluster becomes a normal standalone cluster with read-write capability instead of being read-only, and no longer receives data from the primary cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/neptune_remove_from_global_cluster/](https://www.paws-r-sdk.com/docs/neptune_remove_from_global_cluster/) for full documentation.
 #'

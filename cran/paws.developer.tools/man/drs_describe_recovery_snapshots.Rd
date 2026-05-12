@@ -5,23 +5,23 @@
 \title{Lists all Recovery Snapshots for a single Source Server}
 \usage{
 drs_describe_recovery_snapshots(
+  sourceServerID,
   filters = NULL,
-  maxResults = NULL,
-  nextToken = NULL,
   order = NULL,
-  sourceServerID
+  maxResults = NULL,
+  nextToken = NULL
 )
 }
 \arguments{
+\item{sourceServerID}{[required] Filter Recovery Snapshots by Source Server ID.}
+
 \item{filters}{A set of filters by which to return Recovery Snapshots.}
+
+\item{order}{The sorted ordering by which to return Recovery Snapshots.}
 
 \item{maxResults}{Maximum number of Recovery Snapshots to retrieve.}
 
 \item{nextToken}{The token of the next Recovery Snapshot to retrieve.}
-
-\item{order}{The sorted ordering by which to return Recovery Snapshots.}
-
-\item{sourceServerID}{[required] Filter Recovery Snapshots by Source Server ID.}
 }
 \description{
 Lists all Recovery Snapshots for a single Source Server.

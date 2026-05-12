@@ -65,8 +65,6 @@ those events for two years.}
 store. If termination protection is enabled, you cannot delete the event
 data store until termination protection is disabled.}
 
-\item{TagsList}{}
-
 \item{KmsKeyId}{Specifies the KMS key ID to use to encrypt the events delivered by
 CloudTrail. The value can be an alias name prefixed by \verb{alias/}, a fully
 specified ARN to an alias, a fully specified ARN to a key, or a globally

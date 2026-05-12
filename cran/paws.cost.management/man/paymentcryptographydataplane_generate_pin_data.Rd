@@ -44,8 +44,6 @@ that the fill digits are random values from 10 to 15.
 
 The \code{ISO_Format_4} PIN block format is the only one supporting AES
 encryption.}
-
-\item{EncryptionWrappedKey}{}
 }
 \description{
 Generates pin-related data such as PIN, PIN Verification Value (PVV), PIN Block, and PIN Offset during new card issuance or reissuance. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/generate-pin-data.html}{Generate PIN data} in the \emph{Amazon Web Services Payment Cryptography User Guide}.

@@ -23,8 +23,6 @@ results.}
 \item{MaxResults}{The maximum number of results to return per page.}
 
 \item{SearchFilter}{Filters to be applied to search results.}
-
-\item{SearchCriteria}{}
 }
 \description{
 Searches users in an Amazon Connect instance, with optional filtering.

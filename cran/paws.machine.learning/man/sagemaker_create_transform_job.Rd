@@ -97,8 +97,6 @@ job. For more information, see \href{https://docs.aws.amazon.com/sagemaker/lates
 
 \item{Tags}{(Optional) An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
-
-\item{ExperimentConfig}{}
 }
 \description{
 Starts a transform job. A transform job uses a trained model to get inferences on a dataset and saves these results to an Amazon S3 location that you specify.

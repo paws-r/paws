@@ -27,8 +27,6 @@ sagemaker_create_endpoint_config(
 \item{ProductionVariants}{[required] An array of \code{ProductionVariant} objects, one for each model that you
 want to host at this endpoint.}
 
-\item{DataCaptureConfig}{}
-
 \item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
 Web Services resources in different ways, for example, by purpose,
 owner, or environment. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}.}
@@ -88,8 +86,6 @@ can assume to perform actions on your behalf. For more information, see
 
 To be able to pass this role to Amazon SageMaker AI, the caller of this
 action must have the \code{iam:PassRole} permission.}
-
-\item{VpcConfig}{}
 
 \item{EnableNetworkIsolation}{Sets whether all model containers deployed to the endpoint are isolated.
 If they are, no inbound or outbound network calls can be made to or from

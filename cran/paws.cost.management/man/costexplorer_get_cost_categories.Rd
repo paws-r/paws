@@ -25,10 +25,6 @@ category values that match the \code{SearchString} pattern.}
 
 \item{TimePeriod}{[required]}
 
-\item{CostCategoryName}{}
-
-\item{Filter}{}
-
 \item{SortBy}{The value that you sort the data by.
 
 The key represents the cost and usage metrics. The following values are

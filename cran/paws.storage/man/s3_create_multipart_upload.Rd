@@ -451,8 +451,6 @@ or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-import-job
 In this case, Amazon S3 makes a call to KMS every time a copy request is
 made for a KMS-encrypted object.}
 
-\item{RequestPayer}{}
-
 \item{Tagging}{The tag-set for the object. The tag-set must be encoded as URL Query
 parameters.
 

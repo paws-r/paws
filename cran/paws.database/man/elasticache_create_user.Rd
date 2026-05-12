@@ -16,7 +16,7 @@ elasticache_create_user(
 )
 }
 \arguments{
-\item{UserId}{[required] The ID of the user.}
+\item{UserId}{[required] The ID of the user. This value is stored as a lowercase string.}
 
 \item{UserName}{[required] The username of the user.}
 

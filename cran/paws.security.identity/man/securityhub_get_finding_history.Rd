@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_finding_history}
 \alias{securityhub_get_finding_history}
-\title{Returns the history of a Security Hub finding}
+\title{Returns the history of a Security Hub CSPM finding}
 \usage{
 securityhub_get_finding_history(
   FindingIdentifier,
@@ -19,53 +19,53 @@ securityhub_get_finding_history(
 history.
 
 If you provide values for both \code{StartTime} and \code{EndTime}, Security Hub
-returns finding history for the specified time period. If you provide a
-value for \code{StartTime} but not for \code{EndTime}, Security Hub returns
-finding history from the \code{StartTime} to the time at which the API is
-called. If you provide a value for \code{EndTime} but not for \code{StartTime},
-Security Hub returns finding history from the
+CSPM returns finding history for the specified time period. If you
+provide a value for \code{StartTime} but not for \code{EndTime}, Security Hub CSPM
+returns finding history from the \code{StartTime} to the time at which the
+API is called. If you provide a value for \code{EndTime} but not for
+\code{StartTime}, Security Hub CSPM returns finding history from the
 \href{https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_AwsSecurityFindingFilters.html#securityhub-Type-AwsSecurityFindingFilters-CreatedAt}{CreatedAt}
 timestamp of the finding to the \code{EndTime}. If you provide neither
-\code{StartTime} nor \code{EndTime}, Security Hub returns finding history from the
-\code{CreatedAt} timestamp of the finding to the time at which the API is
-called. In all of these scenarios, the response is limited to 100
+\code{StartTime} nor \code{EndTime}, Security Hub CSPM returns finding history
+from the \code{CreatedAt} timestamp of the finding to the time at which the
+API is called. In all of these scenarios, the response is limited to 100
 results.
 
 For more information about the validation and formatting of timestamp
-fields in Security Hub, see
+fields in Security Hub CSPM, see
 \href{https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps}{Timestamps}.}
 
 \item{EndTime}{An ISO 8601-formatted timestamp that indicates the end time of the
 requested finding history.
 
 If you provide values for both \code{StartTime} and \code{EndTime}, Security Hub
-returns finding history for the specified time period. If you provide a
-value for \code{StartTime} but not for \code{EndTime}, Security Hub returns
-finding history from the \code{StartTime} to the time at which the API is
-called. If you provide a value for \code{EndTime} but not for \code{StartTime},
-Security Hub returns finding history from the
+CSPM returns finding history for the specified time period. If you
+provide a value for \code{StartTime} but not for \code{EndTime}, Security Hub CSPM
+returns finding history from the \code{StartTime} to the time at which the
+API is called. If you provide a value for \code{EndTime} but not for
+\code{StartTime}, Security Hub CSPM returns finding history from the
 \href{https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_AwsSecurityFindingFilters.html#securityhub-Type-AwsSecurityFindingFilters-CreatedAt}{CreatedAt}
 timestamp of the finding to the \code{EndTime}. If you provide neither
-\code{StartTime} nor \code{EndTime}, Security Hub returns finding history from the
-\code{CreatedAt} timestamp of the finding to the time at which the API is
-called. In all of these scenarios, the response is limited to 100
+\code{StartTime} nor \code{EndTime}, Security Hub CSPM returns finding history
+from the \code{CreatedAt} timestamp of the finding to the time at which the
+API is called. In all of these scenarios, the response is limited to 100
 results.
 
 For more information about the validation and formatting of timestamp
-fields in Security Hub, see
+fields in Security Hub CSPM, see
 \href{https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps}{Timestamps}.}
 
 \item{NextToken}{A token for pagination purposes. Provide \code{NULL} as the initial value. In
 subsequent requests, provide the token included in the response to get
 up to an additional 100 results of finding history. If you don’t provide
-\code{NextToken}, Security Hub returns up to 100 results of finding history
-for each request.}
+\code{NextToken}, Security Hub CSPM returns up to 100 results of finding
+history for each request.}
 
 \item{MaxResults}{The maximum number of results to be returned. If you don’t provide it,
-Security Hub returns up to 100 results of finding history.}
+Security Hub CSPM returns up to 100 results of finding history.}
 }
 \description{
-Returns the history of a Security Hub finding. The history includes changes made to any fields in the Amazon Web Services Security Finding Format (ASFF) except top-level timestamp fields, such as the \code{CreatedAt} and \code{UpdatedAt} fields.
+Returns the history of a Security Hub CSPM finding. The history includes changes made to any fields in the Amazon Web Services Security Finding Format (ASFF) except top-level timestamp fields, such as the \code{CreatedAt} and \code{UpdatedAt} fields.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_get_finding_history/} for full documentation.
 }

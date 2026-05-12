@@ -5,34 +5,34 @@
 \title{Creates a business glossary term}
 \usage{
 datazone_create_glossary_term(
-  clientToken = NULL,
   domainIdentifier,
   glossaryIdentifier,
-  longDescription = NULL,
   name,
-  shortDescription = NULL,
   status = NULL,
-  termRelations = NULL
+  shortDescription = NULL,
+  longDescription = NULL,
+  termRelations = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain in which this business glossary
 term is created.}
 
 \item{glossaryIdentifier}{[required] The ID of the business glossary in which this term is created.}
 
-\item{longDescription}{The long description of this business glossary term.}
-
 \item{name}{[required] The name of this business glossary term.}
-
-\item{shortDescription}{The short description of this business glossary term.}
 
 \item{status}{The status of this business glossary term.}
 
+\item{shortDescription}{The short description of this business glossary term.}
+
+\item{longDescription}{The long description of this business glossary term.}
+
 \item{termRelations}{The term relations of this business glossary term.}
+
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Creates a business glossary term.

@@ -10,8 +10,6 @@ cloudfront_create_trust_store(Name, CaCertificatesBundleSource, Tags = NULL)
 \item{Name}{[required] A name for the trust store.}
 
 \item{CaCertificatesBundleSource}{[required] The CA certificates bundle source for the trust store.}
-
-\item{Tags}{}
 }
 \description{
 Creates a trust store.

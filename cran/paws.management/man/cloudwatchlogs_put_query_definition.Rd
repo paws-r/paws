@@ -10,7 +10,8 @@ cloudwatchlogs_put_query_definition(
   queryDefinitionId = NULL,
   logGroupNames = NULL,
   queryString,
-  clientToken = NULL
+  clientToken = NULL,
+  parameters = NULL
 )
 }
 \arguments{
@@ -47,6 +48,13 @@ updated definition will contain no log groups.}
 
 \item{clientToken}{Used as an idempotency token, to avoid returning an exception if the
 service receives the same request twice because of a network error.}
+
+\item{parameters}{Use this parameter to include specific query parameters as part of your
+query definition. Query parameters are supported only for Logs Insights
+QL queries. Query parameters allow you to use placeholder variables in
+your query string that are substituted with values at execution time.
+Use the \code{{{parameterName}}} syntax in your query string to reference a
+parameter.}
 }
 \description{
 Creates or updates a query definition for CloudWatch Logs Insights. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html}{Analyzing Log Data with CloudWatch Logs Insights}.

@@ -5,19 +5,19 @@
 \title{Creates a Amazon DataZone blueprint}
 \usage{
 datazone_create_environment_blueprint(
-  description = NULL,
   domainIdentifier,
   name,
+  description = NULL,
   provisioningProperties,
   userParameters = NULL
 )
 }
 \arguments{
-\item{description}{The description of the Amazon DataZone blueprint.}
-
 \item{domainIdentifier}{[required] The identifier of the domain in which this blueprint is created.}
 
 \item{name}{[required] The name of this Amazon DataZone blueprint.}
+
+\item{description}{The description of the Amazon DataZone blueprint.}
 
 \item{provisioningProperties}{[required] The provisioning properties of this Amazon DataZone blueprint.}
 

@@ -85,16 +85,29 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 #'
 #' @description
 #' Deletes a certificate and its associated private key. If this action
-#' succeeds, the certificate no longer appears in the list that can be
-#' displayed by calling the [`list_certificates`][acm_list_certificates]
-#' action or be retrieved by calling the
-#' [`get_certificate`][acm_get_certificate] action. The certificate will
-#' not be available for use by Amazon Web Services services integrated with
-#' ACM.
+#' succeeds, the certificate is not available for use by Amazon Web
+#' Services services integrated with ACM. Deleting a certificate is
+#' eventually consistent. The may be a short delay before the certificate
+#' no longer appears in the list that can be displayed by calling the
+#' [`list_certificates`][acm_list_certificates] action or be retrieved by
+#' calling the [`get_certificate`][acm_get_certificate] action.
 #' 
 #' You cannot delete an ACM certificate that is being used by another
-#' Amazon Web Services service. To delete a certificate that is in use, the
-#' certificate association must first be removed.
+#' Amazon Web Services service. To delete a certificate that is in use, you
+#' must first remove the certificate association using the console or the
+#' CLI for the associated service.
+#' 
+#' Deleting a certificate issued by a private certificate authority (CA)
+#' has no effect on the CA. You will continue to be charged for the CA
+#' until it is deleted. For more information, see [Deleting Your Private
+#' CA](https://docs.aws.amazon.com/privateca/latest/userguide/PCADeleteCA.html)
+#' in the *Private Certificate Authority User Guide*.
+#' 
+#' Deleting a certificate issued by a private certificate authority (CA)
+#' has no effect on the CA. You will continue to be charged for the CA
+#' until it is deleted. For more information, see [Deleting your private
+#' CA](https://docs.aws.amazon.com/privateca/latest/userguide/PCADeleteCA.html)
+#' in the *Amazon Web Services Private Certificate Authority User Guide*.
 #'
 #' @usage
 #' acm_delete_certificate(CertificateArn)
@@ -302,21 +315,24 @@ acm_describe_certificate <- function(CertificateArn) {
 .acm$operations$describe_certificate <- acm_describe_certificate
 
 #' Exports a private certificate issued by a private certificate authority
-#' (CA) or public certificate for use anywhere
+#' (CA) or a public certificate for use anywhere
 #'
 #' @description
 #' Exports a private certificate issued by a private certificate authority
-#' (CA) or public certificate for use anywhere. The exported file contains
-#' the certificate, the certificate chain, and the encrypted private key
-#' associated with the public key that is embedded in the certificate. For
-#' security, you must assign a passphrase for the private key when
-#' exporting it.
+#' (CA) or a public certificate for use anywhere. The exported file
+#' contains the certificate, the certificate chain, and the encrypted
+#' private key associated with the public key that is embedded in the
+#' certificate. For security, you must assign a passphrase for the private
+#' key when exporting it.
 #' 
 #' For information about exporting and formatting a certificate using the
 #' ACM console or CLI, see [Export a private
 #' certificate](https://docs.aws.amazon.com/acm/latest/userguide/export-private.html)
 #' and [Export a public
 #' certificate](https://docs.aws.amazon.com/acm/latest/userguide/export-public-certificate.html).
+#' 
+#' ACM public certificates created prior to June 17, 2025 cannot be
+#' exported.
 #'
 #' @usage
 #' acm_export_certificate(CertificateArn, Passphrase)
@@ -944,10 +960,10 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' certificate](https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html).
 #' In order to renew your Amazon Web Services Private CA certificates with
 #' ACM, you must first [grant the ACM service principal permission to do
-#' so](https://docs.aws.amazon.com/privateca/latest/userguide/). For more
-#' information, see [Testing Managed
-#' Renewal](https://docs.aws.amazon.com/acm/latest/userguide/) in the ACM
-#' User Guide.
+#' so](https://docs.aws.amazon.com/privateca/latest/userguide/assign-permissions.html#PcaPermissions).
+#' For more information, see [Testing Managed
+#' Renewal](https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html)
+#' in the ACM User Guide.
 #'
 #' @usage
 #' acm_renew_certificate(CertificateArn)
@@ -1116,7 +1132,7 @@ acm_renew_certificate <- function(CertificateArn) {
 #' broken. Check the requirements for the Amazon Web Services service where
 #' you plan to deploy your certificate. For more information about
 #' selecting an algorithm, see [Key
-#' algorithms](https://docs.aws.amazon.com/acm/latest/userguide/#algorithms).
+#' algorithms](https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate-characteristics.html#algorithms-term).
 #' 
 #' Algorithms supported for an ACM certificate request include:
 #' 
@@ -1233,8 +1249,7 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 #' `Domain` value or a superdomain of the `Domain` value. For example, if
 #' you requested a certificate for `site.subdomain.example.com` and specify
 #' a **ValidationDomain** of `subdomain.example.com`, ACM sends email to
-#' the domain registrant, technical contact, and administrative contact in
-#' WHOIS and the following five addresses:
+#' the the following five addresses:
 #' 
 #' -   admin@@subdomain.example.com
 #' 
@@ -1287,6 +1302,9 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
 #' @description
 #' Revokes a public ACM certificate. You can only revoke certificates that
 #' have been previously exported.
+#' 
+#' Once a certificate is revoked, you cannot reuse the certificate.
+#' Revoking a certificate is permanent.
 #'
 #' @usage
 #' acm_revoke_certificate(CertificateArn, RevocationReason)
@@ -1336,6 +1354,267 @@ acm_revoke_certificate <- function(CertificateArn, RevocationReason) {
   return(response)
 }
 .acm$operations$revoke_certificate <- acm_revoke_certificate
+
+#' Retrieves a list of certificates matching search criteria
+#'
+#' @description
+#' Retrieves a list of certificates matching search criteria. You can
+#' filter certificates by X.509 attributes and ACM specific properties like
+#' certificate status, type and renewal eligibility. This operation
+#' provides more flexible filtering than
+#' [`list_certificates`][acm_list_certificates] by supporting complex
+#' filter statements.
+#'
+#' @usage
+#' acm_search_certificates(FilterStatement, MaxResults, NextToken, SortBy,
+#'   SortOrder)
+#'
+#' @param FilterStatement A filter statement that defines the search criteria. You can combine
+#' multiple filters using AND, OR, and NOT logical operators to create
+#' complex queries.
+#' @param MaxResults The maximum number of results to return in the response. Default is 100.
+#' @param NextToken Use this parameter only when paginating results and only in a subsequent
+#' request after you receive a response with truncated results. Set it to
+#' the value of `NextToken` from the response you just received.
+#' @param SortBy Specifies the field to sort results by. Valid values are CREATED_AT,
+#' NOT_AFTER, STATUS, RENEWAL_STATUS, EXPORTED, IN_USE, NOT_BEFORE,
+#' KEY_ALGORITHM, TYPE, CERTIFICATE_ARN, COMMON_NAME, REVOKED_AT,
+#' RENEWAL_ELIGIBILITY, ISSUED_AT, MANAGED_BY, EXPORT_OPTION,
+#' VALIDATION_METHOD, and IMPORTED_AT.
+#' @param SortOrder Specifies the order of sorted results. Valid values are ASCENDING or
+#' DESCENDING.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Results = list(
+#'     list(
+#'       CertificateArn = "string",
+#'       X509Attributes = list(
+#'         Issuer = list(
+#'           CommonName = "string",
+#'           DomainComponents = list(
+#'             "string"
+#'           ),
+#'           Country = "string",
+#'           CustomAttributes = list(
+#'             list(
+#'               ObjectIdentifier = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           DistinguishedNameQualifier = "string",
+#'           GenerationQualifier = "string",
+#'           GivenName = "string",
+#'           Initials = "string",
+#'           Locality = "string",
+#'           Organization = "string",
+#'           OrganizationalUnit = "string",
+#'           Pseudonym = "string",
+#'           SerialNumber = "string",
+#'           State = "string",
+#'           Surname = "string",
+#'           Title = "string"
+#'         ),
+#'         Subject = list(
+#'           CommonName = "string",
+#'           DomainComponents = list(
+#'             "string"
+#'           ),
+#'           Country = "string",
+#'           CustomAttributes = list(
+#'             list(
+#'               ObjectIdentifier = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           DistinguishedNameQualifier = "string",
+#'           GenerationQualifier = "string",
+#'           GivenName = "string",
+#'           Initials = "string",
+#'           Locality = "string",
+#'           Organization = "string",
+#'           OrganizationalUnit = "string",
+#'           Pseudonym = "string",
+#'           SerialNumber = "string",
+#'           State = "string",
+#'           Surname = "string",
+#'           Title = "string"
+#'         ),
+#'         SubjectAlternativeNames = list(
+#'           list(
+#'             DirectoryName = list(
+#'               CommonName = "string",
+#'               DomainComponents = list(
+#'                 "string"
+#'               ),
+#'               Country = "string",
+#'               CustomAttributes = list(
+#'                 list(
+#'                   ObjectIdentifier = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               DistinguishedNameQualifier = "string",
+#'               GenerationQualifier = "string",
+#'               GivenName = "string",
+#'               Initials = "string",
+#'               Locality = "string",
+#'               Organization = "string",
+#'               OrganizationalUnit = "string",
+#'               Pseudonym = "string",
+#'               SerialNumber = "string",
+#'               State = "string",
+#'               Surname = "string",
+#'               Title = "string"
+#'             ),
+#'             DnsName = "string",
+#'             IpAddress = "string",
+#'             OtherName = list(
+#'               ObjectIdentifier = "string",
+#'               Value = "string"
+#'             ),
+#'             RegisteredId = "string",
+#'             Rfc822Name = "string",
+#'             UniformResourceIdentifier = "string"
+#'           )
+#'         ),
+#'         ExtendedKeyUsages = list(
+#'           "TLS_WEB_SERVER_AUTHENTICATION"|"TLS_WEB_CLIENT_AUTHENTICATION"|"CODE_SIGNING"|"EMAIL_PROTECTION"|"TIME_STAMPING"|"OCSP_SIGNING"|"IPSEC_END_SYSTEM"|"IPSEC_TUNNEL"|"IPSEC_USER"|"ANY"|"NONE"|"CUSTOM"
+#'         ),
+#'         KeyAlgorithm = "RSA_1024"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1",
+#'         KeyUsages = list(
+#'           "DIGITAL_SIGNATURE"|"NON_REPUDIATION"|"KEY_ENCIPHERMENT"|"DATA_ENCIPHERMENT"|"KEY_AGREEMENT"|"CERTIFICATE_SIGNING"|"CRL_SIGNING"|"ENCIPHER_ONLY"|"DECIPHER_ONLY"|"ANY"|"CUSTOM"
+#'         ),
+#'         SerialNumber = "string",
+#'         NotAfter = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         NotBefore = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       CertificateMetadata = list(
+#'         AcmCertificateMetadata = list(
+#'           CreatedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Exported = TRUE|FALSE,
+#'           ImportedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           InUse = TRUE|FALSE,
+#'           IssuedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           RenewalEligibility = "ELIGIBLE"|"INELIGIBLE",
+#'           RevokedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Status = "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED",
+#'           RenewalStatus = "PENDING_AUTO_RENEWAL"|"PENDING_VALIDATION"|"SUCCESS"|"FAILED",
+#'           Type = "IMPORTED"|"AMAZON_ISSUED"|"PRIVATE",
+#'           ExportOption = "ENABLED"|"DISABLED",
+#'           ManagedBy = "CLOUDFRONT",
+#'           ValidationMethod = "EMAIL"|"DNS"|"HTTP"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_certificates(
+#'   FilterStatement = list(
+#'     And = list(
+#'       list()
+#'     ),
+#'     Or = list(
+#'       list()
+#'     ),
+#'     Not = list(),
+#'     Filter = list(
+#'       CertificateArn = "string",
+#'       X509AttributeFilter = list(
+#'         Subject = list(
+#'           CommonName = list(
+#'             Value = "string",
+#'             ComparisonOperator = "CONTAINS"|"EQUALS"
+#'           )
+#'         ),
+#'         SubjectAlternativeName = list(
+#'           DnsName = list(
+#'             Value = "string",
+#'             ComparisonOperator = "CONTAINS"|"EQUALS"
+#'           )
+#'         ),
+#'         ExtendedKeyUsage = "TLS_WEB_SERVER_AUTHENTICATION"|"TLS_WEB_CLIENT_AUTHENTICATION"|"CODE_SIGNING"|"EMAIL_PROTECTION"|"TIME_STAMPING"|"OCSP_SIGNING"|"IPSEC_END_SYSTEM"|"IPSEC_TUNNEL"|"IPSEC_USER"|"ANY"|"NONE"|"CUSTOM",
+#'         KeyUsage = "DIGITAL_SIGNATURE"|"NON_REPUDIATION"|"KEY_ENCIPHERMENT"|"DATA_ENCIPHERMENT"|"KEY_AGREEMENT"|"CERTIFICATE_SIGNING"|"CRL_SIGNING"|"ENCIPHER_ONLY"|"DECIPHER_ONLY"|"ANY"|"CUSTOM",
+#'         KeyAlgorithm = "RSA_1024"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1",
+#'         SerialNumber = "string",
+#'         NotAfter = list(
+#'           Start = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           End = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         ),
+#'         NotBefore = list(
+#'           Start = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           End = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       AcmCertificateMetadataFilter = list(
+#'         Status = "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED",
+#'         RenewalStatus = "PENDING_AUTO_RENEWAL"|"PENDING_VALIDATION"|"SUCCESS"|"FAILED",
+#'         Type = "IMPORTED"|"AMAZON_ISSUED"|"PRIVATE",
+#'         InUse = TRUE|FALSE,
+#'         Exported = TRUE|FALSE,
+#'         ExportOption = "ENABLED"|"DISABLED",
+#'         ManagedBy = "CLOUDFRONT",
+#'         ValidationMethod = "EMAIL"|"DNS"|"HTTP"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   SortBy = "CREATED_AT"|"NOT_AFTER"|"STATUS"|"RENEWAL_STATUS"|"EXPORTED"|"IN_USE"|"NOT_BEFORE"|"KEY_ALGORITHM"|"TYPE"|"CERTIFICATE_ARN"|"COMMON_NAME"|"REVOKED_AT"|"RENEWAL_ELIGIBILITY"|"ISSUED_AT"|"MANAGED_BY"|"EXPORT_OPTION"|"VALIDATION_METHOD"|"IMPORTED_AT",
+#'   SortOrder = "ASCENDING"|"DESCENDING"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_search_certificates
+#'
+#' @aliases acm_search_certificates
+acm_search_certificates <- function(FilterStatement = NULL, MaxResults = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "SearchCertificates",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results"),
+    stream_api = FALSE
+  )
+  input <- .acm$search_certificates_input(FilterStatement = FilterStatement, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .acm$search_certificates_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$search_certificates <- acm_search_certificates
 
 #' Updates a certificate
 #'

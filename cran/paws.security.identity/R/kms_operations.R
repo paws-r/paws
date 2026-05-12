@@ -838,7 +838,10 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_decrypt/](https://www.paws-r-sdk.com/docs/kms_decrypt/) for full documentation.
 #'
-#' @param CiphertextBlob &#91;required&#93; Ciphertext to be decrypted. The blob includes metadata.
+#' @param CiphertextBlob Ciphertext to be decrypted. The blob includes metadata.
+#' 
+#' This parameter is required in all cases except when `DryRun` is `true`
+#' and `DryRunModifiers` is set to `IGNORE_CIPHERTEXT`.
 #' @param EncryptionContext Specifies the encryption context to use when decrypting the data. An
 #' encryption context is valid only for [cryptographic
 #' operations](https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations)
@@ -873,15 +876,16 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' operation throws an `IncorrectKeyException`.
 #' 
 #' This parameter is required only when the ciphertext was encrypted under
-#' an asymmetric KMS key. If you used a symmetric encryption KMS key, KMS
-#' can get the KMS key from metadata that it adds to the symmetric
+#' an asymmetric KMS key or when `DryRun` is `true` and `DryRunModifiers`
+#' is set to `IGNORE_CIPHERTEXT`. If you used a symmetric encryption KMS
+#' key, KMS can get the KMS key from metadata that it adds to the symmetric
 #' ciphertext blob. However, it is always recommended as a best practice.
 #' This practice ensures that you use the KMS key that you intend.
 #' 
 #' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
 #' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' key in a different Amazon Web Services account, you should use the key
+#' ARN or alias ARN.
 #' 
 #' For example:
 #' 
@@ -936,11 +940,22 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' To learn more about how to use this parameter, see [Testing your
 #' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRunModifiers Specifies the modifiers to apply to the dry run operation.
+#' `DryRunModifiers` is an optional parameter that only applies when
+#' `DryRun` is set to `true`.
+#' 
+#' When set to `IGNORE_CIPHERTEXT`, KMS performs only authorization
+#' validation without ciphertext validation. This allows you to test
+#' permissions without requiring a valid ciphertext blob.
+#' 
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname kms_decrypt
-kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = NULL, KeyId = NULL, EncryptionAlgorithm = NULL, Recipient = NULL, DryRun = NULL) {
+kms_decrypt <- function(CiphertextBlob = NULL, EncryptionContext = NULL, GrantTokens = NULL, KeyId = NULL, EncryptionAlgorithm = NULL, Recipient = NULL, DryRun = NULL, DryRunModifiers = NULL) {
   op <- new_operation(
     name = "Decrypt",
     http_method = "POST",
@@ -949,7 +964,7 @@ kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kms$decrypt_input(CiphertextBlob = CiphertextBlob, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, KeyId = KeyId, EncryptionAlgorithm = EncryptionAlgorithm, Recipient = Recipient, DryRun = DryRun)
+  input <- .kms$decrypt_input(CiphertextBlob = CiphertextBlob, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, KeyId = KeyId, EncryptionAlgorithm = EncryptionAlgorithm, Recipient = Recipient, DryRun = DryRun, DryRunModifiers = DryRunModifiers)
   output <- .kms$decrypt_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -2221,6 +2236,52 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL, R
 }
 .kms$operations$generate_random <- kms_generate_random
 
+#' Returns usage information about the last successful cryptographic
+#' operation performed with a specified KMS key, including the operation
+#' type, timestamp, and associated CloudTrail event ID
+#'
+#' @description
+#' Returns usage information about the last successful cryptographic operation performed with a specified KMS key, including the operation type, timestamp, and associated CloudTrail event ID.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kms_get_key_last_usage/](https://www.paws-r-sdk.com/docs/kms_get_key_last_usage/) for full documentation.
+#'
+#' @param KeyId &#91;required&#93; Identifies the KMS key to get usage information for. To specify a KMS
+#' key, use its key ID or key ARN. Alias names are not supported.
+#' 
+#' Specify the key ID or key ARN of the KMS key.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN:
+#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a KMS key, use
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#'
+#' @keywords internal
+#'
+#' @rdname kms_get_key_last_usage
+kms_get_key_last_usage <- function(KeyId) {
+  op <- new_operation(
+    name = "GetKeyLastUsage",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kms$get_key_last_usage_input(KeyId = KeyId)
+  output <- .kms$get_key_last_usage_output()
+  config <- get_config()
+  svc <- .kms$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kms$operations$get_key_last_usage <- kms_get_key_last_usage
+
 #' Gets a key policy attached to the specified KMS key
 #'
 #' @description
@@ -3095,7 +3156,10 @@ kms_put_key_policy <- function(KeyId, PolicyName = NULL, Policy, BypassPolicyLoc
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_re_encrypt/](https://www.paws-r-sdk.com/docs/kms_re_encrypt/) for full documentation.
 #'
-#' @param CiphertextBlob &#91;required&#93; Ciphertext of the data to reencrypt.
+#' @param CiphertextBlob Ciphertext of the data to reencrypt.
+#' 
+#' This parameter is required in all cases except when `DryRun` is `true`
+#' and `DryRunModifiers` is set to `IGNORE_CIPHERTEXT`.
 #' @param SourceEncryptionContext Specifies the encryption context to use to decrypt the ciphertext. Enter
 #' the same encryption context that was used to encrypt the ciphertext.
 #' 
@@ -3118,15 +3182,16 @@ kms_put_key_policy <- function(KeyId, PolicyName = NULL, Policy, BypassPolicyLoc
 #' operation throws an `IncorrectKeyException`.
 #' 
 #' This parameter is required only when the ciphertext was encrypted under
-#' an asymmetric KMS key. If you used a symmetric encryption KMS key, KMS
-#' can get the KMS key from metadata that it adds to the symmetric
+#' an asymmetric KMS key or when `DryRun` is `true` and `DryRunModifiers`
+#' is set to `IGNORE_CIPHERTEXT`. If you used a symmetric encryption KMS
+#' key, KMS can get the KMS key from metadata that it adds to the symmetric
 #' ciphertext blob. However, it is always recommended as a best practice.
 #' This practice ensures that you use the KMS key that you intend.
 #' 
 #' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
 #' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' key in a different Amazon Web Services account, you should use the key
+#' ARN or alias ARN.
 #' 
 #' For example:
 #' 
@@ -3219,11 +3284,22 @@ kms_put_key_policy <- function(KeyId, PolicyName = NULL, Policy, BypassPolicyLoc
 #' To learn more about how to use this parameter, see [Testing your
 #' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRunModifiers Specifies the modifiers to apply to the dry run operation.
+#' `DryRunModifiers` is an optional parameter that only applies when
+#' `DryRun` is set to `true`.
+#' 
+#' When set to `IGNORE_CIPHERTEXT`, KMS performs only authorization
+#' validation without ciphertext validation. This allows you to test
+#' permissions without requiring a valid ciphertext blob.
+#' 
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname kms_re_encrypt
-kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, SourceKeyId = NULL, DestinationKeyId, DestinationEncryptionContext = NULL, SourceEncryptionAlgorithm = NULL, DestinationEncryptionAlgorithm = NULL, GrantTokens = NULL, DryRun = NULL) {
+kms_re_encrypt <- function(CiphertextBlob = NULL, SourceEncryptionContext = NULL, SourceKeyId = NULL, DestinationKeyId, DestinationEncryptionContext = NULL, SourceEncryptionAlgorithm = NULL, DestinationEncryptionAlgorithm = NULL, GrantTokens = NULL, DryRun = NULL, DryRunModifiers = NULL) {
   op <- new_operation(
     name = "ReEncrypt",
     http_method = "POST",
@@ -3232,7 +3308,7 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kms$re_encrypt_input(CiphertextBlob = CiphertextBlob, SourceEncryptionContext = SourceEncryptionContext, SourceKeyId = SourceKeyId, DestinationKeyId = DestinationKeyId, DestinationEncryptionContext = DestinationEncryptionContext, SourceEncryptionAlgorithm = SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm = DestinationEncryptionAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
+  input <- .kms$re_encrypt_input(CiphertextBlob = CiphertextBlob, SourceEncryptionContext = SourceEncryptionContext, SourceKeyId = SourceKeyId, DestinationKeyId = DestinationKeyId, DestinationEncryptionContext = DestinationEncryptionContext, SourceEncryptionAlgorithm = SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm = DestinationEncryptionAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun, DryRunModifiers = DryRunModifiers)
   output <- .kms$re_encrypt_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -3693,6 +3769,11 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' -   ED25519_PH_SHA_512 signing algorithm requires KMS
 #'     `MessageType:DIGEST`
 #' 
+#' When you specify the ED25519_PH_SHA_512 signing algorithm with
+#' `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described
+#' in Step 1 of Section 7.8.1 in FIPS 186-5. This means the input is hashed
+#' twice: once by you and once by KMS.
+#' 
 #' When the value of `MessageType` is `DIGEST`, the length of the `Message`
 #' value must match the length of hashed messages for the specified signing
 #' algorithm.
@@ -3942,8 +4023,8 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 #' Do not include confidential or sensitive information in this field. This
 #' field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' To change this value, an CloudHSM key store must be disconnected. An
-#' external key store can be connected or disconnected.
+#' To change this value, the custom key store can be connected or
+#' disconnected.
 #' @param KeyStorePassword Enter the current password of the `kmsuser` crypto user (CU) in the
 #' CloudHSM cluster that is associated with the custom key store. This
 #' parameter is valid only for custom key stores with a
@@ -4225,6 +4306,11 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' 
 #' -   ED25519_PH_SHA_512 signing algorithm requires KMS
 #'     `MessageType:DIGEST`
+#' 
+#' When you specify the ED25519_PH_SHA_512 signing algorithm with
+#' `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described
+#' in Step 1 of Section 7.8.1 in FIPS 186-5. This means the input is hashed
+#' twice: once by you and once by KMS.
 #' 
 #' When the value of `MessageType` is `DIGEST`, the length of the `Message`
 #' value must match the length of hashed messages for the specified signing

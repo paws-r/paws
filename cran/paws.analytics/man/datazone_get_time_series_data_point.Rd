@@ -8,8 +8,8 @@ datazone_get_time_series_data_point(
   domainIdentifier,
   entityIdentifier,
   entityType,
-  formName,
-  identifier
+  identifier,
+  formName
 )
 }
 \arguments{
@@ -20,10 +20,10 @@ want to get the data point.}
 
 \item{entityType}{[required] The type of the asset for which you want to get the data point.}
 
+\item{identifier}{[required] The ID of the data point that you want to get.}
+
 \item{formName}{[required] The name of the time series form that houses the data point that you
 want to get.}
-
-\item{identifier}{[required] The ID of the data point that you want to get.}
 }
 \description{
 Gets the existing data point for the asset.

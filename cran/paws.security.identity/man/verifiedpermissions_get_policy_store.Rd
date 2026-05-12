@@ -7,7 +7,17 @@
 verifiedpermissions_get_policy_store(policyStoreId, tags = NULL)
 }
 \arguments{
-\item{policyStoreId}{[required] Specifies the ID of the policy store that you want information about.}
+\item{policyStoreId}{[required] Specifies the policy store that you want information about.
+
+To specify a policy store, use its ID or alias name. When using an alias
+name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use
+\code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
 
 \item{tags}{Specifies whether to return the tags that are attached to the policy
 store. If this parameter is included in the API call, the tags are

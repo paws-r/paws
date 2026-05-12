@@ -20,7 +20,8 @@ elasticsearchservice_create_elasticsearch_domain(
   DomainEndpointOptions = NULL,
   AdvancedSecurityOptions = NULL,
   AutoTuneOptions = NULL,
-  TagList = NULL
+  TagList = NULL,
+  DeploymentStrategyOptions = NULL
 )
 }
 \arguments{
@@ -78,6 +79,8 @@ endpoint.}
 \item{AutoTuneOptions}{Specifies Auto-Tune options.}
 
 \item{TagList}{A list of \code{Tag} added during domain creation.}
+
+\item{DeploymentStrategyOptions}{Specifies the deployment strategy options.}
 }
 \description{
 Creates a new Elasticsearch domain. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains" target="_blank">}}Creating Elasticsearch Domains\if{html}{\out{</a>}} in the \emph{Amazon Elasticsearch Service Developer Guide}.

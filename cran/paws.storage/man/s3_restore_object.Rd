@@ -43,10 +43,6 @@ in the \emph{Amazon S3 User Guide}.}
 
 \item{VersionId}{VersionId used to reference a specific version of the object.}
 
-\item{RestoreRequest}{}
-
-\item{RequestPayer}{}
-
 \item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
 you use the SDK. This header will not provide any additional
 functionality if you don't use the SDK. When you send this header, there

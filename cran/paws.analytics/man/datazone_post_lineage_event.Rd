@@ -4,16 +4,16 @@
 \alias{datazone_post_lineage_event}
 \title{Posts a data lineage event}
 \usage{
-datazone_post_lineage_event(clientToken = NULL, domainIdentifier, event)
+datazone_post_lineage_event(domainIdentifier, event, clientToken = NULL)
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
 \item{domainIdentifier}{[required] The ID of the domain where you want to post a data lineage event.}
 
 \item{event}{[required] The data lineage event that you want to post. Only open-lineage run
 event are supported as events.}
+
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Posts a data lineage event.

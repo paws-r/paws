@@ -17,7 +17,8 @@ neptunedata_start_loader_job(
   updateSingleCardinalityProperties = NULL,
   queueRequest = NULL,
   dependencies = NULL,
-  userProvidedEdgeIds = NULL
+  userProvidedEdgeIds = NULL,
+  edgeOnlyLoad = NULL
 )
 }
 \arguments{
@@ -69,8 +70,8 @@ provided here should be attached to the DB cluster (see \href{https://docs.aws.a
 
 \emph{Default value}: \code{AUTO}.
 \itemize{
-\item \code{RESUME}   –   In RESUME mode, the loader looks for a previous load
-from this source, and if it finds one, resumes that load job. If no
+\item \code{RESUME} - In RESUME mode, the loader looks for a previous load from
+this source, and if it finds one, resumes that load job. If no
 previous load job is found, the loader stops.
 
 The loader avoids reloading files that were successfully loaded in a
@@ -79,19 +80,19 @@ previously loaded data from your Neptune cluster, that data is not
 reloaded in this mode. If a previous load job loaded all files from
 the same source successfully, nothing is reloaded, and the loader
 returns success.
-\item \code{NEW}   –   In NEW mode, the creates a new load request regardless
-of any previous loads. You can use this mode to reload all the data
+\item \code{NEW} - In NEW mode, the creates a new load request regardless of
+any previous loads. You can use this mode to reload all the data
 from a source after dropping previously loaded data from your
 Neptune cluster, or to load new data available at the same source.
-\item \code{AUTO}   –   In AUTO mode, the loader looks for a previous load job
-from the same source, and if it finds one, resumes that job, just as
-in \code{RESUME} mode.
+\item \code{AUTO} - In AUTO mode, the loader looks for a previous load job from
+the same source, and if it finds one, resumes that job, just as in
+\code{RESUME} mode.
 
 If the loader doesn't find a previous load job from the same source,
 it loads all data from the source, just as in \code{NEW} mode.
 }}
 
-\item{failOnError}{\strong{\code{failOnError}}   –   A flag to toggle a complete stop on an error.
+\item{failOnError}{\strong{\code{failOnError}} - A flag to toggle a complete stop on an error.
 
 \emph{Allowed values}: \code{"TRUE"}, \code{"FALSE"}.
 
@@ -135,16 +136,16 @@ setting \code{parallelism} to a lower setting and retrying the load command.}
 parser configuration values. Each of the child parameters is also
 optional:
 \itemize{
-\item \strong{\code{namedGraphUri}}   –   The default graph for all RDF formats when
-no graph is specified (for non-quads formats and NQUAD entries with
-no graph).
+\item \strong{\code{namedGraphUri}} - The default graph for all RDF formats when no
+graph is specified (for non-quads formats and NQUAD entries with no
+graph).
 
 The default is
 \verb{https://aws.amazon.com/neptune/vocab/v01/DefaultNamedGraph}.
-\item \strong{\code{baseUri}}   –   The base URI for RDF/XML and Turtle formats.
+\item \strong{\code{baseUri}} - The base URI for RDF/XML and Turtle formats.
 
 The default is \verb{https://aws.amazon.com/neptune/default}.
-\item \strong{\code{allowEmptyStrings}}   –   Gremlin users need to be able to pass
+\item \strong{\code{allowEmptyStrings}} - Gremlin users need to be able to pass
 empty string values("") as node and edge properties when loading CSV
 data. If \code{allowEmptyStrings} is set to \code{false} (the default), such
 empty strings are treated as nulls and are not loaded.
@@ -236,6 +237,19 @@ having to reload any relationships that have already been loaded. If
 relationship IDs have not been explicitly assigned, the loader cannot
 resume a failed load if any relationship file has had to be corrected,
 and must instead reload all the relationships.}
+
+\item{edgeOnlyLoad}{\strong{\code{edgeOnlyLoad}} - A flag that controls file processing order during
+bulk loading.
+
+\emph{Allowed values}: \code{"TRUE"}, \code{"FALSE"}.
+
+\emph{Default value}: \code{"FALSE"}.
+
+When this parameter is set to "FALSE", the loader automatically loads
+vertex files first, then edge files afterwards. It does this by first
+scanning all files to determine their contents (vertices or edges). When
+this parameter is set to "TRUE", the loader skips the initial scanning
+phase and immediately loads all files in the order they appear.}
 }
 \description{
 Starts a Neptune bulk loader job to load data from an Amazon S3 bucket into a Neptune DB instance. See \href{https://docs.aws.amazon.com/neptune/latest/userguide/bulk-load.html}{Using the Amazon Neptune Bulk Loader to Ingest Data}.

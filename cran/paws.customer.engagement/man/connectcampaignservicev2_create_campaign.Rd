@@ -12,6 +12,7 @@ connectcampaignservicev2_create_campaign(
   source = NULL,
   connectCampaignFlowArn = NULL,
   schedule = NULL,
+  entryLimitsConfig = NULL,
   communicationTimeConfig = NULL,
   communicationLimitsOverride = NULL,
   tags = NULL
@@ -21,22 +22,6 @@ connectcampaignservicev2_create_campaign(
 \item{name}{[required]}
 
 \item{connectInstanceId}{[required]}
-
-\item{channelSubtypeConfig}{}
-
-\item{type}{}
-
-\item{source}{}
-
-\item{connectCampaignFlowArn}{}
-
-\item{schedule}{}
-
-\item{communicationTimeConfig}{}
-
-\item{communicationLimitsOverride}{}
-
-\item{tags}{}
 }
 \description{
 Creates a campaign for the specified Amazon Connect account. This API is idempotent.

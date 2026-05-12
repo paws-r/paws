@@ -19,12 +19,6 @@ budgets_describe_budget_action_histories(
 \item{BudgetName}{[required]}
 
 \item{ActionId}{[required] A system-generated universally unique identifier (UUID) for the action.}
-
-\item{TimePeriod}{}
-
-\item{MaxResults}{}
-
-\item{NextToken}{}
 }
 \description{
 Describes a budget action history detail.

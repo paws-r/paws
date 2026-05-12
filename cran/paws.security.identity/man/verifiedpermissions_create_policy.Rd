@@ -7,7 +7,8 @@
 verifiedpermissions_create_policy(
   clientToken = NULL,
   policyStoreId,
-  definition
+  definition,
+  name = NULL
 )
 }
 \arguments{
@@ -29,12 +30,30 @@ eight hours, the next request with the same parameters performs the
 operation again regardless of the value of \code{ClientToken}.}
 
 \item{policyStoreId}{[required] Specifies the \code{PolicyStoreId} of the policy store you want to store the
-policy in.}
+policy in.
+
+To specify a policy store, use its ID or alias name. When using an alias
+name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use
+\code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
 
 \item{definition}{[required] A structure that specifies the policy type and content to use for the
 new policy. You must include either a static or a templateLinked
 element. The policy content must be written in the Cedar policy
 language.}
+
+\item{name}{Specifies a name for the policy that is unique among all policies within
+the policy store. You can use the name in place of the policy ID in API
+operations that reference the policy. The name must be prefixed with
+\verb{name/}.
+
+If you specify a name that is already associated with another policy in
+the policy store, you receive a \code{ConflictException} error.}
 }
 \description{
 Creates a Cedar policy and saves it in the specified policy store. You can create either a static policy or a policy linked to a policy template.

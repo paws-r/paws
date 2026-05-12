@@ -75,7 +75,8 @@ billing_associate_source_views <- function(arn, sourceViews) {
 #' view.
 #' @param dataFilterExpression See
 #' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_Expression.html).
-#' Billing view only supports `LINKED_ACCOUNT` and `Tags`.
+#' Billing view only supports `LINKED_ACCOUNT`, `Tags`, and
+#' `CostCategories`.
 #' @param clientToken A unique, case-sensitive identifier you specify to ensure idempotency of
 #' the request. Idempotency ensures that an API request completes no more
 #' than one time. If the original request completes successfully, any
@@ -111,6 +112,12 @@ billing_associate_source_views <- function(arn, sourceViews) {
 #'       )
 #'     ),
 #'     tags = list(
+#'       key = "string",
+#'       values = list(
+#'         "string"
+#'       )
+#'     ),
+#'     costCategories = list(
 #'       key = "string",
 #'       values = list(
 #'         "string"
@@ -300,6 +307,12 @@ billing_disassociate_source_views <- function(arn, sourceViews) {
 #'         )
 #'       ),
 #'       tags = list(
+#'         key = "string",
+#'         values = list(
+#'           "string"
+#'         )
+#'       ),
+#'       costCategories = list(
 #'         key = "string",
 #'         values = list(
 #'           "string"
@@ -759,7 +772,8 @@ billing_untag_resource <- function(resourceArn, resourceTagKeys) {
 #' @param description The description of the billing view.
 #' @param dataFilterExpression See
 #' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_Expression.html).
-#' Billing view only supports `LINKED_ACCOUNT` and `Tags`.
+#' Billing view only supports `LINKED_ACCOUNT`, `Tags`, and
+#' `CostCategories`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -786,6 +800,12 @@ billing_untag_resource <- function(resourceArn, resourceTagKeys) {
 #'       )
 #'     ),
 #'     tags = list(
+#'       key = "string",
+#'       values = list(
+#'         "string"
+#'       )
+#'     ),
+#'     costCategories = list(
 #'       key = "string",
 #'       values = list(
 #'         "string"

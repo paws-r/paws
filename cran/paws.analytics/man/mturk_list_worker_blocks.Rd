@@ -9,8 +9,6 @@ mturk_list_worker_blocks(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{Pagination token}
-
-\item{MaxResults}{}
 }
 \description{
 The \code{ListWorkersBlocks} operation retrieves a list of Workers who are blocked from working on your HITs.

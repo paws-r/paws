@@ -28,8 +28,6 @@ see
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html}{CostCategoryRule}
 .}
 
-\item{DefaultValue}{}
-
 \item{SplitChargeRules}{The split charge rules used to allocate your charges between your cost
 category values.}
 }

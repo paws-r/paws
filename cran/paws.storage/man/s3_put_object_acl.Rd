@@ -96,8 +96,6 @@ This functionality is not supported for Amazon S3 on Outposts.}
 
 \item{Key}{[required] Key for which the PUT action was initiated.}
 
-\item{RequestPayer}{}
-
 \item{VersionId}{Version ID used to reference a specific version of the object.
 
 This functionality is not supported for directory buckets.}

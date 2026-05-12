@@ -108,6 +108,9 @@ NULL
 #'  \link[=sagemaker_batch_reboot_cluster_nodes]{batch_reboot_cluster_nodes} \tab Reboots specific nodes within a SageMaker HyperPod cluster using a soft recovery mechanism\cr
 #'  \link[=sagemaker_batch_replace_cluster_nodes]{batch_replace_cluster_nodes} \tab Replaces specific nodes within a SageMaker HyperPod cluster with new hardware\cr
 #'  \link[=sagemaker_create_action]{create_action} \tab Creates an action\cr
+#'  \link[=sagemaker_create_ai_benchmark_job]{create_ai_benchmark_job} \tab Creates a benchmark job that runs performance benchmarks against inference infrastructure using a predefined AI workload configuration\cr
+#'  \link[=sagemaker_create_ai_recommendation_job]{create_ai_recommendation_job} \tab Creates a recommendation job that generates intelligent optimization recommendations for generative AI inference deployments\cr
+#'  \link[=sagemaker_create_ai_workload_config]{create_ai_workload_config} \tab Creates a reusable AI workload configuration that defines datasets, data sources, and benchmark tool settings for consistent performance testing of generative AI inference deployments on Amazon SageMaker AI\cr
 #'  \link[=sagemaker_create_algorithm]{create_algorithm} \tab Create a machine learning algorithm that you can use in SageMaker and list in the Amazon Web Services Marketplace\cr
 #'  \link[=sagemaker_create_app]{create_app} \tab Creates a running app for the specified UserProfile\cr
 #'  \link[=sagemaker_create_app_image_config]{create_app_image_config} \tab Creates a configuration for running a SageMaker AI image as a KernelGateway app\cr
@@ -176,6 +179,9 @@ NULL
 #'  \link[=sagemaker_create_workforce]{create_workforce} \tab Use this operation to create a workforce\cr
 #'  \link[=sagemaker_create_workteam]{create_workteam} \tab Creates a new work team for labeling your data\cr
 #'  \link[=sagemaker_delete_action]{delete_action} \tab Deletes an action\cr
+#'  \link[=sagemaker_delete_ai_benchmark_job]{delete_ai_benchmark_job} \tab Deletes the specified AI benchmark job\cr
+#'  \link[=sagemaker_delete_ai_recommendation_job]{delete_ai_recommendation_job} \tab Deletes the specified AI recommendation job\cr
+#'  \link[=sagemaker_delete_ai_workload_config]{delete_ai_workload_config} \tab Deletes the specified AI workload configuration\cr
 #'  \link[=sagemaker_delete_algorithm]{delete_algorithm} \tab Removes the specified algorithm from your account\cr
 #'  \link[=sagemaker_delete_app]{delete_app} \tab Used to stop and delete an app\cr
 #'  \link[=sagemaker_delete_app_image_config]{delete_app_image_config} \tab Deletes an AppImageConfig\cr
@@ -235,6 +241,9 @@ NULL
 #'  \link[=sagemaker_delete_workteam]{delete_workteam} \tab Deletes an existing work team\cr
 #'  \link[=sagemaker_deregister_devices]{deregister_devices} \tab Deregisters the specified devices\cr
 #'  \link[=sagemaker_describe_action]{describe_action} \tab Describes an action\cr
+#'  \link[=sagemaker_describe_ai_benchmark_job]{describe_ai_benchmark_job} \tab Returns details of an AI benchmark job, including its status, configuration, target endpoint, and timing information\cr
+#'  \link[=sagemaker_describe_ai_recommendation_job]{describe_ai_recommendation_job} \tab Returns details of an AI recommendation job, including its status, model source, performance targets, optimization recommendations, and deployment configurations\cr
+#'  \link[=sagemaker_describe_ai_workload_config]{describe_ai_workload_config} \tab Returns details of an AI workload configuration, including the dataset configuration, benchmark tool settings, tags, and creation time\cr
 #'  \link[=sagemaker_describe_algorithm]{describe_algorithm} \tab Returns a description of the specified algorithm that is in your account\cr
 #'  \link[=sagemaker_describe_app]{describe_app} \tab Describes the app\cr
 #'  \link[=sagemaker_describe_app_image_config]{describe_app_image_config} \tab Describes an AppImageConfig\cr
@@ -298,6 +307,7 @@ NULL
 #'  \link[=sagemaker_describe_subscribed_workteam]{describe_subscribed_workteam} \tab Gets information about a work team provided by a vendor\cr
 #'  \link[=sagemaker_describe_training_job]{describe_training_job} \tab Returns information about a training job\cr
 #'  \link[=sagemaker_describe_training_plan]{describe_training_plan} \tab Retrieves detailed information about a specific training plan\cr
+#'  \link[=sagemaker_describe_training_plan_extension_history]{describe_training_plan_extension_history} \tab Retrieves the extension history for a specified training plan\cr
 #'  \link[=sagemaker_describe_transform_job]{describe_transform_job} \tab Returns information about a transform job\cr
 #'  \link[=sagemaker_describe_trial]{describe_trial} \tab Provides a list of a trial's properties\cr
 #'  \link[=sagemaker_describe_trial_component]{describe_trial_component} \tab Provides a list of a trials component's properties\cr
@@ -308,6 +318,7 @@ NULL
 #'  \link[=sagemaker_disable_sagemaker_servicecatalog_portfolio]{disable_sagemaker_servicecatalog_portfolio} \tab Disables using Service Catalog in SageMaker\cr
 #'  \link[=sagemaker_disassociate_trial_component]{disassociate_trial_component} \tab Disassociates a trial component from a trial\cr
 #'  \link[=sagemaker_enable_sagemaker_servicecatalog_portfolio]{enable_sagemaker_servicecatalog_portfolio} \tab Enables using Service Catalog in SageMaker\cr
+#'  \link[=sagemaker_extend_training_plan]{extend_training_plan} \tab Extends an existing training plan by purchasing an extension offering\cr
 #'  \link[=sagemaker_get_device_fleet_report]{get_device_fleet_report} \tab Describes a fleet\cr
 #'  \link[=sagemaker_get_lineage_group_policy]{get_lineage_group_policy} \tab The resource policy for the lineage group\cr
 #'  \link[=sagemaker_get_model_package_group_policy]{get_model_package_group_policy} \tab Gets a resource policy that manages access for a model group\cr
@@ -316,6 +327,9 @@ NULL
 #'  \link[=sagemaker_get_search_suggestions]{get_search_suggestions} \tab An auto-complete API for the search functionality in the SageMaker console\cr
 #'  \link[=sagemaker_import_hub_content]{import_hub_content} \tab Import hub content\cr
 #'  \link[=sagemaker_list_actions]{list_actions} \tab Lists the actions in your account and their properties\cr
+#'  \link[=sagemaker_list_ai_benchmark_jobs]{list_ai_benchmark_jobs} \tab Returns a list of AI benchmark jobs in your account\cr
+#'  \link[=sagemaker_list_ai_recommendation_jobs]{list_ai_recommendation_jobs} \tab Returns a list of AI recommendation jobs in your account\cr
+#'  \link[=sagemaker_list_ai_workload_configs]{list_ai_workload_configs} \tab Returns a list of AI workload configurations in your account\cr
 #'  \link[=sagemaker_list_algorithms]{list_algorithms} \tab Lists the machine learning algorithms that have been created\cr
 #'  \link[=sagemaker_list_aliases]{list_aliases} \tab Lists the aliases of a specified image or image version\cr
 #'  \link[=sagemaker_list_app_image_configs]{list_app_image_configs} \tab Lists the AppImageConfigs in your account and their properties\cr
@@ -409,6 +423,7 @@ NULL
 #'  \link[=sagemaker_search_training_plan_offerings]{search_training_plan_offerings} \tab Searches for available training plan offerings based on specified criteria\cr
 #'  \link[=sagemaker_send_pipeline_execution_step_failure]{send_pipeline_execution_step_failure} \tab Notifies the pipeline that the execution of a callback step failed, along with a message describing why\cr
 #'  \link[=sagemaker_send_pipeline_execution_step_success]{send_pipeline_execution_step_success} \tab Notifies the pipeline that the execution of a callback step succeeded and provides a list of the step's output parameters\cr
+#'  \link[=sagemaker_start_cluster_health_check]{start_cluster_health_check} \tab Start deep health checks for a SageMaker HyperPod cluster\cr
 #'  \link[=sagemaker_start_edge_deployment_stage]{start_edge_deployment_stage} \tab Starts a stage in an edge deployment plan\cr
 #'  \link[=sagemaker_start_inference_experiment]{start_inference_experiment} \tab Starts an inference experiment\cr
 #'  \link[=sagemaker_start_mlflow_tracking_server]{start_mlflow_tracking_server} \tab Programmatically start an MLflow Tracking Server\cr
@@ -416,6 +431,8 @@ NULL
 #'  \link[=sagemaker_start_notebook_instance]{start_notebook_instance} \tab Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume\cr
 #'  \link[=sagemaker_start_pipeline_execution]{start_pipeline_execution} \tab Starts a pipeline execution\cr
 #'  \link[=sagemaker_start_session]{start_session} \tab Initiates a remote connection session between a local integrated development environments (IDEs) and a remote SageMaker space\cr
+#'  \link[=sagemaker_stop_ai_benchmark_job]{stop_ai_benchmark_job} \tab Stops a running AI benchmark job\cr
+#'  \link[=sagemaker_stop_ai_recommendation_job]{stop_ai_recommendation_job} \tab Stops a running AI recommendation job\cr
 #'  \link[=sagemaker_stop_auto_ml_job]{stop_auto_ml_job} \tab A method for forcing a running job to shut down\cr
 #'  \link[=sagemaker_stop_compilation_job]{stop_compilation_job} \tab Stops a model compilation job\cr
 #'  \link[=sagemaker_stop_edge_deployment_stage]{stop_edge_deployment_stage} \tab Stops a stage in an edge deployment plan\cr

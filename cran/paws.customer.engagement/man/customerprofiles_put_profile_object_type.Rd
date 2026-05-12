@@ -14,6 +14,7 @@ customerprofiles_put_profile_object_type(
   AllowProfileCreation = NULL,
   SourceLastUpdatedTimestampFormat = NULL,
   MaxProfileObjectCount = NULL,
+  SourcePriority = NULL,
   Fields = NULL,
   Keys = NULL,
   Tags = NULL
@@ -51,6 +52,11 @@ creates a new standard profile.}
 up.}
 
 \item{MaxProfileObjectCount}{The amount of profile object max count assigned to the object type}
+
+\item{SourcePriority}{An integer that determines the priority of this object type when data
+from multiple sources is ingested. Lower values take priority. Object
+types without a specified source priority default to the lowest
+priority.}
 
 \item{Fields}{A map of the name and ObjectType field.}
 

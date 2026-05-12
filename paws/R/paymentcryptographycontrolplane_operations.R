@@ -24,8 +24,10 @@ NULL
 #' add multiple regions in a single operation, and the key will be
 #' available for use in those regions once replication is complete.
 #' 
-#' **Cross-account use:** This operation can't be used across different
-#' Amazon Web Services accounts.
+#' **Cross-account use:** This operation supports cross-account use when
+#' the key has a resource-based policy that grants access. For more
+#' information, see [Resource-based
+#' policies](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html).
 #' 
 #' **Related operations:**
 #' 
@@ -103,7 +105,15 @@ NULL
 #'         StatusMessage = "string"
 #'       )
 #'     ),
-#'     UsingDefaultReplicationRegions = TRUE|FALSE
+#'     UsingDefaultReplicationRegions = TRUE|FALSE,
+#'     MpaStatus = list(
+#'       MpaSessionArn = "string",
+#'       Status = "PENDING"|"APPROVED"|"FAILED"|"CANCELLED",
+#'       InitiationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusMessage = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -141,6 +151,90 @@ paymentcryptographycontrolplane_add_key_replication_regions <- function(KeyIdent
   return(response)
 }
 .paymentcryptographycontrolplane$operations$add_key_replication_regions <- paymentcryptographycontrolplane_add_key_replication_regions
+
+#' Associates a Multi-Party Approval (MPA) team with a protected operation
+#'
+#' @description
+#' Associates a Multi-Party Approval (MPA) team with a protected operation.
+#' For more information, see [Multi-Party
+#' Approval](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/mpa.html)
+#' in the *Amazon Web Services Payment Cryptography User Guide.*
+#' 
+#' **Cross-account use:** This operation can't be used across different
+#' Amazon Web Services accounts.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`disassociate_mpa_team`][paymentcryptographycontrolplane_disassociate_mpa_team]
+#' 
+#' -   [`get_mpa_team_association`][paymentcryptographycontrolplane_get_mpa_team_association]
+#'
+#' @usage
+#' paymentcryptographycontrolplane_associate_mpa_team(Action, MpaTeamArn,
+#'   RequesterComment)
+#'
+#' @param Action &#91;required&#93; The protected operation to associate with the MPA team. Currently, the
+#' only supported value is `IMPORT_ROOT_PUBLIC_KEY_CERTIFICATE`.
+#' @param MpaTeamArn &#91;required&#93; The ARN of the MPA team to associate with the protected operation.
+#' @param RequesterComment The comment from the requester explaining the reason for the
+#' association.
+#' 
+#' Don't include personal, confidential or sensitive information in this
+#' field. This field may be displayed in plaintext in CloudTrail logs and
+#' other output.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MpaTeamAssociation = list(
+#'     Action = "IMPORT_ROOT_PUBLIC_KEY_CERTIFICATE",
+#'     MpaTeamArn = "string",
+#'     AssociationState = "ACTIVE"|"UPDATE_PENDING"|"DELETE_PENDING",
+#'     MpaStatus = list(
+#'       MpaSessionArn = "string",
+#'       Status = "PENDING"|"APPROVED"|"FAILED"|"CANCELLED",
+#'       InitiationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_mpa_team(
+#'   Action = "IMPORT_ROOT_PUBLIC_KEY_CERTIFICATE",
+#'   MpaTeamArn = "string",
+#'   RequesterComment = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_associate_mpa_team
+#'
+#' @aliases paymentcryptographycontrolplane_associate_mpa_team
+paymentcryptographycontrolplane_associate_mpa_team <- function(Action, MpaTeamArn, RequesterComment = NULL) {
+  op <- new_operation(
+    name = "AssociateMpaTeam",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$associate_mpa_team_input(Action = Action, MpaTeamArn = MpaTeamArn, RequesterComment = RequesterComment)
+  output <- .paymentcryptographycontrolplane$associate_mpa_team_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$associate_mpa_team <- paymentcryptographycontrolplane_associate_mpa_team
 
 #' Creates an alias, or a friendly name, for an Amazon Web Services Payment
 #' Cryptography key
@@ -397,7 +491,15 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #'         StatusMessage = "string"
 #'       )
 #'     ),
-#'     UsingDefaultReplicationRegions = TRUE|FALSE
+#'     UsingDefaultReplicationRegions = TRUE|FALSE,
+#'     MpaStatus = list(
+#'       MpaSessionArn = "string",
+#'       Status = "PENDING"|"APPROVED"|"FAILED"|"CANCELLED",
+#'       InitiationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusMessage = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -553,8 +655,10 @@ paymentcryptographycontrolplane_delete_alias <- function(AliasName) {
 #' aren't sure, consider deactivating it instead by calling
 #' [`stop_key_usage`][paymentcryptographycontrolplane_stop_key_usage].
 #' 
-#' **Cross-account use:** This operation can't be used across different
-#' Amazon Web Services accounts.
+#' **Cross-account use:** This operation supports cross-account use when
+#' the key has a resource-based policy that grants access. For more
+#' information, see [Resource-based
+#' policies](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html).
 #' 
 #' **Related operations:**
 #' 
@@ -623,7 +727,15 @@ paymentcryptographycontrolplane_delete_alias <- function(AliasName) {
 #'         StatusMessage = "string"
 #'       )
 #'     ),
-#'     UsingDefaultReplicationRegions = TRUE|FALSE
+#'     UsingDefaultReplicationRegions = TRUE|FALSE,
+#'     MpaStatus = list(
+#'       MpaSessionArn = "string",
+#'       Status = "PENDING"|"APPROVED"|"FAILED"|"CANCELLED",
+#'       InitiationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusMessage = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -659,6 +771,61 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
   return(response)
 }
 .paymentcryptographycontrolplane$operations$delete_key <- paymentcryptographycontrolplane_delete_key
+
+#' Removes the resource-based policy attached to an Amazon Web Services
+#' Payment Cryptography key
+#'
+#' @description
+#' Removes the resource-based policy attached to an Amazon Web Services
+#' Payment Cryptography key.
+#' 
+#' **Cross-account use:** This operation can't be used across different
+#' Amazon Web Services accounts.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`put_resource_policy`][paymentcryptographycontrolplane_put_resource_policy]
+#' 
+#' -   [`get_resource_policy`][paymentcryptographycontrolplane_get_resource_policy]
+#'
+#' @usage
+#' paymentcryptographycontrolplane_delete_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The `KeyARN` of the key whose resource-based policy you want to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_delete_resource_policy
+#'
+#' @aliases paymentcryptographycontrolplane_delete_resource_policy
+paymentcryptographycontrolplane_delete_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$delete_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .paymentcryptographycontrolplane$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$delete_resource_policy <- paymentcryptographycontrolplane_delete_resource_policy
 
 #' Disables Multi-Region key replication settings for the specified Amazon
 #' Web Services Regions in your Amazon Web Services account, preventing new
@@ -743,6 +910,87 @@ paymentcryptographycontrolplane_disable_default_key_replication_regions <- funct
   return(response)
 }
 .paymentcryptographycontrolplane$operations$disable_default_key_replication_regions <- paymentcryptographycontrolplane_disable_default_key_replication_regions
+
+#' Removes the association between a Multi-Party Approval (MPA) team and a
+#' protected operation
+#'
+#' @description
+#' Removes the association between a Multi-Party Approval (MPA) team and a
+#' protected operation.
+#' 
+#' **Cross-account use:** This operation can't be used across different
+#' Amazon Web Services accounts.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`associate_mpa_team`][paymentcryptographycontrolplane_associate_mpa_team]
+#' 
+#' -   [`get_mpa_team_association`][paymentcryptographycontrolplane_get_mpa_team_association]
+#'
+#' @usage
+#' paymentcryptographycontrolplane_disassociate_mpa_team(Action,
+#'   RequesterComment)
+#'
+#' @param Action &#91;required&#93; The protected operation to disassociate from the MPA team. Currently,
+#' the only supported value is `IMPORT_ROOT_PUBLIC_KEY_CERTIFICATE`.
+#' @param RequesterComment The comment from the requester explaining the reason for the
+#' disassociation.
+#' 
+#' Don't include personal, confidential or sensitive information in this
+#' field. This field may be displayed in plaintext in CloudTrail logs and
+#' other output.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MpaTeamAssociation = list(
+#'     Action = "IMPORT_ROOT_PUBLIC_KEY_CERTIFICATE",
+#'     MpaTeamArn = "string",
+#'     AssociationState = "ACTIVE"|"UPDATE_PENDING"|"DELETE_PENDING",
+#'     MpaStatus = list(
+#'       MpaSessionArn = "string",
+#'       Status = "PENDING"|"APPROVED"|"FAILED"|"CANCELLED",
+#'       InitiationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_mpa_team(
+#'   Action = "IMPORT_ROOT_PUBLIC_KEY_CERTIFICATE",
+#'   RequesterComment = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_disassociate_mpa_team
+#'
+#' @aliases paymentcryptographycontrolplane_disassociate_mpa_team
+paymentcryptographycontrolplane_disassociate_mpa_team <- function(Action, RequesterComment = NULL) {
+  op <- new_operation(
+    name = "DisassociateMpaTeam",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$disassociate_mpa_team_input(Action = Action, RequesterComment = RequesterComment)
+  output <- .paymentcryptographycontrolplane$disassociate_mpa_team_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$disassociate_mpa_team <- paymentcryptographycontrolplane_disassociate_mpa_team
 
 #' Enables Multi-Region key replication settings for your Amazon Web
 #' Services account, causing new keys to be automatically replicated to the
@@ -1031,8 +1279,10 @@ paymentcryptographycontrolplane_enable_default_key_replication_regions <- functi
 #' Cryptography returns the working key as a TR-31 WrappedKeyBlock, where
 #' the wrapping key is the ECDH derived key.
 #' 
-#' **Cross-account use:** This operation can't be used across different
-#' Amazon Web Services accounts.
+#' **Cross-account use:** This operation supports cross-account use when
+#' the key has a resource-based policy that grants access. For more
+#' information, see [Resource-based
+#' policies](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html).
 #' 
 #' **Related operations:**
 #' 
@@ -1395,8 +1645,10 @@ paymentcryptographycontrolplane_get_default_key_replication_regions <- function(
 #' key was created. Returns key metadata including attributes, state, and
 #' timestamps, but does not return the actual cryptographic key material.
 #' 
-#' **Cross-account use:** This operation can't be used across different
-#' Amazon Web Services accounts.
+#' **Cross-account use:** This operation supports cross-account use when
+#' the key has a resource-based policy that grants access. For more
+#' information, see [Resource-based
+#' policies](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html).
 #' 
 #' **Related operations:**
 #' 
@@ -1463,7 +1715,15 @@ paymentcryptographycontrolplane_get_default_key_replication_regions <- function(
 #'         StatusMessage = "string"
 #'       )
 #'     ),
-#'     UsingDefaultReplicationRegions = TRUE|FALSE
+#'     UsingDefaultReplicationRegions = TRUE|FALSE,
+#'     MpaStatus = list(
+#'       MpaSessionArn = "string",
+#'       Status = "PENDING"|"APPROVED"|"FAILED"|"CANCELLED",
+#'       InitiationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusMessage = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1499,6 +1759,80 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
 }
 .paymentcryptographycontrolplane$operations$get_key <- paymentcryptographycontrolplane_get_key
 
+#' Returns the Multi-Party Approval (MPA) team association for a protected
+#' operation
+#'
+#' @description
+#' Returns the Multi-Party Approval (MPA) team association for a protected
+#' operation.
+#' 
+#' **Cross-account use:** This operation can't be used across different
+#' Amazon Web Services accounts.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`associate_mpa_team`][paymentcryptographycontrolplane_associate_mpa_team]
+#' 
+#' -   [`disassociate_mpa_team`][paymentcryptographycontrolplane_disassociate_mpa_team]
+#'
+#' @usage
+#' paymentcryptographycontrolplane_get_mpa_team_association(Action)
+#'
+#' @param Action &#91;required&#93; The protected operation whose MPA team association you want to retrieve.
+#' Currently, the only supported value is
+#' `IMPORT_ROOT_PUBLIC_KEY_CERTIFICATE`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MpaTeamAssociation = list(
+#'     Action = "IMPORT_ROOT_PUBLIC_KEY_CERTIFICATE",
+#'     MpaTeamArn = "string",
+#'     AssociationState = "ACTIVE"|"UPDATE_PENDING"|"DELETE_PENDING",
+#'     MpaStatus = list(
+#'       MpaSessionArn = "string",
+#'       Status = "PENDING"|"APPROVED"|"FAILED"|"CANCELLED",
+#'       InitiationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_mpa_team_association(
+#'   Action = "IMPORT_ROOT_PUBLIC_KEY_CERTIFICATE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_get_mpa_team_association
+#'
+#' @aliases paymentcryptographycontrolplane_get_mpa_team_association
+paymentcryptographycontrolplane_get_mpa_team_association <- function(Action) {
+  op <- new_operation(
+    name = "GetMpaTeamAssociation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$get_mpa_team_association_input(Action = Action)
+  output <- .paymentcryptographycontrolplane$get_mpa_team_association_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$get_mpa_team_association <- paymentcryptographycontrolplane_get_mpa_team_association
+
 #' Gets the export token and the signing key certificate to initiate a
 #' TR-34 key export from Amazon Web Services Payment Cryptography
 #'
@@ -1513,6 +1847,10 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
 #' token expires in 30 days. You can use the same export token to export
 #' multiple keys from your service account.
 #' 
+#' To return a previously generated export token and signing key
+#' certificate instead of generating new ones, set
+#' `ReuseLastGeneratedToken` to `true`.
+#' 
 #' **Cross-account use:** This operation can't be used across different
 #' Amazon Web Services accounts.
 #' 
@@ -1524,7 +1862,7 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
 #'
 #' @usage
 #' paymentcryptographycontrolplane_get_parameters_for_export(
-#'   KeyMaterialType, SigningKeyAlgorithm)
+#'   KeyMaterialType, SigningKeyAlgorithm, ReuseLastGeneratedToken)
 #'
 #' @param KeyMaterialType &#91;required&#93; The key block format type (for example, TR-34 or TR-31) to use during
 #' key material export. Export token is only required for a TR-34 key
@@ -1533,6 +1871,13 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
 #' @param SigningKeyAlgorithm &#91;required&#93; The signing key algorithm to generate a signing key certificate. This
 #' certificate signs the wrapped key under export within the TR-34 key
 #' block. `RSA_2048` is the only signing key algorithm allowed.
+#' @param ReuseLastGeneratedToken Specifies whether to reuse the existing export token and signing key
+#' certificate. If set to `true` and a valid export token exists for the
+#' same key material type and signing key algorithm with at least 7 days of
+#' remaining validity, the existing token and signing key certificate are
+#' returned. Otherwise, a new export token and signing key certificate are
+#' generated. The default value is `false`, which generates a new export
+#' token and signing key certificate on every call.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1552,7 +1897,8 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
 #' ```
 #' svc$get_parameters_for_export(
 #'   KeyMaterialType = "TR34_KEY_BLOCK"|"TR31_KEY_BLOCK"|"ROOT_PUBLIC_KEY_CERTIFICATE"|"TRUSTED_PUBLIC_KEY_CERTIFICATE"|"KEY_CRYPTOGRAM",
-#'   SigningKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"
+#'   SigningKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'   ReuseLastGeneratedToken = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1561,7 +1907,7 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
 #' @rdname paymentcryptographycontrolplane_get_parameters_for_export
 #'
 #' @aliases paymentcryptographycontrolplane_get_parameters_for_export
-paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMaterialType, SigningKeyAlgorithm) {
+paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMaterialType, SigningKeyAlgorithm, ReuseLastGeneratedToken = NULL) {
   op <- new_operation(
     name = "GetParametersForExport",
     http_method = "POST",
@@ -1570,7 +1916,7 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographycontrolplane$get_parameters_for_export_input(KeyMaterialType = KeyMaterialType, SigningKeyAlgorithm = SigningKeyAlgorithm)
+  input <- .paymentcryptographycontrolplane$get_parameters_for_export_input(KeyMaterialType = KeyMaterialType, SigningKeyAlgorithm = SigningKeyAlgorithm, ReuseLastGeneratedToken = ReuseLastGeneratedToken)
   output <- .paymentcryptographycontrolplane$get_parameters_for_export_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config, op)
@@ -1598,6 +1944,10 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
 #' token expires in 30 days. You can use the same import token to import
 #' multiple keys into your service account.
 #' 
+#' To return a previously generated import token and wrapping key
+#' certificate instead of generating new ones, set
+#' `ReuseLastGeneratedToken` to `true`.
+#' 
 #' **Cross-account use:** This operation can't be used across different
 #' Amazon Web Services accounts.
 #' 
@@ -1609,7 +1959,7 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
 #'
 #' @usage
 #' paymentcryptographycontrolplane_get_parameters_for_import(
-#'   KeyMaterialType, WrappingKeyAlgorithm)
+#'   KeyMaterialType, WrappingKeyAlgorithm, ReuseLastGeneratedToken)
 #'
 #' @param KeyMaterialType &#91;required&#93; The method to use for key material import. Import token is only required
 #' for TR-34 WrappedKeyBlock (`TR34_KEY_BLOCK`) and RSA
@@ -1623,6 +1973,13 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
 #' At this time, `RSA_2048` is the allowed algorithm for TR-34
 #' WrappedKeyBlock import. Additionally, `RSA_2048`, `RSA_3072`, `RSA_4096`
 #' are the allowed algorithms for RSA WrappedKeyCryptogram import.
+#' @param ReuseLastGeneratedToken Specifies whether to reuse the existing import token and wrapping key
+#' certificate. If set to `true` and a valid import token exists for the
+#' same key material type and wrapping key algorithm with at least 7 days
+#' of remaining validity, the existing token and wrapping key certificate
+#' are returned. Otherwise, a new import token and wrapping key certificate
+#' are generated. The default value is `false`, which generates a new
+#' import token and wrapping key certificate on every call.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1642,7 +1999,8 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
 #' ```
 #' svc$get_parameters_for_import(
 #'   KeyMaterialType = "TR34_KEY_BLOCK"|"TR31_KEY_BLOCK"|"ROOT_PUBLIC_KEY_CERTIFICATE"|"TRUSTED_PUBLIC_KEY_CERTIFICATE"|"KEY_CRYPTOGRAM",
-#'   WrappingKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"
+#'   WrappingKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'   ReuseLastGeneratedToken = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1651,7 +2009,7 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
 #' @rdname paymentcryptographycontrolplane_get_parameters_for_import
 #'
 #' @aliases paymentcryptographycontrolplane_get_parameters_for_import
-paymentcryptographycontrolplane_get_parameters_for_import <- function(KeyMaterialType, WrappingKeyAlgorithm) {
+paymentcryptographycontrolplane_get_parameters_for_import <- function(KeyMaterialType, WrappingKeyAlgorithm, ReuseLastGeneratedToken = NULL) {
   op <- new_operation(
     name = "GetParametersForImport",
     http_method = "POST",
@@ -1660,7 +2018,7 @@ paymentcryptographycontrolplane_get_parameters_for_import <- function(KeyMateria
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographycontrolplane$get_parameters_for_import_input(KeyMaterialType = KeyMaterialType, WrappingKeyAlgorithm = WrappingKeyAlgorithm)
+  input <- .paymentcryptographycontrolplane$get_parameters_for_import_input(KeyMaterialType = KeyMaterialType, WrappingKeyAlgorithm = WrappingKeyAlgorithm, ReuseLastGeneratedToken = ReuseLastGeneratedToken)
   output <- .paymentcryptographycontrolplane$get_parameters_for_import_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config, op)
@@ -1685,8 +2043,10 @@ paymentcryptographycontrolplane_get_parameters_for_import <- function(KeyMateria
 #' messages and verify signatures outside of Amazon Web Services Payment
 #' Cryptography
 #' 
-#' **Cross-account use:** This operation can't be used across different
-#' Amazon Web Services accounts.
+#' **Cross-account use:** This operation supports cross-account use when
+#' the key has a resource-based policy that grants access. For more
+#' information, see [Resource-based
+#' policies](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html).
 #'
 #' @usage
 #' paymentcryptographycontrolplane_get_public_key_certificate(
@@ -1733,6 +2093,68 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
   return(response)
 }
 .paymentcryptographycontrolplane$operations$get_public_key_certificate <- paymentcryptographycontrolplane_get_public_key_certificate
+
+#' Returns the resource-based policy attached to an Amazon Web Services
+#' Payment Cryptography key
+#'
+#' @description
+#' Returns the resource-based policy attached to an Amazon Web Services
+#' Payment Cryptography key.
+#' 
+#' **Cross-account use:** This operation can't be used across different
+#' Amazon Web Services accounts.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`put_resource_policy`][paymentcryptographycontrolplane_put_resource_policy]
+#' 
+#' -   [`delete_resource_policy`][paymentcryptographycontrolplane_delete_resource_policy]
+#'
+#' @usage
+#' paymentcryptographycontrolplane_get_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The `KeyARN` of the key whose resource-based policy you want to
+#' retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_get_resource_policy
+#'
+#' @aliases paymentcryptographycontrolplane_get_resource_policy
+paymentcryptographycontrolplane_get_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$get_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .paymentcryptographycontrolplane$get_resource_policy_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$get_resource_policy <- paymentcryptographycontrolplane_get_resource_policy
 
 #' Imports symmetric keys and public key certificates in PEM format (base64
 #' encoded) into Amazon Web Services Payment Cryptography
@@ -1939,8 +2361,10 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #'     that signed the public key certificate of the receiving ECC key
 #'     pair.
 #' 
-#' **Cross-account use:** This operation can't be used across different
-#' Amazon Web Services accounts.
+#' **Cross-account use:** This operation supports cross-account use when
+#' the key has a resource-based policy that grants access. For more
+#' information, see [Resource-based
+#' policies](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html).
 #' 
 #' **Related operations:**
 #' 
@@ -1950,7 +2374,8 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #'
 #' @usage
 #' paymentcryptographycontrolplane_import_key(KeyMaterial,
-#'   KeyCheckValueAlgorithm, Enabled, Tags, ReplicationRegions)
+#'   KeyCheckValueAlgorithm, Enabled, Tags, ReplicationRegions,
+#'   RequesterComment)
 #'
 #' @param KeyMaterial &#91;required&#93; The key or public key certificate type to use during key material
 #' import, for example TR-34 or RootCertificatePublicKey.
@@ -1984,6 +2409,11 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' Tagging or untagging an Amazon Web Services Payment Cryptography key can
 #' allow or deny permission to the key.
 #' @param ReplicationRegions 
+#' @param RequesterComment The comment from the requester explaining the reason for the import.
+#' 
+#' Don't include personal, confidential or sensitive information in this
+#' field. This field may be displayed in plaintext in CloudTrail logs and
+#' other output.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2037,7 +2467,15 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #'         StatusMessage = "string"
 #'       )
 #'     ),
-#'     UsingDefaultReplicationRegions = TRUE|FALSE
+#'     UsingDefaultReplicationRegions = TRUE|FALSE,
+#'     MpaStatus = list(
+#'       MpaSessionArn = "string",
+#'       Status = "PENDING"|"APPROVED"|"FAILED"|"CANCELLED",
+#'       InitiationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusMessage = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2162,7 +2600,8 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #'   ),
 #'   ReplicationRegions = list(
 #'     "string"
-#'   )
+#'   ),
+#'   RequesterComment = "string"
 #' )
 #' ```
 #'
@@ -2171,7 +2610,7 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' @rdname paymentcryptographycontrolplane_import_key
 #'
 #' @aliases paymentcryptographycontrolplane_import_key
-paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValueAlgorithm = NULL, Enabled = NULL, Tags = NULL, ReplicationRegions = NULL) {
+paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValueAlgorithm = NULL, Enabled = NULL, Tags = NULL, ReplicationRegions = NULL, RequesterComment = NULL) {
   op <- new_operation(
     name = "ImportKey",
     http_method = "POST",
@@ -2180,7 +2619,7 @@ paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValu
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographycontrolplane$import_key_input(KeyMaterial = KeyMaterial, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Enabled = Enabled, Tags = Tags, ReplicationRegions = ReplicationRegions)
+  input <- .paymentcryptographycontrolplane$import_key_input(KeyMaterial = KeyMaterial, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Enabled = Enabled, Tags = Tags, ReplicationRegions = ReplicationRegions, RequesterComment = RequesterComment)
   output <- .paymentcryptographycontrolplane$import_key_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config, op)
@@ -2406,8 +2845,10 @@ paymentcryptographycontrolplane_list_keys <- function(KeyState = NULL, NextToken
 #' request to get more tags. When you receive a response with no NextToken
 #' (or an empty or null value), that means there are no more tags to get.
 #' 
-#' **Cross-account use:** This operation can't be used across different
-#' Amazon Web Services accounts.
+#' **Cross-account use:** This operation supports cross-account use when
+#' the key has a resource-based policy that grants access. For more
+#' information, see [Resource-based
+#' policies](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html).
 #' 
 #' **Related operations:**
 #' 
@@ -2478,6 +2919,76 @@ paymentcryptographycontrolplane_list_tags_for_resource <- function(ResourceArn, 
 }
 .paymentcryptographycontrolplane$operations$list_tags_for_resource <- paymentcryptographycontrolplane_list_tags_for_resource
 
+#' Attaches or replaces a resource-based policy on an Amazon Web Services
+#' Payment Cryptography key
+#'
+#' @description
+#' Attaches or replaces a resource-based policy on an Amazon Web Services
+#' Payment Cryptography key. A resource-based policy can grant
+#' cross-account access to your key.
+#' 
+#' If the policy would grant public access, the request fails with a
+#' `PublicPolicyException`.
+#' 
+#' To remove a resource-based policy from a key, use
+#' [`delete_resource_policy`][paymentcryptographycontrolplane_delete_resource_policy].
+#' 
+#' **Cross-account use:** This operation can't be used across different
+#' Amazon Web Services accounts.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`get_resource_policy`][paymentcryptographycontrolplane_get_resource_policy]
+#' 
+#' -   [`delete_resource_policy`][paymentcryptographycontrolplane_delete_resource_policy]
+#'
+#' @usage
+#' paymentcryptographycontrolplane_put_resource_policy(ResourceArn, Policy)
+#'
+#' @param ResourceArn &#91;required&#93; The `KeyARN` of the key to attach the resource-based policy to.
+#' @param Policy &#91;required&#93; The resource-based policy to attach to the key, in JSON format.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_policy(
+#'   ResourceArn = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_put_resource_policy
+#'
+#' @aliases paymentcryptographycontrolplane_put_resource_policy
+paymentcryptographycontrolplane_put_resource_policy <- function(ResourceArn, Policy) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy)
+  output <- .paymentcryptographycontrolplane$put_resource_policy_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$put_resource_policy <- paymentcryptographycontrolplane_put_resource_policy
+
 #' Removes Replication Regions from an existing Amazon Web Services Payment
 #' Cryptography key, disabling the key's availability for cryptographic
 #' operations in the specified Amazon Web Services Regions
@@ -2496,8 +3007,10 @@ paymentcryptographycontrolplane_list_tags_for_resource <- function(ResourceArn, 
 #' Ensure that no active cryptographic operations or applications depend on
 #' the key in the regions you're removing before performing this operation.
 #' 
-#' **Cross-account use:** This operation can't be used across different
-#' Amazon Web Services accounts.
+#' **Cross-account use:** This operation supports cross-account use when
+#' the key has a resource-based policy that grants access. For more
+#' information, see [Resource-based
+#' policies](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html).
 #' 
 #' **Related operations:**
 #' 
@@ -2573,7 +3086,15 @@ paymentcryptographycontrolplane_list_tags_for_resource <- function(ResourceArn, 
 #'         StatusMessage = "string"
 #'       )
 #'     ),
-#'     UsingDefaultReplicationRegions = TRUE|FALSE
+#'     UsingDefaultReplicationRegions = TRUE|FALSE,
+#'     MpaStatus = list(
+#'       MpaSessionArn = "string",
+#'       Status = "PENDING"|"APPROVED"|"FAILED"|"CANCELLED",
+#'       InitiationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusMessage = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2624,8 +3145,10 @@ paymentcryptographycontrolplane_remove_key_replication_regions <- function(KeyId
 #' `CREATE_COMPLETE`, and the value for `deletePendingTimestamp` is
 #' removed.
 #' 
-#' **Cross-account use:** This operation can't be used across different
-#' Amazon Web Services accounts.
+#' **Cross-account use:** This operation supports cross-account use when
+#' the key has a resource-based policy that grants access. For more
+#' information, see [Resource-based
+#' policies](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html).
 #' 
 #' **Related operations:**
 #' 
@@ -2693,7 +3216,15 @@ paymentcryptographycontrolplane_remove_key_replication_regions <- function(KeyId
 #'         StatusMessage = "string"
 #'       )
 #'     ),
-#'     UsingDefaultReplicationRegions = TRUE|FALSE
+#'     UsingDefaultReplicationRegions = TRUE|FALSE,
+#'     MpaStatus = list(
+#'       MpaSessionArn = "string",
+#'       Status = "PENDING"|"APPROVED"|"FAILED"|"CANCELLED",
+#'       InitiationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusMessage = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2738,8 +3269,10 @@ paymentcryptographycontrolplane_restore_key <- function(KeyIdentifier) {
 #' active for cryptographic operations within Amazon Web Services Payment
 #' Cryptography
 #' 
-#' **Cross-account use:** This operation can't be used across different
-#' Amazon Web Services accounts.
+#' **Cross-account use:** This operation supports cross-account use when
+#' the key has a resource-based policy that grants access. For more
+#' information, see [Resource-based
+#' policies](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html).
 #' 
 #' **Related operations:**
 #' 
@@ -2802,7 +3335,15 @@ paymentcryptographycontrolplane_restore_key <- function(KeyIdentifier) {
 #'         StatusMessage = "string"
 #'       )
 #'     ),
-#'     UsingDefaultReplicationRegions = TRUE|FALSE
+#'     UsingDefaultReplicationRegions = TRUE|FALSE,
+#'     MpaStatus = list(
+#'       MpaSessionArn = "string",
+#'       Status = "PENDING"|"APPROVED"|"FAILED"|"CANCELLED",
+#'       InitiationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusMessage = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2850,8 +3391,10 @@ paymentcryptographycontrolplane_start_key_usage <- function(KeyIdentifier) {
 #' a key. You can enable the key in the future by calling
 #' [`start_key_usage`][paymentcryptographycontrolplane_start_key_usage].
 #' 
-#' **Cross-account use:** This operation can't be used across different
-#' Amazon Web Services accounts.
+#' **Cross-account use:** This operation supports cross-account use when
+#' the key has a resource-based policy that grants access. For more
+#' information, see [Resource-based
+#' policies](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html).
 #' 
 #' **Related operations:**
 #' 
@@ -2916,7 +3459,15 @@ paymentcryptographycontrolplane_start_key_usage <- function(KeyIdentifier) {
 #'         StatusMessage = "string"
 #'       )
 #'     ),
-#'     UsingDefaultReplicationRegions = TRUE|FALSE
+#'     UsingDefaultReplicationRegions = TRUE|FALSE,
+#'     MpaStatus = list(
+#'       MpaSessionArn = "string",
+#'       Status = "PENDING"|"APPROVED"|"FAILED"|"CANCELLED",
+#'       InitiationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusMessage = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2967,8 +3518,10 @@ paymentcryptographycontrolplane_stop_key_usage <- function(KeyIdentifier) {
 #' Amazon Web Services Payment Cryptography key when you create it with
 #' [`create_key`][paymentcryptographycontrolplane_create_key].
 #' 
-#' **Cross-account use:** This operation can't be used across different
-#' Amazon Web Services accounts.
+#' **Cross-account use:** This operation supports cross-account use when
+#' the key has a resource-based policy that grants access. For more
+#' information, see [Resource-based
+#' policies](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html).
 #' 
 #' **Related operations:**
 #' 
@@ -3047,8 +3600,10 @@ paymentcryptographycontrolplane_tag_resource <- function(ResourceArn, Tags) {
 #' Tagging or untagging an Amazon Web Services Payment Cryptography key can
 #' allow or deny permission to the key.
 #' 
-#' **Cross-account use:** This operation can't be used across different
-#' Amazon Web Services accounts.
+#' **Cross-account use:** This operation supports cross-account use when
+#' the key has a resource-based policy that grants access. For more
+#' information, see [Resource-based
+#' policies](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html).
 #' 
 #' **Related operations:**
 #' 

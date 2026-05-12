@@ -161,7 +161,7 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
   service_id = "grafana",
   api_version = "2020-08-18",
   signing_name = "grafana",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

@@ -5,17 +5,14 @@
 \title{Creates data export configuration details}
 \usage{
 datazone_put_data_export_configuration(
-  clientToken = NULL,
   domainIdentifier,
   enableExport,
-  encryptionConfiguration = NULL
+  encryptionConfiguration = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the
-request. This field is automatically populated if not provided.}
-
-\item{domainIdentifier}{[required] The domain ID where you want to create data export configuration
+\item{domainIdentifier}{[required] The domain ID for which you want to create data export configuration
 details.}
 
 \item{enableExport}{[required] Specifies that the export is to be enabled as part of creating data
@@ -26,6 +23,9 @@ configuration details.
 
 The KMS key provided here as part of encryptionConfiguration must have
 the required permissions as described in \href{https://docs.aws.amazon.com/sagemaker-unified-studio/latest/adminguide/sagemaker-unified-studio-export-asset-metadata-kms-permissions.html}{KMS permissions for exporting asset metadata in Amazon SageMaker Unified Studio}.}
+
+\item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the
+request. This field is automatically populated if not provided.}
 }
 \description{
 Creates data export configuration details.

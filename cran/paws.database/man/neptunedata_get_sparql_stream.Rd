@@ -23,17 +23,17 @@ The range for \code{limit} is 1 to 100,000, with a default of 10.}
 
 \item{iteratorType}{Can be one of:
 \itemize{
-\item \code{AT_SEQUENCE_NUMBER}   –   Indicates that reading should start from
-the event sequence number specified jointly by the \code{commitNum} and
+\item \code{AT_SEQUENCE_NUMBER} - Indicates that reading should start from the
+event sequence number specified jointly by the \code{commitNum} and
 \code{opNum} parameters.
-\item \code{AFTER_SEQUENCE_NUMBER}   –   Indicates that reading should start
-right after the event sequence number specified jointly by the
-\code{commitNum} and \code{opNum} parameters.
-\item \code{TRIM_HORIZON}   –   Indicates that reading should start at the last
+\item \code{AFTER_SEQUENCE_NUMBER} - Indicates that reading should start right
+after the event sequence number specified jointly by the \code{commitNum}
+and \code{opNum} parameters.
+\item \code{TRIM_HORIZON} - Indicates that reading should start at the last
 untrimmed record in the system, which is the oldest unexpired (not
 yet deleted) record in the change-log stream.
-\item \code{LATEST}   –   Indicates that reading should start at the most
-recent record in the system, which is the latest unexpired (not yet
+\item \code{LATEST} - Indicates that reading should start at the most recent
+record in the system, which is the latest unexpired (not yet
 deleted) record in the change-log stream.
 }}
 

@@ -27,8 +27,6 @@ used.}
 \item{NextToken}{Set this value to get remaining results, if \code{NextToken} was returned in
 the statement response.}
 
-\item{ReturnConsumedCapacity}{}
-
 \item{Limit}{The maximum number of items to evaluate (not necessarily the number of
 matching items). If DynamoDB processes the number of items up to the
 limit while processing the results, it stops the operation and returns

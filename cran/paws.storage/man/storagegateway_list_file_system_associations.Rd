@@ -11,8 +11,6 @@ storagegateway_list_file_system_associations(
 )
 }
 \arguments{
-\item{GatewayARN}{}
-
 \item{Limit}{The maximum number of file system associations to return in the
 response. If present, \code{Limit} must be an integer with a value greater
 than zero. Optional.}

@@ -12,7 +12,7 @@ connectcases_delete_field(domainId, fieldId)
 \item{fieldId}{[required] Unique identifier of the field.}
 }
 \description{
-Deletes a field from a cases template. You can delete up to 100 fields per domain.
+Deletes a field from a cases template.
 
 See \url{https://www.paws-r-sdk.com/docs/connectcases_delete_field/} for full documentation.
 }

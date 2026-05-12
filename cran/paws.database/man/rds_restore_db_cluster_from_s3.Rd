@@ -173,8 +173,6 @@ Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
 Constraints: Minimum 30-minute window.}
 
-\item{Tags}{}
-
 \item{StorageEncrypted}{Specifies whether the restored DB cluster is encrypted.}
 
 \item{KmsKeyId}{The Amazon Web Services KMS key identifier for an encrypted DB cluster.
@@ -292,8 +290,6 @@ IPv4 and the IPv6 protocols (\code{DUAL}).
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
 in the \emph{Amazon Aurora User Guide.}}
-
-\item{ServerlessV2ScalingConfiguration}{}
 
 \item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
 Services Secrets Manager.

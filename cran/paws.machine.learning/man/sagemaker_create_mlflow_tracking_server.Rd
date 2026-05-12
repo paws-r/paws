@@ -13,7 +13,9 @@ sagemaker_create_mlflow_tracking_server(
   RoleArn,
   AutomaticModelRegistration = NULL,
   WeeklyMaintenanceWindowStart = NULL,
-  Tags = NULL
+  Tags = NULL,
+  S3BucketOwnerAccountId = NULL,
+  S3BucketOwnerVerification = NULL
 )
 }
 \arguments{
@@ -53,6 +55,13 @@ example: TUE:03:30.}
 
 \item{Tags}{Tags consisting of key-value pairs used to manage metadata for the
 tracking server.}
+
+\item{S3BucketOwnerAccountId}{Expected Amazon Web Services account ID that owns the Amazon S3 bucket
+for artifact storage. Defaults to caller's account ID if not provided.}
+
+\item{S3BucketOwnerVerification}{Enable Amazon S3 Ownership checks when interacting with Amazon S3
+buckets from a SageMaker Managed MLflow Tracking Server. Defaults to
+\code{True} if not provided.}
 }
 \description{
 Creates an MLflow Tracking Server using a general purpose Amazon S3 bucket as the artifact store. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow-create-tracking-server.html}{Create an MLflow Tracking Server}.

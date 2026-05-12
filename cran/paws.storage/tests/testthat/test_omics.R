@@ -8,6 +8,14 @@ test_that("list_annotation_stores", {
   expect_error(svc$list_annotation_stores(), NA)
 })
 
+test_that("list_batch", {
+  expect_error(svc$list_batch(), NA)
+})
+
+test_that("list_configurations", {
+  expect_error(svc$list_configurations(), NA)
+})
+
 test_that("list_reference_stores", {
   expect_error(svc$list_reference_stores(), NA)
 })

@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_update_security_hub_configuration}
 \alias{securityhub_update_security_hub_configuration}
-\title{Updates configuration options for Security Hub}
+\title{Updates configuration options for Security Hub CSPM}
 \usage{
 securityhub_update_security_hub_configuration(
   AutoEnableControls = NULL,
@@ -20,26 +20,26 @@ automatically. To not automatically enable new controls, set this to
 When you automatically enable new controls, you can interact with the
 controls in the console and programmatically immediately after release.
 However, automatically enabled controls have a temporary default status
-of \code{DISABLED}. It can take up to several days for Security Hub to
+of \code{DISABLED}. It can take up to several days for Security Hub CSPM to
 process the control release and designate the control as \code{ENABLED} in
 your account. During the processing period, you can manually enable or
-disable a control, and Security Hub will maintain that designation
+disable a control, and Security Hub CSPM will maintain that designation
 regardless of whether you have \code{AutoEnableControls} set to \code{true}.}
 
 \item{ControlFindingGenerator}{Updates whether the calling account has consolidated control findings
 turned on. If the value for this field is set to \code{SECURITY_CONTROL},
-Security Hub generates a single finding for a control check even when
-the check applies to multiple enabled standards.
+Security Hub CSPM generates a single finding for a control check even
+when the check applies to multiple enabled standards.
 
 If the value for this field is set to \code{STANDARD_CONTROL}, Security Hub
-generates separate findings for a control check when the check applies
-to multiple enabled standards.
+CSPM generates separate findings for a control check when the check
+applies to multiple enabled standards.
 
 For accounts that are part of an organization, this value can only be
 updated in the administrator account.}
 }
 \description{
-Updates configuration options for Security Hub.
+Updates configuration options for Security Hub CSPM.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_update_security_hub_configuration/} for full documentation.
 }

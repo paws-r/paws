@@ -21,9 +21,8 @@ NULL
 #' @param resourceType &#91;required&#93; The target resource type of the recommendation preference to delete.
 #' 
 #' The `Ec2Instance` option encompasses standalone instances and instances
-#' that are part of Amazon EC2 Auto Scaling groups. The `AutoScalingGroup`
-#' option encompasses only instances that are part of an Amazon EC2 Auto
-#' Scaling group.
+#' that are part of Auto Scaling groups. The `AutoScalingGroup` option
+#' encompasses only instances that are part of an Auto Scaling group.
 #' @param scope An object that describes the scope of the recommendation preference to
 #' delete.
 #' 
@@ -183,10 +182,10 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 }
 .computeoptimizer$operations$describe_recommendation_export_jobs <- computeoptimizer_describe_recommendation_export_jobs
 
-#' Exports optimization recommendations for Amazon EC2 Auto Scaling groups
+#' Exports optimization recommendations for Auto Scaling groups
 #'
 #' @description
-#' Exports optimization recommendations for Amazon EC2 Auto Scaling groups.
+#' Exports optimization recommendations for Auto Scaling groups.
 #' 
 #' Recommendations are exported in a comma-separated values (.csv) file,
 #' and its metadata in a JavaScript Object Notation (JSON) (.json) file, to
@@ -195,16 +194,16 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #' Recommendations](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html)
 #' in the *Compute Optimizer User Guide*.
 #' 
-#' You can have only one Amazon EC2 Auto Scaling group export job in
-#' progress per Amazon Web Services Region.
+#' You can have only one Auto Scaling group export job in progress per
+#' Amazon Web Services Region.
 #'
 #' @usage
 #' computeoptimizer_export_auto_scaling_group_recommendations(accountIds,
 #'   filters, fieldsToExport, s3DestinationConfig, fileFormat,
 #'   includeMemberAccounts, recommendationPreferences)
 #'
-#' @param accountIds The IDs of the Amazon Web Services accounts for which to export Amazon
-#' EC2 Auto Scaling group recommendations.
+#' @param accountIds The IDs of the Amazon Web Services accounts for which to export Auto
+#' Scaling group recommendations.
 #' 
 #' If your account is the management account of an organization, use this
 #' parameter to specify the member account for which you want to export
@@ -218,7 +217,7 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #' 
 #' You can specify multiple account IDs per request.
 #' @param filters An array of objects to specify a filter that exports a more specific set
-#' of Amazon EC2 Auto Scaling group recommendations.
+#' of Auto Scaling group recommendations.
 #' @param fieldsToExport The recommendations data to include in the export file. For more
 #' information about the fields that can be exported, see [Exported
 #' files](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html#exported-files)
@@ -258,8 +257,8 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #' 
 #' Recommendations for member accounts are not included in the export if
 #' this parameter, or the account IDs parameter, is omitted.
-#' @param recommendationPreferences An object to specify the preferences for the Amazon EC2 Auto Scaling
-#' group recommendations to export.
+#' @param recommendationPreferences An object to specify the preferences for the Auto Scaling group
+#' recommendations to export.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1227,10 +1226,10 @@ computeoptimizer_export_rds_database_recommendations <- function(accountIds = NU
 }
 .computeoptimizer$operations$export_rds_database_recommendations <- computeoptimizer_export_rds_database_recommendations
 
-#' Returns Amazon EC2 Auto Scaling group recommendations
+#' Returns Auto Scaling group recommendations
 #'
 #' @description
-#' Returns Amazon EC2 Auto Scaling group recommendations.
+#' Returns Auto Scaling group recommendations.
 #' 
 #' Compute Optimizer generates recommendations for Amazon EC2 Auto Scaling
 #' groups that meet a specific set of requirements. For more information,
@@ -1243,27 +1242,27 @@ computeoptimizer_export_rds_database_recommendations <- function(accountIds = NU
 #'   autoScalingGroupArns, nextToken, maxResults, filters,
 #'   recommendationPreferences)
 #'
-#' @param accountIds The ID of the Amazon Web Services account for which to return Amazon EC2
-#' Auto Scaling group recommendations.
+#' @param accountIds The ID of the Amazon Web Services account for which to return Auto
+#' Scaling group recommendations.
 #' 
 #' If your account is the management account of an organization, use this
 #' parameter to specify the member account for which you want to return
-#' Amazon EC2 Auto Scaling group recommendations.
+#' Auto Scaling group recommendations.
 #' 
 #' Only one account ID can be specified per request.
-#' @param autoScalingGroupArns The Amazon Resource Name (ARN) of the Amazon EC2 Auto Scaling groups for
-#' which to return recommendations.
-#' @param nextToken The token to advance to the next page of Amazon EC2 Auto Scaling group
+#' @param autoScalingGroupArns The Amazon Resource Name (ARN) of the Auto Scaling groups for which to
+#' return recommendations.
+#' @param nextToken The token to advance to the next page of Auto Scaling group
 #' recommendations.
-#' @param maxResults The maximum number of Amazon EC2 Auto Scaling group recommendations to
-#' return with a single request.
+#' @param maxResults The maximum number of Auto Scaling group recommendations to return with
+#' a single request.
 #' 
 #' To retrieve the remaining results, make another request with the
 #' returned `nextToken` value.
 #' @param filters An array of objects to specify a filter that returns a more specific
-#' list of Amazon EC2 Auto Scaling group recommendations.
-#' @param recommendationPreferences An object to specify the preferences for the Amazon EC2 Auto Scaling
-#' group recommendations to return in the response.
+#' list of Auto Scaling group recommendations.
+#' @param recommendationPreferences An object to specify the preferences for the Auto Scaling group
+#' recommendations to return in the response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2242,8 +2241,8 @@ computeoptimizer_get_ecs_service_recommendations <- function(serviceArns = NULL,
 #' computeoptimizer_get_effective_recommendation_preferences(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to confirm
-#' effective recommendation preferences. Only EC2 instance and Amazon EC2
-#' Auto Scaling group ARNs are currently supported.
+#' effective recommendation preferences. Only EC2 instance and Auto Scaling
+#' group ARNs are currently supported.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3226,8 +3225,8 @@ computeoptimizer_get_rds_database_recommendations <- function(resourceArns = NUL
 #' 
 #' Use the `scope` parameter to specify which preferences to return. You
 #' can specify to return preferences for an organization, a specific
-#' account ID, or a specific EC2 instance or Amazon EC2 Auto Scaling group
-#' Amazon Resource Name (ARN).
+#' account ID, or a specific EC2 instance or Auto Scaling group Amazon
+#' Resource Name (ARN).
 #' 
 #' For more information, see [Activating enhanced infrastructure
 #' metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html)
@@ -3241,9 +3240,8 @@ computeoptimizer_get_rds_database_recommendations <- function(resourceArns = NUL
 #' return preferences.
 #' 
 #' The `Ec2Instance` option encompasses standalone instances and instances
-#' that are part of Amazon EC2 Auto Scaling groups. The `AutoScalingGroup`
-#' option encompasses only instances that are part of an Amazon EC2 Auto
-#' Scaling group.
+#' that are part of Auto Scaling groups. The `AutoScalingGroup` option
+#' encompasses only instances that are part of an Auto Scaling group.
 #' @param scope An object that describes the scope of the recommendation preference to
 #' return.
 #' 
@@ -3354,8 +3352,8 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
 #' -   Amazon EC2 instances in an account that are `Underprovisioned`,
 #'     `Overprovisioned`, or `Optimized`.
 #' 
-#' -   EC2Amazon EC2 Auto Scaling groups in an account that are
-#'     `NotOptimized`, or `Optimized`.
+#' -   EC2Auto Scaling groups in an account that are `NotOptimized`, or
+#'     `Optimized`.
 #' 
 #' -   Amazon EBS volumes in an account that are `NotOptimized`, or
 #'     `Optimized`.
@@ -3517,9 +3515,8 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' @param resourceType &#91;required&#93; The target resource type of the recommendation preference to create.
 #' 
 #' The `Ec2Instance` option encompasses standalone instances and instances
-#' that are part of Amazon EC2 Auto Scaling groups. The `AutoScalingGroup`
-#' option encompasses only instances that are part of an Amazon EC2 Auto
-#' Scaling group.
+#' that are part of Auto Scaling groups. The `AutoScalingGroup` option
+#' encompasses only instances that are part of an Auto Scaling group.
 #' @param scope An object that describes the scope of the recommendation preference to
 #' create.
 #' 
@@ -3530,17 +3527,16 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html)
 #' in the *Compute Optimizer User Guide*.
 #' 
-#' You cannot create recommendation preferences for Amazon EC2 Auto Scaling
-#' groups at the organization and account levels. You can create
-#' recommendation preferences for Amazon EC2 Auto Scaling groups only at
-#' the resource level by specifying a scope name of `ResourceArn` and a
-#' scope value of the Amazon EC2 Auto Scaling group Amazon Resource Name
-#' (ARN). This will configure the preference for all instances that are
-#' part of the specified Amazon EC2 Auto Scaling group. You also cannot
-#' create recommendation preferences at the resource level for instances
-#' that are part of an Amazon EC2 Auto Scaling group. You can create
-#' recommendation preferences at the resource level only for standalone
-#' instances.
+#' You cannot create recommendation preferences for Auto Scaling groups at
+#' the organization and account levels. You can create recommendation
+#' preferences for Auto Scaling groups only at the resource level by
+#' specifying a scope name of `ResourceArn` and a scope value of the Auto
+#' Scaling group Amazon Resource Name (ARN). This will configure the
+#' preference for all instances that are part of the specified Auto Scaling
+#' group. You also cannot create recommendation preferences at the resource
+#' level for instances that are part of an Auto Scaling group. You can
+#' create recommendation preferences at the resource level only for
+#' standalone instances.
 #' @param enhancedInfrastructureMetrics The status of the enhanced infrastructure metrics recommendation
 #' preference to create or update.
 #' 
@@ -3579,14 +3575,14 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' the Amazon Web Services resource are analyzed. When this preference
 #' isn't specified, we use the default value `DAYS_14`.
 #' 
-#' You can only set this preference for the Amazon EC2 instance and Amazon
-#' EC2 Auto Scaling group resource types.
+#' You can only set this preference for the Amazon EC2 instance and Auto
+#' Scaling group resource types.
 #' 
 #' -   Amazon EC2 instance lookback preferences can be set at the
 #'     organization, account, and resource levels.
 #' 
-#' -   Amazon EC2 Auto Scaling group lookback preferences can only be set
-#'     at the resource level.
+#' -   Auto Scaling group lookback preferences can only be set at the
+#'     resource level.
 #' @param utilizationPreferences The preference to control the resource’s CPU utilization threshold, CPU
 #' utilization headroom, and memory utilization headroom. When this
 #' preference isn't specified, we use the following default values.
@@ -3612,8 +3608,8 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' an `includeList` or `excludeList`. If the preference is an empty set of
 #' resource type values, an error occurs.
 #' 
-#' You can only set this preference for the Amazon EC2 instance and Amazon
-#' EC2 Auto Scaling group resource types.
+#' You can only set this preference for the Amazon EC2 instance and Auto
+#' Scaling group resource types.
 #' @param savingsEstimationMode The status of the savings estimation mode preference to create or
 #' update.
 #' 

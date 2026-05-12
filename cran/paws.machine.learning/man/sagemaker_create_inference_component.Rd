@@ -9,7 +9,8 @@ sagemaker_create_inference_component(
   InferenceComponentName,
   EndpointName,
   VariantName = NULL,
-  Specification,
+  Specification = NULL,
+  Specifications = NULL,
   RuntimeConfig = NULL,
   Tags = NULL
 )
@@ -22,8 +23,14 @@ sagemaker_create_inference_component(
 \item{VariantName}{The name of an existing production variant where you host the inference
 component.}
 
-\item{Specification}{[required] Details about the resources to deploy with this inference component,
+\item{Specification}{Details about the resources to deploy with this inference component,
 including the model, container, and compute resources.}
+
+\item{Specifications}{A list of specification objects for the inference component, one per
+instance type. Use this parameter when you want to deploy a different
+model or resource configuration for the inference component on each
+instance type. You can use either this parameter or the singular
+\code{Specification} parameter, but not both.}
 
 \item{RuntimeConfig}{Runtime settings for a model that is deployed with an inference
 component.}

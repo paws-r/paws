@@ -14,7 +14,7 @@ quicksight_create_brand(
 \arguments{
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account that owns the brand.}
 
-\item{BrandId}{[required] The ID of the Quick Suite brand.}
+\item{BrandId}{[required] The ID of the Quick brand.}
 
 \item{BrandDefinition}{The definition of the brand.}
 

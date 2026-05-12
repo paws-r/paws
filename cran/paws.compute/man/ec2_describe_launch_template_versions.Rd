@@ -14,7 +14,8 @@ ec2_describe_launch_template_versions(
   NextToken = NULL,
   MaxResults = NULL,
   Filters = NULL,
-  ResolveAlias = NULL
+  ResolveAlias = NULL,
+  IncludeManagedResources = NULL
 )
 }
 \arguments{
@@ -98,6 +99,11 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon EC2 User Guide}.
 
 Default: \code{false}}
+
+\item{IncludeManagedResources}{Indicates whether to include managed resources in the output. If this
+parameter is set to \code{true}, the output includes resources that are
+managed by Amazon Web Services services, even if managed resource
+visibility is set to hidden.}
 }
 \description{
 Describes one or more versions of a specified launch template. You can describe all versions, individual versions, or a range of versions. You can also describe all the latest versions or all the default versions of all the launch templates in your account.

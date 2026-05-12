@@ -29,7 +29,10 @@ have a value set in every user profile before an \code{AttributesToGet}
 parameter returns results.}
 
 \item{Limit}{The maximum number of users that you want Amazon Cognito to return in
-the response.}
+the response. In some SDK contexts, this operation might return fewer
+items than you specify in the \code{Limit} parameter without having reached
+the end of the full list. If the response contains a \code{PaginationToken},
+then there are more results.}
 
 \item{PaginationToken}{This API operation returns a limited number of results. The pagination
 token is an identifier that you can present in an additional API request

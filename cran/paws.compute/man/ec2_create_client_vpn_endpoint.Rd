@@ -26,7 +26,8 @@ ec2_create_client_vpn_endpoint(
   ClientRouteEnforcementOptions = NULL,
   DisconnectOnSessionTimeout = NULL,
   EndpointIpAddressType = NULL,
-  TrafficIpAddressType = NULL
+  TrafficIpAddressType = NULL,
+  TransitGatewayConfiguration = NULL
 )
 }
 \arguments{
@@ -144,6 +145,11 @@ values are \code{ipv4} (default) for IPv4 traffic only, \code{ipv6} for IPv6
 addressing only, or \code{dual-stack} for both IPv4 and IPv6 traffic. When
 set to \code{dual-stack}, clients can access both IPv4 and IPv6 resources
 through the VPN .}
+
+\item{TransitGatewayConfiguration}{The Transit Gateway configuration for the Client VPN endpoint. Use this
+parameter to associate the endpoint with a Transit Gateway instead of a
+VPC. You cannot specify both \code{TransitGatewayConfiguration} and
+\code{VpcId}/\code{SecurityGroupIds}.}
 }
 \description{
 Creates a Client VPN endpoint. A Client VPN endpoint is the resource you create and configure to enable and manage client VPN sessions. It is the destination endpoint at which all client VPN sessions are terminated.

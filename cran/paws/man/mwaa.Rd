@@ -55,7 +55,8 @@ This section contains the Amazon Managed Workflows for Apache Airflow
 
 \strong{Endpoints}
 \itemize{
-\item \verb{api.airflow.\{region\}.amazonaws.com} - This endpoint is used for
+\item \verb{api.airflow.\{region\}.amazonaws.com} (use
+\verb{api.airflow.\{region\}.api.aws} for IPv6) - This endpoint is used for
 environment management.
 \itemize{
 \item \code{create_environment}
@@ -67,7 +68,8 @@ environment management.
 \item \code{untag_resource}
 \item \code{update_environment}
 }
-\item \verb{env.airflow.\{region\}.amazonaws.com} - This endpoint is used to
+\item \verb{env.airflow.\{region\}.amazonaws.com} (use
+\verb{env.airflow.\{region\}.api.aws} for IPv6) - This endpoint is used to
 operate the Airflow environment.
 \itemize{
 \item \code{create_cli_token}

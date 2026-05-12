@@ -77,6 +77,7 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId, shutdownGraceP
 #' consists of a classification and properties. This configuration is
 #' applied to all the job runs submitted under the application.
 #' @param monitoringConfiguration The configuration setting for monitoring.
+#' @param diskEncryptionConfiguration The configuration object that allows encrypting local disks.
 #' @param interactiveConfiguration The interactive configuration object that enables the interactive use
 #' cases to use when running an application.
 #' @param schedulerConfiguration The scheduler configuration for batch and streaming jobs running on this
@@ -90,7 +91,7 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId, shutdownGraceP
 #' @keywords internal
 #'
 #' @rdname emrserverless_create_application
-emrserverless_create_application <- function(name = NULL, releaseLabel, type, clientToken, initialCapacity = NULL, maximumCapacity = NULL, tags = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, runtimeConfiguration = NULL, monitoringConfiguration = NULL, interactiveConfiguration = NULL, schedulerConfiguration = NULL, identityCenterConfiguration = NULL, jobLevelCostAllocationConfiguration = NULL) {
+emrserverless_create_application <- function(name = NULL, releaseLabel, type, clientToken, initialCapacity = NULL, maximumCapacity = NULL, tags = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, runtimeConfiguration = NULL, monitoringConfiguration = NULL, diskEncryptionConfiguration = NULL, interactiveConfiguration = NULL, schedulerConfiguration = NULL, identityCenterConfiguration = NULL, jobLevelCostAllocationConfiguration = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
@@ -99,7 +100,7 @@ emrserverless_create_application <- function(name = NULL, releaseLabel, type, cl
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emrserverless$create_application_input(name = name, releaseLabel = releaseLabel, type = type, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, tags = tags, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration, interactiveConfiguration = interactiveConfiguration, schedulerConfiguration = schedulerConfiguration, identityCenterConfiguration = identityCenterConfiguration, jobLevelCostAllocationConfiguration = jobLevelCostAllocationConfiguration)
+  input <- .emrserverless$create_application_input(name = name, releaseLabel = releaseLabel, type = type, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, tags = tags, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration, diskEncryptionConfiguration = diskEncryptionConfiguration, interactiveConfiguration = interactiveConfiguration, schedulerConfiguration = schedulerConfiguration, identityCenterConfiguration = identityCenterConfiguration, jobLevelCostAllocationConfiguration = jobLevelCostAllocationConfiguration)
   output <- .emrserverless$create_application_output()
   config <- get_config()
   svc <- .emrserverless$service(config, op)
@@ -242,6 +243,106 @@ emrserverless_get_job_run <- function(applicationId, jobRunId, attempt = NULL) {
 }
 .emrserverless$operations$get_job_run <- emrserverless_get_job_run
 
+#' Returns a URL that you can use to access the application UIs for a
+#' specified resource, such as a session
+#'
+#' @description
+#' Returns a URL that you can use to access the application UIs for a specified resource, such as a session.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_get_resource_dashboard/](https://www.paws-r-sdk.com/docs/emrserverless_get_resource_dashboard/) for full documentation.
+#'
+#' @param applicationId &#91;required&#93; The ID of the application that the resource belongs to.
+#' @param resourceId &#91;required&#93; The ID of the resource.
+#' @param resourceType &#91;required&#93; The type of resource to access the dashboard for. Currently, only
+#' `Session` is supported.
+#'
+#' @keywords internal
+#'
+#' @rdname emrserverless_get_resource_dashboard
+emrserverless_get_resource_dashboard <- function(applicationId, resourceId, resourceType) {
+  op <- new_operation(
+    name = "GetResourceDashboard",
+    http_method = "GET",
+    http_path = "/applications/{applicationId}/dashboard",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emrserverless$get_resource_dashboard_input(applicationId = applicationId, resourceId = resourceId, resourceType = resourceType)
+  output <- .emrserverless$get_resource_dashboard_output()
+  config <- get_config()
+  svc <- .emrserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrserverless$operations$get_resource_dashboard <- emrserverless_get_resource_dashboard
+
+#' Displays detailed information about a session
+#'
+#' @description
+#' Displays detailed information about a session.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_get_session/](https://www.paws-r-sdk.com/docs/emrserverless_get_session/) for full documentation.
+#'
+#' @param applicationId &#91;required&#93; The ID of the application that the session belongs to.
+#' @param sessionId &#91;required&#93; The ID of the session.
+#'
+#' @keywords internal
+#'
+#' @rdname emrserverless_get_session
+emrserverless_get_session <- function(applicationId, sessionId) {
+  op <- new_operation(
+    name = "GetSession",
+    http_method = "GET",
+    http_path = "/applications/{applicationId}/sessions/{sessionId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emrserverless$get_session_input(applicationId = applicationId, sessionId = sessionId)
+  output <- .emrserverless$get_session_output()
+  config <- get_config()
+  svc <- .emrserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrserverless$operations$get_session <- emrserverless_get_session
+
+#' Returns the session endpoint URL and a time-limited authentication token
+#' for the specified session
+#'
+#' @description
+#' Returns the session endpoint URL and a time-limited authentication token for the specified session. Use the endpoint and token to connect a client to the session. Call this operation again when the authentication token expires to obtain a new token.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_get_session_endpoint/](https://www.paws-r-sdk.com/docs/emrserverless_get_session_endpoint/) for full documentation.
+#'
+#' @param applicationId &#91;required&#93; The ID of the application that the session belongs to.
+#' @param sessionId &#91;required&#93; The ID of the session.
+#'
+#' @keywords internal
+#'
+#' @rdname emrserverless_get_session_endpoint
+emrserverless_get_session_endpoint <- function(applicationId, sessionId) {
+  op <- new_operation(
+    name = "GetSessionEndpoint",
+    http_method = "GET",
+    http_path = "/applications/{applicationId}/sessions/{sessionId}/endpoint",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emrserverless$get_session_endpoint_input(applicationId = applicationId, sessionId = sessionId)
+  output <- .emrserverless$get_session_endpoint_output()
+  config <- get_config()
+  svc <- .emrserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrserverless$operations$get_session_endpoint <- emrserverless_get_session_endpoint
+
 #' Lists applications based on a set of parameters
 #'
 #' @description
@@ -348,6 +449,43 @@ emrserverless_list_job_runs <- function(applicationId, nextToken = NULL, maxResu
   return(response)
 }
 .emrserverless$operations$list_job_runs <- emrserverless_list_job_runs
+
+#' Lists sessions for the specified application
+#'
+#' @description
+#' Lists sessions for the specified application. You can filter sessions by state and creation time.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_list_sessions/](https://www.paws-r-sdk.com/docs/emrserverless_list_sessions/) for full documentation.
+#'
+#' @param applicationId &#91;required&#93; The ID of the application to list sessions for.
+#' @param nextToken The token for the next set of session results.
+#' @param maxResults The maximum number of sessions to return in each page of results.
+#' @param states An optional filter for session states. Note that if this filter contains
+#' multiple states, the resulting list will be grouped by the state.
+#' @param createdAtAfter The lower bound of the option to filter by creation date and time.
+#' @param createdAtBefore The upper bound of the option to filter by creation date and time.
+#'
+#' @keywords internal
+#'
+#' @rdname emrserverless_list_sessions
+emrserverless_list_sessions <- function(applicationId, nextToken = NULL, maxResults = NULL, states = NULL, createdAtAfter = NULL, createdAtBefore = NULL) {
+  op <- new_operation(
+    name = "ListSessions",
+    http_method = "GET",
+    http_path = "/applications/{applicationId}/sessions",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sessions"),
+    stream_api = FALSE
+  )
+  input <- .emrserverless$list_sessions_input(applicationId = applicationId, nextToken = nextToken, maxResults = maxResults, states = states, createdAtAfter = createdAtAfter, createdAtBefore = createdAtBefore)
+  output <- .emrserverless$list_sessions_output()
+  config <- get_config()
+  svc <- .emrserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrserverless$operations$list_sessions <- emrserverless_list_sessions
 
 #' Lists the tags assigned to the resources
 #'
@@ -459,6 +597,51 @@ emrserverless_start_job_run <- function(applicationId, clientToken, executionRol
 }
 .emrserverless$operations$start_job_run <- emrserverless_start_job_run
 
+#' Creates and starts a new session on the specified application
+#'
+#' @description
+#' Creates and starts a new session on the specified application. The application must be in the `STARTED` state or have `AutoStart` enabled, and have interactive sessions enabled. This operation is supported for EMR release 7.13.0 and later.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_start_session/](https://www.paws-r-sdk.com/docs/emrserverless_start_session/) for full documentation.
+#'
+#' @param applicationId &#91;required&#93; The ID of the application on which to start the session.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you retry a request that completed
+#' successfully using the same client token, the server returns the
+#' successful response without performing the operation again.
+#' @param executionRoleArn &#91;required&#93; The execution role ARN for the session. Amazon EMR Serverless uses this
+#' role to access Amazon Web Services resources on your behalf during
+#' session execution.
+#' @param configurationOverrides The configuration overrides for the session. Only runtime configuration
+#' overrides are supported.
+#' @param tags The tags to assign to the session.
+#' @param idleTimeoutMinutes The idle timeout in minutes for the session. After the session remains
+#' idle for this duration, Amazon EMR Serverless automatically terminates
+#' it.
+#' @param name The optional name for the session.
+#'
+#' @keywords internal
+#'
+#' @rdname emrserverless_start_session
+emrserverless_start_session <- function(applicationId, clientToken, executionRoleArn, configurationOverrides = NULL, tags = NULL, idleTimeoutMinutes = NULL, name = NULL) {
+  op <- new_operation(
+    name = "StartSession",
+    http_method = "POST",
+    http_path = "/applications/{applicationId}/sessions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emrserverless$start_session_input(applicationId = applicationId, clientToken = clientToken, executionRoleArn = executionRoleArn, configurationOverrides = configurationOverrides, tags = tags, idleTimeoutMinutes = idleTimeoutMinutes, name = name)
+  output <- .emrserverless$start_session_output()
+  config <- get_config()
+  svc <- .emrserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrserverless$operations$start_session <- emrserverless_start_session
+
 #' Stops a specified application and releases initial capacity if
 #' configured
 #'
@@ -524,6 +707,38 @@ emrserverless_tag_resource <- function(resourceArn, tags) {
   return(response)
 }
 .emrserverless$operations$tag_resource <- emrserverless_tag_resource
+
+#' Terminates the specified session
+#'
+#' @description
+#' Terminates the specified session. After you terminate a session, it enters the `TERMINATING` state and then the `TERMINATED` state. You can still access the Spark History Server for a terminated session through the [`get_resource_dashboard`][emrserverless_get_resource_dashboard] operation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_terminate_session/](https://www.paws-r-sdk.com/docs/emrserverless_terminate_session/) for full documentation.
+#'
+#' @param applicationId &#91;required&#93; The ID of the application that the session belongs to.
+#' @param sessionId &#91;required&#93; The ID of the session to terminate.
+#'
+#' @keywords internal
+#'
+#' @rdname emrserverless_terminate_session
+emrserverless_terminate_session <- function(applicationId, sessionId) {
+  op <- new_operation(
+    name = "TerminateSession",
+    http_method = "DELETE",
+    http_path = "/applications/{applicationId}/sessions/{sessionId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emrserverless$terminate_session_input(applicationId = applicationId, sessionId = sessionId)
+  output <- .emrserverless$terminate_session_output()
+  config <- get_config()
+  svc <- .emrserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrserverless$operations$terminate_session <- emrserverless_terminate_session
 
 #' Removes tags from resources
 #'
@@ -600,6 +815,7 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' consists of a classification and properties. This configuration is
 #' applied across all the job runs submitted under the application.
 #' @param monitoringConfiguration The configuration setting for monitoring.
+#' @param diskEncryptionConfiguration The configuration object that allows encrypting local disks.
 #' @param schedulerConfiguration The scheduler configuration for batch and streaming jobs running on this
 #' application. Supported with release labels emr-7.0.0 and above.
 #' @param identityCenterConfiguration Specifies the IAM Identity Center configuration used to enable or
@@ -611,7 +827,7 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname emrserverless_update_application
-emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, interactiveConfiguration = NULL, releaseLabel = NULL, runtimeConfiguration = NULL, monitoringConfiguration = NULL, schedulerConfiguration = NULL, identityCenterConfiguration = NULL, jobLevelCostAllocationConfiguration = NULL) {
+emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, interactiveConfiguration = NULL, releaseLabel = NULL, runtimeConfiguration = NULL, monitoringConfiguration = NULL, diskEncryptionConfiguration = NULL, schedulerConfiguration = NULL, identityCenterConfiguration = NULL, jobLevelCostAllocationConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "PATCH",
@@ -620,7 +836,7 @@ emrserverless_update_application <- function(applicationId, clientToken, initial
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, interactiveConfiguration = interactiveConfiguration, releaseLabel = releaseLabel, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration, schedulerConfiguration = schedulerConfiguration, identityCenterConfiguration = identityCenterConfiguration, jobLevelCostAllocationConfiguration = jobLevelCostAllocationConfiguration)
+  input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, interactiveConfiguration = interactiveConfiguration, releaseLabel = releaseLabel, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration, diskEncryptionConfiguration = diskEncryptionConfiguration, schedulerConfiguration = schedulerConfiguration, identityCenterConfiguration = identityCenterConfiguration, jobLevelCostAllocationConfiguration = jobLevelCostAllocationConfiguration)
   output <- .emrserverless$update_application_output()
   config <- get_config()
   svc <- .emrserverless$service(config, op)

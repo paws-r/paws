@@ -14,8 +14,6 @@ lookoutequipment_update_model(
 \arguments{
 \item{ModelName}{[required] The name of the model to update.}
 
-\item{LabelsInputConfiguration}{}
-
 \item{RoleArn}{The ARN of the model to update.}
 
 \item{ModelDiagnosticsOutputConfiguration}{The Amazon S3 location where you want Amazon Lookout for Equipment to

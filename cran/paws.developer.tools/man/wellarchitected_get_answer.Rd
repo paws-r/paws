@@ -17,8 +17,6 @@ wellarchitected_get_answer(
 \item{LensAlias}{[required]}
 
 \item{QuestionId}{[required]}
-
-\item{MilestoneNumber}{}
 }
 \description{
 Get the answer to a specific question in a workload review.

@@ -14,13 +14,13 @@ pricing_list_price_lists(
 )
 }
 \arguments{
-\item{ServiceCode}{[required] The service code or the Savings Plan service code for the attributes
+\item{ServiceCode}{[required] The service code or the Savings Plans service code for the attributes
 that you want to retrieve. For example, to get the list of applicable
 Amazon EC2 price lists, use \code{AmazonEC2}. For a full list of service
 codes containing On-Demand and Reserved Instance (RI) pricing, use the
 \code{\link[=pricing_describe_services]{describe_services}} API.
 
-To retrieve the Reserved Instance and Compute Savings Plan price lists,
+To retrieve the Reserved Instance and Compute Savings Plans price lists,
 use \code{ComputeSavingsPlans}.
 
 To retrieve Machine Learning Savings Plans price lists, use

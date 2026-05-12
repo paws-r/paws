@@ -6,30 +6,30 @@
 Amazon DataZone assets}
 \usage{
 datazone_reject_predictions(
-  clientToken = NULL,
   domainIdentifier,
   identifier,
-  rejectChoices = NULL,
+  revision = NULL,
   rejectRule = NULL,
-  revision = NULL
+  rejectChoices = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain.}
 
 \item{identifier}{[required] The identifier of the prediction.}
+
+\item{revision}{The revision that is to be made to the asset.}
+
+\item{rejectRule}{Specifies the rule (or the conditions) under which a prediction can be
+rejected.}
 
 \item{rejectChoices}{Specifies the prediction (aka, the automatically generated piece of
 metadata) and the target (for example, a column name) that can be
 rejected.}
 
-\item{rejectRule}{Specifies the rule (or the conditions) under which a prediction can be
-rejected.}
-
-\item{revision}{The revision that is to be made to the asset.}
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Rejects automatically generated business-friendly metadata for your Amazon DataZone assets.

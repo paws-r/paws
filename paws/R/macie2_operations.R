@@ -2351,6 +2351,7 @@ macie2_get_bucket_statistics <- function(accountId = NULL) {
 #'   configuration = list(
 #'     s3Destination = list(
 #'       bucketName = "string",
+#'       expectedBucketOwner = "string",
 #'       keyPrefix = "string",
 #'       kmsKeyArn = "string"
 #'     )
@@ -4924,6 +4925,7 @@ macie2_list_tags_for_resource <- function(resourceArn) {
 #'   configuration = list(
 #'     s3Destination = list(
 #'       bucketName = "string",
+#'       expectedBucketOwner = "string",
 #'       keyPrefix = "string",
 #'       kmsKeyArn = "string"
 #'     )
@@ -4937,6 +4939,7 @@ macie2_list_tags_for_resource <- function(resourceArn) {
 #'   configuration = list(
 #'     s3Destination = list(
 #'       bucketName = "string",
+#'       expectedBucketOwner = "string",
 #'       keyPrefix = "string",
 #'       kmsKeyArn = "string"
 #'     )

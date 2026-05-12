@@ -14,8 +14,6 @@ cloudwatchlogs_list_scheduled_queries(
 \item{maxResults}{The maximum number of scheduled queries to return. Valid range is 1 to
 1000.}
 
-\item{nextToken}{}
-
 \item{state}{Filter scheduled queries by state. Valid values are \code{ENABLED} and
 \code{DISABLED}. If not specified, all scheduled queries are returned.}
 }

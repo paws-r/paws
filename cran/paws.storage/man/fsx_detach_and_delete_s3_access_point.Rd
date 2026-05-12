@@ -8,8 +8,6 @@ access point}
 fsx_detach_and_delete_s3_access_point(ClientRequestToken = NULL, Name)
 }
 \arguments{
-\item{ClientRequestToken}{}
-
 \item{Name}{[required] The name of the S3 access point attachment that you want to delete.}
 }
 \description{

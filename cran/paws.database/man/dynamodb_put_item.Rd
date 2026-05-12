@@ -72,8 +72,6 @@ The \code{ReturnValues} parameter is used by several DynamoDB operations;
 however, \code{\link[=dynamodb_put_item]{put_item}} does not recognize any values
 other than \code{NONE} or \code{ALL_OLD}.}
 
-\item{ReturnConsumedCapacity}{}
-
 \item{ReturnItemCollectionMetrics}{Determines whether item collection metrics are returned. If set to
 \code{SIZE}, the response includes statistics about item collections, if any,
 that were modified during the operation are returned in the response. If

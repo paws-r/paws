@@ -99,8 +99,8 @@ information, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/user
 \itemize{
 \item Resolves the registration token that the buyer submits through the
 browser during the registration process. Obtains a
-\code{CustomerIdentifier} along with the \code{CustomerAWSAccountId} and
-\code{ProductCode}.
+\code{CustomerIdentifier} along with the \code{CustomerAWSAccountId},
+\code{ProductCode}, and \code{LicenseArn}.
 \item Called from: SaaS application during the registration process
 \item Supported product type: SaaS
 \item Vendor-metered tagging: Not applicable
@@ -193,8 +193,8 @@ contact \href{mailto://aws.amazon.com/marketplace/management/contact-us/}{Amazon
 \section{Operations}{
 
 \tabular{ll}{
-\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage} \tab The CustomerIdentifier parameter is scheduled for deprecation on March 31, 2026\cr
-\link[=marketplacemetering_meter_usage]{meter_usage} \tab API to emit metering records\cr
+\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage} \tab Amazon Web Services Marketplace is introducing Concurrent Agreements, enabling buyers to make multiple purchases per Amazon Web Services account\cr
+\link[=marketplacemetering_meter_usage]{meter_usage} \tab As a seller, your software hosted in the buyer's Amazon Web Services account uses this API action to emit metering records directly to Amazon Web Services Marketplace\cr
 \link[=marketplacemetering_register_usage]{register_usage} \tab Paid container software products sold through Amazon Web Services Marketplace must integrate with the Amazon Web Services Marketplace Metering Service and call the RegisterUsage operation for software entitlement and metering\cr
 \link[=marketplacemetering_resolve_customer]{resolve_customer} \tab ResolveCustomer is called by a SaaS application during the registration process
 }

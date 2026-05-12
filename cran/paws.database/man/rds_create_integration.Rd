@@ -37,8 +37,6 @@ in the \emph{Amazon Web Services Key Management Service Developer Guide}.
 You can only include this parameter if you specify the \code{KMSKeyId}
 parameter.}
 
-\item{Tags}{}
-
 \item{DataFilter}{Data filtering options for the integration. For more information, see
 \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/zero-etl.filtering.html}{Data filtering for Aurora zero-ETL integrations with Amazon Redshift}
 or \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/zero-etl.filtering.html}{Data filtering for Amazon RDS zero-ETL integrations with Amazon Redshift}.}

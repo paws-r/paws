@@ -24,6 +24,11 @@ s3_write_get_object_response(
   ChecksumCRC64NVME = NULL,
   ChecksumSHA1 = NULL,
   ChecksumSHA256 = NULL,
+  ChecksumSHA512 = NULL,
+  ChecksumMD5 = NULL,
+  ChecksumXXHASH64 = NULL,
+  ChecksumXXHASH3 = NULL,
+  ChecksumXXHASH128 = NULL,
   DeleteMarker = NULL,
   ETag = NULL,
   Expires = NULL,
@@ -165,6 +170,36 @@ in the \emph{Amazon S3 User Guide}.
 Only one checksum header can be specified at a time. If you supply
 multiple checksum headers, this request will fail.}
 
+\item{ChecksumSHA512}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the Base64 encoded, 512-bit \code{SHA512} digest of the part. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumMD5}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the Base64 encoded, 128-bit \code{MD5} digest of the part. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumXXHASH64}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the Base64 encoded, 64-bit \code{XXHASH64} checksum of the part.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumXXHASH3}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the Base64 encoded, 64-bit \code{XXHASH3} checksum of the part. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumXXHASH128}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the Base64 encoded, 128-bit \code{XXHASH128} checksum of the part.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
 \item{DeleteMarker}{Specifies whether an object stored in Amazon S3 is (\code{true}) or is not
 (\code{false}) a delete marker. To learn more about delete markers, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/DeleteMarker.html}{Working with delete markers}.}
@@ -203,8 +238,6 @@ hold.}
 destination in a Replication rule. For more information about S3
 Replication, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html}{Replication}.}
-
-\item{RequestCharged}{}
 
 \item{Restore}{Provides information about object restoration operation and expiration
 time of the restored object copy.}

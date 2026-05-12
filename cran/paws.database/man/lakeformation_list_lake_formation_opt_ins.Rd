@@ -13,8 +13,6 @@ lakeformation_list_lake_formation_opt_ins(
 )
 }
 \arguments{
-\item{Principal}{}
-
 \item{Resource}{A structure for the resource.}
 
 \item{MaxResults}{The maximum number of results to return.}

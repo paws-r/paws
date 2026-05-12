@@ -14,7 +14,8 @@ NULL
 #' 
 #' **Endpoints**
 #' 
-#' -   `api.airflow.{region}.amazonaws.com` - This endpoint is used for
+#' -   `api.airflow.{region}.amazonaws.com` (use
+#'     `api.airflow.{region}.api.aws` for IPv6) - This endpoint is used for
 #'     environment management.
 #' 
 #'     -   [`create_environment`][mwaa_create_environment]
@@ -33,7 +34,8 @@ NULL
 #' 
 #'     -   [`update_environment`][mwaa_update_environment]
 #' 
-#' -   `env.airflow.{region}.amazonaws.com` - This endpoint is used to
+#' -   `env.airflow.{region}.amazonaws.com` (use
+#'     `env.airflow.{region}.api.aws` for IPv6) - This endpoint is used to
 #'     operate the Airflow environment.
 #' 
 #'     -   [`create_cli_token`][mwaa_create_cli_token]

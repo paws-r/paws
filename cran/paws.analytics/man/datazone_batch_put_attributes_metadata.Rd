@@ -5,24 +5,24 @@
 \title{Writes the attribute metadata}
 \usage{
 datazone_batch_put_attributes_metadata(
-  attributes,
-  clientToken = NULL,
   domainIdentifier,
+  entityType,
   entityIdentifier,
-  entityType
+  clientToken = NULL,
+  attributes
 )
 }
 \arguments{
-\item{attributes}{[required] The attributes of the metadata.}
+\item{domainIdentifier}{[required] The domain ID where you want to write the attribute metadata.}
+
+\item{entityType}{[required] The entity type for which you want to write the attribute metadata.}
+
+\item{entityIdentifier}{[required] The entity ID for which you want to write the attribute metadata.}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the
 request. This field is automatically populated if not provided.}
 
-\item{domainIdentifier}{[required] The domain ID where you want to write the attribute metadata.}
-
-\item{entityIdentifier}{[required] The entity ID for which you want to write the attribute metadata.}
-
-\item{entityType}{[required] The entity type for which you want to write the attribute metadata.}
+\item{attributes}{[required] The attributes of the metadata.}
 }
 \description{
 Writes the attribute metadata.

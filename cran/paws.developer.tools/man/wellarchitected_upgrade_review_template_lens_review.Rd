@@ -14,8 +14,6 @@ wellarchitected_upgrade_review_template_lens_review(
 \item{TemplateArn}{[required] The ARN of the review template.}
 
 \item{LensAlias}{[required]}
-
-\item{ClientRequestToken}{}
 }
 \description{
 Upgrade the lens review of a review template.

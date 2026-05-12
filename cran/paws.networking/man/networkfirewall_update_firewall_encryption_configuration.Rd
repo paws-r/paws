@@ -35,8 +35,6 @@ using the new token.}
 
 \item{FirewallName}{The descriptive name of the firewall. You can't change the name of a
 firewall after you create it.}
-
-\item{EncryptionConfiguration}{}
 }
 \description{
 A complex type that contains settings for encryption of your firewall resources.

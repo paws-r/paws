@@ -6,28 +6,28 @@
 in this workspace}
 \usage{
 managedgrafana_list_permissions(
-  groupId = NULL,
   maxResults = NULL,
   nextToken = NULL,
-  userId = NULL,
   userType = NULL,
+  userId = NULL,
+  groupId = NULL,
   workspaceId
 )
 }
 \arguments{
-\item{groupId}{(Optional) Limits the results to only the group that matches this ID.}
-
 \item{maxResults}{The maximum number of results to include in the response.}
 
 \item{nextToken}{The token to use when requesting the next set of results. You received
 this token from a previous
 \code{\link[=managedgrafana_list_permissions]{list_permissions}} operation.}
 
-\item{userId}{(Optional) Limits the results to only the user that matches this ID.}
-
 \item{userType}{(Optional) If you specify \code{SSO_USER}, then only the permissions of IAM
 Identity Center users are returned. If you specify \code{SSO_GROUP}, only the
 permissions of IAM Identity Center groups are returned.}
+
+\item{userId}{(Optional) Limits the results to only the user that matches this ID.}
+
+\item{groupId}{(Optional) Limits the results to only the group that matches this ID.}
 
 \item{workspaceId}{[required] The ID of the workspace to list permissions for. This parameter is
 required.}

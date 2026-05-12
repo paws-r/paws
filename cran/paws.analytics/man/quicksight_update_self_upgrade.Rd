@@ -2,8 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_self_upgrade}
 \alias{quicksight_update_self_upgrade}
-\title{Updates a self-upgrade request for a Quick Suite user by approving,
-denying, or verifying the request}
+\title{Updates a self-upgrade request for a Quick user by approving, denying,
+or verifying the request}
 \usage{
 quicksight_update_self_upgrade(
   AwsAccountId,
@@ -16,7 +16,7 @@ quicksight_update_self_upgrade(
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the self-upgrade
 request.}
 
-\item{Namespace}{[required] The Quick Suite namespace for the self-upgrade request.}
+\item{Namespace}{[required] The Quick namespace for the self-upgrade request.}
 
 \item{UpgradeRequestId}{[required] The ID of the self-upgrade request to update.}
 
@@ -24,7 +24,7 @@ request.}
 \code{APPROVE}, \code{DENY}, or \code{VERIFY}.}
 }
 \description{
-Updates a self-upgrade request for a Quick Suite user by approving, denying, or verifying the request.
+Updates a self-upgrade request for a Quick user by approving, denying, or verifying the request.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_self_upgrade/} for full documentation.
 }

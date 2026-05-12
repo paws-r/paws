@@ -9,7 +9,7 @@ quicksight_update_brand_published_version(AwsAccountId, BrandId, VersionId)
 \arguments{
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account that owns the brand.}
 
-\item{BrandId}{[required] The ID of the Quick Suite brand.}
+\item{BrandId}{[required] The ID of the Quick brand.}
 
 \item{VersionId}{[required] The ID of the published version.}
 }

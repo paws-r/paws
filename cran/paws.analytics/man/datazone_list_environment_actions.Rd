@@ -7,8 +7,8 @@
 datazone_list_environment_actions(
   domainIdentifier,
   environmentIdentifier,
-  maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
@@ -17,19 +17,19 @@ are listed.}
 
 \item{environmentIdentifier}{[required] The ID of the envrironment whose environment actions are listed.}
 
-\item{maxResults}{The maximum number of environment actions to return in a single call to
-\code{\link[=datazone_list_environment_actions]{list_environment_actions}}. When
-the number of environment actions to be listed is greater than the value
-of \code{MaxResults}, the response contains a \code{NextToken} value that you can
-use in a subsequent call to
-\code{\link[=datazone_list_environment_actions]{list_environment_actions}} to list
-the next set of environment actions.}
-
 \item{nextToken}{When the number of environment actions is greater than the default value
 for the \code{MaxResults} parameter, or if you explicitly specify a value for
 \code{MaxResults} that is less than the number of environment actions, the
 response includes a pagination token named \code{NextToken}. You can specify
 this \code{NextToken} value in a subsequent call to
+\code{\link[=datazone_list_environment_actions]{list_environment_actions}} to list
+the next set of environment actions.}
+
+\item{maxResults}{The maximum number of environment actions to return in a single call to
+\code{\link[=datazone_list_environment_actions]{list_environment_actions}}. When
+the number of environment actions to be listed is greater than the value
+of \code{MaxResults}, the response contains a \code{NextToken} value that you can
+use in a subsequent call to
 \code{\link[=datazone_list_environment_actions]{list_environment_actions}} to list
 the next set of environment actions.}
 }

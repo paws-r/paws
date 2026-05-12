@@ -201,7 +201,8 @@ sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = N
 #'
 #' @usage
 #' sagemakerruntime_invoke_endpoint_async(EndpointName, ContentType,
-#'   Accept, CustomAttributes, InferenceId, InputLocation, RequestTTLSeconds,
+#'   Accept, CustomAttributes, InferenceId, InputLocation,
+#'   S3OutputPathExtension, Filename, RequestTTLSeconds,
 #'   InvocationTimeoutSeconds)
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint that you specified when you created the
@@ -232,6 +233,11 @@ sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = N
 #' @param InferenceId The identifier for the inference request. Amazon SageMaker AI will
 #' generate an identifier for you if none is specified.
 #' @param InputLocation &#91;required&#93; The Amazon S3 URI where the inference request payload is stored.
+#' @param S3OutputPathExtension The path extension that is appended to the Amazon S3 output path where
+#' the inference response payload is stored.
+#' @param Filename The filename for the inference response payload stored in Amazon S3. If
+#' not specified, Amazon SageMaker AI generates a filename based on the
+#' inference ID.
 #' @param RequestTTLSeconds Maximum age in seconds a request can be in the queue before it is marked
 #' as expired. The default is 6 hours, or 21,600 seconds.
 #' @param InvocationTimeoutSeconds Maximum amount of time in seconds a request can be processed before it
@@ -256,6 +262,8 @@ sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = N
 #'   CustomAttributes = "string",
 #'   InferenceId = "string",
 #'   InputLocation = "string",
+#'   S3OutputPathExtension = "string",
+#'   Filename = "string",
 #'   RequestTTLSeconds = 123,
 #'   InvocationTimeoutSeconds = 123
 #' )
@@ -266,7 +274,7 @@ sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = N
 #' @rdname sagemakerruntime_invoke_endpoint_async
 #'
 #' @aliases sagemakerruntime_invoke_endpoint_async
-sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, InferenceId = NULL, InputLocation, RequestTTLSeconds = NULL, InvocationTimeoutSeconds = NULL) {
+sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, InferenceId = NULL, InputLocation, S3OutputPathExtension = NULL, Filename = NULL, RequestTTLSeconds = NULL, InvocationTimeoutSeconds = NULL) {
   op <- new_operation(
     name = "InvokeEndpointAsync",
     http_method = "POST",
@@ -275,7 +283,7 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemakerruntime$invoke_endpoint_async_input(EndpointName = EndpointName, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, InferenceId = InferenceId, InputLocation = InputLocation, RequestTTLSeconds = RequestTTLSeconds, InvocationTimeoutSeconds = InvocationTimeoutSeconds)
+  input <- .sagemakerruntime$invoke_endpoint_async_input(EndpointName = EndpointName, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, InferenceId = InferenceId, InputLocation = InputLocation, S3OutputPathExtension = S3OutputPathExtension, Filename = Filename, RequestTTLSeconds = RequestTTLSeconds, InvocationTimeoutSeconds = InvocationTimeoutSeconds)
   output <- .sagemakerruntime$invoke_endpoint_async_output()
   config <- get_config()
   svc <- .sagemakerruntime$service(config, op)

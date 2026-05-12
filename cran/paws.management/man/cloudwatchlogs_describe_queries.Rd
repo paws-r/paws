@@ -22,8 +22,6 @@ and \code{Scheduled}.}
 
 \item{maxResults}{Limits the number of returned queries to the specified number.}
 
-\item{nextToken}{}
-
 \item{queryLanguage}{Limits the returned queries to only the queries that use the specified
 query language.}
 }

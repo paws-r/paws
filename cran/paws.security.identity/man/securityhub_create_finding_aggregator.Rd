@@ -9,7 +9,7 @@ securityhub_create_finding_aggregator(RegionLinkingMode, Regions = NULL)
 \arguments{
 \item{RegionLinkingMode}{[required] Indicates whether to aggregate findings from all of the available
 Regions in the current partition. Also determines whether to
-automatically aggregate findings from new Regions as Security Hub
+automatically aggregate findings from new Regions as Security Hub CSPM
 supports them and you opt into them.
 
 The selected option also determines how to use the Regions provided in
@@ -18,16 +18,16 @@ the Regions list.
 The options are as follows:
 \itemize{
 \item \code{ALL_REGIONS} - Aggregates findings from all of the Regions where
-Security Hub is enabled. When you choose this option, Security Hub
-also automatically aggregates findings from new Regions as Security
-Hub supports them and you opt into them.
+Security Hub CSPM is enabled. When you choose this option, Security
+Hub CSPM also automatically aggregates findings from new Regions as
+Security Hub CSPM supports them and you opt into them.
 \item \code{ALL_REGIONS_EXCEPT_SPECIFIED} - Aggregates findings from all of the
-Regions where Security Hub is enabled, except for the Regions listed
-in the \code{Regions} parameter. When you choose this option, Security
-Hub also automatically aggregates findings from new Regions as
-Security Hub supports them and you opt into them.
+Regions where Security Hub CSPM is enabled, except for the Regions
+listed in the \code{Regions} parameter. When you choose this option,
+Security Hub CSPM also automatically aggregates findings from new
+Regions as Security Hub CSPM supports them and you opt into them.
 \item \code{SPECIFIED_REGIONS} - Aggregates findings only from the Regions
-listed in the \code{Regions} parameter. Security Hub does not
+listed in the \code{Regions} parameter. Security Hub CSPM does not
 automatically aggregate findings from new Regions.
 \item \code{NO_REGIONS} - Aggregates no data because no Regions are selected as
 linked Regions.

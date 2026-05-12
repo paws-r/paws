@@ -19,6 +19,7 @@ emrserverless_update_application(
   releaseLabel = NULL,
   runtimeConfiguration = NULL,
   monitoringConfiguration = NULL,
+  diskEncryptionConfiguration = NULL,
   schedulerConfiguration = NULL,
   identityCenterConfiguration = NULL,
   jobLevelCostAllocationConfiguration = NULL
@@ -42,8 +43,6 @@ submission.}
 
 \item{autoStopConfiguration}{The configuration for an application to automatically stop after a
 certain amount of time being idle.}
-
-\item{networkConfiguration}{}
 
 \item{architecture}{The CPU architecture of an application.}
 
@@ -72,6 +71,8 @@ consists of a classification and properties. This configuration is
 applied across all the job runs submitted under the application.}
 
 \item{monitoringConfiguration}{The configuration setting for monitoring.}
+
+\item{diskEncryptionConfiguration}{The configuration object that allows encrypting local disks.}
 
 \item{schedulerConfiguration}{The scheduler configuration for batch and streaming jobs running on this
 application. Supported with release labels emr-7.0.0 and above.}

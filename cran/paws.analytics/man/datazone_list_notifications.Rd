@@ -5,22 +5,28 @@
 \title{Lists all Amazon DataZone notifications}
 \usage{
 datazone_list_notifications(
+  domainIdentifier,
+  type,
   afterTimestamp = NULL,
   beforeTimestamp = NULL,
-  domainIdentifier,
-  maxResults = NULL,
-  nextToken = NULL,
   subjects = NULL,
   taskStatus = NULL,
-  type
+  maxResults = NULL,
+  nextToken = NULL
 )
 }
 \arguments{
+\item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain.}
+
+\item{type}{[required] The type of notifications.}
+
 \item{afterTimestamp}{The time after which you want to list notifications.}
 
 \item{beforeTimestamp}{The time before which you want to list notifications.}
 
-\item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain.}
+\item{subjects}{The subjects of notifications.}
+
+\item{taskStatus}{The task status of notifications.}
 
 \item{maxResults}{The maximum number of notifications to return in a single call to
 \code{\link[=datazone_list_notifications]{list_notifications}}. When the number of
@@ -36,12 +42,6 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{NextToken} value in a subsequent call to
 \code{\link[=datazone_list_notifications]{list_notifications}} to list the next set
 of notifications.}
-
-\item{subjects}{The subjects of notifications.}
-
-\item{taskStatus}{The task status of notifications.}
-
-\item{type}{[required] The type of notifications.}
 }
 \description{
 Lists all Amazon DataZone notifications.

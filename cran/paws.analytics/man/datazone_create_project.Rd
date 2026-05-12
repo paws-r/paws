@@ -5,34 +5,45 @@
 \title{Creates an Amazon DataZone project}
 \usage{
 datazone_create_project(
-  description = NULL,
   domainIdentifier,
-  domainUnitId = NULL,
-  glossaryTerms = NULL,
   name,
-  projectProfileId = NULL,
+  description = NULL,
   resourceTags = NULL,
-  userParameters = NULL
+  glossaryTerms = NULL,
+  domainUnitId = NULL,
+  projectProfileId = NULL,
+  userParameters = NULL,
+  projectCategory = NULL,
+  projectExecutionRole = NULL,
+  membershipAssignments = NULL
 )
 }
 \arguments{
+\item{domainIdentifier}{[required] The ID of the Amazon DataZone domain in which this project is created.}
+
+\item{name}{[required] The name of the Amazon DataZone project.}
+
 \item{description}{The description of the Amazon DataZone project.}
 
-\item{domainIdentifier}{[required] The ID of the Amazon DataZone domain in which this project is created.}
+\item{resourceTags}{The resource tags of the project.}
+
+\item{glossaryTerms}{The glossary terms that can be used in this Amazon DataZone project.}
 
 \item{domainUnitId}{The ID of the domain unit. This parameter is not required and if it is
 not specified, then the project is created at the root domain unit
 level.}
 
-\item{glossaryTerms}{The glossary terms that can be used in this Amazon DataZone project.}
-
-\item{name}{[required] The name of the Amazon DataZone project.}
-
 \item{projectProfileId}{The ID of the project profile.}
 
-\item{resourceTags}{The resource tags of the project.}
-
 \item{userParameters}{The user parameters of the project.}
+
+\item{projectCategory}{The category of the project. Set to 'ADMIN' designates this as an
+administrative project for the Amazon DataZone domain.}
+
+\item{projectExecutionRole}{The default project IAM role that is used to access project resources
+and run computes such as Glue and Sagemaker.}
+
+\item{membershipAssignments}{The members to be assigned to the project.}
 }
 \description{
 Creates an Amazon DataZone project.

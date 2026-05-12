@@ -42,35 +42,35 @@ environment. An execution role is an Amazon Web Services Identity and
 Access Management (IAM) role that grants MWAA permission to access
 Amazon Web Services services and resources used by your environment. For
 example, \verb{arn:aws:iam::123456789:role/my-execution-role}. For more
-information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html}{Amazon MWAA Execution role}.}
+information, refer to \href{https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html}{Amazon MWAA Execution role}.}
 
 \item{SourceBucketArn}{[required] The Amazon Resource Name (ARN) of the Amazon S3 bucket where your DAG
 code and supporting files are stored. For example,
-\code{arn:aws:s3:::my-airflow-bucket-unique-name}. For more information, see
-\href{https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-s3-bucket.html}{Create an Amazon S3 bucket for Amazon MWAA}.}
+\code{arn:aws:s3:::my-airflow-bucket-unique-name}. For more information,
+refer to \href{https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-s3-bucket.html}{Create an Amazon S3 bucket for Amazon MWAA}.}
 
 \item{DagS3Path}{[required] The relative path to the DAGs folder on your Amazon S3 bucket. For
-example, \code{dags}. For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html}{Adding or updating DAGs}.}
+example, \code{dags}. For more information, refer to \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html}{Adding or updating DAGs}.}
 
 \item{NetworkConfiguration}{[required] The VPC networking components used to secure and enable network traffic
 between the Amazon Web Services resources for your environment. For more
-information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/networking-about.html}{About networking on Amazon MWAA}.}
+information, refer to \href{https://docs.aws.amazon.com/mwaa/latest/userguide/networking-about.html}{About networking on Amazon MWAA}.}
 
 \item{PluginsS3Path}{The relative path to the \code{plugins.zip} file on your Amazon S3 bucket.
 For example, \code{plugins.zip}. If specified, then the \code{plugins.zip} version
-is required. For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import-plugins.html}{Installing custom plugins}.}
+is required. For more information, refer to \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import-plugins.html}{Installing custom plugins}.}
 
 \item{PluginsS3ObjectVersion}{The version of the plugins.zip file on your Amazon S3 bucket. You must
 specify a version each time a plugins.zip file is updated. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html}{How S3 Versioning works}.}
+information, refer to \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html}{How S3 Versioning works}.}
 
 \item{RequirementsS3Path}{The relative path to the \code{requirements.txt} file on your Amazon S3
 bucket. For example, \code{requirements.txt}. If specified, then a version is
-required. For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/working-dags-dependencies.html}{Installing Python dependencies}.}
+required. For more information, refer to \href{https://docs.aws.amazon.com/mwaa/latest/userguide/working-dags-dependencies.html}{Installing Python dependencies}.}
 
 \item{RequirementsS3ObjectVersion}{The version of the \code{requirements.txt} file on your Amazon S3 bucket. You
 must specify a version each time a requirements.txt file is updated. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html}{How S3 Versioning works}.}
+more information, refer to \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html}{How S3 Versioning works}.}
 
 \item{StartupScriptS3Path}{The relative path to the startup shell script in your Amazon S3 bucket.
 For example, \verb{s3://mwaa-environment/startup.sh}.
@@ -78,7 +78,7 @@ For example, \verb{s3://mwaa-environment/startup.sh}.
 Amazon MWAA runs the script as your environment starts, and before
 running the Apache Airflow process. You can use this script to install
 dependencies, modify Apache Airflow configuration options, and set
-environment variables. For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html}{Using a startup script}.}
+environment variables. For more information, refer to \href{https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html}{Using a startup script}.}
 
 \item{StartupScriptS3ObjectVersion}{The version of the startup shell script in your Amazon S3 bucket. You
 must specify the \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html}{version ID}
@@ -89,15 +89,15 @@ are no more than 1,024 bytes long. The following is an example:
 
 \verb{3sL4kqtJlcpXroDTDmJ+rmSpXd3dIbrHY+MTRCxf3vjVBH40Nr8X8gdRQBpUMLUo}
 
-For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html}{Using a startup script}.}
+For more information, refer to \href{https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html}{Using a startup script}.}
 
 \item{AirflowConfigurationOptions}{A list of key-value pairs containing the Apache Airflow configuration
 options you want to attach to your environment. For more information,
-see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html}{Apache Airflow configuration options}.}
+refer to \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html}{Apache Airflow configuration options}.}
 
 \item{EnvironmentClass}{The environment class type. Valid values: \code{mw1.micro}, \code{mw1.small},
 \code{mw1.medium}, \code{mw1.large}, \code{mw1.xlarge}, and \code{mw1.2xlarge}. For more
-information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html}{Amazon MWAA environment class}.}
+information, refer to \href{https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html}{Amazon MWAA environment class}.}
 
 \item{MaxWorkers}{The maximum number of workers that you want to run in your environment.
 MWAA scales the number of Apache Airflow workers up to the number you
@@ -108,14 +108,15 @@ or the number you specify in \code{MinWorkers}.}
 
 \item{KmsKey}{The Amazon Web Services Key Management Service (KMS) key to encrypt the
 data in your environment. You can use an Amazon Web Services owned CMK,
-or a Customer managed CMK (advanced). For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/create-environment.html}{Create an Amazon MWAA environment}.}
+or a Customer managed CMK (advanced). For more information, refer to
+\href{https://docs.aws.amazon.com/mwaa/latest/userguide/create-environment.html}{Create an Amazon MWAA environment}.}
 
 \item{AirflowVersion}{The Apache Airflow version for your environment. If no value is
-specified, it defaults to the latest version. For more information, see
-\href{https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html}{Apache Airflow versions on Amazon Managed Workflows for Apache Airflow (Amazon MWAA)}.
+specified, it defaults to the latest version. For more information,
+refer to \href{https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html}{Apache Airflow versions on Amazon Managed Workflows for Apache Airflow (Amazon MWAA)}.
 
-Valid values: \verb{1.10.12}, \verb{2.0.2}, \verb{2.2.2}, \verb{2.4.3}, \verb{2.5.1}, \verb{2.6.3},
-\verb{2.7.2}, \verb{2.8.1}, \verb{2.9.2}, \verb{2.10.1}, and \verb{2.10.3}.}
+Valid values: \verb{2.7.2}, \verb{2.8.1}, \verb{2.9.2}, \verb{2.10.1}, \verb{2.10.3}, \verb{2.11.0},
+and \verb{3.0.6}.}
 
 \item{LoggingConfiguration}{Defines the Apache Airflow logs to send to CloudWatch Logs.}
 
@@ -125,10 +126,11 @@ the following format: \code{DAY:HH:MM}. For example: \code{TUE:03:30}. You can
 specify a start time in 30 minute increments only.}
 
 \item{Tags}{The key-value tag pairs you want to associate to your environment. For
-example, \code{"Environment": "Staging"}. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}.}
+example, \code{"Environment": "Staging"}. For more information, refer to
+\href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}.}
 
 \item{WebserverAccessMode}{Defines the access mode for the Apache Airflow \emph{web server}. For more
-information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html}{Apache Airflow access modes}.}
+information, refer to \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html}{Apache Airflow access modes}.}
 
 \item{MinWorkers}{The minimum number of workers that you want to run in your environment.
 MWAA scales the number of Apache Airflow workers up to the number you

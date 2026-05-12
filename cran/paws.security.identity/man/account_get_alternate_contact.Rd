@@ -5,9 +5,11 @@
 \title{Retrieves the specified alternate contact attached to an Amazon Web
 Services account}
 \usage{
-account_get_alternate_contact(AccountId = NULL, AlternateContactType)
+account_get_alternate_contact(AlternateContactType, AccountId = NULL)
 }
 \arguments{
+\item{AlternateContactType}{[required] Specifies which alternate contact you want to retrieve.}
+
 \item{AccountId}{Specifies the 12 digit account ID number of the Amazon Web Services
 account that you want to access or modify with this operation.
 
@@ -31,8 +33,6 @@ To call this operation on an account that is not a member of an
 organization, then don't specify this parameter, and call the operation
 using an identity belonging to the account whose contacts you wish to
 retrieve or modify.}
-
-\item{AlternateContactType}{[required] Specifies which alternate contact you want to retrieve.}
 }
 \description{
 Retrieves the specified alternate contact attached to an Amazon Web Services account.

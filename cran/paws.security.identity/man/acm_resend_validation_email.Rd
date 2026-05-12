@@ -24,8 +24,7 @@ addresses that are used to send the emails. This must be the same as the
 \code{Domain} value or a superdomain of the \code{Domain} value. For example, if
 you requested a certificate for \code{site.subdomain.example.com} and specify
 a \strong{ValidationDomain} of \code{subdomain.example.com}, ACM sends email to
-the domain registrant, technical contact, and administrative contact in
-WHOIS and the following five addresses:
+the the following five addresses:
 \itemize{
 \item admin@subdomain.example.com
 \item administrator@subdomain.example.com

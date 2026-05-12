@@ -95,6 +95,7 @@ NULL
 #'  \link[=connectcampaignservicev2_delete_campaign_channel_subtype_config]{delete_campaign_channel_subtype_config} \tab Deletes the channel subtype config of a campaign\cr
 #'  \link[=connectcampaignservicev2_delete_campaign_communication_limits]{delete_campaign_communication_limits} \tab Deletes the communication limits config for a campaign\cr
 #'  \link[=connectcampaignservicev2_delete_campaign_communication_time]{delete_campaign_communication_time} \tab Deletes the communication time config for a campaign\cr
+#'  \link[=connectcampaignservicev2_delete_campaign_entry_limits]{delete_campaign_entry_limits} \tab Deletes the entry limits config for a campaign\cr
 #'  \link[=connectcampaignservicev2_delete_connect_instance_config]{delete_connect_instance_config} \tab Deletes a connect instance config from the specified AWS account\cr
 #'  \link[=connectcampaignservicev2_delete_connect_instance_integration]{delete_connect_instance_integration} \tab Delete the integration for the specified Amazon Connect instance\cr
 #'  \link[=connectcampaignservicev2_delete_instance_onboarding_job]{delete_instance_onboarding_job} \tab Delete the Connect Campaigns onboarding job for the specified Amazon Connect instance\cr
@@ -121,6 +122,7 @@ NULL
 #'  \link[=connectcampaignservicev2_update_campaign_channel_subtype_config]{update_campaign_channel_subtype_config} \tab Updates the channel subtype config of a campaign\cr
 #'  \link[=connectcampaignservicev2_update_campaign_communication_limits]{update_campaign_communication_limits} \tab Updates the communication limits config for a campaign\cr
 #'  \link[=connectcampaignservicev2_update_campaign_communication_time]{update_campaign_communication_time} \tab Updates the communication time config for a campaign\cr
+#'  \link[=connectcampaignservicev2_update_campaign_entry_limits]{update_campaign_entry_limits} \tab Updates the entry limits config for a campaign\cr
 #'  \link[=connectcampaignservicev2_update_campaign_flow_association]{update_campaign_flow_association} \tab Updates the campaign flow associated with a campaign\cr
 #'  \link[=connectcampaignservicev2_update_campaign_name]{update_campaign_name} \tab Updates the name of a campaign\cr
 #'  \link[=connectcampaignservicev2_update_campaign_schedule]{update_campaign_schedule} \tab Updates the schedule for a campaign\cr

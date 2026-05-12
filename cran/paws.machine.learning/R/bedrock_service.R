@@ -124,6 +124,7 @@ NULL
 #'  \link[=bedrock_delete_model_invocation_logging_configuration]{delete_model_invocation_logging_configuration} \tab Delete the invocation logging\cr
 #'  \link[=bedrock_delete_prompt_router]{delete_prompt_router} \tab Deletes a specified prompt router\cr
 #'  \link[=bedrock_delete_provisioned_model_throughput]{delete_provisioned_model_throughput} \tab Deletes a Provisioned Throughput\cr
+#'  \link[=bedrock_delete_resource_policy]{delete_resource_policy} \tab Deletes a previously created Bedrock resource policy\cr
 #'  \link[=bedrock_deregister_marketplace_model_endpoint]{deregister_marketplace_model_endpoint} \tab Deregisters an endpoint for a model from Amazon Bedrock Marketplace\cr
 #'  \link[=bedrock_export_automated_reasoning_policy_version]{export_automated_reasoning_policy_version} \tab Exports the policy definition for an Automated Reasoning policy version\cr
 #'  \link[=bedrock_get_automated_reasoning_policy]{get_automated_reasoning_policy} \tab Retrieves details about an Automated Reasoning policy or policy version\cr
@@ -149,6 +150,7 @@ NULL
 #'  \link[=bedrock_get_model_invocation_logging_configuration]{get_model_invocation_logging_configuration} \tab Get the current configuration values for model invocation logging\cr
 #'  \link[=bedrock_get_prompt_router]{get_prompt_router} \tab Retrieves details about a prompt router\cr
 #'  \link[=bedrock_get_provisioned_model_throughput]{get_provisioned_model_throughput} \tab Returns details for a Provisioned Throughput\cr
+#'  \link[=bedrock_get_resource_policy]{get_resource_policy} \tab Gets the resource policy document for a Bedrock resource\cr
 #'  \link[=bedrock_get_use_case_for_model_access]{get_use_case_for_model_access} \tab Get usecase for model access\cr
 #'  \link[=bedrock_list_automated_reasoning_policies]{list_automated_reasoning_policies} \tab Lists all Automated Reasoning policies in your account, with optional filtering by policy ARN\cr
 #'  \link[=bedrock_list_automated_reasoning_policy_build_workflows]{list_automated_reasoning_policy_build_workflows} \tab Lists all build workflows for an Automated Reasoning policy, showing the history of policy creation and modification attempts\cr
@@ -173,6 +175,7 @@ NULL
 #'  \link[=bedrock_list_tags_for_resource]{list_tags_for_resource} \tab List the tags associated with the specified resource\cr
 #'  \link[=bedrock_put_enforced_guardrail_configuration]{put_enforced_guardrail_configuration} \tab Sets the account-level enforced guardrail configuration\cr
 #'  \link[=bedrock_put_model_invocation_logging_configuration]{put_model_invocation_logging_configuration} \tab Set the configuration values for model invocation logging\cr
+#'  \link[=bedrock_put_resource_policy]{put_resource_policy} \tab Adds a resource policy for a Bedrock resource\cr
 #'  \link[=bedrock_put_use_case_for_model_access]{put_use_case_for_model_access} \tab Put usecase for model access\cr
 #'  \link[=bedrock_register_marketplace_model_endpoint]{register_marketplace_model_endpoint} \tab Registers an existing Amazon SageMaker endpoint with Amazon Bedrock Marketplace, allowing it to be used with Amazon Bedrock APIs\cr
 #'  \link[=bedrock_start_automated_reasoning_policy_build_workflow]{start_automated_reasoning_policy_build_workflow} \tab Starts a new build workflow for an Automated Reasoning policy\cr

@@ -177,6 +177,9 @@ NULL
 #'           IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS",
 #'           AvailabilityZones = list(
 #'             "string"
+#'           ),
+#'           AvailabilityZoneIds = list(
+#'             "string"
 #'           )
 #'         ),
 #'         CrossRegionCopyRules = list(
@@ -569,6 +572,9 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #'             Interval = 123,
 #'             IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS",
 #'             AvailabilityZones = list(
+#'               "string"
+#'             ),
+#'             AvailabilityZoneIds = list(
 #'               "string"
 #'             )
 #'           ),
@@ -994,6 +1000,9 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #'           Interval = 123,
 #'           IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS",
 #'           AvailabilityZones = list(
+#'             "string"
+#'           ),
+#'           AvailabilityZoneIds = list(
 #'             "string"
 #'           )
 #'         ),

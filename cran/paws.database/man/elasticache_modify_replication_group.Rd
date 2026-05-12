@@ -125,7 +125,7 @@ Valid values: \code{true} | \code{false}
 Default: \code{false}}
 
 \item{Engine}{Modifies the engine listed in a replication group message. The options
-are redis, memcached or valkey.}
+are valkey, memcached or redis.}
 
 \item{EngineVersion}{The upgraded version of the cache engine to be run on the clusters in
 the replication group.
@@ -135,10 +135,10 @@ but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing replication
 group and create it anew with the earlier engine version.}
 
-\item{AutoMinorVersionUpgrade}{If you are running Valkey or Redis OSS engine version 6.0 or later, set
+\item{AutoMinorVersionUpgrade}{ If you are running Valkey or Redis OSS engine version 6.0 or later, set
 this parameter to yes if you want to opt-in to the next auto minor
 version upgrade campaign. This parameter is disabled for previous
-versions.}
+versions. }
 
 \item{SnapshotRetentionLimit}{The number of days for which ElastiCache retains automatic node group
 (shard) snapshots before deleting them. For example, if you set

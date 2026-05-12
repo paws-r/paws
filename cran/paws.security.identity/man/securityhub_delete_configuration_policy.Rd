@@ -11,7 +11,7 @@ securityhub_delete_configuration_policy(Identifier)
 of the configuration policy.}
 }
 \description{
-Deletes a configuration policy. Only the Security Hub delegated administrator can invoke this operation from the home Region. For the deletion to succeed, you must first disassociate a configuration policy from target accounts, organizational units, or the root by invoking the \code{\link[=securityhub_start_configuration_policy_disassociation]{start_configuration_policy_disassociation}} operation.
+Deletes a configuration policy. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region. For the deletion to succeed, you must first disassociate a configuration policy from target accounts, organizational units, or the root by invoking the \code{\link[=securityhub_start_configuration_policy_disassociation]{start_configuration_policy_disassociation}} operation.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_delete_configuration_policy/} for full documentation.
 }

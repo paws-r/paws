@@ -19,10 +19,6 @@ budgets_describe_budget_performance_history(
 
 \item{TimePeriod}{Retrieves how often the budget went into an \code{ALARM} state for the
 specified time period.}
-
-\item{MaxResults}{}
-
-\item{NextToken}{}
 }
 \description{
 Describes the history for \code{DAILY}, \code{MONTHLY}, and \code{QUARTERLY} budgets. Budget history isn't available for \code{ANNUAL} budgets.

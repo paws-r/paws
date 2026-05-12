@@ -7,10 +7,10 @@
 datazone_list_subscription_targets(
   domainIdentifier,
   environmentIdentifier,
-  maxResults = NULL,
-  nextToken = NULL,
   sortBy = NULL,
-  sortOrder = NULL
+  sortOrder = NULL,
+  maxResults = NULL,
+  nextToken = NULL
 )
 }
 \arguments{
@@ -19,6 +19,10 @@ subscription targets.}
 
 \item{environmentIdentifier}{[required] The identifier of the environment where you want to list subscription
 targets.}
+
+\item{sortBy}{Specifies the way in which the results of this action are to be sorted.}
+
+\item{sortOrder}{Specifies the sort order for the results of this action.}
 
 \item{maxResults}{The maximum number of subscription targets to return in a single call to
 \code{\link[=datazone_list_subscription_targets]{list_subscription_targets}}. When
@@ -35,10 +39,6 @@ targets, the response includes a pagination token named \code{NextToken}. You
 can specify this \code{NextToken} value in a subsequent call to
 \code{\link[=datazone_list_subscription_targets]{list_subscription_targets}} to
 list the next set of subscription targets.}
-
-\item{sortBy}{Specifies the way in which the results of this action are to be sorted.}
-
-\item{sortOrder}{Specifies the sort order for the results of this action.}
 }
 \description{
 Lists subscription targets in Amazon DataZone.

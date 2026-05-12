@@ -5,9 +5,9 @@
 \title{The CreateTable operation adds a new table to your account}
 \usage{
 dynamodb_create_table(
-  AttributeDefinitions,
+  AttributeDefinitions = NULL,
   TableName,
-  KeySchema,
+  KeySchema = NULL,
   LocalSecondaryIndexes = NULL,
   GlobalSecondaryIndexes = NULL,
   BillingMode = NULL,
@@ -19,17 +19,19 @@ dynamodb_create_table(
   DeletionProtectionEnabled = NULL,
   WarmThroughput = NULL,
   ResourcePolicy = NULL,
-  OnDemandThroughput = NULL
+  OnDemandThroughput = NULL,
+  GlobalTableSourceArn = NULL,
+  GlobalTableSettingsReplicationMode = NULL
 )
 }
 \arguments{
-\item{AttributeDefinitions}{[required] An array of attributes that describe the key schema for the table and
+\item{AttributeDefinitions}{An array of attributes that describe the key schema for the table and
 indexes.}
 
 \item{TableName}{[required] The name of the table to create. You can also provide the Amazon
 Resource Name (ARN) of the table in this parameter.}
 
-\item{KeySchema}{[required] Specifies the attributes that make up the primary key for a table or an
+\item{KeySchema}{Specifies the attributes that make up the primary key for a table or an
 index. The attributes in \code{KeySchema} must also be defined in the
 \code{AttributeDefinitions} array. For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.html}{Data Model}
 in the \emph{Amazon DynamoDB Developer Guide}.
@@ -112,7 +114,8 @@ following:
 \item \code{IndexName} - The name of the global secondary index. Must be unique
 only for this table.
 \item \code{KeySchema} - Specifies the key schema for the global secondary
-index.
+index. Each global secondary index supports up to 4 partition keys
+and up to 4 sort keys.
 \item \code{Projection} - Specifies attributes that are copied (projected) from
 the table into the index. These are in addition to the primary key
 attributes and index key attributes, which are automatically
@@ -220,6 +223,14 @@ authorizing a user to create a table with a resource-based policy.}
 \item{OnDemandThroughput}{Sets the maximum number of read and write units for the specified table
 in on-demand capacity mode. If you use this parameter, you must specify
 \code{MaxReadRequestUnits}, \code{MaxWriteRequestUnits}, or both.}
+
+\item{GlobalTableSourceArn}{The Amazon Resource Name (ARN) of the source table used for the creation
+of a multi-account global table.}
+
+\item{GlobalTableSettingsReplicationMode}{Controls the settings synchronization mode for the global table. For
+multi-account global tables, this parameter is required and the only
+supported value is ENABLED. For same-account global tables, this
+parameter is set to ENABLED_WITH_OVERRIDES.}
 }
 \description{
 The \code{\link[=dynamodb_create_table]{create_table}} operation adds a new table to your account. In an Amazon Web Services account, table names must be unique within each Region. That is, you can have two tables with same name if you create the tables in different Regions.

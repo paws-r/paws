@@ -6,17 +6,21 @@
 following operations:}
 \usage{
 kms_decrypt(
-  CiphertextBlob,
+  CiphertextBlob = NULL,
   EncryptionContext = NULL,
   GrantTokens = NULL,
   KeyId = NULL,
   EncryptionAlgorithm = NULL,
   Recipient = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  DryRunModifiers = NULL
 )
 }
 \arguments{
-\item{CiphertextBlob}{[required] Ciphertext to be decrypted. The blob includes metadata.}
+\item{CiphertextBlob}{Ciphertext to be decrypted. The blob includes metadata.
+
+This parameter is required in all cases except when \code{DryRun} is \code{true}
+and \code{DryRunModifiers} is set to \code{IGNORE_CIPHERTEXT}.}
 
 \item{EncryptionContext}{Specifies the encryption context to use when decrypting the data. An
 encryption context is valid only for \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations}{cryptographic operations}
@@ -50,15 +54,16 @@ If you identify a different KMS key, the \code{\link[=kms_decrypt]{decrypt}}
 operation throws an \code{IncorrectKeyException}.
 
 This parameter is required only when the ciphertext was encrypted under
-an asymmetric KMS key. If you used a symmetric encryption KMS key, KMS
-can get the KMS key from metadata that it adds to the symmetric
+an asymmetric KMS key or when \code{DryRun} is \code{true} and \code{DryRunModifiers}
+is set to \code{IGNORE_CIPHERTEXT}. If you used a symmetric encryption KMS
+key, KMS can get the KMS key from metadata that it adds to the symmetric
 ciphertext blob. However, it is always recommended as a best practice.
 This practice ensures that you use the KMS key that you intend.
 
 To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
 When using an alias name, prefix it with \code{"alias/"}. To specify a KMS
-key in a different Amazon Web Services account, you must use the key ARN
-or alias ARN.
+key in a different Amazon Web Services account, you should use the key
+ARN or alias ARN.
 
 For example:
 \itemize{
@@ -107,6 +112,17 @@ Services Nitro Enclaves or Amazon Web Services NitroTPM, see
 in the \emph{Key Management Service Developer Guide}.}
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions}
+in the \emph{Key Management Service Developer Guide}.}
+
+\item{DryRunModifiers}{Specifies the modifiers to apply to the dry run operation.
+\code{DryRunModifiers} is an optional parameter that only applies when
+\code{DryRun} is set to \code{true}.
+
+When set to \code{IGNORE_CIPHERTEXT}, KMS performs only authorization
+validation without ciphertext validation. This allows you to test
+permissions without requiring a valid ciphertext blob.
 
 To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions}
 in the \emph{Key Management Service Developer Guide}.}

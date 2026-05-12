@@ -17,10 +17,6 @@ wellarchitected_list_check_details(
 \arguments{
 \item{WorkloadId}{[required]}
 
-\item{NextToken}{}
-
-\item{MaxResults}{}
-
 \item{LensArn}{[required] Well-Architected Lens ARN.}
 
 \item{PillarId}{[required]}

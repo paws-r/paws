@@ -25,7 +25,7 @@ results than the maximum page size.}
 types based on the latest version. If the filter is present, the result
 only includes Cost Categories that supports input resource type. If the
 filter isn't provided, no filtering is applied. The valid values are
-\code{billing:rispgroupsharing}.}
+\code{billing:rispgroupsharing} and \code{billing:billingview}.}
 }
 \description{
 Returns the name, Amazon Resource Name (ARN), \code{NumberOfRules} and effective dates of all cost categories defined in the account. You have the option to use \code{EffectiveOn} and \code{SupportedResourceTypes} to return a list of cost categories that were active on a specific date. If there is no \code{EffectiveOn} specified, you’ll see cost categories that are effective on the current date. If cost category is still effective, \code{EffectiveEnd} is omitted in the response. \code{\link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions}} supports pagination. The request can have a \code{MaxResults} range up to 100.

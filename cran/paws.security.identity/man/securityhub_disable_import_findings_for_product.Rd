@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_disable_import_findings_for_product}
 \alias{securityhub_disable_import_findings_for_product}
-\title{Disables the integration of the specified product with Security Hub}
+\title{Disables the integration of the specified product with Security Hub CSPM}
 \usage{
 securityhub_disable_import_findings_for_product(ProductSubscriptionArn)
 }
@@ -10,7 +10,7 @@ securityhub_disable_import_findings_for_product(ProductSubscriptionArn)
 \item{ProductSubscriptionArn}{[required] The ARN of the integrated product to disable the integration for.}
 }
 \description{
-Disables the integration of the specified product with Security Hub. After the integration is disabled, findings from that product are no longer sent to Security Hub.
+Disables the integration of the specified product with Security Hub CSPM. After the integration is disabled, findings from that product are no longer sent to Security Hub CSPM.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_disable_import_findings_for_product/} for full documentation.
 }

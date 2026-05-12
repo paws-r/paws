@@ -9,7 +9,8 @@ kinesis_list_stream_consumers(
   StreamARN,
   NextToken = NULL,
   MaxResults = NULL,
-  StreamCreationTimestamp = NULL
+  StreamCreationTimestamp = NULL,
+  StreamId = NULL
 )
 }
 \arguments{
@@ -55,6 +56,8 @@ this input parameter to specify which of the two streams you want to
 list the consumers for.
 
 You can't specify this parameter if you specify the NextToken parameter.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Lists the consumers registered to receive data from a stream using enhanced fan-out, and provides information about each consumer.

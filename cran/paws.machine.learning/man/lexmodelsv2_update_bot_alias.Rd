@@ -29,8 +29,6 @@ lexmodelsv2_update_bot_alias(
 \item{conversationLogSettings}{The new settings for storing conversation logs in Amazon CloudWatch Logs
 and Amazon S3 buckets.}
 
-\item{sentimentAnalysisSettings}{}
-
 \item{botId}{[required] The identifier of the bot with the updated alias.}
 }
 \description{

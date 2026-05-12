@@ -7,6 +7,7 @@
 opensearchserviceserverless_update_collection(
   id,
   description = NULL,
+  vectorOptions = NULL,
   clientToken = NULL
 )
 }
@@ -14,6 +15,8 @@ opensearchserviceserverless_update_collection(
 \item{id}{[required] The unique identifier of the collection.}
 
 \item{description}{A description of the collection.}
+
+\item{vectorOptions}{Configuration options for vector search capabilities in the collection.}
 
 \item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }

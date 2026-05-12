@@ -25,7 +25,8 @@ ssm_update_association(
   ScheduleOffset = NULL,
   Duration = NULL,
   TargetMaps = NULL,
-  AlarmConfiguration = NULL
+  AlarmConfiguration = NULL,
+  AssociationDispatchAssumeRole = NULL
 )
 }
 \arguments{
@@ -202,7 +203,18 @@ updated, but only according to the specified schedule.
 \item{TargetMaps}{A key-value mapping of document parameters to target resources. Both
 Targets and TargetMaps can't be specified together.}
 
-\item{AlarmConfiguration}{}
+\item{AssociationDispatchAssumeRole}{A role used by association to take actions on your behalf. State Manager
+will assume this role and call required APIs when dispatching
+configurations to nodes. If not specified, \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html}{service-linked role for Systems Manager}
+will be used by default.
+
+It is recommended that you define a custom IAM role so that you have
+full control of the permissions that State Manager has when taking
+actions on your behalf.
+
+Service-linked role support in State Manager is being phased out.
+Associations relying on service-linked role may require updates in the
+future to continue functioning properly.}
 }
 \description{
 Updates an association. You can update the association name and version, the document version, schedule, parameters, and Amazon Simple Storage Service (Amazon S3) output. When you call \code{\link[=ssm_update_association]{update_association}}, the system removes all optional parameters from the request and overwrites the association with null values for those parameters. This is by design. You must specify all optional parameters in the call, even if you are not changing the parameters. This includes the \code{Name} parameter. Before calling this API action, we recommend that you call the \code{\link[=ssm_describe_association]{describe_association}} API operation and make a note of all optional parameters required for your \code{\link[=ssm_update_association]{update_association}} call.

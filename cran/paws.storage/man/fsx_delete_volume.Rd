@@ -12,8 +12,6 @@ fsx_delete_volume(
 )
 }
 \arguments{
-\item{ClientRequestToken}{}
-
 \item{VolumeId}{[required] The ID of the volume that you are deleting.}
 
 \item{OntapConfiguration}{For Amazon FSx for ONTAP volumes, specify whether to take a final backup

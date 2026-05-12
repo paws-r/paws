@@ -68,8 +68,6 @@ lexicographically greater than the key-marker.
 \strong{Directory buckets} - For directory buckets, \code{/} is the only supported
 delimiter.}
 
-\item{EncodingType}{}
-
 \item{KeyMarker}{Specifies the multipart upload after which listing should begin.
 \itemize{
 \item \strong{General purpose buckets} - For general purpose buckets,
@@ -121,8 +119,6 @@ This functionality is not supported for directory buckets.}
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
 provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
-
-\item{RequestPayer}{}
 }
 \description{
 This operation lists in-progress multipart uploads in a bucket. An in-progress multipart upload is a multipart upload that has been initiated by the \code{\link[=s3_create_multipart_upload]{create_multipart_upload}} request, but has not yet been completed or aborted.

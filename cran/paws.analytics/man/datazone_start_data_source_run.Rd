@@ -5,19 +5,19 @@
 \title{Start the run of the specified data source in Amazon DataZone}
 \usage{
 datazone_start_data_source_run(
-  clientToken = NULL,
+  domainIdentifier,
   dataSourceIdentifier,
-  domainIdentifier
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
+\item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which to start a data
+source run.}
 
 \item{dataSourceIdentifier}{[required] The identifier of the data source.}
 
-\item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which to start a data
-source run.}
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Start the run of the specified data source in Amazon DataZone.

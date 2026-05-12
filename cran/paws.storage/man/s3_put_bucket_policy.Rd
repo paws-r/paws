@@ -48,8 +48,13 @@ the supported algorithm from the following list:
 \item \code{CRC32}
 \item \code{CRC32C}
 \item \code{CRC64NVME}
+\item \code{MD5}
 \item \code{SHA1}
 \item \code{SHA256}
+\item \code{SHA512}
+\item \code{XXHASH3}
+\item \code{XXHASH64}
+\item \code{XXHASH128}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}

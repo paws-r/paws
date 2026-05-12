@@ -19,7 +19,8 @@ imagebuilder_update_image_pipeline(
   imageScanningConfiguration = NULL,
   workflows = NULL,
   loggingConfiguration = NULL,
-  executionRole = NULL
+  executionRole = NULL,
+  imageTags = NULL
 )
 }
 \arguments{
@@ -64,6 +65,8 @@ the pipeline runs.}
 
 \item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that
 grants Image Builder access to perform workflow actions.}
+
+\item{imageTags}{The tags to be applied to the images produced by this pipeline.}
 }
 \description{
 Updates an image pipeline. Image pipelines enable you to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a \code{containerRecipeArn} or an \code{imageRecipeArn}.

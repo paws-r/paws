@@ -5,27 +5,27 @@
 \title{Creates a data asset filter}
 \usage{
 datazone_create_asset_filter(
-  assetIdentifier,
-  clientToken = NULL,
-  configuration,
-  description = NULL,
   domainIdentifier,
-  name
+  assetIdentifier,
+  name,
+  description = NULL,
+  configuration,
+  clientToken = NULL
 )
 }
 \arguments{
+\item{domainIdentifier}{[required] The ID of the domain in which you want to create an asset filter.}
+
 \item{assetIdentifier}{[required] The ID of the data asset.}
 
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
-\item{configuration}{[required] The configuration of the asset filter.}
+\item{name}{[required] The name of the asset filter.}
 
 \item{description}{The description of the asset filter.}
 
-\item{domainIdentifier}{[required] The ID of the domain in which you want to create an asset filter.}
+\item{configuration}{[required] The configuration of the asset filter.}
 
-\item{name}{[required] The name of the asset filter.}
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Creates a data asset filter.

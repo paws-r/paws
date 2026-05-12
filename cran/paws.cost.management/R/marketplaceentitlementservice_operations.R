@@ -6,7 +6,7 @@ NULL
 #' GetEntitlements retrieves entitlement values for a given product
 #'
 #' @description
-#' GetEntitlements retrieves entitlement values for a given product. The results can be filtered based on customer identifier, AWS account ID, or product dimensions.
+#' GetEntitlements retrieves entitlement values for a given product. The results can be filtered based on customer identifier, AWS account ID, license ARN, or product dimensions.
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplaceentitlementservice_get_entitlements/](https://www.paws-r-sdk.com/docs/marketplaceentitlementservice_get_entitlements/) for full documentation.
 #'
@@ -18,8 +18,15 @@ NULL
 #' values. Filtered requests are *unioned* for each value in the value
 #' list, and then *intersected* for each filter key.
 #' 
-#' `CustomerIdentifier` and `CustomerAWSAccountID` are mutually exclusive.
-#' You can't specify both in the same request.
+#' `CustomerIdentifier` and `CustomerAWSAccountId` are mutually exclusive
+#' parameters. You must use one or the other, but not both in the same
+#' request.
+#' 
+#' If you're migrating an existing integration, use [Account
+#' Feeds](https://docs.aws.amazon.com/marketplace/latest/userguide/data-feed-account.html)
+#' to map `CustomerIdentifier` to `CustomerAWSAccountId`, and [Agreements
+#' Feeds](https://docs.aws.amazon.com/marketplace/latest/userguide/data-feed-agreements.html)
+#' to map `CustomerAWSAccountId` and `LicenseArn`.
 #' @param NextToken For paginated calls to GetEntitlements, pass the NextToken from the
 #' previous GetEntitlementsResult.
 #' @param MaxResults The maximum number of items to retrieve from the GetEntitlements

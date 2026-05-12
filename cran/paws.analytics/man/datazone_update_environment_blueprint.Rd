@@ -5,22 +5,22 @@
 \title{Updates an environment blueprint in Amazon DataZone}
 \usage{
 datazone_update_environment_blueprint(
-  description = NULL,
   domainIdentifier,
   identifier,
+  description = NULL,
   provisioningProperties = NULL,
   userParameters = NULL
 )
 }
 \arguments{
-\item{description}{The description to be updated as part of the
-\code{\link[=datazone_update_environment_blueprint]{update_environment_blueprint}}
-action.}
-
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which an environment
 blueprint is to be updated.}
 
 \item{identifier}{[required] The identifier of the environment blueprint to be updated.}
+
+\item{description}{The description to be updated as part of the
+\code{\link[=datazone_update_environment_blueprint]{update_environment_blueprint}}
+action.}
 
 \item{provisioningProperties}{The provisioning properties to be updated as part of the
 \code{\link[=datazone_update_environment_blueprint]{update_environment_blueprint}}

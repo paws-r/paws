@@ -2,19 +2,19 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_disable_organization_admin_account}
 \alias{securityhub_disable_organization_admin_account}
-\title{Disables a Security Hub administrator account}
+\title{Disables a Security Hub CSPM administrator account}
 \usage{
 securityhub_disable_organization_admin_account(AdminAccountId, Feature = NULL)
 }
 \arguments{
-\item{AdminAccountId}{[required] The Amazon Web Services account identifier of the Security Hub
+\item{AdminAccountId}{[required] The Amazon Web Services account identifier of the Security Hub CSPM
 administrator account.}
 
 \item{Feature}{The feature for which the delegated admin account is disabled. Defaults
-to Security Hub if not specified.}
+to Security Hub CSPM if not specified.}
 }
 \description{
-Disables a Security Hub administrator account. Can only be called by the organization management account.
+Disables a Security Hub CSPM administrator account. Can only be called by the organization management account.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_disable_organization_admin_account/} for full documentation.
 }
