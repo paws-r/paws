@@ -298,6 +298,8 @@
     - voice-id
     - bedrock
     - bedrock-agent
+    - bedrock-agentcore
+    - bedrock-agentcore-control
     - bedrock-agent-runtime
     - bedrock-data-automation
     - bedrock-data-automation-runtime
