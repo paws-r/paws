@@ -1,5 +1,5 @@
 # paws.common 0.8.10
-* replace `Rf_error` with `Rcpp::stop` in C++ code for proper stack unwinding and memory cleanup (#971). This change prevents memory leaks when errors occur in the populate function and ensures compatibility with future Rcpp versions.
+* replace `Rf_error` with `Rcpp::stop` in C++ code for proper stack unwinding and memory cleanup (#971). This change prevents memory leaks when errors occur in the populate function and ensures compatibility with future Rcpp versions. Thanks to @Enchufa2 for raising issue.
 
 # paws.common 0.8.9
 * fix `populate` function to normalize custom subclasses of any base type to match interface specification. Custom classes (e.g., `fs_path`, `glue`, custom integer/numeric subclasses) are stripped to their base types, while R built-in temporal classes (POSIXct, POSIXt, Date) are preserved for proper serialization. When custom classes inherit from temporal classes, only the temporal portion is retained.

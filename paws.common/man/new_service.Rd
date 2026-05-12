@@ -75,10 +75,10 @@ service <- new_service(metadata, handlers)
 \seealso{
 \code{\link[=new_operation]{new_operation()}}
 
-Other API request functions: 
-\code{\link{new_handlers}()},
-\code{\link{new_operation}()},
-\code{\link{new_request}()},
-\code{\link{send_request}()}
+Other API request functions:
+\code{\link[=new_handlers]{new_handlers()}},
+\code{\link[=new_operation]{new_operation()}},
+\code{\link[=new_request]{new_request()}},
+\code{\link[=send_request]{send_request()}}
 }
 \concept{API request functions}

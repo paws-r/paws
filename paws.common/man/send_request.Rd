@@ -21,10 +21,10 @@ resp <- send_request(req)
 
 }
 \seealso{
-Other API request functions: 
-\code{\link{new_handlers}()},
-\code{\link{new_operation}()},
-\code{\link{new_request}()},
-\code{\link{new_service}()}
+Other API request functions:
+\code{\link[=new_handlers]{new_handlers()}},
+\code{\link[=new_operation]{new_operation()}},
+\code{\link[=new_request]{new_request()}},
+\code{\link[=new_service]{new_service()}}
 }
 \concept{API request functions}

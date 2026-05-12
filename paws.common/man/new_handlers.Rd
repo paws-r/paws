@@ -21,10 +21,10 @@ handlers <- new_handlers("restjson", "v4")
 
 }
 \seealso{
-Other API request functions: 
-\code{\link{new_operation}()},
-\code{\link{new_request}()},
-\code{\link{new_service}()},
-\code{\link{send_request}()}
+Other API request functions:
+\code{\link[=new_operation]{new_operation()}},
+\code{\link[=new_request]{new_request()}},
+\code{\link[=new_service]{new_service()}},
+\code{\link[=send_request]{send_request()}}
 }
 \concept{API request functions}

@@ -36,10 +36,10 @@ req <- new_request(client, op, params, data)
 
 }
 \seealso{
-Other API request functions: 
-\code{\link{new_handlers}()},
-\code{\link{new_operation}()},
-\code{\link{new_service}()},
-\code{\link{send_request}()}
+Other API request functions:
+\code{\link[=new_handlers]{new_handlers()}},
+\code{\link[=new_operation]{new_operation()}},
+\code{\link[=new_service]{new_service()}},
+\code{\link[=send_request]{send_request()}}
 }
 \concept{API request functions}

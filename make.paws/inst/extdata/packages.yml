@@ -59,8 +59,6 @@
     - memorydb
     - neptune
     - neptunedata
-    - qldb
-    - qldb-session
     - rds
     - rds-data
     - redshift
@@ -205,7 +203,6 @@
     - cloudtrail-data
     - config
     - controltower
-    - evidently
     - finspace
     - grafana
     - health
@@ -216,8 +213,6 @@
     - internetmonitor
     - cloudwatch
     - oam
-    - opsworks
-    - opsworkscm
     - organizations
     - pi
     - resiliencehub
@@ -268,7 +263,6 @@
   services:
     - comprehend
     - comprehendmedical
-    - elastic-inference
     - forecastquery
     - forecast
     - frauddetector
@@ -277,7 +271,6 @@
     - lex-runtime
     - lexv2-runtime
     - lookoutequipment
-    - lookoutmetrics
     - machinelearning
     - panorama
     - personalize
@@ -298,6 +291,8 @@
     - voice-id
     - bedrock
     - bedrock-agent
+    - bedrock-agentcore
+    - bedrock-agentcore-control
     - bedrock-agent-runtime
     - bedrock-data-automation
     - bedrock-data-automation-runtime

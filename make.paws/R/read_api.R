@@ -103,7 +103,7 @@ merge_eventstream <- function(api) {
   shape <- flat_shape[endsWith(names(flat_shape), "shape")]
   shape <- shape[shape %in% names(eventstream)]
   names(shape) <- gsub(
-    "Output$|Response$|Request$",
+    "Output$|Response$|Request$|Input$",
     "",
     stringr::str_extract(names(shape), "([a-zA-Z]+)")
   )
