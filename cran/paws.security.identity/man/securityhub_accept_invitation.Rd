@@ -7,10 +7,10 @@
 securityhub_accept_invitation(MasterId, InvitationId)
 }
 \arguments{
-\item{MasterId}{[required] The account ID of the Security Hub administrator account that sent the
-invitation.}
+\item{MasterId}{[required] The account ID of the Security Hub CSPM administrator account that sent
+the invitation.}
 
-\item{InvitationId}{[required] The identifier of the invitation sent from the Security Hub
+\item{InvitationId}{[required] The identifier of the invitation sent from the Security Hub CSPM
 administrator account.}
 }
 \description{

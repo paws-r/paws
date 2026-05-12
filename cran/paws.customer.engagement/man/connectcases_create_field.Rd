@@ -4,7 +4,13 @@
 \alias{connectcases_create_field}
 \title{Creates a field in the Cases domain}
 \usage{
-connectcases_create_field(domainId, name, type, description = NULL)
+connectcases_create_field(
+  domainId,
+  name,
+  type,
+  description = NULL,
+  attributes = NULL
+)
 }
 \arguments{
 \item{domainId}{[required] The unique identifier of the Cases domain.}
@@ -15,6 +21,8 @@ connectcases_create_field(domainId, name, type, description = NULL)
 the field.}
 
 \item{description}{The description of the field.}
+
+\item{attributes}{Union of field attributes.}
 }
 \description{
 Creates a field in the Cases domain. This field is used to define the case object model (that is, defines what data can be captured on cases) in a Cases domain.

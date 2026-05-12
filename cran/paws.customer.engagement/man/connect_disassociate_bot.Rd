@@ -16,8 +16,6 @@ connect_disassociate_bot(
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
 in the Amazon Resource Name (ARN) of the instance.}
 
-\item{LexBot}{}
-
 \item{LexV2Bot}{The Amazon Lex V2 bot to disassociate from the instance.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the

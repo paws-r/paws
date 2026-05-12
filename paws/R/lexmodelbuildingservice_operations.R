@@ -904,11 +904,8 @@ lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
 #'
 #' @param botName &#91;required&#93; The name of the bot that stored the utterances.
 #' @param userId &#91;required&#93; The unique identifier for the user that made the utterances. This is the
-#' user ID that was sent in the
-#' [PostContent](https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html)
-#' or
-#' [PostText](https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html)
-#' operation request that contained the utterance.
+#' user ID that was sent in the PostContent or PostText operation request
+#' that contained the utterance.
 #'
 #' @return
 #' An empty list.
@@ -1699,8 +1696,9 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #' @description
 #' Gets a list of built-in slot types that meet the specified criteria.
 #' 
-#' For a list of built-in slot types, see Slot Type Reference in the *Alexa
-#' Skills Kit*.
+#' For a list of built-in slot types, see [Slot Type
+#' Reference](https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html)
+#' in the *Alexa Skills Kit*.
 #' 
 #' This operation requires permission for the `lex:GetBuiltInSlotTypes`
 #' action.
@@ -2883,8 +2881,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' 
 #' When you set the `enableModelImprovements` parameter to `true` you can
 #' use the `nluIntentConfidenceThreshold` parameter to configure confidence
-#' scores. For more information, see [Confidence
-#' Scores](https://docs.aws.amazon.com/lex/latest/dg/confidence-scores.html).
+#' scores. For more information, see Confidence Scores.
 #' 
 #' You can only set the `enableModelImprovements` parameter in certain
 #' Regions. If you set the parameter to `true`, your bot has access to
@@ -2906,12 +2903,9 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' throws a `ValidationException` exception.
 #' @param nluIntentConfidenceThreshold Determines the threshold where Amazon Lex will insert the
 #' `AMAZON.FallbackIntent`, `AMAZON.KendraSearchIntent`, or both when
-#' returning alternative intents in a
-#' [PostContent](https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html)
-#' or
-#' [PostText](https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html)
-#' response. `AMAZON.FallbackIntent` and `AMAZON.KendraSearchIntent` are
-#' only inserted if they are configured for the bot.
+#' returning alternative intents in a PostContent or PostText response.
+#' `AMAZON.FallbackIntent` and `AMAZON.KendraSearchIntent` are only
+#' inserted if they are configured for the bot.
 #' 
 #' You must set the `enableModelImprovements` parameter to `true` to use
 #' confidence scores in the following regions.
@@ -2953,8 +2947,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' 
 #' If you have defined a fallback intent, it will be invoked if the
 #' clarification prompt is repeated the number of times defined in the
-#' `maxAttempts` field. For more information, see
-#' [AMAZON.FallbackIntent](https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-fallback.html).
+#' `maxAttempts` field. For more information, see AMAZON.FallbackIntent.
 #' 
 #' If you don't define a clarification prompt, at runtime Amazon Lex will
 #' return a 400 Bad Request exception in three cases:
@@ -2993,8 +2986,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' 
 #' If you have defined a fallback intent the cancel statement will not be
 #' sent to the user, the fallback intent is used instead. For more
-#' information, see
-#' [AMAZON.FallbackIntent](https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-fallback.html).
+#' information, see AMAZON.FallbackIntent.
 #' @param idleSessionTTLInSeconds The maximum time in seconds that Amazon Lex retains the data gathered in
 #' a conversation.
 #' 
@@ -3540,8 +3532,7 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' `false`.
 #' @param kendraConfiguration Configuration information required to use the
 #' `AMAZON.KendraSearchIntent` intent to connect to an Amazon Kendra index.
-#' For more information, see
-#' [AMAZON.KendraSearchIntent](https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-kendra-search.html).
+#' For more information, see AMAZON.KendraSearchIntent.
 #' @param inputContexts An array of `InputContext` objects that lists the contexts that must be
 #' active for Amazon Lex to choose the intent in a conversation with the
 #' user.
@@ -4003,8 +3994,9 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' slot type called `AMAZON.DATE`, you can't create a custom slot type
 #' called `DATE`.
 #' 
-#' For a list of built-in slot types, see Slot Type Reference in the *Alexa
-#' Skills Kit*.
+#' For a list of built-in slot types, see [Slot Type
+#' Reference](https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html)
+#' in the *Alexa Skills Kit*.
 #' @param description A description of the slot type.
 #' @param enumerationValues A list of `EnumerationValue` objects that defines the values that the
 #' slot type can take. Each value can have a list of `synonyms`, which are
@@ -4261,9 +4253,8 @@ lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStr
 #' bot when you want to take advantage of the new features of Amazon Lex
 #' V2.
 #' 
-#' For more information, see [Migrating a
-#' bot](https://docs.aws.amazon.com/lex/latest/dg/migrate.html) in the
-#' *Amazon Lex developer guide*.
+#' For more information, see Migrating a bot in the *Amazon Lex developer
+#' guide*.
 #'
 #' @usage
 #' lexmodelbuildingservice_start_migration(v1BotName, v1BotVersion,

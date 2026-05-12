@@ -9,7 +9,8 @@ kinesis_update_shard_count(
   StreamName = NULL,
   TargetShardCount,
   ScalingType,
-  StreamARN = NULL
+  StreamARN = NULL,
+  StreamId = NULL
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ value to less than 10000 shards.
 \item{ScalingType}{[required] The scaling type. Uniform scaling creates shards of equal size.}
 
 \item{StreamARN}{The ARN of the stream.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Updates the shard count of the specified stream to the specified number of shards. This API is only supported for the data streams with the provisioned capacity mode.

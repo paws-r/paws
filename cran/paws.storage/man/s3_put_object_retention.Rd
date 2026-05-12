@@ -38,8 +38,6 @@ configuration to.}
 
 \item{Retention}{The container element for the Object Retention configuration.}
 
-\item{RequestPayer}{}
-
 \item{VersionId}{The version ID for the object that you want to apply this Object
 Retention configuration to.}
 

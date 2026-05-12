@@ -44,13 +44,15 @@ rds_restore_db_instance_from_db_snapshot(
   CustomIamInstanceProfile = NULL,
   AllocatedStorage = NULL,
   DBClusterSnapshotIdentifier = NULL,
+  BackupRetentionPeriod = NULL,
+  PreferredBackupWindow = NULL,
   DedicatedLogVolume = NULL,
   CACertificateIdentifier = NULL,
   EngineLifecycleSupport = NULL,
+  AdditionalStorageVolumes = NULL,
   TagSpecifications = NULL,
   ManageMasterUserPassword = NULL,
-  MasterUserSecretKmsKeyId = NULL,
-  AdditionalStorageVolumes = NULL
+  MasterUserSecretKmsKeyId = NULL
 )
 }
 \arguments{
@@ -222,8 +224,6 @@ TDE, can't be removed from an option group, and that option group can't
 be removed from a DB instance after it is associated with a DB instance.
 
 This setting doesn't apply to RDS Custom.}
-
-\item{Tags}{}
 
 \item{StorageType}{Specifies the storage type to be associated with the DB instance.
 
@@ -449,6 +449,48 @@ shared snapshot.
 \item Can't be the identifier of an Aurora DB cluster snapshot.
 }}
 
+\item{BackupRetentionPeriod}{The number of days to retain automated backups. Setting this parameter
+to a positive number enables backups. Setting this parameter to 0
+disables automated backups.
+
+Enabling and disabling backups can result in a brief I/O suspension that
+lasts from a few seconds to a few minutes, depending on the size and
+class of your DB instance.
+
+This setting doesn't apply to Amazon Aurora DB instances. The retention
+period for automated backups is managed by the DB cluster. For more
+information, see \code{\link[=rds_modify_db_cluster]{modify_db_cluster}}.
+
+Default: Uses existing setting
+
+Constraints:
+\itemize{
+\item Must be a value from 0 to 35.
+\item Can't be set to 0 if the DB instance is a source to read replicas.
+\item Can't be set to 0 for an RDS Custom for Oracle DB instance.
+}}
+
+\item{PreferredBackupWindow}{The daily time range during which automated backups are created if
+automated backups are enabled, as determined by the
+\code{BackupRetentionPeriod} parameter. Changing this parameter doesn't
+result in an outage and the change is asynchronously applied as soon as
+possible. The default is a 30-minute window selected at random from an
+8-hour block of time for each Amazon Web Services Region. For more
+information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{Backup window}
+in the \emph{Amazon RDS User Guide}.
+
+This setting doesn't apply to Amazon Aurora DB instances. The daily time
+range for creating automated backups is managed by the DB cluster. For
+more information, see \code{\link[=rds_modify_db_cluster]{modify_db_cluster}}.
+
+Constraints:
+\itemize{
+\item Must be in the format \code{hh24:mi-hh24:mi}.
+\item Must be in Universal Coordinated Time (UTC).
+\item Must not conflict with the preferred maintenance window.
+\item Must be at least 30 minutes.
+}}
+
 \item{DedicatedLogVolume}{Specifies whether to enable a dedicated log volume (DLV) for the DB
 instance.}
 
@@ -485,6 +527,12 @@ Valid Values:
 \code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
 
 Default: \code{open-source-rds-extended-support}}
+
+\item{AdditionalStorageVolumes}{A list of additional storage volumes to create for the DB instance. You
+can create up to three additional storage volumes using the names
+\code{rdsdbdata2}, \code{rdsdbdata3}, and \code{rdsdbdata4}. Additional storage volumes
+are supported for RDS for Oracle and RDS for SQL Server DB instances
+only.}
 
 \item{TagSpecifications}{Tags to assign to resources associated with the DB instance.
 
@@ -524,12 +572,6 @@ a customer managed KMS key.
 There is a default KMS key for your Amazon Web Services account. Your
 Amazon Web Services account has a different default KMS key for each
 Amazon Web Services Region.}
-
-\item{AdditionalStorageVolumes}{A list of additional storage volumes to create for the DB instance. You
-can create up to three additional storage volumes using the names
-\code{rdsdbdata2}, \code{rdsdbdata3}, and \code{rdsdbdata4}. Additional storage volumes
-are supported for RDS for Oracle and RDS for SQL Server DB instances
-only.}
 }
 \description{
 Creates a new DB instance from a DB snapshot. The target database is created from the source database restore point with most of the source's original configuration, including the default security group and DB parameter group. By default, the new DB instance is created as a Single-AZ deployment, except when the instance is a SQL Server instance that has an option group associated with mirroring. In this case, the instance becomes a Multi-AZ deployment, not a Single-AZ deployment.

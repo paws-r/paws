@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_enable_import_findings_for_product}
 \alias{securityhub_enable_import_findings_for_product}
-\title{Enables the integration of a partner product with Security Hub}
+\title{Enables the integration of a partner product with Security Hub CSPM}
 \usage{
 securityhub_enable_import_findings_for_product(ProductArn)
 }
@@ -10,7 +10,7 @@ securityhub_enable_import_findings_for_product(ProductArn)
 \item{ProductArn}{[required] The ARN of the product to enable the integration for.}
 }
 \description{
-Enables the integration of a partner product with Security Hub. Integrated products send findings to Security Hub.
+Enables the integration of a partner product with Security Hub CSPM. Integrated products send findings to Security Hub CSPM.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_enable_import_findings_for_product/} for full documentation.
 }

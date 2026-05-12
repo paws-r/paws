@@ -17,6 +17,7 @@ autoscaling_create_auto_scaling_group(
   DesiredCapacity = NULL,
   DefaultCooldown = NULL,
   AvailabilityZones = NULL,
+  AvailabilityZoneIds = NULL,
   LoadBalancerNames = NULL,
   TargetGroupARNs = NULL,
   HealthCheckType = NULL,
@@ -27,6 +28,7 @@ autoscaling_create_auto_scaling_group(
   NewInstancesProtectedFromScaleIn = NULL,
   CapacityRebalance = NULL,
   LifecycleHookSpecificationList = NULL,
+  DeletionProtection = NULL,
   Tags = NULL,
   ServiceLinkedRoleARN = NULL,
   MaxInstanceLifetime = NULL,
@@ -113,6 +115,10 @@ Availability Zone when not using the \code{VPCZoneIdentifier} property, or
 for attaching a network interface when an existing network interface ID
 is specified in a launch template.}
 
+\item{AvailabilityZoneIds}{A list of Availability Zone IDs where the Auto Scaling group can launch
+instances. You cannot specify both AvailabilityZones and
+AvailabilityZoneIds in the same request.}
+
 \item{LoadBalancerNames}{A list of Classic Load Balancers associated with this Auto Scaling
 group. For Application Load Balancers, Network Load Balancers, and
 Gateway Load Balancers, specify the \code{TargetGroupARNs} property instead.}
@@ -181,6 +187,22 @@ in the in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{LifecycleHookSpecificationList}{One or more lifecycle hooks to add to the Auto Scaling group before
 instances are launched.}
+
+\item{DeletionProtection}{The deletion protection setting for the Auto Scaling group. This setting
+helps safeguard your Auto Scaling group and its instances by controlling
+whether the
+\code{\link[=autoscaling_delete_auto_scaling_group]{delete_auto_scaling_group}}
+operation is allowed. When deletion protection is enabled, users cannot
+delete the Auto Scaling group according to the specified protection
+level until the setting is changed back to a less restrictive level.
+
+The valid values are \code{none}, \code{prevent-force-deletion}, and
+\code{prevent-all-deletion}.
+
+Default: \code{none}
+
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/resource-deletion-protection.html}{Configure deletion protection for your Amazon EC2 Auto Scaling resources}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{Tags}{One or more tags. You can tag your Auto Scaling group and propagate the
 tags to the Amazon EC2 instances it launches. Tags are not propagated to
@@ -262,8 +284,10 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 \item{InstanceLifecyclePolicy}{The instance lifecycle policy for the Auto Scaling group. This policy
 controls instance behavior when an instance transitions through its
 lifecycle states. Configure retention triggers to specify when instances
-should move to a \code{Retained} state for manual intervention instead of
-automatic termination.
+should move to a \code{Retained} state instead of automatic termination.
+
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/instance-lifecycle-policy.html}{Control instance retention with instance lifecycle policies}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 Instances in a Retained state will continue to incur standard EC2
 charges until terminated.}

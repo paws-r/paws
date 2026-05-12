@@ -44,8 +44,6 @@ datasets, algorithms, hyperparameters, source code, and instance types.}
 \item{OutputArtifacts}{The output artifacts for the component. Examples of output artifacts are
 metrics, snapshots, logs, and images.}
 
-\item{MetadataProperties}{}
-
 \item{Tags}{A list of tags to associate with the component. You can use
 \code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }

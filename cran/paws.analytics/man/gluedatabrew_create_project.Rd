@@ -21,8 +21,6 @@ gluedatabrew_create_project(
 
 \item{RecipeName}{[required] The name of an existing recipe to associate with the project.}
 
-\item{Sample}{}
-
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the Identity and Access Management
 (IAM) role to be assumed for this request.}
 

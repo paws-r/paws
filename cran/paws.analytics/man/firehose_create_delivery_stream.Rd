@@ -99,8 +99,6 @@ For an example IAM policy, see \href{https://docs.aws.amazon.com/firehose/latest
 \item{AmazonOpenSearchServerlessDestinationConfiguration}{The destination in the Serverless offering for Amazon OpenSearch
 Service. You can specify only one destination.}
 
-\item{MSKSourceConfiguration}{}
-
 \item{SnowflakeDestinationConfiguration}{Configure Snowflake destination}
 
 \item{IcebergDestinationConfiguration}{Configure Apache Iceberg Tables destination.}

@@ -7,7 +7,8 @@
 kinesis_delete_stream(
   StreamName = NULL,
   EnforceConsumerDeletion = NULL,
-  StreamARN = NULL
+  StreamARN = NULL,
+  StreamId = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ stream has registered consumers, the call to
 \code{ResourceInUseException}.}
 
 \item{StreamARN}{The ARN of the stream.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Deletes a Kinesis data stream and all its shards and data. You must shut down any applications that are operating on the stream before you delete the stream. If an application attempts to operate on a deleted stream, it receives the exception \code{ResourceNotFoundException}.

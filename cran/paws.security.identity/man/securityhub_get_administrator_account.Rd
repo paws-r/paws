@@ -2,13 +2,13 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_administrator_account}
 \alias{securityhub_get_administrator_account}
-\title{Provides the details for the Security Hub administrator account for the
-current member account}
+\title{Provides the details for the Security Hub CSPM administrator account for
+the current member account}
 \usage{
 securityhub_get_administrator_account()
 }
 \description{
-Provides the details for the Security Hub administrator account for the current member account.
+Provides the details for the Security Hub CSPM administrator account for the current member account.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_get_administrator_account/} for full documentation.
 }

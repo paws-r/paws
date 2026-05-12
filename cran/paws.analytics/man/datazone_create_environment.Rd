@@ -5,27 +5,38 @@
 \title{Create an Amazon DataZone environment}
 \usage{
 datazone_create_environment(
-  deploymentOrder = NULL,
-  description = NULL,
+  projectIdentifier,
   domainIdentifier,
+  description = NULL,
+  name,
+  environmentProfileIdentifier = NULL,
+  userParameters = NULL,
+  glossaryTerms = NULL,
   environmentAccountIdentifier = NULL,
   environmentAccountRegion = NULL,
   environmentBlueprintIdentifier = NULL,
+  deploymentOrder = NULL,
   environmentConfigurationId = NULL,
-  environmentProfileIdentifier = NULL,
-  glossaryTerms = NULL,
-  name,
-  projectIdentifier,
-  userParameters = NULL
+  environmentConfigurationName = NULL
 )
 }
 \arguments{
-\item{deploymentOrder}{The deployment order of the environment.}
-
-\item{description}{The description of the Amazon DataZone environment.}
+\item{projectIdentifier}{[required] The identifier of the Amazon DataZone project in which this environment
+is created.}
 
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which the environment is
 created.}
+
+\item{description}{The description of the Amazon DataZone environment.}
+
+\item{name}{[required] The name of the Amazon DataZone environment.}
+
+\item{environmentProfileIdentifier}{The identifier of the environment profile that is used to create this
+Amazon DataZone environment.}
+
+\item{userParameters}{The user parameters of this Amazon DataZone environment.}
+
+\item{glossaryTerms}{The glossary terms that can be used in this Amazon DataZone environment.}
 
 \item{environmentAccountIdentifier}{The ID of the account in which the environment is being created.}
 
@@ -33,19 +44,11 @@ created.}
 
 \item{environmentBlueprintIdentifier}{The ID of the blueprint with which the environment is being created.}
 
+\item{deploymentOrder}{The deployment order of the environment.}
+
 \item{environmentConfigurationId}{The configuration ID of the environment.}
 
-\item{environmentProfileIdentifier}{The identifier of the environment profile that is used to create this
-Amazon DataZone environment.}
-
-\item{glossaryTerms}{The glossary terms that can be used in this Amazon DataZone environment.}
-
-\item{name}{[required] The name of the Amazon DataZone environment.}
-
-\item{projectIdentifier}{[required] The identifier of the Amazon DataZone project in which this environment
-is created.}
-
-\item{userParameters}{The user parameters of this Amazon DataZone environment.}
+\item{environmentConfigurationName}{The configuration name of the environment.}
 }
 \description{
 Create an Amazon DataZone environment.

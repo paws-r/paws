@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_enable_security_hub}
 \alias{securityhub_enable_security_hub}
-\title{Enables Security Hub for your account in the current Region or the
+\title{Enables Security Hub CSPM for your account in the current Region or the
 Region you specify in the request}
 \usage{
 securityhub_enable_security_hub(
@@ -12,31 +12,31 @@ securityhub_enable_security_hub(
 )
 }
 \arguments{
-\item{Tags}{The tags to add to the hub resource when you enable Security Hub.}
+\item{Tags}{The tags to add to the hub resource when you enable Security Hub CSPM.}
 
-\item{EnableDefaultStandards}{Whether to enable the security standards that Security Hub has
+\item{EnableDefaultStandards}{Whether to enable the security standards that Security Hub CSPM has
 designated as automatically enabled. If you don't provide a value for
 \code{EnableDefaultStandards}, it is set to \code{true}. To not enable the
 automatically enabled standards, set \code{EnableDefaultStandards} to
 \code{false}.}
 
-\item{ControlFindingGenerator}{This field, used when enabling Security Hub, specifies whether the
+\item{ControlFindingGenerator}{This field, used when enabling Security Hub CSPM, specifies whether the
 calling account has consolidated control findings turned on. If the
-value for this field is set to \code{SECURITY_CONTROL}, Security Hub
+value for this field is set to \code{SECURITY_CONTROL}, Security Hub CSPM
 generates a single finding for a control check even when the check
 applies to multiple enabled standards.
 
 If the value for this field is set to \code{STANDARD_CONTROL}, Security Hub
-generates separate findings for a control check when the check applies
-to multiple enabled standards.
+CSPM generates separate findings for a control check when the check
+applies to multiple enabled standards.
 
 The value for this field in a member account matches the value in the
 administrator account. For accounts that aren't part of an organization,
 the default value of this field is \code{SECURITY_CONTROL} if you enabled
-Security Hub on or after February 23, 2023.}
+Security Hub CSPM on or after February 23, 2023.}
 }
 \description{
-Enables Security Hub for your account in the current Region or the Region you specify in the request.
+Enables Security Hub CSPM for your account in the current Region or the Region you specify in the request.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_enable_security_hub/} for full documentation.
 }

@@ -10,13 +10,6 @@ wellarchitected_list_profile_notifications(
   MaxResults = NULL
 )
 }
-\arguments{
-\item{WorkloadId}{}
-
-\item{NextToken}{}
-
-\item{MaxResults}{}
-}
 \description{
 List profile notifications.
 

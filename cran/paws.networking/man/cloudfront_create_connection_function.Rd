@@ -17,8 +17,6 @@ cloudfront_create_connection_function(
 \item{ConnectionFunctionConfig}{[required]}
 
 \item{ConnectionFunctionCode}{[required] The code for the connection function.}
-
-\item{Tags}{}
 }
 \description{
 Creates a connection function.

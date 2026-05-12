@@ -17,7 +17,9 @@ appstream_update_stack(
   ApplicationSettings = NULL,
   AccessEndpoints = NULL,
   EmbedHostDomains = NULL,
-  StreamingExperienceSettings = NULL
+  StreamingExperienceSettings = NULL,
+  ContentRedirection = NULL,
+  AgentAccessConfig = NULL
 )
 }
 \arguments{
@@ -56,6 +58,10 @@ host embedded WorkSpaces Applications streaming sessions.}
 
 \item{StreamingExperienceSettings}{The streaming protocol you want your stack to prefer. This can be UDP or
 TCP. Currently, UDP is only supported in the Windows native client.}
+
+\item{AgentAccessConfig}{The configuration for agent access on the stack. Specify this to update
+agent access settings. To remove agent access, use AttributesToDelete
+with the AGENT_ACCESS_CONFIG value.}
 }
 \description{
 Updates the specified fields for the specified stack.

@@ -22,8 +22,6 @@ the case is preserved and must be matched in
 \item{EndpointConfigName}{[required] The name of an endpoint configuration. For more information, see
 \code{\link[=sagemaker_create_endpoint_config]{create_endpoint_config}}.}
 
-\item{DeploymentConfig}{}
-
 \item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
 Web Services resources in different ways, for example, by purpose,
 owner, or environment. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}.}

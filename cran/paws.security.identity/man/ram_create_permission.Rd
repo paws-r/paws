@@ -20,10 +20,12 @@ unique within the Amazon Web Services Region.}
 \item{resourceType}{[required] Specifies the name of the resource type that this customer managed
 permission applies to.
 
-The format is \verb{<service-code>:<resource-type>} and is not case
-sensitive. For example, to specify an Amazon EC2 Subnet, you can use the
-string \code{ec2:subnet}. To see the list of valid values for this parameter,
-query the \code{\link[=ram_list_resource_types]{list_resource_types}} operation.}
+The format is \verb{<service-code>:<resource-type>} and is case sensitive.
+For example, to specify an Amazon EC2 Subnet, you can use the string
+\code{ec2:Subnet}. To see the list of valid values for this parameter, query
+the \code{\link[=ram_list_resource_types]{list_resource_types}} operation. This
+value must match the display name of the resource (available in
+\code{\link[=ram_list_resource_types]{list_resource_types}}).}
 
 \item{policyTemplate}{[required] A string in JSON format string that contains the following elements of a
 resource-based policy:

@@ -5,24 +5,48 @@
 \title{Lists subscriptions in Amazon DataZone}
 \usage{
 datazone_list_subscriptions(
-  approverProjectId = NULL,
   domainIdentifier,
-  maxResults = NULL,
-  nextToken = NULL,
-  owningGroupId = NULL,
-  owningProjectId = NULL,
-  owningUserId = NULL,
-  sortBy = NULL,
-  sortOrder = NULL,
+  subscriptionRequestIdentifier = NULL,
   status = NULL,
   subscribedListingId = NULL,
-  subscriptionRequestIdentifier = NULL
+  owningProjectId = NULL,
+  owningIamPrincipalArn = NULL,
+  owningUserId = NULL,
+  owningGroupId = NULL,
+  approverProjectId = NULL,
+  sortBy = NULL,
+  sortOrder = NULL,
+  maxResults = NULL,
+  nextToken = NULL
 )
 }
 \arguments{
+\item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain.}
+
+\item{subscriptionRequestIdentifier}{The identifier of the subscription request for the subscriptions that
+you want to list.}
+
+\item{status}{The status of the subscriptions that you want to list.
+
+This is not a required parameter, but if not provided, by default,
+Amazon DataZone returns only \code{APPROVED} subscriptions.}
+
+\item{subscribedListingId}{The identifier of the subscribed listing for the subscriptions that you
+want to list.}
+
+\item{owningProjectId}{The identifier of the owning project.}
+
+\item{owningIamPrincipalArn}{The ARN of the owning IAM principal.}
+
+\item{owningUserId}{The ID of the owning user.}
+
+\item{owningGroupId}{The ID of the owning group.}
+
 \item{approverProjectId}{The identifier of the project for the subscription's approver.}
 
-\item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain.}
+\item{sortBy}{Specifies the way in which the results of this action are to be sorted.}
+
+\item{sortOrder}{Specifies the sort order for the results of this action.}
 
 \item{maxResults}{The maximum number of subscriptions to return in a single call to
 \code{\link[=datazone_list_subscriptions]{list_subscriptions}}. When the number of
@@ -38,27 +62,6 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{NextToken} value in a subsequent call to
 \code{\link[=datazone_list_subscriptions]{list_subscriptions}} to list the next set
 of subscriptions.}
-
-\item{owningGroupId}{The ID of the owning group.}
-
-\item{owningProjectId}{The identifier of the owning project.}
-
-\item{owningUserId}{The ID of the owning user.}
-
-\item{sortBy}{Specifies the way in which the results of this action are to be sorted.}
-
-\item{sortOrder}{Specifies the sort order for the results of this action.}
-
-\item{status}{The status of the subscriptions that you want to list.
-
-This is not a required parameter, but if not provided, by default,
-Amazon DataZone returns only \code{APPROVED} subscriptions.}
-
-\item{subscribedListingId}{The identifier of the subscribed listing for the subscriptions that you
-want to list.}
-
-\item{subscriptionRequestIdentifier}{The identifier of the subscription request for the subscriptions that
-you want to list.}
 }
 \description{
 Lists subscriptions in Amazon DataZone.

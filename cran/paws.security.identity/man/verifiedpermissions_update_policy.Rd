@@ -4,17 +4,42 @@
 \alias{verifiedpermissions_update_policy}
 \title{Modifies a Cedar static policy in the specified policy store}
 \usage{
-verifiedpermissions_update_policy(policyStoreId, policyId, definition)
+verifiedpermissions_update_policy(
+  policyStoreId,
+  policyId,
+  definition = NULL,
+  name = NULL
+)
 }
 \arguments{
 \item{policyStoreId}{[required] Specifies the ID of the policy store that contains the policy that you
-want to update.}
+want to update.
+
+To specify a policy store, use its ID or alias name. When using an alias
+name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use
+\code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
 
 \item{policyId}{[required] Specifies the ID of the policy that you want to update. To find this
-value, you can use \code{\link[=verifiedpermissions_list_policies]{list_policies}}.}
+value, you can use \code{\link[=verifiedpermissions_list_policies]{list_policies}}.
 
-\item{definition}{[required] Specifies the updated policy content that you want to replace on the
+You can use the policy name in place of the policy ID. When using a
+name, prefix it with \verb{name/}. For example:
+\itemize{
+\item ID: \code{SPEXAMPLEabcdefg111111}
+\item Name: \code{name/example-policy}
+}}
+
+\item{definition}{Specifies the updated policy content that you want to replace on the
 specified policy. The content must be valid Cedar policy language text.
+
+If you don't specify this parameter, the existing policy definition
+remains unchanged.
 
 You can change only the following elements from the policy definition:
 \itemize{
@@ -29,6 +54,17 @@ You \strong{can't} change the following elements:
 \item The \code{principal} referenced by the policy.
 \item The \code{resource} referenced by the policy.
 }}
+
+\item{name}{Specifies a name for the policy that is unique among all policies within
+the policy store. You can use the name in place of the policy ID in API
+operations that reference the policy. The name must be prefixed with
+\verb{name/}.
+
+If you don't include the name in an update request, the existing name is
+unchanged. To remove a name, set it to an empty string (\code{""}).
+
+If you specify a name that is already associated with another policy in
+the policy store, you receive a \code{ConflictException} error.}
 }
 \description{
 Modifies a Cedar static policy in the specified policy store. You can change only certain elements of the \href{https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/#amazonverifiedpermissions-UpdatePolicy-request-UpdatePolicyDefinition}{UpdatePolicyDefinition} parameter. You can directly update only static policies. To change a template-linked policy, you must update the template instead, using \code{\link[=verifiedpermissions_update_policy_template]{update_policy_template}}.

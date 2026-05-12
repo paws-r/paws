@@ -2,19 +2,19 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_create_members}
 \alias{securityhub_create_members}
-\title{Creates a member association in Security Hub between the specified
+\title{Creates a member association in Security Hub CSPM between the specified
 accounts and the account used to make the request, which is the
 administrator account}
 \usage{
 securityhub_create_members(AccountDetails)
 }
 \arguments{
-\item{AccountDetails}{[required] The list of accounts to associate with the Security Hub administrator
-account. For each account, the list includes the account ID and
-optionally the email address.}
+\item{AccountDetails}{[required] The list of accounts to associate with the Security Hub CSPM
+administrator account. For each account, the list includes the account
+ID and optionally the email address.}
 }
 \description{
-Creates a member association in Security Hub between the specified accounts and the account used to make the request, which is the administrator account. If you are integrated with Organizations, then the administrator account is designated by the organization management account.
+Creates a member association in Security Hub CSPM between the specified accounts and the account used to make the request, which is the administrator account. If you are integrated with Organizations, then the administrator account is designated by the organization management account.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_create_members/} for full documentation.
 }

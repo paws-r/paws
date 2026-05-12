@@ -433,6 +433,10 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @param MetricsConfig The metrics configuration for your event source. For more information,
 #' see [Event source mapping
 #' metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
+#' @param LoggingConfig (Amazon MSK, and self-managed Apache Kafka only) The logging
+#' configuration for your event source. For more information, see [Event
+#' source mapping
+#' logging](https://docs.aws.amazon.com/lambda/latest/dg/esm-logging.html).
 #' @param ProvisionedPollerConfig (Amazon SQS, Amazon MSK, and self-managed Apache Kafka only) The
 #' provisioned mode configuration for the event source. For more
 #' information, see [provisioned
@@ -441,7 +445,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @keywords internal
 #'
 #' @rdname lambda_create_event_source_mapping
-lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, Tags = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, ProvisionedPollerConfig = NULL) {
+lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, Tags = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, LoggingConfig = NULL, ProvisionedPollerConfig = NULL) {
   op <- new_operation(
     name = "CreateEventSourceMapping",
     http_method = "POST",
@@ -450,7 +454,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, Tags = Tags, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
+  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, Tags = Tags, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, LoggingConfig = LoggingConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
   output <- .lambda$create_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -563,7 +567,8 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' layers](https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html)
 #' to add to the function's execution environment. Specify each layer by
 #' its ARN, including the version.
-#' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
+#' @param FileSystemConfigs Connection settings for an Amazon EFS file system or an Amazon S3 Files
+#' file system.
 #' @param ImageConfig Container image [configuration
 #' values](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms)
 #' that override the values in the container image Dockerfile.
@@ -2288,7 +2293,7 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #' a partial ARN, or a full ARN.
 #' @param Qualifier The function version or alias. If not specified, lists executions for
 #' the $LATEST version.
-#' @param DurableExecutionName Filter executions by name. Only executions with names that contain this
+#' @param DurableExecutionName Filter executions by name. Only executions with names that matches this
 #' string are returned.
 #' @param Statuses Filter executions by status. Valid values: RUNNING, SUCCEEDED, FAILED,
 #' TIMED_OUT, STOPPED.
@@ -3801,6 +3806,7 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' @param MetricsConfig The metrics configuration for your event source. For more information,
 #' see [Event source mapping
 #' metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
+#' @param LoggingConfig 
 #' @param ProvisionedPollerConfig (Amazon SQS, Amazon MSK, and self-managed Apache Kafka only) The
 #' provisioned mode configuration for the event source. For more
 #' information, see [provisioned
@@ -3809,7 +3815,7 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' @keywords internal
 #'
 #' @rdname lambda_update_event_source_mapping
-lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL, ScalingConfig = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, ProvisionedPollerConfig = NULL) {
+lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL, ScalingConfig = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, LoggingConfig = NULL, ProvisionedPollerConfig = NULL) {
   op <- new_operation(
     name = "UpdateEventSourceMapping",
     http_method = "PUT",
@@ -3818,7 +3824,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes, ScalingConfig = ScalingConfig, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
+  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes, ScalingConfig = ScalingConfig, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, LoggingConfig = LoggingConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
   output <- .lambda$update_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -3998,7 +4004,8 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' layers](https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html)
 #' to add to the function's execution environment. Specify each layer by
 #' its ARN, including the version.
-#' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
+#' @param FileSystemConfigs Connection settings for an Amazon EFS file system or an Amazon S3 Files
+#' file system.
 #' @param ImageConfig [Container image configuration
 #' values](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms)
 #' that override the values in the container image Docker file.

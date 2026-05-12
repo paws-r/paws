@@ -8,8 +8,6 @@ the account}
 cloudwatchlogs_describe_delivery_destinations(nextToken = NULL, limit = NULL)
 }
 \arguments{
-\item{nextToken}{}
-
 \item{limit}{Optionally specify the maximum number of delivery destinations to return
 in the response.}
 }

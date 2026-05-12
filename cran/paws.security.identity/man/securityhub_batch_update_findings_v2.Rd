@@ -2,8 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_batch_update_findings_v2}
 \alias{securityhub_batch_update_findings_v2}
-\title{Used by customers to update information about their investigation into a
-finding}
+\title{Updates information about a customer's investigation into a finding}
 \usage{
 securityhub_batch_update_findings_v2(
   MetadataUids = NULL,
@@ -25,17 +24,17 @@ the finding. Customers cannot use \code{MetadataUids} together with
 character length 1. Maximum character length 512.}
 
 \item{SeverityId}{The updated value for the normalized severity identifier. The severity
-ID is an integer with the allowed enum values [0, 1, 2, 3, 4, 5, 99].
-When customer provides the updated severity ID, the string sibling
+ID is an integer with the allowed enum values [0, 1, 2, 3, 4, 5, 6,
+99]. When customer provides the updated severity ID, the string sibling
 severity will automatically be updated in the finding.}
 
 \item{StatusId}{The updated value for the normalized status identifier. The status ID is
-an integer with the allowed enum values [0, 1, 2, 3, 4, 5, 6, 99].
-When customer provides the updated status ID, the string sibling status
-will automatically be updated in the finding.}
+an integer with the allowed enum values [0, 1, 2, 3, 4, 5, 99]. When
+customer provides the updated status ID, the string sibling status will
+automatically be updated in the finding.}
 }
 \description{
-Used by customers to update information about their investigation into a finding. Requested by delegated administrator accounts or member accounts. Delegated administrator accounts can update findings for their account and their member accounts. Member accounts can update findings for their account. \code{\link[=securityhub_batch_update_findings]{batch_update_findings}} and \code{BatchUpdateFindingV2} both use \code{securityhub:BatchUpdateFindings} in the \code{Action} element of an IAM policy statement. You must have permission to perform the \code{securityhub:BatchUpdateFindings} action. Updates from \code{\link[=securityhub_batch_update_findings_v2]{batch_update_findings_v2}} don't affect the value of f\code{inding_info.modified_time}, \code{finding_info.modified_time_dt}, \code{time}, \verb{time_dt for a finding}.
+Updates information about a customer's investigation into a finding. Delegated administrator accounts can update findings for their account and their member accounts. Member accounts can update findings for their own account.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_batch_update_findings_v2/} for full documentation.
 }

@@ -9,7 +9,8 @@ connectcases_create_case(
   templateId,
   fields,
   clientToken = NULL,
-  performedBy = NULL
+  performedBy = NULL,
+  tags = NULL
 )
 }
 \arguments{
@@ -25,7 +26,8 @@ idempotency of the request. If not provided, the Amazon Web Services SDK
 populates this field. For more information about idempotency, see
 \href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 
-\item{performedBy}{}
+\item{tags}{A map of of key-value pairs that represent tags on a resource. Tags are
+used to organize, track, or control access for this resource.}
 }
 \description{
 If you provide a value for \code{PerformedBy.UserArn} you must also have \href{https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html}{connect:DescribeUser} permission on the User ARN resource that you provide

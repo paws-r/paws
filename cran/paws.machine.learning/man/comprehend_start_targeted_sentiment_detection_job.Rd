@@ -43,8 +43,6 @@ analysis job. The VolumeKmsKeyId can be either of the following formats:
 \code{"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"}
 }}
 
-\item{VpcConfig}{}
-
 \item{Tags}{Tags to associate with the targeted sentiment detection job. A tag is a
 key-value pair that adds metadata to a resource used by Amazon
 Comprehend. For example, a tag with "Sales" as the key might be added to

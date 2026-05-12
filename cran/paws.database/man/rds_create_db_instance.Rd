@@ -69,9 +69,9 @@ rds_create_db_instance(
   MultiTenant = NULL,
   DedicatedLogVolume = NULL,
   EngineLifecycleSupport = NULL,
+  AdditionalStorageVolumes = NULL,
   TagSpecifications = NULL,
-  MasterUserAuthenticationType = NULL,
-  AdditionalStorageVolumes = NULL
+  MasterUserAuthenticationType = NULL
 )
 }
 \arguments{
@@ -1121,6 +1121,12 @@ Valid Values:
 
 Default: \code{open-source-rds-extended-support}}
 
+\item{AdditionalStorageVolumes}{A list of additional storage volumes to create for the DB instance. You
+can create up to three additional storage volumes using the names
+\code{rdsdbdata2}, \code{rdsdbdata3}, and \code{rdsdbdata4}. Additional storage volumes
+are supported for RDS for Oracle and RDS for SQL Server DB instances
+only.}
+
 \item{TagSpecifications}{Tags to assign to resources associated with the DB instance.
 
 Valid Values:
@@ -1140,12 +1146,6 @@ You can specify one of the following values:
 
 This option is only valid for RDS for PostgreSQL and Aurora PostgreSQL
 engines.}
-
-\item{AdditionalStorageVolumes}{A list of additional storage volumes to create for the DB instance. You
-can create up to three additional storage volumes using the names
-\code{rdsdbdata2}, \code{rdsdbdata3}, and \code{rdsdbdata4}. Additional storage volumes
-are supported for RDS for Oracle and RDS for SQL Server DB instances
-only.}
 }
 \description{
 Creates a new DB instance.

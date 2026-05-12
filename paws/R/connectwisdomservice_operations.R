@@ -31,7 +31,7 @@ NULL
 #' 
 #' For more information about setting up a customer managed key for Wisdom,
 #' see [Enable Amazon Connect Wisdom for your
-#' instance](https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html).
+#' instance](https://docs.aws.amazon.com/connect/latest/adminguide/ai-agent-initial-setup.html).
 #' @param tags The tags used to organize, track, or control access for this resource.
 #' @param type &#91;required&#93; The type of assistant.
 #'
@@ -342,7 +342,7 @@ connectwisdomservice_create_content <- function(clientToken = NULL, knowledgeBas
 #' 
 #' For more information about setting up a customer managed key for Wisdom,
 #' see [Enable Amazon Connect Wisdom for your
-#' instance](https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html).
+#' instance](https://docs.aws.amazon.com/connect/latest/adminguide/ai-agent-initial-setup.html).
 #' @param sourceConfiguration The source of the knowledge base content. Only set this argument for
 #' EXTERNAL knowledge bases.
 #' @param tags The tags used to organize, track, or control access for this resource.

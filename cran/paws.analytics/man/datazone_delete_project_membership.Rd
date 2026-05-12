@@ -4,16 +4,16 @@
 \alias{datazone_delete_project_membership}
 \title{Deletes project membership in Amazon DataZone}
 \usage{
-datazone_delete_project_membership(domainIdentifier, member, projectIdentifier)
+datazone_delete_project_membership(domainIdentifier, projectIdentifier, member)
 }
 \arguments{
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain where project membership is
 deleted.}
 
-\item{member}{[required] The project member whose project membership is deleted.}
-
 \item{projectIdentifier}{[required] The ID of the Amazon DataZone project the membership to which is
 deleted.}
+
+\item{member}{[required] The project member whose project membership is deleted.}
 }
 \description{
 Deletes project membership in Amazon DataZone.

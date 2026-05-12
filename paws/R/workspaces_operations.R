@@ -199,7 +199,7 @@ workspaces_associate_ip_groups <- function(DirectoryId, GroupIds) {
 #'     ),
 #'     State = "PENDING_INSTALL"|"PENDING_INSTALL_DEPLOYMENT"|"PENDING_UNINSTALL"|"PENDING_UNINSTALL_DEPLOYMENT"|"INSTALLING"|"UNINSTALLING"|"ERROR"|"COMPLETED"|"REMOVED",
 #'     StateReason = list(
-#'       ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable",
+#'       ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable"|"ValidationError.ApplicationOldVersionExists",
 #'       ErrorMessage = "string"
 #'     ),
 #'     WorkspaceId = "string"
@@ -306,7 +306,7 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 #' Region.
 #' 
 #' In Amazon Web Services GovCloud (US), to copy images to and from other
-#' Regions, contact Amazon Web ServicesSupport.
+#' Regions, contact Amazon Web Services Support.
 #' 
 #' Before copying a shared image, be sure to verify that it has been shared
 #' from the correct Amazon Web Services account. To determine if an image
@@ -899,7 +899,7 @@ workspaces_create_updated_workspace_image <- function(Name, Description, SourceI
 #'       Capacity = "string"
 #'     ),
 #'     ComputeType = list(
-#'       Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'       Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"|"GRAPHICS_G6_XLARGE"|"GRAPHICS_G6_2XLARGE"|"GRAPHICS_G6_4XLARGE"|"GRAPHICS_G6_8XLARGE"|"GRAPHICS_G6_16XLARGE"|"GRAPHICS_GR6_4XLARGE"|"GRAPHICS_GR6_8XLARGE"|"GRAPHICS_G6F_LARGE"|"GRAPHICS_G6F_XLARGE"|"GRAPHICS_G6F_2XLARGE"|"GRAPHICS_G6F_4XLARGE"|"GRAPHICS_GR6F_4XLARGE"
 #'     ),
 #'     LastUpdatedTime = as.POSIXct(
 #'       "2015-01-01"
@@ -920,7 +920,7 @@ workspaces_create_updated_workspace_image <- function(Name, Description, SourceI
 #'   BundleDescription = "string",
 #'   ImageId = "string",
 #'   ComputeType = list(
-#'     Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'     Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"|"GRAPHICS_G6_XLARGE"|"GRAPHICS_G6_2XLARGE"|"GRAPHICS_G6_4XLARGE"|"GRAPHICS_G6_8XLARGE"|"GRAPHICS_G6_16XLARGE"|"GRAPHICS_GR6_4XLARGE"|"GRAPHICS_GR6_8XLARGE"|"GRAPHICS_G6F_LARGE"|"GRAPHICS_G6F_XLARGE"|"GRAPHICS_G6F_2XLARGE"|"GRAPHICS_G6F_4XLARGE"|"GRAPHICS_GR6F_4XLARGE"
 #'   ),
 #'   UserStorage = list(
 #'     Capacity = "string"
@@ -1082,11 +1082,11 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'           RunningModeAutoStopTimeoutInMinutes = 123,
 #'           RootVolumeSizeGib = 123,
 #'           UserVolumeSizeGib = 123,
-#'           ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'           ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"|"GRAPHICS_G6_XLARGE"|"GRAPHICS_G6_2XLARGE"|"GRAPHICS_G6_4XLARGE"|"GRAPHICS_G6_8XLARGE"|"GRAPHICS_G6_16XLARGE"|"GRAPHICS_GR6_4XLARGE"|"GRAPHICS_GR6_8XLARGE"|"GRAPHICS_G6F_LARGE"|"GRAPHICS_G6F_XLARGE"|"GRAPHICS_G6F_2XLARGE"|"GRAPHICS_G6F_4XLARGE"|"GRAPHICS_GR6F_4XLARGE",
 #'           Protocols = list(
 #'             "PCOIP"|"WSP"
 #'           ),
-#'           OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8",
+#'           OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"WINDOWS_SERVER_2025"|"RHEL_8"|"ROCKY_8",
 #'           GlobalAccelerator = list(
 #'             Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
 #'             PreferredProtocol = "TCP"|"NONE"|"INHERITED"
@@ -1127,11 +1127,11 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'         RunningModeAutoStopTimeoutInMinutes = 123,
 #'         RootVolumeSizeGib = 123,
 #'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"|"GRAPHICS_G6_XLARGE"|"GRAPHICS_G6_2XLARGE"|"GRAPHICS_G6_4XLARGE"|"GRAPHICS_G6_8XLARGE"|"GRAPHICS_G6_16XLARGE"|"GRAPHICS_GR6_4XLARGE"|"GRAPHICS_GR6_8XLARGE"|"GRAPHICS_G6F_LARGE"|"GRAPHICS_G6F_XLARGE"|"GRAPHICS_G6F_2XLARGE"|"GRAPHICS_G6F_4XLARGE"|"GRAPHICS_GR6F_4XLARGE",
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
 #'         ),
-#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8",
+#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"WINDOWS_SERVER_2025"|"RHEL_8"|"ROCKY_8",
 #'         GlobalAccelerator = list(
 #'           Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
 #'           PreferredProtocol = "TCP"|"NONE"|"INHERITED"
@@ -1139,8 +1139,8 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'       ),
 #'       ModificationStates = list(
 #'         list(
-#'           Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE",
-#'           State = "UPDATE_INITIATED"|"UPDATE_IN_PROGRESS"
+#'           Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE"|"PROTOCOL",
+#'           State = "UPDATE_INITIATED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"
 #'         )
 #'       ),
 #'       RelatedWorkspaces = list(
@@ -1187,11 +1187,11 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'         RunningModeAutoStopTimeoutInMinutes = 123,
 #'         RootVolumeSizeGib = 123,
 #'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"|"GRAPHICS_G6_XLARGE"|"GRAPHICS_G6_2XLARGE"|"GRAPHICS_G6_4XLARGE"|"GRAPHICS_G6_8XLARGE"|"GRAPHICS_G6_16XLARGE"|"GRAPHICS_GR6_4XLARGE"|"GRAPHICS_GR6_8XLARGE"|"GRAPHICS_G6F_LARGE"|"GRAPHICS_G6F_XLARGE"|"GRAPHICS_G6F_2XLARGE"|"GRAPHICS_G6F_4XLARGE"|"GRAPHICS_GR6F_4XLARGE",
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
 #'         ),
-#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8",
+#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"WINDOWS_SERVER_2025"|"RHEL_8"|"ROCKY_8",
 #'         GlobalAccelerator = list(
 #'           Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
 #'           PreferredProtocol = "TCP"|"NONE"|"INHERITED"
@@ -1787,7 +1787,7 @@ workspaces_delete_workspace_image <- function(ImageId) {
 #'         ),
 #'         State = "PENDING_INSTALL"|"PENDING_INSTALL_DEPLOYMENT"|"PENDING_UNINSTALL"|"PENDING_UNINSTALL_DEPLOYMENT"|"INSTALLING"|"UNINSTALLING"|"ERROR"|"COMPLETED"|"REMOVED",
 #'         StateReason = list(
-#'           ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable",
+#'           ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable"|"ValidationError.ApplicationOldVersionExists",
 #'           ErrorMessage = "string"
 #'         ),
 #'         WorkspaceId = "string"
@@ -2041,7 +2041,7 @@ workspaces_describe_account_modifications <- function(NextToken = NULL) {
 #'       ),
 #'       State = "PENDING_INSTALL"|"PENDING_INSTALL_DEPLOYMENT"|"PENDING_UNINSTALL"|"PENDING_UNINSTALL_DEPLOYMENT"|"INSTALLING"|"UNINSTALLING"|"ERROR"|"COMPLETED"|"REMOVED",
 #'       StateReason = list(
-#'         ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable",
+#'         ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable"|"ValidationError.ApplicationOldVersionExists",
 #'         ErrorMessage = "string"
 #'       )
 #'     )
@@ -2122,10 +2122,10 @@ workspaces_describe_application_associations <- function(MaxResults = NULL, Next
 #'       Owner = "string",
 #'       State = "PENDING"|"ERROR"|"AVAILABLE"|"UNINSTALL_ONLY",
 #'       SupportedComputeTypeNames = list(
-#'         "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'         "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"|"GRAPHICS_G6_XLARGE"|"GRAPHICS_G6_2XLARGE"|"GRAPHICS_G6_4XLARGE"|"GRAPHICS_G6_8XLARGE"|"GRAPHICS_G6_16XLARGE"|"GRAPHICS_GR6_4XLARGE"|"GRAPHICS_GR6_8XLARGE"|"GRAPHICS_G6F_LARGE"|"GRAPHICS_G6F_XLARGE"|"GRAPHICS_G6F_2XLARGE"|"GRAPHICS_G6F_4XLARGE"|"GRAPHICS_GR6F_4XLARGE"
 #'       ),
 #'       SupportedOperatingSystemNames = list(
-#'         "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8"
+#'         "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"WINDOWS_SERVER_2025"|"RHEL_8"|"ROCKY_8"
 #'       )
 #'     )
 #'   ),
@@ -2140,11 +2140,11 @@ workspaces_describe_application_associations <- function(MaxResults = NULL, Next
 #'     "string"
 #'   ),
 #'   ComputeTypeNames = list(
-#'     "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'     "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"|"GRAPHICS_G6_XLARGE"|"GRAPHICS_G6_2XLARGE"|"GRAPHICS_G6_4XLARGE"|"GRAPHICS_G6_8XLARGE"|"GRAPHICS_G6_16XLARGE"|"GRAPHICS_GR6_4XLARGE"|"GRAPHICS_GR6_8XLARGE"|"GRAPHICS_G6F_LARGE"|"GRAPHICS_G6F_XLARGE"|"GRAPHICS_G6F_2XLARGE"|"GRAPHICS_G6F_4XLARGE"|"GRAPHICS_GR6F_4XLARGE"
 #'   ),
 #'   LicenseType = "LICENSED"|"UNLICENSED",
 #'   OperatingSystemNames = list(
-#'     "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8"
+#'     "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"WINDOWS_SERVER_2025"|"RHEL_8"|"ROCKY_8"
 #'   ),
 #'   Owner = "string",
 #'   MaxResults = 123,
@@ -2207,7 +2207,7 @@ workspaces_describe_applications <- function(ApplicationIds = NULL, ComputeTypeN
 #'       ),
 #'       State = "PENDING_INSTALL"|"PENDING_INSTALL_DEPLOYMENT"|"PENDING_UNINSTALL"|"PENDING_UNINSTALL_DEPLOYMENT"|"INSTALLING"|"UNINSTALLING"|"ERROR"|"COMPLETED"|"REMOVED",
 #'       StateReason = list(
-#'         ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable",
+#'         ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable"|"ValidationError.ApplicationOldVersionExists",
 #'         ErrorMessage = "string"
 #'       )
 #'     )
@@ -2650,7 +2650,9 @@ workspaces_describe_connection_aliases <- function(AliasIds = NULL, ResourceId =
 #' list(
 #'   ImageId = "string",
 #'   InfrastructureConfigurationArn = "string",
-#'   State = "PENDING"|"IN_PROGRESS"|"COMPLETED"|"ERROR",
+#'   State = "PENDING"|"IN_PROGRESS"|"PROCESSING_SOURCE_IMAGE"|"IMAGE_TESTING_START"|"UPDATING_OPERATING_SYSTEM"|"IMAGE_COMPATIBILITY_CHECKING"|"IMAGE_TESTING_GENERALIZATION"|"CREATING_TEST_INSTANCE"|"INSTALLING_COMPONENTS"|"GENERALIZING"|"VALIDATING"|"PUBLISHING"|"COMPLETED"|"ERROR",
+#'   StateMessage = "string",
+#'   ProgressPercentage = 123,
 #'   Created = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -2733,7 +2735,7 @@ workspaces_describe_custom_workspace_image_import <- function(ImageId) {
 #'       ImageId = "string",
 #'       State = "PENDING_INSTALL"|"PENDING_INSTALL_DEPLOYMENT"|"PENDING_UNINSTALL"|"PENDING_UNINSTALL_DEPLOYMENT"|"INSTALLING"|"UNINSTALLING"|"ERROR"|"COMPLETED"|"REMOVED",
 #'       StateReason = list(
-#'         ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable",
+#'         ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable"|"ValidationError.ApplicationOldVersionExists",
 #'         ErrorMessage = "string"
 #'       )
 #'     )
@@ -2930,7 +2932,7 @@ workspaces_describe_tags <- function(ResourceId) {
 #'       ),
 #'       State = "PENDING_INSTALL"|"PENDING_INSTALL_DEPLOYMENT"|"PENDING_UNINSTALL"|"PENDING_UNINSTALL_DEPLOYMENT"|"INSTALLING"|"UNINSTALLING"|"ERROR"|"COMPLETED"|"REMOVED",
 #'       StateReason = list(
-#'         ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable",
+#'         ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable"|"ValidationError.ApplicationOldVersionExists",
 #'         ErrorMessage = "string"
 #'       ),
 #'       WorkspaceId = "string"
@@ -3013,7 +3015,7 @@ workspaces_describe_workspace_associations <- function(WorkspaceId, AssociatedRe
 #'         Capacity = "string"
 #'       ),
 #'       ComputeType = list(
-#'         Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'         Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"|"GRAPHICS_G6_XLARGE"|"GRAPHICS_G6_2XLARGE"|"GRAPHICS_G6_4XLARGE"|"GRAPHICS_G6_8XLARGE"|"GRAPHICS_G6_16XLARGE"|"GRAPHICS_GR6_4XLARGE"|"GRAPHICS_GR6_8XLARGE"|"GRAPHICS_G6F_LARGE"|"GRAPHICS_G6F_XLARGE"|"GRAPHICS_G6F_2XLARGE"|"GRAPHICS_G6F_4XLARGE"|"GRAPHICS_GR6F_4XLARGE"
 #'       ),
 #'       LastUpdatedTime = as.POSIXct(
 #'         "2015-01-01"
@@ -3521,11 +3523,11 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #'         RunningModeAutoStopTimeoutInMinutes = 123,
 #'         RootVolumeSizeGib = 123,
 #'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"|"GRAPHICS_G6_XLARGE"|"GRAPHICS_G6_2XLARGE"|"GRAPHICS_G6_4XLARGE"|"GRAPHICS_G6_8XLARGE"|"GRAPHICS_G6_16XLARGE"|"GRAPHICS_GR6_4XLARGE"|"GRAPHICS_GR6_8XLARGE"|"GRAPHICS_G6F_LARGE"|"GRAPHICS_G6F_XLARGE"|"GRAPHICS_G6F_2XLARGE"|"GRAPHICS_G6F_4XLARGE"|"GRAPHICS_GR6F_4XLARGE",
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
 #'         ),
-#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8",
+#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"WINDOWS_SERVER_2025"|"RHEL_8"|"ROCKY_8",
 #'         GlobalAccelerator = list(
 #'           Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
 #'           PreferredProtocol = "TCP"|"NONE"|"INHERITED"
@@ -3533,8 +3535,8 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #'       ),
 #'       ModificationStates = list(
 #'         list(
-#'           Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE",
-#'           State = "UPDATE_INITIATED"|"UPDATE_IN_PROGRESS"
+#'           Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE"|"PROTOCOL",
+#'           State = "UPDATE_INITIATED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"
 #'         )
 #'       ),
 #'       RelatedWorkspaces = list(
@@ -3985,7 +3987,7 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 #'     ),
 #'     State = "PENDING_INSTALL"|"PENDING_INSTALL_DEPLOYMENT"|"PENDING_UNINSTALL"|"PENDING_UNINSTALL_DEPLOYMENT"|"INSTALLING"|"UNINSTALLING"|"ERROR"|"COMPLETED"|"REMOVED",
 #'     StateReason = list(
-#'       ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable",
+#'       ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable"|"ValidationError.ApplicationOldVersionExists",
 #'       ErrorMessage = "string"
 #'     ),
 #'     WorkspaceId = "string"
@@ -4304,7 +4306,7 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 #' ```
 #' list(
 #'   ImageId = "string",
-#'   State = "PENDING"|"IN_PROGRESS"|"COMPLETED"|"ERROR"
+#'   State = "PENDING"|"IN_PROGRESS"|"PROCESSING_SOURCE_IMAGE"|"IMAGE_TESTING_START"|"UPDATING_OPERATING_SYSTEM"|"IMAGE_COMPATIBILITY_CHECKING"|"IMAGE_TESTING_GENERALIZATION"|"CREATING_TEST_INSTANCE"|"INSTALLING_COMPONENTS"|"GENERALIZING"|"VALIDATING"|"PUBLISHING"|"COMPLETED"|"ERROR"
 #' )
 #' ```
 #'
@@ -4313,7 +4315,7 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 #' svc$import_custom_workspace_image(
 #'   ImageName = "string",
 #'   ImageDescription = "string",
-#'   ComputeType = "BASE"|"GRAPHICS_G4DN",
+#'   ComputeType = "BASE"|"GRAPHICS_G4DN"|"GRAPHICS_G6",
 #'   Protocol = "PCOIP"|"DCV"|"BYOP",
 #'   ImageSource = list(
 #'     Ec2ImportTaskId = "string",
@@ -5218,11 +5220,11 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #'     RunningModeAutoStopTimeoutInMinutes = 123,
 #'     RootVolumeSizeGib = 123,
 #'     UserVolumeSizeGib = 123,
-#'     ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'     ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"|"GRAPHICS_G6_XLARGE"|"GRAPHICS_G6_2XLARGE"|"GRAPHICS_G6_4XLARGE"|"GRAPHICS_G6_8XLARGE"|"GRAPHICS_G6_16XLARGE"|"GRAPHICS_GR6_4XLARGE"|"GRAPHICS_GR6_8XLARGE"|"GRAPHICS_G6F_LARGE"|"GRAPHICS_G6F_XLARGE"|"GRAPHICS_G6F_2XLARGE"|"GRAPHICS_G6F_4XLARGE"|"GRAPHICS_GR6F_4XLARGE",
 #'     Protocols = list(
 #'       "PCOIP"|"WSP"
 #'     ),
-#'     OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8",
+#'     OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"WINDOWS_SERVER_2025"|"RHEL_8"|"ROCKY_8",
 #'     GlobalAccelerator = list(
 #'       Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
 #'       PreferredProtocol = "TCP"|"NONE"|"INHERITED"
@@ -5937,7 +5939,7 @@ workspaces_stop_workspaces_pool <- function(PoolId) {
 #' 
 #' Terminating a WorkSpace is a permanent action and cannot be undone. The
 #' user's data is destroyed. If you need to archive any user data, contact
-#' Amazon Web ServicesSupport before terminating the WorkSpace.
+#' Amazon Web Services Support before terminating the WorkSpace.
 #' 
 #' You can terminate a WorkSpace that is in any state except `SUSPENDED`.
 #' 
@@ -6353,7 +6355,7 @@ workspaces_update_workspace_bundle <- function(BundleId = NULL, ImageId = NULL) 
 #' Region.
 #' 
 #' In Amazon Web Services GovCloud (US), to copy images to and from other
-#' Regions, contact Amazon Web ServicesSupport.
+#' Regions, contact Amazon Web Services Support.
 #' 
 #' For more information about sharing images, see [Share or Unshare a
 #' Custom WorkSpaces
@@ -6365,8 +6367,8 @@ workspaces_update_workspace_bundle <- function(BundleId = NULL, ImageId = NULL) 
 #' -   Sharing Bring Your Own License (BYOL) images across Amazon Web
 #'     Services accounts isn't supported at this time in Amazon Web
 #'     Services GovCloud (US). To share BYOL images across accounts in
-#'     Amazon Web Services GovCloud (US), contact Amazon Web
-#'     ServicesSupport.
+#'     Amazon Web Services GovCloud (US), contact Amazon Web Services
+#'     Support.
 #'
 #' @usage
 #' workspaces_update_workspace_image_permission(ImageId, AllowCopyImage,

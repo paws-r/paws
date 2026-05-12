@@ -27,8 +27,6 @@ The following is the format of the ARN:
 \item{startTime}{[required] The timestamp of the first projected metrics data point to return.}
 
 \item{endTime}{[required] The timestamp of the last projected metrics data point to return.}
-
-\item{recommendationPreferences}{}
 }
 \description{
 Returns the projected metrics of Aurora and RDS database recommendations.

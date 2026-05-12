@@ -8,9 +8,26 @@ verifiedpermissions_delete_policy_template(policyStoreId, policyTemplateId)
 }
 \arguments{
 \item{policyStoreId}{[required] Specifies the ID of the policy store that contains the policy template
-that you want to delete.}
+that you want to delete.
 
-\item{policyTemplateId}{[required] Specifies the ID of the policy template that you want to delete.}
+To specify a policy store, use its ID or alias name. When using an alias
+name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use
+\code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
+
+\item{policyTemplateId}{[required] Specifies the ID of the policy template that you want to delete.
+
+You can use the policy template name in place of the policy template ID.
+When using a name, prefix it with \verb{name/}. For example:
+\itemize{
+\item ID: \code{PTEXAMPLEabcdefg111111}
+\item Name: \code{name/example-policy-template}
+}}
 }
 \description{
 Deletes the specified policy template from the policy store.

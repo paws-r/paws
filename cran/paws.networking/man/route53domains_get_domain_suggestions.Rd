@@ -32,7 +32,8 @@ domains. To determine whether the TLD that you want to use supports
 internationalized domain names, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}.}
 
 \item{SuggestionCount}{[required] The number of suggested domain names that you want Route 53 to return.
-Specify a value between 1 and 50.}
+Specify a value between 1 and 50. Note that fewer than the requested
+number might be returned.}
 
 \item{OnlyAvailable}{[required] If \code{OnlyAvailable} is \code{true}, Route 53 returns only domain names that
 are available. If \code{OnlyAvailable} is \code{false}, Route 53 returns domain

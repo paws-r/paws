@@ -23,7 +23,7 @@ up to 30 days in the future.}
 \item{workspaceId}{[required] The ID of the workspace the service account resides within.}
 }
 \description{
-Creates a token that can be used to authenticate and authorize Grafana HTTP API operations for the given \href{https://docs.aws.amazon.com/grafana/latest/userguide/service-accounts.html}{workspace service account}. The service account acts as a user for the API operations, and defines the permissions that are used by the API.
+Creates a token that can be used to authenticate and authorize Grafana HTTP API operations for the given \href{https://docs.aws.amazon.com/grafana/latest/userguide/}{workspace service account}. The service account acts as a user for the API operations, and defines the permissions that are used by the API.
 
 See \url{https://www.paws-r-sdk.com/docs/managedgrafana_create_workspace_service_account_token/} for full documentation.
 }

@@ -2168,13 +2168,15 @@ backup_describe_framework <- function(FrameworkName) {
 }
 .backup$operations$describe_framework <- backup_describe_framework
 
-#' Describes whether the Amazon Web Services account is opted in to
-#' cross-account backup
+#' Describes whether the Amazon Web Services account has enabled different
+#' cross-account management options, including cross-account backup,
+#' multi-party approval, and delegated administrator
 #'
 #' @description
-#' Describes whether the Amazon Web Services account is opted in to
-#' cross-account backup. Returns an error if the account is not a member of
-#' an Organizations organization. Example:
+#' Describes whether the Amazon Web Services account has enabled different
+#' cross-account management options, including cross-account backup,
+#' multi-party approval, and delegated administrator. Returns an error if
+#' the account is not a member of an Organizations organization. Example:
 #' `describe-global-settings --region us-west-2`
 #'
 #' @usage
@@ -3566,7 +3568,7 @@ backup_get_backup_vault_access_policy <- function(BackupVaultName) {
 #'   BackupVaultArn = "string",
 #'   SNSTopicArn = "string",
 #'   BackupVaultEvents = list(
-#'     "BACKUP_JOB_STARTED"|"BACKUP_JOB_COMPLETED"|"BACKUP_JOB_SUCCESSFUL"|"BACKUP_JOB_FAILED"|"BACKUP_JOB_EXPIRED"|"RESTORE_JOB_STARTED"|"RESTORE_JOB_COMPLETED"|"RESTORE_JOB_SUCCESSFUL"|"RESTORE_JOB_FAILED"|"COPY_JOB_STARTED"|"COPY_JOB_SUCCESSFUL"|"COPY_JOB_FAILED"|"RECOVERY_POINT_MODIFIED"|"BACKUP_PLAN_CREATED"|"BACKUP_PLAN_MODIFIED"|"S3_BACKUP_OBJECT_FAILED"|"S3_RESTORE_OBJECT_FAILED"|"CONTINUOUS_BACKUP_INTERRUPTED"|"RECOVERY_POINT_INDEX_COMPLETED"|"RECOVERY_POINT_INDEX_DELETED"|"RECOVERY_POINT_INDEXING_FAILED"
+#'     "BACKUP_JOB_STARTED"|"BACKUP_JOB_COMPLETED"|"BACKUP_JOB_SUCCESSFUL"|"BACKUP_JOB_FAILED"|"BACKUP_JOB_EXPIRED"|"RESTORE_JOB_STARTED"|"RESTORE_JOB_COMPLETED"|"RESTORE_JOB_SUCCESSFUL"|"RESTORE_JOB_FAILED"|"COPY_JOB_STARTED"|"COPY_JOB_SUCCESSFUL"|"COPY_JOB_FAILED"|"RECOVERY_POINT_MODIFIED"|"BACKUP_PLAN_CREATED"|"BACKUP_PLAN_MODIFIED"|"S3_BACKUP_OBJECT_FAILED"|"S3_RESTORE_OBJECT_FAILED"|"CONTINUOUS_BACKUP_INTERRUPTED"|"RECOVERY_POINT_INDEX_COMPLETED"|"RECOVERY_POINT_INDEX_DELETED"|"RECOVERY_POINT_INDEXING_FAILED"|"EKS_RESTORE_OBJECT_FAILED"|"EKS_RESTORE_OBJECT_SKIPPED"|"EKS_BACKUP_OBJECT_FAILED"
 #'   )
 #' )
 #' ```
@@ -4424,6 +4426,8 @@ backup_list_backup_job_summaries <- function(AccountId = NULL, State = NULL, Res
 #' 
 #' -   `EFS` for Amazon Elastic File System
 #' 
+#' -   `EKS` for Amazon Elastic Kubernetes Service
+#' 
 #' -   `FSx` for Amazon FSx
 #' 
 #' -   `Neptune` for Amazon Neptune
@@ -5136,6 +5140,8 @@ backup_list_copy_job_summaries <- function(AccountId = NULL, State = NULL, Resou
 #' 
 #' -   `EFS` for Amazon Elastic File System
 #' 
+#' -   `EKS` for Amazon Elastic Kubernetes Service
+#' 
 #' -   `FSx` for Amazon FSx
 #' 
 #' -   `Neptune` for Amazon Neptune
@@ -5724,6 +5730,8 @@ backup_list_protected_resources_by_backup_vault <- function(BackupVaultName, Bac
 #' -   `EC2` for Amazon Elastic Compute Cloud
 #' 
 #' -   `EFS` for Amazon Elastic File System
+#' 
+#' -   `EKS` for Amazon Elastic Kubernetes Service
 #' 
 #' -   `FSx` for Amazon FSx
 #' 
@@ -6478,6 +6486,8 @@ backup_list_restore_job_summaries <- function(AccountId = NULL, State = NULL, Re
 #' -   `EC2` for Amazon Elastic Compute Cloud
 #' 
 #' -   `EFS` for Amazon Elastic File System
+#' 
+#' -   `EKS` for Amazon Elastic Kubernetes Service
 #' 
 #' -   `FSx` for Amazon FSx
 #' 
@@ -7385,6 +7395,9 @@ backup_put_backup_vault_access_policy <- function(BackupVaultName, Policy = NULL
 #' effect and becomes immutable. Therefore, you must set
 #' `ChangeableForDays` to 3 or greater.
 #' 
+#' The maximum value you can specify is 36,500 days (approximately 100
+#' years).
+#' 
 #' Before the lock date, you can delete Vault Lock from the vault using
 #' [`delete_backup_vault_lock_configuration`][backup_delete_backup_vault_lock_configuration]
 #' or change the Vault Lock configuration using
@@ -7467,7 +7480,7 @@ backup_put_backup_vault_lock_configuration <- function(BackupVaultName, MinReten
 #'   BackupVaultName = "string",
 #'   SNSTopicArn = "string",
 #'   BackupVaultEvents = list(
-#'     "BACKUP_JOB_STARTED"|"BACKUP_JOB_COMPLETED"|"BACKUP_JOB_SUCCESSFUL"|"BACKUP_JOB_FAILED"|"BACKUP_JOB_EXPIRED"|"RESTORE_JOB_STARTED"|"RESTORE_JOB_COMPLETED"|"RESTORE_JOB_SUCCESSFUL"|"RESTORE_JOB_FAILED"|"COPY_JOB_STARTED"|"COPY_JOB_SUCCESSFUL"|"COPY_JOB_FAILED"|"RECOVERY_POINT_MODIFIED"|"BACKUP_PLAN_CREATED"|"BACKUP_PLAN_MODIFIED"|"S3_BACKUP_OBJECT_FAILED"|"S3_RESTORE_OBJECT_FAILED"|"CONTINUOUS_BACKUP_INTERRUPTED"|"RECOVERY_POINT_INDEX_COMPLETED"|"RECOVERY_POINT_INDEX_DELETED"|"RECOVERY_POINT_INDEXING_FAILED"
+#'     "BACKUP_JOB_STARTED"|"BACKUP_JOB_COMPLETED"|"BACKUP_JOB_SUCCESSFUL"|"BACKUP_JOB_FAILED"|"BACKUP_JOB_EXPIRED"|"RESTORE_JOB_STARTED"|"RESTORE_JOB_COMPLETED"|"RESTORE_JOB_SUCCESSFUL"|"RESTORE_JOB_FAILED"|"COPY_JOB_STARTED"|"COPY_JOB_SUCCESSFUL"|"COPY_JOB_FAILED"|"RECOVERY_POINT_MODIFIED"|"BACKUP_PLAN_CREATED"|"BACKUP_PLAN_MODIFIED"|"S3_BACKUP_OBJECT_FAILED"|"S3_RESTORE_OBJECT_FAILED"|"CONTINUOUS_BACKUP_INTERRUPTED"|"RECOVERY_POINT_INDEX_COMPLETED"|"RECOVERY_POINT_INDEX_DELETED"|"RECOVERY_POINT_INDEXING_FAILED"|"EKS_RESTORE_OBJECT_FAILED"|"EKS_RESTORE_OBJECT_SKIPPED"|"EKS_BACKUP_OBJECT_FAILED"
 #'   )
 #' )
 #' ```
@@ -7942,6 +7955,9 @@ backup_start_report_job <- function(ReportPlanName, IdempotencyToken = NULL) {
 #'     EFS](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-efs.html#efs-restore-cli)
 #' 
 #' -   [Metadata for Amazon
+#'     EKS](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-eks.html#eks-restore-backup-section)
+#' 
+#' -   [Metadata for Amazon
 #'     FSx](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-fsx.html#fsx-restore-cli)
 #' 
 #' -   [Metadata for Amazon
@@ -7988,6 +8004,8 @@ backup_start_report_job <- function(ReportPlanName, IdempotencyToken = NULL) {
 #' -   `EC2` - Amazon Elastic Compute Cloud
 #' 
 #' -   `EFS` - Amazon Elastic File System
+#' 
+#' -   `EKS` - Amazon Elastic Kubernetes Service
 #' 
 #' -   `FSx` - Amazon FSx
 #' 
@@ -8546,13 +8564,15 @@ backup_update_framework <- function(FrameworkName, FrameworkDescription = NULL, 
 }
 .backup$operations$update_framework <- backup_update_framework
 
-#' Updates whether the Amazon Web Services account is opted in to
-#' cross-account backup
+#' Updates whether the Amazon Web Services account has enabled different
+#' cross-account management options, including cross-account backup,
+#' multi-party approval, and delegated administrator
 #'
 #' @description
-#' Updates whether the Amazon Web Services account is opted in to
-#' cross-account backup. Returns an error if the account is not an
-#' Organizations management account. Use the
+#' Updates whether the Amazon Web Services account has enabled different
+#' cross-account management options, including cross-account backup,
+#' multi-party approval, and delegated administrator. Returns an error if
+#' the account is not an Organizations management account. Use the
 #' [`describe_global_settings`][backup_describe_global_settings] API to
 #' determine the current settings.
 #'
@@ -8561,17 +8581,17 @@ backup_update_framework <- function(FrameworkName, FrameworkDescription = NULL, 
 #'
 #' @param GlobalSettings Inputs can include:
 #' 
-#' A value for `isCrossAccountBackupEnabled` and a Region. Example:
-#' `update-global-settings --global-settings isCrossAccountBackupEnabled=false --region us-west-2`.
-#' 
-#' A value for Multi-party approval, styled as "Mpa": `isMpaEnabled`.
-#' Values can be true or false. Example:
-#' `update-global-settings --global-settings isMpaEnabled=false --region us-west-2`.
-#' 
-#' A value for Backup Service-Linked Role creation, styled
-#' as`isDelegatedAdministratorEnabled`. Values can be true or false.
+#' A value for `isCrossAccountBackupEnabled`. Values can be true or false.
 #' Example:
-#' `update-global-settings --global-settings isDelegatedAdministratorEnabled=false --region us-west-2`.
+#' `update-global-settings --global-settings isCrossAccountBackupEnabled=false`.
+#' 
+#' A value for Multi-party approval, styled as `isMpaEnabled`. Values can
+#' be true or false. Example:
+#' `update-global-settings --global-settings isMpaEnabled=false`.
+#' 
+#' A value for Backup Service-Linked Role creation, styled as
+#' `isDelegatedAdministratorEnabled`. Values can be true or false. Example:
+#' `update-global-settings --global-settings isDelegatedAdministratorEnabled=false`.
 #'
 #' @return
 #' An empty list.

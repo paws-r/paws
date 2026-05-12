@@ -14,7 +14,7 @@ NULL
 #' address) for the specified account.
 #'
 #' @usage
-#' account_accept_primary_email_update(AccountId, Otp, PrimaryEmail)
+#' account_accept_primary_email_update(AccountId, PrimaryEmail, Otp)
 #'
 #' @param AccountId &#91;required&#93; Specifies the 12-digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation. To use
@@ -35,11 +35,11 @@ NULL
 #' delegated administrator account of an organization for a member account.
 #' 
 #' The management account can't specify its own `AccountId`.
-#' @param Otp &#91;required&#93; The OTP code sent to the `PrimaryEmail` specified on the
-#' [`start_primary_email_update`][account_start_primary_email_update] API
-#' call.
 #' @param PrimaryEmail &#91;required&#93; The new primary email address for use with the specified account. This
 #' must match the `PrimaryEmail` from the
+#' [`start_primary_email_update`][account_start_primary_email_update] API
+#' call.
+#' @param Otp &#91;required&#93; The OTP code sent to the `PrimaryEmail` specified on the
 #' [`start_primary_email_update`][account_start_primary_email_update] API
 #' call.
 #'
@@ -55,8 +55,8 @@ NULL
 #' ```
 #' svc$accept_primary_email_update(
 #'   AccountId = "string",
-#'   Otp = "string",
-#'   PrimaryEmail = "string"
+#'   PrimaryEmail = "string",
+#'   Otp = "string"
 #' )
 #' ```
 #'
@@ -65,7 +65,7 @@ NULL
 #' @rdname account_accept_primary_email_update
 #'
 #' @aliases account_accept_primary_email_update
-account_accept_primary_email_update <- function(AccountId, Otp, PrimaryEmail) {
+account_accept_primary_email_update <- function(AccountId, PrimaryEmail, Otp) {
   op <- new_operation(
     name = "AcceptPrimaryEmailUpdate",
     http_method = "POST",
@@ -74,7 +74,7 @@ account_accept_primary_email_update <- function(AccountId, Otp, PrimaryEmail) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .account$accept_primary_email_update_input(AccountId = AccountId, Otp = Otp, PrimaryEmail = PrimaryEmail)
+  input <- .account$accept_primary_email_update_input(AccountId = AccountId, PrimaryEmail = PrimaryEmail, Otp = Otp)
   output <- .account$accept_primary_email_update_output()
   config <- get_config()
   svc <- .account$service(config, op)
@@ -103,8 +103,9 @@ account_accept_primary_email_update <- function(AccountId, Otp, PrimaryEmail) {
 #' Management](https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html).
 #'
 #' @usage
-#' account_delete_alternate_contact(AccountId, AlternateContactType)
+#' account_delete_alternate_contact(AlternateContactType, AccountId)
 #'
+#' @param AlternateContactType &#91;required&#93; Specifies which of the alternate contacts to delete.
 #' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation.
 #' 
@@ -132,7 +133,6 @@ account_accept_primary_email_update <- function(AccountId, Otp, PrimaryEmail) {
 #' organization, then don't specify this parameter, and call the operation
 #' using an identity belonging to the account whose contacts you wish to
 #' retrieve or modify.
-#' @param AlternateContactType &#91;required&#93; Specifies which of the alternate contacts to delete.
 #'
 #' @return
 #' An empty list.
@@ -140,8 +140,8 @@ account_accept_primary_email_update <- function(AccountId, Otp, PrimaryEmail) {
 #' @section Request syntax:
 #' ```
 #' svc$delete_alternate_contact(
-#'   AccountId = "string",
-#'   AlternateContactType = "BILLING"|"OPERATIONS"|"SECURITY"
+#'   AlternateContactType = "BILLING"|"OPERATIONS"|"SECURITY",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -150,7 +150,7 @@ account_accept_primary_email_update <- function(AccountId, Otp, PrimaryEmail) {
 #' @rdname account_delete_alternate_contact
 #'
 #' @aliases account_delete_alternate_contact
-account_delete_alternate_contact <- function(AccountId = NULL, AlternateContactType) {
+account_delete_alternate_contact <- function(AlternateContactType, AccountId = NULL) {
   op <- new_operation(
     name = "DeleteAlternateContact",
     http_method = "POST",
@@ -159,7 +159,7 @@ account_delete_alternate_contact <- function(AccountId = NULL, AlternateContactT
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .account$delete_alternate_contact_input(AccountId = AccountId, AlternateContactType = AlternateContactType)
+  input <- .account$delete_alternate_contact_input(AlternateContactType = AlternateContactType, AccountId = AccountId)
   output <- .account$delete_alternate_contact_output()
   config <- get_config()
   svc <- .account$service(config, op)
@@ -324,13 +324,13 @@ account_enable_region <- function(AccountId = NULL, RegionName) {
 .account$operations$enable_region <- account_enable_region
 
 #' Retrieves information about the specified account including its account
-#' name, account ID, and account creation date and time
+#' name, account ID, account creation date and time, and account state
 #'
 #' @description
 #' Retrieves information about the specified account including its account
-#' name, account ID, and account creation date and time. To use this API,
-#' an IAM user or role must have the `account:GetAccountInformation` IAM
-#' permission.
+#' name, account ID, account creation date and time, and account state. To
+#' use this API, an IAM user or role must have the
+#' `account:GetAccountInformation` IAM permission.
 #'
 #' @usage
 #' account_get_account_information(AccountId)
@@ -367,11 +367,12 @@ account_enable_region <- function(AccountId = NULL, RegionName) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   AccountId = "string",
+#'   AccountName = "string",
 #'   AccountCreatedDate = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   AccountId = "string",
-#'   AccountName = "string"
+#'   AccountState = "PENDING_ACTIVATION"|"ACTIVE"|"SUSPENDED"|"CLOSED"
 #' )
 #' ```
 #'
@@ -425,8 +426,9 @@ account_get_account_information <- function(AccountId = NULL) {
 #' Management](https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html).
 #'
 #' @usage
-#' account_get_alternate_contact(AccountId, AlternateContactType)
+#' account_get_alternate_contact(AlternateContactType, AccountId)
 #'
+#' @param AlternateContactType &#91;required&#93; Specifies which alternate contact you want to retrieve.
 #' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation.
 #' 
@@ -454,18 +456,17 @@ account_get_account_information <- function(AccountId = NULL) {
 #' organization, then don't specify this parameter, and call the operation
 #' using an identity belonging to the account whose contacts you wish to
 #' retrieve or modify.
-#' @param AlternateContactType &#91;required&#93; Specifies which alternate contact you want to retrieve.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   AlternateContact = list(
-#'     AlternateContactType = "BILLING"|"OPERATIONS"|"SECURITY",
-#'     EmailAddress = "string",
 #'     Name = "string",
+#'     Title = "string",
+#'     EmailAddress = "string",
 #'     PhoneNumber = "string",
-#'     Title = "string"
+#'     AlternateContactType = "BILLING"|"OPERATIONS"|"SECURITY"
 #'   )
 #' )
 #' ```
@@ -473,8 +474,8 @@ account_get_account_information <- function(AccountId = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$get_alternate_contact(
-#'   AccountId = "string",
-#'   AlternateContactType = "BILLING"|"OPERATIONS"|"SECURITY"
+#'   AlternateContactType = "BILLING"|"OPERATIONS"|"SECURITY",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -483,7 +484,7 @@ account_get_account_information <- function(AccountId = NULL) {
 #' @rdname account_get_alternate_contact
 #'
 #' @aliases account_get_alternate_contact
-account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType) {
+account_get_alternate_contact <- function(AlternateContactType, AccountId = NULL) {
   op <- new_operation(
     name = "GetAlternateContact",
     http_method = "POST",
@@ -492,7 +493,7 @@ account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .account$get_alternate_contact_input(AccountId = AccountId, AlternateContactType = AlternateContactType)
+  input <- .account$get_alternate_contact_input(AlternateContactType = AlternateContactType, AccountId = AccountId)
   output <- .account$get_alternate_contact_output()
   config <- get_config()
   svc <- .account$service(config, op)
@@ -547,17 +548,17 @@ account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' ```
 #' list(
 #'   ContactInformation = list(
+#'     FullName = "string",
 #'     AddressLine1 = "string",
 #'     AddressLine2 = "string",
 #'     AddressLine3 = "string",
 #'     City = "string",
-#'     CompanyName = "string",
-#'     CountryCode = "string",
-#'     DistrictOrCounty = "string",
-#'     FullName = "string",
-#'     PhoneNumber = "string",
-#'     PostalCode = "string",
 #'     StateOrRegion = "string",
+#'     DistrictOrCounty = "string",
+#'     PostalCode = "string",
+#'     CountryCode = "string",
+#'     PhoneNumber = "string",
+#'     CompanyName = "string",
 #'     WebsiteUrl = "string"
 #'   )
 #' )
@@ -639,8 +640,8 @@ account_get_contact_information <- function(AccountId = NULL) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   AccountState = "PENDING_ACTIVATION"|"ACTIVE"|"SUSPENDED"|"CLOSED",
-#'   GovCloudAccountId = "string"
+#'   GovCloudAccountId = "string",
+#'   AccountState = "PENDING_ACTIVATION"|"ACTIVE"|"SUSPENDED"|"CLOSED"
 #' )
 #' ```
 #'
@@ -932,8 +933,9 @@ account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken 
 #' principals must have the `account:PutAccountName` IAM permission.
 #'
 #' @usage
-#' account_put_account_name(AccountId, AccountName)
+#' account_put_account_name(AccountName, AccountId)
 #'
+#' @param AccountName &#91;required&#93; The name of the account.
 #' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation.
 #' 
@@ -961,7 +963,6 @@ account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken 
 #' organization, then don't specify this parameter, and call the operation
 #' using an identity belonging to the account whose contacts you wish to
 #' retrieve or modify.
-#' @param AccountName &#91;required&#93; The name of the account.
 #'
 #' @return
 #' An empty list.
@@ -969,8 +970,8 @@ account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken 
 #' @section Request syntax:
 #' ```
 #' svc$put_account_name(
-#'   AccountId = "string",
-#'   AccountName = "string"
+#'   AccountName = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -979,7 +980,7 @@ account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken 
 #' @rdname account_put_account_name
 #'
 #' @aliases account_put_account_name
-account_put_account_name <- function(AccountId = NULL, AccountName) {
+account_put_account_name <- function(AccountName, AccountId = NULL) {
   op <- new_operation(
     name = "PutAccountName",
     http_method = "POST",
@@ -988,7 +989,7 @@ account_put_account_name <- function(AccountId = NULL, AccountName) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .account$put_account_name_input(AccountId = AccountId, AccountName = AccountName)
+  input <- .account$put_account_name_input(AccountName = AccountName, AccountId = AccountId)
   output <- .account$put_account_name_output()
   config <- get_config()
   svc <- .account$service(config, op)
@@ -1017,9 +1018,14 @@ account_put_account_name <- function(AccountId = NULL, AccountName) {
 #' Management](https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html).
 #'
 #' @usage
-#' account_put_alternate_contact(AccountId, AlternateContactType,
-#'   EmailAddress, Name, PhoneNumber, Title)
+#' account_put_alternate_contact(Name, Title, EmailAddress, PhoneNumber,
+#'   AlternateContactType, AccountId)
 #'
+#' @param Name &#91;required&#93; Specifies a name for the alternate contact.
+#' @param Title &#91;required&#93; Specifies a title for the alternate contact.
+#' @param EmailAddress &#91;required&#93; Specifies an email address for the alternate contact.
+#' @param PhoneNumber &#91;required&#93; Specifies a phone number for the alternate contact.
+#' @param AlternateContactType &#91;required&#93; Specifies which alternate contact you want to create or update.
 #' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation.
 #' 
@@ -1047,11 +1053,6 @@ account_put_account_name <- function(AccountId = NULL, AccountName) {
 #' organization, then don't specify this parameter, and call the operation
 #' using an identity belonging to the account whose contacts you wish to
 #' retrieve or modify.
-#' @param AlternateContactType &#91;required&#93; Specifies which alternate contact you want to create or update.
-#' @param EmailAddress &#91;required&#93; Specifies an email address for the alternate contact.
-#' @param Name &#91;required&#93; Specifies a name for the alternate contact.
-#' @param PhoneNumber &#91;required&#93; Specifies a phone number for the alternate contact.
-#' @param Title &#91;required&#93; Specifies a title for the alternate contact.
 #'
 #' @return
 #' An empty list.
@@ -1059,12 +1060,12 @@ account_put_account_name <- function(AccountId = NULL, AccountName) {
 #' @section Request syntax:
 #' ```
 #' svc$put_alternate_contact(
-#'   AccountId = "string",
-#'   AlternateContactType = "BILLING"|"OPERATIONS"|"SECURITY",
-#'   EmailAddress = "string",
 #'   Name = "string",
+#'   Title = "string",
+#'   EmailAddress = "string",
 #'   PhoneNumber = "string",
-#'   Title = "string"
+#'   AlternateContactType = "BILLING"|"OPERATIONS"|"SECURITY",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -1073,7 +1074,7 @@ account_put_account_name <- function(AccountId = NULL, AccountName) {
 #' @rdname account_put_alternate_contact
 #'
 #' @aliases account_put_alternate_contact
-account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType, EmailAddress, Name, PhoneNumber, Title) {
+account_put_alternate_contact <- function(Name, Title, EmailAddress, PhoneNumber, AlternateContactType, AccountId = NULL) {
   op <- new_operation(
     name = "PutAlternateContact",
     http_method = "POST",
@@ -1082,7 +1083,7 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .account$put_alternate_contact_input(AccountId = AccountId, AlternateContactType = AlternateContactType, EmailAddress = EmailAddress, Name = Name, PhoneNumber = PhoneNumber, Title = Title)
+  input <- .account$put_alternate_contact_input(Name = Name, Title = Title, EmailAddress = EmailAddress, PhoneNumber = PhoneNumber, AlternateContactType = AlternateContactType, AccountId = AccountId)
   output <- .account$put_alternate_contact_output()
   config <- get_config()
   svc <- .account$service(config, op)
@@ -1104,8 +1105,10 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' account](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact-primary.html).
 #'
 #' @usage
-#' account_put_contact_information(AccountId, ContactInformation)
+#' account_put_contact_information(ContactInformation, AccountId)
 #'
+#' @param ContactInformation &#91;required&#93; Contains the details of the primary contact information associated with
+#' an Amazon Web Services account.
 #' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation. If you
 #' don't specify this parameter, it defaults to the Amazon Web Services
@@ -1131,8 +1134,6 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' organization, don't specify this parameter. Instead, call the operation
 #' using an identity belonging to the account whose contacts you wish to
 #' retrieve or modify.
-#' @param ContactInformation &#91;required&#93; Contains the details of the primary contact information associated with
-#' an Amazon Web Services account.
 #'
 #' @return
 #' An empty list.
@@ -1140,21 +1141,21 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' @section Request syntax:
 #' ```
 #' svc$put_contact_information(
-#'   AccountId = "string",
 #'   ContactInformation = list(
+#'     FullName = "string",
 #'     AddressLine1 = "string",
 #'     AddressLine2 = "string",
 #'     AddressLine3 = "string",
 #'     City = "string",
-#'     CompanyName = "string",
-#'     CountryCode = "string",
-#'     DistrictOrCounty = "string",
-#'     FullName = "string",
-#'     PhoneNumber = "string",
-#'     PostalCode = "string",
 #'     StateOrRegion = "string",
+#'     DistrictOrCounty = "string",
+#'     PostalCode = "string",
+#'     CountryCode = "string",
+#'     PhoneNumber = "string",
+#'     CompanyName = "string",
 #'     WebsiteUrl = "string"
-#'   )
+#'   ),
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -1163,7 +1164,7 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' @rdname account_put_contact_information
 #'
 #' @aliases account_put_contact_information
-account_put_contact_information <- function(AccountId = NULL, ContactInformation) {
+account_put_contact_information <- function(ContactInformation, AccountId = NULL) {
   op <- new_operation(
     name = "PutContactInformation",
     http_method = "POST",
@@ -1172,7 +1173,7 @@ account_put_contact_information <- function(AccountId = NULL, ContactInformation
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .account$put_contact_information_input(AccountId = AccountId, ContactInformation = ContactInformation)
+  input <- .account$put_contact_information_input(ContactInformation = ContactInformation, AccountId = AccountId)
   output <- .account$put_contact_information_output()
   config <- get_config()
   svc <- .account$service(config, op)

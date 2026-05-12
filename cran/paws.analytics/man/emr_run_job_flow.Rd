@@ -13,6 +13,7 @@ emr_run_job_flow(
   ReleaseLabel = NULL,
   Instances,
   Steps = NULL,
+  StepExecutionRoleArn = NULL,
   BootstrapActions = NULL,
   SupportedProducts = NULL,
   NewSupportedProducts = NULL,
@@ -68,6 +69,19 @@ versions use \code{AmiVersion}.}
 \item{Instances}{[required] A specification of the number and type of Amazon EC2 instances.}
 
 \item{Steps}{A list of steps to run.}
+
+\item{StepExecutionRoleArn}{The Amazon Resource Name (ARN) of the runtime role for steps specified
+in the RunJobFlow request. The runtime role can be a cross-account IAM
+role. The runtime role ARN is a combination of account ID, role name,
+and role type using the following format:
+\code{arn:partition:iam::account-id:role/role-name}.
+
+For example, \verb{arn:aws:iam::1234567890:role/ReadOnly} is a correctly
+formatted runtime role ARN.
+
+This parameter applies only to steps included in the \code{Steps} parameter
+of this RunJobFlow request. It does not apply to steps added later to
+the cluster.}
 
 \item{BootstrapActions}{A list of bootstrap actions to run before Hadoop starts on the cluster
 nodes.}
@@ -200,8 +214,6 @@ default value is \code{1}. The maximum value is \code{256}.}
 \item{ManagedScalingPolicy}{The specified managed scaling policy for an Amazon EMR cluster.}
 
 \item{PlacementGroupConfigs}{The specified placement group configuration for an Amazon EMR cluster.}
-
-\item{AutoTerminationPolicy}{}
 
 \item{OSReleaseLabel}{Specifies a particular Amazon Linux release for all nodes in a cluster
 launch RunJobFlow request. If a release is not specified, Amazon EMR

@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_describe_products}
 \alias{securityhub_describe_products}
-\title{Returns information about product integrations in Security Hub}
+\title{Returns information about product integrations in Security Hub CSPM}
 \usage{
 securityhub_describe_products(
   NextToken = NULL,
@@ -24,7 +24,7 @@ response.}
 \item{ProductArn}{The ARN of the integration to return.}
 }
 \description{
-Returns information about product integrations in Security Hub.
+Returns information about product integrations in Security Hub CSPM.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_describe_products/} for full documentation.
 }

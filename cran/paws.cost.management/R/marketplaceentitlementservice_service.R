@@ -142,6 +142,6 @@ marketplaceentitlementservice <- function(config = list(), credentials = list(),
 )
 
 .marketplaceentitlementservice$service <- function(config = list(), op = NULL) {
-  handlers <- new_handlers("jsonrpc", "v4")
+  handlers <- new_handlers("smithyrpcv2cbor", "v4")
   new_service(.marketplaceentitlementservice$metadata, handlers, config, op)
 }

@@ -6,6 +6,7 @@
 \usage{
 kinesis_update_stream_mode(
   StreamARN,
+  StreamId = NULL,
   StreamModeDetails,
   WarmThroughputMiBps = NULL
 )
@@ -13,6 +14,8 @@ kinesis_update_stream_mode(
 \arguments{
 \item{StreamARN}{[required] Specifies the ARN of the data stream whose capacity mode you want to
 update.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 
 \item{StreamModeDetails}{[required] Specifies the capacity mode to which you want to set your data stream.
 Currently, in Kinesis Data Streams, you can choose between an

@@ -7,9 +7,9 @@
 datazone_search_group_profiles(
   domainIdentifier,
   groupType,
+  searchText = NULL,
   maxResults = NULL,
-  nextToken = NULL,
-  searchText = NULL
+  nextToken = NULL
 )
 }
 \arguments{
@@ -17,6 +17,8 @@ datazone_search_group_profiles(
 group profiles.}
 
 \item{groupType}{[required] The group type for which to search.}
+
+\item{searchText}{Specifies the text for which to search.}
 
 \item{maxResults}{The maximum number of results to return in a single call to
 \code{\link[=datazone_search_group_profiles]{search_group_profiles}}. When the
@@ -33,8 +35,6 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{NextToken} value in a subsequent call to
 \code{\link[=datazone_search_group_profiles]{search_group_profiles}} to list the
 next set of results.}
-
-\item{searchText}{Specifies the text for which to search.}
 }
 \description{
 Searches group profiles in Amazon DataZone.

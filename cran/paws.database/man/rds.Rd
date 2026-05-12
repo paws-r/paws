@@ -229,6 +229,7 @@ the user guide.
 \link[=rds_describe_pending_maintenance_actions]{describe_pending_maintenance_actions} \tab Returns a list of resources (for example, DB instances) that have at least one pending maintenance action\cr
 \link[=rds_describe_reserved_db_instances]{describe_reserved_db_instances} \tab Returns information about reserved DB instances for this account, or about a specified reserved DB instance\cr
 \link[=rds_describe_reserved_db_instances_offerings]{describe_reserved_db_instances_offerings} \tab Lists available reserved DB instance offerings\cr
+\link[=rds_describe_serverless_v2_platform_versions]{describe_serverless_v2_platform_versions} \tab Describes the properties of specific platform versions for Aurora Serverless v2\cr
 \link[=rds_describe_source_regions]{describe_source_regions} \tab Returns a list of the source Amazon Web Services Regions where the current Amazon Web Services Region can create a read replica, copy a DB snapshot from, or replicate automated backups from\cr
 \link[=rds_describe_tenant_databases]{describe_tenant_databases} \tab Describes the tenant databases in a DB instance that uses the multi-tenant configuration\cr
 \link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications} \tab You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance\cr

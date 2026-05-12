@@ -42,8 +42,8 @@ lexicon is the same as the language of the voice. For information about
 storing lexicons, see \code{\link[=polly_put_lexicon]{put_lexicon}}.}
 
 \item{OutputFormat}{[required] The format in which the returned output will be encoded. For audio
-stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this
-will be json.
+stream, this will be mp3, ogg_vorbis, ogg_opus, mu-law, a-law or pcm.
+For speech marks, this will be json.
 
 When pcm is used, the content returned is audio/pcm in a signed 16-bit,
 1 channel (mono), little-endian format.}
@@ -57,7 +57,11 @@ value for long-form voices is "24000". The default value for generative
 voices is "24000".
 
 Valid values for pcm are "8000" and "16000" The default value is
-"16000".}
+"16000".
+
+Valid value for ogg_opus is "48000".
+
+Valid value for mu-law and a-law is "8000".}
 
 \item{SpeechMarkTypes}{The type of speech marks returned for the input text.}
 

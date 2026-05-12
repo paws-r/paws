@@ -7,10 +7,10 @@
 datazone_list_job_runs(
   domainIdentifier,
   jobIdentifier,
-  maxResults = NULL,
-  nextToken = NULL,
+  status = NULL,
   sortOrder = NULL,
-  status = NULL
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
@@ -18,11 +18,9 @@ datazone_list_job_runs(
 
 \item{jobIdentifier}{[required] The ID of the job run.}
 
-\item{maxResults}{The maximum number of job runs to return in a single call to
-ListJobRuns. When the number of job runs to be listed is greater than
-the value of MaxResults, the response contains a NextToken value that
-you can use in a subsequent call to ListJobRuns to list the next set of
-job runs.}
+\item{status}{The status of a job run.}
+
+\item{sortOrder}{Specifies the order in which job runs are to be sorted.}
 
 \item{nextToken}{When the number of job runs is greater than the default value for the
 MaxResults parameter, or if you explicitly specify a value for
@@ -31,9 +29,11 @@ includes a pagination token named NextToken. You can specify this
 NextToken value in a subsequent call to ListJobRuns to list the next set
 of job runs.}
 
-\item{sortOrder}{Specifies the order in which job runs are to be sorted.}
-
-\item{status}{The status of a job run.}
+\item{maxResults}{The maximum number of job runs to return in a single call to
+ListJobRuns. When the number of job runs to be listed is greater than
+the value of MaxResults, the response contains a NextToken value that
+you can use in a subsequent call to ListJobRuns to list the next set of
+job runs.}
 }
 \description{
 Lists job runs.

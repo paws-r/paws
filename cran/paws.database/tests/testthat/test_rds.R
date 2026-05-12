@@ -124,6 +124,10 @@ test_that("describe_reserved_db_instances_offerings", {
   expect_error(svc$describe_reserved_db_instances_offerings(), NA)
 })
 
+test_that("describe_serverless_v2_platform_versions", {
+  expect_error(svc$describe_serverless_v2_platform_versions(), NA)
+})
+
 test_that("describe_source_regions", {
   expect_error(svc$describe_source_regions(), NA)
 })

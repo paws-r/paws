@@ -740,6 +740,30 @@ test_that("describe_scheduled_instances", {
   expect_error(svc$describe_scheduled_instances(MaxResults = 20), NA)
 })
 
+test_that("describe_secondary_interfaces", {
+  expect_error(svc$describe_secondary_interfaces(), NA)
+})
+
+test_that("describe_secondary_interfaces", {
+  expect_error(svc$describe_secondary_interfaces(MaxResults = 20), NA)
+})
+
+test_that("describe_secondary_networks", {
+  expect_error(svc$describe_secondary_networks(), NA)
+})
+
+test_that("describe_secondary_networks", {
+  expect_error(svc$describe_secondary_networks(MaxResults = 20), NA)
+})
+
+test_that("describe_secondary_subnets", {
+  expect_error(svc$describe_secondary_subnets(), NA)
+})
+
+test_that("describe_secondary_subnets", {
+  expect_error(svc$describe_secondary_subnets(MaxResults = 20), NA)
+})
+
 test_that("describe_security_group_rules", {
   expect_error(svc$describe_security_group_rules(), NA)
 })

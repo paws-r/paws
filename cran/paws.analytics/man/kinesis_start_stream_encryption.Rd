@@ -9,7 +9,8 @@ kinesis_start_stream_encryption(
   StreamName = NULL,
   EncryptionType,
   KeyId,
-  StreamARN = NULL
+  StreamARN = NULL,
+  StreamId = NULL
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ Kinesis Data Streams by specifying the alias \code{aws/kinesis}.
 }}
 
 \item{StreamARN}{The ARN of the stream.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Enables or updates server-side encryption using an Amazon Web Services KMS key for a specified stream.

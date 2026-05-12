@@ -5,23 +5,43 @@
 \title{Lists Amazon DataZone subscription requests}
 \usage{
 datazone_list_subscription_requests(
-  approverProjectId = NULL,
   domainIdentifier,
-  maxResults = NULL,
-  nextToken = NULL,
-  owningGroupId = NULL,
+  status = NULL,
+  subscribedListingId = NULL,
   owningProjectId = NULL,
+  owningIamPrincipalArn = NULL,
+  approverProjectId = NULL,
   owningUserId = NULL,
+  owningGroupId = NULL,
   sortBy = NULL,
   sortOrder = NULL,
-  status = NULL,
-  subscribedListingId = NULL
+  maxResults = NULL,
+  nextToken = NULL
 )
 }
 \arguments{
+\item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain.}
+
+\item{status}{Specifies the status of the subscription requests.
+
+This is not a required parameter, but if not specified, by default,
+Amazon DataZone returns only \code{PENDING} subscription requests.}
+
+\item{subscribedListingId}{The identifier of the subscribed listing.}
+
+\item{owningProjectId}{The identifier of the project for the subscription requests.}
+
+\item{owningIamPrincipalArn}{The ARN of the owning IAM principal.}
+
 \item{approverProjectId}{The identifier of the subscription request approver's project.}
 
-\item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain.}
+\item{owningUserId}{The ID of the owning user.}
+
+\item{owningGroupId}{The ID of the owning group.}
+
+\item{sortBy}{Specifies the way to sort the results of this action.}
+
+\item{sortOrder}{Specifies the sort order for the results of this action.}
 
 \item{maxResults}{The maximum number of subscription requests to return in a single call
 to \code{\link[=datazone_list_subscription_requests]{list_subscription_requests}}.
@@ -38,23 +58,6 @@ requests, the response includes a pagination token named \code{NextToken}.
 You can specify this \code{NextToken} value in a subsequent call to
 \code{\link[=datazone_list_subscription_requests]{list_subscription_requests}} to
 list the next set of subscription requests.}
-
-\item{owningGroupId}{The ID of the owning group.}
-
-\item{owningProjectId}{The identifier of the project for the subscription requests.}
-
-\item{owningUserId}{The ID of the owning user.}
-
-\item{sortBy}{Specifies the way to sort the results of this action.}
-
-\item{sortOrder}{Specifies the sort order for the results of this action.}
-
-\item{status}{Specifies the status of the subscription requests.
-
-This is not a required parameter, but if not specified, by default,
-Amazon DataZone returns only \code{PENDING} subscription requests.}
-
-\item{subscribedListingId}{The identifier of the subscribed listing.}
 }
 \description{
 Lists Amazon DataZone subscription requests.

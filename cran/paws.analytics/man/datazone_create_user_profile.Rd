@@ -5,22 +5,25 @@
 \title{Creates a user profile in Amazon DataZone}
 \usage{
 datazone_create_user_profile(
-  clientToken = NULL,
   domainIdentifier,
   userIdentifier,
-  userType = NULL
+  userType = NULL,
+  sessionName = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which a user profile is
 created.}
 
 \item{userIdentifier}{[required] The identifier of the user for which the user profile is created.}
 
 \item{userType}{The user type of the user for which the user profile is created.}
+
+\item{sessionName}{The session name for IAM role sessions.}
+
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Creates a user profile in Amazon DataZone.

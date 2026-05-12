@@ -15,8 +15,6 @@ lakeformation_create_lake_formation_opt_in(
 \item{Principal}{[required]}
 
 \item{Resource}{[required]}
-
-\item{Condition}{}
 }
 \description{
 Enforce Lake Formation permissions for the given databases, tables, and principals.

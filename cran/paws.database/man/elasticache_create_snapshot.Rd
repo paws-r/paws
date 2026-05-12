@@ -20,7 +20,8 @@ from this replication group.}
 \item{CacheClusterId}{The identifier of an existing cluster. The snapshot is created from this
 cluster.}
 
-\item{SnapshotName}{[required] A name for the snapshot being created.}
+\item{SnapshotName}{[required] A name for the snapshot being created. This value is stored as a
+lowercase string.}
 
 \item{KmsKeyId}{The ID of the KMS key used to encrypt the snapshot.}
 

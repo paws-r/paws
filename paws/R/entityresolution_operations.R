@@ -550,6 +550,9 @@ entityresolution_create_id_namespace <- function(idNamespaceName, description = 
 #'           ruleName = "string",
 #'           condition = "string"
 #'         )
+#'       ),
+#'       matchingConfig = list(
+#'         enableTransitiveMatching = TRUE|FALSE
 #'       )
 #'     ),
 #'     providerProperties = list(
@@ -616,6 +619,9 @@ entityresolution_create_id_namespace <- function(idNamespaceName, description = 
 #'           ruleName = "string",
 #'           condition = "string"
 #'         )
+#'       ),
+#'       matchingConfig = list(
+#'         enableTransitiveMatching = TRUE|FALSE
 #'       )
 #'     ),
 #'     providerProperties = list(
@@ -1595,6 +1601,9 @@ entityresolution_get_matching_job <- function(workflowName, jobId) {
 #'           ruleName = "string",
 #'           condition = "string"
 #'         )
+#'       ),
+#'       matchingConfig = list(
+#'         enableTransitiveMatching = TRUE|FALSE
 #'       )
 #'     ),
 #'     providerProperties = list(
@@ -3062,6 +3071,9 @@ entityresolution_update_id_namespace <- function(idNamespaceName, description = 
 #'           ruleName = "string",
 #'           condition = "string"
 #'         )
+#'       ),
+#'       matchingConfig = list(
+#'         enableTransitiveMatching = TRUE|FALSE
 #'       )
 #'     ),
 #'     providerProperties = list(
@@ -3128,6 +3140,9 @@ entityresolution_update_id_namespace <- function(idNamespaceName, description = 
 #'           ruleName = "string",
 #'           condition = "string"
 #'         )
+#'       ),
+#'       matchingConfig = list(
+#'         enableTransitiveMatching = TRUE|FALSE
 #'       )
 #'     ),
 #'     providerProperties = list(

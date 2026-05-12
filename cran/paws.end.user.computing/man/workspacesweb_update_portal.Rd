@@ -9,7 +9,8 @@ workspacesweb_update_portal(
   displayName = NULL,
   authenticationType = NULL,
   instanceType = NULL,
-  maxConcurrentSessions = NULL
+  maxConcurrentSessions = NULL,
+  portalCustomDomain = NULL
 )
 }
 \arguments{
@@ -35,6 +36,9 @@ configured in the IAM Identity Center.}
 \item{instanceType}{The type and resources of the underlying instance.}
 
 \item{maxConcurrentSessions}{The maximum number of concurrent sessions for the portal.}
+
+\item{portalCustomDomain}{The custom domain of the web portal that users access in order to start
+streaming sessions.}
 }
 \description{
 Updates a web portal.

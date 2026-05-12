@@ -5,21 +5,24 @@
 \title{Updates a connection}
 \usage{
 datazone_update_connection(
-  awsLocation = NULL,
-  description = NULL,
+  configurations = NULL,
   domainIdentifier,
   identifier,
+  description = NULL,
+  awsLocation = NULL,
   props = NULL
 )
 }
 \arguments{
-\item{awsLocation}{The location where a connection is to be updated.}
-
-\item{description}{The description of a connection.}
+\item{configurations}{The configurations of the connection.}
 
 \item{domainIdentifier}{[required] The ID of the domain where a connection is to be updated.}
 
 \item{identifier}{[required] The ID of the connection to be updated.}
+
+\item{description}{The description of a connection.}
+
+\item{awsLocation}{The location where a connection is to be updated.}
 
 \item{props}{The connection props.}
 }

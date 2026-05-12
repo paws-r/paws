@@ -11,7 +11,8 @@ connectcases_create_template(
   layoutConfiguration = NULL,
   requiredFields = NULL,
   status = NULL,
-  rules = NULL
+  rules = NULL,
+  tagPropagationConfigurations = NULL
 )
 }
 \arguments{
@@ -30,6 +31,10 @@ created with this template.}
 
 \item{rules}{A list of case rules (also known as \href{https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html}{case field conditions})
 on a template.}
+
+\item{tagPropagationConfigurations}{Defines tag propagation configuration for resources created within a
+domain. Tags specified here will be automatically applied to resources
+being created for the specified resource type.}
 }
 \description{
 Creates a template in the Cases domain. This template is used to define the case object model (that is, to define what data can be captured on cases) in a Cases domain. A template must have a unique name within a domain, and it must reference existing field IDs and layout IDs. Additionally, multiple fields with same IDs are not allowed within the same Template. A template can be either Active or Inactive, as indicated by its status. Inactive templates cannot be used to create cases.

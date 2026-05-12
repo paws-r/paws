@@ -34,25 +34,7 @@ wellarchitected_create_workload(
 
 \item{Environment}{[required]}
 
-\item{AccountIds}{}
-
-\item{AwsRegions}{}
-
-\item{NonAwsRegions}{}
-
-\item{PillarPriorities}{}
-
-\item{ArchitecturalDesign}{}
-
-\item{ReviewOwner}{}
-
-\item{IndustryType}{}
-
-\item{Industry}{}
-
 \item{Lenses}{[required]}
-
-\item{Notes}{}
 
 \item{ClientRequestToken}{[required]}
 

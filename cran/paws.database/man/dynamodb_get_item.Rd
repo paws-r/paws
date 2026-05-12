@@ -36,8 +36,6 @@ in the \emph{Amazon DynamoDB Developer Guide}.}
 operation uses strongly consistent reads; otherwise, the operation uses
 eventually consistent reads.}
 
-\item{ReturnConsumedCapacity}{}
-
 \item{ProjectionExpression}{A string that identifies one or more attributes to retrieve from the
 table. These attributes can include scalars, sets, or elements of a JSON
 document. The attributes in the expression must be separated by commas.

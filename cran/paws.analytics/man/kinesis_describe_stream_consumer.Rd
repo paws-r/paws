@@ -8,7 +8,8 @@ consumer}
 kinesis_describe_stream_consumer(
   StreamARN = NULL,
   ConsumerName = NULL,
-  ConsumerARN = NULL
+  ConsumerARN = NULL,
+  StreamId = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 
 \item{ConsumerARN}{The ARN returned by Kinesis Data Streams when you registered the
 consumer.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 To get the description of a registered consumer, provide the ARN of the consumer. Alternatively, you can provide the ARN of the data stream and the name you gave the consumer when you registered it. You may also provide all three parameters, as long as they don't conflict with each other. If you don't know the name or ARN of the consumer that you want to describe, you can use the \code{\link[=kinesis_list_stream_consumers]{list_stream_consumers}} operation to get a list of the descriptions of all the consumers that are currently registered with a given data stream.

@@ -535,11 +535,29 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #' 53 Resolver endpoint target name server metrics. For more information,
 #' see [Detailed
 #' metrics](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/monitoring-resolver-with-cloudwatch.html).
+#' @param Dns64Enabled Specifies whether DNS64 is enabled for the inbound Resolver endpoint.
+#' When set to `true`, Route 53 Resolver synthesizes AAAA (IPv6) records
+#' for IPv4-only services by prepending the `64:ff9b::/96` prefix to the
+#' IPv4 address. This enables IPv6-only clients that send queries through
+#' the inbound endpoint to reach IPv4-only services. DNS64 works with NAT64
+#' to provide complete IPv6-to-IPv4 translation. Default is false.
+#' @param Ipv6InternetAccessEnabled Specifies whether IPv6 internet access is enabled for the outbound
+#' Resolver endpoint. When set to `true`, the endpoint elastic network
+#' interfaces (ENIs) can forward DNS queries to public IPv6 targets through
+#' an internet gateway. Default is false.
+#' 
+#' When you enable IPv6 internet access, use network controls like security
+#' groups, NACLs, or egress-only internet gateways to protect the endpoint
+#' ENIs from unsolicited ingress traffic. Be aware that some network
+#' controls can affect DNS query throughput due to connection tracking. For
+#' more information, see Amazon EC2 security group connection tracking and
+#' [Resolver endpoint
+#' scaling](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/best-practices-resolver-endpoint-scaling.html).
 #'
 #' @keywords internal
 #'
 #' @rdname route53resolver_create_resolver_endpoint
-route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NULL, SecurityGroupIds, Direction, IpAddresses, OutpostArn = NULL, PreferredInstanceType = NULL, Tags = NULL, ResolverEndpointType = NULL, Protocols = NULL, RniEnhancedMetricsEnabled = NULL, TargetNameServerMetricsEnabled = NULL) {
+route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NULL, SecurityGroupIds, Direction, IpAddresses, OutpostArn = NULL, PreferredInstanceType = NULL, Tags = NULL, ResolverEndpointType = NULL, Protocols = NULL, RniEnhancedMetricsEnabled = NULL, TargetNameServerMetricsEnabled = NULL, Dns64Enabled = NULL, Ipv6InternetAccessEnabled = NULL) {
   op <- new_operation(
     name = "CreateResolverEndpoint",
     http_method = "POST",
@@ -548,7 +566,7 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, OutpostArn = OutpostArn, PreferredInstanceType = PreferredInstanceType, Tags = Tags, ResolverEndpointType = ResolverEndpointType, Protocols = Protocols, RniEnhancedMetricsEnabled = RniEnhancedMetricsEnabled, TargetNameServerMetricsEnabled = TargetNameServerMetricsEnabled)
+  input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, OutpostArn = OutpostArn, PreferredInstanceType = PreferredInstanceType, Tags = Tags, ResolverEndpointType = ResolverEndpointType, Protocols = Protocols, RniEnhancedMetricsEnabled = RniEnhancedMetricsEnabled, TargetNameServerMetricsEnabled = TargetNameServerMetricsEnabled, Dns64Enabled = Dns64Enabled, Ipv6InternetAccessEnabled = Ipv6InternetAccessEnabled)
   output <- .route53resolver$create_resolver_endpoint_output()
   config <- get_config()
   svc <- .route53resolver$service(config, op)
@@ -3216,11 +3234,29 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #' 53 Resolver endpoint target name server metrics. For more information,
 #' see [Detailed
 #' metrics](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/monitoring-resolver-with-cloudwatch.html).
+#' @param Dns64Enabled Specifies whether DNS64 is enabled for the inbound Resolver endpoint.
+#' When set to `true`, Route 53 Resolver synthesizes AAAA (IPv6) records
+#' for IPv4-only services by prepending the `64:ff9b::/96` prefix to the
+#' IPv4 address. This enables IPv6-only clients that send queries through
+#' the inbound endpoint to reach IPv4-only services. DNS64 works with NAT64
+#' to provide complete IPv6-to-IPv4 translation.
+#' @param Ipv6InternetAccessEnabled Specifies whether IPv6 internet access is enabled for the outbound
+#' Resolver endpoint. When set to `true`, the endpoint elastic network
+#' interfaces (ENIs) can forward DNS queries to public IPv6 targets through
+#' an internet gateway.
+#' 
+#' When you enable IPv6 internet access, use network controls like security
+#' groups, NACLs, or egress-only internet gateways to protect the endpoint
+#' ENIs from unsolicited ingress traffic. Be aware that some network
+#' controls can affect DNS query throughput due to connection tracking. For
+#' more information, see Amazon EC2 security group connection tracking and
+#' [Resolver endpoint
+#' scaling](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/best-practices-resolver-endpoint-scaling.html).
 #'
 #' @keywords internal
 #'
 #' @rdname route53resolver_update_resolver_endpoint
-route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = NULL, ResolverEndpointType = NULL, UpdateIpAddresses = NULL, Protocols = NULL, RniEnhancedMetricsEnabled = NULL, TargetNameServerMetricsEnabled = NULL) {
+route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = NULL, ResolverEndpointType = NULL, UpdateIpAddresses = NULL, Protocols = NULL, RniEnhancedMetricsEnabled = NULL, TargetNameServerMetricsEnabled = NULL, Dns64Enabled = NULL, Ipv6InternetAccessEnabled = NULL) {
   op <- new_operation(
     name = "UpdateResolverEndpoint",
     http_method = "POST",
@@ -3229,7 +3265,7 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .route53resolver$update_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId, Name = Name, ResolverEndpointType = ResolverEndpointType, UpdateIpAddresses = UpdateIpAddresses, Protocols = Protocols, RniEnhancedMetricsEnabled = RniEnhancedMetricsEnabled, TargetNameServerMetricsEnabled = TargetNameServerMetricsEnabled)
+  input <- .route53resolver$update_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId, Name = Name, ResolverEndpointType = ResolverEndpointType, UpdateIpAddresses = UpdateIpAddresses, Protocols = Protocols, RniEnhancedMetricsEnabled = RniEnhancedMetricsEnabled, TargetNameServerMetricsEnabled = TargetNameServerMetricsEnabled, Dns64Enabled = Dns64Enabled, Ipv6InternetAccessEnabled = Ipv6InternetAccessEnabled)
   output <- .route53resolver$update_resolver_endpoint_output()
   config <- get_config()
   svc <- .route53resolver$service(config, op)

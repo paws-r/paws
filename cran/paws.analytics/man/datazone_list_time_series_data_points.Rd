@@ -6,20 +6,18 @@
 \usage{
 datazone_list_time_series_data_points(
   domainIdentifier,
-  endedAt = NULL,
   entityIdentifier,
   entityType,
   formName,
-  maxResults = NULL,
+  startedAt = NULL,
+  endedAt = NULL,
   nextToken = NULL,
-  startedAt = NULL
+  maxResults = NULL
 )
 }
 \arguments{
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain that houses the assets for which
 you want to list time series data points.}
-
-\item{endedAt}{The timestamp at which the data points that you wanted to list ended.}
 
 \item{entityIdentifier}{[required] The ID of the asset for which you want to list data points.}
 
@@ -27,11 +25,9 @@ you want to list time series data points.}
 
 \item{formName}{[required] The name of the time series data points form.}
 
-\item{maxResults}{The maximum number of data points to return in a single call to
-ListTimeSeriesDataPoints. When the number of data points to be listed is
-greater than the value of MaxResults, the response contains a NextToken
-value that you can use in a subsequent call to ListTimeSeriesDataPoints
-to list the next set of data points.}
+\item{startedAt}{The timestamp at which the data points that you want to list started.}
+
+\item{endedAt}{The timestamp at which the data points that you wanted to list ended.}
 
 \item{nextToken}{When the number of data points is greater than the default value for the
 MaxResults parameter, or if you explicitly specify a value for
@@ -40,7 +36,11 @@ includes a pagination token named NextToken. You can specify this
 NextToken value in a subsequent call to ListTimeSeriesDataPoints to list
 the next set of data points.}
 
-\item{startedAt}{The timestamp at which the data points that you want to list started.}
+\item{maxResults}{The maximum number of data points to return in a single call to
+ListTimeSeriesDataPoints. When the number of data points to be listed is
+greater than the value of MaxResults, the response contains a NextToken
+value that you can use in a subsequent call to ListTimeSeriesDataPoints
+to list the next set of data points.}
 }
 \description{
 Lists time series data points.

@@ -6,18 +6,18 @@
 extensible, which means that: a}
 \usage{
 drs_list_extensible_source_servers(
+  stagingAccountID,
   maxResults = NULL,
-  nextToken = NULL,
-  stagingAccountID
+  nextToken = NULL
 )
 }
 \arguments{
+\item{stagingAccountID}{[required] The Id of the staging Account to retrieve extensible source servers
+from.}
+
 \item{maxResults}{The maximum number of extensible source servers to retrieve.}
 
 \item{nextToken}{The token of the next extensible source server to retrieve.}
-
-\item{stagingAccountID}{[required] The Id of the staging Account to retrieve extensible source servers
-from.}
 }
 \description{
 Returns a list of source servers on a staging account that are extensible, which means that: a. The source server is not already extended into this Account. b. The source server on the Account we’re reading from is not an extension of another source server.

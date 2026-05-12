@@ -167,7 +167,7 @@ Spark and Python versions, see \href{https://docs.aws.amazon.com/glue/latest/dg/
 developer guide.
 
 Jobs that are created without specifying a Glue version default to Glue
-0.9.}
+5.1.}
 
 \item{NumberOfWorkers}{The number of workers of a defined \code{workerType} that are allocated when
 a job runs.}

@@ -607,7 +607,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #'   ),
 #'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING"|"PENDING_CERTIFICATE_REIMPORT"|"PENDING_OWNERSHIP_VERIFICATION"|"FAILED",
 #'   domainNameStatusMessage = "string",
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
 #'   endpointAccessMode = "BASIC"|"STRICT",
 #'   tags = list(
 #'     "string"
@@ -649,7 +649,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
 #'   endpointAccessMode = "BASIC"|"STRICT",
 #'   mutualTlsAuthentication = list(
 #'     truststoreUri = "string",
@@ -1081,7 +1081,7 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #'   ),
 #'   disableExecuteApiEndpoint = TRUE|FALSE,
 #'   rootResourceId = "string",
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
 #'   endpointAccessMode = "BASIC"|"STRICT",
 #'   apiStatus = "UPDATING"|"AVAILABLE"|"PENDING"|"FAILED",
 #'   apiStatusMessage = "string"
@@ -1114,7 +1114,7 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #'     "string"
 #'   ),
 #'   disableExecuteApiEndpoint = TRUE|FALSE,
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
 #'   endpointAccessMode = "BASIC"|"STRICT"
 #' )
 #' ```
@@ -3758,7 +3758,7 @@ apigateway_get_documentation_versions <- function(restApiId, position = NULL, li
 #'   ),
 #'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING"|"PENDING_CERTIFICATE_REIMPORT"|"PENDING_OWNERSHIP_VERIFICATION"|"FAILED",
 #'   domainNameStatusMessage = "string",
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
 #'   endpointAccessMode = "BASIC"|"STRICT",
 #'   tags = list(
 #'     "string"
@@ -3923,7 +3923,7 @@ apigateway_get_domain_name_access_associations <- function(position = NULL, limi
 #'       ),
 #'       domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING"|"PENDING_CERTIFICATE_REIMPORT"|"PENDING_OWNERSHIP_VERIFICATION"|"FAILED",
 #'       domainNameStatusMessage = "string",
-#'       securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'       securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
 #'       endpointAccessMode = "BASIC"|"STRICT",
 #'       tags = list(
 #'         "string"
@@ -5124,7 +5124,7 @@ apigateway_get_resources <- function(restApiId, position = NULL, limit = NULL, e
 #'   ),
 #'   disableExecuteApiEndpoint = TRUE|FALSE,
 #'   rootResourceId = "string",
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
 #'   endpointAccessMode = "BASIC"|"STRICT",
 #'   apiStatus = "UPDATING"|"AVAILABLE"|"PENDING"|"FAILED",
 #'   apiStatusMessage = "string"
@@ -5211,7 +5211,7 @@ apigateway_get_rest_api <- function(restApiId) {
 #'       ),
 #'       disableExecuteApiEndpoint = TRUE|FALSE,
 #'       rootResourceId = "string",
-#'       securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'       securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
 #'       endpointAccessMode = "BASIC"|"STRICT",
 #'       apiStatus = "UPDATING"|"AVAILABLE"|"PENDING"|"FAILED",
 #'       apiStatusMessage = "string"
@@ -6382,7 +6382,7 @@ apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOn
 #'   ),
 #'   disableExecuteApiEndpoint = TRUE|FALSE,
 #'   rootResourceId = "string",
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
 #'   endpointAccessMode = "BASIC"|"STRICT",
 #'   apiStatus = "UPDATING"|"AVAILABLE"|"PENDING"|"FAILED",
 #'   apiStatusMessage = "string"
@@ -7090,7 +7090,7 @@ apigateway_put_method_response <- function(restApiId, resourceId, httpMethod, st
 #'   ),
 #'   disableExecuteApiEndpoint = TRUE|FALSE,
 #'   rootResourceId = "string",
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
 #'   endpointAccessMode = "BASIC"|"STRICT",
 #'   apiStatus = "UPDATING"|"AVAILABLE"|"PENDING"|"FAILED",
 #'   apiStatusMessage = "string"
@@ -8082,7 +8082,7 @@ apigateway_update_documentation_version <- function(restApiId, documentationVers
 #'   ),
 #'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING"|"PENDING_CERTIFICATE_REIMPORT"|"PENDING_OWNERSHIP_VERIFICATION"|"FAILED",
 #'   domainNameStatusMessage = "string",
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
 #'   endpointAccessMode = "BASIC"|"STRICT",
 #'   tags = list(
 #'     "string"
@@ -8897,7 +8897,7 @@ apigateway_update_resource <- function(restApiId, resourceId, patchOperations = 
 #'   ),
 #'   disableExecuteApiEndpoint = TRUE|FALSE,
 #'   rootResourceId = "string",
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
 #'   endpointAccessMode = "BASIC"|"STRICT",
 #'   apiStatus = "UPDATING"|"AVAILABLE"|"PENDING"|"FAILED",
 #'   apiStatusMessage = "string"

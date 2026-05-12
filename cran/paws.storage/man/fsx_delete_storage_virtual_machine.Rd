@@ -10,8 +10,6 @@ fsx_delete_storage_virtual_machine(
 )
 }
 \arguments{
-\item{ClientRequestToken}{}
-
 \item{StorageVirtualMachineId}{[required] The ID of the SVM that you want to delete.}
 }
 \description{

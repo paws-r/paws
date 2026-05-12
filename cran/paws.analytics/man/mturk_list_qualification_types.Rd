@@ -27,8 +27,6 @@ managed by the system, are considered. Valid values are True | False.}
 \item{MustBeOwnedByCaller}{Specifies that only Qualification types that the Requester created are
 returned. If false, the operation returns all Qualification types.}
 
-\item{NextToken}{}
-
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \description{

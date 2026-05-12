@@ -14,7 +14,8 @@ appstream_create_app_block_builder(
   VpcConfig,
   EnableDefaultInternetAccess = NULL,
   IamRoleArn = NULL,
-  AccessEndpoints = NULL
+  AccessEndpoints = NULL,
+  DisableIMDSV1 = NULL
 )
 }
 \arguments{
@@ -73,6 +74,9 @@ in the \emph{Amazon WorkSpaces Applications Administration Guide}.}
 \item{AccessEndpoints}{The list of interface VPC endpoint (interface endpoint) objects.
 Administrators can connect to the app block builder only through the
 specified endpoints.}
+
+\item{DisableIMDSV1}{Set to true to disable Instance Metadata Service Version 1 (IMDSv1) and
+enforce IMDSv2. Set to false to enable both IMDSv1 and IMDSv2.}
 }
 \description{
 Creates an app block builder.

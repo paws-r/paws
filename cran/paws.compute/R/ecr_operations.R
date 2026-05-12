@@ -1034,8 +1034,8 @@ ecr_describe_repository_creation_templates <- function(prefixes = NULL, nextToke
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecr_get_account_setting/](https://www.paws-r-sdk.com/docs/ecr_get_account_setting/) for full documentation.
 #'
-#' @param name &#91;required&#93; The name of the account setting, such as `BASIC_SCAN_TYPE_VERSION` or
-#' `REGISTRY_POLICY_SCOPE`.
+#' @param name &#91;required&#93; The name of the account setting, such as `BASIC_SCAN_TYPE_VERSION`,
+#' `REGISTRY_POLICY_SCOPE`, or `BLOB_MOUNTING`.
 #'
 #' @keywords internal
 #'
@@ -1415,7 +1415,7 @@ ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 #' sending another [`list_image_referrers`][ecr_list_image_referrers]
 #' request with the returned `nextToken` value. This value can be between 1
 #' and 50. If this parameter is not used, then
-#' [`list_image_referrers`][ecr_list_image_referrers] returns up to 50
+#' [`list_image_referrers`][ecr_list_image_referrers] returns up to 20
 #' results and a `nextToken` value, if applicable.
 #'
 #' @keywords internal
@@ -1588,11 +1588,11 @@ ecr_list_tags_for_resource <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecr_put_account_setting/](https://www.paws-r-sdk.com/docs/ecr_put_account_setting/) for full documentation.
 #'
-#' @param name &#91;required&#93; The name of the account setting, such as `BASIC_SCAN_TYPE_VERSION` or
-#' `REGISTRY_POLICY_SCOPE`.
-#' @param value &#91;required&#93; Setting value that is specified. The following are valid values for the
-#' basic scan type being used: `AWS_NATIVE` or `CLAIR`. The following are
-#' valid values for the registry policy scope being used: `V1` or `V2`.
+#' @param name &#91;required&#93; The name of the account setting, such as `BASIC_SCAN_TYPE_VERSION`,
+#' `REGISTRY_POLICY_SCOPE`, or `BLOB_MOUNTING`.
+#' @param value &#91;required&#93; Setting value that is specified. Valid value for basic scan type:
+#' `AWS_NATIVE`. Valid values for registry policy scope: `V2`. Valid values
+#' for blob mounting: `ENABLED` or `DISABLED`.
 #'
 #' @keywords internal
 #'

@@ -7,7 +7,7 @@
 pinpointsmsvoicev2_associate_origination_identity(
   PoolId,
   OriginationIdentity,
-  IsoCountryCode,
+  IsoCountryCode = NULL,
   ClientToken = NULL
 )
 }
@@ -29,8 +29,10 @@ used to get the values for SenderId and SenderIdArn.
 If you are using a shared End User Messaging SMS resource then you must
 use the full Amazon Resource Name(ARN).}
 
-\item{IsoCountryCode}{[required] The new two-character code, in ISO 3166-1 alpha-2 format, for the
-country or region of the origination identity.}
+\item{IsoCountryCode}{The new two-character code, in ISO 3166-1 alpha-2 format, for the
+country or region of the origination identity. This field is optional
+and is not required for origination identity types that are not
+country-specific, such as RCS agents.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. If you don't specify a client token, a

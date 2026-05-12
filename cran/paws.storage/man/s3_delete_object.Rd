@@ -68,8 +68,6 @@ This functionality is not supported for directory buckets.}
 For directory buckets in this API operation, only the \code{null} value of
 the version ID is supported.}
 
-\item{RequestPayer}{}
-
 \item{BypassGovernanceRetention}{Indicates whether S3 Object Lock should bypass Governance-mode
 restrictions to process this operation. To use this header, you must
 have the \code{s3:BypassGovernanceRetention} permission.

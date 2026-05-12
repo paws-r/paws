@@ -71,8 +71,6 @@ supplied.
 \item{Enabled}{Specifies whether to activate the subscription. If the event
 notification subscription isn't activated, the subscription is created
 but not active.}
-
-\item{Tags}{}
 }
 \description{
 Creates an RDS event notification subscription. This operation requires a topic Amazon Resource Name (ARN) created by either the RDS console, the SNS console, or the SNS API. To obtain an ARN with SNS, you must create a topic in Amazon SNS and subscribe to the topic. The ARN is displayed in the SNS console.

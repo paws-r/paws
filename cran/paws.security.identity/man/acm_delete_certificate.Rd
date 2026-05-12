@@ -15,7 +15,7 @@ must be of the form:
 For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
 }
 \description{
-Deletes a certificate and its associated private key. If this action succeeds, the certificate no longer appears in the list that can be displayed by calling the \code{\link[=acm_list_certificates]{list_certificates}} action or be retrieved by calling the \code{\link[=acm_get_certificate]{get_certificate}} action. The certificate will not be available for use by Amazon Web Services services integrated with ACM.
+Deletes a certificate and its associated private key. If this action succeeds, the certificate is not available for use by Amazon Web Services services integrated with ACM. Deleting a certificate is eventually consistent. The may be a short delay before the certificate no longer appears in the list that can be displayed by calling the \code{\link[=acm_list_certificates]{list_certificates}} action or be retrieved by calling the \code{\link[=acm_get_certificate]{get_certificate}} action.
 
 See \url{https://www.paws-r-sdk.com/docs/acm_delete_certificate/} for full documentation.
 }

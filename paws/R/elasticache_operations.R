@@ -540,7 +540,8 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
 #' @param SourceServerlessCacheSnapshotName &#91;required&#93; The identifier of the existing serverless cache’s snapshot to be copied.
 #' Available for Valkey, Redis OSS and Serverless Memcached only.
 #' @param TargetServerlessCacheSnapshotName &#91;required&#93; The identifier for the snapshot to be created. Available for Valkey,
-#' Redis OSS and Serverless Memcached only.
+#' Redis OSS and Serverless Memcached only. This value is stored as a
+#' lowercase string.
 #' @param KmsKeyId The identifier of the KMS key used to encrypt the target snapshot.
 #' Available for Valkey, Redis OSS and Serverless Memcached only.
 #' @param Tags A list of tags to be added to the target snapshot resource. A tag is a
@@ -700,7 +701,8 @@ elasticache_copy_serverless_cache_snapshot <- function(SourceServerlessCacheSnap
 #' @param SourceSnapshotName &#91;required&#93; The name of an existing snapshot from which to make a copy.
 #' @param TargetSnapshotName &#91;required&#93; A name for the snapshot copy. ElastiCache does not permit overwriting a
 #' snapshot, therefore this name must be unique within its context -
-#' ElastiCache or an Amazon S3 bucket if exporting.
+#' ElastiCache or an Amazon S3 bucket if exporting. This value is stored as
+#' a lowercase string.
 #' @param TargetBucket The Amazon S3 bucket to which the snapshot is exported. This parameter
 #' is used only when exporting a snapshot for external access.
 #' 
@@ -1407,7 +1409,8 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 #' elasticache_create_cache_parameter_group(CacheParameterGroupName,
 #'   CacheParameterGroupFamily, Description, Tags)
 #'
-#' @param CacheParameterGroupName &#91;required&#93; A user-specified name for the cache parameter group.
+#' @param CacheParameterGroupName &#91;required&#93; A user-specified name for the cache parameter group. This value is
+#' stored as a lowercase string.
 #' @param CacheParameterGroupFamily &#91;required&#93; The name of the cache parameter group family that the cache parameter
 #' group can be used with.
 #' 
@@ -1722,7 +1725,8 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' .
 #' @param GlobalReplicationGroupDescription Provides details of the Global datastore
 #' @param PrimaryReplicationGroupId &#91;required&#93; The name of the primary cluster that accepts writes and will replicate
-#' updates to the secondary cluster.
+#' updates to the secondary cluster. This value is stored as a lowercase
+#' string.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2189,7 +2193,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' you create the replication group.
 #' 
 #' **Required:** Only available when creating a replication group in an
-#' Amazon VPC using Valkey 7.2 and later, Redis OSS version `3.2.6`, or
+#' Amazon VPC using Valkey `7.2` and later, Redis OSS version `3.2.6`, or
 #' Redis OSS `4.x` and later.
 #' 
 #' Default: `true` when using Valkey, `false` when using Redis OSS
@@ -2539,7 +2543,7 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #' elasticache_create_serverless_cache(ServerlessCacheName, Description,
 #'   Engine, MajorEngineVersion, CacheUsageLimits, KmsKeyId,
 #'   SecurityGroupIds, SnapshotArnsToRestore, Tags, UserGroupId, SubnetIds,
-#'   SnapshotRetentionLimit, DailySnapshotTime)
+#'   SnapshotRetentionLimit, DailySnapshotTime, NetworkType)
 #'
 #' @param ServerlessCacheName &#91;required&#93; User-provided identifier for the serverless cache. This parameter is
 #' stored as a lowercase string.
@@ -2568,14 +2572,17 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #' @param SubnetIds A list of the identifiers of the subnets where the VPC endpoint for the
 #' serverless cache will be deployed. All the subnetIds must belong to the
 #' same VPC.
-#' @param SnapshotRetentionLimit The number of snapshots that will be retained for the serverless cache
-#' that is being created. As new snapshots beyond this limit are added, the
-#' oldest snapshots will be deleted on a rolling basis. Available for
-#' Valkey, Redis OSS and Serverless Memcached only.
+#' @param SnapshotRetentionLimit The number of days for which ElastiCache retains automatic snapshots
+#' before deleting them. Available for Valkey, Redis OSS and Serverless
+#' Memcached only. The maximum value allowed is 35 days.
 #' @param DailySnapshotTime The daily time that snapshots will be created from the new serverless
 #' cache. By default this number is populated with 0, i.e. no snapshots
 #' will be created on an automatic daily basis. Available for Valkey, Redis
 #' OSS and Serverless Memcached only.
+#' @param NetworkType The IP protocol version used by the serverless cache. Must be either
+#' `ipv4` | `ipv6` | `dual_stack`. `ipv6` is only supported with ipv6-only
+#' subnets. If not specified, defaults to `ipv4`, unless all provided
+#' subnets are IPv6-only, in which case it defaults to `ipv6`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2620,7 +2627,8 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #'       "string"
 #'     ),
 #'     SnapshotRetentionLimit = 123,
-#'     DailySnapshotTime = "string"
+#'     DailySnapshotTime = "string",
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack"
 #'   )
 #' )
 #' ```
@@ -2661,7 +2669,8 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #'     "string"
 #'   ),
 #'   SnapshotRetentionLimit = 123,
-#'   DailySnapshotTime = "string"
+#'   DailySnapshotTime = "string",
+#'   NetworkType = "ipv4"|"ipv6"|"dual_stack"
 #' )
 #' ```
 #'
@@ -2670,7 +2679,7 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #' @rdname elasticache_create_serverless_cache
 #'
 #' @aliases elasticache_create_serverless_cache
-elasticache_create_serverless_cache <- function(ServerlessCacheName, Description = NULL, Engine, MajorEngineVersion = NULL, CacheUsageLimits = NULL, KmsKeyId = NULL, SecurityGroupIds = NULL, SnapshotArnsToRestore = NULL, Tags = NULL, UserGroupId = NULL, SubnetIds = NULL, SnapshotRetentionLimit = NULL, DailySnapshotTime = NULL) {
+elasticache_create_serverless_cache <- function(ServerlessCacheName, Description = NULL, Engine, MajorEngineVersion = NULL, CacheUsageLimits = NULL, KmsKeyId = NULL, SecurityGroupIds = NULL, SnapshotArnsToRestore = NULL, Tags = NULL, UserGroupId = NULL, SubnetIds = NULL, SnapshotRetentionLimit = NULL, DailySnapshotTime = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "CreateServerlessCache",
     http_method = "POST",
@@ -2679,7 +2688,7 @@ elasticache_create_serverless_cache <- function(ServerlessCacheName, Description
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .elasticache$create_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, Description = Description, Engine = Engine, MajorEngineVersion = MajorEngineVersion, CacheUsageLimits = CacheUsageLimits, KmsKeyId = KmsKeyId, SecurityGroupIds = SecurityGroupIds, SnapshotArnsToRestore = SnapshotArnsToRestore, Tags = Tags, UserGroupId = UserGroupId, SubnetIds = SubnetIds, SnapshotRetentionLimit = SnapshotRetentionLimit, DailySnapshotTime = DailySnapshotTime)
+  input <- .elasticache$create_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, Description = Description, Engine = Engine, MajorEngineVersion = MajorEngineVersion, CacheUsageLimits = CacheUsageLimits, KmsKeyId = KmsKeyId, SecurityGroupIds = SecurityGroupIds, SnapshotArnsToRestore = SnapshotArnsToRestore, Tags = Tags, UserGroupId = UserGroupId, SubnetIds = SubnetIds, SnapshotRetentionLimit = SnapshotRetentionLimit, DailySnapshotTime = DailySnapshotTime, NetworkType = NetworkType)
   output <- .elasticache$create_serverless_cache_output()
   config <- get_config()
   svc <- .elasticache$service(config, op)
@@ -2703,7 +2712,8 @@ elasticache_create_serverless_cache <- function(ServerlessCacheName, Description
 #'
 #' @param ServerlessCacheSnapshotName &#91;required&#93; The name for the snapshot being created. Must be unique for the customer
 #' account. Available for Valkey, Redis OSS and Serverless Memcached only.
-#' Must be between 1 and 255 characters.
+#' Must be between 1 and 255 characters. This value is stored as a
+#' lowercase string.
 #' @param ServerlessCacheName &#91;required&#93; The name of an existing serverless cache. The snapshot is created from
 #' this cache. Available for Valkey, Redis OSS and Serverless Memcached
 #' only.
@@ -2795,7 +2805,8 @@ elasticache_create_serverless_cache_snapshot <- function(ServerlessCacheSnapshot
 #' from this replication group.
 #' @param CacheClusterId The identifier of an existing cluster. The snapshot is created from this
 #' cluster.
-#' @param SnapshotName &#91;required&#93; A name for the snapshot being created.
+#' @param SnapshotName &#91;required&#93; A name for the snapshot being created. This value is stored as a
+#' lowercase string.
 #' @param KmsKeyId The ID of the KMS key used to encrypt the snapshot.
 #' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
 #' A tag key must be accompanied by a tag value, although null is accepted.
@@ -2941,7 +2952,7 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #' elasticache_create_user(UserId, UserName, Engine, Passwords,
 #'   AccessString, NoPasswordRequired, Tags, AuthenticationMode)
 #'
-#' @param UserId &#91;required&#93; The ID of the user.
+#' @param UserId &#91;required&#93; The ID of the user. This value is stored as a lowercase string.
 #' @param UserName &#91;required&#93; The username of the user.
 #' @param Engine &#91;required&#93; The options are valkey or redis.
 #' @param Passwords Passwords used for this user. You can create up to two passwords for
@@ -3033,7 +3044,7 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
 #' @usage
 #' elasticache_create_user_group(UserGroupId, Engine, UserIds, Tags)
 #'
-#' @param UserGroupId &#91;required&#93; The ID of the user group.
+#' @param UserGroupId &#91;required&#93; The ID of the user group. This value is stored as a lowercase string.
 #' @param Engine &#91;required&#93; Sets the engine listed in a user group. The options are valkey or redis.
 #' @param UserIds The list of user IDs that belong to the user group.
 #' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
@@ -4186,7 +4197,8 @@ elasticache_delete_replication_group <- function(ReplicationGroupId, RetainPrima
 #'       "string"
 #'     ),
 #'     SnapshotRetentionLimit = 123,
-#'     DailySnapshotTime = "string"
+#'     DailySnapshotTime = "string",
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack"
 #'   )
 #' )
 #' ```
@@ -6438,7 +6450,8 @@ elasticache_describe_serverless_cache_snapshots <- function(ServerlessCacheName 
 #'         "string"
 #'       ),
 #'       SnapshotRetentionLimit = 123,
-#'       DailySnapshotTime = "string"
+#'       DailySnapshotTime = "string",
+#'       NetworkType = "ipv4"|"ipv6"|"dual_stack"
 #'     )
 #'   )
 #' )
@@ -8466,7 +8479,7 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' applied in PreferredMaintenceWindow.
 #' @param CacheNodeType A valid cache node type that you want to scale this Global datastore to.
 #' @param Engine Modifies the engine listed in a global replication group message. The
-#' options are redis, memcached or valkey.
+#' options are valkey, memcached or redis.
 #' @param EngineVersion The upgraded version of the cache engine to be run on the clusters in
 #' the Global datastore.
 #' @param CacheParameterGroupName The name of the cache parameter group to use with the Global datastore.
@@ -8654,7 +8667,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' Default: `false`
 #' @param Engine Modifies the engine listed in a replication group message. The options
-#' are redis, memcached or valkey.
+#' are valkey, memcached or redis.
 #' @param EngineVersion The upgraded version of the cache engine to be run on the clusters in
 #' the replication group.
 #' 
@@ -9236,7 +9249,7 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
 #' Memcached only. The default is NULL, i.e. the existing snapshot time
 #' configured for the cluster is not removed.
 #' @param Engine Modifies the engine listed in a serverless cache request. The options
-#' are redis, memcached or valkey.
+#' are valkey, memcached or redis.
 #' @param MajorEngineVersion Modifies the engine vesion listed in a serverless cache request.
 #'
 #' @return
@@ -9282,7 +9295,8 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
 #'       "string"
 #'     ),
 #'     SnapshotRetentionLimit = 123,
-#'     DailySnapshotTime = "string"
+#'     DailySnapshotTime = "string",
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack"
 #'   )
 #' )
 #' ```

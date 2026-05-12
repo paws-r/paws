@@ -1091,7 +1091,8 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #'   MaintenanceTrackName, SnapshotScheduleIdentifier,
 #'   AvailabilityZoneRelocation, AquaConfigurationStatus, DefaultIamRoleArn,
 #'   LoadSampleData, ManageMasterPassword, MasterPasswordSecretKmsKeyId,
-#'   IpAddressType, MultiAZ, RedshiftIdcApplicationArn, CatalogName)
+#'   IpAddressType, MultiAZ, RedshiftIdcApplicationArn, CatalogName,
+#'   ExtraComputeForAutomaticOptimization)
 #'
 #' @param DBName The name of the first database to be created when the cluster is
 #' created.
@@ -1382,6 +1383,10 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' Pattern: `^[a-z0-9_-]*[a-z]+[a-z0-9_-]*$`
 #' 
 #' Example: `my-catalog_01`
+#' @param ExtraComputeForAutomaticOptimization If `true`, allocates additional compute resources for running automatic
+#' optimization operations.
+#' 
+#' Default: false
 #'
 #' @return
 #' A list with the following syntax:
@@ -1590,7 +1595,8 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -1648,7 +1654,8 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #'   IpAddressType = "string",
 #'   MultiAZ = TRUE|FALSE,
 #'   RedshiftIdcApplicationArn = "string",
-#'   CatalogName = "string"
+#'   CatalogName = "string",
+#'   ExtraComputeForAutomaticOptimization = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1657,7 +1664,7 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' @rdname redshift_create_cluster
 #'
 #' @aliases redshift_create_cluster
-redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterType = NULL, NodeType, MasterUsername, MasterUserPassword = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ClusterSubnetGroupName = NULL, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, LoadSampleData = NULL, ManageMasterPassword = NULL, MasterPasswordSecretKmsKeyId = NULL, IpAddressType = NULL, MultiAZ = NULL, RedshiftIdcApplicationArn = NULL, CatalogName = NULL) {
+redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterType = NULL, NodeType, MasterUsername, MasterUserPassword = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ClusterSubnetGroupName = NULL, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, LoadSampleData = NULL, ManageMasterPassword = NULL, MasterPasswordSecretKmsKeyId = NULL, IpAddressType = NULL, MultiAZ = NULL, RedshiftIdcApplicationArn = NULL, CatalogName = NULL, ExtraComputeForAutomaticOptimization = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -1666,7 +1673,7 @@ redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterTyp
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshift$create_cluster_input(DBName = DBName, ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ClusterSubnetGroupName = ClusterSubnetGroupName, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Port = Port, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, NumberOfNodes = NumberOfNodes, PubliclyAccessible = PubliclyAccessible, Encrypted = Encrypted, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, Tags = Tags, KmsKeyId = KmsKeyId, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, LoadSampleData = LoadSampleData, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ, RedshiftIdcApplicationArn = RedshiftIdcApplicationArn, CatalogName = CatalogName)
+  input <- .redshift$create_cluster_input(DBName = DBName, ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ClusterSubnetGroupName = ClusterSubnetGroupName, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Port = Port, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, NumberOfNodes = NumberOfNodes, PubliclyAccessible = PubliclyAccessible, Encrypted = Encrypted, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, Tags = Tags, KmsKeyId = KmsKeyId, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, LoadSampleData = LoadSampleData, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ, RedshiftIdcApplicationArn = RedshiftIdcApplicationArn, CatalogName = CatalogName, ExtraComputeForAutomaticOptimization = ExtraComputeForAutomaticOptimization)
   output <- .redshift$create_cluster_output()
   config <- get_config()
   svc <- .redshift$service(config, op)
@@ -3305,6 +3312,8 @@ redshift_create_tags <- function(ResourceName, Tags) {
 #' `LimitType` must be `data-scanned`. If `FeatureType` is
 #' `concurrency-scaling`, then `LimitType` must be `time`. If `FeatureType`
 #' is `cross-region-datasharing`, then `LimitType` must be `data-scanned`.
+#' If `FeatureType` is `extra-compute-for-automatic-optimization`, then
+#' `LimitType` must be `time`.
 #' @param Amount &#91;required&#93; The limit amount. If time-based, this amount is in minutes. If
 #' data-based, this amount is in terabytes (TB). The value must be a
 #' positive number.
@@ -3321,7 +3330,7 @@ redshift_create_tags <- function(ResourceName, Tags) {
 #' list(
 #'   UsageLimitId = "string",
 #'   ClusterIdentifier = "string",
-#'   FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing",
+#'   FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing"|"extra-compute-for-automatic-optimization",
 #'   LimitType = "time"|"data-scanned",
 #'   Amount = 123,
 #'   Period = "daily"|"weekly"|"monthly",
@@ -3339,7 +3348,7 @@ redshift_create_tags <- function(ResourceName, Tags) {
 #' ```
 #' svc$create_usage_limit(
 #'   ClusterIdentifier = "string",
-#'   FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing",
+#'   FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing"|"extra-compute-for-automatic-optimization",
 #'   LimitType = "time"|"data-scanned",
 #'   Amount = 123,
 #'   Period = "daily"|"weekly"|"monthly",
@@ -3776,7 +3785,8 @@ redshift_delete_authentication_profile <- function(AuthenticationProfileName) {
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -6240,7 +6250,8 @@ redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterPar
 #'         )
 #'       ),
 #'       LakehouseRegistrationStatus = "string",
-#'       CatalogArn = "string"
+#'       CatalogArn = "string",
+#'       ExtraComputeForAutomaticOptimization = "string"
 #'     )
 #'   )
 #' )
@@ -9209,7 +9220,7 @@ redshift_describe_tags <- function(ResourceName = NULL, ResourceType = NULL, Max
 #'     list(
 #'       UsageLimitId = "string",
 #'       ClusterIdentifier = "string",
-#'       FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing",
+#'       FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing"|"extra-compute-for-automatic-optimization",
 #'       LimitType = "time"|"data-scanned",
 #'       Amount = 123,
 #'       Period = "daily"|"weekly"|"monthly",
@@ -9231,7 +9242,7 @@ redshift_describe_tags <- function(ResourceName = NULL, ResourceType = NULL, Max
 #' svc$describe_usage_limits(
 #'   UsageLimitId = "string",
 #'   ClusterIdentifier = "string",
-#'   FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing",
+#'   FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing"|"extra-compute-for-automatic-optimization",
 #'   MaxRecords = 123,
 #'   Marker = "string",
 #'   TagKeys = list(
@@ -9562,7 +9573,8 @@ redshift_disable_logging <- function(ClusterIdentifier) {
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -10014,7 +10026,8 @@ redshift_enable_logging <- function(ClusterIdentifier, BucketName = NULL, S3KeyP
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -10274,7 +10287,8 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -11161,7 +11175,8 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #'   NewClusterIdentifier, PubliclyAccessible, ElasticIp, EnhancedVpcRouting,
 #'   MaintenanceTrackName, Encrypted, KmsKeyId, AvailabilityZoneRelocation,
 #'   AvailabilityZone, Port, ManageMasterPassword,
-#'   MasterPasswordSecretKmsKeyId, IpAddressType, MultiAZ)
+#'   MasterPasswordSecretKmsKeyId, IpAddressType, MultiAZ,
+#'   ExtraComputeForAutomaticOptimization)
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster to be modified.
 #' 
@@ -11382,6 +11397,10 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' @param MultiAZ If true and the cluster is currently only deployed in a single
 #' Availability Zone, the cluster will be modified to be deployed in two
 #' Availability Zones.
+#' @param ExtraComputeForAutomaticOptimization If `true`, allocates additional compute resources for running automatic
+#' optimization operations.
+#' 
+#' Default: false
 #'
 #' @return
 #' A list with the following syntax:
@@ -11590,7 +11609,8 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -11630,7 +11650,8 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #'   ManageMasterPassword = TRUE|FALSE,
 #'   MasterPasswordSecretKmsKeyId = "string",
 #'   IpAddressType = "string",
-#'   MultiAZ = TRUE|FALSE
+#'   MultiAZ = TRUE|FALSE,
+#'   ExtraComputeForAutomaticOptimization = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -11639,7 +11660,7 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' @rdname redshift_modify_cluster
 #'
 #' @aliases redshift_modify_cluster
-redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeType = NULL, NumberOfNodes = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, MasterUserPassword = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, PreferredMaintenanceWindow = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, NewClusterIdentifier = NULL, PubliclyAccessible = NULL, ElasticIp = NULL, EnhancedVpcRouting = NULL, MaintenanceTrackName = NULL, Encrypted = NULL, KmsKeyId = NULL, AvailabilityZoneRelocation = NULL, AvailabilityZone = NULL, Port = NULL, ManageMasterPassword = NULL, MasterPasswordSecretKmsKeyId = NULL, IpAddressType = NULL, MultiAZ = NULL) {
+redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeType = NULL, NumberOfNodes = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, MasterUserPassword = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, PreferredMaintenanceWindow = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, NewClusterIdentifier = NULL, PubliclyAccessible = NULL, ElasticIp = NULL, EnhancedVpcRouting = NULL, MaintenanceTrackName = NULL, Encrypted = NULL, KmsKeyId = NULL, AvailabilityZoneRelocation = NULL, AvailabilityZone = NULL, Port = NULL, ManageMasterPassword = NULL, MasterPasswordSecretKmsKeyId = NULL, IpAddressType = NULL, MultiAZ = NULL, ExtraComputeForAutomaticOptimization = NULL) {
   op <- new_operation(
     name = "ModifyCluster",
     http_method = "POST",
@@ -11648,7 +11669,7 @@ redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshift$modify_cluster_input(ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, NumberOfNodes = NumberOfNodes, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, MasterUserPassword = MasterUserPassword, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, NewClusterIdentifier = NewClusterIdentifier, PubliclyAccessible = PubliclyAccessible, ElasticIp = ElasticIp, EnhancedVpcRouting = EnhancedVpcRouting, MaintenanceTrackName = MaintenanceTrackName, Encrypted = Encrypted, KmsKeyId = KmsKeyId, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AvailabilityZone = AvailabilityZone, Port = Port, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ)
+  input <- .redshift$modify_cluster_input(ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, NumberOfNodes = NumberOfNodes, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, MasterUserPassword = MasterUserPassword, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, NewClusterIdentifier = NewClusterIdentifier, PubliclyAccessible = PubliclyAccessible, ElasticIp = ElasticIp, EnhancedVpcRouting = EnhancedVpcRouting, MaintenanceTrackName = MaintenanceTrackName, Encrypted = Encrypted, KmsKeyId = KmsKeyId, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AvailabilityZone = AvailabilityZone, Port = Port, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ, ExtraComputeForAutomaticOptimization = ExtraComputeForAutomaticOptimization)
   output <- .redshift$modify_cluster_output()
   config <- get_config()
   svc <- .redshift$service(config, op)
@@ -11883,7 +11904,8 @@ redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -12151,7 +12173,8 @@ redshift_modify_cluster_db_revision <- function(ClusterIdentifier, RevisionTarge
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -12213,7 +12236,7 @@ redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = N
 #' you specify an end time, you can't specify a duration.
 #' @param DeferMaintenanceDuration An integer indicating the duration of the maintenance window in days. If
 #' you specify a duration, you can't specify an end time. The duration must
-#' be 45 days or less.
+#' be 60 days or less.
 #'
 #' @return
 #' A list with the following syntax:
@@ -12422,7 +12445,8 @@ redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = N
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -13778,7 +13802,8 @@ redshift_modify_scheduled_action <- function(ScheduledActionName, TargetAction =
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -13916,7 +13941,7 @@ redshift_modify_snapshot_schedule <- function(ScheduleIdentifier, ScheduleDefini
 #' list(
 #'   UsageLimitId = "string",
 #'   ClusterIdentifier = "string",
-#'   FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing",
+#'   FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing"|"extra-compute-for-automatic-optimization",
 #'   LimitType = "time"|"data-scanned",
 #'   Amount = 123,
 #'   Period = "daily"|"weekly"|"monthly",
@@ -14180,7 +14205,8 @@ redshift_modify_usage_limit <- function(UsageLimitId, Amount = NULL, BreachActio
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -14582,7 +14608,8 @@ redshift_put_resource_policy <- function(ResourceArn, Policy) {
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -15082,7 +15109,8 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -15586,7 +15614,8 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -15994,7 +16023,8 @@ redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, Snap
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```
@@ -16558,7 +16588,8 @@ redshift_revoke_snapshot_access <- function(SnapshotIdentifier = NULL, SnapshotA
 #'       )
 #'     ),
 #'     LakehouseRegistrationStatus = "string",
-#'     CatalogArn = "string"
+#'     CatalogArn = "string",
+#'     ExtraComputeForAutomaticOptimization = "string"
 #'   )
 #' )
 #' ```

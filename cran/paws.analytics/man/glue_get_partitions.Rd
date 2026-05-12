@@ -14,7 +14,8 @@ glue_get_partitions(
   MaxResults = NULL,
   ExcludeColumnSchema = NULL,
   TransactionId = NULL,
-  QueryAsOfTime = NULL
+  QueryAsOfTime = NULL,
+  AuditContext = NULL
 )
 }
 \arguments{

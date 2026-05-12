@@ -168,16 +168,14 @@ omics_batch_delete_read_set <- function(ids, sequenceStoreId) {
 }
 .omics$operations$batch_delete_read_set <- omics_batch_delete_read_set
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Cancels an annotation import job.
@@ -269,16 +267,68 @@ omics_cancel_run <- function(id) {
 }
 .omics$operations$cancel_run <- omics_cancel_run
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Cancels all runs within a specified batch
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Cancels all runs within a specified batch. This operation prevents
+#' not-yet-submitted runs from starting and submits
+#' [`cancel_run`][omics_cancel_run] requests for runs that have already
+#' started.
+#' 
+#' Cancel is only allowed on batches in `PENDING`, `SUBMITTING`, or
+#' `INPROGRESS` state. Cancel operations are non-atomic and may be
+#' partially successful. Use [`get_batch`][omics_get_batch] to review
+#' `successfulCancelSubmissionCount` and `failedCancelSubmissionCount` in
+#' the `submissionSummary`. Only one cancel or delete operation per batch
+#' is allowed at a time.
+#'
+#' @usage
+#' omics_cancel_run_batch(batchId)
+#'
+#' @param batchId &#91;required&#93; The identifier portion of the run batch ARN.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_run_batch(
+#'   batchId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_cancel_run_batch
+#'
+#' @aliases omics_cancel_run_batch
+omics_cancel_run_batch <- function(batchId) {
+  op <- new_operation(
+    name = "CancelRunBatch",
+    http_method = "POST",
+    http_path = "/runBatch/cancel",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$cancel_run_batch_input(batchId = batchId)
+  output <- .omics$cancel_run_batch_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$cancel_run_batch <- omics_cancel_run_batch
+
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
+#'
+#' @description
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Cancels a variant import job.
@@ -394,16 +444,14 @@ omics_complete_multipart_read_set_upload <- function(sequenceStoreId, uploadId, 
 }
 .omics$operations$complete_multipart_read_set_upload <- omics_complete_multipart_read_set_upload
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Creates an annotation store.
@@ -603,6 +651,98 @@ omics_create_annotation_store_version <- function(name, versionName, description
   return(response)
 }
 .omics$operations$create_annotation_store_version <- omics_create_annotation_store_version
+
+#' Create a new configuration
+#'
+#' @description
+#' Create a new configuration.
+#'
+#' @usage
+#' omics_create_configuration(name, description, runConfigurations, tags,
+#'   requestId)
+#'
+#' @param name &#91;required&#93; User-friendly name for the configuration.
+#' @param description Optional description for the configuration.
+#' @param runConfigurations &#91;required&#93; Required run-specific configurations.
+#' @param tags Optional tags for the configuration.
+#' @param requestId &#91;required&#93; Optional request idempotency token. If not specified, a universally
+#' unique identifier (UUID) will be automatically generated for the
+#' request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   uuid = "string",
+#'   name = "string",
+#'   description = "string",
+#'   runConfigurations = list(
+#'     vpcConfig = list(
+#'       securityGroupIds = list(
+#'         "string"
+#'       ),
+#'       subnetIds = list(
+#'         "string"
+#'       ),
+#'       vpcId = "string"
+#'     )
+#'   ),
+#'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"DELETED"|"FAILED",
+#'   creationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_configuration(
+#'   name = "string",
+#'   description = "string",
+#'   runConfigurations = list(
+#'     vpcConfig = list(
+#'       securityGroupIds = list(
+#'         "string"
+#'       ),
+#'       subnetIds = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   requestId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_create_configuration
+#'
+#' @aliases omics_create_configuration
+omics_create_configuration <- function(name, description = NULL, runConfigurations, tags = NULL, requestId) {
+  op <- new_operation(
+    name = "CreateConfiguration",
+    http_method = "POST",
+    http_path = "/configuration",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$create_configuration_input(name = name, description = description, runConfigurations = runConfigurations, tags = tags, requestId = requestId)
+  output <- .omics$create_configuration_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$create_configuration <- omics_create_configuration
 
 #' Initiates a multipart read set upload for uploading partitioned source
 #' files into a sequence store
@@ -1181,16 +1321,14 @@ omics_create_share <- function(resourceArn, principalSubscriber, shareName = NUL
 }
 .omics$operations$create_share <- omics_create_share
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Creates a variant store.
@@ -1317,10 +1455,16 @@ omics_create_variant_store <- function(reference, name = NULL, description = NUL
 #' relevant information in the CloudWatch logs and Amazon Web Services
 #' HealthOmics console.
 #' @param description A description for the workflow.
-#' @param engine The workflow engine for the workflow. This is only required if you have
-#' workflow definition files from more than one engine in your zip file.
-#' Otherwise, the service can detect the engine automatically from your
-#' workflow definition.
+#' @param engine The workflow engine for the workflow. By default, Amazon Web Services
+#' HealthOmics detects the engine automatically from your workflow
+#' definition. Provide a value if you have workflow definition files from
+#' more than one engine in your zip file, or to use WDL lenient.
+#' 
+#' WDL lenient is designed to handle workflows migrated from Cromwell. It
+#' supports customer Cromwell directives and some non-conformant logic. For
+#' details, see [Implicit type conversion in WDL
+#' lenient](https://docs.aws.amazon.com/omics/latest/dev/) in the *Amazon
+#' Web Services HealthOmics User Guide*.
 #' @param definitionZip A ZIP archive containing the main workflow definition file and
 #' dependencies that it imports for the workflow. You can use a file with a
 #' ://fileb prefix instead of the Base64 string. For more information, see
@@ -1700,16 +1844,14 @@ omics_create_workflow_version <- function(workflowId, versionName, definitionZip
 }
 .omics$operations$create_workflow_version <- omics_create_workflow_version
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Deletes an annotation store.
@@ -1820,6 +1962,105 @@ omics_delete_annotation_store_versions <- function(name, versions, force = NULL)
   return(response)
 }
 .omics$operations$delete_annotation_store_versions <- omics_delete_annotation_store_versions
+
+#' Deletes a run batch resource and its associated metadata
+#'
+#' @description
+#' Deletes a run batch resource and its associated metadata. This operation
+#' does not delete the individual workflow runs. To delete the runs, call
+#' [`delete_run_batch`][omics_delete_run_batch] before calling
+#' [`delete_batch`][omics_delete_batch].
+#' 
+#' [`delete_batch`][omics_delete_batch] requires the batch to be in a
+#' terminal state: `PROCESSED`, `FAILED`, `CANCELLED`, or `RUNS_DELETED`.
+#' After [`delete_batch`][omics_delete_batch] completes, the batch metadata
+#' is no longer accessible. You cannot call [`get_batch`][omics_get_batch],
+#' [`list_runs_in_batch`][omics_list_runs_in_batch],
+#' [`delete_run_batch`][omics_delete_run_batch], or
+#' [`cancel_run_batch`][omics_cancel_run_batch] on a deleted batch.
+#'
+#' @usage
+#' omics_delete_batch(batchId)
+#'
+#' @param batchId &#91;required&#93; The identifier portion of the run batch ARN.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_batch(
+#'   batchId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_delete_batch
+#'
+#' @aliases omics_delete_batch
+omics_delete_batch <- function(batchId) {
+  op <- new_operation(
+    name = "DeleteBatch",
+    http_method = "DELETE",
+    http_path = "/runBatch/{batchId}",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$delete_batch_input(batchId = batchId)
+  output <- .omics$delete_batch_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$delete_batch <- omics_delete_batch
+
+#' Delete an existing configuration
+#'
+#' @description
+#' Delete an existing configuration.
+#'
+#' @usage
+#' omics_delete_configuration(name)
+#'
+#' @param name &#91;required&#93; Configuration name to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_configuration(
+#'   name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_delete_configuration
+#'
+#' @aliases omics_delete_configuration
+omics_delete_configuration <- function(name) {
+  op <- new_operation(
+    name = "DeleteConfiguration",
+    http_method = "DELETE",
+    http_path = "/configuration/{name}",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$delete_configuration_input(name = name)
+  output <- .omics$delete_configuration_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$delete_configuration <- omics_delete_configuration
 
 #' Deletes a reference genome and returns a response with no body if the
 #' operation is successful
@@ -1987,6 +2228,59 @@ omics_delete_run <- function(id) {
   return(response)
 }
 .omics$operations$delete_run <- omics_delete_run
+
+#' Deletes the individual workflow runs within a batch
+#'
+#' @description
+#' Deletes the individual workflow runs within a batch. This operation is
+#' separate from [`delete_batch`][omics_delete_batch], which removes the
+#' batch metadata.
+#' 
+#' Delete is only allowed on batches in `PROCESSED` or `CANCELLED` state.
+#' Delete operations are non-atomic and may be partially successful. Use
+#' [`get_batch`][omics_get_batch] to review
+#' `successfulDeleteSubmissionCount` and `failedDeleteSubmissionCount` in
+#' the `submissionSummary`. Only one cancel or delete operation per batch
+#' is allowed at a time.
+#'
+#' @usage
+#' omics_delete_run_batch(batchId)
+#'
+#' @param batchId &#91;required&#93; The identifier portion of the run batch ARN.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_run_batch(
+#'   batchId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_delete_run_batch
+#'
+#' @aliases omics_delete_run_batch
+omics_delete_run_batch <- function(batchId) {
+  op <- new_operation(
+    name = "DeleteRunBatch",
+    http_method = "POST",
+    http_path = "/runBatch/delete",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$delete_run_batch_input(batchId = batchId)
+  output <- .omics$delete_run_batch_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$delete_run_batch <- omics_delete_run_batch
 
 #' Deletes a run cache and returns a response with no body if the operation
 #' is successful
@@ -2247,16 +2541,14 @@ omics_delete_share <- function(shareId) {
 }
 .omics$operations$delete_share <- omics_delete_share
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Deletes a variant store.
@@ -2411,16 +2703,14 @@ omics_delete_workflow_version <- function(workflowId, versionName) {
 }
 .omics$operations$delete_workflow_version <- omics_delete_workflow_version
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Gets information about an annotation import job.
@@ -2512,16 +2802,14 @@ omics_get_annotation_import_job <- function(jobId) {
 }
 .omics$operations$get_annotation_import_job <- omics_get_annotation_import_job
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Gets information about an annotation store.
@@ -2689,6 +2977,191 @@ omics_get_annotation_store_version <- function(name, versionName) {
   return(response)
 }
 .omics$operations$get_annotation_store_version <- omics_get_annotation_store_version
+
+#' Retrieves details and current status for a specific run batch, including
+#' submission progress and run execution counts
+#'
+#' @description
+#' Retrieves details and current status for a specific run batch, including
+#' submission progress and run execution counts.
+#'
+#' @usage
+#' omics_get_batch(batchId)
+#'
+#' @param batchId &#91;required&#93; The identifier portion of the run batch ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   arn = "string",
+#'   uuid = "string",
+#'   name = "string",
+#'   status = "CREATING"|"PENDING"|"SUBMITTING"|"INPROGRESS"|"STOPPING"|"CANCELLED"|"FAILED"|"PROCESSED"|"RUNS_DELETING"|"RUNS_DELETED",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   totalRuns = 123,
+#'   defaultRunSetting = list(
+#'     workflowId = "string",
+#'     workflowType = "PRIVATE"|"READY2RUN",
+#'     roleArn = "string",
+#'     name = "string",
+#'     cacheId = "string",
+#'     cacheBehavior = "CACHE_ON_FAILURE"|"CACHE_ALWAYS",
+#'     runGroupId = "string",
+#'     priority = 123,
+#'     parameters = list(),
+#'     storageCapacity = 123,
+#'     outputUri = "string",
+#'     logLevel = "OFF"|"FATAL"|"ERROR"|"ALL",
+#'     runTags = list(
+#'       "string"
+#'     ),
+#'     retentionMode = "RETAIN"|"REMOVE",
+#'     storageType = "STATIC"|"DYNAMIC",
+#'     workflowOwnerId = "string",
+#'     outputBucketOwnerId = "string",
+#'     workflowVersionName = "string",
+#'     networkingMode = "RESTRICTED"|"VPC",
+#'     configurationName = "string"
+#'   ),
+#'   submissionSummary = list(
+#'     successfulStartSubmissionCount = 123,
+#'     failedStartSubmissionCount = 123,
+#'     pendingStartSubmissionCount = 123,
+#'     successfulCancelSubmissionCount = 123,
+#'     failedCancelSubmissionCount = 123,
+#'     successfulDeleteSubmissionCount = 123,
+#'     failedDeleteSubmissionCount = 123
+#'   ),
+#'   runSummary = list(
+#'     pendingRunCount = 123,
+#'     startingRunCount = 123,
+#'     runningRunCount = 123,
+#'     stoppingRunCount = 123,
+#'     completedRunCount = 123,
+#'     deletedRunCount = 123,
+#'     failedRunCount = 123,
+#'     cancelledRunCount = 123
+#'   ),
+#'   creationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   submittedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   processedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   failedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   failureReason = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_batch(
+#'   batchId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_get_batch
+#'
+#' @aliases omics_get_batch
+omics_get_batch <- function(batchId) {
+  op <- new_operation(
+    name = "GetBatch",
+    http_method = "GET",
+    http_path = "/runBatch/{batchId}",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$get_batch_input(batchId = batchId)
+  output <- .omics$get_batch_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$get_batch <- omics_get_batch
+
+#' Retrieve configuration details for specified name
+#'
+#' @description
+#' Retrieve configuration details for specified name.
+#'
+#' @usage
+#' omics_get_configuration(name)
+#'
+#' @param name &#91;required&#93; Configuration name to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   uuid = "string",
+#'   name = "string",
+#'   description = "string",
+#'   runConfigurations = list(
+#'     vpcConfig = list(
+#'       securityGroupIds = list(
+#'         "string"
+#'       ),
+#'       subnetIds = list(
+#'         "string"
+#'       ),
+#'       vpcId = "string"
+#'     )
+#'   ),
+#'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"DELETED"|"FAILED",
+#'   creationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_configuration(
+#'   name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_get_configuration
+#'
+#' @aliases omics_get_configuration
+omics_get_configuration <- function(name) {
+  op <- new_operation(
+    name = "GetConfiguration",
+    http_method = "GET",
+    http_path = "/configuration/{name}",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$get_configuration_input(name = name)
+  output <- .omics$get_configuration_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$get_configuration <- omics_get_configuration
 
 #' Retrieves detailed information from parts of a read set and returns the
 #' read set in the same format that it was uploaded
@@ -3400,6 +3873,7 @@ omics_get_reference_store <- function(id) {
 #'   roleArn = "string",
 #'   name = "string",
 #'   runGroupId = "string",
+#'   batchId = "string",
 #'   priority = 123,
 #'   definition = "string",
 #'   digest = "string",
@@ -3436,7 +3910,22 @@ omics_get_reference_store <- function(id) {
 #'   storageType = "STATIC"|"DYNAMIC",
 #'   workflowOwnerId = "string",
 #'   workflowVersionName = "string",
-#'   workflowUuid = "string"
+#'   workflowUuid = "string",
+#'   networkingMode = "RESTRICTED"|"VPC",
+#'   configuration = list(
+#'     name = "string",
+#'     arn = "string",
+#'     uuid = "string"
+#'   ),
+#'   vpcConfig = list(
+#'     securityGroupIds = list(
+#'       "string"
+#'     ),
+#'     subnetIds = list(
+#'       "string"
+#'     ),
+#'     vpcId = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -3875,16 +4364,14 @@ omics_get_share <- function(shareId) {
 }
 .omics$operations$get_share <- omics_get_share
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Gets information about a variant import job.
@@ -3957,16 +4444,14 @@ omics_get_variant_import_job <- function(jobId) {
 }
 .omics$operations$get_variant_import_job <- omics_get_variant_import_job
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Gets information about a variant store.
@@ -4281,16 +4766,14 @@ omics_get_workflow_version <- function(workflowId, versionName, type = NULL, exp
 }
 .omics$operations$get_workflow_version <- omics_get_workflow_version
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Retrieves a list of annotation import jobs.
@@ -4452,16 +4935,14 @@ omics_list_annotation_store_versions <- function(name, maxResults = NULL, nextTo
 }
 .omics$operations$list_annotation_store_versions <- omics_list_annotation_store_versions
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Retrieves a list of annotation stores.
@@ -4545,6 +5026,142 @@ omics_list_annotation_stores <- function(ids = NULL, maxResults = NULL, nextToke
   return(response)
 }
 .omics$operations$list_annotation_stores <- omics_list_annotation_stores
+
+#' Returns a list of run batches in your account, with optional filtering
+#' by status, name, or run group
+#'
+#' @description
+#' Returns a list of run batches in your account, with optional filtering
+#' by status, name, or run group. Results are paginated. Only one filter
+#' per call is supported.
+#'
+#' @usage
+#' omics_list_batch(maxItems, startingToken, status, name, runGroupId)
+#'
+#' @param maxItems The maximum number of batches to return. If not specified, defaults to
+#' 100.
+#' @param startingToken A pagination token returned from a prior
+#' [`list_batch`][omics_list_batch] call.
+#' @param status Filter batches by status.
+#' @param name Filter batches by name.
+#' @param runGroupId Filter batches by run group ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       status = "CREATING"|"PENDING"|"SUBMITTING"|"INPROGRESS"|"STOPPING"|"CANCELLED"|"FAILED"|"PROCESSED"|"RUNS_DELETING"|"RUNS_DELETED",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       totalRuns = 123,
+#'       workflowId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_batch(
+#'   maxItems = 123,
+#'   startingToken = "string",
+#'   status = "CREATING"|"PENDING"|"SUBMITTING"|"INPROGRESS"|"STOPPING"|"CANCELLED"|"FAILED"|"PROCESSED"|"RUNS_DELETING"|"RUNS_DELETED",
+#'   name = "string",
+#'   runGroupId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_list_batch
+#'
+#' @aliases omics_list_batch
+omics_list_batch <- function(maxItems = NULL, startingToken = NULL, status = NULL, name = NULL, runGroupId = NULL) {
+  op <- new_operation(
+    name = "ListBatch",
+    http_method = "GET",
+    http_path = "/runBatch",
+    host_prefix = "workflows-",
+    paginator = list(input_token = "startingToken", output_token = "nextToken", limit_key = "maxItems", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .omics$list_batch_input(maxItems = maxItems, startingToken = startingToken, status = status, name = name, runGroupId = runGroupId)
+  output <- .omics$list_batch_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$list_batch <- omics_list_batch
+
+#' List all configurations for the account
+#'
+#' @description
+#' List all configurations for the account.
+#'
+#' @usage
+#' omics_list_configurations(maxResults, startingToken)
+#'
+#' @param maxResults Maximum number of results to return.
+#' @param startingToken Pagination token for retrieving next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"DELETED"|"FAILED",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_configurations(
+#'   maxResults = 123,
+#'   startingToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_list_configurations
+#'
+#' @aliases omics_list_configurations
+omics_list_configurations <- function(maxResults = NULL, startingToken = NULL) {
+  op <- new_operation(
+    name = "ListConfigurations",
+    http_method = "GET",
+    http_path = "/configuration",
+    host_prefix = "workflows-",
+    paginator = list(input_token = "startingToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .omics$list_configurations_input(maxResults = maxResults, startingToken = startingToken)
+  output <- .omics$list_configurations_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$list_configurations <- omics_list_configurations
 
 #' Lists in-progress multipart read set uploads for a sequence store and
 #' returns it in a JSON formatted output
@@ -5542,10 +6159,12 @@ omics_list_run_tasks <- function(id, status = NULL, startingToken = NULL, maxRes
 #' in the *Amazon Web Services HealthOmics User Guide*.
 #'
 #' @usage
-#' omics_list_runs(name, runGroupId, startingToken, maxResults, status)
+#' omics_list_runs(name, runGroupId, batchId, startingToken, maxResults,
+#'   status)
 #'
 #' @param name Filter the list by run name.
 #' @param runGroupId Filter the list by run group ID.
+#' @param batchId Filter by batch ID.
 #' @param startingToken Specify the pagination token from a previous request to retrieve the
 #' next page of results.
 #' @param maxResults The maximum number of runs to return in one page of results.
@@ -5561,6 +6180,7 @@ omics_list_run_tasks <- function(id, status = NULL, startingToken = NULL, maxRes
 #'       id = "string",
 #'       status = "PENDING"|"STARTING"|"RUNNING"|"STOPPING"|"COMPLETED"|"DELETED"|"CANCELLED"|"FAILED",
 #'       workflowId = "string",
+#'       batchId = "string",
 #'       name = "string",
 #'       priority = 123,
 #'       storageCapacity = 123,
@@ -5586,6 +6206,7 @@ omics_list_run_tasks <- function(id, status = NULL, startingToken = NULL, maxRes
 #' svc$list_runs(
 #'   name = "string",
 #'   runGroupId = "string",
+#'   batchId = "string",
 #'   startingToken = "string",
 #'   maxResults = 123,
 #'   status = "PENDING"|"STARTING"|"RUNNING"|"STOPPING"|"COMPLETED"|"DELETED"|"CANCELLED"|"FAILED"
@@ -5597,7 +6218,7 @@ omics_list_run_tasks <- function(id, status = NULL, startingToken = NULL, maxRes
 #' @rdname omics_list_runs
 #'
 #' @aliases omics_list_runs
-omics_list_runs <- function(name = NULL, runGroupId = NULL, startingToken = NULL, maxResults = NULL, status = NULL) {
+omics_list_runs <- function(name = NULL, runGroupId = NULL, batchId = NULL, startingToken = NULL, maxResults = NULL, status = NULL) {
   op <- new_operation(
     name = "ListRuns",
     http_method = "GET",
@@ -5606,7 +6227,7 @@ omics_list_runs <- function(name = NULL, runGroupId = NULL, startingToken = NULL
     paginator = list(input_token = "startingToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .omics$list_runs_input(name = name, runGroupId = runGroupId, startingToken = startingToken, maxResults = maxResults, status = status)
+  input <- .omics$list_runs_input(name = name, runGroupId = runGroupId, batchId = batchId, startingToken = startingToken, maxResults = maxResults, status = status)
   output <- .omics$list_runs_output()
   config <- get_config()
   svc <- .omics$service(config, op)
@@ -5615,6 +6236,82 @@ omics_list_runs <- function(name = NULL, runGroupId = NULL, startingToken = NULL
   return(response)
 }
 .omics$operations$list_runs <- omics_list_runs
+
+#' Returns a paginated list of individual workflow runs within a specific
+#' batch
+#'
+#' @description
+#' Returns a paginated list of individual workflow runs within a specific
+#' batch. Use this operation to map each `runSettingId` to its
+#' HealthOmics-generated `runId`, and to check the submission status of
+#' each run. Only one filter per call is supported.
+#'
+#' @usage
+#' omics_list_runs_in_batch(batchId, maxItems, startingToken,
+#'   submissionStatus, runSettingId, runId)
+#'
+#' @param batchId &#91;required&#93; The identifier portion of the run batch ARN.
+#' @param maxItems The maximum number of runs to return.
+#' @param startingToken A pagination token returned from a prior
+#' [`list_runs_in_batch`][omics_list_runs_in_batch] call.
+#' @param submissionStatus Filter runs by submission status.
+#' @param runSettingId Filter runs by the customer-provided run setting ID.
+#' @param runId Filter runs by the HealthOmics-generated run ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   runs = list(
+#'     list(
+#'       runSettingId = "string",
+#'       runId = "string",
+#'       runInternalUuid = "string",
+#'       runArn = "string",
+#'       submissionStatus = "SUCCESS"|"FAILED"|"CANCEL_SUCCESS"|"CANCEL_FAILED"|"DELETE_SUCCESS"|"DELETE_FAILED",
+#'       submissionFailureReason = "string",
+#'       submissionFailureMessage = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_runs_in_batch(
+#'   batchId = "string",
+#'   maxItems = 123,
+#'   startingToken = "string",
+#'   submissionStatus = "SUCCESS"|"FAILED"|"CANCEL_SUCCESS"|"CANCEL_FAILED"|"DELETE_SUCCESS"|"DELETE_FAILED",
+#'   runSettingId = "string",
+#'   runId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_list_runs_in_batch
+#'
+#' @aliases omics_list_runs_in_batch
+omics_list_runs_in_batch <- function(batchId, maxItems = NULL, startingToken = NULL, submissionStatus = NULL, runSettingId = NULL, runId = NULL) {
+  op <- new_operation(
+    name = "ListRunsInBatch",
+    http_method = "GET",
+    http_path = "/runBatch/{batchId}/run",
+    host_prefix = "workflows-",
+    paginator = list(input_token = "startingToken", output_token = "nextToken", limit_key = "maxItems", result_key = "runs"),
+    stream_api = FALSE
+  )
+  input <- .omics$list_runs_in_batch_input(batchId = batchId, maxItems = maxItems, startingToken = startingToken, submissionStatus = submissionStatus, runSettingId = runSettingId, runId = runId)
+  output <- .omics$list_runs_in_batch_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$list_runs_in_batch <- omics_list_runs_in_batch
 
 #' Retrieves a list of sequence stores and returns each sequence store's
 #' metadata
@@ -5851,16 +6548,14 @@ omics_list_tags_for_resource <- function(resourceArn) {
 }
 .omics$operations$list_tags_for_resource <- omics_list_tags_for_resource
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Retrieves a list of variant import jobs.
@@ -5942,16 +6637,14 @@ omics_list_variant_import_jobs <- function(maxResults = NULL, ids = NULL, nextTo
 }
 .omics$operations$list_variant_import_jobs <- omics_list_variant_import_jobs
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Retrieves a list of variant stores.
@@ -6245,16 +6938,14 @@ omics_put_s3_access_policy <- function(s3AccessPointArn, s3AccessPolicy) {
 }
 .omics$operations$put_s3_access_policy <- omics_put_s3_access_policy
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Starts an annotation import job.
@@ -6725,7 +7416,7 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' omics_start_run(workflowId, workflowType, runId, roleArn, name, cacheId,
 #'   cacheBehavior, runGroupId, priority, parameters, storageCapacity,
 #'   outputUri, logLevel, tags, requestId, retentionMode, storageType,
-#'   workflowOwnerId, workflowVersionName)
+#'   workflowOwnerId, workflowVersionName, networkingMode, configurationName)
 #'
 #' @param workflowId The run's workflow ID. The `workflowId` is not the UUID.
 #' @param workflowType The run's workflow type. The `workflowType` must be specified if you are
@@ -6809,6 +7500,9 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' name. To learn more, see [Workflow
 #' versioning](https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html)
 #' in the *Amazon Web Services HealthOmics User Guide*.
+#' @param networkingMode Optional configuration for run networking behavior. If not specified,
+#' this will default to RESTRICTED.
+#' @param configurationName Optional configuration name to use for the workflow run.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6821,7 +7515,13 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #'     "string"
 #'   ),
 #'   uuid = "string",
-#'   runOutputUri = "string"
+#'   runOutputUri = "string",
+#'   configuration = list(
+#'     name = "string",
+#'     arn = "string",
+#'     uuid = "string"
+#'   ),
+#'   networkingMode = "string"
 #' )
 #' ```
 #'
@@ -6848,7 +7548,9 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #'   retentionMode = "RETAIN"|"REMOVE",
 #'   storageType = "STATIC"|"DYNAMIC",
 #'   workflowOwnerId = "string",
-#'   workflowVersionName = "string"
+#'   workflowVersionName = "string",
+#'   networkingMode = "RESTRICTED"|"VPC",
+#'   configurationName = "string"
 #' )
 #' ```
 #'
@@ -6857,7 +7559,7 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' @rdname omics_start_run
 #'
 #' @aliases omics_start_run
-omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL, roleArn, name = NULL, cacheId = NULL, cacheBehavior = NULL, runGroupId = NULL, priority = NULL, parameters = NULL, storageCapacity = NULL, outputUri, logLevel = NULL, tags = NULL, requestId, retentionMode = NULL, storageType = NULL, workflowOwnerId = NULL, workflowVersionName = NULL) {
+omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL, roleArn, name = NULL, cacheId = NULL, cacheBehavior = NULL, runGroupId = NULL, priority = NULL, parameters = NULL, storageCapacity = NULL, outputUri, logLevel = NULL, tags = NULL, requestId, retentionMode = NULL, storageType = NULL, workflowOwnerId = NULL, workflowVersionName = NULL, networkingMode = NULL, configurationName = NULL) {
   op <- new_operation(
     name = "StartRun",
     http_method = "POST",
@@ -6866,7 +7568,7 @@ omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, cacheId = cacheId, cacheBehavior = cacheBehavior, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode, storageType = storageType, workflowOwnerId = workflowOwnerId, workflowVersionName = workflowVersionName)
+  input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, cacheId = cacheId, cacheBehavior = cacheBehavior, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode, storageType = storageType, workflowOwnerId = workflowOwnerId, workflowVersionName = workflowVersionName, networkingMode = networkingMode, configurationName = configurationName)
   output <- .omics$start_run_output()
   config <- get_config()
   svc <- .omics$service(config, op)
@@ -6876,16 +7578,133 @@ omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL
 }
 .omics$operations$start_run <- omics_start_run
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Starts a batch of workflow runs
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Starts a batch of workflow runs. You can group up to 100,000 runs into a
+#' single batch that share a common configuration defined in
+#' `defaultRunSetting`. Per-run overrides can be provided either inline via
+#' `inlineSettings` (up to 100 runs) or via a JSON file stored in Amazon S3
+#' via `s3UriSettings` (up to 100,000 runs).
+#' 
+#' [`start_run_batch`][omics_start_run_batch] validates common fields
+#' synchronously and returns immediately with a batch ID and status
+#' `CREATING`. The batch transitions to `PENDING` once initial setup
+#' completes. Runs are then submitted gradually and asynchronously at a
+#' rate governed by your [`start_run`][omics_start_run] throughput quota.
+#'
+#' @usage
+#' omics_start_run_batch(batchName, requestId, tags, defaultRunSetting,
+#'   batchRunSettings)
+#'
+#' @param batchName An optional user-friendly name for the run batch.
+#' @param requestId &#91;required&#93; A client token used to deduplicate retry requests and prevent duplicate
+#' batches from being created.
+#' @param tags AWS tags to associate with the batch resource. These tags are not
+#' inherited by individual runs. To tag individual runs, use
+#' `defaultRunSetting.runTags`.
+#' @param defaultRunSetting &#91;required&#93; Shared configuration applied to all runs in the batch. See
+#' `DefaultRunSetting`.
+#' @param batchRunSettings &#91;required&#93; The individual run configurations. Specify exactly one of
+#' `inlineSettings` or `s3UriSettings`. See `BatchRunSettings`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   arn = "string",
+#'   status = "CREATING"|"PENDING"|"SUBMITTING"|"INPROGRESS"|"STOPPING"|"CANCELLED"|"FAILED"|"PROCESSED"|"RUNS_DELETING"|"RUNS_DELETED",
+#'   uuid = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_run_batch(
+#'   batchName = "string",
+#'   requestId = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   defaultRunSetting = list(
+#'     workflowId = "string",
+#'     workflowType = "PRIVATE"|"READY2RUN",
+#'     roleArn = "string",
+#'     name = "string",
+#'     cacheId = "string",
+#'     cacheBehavior = "CACHE_ON_FAILURE"|"CACHE_ALWAYS",
+#'     runGroupId = "string",
+#'     priority = 123,
+#'     parameters = list(),
+#'     storageCapacity = 123,
+#'     outputUri = "string",
+#'     logLevel = "OFF"|"FATAL"|"ERROR"|"ALL",
+#'     runTags = list(
+#'       "string"
+#'     ),
+#'     retentionMode = "RETAIN"|"REMOVE",
+#'     storageType = "STATIC"|"DYNAMIC",
+#'     workflowOwnerId = "string",
+#'     outputBucketOwnerId = "string",
+#'     workflowVersionName = "string",
+#'     networkingMode = "RESTRICTED"|"VPC",
+#'     configurationName = "string"
+#'   ),
+#'   batchRunSettings = list(
+#'     inlineSettings = list(
+#'       list(
+#'         runSettingId = "string",
+#'         name = "string",
+#'         outputUri = "string",
+#'         priority = 123,
+#'         parameters = list(),
+#'         outputBucketOwnerId = "string",
+#'         runTags = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     s3UriSettings = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_start_run_batch
+#'
+#' @aliases omics_start_run_batch
+omics_start_run_batch <- function(batchName = NULL, requestId, tags = NULL, defaultRunSetting, batchRunSettings) {
+  op <- new_operation(
+    name = "StartRunBatch",
+    http_method = "POST",
+    http_path = "/runBatch",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$start_run_batch_input(batchName = batchName, requestId = requestId, tags = tags, defaultRunSetting = defaultRunSetting, batchRunSettings = batchRunSettings)
+  output <- .omics$start_run_batch_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$start_run_batch <- omics_start_run_batch
+
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
+#'
+#' @description
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Starts a variant import job.
@@ -7045,16 +7864,14 @@ omics_untag_resource <- function(resourceArn, tagKeys) {
 }
 .omics$operations$untag_resource <- omics_untag_resource
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Updates an annotation store.
@@ -7423,16 +8240,14 @@ omics_update_sequence_store <- function(id, name = NULL, description = NULL, cli
 }
 .omics$operations$update_sequence_store <- omics_update_sequence_store
 
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers
 #'
 #' @description
-#' Amazon Web Services HealthOmics variant stores and annotation stores
-#' will no longer be open to new customers starting November 7, 2025. If
-#' you would like to use variant stores or annotation stores, sign up prior
-#' to that date. Existing customers can continue to use the service as
-#' normal. For more information, see [Amazon Web Services HealthOmics
-#' variant store and annotation store availability
+#' Amazon Web Services HealthOmics variant stores and annotation stores are
+#' no longer open to new customers. Existing customers can continue to use
+#' the service as normal. For more information, see [Amazon Web Services
+#' HealthOmics variant store and annotation store availability
 #' change](https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html).
 #' 
 #' Updates a variant store.

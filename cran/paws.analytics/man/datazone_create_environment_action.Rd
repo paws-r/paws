@@ -6,17 +6,14 @@
 link for an analytics tool that is available in this environment}
 \usage{
 datazone_create_environment_action(
-  description = NULL,
   domainIdentifier,
   environmentIdentifier,
   name,
-  parameters
+  parameters,
+  description = NULL
 )
 }
 \arguments{
-\item{description}{The description of the environment action that is being created in the
-environment.}
-
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain in which the environment action is
 created.}
 
@@ -25,6 +22,9 @@ created.}
 \item{name}{[required] The name of the environment action.}
 
 \item{parameters}{[required] The parameters of the environment action.}
+
+\item{description}{The description of the environment action that is being created in the
+environment.}
 }
 \description{
 Creates an action for the environment, for example, creates a console link for an analytics tool that is available in this environment.

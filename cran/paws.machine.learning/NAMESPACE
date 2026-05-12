@@ -3,6 +3,8 @@
 export(augmentedairuntime)
 export(bedrock)
 export(bedrockagent)
+export(bedrockagentcore)
+export(bedrockagentcorecontrol)
 export(bedrockagentruntime)
 export(bedrockdataautomation)
 export(bedrockdataautomationruntime)

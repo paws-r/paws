@@ -150,9 +150,9 @@ To avoid HTTP errors, ensure that the HTTP response timeout for
 \code{\link[=sqs_receive_message]{receive_message}} requests is longer than the
 \code{WaitTimeSeconds} parameter. For example, with the Java SDK, you can set
 HTTP transport settings using the
-\href{https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/nio/netty/NettyNioAsyncHttpClient.html}{NettyNioAsyncHttpClient}
+\href{https://docs.aws.amazon.com/java/api/latest/software/amazon/awssdk/http/nio/netty/NettyNioAsyncHttpClient.html}{NettyNioAsyncHttpClient}
 for asynchronous clients, or the
-\href{https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/apache/ApacheHttpClient.html}{ApacheHttpClient}
+\href{https://docs.aws.amazon.com/java/api/latest/software/amazon/awssdk/http/apache/ApacheHttpClient.html}{ApacheHttpClient}
 for synchronous clients.}
 
 \item{ReceiveRequestAttemptId}{This parameter applies only to FIFO (first-in-first-out) queues.

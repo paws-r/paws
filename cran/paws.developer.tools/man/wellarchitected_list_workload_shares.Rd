@@ -18,11 +18,7 @@ wellarchitected_list_workload_shares(
 \item{SharedWithPrefix}{The Amazon Web Services account ID, organization ID, or organizational
 unit (OU) ID with which the workload is shared.}
 
-\item{NextToken}{}
-
 \item{MaxResults}{The maximum number of results to return for this request.}
-
-\item{Status}{}
 }
 \description{
 List the workload shares associated with the workload.

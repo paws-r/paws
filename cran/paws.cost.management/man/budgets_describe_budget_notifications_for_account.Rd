@@ -16,8 +16,6 @@ budgets_describe_budget_notifications_for_account(
 
 \item{MaxResults}{An integer that represents how many budgets a paginated response
 contains. The default is 50.}
-
-\item{NextToken}{}
 }
 \description{
 Lists the budget names and notifications that are associated with an account.

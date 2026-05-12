@@ -76,7 +76,7 @@ in the \emph{Amazon Braket Developer Guide}.
 \item \href{https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/braket/package-summary.html}{Java}
 \item \href{https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Braket.html}{JavaScript}
 \item \href{https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.Braket.BraketClient.html}{PHP}
-\item \href{https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/braket.html}{Python (Boto)}
+\item \href{https://docs.aws.amazon.com/boto3/latest/reference/services/braket.html}{Python (Boto)}
 \item \href{https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/Braket.html}{Ruby}
 }
 

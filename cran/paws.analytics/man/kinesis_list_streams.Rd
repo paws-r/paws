@@ -15,8 +15,6 @@ kinesis_list_streams(
 specify a value greater than 100, at most 100 results are returned.}
 
 \item{ExclusiveStartStreamName}{The name of the stream to start the list with.}
-
-\item{NextToken}{}
 }
 \description{
 Lists your Kinesis data streams.

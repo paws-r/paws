@@ -45,8 +45,6 @@ schema in the table's attribute definition.
 }
 }}
 
-\item{ReturnConsumedCapacity}{}
-
 \item{ReturnItemCollectionMetrics}{Determines whether item collection metrics are returned. If set to
 \code{SIZE}, the response includes statistics about item collections, if any,
 that were modified during the operation are returned in the response. If

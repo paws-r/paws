@@ -3,6 +3,62 @@
 #' @include cloudwatch_service.R
 NULL
 
+#' Deletes a specific alarm mute rule
+#'
+#' @description
+#' Deletes a specific alarm mute rule.
+#' 
+#' When you delete a mute rule, any alarms that are currently being muted
+#' by that rule are immediately unmuted. If those alarms are in an ALARM
+#' state, their configured actions will trigger.
+#' 
+#' This operation is idempotent. If you delete a mute rule that does not
+#' exist, the operation succeeds without returning an error.
+#' 
+#' **Permissions**
+#' 
+#' To delete a mute rule, you need the `cloudwatch:DeleteAlarmMuteRule`
+#' permission on the alarm mute rule resource.
+#'
+#' @usage
+#' cloudwatch_delete_alarm_mute_rule(AlarmMuteRuleName)
+#'
+#' @param AlarmMuteRuleName &#91;required&#93; The name of the alarm mute rule to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_alarm_mute_rule(
+#'   AlarmMuteRuleName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_delete_alarm_mute_rule
+#'
+#' @aliases cloudwatch_delete_alarm_mute_rule
+cloudwatch_delete_alarm_mute_rule <- function(AlarmMuteRuleName) {
+  op <- new_operation(
+    name = "DeleteAlarmMuteRule",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatch$delete_alarm_mute_rule_input(AlarmMuteRuleName = AlarmMuteRuleName)
+  output <- .cloudwatch$delete_alarm_mute_rule_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$delete_alarm_mute_rule <- cloudwatch_delete_alarm_mute_rule
+
 #' Deletes the specified alarms
 #'
 #' @description
@@ -214,8 +270,8 @@ cloudwatch_delete_anomaly_detector <- function(Namespace = NULL, MetricName = NU
 #'
 #' @description
 #' Deletes all dashboards that you specify. You can specify up to 100
-#' dashboards to delete. If there is an error during this call, no
-#' dashboards are deleted.
+#' dashboards to delete. If there is an error during this call, the
+#' operation attempts to delete as many dashboards as possible.
 #'
 #' @usage
 #' cloudwatch_delete_dashboards(DashboardNames)
@@ -723,10 +779,18 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmContributor
 #'         )
 #'       ),
 #'       ThresholdMetricId = "string",
-#'       EvaluationState = "PARTIAL_DATA",
+#'       EvaluationState = "PARTIAL_DATA"|"EVALUATION_FAILURE"|"EVALUATION_ERROR",
 #'       StateTransitionedTimestamp = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       EvaluationCriteria = list(
+#'         PromQLCriteria = list(
+#'           Query = "string",
+#'           PendingPeriod = 123,
+#'           RecoveryPeriod = 123
+#'         )
+#'       ),
+#'       EvaluationInterval = 123
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -875,10 +939,18 @@ cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL
 #'         )
 #'       ),
 #'       ThresholdMetricId = "string",
-#'       EvaluationState = "PARTIAL_DATA",
+#'       EvaluationState = "PARTIAL_DATA"|"EVALUATION_FAILURE"|"EVALUATION_ERROR",
 #'       StateTransitionedTimestamp = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       EvaluationCriteria = list(
+#'         PromQLCriteria = list(
+#'           Query = "string",
+#'           PendingPeriod = 123,
+#'           RecoveryPeriod = 123
+#'         )
+#'       ),
+#'       EvaluationInterval = 123
 #'     )
 #'   )
 #' )
@@ -1363,6 +1435,99 @@ cloudwatch_enable_insight_rules <- function(RuleNames) {
   return(response)
 }
 .cloudwatch$operations$enable_insight_rules <- cloudwatch_enable_insight_rules
+
+#' Retrieves details for a specific alarm mute rule
+#'
+#' @description
+#' Retrieves details for a specific alarm mute rule.
+#' 
+#' This operation returns complete information about the mute rule,
+#' including its configuration, status, targeted alarms, and metadata.
+#' 
+#' The returned status indicates the current state of the mute rule:
+#' 
+#' -   **SCHEDULED**: The mute rule is configured and will become active in
+#'     the future
+#' 
+#' -   **ACTIVE**: The mute rule is currently muting alarm actions
+#' 
+#' -   **EXPIRED**: The mute rule has passed its expiration date and will
+#'     no longer become active
+#' 
+#' **Permissions**
+#' 
+#' To retrieve details for a mute rule, you need the
+#' `cloudwatch:GetAlarmMuteRule` permission on the alarm mute rule
+#' resource.
+#'
+#' @usage
+#' cloudwatch_get_alarm_mute_rule(AlarmMuteRuleName)
+#'
+#' @param AlarmMuteRuleName &#91;required&#93; The name of the alarm mute rule to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   AlarmMuteRuleArn = "string",
+#'   Description = "string",
+#'   Rule = list(
+#'     Schedule = list(
+#'       Expression = "string",
+#'       Duration = "string",
+#'       Timezone = "string"
+#'     )
+#'   ),
+#'   MuteTargets = list(
+#'     AlarmNames = list(
+#'       "string"
+#'     )
+#'   ),
+#'   StartDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ExpireDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Status = "SCHEDULED"|"ACTIVE"|"EXPIRED",
+#'   LastUpdatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   MuteType = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_alarm_mute_rule(
+#'   AlarmMuteRuleName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_get_alarm_mute_rule
+#'
+#' @aliases cloudwatch_get_alarm_mute_rule
+cloudwatch_get_alarm_mute_rule <- function(AlarmMuteRuleName) {
+  op <- new_operation(
+    name = "GetAlarmMuteRule",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatch$get_alarm_mute_rule_input(AlarmMuteRuleName = AlarmMuteRuleName)
+  output <- .cloudwatch$get_alarm_mute_rule_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$get_alarm_mute_rule <- cloudwatch_get_alarm_mute_rule
 
 #' Displays the details of the dashboard that you specify
 #'
@@ -2267,6 +2432,147 @@ cloudwatch_get_metric_widget_image <- function(MetricWidget, OutputFormat = NULL
 }
 .cloudwatch$operations$get_metric_widget_image <- cloudwatch_get_metric_widget_image
 
+#' Returns the current status of vended metric enrichment for the account,
+#' including whether CloudWatch vended metrics are enriched with resource
+#' ARN and resource tag labels and queryable using PromQL
+#'
+#' @description
+#' Returns the current status of vended metric enrichment for the account,
+#' including whether CloudWatch vended metrics are enriched with resource
+#' ARN and resource tag labels and queryable using PromQL. For the list of
+#' supported resources, see [Supported Amazon Web Services infrastructure
+#' metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingResourceTagsForTelemetry.html).
+#'
+#' @usage
+#' cloudwatch_get_o_tel_enrichment()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "Running"|"Stopped"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_o_tel_enrichment()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_get_o_tel_enrichment
+#'
+#' @aliases cloudwatch_get_o_tel_enrichment
+cloudwatch_get_o_tel_enrichment <- function() {
+  op <- new_operation(
+    name = "GetOTelEnrichment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatch$get_o_tel_enrichment_input()
+  output <- .cloudwatch$get_o_tel_enrichment_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$get_o_tel_enrichment <- cloudwatch_get_o_tel_enrichment
+
+#' Lists alarm mute rules in your Amazon Web Services account and region
+#'
+#' @description
+#' Lists alarm mute rules in your Amazon Web Services account and region.
+#' 
+#' You can filter the results by alarm name to find all mute rules
+#' targeting a specific alarm, or by status to find rules that are
+#' scheduled, active, or expired.
+#' 
+#' This operation supports pagination for accounts with many mute rules.
+#' Use the `MaxRecords` and `NextToken` parameters to retrieve results in
+#' multiple calls.
+#' 
+#' **Permissions**
+#' 
+#' To list mute rules, you need the `cloudwatch:ListAlarmMuteRules`
+#' permission.
+#'
+#' @usage
+#' cloudwatch_list_alarm_mute_rules(AlarmName, Statuses, MaxRecords,
+#'   NextToken)
+#'
+#' @param AlarmName Filter results to show only mute rules that target the specified alarm
+#' name.
+#' @param Statuses Filter results to show only mute rules with the specified statuses.
+#' Valid values are `SCHEDULED`, `ACTIVE`, or `EXPIRED`.
+#' @param MaxRecords The maximum number of mute rules to return in one call. The default is
+#' 50.
+#' @param NextToken The token returned from a previous call to indicate where to continue
+#' retrieving results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AlarmMuteRuleSummaries = list(
+#'     list(
+#'       AlarmMuteRuleArn = "string",
+#'       ExpireDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "SCHEDULED"|"ACTIVE"|"EXPIRED",
+#'       MuteType = "string",
+#'       LastUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_alarm_mute_rules(
+#'   AlarmName = "string",
+#'   Statuses = list(
+#'     "SCHEDULED"|"ACTIVE"|"EXPIRED"
+#'   ),
+#'   MaxRecords = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_list_alarm_mute_rules
+#'
+#' @aliases cloudwatch_list_alarm_mute_rules
+cloudwatch_list_alarm_mute_rules <- function(AlarmName = NULL, Statuses = NULL, MaxRecords = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAlarmMuteRules",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AlarmMuteRuleSummaries"),
+    stream_api = FALSE
+  )
+  input <- .cloudwatch$list_alarm_mute_rules_input(AlarmName = AlarmName, Statuses = Statuses, MaxRecords = MaxRecords, NextToken = NextToken)
+  output <- .cloudwatch$list_alarm_mute_rules_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$list_alarm_mute_rules <- cloudwatch_list_alarm_mute_rules
+
 #' Returns a list of the dashboards for your account
 #'
 #' @description
@@ -2603,7 +2909,8 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
 #'
 #' @description
 #' Displays the tags associated with a CloudWatch resource. Currently,
-#' alarms and Contributor Insights rules support tagging.
+#' alarms, dashboards, metric streams and Contributor Insights rules
+#' support tagging.
 #'
 #' @usage
 #' cloudwatch_list_tags_for_resource(ResourceARN)
@@ -2615,6 +2922,12 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
 #' 
 #' The ARN format of a Contributor Insights rule is
 #' `arn:aws:cloudwatch:Region:account-id:insight-rule/insight-rule-name `
+#' 
+#' The ARN format of a dashboard is
+#' `arn:aws:cloudwatch::account-id:dashboard/dashboard-name `
+#' 
+#' The ARN format of a metric stream is
+#' `arn:aws:cloudwatch:Region:account-id:metric-stream/metric-stream-name `
 #' 
 #' For more information about ARN format, see [Resource Types Defined by
 #' Amazon
@@ -2664,6 +2977,125 @@ cloudwatch_list_tags_for_resource <- function(ResourceARN) {
   return(response)
 }
 .cloudwatch$operations$list_tags_for_resource <- cloudwatch_list_tags_for_resource
+
+#' Creates or updates an alarm mute rule
+#'
+#' @description
+#' Creates or updates an alarm mute rule.
+#' 
+#' Alarm mute rules automatically mute alarm actions during predefined time
+#' windows. When a mute rule is active, targeted alarms continue to
+#' evaluate metrics and transition between states, but their configured
+#' actions (such as Amazon SNS notifications or Auto Scaling actions) are
+#' muted.
+#' 
+#' You can create mute rules with recurring schedules using `cron`
+#' expressions or one-time mute windows using `at` expressions. Each mute
+#' rule can target up to 100 specific alarms by name.
+#' 
+#' If you specify a rule name that already exists, this operation updates
+#' the existing rule with the new configuration.
+#' 
+#' **Permissions**
+#' 
+#' To create or update a mute rule, you must have the
+#' `cloudwatch:PutAlarmMuteRule` permission on two types of resources: the
+#' alarm mute rule resource itself, and each alarm that the rule targets.
+#' 
+#' For example, If you want to allow a user to create mute rules that
+#' target only specific alarms named "WebServerCPUAlarm" and
+#' "DatabaseConnectionAlarm", you would create an IAM policy with one
+#' statement granting `cloudwatch:PutAlarmMuteRule` on the alarm mute rule
+#' resource (`arn:aws:cloudwatch:[REGION]:123456789012:alarm-mute-rule:*`),
+#' and another statement granting `cloudwatch:PutAlarmMuteRule` on the
+#' targeted alarm resources
+#' (`arn:aws:cloudwatch:[REGION]:123456789012:alarm:WebServerCPUAlarm` and
+#' `arn:aws:cloudwatch:[REGION]:123456789012:alarm:DatabaseConnectionAlarm`).
+#' 
+#' You can also use IAM policy conditions to allow targeting alarms based
+#' on resource tags. For example, you can restrict users to create/update
+#' mute rules to only target alarms that have a specific tag key-value
+#' pair, such as `Team=TeamA`.
+#'
+#' @usage
+#' cloudwatch_put_alarm_mute_rule(Name, Description, Rule, MuteTargets,
+#'   Tags, StartDate, ExpireDate)
+#'
+#' @param Name &#91;required&#93; The name of the alarm mute rule. This name must be unique within your
+#' Amazon Web Services account and region.
+#' @param Description A description of the alarm mute rule that helps you identify its
+#' purpose.
+#' @param Rule &#91;required&#93; The configuration that defines when and how long alarms should be muted.
+#' @param MuteTargets Specifies which alarms this rule applies to.
+#' @param Tags A list of key-value pairs to associate with the alarm mute rule. You can
+#' use tags to categorize and manage your mute rules.
+#' @param StartDate The date and time after which the mute rule takes effect, specified as a
+#' timestamp in ISO 8601 format (for example, `2026-04-15T08:00:00Z`). If
+#' not specified, the mute rule takes effect immediately upon creation and
+#' the mutes are applied as per the schedule expression.
+#' @param ExpireDate The date and time when the mute rule expires and is no longer evaluated,
+#' specified as a timestamp in ISO 8601 format (for example,
+#' `2026-12-31T23:59:59Z`). After this time, the rule status becomes
+#' EXPIRED and will no longer mute the targeted alarms.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_alarm_mute_rule(
+#'   Name = "string",
+#'   Description = "string",
+#'   Rule = list(
+#'     Schedule = list(
+#'       Expression = "string",
+#'       Duration = "string",
+#'       Timezone = "string"
+#'     )
+#'   ),
+#'   MuteTargets = list(
+#'     AlarmNames = list(
+#'       "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   StartDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ExpireDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_put_alarm_mute_rule
+#'
+#' @aliases cloudwatch_put_alarm_mute_rule
+cloudwatch_put_alarm_mute_rule <- function(Name, Description = NULL, Rule, MuteTargets = NULL, Tags = NULL, StartDate = NULL, ExpireDate = NULL) {
+  op <- new_operation(
+    name = "PutAlarmMuteRule",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatch$put_alarm_mute_rule_input(Name = Name, Description = Description, Rule = Rule, MuteTargets = MuteTargets, Tags = Tags, StartDate = StartDate, ExpireDate = ExpireDate)
+  output <- .cloudwatch$put_alarm_mute_rule_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$put_alarm_mute_rule <- cloudwatch_put_alarm_mute_rule
 
 #' Creates an anomaly detection model for a CloudWatch metric
 #'
@@ -3141,7 +3573,7 @@ cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions =
 #' the dashboard.
 #'
 #' @usage
-#' cloudwatch_put_dashboard(DashboardName, DashboardBody)
+#' cloudwatch_put_dashboard(DashboardName, DashboardBody, Tags)
 #'
 #' @param DashboardName &#91;required&#93; The name of the dashboard. If a dashboard with this name already exists,
 #' this call modifies that dashboard, replacing its current contents.
@@ -3154,6 +3586,18 @@ cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions =
 #' 
 #' For more information about the syntax, see [Dashboard Body Structure and
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
+#' @param Tags A list of key-value pairs to associate with the dashboard. You can
+#' associate as many as 50 tags with a dashboard.
+#' 
+#' Tags can help you organize and categorize your dashboards. You can also
+#' use them to scope user permissions by granting a user permission to
+#' access or change only dashboards with certain tag values.
+#' 
+#' You can use this parameter only when creating a new dashboard. If you
+#' specify `Tags` when updating an existing dashboard, the tag updates are
+#' ignored. To add or update tags on an existing dashboard, use
+#' [`tag_resource`][cloudwatch_tag_resource]. To remove tags, use
+#' [`untag_resource`][cloudwatch_untag_resource].
 #'
 #' @return
 #' A list with the following syntax:
@@ -3172,7 +3616,13 @@ cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions =
 #' ```
 #' svc$put_dashboard(
 #'   DashboardName = "string",
-#'   DashboardBody = "string"
+#'   DashboardBody = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -3181,7 +3631,7 @@ cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions =
 #' @rdname cloudwatch_put_dashboard
 #'
 #' @aliases cloudwatch_put_dashboard
-cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
+cloudwatch_put_dashboard <- function(DashboardName, DashboardBody, Tags = NULL) {
   op <- new_operation(
     name = "PutDashboard",
     http_method = "POST",
@@ -3190,7 +3640,7 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatch$put_dashboard_input(DashboardName = DashboardName, DashboardBody = DashboardBody)
+  input <- .cloudwatch$put_dashboard_input(DashboardName = DashboardName, DashboardBody = DashboardBody, Tags = Tags)
   output <- .cloudwatch$put_dashboard_output()
   config <- get_config()
   svc <- .cloudwatch$service(config, op)
@@ -3377,22 +3827,23 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 .cloudwatch$operations$put_managed_insight_rules <- cloudwatch_put_managed_insight_rules
 
 #' Creates or updates an alarm and associates it with the specified metric,
-#' metric math expression, anomaly detection model, or Metrics Insights
-#' query
+#' metric math expression, anomaly detection model, Metrics Insights query,
+#' or PromQL query
 #'
 #' @description
 #' Creates or updates an alarm and associates it with the specified metric,
-#' metric math expression, anomaly detection model, or Metrics Insights
-#' query. For more information about using a Metrics Insights query for an
-#' alarm, see [Create alarms on Metrics Insights
-#' queries](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Metrics_Insights_Alarm.html).
+#' metric math expression, anomaly detection model, Metrics Insights query,
+#' or PromQL query. For more information about using a Metrics Insights
+#' query for an alarm, see [Create alarms on Metrics Insights
+#' queries](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/multi-time-series-alarm.html).
 #' 
 #' Alarms based on anomaly detection models cannot have Auto Scaling
 #' actions.
 #' 
 #' When this operation creates an alarm, the alarm state is immediately set
-#' to `INSUFFICIENT_DATA`. The alarm is then evaluated and its state is set
-#' appropriately. Any actions associated with the new state are then
+#' to `INSUFFICIENT_DATA`. For PromQL alarms, the alarm state is instead
+#' immediately set to `OK`. The alarm is then evaluated and its state is
+#' set appropriately. Any actions associated with the new state are then
 #' executed.
 #' 
 #' When you update an existing alarm, its state is left unchanged, but the
@@ -3447,7 +3898,7 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #'   Statistic, ExtendedStatistic, Dimensions, Period, Unit,
 #'   EvaluationPeriods, DatapointsToAlarm, Threshold, ComparisonOperator,
 #'   TreatMissingData, EvaluateLowSampleCountPercentile, Metrics, Tags,
-#'   ThresholdMetricId)
+#'   ThresholdMetricId, EvaluationCriteria, EvaluationInterval)
 #'
 #' @param AlarmName &#91;required&#93; The name for the alarm. This name must be unique within the Region.
 #' 
@@ -3600,7 +4051,8 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' -   `arn:aws:ssm-incidents::account-id:responseplan/response-plan-name `
 #' @param MetricName The name for the metric associated with the alarm. For each
 #' [`put_metric_alarm`][cloudwatch_put_metric_alarm] operation, you must
-#' specify either `MetricName` or a `Metrics` array.
+#' specify either `MetricName`, a `Metrics` array, or an
+#' `EvaluationCriteria`.
 #' 
 #' If you are creating an alarm based on a math expression, you cannot
 #' specify this parameter, or any of the `Namespace`, `Dimensions`,
@@ -3692,7 +4144,7 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' We recommend omitting `Unit` so that you don't inadvertently specify an
 #' incorrect unit that is not published for this metric. Doing so causes
 #' the alarm to be stuck in the `INSUFFICIENT DATA` state.
-#' @param EvaluationPeriods &#91;required&#93; The number of periods over which data is compared to the specified
+#' @param EvaluationPeriods The number of periods over which data is compared to the specified
 #' threshold. If you are setting an alarm that requires that a number of
 #' consecutive data points be breaching to trigger the alarm, this value
 #' specifies that number. If you are setting an "M out of N" alarm, this
@@ -3700,13 +4152,13 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' @param DatapointsToAlarm The number of data points that must be breaching to trigger the alarm.
 #' This is used only if you are setting an "M out of N" alarm. In that
 #' case, this value is the M. For more information, see [Evaluating an
-#' Alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation)
+#' Alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#alarm-evaluation)
 #' in the *Amazon CloudWatch User Guide*.
 #' @param Threshold The value against which the specified statistic is compared.
 #' 
 #' This parameter is required for alarms based on static thresholds, but
 #' should not be used for alarms based on anomaly detection models.
-#' @param ComparisonOperator &#91;required&#93; The arithmetic operation to use when comparing the specified statistic
+#' @param ComparisonOperator The arithmetic operation to use when comparing the specified statistic
 #' and threshold. The specified statistic value is used as the first
 #' operand.
 #' 
@@ -3717,7 +4169,7 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' `TreatMissingData` is omitted, the default behavior of `missing` is
 #' used. For more information, see [Configuring How CloudWatch Alarms
 #' Treats Missing
-#' Data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data).
+#' Data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#alarms-and-missing-data).
 #' 
 #' Valid Values: `breaching | notBreaching | ignore | missing`
 #' 
@@ -3725,19 +4177,22 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' `ignore` missing data even if you choose a different option for
 #' `TreatMissingData`. When an `AWS/DynamoDB` metric has missing data,
 #' alarms that evaluate that metric remain in their current state.
+#' 
+#' This parameter is not applicable to PromQL alarms.
 #' @param EvaluateLowSampleCountPercentile Used only for alarms based on percentiles. If you specify `ignore`, the
 #' alarm state does not change during periods with too few data points to
 #' be statistically significant. If you specify `evaluate` or omit this
 #' parameter, the alarm is always evaluated and possibly changes state no
 #' matter how many data points are available. For more information, see
 #' [Percentile-Based CloudWatch Alarms and Low Data
-#' Samples](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples).
+#' Samples](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#percentiles-with-low-samples).
 #' 
 #' Valid Values: `evaluate | ignore`
 #' @param Metrics An array of `MetricDataQuery` structures that enable you to create an
 #' alarm based on the result of a metric math expression. For each
 #' [`put_metric_alarm`][cloudwatch_put_metric_alarm] operation, you must
-#' specify either `MetricName` or a `Metrics` array.
+#' specify either `MetricName`, a `Metrics` array, or an
+#' `EvaluationCriteria`.
 #' 
 #' Each item in the `Metrics` array either retrieves a metric or performs a
 #' math expression.
@@ -3777,6 +4232,27 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' Model Alarm** example on this page.
 #' 
 #' If your alarm uses this parameter, it cannot have Auto Scaling actions.
+#' @param EvaluationCriteria The evaluation criteria for the alarm. For each
+#' [`put_metric_alarm`][cloudwatch_put_metric_alarm] operation, you must
+#' specify either `MetricName`, a `Metrics` array, or an
+#' `EvaluationCriteria`.
+#' 
+#' If you use the `EvaluationCriteria` parameter, you cannot include the
+#' `Namespace`, `MetricName`, `Dimensions`, `Period`, `Unit`, `Statistic`,
+#' `ExtendedStatistic`, `Metrics`, `Threshold`, `ComparisonOperator`,
+#' `ThresholdMetricId`, `EvaluationPeriods`, or `DatapointsToAlarm`
+#' parameters of [`put_metric_alarm`][cloudwatch_put_metric_alarm] in the
+#' same operation. Instead, all evaluation parameters are defined within
+#' this structure.
+#' 
+#' For an example of how to use this parameter, see the **PromQL alarm**
+#' example on this page.
+#' @param EvaluationInterval The frequency, in seconds, at which the alarm is evaluated. Valid values
+#' are 10, 20, 30, and any multiple of 60.
+#' 
+#' This parameter is required for alarms that use `EvaluationCriteria`, and
+#' cannot be specified for alarms configured with `MetricName` or
+#' `Metrics`.
 #'
 #' @return
 #' An empty list.
@@ -3845,7 +4321,15 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #'       Value = "string"
 #'     )
 #'   ),
-#'   ThresholdMetricId = "string"
+#'   ThresholdMetricId = "string",
+#'   EvaluationCriteria = list(
+#'     PromQLCriteria = list(
+#'       Query = "string",
+#'       PendingPeriod = 123,
+#'       RecoveryPeriod = 123
+#'     )
+#'   ),
+#'   EvaluationInterval = 123
 #' )
 #' ```
 #'
@@ -3854,7 +4338,7 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' @rdname cloudwatch_put_metric_alarm
 #'
 #' @aliases cloudwatch_put_metric_alarm
-cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, ActionsEnabled = NULL, OKActions = NULL, AlarmActions = NULL, InsufficientDataActions = NULL, MetricName = NULL, Namespace = NULL, Statistic = NULL, ExtendedStatistic = NULL, Dimensions = NULL, Period = NULL, Unit = NULL, EvaluationPeriods, DatapointsToAlarm = NULL, Threshold = NULL, ComparisonOperator, TreatMissingData = NULL, EvaluateLowSampleCountPercentile = NULL, Metrics = NULL, Tags = NULL, ThresholdMetricId = NULL) {
+cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, ActionsEnabled = NULL, OKActions = NULL, AlarmActions = NULL, InsufficientDataActions = NULL, MetricName = NULL, Namespace = NULL, Statistic = NULL, ExtendedStatistic = NULL, Dimensions = NULL, Period = NULL, Unit = NULL, EvaluationPeriods = NULL, DatapointsToAlarm = NULL, Threshold = NULL, ComparisonOperator = NULL, TreatMissingData = NULL, EvaluateLowSampleCountPercentile = NULL, Metrics = NULL, Tags = NULL, ThresholdMetricId = NULL, EvaluationCriteria = NULL, EvaluationInterval = NULL) {
   op <- new_operation(
     name = "PutMetricAlarm",
     http_method = "POST",
@@ -3863,7 +4347,7 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatch$put_metric_alarm_input(AlarmName = AlarmName, AlarmDescription = AlarmDescription, ActionsEnabled = ActionsEnabled, OKActions = OKActions, AlarmActions = AlarmActions, InsufficientDataActions = InsufficientDataActions, MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit, EvaluationPeriods = EvaluationPeriods, DatapointsToAlarm = DatapointsToAlarm, Threshold = Threshold, ComparisonOperator = ComparisonOperator, TreatMissingData = TreatMissingData, EvaluateLowSampleCountPercentile = EvaluateLowSampleCountPercentile, Metrics = Metrics, Tags = Tags, ThresholdMetricId = ThresholdMetricId)
+  input <- .cloudwatch$put_metric_alarm_input(AlarmName = AlarmName, AlarmDescription = AlarmDescription, ActionsEnabled = ActionsEnabled, OKActions = OKActions, AlarmActions = AlarmActions, InsufficientDataActions = InsufficientDataActions, MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit, EvaluationPeriods = EvaluationPeriods, DatapointsToAlarm = DatapointsToAlarm, Threshold = Threshold, ComparisonOperator = ComparisonOperator, TreatMissingData = TreatMissingData, EvaluateLowSampleCountPercentile = EvaluateLowSampleCountPercentile, Metrics = Metrics, Tags = Tags, ThresholdMetricId = ThresholdMetricId, EvaluationCriteria = EvaluationCriteria, EvaluationInterval = EvaluationInterval)
   output <- .cloudwatch$put_metric_alarm_output()
   config <- get_config()
   svc <- .cloudwatch$service(config, op)
@@ -4420,6 +4904,60 @@ cloudwatch_start_metric_streams <- function(Names) {
 }
 .cloudwatch$operations$start_metric_streams <- cloudwatch_start_metric_streams
 
+#' Enables enrichment and PromQL access for CloudWatch vended metrics for
+#' supported Amazon Web Services resources in the account
+#'
+#' @description
+#' Enables enrichment and PromQL access for CloudWatch vended metrics for
+#' [supported Amazon Web Services
+#' resources](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingResourceTagsForTelemetry.html)
+#' in the account. Once enabled, metrics that contain a resource identifier
+#' dimension (for example, EC2 `CPUUtilization` with an `InstanceId`
+#' dimension) are enriched with resource ARN and resource tag labels and
+#' become queryable using PromQL.
+#' 
+#' Before calling this operation, you must enable resource tags on
+#' telemetry for your account. For more information, see [Enable resource
+#' tags on
+#' telemetry](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/EnableResourceTagsOnTelemetry.html).
+#'
+#' @usage
+#' cloudwatch_start_o_tel_enrichment()
+#'
+
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_o_tel_enrichment()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_start_o_tel_enrichment
+#'
+#' @aliases cloudwatch_start_o_tel_enrichment
+cloudwatch_start_o_tel_enrichment <- function() {
+  op <- new_operation(
+    name = "StartOTelEnrichment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatch$start_o_tel_enrichment_input()
+  output <- .cloudwatch$start_o_tel_enrichment_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$start_o_tel_enrichment <- cloudwatch_start_o_tel_enrichment
+
 #' Stops the streaming of metrics for one or more of your metric streams
 #'
 #' @description
@@ -4470,13 +5008,61 @@ cloudwatch_stop_metric_streams <- function(Names) {
 }
 .cloudwatch$operations$stop_metric_streams <- cloudwatch_stop_metric_streams
 
+#' Disables enrichment and PromQL access for CloudWatch vended metrics for
+#' supported Amazon Web Services resources in the account
+#'
+#' @description
+#' Disables enrichment and PromQL access for CloudWatch vended metrics for
+#' [supported Amazon Web Services
+#' resources](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingResourceTagsForTelemetry.html)
+#' in the account. After disabling, these metrics are no longer enriched
+#' with resource ARN and resource tag labels, and cannot be queried using
+#' PromQL.
+#'
+#' @usage
+#' cloudwatch_stop_o_tel_enrichment()
+#'
+
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_o_tel_enrichment()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_stop_o_tel_enrichment
+#'
+#' @aliases cloudwatch_stop_o_tel_enrichment
+cloudwatch_stop_o_tel_enrichment <- function() {
+  op <- new_operation(
+    name = "StopOTelEnrichment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatch$stop_o_tel_enrichment_input()
+  output <- .cloudwatch$stop_o_tel_enrichment_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$stop_o_tel_enrichment <- cloudwatch_stop_o_tel_enrichment
+
 #' Assigns one or more tags (key-value pairs) to the specified CloudWatch
 #' resource
 #'
 #' @description
 #' Assigns one or more tags (key-value pairs) to the specified CloudWatch
 #' resource. Currently, the only CloudWatch resources that can be tagged
-#' are alarms and Contributor Insights rules.
+#' are alarms, dashboards, metric streams and Contributor Insights rules.
 #' 
 #' Tags can help you organize and categorize your resources. You can also
 #' use them to scope user permissions by granting a user permission to
@@ -4503,6 +5089,12 @@ cloudwatch_stop_metric_streams <- function(Names) {
 #' 
 #' The ARN format of a Contributor Insights rule is
 #' `arn:aws:cloudwatch:Region:account-id:insight-rule/insight-rule-name `
+#' 
+#' The ARN format of a dashboard is
+#' `arn:aws:cloudwatch::account-id:dashboard/dashboard-name `
+#' 
+#' The ARN format of a metric stream is
+#' `arn:aws:cloudwatch:Region:account-id:metric-stream/metric-stream-name `
 #' 
 #' For more information about ARN format, see [Resource Types Defined by
 #' Amazon
@@ -4553,7 +5145,9 @@ cloudwatch_tag_resource <- function(ResourceARN, Tags) {
 #' Removes one or more tags from the specified resource
 #'
 #' @description
-#' Removes one or more tags from the specified resource.
+#' Removes one or more tags from the specified resource. Currently, alarms,
+#' dashboards, metric streams and Contributor Insights rules support
+#' tagging.
 #'
 #' @usage
 #' cloudwatch_untag_resource(ResourceARN, TagKeys)
@@ -4565,6 +5159,12 @@ cloudwatch_tag_resource <- function(ResourceARN, Tags) {
 #' 
 #' The ARN format of a Contributor Insights rule is
 #' `arn:aws:cloudwatch:Region:account-id:insight-rule/insight-rule-name `
+#' 
+#' The ARN format of a dashboard is
+#' `arn:aws:cloudwatch::account-id:dashboard/dashboard-name `
+#' 
+#' The ARN format of a metric stream is
+#' `arn:aws:cloudwatch:Region:account-id:metric-stream/metric-stream-name `
 #' 
 #' For more information about ARN format, see [Resource Types Defined by
 #' Amazon

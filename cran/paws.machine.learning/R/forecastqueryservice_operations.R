@@ -25,7 +25,7 @@ NULL
 #' `{"item_id" : "client_21"}`
 #' 
 #' To get the full forecast, use the
-#' [CreateForecastExportJob](https://docs.aws.amazon.com/en_us/forecast/latest/dg/API_CreateForecastExportJob.html)
+#' [CreateForecastExportJob](https://docs.aws.amazon.com/forecast/latest/dg/API_CreateForecastExportJob.html)
 #' operation.
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of results, use the
@@ -74,7 +74,7 @@ forecastqueryservice_query_forecast <- function(ForecastArn, StartDate = NULL, E
 #' `{"item_id" : "client_21"}`
 #' 
 #' To get the full what-if forecast, use the
-#' [CreateForecastExportJob](https://docs.aws.amazon.com/en_us/forecast/latest/dg/API_CreateWhatIfForecastExport.html)
+#' [CreateForecastExportJob](https://docs.aws.amazon.com/forecast/latest/dg/API_CreateWhatIfForecastExport.html)
 #' operation.
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of results, use the

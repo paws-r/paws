@@ -22,7 +22,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.3.3
+Config/roxygen2/version: 8.0.0
 Collate: 
     'applicationautoscaling_service.R'
     'applicationautoscaling_interfaces.R'
@@ -60,9 +60,6 @@ Collate:
     'cloudwatchapplicationsignals_service.R'
     'cloudwatchapplicationsignals_interfaces.R'
     'cloudwatchapplicationsignals_operations.R'
-    'cloudwatchevidently_service.R'
-    'cloudwatchevidently_interfaces.R'
-    'cloudwatchevidently_operations.R'
     'cloudwatchinternetmonitor_service.R'
     'cloudwatchinternetmonitor_interfaces.R'
     'cloudwatchinternetmonitor_operations.R'

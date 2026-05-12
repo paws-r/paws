@@ -13,12 +13,6 @@ xray_put_telemetry_records(
 }
 \arguments{
 \item{TelemetryRecords}{[required]}
-
-\item{EC2InstanceId}{}
-
-\item{Hostname}{}
-
-\item{ResourceARN}{}
 }
 \description{
 Used by the Amazon Web Services X-Ray daemon to upload telemetry.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_describe_standards}
 \alias{securityhub_describe_standards}
-\title{Returns a list of the available standards in Security Hub}
+\title{Returns a list of the available standards in Security Hub CSPM}
 \usage{
 securityhub_describe_standards(NextToken = NULL, MaxResults = NULL)
 }
@@ -18,7 +18,7 @@ response.}
 \item{MaxResults}{The maximum number of standards to return.}
 }
 \description{
-Returns a list of the available standards in Security Hub.
+Returns a list of the available standards in Security Hub CSPM.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_describe_standards/} for full documentation.
 }

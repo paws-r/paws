@@ -7,8 +7,6 @@
 gluedatabrew_update_project(Sample = NULL, RoleArn, Name)
 }
 \arguments{
-\item{Sample}{}
-
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to be assumed for this
 request.}
 

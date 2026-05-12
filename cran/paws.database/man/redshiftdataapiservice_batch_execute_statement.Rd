@@ -13,6 +13,7 @@ redshiftdataapiservice_batch_execute_statement(
   Database = NULL,
   WithEvent = NULL,
   StatementName = NULL,
+  Parameters = NULL,
   WorkgroupName = NULL,
   ClientToken = NULL,
   ResultFormat = NULL,
@@ -46,6 +47,9 @@ EventBridge event bus after the SQL statements run.}
 
 \item{StatementName}{The name of the SQL statements. You can name the SQL statements when you
 create them to identify the query.}
+
+\item{Parameters}{The parameters for the SQL statements. The parameters are shared across
+all SQL statements in the batch.}
 
 \item{WorkgroupName}{The serverless workgroup name or Amazon Resource Name (ARN). This
 parameter is required when connecting to a serverless workgroup and

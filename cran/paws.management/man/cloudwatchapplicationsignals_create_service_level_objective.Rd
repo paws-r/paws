@@ -12,7 +12,9 @@ cloudwatchapplicationsignals_create_service_level_objective(
   RequestBasedSliConfig = NULL,
   Goal = NULL,
   Tags = NULL,
-  BurnRateConfigurations = NULL
+  BurnRateConfigurations = NULL,
+  CreateRecommendedSlo = NULL,
+  AutoInvestigationEnabled = NULL
 )
 }
 \arguments{
@@ -47,6 +49,17 @@ access or change only resources with certain tag values.}
 \item{BurnRateConfigurations}{Use this array to create \emph{burn rates} for this SLO. Each burn rate is a
 metric that indicates how fast the service is consuming the error
 budget, relative to the attainment goal of the SLO.}
+
+\item{CreateRecommendedSlo}{Set this to \code{true} to create a recommended SLO out of the box. When set
+to \code{true}, you don't need to specify the \code{MetricThreshold} or
+\code{ComparisonOperator} in the \code{SliConfig} or \code{RequestBasedSliConfig}. The
+default value is \code{false}.
+
+This is supported for SLOs on a service, service operation, or a
+dependency.}
+
+\item{AutoInvestigationEnabled}{Indicates whether DevOps Agent will automatically investigate this SLO
+when it is breached}
 }
 \description{
 Creates a service level objective (SLO), which can help you ensure that your critical business operations are meeting customer expectations. Use SLOs to set and track specific target levels for the reliability and availability of your applications and services. SLOs use service level indicators (SLIs) to calculate whether the application is performing at the level that you want.

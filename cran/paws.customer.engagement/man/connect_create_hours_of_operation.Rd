@@ -10,6 +10,7 @@ connect_create_hours_of_operation(
   Description = NULL,
   TimeZone,
   Config,
+  ParentHoursOfOperationConfigs = NULL,
   Tags = NULL
 )
 }
@@ -25,6 +26,12 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{Config}{[required] Configuration information for the hours of operation: day, start time,
 and end time.}
+
+\item{ParentHoursOfOperationConfigs}{Configuration for parent hours of operations. Eg: ResourceArn.
+
+For more information about parent hours of operations, see Link
+overrides from different hours of operation in the \emph{Administrator
+Guide}.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
 For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}

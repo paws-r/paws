@@ -2,8 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_cancel_annotation_import_job}
 \alias{omics_cancel_annotation_import_job}
-\title{Amazon Web Services HealthOmics variant stores and annotation stores
-will no longer be open to new customers starting November 7, 2025}
+\title{Amazon Web Services HealthOmics variant stores and annotation stores are
+no longer open to new customers}
 \usage{
 omics_cancel_annotation_import_job(jobId)
 }
@@ -11,7 +11,7 @@ omics_cancel_annotation_import_job(jobId)
 \item{jobId}{[required] The job's ID.}
 }
 \description{
-Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html}{Amazon Web Services HealthOmics variant store and annotation store availability change}.
+Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html}{Amazon Web Services HealthOmics variant store and annotation store availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_cancel_annotation_import_job/} for full documentation.
 }

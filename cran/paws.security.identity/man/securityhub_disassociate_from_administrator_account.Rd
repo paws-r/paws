@@ -2,13 +2,13 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_disassociate_from_administrator_account}
 \alias{securityhub_disassociate_from_administrator_account}
-\title{Disassociates the current Security Hub member account from the
+\title{Disassociates the current Security Hub CSPM member account from the
 associated administrator account}
 \usage{
 securityhub_disassociate_from_administrator_account()
 }
 \description{
-Disassociates the current Security Hub member account from the associated administrator account.
+Disassociates the current Security Hub CSPM member account from the associated administrator account.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_disassociate_from_administrator_account/} for full documentation.
 }

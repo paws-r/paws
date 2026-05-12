@@ -9,14 +9,14 @@ rds_create_custom_db_engine_version(
   EngineVersion,
   DatabaseInstallationFilesS3BucketName = NULL,
   DatabaseInstallationFilesS3Prefix = NULL,
+  DatabaseInstallationFiles = NULL,
   ImageId = NULL,
   KMSKeyId = NULL,
   SourceCustomDbEngineVersionIdentifier = NULL,
   UseAwsProvidedLatestImage = NULL,
   Description = NULL,
   Manifest = NULL,
-  Tags = NULL,
-  DatabaseInstallationFiles = NULL
+  Tags = NULL
 )
 }
 \arguments{
@@ -58,6 +58,9 @@ files for your CEV. For example, a valid bucket name is
 \item{DatabaseInstallationFilesS3Prefix}{The Amazon S3 directory that contains the database installation files
 for your CEV. For example, a valid bucket name is \code{123456789012/cev1}.
 If this setting isn't specified, no prefix is assumed.}
+
+\item{DatabaseInstallationFiles}{The database installation files (ISO and EXE) uploaded to Amazon S3 for
+your database engine version to import to Amazon RDS.}
 
 \item{ImageId}{The ID of the Amazon Machine Image (AMI). For RDS Custom for SQL Server,
 an AMI ID is required to create a CEV. For RDS Custom for Oracle, the
@@ -121,11 +124,6 @@ applies these patches after applying the PSU and RU patches.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-cev.html#custom-cev.preparing.manifest}{Creating the CEV manifest}
 in the \emph{Amazon RDS User Guide}.}
-
-\item{Tags}{}
-
-\item{DatabaseInstallationFiles}{The database installation files (ISO and EXE) uploaded to Amazon S3 for
-your database engine version to import to Amazon RDS.}
 }
 \description{
 Creates a custom DB engine version (CEV).

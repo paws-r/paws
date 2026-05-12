@@ -5,40 +5,45 @@
 \title{Creates a subscription target in Amazon DataZone}
 \usage{
 datazone_create_subscription_target(
-  applicableAssetTypes,
-  authorizedPrincipals,
-  clientToken = NULL,
   domainIdentifier,
   environmentIdentifier,
-  manageAccessRole,
   name,
-  provider = NULL,
+  type,
   subscriptionTargetConfig,
-  type
+  authorizedPrincipals,
+  manageAccessRole,
+  applicableAssetTypes,
+  provider = NULL,
+  clientToken = NULL,
+  subscriptionGrantCreationMode = NULL
 )
 }
 \arguments{
-\item{applicableAssetTypes}{[required] The asset types that can be included in the subscription target.}
-
-\item{authorizedPrincipals}{[required] The authorized principals of the subscription target.}
-
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain in which subscription target is
 created.}
 
 \item{environmentIdentifier}{[required] The ID of the environment in which subscription target is created.}
 
-\item{manageAccessRole}{[required] The manage access role that is used to create the subscription target.}
-
 \item{name}{[required] The name of the subscription target.}
 
-\item{provider}{The provider of the subscription target.}
+\item{type}{[required] The type of the subscription target.}
 
 \item{subscriptionTargetConfig}{[required] The configuration of the subscription target.}
 
-\item{type}{[required] The type of the subscription target.}
+\item{authorizedPrincipals}{[required] The authorized principals of the subscription target.}
+
+\item{manageAccessRole}{[required] The manage access role that is used to create the subscription target.}
+
+\item{applicableAssetTypes}{[required] The asset types that can be included in the subscription target.}
+
+\item{provider}{The provider of the subscription target.}
+
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
+
+\item{subscriptionGrantCreationMode}{Determines the subscription grant creation mode for this target,
+defining if grants are auto-created upon subscription approval or
+managed manually.}
 }
 \description{
 Creates a subscription target in Amazon DataZone.

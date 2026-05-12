@@ -11,7 +11,8 @@ configservice_put_conformance_pack(
   DeliveryS3Bucket = NULL,
   DeliveryS3KeyPrefix = NULL,
   ConformancePackInputParameters = NULL,
-  TemplateSSMDocumentDetails = NULL
+  TemplateSSMDocumentDetails = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -50,6 +51,9 @@ This field is optional.}
 or the Amazon Resource Name (ARN) of the Amazon Web Services Systems
 Manager document (SSM document) and the version of the SSM document that
 is used to create a conformance pack.}
+
+\item{Tags}{The tags for the conformance pack. Each tag consists of a key and an
+optional value, both of which you define.}
 }
 \description{
 Creates or updates a conformance pack. A conformance pack is a collection of Config rules that can be easily deployed in an account and a region and across an organization. For information on how many conformance packs you can have per account, see \href{https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html}{\strong{Service Limits}} in the \emph{Config Developer Guide}.

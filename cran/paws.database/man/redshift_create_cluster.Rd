@@ -44,7 +44,8 @@ redshift_create_cluster(
   IpAddressType = NULL,
   MultiAZ = NULL,
   RedshiftIdcApplicationArn = NULL,
-  CatalogName = NULL
+  CatalogName = NULL,
+  ExtraComputeForAutomaticOptimization = NULL
 )
 }
 \arguments{
@@ -354,6 +355,11 @@ Constraints:
 Pattern: \verb{^[a-z0-9_-]*[a-z]+[a-z0-9_-]*$}
 
 Example: \code{my-catalog_01}}
+
+\item{ExtraComputeForAutomaticOptimization}{If \code{true}, allocates additional compute resources for running automatic
+optimization operations.
+
+Default: false}
 }
 \description{
 Creates a new cluster with the specified parameters.

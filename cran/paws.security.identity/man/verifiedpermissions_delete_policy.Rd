@@ -8,9 +8,26 @@ verifiedpermissions_delete_policy(policyStoreId, policyId)
 }
 \arguments{
 \item{policyStoreId}{[required] Specifies the ID of the policy store that contains the policy that you
-want to delete.}
+want to delete.
 
-\item{policyId}{[required] Specifies the ID of the policy that you want to delete.}
+To specify a policy store, use its ID or alias name. When using an alias
+name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use
+\code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
+
+\item{policyId}{[required] Specifies the ID of the policy that you want to delete.
+
+You can use the policy name in place of the policy ID. When using a
+name, prefix it with \verb{name/}. For example:
+\itemize{
+\item ID: \code{SPEXAMPLEabcdefg111111}
+\item Name: \code{name/example-policy}
+}}
 }
 \description{
 Deletes the specified policy from the policy store.

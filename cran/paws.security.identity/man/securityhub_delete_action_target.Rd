@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_delete_action_target}
 \alias{securityhub_delete_action_target}
-\title{Deletes a custom action target from Security Hub}
+\title{Deletes a custom action target from Security Hub CSPM}
 \usage{
 securityhub_delete_action_target(ActionTargetArn)
 }
@@ -10,7 +10,7 @@ securityhub_delete_action_target(ActionTargetArn)
 \item{ActionTargetArn}{[required] The Amazon Resource Name (ARN) of the custom action target to delete.}
 }
 \description{
-Deletes a custom action target from Security Hub.
+Deletes a custom action target from Security Hub CSPM.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_delete_action_target/} for full documentation.
 }

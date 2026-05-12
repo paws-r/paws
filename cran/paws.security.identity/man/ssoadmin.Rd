@@ -68,7 +68,7 @@ IAM Identity Center uses the \code{sso} and \code{identitystore} API namespaces.
 Many API operations for IAM Identity Center rely on identifiers for
 users and groups, known as principals. For more information about how to
 work with principals and principal IDs in IAM Identity Center, see the
-\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html}{Identity Store API Reference}.
+\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/}{Identity Store API Reference}.
 
 Amazon Web Services provides SDKs that consist of libraries and sample
 code for various programming languages and platforms (Java, Ruby, .Net,
@@ -116,6 +116,7 @@ including how to download and install them, see \href{https://builder.aws.com/bu
 \section{Operations}{
 
 \tabular{ll}{
+\link[=ssoadmin_add_region]{add_region} \tab Adds a Region to an IAM Identity Center instance\cr
 \link[=ssoadmin_attach_customer_managed_policy_reference_to_permission_set]{attach_customer_managed_policy_reference_to_permission_set} \tab Attaches the specified customer managed policy to the specified PermissionSet\cr
 \link[=ssoadmin_attach_managed_policy_to_permission_set]{attach_managed_policy_to_permission_set} \tab Attaches an Amazon Web Services managed policy ARN to a permission set\cr
 \link[=ssoadmin_create_account_assignment]{create_account_assignment} \tab Assigns access to a principal for a specified Amazon Web Services account using a specified permission set\cr
@@ -146,6 +147,7 @@ including how to download and install them, see \href{https://builder.aws.com/bu
 \link[=ssoadmin_describe_instance_access_control_attribute_configuration]{describe_instance_access_control_attribute_configuration} \tab Returns the list of IAM Identity Center identity store attributes that have been configured to work with attributes-based access control (ABAC) for the specified IAM Identity Center instance\cr
 \link[=ssoadmin_describe_permission_set]{describe_permission_set} \tab Gets the details of the permission set\cr
 \link[=ssoadmin_describe_permission_set_provisioning_status]{describe_permission_set_provisioning_status} \tab Describes the status for the given permission set provisioning request\cr
+\link[=ssoadmin_describe_region]{describe_region} \tab Retrieves details about a specific Region enabled in an IAM Identity Center instance\cr
 \link[=ssoadmin_describe_trusted_token_issuer]{describe_trusted_token_issuer} \tab Retrieves details about a trusted token issuer configuration stored in an instance of IAM Identity Center\cr
 \link[=ssoadmin_detach_customer_managed_policy_reference_from_permission_set]{detach_customer_managed_policy_reference_from_permission_set} \tab Detaches the specified customer managed policy from the specified PermissionSet\cr
 \link[=ssoadmin_detach_managed_policy_from_permission_set]{detach_managed_policy_from_permission_set} \tab Detaches the attached Amazon Web Services managed policy ARN from the specified permission set\cr
@@ -174,6 +176,7 @@ including how to download and install them, see \href{https://builder.aws.com/bu
 \link[=ssoadmin_list_permission_set_provisioning_status]{list_permission_set_provisioning_status} \tab Lists the status of the permission set provisioning requests for a specified IAM Identity Center instance\cr
 \link[=ssoadmin_list_permission_sets]{list_permission_sets} \tab Lists the PermissionSets in an IAM Identity Center instance\cr
 \link[=ssoadmin_list_permission_sets_provisioned_to_account]{list_permission_sets_provisioned_to_account} \tab Lists all the permission sets that are provisioned to a specified Amazon Web Services account\cr
+\link[=ssoadmin_list_regions]{list_regions} \tab Lists all enabled Regions of an IAM Identity Center instance, including those that are being added or removed\cr
 \link[=ssoadmin_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are attached to a specified resource\cr
 \link[=ssoadmin_list_trusted_token_issuers]{list_trusted_token_issuers} \tab Lists all the trusted token issuers configured in an instance of IAM Identity Center\cr
 \link[=ssoadmin_provision_permission_set]{provision_permission_set} \tab The process by which a specified permission set is provisioned to the specified target\cr
@@ -184,6 +187,7 @@ including how to download and install them, see \href{https://builder.aws.com/bu
 \link[=ssoadmin_put_application_session_configuration]{put_application_session_configuration} \tab Updates the session configuration for an application in IAM Identity Center\cr
 \link[=ssoadmin_put_inline_policy_to_permission_set]{put_inline_policy_to_permission_set} \tab Attaches an inline policy to a permission set\cr
 \link[=ssoadmin_put_permissions_boundary_to_permission_set]{put_permissions_boundary_to_permission_set} \tab Attaches an Amazon Web Services managed or customer managed policy to the specified PermissionSet as a permissions boundary\cr
+\link[=ssoadmin_remove_region]{remove_region} \tab Removes an additional Region from an IAM Identity Center instance\cr
 \link[=ssoadmin_tag_resource]{tag_resource} \tab Associates a set of tags with a specified resource\cr
 \link[=ssoadmin_untag_resource]{untag_resource} \tab Disassociates a set of tags from a specified resource\cr
 \link[=ssoadmin_update_application]{update_application} \tab Updates application properties\cr
@@ -197,7 +201,7 @@ including how to download and install them, see \href{https://builder.aws.com/bu
 \examples{
 \dontrun{
 svc <- ssoadmin()
-svc$attach_customer_managed_policy_reference_to_permission_set(
+svc$add_region(
   Foo = 123
 )
 }

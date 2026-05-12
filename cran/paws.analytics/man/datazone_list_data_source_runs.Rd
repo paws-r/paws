@@ -5,26 +5,20 @@
 \title{Lists data source runs in Amazon DataZone}
 \usage{
 datazone_list_data_source_runs(
-  dataSourceIdentifier,
   domainIdentifier,
-  maxResults = NULL,
+  dataSourceIdentifier,
+  status = NULL,
   nextToken = NULL,
-  status = NULL
+  maxResults = NULL
 )
 }
 \arguments{
-\item{dataSourceIdentifier}{[required] The identifier of the data source.}
-
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which to invoke the
 \code{\link[=datazone_list_data_source_runs]{list_data_source_runs}} action.}
 
-\item{maxResults}{The maximum number of runs to return in a single call to
-\code{\link[=datazone_list_data_source_runs]{list_data_source_runs}}. When the
-number of runs to be listed is greater than the value of \code{MaxResults},
-the response contains a \code{NextToken} value that you can use in a
-subsequent call to
-\code{\link[=datazone_list_data_source_runs]{list_data_source_runs}} to list the
-next set of runs.}
+\item{dataSourceIdentifier}{[required] The identifier of the data source.}
+
+\item{status}{The status of the data source.}
 
 \item{nextToken}{When the number of runs is greater than the default value for the
 \code{MaxResults} parameter, or if you explicitly specify a value for
@@ -34,7 +28,13 @@ value in a subsequent call to
 \code{\link[=datazone_list_data_source_runs]{list_data_source_runs}} to list the
 next set of runs.}
 
-\item{status}{The status of the data source.}
+\item{maxResults}{The maximum number of runs to return in a single call to
+\code{\link[=datazone_list_data_source_runs]{list_data_source_runs}}. When the
+number of runs to be listed is greater than the value of \code{MaxResults},
+the response contains a \code{NextToken} value that you can use in a
+subsequent call to
+\code{\link[=datazone_list_data_source_runs]{list_data_source_runs}} to list the
+next set of runs.}
 }
 \description{
 Lists data source runs in Amazon DataZone.

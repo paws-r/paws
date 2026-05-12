@@ -5,17 +5,14 @@
 \title{Deletes the specified time series form for the specified asset}
 \usage{
 datazone_delete_time_series_data_points(
-  clientToken = NULL,
   domainIdentifier,
   entityIdentifier,
   entityType,
-  formName
+  formName,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the
-request. This field is automatically populated if not provided.}
-
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain that houses the asset for which you
 want to delete a time series form.}
 
@@ -24,6 +21,9 @@ want to delete a time series form.}
 \item{entityType}{[required] The type of the asset for which you want to delete a time series form.}
 
 \item{formName}{[required] The name of the time series form that you want to delete.}
+
+\item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the
+request. This field is automatically populated if not provided.}
 }
 \description{
 Deletes the specified time series form for the specified asset.

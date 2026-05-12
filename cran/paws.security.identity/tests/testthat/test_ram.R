@@ -15,3 +15,7 @@ test_that("list_replace_permission_associations_work", {
 test_that("list_resource_types", {
   expect_error(svc$list_resource_types(), NA)
 })
+
+test_that("list_source_associations", {
+  expect_error(svc$list_source_associations(), NA)
+})

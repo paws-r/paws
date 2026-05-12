@@ -6,9 +6,6 @@
 \usage{
 elasticsearchservice_get_compatible_elasticsearch_versions(DomainName = NULL)
 }
-\arguments{
-\item{DomainName}{}
-}
 \description{
 Returns a list of upgrade compatible Elastisearch versions. You can optionally pass a \code{DomainName} to get all upgrade compatible Elasticsearch versions for that specific domain.
 

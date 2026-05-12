@@ -12,7 +12,8 @@ connectcases_update_template(
   layoutConfiguration = NULL,
   requiredFields = NULL,
   status = NULL,
-  rules = NULL
+  rules = NULL,
+  tagPropagationConfigurations = NULL
 )
 }
 \arguments{
@@ -33,6 +34,10 @@ created with this template.}
 
 \item{rules}{A list of case rules (also known as \href{https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html}{case field conditions})
 on a template.}
+
+\item{tagPropagationConfigurations}{Defines tag propagation configuration for resources created within a
+domain. Tags specified here will be automatically applied to resources
+being created for the specified resource type.}
 }
 \description{
 Updates the attributes of an existing template. The template attributes that can be modified include \code{name}, \code{description}, \code{layoutConfiguration}, \code{requiredFields}, and \code{status}. At least one of these attributes must not be null. If a null value is provided for a given attribute, that attribute is ignored and its current value is preserved.

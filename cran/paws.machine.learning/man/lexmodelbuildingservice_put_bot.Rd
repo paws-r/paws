@@ -37,7 +37,7 @@ improvements.
 
 When you set the \code{enableModelImprovements} parameter to \code{true} you can
 use the \code{nluIntentConfidenceThreshold} parameter to configure confidence
-scores. For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/confidence-scores.html}{Confidence Scores}.
+scores. For more information, see Confidence Scores.
 
 You can only set the \code{enableModelImprovements} parameter in certain
 Regions. If you set the parameter to \code{true}, your bot has access to
@@ -58,12 +58,9 @@ throws a \code{ValidationException} exception.}
 
 \item{nluIntentConfidenceThreshold}{Determines the threshold where Amazon Lex will insert the
 \code{AMAZON.FallbackIntent}, \code{AMAZON.KendraSearchIntent}, or both when
-returning alternative intents in a
-\href{https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html}{PostContent}
-or
-\href{https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html}{PostText}
-response. \code{AMAZON.FallbackIntent} and \code{AMAZON.KendraSearchIntent} are
-only inserted if they are configured for the bot.
+returning alternative intents in a PostContent or PostText response.
+\code{AMAZON.FallbackIntent} and \code{AMAZON.KendraSearchIntent} are only
+inserted if they are configured for the bot.
 
 You must set the \code{enableModelImprovements} parameter to \code{true} to use
 confidence scores in the following regions.
@@ -102,8 +99,7 @@ like to do? You can say 'Order a pizza' or 'Order a drink.'"
 
 If you have defined a fallback intent, it will be invoked if the
 clarification prompt is repeated the number of times defined in the
-\code{maxAttempts} field. For more information, see
-\href{https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-fallback.html}{AMAZON.FallbackIntent}.
+\code{maxAttempts} field. For more information, see AMAZON.FallbackIntent.
 
 If you don't define a clarification prompt, at runtime Amazon Lex will
 return a 400 Bad Request exception in three cases:
@@ -142,8 +138,7 @@ specify the \code{valueElicitationPrompt} field when you create the
 
 If you have defined a fallback intent the cancel statement will not be
 sent to the user, the fallback intent is used instead. For more
-information, see
-\href{https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-fallback.html}{AMAZON.FallbackIntent}.}
+information, see AMAZON.FallbackIntent.}
 
 \item{idleSessionTTLInSeconds}{The maximum time in seconds that Amazon Lex retains the data gathered in
 a conversation.

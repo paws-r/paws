@@ -2040,7 +2040,7 @@ bedrock_create_model_import_job <- function(jobName, importedModelName, roleArn,
 #' @usage
 #' bedrock_create_model_invocation_job(jobName, roleArn,
 #'   clientRequestToken, modelId, inputDataConfig, outputDataConfig,
-#'   vpcConfig, timeoutDurationInHours, tags)
+#'   vpcConfig, timeoutDurationInHours, tags, modelInvocationType)
 #'
 #' @param jobName &#91;required&#93; A name to give the batch inference job.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the service role with permissions to
@@ -2066,6 +2066,7 @@ bedrock_create_model_import_job <- function(jobName, importedModelName, roleArn,
 #' @param tags Any tags to associate with the batch inference job. For more
 #' information, see [Tagging Amazon Bedrock
 #' resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html).
+#' @param modelInvocationType The invocation endpoint for ModelInvocationJob
 #'
 #' @return
 #' A list with the following syntax:
@@ -2110,7 +2111,8 @@ bedrock_create_model_import_job <- function(jobName, importedModelName, roleArn,
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   modelInvocationType = "InvokeModel"|"Converse"
 #' )
 #' ```
 #'
@@ -2119,7 +2121,7 @@ bedrock_create_model_import_job <- function(jobName, importedModelName, roleArn,
 #' @rdname bedrock_create_model_invocation_job
 #'
 #' @aliases bedrock_create_model_invocation_job
-bedrock_create_model_invocation_job <- function(jobName, roleArn, clientRequestToken = NULL, modelId, inputDataConfig, outputDataConfig, vpcConfig = NULL, timeoutDurationInHours = NULL, tags = NULL) {
+bedrock_create_model_invocation_job <- function(jobName, roleArn, clientRequestToken = NULL, modelId, inputDataConfig, outputDataConfig, vpcConfig = NULL, timeoutDurationInHours = NULL, tags = NULL, modelInvocationType = NULL) {
   op <- new_operation(
     name = "CreateModelInvocationJob",
     http_method = "POST",
@@ -2128,7 +2130,7 @@ bedrock_create_model_invocation_job <- function(jobName, roleArn, clientRequestT
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrock$create_model_invocation_job_input(jobName = jobName, roleArn = roleArn, clientRequestToken = clientRequestToken, modelId = modelId, inputDataConfig = inputDataConfig, outputDataConfig = outputDataConfig, vpcConfig = vpcConfig, timeoutDurationInHours = timeoutDurationInHours, tags = tags)
+  input <- .bedrock$create_model_invocation_job_input(jobName = jobName, roleArn = roleArn, clientRequestToken = clientRequestToken, modelId = modelId, inputDataConfig = inputDataConfig, outputDataConfig = outputDataConfig, vpcConfig = vpcConfig, timeoutDurationInHours = timeoutDurationInHours, tags = tags, modelInvocationType = modelInvocationType)
   output <- .bedrock$create_model_invocation_job_output()
   config <- get_config()
   svc <- .bedrock$service(config, op)
@@ -3015,6 +3017,50 @@ bedrock_delete_provisioned_model_throughput <- function(provisionedModelId) {
 }
 .bedrock$operations$delete_provisioned_model_throughput <- bedrock_delete_provisioned_model_throughput
 
+#' Deletes a previously created Bedrock resource policy
+#'
+#' @description
+#' Deletes a previously created Bedrock resource policy.
+#'
+#' @usage
+#' bedrock_delete_resource_policy(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the Bedrock resource to which this resource policy applies.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_policy(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_delete_resource_policy
+#'
+#' @aliases bedrock_delete_resource_policy
+bedrock_delete_resource_policy <- function(resourceArn) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "DELETE",
+    http_path = "/resource-policy/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$delete_resource_policy_input(resourceArn = resourceArn)
+  output <- .bedrock$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$delete_resource_policy <- bedrock_delete_resource_policy
+
 #' Deregisters an endpoint for a model from Amazon Bedrock Marketplace
 #'
 #' @description
@@ -3372,7 +3418,7 @@ bedrock_get_automated_reasoning_policy_annotations <- function(policyArn, buildW
 #'   policyArn = "string",
 #'   buildWorkflowId = "string",
 #'   status = "SCHEDULED"|"CANCEL_REQUESTED"|"PREPROCESSING"|"BUILDING"|"TESTING"|"COMPLETED"|"FAILED"|"CANCELLED",
-#'   buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY",
+#'   buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY"|"GENERATE_FIDELITY_REPORT"|"GENERATE_POLICY_SCENARIOS",
 #'   documentName = "string",
 #'   documentContentType = "pdf"|"txt",
 #'   documentDescription = "string",
@@ -3428,14 +3474,19 @@ bedrock_get_automated_reasoning_policy_build_workflow <- function(policyArn, bui
 #'
 #' @usage
 #' bedrock_get_automated_reasoning_policy_build_workflow_result_assets(
-#'   policyArn, buildWorkflowId, assetType)
+#'   policyArn, buildWorkflowId, assetType, assetId)
 #'
 #' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy whose
 #' build workflow assets you want to retrieve.
 #' @param buildWorkflowId &#91;required&#93; The unique identifier of the build workflow whose result assets you want
 #' to retrieve.
 #' @param assetType &#91;required&#93; The type of asset to retrieve (e.g., BUILD_LOG, QUALITY_REPORT,
-#' POLICY_DEFINITION).
+#' POLICY_DEFINITION, GENERATED_TEST_CASES, POLICY_SCENARIOS,
+#' FIDELITY_REPORT, ASSET_MANIFEST, SOURCE_DOCUMENT).
+#' @param assetId The unique identifier of the specific asset to retrieve when multiple
+#' assets of the same type exist. This is required when retrieving
+#' SOURCE_DOCUMENT assets, as multiple source documents may have been used
+#' in the workflow. The asset ID can be obtained from the asset manifest.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3706,6 +3757,89 @@ bedrock_get_automated_reasoning_policy_build_workflow <- function(policyArn, bui
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     assetManifest = list(
+#'       entries = list(
+#'         list(
+#'           assetType = "BUILD_LOG"|"QUALITY_REPORT"|"POLICY_DEFINITION"|"GENERATED_TEST_CASES"|"POLICY_SCENARIOS"|"FIDELITY_REPORT"|"ASSET_MANIFEST"|"SOURCE_DOCUMENT",
+#'           assetName = "string",
+#'           assetId = "string"
+#'         )
+#'       )
+#'     ),
+#'     document = list(
+#'       document = raw,
+#'       documentContentType = "pdf"|"txt",
+#'       documentName = "string",
+#'       documentDescription = "string",
+#'       documentHash = "string"
+#'     ),
+#'     fidelityReport = list(
+#'       coverageScore = 123.0,
+#'       accuracyScore = 123.0,
+#'       ruleReports = list(
+#'         list(
+#'           rule = "string",
+#'           groundingStatements = list(
+#'             list(
+#'               documentId = "string",
+#'               statementId = "string"
+#'             )
+#'           ),
+#'           groundingJustifications = list(
+#'             "string"
+#'           ),
+#'           accuracyScore = 123.0,
+#'           accuracyJustification = "string"
+#'         )
+#'       ),
+#'       variableReports = list(
+#'         list(
+#'           policyVariable = "string",
+#'           groundingStatements = list(
+#'             list(
+#'               documentId = "string",
+#'               statementId = "string"
+#'             )
+#'           ),
+#'           groundingJustifications = list(
+#'             "string"
+#'           ),
+#'           accuracyScore = 123.0,
+#'           accuracyJustification = "string"
+#'         )
+#'       ),
+#'       documentSources = list(
+#'         list(
+#'           documentName = "string",
+#'           documentHash = "string",
+#'           documentId = "string",
+#'           atomicStatements = list(
+#'             list(
+#'               id = "string",
+#'               text = "string",
+#'               location = list(
+#'                 lines = list(
+#'                   123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           documentContent = list(
+#'             list(
+#'               pageNumber = 123,
+#'               content = list(
+#'                 list(
+#'                   line = list(
+#'                     lineNumber = 123,
+#'                     lineText = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -3716,7 +3850,8 @@ bedrock_get_automated_reasoning_policy_build_workflow <- function(policyArn, bui
 #' svc$get_automated_reasoning_policy_build_workflow_result_assets(
 #'   policyArn = "string",
 #'   buildWorkflowId = "string",
-#'   assetType = "BUILD_LOG"|"QUALITY_REPORT"|"POLICY_DEFINITION"|"GENERATED_TEST_CASES"|"POLICY_SCENARIOS"
+#'   assetType = "BUILD_LOG"|"QUALITY_REPORT"|"POLICY_DEFINITION"|"GENERATED_TEST_CASES"|"POLICY_SCENARIOS"|"FIDELITY_REPORT"|"ASSET_MANIFEST"|"SOURCE_DOCUMENT",
+#'   assetId = "string"
 #' )
 #' ```
 #'
@@ -3725,7 +3860,7 @@ bedrock_get_automated_reasoning_policy_build_workflow <- function(policyArn, bui
 #' @rdname bedrock_get_autom_reaso_polic_build_workf_resul_asset
 #'
 #' @aliases bedrock_get_automated_reasoning_policy_build_workflow_result_assets
-bedrock_get_automated_reasoning_policy_build_workflow_result_assets <- function(policyArn, buildWorkflowId, assetType) {
+bedrock_get_automated_reasoning_policy_build_workflow_result_assets <- function(policyArn, buildWorkflowId, assetType, assetId = NULL) {
   op <- new_operation(
     name = "GetAutomatedReasoningPolicyBuildWorkflowResultAssets",
     http_method = "GET",
@@ -3734,7 +3869,7 @@ bedrock_get_automated_reasoning_policy_build_workflow_result_assets <- function(
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrock$get_automated_reasoning_policy_build_workflow_result_assets_input(policyArn = policyArn, buildWorkflowId = buildWorkflowId, assetType = assetType)
+  input <- .bedrock$get_automated_reasoning_policy_build_workflow_result_assets_input(policyArn = policyArn, buildWorkflowId = buildWorkflowId, assetType = assetType, assetId = assetId)
   output <- .bedrock$get_automated_reasoning_policy_build_workflow_result_assets_output()
   config <- get_config()
   svc <- .bedrock$service(config, op)
@@ -4911,7 +5046,19 @@ bedrock_get_evaluation_job <- function(jobIdentifier) {
 #'       "ON_DEMAND"|"PROVISIONED"
 #'     ),
 #'     modelLifecycle = list(
-#'       status = "ACTIVE"|"LEGACY"
+#'       status = "ACTIVE"|"LEGACY",
+#'       startOfLifeTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endOfLifeTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       legacyTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       publicExtendedAccessTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -5803,7 +5950,12 @@ bedrock_get_model_import_job <- function(jobIdentifier) {
 #'   timeoutDurationInHours = 123,
 #'   jobExpirationTime = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   modelInvocationType = "InvokeModel"|"Converse",
+#'   totalRecordCount = 123,
+#'   processedRecordCount = 123,
+#'   successRecordCount = 123,
+#'   errorRecordCount = 123
 #' )
 #' ```
 #'
@@ -6044,6 +6196,55 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
 }
 .bedrock$operations$get_provisioned_model_throughput <- bedrock_get_provisioned_model_throughput
 
+#' Gets the resource policy document for a Bedrock resource
+#'
+#' @description
+#' Gets the resource policy document for a Bedrock resource
+#'
+#' @usage
+#' bedrock_get_resource_policy(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the Bedrock resource to which this resource policy applies.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourcePolicy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_policy(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_resource_policy
+#'
+#' @aliases bedrock_get_resource_policy
+bedrock_get_resource_policy <- function(resourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "GET",
+    http_path = "/resource-policy/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$get_resource_policy_input(resourceArn = resourceArn)
+  output <- .bedrock$get_resource_policy_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_resource_policy <- bedrock_get_resource_policy
+
 #' Get usecase for model access
 #'
 #' @description
@@ -6193,7 +6394,7 @@ bedrock_list_automated_reasoning_policies <- function(policyArn = NULL, nextToke
 #'       policyArn = "string",
 #'       buildWorkflowId = "string",
 #'       status = "SCHEDULED"|"CANCEL_REQUESTED"|"PREPROCESSING"|"BUILDING"|"TESTING"|"COMPLETED"|"FAILED"|"CANCELLED",
-#'       buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY",
+#'       buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY"|"GENERATE_FIDELITY_REPORT"|"GENERATE_POLICY_SCENARIOS",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -6898,6 +7099,10 @@ bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAf
 #'       guardrailArn = "string",
 #'       guardrailId = "string",
 #'       inputTags = "HONOR"|"IGNORE",
+#'       selectiveContentGuarding = list(
+#'         system = "SELECTIVE"|"COMPREHENSIVE",
+#'         messages = "SELECTIVE"|"COMPREHENSIVE"
+#'       ),
 #'       guardrailVersion = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
@@ -6907,7 +7112,15 @@ bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAf
 #'         "2015-01-01"
 #'       ),
 #'       updatedBy = "string",
-#'       owner = "ACCOUNT"
+#'       owner = "ACCOUNT",
+#'       modelEnforcement = list(
+#'         includedModels = list(
+#'           "string"
+#'         ),
+#'         excludedModels = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -7195,7 +7408,19 @@ bedrock_list_foundation_model_agreement_offers <- function(modelId, offerType = 
 #'         "ON_DEMAND"|"PROVISIONED"
 #'       ),
 #'       modelLifecycle = list(
-#'         status = "ACTIVE"|"LEGACY"
+#'         status = "ACTIVE"|"LEGACY",
+#'         startOfLifeTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endOfLifeTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         legacyTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         publicExtendedAccessTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -8034,7 +8259,12 @@ bedrock_list_model_import_jobs <- function(creationTimeAfter = NULL, creationTim
 #'       timeoutDurationInHours = 123,
 #'       jobExpirationTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       modelInvocationType = "InvokeModel"|"Converse",
+#'       totalRecordCount = 123,
+#'       processedRecordCount = 123,
+#'       successRecordCount = 123,
+#'       errorRecordCount = 123
 #'     )
 #'   )
 #' )
@@ -8359,7 +8589,18 @@ bedrock_list_tags_for_resource <- function(resourceARN) {
 #'   guardrailInferenceConfig = list(
 #'     guardrailIdentifier = "string",
 #'     guardrailVersion = "string",
-#'     inputTags = "HONOR"|"IGNORE"
+#'     selectiveContentGuarding = list(
+#'       system = "SELECTIVE"|"COMPREHENSIVE",
+#'       messages = "SELECTIVE"|"COMPREHENSIVE"
+#'     ),
+#'     modelEnforcement = list(
+#'       includedModels = list(
+#'         "string"
+#'       ),
+#'       excludedModels = list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -8449,6 +8690,57 @@ bedrock_put_model_invocation_logging_configuration <- function(loggingConfig) {
   return(response)
 }
 .bedrock$operations$put_model_invocation_logging_configuration <- bedrock_put_model_invocation_logging_configuration
+
+#' Adds a resource policy for a Bedrock resource
+#'
+#' @description
+#' Adds a resource policy for a Bedrock resource.
+#'
+#' @usage
+#' bedrock_put_resource_policy(resourceArn, resourcePolicy)
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the Bedrock resource to which this resource policy applies.
+#' @param resourcePolicy &#91;required&#93; The JSON string representing the Bedrock resource policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_policy(
+#'   resourceArn = "string",
+#'   resourcePolicy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_put_resource_policy
+#'
+#' @aliases bedrock_put_resource_policy
+bedrock_put_resource_policy <- function(resourceArn, resourcePolicy) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/resource-policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$put_resource_policy_input(resourceArn = resourceArn, resourcePolicy = resourcePolicy)
+  output <- .bedrock$put_resource_policy_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$put_resource_policy <- bedrock_put_resource_policy
 
 #' Put usecase for model access
 #'
@@ -8613,7 +8905,7 @@ bedrock_register_marketplace_model_endpoint <- function(endpointIdentifier, mode
 #' ```
 #' svc$start_automated_reasoning_policy_build_workflow(
 #'   policyArn = "string",
-#'   buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY",
+#'   buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY"|"GENERATE_FIDELITY_REPORT"|"GENERATE_POLICY_SCENARIOS",
 #'   clientRequestToken = "string",
 #'   sourceContent = list(
 #'     policyDefinition = list(
@@ -8733,6 +9025,16 @@ bedrock_register_marketplace_model_endpoint <- function(endpointIdentifier, mode
 #'             ingestContent = list(
 #'               content = "string"
 #'             )
+#'           )
+#'         )
+#'       ),
+#'       generateFidelityReportContent = list(
+#'         documents = list(
+#'           list(
+#'             document = raw,
+#'             documentContentType = "pdf"|"txt",
+#'             documentName = "string",
+#'             documentDescription = "string"
 #'           )
 #'         )
 #'       )

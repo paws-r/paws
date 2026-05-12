@@ -171,8 +171,6 @@ the grace period might be stopped to reach the desired count.
 
 This parameter doesn't trigger a new service deployment.}
 
-\item{deploymentController}{}
-
 \item{enableExecuteCommand}{If \code{true}, this enables execute command functionality on all task
 containers.
 

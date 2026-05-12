@@ -96,11 +96,13 @@ NULL
 #'  \link[=kafka_create_cluster_v2]{create_cluster_v2} \tab Creates a new MSK cluster\cr
 #'  \link[=kafka_create_configuration]{create_configuration} \tab Creates a new MSK configuration\cr
 #'  \link[=kafka_create_replicator]{create_replicator} \tab Creates the replicator\cr
+#'  \link[=kafka_create_topic]{create_topic} \tab Creates a topic in the specified MSK cluster\cr
 #'  \link[=kafka_create_vpc_connection]{create_vpc_connection} \tab Creates a new MSK VPC connection\cr
 #'  \link[=kafka_delete_cluster]{delete_cluster} \tab Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request\cr
 #'  \link[=kafka_delete_cluster_policy]{delete_cluster_policy} \tab Deletes the MSK cluster policy specified by the Amazon Resource Name (ARN) in the request\cr
 #'  \link[=kafka_delete_configuration]{delete_configuration} \tab Deletes an MSK Configuration\cr
 #'  \link[=kafka_delete_replicator]{delete_replicator} \tab Deletes a replicator\cr
+#'  \link[=kafka_delete_topic]{delete_topic} \tab Deletes a topic in the specified MSK cluster\cr
 #'  \link[=kafka_delete_vpc_connection]{delete_vpc_connection} \tab Deletes a MSK VPC connection\cr
 #'  \link[=kafka_describe_cluster]{describe_cluster} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
 #'  \link[=kafka_describe_cluster_operation]{describe_cluster_operation} \tab Returns a description of the cluster operation specified by the ARN\cr
@@ -145,7 +147,8 @@ NULL
 #'  \link[=kafka_update_rebalancing]{update_rebalancing} \tab Use this resource to update the intelligent rebalancing status of an Amazon MSK Provisioned cluster with Express brokers\cr
 #'  \link[=kafka_update_replication_info]{update_replication_info} \tab Updates replication info of a replicator\cr
 #'  \link[=kafka_update_security]{update_security} \tab Updates the security settings for the cluster\cr
-#'  \link[=kafka_update_storage]{update_storage} \tab Updates cluster broker volume size (or) sets cluster storage mode to TIERED
+#'  \link[=kafka_update_storage]{update_storage} \tab Updates cluster broker volume size (or) sets cluster storage mode to TIERED\cr
+#'  \link[=kafka_update_topic]{update_topic} \tab Updates the configuration of the specified topic
 #' }
 #'
 #' @return

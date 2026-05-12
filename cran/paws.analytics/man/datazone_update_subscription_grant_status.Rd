@@ -6,30 +6,30 @@
 DataZone}
 \usage{
 datazone_update_subscription_grant_status(
-  assetIdentifier,
   domainIdentifier,
-  failureCause = NULL,
   identifier,
+  assetIdentifier,
   status,
+  failureCause = NULL,
   targetName = NULL
 )
 }
 \arguments{
-\item{assetIdentifier}{[required] The identifier of the asset the subscription grant status of which is to
-be updated.}
-
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which a subscription
 grant status is to be updated.}
-
-\item{failureCause}{Specifies the error message that is returned if the operation cannot be
-successfully completed.}
 
 \item{identifier}{[required] The identifier of the subscription grant the status of which is to be
 updated.}
 
+\item{assetIdentifier}{[required] The identifier of the asset the subscription grant status of which is to
+be updated.}
+
 \item{status}{[required] The status to be updated as part of the
 \code{\link[=datazone_update_subscription_grant_status]{update_subscription_grant_status}}
 action.}
+
+\item{failureCause}{Specifies the error message that is returned if the operation cannot be
+successfully completed.}
 
 \item{targetName}{The target name to be updated as part of the
 \code{\link[=datazone_update_subscription_grant_status]{update_subscription_grant_status}}

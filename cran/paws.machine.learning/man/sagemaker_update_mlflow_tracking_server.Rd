@@ -9,7 +9,9 @@ sagemaker_update_mlflow_tracking_server(
   ArtifactStoreUri = NULL,
   TrackingServerSize = NULL,
   AutomaticModelRegistration = NULL,
-  WeeklyMaintenanceWindowStart = NULL
+  WeeklyMaintenanceWindowStart = NULL,
+  S3BucketOwnerAccountId = NULL,
+  S3BucketOwnerVerification = NULL
 )
 }
 \arguments{
@@ -29,6 +31,12 @@ defaults to \code{False}}
 \item{WeeklyMaintenanceWindowStart}{The new weekly maintenance window start day and time to update. The
 maintenance window day and time should be in Coordinated Universal Time
 (UTC) 24-hour standard time. For example: TUE:03:30.}
+
+\item{S3BucketOwnerAccountId}{The new expected Amazon Web Services account ID that owns the Amazon S3
+bucket for artifact storage.}
+
+\item{S3BucketOwnerVerification}{Whether to enable or disable Amazon S3 Bucket Owenrship Verifaction
+whenever the MLflow Tracking Server interacts with Amazon Amazon S3.}
 }
 \description{
 Updates properties of an existing MLflow Tracking Server.

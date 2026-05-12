@@ -5,26 +5,26 @@
 \title{Set the maintenance start time for a gateway}
 \usage{
 backupgateway_put_maintenance_start_time(
-  DayOfMonth = NULL,
-  DayOfWeek = NULL,
   GatewayArn,
   HourOfDay,
-  MinuteOfHour
+  MinuteOfHour,
+  DayOfWeek = NULL,
+  DayOfMonth = NULL
 )
 }
 \arguments{
-\item{DayOfMonth}{The day of the month start maintenance on a gateway.
-
-Valid values range from \code{Sunday} to \code{Saturday}.}
-
-\item{DayOfWeek}{The day of the week to start maintenance on a gateway.}
-
 \item{GatewayArn}{[required] The Amazon Resource Name (ARN) for the gateway, used to specify its
 maintenance start time.}
 
 \item{HourOfDay}{[required] The hour of the day to start maintenance on a gateway.}
 
 \item{MinuteOfHour}{[required] The minute of the hour to start maintenance on a gateway.}
+
+\item{DayOfWeek}{The day of the week to start maintenance on a gateway.}
+
+\item{DayOfMonth}{The day of the month start maintenance on a gateway.
+
+Valid values range from \code{Sunday} to \code{Saturday}.}
 }
 \description{
 Set the maintenance start time for a gateway.

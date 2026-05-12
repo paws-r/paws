@@ -12,7 +12,8 @@ ram_create_resource_share(
   allowExternalPrincipals = NULL,
   clientToken = NULL,
   permissionArns = NULL,
-  sources = NULL
+  sources = NULL,
+  resourceShareConfiguration = NULL
 )
 }
 \arguments{
@@ -35,6 +36,7 @@ of an organization in Organizations, for example:
 \item An ARN of an IAM role, for example:
 \verb{iam::123456789012:role/rolename}
 \item An ARN of an IAM user, for example: \verb{iam::123456789012user/username}
+\item A service principal name, for example: \code{service-id.amazonaws.com}
 }
 
 Not all resource types can be shared with IAM roles and users. For more
@@ -73,11 +75,18 @@ default version of the permission for each resource type. You can
 associate only one permission with each resource type included in the
 resource share.}
 
-\item{sources}{Specifies from which source accounts the service principal has access to
-the resources in this resource share.}
+\item{sources}{Specifies source constraints (accounts, ARNs, organization IDs, or
+organization paths) that limit when service principals can access
+resources in this resource share. When a service principal attempts to
+access a shared resource, validation is performed to ensure the request
+originates from one of the specified sources. This helps prevent
+confused deputy attacks by applying constraints on where service
+principals can access resources from.}
+
+\item{resourceShareConfiguration}{Specifies the configuration of this resource share.}
 }
 \description{
-Creates a resource share. You can provide a list of the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} for the resources that you want to share, a list of principals you want to share the resources with, and the permissions to grant those principals.
+Creates a resource share. You can provide a list of the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} for the resources that you want to share, a list of principals you want to share the resources with, the permissions to grant those principals, and optionally source constraints to enhance security for service principal sharing.
 
 See \url{https://www.paws-r-sdk.com/docs/ram_create_resource_share/} for full documentation.
 }

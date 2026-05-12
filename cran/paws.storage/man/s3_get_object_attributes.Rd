@@ -92,8 +92,6 @@ that the encryption key was transmitted without error.
 
 This functionality is not supported for directory buckets.}
 
-\item{RequestPayer}{}
-
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
 provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}

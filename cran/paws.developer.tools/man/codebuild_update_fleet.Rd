@@ -160,8 +160,6 @@ VPC permissions to your project service role. For more information,
 see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-create-vpc-network-interface}{Example policy statement to allow CodeBuild access to Amazon Web Services services required to create a VPC network interface}.
 }}
 
-\item{vpcConfig}{}
-
 \item{proxyConfiguration}{The proxy configuration of the compute fleet.}
 
 \item{imageId}{The Amazon Machine Image (AMI) of the compute fleet.}

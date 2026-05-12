@@ -24,7 +24,7 @@ guardduty_accept_administrator_invitation <- function(DetectorId, AdministratorI
   op <- new_operation(
     name = "AcceptAdministratorInvitation",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/administrator",
+    http_path = "/detector/{DetectorId}/administrator",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -64,7 +64,7 @@ guardduty_accept_invitation <- function(DetectorId, MasterId, InvitationId) {
   op <- new_operation(
     name = "AcceptInvitation",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/master",
+    http_path = "/detector/{DetectorId}/master",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -102,7 +102,7 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
   op <- new_operation(
     name = "ArchiveFindings",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/findings/archive",
+    http_path = "/detector/{DetectorId}/findings/archive",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -181,65 +181,237 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' whitespace.
 #' @param Action Specifies the action that is to be applied to the findings that match
 #' the filter.
+#' 
+#' Default: NOOP
 #' @param Rank Specifies the position of the filter in the list of current filters.
 #' Also specifies the order in which this filter is applied to the
 #' findings.
 #' @param FindingCriteria &#91;required&#93; Represents the criteria to be used in the filter for querying findings.
-#' 
-#' You can only use the following attributes to query findings:
+#' The following fields are available for filtering:
 #' 
 #' -   accountId
 #' 
+#' -   arn
+#' 
+#' -   associatedAttackSequenceArn
+#' 
+#' -   confidence
+#' 
+#' -   createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   description
+#' 
 #' -   id
 #' 
+#' -   partition
+#' 
 #' -   region
-#' 
-#' -   severity
-#' 
-#'     To filter on the basis of severity, the API and CLI use the
-#'     following input list for the
-#'     [FindingCriteria](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FindingCriteria.html)
-#'     condition:
-#' 
-#'     -   **Low**: `["1", "2", "3"]`
-#' 
-#'     -   **Medium**: `["4", "5", "6"]`
-#' 
-#'     -   **High**: `["7", "8"]`
-#' 
-#'     -   **Critical**: `["9", "10"]`
-#' 
-#'     For more information, see [Findings severity
-#'     levels](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html)
-#'     in the *Amazon GuardDuty User Guide*.
-#' 
-#' -   type
-#' 
-#' -   updatedAt
-#' 
-#'     Type: ISO 8601 string format: YYYY-MM-DDTHH:MM:SS.SSSZ or
-#'     YYYY-MM-DDTHH:MM:SSZ depending on whether the value contains
-#'     milliseconds.
 #' 
 #' -   resource.accessKeyDetails.accessKeyId
 #' 
 #' -   resource.accessKeyDetails.principalId
 #' 
+#' -   resource.accessKeyDetails.userIdentity.accessKeyId
+#' 
+#' -   resource.accessKeyDetails.userIdentity.accountId
+#' 
+#' -   resource.accessKeyDetails.userIdentity.arn
+#' 
+#' -   resource.accessKeyDetails.userIdentity.principalId
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.attributes.mfaAuthenticated
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.ec2RoleDelivery
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.invokedBy
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.accountId
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.arn
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.principalId
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.type
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.userName
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.sourceIdentity
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.webIdFederationData.attributes
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.webIdFederationData.federatedProvider
+#' 
+#' -   resource.accessKeyDetails.userIdentity.type
+#' 
+#' -   resource.accessKeyDetails.userIdentity.userName
+#' 
 #' -   resource.accessKeyDetails.userName
 #' 
 #' -   resource.accessKeyDetails.userType
 #' 
+#' -   resource.bedrockGuardrailDetails.guardrailArn
+#' 
+#' -   resource.bedrockGuardrailDetails.guardrailVersion
+#' 
+#' -   resource.containerDetails.containerRuntime
+#' 
+#' -   resource.containerDetails.id
+#' 
+#' -   resource.containerDetails.image
+#' 
+#' -   resource.containerDetails.imagePrefix
+#' 
+#' -   resource.containerDetails.name
+#' 
+#' -   resource.containerDetails.securityContext.allowPrivilegeEscalation
+#' 
+#' -   resource.containerDetails.securityContext.privileged
+#' 
+#' -   resource.containerDetails.volumeMounts.mountPath
+#' 
+#' -   resource.containerDetails.volumeMounts.name
+#' 
+#' -   resource.ebsSnapshotDetails.snapshotArn
+#' 
+#' -   resource.ebsVolumeDetails.scannedVolumeDetails.deviceName
+#' 
+#' -   resource.ebsVolumeDetails.scannedVolumeDetails.encryptionType
+#' 
+#' -   resource.ebsVolumeDetails.scannedVolumeDetails.kmsKeyArn
+#' 
+#' -   resource.ebsVolumeDetails.scannedVolumeDetails.snapshotArn
+#' 
+#' -   resource.ebsVolumeDetails.scannedVolumeDetails.volumeArn
+#' 
+#' -   resource.ebsVolumeDetails.scannedVolumeDetails.volumeSizeInGB
+#' 
+#' -   resource.ebsVolumeDetails.scannedVolumeDetails.volumeType
+#' 
+#' -   resource.ebsVolumeDetails.skippedVolumeDetails.deviceName
+#' 
+#' -   resource.ebsVolumeDetails.skippedVolumeDetails.encryptionType
+#' 
+#' -   resource.ebsVolumeDetails.skippedVolumeDetails.kmsKeyArn
+#' 
+#' -   resource.ebsVolumeDetails.skippedVolumeDetails.snapshotArn
+#' 
+#' -   resource.ebsVolumeDetails.skippedVolumeDetails.volumeArn
+#' 
+#' -   resource.ebsVolumeDetails.skippedVolumeDetails.volumeSizeInGB
+#' 
+#' -   resource.ebsVolumeDetails.skippedVolumeDetails.volumeType
+#' 
+#' -   resource.ec2ImageDetails.imageArn
+#' 
+#' -   resource.ecsClusterDetails.activeServicesCount
+#' 
+#' -   resource.ecsClusterDetails.arn
+#' 
+#' -   resource.ecsClusterDetails.name
+#' 
+#' -   resource.ecsClusterDetails.registeredContainerInstancesCount
+#' 
+#' -   resource.ecsClusterDetails.runningTasksCount
+#' 
+#' -   resource.ecsClusterDetails.status
+#' 
+#' -   resource.ecsClusterDetails.tags.key
+#' 
+#' -   resource.ecsClusterDetails.tags.value
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.arn
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.containerRuntime
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.id
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.image
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.imagePrefix
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.name
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.securityContext.allowPrivilegeEscalation
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.securityContext.privileged
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.volumeMounts.mountPath
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.volumeMounts.name
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.definitionArn
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.group
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.launchType
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.startedAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.startedBy
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.tags.key
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.tags.value
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.version
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.volumes.hostPath.path
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.volumes.name
+#' 
+#' -   resource.eksClusterDetails.arn
+#' 
+#' -   resource.eksClusterDetails.createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   resource.eksClusterDetails.name
+#' 
+#' -   resource.eksClusterDetails.status
+#' 
+#' -   resource.eksClusterDetails.tags.key
+#' 
+#' -   resource.eksClusterDetails.tags.value
+#' 
+#' -   resource.eksClusterDetails.vpcId
+#' 
+#' -   resource.instanceDetails.availabilityZone
+#' 
+#' -   resource.instanceDetails.iamInstanceProfile.arn
+#' 
 #' -   resource.instanceDetails.iamInstanceProfile.id
+#' 
+#' -   resource.instanceDetails.imageDescription
 #' 
 #' -   resource.instanceDetails.imageId
 #' 
 #' -   resource.instanceDetails.instanceId
 #' 
-#' -   resource.instanceDetails.tags.key
+#' -   resource.instanceDetails.instanceState
 #' 
-#' -   resource.instanceDetails.tags.value
+#' -   resource.instanceDetails.instanceType
+#' 
+#' -   resource.instanceDetails.launchTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
 #' 
 #' -   resource.instanceDetails.networkInterfaces.ipv6Addresses
+#' 
+#' -   resource.instanceDetails.networkInterfaces.networkInterfaceId
+#' 
+#' -   resource.instanceDetails.networkInterfaces.privateDnsName
+#' 
+#' -   resource.instanceDetails.networkInterfaces.privateIpAddress
+#' 
+#' -   resource.instanceDetails.networkInterfaces.privateIpAddresses.privateDnsName
 #' 
 #' -   resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress
 #' 
@@ -257,11 +429,205 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   resource.instanceDetails.outpostArn
 #' 
+#' -   resource.instanceDetails.platform
+#' 
+#' -   resource.instanceDetails.productCodes.productCodeId
+#' 
+#' -   resource.instanceDetails.productCodes.productCodeType
+#' 
+#' -   resource.instanceDetails.tags.key
+#' 
+#' -   resource.instanceDetails.tags.value
+#' 
+#' -   resource.kubernetesDetails.kubernetesUserDetails.groups
+#' 
+#' -   resource.kubernetesDetails.kubernetesUserDetails.impersonatedUser.groups
+#' 
+#' -   resource.kubernetesDetails.kubernetesUserDetails.impersonatedUser.username
+#' 
+#' -   resource.kubernetesDetails.kubernetesUserDetails.sessionName
+#' 
+#' -   resource.kubernetesDetails.kubernetesUserDetails.uid
+#' 
+#' -   resource.kubernetesDetails.kubernetesUserDetails.username
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.containerRuntime
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.id
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.image
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.imagePrefix
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.name
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.securityContext.allowPrivilegeEscalation
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.securityContext.privileged
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.volumeMounts.mountPath
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.volumeMounts.name
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.hostIpc
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.hostNetwork
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.hostPid
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.name
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.namespace
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.serviceAccountName
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.type
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.uid
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.volumes.hostPath.path
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.volumes.name
+#' 
+#' -   resource.lambdaDetails.description
+#' 
+#' -   resource.lambdaDetails.functionArn
+#' 
+#' -   resource.lambdaDetails.functionName
+#' 
+#' -   resource.lambdaDetails.functionVersion
+#' 
+#' -   resource.lambdaDetails.lastModifiedAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   resource.lambdaDetails.revisionId
+#' 
+#' -   resource.lambdaDetails.role
+#' 
+#' -   resource.lambdaDetails.tags.key
+#' 
+#' -   resource.lambdaDetails.tags.value
+#' 
+#' -   resource.lambdaDetails.vpcConfig.securityGroups.groupId
+#' 
+#' -   resource.lambdaDetails.vpcConfig.securityGroups.groupName
+#' 
+#' -   resource.lambdaDetails.vpcConfig.subnetIds
+#' 
+#' -   resource.lambdaDetails.vpcConfig.vpcId
+#' 
+#' -   resource.rdsDbInstanceDetails.dbClusterIdentifier
+#' 
+#' -   resource.rdsDbInstanceDetails.dbInstanceArn
+#' 
+#' -   resource.rdsDbInstanceDetails.dbInstanceIdentifier
+#' 
+#' -   resource.rdsDbInstanceDetails.dbSecurityGroups.name
+#' 
+#' -   resource.rdsDbInstanceDetails.dbSecurityGroups.status
+#' 
+#' -   resource.rdsDbInstanceDetails.dbiResourceId
+#' 
+#' -   resource.rdsDbInstanceDetails.engine
+#' 
+#' -   resource.rdsDbInstanceDetails.engineVersion
+#' 
+#' -   resource.rdsDbInstanceDetails.iamDatabaseAuthenticationEnabled
+#' 
+#' -   resource.rdsDbInstanceDetails.publiclyAccessible
+#' 
+#' -   resource.rdsDbInstanceDetails.tags.key
+#' 
+#' -   resource.rdsDbInstanceDetails.tags.value
+#' 
+#' -   resource.rdsDbInstanceDetails.vpcId
+#' 
+#' -   resource.rdsDbInstanceDetails.vpcSecurityGroups.status
+#' 
+#' -   resource.rdsDbInstanceDetails.vpcSecurityGroups.vpcSecurityGroupId
+#' 
+#' -   resource.rdsDbUserDetails.application
+#' 
+#' -   resource.rdsDbUserDetails.authMethod
+#' 
+#' -   resource.rdsDbUserDetails.database
+#' 
+#' -   resource.rdsDbUserDetails.ssl
+#' 
+#' -   resource.rdsDbUserDetails.user
+#' 
+#' -   resource.rdsLimitlessDbDetails.dbClusterIdentifier
+#' 
+#' -   resource.rdsLimitlessDbDetails.dbShardGroupArn
+#' 
+#' -   resource.rdsLimitlessDbDetails.dbShardGroupIdentifier
+#' 
+#' -   resource.rdsLimitlessDbDetails.dbShardGroupResourceId
+#' 
+#' -   resource.rdsLimitlessDbDetails.engine
+#' 
+#' -   resource.rdsLimitlessDbDetails.engineVersion
+#' 
+#' -   resource.rdsLimitlessDbDetails.tags.key
+#' 
+#' -   resource.rdsLimitlessDbDetails.tags.value
+#' 
+#' -   resource.recoveryPointDetails.backupVaultName
+#' 
+#' -   resource.recoveryPointDetails.recoveryPointArn
+#' 
 #' -   resource.resourceType
 #' 
-#' -   resource.s3BucketDetails.publicAccess.effectivePermissions
+#' -   resource.s3BucketDetails.arn
+#' 
+#' -   resource.s3BucketDetails.createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   resource.s3BucketDetails.defaultServerSideEncryption.encryptionType
+#' 
+#' -   resource.s3BucketDetails.defaultServerSideEncryption.kmsMasterKeyArn
 #' 
 #' -   resource.s3BucketDetails.name
+#' 
+#' -   resource.s3BucketDetails.owner.id
+#' 
+#' -   resource.s3BucketDetails.publicAccess.effectivePermission
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.accountLevelPermissions.blockPublicAccess.blockPublicAcls
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.accountLevelPermissions.blockPublicAccess.blockPublicPolicy
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.accountLevelPermissions.blockPublicAccess.ignorePublicAcls
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.accountLevelPermissions.blockPublicAccess.restrictPublicBuckets
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.accessControlList.allowsPublicReadAccess
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.accessControlList.allowsPublicWriteAccess
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.blockPublicAccess.blockPublicAcls
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.blockPublicAccess.blockPublicPolicy
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.blockPublicAccess.ignorePublicAcls
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.blockPublicAccess.restrictPublicBuckets
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.bucketPolicy.allowsPublicReadAccess
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.bucketPolicy.allowsPublicWriteAccess
+#' 
+#' -   resource.s3BucketDetails.s3ObjectDetails.eTag
+#' 
+#' -   resource.s3BucketDetails.s3ObjectDetails.hash
+#' 
+#' -   resource.s3BucketDetails.s3ObjectDetails.key
+#' 
+#' -   resource.s3BucketDetails.s3ObjectDetails.objectArn
+#' 
+#' -   resource.s3BucketDetails.s3ObjectDetails.versionId
 #' 
 #' -   resource.s3BucketDetails.tags.key
 #' 
@@ -269,17 +635,35 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   resource.s3BucketDetails.type
 #' 
+#' -   schemaVersion
+#' 
 #' -   service.action.actionType
+#' 
+#' -   service.action.awsApiCallAction.affectedResources
 #' 
 #' -   service.action.awsApiCallAction.api
 #' 
 #' -   service.action.awsApiCallAction.callerType
 #' 
+#' -   service.action.awsApiCallAction.domainDetails.domain
+#' 
 #' -   service.action.awsApiCallAction.errorCode
+#' 
+#' -   service.action.awsApiCallAction.remoteAccountDetails.accountId
+#' 
+#' -   service.action.awsApiCallAction.remoteAccountDetails.affiliated
+#' 
+#' -   service.action.awsApiCallAction.remoteAccountDetails.awsServiceName
 #' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.city.cityName
 #' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.country.countryCode
+#' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.country.countryName
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.geoLocation.lat
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.geoLocation.lon
 #' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
 #' 
@@ -289,25 +673,115 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
 #' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.organization.isp
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.organization.org
+#' 
 #' -   service.action.awsApiCallAction.serviceName
+#' 
+#' -   service.action.awsApiCallAction.userAgent
+#' 
+#' -   service.action.dnsRequestAction.blocked
 #' 
 #' -   service.action.dnsRequestAction.domain
 #' 
 #' -   service.action.dnsRequestAction.domainWithSuffix
 #' 
+#' -   service.action.dnsRequestAction.protocol
+#' 
 #' -   service.action.dnsRequestAction.vpcOwnerAccountId
+#' 
+#' -   service.action.kubernetesApiCallAction.namespace
+#' 
+#' -   service.action.kubernetesApiCallAction.parameters
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.city.cityName
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.country.countryCode
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.country.countryName
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.geoLocation.lat
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.geoLocation.lon
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV6
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.organization.asn
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.organization.asnOrg
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.organization.isp
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.organization.org
+#' 
+#' -   service.action.kubernetesApiCallAction.requestUri
+#' 
+#' -   service.action.kubernetesApiCallAction.resource
+#' 
+#' -   service.action.kubernetesApiCallAction.resourceName
+#' 
+#' -   service.action.kubernetesApiCallAction.sourceIPs
+#' 
+#' -   service.action.kubernetesApiCallAction.statusCode
+#' 
+#' -   service.action.kubernetesApiCallAction.subresource
+#' 
+#' -   service.action.kubernetesApiCallAction.userAgent
+#' 
+#' -   service.action.kubernetesApiCallAction.verb
+#' 
+#' -   service.action.kubernetesPermissionCheckedDetails.allowed
+#' 
+#' -   service.action.kubernetesPermissionCheckedDetails.namespace
+#' 
+#' -   service.action.kubernetesPermissionCheckedDetails.resource
+#' 
+#' -   service.action.kubernetesPermissionCheckedDetails.verb
+#' 
+#' -   service.action.kubernetesRoleBindingDetails.kind
+#' 
+#' -   service.action.kubernetesRoleBindingDetails.name
+#' 
+#' -   service.action.kubernetesRoleBindingDetails.roleRefKind
+#' 
+#' -   service.action.kubernetesRoleBindingDetails.roleRefName
+#' 
+#' -   service.action.kubernetesRoleBindingDetails.uid
+#' 
+#' -   service.action.kubernetesRoleDetails.kind
+#' 
+#' -   service.action.kubernetesRoleDetails.name
+#' 
+#' -   service.action.kubernetesRoleDetails.uid
 #' 
 #' -   service.action.networkConnectionAction.blocked
 #' 
 #' -   service.action.networkConnectionAction.connectionDirection
 #' 
+#' -   service.action.networkConnectionAction.localIpDetails.ipAddressV4
+#' 
+#' -   service.action.networkConnectionAction.localIpDetails.ipAddressV6
+#' 
+#' -   service.action.networkConnectionAction.localNetworkInterface
+#' 
 #' -   service.action.networkConnectionAction.localPortDetails.port
+#' 
+#' -   service.action.networkConnectionAction.localPortDetails.portName
 #' 
 #' -   service.action.networkConnectionAction.protocol
 #' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.city.cityName
 #' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.country.countryCode
+#' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.country.countryName
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.geoLocation.lat
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.geoLocation.lon
 #' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
 #' 
@@ -317,89 +791,731 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
 #' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.organization.isp
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.organization.org
+#' 
 #' -   service.action.networkConnectionAction.remotePortDetails.port
 #' 
-#' -   service.action.awsApiCallAction.remoteAccountDetails.affiliated
+#' -   service.action.networkConnectionAction.remotePortDetails.portName
 #' 
-#' -   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4
+#' -   service.action.portProbeAction.blocked
 #' 
-#' -   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV6
+#' -   service.action.portProbeAction.portProbeDetails.localIpDetails.ipAddressV4
 #' 
-#' -   service.action.kubernetesApiCallAction.namespace
+#' -   service.action.portProbeAction.portProbeDetails.localIpDetails.ipAddressV6
 #' 
-#' -   service.action.kubernetesApiCallAction.remoteIpDetails.organization.asn
+#' -   service.action.portProbeAction.portProbeDetails.localPortDetails.port
 #' 
-#' -   service.action.kubernetesApiCallAction.requestUri
+#' -   service.action.portProbeAction.portProbeDetails.localPortDetails.portName
 #' 
-#' -   service.action.kubernetesApiCallAction.statusCode
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.city.cityName
 #' 
-#' -   service.action.networkConnectionAction.localIpDetails.ipAddressV4
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.country.countryCode
 #' 
-#' -   service.action.networkConnectionAction.localIpDetails.ipAddressV6
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.country.countryName
 #' 
-#' -   service.action.networkConnectionAction.protocol
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.geoLocation.lat
 #' 
-#' -   service.action.awsApiCallAction.serviceName
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.geoLocation.lon
 #' 
-#' -   service.action.awsApiCallAction.remoteAccountDetails.accountId
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.ipAddressV4
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.ipAddressV6
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.organization.asn
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.organization.asnOrg
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.organization.isp
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.organization.org
+#' 
+#' -   service.action.rdsLoginAttemptAction.loginAttributes.application
+#' 
+#' -   service.action.rdsLoginAttemptAction.loginAttributes.failedLoginAttempts
+#' 
+#' -   service.action.rdsLoginAttemptAction.loginAttributes.successfulLoginAttempts
+#' 
+#' -   service.action.rdsLoginAttemptAction.loginAttributes.user
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.city.cityName
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.country.countryCode
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.country.countryName
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.geoLocation.lat
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.geoLocation.lon
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.ipAddressV4
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.ipAddressV6
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.organization.asn
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.organization.asnOrg
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.organization.isp
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.organization.org
+#' 
+#' -   service.additionalInfo.agentDetails.agentId
+#' 
+#' -   service.additionalInfo.agentDetails.agentVersion
+#' 
+#' -   service.additionalInfo.anomalies.anomalousAPIs
+#' 
+#' -   service.additionalInfo.authenticationMethod
+#' 
+#' -   service.additionalInfo.averagePacketSizeIn
+#' 
+#' -   service.additionalInfo.averagePacketSizeOut
+#' 
+#' -   service.additionalInfo.context
+#' 
+#' -   service.additionalInfo.domain
+#' 
+#' -   service.additionalInfo.inBytes
+#' 
+#' -   service.additionalInfo.localNetworkInterfaceOwner
+#' 
+#' -   service.additionalInfo.localPort
+#' 
+#' -   service.additionalInfo.outBytes
+#' 
+#' -   service.additionalInfo.packetsIn
+#' 
+#' -   service.additionalInfo.packetsOut
+#' 
+#' -   service.additionalInfo.policyArn
+#' 
+#' -   service.additionalInfo.policyName
+#' 
+#' -   service.additionalInfo.remotePort
+#' 
+#' -   service.additionalInfo.sample
+#' 
+#' -   service.additionalInfo.scannedPort
+#' 
+#' -   service.additionalInfo.threatFileSha256
 #' 
 #' -   service.additionalInfo.threatListName
 #' 
-#' -   service.resourceRole
+#' -   service.additionalInfo.threatName
 #' 
-#' -   resource.eksClusterDetails.name
+#' -   service.additionalInfo.totalBytesIn
 #' 
-#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.name
+#' -   service.additionalInfo.totalBytesOut
 #' 
-#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.namespace
+#' -   service.additionalInfo.type
 #' 
-#' -   resource.kubernetesDetails.kubernetesUserDetails.username
+#' -   service.additionalInfo.unusual.asnOrg
 #' 
-#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.image
+#' -   service.additionalInfo.unusual.port
 #' 
-#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.imagePrefix
+#' -   service.additionalInfo.unusualProtocol
 #' 
-#' -   service.ebsVolumeScanDetails.scanId
+#' -   service.additionalInfo.userAgent.fullUserAgent
+#' 
+#' -   service.additionalInfo.userAgent.userAgentCategory
+#' 
+#' -   service.additionalInfo.value
+#' 
+#' -   service.additionalInfo.vpcOwnerAccountId
+#' 
+#' -   service.archived
+#' 
+#' -   service.count
+#' 
+#' -   service.detection.anomaly.profiles
+#' 
+#' -   service.detection.anomaly.unusual.behavior
+#' 
+#' -   service.detection.sequence.actors.id
+#' 
+#' -   service.detection.sequence.actors.process.name
+#' 
+#' -   service.detection.sequence.actors.process.path
+#' 
+#' -   service.detection.sequence.actors.process.sha256
+#' 
+#' -   service.detection.sequence.actors.session.createdTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.actors.session.issuer
+#' 
+#' -   service.detection.sequence.actors.session.mfaStatus
+#' 
+#' -   service.detection.sequence.actors.session.uid
+#' 
+#' -   service.detection.sequence.actors.user.account.account
+#' 
+#' -   service.detection.sequence.actors.user.account.uid
+#' 
+#' -   service.detection.sequence.actors.user.credentialUid
+#' 
+#' -   service.detection.sequence.actors.user.name
+#' 
+#' -   service.detection.sequence.actors.user.type
+#' 
+#' -   service.detection.sequence.actors.user.uid
+#' 
+#' -   service.detection.sequence.additionalSequenceTypes
+#' 
+#' -   service.detection.sequence.description
+#' 
+#' -   service.detection.sequence.endpoints.autonomousSystem.name
+#' 
+#' -   service.detection.sequence.endpoints.autonomousSystem.number
+#' 
+#' -   service.detection.sequence.endpoints.connection.direction
+#' 
+#' -   service.detection.sequence.endpoints.domain
+#' 
+#' -   service.detection.sequence.endpoints.id
+#' 
+#' -   service.detection.sequence.endpoints.ip
+#' 
+#' -   service.detection.sequence.endpoints.location.city
+#' 
+#' -   service.detection.sequence.endpoints.location.country
+#' 
+#' -   service.detection.sequence.endpoints.location.lat
+#' 
+#' -   service.detection.sequence.endpoints.location.lon
+#' 
+#' -   service.detection.sequence.endpoints.port
+#' 
+#' -   service.detection.sequence.resources.accountId
+#' 
+#' -   service.detection.sequence.resources.cloudPartition
+#' 
+#' -   service.detection.sequence.resources.data.accessKey.principalId
+#' 
+#' -   service.detection.sequence.resources.data.accessKey.userName
+#' 
+#' -   service.detection.sequence.resources.data.accessKey.userType
+#' 
+#' -   service.detection.sequence.resources.data.autoscalingAutoScalingGroup.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.cloudformationStack.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.container.image
+#' 
+#' -   service.detection.sequence.resources.data.container.imageUid
+#' 
+#' -   service.detection.sequence.resources.data.ec2Image.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.availabilityZone
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.ec2NetworkInterfaceUids
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.iamInstanceProfile.arn
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.iamInstanceProfile.id
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.imageDescription
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.instanceState
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.instanceType
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.outpostArn
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.platform
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.productCodes.productCodeId
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.productCodes.productCodeType
+#' 
+#' -   service.detection.sequence.resources.data.ec2LaunchTemplate.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.ec2LaunchTemplate.version
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.ipv6Addresses
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.privateIpAddresses.privateDnsName
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.privateIpAddresses.privateIpAddress
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.publicIp
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.securityGroups.groupId
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.securityGroups.groupName
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.subNetId
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.vpcId
+#' 
+#' -   service.detection.sequence.resources.data.ec2Vpc.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.ecsCluster.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.ecsCluster.status
+#' 
+#' -   service.detection.sequence.resources.data.ecsTask.containerUids
+#' 
+#' -   service.detection.sequence.resources.data.ecsTask.createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.resources.data.ecsTask.launchType
+#' 
+#' -   service.detection.sequence.resources.data.ecsTask.taskDefinitionArn
+#' 
+#' -   service.detection.sequence.resources.data.eksCluster.arn
+#' 
+#' -   service.detection.sequence.resources.data.eksCluster.createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.resources.data.eksCluster.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.eksCluster.status
+#' 
+#' -   service.detection.sequence.resources.data.eksCluster.vpcId
+#' 
+#' -   service.detection.sequence.resources.data.iamInstanceProfile.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.iamInstanceProfile.id
+#' 
+#' -   service.detection.sequence.resources.data.kubernetesWorkload.containerUids
+#' 
+#' -   service.detection.sequence.resources.data.kubernetesWorkload.namespace
+#' 
+#' -   service.detection.sequence.resources.data.kubernetesWorkload.type
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.accountPublicAccess.publicAclAccess
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.accountPublicAccess.publicAclIgnoreBehavior
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.accountPublicAccess.publicBucketRestrictBehavior
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.accountPublicAccess.publicPolicyAccess
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.bucketPublicAccess.publicAclAccess
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.bucketPublicAccess.publicAclIgnoreBehavior
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.bucketPublicAccess.publicBucketRestrictBehavior
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.bucketPublicAccess.publicPolicyAccess
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.effectivePermission
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.encryptionKeyArn
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.encryptionType
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.ownerId
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.publicReadAccess
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.publicWriteAccess
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.s3ObjectUids
+#' 
+#' -   service.detection.sequence.resources.data.s3Object.eTag
+#' 
+#' -   service.detection.sequence.resources.data.s3Object.key
+#' 
+#' -   service.detection.sequence.resources.data.s3Object.versionId
+#' 
+#' -   service.detection.sequence.resources.name
+#' 
+#' -   service.detection.sequence.resources.region
+#' 
+#' -   service.detection.sequence.resources.resourceType
+#' 
+#' -   service.detection.sequence.resources.service
+#' 
+#' -   service.detection.sequence.resources.tags.key
+#' 
+#' -   service.detection.sequence.resources.tags.value
+#' 
+#' -   service.detection.sequence.resources.uid
+#' 
+#' -   service.detection.sequence.sequenceIndicators.key
+#' 
+#' -   service.detection.sequence.sequenceIndicators.title
+#' 
+#' -   service.detection.sequence.sequenceIndicators.values
+#' 
+#' -   service.detection.sequence.signals.actorIds
+#' 
+#' -   service.detection.sequence.signals.count
+#' 
+#' -   service.detection.sequence.signals.createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.signals.description
+#' 
+#' -   service.detection.sequence.signals.endpointIds
+#' 
+#' -   service.detection.sequence.signals.firstSeenAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.signals.lastSeenAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.signals.name
+#' 
+#' -   service.detection.sequence.signals.resourceUids
+#' 
+#' -   service.detection.sequence.signals.severity
+#' 
+#' -   service.detection.sequence.signals.signalIndicators.key
+#' 
+#' -   service.detection.sequence.signals.signalIndicators.title
+#' 
+#' -   service.detection.sequence.signals.signalIndicators.values
+#' 
+#' -   service.detection.sequence.signals.type
+#' 
+#' -   service.detection.sequence.signals.uid
+#' 
+#' -   service.detection.sequence.signals.updatedAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.uid
+#' 
+#' -   service.detectorId
+#' 
+#' -   service.ebsVolumeScanDetails.scanCompletedAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.highestSeverityThreatDetails.count
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.highestSeverityThreatDetails.severity
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.highestSeverityThreatDetails.threatName
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.scannedItemCount.files
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.scannedItemCount.totalGb
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.scannedItemCount.volumes
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.itemCount
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.shortened
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.fileName
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.filePath
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.hash
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.volumeArn
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.itemCount
 #' 
 #' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.name
 #' 
 #' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.severity
 #' 
-#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.hash
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.uniqueThreatNameCount
 #' 
-#' -   resource.ecsClusterDetails.name
+#' -   service.ebsVolumeScanDetails.scanDetections.threatsDetectedItemCount.files
 #' 
-#' -   resource.ecsClusterDetails.taskDetails.containers.image
+#' -   service.ebsVolumeScanDetails.scanId
 #' 
-#' -   resource.ecsClusterDetails.taskDetails.definitionArn
+#' -   service.ebsVolumeScanDetails.scanStartedAt
 #' 
-#' -   resource.containerDetails.image
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
 #' 
-#' -   resource.rdsDbInstanceDetails.dbInstanceIdentifier
+#' -   service.ebsVolumeScanDetails.scanType
 #' 
-#' -   resource.rdsDbInstanceDetails.dbClusterIdentifier
+#' -   service.ebsVolumeScanDetails.sources
 #' 
-#' -   resource.rdsDbInstanceDetails.engine
+#' -   service.ebsVolumeScanDetails.triggerFindingId
 #' 
-#' -   resource.rdsDbUserDetails.user
+#' -   service.eventFirstSeen
 #' 
-#' -   resource.rdsDbInstanceDetails.tags.key
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
 #' 
-#' -   resource.rdsDbInstanceDetails.tags.value
+#' -   service.eventLastSeen
 #' 
-#' -   service.runtimeDetails.process.executableSha256
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
 #' 
-#' -   service.runtimeDetails.process.name
+#' -   service.evidence.threatIntelligenceDetails.threatFileSha256
+#' 
+#' -   service.evidence.threatIntelligenceDetails.threatListName
+#' 
+#' -   service.evidence.threatIntelligenceDetails.threatNames
+#' 
+#' -   service.featureName
+#' 
+#' -   service.malwareScanDetails.scanCategory
+#' 
+#' -   service.malwareScanDetails.scanConfiguration.incrementalScanDetails.baselineResourceArn
+#' 
+#' -   service.malwareScanDetails.scanConfiguration.triggerType
+#' 
+#' -   service.malwareScanDetails.scanId
+#' 
+#' -   service.malwareScanDetails.scanType
+#' 
+#' -   service.malwareScanDetails.threats.count
+#' 
+#' -   service.malwareScanDetails.threats.hash
+#' 
+#' -   service.malwareScanDetails.threats.itemDetails.additionalInfo.deviceName
+#' 
+#' -   service.malwareScanDetails.threats.itemDetails.additionalInfo.versionId
+#' 
+#' -   service.malwareScanDetails.threats.itemDetails.hash
+#' 
+#' -   service.malwareScanDetails.threats.itemDetails.itemPath
+#' 
+#' -   service.malwareScanDetails.threats.itemDetails.resourceArn
+#' 
+#' -   service.malwareScanDetails.threats.itemPaths.hash
+#' 
+#' -   service.malwareScanDetails.threats.itemPaths.nestedItemPath
+#' 
+#' -   service.malwareScanDetails.threats.name
+#' 
+#' -   service.malwareScanDetails.threats.source
+#' 
+#' -   service.malwareScanDetails.uniqueThreatCount
+#' 
+#' -   service.resourceRole
+#' 
+#' -   service.runtimeDetails.context.addressFamily
+#' 
+#' -   service.runtimeDetails.context.commandLineExample
+#' 
+#' -   service.runtimeDetails.context.fileOperation
+#' 
+#' -   service.runtimeDetails.context.filePath
+#' 
+#' -   service.runtimeDetails.context.fileSystemType
+#' 
+#' -   service.runtimeDetails.context.flags
+#' 
+#' -   service.runtimeDetails.context.ianaProtocolNumber
+#' 
+#' -   service.runtimeDetails.context.ldPreloadValue
+#' 
+#' -   service.runtimeDetails.context.libraryPath
+#' 
+#' -   service.runtimeDetails.context.memoryRegions
+#' 
+#' -   service.runtimeDetails.context.modifiedAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.euid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.executablePath
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.executableSha256
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.euid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.executablePath
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.name
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.namespacePid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.parentUuid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.pid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.startTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.userId
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.uuid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.name
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.namespacePid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.parentUuid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.pid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.pwd
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.startTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.user
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.userId
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.uuid
+#' 
+#' -   service.runtimeDetails.context.moduleFilePath
+#' 
+#' -   service.runtimeDetails.context.moduleName
+#' 
+#' -   service.runtimeDetails.context.moduleSha256
+#' 
+#' -   service.runtimeDetails.context.mountSource
+#' 
+#' -   service.runtimeDetails.context.mountTarget
+#' 
+#' -   service.runtimeDetails.context.relatedFilePaths
+#' 
+#' -   service.runtimeDetails.context.releaseAgentPath
+#' 
+#' -   service.runtimeDetails.context.runcBinaryPath
+#' 
+#' -   service.runtimeDetails.context.scriptPath
+#' 
+#' -   service.runtimeDetails.context.serviceName
+#' 
+#' -   service.runtimeDetails.context.shellHistoryFilePath
+#' 
+#' -   service.runtimeDetails.context.socketPath
+#' 
+#' -   service.runtimeDetails.context.targetProcess.euid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.executablePath
+#' 
+#' -   service.runtimeDetails.context.targetProcess.executableSha256
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.euid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.executablePath
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.name
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.namespacePid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.parentUuid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.pid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.startTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.userId
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.uuid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.name
+#' 
+#' -   service.runtimeDetails.context.targetProcess.namespacePid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.parentUuid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.pid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.pwd
+#' 
+#' -   service.runtimeDetails.context.targetProcess.startTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.runtimeDetails.context.targetProcess.user
+#' 
+#' -   service.runtimeDetails.context.targetProcess.userId
+#' 
+#' -   service.runtimeDetails.context.targetProcess.uuid
+#' 
+#' -   service.runtimeDetails.context.threatFilePath
+#' 
+#' -   service.runtimeDetails.context.toolCategory
+#' 
+#' -   service.runtimeDetails.context.toolName
+#' 
+#' -   service.runtimeDetails.process.euid
 #' 
 #' -   service.runtimeDetails.process.executablePath
 #' 
-#' -   resource.lambdaDetails.functionName
+#' -   service.runtimeDetails.process.executableSha256
 #' 
-#' -   resource.lambdaDetails.functionArn
+#' -   service.runtimeDetails.process.lineage.euid
 #' 
-#' -   resource.lambdaDetails.tags.key
+#' -   service.runtimeDetails.process.lineage.executablePath
 #' 
-#' -   resource.lambdaDetails.tags.value
+#' -   service.runtimeDetails.process.lineage.name
+#' 
+#' -   service.runtimeDetails.process.lineage.namespacePid
+#' 
+#' -   service.runtimeDetails.process.lineage.parentUuid
+#' 
+#' -   service.runtimeDetails.process.lineage.pid
+#' 
+#' -   service.runtimeDetails.process.lineage.startTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.runtimeDetails.process.lineage.userId
+#' 
+#' -   service.runtimeDetails.process.lineage.uuid
+#' 
+#' -   service.runtimeDetails.process.name
+#' 
+#' -   service.runtimeDetails.process.namespacePid
+#' 
+#' -   service.runtimeDetails.process.parentUuid
+#' 
+#' -   service.runtimeDetails.process.pid
+#' 
+#' -   service.runtimeDetails.process.pwd
+#' 
+#' -   service.runtimeDetails.process.startTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.runtimeDetails.process.user
+#' 
+#' -   service.runtimeDetails.process.userId
+#' 
+#' -   service.runtimeDetails.process.uuid
+#' 
+#' -   service.serviceName
+#' 
+#' -   service.userFeedback
+#' 
+#' -   severity
+#' 
+#'     To configure severity based filters, use the following for the
+#'     [FindingCriteria](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FindingCriteria.html)
+#'     condition:
+#' 
+#'     -   **Low**: `["1", "2", "3"]`
+#' 
+#'     -   **Medium**: `["4", "5", "6"]`
+#' 
+#'     -   **High**: `["7", "8"]`
+#' 
+#'     -   **Critical**: `["9", "10"]`
+#' 
+#'     For more information, see [Findings severity
+#'     levels](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html)
+#'     in the *Amazon GuardDuty User Guide*.
+#' 
+#' -   title
+#' 
+#' -   type
+#' 
+#' -   updatedAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
 #' @param ClientToken The idempotency token for the create request.
 #' @param Tags The tags to be added to a new filter resource.
 #'
@@ -410,7 +1526,7 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
   op <- new_operation(
     name = "CreateFilter",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/filter",
+    http_path = "/detector/{DetectorId}/filter",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -459,7 +1575,7 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
   op <- new_operation(
     name = "CreateIPSet",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/ipset",
+    http_path = "/detector/{DetectorId}/ipset",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -537,7 +1653,7 @@ guardduty_create_members <- function(DetectorId, AccountDetails) {
   op <- new_operation(
     name = "CreateMembers",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/member",
+    http_path = "/detector/{DetectorId}/member",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -580,7 +1696,7 @@ guardduty_create_publishing_destination <- function(DetectorId, DestinationType,
   op <- new_operation(
     name = "CreatePublishingDestination",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/publishingDestination",
+    http_path = "/detector/{DetectorId}/publishingDestination",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -617,7 +1733,7 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
   op <- new_operation(
     name = "CreateSampleFindings",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/findings/create",
+    http_path = "/detector/{DetectorId}/findings/create",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -672,7 +1788,7 @@ guardduty_create_threat_entity_set <- function(DetectorId, Name, Format, Locatio
   op <- new_operation(
     name = "CreateThreatEntitySet",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/threatentityset",
+    http_path = "/detector/{DetectorId}/threatentityset",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -719,7 +1835,7 @@ guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location
   op <- new_operation(
     name = "CreateThreatIntelSet",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/threatintelset",
+    http_path = "/detector/{DetectorId}/threatintelset",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -774,7 +1890,7 @@ guardduty_create_trusted_entity_set <- function(DetectorId, Name, Format, Locati
   op <- new_operation(
     name = "CreateTrustedEntitySet",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/trustedentityset",
+    http_path = "/detector/{DetectorId}/trustedentityset",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -844,7 +1960,7 @@ guardduty_delete_detector <- function(DetectorId) {
   op <- new_operation(
     name = "DeleteDetector",
     http_method = "DELETE",
-    http_path = "/detector/{detectorId}",
+    http_path = "/detector/{DetectorId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -880,7 +1996,7 @@ guardduty_delete_filter <- function(DetectorId, FilterName) {
   op <- new_operation(
     name = "DeleteFilter",
     http_method = "DELETE",
-    http_path = "/detector/{detectorId}/filter/{filterName}",
+    http_path = "/detector/{DetectorId}/filter/{FilterName}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -916,7 +2032,7 @@ guardduty_delete_ip_set <- function(DetectorId, IpSetId) {
   op <- new_operation(
     name = "DeleteIPSet",
     http_method = "DELETE",
-    http_path = "/detector/{detectorId}/ipset/{ipSetId}",
+    http_path = "/detector/{DetectorId}/ipset/{IpSetId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -982,7 +2098,7 @@ guardduty_delete_malware_protection_plan <- function(MalwareProtectionPlanId) {
   op <- new_operation(
     name = "DeleteMalwareProtectionPlan",
     http_method = "DELETE",
-    http_path = "/malware-protection-plan/{malwareProtectionPlanId}",
+    http_path = "/malware-protection-plan/{MalwareProtectionPlanId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1021,7 +2137,7 @@ guardduty_delete_members <- function(DetectorId, AccountIds) {
   op <- new_operation(
     name = "DeleteMembers",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/member/delete",
+    http_path = "/detector/{DetectorId}/member/delete",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1058,7 +2174,7 @@ guardduty_delete_publishing_destination <- function(DetectorId, DestinationId) {
   op <- new_operation(
     name = "DeletePublishingDestination",
     http_method = "DELETE",
-    http_path = "/detector/{detectorId}/publishingDestination/{destinationId}",
+    http_path = "/detector/{DetectorId}/publishingDestination/{DestinationId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1097,7 +2213,7 @@ guardduty_delete_threat_entity_set <- function(DetectorId, ThreatEntitySetId) {
   op <- new_operation(
     name = "DeleteThreatEntitySet",
     http_method = "DELETE",
-    http_path = "/detector/{detectorId}/threatentityset/{threatEntitySetId}",
+    http_path = "/detector/{DetectorId}/threatentityset/{ThreatEntitySetId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1134,7 +2250,7 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
   op <- new_operation(
     name = "DeleteThreatIntelSet",
     http_method = "DELETE",
-    http_path = "/detector/{detectorId}/threatintelset/{threatIntelSetId}",
+    http_path = "/detector/{DetectorId}/threatintelset/{ThreatIntelSetId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1173,7 +2289,7 @@ guardduty_delete_trusted_entity_set <- function(DetectorId, TrustedEntitySetId) 
   op <- new_operation(
     name = "DeleteTrustedEntitySet",
     http_method = "DELETE",
-    http_path = "/detector/{detectorId}/trustedentityset/{trustedEntitySetId}",
+    http_path = "/detector/{DetectorId}/trustedentityset/{TrustedEntitySetId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1220,7 +2336,7 @@ guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxRe
   op <- new_operation(
     name = "DescribeMalwareScans",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/malware-scans",
+    http_path = "/detector/{DetectorId}/malware-scans",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Scans"),
     stream_api = FALSE
@@ -1264,7 +2380,7 @@ guardduty_describe_organization_configuration <- function(DetectorId, MaxResults
   op <- new_operation(
     name = "DescribeOrganizationConfiguration",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/admin",
+    http_path = "/detector/{DetectorId}/admin",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
@@ -1302,7 +2418,7 @@ guardduty_describe_publishing_destination <- function(DetectorId, DestinationId)
   op <- new_operation(
     name = "DescribePublishingDestination",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/publishingDestination/{destinationId}",
+    http_path = "/detector/{DetectorId}/publishingDestination/{DestinationId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1367,7 +2483,7 @@ guardduty_disassociate_from_administrator_account <- function(DetectorId) {
   op <- new_operation(
     name = "DisassociateFromAdministratorAccount",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/administrator/disassociate",
+    http_path = "/detector/{DetectorId}/administrator/disassociate",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1399,7 +2515,7 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
   op <- new_operation(
     name = "DisassociateFromMasterAccount",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/master/disassociate",
+    http_path = "/detector/{DetectorId}/master/disassociate",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1434,7 +2550,7 @@ guardduty_disassociate_members <- function(DetectorId, AccountIds) {
   op <- new_operation(
     name = "DisassociateMembers",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/member/disassociate",
+    http_path = "/detector/{DetectorId}/member/disassociate",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1499,7 +2615,7 @@ guardduty_get_administrator_account <- function(DetectorId) {
   op <- new_operation(
     name = "GetAdministratorAccount",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/administrator",
+    http_path = "/detector/{DetectorId}/administrator",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1536,7 +2652,7 @@ guardduty_get_coverage_statistics <- function(DetectorId, FilterCriteria = NULL,
   op <- new_operation(
     name = "GetCoverageStatistics",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/coverage/statistics",
+    http_path = "/detector/{DetectorId}/coverage/statistics",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1571,7 +2687,7 @@ guardduty_get_detector <- function(DetectorId) {
   op <- new_operation(
     name = "GetDetector",
     http_method = "GET",
-    http_path = "/detector/{detectorId}",
+    http_path = "/detector/{DetectorId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1607,7 +2723,7 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
   op <- new_operation(
     name = "GetFilter",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/filter/{filterName}",
+    http_path = "/detector/{DetectorId}/filter/{FilterName}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1645,7 +2761,7 @@ guardduty_get_findings <- function(DetectorId, FindingIds, SortCriteria = NULL) 
   op <- new_operation(
     name = "GetFindings",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/findings/get",
+    http_path = "/detector/{DetectorId}/findings/get",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1692,7 +2808,7 @@ guardduty_get_findings_statistics <- function(DetectorId, FindingStatisticTypes 
   op <- new_operation(
     name = "GetFindingsStatistics",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/findings/statistics",
+    http_path = "/detector/{DetectorId}/findings/statistics",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1728,7 +2844,7 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
   op <- new_operation(
     name = "GetIPSet",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/ipset/{ipSetId}",
+    http_path = "/detector/{DetectorId}/ipset/{IpSetId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1792,7 +2908,7 @@ guardduty_get_malware_protection_plan <- function(MalwareProtectionPlanId) {
   op <- new_operation(
     name = "GetMalwareProtectionPlan",
     http_method = "GET",
-    http_path = "/malware-protection-plan/{malwareProtectionPlanId}",
+    http_path = "/malware-protection-plan/{MalwareProtectionPlanId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1825,7 +2941,7 @@ guardduty_get_malware_scan <- function(ScanId) {
   op <- new_operation(
     name = "GetMalwareScan",
     http_method = "GET",
-    http_path = "/malware-scan/{scanId}",
+    http_path = "/malware-scan/{ScanId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1860,7 +2976,7 @@ guardduty_get_malware_scan_settings <- function(DetectorId) {
   op <- new_operation(
     name = "GetMalwareScanSettings",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/malware-scan-settings",
+    http_path = "/detector/{DetectorId}/malware-scan-settings",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1896,7 +3012,7 @@ guardduty_get_master_account <- function(DetectorId) {
   op <- new_operation(
     name = "GetMasterAccount",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/master",
+    http_path = "/detector/{DetectorId}/master",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1933,7 +3049,7 @@ guardduty_get_member_detectors <- function(DetectorId, AccountIds) {
   op <- new_operation(
     name = "GetMemberDetectors",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/member/detector/get",
+    http_path = "/detector/{DetectorId}/member/detector/get",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1972,7 +3088,7 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
   op <- new_operation(
     name = "GetMembers",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/member/get",
+    http_path = "/detector/{DetectorId}/member/get",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -2041,7 +3157,7 @@ guardduty_get_remaining_free_trial_days <- function(DetectorId, AccountIds) {
   op <- new_operation(
     name = "GetRemainingFreeTrialDays",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/freeTrial/daysRemaining",
+    http_path = "/detector/{DetectorId}/freeTrial/daysRemaining",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -2079,7 +3195,7 @@ guardduty_get_threat_entity_set <- function(DetectorId, ThreatEntitySetId) {
   op <- new_operation(
     name = "GetThreatEntitySet",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/threatentityset/{threatEntitySetId}",
+    http_path = "/detector/{DetectorId}/threatentityset/{ThreatEntitySetId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -2116,7 +3232,7 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
   op <- new_operation(
     name = "GetThreatIntelSet",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/threatintelset/{threatIntelSetId}",
+    http_path = "/detector/{DetectorId}/threatintelset/{ThreatIntelSetId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -2150,7 +3266,7 @@ guardduty_get_trusted_entity_set <- function(DetectorId, TrustedEntitySetId) {
   op <- new_operation(
     name = "GetTrustedEntitySet",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/trustedentityset/{trustedEntitySetId}",
+    http_path = "/detector/{DetectorId}/trustedentityset/{TrustedEntitySetId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -2196,7 +3312,7 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
   op <- new_operation(
     name = "GetUsageStatistics",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/usage/statistics",
+    http_path = "/detector/{DetectorId}/usage/statistics",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
@@ -2241,7 +3357,7 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
   op <- new_operation(
     name = "InviteMembers",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/member/invite",
+    http_path = "/detector/{DetectorId}/member/invite",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -2284,7 +3400,7 @@ guardduty_list_coverage <- function(DetectorId, NextToken = NULL, MaxResults = N
   op <- new_operation(
     name = "ListCoverage",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/coverage",
+    http_path = "/detector/{DetectorId}/coverage",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources"),
     stream_api = FALSE
@@ -2364,7 +3480,7 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
   op <- new_operation(
     name = "ListFilters",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/filter",
+    http_path = "/detector/{DetectorId}/filter",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FilterNames"),
     stream_api = FALSE
@@ -2516,7 +3632,7 @@ guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, SortCrit
   op <- new_operation(
     name = "ListFindings",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/findings",
+    http_path = "/detector/{DetectorId}/findings",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FindingIds"),
     stream_api = FALSE
@@ -2557,7 +3673,7 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
   op <- new_operation(
     name = "ListIPSets",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/ipset",
+    http_path = "/detector/{DetectorId}/ipset",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpSetIds"),
     stream_api = FALSE
@@ -2719,7 +3835,7 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
   op <- new_operation(
     name = "ListMembers",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/member",
+    http_path = "/detector/{DetectorId}/member",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Members"),
     stream_api = FALSE
@@ -2796,7 +3912,7 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
   op <- new_operation(
     name = "ListPublishingDestinations",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/publishingDestination",
+    http_path = "/detector/{DetectorId}/publishingDestination",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
@@ -2827,7 +3943,7 @@ guardduty_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
     http_method = "GET",
-    http_path = "/tags/{resourceArn}",
+    http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -2870,7 +3986,7 @@ guardduty_list_threat_entity_sets <- function(DetectorId, MaxResults = NULL, Nex
   op <- new_operation(
     name = "ListThreatEntitySets",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/threatentityset",
+    http_path = "/detector/{DetectorId}/threatentityset",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ThreatEntitySetIds"),
     stream_api = FALSE
@@ -2915,7 +4031,7 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
   op <- new_operation(
     name = "ListThreatIntelSets",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/threatintelset",
+    http_path = "/detector/{DetectorId}/threatintelset",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ThreatIntelSetIds"),
     stream_api = FALSE
@@ -2958,7 +4074,7 @@ guardduty_list_trusted_entity_sets <- function(DetectorId, MaxResults = NULL, Ne
   op <- new_operation(
     name = "ListTrustedEntitySets",
     http_method = "GET",
-    http_path = "/detector/{detectorId}/trustedentityset",
+    http_path = "/detector/{DetectorId}/trustedentityset",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrustedEntitySetIds"),
     stream_api = FALSE
@@ -3063,7 +4179,7 @@ guardduty_start_monitoring_members <- function(DetectorId, AccountIds) {
   op <- new_operation(
     name = "StartMonitoringMembers",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/member/start",
+    http_path = "/detector/{DetectorId}/member/start",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3100,7 +4216,7 @@ guardduty_stop_monitoring_members <- function(DetectorId, AccountIds) {
   op <- new_operation(
     name = "StopMonitoringMembers",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/member/stop",
+    http_path = "/detector/{DetectorId}/member/stop",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3133,7 +4249,7 @@ guardduty_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
     http_method = "POST",
-    http_path = "/tags/{resourceArn}",
+    http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3169,7 +4285,7 @@ guardduty_unarchive_findings <- function(DetectorId, FindingIds) {
   op <- new_operation(
     name = "UnarchiveFindings",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/findings/unarchive",
+    http_path = "/detector/{DetectorId}/findings/unarchive",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3201,7 +4317,7 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
     http_method = "DELETE",
-    http_path = "/tags/{resourceArn}",
+    http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3246,7 +4362,7 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
   op <- new_operation(
     name = "UpdateDetector",
     http_method = "POST",
-    http_path = "/detector/{detectorId}",
+    http_path = "/detector/{DetectorId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3282,10 +4398,1341 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' whitespace.
 #' @param Action Specifies the action that is to be applied to the findings that match
 #' the filter.
+#' 
+#' Default: NOOP
 #' @param Rank Specifies the position of the filter in the list of current filters.
 #' Also specifies the order in which this filter is applied to the
 #' findings.
 #' @param FindingCriteria Represents the criteria to be used in the filter for querying findings.
+#' The following fields are available for filtering:
+#' 
+#' -   accountId
+#' 
+#' -   arn
+#' 
+#' -   associatedAttackSequenceArn
+#' 
+#' -   confidence
+#' 
+#' -   createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   description
+#' 
+#' -   id
+#' 
+#' -   partition
+#' 
+#' -   region
+#' 
+#' -   resource.accessKeyDetails.accessKeyId
+#' 
+#' -   resource.accessKeyDetails.principalId
+#' 
+#' -   resource.accessKeyDetails.userIdentity.accessKeyId
+#' 
+#' -   resource.accessKeyDetails.userIdentity.accountId
+#' 
+#' -   resource.accessKeyDetails.userIdentity.arn
+#' 
+#' -   resource.accessKeyDetails.userIdentity.principalId
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.attributes.mfaAuthenticated
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.ec2RoleDelivery
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.invokedBy
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.accountId
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.arn
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.principalId
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.type
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.sessionIssuer.userName
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.sourceIdentity
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.webIdFederationData.attributes
+#' 
+#' -   resource.accessKeyDetails.userIdentity.sessionContext.webIdFederationData.federatedProvider
+#' 
+#' -   resource.accessKeyDetails.userIdentity.type
+#' 
+#' -   resource.accessKeyDetails.userIdentity.userName
+#' 
+#' -   resource.accessKeyDetails.userName
+#' 
+#' -   resource.accessKeyDetails.userType
+#' 
+#' -   resource.bedrockGuardrailDetails.guardrailArn
+#' 
+#' -   resource.bedrockGuardrailDetails.guardrailVersion
+#' 
+#' -   resource.containerDetails.containerRuntime
+#' 
+#' -   resource.containerDetails.id
+#' 
+#' -   resource.containerDetails.image
+#' 
+#' -   resource.containerDetails.imagePrefix
+#' 
+#' -   resource.containerDetails.name
+#' 
+#' -   resource.containerDetails.securityContext.allowPrivilegeEscalation
+#' 
+#' -   resource.containerDetails.securityContext.privileged
+#' 
+#' -   resource.containerDetails.volumeMounts.mountPath
+#' 
+#' -   resource.containerDetails.volumeMounts.name
+#' 
+#' -   resource.ebsSnapshotDetails.snapshotArn
+#' 
+#' -   resource.ebsVolumeDetails.scannedVolumeDetails.deviceName
+#' 
+#' -   resource.ebsVolumeDetails.scannedVolumeDetails.encryptionType
+#' 
+#' -   resource.ebsVolumeDetails.scannedVolumeDetails.kmsKeyArn
+#' 
+#' -   resource.ebsVolumeDetails.scannedVolumeDetails.snapshotArn
+#' 
+#' -   resource.ebsVolumeDetails.scannedVolumeDetails.volumeArn
+#' 
+#' -   resource.ebsVolumeDetails.scannedVolumeDetails.volumeSizeInGB
+#' 
+#' -   resource.ebsVolumeDetails.scannedVolumeDetails.volumeType
+#' 
+#' -   resource.ebsVolumeDetails.skippedVolumeDetails.deviceName
+#' 
+#' -   resource.ebsVolumeDetails.skippedVolumeDetails.encryptionType
+#' 
+#' -   resource.ebsVolumeDetails.skippedVolumeDetails.kmsKeyArn
+#' 
+#' -   resource.ebsVolumeDetails.skippedVolumeDetails.snapshotArn
+#' 
+#' -   resource.ebsVolumeDetails.skippedVolumeDetails.volumeArn
+#' 
+#' -   resource.ebsVolumeDetails.skippedVolumeDetails.volumeSizeInGB
+#' 
+#' -   resource.ebsVolumeDetails.skippedVolumeDetails.volumeType
+#' 
+#' -   resource.ec2ImageDetails.imageArn
+#' 
+#' -   resource.ecsClusterDetails.activeServicesCount
+#' 
+#' -   resource.ecsClusterDetails.arn
+#' 
+#' -   resource.ecsClusterDetails.name
+#' 
+#' -   resource.ecsClusterDetails.registeredContainerInstancesCount
+#' 
+#' -   resource.ecsClusterDetails.runningTasksCount
+#' 
+#' -   resource.ecsClusterDetails.status
+#' 
+#' -   resource.ecsClusterDetails.tags.key
+#' 
+#' -   resource.ecsClusterDetails.tags.value
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.arn
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.containerRuntime
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.id
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.image
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.imagePrefix
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.name
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.securityContext.allowPrivilegeEscalation
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.securityContext.privileged
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.volumeMounts.mountPath
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.volumeMounts.name
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.definitionArn
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.group
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.launchType
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.startedAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.startedBy
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.tags.key
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.tags.value
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.version
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.volumes.hostPath.path
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.volumes.name
+#' 
+#' -   resource.eksClusterDetails.arn
+#' 
+#' -   resource.eksClusterDetails.createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   resource.eksClusterDetails.name
+#' 
+#' -   resource.eksClusterDetails.status
+#' 
+#' -   resource.eksClusterDetails.tags.key
+#' 
+#' -   resource.eksClusterDetails.tags.value
+#' 
+#' -   resource.eksClusterDetails.vpcId
+#' 
+#' -   resource.instanceDetails.availabilityZone
+#' 
+#' -   resource.instanceDetails.iamInstanceProfile.arn
+#' 
+#' -   resource.instanceDetails.iamInstanceProfile.id
+#' 
+#' -   resource.instanceDetails.imageDescription
+#' 
+#' -   resource.instanceDetails.imageId
+#' 
+#' -   resource.instanceDetails.instanceId
+#' 
+#' -   resource.instanceDetails.instanceState
+#' 
+#' -   resource.instanceDetails.instanceType
+#' 
+#' -   resource.instanceDetails.launchTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   resource.instanceDetails.networkInterfaces.ipv6Addresses
+#' 
+#' -   resource.instanceDetails.networkInterfaces.networkInterfaceId
+#' 
+#' -   resource.instanceDetails.networkInterfaces.privateDnsName
+#' 
+#' -   resource.instanceDetails.networkInterfaces.privateIpAddress
+#' 
+#' -   resource.instanceDetails.networkInterfaces.privateIpAddresses.privateDnsName
+#' 
+#' -   resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress
+#' 
+#' -   resource.instanceDetails.networkInterfaces.publicDnsName
+#' 
+#' -   resource.instanceDetails.networkInterfaces.publicIp
+#' 
+#' -   resource.instanceDetails.networkInterfaces.securityGroups.groupId
+#' 
+#' -   resource.instanceDetails.networkInterfaces.securityGroups.groupName
+#' 
+#' -   resource.instanceDetails.networkInterfaces.subnetId
+#' 
+#' -   resource.instanceDetails.networkInterfaces.vpcId
+#' 
+#' -   resource.instanceDetails.outpostArn
+#' 
+#' -   resource.instanceDetails.platform
+#' 
+#' -   resource.instanceDetails.productCodes.productCodeId
+#' 
+#' -   resource.instanceDetails.productCodes.productCodeType
+#' 
+#' -   resource.instanceDetails.tags.key
+#' 
+#' -   resource.instanceDetails.tags.value
+#' 
+#' -   resource.kubernetesDetails.kubernetesUserDetails.groups
+#' 
+#' -   resource.kubernetesDetails.kubernetesUserDetails.impersonatedUser.groups
+#' 
+#' -   resource.kubernetesDetails.kubernetesUserDetails.impersonatedUser.username
+#' 
+#' -   resource.kubernetesDetails.kubernetesUserDetails.sessionName
+#' 
+#' -   resource.kubernetesDetails.kubernetesUserDetails.uid
+#' 
+#' -   resource.kubernetesDetails.kubernetesUserDetails.username
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.containerRuntime
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.id
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.image
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.imagePrefix
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.name
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.securityContext.allowPrivilegeEscalation
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.securityContext.privileged
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.volumeMounts.mountPath
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.volumeMounts.name
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.hostIpc
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.hostNetwork
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.hostPid
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.name
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.namespace
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.serviceAccountName
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.type
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.uid
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.volumes.hostPath.path
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.volumes.name
+#' 
+#' -   resource.lambdaDetails.description
+#' 
+#' -   resource.lambdaDetails.functionArn
+#' 
+#' -   resource.lambdaDetails.functionName
+#' 
+#' -   resource.lambdaDetails.functionVersion
+#' 
+#' -   resource.lambdaDetails.lastModifiedAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   resource.lambdaDetails.revisionId
+#' 
+#' -   resource.lambdaDetails.role
+#' 
+#' -   resource.lambdaDetails.tags.key
+#' 
+#' -   resource.lambdaDetails.tags.value
+#' 
+#' -   resource.lambdaDetails.vpcConfig.securityGroups.groupId
+#' 
+#' -   resource.lambdaDetails.vpcConfig.securityGroups.groupName
+#' 
+#' -   resource.lambdaDetails.vpcConfig.subnetIds
+#' 
+#' -   resource.lambdaDetails.vpcConfig.vpcId
+#' 
+#' -   resource.rdsDbInstanceDetails.dbClusterIdentifier
+#' 
+#' -   resource.rdsDbInstanceDetails.dbInstanceArn
+#' 
+#' -   resource.rdsDbInstanceDetails.dbInstanceIdentifier
+#' 
+#' -   resource.rdsDbInstanceDetails.dbSecurityGroups.name
+#' 
+#' -   resource.rdsDbInstanceDetails.dbSecurityGroups.status
+#' 
+#' -   resource.rdsDbInstanceDetails.dbiResourceId
+#' 
+#' -   resource.rdsDbInstanceDetails.engine
+#' 
+#' -   resource.rdsDbInstanceDetails.engineVersion
+#' 
+#' -   resource.rdsDbInstanceDetails.iamDatabaseAuthenticationEnabled
+#' 
+#' -   resource.rdsDbInstanceDetails.publiclyAccessible
+#' 
+#' -   resource.rdsDbInstanceDetails.tags.key
+#' 
+#' -   resource.rdsDbInstanceDetails.tags.value
+#' 
+#' -   resource.rdsDbInstanceDetails.vpcId
+#' 
+#' -   resource.rdsDbInstanceDetails.vpcSecurityGroups.status
+#' 
+#' -   resource.rdsDbInstanceDetails.vpcSecurityGroups.vpcSecurityGroupId
+#' 
+#' -   resource.rdsDbUserDetails.application
+#' 
+#' -   resource.rdsDbUserDetails.authMethod
+#' 
+#' -   resource.rdsDbUserDetails.database
+#' 
+#' -   resource.rdsDbUserDetails.ssl
+#' 
+#' -   resource.rdsDbUserDetails.user
+#' 
+#' -   resource.rdsLimitlessDbDetails.dbClusterIdentifier
+#' 
+#' -   resource.rdsLimitlessDbDetails.dbShardGroupArn
+#' 
+#' -   resource.rdsLimitlessDbDetails.dbShardGroupIdentifier
+#' 
+#' -   resource.rdsLimitlessDbDetails.dbShardGroupResourceId
+#' 
+#' -   resource.rdsLimitlessDbDetails.engine
+#' 
+#' -   resource.rdsLimitlessDbDetails.engineVersion
+#' 
+#' -   resource.rdsLimitlessDbDetails.tags.key
+#' 
+#' -   resource.rdsLimitlessDbDetails.tags.value
+#' 
+#' -   resource.recoveryPointDetails.backupVaultName
+#' 
+#' -   resource.recoveryPointDetails.recoveryPointArn
+#' 
+#' -   resource.resourceType
+#' 
+#' -   resource.s3BucketDetails.arn
+#' 
+#' -   resource.s3BucketDetails.createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   resource.s3BucketDetails.defaultServerSideEncryption.encryptionType
+#' 
+#' -   resource.s3BucketDetails.defaultServerSideEncryption.kmsMasterKeyArn
+#' 
+#' -   resource.s3BucketDetails.name
+#' 
+#' -   resource.s3BucketDetails.owner.id
+#' 
+#' -   resource.s3BucketDetails.publicAccess.effectivePermission
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.accountLevelPermissions.blockPublicAccess.blockPublicAcls
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.accountLevelPermissions.blockPublicAccess.blockPublicPolicy
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.accountLevelPermissions.blockPublicAccess.ignorePublicAcls
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.accountLevelPermissions.blockPublicAccess.restrictPublicBuckets
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.accessControlList.allowsPublicReadAccess
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.accessControlList.allowsPublicWriteAccess
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.blockPublicAccess.blockPublicAcls
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.blockPublicAccess.blockPublicPolicy
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.blockPublicAccess.ignorePublicAcls
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.blockPublicAccess.restrictPublicBuckets
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.bucketPolicy.allowsPublicReadAccess
+#' 
+#' -   resource.s3BucketDetails.publicAccess.permissionConfiguration.bucketLevelPermissions.bucketPolicy.allowsPublicWriteAccess
+#' 
+#' -   resource.s3BucketDetails.s3ObjectDetails.eTag
+#' 
+#' -   resource.s3BucketDetails.s3ObjectDetails.hash
+#' 
+#' -   resource.s3BucketDetails.s3ObjectDetails.key
+#' 
+#' -   resource.s3BucketDetails.s3ObjectDetails.objectArn
+#' 
+#' -   resource.s3BucketDetails.s3ObjectDetails.versionId
+#' 
+#' -   resource.s3BucketDetails.tags.key
+#' 
+#' -   resource.s3BucketDetails.tags.value
+#' 
+#' -   resource.s3BucketDetails.type
+#' 
+#' -   schemaVersion
+#' 
+#' -   service.action.actionType
+#' 
+#' -   service.action.awsApiCallAction.affectedResources
+#' 
+#' -   service.action.awsApiCallAction.api
+#' 
+#' -   service.action.awsApiCallAction.callerType
+#' 
+#' -   service.action.awsApiCallAction.domainDetails.domain
+#' 
+#' -   service.action.awsApiCallAction.errorCode
+#' 
+#' -   service.action.awsApiCallAction.remoteAccountDetails.accountId
+#' 
+#' -   service.action.awsApiCallAction.remoteAccountDetails.affiliated
+#' 
+#' -   service.action.awsApiCallAction.remoteAccountDetails.awsServiceName
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.city.cityName
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.country.countryCode
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.country.countryName
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.geoLocation.lat
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.geoLocation.lon
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.ipAddressV6
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.organization.asn
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.organization.isp
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.organization.org
+#' 
+#' -   service.action.awsApiCallAction.serviceName
+#' 
+#' -   service.action.awsApiCallAction.userAgent
+#' 
+#' -   service.action.dnsRequestAction.blocked
+#' 
+#' -   service.action.dnsRequestAction.domain
+#' 
+#' -   service.action.dnsRequestAction.domainWithSuffix
+#' 
+#' -   service.action.dnsRequestAction.protocol
+#' 
+#' -   service.action.dnsRequestAction.vpcOwnerAccountId
+#' 
+#' -   service.action.kubernetesApiCallAction.namespace
+#' 
+#' -   service.action.kubernetesApiCallAction.parameters
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.city.cityName
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.country.countryCode
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.country.countryName
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.geoLocation.lat
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.geoLocation.lon
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV6
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.organization.asn
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.organization.asnOrg
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.organization.isp
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.organization.org
+#' 
+#' -   service.action.kubernetesApiCallAction.requestUri
+#' 
+#' -   service.action.kubernetesApiCallAction.resource
+#' 
+#' -   service.action.kubernetesApiCallAction.resourceName
+#' 
+#' -   service.action.kubernetesApiCallAction.sourceIPs
+#' 
+#' -   service.action.kubernetesApiCallAction.statusCode
+#' 
+#' -   service.action.kubernetesApiCallAction.subresource
+#' 
+#' -   service.action.kubernetesApiCallAction.userAgent
+#' 
+#' -   service.action.kubernetesApiCallAction.verb
+#' 
+#' -   service.action.kubernetesPermissionCheckedDetails.allowed
+#' 
+#' -   service.action.kubernetesPermissionCheckedDetails.namespace
+#' 
+#' -   service.action.kubernetesPermissionCheckedDetails.resource
+#' 
+#' -   service.action.kubernetesPermissionCheckedDetails.verb
+#' 
+#' -   service.action.kubernetesRoleBindingDetails.kind
+#' 
+#' -   service.action.kubernetesRoleBindingDetails.name
+#' 
+#' -   service.action.kubernetesRoleBindingDetails.roleRefKind
+#' 
+#' -   service.action.kubernetesRoleBindingDetails.roleRefName
+#' 
+#' -   service.action.kubernetesRoleBindingDetails.uid
+#' 
+#' -   service.action.kubernetesRoleDetails.kind
+#' 
+#' -   service.action.kubernetesRoleDetails.name
+#' 
+#' -   service.action.kubernetesRoleDetails.uid
+#' 
+#' -   service.action.networkConnectionAction.blocked
+#' 
+#' -   service.action.networkConnectionAction.connectionDirection
+#' 
+#' -   service.action.networkConnectionAction.localIpDetails.ipAddressV4
+#' 
+#' -   service.action.networkConnectionAction.localIpDetails.ipAddressV6
+#' 
+#' -   service.action.networkConnectionAction.localNetworkInterface
+#' 
+#' -   service.action.networkConnectionAction.localPortDetails.port
+#' 
+#' -   service.action.networkConnectionAction.localPortDetails.portName
+#' 
+#' -   service.action.networkConnectionAction.protocol
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.city.cityName
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.country.countryCode
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.country.countryName
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.geoLocation.lat
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.geoLocation.lon
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.ipAddressV6
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.organization.asn
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.organization.isp
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.organization.org
+#' 
+#' -   service.action.networkConnectionAction.remotePortDetails.port
+#' 
+#' -   service.action.networkConnectionAction.remotePortDetails.portName
+#' 
+#' -   service.action.portProbeAction.blocked
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.localIpDetails.ipAddressV4
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.localIpDetails.ipAddressV6
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.localPortDetails.port
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.localPortDetails.portName
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.city.cityName
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.country.countryCode
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.country.countryName
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.geoLocation.lat
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.geoLocation.lon
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.ipAddressV4
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.ipAddressV6
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.organization.asn
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.organization.asnOrg
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.organization.isp
+#' 
+#' -   service.action.portProbeAction.portProbeDetails.remoteIpDetails.organization.org
+#' 
+#' -   service.action.rdsLoginAttemptAction.loginAttributes.application
+#' 
+#' -   service.action.rdsLoginAttemptAction.loginAttributes.failedLoginAttempts
+#' 
+#' -   service.action.rdsLoginAttemptAction.loginAttributes.successfulLoginAttempts
+#' 
+#' -   service.action.rdsLoginAttemptAction.loginAttributes.user
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.city.cityName
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.country.countryCode
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.country.countryName
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.geoLocation.lat
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.geoLocation.lon
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.ipAddressV4
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.ipAddressV6
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.organization.asn
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.organization.asnOrg
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.organization.isp
+#' 
+#' -   service.action.rdsLoginAttemptAction.remoteIpDetails.organization.org
+#' 
+#' -   service.additionalInfo.agentDetails.agentId
+#' 
+#' -   service.additionalInfo.agentDetails.agentVersion
+#' 
+#' -   service.additionalInfo.anomalies.anomalousAPIs
+#' 
+#' -   service.additionalInfo.authenticationMethod
+#' 
+#' -   service.additionalInfo.averagePacketSizeIn
+#' 
+#' -   service.additionalInfo.averagePacketSizeOut
+#' 
+#' -   service.additionalInfo.context
+#' 
+#' -   service.additionalInfo.domain
+#' 
+#' -   service.additionalInfo.inBytes
+#' 
+#' -   service.additionalInfo.localNetworkInterfaceOwner
+#' 
+#' -   service.additionalInfo.localPort
+#' 
+#' -   service.additionalInfo.outBytes
+#' 
+#' -   service.additionalInfo.packetsIn
+#' 
+#' -   service.additionalInfo.packetsOut
+#' 
+#' -   service.additionalInfo.policyArn
+#' 
+#' -   service.additionalInfo.policyName
+#' 
+#' -   service.additionalInfo.remotePort
+#' 
+#' -   service.additionalInfo.sample
+#' 
+#' -   service.additionalInfo.scannedPort
+#' 
+#' -   service.additionalInfo.threatFileSha256
+#' 
+#' -   service.additionalInfo.threatListName
+#' 
+#' -   service.additionalInfo.threatName
+#' 
+#' -   service.additionalInfo.totalBytesIn
+#' 
+#' -   service.additionalInfo.totalBytesOut
+#' 
+#' -   service.additionalInfo.type
+#' 
+#' -   service.additionalInfo.unusual.asnOrg
+#' 
+#' -   service.additionalInfo.unusual.port
+#' 
+#' -   service.additionalInfo.unusualProtocol
+#' 
+#' -   service.additionalInfo.userAgent.fullUserAgent
+#' 
+#' -   service.additionalInfo.userAgent.userAgentCategory
+#' 
+#' -   service.additionalInfo.value
+#' 
+#' -   service.additionalInfo.vpcOwnerAccountId
+#' 
+#' -   service.archived
+#' 
+#' -   service.count
+#' 
+#' -   service.detection.anomaly.profiles
+#' 
+#' -   service.detection.anomaly.unusual.behavior
+#' 
+#' -   service.detection.sequence.actors.id
+#' 
+#' -   service.detection.sequence.actors.process.name
+#' 
+#' -   service.detection.sequence.actors.process.path
+#' 
+#' -   service.detection.sequence.actors.process.sha256
+#' 
+#' -   service.detection.sequence.actors.session.createdTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.actors.session.issuer
+#' 
+#' -   service.detection.sequence.actors.session.mfaStatus
+#' 
+#' -   service.detection.sequence.actors.session.uid
+#' 
+#' -   service.detection.sequence.actors.user.account.account
+#' 
+#' -   service.detection.sequence.actors.user.account.uid
+#' 
+#' -   service.detection.sequence.actors.user.credentialUid
+#' 
+#' -   service.detection.sequence.actors.user.name
+#' 
+#' -   service.detection.sequence.actors.user.type
+#' 
+#' -   service.detection.sequence.actors.user.uid
+#' 
+#' -   service.detection.sequence.additionalSequenceTypes
+#' 
+#' -   service.detection.sequence.description
+#' 
+#' -   service.detection.sequence.endpoints.autonomousSystem.name
+#' 
+#' -   service.detection.sequence.endpoints.autonomousSystem.number
+#' 
+#' -   service.detection.sequence.endpoints.connection.direction
+#' 
+#' -   service.detection.sequence.endpoints.domain
+#' 
+#' -   service.detection.sequence.endpoints.id
+#' 
+#' -   service.detection.sequence.endpoints.ip
+#' 
+#' -   service.detection.sequence.endpoints.location.city
+#' 
+#' -   service.detection.sequence.endpoints.location.country
+#' 
+#' -   service.detection.sequence.endpoints.location.lat
+#' 
+#' -   service.detection.sequence.endpoints.location.lon
+#' 
+#' -   service.detection.sequence.endpoints.port
+#' 
+#' -   service.detection.sequence.resources.accountId
+#' 
+#' -   service.detection.sequence.resources.cloudPartition
+#' 
+#' -   service.detection.sequence.resources.data.accessKey.principalId
+#' 
+#' -   service.detection.sequence.resources.data.accessKey.userName
+#' 
+#' -   service.detection.sequence.resources.data.accessKey.userType
+#' 
+#' -   service.detection.sequence.resources.data.autoscalingAutoScalingGroup.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.cloudformationStack.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.container.image
+#' 
+#' -   service.detection.sequence.resources.data.container.imageUid
+#' 
+#' -   service.detection.sequence.resources.data.ec2Image.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.availabilityZone
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.ec2NetworkInterfaceUids
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.iamInstanceProfile.arn
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.iamInstanceProfile.id
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.imageDescription
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.instanceState
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.instanceType
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.outpostArn
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.platform
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.productCodes.productCodeId
+#' 
+#' -   service.detection.sequence.resources.data.ec2Instance.productCodes.productCodeType
+#' 
+#' -   service.detection.sequence.resources.data.ec2LaunchTemplate.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.ec2LaunchTemplate.version
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.ipv6Addresses
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.privateIpAddresses.privateDnsName
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.privateIpAddresses.privateIpAddress
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.publicIp
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.securityGroups.groupId
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.securityGroups.groupName
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.subNetId
+#' 
+#' -   service.detection.sequence.resources.data.ec2NetworkInterface.vpcId
+#' 
+#' -   service.detection.sequence.resources.data.ec2Vpc.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.ecsCluster.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.ecsCluster.status
+#' 
+#' -   service.detection.sequence.resources.data.ecsTask.containerUids
+#' 
+#' -   service.detection.sequence.resources.data.ecsTask.createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.resources.data.ecsTask.launchType
+#' 
+#' -   service.detection.sequence.resources.data.ecsTask.taskDefinitionArn
+#' 
+#' -   service.detection.sequence.resources.data.eksCluster.arn
+#' 
+#' -   service.detection.sequence.resources.data.eksCluster.createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.resources.data.eksCluster.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.eksCluster.status
+#' 
+#' -   service.detection.sequence.resources.data.eksCluster.vpcId
+#' 
+#' -   service.detection.sequence.resources.data.iamInstanceProfile.ec2InstanceUids
+#' 
+#' -   service.detection.sequence.resources.data.iamInstanceProfile.id
+#' 
+#' -   service.detection.sequence.resources.data.kubernetesWorkload.containerUids
+#' 
+#' -   service.detection.sequence.resources.data.kubernetesWorkload.namespace
+#' 
+#' -   service.detection.sequence.resources.data.kubernetesWorkload.type
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.accountPublicAccess.publicAclAccess
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.accountPublicAccess.publicAclIgnoreBehavior
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.accountPublicAccess.publicBucketRestrictBehavior
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.accountPublicAccess.publicPolicyAccess
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.bucketPublicAccess.publicAclAccess
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.bucketPublicAccess.publicAclIgnoreBehavior
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.bucketPublicAccess.publicBucketRestrictBehavior
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.bucketPublicAccess.publicPolicyAccess
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.effectivePermission
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.encryptionKeyArn
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.encryptionType
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.ownerId
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.publicReadAccess
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.publicWriteAccess
+#' 
+#' -   service.detection.sequence.resources.data.s3Bucket.s3ObjectUids
+#' 
+#' -   service.detection.sequence.resources.data.s3Object.eTag
+#' 
+#' -   service.detection.sequence.resources.data.s3Object.key
+#' 
+#' -   service.detection.sequence.resources.data.s3Object.versionId
+#' 
+#' -   service.detection.sequence.resources.name
+#' 
+#' -   service.detection.sequence.resources.region
+#' 
+#' -   service.detection.sequence.resources.resourceType
+#' 
+#' -   service.detection.sequence.resources.service
+#' 
+#' -   service.detection.sequence.resources.tags.key
+#' 
+#' -   service.detection.sequence.resources.tags.value
+#' 
+#' -   service.detection.sequence.resources.uid
+#' 
+#' -   service.detection.sequence.sequenceIndicators.key
+#' 
+#' -   service.detection.sequence.sequenceIndicators.title
+#' 
+#' -   service.detection.sequence.sequenceIndicators.values
+#' 
+#' -   service.detection.sequence.signals.actorIds
+#' 
+#' -   service.detection.sequence.signals.count
+#' 
+#' -   service.detection.sequence.signals.createdAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.signals.description
+#' 
+#' -   service.detection.sequence.signals.endpointIds
+#' 
+#' -   service.detection.sequence.signals.firstSeenAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.signals.lastSeenAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.signals.name
+#' 
+#' -   service.detection.sequence.signals.resourceUids
+#' 
+#' -   service.detection.sequence.signals.severity
+#' 
+#' -   service.detection.sequence.signals.signalIndicators.key
+#' 
+#' -   service.detection.sequence.signals.signalIndicators.title
+#' 
+#' -   service.detection.sequence.signals.signalIndicators.values
+#' 
+#' -   service.detection.sequence.signals.type
+#' 
+#' -   service.detection.sequence.signals.uid
+#' 
+#' -   service.detection.sequence.signals.updatedAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.detection.sequence.uid
+#' 
+#' -   service.detectorId
+#' 
+#' -   service.ebsVolumeScanDetails.scanCompletedAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.highestSeverityThreatDetails.count
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.highestSeverityThreatDetails.severity
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.highestSeverityThreatDetails.threatName
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.scannedItemCount.files
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.scannedItemCount.totalGb
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.scannedItemCount.volumes
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.itemCount
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.shortened
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.fileName
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.filePath
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.hash
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.volumeArn
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.itemCount
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.name
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.severity
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.uniqueThreatNameCount
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatsDetectedItemCount.files
+#' 
+#' -   service.ebsVolumeScanDetails.scanId
+#' 
+#' -   service.ebsVolumeScanDetails.scanStartedAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.ebsVolumeScanDetails.scanType
+#' 
+#' -   service.ebsVolumeScanDetails.sources
+#' 
+#' -   service.ebsVolumeScanDetails.triggerFindingId
+#' 
+#' -   service.eventFirstSeen
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.eventLastSeen
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.evidence.threatIntelligenceDetails.threatFileSha256
+#' 
+#' -   service.evidence.threatIntelligenceDetails.threatListName
+#' 
+#' -   service.evidence.threatIntelligenceDetails.threatNames
+#' 
+#' -   service.featureName
+#' 
+#' -   service.malwareScanDetails.scanCategory
+#' 
+#' -   service.malwareScanDetails.scanConfiguration.incrementalScanDetails.baselineResourceArn
+#' 
+#' -   service.malwareScanDetails.scanConfiguration.triggerType
+#' 
+#' -   service.malwareScanDetails.scanId
+#' 
+#' -   service.malwareScanDetails.scanType
+#' 
+#' -   service.malwareScanDetails.threats.count
+#' 
+#' -   service.malwareScanDetails.threats.hash
+#' 
+#' -   service.malwareScanDetails.threats.itemDetails.additionalInfo.deviceName
+#' 
+#' -   service.malwareScanDetails.threats.itemDetails.additionalInfo.versionId
+#' 
+#' -   service.malwareScanDetails.threats.itemDetails.hash
+#' 
+#' -   service.malwareScanDetails.threats.itemDetails.itemPath
+#' 
+#' -   service.malwareScanDetails.threats.itemDetails.resourceArn
+#' 
+#' -   service.malwareScanDetails.threats.itemPaths.hash
+#' 
+#' -   service.malwareScanDetails.threats.itemPaths.nestedItemPath
+#' 
+#' -   service.malwareScanDetails.threats.name
+#' 
+#' -   service.malwareScanDetails.threats.source
+#' 
+#' -   service.malwareScanDetails.uniqueThreatCount
+#' 
+#' -   service.resourceRole
+#' 
+#' -   service.runtimeDetails.context.addressFamily
+#' 
+#' -   service.runtimeDetails.context.commandLineExample
+#' 
+#' -   service.runtimeDetails.context.fileOperation
+#' 
+#' -   service.runtimeDetails.context.filePath
+#' 
+#' -   service.runtimeDetails.context.fileSystemType
+#' 
+#' -   service.runtimeDetails.context.flags
+#' 
+#' -   service.runtimeDetails.context.ianaProtocolNumber
+#' 
+#' -   service.runtimeDetails.context.ldPreloadValue
+#' 
+#' -   service.runtimeDetails.context.libraryPath
+#' 
+#' -   service.runtimeDetails.context.memoryRegions
+#' 
+#' -   service.runtimeDetails.context.modifiedAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.euid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.executablePath
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.executableSha256
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.euid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.executablePath
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.name
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.namespacePid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.parentUuid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.pid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.startTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.userId
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.lineage.uuid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.name
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.namespacePid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.parentUuid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.pid
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.pwd
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.startTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.user
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.userId
+#' 
+#' -   service.runtimeDetails.context.modifyingProcess.uuid
+#' 
+#' -   service.runtimeDetails.context.moduleFilePath
+#' 
+#' -   service.runtimeDetails.context.moduleName
+#' 
+#' -   service.runtimeDetails.context.moduleSha256
+#' 
+#' -   service.runtimeDetails.context.mountSource
+#' 
+#' -   service.runtimeDetails.context.mountTarget
+#' 
+#' -   service.runtimeDetails.context.relatedFilePaths
+#' 
+#' -   service.runtimeDetails.context.releaseAgentPath
+#' 
+#' -   service.runtimeDetails.context.runcBinaryPath
+#' 
+#' -   service.runtimeDetails.context.scriptPath
+#' 
+#' -   service.runtimeDetails.context.serviceName
+#' 
+#' -   service.runtimeDetails.context.shellHistoryFilePath
+#' 
+#' -   service.runtimeDetails.context.socketPath
+#' 
+#' -   service.runtimeDetails.context.targetProcess.euid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.executablePath
+#' 
+#' -   service.runtimeDetails.context.targetProcess.executableSha256
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.euid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.executablePath
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.name
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.namespacePid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.parentUuid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.pid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.startTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.userId
+#' 
+#' -   service.runtimeDetails.context.targetProcess.lineage.uuid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.name
+#' 
+#' -   service.runtimeDetails.context.targetProcess.namespacePid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.parentUuid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.pid
+#' 
+#' -   service.runtimeDetails.context.targetProcess.pwd
+#' 
+#' -   service.runtimeDetails.context.targetProcess.startTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.runtimeDetails.context.targetProcess.user
+#' 
+#' -   service.runtimeDetails.context.targetProcess.userId
+#' 
+#' -   service.runtimeDetails.context.targetProcess.uuid
+#' 
+#' -   service.runtimeDetails.context.threatFilePath
+#' 
+#' -   service.runtimeDetails.context.toolCategory
+#' 
+#' -   service.runtimeDetails.context.toolName
+#' 
+#' -   service.runtimeDetails.process.euid
+#' 
+#' -   service.runtimeDetails.process.executablePath
+#' 
+#' -   service.runtimeDetails.process.executableSha256
+#' 
+#' -   service.runtimeDetails.process.lineage.euid
+#' 
+#' -   service.runtimeDetails.process.lineage.executablePath
+#' 
+#' -   service.runtimeDetails.process.lineage.name
+#' 
+#' -   service.runtimeDetails.process.lineage.namespacePid
+#' 
+#' -   service.runtimeDetails.process.lineage.parentUuid
+#' 
+#' -   service.runtimeDetails.process.lineage.pid
+#' 
+#' -   service.runtimeDetails.process.lineage.startTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.runtimeDetails.process.lineage.userId
+#' 
+#' -   service.runtimeDetails.process.lineage.uuid
+#' 
+#' -   service.runtimeDetails.process.name
+#' 
+#' -   service.runtimeDetails.process.namespacePid
+#' 
+#' -   service.runtimeDetails.process.parentUuid
+#' 
+#' -   service.runtimeDetails.process.pid
+#' 
+#' -   service.runtimeDetails.process.pwd
+#' 
+#' -   service.runtimeDetails.process.startTime
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
+#' 
+#' -   service.runtimeDetails.process.user
+#' 
+#' -   service.runtimeDetails.process.userId
+#' 
+#' -   service.runtimeDetails.process.uuid
+#' 
+#' -   service.serviceName
+#' 
+#' -   service.userFeedback
+#' 
+#' -   severity
+#' 
+#'     To configure severity based filters, use the following for the
+#'     [FindingCriteria](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FindingCriteria.html)
+#'     condition:
+#' 
+#'     -   **Low**: `["1", "2", "3"]`
+#' 
+#'     -   **Medium**: `["4", "5", "6"]`
+#' 
+#'     -   **High**: `["7", "8"]`
+#' 
+#'     -   **Critical**: `["9", "10"]`
+#' 
+#'     For more information, see [Findings severity
+#'     levels](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html)
+#'     in the *Amazon GuardDuty User Guide*.
+#' 
+#' -   title
+#' 
+#' -   type
+#' 
+#' -   updatedAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
 #'
 #' @keywords internal
 #'
@@ -3294,7 +5741,7 @@ guardduty_update_filter <- function(DetectorId, FilterName, Description = NULL, 
   op <- new_operation(
     name = "UpdateFilter",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/filter/{filterName}",
+    http_path = "/detector/{DetectorId}/filter/{FilterName}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3333,7 +5780,7 @@ guardduty_update_findings_feedback <- function(DetectorId, FindingIds, Feedback,
   op <- new_operation(
     name = "UpdateFindingsFeedback",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/findings/feedback",
+    http_path = "/detector/{DetectorId}/findings/feedback",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3376,7 +5823,7 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
   op <- new_operation(
     name = "UpdateIPSet",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/ipset/{ipSetId}",
+    http_path = "/detector/{DetectorId}/ipset/{IpSetId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3414,7 +5861,7 @@ guardduty_update_malware_protection_plan <- function(MalwareProtectionPlanId, Ro
   op <- new_operation(
     name = "UpdateMalwareProtectionPlan",
     http_method = "PATCH",
-    http_path = "/malware-protection-plan/{malwareProtectionPlanId}",
+    http_path = "/malware-protection-plan/{MalwareProtectionPlanId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3453,7 +5900,7 @@ guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCrite
   op <- new_operation(
     name = "UpdateMalwareScanSettings",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/malware-scan-settings",
+    http_path = "/detector/{DetectorId}/malware-scan-settings",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3492,7 +5939,7 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
   op <- new_operation(
     name = "UpdateMemberDetectors",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/member/detector/update",
+    http_path = "/detector/{DetectorId}/member/detector/update",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3566,7 +6013,7 @@ guardduty_update_organization_configuration <- function(DetectorId, AutoEnable =
   op <- new_operation(
     name = "UpdateOrganizationConfiguration",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/admin",
+    http_path = "/detector/{DetectorId}/admin",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3606,7 +6053,7 @@ guardduty_update_publishing_destination <- function(DetectorId, DestinationId, D
   op <- new_operation(
     name = "UpdatePublishingDestination",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/publishingDestination/{destinationId}",
+    http_path = "/detector/{DetectorId}/publishingDestination/{DestinationId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3656,7 +6103,7 @@ guardduty_update_threat_entity_set <- function(DetectorId, ThreatEntitySetId, Na
   op <- new_operation(
     name = "UpdateThreatEntitySet",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/threatentityset/{threatEntitySetId}",
+    http_path = "/detector/{DetectorId}/threatentityset/{ThreatEntitySetId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3699,7 +6146,7 @@ guardduty_update_threat_intel_set <- function(DetectorId, ThreatIntelSetId, Name
   op <- new_operation(
     name = "UpdateThreatIntelSet",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/threatintelset/{threatIntelSetId}",
+    http_path = "/detector/{DetectorId}/threatintelset/{ThreatIntelSetId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3749,7 +6196,7 @@ guardduty_update_trusted_entity_set <- function(DetectorId, TrustedEntitySetId, 
   op <- new_operation(
     name = "UpdateTrustedEntitySet",
     http_method = "POST",
-    http_path = "/detector/{detectorId}/trustedentityset/{trustedEntitySetId}",
+    http_path = "/detector/{DetectorId}/trustedentityset/{TrustedEntitySetId}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE

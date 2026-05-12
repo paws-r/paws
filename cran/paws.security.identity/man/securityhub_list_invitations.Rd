@@ -2,8 +2,8 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_list_invitations}
 \alias{securityhub_list_invitations}
-\title{We recommend using Organizations instead of Security Hub invitations to
-manage your member accounts}
+\title{We recommend using Organizations instead of Security Hub CSPM
+invitations to manage your member accounts}
 \usage{
 securityhub_list_invitations(MaxResults = NULL, NextToken = NULL)
 }
@@ -19,7 +19,7 @@ value of this parameter to the value returned from the previous
 response.}
 }
 \description{
-We recommend using Organizations instead of Security Hub invitations to manage your member accounts. For information, see \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html}{Managing Security Hub administrator and member accounts with Organizations} in the \emph{Security Hub User Guide}.
+We recommend using Organizations instead of Security Hub CSPM invitations to manage your member accounts. For information, see \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html}{Managing Security Hub CSPM administrator and member accounts with Organizations} in the \emph{Security Hub CSPM User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_list_invitations/} for full documentation.
 }

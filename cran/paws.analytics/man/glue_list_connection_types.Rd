@@ -13,7 +13,7 @@ glue_list_connection_types(MaxResults = NULL, NextToken = NULL)
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
 \description{
-The \code{\link[=glue_list_connection_types]{list_connection_types}} API provides a discovery mechanism to learn available connection types in Glue. The response contains a list of connection types with high-level details of what is supported for each connection type. The connection types listed are the set of supported options for the \code{ConnectionType} value in the \code{\link[=glue_create_connection]{create_connection}} API.
+The \code{\link[=glue_list_connection_types]{list_connection_types}} API provides a discovery mechanism to learn available connection types in Glue. The response contains a list of connection types with high-level details of what is supported for each connection type, including both built-in connection types and custom connection types registered via \code{\link[=glue_register_connection_type]{register_connection_type}}. The connection types listed are the set of supported options for the \code{ConnectionType} value in the \code{\link[=glue_create_connection]{create_connection}} API.
 
 See \url{https://www.paws-r-sdk.com/docs/glue_list_connection_types/} for full documentation.
 }

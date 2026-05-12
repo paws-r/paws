@@ -28,38 +28,12 @@ wellarchitected_update_workload(
 \arguments{
 \item{WorkloadId}{[required]}
 
-\item{WorkloadName}{}
-
-\item{Description}{}
-
-\item{Environment}{}
-
-\item{AccountIds}{}
-
-\item{AwsRegions}{}
-
-\item{NonAwsRegions}{}
-
-\item{PillarPriorities}{}
-
-\item{ArchitecturalDesign}{}
-
-\item{ReviewOwner}{}
-
 \item{IsReviewOwnerUpdateAcknowledged}{Flag indicating whether the workload owner has acknowledged that the
 \emph{Review owner} field is required.
 
 If a \strong{Review owner} is not added to the workload within 60 days of
 acknowledgement, access to the workload is restricted until an owner is
 added.}
-
-\item{IndustryType}{}
-
-\item{Industry}{}
-
-\item{Notes}{}
-
-\item{ImprovementStatus}{}
 
 \item{DiscoveryConfig}{Well-Architected discovery configuration settings to associate to the
 workload.}

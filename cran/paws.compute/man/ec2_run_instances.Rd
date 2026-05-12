@@ -40,6 +40,7 @@ ec2_run_instances(
   EnablePrimaryIpv6 = NULL,
   NetworkPerformanceOptions = NULL,
   Operator = NULL,
+  SecondaryInterfaces = NULL,
   DryRun = NULL,
   DisableApiTermination = NULL,
   InstanceInitiatedShutdownBehavior = NULL,
@@ -242,6 +243,8 @@ with the ENI becomes the primary IPv6 address.}
 \item{NetworkPerformanceOptions}{Contains settings for the network performance options for the instance.}
 
 \item{Operator}{Reserved for internal use.}
+
+\item{SecondaryInterfaces}{The secondary interfaces to associate with the instance.}
 
 \item{DryRun}{Checks whether you have the required permissions for the operation,
 without actually making the request, and provides an error response. If

@@ -10,7 +10,8 @@ cloudwatchapplicationsignals_update_service_level_objective(
   SliConfig = NULL,
   RequestBasedSliConfig = NULL,
   Goal = NULL,
-  BurnRateConfigurations = NULL
+  BurnRateConfigurations = NULL,
+  AutoInvestigationEnabled = NULL
 )
 }
 \arguments{
@@ -35,6 +36,9 @@ threshold.}
 \item{BurnRateConfigurations}{Use this array to create \emph{burn rates} for this SLO. Each burn rate is a
 metric that indicates how fast the service is consuming the error
 budget, relative to the attainment goal of the SLO.}
+
+\item{AutoInvestigationEnabled}{Indicates whether DevOps Agent will automatically investigate this SLO
+when it is breached}
 }
 \description{
 Updates an existing service level objective (SLO). If you omit parameters, the previous values of those parameters are retained.

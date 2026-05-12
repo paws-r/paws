@@ -320,7 +320,10 @@ cloudfront_associate_distribution_web_acl <- function(Id, WebACLArn, IfMatch = N
 #'               ),
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123,
-#'               IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'               IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'               OriginMtlsConfig = list(
+#'                 ClientCertificateArn = "string"
+#'               )
 #'             ),
 #'             VpcOriginConfig = list(
 #'               VpcOriginId = "string",
@@ -611,6 +614,9 @@ cloudfront_associate_distribution_web_acl <- function(Id, WebACLArn, IfMatch = N
 #'       ),
 #'       ConnectionFunctionAssociation = list(
 #'         Id = "string"
+#'       ),
+#'       CacheTagConfig = list(
+#'         HeaderName = "string"
 #'       )
 #'     ),
 #'     AliasICPRecordals = list(
@@ -1398,7 +1404,10 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'               ),
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123,
-#'               IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'               IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'               OriginMtlsConfig = list(
+#'                 ClientCertificateArn = "string"
+#'               )
 #'             ),
 #'             VpcOriginConfig = list(
 #'               VpcOriginId = "string",
@@ -1689,6 +1698,9 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'       ),
 #'       ConnectionFunctionAssociation = list(
 #'         Id = "string"
+#'       ),
+#'       CacheTagConfig = list(
+#'         HeaderName = "string"
 #'       )
 #'     ),
 #'     AliasICPRecordals = list(
@@ -1747,7 +1759,10 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'             ),
 #'             OriginReadTimeout = 123,
 #'             OriginKeepaliveTimeout = 123,
-#'             IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'             IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'             OriginMtlsConfig = list(
+#'               ClientCertificateArn = "string"
+#'             )
 #'           ),
 #'           VpcOriginConfig = list(
 #'             VpcOriginId = "string",
@@ -2038,6 +2053,9 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'     ),
 #'     ConnectionFunctionAssociation = list(
 #'       Id = "string"
+#'     ),
+#'     CacheTagConfig = list(
+#'       HeaderName = "string"
 #'     )
 #'   )
 #' )
@@ -2331,7 +2349,10 @@ cloudfront_create_distribution_tenant <- function(DistributionId, Name, Domains,
 #'               ),
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123,
-#'               IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'               IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'               OriginMtlsConfig = list(
+#'                 ClientCertificateArn = "string"
+#'               )
 #'             ),
 #'             VpcOriginConfig = list(
 #'               VpcOriginId = "string",
@@ -2622,6 +2643,9 @@ cloudfront_create_distribution_tenant <- function(DistributionId, Name, Domains,
 #'       ),
 #'       ConnectionFunctionAssociation = list(
 #'         Id = "string"
+#'       ),
+#'       CacheTagConfig = list(
+#'         HeaderName = "string"
 #'       )
 #'     ),
 #'     AliasICPRecordals = list(
@@ -2681,7 +2705,10 @@ cloudfront_create_distribution_tenant <- function(DistributionId, Name, Domains,
 #'               ),
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123,
-#'               IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'               IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'               OriginMtlsConfig = list(
+#'                 ClientCertificateArn = "string"
+#'               )
 #'             ),
 #'             VpcOriginConfig = list(
 #'               VpcOriginId = "string",
@@ -2972,6 +2999,9 @@ cloudfront_create_distribution_tenant <- function(DistributionId, Name, Domains,
 #'       ),
 #'       ConnectionFunctionAssociation = list(
 #'         Id = "string"
+#'       ),
+#'       CacheTagConfig = list(
+#'         HeaderName = "string"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -3241,7 +3271,7 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #' function's ARN.
 #'
 #' @usage
-#' cloudfront_create_function(Name, FunctionConfig, FunctionCode)
+#' cloudfront_create_function(Name, FunctionConfig, FunctionCode, Tags)
 #'
 #' @param Name &#91;required&#93; A name to identify the function.
 #' @param FunctionConfig &#91;required&#93; Configuration information about the function, including an optional
@@ -3250,6 +3280,7 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #' function, see [Writing function code for CloudFront
 #' Functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/writing-function-code.html)
 #' in the *Amazon CloudFront Developer Guide*.
+#' @param Tags 
 #'
 #' @return
 #' A list with the following syntax:
@@ -3302,7 +3333,15 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #'       )
 #'     )
 #'   ),
-#'   FunctionCode = raw
+#'   FunctionCode = raw,
+#'   Tags = list(
+#'     Items = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -3311,7 +3350,7 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #' @rdname cloudfront_create_function
 #'
 #' @aliases cloudfront_create_function
-cloudfront_create_function <- function(Name, FunctionConfig, FunctionCode) {
+cloudfront_create_function <- function(Name, FunctionConfig, FunctionCode, Tags = NULL) {
   op <- new_operation(
     name = "CreateFunction",
     http_method = "POST",
@@ -3320,7 +3359,7 @@ cloudfront_create_function <- function(Name, FunctionConfig, FunctionCode) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudfront$create_function_input(Name = Name, FunctionConfig = FunctionConfig, FunctionCode = FunctionCode)
+  input <- .cloudfront$create_function_input(Name = Name, FunctionConfig = FunctionConfig, FunctionCode = FunctionCode, Tags = Tags)
   output <- .cloudfront$create_function_output()
   config <- get_config()
   svc <- .cloudfront$service(config, op)
@@ -3579,13 +3618,14 @@ cloudfront_create_key_group <- function(KeyGroupConfig) {
 #' valid `ImportSource` that you own.
 #'
 #' @usage
-#' cloudfront_create_key_value_store(Name, Comment, ImportSource)
+#' cloudfront_create_key_value_store(Name, Comment, ImportSource, Tags)
 #'
 #' @param Name &#91;required&#93; The name of the key value store. The minimum length is 1 character and
 #' the maximum length is 64 characters.
 #' @param Comment The comment of the key value store.
 #' @param ImportSource The S3 bucket that provides the source for the import. The source must
 #' be in a valid JSON format.
+#' @param Tags 
 #'
 #' @return
 #' A list with the following syntax:
@@ -3614,6 +3654,14 @@ cloudfront_create_key_group <- function(KeyGroupConfig) {
 #'   ImportSource = list(
 #'     SourceType = "S3",
 #'     SourceARN = "string"
+#'   ),
+#'   Tags = list(
+#'     Items = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -3623,7 +3671,7 @@ cloudfront_create_key_group <- function(KeyGroupConfig) {
 #' @rdname cloudfront_create_key_value_store
 #'
 #' @aliases cloudfront_create_key_value_store
-cloudfront_create_key_value_store <- function(Name, Comment = NULL, ImportSource = NULL) {
+cloudfront_create_key_value_store <- function(Name, Comment = NULL, ImportSource = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateKeyValueStore",
     http_method = "POST",
@@ -3632,7 +3680,7 @@ cloudfront_create_key_value_store <- function(Name, Comment = NULL, ImportSource
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudfront$create_key_value_store_input(Name = Name, Comment = Comment, ImportSource = ImportSource)
+  input <- .cloudfront$create_key_value_store_input(Name = Name, Comment = Comment, ImportSource = ImportSource, Tags = Tags)
   output <- .cloudfront$create_key_value_store_output()
   config <- get_config()
   svc <- .cloudfront$service(config, op)
@@ -7212,7 +7260,10 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
 #'               ),
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123,
-#'               IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'               IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'               OriginMtlsConfig = list(
+#'                 ClientCertificateArn = "string"
+#'               )
 #'             ),
 #'             VpcOriginConfig = list(
 #'               VpcOriginId = "string",
@@ -7503,6 +7554,9 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
 #'       ),
 #'       ConnectionFunctionAssociation = list(
 #'         Id = "string"
+#'       ),
+#'       CacheTagConfig = list(
+#'         HeaderName = "string"
 #'       )
 #'     ),
 #'     AliasICPRecordals = list(
@@ -7603,7 +7657,10 @@ cloudfront_get_distribution <- function(Id) {
 #'             ),
 #'             OriginReadTimeout = 123,
 #'             OriginKeepaliveTimeout = 123,
-#'             IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'             IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'             OriginMtlsConfig = list(
+#'               ClientCertificateArn = "string"
+#'             )
 #'           ),
 #'           VpcOriginConfig = list(
 #'             VpcOriginId = "string",
@@ -7894,6 +7951,9 @@ cloudfront_get_distribution <- function(Id) {
 #'     ),
 #'     ConnectionFunctionAssociation = list(
 #'       Id = "string"
+#'     ),
+#'     CacheTagConfig = list(
+#'       HeaderName = "string"
 #'     )
 #'   ),
 #'   ETag = "string"
@@ -10992,7 +11052,10 @@ cloudfront_list_distribution_tenants_by_customization <- function(WebACLArn = NU
 #'                 ),
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123,
-#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'                 OriginMtlsConfig = list(
+#'                   ClientCertificateArn = "string"
+#'                 )
 #'               ),
 #'               VpcOriginConfig = list(
 #'                 VpcOriginId = "string",
@@ -11384,7 +11447,10 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #'                 ),
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123,
-#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'                 OriginMtlsConfig = list(
+#'                   ClientCertificateArn = "string"
+#'                 )
 #'               ),
 #'               VpcOriginConfig = list(
 #'                 VpcOriginId = "string",
@@ -11852,7 +11918,10 @@ cloudfront_list_distributions_by_cache_policy_id <- function(Marker = NULL, MaxI
 #'                 ),
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123,
-#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'                 OriginMtlsConfig = list(
+#'                   ClientCertificateArn = "string"
+#'                 )
 #'               ),
 #'               VpcOriginConfig = list(
 #'                 VpcOriginId = "string",
@@ -12241,7 +12310,10 @@ cloudfront_list_distributions_by_connection_function <- function(Marker = NULL, 
 #'                 ),
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123,
-#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'                 OriginMtlsConfig = list(
+#'                   ClientCertificateArn = "string"
+#'                 )
 #'               ),
 #'               VpcOriginConfig = list(
 #'                 VpcOriginId = "string",
@@ -12875,7 +12947,10 @@ cloudfront_list_distributions_by_owned_resource <- function(ResourceArn, Marker 
 #'                 ),
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123,
-#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'                 OriginMtlsConfig = list(
+#'                   ClientCertificateArn = "string"
+#'                 )
 #'               ),
 #'               VpcOriginConfig = list(
 #'                 VpcOriginId = "string",
@@ -13345,7 +13420,10 @@ cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker =
 #'                 ),
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123,
-#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'                 OriginMtlsConfig = list(
+#'                   ClientCertificateArn = "string"
+#'                 )
 #'               ),
 #'               VpcOriginConfig = list(
 #'                 VpcOriginId = "string",
@@ -13808,7 +13886,10 @@ cloudfront_list_distributions_by_vpc_origin_id <- function(Marker = NULL, MaxIte
 #'                 ),
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123,
-#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'                 OriginMtlsConfig = list(
+#'                   ClientCertificateArn = "string"
+#'                 )
 #'               ),
 #'               VpcOriginConfig = list(
 #'                 VpcOriginId = "string",
@@ -16184,7 +16265,8 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 #' Updates an Anycast static IP list.
 #'
 #' @usage
-#' cloudfront_update_anycast_ip_list(Id, IpAddressType, IfMatch)
+#' cloudfront_update_anycast_ip_list(Id, IpAddressType, IpamCidrConfigs,
+#'   IfMatch)
 #'
 #' @param Id &#91;required&#93; The ID of the Anycast static IP list.
 #' @param IpAddressType The IP address type for the Anycast static IP list. You can specify one
@@ -16195,6 +16277,8 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 #' -   `ipv6` only
 #' 
 #' -   `dualstack` - Allocate a list of both IPv4 and IPv6 addresses
+#' @param IpamCidrConfigs A list of IPAM CIDR configurations that specify the IP address ranges
+#' and IPAM pool settings for updating the Anycast static IP list.
 #' @param IfMatch &#91;required&#93; The current version (ETag value) of the Anycast static IP list that you
 #' are updating.
 #'
@@ -16236,6 +16320,14 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 #' svc$update_anycast_ip_list(
 #'   Id = "string",
 #'   IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'   IpamCidrConfigs = list(
+#'     list(
+#'       Cidr = "string",
+#'       IpamPoolArn = "string",
+#'       AnycastIp = "string",
+#'       Status = "provisioned"|"failed-provision"|"provisioning"|"deprovisioned"|"failed-deprovision"|"deprovisioning"|"advertised"|"failed-advertise"|"advertising"|"withdrawn"|"failed-withdraw"|"withdrawing"
+#'     )
+#'   ),
 #'   IfMatch = "string"
 #' )
 #' ```
@@ -16245,7 +16337,7 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 #' @rdname cloudfront_update_anycast_ip_list
 #'
 #' @aliases cloudfront_update_anycast_ip_list
-cloudfront_update_anycast_ip_list <- function(Id, IpAddressType = NULL, IfMatch) {
+cloudfront_update_anycast_ip_list <- function(Id, IpAddressType = NULL, IpamCidrConfigs = NULL, IfMatch) {
   op <- new_operation(
     name = "UpdateAnycastIpList",
     http_method = "PUT",
@@ -16254,7 +16346,7 @@ cloudfront_update_anycast_ip_list <- function(Id, IpAddressType = NULL, IfMatch)
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudfront$update_anycast_ip_list_input(Id = Id, IpAddressType = IpAddressType, IfMatch = IfMatch)
+  input <- .cloudfront$update_anycast_ip_list_input(Id = Id, IpAddressType = IpAddressType, IpamCidrConfigs = IpamCidrConfigs, IfMatch = IfMatch)
   output <- .cloudfront$update_anycast_ip_list_output()
   config <- get_config()
   svc <- .cloudfront$service(config, op)
@@ -16921,7 +17013,10 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'               ),
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123,
-#'               IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'               IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'               OriginMtlsConfig = list(
+#'                 ClientCertificateArn = "string"
+#'               )
 #'             ),
 #'             VpcOriginConfig = list(
 #'               VpcOriginId = "string",
@@ -17212,6 +17307,9 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'       ),
 #'       ConnectionFunctionAssociation = list(
 #'         Id = "string"
+#'       ),
+#'       CacheTagConfig = list(
+#'         HeaderName = "string"
 #'       )
 #'     ),
 #'     AliasICPRecordals = list(
@@ -17269,7 +17367,10 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'             ),
 #'             OriginReadTimeout = 123,
 #'             OriginKeepaliveTimeout = 123,
-#'             IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'             IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'             OriginMtlsConfig = list(
+#'               ClientCertificateArn = "string"
+#'             )
 #'           ),
 #'           VpcOriginConfig = list(
 #'             VpcOriginId = "string",
@@ -17560,6 +17661,9 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'     ),
 #'     ConnectionFunctionAssociation = list(
 #'       Id = "string"
+#'     ),
+#'     CacheTagConfig = list(
+#'       HeaderName = "string"
 #'     )
 #'   ),
 #'   Id = "string",
@@ -17871,7 +17975,10 @@ cloudfront_update_distribution_tenant <- function(Id, DistributionId = NULL, Dom
 #'               ),
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123,
-#'               IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'               IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'               OriginMtlsConfig = list(
+#'                 ClientCertificateArn = "string"
+#'               )
 #'             ),
 #'             VpcOriginConfig = list(
 #'               VpcOriginId = "string",
@@ -18162,6 +18269,9 @@ cloudfront_update_distribution_tenant <- function(Id, DistributionId = NULL, Dom
 #'       ),
 #'       ConnectionFunctionAssociation = list(
 #'         Id = "string"
+#'       ),
+#'       CacheTagConfig = list(
+#'         HeaderName = "string"
 #'       )
 #'     ),
 #'     AliasICPRecordals = list(

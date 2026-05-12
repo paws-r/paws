@@ -26,8 +26,6 @@ model.}
 
 \item{DatasetName}{[required] The name of the dataset for the machine learning model being imported.}
 
-\item{LabelsInputConfiguration}{}
-
 \item{ClientToken}{[required] A unique identifier for the request. If you do not set the client
 request token, Amazon Lookout for Equipment generates one.}
 

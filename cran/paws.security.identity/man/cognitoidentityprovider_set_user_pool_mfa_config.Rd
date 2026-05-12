@@ -41,8 +41,9 @@ prompts in API responses and in managed login for users who have chosen
 and configured a preferred MFA factor.}
 
 \item{WebAuthnConfiguration}{The configuration of your user pool for passkey, or WebAuthn,
-authentication and registration. You can set this configuration
-independent of the MFA configuration options in this operation.}
+authentication and registration. Includes relying-party configuration,
+user-verification requirements, and whether passkeys can satisfy MFA
+requirements.}
 }
 \description{
 Sets user pool multi-factor authentication (MFA) and passkey configuration. For more information about user pool MFA, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-mfa.html}{Adding MFA}. For more information about WebAuthn passkeys see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-authentication-flow-methods.html#amazon-cognito-user-pools-authentication-flow-methods-passkey}{Authentication flows}.

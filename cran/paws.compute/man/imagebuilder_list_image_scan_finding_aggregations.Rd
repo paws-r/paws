@@ -10,8 +10,6 @@ imagebuilder_list_image_scan_finding_aggregations(
 )
 }
 \arguments{
-\item{filter}{}
-
 \item{nextToken}{A token to specify where to start paginating. This is the nextToken from
 a previously truncated response.}
 }

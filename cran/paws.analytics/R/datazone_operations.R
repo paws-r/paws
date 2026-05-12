@@ -11,21 +11,21 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_accept_predictions/](https://www.paws-r-sdk.com/docs/datazone_accept_predictions/) for full documentation.
 #'
-#' @param acceptChoices Specifies the prediction (aka, the automatically generated piece of
-#' metadata) and the target (for example, a column name) that can be
-#' accepted.
-#' @param acceptRule Specifies the rule (or the conditions) under which a prediction can be
-#' accepted.
-#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
-#' request. This field is automatically populated if not provided.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
 #' @param identifier &#91;required&#93; The identifier of the asset.
 #' @param revision The revision that is to be made to the asset.
+#' @param acceptRule Specifies the rule (or the conditions) under which a prediction can be
+#' accepted.
+#' @param acceptChoices Specifies the prediction (aka, the automatically generated piece of
+#' metadata) and the target (for example, a column name) that can be
+#' accepted.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request. This field is automatically populated if not provided.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_accept_predictions
-datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL, clientToken = NULL, domainIdentifier, identifier, revision = NULL) {
+datazone_accept_predictions <- function(domainIdentifier, identifier, revision = NULL, acceptRule = NULL, acceptChoices = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "AcceptPredictions",
     http_method = "PUT",
@@ -34,7 +34,7 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$accept_predictions_input(acceptChoices = acceptChoices, acceptRule = acceptRule, clientToken = clientToken, domainIdentifier = domainIdentifier, identifier = identifier, revision = revision)
+  input <- .datazone$accept_predictions_input(domainIdentifier = domainIdentifier, identifier = identifier, revision = revision, acceptRule = acceptRule, acceptChoices = acceptChoices, clientToken = clientToken)
   output <- .datazone$accept_predictions_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -51,19 +51,19 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_accept_subscription_request/](https://www.paws-r-sdk.com/docs/datazone_accept_subscription_request/) for full documentation.
 #'
-#' @param assetPermissions The asset permissions of the accept subscription request.
-#' @param assetScopes The asset scopes of the accept subscription request.
-#' @param decisionComment A description that specifies the reason for accepting the specified
-#' subscription request.
 #' @param domainIdentifier &#91;required&#93; The Amazon DataZone domain where the specified subscription request is
 #' being accepted.
 #' @param identifier &#91;required&#93; The unique identifier of the subscription request that is to be
 #' accepted.
+#' @param decisionComment A description that specifies the reason for accepting the specified
+#' subscription request.
+#' @param assetScopes The asset scopes of the accept subscription request.
+#' @param assetPermissions The asset permissions of the accept subscription request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_accept_subscription_request
-datazone_accept_subscription_request <- function(assetPermissions = NULL, assetScopes = NULL, decisionComment = NULL, domainIdentifier, identifier) {
+datazone_accept_subscription_request <- function(domainIdentifier, identifier, decisionComment = NULL, assetScopes = NULL, assetPermissions = NULL) {
   op <- new_operation(
     name = "AcceptSubscriptionRequest",
     http_method = "PUT",
@@ -72,7 +72,7 @@ datazone_accept_subscription_request <- function(assetPermissions = NULL, assetS
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$accept_subscription_request_input(assetPermissions = assetPermissions, assetScopes = assetScopes, decisionComment = decisionComment, domainIdentifier = domainIdentifier, identifier = identifier)
+  input <- .datazone$accept_subscription_request_input(domainIdentifier = domainIdentifier, identifier = identifier, decisionComment = decisionComment, assetScopes = assetScopes, assetPermissions = assetPermissions)
   output <- .datazone$accept_subscription_request_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -89,17 +89,17 @@ datazone_accept_subscription_request <- function(assetPermissions = NULL, assetS
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_add_entity_owner/](https://www.paws-r-sdk.com/docs/datazone_add_entity_owner/) for full documentation.
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain in which you want to add the entity owner.
+#' @param entityType &#91;required&#93; The type of an entity.
+#' @param entityIdentifier &#91;required&#93; The ID of the entity to which you want to add an owner.
+#' @param owner &#91;required&#93; The owner that you want to add to the entity.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
-#' @param domainIdentifier &#91;required&#93; The ID of the domain in which you want to add the entity owner.
-#' @param entityIdentifier &#91;required&#93; The ID of the entity to which you want to add an owner.
-#' @param entityType &#91;required&#93; The type of an entity.
-#' @param owner &#91;required&#93; The owner that you want to add to the entity.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_add_entity_owner
-datazone_add_entity_owner <- function(clientToken = NULL, domainIdentifier, entityIdentifier, entityType, owner) {
+datazone_add_entity_owner <- function(domainIdentifier, entityType, entityIdentifier, owner, clientToken = NULL) {
   op <- new_operation(
     name = "AddEntityOwner",
     http_method = "POST",
@@ -108,7 +108,7 @@ datazone_add_entity_owner <- function(clientToken = NULL, domainIdentifier, enti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$add_entity_owner_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, owner = owner)
+  input <- .datazone$add_entity_owner_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, owner = owner, clientToken = clientToken)
   output <- .datazone$add_entity_owner_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -127,19 +127,19 @@ datazone_add_entity_owner <- function(clientToken = NULL, domainIdentifier, enti
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_add_policy_grant/](https://www.paws-r-sdk.com/docs/datazone_add_policy_grant/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param detail &#91;required&#93; The details of the policy grant.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to add a policy grant.
-#' @param entityIdentifier &#91;required&#93; The ID of the entity (resource) to which you want to add a policy grant.
 #' @param entityType &#91;required&#93; The type of entity (resource) to which the grant is added.
+#' @param entityIdentifier &#91;required&#93; The ID of the entity (resource) to which you want to add a policy grant.
 #' @param policyType &#91;required&#93; The type of policy that you want to grant.
 #' @param principal &#91;required&#93; The principal to whom the permissions are granted.
+#' @param detail &#91;required&#93; The details of the policy grant.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_add_policy_grant
-datazone_add_policy_grant <- function(clientToken = NULL, detail, domainIdentifier, entityIdentifier, entityType, policyType, principal) {
+datazone_add_policy_grant <- function(domainIdentifier, entityType, entityIdentifier, policyType, principal, detail, clientToken = NULL) {
   op <- new_operation(
     name = "AddPolicyGrant",
     http_method = "POST",
@@ -148,7 +148,7 @@ datazone_add_policy_grant <- function(clientToken = NULL, detail, domainIdentifi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$add_policy_grant_input(clientToken = clientToken, detail = detail, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, policyType = policyType, principal = principal)
+  input <- .datazone$add_policy_grant_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, policyType = policyType, principal = principal, detail = detail, clientToken = clientToken)
   output <- .datazone$add_policy_grant_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -234,16 +234,16 @@ datazone_associate_governed_terms <- function(domainIdentifier, entityIdentifier
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_batch_get_attributes_metadata/](https://www.paws-r-sdk.com/docs/datazone_batch_get_attributes_metadata/) for full documentation.
 #'
-#' @param attributeIdentifiers &#91;required&#93; The attribute identifier.
 #' @param domainIdentifier &#91;required&#93; The domain ID where you want to get the attribute metadata.
+#' @param entityType &#91;required&#93; The entity type for which you want to get attribute metadata.
 #' @param entityIdentifier &#91;required&#93; The entity ID for which you want to get attribute metadata.
 #' @param entityRevision The entity revision for which you want to get attribute metadata.
-#' @param entityType &#91;required&#93; The entity type for which you want to get attribute metadata.
+#' @param attributeIdentifiers &#91;required&#93; The attribute identifier.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_batch_get_attributes_metadata
-datazone_batch_get_attributes_metadata <- function(attributeIdentifiers, domainIdentifier, entityIdentifier, entityRevision = NULL, entityType) {
+datazone_batch_get_attributes_metadata <- function(domainIdentifier, entityType, entityIdentifier, entityRevision = NULL, attributeIdentifiers) {
   op <- new_operation(
     name = "BatchGetAttributesMetadata",
     http_method = "GET",
@@ -252,7 +252,7 @@ datazone_batch_get_attributes_metadata <- function(attributeIdentifiers, domainI
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$batch_get_attributes_metadata_input(attributeIdentifiers = attributeIdentifiers, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityRevision = entityRevision, entityType = entityType)
+  input <- .datazone$batch_get_attributes_metadata_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, entityRevision = entityRevision, attributeIdentifiers = attributeIdentifiers)
   output <- .datazone$batch_get_attributes_metadata_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -269,17 +269,17 @@ datazone_batch_get_attributes_metadata <- function(attributeIdentifiers, domainI
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_batch_put_attributes_metadata/](https://www.paws-r-sdk.com/docs/datazone_batch_put_attributes_metadata/) for full documentation.
 #'
-#' @param attributes &#91;required&#93; The attributes of the metadata.
+#' @param domainIdentifier &#91;required&#93; The domain ID where you want to write the attribute metadata.
+#' @param entityType &#91;required&#93; The entity type for which you want to write the attribute metadata.
+#' @param entityIdentifier &#91;required&#93; The entity ID for which you want to write the attribute metadata.
 #' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
 #' request. This field is automatically populated if not provided.
-#' @param domainIdentifier &#91;required&#93; The domain ID where you want to write the attribute metadata.
-#' @param entityIdentifier &#91;required&#93; The entity ID for which you want to write the attribute metadata.
-#' @param entityType &#91;required&#93; The entity type for which you want to write the attribute metadata.
+#' @param attributes &#91;required&#93; The attributes of the metadata.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_batch_put_attributes_metadata
-datazone_batch_put_attributes_metadata <- function(attributes, clientToken = NULL, domainIdentifier, entityIdentifier, entityType) {
+datazone_batch_put_attributes_metadata <- function(domainIdentifier, entityType, entityIdentifier, clientToken = NULL, attributes) {
   op <- new_operation(
     name = "BatchPutAttributesMetadata",
     http_method = "PUT",
@@ -288,7 +288,7 @@ datazone_batch_put_attributes_metadata <- function(attributes, clientToken = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$batch_put_attributes_metadata_input(attributes = attributes, clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType)
+  input <- .datazone$batch_put_attributes_metadata_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, clientToken = clientToken, attributes = attributes)
   output <- .datazone$batch_put_attributes_metadata_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -371,19 +371,19 @@ datazone_cancel_subscription <- function(domainIdentifier, identifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_account_pool/](https://www.paws-r-sdk.com/docs/datazone_create_account_pool/) for full documentation.
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where the account pool is created.
+#' @param name &#91;required&#93; The name of the account pool.
+#' @param description The description of the account pool.
+#' @param resolutionStrategy &#91;required&#93; The mechanism used to resolve the account selection from the account
+#' pool.
 #' @param accountSource &#91;required&#93; The source of accounts for the account pool. In the current release,
 #' it's either a static list of accounts provided by the customer or a
 #' custom Amazon Web Services Lambda handler.
-#' @param description The description of the account pool.
-#' @param domainIdentifier &#91;required&#93; The ID of the domain where the account pool is created.
-#' @param name &#91;required&#93; The name of the account pool.
-#' @param resolutionStrategy &#91;required&#93; The mechanism used to resolve the account selection from the account
-#' pool.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_account_pool
-datazone_create_account_pool <- function(accountSource, description = NULL, domainIdentifier, name, resolutionStrategy) {
+datazone_create_account_pool <- function(domainIdentifier, name, description = NULL, resolutionStrategy, accountSource) {
   op <- new_operation(
     name = "CreateAccountPool",
     http_method = "POST",
@@ -392,7 +392,7 @@ datazone_create_account_pool <- function(accountSource, description = NULL, doma
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_account_pool_input(accountSource = accountSource, description = description, domainIdentifier = domainIdentifier, name = name, resolutionStrategy = resolutionStrategy)
+  input <- .datazone$create_account_pool_input(domainIdentifier = domainIdentifier, name = name, description = description, resolutionStrategy = resolutionStrategy, accountSource = accountSource)
   output <- .datazone$create_account_pool_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -409,27 +409,27 @@ datazone_create_account_pool <- function(accountSource, description = NULL, doma
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_asset/](https://www.paws-r-sdk.com/docs/datazone_create_asset/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param description Asset description.
+#' @param name &#91;required&#93; Asset name.
 #' @param domainIdentifier &#91;required&#93; Amazon DataZone domain where the asset is created.
 #' @param externalIdentifier The external identifier of the asset.
 #' 
 #' If the value for the `externalIdentifier` parameter is specified, it
 #' must be a unique value.
-#' @param formsInput Metadata forms attached to the asset.
+#' @param typeIdentifier &#91;required&#93; The unique identifier of this asset's type.
+#' @param typeRevision The revision of this asset's type.
+#' @param description Asset description.
 #' @param glossaryTerms Glossary terms attached to the asset.
-#' @param name &#91;required&#93; Asset name.
+#' @param formsInput Metadata forms attached to the asset.
 #' @param owningProjectIdentifier &#91;required&#93; The unique identifier of the project that owns this asset.
 #' @param predictionConfiguration The configuration of the automatically generated business-friendly
 #' metadata for the asset.
-#' @param typeIdentifier &#91;required&#93; The unique identifier of this asset's type.
-#' @param typeRevision The revision of this asset's type.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_asset
-datazone_create_asset <- function(clientToken = NULL, description = NULL, domainIdentifier, externalIdentifier = NULL, formsInput = NULL, glossaryTerms = NULL, name, owningProjectIdentifier, predictionConfiguration = NULL, typeIdentifier, typeRevision = NULL) {
+datazone_create_asset <- function(name, domainIdentifier, externalIdentifier = NULL, typeIdentifier, typeRevision = NULL, description = NULL, glossaryTerms = NULL, formsInput = NULL, owningProjectIdentifier, predictionConfiguration = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateAsset",
     http_method = "POST",
@@ -438,7 +438,7 @@ datazone_create_asset <- function(clientToken = NULL, description = NULL, domain
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_asset_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, externalIdentifier = externalIdentifier, formsInput = formsInput, glossaryTerms = glossaryTerms, name = name, owningProjectIdentifier = owningProjectIdentifier, predictionConfiguration = predictionConfiguration, typeIdentifier = typeIdentifier, typeRevision = typeRevision)
+  input <- .datazone$create_asset_input(name = name, domainIdentifier = domainIdentifier, externalIdentifier = externalIdentifier, typeIdentifier = typeIdentifier, typeRevision = typeRevision, description = description, glossaryTerms = glossaryTerms, formsInput = formsInput, owningProjectIdentifier = owningProjectIdentifier, predictionConfiguration = predictionConfiguration, clientToken = clientToken)
   output <- .datazone$create_asset_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -455,18 +455,18 @@ datazone_create_asset <- function(clientToken = NULL, description = NULL, domain
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_asset_filter/](https://www.paws-r-sdk.com/docs/datazone_create_asset_filter/) for full documentation.
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain in which you want to create an asset filter.
 #' @param assetIdentifier &#91;required&#93; The ID of the data asset.
+#' @param name &#91;required&#93; The name of the asset filter.
+#' @param description The description of the asset filter.
+#' @param configuration &#91;required&#93; The configuration of the asset filter.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
-#' @param configuration &#91;required&#93; The configuration of the asset filter.
-#' @param description The description of the asset filter.
-#' @param domainIdentifier &#91;required&#93; The ID of the domain in which you want to create an asset filter.
-#' @param name &#91;required&#93; The name of the asset filter.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_asset_filter
-datazone_create_asset_filter <- function(assetIdentifier, clientToken = NULL, configuration, description = NULL, domainIdentifier, name) {
+datazone_create_asset_filter <- function(domainIdentifier, assetIdentifier, name, description = NULL, configuration, clientToken = NULL) {
   op <- new_operation(
     name = "CreateAssetFilter",
     http_method = "POST",
@@ -475,7 +475,7 @@ datazone_create_asset_filter <- function(assetIdentifier, clientToken = NULL, co
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_asset_filter_input(assetIdentifier = assetIdentifier, clientToken = clientToken, configuration = configuration, description = description, domainIdentifier = domainIdentifier, name = name)
+  input <- .datazone$create_asset_filter_input(domainIdentifier = domainIdentifier, assetIdentifier = assetIdentifier, name = name, description = description, configuration = configuration, clientToken = clientToken)
   output <- .datazone$create_asset_filter_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -492,24 +492,24 @@ datazone_create_asset_filter <- function(assetIdentifier, clientToken = NULL, co
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_asset_revision/](https://www.paws-r-sdk.com/docs/datazone_create_asset_revision/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param description The revised description of the asset.
+#' @param name &#91;required&#93; Te revised name of the asset.
 #' @param domainIdentifier &#91;required&#93; The unique identifier of the domain where the asset is being revised.
-#' @param formsInput The metadata forms to be attached to the asset as part of asset
-#' revision.
+#' @param identifier &#91;required&#93; The identifier of the asset.
+#' @param typeRevision The revision type of the asset.
+#' @param description The revised description of the asset.
 #' @param glossaryTerms The glossary terms to be attached to the asset as part of asset
 #' revision.
-#' @param identifier &#91;required&#93; The identifier of the asset.
-#' @param name &#91;required&#93; Te revised name of the asset.
+#' @param formsInput The metadata forms to be attached to the asset as part of asset
+#' revision.
 #' @param predictionConfiguration The configuration of the automatically generated business-friendly
 #' metadata for the asset.
-#' @param typeRevision The revision type of the asset.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_asset_revision
-datazone_create_asset_revision <- function(clientToken = NULL, description = NULL, domainIdentifier, formsInput = NULL, glossaryTerms = NULL, identifier, name, predictionConfiguration = NULL, typeRevision = NULL) {
+datazone_create_asset_revision <- function(name, domainIdentifier, identifier, typeRevision = NULL, description = NULL, glossaryTerms = NULL, formsInput = NULL, predictionConfiguration = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateAssetRevision",
     http_method = "POST",
@@ -518,7 +518,7 @@ datazone_create_asset_revision <- function(clientToken = NULL, description = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_asset_revision_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, formsInput = formsInput, glossaryTerms = glossaryTerms, identifier = identifier, name = name, predictionConfiguration = predictionConfiguration, typeRevision = typeRevision)
+  input <- .datazone$create_asset_revision_input(name = name, domainIdentifier = domainIdentifier, identifier = identifier, typeRevision = typeRevision, description = description, glossaryTerms = glossaryTerms, formsInput = formsInput, predictionConfiguration = predictionConfiguration, clientToken = clientToken)
   output <- .datazone$create_asset_revision_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -535,18 +535,18 @@ datazone_create_asset_revision <- function(clientToken = NULL, description = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_asset_type/](https://www.paws-r-sdk.com/docs/datazone_create_asset_type/) for full documentation.
 #'
-#' @param description The descripton of the custom asset type.
 #' @param domainIdentifier &#91;required&#93; The unique identifier of the Amazon DataZone domain where the custom
 #' asset type is being created.
-#' @param formsInput &#91;required&#93; The metadata forms that are to be attached to the custom asset type.
 #' @param name &#91;required&#93; The name of the custom asset type.
+#' @param description The descripton of the custom asset type.
+#' @param formsInput &#91;required&#93; The metadata forms that are to be attached to the custom asset type.
 #' @param owningProjectIdentifier &#91;required&#93; The identifier of the Amazon DataZone project that is to own the custom
 #' asset type.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_asset_type
-datazone_create_asset_type <- function(description = NULL, domainIdentifier, formsInput, name, owningProjectIdentifier) {
+datazone_create_asset_type <- function(domainIdentifier, name, description = NULL, formsInput, owningProjectIdentifier) {
   op <- new_operation(
     name = "CreateAssetType",
     http_method = "POST",
@@ -555,7 +555,7 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_asset_type_input(description = description, domainIdentifier = domainIdentifier, formsInput = formsInput, name = name, owningProjectIdentifier = owningProjectIdentifier)
+  input <- .datazone$create_asset_type_input(domainIdentifier = domainIdentifier, name = name, description = description, formsInput = formsInput, owningProjectIdentifier = owningProjectIdentifier)
   output <- .datazone$create_asset_type_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -575,18 +575,19 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
 #' @param awsLocation The location where the connection is created.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
+#' @param configurations The configurations of the connection.
 #' @param description A connection description.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where the connection is created.
-#' @param enableTrustedIdentityPropagation Specifies whether the trusted identity propagation is enabled.
 #' @param environmentIdentifier The ID of the environment where the connection is created.
 #' @param name &#91;required&#93; The connection name.
 #' @param props The connection props.
+#' @param enableTrustedIdentityPropagation Specifies whether the trusted identity propagation is enabled.
 #' @param scope The scope of the connection.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_connection
-datazone_create_connection <- function(awsLocation = NULL, clientToken = NULL, description = NULL, domainIdentifier, enableTrustedIdentityPropagation = NULL, environmentIdentifier = NULL, name, props = NULL, scope = NULL) {
+datazone_create_connection <- function(awsLocation = NULL, clientToken = NULL, configurations = NULL, description = NULL, domainIdentifier, environmentIdentifier = NULL, name, props = NULL, enableTrustedIdentityPropagation = NULL, scope = NULL) {
   op <- new_operation(
     name = "CreateConnection",
     http_method = "POST",
@@ -595,7 +596,7 @@ datazone_create_connection <- function(awsLocation = NULL, clientToken = NULL, d
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_connection_input(awsLocation = awsLocation, clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, enableTrustedIdentityPropagation = enableTrustedIdentityPropagation, environmentIdentifier = environmentIdentifier, name = name, props = props, scope = scope)
+  input <- .datazone$create_connection_input(awsLocation = awsLocation, clientToken = clientToken, configurations = configurations, description = description, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, name = name, props = props, enableTrustedIdentityPropagation = enableTrustedIdentityPropagation, scope = scope)
   output <- .datazone$create_connection_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -612,20 +613,20 @@ datazone_create_connection <- function(awsLocation = NULL, clientToken = NULL, d
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_data_product/](https://www.paws-r-sdk.com/docs/datazone_create_data_product/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param description The description of the data product.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where the data product is created.
-#' @param formsInput The metadata forms of the data product.
-#' @param glossaryTerms The glossary terms of the data product.
-#' @param items The data assets of the data product.
 #' @param name &#91;required&#93; The name of the data product.
 #' @param owningProjectIdentifier &#91;required&#93; The ID of the owning project of the data product.
+#' @param description The description of the data product.
+#' @param glossaryTerms The glossary terms of the data product.
+#' @param formsInput The metadata forms of the data product.
+#' @param items The data assets of the data product.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_data_product
-datazone_create_data_product <- function(clientToken = NULL, description = NULL, domainIdentifier, formsInput = NULL, glossaryTerms = NULL, items = NULL, name, owningProjectIdentifier) {
+datazone_create_data_product <- function(domainIdentifier, name, owningProjectIdentifier, description = NULL, glossaryTerms = NULL, formsInput = NULL, items = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateDataProduct",
     http_method = "POST",
@@ -634,7 +635,7 @@ datazone_create_data_product <- function(clientToken = NULL, description = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_data_product_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, formsInput = formsInput, glossaryTerms = glossaryTerms, items = items, name = name, owningProjectIdentifier = owningProjectIdentifier)
+  input <- .datazone$create_data_product_input(domainIdentifier = domainIdentifier, name = name, owningProjectIdentifier = owningProjectIdentifier, description = description, glossaryTerms = glossaryTerms, formsInput = formsInput, items = items, clientToken = clientToken)
   output <- .datazone$create_data_product_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -651,20 +652,20 @@ datazone_create_data_product <- function(clientToken = NULL, description = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_data_product_revision/](https://www.paws-r-sdk.com/docs/datazone_create_data_product_revision/) for full documentation.
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where the data product revision is created.
+#' @param identifier &#91;required&#93; The ID of the data product revision.
+#' @param name &#91;required&#93; The name of the data product revision.
+#' @param description The description of the data product revision.
+#' @param glossaryTerms The glossary terms of the data product revision.
+#' @param items The data assets of the data product revision.
+#' @param formsInput The metadata forms of the data product revision.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
-#' @param description The description of the data product revision.
-#' @param domainIdentifier &#91;required&#93; The ID of the domain where the data product revision is created.
-#' @param formsInput The metadata forms of the data product revision.
-#' @param glossaryTerms The glossary terms of the data product revision.
-#' @param identifier &#91;required&#93; The ID of the data product revision.
-#' @param items The data assets of the data product revision.
-#' @param name &#91;required&#93; The name of the data product revision.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_data_product_revision
-datazone_create_data_product_revision <- function(clientToken = NULL, description = NULL, domainIdentifier, formsInput = NULL, glossaryTerms = NULL, identifier, items = NULL, name) {
+datazone_create_data_product_revision <- function(domainIdentifier, identifier, name, description = NULL, glossaryTerms = NULL, items = NULL, formsInput = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateDataProductRevision",
     http_method = "POST",
@@ -673,7 +674,7 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_data_product_revision_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, formsInput = formsInput, glossaryTerms = glossaryTerms, identifier = identifier, items = items, name = name)
+  input <- .datazone$create_data_product_revision_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, glossaryTerms = glossaryTerms, items = items, formsInput = formsInput, clientToken = clientToken)
   output <- .datazone$create_data_product_revision_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -690,36 +691,36 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_data_source/](https://www.paws-r-sdk.com/docs/datazone_create_data_source/) for full documentation.
 #'
-#' @param assetFormsInput The metadata forms that are to be attached to the assets that this data
-#' source works with.
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param configuration Specifies the configuration of the data source. It can be set to either
-#' `glueRunConfiguration` or `redshiftRunConfiguration`.
-#' @param connectionIdentifier The ID of the connection.
+#' @param name &#91;required&#93; The name of the data source.
 #' @param description The description of the data source.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain where the data source is created.
-#' @param enableSetting Specifies whether the data source is enabled.
-#' @param environmentIdentifier The unique identifier of the Amazon DataZone environment to which the
-#' data source publishes assets.
-#' @param name &#91;required&#93; The name of the data source.
 #' @param projectIdentifier &#91;required&#93; The identifier of the Amazon DataZone project in which you want to add
 #' this data source.
-#' @param publishOnImport Specifies whether the assets that this data source creates in the
-#' inventory are to be also automatically published to the catalog.
-#' @param recommendation Specifies whether the business name generation is to be enabled for this
-#' data source.
-#' @param schedule The schedule of the data source runs.
+#' @param environmentIdentifier The unique identifier of the Amazon DataZone environment to which the
+#' data source publishes assets.
+#' @param connectionIdentifier The ID of the connection.
 #' @param type &#91;required&#93; The type of the data source. In Amazon DataZone, you can use data
 #' sources to import technical metadata of assets (data) from the source
 #' databases or data warehouses into Amazon DataZone. In the current
 #' release of Amazon DataZone, you can create and run data sources for
 #' Amazon Web Services Glue and Amazon Redshift.
+#' @param configuration Specifies the configuration of the data source. It can be set to either
+#' `glueRunConfiguration` or `redshiftRunConfiguration`.
+#' @param recommendation Specifies whether the business name generation is to be enabled for this
+#' data source.
+#' @param enableSetting Specifies whether the data source is enabled.
+#' @param schedule The schedule of the data source runs.
+#' @param publishOnImport Specifies whether the assets that this data source creates in the
+#' inventory are to be also automatically published to the catalog.
+#' @param assetFormsInput The metadata forms that are to be attached to the assets that this data
+#' source works with.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_data_source
-datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NULL, configuration = NULL, connectionIdentifier = NULL, description = NULL, domainIdentifier, enableSetting = NULL, environmentIdentifier = NULL, name, projectIdentifier, publishOnImport = NULL, recommendation = NULL, schedule = NULL, type) {
+datazone_create_data_source <- function(name, description = NULL, domainIdentifier, projectIdentifier, environmentIdentifier = NULL, connectionIdentifier = NULL, type, configuration = NULL, recommendation = NULL, enableSetting = NULL, schedule = NULL, publishOnImport = NULL, assetFormsInput = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateDataSource",
     http_method = "POST",
@@ -728,7 +729,7 @@ datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_data_source_input(assetFormsInput = assetFormsInput, clientToken = clientToken, configuration = configuration, connectionIdentifier = connectionIdentifier, description = description, domainIdentifier = domainIdentifier, enableSetting = enableSetting, environmentIdentifier = environmentIdentifier, name = name, projectIdentifier = projectIdentifier, publishOnImport = publishOnImport, recommendation = recommendation, schedule = schedule, type = type)
+  input <- .datazone$create_data_source_input(name = name, description = description, domainIdentifier = domainIdentifier, projectIdentifier = projectIdentifier, environmentIdentifier = environmentIdentifier, connectionIdentifier = connectionIdentifier, type = type, configuration = configuration, recommendation = recommendation, enableSetting = enableSetting, schedule = schedule, publishOnImport = publishOnImport, assetFormsInput = assetFormsInput, clientToken = clientToken)
   output <- .datazone$create_data_source_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -745,25 +746,25 @@ datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_domain/](https://www.paws-r-sdk.com/docs/datazone_create_domain/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
+#' @param name &#91;required&#93; The name of the Amazon DataZone domain.
 #' @param description The description of the Amazon DataZone domain.
-#' @param domainExecutionRole &#91;required&#93; The domain execution role that is created when an Amazon DataZone domain
+#' @param singleSignOn The single-sign on configuration of the Amazon DataZone domain.
+#' @param domainExecutionRole The domain execution role that is created when an Amazon DataZone domain
 #' is created. The domain execution role is created in the Amazon Web
 #' Services account that houses the Amazon DataZone domain.
-#' @param domainVersion The version of the domain that is created.
 #' @param kmsKeyIdentifier The identifier of the Amazon Web Services Key Management Service (KMS)
 #' key that is used to encrypt the Amazon DataZone domain, metadata, and
 #' reporting data.
-#' @param name &#91;required&#93; The name of the Amazon DataZone domain.
-#' @param serviceRole The service role of the domain that is created.
-#' @param singleSignOn The single-sign on configuration of the Amazon DataZone domain.
 #' @param tags The tags specified for the Amazon DataZone domain.
+#' @param domainVersion The version of the domain that is created.
+#' @param serviceRole The service role of the domain that is created.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_domain
-datazone_create_domain <- function(clientToken = NULL, description = NULL, domainExecutionRole, domainVersion = NULL, kmsKeyIdentifier = NULL, name, serviceRole = NULL, singleSignOn = NULL, tags = NULL) {
+datazone_create_domain <- function(name, description = NULL, singleSignOn = NULL, domainExecutionRole = NULL, kmsKeyIdentifier = NULL, tags = NULL, domainVersion = NULL, serviceRole = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
@@ -772,7 +773,7 @@ datazone_create_domain <- function(clientToken = NULL, description = NULL, domai
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_domain_input(clientToken = clientToken, description = description, domainExecutionRole = domainExecutionRole, domainVersion = domainVersion, kmsKeyIdentifier = kmsKeyIdentifier, name = name, serviceRole = serviceRole, singleSignOn = singleSignOn, tags = tags)
+  input <- .datazone$create_domain_input(name = name, description = description, singleSignOn = singleSignOn, domainExecutionRole = domainExecutionRole, kmsKeyIdentifier = kmsKeyIdentifier, tags = tags, domainVersion = domainVersion, serviceRole = serviceRole, clientToken = clientToken)
   output <- .datazone$create_domain_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -789,17 +790,17 @@ datazone_create_domain <- function(clientToken = NULL, description = NULL, domai
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_domain_unit/](https://www.paws-r-sdk.com/docs/datazone_create_domain_unit/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param description The description of the domain unit.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to crate a domain unit.
 #' @param name &#91;required&#93; The name of the domain unit.
 #' @param parentDomainUnitIdentifier &#91;required&#93; The ID of the parent domain unit.
+#' @param description The description of the domain unit.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_domain_unit
-datazone_create_domain_unit <- function(clientToken = NULL, description = NULL, domainIdentifier, name, parentDomainUnitIdentifier) {
+datazone_create_domain_unit <- function(domainIdentifier, name, parentDomainUnitIdentifier, description = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateDomainUnit",
     http_method = "POST",
@@ -808,7 +809,7 @@ datazone_create_domain_unit <- function(clientToken = NULL, description = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_domain_unit_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, name = name, parentDomainUnitIdentifier = parentDomainUnitIdentifier)
+  input <- .datazone$create_domain_unit_input(domainIdentifier = domainIdentifier, name = name, parentDomainUnitIdentifier = parentDomainUnitIdentifier, description = description, clientToken = clientToken)
   output <- .datazone$create_domain_unit_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -825,26 +826,27 @@ datazone_create_domain_unit <- function(clientToken = NULL, description = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_environment/](https://www.paws-r-sdk.com/docs/datazone_create_environment/) for full documentation.
 #'
-#' @param deploymentOrder The deployment order of the environment.
-#' @param description The description of the Amazon DataZone environment.
+#' @param projectIdentifier &#91;required&#93; The identifier of the Amazon DataZone project in which this environment
+#' is created.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which the environment is
 #' created.
+#' @param description The description of the Amazon DataZone environment.
+#' @param name &#91;required&#93; The name of the Amazon DataZone environment.
+#' @param environmentProfileIdentifier The identifier of the environment profile that is used to create this
+#' Amazon DataZone environment.
+#' @param userParameters The user parameters of this Amazon DataZone environment.
+#' @param glossaryTerms The glossary terms that can be used in this Amazon DataZone environment.
 #' @param environmentAccountIdentifier The ID of the account in which the environment is being created.
 #' @param environmentAccountRegion The region of the account in which the environment is being created.
 #' @param environmentBlueprintIdentifier The ID of the blueprint with which the environment is being created.
+#' @param deploymentOrder The deployment order of the environment.
 #' @param environmentConfigurationId The configuration ID of the environment.
-#' @param environmentProfileIdentifier The identifier of the environment profile that is used to create this
-#' Amazon DataZone environment.
-#' @param glossaryTerms The glossary terms that can be used in this Amazon DataZone environment.
-#' @param name &#91;required&#93; The name of the Amazon DataZone environment.
-#' @param projectIdentifier &#91;required&#93; The identifier of the Amazon DataZone project in which this environment
-#' is created.
-#' @param userParameters The user parameters of this Amazon DataZone environment.
+#' @param environmentConfigurationName The configuration name of the environment.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_environment
-datazone_create_environment <- function(deploymentOrder = NULL, description = NULL, domainIdentifier, environmentAccountIdentifier = NULL, environmentAccountRegion = NULL, environmentBlueprintIdentifier = NULL, environmentConfigurationId = NULL, environmentProfileIdentifier = NULL, glossaryTerms = NULL, name, projectIdentifier, userParameters = NULL) {
+datazone_create_environment <- function(projectIdentifier, domainIdentifier, description = NULL, name, environmentProfileIdentifier = NULL, userParameters = NULL, glossaryTerms = NULL, environmentAccountIdentifier = NULL, environmentAccountRegion = NULL, environmentBlueprintIdentifier = NULL, deploymentOrder = NULL, environmentConfigurationId = NULL, environmentConfigurationName = NULL) {
   op <- new_operation(
     name = "CreateEnvironment",
     http_method = "POST",
@@ -853,7 +855,7 @@ datazone_create_environment <- function(deploymentOrder = NULL, description = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_environment_input(deploymentOrder = deploymentOrder, description = description, domainIdentifier = domainIdentifier, environmentAccountIdentifier = environmentAccountIdentifier, environmentAccountRegion = environmentAccountRegion, environmentBlueprintIdentifier = environmentBlueprintIdentifier, environmentConfigurationId = environmentConfigurationId, environmentProfileIdentifier = environmentProfileIdentifier, glossaryTerms = glossaryTerms, name = name, projectIdentifier = projectIdentifier, userParameters = userParameters)
+  input <- .datazone$create_environment_input(projectIdentifier = projectIdentifier, domainIdentifier = domainIdentifier, description = description, name = name, environmentProfileIdentifier = environmentProfileIdentifier, userParameters = userParameters, glossaryTerms = glossaryTerms, environmentAccountIdentifier = environmentAccountIdentifier, environmentAccountRegion = environmentAccountRegion, environmentBlueprintIdentifier = environmentBlueprintIdentifier, deploymentOrder = deploymentOrder, environmentConfigurationId = environmentConfigurationId, environmentConfigurationName = environmentConfigurationName)
   output <- .datazone$create_environment_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -871,18 +873,18 @@ datazone_create_environment <- function(deploymentOrder = NULL, description = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_environment_action/](https://www.paws-r-sdk.com/docs/datazone_create_environment_action/) for full documentation.
 #'
-#' @param description The description of the environment action that is being created in the
-#' environment.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which the environment action is
 #' created.
 #' @param environmentIdentifier &#91;required&#93; The ID of the environment in which the environment action is created.
 #' @param name &#91;required&#93; The name of the environment action.
 #' @param parameters &#91;required&#93; The parameters of the environment action.
+#' @param description The description of the environment action that is being created in the
+#' environment.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_environment_action
-datazone_create_environment_action <- function(description = NULL, domainIdentifier, environmentIdentifier, name, parameters) {
+datazone_create_environment_action <- function(domainIdentifier, environmentIdentifier, name, parameters, description = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentAction",
     http_method = "POST",
@@ -891,7 +893,7 @@ datazone_create_environment_action <- function(description = NULL, domainIdentif
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_environment_action_input(description = description, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, name = name, parameters = parameters)
+  input <- .datazone$create_environment_action_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, name = name, parameters = parameters, description = description)
   output <- .datazone$create_environment_action_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -908,16 +910,16 @@ datazone_create_environment_action <- function(description = NULL, domainIdentif
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_environment_blueprint/](https://www.paws-r-sdk.com/docs/datazone_create_environment_blueprint/) for full documentation.
 #'
-#' @param description The description of the Amazon DataZone blueprint.
 #' @param domainIdentifier &#91;required&#93; The identifier of the domain in which this blueprint is created.
 #' @param name &#91;required&#93; The name of this Amazon DataZone blueprint.
+#' @param description The description of the Amazon DataZone blueprint.
 #' @param provisioningProperties &#91;required&#93; The provisioning properties of this Amazon DataZone blueprint.
 #' @param userParameters The user parameters of this Amazon DataZone blueprint.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_environment_blueprint
-datazone_create_environment_blueprint <- function(description = NULL, domainIdentifier, name, provisioningProperties, userParameters = NULL) {
+datazone_create_environment_blueprint <- function(domainIdentifier, name, description = NULL, provisioningProperties, userParameters = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentBlueprint",
     http_method = "POST",
@@ -926,7 +928,7 @@ datazone_create_environment_blueprint <- function(description = NULL, domainIden
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_environment_blueprint_input(description = description, domainIdentifier = domainIdentifier, name = name, provisioningProperties = provisioningProperties, userParameters = userParameters)
+  input <- .datazone$create_environment_blueprint_input(domainIdentifier = domainIdentifier, name = name, description = description, provisioningProperties = provisioningProperties, userParameters = userParameters)
   output <- .datazone$create_environment_blueprint_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -943,23 +945,23 @@ datazone_create_environment_blueprint <- function(description = NULL, domainIden
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_environment_profile/](https://www.paws-r-sdk.com/docs/datazone_create_environment_profile/) for full documentation.
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which this environment profile
+#' is created.
+#' @param name &#91;required&#93; The name of this Amazon DataZone environment profile.
+#' @param description The description of this Amazon DataZone environment profile.
+#' @param environmentBlueprintIdentifier &#91;required&#93; The ID of the blueprint with which this environment profile is created.
+#' @param projectIdentifier &#91;required&#93; The identifier of the project in which to create the environment
+#' profile.
+#' @param userParameters The user parameters of this Amazon DataZone environment profile.
 #' @param awsAccountId The Amazon Web Services account in which the Amazon DataZone environment
 #' is created.
 #' @param awsAccountRegion The Amazon Web Services region in which this environment profile is
 #' created.
-#' @param description The description of this Amazon DataZone environment profile.
-#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which this environment profile
-#' is created.
-#' @param environmentBlueprintIdentifier &#91;required&#93; The ID of the blueprint with which this environment profile is created.
-#' @param name &#91;required&#93; The name of this Amazon DataZone environment profile.
-#' @param projectIdentifier &#91;required&#93; The identifier of the project in which to create the environment
-#' profile.
-#' @param userParameters The user parameters of this Amazon DataZone environment profile.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_environment_profile
-datazone_create_environment_profile <- function(awsAccountId = NULL, awsAccountRegion = NULL, description = NULL, domainIdentifier, environmentBlueprintIdentifier, name, projectIdentifier, userParameters = NULL) {
+datazone_create_environment_profile <- function(domainIdentifier, name, description = NULL, environmentBlueprintIdentifier, projectIdentifier, userParameters = NULL, awsAccountId = NULL, awsAccountRegion = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentProfile",
     http_method = "POST",
@@ -968,7 +970,7 @@ datazone_create_environment_profile <- function(awsAccountId = NULL, awsAccountR
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_environment_profile_input(awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion, description = description, domainIdentifier = domainIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier, name = name, projectIdentifier = projectIdentifier, userParameters = userParameters)
+  input <- .datazone$create_environment_profile_input(domainIdentifier = domainIdentifier, name = name, description = description, environmentBlueprintIdentifier = environmentBlueprintIdentifier, projectIdentifier = projectIdentifier, userParameters = userParameters, awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion)
   output <- .datazone$create_environment_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -985,18 +987,18 @@ datazone_create_environment_profile <- function(awsAccountId = NULL, awsAccountR
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_form_type/](https://www.paws-r-sdk.com/docs/datazone_create_form_type/) for full documentation.
 #'
-#' @param description The description of this Amazon DataZone metadata form type.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which this metadata form type is
 #' created.
-#' @param model &#91;required&#93; The model of this Amazon DataZone metadata form type.
 #' @param name &#91;required&#93; The name of this Amazon DataZone metadata form type.
+#' @param model &#91;required&#93; The model of this Amazon DataZone metadata form type.
 #' @param owningProjectIdentifier &#91;required&#93; The ID of the Amazon DataZone project that owns this metadata form type.
 #' @param status The status of this Amazon DataZone metadata form type.
+#' @param description The description of this Amazon DataZone metadata form type.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_form_type
-datazone_create_form_type <- function(description = NULL, domainIdentifier, model, name, owningProjectIdentifier, status = NULL) {
+datazone_create_form_type <- function(domainIdentifier, name, model, owningProjectIdentifier, status = NULL, description = NULL) {
   op <- new_operation(
     name = "CreateFormType",
     http_method = "POST",
@@ -1005,7 +1007,7 @@ datazone_create_form_type <- function(description = NULL, domainIdentifier, mode
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_form_type_input(description = description, domainIdentifier = domainIdentifier, model = model, name = name, owningProjectIdentifier = owningProjectIdentifier, status = status)
+  input <- .datazone$create_form_type_input(domainIdentifier = domainIdentifier, name = name, model = model, owningProjectIdentifier = owningProjectIdentifier, status = status, description = description)
   output <- .datazone$create_form_type_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1022,20 +1024,20 @@ datazone_create_form_type <- function(description = NULL, domainIdentifier, mode
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_glossary/](https://www.paws-r-sdk.com/docs/datazone_create_glossary/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param description The description of this business glossary.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which this business glossary is
 #' created.
 #' @param name &#91;required&#93; The name of this business glossary.
 #' @param owningProjectIdentifier &#91;required&#93; The ID of the project that currently owns business glossary.
+#' @param description The description of this business glossary.
 #' @param status The status of this business glossary.
 #' @param usageRestrictions The usage restriction of the restricted glossary.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_glossary
-datazone_create_glossary <- function(clientToken = NULL, description = NULL, domainIdentifier, name, owningProjectIdentifier, status = NULL, usageRestrictions = NULL) {
+datazone_create_glossary <- function(domainIdentifier, name, owningProjectIdentifier, description = NULL, status = NULL, usageRestrictions = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateGlossary",
     http_method = "POST",
@@ -1044,7 +1046,7 @@ datazone_create_glossary <- function(clientToken = NULL, description = NULL, dom
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_glossary_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, name = name, owningProjectIdentifier = owningProjectIdentifier, status = status, usageRestrictions = usageRestrictions)
+  input <- .datazone$create_glossary_input(domainIdentifier = domainIdentifier, name = name, owningProjectIdentifier = owningProjectIdentifier, description = description, status = status, usageRestrictions = usageRestrictions, clientToken = clientToken)
   output <- .datazone$create_glossary_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1061,21 +1063,21 @@ datazone_create_glossary <- function(clientToken = NULL, description = NULL, dom
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_glossary_term/](https://www.paws-r-sdk.com/docs/datazone_create_glossary_term/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which this business glossary
 #' term is created.
 #' @param glossaryIdentifier &#91;required&#93; The ID of the business glossary in which this term is created.
-#' @param longDescription The long description of this business glossary term.
 #' @param name &#91;required&#93; The name of this business glossary term.
-#' @param shortDescription The short description of this business glossary term.
 #' @param status The status of this business glossary term.
+#' @param shortDescription The short description of this business glossary term.
+#' @param longDescription The long description of this business glossary term.
 #' @param termRelations The term relations of this business glossary term.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_glossary_term
-datazone_create_glossary_term <- function(clientToken = NULL, domainIdentifier, glossaryIdentifier, longDescription = NULL, name, shortDescription = NULL, status = NULL, termRelations = NULL) {
+datazone_create_glossary_term <- function(domainIdentifier, glossaryIdentifier, name, status = NULL, shortDescription = NULL, longDescription = NULL, termRelations = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateGlossaryTerm",
     http_method = "POST",
@@ -1084,7 +1086,7 @@ datazone_create_glossary_term <- function(clientToken = NULL, domainIdentifier, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_glossary_term_input(clientToken = clientToken, domainIdentifier = domainIdentifier, glossaryIdentifier = glossaryIdentifier, longDescription = longDescription, name = name, shortDescription = shortDescription, status = status, termRelations = termRelations)
+  input <- .datazone$create_glossary_term_input(domainIdentifier = domainIdentifier, glossaryIdentifier = glossaryIdentifier, name = name, status = status, shortDescription = shortDescription, longDescription = longDescription, termRelations = termRelations, clientToken = clientToken)
   output <- .datazone$create_glossary_term_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1101,16 +1103,19 @@ datazone_create_glossary_term <- function(clientToken = NULL, domainIdentifier, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_group_profile/](https://www.paws-r-sdk.com/docs/datazone_create_group_profile/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which the group profile
 #' is created.
-#' @param groupIdentifier &#91;required&#93; The identifier of the group for which the group profile is created.
+#' @param groupIdentifier The identifier of the group for which the group profile is created.
+#' @param rolePrincipalArn The ARN of the IAM role that will be associated with the group profile.
+#' This role defines the permissions that group members will assume when
+#' accessing Amazon DataZone resources.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_group_profile
-datazone_create_group_profile <- function(clientToken = NULL, domainIdentifier, groupIdentifier) {
+datazone_create_group_profile <- function(domainIdentifier, groupIdentifier = NULL, rolePrincipalArn = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateGroupProfile",
     http_method = "POST",
@@ -1119,7 +1124,7 @@ datazone_create_group_profile <- function(clientToken = NULL, domainIdentifier, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_group_profile_input(clientToken = clientToken, domainIdentifier = domainIdentifier, groupIdentifier = groupIdentifier)
+  input <- .datazone$create_group_profile_input(domainIdentifier = domainIdentifier, groupIdentifier = groupIdentifier, rolePrincipalArn = rolePrincipalArn, clientToken = clientToken)
   output <- .datazone$create_group_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1137,18 +1142,18 @@ datazone_create_group_profile <- function(clientToken = NULL, domainIdentifier, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_listing_change_set/](https://www.paws-r-sdk.com/docs/datazone_create_listing_change_set/) for full documentation.
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain.
+#' @param entityIdentifier &#91;required&#93; The ID of the asset.
+#' @param entityType &#91;required&#93; The type of an entity.
+#' @param entityRevision The revision of an asset.
 #' @param action &#91;required&#93; Specifies whether to publish or unpublish a listing.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
-#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain.
-#' @param entityIdentifier &#91;required&#93; The ID of the asset.
-#' @param entityRevision The revision of an asset.
-#' @param entityType &#91;required&#93; The type of an entity.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_listing_change_set
-datazone_create_listing_change_set <- function(action, clientToken = NULL, domainIdentifier, entityIdentifier, entityRevision = NULL, entityType) {
+datazone_create_listing_change_set <- function(domainIdentifier, entityIdentifier, entityType, entityRevision = NULL, action, clientToken = NULL) {
   op <- new_operation(
     name = "CreateListingChangeSet",
     http_method = "POST",
@@ -1157,7 +1162,7 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_listing_change_set_input(action = action, clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityRevision = entityRevision, entityType = entityType)
+  input <- .datazone$create_listing_change_set_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, entityRevision = entityRevision, action = action, clientToken = clientToken)
   output <- .datazone$create_listing_change_set_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1174,21 +1179,26 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_project/](https://www.paws-r-sdk.com/docs/datazone_create_project/) for full documentation.
 #'
-#' @param description The description of the Amazon DataZone project.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which this project is created.
+#' @param name &#91;required&#93; The name of the Amazon DataZone project.
+#' @param description The description of the Amazon DataZone project.
+#' @param resourceTags The resource tags of the project.
+#' @param glossaryTerms The glossary terms that can be used in this Amazon DataZone project.
 #' @param domainUnitId The ID of the domain unit. This parameter is not required and if it is
 #' not specified, then the project is created at the root domain unit
 #' level.
-#' @param glossaryTerms The glossary terms that can be used in this Amazon DataZone project.
-#' @param name &#91;required&#93; The name of the Amazon DataZone project.
 #' @param projectProfileId The ID of the project profile.
-#' @param resourceTags The resource tags of the project.
 #' @param userParameters The user parameters of the project.
+#' @param projectCategory The category of the project. Set to 'ADMIN' designates this as an
+#' administrative project for the Amazon DataZone domain.
+#' @param projectExecutionRole The default project IAM role that is used to access project resources
+#' and run computes such as Glue and Sagemaker.
+#' @param membershipAssignments The members to be assigned to the project.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_project
-datazone_create_project <- function(description = NULL, domainIdentifier, domainUnitId = NULL, glossaryTerms = NULL, name, projectProfileId = NULL, resourceTags = NULL, userParameters = NULL) {
+datazone_create_project <- function(domainIdentifier, name, description = NULL, resourceTags = NULL, glossaryTerms = NULL, domainUnitId = NULL, projectProfileId = NULL, userParameters = NULL, projectCategory = NULL, projectExecutionRole = NULL, membershipAssignments = NULL) {
   op <- new_operation(
     name = "CreateProject",
     http_method = "POST",
@@ -1197,7 +1207,7 @@ datazone_create_project <- function(description = NULL, domainIdentifier, domain
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_project_input(description = description, domainIdentifier = domainIdentifier, domainUnitId = domainUnitId, glossaryTerms = glossaryTerms, name = name, projectProfileId = projectProfileId, resourceTags = resourceTags, userParameters = userParameters)
+  input <- .datazone$create_project_input(domainIdentifier = domainIdentifier, name = name, description = description, resourceTags = resourceTags, glossaryTerms = glossaryTerms, domainUnitId = domainUnitId, projectProfileId = projectProfileId, userParameters = userParameters, projectCategory = projectCategory, projectExecutionRole = projectExecutionRole, membershipAssignments = membershipAssignments)
   output <- .datazone$create_project_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1214,16 +1224,16 @@ datazone_create_project <- function(description = NULL, domainIdentifier, domain
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_project_membership/](https://www.paws-r-sdk.com/docs/datazone_create_project_membership/) for full documentation.
 #'
-#' @param designation &#91;required&#93; The designation of the project membership.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which project membership is
 #' created.
-#' @param member &#91;required&#93; The project member whose project membership was created.
 #' @param projectIdentifier &#91;required&#93; The ID of the project for which this project membership was created.
+#' @param member &#91;required&#93; The project member whose project membership was created.
+#' @param designation &#91;required&#93; The designation of the project membership.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_project_membership
-datazone_create_project_membership <- function(designation, domainIdentifier, member, projectIdentifier) {
+datazone_create_project_membership <- function(domainIdentifier, projectIdentifier, member, designation) {
   op <- new_operation(
     name = "CreateProjectMembership",
     http_method = "POST",
@@ -1232,7 +1242,7 @@ datazone_create_project_membership <- function(designation, domainIdentifier, me
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_project_membership_input(designation = designation, domainIdentifier = domainIdentifier, member = member, projectIdentifier = projectIdentifier)
+  input <- .datazone$create_project_membership_input(domainIdentifier = domainIdentifier, projectIdentifier = projectIdentifier, member = member, designation = designation)
   output <- .datazone$create_project_membership_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1249,21 +1259,21 @@ datazone_create_project_membership <- function(designation, domainIdentifier, me
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_project_profile/](https://www.paws-r-sdk.com/docs/datazone_create_project_profile/) for full documentation.
 #'
-#' @param allowCustomProjectResourceTags Specifies whether custom project resource tags are supported.
-#' @param description A description of a project profile.
 #' @param domainIdentifier &#91;required&#93; A domain ID of the project profile.
-#' @param domainUnitIdentifier A domain unit ID of the project profile.
-#' @param environmentConfigurations Environment configurations of the project profile.
 #' @param name &#91;required&#93; Project profile name.
+#' @param description A description of a project profile.
+#' @param status Project profile status.
 #' @param projectResourceTags The resource tags of the project profile.
+#' @param allowCustomProjectResourceTags Specifies whether custom project resource tags are supported.
 #' @param projectResourceTagsDescription Field viewable through the UI that provides a project user with the
 #' allowed resource tag specifications.
-#' @param status Project profile status.
+#' @param environmentConfigurations Environment configurations of the project profile.
+#' @param domainUnitIdentifier A domain unit ID of the project profile.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_project_profile
-datazone_create_project_profile <- function(allowCustomProjectResourceTags = NULL, description = NULL, domainIdentifier, domainUnitIdentifier = NULL, environmentConfigurations = NULL, name, projectResourceTags = NULL, projectResourceTagsDescription = NULL, status = NULL) {
+datazone_create_project_profile <- function(domainIdentifier, name, description = NULL, status = NULL, projectResourceTags = NULL, allowCustomProjectResourceTags = NULL, projectResourceTagsDescription = NULL, environmentConfigurations = NULL, domainUnitIdentifier = NULL) {
   op <- new_operation(
     name = "CreateProjectProfile",
     http_method = "POST",
@@ -1272,7 +1282,7 @@ datazone_create_project_profile <- function(allowCustomProjectResourceTags = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_project_profile_input(allowCustomProjectResourceTags = allowCustomProjectResourceTags, description = description, domainIdentifier = domainIdentifier, domainUnitIdentifier = domainUnitIdentifier, environmentConfigurations = environmentConfigurations, name = name, projectResourceTags = projectResourceTags, projectResourceTagsDescription = projectResourceTagsDescription, status = status)
+  input <- .datazone$create_project_profile_input(domainIdentifier = domainIdentifier, name = name, description = description, status = status, projectResourceTags = projectResourceTags, allowCustomProjectResourceTags = allowCustomProjectResourceTags, projectResourceTagsDescription = projectResourceTagsDescription, environmentConfigurations = environmentConfigurations, domainUnitIdentifier = domainUnitIdentifier)
   output <- .datazone$create_project_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1289,20 +1299,20 @@ datazone_create_project_profile <- function(allowCustomProjectResourceTags = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_rule/](https://www.paws-r-sdk.com/docs/datazone_create_rule/) for full documentation.
 #'
-#' @param action &#91;required&#93; The action of the rule.
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param description The description of the rule.
-#' @param detail &#91;required&#93; The detail of the rule.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where the rule is created.
 #' @param name &#91;required&#93; The name of the rule.
-#' @param scope &#91;required&#93; The scope of the rule.
 #' @param target &#91;required&#93; The target of the rule.
+#' @param action &#91;required&#93; The action of the rule.
+#' @param scope &#91;required&#93; The scope of the rule.
+#' @param detail &#91;required&#93; The detail of the rule.
+#' @param description The description of the rule.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_rule
-datazone_create_rule <- function(action, clientToken = NULL, description = NULL, detail, domainIdentifier, name, scope, target) {
+datazone_create_rule <- function(domainIdentifier, name, target, action, scope, detail, description = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateRule",
     http_method = "POST",
@@ -1311,7 +1321,7 @@ datazone_create_rule <- function(action, clientToken = NULL, description = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_rule_input(action = action, clientToken = clientToken, description = description, detail = detail, domainIdentifier = domainIdentifier, name = name, scope = scope, target = target)
+  input <- .datazone$create_rule_input(domainIdentifier = domainIdentifier, name = name, target = target, action = action, scope = scope, detail = detail, description = description, clientToken = clientToken)
   output <- .datazone$create_rule_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1328,20 +1338,20 @@ datazone_create_rule <- function(action, clientToken = NULL, description = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_subscription_grant/](https://www.paws-r-sdk.com/docs/datazone_create_subscription_grant/) for full documentation.
 #'
-#' @param assetTargetNames The names of the assets for which the subscription grant is created.
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which the subscription grant is
 #' created.
 #' @param environmentIdentifier &#91;required&#93; The ID of the environment in which the subscription grant is created.
-#' @param grantedEntity &#91;required&#93; The entity to which the subscription is to be granted.
 #' @param subscriptionTargetIdentifier The ID of the subscription target for which the subscription grant is
 #' created.
+#' @param grantedEntity &#91;required&#93; The entity to which the subscription is to be granted.
+#' @param assetTargetNames The names of the assets for which the subscription grant is created.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_subscription_grant
-datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientToken = NULL, domainIdentifier, environmentIdentifier, grantedEntity, subscriptionTargetIdentifier = NULL) {
+datazone_create_subscription_grant <- function(domainIdentifier, environmentIdentifier, subscriptionTargetIdentifier = NULL, grantedEntity, assetTargetNames = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateSubscriptionGrant",
     http_method = "POST",
@@ -1350,7 +1360,7 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_subscription_grant_input(assetTargetNames = assetTargetNames, clientToken = clientToken, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, grantedEntity = grantedEntity, subscriptionTargetIdentifier = subscriptionTargetIdentifier)
+  input <- .datazone$create_subscription_grant_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, subscriptionTargetIdentifier = subscriptionTargetIdentifier, grantedEntity = grantedEntity, assetTargetNames = assetTargetNames, clientToken = clientToken)
   output <- .datazone$create_subscription_grant_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1367,22 +1377,22 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_subscription_request/](https://www.paws-r-sdk.com/docs/datazone_create_subscription_request/) for full documentation.
 #'
-#' @param assetPermissions The asset permissions of the subscription request.
-#' @param assetScopes The asset scopes of the subscription request.
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which the subscription request
 #' is created.
-#' @param metadataForms The metadata form included in the subscription request.
-#' @param requestReason &#91;required&#93; The reason for the subscription request.
-#' @param subscribedListings &#91;required&#93; The published asset for which the subscription grant is to be created.
 #' @param subscribedPrincipals &#91;required&#93; The Amazon DataZone principals for whom the subscription request is
 #' created.
+#' @param subscribedListings &#91;required&#93; The published asset for which the subscription grant is to be created.
+#' @param requestReason &#91;required&#93; The reason for the subscription request.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
+#' @param metadataForms The metadata form included in the subscription request.
+#' @param assetPermissions The asset permissions of the subscription request.
+#' @param assetScopes The asset scopes of the subscription request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_subscription_request
-datazone_create_subscription_request <- function(assetPermissions = NULL, assetScopes = NULL, clientToken = NULL, domainIdentifier, metadataForms = NULL, requestReason, subscribedListings, subscribedPrincipals) {
+datazone_create_subscription_request <- function(domainIdentifier, subscribedPrincipals, subscribedListings, requestReason, clientToken = NULL, metadataForms = NULL, assetPermissions = NULL, assetScopes = NULL) {
   op <- new_operation(
     name = "CreateSubscriptionRequest",
     http_method = "POST",
@@ -1391,7 +1401,7 @@ datazone_create_subscription_request <- function(assetPermissions = NULL, assetS
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_subscription_request_input(assetPermissions = assetPermissions, assetScopes = assetScopes, clientToken = clientToken, domainIdentifier = domainIdentifier, metadataForms = metadataForms, requestReason = requestReason, subscribedListings = subscribedListings, subscribedPrincipals = subscribedPrincipals)
+  input <- .datazone$create_subscription_request_input(domainIdentifier = domainIdentifier, subscribedPrincipals = subscribedPrincipals, subscribedListings = subscribedListings, requestReason = requestReason, clientToken = clientToken, metadataForms = metadataForms, assetPermissions = assetPermissions, assetScopes = assetScopes)
   output <- .datazone$create_subscription_request_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1408,23 +1418,26 @@ datazone_create_subscription_request <- function(assetPermissions = NULL, assetS
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_subscription_target/](https://www.paws-r-sdk.com/docs/datazone_create_subscription_target/) for full documentation.
 #'
-#' @param applicableAssetTypes &#91;required&#93; The asset types that can be included in the subscription target.
-#' @param authorizedPrincipals &#91;required&#93; The authorized principals of the subscription target.
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which subscription target is
 #' created.
 #' @param environmentIdentifier &#91;required&#93; The ID of the environment in which subscription target is created.
-#' @param manageAccessRole &#91;required&#93; The manage access role that is used to create the subscription target.
 #' @param name &#91;required&#93; The name of the subscription target.
-#' @param provider The provider of the subscription target.
-#' @param subscriptionTargetConfig &#91;required&#93; The configuration of the subscription target.
 #' @param type &#91;required&#93; The type of the subscription target.
+#' @param subscriptionTargetConfig &#91;required&#93; The configuration of the subscription target.
+#' @param authorizedPrincipals &#91;required&#93; The authorized principals of the subscription target.
+#' @param manageAccessRole &#91;required&#93; The manage access role that is used to create the subscription target.
+#' @param applicableAssetTypes &#91;required&#93; The asset types that can be included in the subscription target.
+#' @param provider The provider of the subscription target.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
+#' @param subscriptionGrantCreationMode Determines the subscription grant creation mode for this target,
+#' defining if grants are auto-created upon subscription approval or
+#' managed manually.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_subscription_target
-datazone_create_subscription_target <- function(applicableAssetTypes, authorizedPrincipals, clientToken = NULL, domainIdentifier, environmentIdentifier, manageAccessRole, name, provider = NULL, subscriptionTargetConfig, type) {
+datazone_create_subscription_target <- function(domainIdentifier, environmentIdentifier, name, type, subscriptionTargetConfig, authorizedPrincipals, manageAccessRole, applicableAssetTypes, provider = NULL, clientToken = NULL, subscriptionGrantCreationMode = NULL) {
   op <- new_operation(
     name = "CreateSubscriptionTarget",
     http_method = "POST",
@@ -1433,7 +1446,7 @@ datazone_create_subscription_target <- function(applicableAssetTypes, authorized
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_subscription_target_input(applicableAssetTypes = applicableAssetTypes, authorizedPrincipals = authorizedPrincipals, clientToken = clientToken, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, manageAccessRole = manageAccessRole, name = name, provider = provider, subscriptionTargetConfig = subscriptionTargetConfig, type = type)
+  input <- .datazone$create_subscription_target_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, name = name, type = type, subscriptionTargetConfig = subscriptionTargetConfig, authorizedPrincipals = authorizedPrincipals, manageAccessRole = manageAccessRole, applicableAssetTypes = applicableAssetTypes, provider = provider, clientToken = clientToken, subscriptionGrantCreationMode = subscriptionGrantCreationMode)
   output <- .datazone$create_subscription_target_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1450,17 +1463,18 @@ datazone_create_subscription_target <- function(applicableAssetTypes, authorized
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_create_user_profile/](https://www.paws-r-sdk.com/docs/datazone_create_user_profile/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which a user profile is
 #' created.
 #' @param userIdentifier &#91;required&#93; The identifier of the user for which the user profile is created.
 #' @param userType The user type of the user for which the user profile is created.
+#' @param sessionName The session name for IAM role sessions.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_create_user_profile
-datazone_create_user_profile <- function(clientToken = NULL, domainIdentifier, userIdentifier, userType = NULL) {
+datazone_create_user_profile <- function(domainIdentifier, userIdentifier, userType = NULL, sessionName = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateUserProfile",
     http_method = "POST",
@@ -1469,7 +1483,7 @@ datazone_create_user_profile <- function(clientToken = NULL, domainIdentifier, u
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_user_profile_input(clientToken = clientToken, domainIdentifier = domainIdentifier, userIdentifier = userIdentifier, userType = userType)
+  input <- .datazone$create_user_profile_input(domainIdentifier = domainIdentifier, userIdentifier = userIdentifier, userType = userType, sessionName = sessionName, clientToken = clientToken)
   output <- .datazone$create_user_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1550,14 +1564,14 @@ datazone_delete_asset <- function(domainIdentifier, identifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_delete_asset_filter/](https://www.paws-r-sdk.com/docs/datazone_delete_asset_filter/) for full documentation.
 #'
-#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to delete an asset filter.
+#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
 #' @param identifier &#91;required&#93; The ID of the asset filter that you want to delete.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_delete_asset_filter
-datazone_delete_asset_filter <- function(assetIdentifier, domainIdentifier, identifier) {
+datazone_delete_asset_filter <- function(domainIdentifier, assetIdentifier, identifier) {
   op <- new_operation(
     name = "DeleteAssetFilter",
     http_method = "DELETE",
@@ -1566,7 +1580,7 @@ datazone_delete_asset_filter <- function(assetIdentifier, domainIdentifier, iden
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$delete_asset_filter_input(assetIdentifier = assetIdentifier, domainIdentifier = domainIdentifier, identifier = identifier)
+  input <- .datazone$delete_asset_filter_input(domainIdentifier = domainIdentifier, assetIdentifier = assetIdentifier, identifier = identifier)
   output <- .datazone$delete_asset_filter_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1640,6 +1654,38 @@ datazone_delete_connection <- function(domainIdentifier, identifier) {
 }
 .datazone$operations$delete_connection <- datazone_delete_connection
 
+#' Deletes data export configuration for a domain
+#'
+#' @description
+#' Deletes data export configuration for a domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/datazone_delete_data_export_configuration/](https://www.paws-r-sdk.com/docs/datazone_delete_data_export_configuration/) for full documentation.
+#'
+#' @param domainIdentifier &#91;required&#93; The domain ID for which you want to delete the data export
+#' configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_delete_data_export_configuration
+datazone_delete_data_export_configuration <- function(domainIdentifier) {
+  op <- new_operation(
+    name = "DeleteDataExportConfiguration",
+    http_method = "DELETE",
+    http_path = "/v2/domains/{domainIdentifier}/data-export-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$delete_data_export_configuration_input(domainIdentifier = domainIdentifier)
+  output <- .datazone$delete_data_export_configuration_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$delete_data_export_configuration <- datazone_delete_data_export_configuration
+
 #' Deletes a data product in Amazon DataZone
 #'
 #' @description
@@ -1680,18 +1726,18 @@ datazone_delete_data_product <- function(domainIdentifier, identifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_delete_data_source/](https://www.paws-r-sdk.com/docs/datazone_delete_data_source/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which the data source is
 #' deleted.
 #' @param identifier &#91;required&#93; The identifier of the data source that is deleted.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #' @param retainPermissionsOnRevokeFailure Specifies that the granted permissions are retained in case of a
 #' self-subscribe functionality failure for a data source.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_delete_data_source
-datazone_delete_data_source <- function(clientToken = NULL, domainIdentifier, identifier, retainPermissionsOnRevokeFailure = NULL) {
+datazone_delete_data_source <- function(domainIdentifier, identifier, clientToken = NULL, retainPermissionsOnRevokeFailure = NULL) {
   op <- new_operation(
     name = "DeleteDataSource",
     http_method = "DELETE",
@@ -1700,7 +1746,7 @@ datazone_delete_data_source <- function(clientToken = NULL, domainIdentifier, id
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$delete_data_source_input(clientToken = clientToken, domainIdentifier = domainIdentifier, identifier = identifier, retainPermissionsOnRevokeFailure = retainPermissionsOnRevokeFailure)
+  input <- .datazone$delete_data_source_input(domainIdentifier = domainIdentifier, identifier = identifier, clientToken = clientToken, retainPermissionsOnRevokeFailure = retainPermissionsOnRevokeFailure)
   output <- .datazone$delete_data_source_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1717,16 +1763,16 @@ datazone_delete_data_source <- function(clientToken = NULL, domainIdentifier, id
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_delete_domain/](https://www.paws-r-sdk.com/docs/datazone_delete_domain/) for full documentation.
 #'
+#' @param identifier &#91;required&#93; The identifier of the Amazon Web Services domain that is to be deleted.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
-#' @param identifier &#91;required&#93; The identifier of the Amazon Web Services domain that is to be deleted.
 #' @param skipDeletionCheck Specifies the optional flag to delete all child entities within the
 #' domain.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_delete_domain
-datazone_delete_domain <- function(clientToken = NULL, identifier, skipDeletionCheck = NULL) {
+datazone_delete_domain <- function(identifier, clientToken = NULL, skipDeletionCheck = NULL) {
   op <- new_operation(
     name = "DeleteDomain",
     http_method = "DELETE",
@@ -1735,7 +1781,7 @@ datazone_delete_domain <- function(clientToken = NULL, identifier, skipDeletionC
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$delete_domain_input(clientToken = clientToken, identifier = identifier, skipDeletionCheck = skipDeletionCheck)
+  input <- .datazone$delete_domain_input(identifier = identifier, clientToken = clientToken, skipDeletionCheck = skipDeletionCheck)
   output <- .datazone$delete_domain_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -2117,14 +2163,14 @@ datazone_delete_project <- function(domainIdentifier, identifier, skipDeletionCh
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain where project membership is
 #' deleted.
-#' @param member &#91;required&#93; The project member whose project membership is deleted.
 #' @param projectIdentifier &#91;required&#93; The ID of the Amazon DataZone project the membership to which is
 #' deleted.
+#' @param member &#91;required&#93; The project member whose project membership is deleted.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_delete_project_membership
-datazone_delete_project_membership <- function(domainIdentifier, member, projectIdentifier) {
+datazone_delete_project_membership <- function(domainIdentifier, projectIdentifier, member) {
   op <- new_operation(
     name = "DeleteProjectMembership",
     http_method = "POST",
@@ -2133,7 +2179,7 @@ datazone_delete_project_membership <- function(domainIdentifier, member, project
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$delete_project_membership_input(domainIdentifier = domainIdentifier, member = member, projectIdentifier = projectIdentifier)
+  input <- .datazone$delete_project_membership_input(domainIdentifier = domainIdentifier, projectIdentifier = projectIdentifier, member = member)
   output <- .datazone$delete_project_membership_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -2315,18 +2361,18 @@ datazone_delete_subscription_target <- function(domainIdentifier, environmentIde
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_delete_time_series_data_points/](https://www.paws-r-sdk.com/docs/datazone_delete_time_series_data_points/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
-#' request. This field is automatically populated if not provided.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain that houses the asset for which you
 #' want to delete a time series form.
 #' @param entityIdentifier &#91;required&#93; The ID of the asset for which you want to delete a time series form.
 #' @param entityType &#91;required&#93; The type of the asset for which you want to delete a time series form.
 #' @param formName &#91;required&#93; The name of the time series form that you want to delete.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request. This field is automatically populated if not provided.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_delete_time_series_data_points
-datazone_delete_time_series_data_points <- function(clientToken = NULL, domainIdentifier, entityIdentifier, entityType, formName) {
+datazone_delete_time_series_data_points <- function(domainIdentifier, entityIdentifier, entityType, formName, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteTimeSeriesDataPoints",
     http_method = "DELETE",
@@ -2335,7 +2381,7 @@ datazone_delete_time_series_data_points <- function(clientToken = NULL, domainId
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$delete_time_series_data_points_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName)
+  input <- .datazone$delete_time_series_data_points_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName, clientToken = clientToken)
   output <- .datazone$delete_time_series_data_points_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -2494,14 +2540,14 @@ datazone_get_asset <- function(domainIdentifier, identifier, revision = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_get_asset_filter/](https://www.paws-r-sdk.com/docs/datazone_get_asset_filter/) for full documentation.
 #'
-#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to get an asset filter.
+#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
 #' @param identifier &#91;required&#93; The ID of the asset filter.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_get_asset_filter
-datazone_get_asset_filter <- function(assetIdentifier, domainIdentifier, identifier) {
+datazone_get_asset_filter <- function(domainIdentifier, assetIdentifier, identifier) {
   op <- new_operation(
     name = "GetAssetFilter",
     http_method = "GET",
@@ -2510,7 +2556,7 @@ datazone_get_asset_filter <- function(assetIdentifier, domainIdentifier, identif
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$get_asset_filter_input(assetIdentifier = assetIdentifier, domainIdentifier = domainIdentifier, identifier = identifier)
+  input <- .datazone$get_asset_filter_input(domainIdentifier = domainIdentifier, assetIdentifier = assetIdentifier, identifier = identifier)
   output <- .datazone$get_asset_filter_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3212,18 +3258,18 @@ datazone_get_lineage_event <- function(domainIdentifier, identifier) {
 #' See [https://www.paws-r-sdk.com/docs/datazone_get_lineage_node/](https://www.paws-r-sdk.com/docs/datazone_get_lineage_node/) for full documentation.
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain in which you want to get the data lineage node.
-#' @param eventTimestamp The event time stamp for which you want to get the data lineage node.
 #' @param identifier &#91;required&#93; The ID of the data lineage node that you want to get.
 #' 
 #' Both, a lineage node identifier generated by Amazon DataZone and a
 #' `sourceIdentifier` of the lineage node are supported. If
 #' `sourceIdentifier` is greater than 1800 characters, you can use lineage
 #' node identifier generated by Amazon DataZone to get the node details.
+#' @param eventTimestamp The event time stamp for which you want to get the data lineage node.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_get_lineage_node
-datazone_get_lineage_node <- function(domainIdentifier, eventTimestamp = NULL, identifier) {
+datazone_get_lineage_node <- function(domainIdentifier, identifier, eventTimestamp = NULL) {
   op <- new_operation(
     name = "GetLineageNode",
     http_method = "GET",
@@ -3232,7 +3278,7 @@ datazone_get_lineage_node <- function(domainIdentifier, eventTimestamp = NULL, i
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$get_lineage_node_input(domainIdentifier = domainIdentifier, eventTimestamp = eventTimestamp, identifier = identifier)
+  input <- .datazone$get_lineage_node_input(domainIdentifier = domainIdentifier, identifier = identifier, eventTimestamp = eventTimestamp)
   output <- .datazone$get_lineage_node_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3308,6 +3354,39 @@ datazone_get_metadata_generation_run <- function(domainIdentifier, identifier, t
   return(response)
 }
 .datazone$operations$get_metadata_generation_run <- datazone_get_metadata_generation_run
+
+#' Gets the details of a notebook run in an Amazon DataZone domain
+#'
+#' @description
+#' Gets the details of a notebook run in an Amazon DataZone domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/datazone_get_notebook_run/](https://www.paws-r-sdk.com/docs/datazone_get_notebook_run/) for full documentation.
+#'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which the notebook run
+#' exists.
+#' @param identifier &#91;required&#93; The identifier of the notebook run.
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_get_notebook_run
+datazone_get_notebook_run <- function(domainIdentifier, identifier) {
+  op <- new_operation(
+    name = "GetNotebookRun",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/notebook-runs/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$get_notebook_run_input(domainIdentifier = domainIdentifier, identifier = identifier)
+  output <- .datazone$get_notebook_run_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$get_notebook_run <- datazone_get_notebook_run
 
 #' Gets a project in Amazon DataZone
 #'
@@ -3550,14 +3629,14 @@ datazone_get_subscription_target <- function(domainIdentifier, environmentIdenti
 #' want to get the data point.
 #' @param entityIdentifier &#91;required&#93; The ID of the asset for which you want to get the data point.
 #' @param entityType &#91;required&#93; The type of the asset for which you want to get the data point.
+#' @param identifier &#91;required&#93; The ID of the data point that you want to get.
 #' @param formName &#91;required&#93; The name of the time series form that houses the data point that you
 #' want to get.
-#' @param identifier &#91;required&#93; The ID of the data point that you want to get.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_get_time_series_data_point
-datazone_get_time_series_data_point <- function(domainIdentifier, entityIdentifier, entityType, formName, identifier) {
+datazone_get_time_series_data_point <- function(domainIdentifier, entityIdentifier, entityType, identifier, formName) {
   op <- new_operation(
     name = "GetTimeSeriesDataPoint",
     http_method = "GET",
@@ -3566,7 +3645,7 @@ datazone_get_time_series_data_point <- function(domainIdentifier, entityIdentifi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$get_time_series_data_point_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName, identifier = identifier)
+  input <- .datazone$get_time_series_data_point_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, identifier = identifier, formName = formName)
   output <- .datazone$get_time_series_data_point_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3585,13 +3664,14 @@ datazone_get_time_series_data_point <- function(domainIdentifier, entityIdentifi
 #'
 #' @param domainIdentifier &#91;required&#93; the ID of the Amazon DataZone domain the data portal of which you want
 #' to get.
-#' @param type The type of the user profile.
 #' @param userIdentifier &#91;required&#93; The identifier of the user for which you want to get the user profile.
+#' @param type The type of the user profile.
+#' @param sessionName The session name for IAM role sessions.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_get_user_profile
-datazone_get_user_profile <- function(domainIdentifier, type = NULL, userIdentifier) {
+datazone_get_user_profile <- function(domainIdentifier, userIdentifier, type = NULL, sessionName = NULL) {
   op <- new_operation(
     name = "GetUserProfile",
     http_method = "GET",
@@ -3600,7 +3680,7 @@ datazone_get_user_profile <- function(domainIdentifier, type = NULL, userIdentif
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$get_user_profile_input(domainIdentifier = domainIdentifier, type = type, userIdentifier = userIdentifier)
+  input <- .datazone$get_user_profile_input(domainIdentifier = domainIdentifier, userIdentifier = userIdentifier, type = type, sessionName = sessionName)
   output <- .datazone$get_user_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3618,26 +3698,26 @@ datazone_get_user_profile <- function(domainIdentifier, type = NULL, userIdentif
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_account_pools/](https://www.paws-r-sdk.com/docs/datazone_list_account_pools/) for full documentation.
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where exsting account pools are to be listed.
-#' @param maxResults The maximum number of account pools to return in a single call to
-#' ListAccountPools. When the number of account pools to be listed is
-#' greater than the value of MaxResults, the response contains a NextToken
-#' value that you can use in a subsequent call to ListAccountPools to list
-#' the next set of account pools.
 #' @param name The name of the account pool to be listed.
+#' @param sortBy The sort by mechanism in which the existing account pools are to be
+#' listed.
+#' @param sortOrder The sort order in which the existing account pools are to be listed.
 #' @param nextToken When the number of account pools is greater than the default value for
 #' the MaxResults parameter, or if you explicitly specify a value for
 #' MaxResults that is less than the number of account pools, the response
 #' includes a pagination token named NextToken. You can specify this
 #' NextToken value in a subsequent call to ListAccountPools to list the
 #' next set of account pools.
-#' @param sortBy The sort by mechanism in which the existing account pools are to be
-#' listed.
-#' @param sortOrder The sort order in which the existing account pools are to be listed.
+#' @param maxResults The maximum number of account pools to return in a single call to
+#' ListAccountPools. When the number of account pools to be listed is
+#' greater than the value of MaxResults, the response contains a NextToken
+#' value that you can use in a subsequent call to ListAccountPools to list
+#' the next set of account pools.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_account_pools
-datazone_list_account_pools <- function(domainIdentifier, maxResults = NULL, name = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+datazone_list_account_pools <- function(domainIdentifier, name = NULL, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAccountPools",
     http_method = "GET",
@@ -3646,7 +3726,7 @@ datazone_list_account_pools <- function(domainIdentifier, maxResults = NULL, nam
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_account_pools_input(domainIdentifier = domainIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .datazone$list_account_pools_input(domainIdentifier = domainIdentifier, name = name, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_account_pools_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3666,22 +3746,22 @@ datazone_list_account_pools <- function(domainIdentifier, maxResults = NULL, nam
 #' @param domainIdentifier &#91;required&#93; The ID of the domain in which the accounts in the specified account pool
 #' are to be listed.
 #' @param identifier &#91;required&#93; The ID of the account pool whose accounts are to be listed.
-#' @param maxResults The maximum number of accounts to return in a single call to
-#' ListAccountsInAccountPool. When the number of accounts to be listed is
-#' greater than the value of MaxResults, the response contains a NextToken
-#' value that you can use in a subsequent call to ListAccountsInAccountPool
-#' to list the next set of accounts.
 #' @param nextToken When the number of accounts is greater than the default value for the
 #' MaxResults parameter, or if you explicitly specify a value for
 #' MaxResults that is less than the number of accounts, the response
 #' includes a pagination token named NextToken. You can specify this
 #' NextToken value in a subsequent call to ListAccountsInAccountPool to
 #' list the next set of accounts.
+#' @param maxResults The maximum number of accounts to return in a single call to
+#' ListAccountsInAccountPool. When the number of accounts to be listed is
+#' greater than the value of MaxResults, the response contains a NextToken
+#' value that you can use in a subsequent call to ListAccountsInAccountPool
+#' to list the next set of accounts.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_accounts_in_account_pool
-datazone_list_accounts_in_account_pool <- function(domainIdentifier, identifier, maxResults = NULL, nextToken = NULL) {
+datazone_list_accounts_in_account_pool <- function(domainIdentifier, identifier, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAccountsInAccountPool",
     http_method = "GET",
@@ -3690,7 +3770,7 @@ datazone_list_accounts_in_account_pool <- function(domainIdentifier, identifier,
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_accounts_in_account_pool_input(domainIdentifier = domainIdentifier, identifier = identifier, maxResults = maxResults, nextToken = nextToken)
+  input <- .datazone$list_accounts_in_account_pool_input(domainIdentifier = domainIdentifier, identifier = identifier, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_accounts_in_account_pool_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3707,14 +3787,9 @@ datazone_list_accounts_in_account_pool <- function(domainIdentifier, identifier,
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_asset_filters/](https://www.paws-r-sdk.com/docs/datazone_list_asset_filters/) for full documentation.
 #'
-#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list asset filters.
-#' @param maxResults The maximum number of asset filters to return in a single call to
-#' [`list_asset_filters`][datazone_list_asset_filters]. When the number of
-#' asset filters to be listed is greater than the value of `MaxResults`,
-#' the response contains a `NextToken` value that you can use in a
-#' subsequent call to [`list_asset_filters`][datazone_list_asset_filters]
-#' to list the next set of asset filters.
+#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
+#' @param status The status of the asset filter.
 #' @param nextToken When the number of asset filters is greater than the default value for
 #' the `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of asset filters, the response
@@ -3722,12 +3797,17 @@ datazone_list_accounts_in_account_pool <- function(domainIdentifier, identifier,
 #' `NextToken` value in a subsequent call to
 #' [`list_asset_filters`][datazone_list_asset_filters] to list the next set
 #' of asset filters.
-#' @param status The status of the asset filter.
+#' @param maxResults The maximum number of asset filters to return in a single call to
+#' [`list_asset_filters`][datazone_list_asset_filters]. When the number of
+#' asset filters to be listed is greater than the value of `MaxResults`,
+#' the response contains a `NextToken` value that you can use in a
+#' subsequent call to [`list_asset_filters`][datazone_list_asset_filters]
+#' to list the next set of asset filters.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_asset_filters
-datazone_list_asset_filters <- function(assetIdentifier, domainIdentifier, maxResults = NULL, nextToken = NULL, status = NULL) {
+datazone_list_asset_filters <- function(domainIdentifier, assetIdentifier, status = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssetFilters",
     http_method = "GET",
@@ -3736,7 +3816,7 @@ datazone_list_asset_filters <- function(assetIdentifier, domainIdentifier, maxRe
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_asset_filters_input(assetIdentifier = assetIdentifier, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, status = status)
+  input <- .datazone$list_asset_filters_input(domainIdentifier = domainIdentifier, assetIdentifier = assetIdentifier, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_asset_filters_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3755,12 +3835,6 @@ datazone_list_asset_filters <- function(assetIdentifier, domainIdentifier, maxRe
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the domain.
 #' @param identifier &#91;required&#93; The identifier of the asset.
-#' @param maxResults The maximum number of revisions to return in a single call to
-#' [`list_asset_revisions`][datazone_list_asset_revisions]. When the number
-#' of revisions to be listed is greater than the value of `MaxResults`, the
-#' response contains a `NextToken` value that you can use in a subsequent
-#' call to [`list_asset_revisions`][datazone_list_asset_revisions] to list
-#' the next set of revisions.
 #' @param nextToken When the number of revisions is greater than the default value for the
 #' `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of revisions, the response
@@ -3768,11 +3842,17 @@ datazone_list_asset_filters <- function(assetIdentifier, domainIdentifier, maxRe
 #' `NextToken` value in a subsequent call to
 #' [`list_asset_revisions`][datazone_list_asset_revisions] to list the next
 #' set of revisions.
+#' @param maxResults The maximum number of revisions to return in a single call to
+#' [`list_asset_revisions`][datazone_list_asset_revisions]. When the number
+#' of revisions to be listed is greater than the value of `MaxResults`, the
+#' response contains a `NextToken` value that you can use in a subsequent
+#' call to [`list_asset_revisions`][datazone_list_asset_revisions] to list
+#' the next set of revisions.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_asset_revisions
-datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResults = NULL, nextToken = NULL) {
+datazone_list_asset_revisions <- function(domainIdentifier, identifier, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssetRevisions",
     http_method = "GET",
@@ -3781,7 +3861,7 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResul
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_asset_revisions_input(domainIdentifier = domainIdentifier, identifier = identifier, maxResults = maxResults, nextToken = nextToken)
+  input <- .datazone$list_asset_revisions_input(domainIdentifier = domainIdentifier, identifier = identifier, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_asset_revisions_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3799,29 +3879,29 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResul
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_connections/](https://www.paws-r-sdk.com/docs/datazone_list_connections/) for full documentation.
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list connections.
-#' @param environmentIdentifier The ID of the environment where you want to list connections.
 #' @param maxResults The maximum number of connections to return in a single call to
 #' ListConnections. When the number of connections to be listed is greater
 #' than the value of MaxResults, the response contains a NextToken value
 #' that you can use in a subsequent call to ListConnections to list the
 #' next set of connections.
-#' @param name The name of the connection.
 #' @param nextToken When the number of connections is greater than the default value for the
 #' MaxResults parameter, or if you explicitly specify a value for
 #' MaxResults that is less than the number of connections, the response
 #' includes a pagination token named NextToken. You can specify this
 #' NextToken value in a subsequent call to ListConnections to list the next
 #' set of connections.
-#' @param projectIdentifier The ID of the project where you want to list connections.
-#' @param scope The scope of the connection.
 #' @param sortBy Specifies how you want to sort the listed connections.
 #' @param sortOrder Specifies the sort order for the listed connections.
+#' @param name The name of the connection.
+#' @param environmentIdentifier The ID of the environment where you want to list connections.
+#' @param projectIdentifier The ID of the project where you want to list connections.
 #' @param type The type of connection.
+#' @param scope The scope of the connection.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_connections
-datazone_list_connections <- function(domainIdentifier, environmentIdentifier = NULL, maxResults = NULL, name = NULL, nextToken = NULL, projectIdentifier = NULL, scope = NULL, sortBy = NULL, sortOrder = NULL, type = NULL) {
+datazone_list_connections <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL, name = NULL, environmentIdentifier = NULL, projectIdentifier = NULL, type = NULL, scope = NULL) {
   op <- new_operation(
     name = "ListConnections",
     http_method = "GET",
@@ -3830,7 +3910,7 @@ datazone_list_connections <- function(domainIdentifier, environmentIdentifier = 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_connections_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, projectIdentifier = projectIdentifier, scope = scope, sortBy = sortBy, sortOrder = sortOrder, type = type)
+  input <- .datazone$list_connections_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder, name = name, environmentIdentifier = environmentIdentifier, projectIdentifier = projectIdentifier, type = type, scope = scope)
   output <- .datazone$list_connections_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3897,13 +3977,7 @@ datazone_list_data_product_revisions <- function(domainIdentifier, identifier, m
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which to list data
 #' source run activities.
 #' @param identifier &#91;required&#93; The identifier of the data source run.
-#' @param maxResults The maximum number of activities to return in a single call to
-#' [`list_data_source_run_activities`][datazone_list_data_source_run_activities].
-#' When the number of activities to be listed is greater than the value of
-#' `MaxResults`, the response contains a `NextToken` value that you can use
-#' in a subsequent call to
-#' [`list_data_source_run_activities`][datazone_list_data_source_run_activities]
-#' to list the next set of activities.
+#' @param status The status of the data source run.
 #' @param nextToken When the number of activities is greater than the default value for the
 #' `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of activities, the response
@@ -3911,12 +3985,18 @@ datazone_list_data_product_revisions <- function(domainIdentifier, identifier, m
 #' `NextToken` value in a subsequent call to
 #' [`list_data_source_run_activities`][datazone_list_data_source_run_activities]
 #' to list the next set of activities.
-#' @param status The status of the data source run.
+#' @param maxResults The maximum number of activities to return in a single call to
+#' [`list_data_source_run_activities`][datazone_list_data_source_run_activities].
+#' When the number of activities to be listed is greater than the value of
+#' `MaxResults`, the response contains a `NextToken` value that you can use
+#' in a subsequent call to
+#' [`list_data_source_run_activities`][datazone_list_data_source_run_activities]
+#' to list the next set of activities.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_data_source_run_activities
-datazone_list_data_source_run_activities <- function(domainIdentifier, identifier, maxResults = NULL, nextToken = NULL, status = NULL) {
+datazone_list_data_source_run_activities <- function(domainIdentifier, identifier, status = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListDataSourceRunActivities",
     http_method = "GET",
@@ -3925,7 +4005,7 @@ datazone_list_data_source_run_activities <- function(domainIdentifier, identifie
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_data_source_run_activities_input(domainIdentifier = domainIdentifier, identifier = identifier, maxResults = maxResults, nextToken = nextToken, status = status)
+  input <- .datazone$list_data_source_run_activities_input(domainIdentifier = domainIdentifier, identifier = identifier, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_data_source_run_activities_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3942,16 +4022,10 @@ datazone_list_data_source_run_activities <- function(domainIdentifier, identifie
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_data_source_runs/](https://www.paws-r-sdk.com/docs/datazone_list_data_source_runs/) for full documentation.
 #'
-#' @param dataSourceIdentifier &#91;required&#93; The identifier of the data source.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which to invoke the
 #' [`list_data_source_runs`][datazone_list_data_source_runs] action.
-#' @param maxResults The maximum number of runs to return in a single call to
-#' [`list_data_source_runs`][datazone_list_data_source_runs]. When the
-#' number of runs to be listed is greater than the value of `MaxResults`,
-#' the response contains a `NextToken` value that you can use in a
-#' subsequent call to
-#' [`list_data_source_runs`][datazone_list_data_source_runs] to list the
-#' next set of runs.
+#' @param dataSourceIdentifier &#91;required&#93; The identifier of the data source.
+#' @param status The status of the data source.
 #' @param nextToken When the number of runs is greater than the default value for the
 #' `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of runs, the response includes
@@ -3959,12 +4033,18 @@ datazone_list_data_source_run_activities <- function(domainIdentifier, identifie
 #' value in a subsequent call to
 #' [`list_data_source_runs`][datazone_list_data_source_runs] to list the
 #' next set of runs.
-#' @param status The status of the data source.
+#' @param maxResults The maximum number of runs to return in a single call to
+#' [`list_data_source_runs`][datazone_list_data_source_runs]. When the
+#' number of runs to be listed is greater than the value of `MaxResults`,
+#' the response contains a `NextToken` value that you can use in a
+#' subsequent call to
+#' [`list_data_source_runs`][datazone_list_data_source_runs] to list the
+#' next set of runs.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_data_source_runs
-datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifier, maxResults = NULL, nextToken = NULL, status = NULL) {
+datazone_list_data_source_runs <- function(domainIdentifier, dataSourceIdentifier, status = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListDataSourceRuns",
     http_method = "GET",
@@ -3973,7 +4053,7 @@ datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifie
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_data_source_runs_input(dataSourceIdentifier = dataSourceIdentifier, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, status = status)
+  input <- .datazone$list_data_source_runs_input(domainIdentifier = domainIdentifier, dataSourceIdentifier = dataSourceIdentifier, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_data_source_runs_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3990,16 +4070,13 @@ datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifie
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_data_sources/](https://www.paws-r-sdk.com/docs/datazone_list_data_sources/) for full documentation.
 #'
-#' @param connectionIdentifier The ID of the connection.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which to list the data
 #' sources.
+#' @param projectIdentifier &#91;required&#93; The identifier of the project in which to list data sources.
 #' @param environmentIdentifier The identifier of the environment in which to list the data sources.
-#' @param maxResults The maximum number of data sources to return in a single call to
-#' [`list_data_sources`][datazone_list_data_sources]. When the number of
-#' data sources to be listed is greater than the value of `MaxResults`, the
-#' response contains a `NextToken` value that you can use in a subsequent
-#' call to [`list_data_sources`][datazone_list_data_sources] to list the
-#' next set of data sources.
+#' @param connectionIdentifier The ID of the connection.
+#' @param type The type of the data source.
+#' @param status The status of the data source.
 #' @param name The name of the data source.
 #' @param nextToken When the number of data sources is greater than the default value for
 #' the `MaxResults` parameter, or if you explicitly specify a value for
@@ -4008,14 +4085,17 @@ datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifie
 #' `NextToken` value in a subsequent call to
 #' [`list_data_sources`][datazone_list_data_sources] to list the next set
 #' of data sources.
-#' @param projectIdentifier &#91;required&#93; The identifier of the project in which to list data sources.
-#' @param status The status of the data source.
-#' @param type The type of the data source.
+#' @param maxResults The maximum number of data sources to return in a single call to
+#' [`list_data_sources`][datazone_list_data_sources]. When the number of
+#' data sources to be listed is greater than the value of `MaxResults`, the
+#' response contains a `NextToken` value that you can use in a subsequent
+#' call to [`list_data_sources`][datazone_list_data_sources] to list the
+#' next set of data sources.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_data_sources
-datazone_list_data_sources <- function(connectionIdentifier = NULL, domainIdentifier, environmentIdentifier = NULL, maxResults = NULL, name = NULL, nextToken = NULL, projectIdentifier, status = NULL, type = NULL) {
+datazone_list_data_sources <- function(domainIdentifier, projectIdentifier, environmentIdentifier = NULL, connectionIdentifier = NULL, type = NULL, status = NULL, name = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListDataSources",
     http_method = "GET",
@@ -4024,7 +4104,7 @@ datazone_list_data_sources <- function(connectionIdentifier = NULL, domainIdenti
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_data_sources_input(connectionIdentifier = connectionIdentifier, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, projectIdentifier = projectIdentifier, status = status, type = type)
+  input <- .datazone$list_data_sources_input(domainIdentifier = domainIdentifier, projectIdentifier = projectIdentifier, environmentIdentifier = environmentIdentifier, connectionIdentifier = connectionIdentifier, type = type, status = status, name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_data_sources_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4043,6 +4123,7 @@ datazone_list_data_sources <- function(connectionIdentifier = NULL, domainIdenti
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain in which you want to list domain units for a parent
 #' domain unit.
+#' @param parentDomainUnitIdentifier &#91;required&#93; The ID of the parent domain unit.
 #' @param maxResults The maximum number of domain units to return in a single call to
 #' ListDomainUnitsForParent. When the number of domain units to be listed
 #' is greater than the value of MaxResults, the response contains a
@@ -4054,12 +4135,11 @@ datazone_list_data_sources <- function(connectionIdentifier = NULL, domainIdenti
 #' includes a pagination token named NextToken. You can specify this
 #' NextToken value in a subsequent call to ListDomainUnitsForParent to list
 #' the next set of domain units.
-#' @param parentDomainUnitIdentifier &#91;required&#93; The ID of the parent domain unit.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_domain_units_for_parent
-datazone_list_domain_units_for_parent <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, parentDomainUnitIdentifier) {
+datazone_list_domain_units_for_parent <- function(domainIdentifier, parentDomainUnitIdentifier, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListDomainUnitsForParent",
     http_method = "GET",
@@ -4068,7 +4148,7 @@ datazone_list_domain_units_for_parent <- function(domainIdentifier, maxResults =
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_domain_units_for_parent_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, parentDomainUnitIdentifier = parentDomainUnitIdentifier)
+  input <- .datazone$list_domain_units_for_parent_input(domainIdentifier = domainIdentifier, parentDomainUnitIdentifier = parentDomainUnitIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_domain_units_for_parent_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4085,6 +4165,7 @@ datazone_list_domain_units_for_parent <- function(domainIdentifier, maxResults =
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_domains/](https://www.paws-r-sdk.com/docs/datazone_list_domains/) for full documentation.
 #'
+#' @param status The status of the data source.
 #' @param maxResults The maximum number of domains to return in a single call to
 #' [`list_domains`][datazone_list_domains]. When the number of domains to
 #' be listed is greater than the value of `MaxResults`, the response
@@ -4096,12 +4177,11 @@ datazone_list_domain_units_for_parent <- function(domainIdentifier, maxResults =
 #' includes a pagination token named `NextToken`. You can specify this
 #' `NextToken` value in a subsequent call to
 #' [`list_domains`][datazone_list_domains] to list the next set of domains.
-#' @param status The status of the data source.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_domains
-datazone_list_domains <- function(maxResults = NULL, nextToken = NULL, status = NULL) {
+datazone_list_domains <- function(status = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListDomains",
     http_method = "GET",
@@ -4110,7 +4190,7 @@ datazone_list_domains <- function(maxResults = NULL, nextToken = NULL, status = 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_domains_input(maxResults = maxResults, nextToken = nextToken, status = status)
+  input <- .datazone$list_domains_input(status = status, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_domains_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4128,8 +4208,8 @@ datazone_list_domains <- function(maxResults = NULL, nextToken = NULL, status = 
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_entity_owners/](https://www.paws-r-sdk.com/docs/datazone_list_entity_owners/) for full documentation.
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list entity owners.
-#' @param entityIdentifier &#91;required&#93; The ID of the entity that you want to list.
 #' @param entityType &#91;required&#93; The type of the entity that you want to list.
+#' @param entityIdentifier &#91;required&#93; The ID of the entity that you want to list.
 #' @param maxResults The maximum number of entities to return in a single call to
 #' [`list_entity_owners`][datazone_list_entity_owners]. When the number of
 #' entities to be listed is greater than the value of `MaxResults`, the
@@ -4147,7 +4227,7 @@ datazone_list_domains <- function(maxResults = NULL, nextToken = NULL, status = 
 #' @keywords internal
 #'
 #' @rdname datazone_list_entity_owners
-datazone_list_entity_owners <- function(domainIdentifier, entityIdentifier, entityType, maxResults = NULL, nextToken = NULL) {
+datazone_list_entity_owners <- function(domainIdentifier, entityType, entityIdentifier, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListEntityOwners",
     http_method = "GET",
@@ -4156,7 +4236,7 @@ datazone_list_entity_owners <- function(domainIdentifier, entityIdentifier, enti
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "owners"),
     stream_api = FALSE
   )
-  input <- .datazone$list_entity_owners_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, maxResults = maxResults, nextToken = nextToken)
+  input <- .datazone$list_entity_owners_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_entity_owners_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4176,13 +4256,6 @@ datazone_list_entity_owners <- function(domainIdentifier, entityIdentifier, enti
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which the environment actions
 #' are listed.
 #' @param environmentIdentifier &#91;required&#93; The ID of the envrironment whose environment actions are listed.
-#' @param maxResults The maximum number of environment actions to return in a single call to
-#' [`list_environment_actions`][datazone_list_environment_actions]. When
-#' the number of environment actions to be listed is greater than the value
-#' of `MaxResults`, the response contains a `NextToken` value that you can
-#' use in a subsequent call to
-#' [`list_environment_actions`][datazone_list_environment_actions] to list
-#' the next set of environment actions.
 #' @param nextToken When the number of environment actions is greater than the default value
 #' for the `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of environment actions, the
@@ -4190,11 +4263,18 @@ datazone_list_entity_owners <- function(domainIdentifier, entityIdentifier, enti
 #' this `NextToken` value in a subsequent call to
 #' [`list_environment_actions`][datazone_list_environment_actions] to list
 #' the next set of environment actions.
+#' @param maxResults The maximum number of environment actions to return in a single call to
+#' [`list_environment_actions`][datazone_list_environment_actions]. When
+#' the number of environment actions to be listed is greater than the value
+#' of `MaxResults`, the response contains a `NextToken` value that you can
+#' use in a subsequent call to
+#' [`list_environment_actions`][datazone_list_environment_actions] to list
+#' the next set of environment actions.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_environment_actions
-datazone_list_environment_actions <- function(domainIdentifier, environmentIdentifier, maxResults = NULL, nextToken = NULL) {
+datazone_list_environment_actions <- function(domainIdentifier, environmentIdentifier, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListEnvironmentActions",
     http_method = "GET",
@@ -4203,7 +4283,7 @@ datazone_list_environment_actions <- function(domainIdentifier, environmentIdent
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_environment_actions_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, maxResults = maxResults, nextToken = nextToken)
+  input <- .datazone$list_environment_actions_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_environment_actions_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4267,8 +4347,6 @@ datazone_list_environment_blueprint_configurations <- function(domainIdentifier,
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_environment_blueprints/](https://www.paws-r-sdk.com/docs/datazone_list_environment_blueprints/) for full documentation.
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
-#' @param managed Specifies whether the environment blueprint is managed by Amazon
-#' DataZone.
 #' @param maxResults The maximum number of blueprints to return in a single call to
 #' [`list_environment_blueprints`][datazone_list_environment_blueprints].
 #' When the number of blueprints to be listed is greater than the value of
@@ -4276,7 +4354,6 @@ datazone_list_environment_blueprint_configurations <- function(domainIdentifier,
 #' in a subsequent call to
 #' [`list_environment_blueprints`][datazone_list_environment_blueprints] to
 #' list the next set of blueprints.
-#' @param name The name of the Amazon DataZone environment.
 #' @param nextToken When the number of blueprints in the environment is greater than the
 #' default value for the `MaxResults` parameter, or if you explicitly
 #' specify a value for `MaxResults` that is less than the number of
@@ -4285,11 +4362,14 @@ datazone_list_environment_blueprint_configurations <- function(domainIdentifier,
 #' subsequent call to
 #' [`list_environment_blueprints`][datazone_list_environment_blueprints]to
 #' list the next set of blueprints.
+#' @param name The name of the Amazon DataZone environment.
+#' @param managed Specifies whether the environment blueprint is managed by Amazon
+#' DataZone.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_environment_blueprints
-datazone_list_environment_blueprints <- function(domainIdentifier, managed = NULL, maxResults = NULL, name = NULL, nextToken = NULL) {
+datazone_list_environment_blueprints <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, name = NULL, managed = NULL) {
   op <- new_operation(
     name = "ListEnvironmentBlueprints",
     http_method = "GET",
@@ -4298,7 +4378,7 @@ datazone_list_environment_blueprints <- function(domainIdentifier, managed = NUL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_environment_blueprints_input(domainIdentifier = domainIdentifier, managed = managed, maxResults = maxResults, name = name, nextToken = nextToken)
+  input <- .datazone$list_environment_blueprints_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, name = name, managed = managed)
   output <- .datazone$list_environment_blueprints_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4315,20 +4395,14 @@ datazone_list_environment_blueprints <- function(domainIdentifier, managed = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_environment_profiles/](https://www.paws-r-sdk.com/docs/datazone_list_environment_profiles/) for full documentation.
 #'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
 #' @param awsAccountId The identifier of the Amazon Web Services account where you want to list
 #' environment profiles.
 #' @param awsAccountRegion The Amazon Web Services region where you want to list environment
 #' profiles.
-#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
 #' @param environmentBlueprintIdentifier The identifier of the blueprint that was used to create the environment
 #' profiles that you want to list.
-#' @param maxResults The maximum number of environment profiles to return in a single call to
-#' [`list_environment_profiles`][datazone_list_environment_profiles]. When
-#' the number of environment profiles to be listed is greater than the
-#' value of `MaxResults`, the response contains a `NextToken` value that
-#' you can use in a subsequent call to
-#' [`list_environment_profiles`][datazone_list_environment_profiles] to
-#' list the next set of environment profiles.
+#' @param projectIdentifier The identifier of the Amazon DataZone project.
 #' @param name 
 #' @param nextToken When the number of environment profiles is greater than the default
 #' value for the `MaxResults` parameter, or if you explicitly specify a
@@ -4337,12 +4411,18 @@ datazone_list_environment_blueprints <- function(domainIdentifier, managed = NUL
 #' You can specify this `NextToken` value in a subsequent call to
 #' [`list_environment_profiles`][datazone_list_environment_profiles] to
 #' list the next set of environment profiles.
-#' @param projectIdentifier The identifier of the Amazon DataZone project.
+#' @param maxResults The maximum number of environment profiles to return in a single call to
+#' [`list_environment_profiles`][datazone_list_environment_profiles]. When
+#' the number of environment profiles to be listed is greater than the
+#' value of `MaxResults`, the response contains a `NextToken` value that
+#' you can use in a subsequent call to
+#' [`list_environment_profiles`][datazone_list_environment_profiles] to
+#' list the next set of environment profiles.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_environment_profiles
-datazone_list_environment_profiles <- function(awsAccountId = NULL, awsAccountRegion = NULL, domainIdentifier, environmentBlueprintIdentifier = NULL, maxResults = NULL, name = NULL, nextToken = NULL, projectIdentifier = NULL) {
+datazone_list_environment_profiles <- function(domainIdentifier, awsAccountId = NULL, awsAccountRegion = NULL, environmentBlueprintIdentifier = NULL, projectIdentifier = NULL, name = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListEnvironmentProfiles",
     http_method = "GET",
@@ -4351,7 +4431,7 @@ datazone_list_environment_profiles <- function(awsAccountId = NULL, awsAccountRe
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_environment_profiles_input(awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion, domainIdentifier = domainIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, projectIdentifier = projectIdentifier)
+  input <- .datazone$list_environment_profiles_input(domainIdentifier = domainIdentifier, awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion, environmentBlueprintIdentifier = environmentBlueprintIdentifier, projectIdentifier = projectIdentifier, name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_environment_profiles_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4368,19 +4448,22 @@ datazone_list_environment_profiles <- function(awsAccountId = NULL, awsAccountRe
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_environments/](https://www.paws-r-sdk.com/docs/datazone_list_environments/) for full documentation.
 #'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
 #' @param awsAccountId The identifier of the Amazon Web Services account where you want to list
 #' environments.
+#' @param status The status of the environments that you want to list.
 #' @param awsAccountRegion The Amazon Web Services region where you want to list environments.
-#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
-#' @param environmentBlueprintIdentifier The identifier of the Amazon DataZone blueprint.
+#' @param projectIdentifier &#91;required&#93; The identifier of the Amazon DataZone project.
 #' @param environmentProfileIdentifier The identifier of the environment profile.
+#' @param environmentBlueprintIdentifier The identifier of the Amazon DataZone blueprint.
+#' @param provider The provider of the environment.
+#' @param name The name of the environment.
 #' @param maxResults The maximum number of environments to return in a single call to
 #' [`list_environments`][datazone_list_environments]. When the number of
 #' environments to be listed is greater than the value of `MaxResults`, the
 #' response contains a `NextToken` value that you can use in a subsequent
 #' call to [`list_environments`][datazone_list_environments] to list the
 #' next set of environments.
-#' @param name The name of the environment.
 #' @param nextToken When the number of environments is greater than the default value for
 #' the `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of environments, the response
@@ -4388,14 +4471,11 @@ datazone_list_environment_profiles <- function(awsAccountId = NULL, awsAccountRe
 #' `NextToken` value in a subsequent call to
 #' [`list_environments`][datazone_list_environments] to list the next set
 #' of environments.
-#' @param projectIdentifier &#91;required&#93; The identifier of the Amazon DataZone project.
-#' @param provider The provider of the environment.
-#' @param status The status of the environments that you want to list.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_environments
-datazone_list_environments <- function(awsAccountId = NULL, awsAccountRegion = NULL, domainIdentifier, environmentBlueprintIdentifier = NULL, environmentProfileIdentifier = NULL, maxResults = NULL, name = NULL, nextToken = NULL, projectIdentifier, provider = NULL, status = NULL) {
+datazone_list_environments <- function(domainIdentifier, awsAccountId = NULL, status = NULL, awsAccountRegion = NULL, projectIdentifier, environmentProfileIdentifier = NULL, environmentBlueprintIdentifier = NULL, provider = NULL, name = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListEnvironments",
     http_method = "GET",
@@ -4404,7 +4484,7 @@ datazone_list_environments <- function(awsAccountId = NULL, awsAccountRegion = N
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_environments_input(awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion, domainIdentifier = domainIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier, environmentProfileIdentifier = environmentProfileIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, projectIdentifier = projectIdentifier, provider = provider, status = status)
+  input <- .datazone$list_environments_input(domainIdentifier = domainIdentifier, awsAccountId = awsAccountId, status = status, awsAccountRegion = awsAccountRegion, projectIdentifier = projectIdentifier, environmentProfileIdentifier = environmentProfileIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier, provider = provider, name = name, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_environments_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4423,24 +4503,24 @@ datazone_list_environments <- function(awsAccountId = NULL, awsAccountRegion = N
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list job runs.
 #' @param jobIdentifier &#91;required&#93; The ID of the job run.
-#' @param maxResults The maximum number of job runs to return in a single call to
-#' ListJobRuns. When the number of job runs to be listed is greater than
-#' the value of MaxResults, the response contains a NextToken value that
-#' you can use in a subsequent call to ListJobRuns to list the next set of
-#' job runs.
+#' @param status The status of a job run.
+#' @param sortOrder Specifies the order in which job runs are to be sorted.
 #' @param nextToken When the number of job runs is greater than the default value for the
 #' MaxResults parameter, or if you explicitly specify a value for
 #' MaxResults that is less than the number of job runs, the response
 #' includes a pagination token named NextToken. You can specify this
 #' NextToken value in a subsequent call to ListJobRuns to list the next set
 #' of job runs.
-#' @param sortOrder Specifies the order in which job runs are to be sorted.
-#' @param status The status of a job run.
+#' @param maxResults The maximum number of job runs to return in a single call to
+#' ListJobRuns. When the number of job runs to be listed is greater than
+#' the value of MaxResults, the response contains a NextToken value that
+#' you can use in a subsequent call to ListJobRuns to list the next set of
+#' job runs.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_job_runs
-datazone_list_job_runs <- function(domainIdentifier, jobIdentifier, maxResults = NULL, nextToken = NULL, sortOrder = NULL, status = NULL) {
+datazone_list_job_runs <- function(domainIdentifier, jobIdentifier, status = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListJobRuns",
     http_method = "GET",
@@ -4449,7 +4529,7 @@ datazone_list_job_runs <- function(domainIdentifier, jobIdentifier, maxResults =
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_job_runs_input(domainIdentifier = domainIdentifier, jobIdentifier = jobIdentifier, maxResults = maxResults, nextToken = nextToken, sortOrder = sortOrder, status = status)
+  input <- .datazone$list_job_runs_input(domainIdentifier = domainIdentifier, jobIdentifier = jobIdentifier, status = status, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_job_runs_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4472,21 +4552,21 @@ datazone_list_job_runs <- function(domainIdentifier, jobIdentifier, maxResults =
 #' greater than the value of MaxResults, the response contains a NextToken
 #' value that you can use in a subsequent call to ListLineageEvents to list
 #' the next set of lineage events.
+#' @param timestampAfter The after timestamp of a lineage event.
+#' @param timestampBefore The before timestamp of a lineage event.
+#' @param processingStatus The processing status of a lineage event.
+#' @param sortOrder The sort order of the lineage events.
 #' @param nextToken When the number of lineage events is greater than the default value for
 #' the MaxResults parameter, or if you explicitly specify a value for
 #' MaxResults that is less than the number of lineage events, the response
 #' includes a pagination token named NextToken. You can specify this
 #' NextToken value in a subsequent call to ListLineageEvents to list the
 #' next set of lineage events.
-#' @param processingStatus The processing status of a lineage event.
-#' @param sortOrder The sort order of the lineage events.
-#' @param timestampAfter The after timestamp of a lineage event.
-#' @param timestampBefore The before timestamp of a lineage event.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_lineage_events
-datazone_list_lineage_events <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, processingStatus = NULL, sortOrder = NULL, timestampAfter = NULL, timestampBefore = NULL) {
+datazone_list_lineage_events <- function(domainIdentifier, maxResults = NULL, timestampAfter = NULL, timestampBefore = NULL, processingStatus = NULL, sortOrder = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListLineageEvents",
     http_method = "GET",
@@ -4495,7 +4575,7 @@ datazone_list_lineage_events <- function(domainIdentifier, maxResults = NULL, ne
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_lineage_events_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, processingStatus = processingStatus, sortOrder = sortOrder, timestampAfter = timestampAfter, timestampBefore = timestampBefore)
+  input <- .datazone$list_lineage_events_input(domainIdentifier = domainIdentifier, maxResults = maxResults, timestampAfter = timestampAfter, timestampBefore = timestampBefore, processingStatus = processingStatus, sortOrder = sortOrder, nextToken = nextToken)
   output <- .datazone$list_lineage_events_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4512,17 +4592,8 @@ datazone_list_lineage_events <- function(domainIdentifier, maxResults = NULL, ne
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_lineage_node_history/](https://www.paws-r-sdk.com/docs/datazone_list_lineage_node_history/) for full documentation.
 #'
-#' @param direction The direction of the data lineage node refers to the lineage node having
-#' neighbors in that direction. For example, if direction is `UPSTREAM`,
-#' the [`list_lineage_node_history`][datazone_list_lineage_node_history]
-#' API responds with historical versions with upstream neighbors only.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list the history of the specified
 #' data lineage node.
-#' @param eventTimestampGTE Specifies whether the action is to return data lineage node history from
-#' the time after the event timestamp.
-#' @param eventTimestampLTE Specifies whether the action is to return data lineage node history from
-#' the time prior of the event timestamp.
-#' @param identifier &#91;required&#93; The ID of the data lineage node whose history you want to list.
 #' @param maxResults The maximum number of history items to return in a single call to
 #' ListLineageNodeHistory. When the number of memberships to be listed is
 #' greater than the value of MaxResults, the response contains a NextToken
@@ -4534,12 +4605,21 @@ datazone_list_lineage_events <- function(domainIdentifier, maxResults = NULL, ne
 #' a pagination token named NextToken. You can specify this NextToken value
 #' in a subsequent call to ListLineageNodeHistory to list the next set of
 #' items.
+#' @param identifier &#91;required&#93; The ID of the data lineage node whose history you want to list.
+#' @param direction The direction of the data lineage node refers to the lineage node having
+#' neighbors in that direction. For example, if direction is `UPSTREAM`,
+#' the [`list_lineage_node_history`][datazone_list_lineage_node_history]
+#' API responds with historical versions with upstream neighbors only.
+#' @param eventTimestampGTE Specifies whether the action is to return data lineage node history from
+#' the time after the event timestamp.
+#' @param eventTimestampLTE Specifies whether the action is to return data lineage node history from
+#' the time prior of the event timestamp.
 #' @param sortOrder The order by which you want data lineage node history to be sorted.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_lineage_node_history
-datazone_list_lineage_node_history <- function(direction = NULL, domainIdentifier, eventTimestampGTE = NULL, eventTimestampLTE = NULL, identifier, maxResults = NULL, nextToken = NULL, sortOrder = NULL) {
+datazone_list_lineage_node_history <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, identifier, direction = NULL, eventTimestampGTE = NULL, eventTimestampLTE = NULL, sortOrder = NULL) {
   op <- new_operation(
     name = "ListLineageNodeHistory",
     http_method = "GET",
@@ -4548,7 +4628,7 @@ datazone_list_lineage_node_history <- function(direction = NULL, domainIdentifie
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "nodes"),
     stream_api = FALSE
   )
-  input <- .datazone$list_lineage_node_history_input(direction = direction, domainIdentifier = domainIdentifier, eventTimestampGTE = eventTimestampGTE, eventTimestampLTE = eventTimestampLTE, identifier = identifier, maxResults = maxResults, nextToken = nextToken, sortOrder = sortOrder)
+  input <- .datazone$list_lineage_node_history_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, identifier = identifier, direction = direction, eventTimestampGTE = eventTimestampGTE, eventTimestampLTE = eventTimestampLTE, sortOrder = sortOrder)
   output <- .datazone$list_lineage_node_history_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4567,25 +4647,25 @@ datazone_list_lineage_node_history <- function(direction = NULL, domainIdentifie
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain where you want to list metadata
 #' generation runs.
-#' @param maxResults The maximum number of metadata generation runs to return in a single
-#' call to ListMetadataGenerationRuns. When the number of metadata
-#' generation runs to be listed is greater than the value of MaxResults,
-#' the response contains a NextToken value that you can use in a subsequent
-#' call to ListMetadataGenerationRuns to list the next set of revisions.
+#' @param status The status of the metadata generation runs.
+#' @param type The type of the metadata generation runs.
 #' @param nextToken When the number of metadata generation runs is greater than the default
 #' value for the MaxResults parameter, or if you explicitly specify a value
 #' for MaxResults that is less than the number of metadata generation runs,
 #' the response includes a pagination token named NextToken. You can
 #' specify this NextToken value in a subsequent call to
 #' ListMetadataGenerationRuns to list the next set of revisions.
-#' @param status The status of the metadata generation runs.
+#' @param maxResults The maximum number of metadata generation runs to return in a single
+#' call to ListMetadataGenerationRuns. When the number of metadata
+#' generation runs to be listed is greater than the value of MaxResults,
+#' the response contains a NextToken value that you can use in a subsequent
+#' call to ListMetadataGenerationRuns to list the next set of revisions.
 #' @param targetIdentifier The target ID for which you want to list metadata generation runs.
-#' @param type The type of the metadata generation runs.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_metadata_generation_runs
-datazone_list_metadata_generation_runs <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, status = NULL, targetIdentifier = NULL, type = NULL) {
+datazone_list_metadata_generation_runs <- function(domainIdentifier, status = NULL, type = NULL, nextToken = NULL, maxResults = NULL, targetIdentifier = NULL) {
   op <- new_operation(
     name = "ListMetadataGenerationRuns",
     http_method = "GET",
@@ -4594,7 +4674,7 @@ datazone_list_metadata_generation_runs <- function(domainIdentifier, maxResults 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_metadata_generation_runs_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, status = status, targetIdentifier = targetIdentifier, type = type)
+  input <- .datazone$list_metadata_generation_runs_input(domainIdentifier = domainIdentifier, status = status, type = type, nextToken = nextToken, maxResults = maxResults, targetIdentifier = targetIdentifier)
   output <- .datazone$list_metadata_generation_runs_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4604,6 +4684,53 @@ datazone_list_metadata_generation_runs <- function(domainIdentifier, maxResults 
 }
 .datazone$operations$list_metadata_generation_runs <- datazone_list_metadata_generation_runs
 
+#' Lists notebook runs in an Amazon DataZone domain
+#'
+#' @description
+#' Lists notebook runs in an Amazon DataZone domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/datazone_list_notebook_runs/](https://www.paws-r-sdk.com/docs/datazone_list_notebook_runs/) for full documentation.
+#'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which to list notebook
+#' runs.
+#' @param owningProjectIdentifier &#91;required&#93; The identifier of the project that owns the notebook runs.
+#' @param notebookIdentifier The identifier of the notebook to filter runs by.
+#' @param status The status to filter notebook runs by.
+#' @param scheduleIdentifier The identifier of the schedule to filter notebook runs by.
+#' @param maxResults The maximum number of notebook runs to return in a single call. When the
+#' number of notebook runs exceeds the value of `MaxResults`, the response
+#' contains a `NextToken` value.
+#' @param sortOrder The sort order for the results.
+#' @param nextToken When the number of notebook runs is greater than the default value for
+#' the `MaxResults` parameter, or if you explicitly specify a value for
+#' `MaxResults` that is less than the number of notebook runs, the response
+#' includes a pagination token named `NextToken`. You can specify this
+#' `NextToken` value in a subsequent call to
+#' [`list_notebook_runs`][datazone_list_notebook_runs] to list the next set
+#' of notebook runs.
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_list_notebook_runs
+datazone_list_notebook_runs <- function(domainIdentifier, owningProjectIdentifier, notebookIdentifier = NULL, status = NULL, scheduleIdentifier = NULL, maxResults = NULL, sortOrder = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListNotebookRuns",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/notebook-runs",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .datazone$list_notebook_runs_input(domainIdentifier = domainIdentifier, owningProjectIdentifier = owningProjectIdentifier, notebookIdentifier = notebookIdentifier, status = status, scheduleIdentifier = scheduleIdentifier, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
+  output <- .datazone$list_notebook_runs_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$list_notebook_runs <- datazone_list_notebook_runs
+
 #' Lists all Amazon DataZone notifications
 #'
 #' @description
@@ -4611,9 +4738,12 @@ datazone_list_metadata_generation_runs <- function(domainIdentifier, maxResults 
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_notifications/](https://www.paws-r-sdk.com/docs/datazone_list_notifications/) for full documentation.
 #'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
+#' @param type &#91;required&#93; The type of notifications.
 #' @param afterTimestamp The time after which you want to list notifications.
 #' @param beforeTimestamp The time before which you want to list notifications.
-#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
+#' @param subjects The subjects of notifications.
+#' @param taskStatus The task status of notifications.
 #' @param maxResults The maximum number of notifications to return in a single call to
 #' [`list_notifications`][datazone_list_notifications]. When the number of
 #' notifications to be listed is greater than the value of `MaxResults`,
@@ -4627,14 +4757,11 @@ datazone_list_metadata_generation_runs <- function(domainIdentifier, maxResults 
 #' `NextToken` value in a subsequent call to
 #' [`list_notifications`][datazone_list_notifications] to list the next set
 #' of notifications.
-#' @param subjects The subjects of notifications.
-#' @param taskStatus The task status of notifications.
-#' @param type &#91;required&#93; The type of notifications.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_notifications
-datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp = NULL, domainIdentifier, maxResults = NULL, nextToken = NULL, subjects = NULL, taskStatus = NULL, type) {
+datazone_list_notifications <- function(domainIdentifier, type, afterTimestamp = NULL, beforeTimestamp = NULL, subjects = NULL, taskStatus = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListNotifications",
     http_method = "GET",
@@ -4643,7 +4770,7 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "notifications"),
     stream_api = FALSE
   )
-  input <- .datazone$list_notifications_input(afterTimestamp = afterTimestamp, beforeTimestamp = beforeTimestamp, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, subjects = subjects, taskStatus = taskStatus, type = type)
+  input <- .datazone$list_notifications_input(domainIdentifier = domainIdentifier, type = type, afterTimestamp = afterTimestamp, beforeTimestamp = beforeTimestamp, subjects = subjects, taskStatus = taskStatus, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_notifications_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4661,8 +4788,9 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_policy_grants/](https://www.paws-r-sdk.com/docs/datazone_list_policy_grants/) for full documentation.
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list policy grants.
-#' @param entityIdentifier &#91;required&#93; The ID of the entity for which you want to list policy grants.
 #' @param entityType &#91;required&#93; The type of entity for which you want to list policy grants.
+#' @param entityIdentifier &#91;required&#93; The ID of the entity for which you want to list policy grants.
+#' @param policyType &#91;required&#93; The type of policy that you want to list.
 #' @param maxResults The maximum number of grants to return in a single call to
 #' [`list_policy_grants`][datazone_list_policy_grants]. When the number of
 #' grants to be listed is greater than the value of `MaxResults`, the
@@ -4676,12 +4804,11 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
 #' `NextToken` value in a subsequent call to
 #' [`list_policy_grants`][datazone_list_policy_grants] to list the next set
 #' of grants.
-#' @param policyType &#91;required&#93; The type of policy that you want to list.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_policy_grants
-datazone_list_policy_grants <- function(domainIdentifier, entityIdentifier, entityType, maxResults = NULL, nextToken = NULL, policyType) {
+datazone_list_policy_grants <- function(domainIdentifier, entityType, entityIdentifier, policyType, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListPolicyGrants",
     http_method = "GET",
@@ -4690,7 +4817,7 @@ datazone_list_policy_grants <- function(domainIdentifier, entityIdentifier, enti
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "grantList"),
     stream_api = FALSE
   )
-  input <- .datazone$list_policy_grants_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, maxResults = maxResults, nextToken = nextToken, policyType = policyType)
+  input <- .datazone$list_policy_grants_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, policyType = policyType, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_policy_grants_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4709,13 +4836,9 @@ datazone_list_policy_grants <- function(domainIdentifier, entityIdentifier, enti
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which you want to list
 #' project memberships.
-#' @param maxResults The maximum number of memberships to return in a single call to
-#' [`list_project_memberships`][datazone_list_project_memberships]. When
-#' the number of memberships to be listed is greater than the value of
-#' `MaxResults`, the response contains a `NextToken` value that you can use
-#' in a subsequent call to
-#' [`list_project_memberships`][datazone_list_project_memberships] to list
-#' the next set of memberships.
+#' @param projectIdentifier &#91;required&#93; The identifier of the project whose memberships you want to list.
+#' @param sortBy The method by which you want to sort the project memberships.
+#' @param sortOrder The sort order of the project memberships.
 #' @param nextToken When the number of memberships is greater than the default value for the
 #' `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of memberships, the response
@@ -4723,14 +4846,18 @@ datazone_list_policy_grants <- function(domainIdentifier, entityIdentifier, enti
 #' `NextToken` value in a subsequent call to
 #' [`list_project_memberships`][datazone_list_project_memberships] to list
 #' the next set of memberships.
-#' @param projectIdentifier &#91;required&#93; The identifier of the project whose memberships you want to list.
-#' @param sortBy The method by which you want to sort the project memberships.
-#' @param sortOrder The sort order of the project memberships.
+#' @param maxResults The maximum number of memberships to return in a single call to
+#' [`list_project_memberships`][datazone_list_project_memberships]. When
+#' the number of memberships to be listed is greater than the value of
+#' `MaxResults`, the response contains a `NextToken` value that you can use
+#' in a subsequent call to
+#' [`list_project_memberships`][datazone_list_project_memberships] to list
+#' the next set of memberships.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_project_memberships
-datazone_list_project_memberships <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, projectIdentifier, sortBy = NULL, sortOrder = NULL) {
+datazone_list_project_memberships <- function(domainIdentifier, projectIdentifier, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListProjectMemberships",
     http_method = "GET",
@@ -4739,7 +4866,7 @@ datazone_list_project_memberships <- function(domainIdentifier, maxResults = NUL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members"),
     stream_api = FALSE
   )
-  input <- .datazone$list_project_memberships_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, projectIdentifier = projectIdentifier, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .datazone$list_project_memberships_input(domainIdentifier = domainIdentifier, projectIdentifier = projectIdentifier, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_project_memberships_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4757,25 +4884,25 @@ datazone_list_project_memberships <- function(domainIdentifier, maxResults = NUL
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_project_profiles/](https://www.paws-r-sdk.com/docs/datazone_list_project_profiles/) for full documentation.
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list project profiles.
-#' @param maxResults The maximum number of project profiles to return in a single call to
-#' ListProjectProfiles. When the number of project profiles to be listed is
-#' greater than the value of MaxResults, the response contains a NextToken
-#' value that you can use in a subsequent call to ListProjectProfiles to
-#' list the next set of project profiles.
 #' @param name The name of a project profile.
+#' @param sortBy Specifies by what to sort project profiles.
+#' @param sortOrder Specifies the sort order of the project profiles.
 #' @param nextToken When the number of project profiles is greater than the default value
 #' for the MaxResults parameter, or if you explicitly specify a value for
 #' MaxResults that is less than the number of project profiles, the
 #' response includes a pagination token named NextToken. You can specify
 #' this NextToken value in a subsequent call to ListProjectProfiles to list
 #' the next set of project profiles.
-#' @param sortBy Specifies by what to sort project profiles.
-#' @param sortOrder Specifies the sort order of the project profiles.
+#' @param maxResults The maximum number of project profiles to return in a single call to
+#' ListProjectProfiles. When the number of project profiles to be listed is
+#' greater than the value of MaxResults, the response contains a NextToken
+#' value that you can use in a subsequent call to ListProjectProfiles to
+#' list the next set of project profiles.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_project_profiles
-datazone_list_project_profiles <- function(domainIdentifier, maxResults = NULL, name = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+datazone_list_project_profiles <- function(domainIdentifier, name = NULL, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListProjectProfiles",
     http_method = "GET",
@@ -4784,7 +4911,7 @@ datazone_list_project_profiles <- function(domainIdentifier, maxResults = NULL, 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_project_profiles_input(domainIdentifier = domainIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .datazone$list_project_profiles_input(domainIdentifier = domainIdentifier, name = name, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_project_profiles_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4802,14 +4929,10 @@ datazone_list_project_profiles <- function(domainIdentifier, maxResults = NULL, 
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_projects/](https://www.paws-r-sdk.com/docs/datazone_list_projects/) for full documentation.
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
+#' @param userIdentifier The identifier of the Amazon DataZone user.
 #' @param groupIdentifier The identifier of a group.
-#' @param maxResults The maximum number of projects to return in a single call to
-#' [`list_projects`][datazone_list_projects]. When the number of projects
-#' to be listed is greater than the value of `MaxResults`, the response
-#' contains a `NextToken` value that you can use in a subsequent call to
-#' [`list_projects`][datazone_list_projects] to list the next set of
-#' projects.
 #' @param name The name of the project.
+#' @param projectCategory A parameter to filter projects by their category.
 #' @param nextToken When the number of projects is greater than the default value for the
 #' `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of projects, the response
@@ -4817,12 +4940,17 @@ datazone_list_project_profiles <- function(domainIdentifier, maxResults = NULL, 
 #' `NextToken` value in a subsequent call to
 #' [`list_projects`][datazone_list_projects] to list the next set of
 #' projects.
-#' @param userIdentifier The identifier of the Amazon DataZone user.
+#' @param maxResults The maximum number of projects to return in a single call to
+#' [`list_projects`][datazone_list_projects]. When the number of projects
+#' to be listed is greater than the value of `MaxResults`, the response
+#' contains a `NextToken` value that you can use in a subsequent call to
+#' [`list_projects`][datazone_list_projects] to list the next set of
+#' projects.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_projects
-datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, maxResults = NULL, name = NULL, nextToken = NULL, userIdentifier = NULL) {
+datazone_list_projects <- function(domainIdentifier, userIdentifier = NULL, groupIdentifier = NULL, name = NULL, projectCategory = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListProjects",
     http_method = "GET",
@@ -4831,7 +4959,7 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_projects_input(domainIdentifier = domainIdentifier, groupIdentifier = groupIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, userIdentifier = userIdentifier)
+  input <- .datazone$list_projects_input(domainIdentifier = domainIdentifier, userIdentifier = userIdentifier, groupIdentifier = groupIdentifier, name = name, projectCategory = projectCategory, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_projects_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4848,10 +4976,14 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_rules/](https://www.paws-r-sdk.com/docs/datazone_list_rules/) for full documentation.
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain in which the rules are to be listed.
+#' @param targetType &#91;required&#93; The target type of the rule.
+#' @param targetIdentifier &#91;required&#93; The target ID of the rule.
+#' @param ruleType The type of the rule.
 #' @param action The action of the rule.
+#' @param projectIds The IDs of projects in which rules are to be listed.
 #' @param assetTypes The asset types of the rule.
 #' @param dataProduct The data product of the rule.
-#' @param domainIdentifier &#91;required&#93; The ID of the domain in which the rules are to be listed.
 #' @param includeCascaded Specifies whether to include cascading rules in the results.
 #' @param maxResults The maximum number of rules to return in a single call to
 #' [`list_rules`][datazone_list_rules]. When the number of rules to be
@@ -4864,15 +4996,11 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
 #' includes a pagination token named `NextToken`. You can specify this
 #' `NextToken` value in a subsequent call to
 #' [`list_rules`][datazone_list_rules] to list the next set of rules.
-#' @param projectIds The IDs of projects in which rules are to be listed.
-#' @param ruleType The type of the rule.
-#' @param targetIdentifier &#91;required&#93; The target ID of the rule.
-#' @param targetType &#91;required&#93; The target type of the rule.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_rules
-datazone_list_rules <- function(action = NULL, assetTypes = NULL, dataProduct = NULL, domainIdentifier, includeCascaded = NULL, maxResults = NULL, nextToken = NULL, projectIds = NULL, ruleType = NULL, targetIdentifier, targetType) {
+datazone_list_rules <- function(domainIdentifier, targetType, targetIdentifier, ruleType = NULL, action = NULL, projectIds = NULL, assetTypes = NULL, dataProduct = NULL, includeCascaded = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListRules",
     http_method = "GET",
@@ -4881,7 +5009,7 @@ datazone_list_rules <- function(action = NULL, assetTypes = NULL, dataProduct = 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_rules_input(action = action, assetTypes = assetTypes, dataProduct = dataProduct, domainIdentifier = domainIdentifier, includeCascaded = includeCascaded, maxResults = maxResults, nextToken = nextToken, projectIds = projectIds, ruleType = ruleType, targetIdentifier = targetIdentifier, targetType = targetType)
+  input <- .datazone$list_rules_input(domainIdentifier = domainIdentifier, targetType = targetType, targetIdentifier = targetIdentifier, ruleType = ruleType, action = action, projectIds = projectIds, assetTypes = assetTypes, dataProduct = dataProduct, includeCascaded = includeCascaded, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_rules_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4900,6 +5028,15 @@ datazone_list_rules <- function(action = NULL, assetTypes = NULL, dataProduct = 
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
 #' @param environmentId The identifier of the Amazon DataZone environment.
+#' @param subscriptionTargetId The identifier of the subscription target.
+#' @param subscribedListingId The identifier of the subscribed listing.
+#' @param subscriptionId The identifier of the subscription.
+#' @param owningProjectId The ID of the owning project of the subscription grants.
+#' @param owningIamPrincipalArn The ARN of the owning IAM principal.
+#' @param owningUserId The ID of the owning user.
+#' @param owningGroupId The ID of the owning group.
+#' @param sortBy Specifies the way of sorting the results of this action.
+#' @param sortOrder Specifies the sort order of this action.
 #' @param maxResults The maximum number of subscription grants to return in a single call to
 #' [`list_subscription_grants`][datazone_list_subscription_grants]. When
 #' the number of subscription grants to be listed is greater than the value
@@ -4914,19 +5051,11 @@ datazone_list_rules <- function(action = NULL, assetTypes = NULL, dataProduct = 
 #' this `NextToken` value in a subsequent call to
 #' [`list_subscription_grants`][datazone_list_subscription_grants] to list
 #' the next set of subscription grants.
-#' @param owningGroupId The ID of the owning group.
-#' @param owningProjectId The ID of the owning project of the subscription grants.
-#' @param owningUserId The ID of the owning user.
-#' @param sortBy Specifies the way of sorting the results of this action.
-#' @param sortOrder Specifies the sort order of this action.
-#' @param subscribedListingId The identifier of the subscribed listing.
-#' @param subscriptionId The identifier of the subscription.
-#' @param subscriptionTargetId The identifier of the subscription target.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_subscription_grants
-datazone_list_subscription_grants <- function(domainIdentifier, environmentId = NULL, maxResults = NULL, nextToken = NULL, owningGroupId = NULL, owningProjectId = NULL, owningUserId = NULL, sortBy = NULL, sortOrder = NULL, subscribedListingId = NULL, subscriptionId = NULL, subscriptionTargetId = NULL) {
+datazone_list_subscription_grants <- function(domainIdentifier, environmentId = NULL, subscriptionTargetId = NULL, subscribedListingId = NULL, subscriptionId = NULL, owningProjectId = NULL, owningIamPrincipalArn = NULL, owningUserId = NULL, owningGroupId = NULL, sortBy = NULL, sortOrder = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSubscriptionGrants",
     http_method = "GET",
@@ -4935,7 +5064,7 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_subscription_grants_input(domainIdentifier = domainIdentifier, environmentId = environmentId, maxResults = maxResults, nextToken = nextToken, owningGroupId = owningGroupId, owningProjectId = owningProjectId, owningUserId = owningUserId, sortBy = sortBy, sortOrder = sortOrder, subscribedListingId = subscribedListingId, subscriptionId = subscriptionId, subscriptionTargetId = subscriptionTargetId)
+  input <- .datazone$list_subscription_grants_input(domainIdentifier = domainIdentifier, environmentId = environmentId, subscriptionTargetId = subscriptionTargetId, subscribedListingId = subscribedListingId, subscriptionId = subscriptionId, owningProjectId = owningProjectId, owningIamPrincipalArn = owningIamPrincipalArn, owningUserId = owningUserId, owningGroupId = owningGroupId, sortBy = sortBy, sortOrder = sortOrder, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_subscription_grants_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4952,8 +5081,19 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_subscription_requests/](https://www.paws-r-sdk.com/docs/datazone_list_subscription_requests/) for full documentation.
 #'
-#' @param approverProjectId The identifier of the subscription request approver's project.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
+#' @param status Specifies the status of the subscription requests.
+#' 
+#' This is not a required parameter, but if not specified, by default,
+#' Amazon DataZone returns only `PENDING` subscription requests.
+#' @param subscribedListingId The identifier of the subscribed listing.
+#' @param owningProjectId The identifier of the project for the subscription requests.
+#' @param owningIamPrincipalArn The ARN of the owning IAM principal.
+#' @param approverProjectId The identifier of the subscription request approver's project.
+#' @param owningUserId The ID of the owning user.
+#' @param owningGroupId The ID of the owning group.
+#' @param sortBy Specifies the way to sort the results of this action.
+#' @param sortOrder Specifies the sort order for the results of this action.
 #' @param maxResults The maximum number of subscription requests to return in a single call
 #' to [`list_subscription_requests`][datazone_list_subscription_requests].
 #' When the number of subscription requests to be listed is greater than
@@ -4968,21 +5108,11 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
 #' You can specify this `NextToken` value in a subsequent call to
 #' [`list_subscription_requests`][datazone_list_subscription_requests] to
 #' list the next set of subscription requests.
-#' @param owningGroupId The ID of the owning group.
-#' @param owningProjectId The identifier of the project for the subscription requests.
-#' @param owningUserId The ID of the owning user.
-#' @param sortBy Specifies the way to sort the results of this action.
-#' @param sortOrder Specifies the sort order for the results of this action.
-#' @param status Specifies the status of the subscription requests.
-#' 
-#' This is not a required parameter, but if not specified, by default,
-#' Amazon DataZone returns only `PENDING` subscription requests.
-#' @param subscribedListingId The identifier of the subscribed listing.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_subscription_requests
-datazone_list_subscription_requests <- function(approverProjectId = NULL, domainIdentifier, maxResults = NULL, nextToken = NULL, owningGroupId = NULL, owningProjectId = NULL, owningUserId = NULL, sortBy = NULL, sortOrder = NULL, status = NULL, subscribedListingId = NULL) {
+datazone_list_subscription_requests <- function(domainIdentifier, status = NULL, subscribedListingId = NULL, owningProjectId = NULL, owningIamPrincipalArn = NULL, approverProjectId = NULL, owningUserId = NULL, owningGroupId = NULL, sortBy = NULL, sortOrder = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSubscriptionRequests",
     http_method = "GET",
@@ -4991,7 +5121,7 @@ datazone_list_subscription_requests <- function(approverProjectId = NULL, domain
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_subscription_requests_input(approverProjectId = approverProjectId, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, owningGroupId = owningGroupId, owningProjectId = owningProjectId, owningUserId = owningUserId, sortBy = sortBy, sortOrder = sortOrder, status = status, subscribedListingId = subscribedListingId)
+  input <- .datazone$list_subscription_requests_input(domainIdentifier = domainIdentifier, status = status, subscribedListingId = subscribedListingId, owningProjectId = owningProjectId, owningIamPrincipalArn = owningIamPrincipalArn, approverProjectId = approverProjectId, owningUserId = owningUserId, owningGroupId = owningGroupId, sortBy = sortBy, sortOrder = sortOrder, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_subscription_requests_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5012,6 +5142,8 @@ datazone_list_subscription_requests <- function(approverProjectId = NULL, domain
 #' subscription targets.
 #' @param environmentIdentifier &#91;required&#93; The identifier of the environment where you want to list subscription
 #' targets.
+#' @param sortBy Specifies the way in which the results of this action are to be sorted.
+#' @param sortOrder Specifies the sort order for the results of this action.
 #' @param maxResults The maximum number of subscription targets to return in a single call to
 #' [`list_subscription_targets`][datazone_list_subscription_targets]. When
 #' the number of subscription targets to be listed is greater than the
@@ -5026,13 +5158,11 @@ datazone_list_subscription_requests <- function(approverProjectId = NULL, domain
 #' can specify this `NextToken` value in a subsequent call to
 #' [`list_subscription_targets`][datazone_list_subscription_targets] to
 #' list the next set of subscription targets.
-#' @param sortBy Specifies the way in which the results of this action are to be sorted.
-#' @param sortOrder Specifies the sort order for the results of this action.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_subscription_targets
-datazone_list_subscription_targets <- function(domainIdentifier, environmentIdentifier, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+datazone_list_subscription_targets <- function(domainIdentifier, environmentIdentifier, sortBy = NULL, sortOrder = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSubscriptionTargets",
     http_method = "GET",
@@ -5041,7 +5171,7 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_subscription_targets_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .datazone$list_subscription_targets_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, sortBy = sortBy, sortOrder = sortOrder, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_subscription_targets_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5058,8 +5188,22 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_list_subscriptions/](https://www.paws-r-sdk.com/docs/datazone_list_subscriptions/) for full documentation.
 #'
-#' @param approverProjectId The identifier of the project for the subscription's approver.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
+#' @param subscriptionRequestIdentifier The identifier of the subscription request for the subscriptions that
+#' you want to list.
+#' @param status The status of the subscriptions that you want to list.
+#' 
+#' This is not a required parameter, but if not provided, by default,
+#' Amazon DataZone returns only `APPROVED` subscriptions.
+#' @param subscribedListingId The identifier of the subscribed listing for the subscriptions that you
+#' want to list.
+#' @param owningProjectId The identifier of the owning project.
+#' @param owningIamPrincipalArn The ARN of the owning IAM principal.
+#' @param owningUserId The ID of the owning user.
+#' @param owningGroupId The ID of the owning group.
+#' @param approverProjectId The identifier of the project for the subscription's approver.
+#' @param sortBy Specifies the way in which the results of this action are to be sorted.
+#' @param sortOrder Specifies the sort order for the results of this action.
 #' @param maxResults The maximum number of subscriptions to return in a single call to
 #' [`list_subscriptions`][datazone_list_subscriptions]. When the number of
 #' subscriptions to be listed is greater than the value of `MaxResults`,
@@ -5073,24 +5217,11 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
 #' `NextToken` value in a subsequent call to
 #' [`list_subscriptions`][datazone_list_subscriptions] to list the next set
 #' of subscriptions.
-#' @param owningGroupId The ID of the owning group.
-#' @param owningProjectId The identifier of the owning project.
-#' @param owningUserId The ID of the owning user.
-#' @param sortBy Specifies the way in which the results of this action are to be sorted.
-#' @param sortOrder Specifies the sort order for the results of this action.
-#' @param status The status of the subscriptions that you want to list.
-#' 
-#' This is not a required parameter, but if not provided, by default,
-#' Amazon DataZone returns only `APPROVED` subscriptions.
-#' @param subscribedListingId The identifier of the subscribed listing for the subscriptions that you
-#' want to list.
-#' @param subscriptionRequestIdentifier The identifier of the subscription request for the subscriptions that
-#' you want to list.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_subscriptions
-datazone_list_subscriptions <- function(approverProjectId = NULL, domainIdentifier, maxResults = NULL, nextToken = NULL, owningGroupId = NULL, owningProjectId = NULL, owningUserId = NULL, sortBy = NULL, sortOrder = NULL, status = NULL, subscribedListingId = NULL, subscriptionRequestIdentifier = NULL) {
+datazone_list_subscriptions <- function(domainIdentifier, subscriptionRequestIdentifier = NULL, status = NULL, subscribedListingId = NULL, owningProjectId = NULL, owningIamPrincipalArn = NULL, owningUserId = NULL, owningGroupId = NULL, approverProjectId = NULL, sortBy = NULL, sortOrder = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSubscriptions",
     http_method = "GET",
@@ -5099,7 +5230,7 @@ datazone_list_subscriptions <- function(approverProjectId = NULL, domainIdentifi
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_subscriptions_input(approverProjectId = approverProjectId, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, owningGroupId = owningGroupId, owningProjectId = owningProjectId, owningUserId = owningUserId, sortBy = sortBy, sortOrder = sortOrder, status = status, subscribedListingId = subscribedListingId, subscriptionRequestIdentifier = subscriptionRequestIdentifier)
+  input <- .datazone$list_subscriptions_input(domainIdentifier = domainIdentifier, subscriptionRequestIdentifier = subscriptionRequestIdentifier, status = status, subscribedListingId = subscribedListingId, owningProjectId = owningProjectId, owningIamPrincipalArn = owningIamPrincipalArn, owningUserId = owningUserId, owningGroupId = owningGroupId, approverProjectId = approverProjectId, sortBy = sortBy, sortOrder = sortOrder, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_subscriptions_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5149,27 +5280,27 @@ datazone_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain that houses the assets for which
 #' you want to list time series data points.
-#' @param endedAt The timestamp at which the data points that you wanted to list ended.
 #' @param entityIdentifier &#91;required&#93; The ID of the asset for which you want to list data points.
 #' @param entityType &#91;required&#93; The type of the asset for which you want to list data points.
 #' @param formName &#91;required&#93; The name of the time series data points form.
-#' @param maxResults The maximum number of data points to return in a single call to
-#' ListTimeSeriesDataPoints. When the number of data points to be listed is
-#' greater than the value of MaxResults, the response contains a NextToken
-#' value that you can use in a subsequent call to ListTimeSeriesDataPoints
-#' to list the next set of data points.
+#' @param startedAt The timestamp at which the data points that you want to list started.
+#' @param endedAt The timestamp at which the data points that you wanted to list ended.
 #' @param nextToken When the number of data points is greater than the default value for the
 #' MaxResults parameter, or if you explicitly specify a value for
 #' MaxResults that is less than the number of data points, the response
 #' includes a pagination token named NextToken. You can specify this
 #' NextToken value in a subsequent call to ListTimeSeriesDataPoints to list
 #' the next set of data points.
-#' @param startedAt The timestamp at which the data points that you want to list started.
+#' @param maxResults The maximum number of data points to return in a single call to
+#' ListTimeSeriesDataPoints. When the number of data points to be listed is
+#' greater than the value of MaxResults, the response contains a NextToken
+#' value that you can use in a subsequent call to ListTimeSeriesDataPoints
+#' to list the next set of data points.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_list_time_series_data_points
-datazone_list_time_series_data_points <- function(domainIdentifier, endedAt = NULL, entityIdentifier, entityType, formName, maxResults = NULL, nextToken = NULL, startedAt = NULL) {
+datazone_list_time_series_data_points <- function(domainIdentifier, entityIdentifier, entityType, formName, startedAt = NULL, endedAt = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListTimeSeriesDataPoints",
     http_method = "GET",
@@ -5178,7 +5309,7 @@ datazone_list_time_series_data_points <- function(domainIdentifier, endedAt = NU
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_time_series_data_points_input(domainIdentifier = domainIdentifier, endedAt = endedAt, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName, maxResults = maxResults, nextToken = nextToken, startedAt = startedAt)
+  input <- .datazone$list_time_series_data_points_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName, startedAt = startedAt, endedAt = endedAt, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_time_series_data_points_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5195,16 +5326,16 @@ datazone_list_time_series_data_points <- function(domainIdentifier, endedAt = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_post_lineage_event/](https://www.paws-r-sdk.com/docs/datazone_post_lineage_event/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to post a data lineage event.
 #' @param event &#91;required&#93; The data lineage event that you want to post. Only open-lineage run
 #' event are supported as events.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_post_lineage_event
-datazone_post_lineage_event <- function(clientToken = NULL, domainIdentifier, event) {
+datazone_post_lineage_event <- function(domainIdentifier, event, clientToken = NULL) {
   op <- new_operation(
     name = "PostLineageEvent",
     http_method = "POST",
@@ -5213,7 +5344,7 @@ datazone_post_lineage_event <- function(clientToken = NULL, domainIdentifier, ev
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$post_lineage_event_input(clientToken = clientToken, domainIdentifier = domainIdentifier, event = event)
+  input <- .datazone$post_lineage_event_input(domainIdentifier = domainIdentifier, event = event, clientToken = clientToken)
   output <- .datazone$post_lineage_event_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5230,18 +5361,18 @@ datazone_post_lineage_event <- function(clientToken = NULL, domainIdentifier, ev
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_post_time_series_data_points/](https://www.paws-r-sdk.com/docs/datazone_post_time_series_data_points/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which you want to post time
 #' series data points.
 #' @param entityIdentifier &#91;required&#93; The ID of the asset for which you want to post time series data points.
 #' @param entityType &#91;required&#93; The type of the asset for which you want to post data points.
 #' @param forms &#91;required&#93; The forms that contain the data points that you want to post.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_post_time_series_data_points
-datazone_post_time_series_data_points <- function(clientToken = NULL, domainIdentifier, entityIdentifier, entityType, forms) {
+datazone_post_time_series_data_points <- function(domainIdentifier, entityIdentifier, entityType, forms, clientToken = NULL) {
   op <- new_operation(
     name = "PostTimeSeriesDataPoints",
     http_method = "POST",
@@ -5250,7 +5381,7 @@ datazone_post_time_series_data_points <- function(clientToken = NULL, domainIden
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$post_time_series_data_points_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, forms = forms)
+  input <- .datazone$post_time_series_data_points_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, forms = forms, clientToken = clientToken)
   output <- .datazone$post_time_series_data_points_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5267,9 +5398,7 @@ datazone_post_time_series_data_points <- function(clientToken = NULL, domainIden
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_put_data_export_configuration/](https://www.paws-r-sdk.com/docs/datazone_put_data_export_configuration/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
-#' request. This field is automatically populated if not provided.
-#' @param domainIdentifier &#91;required&#93; The domain ID where you want to create data export configuration
+#' @param domainIdentifier &#91;required&#93; The domain ID for which you want to create data export configuration
 #' details.
 #' @param enableExport &#91;required&#93; Specifies that the export is to be enabled as part of creating data
 #' export configuration details.
@@ -5280,11 +5409,13 @@ datazone_post_time_series_data_points <- function(clientToken = NULL, domainIden
 #' the required permissions as described in [KMS permissions for exporting
 #' asset metadata in Amazon SageMaker Unified
 #' Studio](https://docs.aws.amazon.com/sagemaker-unified-studio/latest/adminguide/sagemaker-unified-studio-export-asset-metadata-kms-permissions.html).
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request. This field is automatically populated if not provided.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_put_data_export_configuration
-datazone_put_data_export_configuration <- function(clientToken = NULL, domainIdentifier, enableExport, encryptionConfiguration = NULL) {
+datazone_put_data_export_configuration <- function(domainIdentifier, enableExport, encryptionConfiguration = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "PutDataExportConfiguration",
     http_method = "PUT",
@@ -5293,7 +5424,7 @@ datazone_put_data_export_configuration <- function(clientToken = NULL, domainIde
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$put_data_export_configuration_input(clientToken = clientToken, domainIdentifier = domainIdentifier, enableExport = enableExport, encryptionConfiguration = encryptionConfiguration)
+  input <- .datazone$put_data_export_configuration_input(domainIdentifier = domainIdentifier, enableExport = enableExport, encryptionConfiguration = encryptionConfiguration, clientToken = clientToken)
   output <- .datazone$put_data_export_configuration_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5312,19 +5443,19 @@ datazone_put_data_export_configuration <- function(clientToken = NULL, domainIde
 #' See [https://www.paws-r-sdk.com/docs/datazone_put_environment_blueprint_configuration/](https://www.paws-r-sdk.com/docs/datazone_put_environment_blueprint_configuration/) for full documentation.
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
-#' @param enabledRegions &#91;required&#93; Specifies the enabled Amazon Web Services Regions.
 #' @param environmentBlueprintIdentifier &#91;required&#93; The identifier of the environment blueprint.
-#' @param environmentRolePermissionBoundary The environment role permissions boundary.
-#' @param globalParameters Region-agnostic environment blueprint parameters.
-#' @param manageAccessRoleArn The ARN of the manage access role.
-#' @param provisioningConfigurations The provisioning configuration of a blueprint.
 #' @param provisioningRoleArn The ARN of the provisioning role.
+#' @param manageAccessRoleArn The ARN of the manage access role.
+#' @param environmentRolePermissionBoundary The environment role permissions boundary.
+#' @param enabledRegions &#91;required&#93; Specifies the enabled Amazon Web Services Regions.
 #' @param regionalParameters The regional parameters in the environment blueprint.
+#' @param globalParameters Region-agnostic environment blueprint parameters.
+#' @param provisioningConfigurations The provisioning configuration of a blueprint.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_put_environment_blueprint_configuration
-datazone_put_environment_blueprint_configuration <- function(domainIdentifier, enabledRegions, environmentBlueprintIdentifier, environmentRolePermissionBoundary = NULL, globalParameters = NULL, manageAccessRoleArn = NULL, provisioningConfigurations = NULL, provisioningRoleArn = NULL, regionalParameters = NULL) {
+datazone_put_environment_blueprint_configuration <- function(domainIdentifier, environmentBlueprintIdentifier, provisioningRoleArn = NULL, manageAccessRoleArn = NULL, environmentRolePermissionBoundary = NULL, enabledRegions, regionalParameters = NULL, globalParameters = NULL, provisioningConfigurations = NULL) {
   op <- new_operation(
     name = "PutEnvironmentBlueprintConfiguration",
     http_method = "PUT",
@@ -5333,7 +5464,7 @@ datazone_put_environment_blueprint_configuration <- function(domainIdentifier, e
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$put_environment_blueprint_configuration_input(domainIdentifier = domainIdentifier, enabledRegions = enabledRegions, environmentBlueprintIdentifier = environmentBlueprintIdentifier, environmentRolePermissionBoundary = environmentRolePermissionBoundary, globalParameters = globalParameters, manageAccessRoleArn = manageAccessRoleArn, provisioningConfigurations = provisioningConfigurations, provisioningRoleArn = provisioningRoleArn, regionalParameters = regionalParameters)
+  input <- .datazone$put_environment_blueprint_configuration_input(domainIdentifier = domainIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier, provisioningRoleArn = provisioningRoleArn, manageAccessRoleArn = manageAccessRoleArn, environmentRolePermissionBoundary = environmentRolePermissionBoundary, enabledRegions = enabledRegions, regionalParameters = regionalParameters, globalParameters = globalParameters, provisioningConfigurations = provisioningConfigurations)
   output <- .datazone$put_environment_blueprint_configuration_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5343,6 +5474,51 @@ datazone_put_environment_blueprint_configuration <- function(domainIdentifier, e
 }
 .datazone$operations$put_environment_blueprint_configuration <- datazone_put_environment_blueprint_configuration
 
+#' Queries entities in the graph store
+#'
+#' @description
+#' Queries entities in the graph store.
+#'
+#' See [https://www.paws-r-sdk.com/docs/datazone_query_graph/](https://www.paws-r-sdk.com/docs/datazone_query_graph/) for full documentation.
+#'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
+#' @param match &#91;required&#93; List of query match clauses.
+#' @param maxResults The maximum number of entities to return in a single call to
+#' [`query_graph`][datazone_query_graph]. When the number of entities to be
+#' listed is greater than the value of `MaxResults`, the response contains
+#' a `NextToken` value that you can use in a subsequent call to
+#' [`query_graph`][datazone_query_graph] to list the next set of entities.
+#' @param nextToken When the number of entities is greater than the default value for the
+#' `MaxResults` parameter, or if you explicitly specify a value for
+#' `MaxResults` that is less than the number of entities, the response
+#' includes a pagination token named `NextToken`. You can specify this
+#' `NextToken` value in a subsequent call to
+#' [`query_graph`][datazone_query_graph] to list the next set of entities.
+#' @param additionalAttributes Additional details on the queried entity that can be requested in the
+#' response.
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_query_graph
+datazone_query_graph <- function(domainIdentifier, match, maxResults = NULL, nextToken = NULL, additionalAttributes = NULL) {
+  op <- new_operation(
+    name = "QueryGraph",
+    http_method = "POST",
+    http_path = "/v2/domains/{domainIdentifier}/graph/query",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .datazone$query_graph_input(domainIdentifier = domainIdentifier, match = match, maxResults = maxResults, nextToken = nextToken, additionalAttributes = additionalAttributes)
+  output <- .datazone$query_graph_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$query_graph <- datazone_query_graph
+
 #' Rejects automatically generated business-friendly metadata for your
 #' Amazon DataZone assets
 #'
@@ -5351,21 +5527,21 @@ datazone_put_environment_blueprint_configuration <- function(domainIdentifier, e
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_reject_predictions/](https://www.paws-r-sdk.com/docs/datazone_reject_predictions/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
 #' @param identifier &#91;required&#93; The identifier of the prediction.
+#' @param revision The revision that is to be made to the asset.
+#' @param rejectRule Specifies the rule (or the conditions) under which a prediction can be
+#' rejected.
 #' @param rejectChoices Specifies the prediction (aka, the automatically generated piece of
 #' metadata) and the target (for example, a column name) that can be
 #' rejected.
-#' @param rejectRule Specifies the rule (or the conditions) under which a prediction can be
-#' rejected.
-#' @param revision The revision that is to be made to the asset.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_reject_predictions
-datazone_reject_predictions <- function(clientToken = NULL, domainIdentifier, identifier, rejectChoices = NULL, rejectRule = NULL, revision = NULL) {
+datazone_reject_predictions <- function(domainIdentifier, identifier, revision = NULL, rejectRule = NULL, rejectChoices = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "RejectPredictions",
     http_method = "PUT",
@@ -5374,7 +5550,7 @@ datazone_reject_predictions <- function(clientToken = NULL, domainIdentifier, id
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$reject_predictions_input(clientToken = clientToken, domainIdentifier = domainIdentifier, identifier = identifier, rejectChoices = rejectChoices, rejectRule = rejectRule, revision = revision)
+  input <- .datazone$reject_predictions_input(domainIdentifier = domainIdentifier, identifier = identifier, revision = revision, rejectRule = rejectRule, rejectChoices = rejectChoices, clientToken = clientToken)
   output <- .datazone$reject_predictions_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5391,15 +5567,15 @@ datazone_reject_predictions <- function(clientToken = NULL, domainIdentifier, id
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_reject_subscription_request/](https://www.paws-r-sdk.com/docs/datazone_reject_subscription_request/) for full documentation.
 #'
-#' @param decisionComment The decision comment of the rejected subscription request.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which the subscription
 #' request was rejected.
 #' @param identifier &#91;required&#93; The identifier of the subscription request that was rejected.
+#' @param decisionComment The decision comment of the rejected subscription request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_reject_subscription_request
-datazone_reject_subscription_request <- function(decisionComment = NULL, domainIdentifier, identifier) {
+datazone_reject_subscription_request <- function(domainIdentifier, identifier, decisionComment = NULL) {
   op <- new_operation(
     name = "RejectSubscriptionRequest",
     http_method = "PUT",
@@ -5408,7 +5584,7 @@ datazone_reject_subscription_request <- function(decisionComment = NULL, domainI
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$reject_subscription_request_input(decisionComment = decisionComment, domainIdentifier = domainIdentifier, identifier = identifier)
+  input <- .datazone$reject_subscription_request_input(domainIdentifier = domainIdentifier, identifier = identifier, decisionComment = decisionComment)
   output <- .datazone$reject_subscription_request_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5425,17 +5601,17 @@ datazone_reject_subscription_request <- function(decisionComment = NULL, domainI
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_remove_entity_owner/](https://www.paws-r-sdk.com/docs/datazone_remove_entity_owner/) for full documentation.
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to remove an owner from an entity.
+#' @param entityType &#91;required&#93; The type of the entity from which you want to remove an owner.
+#' @param entityIdentifier &#91;required&#93; The ID of the entity from which you want to remove an owner.
+#' @param owner &#91;required&#93; The owner that you want to remove from an entity.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
-#' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to remove an owner from an entity.
-#' @param entityIdentifier &#91;required&#93; The ID of the entity from which you want to remove an owner.
-#' @param entityType &#91;required&#93; The type of the entity from which you want to remove an owner.
-#' @param owner &#91;required&#93; The owner that you want to remove from an entity.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_remove_entity_owner
-datazone_remove_entity_owner <- function(clientToken = NULL, domainIdentifier, entityIdentifier, entityType, owner) {
+datazone_remove_entity_owner <- function(domainIdentifier, entityType, entityIdentifier, owner, clientToken = NULL) {
   op <- new_operation(
     name = "RemoveEntityOwner",
     http_method = "POST",
@@ -5444,7 +5620,7 @@ datazone_remove_entity_owner <- function(clientToken = NULL, domainIdentifier, e
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$remove_entity_owner_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, owner = owner)
+  input <- .datazone$remove_entity_owner_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, owner = owner, clientToken = clientToken)
   output <- .datazone$remove_entity_owner_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5461,20 +5637,20 @@ datazone_remove_entity_owner <- function(clientToken = NULL, domainIdentifier, e
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_remove_policy_grant/](https://www.paws-r-sdk.com/docs/datazone_remove_policy_grant/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to remove a policy grant.
-#' @param entityIdentifier &#91;required&#93; The ID of the entity from which you want to remove a policy grant.
 #' @param entityType &#91;required&#93; The type of the entity from which you want to remove a policy grant.
-#' @param grantIdentifier The ID of the policy grant that is to be removed from a specified
-#' entity.
+#' @param entityIdentifier &#91;required&#93; The ID of the entity from which you want to remove a policy grant.
 #' @param policyType &#91;required&#93; The type of the policy that you want to remove.
 #' @param principal &#91;required&#93; The principal from which you want to remove a policy grant.
+#' @param grantIdentifier The ID of the policy grant that is to be removed from a specified
+#' entity.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_remove_policy_grant
-datazone_remove_policy_grant <- function(clientToken = NULL, domainIdentifier, entityIdentifier, entityType, grantIdentifier = NULL, policyType, principal) {
+datazone_remove_policy_grant <- function(domainIdentifier, entityType, entityIdentifier, policyType, principal, grantIdentifier = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "RemovePolicyGrant",
     http_method = "POST",
@@ -5483,7 +5659,7 @@ datazone_remove_policy_grant <- function(clientToken = NULL, domainIdentifier, e
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$remove_policy_grant_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, grantIdentifier = grantIdentifier, policyType = policyType, principal = principal)
+  input <- .datazone$remove_policy_grant_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, policyType = policyType, principal = principal, grantIdentifier = grantIdentifier, clientToken = clientToken)
   output <- .datazone$remove_policy_grant_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5535,10 +5711,8 @@ datazone_revoke_subscription <- function(domainIdentifier, identifier, retainPer
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_search/](https://www.paws-r-sdk.com/docs/datazone_search/) for full documentation.
 #'
-#' @param additionalAttributes Specifies additional attributes for the [`search`][datazone_search]
-#' action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
-#' @param filters Specifies the search filters.
+#' @param owningProjectIdentifier The identifier of the owning project specified for the search.
 #' @param maxResults The maximum number of results to return in a single call to
 #' [`search`][datazone_search]. When the number of results to be listed is
 #' greater than the value of `MaxResults`, the response contains a
@@ -5550,16 +5724,18 @@ datazone_revoke_subscription <- function(domainIdentifier, identifier, retainPer
 #' includes a pagination token named `NextToken`. You can specify this
 #' `NextToken` value in a subsequent call to [`search`][datazone_search] to
 #' list the next set of results.
-#' @param owningProjectIdentifier The identifier of the owning project specified for the search.
-#' @param searchIn The details of the search.
 #' @param searchScope &#91;required&#93; The scope of the search.
 #' @param searchText Specifies the text for which to search.
+#' @param searchIn The details of the search.
+#' @param filters Specifies the search filters.
 #' @param sort Specifies the way in which the search results are to be sorted.
+#' @param additionalAttributes Specifies additional attributes for the [`search`][datazone_search]
+#' action.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_search
-datazone_search <- function(additionalAttributes = NULL, domainIdentifier, filters = NULL, maxResults = NULL, nextToken = NULL, owningProjectIdentifier = NULL, searchIn = NULL, searchScope, searchText = NULL, sort = NULL) {
+datazone_search <- function(domainIdentifier, owningProjectIdentifier = NULL, maxResults = NULL, nextToken = NULL, searchScope, searchText = NULL, searchIn = NULL, filters = NULL, sort = NULL, additionalAttributes = NULL) {
   op <- new_operation(
     name = "Search",
     http_method = "POST",
@@ -5568,7 +5744,7 @@ datazone_search <- function(additionalAttributes = NULL, domainIdentifier, filte
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$search_input(additionalAttributes = additionalAttributes, domainIdentifier = domainIdentifier, filters = filters, maxResults = maxResults, nextToken = nextToken, owningProjectIdentifier = owningProjectIdentifier, searchIn = searchIn, searchScope = searchScope, searchText = searchText, sort = sort)
+  input <- .datazone$search_input(domainIdentifier = domainIdentifier, owningProjectIdentifier = owningProjectIdentifier, maxResults = maxResults, nextToken = nextToken, searchScope = searchScope, searchText = searchText, searchIn = searchIn, filters = filters, sort = sort, additionalAttributes = additionalAttributes)
   output <- .datazone$search_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5588,6 +5764,7 @@ datazone_search <- function(additionalAttributes = NULL, domainIdentifier, filte
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which you want to search
 #' group profiles.
 #' @param groupType &#91;required&#93; The group type for which to search.
+#' @param searchText Specifies the text for which to search.
 #' @param maxResults The maximum number of results to return in a single call to
 #' [`search_group_profiles`][datazone_search_group_profiles]. When the
 #' number of results to be listed is greater than the value of
@@ -5602,12 +5779,11 @@ datazone_search <- function(additionalAttributes = NULL, domainIdentifier, filte
 #' `NextToken` value in a subsequent call to
 #' [`search_group_profiles`][datazone_search_group_profiles] to list the
 #' next set of results.
-#' @param searchText Specifies the text for which to search.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_search_group_profiles
-datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResults = NULL, nextToken = NULL, searchText = NULL) {
+datazone_search_group_profiles <- function(domainIdentifier, groupType, searchText = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "SearchGroupProfiles",
     http_method = "POST",
@@ -5616,7 +5792,7 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$search_group_profiles_input(domainIdentifier = domainIdentifier, groupType = groupType, maxResults = maxResults, nextToken = nextToken, searchText = searchText)
+  input <- .datazone$search_group_profiles_input(domainIdentifier = domainIdentifier, groupType = groupType, searchText = searchText, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$search_group_profiles_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5633,11 +5809,9 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_search_listings/](https://www.paws-r-sdk.com/docs/datazone_search_listings/) for full documentation.
 #'
-#' @param additionalAttributes Specifies additional attributes for the search.
-#' @param aggregations Enables you to specify one or more attributes to compute and return
-#' counts grouped by field values.
 #' @param domainIdentifier &#91;required&#93; The identifier of the domain in which to search listings.
-#' @param filters Specifies the filters for the search of listings.
+#' @param searchText Specifies the text for which to search.
+#' @param searchIn The details of the search.
 #' @param maxResults The maximum number of results to return in a single call to
 #' [`search_listings`][datazone_search_listings]. When the number of
 #' results to be listed is greater than the value of `MaxResults`, the
@@ -5651,14 +5825,16 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
 #' `NextToken` value in a subsequent call to
 #' [`search_listings`][datazone_search_listings] to list the next set of
 #' results.
-#' @param searchIn The details of the search.
-#' @param searchText Specifies the text for which to search.
+#' @param filters Specifies the filters for the search of listings.
+#' @param aggregations Enables you to specify one or more attributes to compute and return
+#' counts grouped by field values.
 #' @param sort Specifies the way for sorting the search results.
+#' @param additionalAttributes Specifies additional attributes for the search.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_search_listings
-datazone_search_listings <- function(additionalAttributes = NULL, aggregations = NULL, domainIdentifier, filters = NULL, maxResults = NULL, nextToken = NULL, searchIn = NULL, searchText = NULL, sort = NULL) {
+datazone_search_listings <- function(domainIdentifier, searchText = NULL, searchIn = NULL, maxResults = NULL, nextToken = NULL, filters = NULL, aggregations = NULL, sort = NULL, additionalAttributes = NULL) {
   op <- new_operation(
     name = "SearchListings",
     http_method = "POST",
@@ -5667,7 +5843,7 @@ datazone_search_listings <- function(additionalAttributes = NULL, aggregations =
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$search_listings_input(additionalAttributes = additionalAttributes, aggregations = aggregations, domainIdentifier = domainIdentifier, filters = filters, maxResults = maxResults, nextToken = nextToken, searchIn = searchIn, searchText = searchText, sort = sort)
+  input <- .datazone$search_listings_input(domainIdentifier = domainIdentifier, searchText = searchText, searchIn = searchIn, maxResults = maxResults, nextToken = nextToken, filters = filters, aggregations = aggregations, sort = sort, additionalAttributes = additionalAttributes)
   output <- .datazone$search_listings_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5686,8 +5862,6 @@ datazone_search_listings <- function(additionalAttributes = NULL, aggregations =
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which to invoke the
 #' [`search_types`][datazone_search_types] action.
-#' @param filters The filters for the [`search_types`][datazone_search_types] action.
-#' @param managed &#91;required&#93; Specifies whether the search is managed.
 #' @param maxResults The maximum number of results to return in a single call to
 #' [`search_types`][datazone_search_types]. When the number of results to
 #' be listed is greater than the value of `MaxResults`, the response
@@ -5699,16 +5873,18 @@ datazone_search_listings <- function(additionalAttributes = NULL, aggregations =
 #' includes a pagination token named `NextToken`. You can specify this
 #' `NextToken` value in a subsequent call to
 #' [`search_types`][datazone_search_types] to list the next set of results.
-#' @param searchIn The details of the search.
 #' @param searchScope &#91;required&#93; Specifies the scope of the search for types.
 #' @param searchText Specifies the text for which to search.
+#' @param searchIn The details of the search.
+#' @param filters The filters for the [`search_types`][datazone_search_types] action.
 #' @param sort The specifies the way to sort the
 #' [`search_types`][datazone_search_types] results.
+#' @param managed &#91;required&#93; Specifies whether the search is managed.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_search_types
-datazone_search_types <- function(domainIdentifier, filters = NULL, managed, maxResults = NULL, nextToken = NULL, searchIn = NULL, searchScope, searchText = NULL, sort = NULL) {
+datazone_search_types <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, searchScope, searchText = NULL, searchIn = NULL, filters = NULL, sort = NULL, managed) {
   op <- new_operation(
     name = "SearchTypes",
     http_method = "POST",
@@ -5717,7 +5893,7 @@ datazone_search_types <- function(domainIdentifier, filters = NULL, managed, max
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$search_types_input(domainIdentifier = domainIdentifier, filters = filters, managed = managed, maxResults = maxResults, nextToken = nextToken, searchIn = searchIn, searchScope = searchScope, searchText = searchText, sort = sort)
+  input <- .datazone$search_types_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, searchScope = searchScope, searchText = searchText, searchIn = searchIn, filters = filters, sort = sort, managed = managed)
   output <- .datazone$search_types_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5736,6 +5912,9 @@ datazone_search_types <- function(domainIdentifier, filters = NULL, managed, max
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which you want to search
 #' user profiles.
+#' @param userType &#91;required&#93; Specifies the user type for the
+#' [`search_user_profiles`][datazone_search_user_profiles] action.
+#' @param searchText Specifies the text for which to search.
 #' @param maxResults The maximum number of results to return in a single call to
 #' [`search_user_profiles`][datazone_search_user_profiles]. When the number
 #' of results to be listed is greater than the value of `MaxResults`, the
@@ -5749,14 +5928,11 @@ datazone_search_types <- function(domainIdentifier, filters = NULL, managed, max
 #' `NextToken` value in a subsequent call to
 #' [`search_user_profiles`][datazone_search_user_profiles] to list the next
 #' set of results.
-#' @param searchText Specifies the text for which to search.
-#' @param userType &#91;required&#93; Specifies the user type for the
-#' [`search_user_profiles`][datazone_search_user_profiles] action.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_search_user_profiles
-datazone_search_user_profiles <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, searchText = NULL, userType) {
+datazone_search_user_profiles <- function(domainIdentifier, userType, searchText = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "SearchUserProfiles",
     http_method = "POST",
@@ -5765,7 +5941,7 @@ datazone_search_user_profiles <- function(domainIdentifier, maxResults = NULL, n
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$search_user_profiles_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, searchText = searchText, userType = userType)
+  input <- .datazone$search_user_profiles_input(domainIdentifier = domainIdentifier, userType = userType, searchText = searchText, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$search_user_profiles_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5782,16 +5958,16 @@ datazone_search_user_profiles <- function(domainIdentifier, maxResults = NULL, n
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_start_data_source_run/](https://www.paws-r-sdk.com/docs/datazone_start_data_source_run/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param dataSourceIdentifier &#91;required&#93; The identifier of the data source.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which to start a data
 #' source run.
+#' @param dataSourceIdentifier &#91;required&#93; The identifier of the data source.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_start_data_source_run
-datazone_start_data_source_run <- function(clientToken = NULL, dataSourceIdentifier, domainIdentifier) {
+datazone_start_data_source_run <- function(domainIdentifier, dataSourceIdentifier, clientToken = NULL) {
   op <- new_operation(
     name = "StartDataSourceRun",
     http_method = "POST",
@@ -5800,7 +5976,7 @@ datazone_start_data_source_run <- function(clientToken = NULL, dataSourceIdentif
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$start_data_source_run_input(clientToken = clientToken, dataSourceIdentifier = dataSourceIdentifier, domainIdentifier = domainIdentifier)
+  input <- .datazone$start_data_source_run_input(domainIdentifier = domainIdentifier, dataSourceIdentifier = dataSourceIdentifier, clientToken = clientToken)
   output <- .datazone$start_data_source_run_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5817,20 +5993,20 @@ datazone_start_data_source_run <- function(clientToken = NULL, dataSourceIdentif
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_start_metadata_generation_run/](https://www.paws-r-sdk.com/docs/datazone_start_metadata_generation_run/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
-#' request. This field is automatically populated if not provided.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain where you want to start a metadata
 #' generation run.
-#' @param owningProjectIdentifier &#91;required&#93; The ID of the project that owns the asset for which you want to start a
-#' metadata generation run.
-#' @param target &#91;required&#93; The asset for which you want to start a metadata generation run.
 #' @param type The type of the metadata generation run.
 #' @param types The types of the metadata generation run.
+#' @param target &#91;required&#93; The asset for which you want to start a metadata generation run.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request. This field is automatically populated if not provided.
+#' @param owningProjectIdentifier &#91;required&#93; The ID of the project that owns the asset for which you want to start a
+#' metadata generation run.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_start_metadata_generation_run
-datazone_start_metadata_generation_run <- function(clientToken = NULL, domainIdentifier, owningProjectIdentifier, target, type = NULL, types = NULL) {
+datazone_start_metadata_generation_run <- function(domainIdentifier, type = NULL, types = NULL, target, clientToken = NULL, owningProjectIdentifier) {
   op <- new_operation(
     name = "StartMetadataGenerationRun",
     http_method = "POST",
@@ -5839,7 +6015,7 @@ datazone_start_metadata_generation_run <- function(clientToken = NULL, domainIde
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$start_metadata_generation_run_input(clientToken = clientToken, domainIdentifier = domainIdentifier, owningProjectIdentifier = owningProjectIdentifier, target = target, type = type, types = types)
+  input <- .datazone$start_metadata_generation_run_input(domainIdentifier = domainIdentifier, type = type, types = types, target = target, clientToken = clientToken, owningProjectIdentifier = owningProjectIdentifier)
   output <- .datazone$start_metadata_generation_run_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5848,6 +6024,91 @@ datazone_start_metadata_generation_run <- function(clientToken = NULL, domainIde
   return(response)
 }
 .datazone$operations$start_metadata_generation_run <- datazone_start_metadata_generation_run
+
+#' Starts a notebook run in an Amazon DataZone domain
+#'
+#' @description
+#' Starts a notebook run in an Amazon DataZone domain. A notebook run represents the execution of a Amazon DataZone notebook within a project. You can configure compute, network, timeout, and environment settings for the run.
+#'
+#' See [https://www.paws-r-sdk.com/docs/datazone_start_notebook_run/](https://www.paws-r-sdk.com/docs/datazone_start_notebook_run/) for full documentation.
+#'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which the notebook run
+#' is started.
+#' @param owningProjectIdentifier &#91;required&#93; The identifier of the project that owns the notebook run.
+#' @param notebookIdentifier &#91;required&#93; The identifier of the notebook to run.
+#' @param scheduleIdentifier The identifier of the schedule associated with the notebook run.
+#' @param computeConfiguration The compute configuration for the notebook run, including instance type
+#' and environment version.
+#' @param networkConfiguration The network configuration for the notebook run, including network access
+#' type and optional VPC settings.
+#' @param timeoutConfiguration The timeout configuration for the notebook run. The default timeout is
+#' 720 minutes (12 hours) and the maximum is 1440 minutes (24 hours).
+#' @param triggerSource The source that triggered the notebook run.
+#' @param metadata The metadata for the notebook run, specified as key-value pairs. You can
+#' specify up to 50 entries, with keys up to 128 characters and values up
+#' to 1024 characters.
+#' @param parameters The sensitive parameters for the notebook run, specified as key-value
+#' pairs. You can specify up to 50 entries, with keys up to 128 characters
+#' and values up to 1024 characters.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request. This field is automatically populated if not provided.
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_start_notebook_run
+datazone_start_notebook_run <- function(domainIdentifier, owningProjectIdentifier, notebookIdentifier, scheduleIdentifier = NULL, computeConfiguration = NULL, networkConfiguration = NULL, timeoutConfiguration = NULL, triggerSource = NULL, metadata = NULL, parameters = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "StartNotebookRun",
+    http_method = "POST",
+    http_path = "/v2/domains/{domainIdentifier}/notebook-runs",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$start_notebook_run_input(domainIdentifier = domainIdentifier, owningProjectIdentifier = owningProjectIdentifier, notebookIdentifier = notebookIdentifier, scheduleIdentifier = scheduleIdentifier, computeConfiguration = computeConfiguration, networkConfiguration = networkConfiguration, timeoutConfiguration = timeoutConfiguration, triggerSource = triggerSource, metadata = metadata, parameters = parameters, clientToken = clientToken)
+  output <- .datazone$start_notebook_run_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$start_notebook_run <- datazone_start_notebook_run
+
+#' Stops a running notebook run in an Amazon DataZone domain
+#'
+#' @description
+#' Stops a running notebook run in an Amazon DataZone domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/datazone_stop_notebook_run/](https://www.paws-r-sdk.com/docs/datazone_stop_notebook_run/) for full documentation.
+#'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which the notebook run
+#' is stopped.
+#' @param identifier &#91;required&#93; The identifier of the notebook run to stop.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request. This field is automatically populated if not provided.
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_stop_notebook_run
+datazone_stop_notebook_run <- function(domainIdentifier, identifier, clientToken = NULL) {
+  op <- new_operation(
+    name = "StopNotebookRun",
+    http_method = "PUT",
+    http_path = "/v2/domains/{domainIdentifier}/notebook-runs/{identifier}/stop",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$stop_notebook_run_input(domainIdentifier = domainIdentifier, identifier = identifier, clientToken = clientToken)
+  output <- .datazone$stop_notebook_run_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$stop_notebook_run <- datazone_stop_notebook_run
 
 #' Tags a resource in Amazon DataZone
 #'
@@ -5922,20 +6183,20 @@ datazone_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_account_pool/](https://www.paws-r-sdk.com/docs/datazone_update_account_pool/) for full documentation.
 #'
-#' @param accountSource The source of accounts for the account pool. In the current release,
-#' it's either a static list of accounts provided by the customer or a
-#' custom Amazon Web Services Lambda handler.
-#' @param description The description of the account pool that is to be udpated.
 #' @param domainIdentifier &#91;required&#93; The domain ID where the account pool that is to be updated lives.
 #' @param identifier &#91;required&#93; The ID of the account pool that is to be updated.
 #' @param name The name of the account pool that is to be updated.
+#' @param description The description of the account pool that is to be udpated.
 #' @param resolutionStrategy The mechanism used to resolve the account selection from the account
 #' pool.
+#' @param accountSource The source of accounts for the account pool. In the current release,
+#' it's either a static list of accounts provided by the customer or a
+#' custom Amazon Web Services Lambda handler.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_account_pool
-datazone_update_account_pool <- function(accountSource = NULL, description = NULL, domainIdentifier, identifier, name = NULL, resolutionStrategy = NULL) {
+datazone_update_account_pool <- function(domainIdentifier, identifier, name = NULL, description = NULL, resolutionStrategy = NULL, accountSource = NULL) {
   op <- new_operation(
     name = "UpdateAccountPool",
     http_method = "PATCH",
@@ -5944,7 +6205,7 @@ datazone_update_account_pool <- function(accountSource = NULL, description = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_account_pool_input(accountSource = accountSource, description = description, domainIdentifier = domainIdentifier, identifier = identifier, name = name, resolutionStrategy = resolutionStrategy)
+  input <- .datazone$update_account_pool_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, resolutionStrategy = resolutionStrategy, accountSource = accountSource)
   output <- .datazone$update_account_pool_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5961,17 +6222,17 @@ datazone_update_account_pool <- function(accountSource = NULL, description = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_asset_filter/](https://www.paws-r-sdk.com/docs/datazone_update_asset_filter/) for full documentation.
 #'
-#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
-#' @param configuration The configuration of the asset filter.
-#' @param description The description of the asset filter.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to update an asset filter.
+#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
 #' @param identifier &#91;required&#93; The ID of the asset filter.
 #' @param name The name of the asset filter.
+#' @param description The description of the asset filter.
+#' @param configuration The configuration of the asset filter.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_asset_filter
-datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, description = NULL, domainIdentifier, identifier, name = NULL) {
+datazone_update_asset_filter <- function(domainIdentifier, assetIdentifier, identifier, name = NULL, description = NULL, configuration = NULL) {
   op <- new_operation(
     name = "UpdateAssetFilter",
     http_method = "PATCH",
@@ -5980,7 +6241,7 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_asset_filter_input(assetIdentifier = assetIdentifier, configuration = configuration, description = description, domainIdentifier = domainIdentifier, identifier = identifier, name = name)
+  input <- .datazone$update_asset_filter_input(domainIdentifier = domainIdentifier, assetIdentifier = assetIdentifier, identifier = identifier, name = name, description = description, configuration = configuration)
   output <- .datazone$update_asset_filter_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5997,16 +6258,17 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_connection/](https://www.paws-r-sdk.com/docs/datazone_update_connection/) for full documentation.
 #'
-#' @param awsLocation The location where a connection is to be updated.
-#' @param description The description of a connection.
+#' @param configurations The configurations of the connection.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where a connection is to be updated.
 #' @param identifier &#91;required&#93; The ID of the connection to be updated.
+#' @param description The description of a connection.
+#' @param awsLocation The location where a connection is to be updated.
 #' @param props The connection props.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_connection
-datazone_update_connection <- function(awsLocation = NULL, description = NULL, domainIdentifier, identifier, props = NULL) {
+datazone_update_connection <- function(configurations = NULL, domainIdentifier, identifier, description = NULL, awsLocation = NULL, props = NULL) {
   op <- new_operation(
     name = "UpdateConnection",
     http_method = "PATCH",
@@ -6015,7 +6277,7 @@ datazone_update_connection <- function(awsLocation = NULL, description = NULL, d
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_connection_input(awsLocation = awsLocation, description = description, domainIdentifier = domainIdentifier, identifier = identifier, props = props)
+  input <- .datazone$update_connection_input(configurations = configurations, domainIdentifier = domainIdentifier, identifier = identifier, description = description, awsLocation = awsLocation, props = props)
   output <- .datazone$update_connection_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6032,31 +6294,31 @@ datazone_update_connection <- function(awsLocation = NULL, description = NULL, d
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_data_source/](https://www.paws-r-sdk.com/docs/datazone_update_data_source/) for full documentation.
 #'
-#' @param assetFormsInput The asset forms to be updated as part of the
-#' [`update_data_source`][datazone_update_data_source] action.
-#' @param configuration The configuration to be updated as part of the
-#' [`update_data_source`][datazone_update_data_source] action.
-#' @param description The description to be updated as part of the
-#' [`update_data_source`][datazone_update_data_source] action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the domain in which to update a data source.
-#' @param enableSetting The enable setting to be updated as part of the
-#' [`update_data_source`][datazone_update_data_source] action.
 #' @param identifier &#91;required&#93; The identifier of the data source to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_data_source`][datazone_update_data_source] action.
+#' @param description The description to be updated as part of the
+#' [`update_data_source`][datazone_update_data_source] action.
+#' @param enableSetting The enable setting to be updated as part of the
+#' [`update_data_source`][datazone_update_data_source] action.
 #' @param publishOnImport The publish on import setting to be updated as part of the
+#' [`update_data_source`][datazone_update_data_source] action.
+#' @param assetFormsInput The asset forms to be updated as part of the
+#' [`update_data_source`][datazone_update_data_source] action.
+#' @param schedule The schedule to be updated as part of the
+#' [`update_data_source`][datazone_update_data_source] action.
+#' @param configuration The configuration to be updated as part of the
 #' [`update_data_source`][datazone_update_data_source] action.
 #' @param recommendation The recommendation to be updated as part of the
 #' [`update_data_source`][datazone_update_data_source] action.
 #' @param retainPermissionsOnRevokeFailure Specifies that the granted permissions are retained in case of a
 #' self-subscribe functionality failure for a data source.
-#' @param schedule The schedule to be updated as part of the
-#' [`update_data_source`][datazone_update_data_source] action.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_data_source
-datazone_update_data_source <- function(assetFormsInput = NULL, configuration = NULL, description = NULL, domainIdentifier, enableSetting = NULL, identifier, name = NULL, publishOnImport = NULL, recommendation = NULL, retainPermissionsOnRevokeFailure = NULL, schedule = NULL) {
+datazone_update_data_source <- function(domainIdentifier, identifier, name = NULL, description = NULL, enableSetting = NULL, publishOnImport = NULL, assetFormsInput = NULL, schedule = NULL, configuration = NULL, recommendation = NULL, retainPermissionsOnRevokeFailure = NULL) {
   op <- new_operation(
     name = "UpdateDataSource",
     http_method = "PATCH",
@@ -6065,7 +6327,7 @@ datazone_update_data_source <- function(assetFormsInput = NULL, configuration = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_data_source_input(assetFormsInput = assetFormsInput, configuration = configuration, description = description, domainIdentifier = domainIdentifier, enableSetting = enableSetting, identifier = identifier, name = name, publishOnImport = publishOnImport, recommendation = recommendation, retainPermissionsOnRevokeFailure = retainPermissionsOnRevokeFailure, schedule = schedule)
+  input <- .datazone$update_data_source_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, enableSetting = enableSetting, publishOnImport = publishOnImport, assetFormsInput = assetFormsInput, schedule = schedule, configuration = configuration, recommendation = recommendation, retainPermissionsOnRevokeFailure = retainPermissionsOnRevokeFailure)
   output <- .datazone$update_data_source_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6082,23 +6344,23 @@ datazone_update_data_source <- function(assetFormsInput = NULL, configuration = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_domain/](https://www.paws-r-sdk.com/docs/datazone_update_domain/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
+#' @param identifier &#91;required&#93; The ID of the Amazon Web Services domain that is to be updated.
 #' @param description The description to be updated as part of the
+#' [`update_domain`][datazone_update_domain] action.
+#' @param singleSignOn The single sign-on option to be updated as part of the
 #' [`update_domain`][datazone_update_domain] action.
 #' @param domainExecutionRole The domain execution role to be updated as part of the
 #' [`update_domain`][datazone_update_domain] action.
-#' @param identifier &#91;required&#93; The ID of the Amazon Web Services domain that is to be updated.
+#' @param serviceRole The service role of the domain.
 #' @param name The name to be updated as part of the
 #' [`update_domain`][datazone_update_domain] action.
-#' @param serviceRole The service role of the domain.
-#' @param singleSignOn The single sign-on option to be updated as part of the
-#' [`update_domain`][datazone_update_domain] action.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_domain
-datazone_update_domain <- function(clientToken = NULL, description = NULL, domainExecutionRole = NULL, identifier, name = NULL, serviceRole = NULL, singleSignOn = NULL) {
+datazone_update_domain <- function(identifier, description = NULL, singleSignOn = NULL, domainExecutionRole = NULL, serviceRole = NULL, name = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateDomain",
     http_method = "PUT",
@@ -6107,7 +6369,7 @@ datazone_update_domain <- function(clientToken = NULL, description = NULL, domai
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_domain_input(clientToken = clientToken, description = description, domainExecutionRole = domainExecutionRole, identifier = identifier, name = name, serviceRole = serviceRole, singleSignOn = singleSignOn)
+  input <- .datazone$update_domain_input(identifier = identifier, description = description, singleSignOn = singleSignOn, domainExecutionRole = domainExecutionRole, serviceRole = serviceRole, name = name, clientToken = clientToken)
   output <- .datazone$update_domain_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6124,15 +6386,15 @@ datazone_update_domain <- function(clientToken = NULL, description = NULL, domai
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_domain_unit/](https://www.paws-r-sdk.com/docs/datazone_update_domain_unit/) for full documentation.
 #'
-#' @param description The description of the domain unit that you want to update.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to update a domain unit.
 #' @param identifier &#91;required&#93; The ID of the domain unit that you want to update.
+#' @param description The description of the domain unit that you want to update.
 #' @param name The name of the domain unit that you want to update.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_domain_unit
-datazone_update_domain_unit <- function(description = NULL, domainIdentifier, identifier, name = NULL) {
+datazone_update_domain_unit <- function(domainIdentifier, identifier, description = NULL, name = NULL) {
   op <- new_operation(
     name = "UpdateDomainUnit",
     http_method = "PUT",
@@ -6141,7 +6403,7 @@ datazone_update_domain_unit <- function(description = NULL, domainIdentifier, id
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_domain_unit_input(description = description, domainIdentifier = domainIdentifier, identifier = identifier, name = name)
+  input <- .datazone$update_domain_unit_input(domainIdentifier = domainIdentifier, identifier = identifier, description = description, name = name)
   output <- .datazone$update_domain_unit_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6158,22 +6420,23 @@ datazone_update_domain_unit <- function(description = NULL, domainIdentifier, id
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_environment/](https://www.paws-r-sdk.com/docs/datazone_update_environment/) for full documentation.
 #'
-#' @param blueprintVersion The blueprint version to which the environment should be updated. You
-#' can only specify the following string for this parameter: `latest`.
-#' @param description The description to be updated as part of the
-#' [`update_environment`][datazone_update_environment] action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the domain in which the environment is to be updated.
-#' @param glossaryTerms The glossary terms to be updated as part of the
-#' [`update_environment`][datazone_update_environment] action.
 #' @param identifier &#91;required&#93; The identifier of the environment that is to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_environment`][datazone_update_environment] action.
+#' @param description The description to be updated as part of the
+#' [`update_environment`][datazone_update_environment] action.
+#' @param glossaryTerms The glossary terms to be updated as part of the
+#' [`update_environment`][datazone_update_environment] action.
+#' @param blueprintVersion The blueprint version to which the environment should be updated. You
+#' can only specify the following string for this parameter: `latest`.
 #' @param userParameters The user parameters of the environment.
+#' @param environmentConfigurationName The configuration name of the environment.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_environment
-datazone_update_environment <- function(blueprintVersion = NULL, description = NULL, domainIdentifier, glossaryTerms = NULL, identifier, name = NULL, userParameters = NULL) {
+datazone_update_environment <- function(domainIdentifier, identifier, name = NULL, description = NULL, glossaryTerms = NULL, blueprintVersion = NULL, userParameters = NULL, environmentConfigurationName = NULL) {
   op <- new_operation(
     name = "UpdateEnvironment",
     http_method = "PATCH",
@@ -6182,7 +6445,7 @@ datazone_update_environment <- function(blueprintVersion = NULL, description = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_environment_input(blueprintVersion = blueprintVersion, description = description, domainIdentifier = domainIdentifier, glossaryTerms = glossaryTerms, identifier = identifier, name = name, userParameters = userParameters)
+  input <- .datazone$update_environment_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, glossaryTerms = glossaryTerms, blueprintVersion = blueprintVersion, userParameters = userParameters, environmentConfigurationName = environmentConfigurationName)
   output <- .datazone$update_environment_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6199,17 +6462,17 @@ datazone_update_environment <- function(blueprintVersion = NULL, description = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_environment_action/](https://www.paws-r-sdk.com/docs/datazone_update_environment_action/) for full documentation.
 #'
-#' @param description The description of the environment action.
 #' @param domainIdentifier &#91;required&#93; The domain ID of the environment action.
 #' @param environmentIdentifier &#91;required&#93; The environment ID of the environment action.
 #' @param identifier &#91;required&#93; The ID of the environment action.
-#' @param name The name of the environment action.
 #' @param parameters The parameters of the environment action.
+#' @param name The name of the environment action.
+#' @param description The description of the environment action.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_environment_action
-datazone_update_environment_action <- function(description = NULL, domainIdentifier, environmentIdentifier, identifier, name = NULL, parameters = NULL) {
+datazone_update_environment_action <- function(domainIdentifier, environmentIdentifier, identifier, parameters = NULL, name = NULL, description = NULL) {
   op <- new_operation(
     name = "UpdateEnvironmentAction",
     http_method = "PATCH",
@@ -6218,7 +6481,7 @@ datazone_update_environment_action <- function(description = NULL, domainIdentif
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_environment_action_input(description = description, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, identifier = identifier, name = name, parameters = parameters)
+  input <- .datazone$update_environment_action_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, identifier = identifier, parameters = parameters, name = name, description = description)
   output <- .datazone$update_environment_action_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6235,12 +6498,12 @@ datazone_update_environment_action <- function(description = NULL, domainIdentif
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_environment_blueprint/](https://www.paws-r-sdk.com/docs/datazone_update_environment_blueprint/) for full documentation.
 #'
-#' @param description The description to be updated as part of the
-#' [`update_environment_blueprint`][datazone_update_environment_blueprint]
-#' action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which an environment
 #' blueprint is to be updated.
 #' @param identifier &#91;required&#93; The identifier of the environment blueprint to be updated.
+#' @param description The description to be updated as part of the
+#' [`update_environment_blueprint`][datazone_update_environment_blueprint]
+#' action.
 #' @param provisioningProperties The provisioning properties to be updated as part of the
 #' [`update_environment_blueprint`][datazone_update_environment_blueprint]
 #' action.
@@ -6251,7 +6514,7 @@ datazone_update_environment_action <- function(description = NULL, domainIdentif
 #' @keywords internal
 #'
 #' @rdname datazone_update_environment_blueprint
-datazone_update_environment_blueprint <- function(description = NULL, domainIdentifier, identifier, provisioningProperties = NULL, userParameters = NULL) {
+datazone_update_environment_blueprint <- function(domainIdentifier, identifier, description = NULL, provisioningProperties = NULL, userParameters = NULL) {
   op <- new_operation(
     name = "UpdateEnvironmentBlueprint",
     http_method = "PATCH",
@@ -6260,7 +6523,7 @@ datazone_update_environment_blueprint <- function(description = NULL, domainIden
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_environment_blueprint_input(description = description, domainIdentifier = domainIdentifier, identifier = identifier, provisioningProperties = provisioningProperties, userParameters = userParameters)
+  input <- .datazone$update_environment_blueprint_input(domainIdentifier = domainIdentifier, identifier = identifier, description = description, provisioningProperties = provisioningProperties, userParameters = userParameters)
   output <- .datazone$update_environment_blueprint_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6277,27 +6540,27 @@ datazone_update_environment_blueprint <- function(description = NULL, domainIden
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_environment_profile/](https://www.paws-r-sdk.com/docs/datazone_update_environment_profile/) for full documentation.
 #'
-#' @param awsAccountId The Amazon Web Services account in which a specified environment profile
-#' is to be udpated.
-#' @param awsAccountRegion The Amazon Web Services Region in which a specified environment profile
-#' is to be updated.
-#' @param description The description to be updated as part of the
-#' [`update_environment_profile`][datazone_update_environment_profile]
-#' action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which an environment
 #' profile is to be updated.
 #' @param identifier &#91;required&#93; The identifier of the environment profile that is to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_environment_profile`][datazone_update_environment_profile]
 #' action.
+#' @param description The description to be updated as part of the
+#' [`update_environment_profile`][datazone_update_environment_profile]
+#' action.
 #' @param userParameters The user parameters to be updated as part of the
 #' [`update_environment_profile`][datazone_update_environment_profile]
 #' action.
+#' @param awsAccountId The Amazon Web Services account in which a specified environment profile
+#' is to be udpated.
+#' @param awsAccountRegion The Amazon Web Services Region in which a specified environment profile
+#' is to be updated.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_environment_profile
-datazone_update_environment_profile <- function(awsAccountId = NULL, awsAccountRegion = NULL, description = NULL, domainIdentifier, identifier, name = NULL, userParameters = NULL) {
+datazone_update_environment_profile <- function(domainIdentifier, identifier, name = NULL, description = NULL, userParameters = NULL, awsAccountId = NULL, awsAccountRegion = NULL) {
   op <- new_operation(
     name = "UpdateEnvironmentProfile",
     http_method = "PATCH",
@@ -6306,7 +6569,7 @@ datazone_update_environment_profile <- function(awsAccountId = NULL, awsAccountR
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_environment_profile_input(awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion, description = description, domainIdentifier = domainIdentifier, identifier = identifier, name = name, userParameters = userParameters)
+  input <- .datazone$update_environment_profile_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, userParameters = userParameters, awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion)
   output <- .datazone$update_environment_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6323,22 +6586,22 @@ datazone_update_environment_profile <- function(awsAccountId = NULL, awsAccountR
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_glossary/](https://www.paws-r-sdk.com/docs/datazone_update_glossary/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param description The description to be updated as part of the
-#' [`update_glossary`][datazone_update_glossary] action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which a business
 #' glossary is to be updated.
 #' @param identifier &#91;required&#93; The identifier of the business glossary to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_glossary`][datazone_update_glossary] action.
+#' @param description The description to be updated as part of the
+#' [`update_glossary`][datazone_update_glossary] action.
 #' @param status The status to be updated as part of the
 #' [`update_glossary`][datazone_update_glossary] action.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_glossary
-datazone_update_glossary <- function(clientToken = NULL, description = NULL, domainIdentifier, identifier, name = NULL, status = NULL) {
+datazone_update_glossary <- function(domainIdentifier, identifier, name = NULL, description = NULL, status = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateGlossary",
     http_method = "PATCH",
@@ -6347,7 +6610,7 @@ datazone_update_glossary <- function(clientToken = NULL, description = NULL, dom
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_glossary_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, identifier = identifier, name = name, status = status)
+  input <- .datazone$update_glossary_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, status = status, clientToken = clientToken)
   output <- .datazone$update_glossary_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6369,21 +6632,21 @@ datazone_update_glossary <- function(clientToken = NULL, description = NULL, dom
 #' @param glossaryIdentifier The identifier of the business glossary in which a term is to be
 #' updated.
 #' @param identifier &#91;required&#93; The identifier of the business glossary term that is to be updated.
-#' @param longDescription The long description to be updated as part of the
-#' [`update_glossary_term`][datazone_update_glossary_term] action.
 #' @param name The name to be updated as part of the
 #' [`update_glossary_term`][datazone_update_glossary_term] action.
 #' @param shortDescription The short description to be updated as part of the
 #' [`update_glossary_term`][datazone_update_glossary_term] action.
-#' @param status The status to be updated as part of the
+#' @param longDescription The long description to be updated as part of the
 #' [`update_glossary_term`][datazone_update_glossary_term] action.
 #' @param termRelations The term relations to be updated as part of the
+#' [`update_glossary_term`][datazone_update_glossary_term] action.
+#' @param status The status to be updated as part of the
 #' [`update_glossary_term`][datazone_update_glossary_term] action.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_glossary_term
-datazone_update_glossary_term <- function(domainIdentifier, glossaryIdentifier = NULL, identifier, longDescription = NULL, name = NULL, shortDescription = NULL, status = NULL, termRelations = NULL) {
+datazone_update_glossary_term <- function(domainIdentifier, glossaryIdentifier = NULL, identifier, name = NULL, shortDescription = NULL, longDescription = NULL, termRelations = NULL, status = NULL) {
   op <- new_operation(
     name = "UpdateGlossaryTerm",
     http_method = "PATCH",
@@ -6392,7 +6655,7 @@ datazone_update_glossary_term <- function(domainIdentifier, glossaryIdentifier =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_glossary_term_input(domainIdentifier = domainIdentifier, glossaryIdentifier = glossaryIdentifier, identifier = identifier, longDescription = longDescription, name = name, shortDescription = shortDescription, status = status, termRelations = termRelations)
+  input <- .datazone$update_glossary_term_input(domainIdentifier = domainIdentifier, glossaryIdentifier = glossaryIdentifier, identifier = identifier, name = name, shortDescription = shortDescription, longDescription = longDescription, termRelations = termRelations, status = status)
   output <- .datazone$update_glossary_term_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6443,25 +6706,25 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_project/](https://www.paws-r-sdk.com/docs/datazone_update_project/) for full documentation.
 #'
-#' @param description The description to be updated as part of the
-#' [`update_project`][datazone_update_project] action.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain where a project is being updated.
-#' @param domainUnitId The ID of the domain unit.
-#' @param environmentDeploymentDetails The environment deployment details of the project.
-#' @param glossaryTerms The glossary terms to be updated as part of the
-#' [`update_project`][datazone_update_project] action.
 #' @param identifier &#91;required&#93; The identifier of the project that is to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_project`][datazone_update_project] action.
+#' @param description The description to be updated as part of the
+#' [`update_project`][datazone_update_project] action.
+#' @param resourceTags The resource tags of the project.
+#' @param glossaryTerms The glossary terms to be updated as part of the
+#' [`update_project`][datazone_update_project] action.
+#' @param domainUnitId The ID of the domain unit.
+#' @param environmentDeploymentDetails The environment deployment details of the project.
+#' @param userParameters The user parameters of the project.
 #' @param projectProfileVersion The project profile version to which the project should be updated. You
 #' can only specify the following string for this parameter: `latest`.
-#' @param resourceTags The resource tags of the project.
-#' @param userParameters The user parameters of the project.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_project
-datazone_update_project <- function(description = NULL, domainIdentifier, domainUnitId = NULL, environmentDeploymentDetails = NULL, glossaryTerms = NULL, identifier, name = NULL, projectProfileVersion = NULL, resourceTags = NULL, userParameters = NULL) {
+datazone_update_project <- function(domainIdentifier, identifier, name = NULL, description = NULL, resourceTags = NULL, glossaryTerms = NULL, domainUnitId = NULL, environmentDeploymentDetails = NULL, userParameters = NULL, projectProfileVersion = NULL) {
   op <- new_operation(
     name = "UpdateProject",
     http_method = "PATCH",
@@ -6470,7 +6733,7 @@ datazone_update_project <- function(description = NULL, domainIdentifier, domain
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_project_input(description = description, domainIdentifier = domainIdentifier, domainUnitId = domainUnitId, environmentDeploymentDetails = environmentDeploymentDetails, glossaryTerms = glossaryTerms, identifier = identifier, name = name, projectProfileVersion = projectProfileVersion, resourceTags = resourceTags, userParameters = userParameters)
+  input <- .datazone$update_project_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, resourceTags = resourceTags, glossaryTerms = glossaryTerms, domainUnitId = domainUnitId, environmentDeploymentDetails = environmentDeploymentDetails, userParameters = userParameters, projectProfileVersion = projectProfileVersion)
   output <- .datazone$update_project_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6487,22 +6750,22 @@ datazone_update_project <- function(description = NULL, domainIdentifier, domain
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_project_profile/](https://www.paws-r-sdk.com/docs/datazone_update_project_profile/) for full documentation.
 #'
-#' @param allowCustomProjectResourceTags Specifies whether custom project resource tags are supported.
-#' @param description The description of a project profile.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where a project profile is to be updated.
-#' @param domainUnitIdentifier The ID of the domain unit where a project profile is to be updated.
-#' @param environmentConfigurations The environment configurations of a project profile.
 #' @param identifier &#91;required&#93; The ID of a project profile that is to be updated.
 #' @param name The name of a project profile.
+#' @param description The description of a project profile.
+#' @param status The status of a project profile.
 #' @param projectResourceTags The resource tags of the project profile.
+#' @param allowCustomProjectResourceTags Specifies whether custom project resource tags are supported.
 #' @param projectResourceTagsDescription Field viewable through the UI that provides a project user with the
 #' allowed resource tag specifications.
-#' @param status The status of a project profile.
+#' @param environmentConfigurations The environment configurations of a project profile.
+#' @param domainUnitIdentifier The ID of the domain unit where a project profile is to be updated.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_project_profile
-datazone_update_project_profile <- function(allowCustomProjectResourceTags = NULL, description = NULL, domainIdentifier, domainUnitIdentifier = NULL, environmentConfigurations = NULL, identifier, name = NULL, projectResourceTags = NULL, projectResourceTagsDescription = NULL, status = NULL) {
+datazone_update_project_profile <- function(domainIdentifier, identifier, name = NULL, description = NULL, status = NULL, projectResourceTags = NULL, allowCustomProjectResourceTags = NULL, projectResourceTagsDescription = NULL, environmentConfigurations = NULL, domainUnitIdentifier = NULL) {
   op <- new_operation(
     name = "UpdateProjectProfile",
     http_method = "PATCH",
@@ -6511,7 +6774,7 @@ datazone_update_project_profile <- function(allowCustomProjectResourceTags = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_project_profile_input(allowCustomProjectResourceTags = allowCustomProjectResourceTags, description = description, domainIdentifier = domainIdentifier, domainUnitIdentifier = domainUnitIdentifier, environmentConfigurations = environmentConfigurations, identifier = identifier, name = name, projectResourceTags = projectResourceTags, projectResourceTagsDescription = projectResourceTagsDescription, status = status)
+  input <- .datazone$update_project_profile_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, status = status, projectResourceTags = projectResourceTags, allowCustomProjectResourceTags = allowCustomProjectResourceTags, projectResourceTagsDescription = projectResourceTagsDescription, environmentConfigurations = environmentConfigurations, domainUnitIdentifier = domainUnitIdentifier)
   output <- .datazone$update_project_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6528,16 +6791,16 @@ datazone_update_project_profile <- function(allowCustomProjectResourceTags = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_root_domain_unit_owner/](https://www.paws-r-sdk.com/docs/datazone_update_root_domain_unit_owner/) for full documentation.
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where the root domain unit owner is to be updated.
+#' @param currentOwner &#91;required&#93; The current owner of the root domain unit.
+#' @param newOwner &#91;required&#93; The new owner of the root domain unit.
 #' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
 #' request. This field is automatically populated if not provided.
-#' @param currentOwner &#91;required&#93; The current owner of the root domain unit.
-#' @param domainIdentifier &#91;required&#93; The ID of the domain where the root domain unit owner is to be updated.
-#' @param newOwner &#91;required&#93; The new owner of the root domain unit.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_root_domain_unit_owner
-datazone_update_root_domain_unit_owner <- function(clientToken = NULL, currentOwner, domainIdentifier, newOwner) {
+datazone_update_root_domain_unit_owner <- function(domainIdentifier, currentOwner, newOwner, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateRootDomainUnitOwner",
     http_method = "PATCH",
@@ -6546,7 +6809,7 @@ datazone_update_root_domain_unit_owner <- function(clientToken = NULL, currentOw
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_root_domain_unit_owner_input(clientToken = clientToken, currentOwner = currentOwner, domainIdentifier = domainIdentifier, newOwner = newOwner)
+  input <- .datazone$update_root_domain_unit_owner_input(domainIdentifier = domainIdentifier, currentOwner = currentOwner, newOwner = newOwner, clientToken = clientToken)
   output <- .datazone$update_root_domain_unit_owner_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6563,18 +6826,18 @@ datazone_update_root_domain_unit_owner <- function(clientToken = NULL, currentOw
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_rule/](https://www.paws-r-sdk.com/docs/datazone_update_rule/) for full documentation.
 #'
-#' @param description The description of the rule.
-#' @param detail The detail of the rule.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain in which a rule is to be updated.
 #' @param identifier &#91;required&#93; The ID of the rule that is to be updated
-#' @param includeChildDomainUnits Specifies whether to update this rule in the child domain units.
 #' @param name The name of the rule.
+#' @param description The description of the rule.
 #' @param scope The scrope of the rule.
+#' @param detail The detail of the rule.
+#' @param includeChildDomainUnits Specifies whether to update this rule in the child domain units.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_rule
-datazone_update_rule <- function(description = NULL, detail = NULL, domainIdentifier, identifier, includeChildDomainUnits = NULL, name = NULL, scope = NULL) {
+datazone_update_rule <- function(domainIdentifier, identifier, name = NULL, description = NULL, scope = NULL, detail = NULL, includeChildDomainUnits = NULL) {
   op <- new_operation(
     name = "UpdateRule",
     http_method = "PATCH",
@@ -6583,7 +6846,7 @@ datazone_update_rule <- function(description = NULL, detail = NULL, domainIdenti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_rule_input(description = description, detail = detail, domainIdentifier = domainIdentifier, identifier = identifier, includeChildDomainUnits = includeChildDomainUnits, name = name, scope = scope)
+  input <- .datazone$update_rule_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, scope = scope, detail = detail, includeChildDomainUnits = includeChildDomainUnits)
   output <- .datazone$update_rule_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6601,17 +6864,17 @@ datazone_update_rule <- function(description = NULL, detail = NULL, domainIdenti
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_subscription_grant_status/](https://www.paws-r-sdk.com/docs/datazone_update_subscription_grant_status/) for full documentation.
 #'
-#' @param assetIdentifier &#91;required&#93; The identifier of the asset the subscription grant status of which is to
-#' be updated.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which a subscription
 #' grant status is to be updated.
-#' @param failureCause Specifies the error message that is returned if the operation cannot be
-#' successfully completed.
 #' @param identifier &#91;required&#93; The identifier of the subscription grant the status of which is to be
 #' updated.
+#' @param assetIdentifier &#91;required&#93; The identifier of the asset the subscription grant status of which is to
+#' be updated.
 #' @param status &#91;required&#93; The status to be updated as part of the
 #' [`update_subscription_grant_status`][datazone_update_subscription_grant_status]
 #' action.
+#' @param failureCause Specifies the error message that is returned if the operation cannot be
+#' successfully completed.
 #' @param targetName The target name to be updated as part of the
 #' [`update_subscription_grant_status`][datazone_update_subscription_grant_status]
 #' action.
@@ -6619,7 +6882,7 @@ datazone_update_rule <- function(description = NULL, detail = NULL, domainIdenti
 #' @keywords internal
 #'
 #' @rdname datazone_update_subscription_grant_status
-datazone_update_subscription_grant_status <- function(assetIdentifier, domainIdentifier, failureCause = NULL, identifier, status, targetName = NULL) {
+datazone_update_subscription_grant_status <- function(domainIdentifier, identifier, assetIdentifier, status, failureCause = NULL, targetName = NULL) {
   op <- new_operation(
     name = "UpdateSubscriptionGrantStatus",
     http_method = "PATCH",
@@ -6628,7 +6891,7 @@ datazone_update_subscription_grant_status <- function(assetIdentifier, domainIde
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_subscription_grant_status_input(assetIdentifier = assetIdentifier, domainIdentifier = domainIdentifier, failureCause = failureCause, identifier = identifier, status = status, targetName = targetName)
+  input <- .datazone$update_subscription_grant_status_input(domainIdentifier = domainIdentifier, identifier = identifier, assetIdentifier = assetIdentifier, status = status, failureCause = failureCause, targetName = targetName)
   output <- .datazone$update_subscription_grant_status_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6681,34 +6944,37 @@ datazone_update_subscription_request <- function(domainIdentifier, identifier, r
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_subscription_target/](https://www.paws-r-sdk.com/docs/datazone_update_subscription_target/) for full documentation.
 #'
-#' @param applicableAssetTypes The applicable asset types to be updated as part of the
-#' [`update_subscription_target`][datazone_update_subscription_target]
-#' action.
-#' @param authorizedPrincipals The authorized principals to be updated as part of the
-#' [`update_subscription_target`][datazone_update_subscription_target]
-#' action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which a subscription
 #' target is to be updated.
 #' @param environmentIdentifier &#91;required&#93; The identifier of the environment in which a subscription target is to
 #' be updated.
 #' @param identifier &#91;required&#93; Identifier of the subscription target that is to be updated.
-#' @param manageAccessRole The manage access role to be updated as part of the
-#' [`update_subscription_target`][datazone_update_subscription_target]
-#' action.
 #' @param name The name to be updated as part of the
 #' [`update_subscription_target`][datazone_update_subscription_target]
 #' action.
-#' @param provider The provider to be updated as part of the
+#' @param authorizedPrincipals The authorized principals to be updated as part of the
+#' [`update_subscription_target`][datazone_update_subscription_target]
+#' action.
+#' @param applicableAssetTypes The applicable asset types to be updated as part of the
 #' [`update_subscription_target`][datazone_update_subscription_target]
 #' action.
 #' @param subscriptionTargetConfig The configuration to be updated as part of the
 #' [`update_subscription_target`][datazone_update_subscription_target]
 #' action.
+#' @param manageAccessRole The manage access role to be updated as part of the
+#' [`update_subscription_target`][datazone_update_subscription_target]
+#' action.
+#' @param provider The provider to be updated as part of the
+#' [`update_subscription_target`][datazone_update_subscription_target]
+#' action.
+#' @param subscriptionGrantCreationMode Determines the subscription grant creation mode for this target,
+#' defining if grants are auto-created upon subscription approval or
+#' managed manually.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_subscription_target
-datazone_update_subscription_target <- function(applicableAssetTypes = NULL, authorizedPrincipals = NULL, domainIdentifier, environmentIdentifier, identifier, manageAccessRole = NULL, name = NULL, provider = NULL, subscriptionTargetConfig = NULL) {
+datazone_update_subscription_target <- function(domainIdentifier, environmentIdentifier, identifier, name = NULL, authorizedPrincipals = NULL, applicableAssetTypes = NULL, subscriptionTargetConfig = NULL, manageAccessRole = NULL, provider = NULL, subscriptionGrantCreationMode = NULL) {
   op <- new_operation(
     name = "UpdateSubscriptionTarget",
     http_method = "PATCH",
@@ -6717,7 +6983,7 @@ datazone_update_subscription_target <- function(applicableAssetTypes = NULL, aut
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_subscription_target_input(applicableAssetTypes = applicableAssetTypes, authorizedPrincipals = authorizedPrincipals, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, identifier = identifier, manageAccessRole = manageAccessRole, name = name, provider = provider, subscriptionTargetConfig = subscriptionTargetConfig)
+  input <- .datazone$update_subscription_target_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, identifier = identifier, name = name, authorizedPrincipals = authorizedPrincipals, applicableAssetTypes = applicableAssetTypes, subscriptionTargetConfig = subscriptionTargetConfig, manageAccessRole = manageAccessRole, provider = provider, subscriptionGrantCreationMode = subscriptionGrantCreationMode)
   output <- .datazone$update_subscription_target_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6736,14 +7002,15 @@ datazone_update_subscription_target <- function(applicableAssetTypes = NULL, aut
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which a user profile is
 #' updated.
-#' @param status &#91;required&#93; The status of the user profile that are to be updated.
-#' @param type The type of the user profile that are to be updated.
 #' @param userIdentifier &#91;required&#93; The identifier of the user whose user profile is to be updated.
+#' @param type The type of the user profile that are to be updated.
+#' @param status &#91;required&#93; The status of the user profile that are to be updated.
+#' @param sessionName The session name for IAM role sessions.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_user_profile
-datazone_update_user_profile <- function(domainIdentifier, status, type = NULL, userIdentifier) {
+datazone_update_user_profile <- function(domainIdentifier, userIdentifier, type = NULL, status, sessionName = NULL) {
   op <- new_operation(
     name = "UpdateUserProfile",
     http_method = "PUT",
@@ -6752,7 +7019,7 @@ datazone_update_user_profile <- function(domainIdentifier, status, type = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_user_profile_input(domainIdentifier = domainIdentifier, status = status, type = type, userIdentifier = userIdentifier)
+  input <- .datazone$update_user_profile_input(domainIdentifier = domainIdentifier, userIdentifier = userIdentifier, type = type, status = status, sessionName = sessionName)
   output <- .datazone$update_user_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)

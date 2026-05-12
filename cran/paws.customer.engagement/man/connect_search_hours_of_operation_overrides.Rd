@@ -21,8 +21,6 @@ results.}
 
 \item{MaxResults}{The maximum number of results to return per page.}
 
-\item{SearchFilter}{}
-
 \item{SearchCriteria}{The search criteria to be used to return hours of operations overrides.}
 }
 \description{

@@ -85,6 +85,7 @@ resourceexplorer_associate_default_view <- function(ViewArn) {
 #'   Views = list(
 #'     list(
 #'       ViewArn = "string",
+#'       ViewName = "string",
 #'       Owner = "string",
 #'       LastUpdatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -396,6 +397,7 @@ resourceexplorer_create_resource_explorer_setup <- function(RegionList, Aggregat
 #' list(
 #'   View = list(
 #'     ViewArn = "string",
+#'     ViewName = "string",
 #'     Owner = "string",
 #'     LastUpdatedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -972,6 +974,7 @@ resourceexplorer_get_managed_view <- function(ManagedViewArn) {
 #'         Status = "SUCCEEDED"|"FAILED"|"IN_PROGRESS"|"SKIPPED",
 #'         View = list(
 #'           ViewArn = "string",
+#'           ViewName = "string",
 #'           Owner = "string",
 #'           LastUpdatedAt = as.POSIXct(
 #'             "2015-01-01"
@@ -1097,6 +1100,7 @@ resourceexplorer_get_service_index <- function() {
 #' list(
 #'   View = list(
 #'     ServiceViewArn = "string",
+#'     ServiceViewName = "string",
 #'     Filters = list(
 #'       FilterString = "string"
 #'     ),
@@ -1160,6 +1164,7 @@ resourceexplorer_get_service_view <- function(ServiceViewArn) {
 #' list(
 #'   View = list(
 #'     ViewArn = "string",
+#'     ViewName = "string",
 #'     Owner = "string",
 #'     LastUpdatedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -2389,6 +2394,7 @@ resourceexplorer_update_index_type <- function(Arn, Type) {
 #' list(
 #'   View = list(
 #'     ViewArn = "string",
+#'     ViewName = "string",
 #'     Owner = "string",
 #'     LastUpdatedAt = as.POSIXct(
 #'       "2015-01-01"

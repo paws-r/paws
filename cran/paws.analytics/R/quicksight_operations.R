@@ -111,7 +111,7 @@ quicksight_cancel_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
 #' Creates Amazon Quick Sight customizations
 #'
 #' @description
-#' Creates Amazon Quick Sight customizations. Currently, you can add a custom default theme by using the [`create_account_customization`][quicksight_create_account_customization] or [`update_account_customization`][quicksight_update_account_customization] API operation. To further customize Amazon Quick Sight by removing Amazon Quick Sight sample assets and videos for all new users, see [Customizing Quick Sight](https://docs.aws.amazon.com/quicksuite/latest/userguide/customizations.html) in the *Amazon Quick Sight User Guide.*
+#' Creates Amazon Quick Sight customizations. Currently, you can add a custom default theme by using the [`create_account_customization`][quicksight_create_account_customization] or [`update_account_customization`][quicksight_update_account_customization] API operation. To further customize Amazon Quick Sight by removing Amazon Quick Sight sample assets and videos for all new users, see [Customizing Quick Sight](https://docs.aws.amazon.com/quick/latest/userguide/customizations.html) in the *Amazon Quick Sight User Guide.*
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_create_account_customization/](https://www.paws-r-sdk.com/docs/quicksight_create_account_customization/) for full documentation.
 #'
@@ -201,33 +201,33 @@ quicksight_create_account_customization <- function(AwsAccountId, Namespace = NU
 #' 
 #' For more information about using IAM Identity Center in Amazon Quick
 #' Sight, see [Using IAM Identity Center with Amazon Quick Sight Enterprise
-#' Edition](https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html)
+#' Edition](https://docs.aws.amazon.com/quick/latest/userguide/setting-up-sso.html)
 #' in the Amazon Quick Sight User Guide. For more information about using
 #' Active Directory in Amazon Quick Sight, see [Using Active Directory with
 #' Amazon Quick Sight Enterprise
-#' Edition](https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html)
+#' Edition](https://docs.aws.amazon.com/quick/latest/userguide/aws-directory-service.html)
 #' in the Amazon Quick Sight User Guide.
 #' @param AuthorGroup The author group associated with your Active Directory or IAM Identity
 #' Center account.
 #' 
 #' For more information about using IAM Identity Center in Amazon Quick
 #' Sight, see [Using IAM Identity Center with Amazon Quick Sight Enterprise
-#' Edition](https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html)
+#' Edition](https://docs.aws.amazon.com/quick/latest/userguide/setting-up-sso.html)
 #' in the Amazon Quick Sight User Guide. For more information about using
 #' Active Directory in Amazon Quick Sight, see [Using Active Directory with
 #' Amazon Quick Sight Enterprise
-#' Edition](https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html)
+#' Edition](https://docs.aws.amazon.com/quick/latest/userguide/aws-directory-service.html)
 #' in the Amazon Quick Sight User Guide.
 #' @param ReaderGroup The reader group associated with your Active Directory or IAM Identity
 #' Center account.
 #' 
 #' For more information about using IAM Identity Center in Amazon Quick
 #' Sight, see [Using IAM Identity Center with Amazon Quick Sight Enterprise
-#' Edition](https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html)
+#' Edition](https://docs.aws.amazon.com/quick/latest/userguide/setting-up-sso.html)
 #' in the Amazon Quick Sight User Guide. For more information about using
 #' Active Directory in Amazon Quick Sight, see [Using Active Directory with
 #' Amazon Quick Sight Enterprise
-#' Edition](https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html)
+#' Edition](https://docs.aws.amazon.com/quick/latest/userguide/aws-directory-service.html)
 #' in the Amazon Quick Sight User Guide.
 #' @param AdminProGroup The admin pro group associated with your Active Directory or IAM
 #' Identity Center account. Either this field or the `AdminGroup` field is
@@ -236,33 +236,33 @@ quicksight_create_account_customization <- function(AwsAccountId, Namespace = NU
 #' 
 #' For more information about using IAM Identity Center in Amazon Quick
 #' Sight, see [Using IAM Identity Center with Amazon Quick Sight Enterprise
-#' Edition](https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html)
+#' Edition](https://docs.aws.amazon.com/quick/latest/userguide/setting-up-sso.html)
 #' in the Amazon Quick Sight User Guide. For more information about using
 #' Active Directory in Amazon Quick Sight, see [Using Active Directory with
 #' Amazon Quick Sight Enterprise
-#' Edition](https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html)
+#' Edition](https://docs.aws.amazon.com/quick/latest/userguide/aws-directory-service.html)
 #' in the Amazon Quick Sight User Guide.
 #' @param AuthorProGroup The author pro group associated with your Active Directory or IAM
 #' Identity Center account.
 #' 
 #' For more information about using IAM Identity Center in Amazon Quick
 #' Sight, see [Using IAM Identity Center with Amazon Quick Sight Enterprise
-#' Edition](https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html)
+#' Edition](https://docs.aws.amazon.com/quick/latest/userguide/setting-up-sso.html)
 #' in the Amazon Quick Sight User Guide. For more information about using
 #' Active Directory in Amazon Quick Sight, see [Using Active Directory with
 #' Amazon Quick Sight Enterprise
-#' Edition](https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html)
+#' Edition](https://docs.aws.amazon.com/quick/latest/userguide/aws-directory-service.html)
 #' in the Amazon Quick Sight User Guide.
 #' @param ReaderProGroup The reader pro group associated with your Active Directory or IAM
 #' Identity Center account.
 #' 
 #' For more information about using IAM Identity Center in Amazon Quick
 #' Sight, see [Using IAM Identity Center with Amazon Quick Sight Enterprise
-#' Edition](https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html)
+#' Edition](https://docs.aws.amazon.com/quick/latest/userguide/setting-up-sso.html)
 #' in the Amazon Quick Sight User Guide. For more information about using
 #' Active Directory in Amazon Quick Sight, see [Using Active Directory with
 #' Amazon Quick Sight Enterprise
-#' Edition](https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html)
+#' Edition](https://docs.aws.amazon.com/quick/latest/userguide/aws-directory-service.html)
 #' in the Amazon Quick Sight User Guide.
 #' @param FirstName The first name of the author of the Amazon Quick Sight account to use
 #' for future communications. This field is required if `ENTERPPRISE_AND_Q`
@@ -425,7 +425,7 @@ quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 #' See [https://www.paws-r-sdk.com/docs/quicksight_create_brand/](https://www.paws-r-sdk.com/docs/quicksight_create_brand/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand.
-#' @param BrandId &#91;required&#93; The ID of the Quick Suite brand.
+#' @param BrandId &#91;required&#93; The ID of the Quick brand.
 #' @param BrandDefinition The definition of the brand.
 #' @param Tags A map of the key-value pairs that are assigned to the brand.
 #'
@@ -1556,7 +1556,7 @@ quicksight_delete_analysis <- function(AwsAccountId, AnalysisId, RecoveryWindowI
 #' See [https://www.paws-r-sdk.com/docs/quicksight_delete_brand/](https://www.paws-r-sdk.com/docs/quicksight_delete_brand/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand.
-#' @param BrandId &#91;required&#93; The ID of the Quick Suite brand.
+#' @param BrandId &#91;required&#93; The ID of the Quick brand.
 #'
 #' @keywords internal
 #'
@@ -2901,6 +2901,48 @@ quicksight_describe_asset_bundle_import_job <- function(AwsAccountId, AssetBundl
 }
 .quicksight$operations$describe_asset_bundle_import_job <- quicksight_describe_asset_bundle_import_job
 
+#' Retrieves the status and details of a specified automation job,
+#' including its status and outputs
+#'
+#' @description
+#' Retrieves the status and details of a specified automation job, including its status and outputs.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_automation_job/](https://www.paws-r-sdk.com/docs/quicksight_describe_automation_job/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the automation
+#' job.
+#' @param AutomationGroupId &#91;required&#93; The ID of the automation group that contains the automation.
+#' @param AutomationId &#91;required&#93; The ID of the automation that the job belongs to.
+#' @param IncludeInputPayload A Boolean value that indicates whether to include the input payload in
+#' the response. If set to `true`, the input payload will be included. If
+#' set to `false`, the input payload will be returned as `null`.
+#' @param IncludeOutputPayload A Boolean value that indicates whether to include the output payload in
+#' the response. If set to `true`, the output payload will be included. If
+#' set to `false`, the output payload will be returned as `null`.
+#' @param JobId &#91;required&#93; The ID of the automation job to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_automation_job
+quicksight_describe_automation_job <- function(AwsAccountId, AutomationGroupId, AutomationId, IncludeInputPayload = NULL, IncludeOutputPayload = NULL, JobId) {
+  op <- new_operation(
+    name = "DescribeAutomationJob",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/automation-groups/{AutomationGroupId}/automations/{AutomationId}/jobs/{JobId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_automation_job_input(AwsAccountId = AwsAccountId, AutomationGroupId = AutomationGroupId, AutomationId = AutomationId, IncludeInputPayload = IncludeInputPayload, IncludeOutputPayload = IncludeOutputPayload, JobId = JobId)
+  output <- .quicksight$describe_automation_job_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_automation_job <- quicksight_describe_automation_job
+
 #' Describes a brand
 #'
 #' @description
@@ -2909,7 +2951,7 @@ quicksight_describe_asset_bundle_import_job <- function(AwsAccountId, AssetBundl
 #' See [https://www.paws-r-sdk.com/docs/quicksight_describe_brand/](https://www.paws-r-sdk.com/docs/quicksight_describe_brand/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand.
-#' @param BrandId &#91;required&#93; The ID of the Quick Suite brand.
+#' @param BrandId &#91;required&#93; The ID of the Quick brand.
 #' @param VersionId The ID of the specific version. The default value is the latest version.
 #'
 #' @keywords internal
@@ -2974,7 +3016,7 @@ quicksight_describe_brand_assignment <- function(AwsAccountId) {
 #' See [https://www.paws-r-sdk.com/docs/quicksight_describe_brand_published_version/](https://www.paws-r-sdk.com/docs/quicksight_describe_brand_published_version/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand.
-#' @param BrandId &#91;required&#93; The ID of the Quick Suite brand.
+#' @param BrandId &#91;required&#93; The ID of the Quick brand.
 #'
 #' @keywords internal
 #'
@@ -3918,17 +3960,17 @@ quicksight_describe_role_custom_permission <- function(Role, AwsAccountId, Names
 }
 .quicksight$operations$describe_role_custom_permission <- quicksight_describe_role_custom_permission
 
-#' Describes the self-upgrade configuration for a Quick Suite account
+#' Describes the self-upgrade configuration for a Quick account
 #'
 #' @description
-#' Describes the self-upgrade configuration for a Quick Suite account.
+#' Describes the self-upgrade configuration for a Quick account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_describe_self_upgrade_configuration/](https://www.paws-r-sdk.com/docs/quicksight_describe_self_upgrade_configuration/) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the Quick Suite
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the Quick
 #' self-upgrade configuration.
-#' @param Namespace &#91;required&#93; The Quick Suite namespace that you want to describe the Quick Suite
-#' self-upgrade configuration for.
+#' @param Namespace &#91;required&#93; The Quick namespace that you want to describe the Quick self-upgrade
+#' configuration for.
 #'
 #' @keywords internal
 #'
@@ -4420,12 +4462,12 @@ quicksight_describe_vpc_connection <- function(AwsAccountId, VPCConnectionId) {
 }
 .quicksight$operations$describe_vpc_connection <- quicksight_describe_vpc_connection
 
-#' Generates an embed URL that you can use to embed an Amazon Quick Suite
+#' Generates an embed URL that you can use to embed an Amazon Quick
 #' dashboard or visual in your website, without having to register any
 #' reader users
 #'
 #' @description
-#' Generates an embed URL that you can use to embed an Amazon Quick Suite dashboard or visual in your website, without having to register any reader users. Before you use this action, make sure that you have configured the dashboards and permissions.
+#' Generates an embed URL that you can use to embed an Amazon Quick dashboard or visual in your website, without having to register any reader users. Before you use this action, make sure that you have configured the dashboards and permissions.
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_anonymous_user/](https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_anonymous_user/) for full documentation.
 #'
@@ -4434,17 +4476,40 @@ quicksight_describe_vpc_connection <- function(AwsAccountId, VPCConnectionId) {
 #' @param SessionLifetimeInMinutes How many minutes the session is valid. The session lifetime must be in
 #' \[15-600\] minutes range.
 #' @param Namespace &#91;required&#93; The Amazon Quick Sight namespace that the anonymous user virtually
-#' belongs to. If you are not using an Amazon Quick Suite custom namespace,
-#' set this to `default`.
-#' @param SessionTags The session tags used for row-level security. Before you use this
-#' parameter, make sure that you have configured the relevant datasets
-#' using the `DataSet$RowLevelPermissionTagConfiguration` parameter so that
-#' session tags can be used to provide row-level security.
+#' belongs to. If you are not using an Amazon Quick custom namespace, set
+#' this to `default`.
+#' @param SessionTags Session tags are user-specified strings that identify a session in your
+#' application. You can use these tags to implement row-level security
+#' (RLS) controls. Before you use the `SessionTags` parameter, make sure
+#' that you have configured the relevant datasets using the
+#' `DataSet$RowLevelPermissionTagConfiguration` parameter so that session
+#' tags can be used to provide row-level security.
 #' 
-#' These are not the tags used for the Amazon Web Services resource tagging
-#' feature. For more information, see [Using Row-Level Security (RLS) with
-#' Tags](https://docs.aws.amazon.com/quicksuite/latest/userguide/quicksight-dev-rls-tags.html)in
-#' the *Amazon Quick Sight User Guide*.
+#' When using `SessionTags` in
+#' [`generate_embed_url_for_anonymous_user`][quicksight_generate_embed_url_for_anonymous_user],
+#' 
+#' -   Treat `SessionTags` as security credentials. Do not expose
+#'     `SessionTags` to end users or client-side code.
+#' 
+#' -   Implement server-side controls. Ensure that `SessionTags` are set
+#'     exclusively by your trusted backend services, not by parameters that
+#'     end users can modify.
+#' 
+#' -   Protect `SessionTags` from enumeration. Ensure that users in one
+#'     tenant cannot discover or guess sessionTag values belonging to other
+#'     tenants.
+#' 
+#' -   Review your architecture. If downstream customers or partners are
+#'     allowed to call the
+#'     [`generate_embed_url_for_anonymous_user`][quicksight_generate_embed_url_for_anonymous_user]
+#'     API directly, evaluate whether those parties could specify
+#'     sessionTag values for tenants they should not access.
+#' 
+#' Besides, these are not the tags used for the Amazon Web Services
+#' resource tagging feature. For more information, see [Using Row-Level
+#' Security (RLS) with
+#' Tags](https://docs.aws.amazon.com/quick/latest/userguide/quicksight-dev-rls-tags.html)
+#' in the *Amazon Quick User Guide*.
 #' @param AuthorizedResourceArns &#91;required&#93; The Amazon Resource Names (ARNs) for the Quick Sight resources that the
 #' user is authorized to access during the lifetime of the session.
 #' 
@@ -4489,11 +4554,11 @@ quicksight_generate_embed_url_for_anonymous_user <- function(AwsAccountId, Sessi
 }
 .quicksight$operations$generate_embed_url_for_anonymous_user <- quicksight_generate_embed_url_for_anonymous_user
 
-#' Generates an embed URL that you can use to embed an Amazon Quick Suite
+#' Generates an embed URL that you can use to embed an Amazon Quick
 #' experience in your website
 #'
 #' @description
-#' Generates an embed URL that you can use to embed an Amazon Quick Suite experience in your website. This action can be used for any type of user registered in an Amazon Quick Suite account. Before you use this action, make sure that you have configured the relevant Amazon Quick Suite resource and permissions.
+#' Generates an embed URL that you can use to embed an Amazon Quick experience in your website. This action can be used for any type of user registered in an Amazon Quick account. Before you use this action, make sure that you have configured the relevant Amazon Quick resource and permissions.
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_registered_user/](https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_registered_user/) for full documentation.
 #'
@@ -4503,9 +4568,9 @@ quicksight_generate_embed_url_for_anonymous_user <- function(AwsAccountId, Sessi
 #' \[15-600\] minutes range.
 #' @param UserArn &#91;required&#93; The Amazon Resource Name for the registered user.
 #' @param ExperienceConfiguration &#91;required&#93; The experience that you want to embed. For registered users, you can
-#' embed Quick Suite dashboards, Amazon Quick Sight visuals, the Amazon
-#' Quick Sight Q search bar, the Amazon Quick Sight Generative Q&A
-#' experience, or the entire Amazon Quick Sight console.
+#' embed Quick dashboards, Amazon Quick Sight visuals, the Amazon Quick
+#' Sight Q search bar, the Amazon Quick Sight Generative Q&A experience, or
+#' the entire Amazon Quick Sight console.
 #' @param AllowedDomains The domains that you want to add to the allow list for access to the
 #' generated URL that is then embedded. This optional parameter overrides
 #' the static domains that are configured in the Manage Quick Sight menu in
@@ -4602,10 +4667,10 @@ quicksight_generate_embed_url_for_registered_user_with_identity <- function(AwsA
 #' URL. The state is stored in Amazon Quick Sight, not in a browser cookie.
 #' If this is set to FALSE, the state of the user session is not persisted.
 #' The default is `FALSE`.
-#' @param UserArn The Amazon Quick Suite user's Amazon Resource Name (ARN), for use with
-#' `QUICKSIGHT` identity type. You can use this for any Amazon Quick Suite
-#' users in your account (readers, authors, or admins) authenticated as one
-#' of the following:
+#' @param UserArn The Amazon Quick user's Amazon Resource Name (ARN), for use with
+#' `QUICKSIGHT` identity type. You can use this for any Amazon Quick users
+#' in your account (readers, authors, or admins) authenticated as one of
+#' the following:
 #' 
 #' -   Active Directory (AD) users or group members
 #' 
@@ -4623,7 +4688,7 @@ quicksight_generate_embed_url_for_registered_user_with_identity <- function(AwsA
 #' @param AdditionalDashboardIds A list of one or more dashboard IDs that you want anonymous users to
 #' have tempporary access to. Currently, the `IdentityType` parameter must
 #' be set to `ANONYMOUS` because other identity types authenticate as Quick
-#' Suite or IAM users. For example, if you set
+#' or IAM users. For example, if you set
 #' "`--dashboard-id dash_id1 --dashboard-id dash_id2 dash_id3 identity-type ANONYMOUS`",
 #' the session can access all three dashboards.
 #'
@@ -4733,11 +4798,27 @@ quicksight_get_flow_permissions <- function(AwsAccountId, FlowId) {
 #' This parameter is required when the UserIdentifier is specified using
 #' Email or UserName.
 #' @param SessionExpiresAt The timestamp at which the session will expire.
+#' @param ContextRegion The region in which the context is to be used. Use this parameter to
+#' obtain an identity context for cross-region use.
+#' 
+#' The specified region must meet the following conditions:
+#' 
+#' -   The region must be in the same Amazon Web Services partition as the
+#'     region you are calling from. Cross-partition requests are not
+#'     supported. For example, you cannot specify a region in the `aws-cn`
+#'     partition when calling from a region in the `aws` partition.
+#' 
+#' -   It must be a valid Amazon QuickSight supported region.
+#' 
+#' -   The calling customer account must be enabled in the specified
+#'     context region.
+#' 
+#' -   This parameter is not supported when calling from an opt-in region.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_get_identity_context
-quicksight_get_identity_context <- function(AwsAccountId, UserIdentifier, Namespace = NULL, SessionExpiresAt = NULL) {
+quicksight_get_identity_context <- function(AwsAccountId, UserIdentifier, Namespace = NULL, SessionExpiresAt = NULL, ContextRegion = NULL) {
   op <- new_operation(
     name = "GetIdentityContext",
     http_method = "POST",
@@ -4746,7 +4827,7 @@ quicksight_get_identity_context <- function(AwsAccountId, UserIdentifier, Namesp
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .quicksight$get_identity_context_input(AwsAccountId = AwsAccountId, UserIdentifier = UserIdentifier, Namespace = Namespace, SessionExpiresAt = SessionExpiresAt)
+  input <- .quicksight$get_identity_context_input(AwsAccountId = AwsAccountId, UserIdentifier = UserIdentifier, Namespace = Namespace, SessionExpiresAt = SessionExpiresAt, ContextRegion = ContextRegion)
   output <- .quicksight$get_identity_context_output()
   config <- get_config()
   svc <- .quicksight$service(config, op)
@@ -4760,7 +4841,7 @@ quicksight_get_identity_context <- function(AwsAccountId, UserIdentifier, Namesp
 #' the Amazon Amazon Quick Sight console in your web server code
 #'
 #' @description
-#' Generates a session URL and authorization code that you can use to embed the Amazon Amazon Quick Sight console in your web server code. Use [`get_session_embed_url`][quicksight_get_session_embed_url] where you want to provide an authoring portal that allows users to create data sources, datasets, analyses, and dashboards. The users who access an embedded Amazon Quick Sight console need belong to the author or admin security cohort. If you want to restrict permissions to some of these features, add a custom permissions profile to the user with the [`update_user`][quicksight_update_user] API operation. Use [`register_user`][quicksight_register_user] API operation to add a new user with a custom permission profile attached. For more information, see the following sections in the *Amazon Quick Suite User Guide*:
+#' Generates a session URL and authorization code that you can use to embed the Amazon Amazon Quick Sight console in your web server code. Use [`get_session_embed_url`][quicksight_get_session_embed_url] where you want to provide an authoring portal that allows users to create data sources, datasets, analyses, and dashboards. The users who access an embedded Amazon Quick Sight console need belong to the author or admin security cohort. If you want to restrict permissions to some of these features, add a custom permissions profile to the user with the [`update_user`][quicksight_update_user] API operation. Use [`register_user`][quicksight_register_user] API operation to add a new user with a custom permission profile attached. For more information, see the following sections in the *Amazon Quick User Guide*:
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_get_session_embed_url/](https://www.paws-r-sdk.com/docs/quicksight_get_session_embed_url/) for full documentation.
 #'
@@ -4784,10 +4865,10 @@ quicksight_get_identity_context <- function(AwsAccountId, UserIdentifier, Namesp
 #'     from the Amazon Quick Sight console URL of the analysis
 #' @param SessionLifetimeInMinutes How many minutes the session is valid. The session lifetime must be
 #' 15-600 minutes.
-#' @param UserArn The Amazon Quick Suite user's Amazon Resource Name (ARN), for use with
+#' @param UserArn The Amazon Quick user's Amazon Resource Name (ARN), for use with
 #' `QUICKSIGHT` identity type. You can use this for any type of Amazon
-#' Quick Suite users in your account (readers, authors, or admins). They
-#' need to be authenticated as one of the following:
+#' Quick users in your account (readers, authors, or admins). They need to
+#' be authenticated as one of the following:
 #' 
 #' 1.  Active Directory (AD) users or group members
 #' 
@@ -5647,16 +5728,16 @@ quicksight_list_role_memberships <- function(Role, NextToken = NULL, MaxResults 
 }
 .quicksight$operations$list_role_memberships <- quicksight_list_role_memberships
 
-#' Lists all self-upgrade requests for a Quick Suite account
+#' Lists all self-upgrade requests for a Quick account
 #'
 #' @description
-#' Lists all self-upgrade requests for a Quick Suite account.
+#' Lists all self-upgrade requests for a Quick account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_list_self_upgrades/](https://www.paws-r-sdk.com/docs/quicksight_list_self_upgrades/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the self-upgrade
 #' requests.
-#' @param Namespace &#91;required&#93; The Quick Suite namespace for the self-upgrade requests.
+#' @param Namespace &#91;required&#93; The Quick namespace for the self-upgrade requests.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to return.
@@ -6232,7 +6313,7 @@ quicksight_put_data_set_refresh_properties <- function(AwsAccountId, DataSetId, 
 #' request
 #'
 #' @description
-#' Creates an Amazon Quick Sight user whose identity is associated with the Identity and Access Management (IAM) identity or role specified in the request. When you register a new user from the Quick Sight API, Quick Sight generates a registration URL. The user accesses this registration URL to create their account. Quick Sight doesn't send a registration email to users who are registered from the Quick Sight API. If you want new users to receive a registration email, then add those users in the Quick Sight console. For more information on registering a new user in the Quick Sight console, see [Inviting users to access Quick Sight](https://docs.aws.amazon.com/quicksuite/latest/userguide/managing-users.html#inviting-users).
+#' Creates an Amazon Quick Sight user whose identity is associated with the Identity and Access Management (IAM) identity or role specified in the request. When you register a new user from the Quick Sight API, Quick Sight generates a registration URL. The user accesses this registration URL to create their account. Quick Sight doesn't send a registration email to users who are registered from the Quick Sight API. If you want new users to receive a registration email, then add those users in the Quick Sight console. For more information on registering a new user in the Quick Sight console, see [Inviting users to access Quick Sight](https://docs.aws.amazon.com/quick/latest/userguide/managing-users.html#inviting-users).
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_register_user/](https://www.paws-r-sdk.com/docs/quicksight_register_user/) for full documentation.
 #'
@@ -6689,10 +6770,10 @@ quicksight_search_groups <- function(AwsAccountId, NextToken = NULL, MaxResults 
 }
 .quicksight$operations$search_groups <- quicksight_search_groups
 
-#' Searches for any Q topic that exists in an Quick Suite account
+#' Searches for any Q topic that exists in an Quick account
 #'
 #' @description
-#' Searches for any Q topic that exists in an Quick Suite account.
+#' Searches for any Q topic that exists in an Quick account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_search_topics/](https://www.paws-r-sdk.com/docs/quicksight_search_topics/) for full documentation.
 #'
@@ -6856,6 +6937,40 @@ quicksight_start_asset_bundle_import_job <- function(AwsAccountId, AssetBundleIm
   return(response)
 }
 .quicksight$operations$start_asset_bundle_import_job <- quicksight_start_asset_bundle_import_job
+
+#' Starts a new job for a specified automation
+#'
+#' @description
+#' Starts a new job for a specified automation. The job runs the automation with the provided input payload.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_start_automation_job/](https://www.paws-r-sdk.com/docs/quicksight_start_automation_job/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the automation.
+#' @param AutomationGroupId &#91;required&#93; The ID of the automation group that contains the automation to run.
+#' @param AutomationId &#91;required&#93; The ID of the automation to run.
+#' @param InputPayload The input payload for the automation job, provided as a JSON string.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_start_automation_job
+quicksight_start_automation_job <- function(AwsAccountId, AutomationGroupId, AutomationId, InputPayload = NULL) {
+  op <- new_operation(
+    name = "StartAutomationJob",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/automation-groups/{AutomationGroupId}/automations/{AutomationId}/jobs",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$start_automation_job_input(AwsAccountId = AwsAccountId, AutomationGroupId = AutomationGroupId, AutomationId = AutomationId, InputPayload = InputPayload)
+  output <- .quicksight$start_automation_job_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$start_automation_job <- quicksight_start_automation_job
 
 #' Starts an asynchronous job that generates a snapshot of a dashboard's
 #' output
@@ -7128,7 +7243,7 @@ quicksight_update_account_settings <- function(AwsAccountId, DefaultNamespace, N
 #' authentication settings, or enabled actions
 #'
 #' @description
-#' Updates an existing action connector with new configuration details, authentication settings, or enabled actions. You can modify the connector's name, description, authentication configuration, and which actions are enabled. For more information, <https://docs.aws.amazon.com/quicksuite/latest/userguide/quick-action-auth.html>.
+#' Updates an existing action connector with new configuration details, authentication settings, or enabled actions. You can modify the connector's name, description, authentication configuration, and which actions are enabled. For more information, [https://docs.aws.amazon.com/quicksuite/latest/userguide/quick-action-auth.html](https://docs.aws.amazon.com/quick/latest/userguide/quick-action-auth.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_update_action_connector/](https://www.paws-r-sdk.com/docs/quicksight_update_action_connector/) for full documentation.
 #'
@@ -7290,16 +7405,16 @@ quicksight_update_analysis_permissions <- function(AwsAccountId, AnalysisId, Gra
 }
 .quicksight$operations$update_analysis_permissions <- quicksight_update_analysis_permissions
 
-#' Updates an Quick Suite application with a token exchange grant
+#' Updates an Quick application with a token exchange grant
 #'
 #' @description
-#' Updates an Quick Suite application with a token exchange grant. This operation only supports Quick Suite applications that are registered with IAM Identity Center.
+#' Updates an Quick application with a token exchange grant. This operation only supports Quick applications that are registered with IAM Identity Center.
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_update_application_with_token_exchange_grant/](https://www.paws-r-sdk.com/docs/quicksight_update_application_with_token_exchange_grant/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account to be updated with a token
 #' exchange grant.
-#' @param Namespace &#91;required&#93; The namespace of the Quick Suite application.
+#' @param Namespace &#91;required&#93; The namespace of the Quick application.
 #'
 #' @keywords internal
 #'
@@ -7331,7 +7446,7 @@ quicksight_update_application_with_token_exchange_grant <- function(AwsAccountId
 #' See [https://www.paws-r-sdk.com/docs/quicksight_update_brand/](https://www.paws-r-sdk.com/docs/quicksight_update_brand/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand.
-#' @param BrandId &#91;required&#93; The ID of the Quick Suite brand.
+#' @param BrandId &#91;required&#93; The ID of the Quick brand.
 #' @param BrandDefinition The definition of the brand.
 #'
 #' @keywords internal
@@ -7397,7 +7512,7 @@ quicksight_update_brand_assignment <- function(AwsAccountId, BrandArn) {
 #' See [https://www.paws-r-sdk.com/docs/quicksight_update_brand_published_version/](https://www.paws-r-sdk.com/docs/quicksight_update_brand_published_version/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand.
-#' @param BrandId &#91;required&#93; The ID of the Quick Suite brand.
+#' @param BrandId &#91;required&#93; The ID of the Quick brand.
 #' @param VersionId &#91;required&#93; The ID of the published version.
 #'
 #' @keywords internal
@@ -8215,7 +8330,7 @@ quicksight_update_key_registration <- function(AwsAccountId, KeyRegistration) {
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID associated with your Amazon Quick
 #' Sight subscription.
 #' @param PublicSharingEnabled A Boolean value that indicates whether public sharing is turned on for
-#' an Quick Suite account.
+#' an Quick account.
 #'
 #' @keywords internal
 #'
@@ -8418,17 +8533,17 @@ quicksight_update_spice_capacity_configuration <- function(AwsAccountId, Purchas
 }
 .quicksight$operations$update_spice_capacity_configuration <- quicksight_update_spice_capacity_configuration
 
-#' Updates a self-upgrade request for a Quick Suite user by approving,
-#' denying, or verifying the request
+#' Updates a self-upgrade request for a Quick user by approving, denying,
+#' or verifying the request
 #'
 #' @description
-#' Updates a self-upgrade request for a Quick Suite user by approving, denying, or verifying the request.
+#' Updates a self-upgrade request for a Quick user by approving, denying, or verifying the request.
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_update_self_upgrade/](https://www.paws-r-sdk.com/docs/quicksight_update_self_upgrade/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the self-upgrade
 #' request.
-#' @param Namespace &#91;required&#93; The Quick Suite namespace for the self-upgrade request.
+#' @param Namespace &#91;required&#93; The Quick namespace for the self-upgrade request.
 #' @param UpgradeRequestId &#91;required&#93; The ID of the self-upgrade request to update.
 #' @param Action &#91;required&#93; The action to perform on the self-upgrade request. Valid values are
 #' `APPROVE`, `DENY`, or `VERIFY`.
@@ -8455,19 +8570,18 @@ quicksight_update_self_upgrade <- function(AwsAccountId, Namespace, UpgradeReque
 }
 .quicksight$operations$update_self_upgrade <- quicksight_update_self_upgrade
 
-#' Updates the self-upgrade configuration for a Quick Suite account
+#' Updates the self-upgrade configuration for a Quick account
 #'
 #' @description
-#' Updates the self-upgrade configuration for a Quick Suite account.
+#' Updates the self-upgrade configuration for a Quick account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_update_self_upgrade_configuration/](https://www.paws-r-sdk.com/docs/quicksight_update_self_upgrade_configuration/) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the Quick Suite
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the Quick
 #' self-upgrade configuration that you want to update.
-#' @param Namespace &#91;required&#93; The Quick Suite namespace that you want to update the Quick Suite
-#' self-upgrade configuration for.
-#' @param SelfUpgradeStatus &#91;required&#93; The self-upgrade status that you want to set for the Quick Suite
-#' account.
+#' @param Namespace &#91;required&#93; The Quick namespace that you want to update the Quick self-upgrade
+#' configuration for.
+#' @param SelfUpgradeStatus &#91;required&#93; The self-upgrade status that you want to set for the Quick account.
 #'
 #' @keywords internal
 #'

@@ -5,31 +5,31 @@
 \title{Removes a policy grant}
 \usage{
 datazone_remove_policy_grant(
-  clientToken = NULL,
   domainIdentifier,
-  entityIdentifier,
   entityType,
-  grantIdentifier = NULL,
+  entityIdentifier,
   policyType,
-  principal
+  principal,
+  grantIdentifier = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
 \item{domainIdentifier}{[required] The ID of the domain where you want to remove a policy grant.}
-
-\item{entityIdentifier}{[required] The ID of the entity from which you want to remove a policy grant.}
 
 \item{entityType}{[required] The type of the entity from which you want to remove a policy grant.}
 
-\item{grantIdentifier}{The ID of the policy grant that is to be removed from a specified
-entity.}
+\item{entityIdentifier}{[required] The ID of the entity from which you want to remove a policy grant.}
 
 \item{policyType}{[required] The type of the policy that you want to remove.}
 
 \item{principal}{[required] The principal from which you want to remove a policy grant.}
+
+\item{grantIdentifier}{The ID of the policy grant that is to be removed from a specified
+entity.}
+
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Removes a policy grant.

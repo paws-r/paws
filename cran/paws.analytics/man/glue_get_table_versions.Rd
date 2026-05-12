@@ -10,7 +10,8 @@ glue_get_table_versions(
   DatabaseName,
   TableName,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  AuditContext = NULL
 )
 }
 \arguments{

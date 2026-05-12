@@ -12,8 +12,6 @@ route53recoveryreadiness_create_cell(CellName, Cells = NULL, Tags = NULL)
 \item{Cells}{A list of cell Amazon Resource Names (ARNs) contained within this cell,
 for use in nested cells. For example, Availability Zones within specific
 Amazon Web Services Regions.}
-
-\item{Tags}{}
 }
 \description{
 Creates a cell in an account.

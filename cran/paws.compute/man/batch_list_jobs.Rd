@@ -27,8 +27,14 @@ with the specified job.}
 
 \item{jobStatus}{The job status used to filter jobs in the specified queue. If the
 \code{filters} parameter is specified, the \code{jobStatus} parameter is ignored
-and jobs with any status are returned. If you don't specify a status,
-only \code{RUNNING} jobs are returned.}
+and jobs with any status are returned. The exception is the
+\code{SHARE_IDENTIFIER} filter and \code{jobStatus} can be used together. If you
+don't specify a status, only \code{RUNNING} jobs are returned.
+
+Array job parents are updated to \code{PENDING} when any child job is updated
+to \code{RUNNABLE} and remain in \code{PENDING} status while child jobs are
+running. To view these jobs, filter by \code{PENDING} status until all child
+jobs reach a terminal state.}
 
 \item{maxResults}{The maximum number of results returned by \code{\link[=batch_list_jobs]{list_jobs}}
 in a paginated output. When this parameter is used,
@@ -58,10 +64,14 @@ Treat this token as an opaque identifier that's only used to retrieve
 the next items in a list and not for other programmatic purposes.}
 
 \item{filters}{The filter to apply to the query. Only one filter can be used at a time.
-When the filter is used, \code{jobStatus} is ignored. The filter doesn't
-apply to child jobs in an array or multi-node parallel (MNP) jobs. The
-results are sorted by the \code{createdAt} field, with the most recent jobs
-being first.
+When the filter is used, \code{jobStatus} is ignored with the exception that
+\code{SHARE_IDENTIFIER} and \code{jobStatus} can be used together. The filter
+doesn't apply to child jobs in an array or multi-node parallel (MNP)
+jobs. The results are sorted by the \code{createdAt} field, with the most
+recent jobs being first.
+
+The \code{SHARE_IDENTIFIER} filter and the \code{jobStatus} field can be used
+together to filter results.
 
 \strong{JOB_NAME}
 
@@ -100,7 +110,11 @@ representation of the number of milliseconds since 00:00:00 UTC
 The value for the filter is the time that's after the job was created.
 This corresponds to the \code{createdAt} value. The value is a string
 representation of the number of milliseconds since 00:00:00 UTC
-(midnight) on January 1, 1970.}
+(midnight) on January 1, 1970.
+
+\strong{SHARE_IDENTIFIER}
+
+The value for the filter is the fairshare scheduling share identifier.}
 }
 \description{
 Returns a list of Batch jobs.

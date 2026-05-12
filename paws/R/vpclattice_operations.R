@@ -522,7 +522,8 @@ vpclattice_create_resource_configuration <- function(name, type, portRanges = NU
 #'
 #' @usage
 #' vpclattice_create_resource_gateway(clientToken, name, vpcIdentifier,
-#'   subnetIds, securityGroupIds, ipAddressType, ipv4AddressesPerEni, tags)
+#'   subnetIds, securityGroupIds, ipAddressType, ipv4AddressesPerEni,
+#'   resourceConfigDnsResolution, tags)
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you retry a request that completed
@@ -556,6 +557,21 @@ vpclattice_create_resource_configuration <- function(name, type, portRanges = NU
 #' address type of the client or the VPC endpoint through which the
 #' resource is accessed.
 #' @param ipv4AddressesPerEni The number of IPv4 addresses in each ENI for the resource gateway.
+#' @param resourceConfigDnsResolution Indicates how DNS is resolved for resource configurations associated to
+#' this resource gateway. ResourceConfigDnsResolution is set at creation
+#' time and cannot be changed.
+#' 
+#' -   `IN_VPC` - DNS resolution occurs privately within the resource
+#'     gateway's VPC. DNS queries for resources behind this resource
+#'     gateway resolve using the DNS resolvers defined in the VPC's DHCP
+#'     option sets. Use this when your resource domain names are hosted in
+#'     private Route 53 hosted zones or on-premises DNS servers reachable
+#'     from the VPC.
+#' 
+#' -   `PUBLIC` - DNS resolution occurs against public DNS resolvers. DNS
+#'     queries for resources behind this resource gateway resolve using
+#'     standard public DNS. Use this when your resource domain names are
+#'     publicly resolvable.
 #' @param tags The tags for the resource gateway.
 #'
 #' @return
@@ -574,7 +590,8 @@ vpclattice_create_resource_configuration <- function(name, type, portRanges = NU
 #'     "string"
 #'   ),
 #'   ipAddressType = "IPV4"|"IPV6"|"DUALSTACK",
-#'   ipv4AddressesPerEni = 123
+#'   ipv4AddressesPerEni = 123,
+#'   resourceConfigDnsResolution = "IN_VPC"|"PUBLIC"
 #' )
 #' ```
 #'
@@ -592,6 +609,7 @@ vpclattice_create_resource_configuration <- function(name, type, portRanges = NU
 #'   ),
 #'   ipAddressType = "IPV4"|"IPV6"|"DUALSTACK",
 #'   ipv4AddressesPerEni = 123,
+#'   resourceConfigDnsResolution = "IN_VPC"|"PUBLIC",
 #'   tags = list(
 #'     "string"
 #'   )
@@ -603,7 +621,7 @@ vpclattice_create_resource_configuration <- function(name, type, portRanges = NU
 #' @rdname vpclattice_create_resource_gateway
 #'
 #' @aliases vpclattice_create_resource_gateway
-vpclattice_create_resource_gateway <- function(clientToken = NULL, name, vpcIdentifier = NULL, subnetIds = NULL, securityGroupIds = NULL, ipAddressType = NULL, ipv4AddressesPerEni = NULL, tags = NULL) {
+vpclattice_create_resource_gateway <- function(clientToken = NULL, name, vpcIdentifier = NULL, subnetIds = NULL, securityGroupIds = NULL, ipAddressType = NULL, ipv4AddressesPerEni = NULL, resourceConfigDnsResolution = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateResourceGateway",
     http_method = "POST",
@@ -612,7 +630,7 @@ vpclattice_create_resource_gateway <- function(clientToken = NULL, name, vpcIden
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_resource_gateway_input(clientToken = clientToken, name = name, vpcIdentifier = vpcIdentifier, subnetIds = subnetIds, securityGroupIds = securityGroupIds, ipAddressType = ipAddressType, ipv4AddressesPerEni = ipv4AddressesPerEni, tags = tags)
+  input <- .vpclattice$create_resource_gateway_input(clientToken = clientToken, name = name, vpcIdentifier = vpcIdentifier, subnetIds = subnetIds, securityGroupIds = securityGroupIds, ipAddressType = ipAddressType, ipv4AddressesPerEni = ipv4AddressesPerEni, resourceConfigDnsResolution = resourceConfigDnsResolution, tags = tags)
   output <- .vpclattice$create_resource_gateway_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -2537,11 +2555,14 @@ vpclattice_get_resource_configuration <- function(resourceConfigurationIdentifie
 #'   subnetIds = list(
 #'     "string"
 #'   ),
+#'   serviceManaged = TRUE|FALSE,
+#'   managedBy = "string",
 #'   securityGroupIds = list(
 #'     "string"
 #'   ),
 #'   ipAddressType = "IPV4"|"IPV6"|"DUALSTACK",
 #'   ipv4AddressesPerEni = 123,
+#'   resourceConfigDnsResolution = "IN_VPC"|"PUBLIC",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -3580,6 +3601,7 @@ vpclattice_list_resource_endpoint_associations <- function(resourceConfiguration
 #'       ),
 #'       ipAddressType = "IPV4"|"IPV6"|"DUALSTACK",
 #'       ipv4AddressesPerEni = 123,
+#'       resourceConfigDnsResolution = "IN_VPC"|"PUBLIC",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),

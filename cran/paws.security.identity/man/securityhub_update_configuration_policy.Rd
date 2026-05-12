@@ -23,15 +23,15 @@ following ASCII characters are permitted: \verb{-, ., !, *, /}.}
 
 \item{UpdatedReason}{The reason for updating the configuration policy.}
 
-\item{ConfigurationPolicy}{An object that defines how Security Hub is configured. It includes
-whether Security Hub is enabled or disabled, a list of enabled security
-standards, a list of enabled or disabled security controls, and a list
-of custom parameter values for specified controls. If you provide a list
-of security controls that are enabled in the configuration policy,
-Security Hub disables all other controls (including newly released
-controls). If you provide a list of security controls that are disabled
-in the configuration policy, Security Hub enables all other controls
-(including newly released controls).
+\item{ConfigurationPolicy}{An object that defines how Security Hub CSPM is configured. It includes
+whether Security Hub CSPM is enabled or disabled, a list of enabled
+security standards, a list of enabled or disabled security controls, and
+a list of custom parameter values for specified controls. If you provide
+a list of security controls that are enabled in the configuration
+policy, Security Hub CSPM disables all other controls (including newly
+released controls). If you provide a list of security controls that are
+disabled in the configuration policy, Security Hub CSPM enables all
+other controls (including newly released controls).
 
 When updating a configuration policy, provide a complete list of
 standards that you want to enable and a complete list of controls that
@@ -39,7 +39,7 @@ you want to enable or disable. The updated configuration replaces the
 current configuration.}
 }
 \description{
-Updates a configuration policy. Only the Security Hub delegated administrator can invoke this operation from the home Region.
+Updates a configuration policy. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_update_configuration_policy/} for full documentation.
 }

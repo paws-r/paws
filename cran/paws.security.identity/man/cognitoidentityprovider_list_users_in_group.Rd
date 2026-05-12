@@ -19,7 +19,10 @@ requested group.}
 \item{GroupName}{[required] The name of the group that you want to query for user membership.}
 
 \item{Limit}{The maximum number of groups that you want Amazon Cognito to return in
-the response.}
+the response. In some SDK contexts, this operation might return fewer
+items than you specify in the \code{Limit} parameter without having reached
+the end of the full list. If the response contains a \code{PaginationToken},
+then there are more results.}
 
 \item{NextToken}{This API operation returns a limited number of results. The pagination
 token is an identifier that you can present in an additional API request

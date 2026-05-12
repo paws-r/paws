@@ -10,7 +10,8 @@ kinesis_put_record(
   PartitionKey,
   ExplicitHashKey = NULL,
   SequenceNumberForOrdering = NULL,
-  StreamARN = NULL
+  StreamARN = NULL,
+  StreamId = NULL
 )
 }
 \arguments{
@@ -19,7 +20,7 @@ kinesis_put_record(
 \item{Data}{[required] The data blob to put into the record, which is base64-encoded when the
 blob is serialized. When the data blob (the payload before
 base64-encoding) is added to the partition key size, the total size must
-not exceed the maximum record size (1 MiB).}
+not exceed the maximum record size (10 MiB).}
 
 \item{PartitionKey}{[required] Determines which shard in the stream the data record is assigned to.
 Partition keys are Unicode strings with a maximum length limit of 256
@@ -42,6 +43,8 @@ this parameter is not set, records are coarsely ordered based on arrival
 time.}
 
 \item{StreamARN}{The ARN of the stream.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Writes a single data record into an Amazon Kinesis data stream. Call \code{\link[=kinesis_put_record]{put_record}} to send data into the stream for real-time ingestion and subsequent processing, one record at a time. Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 10 MiB per second.

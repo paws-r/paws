@@ -9,7 +9,8 @@ bedrockdataautomationruntime_invoke_data_automation(
   dataAutomationConfiguration = NULL,
   blueprints = NULL,
   dataAutomationProfileArn,
-  encryptionConfiguration = NULL
+  encryptionConfiguration = NULL,
+  outputConfiguration = NULL
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ bedrockdataautomationruntime_invoke_data_automation(
 \item{dataAutomationProfileArn}{[required] Data automation profile ARN}
 
 \item{encryptionConfiguration}{Encryption configuration.}
+
+\item{outputConfiguration}{Output configuration.}
 }
 \description{
 Sync API: Invoke data automation.

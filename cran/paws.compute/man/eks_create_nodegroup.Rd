@@ -23,7 +23,8 @@ eks_create_nodegroup(
   nodeRepairConfig = NULL,
   capacityType = NULL,
   version = NULL,
-  releaseVersion = NULL
+  releaseVersion = NULL,
+  warmPoolConfig = NULL
 )
 }
 \arguments{
@@ -141,6 +142,11 @@ AMI, then don't specify \code{releaseVersion}, or the node group deployment
 will fail. For more information about using launch templates with Amazon
 EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Customizing managed nodes with launch templates}
 in the \emph{Amazon EKS User Guide}.}
+
+\item{warmPoolConfig}{The warm pool configuration for the node group. Warm pools maintain
+pre-initialized EC2 instances that can quickly join your cluster during
+scale-out events, improving application scaling performance and reducing
+costs.}
 }
 \description{
 Creates a managed node group for an Amazon EKS cluster.

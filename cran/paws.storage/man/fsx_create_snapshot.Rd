@@ -7,13 +7,9 @@
 fsx_create_snapshot(ClientRequestToken = NULL, Name, VolumeId, Tags = NULL)
 }
 \arguments{
-\item{ClientRequestToken}{}
-
 \item{Name}{[required] The name of the snapshot.}
 
 \item{VolumeId}{[required] The ID of the volume that you are taking a snapshot of.}
-
-\item{Tags}{}
 }
 \description{
 Creates a snapshot of an existing Amazon FSx for OpenZFS volume. With snapshots, you can easily undo file changes and compare file versions by restoring the volume to a previous version.

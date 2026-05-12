@@ -8,8 +8,6 @@ fsx_release_file_system_nfs_v3_locks(FileSystemId, ClientRequestToken = NULL)
 }
 \arguments{
 \item{FileSystemId}{[required]}
-
-\item{ClientRequestToken}{}
 }
 \description{
 Releases the file system lock from an Amazon FSx for OpenZFS file system.

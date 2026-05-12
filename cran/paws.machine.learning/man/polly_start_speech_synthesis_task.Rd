@@ -42,8 +42,8 @@ apply during synthesis. Lexicons are applied only if the language of the
 lexicon is the same as the language of the voice.}
 
 \item{OutputFormat}{[required] The format in which the returned output will be encoded. For audio
-stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this
-will be json.}
+stream, this will be mp3, ogg_vorbis, ogg_opus, mu-law, a-law, or pcm.
+For speech marks, this will be json.}
 
 \item{OutputS3BucketName}{[required] Amazon S3 bucket name to which the output file will be saved.}
 
@@ -58,7 +58,11 @@ long-form voices is "24000". The default value for generative voices is
 "24000".
 
 Valid values for pcm are "8000" and "16000" The default value is
-"16000".}
+"16000".
+
+Valid value for ogg_opus is "48000".
+
+Valid value for mu-law and a-law is "8000".}
 
 \item{SnsTopicArn}{ARN for the SNS topic optionally used for providing status notification
 for a speech synthesis task.}

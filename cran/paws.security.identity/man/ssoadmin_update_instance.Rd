@@ -20,8 +20,8 @@ will run. For more information about ARNs, see Amazon Resource Names
 Services General Reference}.}
 
 \item{EncryptionConfiguration}{Specifies the encryption configuration for your IAM Identity Center
-instance. You can use this to configure customer managed KMS keys (CMK)
-or Amazon Web Services owned KMS keys for encrypting your instance data.}
+instance. You can use this to configure customer managed KMS keys or
+Amazon Web Services owned KMS keys for encrypting your instance data.}
 }
 \description{
 Update the details for the instance of IAM Identity Center that is owned by the Amazon Web Services account.

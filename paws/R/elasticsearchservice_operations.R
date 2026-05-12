@@ -393,7 +393,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'   AccessPolicies, SnapshotOptions, VPCOptions, CognitoOptions,
 #'   EncryptionAtRestOptions, NodeToNodeEncryptionOptions, AdvancedOptions,
 #'   LogPublishingOptions, DomainEndpointOptions, AdvancedSecurityOptions,
-#'   AutoTuneOptions, TagList)
+#'   AutoTuneOptions, TagList, DeploymentStrategyOptions)
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain that you are creating. Domain names
 #' are unique across the domains owned by an account within an AWS region.
@@ -434,6 +434,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' @param AdvancedSecurityOptions Specifies advanced security options.
 #' @param AutoTuneOptions Specifies Auto-Tune options.
 #' @param TagList A list of `Tag` added during domain creation.
+#' @param DeploymentStrategyOptions Specifies the deployment strategy options.
 #'
 #' @return
 #' A list with the following syntax:
@@ -528,7 +529,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'     ),
 #'     DomainEndpointOptions = list(
 #'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'       CustomEndpointEnabled = TRUE|FALSE,
 #'       CustomEndpoint = "string",
 #'       CustomEndpointCertificateArn = "string"
@@ -575,6 +576,9 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'         PendingValue = "string",
 #'         ValueType = "PLAIN_TEXT"|"STRINGIFIED_JSON"
 #'       )
+#'     ),
+#'     DeploymentStrategyOptions = list(
+#'       DeploymentStrategy = "Default"|"CapacityOptimized"
 #'     )
 #'   )
 #' )
@@ -645,7 +649,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'   ),
 #'   DomainEndpointOptions = list(
 #'     EnforceHTTPS = TRUE|FALSE,
-#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'     CustomEndpointEnabled = TRUE|FALSE,
 #'     CustomEndpoint = "string",
 #'     CustomEndpointCertificateArn = "string"
@@ -692,6 +696,9 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   DeploymentStrategyOptions = list(
+#'     DeploymentStrategy = "Default"|"CapacityOptimized"
 #'   )
 #' )
 #' ```
@@ -701,7 +708,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' @rdname elasticsearchservice_create_elasticsearch_domain
 #'
 #' @aliases elasticsearchservice_create_elasticsearch_domain
-elasticsearchservice_create_elasticsearch_domain <- function(DomainName, ElasticsearchVersion = NULL, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, TagList = NULL) {
+elasticsearchservice_create_elasticsearch_domain <- function(DomainName, ElasticsearchVersion = NULL, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, TagList = NULL, DeploymentStrategyOptions = NULL) {
   op <- new_operation(
     name = "CreateElasticsearchDomain",
     http_method = "POST",
@@ -710,7 +717,7 @@ elasticsearchservice_create_elasticsearch_domain <- function(DomainName, Elastic
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .elasticsearchservice$create_elasticsearch_domain_input(DomainName = DomainName, ElasticsearchVersion = ElasticsearchVersion, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, TagList = TagList)
+  input <- .elasticsearchservice$create_elasticsearch_domain_input(DomainName = DomainName, ElasticsearchVersion = ElasticsearchVersion, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, TagList = TagList, DeploymentStrategyOptions = DeploymentStrategyOptions)
   output <- .elasticsearchservice$create_elasticsearch_domain_output()
   config <- get_config()
   svc <- .elasticsearchservice$service(config, op)
@@ -1062,7 +1069,7 @@ elasticsearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, Clie
 #'     ),
 #'     DomainEndpointOptions = list(
 #'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'       CustomEndpointEnabled = TRUE|FALSE,
 #'       CustomEndpoint = "string",
 #'       CustomEndpointCertificateArn = "string"
@@ -1109,6 +1116,9 @@ elasticsearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, Clie
 #'         PendingValue = "string",
 #'         ValueType = "PLAIN_TEXT"|"STRINGIFIED_JSON"
 #'       )
+#'     ),
+#'     DeploymentStrategyOptions = list(
+#'       DeploymentStrategy = "Default"|"CapacityOptimized"
 #'     )
 #'   )
 #' )
@@ -1716,7 +1726,7 @@ elasticsearchservice_describe_domain_change_progress <- function(DomainName, Cha
 #'     ),
 #'     DomainEndpointOptions = list(
 #'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'       CustomEndpointEnabled = TRUE|FALSE,
 #'       CustomEndpoint = "string",
 #'       CustomEndpointCertificateArn = "string"
@@ -1763,6 +1773,9 @@ elasticsearchservice_describe_domain_change_progress <- function(DomainName, Cha
 #'         PendingValue = "string",
 #'         ValueType = "PLAIN_TEXT"|"STRINGIFIED_JSON"
 #'       )
+#'     ),
+#'     DeploymentStrategyOptions = list(
+#'       DeploymentStrategy = "Default"|"CapacityOptimized"
 #'     )
 #'   )
 #' )
@@ -2027,7 +2040,7 @@ elasticsearchservice_describe_elasticsearch_domain <- function(DomainName) {
 #'     DomainEndpointOptions = list(
 #'       Options = list(
 #'         EnforceHTTPS = TRUE|FALSE,
-#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'         CustomEndpointEnabled = TRUE|FALSE,
 #'         CustomEndpoint = "string",
 #'         CustomEndpointCertificateArn = "string"
@@ -2123,6 +2136,22 @@ elasticsearchservice_describe_elasticsearch_domain <- function(DomainName) {
 #'         ActiveValue = "string",
 #'         PendingValue = "string",
 #'         ValueType = "PLAIN_TEXT"|"STRINGIFIED_JSON"
+#'       )
+#'     ),
+#'     DeploymentStrategyOptions = list(
+#'       Options = list(
+#'         DeploymentStrategy = "Default"|"CapacityOptimized"
+#'       ),
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
+#'         PendingDeletion = TRUE|FALSE
 #'       )
 #'     )
 #'   )
@@ -2268,7 +2297,7 @@ elasticsearchservice_describe_elasticsearch_domain_config <- function(DomainName
 #'       ),
 #'       DomainEndpointOptions = list(
 #'         EnforceHTTPS = TRUE|FALSE,
-#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'         CustomEndpointEnabled = TRUE|FALSE,
 #'         CustomEndpoint = "string",
 #'         CustomEndpointCertificateArn = "string"
@@ -2315,6 +2344,9 @@ elasticsearchservice_describe_elasticsearch_domain_config <- function(DomainName
 #'           PendingValue = "string",
 #'           ValueType = "PLAIN_TEXT"|"STRINGIFIED_JSON"
 #'         )
+#'       ),
+#'       DeploymentStrategyOptions = list(
+#'         DeploymentStrategy = "Default"|"CapacityOptimized"
 #'       )
 #'     )
 #'   )
@@ -4134,7 +4166,7 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'   CognitoOptions, AdvancedOptions, AccessPolicies, LogPublishingOptions,
 #'   DomainEndpointOptions, AdvancedSecurityOptions,
 #'   NodeToNodeEncryptionOptions, EncryptionAtRestOptions, AutoTuneOptions,
-#'   DryRun)
+#'   DryRun, DeploymentStrategyOptions)
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain that you are updating.
 #' @param ElasticsearchClusterConfig The type and number of instances to instantiate for the domain cluster.
@@ -4170,6 +4202,7 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' set to True, specifies the deployment mechanism through which the update
 #' shall be applied on the domain. This will not actually perform the
 #' Update.
+#' @param DeploymentStrategyOptions Specifies the deployment strategy options.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4385,7 +4418,7 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'     DomainEndpointOptions = list(
 #'       Options = list(
 #'         EnforceHTTPS = TRUE|FALSE,
-#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'         CustomEndpointEnabled = TRUE|FALSE,
 #'         CustomEndpoint = "string",
 #'         CustomEndpointCertificateArn = "string"
@@ -4482,6 +4515,22 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'         PendingValue = "string",
 #'         ValueType = "PLAIN_TEXT"|"STRINGIFIED_JSON"
 #'       )
+#'     ),
+#'     DeploymentStrategyOptions = list(
+#'       Options = list(
+#'         DeploymentStrategy = "Default"|"CapacityOptimized"
+#'       ),
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
 #'     )
 #'   ),
 #'   DryRunResults = list(
@@ -4548,7 +4597,7 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'   ),
 #'   DomainEndpointOptions = list(
 #'     EnforceHTTPS = TRUE|FALSE,
-#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'     CustomEndpointEnabled = TRUE|FALSE,
 #'     CustomEndpoint = "string",
 #'     CustomEndpointCertificateArn = "string"
@@ -4598,7 +4647,10 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'       )
 #'     )
 #'   ),
-#'   DryRun = TRUE|FALSE
+#'   DryRun = TRUE|FALSE,
+#'   DeploymentStrategyOptions = list(
+#'     DeploymentStrategy = "Default"|"CapacityOptimized"
+#'   )
 #' )
 #' ```
 #'
@@ -4607,7 +4659,7 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' @rdname elasticsearchservice_update_elasticsearch_domain_config
 #'
 #' @aliases elasticsearchservice_update_elasticsearch_domain_config
-elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, NodeToNodeEncryptionOptions = NULL, EncryptionAtRestOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL) {
+elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, NodeToNodeEncryptionOptions = NULL, EncryptionAtRestOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DeploymentStrategyOptions = NULL) {
   op <- new_operation(
     name = "UpdateElasticsearchDomainConfig",
     http_method = "POST",
@@ -4616,7 +4668,7 @@ elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .elasticsearchservice$update_elasticsearch_domain_config_input(DomainName = DomainName, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun)
+  input <- .elasticsearchservice$update_elasticsearch_domain_config_input(DomainName = DomainName, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DeploymentStrategyOptions = DeploymentStrategyOptions)
   output <- .elasticsearchservice$update_elasticsearch_domain_config_output()
   config <- get_config()
   svc <- .elasticsearchservice$service(config, op)

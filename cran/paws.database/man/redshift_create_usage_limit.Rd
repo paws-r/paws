@@ -24,7 +24,9 @@ redshift_create_usage_limit(
 time duration or data size. If \code{FeatureType} is \code{spectrum}, then
 \code{LimitType} must be \code{data-scanned}. If \code{FeatureType} is
 \code{concurrency-scaling}, then \code{LimitType} must be \code{time}. If \code{FeatureType}
-is \code{cross-region-datasharing}, then \code{LimitType} must be \code{data-scanned}.}
+is \code{cross-region-datasharing}, then \code{LimitType} must be \code{data-scanned}.
+If \code{FeatureType} is \verb{extra-compute-for-automatic-optimization}, then
+\code{LimitType} must be \code{time}.}
 
 \item{Amount}{[required] The limit amount. If time-based, this amount is in minutes. If
 data-based, this amount is in terabytes (TB). The value must be a

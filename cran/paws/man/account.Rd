@@ -93,7 +93,7 @@ Operations for Amazon Web Services Account Management
 \link[paws.security.identity:account_delete_alternate_contact]{delete_alternate_contact} \tab Deletes the specified alternate contact from an Amazon Web Services account\cr
 \link[paws.security.identity:account_disable_region]{disable_region} \tab Disables (opts-out) a particular Region for an account\cr
 \link[paws.security.identity:account_enable_region]{enable_region} \tab Enables (opts-in) a particular Region for an account\cr
-\link[paws.security.identity:account_get_account_information]{get_account_information} \tab Retrieves information about the specified account including its account name, account ID, and account creation date and time\cr
+\link[paws.security.identity:account_get_account_information]{get_account_information} \tab Retrieves information about the specified account including its account name, account ID, account creation date and time, and account state\cr
 \link[paws.security.identity:account_get_alternate_contact]{get_alternate_contact} \tab Retrieves the specified alternate contact attached to an Amazon Web Services account\cr
 \link[paws.security.identity:account_get_contact_information]{get_contact_information} \tab Retrieves the primary contact information of an Amazon Web Services account\cr
 \link[paws.security.identity:account_get_gov_cloud_account_information]{get_gov_cloud_account_information} \tab Retrieves information about the GovCloud account linked to the specified standard account (if it exists) including the GovCloud account ID and state\cr

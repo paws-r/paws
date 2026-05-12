@@ -4,11 +4,13 @@
 \alias{kinesis_list_tags_for_resource}
 \title{List all tags added to the specified Kinesis resource}
 \usage{
-kinesis_list_tags_for_resource(ResourceARN)
+kinesis_list_tags_for_resource(ResourceARN, StreamId = NULL)
 }
 \arguments{
 \item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the Kinesis resource for which to list
 tags.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 List all tags added to the specified Kinesis resource. Each tag is a label consisting of a user-defined key and value. Tags can help you manage, identify, organize, search for, and filter resources.

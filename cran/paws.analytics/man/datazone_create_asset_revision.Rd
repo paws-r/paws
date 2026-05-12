@@ -5,39 +5,39 @@
 \title{Creates a revision of the asset}
 \usage{
 datazone_create_asset_revision(
-  clientToken = NULL,
-  description = NULL,
-  domainIdentifier,
-  formsInput = NULL,
-  glossaryTerms = NULL,
-  identifier,
   name,
+  domainIdentifier,
+  identifier,
+  typeRevision = NULL,
+  description = NULL,
+  glossaryTerms = NULL,
+  formsInput = NULL,
   predictionConfiguration = NULL,
-  typeRevision = NULL
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
-\item{description}{The revised description of the asset.}
+\item{name}{[required] Te revised name of the asset.}
 
 \item{domainIdentifier}{[required] The unique identifier of the domain where the asset is being revised.}
 
-\item{formsInput}{The metadata forms to be attached to the asset as part of asset
-revision.}
+\item{identifier}{[required] The identifier of the asset.}
+
+\item{typeRevision}{The revision type of the asset.}
+
+\item{description}{The revised description of the asset.}
 
 \item{glossaryTerms}{The glossary terms to be attached to the asset as part of asset
 revision.}
 
-\item{identifier}{[required] The identifier of the asset.}
-
-\item{name}{[required] Te revised name of the asset.}
+\item{formsInput}{The metadata forms to be attached to the asset as part of asset
+revision.}
 
 \item{predictionConfiguration}{The configuration of the automatically generated business-friendly
 metadata for the asset.}
 
-\item{typeRevision}{The revision type of the asset.}
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Creates a revision of the asset.

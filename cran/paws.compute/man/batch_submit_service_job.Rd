@@ -12,6 +12,8 @@ batch_submit_service_job(
   serviceRequestPayload,
   serviceJobType,
   shareIdentifier = NULL,
+  quotaShareName = NULL,
+  preemptionConfiguration = NULL,
   timeoutConfig = NULL,
   tags = NULL,
   clientToken = NULL
@@ -42,6 +44,13 @@ operation is queueing.}
 if the job queue doesn't have a fair-share scheduling policy. If the job
 queue has a fair-share scheduling policy, then this parameter must be
 specified.}
+
+\item{quotaShareName}{The quota share for the service job. Don't specify this parameter if the
+job queue doesn't have a quota share scheduling policy. If the job queue
+has a quota share scheduling policy, then this parameter must be
+specified.}
+
+\item{preemptionConfiguration}{Specifies the service job behavior when preempted.}
 
 \item{timeoutConfig}{The timeout configuration for the service job. If none is specified,
 Batch defers to the default timeout of the underlying service handling

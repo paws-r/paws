@@ -20,7 +20,8 @@ elasticsearchservice_update_elasticsearch_domain_config(
   NodeToNodeEncryptionOptions = NULL,
   EncryptionAtRestOptions = NULL,
   AutoTuneOptions = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  DeploymentStrategyOptions = NULL
 )
 }
 \arguments{
@@ -72,6 +73,8 @@ validation checks without actually applying the change. This flag, when
 set to True, specifies the deployment mechanism through which the update
 shall be applied on the domain. This will not actually perform the
 Update.}
+
+\item{DeploymentStrategyOptions}{Specifies the deployment strategy options.}
 }
 \description{
 Modifies the cluster configuration of the specified Elasticsearch domain, setting as setting the instance type and the number of instances.

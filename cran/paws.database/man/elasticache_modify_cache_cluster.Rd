@@ -240,9 +240,9 @@ but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing cluster and
 create it anew with the earlier engine version.}
 
-\item{AutoMinorVersionUpgrade}{If you are running Valkey 7.2 or Redis OSS engine version 6.0 or later,
+\item{AutoMinorVersionUpgrade}{ If you are running Valkey 7.2 or Redis OSS engine version 6.0 or later,
 set this parameter to yes to opt-in to the next auto minor version
-upgrade campaign. This parameter is disabled for previous versions.}
+upgrade campaign. This parameter is disabled for previous versions. }
 
 \item{SnapshotRetentionLimit}{The number of days for which ElastiCache retains automatic cluster
 snapshots before deleting them. For example, if you set

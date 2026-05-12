@@ -8,8 +8,6 @@ account}
 cloudwatchlogs_describe_delivery_sources(nextToken = NULL, limit = NULL)
 }
 \arguments{
-\item{nextToken}{}
-
 \item{limit}{Optionally specify the maximum number of delivery sources to return in
 the response.}
 }

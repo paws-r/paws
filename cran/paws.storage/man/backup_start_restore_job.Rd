@@ -37,6 +37,7 @@ following:
 \item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-ebs.html#ebs-restore-cli}{Metadata for Amazon EBS}
 \item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-ec2.html#restoring-ec2-cli}{Metadata for Amazon EC2}
 \item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-efs.html#efs-restore-cli}{Metadata for Amazon EFS}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-eks.html#eks-restore-backup-section}{Metadata for Amazon EKS}
 \item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-fsx.html#fsx-restore-cli}{Metadata for Amazon FSx}
 \item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-nep.html#nep-restore-cli}{Metadata for Amazon Neptune}
 \item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-rds.html#rds-restore-cli}{Metadata for Amazon RDS}
@@ -67,6 +68,7 @@ resources:
 \item \code{EBS} - Amazon Elastic Block Store
 \item \code{EC2} - Amazon Elastic Compute Cloud
 \item \code{EFS} - Amazon Elastic File System
+\item \code{EKS} - Amazon Elastic Kubernetes Service
 \item \code{FSx} - Amazon FSx
 \item \code{Neptune} - Amazon Neptune
 \item \code{RDS} - Amazon Relational Database Service

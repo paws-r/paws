@@ -6,18 +6,18 @@
 IDs}
 \usage{
 drs_describe_replication_configuration_templates(
+  replicationConfigurationTemplateIDs = NULL,
   maxResults = NULL,
-  nextToken = NULL,
-  replicationConfigurationTemplateIDs = NULL
+  nextToken = NULL
 )
 }
 \arguments{
+\item{replicationConfigurationTemplateIDs}{The IDs of the Replication Configuration Templates to retrieve. An empty
+list means all Replication Configuration Templates.}
+
 \item{maxResults}{Maximum number of Replication Configuration Templates to retrieve.}
 
 \item{nextToken}{The token of the next Replication Configuration Template to retrieve.}
-
-\item{replicationConfigurationTemplateIDs}{The IDs of the Replication Configuration Templates to retrieve. An empty
-list means all Replication Configuration Templates.}
 }
 \description{
 Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.

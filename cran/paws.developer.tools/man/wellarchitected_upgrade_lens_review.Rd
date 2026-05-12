@@ -17,8 +17,6 @@ wellarchitected_upgrade_lens_review(
 \item{LensAlias}{[required]}
 
 \item{MilestoneName}{[required]}
-
-\item{ClientRequestToken}{}
 }
 \description{
 Upgrade lens review for a particular workload.

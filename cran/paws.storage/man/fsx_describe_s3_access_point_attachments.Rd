@@ -17,10 +17,6 @@ to retrieve.}
 
 \item{Filters}{Enter a filter Name and Values pair to view a select set of S3 access
 point attachments.}
-
-\item{MaxResults}{}
-
-\item{NextToken}{}
 }
 \description{
 Describes one or more S3 access points attached to Amazon FSx volumes.

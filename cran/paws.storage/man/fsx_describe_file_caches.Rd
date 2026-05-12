@@ -13,10 +13,6 @@ fsx_describe_file_caches(
 }
 \arguments{
 \item{FileCacheIds}{IDs of the caches whose descriptions you want to retrieve (String).}
-
-\item{MaxResults}{}
-
-\item{NextToken}{}
 }
 \description{
 Returns the description of a specific Amazon File Cache resource, if a \code{FileCacheIds} value is provided for that cache. Otherwise, it returns descriptions of all caches owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.

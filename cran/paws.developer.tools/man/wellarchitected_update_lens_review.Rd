@@ -17,10 +17,6 @@ wellarchitected_update_lens_review(
 
 \item{LensAlias}{[required]}
 
-\item{LensNotes}{}
-
-\item{PillarNotes}{}
-
 \item{JiraConfiguration}{Configuration of the Jira integration.}
 }
 \description{

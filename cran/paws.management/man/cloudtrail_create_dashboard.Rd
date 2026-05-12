@@ -24,8 +24,6 @@ To create the Highlights dashboard, you must set a refresh schedule and
 set the \code{Status} to \code{ENABLED}. The \code{Unit} for the refresh schedule must
 be \code{HOURS} and the \code{Value} must be \code{6}.}
 
-\item{TagsList}{}
-
 \item{TerminationProtectionEnabled}{Specifies whether termination protection is enabled for the dashboard.
 If termination protection is enabled, you cannot delete the dashboard
 until termination protection is disabled.}

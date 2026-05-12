@@ -7,9 +7,6 @@ Services account}
 \usage{
 opensearchserviceserverless_update_account_settings(capacityLimits = NULL)
 }
-\arguments{
-\item{capacityLimits}{}
-}
 \description{
 Update the OpenSearch Serverless settings for the current Amazon Web Services account. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-scaling.html}{Managing capacity limits for Amazon OpenSearch Serverless}.
 

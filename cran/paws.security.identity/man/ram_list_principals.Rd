@@ -41,6 +41,7 @@ of an organization in Organizations, for example:
 \item An ARN of an IAM role, for example:
 \verb{iam::123456789012:role/rolename}
 \item An ARN of an IAM user, for example: \verb{iam::123456789012user/username}
+\item A service principal name, for example: \code{service-id.amazonaws.com}
 }
 
 Not all resource types can be shared with IAM roles and users. For more

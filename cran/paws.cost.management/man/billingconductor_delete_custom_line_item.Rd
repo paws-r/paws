@@ -9,8 +9,6 @@ billingconductor_delete_custom_line_item(Arn, BillingPeriodRange = NULL)
 }
 \arguments{
 \item{Arn}{[required] The ARN of the custom line item to be deleted.}
-
-\item{BillingPeriodRange}{}
 }
 \description{
 Deletes the custom line item identified by the given ARN in the current, or previous billing period.

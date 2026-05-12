@@ -10,7 +10,8 @@ lakeformation_register_resource(
   RoleArn = NULL,
   WithFederation = NULL,
   HybridAccessEnabled = NULL,
-  WithPrivilegedAccess = NULL
+  WithPrivilegedAccess = NULL,
+  ExpectedResourceOwnerAccount = NULL
 )
 }
 \arguments{
@@ -33,6 +34,9 @@ bucket policies.}
 
 \item{WithPrivilegedAccess}{Grants the calling principal the permissions to perform all supported
 Lake Formation operations on the registered data location.}
+
+\item{ExpectedResourceOwnerAccount}{The Amazon Web Services account that owns the Glue tables associated
+with specific Amazon S3 locations.}
 }
 \description{
 Registers the resource as managed by the Data Catalog.

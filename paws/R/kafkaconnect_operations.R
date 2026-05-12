@@ -68,7 +68,8 @@ NULL
 #'       ),
 #'       scaleOutPolicy = list(
 #'         cpuUtilizationPercentage = 123
-#'       )
+#'       ),
+#'       maxAutoscalingTaskCount = 123
 #'     ),
 #'     provisionedCapacity = list(
 #'       mcuCount = 123,
@@ -479,7 +480,8 @@ kafkaconnect_delete_worker_configuration <- function(workerConfigurationArn) {
 #'       ),
 #'       scaleOutPolicy = list(
 #'         cpuUtilizationPercentage = 123
-#'       )
+#'       ),
+#'       maxAutoscalingTaskCount = 123
 #'     ),
 #'     provisionedCapacity = list(
 #'       mcuCount = 123,
@@ -621,7 +623,8 @@ kafkaconnect_describe_connector <- function(connectorArn) {
 #'         ),
 #'         scaleOutPolicy = list(
 #'           cpuUtilizationPercentage = 123
-#'         )
+#'         ),
+#'         maxAutoscalingTaskCount = 123
 #'       ),
 #'       provisionedCapacity = list(
 #'         mcuCount = 123,
@@ -643,7 +646,8 @@ kafkaconnect_describe_connector <- function(connectorArn) {
 #'         ),
 #'         scaleOutPolicy = list(
 #'           cpuUtilizationPercentage = 123
-#'         )
+#'         ),
+#'         maxAutoscalingTaskCount = 123
 #'       ),
 #'       provisionedCapacity = list(
 #'         mcuCount = 123,
@@ -943,7 +947,8 @@ kafkaconnect_list_connector_operations <- function(connectorArn, maxResults = NU
 #'           ),
 #'           scaleOutPolicy = list(
 #'             cpuUtilizationPercentage = 123
-#'           )
+#'           ),
+#'           maxAutoscalingTaskCount = 123
 #'         ),
 #'         provisionedCapacity = list(
 #'           mcuCount = 123,
@@ -1399,7 +1404,8 @@ kafkaconnect_untag_resource <- function(resourceArn, tagKeys) {
 #'       ),
 #'       scaleOutPolicy = list(
 #'         cpuUtilizationPercentage = 123
-#'       )
+#'       ),
+#'       maxAutoscalingTaskCount = 123
 #'     ),
 #'     provisionedCapacity = list(
 #'       mcuCount = 123,

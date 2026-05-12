@@ -102,11 +102,11 @@ Amazon Simple Storage Service
 \link[paws.storage:s3_delete_bucket_cors]{delete_bucket_cors} \tab This operation is not supported for directory buckets\cr
 \link[paws.storage:s3_delete_bucket_encryption]{delete_bucket_encryption} \tab This implementation of the DELETE action resets the default encryption for the bucket as server-side encryption with Amazon S3 managed keys (SSE-S3)\cr
 \link[paws.storage:s3_delete_bucket_intelligent_tiering_configuration]{delete_bucket_intelligent_tiering_configuration} \tab This operation is not supported for directory buckets\cr
-\link[paws.storage:s3_delete_bucket_inventory_configuration]{delete_bucket_inventory_configuration} \tab This operation is not supported for directory buckets\cr
+\link[paws.storage:s3_delete_bucket_inventory_configuration]{delete_bucket_inventory_configuration} \tab Deletes an S3 Inventory configuration (identified by the inventory ID) from the bucket\cr
 \link[paws.storage:s3_delete_bucket_lifecycle]{delete_bucket_lifecycle} \tab Deletes the lifecycle configuration from the specified bucket\cr
 \link[paws.storage:s3_delete_bucket_metadata_configuration]{delete_bucket_metadata_configuration} \tab Deletes an S3 Metadata configuration from a general purpose bucket\cr
 \link[paws.storage:s3_delete_bucket_metadata_table_configuration]{delete_bucket_metadata_table_configuration} \tab We recommend that you delete your S3 Metadata configurations by using the V2 DeleteBucketMetadataTableConfiguration API operation\cr
-\link[paws.storage:s3_delete_bucket_metrics_configuration]{delete_bucket_metrics_configuration} \tab This operation is not supported for directory buckets\cr
+\link[paws.storage:s3_delete_bucket_metrics_configuration]{delete_bucket_metrics_configuration} \tab Deletes a metrics configuration for the Amazon CloudWatch request metrics (specified by the metrics configuration ID) from the bucket\cr
 \link[paws.storage:s3_delete_bucket_ownership_controls]{delete_bucket_ownership_controls} \tab This operation is not supported for directory buckets\cr
 \link[paws.storage:s3_delete_bucket_policy]{delete_bucket_policy} \tab Deletes the policy of a specified bucket\cr
 \link[paws.storage:s3_delete_bucket_replication]{delete_bucket_replication} \tab This operation is not supported for directory buckets\cr
@@ -125,14 +125,14 @@ Amazon Simple Storage Service
 \link[paws.storage:s3_get_bucket_cors]{get_bucket_cors} \tab This operation is not supported for directory buckets\cr
 \link[paws.storage:s3_get_bucket_encryption]{get_bucket_encryption} \tab Returns the default encryption configuration for an Amazon S3 bucket\cr
 \link[paws.storage:s3_get_bucket_intelligent_tiering_configuration]{get_bucket_intelligent_tiering_configuration} \tab This operation is not supported for directory buckets\cr
-\link[paws.storage:s3_get_bucket_inventory_configuration]{get_bucket_inventory_configuration} \tab This operation is not supported for directory buckets\cr
+\link[paws.storage:s3_get_bucket_inventory_configuration]{get_bucket_inventory_configuration} \tab Returns an S3 Inventory configuration (identified by the inventory configuration ID) from the bucket\cr
 \link[paws.storage:s3_get_bucket_lifecycle]{get_bucket_lifecycle} \tab For an updated version of this API, see GetBucketLifecycleConfiguration\cr
 \link[paws.storage:s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration} \tab Returns the lifecycle configuration information set on the bucket\cr
 \link[paws.storage:s3_get_bucket_location]{get_bucket_location} \tab Using the GetBucketLocation operation is no longer a best practice\cr
 \link[paws.storage:s3_get_bucket_logging]{get_bucket_logging} \tab This operation is not supported for directory buckets\cr
 \link[paws.storage:s3_get_bucket_metadata_configuration]{get_bucket_metadata_configuration} \tab Retrieves the S3 Metadata configuration for a general purpose bucket\cr
 \link[paws.storage:s3_get_bucket_metadata_table_configuration]{get_bucket_metadata_table_configuration} \tab We recommend that you retrieve your S3 Metadata configurations by using the V2 GetBucketMetadataTableConfiguration API operation\cr
-\link[paws.storage:s3_get_bucket_metrics_configuration]{get_bucket_metrics_configuration} \tab This operation is not supported for directory buckets\cr
+\link[paws.storage:s3_get_bucket_metrics_configuration]{get_bucket_metrics_configuration} \tab Gets a metrics configuration (specified by the metrics configuration ID) from the bucket\cr
 \link[paws.storage:s3_get_bucket_notification]{get_bucket_notification} \tab This operation is not supported for directory buckets\cr
 \link[paws.storage:s3_get_bucket_notification_configuration]{get_bucket_notification_configuration} \tab This operation is not supported for directory buckets\cr
 \link[paws.storage:s3_get_bucket_ownership_controls]{get_bucket_ownership_controls} \tab This operation is not supported for directory buckets\cr
@@ -156,8 +156,8 @@ Amazon Simple Storage Service
 \link[paws.storage:s3_head_object]{head_object} \tab The HEAD operation retrieves metadata from an object without returning the object itself\cr
 \link[paws.storage:s3_list_bucket_analytics_configurations]{list_bucket_analytics_configurations} \tab This operation is not supported for directory buckets\cr
 \link[paws.storage:s3_list_bucket_intelligent_tiering_configurations]{list_bucket_intelligent_tiering_configurations} \tab This operation is not supported for directory buckets\cr
-\link[paws.storage:s3_list_bucket_inventory_configurations]{list_bucket_inventory_configurations} \tab This operation is not supported for directory buckets\cr
-\link[paws.storage:s3_list_bucket_metrics_configurations]{list_bucket_metrics_configurations} \tab This operation is not supported for directory buckets\cr
+\link[paws.storage:s3_list_bucket_inventory_configurations]{list_bucket_inventory_configurations} \tab Returns a list of S3 Inventory configurations for the bucket\cr
+\link[paws.storage:s3_list_bucket_metrics_configurations]{list_bucket_metrics_configurations} \tab Lists the metrics configurations for the bucket\cr
 \link[paws.storage:s3_list_buckets]{list_buckets} \tab This operation is not supported for directory buckets\cr
 \link[paws.storage:s3_list_directory_buckets]{list_directory_buckets} \tab Returns a list of all Amazon S3 directory buckets owned by the authenticated sender of the request\cr
 \link[paws.storage:s3_list_multipart_uploads]{list_multipart_uploads} \tab This operation lists in-progress multipart uploads in a bucket\cr
@@ -172,11 +172,11 @@ Amazon Simple Storage Service
 \link[paws.storage:s3_put_bucket_cors]{put_bucket_cors} \tab This operation is not supported for directory buckets\cr
 \link[paws.storage:s3_put_bucket_encryption]{put_bucket_encryption} \tab This operation configures default encryption and Amazon S3 Bucket Keys for an existing bucket\cr
 \link[paws.storage:s3_put_bucket_intelligent_tiering_configuration]{put_bucket_intelligent_tiering_configuration} \tab This operation is not supported for directory buckets\cr
-\link[paws.storage:s3_put_bucket_inventory_configuration]{put_bucket_inventory_configuration} \tab This operation is not supported for directory buckets\cr
+\link[paws.storage:s3_put_bucket_inventory_configuration]{put_bucket_inventory_configuration} \tab This implementation of the PUT action adds an S3 Inventory configuration (identified by the inventory ID) to the bucket\cr
 \link[paws.storage:s3_put_bucket_lifecycle]{put_bucket_lifecycle} \tab This operation is not supported for directory buckets\cr
 \link[paws.storage:s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration} \tab Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration\cr
 \link[paws.storage:s3_put_bucket_logging]{put_bucket_logging} \tab End of support notice: As of October 1, 2025, Amazon S3 has discontinued support for Email Grantee Access Control Lists (ACLs)\cr
-\link[paws.storage:s3_put_bucket_metrics_configuration]{put_bucket_metrics_configuration} \tab This operation is not supported for directory buckets\cr
+\link[paws.storage:s3_put_bucket_metrics_configuration]{put_bucket_metrics_configuration} \tab Sets a metrics configuration (specified by the metrics configuration ID) for the bucket\cr
 \link[paws.storage:s3_put_bucket_notification]{put_bucket_notification} \tab This operation is not supported for directory buckets\cr
 \link[paws.storage:s3_put_bucket_notification_configuration]{put_bucket_notification_configuration} \tab This operation is not supported for directory buckets\cr
 \link[paws.storage:s3_put_bucket_ownership_controls]{put_bucket_ownership_controls} \tab This operation is not supported for directory buckets\cr
@@ -198,6 +198,7 @@ Amazon Simple Storage Service
 \link[paws.storage:s3_select_object_content]{select_object_content} \tab This operation is not supported for directory buckets\cr
 \link[paws.storage:s3_update_bucket_metadata_inventory_table_configuration]{update_bucket_metadata_inventory_table_configuration} \tab Enables or disables a live inventory table for an S3 Metadata configuration on a general purpose bucket\cr
 \link[paws.storage:s3_update_bucket_metadata_journal_table_configuration]{update_bucket_metadata_journal_table_configuration} \tab Enables or disables journal table record expiration for an S3 Metadata configuration on a general purpose bucket\cr
+\link[paws.storage:s3_update_object_encryption]{update_object_encryption} \tab This operation is not supported for directory buckets or Amazon S3 on Outposts buckets\cr
 \link[paws.storage:s3_upload_part]{upload_part} \tab Uploads a part in a multipart upload\cr
 \link[paws.storage:s3_upload_part_copy]{upload_part_copy} \tab Uploads a part by copying data from an existing object as data source\cr
 \link[paws.storage:s3_write_get_object_response]{write_get_object_response} \tab This operation is not supported for directory buckets

@@ -19,7 +19,8 @@ dynamodb_update_table(
   MultiRegionConsistency = NULL,
   GlobalTableWitnessUpdates = NULL,
   OnDemandThroughput = NULL,
-  WarmThroughput = NULL
+  WarmThroughput = NULL,
+  GlobalTableSettingsReplicationMode = NULL
 )
 }
 \arguments{
@@ -123,6 +124,17 @@ specify \code{MaxReadRequestUnits}, \code{MaxWriteRequestUnits}, or both.}
 
 \item{WarmThroughput}{Represents the warm throughput (in read units per second and write units
 per second) for updating a table.}
+
+\item{GlobalTableSettingsReplicationMode}{Controls the settings replication mode for a global table replica. This
+attribute can be defined using UpdateTable operation only on a regional
+table with values:
+\itemize{
+\item \code{ENABLED}: Defines settings replication on a regional table to be
+used as a source table for creating Multi-Account Global Table.
+\item \code{DISABLED}: Remove settings replication on a regional table.
+Settings replication needs to be defined to ENABLED again in order
+to create a Multi-Account Global Table using this table.
+}}
 }
 \description{
 Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given table.

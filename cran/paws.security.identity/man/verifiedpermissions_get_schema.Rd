@@ -8,7 +8,17 @@ store}
 verifiedpermissions_get_schema(policyStoreId)
 }
 \arguments{
-\item{policyStoreId}{[required] Specifies the ID of the policy store that contains the schema.}
+\item{policyStoreId}{[required] Specifies the ID of the policy store that contains the schema.
+
+To specify a policy store, use its ID or alias name. When using an alias
+name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use
+\code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
 }
 \description{
 Retrieve the details for the specified schema in the specified policy store.

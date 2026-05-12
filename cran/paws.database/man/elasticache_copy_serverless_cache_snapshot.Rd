@@ -16,7 +16,8 @@ elasticache_copy_serverless_cache_snapshot(
 Available for Valkey, Redis OSS and Serverless Memcached only.}
 
 \item{TargetServerlessCacheSnapshotName}{[required] The identifier for the snapshot to be created. Available for Valkey,
-Redis OSS and Serverless Memcached only.}
+Redis OSS and Serverless Memcached only. This value is stored as a
+lowercase string.}
 
 \item{KmsKeyId}{The identifier of the KMS key used to encrypt the target snapshot.
 Available for Valkey, Redis OSS and Serverless Memcached only.}

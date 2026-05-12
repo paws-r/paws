@@ -6,20 +6,23 @@
 \usage{
 datazone_update_user_profile(
   domainIdentifier,
-  status,
+  userIdentifier,
   type = NULL,
-  userIdentifier
+  status,
+  sessionName = NULL
 )
 }
 \arguments{
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which a user profile is
 updated.}
 
-\item{status}{[required] The status of the user profile that are to be updated.}
+\item{userIdentifier}{[required] The identifier of the user whose user profile is to be updated.}
 
 \item{type}{The type of the user profile that are to be updated.}
 
-\item{userIdentifier}{[required] The identifier of the user whose user profile is to be updated.}
+\item{status}{[required] The status of the user profile that are to be updated.}
+
+\item{sessionName}{The session name for IAM role sessions.}
 }
 \description{
 Updates the specified user profile in Amazon DataZone.

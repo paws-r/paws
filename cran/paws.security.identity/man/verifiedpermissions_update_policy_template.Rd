@@ -8,14 +8,32 @@ verifiedpermissions_update_policy_template(
   policyStoreId,
   policyTemplateId,
   description = NULL,
-  statement
+  statement,
+  name = NULL
 )
 }
 \arguments{
 \item{policyStoreId}{[required] Specifies the ID of the policy store that contains the policy template
-that you want to update.}
+that you want to update.
 
-\item{policyTemplateId}{[required] Specifies the ID of the policy template that you want to update.}
+To specify a policy store, use its ID or alias name. When using an alias
+name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use
+\code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
+
+\item{policyTemplateId}{[required] Specifies the ID of the policy template that you want to update.
+
+You can use the policy template name in place of the policy template ID.
+When using a name, prefix it with \verb{name/}. For example:
+\itemize{
+\item ID: \code{PTEXAMPLEabcdefg111111}
+\item Name: \code{name/example-policy-template}
+}}
 
 \item{description}{Specifies a new description to apply to the policy template.}
 
@@ -34,6 +52,17 @@ You \strong{can't} change the following elements:
 \item The \code{principal} referenced by the policy template.
 \item The \code{resource} referenced by the policy template.
 }}
+
+\item{name}{Specifies a name for the policy template that is unique among all policy
+templates within the policy store. You can use the name in place of the
+policy template ID in API operations that reference the policy template.
+The name must be prefixed with \verb{name/}.
+
+If you don't include the name in an update request, the existing name is
+unchanged. To remove a name, set it to an empty string (\code{""}).
+
+If you specify a name that is already associated with another policy
+template in the policy store, you receive a \code{ConflictException} error.}
 }
 \description{
 Updates the specified policy template. You can update only the description and the some elements of the \href{https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_UpdatePolicyTemplate.html#amazonverifiedpermissions-UpdatePolicyTemplate-request-policyBody}{policyBody}.

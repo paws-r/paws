@@ -31,6 +31,7 @@ lambda_create_event_source_mapping(
   DocumentDBEventSourceConfig = NULL,
   KMSKeyArn = NULL,
   MetricsConfig = NULL,
+  LoggingConfig = NULL,
   ProvisionedPollerConfig = NULL
 )
 }
@@ -168,6 +169,9 @@ this property to encrypt data using your own customer managed key.}
 
 \item{MetricsConfig}{The metrics configuration for your event source. For more information,
 see \href{https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics}{Event source mapping metrics}.}
+
+\item{LoggingConfig}{(Amazon MSK, and self-managed Apache Kafka only) The logging
+configuration for your event source. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/esm-logging.html}{Event source mapping logging}.}
 
 \item{ProvisionedPollerConfig}{(Amazon SQS, Amazon MSK, and self-managed Apache Kafka only) The
 provisioned mode configuration for the event source. For more

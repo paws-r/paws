@@ -5,22 +5,22 @@
 \title{Creates a custom asset type}
 \usage{
 datazone_create_asset_type(
-  description = NULL,
   domainIdentifier,
-  formsInput,
   name,
+  description = NULL,
+  formsInput,
   owningProjectIdentifier
 )
 }
 \arguments{
-\item{description}{The descripton of the custom asset type.}
-
 \item{domainIdentifier}{[required] The unique identifier of the Amazon DataZone domain where the custom
 asset type is being created.}
 
-\item{formsInput}{[required] The metadata forms that are to be attached to the custom asset type.}
-
 \item{name}{[required] The name of the custom asset type.}
+
+\item{description}{The descripton of the custom asset type.}
+
+\item{formsInput}{[required] The metadata forms that are to be attached to the custom asset type.}
 
 \item{owningProjectIdentifier}{[required] The identifier of the Amazon DataZone project that is to own the custom
 asset type.}

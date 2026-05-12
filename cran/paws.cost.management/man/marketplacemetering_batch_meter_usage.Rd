@@ -2,22 +2,23 @@
 % Please edit documentation in R/marketplacemetering_operations.R
 \name{marketplacemetering_batch_meter_usage}
 \alias{marketplacemetering_batch_meter_usage}
-\title{The CustomerIdentifier parameter is scheduled for deprecation on March
-31, 2026}
+\title{Amazon Web Services Marketplace is introducing Concurrent Agreements,
+enabling buyers to make multiple purchases per Amazon Web Services
+account}
 \usage{
-marketplacemetering_batch_meter_usage(UsageRecords, ProductCode)
+marketplacemetering_batch_meter_usage(UsageRecords, ProductCode = NULL)
 }
 \arguments{
 \item{UsageRecords}{[required] The set of \code{UsageRecords} to submit.
 \code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}} accepts up
 to 25 \code{UsageRecords} at a time.}
 
-\item{ProductCode}{[required] Product code is used to uniquely identify a product in Amazon Web
+\item{ProductCode}{Product code is used to uniquely identify a product in Amazon Web
 Services Marketplace. The product code should be the same as the one
 used during the publishing of a new product.}
 }
 \description{
-The \code{CustomerIdentifier} parameter is scheduled for deprecation on March 31, 2026. Use \code{CustomerAWSAccountID} instead.
+Amazon Web Services Marketplace is introducing Concurrent Agreements, enabling buyers to make multiple purchases per Amazon Web Services account. Starting June 1, 2026, new SaaS products must use \code{CustomerAWSAccountId} (instead of \code{CustomerIdentifier}), \code{LicenseArn} (instead of \code{ProductCode}) to support this feature. Existing integrations will continue to work. Review the new integration for Concurrent Agreements \href{https://catalog.workshops.aws/mpseller/en-US/saas/integration-for-concurrent-agreements}{here}.
 
 See \url{https://www.paws-r-sdk.com/docs/marketplacemetering_batch_meter_usage/} for full documentation.
 }

@@ -6,26 +6,24 @@
 \usage{
 datazone_list_projects(
   domainIdentifier,
+  userIdentifier = NULL,
   groupIdentifier = NULL,
-  maxResults = NULL,
   name = NULL,
+  projectCategory = NULL,
   nextToken = NULL,
-  userIdentifier = NULL
+  maxResults = NULL
 )
 }
 \arguments{
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain.}
 
+\item{userIdentifier}{The identifier of the Amazon DataZone user.}
+
 \item{groupIdentifier}{The identifier of a group.}
 
-\item{maxResults}{The maximum number of projects to return in a single call to
-\code{\link[=datazone_list_projects]{list_projects}}. When the number of projects
-to be listed is greater than the value of \code{MaxResults}, the response
-contains a \code{NextToken} value that you can use in a subsequent call to
-\code{\link[=datazone_list_projects]{list_projects}} to list the next set of
-projects.}
-
 \item{name}{The name of the project.}
+
+\item{projectCategory}{A parameter to filter projects by their category.}
 
 \item{nextToken}{When the number of projects is greater than the default value for the
 \code{MaxResults} parameter, or if you explicitly specify a value for
@@ -35,7 +33,12 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{\link[=datazone_list_projects]{list_projects}} to list the next set of
 projects.}
 
-\item{userIdentifier}{The identifier of the Amazon DataZone user.}
+\item{maxResults}{The maximum number of projects to return in a single call to
+\code{\link[=datazone_list_projects]{list_projects}}. When the number of projects
+to be listed is greater than the value of \code{MaxResults}, the response
+contains a \code{NextToken} value that you can use in a subsequent call to
+\code{\link[=datazone_list_projects]{list_projects}} to list the next set of
+projects.}
 }
 \description{
 Lists Amazon DataZone projects.

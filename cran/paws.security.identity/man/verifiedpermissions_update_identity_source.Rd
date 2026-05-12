@@ -15,7 +15,17 @@ verifiedpermissions_update_identity_source(
 }
 \arguments{
 \item{policyStoreId}{[required] Specifies the ID of the policy store that contains the identity source
-that you want to update.}
+that you want to update.
+
+To specify a policy store, use its ID or alias name. When using an alias
+name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use
+\code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
 
 \item{identitySourceId}{[required] Specifies the ID of the identity source that you want to update.}
 

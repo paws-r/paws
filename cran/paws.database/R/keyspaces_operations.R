@@ -195,11 +195,20 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
 #' -   `readCapacityAutoScaling`: The read capacity auto scaling settings
 #'     for the table. (Optional)
 #' @param cdcSpecification The CDC stream settings of the table.
+#' @param warmThroughputSpecification Specifies the warm throughput settings for the table. Pre-warming a
+#' table helps you avoid capacity exceeded exceptions by pre-provisioning
+#' read and write capacity units to reduce cold start latency when your
+#' table receives traffic.
+#' 
+#' For more information about pre-warming in Amazon Keyspaces, see
+#' [Pre-warm a table in Amazon
+#' Keyspaces](https://docs.aws.amazon.com/keyspaces/latest/devguide/warm-throughput.html)
+#' in the *Amazon Keyspaces Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname keyspaces_create_table
-keyspaces_create_table <- function(keyspaceName, tableName, schemaDefinition, comment = NULL, capacitySpecification = NULL, encryptionSpecification = NULL, pointInTimeRecovery = NULL, ttl = NULL, defaultTimeToLive = NULL, tags = NULL, clientSideTimestamps = NULL, autoScalingSpecification = NULL, replicaSpecifications = NULL, cdcSpecification = NULL) {
+keyspaces_create_table <- function(keyspaceName, tableName, schemaDefinition, comment = NULL, capacitySpecification = NULL, encryptionSpecification = NULL, pointInTimeRecovery = NULL, ttl = NULL, defaultTimeToLive = NULL, tags = NULL, clientSideTimestamps = NULL, autoScalingSpecification = NULL, replicaSpecifications = NULL, cdcSpecification = NULL, warmThroughputSpecification = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
@@ -208,7 +217,7 @@ keyspaces_create_table <- function(keyspaceName, tableName, schemaDefinition, co
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .keyspaces$create_table_input(keyspaceName = keyspaceName, tableName = tableName, schemaDefinition = schemaDefinition, comment = comment, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, tags = tags, clientSideTimestamps = clientSideTimestamps, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications, cdcSpecification = cdcSpecification)
+  input <- .keyspaces$create_table_input(keyspaceName = keyspaceName, tableName = tableName, schemaDefinition = schemaDefinition, comment = comment, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, tags = tags, clientSideTimestamps = clientSideTimestamps, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications, cdcSpecification = cdcSpecification, warmThroughputSpecification = warmThroughputSpecification)
   output <- .keyspaces$create_table_output()
   config <- get_config()
   svc <- .keyspaces$service(config, op)
@@ -943,11 +952,13 @@ keyspaces_update_keyspace <- function(keyspaceName, replicationSpecification, cl
 #' in the *Amazon Keyspaces Developer Guide*.
 #' @param replicaSpecifications The Region specific settings of a multi-Regional table.
 #' @param cdcSpecification The CDC stream settings of the table.
+#' @param warmThroughputSpecification Modifies the warm throughput settings for the table. You can update the
+#' read and write capacity units to adjust the pre-provisioned throughput.
 #'
 #' @keywords internal
 #'
 #' @rdname keyspaces_update_table
-keyspaces_update_table <- function(keyspaceName, tableName, addColumns = NULL, capacitySpecification = NULL, encryptionSpecification = NULL, pointInTimeRecovery = NULL, ttl = NULL, defaultTimeToLive = NULL, clientSideTimestamps = NULL, autoScalingSpecification = NULL, replicaSpecifications = NULL, cdcSpecification = NULL) {
+keyspaces_update_table <- function(keyspaceName, tableName, addColumns = NULL, capacitySpecification = NULL, encryptionSpecification = NULL, pointInTimeRecovery = NULL, ttl = NULL, defaultTimeToLive = NULL, clientSideTimestamps = NULL, autoScalingSpecification = NULL, replicaSpecifications = NULL, cdcSpecification = NULL, warmThroughputSpecification = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
@@ -956,7 +967,7 @@ keyspaces_update_table <- function(keyspaceName, tableName, addColumns = NULL, c
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .keyspaces$update_table_input(keyspaceName = keyspaceName, tableName = tableName, addColumns = addColumns, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, clientSideTimestamps = clientSideTimestamps, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications, cdcSpecification = cdcSpecification)
+  input <- .keyspaces$update_table_input(keyspaceName = keyspaceName, tableName = tableName, addColumns = addColumns, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, clientSideTimestamps = clientSideTimestamps, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications, cdcSpecification = cdcSpecification, warmThroughputSpecification = warmThroughputSpecification)
   output <- .keyspaces$update_table_output()
   config <- get_config()
   svc <- .keyspaces$service(config, op)

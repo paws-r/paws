@@ -3,8 +3,8 @@
 \name{cloudwatch_put_metric_alarm}
 \alias{cloudwatch_put_metric_alarm}
 \title{Creates or updates an alarm and associates it with the specified metric,
-metric math expression, anomaly detection model, or Metrics Insights
-query}
+metric math expression, anomaly detection model, Metrics Insights query,
+or PromQL query}
 \usage{
 cloudwatch_put_metric_alarm(
   AlarmName,
@@ -20,15 +20,17 @@ cloudwatch_put_metric_alarm(
   Dimensions = NULL,
   Period = NULL,
   Unit = NULL,
-  EvaluationPeriods,
+  EvaluationPeriods = NULL,
   DatapointsToAlarm = NULL,
   Threshold = NULL,
-  ComparisonOperator,
+  ComparisonOperator = NULL,
   TreatMissingData = NULL,
   EvaluateLowSampleCountPercentile = NULL,
   Metrics = NULL,
   Tags = NULL,
-  ThresholdMetricId = NULL
+  ThresholdMetricId = NULL,
+  EvaluationCriteria = NULL,
+  EvaluationInterval = NULL
 )
 }
 \arguments{
@@ -174,7 +176,8 @@ as an Amazon Resource Name (ARN). Valid values:
 
 \item{MetricName}{The name for the metric associated with the alarm. For each
 \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} operation, you must
-specify either \code{MetricName} or a \code{Metrics} array.
+specify either \code{MetricName}, a \code{Metrics} array, or an
+\code{EvaluationCriteria}.
 
 If you are creating an alarm based on a math expression, you cannot
 specify this parameter, or any of the \code{Namespace}, \code{Dimensions},
@@ -261,7 +264,7 @@ We recommend omitting \code{Unit} so that you don't inadvertently specify an
 incorrect unit that is not published for this metric. Doing so causes
 the alarm to be stuck in the \verb{INSUFFICIENT DATA} state.}
 
-\item{EvaluationPeriods}{[required] The number of periods over which data is compared to the specified
+\item{EvaluationPeriods}{The number of periods over which data is compared to the specified
 threshold. If you are setting an alarm that requires that a number of
 consecutive data points be breaching to trigger the alarm, this value
 specifies that number. If you are setting an "M out of N" alarm, this
@@ -269,7 +272,7 @@ value is the N.}
 
 \item{DatapointsToAlarm}{The number of data points that must be breaching to trigger the alarm.
 This is used only if you are setting an "M out of N" alarm. In that
-case, this value is the M. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation}{Evaluating an Alarm}
+case, this value is the M. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#alarm-evaluation}{Evaluating an Alarm}
 in the \emph{Amazon CloudWatch User Guide}.}
 
 \item{Threshold}{The value against which the specified statistic is compared.
@@ -277,7 +280,7 @@ in the \emph{Amazon CloudWatch User Guide}.}
 This parameter is required for alarms based on static thresholds, but
 should not be used for alarms based on anomaly detection models.}
 
-\item{ComparisonOperator}{[required] The arithmetic operation to use when comparing the specified statistic
+\item{ComparisonOperator}{The arithmetic operation to use when comparing the specified statistic
 and threshold. The specified statistic value is used as the first
 operand.
 
@@ -287,28 +290,31 @@ for alarms based on anomaly detection models.}
 
 \item{TreatMissingData}{Sets how this alarm is to handle missing data points. If
 \code{TreatMissingData} is omitted, the default behavior of \code{missing} is
-used. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data}{Configuring How CloudWatch Alarms Treats Missing Data}.
+used. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#alarms-and-missing-data}{Configuring How CloudWatch Alarms Treats Missing Data}.
 
 Valid Values: \code{breaching | notBreaching | ignore | missing}
 
 Alarms that evaluate metrics in the \code{AWS/DynamoDB} namespace always
 \code{ignore} missing data even if you choose a different option for
 \code{TreatMissingData}. When an \code{AWS/DynamoDB} metric has missing data,
-alarms that evaluate that metric remain in their current state.}
+alarms that evaluate that metric remain in their current state.
+
+This parameter is not applicable to PromQL alarms.}
 
 \item{EvaluateLowSampleCountPercentile}{Used only for alarms based on percentiles. If you specify \code{ignore}, the
 alarm state does not change during periods with too few data points to
 be statistically significant. If you specify \code{evaluate} or omit this
 parameter, the alarm is always evaluated and possibly changes state no
 matter how many data points are available. For more information, see
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples}{Percentile-Based CloudWatch Alarms and Low Data Samples}.
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#percentiles-with-low-samples}{Percentile-Based CloudWatch Alarms and Low Data Samples}.
 
 Valid Values: \code{evaluate | ignore}}
 
 \item{Metrics}{An array of \code{MetricDataQuery} structures that enable you to create an
 alarm based on the result of a metric math expression. For each
 \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} operation, you must
-specify either \code{MetricName} or a \code{Metrics} array.
+specify either \code{MetricName}, a \code{Metrics} array, or an
+\code{EvaluationCriteria}.
 
 Each item in the \code{Metrics} array either retrieves a metric or performs a
 math expression.
@@ -350,9 +356,32 @@ For an example of how to use this parameter, see the \strong{Anomaly Detection
 Model Alarm} example on this page.
 
 If your alarm uses this parameter, it cannot have Auto Scaling actions.}
+
+\item{EvaluationCriteria}{The evaluation criteria for the alarm. For each
+\code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} operation, you must
+specify either \code{MetricName}, a \code{Metrics} array, or an
+\code{EvaluationCriteria}.
+
+If you use the \code{EvaluationCriteria} parameter, you cannot include the
+\code{Namespace}, \code{MetricName}, \code{Dimensions}, \code{Period}, \code{Unit}, \code{Statistic},
+\code{ExtendedStatistic}, \code{Metrics}, \code{Threshold}, \code{ComparisonOperator},
+\code{ThresholdMetricId}, \code{EvaluationPeriods}, or \code{DatapointsToAlarm}
+parameters of \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} in the
+same operation. Instead, all evaluation parameters are defined within
+this structure.
+
+For an example of how to use this parameter, see the \strong{PromQL alarm}
+example on this page.}
+
+\item{EvaluationInterval}{The frequency, in seconds, at which the alarm is evaluated. Valid values
+are 10, 20, 30, and any multiple of 60.
+
+This parameter is required for alarms that use \code{EvaluationCriteria}, and
+cannot be specified for alarms configured with \code{MetricName} or
+\code{Metrics}.}
 }
 \description{
-Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, or Metrics Insights query. For more information about using a Metrics Insights query for an alarm, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Metrics_Insights_Alarm.html}{Create alarms on Metrics Insights queries}.
+Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, Metrics Insights query, or PromQL query. For more information about using a Metrics Insights query for an alarm, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/multi-time-series-alarm.html}{Create alarms on Metrics Insights queries}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatch_put_metric_alarm/} for full documentation.
 }

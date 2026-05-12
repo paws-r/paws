@@ -17,11 +17,16 @@ s3_create_session(
 }
 \arguments{
 \item{SessionMode}{Specifies the mode of the session that will be created, either
-\code{ReadWrite} or \code{ReadOnly}. By default, a \code{ReadWrite} session is created.
-A \code{ReadWrite} session is capable of executing all the Zonal endpoint API
-operations on a directory bucket. A \code{ReadOnly} session is constrained to
-execute the following Zonal endpoint API operations:
-\code{\link[=s3_get_object]{get_object}}, \code{\link[=s3_head_object]{head_object}},
+\code{ReadWrite} or \code{ReadOnly}. If no session mode is specified, the default
+behavior attempts to create a session with the maximum allowable
+privilege. It will first attempt to create a \code{ReadWrite} session, and if
+that is not allowed by permissions, it will attempt to create a
+\code{ReadOnly} session. If neither session type is allowed, the request will
+return an Access Denied error. A \code{ReadWrite} session is capable of
+executing all the Zonal endpoint API operations on a directory bucket. A
+\code{ReadOnly} session is constrained to execute the following Zonal
+endpoint API operations: \code{\link[=s3_get_object]{get_object}},
+\code{\link[=s3_head_object]{head_object}},
 \code{\link[=s3_list_objects_v2]{list_objects_v2}},
 \code{\link[=s3_get_object_attributes]{get_object_attributes}},
 \code{\link[=s3_list_parts]{list_parts}}, and

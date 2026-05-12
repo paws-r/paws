@@ -7,7 +7,8 @@
 kinesis_enable_enhanced_monitoring(
   StreamName = NULL,
   ShardLevelMetrics,
-  StreamARN = NULL
+  StreamARN = NULL,
+  StreamId = NULL
 )
 }
 \arguments{
@@ -32,6 +33,8 @@ For more information, see \href{https://docs.aws.amazon.com/streams/latest/dev/m
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.}
 
 \item{StreamARN}{The ARN of the stream.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Enables enhanced Kinesis data stream monitoring for shard-level metrics.

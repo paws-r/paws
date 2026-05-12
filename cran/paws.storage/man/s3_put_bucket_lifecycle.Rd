@@ -30,8 +30,6 @@ in the \emph{Amazon S3 User Guide}.
 If you provide an individual checksum, Amazon S3 ignores any provided
 \code{ChecksumAlgorithm} parameter.}
 
-\item{LifecycleConfiguration}{}
-
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
 provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}

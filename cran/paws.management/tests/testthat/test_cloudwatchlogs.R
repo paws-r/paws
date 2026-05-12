@@ -36,6 +36,10 @@ test_that("describe_log_streams", {
   expect_error(svc$describe_log_streams(), NA)
 })
 
+test_that("describe_lookup_tables", {
+  expect_error(svc$describe_lookup_tables(), NA)
+})
+
 test_that("describe_metric_filters", {
   expect_error(svc$describe_metric_filters(), NA)
 })

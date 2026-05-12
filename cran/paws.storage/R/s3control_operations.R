@@ -2114,11 +2114,14 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
 #' value if the target data that you would like to access is a path to an
 #' object. Do not pass this value if the target data is a bucket or a
 #' bucket and a prefix.
+#' @param AuditContext The context to identify the job or query associated with the credential
+#' request. This information will be displayed in CloudTrail log in your
+#' account.
 #'
 #' @keywords internal
 #'
 #' @rdname s3control_get_data_access
-s3control_get_data_access <- function(AccountId, Target, Permission, DurationSeconds = NULL, Privilege = NULL, TargetType = NULL) {
+s3control_get_data_access <- function(AccountId, Target, Permission, DurationSeconds = NULL, Privilege = NULL, TargetType = NULL, AuditContext = NULL) {
   op <- new_operation(
     name = "GetDataAccess",
     http_method = "GET",
@@ -2127,7 +2130,7 @@ s3control_get_data_access <- function(AccountId, Target, Permission, DurationSec
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3control$get_data_access_input(AccountId = AccountId, Target = Target, Permission = Permission, DurationSeconds = DurationSeconds, Privilege = Privilege, TargetType = TargetType)
+  input <- .s3control$get_data_access_input(AccountId = AccountId, Target = Target, Permission = Permission, DurationSeconds = DurationSeconds, Privilege = Privilege, TargetType = TargetType, AuditContext = AuditContext)
   output <- .s3control$get_data_access_output()
   config <- get_config()
   svc <- .s3control$service(config, op)

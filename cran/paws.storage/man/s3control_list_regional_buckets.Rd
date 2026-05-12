@@ -14,10 +14,6 @@ s3control_list_regional_buckets(
 \arguments{
 \item{AccountId}{[required] The Amazon Web Services account ID of the Outposts bucket.}
 
-\item{NextToken}{}
-
-\item{MaxResults}{}
-
 \item{OutpostId}{The ID of the Outposts resource.
 
 This ID is required by Amazon S3 on Outposts buckets.}

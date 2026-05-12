@@ -78,8 +78,6 @@ in the \emph{Amazon DynamoDB Developer Guide}.
 \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html}{AttributesToGet}
 in the \emph{Amazon DynamoDB Developer Guide}.
 }}
-
-\item{ReturnConsumedCapacity}{}
 }
 \description{
 The \code{\link[=dynamodb_batch_get_item]{batch_get_item}} operation returns the attributes of one or more items from one or more tables. You identify requested items by primary key.

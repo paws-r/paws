@@ -371,7 +371,7 @@ NULL
 
 .macie2$get_classification_export_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuration = structure(list(s3Destination = structure(list(bucketName = structure(logical(0), tags = list(locationName = "bucketName", type = "string")), keyPrefix = structure(logical(0), tags = list(locationName = "keyPrefix", type = "string")), kmsKeyArn = structure(logical(0), tags = list(locationName = "kmsKeyArn", type = "string"))), tags = list(locationName = "s3Destination", type = "structure"))), tags = list(locationName = "configuration", type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(configuration = structure(list(s3Destination = structure(list(bucketName = structure(logical(0), tags = list(locationName = "bucketName", type = "string")), expectedBucketOwner = structure(logical(0), tags = list(locationName = "expectedBucketOwner", type = "string")), keyPrefix = structure(logical(0), tags = list(locationName = "keyPrefix", type = "string")), kmsKeyArn = structure(logical(0), tags = list(locationName = "kmsKeyArn", type = "string"))), tags = list(locationName = "s3Destination", type = "structure"))), tags = list(locationName = "configuration", type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -761,13 +761,13 @@ NULL
 
 .macie2$put_classification_export_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuration = structure(list(s3Destination = structure(list(bucketName = structure(logical(0), tags = list(locationName = "bucketName", type = "string")), keyPrefix = structure(logical(0), tags = list(locationName = "keyPrefix", type = "string")), kmsKeyArn = structure(logical(0), tags = list(locationName = "kmsKeyArn", type = "string"))), tags = list(locationName = "s3Destination", type = "structure"))), tags = list(locationName = "configuration", type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(configuration = structure(list(s3Destination = structure(list(bucketName = structure(logical(0), tags = list(locationName = "bucketName", type = "string")), expectedBucketOwner = structure(logical(0), tags = list(locationName = "expectedBucketOwner", type = "string")), keyPrefix = structure(logical(0), tags = list(locationName = "keyPrefix", type = "string")), kmsKeyArn = structure(logical(0), tags = list(locationName = "kmsKeyArn", type = "string"))), tags = list(locationName = "s3Destination", type = "structure"))), tags = list(locationName = "configuration", type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .macie2$put_classification_export_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuration = structure(list(s3Destination = structure(list(bucketName = structure(logical(0), tags = list(locationName = "bucketName", type = "string")), keyPrefix = structure(logical(0), tags = list(locationName = "keyPrefix", type = "string")), kmsKeyArn = structure(logical(0), tags = list(locationName = "kmsKeyArn", type = "string"))), tags = list(locationName = "s3Destination", type = "structure"))), tags = list(locationName = "configuration", type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(configuration = structure(list(s3Destination = structure(list(bucketName = structure(logical(0), tags = list(locationName = "bucketName", type = "string")), expectedBucketOwner = structure(logical(0), tags = list(locationName = "expectedBucketOwner", type = "string")), keyPrefix = structure(logical(0), tags = list(locationName = "keyPrefix", type = "string")), kmsKeyArn = structure(logical(0), tags = list(locationName = "kmsKeyArn", type = "string"))), tags = list(locationName = "s3Destination", type = "structure"))), tags = list(locationName = "configuration", type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

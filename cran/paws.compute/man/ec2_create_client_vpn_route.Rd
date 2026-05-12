@@ -7,7 +7,7 @@
 ec2_create_client_vpn_route(
   ClientVpnEndpointId,
   DestinationCidrBlock,
-  TargetVpcSubnetId,
+  TargetVpcSubnetId = NULL,
   Description = NULL,
   ClientToken = NULL,
   DryRun = NULL
@@ -27,12 +27,15 @@ Services Site-to-Site VPN connection's IPv4 CIDR range
 \item To add a route for the local network, enter the client CIDR range
 }}
 
-\item{TargetVpcSubnetId}{[required] The ID of the subnet through which you want to route traffic. The
+\item{TargetVpcSubnetId}{The ID of the subnet through which you want to route traffic. The
 specified subnet must be an existing target network of the Client VPN
 endpoint.
 
 Alternatively, if you're adding a route for the local network, specify
-\code{local}.}
+\code{local}.
+
+This parameter is required for VPC-based Client VPN endpoints. For
+Transit Gateway-based endpoints, this parameter is not required.}
 
 \item{Description}{A brief description of the route.}
 

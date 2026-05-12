@@ -729,11 +729,15 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' EKS, see [Customizing managed nodes with launch
 #' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
+#' @param warmPoolConfig The warm pool configuration for the node group. Warm pools maintain
+#' pre-initialized EC2 instances that can quickly join your cluster during
+#' scale-out events, improving application scaling performance and reducing
+#' costs.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_create_nodegroup
-eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NULL, diskSize = NULL, subnets, instanceTypes = NULL, amiType = NULL, remoteAccess = NULL, nodeRole, labels = NULL, taints = NULL, tags = NULL, clientRequestToken = NULL, launchTemplate = NULL, updateConfig = NULL, nodeRepairConfig = NULL, capacityType = NULL, version = NULL, releaseVersion = NULL) {
+eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NULL, diskSize = NULL, subnets, instanceTypes = NULL, amiType = NULL, remoteAccess = NULL, nodeRole, labels = NULL, taints = NULL, tags = NULL, clientRequestToken = NULL, launchTemplate = NULL, updateConfig = NULL, nodeRepairConfig = NULL, capacityType = NULL, version = NULL, releaseVersion = NULL, warmPoolConfig = NULL) {
   op <- new_operation(
     name = "CreateNodegroup",
     http_method = "POST",
@@ -742,7 +746,7 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$create_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName, scalingConfig = scalingConfig, diskSize = diskSize, subnets = subnets, instanceTypes = instanceTypes, amiType = amiType, remoteAccess = remoteAccess, nodeRole = nodeRole, labels = labels, taints = taints, tags = tags, clientRequestToken = clientRequestToken, launchTemplate = launchTemplate, updateConfig = updateConfig, nodeRepairConfig = nodeRepairConfig, capacityType = capacityType, version = version, releaseVersion = releaseVersion)
+  input <- .eks$create_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName, scalingConfig = scalingConfig, diskSize = diskSize, subnets = subnets, instanceTypes = instanceTypes, amiType = amiType, remoteAccess = remoteAccess, nodeRole = nodeRole, labels = labels, taints = taints, tags = tags, clientRequestToken = clientRequestToken, launchTemplate = launchTemplate, updateConfig = updateConfig, nodeRepairConfig = nodeRepairConfig, capacityType = capacityType, version = version, releaseVersion = releaseVersion, warmPoolConfig = warmPoolConfig)
   output <- .eks$create_nodegroup_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -836,11 +840,28 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #' role chaining to ensure your application gets the required permissions.
 #' This means Role A will assume Role B, allowing your Pods to securely
 #' access resources like S3 buckets in the target account.
+#' @param policy An optional IAM policy in JSON format (as an escaped string) that
+#' applies additional restrictions to this pod identity association beyond
+#' the IAM policies attached to the IAM role. This policy is applied as the
+#' intersection of the role's policies and this policy, allowing you to
+#' reduce the permissions that applications in the pods can use. Use this
+#' policy to enforce least privilege access while still leveraging a shared
+#' IAM role across multiple applications.
+#' 
+#' **Important considerations**
+#' 
+#' -   **Session tags:** When using this policy, `disableSessionTags` must
+#'     be set to `true`.
+#' 
+#' -   **Target role permissions:** If you specify both a `TargetRoleArn`
+#'     and a policy, the policy restrictions apply only to the target
+#'     role's permissions, not to the initial role used for assuming the
+#'     target role.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_create_pod_identity_association
-eks_create_pod_identity_association <- function(clusterName, namespace, serviceAccount, roleArn, clientRequestToken = NULL, tags = NULL, disableSessionTags = NULL, targetRoleArn = NULL) {
+eks_create_pod_identity_association <- function(clusterName, namespace, serviceAccount, roleArn, clientRequestToken = NULL, tags = NULL, disableSessionTags = NULL, targetRoleArn = NULL, policy = NULL) {
   op <- new_operation(
     name = "CreatePodIdentityAssociation",
     http_method = "POST",
@@ -849,7 +870,7 @@ eks_create_pod_identity_association <- function(clusterName, namespace, serviceA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$create_pod_identity_association_input(clusterName = clusterName, namespace = namespace, serviceAccount = serviceAccount, roleArn = roleArn, clientRequestToken = clientRequestToken, tags = tags, disableSessionTags = disableSessionTags, targetRoleArn = targetRoleArn)
+  input <- .eks$create_pod_identity_association_input(clusterName = clusterName, namespace = namespace, serviceAccount = serviceAccount, roleArn = roleArn, clientRequestToken = clientRequestToken, tags = tags, disableSessionTags = disableSessionTags, targetRoleArn = targetRoleArn, policy = policy)
   output <- .eks$create_pod_identity_association_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -2889,13 +2910,16 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
 #' update.
 #' @param updateConfig The node group update configuration.
 #' @param nodeRepairConfig The node auto repair configuration for the node group.
+#' @param warmPoolConfig The warm pool configuration to apply to the node group. You can use this
+#' to add a warm pool to an existing node group or modify the settings of
+#' an existing warm pool.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_update_nodegroup_config
-eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NULL, taints = NULL, scalingConfig = NULL, updateConfig = NULL, nodeRepairConfig = NULL, clientRequestToken = NULL) {
+eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NULL, taints = NULL, scalingConfig = NULL, updateConfig = NULL, nodeRepairConfig = NULL, warmPoolConfig = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "UpdateNodegroupConfig",
     http_method = "POST",
@@ -2904,7 +2928,7 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_nodegroup_config_input(clusterName = clusterName, nodegroupName = nodegroupName, labels = labels, taints = taints, scalingConfig = scalingConfig, updateConfig = updateConfig, nodeRepairConfig = nodeRepairConfig, clientRequestToken = clientRequestToken)
+  input <- .eks$update_nodegroup_config_input(clusterName = clusterName, nodegroupName = nodegroupName, labels = labels, taints = taints, scalingConfig = scalingConfig, updateConfig = updateConfig, nodeRepairConfig = nodeRepairConfig, warmPoolConfig = warmPoolConfig, clientRequestToken = clientRequestToken)
   output <- .eks$update_nodegroup_config_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -3036,11 +3060,28 @@ eks_update_nodegroup_version <- function(clusterName, nodegroupName, version = N
 #' ensure your application gets the required permissions. This means Role A
 #' will assume Role B, allowing your Pods to securely access resources like
 #' S3 buckets in the target account.
+#' @param policy An optional IAM policy in JSON format (as an escaped string) that
+#' applies additional restrictions to this pod identity association beyond
+#' the IAM policies attached to the IAM role. This policy is applied as the
+#' intersection of the role's policies and this policy, allowing you to
+#' reduce the permissions that applications in the pods can use. Use this
+#' policy to enforce least privilege access while still leveraging a shared
+#' IAM role across multiple applications.
+#' 
+#' **Important considerations**
+#' 
+#' -   **Session tags:** When using this policy, `disableSessionTags` must
+#'     be set to `true`.
+#' 
+#' -   **Target role permissions:** If you specify both a `TargetRoleArn`
+#'     and a policy, the policy restrictions apply only to the target
+#'     role's permissions, not to the initial role used for assuming the
+#'     target role.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_update_pod_identity_association
-eks_update_pod_identity_association <- function(clusterName, associationId, roleArn = NULL, clientRequestToken = NULL, disableSessionTags = NULL, targetRoleArn = NULL) {
+eks_update_pod_identity_association <- function(clusterName, associationId, roleArn = NULL, clientRequestToken = NULL, disableSessionTags = NULL, targetRoleArn = NULL, policy = NULL) {
   op <- new_operation(
     name = "UpdatePodIdentityAssociation",
     http_method = "POST",
@@ -3049,7 +3090,7 @@ eks_update_pod_identity_association <- function(clusterName, associationId, role
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_pod_identity_association_input(clusterName = clusterName, associationId = associationId, roleArn = roleArn, clientRequestToken = clientRequestToken, disableSessionTags = disableSessionTags, targetRoleArn = targetRoleArn)
+  input <- .eks$update_pod_identity_association_input(clusterName = clusterName, associationId = associationId, roleArn = roleArn, clientRequestToken = clientRequestToken, disableSessionTags = disableSessionTags, targetRoleArn = targetRoleArn, policy = policy)
   output <- .eks$update_pod_identity_association_output()
   config <- get_config()
   svc <- .eks$service(config, op)

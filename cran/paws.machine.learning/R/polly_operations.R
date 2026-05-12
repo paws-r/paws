@@ -247,6 +247,55 @@ polly_put_lexicon <- function(Name, Content) {
 }
 .polly$operations$put_lexicon <- polly_put_lexicon
 
+#' Synthesizes UTF-8 input, plain text, or SSML over a bidirectional
+#' streaming connection
+#'
+#' @description
+#' Synthesizes UTF-8 input, plain text, or SSML over a bidirectional streaming connection. Specify synthesis parameters in HTTP/2 headers, send text incrementally as events on the input stream, and receive synthesized audio as it becomes available.
+#'
+#' See [https://www.paws-r-sdk.com/docs/polly_start_speech_synthesis_stream/](https://www.paws-r-sdk.com/docs/polly_start_speech_synthesis_stream/) for full documentation.
+#'
+#' @param Engine &#91;required&#93; Specifies the engine for Amazon Polly to use when processing input text
+#' for speech synthesis. Currently, only the `generative` engine is
+#' supported. If you specify a voice that the selected engine doesn't
+#' support, Amazon Polly returns an error.
+#' @param LanguageCode An optional parameter that sets the language code for the speech
+#' synthesis request. Specify this parameter only when using a bilingual
+#' voice. If a bilingual voice is used and no language code is specified,
+#' Amazon Polly uses the default language of the bilingual voice.
+#' @param LexiconNames The names of one or more pronunciation lexicons for the service to apply
+#' during synthesis. Amazon Polly applies lexicons only when the lexicon
+#' language matches the voice language.
+#' @param OutputFormat &#91;required&#93; The audio format for the synthesized speech. Currently, Amazon Polly
+#' does not support JSON speech marks.
+#' @param SampleRate The audio frequency, specified in Hz.
+#' @param VoiceId &#91;required&#93; The voice to use in synthesis. To get a list of available voice IDs, use
+#' the [`describe_voices`][polly_describe_voices] operation.
+#' @param ActionStream The input event stream that contains text events and stream control
+#' events.
+#'
+#' @keywords internal
+#'
+#' @rdname polly_start_speech_synthesis_stream
+polly_start_speech_synthesis_stream <- function(Engine, LanguageCode = NULL, LexiconNames = NULL, OutputFormat, SampleRate = NULL, VoiceId, ActionStream = NULL) {
+  op <- new_operation(
+    name = "StartSpeechSynthesisStream",
+    http_method = "POST",
+    http_path = "/v1/synthesisStream",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = TRUE
+  )
+  input <- .polly$start_speech_synthesis_stream_input(Engine = Engine, LanguageCode = LanguageCode, LexiconNames = LexiconNames, OutputFormat = OutputFormat, SampleRate = SampleRate, VoiceId = VoiceId, ActionStream = ActionStream)
+  output <- .polly$start_speech_synthesis_stream_output()
+  config <- get_config()
+  svc <- .polly$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.polly$operations$start_speech_synthesis_stream <- polly_start_speech_synthesis_stream
+
 #' Allows the creation of an asynchronous synthesis task, by starting a new
 #' SpeechSynthesisTask
 #'
@@ -273,8 +322,8 @@ polly_put_lexicon <- function(Name, Content) {
 #' apply during synthesis. Lexicons are applied only if the language of the
 #' lexicon is the same as the language of the voice.
 #' @param OutputFormat &#91;required&#93; The format in which the returned output will be encoded. For audio
-#' stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this
-#' will be json.
+#' stream, this will be mp3, ogg_vorbis, ogg_opus, mu-law, a-law, or pcm.
+#' For speech marks, this will be json.
 #' @param OutputS3BucketName &#91;required&#93; Amazon S3 bucket name to which the output file will be saved.
 #' @param OutputS3KeyPrefix The Amazon S3 key prefix for the output speech file.
 #' @param SampleRate The audio frequency specified in Hz.
@@ -287,6 +336,10 @@ polly_put_lexicon <- function(Name, Content) {
 #' 
 #' Valid values for pcm are "8000" and "16000" The default value is
 #' "16000".
+#' 
+#' Valid value for ogg_opus is "48000".
+#' 
+#' Valid value for mu-law and a-law is "8000".
 #' @param SnsTopicArn ARN for the SNS topic optionally used for providing status notification
 #' for a speech synthesis task.
 #' @param SpeechMarkTypes The type of speech marks returned for the input text.
@@ -348,8 +401,8 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' lexicon is the same as the language of the voice. For information about
 #' storing lexicons, see [`put_lexicon`][polly_put_lexicon].
 #' @param OutputFormat &#91;required&#93; The format in which the returned output will be encoded. For audio
-#' stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this
-#' will be json.
+#' stream, this will be mp3, ogg_vorbis, ogg_opus, mu-law, a-law or pcm.
+#' For speech marks, this will be json.
 #' 
 #' When pcm is used, the content returned is audio/pcm in a signed 16-bit,
 #' 1 channel (mono), little-endian format.
@@ -363,6 +416,10 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' 
 #' Valid values for pcm are "8000" and "16000" The default value is
 #' "16000".
+#' 
+#' Valid value for ogg_opus is "48000".
+#' 
+#' Valid value for mu-law and a-law is "8000".
 #' @param SpeechMarkTypes The type of speech marks returned for the input text.
 #' @param Text &#91;required&#93; Input text to synthesize. If you specify `ssml` as the `TextType`,
 #' follow the SSML format for the input text.

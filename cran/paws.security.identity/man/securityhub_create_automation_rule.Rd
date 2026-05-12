@@ -19,14 +19,14 @@ securityhub_create_automation_rule(
 \item{Tags}{User-defined tags associated with an automation rule.}
 
 \item{RuleStatus}{Whether the rule is active after it is created. If this parameter is
-equal to \code{ENABLED}, Security Hub starts applying the rule to findings
-and finding updates after the rule is created. To change the value of
-this parameter after creating a rule, use
+equal to \code{ENABLED}, Security Hub CSPM starts applying the rule to
+findings and finding updates after the rule is created. To change the
+value of this parameter after creating a rule, use
 \href{https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_BatchUpdateAutomationRules.html}{\code{batch_update_automation_rules}}
 .}
 
 \item{RuleOrder}{[required] An integer ranging from 1 to 1000 that represents the order in which the
-rule action is applied to findings. Security Hub applies rules with
+rule action is applied to findings. Security Hub CSPM applies rules with
 lower values for this parameter first.}
 
 \item{RuleName}{[required] The name of the rule.}
@@ -36,14 +36,14 @@ lower values for this parameter first.}
 \item{IsTerminal}{Specifies whether a rule is the last to be applied with respect to a
 finding that matches the rule criteria. This is useful when a finding
 matches the criteria for multiple rules, and each rule has different
-actions. If a rule is terminal, Security Hub applies the rule action to
-a finding that matches the rule criteria and doesn't evaluate other
-rules for the finding. By default, a rule isn't terminal.}
+actions. If a rule is terminal, Security Hub CSPM applies the rule
+action to a finding that matches the rule criteria and doesn't evaluate
+other rules for the finding. By default, a rule isn't terminal.}
 
 \item{Criteria}{[required] A set of ASFF finding field attributes and corresponding expected values
-that Security Hub uses to filter findings. If a rule is enabled and a
-finding matches the conditions specified in this parameter, Security Hub
-applies the rule action to the finding.}
+that Security Hub CSPM uses to filter findings. If a rule is enabled and
+a finding matches the conditions specified in this parameter, Security
+Hub CSPM applies the rule action to the finding.}
 
 \item{Actions}{[required] One or more actions to update finding fields if a finding matches the
 conditions specified in \code{Criteria}.}

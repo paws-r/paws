@@ -24,8 +24,6 @@ kendra_update_thesaurus(
 
 \item{RoleArn}{An IAM role that gives Amazon Kendra permissions to access thesaurus
 file specified in \code{SourceS3Path}.}
-
-\item{SourceS3Path}{}
 }
 \description{
 Updates a thesaurus for an index.

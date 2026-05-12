@@ -15,6 +15,61 @@ NULL
 #' and Access Management (IAM)](https://aws.amazon.com/iam/) and the
 #' [Identity and Access Management User
 #' Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/).
+#' 
+#' **Programmatic access to IAM**
+#' 
+#' We recommend that you use the Amazon Web Services SDKs to make
+#' programmatic API calls to IAM. The Amazon Web Services SDKs consist of
+#' libraries and sample code for various programming languages and
+#' platforms (for example, Java, Ruby, .NET, iOS, and Android). The SDKs
+#' provide a convenient way to create programmatic access to IAM and Amazon
+#' Web Services. For example, the SDKs take care of tasks such as
+#' cryptographically signing requests, managing errors, and retrying
+#' requests automatically. For more information, see [Tools to build on
+#' Amazon Web Services](https://builder.aws.com/build/tools).
+#' 
+#' Alternatively, you can also use the IAM Query API to make direct calls
+#' to the IAM service. For more information about calling the IAM Query
+#' API, see [Making query
+#' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html)
+#' in the *Identity and Access Management User Guide*. IAM supports GET and
+#' POST requests for all actions. That is, the API does not require you to
+#' use GET for some actions and POST for others. However, GET requests are
+#' subject to the limitation size of a URL. Therefore, for operations that
+#' require larger sizes, use a POST request.
+#' 
+#' **Signing requests**
+#' 
+#' Requests must be signed using an access key ID and a secret access key.
+#' We strongly recommend that you do not use your Amazon Web Services
+#' account access key ID and secret access key for everyday work with IAM.
+#' You can use the access key ID and secret access key for an IAM user or
+#' you can use the Security Token Service to generate temporary security
+#' credentials and use those to sign requests.
+#' 
+#' To sign requests, we recommend that you use [Signature Version
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
+#' If you have an existing application that uses Signature Version 2, you
+#' do not have to update it to use Signature Version 4. However, some
+#' operations now require Signature Version 4. The documentation for
+#' operations that require version 4 indicate this requirement.
+#' 
+#' **Additional resources**
+#' 
+#' -   [Amazon Web Services security
+#'     credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html).
+#'     This topic provides general information about the types of
+#'     credentials used for accessing Amazon Web Services.
+#' 
+#' -   [IAM best
+#'     practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html).
+#'     This topic presents a list of suggestions for using the IAM service
+#'     to help secure your Amazon Web Services resources.
+#' 
+#' -   [Signing Amazon Web Services API
+#'     requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
+#'     This set of topics walk you through the process of signing a request
+#'     using an access key ID and secret access key.
 #'
 #' @param
 #' config

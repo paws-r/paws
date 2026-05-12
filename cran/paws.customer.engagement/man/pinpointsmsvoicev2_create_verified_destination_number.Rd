@@ -7,12 +7,16 @@ account is in the sandbox}
 \usage{
 pinpointsmsvoicev2_create_verified_destination_number(
   DestinationPhoneNumber,
+  RcsAgentId = NULL,
   Tags = NULL,
   ClientToken = NULL
 )
 }
 \arguments{
 \item{DestinationPhoneNumber}{[required] The verified destination phone number, in E.164 format.}
+
+\item{RcsAgentId}{The unique identifier of the RCS agent to associate with the verified
+destination number. You can use either the RcsAgentId or RcsAgentArn.}
 
 \item{Tags}{An array of tags (key and value pairs) to associate with the destination
 number.}

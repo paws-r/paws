@@ -110,6 +110,7 @@ performance, and operational health.
 \section{Operations}{
 
 \tabular{ll}{
+\link[=cloudwatch_delete_alarm_mute_rule]{delete_alarm_mute_rule} \tab Deletes a specific alarm mute rule\cr
 \link[=cloudwatch_delete_alarms]{delete_alarms} \tab Deletes the specified alarms\cr
 \link[=cloudwatch_delete_anomaly_detector]{delete_anomaly_detector} \tab Deletes the specified anomaly detection model from your account\cr
 \link[=cloudwatch_delete_dashboards]{delete_dashboards} \tab Deletes all dashboards that you specify\cr
@@ -125,28 +126,34 @@ performance, and operational health.
 \link[=cloudwatch_disable_insight_rules]{disable_insight_rules} \tab Disables the specified Contributor Insights rules\cr
 \link[=cloudwatch_enable_alarm_actions]{enable_alarm_actions} \tab Enables the actions for the specified alarms\cr
 \link[=cloudwatch_enable_insight_rules]{enable_insight_rules} \tab Enables the specified Contributor Insights rules\cr
+\link[=cloudwatch_get_alarm_mute_rule]{get_alarm_mute_rule} \tab Retrieves details for a specific alarm mute rule\cr
 \link[=cloudwatch_get_dashboard]{get_dashboard} \tab Displays the details of the dashboard that you specify\cr
 \link[=cloudwatch_get_insight_rule_report]{get_insight_rule_report} \tab This operation returns the time series data collected by a Contributor Insights rule\cr
 \link[=cloudwatch_get_metric_data]{get_metric_data} \tab You can use the GetMetricData API to retrieve CloudWatch metric values\cr
 \link[=cloudwatch_get_metric_statistics]{get_metric_statistics} \tab Gets statistics for the specified metric\cr
 \link[=cloudwatch_get_metric_stream]{get_metric_stream} \tab Returns information about the metric stream that you specify\cr
 \link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image} \tab You can use the GetMetricWidgetImage API to retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a bitmap image\cr
+\link[=cloudwatch_get_o_tel_enrichment]{get_o_tel_enrichment} \tab Returns the current status of vended metric enrichment for the account, including whether CloudWatch vended metrics are enriched with resource ARN and resource tag labels and queryable using PromQL\cr
+\link[=cloudwatch_list_alarm_mute_rules]{list_alarm_mute_rules} \tab Lists alarm mute rules in your Amazon Web Services account and region\cr
 \link[=cloudwatch_list_dashboards]{list_dashboards} \tab Returns a list of the dashboards for your account\cr
 \link[=cloudwatch_list_managed_insight_rules]{list_managed_insight_rules} \tab Returns a list that contains the number of managed Contributor Insights rules in your account\cr
 \link[=cloudwatch_list_metrics]{list_metrics} \tab List the specified metrics\cr
 \link[=cloudwatch_list_metric_streams]{list_metric_streams} \tab Returns a list of metric streams in this account\cr
 \link[=cloudwatch_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch resource\cr
+\link[=cloudwatch_put_alarm_mute_rule]{put_alarm_mute_rule} \tab Creates or updates an alarm mute rule\cr
 \link[=cloudwatch_put_anomaly_detector]{put_anomaly_detector} \tab Creates an anomaly detection model for a CloudWatch metric\cr
 \link[=cloudwatch_put_composite_alarm]{put_composite_alarm} \tab Creates or updates a composite alarm\cr
 \link[=cloudwatch_put_dashboard]{put_dashboard} \tab Creates a dashboard if it does not already exist, or updates an existing dashboard\cr
 \link[=cloudwatch_put_insight_rule]{put_insight_rule} \tab Creates a Contributor Insights rule\cr
 \link[=cloudwatch_put_managed_insight_rules]{put_managed_insight_rules} \tab Creates a managed Contributor Insights rule for a specified Amazon Web Services resource\cr
-\link[=cloudwatch_put_metric_alarm]{put_metric_alarm} \tab Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, or Metrics Insights query\cr
+\link[=cloudwatch_put_metric_alarm]{put_metric_alarm} \tab Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, Metrics Insights query, or PromQL query\cr
 \link[=cloudwatch_put_metric_data]{put_metric_data} \tab Publishes metric data to Amazon CloudWatch\cr
 \link[=cloudwatch_put_metric_stream]{put_metric_stream} \tab Creates or updates a metric stream\cr
 \link[=cloudwatch_set_alarm_state]{set_alarm_state} \tab Temporarily sets the state of an alarm for testing purposes\cr
 \link[=cloudwatch_start_metric_streams]{start_metric_streams} \tab Starts the streaming of metrics for one or more of your metric streams\cr
+\link[=cloudwatch_start_o_tel_enrichment]{start_o_tel_enrichment} \tab Enables enrichment and PromQL access for CloudWatch vended metrics for supported Amazon Web Services resources in the account\cr
 \link[=cloudwatch_stop_metric_streams]{stop_metric_streams} \tab Stops the streaming of metrics for one or more of your metric streams\cr
+\link[=cloudwatch_stop_o_tel_enrichment]{stop_o_tel_enrichment} \tab Disables enrichment and PromQL access for CloudWatch vended metrics for supported Amazon Web Services resources in the account\cr
 \link[=cloudwatch_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch resource\cr
 \link[=cloudwatch_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource
 }
@@ -155,7 +162,7 @@ performance, and operational health.
 \examples{
 \dontrun{
 svc <- cloudwatch()
-svc$delete_alarms(
+svc$delete_alarm_mute_rule(
   Foo = 123
 )
 }

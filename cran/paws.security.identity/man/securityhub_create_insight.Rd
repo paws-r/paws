@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_create_insight}
 \alias{securityhub_create_insight}
-\title{Creates a custom insight in Security Hub}
+\title{Creates a custom insight in Security Hub CSPM}
 \usage{
 securityhub_create_insight(Name, Filters, GroupByAttribute)
 }
@@ -19,7 +19,7 @@ example, if an insight is grouped by resource identifier, then the
 insight produces a list of resource identifiers.}
 }
 \description{
-Creates a custom insight in Security Hub. An insight is a consolidation of findings that relate to a security issue that requires attention or remediation.
+Creates a custom insight in Security Hub CSPM. An insight is a consolidation of findings that relate to a security issue that requires attention or remediation.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_create_insight/} for full documentation.
 }

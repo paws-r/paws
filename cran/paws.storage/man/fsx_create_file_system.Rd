@@ -106,14 +106,8 @@ ONTAP file system in a VPC subnet that has been shared with you.}
 \item{Tags}{The tags to apply to the file system that's being created. The key value
 of the \code{Name} tag appears in the console as the file system name.}
 
-\item{KmsKeyId}{}
-
 \item{WindowsConfiguration}{The Microsoft Windows configuration for the file system that's being
 created.}
-
-\item{LustreConfiguration}{}
-
-\item{OntapConfiguration}{}
 
 \item{FileSystemTypeVersion}{For FSx for Lustre file systems, sets the Lustre version for the file
 system that you're creating. Valid values are \code{2.10}, \code{2.12}, and

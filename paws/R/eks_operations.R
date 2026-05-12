@@ -113,10 +113,10 @@ eks_associate_access_policy <- function(clusterName, principalArn, policyArn, ac
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"UpdatedTier"|"PreviousTier",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
 #'         value = "string"
 #'       )
 #'     ),
@@ -212,10 +212,10 @@ eks_associate_encryption_config <- function(clusterName, encryptionConfig, clien
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"UpdatedTier"|"PreviousTier",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
 #'         value = "string"
 #'       )
 #'     ),
@@ -831,10 +831,11 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 #' its own set of Amazon EC2 instances.
 #' 
 #' The cluster control plane is provisioned across multiple Availability
-#' Zones and fronted by an ELB Network Load Balancer. Amazon EKS also
-#' provisions elastic network interfaces in your VPC subnets to provide
-#' connectivity from the control plane instances to the nodes (for example,
-#' to support `kubectl exec`, `logs`, and `proxy` data flows).
+#' Zones and fronted by an Elastic Load Balancing Network Load Balancer.
+#' Amazon EKS also provisions elastic network interfaces in your VPC
+#' subnets to provide connectivity from the control plane instances to the
+#' nodes (for example, to support `kubectl exec`, `logs`, and `proxy` data
+#' flows).
 #' 
 #' Amazon EKS nodes run in your Amazon Web Services account and connect to
 #' your cluster's control plane over the Kubernetes API server endpoint and
@@ -1115,7 +1116,7 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 #'     ),
 #'     deletionProtection = TRUE|FALSE,
 #'     controlPlaneScalingConfig = list(
-#'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"
+#'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"|"tier-8xl"
 #'     )
 #'   )
 #' )
@@ -1221,7 +1222,7 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 #'   ),
 #'   deletionProtection = TRUE|FALSE,
 #'   controlPlaneScalingConfig = list(
-#'     tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"
+#'     tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"|"tier-8xl"
 #'   )
 #' )
 #' ```
@@ -1566,10 +1567,9 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' using launch templates, see [Customizing managed nodes with launch
 #' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html).
 #' 
-#' An Amazon EKS managed node group is an Amazon EC2 Amazon EC2 Auto
-#' Scaling group and associated Amazon EC2 instances that are managed by
-#' Amazon Web Services for an Amazon EKS cluster. For more information, see
-#' [Managed node
+#' An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
+#' associated Amazon EC2 instances that are managed by Amazon Web Services
+#' for an Amazon EKS cluster. For more information, see [Managed node
 #' groups](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)
 #' in the *Amazon EKS User Guide*.
 #' 
@@ -1580,7 +1580,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' eks_create_nodegroup(clusterName, nodegroupName, scalingConfig,
 #'   diskSize, subnets, instanceTypes, amiType, remoteAccess, nodeRole,
 #'   labels, taints, tags, clientRequestToken, launchTemplate, updateConfig,
-#'   nodeRepairConfig, capacityType, version, releaseVersion)
+#'   nodeRepairConfig, capacityType, version, releaseVersion, warmPoolConfig)
 #'
 #' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param nodegroupName &#91;required&#93; The unique name to give your node group.
@@ -1695,6 +1695,10 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' EKS, see [Customizing managed nodes with launch
 #' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
+#' @param warmPoolConfig The warm pool configuration for the node group. Warm pools maintain
+#' pre-initialized EC2 instances that can quickly join your cluster during
+#' scale-out events, improving application scaling performance and reducing
+#' costs.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1731,7 +1735,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'         "string"
 #'       )
 #'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_FIPS"|"BOTTLEROCKET_x86_64_FIPS"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA"|"AL2023_ARM_64_NVIDIA",
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_FIPS"|"BOTTLEROCKET_x86_64_FIPS"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"BOTTLEROCKET_ARM_64_NVIDIA_FIPS"|"BOTTLEROCKET_x86_64_NVIDIA_FIPS"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"WINDOWS_CORE_2025_x86_64"|"WINDOWS_FULL_2025_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA"|"AL2023_ARM_64_NVIDIA",
 #'     nodeRole = "string",
 #'     labels = list(
 #'       "string"
@@ -1790,6 +1794,13 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'     ),
 #'     tags = list(
 #'       "string"
+#'     ),
+#'     warmPoolConfig = list(
+#'       enabled = TRUE|FALSE,
+#'       minSize = 123,
+#'       maxGroupPreparedCapacity = 123,
+#'       poolState = "STOPPED"|"RUNNING"|"HIBERNATED",
+#'       reuseOnScaleIn = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -1812,7 +1823,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'   instanceTypes = list(
 #'     "string"
 #'   ),
-#'   amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_FIPS"|"BOTTLEROCKET_x86_64_FIPS"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA"|"AL2023_ARM_64_NVIDIA",
+#'   amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_FIPS"|"BOTTLEROCKET_x86_64_FIPS"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"BOTTLEROCKET_ARM_64_NVIDIA_FIPS"|"BOTTLEROCKET_x86_64_NVIDIA_FIPS"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"WINDOWS_CORE_2025_x86_64"|"WINDOWS_FULL_2025_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA"|"AL2023_ARM_64_NVIDIA",
 #'   remoteAccess = list(
 #'     ec2SshKey = "string",
 #'     sourceSecurityGroups = list(
@@ -1861,7 +1872,14 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'   ),
 #'   capacityType = "ON_DEMAND"|"SPOT"|"CAPACITY_BLOCK",
 #'   version = "string",
-#'   releaseVersion = "string"
+#'   releaseVersion = "string",
+#'   warmPoolConfig = list(
+#'     enabled = TRUE|FALSE,
+#'     minSize = 123,
+#'     maxGroupPreparedCapacity = 123,
+#'     poolState = "STOPPED"|"RUNNING"|"HIBERNATED",
+#'     reuseOnScaleIn = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -1870,7 +1888,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' @rdname eks_create_nodegroup
 #'
 #' @aliases eks_create_nodegroup
-eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NULL, diskSize = NULL, subnets, instanceTypes = NULL, amiType = NULL, remoteAccess = NULL, nodeRole, labels = NULL, taints = NULL, tags = NULL, clientRequestToken = NULL, launchTemplate = NULL, updateConfig = NULL, nodeRepairConfig = NULL, capacityType = NULL, version = NULL, releaseVersion = NULL) {
+eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NULL, diskSize = NULL, subnets, instanceTypes = NULL, amiType = NULL, remoteAccess = NULL, nodeRole, labels = NULL, taints = NULL, tags = NULL, clientRequestToken = NULL, launchTemplate = NULL, updateConfig = NULL, nodeRepairConfig = NULL, capacityType = NULL, version = NULL, releaseVersion = NULL, warmPoolConfig = NULL) {
   op <- new_operation(
     name = "CreateNodegroup",
     http_method = "POST",
@@ -1879,7 +1897,7 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$create_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName, scalingConfig = scalingConfig, diskSize = diskSize, subnets = subnets, instanceTypes = instanceTypes, amiType = amiType, remoteAccess = remoteAccess, nodeRole = nodeRole, labels = labels, taints = taints, tags = tags, clientRequestToken = clientRequestToken, launchTemplate = launchTemplate, updateConfig = updateConfig, nodeRepairConfig = nodeRepairConfig, capacityType = capacityType, version = version, releaseVersion = releaseVersion)
+  input <- .eks$create_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName, scalingConfig = scalingConfig, diskSize = diskSize, subnets = subnets, instanceTypes = instanceTypes, amiType = amiType, remoteAccess = remoteAccess, nodeRole = nodeRole, labels = labels, taints = taints, tags = tags, clientRequestToken = clientRequestToken, launchTemplate = launchTemplate, updateConfig = updateConfig, nodeRepairConfig = nodeRepairConfig, capacityType = capacityType, version = version, releaseVersion = releaseVersion, warmPoolConfig = warmPoolConfig)
   output <- .eks$create_nodegroup_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -1933,7 +1951,7 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #' @usage
 #' eks_create_pod_identity_association(clusterName, namespace,
 #'   serviceAccount, roleArn, clientRequestToken, tags, disableSessionTags,
-#'   targetRoleArn)
+#'   targetRoleArn, policy)
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to create the EKS Pod Identity association in.
 #' @param namespace &#91;required&#93; The name of the Kubernetes namespace inside the cluster to create the
@@ -2011,6 +2029,23 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #' role chaining to ensure your application gets the required permissions.
 #' This means Role A will assume Role B, allowing your Pods to securely
 #' access resources like S3 buckets in the target account.
+#' @param policy An optional IAM policy in JSON format (as an escaped string) that
+#' applies additional restrictions to this pod identity association beyond
+#' the IAM policies attached to the IAM role. This policy is applied as the
+#' intersection of the role's policies and this policy, allowing you to
+#' reduce the permissions that applications in the pods can use. Use this
+#' policy to enforce least privilege access while still leveraging a shared
+#' IAM role across multiple applications.
+#' 
+#' **Important considerations**
+#' 
+#' -   **Session tags:** When using this policy, `disableSessionTags` must
+#'     be set to `true`.
+#' 
+#' -   **Target role permissions:** If you specify both a `TargetRoleArn`
+#'     and a policy, the policy restrictions apply only to the target
+#'     role's permissions, not to the initial role used for assuming the
+#'     target role.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2035,7 +2070,8 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #'     ownerArn = "string",
 #'     disableSessionTags = TRUE|FALSE,
 #'     targetRoleArn = "string",
-#'     externalId = "string"
+#'     externalId = "string",
+#'     policy = "string"
 #'   )
 #' )
 #' ```
@@ -2052,7 +2088,8 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #'     "string"
 #'   ),
 #'   disableSessionTags = TRUE|FALSE,
-#'   targetRoleArn = "string"
+#'   targetRoleArn = "string",
+#'   policy = "string"
 #' )
 #' ```
 #'
@@ -2061,7 +2098,7 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #' @rdname eks_create_pod_identity_association
 #'
 #' @aliases eks_create_pod_identity_association
-eks_create_pod_identity_association <- function(clusterName, namespace, serviceAccount, roleArn, clientRequestToken = NULL, tags = NULL, disableSessionTags = NULL, targetRoleArn = NULL) {
+eks_create_pod_identity_association <- function(clusterName, namespace, serviceAccount, roleArn, clientRequestToken = NULL, tags = NULL, disableSessionTags = NULL, targetRoleArn = NULL, policy = NULL) {
   op <- new_operation(
     name = "CreatePodIdentityAssociation",
     http_method = "POST",
@@ -2070,7 +2107,7 @@ eks_create_pod_identity_association <- function(clusterName, namespace, serviceA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$create_pod_identity_association_input(clusterName = clusterName, namespace = namespace, serviceAccount = serviceAccount, roleArn = roleArn, clientRequestToken = clientRequestToken, tags = tags, disableSessionTags = disableSessionTags, targetRoleArn = targetRoleArn)
+  input <- .eks$create_pod_identity_association_input(clusterName = clusterName, namespace = namespace, serviceAccount = serviceAccount, roleArn = roleArn, clientRequestToken = clientRequestToken, tags = tags, disableSessionTags = disableSessionTags, targetRoleArn = targetRoleArn, policy = policy)
   output <- .eks$create_pod_identity_association_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -2349,11 +2386,12 @@ eks_delete_capability <- function(clusterName, capabilityName) {
 #' @description
 #' Deletes an Amazon EKS cluster control plane.
 #' 
-#' If you have active services in your cluster that are associated with a
-#' load balancer, you must delete those services before deleting the
-#' cluster so that the load balancers are deleted properly. Otherwise, you
-#' can have orphaned resources in your VPC that prevent you from being able
-#' to delete the VPC. For more information, see [Deleting a
+#' If you have active services and ingress resources in your cluster that
+#' are associated with a load balancer, you must delete those services
+#' before deleting the cluster so that the load balancers are deleted
+#' properly. Otherwise, you can have orphaned resources in your VPC that
+#' prevent you from being able to delete the VPC. For more information, see
+#' [Deleting a
 #' cluster](https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html)
 #' in the *Amazon EKS User Guide*.
 #' 
@@ -2507,7 +2545,7 @@ eks_delete_capability <- function(clusterName, capabilityName) {
 #'     ),
 #'     deletionProtection = TRUE|FALSE,
 #'     controlPlaneScalingConfig = list(
-#'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"
+#'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"|"tier-8xl"
 #'     )
 #'   )
 #' )
@@ -2779,7 +2817,7 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
 #'         "string"
 #'       )
 #'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_FIPS"|"BOTTLEROCKET_x86_64_FIPS"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA"|"AL2023_ARM_64_NVIDIA",
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_FIPS"|"BOTTLEROCKET_x86_64_FIPS"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"BOTTLEROCKET_ARM_64_NVIDIA_FIPS"|"BOTTLEROCKET_x86_64_NVIDIA_FIPS"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"WINDOWS_CORE_2025_x86_64"|"WINDOWS_FULL_2025_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA"|"AL2023_ARM_64_NVIDIA",
 #'     nodeRole = "string",
 #'     labels = list(
 #'       "string"
@@ -2838,6 +2876,13 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
 #'     ),
 #'     tags = list(
 #'       "string"
+#'     ),
+#'     warmPoolConfig = list(
+#'       enabled = TRUE|FALSE,
+#'       minSize = 123,
+#'       maxGroupPreparedCapacity = 123,
+#'       poolState = "STOPPED"|"RUNNING"|"HIBERNATED",
+#'       reuseOnScaleIn = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -2914,7 +2959,8 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
 #'     ownerArn = "string",
 #'     disableSessionTags = TRUE|FALSE,
 #'     targetRoleArn = "string",
-#'     externalId = "string"
+#'     externalId = "string",
+#'     policy = "string"
 #'   )
 #' )
 #' ```
@@ -3107,7 +3153,7 @@ eks_delete_pod_identity_association <- function(clusterName, associationId) {
 #'     ),
 #'     deletionProtection = TRUE|FALSE,
 #'     controlPlaneScalingConfig = list(
-#'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"
+#'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"|"tier-8xl"
 #'     )
 #'   )
 #' )
@@ -3764,7 +3810,7 @@ eks_describe_capability <- function(clusterName, capabilityName) {
 #'     ),
 #'     deletionProtection = TRUE|FALSE,
 #'     controlPlaneScalingConfig = list(
-#'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"
+#'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"|"tier-8xl"
 #'     )
 #'   )
 #' )
@@ -4351,7 +4397,7 @@ eks_describe_insights_refresh <- function(clusterName) {
 #'         "string"
 #'       )
 #'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_FIPS"|"BOTTLEROCKET_x86_64_FIPS"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA"|"AL2023_ARM_64_NVIDIA",
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_FIPS"|"BOTTLEROCKET_x86_64_FIPS"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"BOTTLEROCKET_ARM_64_NVIDIA_FIPS"|"BOTTLEROCKET_x86_64_NVIDIA_FIPS"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"WINDOWS_CORE_2025_x86_64"|"WINDOWS_FULL_2025_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA"|"AL2023_ARM_64_NVIDIA",
 #'     nodeRole = "string",
 #'     labels = list(
 #'       "string"
@@ -4410,6 +4456,13 @@ eks_describe_insights_refresh <- function(clusterName) {
 #'     ),
 #'     tags = list(
 #'       "string"
+#'     ),
+#'     warmPoolConfig = list(
+#'       enabled = TRUE|FALSE,
+#'       minSize = 123,
+#'       maxGroupPreparedCapacity = 123,
+#'       poolState = "STOPPED"|"RUNNING"|"HIBERNATED",
+#'       reuseOnScaleIn = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -4487,7 +4540,8 @@ eks_describe_nodegroup <- function(clusterName, nodegroupName) {
 #'     ownerArn = "string",
 #'     disableSessionTags = TRUE|FALSE,
 #'     targetRoleArn = "string",
-#'     externalId = "string"
+#'     externalId = "string",
+#'     policy = "string"
 #'   )
 #' )
 #' ```
@@ -4553,10 +4607,10 @@ eks_describe_pod_identity_association <- function(clusterName, associationId) {
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"UpdatedTier"|"PreviousTier",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
 #'         value = "string"
 #'       )
 #'     ),
@@ -4686,10 +4740,10 @@ eks_disassociate_access_policy <- function(clusterName, principalArn, policyArn)
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"UpdatedTier"|"PreviousTier",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
 #'         value = "string"
 #'       )
 #'     ),
@@ -6042,7 +6096,7 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, capab
 #'     ),
 #'     deletionProtection = TRUE|FALSE,
 #'     controlPlaneScalingConfig = list(
-#'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"
+#'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"|"tier-8xl"
 #'     )
 #'   )
 #' )
@@ -6416,10 +6470,10 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"UpdatedTier"|"PreviousTier",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
 #'         value = "string"
 #'       )
 #'     ),
@@ -6523,10 +6577,10 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"UpdatedTier"|"PreviousTier",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
 #'         value = "string"
 #'       )
 #'     ),
@@ -6732,10 +6786,10 @@ eks_update_capability <- function(clusterName, capabilityName, roleArn = NULL, c
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"UpdatedTier"|"PreviousTier",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
 #'         value = "string"
 #'       )
 #'     ),
@@ -6829,7 +6883,7 @@ eks_update_capability <- function(clusterName, capabilityName, roleArn = NULL, c
 #'   ),
 #'   deletionProtection = TRUE|FALSE,
 #'   controlPlaneScalingConfig = list(
-#'     tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"
+#'     tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"|"tier-8xl"
 #'   )
 #' )
 #' ```
@@ -6894,10 +6948,10 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"UpdatedTier"|"PreviousTier",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
 #'         value = "string"
 #'       )
 #'     ),
@@ -7052,7 +7106,8 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
 #'
 #' @usage
 #' eks_update_nodegroup_config(clusterName, nodegroupName, labels, taints,
-#'   scalingConfig, updateConfig, nodeRepairConfig, clientRequestToken)
+#'   scalingConfig, updateConfig, nodeRepairConfig, warmPoolConfig,
+#'   clientRequestToken)
 #'
 #' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param nodegroupName &#91;required&#93; The name of the managed node group to update.
@@ -7065,6 +7120,9 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
 #' update.
 #' @param updateConfig The node group update configuration.
 #' @param nodeRepairConfig The node auto repair configuration for the node group.
+#' @param warmPoolConfig The warm pool configuration to apply to the node group. You can use this
+#' to add a warm pool to an existing node group or modify the settings of
+#' an existing warm pool.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
@@ -7075,10 +7133,10 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"UpdatedTier"|"PreviousTier",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
 #'         value = "string"
 #'       )
 #'     ),
@@ -7152,6 +7210,13 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
 #'       )
 #'     )
 #'   ),
+#'   warmPoolConfig = list(
+#'     enabled = TRUE|FALSE,
+#'     minSize = 123,
+#'     maxGroupPreparedCapacity = 123,
+#'     poolState = "STOPPED"|"RUNNING"|"HIBERNATED",
+#'     reuseOnScaleIn = TRUE|FALSE
+#'   ),
 #'   clientRequestToken = "string"
 #' )
 #' ```
@@ -7161,7 +7226,7 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
 #' @rdname eks_update_nodegroup_config
 #'
 #' @aliases eks_update_nodegroup_config
-eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NULL, taints = NULL, scalingConfig = NULL, updateConfig = NULL, nodeRepairConfig = NULL, clientRequestToken = NULL) {
+eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NULL, taints = NULL, scalingConfig = NULL, updateConfig = NULL, nodeRepairConfig = NULL, warmPoolConfig = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "UpdateNodegroupConfig",
     http_method = "POST",
@@ -7170,7 +7235,7 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_nodegroup_config_input(clusterName = clusterName, nodegroupName = nodegroupName, labels = labels, taints = taints, scalingConfig = scalingConfig, updateConfig = updateConfig, nodeRepairConfig = nodeRepairConfig, clientRequestToken = clientRequestToken)
+  input <- .eks$update_nodegroup_config_input(clusterName = clusterName, nodegroupName = nodegroupName, labels = labels, taints = taints, scalingConfig = scalingConfig, updateConfig = updateConfig, nodeRepairConfig = nodeRepairConfig, warmPoolConfig = warmPoolConfig, clientRequestToken = clientRequestToken)
   output <- .eks$update_nodegroup_config_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -7275,10 +7340,10 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"UpdatedTier"|"PreviousTier",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
 #'         value = "string"
 #'       )
 #'     ),
@@ -7369,7 +7434,7 @@ eks_update_nodegroup_version <- function(clusterName, nodegroupName, version = N
 #'
 #' @usage
 #' eks_update_pod_identity_association(clusterName, associationId, roleArn,
-#'   clientRequestToken, disableSessionTags, targetRoleArn)
+#'   clientRequestToken, disableSessionTags, targetRoleArn, policy)
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster that you want to update the association in.
 #' @param associationId &#91;required&#93; The ID of the association to be updated.
@@ -7412,6 +7477,23 @@ eks_update_nodegroup_version <- function(clusterName, nodegroupName, version = N
 #' ensure your application gets the required permissions. This means Role A
 #' will assume Role B, allowing your Pods to securely access resources like
 #' S3 buckets in the target account.
+#' @param policy An optional IAM policy in JSON format (as an escaped string) that
+#' applies additional restrictions to this pod identity association beyond
+#' the IAM policies attached to the IAM role. This policy is applied as the
+#' intersection of the role's policies and this policy, allowing you to
+#' reduce the permissions that applications in the pods can use. Use this
+#' policy to enforce least privilege access while still leveraging a shared
+#' IAM role across multiple applications.
+#' 
+#' **Important considerations**
+#' 
+#' -   **Session tags:** When using this policy, `disableSessionTags` must
+#'     be set to `true`.
+#' 
+#' -   **Target role permissions:** If you specify both a `TargetRoleArn`
+#'     and a policy, the policy restrictions apply only to the target
+#'     role's permissions, not to the initial role used for assuming the
+#'     target role.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7436,7 +7518,8 @@ eks_update_nodegroup_version <- function(clusterName, nodegroupName, version = N
 #'     ownerArn = "string",
 #'     disableSessionTags = TRUE|FALSE,
 #'     targetRoleArn = "string",
-#'     externalId = "string"
+#'     externalId = "string",
+#'     policy = "string"
 #'   )
 #' )
 #' ```
@@ -7449,7 +7532,8 @@ eks_update_nodegroup_version <- function(clusterName, nodegroupName, version = N
 #'   roleArn = "string",
 #'   clientRequestToken = "string",
 #'   disableSessionTags = TRUE|FALSE,
-#'   targetRoleArn = "string"
+#'   targetRoleArn = "string",
+#'   policy = "string"
 #' )
 #' ```
 #'
@@ -7458,7 +7542,7 @@ eks_update_nodegroup_version <- function(clusterName, nodegroupName, version = N
 #' @rdname eks_update_pod_identity_association
 #'
 #' @aliases eks_update_pod_identity_association
-eks_update_pod_identity_association <- function(clusterName, associationId, roleArn = NULL, clientRequestToken = NULL, disableSessionTags = NULL, targetRoleArn = NULL) {
+eks_update_pod_identity_association <- function(clusterName, associationId, roleArn = NULL, clientRequestToken = NULL, disableSessionTags = NULL, targetRoleArn = NULL, policy = NULL) {
   op <- new_operation(
     name = "UpdatePodIdentityAssociation",
     http_method = "POST",
@@ -7467,7 +7551,7 @@ eks_update_pod_identity_association <- function(clusterName, associationId, role
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_pod_identity_association_input(clusterName = clusterName, associationId = associationId, roleArn = roleArn, clientRequestToken = clientRequestToken, disableSessionTags = disableSessionTags, targetRoleArn = targetRoleArn)
+  input <- .eks$update_pod_identity_association_input(clusterName = clusterName, associationId = associationId, roleArn = roleArn, clientRequestToken = clientRequestToken, disableSessionTags = disableSessionTags, targetRoleArn = targetRoleArn, policy = policy)
   output <- .eks$update_pod_identity_association_output()
   config <- get_config()
   svc <- .eks$service(config, op)

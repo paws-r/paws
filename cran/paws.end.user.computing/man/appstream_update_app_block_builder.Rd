@@ -14,7 +14,8 @@ appstream_update_app_block_builder(
   EnableDefaultInternetAccess = NULL,
   IamRoleArn = NULL,
   AccessEndpoints = NULL,
-  AttributesToDelete = NULL
+  AttributesToDelete = NULL,
+  DisableIMDSV1 = NULL
 )
 }
 \arguments{
@@ -61,6 +62,9 @@ Administrators can connect to the app block builder only through the
 specified endpoints.}
 
 \item{AttributesToDelete}{The attributes to delete from the app block builder.}
+
+\item{DisableIMDSV1}{Set to true to disable Instance Metadata Service Version 1 (IMDSv1) and
+enforce IMDSv2. Set to false to enable both IMDSv1 and IMDSv2.}
 }
 \description{
 Updates an app block builder.

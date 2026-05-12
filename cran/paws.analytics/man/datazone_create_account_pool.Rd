@@ -5,26 +5,26 @@
 \title{Creates an account pool}
 \usage{
 datazone_create_account_pool(
-  accountSource,
-  description = NULL,
   domainIdentifier,
   name,
-  resolutionStrategy
+  description = NULL,
+  resolutionStrategy,
+  accountSource
 )
 }
 \arguments{
-\item{accountSource}{[required] The source of accounts for the account pool. In the current release,
-it's either a static list of accounts provided by the customer or a
-custom Amazon Web Services Lambda handler.}
-
-\item{description}{The description of the account pool.}
-
 \item{domainIdentifier}{[required] The ID of the domain where the account pool is created.}
 
 \item{name}{[required] The name of the account pool.}
 
+\item{description}{The description of the account pool.}
+
 \item{resolutionStrategy}{[required] The mechanism used to resolve the account selection from the account
 pool.}
+
+\item{accountSource}{[required] The source of accounts for the account pool. In the current release,
+it's either a static list of accounts provided by the customer or a
+custom Amazon Web Services Lambda handler.}
 }
 \description{
 Creates an account pool.

@@ -16,6 +16,8 @@ imagebuilder_import_disk_image(
   uri,
   loggingConfiguration = NULL,
   tags = NULL,
+  registerImageOptions = NULL,
+  windowsConfiguration = NULL,
   clientToken
 )
 }
@@ -46,6 +48,10 @@ image is built.}
 \item{loggingConfiguration}{Define logging configuration for the image build process.}
 
 \item{tags}{Tags that are attached to image resources created from the import.}
+
+\item{registerImageOptions}{Configures Secure Boot and UEFI settings for the imported image.}
+
+\item{windowsConfiguration}{Specifies Windows settings for ISO imports.}
 
 \item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}

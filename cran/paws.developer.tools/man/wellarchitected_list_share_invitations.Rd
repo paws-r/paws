@@ -15,14 +15,10 @@ wellarchitected_list_share_invitations(
 )
 }
 \arguments{
-\item{WorkloadNamePrefix}{}
-
 \item{LensNamePrefix}{An optional string added to the beginning of each lens name returned in
 the results.}
 
 \item{ShareResourceType}{The type of share invitations to be returned.}
-
-\item{NextToken}{}
 
 \item{MaxResults}{The maximum number of results to return for this request.}
 

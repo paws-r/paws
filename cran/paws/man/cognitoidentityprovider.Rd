@@ -131,6 +131,7 @@ actions and scenarios, see \href{https://docs.aws.amazon.com/cognito/latest/deve
 
 \tabular{ll}{
 \link[paws.security.identity:cognitoidentityprovider_add_custom_attributes]{add_custom_attributes} \tab Adds additional user attributes to the user pool schema\cr
+\link[paws.security.identity:cognitoidentityprovider_add_user_pool_client_secret]{add_user_pool_client_secret} \tab Creates a new client secret for an existing confidential user pool app client\cr
 \link[paws.security.identity:cognitoidentityprovider_admin_add_user_to_group]{admin_add_user_to_group} \tab Adds a user to a group\cr
 \link[paws.security.identity:cognitoidentityprovider_admin_confirm_sign_up]{admin_confirm_sign_up} \tab Confirms user sign-up as an administrator\cr
 \link[paws.security.identity:cognitoidentityprovider_admin_create_user]{admin_create_user} \tab Creates a new user in the specified user pool\cr
@@ -181,6 +182,7 @@ actions and scenarios, see \href{https://docs.aws.amazon.com/cognito/latest/deve
 \link[paws.security.identity:cognitoidentityprovider_delete_user_attributes]{delete_user_attributes} \tab Deletes attributes from the currently signed-in user\cr
 \link[paws.security.identity:cognitoidentityprovider_delete_user_pool]{delete_user_pool} \tab Deletes a user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_delete_user_pool_client]{delete_user_pool_client} \tab Deletes a user pool app client\cr
+\link[paws.security.identity:cognitoidentityprovider_delete_user_pool_client_secret]{delete_user_pool_client_secret} \tab Deletes a specific client secret from a user pool app client\cr
 \link[paws.security.identity:cognitoidentityprovider_delete_user_pool_domain]{delete_user_pool_domain} \tab Given a user pool ID and domain identifier, deletes a user pool domain\cr
 \link[paws.security.identity:cognitoidentityprovider_delete_web_authn_credential]{delete_web_authn_credential} \tab Deletes a registered passkey, or WebAuthn, authenticator for the currently signed-in user\cr
 \link[paws.security.identity:cognitoidentityprovider_describe_identity_provider]{describe_identity_provider} \tab Given a user pool ID and identity provider (IdP) name, returns details about the IdP\cr
@@ -217,6 +219,7 @@ actions and scenarios, see \href{https://docs.aws.amazon.com/cognito/latest/deve
 \link[paws.security.identity:cognitoidentityprovider_list_terms]{list_terms} \tab Returns details about all terms documents for the requested user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_list_user_import_jobs]{list_user_import_jobs} \tab Given a user pool ID, returns user import jobs and their details\cr
 \link[paws.security.identity:cognitoidentityprovider_list_user_pool_clients]{list_user_pool_clients} \tab Given a user pool ID, lists app clients\cr
+\link[paws.security.identity:cognitoidentityprovider_list_user_pool_client_secrets]{list_user_pool_client_secrets} \tab Lists all client secrets associated with a user pool app client\cr
 \link[paws.security.identity:cognitoidentityprovider_list_user_pools]{list_user_pools} \tab Lists user pools and their details in the current Amazon Web Services account\cr
 \link[paws.security.identity:cognitoidentityprovider_list_users]{list_users} \tab Given a user pool ID, returns a list of users and their basic details in a user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_list_users_in_group]{list_users_in_group} \tab Given a user pool ID and a group name, returns a list of users in the group\cr

@@ -9,8 +9,6 @@ dynamodb_batch_execute_statement(Statements, ReturnConsumedCapacity = NULL)
 }
 \arguments{
 \item{Statements}{[required] The list of PartiQL statements representing the batch to run.}
-
-\item{ReturnConsumedCapacity}{}
 }
 \description{
 This operation allows you to perform batch reads or writes on data stored in DynamoDB, using PartiQL. Each read statement in a \code{\link[=dynamodb_batch_execute_statement]{batch_execute_statement}} must specify an equality condition on all key attributes. This enforces that each \code{SELECT} statement in a batch returns at most a single item. For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.multiplestatements.batching.html}{Running batch operations with PartiQL for DynamoDB} .

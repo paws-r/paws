@@ -34,8 +34,10 @@ NULL
 #' 
 #' If you are using a shared End User Messaging SMS resource then you must
 #' use the full Amazon Resource Name(ARN).
-#' @param IsoCountryCode &#91;required&#93; The new two-character code, in ISO 3166-1 alpha-2 format, for the
-#' country or region of the origination identity.
+#' @param IsoCountryCode The new two-character code, in ISO 3166-1 alpha-2 format, for the
+#' country or region of the origination identity. This field is optional
+#' and is not required for origination identity types that are not
+#' country-specific, such as RCS agents.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don't specify a client token, a
 #' randomly generated token is used for the request to ensure idempotency.
@@ -67,7 +69,7 @@ NULL
 #' @rdname pinpointsmsvoicev2_associate_origination_identity
 #'
 #' @aliases pinpointsmsvoicev2_associate_origination_identity
-pinpointsmsvoicev2_associate_origination_identity <- function(PoolId, OriginationIdentity, IsoCountryCode, ClientToken = NULL) {
+pinpointsmsvoicev2_associate_origination_identity <- function(PoolId, OriginationIdentity, IsoCountryCode = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "AssociateOriginationIdentity",
     http_method = "POST",
@@ -405,6 +407,120 @@ pinpointsmsvoicev2_create_event_destination <- function(ConfigurationSetName, Ev
 }
 .pinpointsmsvoicev2$operations$create_event_destination <- pinpointsmsvoicev2_create_event_destination
 
+#' Creates a new notify configuration for managed messaging
+#'
+#' @description
+#' Creates a new notify configuration for managed messaging. A notify
+#' configuration defines the settings for sending templated messages,
+#' including the display name, use case, enabled channels, and enabled
+#' countries.
+#'
+#' @usage
+#' pinpointsmsvoicev2_create_notify_configuration(DisplayName, UseCase,
+#'   DefaultTemplateId, PoolId, EnabledCountries, EnabledChannels,
+#'   DeletionProtectionEnabled, ClientToken, Tags)
+#'
+#' @param DisplayName &#91;required&#93; The display name to associate with the notify configuration.
+#' @param UseCase &#91;required&#93; The use case for the notify configuration.
+#' @param DefaultTemplateId The default template identifier to associate with the notify
+#' configuration. If specified, this template is used when sending messages
+#' without an explicit template identifier.
+#' @param PoolId The identifier of the pool to associate with the notify configuration.
+#' @param EnabledCountries An array of two-character ISO country codes, in ISO 3166-1 alpha-2
+#' format, that are enabled for the notify configuration.
+#' @param EnabledChannels &#91;required&#93; An array of channels to enable for the notify configuration. Supported
+#' values include `SMS` and `VOICE`.
+#' @param DeletionProtectionEnabled By default this is set to false. When set to true the notify
+#' configuration can't be deleted. You can change this value using the
+#' [`update_notify_configuration`][pinpointsmsvoicev2_update_notify_configuration]
+#' action.
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you don't specify a client token, a
+#' randomly generated token is used for the request to ensure idempotency.
+#' @param Tags An array of tags (key and value pairs) associated with the notify
+#' configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotifyConfigurationArn = "string",
+#'   NotifyConfigurationId = "string",
+#'   DisplayName = "string",
+#'   UseCase = "CODE_VERIFICATION",
+#'   DefaultTemplateId = "string",
+#'   PoolId = "string",
+#'   EnabledCountries = list(
+#'     "string"
+#'   ),
+#'   EnabledChannels = list(
+#'     "SMS"|"VOICE"|"MMS"|"RCS"
+#'   ),
+#'   Tier = "BASIC"|"ADVANCED",
+#'   TierUpgradeStatus = "BASIC"|"PENDING_UPGRADE"|"ADVANCED"|"REJECTED",
+#'   Status = "PENDING"|"ACTIVE"|"REJECTED"|"REQUIRES_VERIFICATION",
+#'   RejectionReason = "string",
+#'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_notify_configuration(
+#'   DisplayName = "string",
+#'   UseCase = "CODE_VERIFICATION",
+#'   DefaultTemplateId = "string",
+#'   PoolId = "string",
+#'   EnabledCountries = list(
+#'     "string"
+#'   ),
+#'   EnabledChannels = list(
+#'     "SMS"|"VOICE"|"MMS"|"RCS"
+#'   ),
+#'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   ClientToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_create_notify_configuration
+#'
+#' @aliases pinpointsmsvoicev2_create_notify_configuration
+pinpointsmsvoicev2_create_notify_configuration <- function(DisplayName, UseCase, DefaultTemplateId = NULL, PoolId = NULL, EnabledCountries = NULL, EnabledChannels, DeletionProtectionEnabled = NULL, ClientToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateNotifyConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$create_notify_configuration_input(DisplayName = DisplayName, UseCase = UseCase, DefaultTemplateId = DefaultTemplateId, PoolId = PoolId, EnabledCountries = EnabledCountries, EnabledChannels = EnabledChannels, DeletionProtectionEnabled = DeletionProtectionEnabled, ClientToken = ClientToken, Tags = Tags)
+  output <- .pinpointsmsvoicev2$create_notify_configuration_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$create_notify_configuration <- pinpointsmsvoicev2_create_notify_configuration
+
 #' Creates a new opt-out list
 #'
 #' @description
@@ -523,8 +639,10 @@ pinpointsmsvoicev2_create_opt_out_list <- function(OptOutListName, Tags = NULL, 
 #' 
 #' If you are using a shared End User Messaging SMS resource then you must
 #' use the full Amazon Resource Name(ARN).
-#' @param IsoCountryCode &#91;required&#93; The new two-character code, in ISO 3166-1 alpha-2 format, for the
-#' country or region of the new pool.
+#' @param IsoCountryCode The new two-character code, in ISO 3166-1 alpha-2 format, for the
+#' country or region of the new pool. This field is optional and is not
+#' required for origination identity types that are not country-specific,
+#' such as RCS agents.
 #' @param MessageType &#91;required&#93; The type of message. Valid values are TRANSACTIONAL for messages that
 #' are critical or time-sensitive and PROMOTIONAL for messages that aren't
 #' critical or time-sensitive. After the pool is created the MessageType
@@ -586,7 +704,7 @@ pinpointsmsvoicev2_create_opt_out_list <- function(OptOutListName, Tags = NULL, 
 #' @rdname pinpointsmsvoicev2_create_pool
 #'
 #' @aliases pinpointsmsvoicev2_create_pool
-pinpointsmsvoicev2_create_pool <- function(OriginationIdentity, IsoCountryCode, MessageType, DeletionProtectionEnabled = NULL, Tags = NULL, ClientToken = NULL) {
+pinpointsmsvoicev2_create_pool <- function(OriginationIdentity, IsoCountryCode = NULL, MessageType, DeletionProtectionEnabled = NULL, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreatePool",
     http_method = "POST",
@@ -683,6 +801,92 @@ pinpointsmsvoicev2_create_protect_configuration <- function(ClientToken = NULL, 
   return(response)
 }
 .pinpointsmsvoicev2$operations$create_protect_configuration <- pinpointsmsvoicev2_create_protect_configuration
+
+#' Creates a new RCS agent for sending rich messages through the RCS
+#' channel
+#'
+#' @description
+#' Creates a new RCS agent for sending rich messages through the RCS
+#' channel. The RCS agent serves as an origination identity for sending RCS
+#' messages to your recipients.
+#'
+#' @usage
+#' pinpointsmsvoicev2_create_rcs_agent(DeletionProtectionEnabled,
+#'   OptOutListName, Tags, ClientToken)
+#'
+#' @param DeletionProtectionEnabled By default this is set to false. When set to true the RCS agent can't be
+#' deleted. You can change this value using the
+#' [`update_rcs_agent`][pinpointsmsvoicev2_update_rcs_agent] action.
+#' @param OptOutListName The OptOutList to associate with the RCS agent. Valid values are either
+#' OptOutListName or OptOutListArn.
+#' @param Tags An array of tags (key and value pairs) associated with the RCS agent.
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you don't specify a client token, a
+#' randomly generated token is used for the request to ensure idempotency.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RcsAgentArn = "string",
+#'   RcsAgentId = "string",
+#'   Status = "CREATED"|"PENDING"|"TESTING"|"PARTIAL"|"ACTIVE"|"DELETED",
+#'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   OptOutListName = "string",
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SelfManagedOptOutsEnabled = TRUE|FALSE,
+#'   TwoWayChannelArn = "string",
+#'   TwoWayChannelRole = "string",
+#'   TwoWayEnabled = TRUE|FALSE,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_rcs_agent(
+#'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   OptOutListName = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_create_rcs_agent
+#'
+#' @aliases pinpointsmsvoicev2_create_rcs_agent
+pinpointsmsvoicev2_create_rcs_agent <- function(DeletionProtectionEnabled = NULL, OptOutListName = NULL, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateRcsAgent",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$create_rcs_agent_input(DeletionProtectionEnabled = DeletionProtectionEnabled, OptOutListName = OptOutListName, Tags = Tags, ClientToken = ClientToken)
+  output <- .pinpointsmsvoicev2$create_rcs_agent_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$create_rcs_agent <- pinpointsmsvoicev2_create_rcs_agent
 
 #' Creates a new registration based on the RegistrationType field
 #'
@@ -930,7 +1134,7 @@ pinpointsmsvoicev2_create_registration_attachment <- function(AttachmentBody = N
 #'   RegistrationArn = "string",
 #'   RegistrationId = "string",
 #'   VersionNumber = 123,
-#'   RegistrationVersionStatus = "DRAFT"|"SUBMITTED"|"AWS_REVIEWING"|"REVIEWING"|"REQUIRES_AUTHENTICATION"|"APPROVED"|"DISCARDED"|"DENIED"|"REVOKED"|"ARCHIVED",
+#'   RegistrationVersionStatus = "DRAFT"|"SUBMITTED"|"AWS_REVIEWING"|"REVIEWING"|"REQUIRES_AUTHENTICATION"|"APPROVED"|"DISCARDED"|"DENIED"|"REVOKED"|"ARCHIVED"|"REQUIRES_OFFLINE_REVIEW",
 #'   RegistrationVersionStatusHistory = list(
 #'     DraftTimestamp = as.POSIXct(
 #'       "2015-01-01"
@@ -1007,9 +1211,11 @@ pinpointsmsvoicev2_create_registration_version <- function(RegistrationId) {
 #'
 #' @usage
 #' pinpointsmsvoicev2_create_verified_destination_number(
-#'   DestinationPhoneNumber, Tags, ClientToken)
+#'   DestinationPhoneNumber, RcsAgentId, Tags, ClientToken)
 #'
 #' @param DestinationPhoneNumber &#91;required&#93; The verified destination phone number, in E.164 format.
+#' @param RcsAgentId The unique identifier of the RCS agent to associate with the verified
+#' destination number. You can use either the RcsAgentId or RcsAgentArn.
 #' @param Tags An array of tags (key and value pairs) to associate with the destination
 #' number.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
@@ -1023,7 +1229,8 @@ pinpointsmsvoicev2_create_registration_version <- function(RegistrationId) {
 #'   VerifiedDestinationNumberArn = "string",
 #'   VerifiedDestinationNumberId = "string",
 #'   DestinationPhoneNumber = "string",
-#'   Status = "PENDING"|"VERIFIED",
+#'   Status = "PENDING"|"VERIFIED"|"UNSUPPORTED",
+#'   RcsAgentId = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -1040,6 +1247,7 @@ pinpointsmsvoicev2_create_registration_version <- function(RegistrationId) {
 #' ```
 #' svc$create_verified_destination_number(
 #'   DestinationPhoneNumber = "string",
+#'   RcsAgentId = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -1055,7 +1263,7 @@ pinpointsmsvoicev2_create_registration_version <- function(RegistrationId) {
 #' @rdname pinpointsmsvoicev2_create_verified_destination_number
 #'
 #' @aliases pinpointsmsvoicev2_create_verified_destination_number
-pinpointsmsvoicev2_create_verified_destination_number <- function(DestinationPhoneNumber, Tags = NULL, ClientToken = NULL) {
+pinpointsmsvoicev2_create_verified_destination_number <- function(DestinationPhoneNumber, RcsAgentId = NULL, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateVerifiedDestinationNumber",
     http_method = "POST",
@@ -1064,7 +1272,7 @@ pinpointsmsvoicev2_create_verified_destination_number <- function(DestinationPho
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .pinpointsmsvoicev2$create_verified_destination_number_input(DestinationPhoneNumber = DestinationPhoneNumber, Tags = Tags, ClientToken = ClientToken)
+  input <- .pinpointsmsvoicev2$create_verified_destination_number_input(DestinationPhoneNumber = DestinationPhoneNumber, RcsAgentId = RcsAgentId, Tags = Tags, ClientToken = ClientToken)
   output <- .pinpointsmsvoicev2$create_verified_destination_number_output()
   config <- get_config()
   svc <- .pinpointsmsvoicev2$service(config, op)
@@ -1534,6 +1742,132 @@ pinpointsmsvoicev2_delete_media_message_spend_limit_override <- function() {
 }
 .pinpointsmsvoicev2$operations$delete_media_message_spend_limit_override <- pinpointsmsvoicev2_delete_media_message_spend_limit_override
 
+#' Deletes an existing notify configuration
+#'
+#' @description
+#' Deletes an existing notify configuration.
+#' 
+#' If deletion protection is enabled, an error is returned.
+#'
+#' @usage
+#' pinpointsmsvoicev2_delete_notify_configuration(NotifyConfigurationId)
+#'
+#' @param NotifyConfigurationId &#91;required&#93; The identifier of the notify configuration to delete. The
+#' NotifyConfigurationId can be found using the
+#' [`describe_notify_configurations`][pinpointsmsvoicev2_describe_notify_configurations]
+#' operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotifyConfigurationArn = "string",
+#'   NotifyConfigurationId = "string",
+#'   DisplayName = "string",
+#'   UseCase = "CODE_VERIFICATION",
+#'   DefaultTemplateId = "string",
+#'   PoolId = "string",
+#'   EnabledCountries = list(
+#'     "string"
+#'   ),
+#'   EnabledChannels = list(
+#'     "SMS"|"VOICE"|"MMS"|"RCS"
+#'   ),
+#'   Tier = "BASIC"|"ADVANCED",
+#'   TierUpgradeStatus = "BASIC"|"PENDING_UPGRADE"|"ADVANCED"|"REJECTED",
+#'   Status = "PENDING"|"ACTIVE"|"REJECTED"|"REQUIRES_VERIFICATION",
+#'   RejectionReason = "string",
+#'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_notify_configuration(
+#'   NotifyConfigurationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_delete_notify_configuration
+#'
+#' @aliases pinpointsmsvoicev2_delete_notify_configuration
+pinpointsmsvoicev2_delete_notify_configuration <- function(NotifyConfigurationId) {
+  op <- new_operation(
+    name = "DeleteNotifyConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$delete_notify_configuration_input(NotifyConfigurationId = NotifyConfigurationId)
+  output <- .pinpointsmsvoicev2$delete_notify_configuration_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$delete_notify_configuration <- pinpointsmsvoicev2_delete_notify_configuration
+
+#' Deletes an account-level monthly spending limit override for sending
+#' notify messages
+#'
+#' @description
+#' Deletes an account-level monthly spending limit override for sending
+#' notify messages. Deleting a spend limit override will set the
+#' `EnforcedLimit` to equal the `MaxLimit`, which is controlled by Amazon
+#' Web Services. For more information on spend limits (quotas) see
+#' [Quotas](https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html)
+#' in the *End User Messaging SMS User Guide*.
+#'
+#' @usage
+#' pinpointsmsvoicev2_delete_notify_message_spend_limit_override()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MonthlyLimit = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_notify_message_spend_limit_override()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_delet_notif_messa_spend_limit_overr
+#'
+#' @aliases pinpointsmsvoicev2_delete_notify_message_spend_limit_override
+pinpointsmsvoicev2_delete_notify_message_spend_limit_override <- function() {
+  op <- new_operation(
+    name = "DeleteNotifyMessageSpendLimitOverride",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$delete_notify_message_spend_limit_override_input()
+  output <- .pinpointsmsvoicev2$delete_notify_message_spend_limit_override_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$delete_notify_message_spend_limit_override <- pinpointsmsvoicev2_delete_notify_message_spend_limit_override
+
 #' Deletes an existing opt-out list
 #'
 #' @description
@@ -1858,6 +2192,68 @@ pinpointsmsvoicev2_delete_protect_configuration_rule_set_number_override <- func
   return(response)
 }
 .pinpointsmsvoicev2$operations$delete_protect_configuration_rule_set_number_override <- pinpointsmsvoicev2_delete_protect_configuration_rule_set_number_override
+
+#' Deletes an existing RCS agent
+#'
+#' @description
+#' Deletes an existing RCS agent. If deletion protection is enabled, an
+#' error is returned.
+#'
+#' @usage
+#' pinpointsmsvoicev2_delete_rcs_agent(RcsAgentId)
+#'
+#' @param RcsAgentId &#91;required&#93; The unique identifier of the RCS agent to delete. You can use either the
+#' RcsAgentId or RcsAgentArn.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RcsAgentArn = "string",
+#'   RcsAgentId = "string",
+#'   Status = "CREATED"|"PENDING"|"TESTING"|"PARTIAL"|"ACTIVE"|"DELETED",
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   OptOutListName = "string",
+#'   SelfManagedOptOutsEnabled = TRUE|FALSE,
+#'   TwoWayChannelArn = "string",
+#'   TwoWayChannelRole = "string",
+#'   TwoWayEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_rcs_agent(
+#'   RcsAgentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_delete_rcs_agent
+#'
+#' @aliases pinpointsmsvoicev2_delete_rcs_agent
+pinpointsmsvoicev2_delete_rcs_agent <- function(RcsAgentId) {
+  op <- new_operation(
+    name = "DeleteRcsAgent",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$delete_rcs_agent_input(RcsAgentId = RcsAgentId)
+  output <- .pinpointsmsvoicev2$delete_rcs_agent_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$delete_rcs_agent <- pinpointsmsvoicev2_delete_rcs_agent
 
 #' Permanently delete an existing registration from your account
 #'
@@ -2595,6 +2991,223 @@ pinpointsmsvoicev2_describe_keywords <- function(OriginationIdentity, Keywords =
 }
 .pinpointsmsvoicev2$operations$describe_keywords <- pinpointsmsvoicev2_describe_keywords
 
+#' Describes the specified notify configurations or all notify
+#' configurations in your account
+#'
+#' @description
+#' Describes the specified notify configurations or all notify
+#' configurations in your account.
+#' 
+#' If you specify notify configuration IDs, the output includes information
+#' for only the specified notify configurations. If you specify filters,
+#' the output includes information for only those notify configurations
+#' that meet the filter criteria. If you don't specify notify configuration
+#' IDs or filters, the output includes information for all notify
+#' configurations.
+#' 
+#' If you specify a notify configuration ID that isn't valid, an error is
+#' returned.
+#'
+#' @usage
+#' pinpointsmsvoicev2_describe_notify_configurations(
+#'   NotifyConfigurationIds, Filters, NextToken, MaxResults)
+#'
+#' @param NotifyConfigurationIds An array of notify configuration IDs to describe.
+#' @param Filters An array of NotifyConfigurationFilter objects to filter the results on.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#' @param MaxResults The maximum number of results to return per each request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotifyConfigurations = list(
+#'     list(
+#'       NotifyConfigurationArn = "string",
+#'       NotifyConfigurationId = "string",
+#'       DisplayName = "string",
+#'       UseCase = "CODE_VERIFICATION",
+#'       DefaultTemplateId = "string",
+#'       PoolId = "string",
+#'       EnabledCountries = list(
+#'         "string"
+#'       ),
+#'       EnabledChannels = list(
+#'         "SMS"|"VOICE"|"MMS"|"RCS"
+#'       ),
+#'       Tier = "BASIC"|"ADVANCED",
+#'       TierUpgradeStatus = "BASIC"|"PENDING_UPGRADE"|"ADVANCED"|"REJECTED",
+#'       Status = "PENDING"|"ACTIVE"|"REJECTED"|"REQUIRES_VERIFICATION",
+#'       RejectionReason = "string",
+#'       DeletionProtectionEnabled = TRUE|FALSE,
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_notify_configurations(
+#'   NotifyConfigurationIds = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "display-name"|"enabled-countries"|"enabled-channels"|"default-template"|"default-pool"|"use-case"|"status"|"deletion-protection-enabled"|"tier-upgrade-status",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_describe_notify_configurations
+#'
+#' @aliases pinpointsmsvoicev2_describe_notify_configurations
+pinpointsmsvoicev2_describe_notify_configurations <- function(NotifyConfigurationIds = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeNotifyConfigurations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NotifyConfigurations"),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$describe_notify_configurations_input(NotifyConfigurationIds = NotifyConfigurationIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pinpointsmsvoicev2$describe_notify_configurations_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$describe_notify_configurations <- pinpointsmsvoicev2_describe_notify_configurations
+
+#' Describes the specified notify templates or all notify templates in your
+#' account
+#'
+#' @description
+#' Describes the specified notify templates or all notify templates in your
+#' account.
+#' 
+#' If you specify template IDs, the output includes information for only
+#' the specified notify templates. If you specify filters, the output
+#' includes information for only those notify templates that meet the
+#' filter criteria. If you don't specify template IDs or filters, the
+#' output includes information for all notify templates.
+#' 
+#' If you specify a template ID that isn't valid, an error is returned.
+#'
+#' @usage
+#' pinpointsmsvoicev2_describe_notify_templates(TemplateIds, Filters,
+#'   NextToken, MaxResults)
+#'
+#' @param TemplateIds An array of template IDs to describe.
+#' @param Filters An array of NotifyTemplateFilter objects to filter the results on.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#' @param MaxResults The maximum number of results to return per each request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotifyTemplates = list(
+#'     list(
+#'       TemplateId = "string",
+#'       Version = 123,
+#'       TemplateType = "OTP_VERIFICATION",
+#'       Channels = list(
+#'         "SMS"|"VOICE"|"MMS"|"RCS"
+#'       ),
+#'       TierAccess = list(
+#'         "BASIC"|"ADVANCED"
+#'       ),
+#'       Status = "ACTIVE"|"INACTIVE",
+#'       SupportedCountries = list(
+#'         "string"
+#'       ),
+#'       LanguageCode = "string",
+#'       Content = "string",
+#'       Variables = list(
+#'         list(
+#'           Type = "STRING"|"INTEGER"|"BOOLEAN",
+#'           Required = TRUE|FALSE,
+#'           Description = "string",
+#'           MaxLength = 123,
+#'           MinValue = 123,
+#'           MaxValue = 123,
+#'           DefaultValue = "string",
+#'           Pattern = "string",
+#'           Sample = "string",
+#'           Source = "CUSTOMER"|"SYSTEM"
+#'         )
+#'       ),
+#'       SupportedVoiceIds = list(
+#'         "AMY"|"ASTRID"|"BIANCA"|"BRIAN"|"CAMILA"|"CARLA"|"CARMEN"|"CELINE"|"CHANTAL"|"CONCHITA"|"CRISTIANO"|"DORA"|"EMMA"|"ENRIQUE"|"EWA"|"FILIZ"|"GERAINT"|"GIORGIO"|"GWYNETH"|"HANS"|"INES"|"IVY"|"JACEK"|"JAN"|"JOANNA"|"JOEY"|"JUSTIN"|"KARL"|"KENDRA"|"KIMBERLY"|"LEA"|"LIV"|"LOTTE"|"LUCIA"|"LUPE"|"MADS"|"MAJA"|"MARLENE"|"MATHIEU"|"MATTHEW"|"MAXIM"|"MIA"|"MIGUEL"|"MIZUKI"|"NAJA"|"NICOLE"|"PENELOPE"|"RAVEENA"|"RICARDO"|"RUBEN"|"RUSSELL"|"SALLI"|"SEOYEON"|"TAKUMI"|"TATYANA"|"VICKI"|"VITORIA"|"ZEINA"|"ZHIYU"
+#'       ),
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_notify_templates(
+#'   TemplateIds = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "template-type"|"channels"|"tier-access"|"supported-countries"|"language-code"|"supported-voice-ids",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_describe_notify_templates
+#'
+#' @aliases pinpointsmsvoicev2_describe_notify_templates
+pinpointsmsvoicev2_describe_notify_templates <- function(TemplateIds = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeNotifyTemplates",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NotifyTemplates"),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$describe_notify_templates_input(TemplateIds = TemplateIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pinpointsmsvoicev2$describe_notify_templates_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$describe_notify_templates <- pinpointsmsvoicev2_describe_notify_templates
+
 #' Describes the specified opt-out list or all opt-out lists in your
 #' account
 #'
@@ -2824,7 +3437,7 @@ pinpointsmsvoicev2_describe_opted_out_numbers <- function(OptOutListName, OptedO
 #'       IsoCountryCode = "string",
 #'       MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
 #'       NumberCapabilities = list(
-#'         "SMS"|"VOICE"|"MMS"
+#'         "SMS"|"VOICE"|"MMS"|"RCS"
 #'       ),
 #'       NumberType = "SHORT_CODE"|"LONG_CODE"|"TOLL_FREE"|"TEN_DLC"|"SIMULATOR",
 #'       MonthlyLeasingPrice = "string",
@@ -3073,6 +3686,195 @@ pinpointsmsvoicev2_describe_protect_configurations <- function(ProtectConfigurat
 }
 .pinpointsmsvoicev2$operations$describe_protect_configurations <- pinpointsmsvoicev2_describe_protect_configurations
 
+#' Retrieves the per-country launch status of an RCS agent, including
+#' carrier-level details for each country
+#'
+#' @description
+#' Retrieves the per-country launch status of an RCS agent, including
+#' carrier-level details for each country.
+#'
+#' @usage
+#' pinpointsmsvoicev2_describe_rcs_agent_country_launch_status(RcsAgentId,
+#'   IsoCountryCodes, Filters, MaxResults, NextToken)
+#'
+#' @param RcsAgentId &#91;required&#93; The unique identifier of the RCS agent. You can use either the
+#' RcsAgentId or RcsAgentArn.
+#' @param IsoCountryCodes An array of two-character ISO country codes, in ISO 3166-1 alpha-2
+#' format, to filter the results.
+#' @param Filters An array of CountryLaunchStatusFilter objects to filter the results.
+#' @param MaxResults The maximum number of results to return per each request.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RcsAgentId = "string",
+#'   RcsAgentArn = "string",
+#'   CountryLaunchStatus = list(
+#'     list(
+#'       IsoCountryCode = "string",
+#'       Status = "CREATED"|"PENDING"|"PARTIAL"|"ACTIVE"|"REJECTED",
+#'       RcsPlatformId = "string",
+#'       RegistrationId = "string",
+#'       CarrierStatus = list(
+#'         list(
+#'           CarrierName = "string",
+#'           Status = "PENDING"|"ACTIVE"|"REJECTED"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_rcs_agent_country_launch_status(
+#'   RcsAgentId = "string",
+#'   IsoCountryCodes = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "country-launch-status",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_describe_rcs_agent_country_launch_status
+#'
+#' @aliases pinpointsmsvoicev2_describe_rcs_agent_country_launch_status
+pinpointsmsvoicev2_describe_rcs_agent_country_launch_status <- function(RcsAgentId, IsoCountryCodes = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeRcsAgentCountryLaunchStatus",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CountryLaunchStatus"),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$describe_rcs_agent_country_launch_status_input(RcsAgentId = RcsAgentId, IsoCountryCodes = IsoCountryCodes, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .pinpointsmsvoicev2$describe_rcs_agent_country_launch_status_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$describe_rcs_agent_country_launch_status <- pinpointsmsvoicev2_describe_rcs_agent_country_launch_status
+
+#' Retrieves the specified RCS agents or all RCS agents associated with
+#' your Amazon Web Services account
+#'
+#' @description
+#' Retrieves the specified RCS agents or all RCS agents associated with
+#' your Amazon Web Services account.
+#' 
+#' If you specify RCS agent IDs, the output includes information for only
+#' the specified RCS agents. If you specify filters, the output includes
+#' information for only those RCS agents that meet the filter criteria. If
+#' you don't specify RCS agent IDs or filters, the output includes
+#' information for all RCS agents.
+#'
+#' @usage
+#' pinpointsmsvoicev2_describe_rcs_agents(RcsAgentIds, Owner, Filters,
+#'   NextToken, MaxResults)
+#'
+#' @param RcsAgentIds An array of unique identifiers for the RCS agents. This is an array of
+#' strings that can be either the RcsAgentId or RcsAgentArn.
+#' @param Owner Use `SELF` to filter the list of RCS agents to ones your account owns or
+#' use `SHARED` to filter on RCS agents shared with your account. The
+#' `Owner` and `RcsAgentIds` parameters can't be used at the same time.
+#' @param Filters An array of RcsAgentFilter objects to filter the results.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#' @param MaxResults The maximum number of results to return per each request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RcsAgents = list(
+#'     list(
+#'       RcsAgentArn = "string",
+#'       RcsAgentId = "string",
+#'       Status = "CREATED"|"PENDING"|"TESTING"|"PARTIAL"|"ACTIVE"|"DELETED",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeletionProtectionEnabled = TRUE|FALSE,
+#'       OptOutListName = "string",
+#'       SelfManagedOptOutsEnabled = TRUE|FALSE,
+#'       TwoWayChannelArn = "string",
+#'       TwoWayChannelRole = "string",
+#'       TwoWayEnabled = TRUE|FALSE,
+#'       PoolId = "string",
+#'       TestingAgent = list(
+#'         Status = "CREATED"|"PENDING"|"ACTIVE",
+#'         TestingAgentId = "string",
+#'         RegistrationId = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_rcs_agents(
+#'   RcsAgentIds = list(
+#'     "string"
+#'   ),
+#'   Owner = "SELF"|"SHARED",
+#'   Filters = list(
+#'     list(
+#'       Name = "status"|"two-way-enabled"|"self-managed-opt-outs-enabled"|"opt-out-list-name"|"deletion-protection-enabled"|"two-way-channel-arn",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_describe_rcs_agents
+#'
+#' @aliases pinpointsmsvoicev2_describe_rcs_agents
+pinpointsmsvoicev2_describe_rcs_agents <- function(RcsAgentIds = NULL, Owner = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeRcsAgents",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RcsAgents"),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$describe_rcs_agents_input(RcsAgentIds = RcsAgentIds, Owner = Owner, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pinpointsmsvoicev2$describe_rcs_agents_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$describe_rcs_agents <- pinpointsmsvoicev2_describe_rcs_agents
+
 #' Retrieves the specified registration attachments or all registration
 #' attachments associated with your Amazon Web Services account
 #'
@@ -3103,7 +3905,8 @@ pinpointsmsvoicev2_describe_protect_configurations <- function(ProtectConfigurat
 #'       AttachmentUploadErrorReason = "INTERNAL_ERROR",
 #'       CreatedTimestamp = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       AttachmentUrl = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3527,7 +4330,7 @@ pinpointsmsvoicev2_describe_registration_type_definitions <- function(Registrati
 #'   RegistrationVersions = list(
 #'     list(
 #'       VersionNumber = 123,
-#'       RegistrationVersionStatus = "DRAFT"|"SUBMITTED"|"AWS_REVIEWING"|"REVIEWING"|"REQUIRES_AUTHENTICATION"|"APPROVED"|"DISCARDED"|"DENIED"|"REVOKED"|"ARCHIVED",
+#'       RegistrationVersionStatus = "DRAFT"|"SUBMITTED"|"AWS_REVIEWING"|"REVIEWING"|"REQUIRES_AUTHENTICATION"|"APPROVED"|"DISCARDED"|"DENIED"|"REVOKED"|"ARCHIVED"|"REQUIRES_OFFLINE_REVIEW",
 #'       RegistrationVersionStatusHistory = list(
 #'         DraftTimestamp = as.POSIXct(
 #'           "2015-01-01"
@@ -3830,7 +4633,7 @@ pinpointsmsvoicev2_describe_sender_ids <- function(SenderIds = NULL, Filters = N
 #' list(
 #'   SpendLimits = list(
 #'     list(
-#'       Name = "TEXT_MESSAGE_MONTHLY_SPEND_LIMIT"|"VOICE_MESSAGE_MONTHLY_SPEND_LIMIT"|"MEDIA_MESSAGE_MONTHLY_SPEND_LIMIT",
+#'       Name = "TEXT_MESSAGE_MONTHLY_SPEND_LIMIT"|"VOICE_MESSAGE_MONTHLY_SPEND_LIMIT"|"MEDIA_MESSAGE_MONTHLY_SPEND_LIMIT"|"NOTIFY_MESSAGE_MONTHLY_SPEND_LIMIT",
 #'       EnforcedLimit = 123,
 #'       MaxLimit = 123,
 #'       Overridden = TRUE|FALSE
@@ -3899,7 +4702,8 @@ pinpointsmsvoicev2_describe_spend_limits <- function(NextToken = NULL, MaxResult
 #'       VerifiedDestinationNumberArn = "string",
 #'       VerifiedDestinationNumberId = "string",
 #'       DestinationPhoneNumber = "string",
-#'       Status = "PENDING"|"VERIFIED",
+#'       Status = "PENDING"|"VERIFIED"|"UNSUPPORTED",
+#'       RcsAgentId = "string",
 #'       CreatedTimestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -3920,7 +4724,7 @@ pinpointsmsvoicev2_describe_spend_limits <- function(NextToken = NULL, MaxResult
 #'   ),
 #'   Filters = list(
 #'     list(
-#'       Name = "status",
+#'       Name = "status"|"rcs-agent-id",
 #'       Values = list(
 #'         "string"
 #'       )
@@ -3981,8 +4785,9 @@ pinpointsmsvoicev2_describe_verified_destination_numbers <- function(VerifiedDes
 #' 
 #' If you are using a shared End User Messaging SMS resource then you must
 #' use the full Amazon Resource Name(ARN).
-#' @param IsoCountryCode &#91;required&#93; The two-character code, in ISO 3166-1 alpha-2 format, for the country or
-#' region.
+#' @param IsoCountryCode The two-character code, in ISO 3166-1 alpha-2 format, for the country or
+#' region. This field is optional and is not required for origination
+#' identity types that are not country-specific, such as RCS agents.
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency
 #' of the request. If you don't specify a client token, a randomly
 #' generated token is used for the request to ensure idempotency.
@@ -4014,7 +4819,7 @@ pinpointsmsvoicev2_describe_verified_destination_numbers <- function(VerifiedDes
 #' @rdname pinpointsmsvoicev2_disassociate_origination_identity
 #'
 #' @aliases pinpointsmsvoicev2_disassociate_origination_identity
-pinpointsmsvoicev2_disassociate_origination_identity <- function(PoolId, OriginationIdentity, IsoCountryCode, ClientToken = NULL) {
+pinpointsmsvoicev2_disassociate_origination_identity <- function(PoolId, OriginationIdentity, IsoCountryCode = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "DisassociateOriginationIdentity",
     http_method = "POST",
@@ -4105,7 +4910,7 @@ pinpointsmsvoicev2_disassociate_protect_configuration <- function(ProtectConfigu
 #'   RegistrationArn = "string",
 #'   RegistrationId = "string",
 #'   VersionNumber = 123,
-#'   RegistrationVersionStatus = "DRAFT"|"SUBMITTED"|"AWS_REVIEWING"|"REVIEWING"|"REQUIRES_AUTHENTICATION"|"APPROVED"|"DISCARDED"|"DENIED"|"REVOKED"|"ARCHIVED",
+#'   RegistrationVersionStatus = "DRAFT"|"SUBMITTED"|"AWS_REVIEWING"|"REVIEWING"|"REQUIRES_AUTHENTICATION"|"APPROVED"|"DISCARDED"|"DENIED"|"REVOKED"|"ARCHIVED"|"REQUIRES_OFFLINE_REVIEW",
 #'   RegistrationVersionStatusHistory = list(
 #'     DraftTimestamp = as.POSIXct(
 #'       "2015-01-01"
@@ -4193,7 +4998,7 @@ pinpointsmsvoicev2_discard_registration_version <- function(RegistrationId) {
 #' list(
 #'   ProtectConfigurationArn = "string",
 #'   ProtectConfigurationId = "string",
-#'   NumberCapability = "SMS"|"VOICE"|"MMS",
+#'   NumberCapability = "SMS"|"VOICE"|"MMS"|"RCS",
 #'   CountryRuleSet = list(
 #'     list(
 #'       ProtectStatus = "ALLOW"|"BLOCK"|"MONITOR"|"FILTER"
@@ -4206,7 +5011,7 @@ pinpointsmsvoicev2_discard_registration_version <- function(RegistrationId) {
 #' ```
 #' svc$get_protect_configuration_country_rule_set(
 #'   ProtectConfigurationId = "string",
-#'   NumberCapability = "SMS"|"VOICE"|"MMS"
+#'   NumberCapability = "SMS"|"VOICE"|"MMS"|"RCS"
 #' )
 #' ```
 #'
@@ -4291,6 +5096,86 @@ pinpointsmsvoicev2_get_resource_policy <- function(ResourceArn) {
 }
 .pinpointsmsvoicev2$operations$get_resource_policy <- pinpointsmsvoicev2_get_resource_policy
 
+#' Lists countries that support notify messaging
+#'
+#' @description
+#' Lists countries that support notify messaging. You can optionally filter
+#' by channel, use case, or tier.
+#'
+#' @usage
+#' pinpointsmsvoicev2_list_notify_countries(Channels, UseCases, Tier,
+#'   NextToken, MaxResults)
+#'
+#' @param Channels An array of channels to filter the results by.
+#' @param UseCases An array of use cases to filter the results by.
+#' @param Tier The tier to filter the results by.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#' @param MaxResults The maximum number of results to return per each request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotifyCountries = list(
+#'     list(
+#'       IsoCountryCode = "string",
+#'       CountryName = "string",
+#'       SupportedChannels = list(
+#'         "SMS"|"VOICE"|"MMS"|"RCS"
+#'       ),
+#'       SupportedUseCases = list(
+#'         "CODE_VERIFICATION"
+#'       ),
+#'       SupportedTiers = list(
+#'         "BASIC"|"ADVANCED"
+#'       ),
+#'       CustomerOwnedIdentityRequired = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_notify_countries(
+#'   Channels = list(
+#'     "SMS"|"VOICE"|"MMS"|"RCS"
+#'   ),
+#'   UseCases = list(
+#'     "CODE_VERIFICATION"
+#'   ),
+#'   Tier = "BASIC"|"ADVANCED",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_list_notify_countries
+#'
+#' @aliases pinpointsmsvoicev2_list_notify_countries
+pinpointsmsvoicev2_list_notify_countries <- function(Channels = NULL, UseCases = NULL, Tier = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListNotifyCountries",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NotifyCountries"),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$list_notify_countries_input(Channels = Channels, UseCases = UseCases, Tier = Tier, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pinpointsmsvoicev2$list_notify_countries_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$list_notify_countries <- pinpointsmsvoicev2_list_notify_countries
+
 #' Lists all associated origination identities in your pool
 #'
 #' @description
@@ -4326,7 +5211,7 @@ pinpointsmsvoicev2_get_resource_policy <- function(ResourceArn) {
 #'       OriginationIdentity = "string",
 #'       IsoCountryCode = "string",
 #'       NumberCapabilities = list(
-#'         "SMS"|"VOICE"|"MMS"
+#'         "SMS"|"VOICE"|"MMS"|"RCS"
 #'       ),
 #'       PhoneNumber = "string"
 #'     )
@@ -5043,7 +5928,7 @@ pinpointsmsvoicev2_put_resource_policy <- function(ResourceArn, Policy) {
 #'   IsoCountryCode = "string",
 #'   MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
 #'   NumberCapabilities = list(
-#'     "SMS"|"VOICE"|"MMS"
+#'     "SMS"|"VOICE"|"MMS"|"RCS"
 #'   ),
 #'   NumberType = "SHORT_CODE"|"LONG_CODE"|"TOLL_FREE"|"TEN_DLC"|"SIMULATOR",
 #'   MonthlyLeasingPrice = "string",
@@ -5208,7 +6093,7 @@ pinpointsmsvoicev2_release_sender_id <- function(SenderId, IsoCountryCode) {
 #'   IsoCountryCode = "string",
 #'   MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
 #'   NumberCapabilities = list(
-#'     "SMS"|"VOICE"|"MMS"
+#'     "SMS"|"VOICE"|"MMS"|"RCS"
 #'   ),
 #'   NumberType = "LONG_CODE"|"TOLL_FREE"|"TEN_DLC"|"SIMULATOR",
 #'   MonthlyLeasingPrice = "string",
@@ -5239,7 +6124,7 @@ pinpointsmsvoicev2_release_sender_id <- function(SenderId, IsoCountryCode) {
 #'   IsoCountryCode = "string",
 #'   MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
 #'   NumberCapabilities = list(
-#'     "SMS"|"VOICE"|"MMS"
+#'     "SMS"|"VOICE"|"MMS"|"RCS"
 #'   ),
 #'   NumberType = "LONG_CODE"|"TOLL_FREE"|"TEN_DLC"|"SIMULATOR",
 #'   OptOutListName = "string",
@@ -5554,6 +6439,181 @@ pinpointsmsvoicev2_send_media_message <- function(DestinationPhoneNumber, Origin
   return(response)
 }
 .pinpointsmsvoicev2$operations$send_media_message <- pinpointsmsvoicev2_send_media_message
+
+#' Sends a templated text message through a notify configuration to a
+#' recipient's phone number
+#'
+#' @description
+#' Sends a templated text message through a notify configuration to a
+#' recipient's phone number.
+#'
+#' @usage
+#' pinpointsmsvoicev2_send_notify_text_message(NotifyConfigurationId,
+#'   DestinationPhoneNumber, TemplateId, TemplateVariables, TimeToLive,
+#'   Context, ConfigurationSetName, DryRun, MessageFeedbackEnabled)
+#'
+#' @param NotifyConfigurationId &#91;required&#93; The unique identifier of the notify configuration to use for sending the
+#' message. This can be either the NotifyConfigurationId or
+#' NotifyConfigurationArn.
+#' @param DestinationPhoneNumber &#91;required&#93; The destination phone number in E.164 format.
+#' @param TemplateId The unique identifier of the template to use for the message.
+#' @param TemplateVariables &#91;required&#93; A map of template variable names and their values. All variable values
+#' are passed as strings regardless of the declared variable type. For
+#' example, pass `INTEGER` values as `"42"` and `BOOLEAN` values as
+#' `"true"` or `"false"`.
+#' @param TimeToLive How long the text message is valid for, in seconds. By default this is
+#' 72 hours.
+#' @param Context You can specify custom data in this field. If you do, that data is
+#' logged to the event destination.
+#' @param ConfigurationSetName The name of the configuration set to use. This can be either the
+#' ConfigurationSetName or ConfigurationSetArn.
+#' @param DryRun When set to true, the message is checked and validated, but isn't sent
+#' to the end recipient.
+#' @param MessageFeedbackEnabled Set to true to enable message feedback for the message. When a user
+#' receives the message you need to update the message status using
+#' [`put_message_feedback`][pinpointsmsvoicev2_put_message_feedback].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageId = "string",
+#'   TemplateId = "string",
+#'   ResolvedMessageBody = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$send_notify_text_message(
+#'   NotifyConfigurationId = "string",
+#'   DestinationPhoneNumber = "string",
+#'   TemplateId = "string",
+#'   TemplateVariables = list(
+#'     "string"
+#'   ),
+#'   TimeToLive = 123,
+#'   Context = list(
+#'     "string"
+#'   ),
+#'   ConfigurationSetName = "string",
+#'   DryRun = TRUE|FALSE,
+#'   MessageFeedbackEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_send_notify_text_message
+#'
+#' @aliases pinpointsmsvoicev2_send_notify_text_message
+pinpointsmsvoicev2_send_notify_text_message <- function(NotifyConfigurationId, DestinationPhoneNumber, TemplateId = NULL, TemplateVariables, TimeToLive = NULL, Context = NULL, ConfigurationSetName = NULL, DryRun = NULL, MessageFeedbackEnabled = NULL) {
+  op <- new_operation(
+    name = "SendNotifyTextMessage",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$send_notify_text_message_input(NotifyConfigurationId = NotifyConfigurationId, DestinationPhoneNumber = DestinationPhoneNumber, TemplateId = TemplateId, TemplateVariables = TemplateVariables, TimeToLive = TimeToLive, Context = Context, ConfigurationSetName = ConfigurationSetName, DryRun = DryRun, MessageFeedbackEnabled = MessageFeedbackEnabled)
+  output <- .pinpointsmsvoicev2$send_notify_text_message_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$send_notify_text_message <- pinpointsmsvoicev2_send_notify_text_message
+
+#' Sends a templated voice message through a notify configuration to a
+#' recipient's phone number
+#'
+#' @description
+#' Sends a templated voice message through a notify configuration to a
+#' recipient's phone number.
+#'
+#' @usage
+#' pinpointsmsvoicev2_send_notify_voice_message(NotifyConfigurationId,
+#'   DestinationPhoneNumber, TemplateId, TemplateVariables, VoiceId,
+#'   TimeToLive, Context, ConfigurationSetName, DryRun,
+#'   MessageFeedbackEnabled)
+#'
+#' @param NotifyConfigurationId &#91;required&#93; The unique identifier of the notify configuration to use for sending the
+#' message. This can be either the NotifyConfigurationId or
+#' NotifyConfigurationArn.
+#' @param DestinationPhoneNumber &#91;required&#93; The destination phone number in E.164 format.
+#' @param TemplateId The unique identifier of the template to use for the message.
+#' @param TemplateVariables &#91;required&#93; A map of template variable names and their values. All variable values
+#' are passed as strings regardless of the declared variable type. For
+#' example, pass `INTEGER` values as `"42"` and `BOOLEAN` values as
+#' `"true"` or `"false"`.
+#' @param VoiceId The voice ID to use for the voice message.
+#' @param TimeToLive How long the voice message is valid for, in seconds. By default this is
+#' 72 hours.
+#' @param Context You can specify custom data in this field. If you do, that data is
+#' logged to the event destination.
+#' @param ConfigurationSetName The name of the configuration set to use. This can be either the
+#' ConfigurationSetName or ConfigurationSetArn.
+#' @param DryRun When set to true, the message is checked and validated, but isn't sent
+#' to the end recipient.
+#' @param MessageFeedbackEnabled Set to true to enable message feedback for the message. When a user
+#' receives the message you need to update the message status using
+#' [`put_message_feedback`][pinpointsmsvoicev2_put_message_feedback].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageId = "string",
+#'   TemplateId = "string",
+#'   ResolvedMessageBody = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$send_notify_voice_message(
+#'   NotifyConfigurationId = "string",
+#'   DestinationPhoneNumber = "string",
+#'   TemplateId = "string",
+#'   TemplateVariables = list(
+#'     "string"
+#'   ),
+#'   VoiceId = "AMY"|"ASTRID"|"BIANCA"|"BRIAN"|"CAMILA"|"CARLA"|"CARMEN"|"CELINE"|"CHANTAL"|"CONCHITA"|"CRISTIANO"|"DORA"|"EMMA"|"ENRIQUE"|"EWA"|"FILIZ"|"GERAINT"|"GIORGIO"|"GWYNETH"|"HANS"|"INES"|"IVY"|"JACEK"|"JAN"|"JOANNA"|"JOEY"|"JUSTIN"|"KARL"|"KENDRA"|"KIMBERLY"|"LEA"|"LIV"|"LOTTE"|"LUCIA"|"LUPE"|"MADS"|"MAJA"|"MARLENE"|"MATHIEU"|"MATTHEW"|"MAXIM"|"MIA"|"MIGUEL"|"MIZUKI"|"NAJA"|"NICOLE"|"PENELOPE"|"RAVEENA"|"RICARDO"|"RUBEN"|"RUSSELL"|"SALLI"|"SEOYEON"|"TAKUMI"|"TATYANA"|"VICKI"|"VITORIA"|"ZEINA"|"ZHIYU",
+#'   TimeToLive = 123,
+#'   Context = list(
+#'     "string"
+#'   ),
+#'   ConfigurationSetName = "string",
+#'   DryRun = TRUE|FALSE,
+#'   MessageFeedbackEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_send_notify_voice_message
+#'
+#' @aliases pinpointsmsvoicev2_send_notify_voice_message
+pinpointsmsvoicev2_send_notify_voice_message <- function(NotifyConfigurationId, DestinationPhoneNumber, TemplateId = NULL, TemplateVariables, VoiceId = NULL, TimeToLive = NULL, Context = NULL, ConfigurationSetName = NULL, DryRun = NULL, MessageFeedbackEnabled = NULL) {
+  op <- new_operation(
+    name = "SendNotifyVoiceMessage",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$send_notify_voice_message_input(NotifyConfigurationId = NotifyConfigurationId, DestinationPhoneNumber = DestinationPhoneNumber, TemplateId = TemplateId, TemplateVariables = TemplateVariables, VoiceId = VoiceId, TimeToLive = TimeToLive, Context = Context, ConfigurationSetName = ConfigurationSetName, DryRun = DryRun, MessageFeedbackEnabled = MessageFeedbackEnabled)
+  output <- .pinpointsmsvoicev2$send_notify_voice_message_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$send_notify_voice_message <- pinpointsmsvoicev2_send_notify_voice_message
 
 #' Creates a new text message and sends it to a recipient's phone number
 #'
@@ -6072,6 +7132,58 @@ pinpointsmsvoicev2_set_media_message_spend_limit_override <- function(MonthlyLim
 }
 .pinpointsmsvoicev2$operations$set_media_message_spend_limit_override <- pinpointsmsvoicev2_set_media_message_spend_limit_override
 
+#' Sets an account level monthly spend limit override for sending notify
+#' messages
+#'
+#' @description
+#' Sets an account level monthly spend limit override for sending notify
+#' messages. The requested spend limit must be less than or equal to the
+#' `MaxLimit`, which is set by Amazon Web Services.
+#'
+#' @usage
+#' pinpointsmsvoicev2_set_notify_message_spend_limit_override(MonthlyLimit)
+#'
+#' @param MonthlyLimit &#91;required&#93; The new monthly limit to enforce on notify messages.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MonthlyLimit = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$set_notify_message_spend_limit_override(
+#'   MonthlyLimit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_set_notify_message_spend_limit_override
+#'
+#' @aliases pinpointsmsvoicev2_set_notify_message_spend_limit_override
+pinpointsmsvoicev2_set_notify_message_spend_limit_override <- function(MonthlyLimit) {
+  op <- new_operation(
+    name = "SetNotifyMessageSpendLimitOverride",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$set_notify_message_spend_limit_override_input(MonthlyLimit = MonthlyLimit)
+  output <- .pinpointsmsvoicev2$set_notify_message_spend_limit_override_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$set_notify_message_spend_limit_override <- pinpointsmsvoicev2_set_notify_message_spend_limit_override
+
 #' Sets an account level monthly spend limit override for sending text
 #' messages
 #'
@@ -6197,7 +7309,7 @@ pinpointsmsvoicev2_set_voice_message_spend_limit_override <- function(MonthlyLim
 #'   RegistrationArn = "string",
 #'   RegistrationId = "string",
 #'   VersionNumber = 123,
-#'   RegistrationVersionStatus = "DRAFT"|"SUBMITTED"|"AWS_REVIEWING"|"REVIEWING"|"REQUIRES_AUTHENTICATION"|"APPROVED"|"DISCARDED"|"DENIED"|"REVOKED"|"ARCHIVED",
+#'   RegistrationVersionStatus = "DRAFT"|"SUBMITTED"|"AWS_REVIEWING"|"REVIEWING"|"REQUIRES_AUTHENTICATION"|"APPROVED"|"DISCARDED"|"DENIED"|"REVOKED"|"ARCHIVED"|"REQUIRES_OFFLINE_REVIEW",
 #'   RegistrationVersionStatusHistory = list(
 #'     DraftTimestamp = as.POSIXct(
 #'       "2015-01-01"
@@ -6479,6 +7591,99 @@ pinpointsmsvoicev2_update_event_destination <- function(ConfigurationSetName, Ev
 }
 .pinpointsmsvoicev2$operations$update_event_destination <- pinpointsmsvoicev2_update_event_destination
 
+#' Updates an existing notify configuration
+#'
+#' @description
+#' Updates an existing notify configuration. You can update the default
+#' template, pool association, enabled channels, enabled countries, and
+#' deletion protection settings.
+#'
+#' @usage
+#' pinpointsmsvoicev2_update_notify_configuration(NotifyConfigurationId,
+#'   DefaultTemplateId, PoolId, EnabledCountries, EnabledChannels,
+#'   DeletionProtectionEnabled)
+#'
+#' @param NotifyConfigurationId &#91;required&#93; The identifier of the notify configuration to update. The
+#' NotifyConfigurationId can be found using the
+#' [`describe_notify_configurations`][pinpointsmsvoicev2_describe_notify_configurations]
+#' operation.
+#' @param DefaultTemplateId The template ID to set as the default, or the special value
+#' UNSET_DEFAULT_TEMPLATE to clear the current default template.
+#' @param PoolId The pool ID or ARN to associate, or the special value
+#' UNSET_DEFAULT_POOL_FOR_NOTIFY to clear the current default pool.
+#' @param EnabledCountries An array of two-character ISO country codes, in ISO 3166-1 alpha-2
+#' format, that are enabled for the notify configuration.
+#' @param EnabledChannels An array of channels to enable for the notify configuration. Supported
+#' values include `SMS` and `VOICE`.
+#' @param DeletionProtectionEnabled When set to true the notify configuration can't be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotifyConfigurationArn = "string",
+#'   NotifyConfigurationId = "string",
+#'   DisplayName = "string",
+#'   UseCase = "CODE_VERIFICATION",
+#'   DefaultTemplateId = "string",
+#'   PoolId = "string",
+#'   EnabledCountries = list(
+#'     "string"
+#'   ),
+#'   EnabledChannels = list(
+#'     "SMS"|"VOICE"|"MMS"|"RCS"
+#'   ),
+#'   Tier = "BASIC"|"ADVANCED",
+#'   TierUpgradeStatus = "BASIC"|"PENDING_UPGRADE"|"ADVANCED"|"REJECTED",
+#'   Status = "PENDING"|"ACTIVE"|"REJECTED"|"REQUIRES_VERIFICATION",
+#'   RejectionReason = "string",
+#'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_notify_configuration(
+#'   NotifyConfigurationId = "string",
+#'   DefaultTemplateId = "string",
+#'   PoolId = "string",
+#'   EnabledCountries = list(
+#'     "string"
+#'   ),
+#'   EnabledChannels = list(
+#'     "SMS"|"VOICE"|"MMS"|"RCS"
+#'   ),
+#'   DeletionProtectionEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_update_notify_configuration
+#'
+#' @aliases pinpointsmsvoicev2_update_notify_configuration
+pinpointsmsvoicev2_update_notify_configuration <- function(NotifyConfigurationId, DefaultTemplateId = NULL, PoolId = NULL, EnabledCountries = NULL, EnabledChannels = NULL, DeletionProtectionEnabled = NULL) {
+  op <- new_operation(
+    name = "UpdateNotifyConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$update_notify_configuration_input(NotifyConfigurationId = NotifyConfigurationId, DefaultTemplateId = DefaultTemplateId, PoolId = PoolId, EnabledCountries = EnabledCountries, EnabledChannels = EnabledChannels, DeletionProtectionEnabled = DeletionProtectionEnabled)
+  output <- .pinpointsmsvoicev2$update_notify_configuration_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$update_notify_configuration <- pinpointsmsvoicev2_update_notify_configuration
+
 #' Updates the configuration of an existing origination phone number
 #'
 #' @description
@@ -6529,7 +7734,7 @@ pinpointsmsvoicev2_update_event_destination <- function(ConfigurationSetName, Ev
 #'   IsoCountryCode = "string",
 #'   MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
 #'   NumberCapabilities = list(
-#'     "SMS"|"VOICE"|"MMS"
+#'     "SMS"|"VOICE"|"MMS"|"RCS"
 #'   ),
 #'   NumberType = "SHORT_CODE"|"LONG_CODE"|"TOLL_FREE"|"TEN_DLC"|"SIMULATOR",
 #'   MonthlyLeasingPrice = "string",
@@ -6772,7 +7977,7 @@ pinpointsmsvoicev2_update_protect_configuration <- function(ProtectConfiguration
 #' list(
 #'   ProtectConfigurationArn = "string",
 #'   ProtectConfigurationId = "string",
-#'   NumberCapability = "SMS"|"VOICE"|"MMS",
+#'   NumberCapability = "SMS"|"VOICE"|"MMS"|"RCS",
 #'   CountryRuleSet = list(
 #'     list(
 #'       ProtectStatus = "ALLOW"|"BLOCK"|"MONITOR"|"FILTER"
@@ -6785,7 +7990,7 @@ pinpointsmsvoicev2_update_protect_configuration <- function(ProtectConfiguration
 #' ```
 #' svc$update_protect_configuration_country_rule_set(
 #'   ProtectConfigurationId = "string",
-#'   NumberCapability = "SMS"|"VOICE"|"MMS",
+#'   NumberCapability = "SMS"|"VOICE"|"MMS"|"RCS",
 #'   CountryRuleSetUpdates = list(
 #'     list(
 #'       ProtectStatus = "ALLOW"|"BLOCK"|"MONITOR"|"FILTER"
@@ -6817,6 +8022,89 @@ pinpointsmsvoicev2_update_protect_configuration_country_rule_set <- function(Pro
   return(response)
 }
 .pinpointsmsvoicev2$operations$update_protect_configuration_country_rule_set <- pinpointsmsvoicev2_update_protect_configuration_country_rule_set
+
+#' Updates the configuration of an existing RCS agent
+#'
+#' @description
+#' Updates the configuration of an existing RCS agent. You can update the
+#' opt-out list, deletion protection, two-way messaging settings, and
+#' self-managed opt-outs configuration.
+#'
+#' @usage
+#' pinpointsmsvoicev2_update_rcs_agent(RcsAgentId,
+#'   DeletionProtectionEnabled, OptOutListName, SelfManagedOptOutsEnabled,
+#'   TwoWayChannelArn, TwoWayChannelRole, TwoWayEnabled)
+#'
+#' @param RcsAgentId &#91;required&#93; The unique identifier of the RCS agent to update. You can use either the
+#' RcsAgentId or RcsAgentArn.
+#' @param DeletionProtectionEnabled By default this is set to false. When set to true the RCS agent can't be
+#' deleted.
+#' @param OptOutListName The OptOutList to associate with the RCS agent. Valid values are either
+#' OptOutListName or OptOutListArn.
+#' @param SelfManagedOptOutsEnabled By default this is set to false. When set to true you're responsible for
+#' responding to HELP and STOP requests. You're also responsible for
+#' tracking and honoring opt-out requests.
+#' @param TwoWayChannelArn The Amazon Resource Name (ARN) of the two way channel.
+#' @param TwoWayChannelRole An optional IAM Role Arn for a service to assume, to be able to post
+#' inbound SMS messages.
+#' @param TwoWayEnabled By default this is set to false. When set to true you can receive
+#' incoming text messages from your end recipients.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RcsAgentArn = "string",
+#'   RcsAgentId = "string",
+#'   Status = "CREATED"|"PENDING"|"TESTING"|"PARTIAL"|"ACTIVE"|"DELETED",
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   OptOutListName = "string",
+#'   SelfManagedOptOutsEnabled = TRUE|FALSE,
+#'   TwoWayChannelArn = "string",
+#'   TwoWayChannelRole = "string",
+#'   TwoWayEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_rcs_agent(
+#'   RcsAgentId = "string",
+#'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   OptOutListName = "string",
+#'   SelfManagedOptOutsEnabled = TRUE|FALSE,
+#'   TwoWayChannelArn = "string",
+#'   TwoWayChannelRole = "string",
+#'   TwoWayEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_update_rcs_agent
+#'
+#' @aliases pinpointsmsvoicev2_update_rcs_agent
+pinpointsmsvoicev2_update_rcs_agent <- function(RcsAgentId, DeletionProtectionEnabled = NULL, OptOutListName = NULL, SelfManagedOptOutsEnabled = NULL, TwoWayChannelArn = NULL, TwoWayChannelRole = NULL, TwoWayEnabled = NULL) {
+  op <- new_operation(
+    name = "UpdateRcsAgent",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$update_rcs_agent_input(RcsAgentId = RcsAgentId, DeletionProtectionEnabled = DeletionProtectionEnabled, OptOutListName = OptOutListName, SelfManagedOptOutsEnabled = SelfManagedOptOutsEnabled, TwoWayChannelArn = TwoWayChannelArn, TwoWayChannelRole = TwoWayChannelRole, TwoWayEnabled = TwoWayEnabled)
+  output <- .pinpointsmsvoicev2$update_rcs_agent_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$update_rcs_agent <- pinpointsmsvoicev2_update_rcs_agent
 
 #' Updates the configuration of an existing sender ID
 #'
@@ -6907,7 +8195,7 @@ pinpointsmsvoicev2_update_sender_id <- function(SenderId, IsoCountryCode, Deleti
 #'   VerifiedDestinationNumberArn = "string",
 #'   VerifiedDestinationNumberId = "string",
 #'   DestinationPhoneNumber = "string",
-#'   Status = "PENDING"|"VERIFIED",
+#'   Status = "PENDING"|"VERIFIED"|"UNSUPPORTED",
 #'   CreatedTimestamp = as.POSIXct(
 #'     "2015-01-01"
 #'   )

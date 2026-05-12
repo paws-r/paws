@@ -5,26 +5,26 @@
 \title{Updates an environment action}
 \usage{
 datazone_update_environment_action(
-  description = NULL,
   domainIdentifier,
   environmentIdentifier,
   identifier,
+  parameters = NULL,
   name = NULL,
-  parameters = NULL
+  description = NULL
 )
 }
 \arguments{
-\item{description}{The description of the environment action.}
-
 \item{domainIdentifier}{[required] The domain ID of the environment action.}
 
 \item{environmentIdentifier}{[required] The environment ID of the environment action.}
 
 \item{identifier}{[required] The ID of the environment action.}
 
+\item{parameters}{The parameters of the environment action.}
+
 \item{name}{The name of the environment action.}
 
-\item{parameters}{The parameters of the environment action.}
+\item{description}{The description of the environment action.}
 }
 \description{
 Updates an environment action.

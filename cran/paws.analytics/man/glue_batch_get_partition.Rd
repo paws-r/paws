@@ -8,7 +8,9 @@ glue_batch_get_partition(
   CatalogId = NULL,
   DatabaseName,
   TableName,
-  PartitionsToGet
+  PartitionsToGet,
+  AuditContext = NULL,
+  QuerySessionContext = NULL
 )
 }
 \arguments{

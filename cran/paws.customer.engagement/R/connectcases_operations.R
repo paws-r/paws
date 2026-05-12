@@ -118,11 +118,13 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
 #' [Making retries safe with idempotent
 #' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param performedBy 
+#' @param tags A map of of key-value pairs that represent tags on a resource. Tags are
+#' used to organize, track, or control access for this resource.
 #'
 #' @keywords internal
 #'
 #' @rdname connectcases_create_case
-connectcases_create_case <- function(domainId, templateId, fields, clientToken = NULL, performedBy = NULL) {
+connectcases_create_case <- function(domainId, templateId, fields, clientToken = NULL, performedBy = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateCase",
     http_method = "POST",
@@ -131,7 +133,7 @@ connectcases_create_case <- function(domainId, templateId, fields, clientToken =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcases$create_case_input(domainId = domainId, templateId = templateId, fields = fields, clientToken = clientToken, performedBy = performedBy)
+  input <- .connectcases$create_case_input(domainId = domainId, templateId = templateId, fields = fields, clientToken = clientToken, performedBy = performedBy, tags = tags)
   output <- .connectcases$create_case_output()
   config <- get_config()
   svc <- .connectcases$service(config, op)
@@ -220,11 +222,12 @@ connectcases_create_domain <- function(name) {
 #' @param type &#91;required&#93; Defines the data type, some system constraints, and default display of
 #' the field.
 #' @param description The description of the field.
+#' @param attributes Union of field attributes.
 #'
 #' @keywords internal
 #'
 #' @rdname connectcases_create_field
-connectcases_create_field <- function(domainId, name, type, description = NULL) {
+connectcases_create_field <- function(domainId, name, type, description = NULL, attributes = NULL) {
   op <- new_operation(
     name = "CreateField",
     http_method = "POST",
@@ -233,7 +236,7 @@ connectcases_create_field <- function(domainId, name, type, description = NULL) 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcases$create_field_input(domainId = domainId, name = name, type = type, description = description)
+  input <- .connectcases$create_field_input(domainId = domainId, name = name, type = type, description = description, attributes = attributes)
   output <- .connectcases$create_field_output()
   config <- get_config()
   svc <- .connectcases$service(config, op)
@@ -330,11 +333,14 @@ connectcases_create_related_item <- function(domainId, caseId, type, content, pe
 #' @param rules A list of case rules (also known as [case field
 #' conditions](https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html))
 #' on a template.
+#' @param tagPropagationConfigurations Defines tag propagation configuration for resources created within a
+#' domain. Tags specified here will be automatically applied to resources
+#' being created for the specified resource type.
 #'
 #' @keywords internal
 #'
 #' @rdname connectcases_create_template
-connectcases_create_template <- function(domainId, name, description = NULL, layoutConfiguration = NULL, requiredFields = NULL, status = NULL, rules = NULL) {
+connectcases_create_template <- function(domainId, name, description = NULL, layoutConfiguration = NULL, requiredFields = NULL, status = NULL, rules = NULL, tagPropagationConfigurations = NULL) {
   op <- new_operation(
     name = "CreateTemplate",
     http_method = "POST",
@@ -343,7 +349,7 @@ connectcases_create_template <- function(domainId, name, description = NULL, lay
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcases$create_template_input(domainId = domainId, name = name, description = description, layoutConfiguration = layoutConfiguration, requiredFields = requiredFields, status = status, rules = rules)
+  input <- .connectcases$create_template_input(domainId = domainId, name = name, description = description, layoutConfiguration = layoutConfiguration, requiredFields = requiredFields, status = status, rules = rules, tagPropagationConfigurations = tagPropagationConfigurations)
   output <- .connectcases$create_template_output()
   config <- get_config()
   svc <- .connectcases$service(config, op)
@@ -452,7 +458,7 @@ connectcases_delete_domain <- function(domainId) {
 #' Deletes a field from a cases template
 #'
 #' @description
-#' Deletes a field from a cases template. You can delete up to 100 fields per domain.
+#' Deletes a field from a cases template.
 #'
 #' See [https://www.paws-r-sdk.com/docs/connectcases_delete_field/](https://www.paws-r-sdk.com/docs/connectcases_delete_field/) for full documentation.
 #'
@@ -1358,11 +1364,12 @@ connectcases_update_case_rule <- function(domainId, caseRuleId, name = NULL, des
 #' @param fieldId &#91;required&#93; The unique identifier of a field.
 #' @param name The name of the field.
 #' @param description The description of a field.
+#' @param attributes Union of field attributes.
 #'
 #' @keywords internal
 #'
 #' @rdname connectcases_update_field
-connectcases_update_field <- function(domainId, fieldId, name = NULL, description = NULL) {
+connectcases_update_field <- function(domainId, fieldId, name = NULL, description = NULL, attributes = NULL) {
   op <- new_operation(
     name = "UpdateField",
     http_method = "PUT",
@@ -1371,7 +1378,7 @@ connectcases_update_field <- function(domainId, fieldId, name = NULL, descriptio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcases$update_field_input(domainId = domainId, fieldId = fieldId, name = name, description = description)
+  input <- .connectcases$update_field_input(domainId = domainId, fieldId = fieldId, name = name, description = description, attributes = attributes)
   output <- .connectcases$update_field_output()
   config <- get_config()
   svc <- .connectcases$service(config, op)
@@ -1416,6 +1423,41 @@ connectcases_update_layout <- function(domainId, layoutId, name = NULL, content 
 }
 .connectcases$operations$update_layout <- connectcases_update_layout
 
+#' Updates the content of a related item associated with a case
+#'
+#' @description
+#' Updates the content of a related item associated with a case. The following related item types are supported:
+#'
+#' See [https://www.paws-r-sdk.com/docs/connectcases_update_related_item/](https://www.paws-r-sdk.com/docs/connectcases_update_related_item/) for full documentation.
+#'
+#' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
+#' @param caseId &#91;required&#93; A unique identifier of the case.
+#' @param relatedItemId &#91;required&#93; Unique identifier of a related item.
+#' @param content &#91;required&#93; The content of a related item to be updated.
+#' @param performedBy Represents the user who performed the update of the related item.
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_update_related_item
+connectcases_update_related_item <- function(domainId, caseId, relatedItemId, content, performedBy = NULL) {
+  op <- new_operation(
+    name = "UpdateRelatedItem",
+    http_method = "PUT",
+    http_path = "/domains/{domainId}/cases/{caseId}/related-items/{relatedItemId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connectcases$update_related_item_input(domainId = domainId, caseId = caseId, relatedItemId = relatedItemId, content = content, performedBy = performedBy)
+  output <- .connectcases$update_related_item_output()
+  config <- get_config()
+  svc <- .connectcases$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$update_related_item <- connectcases_update_related_item
+
 #' Updates the attributes of an existing template
 #'
 #' @description
@@ -1434,11 +1476,14 @@ connectcases_update_layout <- function(domainId, layoutId, name = NULL, content 
 #' @param rules A list of case rules (also known as [case field
 #' conditions](https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html))
 #' on a template.
+#' @param tagPropagationConfigurations Defines tag propagation configuration for resources created within a
+#' domain. Tags specified here will be automatically applied to resources
+#' being created for the specified resource type.
 #'
 #' @keywords internal
 #'
 #' @rdname connectcases_update_template
-connectcases_update_template <- function(domainId, templateId, name = NULL, description = NULL, layoutConfiguration = NULL, requiredFields = NULL, status = NULL, rules = NULL) {
+connectcases_update_template <- function(domainId, templateId, name = NULL, description = NULL, layoutConfiguration = NULL, requiredFields = NULL, status = NULL, rules = NULL, tagPropagationConfigurations = NULL) {
   op <- new_operation(
     name = "UpdateTemplate",
     http_method = "PUT",
@@ -1447,7 +1492,7 @@ connectcases_update_template <- function(domainId, templateId, name = NULL, desc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcases$update_template_input(domainId = domainId, templateId = templateId, name = name, description = description, layoutConfiguration = layoutConfiguration, requiredFields = requiredFields, status = status, rules = rules)
+  input <- .connectcases$update_template_input(domainId = domainId, templateId = templateId, name = name, description = description, layoutConfiguration = layoutConfiguration, requiredFields = requiredFields, status = status, rules = rules, tagPropagationConfigurations = tagPropagationConfigurations)
   output <- .connectcases$update_template_output()
   config <- get_config()
   svc <- .connectcases$service(config, op)

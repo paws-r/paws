@@ -113,8 +113,6 @@ support payload pass-through.}
 29,000 milliseconds or 29 seconds. You can increase the default value to
 longer than 29 seconds for Regional or private APIs only.}
 
-\item{tlsConfig}{}
-
 \item{responseTransferMode}{The response transfer mode of the integration.}
 
 \item{integrationTarget}{The ALB or NLB listener to send the request to.}

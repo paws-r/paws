@@ -5,23 +5,23 @@
 \title{Gets the attribute metadata}
 \usage{
 datazone_batch_get_attributes_metadata(
-  attributeIdentifiers,
   domainIdentifier,
+  entityType,
   entityIdentifier,
   entityRevision = NULL,
-  entityType
+  attributeIdentifiers
 )
 }
 \arguments{
-\item{attributeIdentifiers}{[required] The attribute identifier.}
-
 \item{domainIdentifier}{[required] The domain ID where you want to get the attribute metadata.}
+
+\item{entityType}{[required] The entity type for which you want to get attribute metadata.}
 
 \item{entityIdentifier}{[required] The entity ID for which you want to get attribute metadata.}
 
 \item{entityRevision}{The entity revision for which you want to get attribute metadata.}
 
-\item{entityType}{[required] The entity type for which you want to get attribute metadata.}
+\item{attributeIdentifiers}{[required] The attribute identifier.}
 }
 \description{
 Gets the attribute metadata.

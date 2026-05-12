@@ -88,8 +88,6 @@ unversioned models.
 For versioned models, the value of this parameter must be set to
 \code{Approved} to deploy the model.}
 
-\item{MetadataProperties}{}
-
 \item{ModelMetrics}{A structure that contains model metrics reports.}
 
 \item{ClientToken}{A unique token that guarantees that the call to this API is idempotent.}

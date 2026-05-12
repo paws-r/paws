@@ -55,7 +55,7 @@ be supplied.
 }}
 
 \item{Enabled}{A Boolean value; set to \strong{true} to activate the subscription, set to
-\strong{false} to create the subscription but not active it.}
+\strong{false} to create the subscription but not activate it.}
 
 \item{Tags}{The tags to be applied to the new event subscription.}
 }

@@ -8,12 +8,17 @@ connect_create_user(
   Username,
   Password = NULL,
   IdentityInfo = NULL,
-  PhoneConfig,
+  PhoneConfig = NULL,
   DirectoryUserId = NULL,
   SecurityProfileIds,
   RoutingProfileId,
   HierarchyGroupId = NULL,
   InstanceId,
+  AutoAcceptConfigs = NULL,
+  AfterContactWorkConfigs = NULL,
+  PhoneNumberConfigs = NULL,
+  PersistentConnectionConfigs = NULL,
+  VoiceEnhancementConfigs = NULL,
   Tags = NULL
 )
 }
@@ -36,7 +41,11 @@ to include a password.}
 
 \item{IdentityInfo}{The information about the identity of the user.}
 
-\item{PhoneConfig}{[required] The phone settings for the user.}
+\item{PhoneConfig}{The phone settings for the user. This parameter is optional. If not
+provided, the user can be configured using channel-specific parameters
+such as \code{AutoAcceptConfigs}, \code{AfterContactWorkConfigs},
+\code{PhoneNumberConfigs}, \code{PersistentConnectionConfigs}, and
+\code{VoiceEnhancementConfigs}.}
 
 \item{DirectoryUserId}{The identifier of the user account in the directory used for identity
 management. If Amazon Connect cannot access the directory, you can
@@ -58,6 +67,18 @@ management and include this parameter, an error is returned.}
 
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
 in the Amazon Resource Name (ARN) of the instance.}
+
+\item{AutoAcceptConfigs}{The list of auto-accept configuration settings for each channel.}
+
+\item{AfterContactWorkConfigs}{The list of after contact work (ACW) timeout configuration settings for
+each channel.}
+
+\item{PhoneNumberConfigs}{The list of phone number configuration settings for each channel.}
+
+\item{PersistentConnectionConfigs}{The list of persistent connection configuration settings for each
+channel.}
+
+\item{VoiceEnhancementConfigs}{The list of voice enhancement configuration settings for each channel.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
 For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}

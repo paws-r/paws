@@ -9,7 +9,8 @@ stream}
 kinesis_decrease_stream_retention_period(
   StreamName = NULL,
   RetentionPeriodHours,
-  StreamARN = NULL
+  StreamARN = NULL,
+  StreamId = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ kinesis_decrease_stream_retention_period(
 current retention period.}
 
 \item{StreamARN}{The ARN of the stream.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Decreases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream. The minimum value of a stream's retention period is 24 hours.

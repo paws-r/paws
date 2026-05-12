@@ -147,8 +147,6 @@ Amazon Web Services ID of the member account.
 \item SAVINGS_PLAN_ARN - The unique identifier for your Savings Plans.
 }}
 
-\item{Filter}{}
-
 \item{SortBy}{The value that you want to sort the data by.
 
 The key represents cost and usage metrics. The following values are

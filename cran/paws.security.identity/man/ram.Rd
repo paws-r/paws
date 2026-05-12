@@ -103,7 +103,7 @@ To learn more about RAM, see the following resources:
 
 \tabular{ll}{
 \link[=ram_accept_resource_share_invitation]{accept_resource_share_invitation} \tab Accepts an invitation to a resource share from another Amazon Web Services account\cr
-\link[=ram_associate_resource_share]{associate_resource_share} \tab Adds the specified list of principals and list of resources to a resource share\cr
+\link[=ram_associate_resource_share]{associate_resource_share} \tab Adds the specified list of principals, resources, and source constraints to a resource share\cr
 \link[=ram_associate_resource_share_permission]{associate_resource_share_permission} \tab Adds or replaces the RAM permission for a resource type included in a resource share\cr
 \link[=ram_create_permission]{create_permission} \tab Creates a customer managed permission for a specified resource type that you can attach to resource shares\cr
 \link[=ram_create_permission_version]{create_permission_version} \tab Creates a new version of the specified customer managed permission\cr
@@ -111,7 +111,7 @@ To learn more about RAM, see the following resources:
 \link[=ram_delete_permission]{delete_permission} \tab Deletes the specified customer managed permission in the Amazon Web Services Region in which you call this operation\cr
 \link[=ram_delete_permission_version]{delete_permission_version} \tab Deletes one version of a customer managed permission\cr
 \link[=ram_delete_resource_share]{delete_resource_share} \tab Deletes the specified resource share\cr
-\link[=ram_disassociate_resource_share]{disassociate_resource_share} \tab Removes the specified principals or resources from participating in the specified resource share\cr
+\link[=ram_disassociate_resource_share]{disassociate_resource_share} \tab Removes the specified principals, resources, or source constraints from participating in the specified resource share\cr
 \link[=ram_disassociate_resource_share_permission]{disassociate_resource_share_permission} \tab Removes a managed permission from a resource share\cr
 \link[=ram_enable_sharing_with_aws_organization]{enable_sharing_with_aws_organization} \tab Enables resource sharing within your organization in Organizations\cr
 \link[=ram_get_permission]{get_permission} \tab Retrieves the contents of a managed permission in JSON format\cr
@@ -128,6 +128,7 @@ To learn more about RAM, see the following resources:
 \link[=ram_list_resources]{list_resources} \tab Lists the resources that you added to a resource share or the resources that are shared with you\cr
 \link[=ram_list_resource_share_permissions]{list_resource_share_permissions} \tab Lists the RAM permissions that are associated with a resource share\cr
 \link[=ram_list_resource_types]{list_resource_types} \tab Lists the resource types that can be shared by RAM\cr
+\link[=ram_list_source_associations]{list_source_associations} \tab Lists source associations for resource shares\cr
 \link[=ram_promote_permission_created_from_policy]{promote_permission_created_from_policy} \tab When you attach a resource-based policy to a resource, RAM automatically creates a resource share of featureSet=CREATED_FROM_POLICY with a managed permission that has the same IAM permissions as the original resource-based policy\cr
 \link[=ram_promote_resource_share_created_from_policy]{promote_resource_share_created_from_policy} \tab When you attach a resource-based policy to a resource, RAM automatically creates a resource share of featureSet=CREATED_FROM_POLICY with a managed permission that has the same IAM permissions as the original resource-based policy\cr
 \link[=ram_reject_resource_share_invitation]{reject_resource_share_invitation} \tab Rejects an invitation to a resource share from another Amazon Web Services account\cr

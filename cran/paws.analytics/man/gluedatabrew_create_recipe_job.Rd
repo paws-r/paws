@@ -57,8 +57,6 @@ output destination for a DataBrew recipe job to write to.}
 \item{ProjectName}{Either the name of an existing project, or a combination of a recipe and
 a dataset to associate with the recipe.}
 
-\item{RecipeReference}{}
-
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the Identity and Access Management
 (IAM) role to be assumed when DataBrew runs the job.}
 

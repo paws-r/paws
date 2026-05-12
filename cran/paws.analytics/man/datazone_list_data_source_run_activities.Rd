@@ -7,9 +7,9 @@
 datazone_list_data_source_run_activities(
   domainIdentifier,
   identifier,
-  maxResults = NULL,
+  status = NULL,
   nextToken = NULL,
-  status = NULL
+  maxResults = NULL
 )
 }
 \arguments{
@@ -18,13 +18,7 @@ source run activities.}
 
 \item{identifier}{[required] The identifier of the data source run.}
 
-\item{maxResults}{The maximum number of activities to return in a single call to
-\code{\link[=datazone_list_data_source_run_activities]{list_data_source_run_activities}}.
-When the number of activities to be listed is greater than the value of
-\code{MaxResults}, the response contains a \code{NextToken} value that you can use
-in a subsequent call to
-\code{\link[=datazone_list_data_source_run_activities]{list_data_source_run_activities}}
-to list the next set of activities.}
+\item{status}{The status of the data source run.}
 
 \item{nextToken}{When the number of activities is greater than the default value for the
 \code{MaxResults} parameter, or if you explicitly specify a value for
@@ -34,7 +28,13 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{\link[=datazone_list_data_source_run_activities]{list_data_source_run_activities}}
 to list the next set of activities.}
 
-\item{status}{The status of the data source run.}
+\item{maxResults}{The maximum number of activities to return in a single call to
+\code{\link[=datazone_list_data_source_run_activities]{list_data_source_run_activities}}.
+When the number of activities to be listed is greater than the value of
+\code{MaxResults}, the response contains a \code{NextToken} value that you can use
+in a subsequent call to
+\code{\link[=datazone_list_data_source_run_activities]{list_data_source_run_activities}}
+to list the next set of activities.}
 }
 \description{
 Lists data source run activities.

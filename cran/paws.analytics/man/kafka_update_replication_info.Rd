@@ -8,9 +8,12 @@ kafka_update_replication_info(
   ConsumerGroupReplication = NULL,
   CurrentVersion,
   ReplicatorArn,
-  SourceKafkaClusterArn,
-  TargetKafkaClusterArn,
-  TopicReplication = NULL
+  SourceKafkaClusterArn = NULL,
+  SourceKafkaClusterId = NULL,
+  TargetKafkaClusterArn = NULL,
+  TargetKafkaClusterId = NULL,
+  TopicReplication = NULL,
+  LogDelivery = NULL
 )
 }
 \arguments{
@@ -20,11 +23,17 @@ kafka_update_replication_info(
 
 \item{ReplicatorArn}{[required] The Amazon Resource Name (ARN) of the replicator to be updated.}
 
-\item{SourceKafkaClusterArn}{[required] The ARN of the source Kafka cluster.}
+\item{SourceKafkaClusterArn}{The ARN of the source Kafka cluster.}
 
-\item{TargetKafkaClusterArn}{[required] The ARN of the target Kafka cluster.}
+\item{SourceKafkaClusterId}{The ID of the source Kafka cluster.}
+
+\item{TargetKafkaClusterArn}{The ARN of the target Kafka cluster.}
+
+\item{TargetKafkaClusterId}{The ID of the target Kafka cluster.}
 
 \item{TopicReplication}{Updated topic replication information.}
+
+\item{LogDelivery}{Configuration for delivering replicator logs to customer destinations.}
 }
 \description{
 Updates replication info of a replicator.

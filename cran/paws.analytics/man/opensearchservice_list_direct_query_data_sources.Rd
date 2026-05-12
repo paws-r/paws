@@ -7,9 +7,6 @@ configured within Amazon OpenSearch Service}
 \usage{
 opensearchservice_list_direct_query_data_sources(NextToken = NULL)
 }
-\arguments{
-\item{NextToken}{}
-}
 \description{
 Lists an inventory of all the direct query data sources that you have configured within Amazon OpenSearch Service.
 

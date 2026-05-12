@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_list_configuration_policies}
 \alias{securityhub_list_configuration_policies}
-\title{Lists the configuration policies that the Security Hub delegated
+\title{Lists the configuration policies that the Security Hub CSPM delegated
 administrator has created for your organization}
 \usage{
 securityhub_list_configuration_policies(NextToken = NULL, MaxResults = NULL)
@@ -29,7 +29,7 @@ request with the returned \code{NextToken} value. A valid range for
 \code{MaxResults} is between 1 and 100.}
 }
 \description{
-Lists the configuration policies that the Security Hub delegated administrator has created for your organization. Only the delegated administrator can invoke this operation from the home Region.
+Lists the configuration policies that the Security Hub CSPM delegated administrator has created for your organization. Only the delegated administrator can invoke this operation from the home Region.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_list_configuration_policies/} for full documentation.
 }

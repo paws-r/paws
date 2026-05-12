@@ -24,8 +24,6 @@ Either the HITId parameter or the AssignmentId parameter must be
 specified}
 
 \item{NextToken}{Pagination token}
-
-\item{MaxResults}{}
 }
 \description{
 The \code{\link[=mturk_list_bonus_payments]{list_bonus_payments}} operation retrieves the amounts of bonuses you have paid to Workers for a given HIT or assignment.

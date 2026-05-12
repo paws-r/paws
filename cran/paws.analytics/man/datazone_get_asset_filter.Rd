@@ -4,12 +4,12 @@
 \alias{datazone_get_asset_filter}
 \title{Gets an asset filter}
 \usage{
-datazone_get_asset_filter(assetIdentifier, domainIdentifier, identifier)
+datazone_get_asset_filter(domainIdentifier, assetIdentifier, identifier)
 }
 \arguments{
-\item{assetIdentifier}{[required] The ID of the data asset.}
-
 \item{domainIdentifier}{[required] The ID of the domain where you want to get an asset filter.}
+
+\item{assetIdentifier}{[required] The ID of the data asset.}
 
 \item{identifier}{[required] The ID of the asset filter.}
 }

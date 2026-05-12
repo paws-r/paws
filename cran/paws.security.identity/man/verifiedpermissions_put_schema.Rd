@@ -7,7 +7,17 @@
 verifiedpermissions_put_schema(policyStoreId, definition)
 }
 \arguments{
-\item{policyStoreId}{[required] Specifies the ID of the policy store in which to place the schema.}
+\item{policyStoreId}{[required] Specifies the ID of the policy store in which to place the schema.
+
+To specify a policy store, use its ID or alias name. When using an alias
+name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use
+\code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
 
 \item{definition}{[required] Specifies the definition of the schema to be stored. The schema
 definition must be written in Cedar schema JSON.}

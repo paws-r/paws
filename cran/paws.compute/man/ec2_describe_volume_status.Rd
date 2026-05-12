@@ -8,6 +8,7 @@ ec2_describe_volume_status(
   MaxResults = NULL,
   NextToken = NULL,
   VolumeIds = NULL,
+  IncludeManagedResources = NULL,
   DryRun = NULL,
   Filters = NULL
 )
@@ -24,6 +25,11 @@ continues from the end of the items returned by the previous request.}
 \item{VolumeIds}{The IDs of the volumes.
 
 Default: Describes all your volumes.}
+
+\item{IncludeManagedResources}{Indicates whether to include managed resources in the output. If this
+parameter is set to \code{true}, the output includes resources that are
+managed by Amazon Web Services services, even if managed resource
+visibility is set to hidden.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

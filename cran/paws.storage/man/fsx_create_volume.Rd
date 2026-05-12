@@ -14,16 +14,12 @@ fsx_create_volume(
 )
 }
 \arguments{
-\item{ClientRequestToken}{}
-
 \item{VolumeType}{[required] Specifies the type of volume to create; \code{ONTAP} and \code{OPENZFS} are the
 only valid volume types.}
 
 \item{Name}{[required] Specifies the name of the volume that you're creating.}
 
 \item{OntapConfiguration}{Specifies the configuration to use when creating the ONTAP volume.}
-
-\item{Tags}{}
 
 \item{OpenZFSConfiguration}{Specifies the configuration to use when creating the OpenZFS volume.}
 }

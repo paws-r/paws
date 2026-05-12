@@ -142,7 +142,8 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 #'             Enabled = TRUE|FALSE
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       NetworkType = "IPV4"|"DUAL"
 #'     ),
 #'     ZoneIds = list(
 #'       "string"
@@ -313,7 +314,8 @@ kafka_create_cluster <- function(BrokerNodeGroupInfo, Rebalancing = NULL, Client
 #'               Enabled = TRUE|FALSE
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         NetworkType = "IPV4"|"DUAL"
 #'       ),
 #'       ZoneIds = list(
 #'         "string"
@@ -513,7 +515,7 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
 #'
 #' @usage
 #' kafka_create_replicator(Description, KafkaClusters, ReplicationInfoList,
-#'   ReplicatorName, ServiceExecutionRoleArn, Tags)
+#'   ReplicatorName, ServiceExecutionRoleArn, Tags, LogDelivery)
 #'
 #' @param Description A summary description of the replicator.
 #' @param KafkaClusters &#91;required&#93; Kafka Clusters to use in setting up sources / targets for replication.
@@ -524,6 +526,7 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
 #' @param ServiceExecutionRoleArn &#91;required&#93; The ARN of the IAM role used by the replicator to access resources in
 #' the customer's account (e.g source and target clusters)
 #' @param Tags List of tags to attach to created Replicator.
+#' @param LogDelivery Configuration for delivering replicator logs to customer destinations.
 #'
 #' @return
 #' A list with the following syntax:
@@ -544,6 +547,10 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
 #'       AmazonMskCluster = list(
 #'         MskClusterArn = "string"
 #'       ),
+#'       ApacheKafkaCluster = list(
+#'         ApacheKafkaClusterId = "string",
+#'         BootstrapBrokerString = "string"
+#'       ),
 #'       VpcConfig = list(
 #'         SecurityGroupIds = list(
 #'           "string"
@@ -551,6 +558,16 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
 #'         SubnetIds = list(
 #'           "string"
 #'         )
+#'       ),
+#'       ClientAuthentication = list(
+#'         SaslScram = list(
+#'           Mechanism = "SHA256"|"SHA512",
+#'           SecretArn = "string"
+#'         )
+#'       ),
+#'       EncryptionInTransit = list(
+#'         EncryptionType = "TLS",
+#'         RootCaCertificate = "string"
 #'       )
 #'     )
 #'   ),
@@ -564,11 +581,14 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
 #'           "string"
 #'         ),
 #'         DetectAndCopyNewConsumerGroups = TRUE|FALSE,
-#'         SynchroniseConsumerGroupOffsets = TRUE|FALSE
+#'         SynchroniseConsumerGroupOffsets = TRUE|FALSE,
+#'         ConsumerGroupOffsetSyncMode = "LEGACY"|"ENHANCED"
 #'       ),
 #'       SourceKafkaClusterArn = "string",
+#'       SourceKafkaClusterId = "string",
 #'       TargetCompressionType = "NONE"|"GZIP"|"SNAPPY"|"LZ4"|"ZSTD",
 #'       TargetKafkaClusterArn = "string",
+#'       TargetKafkaClusterId = "string",
 #'       TopicReplication = list(
 #'         CopyAccessControlListsForTopics = TRUE|FALSE,
 #'         CopyTopicConfigurations = TRUE|FALSE,
@@ -592,6 +612,23 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
 #'   ServiceExecutionRoleArn = "string",
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   LogDelivery = list(
+#'     ReplicatorLogDelivery = list(
+#'       CloudWatchLogs = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroup = "string"
+#'       ),
+#'       Firehose = list(
+#'         Enabled = TRUE|FALSE,
+#'         DeliveryStream = "string"
+#'       ),
+#'       S3 = list(
+#'         Enabled = TRUE|FALSE,
+#'         Bucket = "string",
+#'         Prefix = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -601,7 +638,7 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
 #' @rdname kafka_create_replicator
 #'
 #' @aliases kafka_create_replicator
-kafka_create_replicator <- function(Description = NULL, KafkaClusters, ReplicationInfoList, ReplicatorName, ServiceExecutionRoleArn, Tags = NULL) {
+kafka_create_replicator <- function(Description = NULL, KafkaClusters, ReplicationInfoList, ReplicatorName, ServiceExecutionRoleArn, Tags = NULL, LogDelivery = NULL) {
   op <- new_operation(
     name = "CreateReplicator",
     http_method = "POST",
@@ -610,7 +647,7 @@ kafka_create_replicator <- function(Description = NULL, KafkaClusters, Replicati
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kafka$create_replicator_input(Description = Description, KafkaClusters = KafkaClusters, ReplicationInfoList = ReplicationInfoList, ReplicatorName = ReplicatorName, ServiceExecutionRoleArn = ServiceExecutionRoleArn, Tags = Tags)
+  input <- .kafka$create_replicator_input(Description = Description, KafkaClusters = KafkaClusters, ReplicationInfoList = ReplicationInfoList, ReplicatorName = ReplicatorName, ServiceExecutionRoleArn = ServiceExecutionRoleArn, Tags = Tags, LogDelivery = LogDelivery)
   output <- .kafka$create_replicator_output()
   config <- get_config()
   svc <- .kafka$service(config, op)
@@ -619,6 +656,66 @@ kafka_create_replicator <- function(Description = NULL, KafkaClusters, Replicati
   return(response)
 }
 .kafka$operations$create_replicator <- kafka_create_replicator
+
+#' Creates a topic in the specified MSK cluster
+#'
+#' @description
+#' Creates a topic in the specified MSK cluster.
+#'
+#' @usage
+#' kafka_create_topic(ClusterArn, TopicName, PartitionCount,
+#'   ReplicationFactor, Configs)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param TopicName &#91;required&#93; The name of the topic to create.
+#' @param PartitionCount &#91;required&#93; The number of partitions for the topic.
+#' @param ReplicationFactor &#91;required&#93; The replication factor for the topic.
+#' @param Configs Topic configurations encoded as a Base64 string.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TopicArn = "string",
+#'   TopicName = "string",
+#'   Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_topic(
+#'   ClusterArn = "string",
+#'   TopicName = "string",
+#'   PartitionCount = 123,
+#'   ReplicationFactor = 123,
+#'   Configs = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_create_topic
+#'
+#' @aliases kafka_create_topic
+kafka_create_topic <- function(ClusterArn, TopicName, PartitionCount, ReplicationFactor, Configs = NULL) {
+  op <- new_operation(
+    name = "CreateTopic",
+    http_method = "POST",
+    http_path = "/v1/clusters/{clusterArn}/topics",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafka$create_topic_input(ClusterArn = ClusterArn, TopicName = TopicName, PartitionCount = PartitionCount, ReplicationFactor = ReplicationFactor, Configs = Configs)
+  output <- .kafka$create_topic_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$create_topic <- kafka_create_topic
 
 #' Creates a new MSK VPC connection
 #'
@@ -904,6 +1001,59 @@ kafka_delete_replicator <- function(CurrentVersion = NULL, ReplicatorArn) {
 }
 .kafka$operations$delete_replicator <- kafka_delete_replicator
 
+#' Deletes a topic in the specified MSK cluster
+#'
+#' @description
+#' Deletes a topic in the specified MSK cluster.
+#'
+#' @usage
+#' kafka_delete_topic(ClusterArn, TopicName)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param TopicName &#91;required&#93; The name of the topic to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TopicArn = "string",
+#'   TopicName = "string",
+#'   Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_topic(
+#'   ClusterArn = "string",
+#'   TopicName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_delete_topic
+#'
+#' @aliases kafka_delete_topic
+kafka_delete_topic <- function(ClusterArn, TopicName) {
+  op <- new_operation(
+    name = "DeleteTopic",
+    http_method = "DELETE",
+    http_path = "/v1/clusters/{clusterArn}/topics/{topicName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafka$delete_topic_input(ClusterArn = ClusterArn, TopicName = TopicName)
+  output <- .kafka$delete_topic_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$delete_topic <- kafka_delete_topic
+
 #' Deletes a MSK VPC connection
 #'
 #' @description
@@ -1009,7 +1159,8 @@ kafka_delete_vpc_connection <- function(Arn) {
 #'               Enabled = TRUE|FALSE
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         NetworkType = "IPV4"|"DUAL"
 #'       ),
 #'       ZoneIds = list(
 #'         "string"
@@ -1203,7 +1354,8 @@ kafka_describe_cluster <- function(ClusterArn) {
 #'                 Enabled = TRUE|FALSE
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           NetworkType = "IPV4"|"DUAL"
 #'         ),
 #'         ZoneIds = list(
 #'           "string"
@@ -1296,6 +1448,9 @@ kafka_describe_cluster <- function(ClusterArn) {
 #'             Enabled = TRUE|FALSE
 #'           )
 #'         )
+#'       ),
+#'       ConnectivityInfo = list(
+#'         NetworkType = "IPV4"|"DUAL"
 #'       )
 #'     )
 #'   )
@@ -1399,6 +1554,9 @@ kafka_describe_cluster_v2 <- function(ClusterArn) {
 #'           )
 #'         )
 #'       ),
+#'       ZookeeperAccess = list(
+#'         Enabled = TRUE|FALSE
+#'       ),
 #'       KafkaVersion = "string",
 #'       LoggingInfo = list(
 #'         BrokerLogs = list(
@@ -1464,7 +1622,8 @@ kafka_describe_cluster_v2 <- function(ClusterArn) {
 #'               Enabled = TRUE|FALSE
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         NetworkType = "IPV4"|"DUAL"
 #'       ),
 #'       StorageMode = "LOCAL"|"TIERED",
 #'       BrokerCountUpdateInfo = list(
@@ -1506,6 +1665,9 @@ kafka_describe_cluster_v2 <- function(ClusterArn) {
 #'           )
 #'         )
 #'       ),
+#'       ZookeeperAccess = list(
+#'         Enabled = TRUE|FALSE
+#'       ),
 #'       KafkaVersion = "string",
 #'       LoggingInfo = list(
 #'         BrokerLogs = list(
@@ -1571,7 +1733,8 @@ kafka_describe_cluster_v2 <- function(ClusterArn) {
 #'               Enabled = TRUE|FALSE
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         NetworkType = "IPV4"|"DUAL"
 #'       ),
 #'       StorageMode = "LOCAL"|"TIERED",
 #'       BrokerCountUpdateInfo = list(
@@ -1698,6 +1861,9 @@ kafka_describe_cluster_operation <- function(ClusterOperationArn) {
 #'             )
 #'           )
 #'         ),
+#'         ZookeeperAccess = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
 #'         KafkaVersion = "string",
 #'         LoggingInfo = list(
 #'           BrokerLogs = list(
@@ -1763,7 +1929,8 @@ kafka_describe_cluster_operation <- function(ClusterOperationArn) {
 #'                 Enabled = TRUE|FALSE
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           NetworkType = "IPV4"|"DUAL"
 #'         ),
 #'         StorageMode = "LOCAL"|"TIERED",
 #'         BrokerCountUpdateInfo = list(
@@ -1805,6 +1972,9 @@ kafka_describe_cluster_operation <- function(ClusterOperationArn) {
 #'             )
 #'           )
 #'         ),
+#'         ZookeeperAccess = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
 #'         KafkaVersion = "string",
 #'         LoggingInfo = list(
 #'           BrokerLogs = list(
@@ -1870,7 +2040,8 @@ kafka_describe_cluster_operation <- function(ClusterOperationArn) {
 #'                 Enabled = TRUE|FALSE
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           NetworkType = "IPV4"|"DUAL"
 #'         ),
 #'         StorageMode = "LOCAL"|"TIERED",
 #'         BrokerCountUpdateInfo = list(
@@ -1898,6 +2069,12 @@ kafka_describe_cluster_operation <- function(ClusterOperationArn) {
 #'       )
 #'     ),
 #'     Serverless = list(
+#'       SourceClusterInfo = list(
+#'         NetworkType = "IPV4"|"DUAL"
+#'       ),
+#'       TargetClusterInfo = list(
+#'         NetworkType = "IPV4"|"DUAL"
+#'       ),
 #'       VpcConnectionInfo = list(
 #'         CreationTime = as.POSIXct(
 #'           "2015-01-01"
@@ -2093,6 +2270,10 @@ kafka_describe_configuration_revision <- function(Arn, Revision) {
 #'       AmazonMskCluster = list(
 #'         MskClusterArn = "string"
 #'       ),
+#'       ApacheKafkaCluster = list(
+#'         ApacheKafkaClusterId = "string",
+#'         BootstrapBrokerString = "string"
+#'       ),
 #'       KafkaClusterAlias = "string",
 #'       VpcConfig = list(
 #'         SecurityGroupIds = list(
@@ -2101,6 +2282,16 @@ kafka_describe_configuration_revision <- function(Arn, Revision) {
 #'         SubnetIds = list(
 #'           "string"
 #'         )
+#'       ),
+#'       ClientAuthentication = list(
+#'         SaslScram = list(
+#'           Mechanism = "SHA256"|"SHA512",
+#'           SecretArn = "string"
+#'         )
+#'       ),
+#'       EncryptionInTransit = list(
+#'         EncryptionType = "TLS",
+#'         RootCaCertificate = "string"
 #'       )
 #'     )
 #'   ),
@@ -2114,7 +2305,8 @@ kafka_describe_configuration_revision <- function(Arn, Revision) {
 #'           "string"
 #'         ),
 #'         DetectAndCopyNewConsumerGroups = TRUE|FALSE,
-#'         SynchroniseConsumerGroupOffsets = TRUE|FALSE
+#'         SynchroniseConsumerGroupOffsets = TRUE|FALSE,
+#'         ConsumerGroupOffsetSyncMode = "LEGACY"|"ENHANCED"
 #'       ),
 #'       SourceKafkaClusterAlias = "string",
 #'       TargetCompressionType = "NONE"|"GZIP"|"SNAPPY"|"LZ4"|"ZSTD",
@@ -2150,6 +2342,23 @@ kafka_describe_configuration_revision <- function(Arn, Revision) {
 #'   ),
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   LogDelivery = list(
+#'     ReplicatorLogDelivery = list(
+#'       CloudWatchLogs = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroup = "string"
+#'       ),
+#'       Firehose = list(
+#'         Enabled = TRUE|FALSE,
+#'         DeliveryStream = "string"
+#'       ),
+#'       S3 = list(
+#'         Enabled = TRUE|FALSE,
+#'         Bucket = "string",
+#'         Prefix = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2467,7 +2676,11 @@ kafka_batch_disassociate_scram_secret <- function(ClusterArn, SecretArnList) {
 #'   BootstrapBrokerStringPublicSaslIam = "string",
 #'   BootstrapBrokerStringVpcConnectivityTls = "string",
 #'   BootstrapBrokerStringVpcConnectivitySaslScram = "string",
-#'   BootstrapBrokerStringVpcConnectivitySaslIam = "string"
+#'   BootstrapBrokerStringVpcConnectivitySaslIam = "string",
+#'   BootstrapBrokerStringIpv6 = "string",
+#'   BootstrapBrokerStringTlsIpv6 = "string",
+#'   BootstrapBrokerStringSaslScramIpv6 = "string",
+#'   BootstrapBrokerStringSaslIamIpv6 = "string"
 #' )
 #' ```
 #'
@@ -2683,6 +2896,9 @@ kafka_get_cluster_policy <- function(ClusterArn) {
 #'             )
 #'           )
 #'         ),
+#'         ZookeeperAccess = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
 #'         KafkaVersion = "string",
 #'         LoggingInfo = list(
 #'           BrokerLogs = list(
@@ -2748,7 +2964,8 @@ kafka_get_cluster_policy <- function(ClusterArn) {
 #'                 Enabled = TRUE|FALSE
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           NetworkType = "IPV4"|"DUAL"
 #'         ),
 #'         StorageMode = "LOCAL"|"TIERED",
 #'         BrokerCountUpdateInfo = list(
@@ -2790,6 +3007,9 @@ kafka_get_cluster_policy <- function(ClusterArn) {
 #'             )
 #'           )
 #'         ),
+#'         ZookeeperAccess = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
 #'         KafkaVersion = "string",
 #'         LoggingInfo = list(
 #'           BrokerLogs = list(
@@ -2855,7 +3075,8 @@ kafka_get_cluster_policy <- function(ClusterArn) {
 #'                 Enabled = TRUE|FALSE
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           NetworkType = "IPV4"|"DUAL"
 #'         ),
 #'         StorageMode = "LOCAL"|"TIERED",
 #'         BrokerCountUpdateInfo = list(
@@ -3049,7 +3270,8 @@ kafka_list_cluster_operations_v2 <- function(ClusterArn, MaxResults = NULL, Next
 #'                 Enabled = TRUE|FALSE
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           NetworkType = "IPV4"|"DUAL"
 #'         ),
 #'         ZoneIds = list(
 #'           "string"
@@ -3254,7 +3476,8 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
 #'                   Enabled = TRUE|FALSE
 #'                 )
 #'               )
-#'             )
+#'             ),
+#'             NetworkType = "IPV4"|"DUAL"
 #'           ),
 #'           ZoneIds = list(
 #'             "string"
@@ -3347,6 +3570,9 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
 #'               Enabled = TRUE|FALSE
 #'             )
 #'           )
+#'         ),
+#'         ConnectivityInfo = list(
+#'           NetworkType = "IPV4"|"DUAL"
 #'         )
 #'       )
 #'     )
@@ -3713,6 +3939,10 @@ kafka_list_nodes <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
 #'         list(
 #'           AmazonMskCluster = list(
 #'             MskClusterArn = "string"
+#'           ),
+#'           ApacheKafkaCluster = list(
+#'             ApacheKafkaClusterId = "string",
+#'             BootstrapBrokerString = "string"
 #'           ),
 #'           KafkaClusterAlias = "string"
 #'         )
@@ -4592,13 +4822,15 @@ kafka_update_configuration <- function(Arn, Description = NULL, ServerProperties
 #' Updates the cluster's connectivity configuration.
 #'
 #' @usage
-#' kafka_update_connectivity(ClusterArn, ConnectivityInfo, CurrentVersion)
+#' kafka_update_connectivity(ClusterArn, ConnectivityInfo, CurrentVersion,
+#'   ZookeeperAccess)
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the configuration.
-#' @param ConnectivityInfo &#91;required&#93; Information about the broker access configuration.
+#' @param ConnectivityInfo Information about the broker access configuration.
 #' @param CurrentVersion &#91;required&#93; The version of the MSK cluster to update. Cluster versions aren't simple
 #' numbers. You can describe an MSK cluster to find its version. When this
 #' update operation is successful, it generates a new cluster version.
+#' @param ZookeeperAccess Access control settings for zookeeper
 #'
 #' @return
 #' A list with the following syntax:
@@ -4631,9 +4863,13 @@ kafka_update_configuration <- function(Arn, Description = NULL, ServerProperties
 #'           Enabled = TRUE|FALSE
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     NetworkType = "IPV4"|"DUAL"
 #'   ),
-#'   CurrentVersion = "string"
+#'   CurrentVersion = "string",
+#'   ZookeeperAccess = list(
+#'     Enabled = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -4642,7 +4878,7 @@ kafka_update_configuration <- function(Arn, Description = NULL, ServerProperties
 #' @rdname kafka_update_connectivity
 #'
 #' @aliases kafka_update_connectivity
-kafka_update_connectivity <- function(ClusterArn, ConnectivityInfo, CurrentVersion) {
+kafka_update_connectivity <- function(ClusterArn, ConnectivityInfo = NULL, CurrentVersion, ZookeeperAccess = NULL) {
   op <- new_operation(
     name = "UpdateConnectivity",
     http_method = "PUT",
@@ -4651,7 +4887,7 @@ kafka_update_connectivity <- function(ClusterArn, ConnectivityInfo, CurrentVersi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kafka$update_connectivity_input(ClusterArn = ClusterArn, ConnectivityInfo = ConnectivityInfo, CurrentVersion = CurrentVersion)
+  input <- .kafka$update_connectivity_input(ClusterArn = ClusterArn, ConnectivityInfo = ConnectivityInfo, CurrentVersion = CurrentVersion, ZookeeperAccess = ZookeeperAccess)
   output <- .kafka$update_connectivity_output()
   config <- get_config()
   svc <- .kafka$service(config, op)
@@ -4940,15 +5176,19 @@ kafka_update_rebalancing <- function(ClusterArn, CurrentVersion, Rebalancing) {
 #'
 #' @usage
 #' kafka_update_replication_info(ConsumerGroupReplication, CurrentVersion,
-#'   ReplicatorArn, SourceKafkaClusterArn, TargetKafkaClusterArn,
-#'   TopicReplication)
+#'   ReplicatorArn, SourceKafkaClusterArn, SourceKafkaClusterId,
+#'   TargetKafkaClusterArn, TargetKafkaClusterId, TopicReplication,
+#'   LogDelivery)
 #'
 #' @param ConsumerGroupReplication Updated consumer group replication information.
 #' @param CurrentVersion &#91;required&#93; Current replicator version.
 #' @param ReplicatorArn &#91;required&#93; The Amazon Resource Name (ARN) of the replicator to be updated.
-#' @param SourceKafkaClusterArn &#91;required&#93; The ARN of the source Kafka cluster.
-#' @param TargetKafkaClusterArn &#91;required&#93; The ARN of the target Kafka cluster.
+#' @param SourceKafkaClusterArn The ARN of the source Kafka cluster.
+#' @param SourceKafkaClusterId The ID of the source Kafka cluster.
+#' @param TargetKafkaClusterArn The ARN of the target Kafka cluster.
+#' @param TargetKafkaClusterId The ID of the target Kafka cluster.
 #' @param TopicReplication Updated topic replication information.
+#' @param LogDelivery Configuration for delivering replicator logs to customer destinations.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4975,7 +5215,9 @@ kafka_update_rebalancing <- function(ClusterArn, CurrentVersion, Rebalancing) {
 #'   CurrentVersion = "string",
 #'   ReplicatorArn = "string",
 #'   SourceKafkaClusterArn = "string",
+#'   SourceKafkaClusterId = "string",
 #'   TargetKafkaClusterArn = "string",
+#'   TargetKafkaClusterId = "string",
 #'   TopicReplication = list(
 #'     CopyAccessControlListsForTopics = TRUE|FALSE,
 #'     CopyTopicConfigurations = TRUE|FALSE,
@@ -4986,6 +5228,23 @@ kafka_update_rebalancing <- function(ClusterArn, CurrentVersion, Rebalancing) {
 #'     TopicsToReplicate = list(
 #'       "string"
 #'     )
+#'   ),
+#'   LogDelivery = list(
+#'     ReplicatorLogDelivery = list(
+#'       CloudWatchLogs = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroup = "string"
+#'       ),
+#'       Firehose = list(
+#'         Enabled = TRUE|FALSE,
+#'         DeliveryStream = "string"
+#'       ),
+#'       S3 = list(
+#'         Enabled = TRUE|FALSE,
+#'         Bucket = "string",
+#'         Prefix = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -4995,7 +5254,7 @@ kafka_update_rebalancing <- function(ClusterArn, CurrentVersion, Rebalancing) {
 #' @rdname kafka_update_replication_info
 #'
 #' @aliases kafka_update_replication_info
-kafka_update_replication_info <- function(ConsumerGroupReplication = NULL, CurrentVersion, ReplicatorArn, SourceKafkaClusterArn, TargetKafkaClusterArn, TopicReplication = NULL) {
+kafka_update_replication_info <- function(ConsumerGroupReplication = NULL, CurrentVersion, ReplicatorArn, SourceKafkaClusterArn = NULL, SourceKafkaClusterId = NULL, TargetKafkaClusterArn = NULL, TargetKafkaClusterId = NULL, TopicReplication = NULL, LogDelivery = NULL) {
   op <- new_operation(
     name = "UpdateReplicationInfo",
     http_method = "PUT",
@@ -5004,7 +5263,7 @@ kafka_update_replication_info <- function(ConsumerGroupReplication = NULL, Curre
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kafka$update_replication_info_input(ConsumerGroupReplication = ConsumerGroupReplication, CurrentVersion = CurrentVersion, ReplicatorArn = ReplicatorArn, SourceKafkaClusterArn = SourceKafkaClusterArn, TargetKafkaClusterArn = TargetKafkaClusterArn, TopicReplication = TopicReplication)
+  input <- .kafka$update_replication_info_input(ConsumerGroupReplication = ConsumerGroupReplication, CurrentVersion = CurrentVersion, ReplicatorArn = ReplicatorArn, SourceKafkaClusterArn = SourceKafkaClusterArn, SourceKafkaClusterId = SourceKafkaClusterId, TargetKafkaClusterArn = TargetKafkaClusterArn, TargetKafkaClusterId = TargetKafkaClusterId, TopicReplication = TopicReplication, LogDelivery = LogDelivery)
   output <- .kafka$update_replication_info_output()
   config <- get_config()
   svc <- .kafka$service(config, op)
@@ -5164,3 +5423,60 @@ kafka_update_storage <- function(ClusterArn, CurrentVersion, ProvisionedThroughp
   return(response)
 }
 .kafka$operations$update_storage <- kafka_update_storage
+
+#' Updates the configuration of the specified topic
+#'
+#' @description
+#' Updates the configuration of the specified topic.
+#'
+#' @usage
+#' kafka_update_topic(ClusterArn, TopicName, Configs, PartitionCount)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param TopicName &#91;required&#93; The name of the topic to update configuration for.
+#' @param Configs The new topic configurations encoded as a Base64 string.
+#' @param PartitionCount The new total number of partitions for the topic.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TopicArn = "string",
+#'   TopicName = "string",
+#'   Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_topic(
+#'   ClusterArn = "string",
+#'   TopicName = "string",
+#'   Configs = "string",
+#'   PartitionCount = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_topic
+#'
+#' @aliases kafka_update_topic
+kafka_update_topic <- function(ClusterArn, TopicName, Configs = NULL, PartitionCount = NULL) {
+  op <- new_operation(
+    name = "UpdateTopic",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/topics/{topicName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafka$update_topic_input(ClusterArn = ClusterArn, TopicName = TopicName, Configs = Configs, PartitionCount = PartitionCount)
+  output <- .kafka$update_topic_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_topic <- kafka_update_topic

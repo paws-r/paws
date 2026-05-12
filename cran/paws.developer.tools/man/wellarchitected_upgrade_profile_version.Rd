@@ -15,10 +15,6 @@ wellarchitected_upgrade_profile_version(
 \item{WorkloadId}{[required]}
 
 \item{ProfileArn}{[required] The profile ARN.}
-
-\item{MilestoneName}{}
-
-\item{ClientRequestToken}{}
 }
 \description{
 Upgrade a profile.

@@ -61,7 +61,11 @@ certificate used by \verb{https://keys.server.example.com.}
 
 For more information about obtaining the OIDC provider thumbprint, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html}{Obtaining the thumbprint for an OpenID Connect provider}
-in the \emph{IAM user Guide}.}
+in the \emph{IAM user Guide}.
+
+If your OIDC provider's discovery endpoint and JWKS endpoint
+(\code{jwks_uri}) use different certificates or hosts, include the
+thumbprints for both endpoints in this list.}
 
 \item{Tags}{A list of tags that you want to attach to the new IAM OpenID Connect
 (OIDC) provider. Each tag consists of a key name and an associated

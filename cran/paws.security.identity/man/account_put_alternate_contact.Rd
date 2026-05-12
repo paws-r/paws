@@ -6,15 +6,25 @@
 Services account}
 \usage{
 account_put_alternate_contact(
-  AccountId = NULL,
-  AlternateContactType,
-  EmailAddress,
   Name,
+  Title,
+  EmailAddress,
   PhoneNumber,
-  Title
+  AlternateContactType,
+  AccountId = NULL
 )
 }
 \arguments{
+\item{Name}{[required] Specifies a name for the alternate contact.}
+
+\item{Title}{[required] Specifies a title for the alternate contact.}
+
+\item{EmailAddress}{[required] Specifies an email address for the alternate contact.}
+
+\item{PhoneNumber}{[required] Specifies a phone number for the alternate contact.}
+
+\item{AlternateContactType}{[required] Specifies which alternate contact you want to create or update.}
+
 \item{AccountId}{Specifies the 12 digit account ID number of the Amazon Web Services
 account that you want to access or modify with this operation.
 
@@ -38,16 +48,6 @@ To call this operation on an account that is not a member of an
 organization, then don't specify this parameter, and call the operation
 using an identity belonging to the account whose contacts you wish to
 retrieve or modify.}
-
-\item{AlternateContactType}{[required] Specifies which alternate contact you want to create or update.}
-
-\item{EmailAddress}{[required] Specifies an email address for the alternate contact.}
-
-\item{Name}{[required] Specifies a name for the alternate contact.}
-
-\item{PhoneNumber}{[required] Specifies a phone number for the alternate contact.}
-
-\item{Title}{[required] Specifies a title for the alternate contact.}
 }
 \description{
 Modifies the specified alternate contact attached to an Amazon Web Services account.

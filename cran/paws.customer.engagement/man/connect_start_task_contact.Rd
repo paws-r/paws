@@ -17,7 +17,8 @@ connect_start_task_contact(
   TaskTemplateId = NULL,
   QuickConnectId = NULL,
   RelatedContactId = NULL,
-  SegmentAttributes = NULL
+  SegmentAttributes = NULL,
+  Attachments = NULL
 )
 }
 \arguments{
@@ -100,6 +101,9 @@ expiring, with \code{SegmentAttributes} like \{
 To set the created by user, a valid AgentResourceId must be supplied,
 with \code{SegmentAttributes} like \{
 \verb{"connect:CreatedByUser" \\\{ "ValueString": "arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/agent/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"\\\}\\\}\\\}}.}
+
+\item{Attachments}{List of S3 presigned URLs of task attachments and their file name. You
+can have a maximum of 5 attachments per task.}
 }
 \description{
 Initiates a flow to start a new task contact. For more information about task contacts, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/tasks.html}{Concepts: Tasks in Amazon Connect} in the \emph{Amazon Connect Administrator Guide}.

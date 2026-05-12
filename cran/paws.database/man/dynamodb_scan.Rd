@@ -122,8 +122,6 @@ In a parallel scan, a \code{\link[=dynamodb_scan]{scan}} request that includes
 \code{\link[=dynamodb_scan]{scan}} returned the corresponding value of
 \code{LastEvaluatedKey}.}
 
-\item{ReturnConsumedCapacity}{}
-
 \item{TotalSegments}{For a parallel \code{\link[=dynamodb_scan]{scan}} request, \code{TotalSegments}
 represents the total number of segments into which the
 \code{\link[=dynamodb_scan]{scan}} operation will be divided. The value of

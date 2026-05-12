@@ -26,8 +26,6 @@ Identity Provider.
 
 Do not use \code{CognitoConfig} if you specify values for \code{OidcConfig}.}
 
-\item{SourceIpConfig}{}
-
 \item{WorkforceName}{[required] The name of the private workforce.}
 
 \item{Tags}{An array of key-value pairs that contain metadata to help you categorize

@@ -4,7 +4,7 @@
 \alias{cloudfront_create_function}
 \title{Creates a CloudFront function}
 \usage{
-cloudfront_create_function(Name, FunctionConfig, FunctionCode)
+cloudfront_create_function(Name, FunctionConfig, FunctionCode, Tags = NULL)
 }
 \arguments{
 \item{Name}{[required] A name to identify the function.}

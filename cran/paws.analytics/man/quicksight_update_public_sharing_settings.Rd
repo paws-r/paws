@@ -15,7 +15,7 @@ quicksight_update_public_sharing_settings(
 Sight subscription.}
 
 \item{PublicSharingEnabled}{A Boolean value that indicates whether public sharing is turned on for
-an Quick Suite account.}
+an Quick account.}
 }
 \description{
 This API controls public sharing settings for your entire Quick Sight account, affecting data security and access. When you enable public sharing:

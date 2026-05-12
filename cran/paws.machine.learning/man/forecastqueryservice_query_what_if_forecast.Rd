@@ -30,7 +30,7 @@ dataset, specify the following:
 \code{{"item_id" : "client_21"}}
 
 To get the full what-if forecast, use the
-\href{https://docs.aws.amazon.com/en_us/forecast/latest/dg/API_CreateWhatIfForecastExport.html}{CreateForecastExportJob}
+\href{https://docs.aws.amazon.com/forecast/latest/dg/API_CreateWhatIfForecastExport.html}{CreateForecastExportJob}
 operation.}
 
 \item{NextToken}{If the result of the previous request was truncated, the response

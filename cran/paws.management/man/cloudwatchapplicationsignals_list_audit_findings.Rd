@@ -51,6 +51,12 @@ Application Signals RED metrics during the Analysis phase
 \item \code{log} - LogAuditor: Extracts insights from application logs,
 categorizing error types and ranking severity by frequency during
 the Analysis phase
+\item \code{change_indicator} - ChangeIndicatorAuditor: Detects change events
+(deployments, configuration changes) that occurred within 10 minutes
+before and during a detected anomaly, and surfaces them as findings
+with deployment timestamps in the Analysis phase. When changes are
+detected, the \code{top_contributor} auditor skips its analysis to avoid
+redundancy.
 }
 
 \code{InitAuditor} and \code{Summarizer} auditors are not configurable as they are

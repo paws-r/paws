@@ -5,40 +5,40 @@
 \title{Creates an Amazon DataZone domain}
 \usage{
 datazone_create_domain(
-  clientToken = NULL,
-  description = NULL,
-  domainExecutionRole,
-  domainVersion = NULL,
-  kmsKeyIdentifier = NULL,
   name,
-  serviceRole = NULL,
+  description = NULL,
   singleSignOn = NULL,
-  tags = NULL
+  domainExecutionRole = NULL,
+  kmsKeyIdentifier = NULL,
+  tags = NULL,
+  domainVersion = NULL,
+  serviceRole = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
+\item{name}{[required] The name of the Amazon DataZone domain.}
 
 \item{description}{The description of the Amazon DataZone domain.}
 
-\item{domainExecutionRole}{[required] The domain execution role that is created when an Amazon DataZone domain
+\item{singleSignOn}{The single-sign on configuration of the Amazon DataZone domain.}
+
+\item{domainExecutionRole}{The domain execution role that is created when an Amazon DataZone domain
 is created. The domain execution role is created in the Amazon Web
 Services account that houses the Amazon DataZone domain.}
-
-\item{domainVersion}{The version of the domain that is created.}
 
 \item{kmsKeyIdentifier}{The identifier of the Amazon Web Services Key Management Service (KMS)
 key that is used to encrypt the Amazon DataZone domain, metadata, and
 reporting data.}
 
-\item{name}{[required] The name of the Amazon DataZone domain.}
+\item{tags}{The tags specified for the Amazon DataZone domain.}
+
+\item{domainVersion}{The version of the domain that is created.}
 
 \item{serviceRole}{The service role of the domain that is created.}
 
-\item{singleSignOn}{The single-sign on configuration of the Amazon DataZone domain.}
-
-\item{tags}{The tags specified for the Amazon DataZone domain.}
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Creates an Amazon DataZone domain.

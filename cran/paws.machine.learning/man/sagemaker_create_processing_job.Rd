@@ -62,8 +62,6 @@ responsibility model, you are responsible for any potential exposure,
 unauthorized access, or compromise of your sensitive data if caused by
 security-sensitive information included in the request tag variable or
 plain text fields.}
-
-\item{ExperimentConfig}{}
 }
 \description{
 Creates a processing job.

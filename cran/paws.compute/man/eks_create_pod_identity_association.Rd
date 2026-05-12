@@ -13,7 +13,8 @@ eks_create_pod_identity_association(
   clientRequestToken = NULL,
   tags = NULL,
   disableSessionTags = NULL,
-  targetRoleArn = NULL
+  targetRoleArn = NULL,
+  policy = NULL
 )
 }
 \arguments{
@@ -93,6 +94,24 @@ roles in the \emph{IAM role} and \emph{Target IAM role} fields, EKS will perform
 role chaining to ensure your application gets the required permissions.
 This means Role A will assume Role B, allowing your Pods to securely
 access resources like S3 buckets in the target account.}
+
+\item{policy}{An optional IAM policy in JSON format (as an escaped string) that
+applies additional restrictions to this pod identity association beyond
+the IAM policies attached to the IAM role. This policy is applied as the
+intersection of the role's policies and this policy, allowing you to
+reduce the permissions that applications in the pods can use. Use this
+policy to enforce least privilege access while still leveraging a shared
+IAM role across multiple applications.
+
+\strong{Important considerations}
+\itemize{
+\item \strong{Session tags:} When using this policy, \code{disableSessionTags} must
+be set to \code{true}.
+\item \strong{Target role permissions:} If you specify both a \code{TargetRoleArn}
+and a policy, the policy restrictions apply only to the target
+role's permissions, not to the initial role used for assuming the
+target role.
+}}
 }
 \description{
 Creates an EKS Pod Identity association between a service account in an Amazon EKS cluster and an IAM role with \emph{EKS Pod Identity}. Use EKS Pod Identity to give temporary IAM credentials to Pods and the credentials are rotated automatically.

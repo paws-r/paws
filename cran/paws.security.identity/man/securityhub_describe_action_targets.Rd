@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_describe_action_targets}
 \alias{securityhub_describe_action_targets}
-\title{Returns a list of the custom action targets in Security Hub in your
+\title{Returns a list of the custom action targets in Security Hub CSPM in your
 account}
 \usage{
 securityhub_describe_action_targets(
@@ -26,7 +26,7 @@ response.}
 \item{MaxResults}{The maximum number of results to return.}
 }
 \description{
-Returns a list of the custom action targets in Security Hub in your account.
+Returns a list of the custom action targets in Security Hub CSPM in your account.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_describe_action_targets/} for full documentation.
 }

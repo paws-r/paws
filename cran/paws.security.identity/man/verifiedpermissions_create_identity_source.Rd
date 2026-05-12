@@ -33,7 +33,17 @@ operation again regardless of the value of \code{ClientToken}.}
 \item{policyStoreId}{[required] Specifies the ID of the policy store in which you want to store this
 identity source. Only policies and requests made using this policy store
 can reference identities from the identity provider configured in the
-new identity source.}
+new identity source.
+
+To specify a policy store, use its ID or alias name. When using an alias
+name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use
+\code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
 
 \item{configuration}{[required] Specifies the details required to communicate with the identity provider
 (IdP) associated with this identity source.}

@@ -246,12 +246,27 @@ vpclattice_create_resource_configuration <- function(name, type, portRanges = NU
 #' address type of the client or the VPC endpoint through which the
 #' resource is accessed.
 #' @param ipv4AddressesPerEni The number of IPv4 addresses in each ENI for the resource gateway.
+#' @param resourceConfigDnsResolution Indicates how DNS is resolved for resource configurations associated to
+#' this resource gateway. ResourceConfigDnsResolution is set at creation
+#' time and cannot be changed.
+#' 
+#' -   `IN_VPC` - DNS resolution occurs privately within the resource
+#'     gateway's VPC. DNS queries for resources behind this resource
+#'     gateway resolve using the DNS resolvers defined in the VPC's DHCP
+#'     option sets. Use this when your resource domain names are hosted in
+#'     private Route 53 hosted zones or on-premises DNS servers reachable
+#'     from the VPC.
+#' 
+#' -   `PUBLIC` - DNS resolution occurs against public DNS resolvers. DNS
+#'     queries for resources behind this resource gateway resolve using
+#'     standard public DNS. Use this when your resource domain names are
+#'     publicly resolvable.
 #' @param tags The tags for the resource gateway.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_create_resource_gateway
-vpclattice_create_resource_gateway <- function(clientToken = NULL, name, vpcIdentifier = NULL, subnetIds = NULL, securityGroupIds = NULL, ipAddressType = NULL, ipv4AddressesPerEni = NULL, tags = NULL) {
+vpclattice_create_resource_gateway <- function(clientToken = NULL, name, vpcIdentifier = NULL, subnetIds = NULL, securityGroupIds = NULL, ipAddressType = NULL, ipv4AddressesPerEni = NULL, resourceConfigDnsResolution = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateResourceGateway",
     http_method = "POST",
@@ -260,7 +275,7 @@ vpclattice_create_resource_gateway <- function(clientToken = NULL, name, vpcIden
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_resource_gateway_input(clientToken = clientToken, name = name, vpcIdentifier = vpcIdentifier, subnetIds = subnetIds, securityGroupIds = securityGroupIds, ipAddressType = ipAddressType, ipv4AddressesPerEni = ipv4AddressesPerEni, tags = tags)
+  input <- .vpclattice$create_resource_gateway_input(clientToken = clientToken, name = name, vpcIdentifier = vpcIdentifier, subnetIds = subnetIds, securityGroupIds = securityGroupIds, ipAddressType = ipAddressType, ipv4AddressesPerEni = ipv4AddressesPerEni, resourceConfigDnsResolution = resourceConfigDnsResolution, tags = tags)
   output <- .vpclattice$create_resource_gateway_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)

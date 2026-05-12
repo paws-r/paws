@@ -53,7 +53,7 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Quick Suite API Reference
+Amazon Quick API Reference
 
 Amazon Quick Sight is a fully managed, serverless business intelligence
 service for the Amazon Web Services Cloud that makes it easy to extend
@@ -172,6 +172,7 @@ manage Amazon Quick Sight.
 \link[paws.analytics:quicksight_describe_analysis_permissions]{describe_analysis_permissions} \tab Provides the read and write permissions for an analysis\cr
 \link[paws.analytics:quicksight_describe_asset_bundle_export_job]{describe_asset_bundle_export_job} \tab Describes an existing export job\cr
 \link[paws.analytics:quicksight_describe_asset_bundle_import_job]{describe_asset_bundle_import_job} \tab Describes an existing import job\cr
+\link[paws.analytics:quicksight_describe_automation_job]{describe_automation_job} \tab Retrieves the status and details of a specified automation job, including its status and outputs\cr
 \link[paws.analytics:quicksight_describe_brand]{describe_brand} \tab Describes a brand\cr
 \link[paws.analytics:quicksight_describe_brand_assignment]{describe_brand_assignment} \tab Describes a brand assignment\cr
 \link[paws.analytics:quicksight_describe_brand_published_version]{describe_brand_published_version} \tab Describes the published version of the brand\cr
@@ -202,7 +203,7 @@ manage Amazon Quick Sight.
 \link[paws.analytics:quicksight_describe_quick_sight_q_search_configuration]{describe_quick_sight_q_search_configuration} \tab Describes the state of a Quick Sight Q Search configuration\cr
 \link[paws.analytics:quicksight_describe_refresh_schedule]{describe_refresh_schedule} \tab Provides a summary of a refresh schedule\cr
 \link[paws.analytics:quicksight_describe_role_custom_permission]{describe_role_custom_permission} \tab Describes all custom permissions that are mapped to a role\cr
-\link[paws.analytics:quicksight_describe_self_upgrade_configuration]{describe_self_upgrade_configuration} \tab Describes the self-upgrade configuration for a Quick Suite account\cr
+\link[paws.analytics:quicksight_describe_self_upgrade_configuration]{describe_self_upgrade_configuration} \tab Describes the self-upgrade configuration for a Quick account\cr
 \link[paws.analytics:quicksight_describe_template]{describe_template} \tab Describes a template's metadata\cr
 \link[paws.analytics:quicksight_describe_template_alias]{describe_template_alias} \tab Describes the template alias for a template\cr
 \link[paws.analytics:quicksight_describe_template_definition]{describe_template_definition} \tab Provides a detailed description of the definition of a template\cr
@@ -216,8 +217,8 @@ manage Amazon Quick Sight.
 \link[paws.analytics:quicksight_describe_topic_refresh_schedule]{describe_topic_refresh_schedule} \tab Deletes a topic refresh schedule\cr
 \link[paws.analytics:quicksight_describe_user]{describe_user} \tab Returns information about a user, given the user name\cr
 \link[paws.analytics:quicksight_describe_vpc_connection]{describe_vpc_connection} \tab Describes a VPC connection\cr
-\link[paws.analytics:quicksight_generate_embed_url_for_anonymous_user]{generate_embed_url_for_anonymous_user} \tab Generates an embed URL that you can use to embed an Amazon Quick Suite dashboard or visual in your website, without having to register any reader users\cr
-\link[paws.analytics:quicksight_generate_embed_url_for_registered_user]{generate_embed_url_for_registered_user} \tab Generates an embed URL that you can use to embed an Amazon Quick Suite experience in your website\cr
+\link[paws.analytics:quicksight_generate_embed_url_for_anonymous_user]{generate_embed_url_for_anonymous_user} \tab Generates an embed URL that you can use to embed an Amazon Quick dashboard or visual in your website, without having to register any reader users\cr
+\link[paws.analytics:quicksight_generate_embed_url_for_registered_user]{generate_embed_url_for_registered_user} \tab Generates an embed URL that you can use to embed an Amazon Quick experience in your website\cr
 \link[paws.analytics:quicksight_generate_embed_url_for_registered_user_with_identity]{generate_embed_url_for_registered_user_with_identity} \tab Generates an embed URL that you can use to embed an Amazon Quick Sight experience in your website\cr
 \link[paws.analytics:quicksight_get_dashboard_embed_url]{get_dashboard_embed_url} \tab Generates a temporary session URL and authorization code(bearer token) that you can use to embed an Amazon Quick Sight read-only dashboard in your website or application\cr
 \link[paws.analytics:quicksight_get_flow_metadata]{get_flow_metadata} \tab Retrieves the metadata of a flow, not including its definition specifying the steps\cr
@@ -247,7 +248,7 @@ manage Amazon Quick Sight.
 \link[paws.analytics:quicksight_list_namespaces]{list_namespaces} \tab Lists the namespaces for the specified Amazon Web Services account\cr
 \link[paws.analytics:quicksight_list_refresh_schedules]{list_refresh_schedules} \tab Lists the refresh schedules of a dataset\cr
 \link[paws.analytics:quicksight_list_role_memberships]{list_role_memberships} \tab Lists all groups that are associated with a role\cr
-\link[paws.analytics:quicksight_list_self_upgrades]{list_self_upgrades} \tab Lists all self-upgrade requests for a Quick Suite account\cr
+\link[paws.analytics:quicksight_list_self_upgrades]{list_self_upgrades} \tab Lists all self-upgrade requests for a Quick account\cr
 \link[paws.analytics:quicksight_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a resource\cr
 \link[paws.analytics:quicksight_list_template_aliases]{list_template_aliases} \tab Lists all the aliases of a template\cr
 \link[paws.analytics:quicksight_list_templates]{list_templates} \tab Lists all the templates in the current Amazon Quick Sight account\cr
@@ -273,9 +274,10 @@ manage Amazon Quick Sight.
 \link[paws.analytics:quicksight_search_flows]{search_flows} \tab Search for the flows in an Amazon Web Services account\cr
 \link[paws.analytics:quicksight_search_folders]{search_folders} \tab Searches the subfolders in a folder\cr
 \link[paws.analytics:quicksight_search_groups]{search_groups} \tab Use the SearchGroups operation to search groups in a specified Quick Sight namespace using the supplied filters\cr
-\link[paws.analytics:quicksight_search_topics]{search_topics} \tab Searches for any Q topic that exists in an Quick Suite account\cr
+\link[paws.analytics:quicksight_search_topics]{search_topics} \tab Searches for any Q topic that exists in an Quick account\cr
 \link[paws.analytics:quicksight_start_asset_bundle_export_job]{start_asset_bundle_export_job} \tab Starts an Asset Bundle export job\cr
 \link[paws.analytics:quicksight_start_asset_bundle_import_job]{start_asset_bundle_import_job} \tab Starts an Asset Bundle import job\cr
+\link[paws.analytics:quicksight_start_automation_job]{start_automation_job} \tab Starts a new job for a specified automation\cr
 \link[paws.analytics:quicksight_start_dashboard_snapshot_job]{start_dashboard_snapshot_job} \tab Starts an asynchronous job that generates a snapshot of a dashboard's output\cr
 \link[paws.analytics:quicksight_start_dashboard_snapshot_job_schedule]{start_dashboard_snapshot_job_schedule} \tab Starts an asynchronous job that runs an existing dashboard schedule and sends the dashboard snapshot through email\cr
 \link[paws.analytics:quicksight_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Amazon Quick Sight resource\cr
@@ -287,7 +289,7 @@ manage Amazon Quick Sight.
 \link[paws.analytics:quicksight_update_action_connector_permissions]{update_action_connector_permissions} \tab Updates the permissions for an action connector by granting or revoking access for specific users and groups\cr
 \link[paws.analytics:quicksight_update_analysis]{update_analysis} \tab Updates an analysis in Amazon Quick Sight\cr
 \link[paws.analytics:quicksight_update_analysis_permissions]{update_analysis_permissions} \tab Updates the read and write permissions for an analysis\cr
-\link[paws.analytics:quicksight_update_application_with_token_exchange_grant]{update_application_with_token_exchange_grant} \tab Updates an Quick Suite application with a token exchange grant\cr
+\link[paws.analytics:quicksight_update_application_with_token_exchange_grant]{update_application_with_token_exchange_grant} \tab Updates an Quick application with a token exchange grant\cr
 \link[paws.analytics:quicksight_update_brand]{update_brand} \tab Updates a brand\cr
 \link[paws.analytics:quicksight_update_brand_assignment]{update_brand_assignment} \tab Updates a brand assignment\cr
 \link[paws.analytics:quicksight_update_brand_published_version]{update_brand_published_version} \tab Updates the published version of a brand\cr
@@ -315,8 +317,8 @@ manage Amazon Quick Sight.
 \link[paws.analytics:quicksight_update_quick_sight_q_search_configuration]{update_quick_sight_q_search_configuration} \tab Updates the state of a Quick Sight Q Search configuration\cr
 \link[paws.analytics:quicksight_update_refresh_schedule]{update_refresh_schedule} \tab Updates a refresh schedule for a dataset\cr
 \link[paws.analytics:quicksight_update_role_custom_permission]{update_role_custom_permission} \tab Updates the custom permissions that are associated with a role\cr
-\link[paws.analytics:quicksight_update_self_upgrade]{update_self_upgrade} \tab Updates a self-upgrade request for a Quick Suite user by approving, denying, or verifying the request\cr
-\link[paws.analytics:quicksight_update_self_upgrade_configuration]{update_self_upgrade_configuration} \tab Updates the self-upgrade configuration for a Quick Suite account\cr
+\link[paws.analytics:quicksight_update_self_upgrade]{update_self_upgrade} \tab Updates a self-upgrade request for a Quick user by approving, denying, or verifying the request\cr
+\link[paws.analytics:quicksight_update_self_upgrade_configuration]{update_self_upgrade_configuration} \tab Updates the self-upgrade configuration for a Quick account\cr
 \link[paws.analytics:quicksight_update_spice_capacity_configuration]{update_spice_capacity_configuration} \tab Updates the SPICE capacity configuration for a Quick Sight account\cr
 \link[paws.analytics:quicksight_update_template]{update_template} \tab Updates a template from an existing Amazon Quick Sight analysis or another template\cr
 \link[paws.analytics:quicksight_update_template_alias]{update_template_alias} \tab Updates the template alias of a template\cr

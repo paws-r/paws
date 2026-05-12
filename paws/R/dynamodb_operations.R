@@ -1077,7 +1077,7 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
 #' version 2019.11.21 (Current), see [Upgrading global
-#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/).
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #' 
 #' If you want to add a new replica table to a global table, each of the
 #' following conditions must be true:
@@ -1133,6 +1133,7 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #'       list(
 #'         RegionName = "string",
 #'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
+#'         ReplicaArn = "string",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -1171,7 +1172,8 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #'           LastUpdateDateTime = as.POSIXct(
 #'             "2015-01-01"
 #'           )
-#'         )
+#'         ),
+#'         GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES"
 #'       )
 #'     ),
 #'     GlobalTableArn = "string",
@@ -1249,13 +1251,14 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'   LocalSecondaryIndexes, GlobalSecondaryIndexes, BillingMode,
 #'   ProvisionedThroughput, StreamSpecification, SSESpecification, Tags,
 #'   TableClass, DeletionProtectionEnabled, WarmThroughput, ResourcePolicy,
-#'   OnDemandThroughput)
+#'   OnDemandThroughput, GlobalTableSourceArn,
+#'   GlobalTableSettingsReplicationMode)
 #'
-#' @param AttributeDefinitions &#91;required&#93; An array of attributes that describe the key schema for the table and
+#' @param AttributeDefinitions An array of attributes that describe the key schema for the table and
 #' indexes.
 #' @param TableName &#91;required&#93; The name of the table to create. You can also provide the Amazon
 #' Resource Name (ARN) of the table in this parameter.
-#' @param KeySchema &#91;required&#93; Specifies the attributes that make up the primary key for a table or an
+#' @param KeySchema Specifies the attributes that make up the primary key for a table or an
 #' index. The attributes in `KeySchema` must also be defined in the
 #' `AttributeDefinitions` array. For more information, see [Data
 #' Model](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.html)
@@ -1341,7 +1344,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'     only for this table.
 #' 
 #' -   `KeySchema` - Specifies the key schema for the global secondary
-#'     index.
+#'     index. Each global secondary index supports up to 4 partition keys
+#'     and up to 4 sort keys.
 #' 
 #' -   `Projection` - Specifies attributes that are copied (projected) from
 #'     the table into the index. These are in addition to the primary key
@@ -1448,6 +1452,12 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @param OnDemandThroughput Sets the maximum number of read and write units for the specified table
 #' in on-demand capacity mode. If you use this parameter, you must specify
 #' `MaxReadRequestUnits`, `MaxWriteRequestUnits`, or both.
+#' @param GlobalTableSourceArn The Amazon Resource Name (ARN) of the source table used for the creation
+#' of a multi-account global table.
+#' @param GlobalTableSettingsReplicationMode Controls the settings synchronization mode for the global table. For
+#' multi-account global tables, this parameter is required and the only
+#' supported value is ENABLED. For same-account global tables, this
+#' parameter is set to ENABLED_WITH_OVERRIDES.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1565,6 +1575,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'       list(
 #'         RegionName = "string",
 #'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
+#'         ReplicaArn = "string",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -1603,7 +1614,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'           LastUpdateDateTime = as.POSIXct(
 #'             "2015-01-01"
 #'           )
-#'         )
+#'         ),
+#'         GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES"
 #'       )
 #'     ),
 #'     GlobalTableWitnesses = list(
@@ -1612,6 +1624,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'         WitnessStatus = "CREATING"|"DELETING"|"ACTIVE"
 #'       )
 #'     ),
+#'     GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES",
 #'     RestoreSummary = list(
 #'       SourceBackupArn = "string",
 #'       SourceTableArn = "string",
@@ -1748,7 +1761,9 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'   OnDemandThroughput = list(
 #'     MaxReadRequestUnits = 123,
 #'     MaxWriteRequestUnits = 123
-#'   )
+#'   ),
+#'   GlobalTableSourceArn = "string",
+#'   GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES"
 #' )
 #' ```
 #'
@@ -1789,7 +1804,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @rdname dynamodb_create_table
 #'
 #' @aliases dynamodb_create_table
-dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, WarmThroughput = NULL, ResourcePolicy = NULL, OnDemandThroughput = NULL) {
+dynamodb_create_table <- function(AttributeDefinitions = NULL, TableName, KeySchema = NULL, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, WarmThroughput = NULL, ResourcePolicy = NULL, OnDemandThroughput = NULL, GlobalTableSourceArn = NULL, GlobalTableSettingsReplicationMode = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
@@ -1798,7 +1813,7 @@ dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, Lo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, WarmThroughput = WarmThroughput, ResourcePolicy = ResourcePolicy, OnDemandThroughput = OnDemandThroughput)
+  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, WarmThroughput = WarmThroughput, ResourcePolicy = ResourcePolicy, OnDemandThroughput = OnDemandThroughput, GlobalTableSourceArn = GlobalTableSourceArn, GlobalTableSettingsReplicationMode = GlobalTableSettingsReplicationMode)
   output <- .dynamodb$create_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config, op)
@@ -2577,6 +2592,7 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'       list(
 #'         RegionName = "string",
 #'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
+#'         ReplicaArn = "string",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -2615,7 +2631,8 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'           LastUpdateDateTime = as.POSIXct(
 #'             "2015-01-01"
 #'           )
-#'         )
+#'         ),
+#'         GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES"
 #'       )
 #'     ),
 #'     GlobalTableWitnesses = list(
@@ -2624,6 +2641,7 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'         WitnessStatus = "CREATING"|"DELETING"|"ACTIVE"
 #'       )
 #'     ),
+#'     GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES",
 #'     RestoreSummary = list(
 #'       SourceBackupArn = "string",
 #'       SourceTableArn = "string",
@@ -3163,7 +3181,7 @@ dynamodb_describe_export <- function(ExportArn) {
 #' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
 #' version 2019.11.21 (Current), see [Upgrading global
-#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/).
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #'
 #' @usage
 #' dynamodb_describe_global_table(GlobalTableName)
@@ -3179,6 +3197,7 @@ dynamodb_describe_export <- function(ExportArn) {
 #'       list(
 #'         RegionName = "string",
 #'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
+#'         ReplicaArn = "string",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -3217,7 +3236,8 @@ dynamodb_describe_export <- function(ExportArn) {
 #'           LastUpdateDateTime = as.POSIXct(
 #'             "2015-01-01"
 #'           )
-#'         )
+#'         ),
+#'         GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES"
 #'       )
 #'     ),
 #'     GlobalTableArn = "string",
@@ -3278,7 +3298,7 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
 #' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
 #' version 2019.11.21 (Current), see [Upgrading global
-#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/).
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #'
 #' @usage
 #' dynamodb_describe_global_table_settings(GlobalTableName)
@@ -3888,6 +3908,7 @@ dynamodb_describe_limits <- function() {
 #'       list(
 #'         RegionName = "string",
 #'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
+#'         ReplicaArn = "string",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -3926,7 +3947,8 @@ dynamodb_describe_limits <- function() {
 #'           LastUpdateDateTime = as.POSIXct(
 #'             "2015-01-01"
 #'           )
-#'         )
+#'         ),
+#'         GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES"
 #'       )
 #'     ),
 #'     GlobalTableWitnesses = list(
@@ -3935,6 +3957,7 @@ dynamodb_describe_limits <- function() {
 #'         WitnessStatus = "CREATING"|"DELETING"|"ACTIVE"
 #'       )
 #'     ),
+#'     GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES",
 #'     RestoreSummary = list(
 #'       SourceBackupArn = "string",
 #'       SourceTableArn = "string",
@@ -4708,7 +4731,7 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' 
 #' If you submit a request with the same client token but a change in other
 #' parameters within the 8-hour idempotency window, DynamoDB returns an
-#' `ImportConflictException`.
+#' `ExportConflictException`.
 #' @param S3Bucket &#91;required&#93; The name of the Amazon S3 bucket to export the snapshot to.
 #' @param S3BucketOwner The ID of the Amazon Web Services account that owns the bucket the
 #' export will be stored in.
@@ -5558,10 +5581,12 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
 }
 .dynamodb$operations$list_contributor_insights <- dynamodb_list_contributor_insights
 
-#' Lists completed exports within the past 90 days
+#' Lists completed exports within the past 90 days, in reverse alphanumeric
+#' order of ExportArn
 #'
 #' @description
-#' Lists completed exports within the past 90 days.
+#' Lists completed exports within the past 90 days, in reverse alphanumeric
+#' order of `ExportArn`.
 #'
 #' @usage
 #' dynamodb_list_exports(TableArn, MaxResults, NextToken)
@@ -5637,7 +5662,7 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
 #' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
 #' version 2019.11.21 (Current), see [Upgrading global
-#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/).
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #'
 #' @usage
 #' dynamodb_list_global_tables(ExclusiveStartGlobalTableName, Limit,
@@ -5941,6 +5966,10 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' Since every record must contain that attribute, the
 #' `attribute_not_exists` function will only succeed if no matching item
 #' exists.
+#' 
+#' To determine whether [`put_item`][dynamodb_put_item] overwrote an
+#' existing item, use `ReturnValues` set to `ALL_OLD`. If the response
+#' includes the `Attributes` element, an existing item was overwritten.
 #' 
 #' For more information about [`put_item`][dynamodb_put_item], see [Working
 #' with
@@ -7204,6 +7233,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'       list(
 #'         RegionName = "string",
 #'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
+#'         ReplicaArn = "string",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -7242,7 +7272,8 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'           LastUpdateDateTime = as.POSIXct(
 #'             "2015-01-01"
 #'           )
-#'         )
+#'         ),
+#'         GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES"
 #'       )
 #'     ),
 #'     GlobalTableWitnesses = list(
@@ -7251,6 +7282,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'         WitnessStatus = "CREATING"|"DELETING"|"ACTIVE"
 #'       )
 #'     ),
+#'     GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES",
 #'     RestoreSummary = list(
 #'       SourceBackupArn = "string",
 #'       SourceTableArn = "string",
@@ -7574,6 +7606,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'       list(
 #'         RegionName = "string",
 #'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
+#'         ReplicaArn = "string",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -7612,7 +7645,8 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'           LastUpdateDateTime = as.POSIXct(
 #'             "2015-01-01"
 #'           )
-#'         )
+#'         ),
+#'         GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES"
 #'       )
 #'     ),
 #'     GlobalTableWitnesses = list(
@@ -7621,6 +7655,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'         WitnessStatus = "CREATING"|"DELETING"|"ACTIVE"
 #'       )
 #'     ),
+#'     GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES",
 #'     RestoreSummary = list(
 #'       SourceBackupArn = "string",
 #'       SourceTableArn = "string",
@@ -9204,7 +9239,7 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
 #' version 2019.11.21 (Current), see [Upgrading global
-#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/).
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #' 
 #' If you are using global tables [Version
 #' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html)
@@ -9241,6 +9276,7 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #'       list(
 #'         RegionName = "string",
 #'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
+#'         ReplicaArn = "string",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -9279,7 +9315,8 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #'           LastUpdateDateTime = as.POSIXct(
 #'             "2015-01-01"
 #'           )
-#'         )
+#'         ),
+#'         GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES"
 #'       )
 #'     ),
 #'     GlobalTableArn = "string",
@@ -9350,7 +9387,7 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
 #' version 2019.11.21 (Current), see [Upgrading global
-#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/).
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_versions.html).
 #'
 #' @usage
 #' dynamodb_update_global_table_settings(GlobalTableName,
@@ -9731,9 +9768,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #'         if the existing data type is a set of strings, the `Value` must
 #'         also be a set of strings.
 #' 
-#'     The `ADD` action only supports Number and set data types. In
-#'     addition, `ADD` can only be used on top-level attributes, not nested
-#'     attributes.
+#'     The `ADD` action only supports Number and set data types.
 #' 
 #' -   `DELETE` - Deletes an element from a set.
 #' 
@@ -9742,9 +9777,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #'     `[a,b,c]` and the `DELETE` action specifies `[a,c]`, then the final
 #'     attribute value is `[b]`. Specifying an empty set is an error.
 #' 
-#'     The `DELETE` action only supports set data types. In addition,
-#'     `DELETE` can only be used on top-level attributes, not nested
-#'     attributes.
+#'     The `DELETE` action only supports set data types.
 #' 
 #' You can have many actions in a single expression, such as the following:
 #' `SET a=:value1, b=:value2 DELETE :value3, :value4, :value5`
@@ -10210,7 +10243,7 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'   ProvisionedThroughput, GlobalSecondaryIndexUpdates, StreamSpecification,
 #'   SSESpecification, ReplicaUpdates, TableClass, DeletionProtectionEnabled,
 #'   MultiRegionConsistency, GlobalTableWitnessUpdates, OnDemandThroughput,
-#'   WarmThroughput)
+#'   WarmThroughput, GlobalTableSettingsReplicationMode)
 #'
 #' @param AttributeDefinitions An array of attributes that describe the key schema for the table and
 #' indexes. If you are adding a new global secondary index to the table,
@@ -10304,6 +10337,16 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' specify `MaxReadRequestUnits`, `MaxWriteRequestUnits`, or both.
 #' @param WarmThroughput Represents the warm throughput (in read units per second and write units
 #' per second) for updating a table.
+#' @param GlobalTableSettingsReplicationMode Controls the settings replication mode for a global table replica. This
+#' attribute can be defined using UpdateTable operation only on a regional
+#' table with values:
+#' 
+#' -   `ENABLED`: Defines settings replication on a regional table to be
+#'     used as a source table for creating Multi-Account Global Table.
+#' 
+#' -   `DISABLED`: Remove settings replication on a regional table.
+#'     Settings replication needs to be defined to ENABLED again in order
+#'     to create a Multi-Account Global Table using this table.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10421,6 +10464,7 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'       list(
 #'         RegionName = "string",
 #'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"|"REPLICATION_NOT_AUTHORIZED",
+#'         ReplicaArn = "string",
 #'         ReplicaStatusDescription = "string",
 #'         ReplicaStatusPercentProgress = "string",
 #'         KMSMasterKeyId = "string",
@@ -10459,7 +10503,8 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'           LastUpdateDateTime = as.POSIXct(
 #'             "2015-01-01"
 #'           )
-#'         )
+#'         ),
+#'         GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES"
 #'       )
 #'     ),
 #'     GlobalTableWitnesses = list(
@@ -10468,6 +10513,7 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'         WitnessStatus = "CREATING"|"DELETING"|"ACTIVE"
 #'       )
 #'     ),
+#'     GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES",
 #'     RestoreSummary = list(
 #'       SourceBackupArn = "string",
 #'       SourceTableArn = "string",
@@ -10656,7 +10702,8 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'   WarmThroughput = list(
 #'     ReadUnitsPerSecond = 123,
 #'     WriteUnitsPerSecond = 123
-#'   )
+#'   ),
+#'   GlobalTableSettingsReplicationMode = "ENABLED"|"DISABLED"|"ENABLED_WITH_OVERRIDES"
 #' )
 #' ```
 #'
@@ -10678,7 +10725,7 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' @rdname dynamodb_update_table
 #'
 #' @aliases dynamodb_update_table
-dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, MultiRegionConsistency = NULL, GlobalTableWitnessUpdates = NULL, OnDemandThroughput = NULL, WarmThroughput = NULL) {
+dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, MultiRegionConsistency = NULL, GlobalTableWitnessUpdates = NULL, OnDemandThroughput = NULL, WarmThroughput = NULL, GlobalTableSettingsReplicationMode = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
@@ -10687,7 +10734,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, MultiRegionConsistency = MultiRegionConsistency, GlobalTableWitnessUpdates = GlobalTableWitnessUpdates, OnDemandThroughput = OnDemandThroughput, WarmThroughput = WarmThroughput)
+  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, MultiRegionConsistency = MultiRegionConsistency, GlobalTableWitnessUpdates = GlobalTableWitnessUpdates, OnDemandThroughput = OnDemandThroughput, WarmThroughput = WarmThroughput, GlobalTableSettingsReplicationMode = GlobalTableSettingsReplicationMode)
   output <- .dynamodb$update_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config, op)

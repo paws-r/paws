@@ -16,10 +16,6 @@ fsx_describe_storage_virtual_machines(
 \item{StorageVirtualMachineIds}{Enter the ID of one or more SVMs that you want to view.}
 
 \item{Filters}{Enter a filter name:value pair to view a select set of SVMs.}
-
-\item{MaxResults}{}
-
-\item{NextToken}{}
 }
 \description{
 Describes one or more Amazon FSx for NetApp ONTAP storage virtual machines (SVMs).

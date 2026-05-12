@@ -19,8 +19,6 @@ the message.}
 \item{ConfigurationSetName}{The name of the configuration set that you want to use to send the
 message.}
 
-\item{Content}{}
-
 \item{DestinationPhoneNumber}{The phone number that you want to send the voice message to.}
 
 \item{OriginationPhoneNumber}{The phone number that Amazon Pinpoint should use to send the voice

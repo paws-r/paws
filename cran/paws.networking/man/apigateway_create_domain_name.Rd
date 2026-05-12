@@ -69,8 +69,6 @@ DomainName.}
 DomainNames that use security policies that start with
 \code{SecurityPolicy_}.}
 
-\item{mutualTlsAuthentication}{}
-
 \item{ownershipVerificationCertificateArn}{The ARN of the public certificate issued by ACM to validate ownership of
 your custom domain. Only required when configuring mutual TLS and using
 an ACM imported or private CA certificate ARN as the

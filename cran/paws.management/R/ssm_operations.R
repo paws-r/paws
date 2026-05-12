@@ -430,11 +430,25 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' ways, for example, by purpose, owner, or environment. Each tag consists
 #' of a key and an optional value, both of which you define.
 #' @param AlarmConfiguration 
+#' @param AssociationDispatchAssumeRole A role used by association to take actions on your behalf. State Manager
+#' will assume this role and call required APIs when dispatching
+#' configurations to nodes. If not specified, [service-linked role for
+#' Systems
+#' Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html)
+#' will be used by default.
+#' 
+#' It is recommended that you define a custom IAM role so that you have
+#' full control of the permissions that State Manager has when taking
+#' actions on your behalf.
+#' 
+#' Service-linked role support in State Manager is being phased out.
+#' Associations relying on service-linked role may require updates in the
+#' future to continue functioning properly.
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_create_association
-ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NULL, Parameters = NULL, Targets = NULL, ScheduleExpression = NULL, OutputLocation = NULL, AssociationName = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, CalendarNames = NULL, TargetLocations = NULL, ScheduleOffset = NULL, Duration = NULL, TargetMaps = NULL, Tags = NULL, AlarmConfiguration = NULL) {
+ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NULL, Parameters = NULL, Targets = NULL, ScheduleExpression = NULL, OutputLocation = NULL, AssociationName = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, CalendarNames = NULL, TargetLocations = NULL, ScheduleOffset = NULL, Duration = NULL, TargetMaps = NULL, Tags = NULL, AlarmConfiguration = NULL, AssociationDispatchAssumeRole = NULL) {
   op <- new_operation(
     name = "CreateAssociation",
     http_method = "POST",
@@ -443,7 +457,7 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssm$create_association_input(Name = Name, DocumentVersion = DocumentVersion, InstanceId = InstanceId, Parameters = Parameters, Targets = Targets, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, AssociationName = AssociationName, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, CalendarNames = CalendarNames, TargetLocations = TargetLocations, ScheduleOffset = ScheduleOffset, Duration = Duration, TargetMaps = TargetMaps, Tags = Tags, AlarmConfiguration = AlarmConfiguration)
+  input <- .ssm$create_association_input(Name = Name, DocumentVersion = DocumentVersion, InstanceId = InstanceId, Parameters = Parameters, Targets = Targets, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, AssociationName = AssociationName, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, CalendarNames = CalendarNames, TargetLocations = TargetLocations, ScheduleOffset = ScheduleOffset, Duration = Duration, TargetMaps = TargetMaps, Tags = Tags, AlarmConfiguration = AlarmConfiguration, AssociationDispatchAssumeRole = AssociationDispatchAssumeRole)
   output <- .ssm$create_association_output()
   config <- get_config()
   svc <- .ssm$service(config, op)
@@ -462,11 +476,25 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #' See [https://www.paws-r-sdk.com/docs/ssm_create_association_batch/](https://www.paws-r-sdk.com/docs/ssm_create_association_batch/) for full documentation.
 #'
 #' @param Entries &#91;required&#93; One or more associations.
+#' @param AssociationDispatchAssumeRole A role used by association to take actions on your behalf. State Manager
+#' will assume this role and call required APIs when dispatching
+#' configurations to nodes. If not specified, [service-linked role for
+#' Systems
+#' Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html)
+#' will be used by default.
+#' 
+#' It is recommended that you define a custom IAM role so that you have
+#' full control of the permissions that State Manager has when taking
+#' actions on your behalf.
+#' 
+#' Service-linked role support in State Manager is being phased out.
+#' Associations relying on service-linked role may require updates in the
+#' future to continue functioning properly.
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_create_association_batch
-ssm_create_association_batch <- function(Entries) {
+ssm_create_association_batch <- function(Entries, AssociationDispatchAssumeRole = NULL) {
   op <- new_operation(
     name = "CreateAssociationBatch",
     http_method = "POST",
@@ -475,7 +503,7 @@ ssm_create_association_batch <- function(Entries) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssm$create_association_batch_input(Entries = Entries)
+  input <- .ssm$create_association_batch_input(Entries = Entries, AssociationDispatchAssumeRole = AssociationDispatchAssumeRole)
   output <- .ssm$create_association_batch_output()
   config <- get_config()
   svc <- .ssm$service(config, op)
@@ -708,12 +736,10 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #'     This type of OpsItem is used by Change Manager for reviewing and
 #'     approving or rejecting change requests.
 #' 
-#'     Amazon Web Services Systems Manager Change Manager will no longer be
-#'     open to new customers starting November 7, 2025. If you would like
-#'     to use Change Manager, sign up prior to that date. Existing
-#'     customers can continue to use the service as normal. For more
-#'     information, see [Amazon Web Services Systems Manager Change Manager
-#'     availability
+#'     Amazon Web Services Systems Manager Change Manager is no longer open
+#'     to new customers. Existing customers can continue to use the service
+#'     as normal. For more information, see [Amazon Web Services Systems
+#'     Manager Change Manager availability
 #'     change](https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html).
 #' @param OperationalData Operational data is custom data that provides useful reference details
 #' about the OpsItem. For example, you can specify log files, error
@@ -4427,11 +4453,11 @@ ssm_list_compliance_summaries <- function(Filters = NULL, NextToken = NULL, MaxR
 }
 .ssm$operations$list_compliance_summaries <- ssm_list_compliance_summaries
 
-#' Amazon Web Services Systems Manager Change Manager will no longer be
-#' open to new customers starting November 7, 2025
+#' Amazon Web Services Systems Manager Change Manager is no longer open to
+#' new customers
 #'
 #' @description
-#' Amazon Web Services Systems Manager Change Manager will no longer be open to new customers starting November 7, 2025. If you would like to use Change Manager, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [Amazon Web Services Systems Manager Change Manager availability change](https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html).
+#' Amazon Web Services Systems Manager Change Manager is no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see [Amazon Web Services Systems Manager Change Manager availability change](https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_list_document_metadata_history/](https://www.paws-r-sdk.com/docs/ssm_list_document_metadata_history/) for full documentation.
 #'
@@ -6108,11 +6134,11 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 }
 .ssm$operations$start_automation_execution <- ssm_start_automation_execution
 
-#' Amazon Web Services Systems Manager Change Manager will no longer be
-#' open to new customers starting November 7, 2025
+#' Amazon Web Services Systems Manager Change Manager is no longer open to
+#' new customers
 #'
 #' @description
-#' Amazon Web Services Systems Manager Change Manager will no longer be open to new customers starting November 7, 2025. If you would like to use Change Manager, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [Amazon Web Services Systems Manager Change Manager availability change](https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html).
+#' Amazon Web Services Systems Manager Change Manager is no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see [Amazon Web Services Systems Manager Change Manager availability change](https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_start_change_request_execution/](https://www.paws-r-sdk.com/docs/ssm_start_change_request_execution/) for full documentation.
 #'
@@ -6552,11 +6578,25 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' @param TargetMaps A key-value mapping of document parameters to target resources. Both
 #' Targets and TargetMaps can't be specified together.
 #' @param AlarmConfiguration 
+#' @param AssociationDispatchAssumeRole A role used by association to take actions on your behalf. State Manager
+#' will assume this role and call required APIs when dispatching
+#' configurations to nodes. If not specified, [service-linked role for
+#' Systems
+#' Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html)
+#' will be used by default.
+#' 
+#' It is recommended that you define a custom IAM role so that you have
+#' full control of the permissions that State Manager has when taking
+#' actions on your behalf.
+#' 
+#' Service-linked role support in State Manager is being phased out.
+#' Associations relying on service-linked role may require updates in the
+#' future to continue functioning properly.
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_update_association
-ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVersion = NULL, ScheduleExpression = NULL, OutputLocation = NULL, Name = NULL, Targets = NULL, AssociationName = NULL, AssociationVersion = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, CalendarNames = NULL, TargetLocations = NULL, ScheduleOffset = NULL, Duration = NULL, TargetMaps = NULL, AlarmConfiguration = NULL) {
+ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVersion = NULL, ScheduleExpression = NULL, OutputLocation = NULL, Name = NULL, Targets = NULL, AssociationName = NULL, AssociationVersion = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, CalendarNames = NULL, TargetLocations = NULL, ScheduleOffset = NULL, Duration = NULL, TargetMaps = NULL, AlarmConfiguration = NULL, AssociationDispatchAssumeRole = NULL) {
   op <- new_operation(
     name = "UpdateAssociation",
     http_method = "POST",
@@ -6565,7 +6605,7 @@ ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVer
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssm$update_association_input(AssociationId = AssociationId, Parameters = Parameters, DocumentVersion = DocumentVersion, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, Name = Name, Targets = Targets, AssociationName = AssociationName, AssociationVersion = AssociationVersion, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, CalendarNames = CalendarNames, TargetLocations = TargetLocations, ScheduleOffset = ScheduleOffset, Duration = Duration, TargetMaps = TargetMaps, AlarmConfiguration = AlarmConfiguration)
+  input <- .ssm$update_association_input(AssociationId = AssociationId, Parameters = Parameters, DocumentVersion = DocumentVersion, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, Name = Name, Targets = Targets, AssociationName = AssociationName, AssociationVersion = AssociationVersion, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, CalendarNames = CalendarNames, TargetLocations = TargetLocations, ScheduleOffset = ScheduleOffset, Duration = Duration, TargetMaps = TargetMaps, AlarmConfiguration = AlarmConfiguration, AssociationDispatchAssumeRole = AssociationDispatchAssumeRole)
   output <- .ssm$update_association_output()
   config <- get_config()
   svc <- .ssm$service(config, op)
@@ -6695,11 +6735,11 @@ ssm_update_document_default_version <- function(Name, DocumentVersion) {
 }
 .ssm$operations$update_document_default_version <- ssm_update_document_default_version
 
-#' Amazon Web Services Systems Manager Change Manager will no longer be
-#' open to new customers starting November 7, 2025
+#' Amazon Web Services Systems Manager Change Manager is no longer open to
+#' new customers
 #'
 #' @description
-#' Amazon Web Services Systems Manager Change Manager will no longer be open to new customers starting November 7, 2025. If you would like to use Change Manager, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [Amazon Web Services Systems Manager Change Manager availability change](https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html).
+#' Amazon Web Services Systems Manager Change Manager is no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see [Amazon Web Services Systems Manager Change Manager availability change](https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_update_document_metadata/](https://www.paws-r-sdk.com/docs/ssm_update_document_metadata/) for full documentation.
 #'

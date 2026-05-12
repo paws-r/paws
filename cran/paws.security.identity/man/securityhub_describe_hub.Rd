@@ -3,7 +3,7 @@
 \name{securityhub_describe_hub}
 \alias{securityhub_describe_hub}
 \title{Returns details about the Hub resource in your account, including the
-HubArn and the time when you enabled Security Hub}
+HubArn and the time when you enabled Security Hub CSPM}
 \usage{
 securityhub_describe_hub(HubArn = NULL)
 }
@@ -11,7 +11,7 @@ securityhub_describe_hub(HubArn = NULL)
 \item{HubArn}{The ARN of the Hub resource to retrieve.}
 }
 \description{
-Returns details about the Hub resource in your account, including the \code{HubArn} and the time when you enabled Security Hub.
+Returns details about the Hub resource in your account, including the \code{HubArn} and the time when you enabled Security Hub CSPM.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_describe_hub/} for full documentation.
 }

@@ -2,8 +2,8 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_disassociate_resource_share}
 \alias{ram_disassociate_resource_share}
-\title{Removes the specified principals or resources from participating in the
-specified resource share}
+\title{Removes the specified principals, resources, or source constraints from
+participating in the specified resource share}
 \usage{
 ram_disassociate_resource_share(
   resourceShareArn,
@@ -37,6 +37,7 @@ of an organization in Organizations, for example:
 \item An ARN of an IAM role, for example:
 \verb{iam::123456789012:role/rolename}
 \item An ARN of an IAM user, for example: \verb{iam::123456789012user/username}
+\item A service principal name, for example: \code{service-id.amazonaws.com}
 }
 
 Not all resource types can be shared with IAM roles and users. For more
@@ -57,11 +58,14 @@ If you retry the operation with the same \code{ClientToken}, but with
 different parameters, the retry fails with an
 \code{IdempotentParameterMismatch} error.}
 
-\item{sources}{Specifies from which source accounts the service principal no longer has
-access to the resources in this resource share.}
+\item{sources}{Specifies source constraints (accounts, ARNs, organization IDs, or
+organization paths) to remove from the resource share. This enables
+granular management of source constraints while maintaining service
+principal associations. At least one source must remain when service
+principals are present.}
 }
 \description{
-Removes the specified principals or resources from participating in the specified resource share.
+Removes the specified principals, resources, or source constraints from participating in the specified resource share.
 
 See \url{https://www.paws-r-sdk.com/docs/ram_disassociate_resource_share/} for full documentation.
 }

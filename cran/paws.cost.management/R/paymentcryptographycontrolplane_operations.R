@@ -46,6 +46,45 @@ paymentcryptographycontrolplane_add_key_replication_regions <- function(KeyIdent
 }
 .paymentcryptographycontrolplane$operations$add_key_replication_regions <- paymentcryptographycontrolplane_add_key_replication_regions
 
+#' Associates a Multi-Party Approval (MPA) team with a protected operation
+#'
+#' @description
+#' Associates a Multi-Party Approval (MPA) team with a protected operation. For more information, see [Multi-Party Approval](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/mpa.html) in the *Amazon Web Services Payment Cryptography User Guide.*
+#'
+#' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_associate_mpa_team/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_associate_mpa_team/) for full documentation.
+#'
+#' @param Action &#91;required&#93; The protected operation to associate with the MPA team. Currently, the
+#' only supported value is `IMPORT_ROOT_PUBLIC_KEY_CERTIFICATE`.
+#' @param MpaTeamArn &#91;required&#93; The ARN of the MPA team to associate with the protected operation.
+#' @param RequesterComment The comment from the requester explaining the reason for the
+#' association.
+#' 
+#' Don't include personal, confidential or sensitive information in this
+#' field. This field may be displayed in plaintext in CloudTrail logs and
+#' other output.
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_associate_mpa_team
+paymentcryptographycontrolplane_associate_mpa_team <- function(Action, MpaTeamArn, RequesterComment = NULL) {
+  op <- new_operation(
+    name = "AssociateMpaTeam",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$associate_mpa_team_input(Action = Action, MpaTeamArn = MpaTeamArn, RequesterComment = RequesterComment)
+  output <- .paymentcryptographycontrolplane$associate_mpa_team_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$associate_mpa_team <- paymentcryptographycontrolplane_associate_mpa_team
+
 #' Creates an alias, or a friendly name, for an Amazon Web Services Payment
 #' Cryptography key
 #'
@@ -223,6 +262,38 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 }
 .paymentcryptographycontrolplane$operations$delete_key <- paymentcryptographycontrolplane_delete_key
 
+#' Removes the resource-based policy attached to an Amazon Web Services
+#' Payment Cryptography key
+#'
+#' @description
+#' Removes the resource-based policy attached to an Amazon Web Services Payment Cryptography key.
+#'
+#' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_delete_resource_policy/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_delete_resource_policy/) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The `KeyARN` of the key whose resource-based policy you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_delete_resource_policy
+paymentcryptographycontrolplane_delete_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$delete_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .paymentcryptographycontrolplane$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$delete_resource_policy <- paymentcryptographycontrolplane_delete_resource_policy
+
 #' Disables Multi-Region key replication settings for the specified Amazon
 #' Web Services Regions in your Amazon Web Services account, preventing new
 #' keys from being automatically replicated to those regions
@@ -260,6 +331,45 @@ paymentcryptographycontrolplane_disable_default_key_replication_regions <- funct
   return(response)
 }
 .paymentcryptographycontrolplane$operations$disable_default_key_replication_regions <- paymentcryptographycontrolplane_disable_default_key_replication_regions
+
+#' Removes the association between a Multi-Party Approval (MPA) team and a
+#' protected operation
+#'
+#' @description
+#' Removes the association between a Multi-Party Approval (MPA) team and a protected operation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_disassociate_mpa_team/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_disassociate_mpa_team/) for full documentation.
+#'
+#' @param Action &#91;required&#93; The protected operation to disassociate from the MPA team. Currently,
+#' the only supported value is `IMPORT_ROOT_PUBLIC_KEY_CERTIFICATE`.
+#' @param RequesterComment The comment from the requester explaining the reason for the
+#' disassociation.
+#' 
+#' Don't include personal, confidential or sensitive information in this
+#' field. This field may be displayed in plaintext in CloudTrail logs and
+#' other output.
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_disassociate_mpa_team
+paymentcryptographycontrolplane_disassociate_mpa_team <- function(Action, RequesterComment = NULL) {
+  op <- new_operation(
+    name = "DisassociateMpaTeam",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$disassociate_mpa_team_input(Action = Action, RequesterComment = RequesterComment)
+  output <- .paymentcryptographycontrolplane$disassociate_mpa_team_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$disassociate_mpa_team <- paymentcryptographycontrolplane_disassociate_mpa_team
 
 #' Enables Multi-Region key replication settings for your Amazon Web
 #' Services account, causing new keys to be automatically replicated to the
@@ -464,6 +574,40 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
 }
 .paymentcryptographycontrolplane$operations$get_key <- paymentcryptographycontrolplane_get_key
 
+#' Returns the Multi-Party Approval (MPA) team association for a protected
+#' operation
+#'
+#' @description
+#' Returns the Multi-Party Approval (MPA) team association for a protected operation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_get_mpa_team_association/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_get_mpa_team_association/) for full documentation.
+#'
+#' @param Action &#91;required&#93; The protected operation whose MPA team association you want to retrieve.
+#' Currently, the only supported value is
+#' `IMPORT_ROOT_PUBLIC_KEY_CERTIFICATE`.
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_get_mpa_team_association
+paymentcryptographycontrolplane_get_mpa_team_association <- function(Action) {
+  op <- new_operation(
+    name = "GetMpaTeamAssociation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$get_mpa_team_association_input(Action = Action)
+  output <- .paymentcryptographycontrolplane$get_mpa_team_association_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$get_mpa_team_association <- paymentcryptographycontrolplane_get_mpa_team_association
+
 #' Gets the export token and the signing key certificate to initiate a
 #' TR-34 key export from Amazon Web Services Payment Cryptography
 #'
@@ -479,11 +623,18 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
 #' @param SigningKeyAlgorithm &#91;required&#93; The signing key algorithm to generate a signing key certificate. This
 #' certificate signs the wrapped key under export within the TR-34 key
 #' block. `RSA_2048` is the only signing key algorithm allowed.
+#' @param ReuseLastGeneratedToken Specifies whether to reuse the existing export token and signing key
+#' certificate. If set to `true` and a valid export token exists for the
+#' same key material type and signing key algorithm with at least 7 days of
+#' remaining validity, the existing token and signing key certificate are
+#' returned. Otherwise, a new export token and signing key certificate are
+#' generated. The default value is `false`, which generates a new export
+#' token and signing key certificate on every call.
 #'
 #' @keywords internal
 #'
 #' @rdname paymentcryptographycontrolplane_get_parameters_for_export
-paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMaterialType, SigningKeyAlgorithm) {
+paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMaterialType, SigningKeyAlgorithm, ReuseLastGeneratedToken = NULL) {
   op <- new_operation(
     name = "GetParametersForExport",
     http_method = "POST",
@@ -492,7 +643,7 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographycontrolplane$get_parameters_for_export_input(KeyMaterialType = KeyMaterialType, SigningKeyAlgorithm = SigningKeyAlgorithm)
+  input <- .paymentcryptographycontrolplane$get_parameters_for_export_input(KeyMaterialType = KeyMaterialType, SigningKeyAlgorithm = SigningKeyAlgorithm, ReuseLastGeneratedToken = ReuseLastGeneratedToken)
   output <- .paymentcryptographycontrolplane$get_parameters_for_export_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config, op)
@@ -524,11 +675,18 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
 #' At this time, `RSA_2048` is the allowed algorithm for TR-34
 #' WrappedKeyBlock import. Additionally, `RSA_2048`, `RSA_3072`, `RSA_4096`
 #' are the allowed algorithms for RSA WrappedKeyCryptogram import.
+#' @param ReuseLastGeneratedToken Specifies whether to reuse the existing import token and wrapping key
+#' certificate. If set to `true` and a valid import token exists for the
+#' same key material type and wrapping key algorithm with at least 7 days
+#' of remaining validity, the existing token and wrapping key certificate
+#' are returned. Otherwise, a new import token and wrapping key certificate
+#' are generated. The default value is `false`, which generates a new
+#' import token and wrapping key certificate on every call.
 #'
 #' @keywords internal
 #'
 #' @rdname paymentcryptographycontrolplane_get_parameters_for_import
-paymentcryptographycontrolplane_get_parameters_for_import <- function(KeyMaterialType, WrappingKeyAlgorithm) {
+paymentcryptographycontrolplane_get_parameters_for_import <- function(KeyMaterialType, WrappingKeyAlgorithm, ReuseLastGeneratedToken = NULL) {
   op <- new_operation(
     name = "GetParametersForImport",
     http_method = "POST",
@@ -537,7 +695,7 @@ paymentcryptographycontrolplane_get_parameters_for_import <- function(KeyMateria
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographycontrolplane$get_parameters_for_import_input(KeyMaterialType = KeyMaterialType, WrappingKeyAlgorithm = WrappingKeyAlgorithm)
+  input <- .paymentcryptographycontrolplane$get_parameters_for_import_input(KeyMaterialType = KeyMaterialType, WrappingKeyAlgorithm = WrappingKeyAlgorithm, ReuseLastGeneratedToken = ReuseLastGeneratedToken)
   output <- .paymentcryptographycontrolplane$get_parameters_for_import_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config, op)
@@ -579,6 +737,39 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 }
 .paymentcryptographycontrolplane$operations$get_public_key_certificate <- paymentcryptographycontrolplane_get_public_key_certificate
 
+#' Returns the resource-based policy attached to an Amazon Web Services
+#' Payment Cryptography key
+#'
+#' @description
+#' Returns the resource-based policy attached to an Amazon Web Services Payment Cryptography key.
+#'
+#' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_get_resource_policy/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_get_resource_policy/) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The `KeyARN` of the key whose resource-based policy you want to
+#' retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_get_resource_policy
+paymentcryptographycontrolplane_get_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$get_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .paymentcryptographycontrolplane$get_resource_policy_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$get_resource_policy <- paymentcryptographycontrolplane_get_resource_policy
+
 #' Imports symmetric keys and public key certificates in PEM format (base64
 #' encoded) into Amazon Web Services Payment Cryptography
 #'
@@ -619,11 +810,16 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' Tagging or untagging an Amazon Web Services Payment Cryptography key can
 #' allow or deny permission to the key.
 #' @param ReplicationRegions 
+#' @param RequesterComment The comment from the requester explaining the reason for the import.
+#' 
+#' Don't include personal, confidential or sensitive information in this
+#' field. This field may be displayed in plaintext in CloudTrail logs and
+#' other output.
 #'
 #' @keywords internal
 #'
 #' @rdname paymentcryptographycontrolplane_import_key
-paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValueAlgorithm = NULL, Enabled = NULL, Tags = NULL, ReplicationRegions = NULL) {
+paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValueAlgorithm = NULL, Enabled = NULL, Tags = NULL, ReplicationRegions = NULL, RequesterComment = NULL) {
   op <- new_operation(
     name = "ImportKey",
     http_method = "POST",
@@ -632,7 +828,7 @@ paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValu
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographycontrolplane$import_key_input(KeyMaterial = KeyMaterial, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Enabled = Enabled, Tags = Tags, ReplicationRegions = ReplicationRegions)
+  input <- .paymentcryptographycontrolplane$import_key_input(KeyMaterial = KeyMaterial, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Enabled = Enabled, Tags = Tags, ReplicationRegions = ReplicationRegions, RequesterComment = RequesterComment)
   output <- .paymentcryptographycontrolplane$import_key_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config, op)
@@ -766,6 +962,39 @@ paymentcryptographycontrolplane_list_tags_for_resource <- function(ResourceArn, 
   return(response)
 }
 .paymentcryptographycontrolplane$operations$list_tags_for_resource <- paymentcryptographycontrolplane_list_tags_for_resource
+
+#' Attaches or replaces a resource-based policy on an Amazon Web Services
+#' Payment Cryptography key
+#'
+#' @description
+#' Attaches or replaces a resource-based policy on an Amazon Web Services Payment Cryptography key. A resource-based policy can grant cross-account access to your key.
+#'
+#' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_put_resource_policy/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_put_resource_policy/) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The `KeyARN` of the key to attach the resource-based policy to.
+#' @param Policy &#91;required&#93; The resource-based policy to attach to the key, in JSON format.
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_put_resource_policy
+paymentcryptographycontrolplane_put_resource_policy <- function(ResourceArn, Policy) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy)
+  output <- .paymentcryptographycontrolplane$put_resource_policy_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$put_resource_policy <- paymentcryptographycontrolplane_put_resource_policy
 
 #' Removes Replication Regions from an existing Amazon Web Services Payment
 #' Cryptography key, disabling the key's availability for cryptographic

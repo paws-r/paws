@@ -17,8 +17,6 @@ mturk_list_assignments_for_hit(
 
 \item{NextToken}{Pagination token}
 
-\item{MaxResults}{}
-
 \item{AssignmentStatuses}{The status of the assignments to return: Submitted | Approved | Rejected}
 }
 \description{

@@ -343,6 +343,7 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #' @param schedule The schedule of the image pipeline.
 #' @param status The status of the image pipeline.
 #' @param tags The tags of the image pipeline.
+#' @param imageTags The tags to be applied to the images produced by this pipeline.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
@@ -356,7 +357,7 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_image_pipeline
-imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRecipeArn = NULL, containerRecipeArn = NULL, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, tags = NULL, clientToken, imageScanningConfiguration = NULL, workflows = NULL, executionRole = NULL, loggingConfiguration = NULL) {
+imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRecipeArn = NULL, containerRecipeArn = NULL, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, tags = NULL, imageTags = NULL, clientToken, imageScanningConfiguration = NULL, workflows = NULL, executionRole = NULL, loggingConfiguration = NULL) {
   op <- new_operation(
     name = "CreateImagePipeline",
     http_method = "PUT",
@@ -365,7 +366,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .imagebuilder$create_image_pipeline_input(name = name, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, tags = tags, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, executionRole = executionRole, loggingConfiguration = loggingConfiguration)
+  input <- .imagebuilder$create_image_pipeline_input(name = name, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, tags = tags, imageTags = imageTags, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, executionRole = executionRole, loggingConfiguration = loggingConfiguration)
   output <- .imagebuilder$create_image_pipeline_output()
   config <- get_config()
   svc <- .imagebuilder$service(config, op)
@@ -1603,6 +1604,8 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 #' @param uri &#91;required&#93; The `uri` of the ISO disk file that's stored in Amazon S3.
 #' @param loggingConfiguration Define logging configuration for the image build process.
 #' @param tags Tags that are attached to image resources created from the import.
+#' @param registerImageOptions Configures Secure Boot and UEFI settings for the imported image.
+#' @param windowsConfiguration Specifies Windows settings for ISO imports.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
@@ -1611,7 +1614,7 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 #' @keywords internal
 #'
 #' @rdname imagebuilder_import_disk_image
-imagebuilder_import_disk_image <- function(name, semanticVersion, description = NULL, platform, osVersion, executionRole = NULL, infrastructureConfigurationArn, uri, loggingConfiguration = NULL, tags = NULL, clientToken) {
+imagebuilder_import_disk_image <- function(name, semanticVersion, description = NULL, platform, osVersion, executionRole = NULL, infrastructureConfigurationArn, uri, loggingConfiguration = NULL, tags = NULL, registerImageOptions = NULL, windowsConfiguration = NULL, clientToken) {
   op <- new_operation(
     name = "ImportDiskImage",
     http_method = "PUT",
@@ -1620,7 +1623,7 @@ imagebuilder_import_disk_image <- function(name, semanticVersion, description = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .imagebuilder$import_disk_image_input(name = name, semanticVersion = semanticVersion, description = description, platform = platform, osVersion = osVersion, executionRole = executionRole, infrastructureConfigurationArn = infrastructureConfigurationArn, uri = uri, loggingConfiguration = loggingConfiguration, tags = tags, clientToken = clientToken)
+  input <- .imagebuilder$import_disk_image_input(name = name, semanticVersion = semanticVersion, description = description, platform = platform, osVersion = osVersion, executionRole = executionRole, infrastructureConfigurationArn = infrastructureConfigurationArn, uri = uri, loggingConfiguration = loggingConfiguration, tags = tags, registerImageOptions = registerImageOptions, windowsConfiguration = windowsConfiguration, clientToken = clientToken)
   output <- .imagebuilder$import_disk_image_output()
   config <- get_config()
   svc <- .imagebuilder$service(config, op)
@@ -2990,11 +2993,12 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #' the pipeline runs.
 #' @param executionRole The name or Amazon Resource Name (ARN) for the IAM role you create that
 #' grants Image Builder access to perform workflow actions.
+#' @param imageTags The tags to be applied to the images produced by this pipeline.
 #'
 #' @keywords internal
 #'
 #' @rdname imagebuilder_update_image_pipeline
-imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = NULL, imageRecipeArn = NULL, containerRecipeArn = NULL, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, clientToken, imageScanningConfiguration = NULL, workflows = NULL, loggingConfiguration = NULL, executionRole = NULL) {
+imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = NULL, imageRecipeArn = NULL, containerRecipeArn = NULL, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, clientToken, imageScanningConfiguration = NULL, workflows = NULL, loggingConfiguration = NULL, executionRole = NULL, imageTags = NULL) {
   op <- new_operation(
     name = "UpdateImagePipeline",
     http_method = "PUT",
@@ -3003,7 +3007,7 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .imagebuilder$update_image_pipeline_input(imagePipelineArn = imagePipelineArn, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, loggingConfiguration = loggingConfiguration, executionRole = executionRole)
+  input <- .imagebuilder$update_image_pipeline_input(imagePipelineArn = imagePipelineArn, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, loggingConfiguration = loggingConfiguration, executionRole = executionRole, imageTags = imageTags)
   output <- .imagebuilder$update_image_pipeline_output()
   config <- get_config()
   svc <- .imagebuilder$service(config, op)

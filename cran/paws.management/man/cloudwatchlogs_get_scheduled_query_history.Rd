@@ -26,8 +26,6 @@ executions with the specified statuses are returned.}
 
 \item{maxResults}{The maximum number of history records to return. Valid range is 1 to
 1000.}
-
-\item{nextToken}{}
 }
 \description{
 Retrieves the execution history of a scheduled query within a specified time range, including query results and destination processing status.

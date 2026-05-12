@@ -8,6 +8,7 @@ redshiftserverless_update_workgroup(
   baseCapacity = NULL,
   configParameters = NULL,
   enhancedVpcRouting = NULL,
+  extraComputeForAutomaticOptimization = NULL,
   ipAddressType = NULL,
   maxCapacity = NULL,
   port = NULL,
@@ -26,13 +27,23 @@ redshiftserverless_update_workgroup(
 \item{configParameters}{An array of parameters to set for advanced control over a database. The
 options are \code{auto_mv}, \code{datestyle}, \code{enable_case_sensitive_identifier},
 \code{enable_user_activity_logging}, \code{query_group}, \code{search_path},
-\code{require_ssl}, \code{use_fips_ssl}, and query monitoring metrics that let you
-define performance boundaries. For more information about query
+\code{require_ssl}, \code{use_fips_ssl}, and either \code{wlm_json_configuration} or
+query monitoring metrics that let you define performance boundaries. You
+can either specify individual query monitoring metrics (such as
+\code{max_scan_row_count}, \code{max_query_execution_time}) or use
+\code{wlm_json_configuration} to define query queues with rules, but not
+both. If you're using \code{wlm_json_configuration}, the maximum size of
+\code{parameterValue} is 8000 characters. For more information about query
 monitoring rules and available metrics, see \href{https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless}{Query monitoring metrics for Amazon Redshift Serverless}.}
 
 \item{enhancedVpcRouting}{The value that specifies whether to turn on enhanced virtual private
 cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 traffic through your VPC.}
+
+\item{extraComputeForAutomaticOptimization}{If \code{true}, allocates additional compute resources for running automatic
+optimization operations.
+
+Default: false}
 
 \item{ipAddressType}{The IP address type that the workgroup supports. Possible values are
 \code{ipv4} and \code{dualstack}.}

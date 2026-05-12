@@ -5,26 +5,26 @@
 \title{Accepts a subscription request to a specific asset}
 \usage{
 datazone_accept_subscription_request(
-  assetPermissions = NULL,
-  assetScopes = NULL,
-  decisionComment = NULL,
   domainIdentifier,
-  identifier
+  identifier,
+  decisionComment = NULL,
+  assetScopes = NULL,
+  assetPermissions = NULL
 )
 }
 \arguments{
-\item{assetPermissions}{The asset permissions of the accept subscription request.}
-
-\item{assetScopes}{The asset scopes of the accept subscription request.}
-
-\item{decisionComment}{A description that specifies the reason for accepting the specified
-subscription request.}
-
 \item{domainIdentifier}{[required] The Amazon DataZone domain where the specified subscription request is
 being accepted.}
 
 \item{identifier}{[required] The unique identifier of the subscription request that is to be
 accepted.}
+
+\item{decisionComment}{A description that specifies the reason for accepting the specified
+subscription request.}
+
+\item{assetScopes}{The asset scopes of the accept subscription request.}
+
+\item{assetPermissions}{The asset permissions of the accept subscription request.}
 }
 \description{
 Accepts a subscription request to a specific asset.

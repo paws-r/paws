@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_delete_members}
 \alias{securityhub_delete_members}
-\title{Deletes the specified member accounts from Security Hub}
+\title{Deletes the specified member accounts from Security Hub CSPM}
 \usage{
 securityhub_delete_members(AccountIds)
 }
@@ -10,7 +10,7 @@ securityhub_delete_members(AccountIds)
 \item{AccountIds}{[required] The list of account IDs for the member accounts to delete.}
 }
 \description{
-Deletes the specified member accounts from Security Hub.
+Deletes the specified member accounts from Security Hub CSPM.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_delete_members/} for full documentation.
 }

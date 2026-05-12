@@ -12,10 +12,6 @@ wellarchitected_list_milestones(
 }
 \arguments{
 \item{WorkloadId}{[required]}
-
-\item{NextToken}{}
-
-\item{MaxResults}{}
 }
 \description{
 List all milestones for an existing workload.

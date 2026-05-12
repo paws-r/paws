@@ -13,15 +13,9 @@ wellarchitected_list_lenses(
 )
 }
 \arguments{
-\item{NextToken}{}
-
-\item{MaxResults}{}
-
 \item{LensType}{The type of lenses to be returned.}
 
 \item{LensStatus}{The status of lenses to be returned.}
-
-\item{LensName}{}
 }
 \description{
 List the available lenses.

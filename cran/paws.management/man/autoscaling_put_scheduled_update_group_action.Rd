@@ -39,7 +39,7 @@ example, \code{"2021-06-01T00:00:00Z"}.}
 fields separated by white spaces: [Minute] [Hour] [Day_of_Month]
 [Month_of_Year] [Day_of_Week]. The value must be in quotes (for
 example, \code{"30 0 1 1,6,12 *"}). For more information about this format,
-see \href{http://crontab.org/}{Crontab}.
+see Crontab.
 
 When \code{StartTime} and \code{EndTime} are specified with \code{Recurrence}, they
 form the boundaries of when the recurring action starts and stops.

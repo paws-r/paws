@@ -12,6 +12,7 @@ lexmodelsv2_update_bot_locale(
   nluIntentConfidenceThreshold,
   voiceSettings = NULL,
   unifiedSpeechSettings = NULL,
+  audioFillerSettings = NULL,
   speechRecognitionSettings = NULL,
   generativeAISettings = NULL,
   speechDetectionSensitivity = NULL
@@ -36,6 +37,10 @@ list of possible intents for an utterance.}
 with the user.}
 
 \item{unifiedSpeechSettings}{Updated unified speech settings to apply to the bot locale.}
+
+\item{audioFillerSettings}{Updated audio filler settings to apply to the bot locale. When enabled,
+requires \code{unifiedSpeechSettings} (speech-to-speech) to be configured on
+the bot locale.}
 
 \item{speechRecognitionSettings}{Updated speech-to-text settings to apply to the bot locale.}
 

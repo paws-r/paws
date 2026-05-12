@@ -16,10 +16,6 @@ wellarchitected_list_profiles(
 in the results.}
 
 \item{ProfileOwnerType}{Profile owner type.}
-
-\item{NextToken}{}
-
-\item{MaxResults}{}
 }
 \description{
 List profiles.

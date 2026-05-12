@@ -11,8 +11,6 @@ comprehendmedical_list_snomedct_inference_jobs(
 )
 }
 \arguments{
-\item{Filter}{}
-
 \item{NextToken}{Identifies the next page of InferSNOMEDCT results to return.}
 
 \item{MaxResults}{The maximum number of results to return in each page. The default is

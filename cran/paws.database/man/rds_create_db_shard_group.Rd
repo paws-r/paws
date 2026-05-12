@@ -69,8 +69,6 @@ gateway attached to it, the DB shard group is private.
 \item If the subnets are part of a VPC that has an internet gateway
 attached to it, the DB shard group is public.
 }}
-
-\item{Tags}{}
 }
 \description{
 Creates a new DB shard group for Aurora Limitless Database. You must enable Aurora Limitless Database to create a DB shard group.

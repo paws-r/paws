@@ -421,8 +421,6 @@ Valid for Cluster Type: Aurora DB clusters only
 
 Valid Values: \code{IPV4 | DUAL}}
 
-\item{ServerlessV2ScalingConfiguration}{}
-
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB cluster. To turn off collecting
 Enhanced Monitoring metrics, specify \code{0}.

@@ -11,23 +11,14 @@ bedrockdataautomation_update_data_automation_project(
   standardOutputConfiguration,
   customOutputConfiguration = NULL,
   overrideConfiguration = NULL,
+  dataAutomationLibraryConfiguration = NULL,
   encryptionConfiguration = NULL
 )
 }
 \arguments{
 \item{projectArn}{[required] ARN generated at the server side when a DataAutomationProject is created}
 
-\item{projectStage}{}
-
-\item{projectDescription}{}
-
 \item{standardOutputConfiguration}{[required]}
-
-\item{customOutputConfiguration}{}
-
-\item{overrideConfiguration}{}
-
-\item{encryptionConfiguration}{}
 }
 \description{
 Updates an existing Amazon Bedrock Data Automation Project

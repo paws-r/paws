@@ -138,11 +138,12 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' @param performanceConfig Model performance settings for the request.
 #' @param serviceTier Specifies the processing tier configuration used for serving the
 #' request.
+#' @param outputConfig Output configuration for a model response.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockruntime_converse
-bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL, serviceTier = NULL) {
+bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL, serviceTier = NULL, outputConfig = NULL) {
   op <- new_operation(
     name = "Converse",
     http_method = "POST",
@@ -151,7 +152,7 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockruntime$converse_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig, serviceTier = serviceTier)
+  input <- .bedrockruntime$converse_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig, serviceTier = serviceTier, outputConfig = outputConfig)
   output <- .bedrockruntime$converse_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -255,11 +256,12 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #' @param performanceConfig Model performance settings for the request.
 #' @param serviceTier Specifies the processing tier configuration used for serving the
 #' request.
+#' @param outputConfig Output configuration for a model response.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockruntime_converse_stream
-bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL, serviceTier = NULL) {
+bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL, serviceTier = NULL, outputConfig = NULL) {
   op <- new_operation(
     name = "ConverseStream",
     http_method = "POST",
@@ -268,7 +270,7 @@ bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NU
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockruntime$converse_stream_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig, serviceTier = serviceTier)
+  input <- .bedrockruntime$converse_stream_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig, serviceTier = serviceTier, outputConfig = outputConfig)
   output <- .bedrockruntime$converse_stream_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)

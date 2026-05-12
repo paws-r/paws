@@ -7,8 +7,8 @@
 ecr_get_account_setting(name)
 }
 \arguments{
-\item{name}{[required] The name of the account setting, such as \code{BASIC_SCAN_TYPE_VERSION} or
-\code{REGISTRY_POLICY_SCOPE}.}
+\item{name}{[required] The name of the account setting, such as \code{BASIC_SCAN_TYPE_VERSION},
+\code{REGISTRY_POLICY_SCOPE}, or \code{BLOB_MOUNTING}.}
 }
 \description{
 Retrieves the account setting value for the specified setting name.

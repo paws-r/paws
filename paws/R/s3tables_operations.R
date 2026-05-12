@@ -156,9 +156,48 @@ s3tables_create_namespace <- function(tableBucketARN, namespace) {
 #'       schema = list(
 #'         fields = list(
 #'           list(
+#'             id = 123,
 #'             name = "string",
 #'             type = "string",
 #'             required = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       schemaV2 = list(
+#'         type = "struct",
+#'         fields = list(
+#'           list(
+#'             id = 123,
+#'             name = "string",
+#'             type = list(),
+#'             required = TRUE|FALSE,
+#'             doc = "string"
+#'           )
+#'         ),
+#'         schemaId = 123,
+#'         identifierFieldIds = list(
+#'           123
+#'         )
+#'       ),
+#'       partitionSpec = list(
+#'         fields = list(
+#'           list(
+#'             sourceId = 123,
+#'             transform = "string",
+#'             name = "string",
+#'             fieldId = 123
+#'           )
+#'         ),
+#'         specId = 123
+#'       ),
+#'       writeOrder = list(
+#'         orderId = 123,
+#'         fields = list(
+#'           list(
+#'             sourceId = 123,
+#'             transform = "string",
+#'             direction = "asc"|"desc",
+#'             nullOrder = "nulls-first"|"nulls-last"
 #'           )
 #'         )
 #'       ),

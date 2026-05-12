@@ -9,6 +9,7 @@ cognitoidentityprovider_set_user_mfa_preference(
   SMSMfaSettings = NULL,
   SoftwareTokenMfaSettings = NULL,
   EmailMfaSettings = NULL,
+  WebAuthnMfaSettings = NULL,
   AccessToken
 )
 }
@@ -26,6 +27,14 @@ before they set this as their preferred MFA method.}
 MFA and sets it as the preferred MFA method when multiple methods are
 available. To activate this setting, your user pool must be in the
 \href{https://docs.aws.amazon.com/cognito/latest/developerguide/feature-plans-features-essentials.html}{Essentials tier}
+or higher.}
+
+\item{WebAuthnMfaSettings}{User preferences for passkey MFA. Activates or deactivates passkey MFA
+for the user. When activated, passkey authentication requires user
+verification, and passkey sign-in is available when MFA is required. To
+activate this setting, the \code{FactorConfiguration} of your user pool
+\code{WebAuthnConfiguration} must be \code{MULTI_FACTOR_WITH_USER_VERIFICATION}.
+To activate this setting, your user pool must be in the \href{https://docs.aws.amazon.com/cognito/latest/developerguide/feature-plans-features-essentials.html}{Essentials tier}
 or higher.}
 
 \item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the currently

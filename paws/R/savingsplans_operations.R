@@ -141,9 +141,9 @@ savingsplans_delete_queued_savings_plan <- function(savingsPlanId) {
 #'     list(
 #'       rate = "string",
 #'       currency = "CNY"|"USD"|"EUR",
-#'       unit = "Hrs"|"Lambda-GB-Second"|"Request"|"ACU-Hr"|"ReadRequestUnits"|"WriteRequestUnits"|"ReadCapacityUnit-Hrs"|"WriteCapacityUnit-Hrs"|"ReplicatedWriteRequestUnits"|"ReplicatedWriteCapacityUnit-Hrs"|"GB-Hours"|"DPU"|"ElastiCacheProcessingUnit"|"DCU-Hr"|"NCU-hr",
-#'       productType = "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS",
-#'       serviceCode = "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker"|"AmazonRDS"|"AuroraDSQL"|"AmazonDynamoDB"|"AmazonElastiCache"|"AmazonDocDB"|"AmazonNeptune"|"AmazonTimestream"|"AmazonMCS"|"AWSDatabaseMigrationSvc",
+#'       unit = "Hrs"|"Lambda-GB-Second"|"Request"|"ACU-Hr"|"ReadRequestUnits"|"WriteRequestUnits"|"ReadCapacityUnit-Hrs"|"WriteCapacityUnit-Hrs"|"ReplicatedWriteRequestUnits"|"ReplicatedWriteCapacityUnit-Hrs"|"GB-Hours"|"DPU"|"ElastiCacheProcessingUnit"|"DCU-Hr"|"NCU-hr"|"OCU-hours"|"Jobs",
+#'       productType = "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS"|"OpenSearch",
+#'       serviceCode = "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker"|"AmazonRDS"|"AuroraDSQL"|"AmazonDynamoDB"|"AmazonElastiCache"|"AmazonDocDB"|"AmazonNeptune"|"AmazonTimestream"|"AmazonMCS"|"AWSDatabaseMigrationSvc"|"AmazonES",
 #'       usageType = "string",
 #'       operation = "string",
 #'       properties = list(
@@ -234,7 +234,7 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
 #'       savingsPlanType = "Compute"|"EC2Instance"|"SageMaker"|"Database",
 #'       paymentOption = "All Upfront"|"Partial Upfront"|"No Upfront",
 #'       productTypes = list(
-#'         "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS"
+#'         "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS"|"OpenSearch"
 #'       ),
 #'       currency = "CNY"|"USD"|"EUR",
 #'       commitment = "string",
@@ -341,9 +341,9 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 #'         planDescription = "string"
 #'       ),
 #'       rate = "string",
-#'       unit = "Hrs"|"Lambda-GB-Second"|"Request"|"ACU-Hr"|"ReadRequestUnits"|"WriteRequestUnits"|"ReadCapacityUnit-Hrs"|"WriteCapacityUnit-Hrs"|"ReplicatedWriteRequestUnits"|"ReplicatedWriteCapacityUnit-Hrs"|"GB-Hours"|"DPU"|"ElastiCacheProcessingUnit"|"DCU-Hr"|"NCU-hr",
-#'       productType = "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS",
-#'       serviceCode = "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker"|"AmazonRDS"|"AuroraDSQL"|"AmazonDynamoDB"|"AmazonElastiCache"|"AmazonDocDB"|"AmazonNeptune"|"AmazonTimestream"|"AmazonMCS"|"AWSDatabaseMigrationSvc",
+#'       unit = "Hrs"|"Lambda-GB-Second"|"Request"|"ACU-Hr"|"ReadRequestUnits"|"WriteRequestUnits"|"ReadCapacityUnit-Hrs"|"WriteCapacityUnit-Hrs"|"ReplicatedWriteRequestUnits"|"ReplicatedWriteCapacityUnit-Hrs"|"GB-Hours"|"DPU"|"ElastiCacheProcessingUnit"|"DCU-Hr"|"NCU-hr"|"OCU-hours"|"Jobs",
+#'       productType = "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS"|"OpenSearch",
+#'       serviceCode = "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker"|"AmazonRDS"|"AuroraDSQL"|"AmazonDynamoDB"|"AmazonElastiCache"|"AmazonDocDB"|"AmazonNeptune"|"AmazonTimestream"|"AmazonMCS"|"AWSDatabaseMigrationSvc"|"AmazonES",
 #'       usageType = "string",
 #'       operation = "string",
 #'       properties = list(
@@ -371,10 +371,10 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 #'     "Compute"|"EC2Instance"|"SageMaker"|"Database"
 #'   ),
 #'   products = list(
-#'     "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS"
+#'     "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS"|"OpenSearch"
 #'   ),
 #'   serviceCodes = list(
-#'     "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker"|"AmazonRDS"|"AuroraDSQL"|"AmazonDynamoDB"|"AmazonElastiCache"|"AmazonDocDB"|"AmazonNeptune"|"AmazonTimestream"|"AmazonMCS"|"AWSDatabaseMigrationSvc"
+#'     "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker"|"AmazonRDS"|"AuroraDSQL"|"AmazonDynamoDB"|"AmazonElastiCache"|"AmazonDocDB"|"AmazonNeptune"|"AmazonTimestream"|"AmazonMCS"|"AWSDatabaseMigrationSvc"|"AmazonES"
 #'   ),
 #'   usageTypes = list(
 #'     "string"
@@ -454,7 +454,7 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
 #'     list(
 #'       offeringId = "string",
 #'       productTypes = list(
-#'         "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS"
+#'         "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS"|"OpenSearch"
 #'       ),
 #'       planType = "Compute"|"EC2Instance"|"SageMaker"|"Database",
 #'       description = "string",
@@ -485,7 +485,7 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
 #'   paymentOptions = list(
 #'     "All Upfront"|"Partial Upfront"|"No Upfront"
 #'   ),
-#'   productType = "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS",
+#'   productType = "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS"|"OpenSearch",
 #'   planTypes = list(
 #'     "Compute"|"EC2Instance"|"SageMaker"|"Database"
 #'   ),

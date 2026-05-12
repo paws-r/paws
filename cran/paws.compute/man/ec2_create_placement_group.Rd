@@ -9,6 +9,7 @@ ec2_create_placement_group(
   TagSpecifications = NULL,
   SpreadLevel = NULL,
   LinkedGroupId = NULL,
+  Operator = NULL,
   DryRun = NULL,
   GroupName = NULL,
   Strategy = NULL
@@ -27,6 +28,8 @@ ec2_create_placement_group(
 }}
 
 \item{LinkedGroupId}{Reserved for future use.}
+
+\item{Operator}{Reserved for internal use.}
 
 \item{DryRun}{Checks whether you have the required permissions for the operation,
 without actually making the request, and provides an error response. If

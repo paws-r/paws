@@ -19,7 +19,7 @@ universally unique identifier (UUID) of a configuration policy, or a
 value of \code{SELF_MANAGED_SECURITY_HUB} for a self-managed configuration.}
 }
 \description{
-Disassociates a target account, organizational unit, or the root from a specified configuration. When you disassociate a configuration from its target, the target inherits the configuration of the closest parent. If there’s no configuration to inherit, the target retains its settings but becomes a self-managed account. A target can be disassociated from a configuration policy or self-managed behavior. Only the Security Hub delegated administrator can invoke this operation from the home Region.
+Disassociates a target account, organizational unit, or the root from a specified configuration. When you disassociate a configuration from its target, the target inherits the configuration of the closest parent. If there’s no configuration to inherit, the target retains its settings but becomes a self-managed account. A target can be disassociated from a configuration policy or self-managed behavior. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_start_configuration_policy_disassociation/} for full documentation.
 }

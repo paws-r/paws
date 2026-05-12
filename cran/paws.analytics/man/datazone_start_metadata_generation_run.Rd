@@ -5,29 +5,29 @@
 \title{Starts the metadata generation run}
 \usage{
 datazone_start_metadata_generation_run(
-  clientToken = NULL,
   domainIdentifier,
-  owningProjectIdentifier,
-  target,
   type = NULL,
-  types = NULL
+  types = NULL,
+  target,
+  clientToken = NULL,
+  owningProjectIdentifier
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the
-request. This field is automatically populated if not provided.}
-
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain where you want to start a metadata
 generation run.}
-
-\item{owningProjectIdentifier}{[required] The ID of the project that owns the asset for which you want to start a
-metadata generation run.}
-
-\item{target}{[required] The asset for which you want to start a metadata generation run.}
 
 \item{type}{The type of the metadata generation run.}
 
 \item{types}{The types of the metadata generation run.}
+
+\item{target}{[required] The asset for which you want to start a metadata generation run.}
+
+\item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the
+request. This field is automatically populated if not provided.}
+
+\item{owningProjectIdentifier}{[required] The ID of the project that owns the asset for which you want to start a
+metadata generation run.}
 }
 \description{
 Starts the metadata generation run.

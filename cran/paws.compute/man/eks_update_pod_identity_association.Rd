@@ -10,7 +10,8 @@ eks_update_pod_identity_association(
   roleArn = NULL,
   clientRequestToken = NULL,
   disableSessionTags = NULL,
-  targetRoleArn = NULL
+  targetRoleArn = NULL,
+  policy = NULL
 )
 }
 \arguments{
@@ -58,6 +59,24 @@ role} and \emph{Target IAM role} fields, EKS will perform role chaining to
 ensure your application gets the required permissions. This means Role A
 will assume Role B, allowing your Pods to securely access resources like
 S3 buckets in the target account.}
+
+\item{policy}{An optional IAM policy in JSON format (as an escaped string) that
+applies additional restrictions to this pod identity association beyond
+the IAM policies attached to the IAM role. This policy is applied as the
+intersection of the role's policies and this policy, allowing you to
+reduce the permissions that applications in the pods can use. Use this
+policy to enforce least privilege access while still leveraging a shared
+IAM role across multiple applications.
+
+\strong{Important considerations}
+\itemize{
+\item \strong{Session tags:} When using this policy, \code{disableSessionTags} must
+be set to \code{true}.
+\item \strong{Target role permissions:} If you specify both a \code{TargetRoleArn}
+and a policy, the policy restrictions apply only to the target
+role's permissions, not to the initial role used for assuming the
+target role.
+}}
 }
 \description{
 Updates a EKS Pod Identity association. In an update, you can change the IAM role, the target IAM role, or \code{disableSessionTags}. You must change at least one of these in an update. An association can't be moved between clusters, namespaces, or service accounts. If you need to edit the namespace or service account, you need to delete the association and then create a new association with your desired settings.

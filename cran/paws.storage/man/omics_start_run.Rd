@@ -24,7 +24,9 @@ omics_start_run(
   retentionMode = NULL,
   storageType = NULL,
   workflowOwnerId = NULL,
-  workflowVersionName = NULL
+  workflowVersionName = NULL,
+  networkingMode = NULL,
+  configurationName = NULL
 )
 }
 \arguments{
@@ -122,6 +124,11 @@ organize changes to the workflow. If your workflow has multiple
 versions, the run uses the default version unless you specify a version
 name. To learn more, see \href{https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html}{Workflow versioning}
 in the \emph{Amazon Web Services HealthOmics User Guide}.}
+
+\item{networkingMode}{Optional configuration for run networking behavior. If not specified,
+this will default to RESTRICTED.}
+
+\item{configurationName}{Optional configuration name to use for the workflow run.}
 }
 \description{
 Starts a new run and returns details about the run, or duplicates an existing run. A run is a single invocation of a workflow. If you provide request IDs, Amazon Web Services HealthOmics identifies duplicate requests and starts the run only once. Monitor the progress of the run by calling the \code{\link[=omics_get_run]{get_run}} API operation.

@@ -1538,6 +1538,71 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 }
 .wafv2$operations$get_sampled_requests <- wafv2_get_sampled_requests
 
+#' Retrieves aggregated statistics about the top URI paths accessed by bot
+#' traffic for a specified web ACL and time window
+#'
+#' @description
+#' Retrieves aggregated statistics about the top URI paths accessed by bot traffic for a specified web ACL and time window. You can use this operation to analyze which paths on your web application receive the most bot traffic and identify the specific bots accessing those paths. The operation supports filtering by bot category, organization, or name, and allows you to drill down into specific path prefixes to view detailed URI-level statistics.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_top_path_statistics_by_traffic/](https://www.paws-r-sdk.com/docs/wafv2_get_top_path_statistics_by_traffic/) for full documentation.
+#'
+#' @param WebAclArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL for which you want to
+#' retrieve path statistics.
+#' @param Scope &#91;required&#93; Specifies whether the web ACL is for an Amazon Web Services CloudFront
+#' distribution or for a regional application. A regional application can
+#' be an Application Load Balancer, an AppSync GraphQL API, an Amazon
+#' Cognito user pool, an Amazon Web Services App Runner service, or an
+#' Amazon Web Services Verified Access instance.
+#' @param UriPathPrefix A URI path prefix to filter the results. When you specify this
+#' parameter, the operation returns statistics for individual URIs within
+#' the specified path prefix. For example, if you specify `/api`, the
+#' response includes statistics for paths like `/api/v1/users` and
+#' `/api/v2/orders`. If you don't specify this parameter, the operation
+#' returns top-level path statistics.
+#' @param TimeWindow &#91;required&#93; The time window for which you want to retrieve path statistics. The time
+#' window must be within the data retention period for your web ACL.
+#' @param BotCategory Filters the results to include only traffic from bots in the specified
+#' category. For example, you can filter by `ai` to see only AI crawler
+#' traffic, or `search_engine` to see only search engine bot traffic. When
+#' you apply this filter, the `Source` field is populated in the response.
+#' @param BotOrganization Filters the results to include only traffic from bots belonging to the
+#' specified organization. For example, you can filter by `openai` or
+#' `google`. When you apply this filter, the `Source` field is populated in
+#' the response.
+#' @param BotName Filters the results to include only traffic from the specified bot. For
+#' example, you can filter by `gptbot` or `googlebot`. When you apply this
+#' filter, the `Source` field is populated in the response.
+#' @param Limit &#91;required&#93; The maximum number of path statistics to return. Valid values are 1 to
+#' 100.
+#' @param NumberOfTopTrafficBotsPerPath &#91;required&#93; The maximum number of top bots to include in the statistics for each
+#' path. Valid values are 1 to 10.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
+#' of objects that are still available for retrieval exceeds the limit, WAF
+#' returns a `NextMarker` value in the response. To retrieve the next batch
+#' of objects, provide the marker from the prior call in your next request.
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_get_top_path_statistics_by_traffic
+wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPrefix = NULL, TimeWindow, BotCategory = NULL, BotOrganization = NULL, BotName = NULL, Limit, NumberOfTopTrafficBotsPerPath, NextMarker = NULL) {
+  op <- new_operation(
+    name = "GetTopPathStatisticsByTraffic",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wafv2$get_top_path_statistics_by_traffic_input(WebAclArn = WebAclArn, Scope = Scope, UriPathPrefix = UriPathPrefix, TimeWindow = TimeWindow, BotCategory = BotCategory, BotOrganization = BotOrganization, BotName = BotName, Limit = Limit, NumberOfTopTrafficBotsPerPath = NumberOfTopTrafficBotsPerPath, NextMarker = NextMarker)
+  output <- .wafv2$get_top_path_statistics_by_traffic_output()
+  config <- get_config()
+  svc <- .wafv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$get_top_path_statistics_by_traffic <- wafv2_get_top_path_statistics_by_traffic
+
 #' Retrieves the specified WebACL
 #'
 #' @description

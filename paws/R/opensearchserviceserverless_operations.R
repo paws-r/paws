@@ -32,7 +32,7 @@ NULL
 #'     list(
 #'       id = "string",
 #'       name = "string",
-#'       status = "CREATING"|"DELETING"|"ACTIVE"|"FAILED",
+#'       status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"FAILED"|"UPDATE_FAILED",
 #'       type = "SEARCH"|"TIMESERIES"|"VECTORSEARCH",
 #'       description = "string",
 #'       arn = "string",
@@ -50,7 +50,8 @@ NULL
 #'         dashboardEndpoint = "string"
 #'       ),
 #'       failureCode = "string",
-#'       failureMessage = "string"
+#'       failureMessage = "string",
+#'       collectionGroupName = "string"
 #'     )
 #'   ),
 #'   collectionErrorDetails = list(
@@ -99,6 +100,97 @@ opensearchserviceserverless_batch_get_collection <- function(ids = NULL, names =
   return(response)
 }
 .opensearchserviceserverless$operations$batch_get_collection <- opensearchserviceserverless_batch_get_collection
+
+#' Returns attributes for one or more collection groups, including capacity
+#' limits and the number of collections in each group
+#'
+#' @description
+#' Returns attributes for one or more collection groups, including capacity
+#' limits and the number of collections in each group. For more
+#' information, see [Creating and managing Amazon OpenSearch Serverless
+#' collections](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html).
+#'
+#' @usage
+#' opensearchserviceserverless_batch_get_collection_group(ids, names)
+#'
+#' @param ids A list of collection group IDs. You can't provide names and IDs in the
+#' same request.
+#' @param names A list of collection group names. You can't provide names and IDs in the
+#' same request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   collectionGroupDetails = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       name = "string",
+#'       standbyReplicas = "ENABLED"|"DISABLED",
+#'       description = "string",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       createdDate = 123,
+#'       capacityLimits = list(
+#'         maxIndexingCapacityInOCU = 123.0,
+#'         maxSearchCapacityInOCU = 123.0,
+#'         minIndexingCapacityInOCU = 123.0,
+#'         minSearchCapacityInOCU = 123.0
+#'       ),
+#'       numberOfCollections = 123
+#'     )
+#'   ),
+#'   collectionGroupErrorDetails = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       errorMessage = "string",
+#'       errorCode = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_collection_group(
+#'   ids = list(
+#'     "string"
+#'   ),
+#'   names = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchserviceserverless_batch_get_collection_group
+#'
+#' @aliases opensearchserviceserverless_batch_get_collection_group
+opensearchserviceserverless_batch_get_collection_group <- function(ids = NULL, names = NULL) {
+  op <- new_operation(
+    name = "BatchGetCollectionGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchserviceserverless$batch_get_collection_group_input(ids = ids, names = names)
+  output <- .opensearchserviceserverless$batch_get_collection_group_output()
+  config <- get_config()
+  svc <- .opensearchserviceserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchserviceserverless$operations$batch_get_collection_group <- opensearchserviceserverless_batch_get_collection_group
 
 #' Returns a list of successful and failed retrievals for the OpenSearch
 #' Serverless indexes
@@ -408,7 +500,8 @@ opensearchserviceserverless_create_access_policy <- function(type, name, descrip
 #'
 #' @usage
 #' opensearchserviceserverless_create_collection(name, type, description,
-#'   tags, standbyReplicas, vectorOptions, clientToken)
+#'   tags, standbyReplicas, vectorOptions, collectionGroupName,
+#'   encryptionConfig, clientToken)
 #'
 #' @param name &#91;required&#93; Name of the collection.
 #' @param type The type of collection.
@@ -417,6 +510,8 @@ opensearchserviceserverless_create_access_policy <- function(type, name, descrip
 #' OpenSearch Serverless collection.
 #' @param standbyReplicas Indicates whether standby replicas should be used for a collection.
 #' @param vectorOptions Configuration options for vector search capabilities in the collection.
+#' @param collectionGroupName The name of the collection group to associate with the collection.
+#' @param encryptionConfig Encryption settings for the collection.
 #' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @return
@@ -426,7 +521,7 @@ opensearchserviceserverless_create_access_policy <- function(type, name, descrip
 #'   createCollectionDetail = list(
 #'     id = "string",
 #'     name = "string",
-#'     status = "CREATING"|"DELETING"|"ACTIVE"|"FAILED",
+#'     status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"FAILED"|"UPDATE_FAILED",
 #'     type = "SEARCH"|"TIMESERIES"|"VECTORSEARCH",
 #'     description = "string",
 #'     arn = "string",
@@ -436,7 +531,8 @@ opensearchserviceserverless_create_access_policy <- function(type, name, descrip
 #'       ServerlessVectorAcceleration = "ENABLED"|"DISABLED"|"ALLOWED"
 #'     ),
 #'     createdDate = 123,
-#'     lastModifiedDate = 123
+#'     lastModifiedDate = 123,
+#'     collectionGroupName = "string"
 #'   )
 #' )
 #' ```
@@ -457,6 +553,11 @@ opensearchserviceserverless_create_access_policy <- function(type, name, descrip
 #'   vectorOptions = list(
 #'     ServerlessVectorAcceleration = "ENABLED"|"DISABLED"|"ALLOWED"
 #'   ),
+#'   collectionGroupName = "string",
+#'   encryptionConfig = list(
+#'     aWSOwnedKey = TRUE|FALSE,
+#'     kmsKeyArn = "string"
+#'   ),
 #'   clientToken = "string"
 #' )
 #' ```
@@ -466,7 +567,7 @@ opensearchserviceserverless_create_access_policy <- function(type, name, descrip
 #' @rdname opensearchserviceserverless_create_collection
 #'
 #' @aliases opensearchserviceserverless_create_collection
-opensearchserviceserverless_create_collection <- function(name, type = NULL, description = NULL, tags = NULL, standbyReplicas = NULL, vectorOptions = NULL, clientToken = NULL) {
+opensearchserviceserverless_create_collection <- function(name, type = NULL, description = NULL, tags = NULL, standbyReplicas = NULL, vectorOptions = NULL, collectionGroupName = NULL, encryptionConfig = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateCollection",
     http_method = "POST",
@@ -475,7 +576,7 @@ opensearchserviceserverless_create_collection <- function(name, type = NULL, des
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$create_collection_input(name = name, type = type, description = description, tags = tags, standbyReplicas = standbyReplicas, vectorOptions = vectorOptions, clientToken = clientToken)
+  input <- .opensearchserviceserverless$create_collection_input(name = name, type = type, description = description, tags = tags, standbyReplicas = standbyReplicas, vectorOptions = vectorOptions, collectionGroupName = collectionGroupName, encryptionConfig = encryptionConfig, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_collection_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -484,6 +585,104 @@ opensearchserviceserverless_create_collection <- function(name, type = NULL, des
   return(response)
 }
 .opensearchserviceserverless$operations$create_collection <- opensearchserviceserverless_create_collection
+
+#' Creates a collection group within OpenSearch Serverless
+#'
+#' @description
+#' Creates a collection group within OpenSearch Serverless. Collection
+#' groups let you manage OpenSearch Compute Units (OCUs) at a group level,
+#' with multiple collections sharing the group's capacity limits.
+#' 
+#' For more information, see [Managing collection
+#' groups](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-collection-groups.html).
+#'
+#' @usage
+#' opensearchserviceserverless_create_collection_group(name,
+#'   standbyReplicas, description, tags, capacityLimits, clientToken)
+#'
+#' @param name &#91;required&#93; The name of the collection group.
+#' @param standbyReplicas &#91;required&#93; Indicates whether standby replicas should be used for a collection
+#' group.
+#' @param description A description of the collection group.
+#' @param tags An arbitrary set of tags (key–value pairs) to associate with the
+#' OpenSearch Serverless collection group.
+#' @param capacityLimits The capacity limits for the collection group, in OpenSearch Compute
+#' Units (OCUs). These limits control the maximum and minimum capacity for
+#' collections within the group.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createCollectionGroupDetail = list(
+#'     id = "string",
+#'     arn = "string",
+#'     name = "string",
+#'     standbyReplicas = "ENABLED"|"DISABLED",
+#'     description = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdDate = 123,
+#'     capacityLimits = list(
+#'       maxIndexingCapacityInOCU = 123.0,
+#'       maxSearchCapacityInOCU = 123.0,
+#'       minIndexingCapacityInOCU = 123.0,
+#'       minSearchCapacityInOCU = 123.0
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_collection_group(
+#'   name = "string",
+#'   standbyReplicas = "ENABLED"|"DISABLED",
+#'   description = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   capacityLimits = list(
+#'     maxIndexingCapacityInOCU = 123.0,
+#'     maxSearchCapacityInOCU = 123.0,
+#'     minIndexingCapacityInOCU = 123.0,
+#'     minSearchCapacityInOCU = 123.0
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchserviceserverless_create_collection_group
+#'
+#' @aliases opensearchserviceserverless_create_collection_group
+opensearchserviceserverless_create_collection_group <- function(name, standbyReplicas, description = NULL, tags = NULL, capacityLimits = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "CreateCollectionGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchserviceserverless$create_collection_group_input(name = name, standbyReplicas = standbyReplicas, description = description, tags = tags, capacityLimits = capacityLimits, clientToken = clientToken)
+  output <- .opensearchserviceserverless$create_collection_group_output()
+  config <- get_config()
+  svc <- .opensearchserviceserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchserviceserverless$operations$create_collection_group <- opensearchserviceserverless_create_collection_group
 
 #' Creates an index within an OpenSearch Serverless collection
 #'
@@ -626,10 +825,10 @@ opensearchserviceserverless_create_lifecycle_policy <- function(type, name, desc
 #' @param type &#91;required&#93; The type of security configuration.
 #' @param name &#91;required&#93; The name of the security configuration.
 #' @param description A description of the security configuration.
-#' @param samlOptions Describes SAML options in in the form of a key-value map. This field is
+#' @param samlOptions Describes SAML options in the form of a key-value map. This field is
 #' required if you specify `SAML` for the `type` parameter.
 #' @param iamIdentityCenterOptions Describes IAM Identity Center options in the form of a key-value map.
-#' This field is required if you specify iamidentitycenter for the type
+#' This field is required if you specify `iamidentitycenter` for the `type`
 #' parameter.
 #' @param iamFederationOptions Describes IAM federation options in the form of a key-value map. This
 #' field is required if you specify `iamFederation` for the `type`
@@ -943,7 +1142,7 @@ opensearchserviceserverless_delete_access_policy <- function(type, name, clientT
 #'   deleteCollectionDetail = list(
 #'     id = "string",
 #'     name = "string",
-#'     status = "CREATING"|"DELETING"|"ACTIVE"|"FAILED"
+#'     status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"FAILED"|"UPDATE_FAILED"
 #'   )
 #' )
 #' ```
@@ -979,6 +1178,55 @@ opensearchserviceserverless_delete_collection <- function(id, clientToken = NULL
   return(response)
 }
 .opensearchserviceserverless$operations$delete_collection <- opensearchserviceserverless_delete_collection
+
+#' Deletes a collection group
+#'
+#' @description
+#' Deletes a collection group. You can only delete empty collection groups
+#' that contain no collections. For more information, see [Creating and
+#' managing Amazon OpenSearch Serverless
+#' collections](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html).
+#'
+#' @usage
+#' opensearchserviceserverless_delete_collection_group(id, clientToken)
+#'
+#' @param id &#91;required&#93; The unique identifier of the collection group to delete.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_collection_group(
+#'   id = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchserviceserverless_delete_collection_group
+#'
+#' @aliases opensearchserviceserverless_delete_collection_group
+opensearchserviceserverless_delete_collection_group <- function(id, clientToken = NULL) {
+  op <- new_operation(
+    name = "DeleteCollectionGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchserviceserverless$delete_collection_group_input(id = id, clientToken = clientToken)
+  output <- .opensearchserviceserverless$delete_collection_group_output()
+  config <- get_config()
+  svc <- .opensearchserviceserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchserviceserverless$operations$delete_collection_group <- opensearchserviceserverless_delete_collection_group
 
 #' Deletes an index from an OpenSearch Serverless collection
 #'
@@ -1689,6 +1937,81 @@ opensearchserviceserverless_list_access_policies <- function(type, resource = NU
 }
 .opensearchserviceserverless$operations$list_access_policies <- opensearchserviceserverless_list_access_policies
 
+#' Returns a list of collection groups
+#'
+#' @description
+#' Returns a list of collection groups. For more information, see [Creating
+#' and managing Amazon OpenSearch Serverless
+#' collections](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html).
+#'
+#' @usage
+#' opensearchserviceserverless_list_collection_groups(nextToken,
+#'   maxResults)
+#'
+#' @param nextToken If your initial
+#' [`list_collection_groups`][opensearchserviceserverless_list_collection_groups]
+#' operation returns a `nextToken`, you can include the returned
+#' `nextToken` in subsequent
+#' [`list_collection_groups`][opensearchserviceserverless_list_collection_groups]
+#' operations, which returns results in the next page.
+#' @param maxResults The maximum number of results to return. Default is 20. You can use
+#' `nextToken` to get the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   collectionGroupSummaries = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       name = "string",
+#'       numberOfCollections = 123,
+#'       createdDate = 123,
+#'       capacityLimits = list(
+#'         maxIndexingCapacityInOCU = 123.0,
+#'         maxSearchCapacityInOCU = 123.0,
+#'         minIndexingCapacityInOCU = 123.0,
+#'         minSearchCapacityInOCU = 123.0
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_collection_groups(
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchserviceserverless_list_collection_groups
+#'
+#' @aliases opensearchserviceserverless_list_collection_groups
+opensearchserviceserverless_list_collection_groups <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListCollectionGroups",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchserviceserverless$list_collection_groups_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .opensearchserviceserverless$list_collection_groups_output()
+  config <- get_config()
+  svc <- .opensearchserviceserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchserviceserverless$operations$list_collection_groups <- opensearchserviceserverless_list_collection_groups
+
 #' Lists all OpenSearch Serverless collections
 #'
 #' @description
@@ -1721,8 +2044,10 @@ opensearchserviceserverless_list_access_policies <- function(type, resource = NU
 #'     list(
 #'       id = "string",
 #'       name = "string",
-#'       status = "CREATING"|"DELETING"|"ACTIVE"|"FAILED",
-#'       arn = "string"
+#'       status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"FAILED"|"UPDATE_FAILED",
+#'       arn = "string",
+#'       kmsKeyArn = "string",
+#'       collectionGroupName = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1734,7 +2059,8 @@ opensearchserviceserverless_list_access_policies <- function(type, resource = NU
 #' svc$list_collections(
 #'   collectionFilters = list(
 #'     name = "string",
-#'     status = "CREATING"|"DELETING"|"ACTIVE"|"FAILED"
+#'     status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"FAILED"|"UPDATE_FAILED",
+#'     collectionGroupName = "string"
 #'   ),
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -2378,10 +2704,11 @@ opensearchserviceserverless_update_account_settings <- function(capacityLimits =
 #'
 #' @usage
 #' opensearchserviceserverless_update_collection(id, description,
-#'   clientToken)
+#'   vectorOptions, clientToken)
 #'
 #' @param id &#91;required&#93; The unique identifier of the collection.
 #' @param description A description of the collection.
+#' @param vectorOptions Configuration options for vector search capabilities in the collection.
 #' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @return
@@ -2391,9 +2718,12 @@ opensearchserviceserverless_update_account_settings <- function(capacityLimits =
 #'   updateCollectionDetail = list(
 #'     id = "string",
 #'     name = "string",
-#'     status = "CREATING"|"DELETING"|"ACTIVE"|"FAILED",
+#'     status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"FAILED"|"UPDATE_FAILED",
 #'     type = "SEARCH"|"TIMESERIES"|"VECTORSEARCH",
 #'     description = "string",
+#'     vectorOptions = list(
+#'       ServerlessVectorAcceleration = "ENABLED"|"DISABLED"|"ALLOWED"
+#'     ),
 #'     arn = "string",
 #'     createdDate = 123,
 #'     lastModifiedDate = 123
@@ -2406,6 +2736,9 @@ opensearchserviceserverless_update_account_settings <- function(capacityLimits =
 #' svc$update_collection(
 #'   id = "string",
 #'   description = "string",
+#'   vectorOptions = list(
+#'     ServerlessVectorAcceleration = "ENABLED"|"DISABLED"|"ALLOWED"
+#'   ),
 #'   clientToken = "string"
 #' )
 #' ```
@@ -2415,7 +2748,7 @@ opensearchserviceserverless_update_account_settings <- function(capacityLimits =
 #' @rdname opensearchserviceserverless_update_collection
 #'
 #' @aliases opensearchserviceserverless_update_collection
-opensearchserviceserverless_update_collection <- function(id, description = NULL, clientToken = NULL) {
+opensearchserviceserverless_update_collection <- function(id, description = NULL, vectorOptions = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateCollection",
     http_method = "POST",
@@ -2424,7 +2757,7 @@ opensearchserviceserverless_update_collection <- function(id, description = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$update_collection_input(id = id, description = description, clientToken = clientToken)
+  input <- .opensearchserviceserverless$update_collection_input(id = id, description = description, vectorOptions = vectorOptions, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_collection_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -2433,6 +2766,81 @@ opensearchserviceserverless_update_collection <- function(id, description = NULL
   return(response)
 }
 .opensearchserviceserverless$operations$update_collection <- opensearchserviceserverless_update_collection
+
+#' Updates the description and capacity limits of a collection group
+#'
+#' @description
+#' Updates the description and capacity limits of a collection group.
+#'
+#' @usage
+#' opensearchserviceserverless_update_collection_group(id, description,
+#'   capacityLimits, clientToken)
+#'
+#' @param id &#91;required&#93; The unique identifier of the collection group to update.
+#' @param description A new description for the collection group.
+#' @param capacityLimits Updated capacity limits for the collection group, in OpenSearch Compute
+#' Units (OCUs).
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   updateCollectionGroupDetail = list(
+#'     id = "string",
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     capacityLimits = list(
+#'       maxIndexingCapacityInOCU = 123.0,
+#'       maxSearchCapacityInOCU = 123.0,
+#'       minIndexingCapacityInOCU = 123.0,
+#'       minSearchCapacityInOCU = 123.0
+#'     ),
+#'     createdDate = 123,
+#'     lastModifiedDate = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_collection_group(
+#'   id = "string",
+#'   description = "string",
+#'   capacityLimits = list(
+#'     maxIndexingCapacityInOCU = 123.0,
+#'     maxSearchCapacityInOCU = 123.0,
+#'     minIndexingCapacityInOCU = 123.0,
+#'     minSearchCapacityInOCU = 123.0
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchserviceserverless_update_collection_group
+#'
+#' @aliases opensearchserviceserverless_update_collection_group
+opensearchserviceserverless_update_collection_group <- function(id, description = NULL, capacityLimits = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateCollectionGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchserviceserverless$update_collection_group_input(id = id, description = description, capacityLimits = capacityLimits, clientToken = clientToken)
+  output <- .opensearchserviceserverless$update_collection_group_output()
+  config <- get_config()
+  svc <- .opensearchserviceserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchserviceserverless$operations$update_collection_group <- opensearchserviceserverless_update_collection_group
 
 #' Updates an existing index in an OpenSearch Serverless collection
 #'

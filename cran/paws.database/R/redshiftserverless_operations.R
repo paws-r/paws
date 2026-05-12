@@ -403,14 +403,23 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @param configParameters An array of parameters to set for advanced control over a database. The
 #' options are `auto_mv`, `datestyle`, `enable_case_sensitive_identifier`,
 #' `enable_user_activity_logging`, `query_group`, `search_path`,
-#' `require_ssl`, `use_fips_ssl`, and query monitoring metrics that let you
-#' define performance boundaries. For more information about query
+#' `require_ssl`, `use_fips_ssl`, and either `wlm_json_configuration` or
+#' query monitoring metrics that let you define performance boundaries. You
+#' can either specify individual query monitoring metrics (such as
+#' `max_scan_row_count`, `max_query_execution_time`) or use
+#' `wlm_json_configuration` to define query queues with rules, but not
+#' both. If you're using `wlm_json_configuration`, the maximum size of
+#' `parameterValue` is 8000 characters. For more information about query
 #' monitoring rules and available metrics, see [Query monitoring metrics
 #' for Amazon Redshift
 #' Serverless](https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless).
 #' @param enhancedVpcRouting The value that specifies whether to turn on enhanced virtual private
 #' cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 #' traffic through your VPC instead of over the internet.
+#' @param extraComputeForAutomaticOptimization If `true`, allocates additional compute resources for running automatic
+#' optimization operations.
+#' 
+#' Default: false
 #' @param ipAddressType The IP address type that the workgroup supports. Possible values are
 #' `ipv4` and `dualstack`.
 #' @param maxCapacity The maximum data-warehouse capacity Amazon Redshift Serverless uses to
@@ -433,7 +442,7 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_create_workgroup
-redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, namespaceName, port = NULL, pricePerformanceTarget = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, trackName = NULL, workgroupName) {
+redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, extraComputeForAutomaticOptimization = NULL, ipAddressType = NULL, maxCapacity = NULL, namespaceName, port = NULL, pricePerformanceTarget = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, trackName = NULL, workgroupName) {
   op <- new_operation(
     name = "CreateWorkgroup",
     http_method = "POST",
@@ -442,7 +451,7 @@ redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParam
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, namespaceName = namespaceName, port = port, pricePerformanceTarget = pricePerformanceTarget, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, trackName = trackName, workgroupName = workgroupName)
+  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, extraComputeForAutomaticOptimization = extraComputeForAutomaticOptimization, ipAddressType = ipAddressType, maxCapacity = maxCapacity, namespaceName = namespaceName, port = port, pricePerformanceTarget = pricePerformanceTarget, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, trackName = trackName, workgroupName = workgroupName)
   output <- .redshiftserverless$create_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)
@@ -2420,14 +2429,23 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' @param configParameters An array of parameters to set for advanced control over a database. The
 #' options are `auto_mv`, `datestyle`, `enable_case_sensitive_identifier`,
 #' `enable_user_activity_logging`, `query_group`, `search_path`,
-#' `require_ssl`, `use_fips_ssl`, and query monitoring metrics that let you
-#' define performance boundaries. For more information about query
+#' `require_ssl`, `use_fips_ssl`, and either `wlm_json_configuration` or
+#' query monitoring metrics that let you define performance boundaries. You
+#' can either specify individual query monitoring metrics (such as
+#' `max_scan_row_count`, `max_query_execution_time`) or use
+#' `wlm_json_configuration` to define query queues with rules, but not
+#' both. If you're using `wlm_json_configuration`, the maximum size of
+#' `parameterValue` is 8000 characters. For more information about query
 #' monitoring rules and available metrics, see [Query monitoring metrics
 #' for Amazon Redshift
 #' Serverless](https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless).
 #' @param enhancedVpcRouting The value that specifies whether to turn on enhanced virtual private
 #' cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 #' traffic through your VPC.
+#' @param extraComputeForAutomaticOptimization If `true`, allocates additional compute resources for running automatic
+#' optimization operations.
+#' 
+#' Default: false
 #' @param ipAddressType The IP address type that the workgroup supports. Possible values are
 #' `ipv4` and `dualstack`.
 #' @param maxCapacity The maximum data-warehouse capacity Amazon Redshift Serverless uses to
@@ -2449,7 +2467,7 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_update_workgroup
-redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, port = NULL, pricePerformanceTarget = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, trackName = NULL, workgroupName) {
+redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, extraComputeForAutomaticOptimization = NULL, ipAddressType = NULL, maxCapacity = NULL, port = NULL, pricePerformanceTarget = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, trackName = NULL, workgroupName) {
   op <- new_operation(
     name = "UpdateWorkgroup",
     http_method = "POST",
@@ -2458,7 +2476,7 @@ redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParam
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, port = port, pricePerformanceTarget = pricePerformanceTarget, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, trackName = trackName, workgroupName = workgroupName)
+  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, extraComputeForAutomaticOptimization = extraComputeForAutomaticOptimization, ipAddressType = ipAddressType, maxCapacity = maxCapacity, port = port, pricePerformanceTarget = pricePerformanceTarget, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, trackName = trackName, workgroupName = workgroupName)
   output <- .redshiftserverless$update_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)

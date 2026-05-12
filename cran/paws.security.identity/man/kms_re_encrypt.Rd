@@ -5,7 +5,7 @@
 \title{Decrypts ciphertext and then reencrypts it entirely within KMS}
 \usage{
 kms_re_encrypt(
-  CiphertextBlob,
+  CiphertextBlob = NULL,
   SourceEncryptionContext = NULL,
   SourceKeyId = NULL,
   DestinationKeyId,
@@ -13,11 +13,15 @@ kms_re_encrypt(
   SourceEncryptionAlgorithm = NULL,
   DestinationEncryptionAlgorithm = NULL,
   GrantTokens = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  DryRunModifiers = NULL
 )
 }
 \arguments{
-\item{CiphertextBlob}{[required] Ciphertext of the data to reencrypt.}
+\item{CiphertextBlob}{Ciphertext of the data to reencrypt.
+
+This parameter is required in all cases except when \code{DryRun} is \code{true}
+and \code{DryRunModifiers} is set to \code{IGNORE_CIPHERTEXT}.}
 
 \item{SourceEncryptionContext}{Specifies the encryption context to use to decrypt the ciphertext. Enter
 the same encryption context that was used to encrypt the ciphertext.
@@ -41,15 +45,16 @@ If you identify a different KMS key, the \code{\link[=kms_re_encrypt]{re_encrypt
 operation throws an \code{IncorrectKeyException}.
 
 This parameter is required only when the ciphertext was encrypted under
-an asymmetric KMS key. If you used a symmetric encryption KMS key, KMS
-can get the KMS key from metadata that it adds to the symmetric
+an asymmetric KMS key or when \code{DryRun} is \code{true} and \code{DryRunModifiers}
+is set to \code{IGNORE_CIPHERTEXT}. If you used a symmetric encryption KMS
+key, KMS can get the KMS key from metadata that it adds to the symmetric
 ciphertext blob. However, it is always recommended as a best practice.
 This practice ensures that you use the KMS key that you intend.
 
 To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
 When using an alias name, prefix it with \code{"alias/"}. To specify a KMS
-key in a different Amazon Web Services account, you must use the key ARN
-or alias ARN.
+key in a different Amazon Web Services account, you should use the key
+ARN or alias ARN.
 
 For example:
 \itemize{
@@ -137,6 +142,17 @@ and \href{https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-toke
 in the \emph{Key Management Service Developer Guide}.}
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions}
+in the \emph{Key Management Service Developer Guide}.}
+
+\item{DryRunModifiers}{Specifies the modifiers to apply to the dry run operation.
+\code{DryRunModifiers} is an optional parameter that only applies when
+\code{DryRun} is set to \code{true}.
+
+When set to \code{IGNORE_CIPHERTEXT}, KMS performs only authorization
+validation without ciphertext validation. This allows you to test
+permissions without requiring a valid ciphertext blob.
 
 To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions}
 in the \emph{Key Management Service Developer Guide}.}

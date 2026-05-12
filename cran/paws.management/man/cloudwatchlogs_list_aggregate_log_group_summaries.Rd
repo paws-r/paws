@@ -58,8 +58,6 @@ groups associated with the specified data sources.}
 
 \item{groupBy}{[required] Specifies how to group the log groups in the summary.}
 
-\item{nextToken}{}
-
 \item{limit}{The maximum number of aggregated summaries to return. If you omit this
 parameter, the default is up to 50 aggregated summaries.}
 }

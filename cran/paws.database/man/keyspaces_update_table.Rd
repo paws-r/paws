@@ -18,7 +18,8 @@ keyspaces_update_table(
   clientSideTimestamps = NULL,
   autoScalingSpecification = NULL,
   replicaSpecifications = NULL,
-  cdcSpecification = NULL
+  cdcSpecification = NULL,
+  warmThroughputSpecification = NULL
 )
 }
 \arguments{
@@ -118,6 +119,9 @@ in the \emph{Amazon Keyspaces Developer Guide}.}
 \item{replicaSpecifications}{The Region specific settings of a multi-Regional table.}
 
 \item{cdcSpecification}{The CDC stream settings of the table.}
+
+\item{warmThroughputSpecification}{Modifies the warm throughput settings for the table. You can update the
+read and write capacity units to adjust the pre-provisioned throughput.}
 }
 \description{
 Adds new columns to the table or updates one of the table's settings, for example capacity mode, auto scaling, encryption, point-in-time recovery, or ttl settings. Note that you can only update one specific table setting per update operation.

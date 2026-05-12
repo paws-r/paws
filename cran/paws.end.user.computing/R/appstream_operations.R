@@ -414,11 +414,13 @@ appstream_create_app_block <- function(Name, Description = NULL, DisplayName = N
 #' @param AccessEndpoints The list of interface VPC endpoint (interface endpoint) objects.
 #' Administrators can connect to the app block builder only through the
 #' specified endpoints.
+#' @param DisableIMDSV1 Set to true to disable Instance Metadata Service Version 1 (IMDSv1) and
+#' enforce IMDSv2. Set to false to enable both IMDSv1 and IMDSv2.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_create_app_block_builder
-appstream_create_app_block_builder <- function(Name, Description = NULL, DisplayName = NULL, Tags = NULL, Platform, InstanceType, VpcConfig, EnableDefaultInternetAccess = NULL, IamRoleArn = NULL, AccessEndpoints = NULL) {
+appstream_create_app_block_builder <- function(Name, Description = NULL, DisplayName = NULL, Tags = NULL, Platform, InstanceType, VpcConfig, EnableDefaultInternetAccess = NULL, IamRoleArn = NULL, AccessEndpoints = NULL, DisableIMDSV1 = NULL) {
   op <- new_operation(
     name = "CreateAppBlockBuilder",
     http_method = "POST",
@@ -427,7 +429,7 @@ appstream_create_app_block_builder <- function(Name, Description = NULL, Display
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .appstream$create_app_block_builder_input(Name = Name, Description = Description, DisplayName = DisplayName, Tags = Tags, Platform = Platform, InstanceType = InstanceType, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, IamRoleArn = IamRoleArn, AccessEndpoints = AccessEndpoints)
+  input <- .appstream$create_app_block_builder_input(Name = Name, Description = Description, DisplayName = DisplayName, Tags = Tags, Platform = Platform, InstanceType = InstanceType, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, IamRoleArn = IamRoleArn, AccessEndpoints = AccessEndpoints, DisableIMDSV1 = DisableIMDSV1)
   output <- .appstream$create_app_block_builder_output()
   config <- get_config()
   svc <- .appstream$service(config, op)
@@ -866,11 +868,17 @@ appstream_create_export_image_task <- function(ImageName, AmiName, IamRoleArn, T
 #' @param RootVolumeConfig The configuration for the root volume of fleet instances. Use this to
 #' customize storage capacity from 200 GB up to 500 GB based on your
 #' application requirements.
+#' @param DisableIMDSV1 Set to true to disable Instance Metadata Service Version 1 (IMDSv1) and
+#' enforce IMDSv2. Set to false to enable both IMDSv1 and IMDSv2.
+#' 
+#' Before disabling IMDSv1, ensure your WorkSpaces Applications images are
+#' running the agent version or managed image update released on or after
+#' January 16, 2024 to support IMDSv2 enforcement.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_create_fleet
-appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL, IdleDisconnectTimeoutInSeconds = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL, MaxSessionsPerInstance = NULL, RootVolumeConfig = NULL) {
+appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL, IdleDisconnectTimeoutInSeconds = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL, MaxSessionsPerInstance = NULL, RootVolumeConfig = NULL, DisableIMDSV1 = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
@@ -879,7 +887,7 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance, RootVolumeConfig = RootVolumeConfig)
+  input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance, RootVolumeConfig = RootVolumeConfig, DisableIMDSV1 = DisableIMDSV1)
   output <- .appstream$create_fleet_output()
   config <- get_config()
   svc <- .appstream$service(config, op)
@@ -1139,11 +1147,17 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' -   Microsoft_Project_2024_Standard_32Bit
 #' 
 #' -   Microsoft_Project_2024_Standard_64Bit
+#' @param DisableIMDSV1 Set to true to disable Instance Metadata Service Version 1 (IMDSv1) and
+#' enforce IMDSv2. Set to false to enable both IMDSv1 and IMDSv2.
+#' 
+#' Before disabling IMDSv1, ensure your WorkSpaces Applications images are
+#' running the agent version or managed image update released on or after
+#' January 16, 2024 to support IMDSv2 enforcement.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_create_image_builder
-appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, Description = NULL, DisplayName = NULL, VpcConfig = NULL, IamRoleArn = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, AppstreamAgentVersion = NULL, Tags = NULL, AccessEndpoints = NULL, RootVolumeConfig = NULL, SoftwaresToInstall = NULL, SoftwaresToUninstall = NULL) {
+appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, Description = NULL, DisplayName = NULL, VpcConfig = NULL, IamRoleArn = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, AppstreamAgentVersion = NULL, Tags = NULL, AccessEndpoints = NULL, RootVolumeConfig = NULL, SoftwaresToInstall = NULL, SoftwaresToUninstall = NULL, DisableIMDSV1 = NULL) {
   op <- new_operation(
     name = "CreateImageBuilder",
     http_method = "POST",
@@ -1152,7 +1166,7 @@ appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .appstream$create_image_builder_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, Description = Description, DisplayName = DisplayName, VpcConfig = VpcConfig, IamRoleArn = IamRoleArn, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, AppstreamAgentVersion = AppstreamAgentVersion, Tags = Tags, AccessEndpoints = AccessEndpoints, RootVolumeConfig = RootVolumeConfig, SoftwaresToInstall = SoftwaresToInstall, SoftwaresToUninstall = SoftwaresToUninstall)
+  input <- .appstream$create_image_builder_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, Description = Description, DisplayName = DisplayName, VpcConfig = VpcConfig, IamRoleArn = IamRoleArn, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, AppstreamAgentVersion = AppstreamAgentVersion, Tags = Tags, AccessEndpoints = AccessEndpoints, RootVolumeConfig = RootVolumeConfig, SoftwaresToInstall = SoftwaresToInstall, SoftwaresToUninstall = SoftwaresToUninstall, DisableIMDSV1 = DisableIMDSV1)
   output <- .appstream$create_image_builder_output()
   config <- get_config()
   svc <- .appstream$service(config, op)
@@ -1298,11 +1312,14 @@ appstream_create_imported_image <- function(Name, SourceAmiId, IamRoleArn, Descr
 #' host embedded WorkSpaces Applications streaming sessions.
 #' @param StreamingExperienceSettings The streaming protocol you want your stack to prefer. This can be UDP or
 #' TCP. Currently, UDP is only supported in the Windows native client.
+#' @param ContentRedirection 
+#' @param AgentAccessConfig The configuration for agent access on the stack. If specified, agent
+#' access is enabled for the stack.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_create_stack
-appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL, StorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, UserSettings = NULL, ApplicationSettings = NULL, Tags = NULL, AccessEndpoints = NULL, EmbedHostDomains = NULL, StreamingExperienceSettings = NULL) {
+appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL, StorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, UserSettings = NULL, ApplicationSettings = NULL, Tags = NULL, AccessEndpoints = NULL, EmbedHostDomains = NULL, StreamingExperienceSettings = NULL, ContentRedirection = NULL, AgentAccessConfig = NULL) {
   op <- new_operation(
     name = "CreateStack",
     http_method = "POST",
@@ -1311,7 +1328,7 @@ appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .appstream$create_stack_input(Name = Name, Description = Description, DisplayName = DisplayName, StorageConnectors = StorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, Tags = Tags, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains, StreamingExperienceSettings = StreamingExperienceSettings)
+  input <- .appstream$create_stack_input(Name = Name, Description = Description, DisplayName = DisplayName, StorageConnectors = StorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, Tags = Tags, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains, StreamingExperienceSettings = StreamingExperienceSettings, ContentRedirection = ContentRedirection, AgentAccessConfig = AgentAccessConfig)
   output <- .appstream$create_stack_output()
   config <- get_config()
   svc <- .appstream$service(config, op)
@@ -2880,6 +2897,37 @@ appstream_disassociate_software_from_image_builder <- function(ImageBuilderName,
 }
 .appstream$operations$disassociate_software_from_image_builder <- appstream_disassociate_software_from_image_builder
 
+#' Drains the instance hosting the specified streaming session
+#'
+#' @description
+#' Drains the instance hosting the specified streaming session. The instance stops accepting new sessions while existing sessions continue uninterrupted. Once all sessions end, the instance is reclaimed and replaced. This only applies to multi-session fleets.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_drain_session_instance/](https://www.paws-r-sdk.com/docs/appstream_drain_session_instance/) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; The identifier of the streaming session.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_drain_session_instance
+appstream_drain_session_instance <- function(SessionId) {
+  op <- new_operation(
+    name = "DrainSessionInstance",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .appstream$drain_session_instance_input(SessionId = SessionId)
+  output <- .appstream$drain_session_instance_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$drain_session_instance <- appstream_drain_session_instance
+
 #' Enables a user in the user pool
 #'
 #' @description
@@ -3497,11 +3545,13 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
 #' Administrators can connect to the app block builder only through the
 #' specified endpoints.
 #' @param AttributesToDelete The attributes to delete from the app block builder.
+#' @param DisableIMDSV1 Set to true to disable Instance Metadata Service Version 1 (IMDSv1) and
+#' enforce IMDSv2. Set to false to enable both IMDSv1 and IMDSv2.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_update_app_block_builder
-appstream_update_app_block_builder <- function(Name, Description = NULL, DisplayName = NULL, Platform = NULL, InstanceType = NULL, VpcConfig = NULL, EnableDefaultInternetAccess = NULL, IamRoleArn = NULL, AccessEndpoints = NULL, AttributesToDelete = NULL) {
+appstream_update_app_block_builder <- function(Name, Description = NULL, DisplayName = NULL, Platform = NULL, InstanceType = NULL, VpcConfig = NULL, EnableDefaultInternetAccess = NULL, IamRoleArn = NULL, AccessEndpoints = NULL, AttributesToDelete = NULL, DisableIMDSV1 = NULL) {
   op <- new_operation(
     name = "UpdateAppBlockBuilder",
     http_method = "POST",
@@ -3510,7 +3560,7 @@ appstream_update_app_block_builder <- function(Name, Description = NULL, Display
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .appstream$update_app_block_builder_input(Name = Name, Description = Description, DisplayName = DisplayName, Platform = Platform, InstanceType = InstanceType, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, IamRoleArn = IamRoleArn, AccessEndpoints = AccessEndpoints, AttributesToDelete = AttributesToDelete)
+  input <- .appstream$update_app_block_builder_input(Name = Name, Description = Description, DisplayName = DisplayName, Platform = Platform, InstanceType = InstanceType, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, IamRoleArn = IamRoleArn, AccessEndpoints = AccessEndpoints, AttributesToDelete = AttributesToDelete, DisableIMDSV1 = DisableIMDSV1)
   output <- .appstream$update_app_block_builder_output()
   config <- get_config()
   svc <- .appstream$service(config, op)
@@ -3840,11 +3890,17 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' multi-session fleets.
 #' @param RootVolumeConfig The updated configuration for the root volume of fleet instances. Note
 #' that volume size cannot be decreased below the image volume size.
+#' @param DisableIMDSV1 Set to true to disable Instance Metadata Service Version 1 (IMDSv1) and
+#' enforce IMDSv2. Set to false to enable both IMDSv1 and IMDSv2.
+#' 
+#' Before disabling IMDSv1, ensure your WorkSpaces Applications images are
+#' running the agent version or managed image update released on or after
+#' January 16, 2024 to support IMDSv2 enforcement.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_update_fleet
-appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, IdleDisconnectTimeoutInSeconds = NULL, AttributesToDelete = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL, MaxSessionsPerInstance = NULL, RootVolumeConfig = NULL) {
+appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, IdleDisconnectTimeoutInSeconds = NULL, AttributesToDelete = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL, MaxSessionsPerInstance = NULL, RootVolumeConfig = NULL, DisableIMDSV1 = NULL) {
   op <- new_operation(
     name = "UpdateFleet",
     http_method = "POST",
@@ -3853,7 +3909,7 @@ appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance, RootVolumeConfig = RootVolumeConfig)
+  input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance, RootVolumeConfig = RootVolumeConfig, DisableIMDSV1 = DisableIMDSV1)
   output <- .appstream$update_fleet_output()
   config <- get_config()
   svc <- .appstream$service(config, op)
@@ -3927,11 +3983,15 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #' host embedded WorkSpaces Applications streaming sessions.
 #' @param StreamingExperienceSettings The streaming protocol you want your stack to prefer. This can be UDP or
 #' TCP. Currently, UDP is only supported in the Windows native client.
+#' @param ContentRedirection 
+#' @param AgentAccessConfig The configuration for agent access on the stack. Specify this to update
+#' agent access settings. To remove agent access, use AttributesToDelete
+#' with the AGENT_ACCESS_CONFIG value.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_update_stack
-appstream_update_stack <- function(DisplayName = NULL, Description = NULL, Name, StorageConnectors = NULL, DeleteStorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, AttributesToDelete = NULL, UserSettings = NULL, ApplicationSettings = NULL, AccessEndpoints = NULL, EmbedHostDomains = NULL, StreamingExperienceSettings = NULL) {
+appstream_update_stack <- function(DisplayName = NULL, Description = NULL, Name, StorageConnectors = NULL, DeleteStorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, AttributesToDelete = NULL, UserSettings = NULL, ApplicationSettings = NULL, AccessEndpoints = NULL, EmbedHostDomains = NULL, StreamingExperienceSettings = NULL, ContentRedirection = NULL, AgentAccessConfig = NULL) {
   op <- new_operation(
     name = "UpdateStack",
     http_method = "POST",
@@ -3940,7 +4000,7 @@ appstream_update_stack <- function(DisplayName = NULL, Description = NULL, Name,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .appstream$update_stack_input(DisplayName = DisplayName, Description = Description, Name = Name, StorageConnectors = StorageConnectors, DeleteStorageConnectors = DeleteStorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, AttributesToDelete = AttributesToDelete, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains, StreamingExperienceSettings = StreamingExperienceSettings)
+  input <- .appstream$update_stack_input(DisplayName = DisplayName, Description = Description, Name = Name, StorageConnectors = StorageConnectors, DeleteStorageConnectors = DeleteStorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, AttributesToDelete = AttributesToDelete, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains, StreamingExperienceSettings = StreamingExperienceSettings, ContentRedirection = ContentRedirection, AgentAccessConfig = AgentAccessConfig)
   output <- .appstream$update_stack_output()
   config <- get_config()
   svc <- .appstream$service(config, op)

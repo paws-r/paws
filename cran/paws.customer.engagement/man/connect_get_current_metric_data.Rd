@@ -154,6 +154,20 @@ Unit: COUNT
 Name in real-time metrics report:
 \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#scheduled-real-time}{Scheduled}
 
+\strong{ESTIMATED_WAIT_TIME}
+
+Unit: SECONDS
+
+This metric supports filter and grouping combination only used for core
+routing purpose. Valid filter and grouping use cases:
+\itemize{
+\item Filter by a list of [Queues] and a list of [Channels], group by
+[“QUEUE”, “CHANNEL”]
+\item Filter by a singleton list of [Queue], a singleton list of
+[Channel], a list of [RoutingStepExpression], group by
+[“ROUTING_STEP_EXPRESSION”].
+}
+
 \strong{OLDEST_CONTACT_AGE}
 
 Unit: SECONDS

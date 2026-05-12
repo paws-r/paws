@@ -3,7 +3,7 @@
 \name{securityhub_list_members}
 \alias{securityhub_list_members}
 \title{Lists details about all member accounts for the current Security Hub
-administrator account}
+CSPM administrator account}
 \usage{
 securityhub_list_members(
   OnlyAssociated = NULL,
@@ -34,7 +34,7 @@ value of this parameter to the value returned from the previous
 response.}
 }
 \description{
-Lists details about all member accounts for the current Security Hub administrator account.
+Lists details about all member accounts for the current Security Hub CSPM administrator account.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_list_members/} for full documentation.
 }

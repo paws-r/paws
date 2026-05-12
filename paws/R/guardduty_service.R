@@ -237,7 +237,7 @@ guardduty <- function(config = list(), credentials = list(), endpoint = NULL, re
   service_id = "GuardDuty",
   api_version = "2017-11-28",
   signing_name = "guardduty",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

@@ -8,7 +8,8 @@ kinesis_list_tags_for_stream(
   StreamName = NULL,
   ExclusiveStartTagKey = NULL,
   Limit = NULL,
-  StreamARN = NULL
+  StreamARN = NULL,
+  StreamId = NULL
 )
 }
 \arguments{
@@ -24,6 +25,8 @@ number of tags associated with the stream, \code{HasMoreTags} is set to
 key in the response.}
 
 \item{StreamARN}{The ARN of the stream.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Lists the tags for the specified Kinesis data stream. This operation has a limit of five transactions per second per account.

@@ -3,7 +3,7 @@
 \name{securityhub_list_enabled_products_for_import}
 \alias{securityhub_list_enabled_products_for_import}
 \title{Lists all findings-generating solutions (products) that you are
-subscribed to receive findings from in Security Hub}
+subscribed to receive findings from in Security Hub CSPM}
 \usage{
 securityhub_list_enabled_products_for_import(
   NextToken = NULL,
@@ -22,7 +22,7 @@ response.}
 \item{MaxResults}{The maximum number of items to return in the response.}
 }
 \description{
-Lists all findings-generating solutions (products) that you are subscribed to receive findings from in Security Hub.
+Lists all findings-generating solutions (products) that you are subscribed to receive findings from in Security Hub CSPM.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_list_enabled_products_for_import/} for full documentation.
 }

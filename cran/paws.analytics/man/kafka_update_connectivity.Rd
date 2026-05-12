@@ -4,16 +4,23 @@
 \alias{kafka_update_connectivity}
 \title{Updates the cluster's connectivity configuration}
 \usage{
-kafka_update_connectivity(ClusterArn, ConnectivityInfo, CurrentVersion)
+kafka_update_connectivity(
+  ClusterArn,
+  ConnectivityInfo = NULL,
+  CurrentVersion,
+  ZookeeperAccess = NULL
+)
 }
 \arguments{
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) of the configuration.}
 
-\item{ConnectivityInfo}{[required] Information about the broker access configuration.}
+\item{ConnectivityInfo}{Information about the broker access configuration.}
 
 \item{CurrentVersion}{[required] The version of the MSK cluster to update. Cluster versions aren't simple
 numbers. You can describe an MSK cluster to find its version. When this
 update operation is successful, it generates a new cluster version.}
+
+\item{ZookeeperAccess}{Access control settings for zookeeper}
 }
 \description{
 Updates the cluster's connectivity configuration.

@@ -5,38 +5,38 @@
 \title{Creates a new Launch Configuration Template}
 \usage{
 drs_create_launch_configuration_template(
+  tags = NULL,
+  launchDisposition = NULL,
+  targetInstanceTypeRightSizingMethod = NULL,
   copyPrivateIp = NULL,
   copyTags = NULL,
-  exportBucketArn = NULL,
-  launchDisposition = NULL,
-  launchIntoSourceInstance = NULL,
   licensing = NULL,
+  exportBucketArn = NULL,
   postLaunchEnabled = NULL,
-  tags = NULL,
-  targetInstanceTypeRightSizingMethod = NULL
+  launchIntoSourceInstance = NULL
 )
 }
 \arguments{
+\item{tags}{Request to associate tags during creation of a Launch Configuration
+Template.}
+
+\item{launchDisposition}{Launch disposition.}
+
+\item{targetInstanceTypeRightSizingMethod}{Target instance type right-sizing method.}
+
 \item{copyPrivateIp}{Copy private IP.}
 
 \item{copyTags}{Copy tags.}
 
+\item{licensing}{Licensing.}
+
 \item{exportBucketArn}{S3 bucket ARN to export Source Network templates.}
 
-\item{launchDisposition}{Launch disposition.}
+\item{postLaunchEnabled}{Whether we want to activate post-launch actions.}
 
 \item{launchIntoSourceInstance}{DRS will set the 'launch into instance ID' of any source server when
 performing a drill, recovery or failback to the previous region or
 availability zone, using the instance ID of the source instance.}
-
-\item{licensing}{Licensing.}
-
-\item{postLaunchEnabled}{Whether we want to activate post-launch actions.}
-
-\item{tags}{Request to associate tags during creation of a Launch Configuration
-Template.}
-
-\item{targetInstanceTypeRightSizingMethod}{Target instance type right-sizing method.}
 }
 \description{
 Creates a new Launch Configuration Template.

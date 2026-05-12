@@ -16,6 +16,7 @@ imagebuilder_create_image_pipeline(
   schedule = NULL,
   status = NULL,
   tags = NULL,
+  imageTags = NULL,
   clientToken,
   imageScanningConfiguration = NULL,
   workflows = NULL,
@@ -53,6 +54,8 @@ Enabled by default.}
 \item{status}{The status of the image pipeline.}
 
 \item{tags}{The tags of the image pipeline.}
+
+\item{imageTags}{The tags to be applied to the images produced by this pipeline.}
 
 \item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}

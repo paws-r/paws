@@ -20,16 +20,12 @@ applied.}
 
 \item{Name}{[required] The name of the project to apply the action to.}
 
-\item{RecipeStep}{}
-
 \item{StepIndex}{The index from which to preview a step. This index is used to preview
 the result of steps that have already been applied, so that the
 resulting view frame is from earlier in the view frame stack.}
 
 \item{ClientSessionId}{A unique identifier for an interactive session that's currently open and
 ready for work. The action will be performed on this session.}
-
-\item{ViewFrame}{}
 }
 \description{
 Performs a recipe step within an interactive DataBrew session that's currently open.

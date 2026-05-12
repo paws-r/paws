@@ -18,6 +18,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{paws.common}{\code{\link[paws.common:set_service_parameter]{config}}, \code{\link[paws.common:set_service_parameter]{credentials}}, \code{\link[paws.common:set_service_parameter]{creds}}, \code{\link[paws.common]{list_paginators}}, \code{\link[paws.common]{paginate}}, \code{\link[paws.common:paginate]{paginate_lapply}}, \code{\link[paws.common:paginate]{paginate_sapply}}, \code{\link[paws.common:paws_stream]{paws_stream_parser}}}
+  \item{paws.common}{\code{\link[paws.common:config]{config()}}, \code{\link[paws.common:credentials]{credentials()}}, \code{\link[paws.common:creds]{creds()}}, \code{\link[paws.common:list_paginators]{list_paginators()}}, \code{\link[paws.common:paginate]{paginate()}}, \code{\link[paws.common:paginate_lapply]{paginate_lapply()}}, \code{\link[paws.common:paginate_sapply]{paginate_sapply()}}, \code{\link[paws.common:paws_stream_parser]{paws_stream_parser()}}}
 }}
 

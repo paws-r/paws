@@ -11,7 +11,7 @@ securityhub_get_configuration_policy(Identifier)
 of the configuration policy.}
 }
 \description{
-Provides information about a configuration policy. Only the Security Hub delegated administrator can invoke this operation from the home Region.
+Provides information about a configuration policy. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_get_configuration_policy/} for full documentation.
 }

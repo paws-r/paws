@@ -22,8 +22,6 @@ request. It takes some time after you've made a valid request for
 Feature Store to update the feature group.}
 
 \item{OnlineStoreConfig}{Updates the feature group online store configuration.}
-
-\item{ThroughputConfig}{}
 }
 \description{
 Updates the feature group by either adding features or updating the online store configuration. Use one of the following request parameters at a time while using the \code{\link[=sagemaker_update_feature_group]{update_feature_group}} API.

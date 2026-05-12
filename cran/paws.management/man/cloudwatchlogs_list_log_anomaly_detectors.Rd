@@ -16,8 +16,6 @@ detectors that are associated with the specified log group.}
 
 \item{limit}{The maximum number of items to return. If you don't specify a value, the
 default maximum value of 50 items is used.}
-
-\item{nextToken}{}
 }
 \description{
 Retrieves a list of the log anomaly detectors in the account.

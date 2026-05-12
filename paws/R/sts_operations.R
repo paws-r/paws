@@ -1202,7 +1202,7 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 #' 
 #' The STS global endpoint is not supported for AssumeRoot. You must send
 #' this request to a Regional STS endpoint. For more information, see
-#' [Endpoints](https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html#sts-endpoints).
+#' [Endpoints](https://docs.aws.amazon.com/STS/latest/APIReference/#sts-endpoints).
 #' 
 #' You can track AssumeRoot in CloudTrail logs to determine what actions
 #' were performed in a session. For more information, see [Track privileged
@@ -1218,7 +1218,7 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 #' policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
 #' (SCPs) to manage and limit permissions in your organization. See
 #' [General
-#' examples](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_examples_general.html)
+#' examples](https://docs.aws.amazon.com/organizations/latest/userguide/)
 #' in the *Organizations User Guide* for more information on SCPs.
 #'
 #' @usage

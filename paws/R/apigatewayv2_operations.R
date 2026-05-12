@@ -1020,7 +1020,7 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
 #'     )
 #'   ),
 #'   PortalId = "string",
-#'   PublishStatus = "PUBLISHED"|"PUBLISH_IN_PROGRESS"|"PUBLISH_FAILED"|"DISABLED",
+#'   PublishStatus = "PUBLISHED"|"PUBLISH_IN_PROGRESS"|"PUBLISH_FAILED"|"DISABLE_IN_PROGRESS"|"DISABLE_FAILED"|"DISABLED",
 #'   RumAppMonitorName = "string",
 #'   StatusException = list(
 #'     Exception = "string",
@@ -4296,7 +4296,7 @@ apigatewayv2_get_models <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #'       Message = "string"
 #'     )
 #'   ),
-#'   PublishStatus = "PUBLISHED"|"PUBLISH_IN_PROGRESS"|"PUBLISH_FAILED"|"DISABLED",
+#'   PublishStatus = "PUBLISHED"|"PUBLISH_IN_PROGRESS"|"PUBLISH_FAILED"|"DISABLE_IN_PROGRESS"|"DISABLE_FAILED"|"DISABLED",
 #'   RumAppMonitorName = "string",
 #'   StatusException = list(
 #'     Exception = "string",
@@ -5671,7 +5671,7 @@ apigatewayv2_list_portal_products <- function(MaxResults = NULL, NextToken = NUL
 #'           Message = "string"
 #'         )
 #'       ),
-#'       PublishStatus = "PUBLISHED"|"PUBLISH_IN_PROGRESS"|"PUBLISH_FAILED"|"DISABLED",
+#'       PublishStatus = "PUBLISHED"|"PUBLISH_IN_PROGRESS"|"PUBLISH_FAILED"|"DISABLE_IN_PROGRESS"|"DISABLE_FAILED"|"DISABLED",
 #'       RumAppMonitorName = "string",
 #'       StatusException = list(
 #'         Exception = "string",
@@ -7339,7 +7339,7 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
 #'       Message = "string"
 #'     )
 #'   ),
-#'   PublishStatus = "PUBLISHED"|"PUBLISH_IN_PROGRESS"|"PUBLISH_FAILED"|"DISABLED",
+#'   PublishStatus = "PUBLISHED"|"PUBLISH_IN_PROGRESS"|"PUBLISH_FAILED"|"DISABLE_IN_PROGRESS"|"DISABLE_FAILED"|"DISABLED",
 #'   RumAppMonitorName = "string",
 #'   StatusException = list(
 #'     Exception = "string",

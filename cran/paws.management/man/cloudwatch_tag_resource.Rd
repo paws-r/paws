@@ -16,13 +16,19 @@ The ARN format of an alarm is
 The ARN format of a Contributor Insights rule is
 \code{arn:aws:cloudwatch:Region:account-id:insight-rule/insight-rule-name }
 
+The ARN format of a dashboard is
+\code{arn:aws:cloudwatch::account-id:dashboard/dashboard-name }
+
+The ARN format of a metric stream is
+\code{arn:aws:cloudwatch:Region:account-id:metric-stream/metric-stream-name }
+
 For more information about ARN format, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies}{Resource Types Defined by Amazon CloudWatch}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{Tags}{[required] The list of key-value pairs to associate with the alarm.}
 }
 \description{
-Assigns one or more tags (key-value pairs) to the specified CloudWatch resource. Currently, the only CloudWatch resources that can be tagged are alarms and Contributor Insights rules.
+Assigns one or more tags (key-value pairs) to the specified CloudWatch resource. Currently, the only CloudWatch resources that can be tagged are alarms, dashboards, metric streams and Contributor Insights rules.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatch_tag_resource/} for full documentation.
 }

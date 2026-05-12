@@ -5,10 +5,23 @@
 \title{Associates the specified Amazon Web Services Systems Manager document
 (SSM document) with the specified managed nodes or targets}
 \usage{
-ssm_create_association_batch(Entries)
+ssm_create_association_batch(Entries, AssociationDispatchAssumeRole = NULL)
 }
 \arguments{
 \item{Entries}{[required] One or more associations.}
+
+\item{AssociationDispatchAssumeRole}{A role used by association to take actions on your behalf. State Manager
+will assume this role and call required APIs when dispatching
+configurations to nodes. If not specified, \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html}{service-linked role for Systems Manager}
+will be used by default.
+
+It is recommended that you define a custom IAM role so that you have
+full control of the permissions that State Manager has when taking
+actions on your behalf.
+
+Service-linked role support in State Manager is being phased out.
+Associations relying on service-linked role may require updates in the
+future to continue functioning properly.}
 }
 \description{
 Associates the specified Amazon Web Services Systems Manager document (SSM document) with the specified managed nodes or targets.

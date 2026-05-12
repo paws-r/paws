@@ -7,8 +7,6 @@
 fsx_delete_snapshot(ClientRequestToken = NULL, SnapshotId)
 }
 \arguments{
-\item{ClientRequestToken}{}
-
 \item{SnapshotId}{[required] The ID of the snapshot that you want to delete.}
 }
 \description{

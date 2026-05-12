@@ -14,8 +14,6 @@ wellarchitected_get_lens_review_report(
 \item{WorkloadId}{[required]}
 
 \item{LensAlias}{[required]}
-
-\item{MilestoneNumber}{}
 }
 \description{
 Get lens review report.

@@ -5,18 +5,18 @@
 \title{Rejects the specified subscription request}
 \usage{
 datazone_reject_subscription_request(
-  decisionComment = NULL,
   domainIdentifier,
-  identifier
+  identifier,
+  decisionComment = NULL
 )
 }
 \arguments{
-\item{decisionComment}{The decision comment of the rejected subscription request.}
-
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which the subscription
 request was rejected.}
 
 \item{identifier}{[required] The identifier of the subscription request that was rejected.}
+
+\item{decisionComment}{The decision comment of the rejected subscription request.}
 }
 \description{
 Rejects the specified subscription request.

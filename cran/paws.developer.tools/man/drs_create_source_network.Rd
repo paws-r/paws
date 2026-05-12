@@ -4,16 +4,16 @@
 \alias{drs_create_source_network}
 \title{Create a new Source Network resource for a provided VPC ID}
 \usage{
-drs_create_source_network(originAccountID, originRegion, tags = NULL, vpcID)
+drs_create_source_network(vpcID, originAccountID, originRegion, tags = NULL)
 }
 \arguments{
+\item{vpcID}{[required] Which VPC ID to protect.}
+
 \item{originAccountID}{[required] Account containing the VPC to protect.}
 
 \item{originRegion}{[required] Region containing the VPC to protect.}
 
 \item{tags}{A set of tags to be associated with the Source Network resource.}
-
-\item{vpcID}{[required] Which VPC ID to protect.}
 }
 \description{
 Create a new Source Network resource for a provided VPC ID.

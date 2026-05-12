@@ -7,6 +7,7 @@
 omics_list_runs(
   name = NULL,
   runGroupId = NULL,
+  batchId = NULL,
   startingToken = NULL,
   maxResults = NULL,
   status = NULL
@@ -16,6 +17,8 @@ omics_list_runs(
 \item{name}{Filter the list by run name.}
 
 \item{runGroupId}{Filter the list by run group ID.}
+
+\item{batchId}{Filter by batch ID.}
 
 \item{startingToken}{Specify the pagination token from a previous request to retrieve the
 next page of results.}

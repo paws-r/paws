@@ -23,7 +23,8 @@ view.}
 
 \item{dataFilterExpression}{See
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_Expression.html}{Expression}.
-Billing view only supports \code{LINKED_ACCOUNT} and \code{Tags}.}
+Billing view only supports \code{LINKED_ACCOUNT}, \code{Tags}, and
+\code{CostCategories}.}
 
 \item{clientToken}{A unique, case-sensitive identifier you specify to ensure idempotency of
 the request. Idempotency ensures that an API request completes no more

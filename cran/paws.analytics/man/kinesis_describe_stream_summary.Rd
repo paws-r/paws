@@ -5,12 +5,18 @@
 \title{Provides a summarized description of the specified Kinesis data stream
 without the shard list}
 \usage{
-kinesis_describe_stream_summary(StreamName = NULL, StreamARN = NULL)
+kinesis_describe_stream_summary(
+  StreamName = NULL,
+  StreamARN = NULL,
+  StreamId = NULL
+)
 }
 \arguments{
 \item{StreamName}{The name of the stream to describe.}
 
 \item{StreamARN}{The ARN of the stream.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Provides a summarized description of the specified Kinesis data stream without the shard list.

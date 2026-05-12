@@ -15,6 +15,11 @@ s3_upload_part(
   ChecksumCRC64NVME = NULL,
   ChecksumSHA1 = NULL,
   ChecksumSHA256 = NULL,
+  ChecksumSHA512 = NULL,
+  ChecksumMD5 = NULL,
+  ChecksumXXHASH64 = NULL,
+  ChecksumXXHASH3 = NULL,
+  ChecksumXXHASH128 = NULL,
   Key,
   PartNumber,
   UploadId,
@@ -118,6 +123,36 @@ specifies the Base64 encoded, 256-bit \code{SHA256} digest of the object. For
 more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
+\item{ChecksumSHA512}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the Base64 encoded, 512-bit \code{SHA512} digest of the part. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumMD5}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the Base64 encoded, 128-bit \code{MD5} digest of the part. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumXXHASH64}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the Base64 encoded, 64-bit \code{XXHASH64} checksum of the part.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumXXHASH3}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the Base64 encoded, 64-bit \code{XXHASH3} checksum of the part. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumXXHASH128}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the Base64 encoded, 128-bit \code{XXHASH128} checksum of the part.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
 \item{Key}{[required] Object key for which the multipart upload was initiated.}
 
 \item{PartNumber}{[required] Part number of part being uploaded. This is a positive integer between 1
@@ -145,8 +180,6 @@ This functionality is not supported for directory buckets.}
 that the encryption key was transmitted without error.
 
 This functionality is not supported for directory buckets.}
-
-\item{RequestPayer}{}
 
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
 provide does not match the actual owner of the bucket, the request fails

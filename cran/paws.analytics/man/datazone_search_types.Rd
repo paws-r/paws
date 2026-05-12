@@ -6,23 +6,19 @@
 \usage{
 datazone_search_types(
   domainIdentifier,
-  filters = NULL,
-  managed,
   maxResults = NULL,
   nextToken = NULL,
-  searchIn = NULL,
   searchScope,
   searchText = NULL,
-  sort = NULL
+  searchIn = NULL,
+  filters = NULL,
+  sort = NULL,
+  managed
 )
 }
 \arguments{
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which to invoke the
 \code{\link[=datazone_search_types]{search_types}} action.}
-
-\item{filters}{The filters for the \code{\link[=datazone_search_types]{search_types}} action.}
-
-\item{managed}{[required] Specifies whether the search is managed.}
 
 \item{maxResults}{The maximum number of results to return in a single call to
 \code{\link[=datazone_search_types]{search_types}}. When the number of results to
@@ -37,14 +33,18 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{NextToken} value in a subsequent call to
 \code{\link[=datazone_search_types]{search_types}} to list the next set of results.}
 
-\item{searchIn}{The details of the search.}
-
 \item{searchScope}{[required] Specifies the scope of the search for types.}
 
 \item{searchText}{Specifies the text for which to search.}
 
+\item{searchIn}{The details of the search.}
+
+\item{filters}{The filters for the \code{\link[=datazone_search_types]{search_types}} action.}
+
 \item{sort}{The specifies the way to sort the
 \code{\link[=datazone_search_types]{search_types}} results.}
+
+\item{managed}{[required] Specifies whether the search is managed.}
 }
 \description{
 Searches for types in Amazon DataZone.

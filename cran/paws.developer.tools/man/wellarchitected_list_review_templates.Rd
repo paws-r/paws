@@ -6,11 +6,6 @@
 \usage{
 wellarchitected_list_review_templates(NextToken = NULL, MaxResults = NULL)
 }
-\arguments{
-\item{NextToken}{}
-
-\item{MaxResults}{}
-}
 \description{
 List review templates.
 

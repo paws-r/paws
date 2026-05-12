@@ -60,8 +60,6 @@ to be created.
 
 After creating an ECC key pair, you cannot change the intended
 cryptographic usage of keys derived from it using ECDH.}
-
-\item{ReplicationRegions}{}
 }
 \description{
 Creates an Amazon Web Services Payment Cryptography key, a logical representation of a cryptographic key, that is unique in your account and Amazon Web Services Region. You use keys for cryptographic functions such as encryption and decryption.

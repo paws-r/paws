@@ -84,8 +84,6 @@ a customer managed KMS key.
 There is a default KMS key for your Amazon Web Services account. Your
 Amazon Web Services account has a different default KMS key for each
 Amazon Web Services Region.}
-
-\item{Tags}{}
 }
 \description{
 Creates a tenant database in a DB instance that uses the multi-tenant configuration. Only RDS for Oracle container database (CDB) instances are supported.

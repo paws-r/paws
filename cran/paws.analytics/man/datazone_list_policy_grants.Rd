@@ -6,19 +6,21 @@
 \usage{
 datazone_list_policy_grants(
   domainIdentifier,
-  entityIdentifier,
   entityType,
+  entityIdentifier,
+  policyType,
   maxResults = NULL,
-  nextToken = NULL,
-  policyType
+  nextToken = NULL
 )
 }
 \arguments{
 \item{domainIdentifier}{[required] The ID of the domain where you want to list policy grants.}
 
+\item{entityType}{[required] The type of entity for which you want to list policy grants.}
+
 \item{entityIdentifier}{[required] The ID of the entity for which you want to list policy grants.}
 
-\item{entityType}{[required] The type of entity for which you want to list policy grants.}
+\item{policyType}{[required] The type of policy that you want to list.}
 
 \item{maxResults}{The maximum number of grants to return in a single call to
 \code{\link[=datazone_list_policy_grants]{list_policy_grants}}. When the number of
@@ -34,8 +36,6 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{NextToken} value in a subsequent call to
 \code{\link[=datazone_list_policy_grants]{list_policy_grants}} to list the next set
 of grants.}
-
-\item{policyType}{[required] The type of policy that you want to list.}
 }
 \description{
 Lists policy grants.

@@ -13,7 +13,8 @@ ecs_list_tasks(
   startedBy = NULL,
   serviceName = NULL,
   desiredStatus = NULL,
-  launchType = NULL
+  launchType = NULL,
+  daemonName = NULL
 )
 }
 \arguments{
@@ -75,6 +76,10 @@ value of \code{PENDING}).}
 
 \item{launchType}{The launch type to use when filtering the \code{\link[=ecs_list_tasks]{list_tasks}}
 results.}
+
+\item{daemonName}{The name of the daemon to use when filtering the
+\code{\link[=ecs_list_tasks]{list_tasks}} results. Specifying a \code{daemonName} limits
+the results to tasks that belong to that daemon.}
 }
 \description{
 Returns a list of tasks. You can filter the results by cluster, task definition family, container instance, launch type, what IAM principal started the task, or by the desired status of the task.

@@ -14,8 +14,6 @@ costexplorer_get_rightsizing_recommendation(
 )
 }
 \arguments{
-\item{Filter}{}
-
 \item{Configuration}{You can use Configuration to customize recommendations across two
 attributes. You can choose to view recommendations for instances within
 the same instance families or across different instance families. You

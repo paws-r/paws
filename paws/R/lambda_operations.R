@@ -853,7 +853,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'   SelfManagedEventSource, FunctionResponseTypes,
 #'   AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig,
 #'   ScalingConfig, DocumentDBEventSourceConfig, KMSKeyArn, MetricsConfig,
-#'   ProvisionedPollerConfig)
+#'   LoggingConfig, ProvisionedPollerConfig)
 #'
 #' @param EventSourceArn The Amazon Resource Name (ARN) of the event source.
 #' 
@@ -981,6 +981,10 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @param MetricsConfig The metrics configuration for your event source. For more information,
 #' see [Event source mapping
 #' metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
+#' @param LoggingConfig (Amazon MSK, and self-managed Apache Kafka only) The logging
+#' configuration for your event source. For more information, see [Event
+#' source mapping
+#' logging](https://docs.aws.amazon.com/lambda/latest/dg/esm-logging.html).
 #' @param ProvisionedPollerConfig (Amazon SQS, Amazon MSK, and self-managed Apache Kafka only) The
 #' provisioned mode configuration for the event source. For more
 #' information, see [provisioned
@@ -1099,8 +1103,11 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'   EventSourceMappingArn = "string",
 #'   MetricsConfig = list(
 #'     Metrics = list(
-#'       "EventCount"
+#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
 #'     )
+#'   ),
+#'   LoggingConfig = list(
+#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
 #'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
@@ -1214,8 +1221,11 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'   KMSKeyArn = "string",
 #'   MetricsConfig = list(
 #'     Metrics = list(
-#'       "EventCount"
+#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
 #'     )
+#'   ),
+#'   LoggingConfig = list(
+#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
 #'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
@@ -1241,7 +1251,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @rdname lambda_create_event_source_mapping
 #'
 #' @aliases lambda_create_event_source_mapping
-lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, Tags = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, ProvisionedPollerConfig = NULL) {
+lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, Tags = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, LoggingConfig = NULL, ProvisionedPollerConfig = NULL) {
   op <- new_operation(
     name = "CreateEventSourceMapping",
     http_method = "POST",
@@ -1250,7 +1260,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, Tags = Tags, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
+  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, Tags = Tags, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, LoggingConfig = LoggingConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
   output <- .lambda$create_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -1441,7 +1451,8 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' layers](https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html)
 #' to add to the function's execution environment. Specify each layer by
 #' its ARN, including the version.
-#' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
+#' @param FileSystemConfigs Connection settings for an Amazon EFS file system or an Amazon S3 Files
+#' file system.
 #' @param ImageConfig Container image [configuration
 #' values](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms)
 #' that override the values in the container image Dockerfile.
@@ -1476,7 +1487,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -1597,7 +1608,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' ```
 #' svc$create_function(
 #'   FunctionName = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
 #'   Role = "string",
 #'   Handler = "string",
 #'   Code = list(
@@ -2200,8 +2211,11 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
 #'   EventSourceMappingArn = "string",
 #'   MetricsConfig = list(
 #'     Metrics = list(
-#'       "EventCount"
+#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
 #'     )
+#'   ),
+#'   LoggingConfig = list(
+#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
 #'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
@@ -3696,8 +3710,11 @@ lambda_get_durable_execution_state <- function(DurableExecutionArn, CheckpointTo
 #'   EventSourceMappingArn = "string",
 #'   MetricsConfig = list(
 #'     Metrics = list(
-#'       "EventCount"
+#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
 #'     )
+#'   ),
+#'   LoggingConfig = list(
+#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
 #'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
@@ -3784,7 +3801,7 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'   Configuration = list(
 #'     FunctionName = "string",
 #'     FunctionArn = "string",
-#'     Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
+#'     Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
 #'     Role = "string",
 #'     Handler = "string",
 #'     CodeSize = 123,
@@ -4134,7 +4151,7 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -4614,7 +4631,7 @@ lambda_get_function_url_config <- function(FunctionName, Qualifier = NULL) {
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -4695,7 +4712,7 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -5687,7 +5704,7 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #' a partial ARN, or a full ARN.
 #' @param Qualifier The function version or alias. If not specified, lists executions for
 #' the $LATEST version.
-#' @param DurableExecutionName Filter executions by name. Only executions with names that contain this
+#' @param DurableExecutionName Filter executions by name. Only executions with names that matches this
 #' string are returned.
 #' @param Statuses Filter executions by status. Valid values: RUNNING, SUCCEEDED, FAILED,
 #' TIMED_OUT, STOPPED.
@@ -5929,8 +5946,11 @@ lambda_list_durable_executions_by_function <- function(FunctionName, Qualifier =
 #'       EventSourceMappingArn = "string",
 #'       MetricsConfig = list(
 #'         Metrics = list(
-#'           "EventCount"
+#'           "EventCount"|"ErrorCount"|"KafkaMetrics"
 #'         )
+#'       ),
+#'       LoggingConfig = list(
+#'         SystemLogLevel = "DEBUG"|"INFO"|"WARN"
 #'       ),
 #'       ProvisionedPollerConfig = list(
 #'         MinimumPollers = 123,
@@ -6285,7 +6305,7 @@ lambda_list_function_versions_by_capacity_provider <- function(CapacityProviderN
 #'     list(
 #'       FunctionName = "string",
 #'       FunctionArn = "string",
-#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
+#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
 #'       Role = "string",
 #'       Handler = "string",
 #'       CodeSize = 123,
@@ -6545,7 +6565,7 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #'       Description = "string",
 #'       CreatedDate = "string",
 #'       CompatibleRuntimes = list(
-#'         "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"
+#'         "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0"
 #'       ),
 #'       LicenseInfo = "string",
 #'       CompatibleArchitectures = list(
@@ -6559,7 +6579,7 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #' @section Request syntax:
 #' ```
 #' svc$list_layer_versions(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
 #'   LayerName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123,
@@ -6646,7 +6666,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #'         Description = "string",
 #'         CreatedDate = "string",
 #'         CompatibleRuntimes = list(
-#'           "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"
+#'           "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0"
 #'         ),
 #'         LicenseInfo = "string",
 #'         CompatibleArchitectures = list(
@@ -6661,7 +6681,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' @section Request syntax:
 #' ```
 #' svc$list_layers(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
 #'   Marker = "string",
 #'   MaxItems = 123,
 #'   CompatibleArchitecture = "x86_64"|"arm64"
@@ -6897,7 +6917,7 @@ lambda_list_tags <- function(Resource) {
 #'     list(
 #'       FunctionName = "string",
 #'       FunctionArn = "string",
-#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
+#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
 #'       Role = "string",
 #'       Handler = "string",
 #'       CodeSize = 123,
@@ -7115,7 +7135,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -7136,7 +7156,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'     ZipFile = raw
 #'   ),
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -7242,7 +7262,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -8909,7 +8929,7 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'   SourceAccessConfigurations, TumblingWindowInSeconds,
 #'   FunctionResponseTypes, ScalingConfig,
 #'   AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig,
-#'   DocumentDBEventSourceConfig, KMSKeyArn, MetricsConfig,
+#'   DocumentDBEventSourceConfig, KMSKeyArn, MetricsConfig, LoggingConfig,
 #'   ProvisionedPollerConfig)
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
@@ -9010,6 +9030,7 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' @param MetricsConfig The metrics configuration for your event source. For more information,
 #' see [Event source mapping
 #' metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
+#' @param LoggingConfig 
 #' @param ProvisionedPollerConfig (Amazon SQS, Amazon MSK, and self-managed Apache Kafka only) The
 #' provisioned mode configuration for the event source. For more
 #' information, see [provisioned
@@ -9128,8 +9149,11 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'   EventSourceMappingArn = "string",
 #'   MetricsConfig = list(
 #'     Metrics = list(
-#'       "EventCount"
+#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
 #'     )
+#'   ),
+#'   LoggingConfig = list(
+#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
 #'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
@@ -9223,8 +9247,11 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'   KMSKeyArn = "string",
 #'   MetricsConfig = list(
 #'     Metrics = list(
-#'       "EventCount"
+#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
 #'     )
+#'   ),
+#'   LoggingConfig = list(
+#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
 #'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
@@ -9250,7 +9277,7 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' @rdname lambda_update_event_source_mapping
 #'
 #' @aliases lambda_update_event_source_mapping
-lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL, ScalingConfig = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, ProvisionedPollerConfig = NULL) {
+lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL, ScalingConfig = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, LoggingConfig = NULL, ProvisionedPollerConfig = NULL) {
   op <- new_operation(
     name = "UpdateEventSourceMapping",
     http_method = "PUT",
@@ -9259,7 +9286,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes, ScalingConfig = ScalingConfig, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
+  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes, ScalingConfig = ScalingConfig, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, LoggingConfig = LoggingConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
   output <- .lambda$update_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -9352,7 +9379,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -9649,7 +9676,8 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' layers](https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html)
 #' to add to the function's execution environment. Specify each layer by
 #' its ARN, including the version.
-#' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
+#' @param FileSystemConfigs Connection settings for an Amazon EFS file system or an Amazon S3 Files
+#' file system.
 #' @param ImageConfig [Container image configuration
 #' values](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms)
 #' that override the values in the container image Docker file.
@@ -9672,7 +9700,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -9812,7 +9840,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'       "string"
 #'     )
 #'   ),
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
 #'   DeadLetterConfig = list(
 #'     TargetArn = "string"
 #'   ),

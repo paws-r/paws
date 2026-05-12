@@ -17,7 +17,8 @@ elasticache_copy_snapshot(
 
 \item{TargetSnapshotName}{[required] A name for the snapshot copy. ElastiCache does not permit overwriting a
 snapshot, therefore this name must be unique within its context -
-ElastiCache or an Amazon S3 bucket if exporting.}
+ElastiCache or an Amazon S3 bucket if exporting. This value is stored as
+a lowercase string.}
 
 \item{TargetBucket}{The Amazon S3 bucket to which the snapshot is exported. This parameter
 is used only when exporting a snapshot for external access.

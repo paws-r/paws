@@ -65,8 +65,6 @@ experience.}
 \item{Tags}{Contains a map of the key-value pairs for the resource tag or tags
 assigned to the dataset.}
 
-\item{DataSetUsageConfiguration}{}
-
 \item{DatasetParameters}{The parameter declarations of the dataset.}
 
 \item{FolderArns}{When you create the dataset, Amazon Quick Sight adds the dataset to

@@ -29,11 +29,12 @@ operation. Allowing data loss triggers a global failover operation.
 If you don't specify \code{AllowDataLoss}, the global database cluster
 operation defaults to a switchover.
 
-Constraints:Can't be specified together with the \code{Switchover} parameter.}
+Constraints: Can't be specified together with the \code{Switchover}
+parameter.}
 
 \item{Switchover}{Specifies whether to switch over this global database cluster.
 
-Constraints:Can't be specified together with the \code{AllowDataLoss}
+Constraints: Can't be specified together with the \code{AllowDataLoss}
 parameter.}
 }
 \description{

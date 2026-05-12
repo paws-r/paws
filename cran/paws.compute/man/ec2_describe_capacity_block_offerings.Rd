@@ -15,7 +15,8 @@ ec2_describe_capacity_block_offerings(
   NextToken = NULL,
   MaxResults = NULL,
   UltraserverType = NULL,
-  UltraserverCount = NULL
+  UltraserverCount = NULL,
+  AllAvailabilityZones = NULL
 )
 }
 \arguments{
@@ -49,6 +50,11 @@ output. For more information, see
 \item{UltraserverType}{The EC2 UltraServer type of the Capacity Block offerings.}
 
 \item{UltraserverCount}{The number of EC2 UltraServers in the offerings.}
+
+\item{AllAvailabilityZones}{Include all Availability Zones and Local Zones, regardless of your
+opt-in status. If you do not use this parameter, the results include
+available offerings from all Availability Zones in the Amazon Web
+Services Region and Local Zones you are opted into.}
 }
 \description{
 Describes Capacity Block offerings available for purchase in the Amazon Web Services Region that you're currently using. With Capacity Blocks, you can purchase a specific GPU instance type or EC2 UltraServer for a period of time.

@@ -114,6 +114,7 @@ and deploying conversational bots and their components.
 \link[=lexmodelsv2_create_upload_url]{create_upload_url} \tab Gets a pre-signed S3 write URL that you use to upload the zip archive when importing a bot or a bot locale\cr
 \link[=lexmodelsv2_delete_bot]{delete_bot} \tab Deletes all versions of a bot, including the Draft version\cr
 \link[=lexmodelsv2_delete_bot_alias]{delete_bot_alias} \tab Deletes the specified bot alias\cr
+\link[=lexmodelsv2_delete_bot_analyzer_recommendation]{delete_bot_analyzer_recommendation} \tab Permanently deletes the recommendations and analysis results for a specific bot analysis request\cr
 \link[=lexmodelsv2_delete_bot_locale]{delete_bot_locale} \tab Removes a locale from a bot\cr
 \link[=lexmodelsv2_delete_bot_replica]{delete_bot_replica} \tab The action to delete the replicated bot in the secondary region\cr
 \link[=lexmodelsv2_delete_bot_version]{delete_bot_version} \tab Deletes a specific version of a bot\cr
@@ -129,6 +130,7 @@ and deploying conversational bots and their components.
 \link[=lexmodelsv2_delete_utterances]{delete_utterances} \tab Deletes stored utterances\cr
 \link[=lexmodelsv2_describe_bot]{describe_bot} \tab Provides metadata information about a bot\cr
 \link[=lexmodelsv2_describe_bot_alias]{describe_bot_alias} \tab Get information about a specific bot alias\cr
+\link[=lexmodelsv2_describe_bot_analyzer_recommendation]{describe_bot_analyzer_recommendation} \tab Retrieves the analysis results and recommendations for bot optimization\cr
 \link[=lexmodelsv2_describe_bot_locale]{describe_bot_locale} \tab Describes the settings that a bot has for a specific locale\cr
 \link[=lexmodelsv2_describe_bot_recommendation]{describe_bot_recommendation} \tab Provides metadata information about a bot recommendation\cr
 \link[=lexmodelsv2_describe_bot_replica]{describe_bot_replica} \tab Monitors the bot replication status through the UI console\cr
@@ -150,6 +152,7 @@ and deploying conversational bots and their components.
 \link[=lexmodelsv2_list_aggregated_utterances]{list_aggregated_utterances} \tab Provides a list of utterances that users have sent to the bot\cr
 \link[=lexmodelsv2_list_bot_aliases]{list_bot_aliases} \tab Gets a list of aliases for the specified bot\cr
 \link[=lexmodelsv2_list_bot_alias_replicas]{list_bot_alias_replicas} \tab The action to list the replicated bots created from the source bot alias\cr
+\link[=lexmodelsv2_list_bot_analyzer_history]{list_bot_analyzer_history} \tab Retrieves a list of historical bot analysis executions for a specific bot\cr
 \link[=lexmodelsv2_list_bot_locales]{list_bot_locales} \tab Gets a list of locales for the specified bot\cr
 \link[=lexmodelsv2_list_bot_recommendations]{list_bot_recommendations} \tab Get a list of bot recommendations that meet the specified criteria\cr
 \link[=lexmodelsv2_list_bot_replicas]{list_bot_replicas} \tab The action to list the replicated bots\cr
@@ -179,11 +182,13 @@ and deploying conversational bots and their components.
 \link[=lexmodelsv2_list_utterance_analytics_data]{list_utterance_analytics_data} \tab To use this API operation, your IAM role must have permissions to perform the ListAggregatedUtterances operation, which provides access to utterance-related analytics\cr
 \link[=lexmodelsv2_list_utterance_metrics]{list_utterance_metrics} \tab To use this API operation, your IAM role must have permissions to perform the ListAggregatedUtterances operation, which provides access to utterance-related analytics\cr
 \link[=lexmodelsv2_search_associated_transcripts]{search_associated_transcripts} \tab Search for associated transcripts that meet the specified criteria\cr
+\link[=lexmodelsv2_start_bot_analyzer]{start_bot_analyzer} \tab Initiates an asynchronous analysis of your bot configuration using AI-powered analysis to identify potential issues and recommend improvements based on AWS best practices\cr
 \link[=lexmodelsv2_start_bot_recommendation]{start_bot_recommendation} \tab Use this to provide your transcript data, and to start the bot recommendation process\cr
 \link[=lexmodelsv2_start_bot_resource_generation]{start_bot_resource_generation} \tab Starts a request for the descriptive bot builder to generate a bot locale configuration based on the prompt you provide it\cr
 \link[=lexmodelsv2_start_import]{start_import} \tab Starts importing a bot, bot locale, or custom vocabulary from a zip archive that you uploaded to an S3 bucket\cr
 \link[=lexmodelsv2_start_test_execution]{start_test_execution} \tab The action to start test set execution\cr
 \link[=lexmodelsv2_start_test_set_generation]{start_test_set_generation} \tab The action to start the generation of test set\cr
+\link[=lexmodelsv2_stop_bot_analyzer]{stop_bot_analyzer} \tab Cancels an ongoing bot analysis execution\cr
 \link[=lexmodelsv2_stop_bot_recommendation]{stop_bot_recommendation} \tab Stop an already running Bot Recommendation request\cr
 \link[=lexmodelsv2_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 \link[=lexmodelsv2_untag_resource]{untag_resource} \tab Removes tags from a bot, bot alias, or bot channel\cr

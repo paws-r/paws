@@ -54,6 +54,12 @@ NULL
 #'                   emptyValue = list()
 #'                 ),
 #'                 result = TRUE|FALSE
+#'               ),
+#'               andAll = list(
+#'                 conditions = list()
+#'               ),
+#'               orAll = list(
+#'                 conditions = list()
 #'               )
 #'             )
 #'           )
@@ -97,6 +103,12 @@ NULL
 #'                   emptyValue = list()
 #'                 ),
 #'                 result = TRUE|FALSE
+#'               ),
+#'               andAll = list(
+#'                 conditions = list()
+#'               ),
+#'               orAll = list(
+#'                 conditions = list()
 #'               )
 #'             )
 #'           )
@@ -197,6 +209,11 @@ connectcases_batch_get_case_rule <- function(domainId, caseRules) {
 #'       ),
 #'       lastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       attributes = list(
+#'         text = list(
+#'           isMultiline = TRUE|FALSE
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -323,6 +340,10 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
 #' Creates a case in the specified Cases domain. Case system and custom
 #' fields are taken as an array id/value pairs with a declared data types.
 #' 
+#' When creating a case from a template that has tag propagation
+#' configurations, the specified tags are automatically applied to the
+#' case.
+#' 
 #' The following fields are required when creating a case:
 #' 
 #' -   `customer_id` - You must provide the full customer profile ARN in
@@ -333,7 +354,7 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
 #'
 #' @usage
 #' connectcases_create_case(domainId, templateId, fields, clientToken,
-#'   performedBy)
+#'   performedBy, tags)
 #'
 #' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
 #' @param templateId &#91;required&#93; A unique identifier of a template.
@@ -345,6 +366,8 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
 #' [Making retries safe with idempotent
 #' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param performedBy 
+#' @param tags A map of of key-value pairs that represent tags on a resource. Tags are
+#' used to organize, track, or control access for this resource.
 #'
 #' @return
 #' A list with the following syntax:
@@ -376,6 +399,9 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
 #'   performedBy = list(
 #'     userArn = "string",
 #'     customEntity = "string"
+#'   ),
+#'   tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -385,7 +411,7 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
 #' @rdname connectcases_create_case
 #'
 #' @aliases connectcases_create_case
-connectcases_create_case <- function(domainId, templateId, fields, clientToken = NULL, performedBy = NULL) {
+connectcases_create_case <- function(domainId, templateId, fields, clientToken = NULL, performedBy = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateCase",
     http_method = "POST",
@@ -394,7 +420,7 @@ connectcases_create_case <- function(domainId, templateId, fields, clientToken =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcases$create_case_input(domainId = domainId, templateId = templateId, fields = fields, clientToken = clientToken, performedBy = performedBy)
+  input <- .connectcases$create_case_input(domainId = domainId, templateId = templateId, fields = fields, clientToken = clientToken, performedBy = performedBy, tags = tags)
   output <- .connectcases$create_case_output()
   config <- get_config()
   svc <- .connectcases$service(config, op)
@@ -463,6 +489,12 @@ connectcases_create_case <- function(domainId, templateId, fields, clientToken =
 #'               emptyValue = list()
 #'             ),
 #'             result = TRUE|FALSE
+#'           ),
+#'           andAll = list(
+#'             conditions = list()
+#'           ),
+#'           orAll = list(
+#'             conditions = list()
 #'           )
 #'         )
 #'       )
@@ -506,6 +538,12 @@ connectcases_create_case <- function(domainId, templateId, fields, clientToken =
 #'               emptyValue = list()
 #'             ),
 #'             result = TRUE|FALSE
+#'           ),
+#'           andAll = list(
+#'             conditions = list()
+#'           ),
+#'           orAll = list(
+#'             conditions = list()
 #'           )
 #'         )
 #'       )
@@ -608,13 +646,14 @@ connectcases_create_domain <- function(name) {
 #' in a Cases domain.
 #'
 #' @usage
-#' connectcases_create_field(domainId, name, type, description)
+#' connectcases_create_field(domainId, name, type, description, attributes)
 #'
 #' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
 #' @param name &#91;required&#93; The name of the field.
 #' @param type &#91;required&#93; Defines the data type, some system constraints, and default display of
 #' the field.
 #' @param description The description of the field.
+#' @param attributes Union of field attributes.
 #'
 #' @return
 #' A list with the following syntax:
@@ -631,7 +670,12 @@ connectcases_create_domain <- function(name) {
 #'   domainId = "string",
 #'   name = "string",
 #'   type = "Text"|"Number"|"Boolean"|"DateTime"|"SingleSelect"|"Url"|"User",
-#'   description = "string"
+#'   description = "string",
+#'   attributes = list(
+#'     text = list(
+#'       isMultiline = TRUE|FALSE
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -640,7 +684,7 @@ connectcases_create_domain <- function(name) {
 #' @rdname connectcases_create_field
 #'
 #' @aliases connectcases_create_field
-connectcases_create_field <- function(domainId, name, type, description = NULL) {
+connectcases_create_field <- function(domainId, name, type, description = NULL, attributes = NULL) {
   op <- new_operation(
     name = "CreateField",
     http_method = "POST",
@@ -649,7 +693,7 @@ connectcases_create_field <- function(domainId, name, type, description = NULL) 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcases$create_field_input(domainId = domainId, name = name, type = type, description = description)
+  input <- .connectcases$create_field_input(domainId = domainId, name = name, type = type, description = description, attributes = attributes)
   output <- .connectcases$create_field_output()
   config <- get_config()
   svc <- .connectcases$service(config, op)
@@ -932,7 +976,8 @@ connectcases_create_related_item <- function(domainId, caseId, type, content, pe
 #'
 #' @usage
 #' connectcases_create_template(domainId, name, description,
-#'   layoutConfiguration, requiredFields, status, rules)
+#'   layoutConfiguration, requiredFields, status, rules,
+#'   tagPropagationConfigurations)
 #'
 #' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
 #' @param name &#91;required&#93; A name for the template. It must be unique per domain.
@@ -944,6 +989,9 @@ connectcases_create_related_item <- function(domainId, caseId, type, content, pe
 #' @param rules A list of case rules (also known as [case field
 #' conditions](https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html))
 #' on a template.
+#' @param tagPropagationConfigurations Defines tag propagation configuration for resources created within a
+#' domain. Tags specified here will be automatically applied to resources
+#' being created for the specified resource type.
 #'
 #' @return
 #' A list with the following syntax:
@@ -974,6 +1022,14 @@ connectcases_create_related_item <- function(domainId, caseId, type, content, pe
 #'       caseRuleId = "string",
 #'       fieldId = "string"
 #'     )
+#'   ),
+#'   tagPropagationConfigurations = list(
+#'     list(
+#'       resourceType = "Cases",
+#'       tagMap = list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -983,7 +1039,7 @@ connectcases_create_related_item <- function(domainId, caseId, type, content, pe
 #' @rdname connectcases_create_template
 #'
 #' @aliases connectcases_create_template
-connectcases_create_template <- function(domainId, name, description = NULL, layoutConfiguration = NULL, requiredFields = NULL, status = NULL, rules = NULL) {
+connectcases_create_template <- function(domainId, name, description = NULL, layoutConfiguration = NULL, requiredFields = NULL, status = NULL, rules = NULL, tagPropagationConfigurations = NULL) {
   op <- new_operation(
     name = "CreateTemplate",
     http_method = "POST",
@@ -992,7 +1048,7 @@ connectcases_create_template <- function(domainId, name, description = NULL, lay
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcases$create_template_input(domainId = domainId, name = name, description = description, layoutConfiguration = layoutConfiguration, requiredFields = requiredFields, status = status, rules = rules)
+  input <- .connectcases$create_template_input(domainId = domainId, name = name, description = description, layoutConfiguration = layoutConfiguration, requiredFields = requiredFields, status = status, rules = rules, tagPropagationConfigurations = tagPropagationConfigurations)
   output <- .connectcases$create_template_output()
   config <- get_config()
   svc <- .connectcases$service(config, op)
@@ -1161,8 +1217,7 @@ connectcases_delete_domain <- function(domainId) {
 #' Deletes a field from a cases template
 #'
 #' @description
-#' Deletes a field from a cases template. You can delete up to 100 fields
-#' per domain.
+#' Deletes a field from a cases template.
 #' 
 #' After a field is deleted:
 #' 
@@ -1524,7 +1579,7 @@ connectcases_get_case <- function(caseId, domainId, fields, nextToken = NULL) {
 #'   auditEvents = list(
 #'     list(
 #'       eventId = "string",
-#'       type = "Case.Created"|"Case.Updated"|"RelatedItem.Created",
+#'       type = "Case.Created"|"Case.Updated"|"RelatedItem.Created"|"RelatedItem.Deleted"|"RelatedItem.Updated",
 #'       relatedItemType = "Contact"|"Comment"|"File"|"Sla"|"ConnectCase"|"Custom",
 #'       performedTime = as.POSIXct(
 #'         "2015-01-01"
@@ -1861,6 +1916,14 @@ connectcases_get_layout <- function(domainId, layoutId) {
 #'       caseRuleId = "string",
 #'       fieldId = "string"
 #'     )
+#'   ),
+#'   tagPropagationConfigurations = list(
+#'     list(
+#'       resourceType = "Cases",
+#'       tagMap = list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2184,7 +2247,12 @@ connectcases_list_field_options <- function(domainId, fieldId, maxResults = NULL
 #'       fieldArn = "string",
 #'       name = "string",
 #'       type = "Text"|"Number"|"Boolean"|"DateTime"|"SingleSelect"|"Url"|"User",
-#'       namespace = "System"|"Custom"
+#'       namespace = "System"|"Custom",
+#'       attributes = list(
+#'         text = list(
+#'           isMultiline = TRUE|FALSE
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2373,7 +2441,15 @@ connectcases_list_tags_for_resource <- function(arn) {
 #'       templateId = "string",
 #'       templateArn = "string",
 #'       name = "string",
-#'       status = "Active"|"Inactive"
+#'       status = "Active"|"Inactive",
+#'       tagPropagationConfigurations = list(
+#'         list(
+#'           resourceType = "Cases",
+#'           tagMap = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2798,7 +2874,8 @@ connectcases_search_all_related_items <- function(domainId, maxResults = NULL, n
 #'         "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   totalCount = 123
 #' )
 #' ```
 #'
@@ -2873,6 +2950,12 @@ connectcases_search_all_related_items <- function(domainId, maxResults = NULL, n
 #'       )
 #'     ),
 #'     not = list(),
+#'     tag = list(
+#'       equalTo = list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
 #'     andAll = list(
 #'       list()
 #'     ),
@@ -3375,6 +3458,12 @@ connectcases_update_case <- function(domainId, caseId, fields, performedBy = NUL
 #'               emptyValue = list()
 #'             ),
 #'             result = TRUE|FALSE
+#'           ),
+#'           andAll = list(
+#'             conditions = list()
+#'           ),
+#'           orAll = list(
+#'             conditions = list()
 #'           )
 #'         )
 #'       )
@@ -3418,6 +3507,12 @@ connectcases_update_case <- function(domainId, caseId, fields, performedBy = NUL
 #'               emptyValue = list()
 #'             ),
 #'             result = TRUE|FALSE
+#'           ),
+#'           andAll = list(
+#'             conditions = list()
+#'           ),
+#'           orAll = list(
+#'             conditions = list()
 #'           )
 #'         )
 #'       )
@@ -3456,12 +3551,14 @@ connectcases_update_case_rule <- function(domainId, caseRuleId, name = NULL, des
 #' Updates the properties of an existing field.
 #'
 #' @usage
-#' connectcases_update_field(domainId, fieldId, name, description)
+#' connectcases_update_field(domainId, fieldId, name, description,
+#'   attributes)
 #'
 #' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
 #' @param fieldId &#91;required&#93; The unique identifier of a field.
 #' @param name The name of the field.
 #' @param description The description of a field.
+#' @param attributes Union of field attributes.
 #'
 #' @return
 #' An empty list.
@@ -3472,7 +3569,12 @@ connectcases_update_case_rule <- function(domainId, caseRuleId, name = NULL, des
 #'   domainId = "string",
 #'   fieldId = "string",
 #'   name = "string",
-#'   description = "string"
+#'   description = "string",
+#'   attributes = list(
+#'     text = list(
+#'       isMultiline = TRUE|FALSE
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -3481,7 +3583,7 @@ connectcases_update_case_rule <- function(domainId, caseRuleId, name = NULL, des
 #' @rdname connectcases_update_field
 #'
 #' @aliases connectcases_update_field
-connectcases_update_field <- function(domainId, fieldId, name = NULL, description = NULL) {
+connectcases_update_field <- function(domainId, fieldId, name = NULL, description = NULL, attributes = NULL) {
   op <- new_operation(
     name = "UpdateField",
     http_method = "PUT",
@@ -3490,7 +3592,7 @@ connectcases_update_field <- function(domainId, fieldId, name = NULL, descriptio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcases$update_field_input(domainId = domainId, fieldId = fieldId, name = name, description = description)
+  input <- .connectcases$update_field_input(domainId = domainId, fieldId = fieldId, name = name, description = description, attributes = attributes)
   output <- .connectcases$update_field_output()
   config <- get_config()
   svc <- .connectcases$service(config, op)
@@ -3591,6 +3693,184 @@ connectcases_update_layout <- function(domainId, layoutId, name = NULL, content 
 }
 .connectcases$operations$update_layout <- connectcases_update_layout
 
+#' Updates the content of a related item associated with a case
+#'
+#' @description
+#' Updates the content of a related item associated with a case. The
+#' following related item types are supported:
+#' 
+#' -   **Comment** - Update the text content of an existing comment
+#' 
+#' -   **Custom** - Update the fields of a custom related item. You can
+#'     add, modify, and remove fields from a custom related item. There's a
+#'     quota for the number of fields allowed in a Custom type related
+#'     item. See [Amazon Connect Cases
+#'     quotas](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#cases-quotas).
+#' 
+#' **Important things to know**
+#' 
+#' -   When updating a Custom related item, all existing and new fields,
+#'     and their associated values should be included in the request.
+#'     Fields not included as part of this request will be removed.
+#' 
+#' -   If you provide a value for `performedBy.userArn` you must also have
+#'     [DescribeUser](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html)
+#'     permission on the ARN of the user that you provide.
+#' 
+#' -   [System case
+#'     fields](https://docs.aws.amazon.com/connect/latest/adminguide/case-fields.html#system-case-fields)
+#'     cannot be used in a custom related item.
+#' 
+#' **Endpoints**: See [Amazon Connect endpoints and
+#' quotas](https://docs.aws.amazon.com/general/latest/gr/connect_region.html).
+#'
+#' @usage
+#' connectcases_update_related_item(domainId, caseId, relatedItemId,
+#'   content, performedBy)
+#'
+#' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
+#' @param caseId &#91;required&#93; A unique identifier of the case.
+#' @param relatedItemId &#91;required&#93; Unique identifier of a related item.
+#' @param content &#91;required&#93; The content of a related item to be updated.
+#' @param performedBy Represents the user who performed the update of the related item.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   relatedItemId = "string",
+#'   relatedItemArn = "string",
+#'   type = "Contact"|"Comment"|"File"|"Sla"|"ConnectCase"|"Custom",
+#'   content = list(
+#'     contact = list(
+#'       contactArn = "string",
+#'       channel = "string",
+#'       connectedToSystemTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     comment = list(
+#'       body = "string",
+#'       contentType = "Text/Plain"
+#'     ),
+#'     file = list(
+#'       fileArn = "string"
+#'     ),
+#'     sla = list(
+#'       slaConfiguration = list(
+#'         name = "string",
+#'         type = "CaseField",
+#'         status = "Active"|"Overdue"|"Met"|"NotMet",
+#'         fieldId = "string",
+#'         targetFieldValues = list(
+#'           list(
+#'             stringValue = "string",
+#'             doubleValue = 123.0,
+#'             booleanValue = TRUE|FALSE,
+#'             emptyValue = list(),
+#'             userArnValue = "string"
+#'           )
+#'         ),
+#'         targetTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         completionTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     connectCase = list(
+#'       caseId = "string"
+#'     ),
+#'     custom = list(
+#'       fields = list(
+#'         list(
+#'           id = "string",
+#'           value = list(
+#'             stringValue = "string",
+#'             doubleValue = 123.0,
+#'             booleanValue = TRUE|FALSE,
+#'             emptyValue = list(),
+#'             userArnValue = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   associationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   lastUpdatedUser = list(
+#'     userArn = "string",
+#'     customEntity = "string"
+#'   ),
+#'   createdBy = list(
+#'     userArn = "string",
+#'     customEntity = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_related_item(
+#'   domainId = "string",
+#'   caseId = "string",
+#'   relatedItemId = "string",
+#'   content = list(
+#'     comment = list(
+#'       body = "string",
+#'       contentType = "Text/Plain"
+#'     ),
+#'     custom = list(
+#'       fields = list(
+#'         list(
+#'           id = "string",
+#'           value = list(
+#'             stringValue = "string",
+#'             doubleValue = 123.0,
+#'             booleanValue = TRUE|FALSE,
+#'             emptyValue = list(),
+#'             userArnValue = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   performedBy = list(
+#'     userArn = "string",
+#'     customEntity = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_update_related_item
+#'
+#' @aliases connectcases_update_related_item
+connectcases_update_related_item <- function(domainId, caseId, relatedItemId, content, performedBy = NULL) {
+  op <- new_operation(
+    name = "UpdateRelatedItem",
+    http_method = "PUT",
+    http_path = "/domains/{domainId}/cases/{caseId}/related-items/{relatedItemId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connectcases$update_related_item_input(domainId = domainId, caseId = caseId, relatedItemId = relatedItemId, content = content, performedBy = performedBy)
+  output <- .connectcases$update_related_item_output()
+  config <- get_config()
+  svc <- .connectcases$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$update_related_item <- connectcases_update_related_item
+
 #' Updates the attributes of an existing template
 #'
 #' @description
@@ -3613,7 +3893,8 @@ connectcases_update_layout <- function(domainId, layoutId, name = NULL, content 
 #'
 #' @usage
 #' connectcases_update_template(domainId, templateId, name, description,
-#'   layoutConfiguration, requiredFields, status, rules)
+#'   layoutConfiguration, requiredFields, status, rules,
+#'   tagPropagationConfigurations)
 #'
 #' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
 #' @param templateId &#91;required&#93; A unique identifier for the template.
@@ -3626,6 +3907,9 @@ connectcases_update_layout <- function(domainId, layoutId, name = NULL, content 
 #' @param rules A list of case rules (also known as [case field
 #' conditions](https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html))
 #' on a template.
+#' @param tagPropagationConfigurations Defines tag propagation configuration for resources created within a
+#' domain. Tags specified here will be automatically applied to resources
+#' being created for the specified resource type.
 #'
 #' @return
 #' An empty list.
@@ -3651,6 +3935,14 @@ connectcases_update_layout <- function(domainId, layoutId, name = NULL, content 
 #'       caseRuleId = "string",
 #'       fieldId = "string"
 #'     )
+#'   ),
+#'   tagPropagationConfigurations = list(
+#'     list(
+#'       resourceType = "Cases",
+#'       tagMap = list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -3660,7 +3952,7 @@ connectcases_update_layout <- function(domainId, layoutId, name = NULL, content 
 #' @rdname connectcases_update_template
 #'
 #' @aliases connectcases_update_template
-connectcases_update_template <- function(domainId, templateId, name = NULL, description = NULL, layoutConfiguration = NULL, requiredFields = NULL, status = NULL, rules = NULL) {
+connectcases_update_template <- function(domainId, templateId, name = NULL, description = NULL, layoutConfiguration = NULL, requiredFields = NULL, status = NULL, rules = NULL, tagPropagationConfigurations = NULL) {
   op <- new_operation(
     name = "UpdateTemplate",
     http_method = "PUT",
@@ -3669,7 +3961,7 @@ connectcases_update_template <- function(domainId, templateId, name = NULL, desc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcases$update_template_input(domainId = domainId, templateId = templateId, name = name, description = description, layoutConfiguration = layoutConfiguration, requiredFields = requiredFields, status = status, rules = rules)
+  input <- .connectcases$update_template_input(domainId = domainId, templateId = templateId, name = name, description = description, layoutConfiguration = layoutConfiguration, requiredFields = requiredFields, status = status, rules = rules, tagPropagationConfigurations = tagPropagationConfigurations)
   output <- .connectcases$update_template_output()
   config <- get_config()
   svc <- .connectcases$service(config, op)

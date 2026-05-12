@@ -8,7 +8,8 @@ of an interface VPC endpoint}
 opensearchservice_authorize_vpc_endpoint_access(
   DomainName,
   Account = NULL,
-  Service = NULL
+  Service = NULL,
+  ServiceOptions = NULL
 )
 }
 \arguments{
@@ -17,6 +18,9 @@ opensearchservice_authorize_vpc_endpoint_access(
 \item{Account}{The Amazon Web Services account ID to grant access to.}
 
 \item{Service}{The Amazon Web Services service SP to grant access to.}
+
+\item{ServiceOptions}{The options for the service, including the supported Regions for the
+endpoint access.}
 }
 \description{
 Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.

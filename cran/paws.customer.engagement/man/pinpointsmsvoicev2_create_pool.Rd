@@ -7,7 +7,7 @@ the pool}
 \usage{
 pinpointsmsvoicev2_create_pool(
   OriginationIdentity,
-  IsoCountryCode,
+  IsoCountryCode = NULL,
   MessageType,
   DeletionProtectionEnabled = NULL,
   Tags = NULL,
@@ -29,8 +29,10 @@ pool by using
 If you are using a shared End User Messaging SMS resource then you must
 use the full Amazon Resource Name(ARN).}
 
-\item{IsoCountryCode}{[required] The new two-character code, in ISO 3166-1 alpha-2 format, for the
-country or region of the new pool.}
+\item{IsoCountryCode}{The new two-character code, in ISO 3166-1 alpha-2 format, for the
+country or region of the new pool. This field is optional and is not
+required for origination identity types that are not country-specific,
+such as RCS agents.}
 
 \item{MessageType}{[required] The type of message. Valid values are TRANSACTIONAL for messages that
 are critical or time-sensitive and PROMOTIONAL for messages that aren't

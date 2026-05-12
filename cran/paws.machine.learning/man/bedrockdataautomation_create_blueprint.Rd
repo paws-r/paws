@@ -19,15 +19,7 @@ bedrockdataautomation_create_blueprint(
 
 \item{type}{[required]}
 
-\item{blueprintStage}{}
-
 \item{schema}{[required]}
-
-\item{clientToken}{}
-
-\item{encryptionConfiguration}{}
-
-\item{tags}{}
 }
 \description{
 Creates an Amazon Bedrock Data Automation Blueprint

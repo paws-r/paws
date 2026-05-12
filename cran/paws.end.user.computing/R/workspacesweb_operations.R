@@ -595,11 +595,13 @@ workspacesweb_create_network_settings <- function(vpcId, subnetIds, securityGrou
 #' configured in the IAM Identity Center.
 #' @param instanceType The type and resources of the underlying instance.
 #' @param maxConcurrentSessions The maximum number of concurrent sessions for the portal.
+#' @param portalCustomDomain The custom domain of the web portal that users access in order to start
+#' streaming sessions.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_portal
-workspacesweb_create_portal <- function(displayName = NULL, tags = NULL, customerManagedKey = NULL, additionalEncryptionContext = NULL, clientToken = NULL, authenticationType = NULL, instanceType = NULL, maxConcurrentSessions = NULL) {
+workspacesweb_create_portal <- function(displayName = NULL, tags = NULL, customerManagedKey = NULL, additionalEncryptionContext = NULL, clientToken = NULL, authenticationType = NULL, instanceType = NULL, maxConcurrentSessions = NULL, portalCustomDomain = NULL) {
   op <- new_operation(
     name = "CreatePortal",
     http_method = "POST",
@@ -608,7 +610,7 @@ workspacesweb_create_portal <- function(displayName = NULL, tags = NULL, custome
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$create_portal_input(displayName = displayName, tags = tags, customerManagedKey = customerManagedKey, additionalEncryptionContext = additionalEncryptionContext, clientToken = clientToken, authenticationType = authenticationType, instanceType = instanceType, maxConcurrentSessions = maxConcurrentSessions)
+  input <- .workspacesweb$create_portal_input(displayName = displayName, tags = tags, customerManagedKey = customerManagedKey, additionalEncryptionContext = additionalEncryptionContext, clientToken = clientToken, authenticationType = authenticationType, instanceType = instanceType, maxConcurrentSessions = maxConcurrentSessions, portalCustomDomain = portalCustomDomain)
   output <- .workspacesweb$create_portal_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -788,7 +790,7 @@ workspacesweb_create_user_access_logging_settings <- function(kinesisStreamArn, 
 #' retain control over their toolbar preferences.
 #' @param brandingConfigurationInput The branding configuration input that customizes the appearance of the
 #' web portal for end users. This includes a custom logo, favicon,
-#' wallpaper, localized strings, color theme, and an optional terms of
+#' localized strings, color theme, and optionally a wallpaper and terms of
 #' service.
 #' @param webAuthnAllowed Specifies whether the user can use WebAuthn redirection for passwordless
 #' login to websites within the streaming session.
@@ -2626,11 +2628,13 @@ workspacesweb_update_network_settings <- function(networkSettingsArn, vpcId = NU
 #' configured in the IAM Identity Center.
 #' @param instanceType The type and resources of the underlying instance.
 #' @param maxConcurrentSessions The maximum number of concurrent sessions for the portal.
+#' @param portalCustomDomain The custom domain of the web portal that users access in order to start
+#' streaming sessions.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_portal
-workspacesweb_update_portal <- function(portalArn, displayName = NULL, authenticationType = NULL, instanceType = NULL, maxConcurrentSessions = NULL) {
+workspacesweb_update_portal <- function(portalArn, displayName = NULL, authenticationType = NULL, instanceType = NULL, maxConcurrentSessions = NULL, portalCustomDomain = NULL) {
   op <- new_operation(
     name = "UpdatePortal",
     http_method = "PUT",
@@ -2639,7 +2643,7 @@ workspacesweb_update_portal <- function(portalArn, displayName = NULL, authentic
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$update_portal_input(portalArn = portalArn, displayName = displayName, authenticationType = authenticationType, instanceType = instanceType, maxConcurrentSessions = maxConcurrentSessions)
+  input <- .workspacesweb$update_portal_input(portalArn = portalArn, displayName = displayName, authenticationType = authenticationType, instanceType = instanceType, maxConcurrentSessions = maxConcurrentSessions, portalCustomDomain = portalCustomDomain)
   output <- .workspacesweb$update_portal_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -2808,9 +2812,9 @@ workspacesweb_update_user_access_logging_settings <- function(userAccessLoggingS
 #' retain control over their toolbar preferences.
 #' @param brandingConfigurationInput The branding configuration that customizes the appearance of the web
 #' portal for end users. When updating user settings without an existing
-#' branding configuration, all fields (logo, favicon, wallpaper, localized
-#' strings, and color theme) are required except for terms of service. When
-#' updating user settings with an existing branding configuration, all
+#' branding configuration, all fields (logo, favicon, localized strings,
+#' and color theme) are required except for wallpaper and terms of service.
+#' When updating user settings with an existing branding configuration, all
 #' fields are optional.
 #' @param webAuthnAllowed Specifies whether the user can use WebAuthn redirection for passwordless
 #' login to websites within the streaming session.

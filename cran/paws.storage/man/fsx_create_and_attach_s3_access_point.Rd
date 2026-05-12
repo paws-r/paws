@@ -14,8 +14,6 @@ fsx_create_and_attach_s3_access_point(
 )
 }
 \arguments{
-\item{ClientRequestToken}{}
-
 \item{Name}{[required] The name you want to assign to this S3 access point.}
 
 \item{Type}{[required] The type of S3 access point you want to create. Only \code{OpenZFS} is
@@ -23,8 +21,6 @@ supported.}
 
 \item{OpenZFSConfiguration}{Specifies the configuration to use when creating and attaching an S3
 access point to an FSx for OpenZFS volume.}
-
-\item{OntapConfiguration}{}
 
 \item{S3AccessPoint}{Specifies the virtual private cloud (VPC) configuration if you're
 creating an access point that is restricted to a VPC. For more

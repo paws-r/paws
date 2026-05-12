@@ -10,8 +10,6 @@ cloudwatchlogs_describe_field_indexes(logGroupIdentifiers, nextToken = NULL)
 \arguments{
 \item{logGroupIdentifiers}{[required] An array containing the names or ARNs of the log groups that you want to
 retrieve field indexes for.}
-
-\item{nextToken}{}
 }
 \description{
 Returns a list of custom and default field indexes which are discovered in log data. For more information about field index policies, see \code{\link[=cloudwatchlogs_put_index_policy]{put_index_policy}}.

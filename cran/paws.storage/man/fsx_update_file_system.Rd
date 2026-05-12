@@ -74,13 +74,7 @@ in the Amazon FSx for NetApp ONTAP User Guide.}
 \item{WindowsConfiguration}{The configuration updates for an Amazon FSx for Windows File Server file
 system.}
 
-\item{LustreConfiguration}{}
-
-\item{OntapConfiguration}{}
-
 \item{OpenZFSConfiguration}{The configuration updates for an FSx for OpenZFS file system.}
-
-\item{StorageType}{}
 
 \item{FileSystemTypeVersion}{The Lustre version you are updating an FSx for Lustre file system to.
 Valid values are \code{2.12} and \code{2.15}. The value you choose must be newer

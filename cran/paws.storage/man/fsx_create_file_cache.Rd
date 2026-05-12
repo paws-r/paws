@@ -46,8 +46,6 @@ be \code{2.12}.}
 interfaces created for Amazon File Cache access. This list isn't
 returned in later requests to describe the cache.}
 
-\item{Tags}{}
-
 \item{CopyTagsToDataRepositoryAssociations}{A boolean flag indicating whether tags for the cache should be copied to
 data repository associations. This value defaults to false.}
 

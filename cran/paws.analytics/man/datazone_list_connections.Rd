@@ -6,29 +6,25 @@
 \usage{
 datazone_list_connections(
   domainIdentifier,
-  environmentIdentifier = NULL,
   maxResults = NULL,
-  name = NULL,
   nextToken = NULL,
-  projectIdentifier = NULL,
-  scope = NULL,
   sortBy = NULL,
   sortOrder = NULL,
-  type = NULL
+  name = NULL,
+  environmentIdentifier = NULL,
+  projectIdentifier = NULL,
+  type = NULL,
+  scope = NULL
 )
 }
 \arguments{
 \item{domainIdentifier}{[required] The ID of the domain where you want to list connections.}
-
-\item{environmentIdentifier}{The ID of the environment where you want to list connections.}
 
 \item{maxResults}{The maximum number of connections to return in a single call to
 ListConnections. When the number of connections to be listed is greater
 than the value of MaxResults, the response contains a NextToken value
 that you can use in a subsequent call to ListConnections to list the
 next set of connections.}
-
-\item{name}{The name of the connection.}
 
 \item{nextToken}{When the number of connections is greater than the default value for the
 MaxResults parameter, or if you explicitly specify a value for
@@ -37,15 +33,19 @@ includes a pagination token named NextToken. You can specify this
 NextToken value in a subsequent call to ListConnections to list the next
 set of connections.}
 
-\item{projectIdentifier}{The ID of the project where you want to list connections.}
-
-\item{scope}{The scope of the connection.}
-
 \item{sortBy}{Specifies how you want to sort the listed connections.}
 
 \item{sortOrder}{Specifies the sort order for the listed connections.}
 
+\item{name}{The name of the connection.}
+
+\item{environmentIdentifier}{The ID of the environment where you want to list connections.}
+
+\item{projectIdentifier}{The ID of the project where you want to list connections.}
+
 \item{type}{The type of connection.}
+
+\item{scope}{The scope of the connection.}
 }
 \description{
 Lists connections. In Amazon DataZone, a connection enables you to connect your resources (domains, projects, and environments) to external resources and services.

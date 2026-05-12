@@ -8,7 +8,8 @@ verifiedpermissions_create_policy_template(
   clientToken = NULL,
   policyStoreId,
   description = NULL,
-  statement
+  statement,
+  name = NULL
 )
 }
 \arguments{
@@ -29,12 +30,30 @@ Verified Permissions recognizes a \code{ClientToken} for eight hours. After
 eight hours, the next request with the same parameters performs the
 operation again regardless of the value of \code{ClientToken}.}
 
-\item{policyStoreId}{[required] The ID of the policy store in which to create the policy template.}
+\item{policyStoreId}{[required] The ID of the policy store in which to create the policy template.
+
+To specify a policy store, use its ID or alias name. When using an alias
+name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use
+\code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
 
 \item{description}{Specifies a description for the policy template.}
 
 \item{statement}{[required] Specifies the content that you want to use for the new policy template,
 written in the Cedar policy language.}
+
+\item{name}{Specifies a name for the policy template that is unique among all policy
+templates within the policy store. You can use the name in place of the
+policy template ID in API operations that reference the policy template.
+The name must be prefixed with \verb{name/}.
+
+If you specify a name that is already associated with another policy
+template in the policy store, you receive a \code{ConflictException} error.}
 }
 \description{
 Creates a policy template. A template can use placeholders for the principal and resource. A template must be instantiated into a policy by associating it with specific principals and resources to use for the placeholders. That instantiated policy can then be considered in authorization decisions. The instantiated policy works identically to any other policy, except that it is dynamically linked to the template. If the template changes, then any policies that are linked to that template are immediately updated as well.

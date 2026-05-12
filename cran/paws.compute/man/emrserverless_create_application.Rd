@@ -20,6 +20,7 @@ emrserverless_create_application(
   workerTypeSpecifications = NULL,
   runtimeConfiguration = NULL,
   monitoringConfiguration = NULL,
+  diskEncryptionConfiguration = NULL,
   interactiveConfiguration = NULL,
   schedulerConfiguration = NULL,
   identityCenterConfiguration = NULL,
@@ -74,6 +75,8 @@ consists of a classification and properties. This configuration is
 applied to all the job runs submitted under the application.}
 
 \item{monitoringConfiguration}{The configuration setting for monitoring.}
+
+\item{diskEncryptionConfiguration}{The configuration object that allows encrypting local disks.}
 
 \item{interactiveConfiguration}{The interactive configuration object that enables the interactive use
 cases to use when running an application.}

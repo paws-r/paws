@@ -12,10 +12,6 @@ wellarchitected_list_notifications(
 )
 }
 \arguments{
-\item{WorkloadId}{}
-
-\item{NextToken}{}
-
 \item{MaxResults}{The maximum number of results to return for this request.}
 
 \item{ResourceArn}{The ARN for the related resource for the notification.

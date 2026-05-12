@@ -35,8 +35,6 @@ Constraints:
 Example: \code{my-cluster-param-group1}}
 
 \item{TargetDBClusterParameterGroupDescription}{[required] A description for the copied DB cluster parameter group.}
-
-\item{Tags}{}
 }
 \description{
 Copies the specified DB cluster parameter group.

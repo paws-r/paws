@@ -7,10 +7,6 @@
 waf_list_tags_for_resource(NextMarker = NULL, Limit = NULL, ResourceARN)
 }
 \arguments{
-\item{NextMarker}{}
-
-\item{Limit}{}
-
 \item{ResourceARN}{[required]}
 }
 \description{

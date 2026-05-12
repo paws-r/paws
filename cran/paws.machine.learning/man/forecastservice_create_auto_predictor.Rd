@@ -78,8 +78,6 @@ equal to the RELATED_TIME_SERIES dataset frequency.}
 \item{DataConfig}{The data configuration for your dataset group and any additional
 datasets.}
 
-\item{EncryptionConfig}{}
-
 \item{ReferencePredictorArn}{The ARN of the predictor to retrain or upgrade. This parameter is only
 used when retraining or upgrading a predictor. When creating a new
 predictor, do not specify a value for this parameter.

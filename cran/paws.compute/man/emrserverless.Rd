@@ -117,14 +117,20 @@ For example, \verb{emr-serverless.us-east-2.amazonaws.com}.
 \link[=emrserverless_get_application]{get_application} \tab Displays detailed information about a specified application\cr
 \link[=emrserverless_get_dashboard_for_job_run]{get_dashboard_for_job_run} \tab Creates and returns a URL that you can use to access the application UIs for a job run\cr
 \link[=emrserverless_get_job_run]{get_job_run} \tab Displays detailed information about a job run\cr
+\link[=emrserverless_get_resource_dashboard]{get_resource_dashboard} \tab Returns a URL that you can use to access the application UIs for a specified resource, such as a session\cr
+\link[=emrserverless_get_session]{get_session} \tab Displays detailed information about a session\cr
+\link[=emrserverless_get_session_endpoint]{get_session_endpoint} \tab Returns the session endpoint URL and a time-limited authentication token for the specified session\cr
 \link[=emrserverless_list_applications]{list_applications} \tab Lists applications based on a set of parameters\cr
 \link[=emrserverless_list_job_run_attempts]{list_job_run_attempts} \tab Lists all attempt of a job run\cr
 \link[=emrserverless_list_job_runs]{list_job_runs} \tab Lists job runs based on a set of parameters\cr
+\link[=emrserverless_list_sessions]{list_sessions} \tab Lists sessions for the specified application\cr
 \link[=emrserverless_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to the resources\cr
 \link[=emrserverless_start_application]{start_application} \tab Starts a specified application and initializes initial capacity if configured\cr
 \link[=emrserverless_start_job_run]{start_job_run} \tab Starts a job run\cr
+\link[=emrserverless_start_session]{start_session} \tab Creates and starts a new session on the specified application\cr
 \link[=emrserverless_stop_application]{stop_application} \tab Stops a specified application and releases initial capacity if configured\cr
 \link[=emrserverless_tag_resource]{tag_resource} \tab Assigns tags to resources\cr
+\link[=emrserverless_terminate_session]{terminate_session} \tab Terminates the specified session\cr
 \link[=emrserverless_untag_resource]{untag_resource} \tab Removes tags from resources\cr
 \link[=emrserverless_update_application]{update_application} \tab Updates a specified application
 }

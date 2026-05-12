@@ -16,6 +16,14 @@ test_that("list_clusters", {
   expect_error(svc$list_clusters(), NA)
 })
 
+test_that("list_daemon_task_definitions", {
+  expect_error(svc$list_daemon_task_definitions(), NA)
+})
+
+test_that("list_daemons", {
+  expect_error(svc$list_daemons(), NA)
+})
+
 test_that("list_task_definition_families", {
   expect_error(svc$list_task_definition_families(), NA)
 })

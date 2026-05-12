@@ -16,13 +16,9 @@ fsx_create_volume_from_backup(
 \arguments{
 \item{BackupId}{[required]}
 
-\item{ClientRequestToken}{}
-
 \item{Name}{[required] The name of the new volume you're creating.}
 
 \item{OntapConfiguration}{Specifies the configuration of the ONTAP volume that you are creating.}
-
-\item{Tags}{}
 }
 \description{
 Creates a new Amazon FSx for NetApp ONTAP volume from an existing Amazon FSx volume backup.

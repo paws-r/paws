@@ -4,14 +4,25 @@
 \alias{batch_create_scheduling_policy}
 \title{Creates an Batch scheduling policy}
 \usage{
-batch_create_scheduling_policy(name, fairsharePolicy = NULL, tags = NULL)
+batch_create_scheduling_policy(
+  name,
+  quotaSharePolicy = NULL,
+  fairsharePolicy = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name of the fair-share scheduling policy. It can be up to 128
 letters long. It can contain uppercase and lowercase letters, numbers,
 hyphens (-), and underscores (_).}
 
-\item{fairsharePolicy}{The fair-share scheduling policy details.}
+\item{quotaSharePolicy}{The quota share scheduling policy details. Only one of fairsharePolicy
+or quotaSharePolicy can be set. Once set, this policy type cannot be
+removed or changed to a fairSharePolicy.}
+
+\item{fairsharePolicy}{The fair-share scheduling policy details. Only one of fairsharePolicy or
+quotaSharePolicy can be set. Once set, this policy type cannot be
+removed or changed to a quotaSharePolicy.}
 
 \item{tags}{The tags that you apply to the scheduling policy to help you categorize
 and organize your resources. Each tag consists of a key and an optional

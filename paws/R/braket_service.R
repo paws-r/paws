@@ -48,7 +48,7 @@ NULL
 #' -   [PHP](https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.Braket.BraketClient.html)
 #' 
 #' -   [Python
-#'     (Boto)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/braket.html)
+#'     (Boto)](https://docs.aws.amazon.com/boto3/latest/reference/services/braket.html)
 #' 
 #' -   [Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/Braket.html)
 #' 

@@ -58,8 +58,6 @@ in the \emph{Amazon S3 User Guide}.}
 \code{CommonPrefixes} is filtered out from results if it is not
 lexicographically greater than the key-marker.}
 
-\item{EncodingType}{}
-
 \item{Marker}{Marker is where you want Amazon S3 to start listing from. Amazon S3
 starts listing after this specified key. Marker can be any key in the
 bucket.}

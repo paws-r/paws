@@ -614,8 +614,6 @@ that Amazon S3 can decrypt the object for copying.
 This functionality is not supported when the source object is in a
 directory bucket.}
 
-\item{RequestPayer}{}
-
 \item{Tagging}{The tag-set for the object copy in the destination bucket. This value
 must be used in conjunction with the \code{x-amz-tagging-directive} if you
 choose \code{REPLACE} for the \code{x-amz-tagging-directive}. If you choose \code{COPY}

@@ -11,8 +11,6 @@ cloudfront_list_distribution_tenants(
 )
 }
 \arguments{
-\item{AssociationFilter}{}
-
 \item{Marker}{The marker for the next set of results.}
 
 \item{MaxItems}{The maximum number of distribution tenants to return.}

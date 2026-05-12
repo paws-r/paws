@@ -25,8 +25,6 @@ workspaces_create_workspace_bundle(
 
 \item{UserStorage}{[required]}
 
-\item{RootStorage}{}
-
 \item{Tags}{The tags associated with the bundle.
 
 To add tags at the same time when you're creating the bundle, you must

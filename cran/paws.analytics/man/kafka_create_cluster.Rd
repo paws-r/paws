@@ -44,8 +44,6 @@ PER_TOPIC_PER_PARTITION.}
 
 \item{KafkaVersion}{[required] The version of Apache Kafka.}
 
-\item{LoggingInfo}{}
-
 \item{NumberOfBrokerNodes}{[required] The number of broker nodes in the cluster.}
 
 \item{Tags}{Create tags when creating the cluster.}

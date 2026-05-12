@@ -12,8 +12,6 @@ fsx_associate_file_system_aliases(
 )
 }
 \arguments{
-\item{ClientRequestToken}{}
-
 \item{FileSystemId}{[required] Specifies the file system with which you want to associate one or more
 DNS aliases.}
 

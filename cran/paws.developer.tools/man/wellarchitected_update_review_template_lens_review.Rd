@@ -15,10 +15,6 @@ wellarchitected_update_review_template_lens_review(
 \item{TemplateArn}{[required] The review template ARN.}
 
 \item{LensAlias}{[required]}
-
-\item{LensNotes}{}
-
-\item{PillarNotes}{}
 }
 \description{
 Update a lens review associated with a review template.

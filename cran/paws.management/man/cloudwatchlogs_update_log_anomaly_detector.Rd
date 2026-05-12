@@ -21,8 +21,6 @@ new logs. For example, if the log group receives new log events every 10
 minutes, then setting \code{evaluationFrequency} to \code{FIFTEEN_MIN} might be
 appropriate.}
 
-\item{filterPattern}{}
-
 \item{anomalyVisibilityTime}{The number of days to use as the life cycle of anomalies. After this
 time, anomalies are automatically baselined and the anomaly detector
 model will treat new occurrences of similar event as normal. Therefore,

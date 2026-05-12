@@ -7,8 +7,6 @@
 ssmsap_get_resource_permission(ActionType = NULL, ResourceArn)
 }
 \arguments{
-\item{ActionType}{}
-
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 }
 \description{

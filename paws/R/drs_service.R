@@ -175,7 +175,7 @@ drs <- function(config = list(), credentials = list(), endpoint = NULL, region =
   service_id = "drs",
   api_version = "2020-02-26",
   signing_name = "drs",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

@@ -44,6 +44,16 @@ verifiedpermissions_batch_get_policy <- function(requests) {
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store. Policies in this policy store will
 #' be used to make the authorization decisions for the input.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param entities (Optional) Specifies the list of resources and principals and their
 #' associated attributes that Verified Permissions can examine when
 #' evaluating the policies. These additional entities and their attributes
@@ -87,6 +97,16 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store. Policies in this policy store will
 #' be used to make an authorization decision for the input.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param identityToken Specifies an identity (ID) token for the principal that you want to
 #' authorize in each request. This token is provided to you by the identity
 #' provider (IdP) associated with the specified identity source. You must
@@ -173,6 +193,16 @@ verifiedpermissions_batch_is_authorized_with_token <- function(policyStoreId, id
 #' identity source. Only policies and requests made using this policy store
 #' can reference identities from the identity provider configured in the
 #' new identity source.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param configuration &#91;required&#93; Specifies the details required to communicate with the identity provider
 #' (IdP) associated with this identity source.
 #' @param principalEntityType Specifies the namespace and data type of the principals generated for
@@ -226,15 +256,32 @@ verifiedpermissions_create_identity_source <- function(clientToken = NULL, polic
 #' operation again regardless of the value of `ClientToken`.
 #' @param policyStoreId &#91;required&#93; Specifies the `PolicyStoreId` of the policy store you want to store the
 #' policy in.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param definition &#91;required&#93; A structure that specifies the policy type and content to use for the
 #' new policy. You must include either a static or a templateLinked
 #' element. The policy content must be written in the Cedar policy
 #' language.
+#' @param name Specifies a name for the policy that is unique among all policies within
+#' the policy store. You can use the name in place of the policy ID in API
+#' operations that reference the policy. The name must be prefixed with
+#' `name/`.
+#' 
+#' If you specify a name that is already associated with another policy in
+#' the policy store, you receive a `ConflictException` error.
 #'
 #' @keywords internal
 #'
 #' @rdname verifiedpermissions_create_policy
-verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId, definition) {
+verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId, definition, name = NULL) {
   op <- new_operation(
     name = "CreatePolicy",
     http_method = "POST",
@@ -243,7 +290,7 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .verifiedpermissions$create_policy_input(clientToken = clientToken, policyStoreId = policyStoreId, definition = definition)
+  input <- .verifiedpermissions$create_policy_input(clientToken = clientToken, policyStoreId = policyStoreId, definition = definition, name = name)
   output <- .verifiedpermissions$create_policy_output()
   config <- get_config()
   svc <- .verifiedpermissions$service(config, op)
@@ -295,12 +342,18 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
 #' policy store can't be deleted.
 #' 
 #' The default state is `DISABLED`.
+#' @param encryptionSettings Specifies the encryption settings used to encrypt the policy store and
+#' their child resources. Allows for the ability to use a customer owned
+#' KMS key for encryption of data.
+#' 
+#' This is an optional field to be used when providing a customer-managed
+#' KMS key for encryption.
 #' @param tags The list of key-value pairs to associate with the policy store.
 #'
 #' @keywords internal
 #'
 #' @rdname verifiedpermissions_create_policy_store
-verifiedpermissions_create_policy_store <- function(clientToken = NULL, validationSettings, description = NULL, deletionProtection = NULL, tags = NULL) {
+verifiedpermissions_create_policy_store <- function(clientToken = NULL, validationSettings, description = NULL, deletionProtection = NULL, encryptionSettings = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreatePolicyStore",
     http_method = "POST",
@@ -309,7 +362,7 @@ verifiedpermissions_create_policy_store <- function(clientToken = NULL, validati
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .verifiedpermissions$create_policy_store_input(clientToken = clientToken, validationSettings = validationSettings, description = description, deletionProtection = deletionProtection, tags = tags)
+  input <- .verifiedpermissions$create_policy_store_input(clientToken = clientToken, validationSettings = validationSettings, description = description, deletionProtection = deletionProtection, encryptionSettings = encryptionSettings, tags = tags)
   output <- .verifiedpermissions$create_policy_store_output()
   config <- get_config()
   svc <- .verifiedpermissions$service(config, op)
@@ -318,6 +371,45 @@ verifiedpermissions_create_policy_store <- function(clientToken = NULL, validati
   return(response)
 }
 .verifiedpermissions$operations$create_policy_store <- verifiedpermissions_create_policy_store
+
+#' Creates a policy store alias for the specified policy store
+#'
+#' @description
+#' Creates a policy store alias for the specified policy store. A policy store alias is an alternative identifier that you can use to reference a policy store in API operations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_create_policy_store_alias/](https://www.paws-r-sdk.com/docs/verifiedpermissions_create_policy_store_alias/) for full documentation.
+#'
+#' @param aliasName &#91;required&#93; Specifies the name of the policy store alias to create. The name must be
+#' unique within your Amazon Web Services account and Amazon Web Services
+#' Region.
+#' 
+#' The alias name must always be prefixed with `policy-store-alias/`.
+#' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store to associate with the alias.
+#' 
+#' The associated policy store must be specified using its ID. The alias
+#' name cannot be used.
+#'
+#' @keywords internal
+#'
+#' @rdname verifiedpermissions_create_policy_store_alias
+verifiedpermissions_create_policy_store_alias <- function(aliasName, policyStoreId) {
+  op <- new_operation(
+    name = "CreatePolicyStoreAlias",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .verifiedpermissions$create_policy_store_alias_input(aliasName = aliasName, policyStoreId = policyStoreId)
+  output <- .verifiedpermissions$create_policy_store_alias_output()
+  config <- get_config()
+  svc <- .verifiedpermissions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.verifiedpermissions$operations$create_policy_store_alias <- verifiedpermissions_create_policy_store_alias
 
 #' Creates a policy template
 #'
@@ -344,14 +436,31 @@ verifiedpermissions_create_policy_store <- function(clientToken = NULL, validati
 #' eight hours, the next request with the same parameters performs the
 #' operation again regardless of the value of `ClientToken`.
 #' @param policyStoreId &#91;required&#93; The ID of the policy store in which to create the policy template.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param description Specifies a description for the policy template.
 #' @param statement &#91;required&#93; Specifies the content that you want to use for the new policy template,
 #' written in the Cedar policy language.
+#' @param name Specifies a name for the policy template that is unique among all policy
+#' templates within the policy store. You can use the name in place of the
+#' policy template ID in API operations that reference the policy template.
+#' The name must be prefixed with `name/`.
+#' 
+#' If you specify a name that is already associated with another policy
+#' template in the policy store, you receive a `ConflictException` error.
 #'
 #' @keywords internal
 #'
 #' @rdname verifiedpermissions_create_policy_template
-verifiedpermissions_create_policy_template <- function(clientToken = NULL, policyStoreId, description = NULL, statement) {
+verifiedpermissions_create_policy_template <- function(clientToken = NULL, policyStoreId, description = NULL, statement, name = NULL) {
   op <- new_operation(
     name = "CreatePolicyTemplate",
     http_method = "POST",
@@ -360,7 +469,7 @@ verifiedpermissions_create_policy_template <- function(clientToken = NULL, polic
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .verifiedpermissions$create_policy_template_input(clientToken = clientToken, policyStoreId = policyStoreId, description = description, statement = statement)
+  input <- .verifiedpermissions$create_policy_template_input(clientToken = clientToken, policyStoreId = policyStoreId, description = description, statement = statement, name = name)
   output <- .verifiedpermissions$create_policy_template_output()
   config <- get_config()
   svc <- .verifiedpermissions$service(config, op)
@@ -380,6 +489,16 @@ verifiedpermissions_create_policy_template <- function(clientToken = NULL, polic
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that contains the identity source
 #' that you want to delete.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param identitySourceId &#91;required&#93; Specifies the ID of the identity source that you want to delete.
 #'
 #' @keywords internal
@@ -413,7 +532,24 @@ verifiedpermissions_delete_identity_source <- function(policyStoreId, identitySo
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that contains the policy that you
 #' want to delete.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param policyId &#91;required&#93; Specifies the ID of the policy that you want to delete.
+#' 
+#' You can use the policy name in place of the policy ID. When using a
+#' name, prefix it with `name/`. For example:
+#' 
+#' -   ID: `SPEXAMPLEabcdefg111111`
+#' 
+#' -   Name: `name/example-policy`
 #'
 #' @keywords internal
 #'
@@ -445,6 +581,9 @@ verifiedpermissions_delete_policy <- function(policyStoreId, policyId) {
 #' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_delete_policy_store/](https://www.paws-r-sdk.com/docs/verifiedpermissions_delete_policy_store/) for full documentation.
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that you want to delete.
+#' 
+#' To specify a policy store, the alias name cannot be used. Only the ID
+#' can be used.
 #'
 #' @keywords internal
 #'
@@ -468,6 +607,39 @@ verifiedpermissions_delete_policy_store <- function(policyStoreId) {
 }
 .verifiedpermissions$operations$delete_policy_store <- verifiedpermissions_delete_policy_store
 
+#' Deletes the specified policy store alias
+#'
+#' @description
+#' Deletes the specified policy store alias.
+#'
+#' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_delete_policy_store_alias/](https://www.paws-r-sdk.com/docs/verifiedpermissions_delete_policy_store_alias/) for full documentation.
+#'
+#' @param aliasName &#91;required&#93; Specifies the name of the policy store alias that you want to delete.
+#' 
+#' The alias name must always be prefixed with `policy-store-alias/`.
+#'
+#' @keywords internal
+#'
+#' @rdname verifiedpermissions_delete_policy_store_alias
+verifiedpermissions_delete_policy_store_alias <- function(aliasName) {
+  op <- new_operation(
+    name = "DeletePolicyStoreAlias",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .verifiedpermissions$delete_policy_store_alias_input(aliasName = aliasName)
+  output <- .verifiedpermissions$delete_policy_store_alias_output()
+  config <- get_config()
+  svc <- .verifiedpermissions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.verifiedpermissions$operations$delete_policy_store_alias <- verifiedpermissions_delete_policy_store_alias
+
 #' Deletes the specified policy template from the policy store
 #'
 #' @description
@@ -477,7 +649,24 @@ verifiedpermissions_delete_policy_store <- function(policyStoreId) {
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that contains the policy template
 #' that you want to delete.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param policyTemplateId &#91;required&#93; Specifies the ID of the policy template that you want to delete.
+#' 
+#' You can use the policy template name in place of the policy template ID.
+#' When using a name, prefix it with `name/`. For example:
+#' 
+#' -   ID: `PTEXAMPLEabcdefg111111`
+#' 
+#' -   Name: `name/example-policy-template`
 #'
 #' @keywords internal
 #'
@@ -510,6 +699,16 @@ verifiedpermissions_delete_policy_template <- function(policyStoreId, policyTemp
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that contains the identity source
 #' you want information about.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param identitySourceId &#91;required&#93; Specifies the ID of the identity source you want information about.
 #'
 #' @keywords internal
@@ -543,7 +742,24 @@ verifiedpermissions_get_identity_source <- function(policyStoreId, identitySourc
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that contains the policy that you
 #' want information about.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param policyId &#91;required&#93; Specifies the ID of the policy you want information about.
+#' 
+#' You can use the policy name in place of the policy ID. When using a
+#' name, prefix it with `name/`. For example:
+#' 
+#' -   ID: `SPEXAMPLEabcdefg111111`
+#' 
+#' -   Name: `name/example-policy`
 #'
 #' @keywords internal
 #'
@@ -574,7 +790,17 @@ verifiedpermissions_get_policy <- function(policyStoreId, policyId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_get_policy_store/](https://www.paws-r-sdk.com/docs/verifiedpermissions_get_policy_store/) for full documentation.
 #'
-#' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that you want information about.
+#' @param policyStoreId &#91;required&#93; Specifies the policy store that you want information about.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param tags Specifies whether to return the tags that are attached to the policy
 #' store. If this parameter is included in the API call, the tags are
 #' returned, otherwise they are not returned.
@@ -605,6 +831,40 @@ verifiedpermissions_get_policy_store <- function(policyStoreId, tags = NULL) {
 }
 .verifiedpermissions$operations$get_policy_store <- verifiedpermissions_get_policy_store
 
+#' Retrieves details about the specified policy store alias
+#'
+#' @description
+#' Retrieves details about the specified policy store alias.
+#'
+#' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_get_policy_store_alias/](https://www.paws-r-sdk.com/docs/verifiedpermissions_get_policy_store_alias/) for full documentation.
+#'
+#' @param aliasName &#91;required&#93; Specifies the name of the policy store alias that you want information
+#' about.
+#' 
+#' The alias name must always be prefixed with `policy-store-alias/`.
+#'
+#' @keywords internal
+#'
+#' @rdname verifiedpermissions_get_policy_store_alias
+verifiedpermissions_get_policy_store_alias <- function(aliasName) {
+  op <- new_operation(
+    name = "GetPolicyStoreAlias",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .verifiedpermissions$get_policy_store_alias_input(aliasName = aliasName)
+  output <- .verifiedpermissions$get_policy_store_alias_output()
+  config <- get_config()
+  svc <- .verifiedpermissions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.verifiedpermissions$operations$get_policy_store_alias <- verifiedpermissions_get_policy_store_alias
+
 #' Retrieve the details for the specified policy template in the specified
 #' policy store
 #'
@@ -615,7 +875,24 @@ verifiedpermissions_get_policy_store <- function(policyStoreId, tags = NULL) {
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that contains the policy template
 #' that you want information about.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param policyTemplateId &#91;required&#93; Specifies the ID of the policy template that you want information about.
+#' 
+#' You can use the policy template name in place of the policy template ID.
+#' When using a name, prefix it with `name/`. For example:
+#' 
+#' -   ID: `PTEXAMPLEabcdefg111111`
+#' 
+#' -   Name: `name/example-policy-template`
 #'
 #' @keywords internal
 #'
@@ -648,6 +925,16 @@ verifiedpermissions_get_policy_template <- function(policyStoreId, policyTemplat
 #' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_get_schema/](https://www.paws-r-sdk.com/docs/verifiedpermissions_get_schema/) for full documentation.
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that contains the schema.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #'
 #' @keywords internal
 #'
@@ -681,6 +968,16 @@ verifiedpermissions_get_schema <- function(policyStoreId) {
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store. Policies in this policy store will
 #' be used to make an authorization decision for the input.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param principal Specifies the principal for which the authorization decision is to be
 #' made.
 #' @param action Specifies the requested action to be authorized. For example, is the
@@ -730,6 +1027,16 @@ verifiedpermissions_is_authorized <- function(policyStoreId, principal = NULL, a
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store. Policies in this policy store will
 #' be used to make an authorization decision for the input.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param identityToken Specifies an identity token for the principal to be authorized. This
 #' token is provided to you by the identity provider (IdP) associated with
 #' the specified identity source. You must specify either an `accessToken`,
@@ -801,6 +1108,16 @@ verifiedpermissions_is_authorized_with_token <- function(policyStoreId, identity
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that contains the identity sources
 #' that you want to list.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param nextToken Specifies that you want to receive the next page of results. Valid only
 #' if you received a `NextToken` response in the previous request. If you
 #' did, it indicates that more output is available. Set this parameter to
@@ -852,6 +1169,16 @@ verifiedpermissions_list_identity_sources <- function(policyStoreId, nextToken =
 #' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_list_policies/](https://www.paws-r-sdk.com/docs/verifiedpermissions_list_policies/) for full documentation.
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store you want to list policies from.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param nextToken Specifies that you want to receive the next page of results. Valid only
 #' if you received a `NextToken` response in the previous request. If you
 #' did, it indicates that more output is available. Set this parameter to
@@ -894,6 +1221,57 @@ verifiedpermissions_list_policies <- function(policyStoreId, nextToken = NULL, m
   return(response)
 }
 .verifiedpermissions$operations$list_policies <- verifiedpermissions_list_policies
+
+#' Returns a paginated list of all policy store aliases in the calling
+#' Amazon Web Services account
+#'
+#' @description
+#' Returns a paginated list of all policy store aliases in the calling Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_list_policy_store_aliases/](https://www.paws-r-sdk.com/docs/verifiedpermissions_list_policy_store_aliases/) for full documentation.
+#'
+#' @param nextToken Specifies that you want to receive the next page of results. Valid only
+#' if you received a `NextToken` response in the previous request. If you
+#' did, it indicates that more output is available. Set this parameter to
+#' the value provided by the previous call's `NextToken` response to
+#' request the next page of results.
+#' @param maxResults Specifies the total number of results that you want included in each
+#' response. If additional items exist beyond the number you specify, the
+#' `NextToken` response element is returned with a value (not null).
+#' Include the specified value as the `NextToken` request parameter in the
+#' next call to the operation to get the next set of results. Note that the
+#' service might return fewer results than the maximum even when there are
+#' more results available. You should check `NextToken` after every
+#' operation to ensure that you receive all of the results.
+#' 
+#' If you do not specify this parameter, the operation defaults to 5 policy
+#' store aliases per response. You can specify a maximum of 50 policy store
+#' aliases per response.
+#' @param filter Specifies a filter to narrow the results. You can filter by
+#' `policyStoreId` to list only the policy store aliases associated with a
+#' specific policy store.
+#'
+#' @keywords internal
+#'
+#' @rdname verifiedpermissions_list_policy_store_aliases
+verifiedpermissions_list_policy_store_aliases <- function(nextToken = NULL, maxResults = NULL, filter = NULL) {
+  op <- new_operation(
+    name = "ListPolicyStoreAliases",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyStoreAliases"),
+    stream_api = FALSE
+  )
+  input <- .verifiedpermissions$list_policy_store_aliases_input(nextToken = nextToken, maxResults = maxResults, filter = filter)
+  output <- .verifiedpermissions$list_policy_store_aliases_output()
+  config <- get_config()
+  svc <- .verifiedpermissions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.verifiedpermissions$operations$list_policy_store_aliases <- verifiedpermissions_list_policy_store_aliases
 
 #' Returns a paginated list of all policy stores in the calling Amazon Web
 #' Services account
@@ -953,6 +1331,16 @@ verifiedpermissions_list_policy_stores <- function(nextToken = NULL, maxResults 
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that contains the policy templates
 #' you want to list.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param nextToken Specifies that you want to receive the next page of results. Valid only
 #' if you received a `NextToken` response in the previous request. If you
 #' did, it indicates that more output is available. Set this parameter to
@@ -1033,6 +1421,16 @@ verifiedpermissions_list_tags_for_resource <- function(resourceArn) {
 #' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_put_schema/](https://www.paws-r-sdk.com/docs/verifiedpermissions_put_schema/) for full documentation.
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store in which to place the schema.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param definition &#91;required&#93; Specifies the definition of the schema to be stored. The schema
 #' definition must be written in Cedar schema JSON.
 #'
@@ -1135,6 +1533,16 @@ verifiedpermissions_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that contains the identity source
 #' that you want to update.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param identitySourceId &#91;required&#93; Specifies the ID of the identity source that you want to update.
 #' @param updateConfiguration &#91;required&#93; Specifies the details required to communicate with the identity provider
 #' (IdP) associated with this identity source.
@@ -1172,10 +1580,30 @@ verifiedpermissions_update_identity_source <- function(policyStoreId, identitySo
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that contains the policy that you
 #' want to update.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param policyId &#91;required&#93; Specifies the ID of the policy that you want to update. To find this
 #' value, you can use [`list_policies`][verifiedpermissions_list_policies].
-#' @param definition &#91;required&#93; Specifies the updated policy content that you want to replace on the
+#' 
+#' You can use the policy name in place of the policy ID. When using a
+#' name, prefix it with `name/`. For example:
+#' 
+#' -   ID: `SPEXAMPLEabcdefg111111`
+#' 
+#' -   Name: `name/example-policy`
+#' @param definition Specifies the updated policy content that you want to replace on the
 #' specified policy. The content must be valid Cedar policy language text.
+#' 
+#' If you don't specify this parameter, the existing policy definition
+#' remains unchanged.
 #' 
 #' You can change only the following elements from the policy definition:
 #' 
@@ -1192,11 +1620,21 @@ verifiedpermissions_update_identity_source <- function(policyStoreId, identitySo
 #' -   The `principal` referenced by the policy.
 #' 
 #' -   The `resource` referenced by the policy.
+#' @param name Specifies a name for the policy that is unique among all policies within
+#' the policy store. You can use the name in place of the policy ID in API
+#' operations that reference the policy. The name must be prefixed with
+#' `name/`.
+#' 
+#' If you don't include the name in an update request, the existing name is
+#' unchanged. To remove a name, set it to an empty string (`""`).
+#' 
+#' If you specify a name that is already associated with another policy in
+#' the policy store, you receive a `ConflictException` error.
 #'
 #' @keywords internal
 #'
 #' @rdname verifiedpermissions_update_policy
-verifiedpermissions_update_policy <- function(policyStoreId, policyId, definition) {
+verifiedpermissions_update_policy <- function(policyStoreId, policyId, definition = NULL, name = NULL) {
   op <- new_operation(
     name = "UpdatePolicy",
     http_method = "POST",
@@ -1205,7 +1643,7 @@ verifiedpermissions_update_policy <- function(policyStoreId, policyId, definitio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .verifiedpermissions$update_policy_input(policyStoreId = policyStoreId, policyId = policyId, definition = definition)
+  input <- .verifiedpermissions$update_policy_input(policyStoreId = policyStoreId, policyId = policyId, definition = definition, name = name)
   output <- .verifiedpermissions$update_policy_output()
   config <- get_config()
   svc <- .verifiedpermissions$service(config, op)
@@ -1223,6 +1661,16 @@ verifiedpermissions_update_policy <- function(policyStoreId, policyId, definitio
 #' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_update_policy_store/](https://www.paws-r-sdk.com/docs/verifiedpermissions_update_policy_store/) for full documentation.
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that you want to update
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param validationSettings &#91;required&#93; A structure that defines the validation settings that want to enable for
 #' the policy store.
 #' @param deletionProtection Specifies whether the policy store can be deleted. If enabled, the
@@ -1265,7 +1713,24 @@ verifiedpermissions_update_policy_store <- function(policyStoreId, validationSet
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that contains the policy template
 #' that you want to update.
+#' 
+#' To specify a policy store, use its ID or alias name. When using an alias
+#' name, prefix it with `policy-store-alias/`. For example:
+#' 
+#' -   ID: `PSEXAMPLEabcdefg111111`
+#' 
+#' -   Alias name: `policy-store-alias/example-policy-store`
+#' 
+#' To view aliases, use
+#' [`list_policy_store_aliases`][verifiedpermissions_list_policy_store_aliases].
 #' @param policyTemplateId &#91;required&#93; Specifies the ID of the policy template that you want to update.
+#' 
+#' You can use the policy template name in place of the policy template ID.
+#' When using a name, prefix it with `name/`. For example:
+#' 
+#' -   ID: `PTEXAMPLEabcdefg111111`
+#' 
+#' -   Name: `name/example-policy-template`
 #' @param description Specifies a new description to apply to the policy template.
 #' @param statement &#91;required&#93; Specifies new statement content written in Cedar policy language to
 #' replace the current body of the policy template.
@@ -1283,11 +1748,21 @@ verifiedpermissions_update_policy_store <- function(policyStoreId, validationSet
 #' -   The `principal` referenced by the policy template.
 #' 
 #' -   The `resource` referenced by the policy template.
+#' @param name Specifies a name for the policy template that is unique among all policy
+#' templates within the policy store. You can use the name in place of the
+#' policy template ID in API operations that reference the policy template.
+#' The name must be prefixed with `name/`.
+#' 
+#' If you don't include the name in an update request, the existing name is
+#' unchanged. To remove a name, set it to an empty string (`""`).
+#' 
+#' If you specify a name that is already associated with another policy
+#' template in the policy store, you receive a `ConflictException` error.
 #'
 #' @keywords internal
 #'
 #' @rdname verifiedpermissions_update_policy_template
-verifiedpermissions_update_policy_template <- function(policyStoreId, policyTemplateId, description = NULL, statement) {
+verifiedpermissions_update_policy_template <- function(policyStoreId, policyTemplateId, description = NULL, statement, name = NULL) {
   op <- new_operation(
     name = "UpdatePolicyTemplate",
     http_method = "POST",
@@ -1296,7 +1771,7 @@ verifiedpermissions_update_policy_template <- function(policyStoreId, policyTemp
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .verifiedpermissions$update_policy_template_input(policyStoreId = policyStoreId, policyTemplateId = policyTemplateId, description = description, statement = statement)
+  input <- .verifiedpermissions$update_policy_template_input(policyStoreId = policyStoreId, policyTemplateId = policyTemplateId, description = description, statement = statement, name = name)
   output <- .verifiedpermissions$update_policy_template_output()
   config <- get_config()
   svc <- .verifiedpermissions$service(config, op)

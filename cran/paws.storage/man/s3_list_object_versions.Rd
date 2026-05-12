@@ -30,8 +30,6 @@ response.
 \code{CommonPrefixes} is filtered out from results if it is not
 lexicographically greater than the key-marker.}
 
-\item{EncodingType}{}
-
 \item{KeyMarker}{Specifies the key to start with when listing objects in a bucket.}
 
 \item{MaxKeys}{Sets the maximum number of keys returned in the response. By default,
@@ -53,8 +51,6 @@ single result under \code{CommonPrefixes}.}
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
 provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
-
-\item{RequestPayer}{}
 
 \item{OptionalObjectAttributes}{Specifies the optional fields that you want returned in the response.
 Fields that you do not specify are not returned.}

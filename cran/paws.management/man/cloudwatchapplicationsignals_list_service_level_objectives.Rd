@@ -10,9 +10,10 @@ cloudwatchapplicationsignals_list_service_level_objectives(
   DependencyConfig = NULL,
   MaxResults = NULL,
   NextToken = NULL,
+  MetricSourceTypes = NULL,
   IncludeLinkedAccounts = NULL,
   SloOwnerAwsAccountId = NULL,
-  MetricSourceTypes = NULL
+  MetricSource = NULL
 )
 }
 \arguments{
@@ -46,6 +47,17 @@ this parameter, the default of 50 is used.}
 \item{NextToken}{Include this value, if it was returned by the previous operation, to get
 the next set of service level objectives.}
 
+\item{MetricSourceTypes}{Use this optional field to only include SLOs with the specified metric
+source types in the output. Supported types are:
+\itemize{
+\item Service operation
+\item Service dependency
+\item Service
+\item CloudWatch metric
+\item AppMonitor
+\item Canary
+}}
+
 \item{IncludeLinkedAccounts}{If you are using this operation in a monitoring account, specify \code{true}
 to include SLO from source accounts in the returned data.
 
@@ -57,13 +69,7 @@ source account.}
 
 \item{SloOwnerAwsAccountId}{SLO's Amazon Web Services account ID.}
 
-\item{MetricSourceTypes}{Use this optional field to only include SLOs with the specified metric
-source types in the output. Supported types are:
-\itemize{
-\item Service operation
-\item Service dependency
-\item CloudWatch metric
-}}
+\item{MetricSource}{Identifies the metric source to filter SLOs by.}
 }
 \description{
 Returns a list of SLOs created in this account.

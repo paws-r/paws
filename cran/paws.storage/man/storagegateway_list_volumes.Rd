@@ -7,8 +7,6 @@
 storagegateway_list_volumes(GatewayARN = NULL, Marker = NULL, Limit = NULL)
 }
 \arguments{
-\item{GatewayARN}{}
-
 \item{Marker}{A string that indicates the position at which to begin the returned list
 of volumes. Obtain the marker from the response of a previous List iSCSI
 Volumes request.}

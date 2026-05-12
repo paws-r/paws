@@ -26,8 +26,6 @@ usage data is retrieved from \code{2017-01-01} up to and including
 
 \item{TagKey}{The key of the tag that you want to return values for.}
 
-\item{Filter}{}
-
 \item{SortBy}{The value that you want to sort the data by.
 
 The key represents cost and usage metrics. The following values are

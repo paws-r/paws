@@ -51,8 +51,6 @@ name.}
 
 \item{WindowsConfiguration}{The configuration for this Microsoft Windows file system.}
 
-\item{LustreConfiguration}{}
-
 \item{StorageType}{Sets the storage type for the Windows, OpenZFS, or Lustre file system
 that you're creating from a backup. Valid values are \code{SSD}, \code{HDD}, and
 \code{INTELLIGENT_TIERING}.
@@ -75,8 +73,6 @@ requirements. A restored file system's storage capacity is tied to the
 file system that was backed up. You can create a file system that uses
 HDD storage from a backup of a file system that used SSD storage if the
 original SSD file system had a storage capacity of at least 2000 GiB.}
-
-\item{KmsKeyId}{}
 
 \item{FileSystemTypeVersion}{Sets the version for the Amazon FSx for Lustre file system that you're
 creating from a backup. Valid values are \code{2.10}, \code{2.12}, and \code{2.15}.

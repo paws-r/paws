@@ -8,6 +8,7 @@ cognitoidentityprovider_create_user_pool_client(
   UserPoolId,
   ClientName,
   GenerateSecret = NULL,
+  ClientSecret = NULL,
   RefreshTokenValidity = NULL,
   AccessTokenValidity = NULL,
   IdTokenValidity = NULL,
@@ -39,6 +40,10 @@ cognitoidentityprovider_create_user_pool_client(
 secrets are used with server-side and machine-to-machine applications.
 Client secrets are automatically generated; you can't specify a secret
 value. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-client-apps.html#user-pool-settings-client-app-client-types}{App client types}.}
+
+\item{ClientSecret}{A custom client secret that you want to use for the app client. You
+cannot specify both GenerateSecret as true and provide a ClientSecret
+value.}
 
 \item{RefreshTokenValidity}{The refresh token time limit. After this limit expires, your user can't
 use their refresh token. To specify the time unit for
@@ -198,10 +203,12 @@ in the list of \code{CallbackURLs} that you provide in this parameter.
 
 See \href{https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2}{OAuth 2.0 - Redirection Endpoint}.
 
-Amazon Cognito requires HTTPS over HTTP except for http://localhost for
-testing purposes only.
+Amazon Cognito requires HTTPS over HTTP except for callback URLs to
+\verb{http://localhost}, \verb{http://127.0.0.1} and \verb{http://[::1]}. These
+callback URLs are for testing purposes only. You can specify custom TCP
+ports for your callback URLs.
 
-App callback URLs such as myapp://example are also supported.}
+App callback URLs such as \verb{myapp://example} are also supported.}
 
 \item{LogoutURLs}{A list of allowed logout URLs for managed login authentication. When you
 pass \code{logout_uri} and \code{client_id} parameters to \verb{/logout}, Amazon

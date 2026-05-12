@@ -22,8 +22,6 @@ billingconductor_update_custom_line_item(
 
 \item{ChargeDetails}{A \code{ListCustomLineItemChargeDetails} containing the new charge details
 for the custom line item.}
-
-\item{BillingPeriodRange}{}
 }
 \description{
 Update an existing custom line item in the current or previous billing period.

@@ -8,7 +8,8 @@ ec2_search_transit_gateway_routes(
   TransitGatewayRouteTableId,
   Filters,
   MaxResults = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  NextToken = NULL
 )
 }
 \arguments{
@@ -46,6 +47,8 @@ default is 1000.}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{NextToken}{The token for the next page of results.}
 }
 \description{
 Searches for routes in the specified transit gateway route table.

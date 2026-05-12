@@ -18,8 +18,6 @@ can't change the name of the metric after you create the \code{Rule}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
-
-\item{Tags}{}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

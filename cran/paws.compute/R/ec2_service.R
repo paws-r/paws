@@ -97,6 +97,7 @@ NULL
 #'  \link[=ec2_accept_address_transfer]{accept_address_transfer} \tab Accepts an Elastic IP address transfer\cr
 #'  \link[=ec2_accept_capacity_reservation_billing_ownership]{accept_capacity_reservation_billing_ownership} \tab Accepts a request to assign billing of the available capacity of a shared Capacity Reservation to your account\cr
 #'  \link[=ec2_accept_reserved_instances_exchange_quote]{accept_reserved_instances_exchange_quote} \tab Accepts the Convertible Reserved Instance exchange quote described in the GetReservedInstancesExchangeQuote call\cr
+#'  \link[=ec2_accept_transit_gateway_client_vpn_attachment]{accept_transit_gateway_client_vpn_attachment} \tab Accepts a Transit Gateway attachment request for a Client VPN endpoint\cr
 #'  \link[=ec2_accept_transit_gateway_multicast_domain_associations]{accept_transit_gateway_multicast_domain_associations} \tab Accepts a request to associate subnets with a transit gateway multicast domain\cr
 #'  \link[=ec2_accept_transit_gateway_peering_attachment]{accept_transit_gateway_peering_attachment} \tab Accepts a transit gateway peering attachment request\cr
 #'  \link[=ec2_accept_transit_gateway_vpc_attachment]{accept_transit_gateway_vpc_attachment} \tab Accepts a request to attach a VPC to a transit gateway\cr
@@ -216,6 +217,8 @@ NULL
 #'  \link[=ec2_create_route_server_endpoint]{create_route_server_endpoint} \tab Creates a new endpoint for a route server in a specified subnet\cr
 #'  \link[=ec2_create_route_server_peer]{create_route_server_peer} \tab Creates a new BGP peer for a specified route server endpoint\cr
 #'  \link[=ec2_create_route_table]{create_route_table} \tab Creates a route table for the specified VPC\cr
+#'  \link[=ec2_create_secondary_network]{create_secondary_network} \tab Creates a secondary network\cr
+#'  \link[=ec2_create_secondary_subnet]{create_secondary_subnet} \tab Creates a secondary subnet in a secondary network\cr
 #'  \link[=ec2_create_security_group]{create_security_group} \tab Creates a security group\cr
 #'  \link[=ec2_create_snapshot]{create_snapshot} \tab Creates a snapshot of an EBS volume and stores it in Amazon S3\cr
 #'  \link[=ec2_create_snapshots]{create_snapshots} \tab Creates crash-consistent snapshots of multiple EBS volumes attached to an Amazon EC2 instance\cr
@@ -308,6 +311,8 @@ NULL
 #'  \link[=ec2_delete_route_server_endpoint]{delete_route_server_endpoint} \tab Deletes the specified route server endpoint\cr
 #'  \link[=ec2_delete_route_server_peer]{delete_route_server_peer} \tab Deletes the specified BGP peer from a route server\cr
 #'  \link[=ec2_delete_route_table]{delete_route_table} \tab Deletes the specified route table\cr
+#'  \link[=ec2_delete_secondary_network]{delete_secondary_network} \tab Deletes a secondary network\cr
+#'  \link[=ec2_delete_secondary_subnet]{delete_secondary_subnet} \tab Deletes a secondary subnet\cr
 #'  \link[=ec2_delete_security_group]{delete_security_group} \tab Deletes a security group\cr
 #'  \link[=ec2_delete_snapshot]{delete_snapshot} \tab Deletes the specified snapshot\cr
 #'  \link[=ec2_delete_spot_datafeed_subscription]{delete_spot_datafeed_subscription} \tab Deletes the data feed for Spot Instances\cr
@@ -319,6 +324,7 @@ NULL
 #'  \link[=ec2_delete_traffic_mirror_session]{delete_traffic_mirror_session} \tab Deletes the specified Traffic Mirror session\cr
 #'  \link[=ec2_delete_traffic_mirror_target]{delete_traffic_mirror_target} \tab Deletes the specified Traffic Mirror target\cr
 #'  \link[=ec2_delete_transit_gateway]{delete_transit_gateway} \tab Deletes the specified transit gateway\cr
+#'  \link[=ec2_delete_transit_gateway_client_vpn_attachment]{delete_transit_gateway_client_vpn_attachment} \tab Deletes a Transit Gateway attachment for a Client VPN endpoint\cr
 #'  \link[=ec2_delete_transit_gateway_connect]{delete_transit_gateway_connect} \tab Deletes the specified Connect attachment\cr
 #'  \link[=ec2_delete_transit_gateway_connect_peer]{delete_transit_gateway_connect_peer} \tab Deletes the specified Connect peer\cr
 #'  \link[=ec2_delete_transit_gateway_metering_policy]{delete_transit_gateway_metering_policy} \tab Deletes a transit gateway metering policy\cr
@@ -476,6 +482,9 @@ NULL
 #'  \link[=ec2_describe_route_tables]{describe_route_tables} \tab Describes your route tables\cr
 #'  \link[=ec2_describe_scheduled_instance_availability]{describe_scheduled_instance_availability} \tab Finds available schedules that meet the specified criteria\cr
 #'  \link[=ec2_describe_scheduled_instances]{describe_scheduled_instances} \tab Describes the specified Scheduled Instances or all your Scheduled Instances\cr
+#'  \link[=ec2_describe_secondary_interfaces]{describe_secondary_interfaces} \tab Describes one or more of your secondary interfaces\cr
+#'  \link[=ec2_describe_secondary_networks]{describe_secondary_networks} \tab Describes one or more secondary networks\cr
+#'  \link[=ec2_describe_secondary_subnets]{describe_secondary_subnets} \tab Describes one or more of your secondary subnets\cr
 #'  \link[=ec2_describe_security_group_references]{describe_security_group_references} \tab Describes the VPCs on the other side of a VPC peering or Transit Gateway connection that are referencing the security groups you've specified in this request\cr
 #'  \link[=ec2_describe_security_group_rules]{describe_security_group_rules} \tab Describes one or more of your security group rules\cr
 #'  \link[=ec2_describe_security_groups]{describe_security_groups} \tab Describes the specified security groups or all of your security groups\cr
@@ -618,6 +627,7 @@ NULL
 #'  \link[=ec2_get_capacity_manager_attributes]{get_capacity_manager_attributes} \tab Retrieves the current configuration and status of EC2 Capacity Manager for your account, including enablement status, Organizations access settings, and data ingestion status\cr
 #'  \link[=ec2_get_capacity_manager_metric_data]{get_capacity_manager_metric_data} \tab Retrieves capacity usage metrics for your EC2 resources\cr
 #'  \link[=ec2_get_capacity_manager_metric_dimensions]{get_capacity_manager_metric_dimensions} \tab Retrieves the available dimension values for capacity metrics within a specified time range\cr
+#'  \link[=ec2_get_capacity_manager_monitored_tag_keys]{get_capacity_manager_monitored_tag_keys} \tab Retrieves the tag keys that are currently being monitored by EC2 Capacity Manager\cr
 #'  \link[=ec2_get_capacity_reservation_usage]{get_capacity_reservation_usage} \tab Gets usage information about a Capacity Reservation\cr
 #'  \link[=ec2_get_coip_pool_usage]{get_coip_pool_usage} \tab Describes the allocations from the specified customer-owned address pool\cr
 #'  \link[=ec2_get_console_output]{get_console_output} \tab Gets the console output for the specified instance\cr
@@ -651,6 +661,7 @@ NULL
 #'  \link[=ec2_get_launch_template_data]{get_launch_template_data} \tab Retrieves the configuration data of the specified instance\cr
 #'  \link[=ec2_get_managed_prefix_list_associations]{get_managed_prefix_list_associations} \tab Gets information about the resources that are associated with the specified managed prefix list\cr
 #'  \link[=ec2_get_managed_prefix_list_entries]{get_managed_prefix_list_entries} \tab Gets information about the entries for a specified managed prefix list\cr
+#'  \link[=ec2_get_managed_resource_visibility]{get_managed_resource_visibility} \tab Retrieves the managed resource visibility configuration for the account\cr
 #'  \link[=ec2_get_network_insights_access_scope_analysis_findings]{get_network_insights_access_scope_analysis_findings} \tab Gets the findings for the specified Network Access Scope analysis\cr
 #'  \link[=ec2_get_network_insights_access_scope_content]{get_network_insights_access_scope_content} \tab Gets the content for the specified Network Access Scope\cr
 #'  \link[=ec2_get_password_data]{get_password_data} \tab Retrieves the encrypted administrator password for a running Windows instance\cr
@@ -724,6 +735,7 @@ NULL
 #'  \link[=ec2_modify_launch_template]{modify_launch_template} \tab Modifies a launch template\cr
 #'  \link[=ec2_modify_local_gateway_route]{modify_local_gateway_route} \tab Modifies the specified local gateway route\cr
 #'  \link[=ec2_modify_managed_prefix_list]{modify_managed_prefix_list} \tab Modifies the specified managed prefix list\cr
+#'  \link[=ec2_modify_managed_resource_visibility]{modify_managed_resource_visibility} \tab Modifies the managed resource visibility configuration for the account\cr
 #'  \link[=ec2_modify_network_interface_attribute]{modify_network_interface_attribute} \tab Modifies the specified network interface attribute\cr
 #'  \link[=ec2_modify_private_dns_name_options]{modify_private_dns_name_options} \tab Modifies the options for instance hostnames for the specified instance\cr
 #'  \link[=ec2_modify_public_ip_dns_name_options]{modify_public_ip_dns_name_options} \tab Modify public hostname options for a network interface\cr
@@ -784,6 +796,7 @@ NULL
 #'  \link[=ec2_register_transit_gateway_multicast_group_members]{register_transit_gateway_multicast_group_members} \tab Registers members (network interfaces) with the transit gateway multicast group\cr
 #'  \link[=ec2_register_transit_gateway_multicast_group_sources]{register_transit_gateway_multicast_group_sources} \tab Registers sources (network interfaces) with the specified transit gateway multicast group\cr
 #'  \link[=ec2_reject_capacity_reservation_billing_ownership]{reject_capacity_reservation_billing_ownership} \tab Rejects a request to assign billing of the available capacity of a shared Capacity Reservation to your account\cr
+#'  \link[=ec2_reject_transit_gateway_client_vpn_attachment]{reject_transit_gateway_client_vpn_attachment} \tab Rejects a Transit Gateway attachment request for a Client VPN endpoint\cr
 #'  \link[=ec2_reject_transit_gateway_multicast_domain_associations]{reject_transit_gateway_multicast_domain_associations} \tab Rejects a request to associate cross-account subnets with a transit gateway multicast domain\cr
 #'  \link[=ec2_reject_transit_gateway_peering_attachment]{reject_transit_gateway_peering_attachment} \tab Rejects a transit gateway peering attachment request\cr
 #'  \link[=ec2_reject_transit_gateway_vpc_attachment]{reject_transit_gateway_vpc_attachment} \tab Rejects a request to attach a VPC to a transit gateway\cr
@@ -838,6 +851,7 @@ NULL
 #'  \link[=ec2_unassign_private_nat_gateway_address]{unassign_private_nat_gateway_address} \tab Unassigns secondary private IPv4 addresses from a private NAT gateway\cr
 #'  \link[=ec2_unlock_snapshot]{unlock_snapshot} \tab Unlocks a snapshot that is locked in governance mode or that is locked in compliance mode but still in the cooling-off period\cr
 #'  \link[=ec2_unmonitor_instances]{unmonitor_instances} \tab Disables detailed monitoring for a running instance\cr
+#'  \link[=ec2_update_capacity_manager_monitored_tag_keys]{update_capacity_manager_monitored_tag_keys} \tab Activates or deactivates tag keys for monitoring by EC2 Capacity Manager\cr
 #'  \link[=ec2_update_capacity_manager_organizations_access]{update_capacity_manager_organizations_access} \tab Updates the Organizations access setting for EC2 Capacity Manager\cr
 #'  \link[=ec2_update_interruptible_capacity_reservation_allocation]{update_interruptible_capacity_reservation_allocation} \tab Modifies the number of instances allocated to an interruptible reservation, allowing you to add more capacity or reclaim capacity to your source Capacity Reservation\cr
 #'  \link[=ec2_update_security_group_rule_descriptions_egress]{update_security_group_rule_descriptions_egress} \tab Updates the description of an egress (outbound) security group rule\cr

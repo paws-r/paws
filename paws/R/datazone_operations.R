@@ -11,26 +11,26 @@ NULL
 #' Amazon DataZone assets.
 #'
 #' @usage
-#' datazone_accept_predictions(acceptChoices, acceptRule, clientToken,
-#'   domainIdentifier, identifier, revision)
+#' datazone_accept_predictions(domainIdentifier, identifier, revision,
+#'   acceptRule, acceptChoices, clientToken)
 #'
-#' @param acceptChoices Specifies the prediction (aka, the automatically generated piece of
-#' metadata) and the target (for example, a column name) that can be
-#' accepted.
-#' @param acceptRule Specifies the rule (or the conditions) under which a prediction can be
-#' accepted.
-#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
-#' request. This field is automatically populated if not provided.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
 #' @param identifier &#91;required&#93; The identifier of the asset.
 #' @param revision The revision that is to be made to the asset.
+#' @param acceptRule Specifies the rule (or the conditions) under which a prediction can be
+#' accepted.
+#' @param acceptChoices Specifies the prediction (aka, the automatically generated piece of
+#' metadata) and the target (for example, a column name) that can be
+#' accepted.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request. This field is automatically populated if not provided.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   assetId = "string",
 #'   domainId = "string",
+#'   assetId = "string",
 #'   revision = "string"
 #' )
 #' ```
@@ -38,21 +38,21 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$accept_predictions(
-#'   acceptChoices = list(
-#'     list(
-#'       editedValue = "string",
-#'       predictionChoice = 123,
-#'       predictionTarget = "string"
-#'     )
-#'   ),
+#'   domainIdentifier = "string",
+#'   identifier = "string",
+#'   revision = "string",
 #'   acceptRule = list(
 #'     rule = "ALL"|"NONE",
 #'     threshold = 123.0
 #'   ),
-#'   clientToken = "string",
-#'   domainIdentifier = "string",
-#'   identifier = "string",
-#'   revision = "string"
+#'   acceptChoices = list(
+#'     list(
+#'       predictionTarget = "string",
+#'       predictionChoice = 123,
+#'       editedValue = "string"
+#'     )
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -61,7 +61,7 @@ NULL
 #' @rdname datazone_accept_predictions
 #'
 #' @aliases datazone_accept_predictions
-datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL, clientToken = NULL, domainIdentifier, identifier, revision = NULL) {
+datazone_accept_predictions <- function(domainIdentifier, identifier, revision = NULL, acceptRule = NULL, acceptChoices = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "AcceptPredictions",
     http_method = "PUT",
@@ -70,7 +70,7 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$accept_predictions_input(acceptChoices = acceptChoices, acceptRule = acceptRule, clientToken = clientToken, domainIdentifier = domainIdentifier, identifier = identifier, revision = revision)
+  input <- .datazone$accept_predictions_input(domainIdentifier = domainIdentifier, identifier = identifier, revision = revision, acceptRule = acceptRule, acceptChoices = acceptChoices, clientToken = clientToken)
   output <- .datazone$accept_predictions_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -86,55 +86,73 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #' Accepts a subscription request to a specific asset.
 #'
 #' @usage
-#' datazone_accept_subscription_request(assetPermissions, assetScopes,
-#'   decisionComment, domainIdentifier, identifier)
+#' datazone_accept_subscription_request(domainIdentifier, identifier,
+#'   decisionComment, assetScopes, assetPermissions)
 #'
-#' @param assetPermissions The asset permissions of the accept subscription request.
-#' @param assetScopes The asset scopes of the accept subscription request.
-#' @param decisionComment A description that specifies the reason for accepting the specified
-#' subscription request.
 #' @param domainIdentifier &#91;required&#93; The Amazon DataZone domain where the specified subscription request is
 #' being accepted.
 #' @param identifier &#91;required&#93; The unique identifier of the subscription request that is to be
 #' accepted.
+#' @param decisionComment A description that specifies the reason for accepting the specified
+#' subscription request.
+#' @param assetScopes The asset scopes of the accept subscription request.
+#' @param assetPermissions The asset permissions of the accept subscription request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
+#'   domainId = "string",
+#'   status = "PENDING"|"ACCEPTED"|"REJECTED",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   decisionComment = "string",
-#'   domainId = "string",
-#'   existingSubscriptionId = "string",
-#'   id = "string",
-#'   metadataForms = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
 #'   requestReason = "string",
-#'   reviewerId = "string",
-#'   status = "PENDING"|"ACCEPTED"|"REJECTED",
+#'   subscribedPrincipals = list(
+#'     list(
+#'       project = list(
+#'         id = "string",
+#'         name = "string"
+#'       ),
+#'       user = list(
+#'         id = "string",
+#'         details = list(
+#'           iam = list(
+#'             arn = "string",
+#'             principalId = "string",
+#'             sessionName = "string",
+#'             groupProfileId = "string"
+#'           ),
+#'           sso = list(
+#'             username = "string",
+#'             firstName = "string",
+#'             lastName = "string"
+#'           )
+#'         )
+#'       ),
+#'       group = list(
+#'         id = "string",
+#'         name = "string"
+#'       ),
+#'       iam = list(
+#'         principalArn = "string"
+#'       )
+#'     )
+#'   ),
 #'   subscribedListings = list(
 #'     list(
-#'       description = "string",
 #'       id = "string",
+#'       revision = "string",
+#'       name = "string",
+#'       description = "string",
 #'       item = list(
 #'         assetListing = list(
-#'           assetScope = list(
-#'             assetId = "string",
-#'             errorMessage = "string",
-#'             filterIds = list(
-#'               "string"
-#'             ),
-#'             status = "string"
-#'           ),
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           entityType = "string",
@@ -145,6 +163,14 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #'               shortDescription = "string"
 #'             )
 #'           ),
+#'           assetScope = list(
+#'             assetId = "string",
+#'             filterIds = list(
+#'               "string"
+#'             ),
+#'             status = "string",
+#'             errorMessage = "string"
+#'           ),
 #'           permissions = list(
 #'             s3 = list(
 #'               "READ"|"WRITE"
@@ -152,14 +178,6 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #'           )
 #'         ),
 #'         productListing = list(
-#'           assetListings = list(
-#'             list(
-#'               entityId = "string",
-#'               entityRevision = "string",
-#'               entityType = "string"
-#'             )
-#'           ),
-#'           description = "string",
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           glossaryTerms = list(
@@ -168,51 +186,49 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #'               shortDescription = "string"
 #'             )
 #'           ),
-#'           name = "string"
+#'           name = "string",
+#'           description = "string",
+#'           assetListings = list(
+#'             list(
+#'               entityId = "string",
+#'               entityRevision = "string",
+#'               entityType = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
-#'       name = "string",
 #'       ownerProjectId = "string",
-#'       ownerProjectName = "string",
-#'       revision = "string"
+#'       ownerProjectName = "string"
 #'     )
 #'   ),
-#'   subscribedPrincipals = list(
+#'   reviewerId = "string",
+#'   decisionComment = "string",
+#'   existingSubscriptionId = "string",
+#'   metadataForms = list(
 #'     list(
-#'       group = list(
-#'         id = "string",
-#'         name = "string"
-#'       ),
-#'       project = list(
-#'         id = "string",
-#'         name = "string"
-#'       ),
-#'       user = list(
-#'         details = list(
-#'           iam = list(
-#'             arn = "string",
-#'             principalId = "string"
-#'           ),
-#'           sso = list(
-#'             firstName = "string",
-#'             lastName = "string",
-#'             username = "string"
-#'           )
-#'         ),
-#'         id = "string"
-#'       )
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
 #'     )
-#'   ),
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   updatedBy = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$accept_subscription_request(
+#'   domainIdentifier = "string",
+#'   identifier = "string",
+#'   decisionComment = "string",
+#'   assetScopes = list(
+#'     list(
+#'       assetId = "string",
+#'       filterIds = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
 #'   assetPermissions = list(
 #'     list(
 #'       assetId = "string",
@@ -222,18 +238,7 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #'         )
 #'       )
 #'     )
-#'   ),
-#'   assetScopes = list(
-#'     list(
-#'       assetId = "string",
-#'       filterIds = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   decisionComment = "string",
-#'   domainIdentifier = "string",
-#'   identifier = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -242,7 +247,7 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #' @rdname datazone_accept_subscription_request
 #'
 #' @aliases datazone_accept_subscription_request
-datazone_accept_subscription_request <- function(assetPermissions = NULL, assetScopes = NULL, decisionComment = NULL, domainIdentifier, identifier) {
+datazone_accept_subscription_request <- function(domainIdentifier, identifier, decisionComment = NULL, assetScopes = NULL, assetPermissions = NULL) {
   op <- new_operation(
     name = "AcceptSubscriptionRequest",
     http_method = "PUT",
@@ -251,7 +256,7 @@ datazone_accept_subscription_request <- function(assetPermissions = NULL, assetS
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$accept_subscription_request_input(assetPermissions = assetPermissions, assetScopes = assetScopes, decisionComment = decisionComment, domainIdentifier = domainIdentifier, identifier = identifier)
+  input <- .datazone$accept_subscription_request_input(domainIdentifier = domainIdentifier, identifier = identifier, decisionComment = decisionComment, assetScopes = assetScopes, assetPermissions = assetPermissions)
   output <- .datazone$accept_subscription_request_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -267,15 +272,15 @@ datazone_accept_subscription_request <- function(assetPermissions = NULL, assetS
 #' Adds the owner of an entity (a domain unit).
 #'
 #' @usage
-#' datazone_add_entity_owner(clientToken, domainIdentifier,
-#'   entityIdentifier, entityType, owner)
+#' datazone_add_entity_owner(domainIdentifier, entityType,
+#'   entityIdentifier, owner, clientToken)
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain in which you want to add the entity owner.
+#' @param entityType &#91;required&#93; The type of an entity.
+#' @param entityIdentifier &#91;required&#93; The ID of the entity to which you want to add an owner.
+#' @param owner &#91;required&#93; The owner that you want to add to the entity.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
-#' @param domainIdentifier &#91;required&#93; The ID of the domain in which you want to add the entity owner.
-#' @param entityIdentifier &#91;required&#93; The ID of the entity to which you want to add an owner.
-#' @param entityType &#91;required&#93; The type of an entity.
-#' @param owner &#91;required&#93; The owner that you want to add to the entity.
 #'
 #' @return
 #' An empty list.
@@ -283,18 +288,18 @@ datazone_accept_subscription_request <- function(assetPermissions = NULL, assetS
 #' @section Request syntax:
 #' ```
 #' svc$add_entity_owner(
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
-#'   entityIdentifier = "string",
 #'   entityType = "DOMAIN_UNIT",
+#'   entityIdentifier = "string",
 #'   owner = list(
-#'     group = list(
-#'       groupIdentifier = "string"
-#'     ),
 #'     user = list(
 #'       userIdentifier = "string"
+#'     ),
+#'     group = list(
+#'       groupIdentifier = "string"
 #'     )
-#'   )
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -303,7 +308,7 @@ datazone_accept_subscription_request <- function(assetPermissions = NULL, assetS
 #' @rdname datazone_add_entity_owner
 #'
 #' @aliases datazone_add_entity_owner
-datazone_add_entity_owner <- function(clientToken = NULL, domainIdentifier, entityIdentifier, entityType, owner) {
+datazone_add_entity_owner <- function(domainIdentifier, entityType, entityIdentifier, owner, clientToken = NULL) {
   op <- new_operation(
     name = "AddEntityOwner",
     http_method = "POST",
@@ -312,7 +317,7 @@ datazone_add_entity_owner <- function(clientToken = NULL, domainIdentifier, enti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$add_entity_owner_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, owner = owner)
+  input <- .datazone$add_entity_owner_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, owner = owner, clientToken = clientToken)
   output <- .datazone$add_entity_owner_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -332,17 +337,17 @@ datazone_add_entity_owner <- function(clientToken = NULL, domainIdentifier, enti
 #' environment profiles.
 #'
 #' @usage
-#' datazone_add_policy_grant(clientToken, detail, domainIdentifier,
-#'   entityIdentifier, entityType, policyType, principal)
+#' datazone_add_policy_grant(domainIdentifier, entityType,
+#'   entityIdentifier, policyType, principal, detail, clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param detail &#91;required&#93; The details of the policy grant.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to add a policy grant.
-#' @param entityIdentifier &#91;required&#93; The ID of the entity (resource) to which you want to add a policy grant.
 #' @param entityType &#91;required&#93; The type of entity (resource) to which the grant is added.
+#' @param entityIdentifier &#91;required&#93; The ID of the entity (resource) to which you want to add a policy grant.
 #' @param policyType &#91;required&#93; The type of policy that you want to grant.
 #' @param principal &#91;required&#93; The principal to whom the permissions are granted.
+#' @param detail &#91;required&#93; The details of the policy grant.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -355,78 +360,78 @@ datazone_add_entity_owner <- function(clientToken = NULL, domainIdentifier, enti
 #' @section Request syntax:
 #' ```
 #' svc$add_policy_grant(
-#'   clientToken = "string",
-#'   detail = list(
-#'     addToProjectMemberPool = list(
-#'       includeChildDomainUnits = TRUE|FALSE
-#'     ),
-#'     createAssetType = list(
-#'       includeChildDomainUnits = TRUE|FALSE
-#'     ),
-#'     createDomainUnit = list(
-#'       includeChildDomainUnits = TRUE|FALSE
-#'     ),
-#'     createEnvironment = list(),
-#'     createEnvironmentFromBlueprint = list(),
-#'     createEnvironmentProfile = list(
-#'       domainUnitId = "string"
-#'     ),
-#'     createFormType = list(
-#'       includeChildDomainUnits = TRUE|FALSE
-#'     ),
-#'     createGlossary = list(
-#'       includeChildDomainUnits = TRUE|FALSE
-#'     ),
-#'     createProject = list(
-#'       includeChildDomainUnits = TRUE|FALSE
-#'     ),
-#'     createProjectFromProjectProfile = list(
-#'       includeChildDomainUnits = TRUE|FALSE,
-#'       projectProfiles = list(
-#'         "string"
-#'       )
-#'     ),
-#'     delegateCreateEnvironmentProfile = list(),
-#'     overrideDomainUnitOwners = list(
-#'       includeChildDomainUnits = TRUE|FALSE
-#'     ),
-#'     overrideProjectOwners = list(
-#'       includeChildDomainUnits = TRUE|FALSE
-#'     ),
-#'     useAssetType = list(
-#'       domainUnitId = "string"
-#'     )
-#'   ),
 #'   domainIdentifier = "string",
-#'   entityIdentifier = "string",
 #'   entityType = "DOMAIN_UNIT"|"ENVIRONMENT_BLUEPRINT_CONFIGURATION"|"ENVIRONMENT_PROFILE"|"ASSET_TYPE",
+#'   entityIdentifier = "string",
 #'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT"|"CREATE_ENVIRONMENT_FROM_BLUEPRINT"|"CREATE_PROJECT_FROM_PROJECT_PROFILE"|"USE_ASSET_TYPE",
 #'   principal = list(
-#'     domainUnit = list(
-#'       domainUnitDesignation = "OWNER",
-#'       domainUnitGrantFilter = list(
-#'         allDomainUnitsGrantFilter = list()
-#'       ),
-#'       domainUnitIdentifier = "string"
+#'     user = list(
+#'       userIdentifier = "string",
+#'       allUsersGrantFilter = list()
 #'     ),
 #'     group = list(
 #'       groupIdentifier = "string"
 #'     ),
 #'     project = list(
 #'       projectDesignation = "OWNER"|"CONTRIBUTOR"|"PROJECT_CATALOG_STEWARD",
+#'       projectIdentifier = "string",
 #'       projectGrantFilter = list(
 #'         domainUnitFilter = list(
 #'           domainUnit = "string",
 #'           includeChildDomainUnits = TRUE|FALSE
 #'         )
-#'       ),
-#'       projectIdentifier = "string"
+#'       )
 #'     ),
-#'     user = list(
-#'       allUsersGrantFilter = list(),
-#'       userIdentifier = "string"
+#'     domainUnit = list(
+#'       domainUnitDesignation = "OWNER",
+#'       domainUnitIdentifier = "string",
+#'       domainUnitGrantFilter = list(
+#'         allDomainUnitsGrantFilter = list()
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   detail = list(
+#'     createDomainUnit = list(
+#'       includeChildDomainUnits = TRUE|FALSE
+#'     ),
+#'     overrideDomainUnitOwners = list(
+#'       includeChildDomainUnits = TRUE|FALSE
+#'     ),
+#'     addToProjectMemberPool = list(
+#'       includeChildDomainUnits = TRUE|FALSE
+#'     ),
+#'     overrideProjectOwners = list(
+#'       includeChildDomainUnits = TRUE|FALSE
+#'     ),
+#'     createGlossary = list(
+#'       includeChildDomainUnits = TRUE|FALSE
+#'     ),
+#'     createFormType = list(
+#'       includeChildDomainUnits = TRUE|FALSE
+#'     ),
+#'     createAssetType = list(
+#'       includeChildDomainUnits = TRUE|FALSE
+#'     ),
+#'     createProject = list(
+#'       includeChildDomainUnits = TRUE|FALSE
+#'     ),
+#'     createEnvironmentProfile = list(
+#'       domainUnitId = "string"
+#'     ),
+#'     delegateCreateEnvironmentProfile = list(),
+#'     createEnvironment = list(),
+#'     createEnvironmentFromBlueprint = list(),
+#'     createProjectFromProjectProfile = list(
+#'       includeChildDomainUnits = TRUE|FALSE,
+#'       projectProfiles = list(
+#'         "string"
+#'       )
+#'     ),
+#'     useAssetType = list(
+#'       domainUnitId = "string"
+#'     )
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -435,7 +440,7 @@ datazone_add_entity_owner <- function(clientToken = NULL, domainIdentifier, enti
 #' @rdname datazone_add_policy_grant
 #'
 #' @aliases datazone_add_policy_grant
-datazone_add_policy_grant <- function(clientToken = NULL, detail, domainIdentifier, entityIdentifier, entityType, policyType, principal) {
+datazone_add_policy_grant <- function(domainIdentifier, entityType, entityIdentifier, policyType, principal, detail, clientToken = NULL) {
   op <- new_operation(
     name = "AddPolicyGrant",
     http_method = "POST",
@@ -444,7 +449,7 @@ datazone_add_policy_grant <- function(clientToken = NULL, detail, domainIdentifi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$add_policy_grant_input(clientToken = clientToken, detail = detail, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, policyType = policyType, principal = principal)
+  input <- .datazone$add_policy_grant_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, policyType = policyType, principal = principal, detail = detail, clientToken = clientToken)
   output <- .datazone$add_policy_grant_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -564,14 +569,14 @@ datazone_associate_governed_terms <- function(domainIdentifier, entityIdentifier
 #' Gets the attribute metadata.
 #'
 #' @usage
-#' datazone_batch_get_attributes_metadata(attributeIdentifiers,
-#'   domainIdentifier, entityIdentifier, entityRevision, entityType)
+#' datazone_batch_get_attributes_metadata(domainIdentifier, entityType,
+#'   entityIdentifier, entityRevision, attributeIdentifiers)
 #'
-#' @param attributeIdentifiers &#91;required&#93; The attribute identifier.
 #' @param domainIdentifier &#91;required&#93; The domain ID where you want to get the attribute metadata.
+#' @param entityType &#91;required&#93; The entity type for which you want to get attribute metadata.
 #' @param entityIdentifier &#91;required&#93; The entity ID for which you want to get attribute metadata.
 #' @param entityRevision The entity revision for which you want to get attribute metadata.
-#' @param entityType &#91;required&#93; The entity type for which you want to get attribute metadata.
+#' @param attributeIdentifiers &#91;required&#93; The attribute identifier.
 #'
 #' @return
 #' A list with the following syntax:
@@ -582,10 +587,10 @@ datazone_associate_governed_terms <- function(domainIdentifier, entityIdentifier
 #'       attributeIdentifier = "string",
 #'       forms = list(
 #'         list(
-#'           content = "string",
 #'           formName = "string",
 #'           typeName = "string",
-#'           typeRevision = "string"
+#'           typeRevision = "string",
+#'           content = "string"
 #'         )
 #'       )
 #'     )
@@ -603,13 +608,13 @@ datazone_associate_governed_terms <- function(domainIdentifier, entityIdentifier
 #' @section Request syntax:
 #' ```
 #' svc$batch_get_attributes_metadata(
-#'   attributeIdentifiers = list(
-#'     "string"
-#'   ),
 #'   domainIdentifier = "string",
+#'   entityType = "ASSET"|"LISTING",
 #'   entityIdentifier = "string",
 #'   entityRevision = "string",
-#'   entityType = "ASSET"|"LISTING"
+#'   attributeIdentifiers = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -618,7 +623,7 @@ datazone_associate_governed_terms <- function(domainIdentifier, entityIdentifier
 #' @rdname datazone_batch_get_attributes_metadata
 #'
 #' @aliases datazone_batch_get_attributes_metadata
-datazone_batch_get_attributes_metadata <- function(attributeIdentifiers, domainIdentifier, entityIdentifier, entityRevision = NULL, entityType) {
+datazone_batch_get_attributes_metadata <- function(domainIdentifier, entityType, entityIdentifier, entityRevision = NULL, attributeIdentifiers) {
   op <- new_operation(
     name = "BatchGetAttributesMetadata",
     http_method = "GET",
@@ -627,7 +632,7 @@ datazone_batch_get_attributes_metadata <- function(attributeIdentifiers, domainI
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$batch_get_attributes_metadata_input(attributeIdentifiers = attributeIdentifiers, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityRevision = entityRevision, entityType = entityType)
+  input <- .datazone$batch_get_attributes_metadata_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, entityRevision = entityRevision, attributeIdentifiers = attributeIdentifiers)
   output <- .datazone$batch_get_attributes_metadata_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -643,30 +648,30 @@ datazone_batch_get_attributes_metadata <- function(attributeIdentifiers, domainI
 #' Writes the attribute metadata.
 #'
 #' @usage
-#' datazone_batch_put_attributes_metadata(attributes, clientToken,
-#'   domainIdentifier, entityIdentifier, entityType)
+#' datazone_batch_put_attributes_metadata(domainIdentifier, entityType,
+#'   entityIdentifier, clientToken, attributes)
 #'
-#' @param attributes &#91;required&#93; The attributes of the metadata.
+#' @param domainIdentifier &#91;required&#93; The domain ID where you want to write the attribute metadata.
+#' @param entityType &#91;required&#93; The entity type for which you want to write the attribute metadata.
+#' @param entityIdentifier &#91;required&#93; The entity ID for which you want to write the attribute metadata.
 #' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
 #' request. This field is automatically populated if not provided.
-#' @param domainIdentifier &#91;required&#93; The domain ID where you want to write the attribute metadata.
-#' @param entityIdentifier &#91;required&#93; The entity ID for which you want to write the attribute metadata.
-#' @param entityType &#91;required&#93; The entity type for which you want to write the attribute metadata.
+#' @param attributes &#91;required&#93; The attributes of the metadata.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   attributes = list(
-#'     list(
-#'       attributeIdentifier = "string"
-#'     )
-#'   ),
 #'   errors = list(
 #'     list(
 #'       attributeIdentifier = "string",
 #'       code = "string",
 #'       message = "string"
+#'     )
+#'   ),
+#'   attributes = list(
+#'     list(
+#'       attributeIdentifier = "string"
 #'     )
 #'   )
 #' )
@@ -675,23 +680,23 @@ datazone_batch_get_attributes_metadata <- function(attributeIdentifiers, domainI
 #' @section Request syntax:
 #' ```
 #' svc$batch_put_attributes_metadata(
+#'   domainIdentifier = "string",
+#'   entityType = "ASSET"|"LISTING",
+#'   entityIdentifier = "string",
+#'   clientToken = "string",
 #'   attributes = list(
 #'     list(
 #'       attributeIdentifier = "string",
 #'       forms = list(
 #'         list(
-#'           content = "string",
 #'           formName = "string",
 #'           typeIdentifier = "string",
-#'           typeRevision = "string"
+#'           typeRevision = "string",
+#'           content = "string"
 #'         )
 #'       )
 #'     )
-#'   ),
-#'   clientToken = "string",
-#'   domainIdentifier = "string",
-#'   entityIdentifier = "string",
-#'   entityType = "ASSET"|"LISTING"
+#'   )
 #' )
 #' ```
 #'
@@ -700,7 +705,7 @@ datazone_batch_get_attributes_metadata <- function(attributeIdentifiers, domainI
 #' @rdname datazone_batch_put_attributes_metadata
 #'
 #' @aliases datazone_batch_put_attributes_metadata
-datazone_batch_put_attributes_metadata <- function(attributes, clientToken = NULL, domainIdentifier, entityIdentifier, entityType) {
+datazone_batch_put_attributes_metadata <- function(domainIdentifier, entityType, entityIdentifier, clientToken = NULL, attributes) {
   op <- new_operation(
     name = "BatchPutAttributesMetadata",
     http_method = "PUT",
@@ -709,7 +714,7 @@ datazone_batch_put_attributes_metadata <- function(attributes, clientToken = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$batch_put_attributes_metadata_input(attributes = attributes, clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType)
+  input <- .datazone$batch_put_attributes_metadata_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, clientToken = clientToken, attributes = attributes)
   output <- .datazone$batch_put_attributes_metadata_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -791,27 +796,53 @@ datazone_cancel_metadata_generation_run <- function(domainIdentifier, identifier
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
+#'   domainId = "string",
+#'   status = "APPROVED"|"REVOKED"|"CANCELLED",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   domainId = "string",
-#'   id = "string",
-#'   retainPermissions = TRUE|FALSE,
-#'   status = "APPROVED"|"REVOKED"|"CANCELLED",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   subscribedPrincipal = list(
+#'     project = list(
+#'       id = "string",
+#'       name = "string"
+#'     ),
+#'     user = list(
+#'       id = "string",
+#'       details = list(
+#'         iam = list(
+#'           arn = "string",
+#'           principalId = "string",
+#'           sessionName = "string",
+#'           groupProfileId = "string"
+#'         ),
+#'         sso = list(
+#'           username = "string",
+#'           firstName = "string",
+#'           lastName = "string"
+#'         )
+#'       )
+#'     ),
+#'     group = list(
+#'       id = "string",
+#'       name = "string"
+#'     ),
+#'     iam = list(
+#'       principalArn = "string"
+#'     )
+#'   ),
 #'   subscribedListing = list(
-#'     description = "string",
 #'     id = "string",
+#'     revision = "string",
+#'     name = "string",
+#'     description = "string",
 #'     item = list(
 #'       assetListing = list(
-#'         assetScope = list(
-#'           assetId = "string",
-#'           errorMessage = "string",
-#'           filterIds = list(
-#'             "string"
-#'           ),
-#'           status = "string"
-#'         ),
 #'         entityId = "string",
 #'         entityRevision = "string",
 #'         entityType = "string",
@@ -822,6 +853,14 @@ datazone_cancel_metadata_generation_run <- function(domainIdentifier, identifier
 #'             shortDescription = "string"
 #'           )
 #'         ),
+#'         assetScope = list(
+#'           assetId = "string",
+#'           filterIds = list(
+#'             "string"
+#'           ),
+#'           status = "string",
+#'           errorMessage = "string"
+#'         ),
 #'         permissions = list(
 #'           s3 = list(
 #'             "READ"|"WRITE"
@@ -829,14 +868,6 @@ datazone_cancel_metadata_generation_run <- function(domainIdentifier, identifier
 #'         )
 #'       ),
 #'       productListing = list(
-#'         assetListings = list(
-#'           list(
-#'             entityId = "string",
-#'             entityRevision = "string",
-#'             entityType = "string"
-#'           )
-#'         ),
-#'         description = "string",
 #'         entityId = "string",
 #'         entityRevision = "string",
 #'         glossaryTerms = list(
@@ -845,43 +876,22 @@ datazone_cancel_metadata_generation_run <- function(domainIdentifier, identifier
 #'             shortDescription = "string"
 #'           )
 #'         ),
-#'         name = "string"
+#'         name = "string",
+#'         description = "string",
+#'         assetListings = list(
+#'           list(
+#'             entityId = "string",
+#'             entityRevision = "string",
+#'             entityType = "string"
+#'           )
+#'         )
 #'       )
 #'     ),
-#'     name = "string",
 #'     ownerProjectId = "string",
-#'     ownerProjectName = "string",
-#'     revision = "string"
-#'   ),
-#'   subscribedPrincipal = list(
-#'     group = list(
-#'       id = "string",
-#'       name = "string"
-#'     ),
-#'     project = list(
-#'       id = "string",
-#'       name = "string"
-#'     ),
-#'     user = list(
-#'       details = list(
-#'         iam = list(
-#'           arn = "string",
-#'           principalId = "string"
-#'         ),
-#'         sso = list(
-#'           firstName = "string",
-#'           lastName = "string",
-#'           username = "string"
-#'         )
-#'       ),
-#'       id = "string"
-#'     )
+#'     ownerProjectName = "string"
 #'   ),
 #'   subscriptionRequestId = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   updatedBy = "string"
+#'   retainPermissions = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -923,76 +933,76 @@ datazone_cancel_subscription <- function(domainIdentifier, identifier) {
 #' Creates an account pool.
 #'
 #' @usage
-#' datazone_create_account_pool(accountSource, description,
-#'   domainIdentifier, name, resolutionStrategy)
+#' datazone_create_account_pool(domainIdentifier, name, description,
+#'   resolutionStrategy, accountSource)
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where the account pool is created.
+#' @param name &#91;required&#93; The name of the account pool.
+#' @param description The description of the account pool.
+#' @param resolutionStrategy &#91;required&#93; The mechanism used to resolve the account selection from the account
+#' pool.
 #' @param accountSource &#91;required&#93; The source of accounts for the account pool. In the current release,
 #' it's either a static list of accounts provided by the customer or a
 #' custom Amazon Web Services Lambda handler.
-#' @param description The description of the account pool.
-#' @param domainIdentifier &#91;required&#93; The ID of the domain where the account pool is created.
-#' @param name &#91;required&#93; The name of the account pool.
-#' @param resolutionStrategy &#91;required&#93; The mechanism used to resolve the account selection from the account
-#' pool.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   name = "string",
+#'   id = "string",
+#'   description = "string",
+#'   resolutionStrategy = "MANUAL",
 #'   accountSource = list(
 #'     accounts = list(
 #'       list(
 #'         awsAccountId = "string",
-#'         awsAccountName = "string",
 #'         supportedRegions = list(
 #'           "string"
-#'         )
+#'         ),
+#'         awsAccountName = "string"
 #'       )
 #'     ),
 #'     customAccountPoolHandler = list(
-#'       lambdaExecutionRoleArn = "string",
-#'       lambdaFunctionArn = "string"
+#'       lambdaFunctionArn = "string",
+#'       lambdaExecutionRoleArn = "string"
 #'     )
 #'   ),
+#'   createdBy = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   domainUnitId = "string",
-#'   id = "string",
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   name = "string",
-#'   resolutionStrategy = "MANUAL",
-#'   updatedBy = "string"
+#'   updatedBy = "string",
+#'   domainUnitId = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_account_pool(
+#'   domainIdentifier = "string",
+#'   name = "string",
+#'   description = "string",
+#'   resolutionStrategy = "MANUAL",
 #'   accountSource = list(
 #'     accounts = list(
 #'       list(
 #'         awsAccountId = "string",
-#'         awsAccountName = "string",
 #'         supportedRegions = list(
 #'           "string"
-#'         )
+#'         ),
+#'         awsAccountName = "string"
 #'       )
 #'     ),
 #'     customAccountPoolHandler = list(
-#'       lambdaExecutionRoleArn = "string",
-#'       lambdaFunctionArn = "string"
+#'       lambdaFunctionArn = "string",
+#'       lambdaExecutionRoleArn = "string"
 #'     )
-#'   ),
-#'   description = "string",
-#'   domainIdentifier = "string",
-#'   name = "string",
-#'   resolutionStrategy = "MANUAL"
+#'   )
 #' )
 #' ```
 #'
@@ -1001,7 +1011,7 @@ datazone_cancel_subscription <- function(domainIdentifier, identifier) {
 #' @rdname datazone_create_account_pool
 #'
 #' @aliases datazone_create_account_pool
-datazone_create_account_pool <- function(accountSource, description = NULL, domainIdentifier, name, resolutionStrategy) {
+datazone_create_account_pool <- function(domainIdentifier, name, description = NULL, resolutionStrategy, accountSource) {
   op <- new_operation(
     name = "CreateAccountPool",
     http_method = "POST",
@@ -1010,7 +1020,7 @@ datazone_create_account_pool <- function(accountSource, description = NULL, doma
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_account_pool_input(accountSource = accountSource, description = description, domainIdentifier = domainIdentifier, name = name, resolutionStrategy = resolutionStrategy)
+  input <- .datazone$create_account_pool_input(domainIdentifier = domainIdentifier, name = name, description = description, resolutionStrategy = resolutionStrategy, accountSource = accountSource)
   output <- .datazone$create_account_pool_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1055,122 +1065,121 @@ datazone_create_account_pool <- function(accountSource, description = NULL, doma
 #' -   [`create_asset_type`][datazone_create_asset_type]
 #'
 #' @usage
-#' datazone_create_asset(clientToken, description, domainIdentifier,
-#'   externalIdentifier, formsInput, glossaryTerms, name,
-#'   owningProjectIdentifier, predictionConfiguration, typeIdentifier,
-#'   typeRevision)
+#' datazone_create_asset(name, domainIdentifier, externalIdentifier,
+#'   typeIdentifier, typeRevision, description, glossaryTerms, formsInput,
+#'   owningProjectIdentifier, predictionConfiguration, clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param description Asset description.
+#' @param name &#91;required&#93; Asset name.
 #' @param domainIdentifier &#91;required&#93; Amazon DataZone domain where the asset is created.
 #' @param externalIdentifier The external identifier of the asset.
 #' 
 #' If the value for the `externalIdentifier` parameter is specified, it
 #' must be a unique value.
-#' @param formsInput Metadata forms attached to the asset.
+#' @param typeIdentifier &#91;required&#93; The unique identifier of this asset's type.
+#' @param typeRevision The revision of this asset's type.
+#' @param description Asset description.
 #' @param glossaryTerms Glossary terms attached to the asset.
-#' @param name &#91;required&#93; Asset name.
+#' @param formsInput Metadata forms attached to the asset.
 #' @param owningProjectIdentifier &#91;required&#93; The unique identifier of the project that owns this asset.
 #' @param predictionConfiguration The configuration of the automatically generated business-friendly
 #' metadata for the asset.
-#' @param typeIdentifier &#91;required&#93; The unique identifier of this asset's type.
-#' @param typeRevision The revision of this asset's type.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   name = "string",
+#'   typeIdentifier = "string",
+#'   typeRevision = "string",
+#'   externalIdentifier = "string",
+#'   revision = "string",
+#'   description = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   externalIdentifier = "string",
 #'   firstRevisionCreatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   firstRevisionCreatedBy = "string",
-#'   formsOutput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
 #'   governedGlossaryTerms = list(
 #'     "string"
 #'   ),
-#'   id = "string",
-#'   latestTimeSeriesDataPointFormsOutput = list(
-#'     list(
-#'       contentSummary = "string",
-#'       formName = "string",
-#'       id = "string",
-#'       timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       typeIdentifier = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
+#'   owningProjectId = "string",
+#'   domainId = "string",
 #'   listing = list(
 #'     listingId = "string",
 #'     listingStatus = "CREATING"|"ACTIVE"|"INACTIVE"
 #'   ),
-#'   name = "string",
-#'   owningProjectId = "string",
-#'   predictionConfiguration = list(
-#'     businessNameGeneration = list(
-#'       enabled = TRUE|FALSE
+#'   formsOutput = list(
+#'     list(
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
 #'     )
 #'   ),
 #'   readOnlyFormsOutput = list(
 #'     list(
-#'       content = "string",
 #'       formName = "string",
 #'       typeName = "string",
-#'       typeRevision = "string"
+#'       typeRevision = "string",
+#'       content = "string"
 #'     )
 #'   ),
-#'   revision = "string",
-#'   typeIdentifier = "string",
-#'   typeRevision = "string"
+#'   latestTimeSeriesDataPointFormsOutput = list(
+#'     list(
+#'       formName = "string",
+#'       typeIdentifier = "string",
+#'       typeRevision = "string",
+#'       timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       contentSummary = "string",
+#'       id = "string"
+#'     )
+#'   ),
+#'   predictionConfiguration = list(
+#'     businessNameGeneration = list(
+#'       enabled = TRUE|FALSE
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_asset(
-#'   clientToken = "string",
-#'   description = "string",
+#'   name = "string",
 #'   domainIdentifier = "string",
 #'   externalIdentifier = "string",
-#'   formsInput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeIdentifier = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
+#'   typeIdentifier = "string",
+#'   typeRevision = "string",
+#'   description = "string",
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
-#'   name = "string",
+#'   formsInput = list(
+#'     list(
+#'       formName = "string",
+#'       typeIdentifier = "string",
+#'       typeRevision = "string",
+#'       content = "string"
+#'     )
+#'   ),
 #'   owningProjectIdentifier = "string",
 #'   predictionConfiguration = list(
 #'     businessNameGeneration = list(
 #'       enabled = TRUE|FALSE
 #'     )
 #'   ),
-#'   typeIdentifier = "string",
-#'   typeRevision = "string"
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -1179,7 +1188,7 @@ datazone_create_account_pool <- function(accountSource, description = NULL, doma
 #' @rdname datazone_create_asset
 #'
 #' @aliases datazone_create_asset
-datazone_create_asset <- function(clientToken = NULL, description = NULL, domainIdentifier, externalIdentifier = NULL, formsInput = NULL, glossaryTerms = NULL, name, owningProjectIdentifier, predictionConfiguration = NULL, typeIdentifier, typeRevision = NULL) {
+datazone_create_asset <- function(name, domainIdentifier, externalIdentifier = NULL, typeIdentifier, typeRevision = NULL, description = NULL, glossaryTerms = NULL, formsInput = NULL, owningProjectIdentifier, predictionConfiguration = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateAsset",
     http_method = "POST",
@@ -1188,7 +1197,7 @@ datazone_create_asset <- function(clientToken = NULL, description = NULL, domain
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_asset_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, externalIdentifier = externalIdentifier, formsInput = formsInput, glossaryTerms = glossaryTerms, name = name, owningProjectIdentifier = owningProjectIdentifier, predictionConfiguration = predictionConfiguration, typeIdentifier = typeIdentifier, typeRevision = typeRevision)
+  input <- .datazone$create_asset_input(name = name, domainIdentifier = domainIdentifier, externalIdentifier = externalIdentifier, typeIdentifier = typeIdentifier, typeRevision = typeRevision, description = description, glossaryTerms = glossaryTerms, formsInput = formsInput, owningProjectIdentifier = owningProjectIdentifier, predictionConfiguration = predictionConfiguration, clientToken = clientToken)
   output <- .datazone$create_asset_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1226,22 +1235,27 @@ datazone_create_asset <- function(clientToken = NULL, description = NULL, domain
 #'     `rowConfiguration`)at the same time.
 #'
 #' @usage
-#' datazone_create_asset_filter(assetIdentifier, clientToken,
-#'   configuration, description, domainIdentifier, name)
+#' datazone_create_asset_filter(domainIdentifier, assetIdentifier, name,
+#'   description, configuration, clientToken)
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain in which you want to create an asset filter.
 #' @param assetIdentifier &#91;required&#93; The ID of the data asset.
+#' @param name &#91;required&#93; The name of the asset filter.
+#' @param description The description of the asset filter.
+#' @param configuration &#91;required&#93; The configuration of the asset filter.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
-#' @param configuration &#91;required&#93; The configuration of the asset filter.
-#' @param description The description of the asset filter.
-#' @param domainIdentifier &#91;required&#93; The ID of the domain in which you want to create an asset filter.
-#' @param name &#91;required&#93; The name of the asset filter.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   domainId = "string",
 #'   assetId = "string",
+#'   name = "string",
+#'   description = "string",
+#'   status = "VALID"|"INVALID",
 #'   configuration = list(
 #'     columnConfiguration = list(
 #'       includedColumnNames = list(
@@ -1250,43 +1264,8 @@ datazone_create_asset <- function(clientToken = NULL, description = NULL, domain
 #'     ),
 #'     rowConfiguration = list(
 #'       rowFilter = list(
-#'         and = list(
-#'           list()
-#'         ),
 #'         expression = list(
 #'           equalTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           greaterThan = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           greaterThanOrEqualTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           in = list(
-#'             columnName = "string",
-#'             values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           isNotNull = list(
-#'             columnName = "string"
-#'           ),
-#'           isNull = list(
-#'             columnName = "string"
-#'           ),
-#'           lessThan = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           lessThanOrEqualTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           like = list(
 #'             columnName = "string",
 #'             value = "string"
 #'           ),
@@ -1294,16 +1273,51 @@ datazone_create_asset <- function(clientToken = NULL, description = NULL, domain
 #'             columnName = "string",
 #'             value = "string"
 #'           ),
+#'           greaterThan = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           lessThan = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           greaterThanOrEqualTo = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           lessThanOrEqualTo = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           isNull = list(
+#'             columnName = "string"
+#'           ),
+#'           isNotNull = list(
+#'             columnName = "string"
+#'           ),
+#'           in = list(
+#'             columnName = "string",
+#'             values = list(
+#'               "string"
+#'             )
+#'           ),
 #'           notIn = list(
 #'             columnName = "string",
 #'             values = list(
 #'               "string"
 #'             )
 #'           ),
+#'           like = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
 #'           notLike = list(
 #'             columnName = "string",
 #'             value = "string"
 #'           )
+#'         ),
+#'         and = list(
+#'           list()
 #'         ),
 #'         or = list(
 #'           list()
@@ -1315,24 +1329,21 @@ datazone_create_asset <- function(clientToken = NULL, description = NULL, domain
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   description = "string",
-#'   domainId = "string",
+#'   errorMessage = "string",
 #'   effectiveColumnNames = list(
 #'     "string"
 #'   ),
-#'   effectiveRowFilter = "string",
-#'   errorMessage = "string",
-#'   id = "string",
-#'   name = "string",
-#'   status = "VALID"|"INVALID"
+#'   effectiveRowFilter = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_asset_filter(
+#'   domainIdentifier = "string",
 #'   assetIdentifier = "string",
-#'   clientToken = "string",
+#'   name = "string",
+#'   description = "string",
 #'   configuration = list(
 #'     columnConfiguration = list(
 #'       includedColumnNames = list(
@@ -1341,43 +1352,8 @@ datazone_create_asset <- function(clientToken = NULL, description = NULL, domain
 #'     ),
 #'     rowConfiguration = list(
 #'       rowFilter = list(
-#'         and = list(
-#'           list()
-#'         ),
 #'         expression = list(
 #'           equalTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           greaterThan = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           greaterThanOrEqualTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           in = list(
-#'             columnName = "string",
-#'             values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           isNotNull = list(
-#'             columnName = "string"
-#'           ),
-#'           isNull = list(
-#'             columnName = "string"
-#'           ),
-#'           lessThan = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           lessThanOrEqualTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           like = list(
 #'             columnName = "string",
 #'             value = "string"
 #'           ),
@@ -1385,16 +1361,51 @@ datazone_create_asset <- function(clientToken = NULL, description = NULL, domain
 #'             columnName = "string",
 #'             value = "string"
 #'           ),
+#'           greaterThan = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           lessThan = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           greaterThanOrEqualTo = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           lessThanOrEqualTo = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           isNull = list(
+#'             columnName = "string"
+#'           ),
+#'           isNotNull = list(
+#'             columnName = "string"
+#'           ),
+#'           in = list(
+#'             columnName = "string",
+#'             values = list(
+#'               "string"
+#'             )
+#'           ),
 #'           notIn = list(
 #'             columnName = "string",
 #'             values = list(
 #'               "string"
 #'             )
 #'           ),
+#'           like = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
 #'           notLike = list(
 #'             columnName = "string",
 #'             value = "string"
 #'           )
+#'         ),
+#'         and = list(
+#'           list()
 #'         ),
 #'         or = list(
 #'           list()
@@ -1403,9 +1414,7 @@ datazone_create_asset <- function(clientToken = NULL, description = NULL, domain
 #'       sensitive = TRUE|FALSE
 #'     )
 #'   ),
-#'   description = "string",
-#'   domainIdentifier = "string",
-#'   name = "string"
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -1414,7 +1423,7 @@ datazone_create_asset <- function(clientToken = NULL, description = NULL, domain
 #' @rdname datazone_create_asset_filter
 #'
 #' @aliases datazone_create_asset_filter
-datazone_create_asset_filter <- function(assetIdentifier, clientToken = NULL, configuration, description = NULL, domainIdentifier, name) {
+datazone_create_asset_filter <- function(domainIdentifier, assetIdentifier, name, description = NULL, configuration, clientToken = NULL) {
   op <- new_operation(
     name = "CreateAssetFilter",
     http_method = "POST",
@@ -1423,7 +1432,7 @@ datazone_create_asset_filter <- function(assetIdentifier, clientToken = NULL, co
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_asset_filter_input(assetIdentifier = assetIdentifier, clientToken = clientToken, configuration = configuration, description = description, domainIdentifier = domainIdentifier, name = name)
+  input <- .datazone$create_asset_filter_input(domainIdentifier = domainIdentifier, assetIdentifier = assetIdentifier, name = name, description = description, configuration = configuration, clientToken = clientToken)
   output <- .datazone$create_asset_filter_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1461,116 +1470,116 @@ datazone_create_asset_filter <- function(assetIdentifier, clientToken = NULL, co
 #' -   User must have write access to the project and domain.
 #'
 #' @usage
-#' datazone_create_asset_revision(clientToken, description,
-#'   domainIdentifier, formsInput, glossaryTerms, identifier, name,
-#'   predictionConfiguration, typeRevision)
+#' datazone_create_asset_revision(name, domainIdentifier, identifier,
+#'   typeRevision, description, glossaryTerms, formsInput,
+#'   predictionConfiguration, clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param description The revised description of the asset.
+#' @param name &#91;required&#93; Te revised name of the asset.
 #' @param domainIdentifier &#91;required&#93; The unique identifier of the domain where the asset is being revised.
-#' @param formsInput The metadata forms to be attached to the asset as part of asset
-#' revision.
+#' @param identifier &#91;required&#93; The identifier of the asset.
+#' @param typeRevision The revision type of the asset.
+#' @param description The revised description of the asset.
 #' @param glossaryTerms The glossary terms to be attached to the asset as part of asset
 #' revision.
-#' @param identifier &#91;required&#93; The identifier of the asset.
-#' @param name &#91;required&#93; Te revised name of the asset.
+#' @param formsInput The metadata forms to be attached to the asset as part of asset
+#' revision.
 #' @param predictionConfiguration The configuration of the automatically generated business-friendly
 #' metadata for the asset.
-#' @param typeRevision The revision type of the asset.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   name = "string",
+#'   typeIdentifier = "string",
+#'   typeRevision = "string",
+#'   externalIdentifier = "string",
+#'   revision = "string",
+#'   description = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   externalIdentifier = "string",
 #'   firstRevisionCreatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   firstRevisionCreatedBy = "string",
-#'   formsOutput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
 #'   governedGlossaryTerms = list(
 #'     "string"
 #'   ),
-#'   id = "string",
-#'   latestTimeSeriesDataPointFormsOutput = list(
-#'     list(
-#'       contentSummary = "string",
-#'       formName = "string",
-#'       id = "string",
-#'       timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       typeIdentifier = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
+#'   owningProjectId = "string",
+#'   domainId = "string",
 #'   listing = list(
 #'     listingId = "string",
 #'     listingStatus = "CREATING"|"ACTIVE"|"INACTIVE"
 #'   ),
-#'   name = "string",
-#'   owningProjectId = "string",
-#'   predictionConfiguration = list(
-#'     businessNameGeneration = list(
-#'       enabled = TRUE|FALSE
+#'   formsOutput = list(
+#'     list(
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
 #'     )
 #'   ),
 #'   readOnlyFormsOutput = list(
 #'     list(
-#'       content = "string",
 #'       formName = "string",
 #'       typeName = "string",
-#'       typeRevision = "string"
+#'       typeRevision = "string",
+#'       content = "string"
 #'     )
 #'   ),
-#'   revision = "string",
-#'   typeIdentifier = "string",
-#'   typeRevision = "string"
+#'   latestTimeSeriesDataPointFormsOutput = list(
+#'     list(
+#'       formName = "string",
+#'       typeIdentifier = "string",
+#'       typeRevision = "string",
+#'       timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       contentSummary = "string",
+#'       id = "string"
+#'     )
+#'   ),
+#'   predictionConfiguration = list(
+#'     businessNameGeneration = list(
+#'       enabled = TRUE|FALSE
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_asset_revision(
-#'   clientToken = "string",
-#'   description = "string",
+#'   name = "string",
 #'   domainIdentifier = "string",
-#'   formsInput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeIdentifier = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
+#'   identifier = "string",
+#'   typeRevision = "string",
+#'   description = "string",
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
-#'   identifier = "string",
-#'   name = "string",
+#'   formsInput = list(
+#'     list(
+#'       formName = "string",
+#'       typeIdentifier = "string",
+#'       typeRevision = "string",
+#'       content = "string"
+#'     )
+#'   ),
 #'   predictionConfiguration = list(
 #'     businessNameGeneration = list(
 #'       enabled = TRUE|FALSE
 #'     )
 #'   ),
-#'   typeRevision = "string"
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -1579,7 +1588,7 @@ datazone_create_asset_filter <- function(assetIdentifier, clientToken = NULL, co
 #' @rdname datazone_create_asset_revision
 #'
 #' @aliases datazone_create_asset_revision
-datazone_create_asset_revision <- function(clientToken = NULL, description = NULL, domainIdentifier, formsInput = NULL, glossaryTerms = NULL, identifier, name, predictionConfiguration = NULL, typeRevision = NULL) {
+datazone_create_asset_revision <- function(name, domainIdentifier, identifier, typeRevision = NULL, description = NULL, glossaryTerms = NULL, formsInput = NULL, predictionConfiguration = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateAssetRevision",
     http_method = "POST",
@@ -1588,7 +1597,7 @@ datazone_create_asset_revision <- function(clientToken = NULL, description = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_asset_revision_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, formsInput = formsInput, glossaryTerms = glossaryTerms, identifier = identifier, name = name, predictionConfiguration = predictionConfiguration, typeRevision = typeRevision)
+  input <- .datazone$create_asset_revision_input(name = name, domainIdentifier = domainIdentifier, identifier = identifier, typeRevision = typeRevision, description = description, glossaryTerms = glossaryTerms, formsInput = formsInput, predictionConfiguration = predictionConfiguration, clientToken = clientToken)
   output <- .datazone$create_asset_revision_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1621,14 +1630,14 @@ datazone_create_asset_revision <- function(clientToken = NULL, description = NUL
 #'     errors.
 #'
 #' @usage
-#' datazone_create_asset_type(description, domainIdentifier, formsInput,
-#'   name, owningProjectIdentifier)
+#' datazone_create_asset_type(domainIdentifier, name, description,
+#'   formsInput, owningProjectIdentifier)
 #'
-#' @param description The descripton of the custom asset type.
 #' @param domainIdentifier &#91;required&#93; The unique identifier of the Amazon DataZone domain where the custom
 #' asset type is being created.
-#' @param formsInput &#91;required&#93; The metadata forms that are to be attached to the custom asset type.
 #' @param name &#91;required&#93; The name of the custom asset type.
+#' @param description The descripton of the custom asset type.
+#' @param formsInput &#91;required&#93; The metadata forms that are to be attached to the custom asset type.
 #' @param owningProjectIdentifier &#91;required&#93; The identifier of the Amazon DataZone project that is to own the custom
 #' asset type.
 #'
@@ -1636,24 +1645,24 @@ datazone_create_asset_revision <- function(clientToken = NULL, description = NUL
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   name = "string",
+#'   revision = "string",
+#'   description = "string",
+#'   formsOutput = list(
+#'     list(
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       required = TRUE|FALSE
+#'     )
+#'   ),
+#'   owningProjectId = "string",
+#'   originDomainId = "string",
+#'   originProjectId = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   formsOutput = list(
-#'     list(
-#'       required = TRUE|FALSE,
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
-#'   name = "string",
-#'   originDomainId = "string",
-#'   originProjectId = "string",
-#'   owningProjectId = "string",
-#'   revision = "string",
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -1664,16 +1673,16 @@ datazone_create_asset_revision <- function(clientToken = NULL, description = NUL
 #' @section Request syntax:
 #' ```
 #' svc$create_asset_type(
-#'   description = "string",
 #'   domainIdentifier = "string",
+#'   name = "string",
+#'   description = "string",
 #'   formsInput = list(
 #'     list(
-#'       required = TRUE|FALSE,
 #'       typeIdentifier = "string",
-#'       typeRevision = "string"
+#'       typeRevision = "string",
+#'       required = TRUE|FALSE
 #'     )
 #'   ),
-#'   name = "string",
 #'   owningProjectIdentifier = "string"
 #' )
 #' ```
@@ -1683,7 +1692,7 @@ datazone_create_asset_revision <- function(clientToken = NULL, description = NUL
 #' @rdname datazone_create_asset_type
 #'
 #' @aliases datazone_create_asset_type
-datazone_create_asset_type <- function(description = NULL, domainIdentifier, formsInput, name, owningProjectIdentifier) {
+datazone_create_asset_type <- function(domainIdentifier, name, description = NULL, formsInput, owningProjectIdentifier) {
   op <- new_operation(
     name = "CreateAssetType",
     http_method = "POST",
@@ -1692,7 +1701,7 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_asset_type_input(description = description, domainIdentifier = domainIdentifier, formsInput = formsInput, name = name, owningProjectIdentifier = owningProjectIdentifier)
+  input <- .datazone$create_asset_type_input(domainIdentifier = domainIdentifier, name = name, description = description, formsInput = formsInput, owningProjectIdentifier = owningProjectIdentifier)
   output <- .datazone$create_asset_type_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1710,19 +1719,20 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
 #' external resources and services.
 #'
 #' @usage
-#' datazone_create_connection(awsLocation, clientToken, description,
-#'   domainIdentifier, enableTrustedIdentityPropagation,
-#'   environmentIdentifier, name, props, scope)
+#' datazone_create_connection(awsLocation, clientToken, configurations,
+#'   description, domainIdentifier, environmentIdentifier, name, props,
+#'   enableTrustedIdentityPropagation, scope)
 #'
 #' @param awsLocation The location where the connection is created.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
+#' @param configurations The configurations of the connection.
 #' @param description A connection description.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where the connection is created.
-#' @param enableTrustedIdentityPropagation Specifies whether the trusted identity propagation is enabled.
 #' @param environmentIdentifier The ID of the environment where the connection is created.
 #' @param name &#91;required&#93; The connection name.
 #' @param props The connection props.
+#' @param enableTrustedIdentityPropagation Specifies whether the trusted identity propagation is enabled.
 #' @param scope The scope of the connection.
 #'
 #' @return
@@ -1730,6 +1740,14 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
 #' ```
 #' list(
 #'   connectionId = "string",
+#'   configurations = list(
+#'     list(
+#'       classification = "string",
+#'       properties = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
 #'   description = "string",
 #'   domainId = "string",
 #'   domainUnitId = "string",
@@ -1743,79 +1761,82 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
 #'         awsRegion = "string",
 #'         iamConnectionId = "string"
 #'       ),
-#'       enableTrustedIdentityPropagation = TRUE|FALSE,
+#'       glueConnectionName = "string",
+#'       glueConnectionNames = list(
+#'         "string"
+#'       ),
 #'       glueConnection = list(
-#'         athenaProperties = list(
-#'           "string"
-#'         ),
-#'         authenticationConfiguration = list(
-#'           authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
-#'           oAuth2Properties = list(
-#'             authorizationCodeProperties = list(
-#'               authorizationCode = "string",
-#'               redirectUri = "string"
-#'             ),
-#'             oAuth2ClientApplication = list(
-#'               aWSManagedClientApplicationReference = "string",
-#'               userManagedClientApplicationClientId = "string"
-#'             ),
-#'             oAuth2Credentials = list(
-#'               accessToken = "string",
-#'               jwtToken = "string",
-#'               refreshToken = "string",
-#'               userManagedClientApplicationClientSecret = "string"
-#'             ),
-#'             oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
-#'             tokenUrl = "string",
-#'             tokenUrlParametersMap = list(
-#'               "string"
-#'             )
-#'           ),
-#'           secretArn = "string"
-#'         ),
-#'         compatibleComputeEnvironments = list(
-#'           "SPARK"|"ATHENA"|"PYTHON"
-#'         ),
-#'         connectionProperties = list(
-#'           "string"
-#'         ),
-#'         connectionSchemaVersion = 123,
-#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW",
-#'         creationTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
+#'         name = "string",
 #'         description = "string",
-#'         lastConnectionValidationTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastUpdatedBy = "string",
-#'         lastUpdatedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
+#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW",
 #'         matchCriteria = list(
 #'           "string"
 #'         ),
-#'         name = "string",
-#'         physicalConnectionRequirements = list(
-#'           availabilityZone = "string",
-#'           securityGroupIdList = list(
-#'             "string"
-#'           ),
-#'           subnetId = "string",
-#'           subnetIdList = list(
-#'             "string"
-#'           )
-#'         ),
-#'         pythonProperties = list(
+#'         connectionProperties = list(
 #'           "string"
 #'         ),
 #'         sparkProperties = list(
 #'           "string"
 #'         ),
+#'         athenaProperties = list(
+#'           "string"
+#'         ),
+#'         pythonProperties = list(
+#'           "string"
+#'         ),
+#'         physicalConnectionRequirements = list(
+#'           subnetId = "string",
+#'           subnetIdList = list(
+#'             "string"
+#'           ),
+#'           securityGroupIdList = list(
+#'             "string"
+#'           ),
+#'           availabilityZone = "string"
+#'         ),
+#'         creationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedBy = "string",
 #'         status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
-#'         statusReason = "string"
+#'         statusReason = "string",
+#'         lastConnectionValidationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         authenticationConfiguration = list(
+#'           authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'           secretArn = "string",
+#'           oAuth2Properties = list(
+#'             oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'             oAuth2ClientApplication = list(
+#'               userManagedClientApplicationClientId = "string",
+#'               aWSManagedClientApplicationReference = "string"
+#'             ),
+#'             tokenUrl = "string",
+#'             tokenUrlParametersMap = list(
+#'               "string"
+#'             ),
+#'             authorizationCodeProperties = list(
+#'               authorizationCode = "string",
+#'               redirectUri = "string"
+#'             ),
+#'             oAuth2Credentials = list(
+#'               userManagedClientApplicationClientSecret = "string",
+#'               accessToken = "string",
+#'               refreshToken = "string",
+#'               jwtToken = "string"
+#'             )
+#'           )
+#'         ),
+#'         connectionSchemaVersion = 123,
+#'         compatibleComputeEnvironments = list(
+#'           "SPARK"|"ATHENA"|"PYTHON"
+#'         )
 #'       ),
-#'       glueConnectionName = "string",
+#'       enableTrustedIdentityPropagation = TRUE|FALSE,
 #'       host = "string",
 #'       port = 123,
 #'       protocol = "ATHENA"|"GLUE_INTERACTIVE_SESSION"|"HTTPS"|"JDBC"|"LIVY"|"ODBC"|"PRISM",
@@ -1824,31 +1845,27 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
 #'   ),
 #'   projectId = "string",
 #'   props = list(
-#'     amazonQProperties = list(
-#'       authMode = "string",
-#'       isEnabled = TRUE|FALSE,
-#'       profileArn = "string"
-#'     ),
 #'     athenaProperties = list(
 #'       workgroupName = "string"
 #'     ),
 #'     glueProperties = list(
-#'       errorMessage = "string",
-#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED"
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       errorMessage = "string"
 #'     ),
 #'     hyperPodProperties = list(
-#'       clusterArn = "string",
 #'       clusterName = "string",
+#'       clusterArn = "string",
 #'       orchestrator = "EKS"|"SLURM"
 #'     ),
 #'     iamProperties = list(
 #'       environmentId = "string",
 #'       glueLineageSyncEnabled = TRUE|FALSE
 #'     ),
-#'     mlflowProperties = list(
-#'       trackingServerArn = "string"
-#'     ),
 #'     redshiftProperties = list(
+#'       storage = list(
+#'         clusterName = "string",
+#'         workgroupName = "string"
+#'       ),
 #'       credentials = list(
 #'         secretArn = "string",
 #'         usernamePassword = list(
@@ -1856,32 +1873,21 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
 #'           username = "string"
 #'         )
 #'       ),
-#'       databaseName = "string",
 #'       isProvisionedSecret = TRUE|FALSE,
 #'       jdbcIamUrl = "string",
 #'       jdbcUrl = "string",
+#'       redshiftTempDir = "string",
 #'       lineageSync = list(
-#'         enabled = TRUE|FALSE,
 #'         lineageJobId = "string",
+#'         enabled = TRUE|FALSE,
 #'         schedule = list(
 #'           schedule = "string"
 #'         )
 #'       ),
-#'       redshiftTempDir = "string",
 #'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
-#'       storage = list(
-#'         clusterName = "string",
-#'         workgroupName = "string"
-#'       )
-#'     ),
-#'     s3Properties = list(
-#'       errorMessage = "string",
-#'       s3AccessGrantLocationId = "string",
-#'       s3Uri = "string",
-#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED"
+#'       databaseName = "string"
 #'     ),
 #'     sparkEmrProperties = list(
-#'       certificateData = "string",
 #'       computeArn = "string",
 #'       credentials = list(
 #'         password = "string",
@@ -1895,30 +1901,56 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
 #'       javaVirtualEnv = "string",
 #'       livyEndpoint = "string",
 #'       logUri = "string",
+#'       pythonVirtualEnv = "string",
+#'       runtimeRole = "string",
+#'       trustedCertificatesS3Uri = "string",
+#'       certificateData = "string",
 #'       managedEndpointArn = "string",
 #'       managedEndpointCredentials = list(
 #'         id = "string",
 #'         token = "string"
-#'       ),
-#'       pythonVirtualEnv = "string",
-#'       runtimeRole = "string",
-#'       trustedCertificatesS3Uri = "string"
+#'       )
 #'     ),
 #'     sparkGlueProperties = list(
 #'       additionalArgs = list(
 #'         connection = "string"
 #'       ),
 #'       glueConnectionName = "string",
+#'       glueConnectionNames = list(
+#'         "string"
+#'       ),
 #'       glueVersion = "string",
 #'       idleTimeout = 123,
 #'       javaVirtualEnv = "string",
 #'       numberOfWorkers = 123,
 #'       pythonVirtualEnv = "string",
 #'       workerType = "string"
+#'     ),
+#'     s3Properties = list(
+#'       s3Uri = "string",
+#'       s3AccessGrantLocationId = "string",
+#'       registerS3AccessGrantLocation = TRUE|FALSE,
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       errorMessage = "string"
+#'     ),
+#'     amazonQProperties = list(
+#'       isEnabled = TRUE|FALSE,
+#'       profileArn = "string",
+#'       authMode = "string"
+#'     ),
+#'     mlflowProperties = list(
+#'       trackingServerArn = "string"
+#'     ),
+#'     workflowsMwaaProperties = list(
+#'       mwaaEnvironmentName = "string"
+#'     ),
+#'     workflowsServerlessProperties = list(),
+#'     lakehouseProperties = list(
+#'       glueLineageSyncEnabled = TRUE|FALSE
 #'     )
 #'   ),
-#'   scope = "DOMAIN"|"PROJECT",
-#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"
+#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW",
+#'   scope = "DOMAIN"|"PROJECT"
 #' )
 #' ```
 #'
@@ -1932,84 +1964,86 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
 #'     iamConnectionId = "string"
 #'   ),
 #'   clientToken = "string",
+#'   configurations = list(
+#'     list(
+#'       classification = "string",
+#'       properties = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
 #'   description = "string",
 #'   domainIdentifier = "string",
-#'   enableTrustedIdentityPropagation = TRUE|FALSE,
 #'   environmentIdentifier = "string",
 #'   name = "string",
 #'   props = list(
-#'     amazonQProperties = list(
-#'       authMode = "string",
-#'       isEnabled = TRUE|FALSE,
-#'       profileArn = "string"
-#'     ),
 #'     athenaProperties = list(
 #'       workgroupName = "string"
 #'     ),
 #'     glueProperties = list(
 #'       glueConnectionInput = list(
-#'         athenaProperties = list(
-#'           "string"
-#'         ),
-#'         authenticationConfiguration = list(
-#'           authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
-#'           basicAuthenticationCredentials = list(
-#'             password = "string",
-#'             userName = "string"
-#'           ),
-#'           customAuthenticationCredentials = list(
-#'             "string"
-#'           ),
-#'           kmsKeyArn = "string",
-#'           oAuth2Properties = list(
-#'             authorizationCodeProperties = list(
-#'               authorizationCode = "string",
-#'               redirectUri = "string"
-#'             ),
-#'             oAuth2ClientApplication = list(
-#'               aWSManagedClientApplicationReference = "string",
-#'               userManagedClientApplicationClientId = "string"
-#'             ),
-#'             oAuth2Credentials = list(
-#'               accessToken = "string",
-#'               jwtToken = "string",
-#'               refreshToken = "string",
-#'               userManagedClientApplicationClientSecret = "string"
-#'             ),
-#'             oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
-#'             tokenUrl = "string",
-#'             tokenUrlParametersMap = list(
-#'               "string"
-#'             )
-#'           ),
-#'           secretArn = "string"
-#'         ),
 #'         connectionProperties = list(
 #'           "string"
 #'         ),
-#'         connectionType = "SNOWFLAKE"|"BIGQUERY"|"DOCUMENTDB"|"DYNAMODB"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"SAPHANA"|"SQLSERVER"|"TERADATA"|"VERTICA",
-#'         description = "string",
-#'         matchCriteria = "string",
-#'         name = "string",
 #'         physicalConnectionRequirements = list(
-#'           availabilityZone = "string",
-#'           securityGroupIdList = list(
-#'             "string"
-#'           ),
 #'           subnetId = "string",
 #'           subnetIdList = list(
 #'             "string"
-#'           )
+#'           ),
+#'           securityGroupIdList = list(
+#'             "string"
+#'           ),
+#'           availabilityZone = "string"
 #'         ),
-#'         pythonProperties = list(
-#'           "string"
+#'         name = "string",
+#'         description = "string",
+#'         connectionType = "SNOWFLAKE"|"BIGQUERY"|"DOCUMENTDB"|"DYNAMODB"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"SAPHANA"|"SQLSERVER"|"TERADATA"|"VERTICA",
+#'         matchCriteria = "string",
+#'         validateCredentials = TRUE|FALSE,
+#'         validateForComputeEnvironments = list(
+#'           "SPARK"|"ATHENA"|"PYTHON"
 #'         ),
 #'         sparkProperties = list(
 #'           "string"
 #'         ),
-#'         validateCredentials = TRUE|FALSE,
-#'         validateForComputeEnvironments = list(
-#'           "SPARK"|"ATHENA"|"PYTHON"
+#'         athenaProperties = list(
+#'           "string"
+#'         ),
+#'         pythonProperties = list(
+#'           "string"
+#'         ),
+#'         authenticationConfiguration = list(
+#'           authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'           oAuth2Properties = list(
+#'             oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'             oAuth2ClientApplication = list(
+#'               userManagedClientApplicationClientId = "string",
+#'               aWSManagedClientApplicationReference = "string"
+#'             ),
+#'             tokenUrl = "string",
+#'             tokenUrlParametersMap = list(
+#'               "string"
+#'             ),
+#'             authorizationCodeProperties = list(
+#'               authorizationCode = "string",
+#'               redirectUri = "string"
+#'             ),
+#'             oAuth2Credentials = list(
+#'               userManagedClientApplicationClientSecret = "string",
+#'               accessToken = "string",
+#'               refreshToken = "string",
+#'               jwtToken = "string"
+#'             )
+#'           ),
+#'           secretArn = "string",
+#'           kmsKeyArn = "string",
+#'           basicAuthenticationCredentials = list(
+#'             userName = "string",
+#'             password = "string"
+#'           ),
+#'           customAuthenticationCredentials = list(
+#'             "string"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -2019,10 +2053,14 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
 #'     iamProperties = list(
 #'       glueLineageSyncEnabled = TRUE|FALSE
 #'     ),
-#'     mlflowProperties = list(
-#'       trackingServerArn = "string"
-#'     ),
 #'     redshiftProperties = list(
+#'       storage = list(
+#'         clusterName = "string",
+#'         workgroupName = "string"
+#'       ),
+#'       databaseName = "string",
+#'       host = "string",
+#'       port = 123,
 #'       credentials = list(
 #'         secretArn = "string",
 #'         usernamePassword = list(
@@ -2030,47 +2068,60 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
 #'           username = "string"
 #'         )
 #'       ),
-#'       databaseName = "string",
-#'       host = "string",
 #'       lineageSync = list(
 #'         enabled = TRUE|FALSE,
 #'         schedule = list(
 #'           schedule = "string"
 #'         )
-#'       ),
-#'       port = 123,
-#'       storage = list(
-#'         clusterName = "string",
-#'         workgroupName = "string"
 #'       )
-#'     ),
-#'     s3Properties = list(
-#'       s3AccessGrantLocationId = "string",
-#'       s3Uri = "string"
 #'     ),
 #'     sparkEmrProperties = list(
 #'       computeArn = "string",
 #'       instanceProfileArn = "string",
 #'       javaVirtualEnv = "string",
 #'       logUri = "string",
-#'       managedEndpointArn = "string",
 #'       pythonVirtualEnv = "string",
 #'       runtimeRole = "string",
-#'       trustedCertificatesS3Uri = "string"
+#'       trustedCertificatesS3Uri = "string",
+#'       managedEndpointArn = "string"
 #'     ),
 #'     sparkGlueProperties = list(
 #'       additionalArgs = list(
 #'         connection = "string"
 #'       ),
 #'       glueConnectionName = "string",
+#'       glueConnectionNames = list(
+#'         "string"
+#'       ),
 #'       glueVersion = "string",
 #'       idleTimeout = 123,
 #'       javaVirtualEnv = "string",
 #'       numberOfWorkers = 123,
 #'       pythonVirtualEnv = "string",
 #'       workerType = "string"
+#'     ),
+#'     s3Properties = list(
+#'       s3Uri = "string",
+#'       s3AccessGrantLocationId = "string",
+#'       registerS3AccessGrantLocation = TRUE|FALSE
+#'     ),
+#'     amazonQProperties = list(
+#'       isEnabled = TRUE|FALSE,
+#'       profileArn = "string",
+#'       authMode = "string"
+#'     ),
+#'     mlflowProperties = list(
+#'       trackingServerArn = "string"
+#'     ),
+#'     workflowsMwaaProperties = list(
+#'       mwaaEnvironmentName = "string"
+#'     ),
+#'     workflowsServerlessProperties = list(),
+#'     lakehouseProperties = list(
+#'       glueLineageSyncEnabled = TRUE|FALSE
 #'     )
 #'   ),
+#'   enableTrustedIdentityPropagation = TRUE|FALSE,
 #'   scope = "DOMAIN"|"PROJECT"
 #' )
 #' ```
@@ -2080,7 +2131,7 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
 #' @rdname datazone_create_connection
 #'
 #' @aliases datazone_create_connection
-datazone_create_connection <- function(awsLocation = NULL, clientToken = NULL, description = NULL, domainIdentifier, enableTrustedIdentityPropagation = NULL, environmentIdentifier = NULL, name, props = NULL, scope = NULL) {
+datazone_create_connection <- function(awsLocation = NULL, clientToken = NULL, configurations = NULL, description = NULL, domainIdentifier, environmentIdentifier = NULL, name, props = NULL, enableTrustedIdentityPropagation = NULL, scope = NULL) {
   op <- new_operation(
     name = "CreateConnection",
     http_method = "POST",
@@ -2089,7 +2140,7 @@ datazone_create_connection <- function(awsLocation = NULL, clientToken = NULL, d
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_connection_input(awsLocation = awsLocation, clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, enableTrustedIdentityPropagation = enableTrustedIdentityPropagation, environmentIdentifier = environmentIdentifier, name = name, props = props, scope = scope)
+  input <- .datazone$create_connection_input(awsLocation = awsLocation, clientToken = clientToken, configurations = configurations, description = description, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, name = name, props = props, enableTrustedIdentityPropagation = enableTrustedIdentityPropagation, scope = scope)
   output <- .datazone$create_connection_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -2124,91 +2175,92 @@ datazone_create_connection <- function(awsLocation = NULL, clientToken = NULL, d
 #' -   User must have create permissions for data products in the project.
 #'
 #' @usage
-#' datazone_create_data_product(clientToken, description, domainIdentifier,
-#'   formsInput, glossaryTerms, items, name, owningProjectIdentifier)
+#' datazone_create_data_product(domainIdentifier, name,
+#'   owningProjectIdentifier, description, glossaryTerms, formsInput, items,
+#'   clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param description The description of the data product.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where the data product is created.
-#' @param formsInput The metadata forms of the data product.
-#' @param glossaryTerms The glossary terms of the data product.
-#' @param items The data assets of the data product.
 #' @param name &#91;required&#93; The name of the data product.
 #' @param owningProjectIdentifier &#91;required&#93; The ID of the owning project of the data product.
+#' @param description The description of the data product.
+#' @param glossaryTerms The glossary terms of the data product.
+#' @param formsInput The metadata forms of the data product.
+#' @param items The data assets of the data product.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   id = "string",
+#'   revision = "string",
+#'   owningProjectId = "string",
+#'   name = "string",
+#'   status = "CREATED"|"CREATING"|"CREATE_FAILED",
+#'   description = "string",
+#'   glossaryTerms = list(
+#'     "string"
+#'   ),
+#'   items = list(
+#'     list(
+#'       itemType = "ASSET",
+#'       identifier = "string",
+#'       revision = "string",
+#'       glossaryTerms = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   formsOutput = list(
+#'     list(
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
+#'     )
+#'   ),
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
 #'   firstRevisionCreatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   firstRevisionCreatedBy = "string",
-#'   formsOutput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
-#'   glossaryTerms = list(
-#'     "string"
-#'   ),
-#'   id = "string",
-#'   items = list(
-#'     list(
-#'       glossaryTerms = list(
-#'         "string"
-#'       ),
-#'       identifier = "string",
-#'       itemType = "ASSET",
-#'       revision = "string"
-#'     )
-#'   ),
-#'   name = "string",
-#'   owningProjectId = "string",
-#'   revision = "string",
-#'   status = "CREATED"|"CREATING"|"CREATE_FAILED"
+#'   firstRevisionCreatedBy = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_data_product(
-#'   clientToken = "string",
-#'   description = "string",
 #'   domainIdentifier = "string",
-#'   formsInput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeIdentifier = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
+#'   name = "string",
+#'   owningProjectIdentifier = "string",
+#'   description = "string",
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
-#'   items = list(
+#'   formsInput = list(
 #'     list(
-#'       glossaryTerms = list(
-#'         "string"
-#'       ),
-#'       identifier = "string",
-#'       itemType = "ASSET",
-#'       revision = "string"
+#'       formName = "string",
+#'       typeIdentifier = "string",
+#'       typeRevision = "string",
+#'       content = "string"
 #'     )
 #'   ),
-#'   name = "string",
-#'   owningProjectIdentifier = "string"
+#'   items = list(
+#'     list(
+#'       itemType = "ASSET",
+#'       identifier = "string",
+#'       revision = "string",
+#'       glossaryTerms = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -2217,7 +2269,7 @@ datazone_create_connection <- function(awsLocation = NULL, clientToken = NULL, d
 #' @rdname datazone_create_data_product
 #'
 #' @aliases datazone_create_data_product
-datazone_create_data_product <- function(clientToken = NULL, description = NULL, domainIdentifier, formsInput = NULL, glossaryTerms = NULL, items = NULL, name, owningProjectIdentifier) {
+datazone_create_data_product <- function(domainIdentifier, name, owningProjectIdentifier, description = NULL, glossaryTerms = NULL, formsInput = NULL, items = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateDataProduct",
     http_method = "POST",
@@ -2226,7 +2278,7 @@ datazone_create_data_product <- function(clientToken = NULL, description = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_data_product_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, formsInput = formsInput, glossaryTerms = glossaryTerms, items = items, name = name, owningProjectIdentifier = owningProjectIdentifier)
+  input <- .datazone$create_data_product_input(domainIdentifier = domainIdentifier, name = name, owningProjectIdentifier = owningProjectIdentifier, description = description, glossaryTerms = glossaryTerms, formsInput = formsInput, items = items, clientToken = clientToken)
   output <- .datazone$create_data_product_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -2253,91 +2305,91 @@ datazone_create_data_product <- function(clientToken = NULL, description = NULL,
 #'     required).
 #'
 #' @usage
-#' datazone_create_data_product_revision(clientToken, description,
-#'   domainIdentifier, formsInput, glossaryTerms, identifier, items, name)
+#' datazone_create_data_product_revision(domainIdentifier, identifier,
+#'   name, description, glossaryTerms, items, formsInput, clientToken)
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where the data product revision is created.
+#' @param identifier &#91;required&#93; The ID of the data product revision.
+#' @param name &#91;required&#93; The name of the data product revision.
+#' @param description The description of the data product revision.
+#' @param glossaryTerms The glossary terms of the data product revision.
+#' @param items The data assets of the data product revision.
+#' @param formsInput The metadata forms of the data product revision.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
-#' @param description The description of the data product revision.
-#' @param domainIdentifier &#91;required&#93; The ID of the domain where the data product revision is created.
-#' @param formsInput The metadata forms of the data product revision.
-#' @param glossaryTerms The glossary terms of the data product revision.
-#' @param identifier &#91;required&#93; The ID of the data product revision.
-#' @param items The data assets of the data product revision.
-#' @param name &#91;required&#93; The name of the data product revision.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   id = "string",
+#'   revision = "string",
+#'   owningProjectId = "string",
+#'   name = "string",
+#'   status = "CREATED"|"CREATING"|"CREATE_FAILED",
+#'   description = "string",
+#'   glossaryTerms = list(
+#'     "string"
+#'   ),
+#'   items = list(
+#'     list(
+#'       itemType = "ASSET",
+#'       identifier = "string",
+#'       revision = "string",
+#'       glossaryTerms = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   formsOutput = list(
+#'     list(
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
+#'     )
+#'   ),
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
 #'   firstRevisionCreatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   firstRevisionCreatedBy = "string",
-#'   formsOutput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
-#'   glossaryTerms = list(
-#'     "string"
-#'   ),
-#'   id = "string",
-#'   items = list(
-#'     list(
-#'       glossaryTerms = list(
-#'         "string"
-#'       ),
-#'       identifier = "string",
-#'       itemType = "ASSET",
-#'       revision = "string"
-#'     )
-#'   ),
-#'   name = "string",
-#'   owningProjectId = "string",
-#'   revision = "string",
-#'   status = "CREATED"|"CREATING"|"CREATE_FAILED"
+#'   firstRevisionCreatedBy = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_data_product_revision(
-#'   clientToken = "string",
-#'   description = "string",
 #'   domainIdentifier = "string",
-#'   formsInput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeIdentifier = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
+#'   identifier = "string",
+#'   name = "string",
+#'   description = "string",
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
-#'   identifier = "string",
 #'   items = list(
 #'     list(
+#'       itemType = "ASSET",
+#'       identifier = "string",
+#'       revision = "string",
 #'       glossaryTerms = list(
 #'         "string"
-#'       ),
-#'       identifier = "string",
-#'       itemType = "ASSET",
-#'       revision = "string"
+#'       )
 #'     )
 #'   ),
-#'   name = "string"
+#'   formsInput = list(
+#'     list(
+#'       formName = "string",
+#'       typeIdentifier = "string",
+#'       typeRevision = "string",
+#'       content = "string"
+#'     )
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -2346,7 +2398,7 @@ datazone_create_data_product <- function(clientToken = NULL, description = NULL,
 #' @rdname datazone_create_data_product_revision
 #'
 #' @aliases datazone_create_data_product_revision
-datazone_create_data_product_revision <- function(clientToken = NULL, description = NULL, domainIdentifier, formsInput = NULL, glossaryTerms = NULL, identifier, items = NULL, name) {
+datazone_create_data_product_revision <- function(domainIdentifier, identifier, name, description = NULL, glossaryTerms = NULL, items = NULL, formsInput = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateDataProductRevision",
     http_method = "POST",
@@ -2355,7 +2407,7 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_data_product_revision_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, formsInput = formsInput, glossaryTerms = glossaryTerms, identifier = identifier, items = items, name = name)
+  input <- .datazone$create_data_product_revision_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, glossaryTerms = glossaryTerms, items = items, formsInput = formsInput, clientToken = clientToken)
   output <- .datazone$create_data_product_revision_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -2371,72 +2423,86 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #' Creates an Amazon DataZone data source.
 #'
 #' @usage
-#' datazone_create_data_source(assetFormsInput, clientToken, configuration,
-#'   connectionIdentifier, description, domainIdentifier, enableSetting,
-#'   environmentIdentifier, name, projectIdentifier, publishOnImport,
-#'   recommendation, schedule, type)
+#' datazone_create_data_source(name, description, domainIdentifier,
+#'   projectIdentifier, environmentIdentifier, connectionIdentifier, type,
+#'   configuration, recommendation, enableSetting, schedule, publishOnImport,
+#'   assetFormsInput, clientToken)
 #'
-#' @param assetFormsInput The metadata forms that are to be attached to the assets that this data
-#' source works with.
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param configuration Specifies the configuration of the data source. It can be set to either
-#' `glueRunConfiguration` or `redshiftRunConfiguration`.
-#' @param connectionIdentifier The ID of the connection.
+#' @param name &#91;required&#93; The name of the data source.
 #' @param description The description of the data source.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain where the data source is created.
-#' @param enableSetting Specifies whether the data source is enabled.
-#' @param environmentIdentifier The unique identifier of the Amazon DataZone environment to which the
-#' data source publishes assets.
-#' @param name &#91;required&#93; The name of the data source.
 #' @param projectIdentifier &#91;required&#93; The identifier of the Amazon DataZone project in which you want to add
 #' this data source.
-#' @param publishOnImport Specifies whether the assets that this data source creates in the
-#' inventory are to be also automatically published to the catalog.
-#' @param recommendation Specifies whether the business name generation is to be enabled for this
-#' data source.
-#' @param schedule The schedule of the data source runs.
+#' @param environmentIdentifier The unique identifier of the Amazon DataZone environment to which the
+#' data source publishes assets.
+#' @param connectionIdentifier The ID of the connection.
 #' @param type &#91;required&#93; The type of the data source. In Amazon DataZone, you can use data
 #' sources to import technical metadata of assets (data) from the source
 #' databases or data warehouses into Amazon DataZone. In the current
 #' release of Amazon DataZone, you can create and run data sources for
 #' Amazon Web Services Glue and Amazon Redshift.
+#' @param configuration Specifies the configuration of the data source. It can be set to either
+#' `glueRunConfiguration` or `redshiftRunConfiguration`.
+#' @param recommendation Specifies whether the business name generation is to be enabled for this
+#' data source.
+#' @param enableSetting Specifies whether the data source is enabled.
+#' @param schedule The schedule of the data source runs.
+#' @param publishOnImport Specifies whether the assets that this data source creates in the
+#' inventory are to be also automatically published to the catalog.
+#' @param assetFormsInput The metadata forms that are to be attached to the assets that this data
+#' source works with.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   assetFormsOutput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
+#'   id = "string",
+#'   status = "CREATING"|"FAILED_CREATION"|"READY"|"UPDATING"|"FAILED_UPDATE"|"RUNNING"|"DELETING"|"FAILED_DELETION",
+#'   type = "string",
+#'   name = "string",
+#'   description = "string",
+#'   domainId = "string",
+#'   projectId = "string",
+#'   environmentId = "string",
+#'   connectionId = "string",
 #'   configuration = list(
 #'     glueRunConfiguration = list(
 #'       accountId = "string",
-#'       autoImportDataQualityResult = TRUE|FALSE,
-#'       catalogName = "string",
-#'       dataAccessRole = "string",
 #'       region = "string",
+#'       dataAccessRole = "string",
 #'       relationalFilterConfigurations = list(
 #'         list(
 #'           databaseName = "string",
+#'           schemaName = "string",
 #'           filterExpressions = list(
 #'             list(
-#'               expression = "string",
-#'               type = "INCLUDE"|"EXCLUDE"
+#'               type = "INCLUDE"|"EXCLUDE",
+#'               expression = "string"
 #'             )
-#'           ),
-#'           schemaName = "string"
+#'           )
 #'         )
-#'       )
+#'       ),
+#'       autoImportDataQualityResult = TRUE|FALSE,
+#'       catalogName = "string"
 #'     ),
 #'     redshiftRunConfiguration = list(
 #'       accountId = "string",
+#'       region = "string",
 #'       dataAccessRole = "string",
+#'       relationalFilterConfigurations = list(
+#'         list(
+#'           databaseName = "string",
+#'           schemaName = "string",
+#'           filterExpressions = list(
+#'             list(
+#'               type = "INCLUDE"|"EXCLUDE",
+#'               expression = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       redshiftCredentialConfiguration = list(
 #'         secretManagerArn = "string"
 #'       ),
@@ -2446,19 +2512,6 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #'         ),
 #'         redshiftServerlessSource = list(
 #'           workgroupName = "string"
-#'         )
-#'       ),
-#'       region = "string",
-#'       relationalFilterConfigurations = list(
-#'         list(
-#'           databaseName = "string",
-#'           filterExpressions = list(
-#'             list(
-#'               expression = "string",
-#'               type = "INCLUDE"|"EXCLUDE"
-#'             )
-#'           ),
-#'           schemaName = "string"
 #'         )
 #'       )
 #'     ),
@@ -2472,39 +2525,38 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #'       )
 #'     )
 #'   ),
-#'   connectionId = "string",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
+#'   recommendation = list(
+#'     enableBusinessNameGeneration = TRUE|FALSE
 #'   ),
-#'   description = "string",
-#'   domainId = "string",
 #'   enableSetting = "ENABLED"|"DISABLED",
-#'   environmentId = "string",
-#'   errorMessage = list(
-#'     errorDetail = "string",
-#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
+#'   publishOnImport = TRUE|FALSE,
+#'   assetFormsOutput = list(
+#'     list(
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
+#'     )
 #'   ),
-#'   id = "string",
+#'   schedule = list(
+#'     timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC",
+#'     schedule = "string"
+#'   ),
+#'   lastRunStatus = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
 #'   lastRunAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   lastRunErrorMessage = list(
-#'     errorDetail = "string",
-#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
+#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION",
+#'     errorDetail = "string"
 #'   ),
-#'   lastRunStatus = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
-#'   name = "string",
-#'   projectId = "string",
-#'   publishOnImport = TRUE|FALSE,
-#'   recommendation = list(
-#'     enableBusinessNameGeneration = TRUE|FALSE
+#'   errorMessage = list(
+#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION",
+#'     errorDetail = "string"
 #'   ),
-#'   schedule = list(
-#'     schedule = "string",
-#'     timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC"
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
-#'   status = "CREATING"|"FAILED_CREATION"|"READY"|"UPDATING"|"FAILED_UPDATE"|"RUNNING"|"DELETING"|"FAILED_DELETION",
-#'   type = "string",
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -2514,35 +2566,45 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #' @section Request syntax:
 #' ```
 #' svc$create_data_source(
-#'   assetFormsInput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeIdentifier = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
-#'   clientToken = "string",
+#'   name = "string",
+#'   description = "string",
+#'   domainIdentifier = "string",
+#'   projectIdentifier = "string",
+#'   environmentIdentifier = "string",
+#'   connectionIdentifier = "string",
+#'   type = "string",
 #'   configuration = list(
 #'     glueRunConfiguration = list(
-#'       autoImportDataQualityResult = TRUE|FALSE,
-#'       catalogName = "string",
 #'       dataAccessRole = "string",
 #'       relationalFilterConfigurations = list(
 #'         list(
 #'           databaseName = "string",
+#'           schemaName = "string",
 #'           filterExpressions = list(
 #'             list(
-#'               expression = "string",
-#'               type = "INCLUDE"|"EXCLUDE"
+#'               type = "INCLUDE"|"EXCLUDE",
+#'               expression = "string"
 #'             )
-#'           ),
-#'           schemaName = "string"
+#'           )
 #'         )
-#'       )
+#'       ),
+#'       autoImportDataQualityResult = TRUE|FALSE,
+#'       catalogName = "string"
 #'     ),
 #'     redshiftRunConfiguration = list(
 #'       dataAccessRole = "string",
+#'       relationalFilterConfigurations = list(
+#'         list(
+#'           databaseName = "string",
+#'           schemaName = "string",
+#'           filterExpressions = list(
+#'             list(
+#'               type = "INCLUDE"|"EXCLUDE",
+#'               expression = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       redshiftCredentialConfiguration = list(
 #'         secretManagerArn = "string"
 #'       ),
@@ -2552,18 +2614,6 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #'         ),
 #'         redshiftServerlessSource = list(
 #'           workgroupName = "string"
-#'         )
-#'       ),
-#'       relationalFilterConfigurations = list(
-#'         list(
-#'           databaseName = "string",
-#'           filterExpressions = list(
-#'             list(
-#'               expression = "string",
-#'               type = "INCLUDE"|"EXCLUDE"
-#'             )
-#'           ),
-#'           schemaName = "string"
 #'         )
 #'       )
 #'     ),
@@ -2575,22 +2625,24 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #'       )
 #'     )
 #'   ),
-#'   connectionIdentifier = "string",
-#'   description = "string",
-#'   domainIdentifier = "string",
-#'   enableSetting = "ENABLED"|"DISABLED",
-#'   environmentIdentifier = "string",
-#'   name = "string",
-#'   projectIdentifier = "string",
-#'   publishOnImport = TRUE|FALSE,
 #'   recommendation = list(
 #'     enableBusinessNameGeneration = TRUE|FALSE
 #'   ),
+#'   enableSetting = "ENABLED"|"DISABLED",
 #'   schedule = list(
-#'     schedule = "string",
-#'     timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC"
+#'     timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC",
+#'     schedule = "string"
 #'   ),
-#'   type = "string"
+#'   publishOnImport = TRUE|FALSE,
+#'   assetFormsInput = list(
+#'     list(
+#'       formName = "string",
+#'       typeIdentifier = "string",
+#'       typeRevision = "string",
+#'       content = "string"
+#'     )
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -2599,7 +2651,7 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #' @rdname datazone_create_data_source
 #'
 #' @aliases datazone_create_data_source
-datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NULL, configuration = NULL, connectionIdentifier = NULL, description = NULL, domainIdentifier, enableSetting = NULL, environmentIdentifier = NULL, name, projectIdentifier, publishOnImport = NULL, recommendation = NULL, schedule = NULL, type) {
+datazone_create_data_source <- function(name, description = NULL, domainIdentifier, projectIdentifier, environmentIdentifier = NULL, connectionIdentifier = NULL, type, configuration = NULL, recommendation = NULL, enableSetting = NULL, schedule = NULL, publishOnImport = NULL, assetFormsInput = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateDataSource",
     http_method = "POST",
@@ -2608,7 +2660,7 @@ datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_data_source_input(assetFormsInput = assetFormsInput, clientToken = clientToken, configuration = configuration, connectionIdentifier = connectionIdentifier, description = description, domainIdentifier = domainIdentifier, enableSetting = enableSetting, environmentIdentifier = environmentIdentifier, name = name, projectIdentifier = projectIdentifier, publishOnImport = publishOnImport, recommendation = recommendation, schedule = schedule, type = type)
+  input <- .datazone$create_data_source_input(name = name, description = description, domainIdentifier = domainIdentifier, projectIdentifier = projectIdentifier, environmentIdentifier = environmentIdentifier, connectionIdentifier = connectionIdentifier, type = type, configuration = configuration, recommendation = recommendation, enableSetting = enableSetting, schedule = schedule, publishOnImport = publishOnImport, assetFormsInput = assetFormsInput, clientToken = clientToken)
   output <- .datazone$create_data_source_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -2624,68 +2676,69 @@ datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NU
 #' Creates an Amazon DataZone domain.
 #'
 #' @usage
-#' datazone_create_domain(clientToken, description, domainExecutionRole,
-#'   domainVersion, kmsKeyIdentifier, name, serviceRole, singleSignOn, tags)
+#' datazone_create_domain(name, description, singleSignOn,
+#'   domainExecutionRole, kmsKeyIdentifier, tags, domainVersion, serviceRole,
+#'   clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
+#' @param name &#91;required&#93; The name of the Amazon DataZone domain.
 #' @param description The description of the Amazon DataZone domain.
-#' @param domainExecutionRole &#91;required&#93; The domain execution role that is created when an Amazon DataZone domain
+#' @param singleSignOn The single-sign on configuration of the Amazon DataZone domain.
+#' @param domainExecutionRole The domain execution role that is created when an Amazon DataZone domain
 #' is created. The domain execution role is created in the Amazon Web
 #' Services account that houses the Amazon DataZone domain.
-#' @param domainVersion The version of the domain that is created.
 #' @param kmsKeyIdentifier The identifier of the Amazon Web Services Key Management Service (KMS)
 #' key that is used to encrypt the Amazon DataZone domain, metadata, and
 #' reporting data.
-#' @param name &#91;required&#93; The name of the Amazon DataZone domain.
-#' @param serviceRole The service role of the domain that is created.
-#' @param singleSignOn The single-sign on configuration of the Amazon DataZone domain.
 #' @param tags The tags specified for the Amazon DataZone domain.
+#' @param domainVersion The version of the domain that is created.
+#' @param serviceRole The service role of the domain that is created.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   arn = "string",
-#'   description = "string",
-#'   domainExecutionRole = "string",
-#'   domainVersion = "V1"|"V2",
 #'   id = "string",
-#'   kmsKeyIdentifier = "string",
-#'   name = "string",
-#'   portalUrl = "string",
 #'   rootDomainUnitId = "string",
-#'   serviceRole = "string",
+#'   name = "string",
+#'   description = "string",
 #'   singleSignOn = list(
-#'     idcInstanceArn = "string",
 #'     type = "IAM_IDC"|"DISABLED",
-#'     userAssignment = "AUTOMATIC"|"MANUAL"
+#'     userAssignment = "AUTOMATIC"|"MANUAL",
+#'     idcInstanceArn = "string"
 #'   ),
+#'   domainExecutionRole = "string",
+#'   arn = "string",
+#'   kmsKeyIdentifier = "string",
 #'   status = "CREATING"|"AVAILABLE"|"CREATION_FAILED"|"DELETING"|"DELETED"|"DELETION_FAILED",
+#'   portalUrl = "string",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   domainVersion = "V1"|"V2",
+#'   serviceRole = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_domain(
-#'   clientToken = "string",
-#'   description = "string",
-#'   domainExecutionRole = "string",
-#'   domainVersion = "V1"|"V2",
-#'   kmsKeyIdentifier = "string",
 #'   name = "string",
-#'   serviceRole = "string",
+#'   description = "string",
 #'   singleSignOn = list(
-#'     idcInstanceArn = "string",
 #'     type = "IAM_IDC"|"DISABLED",
-#'     userAssignment = "AUTOMATIC"|"MANUAL"
+#'     userAssignment = "AUTOMATIC"|"MANUAL",
+#'     idcInstanceArn = "string"
 #'   ),
+#'   domainExecutionRole = "string",
+#'   kmsKeyIdentifier = "string",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   domainVersion = "V1"|"V2",
+#'   serviceRole = "string",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -2694,7 +2747,7 @@ datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NU
 #' @rdname datazone_create_domain
 #'
 #' @aliases datazone_create_domain
-datazone_create_domain <- function(clientToken = NULL, description = NULL, domainExecutionRole, domainVersion = NULL, kmsKeyIdentifier = NULL, name, serviceRole = NULL, singleSignOn = NULL, tags = NULL) {
+datazone_create_domain <- function(name, description = NULL, singleSignOn = NULL, domainExecutionRole = NULL, kmsKeyIdentifier = NULL, tags = NULL, domainVersion = NULL, serviceRole = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
@@ -2703,7 +2756,7 @@ datazone_create_domain <- function(clientToken = NULL, description = NULL, domai
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_domain_input(clientToken = clientToken, description = description, domainExecutionRole = domainExecutionRole, domainVersion = domainVersion, kmsKeyIdentifier = kmsKeyIdentifier, name = name, serviceRole = serviceRole, singleSignOn = singleSignOn, tags = tags)
+  input <- .datazone$create_domain_input(name = name, description = description, singleSignOn = singleSignOn, domainExecutionRole = domainExecutionRole, kmsKeyIdentifier = kmsKeyIdentifier, tags = tags, domainVersion = domainVersion, serviceRole = serviceRole, clientToken = clientToken)
   output <- .datazone$create_domain_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -2719,53 +2772,53 @@ datazone_create_domain <- function(clientToken = NULL, description = NULL, domai
 #' Creates a domain unit in Amazon DataZone.
 #'
 #' @usage
-#' datazone_create_domain_unit(clientToken, description, domainIdentifier,
-#'   name, parentDomainUnitIdentifier)
+#' datazone_create_domain_unit(domainIdentifier, name,
+#'   parentDomainUnitIdentifier, description, clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param description The description of the domain unit.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to crate a domain unit.
 #' @param name &#91;required&#93; The name of the domain unit.
 #' @param parentDomainUnitIdentifier &#91;required&#93; The ID of the parent domain unit.
+#' @param description The description of the domain unit.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   domainId = "string",
+#'   name = "string",
+#'   parentDomainUnitId = "string",
+#'   description = "string",
+#'   owners = list(
+#'     list(
+#'       user = list(
+#'         userId = "string"
+#'       ),
+#'       group = list(
+#'         groupId = "string"
+#'       )
+#'     )
+#'   ),
 #'   ancestorDomainUnitIds = list(
 #'     "string"
 #'   ),
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   id = "string",
-#'   name = "string",
-#'   owners = list(
-#'     list(
-#'       group = list(
-#'         groupId = "string"
-#'       ),
-#'       user = list(
-#'         userId = "string"
-#'       )
-#'     )
-#'   ),
-#'   parentDomainUnitId = "string"
+#'   createdBy = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_domain_unit(
-#'   clientToken = "string",
-#'   description = "string",
 #'   domainIdentifier = "string",
 #'   name = "string",
-#'   parentDomainUnitIdentifier = "string"
+#'   parentDomainUnitIdentifier = "string",
+#'   description = "string",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -2774,7 +2827,7 @@ datazone_create_domain <- function(clientToken = NULL, description = NULL, domai
 #' @rdname datazone_create_domain_unit
 #'
 #' @aliases datazone_create_domain_unit
-datazone_create_domain_unit <- function(clientToken = NULL, description = NULL, domainIdentifier, name, parentDomainUnitIdentifier) {
+datazone_create_domain_unit <- function(domainIdentifier, name, parentDomainUnitIdentifier, description = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateDomainUnit",
     http_method = "POST",
@@ -2783,7 +2836,7 @@ datazone_create_domain_unit <- function(clientToken = NULL, description = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_domain_unit_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, name = name, parentDomainUnitIdentifier = parentDomainUnitIdentifier)
+  input <- .datazone$create_domain_unit_input(domainIdentifier = domainIdentifier, name = name, parentDomainUnitIdentifier = parentDomainUnitIdentifier, description = description, clientToken = clientToken)
   output <- .datazone$create_domain_unit_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -2799,132 +2852,135 @@ datazone_create_domain_unit <- function(clientToken = NULL, description = NULL, 
 #' Create an Amazon DataZone environment.
 #'
 #' @usage
-#' datazone_create_environment(deploymentOrder, description,
-#'   domainIdentifier, environmentAccountIdentifier,
-#'   environmentAccountRegion, environmentBlueprintIdentifier,
-#'   environmentConfigurationId, environmentProfileIdentifier, glossaryTerms,
-#'   name, projectIdentifier, userParameters)
+#' datazone_create_environment(projectIdentifier, domainIdentifier,
+#'   description, name, environmentProfileIdentifier, userParameters,
+#'   glossaryTerms, environmentAccountIdentifier, environmentAccountRegion,
+#'   environmentBlueprintIdentifier, deploymentOrder,
+#'   environmentConfigurationId, environmentConfigurationName)
 #'
-#' @param deploymentOrder The deployment order of the environment.
-#' @param description The description of the Amazon DataZone environment.
+#' @param projectIdentifier &#91;required&#93; The identifier of the Amazon DataZone project in which this environment
+#' is created.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which the environment is
 #' created.
+#' @param description The description of the Amazon DataZone environment.
+#' @param name &#91;required&#93; The name of the Amazon DataZone environment.
+#' @param environmentProfileIdentifier The identifier of the environment profile that is used to create this
+#' Amazon DataZone environment.
+#' @param userParameters The user parameters of this Amazon DataZone environment.
+#' @param glossaryTerms The glossary terms that can be used in this Amazon DataZone environment.
 #' @param environmentAccountIdentifier The ID of the account in which the environment is being created.
 #' @param environmentAccountRegion The region of the account in which the environment is being created.
 #' @param environmentBlueprintIdentifier The ID of the blueprint with which the environment is being created.
+#' @param deploymentOrder The deployment order of the environment.
 #' @param environmentConfigurationId The configuration ID of the environment.
-#' @param environmentProfileIdentifier The identifier of the environment profile that is used to create this
-#' Amazon DataZone environment.
-#' @param glossaryTerms The glossary terms that can be used in this Amazon DataZone environment.
-#' @param name &#91;required&#93; The name of the Amazon DataZone environment.
-#' @param projectIdentifier &#91;required&#93; The identifier of the Amazon DataZone project in which this environment
-#' is created.
-#' @param userParameters The user parameters of this Amazon DataZone environment.
+#' @param environmentConfigurationName The configuration name of the environment.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   awsAccountId = "string",
-#'   awsAccountRegion = "string",
+#'   projectId = "string",
+#'   id = "string",
+#'   domainId = "string",
+#'   createdBy = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   deploymentProperties = list(
-#'     endTimeoutMinutes = 123,
-#'     startTimeoutMinutes = 123
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
+#'   name = "string",
 #'   description = "string",
-#'   domainId = "string",
+#'   environmentProfileId = "string",
+#'   awsAccountId = "string",
+#'   awsAccountRegion = "string",
+#'   provider = "string",
+#'   provisionedResources = list(
+#'     list(
+#'       provider = "string",
+#'       name = "string",
+#'       value = "string",
+#'       type = "string"
+#'     )
+#'   ),
+#'   status = "ACTIVE"|"CREATING"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"VALIDATION_FAILED"|"SUSPENDED"|"DISABLED"|"EXPIRED"|"DELETED"|"INACCESSIBLE",
 #'   environmentActions = list(
 #'     list(
+#'       type = "string",
 #'       auth = "IAM"|"HTTPS",
 #'       parameters = list(
 #'         list(
 #'           key = "string",
 #'           value = "string"
 #'         )
-#'       ),
-#'       type = "string"
+#'       )
 #'     )
 #'   ),
-#'   environmentBlueprintId = "string",
-#'   environmentConfigurationId = "string",
-#'   environmentProfileId = "string",
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
-#'   id = "string",
+#'   userParameters = list(
+#'     list(
+#'       keyName = "string",
+#'       description = "string",
+#'       fieldType = "string",
+#'       defaultValue = "string",
+#'       isEditable = TRUE|FALSE,
+#'       isOptional = TRUE|FALSE,
+#'       isUpdateSupported = TRUE|FALSE
+#'     )
+#'   ),
 #'   lastDeployment = list(
 #'     deploymentId = "string",
-#'     deploymentStatus = "IN_PROGRESS"|"SUCCESSFUL"|"FAILED"|"PENDING_DEPLOYMENT",
 #'     deploymentType = "CREATE"|"UPDATE"|"DELETE",
+#'     deploymentStatus = "IN_PROGRESS"|"SUCCESSFUL"|"FAILED"|"PENDING_DEPLOYMENT",
 #'     failureReason = list(
 #'       code = "string",
 #'       message = "string"
 #'     ),
-#'     isDeploymentComplete = TRUE|FALSE,
 #'     messages = list(
 #'       "string"
-#'     )
-#'   ),
-#'   name = "string",
-#'   projectId = "string",
-#'   provider = "string",
-#'   provisionedResources = list(
-#'     list(
-#'       name = "string",
-#'       provider = "string",
-#'       type = "string",
-#'       value = "string"
-#'     )
+#'     ),
+#'     isDeploymentComplete = TRUE|FALSE
 #'   ),
 #'   provisioningProperties = list(
 #'     cloudFormation = list(
 #'       templateUrl = "string"
 #'     )
 #'   ),
-#'   status = "ACTIVE"|"CREATING"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"VALIDATION_FAILED"|"SUSPENDED"|"DISABLED"|"EXPIRED"|"DELETED"|"INACCESSIBLE",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
+#'   deploymentProperties = list(
+#'     startTimeoutMinutes = 123,
+#'     endTimeoutMinutes = 123
 #'   ),
-#'   userParameters = list(
-#'     list(
-#'       defaultValue = "string",
-#'       description = "string",
-#'       fieldType = "string",
-#'       isEditable = TRUE|FALSE,
-#'       isOptional = TRUE|FALSE,
-#'       isUpdateSupported = TRUE|FALSE,
-#'       keyName = "string"
-#'     )
-#'   )
+#'   environmentBlueprintId = "string",
+#'   environmentConfigurationId = "string",
+#'   environmentConfigurationName = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_environment(
-#'   deploymentOrder = 123,
-#'   description = "string",
-#'   domainIdentifier = "string",
-#'   environmentAccountIdentifier = "string",
-#'   environmentAccountRegion = "string",
-#'   environmentBlueprintIdentifier = "string",
-#'   environmentConfigurationId = "string",
-#'   environmentProfileIdentifier = "string",
-#'   glossaryTerms = list(
-#'     "string"
-#'   ),
-#'   name = "string",
 #'   projectIdentifier = "string",
+#'   domainIdentifier = "string",
+#'   description = "string",
+#'   name = "string",
+#'   environmentProfileIdentifier = "string",
 #'   userParameters = list(
 #'     list(
 #'       name = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   glossaryTerms = list(
+#'     "string"
+#'   ),
+#'   environmentAccountIdentifier = "string",
+#'   environmentAccountRegion = "string",
+#'   environmentBlueprintIdentifier = "string",
+#'   deploymentOrder = 123,
+#'   environmentConfigurationId = "string",
+#'   environmentConfigurationName = "string"
 #' )
 #' ```
 #'
@@ -2933,7 +2989,7 @@ datazone_create_domain_unit <- function(clientToken = NULL, description = NULL, 
 #' @rdname datazone_create_environment
 #'
 #' @aliases datazone_create_environment
-datazone_create_environment <- function(deploymentOrder = NULL, description = NULL, domainIdentifier, environmentAccountIdentifier = NULL, environmentAccountRegion = NULL, environmentBlueprintIdentifier = NULL, environmentConfigurationId = NULL, environmentProfileIdentifier = NULL, glossaryTerms = NULL, name, projectIdentifier, userParameters = NULL) {
+datazone_create_environment <- function(projectIdentifier, domainIdentifier, description = NULL, name, environmentProfileIdentifier = NULL, userParameters = NULL, glossaryTerms = NULL, environmentAccountIdentifier = NULL, environmentAccountRegion = NULL, environmentBlueprintIdentifier = NULL, deploymentOrder = NULL, environmentConfigurationId = NULL, environmentConfigurationName = NULL) {
   op <- new_operation(
     name = "CreateEnvironment",
     http_method = "POST",
@@ -2942,7 +2998,7 @@ datazone_create_environment <- function(deploymentOrder = NULL, description = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_environment_input(deploymentOrder = deploymentOrder, description = description, domainIdentifier = domainIdentifier, environmentAccountIdentifier = environmentAccountIdentifier, environmentAccountRegion = environmentAccountRegion, environmentBlueprintIdentifier = environmentBlueprintIdentifier, environmentConfigurationId = environmentConfigurationId, environmentProfileIdentifier = environmentProfileIdentifier, glossaryTerms = glossaryTerms, name = name, projectIdentifier = projectIdentifier, userParameters = userParameters)
+  input <- .datazone$create_environment_input(projectIdentifier = projectIdentifier, domainIdentifier = domainIdentifier, description = description, name = name, environmentProfileIdentifier = environmentProfileIdentifier, userParameters = userParameters, glossaryTerms = glossaryTerms, environmentAccountIdentifier = environmentAccountIdentifier, environmentAccountRegion = environmentAccountRegion, environmentBlueprintIdentifier = environmentBlueprintIdentifier, deploymentOrder = deploymentOrder, environmentConfigurationId = environmentConfigurationId, environmentConfigurationName = environmentConfigurationName)
   output <- .datazone$create_environment_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -2960,22 +3016,21 @@ datazone_create_environment <- function(deploymentOrder = NULL, description = NU
 #' link for an analytics tool that is available in this environment.
 #'
 #' @usage
-#' datazone_create_environment_action(description, domainIdentifier,
-#'   environmentIdentifier, name, parameters)
+#' datazone_create_environment_action(domainIdentifier,
+#'   environmentIdentifier, name, parameters, description)
 #'
-#' @param description The description of the environment action that is being created in the
-#' environment.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which the environment action is
 #' created.
 #' @param environmentIdentifier &#91;required&#93; The ID of the environment in which the environment action is created.
 #' @param name &#91;required&#93; The name of the environment action.
 #' @param parameters &#91;required&#93; The parameters of the environment action.
+#' @param description The description of the environment action that is being created in the
+#' environment.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   description = "string",
 #'   domainId = "string",
 #'   environmentId = "string",
 #'   id = "string",
@@ -2984,14 +3039,14 @@ datazone_create_environment <- function(deploymentOrder = NULL, description = NU
 #'     awsConsoleLink = list(
 #'       uri = "string"
 #'     )
-#'   )
+#'   ),
+#'   description = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_environment_action(
-#'   description = "string",
 #'   domainIdentifier = "string",
 #'   environmentIdentifier = "string",
 #'   name = "string",
@@ -2999,7 +3054,8 @@ datazone_create_environment <- function(deploymentOrder = NULL, description = NU
 #'     awsConsoleLink = list(
 #'       uri = "string"
 #'     )
-#'   )
+#'   ),
+#'   description = "string"
 #' )
 #' ```
 #'
@@ -3008,7 +3064,7 @@ datazone_create_environment <- function(deploymentOrder = NULL, description = NU
 #' @rdname datazone_create_environment_action
 #'
 #' @aliases datazone_create_environment_action
-datazone_create_environment_action <- function(description = NULL, domainIdentifier, environmentIdentifier, name, parameters) {
+datazone_create_environment_action <- function(domainIdentifier, environmentIdentifier, name, parameters, description = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentAction",
     http_method = "POST",
@@ -3017,7 +3073,7 @@ datazone_create_environment_action <- function(description = NULL, domainIdentif
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_environment_action_input(description = description, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, name = name, parameters = parameters)
+  input <- .datazone$create_environment_action_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, name = name, parameters = parameters, description = description)
   output <- .datazone$create_environment_action_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3033,12 +3089,12 @@ datazone_create_environment_action <- function(description = NULL, domainIdentif
 #' Creates a Amazon DataZone blueprint.
 #'
 #' @usage
-#' datazone_create_environment_blueprint(description, domainIdentifier,
-#'   name, provisioningProperties, userParameters)
+#' datazone_create_environment_blueprint(domainIdentifier, name,
+#'   description, provisioningProperties, userParameters)
 #'
-#' @param description The description of the Amazon DataZone blueprint.
 #' @param domainIdentifier &#91;required&#93; The identifier of the domain in which this blueprint is created.
 #' @param name &#91;required&#93; The name of this Amazon DataZone blueprint.
+#' @param description The description of the Amazon DataZone blueprint.
 #' @param provisioningProperties &#91;required&#93; The provisioning properties of this Amazon DataZone blueprint.
 #' @param userParameters The user parameters of this Amazon DataZone blueprint.
 #'
@@ -3046,38 +3102,38 @@ datazone_create_environment_action <- function(description = NULL, domainIdentif
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   deploymentProperties = list(
-#'     endTimeoutMinutes = 123,
-#'     startTimeoutMinutes = 123
-#'   ),
-#'   description = "string",
-#'   glossaryTerms = list(
-#'     "string"
-#'   ),
 #'   id = "string",
 #'   name = "string",
+#'   description = "string",
 #'   provider = "string",
 #'   provisioningProperties = list(
 #'     cloudFormation = list(
 #'       templateUrl = "string"
 #'     )
 #'   ),
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
+#'   deploymentProperties = list(
+#'     startTimeoutMinutes = 123,
+#'     endTimeoutMinutes = 123
 #'   ),
 #'   userParameters = list(
 #'     list(
-#'       defaultValue = "string",
+#'       keyName = "string",
 #'       description = "string",
 #'       fieldType = "string",
+#'       defaultValue = "string",
 #'       isEditable = TRUE|FALSE,
 #'       isOptional = TRUE|FALSE,
-#'       isUpdateSupported = TRUE|FALSE,
-#'       keyName = "string"
+#'       isUpdateSupported = TRUE|FALSE
 #'     )
+#'   ),
+#'   glossaryTerms = list(
+#'     "string"
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   )
 #' )
 #' ```
@@ -3085,9 +3141,9 @@ datazone_create_environment_action <- function(description = NULL, domainIdentif
 #' @section Request syntax:
 #' ```
 #' svc$create_environment_blueprint(
-#'   description = "string",
 #'   domainIdentifier = "string",
 #'   name = "string",
+#'   description = "string",
 #'   provisioningProperties = list(
 #'     cloudFormation = list(
 #'       templateUrl = "string"
@@ -3095,13 +3151,13 @@ datazone_create_environment_action <- function(description = NULL, domainIdentif
 #'   ),
 #'   userParameters = list(
 #'     list(
-#'       defaultValue = "string",
+#'       keyName = "string",
 #'       description = "string",
 #'       fieldType = "string",
+#'       defaultValue = "string",
 #'       isEditable = TRUE|FALSE,
 #'       isOptional = TRUE|FALSE,
-#'       isUpdateSupported = TRUE|FALSE,
-#'       keyName = "string"
+#'       isUpdateSupported = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -3112,7 +3168,7 @@ datazone_create_environment_action <- function(description = NULL, domainIdentif
 #' @rdname datazone_create_environment_blueprint
 #'
 #' @aliases datazone_create_environment_blueprint
-datazone_create_environment_blueprint <- function(description = NULL, domainIdentifier, name, provisioningProperties, userParameters = NULL) {
+datazone_create_environment_blueprint <- function(domainIdentifier, name, description = NULL, provisioningProperties, userParameters = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentBlueprint",
     http_method = "POST",
@@ -3121,7 +3177,7 @@ datazone_create_environment_blueprint <- function(description = NULL, domainIden
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_environment_blueprint_input(description = description, domainIdentifier = domainIdentifier, name = name, provisioningProperties = provisioningProperties, userParameters = userParameters)
+  input <- .datazone$create_environment_blueprint_input(domainIdentifier = domainIdentifier, name = name, description = description, provisioningProperties = provisioningProperties, userParameters = userParameters)
   output <- .datazone$create_environment_blueprint_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3137,51 +3193,51 @@ datazone_create_environment_blueprint <- function(description = NULL, domainIden
 #' Creates an Amazon DataZone environment profile.
 #'
 #' @usage
-#' datazone_create_environment_profile(awsAccountId, awsAccountRegion,
-#'   description, domainIdentifier, environmentBlueprintIdentifier, name,
-#'   projectIdentifier, userParameters)
+#' datazone_create_environment_profile(domainIdentifier, name, description,
+#'   environmentBlueprintIdentifier, projectIdentifier, userParameters,
+#'   awsAccountId, awsAccountRegion)
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which this environment profile
+#' is created.
+#' @param name &#91;required&#93; The name of this Amazon DataZone environment profile.
+#' @param description The description of this Amazon DataZone environment profile.
+#' @param environmentBlueprintIdentifier &#91;required&#93; The ID of the blueprint with which this environment profile is created.
+#' @param projectIdentifier &#91;required&#93; The identifier of the project in which to create the environment
+#' profile.
+#' @param userParameters The user parameters of this Amazon DataZone environment profile.
 #' @param awsAccountId The Amazon Web Services account in which the Amazon DataZone environment
 #' is created.
 #' @param awsAccountRegion The Amazon Web Services region in which this environment profile is
 #' created.
-#' @param description The description of this Amazon DataZone environment profile.
-#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which this environment profile
-#' is created.
-#' @param environmentBlueprintIdentifier &#91;required&#93; The ID of the blueprint with which this environment profile is created.
-#' @param name &#91;required&#93; The name of this Amazon DataZone environment profile.
-#' @param projectIdentifier &#91;required&#93; The identifier of the project in which to create the environment
-#' profile.
-#' @param userParameters The user parameters of this Amazon DataZone environment profile.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   domainId = "string",
 #'   awsAccountId = "string",
 #'   awsAccountRegion = "string",
+#'   createdBy = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   environmentBlueprintId = "string",
-#'   id = "string",
-#'   name = "string",
-#'   projectId = "string",
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   name = "string",
+#'   description = "string",
+#'   environmentBlueprintId = "string",
+#'   projectId = "string",
 #'   userParameters = list(
 #'     list(
-#'       defaultValue = "string",
+#'       keyName = "string",
 #'       description = "string",
 #'       fieldType = "string",
+#'       defaultValue = "string",
 #'       isEditable = TRUE|FALSE,
 #'       isOptional = TRUE|FALSE,
-#'       isUpdateSupported = TRUE|FALSE,
-#'       keyName = "string"
+#'       isUpdateSupported = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -3190,19 +3246,19 @@ datazone_create_environment_blueprint <- function(description = NULL, domainIden
 #' @section Request syntax:
 #' ```
 #' svc$create_environment_profile(
-#'   awsAccountId = "string",
-#'   awsAccountRegion = "string",
-#'   description = "string",
 #'   domainIdentifier = "string",
-#'   environmentBlueprintIdentifier = "string",
 #'   name = "string",
+#'   description = "string",
+#'   environmentBlueprintIdentifier = "string",
 #'   projectIdentifier = "string",
 #'   userParameters = list(
 #'     list(
 #'       name = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   awsAccountId = "string",
+#'   awsAccountRegion = "string"
 #' )
 #' ```
 #'
@@ -3211,7 +3267,7 @@ datazone_create_environment_blueprint <- function(description = NULL, domainIden
 #' @rdname datazone_create_environment_profile
 #'
 #' @aliases datazone_create_environment_profile
-datazone_create_environment_profile <- function(awsAccountId = NULL, awsAccountRegion = NULL, description = NULL, domainIdentifier, environmentBlueprintIdentifier, name, projectIdentifier, userParameters = NULL) {
+datazone_create_environment_profile <- function(domainIdentifier, name, description = NULL, environmentBlueprintIdentifier, projectIdentifier, userParameters = NULL, awsAccountId = NULL, awsAccountRegion = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentProfile",
     http_method = "POST",
@@ -3220,7 +3276,7 @@ datazone_create_environment_profile <- function(awsAccountId = NULL, awsAccountR
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_environment_profile_input(awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion, description = description, domainIdentifier = domainIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier, name = name, projectIdentifier = projectIdentifier, userParameters = userParameters)
+  input <- .datazone$create_environment_profile_input(domainIdentifier = domainIdentifier, name = name, description = description, environmentBlueprintIdentifier = environmentBlueprintIdentifier, projectIdentifier = projectIdentifier, userParameters = userParameters, awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion)
   output <- .datazone$create_environment_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3263,42 +3319,42 @@ datazone_create_environment_profile <- function(awsAccountId = NULL, awsAccountR
 #' stored in the field belong to.
 #'
 #' @usage
-#' datazone_create_form_type(description, domainIdentifier, model, name,
-#'   owningProjectIdentifier, status)
+#' datazone_create_form_type(domainIdentifier, name, model,
+#'   owningProjectIdentifier, status, description)
 #'
-#' @param description The description of this Amazon DataZone metadata form type.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which this metadata form type is
 #' created.
-#' @param model &#91;required&#93; The model of this Amazon DataZone metadata form type.
 #' @param name &#91;required&#93; The name of this Amazon DataZone metadata form type.
+#' @param model &#91;required&#93; The model of this Amazon DataZone metadata form type.
 #' @param owningProjectIdentifier &#91;required&#93; The ID of the Amazon DataZone project that owns this metadata form type.
 #' @param status The status of this Amazon DataZone metadata form type.
+#' @param description The description of this Amazon DataZone metadata form type.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   description = "string",
 #'   domainId = "string",
 #'   name = "string",
-#'   originDomainId = "string",
-#'   originProjectId = "string",
+#'   revision = "string",
+#'   description = "string",
 #'   owningProjectId = "string",
-#'   revision = "string"
+#'   originDomainId = "string",
+#'   originProjectId = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_form_type(
-#'   description = "string",
 #'   domainIdentifier = "string",
+#'   name = "string",
 #'   model = list(
 #'     smithy = "string"
 #'   ),
-#'   name = "string",
 #'   owningProjectIdentifier = "string",
-#'   status = "ENABLED"|"DISABLED"
+#'   status = "ENABLED"|"DISABLED",
+#'   description = "string"
 #' )
 #' ```
 #'
@@ -3307,7 +3363,7 @@ datazone_create_environment_profile <- function(awsAccountId = NULL, awsAccountR
 #' @rdname datazone_create_form_type
 #'
 #' @aliases datazone_create_form_type
-datazone_create_form_type <- function(description = NULL, domainIdentifier, model, name, owningProjectIdentifier, status = NULL) {
+datazone_create_form_type <- function(domainIdentifier, name, model, owningProjectIdentifier, status = NULL, description = NULL) {
   op <- new_operation(
     name = "CreateFormType",
     http_method = "POST",
@@ -3316,7 +3372,7 @@ datazone_create_form_type <- function(description = NULL, domainIdentifier, mode
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_form_type_input(description = description, domainIdentifier = domainIdentifier, model = model, name = name, owningProjectIdentifier = owningProjectIdentifier, status = status)
+  input <- .datazone$create_form_type_input(domainIdentifier = domainIdentifier, name = name, model = model, owningProjectIdentifier = owningProjectIdentifier, status = status, description = description)
   output <- .datazone$create_form_type_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3351,28 +3407,29 @@ datazone_create_form_type <- function(description = NULL, domainIdentifier, mode
 #' -   The glossary name must be unique within the domain.
 #'
 #' @usage
-#' datazone_create_glossary(clientToken, description, domainIdentifier,
-#'   name, owningProjectIdentifier, status, usageRestrictions)
+#' datazone_create_glossary(domainIdentifier, name,
+#'   owningProjectIdentifier, description, status, usageRestrictions,
+#'   clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param description The description of this business glossary.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which this business glossary is
 #' created.
 #' @param name &#91;required&#93; The name of this business glossary.
 #' @param owningProjectIdentifier &#91;required&#93; The ID of the project that currently owns business glossary.
+#' @param description The description of this business glossary.
 #' @param status The status of this business glossary.
 #' @param usageRestrictions The usage restriction of the restricted glossary.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   description = "string",
 #'   domainId = "string",
 #'   id = "string",
 #'   name = "string",
 #'   owningProjectId = "string",
+#'   description = "string",
 #'   status = "DISABLED"|"ENABLED",
 #'   usageRestrictions = list(
 #'     "ASSET_GOVERNED_TERMS"
@@ -3383,15 +3440,15 @@ datazone_create_form_type <- function(description = NULL, domainIdentifier, mode
 #' @section Request syntax:
 #' ```
 #' svc$create_glossary(
-#'   clientToken = "string",
-#'   description = "string",
 #'   domainIdentifier = "string",
 #'   name = "string",
 #'   owningProjectIdentifier = "string",
+#'   description = "string",
 #'   status = "DISABLED"|"ENABLED",
 #'   usageRestrictions = list(
 #'     "ASSET_GOVERNED_TERMS"
-#'   )
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -3400,7 +3457,7 @@ datazone_create_form_type <- function(description = NULL, domainIdentifier, mode
 #' @rdname datazone_create_glossary
 #'
 #' @aliases datazone_create_glossary
-datazone_create_glossary <- function(clientToken = NULL, description = NULL, domainIdentifier, name, owningProjectIdentifier, status = NULL, usageRestrictions = NULL) {
+datazone_create_glossary <- function(domainIdentifier, name, owningProjectIdentifier, description = NULL, status = NULL, usageRestrictions = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateGlossary",
     http_method = "POST",
@@ -3409,7 +3466,7 @@ datazone_create_glossary <- function(clientToken = NULL, description = NULL, dom
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_glossary_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, name = name, owningProjectIdentifier = owningProjectIdentifier, status = status, usageRestrictions = usageRestrictions)
+  input <- .datazone$create_glossary_input(domainIdentifier = domainIdentifier, name = name, owningProjectIdentifier = owningProjectIdentifier, description = description, status = status, usageRestrictions = usageRestrictions, clientToken = clientToken)
   output <- .datazone$create_glossary_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3446,37 +3503,37 @@ datazone_create_glossary <- function(clientToken = NULL, description = NULL, dom
 #' -   Ensure term does not conflict with existing terms in hierarchy.
 #'
 #' @usage
-#' datazone_create_glossary_term(clientToken, domainIdentifier,
-#'   glossaryIdentifier, longDescription, name, shortDescription, status,
-#'   termRelations)
+#' datazone_create_glossary_term(domainIdentifier, glossaryIdentifier,
+#'   name, status, shortDescription, longDescription, termRelations,
+#'   clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which this business glossary
 #' term is created.
 #' @param glossaryIdentifier &#91;required&#93; The ID of the business glossary in which this term is created.
-#' @param longDescription The long description of this business glossary term.
 #' @param name &#91;required&#93; The name of this business glossary term.
-#' @param shortDescription The short description of this business glossary term.
 #' @param status The status of this business glossary term.
+#' @param shortDescription The short description of this business glossary term.
+#' @param longDescription The long description of this business glossary term.
 #' @param termRelations The term relations of this business glossary term.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
 #'   domainId = "string",
 #'   glossaryId = "string",
-#'   id = "string",
-#'   longDescription = "string",
 #'   name = "string",
-#'   shortDescription = "string",
 #'   status = "ENABLED"|"DISABLED",
+#'   shortDescription = "string",
+#'   longDescription = "string",
 #'   termRelations = list(
-#'     classifies = list(
+#'     isA = list(
 #'       "string"
 #'     ),
-#'     isA = list(
+#'     classifies = list(
 #'       "string"
 #'     )
 #'   ),
@@ -3489,21 +3546,21 @@ datazone_create_glossary <- function(clientToken = NULL, description = NULL, dom
 #' @section Request syntax:
 #' ```
 #' svc$create_glossary_term(
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
 #'   glossaryIdentifier = "string",
-#'   longDescription = "string",
 #'   name = "string",
-#'   shortDescription = "string",
 #'   status = "ENABLED"|"DISABLED",
+#'   shortDescription = "string",
+#'   longDescription = "string",
 #'   termRelations = list(
-#'     classifies = list(
-#'       "string"
-#'     ),
 #'     isA = list(
 #'       "string"
+#'     ),
+#'     classifies = list(
+#'       "string"
 #'     )
-#'   )
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -3512,7 +3569,7 @@ datazone_create_glossary <- function(clientToken = NULL, description = NULL, dom
 #' @rdname datazone_create_glossary_term
 #'
 #' @aliases datazone_create_glossary_term
-datazone_create_glossary_term <- function(clientToken = NULL, domainIdentifier, glossaryIdentifier, longDescription = NULL, name, shortDescription = NULL, status = NULL, termRelations = NULL) {
+datazone_create_glossary_term <- function(domainIdentifier, glossaryIdentifier, name, status = NULL, shortDescription = NULL, longDescription = NULL, termRelations = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateGlossaryTerm",
     http_method = "POST",
@@ -3521,7 +3578,7 @@ datazone_create_glossary_term <- function(clientToken = NULL, domainIdentifier, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_glossary_term_input(clientToken = clientToken, domainIdentifier = domainIdentifier, glossaryIdentifier = glossaryIdentifier, longDescription = longDescription, name = name, shortDescription = shortDescription, status = status, termRelations = termRelations)
+  input <- .datazone$create_glossary_term_input(domainIdentifier = domainIdentifier, glossaryIdentifier = glossaryIdentifier, name = name, status = status, shortDescription = shortDescription, longDescription = longDescription, termRelations = termRelations, clientToken = clientToken)
   output <- .datazone$create_glossary_term_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3537,32 +3594,38 @@ datazone_create_glossary_term <- function(clientToken = NULL, domainIdentifier, 
 #' Creates a group profile in Amazon DataZone.
 #'
 #' @usage
-#' datazone_create_group_profile(clientToken, domainIdentifier,
-#'   groupIdentifier)
+#' datazone_create_group_profile(domainIdentifier, groupIdentifier,
+#'   rolePrincipalArn, clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which the group profile
 #' is created.
-#' @param groupIdentifier &#91;required&#93; The identifier of the group for which the group profile is created.
+#' @param groupIdentifier The identifier of the group for which the group profile is created.
+#' @param rolePrincipalArn The ARN of the IAM role that will be associated with the group profile.
+#' This role defines the permissions that group members will assume when
+#' accessing Amazon DataZone resources.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   domainId = "string",
-#'   groupName = "string",
 #'   id = "string",
-#'   status = "ASSIGNED"|"NOT_ASSIGNED"
+#'   status = "ASSIGNED"|"NOT_ASSIGNED",
+#'   groupName = "string",
+#'   rolePrincipalArn = "string",
+#'   rolePrincipalId = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_group_profile(
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
-#'   groupIdentifier = "string"
+#'   groupIdentifier = "string",
+#'   rolePrincipalArn = "string",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -3571,7 +3634,7 @@ datazone_create_glossary_term <- function(clientToken = NULL, domainIdentifier, 
 #' @rdname datazone_create_group_profile
 #'
 #' @aliases datazone_create_group_profile
-datazone_create_group_profile <- function(clientToken = NULL, domainIdentifier, groupIdentifier) {
+datazone_create_group_profile <- function(domainIdentifier, groupIdentifier = NULL, rolePrincipalArn = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateGroupProfile",
     http_method = "POST",
@@ -3580,7 +3643,7 @@ datazone_create_group_profile <- function(clientToken = NULL, domainIdentifier, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_group_profile_input(clientToken = clientToken, domainIdentifier = domainIdentifier, groupIdentifier = groupIdentifier)
+  input <- .datazone$create_group_profile_input(domainIdentifier = domainIdentifier, groupIdentifier = groupIdentifier, rolePrincipalArn = rolePrincipalArn, clientToken = clientToken)
   output <- .datazone$create_group_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3598,16 +3661,16 @@ datazone_create_group_profile <- function(clientToken = NULL, domainIdentifier, 
 #' listing from the catalog.
 #'
 #' @usage
-#' datazone_create_listing_change_set(action, clientToken,
-#'   domainIdentifier, entityIdentifier, entityRevision, entityType)
+#' datazone_create_listing_change_set(domainIdentifier, entityIdentifier,
+#'   entityType, entityRevision, action, clientToken)
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain.
+#' @param entityIdentifier &#91;required&#93; The ID of the asset.
+#' @param entityType &#91;required&#93; The type of an entity.
+#' @param entityRevision The revision of an asset.
 #' @param action &#91;required&#93; Specifies whether to publish or unpublish a listing.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
-#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain.
-#' @param entityIdentifier &#91;required&#93; The ID of the asset.
-#' @param entityRevision The revision of an asset.
-#' @param entityType &#91;required&#93; The type of an entity.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3622,12 +3685,12 @@ datazone_create_group_profile <- function(clientToken = NULL, domainIdentifier, 
 #' @section Request syntax:
 #' ```
 #' svc$create_listing_change_set(
-#'   action = "PUBLISH"|"UNPUBLISH",
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
 #'   entityIdentifier = "string",
+#'   entityType = "ASSET"|"DATA_PRODUCT",
 #'   entityRevision = "string",
-#'   entityType = "ASSET"|"DATA_PRODUCT"
+#'   action = "PUBLISH"|"UNPUBLISH",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -3636,7 +3699,7 @@ datazone_create_group_profile <- function(clientToken = NULL, domainIdentifier, 
 #' @rdname datazone_create_listing_change_set
 #'
 #' @aliases datazone_create_listing_change_set
-datazone_create_listing_change_set <- function(action, clientToken = NULL, domainIdentifier, entityIdentifier, entityRevision = NULL, entityType) {
+datazone_create_listing_change_set <- function(domainIdentifier, entityIdentifier, entityType, entityRevision = NULL, action, clientToken = NULL) {
   op <- new_operation(
     name = "CreateListingChangeSet",
     http_method = "POST",
@@ -3645,7 +3708,7 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_listing_change_set_input(action = action, clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityRevision = entityRevision, entityType = entityType)
+  input <- .datazone$create_listing_change_set_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, entityRevision = entityRevision, action = action, clientToken = clientToken)
   output <- .datazone$create_listing_change_set_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3661,32 +3724,80 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
 #' Creates an Amazon DataZone project.
 #'
 #' @usage
-#' datazone_create_project(description, domainIdentifier, domainUnitId,
-#'   glossaryTerms, name, projectProfileId, resourceTags, userParameters)
+#' datazone_create_project(domainIdentifier, name, description,
+#'   resourceTags, glossaryTerms, domainUnitId, projectProfileId,
+#'   userParameters, projectCategory, projectExecutionRole,
+#'   membershipAssignments)
 #'
-#' @param description The description of the Amazon DataZone project.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which this project is created.
+#' @param name &#91;required&#93; The name of the Amazon DataZone project.
+#' @param description The description of the Amazon DataZone project.
+#' @param resourceTags The resource tags of the project.
+#' @param glossaryTerms The glossary terms that can be used in this Amazon DataZone project.
 #' @param domainUnitId The ID of the domain unit. This parameter is not required and if it is
 #' not specified, then the project is created at the root domain unit
 #' level.
-#' @param glossaryTerms The glossary terms that can be used in this Amazon DataZone project.
-#' @param name &#91;required&#93; The name of the Amazon DataZone project.
 #' @param projectProfileId The ID of the project profile.
-#' @param resourceTags The resource tags of the project.
 #' @param userParameters The user parameters of the project.
+#' @param projectCategory The category of the project. Set to 'ADMIN' designates this as an
+#' administrative project for the Amazon DataZone domain.
+#' @param projectExecutionRole The default project IAM role that is used to access project resources
+#' and run computes such as Glue and Sagemaker.
+#' @param membershipAssignments The members to be assigned to the project.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"MOVING",
+#'   failureReasons = list(
+#'     list(
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   ),
+#'   createdBy = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   resourceTags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string",
+#'       source = "PROJECT"|"PROJECT_PROFILE"
+#'     )
+#'   ),
+#'   glossaryTerms = list(
+#'     "string"
+#'   ),
 #'   domainUnitId = "string",
+#'   projectProfileId = "string",
+#'   userParameters = list(
+#'     list(
+#'       environmentId = "string",
+#'       environmentResolvedAccount = list(
+#'         awsAccountId = "string",
+#'         regionName = "string",
+#'         sourceAccountPoolId = "string"
+#'       ),
+#'       environmentConfigurationName = "string",
+#'       environmentParameters = list(
+#'         list(
+#'           name = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   environmentDeploymentDetails = list(
+#'     overallDeploymentStatus = "PENDING_DEPLOYMENT"|"IN_PROGRESS"|"SUCCESSFUL"|"FAILED_VALIDATION"|"FAILED_DEPLOYMENT",
 #'     environmentFailureReasons = list(
 #'       list(
 #'         list(
@@ -3694,81 +3805,52 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
 #'           message = "string"
 #'         )
 #'       )
-#'     ),
-#'     overallDeploymentStatus = "PENDING_DEPLOYMENT"|"IN_PROGRESS"|"SUCCESSFUL"|"FAILED_VALIDATION"|"FAILED_DEPLOYMENT"
-#'   ),
-#'   failureReasons = list(
-#'     list(
-#'       code = "string",
-#'       message = "string"
 #'     )
 #'   ),
-#'   glossaryTerms = list(
-#'     "string"
-#'   ),
-#'   id = "string",
-#'   lastUpdatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   name = "string",
-#'   projectProfileId = "string",
-#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"MOVING",
-#'   resourceTags = list(
-#'     list(
-#'       key = "string",
-#'       source = "PROJECT"|"PROJECT_PROFILE",
-#'       value = "string"
-#'     )
-#'   ),
-#'   userParameters = list(
-#'     list(
-#'       environmentConfigurationName = "string",
-#'       environmentId = "string",
-#'       environmentParameters = list(
-#'         list(
-#'           name = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       environmentResolvedAccount = list(
-#'         awsAccountId = "string",
-#'         regionName = "string",
-#'         sourceAccountPoolId = "string"
-#'       )
-#'     )
-#'   )
+#'   projectCategory = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_project(
-#'   description = "string",
 #'   domainIdentifier = "string",
-#'   domainUnitId = "string",
-#'   glossaryTerms = list(
-#'     "string"
-#'   ),
 #'   name = "string",
-#'   projectProfileId = "string",
+#'   description = "string",
 #'   resourceTags = list(
 #'     "string"
 #'   ),
+#'   glossaryTerms = list(
+#'     "string"
+#'   ),
+#'   domainUnitId = "string",
+#'   projectProfileId = "string",
 #'   userParameters = list(
 #'     list(
-#'       environmentConfigurationName = "string",
 #'       environmentId = "string",
+#'       environmentResolvedAccount = list(
+#'         awsAccountId = "string",
+#'         regionName = "string",
+#'         sourceAccountPoolId = "string"
+#'       ),
+#'       environmentConfigurationName = "string",
 #'       environmentParameters = list(
 #'         list(
 #'           name = "string",
 #'           value = "string"
 #'         )
-#'       ),
-#'       environmentResolvedAccount = list(
-#'         awsAccountId = "string",
-#'         regionName = "string",
-#'         sourceAccountPoolId = "string"
 #'       )
+#'     )
+#'   ),
+#'   projectCategory = "string",
+#'   projectExecutionRole = "string",
+#'   membershipAssignments = list(
+#'     list(
+#'       member = list(
+#'         userIdentifier = "string",
+#'         groupIdentifier = "string"
+#'       ),
+#'       designation = "PROJECT_OWNER"|"PROJECT_CONTRIBUTOR"|"PROJECT_CATALOG_VIEWER"|"PROJECT_CATALOG_CONSUMER"|"PROJECT_CATALOG_STEWARD"
 #'     )
 #'   )
 #' )
@@ -3779,7 +3861,7 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
 #' @rdname datazone_create_project
 #'
 #' @aliases datazone_create_project
-datazone_create_project <- function(description = NULL, domainIdentifier, domainUnitId = NULL, glossaryTerms = NULL, name, projectProfileId = NULL, resourceTags = NULL, userParameters = NULL) {
+datazone_create_project <- function(domainIdentifier, name, description = NULL, resourceTags = NULL, glossaryTerms = NULL, domainUnitId = NULL, projectProfileId = NULL, userParameters = NULL, projectCategory = NULL, projectExecutionRole = NULL, membershipAssignments = NULL) {
   op <- new_operation(
     name = "CreateProject",
     http_method = "POST",
@@ -3788,7 +3870,7 @@ datazone_create_project <- function(description = NULL, domainIdentifier, domain
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_project_input(description = description, domainIdentifier = domainIdentifier, domainUnitId = domainUnitId, glossaryTerms = glossaryTerms, name = name, projectProfileId = projectProfileId, resourceTags = resourceTags, userParameters = userParameters)
+  input <- .datazone$create_project_input(domainIdentifier = domainIdentifier, name = name, description = description, resourceTags = resourceTags, glossaryTerms = glossaryTerms, domainUnitId = domainUnitId, projectProfileId = projectProfileId, userParameters = userParameters, projectCategory = projectCategory, projectExecutionRole = projectExecutionRole, membershipAssignments = membershipAssignments)
   output <- .datazone$create_project_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3804,14 +3886,14 @@ datazone_create_project <- function(description = NULL, domainIdentifier, domain
 #' Creates a project membership in Amazon DataZone.
 #'
 #' @usage
-#' datazone_create_project_membership(designation, domainIdentifier,
-#'   member, projectIdentifier)
+#' datazone_create_project_membership(domainIdentifier, projectIdentifier,
+#'   member, designation)
 #'
-#' @param designation &#91;required&#93; The designation of the project membership.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which project membership is
 #' created.
-#' @param member &#91;required&#93; The project member whose project membership was created.
 #' @param projectIdentifier &#91;required&#93; The ID of the project for which this project membership was created.
+#' @param member &#91;required&#93; The project member whose project membership was created.
+#' @param designation &#91;required&#93; The designation of the project membership.
 #'
 #' @return
 #' An empty list.
@@ -3819,13 +3901,13 @@ datazone_create_project <- function(description = NULL, domainIdentifier, domain
 #' @section Request syntax:
 #' ```
 #' svc$create_project_membership(
-#'   designation = "PROJECT_OWNER"|"PROJECT_CONTRIBUTOR"|"PROJECT_CATALOG_VIEWER"|"PROJECT_CATALOG_CONSUMER"|"PROJECT_CATALOG_STEWARD",
 #'   domainIdentifier = "string",
+#'   projectIdentifier = "string",
 #'   member = list(
-#'     groupIdentifier = "string",
-#'     userIdentifier = "string"
+#'     userIdentifier = "string",
+#'     groupIdentifier = "string"
 #'   ),
-#'   projectIdentifier = "string"
+#'   designation = "PROJECT_OWNER"|"PROJECT_CONTRIBUTOR"|"PROJECT_CATALOG_VIEWER"|"PROJECT_CATALOG_CONSUMER"|"PROJECT_CATALOG_STEWARD"
 #' )
 #' ```
 #'
@@ -3834,7 +3916,7 @@ datazone_create_project <- function(description = NULL, domainIdentifier, domain
 #' @rdname datazone_create_project_membership
 #'
 #' @aliases datazone_create_project_membership
-datazone_create_project_membership <- function(designation, domainIdentifier, member, projectIdentifier) {
+datazone_create_project_membership <- function(domainIdentifier, projectIdentifier, member, designation) {
   op <- new_operation(
     name = "CreateProjectMembership",
     http_method = "POST",
@@ -3843,7 +3925,7 @@ datazone_create_project_membership <- function(designation, domainIdentifier, me
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_project_membership_input(designation = designation, domainIdentifier = domainIdentifier, member = member, projectIdentifier = projectIdentifier)
+  input <- .datazone$create_project_membership_input(domainIdentifier = domainIdentifier, projectIdentifier = projectIdentifier, member = member, designation = designation)
   output <- .datazone$create_project_membership_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3859,144 +3941,144 @@ datazone_create_project_membership <- function(designation, domainIdentifier, me
 #' Creates a project profile.
 #'
 #' @usage
-#' datazone_create_project_profile(allowCustomProjectResourceTags,
-#'   description, domainIdentifier, domainUnitIdentifier,
-#'   environmentConfigurations, name, projectResourceTags,
-#'   projectResourceTagsDescription, status)
+#' datazone_create_project_profile(domainIdentifier, name, description,
+#'   status, projectResourceTags, allowCustomProjectResourceTags,
+#'   projectResourceTagsDescription, environmentConfigurations,
+#'   domainUnitIdentifier)
 #'
-#' @param allowCustomProjectResourceTags Specifies whether custom project resource tags are supported.
-#' @param description A description of a project profile.
 #' @param domainIdentifier &#91;required&#93; A domain ID of the project profile.
-#' @param domainUnitIdentifier A domain unit ID of the project profile.
-#' @param environmentConfigurations Environment configurations of the project profile.
 #' @param name &#91;required&#93; Project profile name.
+#' @param description A description of a project profile.
+#' @param status Project profile status.
 #' @param projectResourceTags The resource tags of the project profile.
+#' @param allowCustomProjectResourceTags Specifies whether custom project resource tags are supported.
 #' @param projectResourceTagsDescription Field viewable through the UI that provides a project user with the
 #' allowed resource tag specifications.
-#' @param status Project profile status.
+#' @param environmentConfigurations Environment configurations of the project profile.
+#' @param domainUnitIdentifier A domain unit ID of the project profile.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   allowCustomProjectResourceTags = TRUE|FALSE,
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdBy = "string",
-#'   description = "string",
 #'   domainId = "string",
-#'   domainUnitId = "string",
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   status = "ENABLED"|"DISABLED",
+#'   projectResourceTags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string",
+#'       isValueEditable = TRUE|FALSE
+#'     )
+#'   ),
+#'   allowCustomProjectResourceTags = TRUE|FALSE,
+#'   projectResourceTagsDescription = "string",
 #'   environmentConfigurations = list(
 #'     list(
-#'       accountPools = list(
-#'         "string"
+#'       name = "string",
+#'       id = "string",
+#'       environmentBlueprintId = "string",
+#'       description = "string",
+#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
+#'       configurationParameters = list(
+#'         ssmPath = "string",
+#'         parameterOverrides = list(
+#'           list(
+#'             name = "string",
+#'             value = "string",
+#'             isEditable = TRUE|FALSE
+#'           )
+#'         ),
+#'         resolvedParameters = list(
+#'           list(
+#'             name = "string",
+#'             value = "string",
+#'             isEditable = TRUE|FALSE
+#'           )
+#'         )
 #'       ),
 #'       awsAccount = list(
 #'         awsAccountId = "string",
 #'         awsAccountIdPath = "string"
 #'       ),
+#'       accountPools = list(
+#'         "string"
+#'       ),
 #'       awsRegion = list(
 #'         regionName = "string",
 #'         regionNamePath = "string"
 #'       ),
-#'       configurationParameters = list(
-#'         parameterOverrides = list(
-#'           list(
-#'             isEditable = TRUE|FALSE,
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         resolvedParameters = list(
-#'           list(
-#'             isEditable = TRUE|FALSE,
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         ssmPath = "string"
-#'       ),
-#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
-#'       deploymentOrder = 123,
-#'       description = "string",
-#'       environmentBlueprintId = "string",
-#'       id = "string",
-#'       name = "string"
+#'       deploymentOrder = 123
 #'     )
 #'   ),
-#'   id = "string",
+#'   createdBy = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   name = "string",
-#'   projectResourceTags = list(
-#'     list(
-#'       isValueEditable = TRUE|FALSE,
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   projectResourceTagsDescription = "string",
-#'   status = "ENABLED"|"DISABLED"
+#'   domainUnitId = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_project_profile(
-#'   allowCustomProjectResourceTags = TRUE|FALSE,
-#'   description = "string",
 #'   domainIdentifier = "string",
-#'   domainUnitIdentifier = "string",
+#'   name = "string",
+#'   description = "string",
+#'   status = "ENABLED"|"DISABLED",
+#'   projectResourceTags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string",
+#'       isValueEditable = TRUE|FALSE
+#'     )
+#'   ),
+#'   allowCustomProjectResourceTags = TRUE|FALSE,
+#'   projectResourceTagsDescription = "string",
 #'   environmentConfigurations = list(
 #'     list(
-#'       accountPools = list(
-#'         "string"
+#'       name = "string",
+#'       id = "string",
+#'       environmentBlueprintId = "string",
+#'       description = "string",
+#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
+#'       configurationParameters = list(
+#'         ssmPath = "string",
+#'         parameterOverrides = list(
+#'           list(
+#'             name = "string",
+#'             value = "string",
+#'             isEditable = TRUE|FALSE
+#'           )
+#'         ),
+#'         resolvedParameters = list(
+#'           list(
+#'             name = "string",
+#'             value = "string",
+#'             isEditable = TRUE|FALSE
+#'           )
+#'         )
 #'       ),
 #'       awsAccount = list(
 #'         awsAccountId = "string",
 #'         awsAccountIdPath = "string"
 #'       ),
+#'       accountPools = list(
+#'         "string"
+#'       ),
 #'       awsRegion = list(
 #'         regionName = "string",
 #'         regionNamePath = "string"
 #'       ),
-#'       configurationParameters = list(
-#'         parameterOverrides = list(
-#'           list(
-#'             isEditable = TRUE|FALSE,
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         resolvedParameters = list(
-#'           list(
-#'             isEditable = TRUE|FALSE,
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         ssmPath = "string"
-#'       ),
-#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
-#'       deploymentOrder = 123,
-#'       description = "string",
-#'       environmentBlueprintId = "string",
-#'       id = "string",
-#'       name = "string"
+#'       deploymentOrder = 123
 #'     )
 #'   ),
-#'   name = "string",
-#'   projectResourceTags = list(
-#'     list(
-#'       isValueEditable = TRUE|FALSE,
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   projectResourceTagsDescription = "string",
-#'   status = "ENABLED"|"DISABLED"
+#'   domainUnitIdentifier = "string"
 #' )
 #' ```
 #'
@@ -4005,7 +4087,7 @@ datazone_create_project_membership <- function(designation, domainIdentifier, me
 #' @rdname datazone_create_project_profile
 #'
 #' @aliases datazone_create_project_profile
-datazone_create_project_profile <- function(allowCustomProjectResourceTags = NULL, description = NULL, domainIdentifier, domainUnitIdentifier = NULL, environmentConfigurations = NULL, name, projectResourceTags = NULL, projectResourceTagsDescription = NULL, status = NULL) {
+datazone_create_project_profile <- function(domainIdentifier, name, description = NULL, status = NULL, projectResourceTags = NULL, allowCustomProjectResourceTags = NULL, projectResourceTagsDescription = NULL, environmentConfigurations = NULL, domainUnitIdentifier = NULL) {
   op <- new_operation(
     name = "CreateProjectProfile",
     http_method = "POST",
@@ -4014,7 +4096,7 @@ datazone_create_project_profile <- function(allowCustomProjectResourceTags = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_project_profile_input(allowCustomProjectResourceTags = allowCustomProjectResourceTags, description = description, domainIdentifier = domainIdentifier, domainUnitIdentifier = domainUnitIdentifier, environmentConfigurations = environmentConfigurations, name = name, projectResourceTags = projectResourceTags, projectResourceTagsDescription = projectResourceTagsDescription, status = status)
+  input <- .datazone$create_project_profile_input(domainIdentifier = domainIdentifier, name = name, description = description, status = status, projectResourceTags = projectResourceTags, allowCustomProjectResourceTags = allowCustomProjectResourceTags, projectResourceTagsDescription = projectResourceTagsDescription, environmentConfigurations = environmentConfigurations, domainUnitIdentifier = domainUnitIdentifier)
   output <- .datazone$create_project_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4038,47 +4120,33 @@ datazone_create_project_profile <- function(allowCustomProjectResourceTags = NUL
 #' organizational standards.
 #'
 #' @usage
-#' datazone_create_rule(action, clientToken, description, detail,
-#'   domainIdentifier, name, scope, target)
+#' datazone_create_rule(domainIdentifier, name, target, action, scope,
+#'   detail, description, clientToken)
 #'
-#' @param action &#91;required&#93; The action of the rule.
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param description The description of the rule.
-#' @param detail &#91;required&#93; The detail of the rule.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where the rule is created.
 #' @param name &#91;required&#93; The name of the rule.
-#' @param scope &#91;required&#93; The scope of the rule.
 #' @param target &#91;required&#93; The target of the rule.
+#' @param action &#91;required&#93; The action of the rule.
+#' @param scope &#91;required&#93; The scope of the rule.
+#' @param detail &#91;required&#93; The detail of the rule.
+#' @param description The description of the rule.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdBy = "string",
-#'   description = "string",
-#'   detail = list(
-#'     glossaryTermEnforcementDetail = list(
-#'       requiredGlossaryTermIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     metadataFormEnforcementDetail = list(
-#'       requiredMetadataForms = list(
-#'         list(
-#'           typeIdentifier = "string",
-#'           typeRevision = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
 #'   identifier = "string",
 #'   name = "string",
 #'   ruleType = "METADATA_FORM_ENFORCEMENT"|"GLOSSARY_TERM_ENFORCEMENT",
+#'   target = list(
+#'     domainUnitTarget = list(
+#'       domainUnitId = "string",
+#'       includeChildDomainUnits = TRUE|FALSE
+#'     )
+#'   ),
+#'   action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
 #'   scope = list(
 #'     assetType = list(
 #'       selectionMode = "ALL"|"SPECIFIC",
@@ -4094,39 +4162,42 @@ datazone_create_project_profile <- function(allowCustomProjectResourceTags = NUL
 #'       )
 #'     )
 #'   ),
-#'   target = list(
-#'     domainUnitTarget = list(
-#'       domainUnitId = "string",
-#'       includeChildDomainUnits = TRUE|FALSE
+#'   detail = list(
+#'     metadataFormEnforcementDetail = list(
+#'       requiredMetadataForms = list(
+#'         list(
+#'           typeIdentifier = "string",
+#'           typeRevision = "string"
+#'         )
+#'       )
+#'     ),
+#'     glossaryTermEnforcementDetail = list(
+#'       requiredGlossaryTermIds = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
-#'   targetType = "DOMAIN_UNIT"
+#'   targetType = "DOMAIN_UNIT",
+#'   description = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_rule(
-#'   action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
-#'   clientToken = "string",
-#'   description = "string",
-#'   detail = list(
-#'     glossaryTermEnforcementDetail = list(
-#'       requiredGlossaryTermIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     metadataFormEnforcementDetail = list(
-#'       requiredMetadataForms = list(
-#'         list(
-#'           typeIdentifier = "string",
-#'           typeRevision = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
 #'   domainIdentifier = "string",
 #'   name = "string",
+#'   target = list(
+#'     domainUnitTarget = list(
+#'       domainUnitId = "string",
+#'       includeChildDomainUnits = TRUE|FALSE
+#'     )
+#'   ),
+#'   action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
 #'   scope = list(
 #'     assetType = list(
 #'       selectionMode = "ALL"|"SPECIFIC",
@@ -4142,12 +4213,23 @@ datazone_create_project_profile <- function(allowCustomProjectResourceTags = NUL
 #'       )
 #'     )
 #'   ),
-#'   target = list(
-#'     domainUnitTarget = list(
-#'       domainUnitId = "string",
-#'       includeChildDomainUnits = TRUE|FALSE
+#'   detail = list(
+#'     metadataFormEnforcementDetail = list(
+#'       requiredMetadataForms = list(
+#'         list(
+#'           typeIdentifier = "string",
+#'           typeRevision = "string"
+#'         )
+#'       )
+#'     ),
+#'     glossaryTermEnforcementDetail = list(
+#'       requiredGlossaryTermIds = list(
+#'         "string"
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   description = "string",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -4156,7 +4238,7 @@ datazone_create_project_profile <- function(allowCustomProjectResourceTags = NUL
 #' @rdname datazone_create_rule
 #'
 #' @aliases datazone_create_rule
-datazone_create_rule <- function(action, clientToken = NULL, description = NULL, detail, domainIdentifier, name, scope, target) {
+datazone_create_rule <- function(domainIdentifier, name, target, action, scope, detail, description = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateRule",
     http_method = "POST",
@@ -4165,7 +4247,7 @@ datazone_create_rule <- function(action, clientToken = NULL, description = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_rule_input(action = action, clientToken = clientToken, description = description, detail = detail, domainIdentifier = domainIdentifier, name = name, scope = scope, target = target)
+  input <- .datazone$create_rule_input(domainIdentifier = domainIdentifier, name = name, target = target, action = action, scope = scope, detail = detail, description = description, clientToken = clientToken)
   output <- .datazone$create_rule_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4181,96 +4263,96 @@ datazone_create_rule <- function(action, clientToken = NULL, description = NULL,
 #' Creates a subsscription grant in Amazon DataZone.
 #'
 #' @usage
-#' datazone_create_subscription_grant(assetTargetNames, clientToken,
-#'   domainIdentifier, environmentIdentifier, grantedEntity,
-#'   subscriptionTargetIdentifier)
+#' datazone_create_subscription_grant(domainIdentifier,
+#'   environmentIdentifier, subscriptionTargetIdentifier, grantedEntity,
+#'   assetTargetNames, clientToken)
 #'
-#' @param assetTargetNames The names of the assets for which the subscription grant is created.
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which the subscription grant is
 #' created.
 #' @param environmentIdentifier &#91;required&#93; The ID of the environment in which the subscription grant is created.
-#' @param grantedEntity &#91;required&#93; The entity to which the subscription is to be granted.
 #' @param subscriptionTargetIdentifier The ID of the subscription target for which the subscription grant is
 #' created.
+#' @param grantedEntity &#91;required&#93; The entity to which the subscription is to be granted.
+#' @param assetTargetNames The names of the assets for which the subscription grant is created.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   assets = list(
-#'     list(
-#'       assetId = "string",
-#'       assetRevision = "string",
-#'       assetScope = list(
-#'         assetId = "string",
-#'         errorMessage = "string",
-#'         filterIds = list(
-#'           "string"
-#'         ),
-#'         status = "string"
-#'       ),
-#'       failureCause = list(
-#'         message = "string"
-#'       ),
-#'       failureTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       grantedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       permissions = list(
-#'         s3 = list(
-#'           "READ"|"WRITE"
-#'         )
-#'       ),
-#'       status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"REVOKED"|"GRANT_FAILED"|"REVOKE_FAILED",
-#'       targetName = "string"
-#'     )
-#'   ),
+#'   id = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
+#'   domainId = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   domainId = "string",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   environmentId = "string",
+#'   subscriptionTargetId = "string",
 #'   grantedEntity = list(
 #'     listing = list(
 #'       id = "string",
 #'       revision = "string"
 #'     )
 #'   ),
-#'   id = "string",
 #'   status = "PENDING"|"IN_PROGRESS"|"GRANT_FAILED"|"REVOKE_FAILED"|"GRANT_AND_REVOKE_FAILED"|"COMPLETED"|"INACCESSIBLE",
-#'   subscriptionId = "string",
-#'   subscriptionTargetId = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
+#'   assets = list(
+#'     list(
+#'       assetId = "string",
+#'       assetRevision = "string",
+#'       status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"REVOKED"|"GRANT_FAILED"|"REVOKE_FAILED",
+#'       targetName = "string",
+#'       failureCause = list(
+#'         message = "string"
+#'       ),
+#'       grantedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       assetScope = list(
+#'         assetId = "string",
+#'         filterIds = list(
+#'           "string"
+#'         ),
+#'         status = "string",
+#'         errorMessage = "string"
+#'       ),
+#'       permissions = list(
+#'         s3 = list(
+#'           "READ"|"WRITE"
+#'         )
+#'       )
+#'     )
 #'   ),
-#'   updatedBy = "string"
+#'   subscriptionId = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_subscription_grant(
-#'   assetTargetNames = list(
-#'     list(
-#'       assetId = "string",
-#'       targetName = "string"
-#'     )
-#'   ),
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
 #'   environmentIdentifier = "string",
+#'   subscriptionTargetIdentifier = "string",
 #'   grantedEntity = list(
 #'     listing = list(
 #'       identifier = "string",
 #'       revision = "string"
 #'     )
 #'   ),
-#'   subscriptionTargetIdentifier = "string"
+#'   assetTargetNames = list(
+#'     list(
+#'       assetId = "string",
+#'       targetName = "string"
+#'     )
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -4279,7 +4361,7 @@ datazone_create_rule <- function(action, clientToken = NULL, description = NULL,
 #' @rdname datazone_create_subscription_grant
 #'
 #' @aliases datazone_create_subscription_grant
-datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientToken = NULL, domainIdentifier, environmentIdentifier, grantedEntity, subscriptionTargetIdentifier = NULL) {
+datazone_create_subscription_grant <- function(domainIdentifier, environmentIdentifier, subscriptionTargetIdentifier = NULL, grantedEntity, assetTargetNames = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateSubscriptionGrant",
     http_method = "POST",
@@ -4288,7 +4370,7 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_subscription_grant_input(assetTargetNames = assetTargetNames, clientToken = clientToken, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, grantedEntity = grantedEntity, subscriptionTargetIdentifier = subscriptionTargetIdentifier)
+  input <- .datazone$create_subscription_grant_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, subscriptionTargetIdentifier = subscriptionTargetIdentifier, grantedEntity = grantedEntity, assetTargetNames = assetTargetNames, clientToken = clientToken)
   output <- .datazone$create_subscription_grant_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4304,59 +4386,77 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
 #' Creates a subscription request in Amazon DataZone.
 #'
 #' @usage
-#' datazone_create_subscription_request(assetPermissions, assetScopes,
-#'   clientToken, domainIdentifier, metadataForms, requestReason,
-#'   subscribedListings, subscribedPrincipals)
+#' datazone_create_subscription_request(domainIdentifier,
+#'   subscribedPrincipals, subscribedListings, requestReason, clientToken,
+#'   metadataForms, assetPermissions, assetScopes)
 #'
-#' @param assetPermissions The asset permissions of the subscription request.
-#' @param assetScopes The asset scopes of the subscription request.
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which the subscription request
 #' is created.
-#' @param metadataForms The metadata form included in the subscription request.
-#' @param requestReason &#91;required&#93; The reason for the subscription request.
-#' @param subscribedListings &#91;required&#93; The published asset for which the subscription grant is to be created.
 #' @param subscribedPrincipals &#91;required&#93; The Amazon DataZone principals for whom the subscription request is
 #' created.
+#' @param subscribedListings &#91;required&#93; The published asset for which the subscription grant is to be created.
+#' @param requestReason &#91;required&#93; The reason for the subscription request.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
+#' @param metadataForms The metadata form included in the subscription request.
+#' @param assetPermissions The asset permissions of the subscription request.
+#' @param assetScopes The asset scopes of the subscription request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
+#'   domainId = "string",
+#'   status = "PENDING"|"ACCEPTED"|"REJECTED",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   decisionComment = "string",
-#'   domainId = "string",
-#'   existingSubscriptionId = "string",
-#'   id = "string",
-#'   metadataForms = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
 #'   requestReason = "string",
-#'   reviewerId = "string",
-#'   status = "PENDING"|"ACCEPTED"|"REJECTED",
+#'   subscribedPrincipals = list(
+#'     list(
+#'       project = list(
+#'         id = "string",
+#'         name = "string"
+#'       ),
+#'       user = list(
+#'         id = "string",
+#'         details = list(
+#'           iam = list(
+#'             arn = "string",
+#'             principalId = "string",
+#'             sessionName = "string",
+#'             groupProfileId = "string"
+#'           ),
+#'           sso = list(
+#'             username = "string",
+#'             firstName = "string",
+#'             lastName = "string"
+#'           )
+#'         )
+#'       ),
+#'       group = list(
+#'         id = "string",
+#'         name = "string"
+#'       ),
+#'       iam = list(
+#'         principalArn = "string"
+#'       )
+#'     )
+#'   ),
 #'   subscribedListings = list(
 #'     list(
-#'       description = "string",
 #'       id = "string",
+#'       revision = "string",
+#'       name = "string",
+#'       description = "string",
 #'       item = list(
 #'         assetListing = list(
-#'           assetScope = list(
-#'             assetId = "string",
-#'             errorMessage = "string",
-#'             filterIds = list(
-#'               "string"
-#'             ),
-#'             status = "string"
-#'           ),
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           entityType = "string",
@@ -4367,6 +4467,14 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
 #'               shortDescription = "string"
 #'             )
 #'           ),
+#'           assetScope = list(
+#'             assetId = "string",
+#'             filterIds = list(
+#'               "string"
+#'             ),
+#'             status = "string",
+#'             errorMessage = "string"
+#'           ),
 #'           permissions = list(
 #'             s3 = list(
 #'               "READ"|"WRITE"
@@ -4374,14 +4482,6 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
 #'           )
 #'         ),
 #'         productListing = list(
-#'           assetListings = list(
-#'             list(
-#'               entityId = "string",
-#'               entityRevision = "string",
-#'               entityType = "string"
-#'             )
-#'           ),
-#'           description = "string",
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           glossaryTerms = list(
@@ -4390,51 +4490,70 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
 #'               shortDescription = "string"
 #'             )
 #'           ),
-#'           name = "string"
+#'           name = "string",
+#'           description = "string",
+#'           assetListings = list(
+#'             list(
+#'               entityId = "string",
+#'               entityRevision = "string",
+#'               entityType = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
-#'       name = "string",
 #'       ownerProjectId = "string",
-#'       ownerProjectName = "string",
-#'       revision = "string"
+#'       ownerProjectName = "string"
 #'     )
 #'   ),
-#'   subscribedPrincipals = list(
+#'   reviewerId = "string",
+#'   decisionComment = "string",
+#'   existingSubscriptionId = "string",
+#'   metadataForms = list(
 #'     list(
-#'       group = list(
-#'         id = "string",
-#'         name = "string"
-#'       ),
-#'       project = list(
-#'         id = "string",
-#'         name = "string"
-#'       ),
-#'       user = list(
-#'         details = list(
-#'           iam = list(
-#'             arn = "string",
-#'             principalId = "string"
-#'           ),
-#'           sso = list(
-#'             firstName = "string",
-#'             lastName = "string",
-#'             username = "string"
-#'           )
-#'         ),
-#'         id = "string"
-#'       )
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
 #'     )
-#'   ),
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   updatedBy = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_subscription_request(
+#'   domainIdentifier = "string",
+#'   subscribedPrincipals = list(
+#'     list(
+#'       project = list(
+#'         identifier = "string"
+#'       ),
+#'       user = list(
+#'         identifier = "string"
+#'       ),
+#'       group = list(
+#'         identifier = "string"
+#'       ),
+#'       iam = list(
+#'         identifier = "string"
+#'       )
+#'     )
+#'   ),
+#'   subscribedListings = list(
+#'     list(
+#'       identifier = "string"
+#'     )
+#'   ),
+#'   requestReason = "string",
+#'   clientToken = "string",
+#'   metadataForms = list(
+#'     list(
+#'       formName = "string",
+#'       typeIdentifier = "string",
+#'       typeRevision = "string",
+#'       content = "string"
+#'     )
+#'   ),
 #'   assetPermissions = list(
 #'     list(
 #'       assetId = "string",
@@ -4452,35 +4571,6 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
 #'         "string"
 #'       )
 #'     )
-#'   ),
-#'   clientToken = "string",
-#'   domainIdentifier = "string",
-#'   metadataForms = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeIdentifier = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
-#'   requestReason = "string",
-#'   subscribedListings = list(
-#'     list(
-#'       identifier = "string"
-#'     )
-#'   ),
-#'   subscribedPrincipals = list(
-#'     list(
-#'       group = list(
-#'         identifier = "string"
-#'       ),
-#'       project = list(
-#'         identifier = "string"
-#'       ),
-#'       user = list(
-#'         identifier = "string"
-#'       )
-#'     )
 #'   )
 #' )
 #' ```
@@ -4490,7 +4580,7 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
 #' @rdname datazone_create_subscription_request
 #'
 #' @aliases datazone_create_subscription_request
-datazone_create_subscription_request <- function(assetPermissions = NULL, assetScopes = NULL, clientToken = NULL, domainIdentifier, metadataForms = NULL, requestReason, subscribedListings, subscribedPrincipals) {
+datazone_create_subscription_request <- function(domainIdentifier, subscribedPrincipals, subscribedListings, requestReason, clientToken = NULL, metadataForms = NULL, assetPermissions = NULL, assetScopes = NULL) {
   op <- new_operation(
     name = "CreateSubscriptionRequest",
     http_method = "POST",
@@ -4499,7 +4589,7 @@ datazone_create_subscription_request <- function(assetPermissions = NULL, assetS
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_subscription_request_input(assetPermissions = assetPermissions, assetScopes = assetScopes, clientToken = clientToken, domainIdentifier = domainIdentifier, metadataForms = metadataForms, requestReason = requestReason, subscribedListings = subscribedListings, subscribedPrincipals = subscribedPrincipals)
+  input <- .datazone$create_subscription_request_input(domainIdentifier = domainIdentifier, subscribedPrincipals = subscribedPrincipals, subscribedListings = subscribedListings, requestReason = requestReason, clientToken = clientToken, metadataForms = metadataForms, assetPermissions = assetPermissions, assetScopes = assetScopes)
   output <- .datazone$create_subscription_request_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4515,81 +4605,86 @@ datazone_create_subscription_request <- function(assetPermissions = NULL, assetS
 #' Creates a subscription target in Amazon DataZone.
 #'
 #' @usage
-#' datazone_create_subscription_target(applicableAssetTypes,
-#'   authorizedPrincipals, clientToken, domainIdentifier,
-#'   environmentIdentifier, manageAccessRole, name, provider,
-#'   subscriptionTargetConfig, type)
+#' datazone_create_subscription_target(domainIdentifier,
+#'   environmentIdentifier, name, type, subscriptionTargetConfig,
+#'   authorizedPrincipals, manageAccessRole, applicableAssetTypes, provider,
+#'   clientToken, subscriptionGrantCreationMode)
 #'
-#' @param applicableAssetTypes &#91;required&#93; The asset types that can be included in the subscription target.
-#' @param authorizedPrincipals &#91;required&#93; The authorized principals of the subscription target.
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which subscription target is
 #' created.
 #' @param environmentIdentifier &#91;required&#93; The ID of the environment in which subscription target is created.
-#' @param manageAccessRole &#91;required&#93; The manage access role that is used to create the subscription target.
 #' @param name &#91;required&#93; The name of the subscription target.
-#' @param provider The provider of the subscription target.
-#' @param subscriptionTargetConfig &#91;required&#93; The configuration of the subscription target.
 #' @param type &#91;required&#93; The type of the subscription target.
+#' @param subscriptionTargetConfig &#91;required&#93; The configuration of the subscription target.
+#' @param authorizedPrincipals &#91;required&#93; The authorized principals of the subscription target.
+#' @param manageAccessRole &#91;required&#93; The manage access role that is used to create the subscription target.
+#' @param applicableAssetTypes &#91;required&#93; The asset types that can be included in the subscription target.
+#' @param provider The provider of the subscription target.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
+#' @param subscriptionGrantCreationMode Determines the subscription grant creation mode for this target,
+#' defining if grants are auto-created upon subscription approval or
+#' managed manually.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   applicableAssetTypes = list(
-#'     "string"
-#'   ),
+#'   id = "string",
 #'   authorizedPrincipals = list(
 #'     "string"
 #'   ),
+#'   domainId = "string",
+#'   projectId = "string",
+#'   environmentId = "string",
+#'   name = "string",
+#'   type = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   domainId = "string",
-#'   environmentId = "string",
-#'   id = "string",
-#'   manageAccessRole = "string",
-#'   name = "string",
-#'   projectId = "string",
-#'   provider = "string",
-#'   subscriptionTargetConfig = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string"
-#'     )
-#'   ),
-#'   type = "string",
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   updatedBy = "string"
+#'   manageAccessRole = "string",
+#'   applicableAssetTypes = list(
+#'     "string"
+#'   ),
+#'   subscriptionTargetConfig = list(
+#'     list(
+#'       formName = "string",
+#'       content = "string"
+#'     )
+#'   ),
+#'   provider = "string",
+#'   subscriptionGrantCreationMode = "AUTOMATIC"|"MANUAL"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_subscription_target(
-#'   applicableAssetTypes = list(
-#'     "string"
+#'   domainIdentifier = "string",
+#'   environmentIdentifier = "string",
+#'   name = "string",
+#'   type = "string",
+#'   subscriptionTargetConfig = list(
+#'     list(
+#'       formName = "string",
+#'       content = "string"
+#'     )
 #'   ),
 #'   authorizedPrincipals = list(
 #'     "string"
 #'   ),
-#'   clientToken = "string",
-#'   domainIdentifier = "string",
-#'   environmentIdentifier = "string",
 #'   manageAccessRole = "string",
-#'   name = "string",
-#'   provider = "string",
-#'   subscriptionTargetConfig = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string"
-#'     )
+#'   applicableAssetTypes = list(
+#'     "string"
 #'   ),
-#'   type = "string"
+#'   provider = "string",
+#'   clientToken = "string",
+#'   subscriptionGrantCreationMode = "AUTOMATIC"|"MANUAL"
 #' )
 #' ```
 #'
@@ -4598,7 +4693,7 @@ datazone_create_subscription_request <- function(assetPermissions = NULL, assetS
 #' @rdname datazone_create_subscription_target
 #'
 #' @aliases datazone_create_subscription_target
-datazone_create_subscription_target <- function(applicableAssetTypes, authorizedPrincipals, clientToken = NULL, domainIdentifier, environmentIdentifier, manageAccessRole, name, provider = NULL, subscriptionTargetConfig, type) {
+datazone_create_subscription_target <- function(domainIdentifier, environmentIdentifier, name, type, subscriptionTargetConfig, authorizedPrincipals, manageAccessRole, applicableAssetTypes, provider = NULL, clientToken = NULL, subscriptionGrantCreationMode = NULL) {
   op <- new_operation(
     name = "CreateSubscriptionTarget",
     http_method = "POST",
@@ -4607,7 +4702,7 @@ datazone_create_subscription_target <- function(applicableAssetTypes, authorized
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_subscription_target_input(applicableAssetTypes = applicableAssetTypes, authorizedPrincipals = authorizedPrincipals, clientToken = clientToken, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, manageAccessRole = manageAccessRole, name = name, provider = provider, subscriptionTargetConfig = subscriptionTargetConfig, type = type)
+  input <- .datazone$create_subscription_target_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, name = name, type = type, subscriptionTargetConfig = subscriptionTargetConfig, authorizedPrincipals = authorizedPrincipals, manageAccessRole = manageAccessRole, applicableAssetTypes = applicableAssetTypes, provider = provider, clientToken = clientToken, subscriptionGrantCreationMode = subscriptionGrantCreationMode)
   output <- .datazone$create_subscription_target_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4623,45 +4718,49 @@ datazone_create_subscription_target <- function(applicableAssetTypes, authorized
 #' Creates a user profile in Amazon DataZone.
 #'
 #' @usage
-#' datazone_create_user_profile(clientToken, domainIdentifier,
-#'   userIdentifier, userType)
+#' datazone_create_user_profile(domainIdentifier, userIdentifier, userType,
+#'   sessionName, clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which a user profile is
 #' created.
 #' @param userIdentifier &#91;required&#93; The identifier of the user for which the user profile is created.
 #' @param userType The user type of the user for which the user profile is created.
+#' @param sessionName The session name for IAM role sessions.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   id = "string",
+#'   type = "IAM"|"SSO",
+#'   status = "ASSIGNED"|"NOT_ASSIGNED"|"ACTIVATED"|"DEACTIVATED",
 #'   details = list(
 #'     iam = list(
 #'       arn = "string",
-#'       principalId = "string"
+#'       principalId = "string",
+#'       sessionName = "string",
+#'       groupProfileId = "string"
 #'     ),
 #'     sso = list(
+#'       username = "string",
 #'       firstName = "string",
-#'       lastName = "string",
-#'       username = "string"
+#'       lastName = "string"
 #'     )
-#'   ),
-#'   domainId = "string",
-#'   id = "string",
-#'   status = "ASSIGNED"|"NOT_ASSIGNED"|"ACTIVATED"|"DEACTIVATED",
-#'   type = "IAM"|"SSO"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_user_profile(
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
 #'   userIdentifier = "string",
-#'   userType = "IAM_USER"|"IAM_ROLE"|"SSO_USER"
+#'   userType = "IAM_USER"|"IAM_ROLE"|"SSO_USER"|"IAM_ROLE_SESSION",
+#'   sessionName = "string",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -4670,7 +4769,7 @@ datazone_create_subscription_target <- function(applicableAssetTypes, authorized
 #' @rdname datazone_create_user_profile
 #'
 #' @aliases datazone_create_user_profile
-datazone_create_user_profile <- function(clientToken = NULL, domainIdentifier, userIdentifier, userType = NULL) {
+datazone_create_user_profile <- function(domainIdentifier, userIdentifier, userType = NULL, sessionName = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateUserProfile",
     http_method = "POST",
@@ -4679,7 +4778,7 @@ datazone_create_user_profile <- function(clientToken = NULL, domainIdentifier, u
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_user_profile_input(clientToken = clientToken, domainIdentifier = domainIdentifier, userIdentifier = userIdentifier, userType = userType)
+  input <- .datazone$create_user_profile_input(domainIdentifier = domainIdentifier, userIdentifier = userIdentifier, userType = userType, sessionName = sessionName, clientToken = clientToken)
   output <- .datazone$create_user_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4806,11 +4905,11 @@ datazone_delete_asset <- function(domainIdentifier, identifier) {
 #' -   Ensure the --identifier refers to a valid filter ID.
 #'
 #' @usage
-#' datazone_delete_asset_filter(assetIdentifier, domainIdentifier,
+#' datazone_delete_asset_filter(domainIdentifier, assetIdentifier,
 #'   identifier)
 #'
-#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to delete an asset filter.
+#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
 #' @param identifier &#91;required&#93; The ID of the asset filter that you want to delete.
 #'
 #' @return
@@ -4819,8 +4918,8 @@ datazone_delete_asset <- function(domainIdentifier, identifier) {
 #' @section Request syntax:
 #' ```
 #' svc$delete_asset_filter(
-#'   assetIdentifier = "string",
 #'   domainIdentifier = "string",
+#'   assetIdentifier = "string",
 #'   identifier = "string"
 #' )
 #' ```
@@ -4830,7 +4929,7 @@ datazone_delete_asset <- function(domainIdentifier, identifier) {
 #' @rdname datazone_delete_asset_filter
 #'
 #' @aliases datazone_delete_asset_filter
-datazone_delete_asset_filter <- function(assetIdentifier, domainIdentifier, identifier) {
+datazone_delete_asset_filter <- function(domainIdentifier, assetIdentifier, identifier) {
   op <- new_operation(
     name = "DeleteAssetFilter",
     http_method = "DELETE",
@@ -4839,7 +4938,7 @@ datazone_delete_asset_filter <- function(assetIdentifier, domainIdentifier, iden
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$delete_asset_filter_input(assetIdentifier = assetIdentifier, domainIdentifier = domainIdentifier, identifier = identifier)
+  input <- .datazone$delete_asset_filter_input(domainIdentifier = domainIdentifier, assetIdentifier = assetIdentifier, identifier = identifier)
   output <- .datazone$delete_asset_filter_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -4960,6 +5059,59 @@ datazone_delete_connection <- function(domainIdentifier, identifier) {
 }
 .datazone$operations$delete_connection <- datazone_delete_connection
 
+#' Deletes data export configuration for a domain
+#'
+#' @description
+#' Deletes data export configuration for a domain.
+#' 
+#' This operation does not delete the S3 table created by the
+#' PutDataExportConfiguration operation.
+#' 
+#' To temporarily disable export without deleting the configuration, use
+#' the PutDataExportConfiguration operation with the `--no-enable-export`
+#' flag instead. This allows you to re-enable export for the same domain
+#' using the `--enable-export` flag without deleting S3 table.
+#'
+#' @usage
+#' datazone_delete_data_export_configuration(domainIdentifier)
+#'
+#' @param domainIdentifier &#91;required&#93; The domain ID for which you want to delete the data export
+#' configuration.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_data_export_configuration(
+#'   domainIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_delete_data_export_configuration
+#'
+#' @aliases datazone_delete_data_export_configuration
+datazone_delete_data_export_configuration <- function(domainIdentifier) {
+  op <- new_operation(
+    name = "DeleteDataExportConfiguration",
+    http_method = "DELETE",
+    http_path = "/v2/domains/{domainIdentifier}/data-export-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$delete_data_export_configuration_input(domainIdentifier = domainIdentifier)
+  output <- .datazone$delete_data_export_configuration_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$delete_data_export_configuration <- datazone_delete_data_export_configuration
+
 #' Deletes a data product in Amazon DataZone
 #'
 #' @description
@@ -5021,14 +5173,14 @@ datazone_delete_data_product <- function(domainIdentifier, identifier) {
 #' Deletes a data source in Amazon DataZone.
 #'
 #' @usage
-#' datazone_delete_data_source(clientToken, domainIdentifier, identifier,
+#' datazone_delete_data_source(domainIdentifier, identifier, clientToken,
 #'   retainPermissionsOnRevokeFailure)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which the data source is
 #' deleted.
 #' @param identifier &#91;required&#93; The identifier of the data source that is deleted.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #' @param retainPermissionsOnRevokeFailure Specifies that the granted permissions are retained in case of a
 #' self-subscribe functionality failure for a data source.
 #'
@@ -5036,37 +5188,51 @@ datazone_delete_data_product <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   assetFormsOutput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
+#'   id = "string",
+#'   status = "CREATING"|"FAILED_CREATION"|"READY"|"UPDATING"|"FAILED_UPDATE"|"RUNNING"|"DELETING"|"FAILED_DELETION",
+#'   type = "string",
+#'   name = "string",
+#'   description = "string",
+#'   domainId = "string",
+#'   projectId = "string",
+#'   environmentId = "string",
+#'   connectionId = "string",
 #'   configuration = list(
 #'     glueRunConfiguration = list(
 #'       accountId = "string",
-#'       autoImportDataQualityResult = TRUE|FALSE,
-#'       catalogName = "string",
-#'       dataAccessRole = "string",
 #'       region = "string",
+#'       dataAccessRole = "string",
 #'       relationalFilterConfigurations = list(
 #'         list(
 #'           databaseName = "string",
+#'           schemaName = "string",
 #'           filterExpressions = list(
 #'             list(
-#'               expression = "string",
-#'               type = "INCLUDE"|"EXCLUDE"
+#'               type = "INCLUDE"|"EXCLUDE",
+#'               expression = "string"
 #'             )
-#'           ),
-#'           schemaName = "string"
+#'           )
 #'         )
-#'       )
+#'       ),
+#'       autoImportDataQualityResult = TRUE|FALSE,
+#'       catalogName = "string"
 #'     ),
 #'     redshiftRunConfiguration = list(
 #'       accountId = "string",
+#'       region = "string",
 #'       dataAccessRole = "string",
+#'       relationalFilterConfigurations = list(
+#'         list(
+#'           databaseName = "string",
+#'           schemaName = "string",
+#'           filterExpressions = list(
+#'             list(
+#'               type = "INCLUDE"|"EXCLUDE",
+#'               expression = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       redshiftCredentialConfiguration = list(
 #'         secretManagerArn = "string"
 #'       ),
@@ -5076,19 +5242,6 @@ datazone_delete_data_product <- function(domainIdentifier, identifier) {
 #'         ),
 #'         redshiftServerlessSource = list(
 #'           workgroupName = "string"
-#'         )
-#'       ),
-#'       region = "string",
-#'       relationalFilterConfigurations = list(
-#'         list(
-#'           databaseName = "string",
-#'           filterExpressions = list(
-#'             list(
-#'               expression = "string",
-#'               type = "INCLUDE"|"EXCLUDE"
-#'             )
-#'           ),
-#'           schemaName = "string"
 #'         )
 #'       )
 #'     ),
@@ -5102,43 +5255,46 @@ datazone_delete_data_product <- function(domainIdentifier, identifier) {
 #'       )
 #'     )
 #'   ),
-#'   connectionId = "string",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   description = "string",
-#'   domainId = "string",
 #'   enableSetting = "ENABLED"|"DISABLED",
-#'   environmentId = "string",
-#'   errorMessage = list(
-#'     errorDetail = "string",
-#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
+#'   publishOnImport = TRUE|FALSE,
+#'   assetFormsOutput = list(
+#'     list(
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
+#'     )
 #'   ),
-#'   id = "string",
+#'   schedule = list(
+#'     timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC",
+#'     schedule = "string"
+#'   ),
+#'   lastRunStatus = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
 #'   lastRunAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   lastRunErrorMessage = list(
-#'     errorDetail = "string",
-#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
+#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION",
+#'     errorDetail = "string"
 #'   ),
-#'   lastRunStatus = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
-#'   name = "string",
-#'   projectId = "string",
-#'   publishOnImport = TRUE|FALSE,
-#'   retainPermissionsOnRevokeFailure = TRUE|FALSE,
-#'   schedule = list(
-#'     schedule = "string",
-#'     timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC"
+#'   errorMessage = list(
+#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION",
+#'     errorDetail = "string"
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
 #'   selfGrantStatus = list(
 #'     glueSelfGrantStatus = list(
 #'       selfGrantStatusDetails = list(
 #'         list(
 #'           databaseName = "string",
-#'           failureCause = "string",
 #'           schemaName = "string",
-#'           status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"GRANT_FAILED"|"REVOKE_FAILED"
+#'           status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"GRANT_FAILED"|"REVOKE_FAILED",
+#'           failureCause = "string"
 #'         )
 #'       )
 #'     ),
@@ -5146,27 +5302,23 @@ datazone_delete_data_product <- function(domainIdentifier, identifier) {
 #'       selfGrantStatusDetails = list(
 #'         list(
 #'           databaseName = "string",
-#'           failureCause = "string",
 #'           schemaName = "string",
-#'           status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"GRANT_FAILED"|"REVOKE_FAILED"
+#'           status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"GRANT_FAILED"|"REVOKE_FAILED",
+#'           failureCause = "string"
 #'         )
 #'       )
 #'     )
 #'   ),
-#'   status = "CREATING"|"FAILED_CREATION"|"READY"|"UPDATING"|"FAILED_UPDATE"|"RUNNING"|"DELETING"|"FAILED_DELETION",
-#'   type = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   )
+#'   retainPermissionsOnRevokeFailure = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_data_source(
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
 #'   identifier = "string",
+#'   clientToken = "string",
 #'   retainPermissionsOnRevokeFailure = TRUE|FALSE
 #' )
 #' ```
@@ -5176,7 +5328,7 @@ datazone_delete_data_product <- function(domainIdentifier, identifier) {
 #' @rdname datazone_delete_data_source
 #'
 #' @aliases datazone_delete_data_source
-datazone_delete_data_source <- function(clientToken = NULL, domainIdentifier, identifier, retainPermissionsOnRevokeFailure = NULL) {
+datazone_delete_data_source <- function(domainIdentifier, identifier, clientToken = NULL, retainPermissionsOnRevokeFailure = NULL) {
   op <- new_operation(
     name = "DeleteDataSource",
     http_method = "DELETE",
@@ -5185,7 +5337,7 @@ datazone_delete_data_source <- function(clientToken = NULL, domainIdentifier, id
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$delete_data_source_input(clientToken = clientToken, domainIdentifier = domainIdentifier, identifier = identifier, retainPermissionsOnRevokeFailure = retainPermissionsOnRevokeFailure)
+  input <- .datazone$delete_data_source_input(domainIdentifier = domainIdentifier, identifier = identifier, clientToken = clientToken, retainPermissionsOnRevokeFailure = retainPermissionsOnRevokeFailure)
   output <- .datazone$delete_data_source_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5201,11 +5353,11 @@ datazone_delete_data_source <- function(clientToken = NULL, domainIdentifier, id
 #' Deletes a Amazon DataZone domain.
 #'
 #' @usage
-#' datazone_delete_domain(clientToken, identifier, skipDeletionCheck)
+#' datazone_delete_domain(identifier, clientToken, skipDeletionCheck)
 #'
+#' @param identifier &#91;required&#93; The identifier of the Amazon Web Services domain that is to be deleted.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
-#' @param identifier &#91;required&#93; The identifier of the Amazon Web Services domain that is to be deleted.
 #' @param skipDeletionCheck Specifies the optional flag to delete all child entities within the
 #' domain.
 #'
@@ -5220,8 +5372,8 @@ datazone_delete_data_source <- function(clientToken = NULL, domainIdentifier, id
 #' @section Request syntax:
 #' ```
 #' svc$delete_domain(
-#'   clientToken = "string",
 #'   identifier = "string",
+#'   clientToken = "string",
 #'   skipDeletionCheck = TRUE|FALSE
 #' )
 #' ```
@@ -5231,7 +5383,7 @@ datazone_delete_data_source <- function(clientToken = NULL, domainIdentifier, id
 #' @rdname datazone_delete_domain
 #'
 #' @aliases datazone_delete_domain
-datazone_delete_domain <- function(clientToken = NULL, identifier, skipDeletionCheck = NULL) {
+datazone_delete_domain <- function(identifier, clientToken = NULL, skipDeletionCheck = NULL) {
   op <- new_operation(
     name = "DeleteDomain",
     http_method = "DELETE",
@@ -5240,7 +5392,7 @@ datazone_delete_domain <- function(clientToken = NULL, identifier, skipDeletionC
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$delete_domain_input(clientToken = clientToken, identifier = identifier, skipDeletionCheck = skipDeletionCheck)
+  input <- .datazone$delete_domain_input(identifier = identifier, clientToken = clientToken, skipDeletionCheck = skipDeletionCheck)
   output <- .datazone$delete_domain_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5814,14 +5966,14 @@ datazone_delete_project <- function(domainIdentifier, identifier, skipDeletionCh
 #' Deletes project membership in Amazon DataZone.
 #'
 #' @usage
-#' datazone_delete_project_membership(domainIdentifier, member,
-#'   projectIdentifier)
+#' datazone_delete_project_membership(domainIdentifier, projectIdentifier,
+#'   member)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain where project membership is
 #' deleted.
-#' @param member &#91;required&#93; The project member whose project membership is deleted.
 #' @param projectIdentifier &#91;required&#93; The ID of the Amazon DataZone project the membership to which is
 #' deleted.
+#' @param member &#91;required&#93; The project member whose project membership is deleted.
 #'
 #' @return
 #' An empty list.
@@ -5830,11 +5982,11 @@ datazone_delete_project <- function(domainIdentifier, identifier, skipDeletionCh
 #' ```
 #' svc$delete_project_membership(
 #'   domainIdentifier = "string",
+#'   projectIdentifier = "string",
 #'   member = list(
-#'     groupIdentifier = "string",
-#'     userIdentifier = "string"
-#'   ),
-#'   projectIdentifier = "string"
+#'     userIdentifier = "string",
+#'     groupIdentifier = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -5843,7 +5995,7 @@ datazone_delete_project <- function(domainIdentifier, identifier, skipDeletionCh
 #' @rdname datazone_delete_project_membership
 #'
 #' @aliases datazone_delete_project_membership
-datazone_delete_project_membership <- function(domainIdentifier, member, projectIdentifier) {
+datazone_delete_project_membership <- function(domainIdentifier, projectIdentifier, member) {
   op <- new_operation(
     name = "DeleteProjectMembership",
     http_method = "POST",
@@ -5852,7 +6004,7 @@ datazone_delete_project_membership <- function(domainIdentifier, member, project
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$delete_project_membership_input(domainIdentifier = domainIdentifier, member = member, projectIdentifier = projectIdentifier)
+  input <- .datazone$delete_project_membership_input(domainIdentifier = domainIdentifier, projectIdentifier = projectIdentifier, member = member)
   output <- .datazone$delete_project_membership_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5978,56 +6130,56 @@ datazone_delete_rule <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   assets = list(
-#'     list(
-#'       assetId = "string",
-#'       assetRevision = "string",
-#'       assetScope = list(
-#'         assetId = "string",
-#'         errorMessage = "string",
-#'         filterIds = list(
-#'           "string"
-#'         ),
-#'         status = "string"
-#'       ),
-#'       failureCause = list(
-#'         message = "string"
-#'       ),
-#'       failureTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       grantedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       permissions = list(
-#'         s3 = list(
-#'           "READ"|"WRITE"
-#'         )
-#'       ),
-#'       status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"REVOKED"|"GRANT_FAILED"|"REVOKE_FAILED",
-#'       targetName = "string"
-#'     )
-#'   ),
+#'   id = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
+#'   domainId = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   domainId = "string",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   environmentId = "string",
+#'   subscriptionTargetId = "string",
 #'   grantedEntity = list(
 #'     listing = list(
 #'       id = "string",
 #'       revision = "string"
 #'     )
 #'   ),
-#'   id = "string",
 #'   status = "PENDING"|"IN_PROGRESS"|"GRANT_FAILED"|"REVOKE_FAILED"|"GRANT_AND_REVOKE_FAILED"|"COMPLETED"|"INACCESSIBLE",
-#'   subscriptionId = "string",
-#'   subscriptionTargetId = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
+#'   assets = list(
+#'     list(
+#'       assetId = "string",
+#'       assetRevision = "string",
+#'       status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"REVOKED"|"GRANT_FAILED"|"REVOKE_FAILED",
+#'       targetName = "string",
+#'       failureCause = list(
+#'         message = "string"
+#'       ),
+#'       grantedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       assetScope = list(
+#'         assetId = "string",
+#'         filterIds = list(
+#'           "string"
+#'         ),
+#'         status = "string",
+#'         errorMessage = "string"
+#'       ),
+#'       permissions = list(
+#'         s3 = list(
+#'           "READ"|"WRITE"
+#'         )
+#'       )
+#'     )
 #'   ),
-#'   updatedBy = "string"
+#'   subscriptionId = "string"
 #' )
 #' ```
 #'
@@ -6167,16 +6319,16 @@ datazone_delete_subscription_target <- function(domainIdentifier, environmentIde
 #' Deletes the specified time series form for the specified asset.
 #'
 #' @usage
-#' datazone_delete_time_series_data_points(clientToken, domainIdentifier,
-#'   entityIdentifier, entityType, formName)
+#' datazone_delete_time_series_data_points(domainIdentifier,
+#'   entityIdentifier, entityType, formName, clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
-#' request. This field is automatically populated if not provided.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain that houses the asset for which you
 #' want to delete a time series form.
 #' @param entityIdentifier &#91;required&#93; The ID of the asset for which you want to delete a time series form.
 #' @param entityType &#91;required&#93; The type of the asset for which you want to delete a time series form.
 #' @param formName &#91;required&#93; The name of the time series form that you want to delete.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request. This field is automatically populated if not provided.
 #'
 #' @return
 #' An empty list.
@@ -6184,11 +6336,11 @@ datazone_delete_subscription_target <- function(domainIdentifier, environmentIde
 #' @section Request syntax:
 #' ```
 #' svc$delete_time_series_data_points(
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
 #'   entityIdentifier = "string",
 #'   entityType = "ASSET"|"LISTING",
-#'   formName = "string"
+#'   formName = "string",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -6197,7 +6349,7 @@ datazone_delete_subscription_target <- function(domainIdentifier, environmentIde
 #' @rdname datazone_delete_time_series_data_points
 #'
 #' @aliases datazone_delete_time_series_data_points
-datazone_delete_time_series_data_points <- function(clientToken = NULL, domainIdentifier, entityIdentifier, entityType, formName) {
+datazone_delete_time_series_data_points <- function(domainIdentifier, entityIdentifier, entityType, formName, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteTimeSeriesDataPoints",
     http_method = "DELETE",
@@ -6206,7 +6358,7 @@ datazone_delete_time_series_data_points <- function(clientToken = NULL, domainId
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$delete_time_series_data_points_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName)
+  input <- .datazone$delete_time_series_data_points_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName, clientToken = clientToken)
   output <- .datazone$delete_time_series_data_points_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6338,35 +6490,35 @@ datazone_disassociate_governed_terms <- function(domainIdentifier, entityIdentif
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   name = "string",
+#'   id = "string",
+#'   description = "string",
+#'   resolutionStrategy = "MANUAL",
 #'   accountSource = list(
 #'     accounts = list(
 #'       list(
 #'         awsAccountId = "string",
-#'         awsAccountName = "string",
 #'         supportedRegions = list(
 #'           "string"
-#'         )
+#'         ),
+#'         awsAccountName = "string"
 #'       )
 #'     ),
 #'     customAccountPoolHandler = list(
-#'       lambdaExecutionRoleArn = "string",
-#'       lambdaFunctionArn = "string"
+#'       lambdaFunctionArn = "string",
+#'       lambdaExecutionRoleArn = "string"
 #'     )
 #'   ),
+#'   createdBy = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   domainUnitId = "string",
-#'   id = "string",
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   name = "string",
-#'   resolutionStrategy = "MANUAL",
-#'   updatedBy = "string"
+#'   updatedBy = "string",
+#'   domainUnitId = "string"
 #' )
 #' ```
 #'
@@ -6441,61 +6593,61 @@ datazone_get_account_pool <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   name = "string",
+#'   typeIdentifier = "string",
+#'   typeRevision = "string",
+#'   externalIdentifier = "string",
+#'   revision = "string",
+#'   description = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   externalIdentifier = "string",
 #'   firstRevisionCreatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   firstRevisionCreatedBy = "string",
-#'   formsOutput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
 #'   governedGlossaryTerms = list(
 #'     "string"
 #'   ),
-#'   id = "string",
-#'   latestTimeSeriesDataPointFormsOutput = list(
-#'     list(
-#'       contentSummary = "string",
-#'       formName = "string",
-#'       id = "string",
-#'       timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       typeIdentifier = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
+#'   owningProjectId = "string",
+#'   domainId = "string",
 #'   listing = list(
 #'     listingId = "string",
 #'     listingStatus = "CREATING"|"ACTIVE"|"INACTIVE"
 #'   ),
-#'   name = "string",
-#'   owningProjectId = "string",
-#'   readOnlyFormsOutput = list(
+#'   formsOutput = list(
 #'     list(
-#'       content = "string",
 #'       formName = "string",
 #'       typeName = "string",
-#'       typeRevision = "string"
+#'       typeRevision = "string",
+#'       content = "string"
 #'     )
 #'   ),
-#'   revision = "string",
-#'   typeIdentifier = "string",
-#'   typeRevision = "string"
+#'   readOnlyFormsOutput = list(
+#'     list(
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
+#'     )
+#'   ),
+#'   latestTimeSeriesDataPointFormsOutput = list(
+#'     list(
+#'       formName = "string",
+#'       typeIdentifier = "string",
+#'       typeRevision = "string",
+#'       timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       contentSummary = "string",
+#'       id = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -6547,17 +6699,22 @@ datazone_get_asset <- function(domainIdentifier, identifier, revision = NULL) {
 #' -   The asset must still exist (since the filter is linked to it).
 #'
 #' @usage
-#' datazone_get_asset_filter(assetIdentifier, domainIdentifier, identifier)
+#' datazone_get_asset_filter(domainIdentifier, assetIdentifier, identifier)
 #'
-#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to get an asset filter.
+#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
 #' @param identifier &#91;required&#93; The ID of the asset filter.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   domainId = "string",
 #'   assetId = "string",
+#'   name = "string",
+#'   description = "string",
+#'   status = "VALID"|"INVALID",
 #'   configuration = list(
 #'     columnConfiguration = list(
 #'       includedColumnNames = list(
@@ -6566,43 +6723,8 @@ datazone_get_asset <- function(domainIdentifier, identifier, revision = NULL) {
 #'     ),
 #'     rowConfiguration = list(
 #'       rowFilter = list(
-#'         and = list(
-#'           list()
-#'         ),
 #'         expression = list(
 #'           equalTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           greaterThan = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           greaterThanOrEqualTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           in = list(
-#'             columnName = "string",
-#'             values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           isNotNull = list(
-#'             columnName = "string"
-#'           ),
-#'           isNull = list(
-#'             columnName = "string"
-#'           ),
-#'           lessThan = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           lessThanOrEqualTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           like = list(
 #'             columnName = "string",
 #'             value = "string"
 #'           ),
@@ -6610,16 +6732,51 @@ datazone_get_asset <- function(domainIdentifier, identifier, revision = NULL) {
 #'             columnName = "string",
 #'             value = "string"
 #'           ),
+#'           greaterThan = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           lessThan = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           greaterThanOrEqualTo = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           lessThanOrEqualTo = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           isNull = list(
+#'             columnName = "string"
+#'           ),
+#'           isNotNull = list(
+#'             columnName = "string"
+#'           ),
+#'           in = list(
+#'             columnName = "string",
+#'             values = list(
+#'               "string"
+#'             )
+#'           ),
 #'           notIn = list(
 #'             columnName = "string",
 #'             values = list(
 #'               "string"
 #'             )
 #'           ),
+#'           like = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
 #'           notLike = list(
 #'             columnName = "string",
 #'             value = "string"
 #'           )
+#'         ),
+#'         and = list(
+#'           list()
 #'         ),
 #'         or = list(
 #'           list()
@@ -6631,24 +6788,19 @@ datazone_get_asset <- function(domainIdentifier, identifier, revision = NULL) {
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   description = "string",
-#'   domainId = "string",
+#'   errorMessage = "string",
 #'   effectiveColumnNames = list(
 #'     "string"
 #'   ),
-#'   effectiveRowFilter = "string",
-#'   errorMessage = "string",
-#'   id = "string",
-#'   name = "string",
-#'   status = "VALID"|"INVALID"
+#'   effectiveRowFilter = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_asset_filter(
-#'   assetIdentifier = "string",
 #'   domainIdentifier = "string",
+#'   assetIdentifier = "string",
 #'   identifier = "string"
 #' )
 #' ```
@@ -6658,7 +6810,7 @@ datazone_get_asset <- function(domainIdentifier, identifier, revision = NULL) {
 #' @rdname datazone_get_asset_filter
 #'
 #' @aliases datazone_get_asset_filter
-datazone_get_asset_filter <- function(assetIdentifier, domainIdentifier, identifier) {
+datazone_get_asset_filter <- function(domainIdentifier, assetIdentifier, identifier) {
   op <- new_operation(
     name = "GetAssetFilter",
     http_method = "GET",
@@ -6667,7 +6819,7 @@ datazone_get_asset_filter <- function(assetIdentifier, domainIdentifier, identif
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$get_asset_filter_input(assetIdentifier = assetIdentifier, domainIdentifier = domainIdentifier, identifier = identifier)
+  input <- .datazone$get_asset_filter_input(domainIdentifier = domainIdentifier, assetIdentifier = assetIdentifier, identifier = identifier)
   output <- .datazone$get_asset_filter_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -6711,24 +6863,24 @@ datazone_get_asset_filter <- function(assetIdentifier, domainIdentifier, identif
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   name = "string",
+#'   revision = "string",
+#'   description = "string",
+#'   formsOutput = list(
+#'     list(
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       required = TRUE|FALSE
+#'     )
+#'   ),
+#'   owningProjectId = "string",
+#'   originDomainId = "string",
+#'   originProjectId = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   formsOutput = list(
-#'     list(
-#'       required = TRUE|FALSE,
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
-#'   name = "string",
-#'   originDomainId = "string",
-#'   originProjectId = "string",
-#'   owningProjectId = "string",
-#'   revision = "string",
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -6789,11 +6941,19 @@ datazone_get_asset_type <- function(domainIdentifier, identifier, revision = NUL
 #' list(
 #'   connectionCredentials = list(
 #'     accessKeyId = "string",
+#'     secretAccessKey = "string",
+#'     sessionToken = "string",
 #'     expiration = as.POSIXct(
 #'       "2015-01-01"
-#'     ),
-#'     secretAccessKey = "string",
-#'     sessionToken = "string"
+#'     )
+#'   ),
+#'   configurations = list(
+#'     list(
+#'       classification = "string",
+#'       properties = list(
+#'         "string"
+#'       )
+#'     )
 #'   ),
 #'   connectionId = "string",
 #'   description = "string",
@@ -6810,79 +6970,82 @@ datazone_get_asset_type <- function(domainIdentifier, identifier, revision = NUL
 #'         awsRegion = "string",
 #'         iamConnectionId = "string"
 #'       ),
-#'       enableTrustedIdentityPropagation = TRUE|FALSE,
+#'       glueConnectionName = "string",
+#'       glueConnectionNames = list(
+#'         "string"
+#'       ),
 #'       glueConnection = list(
-#'         athenaProperties = list(
-#'           "string"
-#'         ),
-#'         authenticationConfiguration = list(
-#'           authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
-#'           oAuth2Properties = list(
-#'             authorizationCodeProperties = list(
-#'               authorizationCode = "string",
-#'               redirectUri = "string"
-#'             ),
-#'             oAuth2ClientApplication = list(
-#'               aWSManagedClientApplicationReference = "string",
-#'               userManagedClientApplicationClientId = "string"
-#'             ),
-#'             oAuth2Credentials = list(
-#'               accessToken = "string",
-#'               jwtToken = "string",
-#'               refreshToken = "string",
-#'               userManagedClientApplicationClientSecret = "string"
-#'             ),
-#'             oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
-#'             tokenUrl = "string",
-#'             tokenUrlParametersMap = list(
-#'               "string"
-#'             )
-#'           ),
-#'           secretArn = "string"
-#'         ),
-#'         compatibleComputeEnvironments = list(
-#'           "SPARK"|"ATHENA"|"PYTHON"
-#'         ),
-#'         connectionProperties = list(
-#'           "string"
-#'         ),
-#'         connectionSchemaVersion = 123,
-#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW",
-#'         creationTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
+#'         name = "string",
 #'         description = "string",
-#'         lastConnectionValidationTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastUpdatedBy = "string",
-#'         lastUpdatedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
+#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW",
 #'         matchCriteria = list(
 #'           "string"
 #'         ),
-#'         name = "string",
-#'         physicalConnectionRequirements = list(
-#'           availabilityZone = "string",
-#'           securityGroupIdList = list(
-#'             "string"
-#'           ),
-#'           subnetId = "string",
-#'           subnetIdList = list(
-#'             "string"
-#'           )
-#'         ),
-#'         pythonProperties = list(
+#'         connectionProperties = list(
 #'           "string"
 #'         ),
 #'         sparkProperties = list(
 #'           "string"
 #'         ),
+#'         athenaProperties = list(
+#'           "string"
+#'         ),
+#'         pythonProperties = list(
+#'           "string"
+#'         ),
+#'         physicalConnectionRequirements = list(
+#'           subnetId = "string",
+#'           subnetIdList = list(
+#'             "string"
+#'           ),
+#'           securityGroupIdList = list(
+#'             "string"
+#'           ),
+#'           availabilityZone = "string"
+#'         ),
+#'         creationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedBy = "string",
 #'         status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
-#'         statusReason = "string"
+#'         statusReason = "string",
+#'         lastConnectionValidationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         authenticationConfiguration = list(
+#'           authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'           secretArn = "string",
+#'           oAuth2Properties = list(
+#'             oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'             oAuth2ClientApplication = list(
+#'               userManagedClientApplicationClientId = "string",
+#'               aWSManagedClientApplicationReference = "string"
+#'             ),
+#'             tokenUrl = "string",
+#'             tokenUrlParametersMap = list(
+#'               "string"
+#'             ),
+#'             authorizationCodeProperties = list(
+#'               authorizationCode = "string",
+#'               redirectUri = "string"
+#'             ),
+#'             oAuth2Credentials = list(
+#'               userManagedClientApplicationClientSecret = "string",
+#'               accessToken = "string",
+#'               refreshToken = "string",
+#'               jwtToken = "string"
+#'             )
+#'           )
+#'         ),
+#'         connectionSchemaVersion = 123,
+#'         compatibleComputeEnvironments = list(
+#'           "SPARK"|"ATHENA"|"PYTHON"
+#'         )
 #'       ),
-#'       glueConnectionName = "string",
+#'       enableTrustedIdentityPropagation = TRUE|FALSE,
 #'       host = "string",
 #'       port = 123,
 #'       protocol = "ATHENA"|"GLUE_INTERACTIVE_SESSION"|"HTTPS"|"JDBC"|"LIVY"|"ODBC"|"PRISM",
@@ -6891,31 +7054,27 @@ datazone_get_asset_type <- function(domainIdentifier, identifier, revision = NUL
 #'   ),
 #'   projectId = "string",
 #'   props = list(
-#'     amazonQProperties = list(
-#'       authMode = "string",
-#'       isEnabled = TRUE|FALSE,
-#'       profileArn = "string"
-#'     ),
 #'     athenaProperties = list(
 #'       workgroupName = "string"
 #'     ),
 #'     glueProperties = list(
-#'       errorMessage = "string",
-#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED"
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       errorMessage = "string"
 #'     ),
 #'     hyperPodProperties = list(
-#'       clusterArn = "string",
 #'       clusterName = "string",
+#'       clusterArn = "string",
 #'       orchestrator = "EKS"|"SLURM"
 #'     ),
 #'     iamProperties = list(
 #'       environmentId = "string",
 #'       glueLineageSyncEnabled = TRUE|FALSE
 #'     ),
-#'     mlflowProperties = list(
-#'       trackingServerArn = "string"
-#'     ),
 #'     redshiftProperties = list(
+#'       storage = list(
+#'         clusterName = "string",
+#'         workgroupName = "string"
+#'       ),
 #'       credentials = list(
 #'         secretArn = "string",
 #'         usernamePassword = list(
@@ -6923,32 +7082,21 @@ datazone_get_asset_type <- function(domainIdentifier, identifier, revision = NUL
 #'           username = "string"
 #'         )
 #'       ),
-#'       databaseName = "string",
 #'       isProvisionedSecret = TRUE|FALSE,
 #'       jdbcIamUrl = "string",
 #'       jdbcUrl = "string",
+#'       redshiftTempDir = "string",
 #'       lineageSync = list(
-#'         enabled = TRUE|FALSE,
 #'         lineageJobId = "string",
+#'         enabled = TRUE|FALSE,
 #'         schedule = list(
 #'           schedule = "string"
 #'         )
 #'       ),
-#'       redshiftTempDir = "string",
 #'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
-#'       storage = list(
-#'         clusterName = "string",
-#'         workgroupName = "string"
-#'       )
-#'     ),
-#'     s3Properties = list(
-#'       errorMessage = "string",
-#'       s3AccessGrantLocationId = "string",
-#'       s3Uri = "string",
-#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED"
+#'       databaseName = "string"
 #'     ),
 #'     sparkEmrProperties = list(
-#'       certificateData = "string",
 #'       computeArn = "string",
 #'       credentials = list(
 #'         password = "string",
@@ -6962,30 +7110,56 @@ datazone_get_asset_type <- function(domainIdentifier, identifier, revision = NUL
 #'       javaVirtualEnv = "string",
 #'       livyEndpoint = "string",
 #'       logUri = "string",
+#'       pythonVirtualEnv = "string",
+#'       runtimeRole = "string",
+#'       trustedCertificatesS3Uri = "string",
+#'       certificateData = "string",
 #'       managedEndpointArn = "string",
 #'       managedEndpointCredentials = list(
 #'         id = "string",
 #'         token = "string"
-#'       ),
-#'       pythonVirtualEnv = "string",
-#'       runtimeRole = "string",
-#'       trustedCertificatesS3Uri = "string"
+#'       )
 #'     ),
 #'     sparkGlueProperties = list(
 #'       additionalArgs = list(
 #'         connection = "string"
 #'       ),
 #'       glueConnectionName = "string",
+#'       glueConnectionNames = list(
+#'         "string"
+#'       ),
 #'       glueVersion = "string",
 #'       idleTimeout = 123,
 #'       javaVirtualEnv = "string",
 #'       numberOfWorkers = 123,
 #'       pythonVirtualEnv = "string",
 #'       workerType = "string"
+#'     ),
+#'     s3Properties = list(
+#'       s3Uri = "string",
+#'       s3AccessGrantLocationId = "string",
+#'       registerS3AccessGrantLocation = TRUE|FALSE,
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       errorMessage = "string"
+#'     ),
+#'     amazonQProperties = list(
+#'       isEnabled = TRUE|FALSE,
+#'       profileArn = "string",
+#'       authMode = "string"
+#'     ),
+#'     mlflowProperties = list(
+#'       trackingServerArn = "string"
+#'     ),
+#'     workflowsMwaaProperties = list(
+#'       mwaaEnvironmentName = "string"
+#'     ),
+#'     workflowsServerlessProperties = list(),
+#'     lakehouseProperties = list(
+#'       glueLineageSyncEnabled = TRUE|FALSE
 #'     )
 #'   ),
-#'   scope = "DOMAIN"|"PROJECT",
-#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"
+#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW",
+#'   scope = "DOMAIN"|"PROJECT"
 #' )
 #' ```
 #'
@@ -7037,16 +7211,16 @@ datazone_get_connection <- function(domainIdentifier, identifier, withSecret = N
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
+#'   isExportEnabled = TRUE|FALSE,
+#'   status = "COMPLETED"|"FAILED",
 #'   encryptionConfiguration = list(
 #'     kmsKeyArn = "string",
 #'     sseAlgorithm = "string"
 #'   ),
-#'   isExportEnabled = TRUE|FALSE,
 #'   s3TableBucketArn = "string",
-#'   status = "COMPLETED"|"FAILED",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -7108,42 +7282,42 @@ datazone_get_data_export_configuration <- function(domainIdentifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   id = "string",
+#'   revision = "string",
+#'   owningProjectId = "string",
+#'   name = "string",
+#'   status = "CREATED"|"CREATING"|"CREATE_FAILED",
+#'   description = "string",
+#'   glossaryTerms = list(
+#'     "string"
+#'   ),
+#'   items = list(
+#'     list(
+#'       itemType = "ASSET",
+#'       identifier = "string",
+#'       revision = "string",
+#'       glossaryTerms = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   formsOutput = list(
+#'     list(
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
+#'     )
+#'   ),
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
 #'   firstRevisionCreatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   firstRevisionCreatedBy = "string",
-#'   formsOutput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
-#'   glossaryTerms = list(
-#'     "string"
-#'   ),
-#'   id = "string",
-#'   items = list(
-#'     list(
-#'       glossaryTerms = list(
-#'         "string"
-#'       ),
-#'       identifier = "string",
-#'       itemType = "ASSET",
-#'       revision = "string"
-#'     )
-#'   ),
-#'   name = "string",
-#'   owningProjectId = "string",
-#'   revision = "string",
-#'   status = "CREATED"|"CREATING"|"CREATE_FAILED"
+#'   firstRevisionCreatedBy = "string"
 #' )
 #' ```
 #'
@@ -7195,37 +7369,51 @@ datazone_get_data_product <- function(domainIdentifier, identifier, revision = N
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   assetFormsOutput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
+#'   id = "string",
+#'   status = "CREATING"|"FAILED_CREATION"|"READY"|"UPDATING"|"FAILED_UPDATE"|"RUNNING"|"DELETING"|"FAILED_DELETION",
+#'   type = "string",
+#'   name = "string",
+#'   description = "string",
+#'   domainId = "string",
+#'   projectId = "string",
+#'   environmentId = "string",
+#'   connectionId = "string",
 #'   configuration = list(
 #'     glueRunConfiguration = list(
 #'       accountId = "string",
-#'       autoImportDataQualityResult = TRUE|FALSE,
-#'       catalogName = "string",
-#'       dataAccessRole = "string",
 #'       region = "string",
+#'       dataAccessRole = "string",
 #'       relationalFilterConfigurations = list(
 #'         list(
 #'           databaseName = "string",
+#'           schemaName = "string",
 #'           filterExpressions = list(
 #'             list(
-#'               expression = "string",
-#'               type = "INCLUDE"|"EXCLUDE"
+#'               type = "INCLUDE"|"EXCLUDE",
+#'               expression = "string"
 #'             )
-#'           ),
-#'           schemaName = "string"
+#'           )
 #'         )
-#'       )
+#'       ),
+#'       autoImportDataQualityResult = TRUE|FALSE,
+#'       catalogName = "string"
 #'     ),
 #'     redshiftRunConfiguration = list(
 #'       accountId = "string",
+#'       region = "string",
 #'       dataAccessRole = "string",
+#'       relationalFilterConfigurations = list(
+#'         list(
+#'           databaseName = "string",
+#'           schemaName = "string",
+#'           filterExpressions = list(
+#'             list(
+#'               type = "INCLUDE"|"EXCLUDE",
+#'               expression = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       redshiftCredentialConfiguration = list(
 #'         secretManagerArn = "string"
 #'       ),
@@ -7235,19 +7423,6 @@ datazone_get_data_product <- function(domainIdentifier, identifier, revision = N
 #'         ),
 #'         redshiftServerlessSource = list(
 #'           workgroupName = "string"
-#'         )
-#'       ),
-#'       region = "string",
-#'       relationalFilterConfigurations = list(
-#'         list(
-#'           databaseName = "string",
-#'           filterExpressions = list(
-#'             list(
-#'               expression = "string",
-#'               type = "INCLUDE"|"EXCLUDE"
-#'             )
-#'           ),
-#'           schemaName = "string"
 #'         )
 #'       )
 #'     ),
@@ -7261,46 +7436,50 @@ datazone_get_data_product <- function(domainIdentifier, identifier, revision = N
 #'       )
 #'     )
 #'   ),
-#'   connectionId = "string",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
+#'   recommendation = list(
+#'     enableBusinessNameGeneration = TRUE|FALSE
 #'   ),
-#'   description = "string",
-#'   domainId = "string",
 #'   enableSetting = "ENABLED"|"DISABLED",
-#'   environmentId = "string",
-#'   errorMessage = list(
-#'     errorDetail = "string",
-#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
+#'   publishOnImport = TRUE|FALSE,
+#'   assetFormsOutput = list(
+#'     list(
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
+#'     )
 #'   ),
-#'   id = "string",
-#'   lastRunAssetCount = 123,
+#'   schedule = list(
+#'     timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC",
+#'     schedule = "string"
+#'   ),
+#'   lastRunStatus = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
 #'   lastRunAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   lastRunErrorMessage = list(
-#'     errorDetail = "string",
-#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
+#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION",
+#'     errorDetail = "string"
 #'   ),
-#'   lastRunStatus = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
-#'   name = "string",
-#'   projectId = "string",
-#'   publishOnImport = TRUE|FALSE,
-#'   recommendation = list(
-#'     enableBusinessNameGeneration = TRUE|FALSE
+#'   lastRunAssetCount = 123,
+#'   errorMessage = list(
+#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION",
+#'     errorDetail = "string"
 #'   ),
-#'   schedule = list(
-#'     schedule = "string",
-#'     timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC"
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
 #'   selfGrantStatus = list(
 #'     glueSelfGrantStatus = list(
 #'       selfGrantStatusDetails = list(
 #'         list(
 #'           databaseName = "string",
-#'           failureCause = "string",
 #'           schemaName = "string",
-#'           status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"GRANT_FAILED"|"REVOKE_FAILED"
+#'           status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"GRANT_FAILED"|"REVOKE_FAILED",
+#'           failureCause = "string"
 #'         )
 #'       )
 #'     ),
@@ -7308,17 +7487,12 @@ datazone_get_data_product <- function(domainIdentifier, identifier, revision = N
 #'       selfGrantStatusDetails = list(
 #'         list(
 #'           databaseName = "string",
-#'           failureCause = "string",
 #'           schemaName = "string",
-#'           status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"GRANT_FAILED"|"REVOKE_FAILED"
+#'           status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"GRANT_FAILED"|"REVOKE_FAILED",
+#'           failureCause = "string"
 #'         )
 #'       )
 #'     )
-#'   ),
-#'   status = "CREATING"|"FAILED_CREATION"|"READY"|"UPDATING"|"FAILED_UPDATE"|"RUNNING"|"DELETING"|"FAILED_DELETION",
-#'   type = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
 #'   )
 #' )
 #' ```
@@ -7370,37 +7544,37 @@ datazone_get_data_source <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   dataSourceConfigurationSnapshot = "string",
-#'   dataSourceId = "string",
 #'   domainId = "string",
-#'   errorMessage = list(
-#'     errorDetail = "string",
-#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
-#'   ),
+#'   dataSourceId = "string",
 #'   id = "string",
+#'   projectId = "string",
+#'   status = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
+#'   type = "PRIORITIZED"|"SCHEDULED",
+#'   dataSourceConfigurationSnapshot = "string",
+#'   runStatisticsForAssets = list(
+#'     added = 123,
+#'     updated = 123,
+#'     unchanged = 123,
+#'     skipped = 123,
+#'     failed = 123
+#'   ),
 #'   lineageSummary = list(
 #'     importStatus = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"PARTIALLY_SUCCEEDED"
 #'   ),
-#'   projectId = "string",
-#'   runStatisticsForAssets = list(
-#'     added = 123,
-#'     failed = 123,
-#'     skipped = 123,
-#'     unchanged = 123,
-#'     updated = 123
+#'   errorMessage = list(
+#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION",
+#'     errorDetail = "string"
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
 #'   startedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   status = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
 #'   stoppedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   type = "PRIORITIZED"|"SCHEDULED",
-#'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   )
 #' )
@@ -7452,31 +7626,31 @@ datazone_get_data_source_run <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   rootDomainUnitId = "string",
+#'   name = "string",
+#'   description = "string",
+#'   singleSignOn = list(
+#'     type = "IAM_IDC"|"DISABLED",
+#'     userAssignment = "AUTOMATIC"|"MANUAL",
+#'     idcInstanceArn = "string"
+#'   ),
+#'   domainExecutionRole = "string",
 #'   arn = "string",
+#'   kmsKeyIdentifier = "string",
+#'   status = "CREATING"|"AVAILABLE"|"CREATION_FAILED"|"DELETING"|"DELETED"|"DELETION_FAILED",
+#'   portalUrl = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   description = "string",
-#'   domainExecutionRole = "string",
-#'   domainVersion = "V1"|"V2",
-#'   id = "string",
-#'   kmsKeyIdentifier = "string",
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   name = "string",
-#'   portalUrl = "string",
-#'   rootDomainUnitId = "string",
-#'   serviceRole = "string",
-#'   singleSignOn = list(
-#'     idcInstanceArn = "string",
-#'     type = "IAM_IDC"|"DISABLED",
-#'     userAssignment = "AUTOMATIC"|"MANUAL"
-#'   ),
-#'   status = "CREATING"|"AVAILABLE"|"CREATION_FAILED"|"DELETING"|"DELETED"|"DELETION_FAILED",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   domainVersion = "V1"|"V2",
+#'   serviceRole = "string"
 #' )
 #' ```
 #'
@@ -7526,29 +7700,29 @@ datazone_get_domain <- function(identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
 #'   id = "string",
-#'   lastUpdatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   lastUpdatedBy = "string",
+#'   domainId = "string",
 #'   name = "string",
+#'   parentDomainUnitId = "string",
+#'   description = "string",
 #'   owners = list(
 #'     list(
-#'       group = list(
-#'         groupId = "string"
-#'       ),
 #'       user = list(
 #'         userId = "string"
+#'       ),
+#'       group = list(
+#'         groupId = "string"
 #'       )
 #'     )
 #'   ),
-#'   parentDomainUnitId = "string"
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   lastUpdatedBy = "string"
 #' )
 #' ```
 #'
@@ -7599,81 +7773,82 @@ datazone_get_domain_unit <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   awsAccountId = "string",
-#'   awsAccountRegion = "string",
+#'   projectId = "string",
+#'   id = "string",
+#'   domainId = "string",
+#'   createdBy = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   deploymentProperties = list(
-#'     endTimeoutMinutes = 123,
-#'     startTimeoutMinutes = 123
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
+#'   name = "string",
 #'   description = "string",
-#'   domainId = "string",
+#'   environmentProfileId = "string",
+#'   awsAccountId = "string",
+#'   awsAccountRegion = "string",
+#'   provider = "string",
+#'   provisionedResources = list(
+#'     list(
+#'       provider = "string",
+#'       name = "string",
+#'       value = "string",
+#'       type = "string"
+#'     )
+#'   ),
+#'   status = "ACTIVE"|"CREATING"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"VALIDATION_FAILED"|"SUSPENDED"|"DISABLED"|"EXPIRED"|"DELETED"|"INACCESSIBLE",
 #'   environmentActions = list(
 #'     list(
+#'       type = "string",
 #'       auth = "IAM"|"HTTPS",
 #'       parameters = list(
 #'         list(
 #'           key = "string",
 #'           value = "string"
 #'         )
-#'       ),
-#'       type = "string"
+#'       )
 #'     )
 #'   ),
-#'   environmentBlueprintId = "string",
-#'   environmentConfigurationId = "string",
-#'   environmentProfileId = "string",
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
-#'   id = "string",
+#'   userParameters = list(
+#'     list(
+#'       keyName = "string",
+#'       description = "string",
+#'       fieldType = "string",
+#'       defaultValue = "string",
+#'       isEditable = TRUE|FALSE,
+#'       isOptional = TRUE|FALSE,
+#'       isUpdateSupported = TRUE|FALSE
+#'     )
+#'   ),
 #'   lastDeployment = list(
 #'     deploymentId = "string",
-#'     deploymentStatus = "IN_PROGRESS"|"SUCCESSFUL"|"FAILED"|"PENDING_DEPLOYMENT",
 #'     deploymentType = "CREATE"|"UPDATE"|"DELETE",
+#'     deploymentStatus = "IN_PROGRESS"|"SUCCESSFUL"|"FAILED"|"PENDING_DEPLOYMENT",
 #'     failureReason = list(
 #'       code = "string",
 #'       message = "string"
 #'     ),
-#'     isDeploymentComplete = TRUE|FALSE,
 #'     messages = list(
 #'       "string"
-#'     )
-#'   ),
-#'   name = "string",
-#'   projectId = "string",
-#'   provider = "string",
-#'   provisionedResources = list(
-#'     list(
-#'       name = "string",
-#'       provider = "string",
-#'       type = "string",
-#'       value = "string"
-#'     )
+#'     ),
+#'     isDeploymentComplete = TRUE|FALSE
 #'   ),
 #'   provisioningProperties = list(
 #'     cloudFormation = list(
 #'       templateUrl = "string"
 #'     )
 #'   ),
-#'   status = "ACTIVE"|"CREATING"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"VALIDATION_FAILED"|"SUSPENDED"|"DISABLED"|"EXPIRED"|"DELETED"|"INACCESSIBLE",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
+#'   deploymentProperties = list(
+#'     startTimeoutMinutes = 123,
+#'     endTimeoutMinutes = 123
 #'   ),
-#'   userParameters = list(
-#'     list(
-#'       defaultValue = "string",
-#'       description = "string",
-#'       fieldType = "string",
-#'       isEditable = TRUE|FALSE,
-#'       isOptional = TRUE|FALSE,
-#'       isUpdateSupported = TRUE|FALSE,
-#'       keyName = "string"
-#'     )
-#'   )
+#'   environmentBlueprintId = "string",
+#'   environmentConfigurationId = "string",
+#'   environmentConfigurationName = "string"
 #' )
 #' ```
 #'
@@ -7728,7 +7903,6 @@ datazone_get_environment <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   description = "string",
 #'   domainId = "string",
 #'   environmentId = "string",
 #'   id = "string",
@@ -7737,7 +7911,8 @@ datazone_get_environment <- function(domainIdentifier, identifier) {
 #'     awsConsoleLink = list(
 #'       uri = "string"
 #'     )
-#'   )
+#'   ),
+#'   description = "string"
 #' )
 #' ```
 #'
@@ -7789,38 +7964,38 @@ datazone_get_environment_action <- function(domainIdentifier, environmentIdentif
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   deploymentProperties = list(
-#'     endTimeoutMinutes = 123,
-#'     startTimeoutMinutes = 123
-#'   ),
-#'   description = "string",
-#'   glossaryTerms = list(
-#'     "string"
-#'   ),
 #'   id = "string",
 #'   name = "string",
+#'   description = "string",
 #'   provider = "string",
 #'   provisioningProperties = list(
 #'     cloudFormation = list(
 #'       templateUrl = "string"
 #'     )
 #'   ),
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
+#'   deploymentProperties = list(
+#'     startTimeoutMinutes = 123,
+#'     endTimeoutMinutes = 123
 #'   ),
 #'   userParameters = list(
 #'     list(
-#'       defaultValue = "string",
+#'       keyName = "string",
 #'       description = "string",
 #'       fieldType = "string",
+#'       defaultValue = "string",
 #'       isEditable = TRUE|FALSE,
 #'       isOptional = TRUE|FALSE,
-#'       isUpdateSupported = TRUE|FALSE,
-#'       keyName = "string"
+#'       isUpdateSupported = TRUE|FALSE
 #'     )
+#'   ),
+#'   glossaryTerms = list(
+#'     "string"
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   )
 #' )
 #' ```
@@ -7873,34 +8048,34 @@ datazone_get_environment_blueprint <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
 #'   domainId = "string",
+#'   environmentBlueprintId = "string",
+#'   provisioningRoleArn = "string",
+#'   environmentRolePermissionBoundary = "string",
+#'   manageAccessRoleArn = "string",
 #'   enabledRegions = list(
 #'     "string"
 #'   ),
-#'   environmentBlueprintId = "string",
-#'   environmentRolePermissionBoundary = "string",
-#'   manageAccessRoleArn = "string",
-#'   provisioningConfigurations = list(
-#'     list(
-#'       lakeFormationConfiguration = list(
-#'         locationRegistrationExcludeS3Locations = list(
-#'           "string"
-#'         ),
-#'         locationRegistrationRole = "string"
-#'       )
-#'     )
-#'   ),
-#'   provisioningRoleArn = "string",
 #'   regionalParameters = list(
 #'     list(
 #'       "string"
 #'     )
 #'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   provisioningConfigurations = list(
+#'     list(
+#'       lakeFormationConfiguration = list(
+#'         locationRegistrationRole = "string",
+#'         locationRegistrationExcludeS3Locations = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -7955,11 +8130,11 @@ datazone_get_environment_blueprint_configuration <- function(domainIdentifier, e
 #' ```
 #' list(
 #'   accessKeyId = "string",
+#'   secretAccessKey = "string",
+#'   sessionToken = "string",
 #'   expiration = as.POSIXct(
 #'     "2015-01-01"
-#'   ),
-#'   secretAccessKey = "string",
-#'   sessionToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -8011,30 +8186,30 @@ datazone_get_environment_credentials <- function(domainIdentifier, environmentId
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   domainId = "string",
 #'   awsAccountId = "string",
 #'   awsAccountRegion = "string",
+#'   createdBy = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   environmentBlueprintId = "string",
-#'   id = "string",
-#'   name = "string",
-#'   projectId = "string",
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   name = "string",
+#'   description = "string",
+#'   environmentBlueprintId = "string",
+#'   projectId = "string",
 #'   userParameters = list(
 #'     list(
-#'       defaultValue = "string",
+#'       keyName = "string",
 #'       description = "string",
 #'       fieldType = "string",
+#'       defaultValue = "string",
 #'       isEditable = TRUE|FALSE,
 #'       isOptional = TRUE|FALSE,
-#'       isUpdateSupported = TRUE|FALSE,
-#'       keyName = "string"
+#'       isUpdateSupported = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -8122,27 +8297,27 @@ datazone_get_environment_profile <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   name = "string",
+#'   revision = "string",
+#'   model = list(
+#'     smithy = "string"
+#'   ),
+#'   owningProjectId = "string",
+#'   originDomainId = "string",
+#'   originProjectId = "string",
+#'   status = "ENABLED"|"DISABLED",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   createdBy = "string",
 #'   description = "string",
-#'   domainId = "string",
 #'   imports = list(
 #'     list(
 #'       name = "string",
 #'       revision = "string"
 #'     )
-#'   ),
-#'   model = list(
-#'     smithy = "string"
-#'   ),
-#'   name = "string",
-#'   originDomainId = "string",
-#'   originProjectId = "string",
-#'   owningProjectId = "string",
-#'   revision = "string",
-#'   status = "ENABLED"|"DISABLED"
+#'   )
 #' )
 #' ```
 #'
@@ -8203,16 +8378,16 @@ datazone_get_form_type <- function(domainIdentifier, formTypeIdentifier, revisio
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   id = "string",
+#'   owningProjectId = "string",
+#'   name = "string",
+#'   description = "string",
+#'   status = "DISABLED"|"ENABLED",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   id = "string",
-#'   name = "string",
-#'   owningProjectId = "string",
-#'   status = "DISABLED"|"ENABLED",
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -8279,25 +8454,25 @@ datazone_get_glossary <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   glossaryId = "string",
+#'   id = "string",
+#'   name = "string",
+#'   shortDescription = "string",
+#'   longDescription = "string",
+#'   termRelations = list(
+#'     isA = list(
+#'       "string"
+#'     ),
+#'     classifies = list(
+#'       "string"
+#'     )
+#'   ),
+#'   status = "ENABLED"|"DISABLED",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   createdBy = "string",
-#'   domainId = "string",
-#'   glossaryId = "string",
-#'   id = "string",
-#'   longDescription = "string",
-#'   name = "string",
-#'   shortDescription = "string",
-#'   status = "ENABLED"|"DISABLED",
-#'   termRelations = list(
-#'     classifies = list(
-#'       "string"
-#'     ),
-#'     isA = list(
-#'       "string"
-#'     )
-#'   ),
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -8357,9 +8532,11 @@ datazone_get_glossary_term <- function(domainIdentifier, identifier) {
 #' ```
 #' list(
 #'   domainId = "string",
-#'   groupName = "string",
 #'   id = "string",
-#'   status = "ASSIGNED"|"NOT_ASSIGNED"
+#'   status = "ASSIGNED"|"NOT_ASSIGNED",
+#'   groupName = "string",
+#'   rolePrincipalArn = "string",
+#'   rolePrincipalId = "string"
 #' )
 #' ```
 #'
@@ -8461,42 +8638,42 @@ datazone_get_iam_portal_login_url <- function(domainIdentifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdBy = "string",
-#'   details = list(
-#'     lineageRunDetails = list(
-#'       sqlQueryRunDetails = list(
-#'         errorMessages = list(
-#'           "string"
-#'         ),
-#'         numQueriesFailed = 123,
-#'         queryEndTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         queryStartTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         totalQueriesProcessed = 123
-#'       )
-#'     )
-#'   ),
 #'   domainId = "string",
-#'   endTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   error = list(
-#'     message = "string"
-#'   ),
 #'   id = "string",
 #'   jobId = "string",
 #'   jobType = "LINEAGE",
 #'   runMode = "SCHEDULED"|"ON_DEMAND",
+#'   details = list(
+#'     lineageRunDetails = list(
+#'       sqlQueryRunDetails = list(
+#'         queryStartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         queryEndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         totalQueriesProcessed = 123,
+#'         numQueriesFailed = 123,
+#'         errorMessages = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   status = "SCHEDULED"|"IN_PROGRESS"|"SUCCESS"|"PARTIALLY_SUCCEEDED"|"FAILED"|"ABORTED"|"TIMED_OUT"|"CANCELED",
+#'   error = list(
+#'     message = "string"
+#'   ),
+#'   createdBy = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   startTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   status = "SCHEDULED"|"IN_PROGRESS"|"SUCCESS"|"PARTIALLY_SUCCEEDED"|"FAILED"|"ABORTED"|"TIMED_OUT"|"CANCELED"
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
@@ -8547,17 +8724,17 @@ datazone_get_job_run <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdBy = "string",
 #'   domainId = "string",
+#'   id = "string",
 #'   event = raw,
+#'   createdBy = "string",
+#'   processingStatus = "REQUESTED"|"PROCESSING"|"SUCCESS"|"FAILED",
 #'   eventTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   id = "string",
-#'   processingStatus = "REQUESTED"|"PROCESSING"|"SUCCESS"|"FAILED"
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
@@ -8599,61 +8776,61 @@ datazone_get_lineage_event <- function(domainIdentifier, identifier) {
 #' Gets the data lineage node.
 #'
 #' @usage
-#' datazone_get_lineage_node(domainIdentifier, eventTimestamp, identifier)
+#' datazone_get_lineage_node(domainIdentifier, identifier, eventTimestamp)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain in which you want to get the data lineage node.
-#' @param eventTimestamp The event time stamp for which you want to get the data lineage node.
 #' @param identifier &#91;required&#93; The ID of the data lineage node that you want to get.
 #' 
 #' Both, a lineage node identifier generated by Amazon DataZone and a
 #' `sourceIdentifier` of the lineage node are supported. If
 #' `sourceIdentifier` is greater than 1800 characters, you can use lineage
 #' node identifier generated by Amazon DataZone to get the node details.
+#' @param eventTimestamp The event time stamp for which you want to get the data lineage node.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   name = "string",
+#'   description = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   downstreamNodes = list(
-#'     list(
-#'       eventTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       id = "string"
-#'     )
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
+#'   updatedBy = "string",
+#'   id = "string",
+#'   typeName = "string",
+#'   typeRevision = "string",
+#'   sourceIdentifier = "string",
 #'   eventTimestamp = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   formsOutput = list(
 #'     list(
-#'       content = "string",
 #'       formName = "string",
 #'       typeName = "string",
-#'       typeRevision = "string"
+#'       typeRevision = "string",
+#'       content = "string"
 #'     )
 #'   ),
-#'   id = "string",
-#'   name = "string",
-#'   sourceIdentifier = "string",
-#'   typeName = "string",
-#'   typeRevision = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   updatedBy = "string",
 #'   upstreamNodes = list(
 #'     list(
+#'       id = "string",
 #'       eventTimestamp = as.POSIXct(
 #'         "2015-01-01"
-#'       ),
-#'       id = "string"
+#'       )
+#'     )
+#'   ),
+#'   downstreamNodes = list(
+#'     list(
+#'       id = "string",
+#'       eventTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -8663,10 +8840,10 @@ datazone_get_lineage_event <- function(domainIdentifier, identifier) {
 #' ```
 #' svc$get_lineage_node(
 #'   domainIdentifier = "string",
+#'   identifier = "string",
 #'   eventTimestamp = as.POSIXct(
 #'     "2015-01-01"
-#'   ),
-#'   identifier = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -8675,7 +8852,7 @@ datazone_get_lineage_event <- function(domainIdentifier, identifier) {
 #' @rdname datazone_get_lineage_node
 #'
 #' @aliases datazone_get_lineage_node
-datazone_get_lineage_node <- function(domainIdentifier, eventTimestamp = NULL, identifier) {
+datazone_get_lineage_node <- function(domainIdentifier, identifier, eventTimestamp = NULL) {
   op <- new_operation(
     name = "GetLineageNode",
     http_method = "GET",
@@ -8684,7 +8861,7 @@ datazone_get_lineage_node <- function(domainIdentifier, eventTimestamp = NULL, i
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$get_lineage_node_input(domainIdentifier = domainIdentifier, eventTimestamp = eventTimestamp, identifier = identifier)
+  input <- .datazone$get_lineage_node_input(domainIdentifier = domainIdentifier, identifier = identifier, eventTimestamp = eventTimestamp)
   output <- .datazone$get_lineage_node_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -8712,13 +8889,17 @@ datazone_get_lineage_node <- function(domainIdentifier, eventTimestamp = NULL, i
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   id = "string",
+#'   listingRevision = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   id = "string",
+#'   updatedBy = "string",
 #'   item = list(
 #'     assetListing = list(
 #'       assetId = "string",
@@ -8728,6 +8909,18 @@ datazone_get_lineage_node <- function(domainIdentifier, eventTimestamp = NULL, i
 #'         "2015-01-01"
 #'       ),
 #'       forms = "string",
+#'       latestTimeSeriesDataPointForms = list(
+#'         list(
+#'           formName = "string",
+#'           typeIdentifier = "string",
+#'           typeRevision = "string",
+#'           timestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           contentSummary = "string",
+#'           id = "string"
+#'         )
+#'       ),
 #'       glossaryTerms = list(
 #'         list(
 #'           name = "string",
@@ -8740,26 +8933,14 @@ datazone_get_lineage_node <- function(domainIdentifier, eventTimestamp = NULL, i
 #'           shortDescription = "string"
 #'         )
 #'       ),
-#'       latestTimeSeriesDataPointForms = list(
-#'         list(
-#'           contentSummary = "string",
-#'           formName = "string",
-#'           id = "string",
-#'           timestamp = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           typeIdentifier = "string",
-#'           typeRevision = "string"
-#'         )
-#'       ),
 #'       owningProjectId = "string"
 #'     ),
 #'     dataProductListing = list(
+#'       dataProductId = "string",
+#'       dataProductRevision = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       dataProductId = "string",
-#'       dataProductRevision = "string",
 #'       forms = "string",
 #'       glossaryTerms = list(
 #'         list(
@@ -8767,28 +8948,24 @@ datazone_get_lineage_node <- function(domainIdentifier, eventTimestamp = NULL, i
 #'           shortDescription = "string"
 #'         )
 #'       ),
+#'       owningProjectId = "string",
 #'       items = list(
 #'         list(
+#'           listingId = "string",
+#'           listingRevision = "string",
 #'           glossaryTerms = list(
 #'             list(
 #'               name = "string",
 #'               shortDescription = "string"
 #'             )
-#'           ),
-#'           listingId = "string",
-#'           listingRevision = "string"
+#'           )
 #'         )
-#'       ),
-#'       owningProjectId = "string"
+#'       )
 #'     )
 #'   ),
-#'   listingRevision = "string",
 #'   name = "string",
-#'   status = "CREATING"|"ACTIVE"|"INACTIVE",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   updatedBy = "string"
+#'   description = "string",
+#'   status = "CREATING"|"ACTIVE"|"INACTIVE"
 #' )
 #' ```
 #'
@@ -8850,29 +9027,29 @@ datazone_get_listing <- function(domainIdentifier, identifier, listingRevision =
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   id = "string",
+#'   target = list(
+#'     type = "ASSET",
+#'     identifier = "string",
+#'     revision = "string"
+#'   ),
+#'   status = "SUBMITTED"|"IN_PROGRESS"|"CANCELED"|"SUCCEEDED"|"FAILED"|"PARTIALLY_SUCCEEDED",
+#'   type = "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS",
+#'   types = list(
+#'     "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS"
+#'   ),
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   createdBy = "string",
-#'   domainId = "string",
-#'   id = "string",
 #'   owningProjectId = "string",
-#'   status = "SUBMITTED"|"IN_PROGRESS"|"CANCELED"|"SUCCEEDED"|"FAILED"|"PARTIALLY_SUCCEEDED",
-#'   target = list(
-#'     identifier = "string",
-#'     revision = "string",
-#'     type = "ASSET"
-#'   ),
-#'   type = "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS",
 #'   typeStats = list(
 #'     list(
-#'       errorMessage = "string",
+#'       type = "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS",
 #'       status = "SUBMITTED"|"IN_PROGRESS"|"CANCELED"|"SUCCEEDED"|"FAILED"|"PARTIALLY_SUCCEEDED",
-#'       type = "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS"
+#'       errorMessage = "string"
 #'     )
-#'   ),
-#'   types = list(
-#'     "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS"
 #'   )
 #' )
 #' ```
@@ -8910,6 +9087,121 @@ datazone_get_metadata_generation_run <- function(domainIdentifier, identifier, t
 }
 .datazone$operations$get_metadata_generation_run <- datazone_get_metadata_generation_run
 
+#' Gets the details of a notebook run in an Amazon DataZone domain
+#'
+#' @description
+#' Gets the details of a notebook run in an Amazon DataZone domain.
+#'
+#' @usage
+#' datazone_get_notebook_run(domainIdentifier, identifier)
+#'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which the notebook run
+#' exists.
+#' @param identifier &#91;required&#93; The identifier of the notebook run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   domainId = "string",
+#'   owningProjectId = "string",
+#'   notebookId = "string",
+#'   scheduleId = "string",
+#'   status = "QUEUED"|"STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED",
+#'   cellOrder = list(
+#'     list()
+#'   ),
+#'   metadata = list(
+#'     "string"
+#'   ),
+#'   parameters = list(
+#'     "string"
+#'   ),
+#'   computeConfiguration = list(
+#'     instanceType = "string",
+#'     environmentVersion = "string"
+#'   ),
+#'   networkConfiguration = list(
+#'     networkAccessType = "PUBLIC_INTERNET_ONLY"|"VPC_ONLY",
+#'     vpcId = "string",
+#'     subnetIds = list(
+#'       "string"
+#'     ),
+#'     securityGroupIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   timeoutConfiguration = list(
+#'     runTimeoutInMinutes = 123
+#'   ),
+#'   environmentConfiguration = list(
+#'     imageVersion = "string",
+#'     packageConfig = list(
+#'       packageManager = "UV",
+#'       packageSpecification = "string"
+#'     )
+#'   ),
+#'   storageConfiguration = list(
+#'     projectS3Path = "string",
+#'     kmsKeyArn = "string"
+#'   ),
+#'   triggerSource = list(
+#'     type = "MANUAL"|"SCHEDULED"|"WORKFLOW",
+#'     name = "string"
+#'   ),
+#'   error = list(
+#'     message = "string"
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedBy = "string",
+#'   startedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   completedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_notebook_run(
+#'   domainIdentifier = "string",
+#'   identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_get_notebook_run
+#'
+#' @aliases datazone_get_notebook_run
+datazone_get_notebook_run <- function(domainIdentifier, identifier) {
+  op <- new_operation(
+    name = "GetNotebookRun",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/notebook-runs/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$get_notebook_run_input(domainIdentifier = domainIdentifier, identifier = identifier)
+  output <- .datazone$get_notebook_run_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$get_notebook_run <- datazone_get_notebook_run
+
 #' Gets a project in Amazon DataZone
 #'
 #' @description
@@ -8925,14 +9217,55 @@ datazone_get_metadata_generation_run <- function(domainIdentifier, identifier, t
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"MOVING",
+#'   failureReasons = list(
+#'     list(
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   ),
+#'   createdBy = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   resourceTags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string",
+#'       source = "PROJECT"|"PROJECT_PROFILE"
+#'     )
+#'   ),
+#'   glossaryTerms = list(
+#'     "string"
+#'   ),
 #'   domainUnitId = "string",
+#'   projectProfileId = "string",
+#'   userParameters = list(
+#'     list(
+#'       environmentId = "string",
+#'       environmentResolvedAccount = list(
+#'         awsAccountId = "string",
+#'         regionName = "string",
+#'         sourceAccountPoolId = "string"
+#'       ),
+#'       environmentConfigurationName = "string",
+#'       environmentParameters = list(
+#'         list(
+#'           name = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   environmentDeploymentDetails = list(
+#'     overallDeploymentStatus = "PENDING_DEPLOYMENT"|"IN_PROGRESS"|"SUCCESSFUL"|"FAILED_VALIDATION"|"FAILED_DEPLOYMENT",
 #'     environmentFailureReasons = list(
 #'       list(
 #'         list(
@@ -8940,49 +9273,9 @@ datazone_get_metadata_generation_run <- function(domainIdentifier, identifier, t
 #'           message = "string"
 #'         )
 #'       )
-#'     ),
-#'     overallDeploymentStatus = "PENDING_DEPLOYMENT"|"IN_PROGRESS"|"SUCCESSFUL"|"FAILED_VALIDATION"|"FAILED_DEPLOYMENT"
-#'   ),
-#'   failureReasons = list(
-#'     list(
-#'       code = "string",
-#'       message = "string"
 #'     )
 #'   ),
-#'   glossaryTerms = list(
-#'     "string"
-#'   ),
-#'   id = "string",
-#'   lastUpdatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   name = "string",
-#'   projectProfileId = "string",
-#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"MOVING",
-#'   resourceTags = list(
-#'     list(
-#'       key = "string",
-#'       source = "PROJECT"|"PROJECT_PROFILE",
-#'       value = "string"
-#'     )
-#'   ),
-#'   userParameters = list(
-#'     list(
-#'       environmentConfigurationName = "string",
-#'       environmentId = "string",
-#'       environmentParameters = list(
-#'         list(
-#'           name = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       environmentResolvedAccount = list(
-#'         awsAccountId = "string",
-#'         regionName = "string",
-#'         sourceAccountPoolId = "string"
-#'       )
-#'     )
-#'   )
+#'   projectCategory = "string"
 #' )
 #' ```
 #'
@@ -9033,66 +9326,66 @@ datazone_get_project <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   allowCustomProjectResourceTags = TRUE|FALSE,
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdBy = "string",
-#'   description = "string",
 #'   domainId = "string",
-#'   domainUnitId = "string",
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   status = "ENABLED"|"DISABLED",
+#'   projectResourceTags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string",
+#'       isValueEditable = TRUE|FALSE
+#'     )
+#'   ),
+#'   allowCustomProjectResourceTags = TRUE|FALSE,
+#'   projectResourceTagsDescription = "string",
 #'   environmentConfigurations = list(
 #'     list(
-#'       accountPools = list(
-#'         "string"
+#'       name = "string",
+#'       id = "string",
+#'       environmentBlueprintId = "string",
+#'       description = "string",
+#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
+#'       configurationParameters = list(
+#'         ssmPath = "string",
+#'         parameterOverrides = list(
+#'           list(
+#'             name = "string",
+#'             value = "string",
+#'             isEditable = TRUE|FALSE
+#'           )
+#'         ),
+#'         resolvedParameters = list(
+#'           list(
+#'             name = "string",
+#'             value = "string",
+#'             isEditable = TRUE|FALSE
+#'           )
+#'         )
 #'       ),
 #'       awsAccount = list(
 #'         awsAccountId = "string",
 #'         awsAccountIdPath = "string"
 #'       ),
+#'       accountPools = list(
+#'         "string"
+#'       ),
 #'       awsRegion = list(
 #'         regionName = "string",
 #'         regionNamePath = "string"
 #'       ),
-#'       configurationParameters = list(
-#'         parameterOverrides = list(
-#'           list(
-#'             isEditable = TRUE|FALSE,
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         resolvedParameters = list(
-#'           list(
-#'             isEditable = TRUE|FALSE,
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         ssmPath = "string"
-#'       ),
-#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
-#'       deploymentOrder = 123,
-#'       description = "string",
-#'       environmentBlueprintId = "string",
-#'       id = "string",
-#'       name = "string"
+#'       deploymentOrder = 123
 #'     )
 #'   ),
-#'   id = "string",
+#'   createdBy = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   name = "string",
-#'   projectResourceTags = list(
-#'     list(
-#'       isValueEditable = TRUE|FALSE,
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   projectResourceTagsDescription = "string",
-#'   status = "ENABLED"|"DISABLED"
+#'   domainUnitId = "string"
 #' )
 #' ```
 #'
@@ -9153,32 +9446,17 @@ datazone_get_project_profile <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdBy = "string",
-#'   description = "string",
-#'   detail = list(
-#'     glossaryTermEnforcementDetail = list(
-#'       requiredGlossaryTermIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     metadataFormEnforcementDetail = list(
-#'       requiredMetadataForms = list(
-#'         list(
-#'           typeIdentifier = "string",
-#'           typeRevision = "string"
-#'         )
-#'       )
+#'   identifier = "string",
+#'   revision = "string",
+#'   name = "string",
+#'   ruleType = "METADATA_FORM_ENFORCEMENT"|"GLOSSARY_TERM_ENFORCEMENT",
+#'   target = list(
+#'     domainUnitTarget = list(
+#'       domainUnitId = "string",
+#'       includeChildDomainUnits = TRUE|FALSE
 #'     )
 #'   ),
-#'   identifier = "string",
-#'   lastUpdatedBy = "string",
-#'   name = "string",
-#'   revision = "string",
-#'   ruleType = "METADATA_FORM_ENFORCEMENT"|"GLOSSARY_TERM_ENFORCEMENT",
+#'   action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
 #'   scope = list(
 #'     assetType = list(
 #'       selectionMode = "ALL"|"SPECIFIC",
@@ -9194,16 +9472,31 @@ datazone_get_project_profile <- function(domainIdentifier, identifier) {
 #'       )
 #'     )
 #'   ),
-#'   target = list(
-#'     domainUnitTarget = list(
-#'       domainUnitId = "string",
-#'       includeChildDomainUnits = TRUE|FALSE
+#'   detail = list(
+#'     metadataFormEnforcementDetail = list(
+#'       requiredMetadataForms = list(
+#'         list(
+#'           typeIdentifier = "string",
+#'           typeRevision = "string"
+#'         )
+#'       )
+#'     ),
+#'     glossaryTermEnforcementDetail = list(
+#'       requiredGlossaryTermIds = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   targetType = "DOMAIN_UNIT",
+#'   description = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   createdBy = "string",
+#'   lastUpdatedBy = "string"
 #' )
 #' ```
 #'
@@ -9255,27 +9548,53 @@ datazone_get_rule <- function(domainIdentifier, identifier, revision = NULL) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
+#'   domainId = "string",
+#'   status = "APPROVED"|"REVOKED"|"CANCELLED",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   domainId = "string",
-#'   id = "string",
-#'   retainPermissions = TRUE|FALSE,
-#'   status = "APPROVED"|"REVOKED"|"CANCELLED",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   subscribedPrincipal = list(
+#'     project = list(
+#'       id = "string",
+#'       name = "string"
+#'     ),
+#'     user = list(
+#'       id = "string",
+#'       details = list(
+#'         iam = list(
+#'           arn = "string",
+#'           principalId = "string",
+#'           sessionName = "string",
+#'           groupProfileId = "string"
+#'         ),
+#'         sso = list(
+#'           username = "string",
+#'           firstName = "string",
+#'           lastName = "string"
+#'         )
+#'       )
+#'     ),
+#'     group = list(
+#'       id = "string",
+#'       name = "string"
+#'     ),
+#'     iam = list(
+#'       principalArn = "string"
+#'     )
+#'   ),
 #'   subscribedListing = list(
-#'     description = "string",
 #'     id = "string",
+#'     revision = "string",
+#'     name = "string",
+#'     description = "string",
 #'     item = list(
 #'       assetListing = list(
-#'         assetScope = list(
-#'           assetId = "string",
-#'           errorMessage = "string",
-#'           filterIds = list(
-#'             "string"
-#'           ),
-#'           status = "string"
-#'         ),
 #'         entityId = "string",
 #'         entityRevision = "string",
 #'         entityType = "string",
@@ -9286,6 +9605,14 @@ datazone_get_rule <- function(domainIdentifier, identifier, revision = NULL) {
 #'             shortDescription = "string"
 #'           )
 #'         ),
+#'         assetScope = list(
+#'           assetId = "string",
+#'           filterIds = list(
+#'             "string"
+#'           ),
+#'           status = "string",
+#'           errorMessage = "string"
+#'         ),
 #'         permissions = list(
 #'           s3 = list(
 #'             "READ"|"WRITE"
@@ -9293,14 +9620,6 @@ datazone_get_rule <- function(domainIdentifier, identifier, revision = NULL) {
 #'         )
 #'       ),
 #'       productListing = list(
-#'         assetListings = list(
-#'           list(
-#'             entityId = "string",
-#'             entityRevision = "string",
-#'             entityType = "string"
-#'           )
-#'         ),
-#'         description = "string",
 #'         entityId = "string",
 #'         entityRevision = "string",
 #'         glossaryTerms = list(
@@ -9309,43 +9628,22 @@ datazone_get_rule <- function(domainIdentifier, identifier, revision = NULL) {
 #'             shortDescription = "string"
 #'           )
 #'         ),
-#'         name = "string"
+#'         name = "string",
+#'         description = "string",
+#'         assetListings = list(
+#'           list(
+#'             entityId = "string",
+#'             entityRevision = "string",
+#'             entityType = "string"
+#'           )
+#'         )
 #'       )
 #'     ),
-#'     name = "string",
 #'     ownerProjectId = "string",
-#'     ownerProjectName = "string",
-#'     revision = "string"
-#'   ),
-#'   subscribedPrincipal = list(
-#'     group = list(
-#'       id = "string",
-#'       name = "string"
-#'     ),
-#'     project = list(
-#'       id = "string",
-#'       name = "string"
-#'     ),
-#'     user = list(
-#'       details = list(
-#'         iam = list(
-#'           arn = "string",
-#'           principalId = "string"
-#'         ),
-#'         sso = list(
-#'           firstName = "string",
-#'           lastName = "string",
-#'           username = "string"
-#'         )
-#'       ),
-#'       id = "string"
-#'     )
+#'     ownerProjectName = "string"
 #'   ),
 #'   subscriptionRequestId = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   updatedBy = "string"
+#'   retainPermissions = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -9397,56 +9695,56 @@ datazone_get_subscription <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   assets = list(
-#'     list(
-#'       assetId = "string",
-#'       assetRevision = "string",
-#'       assetScope = list(
-#'         assetId = "string",
-#'         errorMessage = "string",
-#'         filterIds = list(
-#'           "string"
-#'         ),
-#'         status = "string"
-#'       ),
-#'       failureCause = list(
-#'         message = "string"
-#'       ),
-#'       failureTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       grantedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       permissions = list(
-#'         s3 = list(
-#'           "READ"|"WRITE"
-#'         )
-#'       ),
-#'       status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"REVOKED"|"GRANT_FAILED"|"REVOKE_FAILED",
-#'       targetName = "string"
-#'     )
-#'   ),
+#'   id = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
+#'   domainId = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   domainId = "string",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   environmentId = "string",
+#'   subscriptionTargetId = "string",
 #'   grantedEntity = list(
 #'     listing = list(
 #'       id = "string",
 #'       revision = "string"
 #'     )
 #'   ),
-#'   id = "string",
 #'   status = "PENDING"|"IN_PROGRESS"|"GRANT_FAILED"|"REVOKE_FAILED"|"GRANT_AND_REVOKE_FAILED"|"COMPLETED"|"INACCESSIBLE",
-#'   subscriptionId = "string",
-#'   subscriptionTargetId = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
+#'   assets = list(
+#'     list(
+#'       assetId = "string",
+#'       assetRevision = "string",
+#'       status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"REVOKED"|"GRANT_FAILED"|"REVOKE_FAILED",
+#'       targetName = "string",
+#'       failureCause = list(
+#'         message = "string"
+#'       ),
+#'       grantedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       assetScope = list(
+#'         assetId = "string",
+#'         filterIds = list(
+#'           "string"
+#'         ),
+#'         status = "string",
+#'         errorMessage = "string"
+#'       ),
+#'       permissions = list(
+#'         s3 = list(
+#'           "READ"|"WRITE"
+#'         )
+#'       )
+#'     )
 #'   ),
-#'   updatedBy = "string"
+#'   subscriptionId = "string"
 #' )
 #' ```
 #'
@@ -9498,39 +9796,57 @@ datazone_get_subscription_grant <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
+#'   domainId = "string",
+#'   status = "PENDING"|"ACCEPTED"|"REJECTED",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   decisionComment = "string",
-#'   domainId = "string",
-#'   existingSubscriptionId = "string",
-#'   id = "string",
-#'   metadataForms = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
 #'   requestReason = "string",
-#'   reviewerId = "string",
-#'   status = "PENDING"|"ACCEPTED"|"REJECTED",
+#'   subscribedPrincipals = list(
+#'     list(
+#'       project = list(
+#'         id = "string",
+#'         name = "string"
+#'       ),
+#'       user = list(
+#'         id = "string",
+#'         details = list(
+#'           iam = list(
+#'             arn = "string",
+#'             principalId = "string",
+#'             sessionName = "string",
+#'             groupProfileId = "string"
+#'           ),
+#'           sso = list(
+#'             username = "string",
+#'             firstName = "string",
+#'             lastName = "string"
+#'           )
+#'         )
+#'       ),
+#'       group = list(
+#'         id = "string",
+#'         name = "string"
+#'       ),
+#'       iam = list(
+#'         principalArn = "string"
+#'       )
+#'     )
+#'   ),
 #'   subscribedListings = list(
 #'     list(
-#'       description = "string",
 #'       id = "string",
+#'       revision = "string",
+#'       name = "string",
+#'       description = "string",
 #'       item = list(
 #'         assetListing = list(
-#'           assetScope = list(
-#'             assetId = "string",
-#'             errorMessage = "string",
-#'             filterIds = list(
-#'               "string"
-#'             ),
-#'             status = "string"
-#'           ),
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           entityType = "string",
@@ -9541,6 +9857,14 @@ datazone_get_subscription_grant <- function(domainIdentifier, identifier) {
 #'               shortDescription = "string"
 #'             )
 #'           ),
+#'           assetScope = list(
+#'             assetId = "string",
+#'             filterIds = list(
+#'               "string"
+#'             ),
+#'             status = "string",
+#'             errorMessage = "string"
+#'           ),
 #'           permissions = list(
 #'             s3 = list(
 #'               "READ"|"WRITE"
@@ -9548,14 +9872,6 @@ datazone_get_subscription_grant <- function(domainIdentifier, identifier) {
 #'           )
 #'         ),
 #'         productListing = list(
-#'           assetListings = list(
-#'             list(
-#'               entityId = "string",
-#'               entityRevision = "string",
-#'               entityType = "string"
-#'             )
-#'           ),
-#'           description = "string",
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           glossaryTerms = list(
@@ -9564,45 +9880,32 @@ datazone_get_subscription_grant <- function(domainIdentifier, identifier) {
 #'               shortDescription = "string"
 #'             )
 #'           ),
-#'           name = "string"
+#'           name = "string",
+#'           description = "string",
+#'           assetListings = list(
+#'             list(
+#'               entityId = "string",
+#'               entityRevision = "string",
+#'               entityType = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
-#'       name = "string",
 #'       ownerProjectId = "string",
-#'       ownerProjectName = "string",
-#'       revision = "string"
+#'       ownerProjectName = "string"
 #'     )
 #'   ),
-#'   subscribedPrincipals = list(
+#'   reviewerId = "string",
+#'   decisionComment = "string",
+#'   existingSubscriptionId = "string",
+#'   metadataForms = list(
 #'     list(
-#'       group = list(
-#'         id = "string",
-#'         name = "string"
-#'       ),
-#'       project = list(
-#'         id = "string",
-#'         name = "string"
-#'       ),
-#'       user = list(
-#'         details = list(
-#'           iam = list(
-#'             arn = "string",
-#'             principalId = "string"
-#'           ),
-#'           sso = list(
-#'             firstName = "string",
-#'             lastName = "string",
-#'             username = "string"
-#'           )
-#'         ),
-#'         id = "string"
-#'       )
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
 #'     )
-#'   ),
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   updatedBy = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -9656,34 +9959,35 @@ datazone_get_subscription_request_details <- function(domainIdentifier, identifi
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   applicableAssetTypes = list(
-#'     "string"
-#'   ),
+#'   id = "string",
 #'   authorizedPrincipals = list(
 #'     "string"
 #'   ),
+#'   domainId = "string",
+#'   projectId = "string",
+#'   environmentId = "string",
+#'   name = "string",
+#'   type = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   domainId = "string",
-#'   environmentId = "string",
-#'   id = "string",
-#'   manageAccessRole = "string",
-#'   name = "string",
-#'   projectId = "string",
-#'   provider = "string",
-#'   subscriptionTargetConfig = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string"
-#'     )
-#'   ),
-#'   type = "string",
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   updatedBy = "string"
+#'   manageAccessRole = "string",
+#'   applicableAssetTypes = list(
+#'     "string"
+#'   ),
+#'   subscriptionTargetConfig = list(
+#'     list(
+#'       formName = "string",
+#'       content = "string"
+#'     )
+#'   ),
+#'   provider = "string",
+#'   subscriptionGrantCreationMode = "AUTOMATIC"|"MANUAL"
 #' )
 #' ```
 #'
@@ -9727,15 +10031,15 @@ datazone_get_subscription_target <- function(domainIdentifier, environmentIdenti
 #'
 #' @usage
 #' datazone_get_time_series_data_point(domainIdentifier, entityIdentifier,
-#'   entityType, formName, identifier)
+#'   entityType, identifier, formName)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain that houses the asset for which you
 #' want to get the data point.
 #' @param entityIdentifier &#91;required&#93; The ID of the asset for which you want to get the data point.
 #' @param entityType &#91;required&#93; The type of the asset for which you want to get the data point.
+#' @param identifier &#91;required&#93; The ID of the data point that you want to get.
 #' @param formName &#91;required&#93; The name of the time series form that houses the data point that you
 #' want to get.
-#' @param identifier &#91;required&#93; The ID of the data point that you want to get.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9744,17 +10048,17 @@ datazone_get_subscription_target <- function(domainIdentifier, environmentIdenti
 #'   domainId = "string",
 #'   entityId = "string",
 #'   entityType = "ASSET"|"LISTING",
+#'   formName = "string",
 #'   form = list(
-#'     content = "string",
 #'     formName = "string",
-#'     id = "string",
+#'     typeIdentifier = "string",
+#'     typeRevision = "string",
 #'     timestamp = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     typeIdentifier = "string",
-#'     typeRevision = "string"
-#'   ),
-#'   formName = "string"
+#'     content = "string",
+#'     id = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -9764,8 +10068,8 @@ datazone_get_subscription_target <- function(domainIdentifier, environmentIdenti
 #'   domainIdentifier = "string",
 #'   entityIdentifier = "string",
 #'   entityType = "ASSET"|"LISTING",
-#'   formName = "string",
-#'   identifier = "string"
+#'   identifier = "string",
+#'   formName = "string"
 #' )
 #' ```
 #'
@@ -9774,7 +10078,7 @@ datazone_get_subscription_target <- function(domainIdentifier, environmentIdenti
 #' @rdname datazone_get_time_series_data_point
 #'
 #' @aliases datazone_get_time_series_data_point
-datazone_get_time_series_data_point <- function(domainIdentifier, entityIdentifier, entityType, formName, identifier) {
+datazone_get_time_series_data_point <- function(domainIdentifier, entityIdentifier, entityType, identifier, formName) {
   op <- new_operation(
     name = "GetTimeSeriesDataPoint",
     http_method = "GET",
@@ -9783,7 +10087,7 @@ datazone_get_time_series_data_point <- function(domainIdentifier, entityIdentifi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$get_time_series_data_point_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName, identifier = identifier)
+  input <- .datazone$get_time_series_data_point_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, identifier = identifier, formName = formName)
   output <- .datazone$get_time_series_data_point_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -9799,32 +10103,36 @@ datazone_get_time_series_data_point <- function(domainIdentifier, entityIdentifi
 #' Gets a user profile in Amazon DataZone.
 #'
 #' @usage
-#' datazone_get_user_profile(domainIdentifier, type, userIdentifier)
+#' datazone_get_user_profile(domainIdentifier, userIdentifier, type,
+#'   sessionName)
 #'
 #' @param domainIdentifier &#91;required&#93; the ID of the Amazon DataZone domain the data portal of which you want
 #' to get.
-#' @param type The type of the user profile.
 #' @param userIdentifier &#91;required&#93; The identifier of the user for which you want to get the user profile.
+#' @param type The type of the user profile.
+#' @param sessionName The session name for IAM role sessions.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   id = "string",
+#'   type = "IAM"|"SSO",
+#'   status = "ASSIGNED"|"NOT_ASSIGNED"|"ACTIVATED"|"DEACTIVATED",
 #'   details = list(
 #'     iam = list(
 #'       arn = "string",
-#'       principalId = "string"
+#'       principalId = "string",
+#'       sessionName = "string",
+#'       groupProfileId = "string"
 #'     ),
 #'     sso = list(
+#'       username = "string",
 #'       firstName = "string",
-#'       lastName = "string",
-#'       username = "string"
+#'       lastName = "string"
 #'     )
-#'   ),
-#'   domainId = "string",
-#'   id = "string",
-#'   status = "ASSIGNED"|"NOT_ASSIGNED"|"ACTIVATED"|"DEACTIVATED",
-#'   type = "IAM"|"SSO"
+#'   )
 #' )
 #' ```
 #'
@@ -9832,8 +10140,9 @@ datazone_get_time_series_data_point <- function(domainIdentifier, entityIdentifi
 #' ```
 #' svc$get_user_profile(
 #'   domainIdentifier = "string",
+#'   userIdentifier = "string",
 #'   type = "IAM"|"SSO",
-#'   userIdentifier = "string"
+#'   sessionName = "string"
 #' )
 #' ```
 #'
@@ -9842,7 +10151,7 @@ datazone_get_time_series_data_point <- function(domainIdentifier, entityIdentifi
 #' @rdname datazone_get_user_profile
 #'
 #' @aliases datazone_get_user_profile
-datazone_get_user_profile <- function(domainIdentifier, type = NULL, userIdentifier) {
+datazone_get_user_profile <- function(domainIdentifier, userIdentifier, type = NULL, sessionName = NULL) {
   op <- new_operation(
     name = "GetUserProfile",
     http_method = "GET",
@@ -9851,7 +10160,7 @@ datazone_get_user_profile <- function(domainIdentifier, type = NULL, userIdentif
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$get_user_profile_input(domainIdentifier = domainIdentifier, type = type, userIdentifier = userIdentifier)
+  input <- .datazone$get_user_profile_input(domainIdentifier = domainIdentifier, userIdentifier = userIdentifier, type = type, sessionName = sessionName)
   output <- .datazone$get_user_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -9867,25 +10176,25 @@ datazone_get_user_profile <- function(domainIdentifier, type = NULL, userIdentif
 #' Lists existing account pools.
 #'
 #' @usage
-#' datazone_list_account_pools(domainIdentifier, maxResults, name,
-#'   nextToken, sortBy, sortOrder)
+#' datazone_list_account_pools(domainIdentifier, name, sortBy, sortOrder,
+#'   nextToken, maxResults)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where exsting account pools are to be listed.
-#' @param maxResults The maximum number of account pools to return in a single call to
-#' ListAccountPools. When the number of account pools to be listed is
-#' greater than the value of MaxResults, the response contains a NextToken
-#' value that you can use in a subsequent call to ListAccountPools to list
-#' the next set of account pools.
 #' @param name The name of the account pool to be listed.
+#' @param sortBy The sort by mechanism in which the existing account pools are to be
+#' listed.
+#' @param sortOrder The sort order in which the existing account pools are to be listed.
 #' @param nextToken When the number of account pools is greater than the default value for
 #' the MaxResults parameter, or if you explicitly specify a value for
 #' MaxResults that is less than the number of account pools, the response
 #' includes a pagination token named NextToken. You can specify this
 #' NextToken value in a subsequent call to ListAccountPools to list the
 #' next set of account pools.
-#' @param sortBy The sort by mechanism in which the existing account pools are to be
-#' listed.
-#' @param sortOrder The sort order in which the existing account pools are to be listed.
+#' @param maxResults The maximum number of account pools to return in a single call to
+#' ListAccountPools. When the number of account pools to be listed is
+#' greater than the value of MaxResults, the response contains a NextToken
+#' value that you can use in a subsequent call to ListAccountPools to list
+#' the next set of account pools.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9893,12 +10202,12 @@ datazone_get_user_profile <- function(domainIdentifier, type = NULL, userIdentif
 #' list(
 #'   items = list(
 #'     list(
-#'       createdBy = "string",
 #'       domainId = "string",
-#'       domainUnitId = "string",
 #'       id = "string",
 #'       name = "string",
 #'       resolutionStrategy = "MANUAL",
+#'       domainUnitId = "string",
+#'       createdBy = "string",
 #'       updatedBy = "string"
 #'     )
 #'   ),
@@ -9910,11 +10219,11 @@ datazone_get_user_profile <- function(domainIdentifier, type = NULL, userIdentif
 #' ```
 #' svc$list_account_pools(
 #'   domainIdentifier = "string",
-#'   maxResults = 123,
 #'   name = "string",
-#'   nextToken = "string",
 #'   sortBy = "NAME",
-#'   sortOrder = "ASCENDING"|"DESCENDING"
+#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -9923,7 +10232,7 @@ datazone_get_user_profile <- function(domainIdentifier, type = NULL, userIdentif
 #' @rdname datazone_list_account_pools
 #'
 #' @aliases datazone_list_account_pools
-datazone_list_account_pools <- function(domainIdentifier, maxResults = NULL, name = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+datazone_list_account_pools <- function(domainIdentifier, name = NULL, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAccountPools",
     http_method = "GET",
@@ -9932,7 +10241,7 @@ datazone_list_account_pools <- function(domainIdentifier, maxResults = NULL, nam
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_account_pools_input(domainIdentifier = domainIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .datazone$list_account_pools_input(domainIdentifier = domainIdentifier, name = name, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_account_pools_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -9949,22 +10258,22 @@ datazone_list_account_pools <- function(domainIdentifier, maxResults = NULL, nam
 #'
 #' @usage
 #' datazone_list_accounts_in_account_pool(domainIdentifier, identifier,
-#'   maxResults, nextToken)
+#'   nextToken, maxResults)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain in which the accounts in the specified account pool
 #' are to be listed.
 #' @param identifier &#91;required&#93; The ID of the account pool whose accounts are to be listed.
-#' @param maxResults The maximum number of accounts to return in a single call to
-#' ListAccountsInAccountPool. When the number of accounts to be listed is
-#' greater than the value of MaxResults, the response contains a NextToken
-#' value that you can use in a subsequent call to ListAccountsInAccountPool
-#' to list the next set of accounts.
 #' @param nextToken When the number of accounts is greater than the default value for the
 #' MaxResults parameter, or if you explicitly specify a value for
 #' MaxResults that is less than the number of accounts, the response
 #' includes a pagination token named NextToken. You can specify this
 #' NextToken value in a subsequent call to ListAccountsInAccountPool to
 #' list the next set of accounts.
+#' @param maxResults The maximum number of accounts to return in a single call to
+#' ListAccountsInAccountPool. When the number of accounts to be listed is
+#' greater than the value of MaxResults, the response contains a NextToken
+#' value that you can use in a subsequent call to ListAccountsInAccountPool
+#' to list the next set of accounts.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9973,10 +10282,10 @@ datazone_list_account_pools <- function(domainIdentifier, maxResults = NULL, nam
 #'   items = list(
 #'     list(
 #'       awsAccountId = "string",
-#'       awsAccountName = "string",
 #'       supportedRegions = list(
 #'         "string"
-#'       )
+#'       ),
+#'       awsAccountName = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -9988,8 +10297,8 @@ datazone_list_account_pools <- function(domainIdentifier, maxResults = NULL, nam
 #' svc$list_accounts_in_account_pool(
 #'   domainIdentifier = "string",
 #'   identifier = "string",
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -9998,7 +10307,7 @@ datazone_list_account_pools <- function(domainIdentifier, maxResults = NULL, nam
 #' @rdname datazone_list_accounts_in_account_pool
 #'
 #' @aliases datazone_list_accounts_in_account_pool
-datazone_list_accounts_in_account_pool <- function(domainIdentifier, identifier, maxResults = NULL, nextToken = NULL) {
+datazone_list_accounts_in_account_pool <- function(domainIdentifier, identifier, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAccountsInAccountPool",
     http_method = "GET",
@@ -10007,7 +10316,7 @@ datazone_list_accounts_in_account_pool <- function(domainIdentifier, identifier,
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_accounts_in_account_pool_input(domainIdentifier = domainIdentifier, identifier = identifier, maxResults = maxResults, nextToken = nextToken)
+  input <- .datazone$list_accounts_in_account_pool_input(domainIdentifier = domainIdentifier, identifier = identifier, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_accounts_in_account_pool_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -10029,17 +10338,12 @@ datazone_list_accounts_in_account_pool <- function(domainIdentifier, identifier,
 #' -   The asset must have at least one filter created to return results.
 #'
 #' @usage
-#' datazone_list_asset_filters(assetIdentifier, domainIdentifier,
-#'   maxResults, nextToken, status)
+#' datazone_list_asset_filters(domainIdentifier, assetIdentifier, status,
+#'   nextToken, maxResults)
 #'
-#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list asset filters.
-#' @param maxResults The maximum number of asset filters to return in a single call to
-#' [`list_asset_filters`][datazone_list_asset_filters]. When the number of
-#' asset filters to be listed is greater than the value of `MaxResults`,
-#' the response contains a `NextToken` value that you can use in a
-#' subsequent call to [`list_asset_filters`][datazone_list_asset_filters]
-#' to list the next set of asset filters.
+#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
+#' @param status The status of the asset filter.
 #' @param nextToken When the number of asset filters is greater than the default value for
 #' the `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of asset filters, the response
@@ -10047,7 +10351,12 @@ datazone_list_accounts_in_account_pool <- function(domainIdentifier, identifier,
 #' `NextToken` value in a subsequent call to
 #' [`list_asset_filters`][datazone_list_asset_filters] to list the next set
 #' of asset filters.
-#' @param status The status of the asset filter.
+#' @param maxResults The maximum number of asset filters to return in a single call to
+#' [`list_asset_filters`][datazone_list_asset_filters]. When the number of
+#' asset filters to be listed is greater than the value of `MaxResults`,
+#' the response contains a `NextToken` value that you can use in a
+#' subsequent call to [`list_asset_filters`][datazone_list_asset_filters]
+#' to list the next set of asset filters.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10055,20 +10364,20 @@ datazone_list_accounts_in_account_pool <- function(domainIdentifier, identifier,
 #' list(
 #'   items = list(
 #'     list(
-#'       assetId = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       description = "string",
+#'       id = "string",
 #'       domainId = "string",
+#'       assetId = "string",
+#'       name = "string",
+#'       description = "string",
+#'       status = "VALID"|"INVALID",
 #'       effectiveColumnNames = list(
 #'         "string"
 #'       ),
 #'       effectiveRowFilter = "string",
-#'       errorMessage = "string",
-#'       id = "string",
-#'       name = "string",
-#'       status = "VALID"|"INVALID"
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       errorMessage = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -10078,11 +10387,11 @@ datazone_list_accounts_in_account_pool <- function(domainIdentifier, identifier,
 #' @section Request syntax:
 #' ```
 #' svc$list_asset_filters(
-#'   assetIdentifier = "string",
 #'   domainIdentifier = "string",
-#'   maxResults = 123,
+#'   assetIdentifier = "string",
+#'   status = "VALID"|"INVALID",
 #'   nextToken = "string",
-#'   status = "VALID"|"INVALID"
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -10091,7 +10400,7 @@ datazone_list_accounts_in_account_pool <- function(domainIdentifier, identifier,
 #' @rdname datazone_list_asset_filters
 #'
 #' @aliases datazone_list_asset_filters
-datazone_list_asset_filters <- function(assetIdentifier, domainIdentifier, maxResults = NULL, nextToken = NULL, status = NULL) {
+datazone_list_asset_filters <- function(domainIdentifier, assetIdentifier, status = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssetFilters",
     http_method = "GET",
@@ -10100,7 +10409,7 @@ datazone_list_asset_filters <- function(assetIdentifier, domainIdentifier, maxRe
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_asset_filters_input(assetIdentifier = assetIdentifier, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, status = status)
+  input <- .datazone$list_asset_filters_input(domainIdentifier = domainIdentifier, assetIdentifier = assetIdentifier, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_asset_filters_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -10127,17 +10436,11 @@ datazone_list_asset_filters <- function(assetIdentifier, domainIdentifier, maxRe
 #' -   User must have permissions on the asset and domain.
 #'
 #' @usage
-#' datazone_list_asset_revisions(domainIdentifier, identifier, maxResults,
-#'   nextToken)
+#' datazone_list_asset_revisions(domainIdentifier, identifier, nextToken,
+#'   maxResults)
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the domain.
 #' @param identifier &#91;required&#93; The identifier of the asset.
-#' @param maxResults The maximum number of revisions to return in a single call to
-#' [`list_asset_revisions`][datazone_list_asset_revisions]. When the number
-#' of revisions to be listed is greater than the value of `MaxResults`, the
-#' response contains a `NextToken` value that you can use in a subsequent
-#' call to [`list_asset_revisions`][datazone_list_asset_revisions] to list
-#' the next set of revisions.
 #' @param nextToken When the number of revisions is greater than the default value for the
 #' `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of revisions, the response
@@ -10145,6 +10448,12 @@ datazone_list_asset_filters <- function(assetIdentifier, domainIdentifier, maxRe
 #' `NextToken` value in a subsequent call to
 #' [`list_asset_revisions`][datazone_list_asset_revisions] to list the next
 #' set of revisions.
+#' @param maxResults The maximum number of revisions to return in a single call to
+#' [`list_asset_revisions`][datazone_list_asset_revisions]. When the number
+#' of revisions to be listed is greater than the value of `MaxResults`, the
+#' response contains a `NextToken` value that you can use in a subsequent
+#' call to [`list_asset_revisions`][datazone_list_asset_revisions] to list
+#' the next set of revisions.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10152,13 +10461,13 @@ datazone_list_asset_filters <- function(assetIdentifier, domainIdentifier, maxRe
 #' list(
 #'   items = list(
 #'     list(
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       createdBy = "string",
 #'       domainId = "string",
 #'       id = "string",
-#'       revision = "string"
+#'       revision = "string",
+#'       createdBy = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -10170,8 +10479,8 @@ datazone_list_asset_filters <- function(assetIdentifier, domainIdentifier, maxRe
 #' svc$list_asset_revisions(
 #'   domainIdentifier = "string",
 #'   identifier = "string",
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -10180,7 +10489,7 @@ datazone_list_asset_filters <- function(assetIdentifier, domainIdentifier, maxRe
 #' @rdname datazone_list_asset_revisions
 #'
 #' @aliases datazone_list_asset_revisions
-datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResults = NULL, nextToken = NULL) {
+datazone_list_asset_revisions <- function(domainIdentifier, identifier, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssetRevisions",
     http_method = "GET",
@@ -10189,7 +10498,7 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResul
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_asset_revisions_input(domainIdentifier = domainIdentifier, identifier = identifier, maxResults = maxResults, nextToken = nextToken)
+  input <- .datazone$list_asset_revisions_input(domainIdentifier = domainIdentifier, identifier = identifier, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_asset_revisions_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -10207,29 +10516,29 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResul
 #' resources and services.
 #'
 #' @usage
-#' datazone_list_connections(domainIdentifier, environmentIdentifier,
-#'   maxResults, name, nextToken, projectIdentifier, scope, sortBy,
-#'   sortOrder, type)
+#' datazone_list_connections(domainIdentifier, maxResults, nextToken,
+#'   sortBy, sortOrder, name, environmentIdentifier, projectIdentifier, type,
+#'   scope)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list connections.
-#' @param environmentIdentifier The ID of the environment where you want to list connections.
 #' @param maxResults The maximum number of connections to return in a single call to
 #' ListConnections. When the number of connections to be listed is greater
 #' than the value of MaxResults, the response contains a NextToken value
 #' that you can use in a subsequent call to ListConnections to list the
 #' next set of connections.
-#' @param name The name of the connection.
 #' @param nextToken When the number of connections is greater than the default value for the
 #' MaxResults parameter, or if you explicitly specify a value for
 #' MaxResults that is less than the number of connections, the response
 #' includes a pagination token named NextToken. You can specify this
 #' NextToken value in a subsequent call to ListConnections to list the next
 #' set of connections.
-#' @param projectIdentifier The ID of the project where you want to list connections.
-#' @param scope The scope of the connection.
 #' @param sortBy Specifies how you want to sort the listed connections.
 #' @param sortOrder Specifies the sort order for the listed connections.
+#' @param name The name of the connection.
+#' @param environmentIdentifier The ID of the environment where you want to list connections.
+#' @param projectIdentifier The ID of the project where you want to list connections.
 #' @param type The type of connection.
+#' @param scope The scope of the connection.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10237,6 +10546,14 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResul
 #' list(
 #'   items = list(
 #'     list(
+#'       configurations = list(
+#'         list(
+#'           classification = "string",
+#'           properties = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
 #'       connectionId = "string",
 #'       domainId = "string",
 #'       domainUnitId = "string",
@@ -10250,79 +10567,82 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResul
 #'             awsRegion = "string",
 #'             iamConnectionId = "string"
 #'           ),
-#'           enableTrustedIdentityPropagation = TRUE|FALSE,
+#'           glueConnectionName = "string",
+#'           glueConnectionNames = list(
+#'             "string"
+#'           ),
 #'           glueConnection = list(
-#'             athenaProperties = list(
-#'               "string"
-#'             ),
-#'             authenticationConfiguration = list(
-#'               authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
-#'               oAuth2Properties = list(
-#'                 authorizationCodeProperties = list(
-#'                   authorizationCode = "string",
-#'                   redirectUri = "string"
-#'                 ),
-#'                 oAuth2ClientApplication = list(
-#'                   aWSManagedClientApplicationReference = "string",
-#'                   userManagedClientApplicationClientId = "string"
-#'                 ),
-#'                 oAuth2Credentials = list(
-#'                   accessToken = "string",
-#'                   jwtToken = "string",
-#'                   refreshToken = "string",
-#'                   userManagedClientApplicationClientSecret = "string"
-#'                 ),
-#'                 oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
-#'                 tokenUrl = "string",
-#'                 tokenUrlParametersMap = list(
-#'                   "string"
-#'                 )
-#'               ),
-#'               secretArn = "string"
-#'             ),
-#'             compatibleComputeEnvironments = list(
-#'               "SPARK"|"ATHENA"|"PYTHON"
-#'             ),
-#'             connectionProperties = list(
-#'               "string"
-#'             ),
-#'             connectionSchemaVersion = 123,
-#'             connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW",
-#'             creationTime = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
+#'             name = "string",
 #'             description = "string",
-#'             lastConnectionValidationTime = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             lastUpdatedBy = "string",
-#'             lastUpdatedTime = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
+#'             connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW",
 #'             matchCriteria = list(
 #'               "string"
 #'             ),
-#'             name = "string",
-#'             physicalConnectionRequirements = list(
-#'               availabilityZone = "string",
-#'               securityGroupIdList = list(
-#'                 "string"
-#'               ),
-#'               subnetId = "string",
-#'               subnetIdList = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             pythonProperties = list(
+#'             connectionProperties = list(
 #'               "string"
 #'             ),
 #'             sparkProperties = list(
 #'               "string"
 #'             ),
+#'             athenaProperties = list(
+#'               "string"
+#'             ),
+#'             pythonProperties = list(
+#'               "string"
+#'             ),
+#'             physicalConnectionRequirements = list(
+#'               subnetId = "string",
+#'               subnetIdList = list(
+#'                 "string"
+#'               ),
+#'               securityGroupIdList = list(
+#'                 "string"
+#'               ),
+#'               availabilityZone = "string"
+#'             ),
+#'             creationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             lastUpdatedTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             lastUpdatedBy = "string",
 #'             status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
-#'             statusReason = "string"
+#'             statusReason = "string",
+#'             lastConnectionValidationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             authenticationConfiguration = list(
+#'               authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'               secretArn = "string",
+#'               oAuth2Properties = list(
+#'                 oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'                 oAuth2ClientApplication = list(
+#'                   userManagedClientApplicationClientId = "string",
+#'                   aWSManagedClientApplicationReference = "string"
+#'                 ),
+#'                 tokenUrl = "string",
+#'                 tokenUrlParametersMap = list(
+#'                   "string"
+#'                 ),
+#'                 authorizationCodeProperties = list(
+#'                   authorizationCode = "string",
+#'                   redirectUri = "string"
+#'                 ),
+#'                 oAuth2Credentials = list(
+#'                   userManagedClientApplicationClientSecret = "string",
+#'                   accessToken = "string",
+#'                   refreshToken = "string",
+#'                   jwtToken = "string"
+#'                 )
+#'               )
+#'             ),
+#'             connectionSchemaVersion = 123,
+#'             compatibleComputeEnvironments = list(
+#'               "SPARK"|"ATHENA"|"PYTHON"
+#'             )
 #'           ),
-#'           glueConnectionName = "string",
+#'           enableTrustedIdentityPropagation = TRUE|FALSE,
 #'           host = "string",
 #'           port = 123,
 #'           protocol = "ATHENA"|"GLUE_INTERACTIVE_SESSION"|"HTTPS"|"JDBC"|"LIVY"|"ODBC"|"PRISM",
@@ -10331,31 +10651,27 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResul
 #'       ),
 #'       projectId = "string",
 #'       props = list(
-#'         amazonQProperties = list(
-#'           authMode = "string",
-#'           isEnabled = TRUE|FALSE,
-#'           profileArn = "string"
-#'         ),
 #'         athenaProperties = list(
 #'           workgroupName = "string"
 #'         ),
 #'         glueProperties = list(
-#'           errorMessage = "string",
-#'           status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED"
+#'           status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'           errorMessage = "string"
 #'         ),
 #'         hyperPodProperties = list(
-#'           clusterArn = "string",
 #'           clusterName = "string",
+#'           clusterArn = "string",
 #'           orchestrator = "EKS"|"SLURM"
 #'         ),
 #'         iamProperties = list(
 #'           environmentId = "string",
 #'           glueLineageSyncEnabled = TRUE|FALSE
 #'         ),
-#'         mlflowProperties = list(
-#'           trackingServerArn = "string"
-#'         ),
 #'         redshiftProperties = list(
+#'           storage = list(
+#'             clusterName = "string",
+#'             workgroupName = "string"
+#'           ),
 #'           credentials = list(
 #'             secretArn = "string",
 #'             usernamePassword = list(
@@ -10363,32 +10679,21 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResul
 #'               username = "string"
 #'             )
 #'           ),
-#'           databaseName = "string",
 #'           isProvisionedSecret = TRUE|FALSE,
 #'           jdbcIamUrl = "string",
 #'           jdbcUrl = "string",
+#'           redshiftTempDir = "string",
 #'           lineageSync = list(
-#'             enabled = TRUE|FALSE,
 #'             lineageJobId = "string",
+#'             enabled = TRUE|FALSE,
 #'             schedule = list(
 #'               schedule = "string"
 #'             )
 #'           ),
-#'           redshiftTempDir = "string",
 #'           status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
-#'           storage = list(
-#'             clusterName = "string",
-#'             workgroupName = "string"
-#'           )
-#'         ),
-#'         s3Properties = list(
-#'           errorMessage = "string",
-#'           s3AccessGrantLocationId = "string",
-#'           s3Uri = "string",
-#'           status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED"
+#'           databaseName = "string"
 #'         ),
 #'         sparkEmrProperties = list(
-#'           certificateData = "string",
 #'           computeArn = "string",
 #'           credentials = list(
 #'             password = "string",
@@ -10402,30 +10707,56 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResul
 #'           javaVirtualEnv = "string",
 #'           livyEndpoint = "string",
 #'           logUri = "string",
+#'           pythonVirtualEnv = "string",
+#'           runtimeRole = "string",
+#'           trustedCertificatesS3Uri = "string",
+#'           certificateData = "string",
 #'           managedEndpointArn = "string",
 #'           managedEndpointCredentials = list(
 #'             id = "string",
 #'             token = "string"
-#'           ),
-#'           pythonVirtualEnv = "string",
-#'           runtimeRole = "string",
-#'           trustedCertificatesS3Uri = "string"
+#'           )
 #'         ),
 #'         sparkGlueProperties = list(
 #'           additionalArgs = list(
 #'             connection = "string"
 #'           ),
 #'           glueConnectionName = "string",
+#'           glueConnectionNames = list(
+#'             "string"
+#'           ),
 #'           glueVersion = "string",
 #'           idleTimeout = 123,
 #'           javaVirtualEnv = "string",
 #'           numberOfWorkers = 123,
 #'           pythonVirtualEnv = "string",
 #'           workerType = "string"
+#'         ),
+#'         s3Properties = list(
+#'           s3Uri = "string",
+#'           s3AccessGrantLocationId = "string",
+#'           registerS3AccessGrantLocation = TRUE|FALSE,
+#'           status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'           errorMessage = "string"
+#'         ),
+#'         amazonQProperties = list(
+#'           isEnabled = TRUE|FALSE,
+#'           profileArn = "string",
+#'           authMode = "string"
+#'         ),
+#'         mlflowProperties = list(
+#'           trackingServerArn = "string"
+#'         ),
+#'         workflowsMwaaProperties = list(
+#'           mwaaEnvironmentName = "string"
+#'         ),
+#'         workflowsServerlessProperties = list(),
+#'         lakehouseProperties = list(
+#'           glueLineageSyncEnabled = TRUE|FALSE
 #'         )
 #'       ),
-#'       scope = "DOMAIN"|"PROJECT",
-#'       type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"
+#'       type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW",
+#'       scope = "DOMAIN"|"PROJECT"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -10436,15 +10767,15 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResul
 #' ```
 #' svc$list_connections(
 #'   domainIdentifier = "string",
-#'   environmentIdentifier = "string",
 #'   maxResults = 123,
-#'   name = "string",
 #'   nextToken = "string",
-#'   projectIdentifier = "string",
-#'   scope = "DOMAIN"|"PROJECT",
 #'   sortBy = "NAME",
 #'   sortOrder = "ASCENDING"|"DESCENDING",
-#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"
+#'   name = "string",
+#'   environmentIdentifier = "string",
+#'   projectIdentifier = "string",
+#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW",
+#'   scope = "DOMAIN"|"PROJECT"
 #' )
 #' ```
 #'
@@ -10453,7 +10784,7 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResul
 #' @rdname datazone_list_connections
 #'
 #' @aliases datazone_list_connections
-datazone_list_connections <- function(domainIdentifier, environmentIdentifier = NULL, maxResults = NULL, name = NULL, nextToken = NULL, projectIdentifier = NULL, scope = NULL, sortBy = NULL, sortOrder = NULL, type = NULL) {
+datazone_list_connections <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL, name = NULL, environmentIdentifier = NULL, projectIdentifier = NULL, type = NULL, scope = NULL) {
   op <- new_operation(
     name = "ListConnections",
     http_method = "GET",
@@ -10462,7 +10793,7 @@ datazone_list_connections <- function(domainIdentifier, environmentIdentifier = 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_connections_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, projectIdentifier = projectIdentifier, scope = scope, sortBy = sortBy, sortOrder = sortOrder, type = type)
+  input <- .datazone$list_connections_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder, name = name, environmentIdentifier = environmentIdentifier, projectIdentifier = projectIdentifier, type = type, scope = scope)
   output <- .datazone$list_connections_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -10513,13 +10844,13 @@ datazone_list_connections <- function(domainIdentifier, environmentIdentifier = 
 #' list(
 #'   items = list(
 #'     list(
+#'       domainId = "string",
+#'       id = "string",
+#'       revision = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       createdBy = "string",
-#'       domainId = "string",
-#'       id = "string",
-#'       revision = "string"
+#'       createdBy = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -10567,18 +10898,12 @@ datazone_list_data_product_revisions <- function(domainIdentifier, identifier, m
 #'
 #' @usage
 #' datazone_list_data_source_run_activities(domainIdentifier, identifier,
-#'   maxResults, nextToken, status)
+#'   status, nextToken, maxResults)
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which to list data
 #' source run activities.
 #' @param identifier &#91;required&#93; The identifier of the data source run.
-#' @param maxResults The maximum number of activities to return in a single call to
-#' [`list_data_source_run_activities`][datazone_list_data_source_run_activities].
-#' When the number of activities to be listed is greater than the value of
-#' `MaxResults`, the response contains a `NextToken` value that you can use
-#' in a subsequent call to
-#' [`list_data_source_run_activities`][datazone_list_data_source_run_activities]
-#' to list the next set of activities.
+#' @param status The status of the data source run.
 #' @param nextToken When the number of activities is greater than the default value for the
 #' `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of activities, the response
@@ -10586,7 +10911,13 @@ datazone_list_data_product_revisions <- function(domainIdentifier, identifier, m
 #' `NextToken` value in a subsequent call to
 #' [`list_data_source_run_activities`][datazone_list_data_source_run_activities]
 #' to list the next set of activities.
-#' @param status The status of the data source run.
+#' @param maxResults The maximum number of activities to return in a single call to
+#' [`list_data_source_run_activities`][datazone_list_data_source_run_activities].
+#' When the number of activities to be listed is greater than the value of
+#' `MaxResults`, the response contains a `NextToken` value that you can use
+#' in a subsequent call to
+#' [`list_data_source_run_activities`][datazone_list_data_source_run_activities]
+#' to list the next set of activities.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10594,25 +10925,25 @@ datazone_list_data_product_revisions <- function(domainIdentifier, identifier, m
 #' list(
 #'   items = list(
 #'     list(
+#'       database = "string",
+#'       dataSourceRunId = "string",
+#'       technicalName = "string",
+#'       dataAssetStatus = "FAILED"|"PUBLISHING_FAILED"|"SUCCEEDED_CREATED"|"SUCCEEDED_UPDATED"|"SKIPPED_ALREADY_IMPORTED"|"SKIPPED_ARCHIVED"|"SKIPPED_NO_ACCESS"|"UNCHANGED",
+#'       projectId = "string",
+#'       dataAssetId = "string",
+#'       technicalDescription = "string",
+#'       errorMessage = list(
+#'         errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION",
+#'         errorDetail = "string"
+#'       ),
+#'       lineageSummary = list(
+#'         eventId = "string",
+#'         eventStatus = "REQUESTED"|"PROCESSING"|"SUCCESS"|"FAILED",
+#'         errorMessage = "string"
+#'       ),
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       dataAssetId = "string",
-#'       dataAssetStatus = "FAILED"|"PUBLISHING_FAILED"|"SUCCEEDED_CREATED"|"SUCCEEDED_UPDATED"|"SKIPPED_ALREADY_IMPORTED"|"SKIPPED_ARCHIVED"|"SKIPPED_NO_ACCESS"|"UNCHANGED",
-#'       dataSourceRunId = "string",
-#'       database = "string",
-#'       errorMessage = list(
-#'         errorDetail = "string",
-#'         errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
-#'       ),
-#'       lineageSummary = list(
-#'         errorMessage = "string",
-#'         eventId = "string",
-#'         eventStatus = "REQUESTED"|"PROCESSING"|"SUCCESS"|"FAILED"
-#'       ),
-#'       projectId = "string",
-#'       technicalDescription = "string",
-#'       technicalName = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -10627,9 +10958,9 @@ datazone_list_data_product_revisions <- function(domainIdentifier, identifier, m
 #' svc$list_data_source_run_activities(
 #'   domainIdentifier = "string",
 #'   identifier = "string",
-#'   maxResults = 123,
+#'   status = "FAILED"|"PUBLISHING_FAILED"|"SUCCEEDED_CREATED"|"SUCCEEDED_UPDATED"|"SKIPPED_ALREADY_IMPORTED"|"SKIPPED_ARCHIVED"|"SKIPPED_NO_ACCESS"|"UNCHANGED",
 #'   nextToken = "string",
-#'   status = "FAILED"|"PUBLISHING_FAILED"|"SUCCEEDED_CREATED"|"SUCCEEDED_UPDATED"|"SKIPPED_ALREADY_IMPORTED"|"SKIPPED_ARCHIVED"|"SKIPPED_NO_ACCESS"|"UNCHANGED"
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -10638,7 +10969,7 @@ datazone_list_data_product_revisions <- function(domainIdentifier, identifier, m
 #' @rdname datazone_list_data_source_run_activities
 #'
 #' @aliases datazone_list_data_source_run_activities
-datazone_list_data_source_run_activities <- function(domainIdentifier, identifier, maxResults = NULL, nextToken = NULL, status = NULL) {
+datazone_list_data_source_run_activities <- function(domainIdentifier, identifier, status = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListDataSourceRunActivities",
     http_method = "GET",
@@ -10647,7 +10978,7 @@ datazone_list_data_source_run_activities <- function(domainIdentifier, identifie
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_data_source_run_activities_input(domainIdentifier = domainIdentifier, identifier = identifier, maxResults = maxResults, nextToken = nextToken, status = status)
+  input <- .datazone$list_data_source_run_activities_input(domainIdentifier = domainIdentifier, identifier = identifier, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_data_source_run_activities_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -10663,19 +10994,13 @@ datazone_list_data_source_run_activities <- function(domainIdentifier, identifie
 #' Lists data source runs in Amazon DataZone.
 #'
 #' @usage
-#' datazone_list_data_source_runs(dataSourceIdentifier, domainIdentifier,
-#'   maxResults, nextToken, status)
+#' datazone_list_data_source_runs(domainIdentifier, dataSourceIdentifier,
+#'   status, nextToken, maxResults)
 #'
-#' @param dataSourceIdentifier &#91;required&#93; The identifier of the data source.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which to invoke the
 #' [`list_data_source_runs`][datazone_list_data_source_runs] action.
-#' @param maxResults The maximum number of runs to return in a single call to
-#' [`list_data_source_runs`][datazone_list_data_source_runs]. When the
-#' number of runs to be listed is greater than the value of `MaxResults`,
-#' the response contains a `NextToken` value that you can use in a
-#' subsequent call to
-#' [`list_data_source_runs`][datazone_list_data_source_runs] to list the
-#' next set of runs.
+#' @param dataSourceIdentifier &#91;required&#93; The identifier of the data source.
+#' @param status The status of the data source.
 #' @param nextToken When the number of runs is greater than the default value for the
 #' `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of runs, the response includes
@@ -10683,7 +11008,13 @@ datazone_list_data_source_run_activities <- function(domainIdentifier, identifie
 #' value in a subsequent call to
 #' [`list_data_source_runs`][datazone_list_data_source_runs] to list the
 #' next set of runs.
-#' @param status The status of the data source.
+#' @param maxResults The maximum number of runs to return in a single call to
+#' [`list_data_source_runs`][datazone_list_data_source_runs]. When the
+#' number of runs to be listed is greater than the value of `MaxResults`,
+#' the response contains a `NextToken` value that you can use in a
+#' subsequent call to
+#' [`list_data_source_runs`][datazone_list_data_source_runs] to list the
+#' next set of runs.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10691,36 +11022,36 @@ datazone_list_data_source_run_activities <- function(domainIdentifier, identifie
 #' list(
 #'   items = list(
 #'     list(
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       dataSourceId = "string",
-#'       errorMessage = list(
-#'         errorDetail = "string",
-#'         errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
-#'       ),
 #'       id = "string",
-#'       lineageSummary = list(
-#'         importStatus = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"PARTIALLY_SUCCEEDED"
-#'       ),
+#'       dataSourceId = "string",
+#'       type = "PRIORITIZED"|"SCHEDULED",
+#'       status = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
 #'       projectId = "string",
 #'       runStatisticsForAssets = list(
 #'         added = 123,
-#'         failed = 123,
-#'         skipped = 123,
+#'         updated = 123,
 #'         unchanged = 123,
-#'         updated = 123
+#'         skipped = 123,
+#'         failed = 123
+#'       ),
+#'       errorMessage = list(
+#'         errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION",
+#'         errorDetail = "string"
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
 #'       ),
 #'       startedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       status = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
 #'       stoppedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       type = "PRIORITIZED"|"SCHEDULED",
-#'       updatedAt = as.POSIXct(
-#'         "2015-01-01"
+#'       lineageSummary = list(
+#'         importStatus = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"PARTIALLY_SUCCEEDED"
 #'       )
 #'     )
 #'   ),
@@ -10731,11 +11062,11 @@ datazone_list_data_source_run_activities <- function(domainIdentifier, identifie
 #' @section Request syntax:
 #' ```
 #' svc$list_data_source_runs(
-#'   dataSourceIdentifier = "string",
 #'   domainIdentifier = "string",
-#'   maxResults = 123,
+#'   dataSourceIdentifier = "string",
+#'   status = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
 #'   nextToken = "string",
-#'   status = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS"
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -10744,7 +11075,7 @@ datazone_list_data_source_run_activities <- function(domainIdentifier, identifie
 #' @rdname datazone_list_data_source_runs
 #'
 #' @aliases datazone_list_data_source_runs
-datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifier, maxResults = NULL, nextToken = NULL, status = NULL) {
+datazone_list_data_source_runs <- function(domainIdentifier, dataSourceIdentifier, status = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListDataSourceRuns",
     http_method = "GET",
@@ -10753,7 +11084,7 @@ datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifie
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_data_source_runs_input(dataSourceIdentifier = dataSourceIdentifier, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, status = status)
+  input <- .datazone$list_data_source_runs_input(domainIdentifier = domainIdentifier, dataSourceIdentifier = dataSourceIdentifier, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_data_source_runs_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -10769,20 +11100,17 @@ datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifie
 #' Lists data sources in Amazon DataZone.
 #'
 #' @usage
-#' datazone_list_data_sources(connectionIdentifier, domainIdentifier,
-#'   environmentIdentifier, maxResults, name, nextToken, projectIdentifier,
-#'   status, type)
+#' datazone_list_data_sources(domainIdentifier, projectIdentifier,
+#'   environmentIdentifier, connectionIdentifier, type, status, name,
+#'   nextToken, maxResults)
 #'
-#' @param connectionIdentifier The ID of the connection.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which to list the data
 #' sources.
+#' @param projectIdentifier &#91;required&#93; The identifier of the project in which to list data sources.
 #' @param environmentIdentifier The identifier of the environment in which to list the data sources.
-#' @param maxResults The maximum number of data sources to return in a single call to
-#' [`list_data_sources`][datazone_list_data_sources]. When the number of
-#' data sources to be listed is greater than the value of `MaxResults`, the
-#' response contains a `NextToken` value that you can use in a subsequent
-#' call to [`list_data_sources`][datazone_list_data_sources] to list the
-#' next set of data sources.
+#' @param connectionIdentifier The ID of the connection.
+#' @param type The type of the data source.
+#' @param status The status of the data source.
 #' @param name The name of the data source.
 #' @param nextToken When the number of data sources is greater than the default value for
 #' the `MaxResults` parameter, or if you explicitly specify a value for
@@ -10791,9 +11119,12 @@ datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifie
 #' `NextToken` value in a subsequent call to
 #' [`list_data_sources`][datazone_list_data_sources] to list the next set
 #' of data sources.
-#' @param projectIdentifier &#91;required&#93; The identifier of the project in which to list data sources.
-#' @param status The status of the data source.
-#' @param type The type of the data source.
+#' @param maxResults The maximum number of data sources to return in a single call to
+#' [`list_data_sources`][datazone_list_data_sources]. When the number of
+#' data sources to be listed is greater than the value of `MaxResults`, the
+#' response contains a `NextToken` value that you can use in a subsequent
+#' call to [`list_data_sources`][datazone_list_data_sources] to list the
+#' next set of data sources.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10801,34 +11132,34 @@ datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifie
 #' list(
 #'   items = list(
 #'     list(
-#'       connectionId = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       dataSourceId = "string",
-#'       description = "string",
 #'       domainId = "string",
-#'       enableSetting = "ENABLED"|"DISABLED",
 #'       environmentId = "string",
-#'       lastRunAssetCount = 123,
+#'       connectionId = "string",
+#'       dataSourceId = "string",
+#'       name = "string",
+#'       type = "string",
+#'       status = "CREATING"|"FAILED_CREATION"|"READY"|"UPDATING"|"FAILED_UPDATE"|"RUNNING"|"DELETING"|"FAILED_DELETION",
+#'       enableSetting = "ENABLED"|"DISABLED",
+#'       schedule = list(
+#'         timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC",
+#'         schedule = "string"
+#'       ),
+#'       lastRunStatus = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
 #'       lastRunAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       lastRunErrorMessage = list(
-#'         errorDetail = "string",
-#'         errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
+#'         errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION",
+#'         errorDetail = "string"
 #'       ),
-#'       lastRunStatus = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
-#'       name = "string",
-#'       schedule = list(
-#'         schedule = "string",
-#'         timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC"
+#'       lastRunAssetCount = 123,
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
 #'       ),
-#'       status = "CREATING"|"FAILED_CREATION"|"READY"|"UPDATING"|"FAILED_UPDATE"|"RUNNING"|"DELETING"|"FAILED_DELETION",
-#'       type = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       description = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -10838,15 +11169,15 @@ datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifie
 #' @section Request syntax:
 #' ```
 #' svc$list_data_sources(
-#'   connectionIdentifier = "string",
 #'   domainIdentifier = "string",
+#'   projectIdentifier = "string",
 #'   environmentIdentifier = "string",
-#'   maxResults = 123,
+#'   connectionIdentifier = "string",
+#'   type = "string",
+#'   status = "CREATING"|"FAILED_CREATION"|"READY"|"UPDATING"|"FAILED_UPDATE"|"RUNNING"|"DELETING"|"FAILED_DELETION",
 #'   name = "string",
 #'   nextToken = "string",
-#'   projectIdentifier = "string",
-#'   status = "CREATING"|"FAILED_CREATION"|"READY"|"UPDATING"|"FAILED_UPDATE"|"RUNNING"|"DELETING"|"FAILED_DELETION",
-#'   type = "string"
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -10855,7 +11186,7 @@ datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifie
 #' @rdname datazone_list_data_sources
 #'
 #' @aliases datazone_list_data_sources
-datazone_list_data_sources <- function(connectionIdentifier = NULL, domainIdentifier, environmentIdentifier = NULL, maxResults = NULL, name = NULL, nextToken = NULL, projectIdentifier, status = NULL, type = NULL) {
+datazone_list_data_sources <- function(domainIdentifier, projectIdentifier, environmentIdentifier = NULL, connectionIdentifier = NULL, type = NULL, status = NULL, name = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListDataSources",
     http_method = "GET",
@@ -10864,7 +11195,7 @@ datazone_list_data_sources <- function(connectionIdentifier = NULL, domainIdenti
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_data_sources_input(connectionIdentifier = connectionIdentifier, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, projectIdentifier = projectIdentifier, status = status, type = type)
+  input <- .datazone$list_data_sources_input(domainIdentifier = domainIdentifier, projectIdentifier = projectIdentifier, environmentIdentifier = environmentIdentifier, connectionIdentifier = connectionIdentifier, type = type, status = status, name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_data_sources_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -10880,11 +11211,12 @@ datazone_list_data_sources <- function(connectionIdentifier = NULL, domainIdenti
 #' Lists child domain units for the specified parent domain unit.
 #'
 #' @usage
-#' datazone_list_domain_units_for_parent(domainIdentifier, maxResults,
-#'   nextToken, parentDomainUnitIdentifier)
+#' datazone_list_domain_units_for_parent(domainIdentifier,
+#'   parentDomainUnitIdentifier, maxResults, nextToken)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain in which you want to list domain units for a parent
 #' domain unit.
+#' @param parentDomainUnitIdentifier &#91;required&#93; The ID of the parent domain unit.
 #' @param maxResults The maximum number of domain units to return in a single call to
 #' ListDomainUnitsForParent. When the number of domain units to be listed
 #' is greater than the value of MaxResults, the response contains a
@@ -10896,7 +11228,6 @@ datazone_list_data_sources <- function(connectionIdentifier = NULL, domainIdenti
 #' includes a pagination token named NextToken. You can specify this
 #' NextToken value in a subsequent call to ListDomainUnitsForParent to list
 #' the next set of domain units.
-#' @param parentDomainUnitIdentifier &#91;required&#93; The ID of the parent domain unit.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10904,8 +11235,8 @@ datazone_list_data_sources <- function(connectionIdentifier = NULL, domainIdenti
 #' list(
 #'   items = list(
 #'     list(
-#'       id = "string",
-#'       name = "string"
+#'       name = "string",
+#'       id = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -10916,9 +11247,9 @@ datazone_list_data_sources <- function(connectionIdentifier = NULL, domainIdenti
 #' ```
 #' svc$list_domain_units_for_parent(
 #'   domainIdentifier = "string",
+#'   parentDomainUnitIdentifier = "string",
 #'   maxResults = 123,
-#'   nextToken = "string",
-#'   parentDomainUnitIdentifier = "string"
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -10927,7 +11258,7 @@ datazone_list_data_sources <- function(connectionIdentifier = NULL, domainIdenti
 #' @rdname datazone_list_domain_units_for_parent
 #'
 #' @aliases datazone_list_domain_units_for_parent
-datazone_list_domain_units_for_parent <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, parentDomainUnitIdentifier) {
+datazone_list_domain_units_for_parent <- function(domainIdentifier, parentDomainUnitIdentifier, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListDomainUnitsForParent",
     http_method = "GET",
@@ -10936,7 +11267,7 @@ datazone_list_domain_units_for_parent <- function(domainIdentifier, maxResults =
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_domain_units_for_parent_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, parentDomainUnitIdentifier = parentDomainUnitIdentifier)
+  input <- .datazone$list_domain_units_for_parent_input(domainIdentifier = domainIdentifier, parentDomainUnitIdentifier = parentDomainUnitIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_domain_units_for_parent_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -10952,8 +11283,9 @@ datazone_list_domain_units_for_parent <- function(domainIdentifier, maxResults =
 #' Lists Amazon DataZone domains.
 #'
 #' @usage
-#' datazone_list_domains(maxResults, nextToken, status)
+#' datazone_list_domains(status, maxResults, nextToken)
 #'
+#' @param status The status of the data source.
 #' @param maxResults The maximum number of domains to return in a single call to
 #' [`list_domains`][datazone_list_domains]. When the number of domains to
 #' be listed is greater than the value of `MaxResults`, the response
@@ -10965,7 +11297,6 @@ datazone_list_domain_units_for_parent <- function(domainIdentifier, maxResults =
 #' includes a pagination token named `NextToken`. You can specify this
 #' `NextToken` value in a subsequent call to
 #' [`list_domains`][datazone_list_domains] to list the next set of domains.
-#' @param status The status of the data source.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10973,20 +11304,20 @@ datazone_list_domain_units_for_parent <- function(domainIdentifier, maxResults =
 #' list(
 #'   items = list(
 #'     list(
+#'       id = "string",
+#'       name = "string",
+#'       description = "string",
 #'       arn = "string",
+#'       managedAccountId = "string",
+#'       status = "CREATING"|"AVAILABLE"|"CREATION_FAILED"|"DELETING"|"DELETED"|"DELETION_FAILED",
+#'       portalUrl = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       description = "string",
-#'       domainVersion = "V1"|"V2",
-#'       id = "string",
 #'       lastUpdatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       managedAccountId = "string",
-#'       name = "string",
-#'       portalUrl = "string",
-#'       status = "CREATING"|"AVAILABLE"|"CREATION_FAILED"|"DELETING"|"DELETED"|"DELETION_FAILED"
+#'       domainVersion = "V1"|"V2"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -10996,9 +11327,9 @@ datazone_list_domain_units_for_parent <- function(domainIdentifier, maxResults =
 #' @section Request syntax:
 #' ```
 #' svc$list_domains(
+#'   status = "CREATING"|"AVAILABLE"|"CREATION_FAILED"|"DELETING"|"DELETED"|"DELETION_FAILED",
 #'   maxResults = 123,
-#'   nextToken = "string",
-#'   status = "CREATING"|"AVAILABLE"|"CREATION_FAILED"|"DELETING"|"DELETED"|"DELETION_FAILED"
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -11007,7 +11338,7 @@ datazone_list_domain_units_for_parent <- function(domainIdentifier, maxResults =
 #' @rdname datazone_list_domains
 #'
 #' @aliases datazone_list_domains
-datazone_list_domains <- function(maxResults = NULL, nextToken = NULL, status = NULL) {
+datazone_list_domains <- function(status = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListDomains",
     http_method = "GET",
@@ -11016,7 +11347,7 @@ datazone_list_domains <- function(maxResults = NULL, nextToken = NULL, status = 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_domains_input(maxResults = maxResults, nextToken = nextToken, status = status)
+  input <- .datazone$list_domains_input(status = status, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_domains_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -11032,12 +11363,12 @@ datazone_list_domains <- function(maxResults = NULL, nextToken = NULL, status = 
 #' Lists the entity (domain units) owners.
 #'
 #' @usage
-#' datazone_list_entity_owners(domainIdentifier, entityIdentifier,
-#'   entityType, maxResults, nextToken)
+#' datazone_list_entity_owners(domainIdentifier, entityType,
+#'   entityIdentifier, maxResults, nextToken)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list entity owners.
-#' @param entityIdentifier &#91;required&#93; The ID of the entity that you want to list.
 #' @param entityType &#91;required&#93; The type of the entity that you want to list.
+#' @param entityIdentifier &#91;required&#93; The ID of the entity that you want to list.
 #' @param maxResults The maximum number of entities to return in a single call to
 #' [`list_entity_owners`][datazone_list_entity_owners]. When the number of
 #' entities to be listed is greater than the value of `MaxResults`, the
@@ -11056,17 +11387,17 @@ datazone_list_domains <- function(maxResults = NULL, nextToken = NULL, status = 
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   owners = list(
 #'     list(
-#'       group = list(
-#'         groupId = "string"
-#'       ),
 #'       user = list(
 #'         userId = "string"
+#'       ),
+#'       group = list(
+#'         groupId = "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -11074,8 +11405,8 @@ datazone_list_domains <- function(maxResults = NULL, nextToken = NULL, status = 
 #' ```
 #' svc$list_entity_owners(
 #'   domainIdentifier = "string",
-#'   entityIdentifier = "string",
 #'   entityType = "DOMAIN_UNIT",
+#'   entityIdentifier = "string",
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -11086,7 +11417,7 @@ datazone_list_domains <- function(maxResults = NULL, nextToken = NULL, status = 
 #' @rdname datazone_list_entity_owners
 #'
 #' @aliases datazone_list_entity_owners
-datazone_list_entity_owners <- function(domainIdentifier, entityIdentifier, entityType, maxResults = NULL, nextToken = NULL) {
+datazone_list_entity_owners <- function(domainIdentifier, entityType, entityIdentifier, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListEntityOwners",
     http_method = "GET",
@@ -11095,7 +11426,7 @@ datazone_list_entity_owners <- function(domainIdentifier, entityIdentifier, enti
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "owners"),
     stream_api = FALSE
   )
-  input <- .datazone$list_entity_owners_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, maxResults = maxResults, nextToken = nextToken)
+  input <- .datazone$list_entity_owners_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_entity_owners_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -11112,23 +11443,23 @@ datazone_list_entity_owners <- function(domainIdentifier, entityIdentifier, enti
 #'
 #' @usage
 #' datazone_list_environment_actions(domainIdentifier,
-#'   environmentIdentifier, maxResults, nextToken)
+#'   environmentIdentifier, nextToken, maxResults)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which the environment actions
 #' are listed.
 #' @param environmentIdentifier &#91;required&#93; The ID of the envrironment whose environment actions are listed.
-#' @param maxResults The maximum number of environment actions to return in a single call to
-#' [`list_environment_actions`][datazone_list_environment_actions]. When
-#' the number of environment actions to be listed is greater than the value
-#' of `MaxResults`, the response contains a `NextToken` value that you can
-#' use in a subsequent call to
-#' [`list_environment_actions`][datazone_list_environment_actions] to list
-#' the next set of environment actions.
 #' @param nextToken When the number of environment actions is greater than the default value
 #' for the `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of environment actions, the
 #' response includes a pagination token named `NextToken`. You can specify
 #' this `NextToken` value in a subsequent call to
+#' [`list_environment_actions`][datazone_list_environment_actions] to list
+#' the next set of environment actions.
+#' @param maxResults The maximum number of environment actions to return in a single call to
+#' [`list_environment_actions`][datazone_list_environment_actions]. When
+#' the number of environment actions to be listed is greater than the value
+#' of `MaxResults`, the response contains a `NextToken` value that you can
+#' use in a subsequent call to
 #' [`list_environment_actions`][datazone_list_environment_actions] to list
 #' the next set of environment actions.
 #'
@@ -11138,7 +11469,6 @@ datazone_list_entity_owners <- function(domainIdentifier, entityIdentifier, enti
 #' list(
 #'   items = list(
 #'     list(
-#'       description = "string",
 #'       domainId = "string",
 #'       environmentId = "string",
 #'       id = "string",
@@ -11147,7 +11477,8 @@ datazone_list_entity_owners <- function(domainIdentifier, entityIdentifier, enti
 #'         awsConsoleLink = list(
 #'           uri = "string"
 #'         )
-#'       )
+#'       ),
+#'       description = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -11159,8 +11490,8 @@ datazone_list_entity_owners <- function(domainIdentifier, entityIdentifier, enti
 #' svc$list_environment_actions(
 #'   domainIdentifier = "string",
 #'   environmentIdentifier = "string",
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -11169,7 +11500,7 @@ datazone_list_entity_owners <- function(domainIdentifier, entityIdentifier, enti
 #' @rdname datazone_list_environment_actions
 #'
 #' @aliases datazone_list_environment_actions
-datazone_list_environment_actions <- function(domainIdentifier, environmentIdentifier, maxResults = NULL, nextToken = NULL) {
+datazone_list_environment_actions <- function(domainIdentifier, environmentIdentifier, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListEnvironmentActions",
     http_method = "GET",
@@ -11178,7 +11509,7 @@ datazone_list_environment_actions <- function(domainIdentifier, environmentIdent
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_environment_actions_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, maxResults = maxResults, nextToken = nextToken)
+  input <- .datazone$list_environment_actions_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_environment_actions_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -11220,34 +11551,34 @@ datazone_list_environment_actions <- function(domainIdentifier, environmentIdent
 #' list(
 #'   items = list(
 #'     list(
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
 #'       domainId = "string",
+#'       environmentBlueprintId = "string",
+#'       provisioningRoleArn = "string",
+#'       environmentRolePermissionBoundary = "string",
+#'       manageAccessRoleArn = "string",
 #'       enabledRegions = list(
 #'         "string"
 #'       ),
-#'       environmentBlueprintId = "string",
-#'       environmentRolePermissionBoundary = "string",
-#'       manageAccessRoleArn = "string",
-#'       provisioningConfigurations = list(
-#'         list(
-#'           lakeFormationConfiguration = list(
-#'             locationRegistrationExcludeS3Locations = list(
-#'               "string"
-#'             ),
-#'             locationRegistrationRole = "string"
-#'           )
-#'         )
-#'       ),
-#'       provisioningRoleArn = "string",
 #'       regionalParameters = list(
 #'         list(
 #'           "string"
 #'         )
 #'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       provisioningConfigurations = list(
+#'         list(
+#'           lakeFormationConfiguration = list(
+#'             locationRegistrationRole = "string",
+#'             locationRegistrationExcludeS3Locations = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -11294,12 +11625,10 @@ datazone_list_environment_blueprint_configurations <- function(domainIdentifier,
 #' Lists blueprints in an Amazon DataZone environment.
 #'
 #' @usage
-#' datazone_list_environment_blueprints(domainIdentifier, managed,
-#'   maxResults, name, nextToken)
+#' datazone_list_environment_blueprints(domainIdentifier, maxResults,
+#'   nextToken, name, managed)
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
-#' @param managed Specifies whether the environment blueprint is managed by Amazon
-#' DataZone.
 #' @param maxResults The maximum number of blueprints to return in a single call to
 #' [`list_environment_blueprints`][datazone_list_environment_blueprints].
 #' When the number of blueprints to be listed is greater than the value of
@@ -11307,7 +11636,6 @@ datazone_list_environment_blueprint_configurations <- function(domainIdentifier,
 #' in a subsequent call to
 #' [`list_environment_blueprints`][datazone_list_environment_blueprints] to
 #' list the next set of blueprints.
-#' @param name The name of the Amazon DataZone environment.
 #' @param nextToken When the number of blueprints in the environment is greater than the
 #' default value for the `MaxResults` parameter, or if you explicitly
 #' specify a value for `MaxResults` that is less than the number of
@@ -11316,6 +11644,9 @@ datazone_list_environment_blueprint_configurations <- function(domainIdentifier,
 #' subsequent call to
 #' [`list_environment_blueprints`][datazone_list_environment_blueprints]to
 #' list the next set of blueprints.
+#' @param name The name of the Amazon DataZone environment.
+#' @param managed Specifies whether the environment blueprint is managed by Amazon
+#' DataZone.
 #'
 #' @return
 #' A list with the following syntax:
@@ -11323,17 +11654,17 @@ datazone_list_environment_blueprint_configurations <- function(domainIdentifier,
 #' list(
 #'   items = list(
 #'     list(
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       description = "string",
 #'       id = "string",
 #'       name = "string",
+#'       description = "string",
 #'       provider = "string",
 #'       provisioningProperties = list(
 #'         cloudFormation = list(
 #'           templateUrl = "string"
 #'         )
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
 #'       ),
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -11348,10 +11679,10 @@ datazone_list_environment_blueprint_configurations <- function(domainIdentifier,
 #' ```
 #' svc$list_environment_blueprints(
 #'   domainIdentifier = "string",
-#'   managed = TRUE|FALSE,
 #'   maxResults = 123,
+#'   nextToken = "string",
 #'   name = "string",
-#'   nextToken = "string"
+#'   managed = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -11360,7 +11691,7 @@ datazone_list_environment_blueprint_configurations <- function(domainIdentifier,
 #' @rdname datazone_list_environment_blueprints
 #'
 #' @aliases datazone_list_environment_blueprints
-datazone_list_environment_blueprints <- function(domainIdentifier, managed = NULL, maxResults = NULL, name = NULL, nextToken = NULL) {
+datazone_list_environment_blueprints <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, name = NULL, managed = NULL) {
   op <- new_operation(
     name = "ListEnvironmentBlueprints",
     http_method = "GET",
@@ -11369,7 +11700,7 @@ datazone_list_environment_blueprints <- function(domainIdentifier, managed = NUL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_environment_blueprints_input(domainIdentifier = domainIdentifier, managed = managed, maxResults = maxResults, name = name, nextToken = nextToken)
+  input <- .datazone$list_environment_blueprints_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, name = name, managed = managed)
   output <- .datazone$list_environment_blueprints_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -11385,24 +11716,18 @@ datazone_list_environment_blueprints <- function(domainIdentifier, managed = NUL
 #' Lists Amazon DataZone environment profiles.
 #'
 #' @usage
-#' datazone_list_environment_profiles(awsAccountId, awsAccountRegion,
-#'   domainIdentifier, environmentBlueprintIdentifier, maxResults, name,
-#'   nextToken, projectIdentifier)
+#' datazone_list_environment_profiles(domainIdentifier, awsAccountId,
+#'   awsAccountRegion, environmentBlueprintIdentifier, projectIdentifier,
+#'   name, nextToken, maxResults)
 #'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
 #' @param awsAccountId The identifier of the Amazon Web Services account where you want to list
 #' environment profiles.
 #' @param awsAccountRegion The Amazon Web Services region where you want to list environment
 #' profiles.
-#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
 #' @param environmentBlueprintIdentifier The identifier of the blueprint that was used to create the environment
 #' profiles that you want to list.
-#' @param maxResults The maximum number of environment profiles to return in a single call to
-#' [`list_environment_profiles`][datazone_list_environment_profiles]. When
-#' the number of environment profiles to be listed is greater than the
-#' value of `MaxResults`, the response contains a `NextToken` value that
-#' you can use in a subsequent call to
-#' [`list_environment_profiles`][datazone_list_environment_profiles] to
-#' list the next set of environment profiles.
+#' @param projectIdentifier The identifier of the Amazon DataZone project.
 #' @param name 
 #' @param nextToken When the number of environment profiles is greater than the default
 #' value for the `MaxResults` parameter, or if you explicitly specify a
@@ -11411,7 +11736,13 @@ datazone_list_environment_blueprints <- function(domainIdentifier, managed = NUL
 #' You can specify this `NextToken` value in a subsequent call to
 #' [`list_environment_profiles`][datazone_list_environment_profiles] to
 #' list the next set of environment profiles.
-#' @param projectIdentifier The identifier of the Amazon DataZone project.
+#' @param maxResults The maximum number of environment profiles to return in a single call to
+#' [`list_environment_profiles`][datazone_list_environment_profiles]. When
+#' the number of environment profiles to be listed is greater than the
+#' value of `MaxResults`, the response contains a `NextToken` value that
+#' you can use in a subsequent call to
+#' [`list_environment_profiles`][datazone_list_environment_profiles] to
+#' list the next set of environment profiles.
 #'
 #' @return
 #' A list with the following syntax:
@@ -11419,21 +11750,21 @@ datazone_list_environment_blueprints <- function(domainIdentifier, managed = NUL
 #' list(
 #'   items = list(
 #'     list(
+#'       id = "string",
+#'       domainId = "string",
 #'       awsAccountId = "string",
 #'       awsAccountRegion = "string",
+#'       createdBy = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       createdBy = "string",
-#'       description = "string",
-#'       domainId = "string",
-#'       environmentBlueprintId = "string",
-#'       id = "string",
-#'       name = "string",
-#'       projectId = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       name = "string",
+#'       description = "string",
+#'       environmentBlueprintId = "string",
+#'       projectId = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -11443,14 +11774,14 @@ datazone_list_environment_blueprints <- function(domainIdentifier, managed = NUL
 #' @section Request syntax:
 #' ```
 #' svc$list_environment_profiles(
+#'   domainIdentifier = "string",
 #'   awsAccountId = "string",
 #'   awsAccountRegion = "string",
-#'   domainIdentifier = "string",
 #'   environmentBlueprintIdentifier = "string",
-#'   maxResults = 123,
+#'   projectIdentifier = "string",
 #'   name = "string",
 #'   nextToken = "string",
-#'   projectIdentifier = "string"
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -11459,7 +11790,7 @@ datazone_list_environment_blueprints <- function(domainIdentifier, managed = NUL
 #' @rdname datazone_list_environment_profiles
 #'
 #' @aliases datazone_list_environment_profiles
-datazone_list_environment_profiles <- function(awsAccountId = NULL, awsAccountRegion = NULL, domainIdentifier, environmentBlueprintIdentifier = NULL, maxResults = NULL, name = NULL, nextToken = NULL, projectIdentifier = NULL) {
+datazone_list_environment_profiles <- function(domainIdentifier, awsAccountId = NULL, awsAccountRegion = NULL, environmentBlueprintIdentifier = NULL, projectIdentifier = NULL, name = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListEnvironmentProfiles",
     http_method = "GET",
@@ -11468,7 +11799,7 @@ datazone_list_environment_profiles <- function(awsAccountId = NULL, awsAccountRe
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_environment_profiles_input(awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion, domainIdentifier = domainIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, projectIdentifier = projectIdentifier)
+  input <- .datazone$list_environment_profiles_input(domainIdentifier = domainIdentifier, awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion, environmentBlueprintIdentifier = environmentBlueprintIdentifier, projectIdentifier = projectIdentifier, name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_environment_profiles_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -11484,24 +11815,26 @@ datazone_list_environment_profiles <- function(awsAccountId = NULL, awsAccountRe
 #' Lists Amazon DataZone environments.
 #'
 #' @usage
-#' datazone_list_environments(awsAccountId, awsAccountRegion,
-#'   domainIdentifier, environmentBlueprintIdentifier,
-#'   environmentProfileIdentifier, maxResults, name, nextToken,
-#'   projectIdentifier, provider, status)
+#' datazone_list_environments(domainIdentifier, awsAccountId, status,
+#'   awsAccountRegion, projectIdentifier, environmentProfileIdentifier,
+#'   environmentBlueprintIdentifier, provider, name, maxResults, nextToken)
 #'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
 #' @param awsAccountId The identifier of the Amazon Web Services account where you want to list
 #' environments.
+#' @param status The status of the environments that you want to list.
 #' @param awsAccountRegion The Amazon Web Services region where you want to list environments.
-#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
-#' @param environmentBlueprintIdentifier The identifier of the Amazon DataZone blueprint.
+#' @param projectIdentifier &#91;required&#93; The identifier of the Amazon DataZone project.
 #' @param environmentProfileIdentifier The identifier of the environment profile.
+#' @param environmentBlueprintIdentifier The identifier of the Amazon DataZone blueprint.
+#' @param provider The provider of the environment.
+#' @param name The name of the environment.
 #' @param maxResults The maximum number of environments to return in a single call to
 #' [`list_environments`][datazone_list_environments]. When the number of
 #' environments to be listed is greater than the value of `MaxResults`, the
 #' response contains a `NextToken` value that you can use in a subsequent
 #' call to [`list_environments`][datazone_list_environments] to list the
 #' next set of environments.
-#' @param name The name of the environment.
 #' @param nextToken When the number of environments is greater than the default value for
 #' the `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of environments, the response
@@ -11509,9 +11842,6 @@ datazone_list_environment_profiles <- function(awsAccountId = NULL, awsAccountRe
 #' `NextToken` value in a subsequent call to
 #' [`list_environments`][datazone_list_environments] to list the next set
 #' of environments.
-#' @param projectIdentifier &#91;required&#93; The identifier of the Amazon DataZone project.
-#' @param provider The provider of the environment.
-#' @param status The status of the environments that you want to list.
 #'
 #' @return
 #' A list with the following syntax:
@@ -11519,24 +11849,25 @@ datazone_list_environment_profiles <- function(awsAccountId = NULL, awsAccountRe
 #' list(
 #'   items = list(
 #'     list(
-#'       awsAccountId = "string",
-#'       awsAccountRegion = "string",
+#'       projectId = "string",
+#'       id = "string",
+#'       domainId = "string",
+#'       createdBy = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       createdBy = "string",
-#'       description = "string",
-#'       domainId = "string",
-#'       environmentConfigurationId = "string",
-#'       environmentProfileId = "string",
-#'       id = "string",
-#'       name = "string",
-#'       projectId = "string",
-#'       provider = "string",
-#'       status = "ACTIVE"|"CREATING"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"VALIDATION_FAILED"|"SUSPENDED"|"DISABLED"|"EXPIRED"|"DELETED"|"INACCESSIBLE",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       name = "string",
+#'       description = "string",
+#'       environmentProfileId = "string",
+#'       awsAccountId = "string",
+#'       awsAccountRegion = "string",
+#'       provider = "string",
+#'       status = "ACTIVE"|"CREATING"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"VALIDATION_FAILED"|"SUSPENDED"|"DISABLED"|"EXPIRED"|"DELETED"|"INACCESSIBLE",
+#'       environmentConfigurationId = "string",
+#'       environmentConfigurationName = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -11546,17 +11877,17 @@ datazone_list_environment_profiles <- function(awsAccountId = NULL, awsAccountRe
 #' @section Request syntax:
 #' ```
 #' svc$list_environments(
-#'   awsAccountId = "string",
-#'   awsAccountRegion = "string",
 #'   domainIdentifier = "string",
-#'   environmentBlueprintIdentifier = "string",
-#'   environmentProfileIdentifier = "string",
-#'   maxResults = 123,
-#'   name = "string",
-#'   nextToken = "string",
+#'   awsAccountId = "string",
+#'   status = "ACTIVE"|"CREATING"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"VALIDATION_FAILED"|"SUSPENDED"|"DISABLED"|"EXPIRED"|"DELETED"|"INACCESSIBLE",
+#'   awsAccountRegion = "string",
 #'   projectIdentifier = "string",
+#'   environmentProfileIdentifier = "string",
+#'   environmentBlueprintIdentifier = "string",
 #'   provider = "string",
-#'   status = "ACTIVE"|"CREATING"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"VALIDATION_FAILED"|"SUSPENDED"|"DISABLED"|"EXPIRED"|"DELETED"|"INACCESSIBLE"
+#'   name = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -11565,7 +11896,7 @@ datazone_list_environment_profiles <- function(awsAccountId = NULL, awsAccountRe
 #' @rdname datazone_list_environments
 #'
 #' @aliases datazone_list_environments
-datazone_list_environments <- function(awsAccountId = NULL, awsAccountRegion = NULL, domainIdentifier, environmentBlueprintIdentifier = NULL, environmentProfileIdentifier = NULL, maxResults = NULL, name = NULL, nextToken = NULL, projectIdentifier, provider = NULL, status = NULL) {
+datazone_list_environments <- function(domainIdentifier, awsAccountId = NULL, status = NULL, awsAccountRegion = NULL, projectIdentifier, environmentProfileIdentifier = NULL, environmentBlueprintIdentifier = NULL, provider = NULL, name = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListEnvironments",
     http_method = "GET",
@@ -11574,7 +11905,7 @@ datazone_list_environments <- function(awsAccountId = NULL, awsAccountRegion = N
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_environments_input(awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion, domainIdentifier = domainIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier, environmentProfileIdentifier = environmentProfileIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, projectIdentifier = projectIdentifier, provider = provider, status = status)
+  input <- .datazone$list_environments_input(domainIdentifier = domainIdentifier, awsAccountId = awsAccountId, status = status, awsAccountRegion = awsAccountRegion, projectIdentifier = projectIdentifier, environmentProfileIdentifier = environmentProfileIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier, provider = provider, name = name, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_environments_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -11590,24 +11921,24 @@ datazone_list_environments <- function(awsAccountId = NULL, awsAccountRegion = N
 #' Lists job runs.
 #'
 #' @usage
-#' datazone_list_job_runs(domainIdentifier, jobIdentifier, maxResults,
-#'   nextToken, sortOrder, status)
+#' datazone_list_job_runs(domainIdentifier, jobIdentifier, status,
+#'   sortOrder, nextToken, maxResults)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list job runs.
 #' @param jobIdentifier &#91;required&#93; The ID of the job run.
-#' @param maxResults The maximum number of job runs to return in a single call to
-#' ListJobRuns. When the number of job runs to be listed is greater than
-#' the value of MaxResults, the response contains a NextToken value that
-#' you can use in a subsequent call to ListJobRuns to list the next set of
-#' job runs.
+#' @param status The status of a job run.
+#' @param sortOrder Specifies the order in which job runs are to be sorted.
 #' @param nextToken When the number of job runs is greater than the default value for the
 #' MaxResults parameter, or if you explicitly specify a value for
 #' MaxResults that is less than the number of job runs, the response
 #' includes a pagination token named NextToken. You can specify this
 #' NextToken value in a subsequent call to ListJobRuns to list the next set
 #' of job runs.
-#' @param sortOrder Specifies the order in which job runs are to be sorted.
-#' @param status The status of a job run.
+#' @param maxResults The maximum number of job runs to return in a single call to
+#' ListJobRuns. When the number of job runs to be listed is greater than
+#' the value of MaxResults, the response contains a NextToken value that
+#' you can use in a subsequent call to ListJobRuns to list the next set of
+#' job runs.
 #'
 #' @return
 #' A list with the following syntax:
@@ -11615,25 +11946,25 @@ datazone_list_environments <- function(awsAccountId = NULL, awsAccountRegion = N
 #' list(
 #'   items = list(
 #'     list(
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       createdBy = "string",
 #'       domainId = "string",
-#'       endTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       error = list(
-#'         message = "string"
-#'       ),
 #'       jobId = "string",
 #'       jobType = "LINEAGE",
 #'       runId = "string",
 #'       runMode = "SCHEDULED"|"ON_DEMAND",
+#'       status = "SCHEDULED"|"IN_PROGRESS"|"SUCCESS"|"PARTIALLY_SUCCEEDED"|"FAILED"|"ABORTED"|"TIMED_OUT"|"CANCELED",
+#'       error = list(
+#'         message = "string"
+#'       ),
+#'       createdBy = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       startTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       status = "SCHEDULED"|"IN_PROGRESS"|"SUCCESS"|"PARTIALLY_SUCCEEDED"|"FAILED"|"ABORTED"|"TIMED_OUT"|"CANCELED"
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -11645,10 +11976,10 @@ datazone_list_environments <- function(awsAccountId = NULL, awsAccountRegion = N
 #' svc$list_job_runs(
 #'   domainIdentifier = "string",
 #'   jobIdentifier = "string",
-#'   maxResults = 123,
-#'   nextToken = "string",
+#'   status = "SCHEDULED"|"IN_PROGRESS"|"SUCCESS"|"PARTIALLY_SUCCEEDED"|"FAILED"|"ABORTED"|"TIMED_OUT"|"CANCELED",
 #'   sortOrder = "ASCENDING"|"DESCENDING",
-#'   status = "SCHEDULED"|"IN_PROGRESS"|"SUCCESS"|"PARTIALLY_SUCCEEDED"|"FAILED"|"ABORTED"|"TIMED_OUT"|"CANCELED"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -11657,7 +11988,7 @@ datazone_list_environments <- function(awsAccountId = NULL, awsAccountRegion = N
 #' @rdname datazone_list_job_runs
 #'
 #' @aliases datazone_list_job_runs
-datazone_list_job_runs <- function(domainIdentifier, jobIdentifier, maxResults = NULL, nextToken = NULL, sortOrder = NULL, status = NULL) {
+datazone_list_job_runs <- function(domainIdentifier, jobIdentifier, status = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListJobRuns",
     http_method = "GET",
@@ -11666,7 +11997,7 @@ datazone_list_job_runs <- function(domainIdentifier, jobIdentifier, maxResults =
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_job_runs_input(domainIdentifier = domainIdentifier, jobIdentifier = jobIdentifier, maxResults = maxResults, nextToken = nextToken, sortOrder = sortOrder, status = status)
+  input <- .datazone$list_job_runs_input(domainIdentifier = domainIdentifier, jobIdentifier = jobIdentifier, status = status, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_job_runs_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -11682,8 +12013,8 @@ datazone_list_job_runs <- function(domainIdentifier, jobIdentifier, maxResults =
 #' Lists lineage events.
 #'
 #' @usage
-#' datazone_list_lineage_events(domainIdentifier, maxResults, nextToken,
-#'   processingStatus, sortOrder, timestampAfter, timestampBefore)
+#' datazone_list_lineage_events(domainIdentifier, maxResults,
+#'   timestampAfter, timestampBefore, processingStatus, sortOrder, nextToken)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list lineage events.
 #' @param maxResults The maximum number of lineage events to return in a single call to
@@ -11691,16 +12022,16 @@ datazone_list_job_runs <- function(domainIdentifier, jobIdentifier, maxResults =
 #' greater than the value of MaxResults, the response contains a NextToken
 #' value that you can use in a subsequent call to ListLineageEvents to list
 #' the next set of lineage events.
+#' @param timestampAfter The after timestamp of a lineage event.
+#' @param timestampBefore The before timestamp of a lineage event.
+#' @param processingStatus The processing status of a lineage event.
+#' @param sortOrder The sort order of the lineage events.
 #' @param nextToken When the number of lineage events is greater than the default value for
 #' the MaxResults parameter, or if you explicitly specify a value for
 #' MaxResults that is less than the number of lineage events, the response
 #' includes a pagination token named NextToken. You can specify this
 #' NextToken value in a subsequent call to ListLineageEvents to list the
 #' next set of lineage events.
-#' @param processingStatus The processing status of a lineage event.
-#' @param sortOrder The sort order of the lineage events.
-#' @param timestampAfter The after timestamp of a lineage event.
-#' @param timestampBefore The before timestamp of a lineage event.
 #'
 #' @return
 #' A list with the following syntax:
@@ -11708,38 +12039,38 @@ datazone_list_job_runs <- function(domainIdentifier, jobIdentifier, maxResults =
 #' list(
 #'   items = list(
 #'     list(
-#'       createdAt = as.POSIXct(
+#'       id = "string",
+#'       domainId = "string",
+#'       processingStatus = "REQUESTED"|"PROCESSING"|"SUCCESS"|"FAILED",
+#'       eventTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       createdBy = "string",
-#'       domainId = "string",
 #'       eventSummary = list(
 #'         openLineageRunEventSummary = list(
 #'           eventType = "START"|"RUNNING"|"COMPLETE"|"ABORT"|"FAIL"|"OTHER",
+#'           runId = "string",
+#'           job = list(
+#'             name = "string",
+#'             namespace = "string"
+#'           ),
 #'           inputs = list(
 #'             list(
 #'               name = "string",
 #'               namespace = "string"
 #'             )
 #'           ),
-#'           job = list(
-#'             name = "string",
-#'             namespace = "string"
-#'           ),
 #'           outputs = list(
 #'             list(
 #'               name = "string",
 #'               namespace = "string"
 #'             )
-#'           ),
-#'           runId = "string"
+#'           )
 #'         )
 #'       ),
-#'       eventTime = as.POSIXct(
+#'       createdBy = "string",
+#'       createdAt = as.POSIXct(
 #'         "2015-01-01"
-#'       ),
-#'       id = "string",
-#'       processingStatus = "REQUESTED"|"PROCESSING"|"SUCCESS"|"FAILED"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -11751,15 +12082,15 @@ datazone_list_job_runs <- function(domainIdentifier, jobIdentifier, maxResults =
 #' svc$list_lineage_events(
 #'   domainIdentifier = "string",
 #'   maxResults = 123,
-#'   nextToken = "string",
-#'   processingStatus = "REQUESTED"|"PROCESSING"|"SUCCESS"|"FAILED",
-#'   sortOrder = "ASCENDING"|"DESCENDING",
 #'   timestampAfter = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   timestampBefore = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   processingStatus = "REQUESTED"|"PROCESSING"|"SUCCESS"|"FAILED",
+#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -11768,7 +12099,7 @@ datazone_list_job_runs <- function(domainIdentifier, jobIdentifier, maxResults =
 #' @rdname datazone_list_lineage_events
 #'
 #' @aliases datazone_list_lineage_events
-datazone_list_lineage_events <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, processingStatus = NULL, sortOrder = NULL, timestampAfter = NULL, timestampBefore = NULL) {
+datazone_list_lineage_events <- function(domainIdentifier, maxResults = NULL, timestampAfter = NULL, timestampBefore = NULL, processingStatus = NULL, sortOrder = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListLineageEvents",
     http_method = "GET",
@@ -11777,7 +12108,7 @@ datazone_list_lineage_events <- function(domainIdentifier, maxResults = NULL, ne
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_lineage_events_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, processingStatus = processingStatus, sortOrder = sortOrder, timestampAfter = timestampAfter, timestampBefore = timestampBefore)
+  input <- .datazone$list_lineage_events_input(domainIdentifier = domainIdentifier, maxResults = maxResults, timestampAfter = timestampAfter, timestampBefore = timestampBefore, processingStatus = processingStatus, sortOrder = sortOrder, nextToken = nextToken)
   output <- .datazone$list_lineage_events_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -11793,21 +12124,12 @@ datazone_list_lineage_events <- function(domainIdentifier, maxResults = NULL, ne
 #' Lists the history of the specified data lineage node.
 #'
 #' @usage
-#' datazone_list_lineage_node_history(direction, domainIdentifier,
-#'   eventTimestampGTE, eventTimestampLTE, identifier, maxResults, nextToken,
+#' datazone_list_lineage_node_history(domainIdentifier, maxResults,
+#'   nextToken, identifier, direction, eventTimestampGTE, eventTimestampLTE,
 #'   sortOrder)
 #'
-#' @param direction The direction of the data lineage node refers to the lineage node having
-#' neighbors in that direction. For example, if direction is `UPSTREAM`,
-#' the [`list_lineage_node_history`][datazone_list_lineage_node_history]
-#' API responds with historical versions with upstream neighbors only.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list the history of the specified
 #' data lineage node.
-#' @param eventTimestampGTE Specifies whether the action is to return data lineage node history from
-#' the time after the event timestamp.
-#' @param eventTimestampLTE Specifies whether the action is to return data lineage node history from
-#' the time prior of the event timestamp.
-#' @param identifier &#91;required&#93; The ID of the data lineage node whose history you want to list.
 #' @param maxResults The maximum number of history items to return in a single call to
 #' ListLineageNodeHistory. When the number of memberships to be listed is
 #' greater than the value of MaxResults, the response contains a NextToken
@@ -11819,52 +12141,61 @@ datazone_list_lineage_events <- function(domainIdentifier, maxResults = NULL, ne
 #' a pagination token named NextToken. You can specify this NextToken value
 #' in a subsequent call to ListLineageNodeHistory to list the next set of
 #' items.
+#' @param identifier &#91;required&#93; The ID of the data lineage node whose history you want to list.
+#' @param direction The direction of the data lineage node refers to the lineage node having
+#' neighbors in that direction. For example, if direction is `UPSTREAM`,
+#' the [`list_lineage_node_history`][datazone_list_lineage_node_history]
+#' API responds with historical versions with upstream neighbors only.
+#' @param eventTimestampGTE Specifies whether the action is to return data lineage node history from
+#' the time after the event timestamp.
+#' @param eventTimestampLTE Specifies whether the action is to return data lineage node history from
+#' the time prior of the event timestamp.
 #' @param sortOrder The order by which you want data lineage node history to be sorted.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   nodes = list(
 #'     list(
+#'       domainId = "string",
+#'       name = "string",
+#'       description = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       createdBy = "string",
-#'       description = "string",
-#'       domainId = "string",
-#'       eventTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       id = "string",
-#'       name = "string",
-#'       sourceIdentifier = "string",
-#'       typeName = "string",
-#'       typeRevision = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       updatedBy = "string"
+#'       updatedBy = "string",
+#'       id = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       sourceIdentifier = "string",
+#'       eventTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_lineage_node_history(
-#'   direction = "UPSTREAM"|"DOWNSTREAM",
 #'   domainIdentifier = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   identifier = "string",
+#'   direction = "UPSTREAM"|"DOWNSTREAM",
 #'   eventTimestampGTE = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   eventTimestampLTE = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   identifier = "string",
-#'   maxResults = 123,
-#'   nextToken = "string",
 #'   sortOrder = "ASCENDING"|"DESCENDING"
 #' )
 #' ```
@@ -11874,7 +12205,7 @@ datazone_list_lineage_events <- function(domainIdentifier, maxResults = NULL, ne
 #' @rdname datazone_list_lineage_node_history
 #'
 #' @aliases datazone_list_lineage_node_history
-datazone_list_lineage_node_history <- function(direction = NULL, domainIdentifier, eventTimestampGTE = NULL, eventTimestampLTE = NULL, identifier, maxResults = NULL, nextToken = NULL, sortOrder = NULL) {
+datazone_list_lineage_node_history <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, identifier, direction = NULL, eventTimestampGTE = NULL, eventTimestampLTE = NULL, sortOrder = NULL) {
   op <- new_operation(
     name = "ListLineageNodeHistory",
     http_method = "GET",
@@ -11883,7 +12214,7 @@ datazone_list_lineage_node_history <- function(direction = NULL, domainIdentifie
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "nodes"),
     stream_api = FALSE
   )
-  input <- .datazone$list_lineage_node_history_input(direction = direction, domainIdentifier = domainIdentifier, eventTimestampGTE = eventTimestampGTE, eventTimestampLTE = eventTimestampLTE, identifier = identifier, maxResults = maxResults, nextToken = nextToken, sortOrder = sortOrder)
+  input <- .datazone$list_lineage_node_history_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, identifier = identifier, direction = direction, eventTimestampGTE = eventTimestampGTE, eventTimestampLTE = eventTimestampLTE, sortOrder = sortOrder)
   output <- .datazone$list_lineage_node_history_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -11913,25 +12244,25 @@ datazone_list_lineage_node_history <- function(direction = NULL, domainIdentifie
 #' -   User must have access to metadata generation runs in the domain.
 #'
 #' @usage
-#' datazone_list_metadata_generation_runs(domainIdentifier, maxResults,
-#'   nextToken, status, targetIdentifier, type)
+#' datazone_list_metadata_generation_runs(domainIdentifier, status, type,
+#'   nextToken, maxResults, targetIdentifier)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain where you want to list metadata
 #' generation runs.
-#' @param maxResults The maximum number of metadata generation runs to return in a single
-#' call to ListMetadataGenerationRuns. When the number of metadata
-#' generation runs to be listed is greater than the value of MaxResults,
-#' the response contains a NextToken value that you can use in a subsequent
-#' call to ListMetadataGenerationRuns to list the next set of revisions.
+#' @param status The status of the metadata generation runs.
+#' @param type The type of the metadata generation runs.
 #' @param nextToken When the number of metadata generation runs is greater than the default
 #' value for the MaxResults parameter, or if you explicitly specify a value
 #' for MaxResults that is less than the number of metadata generation runs,
 #' the response includes a pagination token named NextToken. You can
 #' specify this NextToken value in a subsequent call to
 #' ListMetadataGenerationRuns to list the next set of revisions.
-#' @param status The status of the metadata generation runs.
+#' @param maxResults The maximum number of metadata generation runs to return in a single
+#' call to ListMetadataGenerationRuns. When the number of metadata
+#' generation runs to be listed is greater than the value of MaxResults,
+#' the response contains a NextToken value that you can use in a subsequent
+#' call to ListMetadataGenerationRuns to list the next set of revisions.
 #' @param targetIdentifier The target ID for which you want to list metadata generation runs.
-#' @param type The type of the metadata generation runs.
 #'
 #' @return
 #' A list with the following syntax:
@@ -11939,23 +12270,23 @@ datazone_list_lineage_node_history <- function(direction = NULL, domainIdentifie
 #' list(
 #'   items = list(
 #'     list(
+#'       domainId = "string",
+#'       id = "string",
+#'       target = list(
+#'         type = "ASSET",
+#'         identifier = "string",
+#'         revision = "string"
+#'       ),
+#'       status = "SUBMITTED"|"IN_PROGRESS"|"CANCELED"|"SUCCEEDED"|"FAILED"|"PARTIALLY_SUCCEEDED",
+#'       type = "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS",
+#'       types = list(
+#'         "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS"
+#'       ),
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       createdBy = "string",
-#'       domainId = "string",
-#'       id = "string",
-#'       owningProjectId = "string",
-#'       status = "SUBMITTED"|"IN_PROGRESS"|"CANCELED"|"SUCCEEDED"|"FAILED"|"PARTIALLY_SUCCEEDED",
-#'       target = list(
-#'         identifier = "string",
-#'         revision = "string",
-#'         type = "ASSET"
-#'       ),
-#'       type = "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS",
-#'       types = list(
-#'         "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS"
-#'       )
+#'       owningProjectId = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -11966,11 +12297,11 @@ datazone_list_lineage_node_history <- function(direction = NULL, domainIdentifie
 #' ```
 #' svc$list_metadata_generation_runs(
 #'   domainIdentifier = "string",
-#'   maxResults = 123,
-#'   nextToken = "string",
 #'   status = "SUBMITTED"|"IN_PROGRESS"|"CANCELED"|"SUCCEEDED"|"FAILED"|"PARTIALLY_SUCCEEDED",
-#'   targetIdentifier = "string",
-#'   type = "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS"
+#'   type = "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS",
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   targetIdentifier = "string"
 #' )
 #' ```
 #'
@@ -11979,7 +12310,7 @@ datazone_list_lineage_node_history <- function(direction = NULL, domainIdentifie
 #' @rdname datazone_list_metadata_generation_runs
 #'
 #' @aliases datazone_list_metadata_generation_runs
-datazone_list_metadata_generation_runs <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, status = NULL, targetIdentifier = NULL, type = NULL) {
+datazone_list_metadata_generation_runs <- function(domainIdentifier, status = NULL, type = NULL, nextToken = NULL, maxResults = NULL, targetIdentifier = NULL) {
   op <- new_operation(
     name = "ListMetadataGenerationRuns",
     http_method = "GET",
@@ -11988,7 +12319,7 @@ datazone_list_metadata_generation_runs <- function(domainIdentifier, maxResults 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_metadata_generation_runs_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, status = status, targetIdentifier = targetIdentifier, type = type)
+  input <- .datazone$list_metadata_generation_runs_input(domainIdentifier = domainIdentifier, status = status, type = type, nextToken = nextToken, maxResults = maxResults, targetIdentifier = targetIdentifier)
   output <- .datazone$list_metadata_generation_runs_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -11998,18 +12329,123 @@ datazone_list_metadata_generation_runs <- function(domainIdentifier, maxResults 
 }
 .datazone$operations$list_metadata_generation_runs <- datazone_list_metadata_generation_runs
 
+#' Lists notebook runs in an Amazon DataZone domain
+#'
+#' @description
+#' Lists notebook runs in an Amazon DataZone domain.
+#'
+#' @usage
+#' datazone_list_notebook_runs(domainIdentifier, owningProjectIdentifier,
+#'   notebookIdentifier, status, scheduleIdentifier, maxResults, sortOrder,
+#'   nextToken)
+#'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which to list notebook
+#' runs.
+#' @param owningProjectIdentifier &#91;required&#93; The identifier of the project that owns the notebook runs.
+#' @param notebookIdentifier The identifier of the notebook to filter runs by.
+#' @param status The status to filter notebook runs by.
+#' @param scheduleIdentifier The identifier of the schedule to filter notebook runs by.
+#' @param maxResults The maximum number of notebook runs to return in a single call. When the
+#' number of notebook runs exceeds the value of `MaxResults`, the response
+#' contains a `NextToken` value.
+#' @param sortOrder The sort order for the results.
+#' @param nextToken When the number of notebook runs is greater than the default value for
+#' the `MaxResults` parameter, or if you explicitly specify a value for
+#' `MaxResults` that is less than the number of notebook runs, the response
+#' includes a pagination token named `NextToken`. You can specify this
+#' `NextToken` value in a subsequent call to
+#' [`list_notebook_runs`][datazone_list_notebook_runs] to list the next set
+#' of notebook runs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       domainId = "string",
+#'       owningProjectId = "string",
+#'       notebookId = "string",
+#'       scheduleId = "string",
+#'       status = "QUEUED"|"STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED",
+#'       triggerSource = list(
+#'         type = "MANUAL"|"SCHEDULED"|"WORKFLOW",
+#'         name = "string"
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdBy = "string",
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedBy = "string",
+#'       startedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       completedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_notebook_runs(
+#'   domainIdentifier = "string",
+#'   owningProjectIdentifier = "string",
+#'   notebookIdentifier = "string",
+#'   status = "QUEUED"|"STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED",
+#'   scheduleIdentifier = "string",
+#'   maxResults = 123,
+#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_list_notebook_runs
+#'
+#' @aliases datazone_list_notebook_runs
+datazone_list_notebook_runs <- function(domainIdentifier, owningProjectIdentifier, notebookIdentifier = NULL, status = NULL, scheduleIdentifier = NULL, maxResults = NULL, sortOrder = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListNotebookRuns",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/notebook-runs",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .datazone$list_notebook_runs_input(domainIdentifier = domainIdentifier, owningProjectIdentifier = owningProjectIdentifier, notebookIdentifier = notebookIdentifier, status = status, scheduleIdentifier = scheduleIdentifier, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
+  output <- .datazone$list_notebook_runs_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$list_notebook_runs <- datazone_list_notebook_runs
+
 #' Lists all Amazon DataZone notifications
 #'
 #' @description
 #' Lists all Amazon DataZone notifications.
 #'
 #' @usage
-#' datazone_list_notifications(afterTimestamp, beforeTimestamp,
-#'   domainIdentifier, maxResults, nextToken, subjects, taskStatus, type)
+#' datazone_list_notifications(domainIdentifier, type, afterTimestamp,
+#'   beforeTimestamp, subjects, taskStatus, maxResults, nextToken)
 #'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
+#' @param type &#91;required&#93; The type of notifications.
 #' @param afterTimestamp The time after which you want to list notifications.
 #' @param beforeTimestamp The time before which you want to list notifications.
-#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
+#' @param subjects The subjects of notifications.
+#' @param taskStatus The task status of notifications.
 #' @param maxResults The maximum number of notifications to return in a single call to
 #' [`list_notifications`][datazone_list_notifications]. When the number of
 #' notifications to be listed is greater than the value of `MaxResults`,
@@ -12023,64 +12459,61 @@ datazone_list_metadata_generation_runs <- function(domainIdentifier, maxResults 
 #' `NextToken` value in a subsequent call to
 #' [`list_notifications`][datazone_list_notifications] to list the next set
 #' of notifications.
-#' @param subjects The subjects of notifications.
-#' @param taskStatus The task status of notifications.
-#' @param type &#91;required&#93; The type of notifications.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   notifications = list(
 #'     list(
+#'       identifier = "string",
+#'       domainIdentifier = "string",
+#'       type = "TASK"|"EVENT",
+#'       topic = list(
+#'         subject = "string",
+#'         resource = list(
+#'           type = "PROJECT",
+#'           id = "string",
+#'           name = "string"
+#'         ),
+#'         role = "PROJECT_OWNER"|"PROJECT_CONTRIBUTOR"|"PROJECT_VIEWER"|"DOMAIN_OWNER"|"PROJECT_SUBSCRIBER"
+#'       ),
+#'       title = "string",
+#'       message = "string",
+#'       status = "ACTIVE"|"INACTIVE",
 #'       actionLink = "string",
 #'       creationTimestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       domainIdentifier = "string",
-#'       identifier = "string",
 #'       lastUpdatedTimestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       message = "string",
 #'       metadata = list(
 #'         "string"
-#'       ),
-#'       status = "ACTIVE"|"INACTIVE",
-#'       title = "string",
-#'       topic = list(
-#'         resource = list(
-#'           id = "string",
-#'           name = "string",
-#'           type = "PROJECT"
-#'         ),
-#'         role = "PROJECT_OWNER"|"PROJECT_CONTRIBUTOR"|"PROJECT_VIEWER"|"DOMAIN_OWNER"|"PROJECT_SUBSCRIBER",
-#'         subject = "string"
-#'       ),
-#'       type = "TASK"|"EVENT"
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_notifications(
+#'   domainIdentifier = "string",
+#'   type = "TASK"|"EVENT",
 #'   afterTimestamp = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   beforeTimestamp = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   domainIdentifier = "string",
-#'   maxResults = 123,
-#'   nextToken = "string",
 #'   subjects = list(
 #'     "string"
 #'   ),
 #'   taskStatus = "ACTIVE"|"INACTIVE",
-#'   type = "TASK"|"EVENT"
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -12089,7 +12522,7 @@ datazone_list_metadata_generation_runs <- function(domainIdentifier, maxResults 
 #' @rdname datazone_list_notifications
 #'
 #' @aliases datazone_list_notifications
-datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp = NULL, domainIdentifier, maxResults = NULL, nextToken = NULL, subjects = NULL, taskStatus = NULL, type) {
+datazone_list_notifications <- function(domainIdentifier, type, afterTimestamp = NULL, beforeTimestamp = NULL, subjects = NULL, taskStatus = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListNotifications",
     http_method = "GET",
@@ -12098,7 +12531,7 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "notifications"),
     stream_api = FALSE
   )
-  input <- .datazone$list_notifications_input(afterTimestamp = afterTimestamp, beforeTimestamp = beforeTimestamp, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, subjects = subjects, taskStatus = taskStatus, type = type)
+  input <- .datazone$list_notifications_input(domainIdentifier = domainIdentifier, type = type, afterTimestamp = afterTimestamp, beforeTimestamp = beforeTimestamp, subjects = subjects, taskStatus = taskStatus, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_notifications_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -12114,12 +12547,13 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
 #' Lists policy grants.
 #'
 #' @usage
-#' datazone_list_policy_grants(domainIdentifier, entityIdentifier,
-#'   entityType, maxResults, nextToken, policyType)
+#' datazone_list_policy_grants(domainIdentifier, entityType,
+#'   entityIdentifier, policyType, maxResults, nextToken)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list policy grants.
-#' @param entityIdentifier &#91;required&#93; The ID of the entity for which you want to list policy grants.
 #' @param entityType &#91;required&#93; The type of entity for which you want to list policy grants.
+#' @param entityIdentifier &#91;required&#93; The ID of the entity for which you want to list policy grants.
+#' @param policyType &#91;required&#93; The type of policy that you want to list.
 #' @param maxResults The maximum number of grants to return in a single call to
 #' [`list_policy_grants`][datazone_list_policy_grants]. When the number of
 #' grants to be listed is greater than the value of `MaxResults`, the
@@ -12133,7 +12567,6 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
 #' `NextToken` value in a subsequent call to
 #' [`list_policy_grants`][datazone_list_policy_grants] to list the next set
 #' of grants.
-#' @param policyType &#91;required&#93; The type of policy that you want to list.
 #'
 #' @return
 #' A list with the following syntax:
@@ -12141,78 +12574,78 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
 #' list(
 #'   grantList = list(
 #'     list(
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       createdBy = "string",
-#'       detail = list(
-#'         addToProjectMemberPool = list(
-#'           includeChildDomainUnits = TRUE|FALSE
-#'         ),
-#'         createAssetType = list(
-#'           includeChildDomainUnits = TRUE|FALSE
-#'         ),
-#'         createDomainUnit = list(
-#'           includeChildDomainUnits = TRUE|FALSE
-#'         ),
-#'         createEnvironment = list(),
-#'         createEnvironmentFromBlueprint = list(),
-#'         createEnvironmentProfile = list(
-#'           domainUnitId = "string"
-#'         ),
-#'         createFormType = list(
-#'           includeChildDomainUnits = TRUE|FALSE
-#'         ),
-#'         createGlossary = list(
-#'           includeChildDomainUnits = TRUE|FALSE
-#'         ),
-#'         createProject = list(
-#'           includeChildDomainUnits = TRUE|FALSE
-#'         ),
-#'         createProjectFromProjectProfile = list(
-#'           includeChildDomainUnits = TRUE|FALSE,
-#'           projectProfiles = list(
-#'             "string"
-#'           )
-#'         ),
-#'         delegateCreateEnvironmentProfile = list(),
-#'         overrideDomainUnitOwners = list(
-#'           includeChildDomainUnits = TRUE|FALSE
-#'         ),
-#'         overrideProjectOwners = list(
-#'           includeChildDomainUnits = TRUE|FALSE
-#'         ),
-#'         useAssetType = list(
-#'           domainUnitId = "string"
-#'         )
-#'       ),
-#'       grantId = "string",
 #'       principal = list(
-#'         domainUnit = list(
-#'           domainUnitDesignation = "OWNER",
-#'           domainUnitGrantFilter = list(
-#'             allDomainUnitsGrantFilter = list()
-#'           ),
-#'           domainUnitIdentifier = "string"
+#'         user = list(
+#'           userIdentifier = "string",
+#'           allUsersGrantFilter = list()
 #'         ),
 #'         group = list(
 #'           groupIdentifier = "string"
 #'         ),
 #'         project = list(
 #'           projectDesignation = "OWNER"|"CONTRIBUTOR"|"PROJECT_CATALOG_STEWARD",
+#'           projectIdentifier = "string",
 #'           projectGrantFilter = list(
 #'             domainUnitFilter = list(
 #'               domainUnit = "string",
 #'               includeChildDomainUnits = TRUE|FALSE
 #'             )
-#'           ),
-#'           projectIdentifier = "string"
+#'           )
 #'         ),
-#'         user = list(
-#'           allUsersGrantFilter = list(),
-#'           userIdentifier = "string"
+#'         domainUnit = list(
+#'           domainUnitDesignation = "OWNER",
+#'           domainUnitIdentifier = "string",
+#'           domainUnitGrantFilter = list(
+#'             allDomainUnitsGrantFilter = list()
+#'           )
 #'         )
-#'       )
+#'       ),
+#'       detail = list(
+#'         createDomainUnit = list(
+#'           includeChildDomainUnits = TRUE|FALSE
+#'         ),
+#'         overrideDomainUnitOwners = list(
+#'           includeChildDomainUnits = TRUE|FALSE
+#'         ),
+#'         addToProjectMemberPool = list(
+#'           includeChildDomainUnits = TRUE|FALSE
+#'         ),
+#'         overrideProjectOwners = list(
+#'           includeChildDomainUnits = TRUE|FALSE
+#'         ),
+#'         createGlossary = list(
+#'           includeChildDomainUnits = TRUE|FALSE
+#'         ),
+#'         createFormType = list(
+#'           includeChildDomainUnits = TRUE|FALSE
+#'         ),
+#'         createAssetType = list(
+#'           includeChildDomainUnits = TRUE|FALSE
+#'         ),
+#'         createProject = list(
+#'           includeChildDomainUnits = TRUE|FALSE
+#'         ),
+#'         createEnvironmentProfile = list(
+#'           domainUnitId = "string"
+#'         ),
+#'         delegateCreateEnvironmentProfile = list(),
+#'         createEnvironment = list(),
+#'         createEnvironmentFromBlueprint = list(),
+#'         createProjectFromProjectProfile = list(
+#'           includeChildDomainUnits = TRUE|FALSE,
+#'           projectProfiles = list(
+#'             "string"
+#'           )
+#'         ),
+#'         useAssetType = list(
+#'           domainUnitId = "string"
+#'         )
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdBy = "string",
+#'       grantId = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -12223,11 +12656,11 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
 #' ```
 #' svc$list_policy_grants(
 #'   domainIdentifier = "string",
-#'   entityIdentifier = "string",
 #'   entityType = "DOMAIN_UNIT"|"ENVIRONMENT_BLUEPRINT_CONFIGURATION"|"ENVIRONMENT_PROFILE"|"ASSET_TYPE",
+#'   entityIdentifier = "string",
+#'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT"|"CREATE_ENVIRONMENT_FROM_BLUEPRINT"|"CREATE_PROJECT_FROM_PROJECT_PROFILE"|"USE_ASSET_TYPE",
 #'   maxResults = 123,
-#'   nextToken = "string",
-#'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT"|"CREATE_ENVIRONMENT_FROM_BLUEPRINT"|"CREATE_PROJECT_FROM_PROJECT_PROFILE"|"USE_ASSET_TYPE"
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -12236,7 +12669,7 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
 #' @rdname datazone_list_policy_grants
 #'
 #' @aliases datazone_list_policy_grants
-datazone_list_policy_grants <- function(domainIdentifier, entityIdentifier, entityType, maxResults = NULL, nextToken = NULL, policyType) {
+datazone_list_policy_grants <- function(domainIdentifier, entityType, entityIdentifier, policyType, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListPolicyGrants",
     http_method = "GET",
@@ -12245,7 +12678,7 @@ datazone_list_policy_grants <- function(domainIdentifier, entityIdentifier, enti
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "grantList"),
     stream_api = FALSE
   )
-  input <- .datazone$list_policy_grants_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, maxResults = maxResults, nextToken = nextToken, policyType = policyType)
+  input <- .datazone$list_policy_grants_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, policyType = policyType, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_policy_grants_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -12261,18 +12694,14 @@ datazone_list_policy_grants <- function(domainIdentifier, entityIdentifier, enti
 #' Lists all members of the specified project.
 #'
 #' @usage
-#' datazone_list_project_memberships(domainIdentifier, maxResults,
-#'   nextToken, projectIdentifier, sortBy, sortOrder)
+#' datazone_list_project_memberships(domainIdentifier, projectIdentifier,
+#'   sortBy, sortOrder, nextToken, maxResults)
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which you want to list
 #' project memberships.
-#' @param maxResults The maximum number of memberships to return in a single call to
-#' [`list_project_memberships`][datazone_list_project_memberships]. When
-#' the number of memberships to be listed is greater than the value of
-#' `MaxResults`, the response contains a `NextToken` value that you can use
-#' in a subsequent call to
-#' [`list_project_memberships`][datazone_list_project_memberships] to list
-#' the next set of memberships.
+#' @param projectIdentifier &#91;required&#93; The identifier of the project whose memberships you want to list.
+#' @param sortBy The method by which you want to sort the project memberships.
+#' @param sortOrder The sort order of the project memberships.
 #' @param nextToken When the number of memberships is greater than the default value for the
 #' `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of memberships, the response
@@ -12280,9 +12709,13 @@ datazone_list_policy_grants <- function(domainIdentifier, entityIdentifier, enti
 #' `NextToken` value in a subsequent call to
 #' [`list_project_memberships`][datazone_list_project_memberships] to list
 #' the next set of memberships.
-#' @param projectIdentifier &#91;required&#93; The identifier of the project whose memberships you want to list.
-#' @param sortBy The method by which you want to sort the project memberships.
-#' @param sortOrder The sort order of the project memberships.
+#' @param maxResults The maximum number of memberships to return in a single call to
+#' [`list_project_memberships`][datazone_list_project_memberships]. When
+#' the number of memberships to be listed is greater than the value of
+#' `MaxResults`, the response contains a `NextToken` value that you can use
+#' in a subsequent call to
+#' [`list_project_memberships`][datazone_list_project_memberships] to list
+#' the next set of memberships.
 #'
 #' @return
 #' A list with the following syntax:
@@ -12290,15 +12723,15 @@ datazone_list_policy_grants <- function(domainIdentifier, entityIdentifier, enti
 #' list(
 #'   members = list(
 #'     list(
-#'       designation = "PROJECT_OWNER"|"PROJECT_CONTRIBUTOR"|"PROJECT_CATALOG_VIEWER"|"PROJECT_CATALOG_CONSUMER"|"PROJECT_CATALOG_STEWARD",
 #'       memberDetails = list(
-#'         group = list(
-#'           groupId = "string"
-#'         ),
 #'         user = list(
 #'           userId = "string"
+#'         ),
+#'         group = list(
+#'           groupId = "string"
 #'         )
-#'       )
+#'       ),
+#'       designation = "PROJECT_OWNER"|"PROJECT_CONTRIBUTOR"|"PROJECT_CATALOG_VIEWER"|"PROJECT_CATALOG_CONSUMER"|"PROJECT_CATALOG_STEWARD"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -12309,11 +12742,11 @@ datazone_list_policy_grants <- function(domainIdentifier, entityIdentifier, enti
 #' ```
 #' svc$list_project_memberships(
 #'   domainIdentifier = "string",
-#'   maxResults = 123,
-#'   nextToken = "string",
 #'   projectIdentifier = "string",
 #'   sortBy = "NAME",
-#'   sortOrder = "ASCENDING"|"DESCENDING"
+#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -12322,7 +12755,7 @@ datazone_list_policy_grants <- function(domainIdentifier, entityIdentifier, enti
 #' @rdname datazone_list_project_memberships
 #'
 #' @aliases datazone_list_project_memberships
-datazone_list_project_memberships <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, projectIdentifier, sortBy = NULL, sortOrder = NULL) {
+datazone_list_project_memberships <- function(domainIdentifier, projectIdentifier, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListProjectMemberships",
     http_method = "GET",
@@ -12331,7 +12764,7 @@ datazone_list_project_memberships <- function(domainIdentifier, maxResults = NUL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members"),
     stream_api = FALSE
   )
-  input <- .datazone$list_project_memberships_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, projectIdentifier = projectIdentifier, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .datazone$list_project_memberships_input(domainIdentifier = domainIdentifier, projectIdentifier = projectIdentifier, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_project_memberships_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -12347,24 +12780,24 @@ datazone_list_project_memberships <- function(domainIdentifier, maxResults = NUL
 #' Lists project profiles.
 #'
 #' @usage
-#' datazone_list_project_profiles(domainIdentifier, maxResults, name,
-#'   nextToken, sortBy, sortOrder)
+#' datazone_list_project_profiles(domainIdentifier, name, sortBy,
+#'   sortOrder, nextToken, maxResults)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list project profiles.
-#' @param maxResults The maximum number of project profiles to return in a single call to
-#' ListProjectProfiles. When the number of project profiles to be listed is
-#' greater than the value of MaxResults, the response contains a NextToken
-#' value that you can use in a subsequent call to ListProjectProfiles to
-#' list the next set of project profiles.
 #' @param name The name of a project profile.
+#' @param sortBy Specifies by what to sort project profiles.
+#' @param sortOrder Specifies the sort order of the project profiles.
 #' @param nextToken When the number of project profiles is greater than the default value
 #' for the MaxResults parameter, or if you explicitly specify a value for
 #' MaxResults that is less than the number of project profiles, the
 #' response includes a pagination token named NextToken. You can specify
 #' this NextToken value in a subsequent call to ListProjectProfiles to list
 #' the next set of project profiles.
-#' @param sortBy Specifies by what to sort project profiles.
-#' @param sortOrder Specifies the sort order of the project profiles.
+#' @param maxResults The maximum number of project profiles to return in a single call to
+#' ListProjectProfiles. When the number of project profiles to be listed is
+#' greater than the value of MaxResults, the response contains a NextToken
+#' value that you can use in a subsequent call to ListProjectProfiles to
+#' list the next set of project profiles.
 #'
 #' @return
 #' A list with the following syntax:
@@ -12372,19 +12805,19 @@ datazone_list_project_memberships <- function(domainIdentifier, maxResults = NUL
 #' list(
 #'   items = list(
 #'     list(
+#'       domainId = "string",
+#'       id = "string",
+#'       name = "string",
+#'       description = "string",
+#'       status = "ENABLED"|"DISABLED",
+#'       createdBy = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       createdBy = "string",
-#'       description = "string",
-#'       domainId = "string",
-#'       domainUnitId = "string",
-#'       id = "string",
 #'       lastUpdatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       name = "string",
-#'       status = "ENABLED"|"DISABLED"
+#'       domainUnitId = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -12395,11 +12828,11 @@ datazone_list_project_memberships <- function(domainIdentifier, maxResults = NUL
 #' ```
 #' svc$list_project_profiles(
 #'   domainIdentifier = "string",
-#'   maxResults = 123,
 #'   name = "string",
-#'   nextToken = "string",
 #'   sortBy = "NAME",
-#'   sortOrder = "ASCENDING"|"DESCENDING"
+#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -12408,7 +12841,7 @@ datazone_list_project_memberships <- function(domainIdentifier, maxResults = NUL
 #' @rdname datazone_list_project_profiles
 #'
 #' @aliases datazone_list_project_profiles
-datazone_list_project_profiles <- function(domainIdentifier, maxResults = NULL, name = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+datazone_list_project_profiles <- function(domainIdentifier, name = NULL, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListProjectProfiles",
     http_method = "GET",
@@ -12417,7 +12850,7 @@ datazone_list_project_profiles <- function(domainIdentifier, maxResults = NULL, 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_project_profiles_input(domainIdentifier = domainIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .datazone$list_project_profiles_input(domainIdentifier = domainIdentifier, name = name, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_project_profiles_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -12433,18 +12866,14 @@ datazone_list_project_profiles <- function(domainIdentifier, maxResults = NULL, 
 #' Lists Amazon DataZone projects.
 #'
 #' @usage
-#' datazone_list_projects(domainIdentifier, groupIdentifier, maxResults,
-#'   name, nextToken, userIdentifier)
+#' datazone_list_projects(domainIdentifier, userIdentifier,
+#'   groupIdentifier, name, projectCategory, nextToken, maxResults)
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
+#' @param userIdentifier The identifier of the Amazon DataZone user.
 #' @param groupIdentifier The identifier of a group.
-#' @param maxResults The maximum number of projects to return in a single call to
-#' [`list_projects`][datazone_list_projects]. When the number of projects
-#' to be listed is greater than the value of `MaxResults`, the response
-#' contains a `NextToken` value that you can use in a subsequent call to
-#' [`list_projects`][datazone_list_projects] to list the next set of
-#' projects.
 #' @param name The name of the project.
+#' @param projectCategory A parameter to filter projects by their category.
 #' @param nextToken When the number of projects is greater than the default value for the
 #' `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of projects, the response
@@ -12452,7 +12881,12 @@ datazone_list_project_profiles <- function(domainIdentifier, maxResults = NULL, 
 #' `NextToken` value in a subsequent call to
 #' [`list_projects`][datazone_list_projects] to list the next set of
 #' projects.
-#' @param userIdentifier The identifier of the Amazon DataZone user.
+#' @param maxResults The maximum number of projects to return in a single call to
+#' [`list_projects`][datazone_list_projects]. When the number of projects
+#' to be listed is greater than the value of `MaxResults`, the response
+#' contains a `NextToken` value that you can use in a subsequent call to
+#' [`list_projects`][datazone_list_projects] to list the next set of
+#' projects.
 #'
 #' @return
 #' A list with the following syntax:
@@ -12460,25 +12894,26 @@ datazone_list_project_profiles <- function(domainIdentifier, maxResults = NULL, 
 #' list(
 #'   items = list(
 #'     list(
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       createdBy = "string",
-#'       description = "string",
 #'       domainId = "string",
-#'       domainUnitId = "string",
+#'       id = "string",
+#'       name = "string",
+#'       description = "string",
+#'       projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"MOVING",
 #'       failureReasons = list(
 #'         list(
 #'           code = "string",
 #'           message = "string"
 #'         )
 #'       ),
-#'       id = "string",
-#'       name = "string",
-#'       projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"MOVING",
+#'       createdBy = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       domainUnitId = "string",
+#'       projectCategory = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -12489,11 +12924,12 @@ datazone_list_project_profiles <- function(domainIdentifier, maxResults = NULL, 
 #' ```
 #' svc$list_projects(
 #'   domainIdentifier = "string",
+#'   userIdentifier = "string",
 #'   groupIdentifier = "string",
-#'   maxResults = 123,
 #'   name = "string",
+#'   projectCategory = "string",
 #'   nextToken = "string",
-#'   userIdentifier = "string"
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -12502,7 +12938,7 @@ datazone_list_project_profiles <- function(domainIdentifier, maxResults = NULL, 
 #' @rdname datazone_list_projects
 #'
 #' @aliases datazone_list_projects
-datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, maxResults = NULL, name = NULL, nextToken = NULL, userIdentifier = NULL) {
+datazone_list_projects <- function(domainIdentifier, userIdentifier = NULL, groupIdentifier = NULL, name = NULL, projectCategory = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListProjects",
     http_method = "GET",
@@ -12511,7 +12947,7 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_projects_input(domainIdentifier = domainIdentifier, groupIdentifier = groupIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, userIdentifier = userIdentifier)
+  input <- .datazone$list_projects_input(domainIdentifier = domainIdentifier, userIdentifier = userIdentifier, groupIdentifier = groupIdentifier, name = name, projectCategory = projectCategory, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_projects_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -12535,14 +12971,18 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
 #' organizational standards.
 #'
 #' @usage
-#' datazone_list_rules(action, assetTypes, dataProduct, domainIdentifier,
-#'   includeCascaded, maxResults, nextToken, projectIds, ruleType,
-#'   targetIdentifier, targetType)
+#' datazone_list_rules(domainIdentifier, targetType, targetIdentifier,
+#'   ruleType, action, projectIds, assetTypes, dataProduct, includeCascaded,
+#'   maxResults, nextToken)
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain in which the rules are to be listed.
+#' @param targetType &#91;required&#93; The target type of the rule.
+#' @param targetIdentifier &#91;required&#93; The target ID of the rule.
+#' @param ruleType The type of the rule.
 #' @param action The action of the rule.
+#' @param projectIds The IDs of projects in which rules are to be listed.
 #' @param assetTypes The asset types of the rule.
 #' @param dataProduct The data product of the rule.
-#' @param domainIdentifier &#91;required&#93; The ID of the domain in which the rules are to be listed.
 #' @param includeCascaded Specifies whether to include cascading rules in the results.
 #' @param maxResults The maximum number of rules to return in a single call to
 #' [`list_rules`][datazone_list_rules]. When the number of rules to be
@@ -12555,10 +12995,6 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
 #' includes a pagination token named `NextToken`. You can specify this
 #' `NextToken` value in a subsequent call to
 #' [`list_rules`][datazone_list_rules] to list the next set of rules.
-#' @param projectIds The IDs of projects in which rules are to be listed.
-#' @param ruleType The type of the rule.
-#' @param targetIdentifier &#91;required&#93; The target ID of the rule.
-#' @param targetType &#91;required&#93; The target type of the rule.
 #'
 #' @return
 #' A list with the following syntax:
@@ -12566,12 +13002,18 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
 #' list(
 #'   items = list(
 #'     list(
-#'       action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
 #'       identifier = "string",
-#'       lastUpdatedBy = "string",
-#'       name = "string",
 #'       revision = "string",
 #'       ruleType = "METADATA_FORM_ENFORCEMENT"|"GLOSSARY_TERM_ENFORCEMENT",
+#'       name = "string",
+#'       targetType = "DOMAIN_UNIT",
+#'       target = list(
+#'         domainUnitTarget = list(
+#'           domainUnitId = "string",
+#'           includeChildDomainUnits = TRUE|FALSE
+#'         )
+#'       ),
+#'       action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
 #'       scope = list(
 #'         assetType = list(
 #'           selectionMode = "ALL"|"SPECIFIC",
@@ -12587,16 +13029,10 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
 #'           )
 #'         )
 #'       ),
-#'       target = list(
-#'         domainUnitTarget = list(
-#'           domainUnitId = "string",
-#'           includeChildDomainUnits = TRUE|FALSE
-#'         )
-#'       ),
-#'       targetType = "DOMAIN_UNIT",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       lastUpdatedBy = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -12606,21 +13042,21 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
 #' @section Request syntax:
 #' ```
 #' svc$list_rules(
+#'   domainIdentifier = "string",
+#'   targetType = "DOMAIN_UNIT",
+#'   targetIdentifier = "string",
+#'   ruleType = "METADATA_FORM_ENFORCEMENT"|"GLOSSARY_TERM_ENFORCEMENT",
 #'   action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
+#'   projectIds = list(
+#'     "string"
+#'   ),
 #'   assetTypes = list(
 #'     "string"
 #'   ),
 #'   dataProduct = TRUE|FALSE,
-#'   domainIdentifier = "string",
 #'   includeCascaded = TRUE|FALSE,
 #'   maxResults = 123,
-#'   nextToken = "string",
-#'   projectIds = list(
-#'     "string"
-#'   ),
-#'   ruleType = "METADATA_FORM_ENFORCEMENT"|"GLOSSARY_TERM_ENFORCEMENT",
-#'   targetIdentifier = "string",
-#'   targetType = "DOMAIN_UNIT"
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -12629,7 +13065,7 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
 #' @rdname datazone_list_rules
 #'
 #' @aliases datazone_list_rules
-datazone_list_rules <- function(action = NULL, assetTypes = NULL, dataProduct = NULL, domainIdentifier, includeCascaded = NULL, maxResults = NULL, nextToken = NULL, projectIds = NULL, ruleType = NULL, targetIdentifier, targetType) {
+datazone_list_rules <- function(domainIdentifier, targetType, targetIdentifier, ruleType = NULL, action = NULL, projectIds = NULL, assetTypes = NULL, dataProduct = NULL, includeCascaded = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListRules",
     http_method = "GET",
@@ -12638,7 +13074,7 @@ datazone_list_rules <- function(action = NULL, assetTypes = NULL, dataProduct = 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_rules_input(action = action, assetTypes = assetTypes, dataProduct = dataProduct, domainIdentifier = domainIdentifier, includeCascaded = includeCascaded, maxResults = maxResults, nextToken = nextToken, projectIds = projectIds, ruleType = ruleType, targetIdentifier = targetIdentifier, targetType = targetType)
+  input <- .datazone$list_rules_input(domainIdentifier = domainIdentifier, targetType = targetType, targetIdentifier = targetIdentifier, ruleType = ruleType, action = action, projectIds = projectIds, assetTypes = assetTypes, dataProduct = dataProduct, includeCascaded = includeCascaded, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_rules_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -12655,12 +13091,21 @@ datazone_list_rules <- function(action = NULL, assetTypes = NULL, dataProduct = 
 #'
 #' @usage
 #' datazone_list_subscription_grants(domainIdentifier, environmentId,
-#'   maxResults, nextToken, owningGroupId, owningProjectId, owningUserId,
-#'   sortBy, sortOrder, subscribedListingId, subscriptionId,
-#'   subscriptionTargetId)
+#'   subscriptionTargetId, subscribedListingId, subscriptionId,
+#'   owningProjectId, owningIamPrincipalArn, owningUserId, owningGroupId,
+#'   sortBy, sortOrder, maxResults, nextToken)
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
 #' @param environmentId The identifier of the Amazon DataZone environment.
+#' @param subscriptionTargetId The identifier of the subscription target.
+#' @param subscribedListingId The identifier of the subscribed listing.
+#' @param subscriptionId The identifier of the subscription.
+#' @param owningProjectId The ID of the owning project of the subscription grants.
+#' @param owningIamPrincipalArn The ARN of the owning IAM principal.
+#' @param owningUserId The ID of the owning user.
+#' @param owningGroupId The ID of the owning group.
+#' @param sortBy Specifies the way of sorting the results of this action.
+#' @param sortOrder Specifies the sort order of this action.
 #' @param maxResults The maximum number of subscription grants to return in a single call to
 #' [`list_subscription_grants`][datazone_list_subscription_grants]. When
 #' the number of subscription grants to be listed is greater than the value
@@ -12675,14 +13120,6 @@ datazone_list_rules <- function(action = NULL, assetTypes = NULL, dataProduct = 
 #' this `NextToken` value in a subsequent call to
 #' [`list_subscription_grants`][datazone_list_subscription_grants] to list
 #' the next set of subscription grants.
-#' @param owningGroupId The ID of the owning group.
-#' @param owningProjectId The ID of the owning project of the subscription grants.
-#' @param owningUserId The ID of the owning user.
-#' @param sortBy Specifies the way of sorting the results of this action.
-#' @param sortOrder Specifies the sort order of this action.
-#' @param subscribedListingId The identifier of the subscribed listing.
-#' @param subscriptionId The identifier of the subscription.
-#' @param subscriptionTargetId The identifier of the subscription target.
 #'
 #' @return
 #' A list with the following syntax:
@@ -12690,56 +13127,56 @@ datazone_list_rules <- function(action = NULL, assetTypes = NULL, dataProduct = 
 #' list(
 #'   items = list(
 #'     list(
-#'       assets = list(
-#'         list(
-#'           assetId = "string",
-#'           assetRevision = "string",
-#'           assetScope = list(
-#'             assetId = "string",
-#'             errorMessage = "string",
-#'             filterIds = list(
-#'               "string"
-#'             ),
-#'             status = "string"
-#'           ),
-#'           failureCause = list(
-#'             message = "string"
-#'           ),
-#'           failureTimestamp = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           grantedTimestamp = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           permissions = list(
-#'             s3 = list(
-#'               "READ"|"WRITE"
-#'             )
-#'           ),
-#'           status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"REVOKED"|"GRANT_FAILED"|"REVOKE_FAILED",
-#'           targetName = "string"
-#'         )
-#'       ),
+#'       id = "string",
+#'       createdBy = "string",
+#'       updatedBy = "string",
+#'       domainId = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       createdBy = "string",
-#'       domainId = "string",
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       environmentId = "string",
+#'       subscriptionTargetId = "string",
 #'       grantedEntity = list(
 #'         listing = list(
 #'           id = "string",
 #'           revision = "string"
 #'         )
 #'       ),
-#'       id = "string",
 #'       status = "PENDING"|"IN_PROGRESS"|"GRANT_FAILED"|"REVOKE_FAILED"|"GRANT_AND_REVOKE_FAILED"|"COMPLETED"|"INACCESSIBLE",
-#'       subscriptionId = "string",
-#'       subscriptionTargetId = "string",
-#'       updatedAt = as.POSIXct(
-#'         "2015-01-01"
+#'       assets = list(
+#'         list(
+#'           assetId = "string",
+#'           assetRevision = "string",
+#'           status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"REVOKED"|"GRANT_FAILED"|"REVOKE_FAILED",
+#'           targetName = "string",
+#'           failureCause = list(
+#'             message = "string"
+#'           ),
+#'           grantedTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           failureTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           assetScope = list(
+#'             assetId = "string",
+#'             filterIds = list(
+#'               "string"
+#'             ),
+#'             status = "string",
+#'             errorMessage = "string"
+#'           ),
+#'           permissions = list(
+#'             s3 = list(
+#'               "READ"|"WRITE"
+#'             )
+#'           )
+#'         )
 #'       ),
-#'       updatedBy = "string"
+#'       subscriptionId = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -12751,16 +13188,17 @@ datazone_list_rules <- function(action = NULL, assetTypes = NULL, dataProduct = 
 #' svc$list_subscription_grants(
 #'   domainIdentifier = "string",
 #'   environmentId = "string",
-#'   maxResults = 123,
-#'   nextToken = "string",
-#'   owningGroupId = "string",
-#'   owningProjectId = "string",
-#'   owningUserId = "string",
-#'   sortBy = "CREATED_AT"|"UPDATED_AT",
-#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   subscriptionTargetId = "string",
 #'   subscribedListingId = "string",
 #'   subscriptionId = "string",
-#'   subscriptionTargetId = "string"
+#'   owningProjectId = "string",
+#'   owningIamPrincipalArn = "string",
+#'   owningUserId = "string",
+#'   owningGroupId = "string",
+#'   sortBy = "CREATED_AT"|"UPDATED_AT",
+#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -12769,7 +13207,7 @@ datazone_list_rules <- function(action = NULL, assetTypes = NULL, dataProduct = 
 #' @rdname datazone_list_subscription_grants
 #'
 #' @aliases datazone_list_subscription_grants
-datazone_list_subscription_grants <- function(domainIdentifier, environmentId = NULL, maxResults = NULL, nextToken = NULL, owningGroupId = NULL, owningProjectId = NULL, owningUserId = NULL, sortBy = NULL, sortOrder = NULL, subscribedListingId = NULL, subscriptionId = NULL, subscriptionTargetId = NULL) {
+datazone_list_subscription_grants <- function(domainIdentifier, environmentId = NULL, subscriptionTargetId = NULL, subscribedListingId = NULL, subscriptionId = NULL, owningProjectId = NULL, owningIamPrincipalArn = NULL, owningUserId = NULL, owningGroupId = NULL, sortBy = NULL, sortOrder = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSubscriptionGrants",
     http_method = "GET",
@@ -12778,7 +13216,7 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_subscription_grants_input(domainIdentifier = domainIdentifier, environmentId = environmentId, maxResults = maxResults, nextToken = nextToken, owningGroupId = owningGroupId, owningProjectId = owningProjectId, owningUserId = owningUserId, sortBy = sortBy, sortOrder = sortOrder, subscribedListingId = subscribedListingId, subscriptionId = subscriptionId, subscriptionTargetId = subscriptionTargetId)
+  input <- .datazone$list_subscription_grants_input(domainIdentifier = domainIdentifier, environmentId = environmentId, subscriptionTargetId = subscriptionTargetId, subscribedListingId = subscribedListingId, subscriptionId = subscriptionId, owningProjectId = owningProjectId, owningIamPrincipalArn = owningIamPrincipalArn, owningUserId = owningUserId, owningGroupId = owningGroupId, sortBy = sortBy, sortOrder = sortOrder, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_subscription_grants_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -12794,12 +13232,24 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
 #' Lists Amazon DataZone subscription requests.
 #'
 #' @usage
-#' datazone_list_subscription_requests(approverProjectId, domainIdentifier,
-#'   maxResults, nextToken, owningGroupId, owningProjectId, owningUserId,
-#'   sortBy, sortOrder, status, subscribedListingId)
+#' datazone_list_subscription_requests(domainIdentifier, status,
+#'   subscribedListingId, owningProjectId, owningIamPrincipalArn,
+#'   approverProjectId, owningUserId, owningGroupId, sortBy, sortOrder,
+#'   maxResults, nextToken)
 #'
-#' @param approverProjectId The identifier of the subscription request approver's project.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
+#' @param status Specifies the status of the subscription requests.
+#' 
+#' This is not a required parameter, but if not specified, by default,
+#' Amazon DataZone returns only `PENDING` subscription requests.
+#' @param subscribedListingId The identifier of the subscribed listing.
+#' @param owningProjectId The identifier of the project for the subscription requests.
+#' @param owningIamPrincipalArn The ARN of the owning IAM principal.
+#' @param approverProjectId The identifier of the subscription request approver's project.
+#' @param owningUserId The ID of the owning user.
+#' @param owningGroupId The ID of the owning group.
+#' @param sortBy Specifies the way to sort the results of this action.
+#' @param sortOrder Specifies the sort order for the results of this action.
 #' @param maxResults The maximum number of subscription requests to return in a single call
 #' to [`list_subscription_requests`][datazone_list_subscription_requests].
 #' When the number of subscription requests to be listed is greater than
@@ -12814,16 +13264,6 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
 #' You can specify this `NextToken` value in a subsequent call to
 #' [`list_subscription_requests`][datazone_list_subscription_requests] to
 #' list the next set of subscription requests.
-#' @param owningGroupId The ID of the owning group.
-#' @param owningProjectId The identifier of the project for the subscription requests.
-#' @param owningUserId The ID of the owning user.
-#' @param sortBy Specifies the way to sort the results of this action.
-#' @param sortOrder Specifies the sort order for the results of this action.
-#' @param status Specifies the status of the subscription requests.
-#' 
-#' This is not a required parameter, but if not specified, by default,
-#' Amazon DataZone returns only `PENDING` subscription requests.
-#' @param subscribedListingId The identifier of the subscribed listing.
 #'
 #' @return
 #' A list with the following syntax:
@@ -12831,38 +13271,57 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
 #' list(
 #'   items = list(
 #'     list(
+#'       id = "string",
+#'       createdBy = "string",
+#'       updatedBy = "string",
+#'       domainId = "string",
+#'       status = "PENDING"|"ACCEPTED"|"REJECTED",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       createdBy = "string",
-#'       decisionComment = "string",
-#'       domainId = "string",
-#'       existingSubscriptionId = "string",
-#'       id = "string",
-#'       metadataFormsSummary = list(
-#'         list(
-#'           formName = "string",
-#'           typeName = "string",
-#'           typeRevision = "string"
-#'         )
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
 #'       ),
 #'       requestReason = "string",
-#'       reviewerId = "string",
-#'       status = "PENDING"|"ACCEPTED"|"REJECTED",
+#'       subscribedPrincipals = list(
+#'         list(
+#'           project = list(
+#'             id = "string",
+#'             name = "string"
+#'           ),
+#'           user = list(
+#'             id = "string",
+#'             details = list(
+#'               iam = list(
+#'                 arn = "string",
+#'                 principalId = "string",
+#'                 sessionName = "string",
+#'                 groupProfileId = "string"
+#'               ),
+#'               sso = list(
+#'                 username = "string",
+#'                 firstName = "string",
+#'                 lastName = "string"
+#'               )
+#'             )
+#'           ),
+#'           group = list(
+#'             id = "string",
+#'             name = "string"
+#'           ),
+#'           iam = list(
+#'             principalArn = "string"
+#'           )
+#'         )
+#'       ),
 #'       subscribedListings = list(
 #'         list(
-#'           description = "string",
 #'           id = "string",
+#'           revision = "string",
+#'           name = "string",
+#'           description = "string",
 #'           item = list(
 #'             assetListing = list(
-#'               assetScope = list(
-#'                 assetId = "string",
-#'                 errorMessage = "string",
-#'                 filterIds = list(
-#'                   "string"
-#'                 ),
-#'                 status = "string"
-#'               ),
 #'               entityId = "string",
 #'               entityRevision = "string",
 #'               entityType = "string",
@@ -12873,6 +13332,14 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
 #'                   shortDescription = "string"
 #'                 )
 #'               ),
+#'               assetScope = list(
+#'                 assetId = "string",
+#'                 filterIds = list(
+#'                   "string"
+#'                 ),
+#'                 status = "string",
+#'                 errorMessage = "string"
+#'               ),
 #'               permissions = list(
 #'                 s3 = list(
 #'                   "READ"|"WRITE"
@@ -12880,14 +13347,6 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
 #'               )
 #'             ),
 #'             productListing = list(
-#'               assetListings = list(
-#'                 list(
-#'                   entityId = "string",
-#'                   entityRevision = "string",
-#'                   entityType = "string"
-#'                 )
-#'               ),
-#'               description = "string",
 #'               entityId = "string",
 #'               entityRevision = "string",
 #'               glossaryTerms = list(
@@ -12896,45 +13355,31 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
 #'                   shortDescription = "string"
 #'                 )
 #'               ),
-#'               name = "string"
+#'               name = "string",
+#'               description = "string",
+#'               assetListings = list(
+#'                 list(
+#'                   entityId = "string",
+#'                   entityRevision = "string",
+#'                   entityType = "string"
+#'                 )
+#'               )
 #'             )
 #'           ),
-#'           name = "string",
 #'           ownerProjectId = "string",
-#'           ownerProjectName = "string",
-#'           revision = "string"
+#'           ownerProjectName = "string"
 #'         )
 #'       ),
-#'       subscribedPrincipals = list(
+#'       reviewerId = "string",
+#'       decisionComment = "string",
+#'       existingSubscriptionId = "string",
+#'       metadataFormsSummary = list(
 #'         list(
-#'           group = list(
-#'             id = "string",
-#'             name = "string"
-#'           ),
-#'           project = list(
-#'             id = "string",
-#'             name = "string"
-#'           ),
-#'           user = list(
-#'             details = list(
-#'               iam = list(
-#'                 arn = "string",
-#'                 principalId = "string"
-#'               ),
-#'               sso = list(
-#'                 firstName = "string",
-#'                 lastName = "string",
-#'                 username = "string"
-#'               )
-#'             ),
-#'             id = "string"
-#'           )
+#'           formName = "string",
+#'           typeName = "string",
+#'           typeRevision = "string"
 #'         )
-#'       ),
-#'       updatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       updatedBy = "string"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -12944,17 +13389,18 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
 #' @section Request syntax:
 #' ```
 #' svc$list_subscription_requests(
-#'   approverProjectId = "string",
 #'   domainIdentifier = "string",
-#'   maxResults = 123,
-#'   nextToken = "string",
-#'   owningGroupId = "string",
+#'   status = "PENDING"|"ACCEPTED"|"REJECTED",
+#'   subscribedListingId = "string",
 #'   owningProjectId = "string",
+#'   owningIamPrincipalArn = "string",
+#'   approverProjectId = "string",
 #'   owningUserId = "string",
+#'   owningGroupId = "string",
 #'   sortBy = "CREATED_AT"|"UPDATED_AT",
 #'   sortOrder = "ASCENDING"|"DESCENDING",
-#'   status = "PENDING"|"ACCEPTED"|"REJECTED",
-#'   subscribedListingId = "string"
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -12963,7 +13409,7 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
 #' @rdname datazone_list_subscription_requests
 #'
 #' @aliases datazone_list_subscription_requests
-datazone_list_subscription_requests <- function(approverProjectId = NULL, domainIdentifier, maxResults = NULL, nextToken = NULL, owningGroupId = NULL, owningProjectId = NULL, owningUserId = NULL, sortBy = NULL, sortOrder = NULL, status = NULL, subscribedListingId = NULL) {
+datazone_list_subscription_requests <- function(domainIdentifier, status = NULL, subscribedListingId = NULL, owningProjectId = NULL, owningIamPrincipalArn = NULL, approverProjectId = NULL, owningUserId = NULL, owningGroupId = NULL, sortBy = NULL, sortOrder = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSubscriptionRequests",
     http_method = "GET",
@@ -12972,7 +13418,7 @@ datazone_list_subscription_requests <- function(approverProjectId = NULL, domain
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_subscription_requests_input(approverProjectId = approverProjectId, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, owningGroupId = owningGroupId, owningProjectId = owningProjectId, owningUserId = owningUserId, sortBy = sortBy, sortOrder = sortOrder, status = status, subscribedListingId = subscribedListingId)
+  input <- .datazone$list_subscription_requests_input(domainIdentifier = domainIdentifier, status = status, subscribedListingId = subscribedListingId, owningProjectId = owningProjectId, owningIamPrincipalArn = owningIamPrincipalArn, approverProjectId = approverProjectId, owningUserId = owningUserId, owningGroupId = owningGroupId, sortBy = sortBy, sortOrder = sortOrder, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_subscription_requests_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -12989,12 +13435,14 @@ datazone_list_subscription_requests <- function(approverProjectId = NULL, domain
 #'
 #' @usage
 #' datazone_list_subscription_targets(domainIdentifier,
-#'   environmentIdentifier, maxResults, nextToken, sortBy, sortOrder)
+#'   environmentIdentifier, sortBy, sortOrder, maxResults, nextToken)
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain where you want to list
 #' subscription targets.
 #' @param environmentIdentifier &#91;required&#93; The identifier of the environment where you want to list subscription
 #' targets.
+#' @param sortBy Specifies the way in which the results of this action are to be sorted.
+#' @param sortOrder Specifies the sort order for the results of this action.
 #' @param maxResults The maximum number of subscription targets to return in a single call to
 #' [`list_subscription_targets`][datazone_list_subscription_targets]. When
 #' the number of subscription targets to be listed is greater than the
@@ -13009,8 +13457,6 @@ datazone_list_subscription_requests <- function(approverProjectId = NULL, domain
 #' can specify this `NextToken` value in a subsequent call to
 #' [`list_subscription_targets`][datazone_list_subscription_targets] to
 #' list the next set of subscription targets.
-#' @param sortBy Specifies the way in which the results of this action are to be sorted.
-#' @param sortOrder Specifies the sort order for the results of this action.
 #'
 #' @return
 #' A list with the following syntax:
@@ -13018,34 +13464,35 @@ datazone_list_subscription_requests <- function(approverProjectId = NULL, domain
 #' list(
 #'   items = list(
 #'     list(
-#'       applicableAssetTypes = list(
-#'         "string"
-#'       ),
+#'       id = "string",
 #'       authorizedPrincipals = list(
 #'         "string"
 #'       ),
+#'       domainId = "string",
+#'       projectId = "string",
+#'       environmentId = "string",
+#'       name = "string",
+#'       type = "string",
+#'       createdBy = "string",
+#'       updatedBy = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       createdBy = "string",
-#'       domainId = "string",
-#'       environmentId = "string",
-#'       id = "string",
-#'       manageAccessRole = "string",
-#'       name = "string",
-#'       projectId = "string",
-#'       provider = "string",
-#'       subscriptionTargetConfig = list(
-#'         list(
-#'           content = "string",
-#'           formName = "string"
-#'         )
-#'       ),
-#'       type = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       updatedBy = "string"
+#'       manageAccessRole = "string",
+#'       applicableAssetTypes = list(
+#'         "string"
+#'       ),
+#'       subscriptionTargetConfig = list(
+#'         list(
+#'           formName = "string",
+#'           content = "string"
+#'         )
+#'       ),
+#'       provider = "string",
+#'       subscriptionGrantCreationMode = "AUTOMATIC"|"MANUAL"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -13057,10 +13504,10 @@ datazone_list_subscription_requests <- function(approverProjectId = NULL, domain
 #' svc$list_subscription_targets(
 #'   domainIdentifier = "string",
 #'   environmentIdentifier = "string",
-#'   maxResults = 123,
-#'   nextToken = "string",
 #'   sortBy = "CREATED_AT"|"UPDATED_AT",
-#'   sortOrder = "ASCENDING"|"DESCENDING"
+#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -13069,7 +13516,7 @@ datazone_list_subscription_requests <- function(approverProjectId = NULL, domain
 #' @rdname datazone_list_subscription_targets
 #'
 #' @aliases datazone_list_subscription_targets
-datazone_list_subscription_targets <- function(domainIdentifier, environmentIdentifier, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+datazone_list_subscription_targets <- function(domainIdentifier, environmentIdentifier, sortBy = NULL, sortOrder = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSubscriptionTargets",
     http_method = "GET",
@@ -13078,7 +13525,7 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_subscription_targets_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .datazone$list_subscription_targets_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, sortBy = sortBy, sortOrder = sortOrder, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_subscription_targets_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -13094,13 +13541,27 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
 #' Lists subscriptions in Amazon DataZone.
 #'
 #' @usage
-#' datazone_list_subscriptions(approverProjectId, domainIdentifier,
-#'   maxResults, nextToken, owningGroupId, owningProjectId, owningUserId,
-#'   sortBy, sortOrder, status, subscribedListingId,
-#'   subscriptionRequestIdentifier)
+#' datazone_list_subscriptions(domainIdentifier,
+#'   subscriptionRequestIdentifier, status, subscribedListingId,
+#'   owningProjectId, owningIamPrincipalArn, owningUserId, owningGroupId,
+#'   approverProjectId, sortBy, sortOrder, maxResults, nextToken)
 #'
-#' @param approverProjectId The identifier of the project for the subscription's approver.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
+#' @param subscriptionRequestIdentifier The identifier of the subscription request for the subscriptions that
+#' you want to list.
+#' @param status The status of the subscriptions that you want to list.
+#' 
+#' This is not a required parameter, but if not provided, by default,
+#' Amazon DataZone returns only `APPROVED` subscriptions.
+#' @param subscribedListingId The identifier of the subscribed listing for the subscriptions that you
+#' want to list.
+#' @param owningProjectId The identifier of the owning project.
+#' @param owningIamPrincipalArn The ARN of the owning IAM principal.
+#' @param owningUserId The ID of the owning user.
+#' @param owningGroupId The ID of the owning group.
+#' @param approverProjectId The identifier of the project for the subscription's approver.
+#' @param sortBy Specifies the way in which the results of this action are to be sorted.
+#' @param sortOrder Specifies the sort order for the results of this action.
 #' @param maxResults The maximum number of subscriptions to return in a single call to
 #' [`list_subscriptions`][datazone_list_subscriptions]. When the number of
 #' subscriptions to be listed is greater than the value of `MaxResults`,
@@ -13114,19 +13575,6 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
 #' `NextToken` value in a subsequent call to
 #' [`list_subscriptions`][datazone_list_subscriptions] to list the next set
 #' of subscriptions.
-#' @param owningGroupId The ID of the owning group.
-#' @param owningProjectId The identifier of the owning project.
-#' @param owningUserId The ID of the owning user.
-#' @param sortBy Specifies the way in which the results of this action are to be sorted.
-#' @param sortOrder Specifies the sort order for the results of this action.
-#' @param status The status of the subscriptions that you want to list.
-#' 
-#' This is not a required parameter, but if not provided, by default,
-#' Amazon DataZone returns only `APPROVED` subscriptions.
-#' @param subscribedListingId The identifier of the subscribed listing for the subscriptions that you
-#' want to list.
-#' @param subscriptionRequestIdentifier The identifier of the subscription request for the subscriptions that
-#' you want to list.
 #'
 #' @return
 #' A list with the following syntax:
@@ -13134,27 +13582,53 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
 #' list(
 #'   items = list(
 #'     list(
+#'       id = "string",
+#'       createdBy = "string",
+#'       updatedBy = "string",
+#'       domainId = "string",
+#'       status = "APPROVED"|"REVOKED"|"CANCELLED",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       createdBy = "string",
-#'       domainId = "string",
-#'       id = "string",
-#'       retainPermissions = TRUE|FALSE,
-#'       status = "APPROVED"|"REVOKED"|"CANCELLED",
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       subscribedPrincipal = list(
+#'         project = list(
+#'           id = "string",
+#'           name = "string"
+#'         ),
+#'         user = list(
+#'           id = "string",
+#'           details = list(
+#'             iam = list(
+#'               arn = "string",
+#'               principalId = "string",
+#'               sessionName = "string",
+#'               groupProfileId = "string"
+#'             ),
+#'             sso = list(
+#'               username = "string",
+#'               firstName = "string",
+#'               lastName = "string"
+#'             )
+#'           )
+#'         ),
+#'         group = list(
+#'           id = "string",
+#'           name = "string"
+#'         ),
+#'         iam = list(
+#'           principalArn = "string"
+#'         )
+#'       ),
 #'       subscribedListing = list(
-#'         description = "string",
 #'         id = "string",
+#'         revision = "string",
+#'         name = "string",
+#'         description = "string",
 #'         item = list(
 #'           assetListing = list(
-#'             assetScope = list(
-#'               assetId = "string",
-#'               errorMessage = "string",
-#'               filterIds = list(
-#'                 "string"
-#'               ),
-#'               status = "string"
-#'             ),
 #'             entityId = "string",
 #'             entityRevision = "string",
 #'             entityType = "string",
@@ -13165,6 +13639,14 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
 #'                 shortDescription = "string"
 #'               )
 #'             ),
+#'             assetScope = list(
+#'               assetId = "string",
+#'               filterIds = list(
+#'                 "string"
+#'               ),
+#'               status = "string",
+#'               errorMessage = "string"
+#'             ),
 #'             permissions = list(
 #'               s3 = list(
 #'                 "READ"|"WRITE"
@@ -13172,14 +13654,6 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
 #'             )
 #'           ),
 #'           productListing = list(
-#'             assetListings = list(
-#'               list(
-#'                 entityId = "string",
-#'                 entityRevision = "string",
-#'                 entityType = "string"
-#'               )
-#'             ),
-#'             description = "string",
 #'             entityId = "string",
 #'             entityRevision = "string",
 #'             glossaryTerms = list(
@@ -13188,43 +13662,22 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
 #'                 shortDescription = "string"
 #'               )
 #'             ),
-#'             name = "string"
+#'             name = "string",
+#'             description = "string",
+#'             assetListings = list(
+#'               list(
+#'                 entityId = "string",
+#'                 entityRevision = "string",
+#'                 entityType = "string"
+#'               )
+#'             )
 #'           )
 #'         ),
-#'         name = "string",
 #'         ownerProjectId = "string",
-#'         ownerProjectName = "string",
-#'         revision = "string"
-#'       ),
-#'       subscribedPrincipal = list(
-#'         group = list(
-#'           id = "string",
-#'           name = "string"
-#'         ),
-#'         project = list(
-#'           id = "string",
-#'           name = "string"
-#'         ),
-#'         user = list(
-#'           details = list(
-#'             iam = list(
-#'               arn = "string",
-#'               principalId = "string"
-#'             ),
-#'             sso = list(
-#'               firstName = "string",
-#'               lastName = "string",
-#'               username = "string"
-#'             )
-#'           ),
-#'           id = "string"
-#'         )
+#'         ownerProjectName = "string"
 #'       ),
 #'       subscriptionRequestId = "string",
-#'       updatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       updatedBy = "string"
+#'       retainPermissions = TRUE|FALSE
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -13234,18 +13687,19 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
 #' @section Request syntax:
 #' ```
 #' svc$list_subscriptions(
-#'   approverProjectId = "string",
 #'   domainIdentifier = "string",
-#'   maxResults = 123,
-#'   nextToken = "string",
-#'   owningGroupId = "string",
-#'   owningProjectId = "string",
-#'   owningUserId = "string",
-#'   sortBy = "CREATED_AT"|"UPDATED_AT",
-#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   subscriptionRequestIdentifier = "string",
 #'   status = "APPROVED"|"REVOKED"|"CANCELLED",
 #'   subscribedListingId = "string",
-#'   subscriptionRequestIdentifier = "string"
+#'   owningProjectId = "string",
+#'   owningIamPrincipalArn = "string",
+#'   owningUserId = "string",
+#'   owningGroupId = "string",
+#'   approverProjectId = "string",
+#'   sortBy = "CREATED_AT"|"UPDATED_AT",
+#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -13254,7 +13708,7 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
 #' @rdname datazone_list_subscriptions
 #'
 #' @aliases datazone_list_subscriptions
-datazone_list_subscriptions <- function(approverProjectId = NULL, domainIdentifier, maxResults = NULL, nextToken = NULL, owningGroupId = NULL, owningProjectId = NULL, owningUserId = NULL, sortBy = NULL, sortOrder = NULL, status = NULL, subscribedListingId = NULL, subscriptionRequestIdentifier = NULL) {
+datazone_list_subscriptions <- function(domainIdentifier, subscriptionRequestIdentifier = NULL, status = NULL, subscribedListingId = NULL, owningProjectId = NULL, owningIamPrincipalArn = NULL, owningUserId = NULL, owningGroupId = NULL, approverProjectId = NULL, sortBy = NULL, sortOrder = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSubscriptions",
     http_method = "GET",
@@ -13263,7 +13717,7 @@ datazone_list_subscriptions <- function(approverProjectId = NULL, domainIdentifi
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_subscriptions_input(approverProjectId = approverProjectId, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, owningGroupId = owningGroupId, owningProjectId = owningProjectId, owningUserId = owningUserId, sortBy = sortBy, sortOrder = sortOrder, status = status, subscribedListingId = subscribedListingId, subscriptionRequestIdentifier = subscriptionRequestIdentifier)
+  input <- .datazone$list_subscriptions_input(domainIdentifier = domainIdentifier, subscriptionRequestIdentifier = subscriptionRequestIdentifier, status = status, subscribedListingId = subscribedListingId, owningProjectId = owningProjectId, owningIamPrincipalArn = owningIamPrincipalArn, owningUserId = owningUserId, owningGroupId = owningGroupId, approverProjectId = approverProjectId, sortBy = sortBy, sortOrder = sortOrder, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_subscriptions_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -13330,28 +13784,28 @@ datazone_list_tags_for_resource <- function(resourceArn) {
 #' Lists time series data points.
 #'
 #' @usage
-#' datazone_list_time_series_data_points(domainIdentifier, endedAt,
-#'   entityIdentifier, entityType, formName, maxResults, nextToken,
-#'   startedAt)
+#' datazone_list_time_series_data_points(domainIdentifier,
+#'   entityIdentifier, entityType, formName, startedAt, endedAt, nextToken,
+#'   maxResults)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain that houses the assets for which
 #' you want to list time series data points.
-#' @param endedAt The timestamp at which the data points that you wanted to list ended.
 #' @param entityIdentifier &#91;required&#93; The ID of the asset for which you want to list data points.
 #' @param entityType &#91;required&#93; The type of the asset for which you want to list data points.
 #' @param formName &#91;required&#93; The name of the time series data points form.
-#' @param maxResults The maximum number of data points to return in a single call to
-#' ListTimeSeriesDataPoints. When the number of data points to be listed is
-#' greater than the value of MaxResults, the response contains a NextToken
-#' value that you can use in a subsequent call to ListTimeSeriesDataPoints
-#' to list the next set of data points.
+#' @param startedAt The timestamp at which the data points that you want to list started.
+#' @param endedAt The timestamp at which the data points that you wanted to list ended.
 #' @param nextToken When the number of data points is greater than the default value for the
 #' MaxResults parameter, or if you explicitly specify a value for
 #' MaxResults that is less than the number of data points, the response
 #' includes a pagination token named NextToken. You can specify this
 #' NextToken value in a subsequent call to ListTimeSeriesDataPoints to list
 #' the next set of data points.
-#' @param startedAt The timestamp at which the data points that you want to list started.
+#' @param maxResults The maximum number of data points to return in a single call to
+#' ListTimeSeriesDataPoints. When the number of data points to be listed is
+#' greater than the value of MaxResults, the response contains a NextToken
+#' value that you can use in a subsequent call to ListTimeSeriesDataPoints
+#' to list the next set of data points.
 #'
 #' @return
 #' A list with the following syntax:
@@ -13359,14 +13813,14 @@ datazone_list_tags_for_resource <- function(resourceArn) {
 #' list(
 #'   items = list(
 #'     list(
-#'       contentSummary = "string",
 #'       formName = "string",
-#'       id = "string",
+#'       typeIdentifier = "string",
+#'       typeRevision = "string",
 #'       timestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       typeIdentifier = "string",
-#'       typeRevision = "string"
+#'       contentSummary = "string",
+#'       id = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -13377,17 +13831,17 @@ datazone_list_tags_for_resource <- function(resourceArn) {
 #' ```
 #' svc$list_time_series_data_points(
 #'   domainIdentifier = "string",
-#'   endedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
 #'   entityIdentifier = "string",
 #'   entityType = "ASSET"|"LISTING",
 #'   formName = "string",
-#'   maxResults = 123,
-#'   nextToken = "string",
 #'   startedAt = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   endedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -13396,7 +13850,7 @@ datazone_list_tags_for_resource <- function(resourceArn) {
 #' @rdname datazone_list_time_series_data_points
 #'
 #' @aliases datazone_list_time_series_data_points
-datazone_list_time_series_data_points <- function(domainIdentifier, endedAt = NULL, entityIdentifier, entityType, formName, maxResults = NULL, nextToken = NULL, startedAt = NULL) {
+datazone_list_time_series_data_points <- function(domainIdentifier, entityIdentifier, entityType, formName, startedAt = NULL, endedAt = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListTimeSeriesDataPoints",
     http_method = "GET",
@@ -13405,7 +13859,7 @@ datazone_list_time_series_data_points <- function(domainIdentifier, endedAt = NU
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_time_series_data_points_input(domainIdentifier = domainIdentifier, endedAt = endedAt, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName, maxResults = maxResults, nextToken = nextToken, startedAt = startedAt)
+  input <- .datazone$list_time_series_data_points_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName, startedAt = startedAt, endedAt = endedAt, nextToken = nextToken, maxResults = maxResults)
   output <- .datazone$list_time_series_data_points_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -13421,29 +13875,29 @@ datazone_list_time_series_data_points <- function(domainIdentifier, endedAt = NU
 #' Posts a data lineage event.
 #'
 #' @usage
-#' datazone_post_lineage_event(clientToken, domainIdentifier, event)
+#' datazone_post_lineage_event(domainIdentifier, event, clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to post a data lineage event.
 #' @param event &#91;required&#93; The data lineage event that you want to post. Only open-lineage run
 #' event are supported as events.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   domainId = "string",
-#'   id = "string"
+#'   id = "string",
+#'   domainId = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$post_lineage_event(
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
-#'   event = raw
+#'   event = raw,
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -13452,7 +13906,7 @@ datazone_list_time_series_data_points <- function(domainIdentifier, endedAt = NU
 #' @rdname datazone_post_lineage_event
 #'
 #' @aliases datazone_post_lineage_event
-datazone_post_lineage_event <- function(clientToken = NULL, domainIdentifier, event) {
+datazone_post_lineage_event <- function(domainIdentifier, event, clientToken = NULL) {
   op <- new_operation(
     name = "PostLineageEvent",
     http_method = "POST",
@@ -13461,7 +13915,7 @@ datazone_post_lineage_event <- function(clientToken = NULL, domainIdentifier, ev
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$post_lineage_event_input(clientToken = clientToken, domainIdentifier = domainIdentifier, event = event)
+  input <- .datazone$post_lineage_event_input(domainIdentifier = domainIdentifier, event = event, clientToken = clientToken)
   output <- .datazone$post_lineage_event_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -13478,16 +13932,16 @@ datazone_post_lineage_event <- function(clientToken = NULL, domainIdentifier, ev
 #' asset.
 #'
 #' @usage
-#' datazone_post_time_series_data_points(clientToken, domainIdentifier,
-#'   entityIdentifier, entityType, forms)
+#' datazone_post_time_series_data_points(domainIdentifier,
+#'   entityIdentifier, entityType, forms, clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which you want to post time
 #' series data points.
 #' @param entityIdentifier &#91;required&#93; The ID of the asset for which you want to post time series data points.
 #' @param entityType &#91;required&#93; The type of the asset for which you want to post data points.
 #' @param forms &#91;required&#93; The forms that contain the data points that you want to post.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -13498,14 +13952,14 @@ datazone_post_lineage_event <- function(clientToken = NULL, domainIdentifier, ev
 #'   entityType = "ASSET"|"LISTING",
 #'   forms = list(
 #'     list(
-#'       content = "string",
 #'       formName = "string",
-#'       id = "string",
+#'       typeIdentifier = "string",
+#'       typeRevision = "string",
 #'       timestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       typeIdentifier = "string",
-#'       typeRevision = "string"
+#'       content = "string",
+#'       id = "string"
 #'     )
 #'   )
 #' )
@@ -13514,21 +13968,21 @@ datazone_post_lineage_event <- function(clientToken = NULL, domainIdentifier, ev
 #' @section Request syntax:
 #' ```
 #' svc$post_time_series_data_points(
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
 #'   entityIdentifier = "string",
 #'   entityType = "ASSET"|"LISTING",
 #'   forms = list(
 #'     list(
-#'       content = "string",
 #'       formName = "string",
+#'       typeIdentifier = "string",
+#'       typeRevision = "string",
 #'       timestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       typeIdentifier = "string",
-#'       typeRevision = "string"
+#'       content = "string"
 #'     )
-#'   )
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -13537,7 +13991,7 @@ datazone_post_lineage_event <- function(clientToken = NULL, domainIdentifier, ev
 #' @rdname datazone_post_time_series_data_points
 #'
 #' @aliases datazone_post_time_series_data_points
-datazone_post_time_series_data_points <- function(clientToken = NULL, domainIdentifier, entityIdentifier, entityType, forms) {
+datazone_post_time_series_data_points <- function(domainIdentifier, entityIdentifier, entityType, forms, clientToken = NULL) {
   op <- new_operation(
     name = "PostTimeSeriesDataPoints",
     http_method = "POST",
@@ -13546,7 +14000,7 @@ datazone_post_time_series_data_points <- function(clientToken = NULL, domainIden
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$post_time_series_data_points_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, forms = forms)
+  input <- .datazone$post_time_series_data_points_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, forms = forms, clientToken = clientToken)
   output <- .datazone$post_time_series_data_points_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -13561,19 +14015,29 @@ datazone_post_time_series_data_points <- function(clientToken = NULL, domainIden
 #' @description
 #' Creates data export configuration details.
 #' 
-#' In the current release, you can enable exporting asset metadata only for
-#' one domain per Amazon Web Services account per region. If you disable
-#' exporting asset metadata feature for a domain where it's already
-#' enabled, you cannot enable this feature for another domain in the same
-#' Amazon Web Services account and region.
+#' If you want to temporarily disable export and later re-enable it for the
+#' same domain, use the `--no-enable-export` flag to disable and the
+#' `--enable-export` flag to re-enable. This preserves the configuration
+#' and allows you to re-enable export without deleting S3 table.
+#' 
+#' You can enable asset metadata export for only one domain per account per
+#' Region. To enable export for a different domain, complete the following
+#' steps:
+#' 
+#' 1.  Delete the export configuration for the currently enabled domain
+#'     using the DeleteDataExportConfiguration operation.
+#' 
+#' 2.  Delete the asset S3 table under the aws-sagemaker-catalog S3 table
+#'     bucket. We recommend backing up the S3 table before deletion.
+#' 
+#' 3.  Call the PutDataExportConfiguration API to enable export for the new
+#'     domain.
 #'
 #' @usage
-#' datazone_put_data_export_configuration(clientToken, domainIdentifier,
-#'   enableExport, encryptionConfiguration)
+#' datazone_put_data_export_configuration(domainIdentifier, enableExport,
+#'   encryptionConfiguration, clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
-#' request. This field is automatically populated if not provided.
-#' @param domainIdentifier &#91;required&#93; The domain ID where you want to create data export configuration
+#' @param domainIdentifier &#91;required&#93; The domain ID for which you want to create data export configuration
 #' details.
 #' @param enableExport &#91;required&#93; Specifies that the export is to be enabled as part of creating data
 #' export configuration details.
@@ -13584,6 +14048,8 @@ datazone_post_time_series_data_points <- function(clientToken = NULL, domainIden
 #' the required permissions as described in [KMS permissions for exporting
 #' asset metadata in Amazon SageMaker Unified
 #' Studio](https://docs.aws.amazon.com/sagemaker-unified-studio/latest/adminguide/sagemaker-unified-studio-export-asset-metadata-kms-permissions.html).
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request. This field is automatically populated if not provided.
 #'
 #' @return
 #' An empty list.
@@ -13591,13 +14057,13 @@ datazone_post_time_series_data_points <- function(clientToken = NULL, domainIden
 #' @section Request syntax:
 #' ```
 #' svc$put_data_export_configuration(
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
 #'   enableExport = TRUE|FALSE,
 #'   encryptionConfiguration = list(
 #'     kmsKeyArn = "string",
 #'     sseAlgorithm = "string"
-#'   )
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -13606,7 +14072,7 @@ datazone_post_time_series_data_points <- function(clientToken = NULL, domainIden
 #' @rdname datazone_put_data_export_configuration
 #'
 #' @aliases datazone_put_data_export_configuration
-datazone_put_data_export_configuration <- function(clientToken = NULL, domainIdentifier, enableExport, encryptionConfiguration = NULL) {
+datazone_put_data_export_configuration <- function(domainIdentifier, enableExport, encryptionConfiguration = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "PutDataExportConfiguration",
     http_method = "PUT",
@@ -13615,7 +14081,7 @@ datazone_put_data_export_configuration <- function(clientToken = NULL, domainIde
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$put_data_export_configuration_input(clientToken = clientToken, domainIdentifier = domainIdentifier, enableExport = enableExport, encryptionConfiguration = encryptionConfiguration)
+  input <- .datazone$put_data_export_configuration_input(domainIdentifier = domainIdentifier, enableExport = enableExport, encryptionConfiguration = encryptionConfiguration, clientToken = clientToken)
   output <- .datazone$put_data_export_configuration_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -13634,53 +14100,52 @@ datazone_put_data_export_configuration <- function(clientToken = NULL, domainIde
 #'
 #' @usage
 #' datazone_put_environment_blueprint_configuration(domainIdentifier,
-#'   enabledRegions, environmentBlueprintIdentifier,
-#'   environmentRolePermissionBoundary, globalParameters,
-#'   manageAccessRoleArn, provisioningConfigurations, provisioningRoleArn,
-#'   regionalParameters)
+#'   environmentBlueprintIdentifier, provisioningRoleArn,
+#'   manageAccessRoleArn, environmentRolePermissionBoundary, enabledRegions,
+#'   regionalParameters, globalParameters, provisioningConfigurations)
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
-#' @param enabledRegions &#91;required&#93; Specifies the enabled Amazon Web Services Regions.
 #' @param environmentBlueprintIdentifier &#91;required&#93; The identifier of the environment blueprint.
-#' @param environmentRolePermissionBoundary The environment role permissions boundary.
-#' @param globalParameters Region-agnostic environment blueprint parameters.
-#' @param manageAccessRoleArn The ARN of the manage access role.
-#' @param provisioningConfigurations The provisioning configuration of a blueprint.
 #' @param provisioningRoleArn The ARN of the provisioning role.
+#' @param manageAccessRoleArn The ARN of the manage access role.
+#' @param environmentRolePermissionBoundary The environment role permissions boundary.
+#' @param enabledRegions &#91;required&#93; Specifies the enabled Amazon Web Services Regions.
 #' @param regionalParameters The regional parameters in the environment blueprint.
+#' @param globalParameters Region-agnostic environment blueprint parameters.
+#' @param provisioningConfigurations The provisioning configuration of a blueprint.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
 #'   domainId = "string",
+#'   environmentBlueprintId = "string",
+#'   provisioningRoleArn = "string",
+#'   environmentRolePermissionBoundary = "string",
+#'   manageAccessRoleArn = "string",
 #'   enabledRegions = list(
 #'     "string"
 #'   ),
-#'   environmentBlueprintId = "string",
-#'   environmentRolePermissionBoundary = "string",
-#'   manageAccessRoleArn = "string",
-#'   provisioningConfigurations = list(
-#'     list(
-#'       lakeFormationConfiguration = list(
-#'         locationRegistrationExcludeS3Locations = list(
-#'           "string"
-#'         ),
-#'         locationRegistrationRole = "string"
-#'       )
-#'     )
-#'   ),
-#'   provisioningRoleArn = "string",
 #'   regionalParameters = list(
 #'     list(
 #'       "string"
 #'     )
 #'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   provisioningConfigurations = list(
+#'     list(
+#'       lakeFormationConfiguration = list(
+#'         locationRegistrationRole = "string",
+#'         locationRegistrationExcludeS3Locations = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -13689,29 +14154,29 @@ datazone_put_data_export_configuration <- function(clientToken = NULL, domainIde
 #' ```
 #' svc$put_environment_blueprint_configuration(
 #'   domainIdentifier = "string",
+#'   environmentBlueprintIdentifier = "string",
+#'   provisioningRoleArn = "string",
+#'   manageAccessRoleArn = "string",
+#'   environmentRolePermissionBoundary = "string",
 #'   enabledRegions = list(
 #'     "string"
 #'   ),
-#'   environmentBlueprintIdentifier = "string",
-#'   environmentRolePermissionBoundary = "string",
-#'   globalParameters = list(
-#'     "string"
-#'   ),
-#'   manageAccessRoleArn = "string",
-#'   provisioningConfigurations = list(
-#'     list(
-#'       lakeFormationConfiguration = list(
-#'         locationRegistrationExcludeS3Locations = list(
-#'           "string"
-#'         ),
-#'         locationRegistrationRole = "string"
-#'       )
-#'     )
-#'   ),
-#'   provisioningRoleArn = "string",
 #'   regionalParameters = list(
 #'     list(
 #'       "string"
+#'     )
+#'   ),
+#'   globalParameters = list(
+#'     "string"
+#'   ),
+#'   provisioningConfigurations = list(
+#'     list(
+#'       lakeFormationConfiguration = list(
+#'         locationRegistrationRole = "string",
+#'         locationRegistrationExcludeS3Locations = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -13722,7 +14187,7 @@ datazone_put_data_export_configuration <- function(clientToken = NULL, domainIde
 #' @rdname datazone_put_environment_blueprint_configuration
 #'
 #' @aliases datazone_put_environment_blueprint_configuration
-datazone_put_environment_blueprint_configuration <- function(domainIdentifier, enabledRegions, environmentBlueprintIdentifier, environmentRolePermissionBoundary = NULL, globalParameters = NULL, manageAccessRoleArn = NULL, provisioningConfigurations = NULL, provisioningRoleArn = NULL, regionalParameters = NULL) {
+datazone_put_environment_blueprint_configuration <- function(domainIdentifier, environmentBlueprintIdentifier, provisioningRoleArn = NULL, manageAccessRoleArn = NULL, environmentRolePermissionBoundary = NULL, enabledRegions, regionalParameters = NULL, globalParameters = NULL, provisioningConfigurations = NULL) {
   op <- new_operation(
     name = "PutEnvironmentBlueprintConfiguration",
     http_method = "PUT",
@@ -13731,7 +14196,7 @@ datazone_put_environment_blueprint_configuration <- function(domainIdentifier, e
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$put_environment_blueprint_configuration_input(domainIdentifier = domainIdentifier, enabledRegions = enabledRegions, environmentBlueprintIdentifier = environmentBlueprintIdentifier, environmentRolePermissionBoundary = environmentRolePermissionBoundary, globalParameters = globalParameters, manageAccessRoleArn = manageAccessRoleArn, provisioningConfigurations = provisioningConfigurations, provisioningRoleArn = provisioningRoleArn, regionalParameters = regionalParameters)
+  input <- .datazone$put_environment_blueprint_configuration_input(domainIdentifier = domainIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier, provisioningRoleArn = provisioningRoleArn, manageAccessRoleArn = manageAccessRoleArn, environmentRolePermissionBoundary = environmentRolePermissionBoundary, enabledRegions = enabledRegions, regionalParameters = regionalParameters, globalParameters = globalParameters, provisioningConfigurations = provisioningConfigurations)
   output <- .datazone$put_environment_blueprint_configuration_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -13741,6 +14206,142 @@ datazone_put_environment_blueprint_configuration <- function(domainIdentifier, e
 }
 .datazone$operations$put_environment_blueprint_configuration <- datazone_put_environment_blueprint_configuration
 
+#' Queries entities in the graph store
+#'
+#' @description
+#' Queries entities in the graph store.
+#'
+#' @usage
+#' datazone_query_graph(domainIdentifier, match, maxResults, nextToken,
+#'   additionalAttributes)
+#'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
+#' @param match &#91;required&#93; List of query match clauses.
+#' @param maxResults The maximum number of entities to return in a single call to
+#' [`query_graph`][datazone_query_graph]. When the number of entities to be
+#' listed is greater than the value of `MaxResults`, the response contains
+#' a `NextToken` value that you can use in a subsequent call to
+#' [`query_graph`][datazone_query_graph] to list the next set of entities.
+#' @param nextToken When the number of entities is greater than the default value for the
+#' `MaxResults` parameter, or if you explicitly specify a value for
+#' `MaxResults` that is less than the number of entities, the response
+#' includes a pagination token named `NextToken`. You can specify this
+#' `NextToken` value in a subsequent call to
+#' [`query_graph`][datazone_query_graph] to list the next set of entities.
+#' @param additionalAttributes Additional details on the queried entity that can be requested in the
+#' response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       lineageNode = list(
+#'         domainId = "string",
+#'         name = "string",
+#'         description = "string",
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         createdBy = "string",
+#'         updatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         updatedBy = "string",
+#'         id = "string",
+#'         typeName = "string",
+#'         typeRevision = "string",
+#'         sourceIdentifier = "string",
+#'         eventTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         formsOutput = list(
+#'           list(
+#'             formName = "string",
+#'             typeName = "string",
+#'             typeRevision = "string",
+#'             content = "string"
+#'           )
+#'         ),
+#'         upstreamLineageNodeIds = list(
+#'           "string"
+#'         ),
+#'         downstreamLineageNodeIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$query_graph(
+#'   domainIdentifier = "string",
+#'   match = list(
+#'     list(
+#'       relationPattern = list(
+#'         relationType = "LINEAGE",
+#'         relationDirection = "IN"|"OUT",
+#'         maxPathLength = 123
+#'       ),
+#'       entityPattern = list(
+#'         entityType = "LINEAGE_NODE",
+#'         identifier = "string",
+#'         filters = list(
+#'           filter = list(
+#'             attribute = "string",
+#'             value = "string",
+#'             intValue = 123,
+#'             operator = "EQ"|"LE"|"LT"|"GE"|"GT"|"TEXT_SEARCH"
+#'           ),
+#'           and = list(
+#'             list()
+#'           ),
+#'           or = list(
+#'             list()
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   additionalAttributes = list(
+#'     formNames = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_query_graph
+#'
+#' @aliases datazone_query_graph
+datazone_query_graph <- function(domainIdentifier, match, maxResults = NULL, nextToken = NULL, additionalAttributes = NULL) {
+  op <- new_operation(
+    name = "QueryGraph",
+    http_method = "POST",
+    http_path = "/v2/domains/{domainIdentifier}/graph/query",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .datazone$query_graph_input(domainIdentifier = domainIdentifier, match = match, maxResults = maxResults, nextToken = nextToken, additionalAttributes = additionalAttributes)
+  output <- .datazone$query_graph_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$query_graph <- datazone_query_graph
+
 #' Rejects automatically generated business-friendly metadata for your
 #' Amazon DataZone assets
 #'
@@ -13749,49 +14350,49 @@ datazone_put_environment_blueprint_configuration <- function(domainIdentifier, e
 #' Amazon DataZone assets.
 #'
 #' @usage
-#' datazone_reject_predictions(clientToken, domainIdentifier, identifier,
-#'   rejectChoices, rejectRule, revision)
+#' datazone_reject_predictions(domainIdentifier, identifier, revision,
+#'   rejectRule, rejectChoices, clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
 #' @param identifier &#91;required&#93; The identifier of the prediction.
+#' @param revision The revision that is to be made to the asset.
+#' @param rejectRule Specifies the rule (or the conditions) under which a prediction can be
+#' rejected.
 #' @param rejectChoices Specifies the prediction (aka, the automatically generated piece of
 #' metadata) and the target (for example, a column name) that can be
 #' rejected.
-#' @param rejectRule Specifies the rule (or the conditions) under which a prediction can be
-#' rejected.
-#' @param revision The revision that is to be made to the asset.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
 #'   assetId = "string",
-#'   assetRevision = "string",
-#'   domainId = "string"
+#'   assetRevision = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$reject_predictions(
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
 #'   identifier = "string",
-#'   rejectChoices = list(
-#'     list(
-#'       predictionChoices = list(
-#'         123
-#'       ),
-#'       predictionTarget = "string"
-#'     )
-#'   ),
+#'   revision = "string",
 #'   rejectRule = list(
 #'     rule = "ALL"|"NONE",
 #'     threshold = 123.0
 #'   ),
-#'   revision = "string"
+#'   rejectChoices = list(
+#'     list(
+#'       predictionTarget = "string",
+#'       predictionChoices = list(
+#'         123
+#'       )
+#'     )
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -13800,7 +14401,7 @@ datazone_put_environment_blueprint_configuration <- function(domainIdentifier, e
 #' @rdname datazone_reject_predictions
 #'
 #' @aliases datazone_reject_predictions
-datazone_reject_predictions <- function(clientToken = NULL, domainIdentifier, identifier, rejectChoices = NULL, rejectRule = NULL, revision = NULL) {
+datazone_reject_predictions <- function(domainIdentifier, identifier, revision = NULL, rejectRule = NULL, rejectChoices = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "RejectPredictions",
     http_method = "PUT",
@@ -13809,7 +14410,7 @@ datazone_reject_predictions <- function(clientToken = NULL, domainIdentifier, id
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$reject_predictions_input(clientToken = clientToken, domainIdentifier = domainIdentifier, identifier = identifier, rejectChoices = rejectChoices, rejectRule = rejectRule, revision = revision)
+  input <- .datazone$reject_predictions_input(domainIdentifier = domainIdentifier, identifier = identifier, revision = revision, rejectRule = rejectRule, rejectChoices = rejectChoices, clientToken = clientToken)
   output <- .datazone$reject_predictions_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -13825,51 +14426,69 @@ datazone_reject_predictions <- function(clientToken = NULL, domainIdentifier, id
 #' Rejects the specified subscription request.
 #'
 #' @usage
-#' datazone_reject_subscription_request(decisionComment, domainIdentifier,
-#'   identifier)
+#' datazone_reject_subscription_request(domainIdentifier, identifier,
+#'   decisionComment)
 #'
-#' @param decisionComment The decision comment of the rejected subscription request.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which the subscription
 #' request was rejected.
 #' @param identifier &#91;required&#93; The identifier of the subscription request that was rejected.
+#' @param decisionComment The decision comment of the rejected subscription request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
+#'   domainId = "string",
+#'   status = "PENDING"|"ACCEPTED"|"REJECTED",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   decisionComment = "string",
-#'   domainId = "string",
-#'   existingSubscriptionId = "string",
-#'   id = "string",
-#'   metadataForms = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
 #'   requestReason = "string",
-#'   reviewerId = "string",
-#'   status = "PENDING"|"ACCEPTED"|"REJECTED",
+#'   subscribedPrincipals = list(
+#'     list(
+#'       project = list(
+#'         id = "string",
+#'         name = "string"
+#'       ),
+#'       user = list(
+#'         id = "string",
+#'         details = list(
+#'           iam = list(
+#'             arn = "string",
+#'             principalId = "string",
+#'             sessionName = "string",
+#'             groupProfileId = "string"
+#'           ),
+#'           sso = list(
+#'             username = "string",
+#'             firstName = "string",
+#'             lastName = "string"
+#'           )
+#'         )
+#'       ),
+#'       group = list(
+#'         id = "string",
+#'         name = "string"
+#'       ),
+#'       iam = list(
+#'         principalArn = "string"
+#'       )
+#'     )
+#'   ),
 #'   subscribedListings = list(
 #'     list(
-#'       description = "string",
 #'       id = "string",
+#'       revision = "string",
+#'       name = "string",
+#'       description = "string",
 #'       item = list(
 #'         assetListing = list(
-#'           assetScope = list(
-#'             assetId = "string",
-#'             errorMessage = "string",
-#'             filterIds = list(
-#'               "string"
-#'             ),
-#'             status = "string"
-#'           ),
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           entityType = "string",
@@ -13880,6 +14499,14 @@ datazone_reject_predictions <- function(clientToken = NULL, domainIdentifier, id
 #'               shortDescription = "string"
 #'             )
 #'           ),
+#'           assetScope = list(
+#'             assetId = "string",
+#'             filterIds = list(
+#'               "string"
+#'             ),
+#'             status = "string",
+#'             errorMessage = "string"
+#'           ),
 #'           permissions = list(
 #'             s3 = list(
 #'               "READ"|"WRITE"
@@ -13887,14 +14514,6 @@ datazone_reject_predictions <- function(clientToken = NULL, domainIdentifier, id
 #'           )
 #'         ),
 #'         productListing = list(
-#'           assetListings = list(
-#'             list(
-#'               entityId = "string",
-#'               entityRevision = "string",
-#'               entityType = "string"
-#'             )
-#'           ),
-#'           description = "string",
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           glossaryTerms = list(
@@ -13903,54 +14522,41 @@ datazone_reject_predictions <- function(clientToken = NULL, domainIdentifier, id
 #'               shortDescription = "string"
 #'             )
 #'           ),
-#'           name = "string"
+#'           name = "string",
+#'           description = "string",
+#'           assetListings = list(
+#'             list(
+#'               entityId = "string",
+#'               entityRevision = "string",
+#'               entityType = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
-#'       name = "string",
 #'       ownerProjectId = "string",
-#'       ownerProjectName = "string",
-#'       revision = "string"
+#'       ownerProjectName = "string"
 #'     )
 #'   ),
-#'   subscribedPrincipals = list(
+#'   reviewerId = "string",
+#'   decisionComment = "string",
+#'   existingSubscriptionId = "string",
+#'   metadataForms = list(
 #'     list(
-#'       group = list(
-#'         id = "string",
-#'         name = "string"
-#'       ),
-#'       project = list(
-#'         id = "string",
-#'         name = "string"
-#'       ),
-#'       user = list(
-#'         details = list(
-#'           iam = list(
-#'             arn = "string",
-#'             principalId = "string"
-#'           ),
-#'           sso = list(
-#'             firstName = "string",
-#'             lastName = "string",
-#'             username = "string"
-#'           )
-#'         ),
-#'         id = "string"
-#'       )
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
 #'     )
-#'   ),
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   updatedBy = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$reject_subscription_request(
-#'   decisionComment = "string",
 #'   domainIdentifier = "string",
-#'   identifier = "string"
+#'   identifier = "string",
+#'   decisionComment = "string"
 #' )
 #' ```
 #'
@@ -13959,7 +14565,7 @@ datazone_reject_predictions <- function(clientToken = NULL, domainIdentifier, id
 #' @rdname datazone_reject_subscription_request
 #'
 #' @aliases datazone_reject_subscription_request
-datazone_reject_subscription_request <- function(decisionComment = NULL, domainIdentifier, identifier) {
+datazone_reject_subscription_request <- function(domainIdentifier, identifier, decisionComment = NULL) {
   op <- new_operation(
     name = "RejectSubscriptionRequest",
     http_method = "PUT",
@@ -13968,7 +14574,7 @@ datazone_reject_subscription_request <- function(decisionComment = NULL, domainI
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$reject_subscription_request_input(decisionComment = decisionComment, domainIdentifier = domainIdentifier, identifier = identifier)
+  input <- .datazone$reject_subscription_request_input(domainIdentifier = domainIdentifier, identifier = identifier, decisionComment = decisionComment)
   output <- .datazone$reject_subscription_request_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -13984,15 +14590,15 @@ datazone_reject_subscription_request <- function(decisionComment = NULL, domainI
 #' Removes an owner from an entity.
 #'
 #' @usage
-#' datazone_remove_entity_owner(clientToken, domainIdentifier,
-#'   entityIdentifier, entityType, owner)
+#' datazone_remove_entity_owner(domainIdentifier, entityType,
+#'   entityIdentifier, owner, clientToken)
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to remove an owner from an entity.
+#' @param entityType &#91;required&#93; The type of the entity from which you want to remove an owner.
+#' @param entityIdentifier &#91;required&#93; The ID of the entity from which you want to remove an owner.
+#' @param owner &#91;required&#93; The owner that you want to remove from an entity.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
-#' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to remove an owner from an entity.
-#' @param entityIdentifier &#91;required&#93; The ID of the entity from which you want to remove an owner.
-#' @param entityType &#91;required&#93; The type of the entity from which you want to remove an owner.
-#' @param owner &#91;required&#93; The owner that you want to remove from an entity.
 #'
 #' @return
 #' An empty list.
@@ -14000,18 +14606,18 @@ datazone_reject_subscription_request <- function(decisionComment = NULL, domainI
 #' @section Request syntax:
 #' ```
 #' svc$remove_entity_owner(
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
-#'   entityIdentifier = "string",
 #'   entityType = "DOMAIN_UNIT",
+#'   entityIdentifier = "string",
 #'   owner = list(
-#'     group = list(
-#'       groupIdentifier = "string"
-#'     ),
 #'     user = list(
 #'       userIdentifier = "string"
+#'     ),
+#'     group = list(
+#'       groupIdentifier = "string"
 #'     )
-#'   )
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -14020,7 +14626,7 @@ datazone_reject_subscription_request <- function(decisionComment = NULL, domainI
 #' @rdname datazone_remove_entity_owner
 #'
 #' @aliases datazone_remove_entity_owner
-datazone_remove_entity_owner <- function(clientToken = NULL, domainIdentifier, entityIdentifier, entityType, owner) {
+datazone_remove_entity_owner <- function(domainIdentifier, entityType, entityIdentifier, owner, clientToken = NULL) {
   op <- new_operation(
     name = "RemoveEntityOwner",
     http_method = "POST",
@@ -14029,7 +14635,7 @@ datazone_remove_entity_owner <- function(clientToken = NULL, domainIdentifier, e
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$remove_entity_owner_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, owner = owner)
+  input <- .datazone$remove_entity_owner_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, owner = owner, clientToken = clientToken)
   output <- .datazone$remove_entity_owner_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -14045,18 +14651,18 @@ datazone_remove_entity_owner <- function(clientToken = NULL, domainIdentifier, e
 #' Removes a policy grant.
 #'
 #' @usage
-#' datazone_remove_policy_grant(clientToken, domainIdentifier,
-#'   entityIdentifier, entityType, grantIdentifier, policyType, principal)
+#' datazone_remove_policy_grant(domainIdentifier, entityType,
+#'   entityIdentifier, policyType, principal, grantIdentifier, clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to remove a policy grant.
-#' @param entityIdentifier &#91;required&#93; The ID of the entity from which you want to remove a policy grant.
 #' @param entityType &#91;required&#93; The type of the entity from which you want to remove a policy grant.
-#' @param grantIdentifier The ID of the policy grant that is to be removed from a specified
-#' entity.
+#' @param entityIdentifier &#91;required&#93; The ID of the entity from which you want to remove a policy grant.
 #' @param policyType &#91;required&#93; The type of the policy that you want to remove.
 #' @param principal &#91;required&#93; The principal from which you want to remove a policy grant.
+#' @param grantIdentifier The ID of the policy grant that is to be removed from a specified
+#' entity.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' An empty list.
@@ -14064,38 +14670,38 @@ datazone_remove_entity_owner <- function(clientToken = NULL, domainIdentifier, e
 #' @section Request syntax:
 #' ```
 #' svc$remove_policy_grant(
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
-#'   entityIdentifier = "string",
 #'   entityType = "DOMAIN_UNIT"|"ENVIRONMENT_BLUEPRINT_CONFIGURATION"|"ENVIRONMENT_PROFILE"|"ASSET_TYPE",
-#'   grantIdentifier = "string",
+#'   entityIdentifier = "string",
 #'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT"|"CREATE_ENVIRONMENT_FROM_BLUEPRINT"|"CREATE_PROJECT_FROM_PROJECT_PROFILE"|"USE_ASSET_TYPE",
 #'   principal = list(
-#'     domainUnit = list(
-#'       domainUnitDesignation = "OWNER",
-#'       domainUnitGrantFilter = list(
-#'         allDomainUnitsGrantFilter = list()
-#'       ),
-#'       domainUnitIdentifier = "string"
+#'     user = list(
+#'       userIdentifier = "string",
+#'       allUsersGrantFilter = list()
 #'     ),
 #'     group = list(
 #'       groupIdentifier = "string"
 #'     ),
 #'     project = list(
 #'       projectDesignation = "OWNER"|"CONTRIBUTOR"|"PROJECT_CATALOG_STEWARD",
+#'       projectIdentifier = "string",
 #'       projectGrantFilter = list(
 #'         domainUnitFilter = list(
 #'           domainUnit = "string",
 #'           includeChildDomainUnits = TRUE|FALSE
 #'         )
-#'       ),
-#'       projectIdentifier = "string"
+#'       )
 #'     ),
-#'     user = list(
-#'       allUsersGrantFilter = list(),
-#'       userIdentifier = "string"
+#'     domainUnit = list(
+#'       domainUnitDesignation = "OWNER",
+#'       domainUnitIdentifier = "string",
+#'       domainUnitGrantFilter = list(
+#'         allDomainUnitsGrantFilter = list()
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   grantIdentifier = "string",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -14104,7 +14710,7 @@ datazone_remove_entity_owner <- function(clientToken = NULL, domainIdentifier, e
 #' @rdname datazone_remove_policy_grant
 #'
 #' @aliases datazone_remove_policy_grant
-datazone_remove_policy_grant <- function(clientToken = NULL, domainIdentifier, entityIdentifier, entityType, grantIdentifier = NULL, policyType, principal) {
+datazone_remove_policy_grant <- function(domainIdentifier, entityType, entityIdentifier, policyType, principal, grantIdentifier = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "RemovePolicyGrant",
     http_method = "POST",
@@ -14113,7 +14719,7 @@ datazone_remove_policy_grant <- function(clientToken = NULL, domainIdentifier, e
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$remove_policy_grant_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, grantIdentifier = grantIdentifier, policyType = policyType, principal = principal)
+  input <- .datazone$remove_policy_grant_input(domainIdentifier = domainIdentifier, entityType = entityType, entityIdentifier = entityIdentifier, policyType = policyType, principal = principal, grantIdentifier = grantIdentifier, clientToken = clientToken)
   output <- .datazone$remove_policy_grant_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -14142,27 +14748,53 @@ datazone_remove_policy_grant <- function(clientToken = NULL, domainIdentifier, e
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
+#'   domainId = "string",
+#'   status = "APPROVED"|"REVOKED"|"CANCELLED",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   domainId = "string",
-#'   id = "string",
-#'   retainPermissions = TRUE|FALSE,
-#'   status = "APPROVED"|"REVOKED"|"CANCELLED",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   subscribedPrincipal = list(
+#'     project = list(
+#'       id = "string",
+#'       name = "string"
+#'     ),
+#'     user = list(
+#'       id = "string",
+#'       details = list(
+#'         iam = list(
+#'           arn = "string",
+#'           principalId = "string",
+#'           sessionName = "string",
+#'           groupProfileId = "string"
+#'         ),
+#'         sso = list(
+#'           username = "string",
+#'           firstName = "string",
+#'           lastName = "string"
+#'         )
+#'       )
+#'     ),
+#'     group = list(
+#'       id = "string",
+#'       name = "string"
+#'     ),
+#'     iam = list(
+#'       principalArn = "string"
+#'     )
+#'   ),
 #'   subscribedListing = list(
-#'     description = "string",
 #'     id = "string",
+#'     revision = "string",
+#'     name = "string",
+#'     description = "string",
 #'     item = list(
 #'       assetListing = list(
-#'         assetScope = list(
-#'           assetId = "string",
-#'           errorMessage = "string",
-#'           filterIds = list(
-#'             "string"
-#'           ),
-#'           status = "string"
-#'         ),
 #'         entityId = "string",
 #'         entityRevision = "string",
 #'         entityType = "string",
@@ -14173,6 +14805,14 @@ datazone_remove_policy_grant <- function(clientToken = NULL, domainIdentifier, e
 #'             shortDescription = "string"
 #'           )
 #'         ),
+#'         assetScope = list(
+#'           assetId = "string",
+#'           filterIds = list(
+#'             "string"
+#'           ),
+#'           status = "string",
+#'           errorMessage = "string"
+#'         ),
 #'         permissions = list(
 #'           s3 = list(
 #'             "READ"|"WRITE"
@@ -14180,14 +14820,6 @@ datazone_remove_policy_grant <- function(clientToken = NULL, domainIdentifier, e
 #'         )
 #'       ),
 #'       productListing = list(
-#'         assetListings = list(
-#'           list(
-#'             entityId = "string",
-#'             entityRevision = "string",
-#'             entityType = "string"
-#'           )
-#'         ),
-#'         description = "string",
 #'         entityId = "string",
 #'         entityRevision = "string",
 #'         glossaryTerms = list(
@@ -14196,43 +14828,22 @@ datazone_remove_policy_grant <- function(clientToken = NULL, domainIdentifier, e
 #'             shortDescription = "string"
 #'           )
 #'         ),
-#'         name = "string"
+#'         name = "string",
+#'         description = "string",
+#'         assetListings = list(
+#'           list(
+#'             entityId = "string",
+#'             entityRevision = "string",
+#'             entityType = "string"
+#'           )
+#'         )
 #'       )
 #'     ),
-#'     name = "string",
 #'     ownerProjectId = "string",
-#'     ownerProjectName = "string",
-#'     revision = "string"
-#'   ),
-#'   subscribedPrincipal = list(
-#'     group = list(
-#'       id = "string",
-#'       name = "string"
-#'     ),
-#'     project = list(
-#'       id = "string",
-#'       name = "string"
-#'     ),
-#'     user = list(
-#'       details = list(
-#'         iam = list(
-#'           arn = "string",
-#'           principalId = "string"
-#'         ),
-#'         sso = list(
-#'           firstName = "string",
-#'           lastName = "string",
-#'           username = "string"
-#'         )
-#'       ),
-#'       id = "string"
-#'     )
+#'     ownerProjectName = "string"
 #'   ),
 #'   subscriptionRequestId = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   updatedBy = "string"
+#'   retainPermissions = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -14306,16 +14917,43 @@ datazone_revoke_subscription <- function(domainIdentifier, identifier, retainPer
 #' 
 #' -   For paginated results, be prepared to use --next-token to fetch
 #'     additional pages.
+#' 
+#' To run a standard free-text search, the `searchText` parameter must be
+#' supplied. By default, all searchable fields are indexed for semantic
+#' search and will return semantic matches for SearchListings queries. To
+#' prevent semantic search indexing for a custom form attribute, see the
+#' [CreateFormType API
+#' documentation](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateFormType.html).
+#' To run a lexical search query, enclose the query with double quotes
+#' (""). This will disable semantic search even for fields that have
+#' semantic search enabled and will only return results that contain the
+#' keywords wrapped by double quotes (order of tokens in the query is not
+#' enforced). Free-text search is supported for all attributes annotated
+#' with @@amazon.datazone#searchable.
+#' 
+#' To run a filtered search, provide filter clause using the `filters`
+#' parameter. To filter on glossary terms, use the special attribute
+#' `__DataZoneGlossaryTerms`. To filter on an indexed numeric attribute
+#' (i.e., a numeric attribute annotated with `@@amazon.datazone#sortable`),
+#' provide a filter using the `intValue` parameter. The filters parameter
+#' can also be used to run more advanced free-text searches that target
+#' specific attributes (attributes must be annotated with
+#' `@@amazon.datazone#searchable` for free-text search). Create/update
+#' timestamp filtering is supported using the special
+#' `creationTime`/`lastUpdatedTime` attributes. Filter types can be mixed
+#' and matched to power complex queries.
+#' 
+#' To find out whether an attribute has been annotated and indexed for a
+#' given search type, use the GetFormType API to retrieve the form
+#' containing the attribute.
 #'
 #' @usage
-#' datazone_search(additionalAttributes, domainIdentifier, filters,
-#'   maxResults, nextToken, owningProjectIdentifier, searchIn, searchScope,
-#'   searchText, sort)
+#' datazone_search(domainIdentifier, owningProjectIdentifier, maxResults,
+#'   nextToken, searchScope, searchText, searchIn, filters, sort,
+#'   additionalAttributes)
 #'
-#' @param additionalAttributes Specifies additional attributes for the [`search`][datazone_search]
-#' action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
-#' @param filters Specifies the search filters.
+#' @param owningProjectIdentifier The identifier of the owning project specified for the search.
 #' @param maxResults The maximum number of results to return in a single call to
 #' [`search`][datazone_search]. When the number of results to be listed is
 #' greater than the value of `MaxResults`, the response contains a
@@ -14327,11 +14965,13 @@ datazone_revoke_subscription <- function(domainIdentifier, identifier, retainPer
 #' includes a pagination token named `NextToken`. You can specify this
 #' `NextToken` value in a subsequent call to [`search`][datazone_search] to
 #' list the next set of results.
-#' @param owningProjectIdentifier The identifier of the owning project specified for the search.
-#' @param searchIn The details of the search.
 #' @param searchScope &#91;required&#93; The scope of the search.
 #' @param searchText Specifies the text for which to search.
+#' @param searchIn The details of the search.
+#' @param filters Specifies the search filters.
 #' @param sort Specifies the way in which the search results are to be sorted.
+#' @param additionalAttributes Specifies additional attributes for the [`search`][datazone_search]
+#' action.
 #'
 #' @return
 #' A list with the following syntax:
@@ -14339,193 +14979,193 @@ datazone_revoke_subscription <- function(domainIdentifier, identifier, retainPer
 #' list(
 #'   items = list(
 #'     list(
-#'       assetItem = list(
+#'       glossaryItem = list(
+#'         domainId = "string",
+#'         id = "string",
+#'         name = "string",
+#'         owningProjectId = "string",
+#'         description = "string",
+#'         status = "DISABLED"|"ENABLED",
+#'         usageRestrictions = list(
+#'           "ASSET_GOVERNED_TERMS"
+#'         ),
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         createdBy = "string",
+#'         updatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         updatedBy = "string",
 #'         additionalAttributes = list(
-#'           formsOutput = list(
-#'             list(
-#'               content = "string",
-#'               formName = "string",
-#'               typeName = "string",
-#'               typeRevision = "string"
-#'             )
-#'           ),
-#'           latestTimeSeriesDataPointFormsOutput = list(
-#'             list(
-#'               contentSummary = "string",
-#'               formName = "string",
-#'               id = "string",
-#'               timestamp = as.POSIXct(
-#'                 "2015-01-01"
-#'               ),
-#'               typeIdentifier = "string",
-#'               typeRevision = "string"
-#'             )
-#'           ),
 #'           matchRationale = list(
 #'             list(
 #'               textMatches = list(
 #'                 list(
 #'                   attribute = "string",
+#'                   text = "string",
 #'                   matchOffsets = list(
 #'                     list(
-#'                       endOffset = 123,
-#'                       startOffset = 123
+#'                       startOffset = 123,
+#'                       endOffset = 123
 #'                     )
-#'                   ),
-#'                   text = "string"
+#'                   )
 #'                 )
 #'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       glossaryTermItem = list(
+#'         domainId = "string",
+#'         glossaryId = "string",
+#'         id = "string",
+#'         name = "string",
+#'         shortDescription = "string",
+#'         usageRestrictions = list(
+#'           "ASSET_GOVERNED_TERMS"
+#'         ),
+#'         longDescription = "string",
+#'         termRelations = list(
+#'           isA = list(
+#'             "string"
+#'           ),
+#'           classifies = list(
+#'             "string"
+#'           )
+#'         ),
+#'         status = "ENABLED"|"DISABLED",
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         createdBy = "string",
+#'         updatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         updatedBy = "string",
+#'         additionalAttributes = list(
+#'           matchRationale = list(
+#'             list(
+#'               textMatches = list(
+#'                 list(
+#'                   attribute = "string",
+#'                   text = "string",
+#'                   matchOffsets = list(
+#'                     list(
+#'                       startOffset = 123,
+#'                       endOffset = 123
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       assetItem = list(
+#'         domainId = "string",
+#'         identifier = "string",
+#'         name = "string",
+#'         typeIdentifier = "string",
+#'         typeRevision = "string",
+#'         externalIdentifier = "string",
+#'         description = "string",
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         createdBy = "string",
+#'         firstRevisionCreatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         firstRevisionCreatedBy = "string",
+#'         glossaryTerms = list(
+#'           "string"
+#'         ),
+#'         owningProjectId = "string",
+#'         additionalAttributes = list(
+#'           formsOutput = list(
+#'             list(
+#'               formName = "string",
+#'               typeName = "string",
+#'               typeRevision = "string",
+#'               content = "string"
 #'             )
 #'           ),
 #'           readOnlyFormsOutput = list(
 #'             list(
-#'               content = "string",
 #'               formName = "string",
 #'               typeName = "string",
-#'               typeRevision = "string"
+#'               typeRevision = "string",
+#'               content = "string"
+#'             )
+#'           ),
+#'           latestTimeSeriesDataPointFormsOutput = list(
+#'             list(
+#'               formName = "string",
+#'               typeIdentifier = "string",
+#'               typeRevision = "string",
+#'               timestamp = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               contentSummary = "string",
+#'               id = "string"
+#'             )
+#'           ),
+#'           matchRationale = list(
+#'             list(
+#'               textMatches = list(
+#'                 list(
+#'                   attribute = "string",
+#'                   text = "string",
+#'                   matchOffsets = list(
+#'                     list(
+#'                       startOffset = 123,
+#'                       endOffset = 123
+#'                     )
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           )
-#'         ),
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         createdBy = "string",
-#'         description = "string",
-#'         domainId = "string",
-#'         externalIdentifier = "string",
-#'         firstRevisionCreatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         firstRevisionCreatedBy = "string",
-#'         glossaryTerms = list(
-#'           "string"
 #'         ),
 #'         governedGlossaryTerms = list(
 #'           "string"
-#'         ),
-#'         identifier = "string",
-#'         name = "string",
-#'         owningProjectId = "string",
-#'         typeIdentifier = "string",
-#'         typeRevision = "string"
+#'         )
 #'       ),
 #'       dataProductItem = list(
-#'         additionalAttributes = list(
-#'           matchRationale = list(
-#'             list(
-#'               textMatches = list(
-#'                 list(
-#'                   attribute = "string",
-#'                   matchOffsets = list(
-#'                     list(
-#'                       endOffset = 123,
-#'                       startOffset = 123
-#'                     )
-#'                   ),
-#'                   text = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
+#'         domainId = "string",
+#'         id = "string",
+#'         name = "string",
+#'         owningProjectId = "string",
+#'         description = "string",
+#'         glossaryTerms = list(
+#'           "string"
 #'         ),
 #'         createdAt = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
 #'         createdBy = "string",
-#'         description = "string",
-#'         domainId = "string",
 #'         firstRevisionCreatedAt = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
 #'         firstRevisionCreatedBy = "string",
-#'         glossaryTerms = list(
-#'           "string"
-#'         ),
-#'         id = "string",
-#'         name = "string",
-#'         owningProjectId = "string"
-#'       ),
-#'       glossaryItem = list(
 #'         additionalAttributes = list(
 #'           matchRationale = list(
 #'             list(
 #'               textMatches = list(
 #'                 list(
 #'                   attribute = "string",
+#'                   text = "string",
 #'                   matchOffsets = list(
 #'                     list(
-#'                       endOffset = 123,
-#'                       startOffset = 123
+#'                       startOffset = 123,
+#'                       endOffset = 123
 #'                     )
-#'                   ),
-#'                   text = "string"
+#'                   )
 #'                 )
 #'               )
 #'             )
 #'           )
-#'         ),
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         createdBy = "string",
-#'         description = "string",
-#'         domainId = "string",
-#'         id = "string",
-#'         name = "string",
-#'         owningProjectId = "string",
-#'         status = "DISABLED"|"ENABLED",
-#'         updatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         updatedBy = "string",
-#'         usageRestrictions = list(
-#'           "ASSET_GOVERNED_TERMS"
-#'         )
-#'       ),
-#'       glossaryTermItem = list(
-#'         additionalAttributes = list(
-#'           matchRationale = list(
-#'             list(
-#'               textMatches = list(
-#'                 list(
-#'                   attribute = "string",
-#'                   matchOffsets = list(
-#'                     list(
-#'                       endOffset = 123,
-#'                       startOffset = 123
-#'                     )
-#'                   ),
-#'                   text = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         createdBy = "string",
-#'         domainId = "string",
-#'         glossaryId = "string",
-#'         id = "string",
-#'         longDescription = "string",
-#'         name = "string",
-#'         shortDescription = "string",
-#'         status = "ENABLED"|"DISABLED",
-#'         termRelations = list(
-#'           classifies = list(
-#'             "string"
-#'           ),
-#'           isA = list(
-#'             "string"
-#'           )
-#'         ),
-#'         updatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         updatedBy = "string",
-#'         usageRestrictions = list(
-#'           "ASSET_GOVERNED_TERMS"
 #'         )
 #'       )
 #'     )
@@ -14538,35 +15178,37 @@ datazone_revoke_subscription <- function(domainIdentifier, identifier, retainPer
 #' @section Request syntax:
 #' ```
 #' svc$search(
-#'   additionalAttributes = list(
-#'     "FORMS"|"TIME_SERIES_DATA_POINT_FORMS"|"TEXT_MATCH_RATIONALE"
-#'   ),
 #'   domainIdentifier = "string",
-#'   filters = list(
-#'     and = list(
-#'       list()
-#'     ),
-#'     filter = list(
-#'       attribute = "string",
-#'       value = "string"
-#'     ),
-#'     or = list(
-#'       list()
-#'     )
-#'   ),
+#'   owningProjectIdentifier = "string",
 #'   maxResults = 123,
 #'   nextToken = "string",
-#'   owningProjectIdentifier = "string",
+#'   searchScope = "ASSET"|"GLOSSARY"|"GLOSSARY_TERM"|"DATA_PRODUCT",
+#'   searchText = "string",
 #'   searchIn = list(
 #'     list(
 #'       attribute = "string"
 #'     )
 #'   ),
-#'   searchScope = "ASSET"|"GLOSSARY"|"GLOSSARY_TERM"|"DATA_PRODUCT",
-#'   searchText = "string",
+#'   filters = list(
+#'     filter = list(
+#'       attribute = "string",
+#'       value = "string",
+#'       intValue = 123,
+#'       operator = "EQ"|"LE"|"LT"|"GE"|"GT"|"TEXT_SEARCH"
+#'     ),
+#'     and = list(
+#'       list()
+#'     ),
+#'     or = list(
+#'       list()
+#'     )
+#'   ),
 #'   sort = list(
 #'     attribute = "string",
 #'     order = "ASCENDING"|"DESCENDING"
+#'   ),
+#'   additionalAttributes = list(
+#'     "FORMS"|"TIME_SERIES_DATA_POINT_FORMS"|"TEXT_MATCH_RATIONALE"
 #'   )
 #' )
 #' ```
@@ -14576,7 +15218,7 @@ datazone_revoke_subscription <- function(domainIdentifier, identifier, retainPer
 #' @rdname datazone_search
 #'
 #' @aliases datazone_search
-datazone_search <- function(additionalAttributes = NULL, domainIdentifier, filters = NULL, maxResults = NULL, nextToken = NULL, owningProjectIdentifier = NULL, searchIn = NULL, searchScope, searchText = NULL, sort = NULL) {
+datazone_search <- function(domainIdentifier, owningProjectIdentifier = NULL, maxResults = NULL, nextToken = NULL, searchScope, searchText = NULL, searchIn = NULL, filters = NULL, sort = NULL, additionalAttributes = NULL) {
   op <- new_operation(
     name = "Search",
     http_method = "POST",
@@ -14585,7 +15227,7 @@ datazone_search <- function(additionalAttributes = NULL, domainIdentifier, filte
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$search_input(additionalAttributes = additionalAttributes, domainIdentifier = domainIdentifier, filters = filters, maxResults = maxResults, nextToken = nextToken, owningProjectIdentifier = owningProjectIdentifier, searchIn = searchIn, searchScope = searchScope, searchText = searchText, sort = sort)
+  input <- .datazone$search_input(domainIdentifier = domainIdentifier, owningProjectIdentifier = owningProjectIdentifier, maxResults = maxResults, nextToken = nextToken, searchScope = searchScope, searchText = searchText, searchIn = searchIn, filters = filters, sort = sort, additionalAttributes = additionalAttributes)
   output <- .datazone$search_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -14601,12 +15243,13 @@ datazone_search <- function(additionalAttributes = NULL, domainIdentifier, filte
 #' Searches group profiles in Amazon DataZone.
 #'
 #' @usage
-#' datazone_search_group_profiles(domainIdentifier, groupType, maxResults,
-#'   nextToken, searchText)
+#' datazone_search_group_profiles(domainIdentifier, groupType, searchText,
+#'   maxResults, nextToken)
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which you want to search
 #' group profiles.
 #' @param groupType &#91;required&#93; The group type for which to search.
+#' @param searchText Specifies the text for which to search.
 #' @param maxResults The maximum number of results to return in a single call to
 #' [`search_group_profiles`][datazone_search_group_profiles]. When the
 #' number of results to be listed is greater than the value of
@@ -14621,7 +15264,6 @@ datazone_search <- function(additionalAttributes = NULL, domainIdentifier, filte
 #' `NextToken` value in a subsequent call to
 #' [`search_group_profiles`][datazone_search_group_profiles] to list the
 #' next set of results.
-#' @param searchText Specifies the text for which to search.
 #'
 #' @return
 #' A list with the following syntax:
@@ -14630,9 +15272,11 @@ datazone_search <- function(additionalAttributes = NULL, domainIdentifier, filte
 #'   items = list(
 #'     list(
 #'       domainId = "string",
-#'       groupName = "string",
 #'       id = "string",
-#'       status = "ASSIGNED"|"NOT_ASSIGNED"
+#'       status = "ASSIGNED"|"NOT_ASSIGNED",
+#'       groupName = "string",
+#'       rolePrincipalArn = "string",
+#'       rolePrincipalId = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -14643,10 +15287,10 @@ datazone_search <- function(additionalAttributes = NULL, domainIdentifier, filte
 #' ```
 #' svc$search_group_profiles(
 #'   domainIdentifier = "string",
-#'   groupType = "SSO_GROUP"|"DATAZONE_SSO_GROUP",
+#'   groupType = "SSO_GROUP"|"DATAZONE_SSO_GROUP"|"IAM_ROLE_SESSION_GROUP",
+#'   searchText = "string",
 #'   maxResults = 123,
-#'   nextToken = "string",
-#'   searchText = "string"
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -14655,7 +15299,7 @@ datazone_search <- function(additionalAttributes = NULL, domainIdentifier, filte
 #' @rdname datazone_search_group_profiles
 #'
 #' @aliases datazone_search_group_profiles
-datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResults = NULL, nextToken = NULL, searchText = NULL) {
+datazone_search_group_profiles <- function(domainIdentifier, groupType, searchText = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "SearchGroupProfiles",
     http_method = "POST",
@@ -14664,7 +15308,7 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$search_group_profiles_input(domainIdentifier = domainIdentifier, groupType = groupType, maxResults = maxResults, nextToken = nextToken, searchText = searchText)
+  input <- .datazone$search_group_profiles_input(domainIdentifier = domainIdentifier, groupType = groupType, searchText = searchText, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$search_group_profiles_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -14696,10 +15340,10 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
 #' The SearchListings API gives users flexibility in specifying what kind
 #' of search is run.
 #' 
-#' To run a free-text search, the `searchText` parameter must be supplied.
-#' By default, all searchable fields are indexed for semantic search and
-#' will return semantic matches for SearchListings queries. To prevent
-#' semantic search indexing for a custom form attribute, see the
+#' To run a standard free-text search, the `searchText` parameter must be
+#' supplied. By default, all searchable fields are indexed for semantic
+#' search and will return semantic matches for SearchListings queries. To
+#' prevent semantic search indexing for a custom form attribute, see the
 #' [CreateFormType API
 #' documentation](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateFormType.html).
 #' To run a lexical search query, enclose the query with double quotes
@@ -14709,24 +15353,30 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
 #' enforced). Free-text search is supported for all attributes annotated
 #' with @@amazon.datazone#searchable.
 #' 
-#' To run a filtered search, provide filter clause using the filters
+#' To run a filtered search, provide filter clause using the `filters`
 #' parameter. To filter on glossary terms, use the special attribute
-#' `__DataZoneGlossaryTerms`.
+#' `__DataZoneGlossaryTerms`. To filter on an indexed numeric attribute
+#' (i.e., a numeric attribute annotated with `@@amazon.datazone#sortable`),
+#' provide a filter using the `intValue` parameter. The filters parameter
+#' can also be used to run more advanced free-text searches that target
+#' specific attributes (attributes must be annotated with
+#' `@@amazon.datazone#searchable` for free-text search). Create/update
+#' timestamp filtering is supported using the special
+#' `creationTime`/`lastUpdatedTime` attributes. Filter types can be mixed
+#' and matched to power complex queries.
 #' 
 #' To find out whether an attribute has been annotated and indexed for a
 #' given search type, use the GetFormType API to retrieve the form
 #' containing the attribute.
 #'
 #' @usage
-#' datazone_search_listings(additionalAttributes, aggregations,
-#'   domainIdentifier, filters, maxResults, nextToken, searchIn, searchText,
-#'   sort)
+#' datazone_search_listings(domainIdentifier, searchText, searchIn,
+#'   maxResults, nextToken, filters, aggregations, sort,
+#'   additionalAttributes)
 #'
-#' @param additionalAttributes Specifies additional attributes for the search.
-#' @param aggregations Enables you to specify one or more attributes to compute and return
-#' counts grouped by field values.
 #' @param domainIdentifier &#91;required&#93; The identifier of the domain in which to search listings.
-#' @param filters Specifies the filters for the search of listings.
+#' @param searchText Specifies the text for which to search.
+#' @param searchIn The details of the search.
 #' @param maxResults The maximum number of results to return in a single call to
 #' [`search_listings`][datazone_search_listings]. When the number of
 #' results to be listed is greater than the value of `MaxResults`, the
@@ -14740,68 +15390,31 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
 #' `NextToken` value in a subsequent call to
 #' [`search_listings`][datazone_search_listings] to list the next set of
 #' results.
-#' @param searchIn The details of the search.
-#' @param searchText Specifies the text for which to search.
+#' @param filters Specifies the filters for the search of listings.
+#' @param aggregations Enables you to specify one or more attributes to compute and return
+#' counts grouped by field values.
 #' @param sort Specifies the way for sorting the search results.
+#' @param additionalAttributes Specifies additional attributes for the search.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   aggregates = list(
-#'     list(
-#'       attribute = "string",
-#'       displayValue = "string",
-#'       items = list(
-#'         list(
-#'           count = 123,
-#'           displayValue = "string",
-#'           value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
 #'   items = list(
 #'     list(
 #'       assetListing = list(
-#'         additionalAttributes = list(
-#'           forms = "string",
-#'           latestTimeSeriesDataPointForms = list(
-#'             list(
-#'               contentSummary = "string",
-#'               formName = "string",
-#'               id = "string",
-#'               timestamp = as.POSIXct(
-#'                 "2015-01-01"
-#'               ),
-#'               typeIdentifier = "string",
-#'               typeRevision = "string"
-#'             )
-#'           ),
-#'           matchRationale = list(
-#'             list(
-#'               textMatches = list(
-#'                 list(
-#'                   attribute = "string",
-#'                   matchOffsets = list(
-#'                     list(
-#'                       endOffset = 123,
-#'                       startOffset = 123
-#'                     )
-#'                   ),
-#'                   text = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         description = "string",
+#'         listingId = "string",
+#'         listingRevision = "string",
+#'         name = "string",
 #'         entityId = "string",
 #'         entityRevision = "string",
 #'         entityType = "string",
+#'         description = "string",
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         listingCreatedBy = "string",
+#'         listingUpdatedBy = "string",
 #'         glossaryTerms = list(
 #'           list(
 #'             name = "string",
@@ -14814,14 +15427,7 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
 #'             shortDescription = "string"
 #'           )
 #'         ),
-#'         listingCreatedBy = "string",
-#'         listingId = "string",
-#'         listingRevision = "string",
-#'         listingUpdatedBy = "string",
-#'         name = "string",
-#'         owningProjectId = "string"
-#'       ),
-#'       dataProductListing = list(
+#'         owningProjectId = "string",
 #'         additionalAttributes = list(
 #'           forms = "string",
 #'           matchRationale = list(
@@ -14829,61 +15435,127 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
 #'               textMatches = list(
 #'                 list(
 #'                   attribute = "string",
+#'                   text = "string",
 #'                   matchOffsets = list(
 #'                     list(
-#'                       endOffset = 123,
-#'                       startOffset = 123
+#'                       startOffset = 123,
+#'                       endOffset = 123
 #'                     )
-#'                   ),
-#'                   text = "string"
+#'                   )
 #'                 )
 #'               )
 #'             )
+#'           ),
+#'           latestTimeSeriesDataPointForms = list(
+#'             list(
+#'               formName = "string",
+#'               typeIdentifier = "string",
+#'               typeRevision = "string",
+#'               timestamp = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               contentSummary = "string",
+#'               id = "string"
+#'             )
 #'           )
-#'         ),
+#'         )
+#'       ),
+#'       dataProductListing = list(
+#'         listingId = "string",
+#'         listingRevision = "string",
+#'         name = "string",
+#'         entityId = "string",
+#'         entityRevision = "string",
+#'         description = "string",
 #'         createdAt = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         description = "string",
-#'         entityId = "string",
-#'         entityRevision = "string",
+#'         listingCreatedBy = "string",
+#'         listingUpdatedBy = "string",
 #'         glossaryTerms = list(
 #'           list(
 #'             name = "string",
 #'             shortDescription = "string"
 #'           )
 #'         ),
+#'         owningProjectId = "string",
+#'         additionalAttributes = list(
+#'           forms = "string",
+#'           matchRationale = list(
+#'             list(
+#'               textMatches = list(
+#'                 list(
+#'                   attribute = "string",
+#'                   text = "string",
+#'                   matchOffsets = list(
+#'                     list(
+#'                       startOffset = 123,
+#'                       endOffset = 123
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         items = list(
 #'           list(
+#'             listingId = "string",
+#'             listingRevision = "string",
 #'             glossaryTerms = list(
 #'               list(
 #'                 name = "string",
 #'                 shortDescription = "string"
 #'               )
-#'             ),
-#'             listingId = "string",
-#'             listingRevision = "string"
+#'             )
 #'           )
-#'         ),
-#'         listingCreatedBy = "string",
-#'         listingId = "string",
-#'         listingRevision = "string",
-#'         listingUpdatedBy = "string",
-#'         name = "string",
-#'         owningProjectId = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
 #'   nextToken = "string",
-#'   totalMatchCount = 123
+#'   totalMatchCount = 123,
+#'   aggregates = list(
+#'     list(
+#'       attribute = "string",
+#'       displayValue = "string",
+#'       items = list(
+#'         list(
+#'           value = "string",
+#'           count = 123,
+#'           displayValue = "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$search_listings(
-#'   additionalAttributes = list(
-#'     "FORMS"|"TIME_SERIES_DATA_POINT_FORMS"|"TEXT_MATCH_RATIONALE"
+#'   domainIdentifier = "string",
+#'   searchText = "string",
+#'   searchIn = list(
+#'     list(
+#'       attribute = "string"
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   filters = list(
+#'     filter = list(
+#'       attribute = "string",
+#'       value = "string",
+#'       intValue = 123,
+#'       operator = "EQ"|"LE"|"LT"|"GE"|"GT"|"TEXT_SEARCH"
+#'     ),
+#'     and = list(
+#'       list()
+#'     ),
+#'     or = list(
+#'       list()
+#'     )
 #'   ),
 #'   aggregations = list(
 #'     list(
@@ -14891,30 +15563,12 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
 #'       displayValue = "string"
 #'     )
 #'   ),
-#'   domainIdentifier = "string",
-#'   filters = list(
-#'     and = list(
-#'       list()
-#'     ),
-#'     filter = list(
-#'       attribute = "string",
-#'       value = "string"
-#'     ),
-#'     or = list(
-#'       list()
-#'     )
-#'   ),
-#'   maxResults = 123,
-#'   nextToken = "string",
-#'   searchIn = list(
-#'     list(
-#'       attribute = "string"
-#'     )
-#'   ),
-#'   searchText = "string",
 #'   sort = list(
 #'     attribute = "string",
 #'     order = "ASCENDING"|"DESCENDING"
+#'   ),
+#'   additionalAttributes = list(
+#'     "FORMS"|"TIME_SERIES_DATA_POINT_FORMS"|"TEXT_MATCH_RATIONALE"
 #'   )
 #' )
 #' ```
@@ -14924,7 +15578,7 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
 #' @rdname datazone_search_listings
 #'
 #' @aliases datazone_search_listings
-datazone_search_listings <- function(additionalAttributes = NULL, aggregations = NULL, domainIdentifier, filters = NULL, maxResults = NULL, nextToken = NULL, searchIn = NULL, searchText = NULL, sort = NULL) {
+datazone_search_listings <- function(domainIdentifier, searchText = NULL, searchIn = NULL, maxResults = NULL, nextToken = NULL, filters = NULL, aggregations = NULL, sort = NULL, additionalAttributes = NULL) {
   op <- new_operation(
     name = "SearchListings",
     http_method = "POST",
@@ -14933,7 +15587,7 @@ datazone_search_listings <- function(additionalAttributes = NULL, aggregations =
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$search_listings_input(additionalAttributes = additionalAttributes, aggregations = aggregations, domainIdentifier = domainIdentifier, filters = filters, maxResults = maxResults, nextToken = nextToken, searchIn = searchIn, searchText = searchText, sort = sort)
+  input <- .datazone$search_listings_input(domainIdentifier = domainIdentifier, searchText = searchText, searchIn = searchIn, maxResults = maxResults, nextToken = nextToken, filters = filters, aggregations = aggregations, sort = sort, additionalAttributes = additionalAttributes)
   output <- .datazone$search_listings_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -14966,13 +15620,11 @@ datazone_search_listings <- function(additionalAttributes = NULL, aggregations =
 #' -   Filters contain correct structure (attribute, value, operator).
 #'
 #' @usage
-#' datazone_search_types(domainIdentifier, filters, managed, maxResults,
-#'   nextToken, searchIn, searchScope, searchText, sort)
+#' datazone_search_types(domainIdentifier, maxResults, nextToken,
+#'   searchScope, searchText, searchIn, filters, sort, managed)
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which to invoke the
 #' [`search_types`][datazone_search_types] action.
-#' @param filters The filters for the [`search_types`][datazone_search_types] action.
-#' @param managed &#91;required&#93; Specifies whether the search is managed.
 #' @param maxResults The maximum number of results to return in a single call to
 #' [`search_types`][datazone_search_types]. When the number of results to
 #' be listed is greater than the value of `MaxResults`, the response
@@ -14984,11 +15636,13 @@ datazone_search_listings <- function(additionalAttributes = NULL, aggregations =
 #' includes a pagination token named `NextToken`. You can specify this
 #' `NextToken` value in a subsequent call to
 #' [`search_types`][datazone_search_types] to list the next set of results.
-#' @param searchIn The details of the search.
 #' @param searchScope &#91;required&#93; Specifies the scope of the search for types.
 #' @param searchText Specifies the text for which to search.
+#' @param searchIn The details of the search.
+#' @param filters The filters for the [`search_types`][datazone_search_types] action.
 #' @param sort The specifies the way to sort the
 #' [`search_types`][datazone_search_types] results.
+#' @param managed &#91;required&#93; Specifies whether the search is managed.
 #'
 #' @return
 #' A list with the following syntax:
@@ -14997,72 +15651,72 @@ datazone_search_listings <- function(additionalAttributes = NULL, aggregations =
 #'   items = list(
 #'     list(
 #'       assetTypeItem = list(
+#'         domainId = "string",
+#'         name = "string",
+#'         revision = "string",
+#'         description = "string",
+#'         formsOutput = list(
+#'           list(
+#'             typeName = "string",
+#'             typeRevision = "string",
+#'             required = TRUE|FALSE
+#'           )
+#'         ),
+#'         owningProjectId = "string",
+#'         originDomainId = "string",
+#'         originProjectId = "string",
 #'         createdAt = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
 #'         createdBy = "string",
-#'         description = "string",
-#'         domainId = "string",
-#'         formsOutput = list(
-#'           list(
-#'             required = TRUE|FALSE,
-#'             typeName = "string",
-#'             typeRevision = "string"
-#'           )
-#'         ),
-#'         name = "string",
-#'         originDomainId = "string",
-#'         originProjectId = "string",
-#'         owningProjectId = "string",
-#'         revision = "string",
 #'         updatedAt = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
 #'         updatedBy = "string"
 #'       ),
 #'       formTypeItem = list(
+#'         domainId = "string",
+#'         name = "string",
+#'         revision = "string",
+#'         model = list(
+#'           smithy = "string"
+#'         ),
+#'         status = "ENABLED"|"DISABLED",
+#'         owningProjectId = "string",
+#'         originDomainId = "string",
+#'         originProjectId = "string",
 #'         createdAt = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
 #'         createdBy = "string",
 #'         description = "string",
-#'         domainId = "string",
 #'         imports = list(
 #'           list(
 #'             name = "string",
 #'             revision = "string"
 #'           )
-#'         ),
-#'         model = list(
-#'           smithy = "string"
-#'         ),
-#'         name = "string",
-#'         originDomainId = "string",
-#'         originProjectId = "string",
-#'         owningProjectId = "string",
-#'         revision = "string",
-#'         status = "ENABLED"|"DISABLED"
+#'         )
 #'       ),
 #'       lineageNodeTypeItem = list(
+#'         domainId = "string",
+#'         name = "string",
+#'         description = "string",
 #'         createdAt = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
 #'         createdBy = "string",
-#'         description = "string",
-#'         domainId = "string",
-#'         formsOutput = list(
-#'           list(
-#'             required = TRUE|FALSE,
-#'             typeName = "string",
-#'             typeRevision = "string"
-#'           )
-#'         ),
-#'         name = "string",
-#'         revision = "string",
 #'         updatedAt = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         updatedBy = "string"
+#'         updatedBy = "string",
+#'         revision = "string",
+#'         formsOutput = list(
+#'           list(
+#'             typeName = "string",
+#'             typeRevision = "string",
+#'             required = TRUE|FALSE
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -15075,32 +15729,34 @@ datazone_search_listings <- function(additionalAttributes = NULL, aggregations =
 #' ```
 #' svc$search_types(
 #'   domainIdentifier = "string",
-#'   filters = list(
-#'     and = list(
-#'       list()
-#'     ),
-#'     filter = list(
-#'       attribute = "string",
-#'       value = "string"
-#'     ),
-#'     or = list(
-#'       list()
-#'     )
-#'   ),
-#'   managed = TRUE|FALSE,
 #'   maxResults = 123,
 #'   nextToken = "string",
+#'   searchScope = "ASSET_TYPE"|"FORM_TYPE"|"LINEAGE_NODE_TYPE",
+#'   searchText = "string",
 #'   searchIn = list(
 #'     list(
 #'       attribute = "string"
 #'     )
 #'   ),
-#'   searchScope = "ASSET_TYPE"|"FORM_TYPE"|"LINEAGE_NODE_TYPE",
-#'   searchText = "string",
+#'   filters = list(
+#'     filter = list(
+#'       attribute = "string",
+#'       value = "string",
+#'       intValue = 123,
+#'       operator = "EQ"|"LE"|"LT"|"GE"|"GT"|"TEXT_SEARCH"
+#'     ),
+#'     and = list(
+#'       list()
+#'     ),
+#'     or = list(
+#'       list()
+#'     )
+#'   ),
 #'   sort = list(
 #'     attribute = "string",
 #'     order = "ASCENDING"|"DESCENDING"
-#'   )
+#'   ),
+#'   managed = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -15109,7 +15765,7 @@ datazone_search_listings <- function(additionalAttributes = NULL, aggregations =
 #' @rdname datazone_search_types
 #'
 #' @aliases datazone_search_types
-datazone_search_types <- function(domainIdentifier, filters = NULL, managed, maxResults = NULL, nextToken = NULL, searchIn = NULL, searchScope, searchText = NULL, sort = NULL) {
+datazone_search_types <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, searchScope, searchText = NULL, searchIn = NULL, filters = NULL, sort = NULL, managed) {
   op <- new_operation(
     name = "SearchTypes",
     http_method = "POST",
@@ -15118,7 +15774,7 @@ datazone_search_types <- function(domainIdentifier, filters = NULL, managed, max
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$search_types_input(domainIdentifier = domainIdentifier, filters = filters, managed = managed, maxResults = maxResults, nextToken = nextToken, searchIn = searchIn, searchScope = searchScope, searchText = searchText, sort = sort)
+  input <- .datazone$search_types_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, searchScope = searchScope, searchText = searchText, searchIn = searchIn, filters = filters, sort = sort, managed = managed)
   output <- .datazone$search_types_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -15134,11 +15790,14 @@ datazone_search_types <- function(domainIdentifier, filters = NULL, managed, max
 #' Searches user profiles in Amazon DataZone.
 #'
 #' @usage
-#' datazone_search_user_profiles(domainIdentifier, maxResults, nextToken,
-#'   searchText, userType)
+#' datazone_search_user_profiles(domainIdentifier, userType, searchText,
+#'   maxResults, nextToken)
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which you want to search
 #' user profiles.
+#' @param userType &#91;required&#93; Specifies the user type for the
+#' [`search_user_profiles`][datazone_search_user_profiles] action.
+#' @param searchText Specifies the text for which to search.
 #' @param maxResults The maximum number of results to return in a single call to
 #' [`search_user_profiles`][datazone_search_user_profiles]. When the number
 #' of results to be listed is greater than the value of `MaxResults`, the
@@ -15152,9 +15811,6 @@ datazone_search_types <- function(domainIdentifier, filters = NULL, managed, max
 #' `NextToken` value in a subsequent call to
 #' [`search_user_profiles`][datazone_search_user_profiles] to list the next
 #' set of results.
-#' @param searchText Specifies the text for which to search.
-#' @param userType &#91;required&#93; Specifies the user type for the
-#' [`search_user_profiles`][datazone_search_user_profiles] action.
 #'
 #' @return
 #' A list with the following syntax:
@@ -15162,21 +15818,23 @@ datazone_search_types <- function(domainIdentifier, filters = NULL, managed, max
 #' list(
 #'   items = list(
 #'     list(
+#'       domainId = "string",
+#'       id = "string",
+#'       type = "IAM"|"SSO",
+#'       status = "ASSIGNED"|"NOT_ASSIGNED"|"ACTIVATED"|"DEACTIVATED",
 #'       details = list(
 #'         iam = list(
 #'           arn = "string",
-#'           principalId = "string"
+#'           principalId = "string",
+#'           sessionName = "string",
+#'           groupProfileId = "string"
 #'         ),
 #'         sso = list(
+#'           username = "string",
 #'           firstName = "string",
-#'           lastName = "string",
-#'           username = "string"
+#'           lastName = "string"
 #'         )
-#'       ),
-#'       domainId = "string",
-#'       id = "string",
-#'       status = "ASSIGNED"|"NOT_ASSIGNED"|"ACTIVATED"|"DEACTIVATED",
-#'       type = "IAM"|"SSO"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -15187,10 +15845,10 @@ datazone_search_types <- function(domainIdentifier, filters = NULL, managed, max
 #' ```
 #' svc$search_user_profiles(
 #'   domainIdentifier = "string",
-#'   maxResults = 123,
-#'   nextToken = "string",
+#'   userType = "SSO_USER"|"DATAZONE_USER"|"DATAZONE_SSO_USER"|"DATAZONE_IAM_USER",
 #'   searchText = "string",
-#'   userType = "SSO_USER"|"DATAZONE_USER"|"DATAZONE_SSO_USER"|"DATAZONE_IAM_USER"
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -15199,7 +15857,7 @@ datazone_search_types <- function(domainIdentifier, filters = NULL, managed, max
 #' @rdname datazone_search_user_profiles
 #'
 #' @aliases datazone_search_user_profiles
-datazone_search_user_profiles <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, searchText = NULL, userType) {
+datazone_search_user_profiles <- function(domainIdentifier, userType, searchText = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "SearchUserProfiles",
     http_method = "POST",
@@ -15208,7 +15866,7 @@ datazone_search_user_profiles <- function(domainIdentifier, maxResults = NULL, n
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$search_user_profiles_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, searchText = searchText, userType = userType)
+  input <- .datazone$search_user_profiles_input(domainIdentifier = domainIdentifier, userType = userType, searchText = searchText, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$search_user_profiles_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -15224,47 +15882,47 @@ datazone_search_user_profiles <- function(domainIdentifier, maxResults = NULL, n
 #' Start the run of the specified data source in Amazon DataZone.
 #'
 #' @usage
-#' datazone_start_data_source_run(clientToken, dataSourceIdentifier,
-#'   domainIdentifier)
+#' datazone_start_data_source_run(domainIdentifier, dataSourceIdentifier,
+#'   clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param dataSourceIdentifier &#91;required&#93; The identifier of the data source.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which to start a data
 #' source run.
+#' @param dataSourceIdentifier &#91;required&#93; The identifier of the data source.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   dataSourceId = "string",
+#'   id = "string",
+#'   projectId = "string",
+#'   status = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
+#'   type = "PRIORITIZED"|"SCHEDULED",
+#'   dataSourceConfigurationSnapshot = "string",
+#'   runStatisticsForAssets = list(
+#'     added = 123,
+#'     updated = 123,
+#'     unchanged = 123,
+#'     skipped = 123,
+#'     failed = 123
+#'   ),
+#'   errorMessage = list(
+#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION",
+#'     errorDetail = "string"
+#'   ),
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   dataSourceConfigurationSnapshot = "string",
-#'   dataSourceId = "string",
-#'   domainId = "string",
-#'   errorMessage = list(
-#'     errorDetail = "string",
-#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
-#'   ),
-#'   id = "string",
-#'   projectId = "string",
-#'   runStatisticsForAssets = list(
-#'     added = 123,
-#'     failed = 123,
-#'     skipped = 123,
-#'     unchanged = 123,
-#'     updated = 123
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
 #'   startedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   status = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
 #'   stoppedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   type = "PRIORITIZED"|"SCHEDULED",
-#'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   )
 #' )
@@ -15273,9 +15931,9 @@ datazone_search_user_profiles <- function(domainIdentifier, maxResults = NULL, n
 #' @section Request syntax:
 #' ```
 #' svc$start_data_source_run(
-#'   clientToken = "string",
+#'   domainIdentifier = "string",
 #'   dataSourceIdentifier = "string",
-#'   domainIdentifier = "string"
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -15284,7 +15942,7 @@ datazone_search_user_profiles <- function(domainIdentifier, maxResults = NULL, n
 #' @rdname datazone_start_data_source_run
 #'
 #' @aliases datazone_start_data_source_run
-datazone_start_data_source_run <- function(clientToken = NULL, dataSourceIdentifier, domainIdentifier) {
+datazone_start_data_source_run <- function(domainIdentifier, dataSourceIdentifier, clientToken = NULL) {
   op <- new_operation(
     name = "StartDataSourceRun",
     http_method = "POST",
@@ -15293,7 +15951,7 @@ datazone_start_data_source_run <- function(clientToken = NULL, dataSourceIdentif
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$start_data_source_run_input(clientToken = clientToken, dataSourceIdentifier = dataSourceIdentifier, domainIdentifier = domainIdentifier)
+  input <- .datazone$start_data_source_run_input(domainIdentifier = domainIdentifier, dataSourceIdentifier = dataSourceIdentifier, clientToken = clientToken)
   output <- .datazone$start_data_source_run_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -15325,53 +15983,53 @@ datazone_start_data_source_run <- function(clientToken = NULL, dataSourceIdentif
 #'     domain/project.
 #'
 #' @usage
-#' datazone_start_metadata_generation_run(clientToken, domainIdentifier,
-#'   owningProjectIdentifier, target, type, types)
+#' datazone_start_metadata_generation_run(domainIdentifier, type, types,
+#'   target, clientToken, owningProjectIdentifier)
 #'
-#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
-#' request. This field is automatically populated if not provided.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain where you want to start a metadata
 #' generation run.
-#' @param owningProjectIdentifier &#91;required&#93; The ID of the project that owns the asset for which you want to start a
-#' metadata generation run.
-#' @param target &#91;required&#93; The asset for which you want to start a metadata generation run.
 #' @param type The type of the metadata generation run.
 #' @param types The types of the metadata generation run.
+#' @param target &#91;required&#93; The asset for which you want to start a metadata generation run.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request. This field is automatically populated if not provided.
+#' @param owningProjectIdentifier &#91;required&#93; The ID of the project that owns the asset for which you want to start a
+#' metadata generation run.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdBy = "string",
 #'   domainId = "string",
 #'   id = "string",
-#'   owningProjectId = "string",
 #'   status = "SUBMITTED"|"IN_PROGRESS"|"CANCELED"|"SUCCEEDED"|"FAILED"|"PARTIALLY_SUCCEEDED",
 #'   type = "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS",
 #'   types = list(
 #'     "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS"
-#'   )
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   owningProjectId = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$start_metadata_generation_run(
-#'   clientToken = "string",
 #'   domainIdentifier = "string",
-#'   owningProjectIdentifier = "string",
-#'   target = list(
-#'     identifier = "string",
-#'     revision = "string",
-#'     type = "ASSET"
-#'   ),
 #'   type = "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS",
 #'   types = list(
 #'     "BUSINESS_DESCRIPTIONS"|"BUSINESS_NAMES"|"BUSINESS_GLOSSARY_ASSOCIATIONS"
-#'   )
+#'   ),
+#'   target = list(
+#'     type = "ASSET",
+#'     identifier = "string",
+#'     revision = "string"
+#'   ),
+#'   clientToken = "string",
+#'   owningProjectIdentifier = "string"
 #' )
 #' ```
 #'
@@ -15380,7 +16038,7 @@ datazone_start_data_source_run <- function(clientToken = NULL, dataSourceIdentif
 #' @rdname datazone_start_metadata_generation_run
 #'
 #' @aliases datazone_start_metadata_generation_run
-datazone_start_metadata_generation_run <- function(clientToken = NULL, domainIdentifier, owningProjectIdentifier, target, type = NULL, types = NULL) {
+datazone_start_metadata_generation_run <- function(domainIdentifier, type = NULL, types = NULL, target, clientToken = NULL, owningProjectIdentifier) {
   op <- new_operation(
     name = "StartMetadataGenerationRun",
     http_method = "POST",
@@ -15389,7 +16047,7 @@ datazone_start_metadata_generation_run <- function(clientToken = NULL, domainIde
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$start_metadata_generation_run_input(clientToken = clientToken, domainIdentifier = domainIdentifier, owningProjectIdentifier = owningProjectIdentifier, target = target, type = type, types = types)
+  input <- .datazone$start_metadata_generation_run_input(domainIdentifier = domainIdentifier, type = type, types = types, target = target, clientToken = clientToken, owningProjectIdentifier = owningProjectIdentifier)
   output <- .datazone$start_metadata_generation_run_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -15398,6 +16056,232 @@ datazone_start_metadata_generation_run <- function(clientToken = NULL, domainIde
   return(response)
 }
 .datazone$operations$start_metadata_generation_run <- datazone_start_metadata_generation_run
+
+#' Starts a notebook run in an Amazon DataZone domain
+#'
+#' @description
+#' Starts a notebook run in an Amazon DataZone domain. A notebook run
+#' represents the execution of a Amazon DataZone notebook within a project.
+#' You can configure compute, network, timeout, and environment settings
+#' for the run.
+#'
+#' @usage
+#' datazone_start_notebook_run(domainIdentifier, owningProjectIdentifier,
+#'   notebookIdentifier, scheduleIdentifier, computeConfiguration,
+#'   networkConfiguration, timeoutConfiguration, triggerSource, metadata,
+#'   parameters, clientToken)
+#'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which the notebook run
+#' is started.
+#' @param owningProjectIdentifier &#91;required&#93; The identifier of the project that owns the notebook run.
+#' @param notebookIdentifier &#91;required&#93; The identifier of the notebook to run.
+#' @param scheduleIdentifier The identifier of the schedule associated with the notebook run.
+#' @param computeConfiguration The compute configuration for the notebook run, including instance type
+#' and environment version.
+#' @param networkConfiguration The network configuration for the notebook run, including network access
+#' type and optional VPC settings.
+#' @param timeoutConfiguration The timeout configuration for the notebook run. The default timeout is
+#' 720 minutes (12 hours) and the maximum is 1440 minutes (24 hours).
+#' @param triggerSource The source that triggered the notebook run.
+#' @param metadata The metadata for the notebook run, specified as key-value pairs. You can
+#' specify up to 50 entries, with keys up to 128 characters and values up
+#' to 1024 characters.
+#' @param parameters The sensitive parameters for the notebook run, specified as key-value
+#' pairs. You can specify up to 50 entries, with keys up to 128 characters
+#' and values up to 1024 characters.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request. This field is automatically populated if not provided.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   domainId = "string",
+#'   owningProjectId = "string",
+#'   notebookId = "string",
+#'   scheduleId = "string",
+#'   status = "QUEUED"|"STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED",
+#'   cellOrder = list(
+#'     list()
+#'   ),
+#'   metadata = list(
+#'     "string"
+#'   ),
+#'   parameters = list(
+#'     "string"
+#'   ),
+#'   computeConfiguration = list(
+#'     instanceType = "string",
+#'     environmentVersion = "string"
+#'   ),
+#'   networkConfiguration = list(
+#'     networkAccessType = "PUBLIC_INTERNET_ONLY"|"VPC_ONLY",
+#'     vpcId = "string",
+#'     subnetIds = list(
+#'       "string"
+#'     ),
+#'     securityGroupIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   timeoutConfiguration = list(
+#'     runTimeoutInMinutes = 123
+#'   ),
+#'   environmentConfiguration = list(
+#'     imageVersion = "string",
+#'     packageConfig = list(
+#'       packageManager = "UV",
+#'       packageSpecification = "string"
+#'     )
+#'   ),
+#'   storageConfiguration = list(
+#'     projectS3Path = "string",
+#'     kmsKeyArn = "string"
+#'   ),
+#'   triggerSource = list(
+#'     type = "MANUAL"|"SCHEDULED"|"WORKFLOW",
+#'     name = "string"
+#'   ),
+#'   error = list(
+#'     message = "string"
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedBy = "string",
+#'   startedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   completedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_notebook_run(
+#'   domainIdentifier = "string",
+#'   owningProjectIdentifier = "string",
+#'   notebookIdentifier = "string",
+#'   scheduleIdentifier = "string",
+#'   computeConfiguration = list(
+#'     instanceType = "string",
+#'     environmentVersion = "string"
+#'   ),
+#'   networkConfiguration = list(
+#'     networkAccessType = "PUBLIC_INTERNET_ONLY"|"VPC_ONLY",
+#'     vpcId = "string",
+#'     subnetIds = list(
+#'       "string"
+#'     ),
+#'     securityGroupIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   timeoutConfiguration = list(
+#'     runTimeoutInMinutes = 123
+#'   ),
+#'   triggerSource = list(
+#'     type = "MANUAL"|"SCHEDULED"|"WORKFLOW",
+#'     name = "string"
+#'   ),
+#'   metadata = list(
+#'     "string"
+#'   ),
+#'   parameters = list(
+#'     "string"
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_start_notebook_run
+#'
+#' @aliases datazone_start_notebook_run
+datazone_start_notebook_run <- function(domainIdentifier, owningProjectIdentifier, notebookIdentifier, scheduleIdentifier = NULL, computeConfiguration = NULL, networkConfiguration = NULL, timeoutConfiguration = NULL, triggerSource = NULL, metadata = NULL, parameters = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "StartNotebookRun",
+    http_method = "POST",
+    http_path = "/v2/domains/{domainIdentifier}/notebook-runs",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$start_notebook_run_input(domainIdentifier = domainIdentifier, owningProjectIdentifier = owningProjectIdentifier, notebookIdentifier = notebookIdentifier, scheduleIdentifier = scheduleIdentifier, computeConfiguration = computeConfiguration, networkConfiguration = networkConfiguration, timeoutConfiguration = timeoutConfiguration, triggerSource = triggerSource, metadata = metadata, parameters = parameters, clientToken = clientToken)
+  output <- .datazone$start_notebook_run_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$start_notebook_run <- datazone_start_notebook_run
+
+#' Stops a running notebook run in an Amazon DataZone domain
+#'
+#' @description
+#' Stops a running notebook run in an Amazon DataZone domain.
+#'
+#' @usage
+#' datazone_stop_notebook_run(domainIdentifier, identifier, clientToken)
+#'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which the notebook run
+#' is stopped.
+#' @param identifier &#91;required&#93; The identifier of the notebook run to stop.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request. This field is automatically populated if not provided.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   domainId = "string",
+#'   owningProjectId = "string",
+#'   status = "QUEUED"|"STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_notebook_run(
+#'   domainIdentifier = "string",
+#'   identifier = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_stop_notebook_run
+#'
+#' @aliases datazone_stop_notebook_run
+datazone_stop_notebook_run <- function(domainIdentifier, identifier, clientToken = NULL) {
+  op <- new_operation(
+    name = "StopNotebookRun",
+    http_method = "PUT",
+    http_path = "/v2/domains/{domainIdentifier}/notebook-runs/{identifier}/stop",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$stop_notebook_run_input(domainIdentifier = domainIdentifier, identifier = identifier, clientToken = clientToken)
+  output <- .datazone$stop_notebook_run_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$stop_notebook_run <- datazone_stop_notebook_run
 
 #' Tags a resource in Amazon DataZone
 #'
@@ -15503,78 +16387,78 @@ datazone_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates the account pool.
 #'
 #' @usage
-#' datazone_update_account_pool(accountSource, description,
-#'   domainIdentifier, identifier, name, resolutionStrategy)
+#' datazone_update_account_pool(domainIdentifier, identifier, name,
+#'   description, resolutionStrategy, accountSource)
 #'
-#' @param accountSource The source of accounts for the account pool. In the current release,
-#' it's either a static list of accounts provided by the customer or a
-#' custom Amazon Web Services Lambda handler.
-#' @param description The description of the account pool that is to be udpated.
 #' @param domainIdentifier &#91;required&#93; The domain ID where the account pool that is to be updated lives.
 #' @param identifier &#91;required&#93; The ID of the account pool that is to be updated.
 #' @param name The name of the account pool that is to be updated.
+#' @param description The description of the account pool that is to be udpated.
 #' @param resolutionStrategy The mechanism used to resolve the account selection from the account
 #' pool.
+#' @param accountSource The source of accounts for the account pool. In the current release,
+#' it's either a static list of accounts provided by the customer or a
+#' custom Amazon Web Services Lambda handler.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   name = "string",
+#'   id = "string",
+#'   description = "string",
+#'   resolutionStrategy = "MANUAL",
 #'   accountSource = list(
 #'     accounts = list(
 #'       list(
 #'         awsAccountId = "string",
-#'         awsAccountName = "string",
 #'         supportedRegions = list(
 #'           "string"
-#'         )
+#'         ),
+#'         awsAccountName = "string"
 #'       )
 #'     ),
 #'     customAccountPoolHandler = list(
-#'       lambdaExecutionRoleArn = "string",
-#'       lambdaFunctionArn = "string"
+#'       lambdaFunctionArn = "string",
+#'       lambdaExecutionRoleArn = "string"
 #'     )
 #'   ),
+#'   createdBy = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   domainUnitId = "string",
-#'   id = "string",
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   name = "string",
-#'   resolutionStrategy = "MANUAL",
-#'   updatedBy = "string"
+#'   updatedBy = "string",
+#'   domainUnitId = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_account_pool(
+#'   domainIdentifier = "string",
+#'   identifier = "string",
+#'   name = "string",
+#'   description = "string",
+#'   resolutionStrategy = "MANUAL",
 #'   accountSource = list(
 #'     accounts = list(
 #'       list(
 #'         awsAccountId = "string",
-#'         awsAccountName = "string",
 #'         supportedRegions = list(
 #'           "string"
-#'         )
+#'         ),
+#'         awsAccountName = "string"
 #'       )
 #'     ),
 #'     customAccountPoolHandler = list(
-#'       lambdaExecutionRoleArn = "string",
-#'       lambdaFunctionArn = "string"
+#'       lambdaFunctionArn = "string",
+#'       lambdaExecutionRoleArn = "string"
 #'     )
-#'   ),
-#'   description = "string",
-#'   domainIdentifier = "string",
-#'   identifier = "string",
-#'   name = "string",
-#'   resolutionStrategy = "MANUAL"
+#'   )
 #' )
 #' ```
 #'
@@ -15583,7 +16467,7 @@ datazone_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname datazone_update_account_pool
 #'
 #' @aliases datazone_update_account_pool
-datazone_update_account_pool <- function(accountSource = NULL, description = NULL, domainIdentifier, identifier, name = NULL, resolutionStrategy = NULL) {
+datazone_update_account_pool <- function(domainIdentifier, identifier, name = NULL, description = NULL, resolutionStrategy = NULL, accountSource = NULL) {
   op <- new_operation(
     name = "UpdateAccountPool",
     http_method = "PATCH",
@@ -15592,7 +16476,7 @@ datazone_update_account_pool <- function(accountSource = NULL, description = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_account_pool_input(accountSource = accountSource, description = description, domainIdentifier = domainIdentifier, identifier = identifier, name = name, resolutionStrategy = resolutionStrategy)
+  input <- .datazone$update_account_pool_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, resolutionStrategy = resolutionStrategy, accountSource = accountSource)
   output <- .datazone$update_account_pool_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -15617,21 +16501,26 @@ datazone_update_account_pool <- function(accountSource = NULL, description = NUL
 #'     expression exists in the asset schema.
 #'
 #' @usage
-#' datazone_update_asset_filter(assetIdentifier, configuration,
-#'   description, domainIdentifier, identifier, name)
+#' datazone_update_asset_filter(domainIdentifier, assetIdentifier,
+#'   identifier, name, description, configuration)
 #'
-#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
-#' @param configuration The configuration of the asset filter.
-#' @param description The description of the asset filter.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to update an asset filter.
+#' @param assetIdentifier &#91;required&#93; The ID of the data asset.
 #' @param identifier &#91;required&#93; The ID of the asset filter.
 #' @param name The name of the asset filter.
+#' @param description The description of the asset filter.
+#' @param configuration The configuration of the asset filter.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   domainId = "string",
 #'   assetId = "string",
+#'   name = "string",
+#'   description = "string",
+#'   status = "VALID"|"INVALID",
 #'   configuration = list(
 #'     columnConfiguration = list(
 #'       includedColumnNames = list(
@@ -15640,43 +16529,8 @@ datazone_update_account_pool <- function(accountSource = NULL, description = NUL
 #'     ),
 #'     rowConfiguration = list(
 #'       rowFilter = list(
-#'         and = list(
-#'           list()
-#'         ),
 #'         expression = list(
 #'           equalTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           greaterThan = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           greaterThanOrEqualTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           in = list(
-#'             columnName = "string",
-#'             values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           isNotNull = list(
-#'             columnName = "string"
-#'           ),
-#'           isNull = list(
-#'             columnName = "string"
-#'           ),
-#'           lessThan = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           lessThanOrEqualTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           like = list(
 #'             columnName = "string",
 #'             value = "string"
 #'           ),
@@ -15684,16 +16538,51 @@ datazone_update_account_pool <- function(accountSource = NULL, description = NUL
 #'             columnName = "string",
 #'             value = "string"
 #'           ),
+#'           greaterThan = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           lessThan = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           greaterThanOrEqualTo = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           lessThanOrEqualTo = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           isNull = list(
+#'             columnName = "string"
+#'           ),
+#'           isNotNull = list(
+#'             columnName = "string"
+#'           ),
+#'           in = list(
+#'             columnName = "string",
+#'             values = list(
+#'               "string"
+#'             )
+#'           ),
 #'           notIn = list(
 #'             columnName = "string",
 #'             values = list(
 #'               "string"
 #'             )
 #'           ),
+#'           like = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
 #'           notLike = list(
 #'             columnName = "string",
 #'             value = "string"
 #'           )
+#'         ),
+#'         and = list(
+#'           list()
 #'         ),
 #'         or = list(
 #'           list()
@@ -15705,23 +16594,22 @@ datazone_update_account_pool <- function(accountSource = NULL, description = NUL
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   description = "string",
-#'   domainId = "string",
+#'   errorMessage = "string",
 #'   effectiveColumnNames = list(
 #'     "string"
 #'   ),
-#'   effectiveRowFilter = "string",
-#'   errorMessage = "string",
-#'   id = "string",
-#'   name = "string",
-#'   status = "VALID"|"INVALID"
+#'   effectiveRowFilter = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_asset_filter(
+#'   domainIdentifier = "string",
 #'   assetIdentifier = "string",
+#'   identifier = "string",
+#'   name = "string",
+#'   description = "string",
 #'   configuration = list(
 #'     columnConfiguration = list(
 #'       includedColumnNames = list(
@@ -15730,43 +16618,8 @@ datazone_update_account_pool <- function(accountSource = NULL, description = NUL
 #'     ),
 #'     rowConfiguration = list(
 #'       rowFilter = list(
-#'         and = list(
-#'           list()
-#'         ),
 #'         expression = list(
 #'           equalTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           greaterThan = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           greaterThanOrEqualTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           in = list(
-#'             columnName = "string",
-#'             values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           isNotNull = list(
-#'             columnName = "string"
-#'           ),
-#'           isNull = list(
-#'             columnName = "string"
-#'           ),
-#'           lessThan = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           lessThanOrEqualTo = list(
-#'             columnName = "string",
-#'             value = "string"
-#'           ),
-#'           like = list(
 #'             columnName = "string",
 #'             value = "string"
 #'           ),
@@ -15774,16 +16627,51 @@ datazone_update_account_pool <- function(accountSource = NULL, description = NUL
 #'             columnName = "string",
 #'             value = "string"
 #'           ),
+#'           greaterThan = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           lessThan = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           greaterThanOrEqualTo = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           lessThanOrEqualTo = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
+#'           isNull = list(
+#'             columnName = "string"
+#'           ),
+#'           isNotNull = list(
+#'             columnName = "string"
+#'           ),
+#'           in = list(
+#'             columnName = "string",
+#'             values = list(
+#'               "string"
+#'             )
+#'           ),
 #'           notIn = list(
 #'             columnName = "string",
 #'             values = list(
 #'               "string"
 #'             )
 #'           ),
+#'           like = list(
+#'             columnName = "string",
+#'             value = "string"
+#'           ),
 #'           notLike = list(
 #'             columnName = "string",
 #'             value = "string"
 #'           )
+#'         ),
+#'         and = list(
+#'           list()
 #'         ),
 #'         or = list(
 #'           list()
@@ -15791,11 +16679,7 @@ datazone_update_account_pool <- function(accountSource = NULL, description = NUL
 #'       ),
 #'       sensitive = TRUE|FALSE
 #'     )
-#'   ),
-#'   description = "string",
-#'   domainIdentifier = "string",
-#'   identifier = "string",
-#'   name = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -15804,7 +16688,7 @@ datazone_update_account_pool <- function(accountSource = NULL, description = NUL
 #' @rdname datazone_update_asset_filter
 #'
 #' @aliases datazone_update_asset_filter
-datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, description = NULL, domainIdentifier, identifier, name = NULL) {
+datazone_update_asset_filter <- function(domainIdentifier, assetIdentifier, identifier, name = NULL, description = NULL, configuration = NULL) {
   op <- new_operation(
     name = "UpdateAssetFilter",
     http_method = "PATCH",
@@ -15813,7 +16697,7 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_asset_filter_input(assetIdentifier = assetIdentifier, configuration = configuration, description = description, domainIdentifier = domainIdentifier, identifier = identifier, name = name)
+  input <- .datazone$update_asset_filter_input(domainIdentifier = domainIdentifier, assetIdentifier = assetIdentifier, identifier = identifier, name = name, description = description, configuration = configuration)
   output <- .datazone$update_asset_filter_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -15831,19 +16715,28 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
 #' resources and services.
 #'
 #' @usage
-#' datazone_update_connection(awsLocation, description, domainIdentifier,
-#'   identifier, props)
+#' datazone_update_connection(configurations, domainIdentifier, identifier,
+#'   description, awsLocation, props)
 #'
-#' @param awsLocation The location where a connection is to be updated.
-#' @param description The description of a connection.
+#' @param configurations The configurations of the connection.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where a connection is to be updated.
 #' @param identifier &#91;required&#93; The ID of the connection to be updated.
+#' @param description The description of a connection.
+#' @param awsLocation The location where a connection is to be updated.
 #' @param props The connection props.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   configurations = list(
+#'     list(
+#'       classification = "string",
+#'       properties = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
 #'   connectionId = "string",
 #'   description = "string",
 #'   domainId = "string",
@@ -15858,79 +16751,82 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
 #'         awsRegion = "string",
 #'         iamConnectionId = "string"
 #'       ),
-#'       enableTrustedIdentityPropagation = TRUE|FALSE,
+#'       glueConnectionName = "string",
+#'       glueConnectionNames = list(
+#'         "string"
+#'       ),
 #'       glueConnection = list(
-#'         athenaProperties = list(
-#'           "string"
-#'         ),
-#'         authenticationConfiguration = list(
-#'           authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
-#'           oAuth2Properties = list(
-#'             authorizationCodeProperties = list(
-#'               authorizationCode = "string",
-#'               redirectUri = "string"
-#'             ),
-#'             oAuth2ClientApplication = list(
-#'               aWSManagedClientApplicationReference = "string",
-#'               userManagedClientApplicationClientId = "string"
-#'             ),
-#'             oAuth2Credentials = list(
-#'               accessToken = "string",
-#'               jwtToken = "string",
-#'               refreshToken = "string",
-#'               userManagedClientApplicationClientSecret = "string"
-#'             ),
-#'             oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
-#'             tokenUrl = "string",
-#'             tokenUrlParametersMap = list(
-#'               "string"
-#'             )
-#'           ),
-#'           secretArn = "string"
-#'         ),
-#'         compatibleComputeEnvironments = list(
-#'           "SPARK"|"ATHENA"|"PYTHON"
-#'         ),
-#'         connectionProperties = list(
-#'           "string"
-#'         ),
-#'         connectionSchemaVersion = 123,
-#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW",
-#'         creationTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
+#'         name = "string",
 #'         description = "string",
-#'         lastConnectionValidationTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastUpdatedBy = "string",
-#'         lastUpdatedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
+#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW",
 #'         matchCriteria = list(
 #'           "string"
 #'         ),
-#'         name = "string",
-#'         physicalConnectionRequirements = list(
-#'           availabilityZone = "string",
-#'           securityGroupIdList = list(
-#'             "string"
-#'           ),
-#'           subnetId = "string",
-#'           subnetIdList = list(
-#'             "string"
-#'           )
-#'         ),
-#'         pythonProperties = list(
+#'         connectionProperties = list(
 #'           "string"
 #'         ),
 #'         sparkProperties = list(
 #'           "string"
 #'         ),
+#'         athenaProperties = list(
+#'           "string"
+#'         ),
+#'         pythonProperties = list(
+#'           "string"
+#'         ),
+#'         physicalConnectionRequirements = list(
+#'           subnetId = "string",
+#'           subnetIdList = list(
+#'             "string"
+#'           ),
+#'           securityGroupIdList = list(
+#'             "string"
+#'           ),
+#'           availabilityZone = "string"
+#'         ),
+#'         creationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedBy = "string",
 #'         status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
-#'         statusReason = "string"
+#'         statusReason = "string",
+#'         lastConnectionValidationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         authenticationConfiguration = list(
+#'           authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'           secretArn = "string",
+#'           oAuth2Properties = list(
+#'             oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'             oAuth2ClientApplication = list(
+#'               userManagedClientApplicationClientId = "string",
+#'               aWSManagedClientApplicationReference = "string"
+#'             ),
+#'             tokenUrl = "string",
+#'             tokenUrlParametersMap = list(
+#'               "string"
+#'             ),
+#'             authorizationCodeProperties = list(
+#'               authorizationCode = "string",
+#'               redirectUri = "string"
+#'             ),
+#'             oAuth2Credentials = list(
+#'               userManagedClientApplicationClientSecret = "string",
+#'               accessToken = "string",
+#'               refreshToken = "string",
+#'               jwtToken = "string"
+#'             )
+#'           )
+#'         ),
+#'         connectionSchemaVersion = 123,
+#'         compatibleComputeEnvironments = list(
+#'           "SPARK"|"ATHENA"|"PYTHON"
+#'         )
 #'       ),
-#'       glueConnectionName = "string",
+#'       enableTrustedIdentityPropagation = TRUE|FALSE,
 #'       host = "string",
 #'       port = 123,
 #'       protocol = "ATHENA"|"GLUE_INTERACTIVE_SESSION"|"HTTPS"|"JDBC"|"LIVY"|"ODBC"|"PRISM",
@@ -15939,31 +16835,27 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
 #'   ),
 #'   projectId = "string",
 #'   props = list(
-#'     amazonQProperties = list(
-#'       authMode = "string",
-#'       isEnabled = TRUE|FALSE,
-#'       profileArn = "string"
-#'     ),
 #'     athenaProperties = list(
 #'       workgroupName = "string"
 #'     ),
 #'     glueProperties = list(
-#'       errorMessage = "string",
-#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED"
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       errorMessage = "string"
 #'     ),
 #'     hyperPodProperties = list(
-#'       clusterArn = "string",
 #'       clusterName = "string",
+#'       clusterArn = "string",
 #'       orchestrator = "EKS"|"SLURM"
 #'     ),
 #'     iamProperties = list(
 #'       environmentId = "string",
 #'       glueLineageSyncEnabled = TRUE|FALSE
 #'     ),
-#'     mlflowProperties = list(
-#'       trackingServerArn = "string"
-#'     ),
 #'     redshiftProperties = list(
+#'       storage = list(
+#'         clusterName = "string",
+#'         workgroupName = "string"
+#'       ),
 #'       credentials = list(
 #'         secretArn = "string",
 #'         usernamePassword = list(
@@ -15971,32 +16863,21 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
 #'           username = "string"
 #'         )
 #'       ),
-#'       databaseName = "string",
 #'       isProvisionedSecret = TRUE|FALSE,
 #'       jdbcIamUrl = "string",
 #'       jdbcUrl = "string",
+#'       redshiftTempDir = "string",
 #'       lineageSync = list(
-#'         enabled = TRUE|FALSE,
 #'         lineageJobId = "string",
+#'         enabled = TRUE|FALSE,
 #'         schedule = list(
 #'           schedule = "string"
 #'         )
 #'       ),
-#'       redshiftTempDir = "string",
 #'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
-#'       storage = list(
-#'         clusterName = "string",
-#'         workgroupName = "string"
-#'       )
-#'     ),
-#'     s3Properties = list(
-#'       errorMessage = "string",
-#'       s3AccessGrantLocationId = "string",
-#'       s3Uri = "string",
-#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED"
+#'       databaseName = "string"
 #'     ),
 #'     sparkEmrProperties = list(
-#'       certificateData = "string",
 #'       computeArn = "string",
 #'       credentials = list(
 #'         password = "string",
@@ -16010,76 +16891,109 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
 #'       javaVirtualEnv = "string",
 #'       livyEndpoint = "string",
 #'       logUri = "string",
+#'       pythonVirtualEnv = "string",
+#'       runtimeRole = "string",
+#'       trustedCertificatesS3Uri = "string",
+#'       certificateData = "string",
 #'       managedEndpointArn = "string",
 #'       managedEndpointCredentials = list(
 #'         id = "string",
 #'         token = "string"
-#'       ),
-#'       pythonVirtualEnv = "string",
-#'       runtimeRole = "string",
-#'       trustedCertificatesS3Uri = "string"
+#'       )
 #'     ),
 #'     sparkGlueProperties = list(
 #'       additionalArgs = list(
 #'         connection = "string"
 #'       ),
 #'       glueConnectionName = "string",
+#'       glueConnectionNames = list(
+#'         "string"
+#'       ),
 #'       glueVersion = "string",
 #'       idleTimeout = 123,
 #'       javaVirtualEnv = "string",
 #'       numberOfWorkers = 123,
 #'       pythonVirtualEnv = "string",
 #'       workerType = "string"
+#'     ),
+#'     s3Properties = list(
+#'       s3Uri = "string",
+#'       s3AccessGrantLocationId = "string",
+#'       registerS3AccessGrantLocation = TRUE|FALSE,
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       errorMessage = "string"
+#'     ),
+#'     amazonQProperties = list(
+#'       isEnabled = TRUE|FALSE,
+#'       profileArn = "string",
+#'       authMode = "string"
+#'     ),
+#'     mlflowProperties = list(
+#'       trackingServerArn = "string"
+#'     ),
+#'     workflowsMwaaProperties = list(
+#'       mwaaEnvironmentName = "string"
+#'     ),
+#'     workflowsServerlessProperties = list(),
+#'     lakehouseProperties = list(
+#'       glueLineageSyncEnabled = TRUE|FALSE
 #'     )
 #'   ),
-#'   scope = "DOMAIN"|"PROJECT",
-#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"
+#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW",
+#'   scope = "DOMAIN"|"PROJECT"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_connection(
+#'   configurations = list(
+#'     list(
+#'       classification = "string",
+#'       properties = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   domainIdentifier = "string",
+#'   identifier = "string",
+#'   description = "string",
 #'   awsLocation = list(
 #'     accessRole = "string",
 #'     awsAccountId = "string",
 #'     awsRegion = "string",
 #'     iamConnectionId = "string"
 #'   ),
-#'   description = "string",
-#'   domainIdentifier = "string",
-#'   identifier = "string",
 #'   props = list(
-#'     amazonQProperties = list(
-#'       authMode = "string",
-#'       isEnabled = TRUE|FALSE,
-#'       profileArn = "string"
-#'     ),
 #'     athenaProperties = list(
 #'       workgroupName = "string"
 #'     ),
 #'     glueProperties = list(
 #'       glueConnectionInput = list(
-#'         authenticationConfiguration = list(
-#'           basicAuthenticationCredentials = list(
-#'             password = "string",
-#'             userName = "string"
-#'           ),
-#'           secretArn = "string"
-#'         ),
+#'         description = "string",
 #'         connectionProperties = list(
 #'           "string"
 #'         ),
-#'         description = "string"
+#'         authenticationConfiguration = list(
+#'           secretArn = "string",
+#'           basicAuthenticationCredentials = list(
+#'             userName = "string",
+#'             password = "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     iamProperties = list(
 #'       glueLineageSyncEnabled = TRUE|FALSE
 #'     ),
-#'     mlflowProperties = list(
-#'       trackingServerArn = "string"
-#'     ),
 #'     redshiftProperties = list(
+#'       storage = list(
+#'         clusterName = "string",
+#'         workgroupName = "string"
+#'       ),
+#'       databaseName = "string",
+#'       host = "string",
+#'       port = 123,
 #'       credentials = list(
 #'         secretArn = "string",
 #'         usernamePassword = list(
@@ -16087,33 +17001,38 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
 #'           username = "string"
 #'         )
 #'       ),
-#'       databaseName = "string",
-#'       host = "string",
 #'       lineageSync = list(
 #'         enabled = TRUE|FALSE,
 #'         schedule = list(
 #'           schedule = "string"
 #'         )
-#'       ),
-#'       port = 123,
-#'       storage = list(
-#'         clusterName = "string",
-#'         workgroupName = "string"
 #'       )
-#'     ),
-#'     s3Properties = list(
-#'       s3AccessGrantLocationId = "string",
-#'       s3Uri = "string"
 #'     ),
 #'     sparkEmrProperties = list(
 #'       computeArn = "string",
 #'       instanceProfileArn = "string",
 #'       javaVirtualEnv = "string",
 #'       logUri = "string",
-#'       managedEndpointArn = "string",
 #'       pythonVirtualEnv = "string",
 #'       runtimeRole = "string",
-#'       trustedCertificatesS3Uri = "string"
+#'       trustedCertificatesS3Uri = "string",
+#'       managedEndpointArn = "string"
+#'     ),
+#'     s3Properties = list(
+#'       s3Uri = "string",
+#'       s3AccessGrantLocationId = "string",
+#'       registerS3AccessGrantLocation = TRUE|FALSE
+#'     ),
+#'     amazonQProperties = list(
+#'       isEnabled = TRUE|FALSE,
+#'       profileArn = "string",
+#'       authMode = "string"
+#'     ),
+#'     mlflowProperties = list(
+#'       trackingServerArn = "string"
+#'     ),
+#'     lakehouseProperties = list(
+#'       glueLineageSyncEnabled = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -16124,7 +17043,7 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
 #' @rdname datazone_update_connection
 #'
 #' @aliases datazone_update_connection
-datazone_update_connection <- function(awsLocation = NULL, description = NULL, domainIdentifier, identifier, props = NULL) {
+datazone_update_connection <- function(configurations = NULL, domainIdentifier, identifier, description = NULL, awsLocation = NULL, props = NULL) {
   op <- new_operation(
     name = "UpdateConnection",
     http_method = "PATCH",
@@ -16133,7 +17052,7 @@ datazone_update_connection <- function(awsLocation = NULL, description = NULL, d
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_connection_input(awsLocation = awsLocation, description = description, domainIdentifier = domainIdentifier, identifier = identifier, props = props)
+  input <- .datazone$update_connection_input(configurations = configurations, domainIdentifier = domainIdentifier, identifier = identifier, description = description, awsLocation = awsLocation, props = props)
   output <- .datazone$update_connection_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -16149,66 +17068,80 @@ datazone_update_connection <- function(awsLocation = NULL, description = NULL, d
 #' Updates the specified data source in Amazon DataZone.
 #'
 #' @usage
-#' datazone_update_data_source(assetFormsInput, configuration, description,
-#'   domainIdentifier, enableSetting, identifier, name, publishOnImport,
-#'   recommendation, retainPermissionsOnRevokeFailure, schedule)
+#' datazone_update_data_source(domainIdentifier, identifier, name,
+#'   description, enableSetting, publishOnImport, assetFormsInput, schedule,
+#'   configuration, recommendation, retainPermissionsOnRevokeFailure)
 #'
-#' @param assetFormsInput The asset forms to be updated as part of the
-#' [`update_data_source`][datazone_update_data_source] action.
-#' @param configuration The configuration to be updated as part of the
-#' [`update_data_source`][datazone_update_data_source] action.
-#' @param description The description to be updated as part of the
-#' [`update_data_source`][datazone_update_data_source] action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the domain in which to update a data source.
-#' @param enableSetting The enable setting to be updated as part of the
-#' [`update_data_source`][datazone_update_data_source] action.
 #' @param identifier &#91;required&#93; The identifier of the data source to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_data_source`][datazone_update_data_source] action.
+#' @param description The description to be updated as part of the
+#' [`update_data_source`][datazone_update_data_source] action.
+#' @param enableSetting The enable setting to be updated as part of the
+#' [`update_data_source`][datazone_update_data_source] action.
 #' @param publishOnImport The publish on import setting to be updated as part of the
+#' [`update_data_source`][datazone_update_data_source] action.
+#' @param assetFormsInput The asset forms to be updated as part of the
+#' [`update_data_source`][datazone_update_data_source] action.
+#' @param schedule The schedule to be updated as part of the
+#' [`update_data_source`][datazone_update_data_source] action.
+#' @param configuration The configuration to be updated as part of the
 #' [`update_data_source`][datazone_update_data_source] action.
 #' @param recommendation The recommendation to be updated as part of the
 #' [`update_data_source`][datazone_update_data_source] action.
 #' @param retainPermissionsOnRevokeFailure Specifies that the granted permissions are retained in case of a
 #' self-subscribe functionality failure for a data source.
-#' @param schedule The schedule to be updated as part of the
-#' [`update_data_source`][datazone_update_data_source] action.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   assetFormsOutput = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
-#'   ),
+#'   id = "string",
+#'   status = "CREATING"|"FAILED_CREATION"|"READY"|"UPDATING"|"FAILED_UPDATE"|"RUNNING"|"DELETING"|"FAILED_DELETION",
+#'   type = "string",
+#'   name = "string",
+#'   description = "string",
+#'   domainId = "string",
+#'   projectId = "string",
+#'   environmentId = "string",
+#'   connectionId = "string",
 #'   configuration = list(
 #'     glueRunConfiguration = list(
 #'       accountId = "string",
-#'       autoImportDataQualityResult = TRUE|FALSE,
-#'       catalogName = "string",
-#'       dataAccessRole = "string",
 #'       region = "string",
+#'       dataAccessRole = "string",
 #'       relationalFilterConfigurations = list(
 #'         list(
 #'           databaseName = "string",
+#'           schemaName = "string",
 #'           filterExpressions = list(
 #'             list(
-#'               expression = "string",
-#'               type = "INCLUDE"|"EXCLUDE"
+#'               type = "INCLUDE"|"EXCLUDE",
+#'               expression = "string"
 #'             )
-#'           ),
-#'           schemaName = "string"
+#'           )
 #'         )
-#'       )
+#'       ),
+#'       autoImportDataQualityResult = TRUE|FALSE,
+#'       catalogName = "string"
 #'     ),
 #'     redshiftRunConfiguration = list(
 #'       accountId = "string",
+#'       region = "string",
 #'       dataAccessRole = "string",
+#'       relationalFilterConfigurations = list(
+#'         list(
+#'           databaseName = "string",
+#'           schemaName = "string",
+#'           filterExpressions = list(
+#'             list(
+#'               type = "INCLUDE"|"EXCLUDE",
+#'               expression = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       redshiftCredentialConfiguration = list(
 #'         secretManagerArn = "string"
 #'       ),
@@ -16218,19 +17151,6 @@ datazone_update_connection <- function(awsLocation = NULL, description = NULL, d
 #'         ),
 #'         redshiftServerlessSource = list(
 #'           workgroupName = "string"
-#'         )
-#'       ),
-#'       region = "string",
-#'       relationalFilterConfigurations = list(
-#'         list(
-#'           databaseName = "string",
-#'           filterExpressions = list(
-#'             list(
-#'               expression = "string",
-#'               type = "INCLUDE"|"EXCLUDE"
-#'             )
-#'           ),
-#'           schemaName = "string"
 #'         )
 #'       )
 #'     ),
@@ -16244,46 +17164,49 @@ datazone_update_connection <- function(awsLocation = NULL, description = NULL, d
 #'       )
 #'     )
 #'   ),
-#'   connectionId = "string",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
+#'   recommendation = list(
+#'     enableBusinessNameGeneration = TRUE|FALSE
 #'   ),
-#'   description = "string",
-#'   domainId = "string",
 #'   enableSetting = "ENABLED"|"DISABLED",
-#'   environmentId = "string",
-#'   errorMessage = list(
-#'     errorDetail = "string",
-#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
+#'   publishOnImport = TRUE|FALSE,
+#'   assetFormsOutput = list(
+#'     list(
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
+#'     )
 #'   ),
-#'   id = "string",
+#'   schedule = list(
+#'     timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC",
+#'     schedule = "string"
+#'   ),
+#'   lastRunStatus = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
 #'   lastRunAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   lastRunErrorMessage = list(
-#'     errorDetail = "string",
-#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
+#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION",
+#'     errorDetail = "string"
 #'   ),
-#'   lastRunStatus = "REQUESTED"|"RUNNING"|"FAILED"|"PARTIALLY_SUCCEEDED"|"SUCCESS",
-#'   name = "string",
-#'   projectId = "string",
-#'   publishOnImport = TRUE|FALSE,
-#'   recommendation = list(
-#'     enableBusinessNameGeneration = TRUE|FALSE
+#'   errorMessage = list(
+#'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION",
+#'     errorDetail = "string"
 #'   ),
-#'   retainPermissionsOnRevokeFailure = TRUE|FALSE,
-#'   schedule = list(
-#'     schedule = "string",
-#'     timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC"
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
 #'   selfGrantStatus = list(
 #'     glueSelfGrantStatus = list(
 #'       selfGrantStatusDetails = list(
 #'         list(
 #'           databaseName = "string",
-#'           failureCause = "string",
 #'           schemaName = "string",
-#'           status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"GRANT_FAILED"|"REVOKE_FAILED"
+#'           status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"GRANT_FAILED"|"REVOKE_FAILED",
+#'           failureCause = "string"
 #'         )
 #'       )
 #'     ),
@@ -16291,52 +17214,70 @@ datazone_update_connection <- function(awsLocation = NULL, description = NULL, d
 #'       selfGrantStatusDetails = list(
 #'         list(
 #'           databaseName = "string",
-#'           failureCause = "string",
 #'           schemaName = "string",
-#'           status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"GRANT_FAILED"|"REVOKE_FAILED"
+#'           status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"GRANT_FAILED"|"REVOKE_FAILED",
+#'           failureCause = "string"
 #'         )
 #'       )
 #'     )
 #'   ),
-#'   status = "CREATING"|"FAILED_CREATION"|"READY"|"UPDATING"|"FAILED_UPDATE"|"RUNNING"|"DELETING"|"FAILED_DELETION",
-#'   type = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   )
+#'   retainPermissionsOnRevokeFailure = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_data_source(
+#'   domainIdentifier = "string",
+#'   identifier = "string",
+#'   name = "string",
+#'   description = "string",
+#'   enableSetting = "ENABLED"|"DISABLED",
+#'   publishOnImport = TRUE|FALSE,
 #'   assetFormsInput = list(
 #'     list(
-#'       content = "string",
 #'       formName = "string",
 #'       typeIdentifier = "string",
-#'       typeRevision = "string"
+#'       typeRevision = "string",
+#'       content = "string"
 #'     )
+#'   ),
+#'   schedule = list(
+#'     timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC",
+#'     schedule = "string"
 #'   ),
 #'   configuration = list(
 #'     glueRunConfiguration = list(
-#'       autoImportDataQualityResult = TRUE|FALSE,
-#'       catalogName = "string",
 #'       dataAccessRole = "string",
 #'       relationalFilterConfigurations = list(
 #'         list(
 #'           databaseName = "string",
+#'           schemaName = "string",
 #'           filterExpressions = list(
 #'             list(
-#'               expression = "string",
-#'               type = "INCLUDE"|"EXCLUDE"
+#'               type = "INCLUDE"|"EXCLUDE",
+#'               expression = "string"
 #'             )
-#'           ),
-#'           schemaName = "string"
+#'           )
 #'         )
-#'       )
+#'       ),
+#'       autoImportDataQualityResult = TRUE|FALSE,
+#'       catalogName = "string"
 #'     ),
 #'     redshiftRunConfiguration = list(
 #'       dataAccessRole = "string",
+#'       relationalFilterConfigurations = list(
+#'         list(
+#'           databaseName = "string",
+#'           schemaName = "string",
+#'           filterExpressions = list(
+#'             list(
+#'               type = "INCLUDE"|"EXCLUDE",
+#'               expression = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       redshiftCredentialConfiguration = list(
 #'         secretManagerArn = "string"
 #'       ),
@@ -16346,18 +17287,6 @@ datazone_update_connection <- function(awsLocation = NULL, description = NULL, d
 #'         ),
 #'         redshiftServerlessSource = list(
 #'           workgroupName = "string"
-#'         )
-#'       ),
-#'       relationalFilterConfigurations = list(
-#'         list(
-#'           databaseName = "string",
-#'           filterExpressions = list(
-#'             list(
-#'               expression = "string",
-#'               type = "INCLUDE"|"EXCLUDE"
-#'             )
-#'           ),
-#'           schemaName = "string"
 #'         )
 #'       )
 #'     ),
@@ -16369,20 +17298,10 @@ datazone_update_connection <- function(awsLocation = NULL, description = NULL, d
 #'       )
 #'     )
 #'   ),
-#'   description = "string",
-#'   domainIdentifier = "string",
-#'   enableSetting = "ENABLED"|"DISABLED",
-#'   identifier = "string",
-#'   name = "string",
-#'   publishOnImport = TRUE|FALSE,
 #'   recommendation = list(
 #'     enableBusinessNameGeneration = TRUE|FALSE
 #'   ),
-#'   retainPermissionsOnRevokeFailure = TRUE|FALSE,
-#'   schedule = list(
-#'     schedule = "string",
-#'     timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC"
-#'   )
+#'   retainPermissionsOnRevokeFailure = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -16391,7 +17310,7 @@ datazone_update_connection <- function(awsLocation = NULL, description = NULL, d
 #' @rdname datazone_update_data_source
 #'
 #' @aliases datazone_update_data_source
-datazone_update_data_source <- function(assetFormsInput = NULL, configuration = NULL, description = NULL, domainIdentifier, enableSetting = NULL, identifier, name = NULL, publishOnImport = NULL, recommendation = NULL, retainPermissionsOnRevokeFailure = NULL, schedule = NULL) {
+datazone_update_data_source <- function(domainIdentifier, identifier, name = NULL, description = NULL, enableSetting = NULL, publishOnImport = NULL, assetFormsInput = NULL, schedule = NULL, configuration = NULL, recommendation = NULL, retainPermissionsOnRevokeFailure = NULL) {
   op <- new_operation(
     name = "UpdateDataSource",
     http_method = "PATCH",
@@ -16400,7 +17319,7 @@ datazone_update_data_source <- function(assetFormsInput = NULL, configuration = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_data_source_input(assetFormsInput = assetFormsInput, configuration = configuration, description = description, domainIdentifier = domainIdentifier, enableSetting = enableSetting, identifier = identifier, name = name, publishOnImport = publishOnImport, recommendation = recommendation, retainPermissionsOnRevokeFailure = retainPermissionsOnRevokeFailure, schedule = schedule)
+  input <- .datazone$update_data_source_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, enableSetting = enableSetting, publishOnImport = publishOnImport, assetFormsInput = assetFormsInput, schedule = schedule, configuration = configuration, recommendation = recommendation, retainPermissionsOnRevokeFailure = retainPermissionsOnRevokeFailure)
   output <- .datazone$update_data_source_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -16416,39 +17335,39 @@ datazone_update_data_source <- function(assetFormsInput = NULL, configuration = 
 #' Updates a Amazon DataZone domain.
 #'
 #' @usage
-#' datazone_update_domain(clientToken, description, domainExecutionRole,
-#'   identifier, name, serviceRole, singleSignOn)
+#' datazone_update_domain(identifier, description, singleSignOn,
+#'   domainExecutionRole, serviceRole, name, clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
+#' @param identifier &#91;required&#93; The ID of the Amazon Web Services domain that is to be updated.
 #' @param description The description to be updated as part of the
+#' [`update_domain`][datazone_update_domain] action.
+#' @param singleSignOn The single sign-on option to be updated as part of the
 #' [`update_domain`][datazone_update_domain] action.
 #' @param domainExecutionRole The domain execution role to be updated as part of the
 #' [`update_domain`][datazone_update_domain] action.
-#' @param identifier &#91;required&#93; The ID of the Amazon Web Services domain that is to be updated.
+#' @param serviceRole The service role of the domain.
 #' @param name The name to be updated as part of the
 #' [`update_domain`][datazone_update_domain] action.
-#' @param serviceRole The service role of the domain.
-#' @param singleSignOn The single sign-on option to be updated as part of the
-#' [`update_domain`][datazone_update_domain] action.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   description = "string",
-#'   domainExecutionRole = "string",
 #'   id = "string",
+#'   rootDomainUnitId = "string",
+#'   description = "string",
+#'   singleSignOn = list(
+#'     type = "IAM_IDC"|"DISABLED",
+#'     userAssignment = "AUTOMATIC"|"MANUAL",
+#'     idcInstanceArn = "string"
+#'   ),
+#'   domainExecutionRole = "string",
+#'   serviceRole = "string",
+#'   name = "string",
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
-#'   ),
-#'   name = "string",
-#'   rootDomainUnitId = "string",
-#'   serviceRole = "string",
-#'   singleSignOn = list(
-#'     idcInstanceArn = "string",
-#'     type = "IAM_IDC"|"DISABLED",
-#'     userAssignment = "AUTOMATIC"|"MANUAL"
 #'   )
 #' )
 #' ```
@@ -16456,17 +17375,17 @@ datazone_update_data_source <- function(assetFormsInput = NULL, configuration = 
 #' @section Request syntax:
 #' ```
 #' svc$update_domain(
-#'   clientToken = "string",
-#'   description = "string",
-#'   domainExecutionRole = "string",
 #'   identifier = "string",
-#'   name = "string",
-#'   serviceRole = "string",
+#'   description = "string",
 #'   singleSignOn = list(
-#'     idcInstanceArn = "string",
 #'     type = "IAM_IDC"|"DISABLED",
-#'     userAssignment = "AUTOMATIC"|"MANUAL"
-#'   )
+#'     userAssignment = "AUTOMATIC"|"MANUAL",
+#'     idcInstanceArn = "string"
+#'   ),
+#'   domainExecutionRole = "string",
+#'   serviceRole = "string",
+#'   name = "string",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -16475,7 +17394,7 @@ datazone_update_data_source <- function(assetFormsInput = NULL, configuration = 
 #' @rdname datazone_update_domain
 #'
 #' @aliases datazone_update_domain
-datazone_update_domain <- function(clientToken = NULL, description = NULL, domainExecutionRole = NULL, identifier, name = NULL, serviceRole = NULL, singleSignOn = NULL) {
+datazone_update_domain <- function(identifier, description = NULL, singleSignOn = NULL, domainExecutionRole = NULL, serviceRole = NULL, name = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateDomain",
     http_method = "PUT",
@@ -16484,7 +17403,7 @@ datazone_update_domain <- function(clientToken = NULL, description = NULL, domai
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_domain_input(clientToken = clientToken, description = description, domainExecutionRole = domainExecutionRole, identifier = identifier, name = name, serviceRole = serviceRole, singleSignOn = singleSignOn)
+  input <- .datazone$update_domain_input(identifier = identifier, description = description, singleSignOn = singleSignOn, domainExecutionRole = domainExecutionRole, serviceRole = serviceRole, name = name, clientToken = clientToken)
   output <- .datazone$update_domain_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -16500,50 +17419,50 @@ datazone_update_domain <- function(clientToken = NULL, description = NULL, domai
 #' Updates the domain unit.
 #'
 #' @usage
-#' datazone_update_domain_unit(description, domainIdentifier, identifier,
+#' datazone_update_domain_unit(domainIdentifier, identifier, description,
 #'   name)
 #'
-#' @param description The description of the domain unit that you want to update.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to update a domain unit.
 #' @param identifier &#91;required&#93; The ID of the domain unit that you want to update.
+#' @param description The description of the domain unit that you want to update.
 #' @param name The name of the domain unit that you want to update.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
 #'   id = "string",
-#'   lastUpdatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   lastUpdatedBy = "string",
+#'   domainId = "string",
 #'   name = "string",
 #'   owners = list(
 #'     list(
-#'       group = list(
-#'         groupId = "string"
-#'       ),
 #'       user = list(
 #'         userId = "string"
+#'       ),
+#'       group = list(
+#'         groupId = "string"
 #'       )
 #'     )
 #'   ),
-#'   parentDomainUnitId = "string"
+#'   description = "string",
+#'   parentDomainUnitId = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   lastUpdatedBy = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_domain_unit(
-#'   description = "string",
 #'   domainIdentifier = "string",
 #'   identifier = "string",
+#'   description = "string",
 #'   name = "string"
 #' )
 #' ```
@@ -16553,7 +17472,7 @@ datazone_update_domain <- function(clientToken = NULL, description = NULL, domai
 #' @rdname datazone_update_domain_unit
 #'
 #' @aliases datazone_update_domain_unit
-datazone_update_domain_unit <- function(description = NULL, domainIdentifier, identifier, name = NULL) {
+datazone_update_domain_unit <- function(domainIdentifier, identifier, description = NULL, name = NULL) {
   op <- new_operation(
     name = "UpdateDomainUnit",
     http_method = "PUT",
@@ -16562,7 +17481,7 @@ datazone_update_domain_unit <- function(description = NULL, domainIdentifier, id
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_domain_unit_input(description = description, domainIdentifier = domainIdentifier, identifier = identifier, name = name)
+  input <- .datazone$update_domain_unit_input(domainIdentifier = domainIdentifier, identifier = identifier, description = description, name = name)
   output <- .datazone$update_domain_unit_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -16578,120 +17497,124 @@ datazone_update_domain_unit <- function(description = NULL, domainIdentifier, id
 #' Updates the specified environment in Amazon DataZone.
 #'
 #' @usage
-#' datazone_update_environment(blueprintVersion, description,
-#'   domainIdentifier, glossaryTerms, identifier, name, userParameters)
+#' datazone_update_environment(domainIdentifier, identifier, name,
+#'   description, glossaryTerms, blueprintVersion, userParameters,
+#'   environmentConfigurationName)
 #'
-#' @param blueprintVersion The blueprint version to which the environment should be updated. You
-#' can only specify the following string for this parameter: `latest`.
-#' @param description The description to be updated as part of the
-#' [`update_environment`][datazone_update_environment] action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the domain in which the environment is to be updated.
-#' @param glossaryTerms The glossary terms to be updated as part of the
-#' [`update_environment`][datazone_update_environment] action.
 #' @param identifier &#91;required&#93; The identifier of the environment that is to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_environment`][datazone_update_environment] action.
+#' @param description The description to be updated as part of the
+#' [`update_environment`][datazone_update_environment] action.
+#' @param glossaryTerms The glossary terms to be updated as part of the
+#' [`update_environment`][datazone_update_environment] action.
+#' @param blueprintVersion The blueprint version to which the environment should be updated. You
+#' can only specify the following string for this parameter: `latest`.
 #' @param userParameters The user parameters of the environment.
+#' @param environmentConfigurationName The configuration name of the environment.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   awsAccountId = "string",
-#'   awsAccountRegion = "string",
+#'   projectId = "string",
+#'   id = "string",
+#'   domainId = "string",
+#'   createdBy = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   deploymentProperties = list(
-#'     endTimeoutMinutes = 123,
-#'     startTimeoutMinutes = 123
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
+#'   name = "string",
 #'   description = "string",
-#'   domainId = "string",
+#'   environmentProfileId = "string",
+#'   awsAccountId = "string",
+#'   awsAccountRegion = "string",
+#'   provider = "string",
+#'   provisionedResources = list(
+#'     list(
+#'       provider = "string",
+#'       name = "string",
+#'       value = "string",
+#'       type = "string"
+#'     )
+#'   ),
+#'   status = "ACTIVE"|"CREATING"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"VALIDATION_FAILED"|"SUSPENDED"|"DISABLED"|"EXPIRED"|"DELETED"|"INACCESSIBLE",
 #'   environmentActions = list(
 #'     list(
+#'       type = "string",
 #'       auth = "IAM"|"HTTPS",
 #'       parameters = list(
 #'         list(
 #'           key = "string",
 #'           value = "string"
 #'         )
-#'       ),
-#'       type = "string"
+#'       )
 #'     )
 #'   ),
-#'   environmentBlueprintId = "string",
-#'   environmentConfigurationId = "string",
-#'   environmentProfileId = "string",
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
-#'   id = "string",
+#'   userParameters = list(
+#'     list(
+#'       keyName = "string",
+#'       description = "string",
+#'       fieldType = "string",
+#'       defaultValue = "string",
+#'       isEditable = TRUE|FALSE,
+#'       isOptional = TRUE|FALSE,
+#'       isUpdateSupported = TRUE|FALSE
+#'     )
+#'   ),
 #'   lastDeployment = list(
 #'     deploymentId = "string",
-#'     deploymentStatus = "IN_PROGRESS"|"SUCCESSFUL"|"FAILED"|"PENDING_DEPLOYMENT",
 #'     deploymentType = "CREATE"|"UPDATE"|"DELETE",
+#'     deploymentStatus = "IN_PROGRESS"|"SUCCESSFUL"|"FAILED"|"PENDING_DEPLOYMENT",
 #'     failureReason = list(
 #'       code = "string",
 #'       message = "string"
 #'     ),
-#'     isDeploymentComplete = TRUE|FALSE,
 #'     messages = list(
 #'       "string"
-#'     )
-#'   ),
-#'   name = "string",
-#'   projectId = "string",
-#'   provider = "string",
-#'   provisionedResources = list(
-#'     list(
-#'       name = "string",
-#'       provider = "string",
-#'       type = "string",
-#'       value = "string"
-#'     )
+#'     ),
+#'     isDeploymentComplete = TRUE|FALSE
 #'   ),
 #'   provisioningProperties = list(
 #'     cloudFormation = list(
 #'       templateUrl = "string"
 #'     )
 #'   ),
-#'   status = "ACTIVE"|"CREATING"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"VALIDATION_FAILED"|"SUSPENDED"|"DISABLED"|"EXPIRED"|"DELETED"|"INACCESSIBLE",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
+#'   deploymentProperties = list(
+#'     startTimeoutMinutes = 123,
+#'     endTimeoutMinutes = 123
 #'   ),
-#'   userParameters = list(
-#'     list(
-#'       defaultValue = "string",
-#'       description = "string",
-#'       fieldType = "string",
-#'       isEditable = TRUE|FALSE,
-#'       isOptional = TRUE|FALSE,
-#'       isUpdateSupported = TRUE|FALSE,
-#'       keyName = "string"
-#'     )
-#'   )
+#'   environmentBlueprintId = "string",
+#'   environmentConfigurationId = "string",
+#'   environmentConfigurationName = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_environment(
-#'   blueprintVersion = "string",
-#'   description = "string",
 #'   domainIdentifier = "string",
+#'   identifier = "string",
+#'   name = "string",
+#'   description = "string",
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
-#'   identifier = "string",
-#'   name = "string",
+#'   blueprintVersion = "string",
 #'   userParameters = list(
 #'     list(
 #'       name = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   environmentConfigurationName = "string"
 #' )
 #' ```
 #'
@@ -16700,7 +17623,7 @@ datazone_update_domain_unit <- function(description = NULL, domainIdentifier, id
 #' @rdname datazone_update_environment
 #'
 #' @aliases datazone_update_environment
-datazone_update_environment <- function(blueprintVersion = NULL, description = NULL, domainIdentifier, glossaryTerms = NULL, identifier, name = NULL, userParameters = NULL) {
+datazone_update_environment <- function(domainIdentifier, identifier, name = NULL, description = NULL, glossaryTerms = NULL, blueprintVersion = NULL, userParameters = NULL, environmentConfigurationName = NULL) {
   op <- new_operation(
     name = "UpdateEnvironment",
     http_method = "PATCH",
@@ -16709,7 +17632,7 @@ datazone_update_environment <- function(blueprintVersion = NULL, description = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_environment_input(blueprintVersion = blueprintVersion, description = description, domainIdentifier = domainIdentifier, glossaryTerms = glossaryTerms, identifier = identifier, name = name, userParameters = userParameters)
+  input <- .datazone$update_environment_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, glossaryTerms = glossaryTerms, blueprintVersion = blueprintVersion, userParameters = userParameters, environmentConfigurationName = environmentConfigurationName)
   output <- .datazone$update_environment_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -16725,21 +17648,20 @@ datazone_update_environment <- function(blueprintVersion = NULL, description = N
 #' Updates an environment action.
 #'
 #' @usage
-#' datazone_update_environment_action(description, domainIdentifier,
-#'   environmentIdentifier, identifier, name, parameters)
+#' datazone_update_environment_action(domainIdentifier,
+#'   environmentIdentifier, identifier, parameters, name, description)
 #'
-#' @param description The description of the environment action.
 #' @param domainIdentifier &#91;required&#93; The domain ID of the environment action.
 #' @param environmentIdentifier &#91;required&#93; The environment ID of the environment action.
 #' @param identifier &#91;required&#93; The ID of the environment action.
-#' @param name The name of the environment action.
 #' @param parameters The parameters of the environment action.
+#' @param name The name of the environment action.
+#' @param description The description of the environment action.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   description = "string",
 #'   domainId = "string",
 #'   environmentId = "string",
 #'   id = "string",
@@ -16748,23 +17670,24 @@ datazone_update_environment <- function(blueprintVersion = NULL, description = N
 #'     awsConsoleLink = list(
 #'       uri = "string"
 #'     )
-#'   )
+#'   ),
+#'   description = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_environment_action(
-#'   description = "string",
 #'   domainIdentifier = "string",
 #'   environmentIdentifier = "string",
 #'   identifier = "string",
-#'   name = "string",
 #'   parameters = list(
 #'     awsConsoleLink = list(
 #'       uri = "string"
 #'     )
-#'   )
+#'   ),
+#'   name = "string",
+#'   description = "string"
 #' )
 #' ```
 #'
@@ -16773,7 +17696,7 @@ datazone_update_environment <- function(blueprintVersion = NULL, description = N
 #' @rdname datazone_update_environment_action
 #'
 #' @aliases datazone_update_environment_action
-datazone_update_environment_action <- function(description = NULL, domainIdentifier, environmentIdentifier, identifier, name = NULL, parameters = NULL) {
+datazone_update_environment_action <- function(domainIdentifier, environmentIdentifier, identifier, parameters = NULL, name = NULL, description = NULL) {
   op <- new_operation(
     name = "UpdateEnvironmentAction",
     http_method = "PATCH",
@@ -16782,7 +17705,7 @@ datazone_update_environment_action <- function(description = NULL, domainIdentif
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_environment_action_input(description = description, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, identifier = identifier, name = name, parameters = parameters)
+  input <- .datazone$update_environment_action_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, identifier = identifier, parameters = parameters, name = name, description = description)
   output <- .datazone$update_environment_action_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -16798,15 +17721,15 @@ datazone_update_environment_action <- function(description = NULL, domainIdentif
 #' Updates an environment blueprint in Amazon DataZone.
 #'
 #' @usage
-#' datazone_update_environment_blueprint(description, domainIdentifier,
-#'   identifier, provisioningProperties, userParameters)
+#' datazone_update_environment_blueprint(domainIdentifier, identifier,
+#'   description, provisioningProperties, userParameters)
 #'
-#' @param description The description to be updated as part of the
-#' [`update_environment_blueprint`][datazone_update_environment_blueprint]
-#' action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which an environment
 #' blueprint is to be updated.
 #' @param identifier &#91;required&#93; The identifier of the environment blueprint to be updated.
+#' @param description The description to be updated as part of the
+#' [`update_environment_blueprint`][datazone_update_environment_blueprint]
+#' action.
 #' @param provisioningProperties The provisioning properties to be updated as part of the
 #' [`update_environment_blueprint`][datazone_update_environment_blueprint]
 #' action.
@@ -16818,38 +17741,38 @@ datazone_update_environment_action <- function(description = NULL, domainIdentif
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   deploymentProperties = list(
-#'     endTimeoutMinutes = 123,
-#'     startTimeoutMinutes = 123
-#'   ),
-#'   description = "string",
-#'   glossaryTerms = list(
-#'     "string"
-#'   ),
 #'   id = "string",
 #'   name = "string",
+#'   description = "string",
 #'   provider = "string",
 #'   provisioningProperties = list(
 #'     cloudFormation = list(
 #'       templateUrl = "string"
 #'     )
 #'   ),
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
+#'   deploymentProperties = list(
+#'     startTimeoutMinutes = 123,
+#'     endTimeoutMinutes = 123
 #'   ),
 #'   userParameters = list(
 #'     list(
-#'       defaultValue = "string",
+#'       keyName = "string",
 #'       description = "string",
 #'       fieldType = "string",
+#'       defaultValue = "string",
 #'       isEditable = TRUE|FALSE,
 #'       isOptional = TRUE|FALSE,
-#'       isUpdateSupported = TRUE|FALSE,
-#'       keyName = "string"
+#'       isUpdateSupported = TRUE|FALSE
 #'     )
+#'   ),
+#'   glossaryTerms = list(
+#'     "string"
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   )
 #' )
 #' ```
@@ -16857,9 +17780,9 @@ datazone_update_environment_action <- function(description = NULL, domainIdentif
 #' @section Request syntax:
 #' ```
 #' svc$update_environment_blueprint(
-#'   description = "string",
 #'   domainIdentifier = "string",
 #'   identifier = "string",
+#'   description = "string",
 #'   provisioningProperties = list(
 #'     cloudFormation = list(
 #'       templateUrl = "string"
@@ -16867,13 +17790,13 @@ datazone_update_environment_action <- function(description = NULL, domainIdentif
 #'   ),
 #'   userParameters = list(
 #'     list(
-#'       defaultValue = "string",
+#'       keyName = "string",
 #'       description = "string",
 #'       fieldType = "string",
+#'       defaultValue = "string",
 #'       isEditable = TRUE|FALSE,
 #'       isOptional = TRUE|FALSE,
-#'       isUpdateSupported = TRUE|FALSE,
-#'       keyName = "string"
+#'       isUpdateSupported = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -16884,7 +17807,7 @@ datazone_update_environment_action <- function(description = NULL, domainIdentif
 #' @rdname datazone_update_environment_blueprint
 #'
 #' @aliases datazone_update_environment_blueprint
-datazone_update_environment_blueprint <- function(description = NULL, domainIdentifier, identifier, provisioningProperties = NULL, userParameters = NULL) {
+datazone_update_environment_blueprint <- function(domainIdentifier, identifier, description = NULL, provisioningProperties = NULL, userParameters = NULL) {
   op <- new_operation(
     name = "UpdateEnvironmentBlueprint",
     http_method = "PATCH",
@@ -16893,7 +17816,7 @@ datazone_update_environment_blueprint <- function(description = NULL, domainIden
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_environment_blueprint_input(description = description, domainIdentifier = domainIdentifier, identifier = identifier, provisioningProperties = provisioningProperties, userParameters = userParameters)
+  input <- .datazone$update_environment_blueprint_input(domainIdentifier = domainIdentifier, identifier = identifier, description = description, provisioningProperties = provisioningProperties, userParameters = userParameters)
   output <- .datazone$update_environment_blueprint_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -16909,54 +17832,54 @@ datazone_update_environment_blueprint <- function(description = NULL, domainIden
 #' Updates the specified environment profile in Amazon DataZone.
 #'
 #' @usage
-#' datazone_update_environment_profile(awsAccountId, awsAccountRegion,
-#'   description, domainIdentifier, identifier, name, userParameters)
+#' datazone_update_environment_profile(domainIdentifier, identifier, name,
+#'   description, userParameters, awsAccountId, awsAccountRegion)
 #'
-#' @param awsAccountId The Amazon Web Services account in which a specified environment profile
-#' is to be udpated.
-#' @param awsAccountRegion The Amazon Web Services Region in which a specified environment profile
-#' is to be updated.
-#' @param description The description to be updated as part of the
-#' [`update_environment_profile`][datazone_update_environment_profile]
-#' action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which an environment
 #' profile is to be updated.
 #' @param identifier &#91;required&#93; The identifier of the environment profile that is to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_environment_profile`][datazone_update_environment_profile]
 #' action.
+#' @param description The description to be updated as part of the
+#' [`update_environment_profile`][datazone_update_environment_profile]
+#' action.
 #' @param userParameters The user parameters to be updated as part of the
 #' [`update_environment_profile`][datazone_update_environment_profile]
 #' action.
+#' @param awsAccountId The Amazon Web Services account in which a specified environment profile
+#' is to be udpated.
+#' @param awsAccountRegion The Amazon Web Services Region in which a specified environment profile
+#' is to be updated.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   domainId = "string",
 #'   awsAccountId = "string",
 #'   awsAccountRegion = "string",
+#'   createdBy = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   description = "string",
-#'   domainId = "string",
-#'   environmentBlueprintId = "string",
-#'   id = "string",
-#'   name = "string",
-#'   projectId = "string",
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   name = "string",
+#'   description = "string",
+#'   environmentBlueprintId = "string",
+#'   projectId = "string",
 #'   userParameters = list(
 #'     list(
-#'       defaultValue = "string",
+#'       keyName = "string",
 #'       description = "string",
 #'       fieldType = "string",
+#'       defaultValue = "string",
 #'       isEditable = TRUE|FALSE,
 #'       isOptional = TRUE|FALSE,
-#'       isUpdateSupported = TRUE|FALSE,
-#'       keyName = "string"
+#'       isUpdateSupported = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -16965,18 +17888,18 @@ datazone_update_environment_blueprint <- function(description = NULL, domainIden
 #' @section Request syntax:
 #' ```
 #' svc$update_environment_profile(
-#'   awsAccountId = "string",
-#'   awsAccountRegion = "string",
-#'   description = "string",
 #'   domainIdentifier = "string",
 #'   identifier = "string",
 #'   name = "string",
+#'   description = "string",
 #'   userParameters = list(
 #'     list(
 #'       name = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   awsAccountId = "string",
+#'   awsAccountRegion = "string"
 #' )
 #' ```
 #'
@@ -16985,7 +17908,7 @@ datazone_update_environment_blueprint <- function(description = NULL, domainIden
 #' @rdname datazone_update_environment_profile
 #'
 #' @aliases datazone_update_environment_profile
-datazone_update_environment_profile <- function(awsAccountId = NULL, awsAccountRegion = NULL, description = NULL, domainIdentifier, identifier, name = NULL, userParameters = NULL) {
+datazone_update_environment_profile <- function(domainIdentifier, identifier, name = NULL, description = NULL, userParameters = NULL, awsAccountId = NULL, awsAccountRegion = NULL) {
   op <- new_operation(
     name = "UpdateEnvironmentProfile",
     http_method = "PATCH",
@@ -16994,7 +17917,7 @@ datazone_update_environment_profile <- function(awsAccountId = NULL, awsAccountR
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_environment_profile_input(awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion, description = description, domainIdentifier = domainIdentifier, identifier = identifier, name = name, userParameters = userParameters)
+  input <- .datazone$update_environment_profile_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, userParameters = userParameters, awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion)
   output <- .datazone$update_environment_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -17022,30 +17945,30 @@ datazone_update_environment_profile <- function(awsAccountId = NULL, awsAccountR
 #' -   The glossary must not be deleted or in a terminal state.
 #'
 #' @usage
-#' datazone_update_glossary(clientToken, description, domainIdentifier,
-#'   identifier, name, status)
+#' datazone_update_glossary(domainIdentifier, identifier, name,
+#'   description, status, clientToken)
 #'
-#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
-#' idempotency of the request.
-#' @param description The description to be updated as part of the
-#' [`update_glossary`][datazone_update_glossary] action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which a business
 #' glossary is to be updated.
 #' @param identifier &#91;required&#93; The identifier of the business glossary to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_glossary`][datazone_update_glossary] action.
+#' @param description The description to be updated as part of the
+#' [`update_glossary`][datazone_update_glossary] action.
 #' @param status The status to be updated as part of the
 #' [`update_glossary`][datazone_update_glossary] action.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   description = "string",
 #'   domainId = "string",
 #'   id = "string",
 #'   name = "string",
 #'   owningProjectId = "string",
+#'   description = "string",
 #'   status = "DISABLED"|"ENABLED",
 #'   usageRestrictions = list(
 #'     "ASSET_GOVERNED_TERMS"
@@ -17056,12 +17979,12 @@ datazone_update_environment_profile <- function(awsAccountId = NULL, awsAccountR
 #' @section Request syntax:
 #' ```
 #' svc$update_glossary(
-#'   clientToken = "string",
-#'   description = "string",
 #'   domainIdentifier = "string",
 #'   identifier = "string",
 #'   name = "string",
-#'   status = "DISABLED"|"ENABLED"
+#'   description = "string",
+#'   status = "DISABLED"|"ENABLED",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -17070,7 +17993,7 @@ datazone_update_environment_profile <- function(awsAccountId = NULL, awsAccountR
 #' @rdname datazone_update_glossary
 #'
 #' @aliases datazone_update_glossary
-datazone_update_glossary <- function(clientToken = NULL, description = NULL, domainIdentifier, identifier, name = NULL, status = NULL) {
+datazone_update_glossary <- function(domainIdentifier, identifier, name = NULL, description = NULL, status = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateGlossary",
     http_method = "PATCH",
@@ -17079,7 +18002,7 @@ datazone_update_glossary <- function(clientToken = NULL, description = NULL, dom
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_glossary_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, identifier = identifier, name = name, status = status)
+  input <- .datazone$update_glossary_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, status = status, clientToken = clientToken)
   output <- .datazone$update_glossary_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -17106,41 +18029,41 @@ datazone_update_glossary <- function(clientToken = NULL, description = NULL, dom
 #'
 #' @usage
 #' datazone_update_glossary_term(domainIdentifier, glossaryIdentifier,
-#'   identifier, longDescription, name, shortDescription, status,
-#'   termRelations)
+#'   identifier, name, shortDescription, longDescription, termRelations,
+#'   status)
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which a business
 #' glossary term is to be updated.
 #' @param glossaryIdentifier The identifier of the business glossary in which a term is to be
 #' updated.
 #' @param identifier &#91;required&#93; The identifier of the business glossary term that is to be updated.
-#' @param longDescription The long description to be updated as part of the
-#' [`update_glossary_term`][datazone_update_glossary_term] action.
 #' @param name The name to be updated as part of the
 #' [`update_glossary_term`][datazone_update_glossary_term] action.
 #' @param shortDescription The short description to be updated as part of the
 #' [`update_glossary_term`][datazone_update_glossary_term] action.
-#' @param status The status to be updated as part of the
+#' @param longDescription The long description to be updated as part of the
 #' [`update_glossary_term`][datazone_update_glossary_term] action.
 #' @param termRelations The term relations to be updated as part of the
+#' [`update_glossary_term`][datazone_update_glossary_term] action.
+#' @param status The status to be updated as part of the
 #' [`update_glossary_term`][datazone_update_glossary_term] action.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
 #'   domainId = "string",
 #'   glossaryId = "string",
-#'   id = "string",
-#'   longDescription = "string",
 #'   name = "string",
-#'   shortDescription = "string",
 #'   status = "ENABLED"|"DISABLED",
+#'   shortDescription = "string",
+#'   longDescription = "string",
 #'   termRelations = list(
-#'     classifies = list(
+#'     isA = list(
 #'       "string"
 #'     ),
-#'     isA = list(
+#'     classifies = list(
 #'       "string"
 #'     )
 #'   ),
@@ -17156,18 +18079,18 @@ datazone_update_glossary <- function(clientToken = NULL, description = NULL, dom
 #'   domainIdentifier = "string",
 #'   glossaryIdentifier = "string",
 #'   identifier = "string",
-#'   longDescription = "string",
 #'   name = "string",
 #'   shortDescription = "string",
-#'   status = "ENABLED"|"DISABLED",
+#'   longDescription = "string",
 #'   termRelations = list(
-#'     classifies = list(
-#'       "string"
-#'     ),
 #'     isA = list(
 #'       "string"
+#'     ),
+#'     classifies = list(
+#'       "string"
 #'     )
-#'   )
+#'   ),
+#'   status = "ENABLED"|"DISABLED"
 #' )
 #' ```
 #'
@@ -17176,7 +18099,7 @@ datazone_update_glossary <- function(clientToken = NULL, description = NULL, dom
 #' @rdname datazone_update_glossary_term
 #'
 #' @aliases datazone_update_glossary_term
-datazone_update_glossary_term <- function(domainIdentifier, glossaryIdentifier = NULL, identifier, longDescription = NULL, name = NULL, shortDescription = NULL, status = NULL, termRelations = NULL) {
+datazone_update_glossary_term <- function(domainIdentifier, glossaryIdentifier = NULL, identifier, name = NULL, shortDescription = NULL, longDescription = NULL, termRelations = NULL, status = NULL) {
   op <- new_operation(
     name = "UpdateGlossaryTerm",
     http_method = "PATCH",
@@ -17185,7 +18108,7 @@ datazone_update_glossary_term <- function(domainIdentifier, glossaryIdentifier =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_glossary_term_input(domainIdentifier = domainIdentifier, glossaryIdentifier = glossaryIdentifier, identifier = identifier, longDescription = longDescription, name = name, shortDescription = shortDescription, status = status, termRelations = termRelations)
+  input <- .datazone$update_glossary_term_input(domainIdentifier = domainIdentifier, glossaryIdentifier = glossaryIdentifier, identifier = identifier, name = name, shortDescription = shortDescription, longDescription = longDescription, termRelations = termRelations, status = status)
   output <- .datazone$update_glossary_term_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -17213,9 +18136,11 @@ datazone_update_glossary_term <- function(domainIdentifier, glossaryIdentifier =
 #' ```
 #' list(
 #'   domainId = "string",
-#'   groupName = "string",
 #'   id = "string",
-#'   status = "ASSIGNED"|"NOT_ASSIGNED"
+#'   status = "ASSIGNED"|"NOT_ASSIGNED",
+#'   groupName = "string",
+#'   rolePrincipalArn = "string",
+#'   rolePrincipalId = "string"
 #' )
 #' ```
 #'
@@ -17258,97 +18183,78 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #' Updates the specified project in Amazon DataZone.
 #'
 #' @usage
-#' datazone_update_project(description, domainIdentifier, domainUnitId,
-#'   environmentDeploymentDetails, glossaryTerms, identifier, name,
-#'   projectProfileVersion, resourceTags, userParameters)
+#' datazone_update_project(domainIdentifier, identifier, name, description,
+#'   resourceTags, glossaryTerms, domainUnitId, environmentDeploymentDetails,
+#'   userParameters, projectProfileVersion)
 #'
-#' @param description The description to be updated as part of the
-#' [`update_project`][datazone_update_project] action.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain where a project is being updated.
-#' @param domainUnitId The ID of the domain unit.
-#' @param environmentDeploymentDetails The environment deployment details of the project.
-#' @param glossaryTerms The glossary terms to be updated as part of the
-#' [`update_project`][datazone_update_project] action.
 #' @param identifier &#91;required&#93; The identifier of the project that is to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_project`][datazone_update_project] action.
+#' @param description The description to be updated as part of the
+#' [`update_project`][datazone_update_project] action.
+#' @param resourceTags The resource tags of the project.
+#' @param glossaryTerms The glossary terms to be updated as part of the
+#' [`update_project`][datazone_update_project] action.
+#' @param domainUnitId The ID of the domain unit.
+#' @param environmentDeploymentDetails The environment deployment details of the project.
+#' @param userParameters The user parameters of the project.
 #' @param projectProfileVersion The project profile version to which the project should be updated. You
 #' can only specify the following string for this parameter: `latest`.
-#' @param resourceTags The resource tags of the project.
-#' @param userParameters The user parameters of the project.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdBy = "string",
-#'   description = "string",
 #'   domainId = "string",
-#'   domainUnitId = "string",
-#'   environmentDeploymentDetails = list(
-#'     environmentFailureReasons = list(
-#'       list(
-#'         list(
-#'           code = "string",
-#'           message = "string"
-#'         )
-#'       )
-#'     ),
-#'     overallDeploymentStatus = "PENDING_DEPLOYMENT"|"IN_PROGRESS"|"SUCCESSFUL"|"FAILED_VALIDATION"|"FAILED_DEPLOYMENT"
-#'   ),
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"MOVING",
 #'   failureReasons = list(
 #'     list(
 #'       code = "string",
 #'       message = "string"
 #'     )
 #'   ),
-#'   glossaryTerms = list(
-#'     "string"
+#'   createdBy = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
-#'   id = "string",
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   name = "string",
-#'   projectProfileId = "string",
-#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"MOVING",
 #'   resourceTags = list(
 #'     list(
 #'       key = "string",
-#'       source = "PROJECT"|"PROJECT_PROFILE",
-#'       value = "string"
+#'       value = "string",
+#'       source = "PROJECT"|"PROJECT_PROFILE"
 #'     )
 #'   ),
+#'   glossaryTerms = list(
+#'     "string"
+#'   ),
+#'   domainUnitId = "string",
+#'   projectProfileId = "string",
 #'   userParameters = list(
 #'     list(
-#'       environmentConfigurationName = "string",
 #'       environmentId = "string",
+#'       environmentResolvedAccount = list(
+#'         awsAccountId = "string",
+#'         regionName = "string",
+#'         sourceAccountPoolId = "string"
+#'       ),
+#'       environmentConfigurationName = "string",
 #'       environmentParameters = list(
 #'         list(
 #'           name = "string",
 #'           value = "string"
 #'         )
-#'       ),
-#'       environmentResolvedAccount = list(
-#'         awsAccountId = "string",
-#'         regionName = "string",
-#'         sourceAccountPoolId = "string"
 #'       )
 #'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_project(
-#'   description = "string",
-#'   domainIdentifier = "string",
-#'   domainUnitId = "string",
+#'   ),
 #'   environmentDeploymentDetails = list(
+#'     overallDeploymentStatus = "PENDING_DEPLOYMENT"|"IN_PROGRESS"|"SUCCESSFUL"|"FAILED_VALIDATION"|"FAILED_DEPLOYMENT",
 #'     environmentFailureReasons = list(
 #'       list(
 #'         list(
@@ -17356,35 +18262,55 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #'           message = "string"
 #'         )
 #'       )
-#'     ),
-#'     overallDeploymentStatus = "PENDING_DEPLOYMENT"|"IN_PROGRESS"|"SUCCESSFUL"|"FAILED_VALIDATION"|"FAILED_DEPLOYMENT"
+#'     )
+#'   ),
+#'   projectCategory = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_project(
+#'   domainIdentifier = "string",
+#'   identifier = "string",
+#'   name = "string",
+#'   description = "string",
+#'   resourceTags = list(
+#'     "string"
 #'   ),
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
-#'   identifier = "string",
-#'   name = "string",
-#'   projectProfileVersion = "string",
-#'   resourceTags = list(
-#'     "string"
+#'   domainUnitId = "string",
+#'   environmentDeploymentDetails = list(
+#'     overallDeploymentStatus = "PENDING_DEPLOYMENT"|"IN_PROGRESS"|"SUCCESSFUL"|"FAILED_VALIDATION"|"FAILED_DEPLOYMENT",
+#'     environmentFailureReasons = list(
+#'       list(
+#'         list(
+#'           code = "string",
+#'           message = "string"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   userParameters = list(
 #'     list(
-#'       environmentConfigurationName = "string",
 #'       environmentId = "string",
+#'       environmentResolvedAccount = list(
+#'         awsAccountId = "string",
+#'         regionName = "string",
+#'         sourceAccountPoolId = "string"
+#'       ),
+#'       environmentConfigurationName = "string",
 #'       environmentParameters = list(
 #'         list(
 #'           name = "string",
 #'           value = "string"
 #'         )
-#'       ),
-#'       environmentResolvedAccount = list(
-#'         awsAccountId = "string",
-#'         regionName = "string",
-#'         sourceAccountPoolId = "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   projectProfileVersion = "string"
 #' )
 #' ```
 #'
@@ -17393,7 +18319,7 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #' @rdname datazone_update_project
 #'
 #' @aliases datazone_update_project
-datazone_update_project <- function(description = NULL, domainIdentifier, domainUnitId = NULL, environmentDeploymentDetails = NULL, glossaryTerms = NULL, identifier, name = NULL, projectProfileVersion = NULL, resourceTags = NULL, userParameters = NULL) {
+datazone_update_project <- function(domainIdentifier, identifier, name = NULL, description = NULL, resourceTags = NULL, glossaryTerms = NULL, domainUnitId = NULL, environmentDeploymentDetails = NULL, userParameters = NULL, projectProfileVersion = NULL) {
   op <- new_operation(
     name = "UpdateProject",
     http_method = "PATCH",
@@ -17402,7 +18328,7 @@ datazone_update_project <- function(description = NULL, domainIdentifier, domain
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_project_input(description = description, domainIdentifier = domainIdentifier, domainUnitId = domainUnitId, environmentDeploymentDetails = environmentDeploymentDetails, glossaryTerms = glossaryTerms, identifier = identifier, name = name, projectProfileVersion = projectProfileVersion, resourceTags = resourceTags, userParameters = userParameters)
+  input <- .datazone$update_project_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, resourceTags = resourceTags, glossaryTerms = glossaryTerms, domainUnitId = domainUnitId, environmentDeploymentDetails = environmentDeploymentDetails, userParameters = userParameters, projectProfileVersion = projectProfileVersion)
   output <- .datazone$update_project_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -17418,146 +18344,146 @@ datazone_update_project <- function(description = NULL, domainIdentifier, domain
 #' Updates a project profile.
 #'
 #' @usage
-#' datazone_update_project_profile(allowCustomProjectResourceTags,
-#'   description, domainIdentifier, domainUnitIdentifier,
-#'   environmentConfigurations, identifier, name, projectResourceTags,
-#'   projectResourceTagsDescription, status)
+#' datazone_update_project_profile(domainIdentifier, identifier, name,
+#'   description, status, projectResourceTags,
+#'   allowCustomProjectResourceTags, projectResourceTagsDescription,
+#'   environmentConfigurations, domainUnitIdentifier)
 #'
-#' @param allowCustomProjectResourceTags Specifies whether custom project resource tags are supported.
-#' @param description The description of a project profile.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain where a project profile is to be updated.
-#' @param domainUnitIdentifier The ID of the domain unit where a project profile is to be updated.
-#' @param environmentConfigurations The environment configurations of a project profile.
 #' @param identifier &#91;required&#93; The ID of a project profile that is to be updated.
 #' @param name The name of a project profile.
+#' @param description The description of a project profile.
+#' @param status The status of a project profile.
 #' @param projectResourceTags The resource tags of the project profile.
+#' @param allowCustomProjectResourceTags Specifies whether custom project resource tags are supported.
 #' @param projectResourceTagsDescription Field viewable through the UI that provides a project user with the
 #' allowed resource tag specifications.
-#' @param status The status of a project profile.
+#' @param environmentConfigurations The environment configurations of a project profile.
+#' @param domainUnitIdentifier The ID of the domain unit where a project profile is to be updated.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   allowCustomProjectResourceTags = TRUE|FALSE,
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdBy = "string",
-#'   description = "string",
 #'   domainId = "string",
-#'   domainUnitId = "string",
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   status = "ENABLED"|"DISABLED",
+#'   projectResourceTags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string",
+#'       isValueEditable = TRUE|FALSE
+#'     )
+#'   ),
+#'   allowCustomProjectResourceTags = TRUE|FALSE,
+#'   projectResourceTagsDescription = "string",
 #'   environmentConfigurations = list(
 #'     list(
-#'       accountPools = list(
-#'         "string"
+#'       name = "string",
+#'       id = "string",
+#'       environmentBlueprintId = "string",
+#'       description = "string",
+#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
+#'       configurationParameters = list(
+#'         ssmPath = "string",
+#'         parameterOverrides = list(
+#'           list(
+#'             name = "string",
+#'             value = "string",
+#'             isEditable = TRUE|FALSE
+#'           )
+#'         ),
+#'         resolvedParameters = list(
+#'           list(
+#'             name = "string",
+#'             value = "string",
+#'             isEditable = TRUE|FALSE
+#'           )
+#'         )
 #'       ),
 #'       awsAccount = list(
 #'         awsAccountId = "string",
 #'         awsAccountIdPath = "string"
 #'       ),
+#'       accountPools = list(
+#'         "string"
+#'       ),
 #'       awsRegion = list(
 #'         regionName = "string",
 #'         regionNamePath = "string"
 #'       ),
-#'       configurationParameters = list(
-#'         parameterOverrides = list(
-#'           list(
-#'             isEditable = TRUE|FALSE,
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         resolvedParameters = list(
-#'           list(
-#'             isEditable = TRUE|FALSE,
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         ssmPath = "string"
-#'       ),
-#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
-#'       deploymentOrder = 123,
-#'       description = "string",
-#'       environmentBlueprintId = "string",
-#'       id = "string",
-#'       name = "string"
+#'       deploymentOrder = 123
 #'     )
 #'   ),
-#'   id = "string",
+#'   createdBy = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   name = "string",
-#'   projectResourceTags = list(
-#'     list(
-#'       isValueEditable = TRUE|FALSE,
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   projectResourceTagsDescription = "string",
-#'   status = "ENABLED"|"DISABLED"
+#'   domainUnitId = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_project_profile(
-#'   allowCustomProjectResourceTags = TRUE|FALSE,
-#'   description = "string",
 #'   domainIdentifier = "string",
-#'   domainUnitIdentifier = "string",
+#'   identifier = "string",
+#'   name = "string",
+#'   description = "string",
+#'   status = "ENABLED"|"DISABLED",
+#'   projectResourceTags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string",
+#'       isValueEditable = TRUE|FALSE
+#'     )
+#'   ),
+#'   allowCustomProjectResourceTags = TRUE|FALSE,
+#'   projectResourceTagsDescription = "string",
 #'   environmentConfigurations = list(
 #'     list(
-#'       accountPools = list(
-#'         "string"
+#'       name = "string",
+#'       id = "string",
+#'       environmentBlueprintId = "string",
+#'       description = "string",
+#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
+#'       configurationParameters = list(
+#'         ssmPath = "string",
+#'         parameterOverrides = list(
+#'           list(
+#'             name = "string",
+#'             value = "string",
+#'             isEditable = TRUE|FALSE
+#'           )
+#'         ),
+#'         resolvedParameters = list(
+#'           list(
+#'             name = "string",
+#'             value = "string",
+#'             isEditable = TRUE|FALSE
+#'           )
+#'         )
 #'       ),
 #'       awsAccount = list(
 #'         awsAccountId = "string",
 #'         awsAccountIdPath = "string"
 #'       ),
+#'       accountPools = list(
+#'         "string"
+#'       ),
 #'       awsRegion = list(
 #'         regionName = "string",
 #'         regionNamePath = "string"
 #'       ),
-#'       configurationParameters = list(
-#'         parameterOverrides = list(
-#'           list(
-#'             isEditable = TRUE|FALSE,
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         resolvedParameters = list(
-#'           list(
-#'             isEditable = TRUE|FALSE,
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         ssmPath = "string"
-#'       ),
-#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
-#'       deploymentOrder = 123,
-#'       description = "string",
-#'       environmentBlueprintId = "string",
-#'       id = "string",
-#'       name = "string"
+#'       deploymentOrder = 123
 #'     )
 #'   ),
-#'   identifier = "string",
-#'   name = "string",
-#'   projectResourceTags = list(
-#'     list(
-#'       isValueEditable = TRUE|FALSE,
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   projectResourceTagsDescription = "string",
-#'   status = "ENABLED"|"DISABLED"
+#'   domainUnitIdentifier = "string"
 #' )
 #' ```
 #'
@@ -17566,7 +18492,7 @@ datazone_update_project <- function(description = NULL, domainIdentifier, domain
 #' @rdname datazone_update_project_profile
 #'
 #' @aliases datazone_update_project_profile
-datazone_update_project_profile <- function(allowCustomProjectResourceTags = NULL, description = NULL, domainIdentifier, domainUnitIdentifier = NULL, environmentConfigurations = NULL, identifier, name = NULL, projectResourceTags = NULL, projectResourceTagsDescription = NULL, status = NULL) {
+datazone_update_project_profile <- function(domainIdentifier, identifier, name = NULL, description = NULL, status = NULL, projectResourceTags = NULL, allowCustomProjectResourceTags = NULL, projectResourceTagsDescription = NULL, environmentConfigurations = NULL, domainUnitIdentifier = NULL) {
   op <- new_operation(
     name = "UpdateProjectProfile",
     http_method = "PATCH",
@@ -17575,7 +18501,7 @@ datazone_update_project_profile <- function(allowCustomProjectResourceTags = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_project_profile_input(allowCustomProjectResourceTags = allowCustomProjectResourceTags, description = description, domainIdentifier = domainIdentifier, domainUnitIdentifier = domainUnitIdentifier, environmentConfigurations = environmentConfigurations, identifier = identifier, name = name, projectResourceTags = projectResourceTags, projectResourceTagsDescription = projectResourceTagsDescription, status = status)
+  input <- .datazone$update_project_profile_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, status = status, projectResourceTags = projectResourceTags, allowCustomProjectResourceTags = allowCustomProjectResourceTags, projectResourceTagsDescription = projectResourceTagsDescription, environmentConfigurations = environmentConfigurations, domainUnitIdentifier = domainUnitIdentifier)
   output <- .datazone$update_project_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -17591,14 +18517,14 @@ datazone_update_project_profile <- function(allowCustomProjectResourceTags = NUL
 #' Updates the owner of the root domain unit.
 #'
 #' @usage
-#' datazone_update_root_domain_unit_owner(clientToken, currentOwner,
-#'   domainIdentifier, newOwner)
+#' datazone_update_root_domain_unit_owner(domainIdentifier, currentOwner,
+#'   newOwner, clientToken)
 #'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where the root domain unit owner is to be updated.
+#' @param currentOwner &#91;required&#93; The current owner of the root domain unit.
+#' @param newOwner &#91;required&#93; The new owner of the root domain unit.
 #' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
 #' request. This field is automatically populated if not provided.
-#' @param currentOwner &#91;required&#93; The current owner of the root domain unit.
-#' @param domainIdentifier &#91;required&#93; The ID of the domain where the root domain unit owner is to be updated.
-#' @param newOwner &#91;required&#93; The new owner of the root domain unit.
 #'
 #' @return
 #' An empty list.
@@ -17606,10 +18532,10 @@ datazone_update_project_profile <- function(allowCustomProjectResourceTags = NUL
 #' @section Request syntax:
 #' ```
 #' svc$update_root_domain_unit_owner(
-#'   clientToken = "string",
-#'   currentOwner = "string",
 #'   domainIdentifier = "string",
-#'   newOwner = "string"
+#'   currentOwner = "string",
+#'   newOwner = "string",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -17618,7 +18544,7 @@ datazone_update_project_profile <- function(allowCustomProjectResourceTags = NUL
 #' @rdname datazone_update_root_domain_unit_owner
 #'
 #' @aliases datazone_update_root_domain_unit_owner
-datazone_update_root_domain_unit_owner <- function(clientToken = NULL, currentOwner, domainIdentifier, newOwner) {
+datazone_update_root_domain_unit_owner <- function(domainIdentifier, currentOwner, newOwner, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateRootDomainUnitOwner",
     http_method = "PATCH",
@@ -17627,7 +18553,7 @@ datazone_update_root_domain_unit_owner <- function(clientToken = NULL, currentOw
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_root_domain_unit_owner_input(clientToken = clientToken, currentOwner = currentOwner, domainIdentifier = domainIdentifier, newOwner = newOwner)
+  input <- .datazone$update_root_domain_unit_owner_input(domainIdentifier = domainIdentifier, currentOwner = currentOwner, newOwner = newOwner, clientToken = clientToken)
   output <- .datazone$update_root_domain_unit_owner_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -17651,97 +18577,32 @@ datazone_update_root_domain_unit_owner <- function(clientToken = NULL, currentOw
 #' organizational standards.
 #'
 #' @usage
-#' datazone_update_rule(description, detail, domainIdentifier, identifier,
-#'   includeChildDomainUnits, name, scope)
+#' datazone_update_rule(domainIdentifier, identifier, name, description,
+#'   scope, detail, includeChildDomainUnits)
 #'
-#' @param description The description of the rule.
-#' @param detail The detail of the rule.
 #' @param domainIdentifier &#91;required&#93; The ID of the domain in which a rule is to be updated.
 #' @param identifier &#91;required&#93; The ID of the rule that is to be updated
-#' @param includeChildDomainUnits Specifies whether to update this rule in the child domain units.
 #' @param name The name of the rule.
+#' @param description The description of the rule.
 #' @param scope The scrope of the rule.
+#' @param detail The detail of the rule.
+#' @param includeChildDomainUnits Specifies whether to update this rule in the child domain units.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdBy = "string",
-#'   description = "string",
-#'   detail = list(
-#'     glossaryTermEnforcementDetail = list(
-#'       requiredGlossaryTermIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     metadataFormEnforcementDetail = list(
-#'       requiredMetadataForms = list(
-#'         list(
-#'           typeIdentifier = "string",
-#'           typeRevision = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
 #'   identifier = "string",
-#'   lastUpdatedBy = "string",
-#'   name = "string",
 #'   revision = "string",
+#'   name = "string",
 #'   ruleType = "METADATA_FORM_ENFORCEMENT"|"GLOSSARY_TERM_ENFORCEMENT",
-#'   scope = list(
-#'     assetType = list(
-#'       selectionMode = "ALL"|"SPECIFIC",
-#'       specificAssetTypes = list(
-#'         "string"
-#'       )
-#'     ),
-#'     dataProduct = TRUE|FALSE,
-#'     project = list(
-#'       selectionMode = "ALL"|"SPECIFIC",
-#'       specificProjects = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
 #'   target = list(
 #'     domainUnitTarget = list(
 #'       domainUnitId = "string",
 #'       includeChildDomainUnits = TRUE|FALSE
 #'     )
 #'   ),
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_rule(
-#'   description = "string",
-#'   detail = list(
-#'     glossaryTermEnforcementDetail = list(
-#'       requiredGlossaryTermIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     metadataFormEnforcementDetail = list(
-#'       requiredMetadataForms = list(
-#'         list(
-#'           typeIdentifier = "string",
-#'           typeRevision = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   domainIdentifier = "string",
-#'   identifier = "string",
-#'   includeChildDomainUnits = TRUE|FALSE,
-#'   name = "string",
+#'   action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
 #'   scope = list(
 #'     assetType = list(
 #'       selectionMode = "ALL"|"SPECIFIC",
@@ -17756,7 +18617,72 @@ datazone_update_root_domain_unit_owner <- function(clientToken = NULL, currentOw
 #'         "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   detail = list(
+#'     metadataFormEnforcementDetail = list(
+#'       requiredMetadataForms = list(
+#'         list(
+#'           typeIdentifier = "string",
+#'           typeRevision = "string"
+#'         )
+#'       )
+#'     ),
+#'     glossaryTermEnforcementDetail = list(
+#'       requiredGlossaryTermIds = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   description = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   lastUpdatedBy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_rule(
+#'   domainIdentifier = "string",
+#'   identifier = "string",
+#'   name = "string",
+#'   description = "string",
+#'   scope = list(
+#'     assetType = list(
+#'       selectionMode = "ALL"|"SPECIFIC",
+#'       specificAssetTypes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     dataProduct = TRUE|FALSE,
+#'     project = list(
+#'       selectionMode = "ALL"|"SPECIFIC",
+#'       specificProjects = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   detail = list(
+#'     metadataFormEnforcementDetail = list(
+#'       requiredMetadataForms = list(
+#'         list(
+#'           typeIdentifier = "string",
+#'           typeRevision = "string"
+#'         )
+#'       )
+#'     ),
+#'     glossaryTermEnforcementDetail = list(
+#'       requiredGlossaryTermIds = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   includeChildDomainUnits = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -17765,7 +18691,7 @@ datazone_update_root_domain_unit_owner <- function(clientToken = NULL, currentOw
 #' @rdname datazone_update_rule
 #'
 #' @aliases datazone_update_rule
-datazone_update_rule <- function(description = NULL, detail = NULL, domainIdentifier, identifier, includeChildDomainUnits = NULL, name = NULL, scope = NULL) {
+datazone_update_rule <- function(domainIdentifier, identifier, name = NULL, description = NULL, scope = NULL, detail = NULL, includeChildDomainUnits = NULL) {
   op <- new_operation(
     name = "UpdateRule",
     http_method = "PATCH",
@@ -17774,7 +18700,7 @@ datazone_update_rule <- function(description = NULL, detail = NULL, domainIdenti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_rule_input(description = description, detail = detail, domainIdentifier = domainIdentifier, identifier = identifier, includeChildDomainUnits = includeChildDomainUnits, name = name, scope = scope)
+  input <- .datazone$update_rule_input(domainIdentifier = domainIdentifier, identifier = identifier, name = name, description = description, scope = scope, detail = detail, includeChildDomainUnits = includeChildDomainUnits)
   output <- .datazone$update_rule_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -17792,20 +18718,20 @@ datazone_update_rule <- function(description = NULL, detail = NULL, domainIdenti
 #' DataZone.
 #'
 #' @usage
-#' datazone_update_subscription_grant_status(assetIdentifier,
-#'   domainIdentifier, failureCause, identifier, status, targetName)
+#' datazone_update_subscription_grant_status(domainIdentifier, identifier,
+#'   assetIdentifier, status, failureCause, targetName)
 #'
-#' @param assetIdentifier &#91;required&#93; The identifier of the asset the subscription grant status of which is to
-#' be updated.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which a subscription
 #' grant status is to be updated.
-#' @param failureCause Specifies the error message that is returned if the operation cannot be
-#' successfully completed.
 #' @param identifier &#91;required&#93; The identifier of the subscription grant the status of which is to be
 #' updated.
+#' @param assetIdentifier &#91;required&#93; The identifier of the asset the subscription grant status of which is to
+#' be updated.
 #' @param status &#91;required&#93; The status to be updated as part of the
 #' [`update_subscription_grant_status`][datazone_update_subscription_grant_status]
 #' action.
+#' @param failureCause Specifies the error message that is returned if the operation cannot be
+#' successfully completed.
 #' @param targetName The target name to be updated as part of the
 #' [`update_subscription_grant_status`][datazone_update_subscription_grant_status]
 #' action.
@@ -17814,69 +18740,69 @@ datazone_update_rule <- function(description = NULL, detail = NULL, domainIdenti
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   assets = list(
-#'     list(
-#'       assetId = "string",
-#'       assetRevision = "string",
-#'       assetScope = list(
-#'         assetId = "string",
-#'         errorMessage = "string",
-#'         filterIds = list(
-#'           "string"
-#'         ),
-#'         status = "string"
-#'       ),
-#'       failureCause = list(
-#'         message = "string"
-#'       ),
-#'       failureTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       grantedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       permissions = list(
-#'         s3 = list(
-#'           "READ"|"WRITE"
-#'         )
-#'       ),
-#'       status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"REVOKED"|"GRANT_FAILED"|"REVOKE_FAILED",
-#'       targetName = "string"
-#'     )
-#'   ),
+#'   id = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
+#'   domainId = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   domainId = "string",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   environmentId = "string",
+#'   subscriptionTargetId = "string",
 #'   grantedEntity = list(
 #'     listing = list(
 #'       id = "string",
 #'       revision = "string"
 #'     )
 #'   ),
-#'   id = "string",
 #'   status = "PENDING"|"IN_PROGRESS"|"GRANT_FAILED"|"REVOKE_FAILED"|"GRANT_AND_REVOKE_FAILED"|"COMPLETED"|"INACCESSIBLE",
-#'   subscriptionId = "string",
-#'   subscriptionTargetId = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
+#'   assets = list(
+#'     list(
+#'       assetId = "string",
+#'       assetRevision = "string",
+#'       status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"REVOKED"|"GRANT_FAILED"|"REVOKE_FAILED",
+#'       targetName = "string",
+#'       failureCause = list(
+#'         message = "string"
+#'       ),
+#'       grantedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       assetScope = list(
+#'         assetId = "string",
+#'         filterIds = list(
+#'           "string"
+#'         ),
+#'         status = "string",
+#'         errorMessage = "string"
+#'       ),
+#'       permissions = list(
+#'         s3 = list(
+#'           "READ"|"WRITE"
+#'         )
+#'       )
+#'     )
 #'   ),
-#'   updatedBy = "string"
+#'   subscriptionId = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_subscription_grant_status(
-#'   assetIdentifier = "string",
 #'   domainIdentifier = "string",
+#'   identifier = "string",
+#'   assetIdentifier = "string",
+#'   status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"REVOKED"|"GRANT_FAILED"|"REVOKE_FAILED",
 #'   failureCause = list(
 #'     message = "string"
 #'   ),
-#'   identifier = "string",
-#'   status = "GRANT_PENDING"|"REVOKE_PENDING"|"GRANT_IN_PROGRESS"|"REVOKE_IN_PROGRESS"|"GRANTED"|"REVOKED"|"GRANT_FAILED"|"REVOKE_FAILED",
 #'   targetName = "string"
 #' )
 #' ```
@@ -17886,7 +18812,7 @@ datazone_update_rule <- function(description = NULL, detail = NULL, domainIdenti
 #' @rdname datazone_update_subscription_grant_status
 #'
 #' @aliases datazone_update_subscription_grant_status
-datazone_update_subscription_grant_status <- function(assetIdentifier, domainIdentifier, failureCause = NULL, identifier, status, targetName = NULL) {
+datazone_update_subscription_grant_status <- function(domainIdentifier, identifier, assetIdentifier, status, failureCause = NULL, targetName = NULL) {
   op <- new_operation(
     name = "UpdateSubscriptionGrantStatus",
     http_method = "PATCH",
@@ -17895,7 +18821,7 @@ datazone_update_subscription_grant_status <- function(assetIdentifier, domainIde
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_subscription_grant_status_input(assetIdentifier = assetIdentifier, domainIdentifier = domainIdentifier, failureCause = failureCause, identifier = identifier, status = status, targetName = targetName)
+  input <- .datazone$update_subscription_grant_status_input(domainIdentifier = domainIdentifier, identifier = identifier, assetIdentifier = assetIdentifier, status = status, failureCause = failureCause, targetName = targetName)
   output <- .datazone$update_subscription_grant_status_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -17925,39 +18851,57 @@ datazone_update_subscription_grant_status <- function(assetIdentifier, domainIde
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   id = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
+#'   domainId = "string",
+#'   status = "PENDING"|"ACCEPTED"|"REJECTED",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   decisionComment = "string",
-#'   domainId = "string",
-#'   existingSubscriptionId = "string",
-#'   id = "string",
-#'   metadataForms = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string",
-#'       typeName = "string",
-#'       typeRevision = "string"
-#'     )
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
 #'   requestReason = "string",
-#'   reviewerId = "string",
-#'   status = "PENDING"|"ACCEPTED"|"REJECTED",
+#'   subscribedPrincipals = list(
+#'     list(
+#'       project = list(
+#'         id = "string",
+#'         name = "string"
+#'       ),
+#'       user = list(
+#'         id = "string",
+#'         details = list(
+#'           iam = list(
+#'             arn = "string",
+#'             principalId = "string",
+#'             sessionName = "string",
+#'             groupProfileId = "string"
+#'           ),
+#'           sso = list(
+#'             username = "string",
+#'             firstName = "string",
+#'             lastName = "string"
+#'           )
+#'         )
+#'       ),
+#'       group = list(
+#'         id = "string",
+#'         name = "string"
+#'       ),
+#'       iam = list(
+#'         principalArn = "string"
+#'       )
+#'     )
+#'   ),
 #'   subscribedListings = list(
 #'     list(
-#'       description = "string",
 #'       id = "string",
+#'       revision = "string",
+#'       name = "string",
+#'       description = "string",
 #'       item = list(
 #'         assetListing = list(
-#'           assetScope = list(
-#'             assetId = "string",
-#'             errorMessage = "string",
-#'             filterIds = list(
-#'               "string"
-#'             ),
-#'             status = "string"
-#'           ),
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           entityType = "string",
@@ -17968,6 +18912,14 @@ datazone_update_subscription_grant_status <- function(assetIdentifier, domainIde
 #'               shortDescription = "string"
 #'             )
 #'           ),
+#'           assetScope = list(
+#'             assetId = "string",
+#'             filterIds = list(
+#'               "string"
+#'             ),
+#'             status = "string",
+#'             errorMessage = "string"
+#'           ),
 #'           permissions = list(
 #'             s3 = list(
 #'               "READ"|"WRITE"
@@ -17975,14 +18927,6 @@ datazone_update_subscription_grant_status <- function(assetIdentifier, domainIde
 #'           )
 #'         ),
 #'         productListing = list(
-#'           assetListings = list(
-#'             list(
-#'               entityId = "string",
-#'               entityRevision = "string",
-#'               entityType = "string"
-#'             )
-#'           ),
-#'           description = "string",
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           glossaryTerms = list(
@@ -17991,45 +18935,32 @@ datazone_update_subscription_grant_status <- function(assetIdentifier, domainIde
 #'               shortDescription = "string"
 #'             )
 #'           ),
-#'           name = "string"
+#'           name = "string",
+#'           description = "string",
+#'           assetListings = list(
+#'             list(
+#'               entityId = "string",
+#'               entityRevision = "string",
+#'               entityType = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
-#'       name = "string",
 #'       ownerProjectId = "string",
-#'       ownerProjectName = "string",
-#'       revision = "string"
+#'       ownerProjectName = "string"
 #'     )
 #'   ),
-#'   subscribedPrincipals = list(
+#'   reviewerId = "string",
+#'   decisionComment = "string",
+#'   existingSubscriptionId = "string",
+#'   metadataForms = list(
 #'     list(
-#'       group = list(
-#'         id = "string",
-#'         name = "string"
-#'       ),
-#'       project = list(
-#'         id = "string",
-#'         name = "string"
-#'       ),
-#'       user = list(
-#'         details = list(
-#'           iam = list(
-#'             arn = "string",
-#'             principalId = "string"
-#'           ),
-#'           sso = list(
-#'             firstName = "string",
-#'             lastName = "string",
-#'             username = "string"
-#'           )
-#'         ),
-#'         id = "string"
-#'       )
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string",
+#'       content = "string"
 #'     )
-#'   ),
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   updatedBy = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -18072,90 +19003,96 @@ datazone_update_subscription_request <- function(domainIdentifier, identifier, r
 #' Updates the specified subscription target in Amazon DataZone.
 #'
 #' @usage
-#' datazone_update_subscription_target(applicableAssetTypes,
-#'   authorizedPrincipals, domainIdentifier, environmentIdentifier,
-#'   identifier, manageAccessRole, name, provider, subscriptionTargetConfig)
+#' datazone_update_subscription_target(domainIdentifier,
+#'   environmentIdentifier, identifier, name, authorizedPrincipals,
+#'   applicableAssetTypes, subscriptionTargetConfig, manageAccessRole,
+#'   provider, subscriptionGrantCreationMode)
 #'
-#' @param applicableAssetTypes The applicable asset types to be updated as part of the
-#' [`update_subscription_target`][datazone_update_subscription_target]
-#' action.
-#' @param authorizedPrincipals The authorized principals to be updated as part of the
-#' [`update_subscription_target`][datazone_update_subscription_target]
-#' action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which a subscription
 #' target is to be updated.
 #' @param environmentIdentifier &#91;required&#93; The identifier of the environment in which a subscription target is to
 #' be updated.
 #' @param identifier &#91;required&#93; Identifier of the subscription target that is to be updated.
-#' @param manageAccessRole The manage access role to be updated as part of the
-#' [`update_subscription_target`][datazone_update_subscription_target]
-#' action.
 #' @param name The name to be updated as part of the
 #' [`update_subscription_target`][datazone_update_subscription_target]
 #' action.
-#' @param provider The provider to be updated as part of the
+#' @param authorizedPrincipals The authorized principals to be updated as part of the
+#' [`update_subscription_target`][datazone_update_subscription_target]
+#' action.
+#' @param applicableAssetTypes The applicable asset types to be updated as part of the
 #' [`update_subscription_target`][datazone_update_subscription_target]
 #' action.
 #' @param subscriptionTargetConfig The configuration to be updated as part of the
 #' [`update_subscription_target`][datazone_update_subscription_target]
 #' action.
+#' @param manageAccessRole The manage access role to be updated as part of the
+#' [`update_subscription_target`][datazone_update_subscription_target]
+#' action.
+#' @param provider The provider to be updated as part of the
+#' [`update_subscription_target`][datazone_update_subscription_target]
+#' action.
+#' @param subscriptionGrantCreationMode Determines the subscription grant creation mode for this target,
+#' defining if grants are auto-created upon subscription approval or
+#' managed manually.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   applicableAssetTypes = list(
-#'     "string"
-#'   ),
+#'   id = "string",
 #'   authorizedPrincipals = list(
 #'     "string"
 #'   ),
+#'   domainId = "string",
+#'   projectId = "string",
+#'   environmentId = "string",
+#'   name = "string",
+#'   type = "string",
+#'   createdBy = "string",
+#'   updatedBy = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   createdBy = "string",
-#'   domainId = "string",
-#'   environmentId = "string",
-#'   id = "string",
-#'   manageAccessRole = "string",
-#'   name = "string",
-#'   projectId = "string",
-#'   provider = "string",
-#'   subscriptionTargetConfig = list(
-#'     list(
-#'       content = "string",
-#'       formName = "string"
-#'     )
-#'   ),
-#'   type = "string",
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   updatedBy = "string"
+#'   manageAccessRole = "string",
+#'   applicableAssetTypes = list(
+#'     "string"
+#'   ),
+#'   subscriptionTargetConfig = list(
+#'     list(
+#'       formName = "string",
+#'       content = "string"
+#'     )
+#'   ),
+#'   provider = "string",
+#'   subscriptionGrantCreationMode = "AUTOMATIC"|"MANUAL"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_subscription_target(
-#'   applicableAssetTypes = list(
-#'     "string"
-#'   ),
-#'   authorizedPrincipals = list(
-#'     "string"
-#'   ),
 #'   domainIdentifier = "string",
 #'   environmentIdentifier = "string",
 #'   identifier = "string",
-#'   manageAccessRole = "string",
 #'   name = "string",
-#'   provider = "string",
+#'   authorizedPrincipals = list(
+#'     "string"
+#'   ),
+#'   applicableAssetTypes = list(
+#'     "string"
+#'   ),
 #'   subscriptionTargetConfig = list(
 #'     list(
-#'       content = "string",
-#'       formName = "string"
+#'       formName = "string",
+#'       content = "string"
 #'     )
-#'   )
+#'   ),
+#'   manageAccessRole = "string",
+#'   provider = "string",
+#'   subscriptionGrantCreationMode = "AUTOMATIC"|"MANUAL"
 #' )
 #' ```
 #'
@@ -18164,7 +19101,7 @@ datazone_update_subscription_request <- function(domainIdentifier, identifier, r
 #' @rdname datazone_update_subscription_target
 #'
 #' @aliases datazone_update_subscription_target
-datazone_update_subscription_target <- function(applicableAssetTypes = NULL, authorizedPrincipals = NULL, domainIdentifier, environmentIdentifier, identifier, manageAccessRole = NULL, name = NULL, provider = NULL, subscriptionTargetConfig = NULL) {
+datazone_update_subscription_target <- function(domainIdentifier, environmentIdentifier, identifier, name = NULL, authorizedPrincipals = NULL, applicableAssetTypes = NULL, subscriptionTargetConfig = NULL, manageAccessRole = NULL, provider = NULL, subscriptionGrantCreationMode = NULL) {
   op <- new_operation(
     name = "UpdateSubscriptionTarget",
     http_method = "PATCH",
@@ -18173,7 +19110,7 @@ datazone_update_subscription_target <- function(applicableAssetTypes = NULL, aut
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_subscription_target_input(applicableAssetTypes = applicableAssetTypes, authorizedPrincipals = authorizedPrincipals, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, identifier = identifier, manageAccessRole = manageAccessRole, name = name, provider = provider, subscriptionTargetConfig = subscriptionTargetConfig)
+  input <- .datazone$update_subscription_target_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, identifier = identifier, name = name, authorizedPrincipals = authorizedPrincipals, applicableAssetTypes = applicableAssetTypes, subscriptionTargetConfig = subscriptionTargetConfig, manageAccessRole = manageAccessRole, provider = provider, subscriptionGrantCreationMode = subscriptionGrantCreationMode)
   output <- .datazone$update_subscription_target_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -18189,34 +19126,37 @@ datazone_update_subscription_target <- function(applicableAssetTypes = NULL, aut
 #' Updates the specified user profile in Amazon DataZone.
 #'
 #' @usage
-#' datazone_update_user_profile(domainIdentifier, status, type,
-#'   userIdentifier)
+#' datazone_update_user_profile(domainIdentifier, userIdentifier, type,
+#'   status, sessionName)
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which a user profile is
 #' updated.
-#' @param status &#91;required&#93; The status of the user profile that are to be updated.
-#' @param type The type of the user profile that are to be updated.
 #' @param userIdentifier &#91;required&#93; The identifier of the user whose user profile is to be updated.
+#' @param type The type of the user profile that are to be updated.
+#' @param status &#91;required&#93; The status of the user profile that are to be updated.
+#' @param sessionName The session name for IAM role sessions.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   domainId = "string",
+#'   id = "string",
+#'   type = "IAM"|"SSO",
+#'   status = "ASSIGNED"|"NOT_ASSIGNED"|"ACTIVATED"|"DEACTIVATED",
 #'   details = list(
 #'     iam = list(
 #'       arn = "string",
-#'       principalId = "string"
+#'       principalId = "string",
+#'       sessionName = "string",
+#'       groupProfileId = "string"
 #'     ),
 #'     sso = list(
+#'       username = "string",
 #'       firstName = "string",
-#'       lastName = "string",
-#'       username = "string"
+#'       lastName = "string"
 #'     )
-#'   ),
-#'   domainId = "string",
-#'   id = "string",
-#'   status = "ASSIGNED"|"NOT_ASSIGNED"|"ACTIVATED"|"DEACTIVATED",
-#'   type = "IAM"|"SSO"
+#'   )
 #' )
 #' ```
 #'
@@ -18224,9 +19164,10 @@ datazone_update_subscription_target <- function(applicableAssetTypes = NULL, aut
 #' ```
 #' svc$update_user_profile(
 #'   domainIdentifier = "string",
-#'   status = "ASSIGNED"|"NOT_ASSIGNED"|"ACTIVATED"|"DEACTIVATED",
+#'   userIdentifier = "string",
 #'   type = "IAM"|"SSO",
-#'   userIdentifier = "string"
+#'   status = "ASSIGNED"|"NOT_ASSIGNED"|"ACTIVATED"|"DEACTIVATED",
+#'   sessionName = "string"
 #' )
 #' ```
 #'
@@ -18235,7 +19176,7 @@ datazone_update_subscription_target <- function(applicableAssetTypes = NULL, aut
 #' @rdname datazone_update_user_profile
 #'
 #' @aliases datazone_update_user_profile
-datazone_update_user_profile <- function(domainIdentifier, status, type = NULL, userIdentifier) {
+datazone_update_user_profile <- function(domainIdentifier, userIdentifier, type = NULL, status, sessionName = NULL) {
   op <- new_operation(
     name = "UpdateUserProfile",
     http_method = "PUT",
@@ -18244,7 +19185,7 @@ datazone_update_user_profile <- function(domainIdentifier, status, type = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_user_profile_input(domainIdentifier = domainIdentifier, status = status, type = type, userIdentifier = userIdentifier)
+  input <- .datazone$update_user_profile_input(domainIdentifier = domainIdentifier, userIdentifier = userIdentifier, type = type, status = status, sessionName = sessionName)
   output <- .datazone$update_user_profile_output()
   config <- get_config()
   svc <- .datazone$service(config, op)

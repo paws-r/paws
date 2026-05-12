@@ -11,13 +11,13 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_associate_source_network_stack/](https://www.paws-r-sdk.com/docs/drs_associate_source_network_stack/) for full documentation.
 #'
-#' @param cfnStackName &#91;required&#93; CloudFormation template to associate with a Source Network.
 #' @param sourceNetworkID &#91;required&#93; The Source Network ID to associate with CloudFormation template.
+#' @param cfnStackName &#91;required&#93; CloudFormation template to associate with a Source Network.
 #'
 #' @keywords internal
 #'
 #' @rdname drs_associate_source_network_stack
-drs_associate_source_network_stack <- function(cfnStackName, sourceNetworkID) {
+drs_associate_source_network_stack <- function(sourceNetworkID, cfnStackName) {
   op <- new_operation(
     name = "AssociateSourceNetworkStack",
     http_method = "POST",
@@ -26,7 +26,7 @@ drs_associate_source_network_stack <- function(cfnStackName, sourceNetworkID) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .drs$associate_source_network_stack_input(cfnStackName = cfnStackName, sourceNetworkID = sourceNetworkID)
+  input <- .drs$associate_source_network_stack_input(sourceNetworkID = sourceNetworkID, cfnStackName = cfnStackName)
   output <- .drs$associate_source_network_stack_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -77,23 +77,23 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_create_launch_configuration_template/](https://www.paws-r-sdk.com/docs/drs_create_launch_configuration_template/) for full documentation.
 #'
+#' @param tags Request to associate tags during creation of a Launch Configuration
+#' Template.
+#' @param launchDisposition Launch disposition.
+#' @param targetInstanceTypeRightSizingMethod Target instance type right-sizing method.
 #' @param copyPrivateIp Copy private IP.
 #' @param copyTags Copy tags.
+#' @param licensing Licensing.
 #' @param exportBucketArn S3 bucket ARN to export Source Network templates.
-#' @param launchDisposition Launch disposition.
+#' @param postLaunchEnabled Whether we want to activate post-launch actions.
 #' @param launchIntoSourceInstance DRS will set the 'launch into instance ID' of any source server when
 #' performing a drill, recovery or failback to the previous region or
 #' availability zone, using the instance ID of the source instance.
-#' @param licensing Licensing.
-#' @param postLaunchEnabled Whether we want to activate post-launch actions.
-#' @param tags Request to associate tags during creation of a Launch Configuration
-#' Template.
-#' @param targetInstanceTypeRightSizingMethod Target instance type right-sizing method.
 #'
 #' @keywords internal
 #'
 #' @rdname drs_create_launch_configuration_template
-drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, exportBucketArn = NULL, launchDisposition = NULL, launchIntoSourceInstance = NULL, licensing = NULL, postLaunchEnabled = NULL, tags = NULL, targetInstanceTypeRightSizingMethod = NULL) {
+drs_create_launch_configuration_template <- function(tags = NULL, launchDisposition = NULL, targetInstanceTypeRightSizingMethod = NULL, copyPrivateIp = NULL, copyTags = NULL, licensing = NULL, exportBucketArn = NULL, postLaunchEnabled = NULL, launchIntoSourceInstance = NULL) {
   op <- new_operation(
     name = "CreateLaunchConfigurationTemplate",
     http_method = "POST",
@@ -102,7 +102,7 @@ drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyT
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .drs$create_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchDisposition = launchDisposition, launchIntoSourceInstance = launchIntoSourceInstance, licensing = licensing, postLaunchEnabled = postLaunchEnabled, tags = tags, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  input <- .drs$create_launch_configuration_template_input(tags = tags, launchDisposition = launchDisposition, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod, copyPrivateIp = copyPrivateIp, copyTags = copyTags, licensing = licensing, exportBucketArn = exportBucketArn, postLaunchEnabled = postLaunchEnabled, launchIntoSourceInstance = launchIntoSourceInstance)
   output <- .drs$create_launch_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -119,34 +119,36 @@ drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyT
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_create_replication_configuration_template/](https://www.paws-r-sdk.com/docs/drs_create_replication_configuration_template/) for full documentation.
 #'
-#' @param associateDefaultSecurityGroup &#91;required&#93; Whether to associate the default Elastic Disaster Recovery Security
+#' @param stagingAreaSubnetId &#91;required&#93; The subnet to be used by the replication staging area.
+#' @param associateDefaultSecurityGroup Whether to associate the default Elastic Disaster Recovery Security
 #' group with the Replication Configuration Template.
-#' @param autoReplicateNewDisks Whether to allow the AWS replication agent to automatically replicate
-#' newly added disks.
-#' @param bandwidthThrottling &#91;required&#93; Configure bandwidth throttling for the outbound data transfer rate of
-#' the Source Server in Mbps.
-#' @param createPublicIP &#91;required&#93; Whether to create a Public IP for the Recovery Instance by default.
-#' @param dataPlaneRouting &#91;required&#93; The data plane routing mechanism that will be used for replication.
-#' @param defaultLargeStagingDiskType &#91;required&#93; The Staging Disk EBS volume type to be used during replication.
+#' @param replicationServersSecurityGroupsIDs &#91;required&#93; The security group IDs that will be used by the replication server.
+#' @param replicationServerInstanceType The instance type to be used for the replication server.
+#' @param useDedicatedReplicationServer Whether to use a dedicated Replication Server in the replication staging
+#' area.
+#' @param defaultLargeStagingDiskType The Staging Disk EBS volume type to be used during replication.
 #' @param ebsEncryption &#91;required&#93; The type of EBS encryption to be used during replication.
 #' @param ebsEncryptionKeyArn The ARN of the EBS encryption key to be used during replication.
-#' @param pitPolicy &#91;required&#93; The Point in time (PIT) policy to manage snapshots taken during
-#' replication.
-#' @param replicationServerInstanceType &#91;required&#93; The instance type to be used for the replication server.
-#' @param replicationServersSecurityGroupsIDs &#91;required&#93; The security group IDs that will be used by the replication server.
-#' @param stagingAreaSubnetId &#91;required&#93; The subnet to be used by the replication staging area.
+#' @param bandwidthThrottling &#91;required&#93; Configure bandwidth throttling for the outbound data transfer rate of
+#' the Source Server in Mbps.
+#' @param dataPlaneRouting The data plane routing mechanism that will be used for replication.
+#' @param createPublicIP Whether to create a Public IP for the Recovery Instance by default.
 #' @param stagingAreaTags &#91;required&#93; A set of tags to be associated with all resources created in the
 #' replication staging area: EC2 replication server, EBS volumes, EBS
 #' snapshots, etc.
+#' @param pitPolicy &#91;required&#93; The Point in time (PIT) policy to manage snapshots taken during
+#' replication.
 #' @param tags A set of tags to be associated with the Replication Configuration
 #' Template resource.
-#' @param useDedicatedReplicationServer &#91;required&#93; Whether to use a dedicated Replication Server in the replication staging
-#' area.
+#' @param autoReplicateNewDisks Whether to allow the AWS replication agent to automatically replicate
+#' newly added disks.
+#' @param internetProtocol Which version of the Internet Protocol to use for replication of data.
+#' (IPv4 or IPv6)
 #'
 #' @keywords internal
 #'
 #' @rdname drs_create_replication_configuration_template
-drs_create_replication_configuration_template <- function(associateDefaultSecurityGroup, autoReplicateNewDisks = NULL, bandwidthThrottling, createPublicIP, dataPlaneRouting, defaultLargeStagingDiskType, ebsEncryption, ebsEncryptionKeyArn = NULL, pitPolicy, replicationServerInstanceType, replicationServersSecurityGroupsIDs, stagingAreaSubnetId, stagingAreaTags, tags = NULL, useDedicatedReplicationServer) {
+drs_create_replication_configuration_template <- function(stagingAreaSubnetId, associateDefaultSecurityGroup = NULL, replicationServersSecurityGroupsIDs, replicationServerInstanceType = NULL, useDedicatedReplicationServer = NULL, defaultLargeStagingDiskType = NULL, ebsEncryption, ebsEncryptionKeyArn = NULL, bandwidthThrottling, dataPlaneRouting = NULL, createPublicIP = NULL, stagingAreaTags, pitPolicy, tags = NULL, autoReplicateNewDisks = NULL, internetProtocol = NULL) {
   op <- new_operation(
     name = "CreateReplicationConfigurationTemplate",
     http_method = "POST",
@@ -155,7 +157,7 @@ drs_create_replication_configuration_template <- function(associateDefaultSecuri
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .drs$create_replication_configuration_template_input(associateDefaultSecurityGroup = associateDefaultSecurityGroup, autoReplicateNewDisks = autoReplicateNewDisks, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, pitPolicy = pitPolicy, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, tags = tags, useDedicatedReplicationServer = useDedicatedReplicationServer)
+  input <- .drs$create_replication_configuration_template_input(stagingAreaSubnetId = stagingAreaSubnetId, associateDefaultSecurityGroup = associateDefaultSecurityGroup, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, replicationServerInstanceType = replicationServerInstanceType, useDedicatedReplicationServer = useDedicatedReplicationServer, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, bandwidthThrottling = bandwidthThrottling, dataPlaneRouting = dataPlaneRouting, createPublicIP = createPublicIP, stagingAreaTags = stagingAreaTags, pitPolicy = pitPolicy, tags = tags, autoReplicateNewDisks = autoReplicateNewDisks, internetProtocol = internetProtocol)
   output <- .drs$create_replication_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -172,15 +174,15 @@ drs_create_replication_configuration_template <- function(associateDefaultSecuri
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_create_source_network/](https://www.paws-r-sdk.com/docs/drs_create_source_network/) for full documentation.
 #'
+#' @param vpcID &#91;required&#93; Which VPC ID to protect.
 #' @param originAccountID &#91;required&#93; Account containing the VPC to protect.
 #' @param originRegion &#91;required&#93; Region containing the VPC to protect.
 #' @param tags A set of tags to be associated with the Source Network resource.
-#' @param vpcID &#91;required&#93; Which VPC ID to protect.
 #'
 #' @keywords internal
 #'
 #' @rdname drs_create_source_network
-drs_create_source_network <- function(originAccountID, originRegion, tags = NULL, vpcID) {
+drs_create_source_network <- function(vpcID, originAccountID, originRegion, tags = NULL) {
   op <- new_operation(
     name = "CreateSourceNetwork",
     http_method = "POST",
@@ -189,7 +191,7 @@ drs_create_source_network <- function(originAccountID, originRegion, tags = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .drs$create_source_network_input(originAccountID = originAccountID, originRegion = originRegion, tags = tags, vpcID = vpcID)
+  input <- .drs$create_source_network_input(vpcID = vpcID, originAccountID = originAccountID, originRegion = originRegion, tags = tags)
   output <- .drs$create_source_network_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -237,13 +239,13 @@ drs_delete_job <- function(jobID) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_delete_launch_action/](https://www.paws-r-sdk.com/docs/drs_delete_launch_action/) for full documentation.
 #'
-#' @param actionId &#91;required&#93; 
 #' @param resourceId &#91;required&#93; 
+#' @param actionId &#91;required&#93; 
 #'
 #' @keywords internal
 #'
 #' @rdname drs_delete_launch_action
-drs_delete_launch_action <- function(actionId, resourceId) {
+drs_delete_launch_action <- function(resourceId, actionId) {
   op <- new_operation(
     name = "DeleteLaunchAction",
     http_method = "POST",
@@ -252,7 +254,7 @@ drs_delete_launch_action <- function(actionId, resourceId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .drs$delete_launch_action_input(actionId = actionId, resourceId = resourceId)
+  input <- .drs$delete_launch_action_input(resourceId = resourceId, actionId = actionId)
   output <- .drs$delete_launch_action_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -558,16 +560,16 @@ drs_describe_recovery_instances <- function(filters = NULL, maxResults = NULL, n
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_describe_recovery_snapshots/](https://www.paws-r-sdk.com/docs/drs_describe_recovery_snapshots/) for full documentation.
 #'
+#' @param sourceServerID &#91;required&#93; Filter Recovery Snapshots by Source Server ID.
 #' @param filters A set of filters by which to return Recovery Snapshots.
+#' @param order The sorted ordering by which to return Recovery Snapshots.
 #' @param maxResults Maximum number of Recovery Snapshots to retrieve.
 #' @param nextToken The token of the next Recovery Snapshot to retrieve.
-#' @param order The sorted ordering by which to return Recovery Snapshots.
-#' @param sourceServerID &#91;required&#93; Filter Recovery Snapshots by Source Server ID.
 #'
 #' @keywords internal
 #'
 #' @rdname drs_describe_recovery_snapshots
-drs_describe_recovery_snapshots <- function(filters = NULL, maxResults = NULL, nextToken = NULL, order = NULL, sourceServerID) {
+drs_describe_recovery_snapshots <- function(sourceServerID, filters = NULL, order = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeRecoverySnapshots",
     http_method = "POST",
@@ -576,7 +578,7 @@ drs_describe_recovery_snapshots <- function(filters = NULL, maxResults = NULL, n
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .drs$describe_recovery_snapshots_input(filters = filters, maxResults = maxResults, nextToken = nextToken, order = order, sourceServerID = sourceServerID)
+  input <- .drs$describe_recovery_snapshots_input(sourceServerID = sourceServerID, filters = filters, order = order, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_recovery_snapshots_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -594,15 +596,15 @@ drs_describe_recovery_snapshots <- function(filters = NULL, maxResults = NULL, n
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_describe_replication_configuration_templates/](https://www.paws-r-sdk.com/docs/drs_describe_replication_configuration_templates/) for full documentation.
 #'
-#' @param maxResults Maximum number of Replication Configuration Templates to retrieve.
-#' @param nextToken The token of the next Replication Configuration Template to retrieve.
 #' @param replicationConfigurationTemplateIDs The IDs of the Replication Configuration Templates to retrieve. An empty
 #' list means all Replication Configuration Templates.
+#' @param maxResults Maximum number of Replication Configuration Templates to retrieve.
+#' @param nextToken The token of the next Replication Configuration Template to retrieve.
 #'
 #' @keywords internal
 #'
 #' @rdname drs_describe_replication_configuration_templates
-drs_describe_replication_configuration_templates <- function(maxResults = NULL, nextToken = NULL, replicationConfigurationTemplateIDs = NULL) {
+drs_describe_replication_configuration_templates <- function(replicationConfigurationTemplateIDs = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeReplicationConfigurationTemplates",
     http_method = "POST",
@@ -611,7 +613,7 @@ drs_describe_replication_configuration_templates <- function(maxResults = NULL, 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .drs$describe_replication_configuration_templates_input(maxResults = maxResults, nextToken = nextToken, replicationConfigurationTemplateIDs = replicationConfigurationTemplateIDs)
+  input <- .drs$describe_replication_configuration_templates_input(replicationConfigurationTemplateIDs = replicationConfigurationTemplateIDs, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_replication_configuration_templates_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -916,15 +918,15 @@ drs_initialize_service <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_list_extensible_source_servers/](https://www.paws-r-sdk.com/docs/drs_list_extensible_source_servers/) for full documentation.
 #'
-#' @param maxResults The maximum number of extensible source servers to retrieve.
-#' @param nextToken The token of the next extensible source server to retrieve.
 #' @param stagingAccountID &#91;required&#93; The Id of the staging Account to retrieve extensible source servers
 #' from.
+#' @param maxResults The maximum number of extensible source servers to retrieve.
+#' @param nextToken The token of the next extensible source server to retrieve.
 #'
 #' @keywords internal
 #'
 #' @rdname drs_list_extensible_source_servers
-drs_list_extensible_source_servers <- function(maxResults = NULL, nextToken = NULL, stagingAccountID) {
+drs_list_extensible_source_servers <- function(stagingAccountID, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListExtensibleSourceServers",
     http_method = "POST",
@@ -933,7 +935,7 @@ drs_list_extensible_source_servers <- function(maxResults = NULL, nextToken = NU
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .drs$list_extensible_source_servers_input(maxResults = maxResults, nextToken = nextToken, stagingAccountID = stagingAccountID)
+  input <- .drs$list_extensible_source_servers_input(stagingAccountID = stagingAccountID, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$list_extensible_source_servers_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -950,15 +952,15 @@ drs_list_extensible_source_servers <- function(maxResults = NULL, nextToken = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_list_launch_actions/](https://www.paws-r-sdk.com/docs/drs_list_launch_actions/) for full documentation.
 #'
+#' @param resourceId &#91;required&#93; 
 #' @param filters Filters to apply when listing resource launch actions.
 #' @param maxResults Maximum amount of items to return when listing resource launch actions.
 #' @param nextToken Next token to use when listing resource launch actions.
-#' @param resourceId &#91;required&#93; 
 #'
 #' @keywords internal
 #'
 #' @rdname drs_list_launch_actions
-drs_list_launch_actions <- function(filters = NULL, maxResults = NULL, nextToken = NULL, resourceId) {
+drs_list_launch_actions <- function(resourceId, filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListLaunchActions",
     http_method = "POST",
@@ -967,7 +969,7 @@ drs_list_launch_actions <- function(filters = NULL, maxResults = NULL, nextToken
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .drs$list_launch_actions_input(filters = filters, maxResults = maxResults, nextToken = nextToken, resourceId = resourceId)
+  input <- .drs$list_launch_actions_input(resourceId = resourceId, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$list_launch_actions_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -1048,22 +1050,22 @@ drs_list_tags_for_resource <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_put_launch_action/](https://www.paws-r-sdk.com/docs/drs_put_launch_action/) for full documentation.
 #'
-#' @param actionCode &#91;required&#93; Launch action code.
-#' @param actionId &#91;required&#93; 
-#' @param actionVersion &#91;required&#93; 
-#' @param active &#91;required&#93; Whether the launch action is active.
-#' @param category &#91;required&#93; 
-#' @param description &#91;required&#93; 
-#' @param name &#91;required&#93; 
-#' @param optional &#91;required&#93; Whether the launch will not be marked as failed if this action fails.
-#' @param order &#91;required&#93; 
-#' @param parameters 
 #' @param resourceId &#91;required&#93; 
+#' @param actionCode &#91;required&#93; Launch action code.
+#' @param order &#91;required&#93; 
+#' @param actionId &#91;required&#93; 
+#' @param optional &#91;required&#93; Whether the launch will not be marked as failed if this action fails.
+#' @param active &#91;required&#93; Whether the launch action is active.
+#' @param name &#91;required&#93; 
+#' @param actionVersion &#91;required&#93; 
+#' @param category &#91;required&#93; 
+#' @param parameters 
+#' @param description &#91;required&#93; 
 #'
 #' @keywords internal
 #'
 #' @rdname drs_put_launch_action
-drs_put_launch_action <- function(actionCode, actionId, actionVersion, active, category, description, name, optional, order, parameters = NULL, resourceId) {
+drs_put_launch_action <- function(resourceId, actionCode, order, actionId, optional, active, name, actionVersion, category, parameters = NULL, description) {
   op <- new_operation(
     name = "PutLaunchAction",
     http_method = "POST",
@@ -1072,7 +1074,7 @@ drs_put_launch_action <- function(actionCode, actionId, actionVersion, active, c
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .drs$put_launch_action_input(actionCode = actionCode, actionId = actionId, actionVersion = actionVersion, active = active, category = category, description = description, name = name, optional = optional, order = order, parameters = parameters, resourceId = resourceId)
+  input <- .drs$put_launch_action_input(resourceId = resourceId, actionCode = actionCode, order = order, actionId = actionId, optional = optional, active = active, name = name, actionVersion = actionVersion, category = category, parameters = parameters, description = description)
   output <- .drs$put_launch_action_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -1187,14 +1189,14 @@ drs_start_failback_launch <- function(recoveryInstanceIDs, tags = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_start_recovery/](https://www.paws-r-sdk.com/docs/drs_start_recovery/) for full documentation.
 #'
-#' @param isDrill Whether this Source Server Recovery operation is a drill or not.
 #' @param sourceServers &#91;required&#93; The Source Servers that we want to start a Recovery Job for.
+#' @param isDrill Whether this Source Server Recovery operation is a drill or not.
 #' @param tags The tags to be associated with the Recovery Job.
 #'
 #' @keywords internal
 #'
 #' @rdname drs_start_recovery
-drs_start_recovery <- function(isDrill = NULL, sourceServers, tags = NULL) {
+drs_start_recovery <- function(sourceServers, isDrill = NULL, tags = NULL) {
   op <- new_operation(
     name = "StartRecovery",
     http_method = "POST",
@@ -1203,7 +1205,7 @@ drs_start_recovery <- function(isDrill = NULL, sourceServers, tags = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .drs$start_recovery_input(isDrill = isDrill, sourceServers = sourceServers, tags = tags)
+  input <- .drs$start_recovery_input(sourceServers = sourceServers, isDrill = isDrill, tags = tags)
   output <- .drs$start_recovery_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -1252,15 +1254,15 @@ drs_start_replication <- function(sourceServerID) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_start_source_network_recovery/](https://www.paws-r-sdk.com/docs/drs_start_source_network_recovery/) for full documentation.
 #'
+#' @param sourceNetworks &#91;required&#93; The Source Networks that we want to start a Recovery Job for.
 #' @param deployAsNew Don't update existing CloudFormation Stack, recover the network using a
 #' new stack.
-#' @param sourceNetworks &#91;required&#93; The Source Networks that we want to start a Recovery Job for.
 #' @param tags The tags to be associated with the Source Network recovery Job.
 #'
 #' @keywords internal
 #'
 #' @rdname drs_start_source_network_recovery
-drs_start_source_network_recovery <- function(deployAsNew = NULL, sourceNetworks, tags = NULL) {
+drs_start_source_network_recovery <- function(sourceNetworks, deployAsNew = NULL, tags = NULL) {
   op <- new_operation(
     name = "StartSourceNetworkRecovery",
     http_method = "POST",
@@ -1269,7 +1271,7 @@ drs_start_source_network_recovery <- function(deployAsNew = NULL, sourceNetworks
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .drs$start_source_network_recovery_input(deployAsNew = deployAsNew, sourceNetworks = sourceNetworks, tags = tags)
+  input <- .drs$start_source_network_recovery_input(sourceNetworks = sourceNetworks, deployAsNew = deployAsNew, tags = tags)
   output <- .drs$start_source_network_recovery_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -1510,17 +1512,19 @@ drs_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_update_failback_replication_configuration/](https://www.paws-r-sdk.com/docs/drs_update_failback_replication_configuration/) for full documentation.
 #'
+#' @param recoveryInstanceID &#91;required&#93; The ID of the Recovery Instance.
+#' @param name The name of the Failback Replication Configuration.
 #' @param bandwidthThrottling Configure bandwidth throttling for the outbound data transfer rate of
 #' the Recovery Instance in Mbps.
-#' @param name The name of the Failback Replication Configuration.
-#' @param recoveryInstanceID &#91;required&#93; The ID of the Recovery Instance.
 #' @param usePrivateIP Whether to use Private IP for the failback replication of the Recovery
 #' Instance.
+#' @param internetProtocol Which version of the Internet Protocol to use for replication of data.
+#' (IPv4 or IPv6)
 #'
 #' @keywords internal
 #'
 #' @rdname drs_update_failback_replication_configuration
-drs_update_failback_replication_configuration <- function(bandwidthThrottling = NULL, name = NULL, recoveryInstanceID, usePrivateIP = NULL) {
+drs_update_failback_replication_configuration <- function(recoveryInstanceID, name = NULL, bandwidthThrottling = NULL, usePrivateIP = NULL, internetProtocol = NULL) {
   op <- new_operation(
     name = "UpdateFailbackReplicationConfiguration",
     http_method = "POST",
@@ -1529,7 +1533,7 @@ drs_update_failback_replication_configuration <- function(bandwidthThrottling = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .drs$update_failback_replication_configuration_input(bandwidthThrottling = bandwidthThrottling, name = name, recoveryInstanceID = recoveryInstanceID, usePrivateIP = usePrivateIP)
+  input <- .drs$update_failback_replication_configuration_input(recoveryInstanceID = recoveryInstanceID, name = name, bandwidthThrottling = bandwidthThrottling, usePrivateIP = usePrivateIP, internetProtocol = internetProtocol)
   output <- .drs$update_failback_replication_configuration_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -1546,25 +1550,25 @@ drs_update_failback_replication_configuration <- function(bandwidthThrottling = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_update_launch_configuration/](https://www.paws-r-sdk.com/docs/drs_update_launch_configuration/) for full documentation.
 #'
+#' @param sourceServerID &#91;required&#93; The ID of the Source Server that we want to retrieve a Launch
+#' Configuration for.
+#' @param name The name of the launch configuration.
+#' @param launchDisposition The state of the Recovery Instance in EC2 after the recovery operation.
+#' @param targetInstanceTypeRightSizingMethod Whether Elastic Disaster Recovery should try to automatically choose the
+#' instance type that best matches the OS, CPU, and RAM of your Source
+#' Server.
 #' @param copyPrivateIp Whether we should copy the Private IP of the Source Server to the
 #' Recovery Instance.
 #' @param copyTags Whether we want to copy the tags of the Source Server to the EC2 machine
 #' of the Recovery Instance.
-#' @param launchDisposition The state of the Recovery Instance in EC2 after the recovery operation.
-#' @param launchIntoInstanceProperties Launch into existing instance properties.
 #' @param licensing The licensing configuration to be used for this launch configuration.
-#' @param name The name of the launch configuration.
 #' @param postLaunchEnabled Whether we want to enable post-launch actions for the Source Server.
-#' @param sourceServerID &#91;required&#93; The ID of the Source Server that we want to retrieve a Launch
-#' Configuration for.
-#' @param targetInstanceTypeRightSizingMethod Whether Elastic Disaster Recovery should try to automatically choose the
-#' instance type that best matches the OS, CPU, and RAM of your Source
-#' Server.
+#' @param launchIntoInstanceProperties Launch into existing instance properties.
 #'
 #' @keywords internal
 #'
 #' @rdname drs_update_launch_configuration
-drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NULL, launchDisposition = NULL, launchIntoInstanceProperties = NULL, licensing = NULL, name = NULL, postLaunchEnabled = NULL, sourceServerID, targetInstanceTypeRightSizingMethod = NULL) {
+drs_update_launch_configuration <- function(sourceServerID, name = NULL, launchDisposition = NULL, targetInstanceTypeRightSizingMethod = NULL, copyPrivateIp = NULL, copyTags = NULL, licensing = NULL, postLaunchEnabled = NULL, launchIntoInstanceProperties = NULL) {
   op <- new_operation(
     name = "UpdateLaunchConfiguration",
     http_method = "POST",
@@ -1573,7 +1577,7 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .drs$update_launch_configuration_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, launchDisposition = launchDisposition, launchIntoInstanceProperties = launchIntoInstanceProperties, licensing = licensing, name = name, postLaunchEnabled = postLaunchEnabled, sourceServerID = sourceServerID, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  input <- .drs$update_launch_configuration_input(sourceServerID = sourceServerID, name = name, launchDisposition = launchDisposition, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod, copyPrivateIp = copyPrivateIp, copyTags = copyTags, licensing = licensing, postLaunchEnabled = postLaunchEnabled, launchIntoInstanceProperties = launchIntoInstanceProperties)
   output <- .drs$update_launch_configuration_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -1590,22 +1594,22 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_update_launch_configuration_template/](https://www.paws-r-sdk.com/docs/drs_update_launch_configuration_template/) for full documentation.
 #'
-#' @param copyPrivateIp Copy private IP.
-#' @param copyTags Copy tags.
-#' @param exportBucketArn S3 bucket ARN to export Source Network templates.
 #' @param launchConfigurationTemplateID &#91;required&#93; Launch Configuration Template ID.
 #' @param launchDisposition Launch disposition.
+#' @param targetInstanceTypeRightSizingMethod Target instance type right-sizing method.
+#' @param copyPrivateIp Copy private IP.
+#' @param copyTags Copy tags.
+#' @param licensing Licensing.
+#' @param exportBucketArn S3 bucket ARN to export Source Network templates.
+#' @param postLaunchEnabled Whether we want to activate post-launch actions.
 #' @param launchIntoSourceInstance DRS will set the 'launch into instance ID' of any source server when
 #' performing a drill, recovery or failback to the previous region or
 #' availability zone, using the instance ID of the source instance.
-#' @param licensing Licensing.
-#' @param postLaunchEnabled Whether we want to activate post-launch actions.
-#' @param targetInstanceTypeRightSizingMethod Target instance type right-sizing method.
 #'
 #' @keywords internal
 #'
 #' @rdname drs_update_launch_configuration_template
-drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, exportBucketArn = NULL, launchConfigurationTemplateID, launchDisposition = NULL, launchIntoSourceInstance = NULL, licensing = NULL, postLaunchEnabled = NULL, targetInstanceTypeRightSizingMethod = NULL) {
+drs_update_launch_configuration_template <- function(launchConfigurationTemplateID, launchDisposition = NULL, targetInstanceTypeRightSizingMethod = NULL, copyPrivateIp = NULL, copyTags = NULL, licensing = NULL, exportBucketArn = NULL, postLaunchEnabled = NULL, launchIntoSourceInstance = NULL) {
   op <- new_operation(
     name = "UpdateLaunchConfigurationTemplate",
     http_method = "POST",
@@ -1614,7 +1618,7 @@ drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyT
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .drs$update_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchConfigurationTemplateID = launchConfigurationTemplateID, launchDisposition = launchDisposition, launchIntoSourceInstance = launchIntoSourceInstance, licensing = licensing, postLaunchEnabled = postLaunchEnabled, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  input <- .drs$update_launch_configuration_template_input(launchConfigurationTemplateID = launchConfigurationTemplateID, launchDisposition = launchDisposition, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod, copyPrivateIp = copyPrivateIp, copyTags = copyTags, licensing = licensing, exportBucketArn = exportBucketArn, postLaunchEnabled = postLaunchEnabled, launchIntoSourceInstance = launchIntoSourceInstance)
   output <- .drs$update_launch_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -1631,35 +1635,37 @@ drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyT
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_update_replication_configuration/](https://www.paws-r-sdk.com/docs/drs_update_replication_configuration/) for full documentation.
 #'
+#' @param sourceServerID &#91;required&#93; The ID of the Source Server for this Replication Configuration.
+#' @param name The name of the Replication Configuration.
+#' @param stagingAreaSubnetId The subnet to be used by the replication staging area.
 #' @param associateDefaultSecurityGroup Whether to associate the default Elastic Disaster Recovery Security
 #' group with the Replication Configuration.
-#' @param autoReplicateNewDisks Whether to allow the AWS replication agent to automatically replicate
-#' newly added disks.
-#' @param bandwidthThrottling Configure bandwidth throttling for the outbound data transfer rate of
-#' the Source Server in Mbps.
-#' @param createPublicIP Whether to create a Public IP for the Recovery Instance by default.
-#' @param dataPlaneRouting The data plane routing mechanism that will be used for replication.
+#' @param replicationServersSecurityGroupsIDs The security group IDs that will be used by the replication server.
+#' @param replicationServerInstanceType The instance type to be used for the replication server.
+#' @param useDedicatedReplicationServer Whether to use a dedicated Replication Server in the replication staging
+#' area.
 #' @param defaultLargeStagingDiskType The Staging Disk EBS volume type to be used during replication.
+#' @param replicatedDisks The configuration of the disks of the Source Server to be replicated.
 #' @param ebsEncryption The type of EBS encryption to be used during replication.
 #' @param ebsEncryptionKeyArn The ARN of the EBS encryption key to be used during replication.
-#' @param name The name of the Replication Configuration.
-#' @param pitPolicy The Point in time (PIT) policy to manage snapshots taken during
-#' replication.
-#' @param replicatedDisks The configuration of the disks of the Source Server to be replicated.
-#' @param replicationServerInstanceType The instance type to be used for the replication server.
-#' @param replicationServersSecurityGroupsIDs The security group IDs that will be used by the replication server.
-#' @param sourceServerID &#91;required&#93; The ID of the Source Server for this Replication Configuration.
-#' @param stagingAreaSubnetId The subnet to be used by the replication staging area.
+#' @param bandwidthThrottling Configure bandwidth throttling for the outbound data transfer rate of
+#' the Source Server in Mbps.
+#' @param dataPlaneRouting The data plane routing mechanism that will be used for replication.
+#' @param createPublicIP Whether to create a Public IP for the Recovery Instance by default.
 #' @param stagingAreaTags A set of tags to be associated with all resources created in the
 #' replication staging area: EC2 replication server, EBS volumes, EBS
 #' snapshots, etc.
-#' @param useDedicatedReplicationServer Whether to use a dedicated Replication Server in the replication staging
-#' area.
+#' @param pitPolicy The Point in time (PIT) policy to manage snapshots taken during
+#' replication.
+#' @param autoReplicateNewDisks Whether to allow the AWS replication agent to automatically replicate
+#' newly added disks.
+#' @param internetProtocol Which version of the Internet Protocol to use for replication of data.
+#' (IPv4 or IPv6)
 #'
 #' @keywords internal
 #'
 #' @rdname drs_update_replication_configuration
-drs_update_replication_configuration <- function(associateDefaultSecurityGroup = NULL, autoReplicateNewDisks = NULL, bandwidthThrottling = NULL, createPublicIP = NULL, dataPlaneRouting = NULL, defaultLargeStagingDiskType = NULL, ebsEncryption = NULL, ebsEncryptionKeyArn = NULL, name = NULL, pitPolicy = NULL, replicatedDisks = NULL, replicationServerInstanceType = NULL, replicationServersSecurityGroupsIDs = NULL, sourceServerID, stagingAreaSubnetId = NULL, stagingAreaTags = NULL, useDedicatedReplicationServer = NULL) {
+drs_update_replication_configuration <- function(sourceServerID, name = NULL, stagingAreaSubnetId = NULL, associateDefaultSecurityGroup = NULL, replicationServersSecurityGroupsIDs = NULL, replicationServerInstanceType = NULL, useDedicatedReplicationServer = NULL, defaultLargeStagingDiskType = NULL, replicatedDisks = NULL, ebsEncryption = NULL, ebsEncryptionKeyArn = NULL, bandwidthThrottling = NULL, dataPlaneRouting = NULL, createPublicIP = NULL, stagingAreaTags = NULL, pitPolicy = NULL, autoReplicateNewDisks = NULL, internetProtocol = NULL) {
   op <- new_operation(
     name = "UpdateReplicationConfiguration",
     http_method = "POST",
@@ -1668,7 +1674,7 @@ drs_update_replication_configuration <- function(associateDefaultSecurityGroup =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .drs$update_replication_configuration_input(associateDefaultSecurityGroup = associateDefaultSecurityGroup, autoReplicateNewDisks = autoReplicateNewDisks, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, name = name, pitPolicy = pitPolicy, replicatedDisks = replicatedDisks, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, sourceServerID = sourceServerID, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, useDedicatedReplicationServer = useDedicatedReplicationServer)
+  input <- .drs$update_replication_configuration_input(sourceServerID = sourceServerID, name = name, stagingAreaSubnetId = stagingAreaSubnetId, associateDefaultSecurityGroup = associateDefaultSecurityGroup, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, replicationServerInstanceType = replicationServerInstanceType, useDedicatedReplicationServer = useDedicatedReplicationServer, defaultLargeStagingDiskType = defaultLargeStagingDiskType, replicatedDisks = replicatedDisks, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, bandwidthThrottling = bandwidthThrottling, dataPlaneRouting = dataPlaneRouting, createPublicIP = createPublicIP, stagingAreaTags = stagingAreaTags, pitPolicy = pitPolicy, autoReplicateNewDisks = autoReplicateNewDisks, internetProtocol = internetProtocol)
   output <- .drs$update_replication_configuration_output()
   config <- get_config()
   svc <- .drs$service(config, op)
@@ -1685,34 +1691,36 @@ drs_update_replication_configuration <- function(associateDefaultSecurityGroup =
 #'
 #' See [https://www.paws-r-sdk.com/docs/drs_update_replication_configuration_template/](https://www.paws-r-sdk.com/docs/drs_update_replication_configuration_template/) for full documentation.
 #'
+#' @param replicationConfigurationTemplateID &#91;required&#93; The Replication Configuration Template ID.
 #' @param arn The Replication Configuration Template ARN.
+#' @param stagingAreaSubnetId The subnet to be used by the replication staging area.
 #' @param associateDefaultSecurityGroup Whether to associate the default Elastic Disaster Recovery Security
 #' group with the Replication Configuration Template.
-#' @param autoReplicateNewDisks Whether to allow the AWS replication agent to automatically replicate
-#' newly added disks.
-#' @param bandwidthThrottling Configure bandwidth throttling for the outbound data transfer rate of
-#' the Source Server in Mbps.
-#' @param createPublicIP Whether to create a Public IP for the Recovery Instance by default.
-#' @param dataPlaneRouting The data plane routing mechanism that will be used for replication.
+#' @param replicationServersSecurityGroupsIDs The security group IDs that will be used by the replication server.
+#' @param replicationServerInstanceType The instance type to be used for the replication server.
+#' @param useDedicatedReplicationServer Whether to use a dedicated Replication Server in the replication staging
+#' area.
 #' @param defaultLargeStagingDiskType The Staging Disk EBS volume type to be used during replication.
 #' @param ebsEncryption The type of EBS encryption to be used during replication.
 #' @param ebsEncryptionKeyArn The ARN of the EBS encryption key to be used during replication.
-#' @param pitPolicy The Point in time (PIT) policy to manage snapshots taken during
-#' replication.
-#' @param replicationConfigurationTemplateID &#91;required&#93; The Replication Configuration Template ID.
-#' @param replicationServerInstanceType The instance type to be used for the replication server.
-#' @param replicationServersSecurityGroupsIDs The security group IDs that will be used by the replication server.
-#' @param stagingAreaSubnetId The subnet to be used by the replication staging area.
+#' @param bandwidthThrottling Configure bandwidth throttling for the outbound data transfer rate of
+#' the Source Server in Mbps.
+#' @param dataPlaneRouting The data plane routing mechanism that will be used for replication.
+#' @param createPublicIP Whether to create a Public IP for the Recovery Instance by default.
 #' @param stagingAreaTags A set of tags to be associated with all resources created in the
 #' replication staging area: EC2 replication server, EBS volumes, EBS
 #' snapshots, etc.
-#' @param useDedicatedReplicationServer Whether to use a dedicated Replication Server in the replication staging
-#' area.
+#' @param pitPolicy The Point in time (PIT) policy to manage snapshots taken during
+#' replication.
+#' @param autoReplicateNewDisks Whether to allow the AWS replication agent to automatically replicate
+#' newly added disks.
+#' @param internetProtocol Which version of the Internet Protocol to use for replication of data.
+#' (IPv4 or IPv6)
 #'
 #' @keywords internal
 #'
 #' @rdname drs_update_replication_configuration_template
-drs_update_replication_configuration_template <- function(arn = NULL, associateDefaultSecurityGroup = NULL, autoReplicateNewDisks = NULL, bandwidthThrottling = NULL, createPublicIP = NULL, dataPlaneRouting = NULL, defaultLargeStagingDiskType = NULL, ebsEncryption = NULL, ebsEncryptionKeyArn = NULL, pitPolicy = NULL, replicationConfigurationTemplateID, replicationServerInstanceType = NULL, replicationServersSecurityGroupsIDs = NULL, stagingAreaSubnetId = NULL, stagingAreaTags = NULL, useDedicatedReplicationServer = NULL) {
+drs_update_replication_configuration_template <- function(replicationConfigurationTemplateID, arn = NULL, stagingAreaSubnetId = NULL, associateDefaultSecurityGroup = NULL, replicationServersSecurityGroupsIDs = NULL, replicationServerInstanceType = NULL, useDedicatedReplicationServer = NULL, defaultLargeStagingDiskType = NULL, ebsEncryption = NULL, ebsEncryptionKeyArn = NULL, bandwidthThrottling = NULL, dataPlaneRouting = NULL, createPublicIP = NULL, stagingAreaTags = NULL, pitPolicy = NULL, autoReplicateNewDisks = NULL, internetProtocol = NULL) {
   op <- new_operation(
     name = "UpdateReplicationConfigurationTemplate",
     http_method = "POST",
@@ -1721,7 +1729,7 @@ drs_update_replication_configuration_template <- function(arn = NULL, associateD
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .drs$update_replication_configuration_template_input(arn = arn, associateDefaultSecurityGroup = associateDefaultSecurityGroup, autoReplicateNewDisks = autoReplicateNewDisks, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, pitPolicy = pitPolicy, replicationConfigurationTemplateID = replicationConfigurationTemplateID, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, useDedicatedReplicationServer = useDedicatedReplicationServer)
+  input <- .drs$update_replication_configuration_template_input(replicationConfigurationTemplateID = replicationConfigurationTemplateID, arn = arn, stagingAreaSubnetId = stagingAreaSubnetId, associateDefaultSecurityGroup = associateDefaultSecurityGroup, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, replicationServerInstanceType = replicationServerInstanceType, useDedicatedReplicationServer = useDedicatedReplicationServer, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, bandwidthThrottling = bandwidthThrottling, dataPlaneRouting = dataPlaneRouting, createPublicIP = createPublicIP, stagingAreaTags = stagingAreaTags, pitPolicy = pitPolicy, autoReplicateNewDisks = autoReplicateNewDisks, internetProtocol = internetProtocol)
   output <- .drs$update_replication_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config, op)

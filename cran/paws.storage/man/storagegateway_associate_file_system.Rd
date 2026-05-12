@@ -36,8 +36,6 @@ association. Each tag is a key-value pair.}
 
 \item{AuditDestinationARN}{The Amazon Resource Name (ARN) of the storage used for the audit logs.}
 
-\item{CacheAttributes}{}
-
 \item{EndpointNetworkConfiguration}{Specifies the network configuration information for the gateway
 associated with the Amazon FSx file system.
 

@@ -52,8 +52,6 @@ label detection stream processors.}
 \item{Tags}{A set of tags (key-value pairs) that you want to attach to the stream
 processor.}
 
-\item{NotificationChannel}{}
-
 \item{KmsKeyId}{The identifier for your AWS Key Management Service key (AWS KMS key).
 This is an optional parameter for label detection stream processors and
 should not be used to create a face search stream processor. You can

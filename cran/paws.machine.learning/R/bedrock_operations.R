@@ -799,11 +799,12 @@ bedrock_create_model_import_job <- function(jobName, importedModelName, roleArn,
 #' @param tags Any tags to associate with the batch inference job. For more
 #' information, see [Tagging Amazon Bedrock
 #' resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html).
+#' @param modelInvocationType The invocation endpoint for ModelInvocationJob
 #'
 #' @keywords internal
 #'
 #' @rdname bedrock_create_model_invocation_job
-bedrock_create_model_invocation_job <- function(jobName, roleArn, clientRequestToken = NULL, modelId, inputDataConfig, outputDataConfig, vpcConfig = NULL, timeoutDurationInHours = NULL, tags = NULL) {
+bedrock_create_model_invocation_job <- function(jobName, roleArn, clientRequestToken = NULL, modelId, inputDataConfig, outputDataConfig, vpcConfig = NULL, timeoutDurationInHours = NULL, tags = NULL, modelInvocationType = NULL) {
   op <- new_operation(
     name = "CreateModelInvocationJob",
     http_method = "POST",
@@ -812,7 +813,7 @@ bedrock_create_model_invocation_job <- function(jobName, roleArn, clientRequestT
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrock$create_model_invocation_job_input(jobName = jobName, roleArn = roleArn, clientRequestToken = clientRequestToken, modelId = modelId, inputDataConfig = inputDataConfig, outputDataConfig = outputDataConfig, vpcConfig = vpcConfig, timeoutDurationInHours = timeoutDurationInHours, tags = tags)
+  input <- .bedrock$create_model_invocation_job_input(jobName = jobName, roleArn = roleArn, clientRequestToken = clientRequestToken, modelId = modelId, inputDataConfig = inputDataConfig, outputDataConfig = outputDataConfig, vpcConfig = vpcConfig, timeoutDurationInHours = timeoutDurationInHours, tags = tags, modelInvocationType = modelInvocationType)
   output <- .bedrock$create_model_invocation_job_output()
   config <- get_config()
   svc <- .bedrock$service(config, op)
@@ -1391,6 +1392,37 @@ bedrock_delete_provisioned_model_throughput <- function(provisionedModelId) {
 }
 .bedrock$operations$delete_provisioned_model_throughput <- bedrock_delete_provisioned_model_throughput
 
+#' Deletes a previously created Bedrock resource policy
+#'
+#' @description
+#' Deletes a previously created Bedrock resource policy.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_delete_resource_policy/](https://www.paws-r-sdk.com/docs/bedrock_delete_resource_policy/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the Bedrock resource to which this resource policy applies.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_delete_resource_policy
+bedrock_delete_resource_policy <- function(resourceArn) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "DELETE",
+    http_path = "/resource-policy/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$delete_resource_policy_input(resourceArn = resourceArn)
+  output <- .bedrock$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$delete_resource_policy <- bedrock_delete_resource_policy
+
 #' Deregisters an endpoint for a model from Amazon Bedrock Marketplace
 #'
 #' @description
@@ -1571,12 +1603,17 @@ bedrock_get_automated_reasoning_policy_build_workflow <- function(policyArn, bui
 #' @param buildWorkflowId &#91;required&#93; The unique identifier of the build workflow whose result assets you want
 #' to retrieve.
 #' @param assetType &#91;required&#93; The type of asset to retrieve (e.g., BUILD_LOG, QUALITY_REPORT,
-#' POLICY_DEFINITION).
+#' POLICY_DEFINITION, GENERATED_TEST_CASES, POLICY_SCENARIOS,
+#' FIDELITY_REPORT, ASSET_MANIFEST, SOURCE_DOCUMENT).
+#' @param assetId The unique identifier of the specific asset to retrieve when multiple
+#' assets of the same type exist. This is required when retrieving
+#' SOURCE_DOCUMENT assets, as multiple source documents may have been used
+#' in the workflow. The asset ID can be obtained from the asset manifest.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrock_get_autom_reaso_polic_build_workf_resul_asset
-bedrock_get_automated_reasoning_policy_build_workflow_result_assets <- function(policyArn, buildWorkflowId, assetType) {
+bedrock_get_automated_reasoning_policy_build_workflow_result_assets <- function(policyArn, buildWorkflowId, assetType, assetId = NULL) {
   op <- new_operation(
     name = "GetAutomatedReasoningPolicyBuildWorkflowResultAssets",
     http_method = "GET",
@@ -1585,7 +1622,7 @@ bedrock_get_automated_reasoning_policy_build_workflow_result_assets <- function(
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrock$get_automated_reasoning_policy_build_workflow_result_assets_input(policyArn = policyArn, buildWorkflowId = buildWorkflowId, assetType = assetType)
+  input <- .bedrock$get_automated_reasoning_policy_build_workflow_result_assets_input(policyArn = policyArn, buildWorkflowId = buildWorkflowId, assetType = assetType, assetId = assetId)
   output <- .bedrock$get_automated_reasoning_policy_build_workflow_result_assets_output()
   config <- get_config()
   svc <- .bedrock$service(config, op)
@@ -2203,6 +2240,37 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
   return(response)
 }
 .bedrock$operations$get_provisioned_model_throughput <- bedrock_get_provisioned_model_throughput
+
+#' Gets the resource policy document for a Bedrock resource
+#'
+#' @description
+#' Gets the resource policy document for a Bedrock resource
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_get_resource_policy/](https://www.paws-r-sdk.com/docs/bedrock_get_resource_policy/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the Bedrock resource to which this resource policy applies.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_resource_policy
+bedrock_get_resource_policy <- function(resourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "GET",
+    http_path = "/resource-policy/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$get_resource_policy_input(resourceArn = resourceArn)
+  output <- .bedrock$get_resource_policy_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_resource_policy <- bedrock_get_resource_policy
 
 #' Get usecase for model access
 #'
@@ -3206,6 +3274,38 @@ bedrock_put_model_invocation_logging_configuration <- function(loggingConfig) {
   return(response)
 }
 .bedrock$operations$put_model_invocation_logging_configuration <- bedrock_put_model_invocation_logging_configuration
+
+#' Adds a resource policy for a Bedrock resource
+#'
+#' @description
+#' Adds a resource policy for a Bedrock resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_put_resource_policy/](https://www.paws-r-sdk.com/docs/bedrock_put_resource_policy/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the Bedrock resource to which this resource policy applies.
+#' @param resourcePolicy &#91;required&#93; The JSON string representing the Bedrock resource policy.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_put_resource_policy
+bedrock_put_resource_policy <- function(resourceArn, resourcePolicy) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/resource-policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$put_resource_policy_input(resourceArn = resourceArn, resourcePolicy = resourcePolicy)
+  output <- .bedrock$put_resource_policy_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$put_resource_policy <- bedrock_put_resource_policy
 
 #' Put usecase for model access
 #'

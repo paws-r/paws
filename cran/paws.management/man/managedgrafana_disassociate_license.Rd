@@ -4,12 +4,12 @@
 \alias{managedgrafana_disassociate_license}
 \title{Removes the Grafana Enterprise license from a workspace}
 \usage{
-managedgrafana_disassociate_license(licenseType, workspaceId)
+managedgrafana_disassociate_license(workspaceId, licenseType)
 }
 \arguments{
-\item{licenseType}{[required] The type of license to remove from the workspace.}
-
 \item{workspaceId}{[required] The ID of the workspace to remove the Grafana Enterprise license from.}
+
+\item{licenseType}{[required] The type of license to remove from the workspace.}
 }
 \description{
 Removes the Grafana Enterprise license from a workspace.

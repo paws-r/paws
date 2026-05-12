@@ -13,6 +13,7 @@ connect_create_queue(
   HoursOfOperationId,
   MaxContacts = NULL,
   QuickConnectIds = NULL,
+  EmailAddressesConfig = NULL,
   Tags = NULL
 )
 }
@@ -34,6 +35,10 @@ in the Amazon Resource Name (ARN) of the instance.}
 considered full.}
 
 \item{QuickConnectIds}{The quick connects available to agents who are working the queue.}
+
+\item{EmailAddressesConfig}{Configuration list containing the email addresses to associate with the
+queue during creation. Each configuration specifies an email address ID
+that agents can select when handling email contacts in this queue.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
 For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}

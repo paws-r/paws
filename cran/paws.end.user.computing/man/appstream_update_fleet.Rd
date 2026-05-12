@@ -27,7 +27,8 @@ appstream_update_fleet(
   UsbDeviceFilterStrings = NULL,
   SessionScriptS3Location = NULL,
   MaxSessionsPerInstance = NULL,
-  RootVolumeConfig = NULL
+  RootVolumeConfig = NULL,
+  DisableIMDSV1 = NULL
 )
 }
 \arguments{
@@ -194,6 +195,13 @@ multi-session fleets.}
 
 \item{RootVolumeConfig}{The updated configuration for the root volume of fleet instances. Note
 that volume size cannot be decreased below the image volume size.}
+
+\item{DisableIMDSV1}{Set to true to disable Instance Metadata Service Version 1 (IMDSv1) and
+enforce IMDSv2. Set to false to enable both IMDSv1 and IMDSv2.
+
+Before disabling IMDSv1, ensure your WorkSpaces Applications images are
+running the agent version or managed image update released on or after
+January 16, 2024 to support IMDSv2 enforcement.}
 }
 \description{
 Updates the specified fleet.

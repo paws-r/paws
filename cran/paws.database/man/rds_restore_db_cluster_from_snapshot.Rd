@@ -39,8 +39,12 @@ rds_restore_db_cluster_from_snapshot(
   EnablePerformanceInsights = NULL,
   PerformanceInsightsKMSKeyId = NULL,
   PerformanceInsightsRetentionPeriod = NULL,
+  BackupRetentionPeriod = NULL,
+  PreferredBackupWindow = NULL,
   EngineLifecycleSupport = NULL,
-  TagSpecifications = NULL
+  TagSpecifications = NULL,
+  EnableVPCNetworking = NULL,
+  EnableInternetAccessGateway = NULL
 )
 }
 \arguments{
@@ -382,8 +386,6 @@ in the \emph{Amazon Aurora User Guide.}
 
 Valid for: Aurora DB clusters only}
 
-\item{ServerlessV2ScalingConfiguration}{}
-
 \item{RdsCustomClusterConfiguration}{Reserved for future use.}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
@@ -433,6 +435,37 @@ Default: \code{7} days
 If you specify a retention period that isn't valid, such as \code{94}, Amazon
 RDS issues an error.}
 
+\item{BackupRetentionPeriod}{The number of days for which automated backups are retained. Specify a
+minimum value of \code{1}.
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
+Default: Uses existing setting
+
+Constraints:
+\itemize{
+\item Must be a value from 1 to 35.
+}}
+
+\item{PreferredBackupWindow}{The daily time range during which automated backups are created if
+automated backups are enabled, using the \code{BackupRetentionPeriod}
+parameter.
+
+The default is a 30-minute window selected at random from an 8-hour
+block of time for each Amazon Web Services Region. To view the time
+blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow}{Backup window}
+in the \emph{Amazon Aurora User Guide}.
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
+Constraints:
+\itemize{
+\item Must be in the format \code{hh24:mi-hh24:mi}.
+\item Must be in Universal Coordinated Time (UTC).
+\item Must not conflict with the preferred maintenance window.
+\item Must be at least 30 minutes.
+}}
+
 \item{EngineLifecycleSupport}{The life cycle type for this DB cluster.
 
 By default, this value is set to \code{open-source-rds-extended-support},
@@ -468,6 +501,26 @@ Valid Values:
 \itemize{
 \item \code{cluster-auto-backup} - The DB cluster's automated backup.
 }}
+
+\item{EnableVPCNetworking}{Specifies whether to enable VPC networking for the restored DB cluster.
+Set this parameter to \code{false} to create a cluster without the VPC
+network interface (ENI).
+
+This parameter must be used together with \code{EnableInternetAccessGateway}.
+When both parameters are specified, IAM database authentication is
+required. You must also specify \code{EnableIAMDatabaseAuthentication}.
+
+Valid for Cluster Type: Aurora PostgreSQL clusters}
+
+\item{EnableInternetAccessGateway}{Specifies that the restored DB cluster should use internet-based
+connectivity through an internet access gateway. This allows clients to
+connect to the cluster over the internet without requiring a VPC.
+
+This parameter must be used together with \code{EnableVPCNetworking} set to
+\code{false}. When both parameters are specified, IAM database authentication
+is required. You must also specify \code{EnableIAMDatabaseAuthentication}.
+
+Valid for Cluster Type: Aurora PostgreSQL clusters}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.

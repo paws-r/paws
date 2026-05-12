@@ -10,7 +10,7 @@ backupgateway_get_hypervisor_property_mappings(HypervisorArn)
 \item{HypervisorArn}{[required] The Amazon Resource Name (ARN) of the hypervisor.}
 }
 \description{
-This action retrieves the property mappings for the specified hypervisor. A hypervisor property mapping displays the relationship of entity properties available from the on-premises hypervisor to the properties available in Amazon Web Services.
+This action retrieves the property mappings for the specified hypervisor. A hypervisor property mapping displays the relationship of entity properties available from the hypervisor to the properties available in Amazon Web Services.
 
 See \url{https://www.paws-r-sdk.com/docs/backupgateway_get_hypervisor_property_mappings/} for full documentation.
 }

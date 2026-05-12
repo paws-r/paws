@@ -311,6 +311,10 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #' @param voiceSettings The Amazon Polly voice ID that Amazon Lex uses for voice interaction
 #' with the user.
 #' @param unifiedSpeechSettings Unified speech settings to configure for the new bot locale.
+#' @param audioFillerSettings Audio filler settings to configure for the new bot locale. When enabled,
+#' Amazon Lex plays a brief background audio filler during speech-to-speech
+#' interactions to mask processing delays. Requires `unifiedSpeechSettings`
+#' (speech-to-speech) to be configured on the bot locale.
 #' @param speechRecognitionSettings Speech-to-text settings to configure for the new bot locale.
 #' @param generativeAISettings 
 #' @param speechDetectionSensitivity The sensitivity level for voice activity detection (VAD) in the bot
@@ -321,7 +325,7 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_bot_locale
-lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL, unifiedSpeechSettings = NULL, speechRecognitionSettings = NULL, generativeAISettings = NULL, speechDetectionSensitivity = NULL) {
+lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL, unifiedSpeechSettings = NULL, audioFillerSettings = NULL, speechRecognitionSettings = NULL, generativeAISettings = NULL, speechDetectionSensitivity = NULL) {
   op <- new_operation(
     name = "CreateBotLocale",
     http_method = "PUT",
@@ -330,7 +334,7 @@ lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, descripti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lexmodelsv2$create_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, unifiedSpeechSettings = unifiedSpeechSettings, speechRecognitionSettings = speechRecognitionSettings, generativeAISettings = generativeAISettings, speechDetectionSensitivity = speechDetectionSensitivity)
+  input <- .lexmodelsv2$create_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, unifiedSpeechSettings = unifiedSpeechSettings, audioFillerSettings = audioFillerSettings, speechRecognitionSettings = speechRecognitionSettings, generativeAISettings = generativeAISettings, speechDetectionSensitivity = speechDetectionSensitivity)
   output <- .lexmodelsv2$create_bot_locale_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config, op)
@@ -921,6 +925,40 @@ lexmodelsv2_delete_bot_alias <- function(botAliasId, botId, skipResourceInUseChe
 }
 .lexmodelsv2$operations$delete_bot_alias <- lexmodelsv2_delete_bot_alias
 
+#' Permanently deletes the recommendations and analysis results for a
+#' specific bot analysis request
+#'
+#' @description
+#' Permanently deletes the recommendations and analysis results for a specific bot analysis request. This operation is provided for GDPR compliance and cannot be undone.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_bot_analyzer_recommendation/](https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_bot_analyzer_recommendation/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The unique identifier of the bot.
+#' @param botAnalyzerRequestId &#91;required&#93; The unique identifier of the analysis request whose recommendations
+#' should be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_delete_bot_analyzer_recommendation
+lexmodelsv2_delete_bot_analyzer_recommendation <- function(botId, botAnalyzerRequestId) {
+  op <- new_operation(
+    name = "DeleteBotAnalyzerRecommendation",
+    http_method = "DELETE",
+    http_path = "/bots/{botId}/botanalyzer/{botAnalyzerRequestId}/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lexmodelsv2$delete_bot_analyzer_recommendation_input(botId = botId, botAnalyzerRequestId = botAnalyzerRequestId)
+  output <- .lexmodelsv2$delete_bot_analyzer_recommendation_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$delete_bot_analyzer_recommendation <- lexmodelsv2_delete_bot_analyzer_recommendation
+
 #' Removes a locale from a bot
 #'
 #' @description
@@ -1452,6 +1490,42 @@ lexmodelsv2_describe_bot_alias <- function(botAliasId, botId) {
   return(response)
 }
 .lexmodelsv2$operations$describe_bot_alias <- lexmodelsv2_describe_bot_alias
+
+#' Retrieves the analysis results and recommendations for bot optimization
+#'
+#' @description
+#' Retrieves the analysis results and recommendations for bot optimization. The analysis must be in `Available` status before recommendations can be retrieved.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_describe_bot_analyzer_recommendation/](https://www.paws-r-sdk.com/docs/lexmodelsv2_describe_bot_analyzer_recommendation/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The unique identifier of the bot.
+#' @param botAnalyzerRequestId &#91;required&#93; The unique identifier of the analysis request.
+#' @param nextToken If the response from a previous request was truncated, the `nextToken`
+#' value is used to retrieve the next page of recommendations.
+#' @param maxResults The maximum number of recommendations to return in the response. The
+#' default is 5.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_describe_bot_analyzer_recommendation
+lexmodelsv2_describe_bot_analyzer_recommendation <- function(botId, botAnalyzerRequestId, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeBotAnalyzerRecommendation",
+    http_method = "POST",
+    http_path = "/bots/{botId}/botanalyzer/describe/{botAnalyzerRequestId}/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "creationDateTime", "localeId", "botId", "botVersion", "botAnalyzerStatus"), output_token = "nextToken", result_key = "botAnalyzerRecommendationList"),
+    stream_api = FALSE
+  )
+  input <- .lexmodelsv2$describe_bot_analyzer_recommendation_input(botId = botId, botAnalyzerRequestId = botAnalyzerRequestId, nextToken = nextToken, maxResults = maxResults)
+  output <- .lexmodelsv2$describe_bot_analyzer_recommendation_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$describe_bot_analyzer_recommendation <- lexmodelsv2_describe_bot_analyzer_recommendation
 
 #' Describes the settings that a bot has for a specific locale
 #'
@@ -2187,6 +2261,46 @@ lexmodelsv2_list_bot_aliases <- function(botId, maxResults = NULL, nextToken = N
   return(response)
 }
 .lexmodelsv2$operations$list_bot_aliases <- lexmodelsv2_list_bot_aliases
+
+#' Retrieves a list of historical bot analysis executions for a specific
+#' bot
+#'
+#' @description
+#' Retrieves a list of historical bot analysis executions for a specific bot. You can filter the results by locale and bot version.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_list_bot_analyzer_history/](https://www.paws-r-sdk.com/docs/lexmodelsv2_list_bot_analyzer_history/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The unique identifier of the bot.
+#' @param localeId The locale identifier to filter the history. If not specified, returns
+#' history for all locales.
+#' @param botVersion The bot version to filter the history. If not specified, defaults to
+#' `DRAFT`.
+#' @param nextToken If the response from a previous request was truncated, the `nextToken`
+#' value is used to retrieve the next page of history entries.
+#' @param maxResults The maximum number of history entries to return in the response. The
+#' default is 10.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_bot_analyzer_history
+lexmodelsv2_list_bot_analyzer_history <- function(botId, localeId = NULL, botVersion = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListBotAnalyzerHistory",
+    http_method = "POST",
+    http_path = "/bots/{botId}/botanalyzer/history/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "localeId", "botId", "botVersion"), output_token = "nextToken", result_key = "botAnalyzerHistoryList"),
+    stream_api = FALSE
+  )
+  input <- .lexmodelsv2$list_bot_analyzer_history_input(botId = botId, localeId = localeId, botVersion = botVersion, nextToken = nextToken, maxResults = maxResults)
+  output <- .lexmodelsv2$list_bot_analyzer_history_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_bot_analyzer_history <- lexmodelsv2_list_bot_analyzer_history
 
 #' Gets a list of locales for the specified bot
 #'
@@ -3547,6 +3661,46 @@ lexmodelsv2_search_associated_transcripts <- function(botId, botVersion, localeI
 }
 .lexmodelsv2$operations$search_associated_transcripts <- lexmodelsv2_search_associated_transcripts
 
+#' Initiates an asynchronous analysis of your bot configuration using
+#' AI-powered analysis to identify potential issues and recommend
+#' improvements based on AWS best practices
+#'
+#' @description
+#' Initiates an asynchronous analysis of your bot configuration using AI-powered analysis to identify potential issues and recommend improvements based on AWS best practices.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_start_bot_analyzer/](https://www.paws-r-sdk.com/docs/lexmodelsv2_start_bot_analyzer/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The unique identifier of the bot to analyze.
+#' @param analysisScope &#91;required&#93; The scope of analysis to perform. Currently only `BotLocale` scope is
+#' supported.
+#' 
+#' Valid Values: `BotLocale`
+#' @param localeId The locale identifier for the bot locale to analyze. Required when
+#' `analysisScope` is `BotLocale`.
+#' @param botVersion The version of the bot to analyze. Defaults to `DRAFT` if not specified.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_start_bot_analyzer
+lexmodelsv2_start_bot_analyzer <- function(botId, analysisScope, localeId = NULL, botVersion = NULL) {
+  op <- new_operation(
+    name = "StartBotAnalyzer",
+    http_method = "POST",
+    http_path = "/bots/{botId}/botanalyzer/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lexmodelsv2$start_bot_analyzer_input(botId = botId, analysisScope = analysisScope, localeId = localeId, botVersion = botVersion)
+  output <- .lexmodelsv2$start_bot_analyzer_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$start_bot_analyzer <- lexmodelsv2_start_bot_analyzer
+
 #' Use this to provide your transcript data, and to start the bot
 #' recommendation process
 #'
@@ -3746,6 +3900,38 @@ lexmodelsv2_start_test_set_generation <- function(testSetName, description = NUL
   return(response)
 }
 .lexmodelsv2$operations$start_test_set_generation <- lexmodelsv2_start_test_set_generation
+
+#' Cancels an ongoing bot analysis execution
+#'
+#' @description
+#' Cancels an ongoing bot analysis execution. Once stopped, the analysis cannot be resumed and no recommendations will be generated.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_stop_bot_analyzer/](https://www.paws-r-sdk.com/docs/lexmodelsv2_stop_bot_analyzer/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The unique identifier of the bot.
+#' @param botAnalyzerRequestId &#91;required&#93; The unique identifier of the analysis request to stop.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_stop_bot_analyzer
+lexmodelsv2_stop_bot_analyzer <- function(botId, botAnalyzerRequestId) {
+  op <- new_operation(
+    name = "StopBotAnalyzer",
+    http_method = "PUT",
+    http_path = "/bots/{botId}/botanalyzer/{botAnalyzerRequestId}/stop/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lexmodelsv2$stop_bot_analyzer_input(botId = botId, botAnalyzerRequestId = botAnalyzerRequestId)
+  output <- .lexmodelsv2$stop_bot_analyzer_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$stop_bot_analyzer <- lexmodelsv2_stop_bot_analyzer
 
 #' Stop an already running Bot Recommendation request
 #'
@@ -3964,6 +4150,9 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #' @param voiceSettings The new Amazon Polly voice Amazon Lex should use for voice interaction
 #' with the user.
 #' @param unifiedSpeechSettings Updated unified speech settings to apply to the bot locale.
+#' @param audioFillerSettings Updated audio filler settings to apply to the bot locale. When enabled,
+#' requires `unifiedSpeechSettings` (speech-to-speech) to be configured on
+#' the bot locale.
 #' @param speechRecognitionSettings Updated speech-to-text settings to apply to the bot locale.
 #' @param generativeAISettings Contains settings for generative AI features powered by Amazon Bedrock
 #' for your bot locale. Use this object to turn generative AI features on
@@ -3977,7 +4166,7 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_bot_locale
-lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL, unifiedSpeechSettings = NULL, speechRecognitionSettings = NULL, generativeAISettings = NULL, speechDetectionSensitivity = NULL) {
+lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL, unifiedSpeechSettings = NULL, audioFillerSettings = NULL, speechRecognitionSettings = NULL, generativeAISettings = NULL, speechDetectionSensitivity = NULL) {
   op <- new_operation(
     name = "UpdateBotLocale",
     http_method = "PUT",
@@ -3986,7 +4175,7 @@ lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, descripti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lexmodelsv2$update_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, unifiedSpeechSettings = unifiedSpeechSettings, speechRecognitionSettings = speechRecognitionSettings, generativeAISettings = generativeAISettings, speechDetectionSensitivity = speechDetectionSensitivity)
+  input <- .lexmodelsv2$update_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, unifiedSpeechSettings = unifiedSpeechSettings, audioFillerSettings = audioFillerSettings, speechRecognitionSettings = speechRecognitionSettings, generativeAISettings = generativeAISettings, speechDetectionSensitivity = speechDetectionSensitivity)
   output <- .lexmodelsv2$update_bot_locale_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config, op)

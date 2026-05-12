@@ -36,7 +36,7 @@ configuration of the parent pipeline for this specific run.}
 
 \item{PipelineVersionId}{The ID of the pipeline version to start execution from.}
 
-\item{MlflowExperimentName}{The MLflow experiment name of the start execution.}
+\item{MlflowExperimentName}{The MLflow experiment name of the pipeline execution.}
 }
 \description{
 Starts a pipeline execution.

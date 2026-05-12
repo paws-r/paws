@@ -7,12 +7,13 @@
 datazone_create_connection(
   awsLocation = NULL,
   clientToken = NULL,
+  configurations = NULL,
   description = NULL,
   domainIdentifier,
-  enableTrustedIdentityPropagation = NULL,
   environmentIdentifier = NULL,
   name,
   props = NULL,
+  enableTrustedIdentityPropagation = NULL,
   scope = NULL
 )
 }
@@ -22,17 +23,19 @@ datazone_create_connection(
 \item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
 idempotency of the request.}
 
+\item{configurations}{The configurations of the connection.}
+
 \item{description}{A connection description.}
 
 \item{domainIdentifier}{[required] The ID of the domain where the connection is created.}
-
-\item{enableTrustedIdentityPropagation}{Specifies whether the trusted identity propagation is enabled.}
 
 \item{environmentIdentifier}{The ID of the environment where the connection is created.}
 
 \item{name}{[required] The connection name.}
 
 \item{props}{The connection props.}
+
+\item{enableTrustedIdentityPropagation}{Specifies whether the trusted identity propagation is enabled.}
 
 \item{scope}{The scope of the connection.}
 }

@@ -53,74 +53,75 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Security Hub provides you with a comprehensive view of your security
-state in Amazon Web Services and helps you assess your Amazon Web
-Services environment against security industry standards and best
+Security Hub CSPM provides you with a comprehensive view of your
+security state in Amazon Web Services and helps you assess your Amazon
+Web Services environment against security industry standards and best
 practices.
 
-Security Hub collects security data across Amazon Web Services accounts,
-Amazon Web Services services, and supported third-party products and
-helps you analyze your security trends and identify the highest priority
-security issues.
+Security Hub CSPM collects security data across Amazon Web Services
+accounts, Amazon Web Services services, and supported third-party
+products and helps you analyze your security trends and identify the
+highest priority security issues.
 
 To help you manage the security state of your organization, Security Hub
-supports multiple security standards. These include the Amazon Web
+CSPM supports multiple security standards. These include the Amazon Web
 Services Foundational Security Best Practices (FSBP) standard developed
 by Amazon Web Services, and external compliance frameworks such as the
 Center for Internet Security (CIS), the Payment Card Industry Data
 Security Standard (PCI DSS), and the National Institute of Standards and
 Technology (NIST). Each standard includes several security controls,
-each of which represents a security best practice. Security Hub runs
-checks against security controls and generates control findings to help
-you assess your compliance against security best practices.
+each of which represents a security best practice. Security Hub CSPM
+runs checks against security controls and generates control findings to
+help you assess your compliance against security best practices.
 
-In addition to generating control findings, Security Hub also receives
-findings from other Amazon Web Services services, such as Amazon
-GuardDuty and Amazon Inspector, and supported third-party products. This
-gives you a single pane of glass into a variety of security-related
-issues. You can also send Security Hub findings to other Amazon Web
-Services services and supported third-party products.
+In addition to generating control findings, Security Hub CSPM also
+receives findings from other Amazon Web Services services, such as
+Amazon GuardDuty and Amazon Inspector, and supported third-party
+products. This gives you a single pane of glass into a variety of
+security-related issues. You can also send Security Hub CSPM findings to
+other Amazon Web Services services and supported third-party products.
 
-Security Hub offers automation features that help you triage and
+Security Hub CSPM offers automation features that help you triage and
 remediate security issues. For example, you can use automation rules to
 automatically update critical findings when a security check fails. You
 can also leverage the integration with Amazon EventBridge to trigger
 automatic responses to specific findings.
 
-This guide, the \emph{Security Hub API Reference}, provides information about
-the Security Hub API. This includes supported resources, HTTP methods,
-parameters, and schemas. If you're new to Security Hub, you might find
-it helpful to also review the \href{https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html}{\emph{Security Hub User Guide}}
+This guide, the \emph{Security Hub CSPM API Reference}, provides information
+about the Security Hub CSPM API. This includes supported resources, HTTP
+methods, parameters, and schemas. If you're new to Security Hub CSPM,
+you might find it helpful to also review the \href{https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html}{\emph{Security Hub CSPM User Guide}}
 . The user guide explains key concepts and provides procedures that
-demonstrate how to use Security Hub features. It also provides
-information about topics such as integrating Security Hub with other
-Amazon Web Services services.
+demonstrate how to use Security Hub CSPM features. It also provides
+information about topics such as integrating Security Hub CSPM with
+other Amazon Web Services services.
 
-In addition to interacting with Security Hub by making calls to the
-Security Hub API, you can use a current version of an Amazon Web
+In addition to interacting with Security Hub CSPM by making calls to the
+Security Hub CSPM API, you can use a current version of an Amazon Web
 Services command line tool or SDK. Amazon Web Services provides tools
 and SDKs that consist of libraries and sample code for various languages
 and platforms, such as PowerShell, Java, Go, Python, C++, and .NET.
 These tools and SDKs provide convenient, programmatic access to Security
-Hub and other Amazon Web Services services . They also handle tasks such
-as signing requests, managing errors, and retrying requests
+Hub CSPM and other Amazon Web Services services . They also handle tasks
+such as signing requests, managing errors, and retrying requests
 automatically. For information about installing and using the Amazon Web
 Services tools and SDKs, see \href{https://builder.aws.com/build/tools}{Tools to Build on Amazon Web Services}.
 
 With the exception of operations that are related to central
-configuration, Security Hub API requests are executed only in the Amazon
-Web Services Region that is currently active or in the specific Amazon
-Web Services Region that you specify in your request. Any configuration
-or settings change that results from the operation is applied only to
-that Region. To make the same change in other Regions, call the same API
-operation in each Region in which you want to apply the change. When you
-use central configuration, API requests for enabling Security Hub,
-standards, and controls are executed in the home Region and all linked
-Regions. For a list of central configuration operations, see the
-\href{https://docs.aws.amazon.com/securityhub/latest/userguide/central-configuration-intro.html#central-configuration-concepts}{Central configuration terms and concepts}
-section of the \emph{Security Hub User Guide}.
+configuration, Security Hub CSPM API requests are executed only in the
+Amazon Web Services Region that is currently active or in the specific
+Amazon Web Services Region that you specify in your request. Any
+configuration or settings change that results from the operation is
+applied only to that Region. To make the same change in other Regions,
+call the same API operation in each Region in which you want to apply
+the change. When you use central configuration, API requests for
+enabling Security Hub CSPM, standards, and controls are executed in the
+home Region and all linked Regions. For a list of central configuration
+operations, see the \href{https://docs.aws.amazon.com/securityhub/latest/userguide/central-configuration-intro.html#central-configuration-concepts}{Central configuration terms and concepts}
+section of the \emph{Security Hub CSPM User Guide}.
 
-The following throttling limits apply to Security Hub API operations.
+The following throttling limits apply to Security Hub CSPM API
+operations.
 \itemize{
 \item \code{\link[=securityhub_batch_enable_standards]{batch_enable_standards}} -
 \code{RateLimit} of 1 request per second. \code{BurstLimit} of 1 request per
@@ -179,60 +180,61 @@ second.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=securityhub_accept_administrator_invitation]{accept_administrator_invitation} \tab We recommend using Organizations instead of Security Hub invitations to manage your member accounts\cr
+\link[=securityhub_accept_administrator_invitation]{accept_administrator_invitation} \tab We recommend using Organizations instead of Security Hub CSPM invitations to manage your member accounts\cr
 \link[=securityhub_accept_invitation]{accept_invitation} \tab This method is deprecated\cr
 \link[=securityhub_batch_delete_automation_rules]{batch_delete_automation_rules} \tab Deletes one or more automation rules\cr
 \link[=securityhub_batch_disable_standards]{batch_disable_standards} \tab Disables the standards specified by the provided StandardsSubscriptionArns\cr
 \link[=securityhub_batch_enable_standards]{batch_enable_standards} \tab Enables the standards specified by the provided StandardsArn\cr
 \link[=securityhub_batch_get_automation_rules]{batch_get_automation_rules} \tab Retrieves a list of details for automation rules based on rule Amazon Resource Names (ARNs)\cr
-\link[=securityhub_batch_get_configuration_policy_associations]{batch_get_configuration_policy_associations} \tab Returns associations between an Security Hub configuration and a batch of target accounts, organizational units, or the root\cr
+\link[=securityhub_batch_get_configuration_policy_associations]{batch_get_configuration_policy_associations} \tab Returns associations between an Security Hub CSPM configuration and a batch of target accounts, organizational units, or the root\cr
 \link[=securityhub_batch_get_security_controls]{batch_get_security_controls} \tab Provides details about a batch of security controls for the current Amazon Web Services account and Amazon Web Services Region\cr
 \link[=securityhub_batch_get_standards_control_associations]{batch_get_standards_control_associations} \tab For a batch of security controls and standards, identifies whether each control is currently enabled or disabled in a standard\cr
-\link[=securityhub_batch_import_findings]{batch_import_findings} \tab Imports security findings generated by a finding provider into Security Hub\cr
+\link[=securityhub_batch_import_findings]{batch_import_findings} \tab Imports security findings generated by a finding provider into Security Hub CSPM\cr
 \link[=securityhub_batch_update_automation_rules]{batch_update_automation_rules} \tab Updates one or more automation rules based on rule Amazon Resource Names (ARNs) and input parameters\cr
-\link[=securityhub_batch_update_findings]{batch_update_findings} \tab Used by Security Hub customers to update information about their investigation into one or more findings\cr
-\link[=securityhub_batch_update_findings_v2]{batch_update_findings_v2} \tab Used by customers to update information about their investigation into a finding\cr
+\link[=securityhub_batch_update_findings]{batch_update_findings} \tab Used by Security Hub CSPM customers to update information about their investigation into one or more findings\cr
+\link[=securityhub_batch_update_findings_v2]{batch_update_findings_v2} \tab Updates information about a customer's investigation into a finding\cr
 \link[=securityhub_batch_update_standards_control_associations]{batch_update_standards_control_associations} \tab For a batch of security controls and standards, this operation updates the enablement status of a control in a standard\cr
-\link[=securityhub_create_action_target]{create_action_target} \tab Creates a custom action target in Security Hub\cr
+\link[=securityhub_create_action_target]{create_action_target} \tab Creates a custom action target in Security Hub CSPM\cr
 \link[=securityhub_create_aggregator_v2]{create_aggregator_v2} \tab Enables aggregation across Amazon Web Services Regions\cr
 \link[=securityhub_create_automation_rule]{create_automation_rule} \tab Creates an automation rule based on input parameters\cr
 \link[=securityhub_create_automation_rule_v2]{create_automation_rule_v2} \tab Creates a V2 automation rule\cr
 \link[=securityhub_create_configuration_policy]{create_configuration_policy} \tab Creates a configuration policy with the defined configuration\cr
 \link[=securityhub_create_connector_v2]{create_connector_v2} \tab Grants permission to create a connectorV2 based on input parameters\cr
 \link[=securityhub_create_finding_aggregator]{create_finding_aggregator} \tab The aggregation Region is now called the home Region\cr
-\link[=securityhub_create_insight]{create_insight} \tab Creates a custom insight in Security Hub\cr
-\link[=securityhub_create_members]{create_members} \tab Creates a member association in Security Hub between the specified accounts and the account used to make the request, which is the administrator account\cr
+\link[=securityhub_create_insight]{create_insight} \tab Creates a custom insight in Security Hub CSPM\cr
+\link[=securityhub_create_members]{create_members} \tab Creates a member association in Security Hub CSPM between the specified accounts and the account used to make the request, which is the administrator account\cr
 \link[=securityhub_create_ticket_v2]{create_ticket_v2} \tab Grants permission to create a ticket in the chosen ITSM based on finding information for the provided finding metadata UID\cr
-\link[=securityhub_decline_invitations]{decline_invitations} \tab We recommend using Organizations instead of Security Hub invitations to manage your member accounts\cr
-\link[=securityhub_delete_action_target]{delete_action_target} \tab Deletes a custom action target from Security Hub\cr
+\link[=securityhub_decline_invitations]{decline_invitations} \tab We recommend using Organizations instead of Security Hub CSPM invitations to manage your member accounts\cr
+\link[=securityhub_delete_action_target]{delete_action_target} \tab Deletes a custom action target from Security Hub CSPM\cr
 \link[=securityhub_delete_aggregator_v2]{delete_aggregator_v2} \tab Deletes the Aggregator V2\cr
 \link[=securityhub_delete_automation_rule_v2]{delete_automation_rule_v2} \tab Deletes a V2 automation rule\cr
 \link[=securityhub_delete_configuration_policy]{delete_configuration_policy} \tab Deletes a configuration policy\cr
 \link[=securityhub_delete_connector_v2]{delete_connector_v2} \tab Grants permission to delete a connectorV2\cr
 \link[=securityhub_delete_finding_aggregator]{delete_finding_aggregator} \tab The aggregation Region is now called the home Region\cr
 \link[=securityhub_delete_insight]{delete_insight} \tab Deletes the insight specified by the InsightArn\cr
-\link[=securityhub_delete_invitations]{delete_invitations} \tab We recommend using Organizations instead of Security Hub invitations to manage your member accounts\cr
-\link[=securityhub_delete_members]{delete_members} \tab Deletes the specified member accounts from Security Hub\cr
-\link[=securityhub_describe_action_targets]{describe_action_targets} \tab Returns a list of the custom action targets in Security Hub in your account\cr
-\link[=securityhub_describe_hub]{describe_hub} \tab Returns details about the Hub resource in your account, including the HubArn and the time when you enabled Security Hub\cr
-\link[=securityhub_describe_organization_configuration]{describe_organization_configuration} \tab Returns information about the way your organization is configured in Security Hub\cr
-\link[=securityhub_describe_products]{describe_products} \tab Returns information about product integrations in Security Hub\cr
+\link[=securityhub_delete_invitations]{delete_invitations} \tab We recommend using Organizations instead of Security Hub CSPM invitations to manage your member accounts\cr
+\link[=securityhub_delete_members]{delete_members} \tab Deletes the specified member accounts from Security Hub CSPM\cr
+\link[=securityhub_describe_action_targets]{describe_action_targets} \tab Returns a list of the custom action targets in Security Hub CSPM in your account\cr
+\link[=securityhub_describe_hub]{describe_hub} \tab Returns details about the Hub resource in your account, including the HubArn and the time when you enabled Security Hub CSPM\cr
+\link[=securityhub_describe_organization_configuration]{describe_organization_configuration} \tab Returns information about the way your organization is configured in Security Hub CSPM\cr
+\link[=securityhub_describe_products]{describe_products} \tab Returns information about product integrations in Security Hub CSPM\cr
 \link[=securityhub_describe_products_v2]{describe_products_v2} \tab Gets information about the product integration\cr
 \link[=securityhub_describe_security_hub_v2]{describe_security_hub_v2} \tab Returns details about the service resource in your account\cr
-\link[=securityhub_describe_standards]{describe_standards} \tab Returns a list of the available standards in Security Hub\cr
+\link[=securityhub_describe_standards]{describe_standards} \tab Returns a list of the available standards in Security Hub CSPM\cr
 \link[=securityhub_describe_standards_controls]{describe_standards_controls} \tab Returns a list of security standards controls\cr
-\link[=securityhub_disable_import_findings_for_product]{disable_import_findings_for_product} \tab Disables the integration of the specified product with Security Hub\cr
-\link[=securityhub_disable_organization_admin_account]{disable_organization_admin_account} \tab Disables a Security Hub administrator account\cr
-\link[=securityhub_disable_security_hub]{disable_security_hub} \tab Disables Security Hub in your account only in the current Amazon Web Services Region\cr
+\link[=securityhub_disable_import_findings_for_product]{disable_import_findings_for_product} \tab Disables the integration of the specified product with Security Hub CSPM\cr
+\link[=securityhub_disable_organization_admin_account]{disable_organization_admin_account} \tab Disables a Security Hub CSPM administrator account\cr
+\link[=securityhub_disable_security_hub]{disable_security_hub} \tab Disables Security Hub CSPM in your account only in the current Amazon Web Services Region\cr
 \link[=securityhub_disable_security_hub_v2]{disable_security_hub_v2} \tab Disable the service for the current Amazon Web Services Region or specified Amazon Web Services Region\cr
-\link[=securityhub_disassociate_from_administrator_account]{disassociate_from_administrator_account} \tab Disassociates the current Security Hub member account from the associated administrator account\cr
+\link[=securityhub_disassociate_from_administrator_account]{disassociate_from_administrator_account} \tab Disassociates the current Security Hub CSPM member account from the associated administrator account\cr
 \link[=securityhub_disassociate_from_master_account]{disassociate_from_master_account} \tab This method is deprecated\cr
 \link[=securityhub_disassociate_members]{disassociate_members} \tab Disassociates the specified member accounts from the associated administrator account\cr
-\link[=securityhub_enable_import_findings_for_product]{enable_import_findings_for_product} \tab Enables the integration of a partner product with Security Hub\cr
-\link[=securityhub_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates the Security Hub administrator account for an organization\cr
-\link[=securityhub_enable_security_hub]{enable_security_hub} \tab Enables Security Hub for your account in the current Region or the Region you specify in the request\cr
+\link[=securityhub_enable_import_findings_for_product]{enable_import_findings_for_product} \tab Enables the integration of a partner product with Security Hub CSPM\cr
+\link[=securityhub_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates the Security Hub CSPM administrator account for an organization\cr
+\link[=securityhub_enable_security_hub]{enable_security_hub} \tab Enables Security Hub CSPM for your account in the current Region or the Region you specify in the request\cr
 \link[=securityhub_enable_security_hub_v2]{enable_security_hub_v2} \tab Enables the service in account for the current Amazon Web Services Region or specified Amazon Web Services Region\cr
-\link[=securityhub_get_administrator_account]{get_administrator_account} \tab Provides the details for the Security Hub administrator account for the current member account\cr
+\link[=securityhub_generate_recommended_policy_v2]{generate_recommended_policy_v2} \tab Begins the recommended policy generation to remediate a Security Hub finding\cr
+\link[=securityhub_get_administrator_account]{get_administrator_account} \tab Provides the details for the Security Hub CSPM administrator account for the current member account\cr
 \link[=securityhub_get_aggregator_v2]{get_aggregator_v2} \tab Returns the configuration of the specified Aggregator V2\cr
 \link[=securityhub_get_automation_rule_v2]{get_automation_rule_v2} \tab Returns an automation rule for the V2 service\cr
 \link[=securityhub_get_configuration_policy]{get_configuration_policy} \tab Provides information about a configuration policy\cr
@@ -240,32 +242,33 @@ second.
 \link[=securityhub_get_connector_v2]{get_connector_v2} \tab Grants permission to retrieve details for a connectorV2 based on connector id\cr
 \link[=securityhub_get_enabled_standards]{get_enabled_standards} \tab Returns a list of the standards that are currently enabled\cr
 \link[=securityhub_get_finding_aggregator]{get_finding_aggregator} \tab The aggregation Region is now called the home Region\cr
-\link[=securityhub_get_finding_history]{get_finding_history} \tab Returns the history of a Security Hub finding\cr
+\link[=securityhub_get_finding_history]{get_finding_history} \tab Returns the history of a Security Hub CSPM finding\cr
 \link[=securityhub_get_findings]{get_findings} \tab Returns a list of findings that match the specified criteria\cr
 \link[=securityhub_get_finding_statistics_v2]{get_finding_statistics_v2} \tab Returns aggregated statistical data about findings\cr
 \link[=securityhub_get_findings_trends_v2]{get_findings_trends_v2} \tab Returns findings trend data based on the specified criteria\cr
-\link[=securityhub_get_findings_v2]{get_findings_v2} \tab Return a list of findings that match the specified criteria\cr
-\link[=securityhub_get_insight_results]{get_insight_results} \tab Lists the results of the Security Hub insight specified by the insight ARN\cr
+\link[=securityhub_get_findings_v2]{get_findings_v2} \tab Returns a list of findings that match the specified criteria\cr
+\link[=securityhub_get_insight_results]{get_insight_results} \tab Lists the results of the Security Hub CSPM insight specified by the insight ARN\cr
 \link[=securityhub_get_insights]{get_insights} \tab Lists and describes insights for the specified insight ARNs\cr
-\link[=securityhub_get_invitations_count]{get_invitations_count} \tab We recommend using Organizations instead of Security Hub invitations to manage your member accounts\cr
+\link[=securityhub_get_invitations_count]{get_invitations_count} \tab We recommend using Organizations instead of Security Hub CSPM invitations to manage your member accounts\cr
 \link[=securityhub_get_master_account]{get_master_account} \tab This method is deprecated\cr
-\link[=securityhub_get_members]{get_members} \tab Returns the details for the Security Hub member accounts for the specified account IDs\cr
+\link[=securityhub_get_members]{get_members} \tab Returns the details for the Security Hub CSPM member accounts for the specified account IDs\cr
+\link[=securityhub_get_recommended_policy_v2]{get_recommended_policy_v2} \tab Retrieves the recommended policy to remediate a Security Hub finding\cr
 \link[=securityhub_get_resources_statistics_v2]{get_resources_statistics_v2} \tab Retrieves statistical information about Amazon Web Services resources and their associated security findings\cr
 \link[=securityhub_get_resources_trends_v2]{get_resources_trends_v2} \tab Returns resource trend data based on the specified criteria\cr
 \link[=securityhub_get_resources_v2]{get_resources_v2} \tab Returns a list of resources\cr
 \link[=securityhub_get_security_control_definition]{get_security_control_definition} \tab Retrieves the definition of a security control\cr
-\link[=securityhub_invite_members]{invite_members} \tab We recommend using Organizations instead of Security Hub invitations to manage your member accounts\cr
+\link[=securityhub_invite_members]{invite_members} \tab We recommend using Organizations instead of Security Hub CSPM invitations to manage your member accounts\cr
 \link[=securityhub_list_aggregators_v2]{list_aggregators_v2} \tab Retrieves a list of V2 aggregators\cr
 \link[=securityhub_list_automation_rules]{list_automation_rules} \tab A list of automation rules and their metadata for the calling account\cr
 \link[=securityhub_list_automation_rules_v2]{list_automation_rules_v2} \tab Returns a list of automation rules and metadata for the calling account\cr
-\link[=securityhub_list_configuration_policies]{list_configuration_policies} \tab Lists the configuration policies that the Security Hub delegated administrator has created for your organization\cr
+\link[=securityhub_list_configuration_policies]{list_configuration_policies} \tab Lists the configuration policies that the Security Hub CSPM delegated administrator has created for your organization\cr
 \link[=securityhub_list_configuration_policy_associations]{list_configuration_policy_associations} \tab Provides information about the associations for your configuration policies and self-managed behavior\cr
 \link[=securityhub_list_connectors_v2]{list_connectors_v2} \tab Grants permission to retrieve a list of connectorsV2 and their metadata for the calling account\cr
-\link[=securityhub_list_enabled_products_for_import]{list_enabled_products_for_import} \tab Lists all findings-generating solutions (products) that you are subscribed to receive findings from in Security Hub\cr
+\link[=securityhub_list_enabled_products_for_import]{list_enabled_products_for_import} \tab Lists all findings-generating solutions (products) that you are subscribed to receive findings from in Security Hub CSPM\cr
 \link[=securityhub_list_finding_aggregators]{list_finding_aggregators} \tab If cross-Region aggregation is enabled, then ListFindingAggregators returns the Amazon Resource Name (ARN) of the finding aggregator\cr
-\link[=securityhub_list_invitations]{list_invitations} \tab We recommend using Organizations instead of Security Hub invitations to manage your member accounts\cr
-\link[=securityhub_list_members]{list_members} \tab Lists details about all member accounts for the current Security Hub administrator account\cr
-\link[=securityhub_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Lists the Security Hub administrator accounts\cr
+\link[=securityhub_list_invitations]{list_invitations} \tab We recommend using Organizations instead of Security Hub CSPM invitations to manage your member accounts\cr
+\link[=securityhub_list_members]{list_members} \tab Lists details about all member accounts for the current Security Hub CSPM administrator account\cr
+\link[=securityhub_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Lists the Security Hub CSPM administrator accounts\cr
 \link[=securityhub_list_security_control_definitions]{list_security_control_definitions} \tab Lists all of the security controls that apply to a specified standard\cr
 \link[=securityhub_list_standards_control_associations]{list_standards_control_associations} \tab Specifies whether a control is currently enabled or disabled in each enabled standard in the calling account\cr
 \link[=securityhub_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags associated with a resource\cr
@@ -274,17 +277,17 @@ second.
 \link[=securityhub_start_configuration_policy_disassociation]{start_configuration_policy_disassociation} \tab Disassociates a target account, organizational unit, or the root from a specified configuration\cr
 \link[=securityhub_tag_resource]{tag_resource} \tab Adds one or more tags to a resource\cr
 \link[=securityhub_untag_resource]{untag_resource} \tab Removes one or more tags from a resource\cr
-\link[=securityhub_update_action_target]{update_action_target} \tab Updates the name and description of a custom action target in Security Hub\cr
+\link[=securityhub_update_action_target]{update_action_target} \tab Updates the name and description of a custom action target in Security Hub CSPM\cr
 \link[=securityhub_update_aggregator_v2]{update_aggregator_v2} \tab Udpates the configuration for the Aggregator V2\cr
 \link[=securityhub_update_automation_rule_v2]{update_automation_rule_v2} \tab Updates a V2 automation rule\cr
 \link[=securityhub_update_configuration_policy]{update_configuration_policy} \tab Updates a configuration policy\cr
 \link[=securityhub_update_connector_v2]{update_connector_v2} \tab Grants permission to update a connectorV2 based on its id and input parameters\cr
 \link[=securityhub_update_finding_aggregator]{update_finding_aggregator} \tab The aggregation Region is now called the home Region\cr
 \link[=securityhub_update_findings]{update_findings} \tab UpdateFindings is a deprecated operation\cr
-\link[=securityhub_update_insight]{update_insight} \tab Updates the Security Hub insight identified by the specified insight ARN\cr
-\link[=securityhub_update_organization_configuration]{update_organization_configuration} \tab Updates the configuration of your organization in Security Hub\cr
+\link[=securityhub_update_insight]{update_insight} \tab Updates the Security Hub CSPM insight identified by the specified insight ARN\cr
+\link[=securityhub_update_organization_configuration]{update_organization_configuration} \tab Updates the configuration of your organization in Security Hub CSPM\cr
 \link[=securityhub_update_security_control]{update_security_control} \tab Updates the properties of a security control\cr
-\link[=securityhub_update_security_hub_configuration]{update_security_hub_configuration} \tab Updates configuration options for Security Hub\cr
+\link[=securityhub_update_security_hub_configuration]{update_security_hub_configuration} \tab Updates configuration options for Security Hub CSPM\cr
 \link[=securityhub_update_standards_control]{update_standards_control} \tab Used to control whether an individual security standard control is enabled or disabled
 }
 }

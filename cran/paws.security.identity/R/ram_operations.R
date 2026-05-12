@@ -51,11 +51,11 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 }
 .ram$operations$accept_resource_share_invitation <- ram_accept_resource_share_invitation
 
-#' Adds the specified list of principals and list of resources to a
-#' resource share
+#' Adds the specified list of principals, resources, and source constraints
+#' to a resource share
 #'
 #' @description
-#' Adds the specified list of principals and list of resources to a resource share. Principals that already have access to this resource share immediately receive access to the added resources. Newly added principals immediately receive access to the resources shared in this resource share.
+#' Adds the specified list of principals, resources, and source constraints to a resource share. Principals that already have access to this resource share immediately receive access to the added resources. Newly added principals immediately receive access to the resources shared in this resource share.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ram_associate_resource_share/](https://www.paws-r-sdk.com/docs/ram_associate_resource_share/) for full documentation.
 #'
@@ -90,6 +90,8 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' 
 #' -   An ARN of an IAM user, for example: `iam::123456789012user/username`
 #' 
+#' -   A service principal name, for example: `service-id.amazonaws.com`
+#' 
 #' Not all resource types can be shared with IAM roles and users. For more
 #' information, see [Sharing with IAM roles and
 #' users](https://docs.aws.amazon.com/ram/latest/userguide/#permissions-rbp-supported-resource-types)
@@ -108,8 +110,13 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' If you retry the operation with the same `ClientToken`, but with
 #' different parameters, the retry fails with an
 #' `IdempotentParameterMismatch` error.
-#' @param sources Specifies from which source accounts the service principal has access to
-#' the resources in this resource share.
+#' @param sources Specifies source constraints (accounts, ARNs, organization IDs, or
+#' organization paths) that limit when service principals can access
+#' resources in this resource share. When a service principal attempts to
+#' access a shared resource, validation is performed to ensure the request
+#' originates from one of the specified sources. This helps prevent
+#' confused deputy attacks by applying constraints on where service
+#' principals can access resources from.
 #'
 #' @keywords internal
 #'
@@ -220,10 +227,12 @@ ram_associate_resource_share_permission <- function(resourceShareArn, permission
 #' @param resourceType &#91;required&#93; Specifies the name of the resource type that this customer managed
 #' permission applies to.
 #' 
-#' The format is ` <service-code>:<resource-type> ` and is not case
-#' sensitive. For example, to specify an Amazon EC2 Subnet, you can use the
-#' string `ec2:subnet`. To see the list of valid values for this parameter,
-#' query the [`list_resource_types`][ram_list_resource_types] operation.
+#' The format is ` <service-code>:<resource-type> ` and is case sensitive.
+#' For example, to specify an Amazon EC2 Subnet, you can use the string
+#' `ec2:Subnet`. To see the list of valid values for this parameter, query
+#' the [`list_resource_types`][ram_list_resource_types] operation. This
+#' value must match the display name of the resource (available in
+#' [`list_resource_types`][ram_list_resource_types]).
 #' @param policyTemplate &#91;required&#93; A string in JSON format string that contains the following elements of a
 #' resource-based policy:
 #' 
@@ -365,7 +374,7 @@ ram_create_permission_version <- function(permissionArn, policyTemplate, clientT
 #' Creates a resource share
 #'
 #' @description
-#' Creates a resource share. You can provide a list of the [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) for the resources that you want to share, a list of principals you want to share the resources with, and the permissions to grant those principals.
+#' Creates a resource share. You can provide a list of the [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) for the resources that you want to share, a list of principals you want to share the resources with, the permissions to grant those principals, and optionally source constraints to enhance security for service principal sharing.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ram_create_resource_share/](https://www.paws-r-sdk.com/docs/ram_create_resource_share/) for full documentation.
 #'
@@ -391,6 +400,8 @@ ram_create_permission_version <- function(permissionArn, policyTemplate, clientT
 #'     `iam::123456789012:role/rolename`
 #' 
 #' -   An ARN of an IAM user, for example: `iam::123456789012user/username`
+#' 
+#' -   A service principal name, for example: `service-id.amazonaws.com`
 #' 
 #' Not all resource types can be shared with IAM roles and users. For more
 #' information, see [Sharing with IAM roles and
@@ -426,13 +437,19 @@ ram_create_permission_version <- function(permissionArn, policyTemplate, clientT
 #' default version of the permission for each resource type. You can
 #' associate only one permission with each resource type included in the
 #' resource share.
-#' @param sources Specifies from which source accounts the service principal has access to
-#' the resources in this resource share.
+#' @param sources Specifies source constraints (accounts, ARNs, organization IDs, or
+#' organization paths) that limit when service principals can access
+#' resources in this resource share. When a service principal attempts to
+#' access a shared resource, validation is performed to ensure the request
+#' originates from one of the specified sources. This helps prevent
+#' confused deputy attacks by applying constraints on where service
+#' principals can access resources from.
+#' @param resourceShareConfiguration Specifies the configuration of this resource share.
 #'
 #' @keywords internal
 #'
 #' @rdname ram_create_resource_share
-ram_create_resource_share <- function(name, resourceArns = NULL, principals = NULL, tags = NULL, allowExternalPrincipals = NULL, clientToken = NULL, permissionArns = NULL, sources = NULL) {
+ram_create_resource_share <- function(name, resourceArns = NULL, principals = NULL, tags = NULL, allowExternalPrincipals = NULL, clientToken = NULL, permissionArns = NULL, sources = NULL, resourceShareConfiguration = NULL) {
   op <- new_operation(
     name = "CreateResourceShare",
     http_method = "POST",
@@ -441,7 +458,7 @@ ram_create_resource_share <- function(name, resourceArns = NULL, principals = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ram$create_resource_share_input(name = name, resourceArns = resourceArns, principals = principals, tags = tags, allowExternalPrincipals = allowExternalPrincipals, clientToken = clientToken, permissionArns = permissionArns, sources = sources)
+  input <- .ram$create_resource_share_input(name = name, resourceArns = resourceArns, principals = principals, tags = tags, allowExternalPrincipals = allowExternalPrincipals, clientToken = clientToken, permissionArns = permissionArns, sources = sources, resourceShareConfiguration = resourceShareConfiguration)
   output <- .ram$create_resource_share_output()
   config <- get_config()
   svc <- .ram$service(config, op)
@@ -608,11 +625,11 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 }
 .ram$operations$delete_resource_share <- ram_delete_resource_share
 
-#' Removes the specified principals or resources from participating in the
-#' specified resource share
+#' Removes the specified principals, resources, or source constraints from
+#' participating in the specified resource share
 #'
 #' @description
-#' Removes the specified principals or resources from participating in the specified resource share.
+#' Removes the specified principals, resources, or source constraints from participating in the specified resource share.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ram_disassociate_resource_share/](https://www.paws-r-sdk.com/docs/ram_disassociate_resource_share/) for full documentation.
 #'
@@ -645,6 +662,8 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 #' 
 #' -   An ARN of an IAM user, for example: `iam::123456789012user/username`
 #' 
+#' -   A service principal name, for example: `service-id.amazonaws.com`
+#' 
 #' Not all resource types can be shared with IAM roles and users. For more
 #' information, see [Sharing with IAM roles and
 #' users](https://docs.aws.amazon.com/ram/latest/userguide/#permissions-rbp-supported-resource-types)
@@ -663,8 +682,11 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 #' If you retry the operation with the same `ClientToken`, but with
 #' different parameters, the retry fails with an
 #' `IdempotentParameterMismatch` error.
-#' @param sources Specifies from which source accounts the service principal no longer has
-#' access to the resources in this resource share.
+#' @param sources Specifies source constraints (accounts, ARNs, organization IDs, or
+#' organization paths) to remove from the resource share. This enables
+#' granular management of source constraints while maintaining service
+#' principal associations. At least one source must remain when service
+#' principals are present.
 #'
 #' @keywords internal
 #'
@@ -1337,6 +1359,8 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
 #' 
 #' -   An ARN of an IAM user, for example: `iam::123456789012user/username`
 #' 
+#' -   A service principal name, for example: `service-id.amazonaws.com`
+#' 
 #' Not all resource types can be shared with IAM roles and users. For more
 #' information, see [Sharing with IAM roles and
 #' users](https://docs.aws.amazon.com/ram/latest/userguide/#permissions-rbp-supported-resource-types)
@@ -1626,6 +1650,47 @@ ram_list_resources <- function(resourceOwner, principal = NULL, resourceType = N
   return(response)
 }
 .ram$operations$list_resources <- ram_list_resources
+
+#' Lists source associations for resource shares
+#'
+#' @description
+#' Lists source associations for resource shares. Source associations control which sources can be used with service principals in resource shares. This operation provides visibility into source associations for resource share owners.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ram_list_source_associations/](https://www.paws-r-sdk.com/docs/ram_list_source_associations/) for full documentation.
+#'
+#' @param resourceShareArns The Amazon Resource Names (ARNs) of the resource shares for which you
+#' want to retrieve source associations.
+#' @param sourceId The identifier of the source for which you want to retrieve
+#' associations. This can be an account ID, Amazon Resource Name (ARN),
+#' organization ID, or organization path.
+#' @param sourceType The type of source for which you want to retrieve associations.
+#' @param associationStatus The status of the source associations that you want to retrieve.
+#' @param nextToken The pagination token that indicates the next set of results to retrieve.
+#' @param maxResults The maximum number of results to return in a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#'
+#' @keywords internal
+#'
+#' @rdname ram_list_source_associations
+ram_list_source_associations <- function(resourceShareArns = NULL, sourceId = NULL, sourceType = NULL, associationStatus = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListSourceAssociations",
+    http_method = "POST",
+    http_path = "/listsourceassociations",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sourceAssociations"),
+    stream_api = FALSE
+  )
+  input <- .ram$list_source_associations_input(resourceShareArns = resourceShareArns, sourceId = sourceId, sourceType = sourceType, associationStatus = associationStatus, nextToken = nextToken, maxResults = maxResults)
+  output <- .ram$list_source_associations_output()
+  config <- get_config()
+  svc <- .ram$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$list_source_associations <- ram_list_source_associations
 
 #' When you attach a resource-based policy to a resource, RAM automatically
 #' creates a resource share of featureSet=CREATED_FROM_POLICY with a

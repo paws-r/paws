@@ -5,27 +5,27 @@
 \title{Creates a metadata form type}
 \usage{
 datazone_create_form_type(
-  description = NULL,
   domainIdentifier,
-  model,
   name,
+  model,
   owningProjectIdentifier,
-  status = NULL
+  status = NULL,
+  description = NULL
 )
 }
 \arguments{
-\item{description}{The description of this Amazon DataZone metadata form type.}
-
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain in which this metadata form type is
 created.}
 
-\item{model}{[required] The model of this Amazon DataZone metadata form type.}
-
 \item{name}{[required] The name of this Amazon DataZone metadata form type.}
+
+\item{model}{[required] The model of this Amazon DataZone metadata form type.}
 
 \item{owningProjectIdentifier}{[required] The ID of the Amazon DataZone project that owns this metadata form type.}
 
 \item{status}{The status of this Amazon DataZone metadata form type.}
+
+\item{description}{The description of this Amazon DataZone metadata form type.}
 }
 \description{
 Creates a metadata form type.

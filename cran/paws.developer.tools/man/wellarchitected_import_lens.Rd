@@ -12,8 +12,6 @@ wellarchitected_import_lens(
 )
 }
 \arguments{
-\item{LensAlias}{}
-
 \item{JSONString}{[required] The JSON representation of a lens.}
 
 \item{ClientRequestToken}{[required]}

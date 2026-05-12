@@ -5,18 +5,18 @@
 \title{Updates the domain unit}
 \usage{
 datazone_update_domain_unit(
-  description = NULL,
   domainIdentifier,
   identifier,
+  description = NULL,
   name = NULL
 )
 }
 \arguments{
-\item{description}{The description of the domain unit that you want to update.}
-
 \item{domainIdentifier}{[required] The ID of the domain where you want to update a domain unit.}
 
 \item{identifier}{[required] The ID of the domain unit that you want to update.}
+
+\item{description}{The description of the domain unit that you want to update.}
 
 \item{name}{The name of the domain unit that you want to update.}
 }

@@ -37,7 +37,7 @@ universally unique identifier (UUID) of a configuration,
 \code{AssociationType}, or \code{AssociationStatus}.}
 }
 \description{
-Provides information about the associations for your configuration policies and self-managed behavior. Only the Security Hub delegated administrator can invoke this operation from the home Region.
+Provides information about the associations for your configuration policies and self-managed behavior. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_list_configuration_policy_associations/} for full documentation.
 }

@@ -3,6 +3,78 @@
 #' @include ssoadmin_service.R
 NULL
 
+#' Adds a Region to an IAM Identity Center instance
+#'
+#' @description
+#' Adds a Region to an IAM Identity Center instance. This operation
+#' initiates an asynchronous workflow to replicate the IAM Identity Center
+#' instance to the target Region. The Region status is set to ADDING at
+#' first and changes to ACTIVE when the workflow completes.
+#' 
+#' To use this operation, your IAM Identity Center instance and the target
+#' Region must meet the requirements described in the [IAM Identity Center
+#' User
+#' Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/multi-region-iam-identity-center.html#multi-region-prerequisites).
+#' 
+#' The following actions are related to
+#' [`add_region`][ssoadmin_add_region]:
+#' 
+#' -   [`remove_region`][ssoadmin_remove_region]
+#' 
+#' -   [`describe_region`][ssoadmin_describe_region]
+#' 
+#' -   [`list_regions`][ssoadmin_list_regions]
+#'
+#' @usage
+#' ssoadmin_add_region(InstanceArn, RegionName)
+#'
+#' @param InstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM Identity Center instance to
+#' replicate to the target Region.
+#' @param RegionName &#91;required&#93; The name of the Amazon Web Services Region to add to the IAM Identity
+#' Center instance. The Region name must be 1-32 characters long and follow
+#' the pattern of Amazon Web Services Region names (for example,
+#' us-east-1).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "ACTIVE"|"ADDING"|"REMOVING"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_region(
+#'   InstanceArn = "string",
+#'   RegionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssoadmin_add_region
+#'
+#' @aliases ssoadmin_add_region
+ssoadmin_add_region <- function(InstanceArn, RegionName) {
+  op <- new_operation(
+    name = "AddRegion",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssoadmin$add_region_input(InstanceArn = InstanceArn, RegionName = RegionName)
+  output <- .ssoadmin$add_region_output()
+  config <- get_config()
+  svc <- .ssoadmin$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssoadmin$operations$add_region <- ssoadmin_add_region
+
 #' Attaches the specified customer managed policy to the specified
 #' PermissionSet
 #'
@@ -273,7 +345,9 @@ ssoadmin_create_account_assignment <- function(InstanceArn, TargetId, TargetType
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   ApplicationArn = "string"
+#'   ApplicationArn = "string",
+#'   InstanceArn = "string",
+#'   IdentityStoreArn = "string"
 #' )
 #' ```
 #'
@@ -341,7 +415,7 @@ ssoadmin_create_application <- function(InstanceArn, ApplicationProviderArn, Nam
 #' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
 #' PrincipalIds in IAM Identity Center, see the [IAM Identity Center
 #' Identity Store API
-#' Reference](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html).
+#' Reference](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/).
 #' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be created.
 #'
 #' @return
@@ -916,7 +990,7 @@ ssoadmin_delete_application_access_scope <- function(ApplicationArn, Scope) {
 #' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
 #' PrincipalIds in IAM Identity Center, see the [IAM Identity Center
 #' Identity Store API
-#' Reference](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html).
+#' Reference](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/).
 #' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be deleted.
 #'
 #' @return
@@ -1505,6 +1579,7 @@ ssoadmin_describe_account_assignment_deletion_status <- function(InstanceArn, Ac
 #'   Name = "string",
 #'   ApplicationAccount = "string",
 #'   InstanceArn = "string",
+#'   IdentityStoreArn = "string",
 #'   Status = "ENABLED"|"DISABLED",
 #'   PortalOptions = list(
 #'     SignInOptions = list(
@@ -1516,7 +1591,8 @@ ssoadmin_describe_account_assignment_deletion_status <- function(InstanceArn, Ac
 #'   Description = "string",
 #'   CreatedDate = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   CreatedFrom = "string"
 #' )
 #' ```
 #'
@@ -1573,7 +1649,7 @@ ssoadmin_describe_application <- function(ApplicationArn) {
 #' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
 #' PrincipalIds in IAM Identity Center, see the [IAM Identity Center
 #' Identity Store API
-#' Reference](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html).
+#' Reference](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/).
 #' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be created.
 #'
 #' @return
@@ -1962,6 +2038,78 @@ ssoadmin_describe_permission_set_provisioning_status <- function(InstanceArn, Pr
   return(response)
 }
 .ssoadmin$operations$describe_permission_set_provisioning_status <- ssoadmin_describe_permission_set_provisioning_status
+
+#' Retrieves details about a specific Region enabled in an IAM Identity
+#' Center instance
+#'
+#' @description
+#' Retrieves details about a specific Region enabled in an IAM Identity
+#' Center instance. Details include the Region name, current status
+#' (ACTIVE, ADDING, or REMOVING), the date when the Region was added, and
+#' whether it is the primary Region. The request must be made from one of
+#' the enabled Regions of the IAM Identity Center instance.
+#' 
+#' The following actions are related to
+#' [`describe_region`][ssoadmin_describe_region]:
+#' 
+#' -   [AddRegion](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AddRegion.html)
+#' 
+#' -   [`remove_region`][ssoadmin_remove_region]
+#' 
+#' -   [`list_regions`][ssoadmin_list_regions]
+#'
+#' @usage
+#' ssoadmin_describe_region(InstanceArn, RegionName)
+#'
+#' @param InstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM Identity Center instance.
+#' @param RegionName &#91;required&#93; The name of the Amazon Web Services Region to retrieve information
+#' about. The Region name must be 1-32 characters long and follow the
+#' pattern of Amazon Web Services Region names (for example, us-east-1).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegionName = "string",
+#'   Status = "ACTIVE"|"ADDING"|"REMOVING",
+#'   AddedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   IsPrimaryRegion = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_region(
+#'   InstanceArn = "string",
+#'   RegionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssoadmin_describe_region
+#'
+#' @aliases ssoadmin_describe_region
+ssoadmin_describe_region <- function(InstanceArn, RegionName) {
+  op <- new_operation(
+    name = "DescribeRegion",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssoadmin$describe_region_input(InstanceArn = InstanceArn, RegionName = RegionName)
+  output <- .ssoadmin$describe_region_output()
+  config <- get_config()
+  svc <- .ssoadmin$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssoadmin$operations$describe_region <- ssoadmin_describe_region
 
 #' Retrieves details about a trusted token issuer configuration stored in
 #' an instance of IAM Identity Center
@@ -3437,6 +3585,7 @@ ssoadmin_list_application_providers <- function(MaxResults = NULL, NextToken = N
 #'       Name = "string",
 #'       ApplicationAccount = "string",
 #'       InstanceArn = "string",
+#'       IdentityStoreArn = "string",
 #'       Status = "ENABLED"|"DISABLED",
 #'       PortalOptions = list(
 #'         SignInOptions = list(
@@ -3448,7 +3597,8 @@ ssoadmin_list_application_providers <- function(MaxResults = NULL, NextToken = N
 #'       Description = "string",
 #'       CreatedDate = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       CreatedFrom = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3895,6 +4045,83 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(InstanceArn, Ac
   return(response)
 }
 .ssoadmin$operations$list_permission_sets_provisioned_to_account <- ssoadmin_list_permission_sets_provisioned_to_account
+
+#' Lists all enabled Regions of an IAM Identity Center instance, including
+#' those that are being added or removed
+#'
+#' @description
+#' Lists all enabled Regions of an IAM Identity Center instance, including
+#' those that are being added or removed. This operation returns Regions
+#' with ACTIVE, ADDING, or REMOVING status.
+#' 
+#' The following actions are related to
+#' [`list_regions`][ssoadmin_list_regions]:
+#' 
+#' -   [AddRegion](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AddRegion.html)
+#' 
+#' -   [`remove_region`][ssoadmin_remove_region]
+#' 
+#' -   [`describe_region`][ssoadmin_describe_region]
+#'
+#' @usage
+#' ssoadmin_list_regions(InstanceArn, MaxResults, NextToken)
+#'
+#' @param InstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM Identity Center instance.
+#' @param MaxResults The maximum number of results to return in a single call. Default is
+#' 100.
+#' @param NextToken The pagination token for the list API. Initially the value is null. Use
+#' the output of previous API calls to make subsequent calls.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Regions = list(
+#'     list(
+#'       RegionName = "string",
+#'       Status = "ACTIVE"|"ADDING"|"REMOVING",
+#'       AddedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       IsPrimaryRegion = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_regions(
+#'   InstanceArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssoadmin_list_regions
+#'
+#' @aliases ssoadmin_list_regions
+ssoadmin_list_regions <- function(InstanceArn, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRegions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Regions"),
+    stream_api = FALSE
+  )
+  input <- .ssoadmin$list_regions_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .ssoadmin$list_regions_output()
+  config <- get_config()
+  svc <- .ssoadmin$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssoadmin$operations$list_regions <- ssoadmin_list_regions
 
 #' Lists the tags that are attached to a specified resource
 #'
@@ -4570,6 +4797,75 @@ ssoadmin_put_permissions_boundary_to_permission_set <- function(InstanceArn, Per
 }
 .ssoadmin$operations$put_permissions_boundary_to_permission_set <- ssoadmin_put_permissions_boundary_to_permission_set
 
+#' Removes an additional Region from an IAM Identity Center instance
+#'
+#' @description
+#' Removes an additional Region from an IAM Identity Center instance. This
+#' operation initiates an asynchronous workflow to clean up IAM Identity
+#' Center resources in the specified additional Region. The Region status
+#' is set to REMOVING and the Region record is deleted when the workflow
+#' completes. The request must be made from the primary Region. The target
+#' Region cannot be the primary Region, and no other add or remove Region
+#' workflows can be in progress.
+#' 
+#' The following actions are related to
+#' [`remove_region`][ssoadmin_remove_region]:
+#' 
+#' -   [AddRegion](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AddRegion.html)
+#' 
+#' -   [`describe_region`][ssoadmin_describe_region]
+#' 
+#' -   [`list_regions`][ssoadmin_list_regions]
+#'
+#' @usage
+#' ssoadmin_remove_region(InstanceArn, RegionName)
+#'
+#' @param InstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM Identity Center instance.
+#' @param RegionName &#91;required&#93; The name of the Amazon Web Services Region to remove from the IAM
+#' Identity Center instance. The Region name must be 1-32 characters long
+#' and follow the pattern of Amazon Web Services Region names (for example,
+#' us-east-1). The primary Region cannot be removed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "ACTIVE"|"ADDING"|"REMOVING"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_region(
+#'   InstanceArn = "string",
+#'   RegionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssoadmin_remove_region
+#'
+#' @aliases ssoadmin_remove_region
+ssoadmin_remove_region <- function(InstanceArn, RegionName) {
+  op <- new_operation(
+    name = "RemoveRegion",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssoadmin$remove_region_input(InstanceArn = InstanceArn, RegionName = RegionName)
+  output <- .ssoadmin$remove_region_output()
+  config <- get_config()
+  svc <- .ssoadmin$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssoadmin$operations$remove_region <- ssoadmin_remove_region
+
 #' Associates a set of tags with a specified resource
 #'
 #' @description
@@ -4756,8 +5052,8 @@ ssoadmin_update_application <- function(ApplicationArn, Name = NULL, Description
 #' (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web
 #' Services General Reference*.
 #' @param EncryptionConfiguration Specifies the encryption configuration for your IAM Identity Center
-#' instance. You can use this to configure customer managed KMS keys (CMK)
-#' or Amazon Web Services owned KMS keys for encrypting your instance data.
+#' instance. You can use this to configure customer managed KMS keys or
+#' Amazon Web Services owned KMS keys for encrypting your instance data.
 #'
 #' @return
 #' An empty list.

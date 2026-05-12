@@ -107,6 +107,41 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 }
 .bedrockdataautomation$operations$create_blueprint_version <- bedrockdataautomation_create_blueprint_version
 
+#' Creates an Amazon Bedrock Data Automation Library
+#'
+#' @description
+#' Creates an Amazon Bedrock Data Automation Library
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_create_data_automation_library/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_create_data_automation_library/) for full documentation.
+#'
+#' @param libraryName &#91;required&#93; 
+#' @param libraryDescription 
+#' @param clientToken 
+#' @param encryptionConfiguration 
+#' @param tags 
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_create_data_automation_library
+bedrockdataautomation_create_data_automation_library <- function(libraryName, libraryDescription = NULL, clientToken = NULL, encryptionConfiguration = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateDataAutomationLibrary",
+    http_method = "PUT",
+    http_path = "/data-automation-libraries/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$create_data_automation_library_input(libraryName = libraryName, libraryDescription = libraryDescription, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration, tags = tags)
+  output <- .bedrockdataautomation$create_data_automation_library_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$create_data_automation_library <- bedrockdataautomation_create_data_automation_library
+
 #' Creates an Amazon Bedrock Data Automation Project
 #'
 #' @description
@@ -121,6 +156,7 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #' @param standardOutputConfiguration &#91;required&#93; 
 #' @param customOutputConfiguration 
 #' @param overrideConfiguration 
+#' @param dataAutomationLibraryConfiguration 
 #' @param clientToken 
 #' @param encryptionConfiguration 
 #' @param tags 
@@ -128,7 +164,7 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #' @keywords internal
 #'
 #' @rdname bedrockdataautomation_create_data_automation_project
-bedrockdataautomation_create_data_automation_project <- function(projectName, projectDescription = NULL, projectStage = NULL, projectType = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL, clientToken = NULL, encryptionConfiguration = NULL, tags = NULL) {
+bedrockdataautomation_create_data_automation_project <- function(projectName, projectDescription = NULL, projectStage = NULL, projectType = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL, dataAutomationLibraryConfiguration = NULL, clientToken = NULL, encryptionConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDataAutomationProject",
     http_method = "PUT",
@@ -137,7 +173,7 @@ bedrockdataautomation_create_data_automation_project <- function(projectName, pr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockdataautomation$create_data_automation_project_input(projectName = projectName, projectDescription = projectDescription, projectStage = projectStage, projectType = projectType, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration, tags = tags)
+  input <- .bedrockdataautomation$create_data_automation_project_input(projectName = projectName, projectDescription = projectDescription, projectStage = projectStage, projectType = projectType, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, dataAutomationLibraryConfiguration = dataAutomationLibraryConfiguration, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration, tags = tags)
   output <- .bedrockdataautomation$create_data_automation_project_output()
   config <- get_config()
   svc <- .bedrockdataautomation$service(config, op)
@@ -178,6 +214,37 @@ bedrockdataautomation_delete_blueprint <- function(blueprintArn, blueprintVersio
   return(response)
 }
 .bedrockdataautomation$operations$delete_blueprint <- bedrockdataautomation_delete_blueprint
+
+#' Deletes an existing Amazon Bedrock Data Automation Library
+#'
+#' @description
+#' Deletes an existing Amazon Bedrock Data Automation Library
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_delete_data_automation_library/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_delete_data_automation_library/) for full documentation.
+#'
+#' @param libraryArn &#91;required&#93; ARN generated at the server side when a DataAutomationLibrary is created
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_delete_data_automation_library
+bedrockdataautomation_delete_data_automation_library <- function(libraryArn) {
+  op <- new_operation(
+    name = "DeleteDataAutomationLibrary",
+    http_method = "DELETE",
+    http_path = "/data-automation-libraries/{libraryArn}/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$delete_data_automation_library_input(libraryArn = libraryArn)
+  output <- .bedrockdataautomation$delete_data_automation_library_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$delete_data_automation_library <- bedrockdataautomation_delete_data_automation_library
 
 #' Deletes an existing Amazon Bedrock Data Automation Project
 #'
@@ -274,6 +341,102 @@ bedrockdataautomation_get_blueprint_optimization_status <- function(invocationAr
 }
 .bedrockdataautomation$operations$get_blueprint_optimization_status <- bedrockdataautomation_get_blueprint_optimization_status
 
+#' Gets an existing Amazon Bedrock Data Automation Library
+#'
+#' @description
+#' Gets an existing Amazon Bedrock Data Automation Library
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_get_data_automation_library/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_get_data_automation_library/) for full documentation.
+#'
+#' @param libraryArn &#91;required&#93; ARN generated at the server side when a DataAutomationLibrary is created
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_get_data_automation_library
+bedrockdataautomation_get_data_automation_library <- function(libraryArn) {
+  op <- new_operation(
+    name = "GetDataAutomationLibrary",
+    http_method = "POST",
+    http_path = "/data-automation-libraries/{libraryArn}/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$get_data_automation_library_input(libraryArn = libraryArn)
+  output <- .bedrockdataautomation$get_data_automation_library_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$get_data_automation_library <- bedrockdataautomation_get_data_automation_library
+
+#' Gets an existing entity based on entity type from the library
+#'
+#' @description
+#' Gets an existing entity based on entity type from the library
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_get_data_automation_library_entity/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_get_data_automation_library_entity/) for full documentation.
+#'
+#' @param libraryArn &#91;required&#93; ARN generated at the server side when a DataAutomationLibrary is created
+#' @param entityType &#91;required&#93; The entity type for which the entity is requested
+#' @param entityId &#91;required&#93; Unique identifier for the entity
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_get_data_automation_library_entity
+bedrockdataautomation_get_data_automation_library_entity <- function(libraryArn, entityType, entityId) {
+  op <- new_operation(
+    name = "GetDataAutomationLibraryEntity",
+    http_method = "POST",
+    http_path = "/data-automation-libraries/{libraryArn}/entityType/{entityType}/entities/{entityId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$get_data_automation_library_entity_input(libraryArn = libraryArn, entityType = entityType, entityId = entityId)
+  output <- .bedrockdataautomation$get_data_automation_library_entity_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$get_data_automation_library_entity <- bedrockdataautomation_get_data_automation_library_entity
+
+#' API used to get status of data automation library ingestion job
+#'
+#' @description
+#' API used to get status of data automation library ingestion job
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_get_data_automation_library_ingestion_job/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_get_data_automation_library_ingestion_job/) for full documentation.
+#'
+#' @param libraryArn &#91;required&#93; ARN generated at the server side when a DataAutomationLibrary is created
+#' @param jobArn &#91;required&#93; ARN of the DataAutomationLibraryIngestionJob
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_get_data_auto_libr_inge_job
+bedrockdataautomation_get_data_automation_library_ingestion_job <- function(libraryArn, jobArn) {
+  op <- new_operation(
+    name = "GetDataAutomationLibraryIngestionJob",
+    http_method = "POST",
+    http_path = "/data-automation-libraries/{libraryArn}/library-ingestion-jobs/{jobArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$get_data_automation_library_ingestion_job_input(libraryArn = libraryArn, jobArn = jobArn)
+  output <- .bedrockdataautomation$get_data_automation_library_ingestion_job_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$get_data_automation_library_ingestion_job <- bedrockdataautomation_get_data_automation_library_ingestion_job
+
 #' Gets an existing Amazon Bedrock Data Automation Project
 #'
 #' @description
@@ -342,6 +505,44 @@ bedrockdataautomation_invoke_blueprint_optimization_async <- function(blueprint,
 }
 .bedrockdataautomation$operations$invoke_blueprint_optimization_async <- bedrockdataautomation_invoke_blueprint_optimization_async
 
+#' Async API: Invoke data automation library ingestion job
+#'
+#' @description
+#' Async API: Invoke data automation library ingestion job
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_invoke_data_automation_library_ingestion_job/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_invoke_data_automation_library_ingestion_job/) for full documentation.
+#'
+#' @param libraryArn &#91;required&#93; ARN generated at the server side when a DataAutomationLibrary is created
+#' @param clientToken Idempotency token
+#' @param inputConfiguration &#91;required&#93; Input configuration of DataAutomationLibraryIngestionJob request
+#' @param entityType &#91;required&#93; The entity type for which DataAutomationLibraryIngestionJob is being run
+#' @param operationType &#91;required&#93; The operation to be performed by DataAutomationLibraryIngestionJob
+#' @param outputConfiguration &#91;required&#93; Output configuration of DataAutomationLibraryIngestionJob
+#' @param notificationConfiguration Notification configuration.
+#' @param tags List of tags
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_invo_data_auto_libr_inge_job
+bedrockdataautomation_invoke_data_automation_library_ingestion_job <- function(libraryArn, clientToken = NULL, inputConfiguration, entityType, operationType, outputConfiguration, notificationConfiguration = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "InvokeDataAutomationLibraryIngestionJob",
+    http_method = "PUT",
+    http_path = "/data-automation-libraries/{libraryArn}/library-ingestion-jobs/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$invoke_data_automation_library_ingestion_job_input(libraryArn = libraryArn, clientToken = clientToken, inputConfiguration = inputConfiguration, entityType = entityType, operationType = operationType, outputConfiguration = outputConfiguration, notificationConfiguration = notificationConfiguration, tags = tags)
+  output <- .bedrockdataautomation$invoke_data_automation_library_ingestion_job_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$invoke_data_automation_library_ingestion_job <- bedrockdataautomation_invoke_data_automation_library_ingestion_job
+
 #' Lists all existing Amazon Bedrock Data Automation Blueprints
 #'
 #' @description
@@ -378,6 +579,106 @@ bedrockdataautomation_list_blueprints <- function(blueprintArn = NULL, resourceO
 }
 .bedrockdataautomation$operations$list_blueprints <- bedrockdataautomation_list_blueprints
 
+#' Lists all existing Amazon Bedrock Data Automation Libraries
+#'
+#' @description
+#' Lists all existing Amazon Bedrock Data Automation Libraries
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_list_data_automation_libraries/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_list_data_automation_libraries/) for full documentation.
+#'
+#' @param maxResults 
+#' @param nextToken 
+#' @param projectFilter 
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_list_data_automation_libraries
+bedrockdataautomation_list_data_automation_libraries <- function(maxResults = NULL, nextToken = NULL, projectFilter = NULL) {
+  op <- new_operation(
+    name = "ListDataAutomationLibraries",
+    http_method = "POST",
+    http_path = "/data-automation-libraries/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "libraries"),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$list_data_automation_libraries_input(maxResults = maxResults, nextToken = nextToken, projectFilter = projectFilter)
+  output <- .bedrockdataautomation$list_data_automation_libraries_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$list_data_automation_libraries <- bedrockdataautomation_list_data_automation_libraries
+
+#' Lists all stored entities in the library
+#'
+#' @description
+#' Lists all stored entities in the library
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_list_data_automation_library_entities/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_list_data_automation_library_entities/) for full documentation.
+#'
+#' @param libraryArn &#91;required&#93; ARN generated at the server side when a DataAutomationLibrary is created
+#' @param entityType &#91;required&#93; The entity type for which the entity list is requested
+#' @param maxResults 
+#' @param nextToken Pagination token for retrieving the next set of results
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_list_data_automation_library_entities
+bedrockdataautomation_list_data_automation_library_entities <- function(libraryArn, entityType, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListDataAutomationLibraryEntities",
+    http_method = "POST",
+    http_path = "/data-automation-libraries/{libraryArn}/entityType/{entityType}/entities/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "entities"),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$list_data_automation_library_entities_input(libraryArn = libraryArn, entityType = entityType, maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrockdataautomation$list_data_automation_library_entities_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$list_data_automation_library_entities <- bedrockdataautomation_list_data_automation_library_entities
+
+#' Lists all data automation library ingestion jobs
+#'
+#' @description
+#' Lists all data automation library ingestion jobs
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_list_data_automation_library_ingestion_jobs/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_list_data_automation_library_ingestion_jobs/) for full documentation.
+#'
+#' @param libraryArn &#91;required&#93; ARN generated at the server side when a DataAutomationLibrary is created
+#' @param maxResults 
+#' @param nextToken Pagination token for retrieving the next set of results
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_list_data_auto_libr_inge_jobs
+bedrockdataautomation_list_data_automation_library_ingestion_jobs <- function(libraryArn, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListDataAutomationLibraryIngestionJobs",
+    http_method = "POST",
+    http_path = "/data-automation-libraries/{libraryArn}/library-ingestion-jobs/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs"),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$list_data_automation_library_ingestion_jobs_input(libraryArn = libraryArn, maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrockdataautomation$list_data_automation_library_ingestion_jobs_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$list_data_automation_library_ingestion_jobs <- bedrockdataautomation_list_data_automation_library_ingestion_jobs
+
 #' Lists all existing Amazon Bedrock Data Automation Projects
 #'
 #' @description
@@ -390,11 +691,12 @@ bedrockdataautomation_list_blueprints <- function(blueprintArn = NULL, resourceO
 #' @param projectStageFilter 
 #' @param blueprintFilter 
 #' @param resourceOwner 
+#' @param libraryFilter 
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockdataautomation_list_data_automation_projects
-bedrockdataautomation_list_data_automation_projects <- function(maxResults = NULL, nextToken = NULL, projectStageFilter = NULL, blueprintFilter = NULL, resourceOwner = NULL) {
+bedrockdataautomation_list_data_automation_projects <- function(maxResults = NULL, nextToken = NULL, projectStageFilter = NULL, blueprintFilter = NULL, resourceOwner = NULL, libraryFilter = NULL) {
   op <- new_operation(
     name = "ListDataAutomationProjects",
     http_method = "POST",
@@ -403,7 +705,7 @@ bedrockdataautomation_list_data_automation_projects <- function(maxResults = NUL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "projects"),
     stream_api = FALSE
   )
-  input <- .bedrockdataautomation$list_data_automation_projects_input(maxResults = maxResults, nextToken = nextToken, projectStageFilter = projectStageFilter, blueprintFilter = blueprintFilter, resourceOwner = resourceOwner)
+  input <- .bedrockdataautomation$list_data_automation_projects_input(maxResults = maxResults, nextToken = nextToken, projectStageFilter = projectStageFilter, blueprintFilter = blueprintFilter, resourceOwner = resourceOwner, libraryFilter = libraryFilter)
   output <- .bedrockdataautomation$list_data_automation_projects_output()
   config <- get_config()
   svc <- .bedrockdataautomation$service(config, op)
@@ -542,6 +844,39 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
 }
 .bedrockdataautomation$operations$update_blueprint <- bedrockdataautomation_update_blueprint
 
+#' Updates an existing Amazon Bedrock Data Automation Library
+#'
+#' @description
+#' Updates an existing Amazon Bedrock Data Automation Library
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_update_data_automation_library/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_update_data_automation_library/) for full documentation.
+#'
+#' @param libraryArn &#91;required&#93; ARN generated at the server side when a DataAutomationLibrary is created
+#' @param libraryDescription 
+#' @param clientToken 
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_update_data_automation_library
+bedrockdataautomation_update_data_automation_library <- function(libraryArn, libraryDescription = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateDataAutomationLibrary",
+    http_method = "PUT",
+    http_path = "/data-automation-libraries/{libraryArn}/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$update_data_automation_library_input(libraryArn = libraryArn, libraryDescription = libraryDescription, clientToken = clientToken)
+  output <- .bedrockdataautomation$update_data_automation_library_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$update_data_automation_library <- bedrockdataautomation_update_data_automation_library
+
 #' Updates an existing Amazon Bedrock Data Automation Project
 #'
 #' @description
@@ -555,12 +890,13 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
 #' @param standardOutputConfiguration &#91;required&#93; 
 #' @param customOutputConfiguration 
 #' @param overrideConfiguration 
+#' @param dataAutomationLibraryConfiguration 
 #' @param encryptionConfiguration 
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockdataautomation_update_data_automation_project
-bedrockdataautomation_update_data_automation_project <- function(projectArn, projectStage = NULL, projectDescription = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL, encryptionConfiguration = NULL) {
+bedrockdataautomation_update_data_automation_project <- function(projectArn, projectStage = NULL, projectDescription = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL, dataAutomationLibraryConfiguration = NULL, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateDataAutomationProject",
     http_method = "PUT",
@@ -569,7 +905,7 @@ bedrockdataautomation_update_data_automation_project <- function(projectArn, pro
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockdataautomation$update_data_automation_project_input(projectArn = projectArn, projectStage = projectStage, projectDescription = projectDescription, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, encryptionConfiguration = encryptionConfiguration)
+  input <- .bedrockdataautomation$update_data_automation_project_input(projectArn = projectArn, projectStage = projectStage, projectDescription = projectDescription, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, dataAutomationLibraryConfiguration = dataAutomationLibraryConfiguration, encryptionConfiguration = encryptionConfiguration)
   output <- .bedrockdataautomation$update_data_automation_project_output()
   config <- get_config()
   svc <- .bedrockdataautomation$service(config, op)

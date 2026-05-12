@@ -7,7 +7,8 @@ TR-34 key export from Amazon Web Services Payment Cryptography}
 \usage{
 paymentcryptographycontrolplane_get_parameters_for_export(
   KeyMaterialType,
-  SigningKeyAlgorithm
+  SigningKeyAlgorithm,
+  ReuseLastGeneratedToken = NULL
 )
 }
 \arguments{
@@ -19,6 +20,14 @@ export.}
 \item{SigningKeyAlgorithm}{[required] The signing key algorithm to generate a signing key certificate. This
 certificate signs the wrapped key under export within the TR-34 key
 block. \code{RSA_2048} is the only signing key algorithm allowed.}
+
+\item{ReuseLastGeneratedToken}{Specifies whether to reuse the existing export token and signing key
+certificate. If set to \code{true} and a valid export token exists for the
+same key material type and signing key algorithm with at least 7 days of
+remaining validity, the existing token and signing key certificate are
+returned. Otherwise, a new export token and signing key certificate are
+generated. The default value is \code{false}, which generates a new export
+token and signing key certificate on every call.}
 }
 \description{
 Gets the export token and the signing key certificate to initiate a TR-34 key export from Amazon Web Services Payment Cryptography.

@@ -773,6 +773,7 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
 #'     ),
 #'     ConsumedStatelessRuleCapacity = 123,
 #'     ConsumedStatefulRuleCapacity = 123,
+#'     ConsumedStatefulDomainCapacity = 123,
 #'     NumberOfAssociations = 123,
 #'     EncryptionConfiguration = list(
 #'       KeyId = "string",
@@ -1650,7 +1651,7 @@ networkfirewall_create_proxy_rules <- function(ProxyRuleGroupArn = NULL, ProxyRu
 #'     RuleGroupName = "string",
 #'     RuleGroupId = "string",
 #'     Description = "string",
-#'     Type = "STATELESS"|"STATEFUL",
+#'     Type = "STATELESS"|"STATEFUL"|"STATEFUL_DOMAIN",
 #'     Capacity = 123,
 #'     RuleGroupStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Tags = list(
@@ -1820,7 +1821,7 @@ networkfirewall_create_proxy_rules <- function(ProxyRuleGroupArn = NULL, ProxyRu
 #'     )
 #'   ),
 #'   Rules = "string",
-#'   Type = "STATELESS"|"STATEFUL",
+#'   Type = "STATELESS"|"STATEFUL"|"STATEFUL_DOMAIN",
 #'   Description = "string",
 #'   Capacity = 123,
 #'   Tags = list(
@@ -2347,6 +2348,7 @@ networkfirewall_delete_firewall <- function(FirewallName = NULL, FirewallArn = N
 #'     ),
 #'     ConsumedStatelessRuleCapacity = 123,
 #'     ConsumedStatefulRuleCapacity = 123,
+#'     ConsumedStatefulDomainCapacity = 123,
 #'     NumberOfAssociations = 123,
 #'     EncryptionConfiguration = list(
 #'       KeyId = "string",
@@ -2835,7 +2837,7 @@ networkfirewall_delete_resource_policy <- function(ResourceArn) {
 #'     RuleGroupName = "string",
 #'     RuleGroupId = "string",
 #'     Description = "string",
-#'     Type = "STATELESS"|"STATEFUL",
+#'     Type = "STATELESS"|"STATEFUL"|"STATEFUL_DOMAIN",
 #'     Capacity = 123,
 #'     RuleGroupStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Tags = list(
@@ -2881,7 +2883,7 @@ networkfirewall_delete_resource_policy <- function(ResourceArn) {
 #' svc$delete_rule_group(
 #'   RuleGroupName = "string",
 #'   RuleGroupArn = "string",
-#'   Type = "STATELESS"|"STATEFUL"
+#'   Type = "STATELESS"|"STATEFUL"|"STATEFUL_DOMAIN"
 #' )
 #' ```
 #'
@@ -3315,6 +3317,7 @@ networkfirewall_describe_firewall_metadata <- function(FirewallArn = NULL) {
 #'     ),
 #'     ConsumedStatelessRuleCapacity = 123,
 #'     ConsumedStatefulRuleCapacity = 123,
+#'     ConsumedStatefulDomainCapacity = 123,
 #'     NumberOfAssociations = 123,
 #'     EncryptionConfiguration = list(
 #'       KeyId = "string",
@@ -4171,7 +4174,7 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #'     RuleGroupName = "string",
 #'     RuleGroupId = "string",
 #'     Description = "string",
-#'     Type = "STATELESS"|"STATEFUL",
+#'     Type = "STATELESS"|"STATEFUL"|"STATEFUL_DOMAIN",
 #'     Capacity = 123,
 #'     RuleGroupStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Tags = list(
@@ -4217,7 +4220,7 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #' svc$describe_rule_group(
 #'   RuleGroupName = "string",
 #'   RuleGroupArn = "string",
-#'   Type = "STATELESS"|"STATEFUL",
+#'   Type = "STATELESS"|"STATEFUL"|"STATEFUL_DOMAIN",
 #'   AnalyzeRuleGroup = TRUE|FALSE
 #' )
 #' ```
@@ -4282,7 +4285,7 @@ networkfirewall_describe_rule_group <- function(RuleGroupName = NULL, RuleGroupA
 #'   RuleGroupArn = "string",
 #'   RuleGroupName = "string",
 #'   Description = "string",
-#'   Type = "STATELESS"|"STATEFUL",
+#'   Type = "STATELESS"|"STATEFUL"|"STATEFUL_DOMAIN",
 #'   Capacity = 123,
 #'   StatefulRuleOptions = list(
 #'     RuleOrder = "DEFAULT_ACTION_ORDER"|"STRICT_ORDER"
@@ -4301,7 +4304,7 @@ networkfirewall_describe_rule_group <- function(RuleGroupName = NULL, RuleGroupA
 #' svc$describe_rule_group_metadata(
 #'   RuleGroupName = "string",
 #'   RuleGroupArn = "string",
-#'   Type = "STATELESS"|"STATEFUL"
+#'   Type = "STATELESS"|"STATEFUL"|"STATEFUL_DOMAIN"
 #' )
 #' ```
 #'
@@ -4385,7 +4388,7 @@ networkfirewall_describe_rule_group_metadata <- function(RuleGroupName = NULL, R
 #' svc$describe_rule_group_summary(
 #'   RuleGroupName = "string",
 #'   RuleGroupArn = "string",
-#'   Type = "STATELESS"|"STATEFUL"
+#'   Type = "STATELESS"|"STATEFUL"|"STATEFUL_DOMAIN"
 #' )
 #' ```
 #'
@@ -5714,7 +5717,7 @@ networkfirewall_list_proxy_rule_groups <- function(NextToken = NULL, MaxResults 
 #'   Scope = "MANAGED"|"ACCOUNT",
 #'   ManagedType = "AWS_MANAGED_THREAT_SIGNATURES"|"AWS_MANAGED_DOMAIN_LISTS"|"ACTIVE_THREAT_DEFENSE"|"PARTNER_MANAGED",
 #'   SubscriptionStatus = "NOT_SUBSCRIBED"|"SUBSCRIBED",
-#'   Type = "STATELESS"|"STATEFUL"
+#'   Type = "STATELESS"|"STATEFUL"|"STATEFUL_DOMAIN"
 #' )
 #' ```
 #'
@@ -7017,6 +7020,7 @@ networkfirewall_update_firewall_encryption_configuration <- function(UpdateToken
 #'     ),
 #'     ConsumedStatelessRuleCapacity = 123,
 #'     ConsumedStatefulRuleCapacity = 123,
+#'     ConsumedStatefulDomainCapacity = 123,
 #'     NumberOfAssociations = 123,
 #'     EncryptionConfiguration = list(
 #'       KeyId = "string",
@@ -7958,7 +7962,7 @@ networkfirewall_update_proxy_rule_priorities <- function(ProxyRuleGroupName = NU
 #'     RuleGroupName = "string",
 #'     RuleGroupId = "string",
 #'     Description = "string",
-#'     Type = "STATELESS"|"STATEFUL",
+#'     Type = "STATELESS"|"STATEFUL"|"STATEFUL_DOMAIN",
 #'     Capacity = 123,
 #'     RuleGroupStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Tags = list(
@@ -8130,7 +8134,7 @@ networkfirewall_update_proxy_rule_priorities <- function(ProxyRuleGroupName = NU
 #'     )
 #'   ),
 #'   Rules = "string",
-#'   Type = "STATELESS"|"STATEFUL",
+#'   Type = "STATELESS"|"STATEFUL"|"STATEFUL_DOMAIN",
 #'   Description = "string",
 #'   DryRun = TRUE|FALSE,
 #'   EncryptionConfiguration = list(

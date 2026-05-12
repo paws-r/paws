@@ -14,6 +14,8 @@ sagemakerruntime_invoke_endpoint_async(
   CustomAttributes = NULL,
   InferenceId = NULL,
   InputLocation,
+  S3OutputPathExtension = NULL,
+  Filename = NULL,
   RequestTTLSeconds = NULL,
   InvocationTimeoutSeconds = NULL
 )
@@ -51,6 +53,13 @@ not in the Amazon SageMaker AI Python SDK.}
 generate an identifier for you if none is specified.}
 
 \item{InputLocation}{[required] The Amazon S3 URI where the inference request payload is stored.}
+
+\item{S3OutputPathExtension}{The path extension that is appended to the Amazon S3 output path where
+the inference response payload is stored.}
+
+\item{Filename}{The filename for the inference response payload stored in Amazon S3. If
+not specified, Amazon SageMaker AI generates a filename based on the
+inference ID.}
 
 \item{RequestTTLSeconds}{Maximum age in seconds a request can be in the queue before it is marked
 as expired. The default is 6 hours, or 21,600 seconds.}

@@ -4,9 +4,11 @@
 \alias{account_put_account_name}
 \title{Updates the account name of the specified account}
 \usage{
-account_put_account_name(AccountId = NULL, AccountName)
+account_put_account_name(AccountName, AccountId = NULL)
 }
 \arguments{
+\item{AccountName}{[required] The name of the account.}
+
 \item{AccountId}{Specifies the 12 digit account ID number of the Amazon Web Services
 account that you want to access or modify with this operation.
 
@@ -30,8 +32,6 @@ To call this operation on an account that is not a member of an
 organization, then don't specify this parameter, and call the operation
 using an identity belonging to the account whose contacts you wish to
 retrieve or modify.}
-
-\item{AccountName}{[required] The name of the account.}
 }
 \description{
 Updates the account name of the specified account. To use this API, IAM principals must have the \code{account:PutAccountName} IAM permission.

@@ -10,7 +10,8 @@ kinesis_get_shard_iterator(
   ShardIteratorType,
   StartingSequenceNumber = NULL,
   Timestamp = NULL,
-  StreamARN = NULL
+  StreamARN = NULL,
+  StreamId = NULL
 )
 }
 \arguments{
@@ -51,6 +52,8 @@ horizon, the iterator returned is for the oldest untrimmed data record
 (TRIM_HORIZON).}
 
 \item{StreamARN}{The ARN of the stream.}
+
+\item{StreamId}{Not Implemented. Reserved for future use.}
 }
 \description{
 Gets an Amazon Kinesis shard iterator. A shard iterator expires 5 minutes after it is returned to the requester.

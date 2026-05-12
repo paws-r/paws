@@ -6,7 +6,7 @@
 update the primary email address (also known as the root user email
 address) for the specified account}
 \usage{
-account_accept_primary_email_update(AccountId, Otp, PrimaryEmail)
+account_accept_primary_email_update(AccountId, PrimaryEmail, Otp)
 }
 \arguments{
 \item{AccountId}{[required] Specifies the 12-digit account ID number of the Amazon Web Services
@@ -23,12 +23,12 @@ delegated administrator account of an organization for a member account.
 
 The management account can't specify its own \code{AccountId}.}
 
-\item{Otp}{[required] The OTP code sent to the \code{PrimaryEmail} specified on the
+\item{PrimaryEmail}{[required] The new primary email address for use with the specified account. This
+must match the \code{PrimaryEmail} from the
 \code{\link[=account_start_primary_email_update]{start_primary_email_update}} API
 call.}
 
-\item{PrimaryEmail}{[required] The new primary email address for use with the specified account. This
-must match the \code{PrimaryEmail} from the
+\item{Otp}{[required] The OTP code sent to the \code{PrimaryEmail} specified on the
 \code{\link[=account_start_primary_email_update]{start_primary_email_update}} API
 call.}
 }

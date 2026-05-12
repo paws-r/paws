@@ -65,10 +65,6 @@ task has completed. A CompletionReport provides a detailed report on the
 files that Amazon FSx processed that meet the criteria specified by the
 \code{Scope} parameter. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/task-completion-report.html}{Working with Task Completion Reports}.}
 
-\item{ClientRequestToken}{}
-
-\item{Tags}{}
-
 \item{CapacityToRelease}{Specifies the amount of data to release, in GiB, by an Amazon File Cache
 \code{AUTO_RELEASE_DATA} task that automatically releases files from the
 cache.}

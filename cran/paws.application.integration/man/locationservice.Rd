@@ -104,6 +104,7 @@ and Geofencing"
 \link[=locationservice_batch_update_device_position]{batch_update_device_position} \tab Uploads position update data for one or more devices to a tracker resource (up to 10 devices per batch)\cr
 \link[=locationservice_calculate_route]{calculate_route} \tab This operation is no longer current and may be deprecated in the future\cr
 \link[=locationservice_calculate_route_matrix]{calculate_route_matrix} \tab This operation is no longer current and may be deprecated in the future\cr
+\link[=locationservice_cancel_job]{cancel_job} \tab CancelJob cancels a job that is currently running or pending\cr
 \link[=locationservice_create_geofence_collection]{create_geofence_collection} \tab Creates a geofence collection, which manages and stores geofences\cr
 \link[=locationservice_create_key]{create_key} \tab Creates an API key resource in your Amazon Web Services account, which lets you grant actions for Amazon Location resources to the API key bearer\cr
 \link[=locationservice_create_map]{create_map} \tab This operation is no longer current and may be deprecated in the future\cr
@@ -127,6 +128,7 @@ and Geofencing"
 \link[=locationservice_get_device_position]{get_device_position} \tab Retrieves a device's most recent position according to its sample time\cr
 \link[=locationservice_get_device_position_history]{get_device_position_history} \tab Retrieves the device position history from a tracker resource within a specified range of time\cr
 \link[=locationservice_get_geofence]{get_geofence} \tab Retrieves the geofence details from a geofence collection\cr
+\link[=locationservice_get_job]{get_job} \tab GetJob retrieves detailed information about a specific job, including its current status, configuration, and error information if the job failed\cr
 \link[=locationservice_get_map_glyphs]{get_map_glyphs} \tab This operation is no longer current and may be deprecated in the future\cr
 \link[=locationservice_get_map_sprites]{get_map_sprites} \tab This operation is no longer current and may be deprecated in the future\cr
 \link[=locationservice_get_map_style_descriptor]{get_map_style_descriptor} \tab This operation is no longer current and may be deprecated in the future\cr
@@ -135,6 +137,7 @@ and Geofencing"
 \link[=locationservice_list_device_positions]{list_device_positions} \tab A batch request to retrieve all device positions\cr
 \link[=locationservice_list_geofence_collections]{list_geofence_collections} \tab Lists geofence collections in your Amazon Web Services account\cr
 \link[=locationservice_list_geofences]{list_geofences} \tab Lists geofences stored in a given geofence collection\cr
+\link[=locationservice_list_jobs]{list_jobs} \tab ListJobs retrieves a list of jobs with optional filtering and pagination support\cr
 \link[=locationservice_list_keys]{list_keys} \tab Lists API key resources in your Amazon Web Services account\cr
 \link[=locationservice_list_maps]{list_maps} \tab This operation is no longer current and may be deprecated in the future\cr
 \link[=locationservice_list_place_indexes]{list_place_indexes} \tab This operation is no longer current and may be deprecated in the future\cr
@@ -146,6 +149,7 @@ and Geofencing"
 \link[=locationservice_search_place_index_for_position]{search_place_index_for_position} \tab This operation is no longer current and may be deprecated in the future\cr
 \link[=locationservice_search_place_index_for_suggestions]{search_place_index_for_suggestions} \tab This operation is no longer current and may be deprecated in the future\cr
 \link[=locationservice_search_place_index_for_text]{search_place_index_for_text} \tab This operation is no longer current and may be deprecated in the future\cr
+\link[=locationservice_start_job]{start_job} \tab StartJob starts a new asynchronous bulk processing job\cr
 \link[=locationservice_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Amazon Location Service resource\cr
 \link[=locationservice_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Amazon Location resource\cr
 \link[=locationservice_update_geofence_collection]{update_geofence_collection} \tab Updates the specified properties of a given geofence collection\cr

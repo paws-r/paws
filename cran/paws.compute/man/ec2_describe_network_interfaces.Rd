@@ -8,6 +8,7 @@ interfaces}
 ec2_describe_network_interfaces(
   NextToken = NULL,
   MaxResults = NULL,
+  IncludeManagedResources = NULL,
   DryRun = NULL,
   NetworkInterfaceIds = NULL,
   Filters = NULL
@@ -22,6 +23,11 @@ page of items, make another request with the token returned in the
 output. You cannot specify this parameter and the network interface IDs
 parameter in the same request. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
+
+\item{IncludeManagedResources}{Indicates whether to include managed resources in the output. If this
+parameter is set to \code{true}, the output includes resources that are
+managed by Amazon Web Services services, even if managed resource
+visibility is set to hidden.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

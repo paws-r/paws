@@ -14,8 +14,6 @@ billingconductor_batch_disassociate_resources_from_custom_line_item(
 \item{TargetArn}{[required] A percentage custom line item ARN to disassociate the resources from.}
 
 \item{ResourceArns}{[required] A list containing the ARNs of resources to be disassociated.}
-
-\item{BillingPeriodRange}{}
 }
 \description{
 Disassociates a batch of resources from a percentage custom line item.

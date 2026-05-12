@@ -34,8 +34,6 @@ Constraints:
 Example: \code{my-db-parameter-group}}
 
 \item{TargetDBParameterGroupDescription}{[required] A description for the copied DB parameter group.}
-
-\item{Tags}{}
 }
 \description{
 Copies the specified DB parameter group.

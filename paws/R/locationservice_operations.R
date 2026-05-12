@@ -1155,6 +1155,64 @@ locationservice_calculate_route_matrix <- function(CalculatorName, DeparturePosi
 }
 .locationservice$operations$calculate_route_matrix <- locationservice_calculate_route_matrix
 
+#' CancelJob cancels a job that is currently running or pending
+#'
+#' @description
+#' [`cancel_job`][locationservice_cancel_job] cancels a job that is
+#' currently running or pending. If the job is already in a terminal state
+#' (`Completed`, `Failed`, or `Cancelled`), the operation returns
+#' successfully with the current status.
+#' 
+#' For more information, see [Job
+#' concepts](https://docs.aws.amazon.com/location/latest/developerguide/jobs-concepts.html)
+#' in the *Amazon Location Service Developer Guide*.
+#'
+#' @usage
+#' locationservice_cancel_job(JobId)
+#'
+#' @param JobId &#91;required&#93; The unique identifier of the job to cancel.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobArn = "string",
+#'   JobId = "string",
+#'   Status = "Pending"|"Running"|"Completed"|"Failed"|"Cancelling"|"Cancelled"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_cancel_job
+#'
+#' @aliases locationservice_cancel_job
+locationservice_cancel_job <- function(JobId) {
+  op <- new_operation(
+    name = "CancelJob",
+    http_method = "POST",
+    http_path = "/metadata/v0/jobs/cancel-job",
+    host_prefix = "metadata.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .locationservice$cancel_job_input(JobId = JobId)
+  output <- .locationservice$cancel_job_output()
+  config <- get_config()
+  svc <- .locationservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$cancel_job <- locationservice_cancel_job
+
 #' Creates a geofence collection, which manages and stores geofences
 #'
 #' @description
@@ -1589,7 +1647,7 @@ locationservice_create_map <- function(MapName, Configuration, PricingPlan = NUL
 #' -   `Here` – For additional information about [HERE
 #'     Technologies](https://docs.aws.amazon.com/location/previous/developerguide/HERE.html)'
 #'     coverage in your region of interest, see [HERE details on goecoding
-#'     coverage](https://www.here.com/docs/).
+#'     coverage](https://docs.here.com/).
 #' 
 #'     If you specify HERE Technologies (`Here`) as the data provider, you
 #'     may not [store
@@ -1754,8 +1812,8 @@ locationservice_create_place_index <- function(IndexName, DataSource, PricingPla
 #' -   `Here` – For additional information about [HERE
 #'     Technologies](https://docs.aws.amazon.com/location/previous/developerguide/HERE.html)'
 #'     coverage in your region of interest, see [HERE car routing
-#'     coverage](https://www.here.com/docs/) and [HERE truck routing
-#'     coverage](https://www.here.com/docs/).
+#'     coverage](https://docs.here.com/) and [HERE truck routing
+#'     coverage](https://docs.here.com/).
 #' 
 #' For additional information , see [Data
 #' providers](https://docs.aws.amazon.com/location/previous/developerguide/what-is-data-provider.html)
@@ -3290,6 +3348,101 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 }
 .locationservice$operations$get_geofence <- locationservice_get_geofence
 
+#' GetJob retrieves detailed information about a specific job, including
+#' its current status, configuration, and error information if the job
+#' failed
+#'
+#' @description
+#' [`get_job`][locationservice_get_job] retrieves detailed information
+#' about a specific job, including its current status, configuration, and
+#' error information if the job failed.
+#' 
+#' For more information, see [Job
+#' concepts](https://docs.aws.amazon.com/location/latest/developerguide/jobs-concepts.html)
+#' in the *Amazon Location Service Developer Guide*.
+#'
+#' @usage
+#' locationservice_get_job(JobId)
+#'
+#' @param JobId &#91;required&#93; The unique identifier of the job to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Action = "ValidateAddress",
+#'   ActionOptions = list(
+#'     ValidateAddress = list(
+#'       AdditionalFeatures = list(
+#'         "Position"|"CountrySpecificAttributes"
+#'       )
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Error = list(
+#'     Code = "ValidationError"|"InternalServerError",
+#'     Messages = list(
+#'       "string"
+#'     )
+#'   ),
+#'   ExecutionRoleArn = "string",
+#'   InputOptions = list(
+#'     Location = "string",
+#'     Format = "Parquet"
+#'   ),
+#'   JobArn = "string",
+#'   JobId = "string",
+#'   Name = "string",
+#'   OutputOptions = list(
+#'     Format = "Parquet",
+#'     Location = "string"
+#'   ),
+#'   Status = "Pending"|"Running"|"Completed"|"Failed"|"Cancelling"|"Cancelled",
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_get_job
+#'
+#' @aliases locationservice_get_job
+locationservice_get_job <- function(JobId) {
+  op <- new_operation(
+    name = "GetJob",
+    http_method = "GET",
+    http_path = "/metadata/v0/jobs/{JobId}",
+    host_prefix = "metadata.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .locationservice$get_job_input(JobId = JobId)
+  output <- .locationservice$get_job_output()
+  config <- get_config()
+  svc <- .locationservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$get_job <- locationservice_get_job
+
 #' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
@@ -4108,6 +4261,109 @@ locationservice_list_geofences <- function(CollectionName, NextToken = NULL, Max
   return(response)
 }
 .locationservice$operations$list_geofences <- locationservice_list_geofences
+
+#' ListJobs retrieves a list of jobs with optional filtering and pagination
+#' support
+#'
+#' @description
+#' [`list_jobs`][locationservice_list_jobs] retrieves a list of jobs with
+#' optional filtering and pagination support.
+#' 
+#' For more information, see [Job
+#' concepts](https://docs.aws.amazon.com/location/latest/developerguide/jobs-concepts.html)
+#' in the *Amazon Location Service Developer Guide*.
+#'
+#' @usage
+#' locationservice_list_jobs(Filter, MaxResults, NextToken)
+#'
+#' @param Filter An optional structure containing criteria by which to filter job
+#' results.
+#' @param MaxResults Maximum number of jobs to return.
+#' @param NextToken The pagination token specifying which page of results to return in the
+#' response. If no token is provided, the default page is the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entries = list(
+#'     list(
+#'       Action = "ValidateAddress",
+#'       ActionOptions = list(
+#'         ValidateAddress = list(
+#'           AdditionalFeatures = list(
+#'             "Position"|"CountrySpecificAttributes"
+#'           )
+#'         )
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExecutionRoleArn = "string",
+#'       EndedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Error = list(
+#'         Code = "ValidationError"|"InternalServerError",
+#'         Messages = list(
+#'           "string"
+#'         )
+#'       ),
+#'       InputOptions = list(
+#'         Location = "string",
+#'         Format = "Parquet"
+#'       ),
+#'       JobId = "string",
+#'       JobArn = "string",
+#'       Name = "string",
+#'       OutputOptions = list(
+#'         Format = "Parquet",
+#'         Location = "string"
+#'       ),
+#'       Status = "Pending"|"Running"|"Completed"|"Failed"|"Cancelling"|"Cancelled",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_jobs(
+#'   Filter = list(
+#'     JobStatus = "Pending"|"Running"|"Completed"|"Failed"|"Cancelling"|"Cancelled"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_list_jobs
+#'
+#' @aliases locationservice_list_jobs
+locationservice_list_jobs <- function(Filter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListJobs",
+    http_method = "POST",
+    http_path = "/metadata/v0/jobs/list-jobs",
+    host_prefix = "metadata.",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries"),
+    stream_api = FALSE
+  )
+  input <- .locationservice$list_jobs_input(Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .locationservice$list_jobs_output()
+  config <- get_config()
+  svc <- .locationservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$list_jobs <- locationservice_list_jobs
 
 #' Lists API key resources in your Amazon Web Services account
 #'
@@ -5359,6 +5615,108 @@ locationservice_search_place_index_for_text <- function(IndexName, Text, BiasPos
   return(response)
 }
 .locationservice$operations$search_place_index_for_text <- locationservice_search_place_index_for_text
+
+#' StartJob starts a new asynchronous bulk processing job
+#'
+#' @description
+#' [`start_job`][locationservice_start_job] starts a new asynchronous bulk
+#' processing job. You specify the input data location in Amazon S3, the
+#' action to perform, and the output location where results are written.
+#' 
+#' For more information, see [Job
+#' concepts](https://docs.aws.amazon.com/location/latest/developerguide/jobs-concepts.html)
+#' in the *Amazon Location Service Developer Guide*.
+#'
+#' @usage
+#' locationservice_start_job(ClientToken, Action, ActionOptions,
+#'   ExecutionRoleArn, InputOptions, Name, OutputOptions, Tags)
+#'
+#' @param ClientToken A unique identifier for this request to ensure idempotency.
+#' @param Action &#91;required&#93; The action to perform on the input data.
+#' @param ActionOptions Additional parameters that can be requested for each result.
+#' @param ExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that Amazon Location
+#' Service assumes during job processing. Amazon Location Service uses this
+#' role to access the input and output locations specified for the job.
+#' 
+#' The IAM role must be created in the same Amazon Web Services account
+#' where you plan to run your job.
+#' 
+#' For more information about configuring IAM roles for Amazon Location
+#' jobs, see [Configure IAM
+#' permissions](https://docs.aws.amazon.com/location/latest/developerguide/configure-iam-role-policy-credentials.html)
+#' in the *Amazon Location Service Developer Guide*.
+#' @param InputOptions &#91;required&#93; Configuration for input data location and format.
+#' 
+#' Input files have a limitation of 10gb per file, and 1gb per Parquet
+#' row-group within the file.
+#' @param Name An optional name for the job resource.
+#' @param OutputOptions &#91;required&#93; Configuration for output data location and format.
+#' @param Tags Tags and corresponding values to be associated with the job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   JobArn = "string",
+#'   JobId = "string",
+#'   Status = "Pending"|"Running"|"Completed"|"Failed"|"Cancelling"|"Cancelled"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_job(
+#'   ClientToken = "string",
+#'   Action = "ValidateAddress",
+#'   ActionOptions = list(
+#'     ValidateAddress = list(
+#'       AdditionalFeatures = list(
+#'         "Position"|"CountrySpecificAttributes"
+#'       )
+#'     )
+#'   ),
+#'   ExecutionRoleArn = "string",
+#'   InputOptions = list(
+#'     Location = "string",
+#'     Format = "Parquet"
+#'   ),
+#'   Name = "string",
+#'   OutputOptions = list(
+#'     Format = "Parquet",
+#'     Location = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_start_job
+#'
+#' @aliases locationservice_start_job
+locationservice_start_job <- function(ClientToken = NULL, Action, ActionOptions = NULL, ExecutionRoleArn, InputOptions, Name = NULL, OutputOptions, Tags = NULL) {
+  op <- new_operation(
+    name = "StartJob",
+    http_method = "POST",
+    http_path = "/metadata/v0/jobs",
+    host_prefix = "metadata.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .locationservice$start_job_input(ClientToken = ClientToken, Action = Action, ActionOptions = ActionOptions, ExecutionRoleArn = ExecutionRoleArn, InputOptions = InputOptions, Name = Name, OutputOptions = OutputOptions, Tags = Tags)
+  output <- .locationservice$start_job_output()
+  config <- get_config()
+  svc <- .locationservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$start_job <- locationservice_start_job
 
 #' Assigns one or more tags (key-value pairs) to the specified Amazon
 #' Location Service resource

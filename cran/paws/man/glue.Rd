@@ -150,6 +150,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_delete_column_statistics_for_table]{delete_column_statistics_for_table} \tab Retrieves table statistics of columns\cr
 \link[paws.analytics:glue_delete_column_statistics_task_settings]{delete_column_statistics_task_settings} \tab Deletes settings for a column statistics task\cr
 \link[paws.analytics:glue_delete_connection]{delete_connection} \tab Deletes a connection from the Data Catalog\cr
+\link[paws.analytics:glue_delete_connection_type]{delete_connection_type} \tab Deletes a custom connection type in Glue\cr
 \link[paws.analytics:glue_delete_crawler]{delete_crawler} \tab Removes a specified crawler from the Glue Data Catalog, unless the crawler state is RUNNING\cr
 \link[paws.analytics:glue_delete_custom_entity_type]{delete_custom_entity_type} \tab Deletes a custom pattern by specifying its name\cr
 \link[paws.analytics:glue_delete_database]{delete_database} \tab Removes a specified database from a Data Catalog\cr
@@ -221,6 +222,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_get_job_runs]{get_job_runs} \tab Retrieves metadata for all runs of a given job definition\cr
 \link[paws.analytics:glue_get_jobs]{get_jobs} \tab Retrieves all current job definitions\cr
 \link[paws.analytics:glue_get_mapping]{get_mapping} \tab Creates mappings\cr
+\link[paws.analytics:glue_get_materialized_view_refresh_task_run]{get_materialized_view_refresh_task_run} \tab Get the associated metadata/information for a task run, given a task run ID\cr
 \link[paws.analytics:glue_get_ml_task_run]{get_ml_task_run} \tab Gets details for a specific task run on a machine learning transform\cr
 \link[paws.analytics:glue_get_ml_task_runs]{get_ml_task_runs} \tab Gets a list of runs for a machine learning transform\cr
 \link[paws.analytics:glue_get_ml_transform]{get_ml_transform} \tab Gets an Glue machine learning transform artifact and all its corresponding metadata\cr
@@ -275,6 +277,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_list_entities]{list_entities} \tab Returns the available entities supported by the connection type\cr
 \link[paws.analytics:glue_list_integration_resource_properties]{list_integration_resource_properties} \tab List integration resource properties for a single customer\cr
 \link[paws.analytics:glue_list_jobs]{list_jobs} \tab Retrieves the names of all job resources in this Amazon Web Services account, or the resources with the specified tag\cr
+\link[paws.analytics:glue_list_materialized_view_refresh_task_runs]{list_materialized_view_refresh_task_runs} \tab List all task runs for a particular account\cr
 \link[paws.analytics:glue_list_ml_transforms]{list_ml_transforms} \tab Retrieves a sortable, filterable list of existing Glue machine learning transforms in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[paws.analytics:glue_list_registries]{list_registries} \tab Returns a list of registries that you have created, with minimal registry information\cr
 \link[paws.analytics:glue_list_schemas]{list_schemas} \tab Returns a list of schemas with minimal details\cr
@@ -292,6 +295,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_put_schema_version_metadata]{put_schema_version_metadata} \tab Puts the metadata key value pair for a specified schema version ID\cr
 \link[paws.analytics:glue_put_workflow_run_properties]{put_workflow_run_properties} \tab Puts the specified workflow run properties for the given workflow run\cr
 \link[paws.analytics:glue_query_schema_version_metadata]{query_schema_version_metadata} \tab Queries for the schema version metadata information\cr
+\link[paws.analytics:glue_register_connection_type]{register_connection_type} \tab Registers a custom connection type in Glue based on the configuration provided\cr
 \link[paws.analytics:glue_register_schema_version]{register_schema_version} \tab Adds a new version to the existing schema\cr
 \link[paws.analytics:glue_remove_schema_version_metadata]{remove_schema_version_metadata} \tab Removes a key value pair from the schema version metadata for the specified schema version ID\cr
 \link[paws.analytics:glue_reset_job_bookmark]{reset_job_bookmark} \tab Resets a bookmark entry\cr
@@ -308,6 +312,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_start_export_labels_task_run]{start_export_labels_task_run} \tab Begins an asynchronous task to export all labeled data for a particular transform\cr
 \link[paws.analytics:glue_start_import_labels_task_run]{start_import_labels_task_run} \tab Enables you to provide additional labels (examples of truth) to be used to teach the machine learning transform and improve its quality\cr
 \link[paws.analytics:glue_start_job_run]{start_job_run} \tab Starts a job run using a job definition\cr
+\link[paws.analytics:glue_start_materialized_view_refresh_task_run]{start_materialized_view_refresh_task_run} \tab Starts a materialized view refresh task run, for a specified table and columns\cr
 \link[paws.analytics:glue_start_ml_evaluation_task_run]{start_ml_evaluation_task_run} \tab Starts a task to estimate the quality of the transform\cr
 \link[paws.analytics:glue_start_ml_labeling_set_generation_task_run]{start_ml_labeling_set_generation_task_run} \tab Starts the active learning workflow for your machine learning transform to improve the transform's quality by generating label sets and adding labels\cr
 \link[paws.analytics:glue_start_trigger]{start_trigger} \tab Starts an existing trigger\cr
@@ -316,6 +321,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_stop_column_statistics_task_run_schedule]{stop_column_statistics_task_run_schedule} \tab Stops a column statistics task run schedule\cr
 \link[paws.analytics:glue_stop_crawler]{stop_crawler} \tab If the specified crawler is running, stops the crawl\cr
 \link[paws.analytics:glue_stop_crawler_schedule]{stop_crawler_schedule} \tab Sets the schedule state of the specified crawler to NOT_SCHEDULED, but does not stop the crawler if it is already running\cr
+\link[paws.analytics:glue_stop_materialized_view_refresh_task_run]{stop_materialized_view_refresh_task_run} \tab Stops a materialized view refresh task run, for a specified table and columns\cr
 \link[paws.analytics:glue_stop_session]{stop_session} \tab Stops the session\cr
 \link[paws.analytics:glue_stop_trigger]{stop_trigger} \tab Stops a specified trigger\cr
 \link[paws.analytics:glue_stop_workflow_run]{stop_workflow_run} \tab Stops the execution of the specified workflow run\cr

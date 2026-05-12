@@ -61,10 +61,6 @@ configuration defines which file events (new, changed, or deleted files
 or directories) are automatically imported from the linked data
 repository to the file system or automatically exported from the file
 system to the data repository.}
-
-\item{ClientRequestToken}{}
-
-\item{Tags}{}
 }
 \description{
 Creates an Amazon FSx for Lustre data repository association (DRA). A data repository association is a link between a directory on the file system and an Amazon S3 bucket or prefix. You can have a maximum of 8 data repository associations on a file system. Data repository associations are supported on all FSx for Lustre 2.12 and 2.15 file systems, excluding \code{scratch_1} deployment type.

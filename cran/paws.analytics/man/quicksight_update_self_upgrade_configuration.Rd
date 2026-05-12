@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_self_upgrade_configuration}
 \alias{quicksight_update_self_upgrade_configuration}
-\title{Updates the self-upgrade configuration for a Quick Suite account}
+\title{Updates the self-upgrade configuration for a Quick account}
 \usage{
 quicksight_update_self_upgrade_configuration(
   AwsAccountId,
@@ -11,17 +11,16 @@ quicksight_update_self_upgrade_configuration(
 )
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the Quick Suite
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the Quick
 self-upgrade configuration that you want to update.}
 
-\item{Namespace}{[required] The Quick Suite namespace that you want to update the Quick Suite
-self-upgrade configuration for.}
+\item{Namespace}{[required] The Quick namespace that you want to update the Quick self-upgrade
+configuration for.}
 
-\item{SelfUpgradeStatus}{[required] The self-upgrade status that you want to set for the Quick Suite
-account.}
+\item{SelfUpgradeStatus}{[required] The self-upgrade status that you want to set for the Quick account.}
 }
 \description{
-Updates the self-upgrade configuration for a Quick Suite account.
+Updates the self-upgrade configuration for a Quick account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_self_upgrade_configuration/} for full documentation.
 }

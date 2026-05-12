@@ -5,33 +5,33 @@
 \title{Creates a data product revision}
 \usage{
 datazone_create_data_product_revision(
-  clientToken = NULL,
-  description = NULL,
   domainIdentifier,
-  formsInput = NULL,
-  glossaryTerms = NULL,
   identifier,
+  name,
+  description = NULL,
+  glossaryTerms = NULL,
   items = NULL,
-  name
+  formsInput = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
-\item{description}{The description of the data product revision.}
-
 \item{domainIdentifier}{[required] The ID of the domain where the data product revision is created.}
-
-\item{formsInput}{The metadata forms of the data product revision.}
-
-\item{glossaryTerms}{The glossary terms of the data product revision.}
 
 \item{identifier}{[required] The ID of the data product revision.}
 
+\item{name}{[required] The name of the data product revision.}
+
+\item{description}{The description of the data product revision.}
+
+\item{glossaryTerms}{The glossary terms of the data product revision.}
+
 \item{items}{The data assets of the data product revision.}
 
-\item{name}{[required] The name of the data product revision.}
+\item{formsInput}{The metadata forms of the data product revision.}
+
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Creates a data product revision.

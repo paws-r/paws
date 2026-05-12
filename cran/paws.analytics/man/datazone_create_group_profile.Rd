@@ -5,19 +5,24 @@
 \title{Creates a group profile in Amazon DataZone}
 \usage{
 datazone_create_group_profile(
-  clientToken = NULL,
   domainIdentifier,
-  groupIdentifier
+  groupIdentifier = NULL,
+  rolePrincipalArn = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which the group profile
 is created.}
 
-\item{groupIdentifier}{[required] The identifier of the group for which the group profile is created.}
+\item{groupIdentifier}{The identifier of the group for which the group profile is created.}
+
+\item{rolePrincipalArn}{The ARN of the IAM role that will be associated with the group profile.
+This role defines the permissions that group members will assume when
+accessing Amazon DataZone resources.}
+
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Creates a group profile in Amazon DataZone.

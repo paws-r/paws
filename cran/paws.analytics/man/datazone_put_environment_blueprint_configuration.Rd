@@ -7,34 +7,34 @@ Amazon DataZone}
 \usage{
 datazone_put_environment_blueprint_configuration(
   domainIdentifier,
-  enabledRegions,
   environmentBlueprintIdentifier,
-  environmentRolePermissionBoundary = NULL,
-  globalParameters = NULL,
-  manageAccessRoleArn = NULL,
-  provisioningConfigurations = NULL,
   provisioningRoleArn = NULL,
-  regionalParameters = NULL
+  manageAccessRoleArn = NULL,
+  environmentRolePermissionBoundary = NULL,
+  enabledRegions,
+  regionalParameters = NULL,
+  globalParameters = NULL,
+  provisioningConfigurations = NULL
 )
 }
 \arguments{
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain.}
 
-\item{enabledRegions}{[required] Specifies the enabled Amazon Web Services Regions.}
-
 \item{environmentBlueprintIdentifier}{[required] The identifier of the environment blueprint.}
-
-\item{environmentRolePermissionBoundary}{The environment role permissions boundary.}
-
-\item{globalParameters}{Region-agnostic environment blueprint parameters.}
-
-\item{manageAccessRoleArn}{The ARN of the manage access role.}
-
-\item{provisioningConfigurations}{The provisioning configuration of a blueprint.}
 
 \item{provisioningRoleArn}{The ARN of the provisioning role.}
 
+\item{manageAccessRoleArn}{The ARN of the manage access role.}
+
+\item{environmentRolePermissionBoundary}{The environment role permissions boundary.}
+
+\item{enabledRegions}{[required] Specifies the enabled Amazon Web Services Regions.}
+
 \item{regionalParameters}{The regional parameters in the environment blueprint.}
+
+\item{globalParameters}{Region-agnostic environment blueprint parameters.}
+
+\item{provisioningConfigurations}{The provisioning configuration of a blueprint.}
 }
 \description{
 Writes the configuration for the specified environment blueprint in Amazon DataZone.

@@ -734,6 +734,10 @@ iam_create_login_profile <- function(UserName = NULL, Password = NULL, PasswordR
 #' [Obtaining the thumbprint for an OpenID Connect
 #' provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html)
 #' in the *IAM user Guide*.
+#' 
+#' If your OIDC provider's discovery endpoint and JWKS endpoint
+#' (`jwks_uri`) use different certificates or hosts, include the
+#' thumbprints for both endpoints in this list.
 #' @param Tags A list of tags that you want to attach to the new IAM OpenID Connect
 #' (OIDC) provider. Each tag consists of a key name and an associated
 #' value. For more information about tagging, see [Tagging IAM
@@ -1188,8 +1192,8 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
 #' with the credentials. The service you specify here is the only service
 #' that can be accessed using these credentials.
 #' @param CredentialAgeDays The number of days until the service specific credential expires. This
-#' field is only valid for Bedrock API keys and must be a positive integer.
-#' When not specified, the credential will not expire.
+#' field is only valid for Bedrock and CloudWatch Logs API keys and must be
+#' a positive integer. When not specified, the credential will not expire.
 #'
 #' @keywords internal
 #'

@@ -102,6 +102,7 @@ get the best results for your application domain.
 \link[paws.machine.learning:polly_list_lexicons]{list_lexicons} \tab Returns a list of pronunciation lexicons stored in an Amazon Web Services Region\cr
 \link[paws.machine.learning:polly_list_speech_synthesis_tasks]{list_speech_synthesis_tasks} \tab Returns a list of SpeechSynthesisTask objects ordered by their creation date\cr
 \link[paws.machine.learning:polly_put_lexicon]{put_lexicon} \tab Stores a pronunciation lexicon in an Amazon Web Services Region\cr
+\link[paws.machine.learning:polly_start_speech_synthesis_stream]{start_speech_synthesis_stream} \tab Synthesizes UTF-8 input, plain text, or SSML over a bidirectional streaming connection\cr
 \link[paws.machine.learning:polly_start_speech_synthesis_task]{start_speech_synthesis_task} \tab Allows the creation of an asynchronous synthesis task, by starting a new SpeechSynthesisTask\cr
 \link[paws.machine.learning:polly_synthesize_speech]{synthesize_speech} \tab Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes
 }

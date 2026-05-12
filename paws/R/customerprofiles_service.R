@@ -117,6 +117,8 @@ NULL
 #'  \link[=customerprofiles_create_integration_workflow]{create_integration_workflow} \tab Creates an integration workflow\cr
 #'  \link[=customerprofiles_create_profile]{create_profile} \tab Creates a standard profile\cr
 #'  \link[=customerprofiles_create_recommender]{create_recommender} \tab Creates a recommender\cr
+#'  \link[=customerprofiles_create_recommender_filter]{create_recommender_filter} \tab Creates a recommender filter\cr
+#'  \link[=customerprofiles_create_recommender_schema]{create_recommender_schema} \tab Creates a recommender schema\cr
 #'  \link[=customerprofiles_create_segment_definition]{create_segment_definition} \tab Creates a segment definition associated to the given domain\cr
 #'  \link[=customerprofiles_create_segment_estimate]{create_segment_estimate} \tab Creates a segment estimate query\cr
 #'  \link[=customerprofiles_create_segment_snapshot]{create_segment_snapshot} \tab Triggers a job to export a segment to a specified destination\cr
@@ -133,6 +135,8 @@ NULL
 #'  \link[=customerprofiles_delete_profile_object]{delete_profile_object} \tab Removes an object associated with a profile of a given ProfileObjectType\cr
 #'  \link[=customerprofiles_delete_profile_object_type]{delete_profile_object_type} \tab Removes a ProfileObjectType from a specific domain as well as removes all the ProfileObjects of that type\cr
 #'  \link[=customerprofiles_delete_recommender]{delete_recommender} \tab Deletes a recommender\cr
+#'  \link[=customerprofiles_delete_recommender_filter]{delete_recommender_filter} \tab Deletes a recommender filter from a domain\cr
+#'  \link[=customerprofiles_delete_recommender_schema]{delete_recommender_schema} \tab Deletes a recommender schema from a domain\cr
 #'  \link[=customerprofiles_delete_segment_definition]{delete_segment_definition} \tab Deletes a segment definition from the domain\cr
 #'  \link[=customerprofiles_delete_workflow]{delete_workflow} \tab Deletes the specified workflow and all its corresponding resources\cr
 #'  \link[=customerprofiles_detect_profile_object_type]{detect_profile_object_type} \tab The process of detecting profile object type mapping by using given objects\cr
@@ -153,6 +157,8 @@ NULL
 #'  \link[=customerprofiles_get_profile_object_type_template]{get_profile_object_type_template} \tab Returns the template information for a specific object type\cr
 #'  \link[=customerprofiles_get_profile_recommendations]{get_profile_recommendations} \tab Fetches the recommendations for a profile in the input Customer Profiles domain\cr
 #'  \link[=customerprofiles_get_recommender]{get_recommender} \tab Retrieves a recommender\cr
+#'  \link[=customerprofiles_get_recommender_filter]{get_recommender_filter} \tab Retrieves information about a specific recommender filter in a domain\cr
+#'  \link[=customerprofiles_get_recommender_schema]{get_recommender_schema} \tab Retrieves information about a specific recommender schema in a domain\cr
 #'  \link[=customerprofiles_get_segment_definition]{get_segment_definition} \tab Gets a segment definition from the domain\cr
 #'  \link[=customerprofiles_get_segment_estimate]{get_segment_estimate} \tab Gets the result of a segment estimate query\cr
 #'  \link[=customerprofiles_get_segment_membership]{get_segment_membership} \tab Determines if the given profiles are within a segment\cr
@@ -179,8 +185,10 @@ NULL
 #'  \link[=customerprofiles_list_profile_objects]{list_profile_objects} \tab Returns a list of objects associated with a profile of a given ProfileObjectType\cr
 #'  \link[=customerprofiles_list_profile_object_types]{list_profile_object_types} \tab Lists all of the templates available within the service\cr
 #'  \link[=customerprofiles_list_profile_object_type_templates]{list_profile_object_type_templates} \tab Lists all of the template information for object types\cr
+#'  \link[=customerprofiles_list_recommender_filters]{list_recommender_filters} \tab Returns a list of recommender filters in the specified domain\cr
 #'  \link[=customerprofiles_list_recommender_recipes]{list_recommender_recipes} \tab Returns a list of available recommender recipes that can be used to create recommenders\cr
 #'  \link[=customerprofiles_list_recommenders]{list_recommenders} \tab Returns a list of recommenders in the specified domain\cr
+#'  \link[=customerprofiles_list_recommender_schemas]{list_recommender_schemas} \tab Returns a list of recommender schemas in the specified domain\cr
 #'  \link[=customerprofiles_list_rule_based_matches]{list_rule_based_matches} \tab Returns a set of MatchIds that belong to the given domain\cr
 #'  \link[=customerprofiles_list_segment_definitions]{list_segment_definitions} \tab Lists all segment definitions under a domain\cr
 #'  \link[=customerprofiles_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with an Amazon Connect Customer Profiles resource\cr

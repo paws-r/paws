@@ -1407,6 +1407,10 @@ iam_create_login_profile <- function(UserName = NULL, Password = NULL, PasswordR
 #' [Obtaining the thumbprint for an OpenID Connect
 #' provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html)
 #' in the *IAM user Guide*.
+#' 
+#' If your OIDC provider's discovery endpoint and JWKS endpoint
+#' (`jwks_uri`) use different certificates or hosts, include the
+#' thumbprints for both endpoints in this list.
 #' @param Tags A list of tags that you want to attach to the new IAM OpenID Connect
 #' (OIDC) provider. Each tag consists of a key name and an associated
 #' value. For more information about tagging, see [Tagging IAM
@@ -2204,16 +2208,16 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
 #' You can have a maximum of two sets of service-specific credentials for
 #' each supported service per user.
 #' 
-#' You can create service-specific credentials for Amazon Bedrock,
-#' CodeCommit and Amazon Keyspaces (for Apache Cassandra).
+#' You can create service-specific credentials for Amazon Bedrock, Amazon
+#' CloudWatch Logs, CodeCommit and Amazon Keyspaces (for Apache Cassandra).
 #' 
 #' You can reset the password to a new service-generated value by calling
 #' [`reset_service_specific_credential`][iam_reset_service_specific_credential].
 #' 
 #' For more information about service-specific credentials, see
 #' [Service-specific credentials for IAM
-#' users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_bedrock.html)
-#' in the *IAM User Guide*.
+#' users](https://docs.aws.amazon.com/IAM/latest/UserGuide/) in the *IAM
+#' User Guide*.
 #'
 #' @usage
 #' iam_create_service_specific_credential(UserName, ServiceName,
@@ -2232,8 +2236,8 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
 #' with the credentials. The service you specify here is the only service
 #' that can be accessed using these credentials.
 #' @param CredentialAgeDays The number of days until the service specific credential expires. This
-#' field is only valid for Bedrock API keys and must be a positive integer.
-#' When not specified, the credential will not expire.
+#' field is only valid for Bedrock and CloudWatch Logs API keys and must be
+#' a positive integer. When not specified, the credential will not expire.
 #'
 #' @return
 #' A list with the following syntax:

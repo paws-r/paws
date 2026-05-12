@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_generate_embed_url_for_anonymous_user}
 \alias{quicksight_generate_embed_url_for_anonymous_user}
-\title{Generates an embed URL that you can use to embed an Amazon Quick Suite
+\title{Generates an embed URL that you can use to embed an Amazon Quick
 dashboard or visual in your website, without having to register any
 reader users}
 \usage{
@@ -24,17 +24,37 @@ that you're embedding.}
 [15-600] minutes range.}
 
 \item{Namespace}{[required] The Amazon Quick Sight namespace that the anonymous user virtually
-belongs to. If you are not using an Amazon Quick Suite custom namespace,
-set this to \code{default}.}
+belongs to. If you are not using an Amazon Quick custom namespace, set
+this to \code{default}.}
 
-\item{SessionTags}{The session tags used for row-level security. Before you use this
-parameter, make sure that you have configured the relevant datasets
-using the \code{DataSet$RowLevelPermissionTagConfiguration} parameter so that
-session tags can be used to provide row-level security.
+\item{SessionTags}{Session tags are user-specified strings that identify a session in your
+application. You can use these tags to implement row-level security
+(RLS) controls. Before you use the \code{SessionTags} parameter, make sure
+that you have configured the relevant datasets using the
+\code{DataSet$RowLevelPermissionTagConfiguration} parameter so that session
+tags can be used to provide row-level security.
 
-These are not the tags used for the Amazon Web Services resource tagging
-feature. For more information, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/quicksight-dev-rls-tags.html}{Using Row-Level Security (RLS) with Tags}in
-the \emph{Amazon Quick Sight User Guide}.}
+When using \code{SessionTags} in
+\code{\link[=quicksight_generate_embed_url_for_anonymous_user]{generate_embed_url_for_anonymous_user}},
+\itemize{
+\item Treat \code{SessionTags} as security credentials. Do not expose
+\code{SessionTags} to end users or client-side code.
+\item Implement server-side controls. Ensure that \code{SessionTags} are set
+exclusively by your trusted backend services, not by parameters that
+end users can modify.
+\item Protect \code{SessionTags} from enumeration. Ensure that users in one
+tenant cannot discover or guess sessionTag values belonging to other
+tenants.
+\item Review your architecture. If downstream customers or partners are
+allowed to call the
+\code{\link[=quicksight_generate_embed_url_for_anonymous_user]{generate_embed_url_for_anonymous_user}}
+API directly, evaluate whether those parties could specify
+sessionTag values for tenants they should not access.
+}
+
+Besides, these are not the tags used for the Amazon Web Services
+resource tagging feature. For more information, see \href{https://docs.aws.amazon.com/quick/latest/userguide/quicksight-dev-rls-tags.html}{Using Row-Level Security (RLS) with Tags}
+in the \emph{Amazon Quick User Guide}.}
 
 \item{AuthorizedResourceArns}{[required] The Amazon Resource Names (ARNs) for the Quick Sight resources that the
 user is authorized to access during the lifetime of the session.
@@ -61,7 +81,7 @@ To include all subdomains under a specific domain to the allow list, use
 under \verb{https://sapp.amazon.com}.}
 }
 \description{
-Generates an embed URL that you can use to embed an Amazon Quick Suite dashboard or visual in your website, without having to register any reader users. Before you use this action, make sure that you have configured the dashboards and permissions.
+Generates an embed URL that you can use to embed an Amazon Quick dashboard or visual in your website, without having to register any reader users. Before you use this action, make sure that you have configured the dashboards and permissions.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_anonymous_user/} for full documentation.
 }

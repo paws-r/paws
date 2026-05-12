@@ -32,7 +32,7 @@ Default: \code{false}}
 \item{FinalDBSnapshotIdentifier}{The DB cluster snapshot identifier of the new DB cluster snapshot
 created when \code{SkipFinalSnapshot} is set to \code{false}.
 
-Specifying this parameter and also setting the \code{SkipFinalShapshot}
+Specifying this parameter and also setting the \code{SkipFinalSnapshot}
 parameter to true results in an error.
 
 Constraints:

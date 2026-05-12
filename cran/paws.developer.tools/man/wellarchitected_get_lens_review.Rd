@@ -10,8 +10,6 @@ wellarchitected_get_lens_review(WorkloadId, LensAlias, MilestoneNumber = NULL)
 \item{WorkloadId}{[required]}
 
 \item{LensAlias}{[required]}
-
-\item{MilestoneNumber}{}
 }
 \description{
 Get lens review.

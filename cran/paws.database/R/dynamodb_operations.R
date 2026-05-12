@@ -280,11 +280,11 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/dynamodb_create_table/](https://www.paws-r-sdk.com/docs/dynamodb_create_table/) for full documentation.
 #'
-#' @param AttributeDefinitions &#91;required&#93; An array of attributes that describe the key schema for the table and
+#' @param AttributeDefinitions An array of attributes that describe the key schema for the table and
 #' indexes.
 #' @param TableName &#91;required&#93; The name of the table to create. You can also provide the Amazon
 #' Resource Name (ARN) of the table in this parameter.
-#' @param KeySchema &#91;required&#93; Specifies the attributes that make up the primary key for a table or an
+#' @param KeySchema Specifies the attributes that make up the primary key for a table or an
 #' index. The attributes in `KeySchema` must also be defined in the
 #' `AttributeDefinitions` array. For more information, see [Data
 #' Model](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.html)
@@ -370,7 +370,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'     only for this table.
 #' 
 #' -   `KeySchema` - Specifies the key schema for the global secondary
-#'     index.
+#'     index. Each global secondary index supports up to 4 partition keys
+#'     and up to 4 sort keys.
 #' 
 #' -   `Projection` - Specifies attributes that are copied (projected) from
 #'     the table into the index. These are in addition to the primary key
@@ -477,11 +478,17 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @param OnDemandThroughput Sets the maximum number of read and write units for the specified table
 #' in on-demand capacity mode. If you use this parameter, you must specify
 #' `MaxReadRequestUnits`, `MaxWriteRequestUnits`, or both.
+#' @param GlobalTableSourceArn The Amazon Resource Name (ARN) of the source table used for the creation
+#' of a multi-account global table.
+#' @param GlobalTableSettingsReplicationMode Controls the settings synchronization mode for the global table. For
+#' multi-account global tables, this parameter is required and the only
+#' supported value is ENABLED. For same-account global tables, this
+#' parameter is set to ENABLED_WITH_OVERRIDES.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_create_table
-dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, WarmThroughput = NULL, ResourcePolicy = NULL, OnDemandThroughput = NULL) {
+dynamodb_create_table <- function(AttributeDefinitions = NULL, TableName, KeySchema = NULL, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, WarmThroughput = NULL, ResourcePolicy = NULL, OnDemandThroughput = NULL, GlobalTableSourceArn = NULL, GlobalTableSettingsReplicationMode = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
@@ -490,7 +497,7 @@ dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, Lo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, WarmThroughput = WarmThroughput, ResourcePolicy = ResourcePolicy, OnDemandThroughput = OnDemandThroughput)
+  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, WarmThroughput = WarmThroughput, ResourcePolicy = ResourcePolicy, OnDemandThroughput = OnDemandThroughput, GlobalTableSourceArn = GlobalTableSourceArn, GlobalTableSettingsReplicationMode = GlobalTableSettingsReplicationMode)
   output <- .dynamodb$create_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config, op)
@@ -1360,7 +1367,7 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' 
 #' If you submit a request with the same client token but a change in other
 #' parameters within the 8-hour idempotency window, DynamoDB returns an
-#' `ImportConflictException`.
+#' `ExportConflictException`.
 #' @param S3Bucket &#91;required&#93; The name of the Amazon S3 bucket to export the snapshot to.
 #' @param S3BucketOwner The ID of the Amazon Web Services account that owns the bucket the
 #' export will be stored in.
@@ -1677,10 +1684,11 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
 }
 .dynamodb$operations$list_contributor_insights <- dynamodb_list_contributor_insights
 
-#' Lists completed exports within the past 90 days
+#' Lists completed exports within the past 90 days, in reverse alphanumeric
+#' order of ExportArn
 #'
 #' @description
-#' Lists completed exports within the past 90 days.
+#' Lists completed exports within the past 90 days, in reverse alphanumeric order of `ExportArn`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/dynamodb_list_exports/](https://www.paws-r-sdk.com/docs/dynamodb_list_exports/) for full documentation.
 #'
@@ -3184,9 +3192,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #'         if the existing data type is a set of strings, the `Value` must
 #'         also be a set of strings.
 #' 
-#'     The `ADD` action only supports Number and set data types. In
-#'     addition, `ADD` can only be used on top-level attributes, not nested
-#'     attributes.
+#'     The `ADD` action only supports Number and set data types.
 #' 
 #' -   `DELETE` - Deletes an element from a set.
 #' 
@@ -3195,9 +3201,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #'     `[a,b,c]` and the `DELETE` action specifies `[a,c]`, then the final
 #'     attribute value is `[b]`. Specifying an empty set is an error.
 #' 
-#'     The `DELETE` action only supports set data types. In addition,
-#'     `DELETE` can only be used on top-level attributes, not nested
-#'     attributes.
+#'     The `DELETE` action only supports set data types.
 #' 
 #' You can have many actions in a single expression, such as the following:
 #' `SET a=:value1, b=:value2 DELETE :value3, :value4, :value5`
@@ -3443,11 +3447,21 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' specify `MaxReadRequestUnits`, `MaxWriteRequestUnits`, or both.
 #' @param WarmThroughput Represents the warm throughput (in read units per second and write units
 #' per second) for updating a table.
+#' @param GlobalTableSettingsReplicationMode Controls the settings replication mode for a global table replica. This
+#' attribute can be defined using UpdateTable operation only on a regional
+#' table with values:
+#' 
+#' -   `ENABLED`: Defines settings replication on a regional table to be
+#'     used as a source table for creating Multi-Account Global Table.
+#' 
+#' -   `DISABLED`: Remove settings replication on a regional table.
+#'     Settings replication needs to be defined to ENABLED again in order
+#'     to create a Multi-Account Global Table using this table.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_table
-dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, MultiRegionConsistency = NULL, GlobalTableWitnessUpdates = NULL, OnDemandThroughput = NULL, WarmThroughput = NULL) {
+dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, MultiRegionConsistency = NULL, GlobalTableWitnessUpdates = NULL, OnDemandThroughput = NULL, WarmThroughput = NULL, GlobalTableSettingsReplicationMode = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
@@ -3456,7 +3470,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, MultiRegionConsistency = MultiRegionConsistency, GlobalTableWitnessUpdates = GlobalTableWitnessUpdates, OnDemandThroughput = OnDemandThroughput, WarmThroughput = WarmThroughput)
+  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, MultiRegionConsistency = MultiRegionConsistency, GlobalTableWitnessUpdates = GlobalTableWitnessUpdates, OnDemandThroughput = OnDemandThroughput, WarmThroughput = WarmThroughput, GlobalTableSettingsReplicationMode = GlobalTableSettingsReplicationMode)
   output <- .dynamodb$update_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config, op)

@@ -5,9 +5,11 @@
 \title{Deletes the specified alternate contact from an Amazon Web Services
 account}
 \usage{
-account_delete_alternate_contact(AccountId = NULL, AlternateContactType)
+account_delete_alternate_contact(AlternateContactType, AccountId = NULL)
 }
 \arguments{
+\item{AlternateContactType}{[required] Specifies which of the alternate contacts to delete.}
+
 \item{AccountId}{Specifies the 12 digit account ID number of the Amazon Web Services
 account that you want to access or modify with this operation.
 
@@ -31,8 +33,6 @@ To call this operation on an account that is not a member of an
 organization, then don't specify this parameter, and call the operation
 using an identity belonging to the account whose contacts you wish to
 retrieve or modify.}
-
-\item{AlternateContactType}{[required] Specifies which of the alternate contacts to delete.}
 }
 \description{
 Deletes the specified alternate contact from an Amazon Web Services account.

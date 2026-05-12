@@ -149,7 +149,8 @@ opensearchservice_add_data_source <- function(DomainName, Name, DataSourceType, 
 #'
 #' @usage
 #' opensearchservice_add_direct_query_data_source(DataSourceName,
-#'   DataSourceType, Description, OpenSearchArns, TagList)
+#'   DataSourceType, Description, OpenSearchArns, DataSourceAccessPolicy,
+#'   TagList)
 #'
 #' @param DataSourceName &#91;required&#93; A unique, user-defined label to identify the data source within your
 #' OpenSearch Service environment.
@@ -157,8 +158,12 @@ opensearchservice_add_data_source <- function(DomainName, Name, DataSourceType, 
 #' source for direct queries in OpenSearch Service.
 #' @param Description An optional text field for providing additional context and details
 #' about the data source.
-#' @param OpenSearchArns &#91;required&#93; A list of Amazon Resource Names (ARNs) for the OpenSearch collections
-#' that are associated with the direct query data source.
+#' @param OpenSearchArns An optional list of Amazon Resource Names (ARNs) for the OpenSearch
+#' collections that are associated with the direct query data source. This
+#' field is required for CloudWatchLogs and SecurityLake datasource types.
+#' @param DataSourceAccessPolicy An optional IAM access policy document that defines the permissions for
+#' accessing the data source. The policy document must be in valid JSON
+#' format and follow IAM policy syntax.
 #' @param TagList 
 #'
 #' @return
@@ -179,12 +184,17 @@ opensearchservice_add_data_source <- function(DomainName, Name, DataSourceType, 
 #'     ),
 #'     SecurityLake = list(
 #'       RoleArn = "string"
+#'     ),
+#'     Prometheus = list(
+#'       RoleArn = "string",
+#'       WorkspaceArn = "string"
 #'     )
 #'   ),
 #'   Description = "string",
 #'   OpenSearchArns = list(
 #'     "string"
 #'   ),
+#'   DataSourceAccessPolicy = "string",
 #'   TagList = list(
 #'     list(
 #'       Key = "string",
@@ -199,7 +209,7 @@ opensearchservice_add_data_source <- function(DomainName, Name, DataSourceType, 
 #' @rdname opensearchservice_add_direct_query_data_source
 #'
 #' @aliases opensearchservice_add_direct_query_data_source
-opensearchservice_add_direct_query_data_source <- function(DataSourceName, DataSourceType, Description = NULL, OpenSearchArns, TagList = NULL) {
+opensearchservice_add_direct_query_data_source <- function(DataSourceName, DataSourceType, Description = NULL, OpenSearchArns = NULL, DataSourceAccessPolicy = NULL, TagList = NULL) {
   op <- new_operation(
     name = "AddDirectQueryDataSource",
     http_method = "POST",
@@ -208,7 +218,7 @@ opensearchservice_add_direct_query_data_source <- function(DataSourceName, DataS
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$add_direct_query_data_source_input(DataSourceName = DataSourceName, DataSourceType = DataSourceType, Description = Description, OpenSearchArns = OpenSearchArns, TagList = TagList)
+  input <- .opensearchservice$add_direct_query_data_source_input(DataSourceName = DataSourceName, DataSourceType = DataSourceType, Description = Description, OpenSearchArns = OpenSearchArns, DataSourceAccessPolicy = DataSourceAccessPolicy, TagList = TagList)
   output <- .opensearchservice$add_direct_query_data_source_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -472,11 +482,13 @@ opensearchservice_associate_packages <- function(PackageList, DomainName) {
 #'
 #' @usage
 #' opensearchservice_authorize_vpc_endpoint_access(DomainName, Account,
-#'   Service)
+#'   Service, ServiceOptions)
 #'
 #' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain to provide access to.
 #' @param Account The Amazon Web Services account ID to grant access to.
 #' @param Service The Amazon Web Services service SP to grant access to.
+#' @param ServiceOptions The options for the service, including the supported Regions for the
+#' endpoint access.
 #'
 #' @return
 #' A list with the following syntax:
@@ -484,7 +496,12 @@ opensearchservice_associate_packages <- function(PackageList, DomainName) {
 #' list(
 #'   AuthorizedPrincipal = list(
 #'     PrincipalType = "AWS_ACCOUNT"|"AWS_SERVICE",
-#'     Principal = "string"
+#'     Principal = "string",
+#'     ServiceOptions = list(
+#'       SupportedRegions = list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -494,7 +511,12 @@ opensearchservice_associate_packages <- function(PackageList, DomainName) {
 #' svc$authorize_vpc_endpoint_access(
 #'   DomainName = "string",
 #'   Account = "string",
-#'   Service = "application.opensearchservice.amazonaws.com"
+#'   Service = "application.opensearchservice.amazonaws.com",
+#'   ServiceOptions = list(
+#'     SupportedRegions = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -503,7 +525,7 @@ opensearchservice_associate_packages <- function(PackageList, DomainName) {
 #' @rdname opensearchservice_authorize_vpc_endpoint_access
 #'
 #' @aliases opensearchservice_authorize_vpc_endpoint_access
-opensearchservice_authorize_vpc_endpoint_access <- function(DomainName, Account = NULL, Service = NULL) {
+opensearchservice_authorize_vpc_endpoint_access <- function(DomainName, Account = NULL, Service = NULL, ServiceOptions = NULL) {
   op <- new_operation(
     name = "AuthorizeVpcEndpointAccess",
     http_method = "POST",
@@ -512,7 +534,7 @@ opensearchservice_authorize_vpc_endpoint_access <- function(DomainName, Account 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$authorize_vpc_endpoint_access_input(DomainName = DomainName, Account = Account, Service = Service)
+  input <- .opensearchservice$authorize_vpc_endpoint_access_input(DomainName = DomainName, Account = Account, Service = Service, ServiceOptions = ServiceOptions)
   output <- .opensearchservice$authorize_vpc_endpoint_access_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -689,7 +711,8 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #'   dataSources = list(
 #'     list(
 #'       dataSourceArn = "string",
-#'       dataSourceDescription = "string"
+#'       dataSourceDescription = "string",
+#'       iamRoleForDataSourceArn = "string"
 #'     )
 #'   ),
 #'   iamIdentityCenterOptions = list(
@@ -725,7 +748,8 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #'   dataSources = list(
 #'     list(
 #'       dataSourceArn = "string",
-#'       dataSourceDescription = "string"
+#'       dataSourceDescription = "string",
+#'       iamRoleForDataSourceArn = "string"
 #'     )
 #'   ),
 #'   iamIdentityCenterOptions = list(
@@ -787,7 +811,7 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'   NodeToNodeEncryptionOptions, AdvancedOptions, LogPublishingOptions,
 #'   DomainEndpointOptions, AdvancedSecurityOptions, IdentityCenterOptions,
 #'   TagList, AutoTuneOptions, OffPeakWindowOptions, SoftwareUpdateOptions,
-#'   AIMLOptions)
+#'   AIMLOptions, DeploymentStrategyOptions)
 #'
 #' @param DomainName &#91;required&#93; Name of the OpenSearch Service domain to create. Domain names are unique
 #' across the domains owned by an account within an Amazon Web Services
@@ -862,6 +886,7 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #' time (for the Region that the domain is created in) is used.
 #' @param SoftwareUpdateOptions Software update options for the domain.
 #' @param AIMLOptions Options for all machine learning features for the specified domain.
+#' @param DeploymentStrategyOptions Specifies the deployment strategy options for the domain.
 #'
 #' @return
 #' A list with the following syntax:
@@ -932,7 +957,8 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'       ),
 #'       SecurityGroupIds = list(
 #'         "string"
-#'       )
+#'       ),
+#'       EgressEnabled = TRUE|FALSE
 #'     ),
 #'     CognitoOptions = list(
 #'       Enabled = TRUE|FALSE,
@@ -970,7 +996,7 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'     ),
 #'     DomainEndpointOptions = list(
 #'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'       CustomEndpointEnabled = TRUE|FALSE,
 #'       CustomEndpoint = "string",
 #'       CustomEndpointCertificateArn = "string"
@@ -992,6 +1018,7 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'         Enabled = TRUE|FALSE,
 #'         SubjectKey = "string",
 #'         RolesKey = "string",
+#'         JwksUrl = "string",
 #'         PublicKey = "string"
 #'       ),
 #'       IAMFederationOptions = list(
@@ -1007,6 +1034,7 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'     IdentityCenterOptions = list(
 #'       EnabledAPIAccess = TRUE|FALSE,
 #'       IdentityCenterInstanceARN = "string",
+#'       IdentityCenterInstanceRegion = "string",
 #'       SubjectKey = "UserName"|"UserId"|"Email",
 #'       RolesKey = "GroupName"|"GroupId",
 #'       IdentityCenterApplicationARN = "string",
@@ -1039,7 +1067,8 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'       )
 #'     ),
 #'     SoftwareUpdateOptions = list(
-#'       AutoSoftwareUpdateEnabled = TRUE|FALSE
+#'       AutoSoftwareUpdateEnabled = TRUE|FALSE,
+#'       UseLatestServiceSoftwareForBlueGreen = TRUE|FALSE
 #'     ),
 #'     DomainProcessingStatus = "Creating"|"Active"|"Modifying"|"UpgradingEngineVersion"|"UpdatingServiceSoftware"|"Isolated"|"Deleting",
 #'     ModifyingProperties = list(
@@ -1061,6 +1090,9 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'       ServerlessVectorAcceleration = list(
 #'         Enabled = TRUE|FALSE
 #'       )
+#'     ),
+#'     DeploymentStrategyOptions = list(
+#'       DeploymentStrategy = "Default"|"CapacityOptimized"
 #'     )
 #'   )
 #' )
@@ -1117,7 +1149,8 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'     ),
 #'     SecurityGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     EgressEnabled = TRUE|FALSE
 #'   ),
 #'   CognitoOptions = list(
 #'     Enabled = TRUE|FALSE,
@@ -1143,7 +1176,7 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'   ),
 #'   DomainEndpointOptions = list(
 #'     EnforceHTTPS = TRUE|FALSE,
-#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'     CustomEndpointEnabled = TRUE|FALSE,
 #'     CustomEndpoint = "string",
 #'     CustomEndpointCertificateArn = "string"
@@ -1172,6 +1205,7 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'       Enabled = TRUE|FALSE,
 #'       SubjectKey = "string",
 #'       RolesKey = "string",
+#'       JwksUrl = "string",
 #'       PublicKey = "string"
 #'     ),
 #'     IAMFederationOptions = list(
@@ -1184,6 +1218,7 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'   IdentityCenterOptions = list(
 #'     EnabledAPIAccess = TRUE|FALSE,
 #'     IdentityCenterInstanceARN = "string",
+#'     IdentityCenterInstanceRegion = "string",
 #'     SubjectKey = "UserName"|"UserId"|"Email",
 #'     RolesKey = "GroupName"|"GroupId"
 #'   ),
@@ -1219,7 +1254,8 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'     )
 #'   ),
 #'   SoftwareUpdateOptions = list(
-#'     AutoSoftwareUpdateEnabled = TRUE|FALSE
+#'     AutoSoftwareUpdateEnabled = TRUE|FALSE,
+#'     UseLatestServiceSoftwareForBlueGreen = TRUE|FALSE
 #'   ),
 #'   AIMLOptions = list(
 #'     NaturalLanguageQueryGenerationOptions = list(
@@ -1231,6 +1267,9 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'     ServerlessVectorAcceleration = list(
 #'       Enabled = TRUE|FALSE
 #'     )
+#'   ),
+#'   DeploymentStrategyOptions = list(
+#'     DeploymentStrategy = "Default"|"CapacityOptimized"
 #'   )
 #' )
 #' ```
@@ -1240,7 +1279,7 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #' @rdname opensearchservice_create_domain
 #'
 #' @aliases opensearchservice_create_domain
-opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, IdentityCenterOptions = NULL, TagList = NULL, AutoTuneOptions = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL) {
+opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, IdentityCenterOptions = NULL, TagList = NULL, AutoTuneOptions = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL, DeploymentStrategyOptions = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
@@ -1249,7 +1288,7 @@ opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, Cl
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, IdentityCenterOptions = IdentityCenterOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions)
+  input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, IdentityCenterOptions = IdentityCenterOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions, DeploymentStrategyOptions = DeploymentStrategyOptions)
   output <- .opensearchservice$create_domain_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -1586,7 +1625,8 @@ opensearchservice_create_package <- function(PackageName, PackageType, PackageDe
 #'       ),
 #'       SecurityGroupIds = list(
 #'         "string"
-#'       )
+#'       ),
+#'       EgressEnabled = TRUE|FALSE
 #'     ),
 #'     Status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"UPDATING"|"UPDATE_FAILED"|"DELETING"|"DELETE_FAILED",
 #'     Endpoint = "string"
@@ -1604,7 +1644,8 @@ opensearchservice_create_package <- function(PackageName, PackageType, PackageDe
 #'     ),
 #'     SecurityGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     EgressEnabled = TRUE|FALSE
 #'   ),
 #'   ClientToken = "string"
 #' )
@@ -1858,7 +1899,8 @@ opensearchservice_delete_direct_query_data_source <- function(DataSourceName) {
 #'       ),
 #'       SecurityGroupIds = list(
 #'         "string"
-#'       )
+#'       ),
+#'       EgressEnabled = TRUE|FALSE
 #'     ),
 #'     CognitoOptions = list(
 #'       Enabled = TRUE|FALSE,
@@ -1896,7 +1938,7 @@ opensearchservice_delete_direct_query_data_source <- function(DataSourceName) {
 #'     ),
 #'     DomainEndpointOptions = list(
 #'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'       CustomEndpointEnabled = TRUE|FALSE,
 #'       CustomEndpoint = "string",
 #'       CustomEndpointCertificateArn = "string"
@@ -1918,6 +1960,7 @@ opensearchservice_delete_direct_query_data_source <- function(DataSourceName) {
 #'         Enabled = TRUE|FALSE,
 #'         SubjectKey = "string",
 #'         RolesKey = "string",
+#'         JwksUrl = "string",
 #'         PublicKey = "string"
 #'       ),
 #'       IAMFederationOptions = list(
@@ -1933,6 +1976,7 @@ opensearchservice_delete_direct_query_data_source <- function(DataSourceName) {
 #'     IdentityCenterOptions = list(
 #'       EnabledAPIAccess = TRUE|FALSE,
 #'       IdentityCenterInstanceARN = "string",
+#'       IdentityCenterInstanceRegion = "string",
 #'       SubjectKey = "UserName"|"UserId"|"Email",
 #'       RolesKey = "GroupName"|"GroupId",
 #'       IdentityCenterApplicationARN = "string",
@@ -1965,7 +2009,8 @@ opensearchservice_delete_direct_query_data_source <- function(DataSourceName) {
 #'       )
 #'     ),
 #'     SoftwareUpdateOptions = list(
-#'       AutoSoftwareUpdateEnabled = TRUE|FALSE
+#'       AutoSoftwareUpdateEnabled = TRUE|FALSE,
+#'       UseLatestServiceSoftwareForBlueGreen = TRUE|FALSE
 #'     ),
 #'     DomainProcessingStatus = "Creating"|"Active"|"Modifying"|"UpgradingEngineVersion"|"UpdatingServiceSoftware"|"Isolated"|"Deleting",
 #'     ModifyingProperties = list(
@@ -1987,6 +2032,9 @@ opensearchservice_delete_direct_query_data_source <- function(DataSourceName) {
 #'       ServerlessVectorAcceleration = list(
 #'         Enabled = TRUE|FALSE
 #'       )
+#'     ),
+#'     DeploymentStrategyOptions = list(
+#'       DeploymentStrategy = "Default"|"CapacityOptimized"
 #'     )
 #'   )
 #' )
@@ -2379,6 +2427,59 @@ opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
 }
 .opensearchservice$operations$delete_vpc_endpoint <- opensearchservice_delete_vpc_endpoint
 
+#' Deregisters a capability from an OpenSearch UI application
+#'
+#' @description
+#' Deregisters a capability from an OpenSearch UI application. This
+#' operation removes the capability and its associated configuration.
+#'
+#' @usage
+#' opensearchservice_deregister_capability(applicationId, capabilityName)
+#'
+#' @param applicationId &#91;required&#93; The unique identifier of the OpenSearch UI application to deregister the
+#' capability from.
+#' @param capabilityName &#91;required&#93; The name of the capability to deregister.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "creating"|"create_failed"|"active"|"updating"|"update_failed"|"deleting"|"delete_failed"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deregister_capability(
+#'   applicationId = "string",
+#'   capabilityName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_deregister_capability
+#'
+#' @aliases opensearchservice_deregister_capability
+opensearchservice_deregister_capability <- function(applicationId, capabilityName) {
+  op <- new_operation(
+    name = "DeregisterCapability",
+    http_method = "DELETE",
+    http_path = "/2021-01-01/opensearch/application/{ApplicationId}/capability/deregister/{CapabilityName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$deregister_capability_input(applicationId = applicationId, capabilityName = capabilityName)
+  output <- .opensearchservice$deregister_capability_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$deregister_capability <- opensearchservice_deregister_capability
+
 #' Describes the domain configuration for the specified Amazon OpenSearch
 #' Service domain, including the domain ID, domain service endpoint, and
 #' domain ARN
@@ -2462,7 +2563,8 @@ opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
 #'       ),
 #'       SecurityGroupIds = list(
 #'         "string"
-#'       )
+#'       ),
+#'       EgressEnabled = TRUE|FALSE
 #'     ),
 #'     CognitoOptions = list(
 #'       Enabled = TRUE|FALSE,
@@ -2500,7 +2602,7 @@ opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
 #'     ),
 #'     DomainEndpointOptions = list(
 #'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'       CustomEndpointEnabled = TRUE|FALSE,
 #'       CustomEndpoint = "string",
 #'       CustomEndpointCertificateArn = "string"
@@ -2522,6 +2624,7 @@ opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
 #'         Enabled = TRUE|FALSE,
 #'         SubjectKey = "string",
 #'         RolesKey = "string",
+#'         JwksUrl = "string",
 #'         PublicKey = "string"
 #'       ),
 #'       IAMFederationOptions = list(
@@ -2537,6 +2640,7 @@ opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
 #'     IdentityCenterOptions = list(
 #'       EnabledAPIAccess = TRUE|FALSE,
 #'       IdentityCenterInstanceARN = "string",
+#'       IdentityCenterInstanceRegion = "string",
 #'       SubjectKey = "UserName"|"UserId"|"Email",
 #'       RolesKey = "GroupName"|"GroupId",
 #'       IdentityCenterApplicationARN = "string",
@@ -2569,7 +2673,8 @@ opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
 #'       )
 #'     ),
 #'     SoftwareUpdateOptions = list(
-#'       AutoSoftwareUpdateEnabled = TRUE|FALSE
+#'       AutoSoftwareUpdateEnabled = TRUE|FALSE,
+#'       UseLatestServiceSoftwareForBlueGreen = TRUE|FALSE
 #'     ),
 #'     DomainProcessingStatus = "Creating"|"Active"|"Modifying"|"UpgradingEngineVersion"|"UpdatingServiceSoftware"|"Isolated"|"Deleting",
 #'     ModifyingProperties = list(
@@ -2591,6 +2696,9 @@ opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
 #'       ServerlessVectorAcceleration = list(
 #'         Enabled = TRUE|FALSE
 #'       )
+#'     ),
+#'     DeploymentStrategyOptions = list(
+#'       DeploymentStrategy = "Default"|"CapacityOptimized"
 #'     )
 #'   )
 #' )
@@ -2937,7 +3045,8 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
 #'         ),
 #'         SecurityGroupIds = list(
 #'           "string"
-#'         )
+#'         ),
+#'         EgressEnabled = TRUE|FALSE
 #'       ),
 #'       Status = list(
 #'         CreationDate = as.POSIXct(
@@ -3041,7 +3150,7 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
 #'     DomainEndpointOptions = list(
 #'       Options = list(
 #'         EnforceHTTPS = TRUE|FALSE,
-#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'         CustomEndpointEnabled = TRUE|FALSE,
 #'         CustomEndpoint = "string",
 #'         CustomEndpointCertificateArn = "string"
@@ -3076,6 +3185,7 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
 #'           Enabled = TRUE|FALSE,
 #'           SubjectKey = "string",
 #'           RolesKey = "string",
+#'           JwksUrl = "string",
 #'           PublicKey = "string"
 #'         ),
 #'         IAMFederationOptions = list(
@@ -3104,6 +3214,7 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
 #'       Options = list(
 #'         EnabledAPIAccess = TRUE|FALSE,
 #'         IdentityCenterInstanceARN = "string",
+#'         IdentityCenterInstanceRegion = "string",
 #'         SubjectKey = "UserName"|"UserId"|"Email",
 #'         RolesKey = "GroupName"|"GroupId",
 #'         IdentityCenterApplicationARN = "string",
@@ -3188,7 +3299,8 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
 #'     ),
 #'     SoftwareUpdateOptions = list(
 #'       Options = list(
-#'         AutoSoftwareUpdateEnabled = TRUE|FALSE
+#'         AutoSoftwareUpdateEnabled = TRUE|FALSE,
+#'         UseLatestServiceSoftwareForBlueGreen = TRUE|FALSE
 #'       ),
 #'       Status = list(
 #'         CreationDate = as.POSIXct(
@@ -3222,6 +3334,22 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
 #'         ServerlessVectorAcceleration = list(
 #'           Enabled = TRUE|FALSE
 #'         )
+#'       ),
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
+#'     ),
+#'     DeploymentStrategyOptions = list(
+#'       Options = list(
+#'         DeploymentStrategy = "Default"|"CapacityOptimized"
 #'       ),
 #'       Status = list(
 #'         CreationDate = as.POSIXct(
@@ -3495,7 +3623,8 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
 #'         ),
 #'         SecurityGroupIds = list(
 #'           "string"
-#'         )
+#'         ),
+#'         EgressEnabled = TRUE|FALSE
 #'       ),
 #'       CognitoOptions = list(
 #'         Enabled = TRUE|FALSE,
@@ -3533,7 +3662,7 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
 #'       ),
 #'       DomainEndpointOptions = list(
 #'         EnforceHTTPS = TRUE|FALSE,
-#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'         CustomEndpointEnabled = TRUE|FALSE,
 #'         CustomEndpoint = "string",
 #'         CustomEndpointCertificateArn = "string"
@@ -3555,6 +3684,7 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
 #'           Enabled = TRUE|FALSE,
 #'           SubjectKey = "string",
 #'           RolesKey = "string",
+#'           JwksUrl = "string",
 #'           PublicKey = "string"
 #'         ),
 #'         IAMFederationOptions = list(
@@ -3570,6 +3700,7 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
 #'       IdentityCenterOptions = list(
 #'         EnabledAPIAccess = TRUE|FALSE,
 #'         IdentityCenterInstanceARN = "string",
+#'         IdentityCenterInstanceRegion = "string",
 #'         SubjectKey = "UserName"|"UserId"|"Email",
 #'         RolesKey = "GroupName"|"GroupId",
 #'         IdentityCenterApplicationARN = "string",
@@ -3602,7 +3733,8 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
 #'         )
 #'       ),
 #'       SoftwareUpdateOptions = list(
-#'         AutoSoftwareUpdateEnabled = TRUE|FALSE
+#'         AutoSoftwareUpdateEnabled = TRUE|FALSE,
+#'         UseLatestServiceSoftwareForBlueGreen = TRUE|FALSE
 #'       ),
 #'       DomainProcessingStatus = "Creating"|"Active"|"Modifying"|"UpgradingEngineVersion"|"UpdatingServiceSoftware"|"Isolated"|"Deleting",
 #'       ModifyingProperties = list(
@@ -3624,6 +3756,9 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
 #'         ServerlessVectorAcceleration = list(
 #'           Enabled = TRUE|FALSE
 #'         )
+#'       ),
+#'       DeploymentStrategyOptions = list(
+#'         DeploymentStrategy = "Default"|"CapacityOptimized"
 #'       )
 #'     )
 #'   )
@@ -3763,7 +3898,8 @@ opensearchservice_describe_domains <- function(DomainNames) {
 #'       ),
 #'       SecurityGroupIds = list(
 #'         "string"
-#'       )
+#'       ),
+#'       EgressEnabled = TRUE|FALSE
 #'     ),
 #'     CognitoOptions = list(
 #'       Enabled = TRUE|FALSE,
@@ -3801,7 +3937,7 @@ opensearchservice_describe_domains <- function(DomainNames) {
 #'     ),
 #'     DomainEndpointOptions = list(
 #'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'       CustomEndpointEnabled = TRUE|FALSE,
 #'       CustomEndpoint = "string",
 #'       CustomEndpointCertificateArn = "string"
@@ -3823,6 +3959,7 @@ opensearchservice_describe_domains <- function(DomainNames) {
 #'         Enabled = TRUE|FALSE,
 #'         SubjectKey = "string",
 #'         RolesKey = "string",
+#'         JwksUrl = "string",
 #'         PublicKey = "string"
 #'       ),
 #'       IAMFederationOptions = list(
@@ -3838,6 +3975,7 @@ opensearchservice_describe_domains <- function(DomainNames) {
 #'     IdentityCenterOptions = list(
 #'       EnabledAPIAccess = TRUE|FALSE,
 #'       IdentityCenterInstanceARN = "string",
+#'       IdentityCenterInstanceRegion = "string",
 #'       SubjectKey = "UserName"|"UserId"|"Email",
 #'       RolesKey = "GroupName"|"GroupId",
 #'       IdentityCenterApplicationARN = "string",
@@ -3870,7 +4008,8 @@ opensearchservice_describe_domains <- function(DomainNames) {
 #'       )
 #'     ),
 #'     SoftwareUpdateOptions = list(
-#'       AutoSoftwareUpdateEnabled = TRUE|FALSE
+#'       AutoSoftwareUpdateEnabled = TRUE|FALSE,
+#'       UseLatestServiceSoftwareForBlueGreen = TRUE|FALSE
 #'     ),
 #'     DomainProcessingStatus = "Creating"|"Active"|"Modifying"|"UpgradingEngineVersion"|"UpdatingServiceSoftware"|"Isolated"|"Deleting",
 #'     ModifyingProperties = list(
@@ -3892,6 +4031,9 @@ opensearchservice_describe_domains <- function(DomainNames) {
 #'       ServerlessVectorAcceleration = list(
 #'         Enabled = TRUE|FALSE
 #'       )
+#'     ),
+#'     DeploymentStrategyOptions = list(
+#'       DeploymentStrategy = "Default"|"CapacityOptimized"
 #'     )
 #'   ),
 #'   DryRunResults = list(
@@ -4029,6 +4171,74 @@ opensearchservice_describe_inbound_connections <- function(Filters = NULL, MaxRe
   return(response)
 }
 .opensearchservice$operations$describe_inbound_connections <- opensearchservice_describe_inbound_connections
+
+#' Describes the details of an existing insight for an Amazon OpenSearch
+#' Service domain
+#'
+#' @description
+#' Describes the details of an existing insight for an Amazon OpenSearch
+#' Service domain. Returns detailed fields associated with the specified
+#' insight, such as text descriptions and metric data.
+#'
+#' @usage
+#' opensearchservice_describe_insight_details(Entity, InsightId,
+#'   ShowHtmlContent)
+#'
+#' @param Entity &#91;required&#93; The entity for which to retrieve insight details. Specifies the type and
+#' value of the entity, such as a domain name or Amazon Web Services
+#' account ID.
+#' @param InsightId &#91;required&#93; The unique identifier of the insight to describe.
+#' @param ShowHtmlContent Specifies whether to show response with HTML content in response or not.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Fields = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "text"|"metric",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_insight_details(
+#'   Entity = list(
+#'     Type = "Account"|"DomainName",
+#'     Value = "string"
+#'   ),
+#'   InsightId = "string",
+#'   ShowHtmlContent = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_describe_insight_details
+#'
+#' @aliases opensearchservice_describe_insight_details
+opensearchservice_describe_insight_details <- function(Entity, InsightId, ShowHtmlContent = NULL) {
+  op <- new_operation(
+    name = "DescribeInsightDetails",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/insight-details",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$describe_insight_details_input(Entity = Entity, InsightId = InsightId, ShowHtmlContent = ShowHtmlContent)
+  output <- .opensearchservice$describe_insight_details_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$describe_insight_details <- opensearchservice_describe_insight_details
 
 #' Describes the instance count, storage, and master node limits for a
 #' given OpenSearch or Elasticsearch version and instance type
@@ -4537,7 +4747,8 @@ opensearchservice_describe_reserved_instances <- function(ReservedInstanceId = N
 #'         ),
 #'         SecurityGroupIds = list(
 #'           "string"
-#'         )
+#'         ),
+#'         EgressEnabled = TRUE|FALSE
 #'       ),
 #'       Status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"UPDATING"|"UPDATE_FAILED"|"DELETING"|"DELETE_FAILED",
 #'       Endpoint = "string"
@@ -4777,7 +4988,8 @@ opensearchservice_dissociate_packages <- function(PackageList, DomainName) {
 #'   dataSources = list(
 #'     list(
 #'       dataSourceArn = "string",
-#'       dataSourceDescription = "string"
+#'       dataSourceDescription = "string",
+#'       iamRoleForDataSourceArn = "string"
 #'     )
 #'   ),
 #'   appConfigs = list(
@@ -4826,6 +5038,70 @@ opensearchservice_get_application <- function(id) {
   return(response)
 }
 .opensearchservice$operations$get_application <- opensearchservice_get_application
+
+#' Retrieves information about a registered capability for an OpenSearch UI
+#' application, including its configuration and current status
+#'
+#' @description
+#' Retrieves information about a registered capability for an OpenSearch UI
+#' application, including its configuration and current status.
+#'
+#' @usage
+#' opensearchservice_get_capability(applicationId, capabilityName)
+#'
+#' @param applicationId &#91;required&#93; The unique identifier of the OpenSearch UI application.
+#' @param capabilityName &#91;required&#93; The name of the capability to retrieve information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   capabilityName = "string",
+#'   applicationId = "string",
+#'   status = "creating"|"create_failed"|"active"|"updating"|"update_failed"|"deleting"|"delete_failed",
+#'   capabilityConfig = list(
+#'     aiConfig = list()
+#'   ),
+#'   failures = list(
+#'     list(
+#'       reason = "KMS_KEY_INSUFFICIENT_PERMISSION",
+#'       details = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_capability(
+#'   applicationId = "string",
+#'   capabilityName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_get_capability
+#'
+#' @aliases opensearchservice_get_capability
+opensearchservice_get_capability <- function(applicationId, capabilityName) {
+  op <- new_operation(
+    name = "GetCapability",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/application/{ApplicationId}/capability/{CapabilityName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$get_capability_input(applicationId = applicationId, capabilityName = capabilityName)
+  output <- .opensearchservice$get_capability_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$get_capability <- opensearchservice_get_capability
 
 #' Returns a map of OpenSearch or Elasticsearch versions and the versions
 #' you can upgrade them to
@@ -5018,12 +5294,17 @@ opensearchservice_get_default_application_setting <- function() {
 #'     ),
 #'     SecurityLake = list(
 #'       RoleArn = "string"
+#'     ),
+#'     Prometheus = list(
+#'       RoleArn = "string",
+#'       WorkspaceArn = "string"
 #'     )
 #'   ),
 #'   Description = "string",
 #'   OpenSearchArns = list(
 #'     "string"
 #'   ),
+#'   DataSourceAccessPolicy = "string",
 #'   DataSourceArn = "string"
 #' )
 #' ```
@@ -5556,6 +5837,10 @@ opensearchservice_list_data_sources <- function(DomainName) {
 #'         ),
 #'         SecurityLake = list(
 #'           RoleArn = "string"
+#'         ),
+#'         Prometheus = list(
+#'           RoleArn = "string",
+#'           WorkspaceArn = "string"
 #'         )
 #'       ),
 #'       Description = "string",
@@ -5832,6 +6117,97 @@ opensearchservice_list_domains_for_package <- function(PackageID, MaxResults = N
   return(response)
 }
 .opensearchservice$operations$list_domains_for_package <- opensearchservice_list_domains_for_package
+
+#' Lists insights for an Amazon OpenSearch Service domain or Amazon Web
+#' Services account
+#'
+#' @description
+#' Lists insights for an Amazon OpenSearch Service domain or Amazon Web
+#' Services account. Returns a paginated list of insights based on the
+#' specified entity, filters, time range, and sort order.
+#'
+#' @usage
+#' opensearchservice_list_insights(Entity, TimeRange, SortOrder,
+#'   MaxResults, NextToken)
+#'
+#' @param Entity &#91;required&#93; The entity for which to list insights. Specifies the type and value of
+#' the entity, such as a domain name or Amazon Web Services account ID.
+#' @param TimeRange The time range for filtering insights, specified as epoch millisecond
+#' timestamps.
+#' @param SortOrder The sort order for the results. Possible values are `ASC` (ascending)
+#' and `DESC` (descending).
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `NextToken` to get the next page of results. Valid
+#' values are 1 to 500.
+#' @param NextToken If your initial [`list_insights`][opensearchservice_list_insights]
+#' operation returns a `NextToken`, include the returned `NextToken` in
+#' subsequent [`list_insights`][opensearchservice_list_insights] operations
+#' to retrieve the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Insights = list(
+#'     list(
+#'       InsightId = "string",
+#'       DisplayName = "string",
+#'       Type = "EVENT"|"RECOMMENDATION",
+#'       Priority = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW",
+#'       Status = "ACTIVE"|"RESOLVED"|"DISMISSED",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       IsExperimental = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_insights(
+#'   Entity = list(
+#'     Type = "Account"|"DomainName",
+#'     Value = "string"
+#'   ),
+#'   TimeRange = list(
+#'     From = 123,
+#'     To = 123
+#'   ),
+#'   SortOrder = "ASC"|"DESC",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_list_insights
+#'
+#' @aliases opensearchservice_list_insights
+opensearchservice_list_insights <- function(Entity, TimeRange = NULL, SortOrder = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListInsights",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/insights",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$list_insights_input(Entity = Entity, TimeRange = TimeRange, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .opensearchservice$list_insights_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$list_insights <- opensearchservice_list_insights
 
 #' Lists all instance types and available features for a given OpenSearch
 #' or Elasticsearch version
@@ -6235,7 +6611,12 @@ opensearchservice_list_versions <- function(MaxResults = NULL, NextToken = NULL)
 #'   AuthorizedPrincipalList = list(
 #'     list(
 #'       PrincipalType = "AWS_ACCOUNT"|"AWS_SERVICE",
-#'       Principal = "string"
+#'       Principal = "string",
+#'       ServiceOptions = list(
+#'         SupportedRegions = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -6516,6 +6897,77 @@ opensearchservice_put_default_application_setting <- function(applicationArn, se
 }
 .opensearchservice$operations$put_default_application_setting <- opensearchservice_put_default_application_setting
 
+#' Registers a capability for an OpenSearch UI application
+#'
+#' @description
+#' Registers a capability for an OpenSearch UI application. Use this
+#' operation to enable specific capabilities, such as AI features, for a
+#' given application. The capability configuration defines the type and
+#' settings of the capability to register. For more information about the
+#' AI features, see [Agentic AI for OpenSearch
+#' UI](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/application-ai-assistant.html).
+#'
+#' @usage
+#' opensearchservice_register_capability(applicationId, capabilityName,
+#'   capabilityConfig)
+#'
+#' @param applicationId &#91;required&#93; The unique identifier of the OpenSearch UI application to register the
+#' capability for.
+#' @param capabilityName &#91;required&#93; The name of the capability to register. Must be between 3 and 30
+#' characters and contain only alphanumeric characters and hyphens. This
+#' identifies the type of capability being enabled for the application. For
+#' registering AI Assistant capability, use `ai-capability`
+#' @param capabilityConfig &#91;required&#93; The configuration settings for the capability being registered. This
+#' includes capability-specific settings such as AI configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   capabilityName = "string",
+#'   applicationId = "string",
+#'   status = "creating"|"create_failed"|"active"|"updating"|"update_failed"|"deleting"|"delete_failed",
+#'   capabilityConfig = list(
+#'     aiConfig = list()
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$register_capability(
+#'   applicationId = "string",
+#'   capabilityName = "string",
+#'   capabilityConfig = list(
+#'     aiConfig = list()
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_register_capability
+#'
+#' @aliases opensearchservice_register_capability
+opensearchservice_register_capability <- function(applicationId, capabilityName, capabilityConfig) {
+  op <- new_operation(
+    name = "RegisterCapability",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/application/{ApplicationId}/capability/register",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$register_capability_input(applicationId = applicationId, capabilityName = capabilityName, capabilityConfig = capabilityConfig)
+  output <- .opensearchservice$register_capability_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$register_capability <- opensearchservice_register_capability
+
 #' Allows the remote Amazon OpenSearch Service domain owner to reject an
 #' inbound cross-cluster connection request
 #'
@@ -6651,11 +7103,13 @@ opensearchservice_remove_tags <- function(ARN, TagKeys) {
 #'
 #' @usage
 #' opensearchservice_revoke_vpc_endpoint_access(DomainName, Account,
-#'   Service)
+#'   Service, ServiceOptions)
 #'
 #' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain.
 #' @param Account The account ID to revoke access from.
 #' @param Service The service SP to revoke access from.
+#' @param ServiceOptions The options for the service, including the supported Regions for the
+#' endpoint access.
 #'
 #' @return
 #' An empty list.
@@ -6665,7 +7119,12 @@ opensearchservice_remove_tags <- function(ARN, TagKeys) {
 #' svc$revoke_vpc_endpoint_access(
 #'   DomainName = "string",
 #'   Account = "string",
-#'   Service = "application.opensearchservice.amazonaws.com"
+#'   Service = "application.opensearchservice.amazonaws.com",
+#'   ServiceOptions = list(
+#'     SupportedRegions = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -6674,7 +7133,7 @@ opensearchservice_remove_tags <- function(ARN, TagKeys) {
 #' @rdname opensearchservice_revoke_vpc_endpoint_access
 #'
 #' @aliases opensearchservice_revoke_vpc_endpoint_access
-opensearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account = NULL, Service = NULL) {
+opensearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account = NULL, Service = NULL, ServiceOptions = NULL) {
   op <- new_operation(
     name = "RevokeVpcEndpointAccess",
     http_method = "POST",
@@ -6683,7 +7142,7 @@ opensearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$revoke_vpc_endpoint_access_input(DomainName = DomainName, Account = Account, Service = Service)
+  input <- .opensearchservice$revoke_vpc_endpoint_access_input(DomainName = DomainName, Account = Account, Service = Service, ServiceOptions = ServiceOptions)
   output <- .opensearchservice$revoke_vpc_endpoint_access_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -6692,6 +7151,64 @@ opensearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account = N
   return(response)
 }
 .opensearchservice$operations$revoke_vpc_endpoint_access <- opensearchservice_revoke_vpc_endpoint_access
+
+#' Rolls back a service software update for a domain to the previous
+#' version
+#'
+#' @description
+#' Rolls back a service software update for a domain to the previous
+#' version. For more information, see [Service software updates in Amazon
+#' OpenSearch
+#' Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html).
+#'
+#' @usage
+#' opensearchservice_rollback_service_software_update(DomainName)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain to roll back the service software update on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RollbackServiceSoftwareOptions = list(
+#'     CurrentVersion = "string",
+#'     NewVersion = "string",
+#'     RollbackAvailable = TRUE|FALSE,
+#'     Description = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$rollback_service_software_update(
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_rollback_service_software_update
+#'
+#' @aliases opensearchservice_rollback_service_software_update
+opensearchservice_rollback_service_software_update <- function(DomainName) {
+  op <- new_operation(
+    name = "RollbackServiceSoftwareUpdate",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/serviceSoftwareUpdate/rollback",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$rollback_service_software_update_input(DomainName = DomainName)
+  output <- .opensearchservice$rollback_service_software_update_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$rollback_service_software_update <- opensearchservice_rollback_service_software_update
 
 #' Starts the node maintenance process on the data node
 #'
@@ -6859,7 +7376,8 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #'   dataSources = list(
 #'     list(
 #'       dataSourceArn = "string",
-#'       dataSourceDescription = "string"
+#'       dataSourceDescription = "string",
+#'       iamRoleForDataSourceArn = "string"
 #'     )
 #'   ),
 #'   iamIdentityCenterOptions = list(
@@ -6890,7 +7408,8 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #'   dataSources = list(
 #'     list(
 #'       dataSourceArn = "string",
-#'       dataSourceDescription = "string"
+#'       dataSourceDescription = "string",
+#'       iamRoleForDataSourceArn = "string"
 #'     )
 #'   ),
 #'   appConfigs = list(
@@ -6999,7 +7518,7 @@ opensearchservice_update_data_source <- function(DomainName, Name, DataSourceTyp
 #'
 #' @usage
 #' opensearchservice_update_direct_query_data_source(DataSourceName,
-#'   DataSourceType, Description, OpenSearchArns)
+#'   DataSourceType, Description, OpenSearchArns, DataSourceAccessPolicy)
 #'
 #' @param DataSourceName &#91;required&#93; A unique, user-defined label to identify the data source within your
 #' OpenSearch Service environment.
@@ -7007,8 +7526,13 @@ opensearchservice_update_data_source <- function(DomainName, Name, DataSourceTyp
 #' source for direct queries in OpenSearch Service.
 #' @param Description An optional text field for providing additional context and details
 #' about the data source.
-#' @param OpenSearchArns &#91;required&#93; A list of Amazon Resource Names (ARNs) for the OpenSearch collections
-#' that are associated with the direct query data source.
+#' @param OpenSearchArns An optional list of Amazon Resource Names (ARNs) for the OpenSearch
+#' collections that are associated with the direct query data source. This
+#' field is required for CloudWatchLogs and SecurityLake datasource types.
+#' @param DataSourceAccessPolicy An optional IAM access policy document that defines the updated
+#' permissions for accessing the direct query data source. The policy
+#' document must be in valid JSON format and follow IAM policy syntax. If
+#' not specified, the existing access policy if present remains unchanged.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7028,12 +7552,17 @@ opensearchservice_update_data_source <- function(DomainName, Name, DataSourceTyp
 #'     ),
 #'     SecurityLake = list(
 #'       RoleArn = "string"
+#'     ),
+#'     Prometheus = list(
+#'       RoleArn = "string",
+#'       WorkspaceArn = "string"
 #'     )
 #'   ),
 #'   Description = "string",
 #'   OpenSearchArns = list(
 #'     "string"
-#'   )
+#'   ),
+#'   DataSourceAccessPolicy = "string"
 #' )
 #' ```
 #'
@@ -7042,7 +7571,7 @@ opensearchservice_update_data_source <- function(DomainName, Name, DataSourceTyp
 #' @rdname opensearchservice_update_direct_query_data_source
 #'
 #' @aliases opensearchservice_update_direct_query_data_source
-opensearchservice_update_direct_query_data_source <- function(DataSourceName, DataSourceType, Description = NULL, OpenSearchArns) {
+opensearchservice_update_direct_query_data_source <- function(DataSourceName, DataSourceType, Description = NULL, OpenSearchArns = NULL, DataSourceAccessPolicy = NULL) {
   op <- new_operation(
     name = "UpdateDirectQueryDataSource",
     http_method = "PUT",
@@ -7051,7 +7580,7 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$update_direct_query_data_source_input(DataSourceName = DataSourceName, DataSourceType = DataSourceType, Description = Description, OpenSearchArns = OpenSearchArns)
+  input <- .opensearchservice$update_direct_query_data_source_input(DataSourceName = DataSourceName, DataSourceType = DataSourceType, Description = Description, OpenSearchArns = OpenSearchArns, DataSourceAccessPolicy = DataSourceAccessPolicy)
   output <- .opensearchservice$update_direct_query_data_source_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -7075,7 +7604,8 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'   EncryptionAtRestOptions, DomainEndpointOptions,
 #'   NodeToNodeEncryptionOptions, AdvancedSecurityOptions,
 #'   IdentityCenterOptions, AutoTuneOptions, DryRun, DryRunMode,
-#'   OffPeakWindowOptions, SoftwareUpdateOptions, AIMLOptions)
+#'   OffPeakWindowOptions, SoftwareUpdateOptions, AIMLOptions,
+#'   DeploymentStrategyOptions)
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you're updating.
 #' @param ClusterConfig Changes that you want to make to the cluster configuration, such as the
@@ -7141,6 +7671,7 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #' @param OffPeakWindowOptions Off-peak window options for the domain.
 #' @param SoftwareUpdateOptions Service software update options for the domain.
 #' @param AIMLOptions Options for all machine learning features for the specified domain.
+#' @param DeploymentStrategyOptions Specifies the deployment strategy options for the domain.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7277,7 +7808,8 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'         ),
 #'         SecurityGroupIds = list(
 #'           "string"
-#'         )
+#'         ),
+#'         EgressEnabled = TRUE|FALSE
 #'       ),
 #'       Status = list(
 #'         CreationDate = as.POSIXct(
@@ -7381,7 +7913,7 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'     DomainEndpointOptions = list(
 #'       Options = list(
 #'         EnforceHTTPS = TRUE|FALSE,
-#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'         CustomEndpointEnabled = TRUE|FALSE,
 #'         CustomEndpoint = "string",
 #'         CustomEndpointCertificateArn = "string"
@@ -7416,6 +7948,7 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'           Enabled = TRUE|FALSE,
 #'           SubjectKey = "string",
 #'           RolesKey = "string",
+#'           JwksUrl = "string",
 #'           PublicKey = "string"
 #'         ),
 #'         IAMFederationOptions = list(
@@ -7444,6 +7977,7 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'       Options = list(
 #'         EnabledAPIAccess = TRUE|FALSE,
 #'         IdentityCenterInstanceARN = "string",
+#'         IdentityCenterInstanceRegion = "string",
 #'         SubjectKey = "UserName"|"UserId"|"Email",
 #'         RolesKey = "GroupName"|"GroupId",
 #'         IdentityCenterApplicationARN = "string",
@@ -7528,7 +8062,8 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'     ),
 #'     SoftwareUpdateOptions = list(
 #'       Options = list(
-#'         AutoSoftwareUpdateEnabled = TRUE|FALSE
+#'         AutoSoftwareUpdateEnabled = TRUE|FALSE,
+#'         UseLatestServiceSoftwareForBlueGreen = TRUE|FALSE
 #'       ),
 #'       Status = list(
 #'         CreationDate = as.POSIXct(
@@ -7562,6 +8097,22 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'         ServerlessVectorAcceleration = list(
 #'           Enabled = TRUE|FALSE
 #'         )
+#'       ),
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
+#'     ),
+#'     DeploymentStrategyOptions = list(
+#'       Options = list(
+#'         DeploymentStrategy = "Default"|"CapacityOptimized"
 #'       ),
 #'       Status = list(
 #'         CreationDate = as.POSIXct(
@@ -7643,7 +8194,8 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'     ),
 #'     SecurityGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     EgressEnabled = TRUE|FALSE
 #'   ),
 #'   CognitoOptions = list(
 #'     Enabled = TRUE|FALSE,
@@ -7668,7 +8220,7 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'   ),
 #'   DomainEndpointOptions = list(
 #'     EnforceHTTPS = TRUE|FALSE,
-#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
+#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|"Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08",
 #'     CustomEndpointEnabled = TRUE|FALSE,
 #'     CustomEndpoint = "string",
 #'     CustomEndpointCertificateArn = "string"
@@ -7700,6 +8252,7 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'       Enabled = TRUE|FALSE,
 #'       SubjectKey = "string",
 #'       RolesKey = "string",
+#'       JwksUrl = "string",
 #'       PublicKey = "string"
 #'     ),
 #'     IAMFederationOptions = list(
@@ -7712,6 +8265,7 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'   IdentityCenterOptions = list(
 #'     EnabledAPIAccess = TRUE|FALSE,
 #'     IdentityCenterInstanceARN = "string",
+#'     IdentityCenterInstanceRegion = "string",
 #'     SubjectKey = "UserName"|"UserId"|"Email",
 #'     RolesKey = "GroupName"|"GroupId"
 #'   ),
@@ -7744,7 +8298,8 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'     )
 #'   ),
 #'   SoftwareUpdateOptions = list(
-#'     AutoSoftwareUpdateEnabled = TRUE|FALSE
+#'     AutoSoftwareUpdateEnabled = TRUE|FALSE,
+#'     UseLatestServiceSoftwareForBlueGreen = TRUE|FALSE
 #'   ),
 #'   AIMLOptions = list(
 #'     NaturalLanguageQueryGenerationOptions = list(
@@ -7756,6 +8311,9 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'     ServerlessVectorAcceleration = list(
 #'       Enabled = TRUE|FALSE
 #'     )
+#'   ),
+#'   DeploymentStrategyOptions = list(
+#'     DeploymentStrategy = "Default"|"CapacityOptimized"
 #'   )
 #' )
 #' ```
@@ -7765,7 +8323,7 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #' @rdname opensearchservice_update_domain_config
 #'
 #' @aliases opensearchservice_update_domain_config
-opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, IdentityCenterOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL) {
+opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, IdentityCenterOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL, DeploymentStrategyOptions = NULL) {
   op <- new_operation(
     name = "UpdateDomainConfig",
     http_method = "POST",
@@ -7774,7 +8332,7 @@ opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, IdentityCenterOptions = IdentityCenterOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions)
+  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, IdentityCenterOptions = IdentityCenterOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions, DeploymentStrategyOptions = DeploymentStrategyOptions)
   output <- .opensearchservice$update_domain_config_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -8142,7 +8700,8 @@ opensearchservice_update_scheduled_action <- function(DomainName, ActionID, Acti
 #'       ),
 #'       SecurityGroupIds = list(
 #'         "string"
-#'       )
+#'       ),
+#'       EgressEnabled = TRUE|FALSE
 #'     ),
 #'     Status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"UPDATING"|"UPDATE_FAILED"|"DELETING"|"DELETE_FAILED",
 #'     Endpoint = "string"
@@ -8160,7 +8719,8 @@ opensearchservice_update_scheduled_action <- function(DomainName, ActionID, Acti
 #'     ),
 #'     SecurityGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     EgressEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```

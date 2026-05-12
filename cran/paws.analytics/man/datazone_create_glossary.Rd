@@ -5,21 +5,16 @@
 \title{Creates an Amazon DataZone business glossary}
 \usage{
 datazone_create_glossary(
-  clientToken = NULL,
-  description = NULL,
   domainIdentifier,
   name,
   owningProjectIdentifier,
+  description = NULL,
   status = NULL,
-  usageRestrictions = NULL
+  usageRestrictions = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
-\item{description}{The description of this business glossary.}
-
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain in which this business glossary is
 created.}
 
@@ -27,9 +22,14 @@ created.}
 
 \item{owningProjectIdentifier}{[required] The ID of the project that currently owns business glossary.}
 
+\item{description}{The description of this business glossary.}
+
 \item{status}{The status of this business glossary.}
 
 \item{usageRestrictions}{The usage restriction of the restricted glossary.}
+
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 }
 \description{
 Creates an Amazon DataZone business glossary.

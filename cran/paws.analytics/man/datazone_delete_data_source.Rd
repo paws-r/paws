@@ -5,20 +5,20 @@
 \title{Deletes a data source in Amazon DataZone}
 \usage{
 datazone_delete_data_source(
-  clientToken = NULL,
   domainIdentifier,
   identifier,
+  clientToken = NULL,
   retainPermissionsOnRevokeFailure = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
-idempotency of the request.}
-
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain in which the data source is
 deleted.}
 
 \item{identifier}{[required] The identifier of the data source that is deleted.}
+
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 
 \item{retainPermissionsOnRevokeFailure}{Specifies that the granted permissions are retained in case of a
 self-subscribe functionality failure for a data source.}

@@ -6,16 +6,16 @@
 to use this network}
 \usage{
 drs_start_source_network_recovery(
-  deployAsNew = NULL,
   sourceNetworks,
+  deployAsNew = NULL,
   tags = NULL
 )
 }
 \arguments{
+\item{sourceNetworks}{[required] The Source Networks that we want to start a Recovery Job for.}
+
 \item{deployAsNew}{Don't update existing CloudFormation Stack, recover the network using a
 new stack.}
-
-\item{sourceNetworks}{[required] The Source Networks that we want to start a Recovery Job for.}
 
 \item{tags}{The tags to be associated with the Source Network recovery Job.}
 }

@@ -19,12 +19,6 @@ wellarchitected_list_lens_review_improvements(
 
 \item{LensAlias}{[required]}
 
-\item{PillarId}{}
-
-\item{MilestoneNumber}{}
-
-\item{NextToken}{}
-
 \item{MaxResults}{The maximum number of results to return for this request.}
 
 \item{QuestionPriority}{The priority of the question.}

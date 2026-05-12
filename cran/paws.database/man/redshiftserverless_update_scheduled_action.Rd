@@ -46,8 +46,6 @@ in the \emph{Amazon CloudWatch Events User Guide}.
 \item{scheduledActionName}{[required] The name of the scheduled action to update to.}
 
 \item{startTime}{The start time in UTC of the scheduled action to update to.}
-
-\item{targetAction}{}
 }
 \description{
 Updates a scheduled action.

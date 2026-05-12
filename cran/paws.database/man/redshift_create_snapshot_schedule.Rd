@@ -24,10 +24,6 @@ characters are allowed for the identifier.}
 \item{ScheduleDescription}{The description of the snapshot schedule.}
 
 \item{Tags}{An optional set of tags you can use to search for the schedule.}
-
-\item{DryRun}{}
-
-\item{NextInvocations}{}
 }
 \description{
 Create a snapshot schedule that can be associated to a cluster and which overrides the default system backup schedule.

@@ -13,8 +13,6 @@ licensemanagerusersubscriptions_update_identity_provider_settings(
 )
 }
 \arguments{
-\item{IdentityProvider}{}
-
 \item{Product}{The name of the user-based subscription product.
 
 Valid values: \code{VISUAL_STUDIO_ENTERPRISE} | \code{VISUAL_STUDIO_PROFESSIONAL}

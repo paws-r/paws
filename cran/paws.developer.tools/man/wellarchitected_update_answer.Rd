@@ -22,14 +22,8 @@ wellarchitected_update_answer(
 
 \item{QuestionId}{[required]}
 
-\item{SelectedChoices}{}
-
 \item{ChoiceUpdates}{A list of choices to update on a question in your workload. The String
 key corresponds to the choice ID to be updated.}
-
-\item{Notes}{}
-
-\item{IsApplicable}{}
 
 \item{Reason}{The reason why a question is not applicable to your workload.}
 }
