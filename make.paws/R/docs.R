@@ -541,7 +541,9 @@ escape_unmatched_chars <- function(x, chars) {
 
 escape_unmatched_pairs <- function(x, pairs) {
   result <- x
-  count <- function(string, char) stringr::str_count(string, stringr::fixed(char))
+  count <- function(string, char) {
+    stringr::str_count(string, stringr::fixed(char))
+  }
   for (i in seq_along(pairs)) {
     a <- names(pairs)[i]
     b <- pairs[i]
@@ -745,7 +747,11 @@ clean_example <- function(s) {
       # Add new line after every comma
 
       indents <- paste0(rep(tab_string, max(length(open_perens) - 1, 0)), collapse = "")
-      space_number <- (if (substr(s, i + 1, i + 1) == " ") num_spaces - 1 else num_spaces)
+      space_number <- (if (substr(s, i + 1, i + 1) == " ") {
+        num_spaces - 1
+      } else {
+        num_spaces
+      })
       final_tab <- paste0(rep(" ", space_number), collapse = "")
       cleaned[[i]] <- paste0(",\n", indents, final_tab)
     } else {
