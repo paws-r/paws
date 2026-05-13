@@ -122,10 +122,10 @@ make_doc_params <- function(operation, api) {
       # First attempt, get documentation from input parameters
       # Second attempt, get documentation from global parameters
       # Finally attempt, get documentation from generic parameters
-      decs <- (input$documentation %||%
+      docs <- (input$documentation %||%
         shapes[[param]]$documentation %||%
         shapes[[input$shape]]$documentation)
-      documentation <- convert(decs, pkg_name, links)
+      documentation <- convert(docs, pkg_name, links)
       documentation <- convert_headings_to_bold(documentation)
       documentation <- glue::glue_collapse(documentation, sep = "\n")
       if (required) {
