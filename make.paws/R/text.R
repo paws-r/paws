@@ -12,7 +12,7 @@ read_utf8 <- function(file) {
 }
 
 # Convert HTML to other formats using Pandoc.
-html_to <- function(html, to) {
+html_to <- function(html, to, options = NULL) {
   if (is.null(html)) {
     return("")
   }
@@ -21,7 +21,13 @@ html_to <- function(html, to) {
     temp_in <- tempfile()
     write_utf8(html, temp_in)
     temp_out <- tempfile()
-    rmarkdown::pandoc_convert(temp_in, output = temp_out, from = "html", to = to)
+    rmarkdown::pandoc_convert(
+      temp_in,
+      output = temp_out,
+      from = "html",
+      to = to,
+      options = options
+    )
     result <- read_utf8(temp_out)
     # Pandoc inappropriately escapes "%" and "*"; undo this escaping.
     result <- gsub("\\\\(\\%|\\*)", "\\1", result)
@@ -31,7 +37,7 @@ html_to <- function(html, to) {
 
 # Convert HTML to markdown
 html_to_markdown <- function(html) {
-  html_to(html, "commonmark")
+  html_to(html, "commonmark", options = "--wrap=preserve")
 }
 
 html_to_text <- function(html) {
