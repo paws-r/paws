@@ -12,6 +12,7 @@ Description: make.paws generates the Paws AWS SDKs for R.
 License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
 Encoding: UTF-8
+Depends: R (>= 4.1.0)
 Imports:
     cachem,
     desc,
