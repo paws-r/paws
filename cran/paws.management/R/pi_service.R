@@ -17,7 +17,7 @@ NULL
 #' 
 #' -   To learn more about Performance Insights and Amazon RDS DB instances, go to the *\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{ Amazon RDS User Guide}* .
 #' 
-#' -   To learn more about Performance Insights and Amazon DocumentDB clusters, go to the *\href{https://docs.aws.amazon.com/documentdb/latest/devguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}* .
+#' -   To learn more about Performance Insights and Amazon DocumentDB clusters, go to the *\href{https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}* .
 #'
 #' @param
 #' config

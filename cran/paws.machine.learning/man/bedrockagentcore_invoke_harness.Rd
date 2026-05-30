@@ -7,6 +7,7 @@
 bedrockagentcore_invoke_harness(
   harnessArn,
   runtimeSessionId,
+  runtimeUserId = NULL,
   messages,
   model = NULL,
   systemPrompt = NULL,
@@ -23,6 +24,8 @@ bedrockagentcore_invoke_harness(
 \item{harnessArn}{[required] The ARN of the harness to invoke.}
 
 \item{runtimeSessionId}{[required] The session ID for the invocation. Use the same session ID across requests to continue a conversation.}
+
+\item{runtimeUserId}{An identifier for the end user making the request. This value is passed through to the runtime container.}
 
 \item{messages}{[required] The messages to send to the agent.}
 

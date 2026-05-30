@@ -29,7 +29,7 @@ NULL
 
 .sesv2$create_configuration_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(type = "string")), TrackingOptions = structure(list(CustomRedirectDomain = structure(logical(0), tags = list(type = "string")), HttpsPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeliveryOptions = structure(list(TlsPolicy = structure(logical(0), tags = list(type = "string")), SendingPoolName = structure(logical(0), tags = list(type = "string")), MaxDeliverySeconds = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), ReputationOptions = structure(list(ReputationMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), LastFreshStart = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SendingOptions = structure(list(SendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SuppressionOptions = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationOptions = structure(list(ConditionThreshold = structure(list(ConditionThresholdEnabled = structure(logical(0), tags = list(type = "string")), OverallConfidenceThreshold = structure(list(ConfidenceVerdictThreshold = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), VdmOptions = structure(list(DashboardOptions = structure(list(EngagementMetrics = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GuardianOptions = structure(list(OptimizedSharedDelivery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ArchivingOptions = structure(list(ArchiveArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(type = "string")), TrackingOptions = structure(list(CustomRedirectDomain = structure(logical(0), tags = list(type = "string")), HttpsPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeliveryOptions = structure(list(TlsPolicy = structure(logical(0), tags = list(type = "string")), SendingPoolName = structure(logical(0), tags = list(type = "string")), MaxDeliverySeconds = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), ReputationOptions = structure(list(ReputationMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), LastFreshStart = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SendingOptions = structure(list(SendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SuppressionOptions = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SuppressionScope = structure(logical(0), tags = list(type = "string")), ValidationOptions = structure(list(ConditionThreshold = structure(list(ConditionThresholdEnabled = structure(logical(0), tags = list(type = "string")), OverallConfidenceThreshold = structure(list(ConfidenceVerdictThreshold = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), VdmOptions = structure(list(DashboardOptions = structure(list(EngagementMetrics = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GuardianOptions = structure(list(OptimizedSharedDelivery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ArchivingOptions = structure(list(ArchiveArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -185,13 +185,13 @@ NULL
 
 .sesv2$create_tenant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TenantName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(TenantName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SuppressionAttributes = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SuppressionScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .sesv2$create_tenant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TenantName = structure(logical(0), tags = list(type = "string")), TenantId = structure(logical(0), tags = list(type = "string")), TenantArn = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SendingStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(TenantName = structure(logical(0), tags = list(type = "string")), TenantId = structure(logical(0), tags = list(type = "string")), TenantArn = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SendingStatus = structure(logical(0), tags = list(type = "string")), SuppressionAttributes = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SuppressionScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -329,7 +329,7 @@ NULL
 
 .sesv2$delete_suppressed_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EmailAddress = structure(logical(0), tags = list(location = "uri", locationName = "EmailAddress", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(EmailAddress = structure(logical(0), tags = list(location = "uri", locationName = "EmailAddress", type = "string")), TenantName = structure(logical(0), tags = list(location = "querystring", locationName = "TenantName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -395,7 +395,7 @@ NULL
 
 .sesv2$get_configuration_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(type = "string")), TrackingOptions = structure(list(CustomRedirectDomain = structure(logical(0), tags = list(type = "string")), HttpsPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeliveryOptions = structure(list(TlsPolicy = structure(logical(0), tags = list(type = "string")), SendingPoolName = structure(logical(0), tags = list(type = "string")), MaxDeliverySeconds = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), ReputationOptions = structure(list(ReputationMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), LastFreshStart = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SendingOptions = structure(list(SendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SuppressionOptions = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationOptions = structure(list(ConditionThreshold = structure(list(ConditionThresholdEnabled = structure(logical(0), tags = list(type = "string")), OverallConfidenceThreshold = structure(list(ConfidenceVerdictThreshold = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), VdmOptions = structure(list(DashboardOptions = structure(list(EngagementMetrics = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GuardianOptions = structure(list(OptimizedSharedDelivery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ArchivingOptions = structure(list(ArchiveArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(type = "string")), TrackingOptions = structure(list(CustomRedirectDomain = structure(logical(0), tags = list(type = "string")), HttpsPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeliveryOptions = structure(list(TlsPolicy = structure(logical(0), tags = list(type = "string")), SendingPoolName = structure(logical(0), tags = list(type = "string")), MaxDeliverySeconds = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), ReputationOptions = structure(list(ReputationMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), LastFreshStart = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SendingOptions = structure(list(SendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SuppressionOptions = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SuppressionScope = structure(logical(0), tags = list(type = "string")), ValidationOptions = structure(list(ConditionThreshold = structure(list(ConditionThresholdEnabled = structure(logical(0), tags = list(type = "string")), OverallConfidenceThreshold = structure(list(ConfidenceVerdictThreshold = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), VdmOptions = structure(list(DashboardOptions = structure(list(EngagementMetrics = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GuardianOptions = structure(list(OptimizedSharedDelivery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ArchivingOptions = structure(list(ArchiveArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -641,13 +641,13 @@ NULL
 
 .sesv2$get_suppressed_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EmailAddress = structure(logical(0), tags = list(location = "uri", locationName = "EmailAddress", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(EmailAddress = structure(logical(0), tags = list(location = "uri", locationName = "EmailAddress", type = "string")), TenantName = structure(logical(0), tags = list(location = "querystring", locationName = "TenantName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .sesv2$get_suppressed_destination_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SuppressedDestination = structure(list(EmailAddress = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), Attributes = structure(list(MessageId = structure(logical(0), tags = list(type = "string")), FeedbackId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(SuppressedDestination = structure(list(EmailAddress = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), Attributes = structure(list(MessageId = structure(logical(0), tags = list(type = "string")), FeedbackId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TenantName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -659,7 +659,7 @@ NULL
 
 .sesv2$get_tenant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tenant = structure(list(TenantName = structure(logical(0), tags = list(type = "string")), TenantId = structure(logical(0), tags = list(type = "string")), TenantArn = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SendingStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Tenant = structure(list(TenantName = structure(logical(0), tags = list(type = "string")), TenantId = structure(logical(0), tags = list(type = "string")), TenantArn = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SendingStatus = structure(logical(0), tags = list(type = "string")), SuppressionAttributes = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SuppressionScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -845,7 +845,7 @@ NULL
 
 .sesv2$list_suppressed_destinations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Reasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "Reason", type = "list")), StartDate = structure(logical(0), tags = list(location = "querystring", locationName = "StartDate", type = "timestamp")), EndDate = structure(logical(0), tags = list(location = "querystring", locationName = "EndDate", type = "timestamp")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), PageSize = structure(logical(0), tags = list(location = "querystring", locationName = "PageSize", type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(TenantName = structure(logical(0), tags = list(location = "querystring", locationName = "TenantName", type = "string")), Reasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "Reason", type = "list")), StartDate = structure(logical(0), tags = list(location = "querystring", locationName = "StartDate", type = "timestamp")), EndDate = structure(logical(0), tags = list(location = "querystring", locationName = "EndDate", type = "timestamp")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), PageSize = structure(logical(0), tags = list(location = "querystring", locationName = "PageSize", type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1001,7 +1001,7 @@ NULL
 
 .sesv2$put_configuration_set_suppression_options_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationSetName", type = "string")), SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationOptions = structure(list(ConditionThreshold = structure(list(ConditionThresholdEnabled = structure(logical(0), tags = list(type = "string")), OverallConfidenceThreshold = structure(list(ConfidenceVerdictThreshold = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationSetName", type = "string")), SuppressionScope = structure(logical(0), tags = list(type = "string")), SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationOptions = structure(list(ConditionThreshold = structure(list(ConditionThresholdEnabled = structure(logical(0), tags = list(type = "string")), OverallConfidenceThreshold = structure(list(ConfidenceVerdictThreshold = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1145,11 +1145,23 @@ NULL
 
 .sesv2$put_suppressed_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EmailAddress = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(EmailAddress = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), TenantName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .sesv2$put_suppressed_destination_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$put_tenant_suppression_attributes_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TenantName = structure(logical(0), tags = list(type = "string")), SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SuppressionScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$put_tenant_suppression_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

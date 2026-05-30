@@ -657,7 +657,7 @@ locationservice_create_map <- function(MapName, Configuration, PricingPlan = NUL
 #' 
 #' -   `Here` – For additional information about [HERE Technologies](https://docs.aws.amazon.com/location/previous/developerguide/HERE.html)' coverage in your region of interest, see [HERE details on goecoding coverage](https://docs.here.com/).
 #' 
-#'     If you specify HERE Technologies (`Here`) as the data provider, you may not [store results](https://docs.aws.amazon.com/location/latest/APIReference/) for locations in Japan. For more information, see the [Amazon Web Services service terms](https://aws.amazon.com/service-terms/) for Amazon Location Service.
+#'     If you specify HERE Technologies (`Here`) as the data provider, you may not store results for locations in Japan. For more information, see the [Amazon Web Services service terms](https://aws.amazon.com/service-terms/) for Amazon Location Service.
 #' 
 #' For additional information , see [Data providers](https://docs.aws.amazon.com/location/previous/developerguide/what-is-data-provider.html) on the *Amazon Location Service developer guide*.
 #' @param PricingPlan No longer used. If included, the only allowed value is `RequestBasedUsage`.

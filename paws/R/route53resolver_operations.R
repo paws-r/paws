@@ -301,6 +301,394 @@ route53resolver_associate_resolver_rule <- function(ResolverRuleId, Name = NULL,
 }
 .route53resolver$operations$associate_resolver_rule <- route53resolver_associate_resolver_rule
 
+#' Creates multiple DNS Firewall rules in the specified rule group
+#'
+#' @description
+#' Creates multiple DNS Firewall rules in the specified rule group.
+#'
+#' @usage
+#' route53resolver_batch_create_firewall_rule(CreateFirewallRuleEntries)
+#'
+#' @param CreateFirewallRuleEntries &#91;required&#93; The list of firewall rules to create.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreatedFirewallRules = list(
+#'     list(
+#'       FirewallRuleGroupId = "string",
+#'       FirewallDomainListId = "string",
+#'       FirewallThreatProtectionId = "string",
+#'       Name = "string",
+#'       Priority = 123,
+#'       Action = "ALLOW"|"BLOCK"|"ALERT",
+#'       BlockResponse = "NODATA"|"NXDOMAIN"|"OVERRIDE",
+#'       BlockOverrideDomain = "string",
+#'       BlockOverrideDnsType = "CNAME",
+#'       BlockOverrideTtl = 123,
+#'       CreatorRequestId = "string",
+#'       CreationTime = "string",
+#'       ModificationTime = "string",
+#'       FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
+#'       Qtype = "string",
+#'       DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
+#'       ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH",
+#'       FirewallRuleType = list(
+#'         FirewallAdvancedContentCategory = list(
+#'           Category = "string"
+#'         ),
+#'         FirewallAdvancedThreatCategory = list(
+#'           Category = "string"
+#'         ),
+#'         DnsThreatProtection = list(
+#'           Value = "string",
+#'           ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   CreateErrors = list(
+#'     list(
+#'       FirewallRule = list(
+#'         CreatorRequestId = "string",
+#'         FirewallRuleGroupId = "string",
+#'         FirewallDomainListId = "string",
+#'         Priority = 123,
+#'         Action = "ALLOW"|"BLOCK"|"ALERT",
+#'         BlockResponse = "NODATA"|"NXDOMAIN"|"OVERRIDE",
+#'         BlockOverrideDomain = "string",
+#'         BlockOverrideDnsType = "CNAME",
+#'         BlockOverrideTtl = 123,
+#'         Name = "string",
+#'         FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
+#'         Qtype = "string",
+#'         DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
+#'         ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH",
+#'         FirewallRuleType = list(
+#'           FirewallAdvancedContentCategory = list(
+#'             Category = "string"
+#'           ),
+#'           FirewallAdvancedThreatCategory = list(
+#'             Category = "string"
+#'           ),
+#'           DnsThreatProtection = list(
+#'             Value = "string",
+#'             ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'           )
+#'         )
+#'       ),
+#'       Code = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_create_firewall_rule(
+#'   CreateFirewallRuleEntries = list(
+#'     list(
+#'       CreatorRequestId = "string",
+#'       FirewallRuleGroupId = "string",
+#'       FirewallDomainListId = "string",
+#'       Priority = 123,
+#'       Action = "ALLOW"|"BLOCK"|"ALERT",
+#'       BlockResponse = "NODATA"|"NXDOMAIN"|"OVERRIDE",
+#'       BlockOverrideDomain = "string",
+#'       BlockOverrideDnsType = "CNAME",
+#'       BlockOverrideTtl = 123,
+#'       Name = "string",
+#'       FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
+#'       Qtype = "string",
+#'       DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
+#'       ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH",
+#'       FirewallRuleType = list(
+#'         FirewallAdvancedContentCategory = list(
+#'           Category = "string"
+#'         ),
+#'         FirewallAdvancedThreatCategory = list(
+#'           Category = "string"
+#'         ),
+#'         DnsThreatProtection = list(
+#'           Value = "string",
+#'           ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_batch_create_firewall_rule
+#'
+#' @aliases route53resolver_batch_create_firewall_rule
+route53resolver_batch_create_firewall_rule <- function(CreateFirewallRuleEntries) {
+  op <- new_operation(
+    name = "BatchCreateFirewallRule",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .route53resolver$batch_create_firewall_rule_input(CreateFirewallRuleEntries = CreateFirewallRuleEntries)
+  output <- .route53resolver$batch_create_firewall_rule_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$batch_create_firewall_rule <- route53resolver_batch_create_firewall_rule
+
+#' Deletes multiple DNS Firewall rules from the specified rule group
+#'
+#' @description
+#' Deletes multiple DNS Firewall rules from the specified rule group.
+#'
+#' @usage
+#' route53resolver_batch_delete_firewall_rule(DeleteFirewallRuleEntries)
+#'
+#' @param DeleteFirewallRuleEntries &#91;required&#93; The list of firewall rules to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeletedFirewallRules = list(
+#'     list(
+#'       FirewallRuleGroupId = "string",
+#'       FirewallDomainListId = "string",
+#'       FirewallThreatProtectionId = "string",
+#'       Name = "string",
+#'       Priority = 123,
+#'       Action = "ALLOW"|"BLOCK"|"ALERT",
+#'       BlockResponse = "NODATA"|"NXDOMAIN"|"OVERRIDE",
+#'       BlockOverrideDomain = "string",
+#'       BlockOverrideDnsType = "CNAME",
+#'       BlockOverrideTtl = 123,
+#'       CreatorRequestId = "string",
+#'       CreationTime = "string",
+#'       ModificationTime = "string",
+#'       FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
+#'       Qtype = "string",
+#'       DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
+#'       ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH",
+#'       FirewallRuleType = list(
+#'         FirewallAdvancedContentCategory = list(
+#'           Category = "string"
+#'         ),
+#'         FirewallAdvancedThreatCategory = list(
+#'           Category = "string"
+#'         ),
+#'         DnsThreatProtection = list(
+#'           Value = "string",
+#'           ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   DeleteErrors = list(
+#'     list(
+#'       FirewallRule = list(
+#'         FirewallRuleGroupId = "string",
+#'         FirewallDomainListId = "string",
+#'         FirewallThreatProtectionId = "string",
+#'         Qtype = "string"
+#'       ),
+#'       Code = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_delete_firewall_rule(
+#'   DeleteFirewallRuleEntries = list(
+#'     list(
+#'       FirewallRuleGroupId = "string",
+#'       FirewallDomainListId = "string",
+#'       FirewallThreatProtectionId = "string",
+#'       Qtype = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_batch_delete_firewall_rule
+#'
+#' @aliases route53resolver_batch_delete_firewall_rule
+route53resolver_batch_delete_firewall_rule <- function(DeleteFirewallRuleEntries) {
+  op <- new_operation(
+    name = "BatchDeleteFirewallRule",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .route53resolver$batch_delete_firewall_rule_input(DeleteFirewallRuleEntries = DeleteFirewallRuleEntries)
+  output <- .route53resolver$batch_delete_firewall_rule_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$batch_delete_firewall_rule <- route53resolver_batch_delete_firewall_rule
+
+#' Updates multiple DNS Firewall rules in the specified rule group
+#'
+#' @description
+#' Updates multiple DNS Firewall rules in the specified rule group.
+#'
+#' @usage
+#' route53resolver_batch_update_firewall_rule(UpdateFirewallRuleEntries)
+#'
+#' @param UpdateFirewallRuleEntries &#91;required&#93; The list of firewall rules to update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpdatedFirewallRules = list(
+#'     list(
+#'       FirewallRuleGroupId = "string",
+#'       FirewallDomainListId = "string",
+#'       FirewallThreatProtectionId = "string",
+#'       Name = "string",
+#'       Priority = 123,
+#'       Action = "ALLOW"|"BLOCK"|"ALERT",
+#'       BlockResponse = "NODATA"|"NXDOMAIN"|"OVERRIDE",
+#'       BlockOverrideDomain = "string",
+#'       BlockOverrideDnsType = "CNAME",
+#'       BlockOverrideTtl = 123,
+#'       CreatorRequestId = "string",
+#'       CreationTime = "string",
+#'       ModificationTime = "string",
+#'       FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
+#'       Qtype = "string",
+#'       DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
+#'       ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH",
+#'       FirewallRuleType = list(
+#'         FirewallAdvancedContentCategory = list(
+#'           Category = "string"
+#'         ),
+#'         FirewallAdvancedThreatCategory = list(
+#'           Category = "string"
+#'         ),
+#'         DnsThreatProtection = list(
+#'           Value = "string",
+#'           ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   UpdateErrors = list(
+#'     list(
+#'       FirewallRule = list(
+#'         FirewallRuleGroupId = "string",
+#'         FirewallDomainListId = "string",
+#'         FirewallThreatProtectionId = "string",
+#'         Priority = 123,
+#'         Action = "ALLOW"|"BLOCK"|"ALERT",
+#'         BlockResponse = "NODATA"|"NXDOMAIN"|"OVERRIDE",
+#'         BlockOverrideDomain = "string",
+#'         BlockOverrideDnsType = "CNAME",
+#'         BlockOverrideTtl = 123,
+#'         Name = "string",
+#'         FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
+#'         Qtype = "string",
+#'         DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
+#'         ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH",
+#'         FirewallRuleType = list(
+#'           FirewallAdvancedContentCategory = list(
+#'             Category = "string"
+#'           ),
+#'           FirewallAdvancedThreatCategory = list(
+#'             Category = "string"
+#'           ),
+#'           DnsThreatProtection = list(
+#'             Value = "string",
+#'             ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'           )
+#'         )
+#'       ),
+#'       Code = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_update_firewall_rule(
+#'   UpdateFirewallRuleEntries = list(
+#'     list(
+#'       FirewallRuleGroupId = "string",
+#'       FirewallDomainListId = "string",
+#'       FirewallThreatProtectionId = "string",
+#'       Priority = 123,
+#'       Action = "ALLOW"|"BLOCK"|"ALERT",
+#'       BlockResponse = "NODATA"|"NXDOMAIN"|"OVERRIDE",
+#'       BlockOverrideDomain = "string",
+#'       BlockOverrideDnsType = "CNAME",
+#'       BlockOverrideTtl = 123,
+#'       Name = "string",
+#'       FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
+#'       Qtype = "string",
+#'       DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
+#'       ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH",
+#'       FirewallRuleType = list(
+#'         FirewallAdvancedContentCategory = list(
+#'           Category = "string"
+#'         ),
+#'         FirewallAdvancedThreatCategory = list(
+#'           Category = "string"
+#'         ),
+#'         DnsThreatProtection = list(
+#'           Value = "string",
+#'           ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_batch_update_firewall_rule
+#'
+#' @aliases route53resolver_batch_update_firewall_rule
+route53resolver_batch_update_firewall_rule <- function(UpdateFirewallRuleEntries) {
+  op <- new_operation(
+    name = "BatchUpdateFirewallRule",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .route53resolver$batch_update_firewall_rule_input(UpdateFirewallRuleEntries = UpdateFirewallRuleEntries)
+  output <- .route53resolver$batch_update_firewall_rule_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$batch_update_firewall_rule <- route53resolver_batch_update_firewall_rule
+
 #' Creates an empty firewall domain list for use in DNS Firewall rules
 #'
 #' @description
@@ -328,7 +716,9 @@ route53resolver_associate_resolver_rule <- function(ResolverRuleId, Name = NULL,
 #'     ManagedOwnerName = "string",
 #'     CreatorRequestId = "string",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     Category = "string",
+#'     ManagedListType = "THREAT"|"CONTENT"
 #'   )
 #' )
 #' ```
@@ -382,7 +772,7 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #'   FirewallRuleGroupId, FirewallDomainListId, Priority, Action,
 #'   BlockResponse, BlockOverrideDomain, BlockOverrideDnsType,
 #'   BlockOverrideTtl, Name, FirewallDomainRedirectionAction, Qtype,
-#'   DnsThreatProtection, ConfidenceThreshold)
+#'   DnsThreatProtection, ConfidenceThreshold, FirewallRuleType)
 #'
 #' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows you to retry failed requests without the risk of running the operation twice. `CreatorRequestId` can be any unique string, for example, a date/time stamp.
 #' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group where you want to create the rule.
@@ -449,7 +839,7 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' 
 #' -   TXT: Verifies email senders and application-specific values.
 #' 
-#' -   A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65334, for example, TYPE28. For more information, see [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
+#' -   A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65534, for example, TYPE28. For more information, see [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
 #' @param DnsThreatProtection Use to create a DNS Firewall Advanced rule.
 #' @param ConfidenceThreshold The confidence threshold for DNS Firewall Advanced. You must provide this value when you create a DNS Firewall Advanced rule. The confidence level values mean:
 #' 
@@ -458,6 +848,7 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' -   `MEDIUM`: Provides a balance between detecting threats and false positives.
 #' 
 #' -   `HIGH`: Detects only the most well corroborated threats with a low rate of false positives.
+#' @param FirewallRuleType The rule type configuration for the firewall rule. This setting is mutually exclusive with the top-level `FirewallDomainListId` and `DnsThreatProtection` fields.
 #'
 #' @return
 #' A list with the following syntax:
@@ -480,7 +871,19 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #'     FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
 #'     Qtype = "string",
 #'     DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
-#'     ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'     ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH",
+#'     FirewallRuleType = list(
+#'       FirewallAdvancedContentCategory = list(
+#'         Category = "string"
+#'       ),
+#'       FirewallAdvancedThreatCategory = list(
+#'         Category = "string"
+#'       ),
+#'       DnsThreatProtection = list(
+#'         Value = "string",
+#'         ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -501,7 +904,19 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #'   FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
 #'   Qtype = "string",
 #'   DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
-#'   ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'   ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH",
+#'   FirewallRuleType = list(
+#'     FirewallAdvancedContentCategory = list(
+#'       Category = "string"
+#'     ),
+#'     FirewallAdvancedThreatCategory = list(
+#'       Category = "string"
+#'     ),
+#'     DnsThreatProtection = list(
+#'       Value = "string",
+#'       ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -510,7 +925,7 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' @rdname route53resolver_create_firewall_rule
 #'
 #' @aliases route53resolver_create_firewall_rule
-route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleGroupId, FirewallDomainListId = NULL, Priority, Action, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name, FirewallDomainRedirectionAction = NULL, Qtype = NULL, DnsThreatProtection = NULL, ConfidenceThreshold = NULL) {
+route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleGroupId, FirewallDomainListId = NULL, Priority, Action, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name, FirewallDomainRedirectionAction = NULL, Qtype = NULL, DnsThreatProtection = NULL, ConfidenceThreshold = NULL, FirewallRuleType = NULL) {
   op <- new_operation(
     name = "CreateFirewallRule",
     http_method = "POST",
@@ -519,7 +934,7 @@ route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleG
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .route53resolver$create_firewall_rule_input(CreatorRequestId = CreatorRequestId, FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype, DnsThreatProtection = DnsThreatProtection, ConfidenceThreshold = ConfidenceThreshold)
+  input <- .route53resolver$create_firewall_rule_input(CreatorRequestId = CreatorRequestId, FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype, DnsThreatProtection = DnsThreatProtection, ConfidenceThreshold = ConfidenceThreshold, FirewallRuleType = FirewallRuleType)
   output <- .route53resolver$create_firewall_rule_output()
   config <- get_config()
   svc <- .route53resolver$service(config, op)
@@ -1077,7 +1492,9 @@ route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, 
 #'     ManagedOwnerName = "string",
 #'     CreatorRequestId = "string",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     Category = "string",
+#'     ManagedListType = "THREAT"|"CONTENT"
 #'   )
 #' )
 #' ```
@@ -1153,7 +1570,7 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
 #' 
 #' -   TXT: Verifies email senders and application-specific values.
 #' 
-#' -   A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65334, for example, TYPE28. For more information, see [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
+#' -   A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65534, for example, TYPE28. For more information, see [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1176,7 +1593,19 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
 #'     FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
 #'     Qtype = "string",
 #'     DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
-#'     ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'     ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH",
+#'     FirewallRuleType = list(
+#'       FirewallAdvancedContentCategory = list(
+#'         Category = "string"
+#'       ),
+#'       FirewallAdvancedThreatCategory = list(
+#'         Category = "string"
+#'       ),
+#'       DnsThreatProtection = list(
+#'         Value = "string",
+#'         ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1908,7 +2337,9 @@ route53resolver_get_firewall_config <- function(ResourceId) {
 #'     ManagedOwnerName = "string",
 #'     CreatorRequestId = "string",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     Category = "string",
+#'     ManagedListType = "THREAT"|"CONTENT"
 #'   )
 #' )
 #' ```
@@ -2879,7 +3310,9 @@ route53resolver_list_firewall_configs <- function(MaxResults = NULL, NextToken =
 #'       Arn = "string",
 #'       Name = "string",
 #'       CreatorRequestId = "string",
-#'       ManagedOwnerName = "string"
+#'       ManagedOwnerName = "string",
+#'       ManagedListType = "THREAT"|"CONTENT",
+#'       Category = "string"
 #'     )
 #'   )
 #' )
@@ -3132,6 +3565,69 @@ route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextTok
 }
 .route53resolver$operations$list_firewall_rule_groups <- route53resolver_list_firewall_rule_groups
 
+#' Retrieves the available rule types that can be used in DNS Firewall
+#' rules
+#'
+#' @description
+#' Retrieves the available rule types that can be used in DNS Firewall rules.
+#'
+#' @usage
+#' route53resolver_list_firewall_rule_types(RuleType, MaxResults,
+#'   NextToken)
+#'
+#' @param RuleType The rule type to filter by. If specified, only rule types matching this value are returned.
+#' @param MaxResults The maximum number of objects that you want Resolver to return for this request. If more objects are available, in the response, Resolver provides a `NextToken` value that you can use in a subsequent call to get the next batch of objects.
+#' @param NextToken For the first call to this list request, omit this value. When you request a list of objects, Resolver returns at most the number of objects specified in `MaxResults`. If more objects are available for retrieval, Resolver provides a `NextToken` value in the response. To retrieve the next batch of objects, use the token that was returned for the prior request in your next request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallRuleTypes = list(
+#'     list(
+#'       RuleType = "string",
+#'       Value = "string",
+#'       DisplayName = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_firewall_rule_types(
+#'   RuleType = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_list_firewall_rule_types
+#'
+#' @aliases route53resolver_list_firewall_rule_types
+route53resolver_list_firewall_rule_types <- function(RuleType = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListFirewallRuleTypes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRuleTypes"),
+    stream_api = FALSE
+  )
+  input <- .route53resolver$list_firewall_rule_types_input(RuleType = RuleType, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .route53resolver$list_firewall_rule_types_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$list_firewall_rule_types <- route53resolver_list_firewall_rule_types
+
 #' Retrieves the firewall rules that you have defined for the specified
 #' firewall rule group
 #'
@@ -3187,7 +3683,19 @@ route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextTok
 #'       FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
 #'       Qtype = "string",
 #'       DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
-#'       ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'       ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH",
+#'       FirewallRuleType = list(
+#'         FirewallAdvancedContentCategory = list(
+#'           Category = "string"
+#'         ),
+#'         FirewallAdvancedThreatCategory = list(
+#'           Category = "string"
+#'         ),
+#'         DnsThreatProtection = list(
+#'           Value = "string",
+#'           ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -4525,7 +5033,7 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #'   FirewallDomainListId, FirewallThreatProtectionId, Priority, Action,
 #'   BlockResponse, BlockOverrideDomain, BlockOverrideDnsType,
 #'   BlockOverrideTtl, Name, FirewallDomainRedirectionAction, Qtype,
-#'   DnsThreatProtection, ConfidenceThreshold)
+#'   DnsThreatProtection, ConfidenceThreshold, FirewallRuleType)
 #'
 #' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group for the rule.
 #' @param FirewallDomainListId The ID of the domain list to use in the rule.
@@ -4584,7 +5092,7 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #' 
 #' -   TXT: Verifies email senders and application-specific values.
 #' 
-#' -   A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65334, for example, TYPE28. For more information, see [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
+#' -   A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65534, for example, TYPE28. For more information, see [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
 #' 
 #'     If you set up a firewall BLOCK rule with action NXDOMAIN on query type equals AAAA, this action will not be applied to synthetic IPv6 addresses generated when DNS64 is enabled.
 #' @param DnsThreatProtection The type of the DNS Firewall Advanced rule. Valid values are:
@@ -4599,6 +5107,7 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #' -   `MEDIUM`: Provides a balance between detecting threats and false positives.
 #' 
 #' -   `HIGH`: Detects only the most well corroborated threats with a low rate of false positives.
+#' @param FirewallRuleType The rule type configuration for the firewall rule. This setting is mutually exclusive with the top-level `FirewallDomainListId` and `DnsThreatProtection` fields.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4621,7 +5130,19 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #'     FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
 #'     Qtype = "string",
 #'     DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
-#'     ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'     ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH",
+#'     FirewallRuleType = list(
+#'       FirewallAdvancedContentCategory = list(
+#'         Category = "string"
+#'       ),
+#'       FirewallAdvancedThreatCategory = list(
+#'         Category = "string"
+#'       ),
+#'       DnsThreatProtection = list(
+#'         Value = "string",
+#'         ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -4642,7 +5163,19 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #'   FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
 #'   Qtype = "string",
 #'   DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
-#'   ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'   ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH",
+#'   FirewallRuleType = list(
+#'     FirewallAdvancedContentCategory = list(
+#'       Category = "string"
+#'     ),
+#'     FirewallAdvancedThreatCategory = list(
+#'       Category = "string"
+#'     ),
+#'     DnsThreatProtection = list(
+#'       Value = "string",
+#'       ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4651,7 +5184,7 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #' @rdname route53resolver_update_firewall_rule
 #'
 #' @aliases route53resolver_update_firewall_rule
-route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDomainListId = NULL, FirewallThreatProtectionId = NULL, Priority = NULL, Action = NULL, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name = NULL, FirewallDomainRedirectionAction = NULL, Qtype = NULL, DnsThreatProtection = NULL, ConfidenceThreshold = NULL) {
+route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDomainListId = NULL, FirewallThreatProtectionId = NULL, Priority = NULL, Action = NULL, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name = NULL, FirewallDomainRedirectionAction = NULL, Qtype = NULL, DnsThreatProtection = NULL, ConfidenceThreshold = NULL, FirewallRuleType = NULL) {
   op <- new_operation(
     name = "UpdateFirewallRule",
     http_method = "POST",
@@ -4660,7 +5193,7 @@ route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .route53resolver$update_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, FirewallThreatProtectionId = FirewallThreatProtectionId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype, DnsThreatProtection = DnsThreatProtection, ConfidenceThreshold = ConfidenceThreshold)
+  input <- .route53resolver$update_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, FirewallThreatProtectionId = FirewallThreatProtectionId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype, DnsThreatProtection = DnsThreatProtection, ConfidenceThreshold = ConfidenceThreshold, FirewallRuleType = FirewallRuleType)
   output <- .route53resolver$update_firewall_rule_output()
   config <- get_config()
   svc <- .route53resolver$service(config, op)

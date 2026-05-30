@@ -30,7 +30,7 @@ bedrock_list_imported_models(
 \item{sortOrder}{Specifies whetehr to sort the results in ascending or descending order.}
 }
 \description{
-Returns a list of models you've imported. You can filter the results to return based on one or more criteria. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html}{Import a customized model} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
+Returns a list of models you've imported. You can filter the results to return based on one or more criteria. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html}{Import a customized model} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_list_imported_models/} for full documentation.
 }

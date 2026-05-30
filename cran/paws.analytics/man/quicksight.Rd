@@ -115,6 +115,7 @@ Amazon Quick Sight is a fully managed, serverless business intelligence service 
 \link[=quicksight_create_iam_policy_assignment]{create_iam_policy_assignment} \tab Creates an assignment with one specified IAM policy, identified by its Amazon Resource Name (ARN)\cr
 \link[=quicksight_create_ingestion]{create_ingestion} \tab Creates and starts a new SPICE ingestion for a dataset\cr
 \link[=quicksight_create_namespace]{create_namespace} \tab (Enterprise edition only) Creates a new namespace for you to use with Amazon Quick Sight\cr
+\link[=quicksight_create_o_auth_client_application]{create_o_auth_client_application} \tab Creates an OAuthClientApplication\cr
 \link[=quicksight_create_refresh_schedule]{create_refresh_schedule} \tab Creates a refresh schedule for a dataset\cr
 \link[=quicksight_create_role_membership]{create_role_membership} \tab Use CreateRoleMembership to add an existing Quick Sight group to an existing role\cr
 \link[=quicksight_create_template]{create_template} \tab Creates a template either from a TemplateDefinition or from an existing Quick Sight analysis or template\cr
@@ -144,6 +145,7 @@ Amazon Quick Sight is a fully managed, serverless business intelligence service 
 \link[=quicksight_delete_iam_policy_assignment]{delete_iam_policy_assignment} \tab Deletes an existing IAM policy assignment\cr
 \link[=quicksight_delete_identity_propagation_config]{delete_identity_propagation_config} \tab Deletes all access scopes and authorized targets that are associated with a service from the Quick Sight IAM Identity Center application\cr
 \link[=quicksight_delete_namespace]{delete_namespace} \tab Deletes a namespace and the users and groups that are associated with the namespace\cr
+\link[=quicksight_delete_o_auth_client_application]{delete_o_auth_client_application} \tab Deletes an OAuthClientApplication\cr
 \link[=quicksight_delete_refresh_schedule]{delete_refresh_schedule} \tab Deletes a refresh schedule from a dataset\cr
 \link[=quicksight_delete_role_custom_permission]{delete_role_custom_permission} \tab Removes custom permissions from the role\cr
 \link[=quicksight_delete_role_membership]{delete_role_membership} \tab Removes a group from a role\cr
@@ -195,6 +197,7 @@ Amazon Quick Sight is a fully managed, serverless business intelligence service 
 \link[=quicksight_describe_ip_restriction]{describe_ip_restriction} \tab Provides a summary and status of IP rules\cr
 \link[=quicksight_describe_key_registration]{describe_key_registration} \tab Describes all customer managed key registrations in a Quick Sight account\cr
 \link[=quicksight_describe_namespace]{describe_namespace} \tab Describes the current namespace\cr
+\link[=quicksight_describe_o_auth_client_application]{describe_o_auth_client_application} \tab Describes an OAuthClientApplication\cr
 \link[=quicksight_describe_q_personalization_configuration]{describe_q_personalization_configuration} \tab Describes a personalization configuration\cr
 \link[=quicksight_describe_quick_sight_q_search_configuration]{describe_quick_sight_q_search_configuration} \tab Describes the state of a Quick Sight Q Search configuration\cr
 \link[=quicksight_describe_refresh_schedule]{describe_refresh_schedule} \tab Provides a summary of a refresh schedule\cr
@@ -242,6 +245,7 @@ Amazon Quick Sight is a fully managed, serverless business intelligence service 
 \link[=quicksight_list_identity_propagation_configs]{list_identity_propagation_configs} \tab Lists all services and authorized targets that the Quick Sight IAM Identity Center application can access\cr
 \link[=quicksight_list_ingestions]{list_ingestions} \tab Lists the history of SPICE ingestions for a dataset\cr
 \link[=quicksight_list_namespaces]{list_namespaces} \tab Lists the namespaces for the specified Amazon Web Services account\cr
+\link[=quicksight_list_o_auth_client_applications]{list_o_auth_client_applications} \tab Lists all OAuthClientApplications in the current Amazon Web Services Region that belong to this Amazon Web Services account\cr
 \link[=quicksight_list_refresh_schedules]{list_refresh_schedules} \tab Lists the refresh schedules of a dataset\cr
 \link[=quicksight_list_role_memberships]{list_role_memberships} \tab Lists all groups that are associated with a role\cr
 \link[=quicksight_list_self_upgrades]{list_self_upgrades} \tab Lists all self-upgrade requests for a Quick account\cr
@@ -308,6 +312,7 @@ Amazon Quick Sight is a fully managed, serverless business intelligence service 
 \link[=quicksight_update_identity_propagation_config]{update_identity_propagation_config} \tab Adds or updates services and authorized targets to configure what the Quick Sight IAM Identity Center application can access\cr
 \link[=quicksight_update_ip_restriction]{update_ip_restriction} \tab Updates the content and status of IP rules\cr
 \link[=quicksight_update_key_registration]{update_key_registration} \tab Updates a customer managed key in a Quick Sight account\cr
+\link[=quicksight_update_o_auth_client_application]{update_o_auth_client_application} \tab Updates an OAuthClientApplication\cr
 \link[=quicksight_update_public_sharing_settings]{update_public_sharing_settings} \tab This API controls public sharing settings for your entire Quick Sight account, affecting data security and access\cr
 \link[=quicksight_update_q_personalization_configuration]{update_q_personalization_configuration} \tab Updates a personalization configuration\cr
 \link[=quicksight_update_quick_sight_q_search_configuration]{update_quick_sight_q_search_configuration} \tab Updates the state of a Quick Sight Q Search configuration\cr

@@ -123,13 +123,15 @@ bedrockagentcorecontrol_create_agent_runtime_endpoint <- function(agentRuntimeId
 #' See [https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_create_api_key_credential_provider/](https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_create_api_key_credential_provider/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the API key credential provider. The name must be unique within your account.
-#' @param apiKey &#91;required&#93; The API key to use for authentication. This value is encrypted and stored securely.
+#' @param apiKey The API key to use for authentication. This value is encrypted and stored securely.
+#' @param apiKeySecretConfig A reference to the AWS Secrets Manager secret that stores the API key. This includes the secret ID and the JSON key used to extract the API key value from the secret. Required when `apiKeySecretSource` is set to `EXTERNAL`.
+#' @param apiKeySecretSource The source type of the API key secret. Use `MANAGED` if the secret is managed by the service, or `EXTERNAL` if you manage the secret yourself in AWS Secrets Manager.
 #' @param tags A map of tag keys and values to assign to the API key credential provider. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagentcorecontrol_create_api_key_credential_provider
-bedrockagentcorecontrol_create_api_key_credential_provider <- function(name, apiKey, tags = NULL) {
+bedrockagentcorecontrol_create_api_key_credential_provider <- function(name, apiKey = NULL, apiKeySecretConfig = NULL, apiKeySecretSource = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateApiKeyCredentialProvider",
     http_method = "POST",
@@ -138,7 +140,7 @@ bedrockagentcorecontrol_create_api_key_credential_provider <- function(name, api
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$create_api_key_credential_provider_input(name = name, apiKey = apiKey, tags = tags)
+  input <- .bedrockagentcorecontrol$create_api_key_credential_provider_input(name = name, apiKey = apiKey, apiKeySecretConfig = apiKeySecretConfig, apiKeySecretSource = apiKeySecretSource, tags = tags)
   output <- .bedrockagentcorecontrol$create_api_key_credential_provider_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -4249,12 +4251,14 @@ bedrockagentcorecontrol_update_agent_runtime_endpoint <- function(agentRuntimeId
 #' See [https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_update_api_key_credential_provider/](https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_update_api_key_credential_provider/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the API key credential provider to update.
-#' @param apiKey &#91;required&#93; The new API key to use for authentication. This value replaces the existing API key and is encrypted and stored securely.
+#' @param apiKey The new API key to use for authentication. This value replaces the existing API key and is encrypted and stored securely.
+#' @param apiKeySecretConfig A reference to the AWS Secrets Manager secret that stores the API key. This includes the secret ID and the JSON key used to extract the API key value from the secret. Required when `apiKeySecretSource` is set to `EXTERNAL`.
+#' @param apiKeySecretSource The source type of the API key secret. Use `MANAGED` if the secret is managed by the service, or `EXTERNAL` if you manage the secret yourself in AWS Secrets Manager.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagentcorecontrol_update_api_key_credential_provider
-bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, apiKey) {
+bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, apiKey = NULL, apiKeySecretConfig = NULL, apiKeySecretSource = NULL) {
   op <- new_operation(
     name = "UpdateApiKeyCredentialProvider",
     http_method = "POST",
@@ -4263,7 +4267,7 @@ bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, api
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$update_api_key_credential_provider_input(name = name, apiKey = apiKey)
+  input <- .bedrockagentcorecontrol$update_api_key_credential_provider_input(name = name, apiKey = apiKey, apiKeySecretConfig = apiKeySecretConfig, apiKeySecretSource = apiKeySecretSource)
   output <- .bedrockagentcorecontrol$update_api_key_credential_provider_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)

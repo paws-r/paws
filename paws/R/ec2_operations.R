@@ -13868,7 +13868,7 @@ ec2_create_secondary_subnet <- function(ClientToken = NULL, AvailabilityZone = N
 #' @description
 #' Creates a security group.
 #' 
-#' A security group acts as a virtual firewall for your instance to control inbound and outbound traffic. For more information, see [Amazon EC2 security groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html) in the *Amazon EC2 User Guide* and [Security groups for your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html?refid=faq_card) in the *Amazon VPC User Guide*.
+#' A security group acts as a virtual firewall for your instance to control inbound and outbound traffic. For more information, see [Amazon EC2 security groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html) in the *Amazon EC2 User Guide* and [Security groups for your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) in the *Amazon VPC User Guide*.
 #' 
 #' When you create a security group, you specify a friendly name of your choice. You can't have two security groups for the same VPC with the same name.
 #' 

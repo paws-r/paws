@@ -372,10 +372,12 @@ bedrockagentcorecontrol_create_agent_runtime_endpoint <- function(agentRuntimeId
 #'
 #' @usage
 #' bedrockagentcorecontrol_create_api_key_credential_provider(name, apiKey,
-#'   tags)
+#'   apiKeySecretConfig, apiKeySecretSource, tags)
 #'
 #' @param name &#91;required&#93; The name of the API key credential provider. The name must be unique within your account.
-#' @param apiKey &#91;required&#93; The API key to use for authentication. This value is encrypted and stored securely.
+#' @param apiKey The API key to use for authentication. This value is encrypted and stored securely.
+#' @param apiKeySecretConfig A reference to the AWS Secrets Manager secret that stores the API key. This includes the secret ID and the JSON key used to extract the API key value from the secret. Required when `apiKeySecretSource` is set to `EXTERNAL`.
+#' @param apiKeySecretSource The source type of the API key secret. Use `MANAGED` if the secret is managed by the service, or `EXTERNAL` if you manage the secret yourself in AWS Secrets Manager.
 #' @param tags A map of tag keys and values to assign to the API key credential provider. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment.
 #'
 #' @return
@@ -385,6 +387,8 @@ bedrockagentcorecontrol_create_agent_runtime_endpoint <- function(agentRuntimeId
 #'   apiKeySecretArn = list(
 #'     secretArn = "string"
 #'   ),
+#'   apiKeySecretJsonKey = "string",
+#'   apiKeySecretSource = "MANAGED"|"EXTERNAL",
 #'   name = "string",
 #'   credentialProviderArn = "string"
 #' )
@@ -395,6 +399,11 @@ bedrockagentcorecontrol_create_agent_runtime_endpoint <- function(agentRuntimeId
 #' svc$create_api_key_credential_provider(
 #'   name = "string",
 #'   apiKey = "string",
+#'   apiKeySecretConfig = list(
+#'     secretId = "string",
+#'     jsonKey = "string"
+#'   ),
+#'   apiKeySecretSource = "MANAGED"|"EXTERNAL",
 #'   tags = list(
 #'     "string"
 #'   )
@@ -406,7 +415,7 @@ bedrockagentcorecontrol_create_agent_runtime_endpoint <- function(agentRuntimeId
 #' @rdname bedrockagentcorecontrol_create_api_key_credential_provider
 #'
 #' @aliases bedrockagentcorecontrol_create_api_key_credential_provider
-bedrockagentcorecontrol_create_api_key_credential_provider <- function(name, apiKey, tags = NULL) {
+bedrockagentcorecontrol_create_api_key_credential_provider <- function(name, apiKey = NULL, apiKeySecretConfig = NULL, apiKeySecretSource = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateApiKeyCredentialProvider",
     http_method = "POST",
@@ -415,7 +424,7 @@ bedrockagentcorecontrol_create_api_key_credential_provider <- function(name, api
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$create_api_key_credential_provider_input(name = name, apiKey = apiKey, tags = tags)
+  input <- .bedrockagentcorecontrol$create_api_key_credential_provider_input(name = name, apiKey = apiKey, apiKeySecretConfig = apiKeySecretConfig, apiKeySecretSource = apiKeySecretSource, tags = tags)
   output <- .bedrockagentcorecontrol$create_api_key_credential_provider_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -1985,14 +1994,18 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'         modelId = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "converse_stream"|"responses"|"chat_completions",
+#'         additionalParams = list()
 #'       ),
 #'       openAiModelConfig = list(
 #'         modelId = "string",
 #'         apiKeyArn = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "chat_completions"|"responses",
+#'         additionalParams = list()
 #'       ),
 #'       geminiModelConfig = list(
 #'         modelId = "string",
@@ -2001,6 +2014,15 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'         temperature = 123.0,
 #'         topP = 123.0,
 #'         topK = 123
+#'       ),
+#'       liteLlmModelConfig = list(
+#'         modelId = "string",
+#'         apiKeyArn = "string",
+#'         apiBase = "string",
+#'         maxTokens = 123,
+#'         temperature = 123.0,
+#'         topP = 123.0,
+#'         additionalParams = list()
 #'       )
 #'     ),
 #'     systemPrompt = list(
@@ -2052,7 +2074,18 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'     ),
 #'     skills = list(
 #'       list(
-#'         path = "string"
+#'         path = "string",
+#'         s3 = list(
+#'           uri = "string"
+#'         ),
+#'         git = list(
+#'           url = "string",
+#'           path = "string",
+#'           auth = list(
+#'             credentialArn = "string",
+#'             username = "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     allowedTools = list(
@@ -2337,14 +2370,18 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'       modelId = "string",
 #'       maxTokens = 123,
 #'       temperature = 123.0,
-#'       topP = 123.0
+#'       topP = 123.0,
+#'       apiFormat = "converse_stream"|"responses"|"chat_completions",
+#'       additionalParams = list()
 #'     ),
 #'     openAiModelConfig = list(
 #'       modelId = "string",
 #'       apiKeyArn = "string",
 #'       maxTokens = 123,
 #'       temperature = 123.0,
-#'       topP = 123.0
+#'       topP = 123.0,
+#'       apiFormat = "chat_completions"|"responses",
+#'       additionalParams = list()
 #'     ),
 #'     geminiModelConfig = list(
 #'       modelId = "string",
@@ -2353,6 +2390,15 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'       temperature = 123.0,
 #'       topP = 123.0,
 #'       topK = 123
+#'     ),
+#'     liteLlmModelConfig = list(
+#'       modelId = "string",
+#'       apiKeyArn = "string",
+#'       apiBase = "string",
+#'       maxTokens = 123,
+#'       temperature = 123.0,
+#'       topP = 123.0,
+#'       additionalParams = list()
 #'     )
 #'   ),
 #'   systemPrompt = list(
@@ -2404,7 +2450,18 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'   ),
 #'   skills = list(
 #'     list(
-#'       path = "string"
+#'       path = "string",
+#'       s3 = list(
+#'         uri = "string"
+#'       ),
+#'       git = list(
+#'         url = "string",
+#'         path = "string",
+#'         auth = list(
+#'           credentialArn = "string",
+#'           username = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   allowedTools = list(
@@ -3159,6 +3216,8 @@ bedrockagentcorecontrol_create_memory <- function(clientToken = NULL, name, desc
 #'   clientSecretArn = list(
 #'     secretArn = "string"
 #'   ),
+#'   clientSecretJsonKey = "string",
+#'   clientSecretSource = "MANAGED"|"EXTERNAL",
 #'   name = "string",
 #'   credentialProviderArn = "string",
 #'   callbackUrl = "string",
@@ -3397,6 +3456,21 @@ bedrockagentcorecontrol_create_memory <- function(clientToken = NULL, name, desc
 #'       ),
 #'       clientId = "string",
 #'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL",
+#'       onBehalfOfTokenExchangeConfig = list(
+#'         grantType = "TOKEN_EXCHANGE"|"JWT_AUTHORIZATION_GRANT",
+#'         tokenExchangeGrantTypeConfig = list(
+#'           actorTokenContent = "NONE"|"M2M"|"AWS_IAM_ID_TOKEN_JWT",
+#'           actorTokenScopes = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       clientAuthenticationMethod = "CLIENT_SECRET_BASIC"|"CLIENT_SECRET_POST"|"AWS_IAM_ID_TOKEN_JWT",
 #'       privateEndpoint = list(
 #'         selfManagedLatticeResource = list(
 #'           resourceConfigurationIdentifier = "string"
@@ -3439,50 +3513,80 @@ bedrockagentcorecontrol_create_memory <- function(clientToken = NULL, name, desc
 #'             )
 #'           )
 #'         )
-#'       ),
-#'       onBehalfOfTokenExchangeConfig = list(
-#'         grantType = "TOKEN_EXCHANGE"|"JWT_AUTHORIZATION_GRANT",
-#'         tokenExchangeGrantTypeConfig = list(
-#'           actorTokenContent = "NONE"|"M2M"|"AWS_IAM_ID_TOKEN_JWT",
-#'           actorTokenScopes = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       clientAuthenticationMethod = "CLIENT_SECRET_BASIC"|"CLIENT_SECRET_POST"|"AWS_IAM_ID_TOKEN_JWT"
+#'       )
 #'     ),
 #'     googleOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     githubOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     slackOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     salesforceOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     microsoftOauth2ProviderConfig = list(
 #'       clientId = "string",
 #'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL",
 #'       tenantId = "string"
 #'     ),
 #'     atlassianOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     linkedinOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     includedOauth2ProviderConfig = list(
 #'       clientId = "string",
 #'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL",
 #'       issuer = "string",
 #'       authorizationEndpoint = "string",
 #'       tokenEndpoint = "string"
@@ -3746,18 +3850,26 @@ bedrockagentcorecontrol_create_payment_connector <- function(paymentManagerId, n
 #'       apiKeySecretArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       apiKeySecretJsonKey = "string",
+#'       apiKeySecretSource = "MANAGED"|"EXTERNAL",
 #'       walletSecretArn = list(
 #'         secretArn = "string"
-#'       )
+#'       ),
+#'       walletSecretJsonKey = "string",
+#'       walletSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     stripePrivyConfiguration = list(
 #'       appId = "string",
 #'       appSecretArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       appSecretJsonKey = "string",
+#'       appSecretSource = "MANAGED"|"EXTERNAL",
 #'       authorizationPrivateKeyArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       authorizationPrivateKeyJsonKey = "string",
+#'       authorizationPrivateKeySource = "MANAGED"|"EXTERNAL",
 #'       authorizationId = "string"
 #'     )
 #'   )
@@ -3773,12 +3885,32 @@ bedrockagentcorecontrol_create_payment_connector <- function(paymentManagerId, n
 #'     coinbaseCdpConfiguration = list(
 #'       apiKeyId = "string",
 #'       apiKeySecret = "string",
-#'       walletSecret = "string"
+#'       apiKeySecretSource = "MANAGED"|"EXTERNAL",
+#'       apiKeySecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       walletSecret = "string",
+#'       walletSecretSource = "MANAGED"|"EXTERNAL",
+#'       walletSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       )
 #'     ),
 #'     stripePrivyConfiguration = list(
 #'       appId = "string",
 #'       appSecret = "string",
+#'       appSecretSource = "MANAGED"|"EXTERNAL",
+#'       appSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
 #'       authorizationPrivateKey = "string",
+#'       authorizationPrivateKeySource = "MANAGED"|"EXTERNAL",
+#'       authorizationPrivateKeyConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
 #'       authorizationId = "string"
 #'     )
 #'   ),
@@ -5303,14 +5435,18 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
 #'         modelId = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "converse_stream"|"responses"|"chat_completions",
+#'         additionalParams = list()
 #'       ),
 #'       openAiModelConfig = list(
 #'         modelId = "string",
 #'         apiKeyArn = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "chat_completions"|"responses",
+#'         additionalParams = list()
 #'       ),
 #'       geminiModelConfig = list(
 #'         modelId = "string",
@@ -5319,6 +5455,15 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
 #'         temperature = 123.0,
 #'         topP = 123.0,
 #'         topK = 123
+#'       ),
+#'       liteLlmModelConfig = list(
+#'         modelId = "string",
+#'         apiKeyArn = "string",
+#'         apiBase = "string",
+#'         maxTokens = 123,
+#'         temperature = 123.0,
+#'         topP = 123.0,
+#'         additionalParams = list()
 #'       )
 #'     ),
 #'     systemPrompt = list(
@@ -5370,7 +5515,18 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
 #'     ),
 #'     skills = list(
 #'       list(
-#'         path = "string"
+#'         path = "string",
+#'         s3 = list(
+#'           uri = "string"
+#'         ),
+#'         git = list(
+#'           url = "string",
+#'           path = "string",
+#'           auth = list(
+#'             credentialArn = "string",
+#'             username = "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     allowedTools = list(
@@ -6471,6 +6627,8 @@ bedrockagentcorecontrol_get_agent_runtime_endpoint <- function(agentRuntimeId, e
 #'   apiKeySecretArn = list(
 #'     secretArn = "string"
 #'   ),
+#'   apiKeySecretJsonKey = "string",
+#'   apiKeySecretSource = "MANAGED"|"EXTERNAL",
 #'   name = "string",
 #'   credentialProviderArn = "string",
 #'   createdTime = as.POSIXct(
@@ -7678,14 +7836,18 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
 #'         modelId = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "converse_stream"|"responses"|"chat_completions",
+#'         additionalParams = list()
 #'       ),
 #'       openAiModelConfig = list(
 #'         modelId = "string",
 #'         apiKeyArn = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "chat_completions"|"responses",
+#'         additionalParams = list()
 #'       ),
 #'       geminiModelConfig = list(
 #'         modelId = "string",
@@ -7694,6 +7856,15 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
 #'         temperature = 123.0,
 #'         topP = 123.0,
 #'         topK = 123
+#'       ),
+#'       liteLlmModelConfig = list(
+#'         modelId = "string",
+#'         apiKeyArn = "string",
+#'         apiBase = "string",
+#'         maxTokens = 123,
+#'         temperature = 123.0,
+#'         topP = 123.0,
+#'         additionalParams = list()
 #'       )
 #'     ),
 #'     systemPrompt = list(
@@ -7745,7 +7916,18 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
 #'     ),
 #'     skills = list(
 #'       list(
-#'         path = "string"
+#'         path = "string",
+#'         s3 = list(
+#'           uri = "string"
+#'         ),
+#'         git = list(
+#'           url = "string",
+#'           path = "string",
+#'           auth = list(
+#'             credentialArn = "string",
+#'             username = "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     allowedTools = list(
@@ -8235,6 +8417,8 @@ bedrockagentcorecontrol_get_memory <- function(memoryId, view = NULL) {
 #'   clientSecretArn = list(
 #'     secretArn = "string"
 #'   ),
+#'   clientSecretJsonKey = "string",
+#'   clientSecretSource = "MANAGED"|"EXTERNAL",
 #'   name = "string",
 #'   credentialProviderArn = "string",
 #'   credentialProviderVendor = "GoogleOauth2"|"GithubOauth2"|"SlackOauth2"|"SalesforceOauth2"|"MicrosoftOauth2"|"CustomOauth2"|"AtlassianOauth2"|"LinkedinOauth2"|"XOauth2"|"OktaOauth2"|"OneLoginOauth2"|"PingOneOauth2"|"FacebookOauth2"|"YandexOauth2"|"RedditOauth2"|"ZoomOauth2"|"TwitchOauth2"|"SpotifyOauth2"|"DropboxOauth2"|"NotionOauth2"|"HubspotOauth2"|"CyberArkOauth2"|"FusionAuthOauth2"|"Auth0Oauth2"|"CognitoOauth2",
@@ -8687,18 +8871,26 @@ bedrockagentcorecontrol_get_payment_connector <- function(paymentManagerId, paym
 #'       apiKeySecretArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       apiKeySecretJsonKey = "string",
+#'       apiKeySecretSource = "MANAGED"|"EXTERNAL",
 #'       walletSecretArn = list(
 #'         secretArn = "string"
-#'       )
+#'       ),
+#'       walletSecretJsonKey = "string",
+#'       walletSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     stripePrivyConfiguration = list(
 #'       appId = "string",
 #'       appSecretArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       appSecretJsonKey = "string",
+#'       appSecretSource = "MANAGED"|"EXTERNAL",
 #'       authorizationPrivateKeyArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       authorizationPrivateKeyJsonKey = "string",
+#'       authorizationPrivateKeySource = "MANAGED"|"EXTERNAL",
 #'       authorizationId = "string"
 #'     )
 #'   ),
@@ -10288,7 +10480,10 @@ bedrockagentcorecontrol_list_configuration_bundle_versions <- function(bundleId,
 #'       bundleArn = "string",
 #'       bundleId = "string",
 #'       bundleName = "string",
-#'       description = "string"
+#'       description = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -13007,10 +13202,13 @@ bedrockagentcorecontrol_update_agent_runtime_endpoint <- function(agentRuntimeId
 #' Updates an existing API key credential provider.
 #'
 #' @usage
-#' bedrockagentcorecontrol_update_api_key_credential_provider(name, apiKey)
+#' bedrockagentcorecontrol_update_api_key_credential_provider(name, apiKey,
+#'   apiKeySecretConfig, apiKeySecretSource)
 #'
 #' @param name &#91;required&#93; The name of the API key credential provider to update.
-#' @param apiKey &#91;required&#93; The new API key to use for authentication. This value replaces the existing API key and is encrypted and stored securely.
+#' @param apiKey The new API key to use for authentication. This value replaces the existing API key and is encrypted and stored securely.
+#' @param apiKeySecretConfig A reference to the AWS Secrets Manager secret that stores the API key. This includes the secret ID and the JSON key used to extract the API key value from the secret. Required when `apiKeySecretSource` is set to `EXTERNAL`.
+#' @param apiKeySecretSource The source type of the API key secret. Use `MANAGED` if the secret is managed by the service, or `EXTERNAL` if you manage the secret yourself in AWS Secrets Manager.
 #'
 #' @return
 #' A list with the following syntax:
@@ -13019,6 +13217,8 @@ bedrockagentcorecontrol_update_agent_runtime_endpoint <- function(agentRuntimeId
 #'   apiKeySecretArn = list(
 #'     secretArn = "string"
 #'   ),
+#'   apiKeySecretJsonKey = "string",
+#'   apiKeySecretSource = "MANAGED"|"EXTERNAL",
 #'   name = "string",
 #'   credentialProviderArn = "string",
 #'   createdTime = as.POSIXct(
@@ -13034,7 +13234,12 @@ bedrockagentcorecontrol_update_agent_runtime_endpoint <- function(agentRuntimeId
 #' ```
 #' svc$update_api_key_credential_provider(
 #'   name = "string",
-#'   apiKey = "string"
+#'   apiKey = "string",
+#'   apiKeySecretConfig = list(
+#'     secretId = "string",
+#'     jsonKey = "string"
+#'   ),
+#'   apiKeySecretSource = "MANAGED"|"EXTERNAL"
 #' )
 #' ```
 #'
@@ -13043,7 +13248,7 @@ bedrockagentcorecontrol_update_agent_runtime_endpoint <- function(agentRuntimeId
 #' @rdname bedrockagentcorecontrol_update_api_key_credential_provider
 #'
 #' @aliases bedrockagentcorecontrol_update_api_key_credential_provider
-bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, apiKey) {
+bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, apiKey = NULL, apiKeySecretConfig = NULL, apiKeySecretSource = NULL) {
   op <- new_operation(
     name = "UpdateApiKeyCredentialProvider",
     http_method = "POST",
@@ -13052,7 +13257,7 @@ bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, api
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$update_api_key_credential_provider_input(name = name, apiKey = apiKey)
+  input <- .bedrockagentcorecontrol$update_api_key_credential_provider_input(name = name, apiKey = apiKey, apiKeySecretConfig = apiKeySecretConfig, apiKeySecretSource = apiKeySecretSource)
   output <- .bedrockagentcorecontrol$update_api_key_credential_provider_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -14339,14 +14544,18 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'         modelId = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "converse_stream"|"responses"|"chat_completions",
+#'         additionalParams = list()
 #'       ),
 #'       openAiModelConfig = list(
 #'         modelId = "string",
 #'         apiKeyArn = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "chat_completions"|"responses",
+#'         additionalParams = list()
 #'       ),
 #'       geminiModelConfig = list(
 #'         modelId = "string",
@@ -14355,6 +14564,15 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'         temperature = 123.0,
 #'         topP = 123.0,
 #'         topK = 123
+#'       ),
+#'       liteLlmModelConfig = list(
+#'         modelId = "string",
+#'         apiKeyArn = "string",
+#'         apiBase = "string",
+#'         maxTokens = 123,
+#'         temperature = 123.0,
+#'         topP = 123.0,
+#'         additionalParams = list()
 #'       )
 #'     ),
 #'     systemPrompt = list(
@@ -14406,7 +14624,18 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'     ),
 #'     skills = list(
 #'       list(
-#'         path = "string"
+#'         path = "string",
+#'         s3 = list(
+#'           uri = "string"
+#'         ),
+#'         git = list(
+#'           url = "string",
+#'           path = "string",
+#'           auth = list(
+#'             credentialArn = "string",
+#'             username = "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     allowedTools = list(
@@ -14695,14 +14924,18 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'       modelId = "string",
 #'       maxTokens = 123,
 #'       temperature = 123.0,
-#'       topP = 123.0
+#'       topP = 123.0,
+#'       apiFormat = "converse_stream"|"responses"|"chat_completions",
+#'       additionalParams = list()
 #'     ),
 #'     openAiModelConfig = list(
 #'       modelId = "string",
 #'       apiKeyArn = "string",
 #'       maxTokens = 123,
 #'       temperature = 123.0,
-#'       topP = 123.0
+#'       topP = 123.0,
+#'       apiFormat = "chat_completions"|"responses",
+#'       additionalParams = list()
 #'     ),
 #'     geminiModelConfig = list(
 #'       modelId = "string",
@@ -14711,6 +14944,15 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'       temperature = 123.0,
 #'       topP = 123.0,
 #'       topK = 123
+#'     ),
+#'     liteLlmModelConfig = list(
+#'       modelId = "string",
+#'       apiKeyArn = "string",
+#'       apiBase = "string",
+#'       maxTokens = 123,
+#'       temperature = 123.0,
+#'       topP = 123.0,
+#'       additionalParams = list()
 #'     )
 #'   ),
 #'   systemPrompt = list(
@@ -14762,7 +15004,18 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'   ),
 #'   skills = list(
 #'     list(
-#'       path = "string"
+#'       path = "string",
+#'       s3 = list(
+#'         uri = "string"
+#'       ),
+#'       git = list(
+#'         url = "string",
+#'         path = "string",
+#'         auth = list(
+#'           credentialArn = "string",
+#'           username = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   allowedTools = list(
@@ -15701,6 +15954,8 @@ bedrockagentcorecontrol_update_memory <- function(clientToken = NULL, memoryId, 
 #'   clientSecretArn = list(
 #'     secretArn = "string"
 #'   ),
+#'   clientSecretJsonKey = "string",
+#'   clientSecretSource = "MANAGED"|"EXTERNAL",
 #'   name = "string",
 #'   credentialProviderVendor = "GoogleOauth2"|"GithubOauth2"|"SlackOauth2"|"SalesforceOauth2"|"MicrosoftOauth2"|"CustomOauth2"|"AtlassianOauth2"|"LinkedinOauth2"|"XOauth2"|"OktaOauth2"|"OneLoginOauth2"|"PingOneOauth2"|"FacebookOauth2"|"YandexOauth2"|"RedditOauth2"|"ZoomOauth2"|"TwitchOauth2"|"SpotifyOauth2"|"DropboxOauth2"|"NotionOauth2"|"HubspotOauth2"|"CyberArkOauth2"|"FusionAuthOauth2"|"Auth0Oauth2"|"CognitoOauth2",
 #'   credentialProviderArn = "string",
@@ -15946,6 +16201,21 @@ bedrockagentcorecontrol_update_memory <- function(clientToken = NULL, memoryId, 
 #'       ),
 #'       clientId = "string",
 #'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL",
+#'       onBehalfOfTokenExchangeConfig = list(
+#'         grantType = "TOKEN_EXCHANGE"|"JWT_AUTHORIZATION_GRANT",
+#'         tokenExchangeGrantTypeConfig = list(
+#'           actorTokenContent = "NONE"|"M2M"|"AWS_IAM_ID_TOKEN_JWT",
+#'           actorTokenScopes = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       clientAuthenticationMethod = "CLIENT_SECRET_BASIC"|"CLIENT_SECRET_POST"|"AWS_IAM_ID_TOKEN_JWT",
 #'       privateEndpoint = list(
 #'         selfManagedLatticeResource = list(
 #'           resourceConfigurationIdentifier = "string"
@@ -15988,50 +16258,80 @@ bedrockagentcorecontrol_update_memory <- function(clientToken = NULL, memoryId, 
 #'             )
 #'           )
 #'         )
-#'       ),
-#'       onBehalfOfTokenExchangeConfig = list(
-#'         grantType = "TOKEN_EXCHANGE"|"JWT_AUTHORIZATION_GRANT",
-#'         tokenExchangeGrantTypeConfig = list(
-#'           actorTokenContent = "NONE"|"M2M"|"AWS_IAM_ID_TOKEN_JWT",
-#'           actorTokenScopes = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       clientAuthenticationMethod = "CLIENT_SECRET_BASIC"|"CLIENT_SECRET_POST"|"AWS_IAM_ID_TOKEN_JWT"
+#'       )
 #'     ),
 #'     googleOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     githubOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     slackOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     salesforceOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     microsoftOauth2ProviderConfig = list(
 #'       clientId = "string",
 #'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL",
 #'       tenantId = "string"
 #'     ),
 #'     atlassianOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     linkedinOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     includedOauth2ProviderConfig = list(
 #'       clientId = "string",
 #'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL",
 #'       issuer = "string",
 #'       authorizationEndpoint = "string",
 #'       tokenEndpoint = "string"
@@ -16282,18 +16582,26 @@ bedrockagentcorecontrol_update_payment_connector <- function(paymentManagerId, p
 #'       apiKeySecretArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       apiKeySecretJsonKey = "string",
+#'       apiKeySecretSource = "MANAGED"|"EXTERNAL",
 #'       walletSecretArn = list(
 #'         secretArn = "string"
-#'       )
+#'       ),
+#'       walletSecretJsonKey = "string",
+#'       walletSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     stripePrivyConfiguration = list(
 #'       appId = "string",
 #'       appSecretArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       appSecretJsonKey = "string",
+#'       appSecretSource = "MANAGED"|"EXTERNAL",
 #'       authorizationPrivateKeyArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       authorizationPrivateKeyJsonKey = "string",
+#'       authorizationPrivateKeySource = "MANAGED"|"EXTERNAL",
 #'       authorizationId = "string"
 #'     )
 #'   ),
@@ -16315,12 +16623,32 @@ bedrockagentcorecontrol_update_payment_connector <- function(paymentManagerId, p
 #'     coinbaseCdpConfiguration = list(
 #'       apiKeyId = "string",
 #'       apiKeySecret = "string",
-#'       walletSecret = "string"
+#'       apiKeySecretSource = "MANAGED"|"EXTERNAL",
+#'       apiKeySecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       walletSecret = "string",
+#'       walletSecretSource = "MANAGED"|"EXTERNAL",
+#'       walletSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       )
 #'     ),
 #'     stripePrivyConfiguration = list(
 #'       appId = "string",
 #'       appSecret = "string",
+#'       appSecretSource = "MANAGED"|"EXTERNAL",
+#'       appSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
 #'       authorizationPrivateKey = "string",
+#'       authorizationPrivateKeySource = "MANAGED"|"EXTERNAL",
+#'       authorizationPrivateKeyConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
 #'       authorizationId = "string"
 #'     )
 #'   )

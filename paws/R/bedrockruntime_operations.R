@@ -540,7 +540,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' list(
 #'   output = list(
 #'     message = list(
-#'       role = "user"|"assistant",
+#'       role = "user"|"assistant"|"system",
 #'       content = list(
 #'         list(
 #'           text = "string",
@@ -1537,7 +1537,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'   modelId = "string",
 #'   messages = list(
 #'     list(
-#'       role = "user"|"assistant",
+#'       role = "user"|"assistant"|"system",
 #'       content = list(
 #'         list(
 #'           text = "string",
@@ -1950,7 +1950,7 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #' list(
 #'   stream = list(
 #'     messageStart = list(
-#'       role = "user"|"assistant"
+#'       role = "user"|"assistant"|"system"
 #'     ),
 #'     contentBlockStart = list(
 #'       start = list(
@@ -2840,7 +2840,7 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'   modelId = "string",
 #'   messages = list(
 #'     list(
-#'       role = "user"|"assistant",
+#'       role = "user"|"assistant"|"system",
 #'       content = list(
 #'         list(
 #'           text = "string",
@@ -3235,7 +3235,7 @@ bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NU
 #'     converse = list(
 #'       messages = list(
 #'         list(
-#'           role = "user"|"assistant",
+#'           role = "user"|"assistant"|"system",
 #'           content = list(
 #'             list(
 #'               text = "string",

@@ -328,7 +328,7 @@ paymentcryptographydataplane_generate_as_2805_kek_validation <- function(KeyIden
 #' payment card authorization
 #'
 #' @description
-#' Generates an Authorization Request Cryptogram (ARQC) for an EMV chip payment card authorization. For more information, see [Generate auth request cryptogram](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/) in the *Amazon Web Services Payment Cryptography User Guide*.
+#' Generates an Authorization Request Cryptogram (ARQC) for an EMV chip payment card authorization. For more information, see [Generate auth request cryptogram](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/data-operations.generateauthrequestcryptogram.html) in the *Amazon Web Services Payment Cryptography User Guide*.
 #' 
 #' ARQC generation uses an Issuer Master Key (IMK) for application cryptograms (TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS) to derive a session key, which is then used to generate the cryptogram from the provided transaction data (when applicable). To use this operation, you must first create or import an IMK-AC key by calling [CreateKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html) or [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html). The `KeyModesOfUse` should be set to `DeriveKey` for the IMK-AC encryption key.
 #' 

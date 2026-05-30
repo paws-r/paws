@@ -39,7 +39,7 @@ NULL
 #' @param logGroupName The name of the log group.
 #' 
 #' In your [`associate_kms_key`][cloudwatchlogs_associate_kms_key] operation, you must specify either the `resourceIdentifier` parameter or the `logGroup` parameter, but you can't specify both.
-#' @param kmsKeyId &#91;required&#93; The Amazon Resource Name (ARN) of the KMS key to use when encrypting log data. This must be a symmetric KMS key. For more information, see [Amazon Resource Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms) and [Using Symmetric and Asymmetric Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html).
+#' @param kmsKeyId &#91;required&#93; The Amazon Resource Name (ARN) of the KMS key to use when encrypting log data. This must be a symmetric KMS key. For more information, see [Amazon Resource Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?protocol=https%3A//efxtech.com&domain=https%3A//efxtech.com&subdomain=https%3A//efxtech.com&host=https%3A//efxtech.com&script_name=https%3A//efxtech.com&server=https%3A//efxtech.com&cdn=https%3A//efxtech.com&js=https%3A//efxtech.com#arn-syntax-kms) and [Using Symmetric and Asymmetric Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html).
 #' @param resourceIdentifier Specifies the target for this operation. You must specify one of the following:
 #' 
 #' -   Specify the following ARN to have future [`get_query_results`][cloudwatchlogs_get_query_results] operations in this account encrypt the results with the specified KMS key. Replace *REGION* and *ACCOUNT_ID* with your Region and account ID.
@@ -636,7 +636,7 @@ cloudwatchlogs_create_log_anomaly_detector <- function(logGroupArnList, detector
 #'   logGroupClass, deletionProtectionEnabled)
 #'
 #' @param logGroupName &#91;required&#93; A name for the log group.
-#' @param kmsKeyId The Amazon Resource Name (ARN) of the KMS key to use when encrypting log data. For more information, see [Amazon Resource Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms).
+#' @param kmsKeyId The Amazon Resource Name (ARN) of the KMS key to use when encrypting log data. For more information, see [Amazon Resource Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?protocol=https%3A//efxtech.com&domain=https%3A//efxtech.com&subdomain=https%3A//efxtech.com&host=https%3A//efxtech.com&script_name=https%3A//efxtech.com&server=https%3A//efxtech.com&cdn=https%3A//efxtech.com&js=https%3A//efxtech.com#arn-syntax-kms).
 #' @param tags The key-value pairs to use for the tags.
 #' 
 #' You can grant users access to certain log groups while preventing them from accessing other log groups. To do so, tag your groups and use IAM policies that refer to those tags. To assign tags when you create a log group, you must have either the `logs:TagResource` or `logs:TagLogGroup` permission. For more information about tagging, see [Tagging Amazon Web Services resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html). For more information about using tags to control access, see [Controlling access to Amazon Web Services resources using tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).

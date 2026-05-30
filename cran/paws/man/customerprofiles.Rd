@@ -105,6 +105,7 @@ For more information about the Connect Customer Customer Profiles feature, see \
 \link[paws.customer.engagement:customerprofiles_add_profile_key]{add_profile_key} \tab Associates a new key value with a specific profile, such as a Contact Record ContactId\cr
 \link[paws.customer.engagement:customerprofiles_batch_get_calculated_attribute_for_profile]{batch_get_calculated_attribute_for_profile} \tab Fetch the possible attribute values given the attribute name\cr
 \link[paws.customer.engagement:customerprofiles_batch_get_profile]{batch_get_profile} \tab Get a batch of profiles\cr
+\link[paws.customer.engagement:customerprofiles_batch_put_profile_object]{batch_put_profile_object} \tab Adds multiple profile objects to a domain of a given ObjectType in a single API call\cr
 \link[paws.customer.engagement:customerprofiles_create_calculated_attribute_definition]{create_calculated_attribute_definition} \tab Creates a new calculated attribute definition\cr
 \link[paws.customer.engagement:customerprofiles_create_domain]{create_domain} \tab Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys\cr
 \link[paws.customer.engagement:customerprofiles_create_domain_layout]{create_domain_layout} \tab Creates the layout to view data for a specific domain\cr

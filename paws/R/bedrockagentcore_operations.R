@@ -3343,12 +3343,13 @@ bedrockagentcore_invoke_code_interpreter <- function(codeInterpreterIdentifier, 
 #' Operation to invoke a Harness.
 #'
 #' @usage
-#' bedrockagentcore_invoke_harness(harnessArn, runtimeSessionId, messages,
-#'   model, systemPrompt, tools, skills, allowedTools, maxIterations,
-#'   maxTokens, timeoutSeconds, actorId)
+#' bedrockagentcore_invoke_harness(harnessArn, runtimeSessionId,
+#'   runtimeUserId, messages, model, systemPrompt, tools, skills,
+#'   allowedTools, maxIterations, maxTokens, timeoutSeconds, actorId)
 #'
 #' @param harnessArn &#91;required&#93; The ARN of the harness to invoke.
 #' @param runtimeSessionId &#91;required&#93; The session ID for the invocation. Use the same session ID across requests to continue a conversation.
+#' @param runtimeUserId An identifier for the end user making the request. This value is passed through to the runtime container.
 #' @param messages &#91;required&#93; The messages to send to the agent.
 #' @param model The model configuration to use for this invocation. If specified, overrides the harness default.
 #' @param systemPrompt The system prompt to use for this invocation. If specified, overrides the harness default.
@@ -3446,6 +3447,7 @@ bedrockagentcore_invoke_code_interpreter <- function(codeInterpreterIdentifier, 
 #' svc$invoke_harness(
 #'   harnessArn = "string",
 #'   runtimeSessionId = "string",
+#'   runtimeUserId = "string",
 #'   messages = list(
 #'     list(
 #'       role = "user"|"assistant",
@@ -3486,14 +3488,18 @@ bedrockagentcore_invoke_code_interpreter <- function(codeInterpreterIdentifier, 
 #'       modelId = "string",
 #'       maxTokens = 123,
 #'       temperature = 123.0,
-#'       topP = 123.0
+#'       topP = 123.0,
+#'       apiFormat = "converse_stream"|"responses"|"chat_completions",
+#'       additionalParams = list()
 #'     ),
 #'     openAiModelConfig = list(
 #'       modelId = "string",
 #'       apiKeyArn = "string",
 #'       maxTokens = 123,
 #'       temperature = 123.0,
-#'       topP = 123.0
+#'       topP = 123.0,
+#'       apiFormat = "chat_completions"|"responses",
+#'       additionalParams = list()
 #'     ),
 #'     geminiModelConfig = list(
 #'       modelId = "string",
@@ -3502,6 +3508,15 @@ bedrockagentcore_invoke_code_interpreter <- function(codeInterpreterIdentifier, 
 #'       temperature = 123.0,
 #'       topP = 123.0,
 #'       topK = 123
+#'     ),
+#'     liteLlmModelConfig = list(
+#'       modelId = "string",
+#'       apiKeyArn = "string",
+#'       apiBase = "string",
+#'       maxTokens = 123,
+#'       temperature = 123.0,
+#'       topP = 123.0,
+#'       additionalParams = list()
 #'     )
 #'   ),
 #'   systemPrompt = list(
@@ -3553,7 +3568,18 @@ bedrockagentcore_invoke_code_interpreter <- function(codeInterpreterIdentifier, 
 #'   ),
 #'   skills = list(
 #'     list(
-#'       path = "string"
+#'       path = "string",
+#'       s3 = list(
+#'         uri = "string"
+#'       ),
+#'       git = list(
+#'         url = "string",
+#'         path = "string",
+#'         auth = list(
+#'           credentialArn = "string",
+#'           username = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   allowedTools = list(
@@ -3571,7 +3597,7 @@ bedrockagentcore_invoke_code_interpreter <- function(codeInterpreterIdentifier, 
 #' @rdname bedrockagentcore_invoke_harness
 #'
 #' @aliases bedrockagentcore_invoke_harness
-bedrockagentcore_invoke_harness <- function(harnessArn, runtimeSessionId, messages, model = NULL, systemPrompt = NULL, tools = NULL, skills = NULL, allowedTools = NULL, maxIterations = NULL, maxTokens = NULL, timeoutSeconds = NULL, actorId = NULL) {
+bedrockagentcore_invoke_harness <- function(harnessArn, runtimeSessionId, runtimeUserId = NULL, messages, model = NULL, systemPrompt = NULL, tools = NULL, skills = NULL, allowedTools = NULL, maxIterations = NULL, maxTokens = NULL, timeoutSeconds = NULL, actorId = NULL) {
   op <- new_operation(
     name = "InvokeHarness",
     http_method = "POST",
@@ -3580,7 +3606,7 @@ bedrockagentcore_invoke_harness <- function(harnessArn, runtimeSessionId, messag
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentcore$invoke_harness_input(harnessArn = harnessArn, runtimeSessionId = runtimeSessionId, messages = messages, model = model, systemPrompt = systemPrompt, tools = tools, skills = skills, allowedTools = allowedTools, maxIterations = maxIterations, maxTokens = maxTokens, timeoutSeconds = timeoutSeconds, actorId = actorId)
+  input <- .bedrockagentcore$invoke_harness_input(harnessArn = harnessArn, runtimeSessionId = runtimeSessionId, runtimeUserId = runtimeUserId, messages = messages, model = model, systemPrompt = systemPrompt, tools = tools, skills = skills, allowedTools = allowedTools, maxIterations = maxIterations, maxTokens = maxTokens, timeoutSeconds = timeoutSeconds, actorId = actorId)
   output <- .bedrockagentcore$invoke_harness_output()
   config <- get_config()
   svc <- .bedrockagentcore$service(config, op)

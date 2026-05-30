@@ -315,6 +315,84 @@ customerprofiles_batch_get_profile <- function(DomainName, ProfileIds) {
 }
 .customerprofiles$operations$batch_get_profile <- customerprofiles_batch_get_profile
 
+#' Adds multiple profile objects to a domain of a given ObjectType in a
+#' single API call
+#'
+#' @description
+#' Adds multiple profile objects to a domain of a given ObjectType in a single API call.
+#' 
+#' When adding a specific profile object, like a Contact Record, an inferred profile can get created if it is not mapped to an existing profile. The resulting profile will only have a phone number populated in the standard ProfileObject. Any additional Contact Records with the same phone number will be mapped to the same inferred profile.
+#' 
+#' When a ProfileObject is created and if a ProfileObjectType already exists for the ProfileObject, it will provide data to a standard profile depending on the ProfileObjectType definition.
+#' 
+#' BatchPutProfileObject needs an ObjectType, which can be created using PutProfileObjectType.
+#'
+#' @usage
+#' customerprofiles_batch_put_profile_object(DomainName, ObjectTypeName,
+#'   Items)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
+#' @param Items &#91;required&#93; A list of items to add to the domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Successful = list(
+#'     list(
+#'       Id = "string",
+#'       ProfileObjectUniqueKey = "string"
+#'     )
+#'   ),
+#'   Failed = list(
+#'     list(
+#'       Id = "string",
+#'       Code = 123,
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_put_profile_object(
+#'   DomainName = "string",
+#'   ObjectTypeName = "string",
+#'   Items = list(
+#'     list(
+#'       Id = "string",
+#'       Object = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_batch_put_profile_object
+#'
+#' @aliases customerprofiles_batch_put_profile_object
+customerprofiles_batch_put_profile_object <- function(DomainName, ObjectTypeName, Items) {
+  op <- new_operation(
+    name = "BatchPutProfileObject",
+    http_method = "PUT",
+    http_path = "/domains/{DomainName}/profiles/objects/batch-put-profile-object",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$batch_put_profile_object_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Items = Items)
+  output <- .customerprofiles$batch_put_profile_object_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$batch_put_profile_object <- customerprofiles_batch_put_profile_object
+
 #' Creates a new calculated attribute definition
 #'
 #' @description
@@ -915,7 +993,7 @@ customerprofiles_create_event_stream <- function(DomainName, Uri, EventStreamNam
 #'     EventExpiration = 123,
 #'     Periods = list(
 #'       list(
-#'         Unit = "HOURS"|"DAYS"|"WEEKS"|"MONTHS",
+#'         Unit = "MINUTES"|"HOURS"|"DAYS"|"WEEKS"|"MONTHS",
 #'         Value = 123,
 #'         MaxInvocationsPerProfile = 123,
 #'         Unlimited = TRUE|FALSE
@@ -965,7 +1043,7 @@ customerprofiles_create_event_stream <- function(DomainName, Uri, EventStreamNam
 #'     EventExpiration = 123,
 #'     Periods = list(
 #'       list(
-#'         Unit = "HOURS"|"DAYS"|"WEEKS"|"MONTHS",
+#'         Unit = "MINUTES"|"HOURS"|"DAYS"|"WEEKS"|"MONTHS",
 #'         Value = 123,
 #'         MaxInvocationsPerProfile = 123,
 #'         Unlimited = TRUE|FALSE
@@ -3935,7 +4013,7 @@ customerprofiles_get_event_stream <- function(DomainName, EventStreamName) {
 #'     EventExpiration = 123,
 #'     Periods = list(
 #'       list(
-#'         Unit = "HOURS"|"DAYS"|"WEEKS"|"MONTHS",
+#'         Unit = "MINUTES"|"HOURS"|"DAYS"|"WEEKS"|"MONTHS",
 #'         Value = 123,
 #'         MaxInvocationsPerProfile = 123,
 #'         Unlimited = TRUE|FALSE
@@ -9294,7 +9372,7 @@ customerprofiles_update_domain_layout <- function(DomainName, LayoutDefinitionNa
 #'     EventExpiration = 123,
 #'     Periods = list(
 #'       list(
-#'         Unit = "HOURS"|"DAYS"|"WEEKS"|"MONTHS",
+#'         Unit = "MINUTES"|"HOURS"|"DAYS"|"WEEKS"|"MONTHS",
 #'         Value = 123,
 #'         MaxInvocationsPerProfile = 123,
 #'         Unlimited = TRUE|FALSE
@@ -9344,7 +9422,7 @@ customerprofiles_update_domain_layout <- function(DomainName, LayoutDefinitionNa
 #'     EventExpiration = 123,
 #'     Periods = list(
 #'       list(
-#'         Unit = "HOURS"|"DAYS"|"WEEKS"|"MONTHS",
+#'         Unit = "MINUTES"|"HOURS"|"DAYS"|"WEEKS"|"MONTHS",
 #'         Value = 123,
 #'         MaxInvocationsPerProfile = 123,
 #'         Unlimited = TRUE|FALSE

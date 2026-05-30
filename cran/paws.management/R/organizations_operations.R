@@ -387,7 +387,7 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to validate this parameter is a string of any of the characters in the ASCII character range.
 #' @param Type &#91;required&#93; The type of policy to create. You can specify one of the following values:
 #' 
-#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html?protocol=https%3A//efxtech.com&domain=https%3A//efxtech.com&subdomain=https%3A//efxtech.com&host=https%3A//efxtech.com&script_name=https%3A//efxtech.com&server=https%3A//efxtech.com&cdn=https%3A//efxtech.com&js=https%3A//efxtech.com)
 #' 
 #' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
 #' 
@@ -1036,7 +1036,7 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a root ID string requires "r-" followed by from 4 to 32 lowercase letters or digits.
 #' @param PolicyType &#91;required&#93; The policy type that you want to disable in this root. You can specify one of the following values:
 #' 
-#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html?protocol=https%3A//efxtech.com&domain=https%3A//efxtech.com&subdomain=https%3A//efxtech.com&host=https%3A//efxtech.com&script_name=https%3A//efxtech.com&server=https%3A//efxtech.com&cdn=https%3A//efxtech.com&js=https%3A//efxtech.com)
 #' 
 #' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
 #' 
@@ -1162,7 +1162,7 @@ organizations_enable_all_features <- function() {
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a root ID string requires "r-" followed by from 4 to 32 lowercase letters or digits.
 #' @param PolicyType &#91;required&#93; The policy type that you want to enable. You can specify one of the following values:
 #' 
-#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html?protocol=https%3A//efxtech.com&domain=https%3A//efxtech.com&subdomain=https%3A//efxtech.com&host=https%3A//efxtech.com&script_name=https%3A//efxtech.com&server=https%3A//efxtech.com&cdn=https%3A//efxtech.com&js=https%3A//efxtech.com)
 #' 
 #' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
 #' 
@@ -1913,7 +1913,7 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #'
 #' @param Filter &#91;required&#93; Specifies the type of policy that you want to include in the response. You must specify one of the following values:
 #' 
-#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html?protocol=https%3A//efxtech.com&domain=https%3A//efxtech.com&subdomain=https%3A//efxtech.com&host=https%3A//efxtech.com&script_name=https%3A//efxtech.com&server=https%3A//efxtech.com&cdn=https%3A//efxtech.com&js=https%3A//efxtech.com)
 #' 
 #' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
 #' 
@@ -1982,7 +1982,7 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' -   **Organizational unit (OU)** - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters or digits.
 #' @param Filter &#91;required&#93; The type of policy that you want to include in the returned list. You must specify one of the following values:
 #' 
-#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html?protocol=https%3A//efxtech.com&domain=https%3A//efxtech.com&subdomain=https%3A//efxtech.com&host=https%3A//efxtech.com&script_name=https%3A//efxtech.com&server=https%3A//efxtech.com&cdn=https%3A//efxtech.com&js=https%3A//efxtech.com)
 #' 
 #' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
 #' 

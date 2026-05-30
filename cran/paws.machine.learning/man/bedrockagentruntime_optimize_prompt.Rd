@@ -12,7 +12,7 @@ bedrockagentruntime_optimize_prompt(input, targetModelId)
 \item{targetModelId}{[required] The unique identifier of the model that you want to optimize the prompt for.}
 }
 \description{
-Optimizes a prompt for the task that you specify. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-optimize.html}{Optimize a prompt} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
+Optimizes a prompt for the task that you specify. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-optimize.html}{Optimize a prompt} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentruntime_optimize_prompt/} for full documentation.
 }

@@ -44,9 +44,9 @@ If you specify a document name or ARN that hasn't been shared with your account,
 
 \item{DocumentVersion}{The SSM document version to use in the request. You can specify $DEFAULT, $LATEST, or a specific version number. If you run commands by using the Command Line Interface (Amazon Web Services CLI), then you must escape the first two options by using a backslash. If you specify a version number, then you don't need to use the backslash. For example:
 
---document-version "$DEFAULT"
+--document-version "\$DEFAULT"
 
---document-version "$LATEST"
+--document-version "\$LATEST"
 
 --document-version "3"}
 

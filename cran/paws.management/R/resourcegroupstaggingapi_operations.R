@@ -50,7 +50,7 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' 
 #' -   For a list of service name strings, see [Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces).
 #' 
-#' -   For resource type strings, see [Example ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=8a887164-7100-4226-b322-ec08c02bbdaf#arns-syntax).
+#' -   For resource type strings, see [Example ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arns-syntax).
 #' 
 #' -   For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' 

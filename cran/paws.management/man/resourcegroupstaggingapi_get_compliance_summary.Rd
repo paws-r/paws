@@ -25,7 +25,7 @@ resourcegroupstaggingapi_get_compliance_summary(
 The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN). Consult the \emph{\href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services General Reference}} for the following:
 \itemize{
 \item For a list of service name strings, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces}{Amazon Web Services Service Namespaces}.
-\item For resource type strings, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=8a887164-7100-4226-b322-ec08c02bbdaf#arns-syntax}{Example ARNs}.
+\item For resource type strings, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arns-syntax}{Example ARNs}.
 \item For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.
 }
 

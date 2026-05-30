@@ -321,6 +321,10 @@ batch <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' 
 #' **In this guide:**
 #' 
+#' -
+#' 
+#' -
+#' 
 #' -   CommonParameters
 #' 
 #' -   CommonErrors
@@ -12823,6 +12827,9 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
 #'  \link[paws.networking:route53resolver_associate_resolver_endpoint_ip_address]{associate_resolver_endpoint_ip_address} \tab Adds IP addresses to an inbound or an outbound Resolver endpoint\cr
 #'  \link[paws.networking:route53resolver_associate_resolver_query_log_config]{associate_resolver_query_log_config} \tab Associates an Amazon VPC with a specified query logging configuration\cr
 #'  \link[paws.networking:route53resolver_associate_resolver_rule]{associate_resolver_rule} \tab Associates a Resolver rule with a VPC\cr
+#'  \link[paws.networking:route53resolver_batch_create_firewall_rule]{batch_create_firewall_rule} \tab Creates multiple DNS Firewall rules in the specified rule group\cr
+#'  \link[paws.networking:route53resolver_batch_delete_firewall_rule]{batch_delete_firewall_rule} \tab Deletes multiple DNS Firewall rules from the specified rule group\cr
+#'  \link[paws.networking:route53resolver_batch_update_firewall_rule]{batch_update_firewall_rule} \tab Updates multiple DNS Firewall rules in the specified rule group\cr
 #'  \link[paws.networking:route53resolver_create_firewall_domain_list]{create_firewall_domain_list} \tab Creates an empty firewall domain list for use in DNS Firewall rules\cr
 #'  \link[paws.networking:route53resolver_create_firewall_rule]{create_firewall_rule} \tab Creates a single DNS Firewall rule in the specified rule group, using the specified domain list\cr
 #'  \link[paws.networking:route53resolver_create_firewall_rule_group]{create_firewall_rule_group} \tab Creates an empty DNS Firewall rule group for filtering DNS network traffic in a VPC\cr
@@ -12863,6 +12870,7 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
 #'  \link[paws.networking:route53resolver_list_firewall_rule_group_associations]{list_firewall_rule_group_associations} \tab Retrieves the firewall rule group associations that you have defined\cr
 #'  \link[paws.networking:route53resolver_list_firewall_rule_groups]{list_firewall_rule_groups} \tab Retrieves the minimal high-level information for the rule groups that you have defined\cr
 #'  \link[paws.networking:route53resolver_list_firewall_rules]{list_firewall_rules} \tab Retrieves the firewall rules that you have defined for the specified firewall rule group\cr
+#'  \link[paws.networking:route53resolver_list_firewall_rule_types]{list_firewall_rule_types} \tab Retrieves the available rule types that can be used in DNS Firewall rules\cr
 #'  \link[paws.networking:route53resolver_list_outpost_resolvers]{list_outpost_resolvers} \tab Lists all the Resolvers on Outposts that were created using the current Amazon Web Services account\cr
 #'  \link[paws.networking:route53resolver_list_resolver_configs]{list_resolver_configs} \tab Retrieves the Resolver configurations that you have defined\cr
 #'  \link[paws.networking:route53resolver_list_resolver_dnssec_configs]{list_resolver_dnssec_configs} \tab Lists the configurations for DNSSEC validation that are associated with the current Amazon Web Services account\cr
@@ -20529,7 +20537,7 @@ cloudwatchobservabilityaccessmanager <- function(config = list(), credentials = 
 #' 
 #' **Recording API Requests**
 #' 
-#' Organizations supports CloudTrail, a service that records Amazon Web Services API calls for your Amazon Web Services account and delivers log files to an Amazon S3 bucket. By using information collected by CloudTrail, you can determine which requests the Organizations service received, who made the request and when, and so on. For more about Organizations and its support for CloudTrail, see [Logging Organizations API calls with CloudTrail](https://docs.aws.amazon.com/organizations/latest/userguide/#orgs_cloudtrail-integration) in the *Organizations User Guide*. To learn more about CloudTrail, including how to turn it on and find your log files, see the [CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html).
+#' Organizations supports CloudTrail, a service that records Amazon Web Services API calls for your Amazon Web Services account and delivers log files to an Amazon S3 bucket. By using information collected by CloudTrail, you can determine which requests the Organizations service received, who made the request and when, and so on. For more about Organizations and its support for CloudTrail, see [Logging Organizations API calls with CloudTrail](https://docs.aws.amazon.com/organizations/latest/userguide/#orgs_cloudtrail-integration) in the *Organizations User Guide*. To learn more about CloudTrail, including how to turn it on and find your log files, see the [CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html?protocol=https%3A//efxtech.com&domain=https%3A//efxtech.com&subdomain=https%3A//efxtech.com&host=https%3A//efxtech.com&script_name=https%3A//efxtech.com&server=https%3A//efxtech.com&cdn=https%3A//efxtech.com&js=https%3A//efxtech.com).
 #'
 #' @param
 #' config
@@ -20715,7 +20723,7 @@ organizations <- function(config = list(), credentials = list(), endpoint = NULL
 #' 
 #' -   To learn more about Performance Insights and Amazon RDS DB instances, go to the *\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{ Amazon RDS User Guide}* .
 #' 
-#' -   To learn more about Performance Insights and Amazon DocumentDB clusters, go to the *\href{https://docs.aws.amazon.com/documentdb/latest/devguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}* .
+#' -   To learn more about Performance Insights and Amazon DocumentDB clusters, go to the *\href{https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}* .
 #'
 #' @param
 #' config
@@ -27493,10 +27501,10 @@ voiceid <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.machine.learning:bedrock_batch_delete_advanced_prompt_optimization_job]{batch_delete_advanced_prompt_optimization_job} \tab Batch delete the specified advanced prompt optimization jobs\cr
+#'  \link[paws.machine.learning:bedrock_batch_delete_advanced_prompt_optimization_job]{batch_delete_advanced_prompt_optimization_job} \tab Deletes one or more advanced prompt optimization jobs\cr
 #'  \link[paws.machine.learning:bedrock_batch_delete_evaluation_job]{batch_delete_evaluation_job} \tab Deletes a batch of evaluation jobs\cr
 #'  \link[paws.machine.learning:bedrock_cancel_automated_reasoning_policy_build_workflow]{cancel_automated_reasoning_policy_build_workflow} \tab Cancels a running Automated Reasoning policy build workflow\cr
-#'  \link[paws.machine.learning:bedrock_create_advanced_prompt_optimization_job]{create_advanced_prompt_optimization_job} \tab Creates an asynchronous batch job for advanced prompt optimization\cr
+#'  \link[paws.machine.learning:bedrock_create_advanced_prompt_optimization_job]{create_advanced_prompt_optimization_job} \tab Creates an advanced prompt optimization job\cr
 #'  \link[paws.machine.learning:bedrock_create_automated_reasoning_policy]{create_automated_reasoning_policy} \tab Creates an Automated Reasoning policy for Amazon Bedrock Guardrails\cr
 #'  \link[paws.machine.learning:bedrock_create_automated_reasoning_policy_test_case]{create_automated_reasoning_policy_test_case} \tab Creates a test for an Automated Reasoning policy\cr
 #'  \link[paws.machine.learning:bedrock_create_automated_reasoning_policy_version]{create_automated_reasoning_policy_version} \tab Creates a new version of an existing Automated Reasoning policy\cr
@@ -27531,7 +27539,7 @@ voiceid <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'  \link[paws.machine.learning:bedrock_delete_resource_policy]{delete_resource_policy} \tab Deletes a previously created Bedrock resource policy\cr
 #'  \link[paws.machine.learning:bedrock_deregister_marketplace_model_endpoint]{deregister_marketplace_model_endpoint} \tab Deregisters an endpoint for a model from Amazon Bedrock Marketplace\cr
 #'  \link[paws.machine.learning:bedrock_export_automated_reasoning_policy_version]{export_automated_reasoning_policy_version} \tab Exports the policy definition for an Automated Reasoning policy version\cr
-#'  \link[paws.machine.learning:bedrock_get_advanced_prompt_optimization_job]{get_advanced_prompt_optimization_job} \tab Retrieves the details and status of an advanced prompt optimization job\cr
+#'  \link[paws.machine.learning:bedrock_get_advanced_prompt_optimization_job]{get_advanced_prompt_optimization_job} \tab Gets information about an advanced prompt optimization job\cr
 #'  \link[paws.machine.learning:bedrock_get_automated_reasoning_policy]{get_automated_reasoning_policy} \tab Retrieves details about an Automated Reasoning policy or policy version\cr
 #'  \link[paws.machine.learning:bedrock_get_automated_reasoning_policy_annotations]{get_automated_reasoning_policy_annotations} \tab Retrieves the current annotations for an Automated Reasoning policy build workflow\cr
 #'  \link[paws.machine.learning:bedrock_get_automated_reasoning_policy_build_workflow]{get_automated_reasoning_policy_build_workflow} \tab Retrieves detailed information about an Automated Reasoning policy build workflow, including its status, configuration, and metadata\cr
@@ -27557,7 +27565,7 @@ voiceid <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'  \link[paws.machine.learning:bedrock_get_provisioned_model_throughput]{get_provisioned_model_throughput} \tab Returns details for a Provisioned Throughput\cr
 #'  \link[paws.machine.learning:bedrock_get_resource_policy]{get_resource_policy} \tab Gets the resource policy document for a Bedrock resource\cr
 #'  \link[paws.machine.learning:bedrock_get_use_case_for_model_access]{get_use_case_for_model_access} \tab Get usecase for model access\cr
-#'  \link[paws.machine.learning:bedrock_list_advanced_prompt_optimization_jobs]{list_advanced_prompt_optimization_jobs} \tab Lists all advanced prompt optimization jobs for the account\cr
+#'  \link[paws.machine.learning:bedrock_list_advanced_prompt_optimization_jobs]{list_advanced_prompt_optimization_jobs} \tab Lists the advanced prompt optimization jobs in your account\cr
 #'  \link[paws.machine.learning:bedrock_list_automated_reasoning_policies]{list_automated_reasoning_policies} \tab Lists all Automated Reasoning policies in your account, with optional filtering by policy ARN\cr
 #'  \link[paws.machine.learning:bedrock_list_automated_reasoning_policy_build_workflows]{list_automated_reasoning_policy_build_workflows} \tab Lists all build workflows for an Automated Reasoning policy, showing the history of policy creation and modification attempts\cr
 #'  \link[paws.machine.learning:bedrock_list_automated_reasoning_policy_test_cases]{list_automated_reasoning_policy_test_cases} \tab Lists tests for an Automated Reasoning policy\cr
@@ -27586,7 +27594,7 @@ voiceid <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'  \link[paws.machine.learning:bedrock_register_marketplace_model_endpoint]{register_marketplace_model_endpoint} \tab Registers an existing Amazon SageMaker endpoint with Amazon Bedrock Marketplace, allowing it to be used with Amazon Bedrock APIs\cr
 #'  \link[paws.machine.learning:bedrock_start_automated_reasoning_policy_build_workflow]{start_automated_reasoning_policy_build_workflow} \tab Starts a new build workflow for an Automated Reasoning policy\cr
 #'  \link[paws.machine.learning:bedrock_start_automated_reasoning_policy_test_workflow]{start_automated_reasoning_policy_test_workflow} \tab Initiates a test workflow to validate Automated Reasoning policy tests\cr
-#'  \link[paws.machine.learning:bedrock_stop_advanced_prompt_optimization_job]{stop_advanced_prompt_optimization_job} \tab Stops an in-progress advanced prompt optimization job\cr
+#'  \link[paws.machine.learning:bedrock_stop_advanced_prompt_optimization_job]{stop_advanced_prompt_optimization_job} \tab Stops an advanced prompt optimization job that is in progress\cr
 #'  \link[paws.machine.learning:bedrock_stop_evaluation_job]{stop_evaluation_job} \tab Stops an evaluation job that is current being created or running\cr
 #'  \link[paws.machine.learning:bedrock_stop_model_customization_job]{stop_model_customization_job} \tab Stops an active model customization job\cr
 #'  \link[paws.machine.learning:bedrock_stop_model_invocation_job]{stop_model_invocation_job} \tab Stops a batch inference job\cr
@@ -32959,6 +32967,7 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.analytics:quicksight_create_iam_policy_assignment]{create_iam_policy_assignment} \tab Creates an assignment with one specified IAM policy, identified by its Amazon Resource Name (ARN)\cr
 #'  \link[paws.analytics:quicksight_create_ingestion]{create_ingestion} \tab Creates and starts a new SPICE ingestion for a dataset\cr
 #'  \link[paws.analytics:quicksight_create_namespace]{create_namespace} \tab (Enterprise edition only) Creates a new namespace for you to use with Amazon Quick Sight\cr
+#'  \link[paws.analytics:quicksight_create_o_auth_client_application]{create_o_auth_client_application} \tab Creates an OAuthClientApplication\cr
 #'  \link[paws.analytics:quicksight_create_refresh_schedule]{create_refresh_schedule} \tab Creates a refresh schedule for a dataset\cr
 #'  \link[paws.analytics:quicksight_create_role_membership]{create_role_membership} \tab Use CreateRoleMembership to add an existing Quick Sight group to an existing role\cr
 #'  \link[paws.analytics:quicksight_create_template]{create_template} \tab Creates a template either from a TemplateDefinition or from an existing Quick Sight analysis or template\cr
@@ -32988,6 +32997,7 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.analytics:quicksight_delete_iam_policy_assignment]{delete_iam_policy_assignment} \tab Deletes an existing IAM policy assignment\cr
 #'  \link[paws.analytics:quicksight_delete_identity_propagation_config]{delete_identity_propagation_config} \tab Deletes all access scopes and authorized targets that are associated with a service from the Quick Sight IAM Identity Center application\cr
 #'  \link[paws.analytics:quicksight_delete_namespace]{delete_namespace} \tab Deletes a namespace and the users and groups that are associated with the namespace\cr
+#'  \link[paws.analytics:quicksight_delete_o_auth_client_application]{delete_o_auth_client_application} \tab Deletes an OAuthClientApplication\cr
 #'  \link[paws.analytics:quicksight_delete_refresh_schedule]{delete_refresh_schedule} \tab Deletes a refresh schedule from a dataset\cr
 #'  \link[paws.analytics:quicksight_delete_role_custom_permission]{delete_role_custom_permission} \tab Removes custom permissions from the role\cr
 #'  \link[paws.analytics:quicksight_delete_role_membership]{delete_role_membership} \tab Removes a group from a role\cr
@@ -33039,6 +33049,7 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.analytics:quicksight_describe_ip_restriction]{describe_ip_restriction} \tab Provides a summary and status of IP rules\cr
 #'  \link[paws.analytics:quicksight_describe_key_registration]{describe_key_registration} \tab Describes all customer managed key registrations in a Quick Sight account\cr
 #'  \link[paws.analytics:quicksight_describe_namespace]{describe_namespace} \tab Describes the current namespace\cr
+#'  \link[paws.analytics:quicksight_describe_o_auth_client_application]{describe_o_auth_client_application} \tab Describes an OAuthClientApplication\cr
 #'  \link[paws.analytics:quicksight_describe_q_personalization_configuration]{describe_q_personalization_configuration} \tab Describes a personalization configuration\cr
 #'  \link[paws.analytics:quicksight_describe_quick_sight_q_search_configuration]{describe_quick_sight_q_search_configuration} \tab Describes the state of a Quick Sight Q Search configuration\cr
 #'  \link[paws.analytics:quicksight_describe_refresh_schedule]{describe_refresh_schedule} \tab Provides a summary of a refresh schedule\cr
@@ -33086,6 +33097,7 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.analytics:quicksight_list_identity_propagation_configs]{list_identity_propagation_configs} \tab Lists all services and authorized targets that the Quick Sight IAM Identity Center application can access\cr
 #'  \link[paws.analytics:quicksight_list_ingestions]{list_ingestions} \tab Lists the history of SPICE ingestions for a dataset\cr
 #'  \link[paws.analytics:quicksight_list_namespaces]{list_namespaces} \tab Lists the namespaces for the specified Amazon Web Services account\cr
+#'  \link[paws.analytics:quicksight_list_o_auth_client_applications]{list_o_auth_client_applications} \tab Lists all OAuthClientApplications in the current Amazon Web Services Region that belong to this Amazon Web Services account\cr
 #'  \link[paws.analytics:quicksight_list_refresh_schedules]{list_refresh_schedules} \tab Lists the refresh schedules of a dataset\cr
 #'  \link[paws.analytics:quicksight_list_role_memberships]{list_role_memberships} \tab Lists all groups that are associated with a role\cr
 #'  \link[paws.analytics:quicksight_list_self_upgrades]{list_self_upgrades} \tab Lists all self-upgrade requests for a Quick account\cr
@@ -33152,6 +33164,7 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.analytics:quicksight_update_identity_propagation_config]{update_identity_propagation_config} \tab Adds or updates services and authorized targets to configure what the Quick Sight IAM Identity Center application can access\cr
 #'  \link[paws.analytics:quicksight_update_ip_restriction]{update_ip_restriction} \tab Updates the content and status of IP rules\cr
 #'  \link[paws.analytics:quicksight_update_key_registration]{update_key_registration} \tab Updates a customer managed key in a Quick Sight account\cr
+#'  \link[paws.analytics:quicksight_update_o_auth_client_application]{update_o_auth_client_application} \tab Updates an OAuthClientApplication\cr
 #'  \link[paws.analytics:quicksight_update_public_sharing_settings]{update_public_sharing_settings} \tab This API controls public sharing settings for your entire Quick Sight account, affecting data security and access\cr
 #'  \link[paws.analytics:quicksight_update_q_personalization_configuration]{update_q_personalization_configuration} \tab Updates a personalization configuration\cr
 #'  \link[paws.analytics:quicksight_update_quick_sight_q_search_configuration]{update_quick_sight_q_search_configuration} \tab Updates the state of a Quick Sight Q Search configuration\cr
@@ -37176,7 +37189,7 @@ iamrolesanywhere <- function(config = list(), credentials = list(), endpoint = N
 #' 
 #' **Logging API Requests**
 #' 
-#' Amazon Web Services Secrets Manager supports Amazon Web Services CloudTrail, a service that records Amazon Web Services API calls for your Amazon Web Services account and delivers log files to an Amazon S3 bucket. By using information that's collected by Amazon Web Services CloudTrail, you can determine the requests successfully made to Secrets Manager, who made the request, when it was made, and so on. For more about Amazon Web Services Secrets Manager and support for Amazon Web Services CloudTrail, see [Logging Amazon Web Services Secrets Manager Events with Amazon Web Services CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail) in the *Amazon Web Services Secrets Manager User Guide*. To learn more about CloudTrail, including enabling it and find your log files, see the [Amazon Web Services CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html).
+#' Amazon Web Services Secrets Manager supports Amazon Web Services CloudTrail, a service that records Amazon Web Services API calls for your Amazon Web Services account and delivers log files to an Amazon S3 bucket. By using information that's collected by Amazon Web Services CloudTrail, you can determine the requests successfully made to Secrets Manager, who made the request, when it was made, and so on. For more about Amazon Web Services Secrets Manager and support for Amazon Web Services CloudTrail, see [Logging Amazon Web Services Secrets Manager Events with Amazon Web Services CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail) in the *Amazon Web Services Secrets Manager User Guide*. To learn more about CloudTrail, including enabling it and find your log files, see the [Amazon Web Services CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html?protocol=https%3A//efxtech.com&domain=https%3A//efxtech.com&subdomain=https%3A//efxtech.com&host=https%3A//efxtech.com&script_name=https%3A//efxtech.com&server=https%3A//efxtech.com&cdn=https%3A//efxtech.com&js=https%3A//efxtech.com).
 #'
 #' @param
 #' config
@@ -40777,7 +40790,7 @@ sqs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' 
 #' Amazon SWF gives you full control over implementing tasks and coordinating them without worrying about underlying complexities such as tracking their progress and maintaining their state.
 #' 
-#' This documentation serves as reference only. For a broader overview of the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/welcome.html}{Amazon SWF Developer Guide}* .
+#' This documentation serves as reference only. For a broader overview of the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}* .
 #'
 #' @param
 #' config
@@ -42045,7 +42058,7 @@ marketplaceentitlementservice <- function(config = list(), credentials = list(),
 #' 
 #' -   Amazon EKS is supported in the following: us-east-1, us-east-2, us-west-1, us-west-2, eu-west-1, eu-central-1, eu-west-2, eu-west-3, eu-north-1, ap-east-1, ap-southeast-1, ap-northeast-1, ap-southeast-2, ap-northeast-2, ap-south-1, ca-central-1, sa-east-1.
 #' 
-#'     For questions about adding Amazon Web Services Regions for metering, contact Amazon Web Services Marketplace Seller Operations.
+#'     For questions about adding Amazon Web Services Regions for metering, contact [Amazon Web Services Marketplace Seller Operations](mailto://aws.amazon.com/marketplace/management/contact-us/).
 #'
 #' @param
 #' config
@@ -44065,6 +44078,7 @@ connectwisdomservice <- function(config = list(), credentials = list(), endpoint
 #'  \link[paws.customer.engagement:customerprofiles_add_profile_key]{add_profile_key} \tab Associates a new key value with a specific profile, such as a Contact Record ContactId\cr
 #'  \link[paws.customer.engagement:customerprofiles_batch_get_calculated_attribute_for_profile]{batch_get_calculated_attribute_for_profile} \tab Fetch the possible attribute values given the attribute name\cr
 #'  \link[paws.customer.engagement:customerprofiles_batch_get_profile]{batch_get_profile} \tab Get a batch of profiles\cr
+#'  \link[paws.customer.engagement:customerprofiles_batch_put_profile_object]{batch_put_profile_object} \tab Adds multiple profile objects to a domain of a given ObjectType in a single API call\cr
 #'  \link[paws.customer.engagement:customerprofiles_create_calculated_attribute_definition]{create_calculated_attribute_definition} \tab Creates a new calculated attribute definition\cr
 #'  \link[paws.customer.engagement:customerprofiles_create_domain]{create_domain} \tab Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys\cr
 #'  \link[paws.customer.engagement:customerprofiles_create_domain_layout]{create_domain_layout} \tab Creates the layout to view data for a specific domain\cr
@@ -45108,7 +45122,7 @@ ses <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.customer.engagement:sesv2_delete_email_identity_policy]{delete_email_identity_policy} \tab Deletes the specified sending authorization policy for the given identity (an email address or a domain)\cr
 #'  \link[paws.customer.engagement:sesv2_delete_email_template]{delete_email_template} \tab Deletes an email template\cr
 #'  \link[paws.customer.engagement:sesv2_delete_multi_region_endpoint]{delete_multi_region_endpoint} \tab Deletes a multi-region endpoint (global-endpoint)\cr
-#'  \link[paws.customer.engagement:sesv2_delete_suppressed_destination]{delete_suppressed_destination} \tab Removes an email address from the suppression list for your account\cr
+#'  \link[paws.customer.engagement:sesv2_delete_suppressed_destination]{delete_suppressed_destination} \tab Removes an email address from the suppression list for your account or for a specific tenant\cr
 #'  \link[paws.customer.engagement:sesv2_delete_tenant]{delete_tenant} \tab Delete an existing tenant\cr
 #'  \link[paws.customer.engagement:sesv2_delete_tenant_resource_association]{delete_tenant_resource_association} \tab Delete an association between a tenant and a resource\cr
 #'  \link[paws.customer.engagement:sesv2_get_account]{get_account} \tab Obtain information about the email-sending status and capabilities of your Amazon SES account in the current Amazon Web Services Region\cr
@@ -45134,8 +45148,8 @@ ses <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.customer.engagement:sesv2_get_message_insights]{get_message_insights} \tab Provides information about a specific message, including the from address, the subject, the recipient address, email tags, as well as events associated with the message\cr
 #'  \link[paws.customer.engagement:sesv2_get_multi_region_endpoint]{get_multi_region_endpoint} \tab Displays the multi-region endpoint (global-endpoint) configuration\cr
 #'  \link[paws.customer.engagement:sesv2_get_reputation_entity]{get_reputation_entity} \tab Retrieve information about a specific reputation entity, including its reputation management policy, customer-managed status, Amazon Web Services Amazon SES-managed status, and aggregate sending status\cr
-#'  \link[paws.customer.engagement:sesv2_get_suppressed_destination]{get_suppressed_destination} \tab Retrieves information about a specific email address that's on the suppression list for your account\cr
-#'  \link[paws.customer.engagement:sesv2_get_tenant]{get_tenant} \tab Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags, and sending status\cr
+#'  \link[paws.customer.engagement:sesv2_get_suppressed_destination]{get_suppressed_destination} \tab Retrieves information about a specific email address that's on the suppression list for your account or for a specific tenant\cr
+#'  \link[paws.customer.engagement:sesv2_get_tenant]{get_tenant} \tab Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags, sending status, and suppression attributes\cr
 #'  \link[paws.customer.engagement:sesv2_list_configuration_sets]{list_configuration_sets} \tab List all of the configuration sets associated with your account in the current region\cr
 #'  \link[paws.customer.engagement:sesv2_list_contact_lists]{list_contact_lists} \tab Lists all of the contact lists available\cr
 #'  \link[paws.customer.engagement:sesv2_list_contacts]{list_contacts} \tab Lists the contacts present in a specific contact list\cr
@@ -45151,7 +45165,7 @@ ses <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.customer.engagement:sesv2_list_recommendations]{list_recommendations} \tab Lists the recommendations present in your Amazon SES account in the current Amazon Web Services Region\cr
 #'  \link[paws.customer.engagement:sesv2_list_reputation_entities]{list_reputation_entities} \tab List reputation entities in your Amazon SES account in the current Amazon Web Services Region\cr
 #'  \link[paws.customer.engagement:sesv2_list_resource_tenants]{list_resource_tenants} \tab List all tenants associated with a specific resource\cr
-#'  \link[paws.customer.engagement:sesv2_list_suppressed_destinations]{list_suppressed_destinations} \tab Retrieves a list of email addresses that are on the suppression list for your account\cr
+#'  \link[paws.customer.engagement:sesv2_list_suppressed_destinations]{list_suppressed_destinations} \tab Retrieves a list of email addresses that are on the suppression list for your account or for a specific tenant\cr
 #'  \link[paws.customer.engagement:sesv2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified resource\cr
 #'  \link[paws.customer.engagement:sesv2_list_tenant_resources]{list_tenant_resources} \tab List all resources associated with a specific tenant\cr
 #'  \link[paws.customer.engagement:sesv2_list_tenants]{list_tenants} \tab List all tenants associated with your account in the current Amazon Web Services Region\cr
@@ -45164,7 +45178,7 @@ ses <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.customer.engagement:sesv2_put_configuration_set_delivery_options]{put_configuration_set_delivery_options} \tab Associate a configuration set with a dedicated IP pool\cr
 #'  \link[paws.customer.engagement:sesv2_put_configuration_set_reputation_options]{put_configuration_set_reputation_options} \tab Enable or disable collection of reputation metrics for emails that you send using a particular configuration set in a specific Amazon Web Services Region\cr
 #'  \link[paws.customer.engagement:sesv2_put_configuration_set_sending_options]{put_configuration_set_sending_options} \tab Enable or disable email sending for messages that use a particular configuration set in a specific Amazon Web Services Region\cr
-#'  \link[paws.customer.engagement:sesv2_put_configuration_set_suppression_options]{put_configuration_set_suppression_options} \tab Specify the account suppression list preferences for a configuration set\cr
+#'  \link[paws.customer.engagement:sesv2_put_configuration_set_suppression_options]{put_configuration_set_suppression_options} \tab Specify the suppression list preferences for a configuration set\cr
 #'  \link[paws.customer.engagement:sesv2_put_configuration_set_tracking_options]{put_configuration_set_tracking_options} \tab Specify a custom domain to use for open and click tracking elements in email that you send\cr
 #'  \link[paws.customer.engagement:sesv2_put_configuration_set_vdm_options]{put_configuration_set_vdm_options} \tab Specify VDM preferences for email that you send using the configuration set\cr
 #'  \link[paws.customer.engagement:sesv2_put_dedicated_ip_in_pool]{put_dedicated_ip_in_pool} \tab Move a dedicated IP address to an existing dedicated IP pool\cr
@@ -45176,7 +45190,8 @@ ses <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.customer.engagement:sesv2_put_email_identity_dkim_signing_attributes]{put_email_identity_dkim_signing_attributes} \tab Used to configure or change the DKIM authentication settings for an email domain identity\cr
 #'  \link[paws.customer.engagement:sesv2_put_email_identity_feedback_attributes]{put_email_identity_feedback_attributes} \tab Used to enable or disable feedback forwarding for an identity\cr
 #'  \link[paws.customer.engagement:sesv2_put_email_identity_mail_from_attributes]{put_email_identity_mail_from_attributes} \tab Used to enable or disable the custom Mail-From domain configuration for an email identity\cr
-#'  \link[paws.customer.engagement:sesv2_put_suppressed_destination]{put_suppressed_destination} \tab Adds an email address to the suppression list for your account\cr
+#'  \link[paws.customer.engagement:sesv2_put_suppressed_destination]{put_suppressed_destination} \tab Adds an email address to the suppression list for your account or for a specific tenant\cr
+#'  \link[paws.customer.engagement:sesv2_put_tenant_suppression_attributes]{put_tenant_suppression_attributes} \tab Configure the suppression list preferences for a tenant\cr
 #'  \link[paws.customer.engagement:sesv2_send_bulk_email]{send_bulk_email} \tab Composes an email message to multiple destinations\cr
 #'  \link[paws.customer.engagement:sesv2_send_custom_verification_email]{send_custom_verification_email} \tab Adds an email address to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it\cr
 #'  \link[paws.customer.engagement:sesv2_send_email]{send_email} \tab Sends an email message\cr

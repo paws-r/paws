@@ -18,7 +18,8 @@ route53resolver_update_firewall_rule(
   FirewallDomainRedirectionAction = NULL,
   Qtype = NULL,
   DnsThreatProtection = NULL,
-  ConfidenceThreshold = NULL
+  ConfidenceThreshold = NULL,
+  FirewallRuleType = NULL
 )
 }
 \arguments{
@@ -75,7 +76,7 @@ You must specify a unique priority for each rule in a rule group. To make it eas
 \item SPF: Lists the servers authorized to send emails from a domain.
 \item SRV: Application specific values that identify servers.
 \item TXT: Verifies email senders and application-specific values.
-\item A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65334, for example, TYPE28. For more information, see \href{https://en.wikipedia.org/wiki/List_of_DNS_record_types}{List of DNS record types}.
+\item A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65534, for example, TYPE28. For more information, see \href{https://en.wikipedia.org/wiki/List_of_DNS_record_types}{List of DNS record types}.
 
 If you set up a firewall BLOCK rule with action NXDOMAIN on query type equals AAAA, this action will not be applied to synthetic IPv6 addresses generated when DNS64 is enabled.
 }}
@@ -92,6 +93,8 @@ If you set up a firewall BLOCK rule with action NXDOMAIN on query type equals AA
 \item \code{MEDIUM}: Provides a balance between detecting threats and false positives.
 \item \code{HIGH}: Detects only the most well corroborated threats with a low rate of false positives.
 }}
+
+\item{FirewallRuleType}{The rule type configuration for the firewall rule. This setting is mutually exclusive with the top-level \code{FirewallDomainListId} and \code{DnsThreatProtection} fields.}
 }
 \description{
 Updates the specified firewall rule.

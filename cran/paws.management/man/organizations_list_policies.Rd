@@ -10,7 +10,7 @@ organizations_list_policies(Filter, NextToken = NULL, MaxResults = NULL)
 \arguments{
 \item{Filter}{[required] Specifies the type of policy that you want to include in the response. You must specify one of the following values:
 \itemize{
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE_CONTROL_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html?protocol=https\%3A//efxtech.com&domain=https\%3A//efxtech.com&subdomain=https\%3A//efxtech.com&host=https\%3A//efxtech.com&script_name=https\%3A//efxtech.com&server=https\%3A//efxtech.com&cdn=https\%3A//efxtech.com&js=https\%3A//efxtech.com}{SERVICE_CONTROL_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html}{RESOURCE_CONTROL_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_policies.html}{DECLARATIVE_POLICY_EC2}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP_POLICY}

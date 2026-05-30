@@ -15,7 +15,7 @@ cloudwatchlogs_create_log_group(
 \arguments{
 \item{logGroupName}{[required] A name for the log group.}
 
-\item{kmsKeyId}{The Amazon Resource Name (ARN) of the KMS key to use when encrypting log data. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms}{Amazon Resource Names}.}
+\item{kmsKeyId}{The Amazon Resource Name (ARN) of the KMS key to use when encrypting log data. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?protocol=https\%3A//efxtech.com&domain=https\%3A//efxtech.com&subdomain=https\%3A//efxtech.com&host=https\%3A//efxtech.com&script_name=https\%3A//efxtech.com&server=https\%3A//efxtech.com&cdn=https\%3A//efxtech.com&js=https\%3A//efxtech.com#arn-syntax-kms}{Amazon Resource Names}.}
 
 \item{tags}{The key-value pairs to use for the tags.
 

@@ -13,7 +13,7 @@ The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a root ID stri
 
 \item{PolicyType}{[required] The policy type that you want to disable in this root. You can specify one of the following values:
 \itemize{
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE_CONTROL_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html?protocol=https\%3A//efxtech.com&domain=https\%3A//efxtech.com&subdomain=https\%3A//efxtech.com&host=https\%3A//efxtech.com&script_name=https\%3A//efxtech.com&server=https\%3A//efxtech.com&cdn=https\%3A//efxtech.com&js=https\%3A//efxtech.com}{SERVICE_CONTROL_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html}{RESOURCE_CONTROL_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_policies.html}{DECLARATIVE_POLICY_EC2}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP_POLICY}

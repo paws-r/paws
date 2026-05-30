@@ -788,6 +788,48 @@ quicksight_create_namespace <- function(AwsAccountId, Namespace, IdentityStore, 
 }
 .quicksight$operations$create_namespace <- quicksight_create_namespace
 
+#' Creates an OAuthClientApplication
+#'
+#' @description
+#' Creates an OAuthClientApplication.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_o_auth_client_application/](https://www.paws-r-sdk.com/docs/quicksight_create_o_auth_client_application/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param OAuthClientApplicationId &#91;required&#93; An ID for the OAuthClientApplication that you want to create. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.
+#' @param Name &#91;required&#93; The display name for the OAuthClientApplication.
+#' @param OAuthClientAuthenticationType &#91;required&#93; The authentication type to use for the OAuthClientApplication. This determines the OAuth 2.0 grant flow that is used when the data source connects to the identity provider. Valid values are `TOKEN`.
+#' @param ClientId &#91;required&#93; The client ID of the OAuth application that is registered with the identity provider.
+#' @param ClientSecret &#91;required&#93; The client secret of the OAuth application that is registered with the identity provider.
+#' @param OAuthTokenEndpointUrl &#91;required&#93; The token endpoint URL of the identity provider that is used to obtain access tokens.
+#' @param OAuthAuthorizationEndpointUrl The authorization endpoint URL of the identity provider that is used to obtain authorization codes.
+#' @param OAuthScopes The OAuth scopes that are requested when the OAuthClientApplication obtains an access token from the identity provider.
+#' @param DataSourceType The type of data source that the OAuthClientApplication is used with. Valid values are `SNOWFLAKE`.
+#' @param IdentityProviderVpcConnectionProperties VPC connection properties.
+#' @param Tags Contains a map of the key-value pairs for the resource tag or tags assigned to the OAuthClientApplication.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_o_auth_client_application
+quicksight_create_o_auth_client_application <- function(AwsAccountId, OAuthClientApplicationId, Name, OAuthClientAuthenticationType, ClientId, ClientSecret, OAuthTokenEndpointUrl, OAuthAuthorizationEndpointUrl = NULL, OAuthScopes = NULL, DataSourceType = NULL, IdentityProviderVpcConnectionProperties = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateOAuthClientApplication",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/oauth-client-applications",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$create_o_auth_client_application_input(AwsAccountId = AwsAccountId, OAuthClientApplicationId = OAuthClientApplicationId, Name = Name, OAuthClientAuthenticationType = OAuthClientAuthenticationType, ClientId = ClientId, ClientSecret = ClientSecret, OAuthTokenEndpointUrl = OAuthTokenEndpointUrl, OAuthAuthorizationEndpointUrl = OAuthAuthorizationEndpointUrl, OAuthScopes = OAuthScopes, DataSourceType = DataSourceType, IdentityProviderVpcConnectionProperties = IdentityProviderVpcConnectionProperties, Tags = Tags)
+  output <- .quicksight$create_o_auth_client_application_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_o_auth_client_application <- quicksight_create_o_auth_client_application
+
 #' Creates a refresh schedule for a dataset
 #'
 #' @description
@@ -1771,6 +1813,38 @@ quicksight_delete_namespace <- function(AwsAccountId, Namespace) {
   return(response)
 }
 .quicksight$operations$delete_namespace <- quicksight_delete_namespace
+
+#' Deletes an OAuthClientApplication
+#'
+#' @description
+#' Deletes an OAuthClientApplication.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_o_auth_client_application/](https://www.paws-r-sdk.com/docs/quicksight_delete_o_auth_client_application/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param OAuthClientApplicationId &#91;required&#93; The ID of the OAuthClientApplication that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_o_auth_client_application
+quicksight_delete_o_auth_client_application <- function(AwsAccountId, OAuthClientApplicationId) {
+  op <- new_operation(
+    name = "DeleteOAuthClientApplication",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/oauth-client-applications/{OAuthClientApplicationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_o_auth_client_application_input(AwsAccountId = AwsAccountId, OAuthClientApplicationId = OAuthClientApplicationId)
+  output <- .quicksight$delete_o_auth_client_application_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_o_auth_client_application <- quicksight_delete_o_auth_client_application
 
 #' Deletes a refresh schedule from a dataset
 #'
@@ -3451,6 +3525,38 @@ quicksight_describe_namespace <- function(AwsAccountId, Namespace) {
 }
 .quicksight$operations$describe_namespace <- quicksight_describe_namespace
 
+#' Describes an OAuthClientApplication
+#'
+#' @description
+#' Describes an OAuthClientApplication.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_o_auth_client_application/](https://www.paws-r-sdk.com/docs/quicksight_describe_o_auth_client_application/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param OAuthClientApplicationId &#91;required&#93; The ID of the OAuthClientApplication that you want to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_o_auth_client_application
+quicksight_describe_o_auth_client_application <- function(AwsAccountId, OAuthClientApplicationId) {
+  op <- new_operation(
+    name = "DescribeOAuthClientApplication",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/oauth-client-applications/{OAuthClientApplicationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_o_auth_client_application_input(AwsAccountId = AwsAccountId, OAuthClientApplicationId = OAuthClientApplicationId)
+  output <- .quicksight$describe_o_auth_client_application_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_o_auth_client_application <- quicksight_describe_o_auth_client_application
+
 #' Describes a personalization configuration
 #'
 #' @description
@@ -5102,6 +5208,40 @@ quicksight_list_namespaces <- function(AwsAccountId, NextToken = NULL, MaxResult
   return(response)
 }
 .quicksight$operations$list_namespaces <- quicksight_list_namespaces
+
+#' Lists all OAuthClientApplications in the current Amazon Web Services
+#' Region that belong to this Amazon Web Services account
+#'
+#' @description
+#' Lists all OAuthClientApplications in the current Amazon Web Services Region that belong to this Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_o_auth_client_applications/](https://www.paws-r-sdk.com/docs/quicksight_list_o_auth_client_applications/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param NextToken A pagination token that can be used in a subsequent request.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_o_auth_client_applications
+quicksight_list_o_auth_client_applications <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListOAuthClientApplications",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/oauth-client-applications",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OAuthClientApplications"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_o_auth_client_applications_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$list_o_auth_client_applications_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_o_auth_client_applications <- quicksight_list_o_auth_client_applications
 
 #' Lists the refresh schedules of a dataset
 #'
@@ -7475,6 +7615,46 @@ quicksight_update_key_registration <- function(AwsAccountId, KeyRegistration) {
   return(response)
 }
 .quicksight$operations$update_key_registration <- quicksight_update_key_registration
+
+#' Updates an OAuthClientApplication
+#'
+#' @description
+#' Updates an OAuthClientApplication.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_o_auth_client_application/](https://www.paws-r-sdk.com/docs/quicksight_update_o_auth_client_application/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param OAuthClientApplicationId &#91;required&#93; The ID of the OAuthClientApplication that you want to update.
+#' @param Name &#91;required&#93; The display name for the OAuthClientApplication.
+#' @param ClientId The client ID of the OAuth application that is registered with the identity provider.
+#' @param ClientSecret The client secret of the OAuth application that is registered with the identity provider.
+#' @param OAuthTokenEndpointUrl The token endpoint URL of the identity provider that is used to obtain access tokens.
+#' @param OAuthAuthorizationEndpointUrl The authorization endpoint URL of the identity provider that is used to obtain authorization codes.
+#' @param OAuthScopes The OAuth scopes that are requested when the OAuthClientApplication obtains an access token from the identity provider.
+#' @param DataSourceType The type of data source that the OAuthClientApplication is used with. Valid values are `SNOWFLAKE`.
+#' @param IdentityProviderVpcConnectionProperties VPC connection properties.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_o_auth_client_application
+quicksight_update_o_auth_client_application <- function(AwsAccountId, OAuthClientApplicationId, Name, ClientId = NULL, ClientSecret = NULL, OAuthTokenEndpointUrl = NULL, OAuthAuthorizationEndpointUrl = NULL, OAuthScopes = NULL, DataSourceType = NULL, IdentityProviderVpcConnectionProperties = NULL) {
+  op <- new_operation(
+    name = "UpdateOAuthClientApplication",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/oauth-client-applications/{OAuthClientApplicationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_o_auth_client_application_input(AwsAccountId = AwsAccountId, OAuthClientApplicationId = OAuthClientApplicationId, Name = Name, ClientId = ClientId, ClientSecret = ClientSecret, OAuthTokenEndpointUrl = OAuthTokenEndpointUrl, OAuthAuthorizationEndpointUrl = OAuthAuthorizationEndpointUrl, OAuthScopes = OAuthScopes, DataSourceType = DataSourceType, IdentityProviderVpcConnectionProperties = IdentityProviderVpcConnectionProperties)
+  output <- .quicksight$update_o_auth_client_application_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_o_auth_client_application <- quicksight_update_o_auth_client_application
 
 #' This API controls public sharing settings for your entire Quick Sight
 #' account, affecting data security and access

@@ -118,7 +118,7 @@ paymentcryptographydataplane_generate_as_2805_kek_validation <- function(KeyIden
 #' payment card authorization
 #'
 #' @description
-#' Generates an Authorization Request Cryptogram (ARQC) for an EMV chip payment card authorization. For more information, see [Generate auth request cryptogram](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/) in the *Amazon Web Services Payment Cryptography User Guide*.
+#' Generates an Authorization Request Cryptogram (ARQC) for an EMV chip payment card authorization. For more information, see [Generate auth request cryptogram](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/data-operations.generateauthrequestcryptogram.html) in the *Amazon Web Services Payment Cryptography User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/paymentcryptographydataplane_generate_auth_request_cryptogram/](https://www.paws-r-sdk.com/docs/paymentcryptographydataplane_generate_auth_request_cryptogram/) for full documentation.
 #'

@@ -29,7 +29,7 @@ sesv2_create_configuration_set(
 
 \item{Tags}{An array of objects that define the tags (keys and values) to associate with the configuration set.}
 
-\item{SuppressionOptions}{An object that contains information about the suppression list preferences for your account.}
+\item{SuppressionOptions}{An object that contains information about the suppression list preferences for the configuration set. You can optionally include a \code{SuppressionScope} to override the tenant or account suppression scope for emails sent using this configuration set.}
 
 \item{VdmOptions}{An object that defines the VDM options for emails that you send using the configuration set.}
 

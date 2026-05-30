@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_create_advanced_prompt_optimization_job}
 \alias{bedrock_create_advanced_prompt_optimization_job}
-\title{Creates an asynchronous batch job for advanced prompt optimization}
+\title{Creates an advanced prompt optimization job}
 \usage{
 bedrock_create_advanced_prompt_optimization_job(
   jobName,
@@ -16,24 +16,24 @@ bedrock_create_advanced_prompt_optimization_job(
 )
 }
 \arguments{
-\item{jobName}{[required] Name of the advanced prompt optimization job.}
+\item{jobName}{[required] A name for the advanced prompt optimization job.}
 
-\item{jobDescription}{Description of the advanced prompt optimization job.}
+\item{jobDescription}{A description of the advanced prompt optimization job.}
 
-\item{clientToken}{Idempotency token for the request.}
+\item{clientToken}{A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request but does not return an error.}
 
-\item{inputConfig}{[required] Input data configuration for the advanced prompt optimization job.}
+\item{inputConfig}{[required] Specifies the S3 location of your JSONL input file containing prompt templates and evaluation samples.}
 
-\item{outputConfig}{[required] Output data configuration for the advanced prompt optimization job.}
+\item{outputConfig}{[required] Specifies the S3 location where optimization results will be stored.}
 
-\item{encryptionKeyArn}{KMS key ARN for encrypting output data.}
+\item{encryptionKeyArn}{The Amazon Resource Name (ARN) of the KMS key used for encrypting the output data. If not specified, the output is encrypted with an Amazon-owned KMS key.}
 
-\item{tags}{Tags to associate with the job.}
+\item{tags}{Tags to associate with the advanced prompt optimization job.}
 
-\item{modelConfigurations}{[required] Model configurations for advanced prompt optimization.}
+\item{modelConfigurations}{[required] A list of model configurations specifying the target models for prompt optimization. You can specify up to 5 models.}
 }
 \description{
-Creates an asynchronous batch job for advanced prompt optimization.
+Creates an advanced prompt optimization job. The job optimizes your prompt templates for specific models using your evaluation dataset and criteria.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_create_advanced_prompt_optimization_job/} for full documentation.
 }

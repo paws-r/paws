@@ -10,7 +10,7 @@ bedrock_delete_imported_model(modelIdentifier)
 \item{modelIdentifier}{[required] Name of the imported model to delete.}
 }
 \description{
-Deletes a custom model that you imported earlier. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html}{Import a customized model} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
+Deletes a custom model that you imported earlier. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html}{Import a customized model} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_delete_imported_model/} for full documentation.
 }

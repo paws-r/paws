@@ -3,15 +3,17 @@
 \name{sesv2_get_suppressed_destination}
 \alias{sesv2_get_suppressed_destination}
 \title{Retrieves information about a specific email address that's on the
-suppression list for your account}
+suppression list for your account or for a specific tenant}
 \usage{
-sesv2_get_suppressed_destination(EmailAddress)
+sesv2_get_suppressed_destination(EmailAddress, TenantName = NULL)
 }
 \arguments{
-\item{EmailAddress}{[required] The email address that's on the account suppression list.}
+\item{EmailAddress}{[required] The email address that's on the suppression list for your account or for the specified tenant.}
+
+\item{TenantName}{The name of the tenant whose suppression list you want to query. If you omit this parameter, the operation targets the account-level suppression list.}
 }
 \description{
-Retrieves information about a specific email address that's on the suppression list for your account.
+Retrieves information about a specific email address that's on the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the \code{TenantName} parameter. If you omit \code{TenantName}, the operation targets the account-level suppression list.
 
 See \url{https://www.paws-r-sdk.com/docs/sesv2_get_suppressed_destination/} for full documentation.
 }

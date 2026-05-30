@@ -36,7 +36,7 @@ bedrock_list_provisioned_model_throughputs(
 \item{sortOrder}{The sort order of the results.}
 }
 \description{
-Lists the Provisioned Throughputs in the account. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
+Lists the Provisioned Throughputs in the account. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_list_provisioned_model_throughputs/} for full documentation.
 }

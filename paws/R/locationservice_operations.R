@@ -561,7 +561,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' 
 #' -   Since Grab is not yet fully supported in Routes API version 2, we recommend you continue using API version 1 when using Grab.
 #' 
-#' [Calculates a route](https://docs.aws.amazon.com/location/previous/developerguide/calculate-route.html) given the following required parameters: `DeparturePosition` and `DestinationPosition`. Requires that you first [create a route calculator resource](https://docs.aws.amazon.com/location/latest/APIReference/).
+#' [Calculates a route](https://docs.aws.amazon.com/location/previous/developerguide/calculate-route.html) given the following required parameters: `DeparturePosition` and `DestinationPosition`. Requires that you first create a route calculator resource.
 #' 
 #' By default, a request that doesn't specify a departure time uses the best time of day to travel with the best traffic conditions when calculating the route.
 #' 
@@ -789,7 +789,7 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #' 
 #' Your account is charged for each route calculated, not the number of requests.
 #' 
-#' Requires that you first [create a route calculator resource](https://docs.aws.amazon.com/location/latest/APIReference/).
+#' Requires that you first create a route calculator resource.
 #' 
 #' By default, a request that doesn't specify a departure time uses the best time of day to travel with the best traffic conditions when calculating routes.
 #' 
@@ -1371,7 +1371,7 @@ locationservice_create_map <- function(MapName, Configuration, PricingPlan = NUL
 #' 
 #' -   `Here` – For additional information about [HERE Technologies](https://docs.aws.amazon.com/location/previous/developerguide/HERE.html)' coverage in your region of interest, see [HERE details on goecoding coverage](https://docs.here.com/).
 #' 
-#'     If you specify HERE Technologies (`Here`) as the data provider, you may not [store results](https://docs.aws.amazon.com/location/latest/APIReference/) for locations in Japan. For more information, see the [Amazon Web Services service terms](https://aws.amazon.com/service-terms/) for Amazon Location Service.
+#'     If you specify HERE Technologies (`Here`) as the data provider, you may not store results for locations in Japan. For more information, see the [Amazon Web Services service terms](https://aws.amazon.com/service-terms/) for Amazon Location Service.
 #' 
 #' For additional information , see [Data providers](https://docs.aws.amazon.com/location/previous/developerguide/what-is-data-provider.html) on the *Amazon Location Service developer guide*.
 #' @param PricingPlan No longer used. If included, the only allowed value is `RequestBasedUsage`.

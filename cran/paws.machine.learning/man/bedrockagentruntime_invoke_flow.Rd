@@ -28,7 +28,7 @@ bedrockagentruntime_invoke_flow(
 \item{modelPerformanceConfiguration}{Model performance settings for the request.}
 }
 \description{
-Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream. If there's an error, the error is returned. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/flows-test.html}{Test a flow in Amazon Bedrock} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
+Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream. If there's an error, the error is returned. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/flows-test.html}{Test a flow in Amazon Bedrock} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentruntime_invoke_flow/} for full documentation.
 }

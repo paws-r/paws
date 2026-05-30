@@ -1928,7 +1928,7 @@ s3_get_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Returns the lifecycle configuration information set on the bucket
 #'
 #' @description
-#' Returns the lifecycle configuration information set on the bucket. For information about lifecycle configuration, see [Object Lifecycle Management](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html).
+#' Returns the lifecycle configuration information set on the bucket. For information about lifecycle configuration, see [Object Lifecycle Management](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html?refid=awsmp_sol_lp_hlth_lp).
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle_configuration/) for full documentation.
 #'

@@ -104,6 +104,40 @@ customerprofiles_batch_get_profile <- function(DomainName, ProfileIds) {
 }
 .customerprofiles$operations$batch_get_profile <- customerprofiles_batch_get_profile
 
+#' Adds multiple profile objects to a domain of a given ObjectType in a
+#' single API call
+#'
+#' @description
+#' Adds multiple profile objects to a domain of a given ObjectType in a single API call.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_batch_put_profile_object/](https://www.paws-r-sdk.com/docs/customerprofiles_batch_put_profile_object/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
+#' @param Items &#91;required&#93; A list of items to add to the domain.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_batch_put_profile_object
+customerprofiles_batch_put_profile_object <- function(DomainName, ObjectTypeName, Items) {
+  op <- new_operation(
+    name = "BatchPutProfileObject",
+    http_method = "PUT",
+    http_path = "/domains/{DomainName}/profiles/objects/batch-put-profile-object",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$batch_put_profile_object_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Items = Items)
+  output <- .customerprofiles$batch_put_profile_object_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$batch_put_profile_object <- customerprofiles_batch_put_profile_object
+
 #' Creates a new calculated attribute definition
 #'
 #' @description

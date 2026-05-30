@@ -3,15 +3,15 @@
 #' @include bedrock_service.R
 NULL
 
-#' Batch delete the specified advanced prompt optimization jobs
+#' Deletes one or more advanced prompt optimization jobs
 #'
 #' @description
-#' Batch delete the specified advanced prompt optimization jobs.
+#' Deletes one or more advanced prompt optimization jobs.
 #'
 #' @usage
 #' bedrock_batch_delete_advanced_prompt_optimization_job(jobIdentifiers)
 #'
-#' @param jobIdentifiers &#91;required&#93; List of advanced prompt optimization job identifiers to delete.
+#' @param jobIdentifiers &#91;required&#93; A list of advanced prompt optimization job identifiers (ARNs or IDs) to delete.
 #'
 #' @return
 #' A list with the following syntax:
@@ -176,24 +176,24 @@ bedrock_cancel_automated_reasoning_policy_build_workflow <- function(policyArn, 
 }
 .bedrock$operations$cancel_automated_reasoning_policy_build_workflow <- bedrock_cancel_automated_reasoning_policy_build_workflow
 
-#' Creates an asynchronous batch job for advanced prompt optimization
+#' Creates an advanced prompt optimization job
 #'
 #' @description
-#' Creates an asynchronous batch job for advanced prompt optimization.
+#' Creates an advanced prompt optimization job. The job optimizes your prompt templates for specific models using your evaluation dataset and criteria.
 #'
 #' @usage
 #' bedrock_create_advanced_prompt_optimization_job(jobName, jobDescription,
 #'   clientToken, inputConfig, outputConfig, encryptionKeyArn, tags,
 #'   modelConfigurations)
 #'
-#' @param jobName &#91;required&#93; Name of the advanced prompt optimization job.
-#' @param jobDescription Description of the advanced prompt optimization job.
-#' @param clientToken Idempotency token for the request.
-#' @param inputConfig &#91;required&#93; Input data configuration for the advanced prompt optimization job.
-#' @param outputConfig &#91;required&#93; Output data configuration for the advanced prompt optimization job.
-#' @param encryptionKeyArn KMS key ARN for encrypting output data.
-#' @param tags Tags to associate with the job.
-#' @param modelConfigurations &#91;required&#93; Model configurations for advanced prompt optimization.
+#' @param jobName &#91;required&#93; A name for the advanced prompt optimization job.
+#' @param jobDescription A description of the advanced prompt optimization job.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request but does not return an error.
+#' @param inputConfig &#91;required&#93; Specifies the S3 location of your JSONL input file containing prompt templates and evaluation samples.
+#' @param outputConfig &#91;required&#93; Specifies the S3 location where optimization results will be stored.
+#' @param encryptionKeyArn The Amazon Resource Name (ARN) of the KMS key used for encrypting the output data. If not specified, the output is encrypted with an Amazon-owned KMS key.
+#' @param tags Tags to associate with the advanced prompt optimization job.
+#' @param modelConfigurations &#91;required&#93; A list of model configurations specifying the target models for prompt optimization. You can specify up to 5 models.
 #'
 #' @return
 #' A list with the following syntax:
@@ -519,6 +519,12 @@ bedrock_create_automated_reasoning_policy_version <- function(policyArn, clientR
 #' @description
 #' Creates a new custom model in Amazon Bedrock. After the model is active, you can use it for inference.
 #' 
+#' You can provide the model data source in one of the following ways:
+#' 
+#' -   `customModelDataSource` — Specify a SageMaker AI model package ARN. Amazon Bedrock resolves the model package to retrieve the model artifacts. This is the preferred method for new SageMaker AI training outputs.
+#' 
+#' -   `modelSourceConfig` — Specify an Amazon S3 URI pointing to the Amazon-managed Amazon S3 bucket containing your model artifacts.
+#' 
 #' To use the model for inference, you must purchase Provisioned Throughput for it. You can't use On-demand inference with these custom models. For more information about Provisioned Throughput, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html).
 #' 
 #' The model appears in [`list_custom_models`][bedrock_list_custom_models] with a `customizationType` of `imported`. To track the status of the new model, you use the [`get_custom_model`][bedrock_get_custom_model] API operation. The model can be in the following states:
@@ -539,17 +545,23 @@ bedrock_create_automated_reasoning_policy_version <- function(policyArn, clientR
 #'
 #' @usage
 #' bedrock_create_custom_model(modelName, modelSourceConfig,
-#'   modelKmsKeyArn, roleArn, modelTags, clientRequestToken)
+#'   customModelDataSource, modelKmsKeyArn, roleArn, modelTags,
+#'   clientRequestToken)
 #'
 #' @param modelName &#91;required&#93; A unique name for the custom model.
-#' @param modelSourceConfig &#91;required&#93; The data source for the model. The Amazon S3 URI in the model source must be for the Amazon-managed Amazon S3 bucket containing your model artifacts.
+#' @param modelSourceConfig The data source for the model. The Amazon S3 URI in the model source must be for the Amazon-managed Amazon S3 bucket containing your model artifacts.
+#' @param customModelDataSource The data source for the custom model. Use this field to specify a SageMaker AI model package ARN as the source for your custom model. Amazon Bedrock resolves the model package to retrieve the model artifacts.
+#' 
+#' You can specify either `customModelDataSource` or `modelSourceConfig`, but not both.
 #' @param modelKmsKeyArn The Amazon Resource Name (ARN) of the customer managed KMS key to encrypt the custom model. If you don't provide a KMS key, Amazon Bedrock uses an Amazon Web Services-managed KMS key to encrypt the model.
 #' 
 #' If you provide a customer managed KMS key, your Amazon Bedrock service role must have permissions to use it. For more information see [Encryption of imported models](https://docs.aws.amazon.com/bedrock/latest/userguide/encryption-import-model.html).
 #' @param roleArn The Amazon Resource Name (ARN) of an IAM service role that Amazon Bedrock assumes to perform tasks on your behalf. This role must have permissions to access the Amazon S3 bucket containing your model artifacts and the KMS key (if specified). For more information, see [Setting up an IAM service role for importing models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-import-iam-role.html) in the Amazon Bedrock User Guide.
+#' 
+#' This field is required when you use `modelSourceConfig` with an Amazon S3 data source. It is not required when you use `customModelDataSource` with a model package ARN, because Amazon Bedrock uses its own credentials to access the model artifacts.
 #' @param modelTags A list of key-value pairs to associate with the custom model resource. You can use these tags to organize and identify your resources.
 #' 
-#' For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #' @param clientRequestToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #'
 #' @return
@@ -569,6 +581,11 @@ bedrock_create_automated_reasoning_policy_version <- function(policyArn, clientR
 #'       s3Uri = "string"
 #'     )
 #'   ),
+#'   customModelDataSource = list(
+#'     modelPackageArnDataSource = list(
+#'       modelPackageArn = "string"
+#'     )
+#'   ),
 #'   modelKmsKeyArn = "string",
 #'   roleArn = "string",
 #'   modelTags = list(
@@ -586,7 +603,7 @@ bedrock_create_automated_reasoning_policy_version <- function(policyArn, clientR
 #' @rdname bedrock_create_custom_model
 #'
 #' @aliases bedrock_create_custom_model
-bedrock_create_custom_model <- function(modelName, modelSourceConfig, modelKmsKeyArn = NULL, roleArn = NULL, modelTags = NULL, clientRequestToken = NULL) {
+bedrock_create_custom_model <- function(modelName, modelSourceConfig = NULL, customModelDataSource = NULL, modelKmsKeyArn = NULL, roleArn = NULL, modelTags = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "CreateCustomModel",
     http_method = "POST",
@@ -595,7 +612,7 @@ bedrock_create_custom_model <- function(modelName, modelSourceConfig, modelKmsKe
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrock$create_custom_model_input(modelName = modelName, modelSourceConfig = modelSourceConfig, modelKmsKeyArn = modelKmsKeyArn, roleArn = roleArn, modelTags = modelTags, clientRequestToken = clientRequestToken)
+  input <- .bedrock$create_custom_model_input(modelName = modelName, modelSourceConfig = modelSourceConfig, customModelDataSource = customModelDataSource, modelKmsKeyArn = modelKmsKeyArn, roleArn = roleArn, modelTags = modelTags, clientRequestToken = clientRequestToken)
   output <- .bedrock$create_custom_model_output()
   config <- get_config()
   svc <- .bedrock$service(config, op)
@@ -1450,7 +1467,7 @@ bedrock_create_guardrail_version <- function(guardrailIdentifier, description = 
 #' @param description A description for the inference profile.
 #' @param clientRequestToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param modelSource &#91;required&#93; The foundation model or system-defined inference profile that the inference profile will track metrics and costs for.
-#' @param tags An array of objects, each of which contains a tag and its value. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' @param tags An array of objects, each of which contains a tag and its value. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1615,7 +1632,7 @@ bedrock_create_marketplace_model_endpoint <- function(modelSourceIdentifier, end
 #' Copies a model to another region so that it can be used there
 #'
 #' @description
-#' Copies a model to another region so that it can be used there. For more information, see [Copy models to be used in other regions](https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Copies a model to another region so that it can be used there. For more information, see [Copy models to be used in other regions](https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_create_model_copy_job(sourceModelArn, targetModelName,
@@ -1624,7 +1641,7 @@ bedrock_create_marketplace_model_endpoint <- function(modelSourceIdentifier, end
 #' @param sourceModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the model to be copied.
 #' @param targetModelName &#91;required&#93; A name for the copied model.
 #' @param modelKmsKeyId The ARN of the KMS key that you use to encrypt the model copy.
-#' @param targetModelTags Tags to associate with the target model. For more information, see [Tag resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' @param targetModelTags Tags to associate with the target model. For more information, see [Tag resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #' @param clientRequestToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #'
 #' @return
@@ -1686,7 +1703,7 @@ bedrock_create_model_copy_job <- function(sourceModelArn, targetModelName, model
 #' 
 #' Model-customization jobs are asynchronous and the completion time depends on the base model and the training/validation data size. To monitor a job, use the [`get_model_customization_job`][bedrock_get_model_customization_job] operation to retrieve the job status.
 #' 
-#' For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_create_model_customization_job(jobName, customModelName,
@@ -2115,7 +2132,7 @@ bedrock_create_prompt_router <- function(clientRequestToken = NULL, promptRouter
 #' units and for the duration that you specify
 #'
 #' @description
-#' Creates dedicated throughput for a base or custom model with the model units and for the duration that you specify. For pricing details, see [Amazon Bedrock Pricing](https://aws.amazon.com/bedrock/pricing/). For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Creates dedicated throughput for a base or custom model with the model units and for the duration that you specify. For pricing details, see [Amazon Bedrock Pricing](https://aws.amazon.com/bedrock/pricing/). For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_create_provisioned_model_throughput(clientRequestToken,
@@ -2124,14 +2141,14 @@ bedrock_create_prompt_router <- function(clientRequestToken = NULL, promptRouter
 #' @param clientRequestToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the Amazon S3 User Guide.
 #' @param modelUnits &#91;required&#93; Number of model units to allocate. A model unit delivers a specific throughput level for the specified model. The throughput level of a model unit specifies the total number of input and output tokens that it can process and generate within a span of one minute. By default, your account has no model units for purchasing Provisioned Throughputs with commitment. You must first visit the Amazon Web Services support center to request MUs.
 #' 
-#' For model unit quotas, see [Provisioned Throughput quotas](https://docs.aws.amazon.com/bedrock/latest/userguide/quotas.html#prov-thru-quotas) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' For model unit quotas, see [Provisioned Throughput quotas](https://docs.aws.amazon.com/bedrock/latest/userguide/quotas.html#prov-thru-quotas) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #' 
 #' For more information about what an MU specifies, contact your Amazon Web Services account manager.
 #' @param provisionedModelName &#91;required&#93; The name for this Provisioned Throughput.
-#' @param modelId &#91;required&#93; The Amazon Resource Name (ARN) or name of the model to associate with this Provisioned Throughput. For a list of models for which you can purchase Provisioned Throughput, see [Amazon Bedrock model IDs for purchasing Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#prov-throughput-models) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' @param modelId &#91;required&#93; The Amazon Resource Name (ARN) or name of the model to associate with this Provisioned Throughput. For a list of models for which you can purchase Provisioned Throughput, see [Amazon Bedrock model IDs for purchasing Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html?trk=28cb67ec-6e8f-4131-96c3-3070118f5815&sc_channel=el#prov-throughput-models) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #' @param commitmentDuration The commitment duration requested for the Provisioned Throughput. Billing occurs hourly and is discounted for longer commitment terms. To request a no-commit Provisioned Throughput, omit this field.
 #' 
-#' Custom models support all levels of commitment. To see which base models support no commitment, see [Supported regions and models for Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html)
+#' Custom models support all levels of commitment. To see which base models support no commitment, see [Supported regions and models for Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq)
 #' @param tags Tags to associate with this Provisioned Throughput.
 #'
 #' @return
@@ -2335,7 +2352,7 @@ bedrock_delete_automated_reasoning_policy_test_case <- function(policyArn, testC
 #' Deletes a custom model that you created earlier
 #'
 #' @description
-#' Deletes a custom model that you created earlier. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Deletes a custom model that you created earlier. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_delete_custom_model(modelIdentifier)
@@ -2569,7 +2586,7 @@ bedrock_delete_guardrail <- function(guardrailIdentifier, guardrailVersion = NUL
 #' Deletes a custom model that you imported earlier
 #'
 #' @description
-#' Deletes a custom model that you imported earlier. For more information, see [Import a customized model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Deletes a custom model that you imported earlier. For more information, see [Import a customized model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_delete_imported_model(modelIdentifier)
@@ -2787,7 +2804,7 @@ bedrock_delete_prompt_router <- function(promptRouterArn) {
 #' Deletes a Provisioned Throughput
 #'
 #' @description
-#' Deletes a Provisioned Throughput. You can't delete a Provisioned Throughput before the commitment term is over. For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Deletes a Provisioned Throughput. You can't delete a Provisioned Throughput before the commitment term is over. For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_delete_provisioned_model_throughput(provisionedModelId)
@@ -2993,15 +3010,15 @@ bedrock_export_automated_reasoning_policy_version <- function(policyArn) {
 }
 .bedrock$operations$export_automated_reasoning_policy_version <- bedrock_export_automated_reasoning_policy_version
 
-#' Retrieves the details and status of an advanced prompt optimization job
+#' Gets information about an advanced prompt optimization job
 #'
 #' @description
-#' Retrieves the details and status of an advanced prompt optimization job.
+#' Gets information about an advanced prompt optimization job.
 #'
 #' @usage
 #' bedrock_get_advanced_prompt_optimization_job(jobIdentifier)
 #'
-#' @param jobIdentifier &#91;required&#93; ARN or ID of the advanced prompt optimization job.
+#' @param jobIdentifier &#91;required&#93; The ARN or ID of the advanced prompt optimization job.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3295,7 +3312,7 @@ bedrock_get_automated_reasoning_policy_annotations <- function(policyArn, buildW
 #'   policyArn = "string",
 #'   buildWorkflowId = "string",
 #'   status = "SCHEDULED"|"CANCEL_REQUESTED"|"PREPROCESSING"|"BUILDING"|"TESTING"|"COMPLETED"|"FAILED"|"CANCELLED",
-#'   buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY"|"GENERATE_FIDELITY_REPORT"|"GENERATE_POLICY_SCENARIOS",
+#'   buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY"|"GENERATE_FIDELITY_REPORT"|"GENERATE_POLICY_SCENARIOS"|"RESOLVE_POLICY_AMBIGUITIES"|"ITERATIVELY_REFINE_POLICY",
 #'   documentName = "string",
 #'   documentContentType = "pdf"|"txt",
 #'   documentDescription = "string",
@@ -4210,7 +4227,7 @@ bedrock_get_automated_reasoning_policy_test_result <- function(policyArn, buildW
 #' you have created
 #'
 #' @description
-#' Get the properties associated with a Amazon Bedrock custom model that you have created. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Get the properties associated with a Amazon Bedrock custom model that you have created. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_get_custom_model(modelIdentifier)
@@ -5392,7 +5409,7 @@ bedrock_get_marketplace_model_endpoint <- function(endpointArn) {
 #' Retrieves information about a model copy job
 #'
 #' @description
-#' Retrieves information about a model copy job. For more information, see [Copy models to be used in other regions](https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Retrieves information about a model copy job. For more information, see [Copy models to be used in other regions](https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_get_model_copy_job(jobArn)
@@ -5459,7 +5476,7 @@ bedrock_get_model_copy_job <- function(jobArn) {
 #' including the status of the job
 #'
 #' @description
-#' Retrieves the properties associated with a model-customization job, including the status of the job. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Retrieves the properties associated with a model-customization job, including the status of the job. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_get_model_customization_job(jobIdentifier)
@@ -5648,7 +5665,7 @@ bedrock_get_model_customization_job <- function(jobIdentifier) {
 #' status of the job
 #'
 #' @description
-#' Retrieves the properties associated with import model job, including the status of the job. For more information, see [Import a customized model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Retrieves the properties associated with import model job, including the status of the job. For more information, see [Import a customized model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_get_model_import_job(jobIdentifier)
@@ -5956,7 +5973,7 @@ bedrock_get_prompt_router <- function(promptRouterArn) {
 #' Returns details for a Provisioned Throughput
 #'
 #' @description
-#' Returns details for a Provisioned Throughput. For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Returns details for a Provisioned Throughput. For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_get_provisioned_model_throughput(provisionedModelId)
@@ -6116,19 +6133,19 @@ bedrock_get_use_case_for_model_access <- function() {
 }
 .bedrock$operations$get_use_case_for_model_access <- bedrock_get_use_case_for_model_access
 
-#' Lists all advanced prompt optimization jobs for the account
+#' Lists the advanced prompt optimization jobs in your account
 #'
 #' @description
-#' Lists all advanced prompt optimization jobs for the account.
+#' Lists the advanced prompt optimization jobs in your account.
 #'
 #' @usage
 #' bedrock_list_advanced_prompt_optimization_jobs(maxResults, nextToken,
 #'   sortBy, sortOrder)
 #'
-#' @param maxResults Maximum number of results to return.
-#' @param nextToken Pagination token for the next page of results.
-#' @param sortBy Field to sort by in the returned list of jobs.
-#' @param sortOrder Sort order for the results.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param nextToken If the total number of results is greater than the `maxResults` value provided in the request, use this token in a subsequent request to get the next set of results.
+#' @param sortBy The field to sort the results by.
+#' @param sortOrder The sort order for the results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6278,7 +6295,7 @@ bedrock_list_automated_reasoning_policies <- function(policyArn = NULL, nextToke
 #'       policyArn = "string",
 #'       buildWorkflowId = "string",
 #'       status = "SCHEDULED"|"CANCEL_REQUESTED"|"PREPROCESSING"|"BUILDING"|"TESTING"|"COMPLETED"|"FAILED"|"CANCELLED",
-#'       buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY"|"GENERATE_FIDELITY_REPORT"|"GENERATE_POLICY_SCENARIOS",
+#'       buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY"|"GENERATE_FIDELITY_REPORT"|"GENERATE_POLICY_SCENARIOS"|"RESOLVE_POLICY_AMBIGUITIES"|"ITERATIVELY_REFINE_POLICY",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -6835,7 +6852,7 @@ bedrock_list_custom_model_deployments <- function(createdBefore = NULL, createdA
 #' @description
 #' Returns a list of the custom models that you have created with the [`create_model_customization_job`][bedrock_create_model_customization_job] operation.
 #' 
-#' For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_list_custom_models(creationTimeBefore, creationTimeAfter,
@@ -7205,16 +7222,16 @@ bedrock_list_foundation_model_agreement_offers <- function(modelId, offerType = 
 #' Lists Amazon Bedrock foundation models that you can use
 #'
 #' @description
-#' Lists Amazon Bedrock foundation models that you can use. You can filter the results with the request parameters. For more information, see [Foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Lists Amazon Bedrock foundation models that you can use. You can filter the results with the request parameters. For more information, see [Foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_list_foundation_models(byProvider, byCustomizationType,
 #'   byOutputModality, byInferenceType)
 #'
 #' @param byProvider Return models belonging to the model provider that you specify.
-#' @param byCustomizationType Return models that support the customization type that you specify. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' @param byCustomizationType Return models that support the customization type that you specify. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #' @param byOutputModality Return models that support the output modality that you specify.
-#' @param byInferenceType Return models that support the inference type that you specify. For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' @param byInferenceType Return models that support the inference type that you specify. For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @return
 #' A list with the following syntax:
@@ -7371,7 +7388,7 @@ bedrock_list_guardrails <- function(guardrailIdentifier = NULL, maxResults = NUL
 #' Returns a list of models you've imported
 #'
 #' @description
-#' Returns a list of models you've imported. You can filter the results to return based on one or more criteria. For more information, see [Import a customized model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Returns a list of models you've imported. You can filter the results to return based on one or more criteria. For more information, see [Import a customized model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_list_imported_models(creationTimeBefore, creationTimeAfter,
@@ -7595,7 +7612,7 @@ bedrock_list_marketplace_model_endpoints <- function(maxResults = NULL, nextToke
 #' Returns a list of model copy jobs that you have submitted
 #'
 #' @description
-#' Returns a list of model copy jobs that you have submitted. You can filter the jobs to return based on one or more criteria. For more information, see [Copy models to be used in other regions](https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Returns a list of model copy jobs that you have submitted. You can filter the jobs to return based on one or more criteria. For more information, see [Copy models to be used in other regions](https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_list_model_copy_jobs(creationTimeAfter, creationTimeBefore,
@@ -7692,7 +7709,7 @@ bedrock_list_model_copy_jobs <- function(creationTimeAfter = NULL, creationTimeB
 #' @description
 #' Returns a list of model customization jobs that you have submitted. You can filter the jobs to return based on one or more criteria.
 #' 
-#' For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_list_model_customization_jobs(creationTimeAfter,
@@ -7810,7 +7827,7 @@ bedrock_list_model_customization_jobs <- function(creationTimeAfter = NULL, crea
 #' Returns a list of import jobs you've submitted
 #'
 #' @description
-#' Returns a list of import jobs you've submitted. You can filter the results to return based on one or more criteria. For more information, see [Import a customized model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Returns a list of import jobs you've submitted. You can filter the results to return based on one or more criteria. For more information, see [Import a customized model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_list_model_import_jobs(creationTimeAfter, creationTimeBefore,
@@ -8122,7 +8139,7 @@ bedrock_list_prompt_routers <- function(maxResults = NULL, nextToken = NULL, typ
 #' Lists the Provisioned Throughputs in the account
 #'
 #' @description
-#' Lists the Provisioned Throughputs in the account. For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Lists the Provisioned Throughputs in the account. For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_list_provisioned_model_throughputs(creationTimeAfter,
@@ -8217,7 +8234,7 @@ bedrock_list_provisioned_model_throughputs <- function(creationTimeAfter = NULL,
 #' @description
 #' List the tags associated with the specified resource.
 #' 
-#' For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_list_tags_for_resource(resourceARN)
@@ -8605,7 +8622,7 @@ bedrock_register_marketplace_model_endpoint <- function(endpointIdentifier, mode
 #' ```
 #' svc$start_automated_reasoning_policy_build_workflow(
 #'   policyArn = "string",
-#'   buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY"|"GENERATE_FIDELITY_REPORT"|"GENERATE_POLICY_SCENARIOS",
+#'   buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY"|"GENERATE_FIDELITY_REPORT"|"GENERATE_POLICY_SCENARIOS"|"RESOLVE_POLICY_AMBIGUITIES"|"ITERATIVELY_REFINE_POLICY",
 #'   clientRequestToken = "string",
 #'   sourceContent = list(
 #'     policyDefinition = list(
@@ -8737,6 +8754,17 @@ bedrock_register_marketplace_model_endpoint <- function(endpointIdentifier, mode
 #'             documentDescription = "string"
 #'           )
 #'         )
+#'       ),
+#'       iterativeRefinementContent = list(
+#'         documents = list(
+#'           list(
+#'             document = raw,
+#'             documentContentType = "pdf"|"txt",
+#'             documentName = "string",
+#'             documentDescription = "string"
+#'           )
+#'         ),
+#'         feedback = "string"
 #'       )
 #'     )
 #'   )
@@ -8825,15 +8853,15 @@ bedrock_start_automated_reasoning_policy_test_workflow <- function(policyArn, bu
 }
 .bedrock$operations$start_automated_reasoning_policy_test_workflow <- bedrock_start_automated_reasoning_policy_test_workflow
 
-#' Stops an in-progress advanced prompt optimization job
+#' Stops an advanced prompt optimization job that is in progress
 #'
 #' @description
-#' Stops an in-progress advanced prompt optimization job.
+#' Stops an advanced prompt optimization job that is in progress.
 #'
 #' @usage
 #' bedrock_stop_advanced_prompt_optimization_job(jobIdentifier)
 #'
-#' @param jobIdentifier &#91;required&#93; ARN or ID of the advanced prompt optimization job to stop.
+#' @param jobIdentifier &#91;required&#93; The ARN or ID of the advanced prompt optimization job to stop.
 #'
 #' @return
 #' An empty list.
@@ -8916,7 +8944,7 @@ bedrock_stop_evaluation_job <- function(jobIdentifier) {
 #' Stops an active model customization job
 #'
 #' @description
-#' Stops an active model customization job. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Stops an active model customization job. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_stop_model_customization_job(jobIdentifier)
@@ -9004,7 +9032,7 @@ bedrock_stop_model_invocation_job <- function(jobIdentifier) {
 #' Associate tags with a resource
 #'
 #' @description
-#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_tag_resource(resourceARN, tags)
@@ -9055,7 +9083,7 @@ bedrock_tag_resource <- function(resourceARN, tags) {
 #' Remove one or more tags from a resource
 #'
 #' @description
-#' Remove one or more tags from a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Remove one or more tags from a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_untag_resource(resourceARN, tagKeys)
@@ -9754,7 +9782,7 @@ bedrock_update_marketplace_model_endpoint <- function(endpointArn, endpointConfi
 #' Updates the name or associated model for a Provisioned Throughput
 #'
 #' @description
-#' Updates the name or associated model for a Provisioned Throughput. For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Updates the name or associated model for a Provisioned Throughput. For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?sc_campaign=genaiwave&sc_channel=el&sc_content=working-with-your-live-data-using-langchain&sc_country=mult&sc_geo=mult&sc_outcome=acq).
 #'
 #' @usage
 #' bedrock_update_provisioned_model_throughput(provisionedModelId,

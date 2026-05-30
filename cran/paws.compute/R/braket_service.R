@@ -11,6 +11,10 @@ NULL
 #' 
 #' **In this guide:**
 #' 
+#' -
+#' 
+#' -
+#' 
 #' -   CommonParameters
 #' 
 #' -   CommonErrors

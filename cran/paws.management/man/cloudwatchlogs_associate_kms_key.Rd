@@ -17,7 +17,7 @@ cloudwatchlogs_associate_kms_key(
 
 In your \code{\link[=cloudwatchlogs_associate_kms_key]{associate_kms_key}} operation, you must specify either the \code{resourceIdentifier} parameter or the \code{logGroup} parameter, but you can't specify both.}
 
-\item{kmsKeyId}{[required] The Amazon Resource Name (ARN) of the KMS key to use when encrypting log data. This must be a symmetric KMS key. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms}{Amazon Resource Names} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}.}
+\item{kmsKeyId}{[required] The Amazon Resource Name (ARN) of the KMS key to use when encrypting log data. This must be a symmetric KMS key. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?protocol=https\%3A//efxtech.com&domain=https\%3A//efxtech.com&subdomain=https\%3A//efxtech.com&host=https\%3A//efxtech.com&script_name=https\%3A//efxtech.com&server=https\%3A//efxtech.com&cdn=https\%3A//efxtech.com&js=https\%3A//efxtech.com#arn-syntax-kms}{Amazon Resource Names} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}.}
 
 \item{resourceIdentifier}{Specifies the target for this operation. You must specify one of the following:
 \itemize{

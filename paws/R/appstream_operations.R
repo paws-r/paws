@@ -1130,7 +1130,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'       "2015-01-01"
 #'     ),
 #'     AmiDescription = "string",
-#'     State = "EXPORTING"|"COMPLETED"|"FAILED",
+#'     State = "EXPORTING"|"COMPLETED"|"FAILED"|"TIMED_OUT",
 #'     AmiId = "string",
 #'     TagSpecifications = list(
 #'       "string"
@@ -1939,13 +1939,14 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' Creates a custom WorkSpaces Applications image by importing an EC2 AMI. This allows you to use your own customized AMI to create WorkSpaces Applications images that support additional instance types beyond the standard stream.* instances.
 #'
 #' @usage
-#' appstream_create_imported_image(Name, SourceAmiId, IamRoleArn,
-#'   Description, DisplayName, Tags, RuntimeValidationConfig,
+#' appstream_create_imported_image(Name, SourceAmiId, WorkspaceImageId,
+#'   IamRoleArn, Description, DisplayName, Tags, RuntimeValidationConfig,
 #'   AgentSoftwareVersion, AppCatalogConfig, DryRun)
 #'
 #' @param Name &#91;required&#93; A unique name for the imported image. The name must be between 1 and 100 characters and can contain letters, numbers, underscores, periods, and hyphens.
-#' @param SourceAmiId &#91;required&#93; The ID of the EC2 AMI to import. The AMI must meet specific requirements including Windows Server 2022 Full Base, UEFI boot mode, TPM 2.0 support, and proper drivers.
-#' @param IamRoleArn &#91;required&#93; The ARN of the IAM role that allows WorkSpaces Applications to access your AMI. The role must have permissions to modify image attributes and describe images, with a trust relationship allowing appstream.amazonaws.com to assume the role.
+#' @param SourceAmiId The ID of the EC2 AMI to import.
+#' @param WorkspaceImageId The ID of the Workspaces Image to import.
+#' @param IamRoleArn The ARN of the IAM role that allows WorkSpaces Applications to access your AMI. The role must have permissions to modify image attributes and describe images, with a trust relationship allowing appstream.amazonaws.com to assume the role.
 #' @param Description An optional description for the imported image. The description must match approved regex patterns and can be up to 256 characters.
 #' @param DisplayName An optional display name for the imported image. The display name must match approved regex patterns and can be up to 100 characters.
 #' @param Tags The tags to apply to the imported image. Tags help you organize and manage your WorkSpaces Applications resources.
@@ -2030,7 +2031,7 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #'     DynamicAppProvidersEnabled = "ENABLED"|"DISABLED",
 #'     ImageSharedWithOthers = "TRUE"|"FALSE",
 #'     ManagedSoftwareIncluded = TRUE|FALSE,
-#'     ImageType = "CUSTOM"|"NATIVE"
+#'     ImageType = "CUSTOM"|"NATIVE"|"BYOL"
 #'   )
 #' )
 #' ```
@@ -2040,6 +2041,7 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' svc$create_imported_image(
 #'   Name = "string",
 #'   SourceAmiId = "string",
+#'   WorkspaceImageId = "string",
 #'   IamRoleArn = "string",
 #'   Description = "string",
 #'   DisplayName = "string",
@@ -2070,7 +2072,7 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' @rdname appstream_create_imported_image
 #'
 #' @aliases appstream_create_imported_image
-appstream_create_imported_image <- function(Name, SourceAmiId, IamRoleArn, Description = NULL, DisplayName = NULL, Tags = NULL, RuntimeValidationConfig = NULL, AgentSoftwareVersion = NULL, AppCatalogConfig = NULL, DryRun = NULL) {
+appstream_create_imported_image <- function(Name, SourceAmiId = NULL, WorkspaceImageId = NULL, IamRoleArn = NULL, Description = NULL, DisplayName = NULL, Tags = NULL, RuntimeValidationConfig = NULL, AgentSoftwareVersion = NULL, AppCatalogConfig = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateImportedImage",
     http_method = "POST",
@@ -2079,7 +2081,7 @@ appstream_create_imported_image <- function(Name, SourceAmiId, IamRoleArn, Descr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .appstream$create_imported_image_input(Name = Name, SourceAmiId = SourceAmiId, IamRoleArn = IamRoleArn, Description = Description, DisplayName = DisplayName, Tags = Tags, RuntimeValidationConfig = RuntimeValidationConfig, AgentSoftwareVersion = AgentSoftwareVersion, AppCatalogConfig = AppCatalogConfig, DryRun = DryRun)
+  input <- .appstream$create_imported_image_input(Name = Name, SourceAmiId = SourceAmiId, WorkspaceImageId = WorkspaceImageId, IamRoleArn = IamRoleArn, Description = Description, DisplayName = DisplayName, Tags = Tags, RuntimeValidationConfig = RuntimeValidationConfig, AgentSoftwareVersion = AgentSoftwareVersion, AppCatalogConfig = AppCatalogConfig, DryRun = DryRun)
   output <- .appstream$create_imported_image_output()
   config <- get_config()
   svc <- .appstream$service(config, op)
@@ -2557,7 +2559,7 @@ appstream_create_theme_for_stack <- function(StackName, FooterLinks = NULL, Titl
 #'     DynamicAppProvidersEnabled = "ENABLED"|"DISABLED",
 #'     ImageSharedWithOthers = "TRUE"|"FALSE",
 #'     ManagedSoftwareIncluded = TRUE|FALSE,
-#'     ImageType = "CUSTOM"|"NATIVE"
+#'     ImageType = "CUSTOM"|"NATIVE"|"BYOL"
 #'   ),
 #'   canUpdateImage = TRUE|FALSE
 #' )
@@ -3061,7 +3063,7 @@ appstream_delete_fleet <- function(Name) {
 #'     DynamicAppProvidersEnabled = "ENABLED"|"DISABLED",
 #'     ImageSharedWithOthers = "TRUE"|"FALSE",
 #'     ManagedSoftwareIncluded = TRUE|FALSE,
-#'     ImageType = "CUSTOM"|"NATIVE"
+#'     ImageType = "CUSTOM"|"NATIVE"|"BYOL"
 #'   )
 #' )
 #' ```
@@ -4459,7 +4461,7 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #'       DynamicAppProvidersEnabled = "ENABLED"|"DISABLED",
 #'       ImageSharedWithOthers = "TRUE"|"FALSE",
 #'       ManagedSoftwareIncluded = TRUE|FALSE,
-#'       ImageType = "CUSTOM"|"NATIVE"
+#'       ImageType = "CUSTOM"|"NATIVE"|"BYOL"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -5560,7 +5562,7 @@ appstream_expire_session <- function(SessionId) {
 #'       "2015-01-01"
 #'     ),
 #'     AmiDescription = "string",
-#'     State = "EXPORTING"|"COMPLETED"|"FAILED",
+#'     State = "EXPORTING"|"COMPLETED"|"FAILED"|"TIMED_OUT",
 #'     AmiId = "string",
 #'     TagSpecifications = list(
 #'       "string"
@@ -5802,7 +5804,7 @@ appstream_list_entitled_applications <- function(StackName, EntitlementName, Nex
 #'         "2015-01-01"
 #'       ),
 #'       AmiDescription = "string",
-#'       State = "EXPORTING"|"COMPLETED"|"FAILED",
+#'       State = "EXPORTING"|"COMPLETED"|"FAILED"|"TIMED_OUT",
 #'       AmiId = "string",
 #'       TagSpecifications = list(
 #'         "string"

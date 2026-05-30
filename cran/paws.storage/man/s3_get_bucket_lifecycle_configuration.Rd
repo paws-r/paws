@@ -14,7 +14,7 @@ s3_get_bucket_lifecycle_configuration(Bucket, ExpectedBucketOwner = NULL)
 This parameter applies to general purpose buckets only. It is not supported for directory bucket lifecycle configurations.}
 }
 \description{
-Returns the lifecycle configuration information set on the bucket. For information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Object Lifecycle Management}.
+Returns the lifecycle configuration information set on the bucket. For information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html?refid=awsmp_sol_lp_hlth_lp}{Object Lifecycle Management}.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle_configuration/} for full documentation.
 }
