@@ -125,6 +125,11 @@ sign_sdk_request_with_curr_time <- function(request, curr_time_fn = now, opts = 
     name <- request$config$service_name
   }
 
+  # Auto-detect S3 on Outposts from endpoint URL
+  if (name == "s3" && grepl("s3-outposts", request$config$endpoint %||% "")) {
+    name <- "s3-outposts"
+  }
+
   v4 <- Signer(
     credentials = request$config$credentials,
     disable_header_hoisting = request$not_hoist,
