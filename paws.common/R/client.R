@@ -30,7 +30,8 @@ Config <- struct(
   disable_rest_protocol_uri_cleaning = FALSE,
   sts_regional_endpoint = "",
   signature_version = "",
-  partition_name = ""
+  partition_name = "",
+  signing_name = ""
 )
 
 # A Session object stores configuration and request handlers for a service.
