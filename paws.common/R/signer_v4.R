@@ -125,11 +125,6 @@ sign_sdk_request_with_curr_time <- function(request, curr_time_fn = now, opts = 
     name <- request$config$service_name
   }
 
-  # Auto-detect S3 on Outposts from endpoint URL
-  if (name == "s3" && grepl("s3-outposts", request$config$endpoint %||% "")) {
-    name <- "s3-outposts"
-  }
-
   v4 <- Signer(
     credentials = request$config$credentials,
     disable_header_hoisting = request$not_hoist,
@@ -137,7 +132,7 @@ sign_sdk_request_with_curr_time <- function(request, curr_time_fn = now, opts = 
     disable_request_body_overwrite = TRUE
   )
 
-  if (name %in% c("s3", "s3-outposts")) {
+  if (name == "s3") {
     v4$disable_uri_path_escaping <- TRUE
   }
 
@@ -374,8 +369,8 @@ build_body_digest <- function(ctx) {
   hash <- get_element(ctx$request$header, "X-Amz-Content-Sha256")
   if (hash == "") {
     include_sha256_header <- (ctx$unsigned_payload ||
-      ctx$service_name %in% c("s3", "s3-object-lambda", "glacier", "s3-outposts"))
-    s3_presign <- (ctx$is_presigned && ctx$service_name %in% c("s3", "s3-object-lambda", "s3-outposts"))
+      ctx$service_name %in% c("s3", "s3-object-lambda", "glacier"))
+    s3_presign <- (ctx$is_presigned && ctx$service_name %in% c("s3", "s3-object-lambda"))
     if (ctx$unsigned_payload || s3_presign) {
       hash <- "UNSIGNED-PAYLOAD"
       include_sha256_header <- !s3_presign
