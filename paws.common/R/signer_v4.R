@@ -132,7 +132,7 @@ sign_sdk_request_with_curr_time <- function(request, curr_time_fn = now, opts = 
     disable_request_body_overwrite = TRUE
   )
 
-  if (name == "s3") {
+  if (name %in% c("s3", "s3-outposts")) {
     v4$disable_uri_path_escaping <- TRUE
   }
 
@@ -369,8 +369,8 @@ build_body_digest <- function(ctx) {
   hash <- get_element(ctx$request$header, "X-Amz-Content-Sha256")
   if (hash == "") {
     include_sha256_header <- (ctx$unsigned_payload ||
-      ctx$service_name %in% c("s3", "s3-object-lambda", "glacier"))
-    s3_presign <- (ctx$is_presigned && ctx$service_name %in% c("s3", "s3-object-lambda"))
+      ctx$service_name %in% c("s3", "s3-object-lambda", "glacier", "s3-outposts"))
+    s3_presign <- (ctx$is_presigned && ctx$service_name %in% c("s3", "s3-object-lambda", "s3-outposts"))
     if (ctx$unsigned_payload || s3_presign) {
       hash <- "UNSIGNED-PAYLOAD"
       include_sha256_header <- !s3_presign
