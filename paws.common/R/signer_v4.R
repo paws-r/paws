@@ -392,8 +392,8 @@ build_canonical_headers <- function(ctx, header, ignored_headers) {
 
   method <- toupper(ctx$request$method %||% "GET")
 
-  # Do not sign content-length for empty-body GET/HEAD
-  if (method %in% c("GET", "HEAD")) {
+  # Do not sign content-length for empty-body GET/HEAD/DELETE
+  if (method %in% c("GET", "HEAD", "DELETE")) {
     cl <- header[["Content-Length"]] %||% header[["content-length"]]
     if (!is.null(cl) && as.numeric(cl) == 0) {
       header[["Content-Length"]] <- NULL
