@@ -22,6 +22,7 @@ Valid Values:
 \item \code{custom-sqlserver-se}
 \item \code{custom-sqlserver-web}
 \item \code{db2-ae}
+\item \code{db2-ce}
 \item \code{db2-se}
 \item \code{mariadb}
 \item \code{mysql}

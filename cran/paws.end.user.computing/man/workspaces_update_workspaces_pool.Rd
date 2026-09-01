@@ -2,7 +2,8 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_update_workspaces_pool}
 \alias{workspaces_update_workspaces_pool}
-\title{Updates the specified pool}
+\title{End of support notice: On December 31, 2027, Amazon Web Services will
+end support for Amazon WorkSpaces Pools}
 \usage{
 workspaces_update_workspaces_pool(
   PoolId,
@@ -33,7 +34,7 @@ workspaces_update_workspaces_pool(
 \item{RunningMode}{The desired running mode for the pool. The running mode can only be updated when the pool is in a stopped state.}
 }
 \description{
-Updates the specified pool.
+End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html}{Amazon WorkSpaces Pools end of support}.
 
 See \url{https://www.paws-r-sdk.com/docs/workspaces_update_workspaces_pool/} for full documentation.
 }

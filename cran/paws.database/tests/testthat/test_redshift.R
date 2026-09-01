@@ -92,6 +92,10 @@ test_that("describe_orderable_cluster_options", {
   expect_error(svc$describe_orderable_cluster_options(), NA)
 })
 
+test_that("describe_qev_2_idc_applications", {
+  expect_error(svc$describe_qev_2_idc_applications(), NA)
+})
+
 test_that("describe_redshift_idc_applications", {
   expect_error(svc$describe_redshift_idc_applications(), NA)
 })

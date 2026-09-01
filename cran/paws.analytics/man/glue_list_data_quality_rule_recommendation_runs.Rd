@@ -7,7 +7,8 @@
 glue_list_data_quality_rule_recommendation_runs(
   Filter = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ glue_list_data_quality_rule_recommendation_runs(
 \item{NextToken}{A paginated token to offset the results.}
 
 \item{MaxResults}{The maximum number of results to return.}
+
+\item{Tags}{A list of key-value pair tags to filter recommendation runs.}
 }
 \description{
 Lists the recommendation runs meeting the filter criteria.

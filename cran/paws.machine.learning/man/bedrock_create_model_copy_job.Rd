@@ -19,12 +19,12 @@ bedrock_create_model_copy_job(
 
 \item{modelKmsKeyId}{The ARN of the KMS key that you use to encrypt the model copy.}
 
-\item{targetModelTags}{Tags to associate with the target model. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html}{Tag resources} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.}
+\item{targetModelTags}{Tags to associate with the target model. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html}{Tag resources} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=awsomedayonlinehk}{Amazon Bedrock User Guide}.}
 
 \item{clientRequestToken}{A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 }
 \description{
-Copies a model to another region so that it can be used there. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html}{Copy models to be used in other regions} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
+Copies a model to another region so that it can be used there. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html}{Copy models to be used in other regions} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=awsomedayonlinehk}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_create_model_copy_job/} for full documentation.
 }

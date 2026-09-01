@@ -57,7 +57,7 @@ imagebuilder_create_image_pipeline(
 
 \item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions.}
 
-\item{loggingConfiguration}{Define logging configuration for the image build process.}
+\item{loggingConfiguration}{Specifies the logging configuration for the image pipeline. Use this to define custom CloudWatch Logs log groups for your pipeline execution logs and image build logs. The service manages log groups with names starting with \verb{/aws/imagebuilder/} using the service-linked role. For custom log group names outside of this prefix, you must also provide an \code{executionRole}.}
 }
 \description{
 Creates a new image pipeline. Image pipelines enable you to automate the creation and distribution of images.

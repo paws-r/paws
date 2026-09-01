@@ -39,7 +39,9 @@ datazone_create_environment(
 
 \item{environmentAccountRegion}{The region of the account in which the environment is being created.}
 
-\item{environmentBlueprintIdentifier}{The ID of the blueprint with which the environment is being created.}
+\item{environmentBlueprintIdentifier}{The ID of the blueprint with which the environment is being created.
+
+This parameter is only valid for V1 domains. If provided for a V2 domain, the service returns a ValidationException.}
 
 \item{deploymentOrder}{The deployment order of the environment.}
 

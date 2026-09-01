@@ -19,7 +19,9 @@ If you're using an AWS SDK to call Amazon Textract, you might not need to base64
 
 \item{FeatureTypes}{[required] A list of the types of analysis to perform. Add TABLES to the list to return information about the tables that are detected in the input document. Add FORMS to return detected form data. Add SIGNATURES to return the locations of detected signatures. Add LAYOUT to the list to return information about the layout of the document. All lines and words detected in the document are included in the response (including text that isn't related to the value of \code{FeatureTypes}).}
 
-\item{HumanLoopConfig}{Sets the configuration for the human in the loop workflow for analyzing documents.}
+\item{HumanLoopConfig}{Sets the configuration for the human in the loop workflow for analyzing documents.
+
+Amazon Textract uses Amazon Augmented AI (A2I) to run the human review workflows that you specify in \code{HumanLoopConfig}. A2I entered maintenance mode in July 2026 and no longer accepts new customers. If your account is not an existing A2I customer, requests fail with an \code{InvalidParameterException}. For more information, see \href{https://aws.amazon.com/about-aws/whats-new/2026/06/aws-service-availability/}{AWS service availability}. If you're an existing A2I customer but receive this error, contact AWS Support and request assistance from the A2I team.}
 
 \item{QueriesConfig}{Contains Queries and the alias for those Queries, as determined by the input.}
 

@@ -268,7 +268,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #'   ChecksumXXHASH3 = "string",
 #'   ChecksumXXHASH128 = "string",
 #'   ChecksumType = "COMPOSITE"|"FULL_OBJECT",
-#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
 #'   VersionId = "string",
 #'   SSEKMSKeyId = "string",
 #'   BucketKeyEnabled = TRUE|FALSE,
@@ -393,7 +393,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' 
 #' ### Authentication and authorization
 #' 
-#' All [`copy_object`][s3_copy_object] requests must be authenticated and signed by using IAM credentials (access key ID and secret access key for the IAM identities). All headers with the `x-amz-` prefix, including `x-amz-copy-source`, must be signed. For more information, see [REST Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTAuthentication.html).
+#' All [`copy_object`][s3_copy_object] requests must be authenticated and signed by using IAM credentials (access key ID and secret access key for the IAM identities). All headers with the `x-amz-` prefix, including `x-amz-copy-source`, must be signed. For more information, see [REST Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/).
 #' 
 #' **Directory buckets** - You must use the IAM credentials to authenticate and authorize your access to the [`copy_object`][s3_copy_object] API operation, instead of using the temporary security credentials through the [`create_session`][s3_create_session] API operation.
 #' 
@@ -458,13 +458,14 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'   CopySourceIfNoneMatch, CopySourceIfUnmodifiedSince, Expires,
 #'   GrantFullControl, GrantRead, GrantReadACP, GrantWriteACP, IfMatch,
 #'   IfNoneMatch, Key, Metadata, MetadataDirective, TaggingDirective,
-#'   ServerSideEncryption, StorageClass, WebsiteRedirectLocation,
-#'   SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5, SSEKMSKeyId,
-#'   SSEKMSEncryptionContext, BucketKeyEnabled,
-#'   CopySourceSSECustomerAlgorithm, CopySourceSSECustomerKey,
-#'   CopySourceSSECustomerKeyMD5, RequestPayer, Tagging, ObjectLockMode,
-#'   ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus,
-#'   ExpectedBucketOwner, ExpectedSourceBucketOwner)
+#'   AnnotationDirective, ServerSideEncryption, StorageClass,
+#'   WebsiteRedirectLocation, SSECustomerAlgorithm, SSECustomerKey,
+#'   SSECustomerKeyMD5, SSEKMSKeyId, SSEKMSEncryptionContext,
+#'   BucketKeyEnabled, CopySourceSSECustomerAlgorithm,
+#'   CopySourceSSECustomerKey, CopySourceSSECustomerKeyMD5, RequestPayer,
+#'   Tagging, ObjectLockMode, ObjectLockRetainUntilDate,
+#'   ObjectLockLegalHoldStatus, ExpectedBucketOwner,
+#'   ExpectedSourceBucketOwner)
 #'
 #' @param ACL The canned access control list (ACL) to apply to the object.
 #' 
@@ -608,6 +609,17 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' -   When you attempt to `REPLACE` the tag-set of a general purpose bucket source object that has non-empty tags and set the `x-amz-tagging` value of the directory bucket destination object to empty.
 #' 
 #' -   When you attempt to `REPLACE` the tag-set of a directory bucket source object and don't set the `x-amz-tagging` value of the directory bucket destination object. This is because the default value of `x-amz-tagging` is the empty value.
+#' @param AnnotationDirective Specifies whether you want to copy annotations from the source object or exclude them. If this header isn't specified, `COPY` is the default behavior.
+#' 
+#' Valid Values: `COPY | EXCLUDE`
+#' 
+#' You can specify this directive as either an HTTP header (`x-amz-object-annotation-directive`) or as a query string parameter. Use the query string form when generating presigned URLs that need to control annotation copy behavior.
+#' 
+#' When set to `COPY`, you must have `s3:GetObjectAnnotation` permission on the source object and `s3:PutObjectAnnotation` permission on the destination. Each annotation copied is billed as a separate PUT request. If annotations on the source are modified during the copy, Amazon S3 returns a retryable error.
+#' 
+#' For directory buckets, annotations are not supported. Use `EXCLUDE` to copy objects to directory buckets without errors. If you specify `COPY` for a directory bucket, the request returns HTTP 501 (Not Implemented).
+#' 
+#' When you copy objects using multipart upload (for example, when the Amazon Web Services CLI or Amazon Web Services SDKs use Transfer Manager for objects larger than approximately 8 MB), annotations are not copied by default. To include annotations, specify `--copy-props default` in the Amazon Web Services CLI or the equivalent SDK configuration. With this opt-in, the SDK reads source annotations, completes the multipart upload, and then writes each annotation to the destination. Between the upload completion and the last annotation write, the destination object exists without all its annotations.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in Amazon S3. Unrecognized or unsupported values won’t write a destination object and will receive a `400 Bad Request` response.
 #' 
 #' Amazon S3 automatically encrypts all new objects that are copied to an S3 bucket. When copying an object, if you don't specify encryption information in your copy request, the encryption setting of the target object is set to the default encryption configuration of the destination bucket. By default, all buckets have a base level of encryption configuration that uses server-side encryption with Amazon S3 managed keys (SSE-S3). If the destination bucket has a different default encryption configuration, Amazon S3 uses the corresponding encryption key to encrypt the target object copy.
@@ -746,7 +758,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'   Expiration = "string",
 #'   CopySourceVersionId = "string",
 #'   VersionId = "string",
-#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
@@ -776,7 +788,9 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'   CopySourceIfUnmodifiedSince = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   Expires = "string",
+#'   Expires = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   GrantFullControl = "string",
 #'   GrantRead = "string",
 #'   GrantReadACP = "string",
@@ -789,8 +803,9 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'   ),
 #'   MetadataDirective = "COPY"|"REPLACE",
 #'   TaggingDirective = "COPY"|"REPLACE",
-#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
+#'   AnnotationDirective = "COPY"|"EXCLUDE",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"|"AWS_BACKUP_WARM"|"AWS_BACKUP_LOW_COST_WARM",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKey = "string",
@@ -828,7 +843,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @rdname s3_copy_object
 #'
 #' @aliases s3_copy_object
-s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgorithm = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentType = NULL, CopySource, CopySourceIfMatch = NULL, CopySourceIfModifiedSince = NULL, CopySourceIfNoneMatch = NULL, CopySourceIfUnmodifiedSince = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, IfMatch = NULL, IfNoneMatch = NULL, Key, Metadata = NULL, MetadataDirective = NULL, TaggingDirective = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, CopySourceSSECustomerAlgorithm = NULL, CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL, ExpectedSourceBucketOwner = NULL) {
+s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgorithm = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentType = NULL, CopySource, CopySourceIfMatch = NULL, CopySourceIfModifiedSince = NULL, CopySourceIfNoneMatch = NULL, CopySourceIfUnmodifiedSince = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, IfMatch = NULL, IfNoneMatch = NULL, Key, Metadata = NULL, MetadataDirective = NULL, TaggingDirective = NULL, AnnotationDirective = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, CopySourceSSECustomerAlgorithm = NULL, CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL, ExpectedSourceBucketOwner = NULL) {
   op <- new_operation(
     name = "CopyObject",
     http_method = "PUT",
@@ -837,7 +852,7 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$copy_object_input(ACL = ACL, Bucket = Bucket, CacheControl = CacheControl, ChecksumAlgorithm = ChecksumAlgorithm, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentType = ContentType, CopySource = CopySource, CopySourceIfMatch = CopySourceIfMatch, CopySourceIfModifiedSince = CopySourceIfModifiedSince, CopySourceIfNoneMatch = CopySourceIfNoneMatch, CopySourceIfUnmodifiedSince = CopySourceIfUnmodifiedSince, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, IfMatch = IfMatch, IfNoneMatch = IfNoneMatch, Key = Key, Metadata = Metadata, MetadataDirective = MetadataDirective, TaggingDirective = TaggingDirective, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, CopySourceSSECustomerAlgorithm = CopySourceSSECustomerAlgorithm, CopySourceSSECustomerKey = CopySourceSSECustomerKey, CopySourceSSECustomerKeyMD5 = CopySourceSSECustomerKeyMD5, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner, ExpectedSourceBucketOwner = ExpectedSourceBucketOwner)
+  input <- .s3$copy_object_input(ACL = ACL, Bucket = Bucket, CacheControl = CacheControl, ChecksumAlgorithm = ChecksumAlgorithm, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentType = ContentType, CopySource = CopySource, CopySourceIfMatch = CopySourceIfMatch, CopySourceIfModifiedSince = CopySourceIfModifiedSince, CopySourceIfNoneMatch = CopySourceIfNoneMatch, CopySourceIfUnmodifiedSince = CopySourceIfUnmodifiedSince, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, IfMatch = IfMatch, IfNoneMatch = IfNoneMatch, Key = Key, Metadata = Metadata, MetadataDirective = MetadataDirective, TaggingDirective = TaggingDirective, AnnotationDirective = AnnotationDirective, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, CopySourceSSECustomerAlgorithm = CopySourceSSECustomerAlgorithm, CopySourceSSECustomerKey = CopySourceSSECustomerKey, CopySourceSSECustomerKeyMD5 = CopySourceSSECustomerKeyMD5, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner, ExpectedSourceBucketOwner = ExpectedSourceBucketOwner)
   output <- .s3$copy_object_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -1060,9 +1075,13 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' 
 #' -   `s3tables:PutTablePolicy`
 #' 
+#' -   `s3tables:PutTableBucketPolicy`
+#' 
 #' -   `s3tables:PutTableEncryption`
 #' 
 #' -   `kms:DescribeKey`
+#' 
+#' -   `iam:PassRole` - required if you include an `AnnotationTableConfiguration` with an IAM role.
 #' 
 #' The following operations are related to [`create_bucket_metadata_configuration`][s3_create_bucket_metadata_configuration]:
 #' 
@@ -1073,6 +1092,10 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' -   [`update_bucket_metadata_inventory_table_configuration`][s3_update_bucket_metadata_inventory_table_configuration]
 #' 
 #' -   [`update_bucket_metadata_journal_table_configuration`][s3_update_bucket_metadata_journal_table_configuration]
+#' 
+#' -   [`update_bucket_metadata_annotation_table_configuration`][s3_update_bucket_metadata_annotation_table_configuration]
+#' 
+#' If you include an `AnnotationTableConfiguration` with an IAM role, the role must have a trust policy that allows the Amazon S3 metadata service to assume it, and a permissions policy that grants the actions needed to read annotations from your bucket. The following examples show a trust policy and a permissions policy that you can adapt for your bucket and account.
 #' 
 #' You must URL encode any signed header values that contain spaces. For example, if your header value is `my file.txt`, containing two spaces after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
@@ -1112,6 +1135,14 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #'         SseAlgorithm = "aws:kms"|"AES256",
 #'         KmsKeyArn = "string"
 #'       )
+#'     ),
+#'     AnnotationTableConfiguration = list(
+#'       ConfigurationState = "ENABLED"|"DISABLED",
+#'       EncryptionConfiguration = list(
+#'         SseAlgorithm = "aws:kms"|"AES256",
+#'         KmsKeyArn = "string"
+#'       ),
+#'       Role = "string"
 #'     )
 #'   ),
 #'   ExpectedBucketOwner = "string"
@@ -1251,7 +1282,7 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #' 
 #' ### Request signing
 #' 
-#' For request signing, multipart upload is just a series of regular requests. You initiate a multipart upload, send one or more requests to upload parts, and then complete the multipart upload process. You sign each request individually. There is nothing special about signing multipart upload requests. For more information about signing, see [Authenticating Requests (Amazon Web Services Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) in the *Amazon S3 User Guide*.
+#' For request signing, multipart upload is just a series of regular requests. You initiate a multipart upload, send one or more requests to upload parts, and then complete the multipart upload process. You sign each request individually. There is nothing special about signing multipart upload requests. For more information about signing, see [Authenticating Requests (Amazon Web Services Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/) in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
 #' 
@@ -1580,7 +1611,7 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #'   Bucket = "string",
 #'   Key = "string",
 #'   UploadId = "string",
-#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
@@ -1602,7 +1633,9 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #'   ContentEncoding = "string",
 #'   ContentLanguage = "string",
 #'   ContentType = "string",
-#'   Expires = "string",
+#'   Expires = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   GrantFullControl = "string",
 #'   GrantRead = "string",
 #'   GrantReadACP = "string",
@@ -1611,8 +1644,8 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #'   Metadata = list(
 #'     "string"
 #'   ),
-#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"|"AWS_BACKUP_WARM"|"AWS_BACKUP_LOW_COST_WARM",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKey = "string",
@@ -1736,7 +1769,7 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
 #'   SSEKMSKeyId = "string",
 #'   SSEKMSEncryptionContext = "string",
 #'   BucketKeyEnabled = TRUE|FALSE,
@@ -1756,7 +1789,7 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' svc$create_session(
 #'   SessionMode = "ReadOnly"|"ReadWrite",
 #'   Bucket = "string",
-#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
 #'   SSEKMSKeyId = "string",
 #'   SSEKMSEncryptionContext = "string",
 #'   BucketKeyEnabled = TRUE|FALSE
@@ -1947,7 +1980,7 @@ s3_delete_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketO
 #' 
 #' -   [`put_bucket_cors`][s3_put_bucket_cors]
 #' 
-#' -   [RESTOPTIONSobject](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html)
+#' -   [RESTOPTIONSobject](https://docs.aws.amazon.com/AmazonS3/latest/API/)
 #' 
 #' You must URL encode any signed header values that contain spaces. For example, if your header value is `my file.txt`, containing two spaces after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
@@ -2885,7 +2918,7 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' To remove a specific version, you must use the `versionId` query parameter. Using this query parameter permanently deletes the version. If the object deleted is a delete marker, Amazon S3 sets the response header `x-amz-delete-marker` to true.
 #' 
-#' If the object you want to delete is in a bucket where the bucket versioning configuration is MFA Delete enabled, you must include the `x-amz-mfa` request header in the DELETE `versionId` request. Requests that include `x-amz-mfa` must use HTTPS. For more information about MFA Delete, see [Using MFA Delete](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMFADelete.html) in the *Amazon S3 User Guide*. To see sample requests that use versioning, see [Sample Request](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html#ExampleVersionObjectDelete).
+#' If the object you want to delete is in a bucket where the bucket versioning configuration is MFA Delete enabled, you must include the `x-amz-mfa` request header in the DELETE `versionId` request. Requests that include `x-amz-mfa` must use HTTPS. For more information about MFA Delete, see [Using MFA Delete](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMFADelete.html) in the *Amazon S3 User Guide*. To see sample requests that use versioning, see [Sample Request](https://docs.aws.amazon.com/AmazonS3/latest/API/#ExampleVersionObjectDelete).
 #' 
 #' **Directory buckets** - MFA delete is not supported by directory buckets.
 #' 
@@ -3025,6 +3058,87 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
   return(response)
 }
 .s3$operations$delete_object <- s3_delete_object
+
+#' Deletes a specific annotation from an Amazon S3 object
+#'
+#' @description
+#' Deletes a specific annotation from an Amazon S3 object. Use the `x-amz-object-if-match` header to perform a conditional delete that only succeeds if the object's ETag matches the provided value, preventing race conditions during concurrent updates.
+#' 
+#' Deleting an annotation is permanent. Annotations are not independently versioned, so there is no delete marker or way to recover a deleted annotation.
+#' 
+#' To use this operation, you must have the `s3:DeleteObjectAnnotation` permission. If the object is protected by Object Lock in governance mode, you must also include the `x-amz-bypass-governance-retention` header.
+#' 
+#' Annotations are not supported by the following features: S3 Inventory Reports, API Gateway, S3 Storage Lens, Amazon S3 File Gateway, Amazon FSx, S3 on Outposts, and S3 Express One Zone (directory buckets).
+#' 
+#' The following operations are related to [`delete_object_annotation`][s3_delete_object_annotation]:
+#' 
+#' -   [`put_object_annotation`][s3_put_object_annotation]
+#' 
+#' -   [`get_object_annotation`][s3_get_object_annotation]
+#' 
+#' -   [`list_object_annotations`][s3_list_object_annotations]
+#'
+#' @usage
+#' s3_delete_object_annotation(Bucket, Key, AnnotationName, VersionId,
+#'   RequestPayer, ExpectedBucketOwner, ObjectIfMatch)
+#'
+#' @param Bucket &#91;required&#93; The name of the bucket that contains the object.
+#' @param Key &#91;required&#93; The object key.
+#' @param AnnotationName &#91;required&#93; The name of the annotation to delete. Annotation names are UTF-8 encoded and cannot start with `aws` or `s3` (case-insensitive).
+#' 
+#' Length Constraints: Minimum length of 1. Maximum length of 512 bytes.
+#' @param VersionId The version ID of the object.
+#' @param RequestPayer Confirms that the requester knows that they will be charged for the request. Bucket owners need not specify this parameter in their requests. If either the source or destination S3 bucket has Requester Pays enabled, the requester will pay for the corresponding charges. For information about downloading objects from Requester Pays buckets, see [Downloading Objects in Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ObjectsinRequesterPaysBuckets.html) in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner.
+#' @param ObjectIfMatch If specified, the operation only succeeds if the object's ETag matches the provided value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ObjectVersionId = "string",
+#'   RequestCharged = "requester"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_object_annotation(
+#'   Bucket = "string",
+#'   Key = "string",
+#'   AnnotationName = "string",
+#'   VersionId = "string",
+#'   RequestPayer = "requester",
+#'   ExpectedBucketOwner = "string",
+#'   ObjectIfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_delete_object_annotation
+#'
+#' @aliases s3_delete_object_annotation
+s3_delete_object_annotation <- function(Bucket, Key, AnnotationName, VersionId = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, ObjectIfMatch = NULL) {
+  op <- new_operation(
+    name = "DeleteObjectAnnotation",
+    http_method = "DELETE",
+    http_path = "/{Bucket}/{Key+}?annotation",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$delete_object_annotation_input(Bucket = Bucket, Key = Key, AnnotationName = AnnotationName, VersionId = VersionId, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, ObjectIfMatch = ObjectIfMatch)
+  output <- .s3$delete_object_annotation_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$delete_object_annotation <- s3_delete_object_annotation
 
 #' This operation is not supported for directory buckets
 #'
@@ -3541,7 +3655,7 @@ s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner =
 #' 
 #' When you use this API operation with an access point, provide the alias of the access point in place of the bucket name.
 #' 
-#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
+#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#ErrorCodeList).
 #' 
 #' If your bucket uses the bucket owner enforced setting for S3 Object Ownership, requests to read ACLs are still supported and return the `bucket-owner-full-control` ACL with the owner being the account that created the bucket. For more information, see [Controlling object ownership and disabling ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html) in the *Amazon S3 User Guide*.
 #' 
@@ -3558,7 +3672,7 @@ s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner =
 #' 
 #' When you use this API operation with an access point, provide the alias of the access point in place of the bucket name.
 #' 
-#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
+#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#ErrorCodeList).
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you provide does not match the actual owner of the bucket, the request fails with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @return
@@ -3727,7 +3841,7 @@ s3_get_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' 
 #' When you use this API operation with an access point, provide the alias of the access point in place of the bucket name.
 #' 
-#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
+#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#ErrorCodeList).
 #' 
 #' For more information about CORS, see [Enabling Cross-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html).
 #' 
@@ -3746,7 +3860,7 @@ s3_get_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' 
 #' When you use this API operation with an access point, provide the alias of the access point in place of the bucket name.
 #' 
-#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
+#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#ErrorCodeList).
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you provide does not match the actual owner of the bucket, the request fails with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @return
@@ -3860,7 +3974,7 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'     Rules = list(
 #'       list(
 #'         ApplyServerSideEncryptionByDefault = list(
-#'           SSEAlgorithm = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'           SSEAlgorithm = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
 #'           KMSMasterKeyID = "string"
 #'         ),
 #'         BucketKeyEnabled = TRUE|FALSE,
@@ -4403,7 +4517,7 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = 
 #' 
 #' When you use this API operation with an access point, provide the alias of the access point in place of the bucket name.
 #' 
-#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
+#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#ErrorCodeList).
 #' 
 #' This operation is not supported for directory buckets.
 #' 
@@ -4422,7 +4536,7 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = 
 #' 
 #' When you use this API operation with an access point, provide the alias of the access point in place of the bucket name.
 #' 
-#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
+#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#ErrorCodeList).
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you provide does not match the actual owner of the bucket, the request fails with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @return
@@ -4619,6 +4733,17 @@ s3_get_bucket_logging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'         ),
 #'         TableName = "string",
 #'         TableArn = "string"
+#'       ),
+#'       AnnotationTableConfigurationResult = list(
+#'         ConfigurationState = "ENABLED"|"DISABLED",
+#'         TableStatus = "string",
+#'         Error = list(
+#'           ErrorCode = "string",
+#'           ErrorMessage = "string"
+#'         ),
+#'         TableName = "string",
+#'         TableArn = "string",
+#'         Role = "string"
 #'       )
 #'     )
 #'   )
@@ -4863,7 +4988,7 @@ s3_get_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwner 
 #' 
 #' When you use this API operation with an access point, provide the alias of the access point in place of the bucket name.
 #' 
-#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
+#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#ErrorCodeList).
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you provide does not match the actual owner of the bucket, the request fails with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @return
@@ -4873,24 +4998,24 @@ s3_get_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwner 
 #'   TopicConfiguration = list(
 #'     Id = "string",
 #'     Events = list(
-#'       "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"
+#'       "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete"
 #'     ),
-#'     Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete",
+#'     Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete",
 #'     Topic = "string"
 #'   ),
 #'   QueueConfiguration = list(
 #'     Id = "string",
-#'     Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete",
+#'     Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete",
 #'     Events = list(
-#'       "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"
+#'       "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete"
 #'     ),
 #'     Queue = "string"
 #'   ),
 #'   CloudFunctionConfiguration = list(
 #'     Id = "string",
-#'     Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete",
+#'     Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete",
 #'     Events = list(
-#'       "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"
+#'       "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete"
 #'     ),
 #'     CloudFunction = "string",
 #'     InvocationRole = "string"
@@ -4958,7 +5083,7 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' When you use this API operation with an access point, provide the alias of the access point in place of the bucket name.
 #' 
-#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
+#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#ErrorCodeList).
 #' 
 #' For more information about setting and reading the notification configuration on a bucket, see [Setting Up Notification of Bucket Events](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html). For more information about bucket policies, see [Using Bucket Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html).
 #' 
@@ -4975,7 +5100,7 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' When you use this API operation with an access point, provide the alias of the access point in place of the bucket name.
 #' 
-#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
+#' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#ErrorCodeList).
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you provide does not match the actual owner of the bucket, the request fails with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @return
@@ -4987,7 +5112,7 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'       Id = "string",
 #'       TopicArn = "string",
 #'       Events = list(
-#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"
+#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete"
 #'       ),
 #'       Filter = list(
 #'         Key = list(
@@ -5006,7 +5131,7 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'       Id = "string",
 #'       QueueArn = "string",
 #'       Events = list(
-#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"
+#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete"
 #'       ),
 #'       Filter = list(
 #'         Key = list(
@@ -5025,7 +5150,7 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'       Id = "string",
 #'       LambdaFunctionArn = "string",
 #'       Events = list(
-#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"
+#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete"
 #'       ),
 #'       Filter = list(
 #'         Key = list(
@@ -5196,7 +5321,7 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 #' 
 #' **Access points** - When you use this API operation with an access point, provide the alias of the access point in place of the bucket name.
 #' 
-#' **Object Lambda access points** - When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
+#' **Object Lambda access points** - When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#ErrorCodeList).
 #' 
 #' Object Lambda access points are not supported by directory buckets.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you provide does not match the actual owner of the bucket, the request fails with the HTTP status code `403 Forbidden` (access denied).
@@ -5335,7 +5460,7 @@ s3_get_bucket_policy_status <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' If you include the `Filter` element in a replication configuration, you must also include the `DeleteMarkerReplication` and `Priority` elements. The response also returns those elements.
 #' 
-#' For information about [`get_bucket_replication`][s3_get_bucket_replication] errors, see [List of replication-related error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ReplicationErrorCodeList)
+#' For information about [`get_bucket_replication`][s3_get_bucket_replication] errors, see [List of replication-related error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#ReplicationErrorCodeList)
 #' 
 #' The following operations are related to [`get_bucket_replication`][s3_get_bucket_replication]:
 #' 
@@ -5393,7 +5518,7 @@ s3_get_bucket_policy_status <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'         Destination = list(
 #'           Bucket = "string",
 #'           Account = "string",
-#'           StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
+#'           StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"|"AWS_BACKUP_WARM"|"AWS_BACKUP_LOW_COST_WARM",
 #'           AccessControlTranslation = list(
 #'             Owner = "Destination"
 #'           ),
@@ -5899,7 +6024,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' For more information about conditional requests, see [RFC 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' @param Key &#91;required&#93; Key of the object to get.
-#' @param Range Downloads the specified byte range of an object. For more information about the HTTP Range header, see https://www.rfc-editor.org/rfc/rfc9110.html#name-range.
+#' @param Range Downloads the specified byte range of an object. For more information about the HTTP Range header, see <https://www.rfc-editor.org/rfc/rfc9110.html#name-range>.
 #' 
 #' Amazon S3 doesn't support retrieving multiple ranges of data per `GET` request.
 #' @param ResponseCacheControl Sets the `Cache-Control` header of the response.
@@ -5998,9 +6123,11 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   ContentLanguage = "string",
 #'   ContentRange = "string",
 #'   ContentType = "string",
-#'   Expires = "string",
+#'   Expires = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   WebsiteRedirectLocation = "string",
-#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
 #'   Metadata = list(
 #'     "string"
 #'   ),
@@ -6008,7 +6135,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
 #'   BucketKeyEnabled = TRUE|FALSE,
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"|"AWS_BACKUP_WARM"|"AWS_BACKUP_LOW_COST_WARM",
 #'   RequestCharged = "requester",
 #'   ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA"|"COMPLETED",
 #'   PartsCount = 123,
@@ -6204,6 +6331,104 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 }
 .s3$operations$get_object_acl <- s3_get_object_acl
 
+#' Retrieves an annotation from an Amazon S3 object
+#'
+#' @description
+#' Retrieves an annotation from an Amazon S3 object. To use this operation, you must have the `s3:GetObjectAnnotation` permission.
+#' 
+#' If checksum mode is enabled via the `x-amz-checksum-mode` header, Amazon S3 returns the stored checksum in the response headers for client-side validation.
+#' 
+#' Annotations are not supported by the following features: S3 Inventory Reports, API Gateway, S3 Storage Lens, Amazon S3 File Gateway, Amazon FSx, S3 on Outposts, and S3 Express One Zone (directory buckets).
+#' 
+#' The following operations are related to [`get_object_annotation`][s3_get_object_annotation]:
+#' 
+#' -   [`put_object_annotation`][s3_put_object_annotation]
+#' 
+#' -   [`list_object_annotations`][s3_list_object_annotations]
+#' 
+#' -   [`delete_object_annotation`][s3_delete_object_annotation]
+#'
+#' @usage
+#' s3_get_object_annotation(Bucket, Key, AnnotationName, VersionId,
+#'   RequestPayer, ExpectedBucketOwner, ChecksumMode)
+#'
+#' @param Bucket &#91;required&#93; The name of the bucket that contains the object.
+#' @param Key &#91;required&#93; The object key.
+#' @param AnnotationName &#91;required&#93; The name of the annotation to retrieve.
+#' 
+#' Length Constraints: Minimum length of 1. Maximum length of 512 bytes.
+#' @param VersionId The version ID of the object.
+#' @param RequestPayer Confirms that the requester knows that they will be charged for the request. Bucket owners need not specify this parameter in their requests. If either the source or destination S3 bucket has Requester Pays enabled, the requester will pay for the corresponding charges. For information about downloading objects from Requester Pays buckets, see [Downloading Objects in Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ObjectsinRequesterPaysBuckets.html) in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a different account, the request fails with an HTTP 403 (Access Denied) error.
+#' @param ChecksumMode Set to `ENABLED` to validate the checksum of the annotation payload on retrieval.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AnnotationPayload = raw,
+#'   ObjectVersionId = "string",
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ContentLength = 123,
+#'   ETag = "string",
+#'   ChecksumCRC32 = "string",
+#'   ChecksumCRC32C = "string",
+#'   ChecksumCRC64NVME = "string",
+#'   ChecksumSHA1 = "string",
+#'   ChecksumSHA256 = "string",
+#'   ChecksumSHA512 = "string",
+#'   ChecksumMD5 = "string",
+#'   ChecksumXXHASH64 = "string",
+#'   ChecksumXXHASH3 = "string",
+#'   ChecksumXXHASH128 = "string",
+#'   ChecksumType = "COMPOSITE"|"FULL_OBJECT",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
+#'   RequestCharged = "requester",
+#'   ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA"|"COMPLETED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_object_annotation(
+#'   Bucket = "string",
+#'   Key = "string",
+#'   AnnotationName = "string",
+#'   VersionId = "string",
+#'   RequestPayer = "requester",
+#'   ExpectedBucketOwner = "string",
+#'   ChecksumMode = "ENABLED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_get_object_annotation
+#'
+#' @aliases s3_get_object_annotation
+s3_get_object_annotation <- function(Bucket, Key, AnnotationName, VersionId = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, ChecksumMode = NULL) {
+  op <- new_operation(
+    name = "GetObjectAnnotation",
+    http_method = "GET",
+    http_path = "/{Bucket}/{Key+}?annotation",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$get_object_annotation_input(Bucket = Bucket, Key = Key, AnnotationName = AnnotationName, VersionId = VersionId, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, ChecksumMode = ChecksumMode)
+  output <- .s3$get_object_annotation_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$get_object_annotation <- s3_get_object_annotation
+
 #' Retrieves all of the metadata from an object without returning the
 #' object itself
 #'
@@ -6382,7 +6607,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #'       )
 #'     )
 #'   ),
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"|"AWS_BACKUP_WARM"|"AWS_BACKUP_LOW_COST_WARM",
 #'   ObjectSize = 123
 #' )
 #' ```
@@ -6921,7 +7146,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' ### Authentication and authorization
 #' 
-#' **General purpose buckets** - Request to public buckets that grant the s3:ListBucket permission publicly do not need to be signed. All other [`head_bucket`][s3_head_bucket] requests must be authenticated and signed by using IAM credentials (access key ID and secret access key for the IAM identities). All headers with the `x-amz-` prefix, including `x-amz-copy-source`, must be signed. For more information, see [REST Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTAuthentication.html).
+#' **General purpose buckets** - Request to public buckets that grant the s3:ListBucket permission publicly do not need to be signed. All other [`head_bucket`][s3_head_bucket] requests must be authenticated and signed by using IAM credentials (access key ID and secret access key for the IAM identities). All headers with the `x-amz-` prefix, including `x-amz-copy-source`, must be signed. For more information, see [REST Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/).
 #' 
 #' **Directory buckets** - You must use IAM credentials to authenticate and authorize your access to the [`head_bucket`][s3_head_bucket] API operation, instead of using the temporary security credentials through the [`create_session`][s3_create_session] API operation.
 #' 
@@ -6952,7 +7177,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' **Access points** - When you use this action with an access point for general purpose buckets, you must provide the alias of the access point in place of the bucket name or specify the access point ARN. When you use this action with an access point for directory buckets, you must provide the access point name in place of the bucket name. When using the access point ARN, you must direct requests to the access point hostname. The access point hostname takes the form *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com. When using this action with an access point through the Amazon Web Services SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see [Using access points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html) in the *Amazon S3 User Guide*.
 #' 
-#' **Object Lambda access points** - When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
+#' **Object Lambda access points** - When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#ErrorCodeList).
 #' 
 #' Object Lambda access points are not supported by directory buckets.
 #' 
@@ -7019,11 +7244,11 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' A `HEAD` request has the same options as a `GET` operation on an object. The response is identical to the `GET` response except that there is no response body. Because of this, if the `HEAD` request generates an error, it returns a generic code, such as `400 Bad Request`, `403 Forbidden`, `404 Not Found`, `405 Method Not Allowed`, `412 Precondition Failed`, or `304 Not Modified`. It's not possible to retrieve the exact exception of these error codes.
 #' 
-#' Request headers are limited to 8 KB in size. For more information, see [Common Request Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html).
+#' Request headers are limited to 8 KB in size. For more information, see [Common Request Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/).
 #' 
 #' ### Permissions
 #' 
-#' -   **General purpose bucket permissions** - To use `HEAD`, you must have the `s3:GetObject` permission. You need the relevant read object (or version) permission for this operation. For more information, see [Actions, resources, and condition keys for Amazon S3](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html) in the *Amazon S3 User Guide*. For more information about the permissions to S3 API operations by S3 resource types, see Required permissions for Amazon S3 API operations in the *Amazon S3 User Guide*.
+#' -   **General purpose bucket permissions** - To use `HEAD`, you must have the `s3:GetObject` permission. You need the relevant read object (or version) permission for this operation. For more information, see [Actions, resources, and condition keys for Amazon S3](https://docs.aws.amazon.com/service-authorization/latest/reference/) in the *Amazon S3 User Guide*. For more information about the permissions to S3 API operations by S3 resource types, see Required permissions for Amazon S3 API operations in the *Amazon S3 User Guide*.
 #' 
 #'     If the object you request doesn't exist, the error that Amazon S3 returns depends on whether you also have the `s3:ListBucket` permission.
 #' 
@@ -7201,9 +7426,11 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   ContentLanguage = "string",
 #'   ContentType = "string",
 #'   ContentRange = "string",
-#'   Expires = "string",
+#'   Expires = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   WebsiteRedirectLocation = "string",
-#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
 #'   Metadata = list(
 #'     "string"
 #'   ),
@@ -7211,7 +7438,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
 #'   BucketKeyEnabled = TRUE|FALSE,
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"|"AWS_BACKUP_WARM"|"AWS_BACKUP_LOW_COST_WARM",
 #'   RequestCharged = "requester",
 #'   ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA"|"COMPLETED",
 #'   PartsCount = 123,
@@ -8006,7 +8233,7 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #'       Initiated = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
+#'       StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"|"AWS_BACKUP_WARM"|"AWS_BACKUP_LOW_COST_WARM",
 #'       Owner = list(
 #'         DisplayName = "string",
 #'         ID = "string"
@@ -8085,6 +8312,106 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
   return(response)
 }
 .s3$operations$list_multipart_uploads <- s3_list_multipart_uploads
+
+#' Lists the annotations attached to an Amazon S3 object
+#'
+#' @description
+#' Lists the annotations attached to an Amazon S3 object. Results are paginated, with a maximum of 1,000 annotations per object. Use the `AnnotationPrefix` parameter to filter the results by name prefix.
+#' 
+#' To use this operation, you must have the `s3:ListObjectAnnotations` permission.
+#' 
+#' Annotations are not supported by the following features: S3 Inventory Reports, API Gateway, S3 Storage Lens, Amazon S3 File Gateway, Amazon FSx, S3 on Outposts, and S3 Express One Zone (directory buckets).
+#' 
+#' The following operations are related to [`list_object_annotations`][s3_list_object_annotations]:
+#' 
+#' -   [`put_object_annotation`][s3_put_object_annotation]
+#' 
+#' -   [`get_object_annotation`][s3_get_object_annotation]
+#' 
+#' -   [`delete_object_annotation`][s3_delete_object_annotation]
+#'
+#' @usage
+#' s3_list_object_annotations(Bucket, Key, VersionId, MaxAnnotationResults,
+#'   AnnotationPrefix, ContinuationToken, RequestPayer, ExpectedBucketOwner)
+#'
+#' @param Bucket &#91;required&#93; The name of the bucket that contains the object.
+#' @param Key &#91;required&#93; The object key.
+#' @param VersionId The version ID of the object.
+#' @param MaxAnnotationResults The maximum number of annotations to return in the response. Maximum is 1,000.
+#' @param AnnotationPrefix Filter results to annotations whose name begins with the specified prefix.
+#' @param ContinuationToken Continuation token returned by a previous request to retrieve the next page.
+#' @param RequestPayer Confirms that the requester knows that they will be charged for the request. Bucket owners need not specify this parameter in their requests. If either the source or destination S3 bucket has Requester Pays enabled, the requester will pay for the corresponding charges. For information about downloading objects from Requester Pays buckets, see [Downloading Objects in Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ObjectsinRequesterPaysBuckets.html) in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Annotations = list(
+#'     list(
+#'       AnnotationName = "string",
+#'       LastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ETag = "string",
+#'       ChecksumAlgorithm = list(
+#'         "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128"
+#'       ),
+#'       Size = 123,
+#'       ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA"|"COMPLETED"
+#'     )
+#'   ),
+#'   Bucket = "string",
+#'   Key = "string",
+#'   ObjectVersionId = "string",
+#'   AnnotationPrefix = "string",
+#'   MaxAnnotationResults = 123,
+#'   AnnotationCount = 123,
+#'   ContinuationToken = "string",
+#'   NextContinuationToken = "string",
+#'   RequestCharged = "requester"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_object_annotations(
+#'   Bucket = "string",
+#'   Key = "string",
+#'   VersionId = "string",
+#'   MaxAnnotationResults = 123,
+#'   AnnotationPrefix = "string",
+#'   ContinuationToken = "string",
+#'   RequestPayer = "requester",
+#'   ExpectedBucketOwner = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_list_object_annotations
+#'
+#' @aliases s3_list_object_annotations
+s3_list_object_annotations <- function(Bucket, Key, VersionId = NULL, MaxAnnotationResults = NULL, AnnotationPrefix = NULL, ContinuationToken = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "ListObjectAnnotations",
+    http_method = "GET",
+    http_path = "/{Bucket}/{Key+}?annotation",
+    host_prefix = "",
+    paginator = list(input_token = "ContinuationToken", limit_key = "MaxAnnotationResults", output_token = "NextContinuationToken", result_key = "Annotations"),
+    stream_api = FALSE
+  )
+  input <- .s3$list_object_annotations_input(Bucket = Bucket, Key = Key, VersionId = VersionId, MaxAnnotationResults = MaxAnnotationResults, AnnotationPrefix = AnnotationPrefix, ContinuationToken = ContinuationToken, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$list_object_annotations_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$list_object_annotations <- s3_list_object_annotations
 
 #' This operation is not supported for directory buckets
 #'
@@ -8320,7 +8647,7 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #'       ),
 #'       ChecksumType = "COMPOSITE"|"FULL_OBJECT",
 #'       Size = 123,
-#'       StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
+#'       StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"|"AWS_BACKUP_WARM"|"AWS_BACKUP_LOW_COST_WARM",
 #'       Owner = list(
 #'         DisplayName = "string",
 #'         ID = "string"
@@ -8495,7 +8822,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #'       ),
 #'       ChecksumType = "COMPOSITE"|"FULL_OBJECT",
 #'       Size = 123,
-#'       StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
+#'       StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"|"AWS_BACKUP_WARM"|"AWS_BACKUP_LOW_COST_WARM",
 #'       Owner = list(
 #'         DisplayName = "string",
 #'         ID = "string"
@@ -8695,7 +9022,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #'     DisplayName = "string",
 #'     ID = "string"
 #'   ),
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"|"AWS_BACKUP_WARM"|"AWS_BACKUP_LOW_COST_WARM",
 #'   RequestCharged = "requester",
 #'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
 #'   ChecksumType = "COMPOSITE"|"FULL_OBJECT"
@@ -9016,7 +9343,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' @param ACL The canned ACL to apply to the bucket.
 #' @param AccessControlPolicy Contains the elements that set the ACL permissions for an object per grantee.
 #' @param Bucket &#91;required&#93; The bucket to which to apply the ACL.
-#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. This header must be used as a message integrity check to verify that the request body was not corrupted in transit. For more information, go to [RFC 1864.](https://www.ietf.org/rfc/rfc1864.txt)
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. This header must be used as a message integrity check to verify that the request body was not corrupted in transit. For more information, go to [RFC 1864.](https://www.rfc-editor.org/rfc/rfc1864.txt)
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface (CLI) or Amazon Web Services SDKs, this field is calculated automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when you use the SDK. This header will not provide any additional functionality if you don't use the SDK. When you send this header, there must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent. Otherwise, Amazon S3 fails the request with the HTTP status code `400 Bad Request`. For more information, see [Checking object integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html) in the *Amazon S3 User Guide*.
@@ -9255,7 +9582,7 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #' 
 #' -   [`delete_bucket_cors`][s3_delete_bucket_cors]
 #' 
-#' -   [RESTOPTIONSobject](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html)
+#' -   [RESTOPTIONSobject](https://docs.aws.amazon.com/AmazonS3/latest/API/)
 #' 
 #' You must URL encode any signed header values that contain spaces. For example, if your header value is `my file.txt`, containing two spaces after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
@@ -9265,7 +9592,7 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #'
 #' @param Bucket &#91;required&#93; Specifies the bucket impacted by the `cors`configuration.
 #' @param CORSConfiguration &#91;required&#93; Describes the cross-origin access configuration for objects in an Amazon S3 bucket. For more information, see [Enabling Cross-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html) in the *Amazon S3 User Guide*.
-#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. This header must be used as a message integrity check to verify that the request body was not corrupted in transit. For more information, go to [RFC 1864.](https://www.ietf.org/rfc/rfc1864.txt)
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. This header must be used as a message integrity check to verify that the request body was not corrupted in transit. For more information, go to [RFC 1864.](https://www.rfc-editor.org/rfc/rfc1864.txt)
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface (CLI) or Amazon Web Services SDKs, this field is calculated automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when you use the SDK. This header will not provide any additional functionality if you don't use the SDK. When you send this header, there must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent. Otherwise, Amazon S3 fails the request with the HTTP status code `400 Bad Request`. For more information, see [Checking object integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html) in the *Amazon S3 User Guide*.
@@ -9403,7 +9730,7 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' 
 #' If you're specifying a customer managed KMS key, we recommend using a fully qualified KMS key ARN. If you use a KMS key alias instead, then KMS resolves the key within the requester’s account. This behavior can result in data that's encrypted with a KMS key that belongs to the requester, and not the bucket owner.
 #' 
-#' Also, this action requires Amazon Web Services Signature Version 4. For more information, see [Authenticating Requests (Amazon Web Services Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html).
+#' Also, this action requires Amazon Web Services Signature Version 4. For more information, see [Authenticating Requests (Amazon Web Services Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/).
 #' 
 #' ### Permissions
 #' 
@@ -9460,7 +9787,7 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #'     Rules = list(
 #'       list(
 #'         ApplyServerSideEncryptionByDefault = list(
-#'           SSEAlgorithm = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'           SSEAlgorithm = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
 #'           KMSMasterKeyID = "string"
 #'         ),
 #'         BucketKeyEnabled = TRUE|FALSE,
@@ -10386,24 +10713,24 @@ s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration
 #'     TopicConfiguration = list(
 #'       Id = "string",
 #'       Events = list(
-#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"
+#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete"
 #'       ),
-#'       Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete",
+#'       Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete",
 #'       Topic = "string"
 #'     ),
 #'     QueueConfiguration = list(
 #'       Id = "string",
-#'       Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete",
+#'       Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete",
 #'       Events = list(
-#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"
+#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete"
 #'       ),
 #'       Queue = "string"
 #'     ),
 #'     CloudFunctionConfiguration = list(
 #'       Id = "string",
-#'       Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete",
+#'       Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete",
 #'       Events = list(
-#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"
+#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete"
 #'       ),
 #'       CloudFunction = "string",
 #'       InvocationRole = "string"
@@ -10495,7 +10822,7 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #'         Id = "string",
 #'         TopicArn = "string",
 #'         Events = list(
-#'           "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"
+#'           "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete"
 #'         ),
 #'         Filter = list(
 #'           Key = list(
@@ -10514,7 +10841,7 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #'         Id = "string",
 #'         QueueArn = "string",
 #'         Events = list(
-#'           "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"
+#'           "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete"
 #'         ),
 #'         Filter = list(
 #'           Key = list(
@@ -10533,7 +10860,7 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #'         Id = "string",
 #'         LambdaFunctionArn = "string",
 #'         Events = list(
-#'           "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"
+#'           "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"|"s3:ObjectRestore:Delete"|"s3:LifecycleTransition"|"s3:IntelligentTiering"|"s3:ObjectAcl:Put"|"s3:LifecycleExpiration:*"|"s3:LifecycleExpiration:Delete"|"s3:LifecycleExpiration:DeleteMarkerCreated"|"s3:ObjectTagging:*"|"s3:ObjectTagging:Put"|"s3:ObjectTagging:Delete"|"s3:ObjectAnnotation:*"|"s3:ObjectAnnotation:Put"|"s3:ObjectAnnotation:Delete"
 #'         ),
 #'         Filter = list(
 #'           Key = list(
@@ -10829,7 +11156,7 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #' 
 #' By default, Amazon S3 doesn't replicate objects that are stored at rest using server-side encryption with KMS keys. To replicate Amazon Web Services KMS-encrypted objects, add the following: `SourceSelectionCriteria`, `SseKmsEncryptedObjects`, `Status`, `EncryptionConfiguration`, and `ReplicaKmsKeyID`. For information about replication configuration, see [Replicating Objects Created with SSE Using KMS keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-config-for-kms-objects.html).
 #' 
-#' For information on [`put_bucket_replication`][s3_put_bucket_replication] errors, see [List of replication-related error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ReplicationErrorCodeList)
+#' For information on [`put_bucket_replication`][s3_put_bucket_replication] errors, see [List of replication-related error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#ReplicationErrorCodeList)
 #' 
 #' ### Permissions
 #' 
@@ -10852,7 +11179,7 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #'   ReplicationConfiguration, Token, ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket
-#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. You must use this header as a message integrity check to verify that the request body was not corrupted in transit. For more information, see [RFC 1864](https://www.ietf.org/rfc/rfc1864.txt).
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. You must use this header as a message integrity check to verify that the request body was not corrupted in transit. For more information, see [RFC 1864](https://www.rfc-editor.org/rfc/rfc1864.txt).
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface (CLI) or Amazon Web Services SDKs, this field is calculated automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when you use the SDK. This header will not provide any additional functionality if you don't use the SDK. When you send this header, there must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent. Otherwise, Amazon S3 fails the request with the HTTP status code `400 Bad Request`. For more information, see [Checking object integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html) in the *Amazon S3 User Guide*.
@@ -10909,7 +11236,7 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #'         Destination = list(
 #'           Bucket = "string",
 #'           Account = "string",
-#'           StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
+#'           StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"|"AWS_BACKUP_WARM"|"AWS_BACKUP_LOW_COST_WARM",
 #'           AccessControlTranslation = list(
 #'             Owner = "Destination"
 #'           ),
@@ -11005,7 +11332,7 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorit
 #'   RequestPaymentConfiguration, ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
-#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. You must use this header as a message integrity check to verify that the request body was not corrupted in transit. For more information, see [RFC 1864](https://www.ietf.org/rfc/rfc1864.txt).
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. You must use this header as a message integrity check to verify that the request body was not corrupted in transit. For more information, see [RFC 1864](https://www.rfc-editor.org/rfc/rfc1864.txt).
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface (CLI) or Amazon Web Services SDKs, this field is calculated automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when you use the SDK. This header will not provide any additional functionality if you don't use the SDK. When you send this header, there must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent. Otherwise, Amazon S3 fails the request with the HTTP status code `400 Bad Request`. For more information, see [Checking object integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html) in the *Amazon S3 User Guide*.
@@ -11079,7 +11406,7 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #' 
 #' To use this operation, you must have permissions to perform the `s3:PutBucketTagging` action. The bucket owner has this permission by default and can grant this permission to others. For more information about permissions, see [Permissions Related to Bucket Subresource Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#using-with-s3-actions-related-to-bucket-subresources) and [Managing Access Permissions to Your Amazon S3 Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
-#' [`put_bucket_tagging`][s3_put_bucket_tagging] has the following special errors. For more Amazon S3 errors see, [Error Responses](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html).
+#' [`put_bucket_tagging`][s3_put_bucket_tagging] has the following special errors. For more Amazon S3 errors see, [Error Responses](https://docs.aws.amazon.com/AmazonS3/latest/API/).
 #' 
 #' -   `InvalidTag` - The tag provided was not a valid tag. This error can occur if the tag did not pass input validation. For more information, see [Using Cost Allocation in Amazon S3 Bucket Tags](https://docs.aws.amazon.com/AmazonS3/latest/userguide/CostAllocTagging.html).
 #' 
@@ -11102,7 +11429,7 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #'   ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
-#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. You must use this header as a message integrity check to verify that the request body was not corrupted in transit. For more information, see [RFC 1864](https://www.ietf.org/rfc/rfc1864.txt).
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. You must use this header as a message integrity check to verify that the request body was not corrupted in transit. For more information, see [RFC 1864](https://www.rfc-editor.org/rfc/rfc1864.txt).
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface (CLI) or Amazon Web Services SDKs, this field is calculated automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when you use the SDK. This header will not provide any additional functionality if you don't use the SDK. When you send this header, there must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent. Otherwise, Amazon S3 fails the request with the HTTP status code `400 Bad Request`. For more information, see [Checking object integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html) in the *Amazon S3 User Guide*.
@@ -11213,7 +11540,7 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   VersioningConfiguration, ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
-#' @param ContentMD5 \>The Base64 encoded 128-bit `MD5` digest of the data. You must use this header as a message integrity check to verify that the request body was not corrupted in transit. For more information, see [RFC 1864](https://www.ietf.org/rfc/rfc1864.txt).
+#' @param ContentMD5 \>The Base64 encoded 128-bit `MD5` digest of the data. You must use this header as a message integrity check to verify that the request body was not corrupted in transit. For more information, see [RFC 1864](https://www.rfc-editor.org/rfc/rfc1864.txt).
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface (CLI) or Amazon Web Services SDKs, this field is calculated automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when you use the SDK. This header will not provide any additional functionality if you don't use the SDK. When you send this header, there must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent. Otherwise, Amazon S3 fails the request with the HTTP status code `400 Bad Request`. For more information, see [Checking object integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html) in the *Amazon S3 User Guide*.
@@ -11342,7 +11669,7 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #'   WebsiteConfiguration, ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
-#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. You must use this header as a message integrity check to verify that the request body was not corrupted in transit. For more information, see [RFC 1864](https://www.ietf.org/rfc/rfc1864.txt).
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. You must use this header as a message integrity check to verify that the request body was not corrupted in transit. For more information, see [RFC 1864](https://www.rfc-editor.org/rfc/rfc1864.txt).
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface (CLI) or Amazon Web Services SDKs, this field is calculated automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when you use the SDK. This header will not provide any additional functionality if you don't use the SDK. When you send this header, there must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent. Otherwise, Amazon S3 fails the request with the HTTP status code `400 Bad Request`. For more information, see [Checking object integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html) in the *Amazon S3 User Guide*.
@@ -11542,16 +11869,16 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' 
 #' **S3 on Outposts** - When you use this action with S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`. When you use this action with S3 on Outposts, the destination bucket must be the Outposts access point ARN or the access point alias. For more information about S3 on Outposts, see [What is S3 on Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html) in the *Amazon S3 User Guide*.
 #' @param CacheControl Can be used to specify caching behavior along the request/reply chain. For more information, see [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9).
-#' @param ContentDisposition Specifies presentational information for the object. For more information, see https://www.rfc-editor.org/rfc/rfc6266#section-4.
-#' @param ContentEncoding Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. For more information, see https://www.rfc-editor.org/rfc/rfc9110.html#field.content-encoding.
+#' @param ContentDisposition Specifies presentational information for the object. For more information, see [https://www.rfc-editor.org/rfc/rfc6266#section-4](https://www.rfc-editor.org/info/rfc6266/#section-4).
+#' @param ContentEncoding Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. For more information, see <https://www.rfc-editor.org/rfc/rfc9110.html#field.content-encoding>.
 #' @param ContentLanguage The language the content is in.
-#' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the body cannot be determined automatically. For more information, see https://www.rfc-editor.org/rfc/rfc9110.html#name-content-length.
-#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the message (without the headers) according to RFC 1864. This header can be used as a message integrity check to verify that the data is the same data that was originally sent. Although it is optional, we recommend using the Content-MD5 mechanism as an end-to-end integrity check. For more information about REST request authentication, see [REST Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTAuthentication.html).
+#' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the body cannot be determined automatically. For more information, see <https://www.rfc-editor.org/rfc/rfc9110.html#name-content-length>.
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the message (without the headers) according to RFC 1864. This header can be used as a message integrity check to verify that the data is the same data that was originally sent. Although it is optional, we recommend using the Content-MD5 mechanism as an end-to-end integrity check. For more information about REST request authentication, see [REST Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/).
 #' 
 #' The `Content-MD5` or `x-amz-sdk-checksum-algorithm` header is required for any request to upload an object with a retention period configured using Amazon S3 Object Lock. For more information, see [Uploading objects to an Object Lock enabled bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-managing.html#object-lock-put-object) in the *Amazon S3 User Guide*.
 #' 
 #' This functionality is not supported for directory buckets.
-#' @param ContentType A standard MIME type describing the format of the contents. For more information, see https://www.rfc-editor.org/rfc/rfc9110.html#name-content-type.
+#' @param ContentType A standard MIME type describing the format of the contents. For more information, see <https://www.rfc-editor.org/rfc/rfc9110.html#name-content-type>.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when you use the SDK. This header will not provide any additional functionality if you don't use the SDK. When you send this header, there must be a corresponding `x-amz-checksum-algorithm ` or `x-amz-trailer` header sent. Otherwise, Amazon S3 fails the request with the HTTP status code `400 Bad Request`.
 #' 
 #' For the `x-amz-checksum-algorithm ` header, replace ` algorithm ` with the supported algorithm from the following list:
@@ -11593,7 +11920,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @param ChecksumXXHASH64 This header can be used as a data integrity check to verify that the data received is the same data that was originally sent. This header specifies the Base64 encoded, 64-bit `XXHASH64` checksum of the object. For more information, see [Checking object integrity in the Amazon S3 User Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
 #' @param ChecksumXXHASH3 This header can be used as a data integrity check to verify that the data received is the same data that was originally sent. This header specifies the Base64 encoded, 64-bit `XXHASH3` checksum of the object. For more information, see [Checking object integrity in the Amazon S3 User Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
 #' @param ChecksumXXHASH128 This header can be used as a data integrity check to verify that the data received is the same data that was originally sent. This header specifies the Base64 encoded, 128-bit `XXHASH128` checksum of the object. For more information, see [Checking object integrity in the Amazon S3 User Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
-#' @param Expires The date and time at which the object is no longer cacheable. For more information, see https://www.rfc-editor.org/rfc/rfc7234#section-5.3.
+#' @param Expires The date and time at which the object is no longer cacheable. For more information, see [https://www.rfc-editor.org/rfc/rfc7234#section-5.3](https://www.rfc-editor.org/info/rfc7234/#section-5.3).
 #' @param IfMatch Uploads the object only if the ETag (entity tag) value provided during the WRITE operation matches the ETag of the object in S3. If the ETag values do not match, the operation returns a `412 Precondition Failed` error.
 #' 
 #' If a conflicting operation occurs during the upload S3 returns a `409 ConditionalRequestConflict` response. On a 409 failure you should fetch the object's ETag and retry the upload.
@@ -11720,7 +12047,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   ChecksumXXHASH3 = "string",
 #'   ChecksumXXHASH128 = "string",
 #'   ChecksumType = "COMPOSITE"|"FULL_OBJECT",
-#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
 #'   VersionId = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKeyMD5 = "string",
@@ -11756,7 +12083,9 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   ChecksumXXHASH64 = "string",
 #'   ChecksumXXHASH3 = "string",
 #'   ChecksumXXHASH128 = "string",
-#'   Expires = "string",
+#'   Expires = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   IfMatch = "string",
 #'   IfNoneMatch = "string",
 #'   GrantFullControl = "string",
@@ -11768,8 +12097,8 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Metadata = list(
 #'     "string"
 #'   ),
-#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"|"AWS_BACKUP_WARM"|"AWS_BACKUP_LOW_COST_WARM",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKey = "string",
@@ -12014,7 +12343,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' **Access points** - When you use this action with an access point for general purpose buckets, you must provide the alias of the access point in place of the bucket name or specify the access point ARN. When you use this action with an access point for directory buckets, you must provide the access point name in place of the bucket name. When using the access point ARN, you must direct requests to the access point hostname. The access point hostname takes the form *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com. When using this action with an access point through the Amazon Web Services SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see [Using access points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html) in the *Amazon S3 User Guide*.
 #' 
 #' **S3 on Outposts** - When you use this action with S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`. When you use this action with S3 on Outposts, the destination bucket must be the Outposts access point ARN or the access point alias. For more information about S3 on Outposts, see [What is S3 on Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html) in the *Amazon S3 User Guide*.
-#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. This header must be used as a message integrity check to verify that the request body was not corrupted in transit. For more information, go to [RFC 1864.\>](https://www.ietf.org/rfc/rfc1864.txt)
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. This header must be used as a message integrity check to verify that the request body was not corrupted in transit. For more information, go to [RFC 1864.\>](https://www.rfc-editor.org/rfc/rfc1864.txt)
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface (CLI) or Amazon Web Services SDKs, this field is calculated automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when you use the SDK. This header will not provide any additional functionality if you don't use the SDK. When you send this header, there must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent. Otherwise, Amazon S3 fails the request with the HTTP status code `400 Bad Request`. For more information, see [Checking object integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html) in the *Amazon S3 User Guide*.
@@ -12131,6 +12460,133 @@ s3_put_object_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
   return(response)
 }
 .s3$operations$put_object_acl <- s3_put_object_acl
+
+#' Attaches an annotation to an Amazon S3 object
+#'
+#' @description
+#' Attaches an annotation to an Amazon S3 object. An annotation is a named payload of 1 byte to 1 MiB that you can associate with a specific object or object version. Each object can have up to 1,000 annotations.
+#' 
+#' For annotation naming rules and restrictions, see [Annotation naming guidelines](https://docs.aws.amazon.com/AmazonS3/latest/userguide/annotations-overview.html) in the *Amazon S3 User Guide*.
+#' 
+#' Annotations inherit the encryption of their parent object. For objects without server-side encryption, annotations are encrypted with SSE-S3 (the default for new objects). Objects encrypted with SSE-C cannot have annotations.
+#' 
+#' To use this operation, you must have the `s3:PutObjectAnnotation` permission. If the bucket has Requester Pays enabled, you must include the `x-amz-request-payer` header.
+#' 
+#' Annotations are not supported by the following features: S3 Inventory Reports, API Gateway, S3 Storage Lens, Amazon S3 File Gateway, Amazon FSx, S3 on Outposts, and S3 Express One Zone (directory buckets).
+#' 
+#' The following operations are related to [`put_object_annotation`][s3_put_object_annotation]:
+#' 
+#' -   [`get_object_annotation`][s3_get_object_annotation]
+#' 
+#' -   [`list_object_annotations`][s3_list_object_annotations]
+#' 
+#' -   [`delete_object_annotation`][s3_delete_object_annotation]
+#'
+#' @usage
+#' s3_put_object_annotation(Bucket, Key, VersionId, AnnotationName,
+#'   AnnotationPayload, ObjectIfMatch, ChecksumAlgorithm, ChecksumCRC32,
+#'   ChecksumCRC32C, ChecksumCRC64NVME, ChecksumSHA1, ChecksumSHA256,
+#'   ChecksumSHA512, ChecksumMD5, ChecksumXXHASH64, ChecksumXXHASH3,
+#'   ChecksumXXHASH128, ContentMD5, RequestPayer, ExpectedBucketOwner)
+#'
+#' @param Bucket &#91;required&#93; The name of the bucket that contains the object.
+#' @param Key &#91;required&#93; The object key.
+#' @param VersionId The version ID of the object to attach the annotation to.
+#' @param AnnotationName &#91;required&#93; The name of the annotation.
+#' 
+#' Length Constraints: Minimum length of 1. Maximum length of 512 bytes.
+#' @param AnnotationPayload &#91;required&#93; The annotation payload. Must be between 1 byte and 1 MiB in size, and must be valid UTF-8 encoded text. If the payload contains invalid UTF-8 bytes, the request fails with HTTP 415 (Unsupported Media Type). To store binary data, encode the payload using Base64 before uploading.
+#' @param ObjectIfMatch If specified, the operation only succeeds if the object's ETag matches the provided value.
+#' @param ChecksumAlgorithm The checksum algorithm to use. Supported values: `CRC32`, `CRC32C`, `CRC64NVME`, `SHA1`, `SHA256`, `SHA512`, `MD5`, `XXHASH64`, `XXHASH3`, `XXHASH128`.
+#' @param ChecksumCRC32 Base64-encoded CRC32 checksum of the annotation payload.
+#' @param ChecksumCRC32C Base64-encoded CRC32C checksum of the annotation payload.
+#' @param ChecksumCRC64NVME Base64-encoded CRC64NVME checksum of the annotation payload.
+#' @param ChecksumSHA1 Base64-encoded SHA1 checksum of the annotation payload.
+#' @param ChecksumSHA256 Base64-encoded SHA256 checksum of the annotation payload.
+#' @param ChecksumSHA512 Base64-encoded SHA512 checksum of the annotation payload.
+#' @param ChecksumMD5 Base64-encoded MD5 checksum of the annotation payload.
+#' @param ChecksumXXHASH64 Base64-encoded XXHASH64 checksum of the annotation payload.
+#' @param ChecksumXXHASH3 Base64-encoded XXHASH3 checksum of the annotation payload.
+#' @param ChecksumXXHASH128 Base64-encoded XXHASH128 checksum of the annotation payload.
+#' @param ContentMD5 Base64-encoded MD5 digest of the message.
+#' @param RequestPayer Confirms that the requester knows that they will be charged for the request. Bucket owners need not specify this parameter in their requests. If either the source or destination S3 bucket has Requester Pays enabled, the requester will pay for the corresponding charges. For information about downloading objects from Requester Pays buckets, see [Downloading Objects in Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ObjectsinRequesterPaysBuckets.html) in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a different account, the request fails with an HTTP 403 (Access Denied) error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Key = "string",
+#'   AnnotationName = "string",
+#'   ObjectVersionId = "string",
+#'   ETag = "string",
+#'   ChecksumCRC32 = "string",
+#'   ChecksumCRC32C = "string",
+#'   ChecksumCRC64NVME = "string",
+#'   ChecksumSHA1 = "string",
+#'   ChecksumSHA256 = "string",
+#'   ChecksumSHA512 = "string",
+#'   ChecksumMD5 = "string",
+#'   ChecksumXXHASH64 = "string",
+#'   ChecksumXXHASH3 = "string",
+#'   ChecksumXXHASH128 = "string",
+#'   ChecksumType = "COMPOSITE"|"FULL_OBJECT",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
+#'   RequestCharged = "requester"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_object_annotation(
+#'   Bucket = "string",
+#'   Key = "string",
+#'   VersionId = "string",
+#'   AnnotationName = "string",
+#'   AnnotationPayload = raw,
+#'   ObjectIfMatch = "string",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
+#'   ChecksumCRC32 = "string",
+#'   ChecksumCRC32C = "string",
+#'   ChecksumCRC64NVME = "string",
+#'   ChecksumSHA1 = "string",
+#'   ChecksumSHA256 = "string",
+#'   ChecksumSHA512 = "string",
+#'   ChecksumMD5 = "string",
+#'   ChecksumXXHASH64 = "string",
+#'   ChecksumXXHASH3 = "string",
+#'   ChecksumXXHASH128 = "string",
+#'   ContentMD5 = "string",
+#'   RequestPayer = "requester",
+#'   ExpectedBucketOwner = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_put_object_annotation
+#'
+#' @aliases s3_put_object_annotation
+s3_put_object_annotation <- function(Bucket, Key, VersionId = NULL, AnnotationName, AnnotationPayload, ObjectIfMatch = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumCRC64NVME = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, ChecksumSHA512 = NULL, ChecksumMD5 = NULL, ChecksumXXHASH64 = NULL, ChecksumXXHASH3 = NULL, ChecksumXXHASH128 = NULL, ContentMD5 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "PutObjectAnnotation",
+    http_method = "PUT",
+    http_path = "/{Bucket}/{Key+}?annotation",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$put_object_annotation_input(Bucket = Bucket, Key = Key, VersionId = VersionId, AnnotationName = AnnotationName, AnnotationPayload = AnnotationPayload, ObjectIfMatch = ObjectIfMatch, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumCRC64NVME = ChecksumCRC64NVME, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, ChecksumSHA512 = ChecksumSHA512, ChecksumMD5 = ChecksumMD5, ChecksumXXHASH64 = ChecksumXXHASH64, ChecksumXXHASH3 = ChecksumXXHASH3, ChecksumXXHASH128 = ChecksumXXHASH128, ContentMD5 = ContentMD5, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$put_object_annotation_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$put_object_annotation <- s3_put_object_annotation
 
 #' This operation is not supported for directory buckets
 #'
@@ -12400,7 +12856,7 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' 
 #' To put tags of any other version, use the `versionId` query parameter. You also need permission for the `s3:PutObjectVersionTagging` action.
 #' 
-#' [`put_object_tagging`][s3_put_object_tagging] has the following special errors. For more Amazon S3 errors see, [Error Responses](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html).
+#' [`put_object_tagging`][s3_put_object_tagging] has the following special errors. For more Amazon S3 errors see, [Error Responses](https://docs.aws.amazon.com/AmazonS3/latest/API/).
 #' 
 #' -   `InvalidTag` - The tag provided was not a valid tag. This error can occur if the tag did not pass input validation. For more information, see [Object Tagging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html).
 #' 
@@ -12859,7 +13315,7 @@ s3_rename_object <- function(Bucket, Key, RenameSource, DestinationIfMatch = NUL
 #'         BucketName = "string",
 #'         Prefix = "string",
 #'         Encryption = list(
-#'           EncryptionType = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'           EncryptionType = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
 #'           KMSKeyId = "string",
 #'           KMSContext = "string"
 #'         ),
@@ -12890,7 +13346,7 @@ s3_rename_object <- function(Bucket, Key, RenameSource, DestinationIfMatch = NUL
 #'             Value = "string"
 #'           )
 #'         ),
-#'         StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"
+#'         StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"|"AWS_BACKUP_WARM"|"AWS_BACKUP_LOW_COST_WARM"
 #'       )
 #'     )
 #'   ),
@@ -12973,7 +13429,7 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' 
 #' ### Working with the Response Body
 #' 
-#' Given the response size is unknown, Amazon S3 Select streams the response as a series of messages and includes a `Transfer-Encoding` header with `chunked` as its value in the response. For more information, see [Appendix: SelectObjectContent Response](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTSelectObjectAppendix.html).
+#' Given the response size is unknown, Amazon S3 Select streams the response as a series of messages and includes a `Transfer-Encoding` header with `chunked` as its value in the response. For more information, see [Appendix: SelectObjectContent Response](https://docs.aws.amazon.com/AmazonS3/latest/API/).
 #' 
 #' ### GetObject Support
 #' 
@@ -12985,7 +13441,7 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' 
 #' ### Special Errors
 #' 
-#' For a list of special errors for this operation, see [List of SELECT Object Content Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#SelectObjectContentErrorCodeList)
+#' For a list of special errors for this operation, see [List of SELECT Object Content Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#SelectObjectContentErrorCodeList)
 #' 
 #' The following operations are related to [`select_object_content`][s3_select_object_content]:
 #' 
@@ -13124,6 +13580,80 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
   return(response)
 }
 .s3$operations$select_object_content <- s3_select_object_content
+
+#' Updates the annotation table configuration for an Amazon S3 bucket's
+#' metadata configuration
+#'
+#' @description
+#' Updates the annotation table configuration for an Amazon S3 bucket's metadata configuration. Use this operation to enable or disable the annotation table, or to update its associated IAM role.
+#' 
+#' An annotation table is a queryable Iceberg table that contains records of all annotations attached to objects in the bucket. To use this operation, the bucket must have an existing Amazon S3 Metadata configuration.
+#' 
+#' To use this operation, you must have the `s3:UpdateBucketMetadataAnnotationTableConfiguration` permission. If you are specifying or changing the IAM role, you must also have `iam:PassRole` permission for the role.
+#' 
+#' The IAM role must have a trust policy that allows the Amazon S3 metadata service to assume it, and a permissions policy that grants the actions needed to read annotations from your bucket. The following examples show a trust policy and a permissions policy that you can adapt for your bucket and account.
+#' 
+#' The following operations are related to [`update_bucket_metadata_annotation_table_configuration`][s3_update_bucket_metadata_annotation_table_configuration]:
+#' 
+#' -   [`create_bucket_metadata_configuration`][s3_create_bucket_metadata_configuration]
+#' 
+#' -   [`get_bucket_metadata_configuration`][s3_get_bucket_metadata_configuration]
+#'
+#' @usage
+#' s3_update_bucket_metadata_annotation_table_configuration(Bucket,
+#'   ContentMD5, ChecksumAlgorithm, AnnotationTableConfiguration,
+#'   ExpectedBucketOwner)
+#'
+#' @param Bucket &#91;required&#93; The name of the bucket whose annotation table configuration to update.
+#' @param ContentMD5 Base64-encoded MD5 digest of the message body.
+#' @param ChecksumAlgorithm Checksum algorithm for the request payload.
+#' @param AnnotationTableConfiguration &#91;required&#93; The annotation table configuration updates to apply.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_bucket_metadata_annotation_table_configuration(
+#'   Bucket = "string",
+#'   ContentMD5 = "string",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"|"SHA512"|"MD5"|"XXHASH64"|"XXHASH3"|"XXHASH128",
+#'   AnnotationTableConfiguration = list(
+#'     ConfigurationState = "ENABLED"|"DISABLED",
+#'     EncryptionConfiguration = list(
+#'       SseAlgorithm = "aws:kms"|"AES256",
+#'       KmsKeyArn = "string"
+#'     ),
+#'     Role = "string"
+#'   ),
+#'   ExpectedBucketOwner = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_update_bucket_metadata_annotation_table_configuration
+#'
+#' @aliases s3_update_bucket_metadata_annotation_table_configuration
+s3_update_bucket_metadata_annotation_table_configuration <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, AnnotationTableConfiguration, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "UpdateBucketMetadataAnnotationTableConfiguration",
+    http_method = "PUT",
+    http_path = "/{Bucket}?metadataAnnotationTable",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$update_bucket_metadata_annotation_table_configuration_input(Bucket = Bucket, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm, AnnotationTableConfiguration = AnnotationTableConfiguration, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$update_bucket_metadata_annotation_table_configuration_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$update_bucket_metadata_annotation_table_configuration <- s3_update_bucket_metadata_annotation_table_configuration
 
 #' Enables or disables a live inventory table for an S3 Metadata
 #' configuration on a general purpose bucket
@@ -13314,8 +13844,6 @@ s3_update_bucket_metadata_journal_table_configuration <- function(Bucket, Conten
 #' 
 #' -   To use the [`update_object_encryption`][s3_update_object_encryption] operation, you must have the following permissions:
 #' 
-#'     -   `s3:PutObject`
-#' 
 #'     -   `s3:UpdateObjectEncryption`
 #' 
 #'     -   `kms:Encrypt`
@@ -13461,7 +13989,7 @@ s3_update_object_encryption <- function(Bucket, Key, VersionId = NULL, ObjectEnc
 #' 
 #' ### Data integrity
 #' 
-#' **General purpose bucket** - To ensure that data is not corrupted traversing the network, specify the `Content-MD5` header in the upload part request. Amazon S3 checks the part data against the provided MD5 value. If they do not match, Amazon S3 returns an error. If the upload request is signed with Signature Version 4, then Amazon Web Services S3 uses the `x-amz-content-sha256` header as a checksum instead of `Content-MD5`. For more information see [Authenticating Requests: Using the Authorization Header (Amazon Web Services Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html).
+#' **General purpose bucket** - To ensure that data is not corrupted traversing the network, specify the `Content-MD5` header in the upload part request. Amazon S3 checks the part data against the provided MD5 value. If they do not match, Amazon S3 returns an error. If the upload request is signed with Signature Version 4, then Amazon Web Services S3 uses the `x-amz-content-sha256` header as a checksum instead of `Content-MD5`. For more information see [Authenticating Requests: Using the Authorization Header (Amazon Web Services Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/).
 #' 
 #' **Directory buckets** - MD5 is not supported by directory buckets. You can use checksum algorithms to check object integrity.
 #' 
@@ -13571,7 +14099,7 @@ s3_update_object_encryption <- function(Bucket, Key, VersionId = NULL, ObjectEnc
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
 #'   ETag = "string",
 #'   ChecksumCRC32 = "string",
 #'   ChecksumCRC32C = "string",
@@ -13675,7 +14203,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' 
 #' ### Authentication and authorization
 #' 
-#' All [`upload_part_copy`][s3_upload_part_copy] requests must be authenticated and signed by using IAM credentials (access key ID and secret access key for the IAM identities). All headers with the `x-amz-` prefix, including `x-amz-copy-source`, must be signed. For more information, see [REST Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTAuthentication.html).
+#' All [`upload_part_copy`][s3_upload_part_copy] requests must be authenticated and signed by using IAM credentials (access key ID and secret access key for the IAM identities). All headers with the `x-amz-` prefix, including `x-amz-copy-source`, must be signed. For more information, see [REST Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/).
 #' 
 #' **Directory buckets** - You must use IAM credentials to authenticate and authorize your access to the [`upload_part_copy`][s3_upload_part_copy] API operation, instead of using the temporary security credentials through the [`create_session`][s3_create_session] API operation.
 #' 
@@ -13871,7 +14399,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'     ChecksumXXHASH3 = "string",
 #'     ChecksumXXHASH128 = "string"
 #'   ),
-#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
@@ -14115,7 +14643,9 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #'   ChecksumXXHASH128 = "string",
 #'   DeleteMarker = TRUE|FALSE,
 #'   ETag = "string",
-#'   Expires = "string",
+#'   Expires = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   Expiration = "string",
 #'   LastModified = as.POSIXct(
 #'     "2015-01-01"
@@ -14133,11 +14663,11 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #'   ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA"|"COMPLETED",
 #'   RequestCharged = "requester",
 #'   Restore = "string",
-#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:backup"|"aws:kms"|"aws:kms:dsse",
 #'   SSECustomerAlgorithm = "string",
 #'   SSEKMSKeyId = "string",
 #'   SSECustomerKeyMD5 = "string",
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"|"AWS_BACKUP_WARM"|"AWS_BACKUP_LOW_COST_WARM",
 #'   TagCount = 123,
 #'   VersionId = "string",
 #'   BucketKeyEnabled = TRUE|FALSE

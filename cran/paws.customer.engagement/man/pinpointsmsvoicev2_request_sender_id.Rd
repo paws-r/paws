@@ -14,7 +14,7 @@ pinpointsmsvoicev2_request_sender_id(
 )
 }
 \arguments{
-\item{SenderId}{[required] The sender ID string to request.}
+\item{SenderId}{[required] The sender ID string to request. The sender ID can be 1-11 alphanumeric characters including letters (A-Z, a-z), numbers (0-9), or hyphens (-). The sender ID must contain at least one letter and cannot start or end with a hyphen.}
 
 \item{IsoCountryCode}{[required] The two-character code, in ISO 3166-1 alpha-2 format, for the country or region.}
 

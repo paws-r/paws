@@ -17,13 +17,16 @@ eks_update_cluster_config(
   storageConfig = NULL,
   remoteNetworkConfig = NULL,
   deletionProtection = NULL,
-  controlPlaneScalingConfig = NULL
+  controlPlaneScalingConfig = NULL,
+  kubeApiServerConfig = NULL,
+  kubeSchedulerConfig = NULL,
+  kubeControllerManagerConfig = NULL
 )
 }
 \arguments{
 \item{name}{[required] The name of the Amazon EKS cluster to update.}
 
-\item{resourcesVpcConfig}{An object representing the VPC configuration to use for an Amazon EKS cluster.}
+\item{resourcesVpcConfig}{An object representing the VPC configuration to use for the cluster update. You can use this parameter to update the control plane egress mode, the subnets used by the cluster, the security groups, and the endpoint access settings.}
 
 \item{logging}{Enable or disable exporting the Kubernetes control plane logs for your cluster to CloudWatch Logs . By default, cluster control plane logs aren't exported to CloudWatch Logs . For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html}{Amazon EKS cluster control plane logs} in the \emph{Amazon EKS User Guide} .
 
@@ -52,6 +55,12 @@ You can start a zonal shift for an EKS cluster, or you can allow Amazon Web Serv
 \item{deletionProtection}{Specifies whether to enable or disable deletion protection for the cluster. When enabled (\code{true}), the cluster cannot be deleted until deletion protection is explicitly disabled. When disabled (\code{false}), the cluster can be deleted normally.}
 
 \item{controlPlaneScalingConfig}{The control plane scaling tier configuration. For more information, see EKS Provisioned Control Plane in the Amazon EKS User Guide.}
+
+\item{kubeApiServerConfig}{The Kubernetes API server configuration for the updated cluster.}
+
+\item{kubeSchedulerConfig}{The Kubernetes scheduler configuration for the updated cluster.}
+
+\item{kubeControllerManagerConfig}{The Kubernetes controller manager configuration for the updated cluster.}
 }
 \description{
 Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with \code{\link[=eks_describe_update]{describe_update}}.

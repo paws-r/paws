@@ -107,7 +107,7 @@ You can also manage your WorkSpaces resources using the WorkSpaces console, Comm
 \link[paws.end.user.computing:workspaces_authorize_ip_rules]{authorize_ip_rules} \tab Adds one or more rules to the specified IP access control group\cr
 \link[paws.end.user.computing:workspaces_copy_workspace_image]{copy_workspace_image} \tab Copies the specified image from the specified Region to the current Region\cr
 \link[paws.end.user.computing:workspaces_create_account_link_invitation]{create_account_link_invitation} \tab Creates the account link invitation\cr
-\link[paws.end.user.computing:workspaces_create_connect_client_add_in]{create_connect_client_add_in} \tab Creates a client-add-in for Amazon Connect within a directory\cr
+\link[paws.end.user.computing:workspaces_create_connect_client_add_in]{create_connect_client_add_in} \tab Creates a client-add-in for Connect Customer within a directory\cr
 \link[paws.end.user.computing:workspaces_create_connection_alias]{create_connection_alias} \tab Creates the specified connection alias for use with cross-Region redirection\cr
 \link[paws.end.user.computing:workspaces_create_ip_group]{create_ip_group} \tab Creates an IP access control group\cr
 \link[paws.end.user.computing:workspaces_create_standby_workspaces]{create_standby_workspaces} \tab Creates a standby WorkSpace in a secondary Region\cr
@@ -116,10 +116,10 @@ You can also manage your WorkSpaces resources using the WorkSpaces console, Comm
 \link[paws.end.user.computing:workspaces_create_workspace_bundle]{create_workspace_bundle} \tab Creates the specified WorkSpace bundle\cr
 \link[paws.end.user.computing:workspaces_create_workspace_image]{create_workspace_image} \tab Creates a new WorkSpace image from an existing WorkSpace\cr
 \link[paws.end.user.computing:workspaces_create_workspaces]{create_workspaces} \tab Creates one or more WorkSpaces\cr
-\link[paws.end.user.computing:workspaces_create_workspaces_pool]{create_workspaces_pool} \tab Creates a pool of WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_create_workspaces_pool]{create_workspaces_pool} \tab End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools\cr
 \link[paws.end.user.computing:workspaces_delete_account_link_invitation]{delete_account_link_invitation} \tab Deletes the account link invitation\cr
 \link[paws.end.user.computing:workspaces_delete_client_branding]{delete_client_branding} \tab Deletes customized client branding\cr
-\link[paws.end.user.computing:workspaces_delete_connect_client_add_in]{delete_connect_client_add_in} \tab Deletes a client-add-in for Amazon Connect that is configured within a directory\cr
+\link[paws.end.user.computing:workspaces_delete_connect_client_add_in]{delete_connect_client_add_in} \tab Deletes a client-add-in for Connect Customer that is configured within a directory\cr
 \link[paws.end.user.computing:workspaces_delete_connection_alias]{delete_connection_alias} \tab Deletes the specified connection alias\cr
 \link[paws.end.user.computing:workspaces_delete_ip_group]{delete_ip_group} \tab Deletes the specified IP access control group\cr
 \link[paws.end.user.computing:workspaces_delete_tags]{delete_tags} \tab Deletes the specified tags from the specified WorkSpaces resource\cr
@@ -134,7 +134,7 @@ You can also manage your WorkSpaces resources using the WorkSpaces console, Comm
 \link[paws.end.user.computing:workspaces_describe_bundle_associations]{describe_bundle_associations} \tab Describes the associations between the applications and the specified bundle\cr
 \link[paws.end.user.computing:workspaces_describe_client_branding]{describe_client_branding} \tab Describes the specified client branding\cr
 \link[paws.end.user.computing:workspaces_describe_client_properties]{describe_client_properties} \tab Retrieves a list that describes one or more specified Amazon WorkSpaces clients\cr
-\link[paws.end.user.computing:workspaces_describe_connect_client_add_ins]{describe_connect_client_add_ins} \tab Retrieves a list of Amazon Connect client add-ins that have been created\cr
+\link[paws.end.user.computing:workspaces_describe_connect_client_add_ins]{describe_connect_client_add_ins} \tab Retrieves a list of Connect Customer client add-ins that have been created\cr
 \link[paws.end.user.computing:workspaces_describe_connection_aliases]{describe_connection_aliases} \tab Retrieves a list that describes the connection aliases used for cross-Region redirection\cr
 \link[paws.end.user.computing:workspaces_describe_connection_alias_permissions]{describe_connection_alias_permissions} \tab Describes the permissions that the owner of a connection alias has granted to another Amazon Web Services account for the specified connection alias\cr
 \link[paws.end.user.computing:workspaces_describe_custom_workspace_image_import]{describe_custom_workspace_image_import} \tab Retrieves information about a WorkSpace BYOL image being imported via ImportCustomWorkspaceImage\cr
@@ -149,8 +149,8 @@ You can also manage your WorkSpaces resources using the WorkSpaces console, Comm
 \link[paws.end.user.computing:workspaces_describe_workspaces]{describe_workspaces} \tab Describes the specified WorkSpaces\cr
 \link[paws.end.user.computing:workspaces_describe_workspaces_connection_status]{describe_workspaces_connection_status} \tab Describes the connection status of the specified WorkSpaces\cr
 \link[paws.end.user.computing:workspaces_describe_workspace_snapshots]{describe_workspace_snapshots} \tab Describes the snapshots for the specified WorkSpace\cr
-\link[paws.end.user.computing:workspaces_describe_workspaces_pools]{describe_workspaces_pools} \tab Describes the specified WorkSpaces Pools\cr
-\link[paws.end.user.computing:workspaces_describe_workspaces_pool_sessions]{describe_workspaces_pool_sessions} \tab Retrieves a list that describes the streaming sessions for a specified pool\cr
+\link[paws.end.user.computing:workspaces_describe_workspaces_pools]{describe_workspaces_pools} \tab End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools\cr
+\link[paws.end.user.computing:workspaces_describe_workspaces_pool_sessions]{describe_workspaces_pool_sessions} \tab End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools\cr
 \link[paws.end.user.computing:workspaces_disassociate_connection_alias]{disassociate_connection_alias} \tab Disassociates a connection alias from a directory\cr
 \link[paws.end.user.computing:workspaces_disassociate_ip_groups]{disassociate_ip_groups} \tab Disassociates the specified IP access control group from the specified directory\cr
 \link[paws.end.user.computing:workspaces_disassociate_workspace_application]{disassociate_workspace_application} \tab Disassociates the specified application from a WorkSpace\cr
@@ -179,18 +179,18 @@ You can also manage your WorkSpaces resources using the WorkSpaces console, Comm
 \link[paws.end.user.computing:workspaces_restore_workspace]{restore_workspace} \tab Restores the specified WorkSpace to its last known healthy state\cr
 \link[paws.end.user.computing:workspaces_revoke_ip_rules]{revoke_ip_rules} \tab Removes one or more rules from the specified IP access control group\cr
 \link[paws.end.user.computing:workspaces_start_workspaces]{start_workspaces} \tab Starts the specified WorkSpaces\cr
-\link[paws.end.user.computing:workspaces_start_workspaces_pool]{start_workspaces_pool} \tab Starts the specified pool\cr
+\link[paws.end.user.computing:workspaces_start_workspaces_pool]{start_workspaces_pool} \tab End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools\cr
 \link[paws.end.user.computing:workspaces_stop_workspaces]{stop_workspaces} \tab Stops the specified WorkSpaces\cr
-\link[paws.end.user.computing:workspaces_stop_workspaces_pool]{stop_workspaces_pool} \tab Stops the specified pool\cr
+\link[paws.end.user.computing:workspaces_stop_workspaces_pool]{stop_workspaces_pool} \tab End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools\cr
 \link[paws.end.user.computing:workspaces_terminate_workspaces]{terminate_workspaces} \tab Terminates the specified WorkSpaces\cr
-\link[paws.end.user.computing:workspaces_terminate_workspaces_pool]{terminate_workspaces_pool} \tab Terminates the specified pool\cr
-\link[paws.end.user.computing:workspaces_terminate_workspaces_pool_session]{terminate_workspaces_pool_session} \tab Terminates the pool session\cr
-\link[paws.end.user.computing:workspaces_update_connect_client_add_in]{update_connect_client_add_in} \tab Updates a Amazon Connect client add-in\cr
+\link[paws.end.user.computing:workspaces_terminate_workspaces_pool]{terminate_workspaces_pool} \tab End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools\cr
+\link[paws.end.user.computing:workspaces_terminate_workspaces_pool_session]{terminate_workspaces_pool_session} \tab End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools\cr
+\link[paws.end.user.computing:workspaces_update_connect_client_add_in]{update_connect_client_add_in} \tab Updates a Connect Customer client add-in\cr
 \link[paws.end.user.computing:workspaces_update_connection_alias_permission]{update_connection_alias_permission} \tab Shares or unshares a connection alias with one account by specifying whether that account has permission to associate the connection alias with a directory\cr
 \link[paws.end.user.computing:workspaces_update_rules_of_ip_group]{update_rules_of_ip_group} \tab Replaces the current rules of the specified IP access control group with the specified rules\cr
 \link[paws.end.user.computing:workspaces_update_workspace_bundle]{update_workspace_bundle} \tab Updates a WorkSpace bundle with a new image\cr
 \link[paws.end.user.computing:workspaces_update_workspace_image_permission]{update_workspace_image_permission} \tab Shares or unshares an image with one account in the same Amazon Web Services Region by specifying whether that account has permission to copy the image\cr
-\link[paws.end.user.computing:workspaces_update_workspaces_pool]{update_workspaces_pool} \tab Updates the specified pool
+\link[paws.end.user.computing:workspaces_update_workspaces_pool]{update_workspaces_pool} \tab End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools
 }
 }
 

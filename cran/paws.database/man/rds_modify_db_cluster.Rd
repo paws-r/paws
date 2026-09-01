@@ -52,7 +52,8 @@ rds_modify_db_cluster(
   AwsBackupRecoveryPointArn = NULL,
   EnableLimitlessDatabase = NULL,
   CACertificateIdentifier = NULL,
-  MasterUserAuthenticationType = NULL
+  MasterUserAuthenticationType = NULL,
+  EngineLifecycleSupport = NULL
 )
 }
 \arguments{
@@ -473,6 +474,18 @@ You can specify one of the following values:
 Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 This option is only valid for RDS for PostgreSQL and Aurora PostgreSQL engines.}
+
+\item{EngineLifecycleSupport}{The lifecycle type for this DB cluster.
+
+You can use this setting to enroll your DB cluster into Amazon RDS Extended Support or to opt out. With RDS Extended Support, you can run the selected major engine version on your DB cluster past the end of standard support for that engine version. For more information, see the following sections:
+\itemize{
+\item Amazon Aurora - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon Aurora} in the \emph{Amazon Aurora User Guide}
+\item Amazon RDS - \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon RDS} in the \emph{Amazon RDS User Guide}
+}
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
+Valid Values: \code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}}
 }
 \description{
 Modifies the settings of an Amazon Aurora DB cluster or a Multi-AZ DB cluster. You can change one or more settings by specifying these parameters and the new values in the request.

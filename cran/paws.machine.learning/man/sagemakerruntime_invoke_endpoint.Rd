@@ -18,7 +18,8 @@ sagemakerruntime_invoke_endpoint(
   InferenceId = NULL,
   EnableExplanations = NULL,
   InferenceComponentName = NULL,
-  SessionId = NULL
+  SessionId = NULL,
+  PrefixAwareId = NULL
 )
 }
 \arguments{
@@ -59,6 +60,10 @@ For information about how to use variant targeting to perform a/b testing, see \
 }
 
 With a stateful session, you can send multiple requests to a stateful model. When you create a session with a stateful model, the model must create the session ID and set the expiration time. The model must also provide that information in the response to your request. You can get the ID and timestamp from the \code{NewSessionId} response parameter. For any subsequent request where you specify that session ID, SageMaker AI routes the request to the same instance that supports the session.}
+
+\item{PrefixAwareId}{An optional, stable identifier that serves as a routing hint for prefix-aware routing. The service routes requests with the same prefix and the same identifier to the same instance. If requests from different applications might have the same prompt prefix, set a different identifier for each application to differentiate their routing decisions.
+
+Applies only to endpoints configured with a \code{RoutingStrategy} of \code{PREFIX_AWARE}.}
 }
 \description{
 After you deploy a model into production using Amazon SageMaker AI hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint.

@@ -6,13 +6,19 @@
 \usage{
 vpclattice_update_service_network_vpc_association(
   serviceNetworkVpcAssociationIdentifier,
-  securityGroupIds
+  securityGroupIds = NULL,
+  privateDnsEnabled = NULL,
+  dnsOptions = NULL
 )
 }
 \arguments{
 \item{serviceNetworkVpcAssociationIdentifier}{[required] The ID or ARN of the association.}
 
-\item{securityGroupIds}{[required] The IDs of the security groups.}
+\item{securityGroupIds}{The IDs of the security groups.}
+
+\item{privateDnsEnabled}{Indicates if private DNS is enabled for the VPC association.}
+
+\item{dnsOptions}{DNS options for the service network VPC association.}
 }
 \description{
 Updates the service network and VPC association. If you add a security group to the service network and VPC association, the association must continue to have at least one security group. You can add or edit security groups at any time. However, to remove all security groups, you must first delete the association and then recreate it without security groups.

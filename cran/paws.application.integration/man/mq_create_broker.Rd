@@ -20,6 +20,7 @@ mq_create_broker(
   MaintenanceWindowStartTime = NULL,
   PubliclyAccessible,
   SecurityGroups = NULL,
+  StorageSize = NULL,
   StorageType = NULL,
   SubnetIds = NULL,
   Tags = NULL,
@@ -64,6 +65,8 @@ We recommend using a Universally Unique Identifier (UUID) for the creatorRequest
 \item{PubliclyAccessible}{[required] Enables connections from applications outside of the VPC that hosts the broker's subnets. Set to false by default, if no value is provided.}
 
 \item{SecurityGroups}{The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.}
+
+\item{StorageSize}{The broker's storage size in GB.}
 
 \item{StorageType}{The broker's storage type.}
 

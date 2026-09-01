@@ -185,25 +185,26 @@ prometheusservice_create_rule_groups_namespace <- function(workspaceId, name, da
 }
 .prometheusservice$operations$create_rule_groups_namespace <- prometheusservice_create_rule_groups_namespace
 
-#' The CreateScraper operation creates a scraper to collect metrics
+#' Creates a scraper to collect metrics from Prometheus-compatible sources
 #'
 #' @description
-#' The [`create_scraper`][prometheusservice_create_scraper] operation creates a scraper to collect metrics. A scraper pulls metrics from Prometheus-compatible sources and sends them to your Amazon Managed Service for Prometheus workspace. You can configure scrapers to collect metrics from Amazon EKS clusters, Amazon MSK clusters, or from VPC-based sources that support DNS-based service discovery. Scrapers are flexible, and can be configured to control what metrics are collected, the frequency of collection, what transformations are applied to the metrics, and more.
+#' Creates a scraper to collect metrics from Prometheus-compatible sources. The scraper sends the collected metrics to Amazon Managed Service for Prometheus workspaces or CloudWatch datasets. You can configure scrapers to collect metrics from Amazon EKS clusters, Amazon MSK clusters, or from VPC-based sources that support DNS-based service discovery. Scrapers are flexible. You can configure a scraper to control which metrics to collect, the frequency of collection, which transformations to apply to the metrics, and more.
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_create_scraper/](https://www.paws-r-sdk.com/docs/prometheusservice_create_scraper/) for full documentation.
 #'
 #' @param alias (optional) An alias to associate with the scraper. This is for your use, and does not need to be unique.
 #' @param scrapeConfiguration &#91;required&#93; The configuration file to use in the new scraper. For more information, see [Scraper configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration) in the *Amazon Managed Service for Prometheus User Guide*.
 #' @param source &#91;required&#93; The Amazon EKS or Amazon Web Services cluster from which the scraper will collect metrics.
-#' @param destination &#91;required&#93; The Amazon Managed Service for Prometheus workspace to send metrics to.
+#' @param destination &#91;required&#93; The destination where the scraper sends the collected metrics. Valid destinations are Amazon Managed Service for Prometheus workspaces and CloudWatch datasets.
 #' @param roleConfiguration Use this structure to enable cross-account access, so that you can use a target account to access Prometheus metrics from source accounts.
 #' @param clientToken (Optional) A unique, case-sensitive identifier that you can provide to ensure the idempotency of the request.
 #' @param tags (Optional) The list of tag keys and values to associate with the scraper.
+#' @param exporters The exporter configurations for the scraper. You can configure at most one Amazon OpenSearch Service domain. If you don't specify a value, the scraper is created without an exporter configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_create_scraper
-prometheusservice_create_scraper <- function(alias = NULL, scrapeConfiguration, source, destination, roleConfiguration = NULL, clientToken = NULL, tags = NULL) {
+prometheusservice_create_scraper <- function(alias = NULL, scrapeConfiguration, source, destination, roleConfiguration = NULL, clientToken = NULL, tags = NULL, exporters = NULL) {
   op <- new_operation(
     name = "CreateScraper",
     http_method = "POST",
@@ -212,7 +213,7 @@ prometheusservice_create_scraper <- function(alias = NULL, scrapeConfiguration, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$create_scraper_input(alias = alias, scrapeConfiguration = scrapeConfiguration, source = source, destination = destination, roleConfiguration = roleConfiguration, clientToken = clientToken, tags = tags)
+  input <- .prometheusservice$create_scraper_input(alias = alias, scrapeConfiguration = scrapeConfiguration, source = source, destination = destination, roleConfiguration = roleConfiguration, clientToken = clientToken, tags = tags, exporters = exporters)
   output <- .prometheusservice$create_scraper_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -1382,14 +1383,15 @@ prometheusservice_update_query_logging_configuration <- function(workspaceId, de
 #' @param scrapeConfiguration Contains the base-64 encoded YAML configuration for the scraper.
 #' 
 #' For more information about configuring a scraper, see [Using an Amazon Web Services managed collector](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html) in the *Amazon Managed Service for Prometheus User Guide*.
-#' @param destination The new Amazon Managed Service for Prometheus workspace to send metrics to.
+#' @param destination The new destination where the scraper sends metrics. Valid destinations are Amazon Managed Service for Prometheus workspaces and CloudWatch datasets.
 #' @param roleConfiguration Use this structure to enable cross-account access, so that you can use a target account to access Prometheus metrics from source accounts.
 #' @param clientToken A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.
+#' @param exporters The exporter configurations for the scraper. You can configure at most one Amazon OpenSearch Service domain. If you don't specify a value, the existing exporter configuration remains unchanged.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_update_scraper
-prometheusservice_update_scraper <- function(scraperId, alias = NULL, scrapeConfiguration = NULL, destination = NULL, roleConfiguration = NULL, clientToken = NULL) {
+prometheusservice_update_scraper <- function(scraperId, alias = NULL, scrapeConfiguration = NULL, destination = NULL, roleConfiguration = NULL, clientToken = NULL, exporters = NULL) {
   op <- new_operation(
     name = "UpdateScraper",
     http_method = "PUT",
@@ -1398,7 +1400,7 @@ prometheusservice_update_scraper <- function(scraperId, alias = NULL, scrapeConf
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$update_scraper_input(scraperId = scraperId, alias = alias, scrapeConfiguration = scrapeConfiguration, destination = destination, roleConfiguration = roleConfiguration, clientToken = clientToken)
+  input <- .prometheusservice$update_scraper_input(scraperId = scraperId, alias = alias, scrapeConfiguration = scrapeConfiguration, destination = destination, roleConfiguration = roleConfiguration, clientToken = clientToken, exporters = exporters)
   output <- .prometheusservice$update_scraper_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -1489,11 +1491,13 @@ prometheusservice_update_workspace_alias <- function(workspaceId, alias = NULL, 
 #' @param clientToken You can include a token in your operation to make it an idempotent opeartion.
 #' @param limitsPerLabelSet This is an array of structures, where each structure defines a label set for the workspace, and defines the active time series limit for each of those label sets. Each label name in a label set must be unique.
 #' @param retentionPeriodInDays Specifies how many days that metrics will be retained in the workspace.
+#' @param outOfOrderTimeWindowInSeconds Specifies the time window in seconds for accepting out of order samples. Out of order samples older than this window are rejected.
+#' @param ruleQueryOffsetInSeconds Specifies the duration in seconds to offset rule evaluation queries into the past. This allows ingested samples to be available before rule evaluation.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_update_workspace_configuration
-prometheusservice_update_workspace_configuration <- function(workspaceId, clientToken = NULL, limitsPerLabelSet = NULL, retentionPeriodInDays = NULL) {
+prometheusservice_update_workspace_configuration <- function(workspaceId, clientToken = NULL, limitsPerLabelSet = NULL, retentionPeriodInDays = NULL, outOfOrderTimeWindowInSeconds = NULL, ruleQueryOffsetInSeconds = NULL) {
   op <- new_operation(
     name = "UpdateWorkspaceConfiguration",
     http_method = "PATCH",
@@ -1502,7 +1506,7 @@ prometheusservice_update_workspace_configuration <- function(workspaceId, client
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$update_workspace_configuration_input(workspaceId = workspaceId, clientToken = clientToken, limitsPerLabelSet = limitsPerLabelSet, retentionPeriodInDays = retentionPeriodInDays)
+  input <- .prometheusservice$update_workspace_configuration_input(workspaceId = workspaceId, clientToken = clientToken, limitsPerLabelSet = limitsPerLabelSet, retentionPeriodInDays = retentionPeriodInDays, outOfOrderTimeWindowInSeconds = outOfOrderTimeWindowInSeconds, ruleQueryOffsetInSeconds = ruleQueryOffsetInSeconds)
   output <- .prometheusservice$update_workspace_configuration_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)

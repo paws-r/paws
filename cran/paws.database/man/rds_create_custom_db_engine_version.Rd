@@ -34,17 +34,24 @@ RDS Custom for SQL Server supports the following values:
 \itemize{
 \item \code{custom-sqlserver-ee}
 \item \code{custom-sqlserver-se}
-\item \code{ccustom-sqlserver-web}
+\item \code{custom-sqlserver-web}
 \item \code{custom-sqlserver-dev}
 }
 
-RDS for SQL Server supports only \code{sqlserver-dev-ee}.}
+RDS for SQL Server supports the following values:
+\itemize{
+\item \code{sqlserver-ee} (Bring Your Own Media)
+\item \code{sqlserver-se} (Bring Your Own Media)
+\item \code{sqlserver-dev-ee}
+}}
 
 \item{EngineVersion}{[required] The name of your custom engine version (CEV).
 
 For RDS Custom for Oracle, the name format is \verb{19.*customized_string*}. For example, a valid CEV name is \verb{19.my_cev1}.
 
-For RDS for SQL Server and RDS Custom for SQL Server, the name format is \verb{major engine_version*.*minor_engine_version*.*customized_string*}. For example, a valid CEV name is \verb{16.00.4215.2.my_cev1}.
+For RDS Custom for SQL Server and RDS for SQL Server \code{sqlserver-dev-ee}, the name format is \verb{*major_engine_version*.*minor_engine_version*.*customized_string*}. For example, a valid CEV name is \verb{16.00.4215.2.my_cev1}.
+
+For RDS for SQL Server Bring Your Own Media (\code{sqlserver-ee}, \code{sqlserver-se}), specify the RDS engine version that you want to use. For example, \verb{16.00.4175.1.v1}.
 
 The CEV name is unique per customer per Amazon Web Services Regions.}
 
@@ -52,7 +59,9 @@ The CEV name is unique per customer per Amazon Web Services Regions.}
 
 \item{DatabaseInstallationFilesS3Prefix}{The Amazon S3 directory that contains the database installation files for your CEV. For example, a valid bucket name is \code{123456789012/cev1}. If this setting isn't specified, no prefix is assumed.}
 
-\item{DatabaseInstallationFiles}{The database installation files (ISO and EXE) uploaded to Amazon S3 for your database engine version to import to Amazon RDS.}
+\item{DatabaseInstallationFiles}{The database installation files (ISO and EXE) uploaded to Amazon S3 for your database engine version to import to Amazon RDS.
+
+For RDS for SQL Server Bring Your Own Media (\code{sqlserver-ee}, \code{sqlserver-se}), provide the SQL Server RTM ISO file once per major version and edition combination. Minor versions reuse the same file.}
 
 \item{ImageId}{The ID of the Amazon Machine Image (AMI). For RDS Custom for SQL Server, an AMI ID is required to create a CEV. For RDS Custom for Oracle, the default is the most recent AMI available, but you can specify an AMI ID that was used in a different Oracle CEV. Find the AMIs used by your CEVs by calling the \code{\link[=rds_describe_db_engine_versions]{describe_db_engine_versions}} operation.}
 

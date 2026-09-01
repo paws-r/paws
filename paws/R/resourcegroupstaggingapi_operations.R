@@ -75,15 +75,15 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' @param RegionFilters Specifies a list of Amazon Web Services Regions to limit the output to. If you use this parameter, the count of returned noncompliant resources includes only resources in the specified Regions.
 #' @param ResourceTypeFilters Specifies that you want the response to include information for only resources of the specified types. The format of each resource type is `service[:resourceType]`. For example, specifying a resource type of `ec2` returns all Amazon EC2 resources (which includes EC2 instances). Specifying a resource type of `ec2:instance` returns only EC2 instances.
 #' 
-#' The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN). Consult the \emph{\href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services General Reference}} for the following:
+#' The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN). Consult the *\href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services General Reference}* for the following:
 #' 
 #' -   For a list of service name strings, see [Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces).
 #' 
-#' -   For resource type strings, see [Example ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=8a887164-7100-4226-b322-ec08c02bbdaf#arns-syntax).
+#' -   For resource type strings, see [Example ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arns-syntax).
 #' 
 #' -   For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' 
-#' For the list of services whose resources you can tag using the Resource Groups Tagging API, see [Services that support the Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/supported-services.html). If an Amazon Web Services service isn't listed on that page, you might still be able to tag that service's resources by using that service's native tagging operations instead of using Resource Groups Tagging API operations. All tagged resources, whether the tagging used the Resource Groups Tagging API or not, are returned by the `Get*` operation.
+#' For the list of services whose resources you can tag using the Resource Groups Tagging API, see [Services that support the Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/). If an Amazon Web Services service isn't listed on that page, you might still be able to tag that service's resources by using that service's native tagging operations instead of using Resource Groups Tagging API operations. All tagged resources, whether the tagging used the Resource Groups Tagging API or not, are returned by the `Get*` operation.
 #' 
 #' You can specify multiple resource types by using a comma separated array. The array can include up to 100 items. Note that the length constraint requirement applies to each resource type filter.
 #' @param TagKeyFilters Specifies that you want the response to include information for only resources that have tags with the specified tag keys. If you use this parameter, the count of returned noncompliant resources includes only resources that have the specified tag keys.
@@ -217,7 +217,7 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' 
 #' The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN).
 #' 
-#' For the list of services whose resources you can tag using the Resource Groups Tagging API, see [Services that support the Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/supported-services.html). If an Amazon Web Services service isn't listed on that page, you might still be able to tag that service's resources by using that service's native tagging operations instead of using Resource Groups Tagging API operations. All tagged resources, whether the tagging used the Resource Groups Tagging API or not, are returned by the `Get*` operation.
+#' For the list of services whose resources you can tag using the Resource Groups Tagging API, see [Services that support the Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/). If an Amazon Web Services service isn't listed on that page, you might still be able to tag that service's resources by using that service's native tagging operations instead of using Resource Groups Tagging API operations. All tagged resources, whether the tagging used the Resource Groups Tagging API or not, are returned by the `Get*` operation.
 #' 
 #' You can specify multiple resource types by using an array. The array can include up to 100 items. Note that the length constraint requirement applies to each resource type filter. For example, the following string would limit the response to only Amazon EC2 instances, Amazon S3 buckets, or any Audit Manager resource:
 #' 
@@ -558,7 +558,7 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' @description
 #' Applies one or more tags to the specified resources. Note the following:
 #' 
-#' -   Not all resources can have tags. For a list of services with resources that support tagging using this operation, see [Services that support the Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/supported-services.html). If the resource doesn't yet support this operation, the resource's service might support tagging using its own API operations. For more information, refer to the documentation for that service.
+#' -   Not all resources can have tags. For a list of services with resources that support tagging using this operation, see [Services that support the Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/). If the resource doesn't yet support this operation, the resource's service might support tagging using its own API operations. For more information, refer to the documentation for that service.
 #' 
 #' -   Each resource can have up to 50 tags. For other limits, see [Tag Naming and Usage Conventions](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html#tag-conventions) in the *Amazon Web Services General Reference.*
 #' 
@@ -566,7 +566,7 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' 
 #' -   To add tags to a resource, you need the necessary permissions for the service that the resource belongs to as well as permissions for adding tags. For more information, see the documentation for each service.
 #' 
-#' -   When you use the [Amazon Web Services Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/overview.html) to update tags for Amazon Web Services CloudFormation stack sets, Amazon Web Services calls the [Amazon Web Services CloudFormation `UpdateStack`](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStack.html) operation. This operation may initiate additional resource property updates in addition to the desired tag updates. To avoid unexpected resource updates, Amazon Web Services recommends that you only apply or update tags to your CloudFormation stack sets using Amazon Web Services CloudFormation.
+#' -   When you use the [Amazon Web Services Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/) to update tags for Amazon Web Services CloudFormation stack sets, Amazon Web Services calls the [Amazon Web Services CloudFormation `UpdateStack`](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStack.html) operation. This operation may initiate additional resource property updates in addition to the desired tag updates. To avoid unexpected resource updates, Amazon Web Services recommends that you only apply or update tags to your CloudFormation stack sets using Amazon Web Services CloudFormation.
 #' 
 #' Do not store personally identifiable information (PII) or other confidential or sensitive information in tags. We use tags to provide you with billing and administration services. Tags are not intended to be used for private or sensitive data.
 #' 

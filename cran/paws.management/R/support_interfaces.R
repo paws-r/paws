@@ -5,7 +5,7 @@ NULL
 
 .support$add_attachments_to_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(attachmentSetId = structure(logical(0), tags = list(type = "string")), attachments = structure(list(structure(list(fileName = structure(logical(0), tags = list(type = "string")), data = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(attachmentSetId = structure(logical(0), tags = list(type = "string")), attachments = structure(list(structure(list(fileName = structure(logical(0), tags = list(type = "string")), data = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))), tags = list(type = "list")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -17,7 +17,7 @@ NULL
 
 .support$add_communication_to_case_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(caseId = structure(logical(0), tags = list(type = "string")), communicationBody = structure(logical(0), tags = list(type = "string")), ccEmailAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), attachmentSetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(caseId = structure(logical(0), tags = list(type = "string")), communicationBody = structure(logical(0), tags = list(type = "string")), ccEmailAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), attachmentSetId = structure(logical(0), tags = list(type = "string")), uploadIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -27,9 +27,21 @@ NULL
   return(populate(args, shape))
 }
 
+.support$complete_attachment_upload_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(uploadId = structure(logical(0), tags = list(type = "string")), completedUploads = structure(list(structure(list(partIndex = structure(logical(0), tags = list(type = "integer")), eTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.support$complete_attachment_upload_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(uploadStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .support$create_case_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subject = structure(logical(0), tags = list(type = "string")), serviceCode = structure(logical(0), tags = list(type = "string")), severityCode = structure(logical(0), tags = list(type = "string")), categoryCode = structure(logical(0), tags = list(type = "string")), communicationBody = structure(logical(0), tags = list(type = "string")), ccEmailAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), language = structure(logical(0), tags = list(type = "string")), issueType = structure(logical(0), tags = list(type = "string")), attachmentSetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(subject = structure(logical(0), tags = list(type = "string")), serviceCode = structure(logical(0), tags = list(type = "string")), severityCode = structure(logical(0), tags = list(type = "string")), categoryCode = structure(logical(0), tags = list(type = "string")), communicationBody = structure(logical(0), tags = list(type = "string")), ccEmailAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), language = structure(logical(0), tags = list(type = "string")), issueType = structure(logical(0), tags = list(type = "string")), attachmentSetId = structure(logical(0), tags = list(type = "string")), uploadIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -41,7 +53,7 @@ NULL
 
 .support$describe_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(attachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(attachmentId = structure(logical(0), tags = list(type = "string")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -51,33 +63,45 @@ NULL
   return(populate(args, shape))
 }
 
+.support$describe_attachment_upload_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(uploadId = structure(logical(0), tags = list(type = "string")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.support$describe_attachment_upload_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(uploadStatus = structure(logical(0), tags = list(type = "string")), fileName = structure(logical(0), tags = list(type = "string")), uploadProgress = structure(list(totalParts = structure(logical(0), tags = list(type = "integer")), completedPartsCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .support$describe_cases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(caseIdList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), displayId = structure(logical(0), tags = list(type = "string")), afterTime = structure(logical(0), tags = list(type = "string")), beforeTime = structure(logical(0), tags = list(type = "string")), includeResolvedCases = structure(logical(0), tags = list(type = "boolean")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), language = structure(logical(0), tags = list(type = "string")), includeCommunications = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(caseIdList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), displayId = structure(logical(0), tags = list(type = "string")), afterTime = structure(logical(0), tags = list(type = "string")), beforeTime = structure(logical(0), tags = list(type = "string")), includeResolvedCases = structure(logical(0), tags = list(type = "boolean")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), language = structure(logical(0), tags = list(type = "string")), includeCommunications = structure(logical(0), tags = list(type = "boolean")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .support$describe_cases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cases = structure(list(structure(list(caseId = structure(logical(0), tags = list(type = "string")), displayId = structure(logical(0), tags = list(type = "string")), subject = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), serviceCode = structure(logical(0), tags = list(type = "string")), categoryCode = structure(logical(0), tags = list(type = "string")), severityCode = structure(logical(0), tags = list(type = "string")), submittedBy = structure(logical(0), tags = list(type = "string")), timeCreated = structure(logical(0), tags = list(type = "string")), recentCommunications = structure(list(communications = structure(list(structure(list(caseId = structure(logical(0), tags = list(type = "string")), body = structure(logical(0), tags = list(type = "string")), submittedBy = structure(logical(0), tags = list(type = "string")), timeCreated = structure(logical(0), tags = list(type = "string")), attachmentSet = structure(list(structure(list(attachmentId = structure(logical(0), tags = list(type = "string")), fileName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ccEmailAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), language = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(cases = structure(list(structure(list(caseId = structure(logical(0), tags = list(type = "string")), displayId = structure(logical(0), tags = list(type = "string")), subject = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), serviceCode = structure(logical(0), tags = list(type = "string")), categoryCode = structure(logical(0), tags = list(type = "string")), severityCode = structure(logical(0), tags = list(type = "string")), submittedBy = structure(logical(0), tags = list(type = "string")), timeCreated = structure(logical(0), tags = list(type = "string")), recentCommunications = structure(list(communications = structure(list(structure(list(caseId = structure(logical(0), tags = list(type = "string")), body = structure(logical(0), tags = list(type = "string")), submittedBy = structure(logical(0), tags = list(type = "string")), timeCreated = structure(logical(0), tags = list(type = "string")), attachments = structure(list(structure(list(attachmentId = structure(logical(0), tags = list(type = "string")), fileName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), attachmentSet = structure(list(structure(list(attachmentId = structure(logical(0), tags = list(type = "string")), fileName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ccEmailAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), language = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .support$describe_communications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(caseId = structure(logical(0), tags = list(type = "string")), beforeTime = structure(logical(0), tags = list(type = "string")), afterTime = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(caseId = structure(logical(0), tags = list(type = "string")), beforeTime = structure(logical(0), tags = list(type = "string")), afterTime = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .support$describe_communications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(communications = structure(list(structure(list(caseId = structure(logical(0), tags = list(type = "string")), body = structure(logical(0), tags = list(type = "string")), submittedBy = structure(logical(0), tags = list(type = "string")), timeCreated = structure(logical(0), tags = list(type = "string")), attachmentSet = structure(list(structure(list(attachmentId = structure(logical(0), tags = list(type = "string")), fileName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(communications = structure(list(structure(list(caseId = structure(logical(0), tags = list(type = "string")), body = structure(logical(0), tags = list(type = "string")), submittedBy = structure(logical(0), tags = list(type = "string")), timeCreated = structure(logical(0), tags = list(type = "string")), attachments = structure(list(structure(list(attachmentId = structure(logical(0), tags = list(type = "string")), fileName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), attachmentSet = structure(list(structure(list(attachmentId = structure(logical(0), tags = list(type = "string")), fileName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .support$describe_create_case_options_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(issueType = structure(logical(0), tags = list(type = "string")), serviceCode = structure(logical(0), tags = list(type = "string")), language = structure(logical(0), tags = list(type = "string")), categoryCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(issueType = structure(logical(0), tags = list(type = "string")), serviceCode = structure(logical(0), tags = list(type = "string")), language = structure(logical(0), tags = list(type = "string")), categoryCode = structure(logical(0), tags = list(type = "string")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -89,7 +113,7 @@ NULL
 
 .support$describe_services_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceCodeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), language = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(serviceCodeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), language = structure(logical(0), tags = list(type = "string")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -101,7 +125,7 @@ NULL
 
 .support$describe_severity_levels_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(language = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(language = structure(logical(0), tags = list(type = "string")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -113,7 +137,7 @@ NULL
 
 .support$describe_supported_languages_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(issueType = structure(logical(0), tags = list(type = "string")), serviceCode = structure(logical(0), tags = list(type = "string")), categoryCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(issueType = structure(logical(0), tags = list(type = "string")), serviceCode = structure(logical(0), tags = list(type = "string")), categoryCode = structure(logical(0), tags = list(type = "string")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -171,6 +195,30 @@ NULL
   return(populate(args, shape))
 }
 
+.support$get_attachment_download_link_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(attachmentId = structure(logical(0), tags = list(type = "string")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.support$get_attachment_download_link_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(fileName = structure(logical(0), tags = list(type = "string")), downloadUrl = structure(list(url = structure(logical(0), tags = list(type = "string")), expiryDate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.support$get_attachment_upload_links_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(fileName = structure(logical(0), tags = list(type = "string")), fileSizeBytes = structure(logical(0), tags = list(type = "long")), uploadId = structure(logical(0), tags = list(type = "string")), uploadRange = structure(list(startIndex = structure(logical(0), tags = list(type = "integer")), endIndex = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.support$get_attachment_upload_links_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(uploadId = structure(logical(0), tags = list(type = "string")), partSizeBytes = structure(logical(0), tags = list(type = "long")), totalParts = structure(logical(0), tags = list(type = "integer")), nextIndex = structure(logical(0), tags = list(type = "integer")), uploadUrls = structure(list(structure(list(url = structure(logical(0), tags = list(type = "string")), partIndex = structure(logical(0), tags = list(type = "integer")), expiryDate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .support$refresh_trusted_advisor_check_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(checkId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -185,7 +233,7 @@ NULL
 
 .support$resolve_case_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(caseId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(caseId = structure(logical(0), tags = list(type = "string")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

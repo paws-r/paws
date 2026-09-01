@@ -59,8 +59,8 @@ Amazon RDS provides an HTTP endpoint to run SQL statements on an Amazon Aurora D
 
 Data API is available with the following types of Aurora databases:
 \itemize{
-\item Aurora PostgreSQL - Serverless v2, provisioned, and Serverless v1
-\item Aurora MySQL - Serverless v2, provisioned, and Serverless v1
+\item Aurora PostgreSQL - Serverless and provisioned
+\item Aurora MySQL - Serverless and provisioned
 }
 
 For more information about the Data API, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html}{Using RDS Data API} in the \emph{Amazon Aurora User Guide}.

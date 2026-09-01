@@ -2,15 +2,17 @@
 % Please edit documentation in R/bedrockagentcorecontrol_operations.R
 \name{bedrockagentcorecontrol_get_harness}
 \alias{bedrockagentcorecontrol_get_harness}
-\title{Operation to get a single Harness}
+\title{Operation to get a single harness}
 \usage{
-bedrockagentcorecontrol_get_harness(harnessId)
+bedrockagentcorecontrol_get_harness(harnessId, harnessVersion = NULL)
 }
 \arguments{
 \item{harnessId}{[required] The ID of the harness to retrieve.}
+
+\item{harnessVersion}{Specific version of the harness to retrieve. If omitted, returns the current Harness configuration, including its status.}
 }
 \description{
-Operation to get a single Harness.
+Operation to get a single harness.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_get_harness/} for full documentation.
 }

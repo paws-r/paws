@@ -9,7 +9,9 @@ prometheusservice_update_workspace_configuration(
   workspaceId,
   clientToken = NULL,
   limitsPerLabelSet = NULL,
-  retentionPeriodInDays = NULL
+  retentionPeriodInDays = NULL,
+  outOfOrderTimeWindowInSeconds = NULL,
+  ruleQueryOffsetInSeconds = NULL
 )
 }
 \arguments{
@@ -20,6 +22,10 @@ prometheusservice_update_workspace_configuration(
 \item{limitsPerLabelSet}{This is an array of structures, where each structure defines a label set for the workspace, and defines the active time series limit for each of those label sets. Each label name in a label set must be unique.}
 
 \item{retentionPeriodInDays}{Specifies how many days that metrics will be retained in the workspace.}
+
+\item{outOfOrderTimeWindowInSeconds}{Specifies the time window in seconds for accepting out of order samples. Out of order samples older than this window are rejected.}
+
+\item{ruleQueryOffsetInSeconds}{Specifies the duration in seconds to offset rule evaluation queries into the past. This allows ingested samples to be available before rule evaluation.}
 }
 \description{
 Use this operation to create or update the label sets, label set limits, and retention period of a workspace.

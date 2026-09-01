@@ -233,16 +233,16 @@ workspaces_create_account_link_invitation <- function(TargetAccountId, ClientTok
 }
 .workspaces$operations$create_account_link_invitation <- workspaces_create_account_link_invitation
 
-#' Creates a client-add-in for Amazon Connect within a directory
+#' Creates a client-add-in for Connect Customer within a directory
 #'
 #' @description
-#' Creates a client-add-in for Amazon Connect within a directory. You can create only one Amazon Connect client add-in within a directory.
+#' Creates a client-add-in for Connect Customer within a directory. You can create only one Connect Customer client add-in within a directory.
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspaces_create_connect_client_add_in/](https://www.paws-r-sdk.com/docs/workspaces_create_connect_client_add_in/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The directory identifier for which to configure the client add-in.
 #' @param Name &#91;required&#93; The name of the client add-in.
-#' @param URL &#91;required&#93; The endpoint URL of the Amazon Connect client add-in.
+#' @param URL &#91;required&#93; The endpoint URL of the Connect Customer client add-in.
 #'
 #' @keywords internal
 #'
@@ -540,10 +540,11 @@ workspaces_create_workspaces <- function(Workspaces) {
 }
 .workspaces$operations$create_workspaces <- workspaces_create_workspaces
 
-#' Creates a pool of WorkSpaces
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
-#' Creates a pool of WorkSpaces.
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspaces_create_workspaces_pool/](https://www.paws-r-sdk.com/docs/workspaces_create_workspaces_pool/) for full documentation.
 #'
@@ -643,11 +644,11 @@ workspaces_delete_client_branding <- function(ResourceId, Platforms) {
 }
 .workspaces$operations$delete_client_branding <- workspaces_delete_client_branding
 
-#' Deletes a client-add-in for Amazon Connect that is configured within a
+#' Deletes a client-add-in for Connect Customer that is configured within a
 #' directory
 #'
 #' @description
-#' Deletes a client-add-in for Amazon Connect that is configured within a directory.
+#' Deletes a client-add-in for Connect Customer that is configured within a directory.
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspaces_delete_connect_client_add_in/](https://www.paws-r-sdk.com/docs/workspaces_delete_connect_client_add_in/) for full documentation.
 #'
@@ -1128,10 +1129,11 @@ workspaces_describe_client_properties <- function(ResourceIds) {
 }
 .workspaces$operations$describe_client_properties <- workspaces_describe_client_properties
 
-#' Retrieves a list of Amazon Connect client add-ins that have been created
+#' Retrieves a list of Connect Customer client add-ins that have been
+#' created
 #'
 #' @description
-#' Retrieves a list of Amazon Connect client add-ins that have been created.
+#' Retrieves a list of Connect Customer client add-ins that have been created.
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspaces_describe_connect_client_add_ins/](https://www.paws-r-sdk.com/docs/workspaces_describe_connect_client_add_ins/) for full documentation.
 #'
@@ -1635,11 +1637,11 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
 }
 .workspaces$operations$describe_workspaces_connection_status <- workspaces_describe_workspaces_connection_status
 
-#' Retrieves a list that describes the streaming sessions for a specified
-#' pool
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
-#' Retrieves a list that describes the streaming sessions for a specified pool.
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspaces_describe_workspaces_pool_sessions/](https://www.paws-r-sdk.com/docs/workspaces_describe_workspaces_pool_sessions/) for full documentation.
 #'
@@ -1670,10 +1672,11 @@ workspaces_describe_workspaces_pool_sessions <- function(PoolId, UserId = NULL, 
 }
 .workspaces$operations$describe_workspaces_pool_sessions <- workspaces_describe_workspaces_pool_sessions
 
-#' Describes the specified WorkSpaces Pools
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
-#' Describes the specified WorkSpaces Pools.
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspaces_describe_workspaces_pools/](https://www.paws-r-sdk.com/docs/workspaces_describe_workspaces_pools/) for full documentation.
 #'
@@ -2651,10 +2654,11 @@ workspaces_start_workspaces <- function(StartWorkspaceRequests) {
 }
 .workspaces$operations$start_workspaces <- workspaces_start_workspaces
 
-#' Starts the specified pool
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
-#' Starts the specified pool.
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspaces_start_workspaces_pool/](https://www.paws-r-sdk.com/docs/workspaces_start_workspaces_pool/) for full documentation.
 #'
@@ -2713,10 +2717,11 @@ workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
 }
 .workspaces$operations$stop_workspaces <- workspaces_stop_workspaces
 
-#' Stops the specified pool
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
-#' Stops the specified pool.
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspaces_stop_workspaces_pool/](https://www.paws-r-sdk.com/docs/workspaces_stop_workspaces_pool/) for full documentation.
 #'
@@ -2775,10 +2780,11 @@ workspaces_terminate_workspaces <- function(TerminateWorkspaceRequests) {
 }
 .workspaces$operations$terminate_workspaces <- workspaces_terminate_workspaces
 
-#' Terminates the specified pool
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
-#' Terminates the specified pool.
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspaces_terminate_workspaces_pool/](https://www.paws-r-sdk.com/docs/workspaces_terminate_workspaces_pool/) for full documentation.
 #'
@@ -2806,10 +2812,11 @@ workspaces_terminate_workspaces_pool <- function(PoolId) {
 }
 .workspaces$operations$terminate_workspaces_pool <- workspaces_terminate_workspaces_pool
 
-#' Terminates the pool session
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
-#' Terminates the pool session.
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspaces_terminate_workspaces_pool_session/](https://www.paws-r-sdk.com/docs/workspaces_terminate_workspaces_pool_session/) for full documentation.
 #'
@@ -2837,17 +2844,17 @@ workspaces_terminate_workspaces_pool_session <- function(SessionId) {
 }
 .workspaces$operations$terminate_workspaces_pool_session <- workspaces_terminate_workspaces_pool_session
 
-#' Updates a Amazon Connect client add-in
+#' Updates a Connect Customer client add-in
 #'
 #' @description
-#' Updates a Amazon Connect client add-in. Use this action to update the name and endpoint URL of a Amazon Connect client add-in.
+#' Updates a Connect Customer client add-in. Use this action to update the name and endpoint URL of a Connect Customer client add-in.
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspaces_update_connect_client_add_in/](https://www.paws-r-sdk.com/docs/workspaces_update_connect_client_add_in/) for full documentation.
 #'
 #' @param AddInId &#91;required&#93; The identifier of the client add-in to update.
 #' @param ResourceId &#91;required&#93; The directory identifier for which the client add-in is configured.
 #' @param Name The name of the client add-in.
-#' @param URL The endpoint URL of the Amazon Connect client add-in.
+#' @param URL The endpoint URL of the Connect Customer client add-in.
 #'
 #' @keywords internal
 #'
@@ -3007,10 +3014,11 @@ workspaces_update_workspace_image_permission <- function(ImageId, AllowCopyImage
 }
 .workspaces$operations$update_workspace_image_permission <- workspaces_update_workspace_image_permission
 
-#' Updates the specified pool
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
-#' Updates the specified pool.
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspaces_update_workspaces_pool/](https://www.paws-r-sdk.com/docs/workspaces_update_workspaces_pool/) for full documentation.
 #'

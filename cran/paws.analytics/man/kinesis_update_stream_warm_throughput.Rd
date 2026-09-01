@@ -22,7 +22,7 @@ kinesis_update_stream_warm_throughput(
 \item{WarmThroughputMiBps}{[required] The target warm throughput in MB/s that the stream should be scaled to handle. This represents the throughput capacity that will be immediately available for write operations.}
 }
 \description{
-Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream. This operation allows you to proactively scale your on-demand data stream to a specified throughput level, enabling better performance for sudden traffic spikes.
+Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream. Updates the warm throughput configuration for the specified on-demand data stream. Use this operation to scale your stream to a specified throughput level before anticipated traffic spikes, or to release excess capacity after traffic has decreased.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesis_update_stream_warm_throughput/} for full documentation.
 }

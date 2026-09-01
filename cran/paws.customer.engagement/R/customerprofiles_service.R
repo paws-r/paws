@@ -99,8 +99,10 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=customerprofiles_add_profile_key]{add_profile_key} \tab Associates a new key value with a specific profile, such as a Contact Record ContactId\cr
+#'  \link[=customerprofiles_associate_stream_for_segments]{associate_stream_for_segments} \tab Associates an Amazon Kinesis data stream to receive segment membership events for a given domain\cr
 #'  \link[=customerprofiles_batch_get_calculated_attribute_for_profile]{batch_get_calculated_attribute_for_profile} \tab Fetch the possible attribute values given the attribute name\cr
 #'  \link[=customerprofiles_batch_get_profile]{batch_get_profile} \tab Get a batch of profiles\cr
+#'  \link[=customerprofiles_batch_put_profile_object]{batch_put_profile_object} \tab Adds multiple profile objects to a domain of a given ObjectType in a single API call\cr
 #'  \link[=customerprofiles_create_calculated_attribute_definition]{create_calculated_attribute_definition} \tab Creates a new calculated attribute definition\cr
 #'  \link[=customerprofiles_create_domain]{create_domain} \tab Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys\cr
 #'  \link[=customerprofiles_create_domain_layout]{create_domain_layout} \tab Creates the layout to view data for a specific domain\cr
@@ -130,8 +132,10 @@ NULL
 #'  \link[=customerprofiles_delete_recommender_filter]{delete_recommender_filter} \tab Deletes a recommender filter from a domain\cr
 #'  \link[=customerprofiles_delete_recommender_schema]{delete_recommender_schema} \tab Deletes a recommender schema from a domain\cr
 #'  \link[=customerprofiles_delete_segment_definition]{delete_segment_definition} \tab Deletes a segment definition from the domain\cr
+#'  \link[=customerprofiles_delete_segment_subscription]{delete_segment_subscription} \tab Deletes a segment subscription for membership events\cr
 #'  \link[=customerprofiles_delete_workflow]{delete_workflow} \tab Deletes the specified workflow and all its corresponding resources\cr
 #'  \link[=customerprofiles_detect_profile_object_type]{detect_profile_object_type} \tab The process of detecting profile object type mapping by using given objects\cr
+#'  \link[=customerprofiles_disassociate_stream_for_segments]{disassociate_stream_for_segments} \tab Disassociates the Amazon Kinesis data stream configured for segment membership events\cr
 #'  \link[=customerprofiles_get_auto_merging_preview]{get_auto_merging_preview} \tab Tests the auto-merging settings of your Identity Resolution Job without merging your data\cr
 #'  \link[=customerprofiles_get_calculated_attribute_definition]{get_calculated_attribute_definition} \tab Provides more information on a calculated attribute definition for Customer Profiles\cr
 #'  \link[=customerprofiles_get_calculated_attribute_for_profile]{get_calculated_attribute_for_profile} \tab Retrieve a calculated attribute for a customer profile\cr
@@ -155,7 +159,9 @@ NULL
 #'  \link[=customerprofiles_get_segment_estimate]{get_segment_estimate} \tab Gets the result of a segment estimate query\cr
 #'  \link[=customerprofiles_get_segment_membership]{get_segment_membership} \tab Determines if the given profiles are within a segment\cr
 #'  \link[=customerprofiles_get_segment_snapshot]{get_segment_snapshot} \tab Retrieve the latest status of a segment snapshot\cr
+#'  \link[=customerprofiles_get_segment_subscription]{get_segment_subscription} \tab Returns the current subscription configuration, execution schedule, and status for segment membership events\cr
 #'  \link[=customerprofiles_get_similar_profiles]{get_similar_profiles} \tab Returns a set of profiles that belong to the same matching group using the matchId or profileId\cr
+#'  \link[=customerprofiles_get_stream_for_segments]{get_stream_for_segments} \tab Returns information about the segment membership event stream configured for a specific domain, including the stream state and associated segments\cr
 #'  \link[=customerprofiles_get_upload_job]{get_upload_job} \tab This API retrieves the details of a specific upload job\cr
 #'  \link[=customerprofiles_get_upload_job_path]{get_upload_job_path} \tab This API retrieves the pre-signed URL and client token for uploading the file associated with the upload job\cr
 #'  \link[=customerprofiles_get_workflow]{get_workflow} \tab Get details of specified workflow\cr
@@ -183,6 +189,7 @@ NULL
 #'  \link[=customerprofiles_list_recommender_schemas]{list_recommender_schemas} \tab Returns a list of recommender schemas in the specified domain\cr
 #'  \link[=customerprofiles_list_rule_based_matches]{list_rule_based_matches} \tab Returns a set of MatchIds that belong to the given domain\cr
 #'  \link[=customerprofiles_list_segment_definitions]{list_segment_definitions} \tab Lists all segment definitions under a domain\cr
+#'  \link[=customerprofiles_list_segment_subscription_events]{list_segment_subscription_events} \tab Returns the most recent membership events for a segment\cr
 #'  \link[=customerprofiles_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with an Amazon Connect Customer Profiles resource\cr
 #'  \link[=customerprofiles_list_upload_jobs]{list_upload_jobs} \tab This API retrieves a list of upload jobs for the specified domain\cr
 #'  \link[=customerprofiles_list_workflows]{list_workflows} \tab Query to list all workflows\cr
@@ -191,6 +198,7 @@ NULL
 #'  \link[=customerprofiles_put_integration]{put_integration} \tab Adds an integration between the service and a third-party service, which includes Amazon AppFlow and Amazon Connect\cr
 #'  \link[=customerprofiles_put_profile_object]{put_profile_object} \tab Adds additional objects to customer profiles of a given ObjectType\cr
 #'  \link[=customerprofiles_put_profile_object_type]{put_profile_object_type} \tab Defines a ProfileObjectType\cr
+#'  \link[=customerprofiles_put_segment_subscription]{put_segment_subscription} \tab Creates or updates a segment subscription for membership events\cr
 #'  \link[=customerprofiles_search_profiles]{search_profiles} \tab Searches for profiles within a specific domain using one or more predefined search keys (e\cr
 #'  \link[=customerprofiles_start_recommender]{start_recommender} \tab Starts a recommender that was previously stopped\cr
 #'  \link[=customerprofiles_start_upload_job]{start_upload_job} \tab This API starts the processing of an upload job to ingest profile data\cr

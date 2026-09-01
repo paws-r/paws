@@ -16,7 +16,8 @@ dynamodb_restore_table_to_point_in_time(
   LocalSecondaryIndexOverride = NULL,
   ProvisionedThroughputOverride = NULL,
   OnDemandThroughputOverride = NULL,
-  SSESpecificationOverride = NULL
+  SSESpecificationOverride = NULL,
+  VectorIndexOverride = NULL
 )
 }
 \arguments{
@@ -32,7 +33,9 @@ dynamodb_restore_table_to_point_in_time(
 
 \item{BillingModeOverride}{The billing mode of the restored table.}
 
-\item{GlobalSecondaryIndexOverride}{List of global secondary indexes for the restored table. The indexes provided should match existing secondary indexes. You can choose to exclude some or all of the indexes at the time of restore.}
+\item{GlobalSecondaryIndexOverride}{List of global secondary indexes for the restored table. The indexes provided should match existing secondary indexes. You can choose to exclude some or all of the indexes at the time of restore.
+
+The \code{WarmThroughput} setting is not supported on global secondary indexes when you use \code{\link[=dynamodb_restore_table_to_point_in_time]{restore_table_to_point_in_time}}. Although \code{WarmThroughput} appears in the shared index definition, including it in a \code{GlobalSecondaryIndexOverride} entry causes the request to fail with a validation error.}
 
 \item{LocalSecondaryIndexOverride}{List of local secondary indexes for the restored table. The indexes provided should match existing secondary indexes. You can choose to exclude some or all of the indexes at the time of restore.}
 
@@ -41,6 +44,8 @@ dynamodb_restore_table_to_point_in_time(
 \item{OnDemandThroughputOverride}{Overrides the on-demand throughput settings for this replica table. If you don't specify a value for this parameter, it uses the source table's on-demand throughput settings.}
 
 \item{SSESpecificationOverride}{The new server-side encryption settings for the restored table.}
+
+\item{VectorIndexOverride}{The vector indexes for the restored table. If not specified, all vector indexes from the source table are restored. The indexes provided must match existing vector indexes from the source table. You can choose to exclude some or all of the vector indexes at the time of restore.}
 }
 \description{
 Restores the specified table to the specified point in time within \code{EarliestRestorableDateTime} and \code{LatestRestorableDateTime}. You can restore your table to any point in time in the last 35 days. You can set the recovery period to any value between 1 and 35 days. Any number of users can execute up to 50 concurrent restores (any type of restore) in a given account.

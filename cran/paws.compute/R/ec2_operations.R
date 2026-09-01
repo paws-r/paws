@@ -407,6 +407,7 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
 #' 
 #' -   If you specify both **AssetIds** and **Quantity**, then the value for **Quantity** must be equal to the number of asset IDs specified.
 #' @param AvailabilityZoneId The ID of the Availability Zone.
+#' @param CpuOptions The CPU configuration options to apply to the Dedicated Host.
 #' @param AutoPlacement Indicates whether the host accepts any untargeted instance launches that match its instance type configuration, or if it only accepts Host tenancy instance launches that specify its unique host ID. For more information, see [Understanding auto-placement and affinity](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#dedicated-hosts-understanding) in the *Amazon EC2 User Guide*.
 #' 
 #' Default: `off`
@@ -420,7 +421,7 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
 #' @keywords internal
 #'
 #' @rdname ec2_allocate_hosts
-ec2_allocate_hosts <- function(InstanceFamily = NULL, TagSpecifications = NULL, HostRecovery = NULL, OutpostArn = NULL, HostMaintenance = NULL, AssetIds = NULL, AvailabilityZoneId = NULL, AutoPlacement = NULL, ClientToken = NULL, InstanceType = NULL, Quantity = NULL, AvailabilityZone = NULL) {
+ec2_allocate_hosts <- function(InstanceFamily = NULL, TagSpecifications = NULL, HostRecovery = NULL, OutpostArn = NULL, HostMaintenance = NULL, AssetIds = NULL, AvailabilityZoneId = NULL, CpuOptions = NULL, AutoPlacement = NULL, ClientToken = NULL, InstanceType = NULL, Quantity = NULL, AvailabilityZone = NULL) {
   op <- new_operation(
     name = "AllocateHosts",
     http_method = "POST",
@@ -429,7 +430,7 @@ ec2_allocate_hosts <- function(InstanceFamily = NULL, TagSpecifications = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$allocate_hosts_input(InstanceFamily = InstanceFamily, TagSpecifications = TagSpecifications, HostRecovery = HostRecovery, OutpostArn = OutpostArn, HostMaintenance = HostMaintenance, AssetIds = AssetIds, AvailabilityZoneId = AvailabilityZoneId, AutoPlacement = AutoPlacement, ClientToken = ClientToken, InstanceType = InstanceType, Quantity = Quantity, AvailabilityZone = AvailabilityZone)
+  input <- .ec2$allocate_hosts_input(InstanceFamily = InstanceFamily, TagSpecifications = TagSpecifications, HostRecovery = HostRecovery, OutpostArn = OutpostArn, HostMaintenance = HostMaintenance, AssetIds = AssetIds, AvailabilityZoneId = AvailabilityZoneId, CpuOptions = CpuOptions, AutoPlacement = AutoPlacement, ClientToken = ClientToken, InstanceType = InstanceType, Quantity = Quantity, AvailabilityZone = AvailabilityZone)
   output <- .ec2$allocate_hosts_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -676,6 +677,41 @@ ec2_associate_address <- function(AllocationId = NULL, InstanceId = NULL, Public
   return(response)
 }
 .ec2$operations$associate_address <- ec2_associate_address
+
+#' Associates an application status check with instances or tags
+#'
+#' @description
+#' Associates an application status check with instances or [tags](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html). Once you create an association, health monitoring automatically begins for the specified instances or for instances that match the specified tags. The following rules apply:
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_associate_application_status_check/](https://www.paws-r-sdk.com/docs/ec2_associate_application_status_check/) for full documentation.
+#'
+#' @param ApplicationStatusCheckId &#91;required&#93; The ID of the application status check to associate.
+#' @param TargetTagAssociations The [tags](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) to associate the application status check with. Each tag is a key-value pair. When you associate tags, the application status check automatically monitors all instances that have the specified tags.
+#' @param InstanceIds The IDs of the instances to associate with the application status check.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_associate_application_status_check
+ec2_associate_application_status_check <- function(ApplicationStatusCheckId, TargetTagAssociations = NULL, InstanceIds = NULL, ClientToken = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "AssociateApplicationStatusCheck",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$associate_application_status_check_input(ApplicationStatusCheckId = ApplicationStatusCheckId, TargetTagAssociations = TargetTagAssociations, InstanceIds = InstanceIds, ClientToken = ClientToken, DryRun = DryRun)
+  output <- .ec2$associate_application_status_check_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$associate_application_status_check <- ec2_associate_application_status_check
 
 #' Initiates a request to assign billing of the unused capacity of a shared
 #' Capacity Reservation to a consumer account that is consolidated under
@@ -1346,6 +1382,41 @@ ec2_attach_classic_link_vpc <- function(DryRun = NULL, InstanceId, VpcId, Groups
 }
 .ec2$operations$attach_classic_link_vpc <- ec2_attach_classic_link_vpc
 
+#' Attaches a watermark to a non-public AMI
+#'
+#' @description
+#' Attaches a watermark to a non-public AMI. The watermark is a structured identifier that automatically propagates to all derivative images created through [`create_image`][ec2_create_image], and [`copy_image`][ec2_copy_image].
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_attach_image_watermark/](https://www.paws-r-sdk.com/docs/ec2_attach_image_watermark/) for full documentation.
+#'
+#' @param ImageId &#91;required&#93; The ID of the AMI.
+#' @param WatermarkName &#91;required&#93; The name for the watermark. Combined with the caller's account ID to form the `WatermarkKey` (`accountId:watermarkName`).
+#' 
+#' Constraints: 3-128 alphanumeric characters, parentheses (()), square brackets (\[\]), spaces ( ), periods (.), slashes (/), dashes (-), single quotes ('), at-signs (@@), or underscores(_)
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_attach_image_watermark
+ec2_attach_image_watermark <- function(ImageId, WatermarkName, DryRun = NULL) {
+  op <- new_operation(
+    name = "AttachImageWatermark",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$attach_image_watermark_input(ImageId = ImageId, WatermarkName = WatermarkName, DryRun = DryRun)
+  output <- .ec2$attach_image_watermark_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$attach_image_watermark <- ec2_attach_image_watermark
+
 #' Attaches an internet gateway or a virtual private gateway to a VPC,
 #' enabling connectivity between the internet and the VPC
 #'
@@ -1618,7 +1689,7 @@ ec2_authorize_security_group_egress <- function(TagSpecifications = NULL, DryRun
 #' @param GroupId The ID of the security group.
 #' @param GroupName \[Default VPC\] The name of the security group. For security groups for a default VPC you can specify either the ID or the name of the security group. For security groups for a nondefault VPC, you must specify the ID of the security group.
 #' @param IpPermissions The permissions for the security group rules.
-#' @param IpProtocol The IP protocol name (`tcp`, `udp`, `icmp`) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)). To specify all protocols, use `-1`.
+#' @param IpProtocol The IP protocol name (`tcp`, `udp`, `icmp`) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers)). To specify all protocols, use `-1`.
 #' 
 #' To specify `icmpv6`, use IP permissions instead.
 #' 
@@ -1658,6 +1729,41 @@ ec2_authorize_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL,
   return(response)
 }
 .ec2$operations$authorize_security_group_ingress <- ec2_authorize_security_group_ingress
+
+#' Modifies multiple routing policy registrations in a single operation
+#'
+#' @description
+#' Modifies multiple routing policy registrations in a single operation. You can create, update, or delete Route Origin Authorizations (ROAs) in batch.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_batch_modify_ipam_routing_policy_registrations/](https://www.paws-r-sdk.com/docs/ec2_batch_modify_ipam_routing_policy_registrations/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamInternetRegistryAssociationId &#91;required&#93; The ID of the IPAM internet registry association.
+#' @param DeltaJson &#91;required&#93; The batch modifications to apply, in JSON format.
+#' @param Force Forces the batch modification even if individual changes conflict with announced routes. Default: `false`.
+#' @param ClientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the operation ignores the request, but does not return an error.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_batch_modify_ipam_routing_policy_registrations
+ec2_batch_modify_ipam_routing_policy_registrations <- function(DryRun = NULL, IpamInternetRegistryAssociationId, DeltaJson, Force = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "BatchModifyIpamRoutingPolicyRegistrations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$batch_modify_ipam_routing_policy_registrations_input(DryRun = DryRun, IpamInternetRegistryAssociationId = IpamInternetRegistryAssociationId, DeltaJson = DeltaJson, Force = Force, ClientToken = ClientToken)
+  output <- .ec2$batch_modify_ipam_routing_policy_registrations_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$batch_modify_ipam_routing_policy_registrations <- ec2_batch_modify_ipam_routing_policy_registrations
 
 #' Bundles an Amazon instance store-backed Windows instance
 #'
@@ -1737,11 +1843,13 @@ ec2_cancel_bundle_task <- function(BundleId, DryRun = NULL) {
 #'
 #' @param CapacityReservationId &#91;required&#93; The ID of the Capacity Reservation to be cancelled.
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param ApplyCancellationCharges Specifies the cancellation charge type to apply when cancelling a future-dated Capacity Reservation during its commitment duration. Possible values include `commitment-wind-down`, which continues billing for the remaining commitment duration without delivering capacity.
+#' @param QuoteId The ID of the cancellation quote to use for the cancellation. You can generate a cancellation quote by using the [`create_capacity_reservation_cancellation_quote`][ec2_create_capacity_reservation_cancellation_quote] action. The cancellation quote must be in an `active` state.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_cancel_capacity_reservation
-ec2_cancel_capacity_reservation <- function(CapacityReservationId, DryRun = NULL) {
+ec2_cancel_capacity_reservation <- function(CapacityReservationId, DryRun = NULL, ApplyCancellationCharges = NULL, QuoteId = NULL) {
   op <- new_operation(
     name = "CancelCapacityReservation",
     http_method = "POST",
@@ -1750,7 +1858,7 @@ ec2_cancel_capacity_reservation <- function(CapacityReservationId, DryRun = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$cancel_capacity_reservation_input(CapacityReservationId = CapacityReservationId, DryRun = DryRun)
+  input <- .ec2$cancel_capacity_reservation_input(CapacityReservationId = CapacityReservationId, DryRun = DryRun, ApplyCancellationCharges = ApplyCancellationCharges, QuoteId = QuoteId)
   output <- .ec2$cancel_capacity_reservation_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -2250,7 +2358,7 @@ ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = N
 #' Amazon Web Services authenticates the KMS key asynchronously. Therefore, if you specify an ID, alias, or ARN that is not valid, the action can appear to complete, but eventually fails.
 #' @param PresignedUrl When you copy an encrypted source snapshot using the Amazon EC2 Query API, you must supply a pre-signed URL. This parameter is optional for unencrypted snapshots. For more information, see [Query requests](https://docs.aws.amazon.com/ec2/latest/devguide/Query-Requests.html).
 #' 
-#' The `PresignedUrl` should use the snapshot source endpoint, the [`copy_snapshot`][ec2_copy_snapshot] action, and include the `SourceRegion`, `SourceSnapshotId`, and `DestinationRegion` parameters. The `PresignedUrl` must be signed using Amazon Web Services Signature Version 4. Because EBS snapshots are stored in Amazon S3, the signing algorithm for this parameter uses the same logic that is described in [Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) in the *Amazon S3 API Reference*. An invalid or improperly signed `PresignedUrl` will cause the copy operation to fail asynchronously, and the snapshot will move to an `error` state.
+#' The `PresignedUrl` should use the snapshot source endpoint, the [`copy_snapshot`][ec2_copy_snapshot] action, and include the `SourceRegion`, `SourceSnapshotId`, and `DestinationRegion` parameters. The `PresignedUrl` must be signed using Amazon Web Services Signature Version 4. Because EBS snapshots are stored in Amazon S3, the signing algorithm for this parameter uses the same logic that is described in [Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/) in the *Amazon S3 API Reference*. An invalid or improperly signed `PresignedUrl` will cause the copy operation to fail asynchronously, and the snapshot will move to an `error` state.
 #' @param SourceRegion &#91;required&#93; The ID of the Region that contains the snapshot to be copied.
 #' @param SourceSnapshotId &#91;required&#93; The ID of the EBS snapshot to copy.
 #' @param TagSpecifications The tags to apply to the new snapshot.
@@ -2351,6 +2459,54 @@ ec2_copy_volumes <- function(SourceVolumeId, Iops = NULL, Size = NULL, VolumeTyp
   return(response)
 }
 .ec2$operations$copy_volumes <- ec2_copy_volumes
+
+#' Creates an application status check for monitoring the health of
+#' applications running on your instances
+#'
+#' @description
+#' Creates an application status check for monitoring the health of applications running on your instances. You can configure the protocol, port, path, and thresholds for the health check. The following rules apply:
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_create_application_status_check/](https://www.paws-r-sdk.com/docs/ec2_create_application_status_check/) for full documentation.
+#'
+#' @param HealthCheckPaths The health check paths to use for the application status check. Health check paths define the network path from a source subnet to one or more destination subnets for cross-Availability Zone or Availability Zone to Local Zone health checking. If omitted, health checks are performed in the same subnet as the instance.
+#' @param Aggregation The aggregation setting for the application status check. When set to `included`, the result of this check contributes to the instance-level application status reported by [`describe_application_status`][ec2_describe_application_status]. When set to `excluded`, the check runs independently and does not affect the instance-level status. Valid values: `included` | `excluded`.
+#' @param Protocol &#91;required&#93; The protocol to use for the health check. Valid values: `http` | `https`.
+#' @param Port &#91;required&#93; The port to use for the health check. Valid values: 1 to 65535.
+#' @param Path The URL path to use for the health check HTTP request (for example, `/health` or `/status`).
+#' @param DeviceIndex The index of the network device to use for the health check. The value must be greater than or equal to 0.
+#' @param IpVersion The IP version to use for the health check. Valid values: `ipv4` and `ipv6`.
+#' @param IpScope The IP scope to use for the health check. Valid value: `private`.
+#' @param Interval The interval, in seconds, between health checks. Valid value: 60.
+#' @param Timeout The amount of time, in seconds, to wait for a health check response before considering it failed. Valid values: 1 to 30. The value must be less than `Interval`.
+#' @param FailureThreshold The number of consecutive failed health checks before the application status is considered impaired. The value must be greater than 0.
+#' @param SuccessThreshold The number of consecutive successful health checks before the application status is considered healthy. The value must be greater than 0.
+#' @param StatusCodeMatcher The HTTP status codes that indicate a successful health check response. Specify a comma-separated list of individual status codes or ranges, for example, `200,202,300-399`. For a range, the first value must be less than the second value. Maximum length: 64 characters. Default: `200`.
+#' @param InitializationGracePeriodSeconds The number of seconds to wait before starting health checks after an instance is launched. Valid values: 1 to 600.
+#' @param TagSpecifications The tags to apply to the application status check.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_create_application_status_check
+ec2_create_application_status_check <- function(HealthCheckPaths = NULL, Aggregation = NULL, Protocol, Port, Path = NULL, DeviceIndex = NULL, IpVersion = NULL, IpScope = NULL, Interval = NULL, Timeout = NULL, FailureThreshold = NULL, SuccessThreshold = NULL, StatusCodeMatcher = NULL, InitializationGracePeriodSeconds = NULL, TagSpecifications = NULL, ClientToken = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "CreateApplicationStatusCheck",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$create_application_status_check_input(HealthCheckPaths = HealthCheckPaths, Aggregation = Aggregation, Protocol = Protocol, Port = Port, Path = Path, DeviceIndex = DeviceIndex, IpVersion = IpVersion, IpScope = IpScope, Interval = Interval, Timeout = Timeout, FailureThreshold = FailureThreshold, SuccessThreshold = SuccessThreshold, StatusCodeMatcher = StatusCodeMatcher, InitializationGracePeriodSeconds = InitializationGracePeriodSeconds, TagSpecifications = TagSpecifications, ClientToken = ClientToken, DryRun = DryRun)
+  output <- .ec2$create_application_status_check_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$create_application_status_check <- ec2_create_application_status_check
 
 #' Creates a new data export configuration for EC2 Capacity Manager
 #'
@@ -2522,6 +2678,41 @@ ec2_create_capacity_reservation_by_splitting <- function(DryRun = NULL, ClientTo
 }
 .ec2$operations$create_capacity_reservation_by_splitting <- ec2_create_capacity_reservation_by_splitting
 
+#' Generates a cancellation quote for a future-dated Capacity Reservation
+#' that is within its commitment duration
+#'
+#' @description
+#' Generates a cancellation quote for a future-dated Capacity Reservation that is within its commitment duration. The quote includes the cancellation terms and a quote ID that you can pass to the [`cancel_capacity_reservation`][ec2_cancel_capacity_reservation] action. Cancellation quotes are valid for 24 hours.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_cancellation_quote/](https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_cancellation_quote/) for full documentation.
+#'
+#' @param CapacityReservationId &#91;required&#93; The ID of the Capacity Reservation.
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [Ensure Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param TagSpecifications The tags to apply to the cancellation quote.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_create_capacity_reservation_cancellation_quote
+ec2_create_capacity_reservation_cancellation_quote <- function(CapacityReservationId, ClientToken = NULL, TagSpecifications = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "CreateCapacityReservationCancellationQuote",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$create_capacity_reservation_cancellation_quote_input(CapacityReservationId = CapacityReservationId, ClientToken = ClientToken, TagSpecifications = TagSpecifications, DryRun = DryRun)
+  output <- .ec2$create_capacity_reservation_cancellation_quote_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$create_capacity_reservation_cancellation_quote <- ec2_create_capacity_reservation_cancellation_quote
+
 #' Creates a Capacity Reservation Fleet
 #'
 #' @description
@@ -2533,7 +2724,7 @@ ec2_create_capacity_reservation_by_splitting <- function(DryRun = NULL, ClientTo
 #' 
 #' Valid values: `prioritized`
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [Ensure Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param InstanceTypeSpecifications &#91;required&#93; Information about the instance types for which to reserve the capacity.
+#' @param InstanceTypeSpecifications Information about the instance types for which to reserve the capacity.
 #' @param Tenancy Indicates the tenancy of the Capacity Reservation Fleet. All Capacity Reservations in the Fleet inherit this tenancy. The Capacity Reservation Fleet can have one of the following tenancy settings:
 #' 
 #' -   `default` - The Capacity Reservation Fleet is created on hardware that is shared with other Amazon Web Services accounts.
@@ -2552,7 +2743,7 @@ ec2_create_capacity_reservation_by_splitting <- function(DryRun = NULL, ClientTo
 #' @keywords internal
 #'
 #' @rdname ec2_create_capacity_reservation_fleet
-ec2_create_capacity_reservation_fleet <- function(AllocationStrategy = NULL, ClientToken = NULL, InstanceTypeSpecifications, Tenancy = NULL, TotalTargetCapacity, EndDate = NULL, InstanceMatchCriteria = NULL, TagSpecifications = NULL, DryRun = NULL) {
+ec2_create_capacity_reservation_fleet <- function(AllocationStrategy = NULL, ClientToken = NULL, InstanceTypeSpecifications = NULL, Tenancy = NULL, TotalTargetCapacity, EndDate = NULL, InstanceMatchCriteria = NULL, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateCapacityReservationFleet",
     http_method = "POST",
@@ -3075,9 +3266,9 @@ ec2_create_egress_only_internet_gateway <- function(ClientToken = NULL, DryRun =
 #' @param ReplaceUnhealthyInstances Indicates whether EC2 Fleet should replace unhealthy Spot Instances. Supported only for fleets of type `maintain`. For more information, see [EC2 Fleet health checks](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#ec2-fleet-health-checks) in the *Amazon EC2 User Guide*.
 #' @param TagSpecifications The key-value pair for tagging the EC2 Fleet request on creation. For more information, see [Tag your resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources).
 #' 
-#' If the fleet type is `instant`, specify a resource type of `fleet` to tag the fleet or `instance` to tag the instances at launch.
+#' If the fleet type is `instant`, specify a resource type of `fleet` to tag the fleet, `instance` to tag the instances at launch, `volume` to tag the volumes at launch, or `network-interface` to tag the network interfaces at launch.
 #' 
-#' If the fleet type is `maintain` or `request`, specify a resource type of `fleet` to tag the fleet. You cannot specify a resource type of `instance`. To tag instances at launch, specify the tags in a [launch template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template).
+#' If the fleet type is `maintain` or `request`, specify a resource type of `fleet` to tag the fleet. You cannot specify a resource type of `instance`, `volume`, or `network-interface`. To tag instances at launch, specify the tags in a [launch template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template).
 #' @param Context Reserved.
 #'
 #' @keywords internal
@@ -3121,7 +3312,7 @@ ec2_create_fleet <- function(DryRun = NULL, ClientToken = NULL, SpotOptions = NU
 #' This parameter is valid only if the destination type is `cloud-watch-logs`.
 #' @param ResourceIds &#91;required&#93; The IDs of the resources to monitor. For example, if the resource type is `VPC`, specify the IDs of the VPCs.
 #' 
-#' Constraints: Maximum of 25 for transit gateway resource types. Maximum of 1000 for the other resource types.
+#' Constraints: Maximum of 25 for transit gateway resource types. Maximum of 300 for the other resource types.
 #' @param ResourceType &#91;required&#93; The type of resource to monitor.
 #' @param TrafficType The type of traffic to monitor (accepted traffic, rejected traffic, or all traffic). This parameter is not supported for transit gateway resource types. It is required for the other resource types.
 #' @param LogDestinationType The type of destination for the flow log data.
@@ -3154,11 +3345,12 @@ ec2_create_fleet <- function(DryRun = NULL, ClientToken = NULL, SpotOptions = NU
 #' 
 #' Default: 600
 #' @param DestinationOptions The destination options.
+#' @param TagFieldSpecifications The tag configuration associated with the Flow Logs Amazon EC2 Tags feature fields in your custom log format.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_create_flow_logs
-ec2_create_flow_logs <- function(DryRun = NULL, ClientToken = NULL, DeliverLogsPermissionArn = NULL, DeliverCrossAccountRole = NULL, LogGroupName = NULL, ResourceIds, ResourceType, TrafficType = NULL, LogDestinationType = NULL, LogDestination = NULL, LogFormat = NULL, TagSpecifications = NULL, MaxAggregationInterval = NULL, DestinationOptions = NULL) {
+ec2_create_flow_logs <- function(DryRun = NULL, ClientToken = NULL, DeliverLogsPermissionArn = NULL, DeliverCrossAccountRole = NULL, LogGroupName = NULL, ResourceIds, ResourceType, TrafficType = NULL, LogDestinationType = NULL, LogDestination = NULL, LogFormat = NULL, TagSpecifications = NULL, MaxAggregationInterval = NULL, DestinationOptions = NULL, TagFieldSpecifications = NULL) {
   op <- new_operation(
     name = "CreateFlowLogs",
     http_method = "POST",
@@ -3167,7 +3359,7 @@ ec2_create_flow_logs <- function(DryRun = NULL, ClientToken = NULL, DeliverLogsP
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$create_flow_logs_input(DryRun = DryRun, ClientToken = ClientToken, DeliverLogsPermissionArn = DeliverLogsPermissionArn, DeliverCrossAccountRole = DeliverCrossAccountRole, LogGroupName = LogGroupName, ResourceIds = ResourceIds, ResourceType = ResourceType, TrafficType = TrafficType, LogDestinationType = LogDestinationType, LogDestination = LogDestination, LogFormat = LogFormat, TagSpecifications = TagSpecifications, MaxAggregationInterval = MaxAggregationInterval, DestinationOptions = DestinationOptions)
+  input <- .ec2$create_flow_logs_input(DryRun = DryRun, ClientToken = ClientToken, DeliverLogsPermissionArn = DeliverLogsPermissionArn, DeliverCrossAccountRole = DeliverCrossAccountRole, LogGroupName = LogGroupName, ResourceIds = ResourceIds, ResourceType = ResourceType, TrafficType = TrafficType, LogDestinationType = LogDestinationType, LogDestination = LogDestination, LogFormat = LogFormat, TagSpecifications = TagSpecifications, MaxAggregationInterval = MaxAggregationInterval, DestinationOptions = DestinationOptions, TagFieldSpecifications = TagFieldSpecifications)
   output <- .ec2$create_flow_logs_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -3232,15 +3424,19 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
 #' If you specify other values for `ResourceType`, the request fails.
 #' 
 #' To tag an AMI or snapshot after it has been created, see [`create_tags`][ec2_create_tags].
-#' @param SnapshotLocation Only supported for instances in Local Zones. If the source instance is not in a Local Zone, omit this parameter.
+#' @param SnapshotLocation Only supported for instances in Local Zones and for instances on Outposts that support local snapshots. If the source instance is not in one of these locations, omit this parameter.
 #' 
 #' The Amazon S3 location where the snapshots will be stored.
 #' 
-#' -   To create local snapshots in the same Local Zone as the source instance, specify `local`.
+#' -   To create local snapshots in the same Local Zone or on the same Outpost as the source instance, specify `local`.
 #' 
-#' -   To create regional snapshots in the parent Region of the Local Zone, specify `regional` or omit this parameter.
+#' -   To create regional snapshots in the parent Region of the Local Zone or Outpost, specify `regional`.
 #' 
-#' Default: `regional`
+#' If the source instance is in a Local Zone and you omit this parameter, regional snapshots are created in the parent Region of the Local Zone.
+#' 
+#' If the source instance is on an Outpost that supports local snapshots, this parameter is required. If you omit it, the request fails with an `InvalidParameterValue` error.
+#' 
+#' Default: `regional` (for instances in Local Zones only)
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param InstanceId &#91;required&#93; The ID of the instance.
 #' @param Name &#91;required&#93; A name for the new image.
@@ -3615,6 +3811,52 @@ ec2_create_ipam_external_resource_verification_token <- function(DryRun = NULL, 
 }
 .ec2$operations$create_ipam_external_resource_verification_token <- ec2_create_ipam_external_resource_verification_token
 
+#' Creates an association between an IPAM and a Regional Internet Registry
+#' (RIR) for Resource Public Key Infrastructure (RPKI) management
+#'
+#' @description
+#' Creates an association between an IPAM and a Regional Internet Registry (RIR) for Resource Public Key Infrastructure (RPKI) management. You can use this association to create Route Origin Authorizations (ROAs) for IP address prefixes registered with the internet registry. Your IPAM must be in the Advanced tier to use this feature.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_create_ipam_internet_registry_association/](https://www.paws-r-sdk.com/docs/ec2_create_ipam_internet_registry_association/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamId &#91;required&#93; The ID of the IPAM to associate with the internet registry.
+#' @param Rir &#91;required&#93; The Regional Internet Registry to associate with. Possible values:
+#' 
+#' -   `ripe` - RIPE NCC (Europe, the Middle East, and Central Asia).
+#' 
+#' -   `apnic` - APNIC (Asia Pacific).
+#' 
+#' -   `arin` - ARIN (North America).
+#' 
+#' -   `lacnic` - LACNIC (Latin America and the Caribbean).
+#' @param OrganizationHandle &#91;required&#93; The organization handle at the internet registry (for example, a RIPE NCC organization ID or ARIN Org ID).
+#' @param Description A description for the internet registry association.
+#' @param TagSpecifications The tags to assign to the internet registry association.
+#' @param ClientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the operation ignores the request, but does not return an error.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_create_ipam_internet_registry_association
+ec2_create_ipam_internet_registry_association <- function(DryRun = NULL, IpamId, Rir, OrganizationHandle, Description = NULL, TagSpecifications = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateIpamInternetRegistryAssociation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$create_ipam_internet_registry_association_input(DryRun = DryRun, IpamId = IpamId, Rir = Rir, OrganizationHandle = OrganizationHandle, Description = Description, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
+  output <- .ec2$create_ipam_internet_registry_association_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$create_ipam_internet_registry_association <- ec2_create_ipam_internet_registry_association
+
 #' Creates an IPAM policy
 #'
 #' @description
@@ -3819,6 +4061,46 @@ ec2_create_ipam_resource_discovery <- function(DryRun = NULL, Description = NULL
   return(response)
 }
 .ec2$operations$create_ipam_resource_discovery <- ec2_create_ipam_resource_discovery
+
+#' Creates a routing policy registration and publishes Route Origin
+#' Authorizations (ROAs) to the RPKI for the specified CIDR prefix and ASNs
+#'
+#' @description
+#' Creates a routing policy registration and publishes Route Origin Authorizations (ROAs) to the RPKI for the specified CIDR prefix and ASNs.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_create_ipam_routing_policy_registration/](https://www.paws-r-sdk.com/docs/ec2_create_ipam_routing_policy_registration/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamInternetRegistryAssociationId &#91;required&#93; The ID of the IPAM internet registry association.
+#' @param Cidr &#91;required&#93; The IP address prefix in CIDR notation to authorize in the ROA.
+#' @param Asns &#91;required&#93; The Autonomous System Numbers (ASNs) authorized to originate the prefix.
+#' @param PermitMoreSpecificAnnouncements Specifies whether to permit more specific route announcements than the CIDR prefix. When enabled, ASNs can announce sub-prefixes of the authorized CIDR up to the specified maximum length. Default: `false`.
+#' @param MaxLength The maximum prefix length that the ASNs are authorized to announce. Must be greater than or equal to the prefix length of the CIDR. If not specified, defaults to the prefix length of the CIDR (exact match only).
+#' @param Description A description for the routing policy registration.
+#' @param Force Forces the creation of the routing policy registration even if it conflicts with an announced route. Default: `false`.
+#' @param ClientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the operation ignores the request, but does not return an error.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_create_ipam_routing_policy_registration
+ec2_create_ipam_routing_policy_registration <- function(DryRun = NULL, IpamInternetRegistryAssociationId, Cidr, Asns, PermitMoreSpecificAnnouncements = NULL, MaxLength = NULL, Description = NULL, Force = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateIpamRoutingPolicyRegistration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$create_ipam_routing_policy_registration_input(DryRun = DryRun, IpamInternetRegistryAssociationId = IpamInternetRegistryAssociationId, Cidr = Cidr, Asns = Asns, PermitMoreSpecificAnnouncements = PermitMoreSpecificAnnouncements, MaxLength = MaxLength, Description = Description, Force = Force, ClientToken = ClientToken)
+  output <- .ec2$create_ipam_routing_policy_registration_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$create_ipam_routing_policy_registration <- ec2_create_ipam_routing_policy_registration
 
 #' Create an IPAM scope
 #'
@@ -4635,6 +4917,7 @@ ec2_create_network_interface_permission <- function(NetworkInterfaceId, AwsAccou
 #' -   Rack – No usage restrictions.
 #' @param LinkedGroupId Reserved for future use.
 #' @param Operator Reserved for internal use.
+#' @param ParentGroupId The ID of a parent placement group. Valid only when **Strategy** is set to `cluster`.
 #' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param GroupName A name for the placement group. Must be unique within the scope of your account for the Region.
 #' 
@@ -4644,7 +4927,7 @@ ec2_create_network_interface_permission <- function(NetworkInterfaceId, AwsAccou
 #' @keywords internal
 #'
 #' @rdname ec2_create_placement_group
-ec2_create_placement_group <- function(PartitionCount = NULL, TagSpecifications = NULL, SpreadLevel = NULL, LinkedGroupId = NULL, Operator = NULL, DryRun = NULL, GroupName = NULL, Strategy = NULL) {
+ec2_create_placement_group <- function(PartitionCount = NULL, TagSpecifications = NULL, SpreadLevel = NULL, LinkedGroupId = NULL, Operator = NULL, ParentGroupId = NULL, DryRun = NULL, GroupName = NULL, Strategy = NULL) {
   op <- new_operation(
     name = "CreatePlacementGroup",
     http_method = "POST",
@@ -4653,7 +4936,7 @@ ec2_create_placement_group <- function(PartitionCount = NULL, TagSpecifications 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$create_placement_group_input(PartitionCount = PartitionCount, TagSpecifications = TagSpecifications, SpreadLevel = SpreadLevel, LinkedGroupId = LinkedGroupId, Operator = Operator, DryRun = DryRun, GroupName = GroupName, Strategy = Strategy)
+  input <- .ec2$create_placement_group_input(PartitionCount = PartitionCount, TagSpecifications = TagSpecifications, SpreadLevel = SpreadLevel, LinkedGroupId = LinkedGroupId, Operator = Operator, ParentGroupId = ParentGroupId, DryRun = DryRun, GroupName = GroupName, Strategy = Strategy)
   output <- .ec2$create_placement_group_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -4699,24 +4982,24 @@ ec2_create_public_ipv_4_pool <- function(DryRun = NULL, TagSpecifications = NULL
 #' Replaces the EBS-backed root volume for a running instance with a new
 #' volume that is restored to the original root volume's launch state, that
 #' is restored to a specific snapshot taken from the original root volume,
-#' or that is restored from an AMI that has the same key characteristics as
-#' that of the instance
+#' that is restored from an AMI that has the same key characteristics as
+#' that of the instance, or that is replaced by a specified volume
 #'
 #' @description
-#' Replaces the EBS-backed root volume for a `running` instance with a new volume that is restored to the original root volume's launch state, that is restored to a specific snapshot taken from the original root volume, or that is restored from an AMI that has the same key characteristics as that of the instance.
+#' Replaces the EBS-backed root volume for a `running` instance with a new volume that is restored to the original root volume's launch state, that is restored to a specific snapshot taken from the original root volume, that is restored from an AMI that has the same key characteristics as that of the instance, or that is replaced by a specified volume.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_create_replace_root_volume_task/](https://www.paws-r-sdk.com/docs/ec2_create_replace_root_volume_task/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The ID of the instance for which to replace the root volume.
 #' @param SnapshotId The ID of the snapshot from which to restore the replacement root volume. The specified snapshot must be a snapshot that you previously created from the original root volume.
 #' 
-#' If you want to restore the replacement root volume to the initial launch state, or if you want to restore the replacement root volume from an AMI, omit this parameter.
+#' If you want to restore the replacement root volume to the initial launch state, if you want to restore the replacement root volume from an AMI, or if you want to replace the root volume with a specified volume, omit this parameter.
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. If you do not specify a client token, a randomly generated token is used for the request to ensure idempotency. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param TagSpecifications The tags to apply to the root volume replacement task.
 #' @param ImageId The ID of the AMI to use to restore the root volume. The specified AMI must have the same product code, billing information, architecture type, and virtualization type as that of the instance.
 #' 
-#' If you want to restore the replacement volume from a specific snapshot, or if you want to restore it to its launch state, omit this parameter.
+#' If you want to restore the replacement volume from a specific snapshot, if you want to restore it to its launch state, or if you want to replace the root volume with a specified volume, omit this parameter.
 #' @param DeleteReplacedRootVolume Indicates whether to automatically delete the original root volume after the root volume replacement task completes. To delete the original root volume, specify `true`. If you choose to keep the original root volume after the replacement task completes, you must manually delete it when you no longer need it.
 #' @param VolumeInitializationRate Specifies the Amazon EBS Provisioned Rate for Volume Initialization (volume initialization rate), in MiB/s, at which to download the snapshot blocks from Amazon S3 to the replacement root volume. This is also known as *volume initialization*. Specifying a volume initialization rate ensures that the volume is initialized at a predictable and consistent rate after creation.
 #' 
@@ -4731,11 +5014,14 @@ ec2_create_public_ipv_4_pool <- function(DryRun = NULL, TagSpecifications = NULL
 #' For more information, see [Initialize Amazon EBS volumes](https://docs.aws.amazon.com/ebs/latest/userguide/initalize-volume.html) in the *Amazon EC2 User Guide*.
 #' 
 #' Valid range: 100 - 300 MiB/s
+#' @param VolumeId The ID of the volume to use as the replacement root volume. The specified volume must be in the same Availability Zone as the instance, must be in the `available` state, and must not be attached to an instance. If the original root volume is encrypted, the specified volume must also be encrypted.
+#' 
+#' If you want to restore the replacement root volume from a specific snapshot, an AMI, or to its launch state, omit this parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_create_replace_root_volume_task
-ec2_create_replace_root_volume_task <- function(InstanceId, SnapshotId = NULL, ClientToken = NULL, DryRun = NULL, TagSpecifications = NULL, ImageId = NULL, DeleteReplacedRootVolume = NULL, VolumeInitializationRate = NULL) {
+ec2_create_replace_root_volume_task <- function(InstanceId, SnapshotId = NULL, ClientToken = NULL, DryRun = NULL, TagSpecifications = NULL, ImageId = NULL, DeleteReplacedRootVolume = NULL, VolumeInitializationRate = NULL, VolumeId = NULL) {
   op <- new_operation(
     name = "CreateReplaceRootVolumeTask",
     http_method = "POST",
@@ -4744,7 +5030,7 @@ ec2_create_replace_root_volume_task <- function(InstanceId, SnapshotId = NULL, C
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$create_replace_root_volume_task_input(InstanceId = InstanceId, SnapshotId = SnapshotId, ClientToken = ClientToken, DryRun = DryRun, TagSpecifications = TagSpecifications, ImageId = ImageId, DeleteReplacedRootVolume = DeleteReplacedRootVolume, VolumeInitializationRate = VolumeInitializationRate)
+  input <- .ec2$create_replace_root_volume_task_input(InstanceId = InstanceId, SnapshotId = SnapshotId, ClientToken = ClientToken, DryRun = DryRun, TagSpecifications = TagSpecifications, ImageId = ImageId, DeleteReplacedRootVolume = DeleteReplacedRootVolume, VolumeInitializationRate = VolumeInitializationRate, VolumeId = VolumeId)
   output <- .ec2$create_replace_root_volume_task_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -5478,7 +5764,7 @@ ec2_create_traffic_mirror_filter <- function(Description = NULL, TagSpecificatio
 #' @param SourcePortRange The source port range.
 #' @param Protocol The protocol, for example UDP, to assign to the Traffic Mirror rule.
 #' 
-#' For information about the protocol value, see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) on the Internet Assigned Numbers Authority (IANA) website.
+#' For information about the protocol value, see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers) on the Internet Assigned Numbers Authority (IANA) website.
 #' @param DestinationCidrBlock &#91;required&#93; The destination CIDR block to assign to the Traffic Mirror rule.
 #' @param SourceCidrBlock &#91;required&#93; The source CIDR block to assign to the Traffic Mirror rule.
 #' @param Description The description of the Traffic Mirror rule.
@@ -5880,6 +6166,42 @@ ec2_create_transit_gateway_policy_table <- function(TransitGatewayId, TagSpecifi
   return(response)
 }
 .ec2$operations$create_transit_gateway_policy_table <- ec2_create_transit_gateway_policy_table
+
+#' Creates an entry in a transit gateway policy table to route matching
+#' traffic to a specified route table
+#'
+#' @description
+#' Creates an entry in a transit gateway policy table to route matching traffic to a specified route table.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_create_transit_gateway_policy_table_entry/](https://www.paws-r-sdk.com/docs/ec2_create_transit_gateway_policy_table_entry/) for full documentation.
+#'
+#' @param TransitGatewayPolicyTableId &#91;required&#93; The ID of the transit gateway policy table.
+#' @param PolicyRuleNumber &#91;required&#93; The rule number for the policy table entry. Lower rule numbers are evaluated first and take precedence.
+#' @param PolicyRule The matching criteria for the policy table entry.
+#' @param TargetRouteTableId &#91;required&#93; The ID of the transit gateway route table to use for traffic matching this rule.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_create_transit_gateway_policy_table_entry
+ec2_create_transit_gateway_policy_table_entry <- function(TransitGatewayPolicyTableId, PolicyRuleNumber, PolicyRule = NULL, TargetRouteTableId, DryRun = NULL) {
+  op <- new_operation(
+    name = "CreateTransitGatewayPolicyTableEntry",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$create_transit_gateway_policy_table_entry_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, PolicyRuleNumber = PolicyRuleNumber, PolicyRule = PolicyRule, TargetRouteTableId = TargetRouteTableId, DryRun = DryRun)
+  output <- .ec2$create_transit_gateway_policy_table_entry_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$create_transit_gateway_policy_table_entry <- ec2_create_transit_gateway_policy_table_entry
 
 #' Creates a reference (route) to a prefix list in a specified transit
 #' gateway route table
@@ -6783,6 +7105,39 @@ ec2_create_vpn_gateway <- function(AvailabilityZone = NULL, Type, TagSpecificati
 }
 .ec2$operations$create_vpn_gateway <- ec2_create_vpn_gateway
 
+#' Deletes an application status check
+#'
+#' @description
+#' Deletes an application status check. The following rules apply:
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_delete_application_status_check/](https://www.paws-r-sdk.com/docs/ec2_delete_application_status_check/) for full documentation.
+#'
+#' @param ApplicationStatusCheckId &#91;required&#93; The ID of the application status check to delete.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_delete_application_status_check
+ec2_delete_application_status_check <- function(ApplicationStatusCheckId, ClientToken = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "DeleteApplicationStatusCheck",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$delete_application_status_check_input(ApplicationStatusCheckId = ApplicationStatusCheckId, ClientToken = ClientToken, DryRun = DryRun)
+  output <- .ec2$delete_application_status_check_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$delete_application_status_check <- ec2_delete_application_status_check
+
 #' Deletes an existing Capacity Manager data export configuration
 #'
 #' @description
@@ -7385,6 +7740,38 @@ ec2_delete_ipam_external_resource_verification_token <- function(DryRun = NULL, 
 }
 .ec2$operations$delete_ipam_external_resource_verification_token <- ec2_delete_ipam_external_resource_verification_token
 
+#' Deletes an IPAM internet registry association
+#'
+#' @description
+#' Deletes an IPAM internet registry association. Before deleting, you must remove all routing policy registrations associated with the internet registry.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_delete_ipam_internet_registry_association/](https://www.paws-r-sdk.com/docs/ec2_delete_ipam_internet_registry_association/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamInternetRegistryAssociationId &#91;required&#93; The ID of the IPAM internet registry association to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_delete_ipam_internet_registry_association
+ec2_delete_ipam_internet_registry_association <- function(DryRun = NULL, IpamInternetRegistryAssociationId) {
+  op <- new_operation(
+    name = "DeleteIpamInternetRegistryAssociation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$delete_ipam_internet_registry_association_input(DryRun = DryRun, IpamInternetRegistryAssociationId = IpamInternetRegistryAssociationId)
+  output <- .ec2$delete_ipam_internet_registry_association_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$delete_ipam_internet_registry_association <- ec2_delete_ipam_internet_registry_association
+
 #' Deletes an IPAM policy
 #'
 #' @description
@@ -7547,6 +7934,41 @@ ec2_delete_ipam_resource_discovery <- function(DryRun = NULL, IpamResourceDiscov
   return(response)
 }
 .ec2$operations$delete_ipam_resource_discovery <- ec2_delete_ipam_resource_discovery
+
+#' Deletes a routing policy registration for a specified CIDR prefix
+#'
+#' @description
+#' Deletes a routing policy registration for a specified CIDR prefix.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_delete_ipam_routing_policy_registration/](https://www.paws-r-sdk.com/docs/ec2_delete_ipam_routing_policy_registration/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamInternetRegistryAssociationId &#91;required&#93; The ID of the IPAM internet registry association.
+#' @param Cidr &#91;required&#93; The IP address prefix in CIDR notation identifying the routing policy registration to delete.
+#' @param Force Forces the deletion even if it conflicts with an announced route. Default: `false`.
+#' @param ClientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the operation ignores the request, but does not return an error.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_delete_ipam_routing_policy_registration
+ec2_delete_ipam_routing_policy_registration <- function(DryRun = NULL, IpamInternetRegistryAssociationId, Cidr, Force = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "DeleteIpamRoutingPolicyRegistration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$delete_ipam_routing_policy_registration_input(DryRun = DryRun, IpamInternetRegistryAssociationId = IpamInternetRegistryAssociationId, Cidr = Cidr, Force = Force, ClientToken = ClientToken)
+  output <- .ec2$delete_ipam_routing_policy_registration_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$delete_ipam_routing_policy_registration <- ec2_delete_ipam_routing_policy_registration
 
 #' Delete the scope for an IPAM
 #'
@@ -8211,7 +8633,7 @@ ec2_delete_network_interface_permission <- function(NetworkInterfacePermissionId
 #' Deletes the specified placement group
 #'
 #' @description
-#' Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see [Placement groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the *Amazon EC2 User Guide*.
+#' Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. You cannot delete a placement group that is a parent of a cluster placement group. Delete the cluster placement groups first. For more information, see [Placement groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the *Amazon EC2 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_delete_placement_group/](https://www.paws-r-sdk.com/docs/ec2_delete_placement_group/) for full documentation.
 #'
@@ -9149,6 +9571,39 @@ ec2_delete_transit_gateway_policy_table <- function(TransitGatewayPolicyTableId,
   return(response)
 }
 .ec2$operations$delete_transit_gateway_policy_table <- ec2_delete_transit_gateway_policy_table
+
+#' Deletes the specified transit gateway policy table entry
+#'
+#' @description
+#' Deletes the specified transit gateway policy table entry.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_delete_transit_gateway_policy_table_entry/](https://www.paws-r-sdk.com/docs/ec2_delete_transit_gateway_policy_table_entry/) for full documentation.
+#'
+#' @param TransitGatewayPolicyTableId &#91;required&#93; The ID of the transit gateway policy table.
+#' @param PolicyRuleNumber &#91;required&#93; The rule number of the policy table entry to delete.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_delete_transit_gateway_policy_table_entry
+ec2_delete_transit_gateway_policy_table_entry <- function(TransitGatewayPolicyTableId, PolicyRuleNumber, DryRun = NULL) {
+  op <- new_operation(
+    name = "DeleteTransitGatewayPolicyTableEntry",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$delete_transit_gateway_policy_table_entry_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, PolicyRuleNumber = PolicyRuleNumber, DryRun = DryRun)
+  output <- .ec2$delete_transit_gateway_policy_table_entry_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$delete_transit_gateway_policy_table_entry <- ec2_delete_transit_gateway_policy_table_entry
 
 #' Deletes a reference (route) to a prefix list in a specified transit
 #' gateway route table
@@ -10139,6 +10594,38 @@ ec2_describe_account_attributes <- function(DryRun = NULL, AttributeNames = NULL
 }
 .ec2$operations$describe_account_attributes <- ec2_describe_account_attributes
 
+#' Describes the account-level VPC Encryption Control configuration for
+#' your account
+#'
+#' @description
+#' Describes the account-level VPC Encryption Control configuration for your account. VPC Encryption Control enables you to enforce encryption for all data in transit within and between VPCs to meet compliance requirements.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_describe_account_vpc_encryption_control/](https://www.paws-r-sdk.com/docs/ec2_describe_account_vpc_encryption_control/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_describe_account_vpc_encryption_control
+ec2_describe_account_vpc_encryption_control <- function(DryRun = NULL) {
+  op <- new_operation(
+    name = "DescribeAccountVpcEncryptionControl",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$describe_account_vpc_encryption_control_input(DryRun = DryRun)
+  output <- .ec2$describe_account_vpc_encryption_control_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$describe_account_vpc_encryption_control <- ec2_describe_account_vpc_encryption_control
+
 #' Describes an Elastic IP address transfer
 #'
 #' @description
@@ -10296,6 +10783,122 @@ ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
   return(response)
 }
 .ec2$operations$describe_aggregate_id_format <- ec2_describe_aggregate_id_format
+
+#' Describes the aggregated application health status for the specified
+#' instances
+#'
+#' @description
+#' Describes the aggregated application health status for the specified instances. The following rules apply:
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_describe_application_status/](https://www.paws-r-sdk.com/docs/ec2_describe_application_status/) for full documentation.
+#'
+#' @param InstanceIds The IDs of the instances for which to describe application status.
+#' @param Filters The filters.
+#' 
+#' -   `availability-zone-id` – The ID of the Availability Zone.
+#' 
+#' -   `status` – The instance-level application status. For valid values and their meanings, see `ApplicationStatus`.
+#' @param MaxResults The maximum number of items to return for this request. To get the next page of items, make another request with the token returned in the output. For more information, see [Pagination](https://docs.aws.amazon.com/ec2/latest/devguide/Query-Requests.html#api-pagination).
+#' @param NextToken The token returned from a previous paginated request. Pagination continues from the end of the items returned by the previous request.
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_describe_application_status
+ec2_describe_application_status <- function(InstanceIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "DescribeApplicationStatus",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$describe_application_status_input(InstanceIds = InstanceIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
+  output <- .ec2$describe_application_status_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$describe_application_status <- ec2_describe_application_status
+
+#' Describes the associations for one or more application status checks
+#'
+#' @description
+#' Describes the associations for one or more application status checks. For more information, see [Application status checks](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/). To avoid timeouts and retrieve complete results, use the pagination parameters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_describe_application_status_check_associations/](https://www.paws-r-sdk.com/docs/ec2_describe_application_status_check_associations/) for full documentation.
+#'
+#' @param ApplicationStatusCheckIds The IDs of the application status checks for which to describe associations.
+#' @param Filters The filters to use to limit the results.
+#' 
+#' -   `association-type` – The type of association. Valid values: `tag` and `instance-id`.
+#' @param MaxResults The maximum number of items to return for this request. To get the next page of items, make another request with the token returned in the output. For more information, see [Pagination](https://docs.aws.amazon.com/ec2/latest/devguide/Query-Requests.html#api-pagination).
+#' @param NextToken The token returned from a previous paginated request. Pagination continues from the end of the items returned by the previous request.
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_describe_application_status_check_associations
+ec2_describe_application_status_check_associations <- function(ApplicationStatusCheckIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "DescribeApplicationStatusCheckAssociations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$describe_application_status_check_associations_input(ApplicationStatusCheckIds = ApplicationStatusCheckIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
+  output <- .ec2$describe_application_status_check_associations_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$describe_application_status_check_associations <- ec2_describe_application_status_check_associations
+
+#' Describes application status checks, including configuration details
+#' such as protocol, port, path, thresholds, and associations
+#'
+#' @description
+#' Describes application status checks, including configuration details such as protocol, port, path, thresholds, and associations. Results are paginated. Use the `NextToken` parameter to retrieve additional results. The following rules apply:
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_describe_application_status_checks/](https://www.paws-r-sdk.com/docs/ec2_describe_application_status_checks/) for full documentation.
+#'
+#' @param ApplicationStatusCheckIds The IDs of the application status checks to describe.
+#' @param Filters The filters.
+#' 
+#' -   `aggregation` – The aggregation setting. Valid values: `included` and `excluded`.
+#' @param MaxResults The maximum number of items to return for this request. To get the next page of items, make another request with the token returned in the output. For more information, see [Pagination](https://docs.aws.amazon.com/ec2/latest/devguide/Query-Requests.html#api-pagination).
+#' @param NextToken The token returned from a previous paginated request. Pagination continues from the end of the items returned by the previous request.
+#' @param IncludeAll Specifies whether to include recently deleted application status checks that remain available during the deletion grace period. If you omit this parameter or set it to `false`, the response includes only active checks.
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_describe_application_status_checks
+ec2_describe_application_status_checks <- function(ApplicationStatusCheckIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, IncludeAll = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "DescribeApplicationStatusChecks",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$describe_application_status_checks_input(ApplicationStatusCheckIds = ApplicationStatusCheckIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IncludeAll = IncludeAll, DryRun = DryRun)
+  output <- .ec2$describe_application_status_checks_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$describe_application_status_checks <- ec2_describe_application_status_checks
 
 #' Describes the Availability Zones, Local Zones, and Wavelength Zones that
 #' are available to you
@@ -10779,6 +11382,41 @@ ec2_describe_capacity_reservation_billing_requests <- function(CapacityReservati
 }
 .ec2$operations$describe_capacity_reservation_billing_requests <- ec2_describe_capacity_reservation_billing_requests
 
+#' Describes one or more Capacity Reservation cancellation quotes
+#'
+#' @description
+#' Describes one or more Capacity Reservation cancellation quotes. The results describe only the quotes that you have previously generated by using the [`create_capacity_reservation_cancellation_quote`][ec2_create_capacity_reservation_cancellation_quote] action.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_describe_capacity_reservation_cancellation_quotes/](https://www.paws-r-sdk.com/docs/ec2_describe_capacity_reservation_cancellation_quotes/) for full documentation.
+#'
+#' @param CapacityReservationCancellationQuoteIds The IDs of the cancellation quotes to describe.
+#' @param MaxResults The maximum number of items to return for this request. To get the next page of items, make another request with the token returned in the output. For more information, see [Pagination](https://docs.aws.amazon.com/ec2/latest/devguide/Query-Requests.html#api-pagination).
+#' @param NextToken The token to use to retrieve the next page of results.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param Filters One or more filters. Filter names and values are case-sensitive.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_describe_capacity_reservation_cancellation_quotes
+ec2_describe_capacity_reservation_cancellation_quotes <- function(CapacityReservationCancellationQuoteIds = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "DescribeCapacityReservationCancellationQuotes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$describe_capacity_reservation_cancellation_quotes_input(CapacityReservationCancellationQuoteIds = CapacityReservationCancellationQuoteIds, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun, Filters = Filters)
+  output <- .ec2$describe_capacity_reservation_cancellation_quotes_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$describe_capacity_reservation_cancellation_quotes <- ec2_describe_capacity_reservation_cancellation_quotes
+
 #' Describes one or more Capacity Reservation Fleets
 #'
 #' @description
@@ -10842,7 +11480,7 @@ ec2_describe_capacity_reservation_fleets <- function(CapacityReservationFleetIds
 #' 
 #' Default: Describes all your Capacity Reservations.
 #' 
-#' Constraints: Maximum 100 explicitly specified Capacity Reservation IDs.
+#' Constraints: Maximum 10 explicitly specified Capacity Reservation IDs.
 #' @param Filters The filters.
 #' 
 #' -   `availability-zone` - The name of the Availability Zone (for example, `us-west-2a`) or Local Zone (for example, `us-west-2-lax-1b`) that the Capacity Reservation is in.
@@ -12410,6 +13048,8 @@ ec2_describe_image_usage_reports <- function(ImageIds = NULL, ReportIds = NULL, 
 #' 
 #' -   `block-device-mapping.encrypted` - A Boolean that indicates whether the Amazon EBS volume is encrypted.
 #' 
+#' -   `boot-mode` – The boot mode of the image (`legacy-bios` | `uefi` | `uefi-preferred`).
+#' 
 #' -   `creation-date` - The time when the image was created, in the ISO 8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for example, `2021-09-29T11:04:43.305Z`. You can use a wildcard (`*`), for example, `2021-09-29T*`, which matches an entire day.
 #' 
 #' -   `description` - The description of the image (provided during image creation).
@@ -12424,7 +13064,21 @@ ec2_describe_image_usage_reports <- function(ImageIds = NULL, ReportIds = NULL, 
 #' 
 #' -   `image-id` - The ID of the image.
 #' 
+#' -   `image-watermark.source-image-creation-time` - The creation date of the source AMI, in the ISO 8601 format in the UTC time zone (` YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM `). You can use a wildcard (`*`), for example, `2021-09-29T*`, which matches an entire day.
+#' 
+#' -   `image-watermark.source-image-id` - The ID of the AMI to which the watermark was originally attached.
+#' 
+#' -   `image-watermark.source-image-region` - The Region where the watermark was originally attached.
+#' 
+#' -   `image-watermark.watermark-creation-time` - The date and time the watermark was attached to the AMI, in the ISO 8601 format in the UTC time zone (` YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM `). You can use a wildcard (`*`), for example, `2021-09-29T*`, which matches an entire day.
+#' 
+#' -   `image-watermark.watermark-key` - The watermark identifier, in `accountId:watermarkName` format (for example, `123456789012:approvedAmi`).
+#' 
 #' -   `image-type` - The image type (`machine` | `kernel` | `ramdisk`).
+#' 
+#' -   `instance-type-specification.supported-instance-type` – The instance types that are compatible with the AMI, as specified by the AMI owner. Values can be individual instance types (for example, `t3.micro`) or wildcard patterns that match multiple instance types (for example, `t3.*`).
+#' 
+#' -   `instance-type-specification.unsupported-instance-type` – The instance types that are not compatible with the AMI, as specified by the AMI owner. Values can be individual instance types (for example, `t3.micro`) or wildcard patterns that match multiple instance types (for example, `t3.*`).
 #' 
 #' -   `is-public` - A Boolean that indicates whether the image is public.
 #' 
@@ -12443,6 +13097,8 @@ ec2_describe_image_usage_reports <- function(ImageIds = NULL, ReportIds = NULL, 
 #' -   `product-code` - The product code.
 #' 
 #' -   `product-code.type` - The type of the product code (`marketplace`).
+#' 
+#' -   `public-ssm-parameter-name` - The name of a public Systems Manager parameter associated with the AMI. The parameter must be in a trusted Amazon Web Services namespace under `aws/service/`. Returns all AMIs that have ever been associated with the parameter, including previous versions.
 #' 
 #' -   `ramdisk-id` - The RAM disk ID.
 #' 
@@ -12993,6 +13649,8 @@ ec2_describe_instance_sql_ha_states <- function(InstanceIds = NULL, NextToken = 
 #' -   `system-status.status` - The system status of the instance (`ok` | `impaired` | `initializing` | `insufficient-data` | `not-applicable`).
 #' 
 #' -   `attached-ebs-status.status` - The status of the attached EBS volume for the instance (`ok` | `impaired` | `initializing` | `insufficient-data` | `not-applicable`).
+#' 
+#' -   `application-status.status` - The application status of the instance (`ok` | `impaired` | `initializing` | `insufficient-data` | `not-applicable`).
 #' @param IncludeAllInstances When `true`, includes the health status for all instances. When `false`, includes the health status for running instances only.
 #' 
 #' Default: `false`
@@ -13717,6 +14375,41 @@ ec2_describe_ipam_external_resource_verification_tokens <- function(DryRun = NUL
   return(response)
 }
 .ec2$operations$describe_ipam_external_resource_verification_tokens <- ec2_describe_ipam_external_resource_verification_tokens
+
+#' Describes one or more IPAM internet registry associations
+#'
+#' @description
+#' Describes one or more IPAM internet registry associations. We recommend using pagination to ensure that the operation returns quickly and successfully.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_describe_ipam_internet_registry_associations/](https://www.paws-r-sdk.com/docs/ec2_describe_ipam_internet_registry_associations/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamInternetRegistryAssociationIds The IDs of the internet registry associations to describe.
+#' @param MaxResults The maximum number of results to return in a single call. If not specified, all available results are returned. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' @param NextToken The token for the next page of results.
+#' @param Filters One or more filters to apply to the results.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_describe_ipam_internet_registry_associations
+ec2_describe_ipam_internet_registry_associations <- function(DryRun = NULL, IpamInternetRegistryAssociationIds = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "DescribeIpamInternetRegistryAssociations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$describe_ipam_internet_registry_associations_input(DryRun = DryRun, IpamInternetRegistryAssociationIds = IpamInternetRegistryAssociationIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  output <- .ec2$describe_ipam_internet_registry_associations_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$describe_ipam_internet_registry_associations <- ec2_describe_ipam_internet_registry_associations
 
 #' Describes one or more IPAM policies
 #'
@@ -15306,7 +15999,7 @@ ec2_describe_outpost_lags <- function(OutpostLagIds = NULL, Filters = NULL, MaxR
 #' 
 #' -   `state` - The state of the placement group (`pending` | `available` | `deleting` | `deleted`).
 #' 
-#' -   `strategy` - The strategy of the placement group (`cluster` | `spread` | `partition`).
+#' -   `strategy` - The strategy of the placement group (`cluster` | `spread` | `partition` | `precision-time`).
 #' 
 #' -   `tag:<key>` - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 #' 
@@ -18234,11 +18927,12 @@ ec2_describe_volumes <- function(VolumeIds = NULL, IncludeManagedResources = NUL
 #' -   `volume-id` - The ID of the volume.
 #' @param NextToken The token returned from a previous paginated request. Pagination continues from the end of the items returned by the previous request.
 #' @param MaxResults The maximum number of results (up to a limit of 500) to be returned in a paginated request. For more information, see [Pagination](https://docs.aws.amazon.com/ec2/latest/devguide/Query-Requests.html#api-pagination).
+#' @param IncludeManagedResources Indicates whether to include managed resources in the output. If this parameter is set to `true`, the output includes resources that are managed by Amazon Web Services services, even if managed resource visibility is set to hidden.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_describe_volumes_modifications
-ec2_describe_volumes_modifications <- function(DryRun = NULL, VolumeIds = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+ec2_describe_volumes_modifications <- function(DryRun = NULL, VolumeIds = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL, IncludeManagedResources = NULL) {
   op <- new_operation(
     name = "DescribeVolumesModifications",
     http_method = "POST",
@@ -18247,7 +18941,7 @@ ec2_describe_volumes_modifications <- function(DryRun = NULL, VolumeIds = NULL, 
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VolumesModifications"),
     stream_api = FALSE
   )
-  input <- .ec2$describe_volumes_modifications_input(DryRun = DryRun, VolumeIds = VolumeIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .ec2$describe_volumes_modifications_input(DryRun = DryRun, VolumeIds = VolumeIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, IncludeManagedResources = IncludeManagedResources)
   output <- .ec2$describe_volumes_modifications_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -19120,6 +19814,39 @@ ec2_detach_classic_link_vpc <- function(DryRun = NULL, InstanceId, VpcId) {
 }
 .ec2$operations$detach_classic_link_vpc <- ec2_detach_classic_link_vpc
 
+#' Removes a watermark from the specified AMI
+#'
+#' @description
+#' Removes a watermark from the specified AMI. This is an idempotent operation. It succeeds even if the watermark does not exist on the image.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_detach_image_watermark/](https://www.paws-r-sdk.com/docs/ec2_detach_image_watermark/) for full documentation.
+#'
+#' @param ImageId &#91;required&#93; The ID of the AMI.
+#' @param WatermarkKey &#91;required&#93; The watermark key to remove, in `accountId:watermarkName` format (for example, `123456789012:approvedAmi`).
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_detach_image_watermark
+ec2_detach_image_watermark <- function(ImageId, WatermarkKey, DryRun = NULL) {
+  op <- new_operation(
+    name = "DetachImageWatermark",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$detach_image_watermark_input(ImageId = ImageId, WatermarkKey = WatermarkKey, DryRun = DryRun)
+  output <- .ec2$detach_image_watermark_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$detach_image_watermark <- ec2_detach_image_watermark
+
 #' Detaches an internet gateway from a VPC, disabling connectivity between
 #' the internet and the VPC
 #'
@@ -19359,6 +20086,40 @@ ec2_disable_allowed_images_settings <- function(DryRun = NULL) {
   return(response)
 }
 .ec2$operations$disable_allowed_images_settings <- ec2_disable_allowed_images_settings
+
+#' Disables suppression of application status checks for the specified
+#' instances
+#'
+#' @description
+#' Disables suppression of application status checks for the specified instances. After suppression is disabled, health check results resume affecting the instance-level application status. You can specify a maximum of 100 instance IDs for each request.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_disable_application_status_check_suppression/](https://www.paws-r-sdk.com/docs/ec2_disable_application_status_check_suppression/) for full documentation.
+#'
+#' @param InstanceIds The IDs of the instances for which to disable application status check suppression.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_disable_application_status_check_suppression
+ec2_disable_application_status_check_suppression <- function(InstanceIds = NULL, ClientToken = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "DisableApplicationStatusCheckSuppression",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$disable_application_status_check_suppression_input(InstanceIds = InstanceIds, ClientToken = ClientToken, DryRun = DryRun)
+  output <- .ec2$disable_application_status_check_suppression_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$disable_application_status_check_suppression <- ec2_disable_application_status_check_suppression
 
 #' Disables Infrastructure Performance metric subscriptions
 #'
@@ -20026,6 +20787,41 @@ ec2_disassociate_address <- function(AssociationId = NULL, PublicIp = NULL, DryR
 }
 .ec2$operations$disassociate_address <- ec2_disassociate_address
 
+#' Disassociates an application status check from instances or tags
+#'
+#' @description
+#' Disassociates an application status check from instances or [tags](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html). After disassociation, health monitoring stops for the affected instances. The following rules apply:
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_disassociate_application_status_check/](https://www.paws-r-sdk.com/docs/ec2_disassociate_application_status_check/) for full documentation.
+#'
+#' @param ApplicationStatusCheckId &#91;required&#93; The ID of the application status check to disassociate.
+#' @param TargetTagAssociations The [tags](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) to disassociate from the application status check. Specify the same key-value pairs that were used during association.
+#' @param InstanceIds The IDs of the instances to disassociate from the application status check.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_disassociate_application_status_check
+ec2_disassociate_application_status_check <- function(ApplicationStatusCheckId, TargetTagAssociations = NULL, InstanceIds = NULL, ClientToken = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "DisassociateApplicationStatusCheck",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$disassociate_application_status_check_input(ApplicationStatusCheckId = ApplicationStatusCheckId, TargetTagAssociations = TargetTagAssociations, InstanceIds = InstanceIds, ClientToken = ClientToken, DryRun = DryRun)
+  output <- .ec2$disassociate_application_status_check_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$disassociate_application_status_check <- ec2_disassociate_application_status_check
+
 #' Cancels a pending request to assign billing of the unused capacity of a
 #' Capacity Reservation to a consumer account, or revokes a request that
 #' has already been accepted
@@ -20653,6 +21449,40 @@ ec2_enable_allowed_images_settings <- function(AllowedImagesSettingsState, DryRu
 }
 .ec2$operations$enable_allowed_images_settings <- ec2_enable_allowed_images_settings
 
+#' Suppresses application status checks for the specified instances
+#'
+#' @description
+#' Suppresses application status checks for the specified instances. While suppressed, health checks continue to run but do not affect the instance-level application status. The following rules apply:
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_enable_application_status_check_suppression/](https://www.paws-r-sdk.com/docs/ec2_enable_application_status_check_suppression/) for full documentation.
+#'
+#' @param InstanceIds The IDs of the instances for which to suppress application status checks.
+#' @param DurationSeconds The duration, in seconds, for which to suppress application status checks. If omitted, the application status check is suppressed indefinitely until you call [`disable_application_status_check_suppression`][ec2_disable_application_status_check_suppression].
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_enable_application_status_check_suppression
+ec2_enable_application_status_check_suppression <- function(InstanceIds = NULL, DurationSeconds = NULL, ClientToken = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "EnableApplicationStatusCheckSuppression",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$enable_application_status_check_suppression_input(InstanceIds = InstanceIds, DurationSeconds = DurationSeconds, ClientToken = ClientToken, DryRun = DryRun)
+  output <- .ec2$enable_application_status_check_suppression_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$enable_application_status_check_suppression <- ec2_enable_application_status_check_suppression
+
 #' Enables Infrastructure Performance subscriptions
 #'
 #' @description
@@ -20995,6 +21825,46 @@ ec2_enable_instance_sql_ha_standby_detections <- function(InstanceIds, SqlServer
   return(response)
 }
 .ec2$operations$enable_instance_sql_ha_standby_detections <- ec2_enable_instance_sql_ha_standby_detections
+
+#' Enables Resource Public Key Infrastructure (RPKI) on an existing IPAM
+#' internet registry association by providing BGP Public Key Infrastructure
+#' (BPKI) certificate details
+#'
+#' @description
+#' Enables Resource Public Key Infrastructure (RPKI) on an existing IPAM internet registry association by providing BGP Public Key Infrastructure (BPKI) certificate details. After enabling, you can create Route Origin Authorizations (ROAs) for prefixes registered with the internet registry.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_enable_ipam_internet_registry_association/](https://www.paws-r-sdk.com/docs/ec2_enable_ipam_internet_registry_association/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamInternetRegistryAssociationId &#91;required&#93; The ID of the IPAM internet registry association to enable.
+#' @param RpkiVersion &#91;required&#93; The RPKI version to use from the Parent Response XML.
+#' @param ServiceUri &#91;required&#93; The RPKI service URI for the publication point from the Parent Response XML.
+#' @param ChildHandle &#91;required&#93; The child handle for the BPKI certificate hierarchy from the Parent Response XML.
+#' @param ParentHandle &#91;required&#93; The parent handle for the BPKI certificate hierarchy from the Parent Response XML.
+#' @param ParentBpkiTa &#91;required&#93; The parent BPKI Trust Anchor certificate in PEM format from the Parent Response XML.
+#' @param ClientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the operation ignores the request, but does not return an error.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_enable_ipam_internet_registry_association
+ec2_enable_ipam_internet_registry_association <- function(DryRun = NULL, IpamInternetRegistryAssociationId, RpkiVersion, ServiceUri, ChildHandle, ParentHandle, ParentBpkiTa, ClientToken = NULL) {
+  op <- new_operation(
+    name = "EnableIpamInternetRegistryAssociation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$enable_ipam_internet_registry_association_input(DryRun = DryRun, IpamInternetRegistryAssociationId = IpamInternetRegistryAssociationId, RpkiVersion = RpkiVersion, ServiceUri = ServiceUri, ChildHandle = ChildHandle, ParentHandle = ParentHandle, ParentBpkiTa = ParentBpkiTa, ClientToken = ClientToken)
+  output <- .ec2$enable_ipam_internet_registry_association_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$enable_ipam_internet_registry_association <- ec2_enable_ipam_internet_registry_association
 
 #' Enable an Organizations member account as the IPAM admin account
 #'
@@ -22625,6 +23495,115 @@ ec2_get_ipam_discovered_resource_cidrs <- function(DryRun = NULL, IpamResourceDi
 }
 .ec2$operations$get_ipam_discovered_resource_cidrs <- ec2_get_ipam_discovered_resource_cidrs
 
+#' Retrieves Border Gateway Protocol (BGP) routes discovered by IPAM
+#' resource discovery for a specified Region
+#'
+#' @description
+#' Retrieves Border Gateway Protocol (BGP) routes discovered by IPAM resource discovery for a specified Region. Use this operation to view the Bring Your Own IP (BYOIP) address ranges that are currently advertised through BGP. We recommend using pagination to ensure that the operation returns quickly and successfully.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_get_ipam_discovered_routes/](https://www.paws-r-sdk.com/docs/ec2_get_ipam_discovered_routes/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamResourceDiscoveryId &#91;required&#93; The ID of the IPAM resource discovery.
+#' @param ResourceRegion &#91;required&#93; The Amazon Web Services Region to retrieve discovered routes for.
+#' @param Filters One or more filters to apply to the results.
+#' @param NextToken The token for the next page of results.
+#' @param MaxResults The maximum number of results to return in a single call. If not specified, all available results are returned. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_get_ipam_discovered_routes
+ec2_get_ipam_discovered_routes <- function(DryRun = NULL, IpamResourceDiscoveryId, ResourceRegion, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetIpamDiscoveredRoutes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$get_ipam_discovered_routes_input(DryRun = DryRun, IpamResourceDiscoveryId = IpamResourceDiscoveryId, ResourceRegion = ResourceRegion, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .ec2$get_ipam_discovered_routes_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$get_ipam_discovered_routes <- ec2_get_ipam_discovered_routes
+
+#' Retrieves Autonomous System Numbers (ASNs) registered with an internet
+#' registry for an IPAM internet registry association
+#'
+#' @description
+#' Retrieves Autonomous System Numbers (ASNs) registered with an internet registry for an IPAM internet registry association. We recommend using pagination to ensure that the operation returns quickly and successfully.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_get_ipam_internet_registry_association_asns/](https://www.paws-r-sdk.com/docs/ec2_get_ipam_internet_registry_association_asns/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamInternetRegistryAssociationId &#91;required&#93; The ID of the IPAM internet registry association.
+#' @param MaxResults The maximum number of results to return in a single call. If not specified, all available results are returned. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' @param NextToken The token for the next page of results.
+#' @param Filters One or more filters to apply to the results.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_get_ipam_internet_registry_association_asns
+ec2_get_ipam_internet_registry_association_asns <- function(DryRun = NULL, IpamInternetRegistryAssociationId, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "GetIpamInternetRegistryAssociationAsns",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$get_ipam_internet_registry_association_asns_input(DryRun = DryRun, IpamInternetRegistryAssociationId = IpamInternetRegistryAssociationId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  output <- .ec2$get_ipam_internet_registry_association_asns_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$get_ipam_internet_registry_association_asns <- ec2_get_ipam_internet_registry_association_asns
+
+#' Retrieves IP address CIDRs registered with an internet registry for an
+#' IPAM internet registry association
+#'
+#' @description
+#' Retrieves IP address CIDRs registered with an internet registry for an IPAM internet registry association. We recommend using pagination to ensure that the operation returns quickly and successfully.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_get_ipam_internet_registry_association_cidrs/](https://www.paws-r-sdk.com/docs/ec2_get_ipam_internet_registry_association_cidrs/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamInternetRegistryAssociationId &#91;required&#93; The ID of the IPAM internet registry association.
+#' @param MaxResults The maximum number of results to return in a single call. If not specified, all available results are returned. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' @param NextToken The token for the next page of results.
+#' @param Filters One or more filters to apply to the results.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_get_ipam_internet_registry_association_cidrs
+ec2_get_ipam_internet_registry_association_cidrs <- function(DryRun = NULL, IpamInternetRegistryAssociationId, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "GetIpamInternetRegistryAssociationCidrs",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$get_ipam_internet_registry_association_cidrs_input(DryRun = DryRun, IpamInternetRegistryAssociationId = IpamInternetRegistryAssociationId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  output <- .ec2$get_ipam_internet_registry_association_cidrs_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$get_ipam_internet_registry_association_cidrs <- ec2_get_ipam_internet_registry_association_cidrs
+
 #' Gets the allocation rules for an IPAM policy
 #'
 #' @description
@@ -22918,6 +23897,152 @@ ec2_get_ipam_resource_cidrs <- function(DryRun = NULL, Filters = NULL, MaxResult
   return(response)
 }
 .ec2$operations$get_ipam_resource_cidrs <- ec2_get_ipam_resource_cidrs
+
+#' Retrieves the current Route Origin Authorizations (ROAs) published to
+#' the RPKI for an IPAM internet registry association
+#'
+#' @description
+#' Retrieves the current Route Origin Authorizations (ROAs) published to the RPKI for an IPAM internet registry association. We recommend using pagination to ensure that the operation returns quickly and successfully.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_get_ipam_route_origin_authorizations/](https://www.paws-r-sdk.com/docs/ec2_get_ipam_route_origin_authorizations/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamInternetRegistryAssociationId &#91;required&#93; The ID of the IPAM internet registry association.
+#' @param Cidr Filter results to a specific CIDR prefix.
+#' @param MaxResults The maximum number of results to return in a single call. If not specified, all available results are returned. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' @param NextToken The token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_get_ipam_route_origin_authorizations
+ec2_get_ipam_route_origin_authorizations <- function(DryRun = NULL, IpamInternetRegistryAssociationId, Cidr = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetIpamRouteOriginAuthorizations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$get_ipam_route_origin_authorizations_input(DryRun = DryRun, IpamInternetRegistryAssociationId = IpamInternetRegistryAssociationId, Cidr = Cidr, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .ec2$get_ipam_route_origin_authorizations_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$get_ipam_route_origin_authorizations <- ec2_get_ipam_route_origin_authorizations
+
+#' Retrieves route protection findings for an IPAM
+#'
+#' @description
+#' Retrieves route protection findings for an IPAM. Route protection findings show the Resource Public Key Infrastructure (RPKI) validation status of your Bring Your Own IP (BYOIP) routes. Findings identify routes that have valid, invalid, or unknown validation states. We recommend using pagination to ensure that the operation returns quickly and successfully.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_get_ipam_route_protection_findings/](https://www.paws-r-sdk.com/docs/ec2_get_ipam_route_protection_findings/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamId &#91;required&#93; The ID of the IPAM to retrieve route protection findings for.
+#' @param Filters One or more filters to apply to the results.
+#' @param NextToken The token for the next page of results.
+#' @param MaxResults The maximum number of results to return in a single call. If not specified, all available results are returned. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_get_ipam_route_protection_findings
+ec2_get_ipam_route_protection_findings <- function(DryRun = NULL, IpamId, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetIpamRouteProtectionFindings",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$get_ipam_route_protection_findings_input(DryRun = DryRun, IpamId = IpamId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .ec2$get_ipam_route_protection_findings_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$get_ipam_route_protection_findings <- ec2_get_ipam_route_protection_findings
+
+#' Retrieves the history of routing policy registration changes for an IPAM
+#' internet registry association
+#'
+#' @description
+#' Retrieves the history of routing policy registration changes for an IPAM internet registry association. We recommend using pagination to ensure that the operation returns quickly and successfully.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_get_ipam_routing_policy_registration_deltas/](https://www.paws-r-sdk.com/docs/ec2_get_ipam_routing_policy_registration_deltas/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamInternetRegistryAssociationId &#91;required&#93; The ID of the IPAM internet registry association.
+#' @param DeltaId Filter results to a specific delta ID.
+#' @param StartTime The start of the time range to filter deltas by.
+#' @param EndTime The end of the time range to filter deltas by.
+#' @param ChronologicalOrder The chronological order to return results in. Valid values: `forward` | `reverse`.
+#' @param MaxResults The maximum number of results to return in a single call. If not specified, all available results are returned. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' @param NextToken The token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_get_ipam_routing_policy_registration_deltas
+ec2_get_ipam_routing_policy_registration_deltas <- function(DryRun = NULL, IpamInternetRegistryAssociationId, DeltaId = NULL, StartTime = NULL, EndTime = NULL, ChronologicalOrder = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetIpamRoutingPolicyRegistrationDeltas",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$get_ipam_routing_policy_registration_deltas_input(DryRun = DryRun, IpamInternetRegistryAssociationId = IpamInternetRegistryAssociationId, DeltaId = DeltaId, StartTime = StartTime, EndTime = EndTime, ChronologicalOrder = ChronologicalOrder, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .ec2$get_ipam_routing_policy_registration_deltas_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$get_ipam_routing_policy_registration_deltas <- ec2_get_ipam_routing_policy_registration_deltas
+
+#' Retrieves routing policy registrations for an IPAM internet registry
+#' association
+#'
+#' @description
+#' Retrieves routing policy registrations for an IPAM internet registry association. Each registration represents a Route Origin Authorization (ROA) that has been created or is pending publication to the RPKI. We recommend using pagination to ensure that the operation returns quickly and successfully.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_get_ipam_routing_policy_registrations/](https://www.paws-r-sdk.com/docs/ec2_get_ipam_routing_policy_registrations/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamInternetRegistryAssociationId &#91;required&#93; The ID of the IPAM internet registry association.
+#' @param Cidr Filter results to a specific CIDR prefix.
+#' @param MaxResults The maximum number of results to return in a single call. If not specified, all available results are returned. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' @param NextToken The token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_get_ipam_routing_policy_registrations
+ec2_get_ipam_routing_policy_registrations <- function(DryRun = NULL, IpamInternetRegistryAssociationId, Cidr = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetIpamRoutingPolicyRegistrations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$get_ipam_routing_policy_registrations_input(DryRun = DryRun, IpamInternetRegistryAssociationId = IpamInternetRegistryAssociationId, Cidr = Cidr, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .ec2$get_ipam_routing_policy_registrations_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$get_ipam_routing_policy_registrations <- ec2_get_ipam_routing_policy_registrations
 
 #' Retrieves the configuration data of the specified instance
 #'
@@ -23420,11 +24545,14 @@ ec2_get_snapshot_block_public_access_state <- function(DryRun = NULL) {
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param MaxResults The maximum number of items to return for this request. To get the next page of items, make another request with the token returned in the output. For more information, see [Pagination](https://docs.aws.amazon.com/ec2/latest/devguide/Query-Requests.html#api-pagination).
 #' @param NextToken The token returned from a previous paginated request. Pagination continues from the end of the items returned by the previous request.
+#' @param IncludeLocalZones Specify `true` so that the response returns scores that include Local Zones. Otherwise, the response ignores Local Zones.
+#' 
+#' When you request regional scores, Local Zone capacity counts toward its parent Region.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_get_spot_placement_scores
-ec2_get_spot_placement_scores <- function(InstanceTypes = NULL, TargetCapacity, TargetCapacityUnitType = NULL, SingleAvailabilityZone = NULL, RegionNames = NULL, InstanceRequirementsWithMetadata = NULL, DryRun = NULL, MaxResults = NULL, NextToken = NULL) {
+ec2_get_spot_placement_scores <- function(InstanceTypes = NULL, TargetCapacity, TargetCapacityUnitType = NULL, SingleAvailabilityZone = NULL, RegionNames = NULL, InstanceRequirementsWithMetadata = NULL, DryRun = NULL, MaxResults = NULL, NextToken = NULL, IncludeLocalZones = NULL) {
   op <- new_operation(
     name = "GetSpotPlacementScores",
     http_method = "POST",
@@ -23433,7 +24561,7 @@ ec2_get_spot_placement_scores <- function(InstanceTypes = NULL, TargetCapacity, 
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotPlacementScores"),
     stream_api = FALSE
   )
-  input <- .ec2$get_spot_placement_scores_input(InstanceTypes = InstanceTypes, TargetCapacity = TargetCapacity, TargetCapacityUnitType = TargetCapacityUnitType, SingleAvailabilityZone = SingleAvailabilityZone, RegionNames = RegionNames, InstanceRequirementsWithMetadata = InstanceRequirementsWithMetadata, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .ec2$get_spot_placement_scores_input(InstanceTypes = InstanceTypes, TargetCapacity = TargetCapacity, TargetCapacityUnitType = TargetCapacityUnitType, SingleAvailabilityZone = SingleAvailabilityZone, RegionNames = RegionNames, InstanceRequirementsWithMetadata = InstanceRequirementsWithMetadata, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, IncludeLocalZones = IncludeLocalZones)
   output <- .ec2$get_spot_placement_scores_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -23648,7 +24776,25 @@ ec2_get_transit_gateway_policy_table_associations <- function(TransitGatewayPoli
 #' See [https://www.paws-r-sdk.com/docs/ec2_get_transit_gateway_policy_table_entries/](https://www.paws-r-sdk.com/docs/ec2_get_transit_gateway_policy_table_entries/) for full documentation.
 #'
 #' @param TransitGatewayPolicyTableId &#91;required&#93; The ID of the transit gateway policy table.
-#' @param Filters The filters associated with the transit gateway policy table.
+#' @param Filters One or more filters. The possible values are:
+#' 
+#' -   `policy-rule-number` - The rule number for the transit gateway policy table entry.
+#' 
+#' -   `target-route-table-id` - The ID of the target route table.
+#' 
+#' -   `policy-rule.source-ip` - The source CIDR block for the policy rule.
+#' 
+#' -   `policy-rule.destination-ip` - The destination CIDR block for the policy rule.
+#' 
+#' -   `policy-rule.source-port` - The source port or port range for the policy rule.
+#' 
+#' -   `policy-rule.destination-port` - The destination port or port range for the policy rule.
+#' 
+#' -   `policy-rule.protocol` - The protocol for the policy rule.
+#' 
+#' -   `policy-rule.meta-data.key` - The metadata key for the policy rule.
+#' 
+#' -   `policy-rule.meta-data.value` - The metadata value for the policy rule.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned `nextToken` value.
 #' @param NextToken The token for the next page of results.
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
@@ -23662,7 +24808,7 @@ ec2_get_transit_gateway_policy_table_entries <- function(TransitGatewayPolicyTab
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPolicyTableEntries"),
     stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_policy_table_entries_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
@@ -24493,6 +25639,46 @@ ec2_lock_snapshot <- function(SnapshotId, DryRun = NULL, LockMode, CoolOffPeriod
 }
 .ec2$operations$lock_snapshot <- ec2_lock_snapshot
 
+#' Modifies the account-level VPC Encryption Control configuration
+#'
+#' @description
+#' Modifies the account-level VPC Encryption Control configuration. This sets the encryption control mode and resource exclusions that apply to the VPCs in your account. VPC Encryption Control enables you to enforce encryption for all data in transit within and between VPCs to meet compliance requirements.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_modify_account_vpc_encryption_control/](https://www.paws-r-sdk.com/docs/ec2_modify_account_vpc_encryption_control/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param Mode The encryption mode for the account encryption control configuration.
+#' @param InternetGateway Specifies whether to exclude internet gateway resource from account-level encryption enforcement.
+#' @param EgressOnlyInternetGateway Specifies whether to exclude egress-only internet gateway resource from account-level encryption enforcement.
+#' @param NatGateway Specifies whether to exclude NAT gateway resource from account-level encryption enforcement.
+#' @param VirtualPrivateGateway Specifies whether to exclude virtual private gateway resource from account-level encryption enforcement.
+#' @param VpcPeering Specifies whether to exclude VPC peering connection resource from account-level encryption enforcement.
+#' @param Lambda Specifies whether to exclude Lambda service from account-level encryption enforcement.
+#' @param VpcLattice Specifies whether to exclude VPC Lattice service from account-level encryption enforcement.
+#' @param ElasticFileSystem Specifies whether to exclude Elastic File System service from account-level encryption enforcement.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_modify_account_vpc_encryption_control
+ec2_modify_account_vpc_encryption_control <- function(DryRun = NULL, Mode = NULL, InternetGateway = NULL, EgressOnlyInternetGateway = NULL, NatGateway = NULL, VirtualPrivateGateway = NULL, VpcPeering = NULL, Lambda = NULL, VpcLattice = NULL, ElasticFileSystem = NULL) {
+  op <- new_operation(
+    name = "ModifyAccountVpcEncryptionControl",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$modify_account_vpc_encryption_control_input(DryRun = DryRun, Mode = Mode, InternetGateway = InternetGateway, EgressOnlyInternetGateway = EgressOnlyInternetGateway, NatGateway = NatGateway, VirtualPrivateGateway = VirtualPrivateGateway, VpcPeering = VpcPeering, Lambda = Lambda, VpcLattice = VpcLattice, ElasticFileSystem = ElasticFileSystem)
+  output <- .ec2$modify_account_vpc_encryption_control_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$modify_account_vpc_encryption_control <- ec2_modify_account_vpc_encryption_control
+
 #' Modifies an attribute of the specified Elastic IP address
 #'
 #' @description
@@ -24525,6 +25711,53 @@ ec2_modify_address_attribute <- function(AllocationId, DomainName = NULL, DryRun
   return(response)
 }
 .ec2$operations$modify_address_attribute <- ec2_modify_address_attribute
+
+#' Modifies an existing application status check
+#'
+#' @description
+#' Modifies an existing application status check. You can update the protocol, port, path, thresholds, and other configuration settings. The following rules apply:
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_modify_application_status_check/](https://www.paws-r-sdk.com/docs/ec2_modify_application_status_check/) for full documentation.
+#'
+#' @param ApplicationStatusCheckId &#91;required&#93; The ID of the application status check to modify.
+#' @param Aggregation The aggregation setting for the application status check. When set to `included`, the result of this check contributes to the instance-level application status reported by [`describe_application_status`][ec2_describe_application_status]. When set to `excluded`, the check runs independently and does not affect the instance-level status. Valid values: `included` | `excluded`.
+#' @param HealthCheckPaths The health check paths to use for the application status check.
+#' @param Protocol The protocol to use for the health check. Valid values: `http` | `https`.
+#' @param Port The port to use for the health check. Valid values: 1 to 65535.
+#' @param Path The URL path to use for the health check HTTP request (for example, `/health` or `/status`).
+#' @param DeviceIndex The index of the network device to use for the health check. The value must be greater than or equal to 0.
+#' @param IpVersion The IP version to use for the health check. Valid values: `ipv4` and `ipv6`.
+#' @param IpScope The IP scope to use for the health check. Valid value: `private`.
+#' @param Interval The interval, in seconds, between health checks. Valid value: 60.
+#' @param Timeout The amount of time, in seconds, to wait for a health check response before considering it failed. Valid values: 1 to 30. The value must be less than `Interval`.
+#' @param FailureThreshold The number of consecutive failed health checks before the application status is considered impaired. The value must be greater than 0.
+#' @param SuccessThreshold The number of consecutive successful health checks before the application status is considered healthy. The value must be greater than 0.
+#' @param StatusCodeMatcher The HTTP status codes that indicate a successful health check response. Specify a comma-separated list of individual status codes or ranges, for example, `200,202,300-399`. For a range, the first value must be less than the second value. Maximum length: 64 characters.
+#' @param InitializationGracePeriodSeconds The number of seconds to wait before starting health checks after an instance is launched. Valid values: 1 to 600.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_modify_application_status_check
+ec2_modify_application_status_check <- function(ApplicationStatusCheckId, Aggregation = NULL, HealthCheckPaths = NULL, Protocol = NULL, Port = NULL, Path = NULL, DeviceIndex = NULL, IpVersion = NULL, IpScope = NULL, Interval = NULL, Timeout = NULL, FailureThreshold = NULL, SuccessThreshold = NULL, StatusCodeMatcher = NULL, InitializationGracePeriodSeconds = NULL, ClientToken = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "ModifyApplicationStatusCheck",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$modify_application_status_check_input(ApplicationStatusCheckId = ApplicationStatusCheckId, Aggregation = Aggregation, HealthCheckPaths = HealthCheckPaths, Protocol = Protocol, Port = Port, Path = Path, DeviceIndex = DeviceIndex, IpVersion = IpVersion, IpScope = IpScope, Interval = Interval, Timeout = Timeout, FailureThreshold = FailureThreshold, SuccessThreshold = SuccessThreshold, StatusCodeMatcher = StatusCodeMatcher, InitializationGracePeriodSeconds = InitializationGracePeriodSeconds, ClientToken = ClientToken, DryRun = DryRun)
+  output <- .ec2$modify_application_status_check_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$modify_application_status_check <- ec2_modify_application_status_check
 
 #' Changes the opt-in status of the specified zone group for your account
 #'
@@ -25863,6 +27096,45 @@ ec2_modify_ipam_resource_discovery <- function(DryRun = NULL, IpamResourceDiscov
 }
 .ec2$operations$modify_ipam_resource_discovery <- ec2_modify_ipam_resource_discovery
 
+#' Modifies an existing routing policy registration
+#'
+#' @description
+#' Modifies an existing routing policy registration. You can update the authorized ASNs, maximum prefix length, and other properties of a Route Origin Authorization (ROA).
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_modify_ipam_routing_policy_registration/](https://www.paws-r-sdk.com/docs/ec2_modify_ipam_routing_policy_registration/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamInternetRegistryAssociationId &#91;required&#93; The ID of the IPAM internet registry association.
+#' @param Cidr &#91;required&#93; The IP address prefix in CIDR notation identifying the routing policy registration to modify.
+#' @param Asns &#91;required&#93; The updated list of Autonomous System Numbers (ASNs) authorized to originate the prefix.
+#' @param PermitMoreSpecificAnnouncements Specifies whether to permit more specific route announcements than the CIDR prefix. Default: `false`.
+#' @param MaxLength The new maximum prefix length that the ASNs are authorized to announce. Must be greater than or equal to the prefix length of the CIDR.
+#' @param Description A new description for the routing policy registration.
+#' @param Force Forces the modification even if it conflicts with an announced route. Default: `false`.
+#' @param ClientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the operation ignores the request, but does not return an error.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_modify_ipam_routing_policy_registration
+ec2_modify_ipam_routing_policy_registration <- function(DryRun = NULL, IpamInternetRegistryAssociationId, Cidr, Asns, PermitMoreSpecificAnnouncements = NULL, MaxLength = NULL, Description = NULL, Force = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "ModifyIpamRoutingPolicyRegistration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$modify_ipam_routing_policy_registration_input(DryRun = DryRun, IpamInternetRegistryAssociationId = IpamInternetRegistryAssociationId, Cidr = Cidr, Asns = Asns, PermitMoreSpecificAnnouncements = PermitMoreSpecificAnnouncements, MaxLength = MaxLength, Description = Description, Force = Force, ClientToken = ClientToken)
+  output <- .ec2$modify_ipam_routing_policy_registration_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$modify_ipam_routing_policy_registration <- ec2_modify_ipam_routing_policy_registration
+
 #' Modify an IPAM scope
 #'
 #' @description
@@ -26626,6 +27898,41 @@ ec2_modify_transit_gateway_metering_policy <- function(TransitGatewayMeteringPol
 }
 .ec2$operations$modify_transit_gateway_metering_policy <- ec2_modify_transit_gateway_metering_policy
 
+#' Modifies the specified transit gateway policy table entry
+#'
+#' @description
+#' Modifies the specified transit gateway policy table entry.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_modify_transit_gateway_policy_table_entry/](https://www.paws-r-sdk.com/docs/ec2_modify_transit_gateway_policy_table_entry/) for full documentation.
+#'
+#' @param TransitGatewayPolicyTableId &#91;required&#93; The ID of the transit gateway policy table.
+#' @param PolicyRuleNumber &#91;required&#93; The rule number of the policy table entry to modify.
+#' @param PolicyRule The updated matching criteria for the policy table entry. Unspecified fields retain their current values.
+#' @param TargetRouteTableId The ID of the transit gateway route table to use for traffic matching this rule.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_modify_transit_gateway_policy_table_entry
+ec2_modify_transit_gateway_policy_table_entry <- function(TransitGatewayPolicyTableId, PolicyRuleNumber, PolicyRule = NULL, TargetRouteTableId = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "ModifyTransitGatewayPolicyTableEntry",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$modify_transit_gateway_policy_table_entry_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, PolicyRuleNumber = PolicyRuleNumber, PolicyRule = PolicyRule, TargetRouteTableId = TargetRouteTableId, DryRun = DryRun)
+  output <- .ec2$modify_transit_gateway_policy_table_entry_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$modify_transit_gateway_policy_table_entry <- ec2_modify_transit_gateway_policy_table_entry
+
 #' Modifies a reference (route) to a prefix list in a specified transit
 #' gateway route table
 #'
@@ -27293,6 +28600,41 @@ ec2_modify_vpc_endpoint_connection_notification <- function(DryRun = NULL, Conne
   return(response)
 }
 .ec2$operations$modify_vpc_endpoint_connection_notification <- ec2_modify_vpc_endpoint_connection_notification
+
+#' Modifies the billing account for VPC endpoint usage/charges
+#'
+#' @description
+#' Modifies the billing account for VPC endpoint usage/charges.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_modify_vpc_endpoint_payer_responsibility/](https://www.paws-r-sdk.com/docs/ec2_modify_vpc_endpoint_payer_responsibility/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param ServiceId The ID of the VPC endpoint service.
+#' @param VpcEndpointId &#91;required&#93; The ID of the VPC endpoint.
+#' @param PayerResponsibility &#91;required&#93; The Amazon Web Services account to which the usage of VPC endpoint is charged.
+#' @param Scope &#91;required&#93; The scope of usage/charges for which the billing account is being modified.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_modify_vpc_endpoint_payer_responsibility
+ec2_modify_vpc_endpoint_payer_responsibility <- function(DryRun = NULL, ServiceId = NULL, VpcEndpointId, PayerResponsibility, Scope) {
+  op <- new_operation(
+    name = "ModifyVpcEndpointPayerResponsibility",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$modify_vpc_endpoint_payer_responsibility_input(DryRun = DryRun, ServiceId = ServiceId, VpcEndpointId = VpcEndpointId, PayerResponsibility = PayerResponsibility, Scope = Scope)
+  output <- .ec2$modify_vpc_endpoint_payer_responsibility_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$modify_vpc_endpoint_payer_responsibility <- ec2_modify_vpc_endpoint_payer_responsibility
 
 #' Modifies the attributes of the specified VPC endpoint service
 #' configuration
@@ -28698,6 +30040,39 @@ ec2_replace_image_criteria_in_allowed_images_settings <- function(ImageCriteria 
 }
 .ec2$operations$replace_image_criteria_in_allowed_images_settings <- ec2_replace_image_criteria_in_allowed_images_settings
 
+#' Replaces or removes the instance type specification for an AMI
+#'
+#' @description
+#' Replaces or removes the instance type specification for an AMI. The instance type specification defines which instance types are compatible with the AMI.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_replace_image_instance_type_specification/](https://www.paws-r-sdk.com/docs/ec2_replace_image_instance_type_specification/) for full documentation.
+#'
+#' @param ImageId &#91;required&#93; The ID of the AMI.
+#' @param InstanceTypeSpecification The instance type specification to set on the AMI. Omit this parameter to remove the existing instance type specification.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_replace_image_instance_type_specification
+ec2_replace_image_instance_type_specification <- function(ImageId, InstanceTypeSpecification = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "ReplaceImageInstanceTypeSpecification",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$replace_image_instance_type_specification_input(ImageId = ImageId, InstanceTypeSpecification = InstanceTypeSpecification, DryRun = DryRun)
+  output <- .ec2$replace_image_instance_type_specification_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$replace_image_instance_type_specification <- ec2_replace_image_instance_type_specification
+
 #' Changes which network ACL a subnet is associated with
 #'
 #' @description
@@ -29597,7 +30972,7 @@ ec2_revoke_security_group_egress <- function(SecurityGroupRuleIds = NULL, DryRun
 #' @param GroupId The ID of the security group.
 #' @param GroupName \[Default VPC\] The name of the security group. You must specify either the security group ID or the security group name in the request. For security groups in a nondefault VPC, you must specify the security group ID.
 #' @param IpPermissions The sets of IP permissions. You can't specify a source security group and a CIDR IP address range in the same set of permissions.
-#' @param IpProtocol The IP protocol name (`tcp`, `udp`, `icmp`) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)). Use `-1` to specify all.
+#' @param IpProtocol The IP protocol name (`tcp`, `udp`, `icmp`) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers)). Use `-1` to specify all.
 #' @param SourceSecurityGroupName \[Default VPC\] The name of the source security group. You can't specify this parameter in combination with the following parameters: the CIDR IP address range, the start of the port range, the IP protocol, and the end of the port range. The source security group must be in the same VPC. To revoke a specific rule for an IP protocol and port range, use a set of IP permissions instead.
 #' @param SourceSecurityGroupOwnerId Not supported.
 #' @param ToPort If the protocol is TCP or UDP, this is the end of the port range. If the protocol is ICMP, this is the ICMP code or -1 (all ICMP codes).

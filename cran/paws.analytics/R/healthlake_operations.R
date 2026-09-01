@@ -3,6 +3,43 @@
 #' @include healthlake_service.R
 NULL
 
+#' Creates a data transformation profile in DRAFT state
+#'
+#' @description
+#' Creates a data transformation profile in DRAFT state. Specify a built-in starter profile, an existing profile version, raw profile content, or a sample data file as the source.
+#'
+#' See [https://www.paws-r-sdk.com/docs/healthlake_create_data_transformation_profile/](https://www.paws-r-sdk.com/docs/healthlake_create_data_transformation_profile/) for full documentation.
+#'
+#' @param SourceFormat &#91;required&#93; The source data format that this profile converts from (Consolidated Clinical Document Architecture (C-CDA) or Comma-separated values (CSV)).
+#' @param Source &#91;required&#93; The source for the initial profile content. Specify a built-in starter profile, an existing profile version to clone, raw profile content for CI/CD workflows, or a sample data file in Amazon S3.
+#' @param KmsKeyId The Amazon Web Services Key Management Service (Amazon Web Services KMS) key identifier used to encrypt the profile content at rest.
+#' @param ProfileDescription A human-readable description of the profile's purpose.
+#' @param ProfileName &#91;required&#93; A name for the data transformation profile.
+#' @param Tags The tags to associate with the profile at creation time.
+#' @param ClientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request but does not return an error.
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_create_data_transformation_profile
+healthlake_create_data_transformation_profile <- function(SourceFormat, Source, KmsKeyId = NULL, ProfileDescription = NULL, ProfileName, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateDataTransformationProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$create_data_transformation_profile_input(SourceFormat = SourceFormat, Source = Source, KmsKeyId = KmsKeyId, ProfileDescription = ProfileDescription, ProfileName = ProfileName, Tags = Tags, ClientToken = ClientToken)
+  output <- .healthlake$create_data_transformation_profile_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$create_data_transformation_profile <- healthlake_create_data_transformation_profile
+
 #' Create a FHIR-enabled data store
 #'
 #' @description
@@ -17,11 +54,15 @@ NULL
 #' @param ClientToken An optional user-provided token to ensure API idempotency.
 #' @param Tags The resource tags applied to a data store when it is created.
 #' @param IdentityProviderConfiguration The identity provider configuration to use for the data store.
+#' @param AnalyticsConfiguration The analytics configuration for the data store.
+#' @param NlpConfiguration The natural language processing (NLP) configuration for the data store.
+#' @param ProfileConfiguration The profile configuration for the data store.
+#' @param BackupConfiguration The backup configuration for the data store.
 #'
 #' @keywords internal
 #'
 #' @rdname healthlake_create_fhir_datastore
-healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreTypeVersion, SseConfiguration = NULL, PreloadDataConfig = NULL, ClientToken = NULL, Tags = NULL, IdentityProviderConfiguration = NULL) {
+healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreTypeVersion, SseConfiguration = NULL, PreloadDataConfig = NULL, ClientToken = NULL, Tags = NULL, IdentityProviderConfiguration = NULL, AnalyticsConfiguration = NULL, NlpConfiguration = NULL, ProfileConfiguration = NULL, BackupConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFHIRDatastore",
     http_method = "POST",
@@ -30,7 +71,7 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .healthlake$create_fhir_datastore_input(DatastoreName = DatastoreName, DatastoreTypeVersion = DatastoreTypeVersion, SseConfiguration = SseConfiguration, PreloadDataConfig = PreloadDataConfig, ClientToken = ClientToken, Tags = Tags, IdentityProviderConfiguration = IdentityProviderConfiguration)
+  input <- .healthlake$create_fhir_datastore_input(DatastoreName = DatastoreName, DatastoreTypeVersion = DatastoreTypeVersion, SseConfiguration = SseConfiguration, PreloadDataConfig = PreloadDataConfig, ClientToken = ClientToken, Tags = Tags, IdentityProviderConfiguration = IdentityProviderConfiguration, AnalyticsConfiguration = AnalyticsConfiguration, NlpConfiguration = NlpConfiguration, ProfileConfiguration = ProfileConfiguration, BackupConfiguration = BackupConfiguration)
   output <- .healthlake$create_fhir_datastore_output()
   config <- get_config()
   svc <- .healthlake$service(config, op)
@@ -40,6 +81,38 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
 }
 .healthlake$operations$create_fhir_datastore <- healthlake_create_fhir_datastore
 
+#' Deletes a data transformation profile and all its versions, including
+#' the DRAFT and all published versions
+#'
+#' @description
+#' Deletes a data transformation profile and all its versions, including the DRAFT and all published versions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/healthlake_delete_data_transformation_profile/](https://www.paws-r-sdk.com/docs/healthlake_delete_data_transformation_profile/) for full documentation.
+#'
+#' @param ProfileId &#91;required&#93; The unique identifier of the profile to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_delete_data_transformation_profile
+healthlake_delete_data_transformation_profile <- function(ProfileId) {
+  op <- new_operation(
+    name = "DeleteDataTransformationProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$delete_data_transformation_profile_input(ProfileId = ProfileId)
+  output <- .healthlake$delete_data_transformation_profile_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$delete_data_transformation_profile <- healthlake_delete_data_transformation_profile
+
 #' Delete a FHIR-enabled data store
 #'
 #' @description
@@ -47,7 +120,7 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
 #'
 #' See [https://www.paws-r-sdk.com/docs/healthlake_delete_fhir_datastore/](https://www.paws-r-sdk.com/docs/healthlake_delete_fhir_datastore/) for full documentation.
 #'
-#' @param DatastoreId &#91;required&#93; The AWS-generated identifier for the data store to be deleted.
+#' @param DatastoreId &#91;required&#93; The Amazon Web Services-generated identifier for the data store to be deleted.
 #'
 #' @keywords internal
 #'
@@ -70,6 +143,38 @@ healthlake_delete_fhir_datastore <- function(DatastoreId) {
   return(response)
 }
 .healthlake$operations$delete_fhir_datastore <- healthlake_delete_fhir_datastore
+
+#' Describes a data transformation job, including its current status,
+#' configuration, and progress information
+#'
+#' @description
+#' Describes a data transformation job, including its current status, configuration, and progress information.
+#'
+#' See [https://www.paws-r-sdk.com/docs/healthlake_describe_data_transformation_job/](https://www.paws-r-sdk.com/docs/healthlake_describe_data_transformation_job/) for full documentation.
+#'
+#' @param JobId &#91;required&#93; The unique identifier of the data transformation job to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_describe_data_transformation_job
+healthlake_describe_data_transformation_job <- function(JobId) {
+  op <- new_operation(
+    name = "DescribeDataTransformationJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$describe_data_transformation_job_input(JobId = JobId)
+  output <- .healthlake$describe_data_transformation_job_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$describe_data_transformation_job <- healthlake_describe_data_transformation_job
 
 #' Get properties for a FHIR-enabled data store
 #'
@@ -166,6 +271,143 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
   return(response)
 }
 .healthlake$operations$describe_fhir_import_job <- healthlake_describe_fhir_import_job
+
+#' Retrieves a data transformation profile's metadata and profile content
+#' at a specific version
+#'
+#' @description
+#' Retrieves a data transformation profile's metadata and profile content at a specific version. Specify version 0 to retrieve the DRAFT, a version number between 1 and 99 to retrieve a specific published version, or omit the version to retrieve the latest published version.
+#'
+#' See [https://www.paws-r-sdk.com/docs/healthlake_get_data_transformation_profile/](https://www.paws-r-sdk.com/docs/healthlake_get_data_transformation_profile/) for full documentation.
+#'
+#' @param ProfileId &#91;required&#93; The unique identifier of the profile to retrieve.
+#' @param ProfileVersion The version number to retrieve. Specify 0 to retrieve the DRAFT version. If you omit this parameter, the service returns the latest published version.
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_get_data_transformation_profile
+healthlake_get_data_transformation_profile <- function(ProfileId, ProfileVersion = NULL) {
+  op <- new_operation(
+    name = "GetDataTransformationProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$get_data_transformation_profile_input(ProfileId = ProfileId, ProfileVersion = ProfileVersion)
+  output <- .healthlake$get_data_transformation_profile_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$get_data_transformation_profile <- healthlake_get_data_transformation_profile
+
+#' Lists data transformation jobs for your Amazon Web Services account
+#'
+#' @description
+#' Lists data transformation jobs for your Amazon Web Services account. Results can be filtered by status, job name, and submit time window. Results are paginated. Use the `NextToken` parameter to retrieve additional results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/healthlake_list_data_transformation_jobs/](https://www.paws-r-sdk.com/docs/healthlake_list_data_transformation_jobs/) for full documentation.
+#'
+#' @param MaxResults The maximum number of jobs to return per page. If you don't specify a value, the service returns up to 100 results.
+#' @param NextToken The pagination token from a previous response. Pass this value to retrieve the next page of results.
+#' @param JobStatus Filters the results to include only jobs with the specified status.
+#' @param JobName Filters the results to include only jobs with the specified name.
+#' @param SubmittedAfter Filters the results to include only jobs submitted at or after this timestamp.
+#' @param SubmittedBefore Filters the results to include only jobs submitted at or before this timestamp.
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_list_data_transformation_jobs
+healthlake_list_data_transformation_jobs <- function(MaxResults = NULL, NextToken = NULL, JobStatus = NULL, JobName = NULL, SubmittedAfter = NULL, SubmittedBefore = NULL) {
+  op <- new_operation(
+    name = "ListDataTransformationJobs",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .healthlake$list_data_transformation_jobs_input(MaxResults = MaxResults, NextToken = NextToken, JobStatus = JobStatus, JobName = JobName, SubmittedAfter = SubmittedAfter, SubmittedBefore = SubmittedBefore)
+  output <- .healthlake$list_data_transformation_jobs_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$list_data_transformation_jobs <- healthlake_list_data_transformation_jobs
+
+#' Lists all versions of a specific data transformation profile (DRAFT and
+#' published), in reverse chronological order (newest first)
+#'
+#' @description
+#' Lists all versions of a specific data transformation profile (DRAFT and published), in reverse chronological order (newest first). Use [`get_data_transformation_profile`][healthlake_get_data_transformation_profile] to retrieve profile content. Results are paginated. Use the `NextToken` parameter to retrieve additional results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/healthlake_list_data_transformation_profile_versions/](https://www.paws-r-sdk.com/docs/healthlake_list_data_transformation_profile_versions/) for full documentation.
+#'
+#' @param ProfileId &#91;required&#93; The unique identifier of the profile whose versions to list.
+#' @param MaxResults The maximum number of profile versions to return per page. If you don't specify a value, the service returns up to 100 results.
+#' @param NextToken The pagination token from a previous response. Pass this value to retrieve the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_list_data_transformation_profile_versions
+healthlake_list_data_transformation_profile_versions <- function(ProfileId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListDataTransformationProfileVersions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .healthlake$list_data_transformation_profile_versions_input(ProfileId = ProfileId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .healthlake$list_data_transformation_profile_versions_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$list_data_transformation_profile_versions <- healthlake_list_data_transformation_profile_versions
+
+#' Lists all data transformation profiles in your account, returning the
+#' latest version summary for each
+#'
+#' @description
+#' Lists all data transformation profiles in your account, returning the latest version summary for each. Use [`get_data_transformation_profile`][healthlake_get_data_transformation_profile] to retrieve profile content. Results are paginated. Use the `NextToken` parameter to retrieve additional results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/healthlake_list_data_transformation_profiles/](https://www.paws-r-sdk.com/docs/healthlake_list_data_transformation_profiles/) for full documentation.
+#'
+#' @param SourceFormat &#91;required&#93; Filters the results by source data format.
+#' @param MaxResults The maximum number of profiles to return per page. If you don't specify a value, the service returns up to 100 results.
+#' @param NextToken The pagination token from a previous response. Pass this value to retrieve the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_list_data_transformation_profiles
+healthlake_list_data_transformation_profiles <- function(SourceFormat, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListDataTransformationProfiles",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .healthlake$list_data_transformation_profiles_input(SourceFormat = SourceFormat, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .healthlake$list_data_transformation_profiles_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$list_data_transformation_profiles <- healthlake_list_data_transformation_profiles
 
 #' List all FHIR-enabled data stores in a user’s account, regardless of
 #' data store status
@@ -306,6 +548,121 @@ healthlake_list_tags_for_resource <- function(ResourceARN) {
 }
 .healthlake$operations$list_tags_for_resource <- healthlake_list_tags_for_resource
 
+#' Promotes the current DRAFT version of a data transformation profile to a
+#' new immutable published version
+#'
+#' @description
+#' Promotes the current DRAFT version of a data transformation profile to a new immutable published version. Also supports rollback by publishing from a previously published version.
+#'
+#' See [https://www.paws-r-sdk.com/docs/healthlake_publish_data_transformation_profile/](https://www.paws-r-sdk.com/docs/healthlake_publish_data_transformation_profile/) for full documentation.
+#'
+#' @param ProfileId &#91;required&#93; The unique identifier of the profile to publish.
+#' @param SourceFormat &#91;required&#93; The source data format of the profile.
+#' @param FromExistingVersion The version number of a previously published version to republish as the new latest version. Use this parameter for rollback scenarios. If you omit this parameter, the service publishes the current DRAFT version.
+#' @param ChangeDescription A description of what changed or why this version is being published.
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_publish_data_transformation_profile
+healthlake_publish_data_transformation_profile <- function(ProfileId, SourceFormat, FromExistingVersion = NULL, ChangeDescription = NULL) {
+  op <- new_operation(
+    name = "PublishDataTransformationProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$publish_data_transformation_profile_input(ProfileId = ProfileId, SourceFormat = SourceFormat, FromExistingVersion = FromExistingVersion, ChangeDescription = ChangeDescription)
+  output <- .healthlake$publish_data_transformation_profile_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$publish_data_transformation_profile <- healthlake_publish_data_transformation_profile
+
+#' Restore a backup-enabled data store to a point in time
+#'
+#' @description
+#' Restore a backup-enabled data store to a point in time. Creates a new data store from the backup.
+#'
+#' See [https://www.paws-r-sdk.com/docs/healthlake_restore_fhir_datastore/](https://www.paws-r-sdk.com/docs/healthlake_restore_fhir_datastore/) for full documentation.
+#'
+#' @param SourceDatastoreId &#91;required&#93; The identifier of the source data store to restore from.
+#' @param RestoreConfiguration &#91;required&#93; The restore configuration specifying the type and parameters for the restore.
+#' @param DatastoreName The name for the restored data store.
+#' @param SseConfiguration The server-side encryption key configuration for the restored data store.
+#' @param ClientToken An optional user-provided token to ensure API idempotency of the restore.
+#' @param Tags The resource tags applied to the restored data store.
+#' @param IdentityProviderConfiguration The identity provider configuration for the restored data store.
+#' @param AnalyticsConfiguration The analytics configuration for the restored data store.
+#' @param NlpConfiguration The NLP configuration for the restored data store.
+#' @param ProfileConfiguration The profile configuration for the restored data store.
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_restore_fhir_datastore
+healthlake_restore_fhir_datastore <- function(SourceDatastoreId, RestoreConfiguration, DatastoreName = NULL, SseConfiguration = NULL, ClientToken = NULL, Tags = NULL, IdentityProviderConfiguration = NULL, AnalyticsConfiguration = NULL, NlpConfiguration = NULL, ProfileConfiguration = NULL) {
+  op <- new_operation(
+    name = "RestoreFHIRDatastore",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$restore_fhir_datastore_input(SourceDatastoreId = SourceDatastoreId, RestoreConfiguration = RestoreConfiguration, DatastoreName = DatastoreName, SseConfiguration = SseConfiguration, ClientToken = ClientToken, Tags = Tags, IdentityProviderConfiguration = IdentityProviderConfiguration, AnalyticsConfiguration = AnalyticsConfiguration, NlpConfiguration = NlpConfiguration, ProfileConfiguration = ProfileConfiguration)
+  output <- .healthlake$restore_fhir_datastore_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$restore_fhir_datastore <- healthlake_restore_fhir_datastore
+
+#' Starts an asynchronous data transformation job that converts source
+#' files from Amazon Simple Storage Service (Amazon S3) and writes the
+#' output to Amazon S3 or HealthLake
+#'
+#' @description
+#' Starts an asynchronous data transformation job that converts source files from Amazon Simple Storage Service (Amazon S3) and writes the output to Amazon S3 or HealthLake.
+#'
+#' See [https://www.paws-r-sdk.com/docs/healthlake_start_data_transformation_job/](https://www.paws-r-sdk.com/docs/healthlake_start_data_transformation_job/) for full documentation.
+#'
+#' @param InputDataConfig &#91;required&#93; The Amazon S3 location and format of the source files to transform.
+#' @param OutputDataConfig &#91;required&#93; The Amazon S3 output location and Amazon Web Services Key Management Service (Amazon Web Services KMS) encryption configuration.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services Identity and Access Management (IAM) role that HealthLake assumes to read from and write to the specified Amazon S3 locations.
+#' @param ClientToken &#91;required&#93; A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request but does not return an error.
+#' @param JobName A descriptive name for the data transformation job.
+#' @param ProfileId &#91;required&#93; The unique identifier of the data transformation profile to use for conversion.
+#' @param DriftDetectionEnabled Specifies whether drift detection is enabled for this job. When enabled, HealthLake writes a drift report to the output Amazon S3 location alongside the converted files.
+#' @param ProvenanceEnabled Specifies whether FHIR R4 Provenance resource generation is enabled for this transformation job. When provenance is enabled, the service also generates related DocumentReference and Device resources. If you don't specify a value, the default is `true`. To disable provenance output, set this parameter to `false`.
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_start_data_transformation_job
+healthlake_start_data_transformation_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, ClientToken, JobName = NULL, ProfileId, DriftDetectionEnabled = NULL, ProvenanceEnabled = NULL) {
+  op <- new_operation(
+    name = "StartDataTransformationJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$start_data_transformation_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, ClientToken = ClientToken, JobName = JobName, ProfileId = ProfileId, DriftDetectionEnabled = DriftDetectionEnabled, ProvenanceEnabled = ProvenanceEnabled)
+  output <- .healthlake$start_data_transformation_job_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$start_data_transformation_job <- healthlake_start_data_transformation_job
+
 #' Start a FHIR export job
 #'
 #' @description
@@ -352,14 +709,18 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #' @param InputDataConfig &#91;required&#93; The input properties for the import job request.
 #' @param JobOutputDataConfig &#91;required&#93; The output data configuration supplied when the export job was created.
 #' @param DatastoreId &#91;required&#93; The data store identifier.
-#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) that grants access permission to AWS HealthLake.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) that grants access permission to HealthLake.
 #' @param ClientToken The optional user-provided token used for ensuring API idempotency.
 #' @param ValidationLevel The validation level of the import job.
+#' @param ProfileId The data transformation profile identifier to use for the import job.
+#' @param InputFormat The input format of the data to be imported.
+#' @param DriftDetectionEnabled Specifies whether to enable drift detection for the import job.
+#' @param ProvenanceEnabled Specifies whether to enable provenance for the import job.
 #'
 #' @keywords internal
 #'
 #' @rdname healthlake_start_fhir_import_job
-healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, JobOutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken = NULL, ValidationLevel = NULL) {
+healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, JobOutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken = NULL, ValidationLevel = NULL, ProfileId = NULL, InputFormat = NULL, DriftDetectionEnabled = NULL, ProvenanceEnabled = NULL) {
   op <- new_operation(
     name = "StartFHIRImportJob",
     http_method = "POST",
@@ -368,7 +729,7 @@ healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, Jo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .healthlake$start_fhir_import_job_input(JobName = JobName, InputDataConfig = InputDataConfig, JobOutputDataConfig = JobOutputDataConfig, DatastoreId = DatastoreId, DataAccessRoleArn = DataAccessRoleArn, ClientToken = ClientToken, ValidationLevel = ValidationLevel)
+  input <- .healthlake$start_fhir_import_job_input(JobName = JobName, InputDataConfig = InputDataConfig, JobOutputDataConfig = JobOutputDataConfig, DatastoreId = DatastoreId, DataAccessRoleArn = DataAccessRoleArn, ClientToken = ClientToken, ValidationLevel = ValidationLevel, ProfileId = ProfileId, InputFormat = InputFormat, DriftDetectionEnabled = DriftDetectionEnabled, ProvenanceEnabled = ProvenanceEnabled)
   output <- .healthlake$start_fhir_import_job_output()
   config <- get_config()
   svc <- .healthlake$service(config, op)
@@ -441,3 +802,109 @@ healthlake_untag_resource <- function(ResourceARN, TagKeys) {
   return(response)
 }
 .healthlake$operations$untag_resource <- healthlake_untag_resource
+
+#' Updates the DRAFT version (version 0) of a data transformation profile
+#' with new profile content
+#'
+#' @description
+#' Updates the DRAFT version (version 0) of a data transformation profile with new profile content. The update replaces all existing DRAFT content.
+#'
+#' See [https://www.paws-r-sdk.com/docs/healthlake_update_data_transformation_profile/](https://www.paws-r-sdk.com/docs/healthlake_update_data_transformation_profile/) for full documentation.
+#'
+#' @param ProfileId &#91;required&#93; The unique identifier of the profile to update.
+#' @param ProfileMapping &#91;required&#93; The new profile content for the DRAFT version. This is a full replacement of all profile files.
+#' @param ChangeDescription A description of what changed in this update.
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_update_data_transformation_profile
+healthlake_update_data_transformation_profile <- function(ProfileId, ProfileMapping, ChangeDescription = NULL) {
+  op <- new_operation(
+    name = "UpdateDataTransformationProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$update_data_transformation_profile_input(ProfileId = ProfileId, ProfileMapping = ProfileMapping, ChangeDescription = ChangeDescription)
+  output <- .healthlake$update_data_transformation_profile_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$update_data_transformation_profile <- healthlake_update_data_transformation_profile
+
+#' Update the properties of a FHIR-enabled data store
+#'
+#' @description
+#' Update the properties of a FHIR-enabled data store.
+#'
+#' See [https://www.paws-r-sdk.com/docs/healthlake_update_fhir_datastore/](https://www.paws-r-sdk.com/docs/healthlake_update_fhir_datastore/) for full documentation.
+#'
+#' @param DatastoreId &#91;required&#93; The data store identifier.
+#' @param DatastoreName The data store name.
+#' @param AnalyticsConfiguration The analytics configuration for the data store.
+#' @param NlpConfiguration The natural language processing (NLP) configuration for the data store.
+#' @param ProfileConfiguration The profile configuration for the data store.
+#' @param IdentityProviderConfiguration The identity provider configuration for the data store.
+#' @param BackupConfiguration The backup configuration for the data store.
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_update_fhir_datastore
+healthlake_update_fhir_datastore <- function(DatastoreId, DatastoreName = NULL, AnalyticsConfiguration = NULL, NlpConfiguration = NULL, ProfileConfiguration = NULL, IdentityProviderConfiguration = NULL, BackupConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateFHIRDatastore",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$update_fhir_datastore_input(DatastoreId = DatastoreId, DatastoreName = DatastoreName, AnalyticsConfiguration = AnalyticsConfiguration, NlpConfiguration = NlpConfiguration, ProfileConfiguration = ProfileConfiguration, IdentityProviderConfiguration = IdentityProviderConfiguration, BackupConfiguration = BackupConfiguration)
+  output <- .healthlake$update_fhir_datastore_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$update_fhir_datastore <- healthlake_update_fhir_datastore
+
+#' Updates a data transformation profile using chat-based interaction with
+#' an agent
+#'
+#' @description
+#' Updates a data transformation profile using chat-based interaction with an agent. Supports multi-turn conversations for iteratively customizing profiles.
+#'
+#' See [https://www.paws-r-sdk.com/docs/healthlake_update_profile_with_agent/](https://www.paws-r-sdk.com/docs/healthlake_update_profile_with_agent/) for full documentation.
+#'
+#' @param ProfileId &#91;required&#93; The unique identifier of the profile to update via the agent.
+#' @param SourceFormat &#91;required&#93; The source data format for the transformation.
+#' @param InputMessage &#91;required&#93; The message to send to the agent.
+#' @param ConversationId The conversation identifier for multi-turn interactions. Omit to start a new conversation.
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_update_profile_with_agent
+healthlake_update_profile_with_agent <- function(ProfileId, SourceFormat, InputMessage, ConversationId = NULL) {
+  op <- new_operation(
+    name = "UpdateProfileWithAgent",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$update_profile_with_agent_input(ProfileId = ProfileId, SourceFormat = SourceFormat, InputMessage = InputMessage, ConversationId = ConversationId)
+  output <- .healthlake$update_profile_with_agent_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$update_profile_with_agent <- healthlake_update_profile_with_agent

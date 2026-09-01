@@ -91,12 +91,15 @@ Amazon EKS runs up-to-date versions of the open-source Kubernetes software, so y
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.compute:eks_activate_certificate_authority]{activate_certificate_authority} \tab Activates a successor certificate authority (CA) as the signing certificate authority for your cluster, completing a CA rotation\cr
 \link[paws.compute:eks_associate_access_policy]{associate_access_policy} \tab Associates an access policy and its scope to an access entry\cr
 \link[paws.compute:eks_associate_encryption_config]{associate_encryption_config} \tab Associates an encryption configuration to an existing cluster\cr
 \link[paws.compute:eks_associate_identity_provider_config]{associate_identity_provider_config} \tab Associates an identity provider configuration to a cluster\cr
+\link[paws.compute:eks_cancel_update]{cancel_update} \tab Cancels an in-progress update to an Amazon EKS cluster on a best-effort basis\cr
 \link[paws.compute:eks_create_access_entry]{create_access_entry} \tab Creates an access entry\cr
 \link[paws.compute:eks_create_addon]{create_addon} \tab Creates an Amazon EKS add-on\cr
 \link[paws.compute:eks_create_capability]{create_capability} \tab Creates a managed capability resource for an Amazon EKS cluster\cr
+\link[paws.compute:eks_create_certificate_authority]{create_certificate_authority} \tab Appends a successor certificate authority (CA) to your cluster, beginning the CA rotation process\cr
 \link[paws.compute:eks_create_cluster]{create_cluster} \tab Creates an Amazon EKS control plane\cr
 \link[paws.compute:eks_create_eks_anywhere_subscription]{create_eks_anywhere_subscription} \tab Creates an EKS Anywhere subscription\cr
 \link[paws.compute:eks_create_fargate_profile]{create_fargate_profile} \tab Creates an Fargate profile for your Amazon EKS cluster\cr
@@ -105,6 +108,7 @@ Amazon EKS runs up-to-date versions of the open-source Kubernetes software, so y
 \link[paws.compute:eks_delete_access_entry]{delete_access_entry} \tab Deletes an access entry\cr
 \link[paws.compute:eks_delete_addon]{delete_addon} \tab Deletes an Amazon EKS add-on\cr
 \link[paws.compute:eks_delete_capability]{delete_capability} \tab Deletes a managed capability from your Amazon EKS cluster\cr
+\link[paws.compute:eks_delete_certificate_authority]{delete_certificate_authority} \tab Deletes a certificate authority (CA) from your cluster\cr
 \link[paws.compute:eks_delete_cluster]{delete_cluster} \tab Deletes an Amazon EKS cluster control plane\cr
 \link[paws.compute:eks_delete_eks_anywhere_subscription]{delete_eks_anywhere_subscription} \tab Deletes an expired or inactive subscription\cr
 \link[paws.compute:eks_delete_fargate_profile]{delete_fargate_profile} \tab Deletes an Fargate profile\cr
@@ -116,6 +120,7 @@ Amazon EKS runs up-to-date versions of the open-source Kubernetes software, so y
 \link[paws.compute:eks_describe_addon_configuration]{describe_addon_configuration} \tab Returns configuration options\cr
 \link[paws.compute:eks_describe_addon_versions]{describe_addon_versions} \tab Describes the versions for an add-on\cr
 \link[paws.compute:eks_describe_capability]{describe_capability} \tab Returns detailed information about a specific managed capability in your Amazon EKS cluster, including its current status, configuration, health information, and any issues that may be affecting its operation\cr
+\link[paws.compute:eks_describe_certificate_authority]{describe_certificate_authority} \tab Returns detailed information about a certificate authority (CA) in your cluster, including its validity period, signing and distribution status, provenance, scheduled auto-activation events, and public certificate data\cr
 \link[paws.compute:eks_describe_cluster]{describe_cluster} \tab Describes an Amazon EKS cluster\cr
 \link[paws.compute:eks_describe_cluster_versions]{describe_cluster_versions} \tab Lists available Kubernetes versions for Amazon EKS clusters\cr
 \link[paws.compute:eks_describe_eks_anywhere_subscription]{describe_eks_anywhere_subscription} \tab Returns descriptive information about a subscription\cr
@@ -133,6 +138,7 @@ Amazon EKS runs up-to-date versions of the open-source Kubernetes software, so y
 \link[paws.compute:eks_list_addons]{list_addons} \tab Lists the installed add-ons\cr
 \link[paws.compute:eks_list_associated_access_policies]{list_associated_access_policies} \tab Lists the access policies associated with an access entry\cr
 \link[paws.compute:eks_list_capabilities]{list_capabilities} \tab Lists all managed capabilities in your Amazon EKS cluster\cr
+\link[paws.compute:eks_list_certificate_authorities]{list_certificate_authorities} \tab Lists the certificate authorities (CAs) for your cluster\cr
 \link[paws.compute:eks_list_clusters]{list_clusters} \tab Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Amazon Web Services Region\cr
 \link[paws.compute:eks_list_eks_anywhere_subscriptions]{list_eks_anywhere_subscriptions} \tab Displays the full description of the subscription\cr
 \link[paws.compute:eks_list_fargate_profiles]{list_fargate_profiles} \tab Lists the Fargate profiles associated with the specified cluster in your Amazon Web Services account in the specified Amazon Web Services Region\cr

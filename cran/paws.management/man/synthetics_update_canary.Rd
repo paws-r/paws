@@ -20,7 +20,10 @@ synthetics_update_canary(
   ProvisionedResourceCleanup = NULL,
   DryRunId = NULL,
   VisualReferences = NULL,
-  BrowserConfigs = NULL
+  BrowserConfigs = NULL,
+  AddReplicaLocations = NULL,
+  RemoveReplicaLocations = NULL,
+  KmsKeyArn = NULL
 )
 }
 \arguments{
@@ -88,6 +91,12 @@ For single configuration canaries using Chrome browser (default browser), use vi
 \item{BrowserConfigs}{A structure that specifies the browser type to use for a canary run. CloudWatch Synthetics supports running canaries on both \code{CHROME} and \code{FIREFOX} browsers.
 
 If not specified, \code{browserConfigs} defaults to Chrome.}
+
+\item{AddReplicaLocations}{A list of locations (Amazon Web Services Regions) to add as replicas for the canary. Each location specifies a Region and optional VPC configuration for the replica. You can add up to 50 replica locations.}
+
+\item{RemoveReplicaLocations}{A list of locations (Amazon Web Services Regions) to remove as replicas for the canary. You must specify at least one location to remove. All replicas can be removed in a single API call and you cannot remove the primary location.}
+
+\item{KmsKeyArn}{The Amazon Resource Name (ARN) of the customer-managed AWS Key Management Service (AWS KMS) key used to encrypt the canary's AWS Lambda function environment variables at rest. If you don't specify a value, the service uses an AWS-managed key. If you omit this parameter, the service retains the existing value. To revert to the AWS-managed key, set this parameter to an empty string.}
 }
 \description{
 Updates the configuration of a canary that has already been created.

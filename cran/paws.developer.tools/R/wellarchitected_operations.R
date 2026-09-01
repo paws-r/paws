@@ -69,6 +69,117 @@ wellarchitected_associate_profiles <- function(WorkloadId, ProfileArns) {
 }
 .wellarchitected$operations$associate_profiles <- wellarchitected_associate_profiles
 
+#' Creates a context associated with an optimization profile
+#'
+#' @description
+#' Creates a context associated with an optimization profile. Contexts provide application and environment information used during recommendation generation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_create_agent_context/](https://www.paws-r-sdk.com/docs/wellarchitected_create_agent_context/) for full documentation.
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the profile to associate the context with.
+#' @param title &#91;required&#93; The title of the context.
+#' @param contextType &#91;required&#93; The type of the context.
+#' @param content &#91;required&#93; The typed content of the context. The structure contains application-specific fields such as account IDs, Regions, services, and resource types.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_create_agent_context
+wellarchitected_create_agent_context <- function(clientToken = NULL, profileArn, title, contextType, content) {
+  op <- new_operation(
+    name = "CreateAgentContext",
+    http_method = "POST",
+    http_path = "/api/v1/agent-profiles/{profileArn}/contexts",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$create_agent_context_input(clientToken = clientToken, profileArn = profileArn, title = title, contextType = contextType, content = content)
+  output <- .wellarchitected$create_agent_context_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$create_agent_context <- wellarchitected_create_agent_context
+
+#' Creates an optimization goal associated with a profile
+#'
+#' @description
+#' Creates an optimization goal associated with a profile. Goals define specific targets and objectives for the optimization process.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_create_agent_goal/](https://www.paws-r-sdk.com/docs/wellarchitected_create_agent_goal/) for full documentation.
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the profile to associate the goal with.
+#' @param pillars &#91;required&#93; The Well-Architected Tool Framework pillars to associate with this goal.
+#' @param title &#91;required&#93; The title of the goal.
+#' @param description A description of the goal.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_create_agent_goal
+wellarchitected_create_agent_goal <- function(clientToken = NULL, profileArn, pillars, title, description = NULL) {
+  op <- new_operation(
+    name = "CreateAgentGoal",
+    http_method = "POST",
+    http_path = "/api/v1/agent-profiles/{profileArn}/goals",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$create_agent_goal_input(clientToken = clientToken, profileArn = profileArn, pillars = pillars, title = title, description = description)
+  output <- .wellarchitected$create_agent_goal_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$create_agent_goal <- wellarchitected_create_agent_goal
+
+#' Creates an optimization profile that defines the scope and configuration
+#' for generating recommendations
+#'
+#' @description
+#' Creates an optimization profile that defines the scope and configuration for generating recommendations. A profile specifies the execution role, target pillars, and aggregation settings for analyzing your Amazon Web Services resources.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_create_agent_profile/](https://www.paws-r-sdk.com/docs/wellarchitected_create_agent_profile/) for full documentation.
+#'
+#' @param name &#91;required&#93; The system name of the profile.
+#' @param displayName The display name of the profile shown to users.
+#' @param description A description of the profile.
+#' @param businessOverview The business overview for this profile.
+#' @param pillars &#91;required&#93; The Well-Architected Tool Framework pillars to associate with this profile.
+#' @param deletionProtection Indicates whether deletion protection is enabled for the profile.
+#' @param executionRoleArn &#91;required&#93; The ARN of the IAM execution role used for recommendation actions.
+#' @param aggregationConfiguration &#91;required&#93; The aggregation configuration that defines which Amazon Web Services accounts and Regions to analyze.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#' @param tags The tags to associate with the profile.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_create_agent_profile
+wellarchitected_create_agent_profile <- function(name, displayName = NULL, description = NULL, businessOverview = NULL, pillars, deletionProtection = NULL, executionRoleArn, aggregationConfiguration, clientToken = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateAgentProfile",
+    http_method = "POST",
+    http_path = "/api/v1/agent-profiles",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$create_agent_profile_input(name = name, displayName = displayName, description = description, businessOverview = businessOverview, pillars = pillars, deletionProtection = deletionProtection, executionRoleArn = executionRoleArn, aggregationConfiguration = aggregationConfiguration, clientToken = clientToken, tags = tags)
+  output <- .wellarchitected$create_agent_profile_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$create_agent_profile <- wellarchitected_create_agent_profile
+
 #' Create a lens share
 #'
 #' @description
@@ -504,6 +615,101 @@ wellarchitected_create_workload_share <- function(WorkloadId, SharedWith, Permis
 }
 .wellarchitected$operations$create_workload_share <- wellarchitected_create_workload_share
 
+#' Deletes a context associated with a profile
+#'
+#' @description
+#' Deletes a context associated with a profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_delete_agent_context/](https://www.paws-r-sdk.com/docs/wellarchitected_delete_agent_context/) for full documentation.
+#'
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the profile containing the context.
+#' @param id &#91;required&#93; The unique identifier of the context to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_delete_agent_context
+wellarchitected_delete_agent_context <- function(profileArn, id) {
+  op <- new_operation(
+    name = "DeleteAgentContext",
+    http_method = "DELETE",
+    http_path = "/api/v1/agent-profiles/{profileArn}/contexts/{id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$delete_agent_context_input(profileArn = profileArn, id = id)
+  output <- .wellarchitected$delete_agent_context_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$delete_agent_context <- wellarchitected_delete_agent_context
+
+#' Deletes an optimization goal from a profile
+#'
+#' @description
+#' Deletes an optimization goal from a profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_delete_agent_goal/](https://www.paws-r-sdk.com/docs/wellarchitected_delete_agent_goal/) for full documentation.
+#'
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the profile containing the goal.
+#' @param id &#91;required&#93; The unique identifier of the goal to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_delete_agent_goal
+wellarchitected_delete_agent_goal <- function(profileArn, id) {
+  op <- new_operation(
+    name = "DeleteAgentGoal",
+    http_method = "DELETE",
+    http_path = "/api/v1/agent-profiles/{profileArn}/goals/{id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$delete_agent_goal_input(profileArn = profileArn, id = id)
+  output <- .wellarchitected$delete_agent_goal_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$delete_agent_goal <- wellarchitected_delete_agent_goal
+
+#' Deletes an optimization profile and its associated configuration
+#'
+#' @description
+#' Deletes an optimization profile and its associated configuration. This action cannot be undone.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_delete_agent_profile/](https://www.paws-r-sdk.com/docs/wellarchitected_delete_agent_profile/) for full documentation.
+#'
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the profile to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_delete_agent_profile
+wellarchitected_delete_agent_profile <- function(profileArn) {
+  op <- new_operation(
+    name = "DeleteAgentProfile",
+    http_method = "DELETE",
+    http_path = "/api/v1/agent-profiles/{profileArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$delete_agent_profile_input(profileArn = profileArn)
+  output <- .wellarchitected$delete_agent_profile_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$delete_agent_profile <- wellarchitected_delete_agent_profile
+
 #' Delete an existing lens
 #'
 #' @description
@@ -912,6 +1118,170 @@ wellarchitected_export_lens <- function(LensAlias, LensVersion = NULL) {
   return(response)
 }
 .wellarchitected$operations$export_lens <- wellarchitected_export_lens
+
+#' Retrieves detailed information about a specific context associated with
+#' a profile
+#'
+#' @description
+#' Retrieves detailed information about a specific context associated with a profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_agent_context/](https://www.paws-r-sdk.com/docs/wellarchitected_get_agent_context/) for full documentation.
+#'
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the profile containing the context.
+#' @param id &#91;required&#93; The unique identifier of the context to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_agent_context
+wellarchitected_get_agent_context <- function(profileArn, id) {
+  op <- new_operation(
+    name = "GetAgentContext",
+    http_method = "GET",
+    http_path = "/api/v1/agent-profiles/{profileArn}/contexts/{id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$get_agent_context_input(profileArn = profileArn, id = id)
+  output <- .wellarchitected$get_agent_context_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_agent_context <- wellarchitected_get_agent_context
+
+#' Retrieves detailed information about a specific optimization goal
+#'
+#' @description
+#' Retrieves detailed information about a specific optimization goal.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_agent_goal/](https://www.paws-r-sdk.com/docs/wellarchitected_get_agent_goal/) for full documentation.
+#'
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the profile containing the goal.
+#' @param id &#91;required&#93; The unique identifier of the goal to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_agent_goal
+wellarchitected_get_agent_goal <- function(profileArn, id) {
+  op <- new_operation(
+    name = "GetAgentGoal",
+    http_method = "GET",
+    http_path = "/api/v1/agent-profiles/{profileArn}/goals/{id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$get_agent_goal_input(profileArn = profileArn, id = id)
+  output <- .wellarchitected$get_agent_goal_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_agent_goal <- wellarchitected_get_agent_goal
+
+#' Retrieves detailed information about an optimization profile, including
+#' its configuration and metadata
+#'
+#' @description
+#' Retrieves detailed information about an optimization profile, including its configuration and metadata.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_agent_profile/](https://www.paws-r-sdk.com/docs/wellarchitected_get_agent_profile/) for full documentation.
+#'
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the optimization profile to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_agent_profile
+wellarchitected_get_agent_profile <- function(profileArn) {
+  op <- new_operation(
+    name = "GetAgentProfile",
+    http_method = "GET",
+    http_path = "/api/v1/agent-profiles/{profileArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$get_agent_profile_input(profileArn = profileArn)
+  output <- .wellarchitected$get_agent_profile_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_agent_profile <- wellarchitected_get_agent_profile
+
+#' Retrieves detailed information about a specific optimization
+#' recommendation, including its impact analysis, content, and
+#' implementation guidance
+#'
+#' @description
+#' Retrieves detailed information about a specific optimization recommendation, including its impact analysis, content, and implementation guidance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_agent_recommendation/](https://www.paws-r-sdk.com/docs/wellarchitected_get_agent_recommendation/) for full documentation.
+#'
+#' @param recommendationArn &#91;required&#93; The Amazon Resource Name (ARN) of the recommendation to retrieve.
+#' @param remediationType Optional filter on remediation type.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_agent_recommendation
+wellarchitected_get_agent_recommendation <- function(recommendationArn, remediationType = NULL) {
+  op <- new_operation(
+    name = "GetAgentRecommendation",
+    http_method = "GET",
+    http_path = "/api/v1/agent-recommendations/{recommendationArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$get_agent_recommendation_input(recommendationArn = recommendationArn, remediationType = remediationType)
+  output <- .wellarchitected$get_agent_recommendation_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_agent_recommendation <- wellarchitected_get_agent_recommendation
+
+#' Retrieves information about a recommendation generation process,
+#' including its status, progress, and results
+#'
+#' @description
+#' Retrieves information about a recommendation generation process, including its status, progress, and results. Recommendation generation is asynchronous: poll this operation until status reaches a terminal value of COMPLETED (results are ready) or ERROR (see errorDetails). Intermediate values are QUEUED and IN_PROGRESS.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_agent_recommendation_generation/](https://www.paws-r-sdk.com/docs/wellarchitected_get_agent_recommendation_generation/) for full documentation.
+#'
+#' @param profileArn &#91;required&#93; The ARN of the optimization profile associated with this generation.
+#' @param generationId &#91;required&#93; The unique identifier of the recommendation generation to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_agent_recommendation_generation
+wellarchitected_get_agent_recommendation_generation <- function(profileArn, generationId) {
+  op <- new_operation(
+    name = "GetAgentRecommendationGeneration",
+    http_method = "GET",
+    http_path = "/api/v1/agent-profiles/{profileArn}/generations/{generationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$get_agent_recommendation_generation_input(profileArn = profileArn, generationId = generationId)
+  output <- .wellarchitected$get_agent_recommendation_generation_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_agent_recommendation_generation <- wellarchitected_get_agent_recommendation_generation
 
 #' Get the answer to a specific question in a workload review
 #'
@@ -1461,6 +1831,208 @@ wellarchitected_import_lens <- function(LensAlias = NULL, JSONString, ClientRequ
 }
 .wellarchitected$operations$import_lens <- wellarchitected_import_lens
 
+#' Lists contexts associated with a profile
+#'
+#' @description
+#' Lists contexts associated with a profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_agent_contexts/](https://www.paws-r-sdk.com/docs/wellarchitected_list_agent_contexts/) for full documentation.
+#'
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the profile to list contexts for.
+#' @param maxResults The maximum number of results to return for this request.
+#' @param nextToken The token to use to retrieve the next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_agent_contexts
+wellarchitected_list_agent_contexts <- function(profileArn, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAgentContexts",
+    http_method = "GET",
+    http_path = "/api/v1/agent-profiles/{profileArn}/contexts",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$list_agent_contexts_input(profileArn = profileArn, maxResults = maxResults, nextToken = nextToken)
+  output <- .wellarchitected$list_agent_contexts_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_agent_contexts <- wellarchitected_list_agent_contexts
+
+#' Lists optimization goals associated with a specified profile
+#'
+#' @description
+#' Lists optimization goals associated with a specified profile. Goals define specific targets and objectives for the optimization process.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_agent_goals/](https://www.paws-r-sdk.com/docs/wellarchitected_list_agent_goals/) for full documentation.
+#'
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the optimization profile to list goals for.
+#' @param maxResults The maximum number of goals to return in a single response.
+#' @param nextToken A pagination token returned from a previous call to continue retrieving results.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_agent_goals
+wellarchitected_list_agent_goals <- function(profileArn, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAgentGoals",
+    http_method = "GET",
+    http_path = "/api/v1/agent-profiles/{profileArn}/goals",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$list_agent_goals_input(profileArn = profileArn, maxResults = maxResults, nextToken = nextToken)
+  output <- .wellarchitected$list_agent_goals_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_agent_goals <- wellarchitected_list_agent_goals
+
+#' Lists optimization profiles in your account
+#'
+#' @description
+#' Lists optimization profiles in your account. Profiles define the scope and configuration for generating optimization recommendations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_agent_profiles/](https://www.paws-r-sdk.com/docs/wellarchitected_list_agent_profiles/) for full documentation.
+#'
+#' @param maxResults The maximum number of profiles to return in a single call. Default is 100.
+#' @param nextToken A pagination token returned from a previous call to continue retrieving results.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_agent_profiles
+wellarchitected_list_agent_profiles <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAgentProfiles",
+    http_method = "GET",
+    http_path = "/api/v1/agent-profiles",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$list_agent_profiles_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .wellarchitected$list_agent_profiles_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_agent_profiles <- wellarchitected_list_agent_profiles
+
+#' Lists recommendation generation processes for a specified profile
+#'
+#' @description
+#' Lists recommendation generation processes for a specified profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_agent_recommendation_generations/](https://www.paws-r-sdk.com/docs/wellarchitected_list_agent_recommendation_generations/) for full documentation.
+#'
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the optimization profile to list generation processes for.
+#' @param recommendationType Optional filter by recommendation type.
+#' @param maxResults The maximum number of generation processes to return in a single response.
+#' @param nextToken A pagination token returned from a previous call to continue retrieving results.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_agent_recommendation_generations
+wellarchitected_list_agent_recommendation_generations <- function(profileArn, recommendationType = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAgentRecommendationGenerations",
+    http_method = "GET",
+    http_path = "/api/v1/agent-profiles/{profileArn}/generations",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$list_agent_recommendation_generations_input(profileArn = profileArn, recommendationType = recommendationType, maxResults = maxResults, nextToken = nextToken)
+  output <- .wellarchitected$list_agent_recommendation_generations_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_agent_recommendation_generations <- wellarchitected_list_agent_recommendation_generations
+
+#' Lists recommendation items for a specific recommendation
+#'
+#' @description
+#' Lists recommendation items for a specific recommendation. Recommendation items provide detailed information about individual optimization opportunities.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_agent_recommendation_items/](https://www.paws-r-sdk.com/docs/wellarchitected_list_agent_recommendation_items/) for full documentation.
+#'
+#' @param recommendationArn &#91;required&#93; The Amazon Resource Name (ARN) of the recommendation to list items for.
+#' @param type Optional filter to return only recommendation items of the specified type.
+#' @param maxResults The maximum number of recommendation items to return in a single response.
+#' @param nextToken A pagination token returned from a previous call to continue retrieving results.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_agent_recommendation_items
+wellarchitected_list_agent_recommendation_items <- function(recommendationArn, type = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAgentRecommendationItems",
+    http_method = "GET",
+    http_path = "/api/v1/agent-recommendations/{recommendationArn}/items",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$list_agent_recommendation_items_input(recommendationArn = recommendationArn, type = type, maxResults = maxResults, nextToken = nextToken)
+  output <- .wellarchitected$list_agent_recommendation_items_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_agent_recommendation_items <- wellarchitected_list_agent_recommendation_items
+
+#' Lists active optimization recommendations for a specified profile with
+#' optional filtering by state
+#'
+#' @description
+#' Lists active optimization recommendations for a specified profile with optional filtering by state.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_agent_recommendations/](https://www.paws-r-sdk.com/docs/wellarchitected_list_agent_recommendations/) for full documentation.
+#'
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the optimization profile to list recommendations for.
+#' @param maxResults The maximum number of recommendations to return in a single response.
+#' @param nextToken A pagination token returned from a previous call to continue retrieving results.
+#' @param state Optional filter to return only recommendations with the specified state (OPEN or CLOSED).
+#' @param pillar Optional filter to return only recommendations for the specified pillar.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_agent_recommendations
+wellarchitected_list_agent_recommendations <- function(profileArn, maxResults = NULL, nextToken = NULL, state = NULL, pillar = NULL) {
+  op <- new_operation(
+    name = "ListAgentRecommendations",
+    http_method = "GET",
+    http_path = "/api/v1/agent-profiles/{profileArn}/recommendations",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$list_agent_recommendations_input(profileArn = profileArn, maxResults = maxResults, nextToken = nextToken, state = state, pillar = pillar)
+  output <- .wellarchitected$list_agent_recommendations_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_agent_recommendations <- wellarchitected_list_agent_recommendations
+
 #' List of answers for a particular workload and lens
 #'
 #' @description
@@ -1833,7 +2405,7 @@ wellarchitected_list_profile_notifications <- function(WorkloadId = NULL, NextTo
   op <- new_operation(
     name = "ListProfileNotifications",
     http_method = "GET",
-    http_path = "/profileNotifications/",
+    http_path = "/profileNotifications",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
@@ -2163,6 +2735,77 @@ wellarchitected_list_workloads <- function(WorkloadNamePrefix = NULL, NextToken 
 }
 .wellarchitected$operations$list_workloads <- wellarchitected_list_workloads
 
+#' Submits user feedback on a recommendation to help improve future
+#' optimization suggestions and track implementation outcomes
+#'
+#' @description
+#' Submits user feedback on a recommendation to help improve future optimization suggestions and track implementation outcomes.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_put_agent_recommendation_feedback/](https://www.paws-r-sdk.com/docs/wellarchitected_put_agent_recommendation_feedback/) for full documentation.
+#'
+#' @param recommendationArn &#91;required&#93; The Amazon Resource Name (ARN) of the recommendation to provide feedback for.
+#' @param type &#91;required&#93; The type of feedback being provided.
+#' @param feedbackCategory Optional category classifying the nature of the feedback.
+#' @param comments Optional comments providing additional context about the feedback.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_put_agent_recommendation_feedback
+wellarchitected_put_agent_recommendation_feedback <- function(recommendationArn, type, feedbackCategory = NULL, comments = NULL) {
+  op <- new_operation(
+    name = "PutAgentRecommendationFeedback",
+    http_method = "PUT",
+    http_path = "/api/v1/agent-recommendations/{recommendationArn}/feedback",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$put_agent_recommendation_feedback_input(recommendationArn = recommendationArn, type = type, feedbackCategory = feedbackCategory, comments = comments)
+  output <- .wellarchitected$put_agent_recommendation_feedback_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$put_agent_recommendation_feedback <- wellarchitected_put_agent_recommendation_feedback
+
+#' Initiates a new recommendation generation process for the specified
+#' optimization profile
+#'
+#' @description
+#' Initiates a new recommendation generation process for the specified optimization profile. This asynchronous operation analyzes your Amazon Web Services resources and generates optimization recommendations based on the configured pillars and scope. Use GetAgentRecommendationGeneration to check status.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_start_agent_recommendation_generation/](https://www.paws-r-sdk.com/docs/wellarchitected_start_agent_recommendation_generation/) for full documentation.
+#'
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the optimization profile to use for generating recommendations.
+#' @param types &#91;required&#93; The types of recommendations to generate.
+#' @param name An optional name for this generation process to help identify it in lists and logs.
+#' @param additionalContext Optional additional context to guide the recommendation generation, such as specific business requirements or constraints.
+#' @param scope &#91;required&#93; Scope configuration to focus the generation on specific pillars or goals.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_start_agent_recommendation_generation
+wellarchitected_start_agent_recommendation_generation <- function(profileArn, types, name = NULL, additionalContext = NULL, scope) {
+  op <- new_operation(
+    name = "StartAgentRecommendationGeneration",
+    http_method = "POST",
+    http_path = "/api/v1/agent-profiles/{profileArn}/generations",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$start_agent_recommendation_generation_input(profileArn = profileArn, types = types, name = name, additionalContext = additionalContext, scope = scope)
+  output <- .wellarchitected$start_agent_recommendation_generation_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$start_agent_recommendation_generation <- wellarchitected_start_agent_recommendation_generation
+
 #' Adds one or more tags to the specified resource
 #'
 #' @description
@@ -2226,6 +2869,152 @@ wellarchitected_untag_resource <- function(WorkloadArn, TagKeys) {
   return(response)
 }
 .wellarchitected$operations$untag_resource <- wellarchitected_untag_resource
+
+#' Updates an existing context associated with a profile
+#'
+#' @description
+#' Updates an existing context associated with a profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_agent_context/](https://www.paws-r-sdk.com/docs/wellarchitected_update_agent_context/) for full documentation.
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the profile containing the context.
+#' @param id &#91;required&#93; The unique identifier of the context to update.
+#' @param title The updated title of the context.
+#' @param content The updated typed content of the context. The structure contains application-specific fields such as account IDs, Regions, services, and resource types.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_update_agent_context
+wellarchitected_update_agent_context <- function(clientToken = NULL, profileArn, id, title = NULL, content = NULL) {
+  op <- new_operation(
+    name = "UpdateAgentContext",
+    http_method = "PUT",
+    http_path = "/api/v1/agent-profiles/{profileArn}/contexts/{id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$update_agent_context_input(clientToken = clientToken, profileArn = profileArn, id = id, title = title, content = content)
+  output <- .wellarchitected$update_agent_context_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$update_agent_context <- wellarchitected_update_agent_context
+
+#' Updates the pillars and title of an existing goal associated with a
+#' profile
+#'
+#' @description
+#' Updates the pillars and title of an existing goal associated with a profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_agent_goal/](https://www.paws-r-sdk.com/docs/wellarchitected_update_agent_goal/) for full documentation.
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the profile containing the goal to update.
+#' @param id &#91;required&#93; The unique identifier of the goal to update.
+#' @param pillars The updated pillars for the goal. Pillars define the optimization focus areas such as cost, performance, resilience, and operational excellence.
+#' @param title The updated title for the goal. Maximum length of 1000 characters.
+#' @param description A description of the goal.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_update_agent_goal
+wellarchitected_update_agent_goal <- function(clientToken = NULL, profileArn, id, pillars = NULL, title = NULL, description = NULL) {
+  op <- new_operation(
+    name = "UpdateAgentGoal",
+    http_method = "PUT",
+    http_path = "/api/v1/agent-profiles/{profileArn}/goals/{id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$update_agent_goal_input(clientToken = clientToken, profileArn = profileArn, id = id, pillars = pillars, title = title, description = description)
+  output <- .wellarchitected$update_agent_goal_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$update_agent_goal <- wellarchitected_update_agent_goal
+
+#' Updates an existing optimization profile's configuration, including its
+#' pillars, execution role, and aggregation settings
+#'
+#' @description
+#' Updates an existing optimization profile's configuration, including its pillars, execution role, and aggregation settings.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_agent_profile/](https://www.paws-r-sdk.com/docs/wellarchitected_update_agent_profile/) for full documentation.
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#' @param profileArn &#91;required&#93; The Amazon Resource Name (ARN) of the profile to update.
+#' @param displayName The updated display name of the profile.
+#' @param description The updated description of the profile.
+#' @param executionRoleArn The updated ARN of the IAM execution role.
+#' @param aggregationConfiguration The updated aggregation configuration.
+#' @param businessOverview The updated business overview for the profile.
+#' @param pillars The updated Well-Architected Tool Framework pillars for the profile.
+#' @param deletionProtection Indicates whether deletion protection is enabled for the profile.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_update_agent_profile
+wellarchitected_update_agent_profile <- function(clientToken = NULL, profileArn, displayName = NULL, description = NULL, executionRoleArn = NULL, aggregationConfiguration = NULL, businessOverview = NULL, pillars = NULL, deletionProtection = NULL) {
+  op <- new_operation(
+    name = "UpdateAgentProfile",
+    http_method = "PUT",
+    http_path = "/api/v1/agent-profiles/{profileArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$update_agent_profile_input(clientToken = clientToken, profileArn = profileArn, displayName = displayName, description = description, executionRoleArn = executionRoleArn, aggregationConfiguration = aggregationConfiguration, businessOverview = businessOverview, pillars = pillars, deletionProtection = deletionProtection)
+  output <- .wellarchitected$update_agent_profile_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$update_agent_profile <- wellarchitected_update_agent_profile
+
+#' Updates the status of a recommendation to track its progress through the
+#' implementation lifecycle
+#'
+#' @description
+#' Updates the status of a recommendation to track its progress through the implementation lifecycle.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_agent_recommendation_status/](https://www.paws-r-sdk.com/docs/wellarchitected_update_agent_recommendation_status/) for full documentation.
+#'
+#' @param recommendationArn &#91;required&#93; The Amazon Resource Name (ARN) of the recommendation to update.
+#' @param status &#91;required&#93; The new status to assign to the recommendation.
+#' @param updateReason A free-text reason explaining this status update.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_update_agent_recommendation_status
+wellarchitected_update_agent_recommendation_status <- function(recommendationArn, status, updateReason = NULL) {
+  op <- new_operation(
+    name = "UpdateAgentRecommendationStatus",
+    http_method = "PATCH",
+    http_path = "/api/v1/agent-recommendations/{recommendationArn}/status",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wellarchitected$update_agent_recommendation_status_input(recommendationArn = recommendationArn, status = status, updateReason = updateReason)
+  output <- .wellarchitected$update_agent_recommendation_status_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$update_agent_recommendation_status <- wellarchitected_update_agent_recommendation_status
 
 #' Update the answer to a specific question in a workload review
 #'

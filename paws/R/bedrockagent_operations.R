@@ -674,6 +674,8 @@ bedrockagent_create_agent_alias <- function(agentId, agentAliasName, clientToken
 #' -   DELETE: Deletes all data from your data source that’s converted into vector embeddings upon deletion of a knowledge base or data source resource. Note that the **vector store itself is not deleted**, only the data. This flag is ignored if an Amazon Web Services account is deleted.
 #' 
 #' -   RETAIN: Retains all data from your data source that’s converted into vector embeddings upon deletion of a knowledge base or data source resource. Note that the **vector store itself is not deleted** if you delete a knowledge base or data source resource.
+#' 
+#' For managed knowledge bases, the only supported option is `DELETE`, which is also the default.
 #' @param serverSideEncryptionConfiguration Contains details about the server-side encryption for the data source.
 #' @param vectorIngestionConfiguration Contains details about how to ingest the documents in the data source.
 #'
@@ -685,10 +687,40 @@ bedrockagent_create_agent_alias <- function(agentId, agentAliasName, clientToken
 #'     knowledgeBaseId = "string",
 #'     dataSourceId = "string",
 #'     name = "string",
-#'     status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL",
+#'     status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL"|"CREATING"|"UPDATING"|"FAILED",
 #'     description = "string",
 #'     dataSourceConfiguration = list(
-#'       type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
+#'       type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA"|"MANAGED_KNOWLEDGE_BASE_CONNECTOR",
+#'       managedKnowledgeBaseConnectorConfiguration = list(
+#'         deletionProtectionConfiguration = list(
+#'           deletionProtectionStatus = "ENABLED"|"DISABLED",
+#'           deletionProtectionThreshold = 123
+#'         ),
+#'         mediaExtractionConfiguration = list(
+#'           imageExtractionConfiguration = list(
+#'             imageExtractionStatus = "ENABLED"|"DISABLED"
+#'           ),
+#'           audioExtractionConfiguration = list(
+#'             audioExtractionStatus = "ENABLED"|"DISABLED"
+#'           ),
+#'           videoExtractionConfiguration = list(
+#'             videoExtractionStatus = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         connectorParameters = list(),
+#'         syncSchedule = list(
+#'           daily = list(),
+#'           weekly = list(
+#'             dayOfWeek = "SUNDAY"|"MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY"
+#'           ),
+#'           monthly = list(
+#'             dayOfMonth = list(
+#'               dayNumber = 123,
+#'               lastDayOfMonth = list()
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       s3Configuration = list(
 #'         bucketArn = "string",
 #'         inclusionPrefixes = list(
@@ -846,7 +878,7 @@ bedrockagent_create_agent_alias <- function(agentId, agentAliasName, clientToken
 #'         )
 #'       ),
 #'       parsingConfiguration = list(
-#'         parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION",
+#'         parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION"|"SMART_PARSING",
 #'         bedrockFoundationModelConfiguration = list(
 #'           modelArn = "string",
 #'           parsingPrompt = list(
@@ -890,7 +922,37 @@ bedrockagent_create_agent_alias <- function(agentId, agentAliasName, clientToken
 #'   name = "string",
 #'   description = "string",
 #'   dataSourceConfiguration = list(
-#'     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
+#'     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA"|"MANAGED_KNOWLEDGE_BASE_CONNECTOR",
+#'     managedKnowledgeBaseConnectorConfiguration = list(
+#'       deletionProtectionConfiguration = list(
+#'         deletionProtectionStatus = "ENABLED"|"DISABLED",
+#'         deletionProtectionThreshold = 123
+#'       ),
+#'       mediaExtractionConfiguration = list(
+#'         imageExtractionConfiguration = list(
+#'           imageExtractionStatus = "ENABLED"|"DISABLED"
+#'         ),
+#'         audioExtractionConfiguration = list(
+#'           audioExtractionStatus = "ENABLED"|"DISABLED"
+#'         ),
+#'         videoExtractionConfiguration = list(
+#'           videoExtractionStatus = "ENABLED"|"DISABLED"
+#'         )
+#'       ),
+#'       connectorParameters = list(),
+#'       syncSchedule = list(
+#'         daily = list(),
+#'         weekly = list(
+#'           dayOfWeek = "SUNDAY"|"MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY"
+#'         ),
+#'         monthly = list(
+#'           dayOfMonth = list(
+#'             dayNumber = 123,
+#'             lastDayOfMonth = list()
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     s3Configuration = list(
 #'       bucketArn = "string",
 #'       inclusionPrefixes = list(
@@ -1049,7 +1111,7 @@ bedrockagent_create_agent_alias <- function(agentId, agentAliasName, clientToken
 #'       )
 #'     ),
 #'     parsingConfiguration = list(
-#'       parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION",
+#'       parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION"|"SMART_PARSING",
 #'       bedrockFoundationModelConfiguration = list(
 #'         modelArn = "string",
 #'         parsingPrompt = list(
@@ -2093,15 +2155,17 @@ bedrockagent_create_flow_version <- function(flowIdentifier, description = NULL,
 #' @description
 #' Creates a knowledge base. A knowledge base contains your data sources so that Large Language Models (LLMs) can use your data. To create a knowledge base, you must first set up your data sources and configure a supported vector store. For more information, see [Set up a knowledge base](https://docs.aws.amazon.com/bedrock/latest/userguide/).
 #' 
-#' If you prefer to let Amazon Bedrock create and manage a vector store for you in Amazon OpenSearch Service, use the console. For more information, see [Create a knowledge base](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-create.html).
+#' To create a managed knowledge base, provide a `managedKnowledgeBaseConfiguration` during creation. For more information, see [Build a managed knowledge base](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-build-managed.html).
 #' 
 #' -   Provide the `name` and an optional `description`.
 #' 
 #' -   Provide the Amazon Resource Name (ARN) with permissions to create a knowledge base in the `roleArn` field.
 #' 
-#' -   Provide the embedding model to use in the `embeddingModelArn` field in the `knowledgeBaseConfiguration` object.
+#' -   For managed knowledge bases, set `embeddingModelType` to `MANAGED` to use the service-managed embedding model, or `CUSTOM` with an `embeddingModelArn` to use your own. To use your own KMS key for encryption, provide the ARN in `serverSideEncryptionConfiguration`. No vector store configuration is required for managed knowledge bases.
 #' 
-#' -   Provide the configuration for your vector store in the `storageConfiguration` object.
+#' -   For self-managed knowledge bases, provide the embedding model to use in the `embeddingModelArn` field in the `knowledgeBaseConfiguration` object.
+#' 
+#' -   For self-managed knowledge bases, provide the configuration for your vector store in the `storageConfiguration` object.
 #' 
 #'     -   For an Amazon OpenSearch Service database, use the `opensearchServerlessConfiguration` object. For more information, see [Create a vector store in Amazon OpenSearch Service](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup.html).
 #' 
@@ -2134,7 +2198,7 @@ bedrockagent_create_flow_version <- function(flowIdentifier, description = NULL,
 #'     description = "string",
 #'     roleArn = "string",
 #'     knowledgeBaseConfiguration = list(
-#'       type = "VECTOR"|"KENDRA"|"SQL",
+#'       type = "VECTOR"|"KENDRA"|"SQL"|"MANAGED",
 #'       vectorKnowledgeBaseConfiguration = list(
 #'         embeddingModelArn = "string",
 #'         embeddingModelConfiguration = list(
@@ -2166,6 +2230,33 @@ bedrockagent_create_flow_version <- function(flowIdentifier, description = NULL,
 #'               )
 #'             )
 #'           )
+#'         )
+#'       ),
+#'       managedKnowledgeBaseConfiguration = list(
+#'         embeddingModelType = "CUSTOM"|"MANAGED",
+#'         embeddingModelArn = "string",
+#'         embeddingModelConfiguration = list(
+#'           bedrockEmbeddingModelConfiguration = list(
+#'             dimensions = 123,
+#'             embeddingDataType = "FLOAT32"|"BINARY",
+#'             audio = list(
+#'               list(
+#'                 segmentationConfiguration = list(
+#'                   fixedLengthDuration = 123
+#'                 )
+#'               )
+#'             ),
+#'             video = list(
+#'               list(
+#'                 segmentationConfiguration = list(
+#'                   fixedLengthDuration = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         serverSideEncryptionConfiguration = list(
+#'           kmsKeyArn = "string"
 #'         )
 #'       ),
 #'       kendraKnowledgeBaseConfiguration = list(
@@ -2313,7 +2404,7 @@ bedrockagent_create_flow_version <- function(flowIdentifier, description = NULL,
 #'         indexName = "string"
 #'       )
 #'     ),
-#'     status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL",
+#'     status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL"|"UPDATE_UNSUCCESSFUL",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -2335,7 +2426,7 @@ bedrockagent_create_flow_version <- function(flowIdentifier, description = NULL,
 #'   description = "string",
 #'   roleArn = "string",
 #'   knowledgeBaseConfiguration = list(
-#'     type = "VECTOR"|"KENDRA"|"SQL",
+#'     type = "VECTOR"|"KENDRA"|"SQL"|"MANAGED",
 #'     vectorKnowledgeBaseConfiguration = list(
 #'       embeddingModelArn = "string",
 #'       embeddingModelConfiguration = list(
@@ -2367,6 +2458,33 @@ bedrockagent_create_flow_version <- function(flowIdentifier, description = NULL,
 #'             )
 #'           )
 #'         )
+#'       )
+#'     ),
+#'     managedKnowledgeBaseConfiguration = list(
+#'       embeddingModelType = "CUSTOM"|"MANAGED",
+#'       embeddingModelArn = "string",
+#'       embeddingModelConfiguration = list(
+#'         bedrockEmbeddingModelConfiguration = list(
+#'           dimensions = 123,
+#'           embeddingDataType = "FLOAT32"|"BINARY",
+#'           audio = list(
+#'             list(
+#'               segmentationConfiguration = list(
+#'                 fixedLengthDuration = 123
+#'               )
+#'             )
+#'           ),
+#'           video = list(
+#'             list(
+#'               segmentationConfiguration = list(
+#'                 fixedLengthDuration = 123
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       serverSideEncryptionConfiguration = list(
+#'         kmsKeyArn = "string"
 #'       )
 #'     ),
 #'     kendraKnowledgeBaseConfiguration = list(
@@ -3201,7 +3319,7 @@ bedrockagent_delete_agent_version <- function(agentId, agentVersion, skipResourc
 #' list(
 #'   knowledgeBaseId = "string",
 #'   dataSourceId = "string",
-#'   status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL"
+#'   status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL"|"CREATING"|"UPDATING"|"FAILED"
 #' )
 #' ```
 #'
@@ -3410,7 +3528,7 @@ bedrockagent_delete_flow_version <- function(flowIdentifier, flowVersion, skipRe
 #' ```
 #' list(
 #'   knowledgeBaseId = "string",
-#'   status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL"
+#'   status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL"|"UPDATE_UNSUCCESSFUL"
 #' )
 #' ```
 #'
@@ -3583,6 +3701,58 @@ bedrockagent_delete_prompt <- function(promptIdentifier, promptVersion = NULL) {
   return(response)
 }
 .bedrockagent$operations$delete_prompt <- bedrockagent_delete_prompt
+
+#' Removes the resource policy associated with a knowledge base
+#'
+#' @description
+#' Removes the resource policy associated with a knowledge base. After deletion, other AWS accounts can no longer access the knowledge base using cross-account permissions.
+#'
+#' @usage
+#' bedrockagent_delete_resource_policy(resourceArn, expectedRevisionId)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the knowledge base to remove the resource policy from.
+#' @param expectedRevisionId The expected revision identifier of the resource policy. Use this to prevent conflicts when multiple users update the same policy concurrently.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceArn = "string",
+#'   revisionId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_policy(
+#'   resourceArn = "string",
+#'   expectedRevisionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagent_delete_resource_policy
+#'
+#' @aliases bedrockagent_delete_resource_policy
+bedrockagent_delete_resource_policy <- function(resourceArn, expectedRevisionId = NULL) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "DELETE",
+    http_path = "/resourcepolicy/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagent$delete_resource_policy_input(resourceArn = resourceArn, expectedRevisionId = expectedRevisionId)
+  output <- .bedrockagent$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .bedrockagent$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagent$operations$delete_resource_policy <- bedrockagent_delete_resource_policy
 
 #' Disassociates an agent collaborator
 #'
@@ -4260,10 +4430,40 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
 #'     knowledgeBaseId = "string",
 #'     dataSourceId = "string",
 #'     name = "string",
-#'     status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL",
+#'     status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL"|"CREATING"|"UPDATING"|"FAILED",
 #'     description = "string",
 #'     dataSourceConfiguration = list(
-#'       type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
+#'       type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA"|"MANAGED_KNOWLEDGE_BASE_CONNECTOR",
+#'       managedKnowledgeBaseConnectorConfiguration = list(
+#'         deletionProtectionConfiguration = list(
+#'           deletionProtectionStatus = "ENABLED"|"DISABLED",
+#'           deletionProtectionThreshold = 123
+#'         ),
+#'         mediaExtractionConfiguration = list(
+#'           imageExtractionConfiguration = list(
+#'             imageExtractionStatus = "ENABLED"|"DISABLED"
+#'           ),
+#'           audioExtractionConfiguration = list(
+#'             audioExtractionStatus = "ENABLED"|"DISABLED"
+#'           ),
+#'           videoExtractionConfiguration = list(
+#'             videoExtractionStatus = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         connectorParameters = list(),
+#'         syncSchedule = list(
+#'           daily = list(),
+#'           weekly = list(
+#'             dayOfWeek = "SUNDAY"|"MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY"
+#'           ),
+#'           monthly = list(
+#'             dayOfMonth = list(
+#'               dayNumber = 123,
+#'               lastDayOfMonth = list()
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       s3Configuration = list(
 #'         bucketArn = "string",
 #'         inclusionPrefixes = list(
@@ -4421,7 +4621,7 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
 #'         )
 #'       ),
 #'       parsingConfiguration = list(
-#'         parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION",
+#'         parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION"|"SMART_PARSING",
 #'         bedrockFoundationModelConfiguration = list(
 #'           modelArn = "string",
 #'           parsingPrompt = list(
@@ -4495,9 +4695,10 @@ bedrockagent_get_data_source <- function(knowledgeBaseId, dataSourceId) {
 #' Retrieves information about a flow. For more information, see [Manage a flow in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_get_flow(flowIdentifier)
+#' bedrockagent_get_flow(flowIdentifier, includedData)
 #'
 #' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
+#' @param includedData Controls the scope of data returned. Set to `METADATA_ONLY` to return only resource metadata. Set to `ALL_DATA` or omit this field to return the full response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4898,7 +5099,8 @@ bedrockagent_get_data_source <- function(knowledgeBaseId, dataSourceId) {
 #' @section Request syntax:
 #' ```
 #' svc$get_flow(
-#'   flowIdentifier = "string"
+#'   flowIdentifier = "string",
+#'   includedData = "ALL_DATA"|"METADATA_ONLY"
 #' )
 #' ```
 #'
@@ -4907,7 +5109,7 @@ bedrockagent_get_data_source <- function(knowledgeBaseId, dataSourceId) {
 #' @rdname bedrockagent_get_flow
 #'
 #' @aliases bedrockagent_get_flow
-bedrockagent_get_flow <- function(flowIdentifier) {
+bedrockagent_get_flow <- function(flowIdentifier, includedData = NULL) {
   op <- new_operation(
     name = "GetFlow",
     http_method = "GET",
@@ -4916,7 +5118,7 @@ bedrockagent_get_flow <- function(flowIdentifier) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_flow_input(flowIdentifier = flowIdentifier)
+  input <- .bedrockagent$get_flow_input(flowIdentifier = flowIdentifier, includedData = includedData)
   output <- .bedrockagent$get_flow_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -5002,10 +5204,11 @@ bedrockagent_get_flow_alias <- function(flowIdentifier, aliasIdentifier) {
 #' Retrieves information about a version of a flow. For more information, see [Deploy a flow in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-deploy.html) in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_get_flow_version(flowIdentifier, flowVersion)
+#' bedrockagent_get_flow_version(flowIdentifier, flowVersion, includedData)
 #'
 #' @param flowIdentifier &#91;required&#93; The unique identifier of the flow for which to get information.
 #' @param flowVersion &#91;required&#93; The version of the flow for which to get information.
+#' @param includedData Controls the scope of data returned. Set to `METADATA_ONLY` to return only resource metadata. Set to `ALL_DATA` or omit this field to return the full response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5282,7 +5485,8 @@ bedrockagent_get_flow_alias <- function(flowIdentifier, aliasIdentifier) {
 #' ```
 #' svc$get_flow_version(
 #'   flowIdentifier = "string",
-#'   flowVersion = "string"
+#'   flowVersion = "string",
+#'   includedData = "ALL_DATA"|"METADATA_ONLY"
 #' )
 #' ```
 #'
@@ -5291,7 +5495,7 @@ bedrockagent_get_flow_alias <- function(flowIdentifier, aliasIdentifier) {
 #' @rdname bedrockagent_get_flow_version
 #'
 #' @aliases bedrockagent_get_flow_version
-bedrockagent_get_flow_version <- function(flowIdentifier, flowVersion) {
+bedrockagent_get_flow_version <- function(flowIdentifier, flowVersion, includedData = NULL) {
   op <- new_operation(
     name = "GetFlowVersion",
     http_method = "GET",
@@ -5300,7 +5504,7 @@ bedrockagent_get_flow_version <- function(flowIdentifier, flowVersion) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_flow_version_input(flowIdentifier = flowIdentifier, flowVersion = flowVersion)
+  input <- .bedrockagent$get_flow_version_input(flowIdentifier = flowIdentifier, flowVersion = flowVersion, includedData = includedData)
   output <- .bedrockagent$get_flow_version_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -5340,7 +5544,8 @@ bedrockagent_get_flow_version <- function(flowIdentifier, flowVersion) {
 #'       numberOfModifiedDocumentsIndexed = 123,
 #'       numberOfMetadataDocumentsModified = 123,
 #'       numberOfDocumentsDeleted = 123,
-#'       numberOfDocumentsFailed = 123
+#'       numberOfDocumentsFailed = 123,
+#'       numberOfDocumentsSkipped = 123
 #'     ),
 #'     failureReasons = list(
 #'       "string"
@@ -5409,7 +5614,7 @@ bedrockagent_get_ingestion_job <- function(knowledgeBaseId, dataSourceId, ingest
 #'     description = "string",
 #'     roleArn = "string",
 #'     knowledgeBaseConfiguration = list(
-#'       type = "VECTOR"|"KENDRA"|"SQL",
+#'       type = "VECTOR"|"KENDRA"|"SQL"|"MANAGED",
 #'       vectorKnowledgeBaseConfiguration = list(
 #'         embeddingModelArn = "string",
 #'         embeddingModelConfiguration = list(
@@ -5441,6 +5646,33 @@ bedrockagent_get_ingestion_job <- function(knowledgeBaseId, dataSourceId, ingest
 #'               )
 #'             )
 #'           )
+#'         )
+#'       ),
+#'       managedKnowledgeBaseConfiguration = list(
+#'         embeddingModelType = "CUSTOM"|"MANAGED",
+#'         embeddingModelArn = "string",
+#'         embeddingModelConfiguration = list(
+#'           bedrockEmbeddingModelConfiguration = list(
+#'             dimensions = 123,
+#'             embeddingDataType = "FLOAT32"|"BINARY",
+#'             audio = list(
+#'               list(
+#'                 segmentationConfiguration = list(
+#'                   fixedLengthDuration = 123
+#'                 )
+#'               )
+#'             ),
+#'             video = list(
+#'               list(
+#'                 segmentationConfiguration = list(
+#'                   fixedLengthDuration = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         serverSideEncryptionConfiguration = list(
+#'           kmsKeyArn = "string"
 #'         )
 #'       ),
 #'       kendraKnowledgeBaseConfiguration = list(
@@ -5588,7 +5820,7 @@ bedrockagent_get_ingestion_job <- function(knowledgeBaseId, dataSourceId, ingest
 #'         indexName = "string"
 #'       )
 #'     ),
-#'     status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL",
+#'     status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL"|"UPDATE_UNSUCCESSFUL",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -5725,10 +5957,11 @@ bedrockagent_get_knowledge_base_documents <- function(knowledgeBaseId, dataSourc
 #' Retrieves information about the working draft (`DRAFT` version) of a prompt or a version of it, depending on whether you include the `promptVersion` field or not. For more information, see [View information about prompts using Prompt management](https://docs.aws.amazon.com/bedrock/latest/userguide/#prompt-management-view.html) and [View information about a version of your prompt](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-deploy.html#prompt-management-versions-view.html) in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_get_prompt(promptIdentifier, promptVersion)
+#' bedrockagent_get_prompt(promptIdentifier, promptVersion, includedData)
 #'
 #' @param promptIdentifier &#91;required&#93; The unique identifier of the prompt.
 #' @param promptVersion The version of the prompt about which you want to retrieve information. Omit this field to return information about the working draft of the prompt.
+#' @param includedData Controls the scope of data returned. Set to `METADATA_ONLY` to return only resource metadata. Set to `ALL_DATA` or omit this field to return the full response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5848,7 +6081,8 @@ bedrockagent_get_knowledge_base_documents <- function(knowledgeBaseId, dataSourc
 #' ```
 #' svc$get_prompt(
 #'   promptIdentifier = "string",
-#'   promptVersion = "string"
+#'   promptVersion = "string",
+#'   includedData = "ALL_DATA"|"METADATA_ONLY"
 #' )
 #' ```
 #'
@@ -5857,7 +6091,7 @@ bedrockagent_get_knowledge_base_documents <- function(knowledgeBaseId, dataSourc
 #' @rdname bedrockagent_get_prompt
 #'
 #' @aliases bedrockagent_get_prompt
-bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL) {
+bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL, includedData = NULL) {
   op <- new_operation(
     name = "GetPrompt",
     http_method = "GET",
@@ -5866,7 +6100,7 @@ bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_prompt_input(promptIdentifier = promptIdentifier, promptVersion = promptVersion)
+  input <- .bedrockagent$get_prompt_input(promptIdentifier = promptIdentifier, promptVersion = promptVersion, includedData = includedData)
   output <- .bedrockagent$get_prompt_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -5875,6 +6109,57 @@ bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL) {
   return(response)
 }
 .bedrockagent$operations$get_prompt <- bedrockagent_get_prompt
+
+#' Retrieves the resource policy associated with a knowledge base
+#'
+#' @description
+#' Retrieves the resource policy associated with a knowledge base.
+#'
+#' @usage
+#' bedrockagent_get_resource_policy(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the knowledge base to retrieve the resource policy for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceArn = "string",
+#'   policy = "string",
+#'   revisionId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_policy(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagent_get_resource_policy
+#'
+#' @aliases bedrockagent_get_resource_policy
+bedrockagent_get_resource_policy <- function(resourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "GET",
+    http_path = "/resourcepolicy/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagent$get_resource_policy_input(resourceArn = resourceArn)
+  output <- .bedrockagent$get_resource_policy_output()
+  config <- get_config()
+  svc <- .bedrockagent$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagent$operations$get_resource_policy <- bedrockagent_get_resource_policy
 
 #' Ingests documents directly into the knowledge base that is connected to
 #' the data source
@@ -5945,6 +6230,13 @@ bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL) {
 #'         s3Location = list(
 #'           uri = "string",
 #'           bucketOwnerAccountId = "string"
+#'         ),
+#'         accessControlList = list(
+#'           list(
+#'             name = "string",
+#'             type = "USER",
+#'             access = "ALLOW"|"DENY"
+#'           )
 #'         )
 #'       ),
 #'       content = list(
@@ -6448,7 +6740,7 @@ bedrockagent_list_agents <- function(maxResults = NULL, nextToken = NULL) {
 #'       knowledgeBaseId = "string",
 #'       dataSourceId = "string",
 #'       name = "string",
-#'       status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL",
+#'       status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL"|"CREATING"|"UPDATING"|"FAILED",
 #'       description = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -6740,7 +7032,8 @@ bedrockagent_list_flows <- function(maxResults = NULL, nextToken = NULL) {
 #'         numberOfModifiedDocumentsIndexed = 123,
 #'         numberOfMetadataDocumentsModified = 123,
 #'         numberOfDocumentsDeleted = 123,
-#'         numberOfDocumentsFailed = 123
+#'         numberOfDocumentsFailed = 123,
+#'         numberOfDocumentsSkipped = 123
 #'       )
 #'     )
 #'   ),
@@ -6892,7 +7185,7 @@ bedrockagent_list_knowledge_base_documents <- function(knowledgeBaseId, dataSour
 #'       knowledgeBaseId = "string",
 #'       name = "string",
 #'       description = "string",
-#'       status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL",
+#'       status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL"|"UPDATE_UNSUCCESSFUL",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -7161,6 +7454,61 @@ bedrockagent_prepare_flow <- function(flowIdentifier) {
 }
 .bedrockagent$operations$prepare_flow <- bedrockagent_prepare_flow
 
+#' Associates a resource policy with a knowledge base
+#'
+#' @description
+#' Associates a resource policy with a knowledge base. A resource policy allows other AWS accounts to access the knowledge base. For more information, see [Cross-account access for knowledge bases](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-managed-cross-account.html).
+#'
+#' @usage
+#' bedrockagent_put_resource_policy(resourceArn, policy,
+#'   expectedRevisionId)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the knowledge base to attach the resource policy to.
+#' @param policy &#91;required&#93; The JSON-formatted resource policy to associate with the knowledge base.
+#' @param expectedRevisionId The expected revision identifier of the resource policy. Use this to prevent conflicts when multiple users update the same policy concurrently. Specify the `revisionId` from the most recent [`get_resource_policy`][bedrockagent_get_resource_policy] or [`put_resource_policy`][bedrockagent_put_resource_policy] response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceArn = "string",
+#'   revisionId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_policy(
+#'   resourceArn = "string",
+#'   policy = "string",
+#'   expectedRevisionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagent_put_resource_policy
+#'
+#' @aliases bedrockagent_put_resource_policy
+bedrockagent_put_resource_policy <- function(resourceArn, policy, expectedRevisionId = NULL) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "PUT",
+    http_path = "/resourcepolicy/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagent$put_resource_policy_input(resourceArn = resourceArn, policy = policy, expectedRevisionId = expectedRevisionId)
+  output <- .bedrockagent$put_resource_policy_output()
+  config <- get_config()
+  svc <- .bedrockagent$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagent$operations$put_resource_policy <- bedrockagent_put_resource_policy
+
 #' Begins a data ingestion job
 #'
 #' @description
@@ -7192,7 +7540,8 @@ bedrockagent_prepare_flow <- function(flowIdentifier) {
 #'       numberOfModifiedDocumentsIndexed = 123,
 #'       numberOfMetadataDocumentsModified = 123,
 #'       numberOfDocumentsDeleted = 123,
-#'       numberOfDocumentsFailed = 123
+#'       numberOfDocumentsFailed = 123,
+#'       numberOfDocumentsSkipped = 123
 #'     ),
 #'     failureReasons = list(
 #'       "string"
@@ -7271,7 +7620,8 @@ bedrockagent_start_ingestion_job <- function(knowledgeBaseId, dataSourceId, clie
 #'       numberOfModifiedDocumentsIndexed = 123,
 #'       numberOfMetadataDocumentsModified = 123,
 #'       numberOfDocumentsDeleted = 123,
-#'       numberOfDocumentsFailed = 123
+#'       numberOfDocumentsFailed = 123,
+#'       numberOfDocumentsSkipped = 123
 #'     ),
 #'     failureReasons = list(
 #'       "string"
@@ -7322,7 +7672,7 @@ bedrockagent_stop_ingestion_job <- function(knowledgeBaseId, dataSourceId, inges
 #' Associate tags with a resource
 #'
 #' @description
-#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the Amazon Bedrock User Guide.
+#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=awsomedayonlinehk) in the Amazon Bedrock User Guide.
 #'
 #' @usage
 #' bedrockagent_tag_resource(resourceArn, tags)
@@ -8064,10 +8414,40 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, know
 #'     knowledgeBaseId = "string",
 #'     dataSourceId = "string",
 #'     name = "string",
-#'     status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL",
+#'     status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL"|"CREATING"|"UPDATING"|"FAILED",
 #'     description = "string",
 #'     dataSourceConfiguration = list(
-#'       type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
+#'       type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA"|"MANAGED_KNOWLEDGE_BASE_CONNECTOR",
+#'       managedKnowledgeBaseConnectorConfiguration = list(
+#'         deletionProtectionConfiguration = list(
+#'           deletionProtectionStatus = "ENABLED"|"DISABLED",
+#'           deletionProtectionThreshold = 123
+#'         ),
+#'         mediaExtractionConfiguration = list(
+#'           imageExtractionConfiguration = list(
+#'             imageExtractionStatus = "ENABLED"|"DISABLED"
+#'           ),
+#'           audioExtractionConfiguration = list(
+#'             audioExtractionStatus = "ENABLED"|"DISABLED"
+#'           ),
+#'           videoExtractionConfiguration = list(
+#'             videoExtractionStatus = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         connectorParameters = list(),
+#'         syncSchedule = list(
+#'           daily = list(),
+#'           weekly = list(
+#'             dayOfWeek = "SUNDAY"|"MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY"
+#'           ),
+#'           monthly = list(
+#'             dayOfMonth = list(
+#'               dayNumber = 123,
+#'               lastDayOfMonth = list()
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       s3Configuration = list(
 #'         bucketArn = "string",
 #'         inclusionPrefixes = list(
@@ -8225,7 +8605,7 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, know
 #'         )
 #'       ),
 #'       parsingConfiguration = list(
-#'         parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION",
+#'         parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION"|"SMART_PARSING",
 #'         bedrockFoundationModelConfiguration = list(
 #'           modelArn = "string",
 #'           parsingPrompt = list(
@@ -8269,7 +8649,37 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, know
 #'   name = "string",
 #'   description = "string",
 #'   dataSourceConfiguration = list(
-#'     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
+#'     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA"|"MANAGED_KNOWLEDGE_BASE_CONNECTOR",
+#'     managedKnowledgeBaseConnectorConfiguration = list(
+#'       deletionProtectionConfiguration = list(
+#'         deletionProtectionStatus = "ENABLED"|"DISABLED",
+#'         deletionProtectionThreshold = 123
+#'       ),
+#'       mediaExtractionConfiguration = list(
+#'         imageExtractionConfiguration = list(
+#'           imageExtractionStatus = "ENABLED"|"DISABLED"
+#'         ),
+#'         audioExtractionConfiguration = list(
+#'           audioExtractionStatus = "ENABLED"|"DISABLED"
+#'         ),
+#'         videoExtractionConfiguration = list(
+#'           videoExtractionStatus = "ENABLED"|"DISABLED"
+#'         )
+#'       ),
+#'       connectorParameters = list(),
+#'       syncSchedule = list(
+#'         daily = list(),
+#'         weekly = list(
+#'           dayOfWeek = "SUNDAY"|"MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY"
+#'         ),
+#'         monthly = list(
+#'           dayOfMonth = list(
+#'             dayNumber = 123,
+#'             lastDayOfMonth = list()
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     s3Configuration = list(
 #'       bucketArn = "string",
 #'       inclusionPrefixes = list(
@@ -8428,7 +8838,7 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, know
 #'       )
 #'     ),
 #'     parsingConfiguration = list(
-#'       parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION",
+#'       parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION"|"SMART_PARSING",
 #'       bedrockFoundationModelConfiguration = list(
 #'         modelArn = "string",
 #'         parsingPrompt = list(
@@ -9179,7 +9589,7 @@ bedrockagent_update_flow_alias <- function(name, description = NULL, routingConf
 #'     description = "string",
 #'     roleArn = "string",
 #'     knowledgeBaseConfiguration = list(
-#'       type = "VECTOR"|"KENDRA"|"SQL",
+#'       type = "VECTOR"|"KENDRA"|"SQL"|"MANAGED",
 #'       vectorKnowledgeBaseConfiguration = list(
 #'         embeddingModelArn = "string",
 #'         embeddingModelConfiguration = list(
@@ -9211,6 +9621,33 @@ bedrockagent_update_flow_alias <- function(name, description = NULL, routingConf
 #'               )
 #'             )
 #'           )
+#'         )
+#'       ),
+#'       managedKnowledgeBaseConfiguration = list(
+#'         embeddingModelType = "CUSTOM"|"MANAGED",
+#'         embeddingModelArn = "string",
+#'         embeddingModelConfiguration = list(
+#'           bedrockEmbeddingModelConfiguration = list(
+#'             dimensions = 123,
+#'             embeddingDataType = "FLOAT32"|"BINARY",
+#'             audio = list(
+#'               list(
+#'                 segmentationConfiguration = list(
+#'                   fixedLengthDuration = 123
+#'                 )
+#'               )
+#'             ),
+#'             video = list(
+#'               list(
+#'                 segmentationConfiguration = list(
+#'                   fixedLengthDuration = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         serverSideEncryptionConfiguration = list(
+#'           kmsKeyArn = "string"
 #'         )
 #'       ),
 #'       kendraKnowledgeBaseConfiguration = list(
@@ -9358,7 +9795,7 @@ bedrockagent_update_flow_alias <- function(name, description = NULL, routingConf
 #'         indexName = "string"
 #'       )
 #'     ),
-#'     status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL",
+#'     status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL"|"UPDATE_UNSUCCESSFUL",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -9380,7 +9817,7 @@ bedrockagent_update_flow_alias <- function(name, description = NULL, routingConf
 #'   description = "string",
 #'   roleArn = "string",
 #'   knowledgeBaseConfiguration = list(
-#'     type = "VECTOR"|"KENDRA"|"SQL",
+#'     type = "VECTOR"|"KENDRA"|"SQL"|"MANAGED",
 #'     vectorKnowledgeBaseConfiguration = list(
 #'       embeddingModelArn = "string",
 #'       embeddingModelConfiguration = list(
@@ -9412,6 +9849,33 @@ bedrockagent_update_flow_alias <- function(name, description = NULL, routingConf
 #'             )
 #'           )
 #'         )
+#'       )
+#'     ),
+#'     managedKnowledgeBaseConfiguration = list(
+#'       embeddingModelType = "CUSTOM"|"MANAGED",
+#'       embeddingModelArn = "string",
+#'       embeddingModelConfiguration = list(
+#'         bedrockEmbeddingModelConfiguration = list(
+#'           dimensions = 123,
+#'           embeddingDataType = "FLOAT32"|"BINARY",
+#'           audio = list(
+#'             list(
+#'               segmentationConfiguration = list(
+#'                 fixedLengthDuration = 123
+#'               )
+#'             )
+#'           ),
+#'           video = list(
+#'             list(
+#'               segmentationConfiguration = list(
+#'                 fixedLengthDuration = 123
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       serverSideEncryptionConfiguration = list(
+#'         kmsKeyArn = "string"
 #'       )
 #'     ),
 #'     kendraKnowledgeBaseConfiguration = list(

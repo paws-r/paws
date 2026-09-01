@@ -165,6 +165,6 @@ applicationinsights <- function(config = list(), credentials = list(), endpoint 
 )
 
 .applicationinsights$service <- function(config = list(), op = NULL) {
-  handlers <- new_handlers("jsonrpc", "v4")
+  handlers <- new_handlers("smithyrpcv2cbor", "v4")
   new_service(.applicationinsights$metadata, handlers, config, op)
 }

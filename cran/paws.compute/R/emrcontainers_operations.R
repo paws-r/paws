@@ -86,11 +86,12 @@ emrcontainers_create_job_template <- function(name, clientToken, jobTemplateData
 #' @param configurationOverrides The configuration settings that will be used to override existing configurations.
 #' @param clientToken &#91;required&#93; The client idempotency token for this create call.
 #' @param tags The tags of the managed endpoint.
+#' @param sessionIdleTimeoutInMinutes The number of idle minutes before the managed endpoint session times out.
 #'
 #' @keywords internal
 #'
 #' @rdname emrcontainers_create_managed_endpoint
-emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, releaseLabel, executionRoleArn, certificateArn = NULL, configurationOverrides = NULL, clientToken, tags = NULL) {
+emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, releaseLabel, executionRoleArn, certificateArn = NULL, configurationOverrides = NULL, clientToken, tags = NULL, sessionIdleTimeoutInMinutes = NULL) {
   op <- new_operation(
     name = "CreateManagedEndpoint",
     http_method = "POST",
@@ -99,7 +100,7 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emrcontainers$create_managed_endpoint_input(name = name, virtualClusterId = virtualClusterId, type = type, releaseLabel = releaseLabel, executionRoleArn = executionRoleArn, certificateArn = certificateArn, configurationOverrides = configurationOverrides, clientToken = clientToken, tags = tags)
+  input <- .emrcontainers$create_managed_endpoint_input(name = name, virtualClusterId = virtualClusterId, type = type, releaseLabel = releaseLabel, executionRoleArn = executionRoleArn, certificateArn = certificateArn, configurationOverrides = configurationOverrides, clientToken = clientToken, tags = tags, sessionIdleTimeoutInMinutes = sessionIdleTimeoutInMinutes)
   output <- .emrcontainers$create_managed_endpoint_output()
   config <- get_config()
   svc <- .emrcontainers$service(config, op)
@@ -147,7 +148,7 @@ emrcontainers_create_security_configuration <- function(clientToken, name, conta
 #' Creates a virtual cluster
 #'
 #' @description
-#' Creates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+#' Creates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 #'
 #' See [https://www.paws-r-sdk.com/docs/emrcontainers_create_virtual_cluster/](https://www.paws-r-sdk.com/docs/emrcontainers_create_virtual_cluster/) for full documentation.
 #'
@@ -156,11 +157,13 @@ emrcontainers_create_security_configuration <- function(clientToken, name, conta
 #' @param clientToken &#91;required&#93; The client token of the virtual cluster.
 #' @param tags The tags assigned to the virtual cluster.
 #' @param securityConfigurationId The ID of the security configuration.
+#' @param sessionEnabled Indicates whether the virtual cluster has session support enabled.
+#' @param schedulerConfiguration The scheduler configuration (concurrency and queue limits) to apply to the virtual cluster at creation time. When omitted, no limits are applied.
 #'
 #' @keywords internal
 #'
 #' @rdname emrcontainers_create_virtual_cluster
-emrcontainers_create_virtual_cluster <- function(name, containerProvider, clientToken, tags = NULL, securityConfigurationId = NULL) {
+emrcontainers_create_virtual_cluster <- function(name, containerProvider, clientToken, tags = NULL, securityConfigurationId = NULL, sessionEnabled = NULL, schedulerConfiguration = NULL) {
   op <- new_operation(
     name = "CreateVirtualCluster",
     http_method = "POST",
@@ -169,7 +172,7 @@ emrcontainers_create_virtual_cluster <- function(name, containerProvider, client
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emrcontainers$create_virtual_cluster_input(name = name, containerProvider = containerProvider, clientToken = clientToken, tags = tags, securityConfigurationId = securityConfigurationId)
+  input <- .emrcontainers$create_virtual_cluster_input(name = name, containerProvider = containerProvider, clientToken = clientToken, tags = tags, securityConfigurationId = securityConfigurationId, sessionEnabled = sessionEnabled, schedulerConfiguration = schedulerConfiguration)
   output <- .emrcontainers$create_virtual_cluster_output()
   config <- get_config()
   svc <- .emrcontainers$service(config, op)
@@ -242,10 +245,41 @@ emrcontainers_delete_managed_endpoint <- function(id, virtualClusterId) {
 }
 .emrcontainers$operations$delete_managed_endpoint <- emrcontainers_delete_managed_endpoint
 
+#' Deletes a security configuration
+#'
+#' @description
+#' Deletes a security configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_delete_security_configuration/](https://www.paws-r-sdk.com/docs/emrcontainers_delete_security_configuration/) for full documentation.
+#'
+#' @param id &#91;required&#93; The ID of the security configuration to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname emrcontainers_delete_security_configuration
+emrcontainers_delete_security_configuration <- function(id) {
+  op <- new_operation(
+    name = "DeleteSecurityConfiguration",
+    http_method = "DELETE",
+    http_path = "/securityconfigurations/{securityConfigurationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emrcontainers$delete_security_configuration_input(id = id)
+  output <- .emrcontainers$delete_security_configuration_output()
+  config <- get_config()
+  svc <- .emrcontainers$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrcontainers$operations$delete_security_configuration <- emrcontainers_delete_security_configuration
+
 #' Deletes a virtual cluster
 #'
 #' @description
-#' Deletes a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+#' Deletes a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 #'
 #' See [https://www.paws-r-sdk.com/docs/emrcontainers_delete_virtual_cluster/](https://www.paws-r-sdk.com/docs/emrcontainers_delete_virtual_cluster/) for full documentation.
 #'
@@ -402,7 +436,7 @@ emrcontainers_describe_security_configuration <- function(id) {
 #' Displays detailed information about a specified virtual cluster
 #'
 #' @description
-#' Displays detailed information about a specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+#' Displays detailed information about a specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 #'
 #' See [https://www.paws-r-sdk.com/docs/emrcontainers_describe_virtual_cluster/](https://www.paws-r-sdk.com/docs/emrcontainers_describe_virtual_cluster/) for full documentation.
 #'
@@ -643,7 +677,7 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
 #' Lists information about the specified virtual cluster
 #'
 #' @description
-#' Lists information about the specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+#' Lists information about the specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 #'
 #' See [https://www.paws-r-sdk.com/docs/emrcontainers_list_virtual_clusters/](https://www.paws-r-sdk.com/docs/emrcontainers_list_virtual_clusters/) for full documentation.
 #'
@@ -782,3 +816,36 @@ emrcontainers_untag_resource <- function(resourceArn, tagKeys) {
   return(response)
 }
 .emrcontainers$operations$untag_resource <- emrcontainers_untag_resource
+
+#' Updates a virtual cluster
+#'
+#' @description
+#' Updates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_update_virtual_cluster/](https://www.paws-r-sdk.com/docs/emrcontainers_update_virtual_cluster/) for full documentation.
+#'
+#' @param id &#91;required&#93; The ID of the virtual cluster to update.
+#' @param schedulerConfiguration The scheduler configuration to apply to the virtual cluster. The new configuration fully replaces the existing one. If you omit a field, the corresponding limit is removed.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error.
+#'
+#' @keywords internal
+#'
+#' @rdname emrcontainers_update_virtual_cluster
+emrcontainers_update_virtual_cluster <- function(id, schedulerConfiguration = NULL, clientToken) {
+  op <- new_operation(
+    name = "UpdateVirtualCluster",
+    http_method = "PATCH",
+    http_path = "/virtualclusters/{virtualClusterId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emrcontainers$update_virtual_cluster_input(id = id, schedulerConfiguration = schedulerConfiguration, clientToken = clientToken)
+  output <- .emrcontainers$update_virtual_cluster_output()
+  config <- get_config()
+  svc <- .emrcontainers$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrcontainers$operations$update_virtual_cluster <- emrcontainers_update_virtual_cluster

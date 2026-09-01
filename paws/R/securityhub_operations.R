@@ -198,8 +198,9 @@ securityhub_batch_delete_automation_rules <- function(AutomationRulesArns) {
 #'       StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE",
 #'       StandardsControlsUpdatable = "READY_FOR_UPDATES"|"NOT_READY_FOR_UPDATES",
 #'       StandardsStatusReason = list(
-#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"MAXIMUM_NUMBER_OF_CONFIG_RULES_EXCEEDED"|"INTERNAL_ERROR"
-#'       )
+#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"MAXIMUM_NUMBER_OF_CONFIG_RULES_EXCEEDED"|"NO_AVAILABLE_MULTICLOUD_CONNECTOR"|"INTERNAL_ERROR"
+#'       ),
+#'       Provider = "AWS"|"Azure"
 #'     )
 #'   )
 #' )
@@ -264,8 +265,9 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 #'       StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE",
 #'       StandardsControlsUpdatable = "READY_FOR_UPDATES"|"NOT_READY_FOR_UPDATES",
 #'       StandardsStatusReason = list(
-#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"MAXIMUM_NUMBER_OF_CONFIG_RULES_EXCEEDED"|"INTERNAL_ERROR"
-#'       )
+#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"MAXIMUM_NUMBER_OF_CONFIG_RULES_EXCEEDED"|"NO_AVAILABLE_MULTICLOUD_CONNECTOR"|"INTERNAL_ERROR"
+#'       ),
+#'       Provider = "AWS"|"Azure"
 #'     )
 #'   )
 #' )
@@ -594,6 +596,24 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'             Value = "string",
 #'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
+#'         ),
+#'         ResourceProvider = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'           )
+#'         ),
+#'         ResourceOwnerAccountId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'           )
+#'         ),
+#'         ResourceOwnerOrgId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'           )
 #'         )
 #'       ),
 #'       Actions = list(
@@ -812,7 +832,8 @@ securityhub_batch_get_configuration_policy_associations <- function(Configuratio
 #'           )
 #'         )
 #'       ),
-#'       LastUpdateReason = "string"
+#'       LastUpdateReason = "string",
+#'       Provider = "AWS"|"Azure"
 #'     )
 #'   ),
 #'   UnprocessedIds = list(
@@ -1165,8 +1186,17 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
 #'         list(
 #'           Type = "string",
 #'           Id = "string",
-#'           Partition = "aws"|"aws-cn"|"aws-us-gov",
+#'           Partition = "aws"|"aws-cn"|"aws-us-gov"|"aws-us-iso"|"aws-us-iso-b"|"AzureCloud",
 #'           Region = "string",
+#'           Provider = "Azure"|"AWS",
+#'           Owner = list(
+#'             Account = list(
+#'               Id = "string"
+#'             ),
+#'             Org = list(
+#'               Id = "string"
+#'             )
+#'           ),
 #'           ResourceRole = "string",
 #'           Tags = list(
 #'             "string"
@@ -5232,7 +5262,8 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
 #'               ProviderType = "string",
 #'               ProjectName = "string",
 #'               CodeSecurityIntegrationArn = "string"
-#'             )
+#'             ),
+#'             AzureResource = list()
 #'           ),
 #'           ApplicationName = "string",
 #'           ApplicationArn = "string"
@@ -5912,6 +5943,24 @@ securityhub_batch_import_findings <- function(Findings) {
 #'           )
 #'         ),
 #'         AwsAccountName = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'           )
+#'         ),
+#'         ResourceProvider = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'           )
+#'         ),
+#'         ResourceOwnerAccountId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'           )
+#'         ),
+#'         ResourceOwnerOrgId = list(
 #'           list(
 #'             Value = "string",
 #'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
@@ -6724,6 +6773,24 @@ securityhub_create_aggregator_v2 <- function(RegionLinkingMode, LinkedRegions = 
 #'         Value = "string",
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
+#'     ),
+#'     ResourceProvider = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
+#'     ),
+#'     ResourceOwnerAccountId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
+#'     ),
+#'     ResourceOwnerOrgId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
 #'     )
 #'   ),
 #'   Actions = list(
@@ -6827,7 +6894,7 @@ securityhub_create_automation_rule <- function(Tags = NULL, RuleStatus = NULL, R
 #'         list(
 #'           StringFilters = list(
 #'             list(
-#'               FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
+#'               FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.name"|"resources.owner.account.uid"|"resources.owner.org.uid"|"resources.owner.account.name"|"resources.provider"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
 #'               Filter = list(
 #'                 Value = "string",
 #'                 Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
@@ -7087,6 +7154,82 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
 }
 .securityhub$operations$create_configuration_policy <- securityhub_create_configuration_policy
 
+#' Creates a connector to a third-party cloud provider in Security Hub CSPM
+#'
+#' @description
+#' Creates a connector to a third-party cloud provider in Security Hub CSPM. A connector establishes a connection between Security Hub CSPM and a third-party cloud provider, enabling Security Hub CSPM to ingest security findings and resource data from the connected environment.
+#'
+#' @usage
+#' securityhub_create_connector(Name, Description, Provider, Tags,
+#'   ClientToken)
+#'
+#' @param Name &#91;required&#93; The name of the connector. Must be unique within the account.
+#' @param Description The description of the connector.
+#' @param Provider &#91;required&#93; The configuration for the cloud provider to connect to. Currently supports Azure.
+#' @param Tags The tags to add to the connector resource.
+#' @param ClientToken A unique identifier used to ensure idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectorArn = "string",
+#'   ConnectorId = "string",
+#'   ConnectorStatus = "CONNECTED"|"DEGRADED"|"FAILED_TO_CONNECT"|"UNKNOWN",
+#'   EnablementStatus = "ENABLED"|"PENDING_ENABLEMENT"|"PENDING_UPDATE"|"PENDING_DELETION"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_connector(
+#'   Name = "string",
+#'   Description = "string",
+#'   Provider = list(
+#'     Azure = list(
+#'       AWSConfigConnectorArn = "string",
+#'       ScopeConfiguration = list(
+#'         ScopeType = "TENANT"|"SUBSCRIPTION",
+#'         ScopeValues = list(
+#'           "string"
+#'         )
+#'       ),
+#'       AzureRegions = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_connector
+#'
+#' @aliases securityhub_create_connector
+securityhub_create_connector <- function(Name, Description = NULL, Provider, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateConnector",
+    http_method = "POST",
+    http_path = "/connectors",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$create_connector_input(Name = Name, Description = Description, Provider = Provider, Tags = Tags, ClientToken = ClientToken)
+  output <- .securityhub$create_connector_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_connector <- securityhub_create_connector
+
 #' Grants permission to create a connectorV2 based on input parameters
 #'
 #' @description
@@ -7110,7 +7253,8 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
 #'   ConnectorArn = "string",
 #'   ConnectorId = "string",
 #'   AuthUrl = "string",
-#'   ConnectorStatus = "CONNECTED"|"FAILED_TO_CONNECT"|"PENDING_CONFIGURATION"|"PENDING_AUTHORIZATION"
+#'   ConnectorStatus = "CONNECTED"|"DEGRADED"|"FAILED_TO_CONNECT"|"PENDING_AUTHORIZATION"|"PENDING_CONFIGURATION"|"UNKNOWN",
+#'   EnablementStatus = "ENABLED"|"PENDING_ENABLEMENT"|"FAILED_TO_ENABLE"|"PENDING_UPDATE"|"FAILED_TO_UPDATE"|"PENDING_DELETION"|"FAILED_TO_DELETE"
 #' )
 #' ```
 #'
@@ -7126,6 +7270,18 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
 #'     ServiceNow = list(
 #'       InstanceName = "string",
 #'       SecretArn = "string"
+#'     ),
+#'     Azure = list(
+#'       AWSConfigConnectorArn = "string",
+#'       ScopeConfiguration = list(
+#'         ScopeType = "TENANT"|"SUBSCRIPTION",
+#'         ScopeValues = list(
+#'           "string"
+#'         )
+#'       ),
+#'       AzureRegions = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   KmsKeyArn = "string",
@@ -7969,6 +8125,24 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'         Value = "string",
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
+#'     ),
+#'     ResourceOwnerAccountId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
+#'     ),
+#'     ResourceOwnerOrgId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
+#'     ),
+#'     ResourceProvider = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
 #'     )
 #'   ),
 #'   GroupByAttribute = "string"
@@ -8386,6 +8560,55 @@ securityhub_delete_configuration_policy <- function(Identifier) {
 }
 .securityhub$operations$delete_configuration_policy <- securityhub_delete_configuration_policy
 
+#' Deletes a CSPM connector
+#'
+#' @description
+#' Deletes a CSPM connector. When you delete a connector, Security Hub CSPM stops ingesting findings and resource data from the connected cloud provider environment.
+#'
+#' @usage
+#' securityhub_delete_connector(ConnectorId)
+#'
+#' @param ConnectorId &#91;required&#93; The unique identifier of the connector to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EnablementStatus = "ENABLED"|"PENDING_ENABLEMENT"|"PENDING_UPDATE"|"PENDING_DELETION"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connector(
+#'   ConnectorId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_delete_connector
+#'
+#' @aliases securityhub_delete_connector
+securityhub_delete_connector <- function(ConnectorId) {
+  op <- new_operation(
+    name = "DeleteConnector",
+    http_method = "DELETE",
+    http_path = "/connectors/{ConnectorId+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$delete_connector_input(ConnectorId = ConnectorId)
+  output <- .securityhub$delete_connector_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$delete_connector <- securityhub_delete_connector
+
 #' Grants permission to delete a connectorV2
 #'
 #' @description
@@ -8397,7 +8620,12 @@ securityhub_delete_configuration_policy <- function(Identifier) {
 #' @param ConnectorId &#91;required&#93; The UUID of the connectorV2 to identify connectorV2 resource.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EnablementStatus = "ENABLED"|"PENDING_ENABLEMENT"|"FAILED_TO_ENABLE"|"PENDING_UPDATE"|"FAILED_TO_UPDATE"|"PENDING_DELETION"|"FAILED_TO_DELETE"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8980,7 +9208,15 @@ securityhub_describe_products_v2 <- function(NextToken = NULL, MaxResults = NULL
 #' ```
 #' list(
 #'   HubV2Arn = "string",
-#'   SubscribedAt = "string"
+#'   SubscribedAt = "string",
+#'   Features = list(
+#'     list(
+#'       FeatureStatus = "ENABLED"|"DISABLED",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -9021,12 +9257,13 @@ securityhub_describe_security_hub_v2 <- function() {
 #' For each standard, the results include the standard ARN, the name, and a description.
 #'
 #' @usage
-#' securityhub_describe_standards(NextToken, MaxResults)
+#' securityhub_describe_standards(NextToken, MaxResults, Providers)
 #'
 #' @param NextToken The token that is required for pagination. On your first call to the [`describe_standards`][securityhub_describe_standards] operation, set the value of this parameter to `NULL`.
 #' 
 #' For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value returned from the previous response.
 #' @param MaxResults The maximum number of standards to return.
+#' @param Providers A list of cloud providers to filter the standards by. For example, specify `Azure` to return only standards that evaluate Azure resources.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9038,6 +9275,7 @@ securityhub_describe_security_hub_v2 <- function() {
 #'       Name = "string",
 #'       Description = "string",
 #'       EnabledByDefault = TRUE|FALSE,
+#'       Provider = "AWS"|"Azure",
 #'       StandardsManagedBy = list(
 #'         Company = "string",
 #'         Product = "string"
@@ -9052,7 +9290,10 @@ securityhub_describe_security_hub_v2 <- function() {
 #' ```
 #' svc$describe_standards(
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   Providers = list(
+#'     "AWS"|"Azure"
+#'   )
 #' )
 #' ```
 #'
@@ -9061,7 +9302,7 @@ securityhub_describe_security_hub_v2 <- function() {
 #' @rdname securityhub_describe_standards
 #'
 #' @aliases securityhub_describe_standards
-securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) {
+securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL, Providers = NULL) {
   op <- new_operation(
     name = "DescribeStandards",
     http_method = "GET",
@@ -9070,7 +9311,7 @@ securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) 
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Standards"),
     stream_api = FALSE
   )
-  input <- .securityhub$describe_standards_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .securityhub$describe_standards_input(NextToken = NextToken, MaxResults = MaxResults, Providers = Providers)
   output <- .securityhub$describe_standards_output()
   config <- get_config()
   svc <- .securityhub$service(config, op)
@@ -9297,11 +9538,56 @@ securityhub_disable_security_hub <- function() {
 }
 .securityhub$operations$disable_security_hub <- securityhub_disable_security_hub
 
+#' Disables an opt-in feature for the calling account in the current Amazon
+#' Web Services Region
+#'
+#' @description
+#' Disables an opt-in feature for the calling account in the current Amazon Web Services Region. The operation is idempotent. If the feature is already disabled, no changes are made. You cannot disable a feature that is managed by an organization policy.
+#'
+#' @usage
+#' securityhub_disable_security_hub_feature_v2(FeatureName)
+#'
+#' @param FeatureName &#91;required&#93; The name of the feature to disable.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_security_hub_feature_v2(
+#'   FeatureName = "NETWORK_SCANNING"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_disable_security_hub_feature_v2
+#'
+#' @aliases securityhub_disable_security_hub_feature_v2
+securityhub_disable_security_hub_feature_v2 <- function(FeatureName) {
+  op <- new_operation(
+    name = "DisableSecurityHubFeatureV2",
+    http_method = "DELETE",
+    http_path = "/hubv2/feature/{FeatureName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$disable_security_hub_feature_v2_input(FeatureName = FeatureName)
+  output <- .securityhub$disable_security_hub_feature_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$disable_security_hub_feature_v2 <- securityhub_disable_security_hub_feature_v2
+
 #' Disable the service for the current Amazon Web Services Region or
 #' specified Amazon Web Services Region
 #'
 #' @description
-#' Disable the service for the current Amazon Web Services Region or specified Amazon Web Services Region.
+#' Disable the service for the current Amazon Web Services Region or specified Amazon Web Services Region. Disabling the service also disables all opt-in features that are currently enabled in that Region.
 #'
 #' @usage
 #' securityhub_disable_security_hub_v2()
@@ -9658,6 +9944,51 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
 }
 .securityhub$operations$enable_security_hub <- securityhub_enable_security_hub
 
+#' Enables an opt-in feature for the calling account in the current Amazon
+#' Web Services Region
+#'
+#' @description
+#' Enables an opt-in feature for the calling account in the current Amazon Web Services Region. The service must be enabled before you can enable a feature. The operation is idempotent. If the feature is already enabled, no changes are made. You cannot enable a feature that is managed by an organization policy.
+#'
+#' @usage
+#' securityhub_enable_security_hub_feature_v2(FeatureName)
+#'
+#' @param FeatureName &#91;required&#93; The name of the feature to enable.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_security_hub_feature_v2(
+#'   FeatureName = "NETWORK_SCANNING"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_enable_security_hub_feature_v2
+#'
+#' @aliases securityhub_enable_security_hub_feature_v2
+securityhub_enable_security_hub_feature_v2 <- function(FeatureName) {
+  op <- new_operation(
+    name = "EnableSecurityHubFeatureV2",
+    http_method = "POST",
+    http_path = "/hubv2/feature/{FeatureName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$enable_security_hub_feature_v2_input(FeatureName = FeatureName)
+  output <- .securityhub$enable_security_hub_feature_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$enable_security_hub_feature_v2 <- securityhub_enable_security_hub_feature_v2
+
 #' Enables the service in account for the current Amazon Web Services
 #' Region or specified Amazon Web Services Region
 #'
@@ -9892,7 +10223,7 @@ securityhub_get_aggregator_v2 <- function(AggregatorV2Arn) {
 #'         list(
 #'           StringFilters = list(
 #'             list(
-#'               FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
+#'               FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.name"|"resources.owner.account.uid"|"resources.owner.org.uid"|"resources.owner.account.name"|"resources.provider"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
 #'               Filter = list(
 #'                 Value = "string",
 #'                 Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
@@ -10173,6 +10504,93 @@ securityhub_get_configuration_policy_association <- function(Target) {
 }
 .securityhub$operations$get_configuration_policy_association <- securityhub_get_configuration_policy_association
 
+#' Retrieves details for a CSPM connector based on the connector ID
+#'
+#' @description
+#' Retrieves details for a CSPM connector based on the connector ID.
+#'
+#' @usage
+#' securityhub_get_connector(ConnectorId)
+#'
+#' @param ConnectorId &#91;required&#93; The unique identifier of the connector to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectorArn = "string",
+#'   ConnectorId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Health = list(
+#'     ConnectorStatus = "CONNECTED"|"DEGRADED"|"FAILED_TO_CONNECT"|"UNKNOWN",
+#'     Message = "string",
+#'     LastCheckedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Issues = list(
+#'       list(
+#'         Code = "AUTHENTICATION_FAILURE"|"STREAM_AUTHORIZATION_FAILURE"|"DISCOVERY_FAILURE"|"STREAM_LIMIT_EXCEEDED"|"STREAM_DISCONNECTED"|"RECORDING_FAILURE"|"NO_HEALTH_DATA",
+#'         Message = "string"
+#'       )
+#'     )
+#'   ),
+#'   ProviderDetail = list(
+#'     Azure = list(
+#'       AWSConfigConnectorArn = "string",
+#'       ScopeConfiguration = list(
+#'         ScopeType = "TENANT"|"SUBSCRIPTION",
+#'         ScopeValues = list(
+#'           "string"
+#'         )
+#'       ),
+#'       AzureRegions = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   CreatedBy = "string",
+#'   EnablementStatus = "ENABLED"|"PENDING_ENABLEMENT"|"PENDING_UPDATE"|"PENDING_DELETION"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_connector(
+#'   ConnectorId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_connector
+#'
+#' @aliases securityhub_get_connector
+securityhub_get_connector <- function(ConnectorId) {
+  op <- new_operation(
+    name = "GetConnector",
+    http_method = "GET",
+    http_path = "/connectors/{ConnectorId+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_connector_input(ConnectorId = ConnectorId)
+  output <- .securityhub$get_connector_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_connector <- securityhub_get_connector
+
 #' Grants permission to retrieve details for a connectorV2 based on
 #' connector id
 #'
@@ -10200,10 +10618,16 @@ securityhub_get_configuration_policy_association <- function(Target) {
 #'     "2015-01-01"
 #'   ),
 #'   Health = list(
-#'     ConnectorStatus = "CONNECTED"|"FAILED_TO_CONNECT"|"PENDING_CONFIGURATION"|"PENDING_AUTHORIZATION",
+#'     ConnectorStatus = "CONNECTED"|"DEGRADED"|"FAILED_TO_CONNECT"|"PENDING_AUTHORIZATION"|"PENDING_CONFIGURATION"|"UNKNOWN",
 #'     Message = "string",
 #'     LastCheckedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     Issues = list(
+#'       list(
+#'         Code = "AUTHENTICATION_FAILURE"|"STREAM_AUTHORIZATION_FAILURE"|"DISCOVERY_FAILURE"|"STREAM_LIMIT_EXCEEDED"|"STREAM_DISCONNECTED"|"RECORDING_FAILURE"|"NO_HEALTH_DATA",
+#'         Message = "string"
+#'       )
 #'     )
 #'   ),
 #'   ProviderDetail = list(
@@ -10218,8 +10642,22 @@ securityhub_get_configuration_policy_association <- function(Target) {
 #'       InstanceName = "string",
 #'       SecretArn = "string",
 #'       AuthStatus = "ACTIVE"|"FAILED"
+#'     ),
+#'     Azure = list(
+#'       AWSConfigConnectorArn = "string",
+#'       ScopeConfiguration = list(
+#'         ScopeType = "TENANT"|"SUBSCRIPTION",
+#'         ScopeValues = list(
+#'           "string"
+#'         )
+#'       ),
+#'       AzureRegions = list(
+#'         "string"
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   EnablementStatus = "ENABLED"|"PENDING_ENABLEMENT"|"FAILED_TO_ENABLE"|"PENDING_UPDATE"|"FAILED_TO_UPDATE"|"PENDING_DELETION"|"FAILED_TO_DELETE",
+#'   EnablementStatusReason = "string"
 #' )
 #' ```
 #'
@@ -10261,13 +10699,14 @@ securityhub_get_connector_v2 <- function(ConnectorId) {
 #'
 #' @usage
 #' securityhub_get_enabled_standards(StandardsSubscriptionArns, NextToken,
-#'   MaxResults)
+#'   MaxResults, Providers)
 #'
 #' @param StandardsSubscriptionArns The list of the standards subscription ARNs for the standards to retrieve.
 #' @param NextToken The token that is required for pagination. On your first call to the [`get_enabled_standards`][securityhub_get_enabled_standards] operation, set the value of this parameter to `NULL`.
 #' 
 #' For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value returned from the previous response.
 #' @param MaxResults The maximum number of results to return in the response.
+#' @param Providers A list of cloud providers to filter the enabled standards by. For example, specify `Azure` to return only enabled standards that evaluate Azure resources.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10283,8 +10722,9 @@ securityhub_get_connector_v2 <- function(ConnectorId) {
 #'       StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE",
 #'       StandardsControlsUpdatable = "READY_FOR_UPDATES"|"NOT_READY_FOR_UPDATES",
 #'       StandardsStatusReason = list(
-#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"MAXIMUM_NUMBER_OF_CONFIG_RULES_EXCEEDED"|"INTERNAL_ERROR"
-#'       )
+#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"MAXIMUM_NUMBER_OF_CONFIG_RULES_EXCEEDED"|"NO_AVAILABLE_MULTICLOUD_CONNECTOR"|"INTERNAL_ERROR"
+#'       ),
+#'       Provider = "AWS"|"Azure"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -10298,7 +10738,10 @@ securityhub_get_connector_v2 <- function(ConnectorId) {
 #'     "string"
 #'   ),
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   Providers = list(
+#'     "AWS"|"Azure"
+#'   )
 #' )
 #' ```
 #'
@@ -10307,7 +10750,7 @@ securityhub_get_connector_v2 <- function(ConnectorId) {
 #' @rdname securityhub_get_enabled_standards
 #'
 #' @aliases securityhub_get_enabled_standards
-securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, NextToken = NULL, MaxResults = NULL) {
+securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, NextToken = NULL, MaxResults = NULL, Providers = NULL) {
   op <- new_operation(
     name = "GetEnabledStandards",
     http_method = "POST",
@@ -10316,7 +10759,7 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StandardsSubscriptions"),
     stream_api = FALSE
   )
-  input <- .securityhub$get_enabled_standards_input(StandardsSubscriptionArns = StandardsSubscriptionArns, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .securityhub$get_enabled_standards_input(StandardsSubscriptionArns = StandardsSubscriptionArns, NextToken = NextToken, MaxResults = MaxResults, Providers = Providers)
   output <- .securityhub$get_enabled_standards_output()
   config <- get_config()
   svc <- .securityhub$service(config, op)
@@ -10531,7 +10974,7 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'           list(
 #'             StringFilters = list(
 #'               list(
-#'                 FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
+#'                 FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.name"|"resources.owner.account.uid"|"resources.owner.org.uid"|"resources.owner.account.name"|"resources.provider"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
 #'                 Filter = list(
 #'                   Value = "string",
 #'                   Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
@@ -10596,7 +11039,7 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'         ),
 #'         CompositeOperator = "AND"|"OR"
 #'       ),
-#'       GroupByField = "activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.name"|"compliance.status"|"compliance.control"|"finding_info.title"|"finding_info.related_events.traits.category"|"finding_info.types"|"metadata.product.name"|"metadata.product.uid"|"resources.type"|"resources.uid"|"severity"|"status"|"vulnerabilities.fix_coverage"|"class_name"|"vulnerabilities.affected_packages.name"|"finding_info.analytic.name"|"compliance.standards"|"cloud.account.name"|"vendor_attributes.severity"|"metadata.product.vendor_name"
+#'       GroupByField = "activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.name"|"compliance.status"|"compliance.control"|"finding_info.title"|"finding_info.related_events.traits.category"|"finding_info.types"|"metadata.product.name"|"metadata.product.uid"|"resources.type"|"resources.cloud_partition"|"resources.name"|"resources.owner.account.uid"|"resources.owner.org.uid"|"resources.owner.account.name"|"resources.provider"|"resources.region"|"resources.uid"|"severity"|"status"|"vulnerabilities.fix_coverage"|"class_name"|"vulnerabilities.affected_packages.name"|"finding_info.analytic.name"|"compliance.standards"|"cloud.account.name"|"vendor_attributes.severity"|"metadata.product.vendor_name"
 #'     )
 #'   ),
 #'   Scopes = list(
@@ -10819,8 +11262,17 @@ securityhub_get_finding_statistics_v2 <- function(GroupByRules, Scopes = NULL, S
 #'         list(
 #'           Type = "string",
 #'           Id = "string",
-#'           Partition = "aws"|"aws-cn"|"aws-us-gov",
+#'           Partition = "aws"|"aws-cn"|"aws-us-gov"|"aws-us-iso"|"aws-us-iso-b"|"AzureCloud",
 #'           Region = "string",
+#'           Provider = "Azure"|"AWS",
+#'           Owner = list(
+#'             Account = list(
+#'               Id = "string"
+#'             ),
+#'             Org = list(
+#'               Id = "string"
+#'             )
+#'           ),
 #'           ResourceRole = "string",
 #'           Tags = list(
 #'             "string"
@@ -14886,7 +15338,8 @@ securityhub_get_finding_statistics_v2 <- function(GroupByRules, Scopes = NULL, S
 #'               ProviderType = "string",
 #'               ProjectName = "string",
 #'               CodeSecurityIntegrationArn = "string"
-#'             )
+#'             ),
+#'             AzureResource = list()
 #'           ),
 #'           ApplicationName = "string",
 #'           ApplicationArn = "string"
@@ -15953,6 +16406,24 @@ securityhub_get_finding_statistics_v2 <- function(GroupByRules, Scopes = NULL, S
 #'         Value = "string",
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
+#'     ),
+#'     ResourceOwnerAccountId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
+#'     ),
+#'     ResourceOwnerOrgId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
+#'     ),
+#'     ResourceProvider = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
 #'     )
 #'   ),
 #'   SortCriteria = list(
@@ -16041,7 +16512,7 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
 #'       list(
 #'         StringFilters = list(
 #'           list(
-#'             FieldName = "account_id"|"region"|"finding_types"|"finding_status"|"finding_cve_ids"|"finding_compliance_status"|"finding_control_id"|"finding_class_name"|"finding_provider"|"finding_activity_name",
+#'             FieldName = "account_id"|"region"|"finding_types"|"finding_status"|"finding_cve_ids"|"finding_compliance_status"|"finding_control_id"|"finding_class_name"|"finding_provider"|"finding_activity_name"|"resource_cloud_providers"|"resource_regions"|"resource_owner_ids"|"resource_owner_organization_ids",
 #'             Filter = list(
 #'               Value = "string",
 #'               Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
@@ -16133,7 +16604,7 @@ securityhub_get_findings_trends_v2 <- function(Filters = NULL, StartTime, EndTim
 #'       list(
 #'         StringFilters = list(
 #'           list(
-#'             FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
+#'             FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.name"|"resources.owner.account.uid"|"resources.owner.org.uid"|"resources.owner.account.name"|"resources.provider"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
 #'             Filter = list(
 #'               Value = "string",
 #'               Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
@@ -17027,6 +17498,24 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'             Value = "string",
 #'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
+#'         ),
+#'         ResourceOwnerAccountId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'           )
+#'         ),
+#'         ResourceOwnerOrgId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'           )
+#'         ),
+#'         ResourceProvider = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'           )
 #'         )
 #'       ),
 #'       GroupByAttribute = "string"
@@ -17338,6 +17827,8 @@ securityhub_get_recommended_policy_v2 <- function(MetadataUid, NextToken = NULL,
 #' Retrieves statistical information about Amazon Web Services resources and their associated security findings.
 #' 
 #' You can use the `Scopes` parameter to define the data boundary for the query. Currently, `Scopes` supports `AwsOrganizations`, which lets you aggregate resources from your entire organization or from specific organizational units. Only the delegated administrator account can use `Scopes`.
+#' 
+#' If you set `GroupByField` to `ResourceSubCategory`, `ResourceInfo.AIDetails.HostResourceType`, or `ResourceInfo.AIDetails.CanonicalId`, you must include a `ResourceCategory` string filter with comparison set to `EQUALS` and value `AI/ML` in the corresponding `ResourceGroupByRule`.
 #'
 #' @usage
 #' securityhub_get_resources_statistics_v2(GroupByRules, Scopes, SortOrder,
@@ -17375,13 +17866,13 @@ securityhub_get_recommended_policy_v2 <- function(MetadataUid, NextToken = NULL,
 #' svc$get_resources_statistics_v2(
 #'   GroupByRules = list(
 #'     list(
-#'       GroupByField = "AccountId"|"Region"|"ResourceCategory"|"ResourceType"|"ResourceName"|"FindingsSummary.FindingType",
+#'       GroupByField = "AccountId"|"AccountName"|"Region"|"ResourceProvider"|"ResourceOwnerAccountId"|"ResourceOwnerOrgId"|"ResourceCloudPartition"|"ResourceRegion"|"ResourceCategory"|"ResourceType"|"ResourceName"|"FindingsSummary.FindingType"|"ResourceSubCategory"|"DiscoveryType"|"ResourceInfo.AIDetails.HostResourceType"|"ResourceInfo.AIDetails.CanonicalId",
 #'       Filters = list(
 #'         CompositeFilters = list(
 #'           list(
 #'             StringFilters = list(
 #'               list(
-#'                 FieldName = "ResourceGuid"|"ResourceId"|"AccountId"|"Region"|"ResourceCategory"|"ResourceType"|"ResourceName"|"FindingsSummary.FindingType"|"FindingsSummary.ProductName",
+#'                 FieldName = "ResourceGuid"|"ResourceId"|"AccountId"|"AccountName"|"Region"|"ResourceProvider"|"ResourceOwnerAccountId"|"ResourceOwnerOrgId"|"ResourceCloudPartition"|"ResourceRegion"|"ResourceCategory"|"ResourceType"|"ResourceName"|"FindingsSummary.FindingType"|"FindingsSummary.ProductName"|"ResourceSubCategory"|"DiscoveryType"|"ResourceInfo.AIDetails.HostResourceGuid"|"ResourceInfo.AIDetails.HostResourceType"|"ResourceInfo.AIDetails.CanonicalId",
 #'                 Filter = list(
 #'                   Value = "string",
 #'                   Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
@@ -17404,7 +17895,7 @@ securityhub_get_recommended_policy_v2 <- function(MetadataUid, NextToken = NULL,
 #'             ),
 #'             NumberFilters = list(
 #'               list(
-#'                 FieldName = "FindingsSummary.TotalFindings"|"FindingsSummary.Severities.Other"|"FindingsSummary.Severities.Fatal"|"FindingsSummary.Severities.Critical"|"FindingsSummary.Severities.High"|"FindingsSummary.Severities.Medium"|"FindingsSummary.Severities.Low"|"FindingsSummary.Severities.Informational"|"FindingsSummary.Severities.Unknown",
+#'                 FieldName = "FindingsSummary.TotalFindings"|"FindingsSummary.Severities.Other"|"FindingsSummary.Severities.Fatal"|"FindingsSummary.Severities.Critical"|"FindingsSummary.Severities.High"|"FindingsSummary.Severities.Medium"|"FindingsSummary.Severities.Low"|"FindingsSummary.Severities.Informational"|"FindingsSummary.Severities.Unknown"|"ResourceInfo.AIDetails.SelfHostedAIModelResourceCount"|"ResourceInfo.AIDetails.SelfHostedAIAgentResourceCount"|"ResourceInfo.AIDetails.SelfHostedAIModelServingResourceCount"|"ResourceInfo.AIDetails.SelfHostedAIExternalEndpointResourceCount"|"ResourceInfo.AIDetails.SelfHostedAIDevelopmentResourceCount"|"ResourceInfo.AIDetails.SelfHostedAIAgentFrameworkResourceCount"|"ResourceInfo.AIDetails.SelfHostedAIAgentToolsAndIdentityResourceCount"|"ResourceInfo.AIDetails.SelfHostedTotalAIResourceCount",
 #'                 Filter = list(
 #'                   Gte = 123.0,
 #'                   Lte = 123.0,
@@ -17513,7 +18004,7 @@ securityhub_get_resources_statistics_v2 <- function(GroupByRules, Scopes = NULL,
 #'       list(
 #'         StringFilters = list(
 #'           list(
-#'             FieldName = "account_id"|"region"|"resource_type"|"resource_category",
+#'             FieldName = "account_id"|"region"|"resource_type"|"resource_category"|"resource_cloud_provider"|"resource_region"|"resource_owner_id"|"resource_owner_organization_id",
 #'             Filter = list(
 #'               Value = "string",
 #'               Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
@@ -17569,6 +18060,10 @@ securityhub_get_resources_trends_v2 <- function(Filters = NULL, StartTime, EndTi
 #' You can use the `Scopes` parameter to define the data boundary for the query. Currently, `Scopes` supports `AwsOrganizations`, which lets you retrieve resources from your entire organization or from specific organizational units. Only the delegated administrator account can use `Scopes`.
 #' 
 #' You can use the `Filters` parameter to refine results based on resource attributes. You can use `Scopes` and `Filters` independently or together. When both are provided, `Scopes` narrows the data set first, and then `Filters` refines results within that scoped data set.
+#' 
+#' For AI/ML resources, the response includes the `ResourceSubCategory` field. For self-hosted AI resources and their host resources, the response also includes `ResourceInfo` with AI-specific details. Self-hosted AI resources use a `ResourceType` with the `SelfHosted::AI::` prefix, such as `SelfHosted::AI::Model`, `SelfHosted::AI::Agent`, `SelfHosted::AI::InferenceEndpoint`, and `SelfHosted::AI::ExternalEndpoint`.
+#' 
+#' If you filter by `ResourceSubCategory`, you must also include a `ResourceCategory` string filter with comparison set to `EQUALS` and value `AI/ML` in the same request.
 #'
 #' @usage
 #' securityhub_get_resources_v2(Filters, Scopes, SortCriteria, NextToken,
@@ -17593,8 +18088,14 @@ securityhub_get_resources_trends_v2 <- function(Filters = NULL, StartTime, EndTi
 #'       ResourceGuid = "string",
 #'       ResourceId = "string",
 #'       AccountId = "string",
+#'       AccountName = "string",
 #'       Region = "string",
-#'       ResourceCategory = "Compute"|"Database"|"Storage"|"Code"|"AI/ML"|"Identity"|"Network"|"Other",
+#'       ResourceProvider = "string",
+#'       ResourceOwnerAccountId = "string",
+#'       ResourceOwnerOrgId = "string",
+#'       ResourceCloudPartition = "string",
+#'       ResourceRegion = "string",
+#'       ResourceCategory = "Compute"|"Database"|"Storage"|"Code"|"AI/ML"|"Identity"|"Network"|"Messaging"|"Other",
 #'       ResourceType = "string",
 #'       ResourceName = "string",
 #'       ResourceCreationTimeDt = "string",
@@ -17622,7 +18123,24 @@ securityhub_get_resources_trends_v2 <- function(Filters = NULL, StartTime, EndTi
 #'           Value = "string"
 #'         )
 #'       ),
-#'       ResourceConfig = list()
+#'       ResourceConfig = list(),
+#'       ResourceSubCategory = "Model"|"ModelServing"|"Agent"|"AgentFramework"|"AgentToolsAndIdentity"|"SafetyAndGuardrail"|"KnowledgeAndData"|"OrchestrationAndPipeline"|"ExternalEndpoint"|"Development"|"Other",
+#'       DiscoveryType = "Managed"|"SelfHosted",
+#'       ResourceInfo = list(
+#'         AIDetails = list(
+#'           HostResourceGuid = "string",
+#'           HostResourceType = "string",
+#'           CanonicalId = "string",
+#'           SelfHostedAIModelResourceCount = 123,
+#'           SelfHostedAIAgentResourceCount = 123,
+#'           SelfHostedAIModelServingResourceCount = 123,
+#'           SelfHostedAIExternalEndpointResourceCount = 123,
+#'           SelfHostedAIDevelopmentResourceCount = 123,
+#'           SelfHostedAIAgentFrameworkResourceCount = 123,
+#'           SelfHostedAIAgentToolsAndIdentityResourceCount = 123,
+#'           SelfHostedTotalAIResourceCount = 123
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -17637,7 +18155,7 @@ securityhub_get_resources_trends_v2 <- function(Filters = NULL, StartTime, EndTi
 #'       list(
 #'         StringFilters = list(
 #'           list(
-#'             FieldName = "ResourceGuid"|"ResourceId"|"AccountId"|"Region"|"ResourceCategory"|"ResourceType"|"ResourceName"|"FindingsSummary.FindingType"|"FindingsSummary.ProductName",
+#'             FieldName = "ResourceGuid"|"ResourceId"|"AccountId"|"AccountName"|"Region"|"ResourceProvider"|"ResourceOwnerAccountId"|"ResourceOwnerOrgId"|"ResourceCloudPartition"|"ResourceRegion"|"ResourceCategory"|"ResourceType"|"ResourceName"|"FindingsSummary.FindingType"|"FindingsSummary.ProductName"|"ResourceSubCategory"|"DiscoveryType"|"ResourceInfo.AIDetails.HostResourceGuid"|"ResourceInfo.AIDetails.HostResourceType"|"ResourceInfo.AIDetails.CanonicalId",
 #'             Filter = list(
 #'               Value = "string",
 #'               Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
@@ -17660,7 +18178,7 @@ securityhub_get_resources_trends_v2 <- function(Filters = NULL, StartTime, EndTi
 #'         ),
 #'         NumberFilters = list(
 #'           list(
-#'             FieldName = "FindingsSummary.TotalFindings"|"FindingsSummary.Severities.Other"|"FindingsSummary.Severities.Fatal"|"FindingsSummary.Severities.Critical"|"FindingsSummary.Severities.High"|"FindingsSummary.Severities.Medium"|"FindingsSummary.Severities.Low"|"FindingsSummary.Severities.Informational"|"FindingsSummary.Severities.Unknown",
+#'             FieldName = "FindingsSummary.TotalFindings"|"FindingsSummary.Severities.Other"|"FindingsSummary.Severities.Fatal"|"FindingsSummary.Severities.Critical"|"FindingsSummary.Severities.High"|"FindingsSummary.Severities.Medium"|"FindingsSummary.Severities.Low"|"FindingsSummary.Severities.Informational"|"FindingsSummary.Severities.Unknown"|"ResourceInfo.AIDetails.SelfHostedAIModelResourceCount"|"ResourceInfo.AIDetails.SelfHostedAIAgentResourceCount"|"ResourceInfo.AIDetails.SelfHostedAIModelServingResourceCount"|"ResourceInfo.AIDetails.SelfHostedAIExternalEndpointResourceCount"|"ResourceInfo.AIDetails.SelfHostedAIDevelopmentResourceCount"|"ResourceInfo.AIDetails.SelfHostedAIAgentFrameworkResourceCount"|"ResourceInfo.AIDetails.SelfHostedAIAgentToolsAndIdentityResourceCount"|"ResourceInfo.AIDetails.SelfHostedTotalAIResourceCount",
 #'             Filter = list(
 #'               Gte = 123.0,
 #'               Lte = 123.0,
@@ -17808,7 +18326,8 @@ securityhub_get_resources_v2 <- function(Filters = NULL, Scopes = NULL, SortCrit
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     Provider = "AWS"|"Azure"
 #'   )
 #' )
 #' ```
@@ -18241,20 +18760,20 @@ securityhub_list_configuration_policy_associations <- function(NextToken = NULL,
 }
 .securityhub$operations$list_configuration_policy_associations <- securityhub_list_configuration_policy_associations
 
-#' Grants permission to retrieve a list of connectorsV2 and their metadata
-#' for the calling account
+#' Lists the CSPM connectors and their metadata for the calling account
 #'
 #' @description
-#' Grants permission to retrieve a list of connectorsV2 and their metadata for the calling account.
+#' Lists the CSPM connectors and their metadata for the calling account.
 #'
 #' @usage
-#' securityhub_list_connectors_v2(NextToken, MaxResults, ProviderName,
-#'   ConnectorStatus)
+#' securityhub_list_connectors(NextToken, MaxResults, ProviderName,
+#'   ConnectorStatus, EnablementStatus)
 #'
-#' @param NextToken The pagination token per the Amazon Web Services Pagination standard
-#' @param MaxResults The maximum number of results to be returned.
-#' @param ProviderName The name of the third-party provider.
-#' @param ConnectorStatus The status for the connectorV2.
+#' @param NextToken The pagination token to request the next page of results.
+#' @param MaxResults The maximum number of results to return.
+#' @param ProviderName The name of the cloud provider to filter connectors by.
+#' @param ConnectorStatus The connectivity status to filter connectors by.
+#' @param EnablementStatus The enablement status to filter connectors by.
 #'
 #' @return
 #' A list with the following syntax:
@@ -18268,12 +18787,130 @@ securityhub_list_configuration_policy_associations <- function(NextToken = NULL,
 #'       Name = "string",
 #'       Description = "string",
 #'       ProviderSummary = list(
-#'         ProviderName = "JIRA_CLOUD"|"SERVICENOW",
-#'         ConnectorStatus = "CONNECTED"|"FAILED_TO_CONNECT"|"PENDING_CONFIGURATION"|"PENDING_AUTHORIZATION"
+#'         ProviderName = "AZURE",
+#'         ConnectorStatus = "CONNECTED"|"DEGRADED"|"FAILED_TO_CONNECT"|"UNKNOWN",
+#'         ProviderConfiguration = list(
+#'           Azure = list(
+#'             AWSConfigConnectorArn = "string",
+#'             ScopeConfiguration = list(
+#'               ScopeType = "TENANT"|"SUBSCRIPTION",
+#'               ScopeValues = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             AzureRegions = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       CreatedBy = "string",
+#'       EnablementStatus = "ENABLED"|"PENDING_ENABLEMENT"|"PENDING_UPDATE"|"PENDING_DELETION"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_connectors(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   ProviderName = "AZURE",
+#'   ConnectorStatus = "CONNECTED"|"DEGRADED"|"FAILED_TO_CONNECT"|"UNKNOWN",
+#'   EnablementStatus = "ENABLED"|"PENDING_ENABLEMENT"|"PENDING_UPDATE"|"PENDING_DELETION"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_connectors
+#'
+#' @aliases securityhub_list_connectors
+securityhub_list_connectors <- function(NextToken = NULL, MaxResults = NULL, ProviderName = NULL, ConnectorStatus = NULL, EnablementStatus = NULL) {
+  op <- new_operation(
+    name = "ListConnectors",
+    http_method = "GET",
+    http_path = "/connectors",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$list_connectors_input(NextToken = NextToken, MaxResults = MaxResults, ProviderName = ProviderName, ConnectorStatus = ConnectorStatus, EnablementStatus = EnablementStatus)
+  output <- .securityhub$list_connectors_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_connectors <- securityhub_list_connectors
+
+#' Grants permission to retrieve a list of connectorsV2 and their metadata
+#' for the calling account
+#'
+#' @description
+#' Grants permission to retrieve a list of connectorsV2 and their metadata for the calling account.
+#'
+#' @usage
+#' securityhub_list_connectors_v2(NextToken, MaxResults, ProviderName,
+#'   ConnectorStatus, EnablementStatus)
+#'
+#' @param NextToken The pagination token per the Amazon Web Services Pagination standard
+#' @param MaxResults The maximum number of results to be returned.
+#' @param ProviderName The name of the third-party provider.
+#' @param ConnectorStatus The status for the connectorV2.
+#' @param EnablementStatus The enablement status to filter connectors by.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Connectors = list(
+#'     list(
+#'       ConnectorArn = "string",
+#'       ConnectorId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       ProviderSummary = list(
+#'         ProviderName = "JIRA_CLOUD"|"SERVICENOW"|"AZURE",
+#'         ConnectorStatus = "CONNECTED"|"DEGRADED"|"FAILED_TO_CONNECT"|"PENDING_AUTHORIZATION"|"PENDING_CONFIGURATION"|"UNKNOWN",
+#'         ProviderConfiguration = list(
+#'           JiraCloud = list(
+#'             CloudId = "string",
+#'             ProjectKey = "string",
+#'             Domain = "string",
+#'             AuthUrl = "string",
+#'             AuthStatus = "ACTIVE"|"FAILED"
+#'           ),
+#'           ServiceNow = list(
+#'             InstanceName = "string",
+#'             SecretArn = "string",
+#'             AuthStatus = "ACTIVE"|"FAILED"
+#'           ),
+#'           Azure = list(
+#'             AWSConfigConnectorArn = "string",
+#'             ScopeConfiguration = list(
+#'               ScopeType = "TENANT"|"SUBSCRIPTION",
+#'               ScopeValues = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             AzureRegions = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EnablementStatus = "ENABLED"|"PENDING_ENABLEMENT"|"FAILED_TO_ENABLE"|"PENDING_UPDATE"|"FAILED_TO_UPDATE"|"PENDING_DELETION"|"FAILED_TO_DELETE",
+#'       EnablementStatusReason = "string"
 #'     )
 #'   )
 #' )
@@ -18284,8 +18921,9 @@ securityhub_list_configuration_policy_associations <- function(NextToken = NULL,
 #' svc$list_connectors_v2(
 #'   NextToken = "string",
 #'   MaxResults = 123,
-#'   ProviderName = "JIRA_CLOUD"|"SERVICENOW",
-#'   ConnectorStatus = "CONNECTED"|"FAILED_TO_CONNECT"|"PENDING_CONFIGURATION"|"PENDING_AUTHORIZATION"
+#'   ProviderName = "JIRA_CLOUD"|"SERVICENOW"|"AZURE",
+#'   ConnectorStatus = "CONNECTED"|"DEGRADED"|"FAILED_TO_CONNECT"|"PENDING_AUTHORIZATION"|"PENDING_CONFIGURATION"|"UNKNOWN",
+#'   EnablementStatus = "ENABLED"|"PENDING_ENABLEMENT"|"FAILED_TO_ENABLE"|"PENDING_UPDATE"|"FAILED_TO_UPDATE"|"PENDING_DELETION"|"FAILED_TO_DELETE"
 #' )
 #' ```
 #'
@@ -18294,7 +18932,7 @@ securityhub_list_configuration_policy_associations <- function(NextToken = NULL,
 #' @rdname securityhub_list_connectors_v2
 #'
 #' @aliases securityhub_list_connectors_v2
-securityhub_list_connectors_v2 <- function(NextToken = NULL, MaxResults = NULL, ProviderName = NULL, ConnectorStatus = NULL) {
+securityhub_list_connectors_v2 <- function(NextToken = NULL, MaxResults = NULL, ProviderName = NULL, ConnectorStatus = NULL, EnablementStatus = NULL) {
   op <- new_operation(
     name = "ListConnectorsV2",
     http_method = "GET",
@@ -18303,7 +18941,7 @@ securityhub_list_connectors_v2 <- function(NextToken = NULL, MaxResults = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .securityhub$list_connectors_v2_input(NextToken = NextToken, MaxResults = MaxResults, ProviderName = ProviderName, ConnectorStatus = ConnectorStatus)
+  input <- .securityhub$list_connectors_v2_input(NextToken = NextToken, MaxResults = MaxResults, ProviderName = ProviderName, ConnectorStatus = ConnectorStatus, EnablementStatus = EnablementStatus)
   output <- .securityhub$list_connectors_v2_output()
   config <- get_config()
   svc <- .securityhub$service(config, op)
@@ -18426,6 +19064,90 @@ securityhub_list_finding_aggregators <- function(NextToken = NULL, MaxResults = 
   return(response)
 }
 .securityhub$operations$list_finding_aggregators <- securityhub_list_finding_aggregators
+
+#' Lists the free trial status of Security Hub features
+#'
+#' @description
+#' Lists the free trial status of Security Hub features. A delegated Security Hub administrator can list the status for accounts in its organization. Any other account can list the status only for itself. Free trial status remains available after a feature is disabled.
+#'
+#' @usage
+#' securityhub_list_free_trial_statuses_v2(AccountIds, Statuses,
+#'   MaxResults, NextToken)
+#'
+#' @param AccountIds The Amazon Web Services account identifiers to list free trial status for. You can specify accounts other than your own only if you are a delegated Security Hub administrator.
+#' @param Statuses The free trial statuses to filter the results by. Valid values:
+#' 
+#' -   `ACTIVE` returns only features with an ongoing free trial period.
+#' 
+#' -   `INACTIVE` returns only features whose free trial period has ended, or that never started.
+#' @param MaxResults The maximum number of results to return. If you don't specify a value, Security Hub returns up to 100 results.
+#' @param NextToken The pagination token to request the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountFreeTrialStatuses = list(
+#'     list(
+#'       AccountId = "string",
+#'       EvaluatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FreeTrialStatuses = list(
+#'         list(
+#'           FeatureType = "SECURITY_HUB_V2"|"SECURITY_HUB_V2_MULTI_CLOUD_AZURE",
+#'           Status = "ACTIVE"|"INACTIVE",
+#'           StartedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ExpiresAt = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_free_trial_statuses_v2(
+#'   AccountIds = list(
+#'     "string"
+#'   ),
+#'   Statuses = list(
+#'     "ACTIVE"|"INACTIVE"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_free_trial_statuses_v2
+#'
+#' @aliases securityhub_list_free_trial_statuses_v2
+securityhub_list_free_trial_statuses_v2 <- function(AccountIds = NULL, Statuses = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListFreeTrialStatusesV2",
+    http_method = "POST",
+    http_path = "/freetrial/statusv2/list",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountFreeTrialStatuses"),
+    stream_api = FALSE
+  )
+  input <- .securityhub$list_free_trial_statuses_v2_input(AccountIds = AccountIds, Statuses = Statuses, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .securityhub$list_free_trial_statuses_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_free_trial_statuses_v2 <- securityhub_list_free_trial_statuses_v2
 
 #' We recommend using Organizations instead of Security Hub CSPM
 #' invitations to manage your member accounts
@@ -18640,11 +19362,12 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
 #'
 #' @usage
 #' securityhub_list_security_control_definitions(StandardsArn, NextToken,
-#'   MaxResults)
+#'   MaxResults, Providers)
 #'
 #' @param StandardsArn The Amazon Resource Name (ARN) of the standard that you want to view controls for.
 #' @param NextToken Optional pagination parameter.
 #' @param MaxResults An optional parameter that limits the total results of the API response to the specified number. If this parameter isn't provided in the request, the results include the first 25 security controls that apply to the specified standard. The results also include a `NextToken` parameter that you can use in a subsequent API call to get the next 25 controls. This repeats until all controls for the standard are returned.
+#' @param Providers A list of cloud providers to filter the security control definitions by. For example, specify `Azure` to return only controls that evaluate Azure resources.
 #'
 #' @return
 #' A list with the following syntax:
@@ -18716,7 +19439,8 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
 #'             )
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       Provider = "AWS"|"Azure"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -18728,7 +19452,10 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
 #' svc$list_security_control_definitions(
 #'   StandardsArn = "string",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   Providers = list(
+#'     "AWS"|"Azure"
+#'   )
 #' )
 #' ```
 #'
@@ -18737,7 +19464,7 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
 #' @rdname securityhub_list_security_control_definitions
 #'
 #' @aliases securityhub_list_security_control_definitions
-securityhub_list_security_control_definitions <- function(StandardsArn = NULL, NextToken = NULL, MaxResults = NULL) {
+securityhub_list_security_control_definitions <- function(StandardsArn = NULL, NextToken = NULL, MaxResults = NULL, Providers = NULL) {
   op <- new_operation(
     name = "ListSecurityControlDefinitions",
     http_method = "GET",
@@ -18746,7 +19473,7 @@ securityhub_list_security_control_definitions <- function(StandardsArn = NULL, N
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SecurityControlDefinitions"),
     stream_api = FALSE
   )
-  input <- .securityhub$list_security_control_definitions_input(StandardsArn = StandardsArn, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .securityhub$list_security_control_definitions_input(StandardsArn = StandardsArn, NextToken = NextToken, MaxResults = MaxResults, Providers = Providers)
   output <- .securityhub$list_security_control_definitions_output()
   config <- get_config()
   svc <- .securityhub$service(config, op)
@@ -19291,7 +20018,7 @@ securityhub_update_aggregator_v2 <- function(AggregatorV2Arn, RegionLinkingMode,
 #'         list(
 #'           StringFilters = list(
 #'             list(
-#'               FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
+#'               FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.name"|"resources.owner.account.uid"|"resources.owner.org.uid"|"resources.owner.account.name"|"resources.provider"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
 #'               Filter = list(
 #'                 Value = "string",
 #'                 Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
@@ -19549,6 +20276,73 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
 }
 .securityhub$operations$update_configuration_policy <- securityhub_update_configuration_policy
 
+#' Updates a CSPM connector's configuration, such as the scope or regions
+#' for the connected cloud provider
+#'
+#' @description
+#' Updates a CSPM connector's configuration, such as the scope or regions for the connected cloud provider.
+#'
+#' @usage
+#' securityhub_update_connector(ConnectorId, Description, Provider)
+#'
+#' @param ConnectorId &#91;required&#93; The unique identifier of the connector to update.
+#' @param Description The updated description of the connector.
+#' @param Provider The updated cloud provider configuration for the connector.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectorStatus = "CONNECTED"|"DEGRADED"|"FAILED_TO_CONNECT"|"UNKNOWN",
+#'   EnablementStatus = "ENABLED"|"PENDING_ENABLEMENT"|"PENDING_UPDATE"|"PENDING_DELETION"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connector(
+#'   ConnectorId = "string",
+#'   Description = "string",
+#'   Provider = list(
+#'     Azure = list(
+#'       ScopeConfiguration = list(
+#'         ScopeType = "TENANT"|"SUBSCRIPTION",
+#'         ScopeValues = list(
+#'           "string"
+#'         )
+#'       ),
+#'       AzureRegions = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_connector
+#'
+#' @aliases securityhub_update_connector
+securityhub_update_connector <- function(ConnectorId, Description = NULL, Provider = NULL) {
+  op <- new_operation(
+    name = "UpdateConnector",
+    http_method = "PATCH",
+    http_path = "/connectors/{ConnectorId+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$update_connector_input(ConnectorId = ConnectorId, Description = Description, Provider = Provider)
+  output <- .securityhub$update_connector_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_connector <- securityhub_update_connector
+
 #' Grants permission to update a connectorV2 based on its id and input
 #' parameters
 #'
@@ -19563,7 +20357,13 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
 #' @param Provider The third-party provider’s service configuration.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectorStatus = "CONNECTED"|"DEGRADED"|"FAILED_TO_CONNECT"|"PENDING_AUTHORIZATION"|"PENDING_CONFIGURATION"|"UNKNOWN",
+#'   EnablementStatus = "ENABLED"|"PENDING_ENABLEMENT"|"FAILED_TO_ENABLE"|"PENDING_UPDATE"|"FAILED_TO_UPDATE"|"PENDING_DELETION"|"FAILED_TO_DELETE"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -19576,6 +20376,17 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
 #'     ),
 #'     ServiceNow = list(
 #'       SecretArn = "string"
+#'     ),
+#'     Azure = list(
+#'       ScopeConfiguration = list(
+#'         ScopeType = "TENANT"|"SUBSCRIPTION",
+#'         ScopeValues = list(
+#'           "string"
+#'         )
+#'       ),
+#'       AzureRegions = list(
+#'         "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -20413,6 +21224,24 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'         Value = "string",
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
+#'     ),
+#'     ResourceOwnerAccountId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
+#'     ),
+#'     ResourceOwnerOrgId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
+#'     ),
+#'     ResourceProvider = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
 #'     )
 #'   ),
 #'   Note = list(
@@ -21170,6 +21999,24 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       )
 #'     ),
 #'     ResourceApplicationArn = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
+#'     ),
+#'     ResourceOwnerAccountId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
+#'     ),
+#'     ResourceOwnerOrgId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'       )
+#'     ),
+#'     ResourceProvider = list(
 #'       list(
 #'         Value = "string",
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"

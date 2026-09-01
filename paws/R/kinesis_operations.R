@@ -61,6 +61,209 @@ kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL
 }
 .kinesis$operations$add_tags_to_stream <- kinesis_add_tags_to_stream
 
+#' Creates a channel that delivers records from a Kinesis data stream to a
+#' destination
+#'
+#' @description
+#' Creates a channel that delivers records from a Kinesis data stream to a destination. A channel reads records from the specified stream and writes them to streaming tables on Apache Iceberg (Amazon S3 Tables) or to a general purpose Amazon S3 bucket.
+#' 
+#' You must specify either `S3DestinationConfiguration` or `S3TablesDestinationConfiguration`, but not both.
+#' 
+#' Creating a channel is an asynchronous operation. Upon receiving the request, Amazon Kinesis Data Streams returns immediately with the channel in the `CREATING` state. After provisioning is complete, Amazon Kinesis Data Streams sets the state to `ACTIVE`. You can use [`describe_channel`][kinesis_describe_channel] to check the current state.
+#' 
+#' This operation is only supported for data streams with the on-demand capacity mode.
+#' 
+#' This API has a call limit of 5 transactions per second (TPS) for each Amazon Web Services account. Exceeding 5 TPS results in a `LimitExceededException`.
+#'
+#' @usage
+#' kinesis_create_channel(ChannelName, ServiceExecutionRoleARN,
+#'   StreamConfigurationList, S3DestinationConfiguration,
+#'   S3TablesDestinationConfiguration, EncryptionConfiguration, Tags,
+#'   LoggingConfiguration)
+#'
+#' @param ChannelName &#91;required&#93; The name of the channel. The name is unique within your Amazon Web Services account and Amazon Web Services Region.
+#' @param ServiceExecutionRoleARN &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that Amazon Kinesis Data Streams assumes to write records to the destination.
+#' @param StreamConfigurationList &#91;required&#93; The source stream configuration for the channel. Currently, one stream is supported per channel.
+#' @param S3DestinationConfiguration The configuration for delivery to a general purpose Amazon S3 bucket. You must specify either `S3DestinationConfiguration` or `S3TablesDestinationConfiguration`, but not both.
+#' @param S3TablesDestinationConfiguration The configuration for delivery to streaming tables on Apache Iceberg in Amazon S3 Tables. You must specify either `S3DestinationConfiguration` or `S3TablesDestinationConfiguration`, but not both.
+#' @param EncryptionConfiguration The server-side encryption configuration that uses an Amazon Web Services KMS key to encrypt data delivered to the destination.
+#' @param Tags A set of key-value pairs to assign to the channel. A tag consists of a required key and an optional value.
+#' @param LoggingConfiguration The Amazon CloudWatch Logs configuration for the channel.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelDescription = list(
+#'     ChannelName = "string",
+#'     ChannelARN = "string",
+#'     ChannelId = "string",
+#'     ChannelStatus = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'     ChannelStatusReason = "string",
+#'     ChannelCreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ServiceExecutionRoleARN = "string",
+#'     StreamConfigurationList = list(
+#'       list(
+#'         StreamARN = "string",
+#'         StreamCreationTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         RecordConfiguration = list(
+#'           RecordFormatType = "GSR_JSON"|"JSON"|"STRING"|"BYTE_ARRAY",
+#'           GSRSchemaARN = "string"
+#'         )
+#'       )
+#'     ),
+#'     S3DestinationConfiguration = list(
+#'       DataFreshnessInSeconds = 123,
+#'       DeadLetterQueueS3Configuration = list(
+#'         BucketARN = "string",
+#'         ExpectedBucketOwner = "string",
+#'         ErrorOutputPrefix = "string"
+#'       ),
+#'       StorageConfiguration = list(
+#'         BucketARN = "string",
+#'         ExpectedBucketOwner = "string",
+#'         OutputKeyTemplate = "string",
+#'         StorageClass = "STANDARD"|"INTELLIGENT_TIERING"|"GLACIER_IR",
+#'         CompressionType = "NONE"|"GZIP"|"ZSTD"
+#'       )
+#'     ),
+#'     S3TablesDestinationConfiguration = list(
+#'       DataFreshnessInSeconds = 123,
+#'       DeadLetterQueueS3Configuration = list(
+#'         BucketARN = "string",
+#'         ExpectedBucketOwner = "string",
+#'         ErrorOutputPrefix = "string"
+#'       ),
+#'       S3TablesConfigurationList = list(
+#'         list(
+#'           TableBucketARN = "string",
+#'           Namespace = "string",
+#'           TableName = "string",
+#'           CompressionType = "NONE"|"ZSTD"|"SNAPPY",
+#'           PartitionSpec = list(
+#'             PartitionFields = list(
+#'               list(
+#'                 Transform = "TIME_HOUR",
+#'                 SourceName = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     EncryptionConfiguration = list(
+#'       EncryptionType = "KMS",
+#'       KeyId = "string"
+#'     ),
+#'     LoggingConfiguration = list(
+#'       CloudWatchLogs = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroupName = "string",
+#'         LogStreamName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_channel(
+#'   ChannelName = "string",
+#'   ServiceExecutionRoleARN = "string",
+#'   StreamConfigurationList = list(
+#'     list(
+#'       StreamARN = "string",
+#'       RecordConfiguration = list(
+#'         RecordFormatType = "GSR_JSON"|"JSON"|"STRING"|"BYTE_ARRAY",
+#'         GSRSchemaARN = "string"
+#'       )
+#'     )
+#'   ),
+#'   S3DestinationConfiguration = list(
+#'     DataFreshnessInSeconds = 123,
+#'     DeadLetterQueueS3Configuration = list(
+#'       BucketARN = "string",
+#'       ExpectedBucketOwner = "string",
+#'       ErrorOutputPrefix = "string"
+#'     ),
+#'     StorageConfiguration = list(
+#'       BucketARN = "string",
+#'       ExpectedBucketOwner = "string",
+#'       OutputKeyTemplate = "string",
+#'       StorageClass = "STANDARD"|"INTELLIGENT_TIERING"|"GLACIER_IR",
+#'       CompressionType = "NONE"|"GZIP"|"ZSTD"
+#'     )
+#'   ),
+#'   S3TablesDestinationConfiguration = list(
+#'     DataFreshnessInSeconds = 123,
+#'     DeadLetterQueueS3Configuration = list(
+#'       BucketARN = "string",
+#'       ExpectedBucketOwner = "string",
+#'       ErrorOutputPrefix = "string"
+#'     ),
+#'     S3TablesConfigurationList = list(
+#'       list(
+#'         TableBucketARN = "string",
+#'         Namespace = "string",
+#'         TableName = "string",
+#'         CompressionType = "NONE"|"ZSTD"|"SNAPPY",
+#'         PartitionSpec = list(
+#'           PartitionFields = list(
+#'             list(
+#'               Transform = "TIME_HOUR",
+#'               SourceName = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   EncryptionConfiguration = list(
+#'     EncryptionType = "KMS",
+#'     KeyId = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   LoggingConfiguration = list(
+#'     CloudWatchLogs = list(
+#'       Enabled = TRUE|FALSE,
+#'       LogGroupName = "string",
+#'       LogStreamName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_create_channel
+#'
+#' @aliases kinesis_create_channel
+kinesis_create_channel <- function(ChannelName, ServiceExecutionRoleARN, StreamConfigurationList, S3DestinationConfiguration = NULL, S3TablesDestinationConfiguration = NULL, EncryptionConfiguration = NULL, Tags = NULL, LoggingConfiguration = NULL) {
+  op <- new_operation(
+    name = "CreateChannel",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$create_channel_input(ChannelName = ChannelName, ServiceExecutionRoleARN = ServiceExecutionRoleARN, StreamConfigurationList = StreamConfigurationList, S3DestinationConfiguration = S3DestinationConfiguration, S3TablesDestinationConfiguration = S3TablesDestinationConfiguration, EncryptionConfiguration = EncryptionConfiguration, Tags = Tags, LoggingConfiguration = LoggingConfiguration)
+  output <- .kinesis$create_channel_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$create_channel <- kinesis_create_channel
+
 #' Creates a Kinesis data stream
 #'
 #' @description
@@ -200,6 +403,54 @@ kinesis_decrease_stream_retention_period <- function(StreamName = NULL, Retentio
   return(response)
 }
 .kinesis$operations$decrease_stream_retention_period <- kinesis_decrease_stream_retention_period
+
+#' Deletes the specified channel
+#'
+#' @description
+#' Deletes the specified channel. Deleting a channel stops delivery from the source stream to the destination. Data already delivered to the destination is not deleted.
+#' 
+#' A stream cannot be deleted while it has active channels. To delete the stream, first delete all channels attached to it. To find them, use [`list_channels`][kinesis_list_channels] with a stream filter.
+#' 
+#' This API has a call limit of 5 transactions per second (TPS) for each Amazon Web Services account. Exceeding 5 TPS results in a `LimitExceededException`.
+#'
+#' @usage
+#' kinesis_delete_channel(ChannelARN)
+#'
+#' @param ChannelARN &#91;required&#93; The Amazon Resource Name (ARN) of the channel to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_channel(
+#'   ChannelARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_delete_channel
+#'
+#' @aliases kinesis_delete_channel
+kinesis_delete_channel <- function(ChannelARN) {
+  op <- new_operation(
+    name = "DeleteChannel",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$delete_channel_input(ChannelARN = ChannelARN)
+  output <- .kinesis$delete_channel_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$delete_channel <- kinesis_delete_channel
 
 #' Delete a policy for the specified data stream or consumer
 #'
@@ -427,6 +678,132 @@ kinesis_describe_account_settings <- function() {
 }
 .kinesis$operations$describe_account_settings <- kinesis_describe_account_settings
 
+#' Describes the specified channel, including its configuration and current
+#' status
+#'
+#' @description
+#' Describes the specified channel, including its configuration and current status.
+#' 
+#' Use this operation to verify that a channel reached the `ACTIVE` state after creation, or to diagnose a channel in the `FAILED` state by reading the `ChannelStatusReason`.
+#' 
+#' This API has a call limit of 5 transactions per second (TPS) for each Amazon Web Services account. Exceeding 5 TPS results in a `LimitExceededException`.
+#'
+#' @usage
+#' kinesis_describe_channel(ChannelARN)
+#'
+#' @param ChannelARN &#91;required&#93; The Amazon Resource Name (ARN) of the channel to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelDescription = list(
+#'     ChannelName = "string",
+#'     ChannelARN = "string",
+#'     ChannelId = "string",
+#'     ChannelStatus = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'     ChannelStatusReason = "string",
+#'     ChannelCreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ServiceExecutionRoleARN = "string",
+#'     StreamConfigurationList = list(
+#'       list(
+#'         StreamARN = "string",
+#'         StreamCreationTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         RecordConfiguration = list(
+#'           RecordFormatType = "GSR_JSON"|"JSON"|"STRING"|"BYTE_ARRAY",
+#'           GSRSchemaARN = "string"
+#'         )
+#'       )
+#'     ),
+#'     S3DestinationConfiguration = list(
+#'       DataFreshnessInSeconds = 123,
+#'       DeadLetterQueueS3Configuration = list(
+#'         BucketARN = "string",
+#'         ExpectedBucketOwner = "string",
+#'         ErrorOutputPrefix = "string"
+#'       ),
+#'       StorageConfiguration = list(
+#'         BucketARN = "string",
+#'         ExpectedBucketOwner = "string",
+#'         OutputKeyTemplate = "string",
+#'         StorageClass = "STANDARD"|"INTELLIGENT_TIERING"|"GLACIER_IR",
+#'         CompressionType = "NONE"|"GZIP"|"ZSTD"
+#'       )
+#'     ),
+#'     S3TablesDestinationConfiguration = list(
+#'       DataFreshnessInSeconds = 123,
+#'       DeadLetterQueueS3Configuration = list(
+#'         BucketARN = "string",
+#'         ExpectedBucketOwner = "string",
+#'         ErrorOutputPrefix = "string"
+#'       ),
+#'       S3TablesConfigurationList = list(
+#'         list(
+#'           TableBucketARN = "string",
+#'           Namespace = "string",
+#'           TableName = "string",
+#'           CompressionType = "NONE"|"ZSTD"|"SNAPPY",
+#'           PartitionSpec = list(
+#'             PartitionFields = list(
+#'               list(
+#'                 Transform = "TIME_HOUR",
+#'                 SourceName = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     EncryptionConfiguration = list(
+#'       EncryptionType = "KMS",
+#'       KeyId = "string"
+#'     ),
+#'     LoggingConfiguration = list(
+#'       CloudWatchLogs = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroupName = "string",
+#'         LogStreamName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_channel(
+#'   ChannelARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_describe_channel
+#'
+#' @aliases kinesis_describe_channel
+kinesis_describe_channel <- function(ChannelARN) {
+  op <- new_operation(
+    name = "DescribeChannel",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$describe_channel_input(ChannelARN = ChannelARN)
+  output <- .kinesis$describe_channel_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$describe_channel <- kinesis_describe_channel
+
 #' Describes the shard limits and usage for the account
 #'
 #' @description
@@ -448,7 +825,9 @@ kinesis_describe_account_settings <- function() {
 #'   ShardLimit = 123,
 #'   OpenShardCount = 123,
 #'   OnDemandStreamCount = 123,
-#'   OnDemandStreamCountLimit = 123
+#'   OnDemandStreamCountLimit = 123,
+#'   ChannelCount = 123,
+#'   ChannelCountLimit = 123
 #' )
 #' ```
 #'
@@ -710,7 +1089,8 @@ kinesis_describe_stream_consumer <- function(StreamARN = NULL, ConsumerName = NU
 #'       TargetMiBps = 123,
 #'       CurrentMiBps = 123
 #'     ),
-#'     MaxRecordSizeInKiB = 123
+#'     MaxRecordSizeInKiB = 123,
+#'     ChannelCount = 123
 #'   )
 #' )
 #' ```
@@ -933,7 +1313,7 @@ kinesis_enable_enhanced_monitoring <- function(StreamName = NULL, ShardLevelMetr
 #' 
 #' You can scale by provisioning multiple shards per stream while considering service limits (for more information, see [Amazon Kinesis Data Streams Limits](https://docs.aws.amazon.com/streams/latest/dev/service-sizes-and-limits.html) in the *Amazon Kinesis Data Streams Developer Guide*). Your application should have one thread per shard, each reading continuously from its stream. To read from a stream continually, call [`get_records`][kinesis_get_records] in a loop. Use [`get_shard_iterator`][kinesis_get_shard_iterator] to get the shard iterator to specify in the first [`get_records`][kinesis_get_records] call. [`get_records`][kinesis_get_records] returns a new shard iterator in `NextShardIterator`. Specify the shard iterator returned in `NextShardIterator` in subsequent calls to [`get_records`][kinesis_get_records]. If the shard has been closed, the shard iterator can't return more data and [`get_records`][kinesis_get_records] returns `null` in `NextShardIterator`. You can terminate the loop when the shard is closed, or when the shard iterator reaches the record with the sequence number or other attribute that marks it as the last record to process.
 #' 
-#' Each data record can be up to 1 MiB in size, and each shard can read up to 2 MiB per second. You can ensure that your calls don't exceed the maximum supported size or throughput by using the `Limit` parameter to specify the maximum number of records that [`get_records`][kinesis_get_records] can return. Consider your average record size when determining this limit. The maximum number of records that can be returned per call is 10,000.
+#' Each data record can be up to 1 MiB in size by default. Amazon Kinesis Data Streams supports large records up to 10 MiB in size, but the average throughput for your stream cannot exceed 1 MiB per second. For more information about how large records are handled, see [Large records](https://docs.aws.amazon.com/streams/latest/dev/large-records.html). Each shard can read up to 2 MiB per second. You can ensure that your calls don't exceed the maximum supported size or throughput by using the `Limit` parameter to specify the maximum number of records that [`get_records`][kinesis_get_records] can return. Consider your average record size when determining this limit. The maximum number of records that can be returned per call is 10,000.
 #' 
 #' The size of the data returned by [`get_records`][kinesis_get_records] varies depending on the utilization of the shard. It is recommended that consumer applications retrieve records via the [`get_records`][kinesis_get_records] command using the 5 TPS limit to remain caught up. Retrieving records less frequently can lead to consumer applications falling behind. The maximum size of data that [`get_records`][kinesis_get_records] can return is 10 MiB. If a call returns this amount of data, subsequent calls made within the next 5 seconds throw `ProvisionedThroughputExceededException`. If there is insufficient provisioned throughput on the stream, subsequent calls made within the next 1 second throw `ProvisionedThroughputExceededException`. [`get_records`][kinesis_get_records] doesn't return any data when it throws an exception. For this reason, we recommend that you wait 1 second between calls to [`get_records`][kinesis_get_records]. However, it's possible that the application will get exceptions for longer than 1 second.
 #' 
@@ -1218,6 +1598,91 @@ kinesis_increase_stream_retention_period <- function(StreamName = NULL, Retentio
   return(response)
 }
 .kinesis$operations$increase_stream_retention_period <- kinesis_increase_stream_retention_period
+
+#' Lists the channels in your account
+#'
+#' @description
+#' Lists the channels in your account. You can filter the results by source stream. The results are paginated. Use the `NextToken` value returned in the response to retrieve additional results.
+#' 
+#' Use this operation to find channels before deleting a stream, or to audit the channels configured in an Amazon Web Services Region.
+#' 
+#' This API has a call limit of 5 transactions per second (TPS) for each Amazon Web Services account. Exceeding 5 TPS results in a `LimitExceededException`.
+#'
+#' @usage
+#' kinesis_list_channels(StreamFilter, MaxResults, NextToken)
+#'
+#' @param StreamFilter Filters the results to channels associated with the specified streams.
+#' @param MaxResults The maximum number of channels to return in a single call. The default value is 100. If you specify a value greater than 100, at most 100 results are returned.
+#' @param NextToken The pagination token returned by a previous call. Specify this token to retrieve the next page of results. This value is `null` when there are no more results to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelSummaries = list(
+#'     list(
+#'       ChannelName = "string",
+#'       ChannelARN = "string",
+#'       ChannelId = "string",
+#'       ChannelStatus = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'       ChannelStatusReason = "string",
+#'       ChannelCreationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ChannelDestinationType = "S3"|"S3_TABLES",
+#'       Streams = list(
+#'         list(
+#'           StreamARN = "string",
+#'           StreamCreationTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_channels(
+#'   StreamFilter = list(
+#'     list(
+#'       StreamARN = "string",
+#'       StreamCreationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_list_channels
+#'
+#' @aliases kinesis_list_channels
+kinesis_list_channels <- function(StreamFilter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListChannels",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ChannelSummaries"),
+    stream_api = FALSE
+  )
+  input <- .kinesis$list_channels_input(StreamFilter = StreamFilter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .kinesis$list_channels_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$list_channels <- kinesis_list_channels
 
 #' Lists the shards in a stream and provides information about each shard
 #'
@@ -2569,6 +3034,149 @@ kinesis_update_account_settings <- function(MinimumThroughputBillingCommitment) 
 }
 .kinesis$operations$update_account_settings <- kinesis_update_account_settings
 
+#' Updates the data freshness interval or the Amazon CloudWatch Logs
+#' configuration of an existing channel
+#'
+#' @description
+#' Updates the data freshness interval or the Amazon CloudWatch Logs configuration of an existing channel. You cannot change the destination, source stream, record format, schema, encryption configuration, or service execution role of an existing channel. To change any other setting, delete the channel and create a new one.
+#' 
+#' Updating a channel is an asynchronous operation. Upon receiving the request, Amazon Kinesis Data Streams sets the channel to the `UPDATING` state and returns immediately. After the change is applied, Amazon Kinesis Data Streams sets the channel back to the `ACTIVE` state.
+#' 
+#' This API has a call limit of 5 transactions per second (TPS) for each Amazon Web Services account. Exceeding 5 TPS results in a `LimitExceededException`.
+#'
+#' @usage
+#' kinesis_update_channel(ChannelARN, S3DestinationConfiguration,
+#'   S3TablesDestinationConfiguration, LoggingConfiguration)
+#'
+#' @param ChannelARN &#91;required&#93; The Amazon Resource Name (ARN) of the channel to update.
+#' @param S3DestinationConfiguration The updated configuration for a general purpose Amazon S3 destination. Only `DataFreshnessInSeconds` can be updated.
+#' @param S3TablesDestinationConfiguration The updated configuration for a streaming table destination. Only `DataFreshnessInSeconds` can be updated.
+#' @param LoggingConfiguration The updated Amazon CloudWatch Logs configuration for the channel.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelDescription = list(
+#'     ChannelName = "string",
+#'     ChannelARN = "string",
+#'     ChannelId = "string",
+#'     ChannelStatus = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'     ChannelStatusReason = "string",
+#'     ChannelCreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ServiceExecutionRoleARN = "string",
+#'     StreamConfigurationList = list(
+#'       list(
+#'         StreamARN = "string",
+#'         StreamCreationTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         RecordConfiguration = list(
+#'           RecordFormatType = "GSR_JSON"|"JSON"|"STRING"|"BYTE_ARRAY",
+#'           GSRSchemaARN = "string"
+#'         )
+#'       )
+#'     ),
+#'     S3DestinationConfiguration = list(
+#'       DataFreshnessInSeconds = 123,
+#'       DeadLetterQueueS3Configuration = list(
+#'         BucketARN = "string",
+#'         ExpectedBucketOwner = "string",
+#'         ErrorOutputPrefix = "string"
+#'       ),
+#'       StorageConfiguration = list(
+#'         BucketARN = "string",
+#'         ExpectedBucketOwner = "string",
+#'         OutputKeyTemplate = "string",
+#'         StorageClass = "STANDARD"|"INTELLIGENT_TIERING"|"GLACIER_IR",
+#'         CompressionType = "NONE"|"GZIP"|"ZSTD"
+#'       )
+#'     ),
+#'     S3TablesDestinationConfiguration = list(
+#'       DataFreshnessInSeconds = 123,
+#'       DeadLetterQueueS3Configuration = list(
+#'         BucketARN = "string",
+#'         ExpectedBucketOwner = "string",
+#'         ErrorOutputPrefix = "string"
+#'       ),
+#'       S3TablesConfigurationList = list(
+#'         list(
+#'           TableBucketARN = "string",
+#'           Namespace = "string",
+#'           TableName = "string",
+#'           CompressionType = "NONE"|"ZSTD"|"SNAPPY",
+#'           PartitionSpec = list(
+#'             PartitionFields = list(
+#'               list(
+#'                 Transform = "TIME_HOUR",
+#'                 SourceName = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     EncryptionConfiguration = list(
+#'       EncryptionType = "KMS",
+#'       KeyId = "string"
+#'     ),
+#'     LoggingConfiguration = list(
+#'       CloudWatchLogs = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroupName = "string",
+#'         LogStreamName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_channel(
+#'   ChannelARN = "string",
+#'   S3DestinationConfiguration = list(
+#'     DataFreshnessInSeconds = 123
+#'   ),
+#'   S3TablesDestinationConfiguration = list(
+#'     DataFreshnessInSeconds = 123
+#'   ),
+#'   LoggingConfiguration = list(
+#'     CloudWatchLogs = list(
+#'       Enabled = TRUE|FALSE,
+#'       LogGroupName = "string",
+#'       LogStreamName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_update_channel
+#'
+#' @aliases kinesis_update_channel
+kinesis_update_channel <- function(ChannelARN, S3DestinationConfiguration = NULL, S3TablesDestinationConfiguration = NULL, LoggingConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateChannel",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$update_channel_input(ChannelARN = ChannelARN, S3DestinationConfiguration = S3DestinationConfiguration, S3TablesDestinationConfiguration = S3TablesDestinationConfiguration, LoggingConfiguration = LoggingConfiguration)
+  output <- .kinesis$update_channel_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$update_channel <- kinesis_update_channel
+
 #' This allows you to update the MaxRecordSize of a single record that you
 #' can write to, and read from a stream
 #'
@@ -2773,13 +3381,15 @@ kinesis_update_stream_mode <- function(StreamARN, StreamId = NULL, StreamModeDet
 #' Kinesis Data Streams on-demand data stream
 #'
 #' @description
-#' Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream. This operation allows you to proactively scale your on-demand data stream to a specified throughput level, enabling better performance for sudden traffic spikes.
+#' Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream. Updates the warm throughput configuration for the specified on-demand data stream. Use this operation to scale your stream to a specified throughput level before anticipated traffic spikes, or to release excess capacity after traffic has decreased.
 #' 
 #' When invoking this API, you must use either the `StreamARN` or the `StreamName` parameter, or both. It is recommended that you use the `StreamARN` input parameter when you invoke this API.
 #' 
 #' Updating the warm throughput is an asynchronous operation. Upon receiving the request, Kinesis Data Streams returns immediately and sets the status of the stream to `UPDATING`. After the update is complete, Kinesis Data Streams sets the status of the stream back to `ACTIVE`. Depending on the size of the stream, the scaling action could take a few minutes to complete. You can continue to read and write data to your stream while its status is `UPDATING`.
 #' 
 #' This operation is only supported for data streams with the on-demand capacity mode in accounts that have `MinimumThroughputBillingCommitment` enabled. Provisioned capacity mode streams do not support warm throughput configuration.
+#' 
+#' To release excess capacity, call the API again and set the warm throughput to the same or a lower value.
 #' 
 #' This operation has the following default limits. By default, you cannot do the following:
 #' 

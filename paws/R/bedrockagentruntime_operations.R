@@ -3,6 +3,408 @@
 #' @include bedrockagentruntime_service.R
 NULL
 
+#' Retrieves information from one or more knowledge bases using an agentic
+#' approach
+#'
+#' @description
+#' Retrieves information from one or more knowledge bases using an agentic approach. Agentic retrieval uses a foundation model to intelligently decompose complex queries into sub-queries and iteratively retrieve relevant information from your knowledge bases. This approach improves retrieval accuracy for complex, multi-step questions that a single retrieval pass might not fully address.
+#' 
+#' The operation returns results through a stream that includes retrieval results, trace events for visibility into the process, and a generated response synthesized from the results by default, which can be turned off.
+#'
+#' @usage
+#' bedrockagentruntime_agentic_retrieve_stream(
+#'   agenticRetrieveConfiguration, generateResponse, memoryConfiguration,
+#'   messages, nextToken, policyConfiguration, retrievers, userContext)
+#'
+#' @param agenticRetrieveConfiguration &#91;required&#93; Configuration settings for the agentic retrieval operation.
+#' @param generateResponse Whether to generate a response based on the retrieved results.
+#' @param memoryConfiguration The configuration for using an Amazon Bedrock AgentCore Memory resource with this retrieval.
+#' @param messages &#91;required&#93; The list of messages for the agentic retrieval conversation.
+#' @param nextToken Opaque continuation token for paginated results.
+#' @param policyConfiguration Policy configuration for guardrails and content filtering.
+#' @param retrievers &#91;required&#93; The list of retrievers to use for agentic retrieval.
+#' @param userContext Contains information about the user making the request. This is used for access control filtering to ensure that retrieval results only include documents the user is authorized to access.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   stream = list(
+#'     accessDeniedException = list(
+#'       message = "string"
+#'     ),
+#'     badGatewayException = list(
+#'       message = "string",
+#'       resourceName = "string"
+#'     ),
+#'     conflictException = list(
+#'       message = "string"
+#'     ),
+#'     dependencyFailedException = list(
+#'       message = "string",
+#'       resourceName = "string"
+#'     ),
+#'     internalServerException = list(
+#'       message = "string",
+#'       reason = "string"
+#'     ),
+#'     resourceNotFoundException = list(
+#'       message = "string"
+#'     ),
+#'     responseEvent = list(
+#'       text = "string"
+#'     ),
+#'     result = list(
+#'       generatedResponse = list(
+#'         answer = "string",
+#'         citations = list(
+#'           list(
+#'             endIndex = 123,
+#'             references = list(
+#'               list(
+#'                 resultIndex = 123
+#'               )
+#'             ),
+#'             startIndex = 123
+#'           )
+#'         )
+#'       ),
+#'       nextToken = "string",
+#'       results = list(
+#'         list(
+#'           content = list(
+#'             byteContent = raw,
+#'             mimeType = "string",
+#'             text = "string"
+#'           ),
+#'           metadata = list(
+#'             list()
+#'           ),
+#'           sourceRetriever = list(
+#'             identifier = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     serviceQuotaExceededException = list(
+#'       message = "string"
+#'     ),
+#'     throttlingException = list(
+#'       message = "string"
+#'     ),
+#'     traceEvent = list(
+#'       attributes = list(
+#'         actions = list(
+#'           list(
+#'             fullDocumentExpansion = list(
+#'               documentId = "string",
+#'               sourceRetriever = list(
+#'                 identifier = "string"
+#'               )
+#'             ),
+#'             memoryRetrieve = list(
+#'               inputQuery = list(
+#'                 text = "string"
+#'               ),
+#'               memoryId = "string",
+#'               namespace = "string",
+#'               namespacePath = "string",
+#'               strategyId = "string"
+#'             ),
+#'             retrieve = list(
+#'               inputQuery = list(
+#'                 text = "string"
+#'               ),
+#'               sourceRetrievers = list(
+#'                 list(
+#'                   identifier = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         failures = list(
+#'           list(
+#'             message = "string"
+#'           )
+#'         ),
+#'         message = "string",
+#'         retrievalMetadata = list(
+#'           list(
+#'             identifier = "string",
+#'             retrievalType = "BedrockKnowledgeBase"|"BedrockAgentCoreMemory"
+#'           )
+#'         ),
+#'         retrievalResponse = list(
+#'           list(
+#'             content = list(
+#'               byteContent = raw,
+#'               mimeType = "string",
+#'               text = "string"
+#'             ),
+#'             metadata = list(
+#'               list()
+#'             ),
+#'             sourceRetriever = list(
+#'               identifier = "string"
+#'             )
+#'           )
+#'         ),
+#'         status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'         step = "Planning"|"Retrieval"|"SpeculativeRetrieval"|"FullDocumentExpansion"|"SessionHistoryLoad",
+#'         warnings = list(
+#'           list(
+#'             guardrail = list(
+#'               action = "INTERVENED"|"NONE",
+#'               id = "string",
+#'               message = "string",
+#'               version = "string"
+#'             ),
+#'             message = list(
+#'               message = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       id = "string",
+#'       timestamp = 123
+#'     ),
+#'     validationException = list(
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$agentic_retrieve_stream(
+#'   agenticRetrieveConfiguration = list(
+#'     foundationModelConfiguration = list(
+#'       bedrockFoundationModelConfiguration = list(
+#'         modelConfiguration = list(
+#'           modelArn = "string"
+#'         )
+#'       ),
+#'       type = "BEDROCK_FOUNDATION_MODEL"
+#'     ),
+#'     foundationModelType = "CUSTOM"|"MANAGED",
+#'     maxAgentIteration = 123,
+#'     rerankingConfiguration = list(
+#'       bedrockRerankingConfiguration = list(
+#'         modelConfiguration = list(
+#'           modelArn = "string"
+#'         )
+#'       ),
+#'       type = "BEDROCK_RERANKING_MODEL"
+#'     ),
+#'     rerankingModelType = "CUSTOM"|"MANAGED"|"NONE"
+#'   ),
+#'   generateResponse = TRUE|FALSE,
+#'   memoryConfiguration = list(
+#'     memoryId = "string",
+#'     persistenceMode = "DEFAULT"|"NONE",
+#'     retrievalConfigs = list(
+#'       list(
+#'         metadataFilters = list(
+#'           list(
+#'             left = list(
+#'               metadataKey = "string"
+#'             ),
+#'             operator = "EQUALS_TO"|"EXISTS"|"NOT_EXISTS"|"BEFORE"|"AFTER"|"CONTAINS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS",
+#'             right = list(
+#'               metadataValue = list(
+#'                 dateTimeValue = as.POSIXct(
+#'                   "2015-01-01"
+#'                 ),
+#'                 numberValue = 123.0,
+#'                 stringListValue = list(
+#'                   "string"
+#'                 ),
+#'                 stringValue = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         namespace = "string",
+#'         namespacePath = "string",
+#'         strategyId = "string"
+#'       )
+#'     ),
+#'     sessionBinding = list(
+#'       actorId = "string",
+#'       sessionId = "string"
+#'     )
+#'   ),
+#'   messages = list(
+#'     list(
+#'       content = list(
+#'         text = "string"
+#'       ),
+#'       role = "user"|"assistant"
+#'     )
+#'   ),
+#'   nextToken = "string",
+#'   policyConfiguration = list(
+#'     bedrockGuardrailConfiguration = list(
+#'       guardrailId = "string",
+#'       guardrailVersion = "string"
+#'     )
+#'   ),
+#'   retrievers = list(
+#'     list(
+#'       configuration = list(
+#'         knowledgeBase = list(
+#'           knowledgeBaseId = "string",
+#'           retrievalOverrides = list(
+#'             filter = list(
+#'               andAll = list(
+#'                 list()
+#'               ),
+#'               equals = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               greaterThan = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               greaterThanOrEquals = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               in = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               lessThan = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               lessThanOrEquals = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               listContains = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               notEquals = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               notIn = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               orAll = list(
+#'                 list()
+#'               ),
+#'               startsWith = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               stringContains = list(
+#'                 key = "string",
+#'                 value = list()
+#'               )
+#'             ),
+#'             maxNumberOfResults = 123
+#'           )
+#'         )
+#'       ),
+#'       description = "string"
+#'     )
+#'   ),
+#'   userContext = list(
+#'     userId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_agentic_retrieve_stream
+#'
+#' @aliases bedrockagentruntime_agentic_retrieve_stream
+bedrockagentruntime_agentic_retrieve_stream <- function(agenticRetrieveConfiguration, generateResponse = NULL, memoryConfiguration = NULL, messages, nextToken = NULL, policyConfiguration = NULL, retrievers, userContext = NULL) {
+  op <- new_operation(
+    name = "AgenticRetrieveStream",
+    http_method = "POST",
+    http_path = "/agenticRetrieveStream",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = TRUE
+  )
+  input <- .bedrockagentruntime$agentic_retrieve_stream_input(agenticRetrieveConfiguration = agenticRetrieveConfiguration, generateResponse = generateResponse, memoryConfiguration = memoryConfiguration, messages = messages, nextToken = nextToken, policyConfiguration = policyConfiguration, retrievers = retrievers, userContext = userContext)
+  output <- .bedrockagentruntime$agentic_retrieve_stream_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$agentic_retrieve_stream <- bedrockagentruntime_agentic_retrieve_stream
+
+#' Checks whether a user has access to a specific document by verifying
+#' against the ingested access control list (ACL) in a knowledge base
+#'
+#' @description
+#' Checks whether a user has access to a specific document by verifying against the ingested access control list (ACL) in a knowledge base. Use this operation to validate that document-level access control is working as expected after ingestion. To use this operation, you must have the `bedrock:CheckIngestedDocumentAcl` permission.
+#'
+#' @usage
+#' bedrockagentruntime_check_ingested_document_acl(dataSourceId,
+#'   documentId, knowledgeBaseId, userContext)
+#'
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the document.
+#' @param documentId &#91;required&#93; The unique identifier of the document to check access for.
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that contains the document.
+#' @param userContext &#91;required&#93; The context object containing identity information for access control filtering, including user ID and optional group memberships used to evaluate the document access control list (ACL).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   hasAccess = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$check_ingested_document_acl(
+#'   dataSourceId = "string",
+#'   documentId = "string",
+#'   knowledgeBaseId = "string",
+#'   userContext = list(
+#'     userId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_check_ingested_document_acl
+#'
+#' @aliases bedrockagentruntime_check_ingested_document_acl
+bedrockagentruntime_check_ingested_document_acl <- function(dataSourceId, documentId, knowledgeBaseId, userContext) {
+  op <- new_operation(
+    name = "CheckIngestedDocumentAcl",
+    http_method = "POST",
+    http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/check-ingested-document-acl",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$check_ingested_document_acl_input(dataSourceId = dataSourceId, documentId = documentId, knowledgeBaseId = knowledgeBaseId, userContext = userContext)
+  output <- .bedrockagentruntime$check_ingested_document_acl_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$check_ingested_document_acl <- bedrockagentruntime_check_ingested_document_acl
+
 #' Creates a new invocation within a session
 #'
 #' @description
@@ -437,6 +839,68 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 }
 .bedrockagentruntime$operations$get_agent_memory <- bedrockagentruntime_get_agent_memory
 
+#' Retrieves the content of an ingested document from a knowledge base
+#'
+#' @description
+#' Retrieves the content of an ingested document from a knowledge base. Returns a pre-signed URL for secure document access.
+#'
+#' @usage
+#' bedrockagentruntime_get_document_content(dataSourceId, documentId,
+#'   knowledgeBaseId, outputFormat, userContext)
+#'
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the document.
+#' @param documentId &#91;required&#93; The unique identifier of the document to retrieve content for.
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that contains the document.
+#' @param outputFormat The output format for the document content. `RAW` returns the original file. `EXTRACTED` returns parsed text as JSON. Defaults to `RAW`.
+#' @param userContext Contains information about the user making the request. This is used for access control filtering to ensure that results only include documents the user is authorized to access.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   documentContentLength = 123,
+#'   mimeType = "string",
+#'   presignedUrl = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_document_content(
+#'   dataSourceId = "string",
+#'   documentId = "string",
+#'   knowledgeBaseId = "string",
+#'   outputFormat = "RAW"|"EXTRACTED",
+#'   userContext = list(
+#'     userId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_get_document_content
+#'
+#' @aliases bedrockagentruntime_get_document_content
+bedrockagentruntime_get_document_content <- function(dataSourceId, documentId, knowledgeBaseId, outputFormat = NULL, userContext = NULL) {
+  op <- new_operation(
+    name = "GetDocumentContent",
+    http_method = "POST",
+    http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/documents/{documentId}/content",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$get_document_content_input(dataSourceId = dataSourceId, documentId = documentId, knowledgeBaseId = knowledgeBaseId, outputFormat = outputFormat, userContext = userContext)
+  output <- .bedrockagentruntime$get_document_content_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$get_document_content <- bedrockagentruntime_get_document_content
+
 #' Retrieves the flow definition snapshot used for a flow execution
 #'
 #' @description
@@ -569,6 +1033,102 @@ bedrockagentruntime_get_flow_execution <- function(executionIdentifier, flowAlia
   return(response)
 }
 .bedrockagentruntime$operations$get_flow_execution <- bedrockagentruntime_get_flow_execution
+
+#' Retrieves the ingested access control list (ACL) for a specific document
+#' in a knowledge base
+#'
+#' @description
+#' Retrieves the ingested access control list (ACL) for a specific document in a knowledge base. Use this operation to inspect the allow and deny lists that were ingested for a document to troubleshoot access control issues. To use this operation, you must have the `bedrock:GetIngestedDocumentAcl` permission.
+#'
+#' @usage
+#' bedrockagentruntime_get_ingested_document_acl(dataSourceId, documentId,
+#'   knowledgeBaseId)
+#'
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the document.
+#' @param documentId &#91;required&#93; The unique identifier of the document to retrieve the ingested access control list (ACL) for.
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that contains the document.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   documentAcl = list(
+#'     allowList = list(
+#'       conditions = list(
+#'         list(
+#'           conditionOperator = "AND"|"OR",
+#'           groups = list(
+#'             list(
+#'               id = "string",
+#'               type = "KNOWLEDGE_BASE"|"DATA_SOURCE"
+#'             )
+#'           ),
+#'           users = list(
+#'             list(
+#'               id = "string",
+#'               type = "KNOWLEDGE_BASE"|"DATA_SOURCE"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       memberRelation = "AND"|"OR"
+#'     ),
+#'     denyList = list(
+#'       conditions = list(
+#'         list(
+#'           conditionOperator = "AND"|"OR",
+#'           groups = list(
+#'             list(
+#'               id = "string",
+#'               type = "KNOWLEDGE_BASE"|"DATA_SOURCE"
+#'             )
+#'           ),
+#'           users = list(
+#'             list(
+#'               id = "string",
+#'               type = "KNOWLEDGE_BASE"|"DATA_SOURCE"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       memberRelation = "AND"|"OR"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_ingested_document_acl(
+#'   dataSourceId = "string",
+#'   documentId = "string",
+#'   knowledgeBaseId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_get_ingested_document_acl
+#'
+#' @aliases bedrockagentruntime_get_ingested_document_acl
+bedrockagentruntime_get_ingested_document_acl <- function(dataSourceId, documentId, knowledgeBaseId) {
+  op <- new_operation(
+    name = "GetIngestedDocumentAcl",
+    http_method = "POST",
+    http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/get-ingested-document-acl",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$get_ingested_document_acl_input(dataSourceId = dataSourceId, documentId = documentId, knowledgeBaseId = knowledgeBaseId)
+  output <- .bedrockagentruntime$get_ingested_document_acl_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$get_ingested_document_acl <- bedrockagentruntime_get_ingested_document_acl
 
 #' Retrieves the details of a specific invocation step within an invocation
 #' in a session
@@ -709,9 +1269,12 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 }
 .bedrockagentruntime$operations$get_session <- bedrockagentruntime_get_session
 
-#' Sends a prompt for the agent to process and respond to
+#' Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer
+#' open to new customers
 #'
 #' @description
+#' Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer open to new customers. For capabilities similar to Bedrock Agents Classic, explore Amazon Bedrock AgentCore. Existing customers can continue to use the service as normal. For more information, see [Amazon Bedrock Agents Classic availability change](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-classic-maintenance-mode.html).
+#' 
 #' Sends a prompt for the agent to process and respond to. Note the following fields for the request:
 #' 
 #' -   To continue the same conversation with an agent, use the same `sessionId` value in the request.
@@ -813,8 +1376,14 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #'                   customDocumentLocation = list(
 #'                     id = "string"
 #'                   ),
+#'                   googleDriveLocation = list(
+#'                     url = "string"
+#'                   ),
 #'                   kendraDocumentLocation = list(
 #'                     uri = "string"
+#'                   ),
+#'                   oneDriveLocation = list(
+#'                     url = "string"
 #'                   ),
 #'                   s3Location = list(
 #'                     uri = "string"
@@ -828,7 +1397,7 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #'                   sqlLocation = list(
 #'                     query = "string"
 #'                   ),
-#'                   type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'                   type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL"|"ONEDRIVE"|"GOOGLEDRIVE",
 #'                   webLocation = list(
 #'                     url = "string"
 #'                   )
@@ -1413,8 +1982,14 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #'                     customDocumentLocation = list(
 #'                       id = "string"
 #'                     ),
+#'                     googleDriveLocation = list(
+#'                       url = "string"
+#'                     ),
 #'                     kendraDocumentLocation = list(
 #'                       uri = "string"
+#'                     ),
+#'                     oneDriveLocation = list(
+#'                       url = "string"
 #'                     ),
 #'                     s3Location = list(
 #'                       uri = "string"
@@ -1428,7 +2003,7 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #'                     sqlLocation = list(
 #'                       query = "string"
 #'                     ),
-#'                     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'                     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL"|"ONEDRIVE"|"GOOGLEDRIVE",
 #'                     webLocation = list(
 #'                       url = "string"
 #'                     )
@@ -1868,8 +2443,14 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #'                     customDocumentLocation = list(
 #'                       id = "string"
 #'                     ),
+#'                     googleDriveLocation = list(
+#'                       url = "string"
+#'                     ),
 #'                     kendraDocumentLocation = list(
 #'                       uri = "string"
+#'                     ),
+#'                     oneDriveLocation = list(
+#'                       url = "string"
 #'                     ),
 #'                     s3Location = list(
 #'                       uri = "string"
@@ -1883,7 +2464,7 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #'                     sqlLocation = list(
 #'                       query = "string"
 #'                     ),
-#'                     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'                     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL"|"ONEDRIVE"|"GOOGLEDRIVE",
 #'                     webLocation = list(
 #'                       url = "string"
 #'                     )
@@ -1967,6 +2548,89 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #'       list(
 #'         knowledgeBaseId = "string",
 #'         retrievalConfiguration = list(
+#'           managedSearchConfiguration = list(
+#'             filter = list(
+#'               andAll = list(
+#'                 list()
+#'               ),
+#'               equals = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               greaterThan = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               greaterThanOrEquals = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               in = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               lessThan = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               lessThanOrEquals = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               listContains = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               notEquals = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               notIn = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               orAll = list(
+#'                 list()
+#'               ),
+#'               startsWith = list(
+#'                 key = "string",
+#'                 value = list()
+#'               ),
+#'               stringContains = list(
+#'                 key = "string",
+#'                 value = list()
+#'               )
+#'             ),
+#'             numberOfResults = 123,
+#'             rerankingConfiguration = list(
+#'               bedrockRerankingConfiguration = list(
+#'                 metadataConfiguration = list(
+#'                   selectionMode = "SELECTIVE"|"ALL",
+#'                   selectiveModeConfiguration = list(
+#'                     fieldsToExclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     ),
+#'                     fieldsToInclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 modelConfiguration = list(
+#'                   additionalModelRequestFields = list(
+#'                     list()
+#'                   ),
+#'                   modelArn = "string"
+#'                 ),
+#'                 numberOfRerankedResults = 123
+#'               ),
+#'               type = "BEDROCK_RERANKING_MODEL"
+#'             ),
+#'             rerankingModelType = "CUSTOM"|"MANAGED"|"NONE"
+#'           ),
 #'           vectorSearchConfiguration = list(
 #'             filter = list(
 #'               andAll = list(
@@ -2152,7 +2816,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #' the output of each node as a stream
 #'
 #' @description
-#' Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream. If there's an error, the error is returned. For more information, see [Test a flow in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-test.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream. If there's an error, the error is returned. For more information, see [Test a flow in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-test.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=awsomedayonlinehk).
 #' 
 #' The CLI doesn't support streaming operations in Amazon Bedrock, including [`invoke_flow`][bedrockagentruntime_invoke_flow].
 #'
@@ -2725,8 +3389,14 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #'                               customDocumentLocation = list(
 #'                                 id = "string"
 #'                               ),
+#'                               googleDriveLocation = list(
+#'                                 url = "string"
+#'                               ),
 #'                               kendraDocumentLocation = list(
 #'                                 uri = "string"
+#'                               ),
+#'                               oneDriveLocation = list(
+#'                                 url = "string"
 #'                               ),
 #'                               s3Location = list(
 #'                                 uri = "string"
@@ -2740,7 +3410,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #'                               sqlLocation = list(
 #'                                 query = "string"
 #'                               ),
-#'                               type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'                               type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL"|"ONEDRIVE"|"GOOGLEDRIVE",
 #'                               webLocation = list(
 #'                                 url = "string"
 #'                               )
@@ -3180,8 +3850,14 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #'                               customDocumentLocation = list(
 #'                                 id = "string"
 #'                               ),
+#'                               googleDriveLocation = list(
+#'                                 url = "string"
+#'                               ),
 #'                               kendraDocumentLocation = list(
 #'                                 uri = "string"
+#'                               ),
+#'                               oneDriveLocation = list(
+#'                                 url = "string"
 #'                               ),
 #'                               s3Location = list(
 #'                                 uri = "string"
@@ -3195,7 +3871,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #'                               sqlLocation = list(
 #'                                 query = "string"
 #'                               ),
-#'                               type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'                               type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL"|"ONEDRIVE"|"GOOGLEDRIVE",
 #'                               webLocation = list(
 #'                                 url = "string"
 #'                               )
@@ -3450,8 +4126,14 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'                   customDocumentLocation = list(
 #'                     id = "string"
 #'                   ),
+#'                   googleDriveLocation = list(
+#'                     url = "string"
+#'                   ),
 #'                   kendraDocumentLocation = list(
 #'                     uri = "string"
+#'                   ),
+#'                   oneDriveLocation = list(
+#'                     url = "string"
 #'                   ),
 #'                   s3Location = list(
 #'                     uri = "string"
@@ -3465,7 +4147,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'                   sqlLocation = list(
 #'                     query = "string"
 #'                   ),
-#'                   type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'                   type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL"|"ONEDRIVE"|"GOOGLEDRIVE",
 #'                   webLocation = list(
 #'                     url = "string"
 #'                   )
@@ -4044,8 +4726,14 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'                     customDocumentLocation = list(
 #'                       id = "string"
 #'                     ),
+#'                     googleDriveLocation = list(
+#'                       url = "string"
+#'                     ),
 #'                     kendraDocumentLocation = list(
 #'                       uri = "string"
+#'                     ),
+#'                     oneDriveLocation = list(
+#'                       url = "string"
 #'                     ),
 #'                     s3Location = list(
 #'                       uri = "string"
@@ -4059,7 +4747,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'                     sqlLocation = list(
 #'                       query = "string"
 #'                     ),
-#'                     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'                     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL"|"ONEDRIVE"|"GOOGLEDRIVE",
 #'                     webLocation = list(
 #'                       url = "string"
 #'                     )
@@ -4499,8 +5187,14 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'                     customDocumentLocation = list(
 #'                       id = "string"
 #'                     ),
+#'                     googleDriveLocation = list(
+#'                       url = "string"
+#'                     ),
 #'                     kendraDocumentLocation = list(
 #'                       uri = "string"
+#'                     ),
+#'                     oneDriveLocation = list(
+#'                       url = "string"
 #'                     ),
 #'                     s3Location = list(
 #'                       uri = "string"
@@ -4514,7 +5208,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'                     sqlLocation = list(
 #'                       query = "string"
 #'                     ),
-#'                     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'                     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL"|"ONEDRIVE"|"GOOGLEDRIVE",
 #'                     webLocation = list(
 #'                       url = "string"
 #'                     )
@@ -4661,6 +5355,89 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'           description = "string",
 #'           knowledgeBaseId = "string",
 #'           retrievalConfiguration = list(
+#'             managedSearchConfiguration = list(
+#'               filter = list(
+#'                 andAll = list(
+#'                   list()
+#'                 ),
+#'                 equals = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 greaterThan = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 greaterThanOrEquals = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 in = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 lessThan = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 lessThanOrEquals = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 listContains = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 notEquals = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 notIn = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 orAll = list(
+#'                   list()
+#'                 ),
+#'                 startsWith = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 stringContains = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 )
+#'               ),
+#'               numberOfResults = 123,
+#'               rerankingConfiguration = list(
+#'                 bedrockRerankingConfiguration = list(
+#'                   metadataConfiguration = list(
+#'                     selectionMode = "SELECTIVE"|"ALL",
+#'                     selectiveModeConfiguration = list(
+#'                       fieldsToExclude = list(
+#'                         list(
+#'                           fieldName = "string"
+#'                         )
+#'                       ),
+#'                       fieldsToInclude = list(
+#'                         list(
+#'                           fieldName = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   modelConfiguration = list(
+#'                     additionalModelRequestFields = list(
+#'                       list()
+#'                     ),
+#'                     modelArn = "string"
+#'                   ),
+#'                   numberOfRerankedResults = 123
+#'                 ),
+#'                 type = "BEDROCK_RERANKING_MODEL"
+#'               ),
+#'               rerankingModelType = "CUSTOM"|"MANAGED"|"NONE"
+#'             ),
 #'             vectorSearchConfiguration = list(
 #'               filter = list(
 #'                 andAll = list(
@@ -4886,6 +5663,89 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'       description = "string",
 #'       knowledgeBaseId = "string",
 #'       retrievalConfiguration = list(
+#'         managedSearchConfiguration = list(
+#'           filter = list(
+#'             andAll = list(
+#'               list()
+#'             ),
+#'             equals = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             greaterThan = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             greaterThanOrEquals = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             in = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             lessThan = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             lessThanOrEquals = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             listContains = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             notEquals = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             notIn = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             orAll = list(
+#'               list()
+#'             ),
+#'             startsWith = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             stringContains = list(
+#'               key = "string",
+#'               value = list()
+#'             )
+#'           ),
+#'           numberOfResults = 123,
+#'           rerankingConfiguration = list(
+#'             bedrockRerankingConfiguration = list(
+#'               metadataConfiguration = list(
+#'                 selectionMode = "SELECTIVE"|"ALL",
+#'                 selectiveModeConfiguration = list(
+#'                   fieldsToExclude = list(
+#'                     list(
+#'                       fieldName = "string"
+#'                     )
+#'                   ),
+#'                   fieldsToInclude = list(
+#'                     list(
+#'                       fieldName = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               modelConfiguration = list(
+#'                 additionalModelRequestFields = list(
+#'                   list()
+#'                 ),
+#'                 modelArn = "string"
+#'               ),
+#'               numberOfRerankedResults = 123
+#'             ),
+#'             type = "BEDROCK_RERANKING_MODEL"
+#'           ),
+#'           rerankingModelType = "CUSTOM"|"MANAGED"|"NONE"
+#'         ),
 #'         vectorSearchConfiguration = list(
 #'           filter = list(
 #'             andAll = list(
@@ -5620,8 +6480,14 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCo
 #'                             customDocumentLocation = list(
 #'                               id = "string"
 #'                             ),
+#'                             googleDriveLocation = list(
+#'                               url = "string"
+#'                             ),
 #'                             kendraDocumentLocation = list(
 #'                               uri = "string"
+#'                             ),
+#'                             oneDriveLocation = list(
+#'                               url = "string"
 #'                             ),
 #'                             s3Location = list(
 #'                               uri = "string"
@@ -5635,7 +6501,7 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCo
 #'                             sqlLocation = list(
 #'                               query = "string"
 #'                             ),
-#'                             type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'                             type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL"|"ONEDRIVE"|"GOOGLEDRIVE",
 #'                             webLocation = list(
 #'                               url = "string"
 #'                             )
@@ -6075,8 +6941,14 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCo
 #'                             customDocumentLocation = list(
 #'                               id = "string"
 #'                             ),
+#'                             googleDriveLocation = list(
+#'                               url = "string"
+#'                             ),
 #'                             kendraDocumentLocation = list(
 #'                               uri = "string"
+#'                             ),
+#'                             oneDriveLocation = list(
+#'                               url = "string"
 #'                             ),
 #'                             s3Location = list(
 #'                               uri = "string"
@@ -6090,7 +6962,7 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCo
 #'                             sqlLocation = list(
 #'                               query = "string"
 #'                             ),
-#'                             type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'                             type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL"|"ONEDRIVE"|"GOOGLEDRIVE",
 #'                             webLocation = list(
 #'                               url = "string"
 #'                             )
@@ -6534,7 +7406,7 @@ bedrockagentruntime_list_tags_for_resource <- function(resourceArn) {
 #' Optimizes a prompt for the task that you specify
 #'
 #' @description
-#' Optimizes a prompt for the task that you specify. For more information, see [Optimize a prompt](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-optimize.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Optimizes a prompt for the task that you specify. For more information, see [Optimize a prompt](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-optimize.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=awsomedayonlinehk).
 #'
 #' @usage
 #' bedrockagentruntime_optimize_prompt(input, targetModelId)
@@ -6808,13 +7680,14 @@ bedrockagentruntime_rerank <- function(nextToken = NULL, queries, rerankingConfi
 #'
 #' @usage
 #' bedrockagentruntime_retrieve(guardrailConfiguration, knowledgeBaseId,
-#'   nextToken, retrievalConfiguration, retrievalQuery)
+#'   nextToken, retrievalConfiguration, retrievalQuery, userContext)
 #'
 #' @param guardrailConfiguration Guardrail settings.
 #' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to query.
 #' @param nextToken If there are more results than can fit in the response, the response returns a `nextToken`. Use this token in the `nextToken` field of another request to retrieve the next batch of results.
 #' @param retrievalConfiguration Contains configurations for the knowledge base query and retrieval process. For more information, see [Query configurations](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-config.html).
 #' @param retrievalQuery &#91;required&#93; Contains the query to send the knowledge base.
+#' @param userContext Contains information about the user making the request. This is used for access control filtering to ensure that retrieval results only include documents the user is authorized to access.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6844,6 +7717,7 @@ bedrockagentruntime_rerank <- function(nextToken = NULL, queries, rerankingConfi
 #'           summary = "string"
 #'         )
 #'       ),
+#'       documentId = "string",
 #'       location = list(
 #'         confluenceLocation = list(
 #'           url = "string"
@@ -6851,8 +7725,14 @@ bedrockagentruntime_rerank <- function(nextToken = NULL, queries, rerankingConfi
 #'         customDocumentLocation = list(
 #'           id = "string"
 #'         ),
+#'         googleDriveLocation = list(
+#'           url = "string"
+#'         ),
 #'         kendraDocumentLocation = list(
 #'           uri = "string"
+#'         ),
+#'         oneDriveLocation = list(
+#'           url = "string"
 #'         ),
 #'         s3Location = list(
 #'           uri = "string"
@@ -6866,7 +7746,7 @@ bedrockagentruntime_rerank <- function(nextToken = NULL, queries, rerankingConfi
 #'         sqlLocation = list(
 #'           query = "string"
 #'         ),
-#'         type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'         type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL"|"ONEDRIVE"|"GOOGLEDRIVE",
 #'         webLocation = list(
 #'           url = "string"
 #'         )
@@ -6890,6 +7770,89 @@ bedrockagentruntime_rerank <- function(nextToken = NULL, queries, rerankingConfi
 #'   knowledgeBaseId = "string",
 #'   nextToken = "string",
 #'   retrievalConfiguration = list(
+#'     managedSearchConfiguration = list(
+#'       filter = list(
+#'         andAll = list(
+#'           list()
+#'         ),
+#'         equals = list(
+#'           key = "string",
+#'           value = list()
+#'         ),
+#'         greaterThan = list(
+#'           key = "string",
+#'           value = list()
+#'         ),
+#'         greaterThanOrEquals = list(
+#'           key = "string",
+#'           value = list()
+#'         ),
+#'         in = list(
+#'           key = "string",
+#'           value = list()
+#'         ),
+#'         lessThan = list(
+#'           key = "string",
+#'           value = list()
+#'         ),
+#'         lessThanOrEquals = list(
+#'           key = "string",
+#'           value = list()
+#'         ),
+#'         listContains = list(
+#'           key = "string",
+#'           value = list()
+#'         ),
+#'         notEquals = list(
+#'           key = "string",
+#'           value = list()
+#'         ),
+#'         notIn = list(
+#'           key = "string",
+#'           value = list()
+#'         ),
+#'         orAll = list(
+#'           list()
+#'         ),
+#'         startsWith = list(
+#'           key = "string",
+#'           value = list()
+#'         ),
+#'         stringContains = list(
+#'           key = "string",
+#'           value = list()
+#'         )
+#'       ),
+#'       numberOfResults = 123,
+#'       rerankingConfiguration = list(
+#'         bedrockRerankingConfiguration = list(
+#'           metadataConfiguration = list(
+#'             selectionMode = "SELECTIVE"|"ALL",
+#'             selectiveModeConfiguration = list(
+#'               fieldsToExclude = list(
+#'                 list(
+#'                   fieldName = "string"
+#'                 )
+#'               ),
+#'               fieldsToInclude = list(
+#'                 list(
+#'                   fieldName = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           modelConfiguration = list(
+#'             additionalModelRequestFields = list(
+#'               list()
+#'             ),
+#'             modelArn = "string"
+#'           ),
+#'           numberOfRerankedResults = 123
+#'         ),
+#'         type = "BEDROCK_RERANKING_MODEL"
+#'       ),
+#'       rerankingModelType = "CUSTOM"|"MANAGED"|"NONE"
+#'     ),
 #'     vectorSearchConfiguration = list(
 #'       filter = list(
 #'         andAll = list(
@@ -6991,6 +7954,9 @@ bedrockagentruntime_rerank <- function(nextToken = NULL, queries, rerankingConfi
 #'     ),
 #'     text = "string",
 #'     type = "TEXT"|"IMAGE"
+#'   ),
+#'   userContext = list(
+#'     userId = "string"
 #'   )
 #' )
 #' ```
@@ -7000,7 +7966,7 @@ bedrockagentruntime_rerank <- function(nextToken = NULL, queries, rerankingConfi
 #' @rdname bedrockagentruntime_retrieve
 #'
 #' @aliases bedrockagentruntime_retrieve
-bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledgeBaseId, nextToken = NULL, retrievalConfiguration = NULL, retrievalQuery) {
+bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledgeBaseId, nextToken = NULL, retrievalConfiguration = NULL, retrievalQuery, userContext = NULL) {
   op <- new_operation(
     name = "Retrieve",
     http_method = "POST",
@@ -7009,7 +7975,7 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "retrievalResults"),
     stream_api = FALSE
   )
-  input <- .bedrockagentruntime$retrieve_input(guardrailConfiguration = guardrailConfiguration, knowledgeBaseId = knowledgeBaseId, nextToken = nextToken, retrievalConfiguration = retrievalConfiguration, retrievalQuery = retrievalQuery)
+  input <- .bedrockagentruntime$retrieve_input(guardrailConfiguration = guardrailConfiguration, knowledgeBaseId = knowledgeBaseId, nextToken = nextToken, retrievalConfiguration = retrievalConfiguration, retrievalQuery = retrievalQuery, userContext = userContext)
   output <- .bedrockagentruntime$retrieve_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -7024,15 +7990,19 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
 #'
 #' @description
 #' Queries a knowledge base and generates responses based on the retrieved results and using the specified foundation model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html). The response only cites sources that are relevant to the query.
+#' 
+#' This API cannot be used with managed knowledge bases. Use [`agentic_retrieve_stream`][bedrockagentruntime_agentic_retrieve_stream] or [`retrieve`][bedrockagentruntime_retrieve] with managed knowledge bases.
 #'
 #' @usage
 #' bedrockagentruntime_retrieve_and_generate(input,
-#'   retrieveAndGenerateConfiguration, sessionConfiguration, sessionId)
+#'   retrieveAndGenerateConfiguration, sessionConfiguration, sessionId,
+#'   userContext)
 #'
 #' @param input &#91;required&#93; Contains the query to be made to the knowledge base.
 #' @param retrieveAndGenerateConfiguration Contains configurations for the knowledge base query and retrieval process. For more information, see [Query configurations](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-config.html).
 #' @param sessionConfiguration Contains details about the session with the knowledge base.
 #' @param sessionId The unique identifier of the session. When you first make a [`retrieve_and_generate`][bedrockagentruntime_retrieve_and_generate] request, Amazon Bedrock automatically generates this value. You must reuse this value for all subsequent requests in the same conversational session. This value allows Amazon Bedrock to maintain context and knowledge from previous interactions. You can't explicitly set the `sessionId` yourself.
+#' @param userContext Contains information about the user making the request. This is used for access control filtering to ensure that retrieval results only include documents the user is authorized to access.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7078,8 +8048,14 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
 #'             customDocumentLocation = list(
 #'               id = "string"
 #'             ),
+#'             googleDriveLocation = list(
+#'               url = "string"
+#'             ),
 #'             kendraDocumentLocation = list(
 #'               uri = "string"
+#'             ),
+#'             oneDriveLocation = list(
+#'               url = "string"
 #'             ),
 #'             s3Location = list(
 #'               uri = "string"
@@ -7093,7 +8069,7 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
 #'             sqlLocation = list(
 #'               query = "string"
 #'             ),
-#'             type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'             type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL"|"ONEDRIVE"|"GOOGLEDRIVE",
 #'             webLocation = list(
 #'               url = "string"
 #'             )
@@ -7214,6 +8190,89 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
 #'         )
 #'       ),
 #'       retrievalConfiguration = list(
+#'         managedSearchConfiguration = list(
+#'           filter = list(
+#'             andAll = list(
+#'               list()
+#'             ),
+#'             equals = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             greaterThan = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             greaterThanOrEquals = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             in = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             lessThan = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             lessThanOrEquals = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             listContains = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             notEquals = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             notIn = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             orAll = list(
+#'               list()
+#'             ),
+#'             startsWith = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             stringContains = list(
+#'               key = "string",
+#'               value = list()
+#'             )
+#'           ),
+#'           numberOfResults = 123,
+#'           rerankingConfiguration = list(
+#'             bedrockRerankingConfiguration = list(
+#'               metadataConfiguration = list(
+#'                 selectionMode = "SELECTIVE"|"ALL",
+#'                 selectiveModeConfiguration = list(
+#'                   fieldsToExclude = list(
+#'                     list(
+#'                       fieldName = "string"
+#'                     )
+#'                   ),
+#'                   fieldsToInclude = list(
+#'                     list(
+#'                       fieldName = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               modelConfiguration = list(
+#'                 additionalModelRequestFields = list(
+#'                   list()
+#'                 ),
+#'                 modelArn = "string"
+#'               ),
+#'               numberOfRerankedResults = 123
+#'             ),
+#'             type = "BEDROCK_RERANKING_MODEL"
+#'           ),
+#'           rerankingModelType = "CUSTOM"|"MANAGED"|"NONE"
+#'         ),
 #'         vectorSearchConfiguration = list(
 #'           filter = list(
 #'             andAll = list(
@@ -7314,7 +8373,10 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
 #'   sessionConfiguration = list(
 #'     kmsKeyArn = "string"
 #'   ),
-#'   sessionId = "string"
+#'   sessionId = "string",
+#'   userContext = list(
+#'     userId = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -7323,7 +8385,7 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
 #' @rdname bedrockagentruntime_retrieve_and_generate
 #'
 #' @aliases bedrockagentruntime_retrieve_and_generate
-bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerateConfiguration = NULL, sessionConfiguration = NULL, sessionId = NULL) {
+bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerateConfiguration = NULL, sessionConfiguration = NULL, sessionId = NULL, userContext = NULL) {
   op <- new_operation(
     name = "RetrieveAndGenerate",
     http_method = "POST",
@@ -7332,7 +8394,7 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentruntime$retrieve_and_generate_input(input = input, retrieveAndGenerateConfiguration = retrieveAndGenerateConfiguration, sessionConfiguration = sessionConfiguration, sessionId = sessionId)
+  input <- .bedrockagentruntime$retrieve_and_generate_input(input = input, retrieveAndGenerateConfiguration = retrieveAndGenerateConfiguration, sessionConfiguration = sessionConfiguration, sessionId = sessionId, userContext = userContext)
   output <- .bedrockagentruntime$retrieve_and_generate_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -7348,18 +8410,22 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #' @description
 #' Queries a knowledge base and generates responses based on the retrieved results, with output in streaming format.
 #' 
+#' This API cannot be used with managed knowledge bases. Use [`agentic_retrieve_stream`][bedrockagentruntime_agentic_retrieve_stream] or [`retrieve`][bedrockagentruntime_retrieve] with managed knowledge bases.
+#' 
 #' The CLI doesn't support streaming operations in Amazon Bedrock, including `InvokeModelWithResponseStream`.
 #' 
 #' This operation requires permission for the ` bedrock:RetrieveAndGenerate` action.
 #'
 #' @usage
 #' bedrockagentruntime_retrieve_and_generate_stream(input,
-#'   retrieveAndGenerateConfiguration, sessionConfiguration, sessionId)
+#'   retrieveAndGenerateConfiguration, sessionConfiguration, sessionId,
+#'   userContext)
 #'
 #' @param input &#91;required&#93; Contains the query to be made to the knowledge base.
 #' @param retrieveAndGenerateConfiguration Contains configurations for the knowledge base query and retrieval process. For more information, see [Query configurations](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-config.html).
 #' @param sessionConfiguration Contains details about the session with the knowledge base.
 #' @param sessionId The unique identifier of the session. When you first make a [`retrieve_and_generate`][bedrockagentruntime_retrieve_and_generate] request, Amazon Bedrock automatically generates this value. You must reuse this value for all subsequent requests in the same conversational session. This value allows Amazon Bedrock to maintain context and knowledge from previous interactions. You can't explicitly set the `sessionId` yourself.
+#' @param userContext Contains information about the user making the request. This is used for access control filtering to ensure that retrieval results only include documents the user is authorized to access.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7414,8 +8480,14 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'               customDocumentLocation = list(
 #'                 id = "string"
 #'               ),
+#'               googleDriveLocation = list(
+#'                 url = "string"
+#'               ),
 #'               kendraDocumentLocation = list(
 #'                 uri = "string"
+#'               ),
+#'               oneDriveLocation = list(
+#'                 url = "string"
 #'               ),
 #'               s3Location = list(
 #'                 uri = "string"
@@ -7429,7 +8501,7 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'               sqlLocation = list(
 #'                 query = "string"
 #'               ),
-#'               type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'               type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL"|"ONEDRIVE"|"GOOGLEDRIVE",
 #'               webLocation = list(
 #'                 url = "string"
 #'               )
@@ -7478,8 +8550,14 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'             customDocumentLocation = list(
 #'               id = "string"
 #'             ),
+#'             googleDriveLocation = list(
+#'               url = "string"
+#'             ),
 #'             kendraDocumentLocation = list(
 #'               uri = "string"
+#'             ),
+#'             oneDriveLocation = list(
+#'               url = "string"
 #'             ),
 #'             s3Location = list(
 #'               uri = "string"
@@ -7493,7 +8571,7 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'             sqlLocation = list(
 #'               query = "string"
 #'             ),
-#'             type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'             type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL"|"ONEDRIVE"|"GOOGLEDRIVE",
 #'             webLocation = list(
 #'               url = "string"
 #'             )
@@ -7638,6 +8716,89 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'         )
 #'       ),
 #'       retrievalConfiguration = list(
+#'         managedSearchConfiguration = list(
+#'           filter = list(
+#'             andAll = list(
+#'               list()
+#'             ),
+#'             equals = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             greaterThan = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             greaterThanOrEquals = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             in = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             lessThan = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             lessThanOrEquals = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             listContains = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             notEquals = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             notIn = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             orAll = list(
+#'               list()
+#'             ),
+#'             startsWith = list(
+#'               key = "string",
+#'               value = list()
+#'             ),
+#'             stringContains = list(
+#'               key = "string",
+#'               value = list()
+#'             )
+#'           ),
+#'           numberOfResults = 123,
+#'           rerankingConfiguration = list(
+#'             bedrockRerankingConfiguration = list(
+#'               metadataConfiguration = list(
+#'                 selectionMode = "SELECTIVE"|"ALL",
+#'                 selectiveModeConfiguration = list(
+#'                   fieldsToExclude = list(
+#'                     list(
+#'                       fieldName = "string"
+#'                     )
+#'                   ),
+#'                   fieldsToInclude = list(
+#'                     list(
+#'                       fieldName = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               modelConfiguration = list(
+#'                 additionalModelRequestFields = list(
+#'                   list()
+#'                 ),
+#'                 modelArn = "string"
+#'               ),
+#'               numberOfRerankedResults = 123
+#'             ),
+#'             type = "BEDROCK_RERANKING_MODEL"
+#'           ),
+#'           rerankingModelType = "CUSTOM"|"MANAGED"|"NONE"
+#'         ),
 #'         vectorSearchConfiguration = list(
 #'           filter = list(
 #'             andAll = list(
@@ -7738,7 +8899,10 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'   sessionConfiguration = list(
 #'     kmsKeyArn = "string"
 #'   ),
-#'   sessionId = "string"
+#'   sessionId = "string",
+#'   userContext = list(
+#'     userId = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -7747,7 +8911,7 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #' @rdname bedrockagentruntime_retrieve_and_generate_stream
 #'
 #' @aliases bedrockagentruntime_retrieve_and_generate_stream
-bedrockagentruntime_retrieve_and_generate_stream <- function(input, retrieveAndGenerateConfiguration = NULL, sessionConfiguration = NULL, sessionId = NULL) {
+bedrockagentruntime_retrieve_and_generate_stream <- function(input, retrieveAndGenerateConfiguration = NULL, sessionConfiguration = NULL, sessionId = NULL, userContext = NULL) {
   op <- new_operation(
     name = "RetrieveAndGenerateStream",
     http_method = "POST",
@@ -7756,7 +8920,7 @@ bedrockagentruntime_retrieve_and_generate_stream <- function(input, retrieveAndG
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$retrieve_and_generate_stream_input(input = input, retrieveAndGenerateConfiguration = retrieveAndGenerateConfiguration, sessionConfiguration = sessionConfiguration, sessionId = sessionId)
+  input <- .bedrockagentruntime$retrieve_and_generate_stream_input(input = input, retrieveAndGenerateConfiguration = retrieveAndGenerateConfiguration, sessionConfiguration = sessionConfiguration, sessionId = sessionId, userContext = userContext)
   output <- .bedrockagentruntime$retrieve_and_generate_stream_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -7900,7 +9064,7 @@ bedrockagentruntime_stop_flow_execution <- function(executionIdentifier, flowAli
 #' Associate tags with a resource
 #'
 #' @description
-#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the Amazon Bedrock User Guide.
+#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=awsomedayonlinehk) in the Amazon Bedrock User Guide.
 #'
 #' @usage
 #' bedrockagentruntime_tag_resource(resourceArn, tags)

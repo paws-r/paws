@@ -273,11 +273,12 @@ vpclattice_create_rule <- function(serviceIdentifier, listenerIdentifier, name, 
 #' -   `NONE`: The resource does not use an IAM policy. This is the default.
 #' 
 #' -   `AWS_IAM`: The resource uses an IAM policy. When this type is used, auth is enabled and an auth policy is required.
+#' @param idleTimeoutSeconds The amount of time, in seconds, that a connection can remain idle (no data sent) before VPC Lattice closes it. The valid range is 60 to 600 seconds. If you don't specify a value, the default is 60 seconds. This setting does not change the maximum connection duration of 10 minutes; connections are still closed when they reach that limit.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_create_service
-vpclattice_create_service <- function(clientToken = NULL, name, tags = NULL, customDomainName = NULL, certificateArn = NULL, authType = NULL) {
+vpclattice_create_service <- function(clientToken = NULL, name, tags = NULL, customDomainName = NULL, certificateArn = NULL, authType = NULL, idleTimeoutSeconds = NULL) {
   op <- new_operation(
     name = "CreateService",
     http_method = "POST",
@@ -286,7 +287,7 @@ vpclattice_create_service <- function(clientToken = NULL, name, tags = NULL, cus
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_service_input(clientToken = clientToken, name = name, tags = tags, customDomainName = customDomainName, certificateArn = certificateArn, authType = authType)
+  input <- .vpclattice$create_service_input(clientToken = clientToken, name = name, tags = tags, customDomainName = customDomainName, certificateArn = certificateArn, authType = authType, idleTimeoutSeconds = idleTimeoutSeconds)
   output <- .vpclattice$create_service_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -2340,11 +2341,12 @@ vpclattice_update_rule <- function(serviceIdentifier, listenerIdentifier, ruleId
 #' -   `NONE`: The resource does not use an IAM policy. This is the default.
 #' 
 #' -   `AWS_IAM`: The resource uses an IAM policy. When this type is used, auth is enabled and an auth policy is required.
+#' @param idleTimeoutSeconds The amount of time, in seconds, that a connection can remain idle (no data sent) before VPC Lattice closes it. The valid range is 60 to 600 seconds. If you don't specify a value, the default is 60 seconds. This setting does not change the maximum connection duration of 10 minutes; connections are still closed when they reach that limit.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_update_service
-vpclattice_update_service <- function(serviceIdentifier, certificateArn = NULL, authType = NULL) {
+vpclattice_update_service <- function(serviceIdentifier, certificateArn = NULL, authType = NULL, idleTimeoutSeconds = NULL) {
   op <- new_operation(
     name = "UpdateService",
     http_method = "PATCH",
@@ -2353,7 +2355,7 @@ vpclattice_update_service <- function(serviceIdentifier, certificateArn = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$update_service_input(serviceIdentifier = serviceIdentifier, certificateArn = certificateArn, authType = authType)
+  input <- .vpclattice$update_service_input(serviceIdentifier = serviceIdentifier, certificateArn = certificateArn, authType = authType, idleTimeoutSeconds = idleTimeoutSeconds)
   output <- .vpclattice$update_service_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -2407,12 +2409,14 @@ vpclattice_update_service_network <- function(serviceNetworkIdentifier, authType
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_update_service_network_vpc_association/](https://www.paws-r-sdk.com/docs/vpclattice_update_service_network_vpc_association/) for full documentation.
 #'
 #' @param serviceNetworkVpcAssociationIdentifier &#91;required&#93; The ID or ARN of the association.
-#' @param securityGroupIds &#91;required&#93; The IDs of the security groups.
+#' @param securityGroupIds The IDs of the security groups.
+#' @param privateDnsEnabled Indicates if private DNS is enabled for the VPC association.
+#' @param dnsOptions DNS options for the service network VPC association.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_update_service_network_vpc_association
-vpclattice_update_service_network_vpc_association <- function(serviceNetworkVpcAssociationIdentifier, securityGroupIds) {
+vpclattice_update_service_network_vpc_association <- function(serviceNetworkVpcAssociationIdentifier, securityGroupIds = NULL, privateDnsEnabled = NULL, dnsOptions = NULL) {
   op <- new_operation(
     name = "UpdateServiceNetworkVpcAssociation",
     http_method = "PATCH",
@@ -2421,7 +2425,7 @@ vpclattice_update_service_network_vpc_association <- function(serviceNetworkVpcA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$update_service_network_vpc_association_input(serviceNetworkVpcAssociationIdentifier = serviceNetworkVpcAssociationIdentifier, securityGroupIds = securityGroupIds)
+  input <- .vpclattice$update_service_network_vpc_association_input(serviceNetworkVpcAssociationIdentifier = serviceNetworkVpcAssociationIdentifier, securityGroupIds = securityGroupIds, privateDnsEnabled = privateDnsEnabled, dnsOptions = dnsOptions)
   output <- .vpclattice$update_service_network_vpc_association_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)

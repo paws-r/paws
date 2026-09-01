@@ -38,7 +38,7 @@ connect_update_hours_of_operation_override(
 
 \item{OverrideType}{Whether the override will be defined as a \emph{standard} or as a \emph{recurring event}.
 
-For more information about how override types are applied, see Build your list of overrides in the \emph{Administrator Guide}.}
+For more information about how override types are applied, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/hours-of-operation-overrides.html}{Build your list of overrides} in the \emph{Administrator Guide}.}
 }
 \description{
 Update the hours of operation override.

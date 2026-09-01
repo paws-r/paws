@@ -3,6 +3,85 @@
 #' @include cloudwatchapplicationsignals_service.R
 NULL
 
+#' Deletes multiple instrumentation configurations in a single request
+#'
+#' @description
+#' Deletes multiple instrumentation configurations in a single request. Supports two mutually exclusive selection methods:
+#' 
+#' -   By scope: Delete all configurations matching a Service + Environment + InstrumentationType
+#' -   By ARN list: Delete specific configurations by providing a list of resource ARNs
+#'
+#' @usage
+#' cloudwatchapplicationsignals_batch_delete_instrumentation_configurations(
+#'   DeletionTarget)
+#'
+#' @param DeletionTarget &#91;required&#93; The deletion target - either bulk by scope or targeted by ARN list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeletedCount = 123,
+#'   SuccessfulDeletions = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       SignalType = "string",
+#'       LocationHash = "string"
+#'     )
+#'   ),
+#'   Errors = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       Code = "ResourceNotFoundException"|"AccessDeniedException"|"InternalServiceException",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_delete_instrumentation_configurations(
+#'   DeletionTarget = list(
+#'     Scope = list(
+#'       Service = "string",
+#'       Environment = "string",
+#'       InstrumentationType = "BREAKPOINT"|"PROBE"
+#'     ),
+#'     ResourceArns = list(
+#'       ResourceArns = list(
+#'         "string"
+#'       ),
+#'       InstrumentationType = "BREAKPOINT"|"PROBE"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_batc_dele_inst_conf
+#'
+#' @aliases cloudwatchapplicationsignals_batch_delete_instrumentation_configurations
+cloudwatchapplicationsignals_batch_delete_instrumentation_configurations <- function(DeletionTarget) {
+  op <- new_operation(
+    name = "BatchDeleteInstrumentationConfigurations",
+    http_method = "POST",
+    http_path = "/batch-delete-instrumentation-configurations",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$batch_delete_instrumentation_configurations_input(DeletionTarget = DeletionTarget)
+  output <- .cloudwatchapplicationsignals$batch_delete_instrumentation_configurations_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$batch_delete_instrumentation_configurations <- cloudwatchapplicationsignals_batch_delete_instrumentation_configurations
+
 #' Use this operation to retrieve one or more service level objective (SLO)
 #' budget reports
 #'
@@ -373,6 +452,170 @@ cloudwatchapplicationsignals_batch_update_exclusion_windows <- function(SloIds, 
   return(response)
 }
 .cloudwatchapplicationsignals$operations$batch_update_exclusion_windows <- cloudwatchapplicationsignals_batch_update_exclusion_windows
+
+#' Creates a dynamic instrumentation configuration for a specific code or
+#' endpoint location within a service and environment
+#'
+#' @description
+#' Creates a dynamic instrumentation configuration for a specific code or endpoint location within a service and environment. Configurations are immutable after creation.
+#' 
+#' For `BREAKPOINT` type configurations, they expire after 24 hours unless a shorter expiration is provided. For `PROBE` type configurations, they persist until explicitly deleted; an expiration cannot be set for `PROBE` configurations.
+#' 
+#' If a configuration already exists for the same service, environment, signal type, and location, this operation returns a conflict instead of overwriting it. Use attribute filters and capture settings to control where the instrumentation runs and which data is collected.
+#'
+#' @usage
+#' cloudwatchapplicationsignals_create_instrumentation_configuration(
+#'   InstrumentationType, Service, Environment, SignalType, Location,
+#'   Description, ExpiresAt, AttributeFilters, CaptureConfiguration, Tags)
+#'
+#' @param InstrumentationType &#91;required&#93; Type of instrumentation: BREAKPOINT (temporary) or PROBE (permanent)
+#' @param Service &#91;required&#93; The name of the service to instrument. This should match the `service.name` resource attribute reported by the application.
+#' @param Environment &#91;required&#93; The environment that the service is running in, such as `eks:cluster-prod/namespace` or `ec2:production`.
+#' @param SignalType &#91;required&#93; The telemetry signal type to emit for this instrumentation. The supported value is `SNAPSHOT`.
+#' @param Location &#91;required&#93; The location where instrumentation should be applied. Specify a `CodeLocation` for code-level instrumentation.
+#' @param Description An optional short description (up to 50 characters) that explains the purpose of this instrumentation.
+#' @param ExpiresAt For BREAKPOINT: optional, defaults to 24 hours, must be between 5 min and 24 hours. For PROBE: not supported. PROBE configurations are permanent and persist until explicitly deleted.
+#' @param AttributeFilters Client-side filters that target specific instances. Each object in the array is AND-matched on its keys, and multiple objects are OR-matched to decide where to apply the instrumentation.
+#' @param CaptureConfiguration &#91;required&#93; Specifies what to capture when the instrumentation point is hit. Specify `CodeCapture` for code-level capture settings.
+#' @param Tags An optional list of key-value pairs to associate with the instrumentation configuration. Tags can help you organize and categorize your resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstrumentationType = "BREAKPOINT"|"PROBE",
+#'   Service = "string",
+#'   Environment = "string",
+#'   SignalType = "SNAPSHOT",
+#'   Location = list(
+#'     CodeLocation = list(
+#'       Language = "Java"|"Python"|"Javascript",
+#'       CodeUnit = "string",
+#'       ClassName = "string",
+#'       MethodName = "string",
+#'       FilePath = "string",
+#'       LineNumber = 123
+#'     )
+#'   ),
+#'   LocationHash = "string",
+#'   Description = "string",
+#'   ExpiresAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   AttributeFilters = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   CaptureConfiguration = list(
+#'     CodeCapture = list(
+#'       CaptureArguments = list(
+#'         "string"
+#'       ),
+#'       CaptureReturn = TRUE|FALSE,
+#'       CaptureStackTrace = TRUE|FALSE,
+#'       CaptureLocals = list(
+#'         "string"
+#'       ),
+#'       CaptureLimits = list(
+#'         MaxHits = 123,
+#'         MaxStringLength = 123,
+#'         MaxCollectionWidth = 123,
+#'         MaxCollectionDepth = 123,
+#'         MaxStackFrames = 123,
+#'         MaxStackTraceSize = 123,
+#'         MaxObjectDepth = 123,
+#'         MaxFieldsPerObject = 123
+#'       )
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ARN = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_instrumentation_configuration(
+#'   InstrumentationType = "BREAKPOINT"|"PROBE",
+#'   Service = "string",
+#'   Environment = "string",
+#'   SignalType = "SNAPSHOT",
+#'   Location = list(
+#'     CodeLocation = list(
+#'       Language = "Java"|"Python"|"Javascript",
+#'       CodeUnit = "string",
+#'       ClassName = "string",
+#'       MethodName = "string",
+#'       FilePath = "string",
+#'       LineNumber = 123
+#'     )
+#'   ),
+#'   Description = "string",
+#'   ExpiresAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   AttributeFilters = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   CaptureConfiguration = list(
+#'     CodeCapture = list(
+#'       CaptureArguments = list(
+#'         "string"
+#'       ),
+#'       CaptureReturn = TRUE|FALSE,
+#'       CaptureStackTrace = TRUE|FALSE,
+#'       CaptureLocals = list(
+#'         "string"
+#'       ),
+#'       CaptureLimits = list(
+#'         MaxHits = 123,
+#'         MaxStringLength = 123,
+#'         MaxCollectionWidth = 123,
+#'         MaxCollectionDepth = 123,
+#'         MaxStackFrames = 123,
+#'         MaxStackTraceSize = 123,
+#'         MaxObjectDepth = 123,
+#'         MaxFieldsPerObject = 123
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_crea_inst_conf
+#'
+#' @aliases cloudwatchapplicationsignals_create_instrumentation_configuration
+cloudwatchapplicationsignals_create_instrumentation_configuration <- function(InstrumentationType, Service, Environment, SignalType, Location, Description = NULL, ExpiresAt = NULL, AttributeFilters = NULL, CaptureConfiguration, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateInstrumentationConfiguration",
+    http_method = "POST",
+    http_path = "/create-instrumentation-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$create_instrumentation_configuration_input(InstrumentationType = InstrumentationType, Service = Service, Environment = Environment, SignalType = SignalType, Location = Location, Description = Description, ExpiresAt = ExpiresAt, AttributeFilters = AttributeFilters, CaptureConfiguration = CaptureConfiguration, Tags = Tags)
+  output <- .cloudwatchapplicationsignals$create_instrumentation_configuration_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$create_instrumentation_configuration <- cloudwatchapplicationsignals_create_instrumentation_configuration
 
 #' Creates a service level objective (SLO), which can help you ensure that
 #' your critical business operations are meeting customer expectations
@@ -941,6 +1184,75 @@ cloudwatchapplicationsignals_delete_grouping_configuration <- function() {
 }
 .cloudwatchapplicationsignals$operations$delete_grouping_configuration <- cloudwatchapplicationsignals_delete_grouping_configuration
 
+#' Deletes the specified instrumentation configuration
+#'
+#' @description
+#' Deletes the specified instrumentation configuration. SDKs remove the instrumentation during their next sync after the configuration is deleted or expires.
+#'
+#' @usage
+#' cloudwatchapplicationsignals_delete_instrumentation_configuration(
+#'   InstrumentationType, Service, Environment, SignalType,
+#'   LocationIdentifier)
+#'
+#' @param InstrumentationType &#91;required&#93; Type of instrumentation configuration (BREAKPOINT or PROBE). Required to identify the configuration to delete.
+#' @param Service &#91;required&#93; Service name for the instrumentation configuration.
+#' @param Environment &#91;required&#93; Environment name for the instrumentation configuration.
+#' @param SignalType &#91;required&#93; Signal type for the instrumentation configuration.
+#' @param LocationIdentifier &#91;required&#93; Location identifier - either full code location or a pre-computed hash.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeletionStatus = "DELETED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_instrumentation_configuration(
+#'   InstrumentationType = "BREAKPOINT"|"PROBE",
+#'   Service = "string",
+#'   Environment = "string",
+#'   SignalType = "SNAPSHOT",
+#'   LocationIdentifier = list(
+#'     CodeLocation = list(
+#'       Language = "Java"|"Python"|"Javascript",
+#'       CodeUnit = "string",
+#'       ClassName = "string",
+#'       MethodName = "string",
+#'       FilePath = "string",
+#'       LineNumber = 123
+#'     ),
+#'     LocationHash = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_dele_inst_conf
+#'
+#' @aliases cloudwatchapplicationsignals_delete_instrumentation_configuration
+cloudwatchapplicationsignals_delete_instrumentation_configuration <- function(InstrumentationType, Service, Environment, SignalType, LocationIdentifier) {
+  op <- new_operation(
+    name = "DeleteInstrumentationConfiguration",
+    http_method = "POST",
+    http_path = "/delete-instrumentation-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$delete_instrumentation_configuration_input(InstrumentationType = InstrumentationType, Service = Service, Environment = Environment, SignalType = SignalType, LocationIdentifier = LocationIdentifier)
+  output <- .cloudwatchapplicationsignals$delete_instrumentation_configuration_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$delete_instrumentation_configuration <- cloudwatchapplicationsignals_delete_instrumentation_configuration
+
 #' Deletes the specified service level objective
 #'
 #' @description
@@ -984,6 +1296,235 @@ cloudwatchapplicationsignals_delete_service_level_objective <- function(Id) {
   return(response)
 }
 .cloudwatchapplicationsignals$operations$delete_service_level_objective <- cloudwatchapplicationsignals_delete_service_level_objective
+
+#' Returns the details of a single instrumentation configuration identified
+#' by service, environment, signal type, and location
+#'
+#' @description
+#' Returns the details of a single instrumentation configuration identified by service, environment, signal type, and location. Use this to audit or display configuration details.
+#'
+#' @usage
+#' cloudwatchapplicationsignals_get_instrumentation_configuration(
+#'   InstrumentationType, Service, Environment, SignalType,
+#'   LocationIdentifier)
+#'
+#' @param InstrumentationType &#91;required&#93; Type of instrumentation configuration (BREAKPOINT or PROBE). Required to identify the configuration to retrieve.
+#' @param Service &#91;required&#93; Service name for the instrumentation configuration.
+#' @param Environment &#91;required&#93; Environment name for the instrumentation configuration.
+#' @param SignalType &#91;required&#93; Signal type for the instrumentation configuration.
+#' @param LocationIdentifier &#91;required&#93; Location identifier - either full code location or a pre-computed hash.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Configuration = list(
+#'     InstrumentationType = "BREAKPOINT"|"PROBE",
+#'     Service = "string",
+#'     Environment = "string",
+#'     SignalType = "SNAPSHOT",
+#'     Location = list(
+#'       CodeLocation = list(
+#'         Language = "Java"|"Python"|"Javascript",
+#'         CodeUnit = "string",
+#'         ClassName = "string",
+#'         MethodName = "string",
+#'         FilePath = "string",
+#'         LineNumber = 123
+#'       )
+#'     ),
+#'     LocationHash = "string",
+#'     Description = "string",
+#'     ExpiresAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AttributeFilters = list(
+#'       list(
+#'         "string"
+#'       )
+#'     ),
+#'     CaptureConfiguration = list(
+#'       CodeCapture = list(
+#'         CaptureArguments = list(
+#'           "string"
+#'         ),
+#'         CaptureReturn = TRUE|FALSE,
+#'         CaptureStackTrace = TRUE|FALSE,
+#'         CaptureLocals = list(
+#'           "string"
+#'         ),
+#'         CaptureLimits = list(
+#'           MaxHits = 123,
+#'           MaxStringLength = 123,
+#'           MaxCollectionWidth = 123,
+#'           MaxCollectionDepth = 123,
+#'           MaxStackFrames = 123,
+#'           MaxStackTraceSize = 123,
+#'           MaxObjectDepth = 123,
+#'           MaxFieldsPerObject = 123
+#'         )
+#'       )
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ARN = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_instrumentation_configuration(
+#'   InstrumentationType = "BREAKPOINT"|"PROBE",
+#'   Service = "string",
+#'   Environment = "string",
+#'   SignalType = "SNAPSHOT",
+#'   LocationIdentifier = list(
+#'     CodeLocation = list(
+#'       Language = "Java"|"Python"|"Javascript",
+#'       CodeUnit = "string",
+#'       ClassName = "string",
+#'       MethodName = "string",
+#'       FilePath = "string",
+#'       LineNumber = 123
+#'     ),
+#'     LocationHash = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_get_inst_conf
+#'
+#' @aliases cloudwatchapplicationsignals_get_instrumentation_configuration
+cloudwatchapplicationsignals_get_instrumentation_configuration <- function(InstrumentationType, Service, Environment, SignalType, LocationIdentifier) {
+  op <- new_operation(
+    name = "GetInstrumentationConfiguration",
+    http_method = "POST",
+    http_path = "/get-instrumentation-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$get_instrumentation_configuration_input(InstrumentationType = InstrumentationType, Service = Service, Environment = Environment, SignalType = SignalType, LocationIdentifier = LocationIdentifier)
+  output <- .cloudwatchapplicationsignals$get_instrumentation_configuration_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$get_instrumentation_configuration <- cloudwatchapplicationsignals_get_instrumentation_configuration
+
+#' Retrieves the status history for a single instrumentation configuration
+#' during a specified time range
+#'
+#' @description
+#' Retrieves the status history for a single instrumentation configuration during a specified time range. The response lists when the configuration was ACTIVE, READY, ERROR, or DISABLED.
+#' 
+#' If no status or time window is provided, the operation defaults to ACTIVE events from the last hour.
+#'
+#' @usage
+#' cloudwatchapplicationsignals_get_instrumentation_configuration_status(
+#'   InstrumentationType, Service, Environment, SignalType,
+#'   LocationIdentifier, Status, StartTime, EndTime, MaxResults, NextToken)
+#'
+#' @param InstrumentationType &#91;required&#93; Type of instrumentation configuration (BREAKPOINT or PROBE). Required to identify the configuration to retrieve.
+#' @param Service &#91;required&#93; Service name for the instrumentation configuration.
+#' @param Environment &#91;required&#93; Environment name for the instrumentation configuration.
+#' @param SignalType &#91;required&#93; Signal type for the instrumentation configuration.
+#' @param LocationIdentifier &#91;required&#93; Location identifier - either full code location or a pre-computed hash.
+#' @param Status The single status to query for. If omitted, only `ACTIVE` status events are returned.
+#' @param StartTime The start of the time range to retrieve status events for. `StartTime` and `EndTime` must both be provided together or both be omitted. When both are omitted, the time range defaults to the last hour.
+#' @param EndTime The end of the time range to retrieve status events for. `StartTime` and `EndTime` must both be provided together or both be omitted. When both are omitted, the time range defaults to the last hour.
+#' @param MaxResults The maximum number of status events to return in one call. The default is 60.
+#' @param NextToken Use the token returned by a previous call to retrieve the next page of status events.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Service = "string",
+#'   Environment = "string",
+#'   SignalType = "SNAPSHOT",
+#'   Location = list(
+#'     CodeLocation = list(
+#'       Language = "Java"|"Python"|"Javascript",
+#'       CodeUnit = "string",
+#'       ClassName = "string",
+#'       MethodName = "string",
+#'       FilePath = "string",
+#'       LineNumber = 123
+#'     )
+#'   ),
+#'   Status = "READY"|"ERROR"|"ACTIVE"|"DISABLED",
+#'   Events = list(
+#'     list(
+#'       Time = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ErrorCause = "FILE_NOT_FOUND"|"METHOD_NOT_FOUND"|"LINE_NOT_EXECUTABLE"|"OVERLOADED_METHODS"|"LANGUAGE_MISMATCH"|"RUNTIME_ERROR"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_instrumentation_configuration_status(
+#'   InstrumentationType = "BREAKPOINT"|"PROBE",
+#'   Service = "string",
+#'   Environment = "string",
+#'   SignalType = "SNAPSHOT",
+#'   LocationIdentifier = list(
+#'     CodeLocation = list(
+#'       Language = "Java"|"Python"|"Javascript",
+#'       CodeUnit = "string",
+#'       ClassName = "string",
+#'       MethodName = "string",
+#'       FilePath = "string",
+#'       LineNumber = 123
+#'     ),
+#'     LocationHash = "string"
+#'   ),
+#'   Status = "READY"|"ERROR"|"ACTIVE"|"DISABLED",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_get_inst_conf_stat
+#'
+#' @aliases cloudwatchapplicationsignals_get_instrumentation_configuration_status
+cloudwatchapplicationsignals_get_instrumentation_configuration_status <- function(InstrumentationType, Service, Environment, SignalType, LocationIdentifier, Status = NULL, StartTime = NULL, EndTime = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetInstrumentationConfigurationStatus",
+    http_method = "POST",
+    http_path = "/get-instrumentation-configuration-status",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Events"),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$get_instrumentation_configuration_status_input(InstrumentationType = InstrumentationType, Service = Service, Environment = Environment, SignalType = SignalType, LocationIdentifier = LocationIdentifier, Status = Status, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudwatchapplicationsignals$get_instrumentation_configuration_status_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$get_instrumentation_configuration_status <- cloudwatchapplicationsignals_get_instrumentation_configuration_status
 
 #' Returns information about a service discovered by Application Signals
 #'
@@ -1742,6 +2283,131 @@ cloudwatchapplicationsignals_list_grouping_attribute_definitions <- function(Nex
   return(response)
 }
 .cloudwatchapplicationsignals$operations$list_grouping_attribute_definitions <- cloudwatchapplicationsignals_list_grouping_attribute_definitions
+
+#' Returns all active instrumentation configurations for a service and
+#' environment
+#'
+#' @description
+#' Returns all active instrumentation configurations for a service and environment. SDKs use this operation to sync configurations and apply client-side filters locally.
+#' 
+#' Include the previous `SyncedAt` value to perform incremental syncs. When no changes are detected, the response sets `Changed` to `false` and omits configuration details.
+#'
+#' @usage
+#' cloudwatchapplicationsignals_list_instrumentation_configurations(
+#'   Service, Environment, InstrumentationType, SyncedAt, MaxResults,
+#'   NextToken)
+#'
+#' @param Service &#91;required&#93; The name of the service to retrieve instrumentation configurations for.
+#' @param Environment &#91;required&#93; The environment that the service is running in.
+#' @param InstrumentationType &#91;required&#93; Type of instrumentation configuration (BREAKPOINT or PROBE). Required to determine which backing store to query.
+#' @param SyncedAt The timestamp from the last successful sync. When provided, the response returns `Changed` as `false` if nothing is new since this time, or returns the latest configurations when changes exist.
+#' @param MaxResults The maximum number of configurations to return in one call. The default is 50 and the maximum is 100.
+#' @param NextToken Use the token returned by a previous call to retrieve the next page of configurations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Service = "string",
+#'   Environment = "string",
+#'   Changed = TRUE|FALSE,
+#'   LatestConfigurations = list(
+#'     list(
+#'       InstrumentationType = "BREAKPOINT"|"PROBE",
+#'       SignalType = "SNAPSHOT",
+#'       Location = list(
+#'         CodeLocation = list(
+#'           Language = "Java"|"Python"|"Javascript",
+#'           CodeUnit = "string",
+#'           ClassName = "string",
+#'           MethodName = "string",
+#'           FilePath = "string",
+#'           LineNumber = 123
+#'         )
+#'       ),
+#'       LocationHash = "string",
+#'       Description = "string",
+#'       ExpiresAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AttributeFilters = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
+#'       CaptureConfiguration = list(
+#'         CodeCapture = list(
+#'           CaptureArguments = list(
+#'             "string"
+#'           ),
+#'           CaptureReturn = TRUE|FALSE,
+#'           CaptureStackTrace = TRUE|FALSE,
+#'           CaptureLocals = list(
+#'             "string"
+#'           ),
+#'           CaptureLimits = list(
+#'             MaxHits = 123,
+#'             MaxStringLength = 123,
+#'             MaxCollectionWidth = 123,
+#'             MaxCollectionDepth = 123,
+#'             MaxStackFrames = 123,
+#'             MaxStackTraceSize = 123,
+#'             MaxObjectDepth = 123,
+#'             MaxFieldsPerObject = 123
+#'           )
+#'         )
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ARN = "string"
+#'     )
+#'   ),
+#'   SyncedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SyncInterval = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_instrumentation_configurations(
+#'   Service = "string",
+#'   Environment = "string",
+#'   InstrumentationType = "BREAKPOINT"|"PROBE",
+#'   SyncedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_list_inst_conf
+#'
+#' @aliases cloudwatchapplicationsignals_list_instrumentation_configurations
+cloudwatchapplicationsignals_list_instrumentation_configurations <- function(Service, Environment, InstrumentationType, SyncedAt = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListInstrumentationConfigurations",
+    http_method = "POST",
+    http_path = "/list-instrumentation-configurations",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LatestConfigurations"),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$list_instrumentation_configurations_input(Service = Service, Environment = Environment, InstrumentationType = InstrumentationType, SyncedAt = SyncedAt, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudwatchapplicationsignals$list_instrumentation_configurations_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$list_instrumentation_configurations <- cloudwatchapplicationsignals_list_instrumentation_configurations
 
 #' Returns a list of service dependencies of the service that you specify
 #'
@@ -2520,7 +3186,7 @@ cloudwatchapplicationsignals_list_services <- function(StartTime, EndTime, MaxRe
 #' 
 #' The ARN format of an Application Signals SLO is `arn:aws:cloudwatch:Region:account-id:slo:slo-name `
 #' 
-#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
+#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2637,6 +3303,87 @@ cloudwatchapplicationsignals_put_grouping_configuration <- function(GroupingAttr
 }
 .cloudwatchapplicationsignals$operations$put_grouping_configuration <- cloudwatchapplicationsignals_put_grouping_configuration
 
+#' Reports the status of one or more instrumentation configurations from
+#' SDK instances
+#'
+#' @description
+#' Reports the status of one or more instrumentation configurations from SDK instances. Use this to record when configurations become ready, hit errors, become active, or are disabled by limits.
+#' 
+#' Report `READY`, `ERROR`, and `DISABLED` when the status changes. Report `ACTIVE` periodically (for example, every minute) while instrumentation is running.
+#'
+#' @usage
+#' cloudwatchapplicationsignals_report_instrumentation_configuration_status(
+#'   Service, Environment, Configurations)
+#'
+#' @param Service &#91;required&#93; The service that the reported configurations belong to.
+#' @param Environment &#91;required&#93; The environment that the service is running in.
+#' @param Configurations &#91;required&#93; An array of configuration status reports (up to 100) that include the instrumentation type, signal type, location hash, status, timestamp, and optional error cause.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Service = "string",
+#'   Environment = "string",
+#'   UnprocessedStatusEvents = list(
+#'     list(
+#'       InstrumentationType = "BREAKPOINT"|"PROBE",
+#'       SignalType = "SNAPSHOT",
+#'       LocationHash = "string",
+#'       Status = "READY"|"ERROR"|"ACTIVE"|"DISABLED",
+#'       Time = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FailedReason = "THROTTLED"|"INTERNAL_ERROR"|"VALIDATION_ERROR"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$report_instrumentation_configuration_status(
+#'   Service = "string",
+#'   Environment = "string",
+#'   Configurations = list(
+#'     list(
+#'       InstrumentationType = "BREAKPOINT"|"PROBE",
+#'       SignalType = "SNAPSHOT",
+#'       LocationHash = "string",
+#'       Status = "READY"|"ERROR"|"ACTIVE"|"DISABLED",
+#'       Time = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ErrorCause = "FILE_NOT_FOUND"|"METHOD_NOT_FOUND"|"LINE_NOT_EXECUTABLE"|"OVERLOADED_METHODS"|"LANGUAGE_MISMATCH"|"RUNTIME_ERROR"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_repo_inst_conf_stat
+#'
+#' @aliases cloudwatchapplicationsignals_report_instrumentation_configuration_status
+cloudwatchapplicationsignals_report_instrumentation_configuration_status <- function(Service, Environment, Configurations) {
+  op <- new_operation(
+    name = "ReportInstrumentationConfigurationStatus",
+    http_method = "POST",
+    http_path = "/report-instrumentation-configuration-status",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$report_instrumentation_configuration_status_input(Service = Service, Environment = Environment, Configurations = Configurations)
+  output <- .cloudwatchapplicationsignals$report_instrumentation_configuration_status_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$report_instrumentation_configuration_status <- cloudwatchapplicationsignals_report_instrumentation_configuration_status
+
 #' Enables this Amazon Web Services account to be able to use CloudWatch
 #' Application Signals by creating the
 #' AWSServiceRoleForCloudWatchApplicationSignals service-linked role
@@ -2720,7 +3467,7 @@ cloudwatchapplicationsignals_start_discovery <- function() {
 #' 
 #' The ARN format of an Application Signals SLO is `arn:aws:cloudwatch:Region:account-id:slo:slo-name `
 #' 
-#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
+#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
 #' @param Tags &#91;required&#93; The list of key-value pairs to associate with the alarm.
 #'
 #' @return
@@ -2775,7 +3522,7 @@ cloudwatchapplicationsignals_tag_resource <- function(ResourceArn, Tags) {
 #' 
 #' The ARN format of an Application Signals SLO is `arn:aws:cloudwatch:Region:account-id:slo:slo-name `
 #' 
-#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
+#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
 #'
 #' @return

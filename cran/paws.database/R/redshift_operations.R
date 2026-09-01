@@ -488,7 +488,7 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' Default: `multi-node`
 #' @param NodeType &#91;required&#93; The node type to be provisioned for the cluster. For information about node types, go to [Working with Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes) in the *Amazon Redshift Cluster Management Guide*.
 #' 
-#' Valid Values: `dc2.large` | `dc2.8xlarge`| `rg.xlarge` | `rg.4xlarge` | `ra3.large` | `ra3.xlplus` | `ra3.4xlarge` | `ra3.16xlarge`
+#' Valid Values: `dc2.large` | `dc2.8xlarge` | `rg.large` | `rg.xlarge` | `rg.4xlarge` | `rg.12xlarge` | `ra3.large` | `ra3.xlplus` | `ra3.4xlarge` | `ra3.16xlarge`
 #' @param MasterUsername &#91;required&#93; The user name associated with the admin user account for the cluster that is being created.
 #' 
 #' Constraints:
@@ -1090,6 +1090,41 @@ redshift_create_integration <- function(SourceArn, TargetArn, IntegrationName, K
   return(response)
 }
 .redshift$operations$create_integration <- redshift_create_integration
+
+#' Creates an Amazon Redshift Query Editor (QEV2) IAM Identity Center
+#' application
+#'
+#' @description
+#' Creates an Amazon Redshift Query Editor (QEV2) IAM Identity Center application.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_qev_2_idc_application/](https://www.paws-r-sdk.com/docs/redshift_create_qev_2_idc_application/) for full documentation.
+#'
+#' @param IdcInstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM Identity Center instance used to create the Amazon Redshift Query Editor (QEV2) managed application.
+#' @param Qev2IdcApplicationName &#91;required&#93; The name of the Amazon Redshift Query Editor (QEV2) application in IAM Identity Center.
+#' @param IdcDisplayName &#91;required&#93; The display name for the Amazon Redshift Query Editor (QEV2) IAM Identity Center application. It appears in the console.
+#' @param Tags A list of tags to associate with the application. Tags are key-value pairs that you can use to organize and identify your resources.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_create_qev_2_idc_application
+redshift_create_qev_2_idc_application <- function(IdcInstanceArn, Qev2IdcApplicationName, IdcDisplayName, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateQev2IdcApplication",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshift$create_qev_2_idc_application_input(IdcInstanceArn = IdcInstanceArn, Qev2IdcApplicationName = Qev2IdcApplicationName, IdcDisplayName = IdcDisplayName, Tags = Tags)
+  output <- .redshift$create_qev_2_idc_application_output()
+  config <- get_config()
+  svc <- .redshift$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$create_qev_2_idc_application <- redshift_create_qev_2_idc_application
 
 #' Creates an Amazon Redshift application for use with IAM Identity Center
 #'
@@ -1805,6 +1840,38 @@ redshift_delete_partner <- function(AccountId, ClusterIdentifier, DatabaseName, 
   return(response)
 }
 .redshift$operations$delete_partner <- redshift_delete_partner
+
+#' Deletes an Amazon Redshift Query Editor (QEV2) IAM Identity Center
+#' application
+#'
+#' @description
+#' Deletes an Amazon Redshift Query Editor (QEV2) IAM Identity Center application.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_qev_2_idc_application/](https://www.paws-r-sdk.com/docs/redshift_delete_qev_2_idc_application/) for full documentation.
+#'
+#' @param Qev2IdcApplicationArn &#91;required&#93; The Amazon Resource Name (ARN) for the Amazon Redshift Query Editor (QEV2) IAM Identity Center application to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_delete_qev_2_idc_application
+redshift_delete_qev_2_idc_application <- function(Qev2IdcApplicationArn) {
+  op <- new_operation(
+    name = "DeleteQev2IdcApplication",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshift$delete_qev_2_idc_application_input(Qev2IdcApplicationArn = Qev2IdcApplicationArn)
+  output <- .redshift$delete_qev_2_idc_application_output()
+  config <- get_config()
+  svc <- .redshift$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$delete_qev_2_idc_application <- redshift_delete_qev_2_idc_application
 
 #' Deletes an Amazon Redshift IAM Identity Center application
 #'
@@ -3214,6 +3281,40 @@ redshift_describe_partners <- function(AccountId, ClusterIdentifier, DatabaseNam
 }
 .redshift$operations$describe_partners <- redshift_describe_partners
 
+#' Lists the Amazon Redshift Query Editor (QEV2) IAM Identity Center
+#' applications
+#'
+#' @description
+#' Lists the Amazon Redshift Query Editor (QEV2) IAM Identity Center applications. To retrieve additional results, use the MaxRecords and Marker parameters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_qev_2_idc_applications/](https://www.paws-r-sdk.com/docs/redshift_describe_qev_2_idc_applications/) for full documentation.
+#'
+#' @param Qev2IdcApplicationArn The Amazon Resource Name (ARN) for the Amazon Redshift Query Editor (QEV2) application that integrates with IAM Identity Center.
+#' @param MaxRecords The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.
+#' @param Marker A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_qev_2_idc_applications
+redshift_describe_qev_2_idc_applications <- function(Qev2IdcApplicationArn = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeQev2IdcApplications",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Qev2IdcApplications"),
+    stream_api = FALSE
+  )
+  input <- .redshift$describe_qev_2_idc_applications_input(Qev2IdcApplicationArn = Qev2IdcApplicationArn, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .redshift$describe_qev_2_idc_applications_output()
+  config <- get_config()
+  svc <- .redshift$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_qev_2_idc_applications <- redshift_describe_qev_2_idc_applications
+
 #' Lists the Amazon Redshift IAM Identity Center applications
 #'
 #' @description
@@ -3693,11 +3794,13 @@ redshift_describe_usage_limits <- function(UsageLimitId = NULL, ClusterIdentifie
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster on which logging is to be stopped.
 #' 
 #' Example: `examplecluster`
+#' @param LogDestinationType The log destination type. An enum with possible values of `s3`, `cloudwatch`, and `s3table`. When set to `s3table`, stops system table publishing. When omitted, the operation disables audit logging.
+#' @param LogExports The collection of log types to stop exporting. When `LogDestinationType` is `s3table`, the values are the names of the system tables to stop publishing. Omitting this parameter or passing `all` stops publishing all system tables.
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_disable_logging
-redshift_disable_logging <- function(ClusterIdentifier) {
+redshift_disable_logging <- function(ClusterIdentifier, LogDestinationType = NULL, LogExports = NULL) {
   op <- new_operation(
     name = "DisableLogging",
     http_method = "POST",
@@ -3706,7 +3809,7 @@ redshift_disable_logging <- function(ClusterIdentifier) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshift$disable_logging_input(ClusterIdentifier = ClusterIdentifier)
+  input <- .redshift$disable_logging_input(ClusterIdentifier = ClusterIdentifier, LogDestinationType = LogDestinationType, LogExports = LogExports)
   output <- .redshift$disable_logging_output()
   config <- get_config()
   svc <- .redshift$service(config, op)
@@ -3806,13 +3909,15 @@ redshift_disassociate_data_share_consumer <- function(DataShareArn, Disassociate
 #' @param S3KeyPrefix The prefix applied to the log file names.
 #' 
 #' Valid characters are any letter from any language, any whitespace character, any numeric character, and the following characters: underscore (`_`), period (`.`), colon (`:`), slash (`/`), equal (`=`), plus (`+`), backslash (`\`), hyphen (`-`), at symbol (`@@`).
-#' @param LogDestinationType The log destination type. An enum with possible values of `s3` and `cloudwatch`.
-#' @param LogExports The collection of exported log types. Possible values are `connectionlog`, `useractivitylog`, and `userlog`.
+#' @param LogDestinationType The log destination type. An enum with possible values of `s3`, `cloudwatch`, and `s3table`.
+#' @param LogExports The collection of exported log types. When `LogDestinationType` is `s3` or `cloudwatch`, possible values are `connectionlog`, `useractivitylog`, and `userlog`. When `LogDestinationType` is `s3table`, the values are the names of the system tables to publish. Omitting this parameter, passing an empty list, or including the value `all` publishes all current and future system tables.
+#' @param S3TableKmsKeyId The identifier of a customer managed KMS key used to encrypt the S3 tables. This parameter is valid only when `LogDestinationType` is `s3table`.
+#' @param S3TableGranularity The scope of system table publishing. Valid values are `cluster` and `account`. A value of `cluster` scopes publishing to the individual cluster. A value of `account` scopes publishing to the Amazon Web Services account. This parameter is valid only when `LogDestinationType` is `s3table`.
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_enable_logging
-redshift_enable_logging <- function(ClusterIdentifier, BucketName = NULL, S3KeyPrefix = NULL, LogDestinationType = NULL, LogExports = NULL) {
+redshift_enable_logging <- function(ClusterIdentifier, BucketName = NULL, S3KeyPrefix = NULL, LogDestinationType = NULL, LogExports = NULL, S3TableKmsKeyId = NULL, S3TableGranularity = NULL) {
   op <- new_operation(
     name = "EnableLogging",
     http_method = "POST",
@@ -3821,7 +3926,7 @@ redshift_enable_logging <- function(ClusterIdentifier, BucketName = NULL, S3KeyP
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshift$enable_logging_input(ClusterIdentifier = ClusterIdentifier, BucketName = BucketName, S3KeyPrefix = S3KeyPrefix, LogDestinationType = LogDestinationType, LogExports = LogExports)
+  input <- .redshift$enable_logging_input(ClusterIdentifier = ClusterIdentifier, BucketName = BucketName, S3KeyPrefix = S3KeyPrefix, LogDestinationType = LogDestinationType, LogExports = LogExports, S3TableKmsKeyId = S3TableKmsKeyId, S3TableGranularity = S3TableGranularity)
   output <- .redshift$enable_logging_output()
   config <- get_config()
   svc <- .redshift$service(config, op)
@@ -4295,7 +4400,7 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' 
 #' For more information about resizing clusters, go to [Resizing Clusters in Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/) in the *Amazon Redshift Cluster Management Guide*.
 #' 
-#' Valid Values: `dc2.large` | `dc2.8xlarge`| `rg.xlarge` | `rg.4xlarge` | `ra3.large` | `ra3.xlplus` | `ra3.4xlarge` | `ra3.16xlarge`
+#' Valid Values: `dc2.large` | `dc2.8xlarge` | `rg.large` | `rg.xlarge` | `rg.4xlarge` | `rg.12xlarge` | `ra3.large` | `ra3.xlplus` | `ra3.4xlarge` | `ra3.16xlarge`
 #' @param NumberOfNodes The new number of nodes of the cluster. If you specify a new number of nodes, you must also specify the node type parameter.
 #' 
 #' For more information about resizing clusters, go to [Resizing Clusters in Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/) in the *Amazon Redshift Cluster Management Guide*.
@@ -4878,6 +4983,39 @@ redshift_modify_lakehouse_configuration <- function(ClusterIdentifier, Lakehouse
   return(response)
 }
 .redshift$operations$modify_lakehouse_configuration <- redshift_modify_lakehouse_configuration
+
+#' Modifies an Amazon Redshift Query Editor (QEV2) IAM Identity Center
+#' application
+#'
+#' @description
+#' Modifies an Amazon Redshift Query Editor (QEV2) IAM Identity Center application.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_qev_2_idc_application/](https://www.paws-r-sdk.com/docs/redshift_modify_qev_2_idc_application/) for full documentation.
+#'
+#' @param Qev2IdcApplicationArn &#91;required&#93; The Amazon Resource Name (ARN) for the Amazon Redshift Query Editor (QEV2) application that integrates with IAM Identity Center.
+#' @param IdcDisplayName The display name for the Amazon Redshift Query Editor (QEV2) IAM Identity Center application. It appears in the console.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_modify_qev_2_idc_application
+redshift_modify_qev_2_idc_application <- function(Qev2IdcApplicationArn, IdcDisplayName = NULL) {
+  op <- new_operation(
+    name = "ModifyQev2IdcApplication",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshift$modify_qev_2_idc_application_input(Qev2IdcApplicationArn = Qev2IdcApplicationArn, IdcDisplayName = IdcDisplayName)
+  output <- .redshift$modify_qev_2_idc_application_output()
+  config <- get_config()
+  svc <- .redshift$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$modify_qev_2_idc_application <- redshift_modify_qev_2_idc_application
 
 #' Changes an existing Amazon Redshift IAM Identity Center application
 #'

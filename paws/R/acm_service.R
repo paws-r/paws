@@ -93,22 +93,45 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=acm_add_tags_to_certificate]{add_tags_to_certificate} \tab Adds one or more tags to an ACM certificate\cr
+#'  \link[=acm_create_acme_domain_validation]{create_acme_domain_validation} \tab Creates a domain validation for an ACME endpoint\cr
+#'  \link[=acm_create_acme_endpoint]{create_acme_endpoint} \tab Creates an ACME endpoint, which is a managed ACME server with a unique endpoint URL\cr
+#'  \link[=acm_create_acme_external_account_binding]{create_acme_external_account_binding} \tab Creates an external account binding (EAB) for an ACME endpoint\cr
+#'  \link[=acm_delete_acme_domain_validation]{delete_acme_domain_validation} \tab Deletes a domain validation\cr
+#'  \link[=acm_delete_acme_endpoint]{delete_acme_endpoint} \tab Deletes an ACME endpoint\cr
+#'  \link[=acm_delete_acme_external_account_binding]{delete_acme_external_account_binding} \tab Deletes an external account binding\cr
 #'  \link[=acm_delete_certificate]{delete_certificate} \tab Deletes a certificate and its associated private key\cr
+#'  \link[=acm_describe_acme_account]{describe_acme_account} \tab Returns detailed metadata about the specified ACME account, including its status, public key thumbprint, and associated external account binding\cr
+#'  \link[=acm_describe_acme_domain_validation]{describe_acme_domain_validation} \tab Returns detailed metadata about the specified domain validation, including its status, domain scope, and DNS resource records required for validation\cr
+#'  \link[=acm_describe_acme_endpoint]{describe_acme_endpoint} \tab Returns detailed metadata about the specified ACME endpoint, including its status, URL, authorization behavior, and certificate authority configuration\cr
+#'  \link[=acm_describe_acme_external_account_binding]{describe_acme_external_account_binding} \tab Returns detailed metadata about the specified external account binding, including the associated IAM role, expiration time, and usage history\cr
 #'  \link[=acm_describe_certificate]{describe_certificate} \tab Returns detailed metadata about the specified ACM certificate\cr
 #'  \link[=acm_export_certificate]{export_certificate} \tab Exports a private certificate issued by a private certificate authority (CA) or a public certificate for use anywhere\cr
 #'  \link[=acm_get_account_configuration]{get_account_configuration} \tab Returns the account configuration options associated with an Amazon Web Services account\cr
+#'  \link[=acm_get_acme_external_account_binding_credentials]{get_acme_external_account_binding_credentials} \tab Retrieves the key ID and MAC key credentials for an external account binding\cr
 #'  \link[=acm_get_certificate]{get_certificate} \tab Retrieves a certificate and its certificate chain\cr
 #'  \link[=acm_import_certificate]{import_certificate} \tab Imports a certificate into Certificate Manager (ACM) to use with services that are integrated with ACM\cr
+#'  \link[=acm_list_acme_accounts]{list_acme_accounts} \tab Retrieves a list of ACME accounts registered with the specified ACME endpoint\cr
+#'  \link[=acm_list_acme_domain_validations]{list_acme_domain_validations} \tab Retrieves a list of domain validations for the specified ACME endpoint\cr
+#'  \link[=acm_list_acme_endpoints]{list_acme_endpoints} \tab Retrieves a list of ACME endpoints in your account\cr
+#'  \link[=acm_list_acme_external_account_bindings]{list_acme_external_account_bindings} \tab Retrieves a list of external account bindings for the specified ACME endpoint\cr
+#'  \link[=acm_list_certificate_domain_validations]{list_certificate_domain_validations} \tab Returns per-domain validation summaries for an ACM certificate\cr
 #'  \link[=acm_list_certificates]{list_certificates} \tab Retrieves a list of certificate ARNs and domain names\cr
 #'  \link[=acm_list_tags_for_certificate]{list_tags_for_certificate} \tab Lists the tags that have been applied to the ACM certificate\cr
+#'  \link[=acm_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags associated with an ACM resource\cr
 #'  \link[=acm_put_account_configuration]{put_account_configuration} \tab Adds or modifies account-level configurations in ACM\cr
 #'  \link[=acm_remove_tags_from_certificate]{remove_tags_from_certificate} \tab Remove one or more tags from an ACM certificate\cr
 #'  \link[=acm_renew_certificate]{renew_certificate} \tab Renews an eligible ACM certificate\cr
 #'  \link[=acm_request_certificate]{request_certificate} \tab Requests an ACM certificate for use with other Amazon Web Services services\cr
 #'  \link[=acm_resend_validation_email]{resend_validation_email} \tab Resends the email that requests domain ownership validation\cr
+#'  \link[=acm_revoke_acme_account]{revoke_acme_account} \tab Revokes an ACME account, preventing it from requesting or revoking certificates\cr
+#'  \link[=acm_revoke_acme_external_account_binding]{revoke_acme_external_account_binding} \tab Revokes an external account binding, preventing new ACME accounts from being registered using this binding\cr
 #'  \link[=acm_revoke_certificate]{revoke_certificate} \tab Revokes a public ACM certificate\cr
 #'  \link[=acm_search_certificates]{search_certificates} \tab Retrieves a list of certificates matching search criteria\cr
-#'  \link[=acm_update_certificate_options]{update_certificate_options} \tab Updates a certificate
+#'  \link[=acm_tag_resource]{tag_resource} \tab Adds one or more tags to an ACM resource\cr
+#'  \link[=acm_untag_resource]{untag_resource} \tab Removes one or more tags from an ACM resource\cr
+#'  \link[=acm_update_acme_domain_validation]{update_acme_domain_validation} \tab Updates the prevalidation configuration of an existing domain validation\cr
+#'  \link[=acm_update_acme_endpoint]{update_acme_endpoint} \tab Updates the configuration of an existing ACME endpoint\cr
+#'  \link[=acm_update_certificate_options]{update_certificate_options} \tab Updates certificate options
 #' }
 #'
 #' @return

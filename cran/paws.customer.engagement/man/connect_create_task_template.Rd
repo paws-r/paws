@@ -24,17 +24,21 @@ connect_create_task_template(
 
 \item{Description}{The description of the task template.}
 
-\item{ContactFlowId}{The identifier of the flow that runs by default when a task is created by referencing this template.}
+\item{ContactFlowId}{The identifier of the flow that runs by default when a task is created by referencing this template.
+
+Although this parameter is marked as optional, the request must contain either a \code{ContactFlowId} or a field of type \code{QUICK_CONNECT}.}
 
 \item{SelfAssignFlowId}{The ContactFlowId for the flow that will be run if this template is used to create a self-assigned task.}
 
-\item{Constraints}{Constraints that are applicable to the fields listed.}
+\item{Constraints}{Constraints that are applicable to the fields listed. Although this parameter is marked as optional in the API model, the service requires it when calling \code{\link[=connect_create_task_template]{create_task_template}} or \code{\link[=connect_update_task_template]{update_task_template}}. The \code{RequiredFields} array must contain at least one element, and the field of type \code{NAME} must be included in \code{RequiredFields}.}
 
 \item{Defaults}{The default values for fields when a task is created by referencing this template.}
 
 \item{Status}{Marks a template as \code{ACTIVE} or \code{INACTIVE} for a task to refer to it. Tasks can only be created from \code{ACTIVE} templates. If a template is marked as \code{INACTIVE}, then a task that refers to this template cannot be created.}
 
-\item{Fields}{[required] Fields that are part of the template.}
+\item{Fields}{[required] Fields that are part of the template.
+
+The request must contain exactly one field of type \code{NAME}. This field must also be listed in the \code{RequiredFields} array within the \code{Constraints} parameter.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the idempotency of the request. If not provided, the Amazon Web Services SDK populates this field. For more information about idempotency, see \href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 }

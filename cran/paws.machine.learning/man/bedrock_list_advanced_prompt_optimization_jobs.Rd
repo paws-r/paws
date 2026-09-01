@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_list_advanced_prompt_optimization_jobs}
 \alias{bedrock_list_advanced_prompt_optimization_jobs}
-\title{Lists all advanced prompt optimization jobs for the account}
+\title{Lists the advanced prompt optimization jobs in your account}
 \usage{
 bedrock_list_advanced_prompt_optimization_jobs(
   maxResults = NULL,
@@ -12,16 +12,16 @@ bedrock_list_advanced_prompt_optimization_jobs(
 )
 }
 \arguments{
-\item{maxResults}{Maximum number of results to return.}
+\item{maxResults}{The maximum number of results to return in the response.}
 
-\item{nextToken}{Pagination token for the next page of results.}
+\item{nextToken}{If the total number of results is greater than the \code{maxResults} value provided in the request, use this token in a subsequent request to get the next set of results.}
 
-\item{sortBy}{Field to sort by in the returned list of jobs.}
+\item{sortBy}{The field to sort the results by.}
 
-\item{sortOrder}{Sort order for the results.}
+\item{sortOrder}{The sort order for the results.}
 }
 \description{
-Lists all advanced prompt optimization jobs for the account.
+Lists the advanced prompt optimization jobs in your account.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_list_advanced_prompt_optimization_jobs/} for full documentation.
 }

@@ -2,12 +2,15 @@
 % Please edit documentation in R/inspector2_operations.R
 \name{inspector2_get_configuration}
 \alias{inspector2_get_configuration}
-\title{Retrieves setting configurations for Inspector scans}
+\title{Retrieves setting configurations for Amazon Inspector scans}
 \usage{
-inspector2_get_configuration()
+inspector2_get_configuration(accountId = NULL)
+}
+\arguments{
+\item{accountId}{The 12-digit Amazon Web Services account ID of the member account whose scan configuration you want to retrieve. When specified, you must be the delegated administrator for this member account. If not specified, the operation returns your own configuration.}
 }
 \description{
-Retrieves setting configurations for Inspector scans.
+Retrieves setting configurations for Amazon Inspector scans. If you specify an \code{accountId}, this operation returns the scan configuration for that member account. You must be the delegated administrator for the specified member account. If you do not specify an \code{accountId}, this operation returns your own scan configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/inspector2_get_configuration/} for full documentation.
 }

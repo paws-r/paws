@@ -53,7 +53,7 @@ This is the \emph{Amazon EC2 API Reference}. It provides descriptions, API reque
 \strong{Learn more}
 \itemize{
 \item To learn about using the Query API, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-low-level-api.html}{Using the API for Amazon EC2}.
-\item To learn about the permissions required to call an Amazon EC2 API action, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html}{Actions, resources, and condition keys for Amazon EC2}.
+\item To learn about the permissions required to call an Amazon EC2 API action, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/}{Actions, resources, and condition keys for Amazon EC2}.
 \item To get the list of API actions by service and resource, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/OperationList-query.html}{Actions by service}.
 \item To get the alphabetical list of API actions, see .
 \item To get descriptions of the API error codes, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/errors-overview.html}{Error codes for the Amazon EC2 API}.
@@ -124,6 +124,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_assign_private_ip_addresses]{assign_private_ip_addresses} \tab Assigns the specified secondary private IP addresses to the specified network interface\cr
 \link[=ec2_assign_private_nat_gateway_address]{assign_private_nat_gateway_address} \tab Assigns private IPv4 addresses to a private NAT gateway\cr
 \link[=ec2_associate_address]{associate_address} \tab Associates an Elastic IP address, or carrier IP address (for instances that are in subnets in Wavelength Zones) with an instance or a network interface\cr
+\link[=ec2_associate_application_status_check]{associate_application_status_check} \tab Associates an application status check with instances or tags\cr
 \link[=ec2_associate_capacity_reservation_billing_owner]{associate_capacity_reservation_billing_owner} \tab Initiates a request to assign billing of the unused capacity of a shared Capacity Reservation to a consumer account that is consolidated under the same Amazon Web Services organizations payer account\cr
 \link[=ec2_associate_client_vpn_target_network]{associate_client_vpn_target_network} \tab Associates a target network with a Client VPN endpoint\cr
 \link[=ec2_associate_dhcp_options]{associate_dhcp_options} \tab Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC\cr
@@ -143,6 +144,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_associate_trunk_interface]{associate_trunk_interface} \tab Associates a branch network interface with a trunk network interface\cr
 \link[=ec2_associate_vpc_cidr_block]{associate_vpc_cidr_block} \tab Associates a CIDR block with your VPC\cr
 \link[=ec2_attach_classic_link_vpc]{attach_classic_link_vpc} \tab This action is deprecated\cr
+\link[=ec2_attach_image_watermark]{attach_image_watermark} \tab Attaches a watermark to a non-public AMI\cr
 \link[=ec2_attach_internet_gateway]{attach_internet_gateway} \tab Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC\cr
 \link[=ec2_attach_network_interface]{attach_network_interface} \tab Attaches a network interface to an instance\cr
 \link[=ec2_attach_verified_access_trust_provider]{attach_verified_access_trust_provider} \tab Attaches the specified Amazon Web Services Verified Access trust provider to the specified Amazon Web Services Verified Access instance\cr
@@ -151,6 +153,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_authorize_client_vpn_ingress]{authorize_client_vpn_ingress} \tab Adds an ingress authorization rule to a Client VPN endpoint\cr
 \link[=ec2_authorize_security_group_egress]{authorize_security_group_egress} \tab Adds the specified outbound (egress) rules to a security group\cr
 \link[=ec2_authorize_security_group_ingress]{authorize_security_group_ingress} \tab Adds the specified inbound (ingress) rules to a security group\cr
+\link[=ec2_batch_modify_ipam_routing_policy_registrations]{batch_modify_ipam_routing_policy_registrations} \tab Modifies multiple routing policy registrations in a single operation\cr
 \link[=ec2_bundle_instance]{bundle_instance} \tab Bundles an Amazon instance store-backed Windows instance\cr
 \link[=ec2_cancel_bundle_task]{cancel_bundle_task} \tab Cancels a bundling operation for an instance store-backed Windows instance\cr
 \link[=ec2_cancel_capacity_reservation]{cancel_capacity_reservation} \tab Cancels the specified Capacity Reservation, releases the reserved capacity, and changes the Capacity Reservation's state to cancelled\cr
@@ -168,9 +171,11 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_copy_image]{copy_image} \tab Initiates an AMI copy operation\cr
 \link[=ec2_copy_snapshot]{copy_snapshot} \tab Creates an exact copy of an Amazon EBS snapshot\cr
 \link[=ec2_copy_volumes]{copy_volumes} \tab Creates a crash-consistent, point-in-time copy of an existing Amazon EBS volume within the same Availability Zone\cr
+\link[=ec2_create_application_status_check]{create_application_status_check} \tab Creates an application status check for monitoring the health of applications running on your instances\cr
 \link[=ec2_create_capacity_manager_data_export]{create_capacity_manager_data_export} \tab Creates a new data export configuration for EC2 Capacity Manager\cr
 \link[=ec2_create_capacity_reservation]{create_capacity_reservation} \tab Creates a new Capacity Reservation with the specified attributes\cr
 \link[=ec2_create_capacity_reservation_by_splitting]{create_capacity_reservation_by_splitting} \tab Create a new Capacity Reservation by splitting the capacity of the source Capacity Reservation\cr
+\link[=ec2_create_capacity_reservation_cancellation_quote]{create_capacity_reservation_cancellation_quote} \tab Generates a cancellation quote for a future-dated Capacity Reservation that is within its commitment duration\cr
 \link[=ec2_create_capacity_reservation_fleet]{create_capacity_reservation_fleet} \tab Creates a Capacity Reservation Fleet\cr
 \link[=ec2_create_carrier_gateway]{create_carrier_gateway} \tab Creates a carrier gateway\cr
 \link[=ec2_create_client_vpn_endpoint]{create_client_vpn_endpoint} \tab Creates a Client VPN endpoint\cr
@@ -195,11 +200,13 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_create_interruptible_capacity_reservation_allocation]{create_interruptible_capacity_reservation_allocation} \tab Creates an interruptible Capacity Reservation by specifying the number of unused instances you want to allocate from your source reservation\cr
 \link[=ec2_create_ipam]{create_ipam} \tab Create an IPAM\cr
 \link[=ec2_create_ipam_external_resource_verification_token]{create_ipam_external_resource_verification_token} \tab Create a verification token\cr
+\link[=ec2_create_ipam_internet_registry_association]{create_ipam_internet_registry_association} \tab Creates an association between an IPAM and a Regional Internet Registry (RIR) for Resource Public Key Infrastructure (RPKI) management\cr
 \link[=ec2_create_ipam_policy]{create_ipam_policy} \tab Creates an IPAM policy\cr
 \link[=ec2_create_ipam_pool]{create_ipam_pool} \tab Create an IP address pool for Amazon VPC IP Address Manager (IPAM)\cr
 \link[=ec2_create_ipam_prefix_list_resolver]{create_ipam_prefix_list_resolver} \tab Creates an IPAM prefix list resolver\cr
 \link[=ec2_create_ipam_prefix_list_resolver_target]{create_ipam_prefix_list_resolver_target} \tab Creates an IPAM prefix list resolver target\cr
 \link[=ec2_create_ipam_resource_discovery]{create_ipam_resource_discovery} \tab Creates an IPAM resource discovery\cr
+\link[=ec2_create_ipam_routing_policy_registration]{create_ipam_routing_policy_registration} \tab Creates a routing policy registration and publishes Route Origin Authorizations (ROAs) to the RPKI for the specified CIDR prefix and ASNs\cr
 \link[=ec2_create_ipam_scope]{create_ipam_scope} \tab Create an IPAM scope\cr
 \link[=ec2_create_key_pair]{create_key_pair} \tab Creates an ED25519 or 2048-bit RSA key pair with the specified name and in the specified format\cr
 \link[=ec2_create_launch_template]{create_launch_template} \tab Creates a launch template\cr
@@ -221,7 +228,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_create_network_interface_permission]{create_network_interface_permission} \tab Grants an Amazon Web Services-authorized account permission to attach the specified network interface to an instance in their account\cr
 \link[=ec2_create_placement_group]{create_placement_group} \tab Creates a placement group in which to launch instances\cr
 \link[=ec2_create_public_ipv_4_pool]{create_public_ipv_4_pool} \tab Creates a public IPv4 address pool\cr
-\link[=ec2_create_replace_root_volume_task]{create_replace_root_volume_task} \tab Replaces the EBS-backed root volume for a running instance with a new volume that is restored to the original root volume's launch state, that is restored to a specific snapshot taken from the original root volume, or that is restored from an AMI that has the same key characteristics as that of the instance\cr
+\link[=ec2_create_replace_root_volume_task]{create_replace_root_volume_task} \tab Replaces the EBS-backed root volume for a running instance with a new volume that is restored to the original root volume's launch state, that is restored to a specific snapshot taken from the original root volume, that is restored from an AMI that has the same key characteristics as that of the instance, or that is replaced by a specified volume\cr
 \link[=ec2_create_reserved_instances_listing]{create_reserved_instances_listing} \tab Creates a listing for Amazon EC2 Standard Reserved Instances to be sold in the Reserved Instance Marketplace\cr
 \link[=ec2_create_restore_image_task]{create_restore_image_task} \tab Starts a task that restores an AMI from an Amazon S3 object that was previously created by using CreateStoreImageTask\cr
 \link[=ec2_create_route]{create_route} \tab Creates a route in a route table within a VPC\cr
@@ -251,6 +258,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_create_transit_gateway_multicast_domain]{create_transit_gateway_multicast_domain} \tab Creates a multicast domain using the specified transit gateway\cr
 \link[=ec2_create_transit_gateway_peering_attachment]{create_transit_gateway_peering_attachment} \tab Requests a transit gateway peering attachment between the specified transit gateway (requester) and a peer transit gateway (accepter)\cr
 \link[=ec2_create_transit_gateway_policy_table]{create_transit_gateway_policy_table} \tab Creates a transit gateway policy table\cr
+\link[=ec2_create_transit_gateway_policy_table_entry]{create_transit_gateway_policy_table_entry} \tab Creates an entry in a transit gateway policy table to route matching traffic to a specified route table\cr
 \link[=ec2_create_transit_gateway_prefix_list_reference]{create_transit_gateway_prefix_list_reference} \tab Creates a reference (route) to a prefix list in a specified transit gateway route table\cr
 \link[=ec2_create_transit_gateway_route]{create_transit_gateway_route} \tab Creates a static route for the specified transit gateway route table\cr
 \link[=ec2_create_transit_gateway_route_table]{create_transit_gateway_route_table} \tab Creates a route table for the specified transit gateway\cr
@@ -272,6 +280,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_create_vpn_connection]{create_vpn_connection} \tab Creates a VPN connection between an existing virtual private gateway or transit gateway and a customer gateway\cr
 \link[=ec2_create_vpn_connection_route]{create_vpn_connection_route} \tab Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway\cr
 \link[=ec2_create_vpn_gateway]{create_vpn_gateway} \tab Creates a virtual private gateway\cr
+\link[=ec2_delete_application_status_check]{delete_application_status_check} \tab Deletes an application status check\cr
 \link[=ec2_delete_capacity_manager_data_export]{delete_capacity_manager_data_export} \tab Deletes an existing Capacity Manager data export configuration\cr
 \link[=ec2_delete_carrier_gateway]{delete_carrier_gateway} \tab Deletes a carrier gateway\cr
 \link[=ec2_delete_client_vpn_endpoint]{delete_client_vpn_endpoint} \tab Deletes the specified Client VPN endpoint\cr
@@ -290,11 +299,13 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_delete_internet_gateway]{delete_internet_gateway} \tab Deletes the specified internet gateway\cr
 \link[=ec2_delete_ipam]{delete_ipam} \tab Delete an IPAM\cr
 \link[=ec2_delete_ipam_external_resource_verification_token]{delete_ipam_external_resource_verification_token} \tab Delete a verification token\cr
+\link[=ec2_delete_ipam_internet_registry_association]{delete_ipam_internet_registry_association} \tab Deletes an IPAM internet registry association\cr
 \link[=ec2_delete_ipam_policy]{delete_ipam_policy} \tab Deletes an IPAM policy\cr
 \link[=ec2_delete_ipam_pool]{delete_ipam_pool} \tab Delete an IPAM pool\cr
 \link[=ec2_delete_ipam_prefix_list_resolver]{delete_ipam_prefix_list_resolver} \tab Deletes an IPAM prefix list resolver\cr
 \link[=ec2_delete_ipam_prefix_list_resolver_target]{delete_ipam_prefix_list_resolver_target} \tab Deletes an IPAM prefix list resolver target\cr
 \link[=ec2_delete_ipam_resource_discovery]{delete_ipam_resource_discovery} \tab Deletes an IPAM resource discovery\cr
+\link[=ec2_delete_ipam_routing_policy_registration]{delete_ipam_routing_policy_registration} \tab Deletes a routing policy registration for a specified CIDR prefix\cr
 \link[=ec2_delete_ipam_scope]{delete_ipam_scope} \tab Delete the scope for an IPAM\cr
 \link[=ec2_delete_key_pair]{delete_key_pair} \tab Deletes the specified key pair, by removing the public key from Amazon EC2\cr
 \link[=ec2_delete_launch_template]{delete_launch_template} \tab Deletes a launch template\cr
@@ -344,6 +355,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_delete_transit_gateway_multicast_domain]{delete_transit_gateway_multicast_domain} \tab Deletes the specified transit gateway multicast domain\cr
 \link[=ec2_delete_transit_gateway_peering_attachment]{delete_transit_gateway_peering_attachment} \tab Deletes a transit gateway peering attachment\cr
 \link[=ec2_delete_transit_gateway_policy_table]{delete_transit_gateway_policy_table} \tab Deletes the specified transit gateway policy table\cr
+\link[=ec2_delete_transit_gateway_policy_table_entry]{delete_transit_gateway_policy_table_entry} \tab Deletes the specified transit gateway policy table entry\cr
 \link[=ec2_delete_transit_gateway_prefix_list_reference]{delete_transit_gateway_prefix_list_reference} \tab Deletes a reference (route) to a prefix list in a specified transit gateway route table\cr
 \link[=ec2_delete_transit_gateway_route]{delete_transit_gateway_route} \tab Deletes the specified route from the specified transit gateway route table\cr
 \link[=ec2_delete_transit_gateway_route_table]{delete_transit_gateway_route_table} \tab Deletes the specified transit gateway route table\cr
@@ -374,10 +386,14 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_deregister_transit_gateway_multicast_group_members]{deregister_transit_gateway_multicast_group_members} \tab Deregisters the specified members (network interfaces) from the transit gateway multicast group\cr
 \link[=ec2_deregister_transit_gateway_multicast_group_sources]{deregister_transit_gateway_multicast_group_sources} \tab Deregisters the specified sources (network interfaces) from the transit gateway multicast group\cr
 \link[=ec2_describe_account_attributes]{describe_account_attributes} \tab Describes attributes of your Amazon Web Services account\cr
+\link[=ec2_describe_account_vpc_encryption_control]{describe_account_vpc_encryption_control} \tab Describes the account-level VPC Encryption Control configuration for your account\cr
 \link[=ec2_describe_addresses]{describe_addresses} \tab Describes the specified Elastic IP addresses or all of your Elastic IP addresses\cr
 \link[=ec2_describe_addresses_attribute]{describe_addresses_attribute} \tab Describes the attributes of the specified Elastic IP addresses\cr
 \link[=ec2_describe_address_transfers]{describe_address_transfers} \tab Describes an Elastic IP address transfer\cr
 \link[=ec2_describe_aggregate_id_format]{describe_aggregate_id_format} \tab Describes the longer ID format settings for all resource types in a specific Region\cr
+\link[=ec2_describe_application_status]{describe_application_status} \tab Describes the aggregated application health status for the specified instances\cr
+\link[=ec2_describe_application_status_check_associations]{describe_application_status_check_associations} \tab Describes the associations for one or more application status checks\cr
+\link[=ec2_describe_application_status_checks]{describe_application_status_checks} \tab Describes application status checks, including configuration details such as protocol, port, path, thresholds, and associations\cr
 \link[=ec2_describe_availability_zones]{describe_availability_zones} \tab Describes the Availability Zones, Local Zones, and Wavelength Zones that are available to you\cr
 \link[=ec2_describe_aws_network_performance_metric_subscriptions]{describe_aws_network_performance_metric_subscriptions} \tab Describes the current Infrastructure Performance metric subscriptions\cr
 \link[=ec2_describe_bundle_tasks]{describe_bundle_tasks} \tab Describes the specified bundle tasks or all of your bundle tasks\cr
@@ -389,6 +405,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_describe_capacity_block_status]{describe_capacity_block_status} \tab Describes the availability of capacity for the specified Capacity blocks, or all of your Capacity Blocks\cr
 \link[=ec2_describe_capacity_manager_data_exports]{describe_capacity_manager_data_exports} \tab Describes one or more Capacity Manager data export configurations\cr
 \link[=ec2_describe_capacity_reservation_billing_requests]{describe_capacity_reservation_billing_requests} \tab Describes a request to assign the billing of the unused capacity of a Capacity Reservation\cr
+\link[=ec2_describe_capacity_reservation_cancellation_quotes]{describe_capacity_reservation_cancellation_quotes} \tab Describes one or more Capacity Reservation cancellation quotes\cr
 \link[=ec2_describe_capacity_reservation_fleets]{describe_capacity_reservation_fleets} \tab Describes one or more Capacity Reservation Fleets\cr
 \link[=ec2_describe_capacity_reservations]{describe_capacity_reservations} \tab Describes one or more of your Capacity Reservations\cr
 \link[=ec2_describe_capacity_reservation_topology]{describe_capacity_reservation_topology} \tab Describes a tree-based hierarchy that represents the physical host placement of your pending or active Capacity Reservations within an Availability Zone or Local Zone\cr
@@ -445,6 +462,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_describe_internet_gateways]{describe_internet_gateways} \tab Describes your internet gateways\cr
 \link[=ec2_describe_ipam_byoasn]{describe_ipam_byoasn} \tab Describes your Autonomous System Numbers (ASNs), their provisioning statuses, and the BYOIP CIDRs with which they are associated\cr
 \link[=ec2_describe_ipam_external_resource_verification_tokens]{describe_ipam_external_resource_verification_tokens} \tab Describe verification tokens\cr
+\link[=ec2_describe_ipam_internet_registry_associations]{describe_ipam_internet_registry_associations} \tab Describes one or more IPAM internet registry associations\cr
 \link[=ec2_describe_ipam_policies]{describe_ipam_policies} \tab Describes one or more IPAM policies\cr
 \link[=ec2_describe_ipam_pool_allocations]{describe_ipam_pool_allocations} \tab Describes IPAM pool allocations\cr
 \link[=ec2_describe_ipam_pools]{describe_ipam_pools} \tab Get information about your IPAM pools\cr
@@ -560,6 +578,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_describe_vpn_connections]{describe_vpn_connections} \tab Describes one or more of your VPN connections\cr
 \link[=ec2_describe_vpn_gateways]{describe_vpn_gateways} \tab Describes one or more of your virtual private gateways\cr
 \link[=ec2_detach_classic_link_vpc]{detach_classic_link_vpc} \tab This action is deprecated\cr
+\link[=ec2_detach_image_watermark]{detach_image_watermark} \tab Removes a watermark from the specified AMI\cr
 \link[=ec2_detach_internet_gateway]{detach_internet_gateway} \tab Detaches an internet gateway from a VPC, disabling connectivity between the internet and the VPC\cr
 \link[=ec2_detach_network_interface]{detach_network_interface} \tab Detaches a network interface from an instance\cr
 \link[=ec2_detach_verified_access_trust_provider]{detach_verified_access_trust_provider} \tab Detaches the specified Amazon Web Services Verified Access trust provider from the specified Amazon Web Services Verified Access instance\cr
@@ -567,6 +586,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_detach_vpn_gateway]{detach_vpn_gateway} \tab Detaches a virtual private gateway from a VPC\cr
 \link[=ec2_disable_address_transfer]{disable_address_transfer} \tab Disables Elastic IP address transfer\cr
 \link[=ec2_disable_allowed_images_settings]{disable_allowed_images_settings} \tab Disables Allowed AMIs for your account in the specified Amazon Web Services Region\cr
+\link[=ec2_disable_application_status_check_suppression]{disable_application_status_check_suppression} \tab Disables suppression of application status checks for the specified instances\cr
 \link[=ec2_disable_aws_network_performance_metric_subscription]{disable_aws_network_performance_metric_subscription} \tab Disables Infrastructure Performance metric subscriptions\cr
 \link[=ec2_disable_capacity_manager]{disable_capacity_manager} \tab Disables EC2 Capacity Manager for your account\cr
 \link[=ec2_disable_ebs_encryption_by_default]{disable_ebs_encryption_by_default} \tab Disables EBS encryption by default for your account in the current Region\cr
@@ -587,6 +607,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_disable_vpc_classic_link]{disable_vpc_classic_link} \tab This action is deprecated\cr
 \link[=ec2_disable_vpc_classic_link_dns_support]{disable_vpc_classic_link_dns_support} \tab This action is deprecated\cr
 \link[=ec2_disassociate_address]{disassociate_address} \tab Disassociates an Elastic IP address from the instance or network interface it's associated with\cr
+\link[=ec2_disassociate_application_status_check]{disassociate_application_status_check} \tab Disassociates an application status check from instances or tags\cr
 \link[=ec2_disassociate_capacity_reservation_billing_owner]{disassociate_capacity_reservation_billing_owner} \tab Cancels a pending request to assign billing of the unused capacity of a Capacity Reservation to a consumer account, or revokes a request that has already been accepted\cr
 \link[=ec2_disassociate_client_vpn_target_network]{disassociate_client_vpn_target_network} \tab Disassociates a target network from the specified Client VPN endpoint\cr
 \link[=ec2_disassociate_enclave_certificate_iam_role]{disassociate_enclave_certificate_iam_role} \tab Disassociates an IAM role from an Certificate Manager (ACM) certificate\cr
@@ -606,6 +627,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_disassociate_vpc_cidr_block]{disassociate_vpc_cidr_block} \tab Disassociates a CIDR block from a VPC\cr
 \link[=ec2_enable_address_transfer]{enable_address_transfer} \tab Enables Elastic IP address transfer\cr
 \link[=ec2_enable_allowed_images_settings]{enable_allowed_images_settings} \tab Enables Allowed AMIs for your account in the specified Amazon Web Services Region\cr
+\link[=ec2_enable_application_status_check_suppression]{enable_application_status_check_suppression} \tab Suppresses application status checks for the specified instances\cr
 \link[=ec2_enable_aws_network_performance_metric_subscription]{enable_aws_network_performance_metric_subscription} \tab Enables Infrastructure Performance subscriptions\cr
 \link[=ec2_enable_capacity_manager]{enable_capacity_manager} \tab Enables EC2 Capacity Manager for your account\cr
 \link[=ec2_enable_ebs_encryption_by_default]{enable_ebs_encryption_by_default} \tab Enables EBS encryption by default for your account in the current Region\cr
@@ -616,6 +638,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_enable_image_deprecation]{enable_image_deprecation} \tab Enables deprecation of the specified AMI at the specified date and time\cr
 \link[=ec2_enable_image_deregistration_protection]{enable_image_deregistration_protection} \tab Enables deregistration protection for an AMI\cr
 \link[=ec2_enable_instance_sql_ha_standby_detections]{enable_instance_sql_ha_standby_detections} \tab Enable Amazon EC2 instances running in an SQL Server High Availability cluster for SQL Server High Availability instance standby detection monitoring\cr
+\link[=ec2_enable_ipam_internet_registry_association]{enable_ipam_internet_registry_association} \tab Enables Resource Public Key Infrastructure (RPKI) on an existing IPAM internet registry association by providing BGP Public Key Infrastructure (BPKI) certificate details\cr
 \link[=ec2_enable_ipam_organization_admin_account]{enable_ipam_organization_admin_account} \tab Enable an Organizations member account as the IPAM admin account\cr
 \link[=ec2_enable_ipam_policy]{enable_ipam_policy} \tab Enables an IPAM policy\cr
 \link[=ec2_enable_reachability_analyzer_organization_sharing]{enable_reachability_analyzer_organization_sharing} \tab Establishes a trust relationship between Reachability Analyzer and Organizations\cr
@@ -663,6 +686,9 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_get_ipam_discovered_accounts]{get_ipam_discovered_accounts} \tab Gets IPAM discovered accounts\cr
 \link[=ec2_get_ipam_discovered_public_addresses]{get_ipam_discovered_public_addresses} \tab Gets the public IP addresses that have been discovered by IPAM\cr
 \link[=ec2_get_ipam_discovered_resource_cidrs]{get_ipam_discovered_resource_cidrs} \tab Returns the resource CIDRs that are monitored as part of a resource discovery\cr
+\link[=ec2_get_ipam_discovered_routes]{get_ipam_discovered_routes} \tab Retrieves Border Gateway Protocol (BGP) routes discovered by IPAM resource discovery for a specified Region\cr
+\link[=ec2_get_ipam_internet_registry_association_asns]{get_ipam_internet_registry_association_asns} \tab Retrieves Autonomous System Numbers (ASNs) registered with an internet registry for an IPAM internet registry association\cr
+\link[=ec2_get_ipam_internet_registry_association_cidrs]{get_ipam_internet_registry_association_cidrs} \tab Retrieves IP address CIDRs registered with an internet registry for an IPAM internet registry association\cr
 \link[=ec2_get_ipam_policy_allocation_rules]{get_ipam_policy_allocation_rules} \tab Gets the allocation rules for an IPAM policy\cr
 \link[=ec2_get_ipam_policy_organization_targets]{get_ipam_policy_organization_targets} \tab Gets the Amazon Web Services Organizations targets for an IPAM policy\cr
 \link[=ec2_get_ipam_pool_allocations]{get_ipam_pool_allocations} \tab Get a list of all the CIDR allocations in an IPAM pool\cr
@@ -671,6 +697,10 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_get_ipam_prefix_list_resolver_version_entries]{get_ipam_prefix_list_resolver_version_entries} \tab Retrieves the CIDR entries for a specific version of an IPAM prefix list resolver\cr
 \link[=ec2_get_ipam_prefix_list_resolver_versions]{get_ipam_prefix_list_resolver_versions} \tab Retrieves version information for an IPAM prefix list resolver\cr
 \link[=ec2_get_ipam_resource_cidrs]{get_ipam_resource_cidrs} \tab Returns resource CIDRs managed by IPAM in a given scope\cr
+\link[=ec2_get_ipam_route_origin_authorizations]{get_ipam_route_origin_authorizations} \tab Retrieves the current Route Origin Authorizations (ROAs) published to the RPKI for an IPAM internet registry association\cr
+\link[=ec2_get_ipam_route_protection_findings]{get_ipam_route_protection_findings} \tab Retrieves route protection findings for an IPAM\cr
+\link[=ec2_get_ipam_routing_policy_registration_deltas]{get_ipam_routing_policy_registration_deltas} \tab Retrieves the history of routing policy registration changes for an IPAM internet registry association\cr
+\link[=ec2_get_ipam_routing_policy_registrations]{get_ipam_routing_policy_registrations} \tab Retrieves routing policy registrations for an IPAM internet registry association\cr
 \link[=ec2_get_launch_template_data]{get_launch_template_data} \tab Retrieves the configuration data of the specified instance\cr
 \link[=ec2_get_managed_prefix_list_associations]{get_managed_prefix_list_associations} \tab Gets information about the resources that are associated with the specified managed prefix list\cr
 \link[=ec2_get_managed_prefix_list_entries]{get_managed_prefix_list_entries} \tab Gets information about the entries for a specified managed prefix list\cr
@@ -712,7 +742,9 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_list_snapshots_in_recycle_bin]{list_snapshots_in_recycle_bin} \tab Lists one or more snapshots that are currently in the Recycle Bin\cr
 \link[=ec2_list_volumes_in_recycle_bin]{list_volumes_in_recycle_bin} \tab Lists one or more volumes that are currently in the Recycle Bin\cr
 \link[=ec2_lock_snapshot]{lock_snapshot} \tab Locks an Amazon EBS snapshot in either governance or compliance mode to protect it against accidental or malicious deletions for a specific duration\cr
+\link[=ec2_modify_account_vpc_encryption_control]{modify_account_vpc_encryption_control} \tab Modifies the account-level VPC Encryption Control configuration\cr
 \link[=ec2_modify_address_attribute]{modify_address_attribute} \tab Modifies an attribute of the specified Elastic IP address\cr
+\link[=ec2_modify_application_status_check]{modify_application_status_check} \tab Modifies an existing application status check\cr
 \link[=ec2_modify_availability_zone_group]{modify_availability_zone_group} \tab Changes the opt-in status of the specified zone group for your account\cr
 \link[=ec2_modify_capacity_reservation]{modify_capacity_reservation} \tab Modifies a Capacity Reservation's capacity, instance eligibility, and the conditions under which it is to be released\cr
 \link[=ec2_modify_capacity_reservation_fleet]{modify_capacity_reservation_fleet} \tab Modifies a Capacity Reservation Fleet\cr
@@ -745,6 +777,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_modify_ipam_prefix_list_resolver_target]{modify_ipam_prefix_list_resolver_target} \tab Modifies an IPAM prefix list resolver target\cr
 \link[=ec2_modify_ipam_resource_cidr]{modify_ipam_resource_cidr} \tab Modify a resource CIDR\cr
 \link[=ec2_modify_ipam_resource_discovery]{modify_ipam_resource_discovery} \tab Modifies a resource discovery\cr
+\link[=ec2_modify_ipam_routing_policy_registration]{modify_ipam_routing_policy_registration} \tab Modifies an existing routing policy registration\cr
 \link[=ec2_modify_ipam_scope]{modify_ipam_scope} \tab Modify an IPAM scope\cr
 \link[=ec2_modify_launch_template]{modify_launch_template} \tab Modifies a launch template\cr
 \link[=ec2_modify_local_gateway_route]{modify_local_gateway_route} \tab Modifies the specified local gateway route\cr
@@ -765,6 +798,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_modify_traffic_mirror_session]{modify_traffic_mirror_session} \tab Modifies a Traffic Mirror session\cr
 \link[=ec2_modify_transit_gateway]{modify_transit_gateway} \tab Modifies the specified transit gateway\cr
 \link[=ec2_modify_transit_gateway_metering_policy]{modify_transit_gateway_metering_policy} \tab Modifies a transit gateway metering policy\cr
+\link[=ec2_modify_transit_gateway_policy_table_entry]{modify_transit_gateway_policy_table_entry} \tab Modifies the specified transit gateway policy table entry\cr
 \link[=ec2_modify_transit_gateway_prefix_list_reference]{modify_transit_gateway_prefix_list_reference} \tab Modifies a reference (route) to a prefix list in a specified transit gateway route table\cr
 \link[=ec2_modify_transit_gateway_vpc_attachment]{modify_transit_gateway_vpc_attachment} \tab Modifies the specified VPC attachment\cr
 \link[=ec2_modify_verified_access_endpoint]{modify_verified_access_endpoint} \tab Modifies the configuration of the specified Amazon Web Services Verified Access endpoint\cr
@@ -782,6 +816,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_modify_vpc_encryption_control]{modify_vpc_encryption_control} \tab Modifies the encryption control configuration for a VPC\cr
 \link[=ec2_modify_vpc_endpoint]{modify_vpc_endpoint} \tab Modifies attributes of a specified VPC endpoint\cr
 \link[=ec2_modify_vpc_endpoint_connection_notification]{modify_vpc_endpoint_connection_notification} \tab Modifies a connection notification for VPC endpoint or VPC endpoint service\cr
+\link[=ec2_modify_vpc_endpoint_payer_responsibility]{modify_vpc_endpoint_payer_responsibility} \tab Modifies the billing account for VPC endpoint usage/charges\cr
 \link[=ec2_modify_vpc_endpoint_service_configuration]{modify_vpc_endpoint_service_configuration} \tab Modifies the attributes of the specified VPC endpoint service configuration\cr
 \link[=ec2_modify_vpc_endpoint_service_payer_responsibility]{modify_vpc_endpoint_service_payer_responsibility} \tab Modifies the payer responsibility for your VPC endpoint service\cr
 \link[=ec2_modify_vpc_endpoint_service_permissions]{modify_vpc_endpoint_service_permissions} \tab Modifies the permissions for your VPC endpoint service\cr
@@ -821,6 +856,7 @@ Alternatively, use one of the following methods to access the Amazon EC2 API, in
 \link[=ec2_release_ipam_pool_allocation]{release_ipam_pool_allocation} \tab Release an allocation within an IPAM pool\cr
 \link[=ec2_replace_iam_instance_profile_association]{replace_iam_instance_profile_association} \tab Replaces an IAM instance profile for the specified running instance\cr
 \link[=ec2_replace_image_criteria_in_allowed_images_settings]{replace_image_criteria_in_allowed_images_settings} \tab Sets or replaces the criteria for Allowed AMIs\cr
+\link[=ec2_replace_image_instance_type_specification]{replace_image_instance_type_specification} \tab Replaces or removes the instance type specification for an AMI\cr
 \link[=ec2_replace_network_acl_association]{replace_network_acl_association} \tab Changes which network ACL a subnet is associated with\cr
 \link[=ec2_replace_network_acl_entry]{replace_network_acl_entry} \tab Replaces an entry (rule) in a network ACL\cr
 \link[=ec2_replace_route]{replace_route} \tab Replaces an existing route within a route table in a VPC\cr

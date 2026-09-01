@@ -31,6 +31,7 @@ Constraints: Minimum 20, maximum 100.}
 Valid Values:
 \itemize{
 \item \code{db2-ae}
+\item \code{db2-ce}
 \item \code{db2-se}
 \item \code{mariadb}
 \item \code{mysql}

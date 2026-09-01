@@ -11,7 +11,8 @@ configservice_put_organization_config_rule(
   OrganizationManagedRuleMetadata = NULL,
   OrganizationCustomRuleMetadata = NULL,
   ExcludedAccounts = NULL,
-  OrganizationCustomPolicyRuleMetadata = NULL
+  OrganizationCustomPolicyRuleMetadata = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -24,6 +25,8 @@ configservice_put_organization_config_rule(
 \item{ExcludedAccounts}{A comma-separated list of accounts that you want to exclude from an organization Config rule.}
 
 \item{OrganizationCustomPolicyRuleMetadata}{An \code{OrganizationCustomPolicyRuleMetadata} object. This object specifies metadata for your organization's Config Custom Policy rule. The metadata includes the runtime system in use, which accounts have debug logging enabled, and other custom rule metadata, such as resource type, resource ID of Amazon Web Services resource, and organization trigger types that initiate Config to evaluate Amazon Web Services resources against a rule.}
+
+\item{Tags}{The tags for the organization Config rule. Each tag consists of a key and an optional value, both of which you define.}
 }
 \description{
 Adds or updates an Config rule for your entire organization to evaluate if your Amazon Web Services resources comply with your desired configurations. For information on how many organization Config rules you can have per account, see \href{https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html}{\strong{Service Limits}} in the \emph{Config Developer Guide}.

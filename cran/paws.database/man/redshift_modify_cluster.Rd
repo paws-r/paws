@@ -52,7 +52,7 @@ Valid Values: \code{multi-node | single-node}}
 
 For more information about resizing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/}{Resizing Clusters in Amazon Redshift} in the \emph{Amazon Redshift Cluster Management Guide}.
 
-Valid Values: \code{dc2.large} | \code{dc2.8xlarge}| \code{rg.xlarge} | \code{rg.4xlarge} | \code{ra3.large} | \code{ra3.xlplus} | \code{ra3.4xlarge} | \code{ra3.16xlarge}}
+Valid Values: \code{dc2.large} | \code{dc2.8xlarge} | \code{rg.large} | \code{rg.xlarge} | \code{rg.4xlarge} | \code{rg.12xlarge} | \code{ra3.large} | \code{ra3.xlplus} | \code{ra3.4xlarge} | \code{ra3.16xlarge}}
 
 \item{NumberOfNodes}{The new number of nodes of the cluster. If you specify a new number of nodes, you must also specify the node type parameter.
 

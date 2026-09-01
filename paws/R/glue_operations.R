@@ -3,6 +3,71 @@
 #' @include glue_service.R
 NULL
 
+#' Associates one or more glossary terms with an asset in Glue Data Catalog
+#'
+#' @description
+#' Associates one or more glossary terms with an asset in Glue Data Catalog.
+#'
+#' @usage
+#' glue_associate_glossary_terms(AssetIdentifier, IterableFormName,
+#'   ItemIdentifier, GlossaryTermIdentifiers, ClientToken)
+#'
+#' @param AssetIdentifier &#91;required&#93; The unique identifier of the asset to associate glossary terms with.
+#' @param IterableFormName The name of the iterable form. When specified along with `itemIdentifier`, the glossary terms are associated with an item within the iterable form rather than the asset itself.
+#' @param ItemIdentifier The identifier of the item within the iterable form. Required when `iterableFormName` is specified.
+#' @param GlossaryTermIdentifiers &#91;required&#93; The list of glossary term identifiers to associate with the asset.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssetIdentifier = "string",
+#'   IterableFormName = "string",
+#'   ItemIdentifier = "string",
+#'   GlossaryTerms = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_glossary_terms(
+#'   AssetIdentifier = "string",
+#'   IterableFormName = "string",
+#'   ItemIdentifier = "string",
+#'   GlossaryTermIdentifiers = list(
+#'     "string"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_associate_glossary_terms
+#'
+#' @aliases glue_associate_glossary_terms
+glue_associate_glossary_terms <- function(AssetIdentifier, IterableFormName = NULL, ItemIdentifier = NULL, GlossaryTermIdentifiers, ClientToken = NULL) {
+  op <- new_operation(
+    name = "AssociateGlossaryTerms",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$associate_glossary_terms_input(AssetIdentifier = AssetIdentifier, IterableFormName = IterableFormName, ItemIdentifier = ItemIdentifier, GlossaryTermIdentifiers = GlossaryTermIdentifiers, ClientToken = ClientToken)
+  output <- .glue$associate_glossary_terms_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$associate_glossary_terms <- glue_associate_glossary_terms
+
 #' Creates one or more partitions in a batch operation
 #'
 #' @description
@@ -825,6 +890,17 @@ glue_batch_get_custom_entity_types <- function(Names) {
 #'           EvaluationMessage = "string",
 #'           EvaluatedMetrics = list(
 #'             123.0
+#'           ),
+#'           EvaluatedDistributions = list(
+#'             list(
+#'               BinEdges = list(
+#'                 "string"
+#'               ),
+#'               Count = list(
+#'                 123
+#'               ),
+#'               DataType = "string"
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -894,6 +970,183 @@ glue_batch_get_data_quality_result <- function(ResultIds) {
   return(response)
 }
 .glue$operations$batch_get_data_quality_result <- glue_batch_get_data_quality_result
+
+#' Retrieves the details of multiple evaluation runs in a single request
+#'
+#' @description
+#' Retrieves the details of multiple evaluation runs in a single request.
+#'
+#' @usage
+#' glue_batch_get_data_quality_ruleset_evaluation_run(RunIds)
+#'
+#' @param RunIds &#91;required&#93; A list of unique run identifiers for the evaluation runs to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Runs = list(
+#'     list(
+#'       RunId = "string",
+#'       DataSource = list(
+#'         GlueTable = list(
+#'           DatabaseName = "string",
+#'           TableName = "string",
+#'           CatalogId = "string",
+#'           ConnectionName = "string",
+#'           AdditionalOptions = list(
+#'             "string"
+#'           )
+#'         ),
+#'         DataQualityGlueTable = list(
+#'           DatabaseName = "string",
+#'           TableName = "string",
+#'           CatalogId = "string",
+#'           ConnectionName = "string",
+#'           AdditionalOptions = list(
+#'             "string"
+#'           ),
+#'           PreProcessingQuery = "string"
+#'         )
+#'       ),
+#'       Role = "string",
+#'       NumberOfWorkers = 123,
+#'       Timeout = 123,
+#'       AdditionalRunOptions = list(
+#'         CloudWatchMetricsEnabled = TRUE|FALSE,
+#'         ResultsS3Prefix = "string",
+#'         CompositeRuleEvaluationMethod = "COLUMN"|"ROW",
+#'         CustomLogGroupPrefix = "string",
+#'         RowLevelResults = list(
+#'           MaxRowsToWrite = 123,
+#'           ResultType = "ALL"|"PASSED_ONLY"|"FAILED_ONLY",
+#'           CatalogTableConfig = list(
+#'             DatabaseName = "string",
+#'             TableName = "string",
+#'             S3Location = "string",
+#'             CatalogId = "string"
+#'           )
+#'         ),
+#'         ProfilingResults = list(
+#'           WriteProfilingResultsEnabled = TRUE|FALSE,
+#'           CatalogTableConfig = list(
+#'             DatabaseName = "string",
+#'             TableName = "string",
+#'             S3Location = "string",
+#'             CatalogId = "string"
+#'           ),
+#'           DistributionResults = list(
+#'             WriteDistributionResultsEnabled = TRUE|FALSE,
+#'             CatalogTableConfig = list(
+#'               DatabaseName = "string",
+#'               TableName = "string",
+#'               S3Location = "string",
+#'               CatalogId = "string"
+#'             )
+#'           )
+#'         ),
+#'         ObservationScope = "ALL"|"NONE",
+#'         ObservationMode = "SCHEDULED"|"FIXED",
+#'         DataQualityRuleResults = list(
+#'           WriteDataQualityRuleResultsEnabled = TRUE|FALSE,
+#'           CatalogTableConfig = list(
+#'             DatabaseName = "string",
+#'             TableName = "string",
+#'             S3Location = "string",
+#'             CatalogId = "string"
+#'           )
+#'         ),
+#'         ObservationResults = list(
+#'           WriteObservationResultsEnabled = TRUE|FALSE,
+#'           CatalogTableConfig = list(
+#'             DatabaseName = "string",
+#'             TableName = "string",
+#'             S3Location = "string",
+#'             CatalogId = "string"
+#'           )
+#'         )
+#'       ),
+#'       Status = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
+#'       ErrorString = "string",
+#'       StartedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CompletedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExecutionTime = 123,
+#'       RulesetNames = list(
+#'         "string"
+#'       ),
+#'       ResultIds = list(
+#'         "string"
+#'       ),
+#'       AdditionalDataSources = list(
+#'         list(
+#'           GlueTable = list(
+#'             DatabaseName = "string",
+#'             TableName = "string",
+#'             CatalogId = "string",
+#'             ConnectionName = "string",
+#'             AdditionalOptions = list(
+#'               "string"
+#'             )
+#'           ),
+#'           DataQualityGlueTable = list(
+#'             DatabaseName = "string",
+#'             TableName = "string",
+#'             CatalogId = "string",
+#'             ConnectionName = "string",
+#'             AdditionalOptions = list(
+#'               "string"
+#'             ),
+#'             PreProcessingQuery = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   RunsNotFound = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_data_quality_ruleset_evaluation_run(
+#'   RunIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_batch_get_data_quality_ruleset_evaluation_run
+#'
+#' @aliases glue_batch_get_data_quality_ruleset_evaluation_run
+glue_batch_get_data_quality_ruleset_evaluation_run <- function(RunIds) {
+  op <- new_operation(
+    name = "BatchGetDataQualityRulesetEvaluationRun",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$batch_get_data_quality_ruleset_evaluation_run_input(RunIds = RunIds)
+  output <- .glue$batch_get_data_quality_ruleset_evaluation_run_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$batch_get_data_quality_ruleset_evaluation_run <- glue_batch_get_data_quality_ruleset_evaluation_run
 
 #' Returns a list of resource metadata for a given list of development
 #' endpoint names
@@ -987,6 +1240,90 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
   return(response)
 }
 .glue$operations$batch_get_dev_endpoints <- glue_batch_get_dev_endpoints
+
+#' Retrieves multiple items from an iterable form on an asset in Glue Data
+#' Catalog in a single request
+#'
+#' @description
+#' Retrieves multiple items from an iterable form on an asset in Glue Data Catalog in a single request.
+#'
+#' @usage
+#' glue_batch_get_iterable_forms(AssetIdentifier, IterableFormName,
+#'   ItemIdentifiers)
+#'
+#' @param AssetIdentifier &#91;required&#93; The unique identifier of the asset.
+#' @param IterableFormName &#91;required&#93; The name of the iterable form to retrieve items from.
+#' @param ItemIdentifiers &#91;required&#93; The list of item identifiers to retrieve. Each identifier can be an item ID or item name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ItemId = "string",
+#'       ItemName = "string",
+#'       GlossaryTerms = list(
+#'         "string"
+#'       ),
+#'       Forms = list(
+#'         list(
+#'           FormTypeId = "string",
+#'           Content = "string"
+#'         )
+#'       ),
+#'       Attachments = list(
+#'         list(
+#'           FormTypeId = "string",
+#'           Content = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Errors = list(
+#'     list(
+#'       ItemIdentifier = "string",
+#'       Code = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_iterable_forms(
+#'   AssetIdentifier = "string",
+#'   IterableFormName = "string",
+#'   ItemIdentifiers = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_batch_get_iterable_forms
+#'
+#' @aliases glue_batch_get_iterable_forms
+glue_batch_get_iterable_forms <- function(AssetIdentifier, IterableFormName, ItemIdentifiers) {
+  op <- new_operation(
+    name = "BatchGetIterableForms",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$batch_get_iterable_forms_input(AssetIdentifier = AssetIdentifier, IterableFormName = IterableFormName, ItemIdentifiers = ItemIdentifiers)
+  output <- .glue$batch_get_iterable_forms_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$batch_get_iterable_forms <- glue_batch_get_iterable_forms
 
 #' Returns a list of resource metadata for a given list of job names
 #'
@@ -5074,6 +5411,123 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 }
 .glue$operations$create_dev_endpoint <- glue_create_dev_endpoint
 
+#' Creates a business glossary in Glue Data Catalog
+#'
+#' @description
+#' Creates a business glossary in Glue Data Catalog. A glossary is a container for glossary terms that define business concepts.
+#'
+#' @usage
+#' glue_create_glossary(Name, Description, ClientToken)
+#'
+#' @param Name &#91;required&#93; The name of the glossary.
+#' @param Description The description of the glossary.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_glossary(
+#'   Name = "string",
+#'   Description = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_glossary
+#'
+#' @aliases glue_create_glossary
+glue_create_glossary <- function(Name, Description = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateGlossary",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$create_glossary_input(Name = Name, Description = Description, ClientToken = ClientToken)
+  output <- .glue$create_glossary_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_glossary <- glue_create_glossary
+
+#' Creates a glossary term within a business glossary in Glue Data Catalog
+#'
+#' @description
+#' Creates a glossary term within a business glossary in Glue Data Catalog.
+#'
+#' @usage
+#' glue_create_glossary_term(GlossaryIdentifier, Name, ShortDescription,
+#'   LongDescription, ClientToken)
+#'
+#' @param GlossaryIdentifier &#91;required&#93; The unique identifier of the glossary in which to create the term.
+#' @param Name &#91;required&#93; The name of the glossary term.
+#' @param ShortDescription A short description of the glossary term.
+#' @param LongDescription A long description of the glossary term.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   GlossaryId = "string",
+#'   Name = "string",
+#'   ShortDescription = "string",
+#'   LongDescription = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_glossary_term(
+#'   GlossaryIdentifier = "string",
+#'   Name = "string",
+#'   ShortDescription = "string",
+#'   LongDescription = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_glossary_term
+#'
+#' @aliases glue_create_glossary_term
+glue_create_glossary_term <- function(GlossaryIdentifier, Name, ShortDescription = NULL, LongDescription = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateGlossaryTerm",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$create_glossary_term_input(GlossaryIdentifier = GlossaryIdentifier, Name = Name, ShortDescription = ShortDescription, LongDescription = LongDescription, ClientToken = ClientToken)
+  output <- .glue$create_glossary_term_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_glossary_term <- glue_create_glossary_term
+
 #' Creates a new Glue Identity Center configuration to enable integration
 #' between Glue and Amazon Web Services IAM Identity Center for
 #' authentication and authorization
@@ -7969,7 +8423,7 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #' glue_create_session(Id, Description, Role, Command, Timeout,
 #'   IdleTimeout, DefaultArguments, Connections, MaxCapacity,
 #'   NumberOfWorkers, WorkerType, SecurityConfiguration, GlueVersion, Tags,
-#'   RequestOrigin)
+#'   RequestOrigin, SessionType)
 #'
 #' @param Id &#91;required&#93; The ID of the session request.
 #' @param Description The description of the session.
@@ -7996,6 +8450,7 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #' @param GlueVersion The Glue version determines the versions of Apache Spark and Python that Glue supports. The GlueVersion must be greater than 2.0.
 #' @param Tags The map of key value pairs (tags) belonging to the session.
 #' @param RequestOrigin The origin of the request.
+#' @param SessionType The type of session to create.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8034,7 +8489,8 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #'     ExecutionTime = 123.0,
 #'     DPUSeconds = 123.0,
 #'     IdleTimeout = 123,
-#'     ProfileName = "string"
+#'     ProfileName = "string",
+#'     SessionType = "LIVY"|"SPARK_CONNECT"
 #'   )
 #' )
 #' ```
@@ -8067,7 +8523,8 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #'   Tags = list(
 #'     "string"
 #'   ),
-#'   RequestOrigin = "string"
+#'   RequestOrigin = "string",
+#'   SessionType = "LIVY"|"SPARK_CONNECT"
 #' )
 #' ```
 #'
@@ -8076,7 +8533,7 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #' @rdname glue_create_session
 #'
 #' @aliases glue_create_session
-glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout = NULL, IdleTimeout = NULL, DefaultArguments = NULL, Connections = NULL, MaxCapacity = NULL, NumberOfWorkers = NULL, WorkerType = NULL, SecurityConfiguration = NULL, GlueVersion = NULL, Tags = NULL, RequestOrigin = NULL) {
+glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout = NULL, IdleTimeout = NULL, DefaultArguments = NULL, Connections = NULL, MaxCapacity = NULL, NumberOfWorkers = NULL, WorkerType = NULL, SecurityConfiguration = NULL, GlueVersion = NULL, Tags = NULL, RequestOrigin = NULL, SessionType = NULL) {
   op <- new_operation(
     name = "CreateSession",
     http_method = "POST",
@@ -8085,7 +8542,7 @@ glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$create_session_input(Id = Id, Description = Description, Role = Role, Command = Command, Timeout = Timeout, IdleTimeout = IdleTimeout, DefaultArguments = DefaultArguments, Connections = Connections, MaxCapacity = MaxCapacity, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType, SecurityConfiguration = SecurityConfiguration, GlueVersion = GlueVersion, Tags = Tags, RequestOrigin = RequestOrigin)
+  input <- .glue$create_session_input(Id = Id, Description = Description, Role = Role, Command = Command, Timeout = Timeout, IdleTimeout = IdleTimeout, DefaultArguments = DefaultArguments, Connections = Connections, MaxCapacity = MaxCapacity, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType, SecurityConfiguration = SecurityConfiguration, GlueVersion = GlueVersion, Tags = Tags, RequestOrigin = RequestOrigin, SessionType = SessionType)
   output <- .glue$create_session_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -8713,6 +9170,152 @@ glue_create_workflow <- function(Name, Description = NULL, DefaultRunProperties 
 }
 .glue$operations$create_workflow <- glue_create_workflow
 
+#' Deletes an asset from Glue Data Catalog
+#'
+#' @description
+#' Deletes an asset from Glue Data Catalog.
+#'
+#' @usage
+#' glue_delete_asset(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the asset to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_asset(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_asset
+#'
+#' @aliases glue_delete_asset
+glue_delete_asset <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteAsset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_asset_input(Identifier = Identifier)
+  output <- .glue$delete_asset_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_asset <- glue_delete_asset
+
+#' Deletes an asset type from Glue Data Catalog
+#'
+#' @description
+#' Deletes an asset type from Glue Data Catalog.
+#'
+#' @usage
+#' glue_delete_asset_type(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The identifier of the asset type to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_asset_type(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_asset_type
+#'
+#' @aliases glue_delete_asset_type
+glue_delete_asset_type <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteAssetType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_asset_type_input(Identifier = Identifier)
+  output <- .glue$delete_asset_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_asset_type <- glue_delete_asset_type
+
+#' Deletes a form attachment from an asset in Glue Data Catalog
+#'
+#' @description
+#' Deletes a form attachment from an asset in Glue Data Catalog.
+#'
+#' @usage
+#' glue_delete_attachment(AssetIdentifier, IterableFormName,
+#'   ItemIdentifier, AttachmentName)
+#'
+#' @param AssetIdentifier &#91;required&#93; The unique identifier of the asset from which to delete the attachment.
+#' @param IterableFormName The name of the iterable form. When specified along with `itemIdentifier`, the attachment is deleted from an item within the iterable form rather than from the asset itself.
+#' @param ItemIdentifier The identifier of the item within the iterable form. Required when `iterableFormName` is specified.
+#' @param AttachmentName &#91;required&#93; The name of the attachment to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssetIdentifier = "string",
+#'   IterableFormName = "string",
+#'   ItemIdentifier = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_attachment(
+#'   AssetIdentifier = "string",
+#'   IterableFormName = "string",
+#'   ItemIdentifier = "string",
+#'   AttachmentName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_attachment
+#'
+#' @aliases glue_delete_attachment
+glue_delete_attachment <- function(AssetIdentifier, IterableFormName = NULL, ItemIdentifier = NULL, AttachmentName) {
+  op <- new_operation(
+    name = "DeleteAttachment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_attachment_input(AssetIdentifier = AssetIdentifier, IterableFormName = IterableFormName, ItemIdentifier = ItemIdentifier, AttachmentName = AttachmentName)
+  output <- .glue$delete_attachment_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_attachment <- glue_delete_attachment
+
 #' Deletes an existing blueprint
 #'
 #' @description
@@ -9333,6 +9936,138 @@ glue_delete_dev_endpoint <- function(EndpointName) {
   return(response)
 }
 .glue$operations$delete_dev_endpoint <- glue_delete_dev_endpoint
+
+#' Deletes a form type from Glue Data Catalog
+#'
+#' @description
+#' Deletes a form type from Glue Data Catalog. A form type cannot be deleted if it is still referenced by an asset type.
+#'
+#' @usage
+#' glue_delete_form_type(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The identifier of the form type to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_form_type(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_form_type
+#'
+#' @aliases glue_delete_form_type
+glue_delete_form_type <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteFormType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_form_type_input(Identifier = Identifier)
+  output <- .glue$delete_form_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_form_type <- glue_delete_form_type
+
+#' Deletes a business glossary from Glue Data Catalog
+#'
+#' @description
+#' Deletes a business glossary from Glue Data Catalog. A glossary cannot be deleted if it still contains glossary terms.
+#'
+#' @usage
+#' glue_delete_glossary(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the glossary to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_glossary(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_glossary
+#'
+#' @aliases glue_delete_glossary
+glue_delete_glossary <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteGlossary",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_glossary_input(Identifier = Identifier)
+  output <- .glue$delete_glossary_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_glossary <- glue_delete_glossary
+
+#' Deletes a glossary term from Glue Data Catalog
+#'
+#' @description
+#' Deletes a glossary term from Glue Data Catalog.
+#'
+#' @usage
+#' glue_delete_glossary_term(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the glossary term to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_glossary_term(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_glossary_term
+#'
+#' @aliases glue_delete_glossary_term
+glue_delete_glossary_term <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteGlossaryTerm",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_glossary_term_input(Identifier = Identifier)
+  output <- .glue$delete_glossary_term_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_glossary_term <- glue_delete_glossary_term
 
 #' Deletes the existing Glue Identity Center configuration, removing the
 #' integration between Glue and Amazon Web Services IAM Identity Center
@@ -10739,7 +11474,8 @@ glue_delete_workflow <- function(Name) {
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         )
 #'       ),
 #'       ResponseConfiguration = list(
@@ -10786,6 +11522,24 @@ glue_delete_workflow <- function(Name) {
 #'               HeaderKey = "string"
 #'             )
 #'           )
+#'         )
+#'       ),
+#'       FilterConfiguration = list(
+#'         FilterMode = "QUERY_PARAMS"|"FILTER_STRING",
+#'         OperatorMappings = list(
+#'           "string"
+#'         ),
+#'         DateTimeFormat = "string",
+#'         StripQuotes = TRUE|FALSE,
+#'         BetweenConfiguration = list(
+#'           LowBoundKey = "string",
+#'           HighBoundKey = "string",
+#'           Template = "string"
+#'         ),
+#'         FilterStringConfiguration = list(
+#'           QueryParameterName = "string",
+#'           QuoteStringValues = TRUE|FALSE,
+#'           QuoteCharacter = "string"
 #'         )
 #'       )
 #'     ),
@@ -10802,7 +11556,8 @@ glue_delete_workflow <- function(Name) {
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         )
 #'       ),
 #'       ResponseConfiguration = list(
@@ -10849,6 +11604,24 @@ glue_delete_workflow <- function(Name) {
 #'               HeaderKey = "string"
 #'             )
 #'           )
+#'         )
+#'       ),
+#'       FilterConfiguration = list(
+#'         FilterMode = "QUERY_PARAMS"|"FILTER_STRING",
+#'         OperatorMappings = list(
+#'           "string"
+#'         ),
+#'         DateTimeFormat = "string",
+#'         StripQuotes = TRUE|FALSE,
+#'         BetweenConfiguration = list(
+#'           LowBoundKey = "string",
+#'           HighBoundKey = "string",
+#'           Template = "string"
+#'         ),
+#'         FilterStringConfiguration = list(
+#'           QueryParameterName = "string",
+#'           QuoteStringValues = TRUE|FALSE,
+#'           QuoteCharacter = "string"
 #'         )
 #'       )
 #'     ),
@@ -10867,7 +11640,8 @@ glue_delete_workflow <- function(Name) {
 #'                 "string"
 #'               ),
 #'               PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'               PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'               PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'               Format = "string"
 #'             )
 #'           ),
 #'           ResponseConfiguration = list(
@@ -10915,12 +11689,47 @@ glue_delete_workflow <- function(Name) {
 #'                 )
 #'               )
 #'             )
+#'           ),
+#'           FilterConfiguration = list(
+#'             FilterMode = "QUERY_PARAMS"|"FILTER_STRING",
+#'             OperatorMappings = list(
+#'               "string"
+#'             ),
+#'             DateTimeFormat = "string",
+#'             StripQuotes = TRUE|FALSE,
+#'             BetweenConfiguration = list(
+#'               LowBoundKey = "string",
+#'               HighBoundKey = "string",
+#'               Template = "string"
+#'             ),
+#'             FilterStringConfiguration = list(
+#'               QueryParameterName = "string",
+#'               QuoteStringValues = TRUE|FALSE,
+#'               QuoteCharacter = "string"
+#'             )
 #'           )
 #'         ),
 #'         Schema = list(
 #'           list(
 #'             Name = "string",
-#'             FieldDataType = "INT"|"SMALLINT"|"BIGINT"|"FLOAT"|"LONG"|"DATE"|"BOOLEAN"|"MAP"|"ARRAY"|"STRING"|"TIMESTAMP"|"DECIMAL"|"BYTE"|"SHORT"|"DOUBLE"|"STRUCT"|"BINARY"|"UNION"
+#'             FieldDataType = "INT"|"SMALLINT"|"BIGINT"|"FLOAT"|"LONG"|"DATE"|"BOOLEAN"|"MAP"|"ARRAY"|"STRING"|"TIMESTAMP"|"DECIMAL"|"BYTE"|"SHORT"|"DOUBLE"|"STRUCT"|"BINARY"|"UNION",
+#'             ResponseDateFormat = "string",
+#'             IsPartitionable = TRUE|FALSE,
+#'             IsNullable = TRUE|FALSE,
+#'             IsQueryable = TRUE|FALSE,
+#'             IsOrderable = TRUE|FALSE,
+#'             FilterOverrides = list(
+#'               FieldName = "string",
+#'               OperatorMappings = list(
+#'                 "string"
+#'               ),
+#'               BetweenConfiguration = list(
+#'                 LowBoundKey = "string",
+#'                 HighBoundKey = "string",
+#'                 Template = "string"
+#'               ),
+#'               DateTimeFormat = "string"
+#'             )
 #'           )
 #'         )
 #'       )
@@ -11229,6 +12038,206 @@ glue_describe_integrations <- function(IntegrationIdentifier = NULL, Marker = NU
   return(response)
 }
 .glue$operations$describe_integrations <- glue_describe_integrations
+
+#' Removes the association of one or more glossary terms from an asset in
+#' Glue Data Catalog
+#'
+#' @description
+#' Removes the association of one or more glossary terms from an asset in Glue Data Catalog.
+#'
+#' @usage
+#' glue_disassociate_glossary_terms(AssetIdentifier, IterableFormName,
+#'   ItemIdentifier, GlossaryTermIdentifiers, ClientToken)
+#'
+#' @param AssetIdentifier &#91;required&#93; The unique identifier of the asset to disassociate glossary terms from.
+#' @param IterableFormName The name of the iterable form. When specified along with `itemIdentifier`, the glossary terms are disassociated from an item within the iterable form rather than the asset itself.
+#' @param ItemIdentifier The identifier of the item within the iterable form. Required when `iterableFormName` is specified.
+#' @param GlossaryTermIdentifiers &#91;required&#93; The list of glossary term identifiers to disassociate from the asset.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssetIdentifier = "string",
+#'   IterableFormName = "string",
+#'   ItemIdentifier = "string",
+#'   GlossaryTerms = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_glossary_terms(
+#'   AssetIdentifier = "string",
+#'   IterableFormName = "string",
+#'   ItemIdentifier = "string",
+#'   GlossaryTermIdentifiers = list(
+#'     "string"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_disassociate_glossary_terms
+#'
+#' @aliases glue_disassociate_glossary_terms
+glue_disassociate_glossary_terms <- function(AssetIdentifier, IterableFormName = NULL, ItemIdentifier = NULL, GlossaryTermIdentifiers, ClientToken = NULL) {
+  op <- new_operation(
+    name = "DisassociateGlossaryTerms",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$disassociate_glossary_terms_input(AssetIdentifier = AssetIdentifier, IterableFormName = IterableFormName, ItemIdentifier = ItemIdentifier, GlossaryTermIdentifiers = GlossaryTermIdentifiers, ClientToken = ClientToken)
+  output <- .glue$disassociate_glossary_terms_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$disassociate_glossary_terms <- glue_disassociate_glossary_terms
+
+#' Retrieves the metadata for an asset in Glue Data Catalog, including its
+#' forms, additional attachments, and associated glossary terms
+#'
+#' @description
+#' Retrieves the metadata for an asset in Glue Data Catalog, including its forms, additional attachments, and associated glossary terms.
+#'
+#' @usage
+#' glue_get_asset(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the asset to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   AssetTypeId = "string",
+#'   GlossaryTerms = list(
+#'     "string"
+#'   ),
+#'   Forms = list(
+#'     list(
+#'       FormTypeId = "string",
+#'       Content = "string"
+#'     )
+#'   ),
+#'   Attachments = list(
+#'     list(
+#'       FormTypeId = "string",
+#'       Content = "string"
+#'     )
+#'   ),
+#'   IterableForms = list(
+#'     list(
+#'       FormTypeId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_asset(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_asset
+#'
+#' @aliases glue_get_asset
+glue_get_asset <- function(Identifier) {
+  op <- new_operation(
+    name = "GetAsset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_asset_input(Identifier = Identifier)
+  output <- .glue$get_asset_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_asset <- glue_get_asset
+
+#' Retrieves an asset type in Glue Data Catalog by its identifier
+#'
+#' @description
+#' Retrieves an asset type in Glue Data Catalog by its identifier.
+#'
+#' @usage
+#' glue_get_asset_type(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The identifier of the asset type to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Forms = list(
+#'     list(
+#'       FormTypeIdentifier = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_asset_type(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_asset_type
+#'
+#' @aliases glue_get_asset_type
+glue_get_asset_type <- function(Identifier) {
+  op <- new_operation(
+    name = "GetAssetType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_asset_type_input(Identifier = Identifier)
+  output <- .glue$get_asset_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_asset_type <- glue_get_asset_type
 
 #' Retrieves the details of a blueprint
 #'
@@ -13217,6 +14226,59 @@ glue_get_custom_entity_type <- function(Name) {
 }
 .glue$operations$get_custom_entity_type <- glue_get_custom_entity_type
 
+#' Retrieves the URL for the Spark monitoring dashboard for a Glue resource
+#'
+#' @description
+#' Retrieves the URL for the Spark monitoring dashboard for a Glue resource.
+#'
+#' @usage
+#' glue_get_dashboard_url(ResourceId, ResourceType, RequestOrigin)
+#'
+#' @param ResourceId &#91;required&#93; The unique identifier of the resource for which to retrieve the dashboard URL.
+#' @param ResourceType &#91;required&#93; The type of the resource. Valid values are `SESSION` and `JOB`.
+#' @param RequestOrigin The origin of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Url = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_dashboard_url(
+#'   ResourceId = "string",
+#'   ResourceType = "JOB"|"SESSION",
+#'   RequestOrigin = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_dashboard_url
+#'
+#' @aliases glue_get_dashboard_url
+glue_get_dashboard_url <- function(ResourceId, ResourceType, RequestOrigin = NULL) {
+  op <- new_operation(
+    name = "GetDashboardUrl",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_dashboard_url_input(ResourceId = ResourceId, ResourceType = ResourceType, RequestOrigin = RequestOrigin)
+  output <- .glue$get_dashboard_url_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_dashboard_url <- glue_get_dashboard_url
+
 #' Retrieves the security configuration for a specified catalog
 #'
 #' @description
@@ -13275,6 +14337,65 @@ glue_get_data_catalog_encryption_settings <- function(CatalogId = NULL) {
   return(response)
 }
 .glue$operations$get_data_catalog_encryption_settings <- glue_get_data_catalog_encryption_settings
+
+#' Retrieves the current export configuration for the Glue Data Catalog
+#'
+#' @description
+#' Retrieves the current export configuration for the Glue Data Catalog. The export configuration controls whether catalog metadata is exported to S3 Tables.
+#'
+#' @usage
+#' glue_get_data_catalog_export_configuration()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExportSetting = "ENABLED"|"DISABLED",
+#'   Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED",
+#'   EncryptionConfiguration = list(
+#'     SseAlgorithm = "string",
+#'     KmsKeyArn = "string"
+#'   ),
+#'   S3TableBucketArn = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_data_catalog_export_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_data_catalog_export_configuration
+#'
+#' @aliases glue_get_data_catalog_export_configuration
+glue_get_data_catalog_export_configuration <- function() {
+  op <- new_operation(
+    name = "GetDataCatalogExportConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_data_catalog_export_configuration_input()
+  output <- .glue$get_data_catalog_export_configuration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_data_catalog_export_configuration <- glue_get_data_catalog_export_configuration
 
 #' Retrieve the training status of the model along with more information
 #' (CompletedOn, StartedOn, FailureReason)
@@ -13474,6 +14595,17 @@ glue_get_data_quality_model_result <- function(StatisticId, ProfileId) {
 #'       EvaluationMessage = "string",
 #'       EvaluatedMetrics = list(
 #'         123.0
+#'       ),
+#'       EvaluatedDistributions = list(
+#'         list(
+#'           BinEdges = list(
+#'             "string"
+#'           ),
+#'           Count = list(
+#'             123
+#'           ),
+#'           DataType = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -13590,7 +14722,10 @@ glue_get_data_quality_result <- function(ResultId) {
 #'   ExecutionTime = 123,
 #'   RecommendedRuleset = "string",
 #'   CreatedRulesetName = "string",
-#'   DataQualitySecurityConfiguration = "string"
+#'   DataQualitySecurityConfiguration = "string",
+#'   AdditionalRunOptions = list(
+#'     CustomLogGroupPrefix = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -13733,7 +14868,55 @@ glue_get_data_quality_ruleset <- function(Name) {
 #'     CloudWatchMetricsEnabled = TRUE|FALSE,
 #'     ResultsS3Prefix = "string",
 #'     CompositeRuleEvaluationMethod = "COLUMN"|"ROW",
-#'     CustomLogGroupPrefix = "string"
+#'     CustomLogGroupPrefix = "string",
+#'     RowLevelResults = list(
+#'       MaxRowsToWrite = 123,
+#'       ResultType = "ALL"|"PASSED_ONLY"|"FAILED_ONLY",
+#'       CatalogTableConfig = list(
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         S3Location = "string",
+#'         CatalogId = "string"
+#'       )
+#'     ),
+#'     ProfilingResults = list(
+#'       WriteProfilingResultsEnabled = TRUE|FALSE,
+#'       CatalogTableConfig = list(
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         S3Location = "string",
+#'         CatalogId = "string"
+#'       ),
+#'       DistributionResults = list(
+#'         WriteDistributionResultsEnabled = TRUE|FALSE,
+#'         CatalogTableConfig = list(
+#'           DatabaseName = "string",
+#'           TableName = "string",
+#'           S3Location = "string",
+#'           CatalogId = "string"
+#'         )
+#'       )
+#'     ),
+#'     ObservationScope = "ALL"|"NONE",
+#'     ObservationMode = "SCHEDULED"|"FIXED",
+#'     DataQualityRuleResults = list(
+#'       WriteDataQualityRuleResultsEnabled = TRUE|FALSE,
+#'       CatalogTableConfig = list(
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         S3Location = "string",
+#'         CatalogId = "string"
+#'       )
+#'     ),
+#'     ObservationResults = list(
+#'       WriteObservationResultsEnabled = TRUE|FALSE,
+#'       CatalogTableConfig = list(
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         S3Location = "string",
+#'         CatalogId = "string"
+#'       )
+#'     )
 #'   ),
 #'   Status = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
 #'   ErrorString = "string",
@@ -14321,6 +15504,161 @@ glue_get_entity_records <- function(ConnectionName = NULL, CatalogId = NULL, Ent
   return(response)
 }
 .glue$operations$get_entity_records <- glue_get_entity_records
+
+#' Retrieves a form type in Glue Data Catalog by its identifier
+#'
+#' @description
+#' Retrieves a form type in Glue Data Catalog by its identifier.
+#'
+#' @usage
+#' glue_get_form_type(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The identifier of the form type to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Schema = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_form_type(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_form_type
+#'
+#' @aliases glue_get_form_type
+glue_get_form_type <- function(Identifier) {
+  op <- new_operation(
+    name = "GetFormType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_form_type_input(Identifier = Identifier)
+  output <- .glue$get_form_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_form_type <- glue_get_form_type
+
+#' Retrieves a business glossary in Glue Data Catalog by its identifier
+#'
+#' @description
+#' Retrieves a business glossary in Glue Data Catalog by its identifier.
+#'
+#' @usage
+#' glue_get_glossary(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the glossary to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_glossary(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_glossary
+#'
+#' @aliases glue_get_glossary
+glue_get_glossary <- function(Identifier) {
+  op <- new_operation(
+    name = "GetGlossary",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_glossary_input(Identifier = Identifier)
+  output <- .glue$get_glossary_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_glossary <- glue_get_glossary
+
+#' Retrieves a glossary term in Glue Data Catalog by its identifier
+#'
+#' @description
+#' Retrieves a glossary term in Glue Data Catalog by its identifier.
+#'
+#' @usage
+#' glue_get_glossary_term(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the glossary term to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   GlossaryId = "string",
+#'   Name = "string",
+#'   ShortDescription = "string",
+#'   LongDescription = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_glossary_term(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_glossary_term
+#'
+#' @aliases glue_get_glossary_term
+glue_get_glossary_term <- function(Identifier) {
+  op <- new_operation(
+    name = "GetGlossaryTerm",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_glossary_term_input(Identifier = Identifier)
+  output <- .glue$get_glossary_term_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_glossary_term <- glue_get_glossary_term
 
 #' Retrieves the current Glue Identity Center configuration details,
 #' including the associated Identity Center instance and application
@@ -19358,7 +20696,7 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param Expression An expression that filters the partitions to be returned.
 #' 
-#' The expression uses SQL syntax similar to the SQL `WHERE` filter clause. The SQL statement parser [JSQLParser](https://jsqlparser.sourceforge.net/home.php) parses the expression.
+#' The expression uses SQL syntax similar to the SQL `WHERE` filter clause. The SQL statement parser JSQLParser parses the expression.
 #' 
 #' *Operators*: The following are the operators that you can use in the `Expression` API call:
 #' 
@@ -20343,7 +21681,8 @@ glue_get_security_configurations <- function(MaxResults = NULL, NextToken = NULL
 #'     ExecutionTime = 123.0,
 #'     DPUSeconds = 123.0,
 #'     IdleTimeout = 123,
-#'     ProfileName = "string"
+#'     ProfileName = "string",
+#'     SessionType = "LIVY"|"SPARK_CONNECT"
 #'   )
 #' )
 #' ```
@@ -20379,6 +21718,62 @@ glue_get_session <- function(Id, RequestOrigin = NULL) {
   return(response)
 }
 .glue$operations$get_session <- glue_get_session
+
+#' Returns the Spark Connect endpoint URL and authentication token for an
+#' interactive session
+#'
+#' @description
+#' Returns the Spark Connect endpoint URL and authentication token for an interactive session.
+#'
+#' @usage
+#' glue_get_session_endpoint(SessionId)
+#'
+#' @param SessionId &#91;required&#93; The unique identifier of the interactive session.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SparkConnect = list(
+#'     Url = "string",
+#'     AuthToken = "string",
+#'     AuthTokenExpirationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_session_endpoint(
+#'   SessionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_session_endpoint
+#'
+#' @aliases glue_get_session_endpoint
+glue_get_session_endpoint <- function(SessionId) {
+  op <- new_operation(
+    name = "GetSessionEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_session_endpoint_input(SessionId = SessionId)
+  output <- .glue$get_session_endpoint_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_session_endpoint <- glue_get_session_endpoint
 
 #' Retrieves the statement
 #'
@@ -20459,7 +21854,7 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #'
 #' @usage
 #' glue_get_table(CatalogId, DatabaseName, Name, TransactionId,
-#'   QueryAsOfTime, AuditContext, IncludeStatusDetails)
+#'   QueryAsOfTime, AuditContext, IncludeStatusDetails, AttributesToGet)
 #'
 #' @param CatalogId The ID of the Data Catalog where the table resides. If none is provided, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.
@@ -20468,6 +21863,15 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #' @param QueryAsOfTime The time as of when to read the table contents. If not set, the most recent transaction commit time will be used. Cannot be specified along with `TransactionId`.
 #' @param AuditContext A structure containing the Lake Formation [audit context](https://docs.aws.amazon.com/glue/latest/webapi/API_AuditContext.html).
 #' @param IncludeStatusDetails Specifies whether to include status details related to a request to create or update an Glue Data Catalog view.
+#' @param AttributesToGet Specifies the table fields returned by the [`get_table`][glue_get_table] call. This parameter doesn't accept an empty list.
+#' 
+#' The following are the valid combinations of values:
+#' 
+#' -   `DEFAULT` - Returns the Hive-style table definition only.
+#' 
+#' -   `LATEST_ICEBERG_METADATA` - Returns only the latest Apache Iceberg table metadata.
+#' 
+#' -   `DEFAULT`, `LATEST_ICEBERG_METADATA` - Returns both the Hive-style table definition and the latest Apache Iceberg table metadata.
 #'
 #' @return
 #' A list with the following syntax:
@@ -20609,6 +22013,65 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #'     ),
 #'     IsMultiDialectView = TRUE|FALSE,
 #'     IsMaterializedView = TRUE|FALSE,
+#'     IcebergTableMetadata = list(
+#'       FormatVersion = "string",
+#'       TableUuid = "string",
+#'       Location = "string",
+#'       Properties = list(
+#'         "string"
+#'       ),
+#'       Schemas = list(
+#'         list(
+#'           SchemaId = 123,
+#'           IdentifierFieldIds = list(
+#'             123
+#'           ),
+#'           Type = "struct",
+#'           Fields = list(
+#'             list(
+#'               Id = 123,
+#'               Name = "string",
+#'               Type = list(),
+#'               Required = TRUE|FALSE,
+#'               Doc = "string",
+#'               InitialDefault = list(),
+#'               WriteDefault = list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       CurrentSchemaId = 123,
+#'       LastColumnId = 123,
+#'       PartitionSpecs = list(
+#'         list(
+#'           Fields = list(
+#'             list(
+#'               SourceId = 123,
+#'               Transform = "string",
+#'               Name = "string",
+#'               FieldId = 123
+#'             )
+#'           ),
+#'           SpecId = 123
+#'         )
+#'       ),
+#'       DefaultSpecId = 123,
+#'       LastPartitionId = 123,
+#'       SortOrders = list(
+#'         list(
+#'           OrderId = 123,
+#'           Fields = list(
+#'             list(
+#'               SourceId = 123,
+#'               Transform = "string",
+#'               Direction = "asc"|"desc",
+#'               NullOrder = "nulls-first"|"nulls-last"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DefaultSortOrderId = 123
+#'     ),
 #'     Status = list(
 #'       RequestedBy = "string",
 #'       UpdatedBy = "string",
@@ -20664,7 +22127,10 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #'     ),
 #'     AllColumnsRequested = TRUE|FALSE
 #'   ),
-#'   IncludeStatusDetails = TRUE|FALSE
+#'   IncludeStatusDetails = TRUE|FALSE,
+#'   AttributesToGet = list(
+#'     "NAME"|"TABLE_TYPE"|"DEFAULT"|"LATEST_ICEBERG_METADATA"
+#'   )
 #' )
 #' ```
 #'
@@ -20673,7 +22139,7 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #' @rdname glue_get_table
 #'
 #' @aliases glue_get_table
-glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId = NULL, QueryAsOfTime = NULL, AuditContext = NULL, IncludeStatusDetails = NULL) {
+glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId = NULL, QueryAsOfTime = NULL, AuditContext = NULL, IncludeStatusDetails = NULL, AttributesToGet = NULL) {
   op <- new_operation(
     name = "GetTable",
     http_method = "POST",
@@ -20682,7 +22148,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$get_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, AuditContext = AuditContext, IncludeStatusDetails = IncludeStatusDetails)
+  input <- .glue$get_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, AuditContext = AuditContext, IncludeStatusDetails = IncludeStatusDetails, AttributesToGet = AttributesToGet)
   output <- .glue$get_table_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -20983,6 +22449,65 @@ glue_get_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type) {
 #'       ),
 #'       IsMultiDialectView = TRUE|FALSE,
 #'       IsMaterializedView = TRUE|FALSE,
+#'       IcebergTableMetadata = list(
+#'         FormatVersion = "string",
+#'         TableUuid = "string",
+#'         Location = "string",
+#'         Properties = list(
+#'           "string"
+#'         ),
+#'         Schemas = list(
+#'           list(
+#'             SchemaId = 123,
+#'             IdentifierFieldIds = list(
+#'               123
+#'             ),
+#'             Type = "struct",
+#'             Fields = list(
+#'               list(
+#'                 Id = 123,
+#'                 Name = "string",
+#'                 Type = list(),
+#'                 Required = TRUE|FALSE,
+#'                 Doc = "string",
+#'                 InitialDefault = list(),
+#'                 WriteDefault = list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         CurrentSchemaId = 123,
+#'         LastColumnId = 123,
+#'         PartitionSpecs = list(
+#'           list(
+#'             Fields = list(
+#'               list(
+#'                 SourceId = 123,
+#'                 Transform = "string",
+#'                 Name = "string",
+#'                 FieldId = 123
+#'               )
+#'             ),
+#'             SpecId = 123
+#'           )
+#'         ),
+#'         DefaultSpecId = 123,
+#'         LastPartitionId = 123,
+#'         SortOrders = list(
+#'           list(
+#'             OrderId = 123,
+#'             Fields = list(
+#'               list(
+#'                 SourceId = 123,
+#'                 Transform = "string",
+#'                 Direction = "asc"|"desc",
+#'                 NullOrder = "nulls-first"|"nulls-last"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         DefaultSortOrderId = 123
+#'       ),
 #'       Status = list(
 #'         RequestedBy = "string",
 #'         UpdatedBy = "string",
@@ -21223,6 +22748,65 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #'         ),
 #'         IsMultiDialectView = TRUE|FALSE,
 #'         IsMaterializedView = TRUE|FALSE,
+#'         IcebergTableMetadata = list(
+#'           FormatVersion = "string",
+#'           TableUuid = "string",
+#'           Location = "string",
+#'           Properties = list(
+#'             "string"
+#'           ),
+#'           Schemas = list(
+#'             list(
+#'               SchemaId = 123,
+#'               IdentifierFieldIds = list(
+#'                 123
+#'               ),
+#'               Type = "struct",
+#'               Fields = list(
+#'                 list(
+#'                   Id = 123,
+#'                   Name = "string",
+#'                   Type = list(),
+#'                   Required = TRUE|FALSE,
+#'                   Doc = "string",
+#'                   InitialDefault = list(),
+#'                   WriteDefault = list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           CurrentSchemaId = 123,
+#'           LastColumnId = 123,
+#'           PartitionSpecs = list(
+#'             list(
+#'               Fields = list(
+#'                 list(
+#'                   SourceId = 123,
+#'                   Transform = "string",
+#'                   Name = "string",
+#'                   FieldId = 123
+#'                 )
+#'               ),
+#'               SpecId = 123
+#'             )
+#'           ),
+#'           DefaultSpecId = 123,
+#'           LastPartitionId = 123,
+#'           SortOrders = list(
+#'             list(
+#'               OrderId = 123,
+#'               Fields = list(
+#'                 list(
+#'                   SourceId = 123,
+#'                   Transform = "string",
+#'                   Direction = "asc"|"desc",
+#'                   NullOrder = "nulls-first"|"nulls-last"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           DefaultSortOrderId = 123
+#'         ),
 #'         Status = list(
 #'           RequestedBy = "string",
 #'           UpdatedBy = "string",
@@ -21476,6 +23060,65 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #'       ),
 #'       IsMultiDialectView = TRUE|FALSE,
 #'       IsMaterializedView = TRUE|FALSE,
+#'       IcebergTableMetadata = list(
+#'         FormatVersion = "string",
+#'         TableUuid = "string",
+#'         Location = "string",
+#'         Properties = list(
+#'           "string"
+#'         ),
+#'         Schemas = list(
+#'           list(
+#'             SchemaId = 123,
+#'             IdentifierFieldIds = list(
+#'               123
+#'             ),
+#'             Type = "struct",
+#'             Fields = list(
+#'               list(
+#'                 Id = 123,
+#'                 Name = "string",
+#'                 Type = list(),
+#'                 Required = TRUE|FALSE,
+#'                 Doc = "string",
+#'                 InitialDefault = list(),
+#'                 WriteDefault = list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         CurrentSchemaId = 123,
+#'         LastColumnId = 123,
+#'         PartitionSpecs = list(
+#'           list(
+#'             Fields = list(
+#'               list(
+#'                 SourceId = 123,
+#'                 Transform = "string",
+#'                 Name = "string",
+#'                 FieldId = 123
+#'               )
+#'             ),
+#'             SpecId = 123
+#'           )
+#'         ),
+#'         DefaultSpecId = 123,
+#'         LastPartitionId = 123,
+#'         SortOrders = list(
+#'           list(
+#'             OrderId = 123,
+#'             Fields = list(
+#'               list(
+#'                 SourceId = 123,
+#'                 Transform = "string",
+#'                 Direction = "asc"|"desc",
+#'                 NullOrder = "nulls-first"|"nulls-last"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         DefaultSortOrderId = 123
+#'       ),
 #'       Status = list(
 #'         RequestedBy = "string",
 #'         UpdatedBy = "string",
@@ -21537,7 +23180,7 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #'   ),
 #'   IncludeStatusDetails = TRUE|FALSE,
 #'   AttributesToGet = list(
-#'     "NAME"|"TABLE_TYPE"
+#'     "NAME"|"TABLE_TYPE"|"DEFAULT"|"LATEST_ICEBERG_METADATA"
 #'   )
 #' )
 #' ```
@@ -22397,6 +24040,65 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 #'     ),
 #'     IsMultiDialectView = TRUE|FALSE,
 #'     IsMaterializedView = TRUE|FALSE,
+#'     IcebergTableMetadata = list(
+#'       FormatVersion = "string",
+#'       TableUuid = "string",
+#'       Location = "string",
+#'       Properties = list(
+#'         "string"
+#'       ),
+#'       Schemas = list(
+#'         list(
+#'           SchemaId = 123,
+#'           IdentifierFieldIds = list(
+#'             123
+#'           ),
+#'           Type = "struct",
+#'           Fields = list(
+#'             list(
+#'               Id = 123,
+#'               Name = "string",
+#'               Type = list(),
+#'               Required = TRUE|FALSE,
+#'               Doc = "string",
+#'               InitialDefault = list(),
+#'               WriteDefault = list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       CurrentSchemaId = 123,
+#'       LastColumnId = 123,
+#'       PartitionSpecs = list(
+#'         list(
+#'           Fields = list(
+#'             list(
+#'               SourceId = 123,
+#'               Transform = "string",
+#'               Name = "string",
+#'               FieldId = 123
+#'             )
+#'           ),
+#'           SpecId = 123
+#'         )
+#'       ),
+#'       DefaultSpecId = 123,
+#'       LastPartitionId = 123,
+#'       SortOrders = list(
+#'         list(
+#'           OrderId = 123,
+#'           Fields = list(
+#'             list(
+#'               SourceId = 123,
+#'               Transform = "string",
+#'               Direction = "asc"|"desc",
+#'               NullOrder = "nulls-first"|"nulls-last"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DefaultSortOrderId = 123
+#'     ),
 #'     Status = list(
 #'       RequestedBy = "string",
 #'       UpdatedBy = "string",
@@ -23604,6 +25306,63 @@ glue_import_catalog_to_glue <- function(CatalogId = NULL) {
 }
 .glue$operations$import_catalog_to_glue <- glue_import_catalog_to_glue
 
+#' Lists the asset types defined in Glue Data Catalog
+#'
+#' @description
+#' Lists the asset types defined in Glue Data Catalog.
+#'
+#' @usage
+#' glue_list_asset_types(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_asset_types(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_asset_types
+#'
+#' @aliases glue_list_asset_types
+glue_list_asset_types <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAssetTypes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .glue$list_asset_types_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_asset_types_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_asset_types <- glue_list_asset_types
+
 #' Lists all the blueprint names in an account
 #'
 #' @description
@@ -24136,11 +25895,12 @@ glue_list_data_quality_results <- function(Filter = NULL, NextToken = NULL, MaxR
 #'
 #' @usage
 #' glue_list_data_quality_rule_recommendation_runs(Filter, NextToken,
-#'   MaxResults)
+#'   MaxResults, Tags)
 #'
 #' @param Filter The filter criteria.
 #' @param NextToken A paginated token to offset the results.
 #' @param MaxResults The maximum number of results to return.
+#' @param Tags A list of key-value pair tags to filter recommendation runs.
 #'
 #' @return
 #' A list with the following syntax:
@@ -24173,7 +25933,8 @@ glue_list_data_quality_results <- function(Filter = NULL, NextToken = NULL, MaxR
 #'           ),
 #'           PreProcessingQuery = "string"
 #'         )
-#'       )
+#'       ),
+#'       CreatedRulesetName = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -24213,7 +25974,10 @@ glue_list_data_quality_results <- function(Filter = NULL, NextToken = NULL, MaxR
 #'     )
 #'   ),
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -24222,7 +25986,7 @@ glue_list_data_quality_results <- function(Filter = NULL, NextToken = NULL, MaxR
 #' @rdname glue_list_data_quality_rule_recommendation_runs
 #'
 #' @aliases glue_list_data_quality_rule_recommendation_runs
-glue_list_data_quality_rule_recommendation_runs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
+glue_list_data_quality_rule_recommendation_runs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ListDataQualityRuleRecommendationRuns",
     http_method = "POST",
@@ -24231,7 +25995,7 @@ glue_list_data_quality_rule_recommendation_runs <- function(Filter = NULL, NextT
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
-  input <- .glue$list_data_quality_rule_recommendation_runs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .glue$list_data_quality_rule_recommendation_runs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
   output <- .glue$list_data_quality_rule_recommendation_runs_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -24561,6 +26325,15 @@ glue_list_data_quality_statistic_annotations <- function(StatisticId = NULL, Pro
 #'       ),
 #'       StatisticName = "string",
 #'       DoubleValue = 123.0,
+#'       DistributionValue = list(
+#'         BinEdges = list(
+#'           "string"
+#'         ),
+#'         Count = list(
+#'           123
+#'         ),
+#'         DataType = "string"
+#'       ),
 #'       EvaluationLevel = "Dataset"|"Column"|"Multicolumn",
 #'       ColumnsReferenced = list(
 #'         "string"
@@ -24759,6 +26532,181 @@ glue_list_entities <- function(ConnectionName = NULL, CatalogId = NULL, ParentEn
 }
 .glue$operations$list_entities <- glue_list_entities
 
+#' Lists the form types defined in Glue Data Catalog
+#'
+#' @description
+#' Lists the form types defined in Glue Data Catalog.
+#'
+#' @usage
+#' glue_list_form_types(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_form_types(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_form_types
+#'
+#' @aliases glue_list_form_types
+glue_list_form_types <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListFormTypes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .glue$list_form_types_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_form_types_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_form_types <- glue_list_form_types
+
+#' Lists business glossaries in Glue Data Catalog
+#'
+#' @description
+#' Lists business glossaries in Glue Data Catalog.
+#'
+#' @usage
+#' glue_list_glossaries(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_glossaries(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_glossaries
+#'
+#' @aliases glue_list_glossaries
+glue_list_glossaries <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListGlossaries",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .glue$list_glossaries_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_glossaries_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_glossaries <- glue_list_glossaries
+
+#' Lists glossary terms within a business glossary in Glue Data Catalog
+#'
+#' @description
+#' Lists glossary terms within a business glossary in Glue Data Catalog.
+#'
+#' @usage
+#' glue_list_glossary_terms(GlossaryIdentifier, MaxResults, NextToken)
+#'
+#' @param GlossaryIdentifier &#91;required&#93; The unique identifier of the glossary whose terms to list.
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       ShortDescription = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_glossary_terms(
+#'   GlossaryIdentifier = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_glossary_terms
+#'
+#' @aliases glue_list_glossary_terms
+glue_list_glossary_terms <- function(GlossaryIdentifier, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListGlossaryTerms",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .glue$list_glossary_terms_input(GlossaryIdentifier = GlossaryIdentifier, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_glossary_terms_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_glossary_terms <- glue_list_glossary_terms
+
 #' List integration resource properties for a single customer
 #'
 #' @description
@@ -24833,6 +26781,72 @@ glue_list_integration_resource_properties <- function(Marker = NULL, Filters = N
   return(response)
 }
 .glue$operations$list_integration_resource_properties <- glue_list_integration_resource_properties
+
+#' Lists the items in an iterable form on an asset in Glue Data Catalog
+#'
+#' @description
+#' Lists the items in an iterable form on an asset in Glue Data Catalog. For example, lists the columns of a table asset.
+#'
+#' @usage
+#' glue_list_iterable_forms(AssetIdentifier, IterableFormName, MaxResults,
+#'   NextToken)
+#'
+#' @param AssetIdentifier &#91;required&#93; The unique identifier of the asset.
+#' @param IterableFormName &#91;required&#93; The name of the iterable form to list items from.
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ItemId = "string",
+#'       ItemName = "string",
+#'       Description = "string",
+#'       GlossaryTerms = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_iterable_forms(
+#'   AssetIdentifier = "string",
+#'   IterableFormName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_iterable_forms
+#'
+#' @aliases glue_list_iterable_forms
+glue_list_iterable_forms <- function(AssetIdentifier, IterableFormName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListIterableForms",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .glue$list_iterable_forms_input(AssetIdentifier = AssetIdentifier, IterableFormName = IterableFormName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_iterable_forms_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_iterable_forms <- glue_list_iterable_forms
 
 #' Retrieves the names of all job resources in this Amazon Web Services
 #' account, or the resources with the specified tag
@@ -24996,7 +27010,7 @@ glue_list_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter 
 #'
 #' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the table resides. If none is supplied, the account ID is used by default.
 #' @param DatabaseName The database where the table resides.
-#' @param TableName The name of the table for which statistics is generated.
+#' @param TableName The name of the materialized view.
 #' @param MaxResults The maximum size of the response.
 #' @param NextToken A continuation token, if this is a continuation call.
 #'
@@ -25326,7 +27340,8 @@ glue_list_schemas <- function(RegistryId = NULL, MaxResults = NULL, NextToken = 
 #'       ExecutionTime = 123.0,
 #'       DPUSeconds = 123.0,
 #'       IdleTimeout = 123,
-#'       ProfileName = "string"
+#'       ProfileName = "string",
+#'       SessionType = "LIVY"|"SPARK_CONNECT"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -25829,6 +27844,212 @@ glue_modify_integration <- function(IntegrationIdentifier, Description = NULL, D
 }
 .glue$operations$modify_integration <- glue_modify_integration
 
+#' Creates or updates an asset in Glue Data Catalog
+#'
+#' @description
+#' Creates or updates an asset in Glue Data Catalog. If the asset already exists, this operation updates it; otherwise, a new asset is created.
+#'
+#' @usage
+#' glue_put_asset(AssetTypeId, Identifier, Name, Description, Forms,
+#'   ClientToken)
+#'
+#' @param AssetTypeId &#91;required&#93; The identifier of the asset type for the asset.
+#' @param Identifier &#91;required&#93; The unique identifier of the asset. If an asset with this identifier already exists, it is updated.
+#' @param Name &#91;required&#93; The name of the asset.
+#' @param Description The description of the asset.
+#' @param Forms &#91;required&#93; The forms to set on the asset, keyed by form name. Each entry specifies the form type and its JSON content.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Forms = list(
+#'     list(
+#'       FormTypeId = "string",
+#'       Content = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_asset(
+#'   AssetTypeId = "string",
+#'   Identifier = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   Forms = list(
+#'     list(
+#'       FormTypeId = "string",
+#'       Content = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_put_asset
+#'
+#' @aliases glue_put_asset
+glue_put_asset <- function(AssetTypeId, Identifier, Name, Description = NULL, Forms, ClientToken = NULL) {
+  op <- new_operation(
+    name = "PutAsset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$put_asset_input(AssetTypeId = AssetTypeId, Identifier = Identifier, Name = Name, Description = Description, Forms = Forms, ClientToken = ClientToken)
+  output <- .glue$put_asset_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$put_asset <- glue_put_asset
+
+#' Creates or updates an asset type in Glue Data Catalog
+#'
+#' @description
+#' Creates or updates an asset type in Glue Data Catalog. An asset type defines the structure of assets by specifying which forms they include. If an asset type with the given name already exists, it is updated.
+#'
+#' @usage
+#' glue_put_asset_type(Name, Forms, ClientToken)
+#'
+#' @param Name &#91;required&#93; The name of the asset type.
+#' @param Forms &#91;required&#93; The forms that make up the asset type, keyed by form name. Each entry references the form type that defines the form's schema.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Forms = list(
+#'     list(
+#'       FormTypeIdentifier = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_asset_type(
+#'   Name = "string",
+#'   Forms = list(
+#'     list(
+#'       FormTypeIdentifier = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_put_asset_type
+#'
+#' @aliases glue_put_asset_type
+glue_put_asset_type <- function(Name, Forms, ClientToken = NULL) {
+  op <- new_operation(
+    name = "PutAssetType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$put_asset_type_input(Name = Name, Forms = Forms, ClientToken = ClientToken)
+  output <- .glue$put_asset_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$put_asset_type <- glue_put_asset_type
+
+#' Attaches a form to an asset or an iterable form item in Glue Data
+#' Catalog
+#'
+#' @description
+#' Attaches a form to an asset or an iterable form item in Glue Data Catalog. If an attachment with the same name already exists, it is overwritten.
+#'
+#' @usage
+#' glue_put_attachment(AssetIdentifier, IterableFormName, ItemIdentifier,
+#'   AttachmentName, Content, FormTypeId, ClientToken)
+#'
+#' @param AssetIdentifier &#91;required&#93; The unique identifier of the asset to attach the form to.
+#' @param IterableFormName The name of the iterable form. When specified along with `itemIdentifier`, the attachment targets an item within the iterable form rather than the asset itself.
+#' @param ItemIdentifier The identifier of the item within the iterable form. Required when `iterableFormName` is specified.
+#' @param AttachmentName &#91;required&#93; The name of the attachment.
+#' @param Content &#91;required&#93; The JSON content of the form, conforming to the schema of the specified form type.
+#' @param FormTypeId &#91;required&#93; The identifier of the form type for this attachment.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssetIdentifier = "string",
+#'   IterableFormName = "string",
+#'   ItemIdentifier = "string",
+#'   AttachmentName = "string",
+#'   FormTypeId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_attachment(
+#'   AssetIdentifier = "string",
+#'   IterableFormName = "string",
+#'   ItemIdentifier = "string",
+#'   AttachmentName = "string",
+#'   Content = "string",
+#'   FormTypeId = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_put_attachment
+#'
+#' @aliases glue_put_attachment
+glue_put_attachment <- function(AssetIdentifier, IterableFormName = NULL, ItemIdentifier = NULL, AttachmentName, Content, FormTypeId, ClientToken = NULL) {
+  op <- new_operation(
+    name = "PutAttachment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$put_attachment_input(AssetIdentifier = AssetIdentifier, IterableFormName = IterableFormName, ItemIdentifier = ItemIdentifier, AttachmentName = AttachmentName, Content = Content, FormTypeId = FormTypeId, ClientToken = ClientToken)
+  output <- .glue$put_attachment_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$put_attachment <- glue_put_attachment
+
 #' Sets the security configuration for a specified catalog
 #'
 #' @description
@@ -25886,6 +28107,67 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
 }
 .glue$operations$put_data_catalog_encryption_settings <- glue_put_data_catalog_encryption_settings
 
+#' Creates or updates the export configuration for the Glue Data Catalog
+#'
+#' @description
+#' Creates or updates the export configuration for the Glue Data Catalog. Use this operation to enable or disable the export of catalog metadata to S3 Tables.
+#'
+#' @usage
+#' glue_put_data_catalog_export_configuration(ExportSetting,
+#'   EncryptionConfiguration, ClientToken)
+#'
+#' @param ExportSetting &#91;required&#93; The export setting for the data catalog. Specify `ENABLED` to start exporting catalog metadata to S3 Tables, or `DISABLED` to stop exporting. This field is required.
+#' @param EncryptionConfiguration The encryption configuration for the exported data. If not specified, the default encryption settings are used.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExportSetting = "ENABLED"|"DISABLED",
+#'   EncryptionConfiguration = list(
+#'     SseAlgorithm = "string",
+#'     KmsKeyArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_data_catalog_export_configuration(
+#'   ExportSetting = "ENABLED"|"DISABLED",
+#'   EncryptionConfiguration = list(
+#'     SseAlgorithm = "string",
+#'     KmsKeyArn = "string"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_put_data_catalog_export_configuration
+#'
+#' @aliases glue_put_data_catalog_export_configuration
+glue_put_data_catalog_export_configuration <- function(ExportSetting, EncryptionConfiguration = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "PutDataCatalogExportConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$put_data_catalog_export_configuration_input(ExportSetting = ExportSetting, EncryptionConfiguration = EncryptionConfiguration, ClientToken = ClientToken)
+  output <- .glue$put_data_catalog_export_configuration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$put_data_catalog_export_configuration <- glue_put_data_catalog_export_configuration
+
 #' Annotate all datapoints for a Profile
 #'
 #' @description
@@ -25931,6 +28213,61 @@ glue_put_data_quality_profile_annotation <- function(ProfileId, InclusionAnnotat
   return(response)
 }
 .glue$operations$put_data_quality_profile_annotation <- glue_put_data_quality_profile_annotation
+
+#' Creates or updates a form type in Glue Data Catalog
+#'
+#' @description
+#' Creates or updates a form type in Glue Data Catalog. A form type defines the schema for structured metadata that can be attached to assets.
+#'
+#' @usage
+#' glue_put_form_type(Name, Schema, ClientToken)
+#'
+#' @param Name &#91;required&#93; The name of the form type. Must start with an uppercase letter.
+#' @param Schema &#91;required&#93; The Smithy IDL schema definition for the form type.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Schema = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_form_type(
+#'   Name = "string",
+#'   Schema = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_put_form_type
+#'
+#' @aliases glue_put_form_type
+glue_put_form_type <- function(Name, Schema, ClientToken = NULL) {
+  op <- new_operation(
+    name = "PutFormType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$put_form_type_input(Name = Name, Schema = Schema, ClientToken = ClientToken)
+  output <- .glue$put_form_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$put_form_type <- glue_put_form_type
 
 #' Sets the Data Catalog resource policy for access control
 #'
@@ -26253,7 +28590,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'         "string"
 #'       ),
 #'       PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'       PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'       PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'       Format = "string"
 #'     ),
 #'     AdditionalRequestParameters = list(
 #'       list(
@@ -26265,7 +28603,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'           "string"
 #'         ),
 #'         PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'         PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'         Format = "string"
 #'       )
 #'     )
 #'   ),
@@ -26285,7 +28624,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         ),
 #'         RequestMethod = "GET"|"POST",
 #'         ContentType = "APPLICATION_JSON"|"URL_ENCODED",
@@ -26298,7 +28638,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         ),
 #'         ClientSecret = list(
 #'           Name = "string",
@@ -26309,7 +28650,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         ),
 #'         Scope = list(
 #'           Name = "string",
@@ -26320,7 +28662,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         ),
 #'         TokenUrlParameters = list(
 #'           list(
@@ -26332,7 +28675,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'               "string"
 #'             ),
 #'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'             PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'             PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'             Format = "string"
 #'           )
 #'         )
 #'       ),
@@ -26346,7 +28690,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         ),
 #'         RequestMethod = "GET"|"POST",
 #'         ContentType = "APPLICATION_JSON"|"URL_ENCODED",
@@ -26359,7 +28704,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         ),
 #'         TokenUrlParameters = list(
 #'           list(
@@ -26371,7 +28717,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'               "string"
 #'             ),
 #'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'             PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'             PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'             Format = "string"
 #'           )
 #'         )
 #'       ),
@@ -26385,7 +28732,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         ),
 #'         AuthorizationCode = list(
 #'           Name = "string",
@@ -26396,7 +28744,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         ),
 #'         RedirectUri = list(
 #'           Name = "string",
@@ -26407,7 +28756,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         ),
 #'         TokenUrl = list(
 #'           Name = "string",
@@ -26418,7 +28768,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         ),
 #'         RequestMethod = "GET"|"POST",
 #'         ContentType = "APPLICATION_JSON"|"URL_ENCODED",
@@ -26431,7 +28782,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         ),
 #'         ClientSecret = list(
 #'           Name = "string",
@@ -26442,7 +28794,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         ),
 #'         Scope = list(
 #'           Name = "string",
@@ -26453,7 +28806,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         ),
 #'         Prompt = list(
 #'           Name = "string",
@@ -26464,7 +28818,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         ),
 #'         TokenUrlParameters = list(
 #'           list(
@@ -26476,7 +28831,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'               "string"
 #'             ),
 #'             PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'             PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'             PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'             Format = "string"
 #'           )
 #'         )
 #'       )
@@ -26491,7 +28847,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'           "string"
 #'         ),
 #'         PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'         PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'         Format = "string"
 #'       ),
 #'       Password = list(
 #'         Name = "string",
@@ -26502,7 +28859,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'           "string"
 #'         ),
 #'         PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'         PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'         Format = "string"
 #'       )
 #'     ),
 #'     CustomAuthenticationProperties = list(
@@ -26516,7 +28874,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         )
 #'       )
 #'     )
@@ -26535,7 +28894,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         )
 #'       ),
 #'       ResponseConfiguration = list(
@@ -26582,6 +28942,24 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'               HeaderKey = "string"
 #'             )
 #'           )
+#'         )
+#'       ),
+#'       FilterConfiguration = list(
+#'         FilterMode = "QUERY_PARAMS"|"FILTER_STRING",
+#'         OperatorMappings = list(
+#'           "string"
+#'         ),
+#'         DateTimeFormat = "string",
+#'         StripQuotes = TRUE|FALSE,
+#'         BetweenConfiguration = list(
+#'           LowBoundKey = "string",
+#'           HighBoundKey = "string",
+#'           Template = "string"
+#'         ),
+#'         FilterStringConfiguration = list(
+#'           QueryParameterName = "string",
+#'           QuoteStringValues = TRUE|FALSE,
+#'           QuoteCharacter = "string"
 #'         )
 #'       )
 #'     ),
@@ -26598,7 +28976,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'             "string"
 #'           ),
 #'           PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'           Format = "string"
 #'         )
 #'       ),
 #'       ResponseConfiguration = list(
@@ -26645,6 +29024,24 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'               HeaderKey = "string"
 #'             )
 #'           )
+#'         )
+#'       ),
+#'       FilterConfiguration = list(
+#'         FilterMode = "QUERY_PARAMS"|"FILTER_STRING",
+#'         OperatorMappings = list(
+#'           "string"
+#'         ),
+#'         DateTimeFormat = "string",
+#'         StripQuotes = TRUE|FALSE,
+#'         BetweenConfiguration = list(
+#'           LowBoundKey = "string",
+#'           HighBoundKey = "string",
+#'           Template = "string"
+#'         ),
+#'         FilterStringConfiguration = list(
+#'           QueryParameterName = "string",
+#'           QuoteStringValues = TRUE|FALSE,
+#'           QuoteCharacter = "string"
 #'         )
 #'       )
 #'     ),
@@ -26663,7 +29060,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'                 "string"
 #'               ),
 #'               PropertyLocation = "HEADER"|"BODY"|"QUERY_PARAM"|"PATH",
-#'               PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'               PropertyType = "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT",
+#'               Format = "string"
 #'             )
 #'           ),
 #'           ResponseConfiguration = list(
@@ -26711,12 +29109,47 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'                 )
 #'               )
 #'             )
+#'           ),
+#'           FilterConfiguration = list(
+#'             FilterMode = "QUERY_PARAMS"|"FILTER_STRING",
+#'             OperatorMappings = list(
+#'               "string"
+#'             ),
+#'             DateTimeFormat = "string",
+#'             StripQuotes = TRUE|FALSE,
+#'             BetweenConfiguration = list(
+#'               LowBoundKey = "string",
+#'               HighBoundKey = "string",
+#'               Template = "string"
+#'             ),
+#'             FilterStringConfiguration = list(
+#'               QueryParameterName = "string",
+#'               QuoteStringValues = TRUE|FALSE,
+#'               QuoteCharacter = "string"
+#'             )
 #'           )
 #'         ),
 #'         Schema = list(
 #'           list(
 #'             Name = "string",
-#'             FieldDataType = "INT"|"SMALLINT"|"BIGINT"|"FLOAT"|"LONG"|"DATE"|"BOOLEAN"|"MAP"|"ARRAY"|"STRING"|"TIMESTAMP"|"DECIMAL"|"BYTE"|"SHORT"|"DOUBLE"|"STRUCT"|"BINARY"|"UNION"
+#'             FieldDataType = "INT"|"SMALLINT"|"BIGINT"|"FLOAT"|"LONG"|"DATE"|"BOOLEAN"|"MAP"|"ARRAY"|"STRING"|"TIMESTAMP"|"DECIMAL"|"BYTE"|"SHORT"|"DOUBLE"|"STRUCT"|"BINARY"|"UNION",
+#'             ResponseDateFormat = "string",
+#'             IsPartitionable = TRUE|FALSE,
+#'             IsNullable = TRUE|FALSE,
+#'             IsQueryable = TRUE|FALSE,
+#'             IsOrderable = TRUE|FALSE,
+#'             FilterOverrides = list(
+#'               FieldName = "string",
+#'               OperatorMappings = list(
+#'                 "string"
+#'               ),
+#'               BetweenConfiguration = list(
+#'                 LowBoundKey = "string",
+#'                 HighBoundKey = "string",
+#'                 Template = "string"
+#'               ),
+#'               DateTimeFormat = "string"
+#'             )
 #'           )
 #'         )
 #'       )
@@ -27070,6 +29503,101 @@ glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
 }
 .glue$operations$run_statement <- glue_run_statement
 
+#' Searches for assets in Glue Data Catalog using full-text search,
+#' filters, sorting, and aggregations
+#'
+#' @description
+#' Searches for assets in Glue Data Catalog using full-text search, filters, sorting, and aggregations. Returns matching assets with relevance-ranked results.
+#'
+#' @usage
+#' glue_search_assets(SearchText, MaxResults, NextToken, Sort,
+#'   FilterClause)
+#'
+#' @param SearchText The text to search for. At least one of `searchText` or `filterClause` must be provided.
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#' @param Sort The sort criteria for the search results.
+#' @param FilterClause The filter clause to apply to the search. Supports nested AND/OR logic with attribute-level and map-level filters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Id = "string",
+#'       AssetName = "string",
+#'       AssetDescription = "string",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AssetTypeId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_assets(
+#'   SearchText = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Sort = list(
+#'     Attribute = "string",
+#'     Order = "ASCENDING"|"DESCENDING"
+#'   ),
+#'   FilterClause = list(
+#'     AndAllFilters = list(
+#'       list()
+#'     ),
+#'     OrAnyFilters = list(
+#'       list()
+#'     ),
+#'     AttributeFilter = list(
+#'       Attribute = "string",
+#'       Operator = "equals"|"greaterThan"|"greaterThanOrEquals"|"lessThan"|"lessThanOrEquals"|"notExists",
+#'       Value = list(
+#'         StringValue = "string",
+#'         LongValue = 123
+#'       )
+#'     ),
+#'     MapFilter = list(
+#'       Attribute = "string",
+#'       Key = "string",
+#'       Value = list(
+#'         StringValue = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_search_assets
+#'
+#' @aliases glue_search_assets
+glue_search_assets <- function(SearchText = NULL, MaxResults = NULL, NextToken = NULL, Sort = NULL, FilterClause = NULL) {
+  op <- new_operation(
+    name = "SearchAssets",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .glue$search_assets_input(SearchText = SearchText, MaxResults = MaxResults, NextToken = NextToken, Sort = Sort, FilterClause = FilterClause)
+  output <- .glue$search_assets_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$search_assets <- glue_search_assets
+
 #' Searches a set of tables based on properties in the table metadata as
 #' well as on the parent database
 #'
@@ -27241,6 +29769,65 @@ glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
 #'       ),
 #'       IsMultiDialectView = TRUE|FALSE,
 #'       IsMaterializedView = TRUE|FALSE,
+#'       IcebergTableMetadata = list(
+#'         FormatVersion = "string",
+#'         TableUuid = "string",
+#'         Location = "string",
+#'         Properties = list(
+#'           "string"
+#'         ),
+#'         Schemas = list(
+#'           list(
+#'             SchemaId = 123,
+#'             IdentifierFieldIds = list(
+#'               123
+#'             ),
+#'             Type = "struct",
+#'             Fields = list(
+#'               list(
+#'                 Id = 123,
+#'                 Name = "string",
+#'                 Type = list(),
+#'                 Required = TRUE|FALSE,
+#'                 Doc = "string",
+#'                 InitialDefault = list(),
+#'                 WriteDefault = list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         CurrentSchemaId = 123,
+#'         LastColumnId = 123,
+#'         PartitionSpecs = list(
+#'           list(
+#'             Fields = list(
+#'               list(
+#'                 SourceId = 123,
+#'                 Transform = "string",
+#'                 Name = "string",
+#'                 FieldId = 123
+#'               )
+#'             ),
+#'             SpecId = 123
+#'           )
+#'         ),
+#'         DefaultSpecId = 123,
+#'         LastPartitionId = 123,
+#'         SortOrders = list(
+#'           list(
+#'             OrderId = 123,
+#'             Fields = list(
+#'               list(
+#'                 SourceId = 123,
+#'                 Transform = "string",
+#'                 Direction = "asc"|"desc",
+#'                 NullOrder = "nulls-first"|"nulls-last"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         DefaultSortOrderId = 123
+#'       ),
 #'       Status = list(
 #'         RequestedBy = "string",
 #'         UpdatedBy = "string",
@@ -27594,7 +30181,7 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #' @usage
 #' glue_start_data_quality_rule_recommendation_run(DataSource, Role,
 #'   NumberOfWorkers, Timeout, CreatedRulesetName,
-#'   DataQualitySecurityConfiguration, ClientToken)
+#'   DataQualitySecurityConfiguration, ClientToken, AdditionalRunOptions)
 #'
 #' @param DataSource &#91;required&#93; The data source (Glue table) associated with this run.
 #' @param Role &#91;required&#93; An IAM role supplied to encrypt the results of the run.
@@ -27603,6 +30190,7 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #' @param CreatedRulesetName A name for the ruleset.
 #' @param DataQualitySecurityConfiguration The name of the security configuration created with the data quality encryption option.
 #' @param ClientToken Used for idempotency and is recommended to be set to a random ID (such as a UUID) to avoid creating or starting multiple instances of the same resource.
+#' @param AdditionalRunOptions Additional run options you can specify for a recommendation run.
 #'
 #' @return
 #' A list with the following syntax:
@@ -27641,7 +30229,10 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #'   Timeout = 123,
 #'   CreatedRulesetName = "string",
 #'   DataQualitySecurityConfiguration = "string",
-#'   ClientToken = "string"
+#'   ClientToken = "string",
+#'   AdditionalRunOptions = list(
+#'     CustomLogGroupPrefix = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -27650,7 +30241,7 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #' @rdname glue_start_data_quality_rule_recommendation_run
 #'
 #' @aliases glue_start_data_quality_rule_recommendation_run
-glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, NumberOfWorkers = NULL, Timeout = NULL, CreatedRulesetName = NULL, DataQualitySecurityConfiguration = NULL, ClientToken = NULL) {
+glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, NumberOfWorkers = NULL, Timeout = NULL, CreatedRulesetName = NULL, DataQualitySecurityConfiguration = NULL, ClientToken = NULL, AdditionalRunOptions = NULL) {
   op <- new_operation(
     name = "StartDataQualityRuleRecommendationRun",
     http_method = "POST",
@@ -27659,7 +30250,7 @@ glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, Nu
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$start_data_quality_rule_recommendation_run_input(DataSource = DataSource, Role = Role, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, CreatedRulesetName = CreatedRulesetName, DataQualitySecurityConfiguration = DataQualitySecurityConfiguration, ClientToken = ClientToken)
+  input <- .glue$start_data_quality_rule_recommendation_run_input(DataSource = DataSource, Role = Role, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, CreatedRulesetName = CreatedRulesetName, DataQualitySecurityConfiguration = DataQualitySecurityConfiguration, ClientToken = ClientToken, AdditionalRunOptions = AdditionalRunOptions)
   output <- .glue$start_data_quality_rule_recommendation_run_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -27730,7 +30321,55 @@ glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, Nu
 #'     CloudWatchMetricsEnabled = TRUE|FALSE,
 #'     ResultsS3Prefix = "string",
 #'     CompositeRuleEvaluationMethod = "COLUMN"|"ROW",
-#'     CustomLogGroupPrefix = "string"
+#'     CustomLogGroupPrefix = "string",
+#'     RowLevelResults = list(
+#'       MaxRowsToWrite = 123,
+#'       ResultType = "ALL"|"PASSED_ONLY"|"FAILED_ONLY",
+#'       CatalogTableConfig = list(
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         S3Location = "string",
+#'         CatalogId = "string"
+#'       )
+#'     ),
+#'     ProfilingResults = list(
+#'       WriteProfilingResultsEnabled = TRUE|FALSE,
+#'       CatalogTableConfig = list(
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         S3Location = "string",
+#'         CatalogId = "string"
+#'       ),
+#'       DistributionResults = list(
+#'         WriteDistributionResultsEnabled = TRUE|FALSE,
+#'         CatalogTableConfig = list(
+#'           DatabaseName = "string",
+#'           TableName = "string",
+#'           S3Location = "string",
+#'           CatalogId = "string"
+#'         )
+#'       )
+#'     ),
+#'     ObservationScope = "ALL"|"NONE",
+#'     ObservationMode = "SCHEDULED"|"FIXED",
+#'     DataQualityRuleResults = list(
+#'       WriteDataQualityRuleResultsEnabled = TRUE|FALSE,
+#'       CatalogTableConfig = list(
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         S3Location = "string",
+#'         CatalogId = "string"
+#'       )
+#'     ),
+#'     ObservationResults = list(
+#'       WriteObservationResultsEnabled = TRUE|FALSE,
+#'       CatalogTableConfig = list(
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         S3Location = "string",
+#'         CatalogId = "string"
+#'       )
+#'     )
 #'   ),
 #'   RulesetNames = list(
 #'     "string"
@@ -28141,11 +30780,11 @@ glue_start_ml_labeling_set_generation_task_run <- function(TransformId, OutputS3
 }
 .glue$operations$start_ml_labeling_set_generation_task_run <- glue_start_ml_labeling_set_generation_task_run
 
-#' Starts a materialized view refresh task run, for a specified table and
-#' columns
+#' Starts a materialized view refresh task run for a specified materialized
+#' view
 #'
 #' @description
-#' Starts a materialized view refresh task run, for a specified table and columns.
+#' Starts a materialized view refresh task run for a specified materialized view.
 #'
 #' @usage
 #' glue_start_materialized_view_refresh_task_run(CatalogId, DatabaseName,
@@ -28153,7 +30792,7 @@ glue_start_ml_labeling_set_generation_task_run <- function(TransformId, OutputS3
 #'
 #' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the table reside. If none is supplied, the account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
-#' @param TableName &#91;required&#93; The name of the table to generate run the materialized view refresh task.
+#' @param TableName &#91;required&#93; The name of the materialized view to run the refresh task for.
 #' @param FullRefresh Specifies whether this is a full refresh of the task run.
 #'
 #' @return
@@ -28483,11 +31122,11 @@ glue_stop_crawler_schedule <- function(CrawlerName) {
 }
 .glue$operations$stop_crawler_schedule <- glue_stop_crawler_schedule
 
-#' Stops a materialized view refresh task run, for a specified table and
-#' columns
+#' Stops a materialized view refresh task run for a specified materialized
+#' view
 #'
 #' @description
-#' Stops a materialized view refresh task run, for a specified table and columns.
+#' Stops a materialized view refresh task run for a specified materialized view.
 #'
 #' @usage
 #' glue_stop_materialized_view_refresh_task_run(CatalogId, DatabaseName,
@@ -28495,7 +31134,7 @@ glue_stop_crawler_schedule <- function(CrawlerName) {
 #'
 #' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the table reside. If none is supplied, the account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
-#' @param TableName &#91;required&#93; The name of the table to generate statistics.
+#' @param TableName &#91;required&#93; The name of the materialized view.
 #'
 #' @return
 #' An empty list.
@@ -28865,6 +31504,67 @@ glue_untag_resource <- function(ResourceArn, TagsToRemove) {
   return(response)
 }
 .glue$operations$untag_resource <- glue_untag_resource
+
+#' Updates the name and description of an existing asset in Glue Data
+#' Catalog
+#'
+#' @description
+#' Updates the name and description of an existing asset in Glue Data Catalog. Only the fields that you provide are updated.
+#'
+#' @usage
+#' glue_update_asset(Identifier, Name, Description, ClientToken)
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the asset to update.
+#' @param Name The new name of the asset.
+#' @param Description The new description of the asset.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_asset(
+#'   Identifier = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_asset
+#'
+#' @aliases glue_update_asset
+glue_update_asset <- function(Identifier, Name = NULL, Description = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateAsset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$update_asset_input(Identifier = Identifier, Name = Name, Description = Description, ClientToken = ClientToken)
+  output <- .glue$update_asset_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_asset <- glue_update_asset
 
 #' Updates a registered blueprint
 #'
@@ -30072,6 +32772,125 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
   return(response)
 }
 .glue$operations$update_dev_endpoint <- glue_update_dev_endpoint
+
+#' Updates a business glossary in Glue Data Catalog
+#'
+#' @description
+#' Updates a business glossary in Glue Data Catalog.
+#'
+#' @usage
+#' glue_update_glossary(Identifier, Name, Description, ClientToken)
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the glossary to update.
+#' @param Name The updated name of the glossary.
+#' @param Description The updated description of the glossary.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_glossary(
+#'   Identifier = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_glossary
+#'
+#' @aliases glue_update_glossary
+glue_update_glossary <- function(Identifier, Name = NULL, Description = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateGlossary",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$update_glossary_input(Identifier = Identifier, Name = Name, Description = Description, ClientToken = ClientToken)
+  output <- .glue$update_glossary_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_glossary <- glue_update_glossary
+
+#' Updates a glossary term in Glue Data Catalog
+#'
+#' @description
+#' Updates a glossary term in Glue Data Catalog.
+#'
+#' @usage
+#' glue_update_glossary_term(Identifier, Name, ShortDescription,
+#'   LongDescription, ClientToken)
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the glossary term to update.
+#' @param Name The updated name of the glossary term.
+#' @param ShortDescription The updated short description of the glossary term.
+#' @param LongDescription The updated long description of the glossary term.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   GlossaryId = "string",
+#'   Name = "string",
+#'   ShortDescription = "string",
+#'   LongDescription = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_glossary_term(
+#'   Identifier = "string",
+#'   Name = "string",
+#'   ShortDescription = "string",
+#'   LongDescription = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_glossary_term
+#'
+#' @aliases glue_update_glossary_term
+glue_update_glossary_term <- function(Identifier, Name = NULL, ShortDescription = NULL, LongDescription = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateGlossaryTerm",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$update_glossary_term_input(Identifier = Identifier, Name = Name, ShortDescription = ShortDescription, LongDescription = LongDescription, ClientToken = ClientToken)
+  output <- .glue$update_glossary_term_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_glossary_term <- glue_update_glossary_term
 
 #' Updates the existing Glue Identity Center configuration, allowing
 #' modification of scopes and permissions for the integration

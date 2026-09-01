@@ -12,6 +12,8 @@ NULL
 #' When a service deployment reaches a lifecycle stage that has a `PAUSE` hook configured, the deployment pauses and waits for an explicit action. Use this API to either continue the deployment to the next stage or roll back to the previous service revision.
 #' 
 #' To find the `hookId` of the paused hook, call [`describe_service_deployments`][ecs_describe_service_deployments] and inspect the `lifecycleHookDetails` field.
+#' 
+#' For more information, see [Continuing Amazon ECS service deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/continue-service-deployment.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
 #' ecs_continue_service_deployment(serviceDeploymentArn, hookId, action)
@@ -722,9 +724,9 @@ ecs_create_daemon <- function(daemonName, clusterArn = NULL, daemonTaskDefinitio
 #' ecs_create_express_gateway_service(executionRoleArn,
 #'   infrastructureRoleArn, serviceName, cluster, healthCheckPath,
 #'   primaryContainer, taskRoleArn, networkConfiguration, cpu, memory,
-#'   scalingTarget, tags)
+#'   scalingTarget, tags, taskDefinitionArn)
 #'
-#' @param executionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the task execution role that grants the Amazon ECS container agent permission to make Amazon Web Services API calls on your behalf. This role is required for Amazon ECS to pull container images from Amazon ECR, send container logs to Amazon CloudWatch Logs, and retrieve sensitive data from Amazon Web Services Systems Manager Parameter Store or Amazon Web Services Secrets Manager.
+#' @param executionRoleArn The Amazon Resource Name (ARN) of the task execution role that grants the Amazon ECS container agent permission to make Amazon Web Services API calls on your behalf. This role is required for Amazon ECS to pull container images from Amazon ECR, send container logs to Amazon CloudWatch Logs, and retrieve sensitive data from Amazon Web Services Systems Manager Parameter Store or Amazon Web Services Secrets Manager.
 #' 
 #' The execution role must include the `AmazonECSTaskExecutionRolePolicy` managed policy or equivalent permissions. For Express services, this role is used during task startup and runtime for container management operations.
 #' @param infrastructureRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure role that grants Amazon ECS permission to create and manage Amazon Web Services resources on your behalf for the Express service. This role is used to provision and manage Application Load Balancers, target groups, security groups, auto-scaling policies, and other Amazon Web Services infrastructure components.
@@ -737,7 +739,7 @@ ecs_create_daemon <- function(daemonName, clusterArn = NULL, daemonTaskDefinitio
 #' @param healthCheckPath The path on the container that the Application Load Balancer uses for health checks. This should be a valid HTTP endpoint that returns a successful response (HTTP 200) when the application is healthy.
 #' 
 #' If not specified, the default health check path is `/ping`. The health check path must start with a forward slash and can include query parameters. Examples: `/health`, `/api/status`, `/ping?format=json`.
-#' @param primaryContainer &#91;required&#93; The primary container configuration for the Express service. This defines the main application container that will receive traffic from the Application Load Balancer.
+#' @param primaryContainer The primary container configuration for the Express service. This defines the main application container that will receive traffic from the Application Load Balancer.
 #' 
 #' The primary container must specify at minimum a container image. You can also configure the container port (defaults to 80), logging configuration, environment variables, secrets, and startup commands. The container image can be from Amazon ECR, Docker Hub, or any other container registry accessible to your execution role.
 #' @param taskRoleArn The Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. This role allows your application code to access other Amazon Web Services services securely.
@@ -752,6 +754,11 @@ ecs_create_daemon <- function(daemonName, clusterArn = NULL, daemonTaskDefinitio
 #' 
 #' You can specify the minimum and maximum number of tasks, the scaling metric (CPU utilization, memory utilization, or request count per target), and the target value for the metric. If not specified, the default target value for an Express service is 60.
 #' @param tags The metadata that you apply to the Express service to help categorize and organize it. Each tag consists of a key and an optional value. You can apply up to 50 tags to a service.
+#' @param taskDefinitionArn The Amazon Resource Name (ARN) of a task definition to use to create the Express Gateway service. This allows you to manage your own task definition, giving you more control over the service configuration such as adding sidecar containers.
+#' 
+#' The task definition must have a container named `Main` with a single TCP port mapping that includes a container port and port name. The task definition must also have `FARGATE` compatibility.
+#' 
+#' If you provide a task definition ARN, you cannot also specify `primaryContainer`, `executionRoleArn`, `taskRoleArn`, `cpu`, or `memory`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -772,6 +779,7 @@ ecs_create_daemon <- function(daemonName, clusterArn = NULL, daemonTaskDefinitio
 #'         serviceRevisionArn = "string",
 #'         executionRoleArn = "string",
 #'         taskRoleArn = "string",
+#'         taskDefinitionArn = "string",
 #'         cpu = "string",
 #'         memory = "string",
 #'         networkConfiguration = list(
@@ -898,7 +906,8 @@ ecs_create_daemon <- function(daemonName, clusterArn = NULL, daemonTaskDefinitio
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   taskDefinitionArn = "string"
 #' )
 #' ```
 #'
@@ -907,7 +916,7 @@ ecs_create_daemon <- function(daemonName, clusterArn = NULL, daemonTaskDefinitio
 #' @rdname ecs_create_express_gateway_service
 #'
 #' @aliases ecs_create_express_gateway_service
-ecs_create_express_gateway_service <- function(executionRoleArn, infrastructureRoleArn, serviceName = NULL, cluster = NULL, healthCheckPath = NULL, primaryContainer, taskRoleArn = NULL, networkConfiguration = NULL, cpu = NULL, memory = NULL, scalingTarget = NULL, tags = NULL) {
+ecs_create_express_gateway_service <- function(executionRoleArn = NULL, infrastructureRoleArn, serviceName = NULL, cluster = NULL, healthCheckPath = NULL, primaryContainer = NULL, taskRoleArn = NULL, networkConfiguration = NULL, cpu = NULL, memory = NULL, scalingTarget = NULL, tags = NULL, taskDefinitionArn = NULL) {
   op <- new_operation(
     name = "CreateExpressGatewayService",
     http_method = "POST",
@@ -916,7 +925,7 @@ ecs_create_express_gateway_service <- function(executionRoleArn, infrastructureR
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecs$create_express_gateway_service_input(executionRoleArn = executionRoleArn, infrastructureRoleArn = infrastructureRoleArn, serviceName = serviceName, cluster = cluster, healthCheckPath = healthCheckPath, primaryContainer = primaryContainer, taskRoleArn = taskRoleArn, networkConfiguration = networkConfiguration, cpu = cpu, memory = memory, scalingTarget = scalingTarget, tags = tags)
+  input <- .ecs$create_express_gateway_service_input(executionRoleArn = executionRoleArn, infrastructureRoleArn = infrastructureRoleArn, serviceName = serviceName, cluster = cluster, healthCheckPath = healthCheckPath, primaryContainer = primaryContainer, taskRoleArn = taskRoleArn, networkConfiguration = networkConfiguration, cpu = cpu, memory = memory, scalingTarget = scalingTarget, tags = tags, taskDefinitionArn = taskDefinitionArn)
   output <- .ecs$create_express_gateway_service_output()
   config <- get_config()
   svc <- .ecs$service(config, op)
@@ -1032,7 +1041,7 @@ ecs_create_express_gateway_service <- function(executionRoleArn, infrastructureR
 #'   placementStrategy, networkConfiguration, healthCheckGracePeriodSeconds,
 #'   schedulingStrategy, deploymentController, tags, enableECSManagedTags,
 #'   propagateTags, enableExecuteCommand, serviceConnectConfiguration,
-#'   volumeConfigurations, vpcLatticeConfigurations)
+#'   volumeConfigurations, vpcLatticeConfigurations, monitoring)
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that you run your service on. If you do not specify a cluster, the default cluster is assumed.
 #' @param serviceName &#91;required&#93; The name of your service. Up to 255 letters (uppercase and lowercase), numbers, underscores, and hyphens are allowed. Service names must be unique within a cluster, but you can have similarly named services in multiple clusters within a Region or across multiple Regions.
@@ -1144,6 +1153,7 @@ ecs_create_express_gateway_service <- function(executionRoleArn, infrastructureR
 #' Tasks that run in a namespace can use short names to connect to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. Tasks connect through a managed proxy container that collects logs and metrics for increased visibility. Only the tasks that Amazon ECS services create are supported with Service Connect. For more information, see [Service Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html) in the *Amazon Elastic Container Service Developer Guide*.
 #' @param volumeConfigurations The configuration for a volume specified in the task definition as a volume that is configured at launch time. Currently, the only supported volume type is an Amazon EBS volume.
 #' @param vpcLatticeConfigurations The VPC Lattice configuration for the service being created.
+#' @param monitoring The optional monitoring configuration for the service, which defines the resolution for the service-level `CPUUtilization` and `MemoryUtilization` Amazon CloudWatch metrics. When not specified, Amazon ECS uses the default resolution of `60` seconds.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1193,7 +1203,12 @@ ecs_create_express_gateway_service <- function(executionRoleArn, infrastructureR
 #'     deploymentConfiguration = list(
 #'       deploymentCircuitBreaker = list(
 #'         enable = TRUE|FALSE,
-#'         rollback = TRUE|FALSE
+#'         rollback = TRUE|FALSE,
+#'         resetOnHealthyTask = TRUE|FALSE,
+#'         thresholdConfiguration = list(
+#'           type = "COUNT"|"BOUNDED_PERCENT"|"UNBOUNDED_PERCENT",
+#'           value = 123
+#'         )
 #'       ),
 #'       maximumPercent = 123,
 #'       minimumHealthyPercent = 123,
@@ -1228,6 +1243,11 @@ ecs_create_express_gateway_service <- function(executionRoleArn, infrastructureR
 #'       canaryConfiguration = list(
 #'         canaryPercent = 123.0,
 #'         canaryBakeTimeInMinutes = 123
+#'       ),
+#'       earlySuccessCriteria = list(
+#'         enable = TRUE|FALSE,
+#'         healthyPercent = 123,
+#'         sourceServiceRevisionCleanup = "BLOCKING"|"DEFERRED"
 #'       )
 #'     ),
 #'     taskSets = list(
@@ -1558,7 +1578,12 @@ ecs_create_express_gateway_service <- function(executionRoleArn, infrastructureR
 #'   deploymentConfiguration = list(
 #'     deploymentCircuitBreaker = list(
 #'       enable = TRUE|FALSE,
-#'       rollback = TRUE|FALSE
+#'       rollback = TRUE|FALSE,
+#'       resetOnHealthyTask = TRUE|FALSE,
+#'       thresholdConfiguration = list(
+#'         type = "COUNT"|"BOUNDED_PERCENT"|"UNBOUNDED_PERCENT",
+#'         value = 123
+#'       )
 #'     ),
 #'     maximumPercent = 123,
 #'     minimumHealthyPercent = 123,
@@ -1593,6 +1618,11 @@ ecs_create_express_gateway_service <- function(executionRoleArn, infrastructureR
 #'     canaryConfiguration = list(
 #'       canaryPercent = 123.0,
 #'       canaryBakeTimeInMinutes = 123
+#'     ),
+#'     earlySuccessCriteria = list(
+#'       enable = TRUE|FALSE,
+#'       healthyPercent = 123,
+#'       sourceServiceRevisionCleanup = "BLOCKING"|"DEFERRED"
 #'     )
 #'   ),
 #'   placementConstraints = list(
@@ -1719,6 +1749,16 @@ ecs_create_express_gateway_service <- function(executionRoleArn, infrastructureR
 #'       targetGroupArn = "string",
 #'       portName = "string"
 #'     )
+#'   ),
+#'   monitoring = list(
+#'     metricConfigurations = list(
+#'       list(
+#'         metricNames = list(
+#'           "string"
+#'         ),
+#'         resolutionSeconds = 123
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1758,7 +1798,7 @@ ecs_create_express_gateway_service <- function(executionRoleArn, infrastructureR
 #' @rdname ecs_create_service
 #'
 #' @aliases ecs_create_service
-ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NULL, availabilityZoneRebalancing = NULL, loadBalancers = NULL, serviceRegistries = NULL, desiredCount = NULL, clientToken = NULL, launchType = NULL, capacityProviderStrategy = NULL, platformVersion = NULL, role = NULL, deploymentConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, networkConfiguration = NULL, healthCheckGracePeriodSeconds = NULL, schedulingStrategy = NULL, deploymentController = NULL, tags = NULL, enableECSManagedTags = NULL, propagateTags = NULL, enableExecuteCommand = NULL, serviceConnectConfiguration = NULL, volumeConfigurations = NULL, vpcLatticeConfigurations = NULL) {
+ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NULL, availabilityZoneRebalancing = NULL, loadBalancers = NULL, serviceRegistries = NULL, desiredCount = NULL, clientToken = NULL, launchType = NULL, capacityProviderStrategy = NULL, platformVersion = NULL, role = NULL, deploymentConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, networkConfiguration = NULL, healthCheckGracePeriodSeconds = NULL, schedulingStrategy = NULL, deploymentController = NULL, tags = NULL, enableECSManagedTags = NULL, propagateTags = NULL, enableExecuteCommand = NULL, serviceConnectConfiguration = NULL, volumeConfigurations = NULL, vpcLatticeConfigurations = NULL, monitoring = NULL) {
   op <- new_operation(
     name = "CreateService",
     http_method = "POST",
@@ -1767,7 +1807,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecs$create_service_input(cluster = cluster, serviceName = serviceName, taskDefinition = taskDefinition, availabilityZoneRebalancing = availabilityZoneRebalancing, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, desiredCount = desiredCount, clientToken = clientToken, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, role = role, deploymentConfiguration = deploymentConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, networkConfiguration = networkConfiguration, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, schedulingStrategy = schedulingStrategy, deploymentController = deploymentController, tags = tags, enableECSManagedTags = enableECSManagedTags, propagateTags = propagateTags, enableExecuteCommand = enableExecuteCommand, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations, vpcLatticeConfigurations = vpcLatticeConfigurations)
+  input <- .ecs$create_service_input(cluster = cluster, serviceName = serviceName, taskDefinition = taskDefinition, availabilityZoneRebalancing = availabilityZoneRebalancing, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, desiredCount = desiredCount, clientToken = clientToken, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, role = role, deploymentConfiguration = deploymentConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, networkConfiguration = networkConfiguration, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, schedulingStrategy = schedulingStrategy, deploymentController = deploymentController, tags = tags, enableECSManagedTags = enableECSManagedTags, propagateTags = propagateTags, enableExecuteCommand = enableExecuteCommand, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations, vpcLatticeConfigurations = vpcLatticeConfigurations, monitoring = monitoring)
   output <- .ecs$create_service_output()
   config <- get_config()
   svc <- .ecs$service(config, op)
@@ -2605,6 +2645,7 @@ ecs_delete_daemon_task_definition <- function(daemonTaskDefinition) {
 #'         serviceRevisionArn = "string",
 #'         executionRoleArn = "string",
 #'         taskRoleArn = "string",
+#'         taskDefinitionArn = "string",
 #'         cpu = "string",
 #'         memory = "string",
 #'         networkConfiguration = list(
@@ -2770,7 +2811,12 @@ ecs_delete_express_gateway_service <- function(serviceArn) {
 #'     deploymentConfiguration = list(
 #'       deploymentCircuitBreaker = list(
 #'         enable = TRUE|FALSE,
-#'         rollback = TRUE|FALSE
+#'         rollback = TRUE|FALSE,
+#'         resetOnHealthyTask = TRUE|FALSE,
+#'         thresholdConfiguration = list(
+#'           type = "COUNT"|"BOUNDED_PERCENT"|"UNBOUNDED_PERCENT",
+#'           value = 123
+#'         )
 #'       ),
 #'       maximumPercent = 123,
 #'       minimumHealthyPercent = 123,
@@ -2805,6 +2851,11 @@ ecs_delete_express_gateway_service <- function(serviceArn) {
 #'       canaryConfiguration = list(
 #'         canaryPercent = 123.0,
 #'         canaryBakeTimeInMinutes = 123
+#'       ),
+#'       earlySuccessCriteria = list(
+#'         enable = TRUE|FALSE,
+#'         healthyPercent = 123,
+#'         sourceServiceRevisionCleanup = "BLOCKING"|"DEFERRED"
 #'       )
 #'     ),
 #'     taskSets = list(
@@ -3732,7 +3783,7 @@ ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
 #'       overallStatus = "OK"|"IMPAIRED"|"INSUFFICIENT_DATA"|"INITIALIZING",
 #'       details = list(
 #'         list(
-#'           type = "CONTAINER_RUNTIME"|"ACCELERATED_COMPUTE"|"DAEMON",
+#'           type = "CONTAINER_RUNTIME"|"ACCELERATED_COMPUTE"|"DAEMON"|"AGENT_CONNECTIVITY",
 #'           status = "OK"|"IMPAIRED"|"INSUFFICIENT_DATA"|"INITIALIZING",
 #'           statusReason = "string",
 #'           lastUpdated = as.POSIXct(
@@ -4597,7 +4648,7 @@ ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
 #'         overallStatus = "OK"|"IMPAIRED"|"INSUFFICIENT_DATA"|"INITIALIZING",
 #'         details = list(
 #'           list(
-#'             type = "CONTAINER_RUNTIME"|"ACCELERATED_COMPUTE"|"DAEMON",
+#'             type = "CONTAINER_RUNTIME"|"ACCELERATED_COMPUTE"|"DAEMON"|"AGENT_CONNECTIVITY",
 #'             status = "OK"|"IMPAIRED"|"INSUFFICIENT_DATA"|"INITIALIZING",
 #'             statusReason = "string",
 #'             lastUpdated = as.POSIXct(
@@ -5133,7 +5184,9 @@ ecs_describe_daemon_revisions <- function(daemonRevisionArns) {
 #'     deleteRequestedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     registeredBy = "string"
+#'     registeredBy = "string",
+#'     pidMode = "none"|"shared",
+#'     ipcMode = "none"|"shared"
 #'   )
 #' )
 #' ```
@@ -5205,6 +5258,7 @@ ecs_describe_daemon_task_definition <- function(daemonTaskDefinition) {
 #'         serviceRevisionArn = "string",
 #'         executionRoleArn = "string",
 #'         taskRoleArn = "string",
+#'         taskDefinitionArn = "string",
 #'         cpu = "string",
 #'         memory = "string",
 #'         networkConfiguration = list(
@@ -5383,7 +5437,12 @@ ecs_describe_express_gateway_service <- function(serviceArn, include = NULL) {
 #'       deploymentConfiguration = list(
 #'         deploymentCircuitBreaker = list(
 #'           enable = TRUE|FALSE,
-#'           rollback = TRUE|FALSE
+#'           rollback = TRUE|FALSE,
+#'           resetOnHealthyTask = TRUE|FALSE,
+#'           thresholdConfiguration = list(
+#'             type = "COUNT"|"BOUNDED_PERCENT"|"UNBOUNDED_PERCENT",
+#'             value = 123
+#'           )
 #'         ),
 #'         maximumPercent = 123,
 #'         minimumHealthyPercent = 123,
@@ -5418,6 +5477,11 @@ ecs_describe_express_gateway_service <- function(serviceArn, include = NULL) {
 #'         canaryConfiguration = list(
 #'           canaryPercent = 123.0,
 #'           canaryBakeTimeInMinutes = 123
+#'         ),
+#'         earlySuccessCriteria = list(
+#'           enable = TRUE|FALSE,
+#'           healthyPercent = 123,
+#'           sourceServiceRevisionCleanup = "BLOCKING"|"DEFERRED"
 #'         )
 #'       ),
 #'       rollback = list(
@@ -5793,6 +5857,21 @@ ecs_describe_service_deployments <- function(serviceDeploymentArns) {
 #'             logGroupName = "string"
 #'           )
 #'         )
+#'       ),
+#'       overrides = list(
+#'         runtimePlatform = list(
+#'           cpuArchitecture = "string"
+#'         )
+#'       ),
+#'       monitoring = list(
+#'         metricConfigurations = list(
+#'           list(
+#'             metricNames = list(
+#'               "string"
+#'             ),
+#'             resolutionSeconds = 123
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -5900,7 +5979,12 @@ ecs_describe_service_revisions <- function(serviceRevisionArns) {
 #'       deploymentConfiguration = list(
 #'         deploymentCircuitBreaker = list(
 #'           enable = TRUE|FALSE,
-#'           rollback = TRUE|FALSE
+#'           rollback = TRUE|FALSE,
+#'           resetOnHealthyTask = TRUE|FALSE,
+#'           thresholdConfiguration = list(
+#'             type = "COUNT"|"BOUNDED_PERCENT"|"UNBOUNDED_PERCENT",
+#'             value = 123
+#'           )
 #'         ),
 #'         maximumPercent = 123,
 #'         minimumHealthyPercent = 123,
@@ -5935,6 +6019,11 @@ ecs_describe_service_revisions <- function(serviceRevisionArns) {
 #'         canaryConfiguration = list(
 #'           canaryPercent = 123.0,
 #'           canaryBakeTimeInMinutes = 123
+#'         ),
+#'         earlySuccessCriteria = list(
+#'           enable = TRUE|FALSE,
+#'           healthyPercent = 123,
+#'           sourceServiceRevisionCleanup = "BLOCKING"|"DEFERRED"
 #'         )
 #'       ),
 #'       taskSets = list(
@@ -6965,7 +7054,7 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
 #'         "2015-01-01"
 #'       ),
 #'       startedBy = "string",
-#'       stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated"|"ServiceSchedulerInitiated"|"SpotInterruption"|"TerminationNotice",
+#'       stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated"|"ServiceSchedulerInitiated"|"SpotInterruption"|"TerminationNotice"|"InfrastructureHealth",
 #'       stoppedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -7716,7 +7805,7 @@ ecs_list_daemon_task_definitions <- function(familyPrefix = NULL, family = NULL,
 #' ecs_list_daemons(clusterArn, capacityProviderArns, maxResults,
 #'   nextToken)
 #'
-#' @param clusterArn The Amazon Resource Name (ARN) of the cluster to filter daemons by. If not specified, daemons from all clusters are returned.
+#' @param clusterArn The Amazon Resource Name (ARN) of the cluster to filter daemons by. If you do not specify a cluster, the default cluster is assumed.
 #' @param capacityProviderArns The Amazon Resource Names (ARNs) of the capacity providers to filter daemons by. Only daemons associated with the specified capacity providers are returned.
 #' @param maxResults The maximum number of daemon results that [`list_daemons`][ecs_list_daemons] returned in paginated output. When this parameter is used, [`list_daemons`][ecs_list_daemons] only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another [`list_daemons`][ecs_list_daemons] request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter isn't used, then [`list_daemons`][ecs_list_daemons] returns up to 100 results and a `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a [`list_daemons`][ecs_list_daemons] request indicating that more results are available to fulfill the request and further calls will be needed. If `maxResults` was provided, it's possible for the number of results to be fewer than `maxResults`.
@@ -8891,7 +8980,7 @@ ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defau
 #'       overallStatus = "OK"|"IMPAIRED"|"INSUFFICIENT_DATA"|"INITIALIZING",
 #'       details = list(
 #'         list(
-#'           type = "CONTAINER_RUNTIME"|"ACCELERATED_COMPUTE"|"DAEMON",
+#'           type = "CONTAINER_RUNTIME"|"ACCELERATED_COMPUTE"|"DAEMON"|"AGENT_CONNECTIVITY",
 #'           status = "OK"|"IMPAIRED"|"INSUFFICIENT_DATA"|"INITIALIZING",
 #'           statusReason = "string",
 #'           lastUpdated = as.POSIXct(
@@ -8990,7 +9079,8 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'
 #' @usage
 #' ecs_register_daemon_task_definition(family, taskRoleArn,
-#'   executionRoleArn, containerDefinitions, cpu, memory, volumes, tags)
+#'   executionRoleArn, containerDefinitions, cpu, memory, volumes, tags,
+#'   pidMode, ipcMode)
 #'
 #' @param family &#91;required&#93; You must specify a `family` for a daemon task definition. This family is used as a name for your daemon task definition. Up to 255 letters (uppercase and lowercase), numbers, underscores, and hyphens are allowed.
 #' @param taskRoleArn The short name or full Amazon Resource Name (ARN) of the IAM role that containers in this daemon task can assume. All containers in this daemon task are granted the permissions that are specified in this role.
@@ -9016,6 +9106,12 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' -   Tag keys and values are case-sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of such as a prefix for either keys or values as it is reserved for Amazon Web Services use. You cannot edit or delete tag keys or values with this prefix. Tags with this prefix do not count against your tags per resource limit.
+#' @param pidMode The PID namespace mode for the daemon. The valid values are `none` and `shared`. The default is `none`.
+#' 
+#' If `none` is specified or no value is provided, the daemon runs with its own PID namespace, isolated from other tasks. If `shared` is specified, the daemon joins the host PID namespace, making it accessible to non-daemon tasks that use `pidMode: "host"` or other daemons that use `pidMode: "shared"`.
+#' @param ipcMode The IPC namespace mode for the daemon. The valid values are `none` and `shared`. The default is `none`.
+#' 
+#' If `none` is specified or no value is provided, the daemon runs with its own IPC namespace, isolated from other tasks. If `shared` is specified, the daemon joins the host IPC namespace, making it accessible to non-daemon tasks that use `ipcMode: "host"` or other daemons that use `ipcMode: "shared"`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9180,7 +9276,9 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   pidMode = "none"|"shared",
+#'   ipcMode = "none"|"shared"
 #' )
 #' ```
 #'
@@ -9189,7 +9287,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' @rdname ecs_register_daemon_task_definition
 #'
 #' @aliases ecs_register_daemon_task_definition
-ecs_register_daemon_task_definition <- function(family, taskRoleArn = NULL, executionRoleArn = NULL, containerDefinitions, cpu = NULL, memory = NULL, volumes = NULL, tags = NULL) {
+ecs_register_daemon_task_definition <- function(family, taskRoleArn = NULL, executionRoleArn = NULL, containerDefinitions, cpu = NULL, memory = NULL, volumes = NULL, tags = NULL, pidMode = NULL, ipcMode = NULL) {
   op <- new_operation(
     name = "RegisterDaemonTaskDefinition",
     http_method = "POST",
@@ -9198,7 +9296,7 @@ ecs_register_daemon_task_definition <- function(family, taskRoleArn = NULL, exec
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecs$register_daemon_task_definition_input(family = family, taskRoleArn = taskRoleArn, executionRoleArn = executionRoleArn, containerDefinitions = containerDefinitions, cpu = cpu, memory = memory, volumes = volumes, tags = tags)
+  input <- .ecs$register_daemon_task_definition_input(family = family, taskRoleArn = taskRoleArn, executionRoleArn = executionRoleArn, containerDefinitions = containerDefinitions, cpu = cpu, memory = memory, volumes = volumes, tags = tags, pidMode = pidMode, ipcMode = ipcMode)
   output <- .ecs$register_daemon_task_definition_output()
   config <- get_config()
   svc <- .ecs$service(config, op)
@@ -10251,7 +10349,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'         "2015-01-01"
 #'       ),
 #'       startedBy = "string",
-#'       stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated"|"ServiceSchedulerInitiated"|"SpotInterruption"|"TerminationNotice",
+#'       stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated"|"ServiceSchedulerInitiated"|"SpotInterruption"|"TerminationNotice"|"InfrastructureHealth",
 #'       stoppedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -10665,7 +10763,7 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #'         "2015-01-01"
 #'       ),
 #'       startedBy = "string",
-#'       stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated"|"ServiceSchedulerInitiated"|"SpotInterruption"|"TerminationNotice",
+#'       stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated"|"ServiceSchedulerInitiated"|"SpotInterruption"|"TerminationNotice"|"InfrastructureHealth",
 #'       stoppedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -11074,7 +11172,7 @@ ecs_stop_service_deployment <- function(serviceDeploymentArn, stopType = NULL) {
 #'       "2015-01-01"
 #'     ),
 #'     startedBy = "string",
-#'     stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated"|"ServiceSchedulerInitiated"|"SpotInterruption"|"TerminationNotice",
+#'     stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated"|"ServiceSchedulerInitiated"|"SpotInterruption"|"TerminationNotice"|"InfrastructureHealth",
 #'     stoppedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -12203,7 +12301,7 @@ ecs_update_cluster_settings <- function(cluster, settings) {
 #'       overallStatus = "OK"|"IMPAIRED"|"INSUFFICIENT_DATA"|"INITIALIZING",
 #'       details = list(
 #'         list(
-#'           type = "CONTAINER_RUNTIME"|"ACCELERATED_COMPUTE"|"DAEMON",
+#'           type = "CONTAINER_RUNTIME"|"ACCELERATED_COMPUTE"|"DAEMON"|"AGENT_CONNECTIVITY",
 #'           status = "OK"|"IMPAIRED"|"INSUFFICIENT_DATA"|"INITIALIZING",
 #'           statusReason = "string",
 #'           lastUpdated = as.POSIXct(
@@ -12361,7 +12459,7 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #'         overallStatus = "OK"|"IMPAIRED"|"INSUFFICIENT_DATA"|"INITIALIZING",
 #'         details = list(
 #'           list(
-#'             type = "CONTAINER_RUNTIME"|"ACCELERATED_COMPUTE"|"DAEMON",
+#'             type = "CONTAINER_RUNTIME"|"ACCELERATED_COMPUTE"|"DAEMON"|"AGENT_CONNECTIVITY",
 #'             status = "OK"|"IMPAIRED"|"INSUFFICIENT_DATA"|"INITIALIZING",
 #'             statusReason = "string",
 #'             lastUpdated = as.POSIXct(
@@ -12520,7 +12618,7 @@ ecs_update_daemon <- function(daemonArn, daemonTaskDefinitionArn, capacityProvid
 #' @usage
 #' ecs_update_express_gateway_service(serviceArn, executionRoleArn,
 #'   healthCheckPath, primaryContainer, taskRoleArn, networkConfiguration,
-#'   cpu, memory, scalingTarget)
+#'   cpu, memory, scalingTarget, taskDefinitionArn)
 #'
 #' @param serviceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Express service to update.
 #' @param executionRoleArn The Amazon Resource Name (ARN) of the task execution role for the Express service.
@@ -12531,6 +12629,11 @@ ecs_update_daemon <- function(daemonArn, daemonTaskDefinitionArn, capacityProvid
 #' @param cpu The number of CPU units used by the task.
 #' @param memory The amount of memory (in MiB) used by the task.
 #' @param scalingTarget The auto-scaling configuration for the Express service.
+#' @param taskDefinitionArn The Amazon Resource Name (ARN) of a task definition to use to update the Express Gateway service. This allows you to manage your own task definition, giving you more control over the service configuration such as adding sidecar containers.
+#' 
+#' The task definition must have a container named `Main` with a single TCP port mapping that includes a container port and port name. The task definition must also have `FARGATE` compatibility.
+#' 
+#' If you provide a task definition ARN, you cannot also specify `primaryContainer`, `executionRoleArn`, `taskRoleArn`, `cpu`, or `memory`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -12548,6 +12651,7 @@ ecs_update_daemon <- function(daemonArn, daemonTaskDefinitionArn, capacityProvid
 #'       serviceRevisionArn = "string",
 #'       executionRoleArn = "string",
 #'       taskRoleArn = "string",
+#'       taskDefinitionArn = "string",
 #'       cpu = "string",
 #'       memory = "string",
 #'       networkConfiguration = list(
@@ -12659,7 +12763,8 @@ ecs_update_daemon <- function(daemonArn, daemonTaskDefinitionArn, capacityProvid
 #'     maxTaskCount = 123,
 #'     autoScalingMetric = "AVERAGE_CPU"|"AVERAGE_MEMORY"|"REQUEST_COUNT_PER_TARGET",
 #'     autoScalingTargetValue = 123
-#'   )
+#'   ),
+#'   taskDefinitionArn = "string"
 #' )
 #' ```
 #'
@@ -12668,7 +12773,7 @@ ecs_update_daemon <- function(daemonArn, daemonTaskDefinitionArn, capacityProvid
 #' @rdname ecs_update_express_gateway_service
 #'
 #' @aliases ecs_update_express_gateway_service
-ecs_update_express_gateway_service <- function(serviceArn, executionRoleArn = NULL, healthCheckPath = NULL, primaryContainer = NULL, taskRoleArn = NULL, networkConfiguration = NULL, cpu = NULL, memory = NULL, scalingTarget = NULL) {
+ecs_update_express_gateway_service <- function(serviceArn, executionRoleArn = NULL, healthCheckPath = NULL, primaryContainer = NULL, taskRoleArn = NULL, networkConfiguration = NULL, cpu = NULL, memory = NULL, scalingTarget = NULL, taskDefinitionArn = NULL) {
   op <- new_operation(
     name = "UpdateExpressGatewayService",
     http_method = "POST",
@@ -12677,7 +12782,7 @@ ecs_update_express_gateway_service <- function(serviceArn, executionRoleArn = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecs$update_express_gateway_service_input(serviceArn = serviceArn, executionRoleArn = executionRoleArn, healthCheckPath = healthCheckPath, primaryContainer = primaryContainer, taskRoleArn = taskRoleArn, networkConfiguration = networkConfiguration, cpu = cpu, memory = memory, scalingTarget = scalingTarget)
+  input <- .ecs$update_express_gateway_service_input(serviceArn = serviceArn, executionRoleArn = executionRoleArn, healthCheckPath = healthCheckPath, primaryContainer = primaryContainer, taskRoleArn = taskRoleArn, networkConfiguration = networkConfiguration, cpu = cpu, memory = memory, scalingTarget = scalingTarget, taskDefinitionArn = taskDefinitionArn)
   output <- .ecs$update_express_gateway_service_output()
   config <- get_config()
   svc <- .ecs$service(config, op)
@@ -12742,7 +12847,7 @@ ecs_update_express_gateway_service <- function(serviceArn, executionRoleArn = NU
 #'   healthCheckGracePeriodSeconds, deploymentController,
 #'   enableExecuteCommand, enableECSManagedTags, loadBalancers,
 #'   propagateTags, serviceRegistries, serviceConnectConfiguration,
-#'   volumeConfigurations, vpcLatticeConfigurations)
+#'   volumeConfigurations, vpcLatticeConfigurations, monitoring)
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that your service runs on. If you do not specify a cluster, the default cluster is assumed.
 #' 
@@ -12872,6 +12977,7 @@ ecs_update_express_gateway_service <- function(serviceArn, executionRoleArn = NU
 #' @param vpcLatticeConfigurations An object representing the VPC Lattice configuration for the service being updated.
 #' 
 #' This parameter triggers a new service deployment.
+#' @param monitoring The optional monitoring configuration for the service, which defines the resolution for the service-level `CPUUtilization` and `MemoryUtilization` Amazon CloudWatch metrics. When not specified, Amazon ECS uses the default resolution of `60` seconds.
 #'
 #' @return
 #' A list with the following syntax:
@@ -12921,7 +13027,12 @@ ecs_update_express_gateway_service <- function(serviceArn, executionRoleArn = NU
 #'     deploymentConfiguration = list(
 #'       deploymentCircuitBreaker = list(
 #'         enable = TRUE|FALSE,
-#'         rollback = TRUE|FALSE
+#'         rollback = TRUE|FALSE,
+#'         resetOnHealthyTask = TRUE|FALSE,
+#'         thresholdConfiguration = list(
+#'           type = "COUNT"|"BOUNDED_PERCENT"|"UNBOUNDED_PERCENT",
+#'           value = 123
+#'         )
 #'       ),
 #'       maximumPercent = 123,
 #'       minimumHealthyPercent = 123,
@@ -12956,6 +13067,11 @@ ecs_update_express_gateway_service <- function(serviceArn, executionRoleArn = NU
 #'       canaryConfiguration = list(
 #'         canaryPercent = 123.0,
 #'         canaryBakeTimeInMinutes = 123
+#'       ),
+#'       earlySuccessCriteria = list(
+#'         enable = TRUE|FALSE,
+#'         healthyPercent = 123,
+#'         sourceServiceRevisionCleanup = "BLOCKING"|"DEFERRED"
 #'       )
 #'     ),
 #'     taskSets = list(
@@ -13259,7 +13375,12 @@ ecs_update_express_gateway_service <- function(serviceArn, executionRoleArn = NU
 #'   deploymentConfiguration = list(
 #'     deploymentCircuitBreaker = list(
 #'       enable = TRUE|FALSE,
-#'       rollback = TRUE|FALSE
+#'       rollback = TRUE|FALSE,
+#'       resetOnHealthyTask = TRUE|FALSE,
+#'       thresholdConfiguration = list(
+#'         type = "COUNT"|"BOUNDED_PERCENT"|"UNBOUNDED_PERCENT",
+#'         value = 123
+#'       )
 #'     ),
 #'     maximumPercent = 123,
 #'     minimumHealthyPercent = 123,
@@ -13294,6 +13415,11 @@ ecs_update_express_gateway_service <- function(serviceArn, executionRoleArn = NU
 #'     canaryConfiguration = list(
 #'       canaryPercent = 123.0,
 #'       canaryBakeTimeInMinutes = 123
+#'     ),
+#'     earlySuccessCriteria = list(
+#'       enable = TRUE|FALSE,
+#'       healthyPercent = 123,
+#'       sourceServiceRevisionCleanup = "BLOCKING"|"DEFERRED"
 #'     )
 #'   ),
 #'   availabilityZoneRebalancing = "ENABLED"|"DISABLED",
@@ -13438,6 +13564,16 @@ ecs_update_express_gateway_service <- function(serviceArn, executionRoleArn = NU
 #'       targetGroupArn = "string",
 #'       portName = "string"
 #'     )
+#'   ),
+#'   monitoring = list(
+#'     metricConfigurations = list(
+#'       list(
+#'         metricNames = list(
+#'           "string"
+#'         ),
+#'         resolutionSeconds = 123
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -13464,7 +13600,7 @@ ecs_update_express_gateway_service <- function(serviceArn, executionRoleArn = NU
 #' @rdname ecs_update_service
 #'
 #' @aliases ecs_update_service
-ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, availabilityZoneRebalancing = NULL, networkConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL, deploymentController = NULL, enableExecuteCommand = NULL, enableECSManagedTags = NULL, loadBalancers = NULL, propagateTags = NULL, serviceRegistries = NULL, serviceConnectConfiguration = NULL, volumeConfigurations = NULL, vpcLatticeConfigurations = NULL) {
+ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, availabilityZoneRebalancing = NULL, networkConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL, deploymentController = NULL, enableExecuteCommand = NULL, enableECSManagedTags = NULL, loadBalancers = NULL, propagateTags = NULL, serviceRegistries = NULL, serviceConnectConfiguration = NULL, volumeConfigurations = NULL, vpcLatticeConfigurations = NULL, monitoring = NULL) {
   op <- new_operation(
     name = "UpdateService",
     http_method = "POST",
@@ -13473,7 +13609,7 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, availabilityZoneRebalancing = availabilityZoneRebalancing, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, deploymentController = deploymentController, enableExecuteCommand = enableExecuteCommand, enableECSManagedTags = enableECSManagedTags, loadBalancers = loadBalancers, propagateTags = propagateTags, serviceRegistries = serviceRegistries, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations, vpcLatticeConfigurations = vpcLatticeConfigurations)
+  input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, availabilityZoneRebalancing = availabilityZoneRebalancing, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, deploymentController = deploymentController, enableExecuteCommand = enableExecuteCommand, enableECSManagedTags = enableECSManagedTags, loadBalancers = loadBalancers, propagateTags = propagateTags, serviceRegistries = serviceRegistries, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations, vpcLatticeConfigurations = vpcLatticeConfigurations, monitoring = monitoring)
   output <- .ecs$update_service_output()
   config <- get_config()
   svc <- .ecs$service(config, op)

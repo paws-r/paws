@@ -9,7 +9,10 @@ directconnect_update_virtual_interface_attributes(
   virtualInterfaceId,
   mtu = NULL,
   enableSiteLink = NULL,
-  virtualInterfaceName = NULL
+  virtualInterfaceName = NULL,
+  prefixPoolAllocatedCountIpv4 = NULL,
+  prefixPoolAllocatedCountIpv6 = NULL,
+  rateLimit = NULL
 )
 }
 \arguments{
@@ -20,6 +23,12 @@ directconnect_update_virtual_interface_attributes(
 \item{enableSiteLink}{Indicates whether to enable or disable SiteLink.}
 
 \item{virtualInterfaceName}{The name of the virtual private interface.}
+
+\item{prefixPoolAllocatedCountIpv4}{The number of inbound IPv4 route prefixes to allocate to the virtual interface. Not applicable to public virtual interfaces.}
+
+\item{prefixPoolAllocatedCountIpv6}{The number of inbound IPv6 route prefixes to allocate to the virtual interface. Not applicable to public virtual interfaces.}
+
+\item{rateLimit}{The rate limit (bandwidth allocation) to apply to the virtual interface. Use this to update the bandwidth allocation on an existing virtual interface.}
 }
 \description{
 Updates the specified attributes of the specified virtual private interface.

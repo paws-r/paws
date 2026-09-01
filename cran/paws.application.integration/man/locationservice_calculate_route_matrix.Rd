@@ -56,7 +56,7 @@ Default Value: \code{Car}}
 
 Setting a departure time in the past returns a \verb{400 ValidationException} error.
 \itemize{
-\item In \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601} format: \code{YYYY-MM-DDThh:mm:ss.sssZ}. For example, \verb{2020–07-2T12:15:20.000Z+01:00}
+\item In ISO 8601 format: \code{YYYY-MM-DDThh:mm:ss.sssZ}. For example, \verb{2020–07-2T12:15:20.000Z+01:00}
 }}
 
 \item{DepartNow}{Sets the time of departure as the current time. Uses the current time to calculate the route matrix. You can't set both \code{DepartureTime} and \code{DepartNow}. If neither is set, the best time of day to travel with the best traffic conditions is used to calculate the route matrix.

@@ -1,5 +1,9 @@
 svc <- paws::wellarchitected()
 
+test_that("list_agent_profiles", {
+  expect_error(svc$list_agent_profiles(), NA)
+})
+
 test_that("list_lenses", {
   expect_error(svc$list_lenses(), NA)
 })

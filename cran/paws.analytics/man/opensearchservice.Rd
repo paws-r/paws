@@ -100,6 +100,7 @@ Use the Amazon OpenSearch Service configuration API to create, configure, and ma
 \link[=opensearchservice_add_tags]{add_tags} \tab Attaches tags to an existing Amazon OpenSearch Service domain, data source, or application\cr
 \link[=opensearchservice_associate_package]{associate_package} \tab Associates a package with an Amazon OpenSearch Service domain\cr
 \link[=opensearchservice_associate_packages]{associate_packages} \tab Operation in the Amazon OpenSearch Service API for associating multiple packages with a domain simultaneously\cr
+\link[=opensearchservice_attach_data_source]{attach_data_source} \tab Attaches a data source to an OpenSearch application\cr
 \link[=opensearchservice_authorize_vpc_endpoint_access]{authorize_vpc_endpoint_access} \tab Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint\cr
 \link[=opensearchservice_cancel_domain_config_change]{cancel_domain_config_change} \tab Cancels a pending configuration change on an Amazon OpenSearch Service domain\cr
 \link[=opensearchservice_cancel_service_software_update]{cancel_service_software_update} \tab Cancels a scheduled service software update for an Amazon OpenSearch Service domain\cr
@@ -119,6 +120,7 @@ Use the Amazon OpenSearch Service configuration API to create, configure, and ma
 \link[=opensearchservice_delete_package]{delete_package} \tab Deletes an Amazon OpenSearch Service package\cr
 \link[=opensearchservice_delete_vpc_endpoint]{delete_vpc_endpoint} \tab Deletes an Amazon OpenSearch Service-managed interface VPC endpoint\cr
 \link[=opensearchservice_deregister_capability]{deregister_capability} \tab Deregisters a capability from an OpenSearch UI application\cr
+\link[=opensearchservice_describe_data_source_attachment]{describe_data_source_attachment} \tab Returns the current status and details of a specific data source attachment for an OpenSearch application\cr
 \link[=opensearchservice_describe_domain]{describe_domain} \tab Describes the domain configuration for the specified Amazon OpenSearch Service domain, including the domain ID, domain service endpoint, and domain ARN\cr
 \link[=opensearchservice_describe_domain_auto_tunes]{describe_domain_auto_tunes} \tab Returns the list of optimizations that Auto-Tune has made to an Amazon OpenSearch Service domain\cr
 \link[=opensearchservice_describe_domain_change_progress]{describe_domain_change_progress} \tab Returns information about the current blue/green deployment happening on an Amazon OpenSearch Service domain\cr
@@ -135,6 +137,7 @@ Use the Amazon OpenSearch Service configuration API to create, configure, and ma
 \link[=opensearchservice_describe_reserved_instance_offerings]{describe_reserved_instance_offerings} \tab Describes the available Amazon OpenSearch Service Reserved Instance offerings for a given Region\cr
 \link[=opensearchservice_describe_reserved_instances]{describe_reserved_instances} \tab Describes the Amazon OpenSearch Service instances that you have reserved in a given Region\cr
 \link[=opensearchservice_describe_vpc_endpoints]{describe_vpc_endpoints} \tab Describes one or more Amazon OpenSearch Service-managed VPC endpoints\cr
+\link[=opensearchservice_detach_data_source]{detach_data_source} \tab Removes a data source from an OpenSearch application\cr
 \link[=opensearchservice_dissociate_package]{dissociate_package} \tab Removes a package from the specified Amazon OpenSearch Service domain\cr
 \link[=opensearchservice_dissociate_packages]{dissociate_packages} \tab Dissociates multiple packages from a domain simultaneously\cr
 \link[=opensearchservice_get_application]{get_application} \tab Retrieves the configuration and status of an existing OpenSearch application\cr
@@ -145,10 +148,13 @@ Use the Amazon OpenSearch Service configuration API to create, configure, and ma
 \link[=opensearchservice_get_direct_query_data_source]{get_direct_query_data_source} \tab Returns detailed configuration information for a specific direct query data source in Amazon OpenSearch Service\cr
 \link[=opensearchservice_get_domain_maintenance_status]{get_domain_maintenance_status} \tab The status of the maintenance action\cr
 \link[=opensearchservice_get_index]{get_index} \tab Retrieves information about an OpenSearch index including its schema and semantic enrichment configuration\cr
+\link[=opensearchservice_get_migration]{get_migration} \tab Retrieves the current status and progress of a migration job, including the number of exported and imported objects and error details if the migration failed\cr
 \link[=opensearchservice_get_package_version_history]{get_package_version_history} \tab Returns a list of Amazon OpenSearch Service package versions, along with their creation time, commit message, and plugin properties (if the package is a zip plugin package)\cr
 \link[=opensearchservice_get_upgrade_history]{get_upgrade_history} \tab Retrieves the complete history of the last 10 upgrades performed on an Amazon OpenSearch Service domain\cr
 \link[=opensearchservice_get_upgrade_status]{get_upgrade_status} \tab Returns the most recent status of the last upgrade or upgrade eligibility check performed on an Amazon OpenSearch Service domain\cr
+\link[=opensearchservice_insight_feedback]{insight_feedback} \tab Submits feedback for an existing insight in an Amazon OpenSearch Service domain\cr
 \link[=opensearchservice_list_applications]{list_applications} \tab Lists all OpenSearch applications under your account\cr
+\link[=opensearchservice_list_data_source_attachments]{list_data_source_attachments} \tab Returns a paginated list of all data source attachments for an OpenSearch application, including attachments in all states (PENDING, ATTACHED, and FAILED)\cr
 \link[=opensearchservice_list_data_sources]{list_data_sources} \tab Lists direct-query data sources for a specific domain\cr
 \link[=opensearchservice_list_direct_query_data_sources]{list_direct_query_data_sources} \tab Lists an inventory of all the direct query data sources that you have configured within Amazon OpenSearch Service\cr
 \link[=opensearchservice_list_domain_maintenances]{list_domain_maintenances} \tab A list of maintenance actions for the domain\cr
@@ -156,6 +162,7 @@ Use the Amazon OpenSearch Service configuration API to create, configure, and ma
 \link[=opensearchservice_list_domains_for_package]{list_domains_for_package} \tab Lists all Amazon OpenSearch Service domains associated with a given package\cr
 \link[=opensearchservice_list_insights]{list_insights} \tab Lists insights for an Amazon OpenSearch Service domain or Amazon Web Services account\cr
 \link[=opensearchservice_list_instance_type_details]{list_instance_type_details} \tab Lists all instance types and available features for a given OpenSearch or Elasticsearch version\cr
+\link[=opensearchservice_list_migrations]{list_migrations} \tab Lists migration jobs for an Amazon OpenSearch Service application\cr
 \link[=opensearchservice_list_packages_for_domain]{list_packages_for_domain} \tab Lists all packages associated with an Amazon OpenSearch Service domain\cr
 \link[=opensearchservice_list_scheduled_actions]{list_scheduled_actions} \tab Retrieves a list of configuration changes that are scheduled for a domain\cr
 \link[=opensearchservice_list_tags]{list_tags} \tab Returns all resource tags for an Amazon OpenSearch Service domain, data source, or application\cr
@@ -171,6 +178,7 @@ Use the Amazon OpenSearch Service configuration API to create, configure, and ma
 \link[=opensearchservice_revoke_vpc_endpoint_access]{revoke_vpc_endpoint_access} \tab Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint\cr
 \link[=opensearchservice_rollback_service_software_update]{rollback_service_software_update} \tab Rolls back a service software update for a domain to the previous version\cr
 \link[=opensearchservice_start_domain_maintenance]{start_domain_maintenance} \tab Starts the node maintenance process on the data node\cr
+\link[=opensearchservice_start_migration]{start_migration} \tab Initiates a migration job to migrate saved objects from a data source to an Amazon OpenSearch Service application workspace\cr
 \link[=opensearchservice_start_service_software_update]{start_service_software_update} \tab Schedules a service software update for an Amazon OpenSearch Service domain\cr
 \link[=opensearchservice_update_application]{update_application} \tab Updates the configuration and settings of an existing OpenSearch application\cr
 \link[=opensearchservice_update_data_source]{update_data_source} \tab Updates a direct-query data source\cr

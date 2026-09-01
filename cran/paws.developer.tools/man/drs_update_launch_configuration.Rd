@@ -13,7 +13,8 @@ drs_update_launch_configuration(
   copyTags = NULL,
   licensing = NULL,
   postLaunchEnabled = NULL,
-  launchIntoInstanceProperties = NULL
+  launchIntoInstanceProperties = NULL,
+  recoveryMode = NULL
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ drs_update_launch_configuration(
 \item{postLaunchEnabled}{Whether we want to enable post-launch actions for the Source Server.}
 
 \item{launchIntoInstanceProperties}{Launch into existing instance properties.}
+
+\item{recoveryMode}{Recovery mode.}
 }
 \description{
 Updates a LaunchConfiguration by Source Server ID.

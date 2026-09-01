@@ -8,6 +8,14 @@ test_that("describe_region_settings", {
   expect_error(svc$describe_region_settings(), NA)
 })
 
+test_that("list_backup_access_points", {
+  expect_error(svc$list_backup_access_points(), NA)
+})
+
+test_that("list_backup_access_points", {
+  expect_error(svc$list_backup_access_points(MaxResults = 20), NA)
+})
+
 test_that("list_backup_job_summaries", {
   expect_error(svc$list_backup_job_summaries(), NA)
 })

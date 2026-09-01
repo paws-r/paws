@@ -18,6 +18,7 @@ Constraints:
 \itemize{
 \item Must specify a valid DB parameter group.
 \item Must specify a valid DB parameter group identifier, for example \code{my-db-param-group}, or a valid ARN.
+\item The source DB parameter group must be in the same Amazon Region as the copy. Neptune does not support cross-Region copying of parameter groups.
 }}
 
 \item{TargetDBParameterGroupIdentifier}{[required] The identifier for the copied DB parameter group.

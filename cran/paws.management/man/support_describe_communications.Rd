@@ -9,19 +9,22 @@ support_describe_communications(
   beforeTime = NULL,
   afterTime = NULL,
   nextToken = NULL,
-  maxResults = NULL
+  maxResults = NULL,
+  dryRun = NULL
 )
 }
 \arguments{
-\item{caseId}{[required] The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
+\item{caseId}{[required] The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-exen-2025-c4c1d2bf33c5cf47}}
 
-\item{beforeTime}{The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.}
+\item{beforeTime}{The end date for a filtered date search on support case communications. Case communications are available for 24 months after creation.}
 
-\item{afterTime}{The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.}
+\item{afterTime}{The start date for a filtered date search on support case communications. Case communications are available for 24 months after creation.}
 
 \item{nextToken}{A resumption point for pagination.}
 
 \item{maxResults}{The maximum number of results to return before paginating.}
+
+\item{dryRun}{Specifies whether to validate the request without actually returning communications. When set to \code{true}, the request is validated but no communications are returned, and the operation returns a \code{DryRunOperationException}. When omitted or set to \code{false}, the request runs normally.}
 }
 \description{
 Returns communications and attachments for one or more support cases. Use the \code{afterTime} and \code{beforeTime} parameters to filter by date. You can use the \code{caseId} parameter to restrict the results to a specific case.

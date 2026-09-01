@@ -27,7 +27,7 @@ entityresolution_update_matching_workflow(
 
 \item{incrementalRunConfig}{Optional. An object that defines the incremental run type. This object contains only the \code{incrementalRunType} field, which appears as "Automatic" in the console.
 
-For workflows where \code{resolutionType} is \code{ML_MATCHING} or \code{PROVIDER}, incremental processing is not supported.}
+For workflows where \code{resolutionType} is \code{PROVIDER}, incremental processing is not supported.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role. Entity Resolution assumes this role to create resources on your behalf as part of workflow execution.}
 }

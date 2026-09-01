@@ -3,6 +3,41 @@
 #' @include glue_service.R
 NULL
 
+#' Associates one or more glossary terms with an asset in Glue Data Catalog
+#'
+#' @description
+#' Associates one or more glossary terms with an asset in Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_associate_glossary_terms/](https://www.paws-r-sdk.com/docs/glue_associate_glossary_terms/) for full documentation.
+#'
+#' @param AssetIdentifier &#91;required&#93; The unique identifier of the asset to associate glossary terms with.
+#' @param IterableFormName The name of the iterable form. When specified along with `itemIdentifier`, the glossary terms are associated with an item within the iterable form rather than the asset itself.
+#' @param ItemIdentifier The identifier of the item within the iterable form. Required when `iterableFormName` is specified.
+#' @param GlossaryTermIdentifiers &#91;required&#93; The list of glossary term identifiers to associate with the asset.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_associate_glossary_terms
+glue_associate_glossary_terms <- function(AssetIdentifier, IterableFormName = NULL, ItemIdentifier = NULL, GlossaryTermIdentifiers, ClientToken = NULL) {
+  op <- new_operation(
+    name = "AssociateGlossaryTerms",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$associate_glossary_terms_input(AssetIdentifier = AssetIdentifier, IterableFormName = IterableFormName, ItemIdentifier = ItemIdentifier, GlossaryTermIdentifiers = GlossaryTermIdentifiers, ClientToken = ClientToken)
+  output <- .glue$associate_glossary_terms_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$associate_glossary_terms <- glue_associate_glossary_terms
+
 #' Creates one or more partitions in a batch operation
 #'
 #' @description
@@ -298,6 +333,37 @@ glue_batch_get_data_quality_result <- function(ResultIds) {
 }
 .glue$operations$batch_get_data_quality_result <- glue_batch_get_data_quality_result
 
+#' Retrieves the details of multiple evaluation runs in a single request
+#'
+#' @description
+#' Retrieves the details of multiple evaluation runs in a single request.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_get_data_quality_ruleset_evaluation_run/](https://www.paws-r-sdk.com/docs/glue_batch_get_data_quality_ruleset_evaluation_run/) for full documentation.
+#'
+#' @param RunIds &#91;required&#93; A list of unique run identifiers for the evaluation runs to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_batch_get_data_quality_ruleset_evaluation_run
+glue_batch_get_data_quality_ruleset_evaluation_run <- function(RunIds) {
+  op <- new_operation(
+    name = "BatchGetDataQualityRulesetEvaluationRun",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$batch_get_data_quality_ruleset_evaluation_run_input(RunIds = RunIds)
+  output <- .glue$batch_get_data_quality_ruleset_evaluation_run_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$batch_get_data_quality_ruleset_evaluation_run <- glue_batch_get_data_quality_ruleset_evaluation_run
+
 #' Returns a list of resource metadata for a given list of development
 #' endpoint names
 #'
@@ -329,6 +395,40 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
   return(response)
 }
 .glue$operations$batch_get_dev_endpoints <- glue_batch_get_dev_endpoints
+
+#' Retrieves multiple items from an iterable form on an asset in Glue Data
+#' Catalog in a single request
+#'
+#' @description
+#' Retrieves multiple items from an iterable form on an asset in Glue Data Catalog in a single request.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_get_iterable_forms/](https://www.paws-r-sdk.com/docs/glue_batch_get_iterable_forms/) for full documentation.
+#'
+#' @param AssetIdentifier &#91;required&#93; The unique identifier of the asset.
+#' @param IterableFormName &#91;required&#93; The name of the iterable form to retrieve items from.
+#' @param ItemIdentifiers &#91;required&#93; The list of item identifiers to retrieve. Each identifier can be an item ID or item name.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_batch_get_iterable_forms
+glue_batch_get_iterable_forms <- function(AssetIdentifier, IterableFormName, ItemIdentifiers) {
+  op <- new_operation(
+    name = "BatchGetIterableForms",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$batch_get_iterable_forms_input(AssetIdentifier = AssetIdentifier, IterableFormName = IterableFormName, ItemIdentifiers = ItemIdentifiers)
+  output <- .glue$batch_get_iterable_forms_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$batch_get_iterable_forms <- glue_batch_get_iterable_forms
 
 #' Returns a list of resource metadata for a given list of job names
 #'
@@ -1141,6 +1241,74 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 }
 .glue$operations$create_dev_endpoint <- glue_create_dev_endpoint
 
+#' Creates a business glossary in Glue Data Catalog
+#'
+#' @description
+#' Creates a business glossary in Glue Data Catalog. A glossary is a container for glossary terms that define business concepts.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_create_glossary/](https://www.paws-r-sdk.com/docs/glue_create_glossary/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the glossary.
+#' @param Description The description of the glossary.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_glossary
+glue_create_glossary <- function(Name, Description = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateGlossary",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$create_glossary_input(Name = Name, Description = Description, ClientToken = ClientToken)
+  output <- .glue$create_glossary_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_glossary <- glue_create_glossary
+
+#' Creates a glossary term within a business glossary in Glue Data Catalog
+#'
+#' @description
+#' Creates a glossary term within a business glossary in Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_create_glossary_term/](https://www.paws-r-sdk.com/docs/glue_create_glossary_term/) for full documentation.
+#'
+#' @param GlossaryIdentifier &#91;required&#93; The unique identifier of the glossary in which to create the term.
+#' @param Name &#91;required&#93; The name of the glossary term.
+#' @param ShortDescription A short description of the glossary term.
+#' @param LongDescription A long description of the glossary term.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_glossary_term
+glue_create_glossary_term <- function(GlossaryIdentifier, Name, ShortDescription = NULL, LongDescription = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateGlossaryTerm",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$create_glossary_term_input(GlossaryIdentifier = GlossaryIdentifier, Name = Name, ShortDescription = ShortDescription, LongDescription = LongDescription, ClientToken = ClientToken)
+  output <- .glue$create_glossary_term_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_glossary_term <- glue_create_glossary_term
+
 #' Creates a new Glue Identity Center configuration to enable integration
 #' between Glue and Amazon Web Services IAM Identity Center for
 #' authentication and authorization
@@ -1737,11 +1905,12 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #' @param GlueVersion The Glue version determines the versions of Apache Spark and Python that Glue supports. The GlueVersion must be greater than 2.0.
 #' @param Tags The map of key value pairs (tags) belonging to the session.
 #' @param RequestOrigin The origin of the request.
+#' @param SessionType The type of session to create.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_session
-glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout = NULL, IdleTimeout = NULL, DefaultArguments = NULL, Connections = NULL, MaxCapacity = NULL, NumberOfWorkers = NULL, WorkerType = NULL, SecurityConfiguration = NULL, GlueVersion = NULL, Tags = NULL, RequestOrigin = NULL) {
+glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout = NULL, IdleTimeout = NULL, DefaultArguments = NULL, Connections = NULL, MaxCapacity = NULL, NumberOfWorkers = NULL, WorkerType = NULL, SecurityConfiguration = NULL, GlueVersion = NULL, Tags = NULL, RequestOrigin = NULL, SessionType = NULL) {
   op <- new_operation(
     name = "CreateSession",
     http_method = "POST",
@@ -1750,7 +1919,7 @@ glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$create_session_input(Id = Id, Description = Description, Role = Role, Command = Command, Timeout = Timeout, IdleTimeout = IdleTimeout, DefaultArguments = DefaultArguments, Connections = Connections, MaxCapacity = MaxCapacity, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType, SecurityConfiguration = SecurityConfiguration, GlueVersion = GlueVersion, Tags = Tags, RequestOrigin = RequestOrigin)
+  input <- .glue$create_session_input(Id = Id, Description = Description, Role = Role, Command = Command, Timeout = Timeout, IdleTimeout = IdleTimeout, DefaultArguments = DefaultArguments, Connections = Connections, MaxCapacity = MaxCapacity, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType, SecurityConfiguration = SecurityConfiguration, GlueVersion = GlueVersion, Tags = Tags, RequestOrigin = RequestOrigin, SessionType = SessionType)
   output <- .glue$create_session_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -1979,6 +2148,102 @@ glue_create_workflow <- function(Name, Description = NULL, DefaultRunProperties 
   return(response)
 }
 .glue$operations$create_workflow <- glue_create_workflow
+
+#' Deletes an asset from Glue Data Catalog
+#'
+#' @description
+#' Deletes an asset from Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_asset/](https://www.paws-r-sdk.com/docs/glue_delete_asset/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the asset to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_asset
+glue_delete_asset <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteAsset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_asset_input(Identifier = Identifier)
+  output <- .glue$delete_asset_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_asset <- glue_delete_asset
+
+#' Deletes an asset type from Glue Data Catalog
+#'
+#' @description
+#' Deletes an asset type from Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_asset_type/](https://www.paws-r-sdk.com/docs/glue_delete_asset_type/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The identifier of the asset type to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_asset_type
+glue_delete_asset_type <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteAssetType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_asset_type_input(Identifier = Identifier)
+  output <- .glue$delete_asset_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_asset_type <- glue_delete_asset_type
+
+#' Deletes a form attachment from an asset in Glue Data Catalog
+#'
+#' @description
+#' Deletes a form attachment from an asset in Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_attachment/](https://www.paws-r-sdk.com/docs/glue_delete_attachment/) for full documentation.
+#'
+#' @param AssetIdentifier &#91;required&#93; The unique identifier of the asset from which to delete the attachment.
+#' @param IterableFormName The name of the iterable form. When specified along with `itemIdentifier`, the attachment is deleted from an item within the iterable form rather than from the asset itself.
+#' @param ItemIdentifier The identifier of the item within the iterable form. Required when `iterableFormName` is specified.
+#' @param AttachmentName &#91;required&#93; The name of the attachment to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_attachment
+glue_delete_attachment <- function(AssetIdentifier, IterableFormName = NULL, ItemIdentifier = NULL, AttachmentName) {
+  op <- new_operation(
+    name = "DeleteAttachment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_attachment_input(AssetIdentifier = AssetIdentifier, IterableFormName = IterableFormName, ItemIdentifier = ItemIdentifier, AttachmentName = AttachmentName)
+  output <- .glue$delete_attachment_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_attachment <- glue_delete_attachment
 
 #' Deletes an existing blueprint
 #'
@@ -2393,6 +2658,99 @@ glue_delete_dev_endpoint <- function(EndpointName) {
   return(response)
 }
 .glue$operations$delete_dev_endpoint <- glue_delete_dev_endpoint
+
+#' Deletes a form type from Glue Data Catalog
+#'
+#' @description
+#' Deletes a form type from Glue Data Catalog. A form type cannot be deleted if it is still referenced by an asset type.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_form_type/](https://www.paws-r-sdk.com/docs/glue_delete_form_type/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The identifier of the form type to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_form_type
+glue_delete_form_type <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteFormType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_form_type_input(Identifier = Identifier)
+  output <- .glue$delete_form_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_form_type <- glue_delete_form_type
+
+#' Deletes a business glossary from Glue Data Catalog
+#'
+#' @description
+#' Deletes a business glossary from Glue Data Catalog. A glossary cannot be deleted if it still contains glossary terms.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_glossary/](https://www.paws-r-sdk.com/docs/glue_delete_glossary/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the glossary to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_glossary
+glue_delete_glossary <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteGlossary",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_glossary_input(Identifier = Identifier)
+  output <- .glue$delete_glossary_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_glossary <- glue_delete_glossary
+
+#' Deletes a glossary term from Glue Data Catalog
+#'
+#' @description
+#' Deletes a glossary term from Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_glossary_term/](https://www.paws-r-sdk.com/docs/glue_delete_glossary_term/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the glossary term to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_glossary_term
+glue_delete_glossary_term <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteGlossaryTerm",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_glossary_term_input(Identifier = Identifier)
+  output <- .glue$delete_glossary_term_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_glossary_term <- glue_delete_glossary_term
 
 #' Deletes the existing Glue Identity Center configuration, removing the
 #' integration between Glue and Amazon Web Services IAM Identity Center
@@ -3211,6 +3569,105 @@ glue_describe_integrations <- function(IntegrationIdentifier = NULL, Marker = NU
 }
 .glue$operations$describe_integrations <- glue_describe_integrations
 
+#' Removes the association of one or more glossary terms from an asset in
+#' Glue Data Catalog
+#'
+#' @description
+#' Removes the association of one or more glossary terms from an asset in Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_disassociate_glossary_terms/](https://www.paws-r-sdk.com/docs/glue_disassociate_glossary_terms/) for full documentation.
+#'
+#' @param AssetIdentifier &#91;required&#93; The unique identifier of the asset to disassociate glossary terms from.
+#' @param IterableFormName The name of the iterable form. When specified along with `itemIdentifier`, the glossary terms are disassociated from an item within the iterable form rather than the asset itself.
+#' @param ItemIdentifier The identifier of the item within the iterable form. Required when `iterableFormName` is specified.
+#' @param GlossaryTermIdentifiers &#91;required&#93; The list of glossary term identifiers to disassociate from the asset.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_disassociate_glossary_terms
+glue_disassociate_glossary_terms <- function(AssetIdentifier, IterableFormName = NULL, ItemIdentifier = NULL, GlossaryTermIdentifiers, ClientToken = NULL) {
+  op <- new_operation(
+    name = "DisassociateGlossaryTerms",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$disassociate_glossary_terms_input(AssetIdentifier = AssetIdentifier, IterableFormName = IterableFormName, ItemIdentifier = ItemIdentifier, GlossaryTermIdentifiers = GlossaryTermIdentifiers, ClientToken = ClientToken)
+  output <- .glue$disassociate_glossary_terms_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$disassociate_glossary_terms <- glue_disassociate_glossary_terms
+
+#' Retrieves the metadata for an asset in Glue Data Catalog, including its
+#' forms, additional attachments, and associated glossary terms
+#'
+#' @description
+#' Retrieves the metadata for an asset in Glue Data Catalog, including its forms, additional attachments, and associated glossary terms.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_asset/](https://www.paws-r-sdk.com/docs/glue_get_asset/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the asset to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_asset
+glue_get_asset <- function(Identifier) {
+  op <- new_operation(
+    name = "GetAsset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_asset_input(Identifier = Identifier)
+  output <- .glue$get_asset_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_asset <- glue_get_asset
+
+#' Retrieves an asset type in Glue Data Catalog by its identifier
+#'
+#' @description
+#' Retrieves an asset type in Glue Data Catalog by its identifier.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_asset_type/](https://www.paws-r-sdk.com/docs/glue_get_asset_type/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The identifier of the asset type to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_asset_type
+glue_get_asset_type <- function(Identifier) {
+  op <- new_operation(
+    name = "GetAssetType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_asset_type_input(Identifier = Identifier)
+  output <- .glue$get_asset_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_asset_type <- glue_get_asset_type
+
 #' Retrieves the details of a blueprint
 #'
 #' @description
@@ -3835,6 +4292,39 @@ glue_get_custom_entity_type <- function(Name) {
 }
 .glue$operations$get_custom_entity_type <- glue_get_custom_entity_type
 
+#' Retrieves the URL for the Spark monitoring dashboard for a Glue resource
+#'
+#' @description
+#' Retrieves the URL for the Spark monitoring dashboard for a Glue resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_dashboard_url/](https://www.paws-r-sdk.com/docs/glue_get_dashboard_url/) for full documentation.
+#'
+#' @param ResourceId &#91;required&#93; The unique identifier of the resource for which to retrieve the dashboard URL.
+#' @param ResourceType &#91;required&#93; The type of the resource. Valid values are `SESSION` and `JOB`.
+#' @param RequestOrigin The origin of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_dashboard_url
+glue_get_dashboard_url <- function(ResourceId, ResourceType, RequestOrigin = NULL) {
+  op <- new_operation(
+    name = "GetDashboardUrl",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_dashboard_url_input(ResourceId = ResourceId, ResourceType = ResourceType, RequestOrigin = RequestOrigin)
+  output <- .glue$get_dashboard_url_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_dashboard_url <- glue_get_dashboard_url
+
 #' Retrieves the security configuration for a specified catalog
 #'
 #' @description
@@ -3865,6 +4355,37 @@ glue_get_data_catalog_encryption_settings <- function(CatalogId = NULL) {
   return(response)
 }
 .glue$operations$get_data_catalog_encryption_settings <- glue_get_data_catalog_encryption_settings
+
+#' Retrieves the current export configuration for the Glue Data Catalog
+#'
+#' @description
+#' Retrieves the current export configuration for the Glue Data Catalog. The export configuration controls whether catalog metadata is exported to S3 Tables.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_data_catalog_export_configuration/](https://www.paws-r-sdk.com/docs/glue_get_data_catalog_export_configuration/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_data_catalog_export_configuration
+glue_get_data_catalog_export_configuration <- function() {
+  op <- new_operation(
+    name = "GetDataCatalogExportConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_data_catalog_export_configuration_input()
+  output <- .glue$get_data_catalog_export_configuration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_data_catalog_export_configuration <- glue_get_data_catalog_export_configuration
 
 #' Retrieve the training status of the model along with more information
 #' (CompletedOn, StartedOn, FailureReason)
@@ -4264,6 +4785,99 @@ glue_get_entity_records <- function(ConnectionName = NULL, CatalogId = NULL, Ent
   return(response)
 }
 .glue$operations$get_entity_records <- glue_get_entity_records
+
+#' Retrieves a form type in Glue Data Catalog by its identifier
+#'
+#' @description
+#' Retrieves a form type in Glue Data Catalog by its identifier.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_form_type/](https://www.paws-r-sdk.com/docs/glue_get_form_type/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The identifier of the form type to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_form_type
+glue_get_form_type <- function(Identifier) {
+  op <- new_operation(
+    name = "GetFormType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_form_type_input(Identifier = Identifier)
+  output <- .glue$get_form_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_form_type <- glue_get_form_type
+
+#' Retrieves a business glossary in Glue Data Catalog by its identifier
+#'
+#' @description
+#' Retrieves a business glossary in Glue Data Catalog by its identifier.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_glossary/](https://www.paws-r-sdk.com/docs/glue_get_glossary/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the glossary to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_glossary
+glue_get_glossary <- function(Identifier) {
+  op <- new_operation(
+    name = "GetGlossary",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_glossary_input(Identifier = Identifier)
+  output <- .glue$get_glossary_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_glossary <- glue_get_glossary
+
+#' Retrieves a glossary term in Glue Data Catalog by its identifier
+#'
+#' @description
+#' Retrieves a glossary term in Glue Data Catalog by its identifier.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_glossary_term/](https://www.paws-r-sdk.com/docs/glue_get_glossary_term/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the glossary term to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_glossary_term
+glue_get_glossary_term <- function(Identifier) {
+  op <- new_operation(
+    name = "GetGlossaryTerm",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_glossary_term_input(Identifier = Identifier)
+  output <- .glue$get_glossary_term_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_glossary_term <- glue_get_glossary_term
 
 #' Retrieves the current Glue Identity Center configuration details,
 #' including the associated Identity Center instance and application
@@ -4805,7 +5419,7 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param Expression An expression that filters the partitions to be returned.
 #' 
-#' The expression uses SQL syntax similar to the SQL `WHERE` filter clause. The SQL statement parser [JSQLParser](https://jsqlparser.sourceforge.net/home.php) parses the expression.
+#' The expression uses SQL syntax similar to the SQL `WHERE` filter clause. The SQL statement parser JSQLParser parses the expression.
 #' 
 #' *Operators*: The following are the operators that you can use in the `Expression` API call:
 #' 
@@ -5286,6 +5900,38 @@ glue_get_session <- function(Id, RequestOrigin = NULL) {
 }
 .glue$operations$get_session <- glue_get_session
 
+#' Returns the Spark Connect endpoint URL and authentication token for an
+#' interactive session
+#'
+#' @description
+#' Returns the Spark Connect endpoint URL and authentication token for an interactive session.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_session_endpoint/](https://www.paws-r-sdk.com/docs/glue_get_session_endpoint/) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; The unique identifier of the interactive session.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_session_endpoint
+glue_get_session_endpoint <- function(SessionId) {
+  op <- new_operation(
+    name = "GetSessionEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_session_endpoint_input(SessionId = SessionId)
+  output <- .glue$get_session_endpoint_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_session_endpoint <- glue_get_session_endpoint
+
 #' Retrieves the statement
 #'
 #' @description
@@ -5333,11 +5979,20 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #' @param QueryAsOfTime The time as of when to read the table contents. If not set, the most recent transaction commit time will be used. Cannot be specified along with `TransactionId`.
 #' @param AuditContext A structure containing the Lake Formation [audit context](https://docs.aws.amazon.com/glue/latest/webapi/API_AuditContext.html).
 #' @param IncludeStatusDetails Specifies whether to include status details related to a request to create or update an Glue Data Catalog view.
+#' @param AttributesToGet Specifies the table fields returned by the [`get_table`][glue_get_table] call. This parameter doesn't accept an empty list.
+#' 
+#' The following are the valid combinations of values:
+#' 
+#' -   `DEFAULT` - Returns the Hive-style table definition only.
+#' 
+#' -   `LATEST_ICEBERG_METADATA` - Returns only the latest Apache Iceberg table metadata.
+#' 
+#' -   `DEFAULT`, `LATEST_ICEBERG_METADATA` - Returns both the Hive-style table definition and the latest Apache Iceberg table metadata.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_table
-glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId = NULL, QueryAsOfTime = NULL, AuditContext = NULL, IncludeStatusDetails = NULL) {
+glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId = NULL, QueryAsOfTime = NULL, AuditContext = NULL, IncludeStatusDetails = NULL, AttributesToGet = NULL) {
   op <- new_operation(
     name = "GetTable",
     http_method = "POST",
@@ -5346,7 +6001,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$get_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, AuditContext = AuditContext, IncludeStatusDetails = IncludeStatusDetails)
+  input <- .glue$get_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, AuditContext = AuditContext, IncludeStatusDetails = IncludeStatusDetails, AttributesToGet = AttributesToGet)
   output <- .glue$get_table_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -6072,6 +6727,38 @@ glue_import_catalog_to_glue <- function(CatalogId = NULL) {
 }
 .glue$operations$import_catalog_to_glue <- glue_import_catalog_to_glue
 
+#' Lists the asset types defined in Glue Data Catalog
+#'
+#' @description
+#' Lists the asset types defined in Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_list_asset_types/](https://www.paws-r-sdk.com/docs/glue_list_asset_types/) for full documentation.
+#'
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_asset_types
+glue_list_asset_types <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAssetTypes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .glue$list_asset_types_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_asset_types_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_asset_types <- glue_list_asset_types
+
 #' Lists all the blueprint names in an account
 #'
 #' @description
@@ -6314,11 +7001,12 @@ glue_list_data_quality_results <- function(Filter = NULL, NextToken = NULL, MaxR
 #' @param Filter The filter criteria.
 #' @param NextToken A paginated token to offset the results.
 #' @param MaxResults The maximum number of results to return.
+#' @param Tags A list of key-value pair tags to filter recommendation runs.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_list_data_quality_rule_recommendation_runs
-glue_list_data_quality_rule_recommendation_runs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
+glue_list_data_quality_rule_recommendation_runs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ListDataQualityRuleRecommendationRuns",
     http_method = "POST",
@@ -6327,7 +7015,7 @@ glue_list_data_quality_rule_recommendation_runs <- function(Filter = NULL, NextT
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
-  input <- .glue$list_data_quality_rule_recommendation_runs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .glue$list_data_quality_rule_recommendation_runs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
   output <- .glue$list_data_quality_rule_recommendation_runs_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -6545,6 +7233,103 @@ glue_list_entities <- function(ConnectionName = NULL, CatalogId = NULL, ParentEn
 }
 .glue$operations$list_entities <- glue_list_entities
 
+#' Lists the form types defined in Glue Data Catalog
+#'
+#' @description
+#' Lists the form types defined in Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_list_form_types/](https://www.paws-r-sdk.com/docs/glue_list_form_types/) for full documentation.
+#'
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_form_types
+glue_list_form_types <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListFormTypes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .glue$list_form_types_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_form_types_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_form_types <- glue_list_form_types
+
+#' Lists business glossaries in Glue Data Catalog
+#'
+#' @description
+#' Lists business glossaries in Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_list_glossaries/](https://www.paws-r-sdk.com/docs/glue_list_glossaries/) for full documentation.
+#'
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_glossaries
+glue_list_glossaries <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListGlossaries",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .glue$list_glossaries_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_glossaries_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_glossaries <- glue_list_glossaries
+
+#' Lists glossary terms within a business glossary in Glue Data Catalog
+#'
+#' @description
+#' Lists glossary terms within a business glossary in Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_list_glossary_terms/](https://www.paws-r-sdk.com/docs/glue_list_glossary_terms/) for full documentation.
+#'
+#' @param GlossaryIdentifier &#91;required&#93; The unique identifier of the glossary whose terms to list.
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_glossary_terms
+glue_list_glossary_terms <- function(GlossaryIdentifier, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListGlossaryTerms",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .glue$list_glossary_terms_input(GlossaryIdentifier = GlossaryIdentifier, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_glossary_terms_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_glossary_terms <- glue_list_glossary_terms
+
 #' List integration resource properties for a single customer
 #'
 #' @description
@@ -6577,6 +7362,40 @@ glue_list_integration_resource_properties <- function(Marker = NULL, Filters = N
   return(response)
 }
 .glue$operations$list_integration_resource_properties <- glue_list_integration_resource_properties
+
+#' Lists the items in an iterable form on an asset in Glue Data Catalog
+#'
+#' @description
+#' Lists the items in an iterable form on an asset in Glue Data Catalog. For example, lists the columns of a table asset.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_list_iterable_forms/](https://www.paws-r-sdk.com/docs/glue_list_iterable_forms/) for full documentation.
+#'
+#' @param AssetIdentifier &#91;required&#93; The unique identifier of the asset.
+#' @param IterableFormName &#91;required&#93; The name of the iterable form to list items from.
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_iterable_forms
+glue_list_iterable_forms <- function(AssetIdentifier, IterableFormName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListIterableForms",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .glue$list_iterable_forms_input(AssetIdentifier = AssetIdentifier, IterableFormName = IterableFormName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_iterable_forms_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_iterable_forms <- glue_list_iterable_forms
 
 #' Retrieves the names of all job resources in this Amazon Web Services
 #' account, or the resources with the specified tag
@@ -6658,7 +7477,7 @@ glue_list_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter 
 #'
 #' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the table resides. If none is supplied, the account ID is used by default.
 #' @param DatabaseName The database where the table resides.
-#' @param TableName The name of the table for which statistics is generated.
+#' @param TableName The name of the materialized view.
 #' @param MaxResults The maximum size of the response.
 #' @param NextToken A continuation token, if this is a continuation call.
 #'
@@ -7025,6 +7844,113 @@ glue_modify_integration <- function(IntegrationIdentifier, Description = NULL, D
 }
 .glue$operations$modify_integration <- glue_modify_integration
 
+#' Creates or updates an asset in Glue Data Catalog
+#'
+#' @description
+#' Creates or updates an asset in Glue Data Catalog. If the asset already exists, this operation updates it; otherwise, a new asset is created.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_put_asset/](https://www.paws-r-sdk.com/docs/glue_put_asset/) for full documentation.
+#'
+#' @param AssetTypeId &#91;required&#93; The identifier of the asset type for the asset.
+#' @param Identifier &#91;required&#93; The unique identifier of the asset. If an asset with this identifier already exists, it is updated.
+#' @param Name &#91;required&#93; The name of the asset.
+#' @param Description The description of the asset.
+#' @param Forms &#91;required&#93; The forms to set on the asset, keyed by form name. Each entry specifies the form type and its JSON content.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_put_asset
+glue_put_asset <- function(AssetTypeId, Identifier, Name, Description = NULL, Forms, ClientToken = NULL) {
+  op <- new_operation(
+    name = "PutAsset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$put_asset_input(AssetTypeId = AssetTypeId, Identifier = Identifier, Name = Name, Description = Description, Forms = Forms, ClientToken = ClientToken)
+  output <- .glue$put_asset_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$put_asset <- glue_put_asset
+
+#' Creates or updates an asset type in Glue Data Catalog
+#'
+#' @description
+#' Creates or updates an asset type in Glue Data Catalog. An asset type defines the structure of assets by specifying which forms they include. If an asset type with the given name already exists, it is updated.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_put_asset_type/](https://www.paws-r-sdk.com/docs/glue_put_asset_type/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the asset type.
+#' @param Forms &#91;required&#93; The forms that make up the asset type, keyed by form name. Each entry references the form type that defines the form's schema.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_put_asset_type
+glue_put_asset_type <- function(Name, Forms, ClientToken = NULL) {
+  op <- new_operation(
+    name = "PutAssetType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$put_asset_type_input(Name = Name, Forms = Forms, ClientToken = ClientToken)
+  output <- .glue$put_asset_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$put_asset_type <- glue_put_asset_type
+
+#' Attaches a form to an asset or an iterable form item in Glue Data
+#' Catalog
+#'
+#' @description
+#' Attaches a form to an asset or an iterable form item in Glue Data Catalog. If an attachment with the same name already exists, it is overwritten.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_put_attachment/](https://www.paws-r-sdk.com/docs/glue_put_attachment/) for full documentation.
+#'
+#' @param AssetIdentifier &#91;required&#93; The unique identifier of the asset to attach the form to.
+#' @param IterableFormName The name of the iterable form. When specified along with `itemIdentifier`, the attachment targets an item within the iterable form rather than the asset itself.
+#' @param ItemIdentifier The identifier of the item within the iterable form. Required when `iterableFormName` is specified.
+#' @param AttachmentName &#91;required&#93; The name of the attachment.
+#' @param Content &#91;required&#93; The JSON content of the form, conforming to the schema of the specified form type.
+#' @param FormTypeId &#91;required&#93; The identifier of the form type for this attachment.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_put_attachment
+glue_put_attachment <- function(AssetIdentifier, IterableFormName = NULL, ItemIdentifier = NULL, AttachmentName, Content, FormTypeId, ClientToken = NULL) {
+  op <- new_operation(
+    name = "PutAttachment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$put_attachment_input(AssetIdentifier = AssetIdentifier, IterableFormName = IterableFormName, ItemIdentifier = ItemIdentifier, AttachmentName = AttachmentName, Content = Content, FormTypeId = FormTypeId, ClientToken = ClientToken)
+  output <- .glue$put_attachment_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$put_attachment <- glue_put_attachment
+
 #' Sets the security configuration for a specified catalog
 #'
 #' @description
@@ -7057,6 +7983,39 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
 }
 .glue$operations$put_data_catalog_encryption_settings <- glue_put_data_catalog_encryption_settings
 
+#' Creates or updates the export configuration for the Glue Data Catalog
+#'
+#' @description
+#' Creates or updates the export configuration for the Glue Data Catalog. Use this operation to enable or disable the export of catalog metadata to S3 Tables.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_put_data_catalog_export_configuration/](https://www.paws-r-sdk.com/docs/glue_put_data_catalog_export_configuration/) for full documentation.
+#'
+#' @param ExportSetting &#91;required&#93; The export setting for the data catalog. Specify `ENABLED` to start exporting catalog metadata to S3 Tables, or `DISABLED` to stop exporting. This field is required.
+#' @param EncryptionConfiguration The encryption configuration for the exported data. If not specified, the default encryption settings are used.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_put_data_catalog_export_configuration
+glue_put_data_catalog_export_configuration <- function(ExportSetting, EncryptionConfiguration = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "PutDataCatalogExportConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$put_data_catalog_export_configuration_input(ExportSetting = ExportSetting, EncryptionConfiguration = EncryptionConfiguration, ClientToken = ClientToken)
+  output <- .glue$put_data_catalog_export_configuration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$put_data_catalog_export_configuration <- glue_put_data_catalog_export_configuration
+
 #' Annotate all datapoints for a Profile
 #'
 #' @description
@@ -7088,6 +8047,39 @@ glue_put_data_quality_profile_annotation <- function(ProfileId, InclusionAnnotat
   return(response)
 }
 .glue$operations$put_data_quality_profile_annotation <- glue_put_data_quality_profile_annotation
+
+#' Creates or updates a form type in Glue Data Catalog
+#'
+#' @description
+#' Creates or updates a form type in Glue Data Catalog. A form type defines the schema for structured metadata that can be attached to assets.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_put_form_type/](https://www.paws-r-sdk.com/docs/glue_put_form_type/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the form type. Must start with an uppercase letter.
+#' @param Schema &#91;required&#93; The Smithy IDL schema definition for the form type.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_put_form_type
+glue_put_form_type <- function(Name, Schema, ClientToken = NULL) {
+  op <- new_operation(
+    name = "PutFormType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$put_form_type_input(Name = Name, Schema = Schema, ClientToken = ClientToken)
+  output <- .glue$put_form_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$put_form_type <- glue_put_form_type
 
 #' Sets the Data Catalog resource policy for access control
 #'
@@ -7443,6 +8435,42 @@ glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
 }
 .glue$operations$run_statement <- glue_run_statement
 
+#' Searches for assets in Glue Data Catalog using full-text search,
+#' filters, sorting, and aggregations
+#'
+#' @description
+#' Searches for assets in Glue Data Catalog using full-text search, filters, sorting, and aggregations. Returns matching assets with relevance-ranked results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_search_assets/](https://www.paws-r-sdk.com/docs/glue_search_assets/) for full documentation.
+#'
+#' @param SearchText The text to search for. At least one of `searchText` or `filterClause` must be provided.
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#' @param Sort The sort criteria for the search results.
+#' @param FilterClause The filter clause to apply to the search. Supports nested AND/OR logic with attribute-level and map-level filters.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_search_assets
+glue_search_assets <- function(SearchText = NULL, MaxResults = NULL, NextToken = NULL, Sort = NULL, FilterClause = NULL) {
+  op <- new_operation(
+    name = "SearchAssets",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .glue$search_assets_input(SearchText = SearchText, MaxResults = MaxResults, NextToken = NextToken, Sort = Sort, FilterClause = FilterClause)
+  output <- .glue$search_assets_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$search_assets <- glue_search_assets
+
 #' Searches a set of tables based on properties in the table metadata as
 #' well as on the parent database
 #'
@@ -7672,11 +8700,12 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #' @param CreatedRulesetName A name for the ruleset.
 #' @param DataQualitySecurityConfiguration The name of the security configuration created with the data quality encryption option.
 #' @param ClientToken Used for idempotency and is recommended to be set to a random ID (such as a UUID) to avoid creating or starting multiple instances of the same resource.
+#' @param AdditionalRunOptions Additional run options you can specify for a recommendation run.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_start_data_quality_rule_recommendation_run
-glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, NumberOfWorkers = NULL, Timeout = NULL, CreatedRulesetName = NULL, DataQualitySecurityConfiguration = NULL, ClientToken = NULL) {
+glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, NumberOfWorkers = NULL, Timeout = NULL, CreatedRulesetName = NULL, DataQualitySecurityConfiguration = NULL, ClientToken = NULL, AdditionalRunOptions = NULL) {
   op <- new_operation(
     name = "StartDataQualityRuleRecommendationRun",
     http_method = "POST",
@@ -7685,7 +8714,7 @@ glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, Nu
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$start_data_quality_rule_recommendation_run_input(DataSource = DataSource, Role = Role, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, CreatedRulesetName = CreatedRulesetName, DataQualitySecurityConfiguration = DataQualitySecurityConfiguration, ClientToken = ClientToken)
+  input <- .glue$start_data_quality_rule_recommendation_run_input(DataSource = DataSource, Role = Role, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, CreatedRulesetName = CreatedRulesetName, DataQualitySecurityConfiguration = DataQualitySecurityConfiguration, ClientToken = ClientToken, AdditionalRunOptions = AdditionalRunOptions)
   output <- .glue$start_data_quality_rule_recommendation_run_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -7958,17 +8987,17 @@ glue_start_ml_labeling_set_generation_task_run <- function(TransformId, OutputS3
 }
 .glue$operations$start_ml_labeling_set_generation_task_run <- glue_start_ml_labeling_set_generation_task_run
 
-#' Starts a materialized view refresh task run, for a specified table and
-#' columns
+#' Starts a materialized view refresh task run for a specified materialized
+#' view
 #'
 #' @description
-#' Starts a materialized view refresh task run, for a specified table and columns.
+#' Starts a materialized view refresh task run for a specified materialized view.
 #'
 #' See [https://www.paws-r-sdk.com/docs/glue_start_materialized_view_refresh_task_run/](https://www.paws-r-sdk.com/docs/glue_start_materialized_view_refresh_task_run/) for full documentation.
 #'
 #' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the table reside. If none is supplied, the account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
-#' @param TableName &#91;required&#93; The name of the table to generate run the materialized view refresh task.
+#' @param TableName &#91;required&#93; The name of the materialized view to run the refresh task for.
 #' @param FullRefresh Specifies whether this is a full refresh of the task run.
 #'
 #' @keywords internal
@@ -8185,17 +9214,17 @@ glue_stop_crawler_schedule <- function(CrawlerName) {
 }
 .glue$operations$stop_crawler_schedule <- glue_stop_crawler_schedule
 
-#' Stops a materialized view refresh task run, for a specified table and
-#' columns
+#' Stops a materialized view refresh task run for a specified materialized
+#' view
 #'
 #' @description
-#' Stops a materialized view refresh task run, for a specified table and columns.
+#' Stops a materialized view refresh task run for a specified materialized view.
 #'
 #' See [https://www.paws-r-sdk.com/docs/glue_stop_materialized_view_refresh_task_run/](https://www.paws-r-sdk.com/docs/glue_stop_materialized_view_refresh_task_run/) for full documentation.
 #'
 #' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the table reside. If none is supplied, the account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
-#' @param TableName &#91;required&#93; The name of the table to generate statistics.
+#' @param TableName &#91;required&#93; The name of the materialized view.
 #'
 #' @keywords internal
 #'
@@ -8411,6 +9440,41 @@ glue_untag_resource <- function(ResourceArn, TagsToRemove) {
   return(response)
 }
 .glue$operations$untag_resource <- glue_untag_resource
+
+#' Updates the name and description of an existing asset in Glue Data
+#' Catalog
+#'
+#' @description
+#' Updates the name and description of an existing asset in Glue Data Catalog. Only the fields that you provide are updated.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_update_asset/](https://www.paws-r-sdk.com/docs/glue_update_asset/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the asset to update.
+#' @param Name The new name of the asset.
+#' @param Description The new description of the asset.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_asset
+glue_update_asset <- function(Identifier, Name = NULL, Description = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateAsset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$update_asset_input(Identifier = Identifier, Name = Name, Description = Description, ClientToken = ClientToken)
+  output <- .glue$update_asset_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_asset <- glue_update_asset
 
 #' Updates a registered blueprint
 #'
@@ -8837,6 +9901,75 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
   return(response)
 }
 .glue$operations$update_dev_endpoint <- glue_update_dev_endpoint
+
+#' Updates a business glossary in Glue Data Catalog
+#'
+#' @description
+#' Updates a business glossary in Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_update_glossary/](https://www.paws-r-sdk.com/docs/glue_update_glossary/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the glossary to update.
+#' @param Name The updated name of the glossary.
+#' @param Description The updated description of the glossary.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_glossary
+glue_update_glossary <- function(Identifier, Name = NULL, Description = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateGlossary",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$update_glossary_input(Identifier = Identifier, Name = Name, Description = Description, ClientToken = ClientToken)
+  output <- .glue$update_glossary_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_glossary <- glue_update_glossary
+
+#' Updates a glossary term in Glue Data Catalog
+#'
+#' @description
+#' Updates a glossary term in Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_update_glossary_term/](https://www.paws-r-sdk.com/docs/glue_update_glossary_term/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The unique identifier of the glossary term to update.
+#' @param Name The updated name of the glossary term.
+#' @param ShortDescription The updated short description of the glossary term.
+#' @param LongDescription The updated long description of the glossary term.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_glossary_term
+glue_update_glossary_term <- function(Identifier, Name = NULL, ShortDescription = NULL, LongDescription = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateGlossaryTerm",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$update_glossary_term_input(Identifier = Identifier, Name = Name, ShortDescription = ShortDescription, LongDescription = LongDescription, ClientToken = ClientToken)
+  output <- .glue$update_glossary_term_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_glossary_term <- glue_update_glossary_term
 
 #' Updates the existing Glue Identity Center configuration, allowing
 #' modification of scopes and permissions for the integration

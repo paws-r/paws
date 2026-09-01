@@ -29,6 +29,8 @@ cloudwatch_put_metric_alarm(
   Metrics = NULL,
   Tags = NULL,
   ThresholdMetricId = NULL,
+  EvaluationWindow = NULL,
+  WarmUpConfiguration = NULL,
   EvaluationCriteria = NULL,
   EvaluationInterval = NULL
 )
@@ -247,6 +249,18 @@ To use this field to set tags for an alarm when you create it, you must be signe
 For an example of how to use this parameter, see the \strong{Anomaly Detection Model Alarm} example on this page.
 
 If your alarm uses this parameter, it cannot have Auto Scaling actions.}
+
+\item{EvaluationWindow}{The evaluation window that the alarm uses to select the range of metric data that it evaluates. Specify either a sliding window or a wall clock window. If you omit this parameter, the alarm uses a sliding window.
+
+A sliding window advances each time the alarm is evaluated, forming a rolling time window. A wall clock window aligns the evaluated range to fixed clock boundaries, such as the top of the hour or the start of the day.
+
+You can use \code{EvaluationWindow} with any type of metric alarm except alarms that are based on a PromQL query.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/alarm-evaluation-window.html}{Alarm evaluation windows} in the \emph{CloudWatch User Guide}.}
+
+\item{WarmUpConfiguration}{The warm-up configuration for the alarm. A warm-up period delays alarm evaluation after you create or update the alarm. The warm-up period reduces alarm noise from missing data while a new resource or service starts publishing metrics.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/alarm-warm-up.html}{Alarm warm-up periods} in the \emph{Amazon CloudWatch User Guide}.}
 
 \item{EvaluationCriteria}{The evaluation criteria for the alarm. For each \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} operation, you must specify either \code{MetricName}, a \code{Metrics} array, or an \code{EvaluationCriteria}.
 

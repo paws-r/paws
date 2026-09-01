@@ -38,7 +38,7 @@ To specify no permissions, omit the permissions list.}
 
 \item{SourceEntity}{The entity that you are using as a source when you create the dashboard. In \code{SourceEntity}, you specify the type of object you're using as source. You can only create a dashboard from a template, so you use a \code{SourceTemplate} entity. If you need to create a dashboard from an analysis, first convert the analysis to a template by using the \code{\link[=quicksight_create_template]{create_template}} API operation. For \code{SourceTemplate}, specify the Amazon Resource Name (ARN) of the source template. The \code{SourceTemplate}ARN can contain any Amazon Web Services account and any Amazon Quick Sight-supported Amazon Web Services Region.
 
-Use the \code{DataSetReferences} entity within \code{SourceTemplate} to list the replacement datasets for the placeholders listed in the original. The schema in each dataset must match its placeholder.
+Use the \code{DataSetReferences} entity within \code{SourceTemplate} to list the replacement datasets for the placeholders listed in the original. The schema in each dataset must match its placeholder. Use the \code{TopicReferences} entity to list the replacement topics for the topic placeholders listed in the original. The schema in each topic must match its placeholder.
 
 Either a \code{SourceEntity} or a \code{Definition} must be provided in order for the request to be valid.}
 

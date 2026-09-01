@@ -13,7 +13,8 @@ ecs_update_express_gateway_service(
   networkConfiguration = NULL,
   cpu = NULL,
   memory = NULL,
-  scalingTarget = NULL
+  scalingTarget = NULL,
+  taskDefinitionArn = NULL
 )
 }
 \arguments{
@@ -34,6 +35,12 @@ ecs_update_express_gateway_service(
 \item{memory}{The amount of memory (in MiB) used by the task.}
 
 \item{scalingTarget}{The auto-scaling configuration for the Express service.}
+
+\item{taskDefinitionArn}{The Amazon Resource Name (ARN) of a task definition to use to update the Express Gateway service. This allows you to manage your own task definition, giving you more control over the service configuration such as adding sidecar containers.
+
+The task definition must have a container named \code{Main} with a single TCP port mapping that includes a container port and port name. The task definition must also have \code{FARGATE} compatibility.
+
+If you provide a task definition ARN, you cannot also specify \code{primaryContainer}, \code{executionRoleArn}, \code{taskRoleArn}, \code{cpu}, or \code{memory}.}
 }
 \description{
 Updates an existing Express service configuration. Modifies container settings, resource allocation, auto-scaling configuration, and other service parameters without recreating the service.

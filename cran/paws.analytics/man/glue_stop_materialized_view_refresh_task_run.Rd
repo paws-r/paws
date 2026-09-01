@@ -2,8 +2,8 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_stop_materialized_view_refresh_task_run}
 \alias{glue_stop_materialized_view_refresh_task_run}
-\title{Stops a materialized view refresh task run, for a specified table and
-columns}
+\title{Stops a materialized view refresh task run for a specified materialized
+view}
 \usage{
 glue_stop_materialized_view_refresh_task_run(
   CatalogId,
@@ -16,10 +16,10 @@ glue_stop_materialized_view_refresh_task_run(
 
 \item{DatabaseName}{[required] The name of the database where the table resides.}
 
-\item{TableName}{[required] The name of the table to generate statistics.}
+\item{TableName}{[required] The name of the materialized view.}
 }
 \description{
-Stops a materialized view refresh task run, for a specified table and columns.
+Stops a materialized view refresh task run for a specified materialized view.
 
 See \url{https://www.paws-r-sdk.com/docs/glue_stop_materialized_view_refresh_task_run/} for full documentation.
 }

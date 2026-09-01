@@ -7,7 +7,7 @@
 backupgateway_get_bandwidth_rate_limit_schedule(GatewayArn)
 }
 \arguments{
-\item{GatewayArn}{[required] The Amazon Resource Name (ARN) of the gateway. Use the \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BGW_ListGateways.html}{\code{list_gateways}} operation to return a list of gateways for your account and Amazon Web Services Region.}
+\item{GatewayArn}{[required] The Amazon Resource Name (ARN) of the gateway. Use the \href{https://docs.aws.amazon.com/aws-backup/latest/APIReference/API_BGW_ListGateways.html}{\code{list_gateways}} operation to return a list of gateways for your account and Amazon Web Services Region.}
 }
 \description{
 Retrieves the bandwidth rate limit schedule for a specified gateway. By default, gateways do not have bandwidth rate limit schedules, which means no bandwidth rate limiting is in effect. Use this to get a gateway's bandwidth rate limit schedule.

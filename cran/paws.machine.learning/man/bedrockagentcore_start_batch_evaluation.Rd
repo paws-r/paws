@@ -8,9 +8,12 @@ multiple sessions}
 bedrockagentcore_start_batch_evaluation(
   batchEvaluationName,
   evaluators = NULL,
+  insights = NULL,
   dataSourceConfig,
   clientToken = NULL,
   evaluationMetadata = NULL,
+  tags = NULL,
+  kmsKeyArn = NULL,
   description = NULL
 )
 }
@@ -19,11 +22,17 @@ bedrockagentcore_start_batch_evaluation(
 
 \item{evaluators}{The list of evaluators to apply during the batch evaluation. Can include both built-in evaluators and custom evaluators. Maximum of 10 evaluators.}
 
+\item{insights}{The list of insight analyses to run against sessions during the batch evaluation. Maximum of 10 insights.}
+
 \item{dataSourceConfig}{[required] The data source configuration that specifies where to pull agent session traces from for evaluation.}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error.}
 
 \item{evaluationMetadata}{Optional metadata for the evaluation, including session-specific ground truth data and test scenario identifiers.}
+
+\item{tags}{A map of tag keys and values to associate with the batch evaluation.}
+
+\item{kmsKeyArn}{The ARN of the KMS key used to encrypt evaluation data. If provided, customer data is encrypted at rest with the specified key.}
 
 \item{description}{The description of the batch evaluation.}
 }

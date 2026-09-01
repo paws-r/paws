@@ -58,7 +58,9 @@ If the job runs on Amazon EKS resources, then you must not specify \code{propaga
 
 \item{tags}{The tags that you apply to the job definition to help you categorize and organize your resources. Each tag consists of a key and an optional value. For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html}{Tagging Amazon Web Services Resources} in \emph{Batch User Guide}.}
 
-\item{platformCapabilities}{The platform capabilities required by the job definition. If no value is specified, it defaults to \code{EC2}. To run the job on Fargate resources, specify \code{FARGATE}.
+\item{platformCapabilities}{The platform capabilities required by the job definition. If no value is specified, it defaults to \code{EC2}. To run the job on Fargate resources, specify \code{FARGATE}. To run the job on Amazon ECS Managed Instances, specify \code{MANAGED_INSTANCES}.
+
+Jobs with the \code{MANAGED_INSTANCES} platform capability must use \code{ecsProperties} (not \code{containerProperties}) and do not support multi-node parallel jobs.
 
 If the job runs on Amazon EKS resources, then you must not specify \code{platformCapabilities}.}
 

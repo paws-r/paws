@@ -33,7 +33,7 @@ s3_put_object_acl(
 
 \strong{S3 on Outposts} - When you use this action with S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}. When you use this action with S3 on Outposts, the destination bucket must be the Outposts access point ARN or the access point alias. For more information about S3 on Outposts, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?} in the \emph{Amazon S3 User Guide}.}
 
-\item{ContentMD5}{The Base64 encoded 128-bit \code{MD5} digest of the data. This header must be used as a message integrity check to verify that the request body was not corrupted in transit. For more information, go to \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864.\>}
+\item{ContentMD5}{The Base64 encoded 128-bit \code{MD5} digest of the data. This header must be used as a message integrity check to verify that the request body was not corrupted in transit. For more information, go to \href{https://www.rfc-editor.org/rfc/rfc1864.txt}{RFC 1864.\>}
 
 For requests made using the Amazon Web Services Command Line Interface (CLI) or Amazon Web Services SDKs, this field is calculated automatically.}
 

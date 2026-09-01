@@ -393,12 +393,13 @@ sagemaker_create_ai_benchmark_job <- function(AIBenchmarkJobName, BenchmarkTarge
 #' @param InferenceSpecification The inference framework configuration. Specify the framework (such as LMI or vLLM) for the recommendation job.
 #' @param OptimizeModel Whether to allow model optimization techniques such as quantization, speculative decoding, and kernel tuning. The default is `true`.
 #' @param ComputeSpec The compute resource specification for the recommendation job. You can specify up to 3 instance types to consider, and optionally provide capacity reservation configuration.
+#' @param AdapterSource The LoRA adapter source for the recommendation job. Specify either a list of model package ARNs or Amazon S3 URIs for your LoRA adapters. When this parameter is absent, the recommendation job runs without LoRA adapter support.
 #' @param Tags The metadata that you apply to Amazon Web Services resources to help you categorize and organize them.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_ai_recommendation_job
-sagemaker_create_ai_recommendation_job <- function(AIRecommendationJobName, ModelSource, OutputConfig, AIWorkloadConfigIdentifier, PerformanceTarget, RoleArn, InferenceSpecification = NULL, OptimizeModel = NULL, ComputeSpec = NULL, Tags = NULL) {
+sagemaker_create_ai_recommendation_job <- function(AIRecommendationJobName, ModelSource, OutputConfig, AIWorkloadConfigIdentifier, PerformanceTarget, RoleArn, InferenceSpecification = NULL, OptimizeModel = NULL, ComputeSpec = NULL, AdapterSource = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateAIRecommendationJob",
     http_method = "POST",
@@ -407,7 +408,7 @@ sagemaker_create_ai_recommendation_job <- function(AIRecommendationJobName, Mode
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_ai_recommendation_job_input(AIRecommendationJobName = AIRecommendationJobName, ModelSource = ModelSource, OutputConfig = OutputConfig, AIWorkloadConfigIdentifier = AIWorkloadConfigIdentifier, PerformanceTarget = PerformanceTarget, RoleArn = RoleArn, InferenceSpecification = InferenceSpecification, OptimizeModel = OptimizeModel, ComputeSpec = ComputeSpec, Tags = Tags)
+  input <- .sagemaker$create_ai_recommendation_job_input(AIRecommendationJobName = AIRecommendationJobName, ModelSource = ModelSource, OutputConfig = OutputConfig, AIWorkloadConfigIdentifier = AIWorkloadConfigIdentifier, PerformanceTarget = PerformanceTarget, RoleArn = RoleArn, InferenceSpecification = InferenceSpecification, OptimizeModel = OptimizeModel, ComputeSpec = ComputeSpec, AdapterSource = AdapterSource, Tags = Tags)
   output <- .sagemaker$create_ai_recommendation_job_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -1321,7 +1322,7 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #' 
 #' The KMS key policy must grant permission to the IAM role that you specify in your [`create_endpoint`][sagemaker_create_endpoint], [`update_endpoint`][sagemaker_update_endpoint] requests. For more information, refer to the Amazon Web Services Key Management Service section [Using Key Policies in Amazon Web Services KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
 #' 
-#' Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. You can't request a `KmsKeyId` when using an instance type with local storage. If any of the models that you specify in the `ProductionVariants` parameter use nitro-based instances with local storage, do not specify a value for the `KmsKeyId` parameter. If you specify a value for `KmsKeyId` when using any nitro-based instances with local storage, the call to [`create_endpoint_config`][sagemaker_create_endpoint_config] fails.
+#' Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. If any of the models that you specify in the `ProductionVariants` parameter use nitro-based instances with local storage, the `KmsKeyId` parameter does not encrypt instance local storage.
 #' 
 #' For a list of instance types that support local instance storage, see [Instance Store Volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes).
 #' 
@@ -1949,6 +1950,42 @@ sagemaker_create_inference_recommendations_job <- function(JobName, JobType, Rol
 }
 .sagemaker$operations$create_inference_recommendations_job <- sagemaker_create_inference_recommendations_job
 
+#' Creates a model customization job in Amazon SageMaker
+#'
+#' @description
+#' Creates a model customization job in Amazon SageMaker. A job runs a workload based on the job category and configuration you provide. You specify the job category, a schema-versioned configuration document, and an IAM role that grants Amazon SageMaker permission to access resources on your behalf.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_job/) for full documentation.
+#'
+#' @param JobName &#91;required&#93; The name of the job. The name must be unique within your account and Amazon Web Services Region.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker assumes to perform the job. The role must have the necessary permissions to access the resources required by the job configuration.
+#' @param JobCategory &#91;required&#93; The category of the job. The category determines the type of workload that the job runs.
+#' @param JobConfigSchemaVersion &#91;required&#93; The version of the configuration schema to use for the job configuration document. Use [`list_job_schema_versions`][sagemaker_list_job_schema_versions] to get available schema versions for a job category.
+#' @param JobConfigDocument &#91;required&#93; The JSON configuration document for the job. The document must conform to the schema specified by `JobConfigSchemaVersion`. Use [`describe_job_schema_version`][sagemaker_describe_job_schema_version] to retrieve the schema for validation.
+#' @param Tags An array of key-value pairs to apply to the job as tags. For more information, see [Tagging Amazon Web Services Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_job
+sagemaker_create_job <- function(JobName, RoleArn, JobCategory, JobConfigSchemaVersion, JobConfigDocument, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$create_job_input(JobName = JobName, RoleArn = RoleArn, JobCategory = JobCategory, JobConfigSchemaVersion = JobConfigSchemaVersion, JobConfigDocument = JobConfigDocument, Tags = Tags)
+  output <- .sagemaker$create_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_job <- sagemaker_create_job
+
 #' Creates a job that uses workers to label the data objects in your input
 #' dataset
 #'
@@ -2047,6 +2084,7 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #' @param Name &#91;required&#93; A string identifying the MLflow app name. This string is not part of the tracking server ARN.
 #' @param ArtifactStoreUri &#91;required&#93; The S3 URI for a general purpose bucket to use as the MLflow App artifact store.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) for an IAM role in your account that the MLflow App uses to access the artifact store in Amazon S3. The role should have the `AmazonS3FullAccess` permission.
+#' @param KmsKeyId The ID of the Amazon Web Services KMS key used to encrypt the data at rest associated with the MLflow App. If you don't specify a value, the MLflow App is not encrypted with a customer-managed key.
 #' @param ModelRegistrationMode Whether to enable or disable automatic registration of new MLflow models to the SageMaker Model Registry. To enable automatic model registration, set this value to `AutoModelRegistrationEnabled`. To disable automatic model registration, set this value to `AutoModelRegistrationDisabled`. If not specified, `AutomaticModelRegistration` defaults to `AutoModelRegistrationDisabled`.
 #' @param WeeklyMaintenanceWindowStart The day and time of the week in Coordinated Universal Time (UTC) 24-hour standard time that weekly maintenance updates are scheduled. For example: TUE:03:30.
 #' @param AccountDefaultStatus Indicates whether this MLflow app is the default for the entire account.
@@ -2056,7 +2094,7 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_mlflow_app
-sagemaker_create_mlflow_app <- function(Name, ArtifactStoreUri, RoleArn, ModelRegistrationMode = NULL, WeeklyMaintenanceWindowStart = NULL, AccountDefaultStatus = NULL, DefaultDomainIdList = NULL, Tags = NULL) {
+sagemaker_create_mlflow_app <- function(Name, ArtifactStoreUri, RoleArn, KmsKeyId = NULL, ModelRegistrationMode = NULL, WeeklyMaintenanceWindowStart = NULL, AccountDefaultStatus = NULL, DefaultDomainIdList = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateMlflowApp",
     http_method = "POST",
@@ -2065,7 +2103,7 @@ sagemaker_create_mlflow_app <- function(Name, ArtifactStoreUri, RoleArn, ModelRe
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_mlflow_app_input(Name = Name, ArtifactStoreUri = ArtifactStoreUri, RoleArn = RoleArn, ModelRegistrationMode = ModelRegistrationMode, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart, AccountDefaultStatus = AccountDefaultStatus, DefaultDomainIdList = DefaultDomainIdList, Tags = Tags)
+  input <- .sagemaker$create_mlflow_app_input(Name = Name, ArtifactStoreUri = ArtifactStoreUri, RoleArn = RoleArn, KmsKeyId = KmsKeyId, ModelRegistrationMode = ModelRegistrationMode, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart, AccountDefaultStatus = AccountDefaultStatus, DefaultDomainIdList = DefaultDomainIdList, Tags = Tags)
   output <- .sagemaker$create_mlflow_app_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -2644,11 +2682,16 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' The Neural Topic Model (NTM) currently does not support saving intermediate model artifacts. When training NTMs, make sure that the maximum runtime is sufficient for the training job to complete.
 #' @param Tags A list of key-value pairs associated with the optimization job. For more information, see [Tagging Amazon Web Services resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html) in the *Amazon Web Services General Reference Guide*.
 #' @param VpcConfig A VPC in Amazon VPC that your optimized model has access to.
+#' @param TrainingPlanArns The Amazon Resource Name (ARN) of the training plan to use for this optimization job.
+#' 
+#' When you use reserved capacity from a training plan, the optimization job runs on that reserved capacity instead of on-demand capacity. If you omit this field, the job uses on-demand capacity. You can specify at most one training plan.
+#' 
+#' For more information about how to reserve GPU capacity for your optimization jobs using Amazon SageMaker Training Plans, see [Reserve capacity with training plans](https://docs.aws.amazon.com/sagemaker/latest/dg/reserve-capacity-with-training-plans.html).
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_optimization_job
-sagemaker_create_optimization_job <- function(OptimizationJobName, RoleArn, ModelSource, DeploymentInstanceType, MaxInstanceCount = NULL, OptimizationEnvironment = NULL, OptimizationConfigs, OutputConfig, StoppingCondition, Tags = NULL, VpcConfig = NULL) {
+sagemaker_create_optimization_job <- function(OptimizationJobName, RoleArn, ModelSource, DeploymentInstanceType, MaxInstanceCount = NULL, OptimizationEnvironment = NULL, OptimizationConfigs, OutputConfig, StoppingCondition, Tags = NULL, VpcConfig = NULL, TrainingPlanArns = NULL) {
   op <- new_operation(
     name = "CreateOptimizationJob",
     http_method = "POST",
@@ -2657,7 +2700,7 @@ sagemaker_create_optimization_job <- function(OptimizationJobName, RoleArn, Mode
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_optimization_job_input(OptimizationJobName = OptimizationJobName, RoleArn = RoleArn, ModelSource = ModelSource, DeploymentInstanceType = DeploymentInstanceType, MaxInstanceCount = MaxInstanceCount, OptimizationEnvironment = OptimizationEnvironment, OptimizationConfigs = OptimizationConfigs, OutputConfig = OutputConfig, StoppingCondition = StoppingCondition, Tags = Tags, VpcConfig = VpcConfig)
+  input <- .sagemaker$create_optimization_job_input(OptimizationJobName = OptimizationJobName, RoleArn = RoleArn, ModelSource = ModelSource, DeploymentInstanceType = DeploymentInstanceType, MaxInstanceCount = MaxInstanceCount, OptimizationEnvironment = OptimizationEnvironment, OptimizationConfigs = OptimizationConfigs, OutputConfig = OutputConfig, StoppingCondition = StoppingCondition, Tags = Tags, VpcConfig = VpcConfig, TrainingPlanArns = TrainingPlanArns)
   output <- .sagemaker$create_optimization_job_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -2681,7 +2724,12 @@ sagemaker_create_optimization_job <- function(OptimizationJobName, RoleArn, Mode
 #' @param MaintenanceConfig Maintenance configuration settings for the SageMaker Partner AI App.
 #' @param Tier &#91;required&#93; Indicates the instance type and size of the cluster attached to the SageMaker Partner AI App.
 #' @param ApplicationConfig Configuration settings for the SageMaker Partner AI App.
-#' @param AuthType &#91;required&#93; The authorization type that users use to access the SageMaker Partner AI App.
+#' @param IdcConfig Specifies the Amazon Web Services IAM Identity Center configuration for the SageMaker Partner AI App. Specify this parameter when `AuthType` is `IDC`. Apps that use `IAM` authorization don't use this parameter.
+#' @param AuthType &#91;required&#93; The authorization type that users use to access the SageMaker Partner AI App. Valid values:
+#' 
+#' -   `IAM`: Users access the SageMaker Partner AI App with their Amazon Web Services IAM identity.
+#' 
+#' -   `IDC`: Users access the SageMaker Partner AI App with their Amazon Web Services IAM Identity Center identity. Specify the Identity Center instance to use in `IdcConfig`.
 #' @param EnableIamSessionBasedIdentity When set to `TRUE`, the SageMaker Partner AI App sets the Amazon Web Services IAM session name or the authenticated IAM user as the identity of the SageMaker Partner AI App user.
 #' @param EnableAutoMinorVersionUpgrade When set to `TRUE`, the SageMaker Partner AI App is automatically upgraded to the latest minor version during the next scheduled maintenance window, if one is available. Default is `FALSE`.
 #' @param ClientToken A unique token that guarantees that the call to this API is idempotent.
@@ -2690,7 +2738,7 @@ sagemaker_create_optimization_job <- function(OptimizationJobName, RoleArn, Mode
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_partner_app
-sagemaker_create_partner_app <- function(Name, Type, ExecutionRoleArn, KmsKeyId = NULL, MaintenanceConfig = NULL, Tier, ApplicationConfig = NULL, AuthType, EnableIamSessionBasedIdentity = NULL, EnableAutoMinorVersionUpgrade = NULL, ClientToken = NULL, Tags = NULL) {
+sagemaker_create_partner_app <- function(Name, Type, ExecutionRoleArn, KmsKeyId = NULL, MaintenanceConfig = NULL, Tier, ApplicationConfig = NULL, IdcConfig = NULL, AuthType, EnableIamSessionBasedIdentity = NULL, EnableAutoMinorVersionUpgrade = NULL, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePartnerApp",
     http_method = "POST",
@@ -2699,7 +2747,7 @@ sagemaker_create_partner_app <- function(Name, Type, ExecutionRoleArn, KmsKeyId 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_partner_app_input(Name = Name, Type = Type, ExecutionRoleArn = ExecutionRoleArn, KmsKeyId = KmsKeyId, MaintenanceConfig = MaintenanceConfig, Tier = Tier, ApplicationConfig = ApplicationConfig, AuthType = AuthType, EnableIamSessionBasedIdentity = EnableIamSessionBasedIdentity, EnableAutoMinorVersionUpgrade = EnableAutoMinorVersionUpgrade, ClientToken = ClientToken, Tags = Tags)
+  input <- .sagemaker$create_partner_app_input(Name = Name, Type = Type, ExecutionRoleArn = ExecutionRoleArn, KmsKeyId = KmsKeyId, MaintenanceConfig = MaintenanceConfig, Tier = Tier, ApplicationConfig = ApplicationConfig, IdcConfig = IdcConfig, AuthType = AuthType, EnableIamSessionBasedIdentity = EnableIamSessionBasedIdentity, EnableAutoMinorVersionUpgrade = EnableAutoMinorVersionUpgrade, ClientToken = ClientToken, Tags = Tags)
   output <- .sagemaker$create_partner_app_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -4550,6 +4598,38 @@ sagemaker_delete_inference_experiment <- function(Name) {
   return(response)
 }
 .sagemaker$operations$delete_inference_experiment <- sagemaker_delete_inference_experiment
+
+#' Deletes a job
+#'
+#' @description
+#' Deletes a job. This operation is idempotent. If the job is currently running, you must stop it before deleting it by calling [`stop_job`][sagemaker_stop_job].
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_job/](https://www.paws-r-sdk.com/docs/sagemaker_delete_job/) for full documentation.
+#'
+#' @param JobName &#91;required&#93; The name of the job to delete.
+#' @param JobCategory &#91;required&#93; The category of the job to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_job
+sagemaker_delete_job <- function(JobName, JobCategory) {
+  op <- new_operation(
+    name = "DeleteJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$delete_job_input(JobName = JobName, JobCategory = JobCategory)
+  output <- .sagemaker$delete_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_job <- sagemaker_delete_job
 
 #' Deletes an MLflow App
 #'
@@ -6667,6 +6747,71 @@ sagemaker_describe_inference_recommendations_job <- function(JobName) {
 }
 .sagemaker$operations$describe_inference_recommendations_job <- sagemaker_describe_inference_recommendations_job
 
+#' Returns detailed information about a job, including its current status,
+#' secondary status, configuration, and timestamps
+#'
+#' @description
+#' Returns detailed information about a job, including its current status, secondary status, configuration, and timestamps. Use `SecondaryStatus` for granular progress tracking and `SecondaryStatusTransitions` to see the full history of status changes with timestamps.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_job/](https://www.paws-r-sdk.com/docs/sagemaker_describe_job/) for full documentation.
+#'
+#' @param JobName &#91;required&#93; The name of the job to describe.
+#' @param JobCategory &#91;required&#93; The category of the job.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_job
+sagemaker_describe_job <- function(JobName, JobCategory) {
+  op <- new_operation(
+    name = "DescribeJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$describe_job_input(JobName = JobName, JobCategory = JobCategory)
+  output <- .sagemaker$describe_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_job <- sagemaker_describe_job
+
+#' Returns the JSON schema for a specified job category and schema version
+#'
+#' @description
+#' Returns the JSON schema for a specified job category and schema version. Use this schema to validate your `JobConfigDocument` before calling [`create_job`][sagemaker_create_job]. If you don't specify a schema version, the latest version is returned. The schema defines required fields, allowed values, and constraints for the job configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_job_schema_version/](https://www.paws-r-sdk.com/docs/sagemaker_describe_job_schema_version/) for full documentation.
+#'
+#' @param JobCategory &#91;required&#93; The category of the job schema to describe.
+#' @param JobConfigSchemaVersion The version of the schema to retrieve. If not specified, the latest version is returned.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_job_schema_version
+sagemaker_describe_job_schema_version <- function(JobCategory, JobConfigSchemaVersion = NULL) {
+  op <- new_operation(
+    name = "DescribeJobSchemaVersion",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$describe_job_schema_version_input(JobCategory = JobCategory, JobConfigSchemaVersion = JobConfigSchemaVersion)
+  output <- .sagemaker$describe_job_schema_version_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_job_schema_version <- sagemaker_describe_job_schema_version
+
 #' Gets information about a labeling job
 #'
 #' @description
@@ -6863,11 +7008,18 @@ sagemaker_describe_model_bias_job_definition <- function(JobDefinitionName) {
 #'
 #' @param ModelCardName &#91;required&#93; The name or Amazon Resource Name (ARN) of the model card to describe.
 #' @param ModelCardVersion The version of the model card to describe. If a version is not provided, then the latest version of the model card is described.
+#' @param IncludedData Specifies the level of model card data to include in the response. Use this parameter to call [`describe_model_card`][sagemaker_describe_model_card] without requiring `kms:Decrypt` permission on the customer-managed Amazon Web Services KMS key.
+#' 
+#' -   `AllData`: Returns the full model card `Content`. This option requires `kms:Decrypt` permission on the customer-managed key, if one is associated with the model card. This is the default.
+#' 
+#' -   `MetadataOnly`: Returns the model card with sanitized `Content` that includes only a small set of unencrypted metadata fields. This option does not require `kms:Decrypt` permission. For the list of fields preserved in the response, see `Content`.
+#' 
+#' If you don't specify a value, SageMaker returns `AllData`.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_model_card
-sagemaker_describe_model_card <- function(ModelCardName, ModelCardVersion = NULL) {
+sagemaker_describe_model_card <- function(ModelCardName, ModelCardVersion = NULL, IncludedData = NULL) {
   op <- new_operation(
     name = "DescribeModelCard",
     http_method = "POST",
@@ -6876,7 +7028,7 @@ sagemaker_describe_model_card <- function(ModelCardName, ModelCardVersion = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$describe_model_card_input(ModelCardName = ModelCardName, ModelCardVersion = ModelCardVersion)
+  input <- .sagemaker$describe_model_card_input(ModelCardName = ModelCardName, ModelCardVersion = ModelCardVersion, IncludedData = IncludedData)
   output <- .sagemaker$describe_model_card_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -6959,11 +7111,18 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
 #' @param ModelPackageName &#91;required&#93; The name or Amazon Resource Name (ARN) of the model package to describe.
 #' 
 #' When you specify a name, the name must have 1 to 63 characters. Valid characters are a-z, A-Z, 0-9, and - (hyphen).
+#' @param IncludedData Specifies the level of model package data to include in the response. Use this parameter to call [`describe_model_package`][sagemaker_describe_model_package] on a model package that has an associated model card without requiring `kms:Decrypt` permission on the customer-managed KMS key associated with the embedded model card.
+#' 
+#' -   `AllData`: Returns the full model package response, including the unredacted `ModelCard.ModelCardContent`. This option requires `kms:Decrypt` permission on the customer-managed key, if one is associated with the embedded model card. This is the default.
+#' 
+#' -   `MetadataOnly`: Returns the full model package response, but with the embedded `ModelCard.ModelCardContent` sanitized to include only a small set of unencrypted metadata fields. This option does not require `kms:Decrypt` permission. All other top-level response fields, including `InferenceSpecification`, `ModelMetrics`, `DriftCheckBaselines`, and `SecurityConfig`, are returned unchanged. For the list of fields preserved within `ModelCardContent`, see [ModelCard](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeModelPackage.html#sagemaker-DescribeModelPackage-response-ModelCard).
+#' 
+#' If you don't specify a value, SageMaker returns `AllData`.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_model_package
-sagemaker_describe_model_package <- function(ModelPackageName) {
+sagemaker_describe_model_package <- function(ModelPackageName, IncludedData = NULL) {
   op <- new_operation(
     name = "DescribeModelPackage",
     http_method = "POST",
@@ -6972,7 +7131,7 @@ sagemaker_describe_model_package <- function(ModelPackageName) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$describe_model_package_input(ModelPackageName = ModelPackageName)
+  input <- .sagemaker$describe_model_package_input(ModelPackageName = ModelPackageName, IncludedData = IncludedData)
   output <- .sagemaker$describe_model_package_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -9803,6 +9962,81 @@ sagemaker_list_inference_recommendations_jobs <- function(CreationTimeAfter = NU
 }
 .sagemaker$operations$list_inference_recommendations_jobs <- sagemaker_list_inference_recommendations_jobs
 
+#' Lists available configuration schema versions for a specified job
+#' category
+#'
+#' @description
+#' Lists available configuration schema versions for a specified job category. Use the schema versions with [`describe_job_schema_version`][sagemaker_describe_job_schema_version] to retrieve the full schema document.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_job_schema_versions/](https://www.paws-r-sdk.com/docs/sagemaker_list_job_schema_versions/) for full documentation.
+#'
+#' @param JobCategory &#91;required&#93; The category of job schemas to list.
+#' @param NextToken If the previous response was truncated, this token retrieves the next set of results.
+#' @param MaxResults The maximum number of schema versions to return in the response. The default value is 5.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_job_schema_versions
+sagemaker_list_job_schema_versions <- function(JobCategory, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListJobSchemaVersions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobConfigSchemas"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$list_job_schema_versions_input(JobCategory = JobCategory, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_job_schema_versions_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_job_schema_versions <- sagemaker_list_job_schema_versions
+
+#' Lists jobs in a specified category
+#'
+#' @description
+#' Lists jobs in a specified category. You can filter results by creation time, last modified time, name, and status. Results are sorted by the field you specify in `SortBy`. Use pagination to retrieve large result sets efficiently.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_jobs/](https://www.paws-r-sdk.com/docs/sagemaker_list_jobs/) for full documentation.
+#'
+#' @param JobCategory &#91;required&#93; The category of jobs to list.
+#' @param NextToken If the previous response was truncated, this token retrieves the next set of results.
+#' @param MaxResults The maximum number of jobs to return in the response. The default value is 50.
+#' @param CreationTimeAfter A filter that returns only jobs created after the specified time.
+#' @param CreationTimeBefore A filter that returns only jobs created before the specified time.
+#' @param LastModifiedTimeAfter A filter that returns only jobs modified after the specified time.
+#' @param LastModifiedTimeBefore A filter that returns only jobs modified before the specified time.
+#' @param NameContains A string in the job name to filter results. Only jobs whose name contains the specified string are returned.
+#' @param SortBy The field to sort results by.
+#' @param SortOrder The sort order for results. Valid values are `Ascending` and `Descending`.
+#' @param StatusEquals A filter that returns only jobs with the specified status.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_jobs
+sagemaker_list_jobs <- function(JobCategory, NextToken = NULL, MaxResults = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, SortBy = NULL, SortOrder = NULL, StatusEquals = NULL) {
+  op <- new_operation(
+    name = "ListJobs",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobSummaries"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$list_jobs_input(JobCategory = JobCategory, NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, SortBy = SortBy, SortOrder = SortOrder, StatusEquals = StatusEquals)
+  output <- .sagemaker$list_jobs_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_jobs <- sagemaker_list_jobs
+
 #' Gets a list of labeling jobs
 #'
 #' @description
@@ -12438,6 +12672,38 @@ sagemaker_stop_inference_recommendations_job <- function(JobName) {
 }
 .sagemaker$operations$stop_inference_recommendations_job <- sagemaker_stop_inference_recommendations_job
 
+#' Stops a running job
+#'
+#' @description
+#' Stops a running job. When you call [`stop_job`][sagemaker_stop_job], Amazon SageMaker sets the job status to `Stopping`. After the job stops, the status changes to `Stopped`. Partial results may be available in the output location if the job was in progress. To delete a stopped job, call [`delete_job`][sagemaker_delete_job].
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_job/](https://www.paws-r-sdk.com/docs/sagemaker_stop_job/) for full documentation.
+#'
+#' @param JobName &#91;required&#93; The name of the job to stop.
+#' @param JobCategory &#91;required&#93; The category of the job to stop.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_stop_job
+sagemaker_stop_job <- function(JobName, JobCategory) {
+  op <- new_operation(
+    name = "StopJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$stop_job_input(JobName = JobName, JobCategory = JobCategory)
+  output <- .sagemaker$stop_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$stop_job <- sagemaker_stop_job
+
 #' Stops a running labeling job
 #'
 #' @description
@@ -13982,6 +14248,12 @@ sagemaker_update_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' @param MaintenanceConfig Maintenance configuration settings for the SageMaker Partner AI App.
 #' @param Tier Indicates the instance type and size of the cluster attached to the SageMaker Partner AI App.
 #' @param ApplicationConfig Configuration settings for the SageMaker Partner AI App.
+#' @param IdcConfig Specifies the Amazon Web Services IAM Identity Center configuration for the SageMaker Partner AI App. Specify this parameter when `AuthType` is `IDC`. Apps that use `IAM` authorization don't use this parameter.
+#' @param AuthType The authorization type that users use to access the SageMaker Partner AI App. Use this parameter to migrate an existing SageMaker Partner AI App from `IAM` authorization to `IDC` authorization. Valid values:
+#' 
+#' -   `IAM`: Users access the SageMaker Partner AI App with their Amazon Web Services IAM identity.
+#' 
+#' -   `IDC`: Users access the SageMaker Partner AI App with their Amazon Web Services IAM Identity Center identity. Specify the Identity Center instance to use in `IdcConfig`.
 #' @param EnableIamSessionBasedIdentity When set to `TRUE`, the SageMaker Partner AI App sets the Amazon Web Services IAM session name or the authenticated IAM user as the identity of the SageMaker Partner AI App user.
 #' @param EnableAutoMinorVersionUpgrade When set to `TRUE`, the SageMaker Partner AI App is automatically upgraded to the latest minor version during the next scheduled maintenance window, if one is available.
 #' @param AppVersion The semantic version to upgrade the SageMaker Partner AI App to. Must be the same semantic version returned in the `AvailableUpgrade` field from [`describe_partner_app`][sagemaker_describe_partner_app]. Version skipping and downgrades are not supported.
@@ -13991,7 +14263,7 @@ sagemaker_update_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_partner_app
-sagemaker_update_partner_app <- function(Arn, MaintenanceConfig = NULL, Tier = NULL, ApplicationConfig = NULL, EnableIamSessionBasedIdentity = NULL, EnableAutoMinorVersionUpgrade = NULL, AppVersion = NULL, ClientToken = NULL, Tags = NULL) {
+sagemaker_update_partner_app <- function(Arn, MaintenanceConfig = NULL, Tier = NULL, ApplicationConfig = NULL, IdcConfig = NULL, AuthType = NULL, EnableIamSessionBasedIdentity = NULL, EnableAutoMinorVersionUpgrade = NULL, AppVersion = NULL, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "UpdatePartnerApp",
     http_method = "POST",
@@ -14000,7 +14272,7 @@ sagemaker_update_partner_app <- function(Arn, MaintenanceConfig = NULL, Tier = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_partner_app_input(Arn = Arn, MaintenanceConfig = MaintenanceConfig, Tier = Tier, ApplicationConfig = ApplicationConfig, EnableIamSessionBasedIdentity = EnableIamSessionBasedIdentity, EnableAutoMinorVersionUpgrade = EnableAutoMinorVersionUpgrade, AppVersion = AppVersion, ClientToken = ClientToken, Tags = Tags)
+  input <- .sagemaker$update_partner_app_input(Arn = Arn, MaintenanceConfig = MaintenanceConfig, Tier = Tier, ApplicationConfig = ApplicationConfig, IdcConfig = IdcConfig, AuthType = AuthType, EnableIamSessionBasedIdentity = EnableIamSessionBasedIdentity, EnableAutoMinorVersionUpgrade = EnableAutoMinorVersionUpgrade, AppVersion = AppVersion, ClientToken = ClientToken, Tags = Tags)
   output <- .sagemaker$update_partner_app_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)

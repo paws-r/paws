@@ -14,7 +14,8 @@ bedrockagentcorecontrol_update_configuration_bundle(
   parentVersionIds = NULL,
   branchName = NULL,
   commitMessage = NULL,
-  createdBy = NULL
+  createdBy = NULL,
+  kmsKeyArn = NULL
 )
 }
 \arguments{
@@ -35,6 +36,8 @@ bedrockagentcorecontrol_update_configuration_bundle(
 \item{commitMessage}{A commit message describing the changes in this version.}
 
 \item{createdBy}{The source that created this version, including the source name and optional ARN.}
+
+\item{kmsKeyArn}{Optional KMS key ARN for encrypting component configurations. If provided, components will be encrypted with this key. If the bundle already has a KMS key, this rotates to the new key.}
 }
 \description{
 Updates a configuration bundle by creating a new version with the specified changes. Each update creates a new version in the version history.

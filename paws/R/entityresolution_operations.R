@@ -440,7 +440,7 @@ entityresolution_create_id_namespace <- function(idNamespaceName, description = 
 #' @description
 #' Creates a matching workflow that defines the configuration for a data processing job. The workflow name must be unique. To modify an existing workflow, use [`update_matching_workflow`][entityresolution_update_matching_workflow].
 #' 
-#' For workflows where `resolutionType` is `ML_MATCHING` or `PROVIDER`, incremental processing is not supported.
+#' For workflows where `resolutionType` is `PROVIDER`, incremental processing is not supported.
 #'
 #' @usage
 #' entityresolution_create_matching_workflow(workflowName, description,
@@ -454,7 +454,7 @@ entityresolution_create_id_namespace <- function(idNamespaceName, description = 
 #' @param resolutionTechniques &#91;required&#93; An object which defines the `resolutionType` and the `ruleBasedProperties`.
 #' @param incrementalRunConfig Optional. An object that defines the incremental run type. This object contains only the `incrementalRunType` field, which appears as "Automatic" in the console.
 #' 
-#' For workflows where `resolutionType` is `ML_MATCHING` or `PROVIDER`, incremental processing is not supported.
+#' For workflows where `resolutionType` is `PROVIDER`, incremental processing is not supported.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role. Entity Resolution assumes this role to create resources on your behalf as part of workflow execution.
 #' @param tags The tags used to organize, track, or control access for this resource.
 #'
@@ -514,6 +514,7 @@ entityresolution_create_id_namespace <- function(idNamespaceName, description = 
 #'         enableTransitiveMatching = TRUE|FALSE
 #'       )
 #'     ),
+#'     enableRealTimeMatching = TRUE|FALSE,
 #'     providerProperties = list(
 #'       providerServiceArn = "string",
 #'       providerConfiguration = list(),
@@ -583,6 +584,7 @@ entityresolution_create_id_namespace <- function(idNamespaceName, description = 
 #'         enableTransitiveMatching = TRUE|FALSE
 #'       )
 #'     ),
+#'     enableRealTimeMatching = TRUE|FALSE,
 #'     providerProperties = list(
 #'       providerServiceArn = "string",
 #'       providerConfiguration = list(),
@@ -708,7 +710,7 @@ entityresolution_create_schema_mapping <- function(schemaName, description = NUL
 #' Deletes the IdMappingWorkflow with a given name
 #'
 #' @description
-#' Deletes the `IdMappingWorkflow` with a given name. This operation will succeed even if a workflow with the given name does not exist.
+#' Deletes the `IdMappingWorkflow` with a given name. This operation returns a `ResourceNotFoundException` if a workflow with the given name does not exist.
 #'
 #' @usage
 #' entityresolution_delete_id_mapping_workflow(workflowName)
@@ -757,7 +759,7 @@ entityresolution_delete_id_mapping_workflow <- function(workflowName) {
 #' Deletes the IdNamespace with a given name
 #'
 #' @description
-#' Deletes the `IdNamespace` with a given name.
+#' Deletes the `IdNamespace` with a given name. This operation returns a `ResourceNotFoundException` if an ID namespace with the given name does not exist.
 #'
 #' @usage
 #' entityresolution_delete_id_namespace(idNamespaceName)
@@ -806,7 +808,7 @@ entityresolution_delete_id_namespace <- function(idNamespaceName) {
 #' Deletes the MatchingWorkflow with a given name
 #'
 #' @description
-#' Deletes the `MatchingWorkflow` with a given name. This operation will succeed even if a workflow with the given name does not exist.
+#' Deletes the `MatchingWorkflow` with a given name. This operation returns a `ResourceNotFoundException` if a workflow with the given name does not exist.
 #'
 #' @usage
 #' entityresolution_delete_matching_workflow(workflowName)
@@ -908,7 +910,7 @@ entityresolution_delete_policy_statement <- function(arn, statementId) {
 #' Deletes the SchemaMapping with a given name
 #'
 #' @description
-#' Deletes the `SchemaMapping` with a given name. This operation will succeed even if a schema with the given name does not exist. This operation will fail if there is a `MatchingWorkflow` object that references the `SchemaMapping` in the workflow's `InputSourceConfig`.
+#' Deletes the `SchemaMapping` with a given name. This operation returns a `ResourceNotFoundException` if a schema with the given name does not exist. This operation will fail if there is a `MatchingWorkflow` object that references the `SchemaMapping` in the workflow's `InputSourceConfig`.
 #'
 #' @usage
 #' entityresolution_delete_schema_mapping(schemaName)
@@ -977,6 +979,8 @@ entityresolution_delete_schema_mapping <- function(schemaName) {
 #' `EVENTUAL` (shown as *Background* in the console): Performs initial match ID lookup or generation immediately, with record updates processed asynchronously in the background. Offers faster initial response time, with complete matching results available later in S3.
 #' 
 #' `EVENTUAL_NO_LOOKUP` (shown as *Quick ID generation* in the console): Generates new match IDs without checking existing matches, with updates processed asynchronously. Provides fastest response time but should only be used for records known to be unique.
+#' 
+#' Advanced matching workflows don't support the `processingType` field.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1527,6 +1531,7 @@ entityresolution_get_matching_job <- function(workflowName, jobId) {
 #'         enableTransitiveMatching = TRUE|FALSE
 #'       )
 #'     ),
+#'     enableRealTimeMatching = TRUE|FALSE,
 #'     providerProperties = list(
 #'       providerServiceArn = "string",
 #'       providerConfiguration = list(),
@@ -2863,7 +2868,7 @@ entityresolution_update_id_namespace <- function(idNamespaceName, description = 
 #' @description
 #' Updates an existing matching workflow. The workflow must already exist for this operation to succeed.
 #' 
-#' For workflows where `resolutionType` is `ML_MATCHING` or `PROVIDER`, incremental processing is not supported.
+#' For workflows where `resolutionType` is `PROVIDER`, incremental processing is not supported.
 #'
 #' @usage
 #' entityresolution_update_matching_workflow(workflowName, description,
@@ -2877,7 +2882,7 @@ entityresolution_update_id_namespace <- function(idNamespaceName, description = 
 #' @param resolutionTechniques &#91;required&#93; An object which defines the `resolutionType` and the `ruleBasedProperties`.
 #' @param incrementalRunConfig Optional. An object that defines the incremental run type. This object contains only the `incrementalRunType` field, which appears as "Automatic" in the console.
 #' 
-#' For workflows where `resolutionType` is `ML_MATCHING` or `PROVIDER`, incremental processing is not supported.
+#' For workflows where `resolutionType` is `PROVIDER`, incremental processing is not supported.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role. Entity Resolution assumes this role to create resources on your behalf as part of workflow execution.
 #'
 #' @return
@@ -2935,6 +2940,7 @@ entityresolution_update_id_namespace <- function(idNamespaceName, description = 
 #'         enableTransitiveMatching = TRUE|FALSE
 #'       )
 #'     ),
+#'     enableRealTimeMatching = TRUE|FALSE,
 #'     providerProperties = list(
 #'       providerServiceArn = "string",
 #'       providerConfiguration = list(),
@@ -3004,6 +3010,7 @@ entityresolution_update_id_namespace <- function(idNamespaceName, description = 
 #'         enableTransitiveMatching = TRUE|FALSE
 #'       )
 #'     ),
+#'     enableRealTimeMatching = TRUE|FALSE,
 #'     providerProperties = list(
 #'       providerServiceArn = "string",
 #'       providerConfiguration = list(),

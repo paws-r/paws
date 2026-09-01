@@ -77,13 +77,13 @@ NULL
 
 .vpclattice$create_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), customDomainName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), customDomainName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), idleTimeoutSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .vpclattice$create_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), customDomainName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), dnsEntry = structure(list(domainName = structure(logical(0), tags = list(type = "string")), hostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), customDomainName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), idleTimeoutSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), dnsEntry = structure(list(domainName = structure(logical(0), tags = list(type = "string")), hostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -443,7 +443,7 @@ NULL
 
 .vpclattice$get_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), dnsEntry = structure(list(domainName = structure(logical(0), tags = list(type = "string")), hostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), customDomainName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), failureCode = structure(logical(0), tags = list(type = "string")), failureMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), dnsEntry = structure(list(domainName = structure(logical(0), tags = list(type = "string")), hostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), customDomainName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), idleTimeoutSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), failureCode = structure(logical(0), tags = list(type = "string")), failureMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -833,13 +833,13 @@ NULL
 
 .vpclattice$update_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "serviceIdentifier", type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(serviceIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "serviceIdentifier", type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), idleTimeoutSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .vpclattice$update_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), customDomainName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), customDomainName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), idleTimeoutSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -857,13 +857,13 @@ NULL
 
 .vpclattice$update_service_network_vpc_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceNetworkVpcAssociationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "serviceNetworkVpcAssociationIdentifier", type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(serviceNetworkVpcAssociationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "serviceNetworkVpcAssociationIdentifier", type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), privateDnsEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), dnsOptions = structure(list(privateDnsPreference = structure(logical(0), tags = list(type = "string")), privateDnsSpecifiedDomains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .vpclattice$update_service_network_vpc_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdBy = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdBy = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), privateDnsEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), dnsOptions = structure(list(privateDnsPreference = structure(logical(0), tags = list(type = "string")), privateDnsSpecifiedDomains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

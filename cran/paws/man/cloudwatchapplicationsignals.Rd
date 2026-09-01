@@ -103,16 +103,22 @@ Application Signals works with CloudWatch RUM, CloudWatch Synthetics canaries, a
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.management:cloudwatchapplicationsignals_batch_delete_instrumentation_configurations]{batch_delete_instrumentation_configurations} \tab Deletes multiple instrumentation configurations in a single request\cr
 \link[paws.management:cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report]{batch_get_service_level_objective_budget_report} \tab Use this operation to retrieve one or more service level objective (SLO) budget reports\cr
 \link[paws.management:cloudwatchapplicationsignals_batch_update_exclusion_windows]{batch_update_exclusion_windows} \tab Add or remove time window exclusions for one or more Service Level Objectives (SLOs)\cr
+\link[paws.management:cloudwatchapplicationsignals_create_instrumentation_configuration]{create_instrumentation_configuration} \tab Creates a dynamic instrumentation configuration for a specific code or endpoint location within a service and environment\cr
 \link[paws.management:cloudwatchapplicationsignals_create_service_level_objective]{create_service_level_objective} \tab Creates a service level objective (SLO), which can help you ensure that your critical business operations are meeting customer expectations\cr
 \link[paws.management:cloudwatchapplicationsignals_delete_grouping_configuration]{delete_grouping_configuration} \tab Deletes the grouping configuration for this account\cr
+\link[paws.management:cloudwatchapplicationsignals_delete_instrumentation_configuration]{delete_instrumentation_configuration} \tab Deletes the specified instrumentation configuration\cr
 \link[paws.management:cloudwatchapplicationsignals_delete_service_level_objective]{delete_service_level_objective} \tab Deletes the specified service level objective\cr
+\link[paws.management:cloudwatchapplicationsignals_get_instrumentation_configuration]{get_instrumentation_configuration} \tab Returns the details of a single instrumentation configuration identified by service, environment, signal type, and location\cr
+\link[paws.management:cloudwatchapplicationsignals_get_instrumentation_configuration_status]{get_instrumentation_configuration_status} \tab Retrieves the status history for a single instrumentation configuration during a specified time range\cr
 \link[paws.management:cloudwatchapplicationsignals_get_service]{get_service} \tab Returns information about a service discovered by Application Signals\cr
 \link[paws.management:cloudwatchapplicationsignals_get_service_level_objective]{get_service_level_objective} \tab Returns information about one SLO created in the account\cr
 \link[paws.management:cloudwatchapplicationsignals_list_audit_findings]{list_audit_findings} \tab Returns a list of audit findings that provide automated analysis of service behavior and root cause analysis\cr
 \link[paws.management:cloudwatchapplicationsignals_list_entity_events]{list_entity_events} \tab Returns a list of change events for a specific entity, such as deployments, configuration changes, or other state-changing activities\cr
 \link[paws.management:cloudwatchapplicationsignals_list_grouping_attribute_definitions]{list_grouping_attribute_definitions} \tab Returns the current grouping configuration for this account, including all custom grouping attribute definitions that have been configured\cr
+\link[paws.management:cloudwatchapplicationsignals_list_instrumentation_configurations]{list_instrumentation_configurations} \tab Returns all active instrumentation configurations for a service and environment\cr
 \link[paws.management:cloudwatchapplicationsignals_list_service_dependencies]{list_service_dependencies} \tab Returns a list of service dependencies of the service that you specify\cr
 \link[paws.management:cloudwatchapplicationsignals_list_service_dependents]{list_service_dependents} \tab Returns the list of dependents that invoked the specified service during the provided time range\cr
 \link[paws.management:cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows]{list_service_level_objective_exclusion_windows} \tab Retrieves all exclusion windows configured for a specific SLO\cr
@@ -122,6 +128,7 @@ Application Signals works with CloudWatch RUM, CloudWatch Synthetics canaries, a
 \link[paws.management:cloudwatchapplicationsignals_list_service_states]{list_service_states} \tab Returns information about the last deployment and other change states of services\cr
 \link[paws.management:cloudwatchapplicationsignals_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch resource\cr
 \link[paws.management:cloudwatchapplicationsignals_put_grouping_configuration]{put_grouping_configuration} \tab Creates or updates the grouping configuration for this account\cr
+\link[paws.management:cloudwatchapplicationsignals_report_instrumentation_configuration_status]{report_instrumentation_configuration_status} \tab Reports the status of one or more instrumentation configurations from SDK instances\cr
 \link[paws.management:cloudwatchapplicationsignals_start_discovery]{start_discovery} \tab Enables this Amazon Web Services account to be able to use CloudWatch Application Signals by creating the AWSServiceRoleForCloudWatchApplicationSignals service-linked role\cr
 \link[paws.management:cloudwatchapplicationsignals_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch resource, such as a service level objective\cr
 \link[paws.management:cloudwatchapplicationsignals_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
@@ -132,7 +139,7 @@ Application Signals works with CloudWatch RUM, CloudWatch Synthetics canaries, a
 \examples{
 \dontrun{
 svc <- cloudwatchapplicationsignals()
-svc$batch_get_service_level_objective_budget_report(
+svc$batch_delete_instrumentation_configurations(
   Foo = 123
 )
 }

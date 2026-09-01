@@ -2668,7 +2668,9 @@ omics_get_annotation_store_version <- function(name, versionName) {
 #'     outputBucketOwnerId = "string",
 #'     workflowVersionName = "string",
 #'     networkingMode = "RESTRICTED"|"VPC",
-#'     configurationName = "string"
+#'     configurationName = "string",
+#'     engineSettings = list(),
+#'     scratchStorageMode = "LOCAL"|"SHARED"
 #'   ),
 #'   submissionSummary = list(
 #'     successfulStartSubmissionCount = 123,
@@ -3530,6 +3532,7 @@ omics_get_reference_store <- function(id) {
 #'   workflowVersionName = "string",
 #'   workflowUuid = "string",
 #'   networkingMode = "RESTRICTED"|"VPC",
+#'   scratchStorageMode = "LOCAL"|"SHARED",
 #'   configuration = list(
 #'     name = "string",
 #'     arn = "string",
@@ -3543,7 +3546,8 @@ omics_get_reference_store <- function(id) {
 #'       "string"
 #'     ),
 #'     vpcId = "string"
-#'   )
+#'   ),
+#'   engineSettings = list()
 #' )
 #' ```
 #'
@@ -3747,7 +3751,8 @@ omics_get_run_group <- function(id) {
 #'     image = "string",
 #'     imageDigest = "string",
 #'     sourceImage = "string"
-#'   )
+#'   ),
+#'   uuid = "string"
 #' )
 #' ```
 #'
@@ -4205,7 +4210,18 @@ omics_get_variant_store <- function(name) {
 #'     providerType = "string",
 #'     providerEndpoint = "string"
 #'   ),
-#'   readmePath = "string"
+#'   readmePath = "string",
+#'   profiles = list(
+#'     "string"
+#'   ),
+#'   profileParameterTemplates = list(
+#'     list(
+#'       list(
+#'         description = "string",
+#'         optional = TRUE|FALSE
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4322,7 +4338,18 @@ omics_get_workflow <- function(id, type = NULL, export = NULL, workflowOwnerId =
 #'     providerType = "string",
 #'     providerEndpoint = "string"
 #'   ),
-#'   readmePath = "string"
+#'   readmePath = "string",
+#'   profiles = list(
+#'     "string"
+#'   ),
+#'   profileParameterTemplates = list(
+#'     list(
+#'       list(
+#'         description = "string",
+#'         optional = TRUE|FALSE
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -5646,7 +5673,8 @@ omics_list_run_groups <- function(name = NULL, startingToken = NULL, maxResults 
 #'         "2015-01-01"
 #'       ),
 #'       gpus = 123,
-#'       instanceType = "string"
+#'       instanceType = "string",
+#'       uuid = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -5729,7 +5757,8 @@ omics_list_run_tasks <- function(id, status = NULL, startingToken = NULL, maxRes
 #'         "2015-01-01"
 #'       ),
 #'       storageType = "STATIC"|"DYNAMIC",
-#'       workflowVersionName = "string"
+#'       workflowVersionName = "string",
+#'       workflowName = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -6858,7 +6887,8 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' omics_start_run(workflowId, workflowType, runId, roleArn, name, cacheId,
 #'   cacheBehavior, runGroupId, priority, parameters, storageCapacity,
 #'   outputUri, logLevel, tags, requestId, retentionMode, storageType,
-#'   workflowOwnerId, workflowVersionName, networkingMode, configurationName)
+#'   workflowOwnerId, workflowVersionName, networkingMode,
+#'   scratchStorageMode, configurationName, engineSettings)
 #'
 #' @param workflowId The run's workflow ID. The `workflowId` is not the UUID.
 #' @param workflowType The run's workflow type. The `workflowType` must be specified if you are running a `READY2RUN` workflow. If you are running a `PRIVATE` workflow (default), you do not need to include the workflow type.
@@ -6884,7 +6914,9 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' @param workflowOwnerId The 12-digit account ID of the workflow owner that is used for running a shared workflow. The workflow owner ID can be retrieved using the [`get_share`][omics_get_share] API operation. If you are the workflow owner, you do not need to include this ID.
 #' @param workflowVersionName The name of the workflow version. Use workflow versions to track and organize changes to the workflow. If your workflow has multiple versions, the run uses the default version unless you specify a version name. To learn more, see [Workflow versioning](https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html) in the *Amazon Web Services HealthOmics User Guide*.
 #' @param networkingMode Optional configuration for run networking behavior. If not specified, this will default to RESTRICTED.
+#' @param scratchStorageMode Optional configuration for enabling scratch ephemeral storage mounted at /tmp. If not specified, this will default to SHARED. This configuration is applicable only for CPU tasks. For tasks using GPUs, scratch storage is always LOCAL.
 #' @param configurationName Optional configuration name to use for the workflow run.
+#' @param engineSettings Engine-specific settings for the workflow run. Use this field to specify configuration options that are specific to the workflow engine (for example, Nextflow profiles).
 #'
 #' @return
 #' A list with the following syntax:
@@ -6932,7 +6964,9 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #'   workflowOwnerId = "string",
 #'   workflowVersionName = "string",
 #'   networkingMode = "RESTRICTED"|"VPC",
-#'   configurationName = "string"
+#'   scratchStorageMode = "LOCAL"|"SHARED",
+#'   configurationName = "string",
+#'   engineSettings = list()
 #' )
 #' ```
 #'
@@ -6941,7 +6975,7 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' @rdname omics_start_run
 #'
 #' @aliases omics_start_run
-omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL, roleArn, name = NULL, cacheId = NULL, cacheBehavior = NULL, runGroupId = NULL, priority = NULL, parameters = NULL, storageCapacity = NULL, outputUri, logLevel = NULL, tags = NULL, requestId, retentionMode = NULL, storageType = NULL, workflowOwnerId = NULL, workflowVersionName = NULL, networkingMode = NULL, configurationName = NULL) {
+omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL, roleArn, name = NULL, cacheId = NULL, cacheBehavior = NULL, runGroupId = NULL, priority = NULL, parameters = NULL, storageCapacity = NULL, outputUri, logLevel = NULL, tags = NULL, requestId, retentionMode = NULL, storageType = NULL, workflowOwnerId = NULL, workflowVersionName = NULL, networkingMode = NULL, scratchStorageMode = NULL, configurationName = NULL, engineSettings = NULL) {
   op <- new_operation(
     name = "StartRun",
     http_method = "POST",
@@ -6950,7 +6984,7 @@ omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, cacheId = cacheId, cacheBehavior = cacheBehavior, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode, storageType = storageType, workflowOwnerId = workflowOwnerId, workflowVersionName = workflowVersionName, networkingMode = networkingMode, configurationName = configurationName)
+  input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, cacheId = cacheId, cacheBehavior = cacheBehavior, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode, storageType = storageType, workflowOwnerId = workflowOwnerId, workflowVersionName = workflowVersionName, networkingMode = networkingMode, scratchStorageMode = scratchStorageMode, configurationName = configurationName, engineSettings = engineSettings)
   output <- .omics$start_run_output()
   config <- get_config()
   svc <- .omics$service(config, op)
@@ -7021,7 +7055,9 @@ omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL
 #'     outputBucketOwnerId = "string",
 #'     workflowVersionName = "string",
 #'     networkingMode = "RESTRICTED"|"VPC",
-#'     configurationName = "string"
+#'     configurationName = "string",
+#'     engineSettings = list(),
+#'     scratchStorageMode = "LOCAL"|"SHARED"
 #'   ),
 #'   batchRunSettings = list(
 #'     inlineSettings = list(
@@ -7034,7 +7070,8 @@ omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL
 #'         outputBucketOwnerId = "string",
 #'         runTags = list(
 #'           "string"
-#'         )
+#'         ),
+#'         engineSettings = list()
 #'       )
 #'     ),
 #'     s3UriSettings = "string"

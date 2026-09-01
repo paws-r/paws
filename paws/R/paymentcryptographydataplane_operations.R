@@ -328,7 +328,7 @@ paymentcryptographydataplane_generate_as_2805_kek_validation <- function(KeyIden
 #' payment card authorization
 #'
 #' @description
-#' Generates an Authorization Request Cryptogram (ARQC) for an EMV chip payment card authorization. For more information, see [Generate auth request cryptogram](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/) in the *Amazon Web Services Payment Cryptography User Guide*.
+#' Generates an Authorization Request Cryptogram (ARQC) for an EMV chip payment card authorization. For more information, see [Generate auth request cryptogram](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/data-operations.generateauthrequestcryptogram.html) in the *Amazon Web Services Payment Cryptography User Guide*.
 #' 
 #' ARQC generation uses an Issuer Master Key (IMK) for application cryptograms (TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS) to derive a session key, which is then used to generate the cryptogram from the provided transaction data (when applicable). To use this operation, you must first create or import an IMK-AC key by calling [CreateKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html) or [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html). The `KeyModesOfUse` should be set to `DeriveKey` for the IMK-AC encryption key.
 #' 
@@ -392,6 +392,11 @@ paymentcryptographydataplane_generate_as_2805_kek_validation <- function(KeyIden
 #'     Visa = list(
 #'       PrimaryAccountNumber = "string",
 #'       PanSequenceNumber = "string"
+#'     ),
+#'     UnionPay = list(
+#'       PrimaryAccountNumber = "string",
+#'       PanSequenceNumber = "string",
+#'       ApplicationTransactionCounter = "string"
 #'     )
 #'   )
 #' )
@@ -574,7 +579,7 @@ paymentcryptographydataplane_generate_card_validation_data <- function(KeyIdenti
 #'       MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
 #'       PrimaryAccountNumber = "string",
 #'       PanSequenceNumber = "string",
-#'       SessionKeyDerivationMode = "EMV_COMMON_SESSION_KEY"|"EMV2000"|"AMEX"|"MASTERCARD_SESSION_KEY"|"VISA",
+#'       SessionKeyDerivationMode = "EMV_COMMON_SESSION_KEY"|"EMV2000"|"AMEX"|"MASTERCARD_SESSION_KEY"|"VISA"|"UNION_PAY",
 #'       SessionKeyDerivationValue = list(
 #'         ApplicationCryptogram = "string",
 #'         ApplicationTransactionCounter = "string"
@@ -634,7 +639,7 @@ paymentcryptographydataplane_generate_mac <- function(KeyIdentifier, MessageData
 #' 
 #' The primary inputs to this operation include the incoming new encrypted pinblock, PIN encryption key (PEK), issuer master key (IMK), primary account number (PAN), and the payment card derivation method.
 #' 
-#' The operation uses two issuer master keys - secure messaging for confidentiality (IMK-SMC) and secure messaging for integrity (IMK-SMI). The SMC key is used to internally derive a key to secure the pin, while SMI key is used to internally derive a key to authenticate the script reponse as per the [EMV 4.4 - Book 2 - Security and Key Management](https://www.emvco.com/specifications/) specification.
+#' The operation uses two issuer master keys - secure messaging for confidentiality (IMK-SMC) and secure messaging for integrity (IMK-SMI). The SMC key is used to internally derive a key to secure the pin, while SMI key is used to internally derive a key to authenticate the script reponse as per the [EMV 4.4 - Book 2 - Security and Key Management](https://www.emvco.com/emvco-website-search/?type=specifications) specification.
 #' 
 #' This operation supports Amex, EMV2000, EMVCommon, Mastercard and Visa derivation methods, each requiring specific input parameters. Users must follow the specific derivation method and input parameters defined by the respective payment card scheme.
 #' 
@@ -1369,6 +1374,11 @@ paymentcryptographydataplane_translate_pin_data <- function(IncomingKeyIdentifie
 #'     Visa = list(
 #'       PrimaryAccountNumber = "string",
 #'       PanSequenceNumber = "string"
+#'     ),
+#'     UnionPay = list(
+#'       PrimaryAccountNumber = "string",
+#'       PanSequenceNumber = "string",
+#'       ApplicationTransactionCounter = "string"
 #'     )
 #'   ),
 #'   AuthResponseAttributes = list(
@@ -1563,7 +1573,7 @@ paymentcryptographydataplane_verify_card_validation_data <- function(KeyIdentifi
 #'       MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
 #'       PrimaryAccountNumber = "string",
 #'       PanSequenceNumber = "string",
-#'       SessionKeyDerivationMode = "EMV_COMMON_SESSION_KEY"|"EMV2000"|"AMEX"|"MASTERCARD_SESSION_KEY"|"VISA",
+#'       SessionKeyDerivationMode = "EMV_COMMON_SESSION_KEY"|"EMV2000"|"AMEX"|"MASTERCARD_SESSION_KEY"|"VISA"|"UNION_PAY",
 #'       SessionKeyDerivationValue = list(
 #'         ApplicationCryptogram = "string",
 #'         ApplicationTransactionCounter = "string"

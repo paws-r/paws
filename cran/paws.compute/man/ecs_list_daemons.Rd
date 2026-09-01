@@ -12,7 +12,7 @@ ecs_list_daemons(
 )
 }
 \arguments{
-\item{clusterArn}{The Amazon Resource Name (ARN) of the cluster to filter daemons by. If not specified, daemons from all clusters are returned.}
+\item{clusterArn}{The Amazon Resource Name (ARN) of the cluster to filter daemons by. If you do not specify a cluster, the default cluster is assumed.}
 
 \item{capacityProviderArns}{The Amazon Resource Names (ARNs) of the capacity providers to filter daemons by. Only daemons associated with the specified capacity providers are returned.}
 

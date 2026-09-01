@@ -8,7 +8,8 @@ by the Amazon Web Services account}
 ssoadmin_update_instance(
   Name = NULL,
   InstanceArn,
-  EncryptionConfiguration = NULL
+  EncryptionConfiguration = NULL,
+  PermissionSetsEnabled = NULL
 )
 }
 \arguments{
@@ -17,6 +18,10 @@ ssoadmin_update_instance(
 \item{InstanceArn}{[required] The ARN of the instance of IAM Identity Center under which the operation will run. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon Web Services General Reference}.}
 
 \item{EncryptionConfiguration}{Specifies the encryption configuration for your IAM Identity Center instance. You can use this to configure customer managed KMS keys or Amazon Web Services owned KMS keys for encrypting your instance data.}
+
+\item{PermissionSetsEnabled}{Enables permission sets for this Identity Center instance. The only accepted value is \code{true }. After permission sets are enabled, they cannot be disabled.
+
+You can't set \code{EncryptionConfiguration} and \code{PermissionSetsEnabled} in the same request. To configure both, make two separate \code{\link[=ssoadmin_update_instance]{update_instance}} calls. These calls can be made in parallel.}
 }
 \description{
 Update the details for the instance of IAM Identity Center that is owned by the Amazon Web Services account.

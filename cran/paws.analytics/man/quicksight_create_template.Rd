@@ -28,7 +28,7 @@ quicksight_create_template(
 
 \item{SourceEntity}{The entity that you are using as a source when you create the template. In \code{SourceEntity}, you specify the type of object you're using as source: \code{SourceTemplate} for a template or \code{SourceAnalysis} for an analysis. Both of these require an Amazon Resource Name (ARN). For \code{SourceTemplate}, specify the ARN of the source template. For \code{SourceAnalysis}, specify the ARN of the source analysis. The \code{SourceTemplate} ARN can contain any Amazon Web Services account and any Quick Sight-supported Amazon Web Services Region.
 
-Use the \code{DataSetReferences} entity within \code{SourceTemplate} or \code{SourceAnalysis} to list the replacement datasets for the placeholders listed in the original. The schema in each dataset must match its placeholder.
+Use the \code{DataSetReferences} entity within \code{SourceTemplate} or \code{SourceAnalysis} to list the replacement datasets for the placeholders listed in the original. The schema in each dataset must match its placeholder. Use the \code{TopicReferences} entity to list the replacement topics for the topic placeholders listed in the original. The schema in each topic must match its placeholder.
 
 Either a \code{SourceEntity} or a \code{Definition} must be provided in order for the request to be valid.}
 

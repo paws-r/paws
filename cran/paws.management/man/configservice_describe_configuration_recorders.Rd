@@ -15,7 +15,7 @@ configservice_describe_configuration_recorders(
 
 When making a request to this operation, you can only specify one configuration recorder.}
 
-\item{ServicePrincipal}{For service-linked configuration recorders, you can use the service principal of the linked Amazon Web Services service to specify the configuration recorder.}
+\item{ServicePrincipal}{For service-linked configuration recorders, you can use the service principal of the linked Amazon Web Services service to specify the configuration recorder. This field is only supported for Amazon Web Services service principals. For third-party service-linked configuration recorders, use \code{Arn} instead.}
 
 \item{Arn}{The Amazon Resource Name (ARN) of the configuration recorder that you want to specify.}
 }

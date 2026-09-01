@@ -2,9 +2,10 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_list_protected_resources}
 \alias{backup_list_protected_resources}
-\title{Returns an array of resources successfully backed up by Backup,
-including the time the resource was saved, an Amazon Resource Name (ARN)
-of the resource, and a resource type}
+\title{Returns an array of resources with recovery points created by Backup
+(regardless of the recovery point's status), including the time the
+resource was saved, an Amazon Resource Name (ARN) of the resource, and a
+resource type}
 \usage{
 backup_list_protected_resources(NextToken = NULL, MaxResults = NULL)
 }
@@ -14,7 +15,7 @@ backup_list_protected_resources(NextToken = NULL, MaxResults = NULL)
 \item{MaxResults}{The maximum number of items to be returned.}
 }
 \description{
-Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type.
+Returns an array of resources with recovery points created by Backup (regardless of the recovery point's \href{https://docs.aws.amazon.com/aws-backup/latest/APIReference/API_DescribeRecoveryPoint.html#Backup-DescribeRecoveryPoint-response-Status}{status}), including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type.
 
 See \url{https://www.paws-r-sdk.com/docs/backup_list_protected_resources/} for full documentation.
 }

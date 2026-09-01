@@ -123,7 +123,7 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #' @param KeyAttributes &#91;required&#93; The role of the key, the algorithm it supports, and the cryptographic operations allowed with the key. This data is immutable after the key is created.
 #' @param KeyCheckValueAlgorithm The algorithm that Amazon Web Services Payment Cryptography uses to calculate the key check value (KCV). It is used to validate the key integrity.
 #' 
-#' For TDES keys, the KCV is computed by encrypting 8 bytes, each with value of zero, with the key to be checked and retaining the 3 highest order bytes of the encrypted result. For AES keys, the KCV is computed using a CMAC algorithm where the input data is 16 bytes of zero and retaining the 3 highest order bytes of the encrypted result.
+#' For TDES keys, the KCV is computed by encrypting 8 bytes, each with value of zero, with the key to be checked and retaining the 3 highest order bytes of the encrypted result. For AES keys, the KCV is computed using a CMAC algorithm where the input data is 16 bytes of zero and retaining the 3 highest order bytes of the encrypted result. For HMAC keys, the KCV is computed using the hash selected at key creation on a zero-length message, taking the leftmost 3 bytes.
 #' @param Exportable &#91;required&#93; Specifies whether the key is exportable from the service.
 #' @param Enabled Specifies whether to enable the key. If the key is enabled, it is activated for use within the service. If the key is not enabled, then it is created but not activated. The default value is enabled.
 #' @param Tags Assigns one or more tags to the Amazon Web Services Payment Cryptography key. Use this parameter to tag a key when it is created. To tag an existing Amazon Web Services Payment Cryptography key, use the [`tag_resource`][paymentcryptographycontrolplane_tag_resource] operation.
@@ -707,7 +707,7 @@ paymentcryptographycontrolplane_get_resource_policy <- function(ResourceArn) {
 #' @param KeyMaterial &#91;required&#93; The key or public key certificate type to use during key material import, for example TR-34 or RootCertificatePublicKey.
 #' @param KeyCheckValueAlgorithm The algorithm that Amazon Web Services Payment Cryptography uses to calculate the key check value (KCV). It is used to validate the key integrity.
 #' 
-#' For TDES keys, the KCV is computed by encrypting 8 bytes, each with value of zero, with the key to be checked and retaining the 3 highest order bytes of the encrypted result. For AES keys, the KCV is computed using a CMAC algorithm where the input data is 16 bytes of zero and retaining the 3 highest order bytes of the encrypted result.
+#' For TDES keys, the KCV is computed by encrypting 8 bytes, each with value of zero, with the key to be checked and retaining the 3 highest order bytes of the encrypted result. For AES keys, the KCV is computed using a CMAC algorithm where the input data is 16 bytes of zero and retaining the 3 highest order bytes of the encrypted result. For HMAC keys, the KCV is computed using the hash selected at key creation on a zero-length message, taking the leftmost 3 bytes.
 #' @param Enabled Specifies whether import key is enabled.
 #' @param Tags Assigns one or more tags to the Amazon Web Services Payment Cryptography key. Use this parameter to tag a key when it is imported. To tag an existing Amazon Web Services Payment Cryptography key, use the [`tag_resource`][paymentcryptographycontrolplane_tag_resource] operation.
 #' 

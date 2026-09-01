@@ -16,11 +16,11 @@ imagebuilder_send_workflow_step_action(
 \arguments{
 \item{stepExecutionId}{[required] Uniquely identifies the workflow step that sent the step action.}
 
-\item{imageBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the image build version to send action for.}
+\item{imageBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the image build version associated with the workflow step execution. This value must match the image that owns the waiting step. If the ARN does not correspond to the image running the workflow, then the request fails with a validation error.}
 
-\item{action}{[required] The action for the image creation process to take while a workflow \code{WaitForAction} step waits for an asynchronous action to complete.}
+\item{action}{[required] The action to perform on the paused workflow step. The workflow step must be in a waiting state to accept an action. The request fails if the step has already timed out or been actioned.}
 
-\item{reason}{The reason why this action is sent.}
+\item{reason}{The reason for the action. This value is stored with the step execution record and is accessible in subsequent workflow steps via step output references.}
 
 \item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }

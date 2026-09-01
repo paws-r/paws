@@ -15,6 +15,18 @@ NULL
   return(populate(args, shape))
 }
 
+.drs$cancel_recovery_plan_execution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecutionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$cancel_recovery_plan_execution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecution = structure(list(recoveryPlanExecutionArn = structure(logical(0), tags = list(type = "string")), recoveryPlanArn = structure(logical(0), tags = list(type = "string")), mode = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startedAt = structure(logical(0), tags = list(type = "string")), completedAt = structure(logical(0), tags = list(type = "string")), errorDetail = structure(list(message = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .drs$create_extended_source_server_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(sourceServerArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
@@ -29,13 +41,37 @@ NULL
 
 .drs$create_launch_configuration_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE)), recoveryMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .drs$create_launch_configuration_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(launchConfigurationTemplate = structure(list(launchConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(launchConfigurationTemplate = structure(list(launchConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE)), recoveryMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$create_recovery_plan_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$create_recovery_plan_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlan = structure(list(recoveryPlanArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$create_recovery_plan_step_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanArn = structure(logical(0), tags = list(type = "string")), stepName = structure(logical(0), tags = list(type = "string")), stepOrder = structure(logical(0), tags = list(type = "integer", box = TRUE)), configuration = structure(list(serverStepConfiguration = structure(list(servers = structure(list(structure(list(serverArn = structure(logical(0), tags = list(type = "string")), impactLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), waitStepConfiguration = structure(list(waitDurationMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$create_recovery_plan_step_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanStep = structure(list(recoveryPlanStepArn = structure(logical(0), tags = list(type = "string")), stepOrder = structure(logical(0), tags = list(type = "integer", box = TRUE)), stepName = structure(logical(0), tags = list(type = "string")), configuration = structure(list(serverStepConfiguration = structure(list(servers = structure(list(structure(list(serverArn = structure(logical(0), tags = list(type = "string")), impactLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), waitStepConfiguration = structure(list(waitDurationMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), createdAt = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -109,6 +145,42 @@ NULL
   list()
 }
 
+.drs$delete_recovery_plan_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$delete_recovery_plan_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$delete_recovery_plan_execution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecutionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$delete_recovery_plan_execution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecutionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$delete_recovery_plan_step_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanStepArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$delete_recovery_plan_step_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanStepArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .drs$delete_replication_configuration_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(replicationConfigurationTemplateID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -177,7 +249,7 @@ NULL
 
 .drs$describe_launch_configuration_templates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(launchConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(items = structure(list(structure(list(launchConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE)), recoveryMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -295,7 +367,55 @@ NULL
 
 .drs$get_launch_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), ec2LaunchTemplateID = structure(logical(0), tags = list(type = "string")), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoInstanceProperties = structure(list(launchIntoEC2InstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), ec2LaunchTemplateID = structure(logical(0), tags = list(type = "string")), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoInstanceProperties = structure(list(launchIntoEC2InstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), recoveryMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$get_recovery_plan_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$get_recovery_plan_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlan = structure(list(recoveryPlanArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$get_recovery_plan_execution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecutionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$get_recovery_plan_execution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecution = structure(list(recoveryPlanExecutionArn = structure(logical(0), tags = list(type = "string")), recoveryPlanArn = structure(logical(0), tags = list(type = "string")), mode = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startedAt = structure(logical(0), tags = list(type = "string")), completedAt = structure(logical(0), tags = list(type = "string")), errorDetail = structure(list(message = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$get_recovery_plan_execution_step_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecutionStepArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$get_recovery_plan_execution_step_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecutionStep = structure(list(recoveryPlanExecutionStepArn = structure(logical(0), tags = list(type = "string")), stepIndex = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string")), stepName = structure(logical(0), tags = list(type = "string")), configuration = structure(list(executionServerStepConfiguration = structure(list(servers = structure(list(structure(list(serverArn = structure(logical(0), tags = list(type = "string")), impactLevel = structure(logical(0), tags = list(type = "string")), jobID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), waitStepConfiguration = structure(list(waitDurationMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), errorDetail = structure(list(message = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), attempt = structure(logical(0), tags = list(type = "integer", box = TRUE)), createdAt = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$get_recovery_plan_step_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanStepArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$get_recovery_plan_step_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanStep = structure(list(recoveryPlanStepArn = structure(logical(0), tags = list(type = "string")), stepOrder = structure(logical(0), tags = list(type = "integer", box = TRUE)), stepName = structure(logical(0), tags = list(type = "string")), configuration = structure(list(serverStepConfiguration = structure(list(servers = structure(list(structure(list(serverArn = structure(logical(0), tags = list(type = "string")), impactLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), waitStepConfiguration = structure(list(waitDurationMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), createdAt = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -347,6 +467,54 @@ NULL
   return(populate(args, shape))
 }
 
+.drs$list_recovery_plan_execution_steps_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecutionArn = structure(logical(0), tags = list(type = "string")), filter = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$list_recovery_plan_execution_steps_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecutionSteps = structure(list(structure(list(recoveryPlanExecutionStepArn = structure(logical(0), tags = list(type = "string")), stepName = structure(logical(0), tags = list(type = "string")), stepIndex = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string")), configuration = structure(list(executionServerStepConfiguration = structure(list(servers = structure(list(structure(list(serverArn = structure(logical(0), tags = list(type = "string")), impactLevel = structure(logical(0), tags = list(type = "string")), jobID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), waitStepConfiguration = structure(list(waitDurationMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), errorDetail = structure(list(message = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$list_recovery_plan_executions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$list_recovery_plan_executions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecutions = structure(list(structure(list(recoveryPlanExecutionArn = structure(logical(0), tags = list(type = "string")), recoveryPlanArn = structure(logical(0), tags = list(type = "string")), mode = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startedAt = structure(logical(0), tags = list(type = "string")), errorDetail = structure(list(message = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$list_recovery_plan_steps_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$list_recovery_plan_steps_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanSteps = structure(list(structure(list(recoveryPlanStepArn = structure(logical(0), tags = list(type = "string")), stepOrder = structure(logical(0), tags = list(type = "integer", box = TRUE)), stepName = structure(logical(0), tags = list(type = "string")), configuration = structure(list(serverStepConfiguration = structure(list(servers = structure(list(structure(list(serverArn = structure(logical(0), tags = list(type = "string")), impactLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), waitStepConfiguration = structure(list(waitDurationMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), createdAt = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$list_recovery_plans_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$list_recovery_plans_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlans = structure(list(structure(list(recoveryPlanArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .drs$list_staging_accounts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
@@ -383,6 +551,18 @@ NULL
   return(populate(args, shape))
 }
 
+.drs$reorder_recovery_plan_steps_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanArn = structure(logical(0), tags = list(type = "string")), orderedStepArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$reorder_recovery_plan_steps_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanSteps = structure(list(structure(list(recoveryPlanStepArn = structure(logical(0), tags = list(type = "string")), stepOrder = structure(logical(0), tags = list(type = "integer", box = TRUE)), stepName = structure(logical(0), tags = list(type = "string")), configuration = structure(list(serverStepConfiguration = structure(list(servers = structure(list(structure(list(serverArn = structure(logical(0), tags = list(type = "string")), impactLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), waitStepConfiguration = structure(list(waitDurationMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), createdAt = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .drs$retry_data_replication_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "WARNING: RetryDataReplication is deprecated"))
@@ -392,6 +572,18 @@ NULL
 .drs$retry_data_replication_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), recoveryInstanceId = structure(logical(0), tags = list(type = "string")), lastLaunchResult = structure(logical(0), tags = list(type = "string")), dataReplicationInfo = structure(list(lagDuration = structure(logical(0), tags = list(type = "string")), etaDateTime = structure(logical(0), tags = list(type = "string")), replicatedDisks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), totalStorageBytes = structure(logical(0), tags = list(type = "long")), replicatedStorageBytes = structure(logical(0), tags = list(type = "long")), rescannedStorageBytes = structure(logical(0), tags = list(type = "long")), backloggedStorageBytes = structure(logical(0), tags = list(type = "long")), volumeStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), dataReplicationState = structure(logical(0), tags = list(type = "string")), dataReplicationInitiation = structure(list(startDateTime = structure(logical(0), tags = list(type = "string")), nextAttemptDateTime = structure(logical(0), tags = list(type = "string")), steps = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), dataReplicationError = structure(list(error = structure(logical(0), tags = list(type = "string")), rawError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), stagingAvailabilityZone = structure(logical(0), tags = list(type = "string")), stagingOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lifeCycle = structure(list(addedToServiceDateTime = structure(logical(0), tags = list(type = "string")), firstByteDateTime = structure(logical(0), tags = list(type = "string")), elapsedReplicationDuration = structure(logical(0), tags = list(type = "string")), lastSeenByServiceDateTime = structure(logical(0), tags = list(type = "string")), lastLaunch = structure(list(initiated = structure(list(apiCallDateTime = structure(logical(0), tags = list(type = "string")), jobID = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), sourceProperties = structure(list(lastUpdatedDateTime = structure(logical(0), tags = list(type = "string")), recommendedInstanceType = structure(logical(0), tags = list(type = "string")), identificationHints = structure(list(fqdn = structure(logical(0), tags = list(type = "string")), hostname = structure(logical(0), tags = list(type = "string")), vmWareUuid = structure(logical(0), tags = list(type = "string")), awsInstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), networkInterfaces = structure(list(structure(list(macAddress = structure(logical(0), tags = list(type = "string")), ips = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), isPrimary = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), disks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), bytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), cpus = structure(list(structure(list(cores = structure(logical(0), tags = list(type = "long")), modelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ramBytes = structure(logical(0), tags = list(type = "long")), os = structure(list(fullString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), supportsNitroInstances = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), stagingArea = structure(list(status = structure(logical(0), tags = list(type = "string")), stagingAccountID = structure(logical(0), tags = list(type = "string")), stagingSourceServerArn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceCloudProperties = structure(list(originAccountID = structure(logical(0), tags = list(type = "string")), originRegion = structure(logical(0), tags = list(type = "string")), originAvailabilityZone = structure(logical(0), tags = list(type = "string")), sourceOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), replicationDirection = structure(logical(0), tags = list(type = "string")), reversedDirectionSourceServerArn = structure(logical(0), tags = list(type = "string")), sourceNetworkID = structure(logical(0), tags = list(type = "string")), agentVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$retry_recovery_plan_execution_step_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecutionStepArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$retry_recovery_plan_execution_step_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecutionStep = structure(list(recoveryPlanExecutionStepArn = structure(logical(0), tags = list(type = "string")), stepIndex = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string")), stepName = structure(logical(0), tags = list(type = "string")), configuration = structure(list(executionServerStepConfiguration = structure(list(servers = structure(list(structure(list(serverArn = structure(logical(0), tags = list(type = "string")), impactLevel = structure(logical(0), tags = list(type = "string")), jobID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), waitStepConfiguration = structure(list(waitDurationMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), errorDetail = structure(list(message = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), attempt = structure(logical(0), tags = list(type = "integer", box = TRUE)), createdAt = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -428,6 +620,18 @@ NULL
 .drs$start_recovery_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(job = structure(list(jobID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), initiatedBy = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "string")), endDateTime = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), participatingServers = structure(list(structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), recoveryInstanceID = structure(logical(0), tags = list(type = "string")), launchStatus = structure(logical(0), tags = list(type = "string")), launchActionsStatus = structure(list(ssmAgentDiscoveryDatetime = structure(logical(0), tags = list(type = "string")), runs = structure(list(structure(list(action = structure(list(actionId = structure(logical(0), tags = list(type = "string")), actionCode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), active = structure(logical(0), tags = list(type = "boolean", box = TRUE)), order = structure(logical(0), tags = list(type = "integer", box = TRUE)), actionVersion = structure(logical(0), tags = list(type = "string")), optional = structure(logical(0), tags = list(type = "boolean", box = TRUE)), parameters = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), description = structure(logical(0), tags = list(type = "string")), category = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), runId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), participatingResources = structure(list(structure(list(participatingResourceID = structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), launchStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$start_recovery_plan_execution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanArn = structure(logical(0), tags = list(type = "string")), mode = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), sourceServers = structure(list(structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), recoverySnapshotID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$start_recovery_plan_execution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecution = structure(list(recoveryPlanExecutionArn = structure(logical(0), tags = list(type = "string")), recoveryPlanArn = structure(logical(0), tags = list(type = "string")), mode = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startedAt = structure(logical(0), tags = list(type = "string")), completedAt = structure(logical(0), tags = list(type = "string")), errorDetail = structure(list(message = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -545,25 +749,61 @@ NULL
 
 .drs$update_launch_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoInstanceProperties = structure(list(launchIntoEC2InstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoInstanceProperties = structure(list(launchIntoEC2InstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), recoveryMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .drs$update_launch_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), ec2LaunchTemplateID = structure(logical(0), tags = list(type = "string")), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoInstanceProperties = structure(list(launchIntoEC2InstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), ec2LaunchTemplateID = structure(logical(0), tags = list(type = "string")), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoInstanceProperties = structure(list(launchIntoEC2InstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), recoveryMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .drs$update_launch_configuration_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(launchConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(launchConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE)), recoveryMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .drs$update_launch_configuration_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(launchConfigurationTemplate = structure(list(launchConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(launchConfigurationTemplate = structure(list(launchConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE)), recoveryMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$update_recovery_plan_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$update_recovery_plan_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlan = structure(list(recoveryPlanArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$update_recovery_plan_execution_step_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecutionStepArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), servers = structure(list(structure(list(serverArn = structure(logical(0), tags = list(type = "string")), impactLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), waitDurationMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$update_recovery_plan_execution_step_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanExecutionStep = structure(list(recoveryPlanExecutionStepArn = structure(logical(0), tags = list(type = "string")), stepIndex = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string")), stepName = structure(logical(0), tags = list(type = "string")), configuration = structure(list(executionServerStepConfiguration = structure(list(servers = structure(list(structure(list(serverArn = structure(logical(0), tags = list(type = "string")), impactLevel = structure(logical(0), tags = list(type = "string")), jobID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), waitStepConfiguration = structure(list(waitDurationMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), errorDetail = structure(list(message = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), attempt = structure(logical(0), tags = list(type = "integer", box = TRUE)), createdAt = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$update_recovery_plan_step_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanStepArn = structure(logical(0), tags = list(type = "string")), stepName = structure(logical(0), tags = list(type = "string")), configuration = structure(list(serverStepConfiguration = structure(list(servers = structure(list(structure(list(serverArn = structure(logical(0), tags = list(type = "string")), impactLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), waitStepConfiguration = structure(list(waitDurationMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.drs$update_recovery_plan_step_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recoveryPlanStep = structure(list(recoveryPlanStepArn = structure(logical(0), tags = list(type = "string")), stepOrder = structure(logical(0), tags = list(type = "integer", box = TRUE)), stepName = structure(logical(0), tags = list(type = "string")), configuration = structure(list(serverStepConfiguration = structure(list(servers = structure(list(structure(list(serverArn = structure(logical(0), tags = list(type = "string")), impactLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), waitStepConfiguration = structure(list(waitDurationMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), createdAt = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

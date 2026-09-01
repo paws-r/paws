@@ -147,6 +147,7 @@ Direct Connect links your internal network to an Direct Connect location over a 
 \link[paws.networking:directconnect_describe_virtual_interfaces]{describe_virtual_interfaces} \tab Displays all virtual interfaces for an Amazon Web Services account\cr
 \link[paws.networking:directconnect_disassociate_connection_from_lag]{disassociate_connection_from_lag} \tab Disassociates a connection from a link aggregation group (LAG)\cr
 \link[paws.networking:directconnect_disassociate_mac_sec_key]{disassociate_mac_sec_key} \tab Removes the association between a MAC Security (MACsec) security key and a Direct Connect connection\cr
+\link[paws.networking:directconnect_list_virtual_interface_routes]{list_virtual_interface_routes} \tab Lists the routes for the specified virtual interface\cr
 \link[paws.networking:directconnect_list_virtual_interface_test_history]{list_virtual_interface_test_history} \tab Lists the virtual interface failover test history\cr
 \link[paws.networking:directconnect_start_bgp_failover_test]{start_bgp_failover_test} \tab Starts the virtual interface failover test that verifies your configuration meets your resiliency requirements by placing the BGP peering session in the DOWN state\cr
 \link[paws.networking:directconnect_stop_bgp_failover_test]{stop_bgp_failover_test} \tab Stops the virtual interface failover test\cr

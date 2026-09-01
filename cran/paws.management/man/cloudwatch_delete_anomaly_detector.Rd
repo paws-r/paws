@@ -5,6 +5,7 @@
 \title{Deletes the specified anomaly detection model from your account}
 \usage{
 cloudwatch_delete_anomaly_detector(
+  AnomalyDetectorId = NULL,
   Namespace = NULL,
   MetricName = NULL,
   Dimensions = NULL,
@@ -14,6 +15,8 @@ cloudwatch_delete_anomaly_detector(
 )
 }
 \arguments{
+\item{AnomalyDetectorId}{Specifies the unique identifier of the anomaly detector to delete. If you specify this parameter, you do not need to specify a metric to identify the detector.}
+
 \item{Namespace}{The namespace associated with the anomaly detection model to delete.}
 
 \item{MetricName}{The metric name associated with the anomaly detection model to delete.}

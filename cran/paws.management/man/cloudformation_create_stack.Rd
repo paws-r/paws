@@ -22,7 +22,9 @@ cloudformation_create_stack(
   Tags = NULL,
   ClientRequestToken = NULL,
   EnableTerminationProtection = NULL,
-  RetainExceptOnCreate = NULL
+  RetainExceptOnCreate = NULL,
+  DeploymentConfig = NULL,
+  DisableValidation = NULL
 )
 }
 \arguments{
@@ -126,6 +128,12 @@ In the console, stack operations display the client request token on the Events 
 For \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html}{nested stacks}, termination protection is set on the root stack and can't be changed directly on the nested stack.}
 
 \item{RetainExceptOnCreate}{When set to \code{true}, newly created resources are deleted when the operation rolls back. This includes newly created resources marked with a deletion policy of \code{Retain}.
+
+Default: \code{false}}
+
+\item{DeploymentConfig}{The deployment configuration for this stack operation, including the deployment mode.}
+
+\item{DisableValidation}{Set to \code{true} to disable pre-deployment validations in changeset or stack operations.
 
 Default: \code{false}}
 }

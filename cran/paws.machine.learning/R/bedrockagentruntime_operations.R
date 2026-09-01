@@ -3,6 +3,80 @@
 #' @include bedrockagentruntime_service.R
 NULL
 
+#' Retrieves information from one or more knowledge bases using an agentic
+#' approach
+#'
+#' @description
+#' Retrieves information from one or more knowledge bases using an agentic approach. Agentic retrieval uses a foundation model to intelligently decompose complex queries into sub-queries and iteratively retrieve relevant information from your knowledge bases. This approach improves retrieval accuracy for complex, multi-step questions that a single retrieval pass might not fully address.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_agentic_retrieve_stream/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_agentic_retrieve_stream/) for full documentation.
+#'
+#' @param agenticRetrieveConfiguration &#91;required&#93; Configuration settings for the agentic retrieval operation.
+#' @param generateResponse Whether to generate a response based on the retrieved results.
+#' @param memoryConfiguration The configuration for using an Amazon Bedrock AgentCore Memory resource with this retrieval.
+#' @param messages &#91;required&#93; The list of messages for the agentic retrieval conversation.
+#' @param nextToken Opaque continuation token for paginated results.
+#' @param policyConfiguration Policy configuration for guardrails and content filtering.
+#' @param retrievers &#91;required&#93; The list of retrievers to use for agentic retrieval.
+#' @param userContext Contains information about the user making the request. This is used for access control filtering to ensure that retrieval results only include documents the user is authorized to access.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_agentic_retrieve_stream
+bedrockagentruntime_agentic_retrieve_stream <- function(agenticRetrieveConfiguration, generateResponse = NULL, memoryConfiguration = NULL, messages, nextToken = NULL, policyConfiguration = NULL, retrievers, userContext = NULL) {
+  op <- new_operation(
+    name = "AgenticRetrieveStream",
+    http_method = "POST",
+    http_path = "/agenticRetrieveStream",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = TRUE
+  )
+  input <- .bedrockagentruntime$agentic_retrieve_stream_input(agenticRetrieveConfiguration = agenticRetrieveConfiguration, generateResponse = generateResponse, memoryConfiguration = memoryConfiguration, messages = messages, nextToken = nextToken, policyConfiguration = policyConfiguration, retrievers = retrievers, userContext = userContext)
+  output <- .bedrockagentruntime$agentic_retrieve_stream_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$agentic_retrieve_stream <- bedrockagentruntime_agentic_retrieve_stream
+
+#' Checks whether a user has access to a specific document by verifying
+#' against the ingested access control list (ACL) in a knowledge base
+#'
+#' @description
+#' Checks whether a user has access to a specific document by verifying against the ingested access control list (ACL) in a knowledge base. Use this operation to validate that document-level access control is working as expected after ingestion. To use this operation, you must have the `bedrock:CheckIngestedDocumentAcl` permission.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_check_ingested_document_acl/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_check_ingested_document_acl/) for full documentation.
+#'
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the document.
+#' @param documentId &#91;required&#93; The unique identifier of the document to check access for.
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that contains the document.
+#' @param userContext &#91;required&#93; The context object containing identity information for access control filtering, including user ID and optional group memberships used to evaluate the document access control list (ACL).
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_check_ingested_document_acl
+bedrockagentruntime_check_ingested_document_acl <- function(dataSourceId, documentId, knowledgeBaseId, userContext) {
+  op <- new_operation(
+    name = "CheckIngestedDocumentAcl",
+    http_method = "POST",
+    http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/check-ingested-document-acl",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$check_ingested_document_acl_input(dataSourceId = dataSourceId, documentId = documentId, knowledgeBaseId = knowledgeBaseId, userContext = userContext)
+  output <- .bedrockagentruntime$check_ingested_document_acl_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$check_ingested_document_acl <- bedrockagentruntime_check_ingested_document_acl
+
 #' Creates a new invocation within a session
 #'
 #' @description
@@ -235,6 +309,41 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 }
 .bedrockagentruntime$operations$get_agent_memory <- bedrockagentruntime_get_agent_memory
 
+#' Retrieves the content of an ingested document from a knowledge base
+#'
+#' @description
+#' Retrieves the content of an ingested document from a knowledge base. Returns a pre-signed URL for secure document access.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_get_document_content/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_get_document_content/) for full documentation.
+#'
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the document.
+#' @param documentId &#91;required&#93; The unique identifier of the document to retrieve content for.
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that contains the document.
+#' @param outputFormat The output format for the document content. `RAW` returns the original file. `EXTRACTED` returns parsed text as JSON. Defaults to `RAW`.
+#' @param userContext Contains information about the user making the request. This is used for access control filtering to ensure that results only include documents the user is authorized to access.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_get_document_content
+bedrockagentruntime_get_document_content <- function(dataSourceId, documentId, knowledgeBaseId, outputFormat = NULL, userContext = NULL) {
+  op <- new_operation(
+    name = "GetDocumentContent",
+    http_method = "POST",
+    http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/documents/{documentId}/content",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$get_document_content_input(dataSourceId = dataSourceId, documentId = documentId, knowledgeBaseId = knowledgeBaseId, outputFormat = outputFormat, userContext = userContext)
+  output <- .bedrockagentruntime$get_document_content_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$get_document_content <- bedrockagentruntime_get_document_content
+
 #' Retrieves the flow definition snapshot used for a flow execution
 #'
 #' @description
@@ -302,6 +411,40 @@ bedrockagentruntime_get_flow_execution <- function(executionIdentifier, flowAlia
 }
 .bedrockagentruntime$operations$get_flow_execution <- bedrockagentruntime_get_flow_execution
 
+#' Retrieves the ingested access control list (ACL) for a specific document
+#' in a knowledge base
+#'
+#' @description
+#' Retrieves the ingested access control list (ACL) for a specific document in a knowledge base. Use this operation to inspect the allow and deny lists that were ingested for a document to troubleshoot access control issues. To use this operation, you must have the `bedrock:GetIngestedDocumentAcl` permission.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_get_ingested_document_acl/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_get_ingested_document_acl/) for full documentation.
+#'
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the document.
+#' @param documentId &#91;required&#93; The unique identifier of the document to retrieve the ingested access control list (ACL) for.
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that contains the document.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_get_ingested_document_acl
+bedrockagentruntime_get_ingested_document_acl <- function(dataSourceId, documentId, knowledgeBaseId) {
+  op <- new_operation(
+    name = "GetIngestedDocumentAcl",
+    http_method = "POST",
+    http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/get-ingested-document-acl",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$get_ingested_document_acl_input(dataSourceId = dataSourceId, documentId = documentId, knowledgeBaseId = knowledgeBaseId)
+  output <- .bedrockagentruntime$get_ingested_document_acl_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$get_ingested_document_acl <- bedrockagentruntime_get_ingested_document_acl
+
 #' Retrieves the details of a specific invocation step within an invocation
 #' in a session
 #'
@@ -367,10 +510,11 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 }
 .bedrockagentruntime$operations$get_session <- bedrockagentruntime_get_session
 
-#' Sends a prompt for the agent to process and respond to
+#' Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer
+#' open to new customers
 #'
 #' @description
-#' Sends a prompt for the agent to process and respond to. Note the following fields for the request:
+#' Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer open to new customers. For capabilities similar to Bedrock Agents Classic, explore Amazon Bedrock AgentCore. Existing customers can continue to use the service as normal. For more information, see [Amazon Bedrock Agents Classic availability change](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-classic-maintenance-mode.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_invoke_agent/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_invoke_agent/) for full documentation.
 #'
@@ -419,7 +563,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #' the output of each node as a stream
 #'
 #' @description
-#' Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream. If there's an error, the error is returned. For more information, see [Test a flow in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-test.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream. If there's an error, the error is returned. For more information, see [Test a flow in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-test.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=awsomedayonlinehk).
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_invoke_flow/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_invoke_flow/) for full documentation.
 #'
@@ -717,7 +861,7 @@ bedrockagentruntime_list_tags_for_resource <- function(resourceArn) {
 #' Optimizes a prompt for the task that you specify
 #'
 #' @description
-#' Optimizes a prompt for the task that you specify. For more information, see [Optimize a prompt](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-optimize.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Optimizes a prompt for the task that you specify. For more information, see [Optimize a prompt](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-optimize.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=awsomedayonlinehk).
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_optimize_prompt/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_optimize_prompt/) for full documentation.
 #'
@@ -827,11 +971,12 @@ bedrockagentruntime_rerank <- function(nextToken = NULL, queries, rerankingConfi
 #' @param nextToken If there are more results than can fit in the response, the response returns a `nextToken`. Use this token in the `nextToken` field of another request to retrieve the next batch of results.
 #' @param retrievalConfiguration Contains configurations for the knowledge base query and retrieval process. For more information, see [Query configurations](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-config.html).
 #' @param retrievalQuery &#91;required&#93; Contains the query to send the knowledge base.
+#' @param userContext Contains information about the user making the request. This is used for access control filtering to ensure that retrieval results only include documents the user is authorized to access.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagentruntime_retrieve
-bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledgeBaseId, nextToken = NULL, retrievalConfiguration = NULL, retrievalQuery) {
+bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledgeBaseId, nextToken = NULL, retrievalConfiguration = NULL, retrievalQuery, userContext = NULL) {
   op <- new_operation(
     name = "Retrieve",
     http_method = "POST",
@@ -840,7 +985,7 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "retrievalResults"),
     stream_api = FALSE
   )
-  input <- .bedrockagentruntime$retrieve_input(guardrailConfiguration = guardrailConfiguration, knowledgeBaseId = knowledgeBaseId, nextToken = nextToken, retrievalConfiguration = retrievalConfiguration, retrievalQuery = retrievalQuery)
+  input <- .bedrockagentruntime$retrieve_input(guardrailConfiguration = guardrailConfiguration, knowledgeBaseId = knowledgeBaseId, nextToken = nextToken, retrievalConfiguration = retrievalConfiguration, retrievalQuery = retrievalQuery, userContext = userContext)
   output <- .bedrockagentruntime$retrieve_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -862,11 +1007,12 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
 #' @param retrieveAndGenerateConfiguration Contains configurations for the knowledge base query and retrieval process. For more information, see [Query configurations](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-config.html).
 #' @param sessionConfiguration Contains details about the session with the knowledge base.
 #' @param sessionId The unique identifier of the session. When you first make a [`retrieve_and_generate`][bedrockagentruntime_retrieve_and_generate] request, Amazon Bedrock automatically generates this value. You must reuse this value for all subsequent requests in the same conversational session. This value allows Amazon Bedrock to maintain context and knowledge from previous interactions. You can't explicitly set the `sessionId` yourself.
+#' @param userContext Contains information about the user making the request. This is used for access control filtering to ensure that retrieval results only include documents the user is authorized to access.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagentruntime_retrieve_and_generate
-bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerateConfiguration = NULL, sessionConfiguration = NULL, sessionId = NULL) {
+bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerateConfiguration = NULL, sessionConfiguration = NULL, sessionId = NULL, userContext = NULL) {
   op <- new_operation(
     name = "RetrieveAndGenerate",
     http_method = "POST",
@@ -875,7 +1021,7 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentruntime$retrieve_and_generate_input(input = input, retrieveAndGenerateConfiguration = retrieveAndGenerateConfiguration, sessionConfiguration = sessionConfiguration, sessionId = sessionId)
+  input <- .bedrockagentruntime$retrieve_and_generate_input(input = input, retrieveAndGenerateConfiguration = retrieveAndGenerateConfiguration, sessionConfiguration = sessionConfiguration, sessionId = sessionId, userContext = userContext)
   output <- .bedrockagentruntime$retrieve_and_generate_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -897,11 +1043,12 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #' @param retrieveAndGenerateConfiguration Contains configurations for the knowledge base query and retrieval process. For more information, see [Query configurations](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-config.html).
 #' @param sessionConfiguration Contains details about the session with the knowledge base.
 #' @param sessionId The unique identifier of the session. When you first make a [`retrieve_and_generate`][bedrockagentruntime_retrieve_and_generate] request, Amazon Bedrock automatically generates this value. You must reuse this value for all subsequent requests in the same conversational session. This value allows Amazon Bedrock to maintain context and knowledge from previous interactions. You can't explicitly set the `sessionId` yourself.
+#' @param userContext Contains information about the user making the request. This is used for access control filtering to ensure that retrieval results only include documents the user is authorized to access.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagentruntime_retrieve_and_generate_stream
-bedrockagentruntime_retrieve_and_generate_stream <- function(input, retrieveAndGenerateConfiguration = NULL, sessionConfiguration = NULL, sessionId = NULL) {
+bedrockagentruntime_retrieve_and_generate_stream <- function(input, retrieveAndGenerateConfiguration = NULL, sessionConfiguration = NULL, sessionId = NULL, userContext = NULL) {
   op <- new_operation(
     name = "RetrieveAndGenerateStream",
     http_method = "POST",
@@ -910,7 +1057,7 @@ bedrockagentruntime_retrieve_and_generate_stream <- function(input, retrieveAndG
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$retrieve_and_generate_stream_input(input = input, retrieveAndGenerateConfiguration = retrieveAndGenerateConfiguration, sessionConfiguration = sessionConfiguration, sessionId = sessionId)
+  input <- .bedrockagentruntime$retrieve_and_generate_stream_input(input = input, retrieveAndGenerateConfiguration = retrieveAndGenerateConfiguration, sessionConfiguration = sessionConfiguration, sessionId = sessionId, userContext = userContext)
   output <- .bedrockagentruntime$retrieve_and_generate_stream_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -991,7 +1138,7 @@ bedrockagentruntime_stop_flow_execution <- function(executionIdentifier, flowAli
 #' Associate tags with a resource
 #'
 #' @description
-#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the Amazon Bedrock User Guide.
+#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=awsomedayonlinehk) in the Amazon Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_tag_resource/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_tag_resource/) for full documentation.
 #'

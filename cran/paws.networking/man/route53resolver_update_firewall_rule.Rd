@@ -18,7 +18,8 @@ route53resolver_update_firewall_rule(
   FirewallDomainRedirectionAction = NULL,
   Qtype = NULL,
   DnsThreatProtection = NULL,
-  ConfidenceThreshold = NULL
+  ConfidenceThreshold = NULL,
+  FirewallRuleType = NULL
 )
 }
 \arguments{
@@ -75,15 +76,16 @@ You must specify a unique priority for each rule in a rule group. To make it eas
 \item SPF: Lists the servers authorized to send emails from a domain.
 \item SRV: Application specific values that identify servers.
 \item TXT: Verifies email senders and application-specific values.
-\item A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65334, for example, TYPE28. For more information, see \href{https://en.wikipedia.org/wiki/List_of_DNS_record_types}{List of DNS record types}.
+\item A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65534, for example, TYPE28. For more information, see \href{https://en.wikipedia.org/wiki/List_of_DNS_record_types}{List of DNS record types}.
 
 If you set up a firewall BLOCK rule with action NXDOMAIN on query type equals AAAA, this action will not be applied to synthetic IPv6 addresses generated when DNS64 is enabled.
 }}
 
-\item{DnsThreatProtection}{The type of the DNS Firewall Advanced rule. Valid values are:
+\item{DnsThreatProtection}{The type of the DNS Firewall Advanced rule. This setting is mutually exclusive with \code{FirewallDomainListId} and \code{FirewallRuleType}. Valid values are:
 \itemize{
-\item \code{DGA}: Domain generation algorithms detection. DGAs are used by attackers to generate a large number of domains to to launch malware attacks.
+\item \code{DGA}: Domain generation algorithms detection. DGAs are used by attackers to generate a large number of domains to launch malware attacks.
 \item \code{DNS_TUNNELING}: DNS tunneling detection. DNS tunneling is used by attackers to exfiltrate data from the client by using the DNS tunnel without making a network connection to the client.
+\item \code{DICTIONARY_DGA}: Dictionary-based domain generation algorithms detection. Dictionary DGAs use wordlists to generate domains that appear more legitimate, making them harder to detect than traditional DGAs.
 }}
 
 \item{ConfidenceThreshold}{The confidence threshold for DNS Firewall Advanced. You must provide this value when you create a DNS Firewall Advanced rule. The confidence level values mean:
@@ -92,9 +94,19 @@ If you set up a firewall BLOCK rule with action NXDOMAIN on query type equals AA
 \item \code{MEDIUM}: Provides a balance between detecting threats and false positives.
 \item \code{HIGH}: Detects only the most well corroborated threats with a low rate of false positives.
 }}
+
+\item{FirewallRuleType}{The rule type configuration for the firewall rule. This is a tagged union — set exactly one of its members. This setting is mutually exclusive with the top-level \code{FirewallDomainListId} and \code{DnsThreatProtection} fields. Use one of:
+\itemize{
+\item \code{FirewallAdvancedContentCategory} — match an AWS-managed content category (for example, \code{VIOLENCE_AND_HATE_SPEECH}).
+\item \code{FirewallAdvancedThreatCategory} — match an AWS-managed advanced threat category (for example, \code{PHISHING}).
+\item \code{DnsThreatProtection} — match a built-in DNS Firewall Advanced threat detector (\code{DGA}, \code{DNS_TUNNELING}, or \code{DICTIONARY_DGA}).
+\item \code{PartnerThreatProtection} — match a third-party threat feed delivered through AWS Marketplace. The selected partner must be an active subscription on the calling account.
+}
+
+To enumerate the values supported in your account, call \code{\link[=route53resolver_list_firewall_rule_types]{list_firewall_rule_types}}.}
 }
 \description{
-Updates the specified firewall rule.
+Updates the specified firewall rule. The rule's \code{FirewallRuleType}, \code{FirewallDomainListId}, and top-level \code{DnsThreatProtection} match source cannot be changed after creation. Rules whose \code{Status} is \code{CREATING} or \code{CREATION_FAILED} cannot be updated; remove a failed rule with \code{\link[=route53resolver_delete_firewall_rule]{delete_firewall_rule}}.
 
 See \url{https://www.paws-r-sdk.com/docs/route53resolver_update_firewall_rule/} for full documentation.
 }

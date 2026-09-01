@@ -13,11 +13,12 @@ sagemakerruntime_invoke_endpoint_async(
   Accept = NULL,
   CustomAttributes = NULL,
   InferenceId = NULL,
-  InputLocation,
+  InputLocation = NULL,
   S3OutputPathExtension = NULL,
   Filename = NULL,
   RequestTTLSeconds = NULL,
-  InvocationTimeoutSeconds = NULL
+  InvocationTimeoutSeconds = NULL,
+  Body = NULL
 )
 }
 \arguments{
@@ -35,7 +36,7 @@ This feature is currently supported in the Amazon Web Services SDKs but not in t
 
 \item{InferenceId}{The identifier for the inference request. Amazon SageMaker AI will generate an identifier for you if none is specified.}
 
-\item{InputLocation}{[required] The Amazon S3 URI where the inference request payload is stored.}
+\item{InputLocation}{The Amazon S3 URI where the inference request payload is stored.}
 
 \item{S3OutputPathExtension}{The path extension that is appended to the Amazon S3 output path where the inference response payload is stored.}
 
@@ -44,6 +45,12 @@ This feature is currently supported in the Amazon Web Services SDKs but not in t
 \item{RequestTTLSeconds}{Maximum age in seconds a request can be in the queue before it is marked as expired. The default is 6 hours, or 21,600 seconds.}
 
 \item{InvocationTimeoutSeconds}{Maximum amount of time in seconds a request can be processed before it is marked as expired. The default is 15 minutes, or 900 seconds.}
+
+\item{Body}{Provides inline input data for the inference request, in the format specified in the \code{ContentType} request header. Use this parameter to send the request payload directly in the API call instead of uploading it to Amazon S3 and referencing it with \code{InputLocation}. The inline payload can be up to 128,000 bytes.
+
+\code{Body} and \code{InputLocation} are mutually exclusive. Provide exactly one of them.
+
+For information about the format of the request body, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html}{Common Data Formats-Inference}.}
 }
 \description{
 After you deploy a model into production using Amazon SageMaker AI hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint in an asynchronous manner.

@@ -93,8 +93,8 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #'
 #' @usage
 #' lambda_add_permission(FunctionName, StatementId, Action, Principal,
-#'   SourceArn, SourceAccount, EventSourceToken, Qualifier, RevisionId,
-#'   PrincipalOrgID, FunctionUrlAuthType, InvokedViaFunctionUrl)
+#'   SourceArn, FunctionUrlAuthType, InvokedViaFunctionUrl, SourceAccount,
+#'   EventSourceToken, Qualifier, RevisionId, PrincipalOrgID)
 #'
 #' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
@@ -113,13 +113,13 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' @param SourceArn For Amazon Web Services services, the ARN of the Amazon Web Services resource that invokes the function. For example, an Amazon S3 bucket or Amazon SNS topic.
 #' 
 #' Note that Lambda configures the comparison using the `StringLike` operator.
+#' @param FunctionUrlAuthType The type of authentication that your function URL uses. Set to `AWS_IAM` if you want to restrict access to authenticated users only. Set to `NONE` if you want to bypass IAM authentication to create a public endpoint. For more information, see [Control access to Lambda function URLs](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html).
+#' @param InvokedViaFunctionUrl Indicates whether the permission applies when the function is invoked through a function URL.
 #' @param SourceAccount For Amazon Web Services service, the ID of the Amazon Web Services account that owns the resource. Use this together with `SourceArn` to ensure that the specified account owns the resource. It is possible for an Amazon S3 bucket to be deleted by its owner and recreated by another account.
 #' @param EventSourceToken For Alexa Smart Home functions, a token that the invoker must supply.
 #' @param Qualifier Specify a version or alias to add permissions to a published version of the function.
 #' @param RevisionId Update the policy only if the revision ID matches the ID that's specified. Use this option to avoid modifying a policy that has changed since you last read it.
 #' @param PrincipalOrgID The identifier for your organization in Organizations. Use this to grant permissions to all the Amazon Web Services accounts under this organization.
-#' @param FunctionUrlAuthType The type of authentication that your function URL uses. Set to `AWS_IAM` if you want to restrict access to authenticated users only. Set to `NONE` if you want to bypass IAM authentication to create a public endpoint. For more information, see [Control access to Lambda function URLs](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html).
-#' @param InvokedViaFunctionUrl Indicates whether the permission applies when the function is invoked through a function URL.
 #'
 #' @return
 #' A list with the following syntax:
@@ -137,13 +137,13 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #'   Action = "string",
 #'   Principal = "string",
 #'   SourceArn = "string",
+#'   FunctionUrlAuthType = "NONE"|"AWS_IAM",
+#'   InvokedViaFunctionUrl = TRUE|FALSE,
 #'   SourceAccount = "string",
 #'   EventSourceToken = "string",
 #'   Qualifier = "string",
 #'   RevisionId = "string",
-#'   PrincipalOrgID = "string",
-#'   FunctionUrlAuthType = "NONE"|"AWS_IAM",
-#'   InvokedViaFunctionUrl = TRUE|FALSE
+#'   PrincipalOrgID = "string"
 #' )
 #' ```
 #'
@@ -176,7 +176,7 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' @rdname lambda_add_permission
 #'
 #' @aliases lambda_add_permission
-lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, SourceArn = NULL, SourceAccount = NULL, EventSourceToken = NULL, Qualifier = NULL, RevisionId = NULL, PrincipalOrgID = NULL, FunctionUrlAuthType = NULL, InvokedViaFunctionUrl = NULL) {
+lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, SourceArn = NULL, FunctionUrlAuthType = NULL, InvokedViaFunctionUrl = NULL, SourceAccount = NULL, EventSourceToken = NULL, Qualifier = NULL, RevisionId = NULL, PrincipalOrgID = NULL) {
   op <- new_operation(
     name = "AddPermission",
     http_method = "POST",
@@ -185,7 +185,7 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$add_permission_input(FunctionName = FunctionName, StatementId = StatementId, Action = Action, Principal = Principal, SourceArn = SourceArn, SourceAccount = SourceAccount, EventSourceToken = EventSourceToken, Qualifier = Qualifier, RevisionId = RevisionId, PrincipalOrgID = PrincipalOrgID, FunctionUrlAuthType = FunctionUrlAuthType, InvokedViaFunctionUrl = InvokedViaFunctionUrl)
+  input <- .lambda$add_permission_input(FunctionName = FunctionName, StatementId = StatementId, Action = Action, Principal = Principal, SourceArn = SourceArn, FunctionUrlAuthType = FunctionUrlAuthType, InvokedViaFunctionUrl = InvokedViaFunctionUrl, SourceAccount = SourceAccount, EventSourceToken = EventSourceToken, Qualifier = Qualifier, RevisionId = RevisionId, PrincipalOrgID = PrincipalOrgID)
   output <- .lambda$add_permission_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -469,7 +469,7 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' @usage
 #' lambda_create_capacity_provider(CapacityProviderName, VpcConfig,
 #'   PermissionsConfig, InstanceRequirements, CapacityProviderScalingConfig,
-#'   KmsKeyArn, Tags)
+#'   KmsKeyArn, Tags, PropagateTags, TelemetryConfig)
 #'
 #' @param CapacityProviderName &#91;required&#93; The name of the capacity provider.
 #' @param VpcConfig &#91;required&#93; The VPC configuration for the capacity provider, including subnet IDs and security group IDs where compute instances will be launched.
@@ -478,6 +478,8 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' @param CapacityProviderScalingConfig The scaling configuration that defines how the capacity provider scales compute instances, including maximum vCPU count and scaling policies.
 #' @param KmsKeyArn The ARN of the KMS key used to encrypt data associated with the capacity provider.
 #' @param Tags A list of tags to associate with the capacity provider.
+#' @param PropagateTags The tag propagation configuration for the capacity provider. Specifies tags to apply to managed resources at launch.
+#' @param TelemetryConfig The telemetry configuration for the capacity provider. Specifies logging settings for managed resources.
 #'
 #' @return
 #' A list with the following syntax:
@@ -519,7 +521,19 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #'       )
 #'     ),
 #'     KmsKeyArn = "string",
-#'     LastModified = "string"
+#'     LastModified = "string",
+#'     PropagateTags = list(
+#'       Mode = "None"|"Explicit",
+#'       ExplicitTags = list(
+#'         "string"
+#'       )
+#'     ),
+#'     TelemetryConfig = list(
+#'       LoggingConfig = list(
+#'         SystemLogLevel = "DEBUG"|"INFO"|"WARN",
+#'         LogGroup = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -563,6 +577,18 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #'   KmsKeyArn = "string",
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   PropagateTags = list(
+#'     Mode = "None"|"Explicit",
+#'     ExplicitTags = list(
+#'       "string"
+#'     )
+#'   ),
+#'   TelemetryConfig = list(
+#'     LoggingConfig = list(
+#'       SystemLogLevel = "DEBUG"|"INFO"|"WARN",
+#'       LogGroup = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -572,7 +598,7 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' @rdname lambda_create_capacity_provider
 #'
 #' @aliases lambda_create_capacity_provider
-lambda_create_capacity_provider <- function(CapacityProviderName, VpcConfig, PermissionsConfig, InstanceRequirements = NULL, CapacityProviderScalingConfig = NULL, KmsKeyArn = NULL, Tags = NULL) {
+lambda_create_capacity_provider <- function(CapacityProviderName, VpcConfig, PermissionsConfig, InstanceRequirements = NULL, CapacityProviderScalingConfig = NULL, KmsKeyArn = NULL, Tags = NULL, PropagateTags = NULL, TelemetryConfig = NULL) {
   op <- new_operation(
     name = "CreateCapacityProvider",
     http_method = "POST",
@@ -581,7 +607,7 @@ lambda_create_capacity_provider <- function(CapacityProviderName, VpcConfig, Per
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$create_capacity_provider_input(CapacityProviderName = CapacityProviderName, VpcConfig = VpcConfig, PermissionsConfig = PermissionsConfig, InstanceRequirements = InstanceRequirements, CapacityProviderScalingConfig = CapacityProviderScalingConfig, KmsKeyArn = KmsKeyArn, Tags = Tags)
+  input <- .lambda$create_capacity_provider_input(CapacityProviderName = CapacityProviderName, VpcConfig = VpcConfig, PermissionsConfig = PermissionsConfig, InstanceRequirements = InstanceRequirements, CapacityProviderScalingConfig = CapacityProviderScalingConfig, KmsKeyArn = KmsKeyArn, Tags = Tags, PropagateTags = PropagateTags, TelemetryConfig = TelemetryConfig)
   output <- .lambda$create_capacity_provider_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -721,15 +747,15 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'
 #' @usage
 #' lambda_create_event_source_mapping(EventSourceArn, FunctionName,
-#'   Enabled, BatchSize, FilterCriteria, MaximumBatchingWindowInSeconds,
+#'   Enabled, BatchSize, FilterCriteria, KMSKeyArn, MetricsConfig,
+#'   LoggingConfig, ScalingConfig, MaximumBatchingWindowInSeconds,
 #'   ParallelizationFactor, StartingPosition, StartingPositionTimestamp,
 #'   DestinationConfig, MaximumRecordAgeInSeconds,
 #'   BisectBatchOnFunctionError, MaximumRetryAttempts, Tags,
 #'   TumblingWindowInSeconds, Topics, Queues, SourceAccessConfigurations,
 #'   SelfManagedEventSource, FunctionResponseTypes,
 #'   AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig,
-#'   ScalingConfig, DocumentDBEventSourceConfig, KMSKeyArn, MetricsConfig,
-#'   LoggingConfig, ProvisionedPollerConfig)
+#'   DocumentDBEventSourceConfig, ProvisionedPollerConfig)
 #'
 #' @param EventSourceArn The Amazon Resource Name (ARN) of the event source.
 #' 
@@ -776,6 +802,10 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' 
 #' -   **DocumentDB** – Default 100. Max 10,000.
 #' @param FilterCriteria An object that defines the filter criteria that determine whether Lambda should process an event. For more information, see [Lambda event filtering](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html).
+#' @param KMSKeyArn The ARN of the Key Management Service (KMS) customer managed key that Lambda uses to encrypt your function's [filter criteria](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-basics). By default, Lambda does not encrypt your filter criteria object. Specify this property to encrypt data using your own customer managed key.
+#' @param MetricsConfig The metrics configuration for your event source. For more information, see [Event source mapping metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
+#' @param LoggingConfig (Amazon MSK, and self-managed Apache Kafka only) The logging configuration for your event source. For more information, see [Event source mapping logging](https://docs.aws.amazon.com/lambda/latest/dg/esm-logging.html).
+#' @param ScalingConfig (Amazon SQS only) The scaling configuration for the event source. For more information, see [Configuring maximum concurrency for Amazon SQS event sources](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-max-concurrency).
 #' @param MaximumBatchingWindowInSeconds The maximum amount of time, in seconds, that Lambda spends gathering records before invoking the function. You can configure `MaximumBatchingWindowInSeconds` to any value from 0 seconds to 300 seconds in increments of seconds.
 #' 
 #' For Kinesis, DynamoDB, and Amazon SQS event sources, the default batching window is 0 seconds. For Amazon MSK, Self-managed Apache Kafka, Amazon MQ, and DocumentDB event sources, the default batching window is 500 ms. Note that because you can only change `MaximumBatchingWindowInSeconds` in increments of seconds, you cannot revert back to the 500 ms default batching window after you have changed it. To restore the default batching window, you must create a new event source mapping.
@@ -797,11 +827,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @param FunctionResponseTypes (Kinesis, DynamoDB Streams, Amazon MSK, self-managed Apache Kafka, and Amazon SQS) A list of current response type enums applied to the event source mapping.
 #' @param AmazonManagedKafkaEventSourceConfig Specific configuration settings for an Amazon Managed Streaming for Apache Kafka (Amazon MSK) event source.
 #' @param SelfManagedKafkaEventSourceConfig Specific configuration settings for a self-managed Apache Kafka event source.
-#' @param ScalingConfig (Amazon SQS only) The scaling configuration for the event source. For more information, see [Configuring maximum concurrency for Amazon SQS event sources](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-max-concurrency).
 #' @param DocumentDBEventSourceConfig Specific configuration settings for a DocumentDB event source.
-#' @param KMSKeyArn The ARN of the Key Management Service (KMS) customer managed key that Lambda uses to encrypt your function's [filter criteria](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-basics). By default, Lambda does not encrypt your filter criteria object. Specify this property to encrypt data using your own customer managed key.
-#' @param MetricsConfig The metrics configuration for your event source. For more information, see [Event source mapping metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
-#' @param LoggingConfig (Amazon MSK, and self-managed Apache Kafka only) The logging configuration for your event source. For more information, see [Event source mapping logging](https://docs.aws.amazon.com/lambda/latest/dg/esm-logging.html).
 #' @param ProvisionedPollerConfig (Amazon SQS, Amazon MSK, and self-managed Apache Kafka only) The provisioned mode configuration for the event source. For more information, see [provisioned mode](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode).
 #'
 #' @return
@@ -823,6 +849,22 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'         Pattern = "string"
 #'       )
 #'     )
+#'   ),
+#'   FilterCriteriaError = list(
+#'     ErrorCode = "string",
+#'     Message = "string"
+#'   ),
+#'   KMSKeyArn = "string",
+#'   MetricsConfig = list(
+#'     Metrics = list(
+#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
+#'     )
+#'   ),
+#'   LoggingConfig = list(
+#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
+#'   ),
+#'   ScalingConfig = list(
+#'     MaximumConcurrency = 123
 #'   ),
 #'   FunctionArn = "string",
 #'   LastModified = as.POSIXct(
@@ -901,28 +943,12 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'       )
 #'     )
 #'   ),
-#'   ScalingConfig = list(
-#'     MaximumConcurrency = 123
-#'   ),
 #'   DocumentDBEventSourceConfig = list(
 #'     DatabaseName = "string",
 #'     CollectionName = "string",
 #'     FullDocument = "UpdateLookup"|"Default"
 #'   ),
-#'   KMSKeyArn = "string",
-#'   FilterCriteriaError = list(
-#'     ErrorCode = "string",
-#'     Message = "string"
-#'   ),
 #'   EventSourceMappingArn = "string",
-#'   MetricsConfig = list(
-#'     Metrics = list(
-#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
-#'     )
-#'   ),
-#'   LoggingConfig = list(
-#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
-#'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
 #'     MaximumPollers = 123,
@@ -944,6 +970,18 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'         Pattern = "string"
 #'       )
 #'     )
+#'   ),
+#'   KMSKeyArn = "string",
+#'   MetricsConfig = list(
+#'     Metrics = list(
+#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
+#'     )
+#'   ),
+#'   LoggingConfig = list(
+#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
+#'   ),
+#'   ScalingConfig = list(
+#'     MaximumConcurrency = 123
 #'   ),
 #'   MaximumBatchingWindowInSeconds = 123,
 #'   ParallelizationFactor = 123,
@@ -1024,22 +1062,10 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'       )
 #'     )
 #'   ),
-#'   ScalingConfig = list(
-#'     MaximumConcurrency = 123
-#'   ),
 #'   DocumentDBEventSourceConfig = list(
 #'     DatabaseName = "string",
 #'     CollectionName = "string",
 #'     FullDocument = "UpdateLookup"|"Default"
-#'   ),
-#'   KMSKeyArn = "string",
-#'   MetricsConfig = list(
-#'     Metrics = list(
-#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
-#'     )
-#'   ),
-#'   LoggingConfig = list(
-#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
 #'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
@@ -1065,7 +1091,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @rdname lambda_create_event_source_mapping
 #'
 #' @aliases lambda_create_event_source_mapping
-lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, Tags = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, LoggingConfig = NULL, ProvisionedPollerConfig = NULL) {
+lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, LoggingConfig = NULL, ScalingConfig = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, Tags = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, DocumentDBEventSourceConfig = NULL, ProvisionedPollerConfig = NULL) {
   op <- new_operation(
     name = "CreateEventSourceMapping",
     http_method = "POST",
@@ -1074,7 +1100,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, Tags = Tags, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, LoggingConfig = LoggingConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
+  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, LoggingConfig = LoggingConfig, ScalingConfig = ScalingConfig, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, Tags = Tags, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
   output <- .lambda$create_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -1107,11 +1133,11 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'
 #' @usage
 #' lambda_create_function(FunctionName, Runtime, Role, Handler, Code,
-#'   Description, Timeout, MemorySize, Publish, VpcConfig, PackageType,
-#'   DeadLetterConfig, Environment, KMSKeyArn, TracingConfig, Tags, Layers,
-#'   FileSystemConfigs, ImageConfig, CodeSigningConfigArn, Architectures,
-#'   EphemeralStorage, SnapStart, LoggingConfig, CapacityProviderConfig,
-#'   PublishTo, DurableConfig, TenancyConfig)
+#'   Description, Timeout, MemorySize, Publish, PublishTo, VpcConfig,
+#'   PackageType, DeadLetterConfig, Environment, KMSKeyArn, TracingConfig,
+#'   Tags, Layers, FileSystemConfigs, CodeSigningConfigArn, ImageConfig,
+#'   Architectures, EphemeralStorage, SnapStart, LoggingConfig,
+#'   TenancyConfig, CapacityProviderConfig, DurableConfig)
 #'
 #' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
@@ -1136,6 +1162,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' @param Timeout The amount of time (in seconds) that Lambda allows a function to run before stopping it. The default is 3 seconds. The maximum allowed value is 900 seconds. For more information, see [Lambda execution environment](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html).
 #' @param MemorySize The amount of [memory available to the function](https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-memory-console) at runtime. Increasing the function memory also increases its CPU allocation. The default value is 128 MB. The value can be any multiple of 1 MB.
 #' @param Publish Set to true to publish the first version of the function during creation.
+#' @param PublishTo Specifies where to publish the function version or configuration.
 #' @param VpcConfig For network connectivity to Amazon Web Services resources in a VPC, specify a list of security groups and subnets in the VPC. When you connect a function to a VPC, it can access resources and the internet only through that VPC. For more information, see [Configuring a Lambda function to access resources in a VPC](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).
 #' @param PackageType The type of deployment package. Set to `Image` for container image and set to `Zip` for .zip file archive.
 #' @param DeadLetterConfig A dead-letter queue configuration that specifies the queue or topic where Lambda sends asynchronous events when they fail processing. For more information, see [Dead-letter queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-dlq).
@@ -1155,16 +1182,15 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' @param Tags A list of [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html) to apply to the function.
 #' @param Layers A list of [function layers](https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html) to add to the function's execution environment. Specify each layer by its ARN, including the version.
 #' @param FileSystemConfigs Connection settings for an Amazon EFS file system or an Amazon S3 Files file system.
-#' @param ImageConfig Container image [configuration values](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms) that override the values in the container image Dockerfile.
 #' @param CodeSigningConfigArn To enable code signing for this function, specify the ARN of a code-signing configuration. A code-signing configuration includes a set of signing profiles, which define the trusted publishers for this function.
+#' @param ImageConfig Container image [configuration values](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms) that override the values in the container image Dockerfile.
 #' @param Architectures The instruction set architecture that the function supports. Enter a string array with one of the valid values (arm64 or x86_64). The default value is `x86_64`.
 #' @param EphemeralStorage The size of the function's `/tmp` directory in MB. The default value is 512, but can be any whole number between 512 and 10,240 MB. For more information, see [Configuring ephemeral storage (console)](https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-ephemeral-storage).
 #' @param SnapStart The function's [SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html) setting.
 #' @param LoggingConfig The function's Amazon CloudWatch Logs configuration settings.
-#' @param CapacityProviderConfig Configuration for the capacity provider that manages compute resources for Lambda functions.
-#' @param PublishTo Specifies where to publish the function version or configuration.
-#' @param DurableConfig Configuration settings for durable functions. Enables creating functions with durability that can remember their state and continue execution even after interruptions.
 #' @param TenancyConfig Configuration for multi-tenant applications that use Lambda functions. Defines tenant isolation settings and resource allocations. Required for functions supporting multiple tenants.
+#' @param CapacityProviderConfig Configuration for the capacity provider that manages compute resources for Lambda functions.
+#' @param DurableConfig Configuration settings for durable functions. Enables creating functions with durability that can remember their state and continue execution even after interruptions.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1172,7 +1198,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -1220,16 +1246,18 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'   ),
 #'   State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DrainingDurableExecutions"|"DependencyError",
 #'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DependencyError",
 #'   FileSystemConfigs = list(
 #'     list(
 #'       Arn = "string",
 #'       LocalMountPath = "string"
 #'     )
 #'   ),
+#'   SigningProfileVersionArn = "string",
+#'   SigningJobArn = "string",
 #'   PackageType = "Zip"|"Image",
 #'   ImageConfigResponse = list(
 #'     ImageConfig = list(
@@ -1246,8 +1274,6 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'       Message = "string"
 #'     )
 #'   ),
-#'   SigningProfileVersionArn = "string",
-#'   SigningJobArn = "string",
 #'   Architectures = list(
 #'     "x86_64"|"arm64"
 #'   ),
@@ -1271,6 +1297,9 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'     SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'     LogGroup = "string"
 #'   ),
+#'   TenancyConfig = list(
+#'     TenantIsolationMode = "PER_TENANT"
+#'   ),
 #'   CapacityProviderConfig = list(
 #'     LambdaManagedInstancesCapacityProviderConfig = list(
 #'       CapacityProviderArn = "string",
@@ -1280,11 +1309,9 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'   ),
 #'   ConfigSha256 = "string",
 #'   DurableConfig = list(
+#'     KMSKeyArn = "string",
 #'     RetentionPeriodInDays = 123,
 #'     ExecutionTimeout = 123
-#'   ),
-#'   TenancyConfig = list(
-#'     TenantIsolationMode = "PER_TENANT"
 #'   )
 #' )
 #' ```
@@ -1293,7 +1320,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' ```
 #' svc$create_function(
 #'   FunctionName = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023",
 #'   Role = "string",
 #'   Handler = "string",
 #'   Code = list(
@@ -1301,6 +1328,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'     S3Bucket = "string",
 #'     S3Key = "string",
 #'     S3ObjectVersion = "string",
+#'     S3ObjectStorageMode = "COPY"|"REFERENCE",
 #'     ImageUri = "string",
 #'     SourceKMSKeyArn = "string"
 #'   ),
@@ -1308,6 +1336,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'   Timeout = 123,
 #'   MemorySize = 123,
 #'   Publish = TRUE|FALSE,
+#'   PublishTo = "LATEST_PUBLISHED",
 #'   VpcConfig = list(
 #'     SubnetIds = list(
 #'       "string"
@@ -1342,6 +1371,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'       LocalMountPath = "string"
 #'     )
 #'   ),
+#'   CodeSigningConfigArn = "string",
 #'   ImageConfig = list(
 #'     EntryPoint = list(
 #'       "string"
@@ -1351,7 +1381,6 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'     ),
 #'     WorkingDirectory = "string"
 #'   ),
-#'   CodeSigningConfigArn = "string",
 #'   Architectures = list(
 #'     "x86_64"|"arm64"
 #'   ),
@@ -1367,6 +1396,9 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'     SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'     LogGroup = "string"
 #'   ),
+#'   TenancyConfig = list(
+#'     TenantIsolationMode = "PER_TENANT"
+#'   ),
 #'   CapacityProviderConfig = list(
 #'     LambdaManagedInstancesCapacityProviderConfig = list(
 #'       CapacityProviderArn = "string",
@@ -1374,13 +1406,10 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'       ExecutionEnvironmentMemoryGiBPerVCpu = 123.0
 #'     )
 #'   ),
-#'   PublishTo = "LATEST_PUBLISHED",
 #'   DurableConfig = list(
+#'     KMSKeyArn = "string",
 #'     RetentionPeriodInDays = 123,
 #'     ExecutionTimeout = 123
-#'   ),
-#'   TenancyConfig = list(
-#'     TenantIsolationMode = "PER_TENANT"
 #'   )
 #' )
 #' ```
@@ -1423,7 +1452,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' @rdname lambda_create_function
 #'
 #' @aliases lambda_create_function
-lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler = NULL, Code, Description = NULL, Timeout = NULL, MemorySize = NULL, Publish = NULL, VpcConfig = NULL, PackageType = NULL, DeadLetterConfig = NULL, Environment = NULL, KMSKeyArn = NULL, TracingConfig = NULL, Tags = NULL, Layers = NULL, FileSystemConfigs = NULL, ImageConfig = NULL, CodeSigningConfigArn = NULL, Architectures = NULL, EphemeralStorage = NULL, SnapStart = NULL, LoggingConfig = NULL, CapacityProviderConfig = NULL, PublishTo = NULL, DurableConfig = NULL, TenancyConfig = NULL) {
+lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler = NULL, Code, Description = NULL, Timeout = NULL, MemorySize = NULL, Publish = NULL, PublishTo = NULL, VpcConfig = NULL, PackageType = NULL, DeadLetterConfig = NULL, Environment = NULL, KMSKeyArn = NULL, TracingConfig = NULL, Tags = NULL, Layers = NULL, FileSystemConfigs = NULL, CodeSigningConfigArn = NULL, ImageConfig = NULL, Architectures = NULL, EphemeralStorage = NULL, SnapStart = NULL, LoggingConfig = NULL, TenancyConfig = NULL, CapacityProviderConfig = NULL, DurableConfig = NULL) {
   op <- new_operation(
     name = "CreateFunction",
     http_method = "POST",
@@ -1432,7 +1461,7 @@ lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$create_function_input(FunctionName = FunctionName, Runtime = Runtime, Role = Role, Handler = Handler, Code = Code, Description = Description, Timeout = Timeout, MemorySize = MemorySize, Publish = Publish, VpcConfig = VpcConfig, PackageType = PackageType, DeadLetterConfig = DeadLetterConfig, Environment = Environment, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, Tags = Tags, Layers = Layers, FileSystemConfigs = FileSystemConfigs, ImageConfig = ImageConfig, CodeSigningConfigArn = CodeSigningConfigArn, Architectures = Architectures, EphemeralStorage = EphemeralStorage, SnapStart = SnapStart, LoggingConfig = LoggingConfig, CapacityProviderConfig = CapacityProviderConfig, PublishTo = PublishTo, DurableConfig = DurableConfig, TenancyConfig = TenancyConfig)
+  input <- .lambda$create_function_input(FunctionName = FunctionName, Runtime = Runtime, Role = Role, Handler = Handler, Code = Code, Description = Description, Timeout = Timeout, MemorySize = MemorySize, Publish = Publish, PublishTo = PublishTo, VpcConfig = VpcConfig, PackageType = PackageType, DeadLetterConfig = DeadLetterConfig, Environment = Environment, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, Tags = Tags, Layers = Layers, FileSystemConfigs = FileSystemConfigs, CodeSigningConfigArn = CodeSigningConfigArn, ImageConfig = ImageConfig, Architectures = Architectures, EphemeralStorage = EphemeralStorage, SnapStart = SnapStart, LoggingConfig = LoggingConfig, TenancyConfig = TenancyConfig, CapacityProviderConfig = CapacityProviderConfig, DurableConfig = DurableConfig)
   output <- .lambda$create_function_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -1666,7 +1695,19 @@ lambda_delete_alias <- function(FunctionName, Name) {
 #'       )
 #'     ),
 #'     KmsKeyArn = "string",
-#'     LastModified = "string"
+#'     LastModified = "string",
+#'     PropagateTags = list(
+#'       Mode = "None"|"Explicit",
+#'       ExplicitTags = list(
+#'         "string"
+#'       )
+#'     ),
+#'     TelemetryConfig = list(
+#'       LoggingConfig = list(
+#'         SystemLogLevel = "DEBUG"|"INFO"|"WARN",
+#'         LogGroup = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1778,6 +1819,22 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
 #'       )
 #'     )
 #'   ),
+#'   FilterCriteriaError = list(
+#'     ErrorCode = "string",
+#'     Message = "string"
+#'   ),
+#'   KMSKeyArn = "string",
+#'   MetricsConfig = list(
+#'     Metrics = list(
+#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
+#'     )
+#'   ),
+#'   LoggingConfig = list(
+#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
+#'   ),
+#'   ScalingConfig = list(
+#'     MaximumConcurrency = 123
+#'   ),
 #'   FunctionArn = "string",
 #'   LastModified = as.POSIXct(
 #'     "2015-01-01"
@@ -1855,28 +1912,12 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
 #'       )
 #'     )
 #'   ),
-#'   ScalingConfig = list(
-#'     MaximumConcurrency = 123
-#'   ),
 #'   DocumentDBEventSourceConfig = list(
 #'     DatabaseName = "string",
 #'     CollectionName = "string",
 #'     FullDocument = "UpdateLookup"|"Default"
 #'   ),
-#'   KMSKeyArn = "string",
-#'   FilterCriteriaError = list(
-#'     ErrorCode = "string",
-#'     Message = "string"
-#'   ),
 #'   EventSourceMappingArn = "string",
-#'   MetricsConfig = list(
-#'     Metrics = list(
-#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
-#'     )
-#'   ),
-#'   LoggingConfig = list(
-#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
-#'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
 #'     MaximumPollers = 123,
@@ -2363,6 +2404,52 @@ lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier
 }
 .lambda$operations$delete_provisioned_concurrency_config <- lambda_delete_provisioned_concurrency_config
 
+#' Deletes a resource-based policy from a Lambda resource
+#'
+#' @description
+#' Deletes a [resource-based policy](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) from a Lambda resource.
+#'
+#' @usage
+#' lambda_delete_resource_policy(ResourceArn, RevisionId)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Lambda resource you want to delete the policy from. You can use a qualified or an unqualified ARN. The value must be a complete ARN, and the operation does not accept wildcard characters.
+#' @param RevisionId The revision ID that the existing policy must match for the deletion to proceed. If the revision ID doesn't match, the operation fails with a `PreconditionFailedException` error. To retrieve the current revision ID, use the [`get_resource_policy`][lambda_get_resource_policy] operation.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_policy(
+#'   ResourceArn = "string",
+#'   RevisionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_delete_resource_policy
+#'
+#' @aliases lambda_delete_resource_policy
+lambda_delete_resource_policy <- function(ResourceArn, RevisionId = NULL) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "DELETE",
+    http_path = "/2026-07-09/resource-policy/{ResourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$delete_resource_policy_input(ResourceArn = ResourceArn, RevisionId = RevisionId)
+  output <- .lambda$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$delete_resource_policy <- lambda_delete_resource_policy
+
 #' Retrieves details about your account's limits and usage in an Amazon Web
 #' Services Region
 #'
@@ -2559,7 +2646,19 @@ lambda_get_alias <- function(FunctionName, Name) {
 #'       )
 #'     ),
 #'     KmsKeyArn = "string",
-#'     LastModified = "string"
+#'     LastModified = "string",
+#'     PropagateTags = list(
+#'       Mode = "None"|"Explicit",
+#'       ExplicitTags = list(
+#'         "string"
+#'       )
+#'     ),
+#'     TelemetryConfig = list(
+#'       LoggingConfig = list(
+#'         SystemLogLevel = "DEBUG"|"INFO"|"WARN",
+#'         LogGroup = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2666,9 +2765,10 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
 #' Retrieves detailed information about a specific [durable execution](https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html), including its current status, input payload, result or error information, and execution metadata such as start time and usage statistics.
 #'
 #' @usage
-#' lambda_get_durable_execution(DurableExecutionArn)
+#' lambda_get_durable_execution(DurableExecutionArn, IncludeExecutionData)
 #'
 #' @param DurableExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the durable execution.
+#' @param IncludeExecutionData Specifies whether to include execution data such as input payload, result, and error information in the response. Set to `false` for a more compact response that includes only execution metadata. The default value is set to `true`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2697,6 +2797,12 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
 #'   Version = "string",
 #'   TraceHeader = list(
 #'     XAmznTraceId = "string"
+#'   ),
+#'   ExecutionDataIncluded = TRUE|FALSE,
+#'   DurableConfig = list(
+#'     KMSKeyArn = "string",
+#'     RetentionPeriodInDays = 123,
+#'     ExecutionTimeout = 123
 #'   )
 #' )
 #' ```
@@ -2704,7 +2810,8 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
 #' @section Request syntax:
 #' ```
 #' svc$get_durable_execution(
-#'   DurableExecutionArn = "string"
+#'   DurableExecutionArn = "string",
+#'   IncludeExecutionData = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2713,7 +2820,7 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
 #' @rdname lambda_get_durable_execution
 #'
 #' @aliases lambda_get_durable_execution
-lambda_get_durable_execution <- function(DurableExecutionArn) {
+lambda_get_durable_execution <- function(DurableExecutionArn, IncludeExecutionData = NULL) {
   op <- new_operation(
     name = "GetDurableExecution",
     http_method = "GET",
@@ -2722,7 +2829,7 @@ lambda_get_durable_execution <- function(DurableExecutionArn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$get_durable_execution_input(DurableExecutionArn = DurableExecutionArn)
+  input <- .lambda$get_durable_execution_input(DurableExecutionArn = DurableExecutionArn, IncludeExecutionData = IncludeExecutionData)
   output <- .lambda$get_durable_execution_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -3203,6 +3310,22 @@ lambda_get_durable_execution_state <- function(DurableExecutionArn, CheckpointTo
 #'       )
 #'     )
 #'   ),
+#'   FilterCriteriaError = list(
+#'     ErrorCode = "string",
+#'     Message = "string"
+#'   ),
+#'   KMSKeyArn = "string",
+#'   MetricsConfig = list(
+#'     Metrics = list(
+#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
+#'     )
+#'   ),
+#'   LoggingConfig = list(
+#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
+#'   ),
+#'   ScalingConfig = list(
+#'     MaximumConcurrency = 123
+#'   ),
 #'   FunctionArn = "string",
 #'   LastModified = as.POSIXct(
 #'     "2015-01-01"
@@ -3280,28 +3403,12 @@ lambda_get_durable_execution_state <- function(DurableExecutionArn, CheckpointTo
 #'       )
 #'     )
 #'   ),
-#'   ScalingConfig = list(
-#'     MaximumConcurrency = 123
-#'   ),
 #'   DocumentDBEventSourceConfig = list(
 #'     DatabaseName = "string",
 #'     CollectionName = "string",
 #'     FullDocument = "UpdateLookup"|"Default"
 #'   ),
-#'   KMSKeyArn = "string",
-#'   FilterCriteriaError = list(
-#'     ErrorCode = "string",
-#'     Message = "string"
-#'   ),
 #'   EventSourceMappingArn = "string",
-#'   MetricsConfig = list(
-#'     Metrics = list(
-#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
-#'     )
-#'   ),
-#'   LoggingConfig = list(
-#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
-#'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
 #'     MaximumPollers = 123,
@@ -3379,7 +3486,7 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'   Configuration = list(
 #'     FunctionName = "string",
 #'     FunctionArn = "string",
-#'     Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
+#'     Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023",
 #'     Role = "string",
 #'     Handler = "string",
 #'     CodeSize = 123,
@@ -3427,16 +3534,18 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'     ),
 #'     State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'     StateReason = "string",
-#'     StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'     StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DrainingDurableExecutions"|"DependencyError",
 #'     LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'     LastUpdateStatusReason = "string",
-#'     LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'     LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DependencyError",
 #'     FileSystemConfigs = list(
 #'       list(
 #'         Arn = "string",
 #'         LocalMountPath = "string"
 #'       )
 #'     ),
+#'     SigningProfileVersionArn = "string",
+#'     SigningJobArn = "string",
 #'     PackageType = "Zip"|"Image",
 #'     ImageConfigResponse = list(
 #'       ImageConfig = list(
@@ -3453,8 +3562,6 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'         Message = "string"
 #'       )
 #'     ),
-#'     SigningProfileVersionArn = "string",
-#'     SigningJobArn = "string",
 #'     Architectures = list(
 #'       "x86_64"|"arm64"
 #'     ),
@@ -3478,6 +3585,9 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'       SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'       LogGroup = "string"
 #'     ),
+#'     TenancyConfig = list(
+#'       TenantIsolationMode = "PER_TENANT"
+#'     ),
 #'     CapacityProviderConfig = list(
 #'       LambdaManagedInstancesCapacityProviderConfig = list(
 #'         CapacityProviderArn = "string",
@@ -3487,11 +3597,9 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'     ),
 #'     ConfigSha256 = "string",
 #'     DurableConfig = list(
+#'       KMSKeyArn = "string",
 #'       RetentionPeriodInDays = 123,
 #'       ExecutionTimeout = 123
-#'     ),
-#'     TenancyConfig = list(
-#'       TenantIsolationMode = "PER_TENANT"
 #'     )
 #'   ),
 #'   Code = list(
@@ -3499,7 +3607,16 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'     Location = "string",
 #'     ImageUri = "string",
 #'     ResolvedImageUri = "string",
-#'     SourceKMSKeyArn = "string"
+#'     ResolvedS3Object = list(
+#'       S3Bucket = "string",
+#'       S3Key = "string",
+#'       S3ObjectVersion = "string"
+#'     ),
+#'     SourceKMSKeyArn = "string",
+#'     Error = list(
+#'       ErrorCode = "string",
+#'       Message = "string"
+#'     )
 #'   ),
 #'   Tags = list(
 #'     "string"
@@ -3714,7 +3831,7 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -3762,16 +3879,18 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #'   ),
 #'   State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DrainingDurableExecutions"|"DependencyError",
 #'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DependencyError",
 #'   FileSystemConfigs = list(
 #'     list(
 #'       Arn = "string",
 #'       LocalMountPath = "string"
 #'     )
 #'   ),
+#'   SigningProfileVersionArn = "string",
+#'   SigningJobArn = "string",
 #'   PackageType = "Zip"|"Image",
 #'   ImageConfigResponse = list(
 #'     ImageConfig = list(
@@ -3788,8 +3907,6 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #'       Message = "string"
 #'     )
 #'   ),
-#'   SigningProfileVersionArn = "string",
-#'   SigningJobArn = "string",
 #'   Architectures = list(
 #'     "x86_64"|"arm64"
 #'   ),
@@ -3813,6 +3930,9 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #'     SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'     LogGroup = "string"
 #'   ),
+#'   TenancyConfig = list(
+#'     TenantIsolationMode = "PER_TENANT"
+#'   ),
 #'   CapacityProviderConfig = list(
 #'     LambdaManagedInstancesCapacityProviderConfig = list(
 #'       CapacityProviderArn = "string",
@@ -3822,11 +3942,9 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #'   ),
 #'   ConfigSha256 = "string",
 #'   DurableConfig = list(
+#'     KMSKeyArn = "string",
 #'     RetentionPeriodInDays = 123,
 #'     ExecutionTimeout = 123
-#'   ),
-#'   TenancyConfig = list(
-#'     TenantIsolationMode = "PER_TENANT"
 #'   )
 #' )
 #' ```
@@ -4172,20 +4290,25 @@ lambda_get_function_url_config <- function(FunctionName, Qualifier = NULL) {
 #'     CodeSha256 = "string",
 #'     CodeSize = 123,
 #'     SigningProfileVersionArn = "string",
-#'     SigningJobArn = "string"
+#'     SigningJobArn = "string",
+#'     ResolvedS3Object = list(
+#'       S3Bucket = "string",
+#'       S3Key = "string",
+#'       S3ObjectVersion = "string"
+#'     )
 #'   ),
 #'   LayerArn = "string",
 #'   LayerVersionArn = "string",
 #'   Description = "string",
 #'   CreatedDate = "string",
 #'   Version = 123,
-#'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0"
-#'   ),
-#'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
 #'     "x86_64"|"arm64"
-#'   )
+#'   ),
+#'   CompatibleRuntimes = list(
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023"
+#'   ),
+#'   LicenseInfo = "string"
 #' )
 #' ```
 #'
@@ -4251,20 +4374,25 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
 #'     CodeSha256 = "string",
 #'     CodeSize = 123,
 #'     SigningProfileVersionArn = "string",
-#'     SigningJobArn = "string"
+#'     SigningJobArn = "string",
+#'     ResolvedS3Object = list(
+#'       S3Bucket = "string",
+#'       S3Key = "string",
+#'       S3ObjectVersion = "string"
+#'     )
 #'   ),
 #'   LayerArn = "string",
 #'   LayerVersionArn = "string",
 #'   Description = "string",
 #'   CreatedDate = "string",
 #'   Version = 123,
-#'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0"
-#'   ),
-#'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
 #'     "x86_64"|"arm64"
-#'   )
+#'   ),
+#'   CompatibleRuntimes = list(
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023"
+#'   ),
+#'   LicenseInfo = "string"
 #' )
 #' ```
 #'
@@ -4516,6 +4644,56 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 }
 .lambda$operations$get_provisioned_concurrency_config <- lambda_get_provisioned_concurrency_config
 
+#' Retrieves the resource-based policy attached to a Lambda resource
+#'
+#' @description
+#' Retrieves the [resource-based policy](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) attached to a Lambda resource.
+#'
+#' @usage
+#' lambda_get_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Lambda resource you want to retrieve the policy for. You can use a qualified or an unqualified ARN. The value must be a complete ARN, and the operation does not accept wildcard characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string",
+#'   RevisionId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_get_resource_policy
+#'
+#' @aliases lambda_get_resource_policy
+lambda_get_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "GET",
+    http_path = "/2026-07-09/resource-policy/{ResourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$get_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .lambda$get_resource_policy_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$get_resource_policy <- lambda_get_resource_policy
+
 #' Retrieves the runtime management configuration for a function's version
 #'
 #' @description
@@ -4542,8 +4720,8 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 #' ```
 #' list(
 #'   UpdateRuntimeOn = "Auto"|"Manual"|"FunctionUpdate",
-#'   RuntimeVersionArn = "string",
-#'   FunctionArn = "string"
+#'   FunctionArn = "string",
+#'   RuntimeVersionArn = "string"
 #' )
 #' ```
 #'
@@ -4596,7 +4774,7 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #' 
 #' For functions with a long timeout, your client might disconnect during synchronous invocation while it waits for a response. Configure your HTTP client, SDK, firewall, proxy, or operating system to allow for long connections with timeout or keep-alive settings.
 #' 
-#' This operation requires permission for the [lambda:InvokeFunction](https://docs.aws.amazon.com/service-authorization/latest/reference/list_awslambda.html) action. For details on how to set up permissions for cross-account invocations, see [Granting function access to other accounts](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html#permissions-resource-xaccountinvoke).
+#' This operation requires permission for the [lambda:InvokeFunction](https://docs.aws.amazon.com/service-authorization/latest/reference/) action. For details on how to set up permissions for cross-account invocations, see [Granting function access to other accounts](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html#permissions-resource-xaccountinvoke).
 #'
 #' @usage
 #' lambda_invoke(FunctionName, InvocationType, LogType, ClientContext,
@@ -4622,7 +4800,9 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #' -   `DryRun` – Validate parameter values and verify that the user or role has permission to invoke the function.
 #' @param LogType Set to `Tail` to include the execution log in the response. Applies to synchronously invoked functions only.
 #' @param ClientContext Up to 3,583 bytes of base64-encoded data about the invoking client to pass to the function in the context object. Lambda passes the `ClientContext` object to your function for synchronous invocations only.
-#' @param DurableExecutionName Optional unique name for the durable execution. When you start your special function, you can give it a unique name to identify this specific execution. It's like giving a nickname to a task.
+#' @param DurableExecutionName A unique name for the durable execution. If you invoke a durable function using a name that already exists with the same payload, Lambda returns the existing execution instead of creating a duplicate. If the payload differs, Lambda returns a `DurableExecutionAlreadyStartedException` error.
+#' 
+#' If not specified, Lambda generates a unique identifier automatically. For more information, see [Execution names](https://docs.aws.amazon.com/lambda/latest/dg/durable-execution-idempotency.html#durable-idempotency-execution-names).
 #' @param Payload The JSON that you want to provide to your Lambda function as input. The maximum payload size is 6 MB for synchronous invocations and 1 MB for asynchronous invocations.
 #' 
 #' You can enter the JSON directly. For example, `--payload '{ "key": "value" }'`. You can also specify a file path. For example, `--payload file://payload.json`.
@@ -4782,11 +4962,11 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' @description
 #' Configure your Lambda functions to stream response payloads back to clients. For more information, see [Configuring a Lambda function to stream responses](https://docs.aws.amazon.com/lambda/latest/dg/configuration-response-streaming.html).
 #' 
-#' This operation requires permission for the [lambda:InvokeFunction](https://docs.aws.amazon.com/service-authorization/latest/reference/list_awslambda.html) action. For details on how to set up permissions for cross-account invocations, see [Granting function access to other accounts](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html#permissions-resource-xaccountinvoke).
+#' This operation requires permission for the [lambda:InvokeFunction](https://docs.aws.amazon.com/service-authorization/latest/reference/) action. For details on how to set up permissions for cross-account invocations, see [Granting function access to other accounts](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html#permissions-resource-xaccountinvoke).
 #'
 #' @usage
-#' lambda_invoke_with_response_stream(FunctionName, InvocationType,
-#'   LogType, ClientContext, Qualifier, Payload, TenantId)
+#' lambda_invoke_with_response_stream(FunctionName, LogType, ClientContext,
+#'   Qualifier, Payload, TenantId, InvocationType)
 #'
 #' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
@@ -4799,11 +4979,6 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' -   **Partial ARN** – `123456789012:function:my-function`.
 #' 
 #' The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.
-#' @param InvocationType Use one of the following options:
-#' 
-#' -   `RequestResponse` (default) – Invoke the function synchronously. Keep the connection open until the function returns a response or times out. The API operation response includes the function response and additional data.
-#' 
-#' -   `DryRun` – Validate parameter values and verify that the IAM user or role has permission to invoke the function.
 #' @param LogType Set to `Tail` to include the execution log in the response. Applies to synchronously invoked functions only.
 #' @param ClientContext Up to 3,583 bytes of base64-encoded data about the invoking client to pass to the function in the context object.
 #' @param Qualifier The alias name.
@@ -4811,6 +4986,11 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' 
 #' You can enter the JSON directly. For example, `--payload '{ "key": "value" }'`. You can also specify a file path. For example, `--payload file://payload.json`.
 #' @param TenantId The identifier of the tenant in a multi-tenant Lambda function.
+#' @param InvocationType Use one of the following options:
+#' 
+#' -   `RequestResponse` (default) – Invoke the function synchronously. Keep the connection open until the function returns a response or times out. The API operation response includes the function response and additional data.
+#' 
+#' -   `DryRun` – Validate parameter values and verify that the IAM user or role has permission to invoke the function.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4836,12 +5016,12 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' ```
 #' svc$invoke_with_response_stream(
 #'   FunctionName = "string",
-#'   InvocationType = "RequestResponse"|"DryRun",
 #'   LogType = "None"|"Tail",
 #'   ClientContext = "string",
 #'   Qualifier = "string",
 #'   Payload = raw,
-#'   TenantId = "string"
+#'   TenantId = "string",
+#'   InvocationType = "RequestResponse"|"DryRun"
 #' )
 #' ```
 #'
@@ -4850,7 +5030,7 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' @rdname lambda_invoke_with_response_stream
 #'
 #' @aliases lambda_invoke_with_response_stream
-lambda_invoke_with_response_stream <- function(FunctionName, InvocationType = NULL, LogType = NULL, ClientContext = NULL, Qualifier = NULL, Payload = NULL, TenantId = NULL) {
+lambda_invoke_with_response_stream <- function(FunctionName, LogType = NULL, ClientContext = NULL, Qualifier = NULL, Payload = NULL, TenantId = NULL, InvocationType = NULL) {
   op <- new_operation(
     name = "InvokeWithResponseStream",
     http_method = "POST",
@@ -4859,7 +5039,7 @@ lambda_invoke_with_response_stream <- function(FunctionName, InvocationType = NU
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .lambda$invoke_with_response_stream_input(FunctionName = FunctionName, InvocationType = InvocationType, LogType = LogType, ClientContext = ClientContext, Qualifier = Qualifier, Payload = Payload, TenantId = TenantId)
+  input <- .lambda$invoke_with_response_stream_input(FunctionName = FunctionName, LogType = LogType, ClientContext = ClientContext, Qualifier = Qualifier, Payload = Payload, TenantId = TenantId, InvocationType = InvocationType)
   output <- .lambda$invoke_with_response_stream_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -5010,7 +5190,19 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
 #'         )
 #'       ),
 #'       KmsKeyArn = "string",
-#'       LastModified = "string"
+#'       LastModified = "string",
+#'       PropagateTags = list(
+#'         Mode = "None"|"Explicit",
+#'         ExplicitTags = list(
+#'           "string"
+#'         )
+#'       ),
+#'       TelemetryConfig = list(
+#'         LoggingConfig = list(
+#'           SystemLogLevel = "DEBUG"|"INFO"|"WARN",
+#'           LogGroup = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextMarker = "string"
@@ -5133,7 +5325,7 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #' @param Statuses Filter executions by status. Valid values: RUNNING, SUCCEEDED, FAILED, TIMED_OUT, STOPPED.
 #' @param StartedAfter Filter executions that started after this timestamp (ISO 8601 format).
 #' @param StartedBefore Filter executions that started before this timestamp (ISO 8601 format).
-#' @param ReverseOrder Set to true to return results in reverse chronological order (newest first). Default is false.
+#' @param ReverseOrder Set to true to return results in chronological order (oldest first). Default is false.
 #' @param Marker Pagination token from a previous request to continue retrieving results.
 #' @param MaxItems Maximum number of executions to return (1-1000). Default is 100.
 #'
@@ -5152,7 +5344,8 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #'       ),
 #'       EndTimestamp = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       KMSKeyArn = "string"
 #'     )
 #'   ),
 #'   NextMarker = "string"
@@ -5265,6 +5458,22 @@ lambda_list_durable_executions_by_function <- function(FunctionName, Qualifier =
 #'           )
 #'         )
 #'       ),
+#'       FilterCriteriaError = list(
+#'         ErrorCode = "string",
+#'         Message = "string"
+#'       ),
+#'       KMSKeyArn = "string",
+#'       MetricsConfig = list(
+#'         Metrics = list(
+#'           "EventCount"|"ErrorCount"|"KafkaMetrics"
+#'         )
+#'       ),
+#'       LoggingConfig = list(
+#'         SystemLogLevel = "DEBUG"|"INFO"|"WARN"
+#'       ),
+#'       ScalingConfig = list(
+#'         MaximumConcurrency = 123
+#'       ),
 #'       FunctionArn = "string",
 #'       LastModified = as.POSIXct(
 #'         "2015-01-01"
@@ -5342,28 +5551,12 @@ lambda_list_durable_executions_by_function <- function(FunctionName, Qualifier =
 #'           )
 #'         )
 #'       ),
-#'       ScalingConfig = list(
-#'         MaximumConcurrency = 123
-#'       ),
 #'       DocumentDBEventSourceConfig = list(
 #'         DatabaseName = "string",
 #'         CollectionName = "string",
 #'         FullDocument = "UpdateLookup"|"Default"
 #'       ),
-#'       KMSKeyArn = "string",
-#'       FilterCriteriaError = list(
-#'         ErrorCode = "string",
-#'         Message = "string"
-#'       ),
 #'       EventSourceMappingArn = "string",
-#'       MetricsConfig = list(
-#'         Metrics = list(
-#'           "EventCount"|"ErrorCount"|"KafkaMetrics"
-#'         )
-#'       ),
-#'       LoggingConfig = list(
-#'         SystemLogLevel = "DEBUG"|"INFO"|"WARN"
-#'       ),
 #'       ProvisionedPollerConfig = list(
 #'         MinimumPollers = 123,
 #'         MaximumPollers = 123,
@@ -5689,7 +5882,7 @@ lambda_list_function_versions_by_capacity_provider <- function(CapacityProviderN
 #'     list(
 #'       FunctionName = "string",
 #'       FunctionArn = "string",
-#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
+#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023",
 #'       Role = "string",
 #'       Handler = "string",
 #'       CodeSize = 123,
@@ -5737,16 +5930,18 @@ lambda_list_function_versions_by_capacity_provider <- function(CapacityProviderN
 #'       ),
 #'       State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'       StateReason = "string",
-#'       StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'       StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DrainingDurableExecutions"|"DependencyError",
 #'       LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'       LastUpdateStatusReason = "string",
-#'       LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'       LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DependencyError",
 #'       FileSystemConfigs = list(
 #'         list(
 #'           Arn = "string",
 #'           LocalMountPath = "string"
 #'         )
 #'       ),
+#'       SigningProfileVersionArn = "string",
+#'       SigningJobArn = "string",
 #'       PackageType = "Zip"|"Image",
 #'       ImageConfigResponse = list(
 #'         ImageConfig = list(
@@ -5763,8 +5958,6 @@ lambda_list_function_versions_by_capacity_provider <- function(CapacityProviderN
 #'           Message = "string"
 #'         )
 #'       ),
-#'       SigningProfileVersionArn = "string",
-#'       SigningJobArn = "string",
 #'       Architectures = list(
 #'         "x86_64"|"arm64"
 #'       ),
@@ -5788,6 +5981,9 @@ lambda_list_function_versions_by_capacity_provider <- function(CapacityProviderN
 #'         SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'         LogGroup = "string"
 #'       ),
+#'       TenancyConfig = list(
+#'         TenantIsolationMode = "PER_TENANT"
+#'       ),
 #'       CapacityProviderConfig = list(
 #'         LambdaManagedInstancesCapacityProviderConfig = list(
 #'           CapacityProviderArn = "string",
@@ -5797,11 +5993,9 @@ lambda_list_function_versions_by_capacity_provider <- function(CapacityProviderN
 #'       ),
 #'       ConfigSha256 = "string",
 #'       DurableConfig = list(
+#'         KMSKeyArn = "string",
 #'         RetentionPeriodInDays = 123,
 #'         ExecutionTimeout = 123
-#'       ),
-#'       TenancyConfig = list(
-#'         TenantIsolationMode = "PER_TENANT"
 #'       )
 #'     )
 #'   )
@@ -5911,9 +6105,10 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #' Lists the versions of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html). Versions that have been deleted aren't listed. Specify a [runtime identifier](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) to list only versions that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layer versions that are compatible with that architecture.
 #'
 #' @usage
-#' lambda_list_layer_versions(CompatibleRuntime, LayerName, Marker,
-#'   MaxItems, CompatibleArchitecture)
+#' lambda_list_layer_versions(CompatibleArchitecture, CompatibleRuntime,
+#'   LayerName, Marker, MaxItems)
 #'
+#' @param CompatibleArchitecture The compatible [instruction set architecture](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
 #' @param CompatibleRuntime A runtime identifier.
 #' 
 #' The following list includes deprecated runtimes. For more information, see [Runtime use after deprecation](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-deprecation-levels).
@@ -5922,7 +6117,6 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param Marker A pagination token returned by a previous call.
 #' @param MaxItems The maximum number of versions to return.
-#' @param CompatibleArchitecture The compatible [instruction set architecture](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -5935,13 +6129,13 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #'       Version = 123,
 #'       Description = "string",
 #'       CreatedDate = "string",
-#'       CompatibleRuntimes = list(
-#'         "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0"
-#'       ),
-#'       LicenseInfo = "string",
 #'       CompatibleArchitectures = list(
 #'         "x86_64"|"arm64"
-#'       )
+#'       ),
+#'       CompatibleRuntimes = list(
+#'         "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023"
+#'       ),
+#'       LicenseInfo = "string"
 #'     )
 #'   )
 #' )
@@ -5950,11 +6144,11 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #' @section Request syntax:
 #' ```
 #' svc$list_layer_versions(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
+#'   CompatibleArchitecture = "x86_64"|"arm64",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023",
 #'   LayerName = "string",
 #'   Marker = "string",
-#'   MaxItems = 123,
-#'   CompatibleArchitecture = "x86_64"|"arm64"
+#'   MaxItems = 123
 #' )
 #' ```
 #'
@@ -5972,7 +6166,7 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #' @rdname lambda_list_layer_versions
 #'
 #' @aliases lambda_list_layer_versions
-lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Marker = NULL, MaxItems = NULL, CompatibleArchitecture = NULL) {
+lambda_list_layer_versions <- function(CompatibleArchitecture = NULL, CompatibleRuntime = NULL, LayerName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListLayerVersions",
     http_method = "GET",
@@ -5981,7 +6175,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "LayerVersions"),
     stream_api = FALSE
   )
-  input <- .lambda$list_layer_versions_input(CompatibleRuntime = CompatibleRuntime, LayerName = LayerName, Marker = Marker, MaxItems = MaxItems, CompatibleArchitecture = CompatibleArchitecture)
+  input <- .lambda$list_layer_versions_input(CompatibleArchitecture = CompatibleArchitecture, CompatibleRuntime = CompatibleRuntime, LayerName = LayerName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_layer_versions_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -5998,9 +6192,10 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' Lists [Lambda layers](https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html) and shows information about the latest version of each. Specify a [runtime identifier](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) to list only layers that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layers that are compatible with that [instruction set architecture](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
 #'
 #' @usage
-#' lambda_list_layers(CompatibleRuntime, Marker, MaxItems,
-#'   CompatibleArchitecture)
+#' lambda_list_layers(CompatibleArchitecture, CompatibleRuntime, Marker,
+#'   MaxItems)
 #'
+#' @param CompatibleArchitecture The compatible [instruction set architecture](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
 #' @param CompatibleRuntime A runtime identifier.
 #' 
 #' The following list includes deprecated runtimes. For more information, see [Runtime use after deprecation](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-deprecation-levels).
@@ -6008,7 +6203,6 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' For a list of all currently supported runtimes, see [Supported runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtimes-supported).
 #' @param Marker A pagination token returned by a previous call.
 #' @param MaxItems The maximum number of layers to return.
-#' @param CompatibleArchitecture The compatible [instruction set architecture](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -6024,13 +6218,13 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #'         Version = 123,
 #'         Description = "string",
 #'         CreatedDate = "string",
-#'         CompatibleRuntimes = list(
-#'           "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0"
-#'         ),
-#'         LicenseInfo = "string",
 #'         CompatibleArchitectures = list(
 #'           "x86_64"|"arm64"
-#'         )
+#'         ),
+#'         CompatibleRuntimes = list(
+#'           "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023"
+#'         ),
+#'         LicenseInfo = "string"
 #'       )
 #'     )
 #'   )
@@ -6040,10 +6234,10 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' @section Request syntax:
 #' ```
 #' svc$list_layers(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
+#'   CompatibleArchitecture = "x86_64"|"arm64",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023",
 #'   Marker = "string",
-#'   MaxItems = 123,
-#'   CompatibleArchitecture = "x86_64"|"arm64"
+#'   MaxItems = 123
 #' )
 #' ```
 #'
@@ -6061,7 +6255,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' @rdname lambda_list_layers
 #'
 #' @aliases lambda_list_layers
-lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems = NULL, CompatibleArchitecture = NULL) {
+lambda_list_layers <- function(CompatibleArchitecture = NULL, CompatibleRuntime = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListLayers",
     http_method = "GET",
@@ -6070,7 +6264,7 @@ lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Layers"),
     stream_api = FALSE
   )
-  input <- .lambda$list_layers_input(CompatibleRuntime = CompatibleRuntime, Marker = Marker, MaxItems = MaxItems, CompatibleArchitecture = CompatibleArchitecture)
+  input <- .lambda$list_layers_input(CompatibleArchitecture = CompatibleArchitecture, CompatibleRuntime = CompatibleRuntime, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_layers_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -6258,7 +6452,7 @@ lambda_list_tags <- function(Resource) {
 #'     list(
 #'       FunctionName = "string",
 #'       FunctionArn = "string",
-#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
+#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023",
 #'       Role = "string",
 #'       Handler = "string",
 #'       CodeSize = 123,
@@ -6306,16 +6500,18 @@ lambda_list_tags <- function(Resource) {
 #'       ),
 #'       State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'       StateReason = "string",
-#'       StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'       StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DrainingDurableExecutions"|"DependencyError",
 #'       LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'       LastUpdateStatusReason = "string",
-#'       LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'       LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DependencyError",
 #'       FileSystemConfigs = list(
 #'         list(
 #'           Arn = "string",
 #'           LocalMountPath = "string"
 #'         )
 #'       ),
+#'       SigningProfileVersionArn = "string",
+#'       SigningJobArn = "string",
 #'       PackageType = "Zip"|"Image",
 #'       ImageConfigResponse = list(
 #'         ImageConfig = list(
@@ -6332,8 +6528,6 @@ lambda_list_tags <- function(Resource) {
 #'           Message = "string"
 #'         )
 #'       ),
-#'       SigningProfileVersionArn = "string",
-#'       SigningJobArn = "string",
 #'       Architectures = list(
 #'         "x86_64"|"arm64"
 #'       ),
@@ -6357,6 +6551,9 @@ lambda_list_tags <- function(Resource) {
 #'         SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'         LogGroup = "string"
 #'       ),
+#'       TenancyConfig = list(
+#'         TenantIsolationMode = "PER_TENANT"
+#'       ),
 #'       CapacityProviderConfig = list(
 #'         LambdaManagedInstancesCapacityProviderConfig = list(
 #'           CapacityProviderArn = "string",
@@ -6366,11 +6563,9 @@ lambda_list_tags <- function(Resource) {
 #'       ),
 #'       ConfigSha256 = "string",
 #'       DurableConfig = list(
+#'         KMSKeyArn = "string",
 #'         RetentionPeriodInDays = 123,
 #'         ExecutionTimeout = 123
-#'       ),
-#'       TenancyConfig = list(
-#'         TenantIsolationMode = "PER_TENANT"
 #'       )
 #'     )
 #'   )
@@ -6428,11 +6623,12 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'
 #' @usage
 #' lambda_publish_layer_version(LayerName, Description, Content,
-#'   CompatibleRuntimes, LicenseInfo, CompatibleArchitectures)
+#'   CompatibleArchitectures, CompatibleRuntimes, LicenseInfo)
 #'
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param Description The description of the version.
 #' @param Content &#91;required&#93; The function layer archive.
+#' @param CompatibleArchitectures A list of compatible [instruction set architectures](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
 #' @param CompatibleRuntimes A list of compatible [function runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html). Used for filtering with [`list_layers`][lambda_list_layers] and [`list_layer_versions`][lambda_list_layer_versions].
 #' 
 #' The following list includes deprecated runtimes. For more information, see [Runtime deprecation policy](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy).
@@ -6443,7 +6639,6 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #' -   The URL of a license hosted on the internet. For example, `https://opensource.org/licenses/MIT`.
 #' 
 #' -   The full text of the license.
-#' @param CompatibleArchitectures A list of compatible [instruction set architectures](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -6454,20 +6649,25 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'     CodeSha256 = "string",
 #'     CodeSize = 123,
 #'     SigningProfileVersionArn = "string",
-#'     SigningJobArn = "string"
+#'     SigningJobArn = "string",
+#'     ResolvedS3Object = list(
+#'       S3Bucket = "string",
+#'       S3Key = "string",
+#'       S3ObjectVersion = "string"
+#'     )
 #'   ),
 #'   LayerArn = "string",
 #'   LayerVersionArn = "string",
 #'   Description = "string",
 #'   CreatedDate = "string",
 #'   Version = 123,
-#'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0"
-#'   ),
-#'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
 #'     "x86_64"|"arm64"
-#'   )
+#'   ),
+#'   CompatibleRuntimes = list(
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023"
+#'   ),
+#'   LicenseInfo = "string"
 #' )
 #' ```
 #'
@@ -6480,15 +6680,16 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'     S3Bucket = "string",
 #'     S3Key = "string",
 #'     S3ObjectVersion = "string",
+#'     S3ObjectStorageMode = "COPY"|"REFERENCE",
 #'     ZipFile = raw
 #'   ),
-#'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0"
-#'   ),
-#'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
 #'     "x86_64"|"arm64"
-#'   )
+#'   ),
+#'   CompatibleRuntimes = list(
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023"
+#'   ),
+#'   LicenseInfo = "string"
 #' )
 #' ```
 #'
@@ -6517,7 +6718,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #' @rdname lambda_publish_layer_version
 #'
 #' @aliases lambda_publish_layer_version
-lambda_publish_layer_version <- function(LayerName, Description = NULL, Content, CompatibleRuntimes = NULL, LicenseInfo = NULL, CompatibleArchitectures = NULL) {
+lambda_publish_layer_version <- function(LayerName, Description = NULL, Content, CompatibleArchitectures = NULL, CompatibleRuntimes = NULL, LicenseInfo = NULL) {
   op <- new_operation(
     name = "PublishLayerVersion",
     http_method = "POST",
@@ -6526,7 +6727,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$publish_layer_version_input(LayerName = LayerName, Description = Description, Content = Content, CompatibleRuntimes = CompatibleRuntimes, LicenseInfo = LicenseInfo, CompatibleArchitectures = CompatibleArchitectures)
+  input <- .lambda$publish_layer_version_input(LayerName = LayerName, Description = Description, Content = Content, CompatibleArchitectures = CompatibleArchitectures, CompatibleRuntimes = CompatibleRuntimes, LicenseInfo = LicenseInfo)
   output <- .lambda$publish_layer_version_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -6571,7 +6772,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -6619,16 +6820,18 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #'   ),
 #'   State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DrainingDurableExecutions"|"DependencyError",
 #'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DependencyError",
 #'   FileSystemConfigs = list(
 #'     list(
 #'       Arn = "string",
 #'       LocalMountPath = "string"
 #'     )
 #'   ),
+#'   SigningProfileVersionArn = "string",
+#'   SigningJobArn = "string",
 #'   PackageType = "Zip"|"Image",
 #'   ImageConfigResponse = list(
 #'     ImageConfig = list(
@@ -6645,8 +6848,6 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #'       Message = "string"
 #'     )
 #'   ),
-#'   SigningProfileVersionArn = "string",
-#'   SigningJobArn = "string",
 #'   Architectures = list(
 #'     "x86_64"|"arm64"
 #'   ),
@@ -6670,6 +6871,9 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #'     SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'     LogGroup = "string"
 #'   ),
+#'   TenancyConfig = list(
+#'     TenantIsolationMode = "PER_TENANT"
+#'   ),
 #'   CapacityProviderConfig = list(
 #'     LambdaManagedInstancesCapacityProviderConfig = list(
 #'       CapacityProviderArn = "string",
@@ -6679,11 +6883,9 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #'   ),
 #'   ConfigSha256 = "string",
 #'   DurableConfig = list(
+#'     KMSKeyArn = "string",
 #'     RetentionPeriodInDays = 123,
 #'     ExecutionTimeout = 123
-#'   ),
-#'   TenancyConfig = list(
-#'     TenantIsolationMode = "PER_TENANT"
 #'   )
 #' )
 #' ```
@@ -7150,8 +7352,8 @@ lambda_put_function_scaling_config <- function(FunctionName, Qualifier, Function
 #' ```
 #' list(
 #'   RequestedProvisionedConcurrentExecutions = 123,
-#'   AvailableProvisionedConcurrentExecutions = 123,
 #'   AllocatedProvisionedConcurrentExecutions = 123,
+#'   AvailableProvisionedConcurrentExecutions = 123,
 #'   Status = "IN_PROGRESS"|"READY"|"FAILED",
 #'   StatusReason = "string",
 #'   LastModified = "string"
@@ -7201,6 +7403,64 @@ lambda_put_provisioned_concurrency_config <- function(FunctionName, Qualifier, P
   return(response)
 }
 .lambda$operations$put_provisioned_concurrency_config <- lambda_put_provisioned_concurrency_config
+
+#' Adds a resource-based policy to a Lambda resource
+#'
+#' @description
+#' Adds a [resource-based policy](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) to a Lambda resource. Resource-based policies grant access to other [Amazon Web Services accounts](https://docs.aws.amazon.com/lambda/latest/dg/permissions-function-cross-account.html), [organizations](https://docs.aws.amazon.com/lambda/latest/dg/permissions-function-organization.html), or [services](https://docs.aws.amazon.com/lambda/latest/dg/permissions-function-services.html). Resource-based policies apply to a single Lambda resource (for example, a function, function version, or function alias).
+#' 
+#' This operation replaces any existing policy on the Lambda resource. If you previously added permissions using the [`add_permission`][lambda_add_permission] operation, the new policy overwrites those permissions.
+#'
+#' @usage
+#' lambda_put_resource_policy(ResourceArn, Policy, RevisionId)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Lambda resource you want to add the policy to. You can use a qualified or an unqualified ARN. The value must be a complete ARN, and the operation does not accept wildcard characters.
+#' @param Policy &#91;required&#93; The policy document you want to add to your Lambda resource. This is formatted as a JSON string.
+#' 
+#' For more information, see [Working with resource-based policies in Lambda](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) in the *Lambda Developer Guide*.
+#' @param RevisionId The revision ID that the existing policy must match for the replacement to proceed. If the revision ID doesn't match, the operation fails with a `PreconditionFailedException` error. To retrieve the current revision ID, use the [`get_resource_policy`][lambda_get_resource_policy] operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string",
+#'   RevisionId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_policy(
+#'   ResourceArn = "string",
+#'   Policy = "string",
+#'   RevisionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_put_resource_policy
+#'
+#' @aliases lambda_put_resource_policy
+lambda_put_resource_policy <- function(ResourceArn, Policy, RevisionId = NULL) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "PUT",
+    http_path = "/2026-07-09/resource-policy/{ResourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy, RevisionId = RevisionId)
+  output <- .lambda$put_resource_policy_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$put_resource_policy <- lambda_put_resource_policy
 
 #' Sets the runtime management configuration for a function's version
 #'
@@ -7847,10 +8107,12 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #'
 #' @usage
 #' lambda_update_capacity_provider(CapacityProviderName,
-#'   CapacityProviderScalingConfig)
+#'   CapacityProviderScalingConfig, PropagateTags, TelemetryConfig)
 #'
 #' @param CapacityProviderName &#91;required&#93; The name of the capacity provider to update.
 #' @param CapacityProviderScalingConfig The updated scaling configuration for the capacity provider.
+#' @param PropagateTags Configuration for tag propagation to managed resources launched by the capacity provider.
+#' @param TelemetryConfig The updated telemetry configuration for the capacity provider.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7892,7 +8154,19 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #'       )
 #'     ),
 #'     KmsKeyArn = "string",
-#'     LastModified = "string"
+#'     LastModified = "string",
+#'     PropagateTags = list(
+#'       Mode = "None"|"Explicit",
+#'       ExplicitTags = list(
+#'         "string"
+#'       )
+#'     ),
+#'     TelemetryConfig = list(
+#'       LoggingConfig = list(
+#'         SystemLogLevel = "DEBUG"|"INFO"|"WARN",
+#'         LogGroup = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -7910,6 +8184,18 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #'         TargetValue = 123.0
 #'       )
 #'     )
+#'   ),
+#'   PropagateTags = list(
+#'     Mode = "None"|"Explicit",
+#'     ExplicitTags = list(
+#'       "string"
+#'     )
+#'   ),
+#'   TelemetryConfig = list(
+#'     LoggingConfig = list(
+#'       SystemLogLevel = "DEBUG"|"INFO"|"WARN",
+#'       LogGroup = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -7919,7 +8205,7 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #' @rdname lambda_update_capacity_provider
 #'
 #' @aliases lambda_update_capacity_provider
-lambda_update_capacity_provider <- function(CapacityProviderName, CapacityProviderScalingConfig = NULL) {
+lambda_update_capacity_provider <- function(CapacityProviderName, CapacityProviderScalingConfig = NULL, PropagateTags = NULL, TelemetryConfig = NULL) {
   op <- new_operation(
     name = "UpdateCapacityProvider",
     http_method = "PUT",
@@ -7928,7 +8214,7 @@ lambda_update_capacity_provider <- function(CapacityProviderName, CapacityProvid
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$update_capacity_provider_input(CapacityProviderName = CapacityProviderName, CapacityProviderScalingConfig = CapacityProviderScalingConfig)
+  input <- .lambda$update_capacity_provider_input(CapacityProviderName = CapacityProviderName, CapacityProviderScalingConfig = CapacityProviderScalingConfig, PropagateTags = PropagateTags, TelemetryConfig = TelemetryConfig)
   output <- .lambda$update_capacity_provider_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -8066,13 +8352,13 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'
 #' @usage
 #' lambda_update_event_source_mapping(UUID, FunctionName, Enabled,
-#'   BatchSize, FilterCriteria, MaximumBatchingWindowInSeconds,
+#'   BatchSize, FilterCriteria, KMSKeyArn, MetricsConfig, LoggingConfig,
+#'   ScalingConfig, MaximumBatchingWindowInSeconds, ParallelizationFactor,
 #'   DestinationConfig, MaximumRecordAgeInSeconds,
-#'   BisectBatchOnFunctionError, MaximumRetryAttempts, ParallelizationFactor,
-#'   SourceAccessConfigurations, TumblingWindowInSeconds,
-#'   FunctionResponseTypes, ScalingConfig,
-#'   AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig,
-#'   DocumentDBEventSourceConfig, KMSKeyArn, MetricsConfig, LoggingConfig,
+#'   BisectBatchOnFunctionError, MaximumRetryAttempts,
+#'   TumblingWindowInSeconds, SourceAccessConfigurations,
+#'   FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig,
+#'   SelfManagedKafkaEventSourceConfig, DocumentDBEventSourceConfig,
 #'   ProvisionedPollerConfig)
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
@@ -8108,26 +8394,26 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' 
 #' -   **DocumentDB** – Default 100. Max 10,000.
 #' @param FilterCriteria An object that defines the filter criteria that determine whether Lambda should process an event. For more information, see [Lambda event filtering](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html).
+#' @param KMSKeyArn The ARN of the Key Management Service (KMS) customer managed key that Lambda uses to encrypt your function's [filter criteria](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-basics). By default, Lambda does not encrypt your filter criteria object. Specify this property to encrypt data using your own customer managed key.
+#' @param MetricsConfig The metrics configuration for your event source. For more information, see [Event source mapping metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
+#' @param LoggingConfig The function's Amazon CloudWatch Logs configuration settings.
+#' @param ScalingConfig (Amazon SQS only) The scaling configuration for the event source. For more information, see [Configuring maximum concurrency for Amazon SQS event sources](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-max-concurrency).
 #' @param MaximumBatchingWindowInSeconds The maximum amount of time, in seconds, that Lambda spends gathering records before invoking the function. You can configure `MaximumBatchingWindowInSeconds` to any value from 0 seconds to 300 seconds in increments of seconds.
 #' 
 #' For Kinesis, DynamoDB, and Amazon SQS event sources, the default batching window is 0 seconds. For Amazon MSK, Self-managed Apache Kafka, Amazon MQ, and DocumentDB event sources, the default batching window is 500 ms. Note that because you can only change `MaximumBatchingWindowInSeconds` in increments of seconds, you cannot revert back to the 500 ms default batching window after you have changed it. To restore the default batching window, you must create a new event source mapping.
 #' 
 #' Related setting: For Kinesis, DynamoDB, and Amazon SQS event sources, when you set `BatchSize` to a value greater than 10, you must set `MaximumBatchingWindowInSeconds` to at least 1.
+#' @param ParallelizationFactor (Kinesis and DynamoDB Streams only) The number of batches to process from each shard concurrently.
 #' @param DestinationConfig (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka) A configuration object that specifies the destination of an event after Lambda processes it.
 #' @param MaximumRecordAgeInSeconds (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka) Discard records older than the specified age. The default value is infinite (-1).
 #' @param BisectBatchOnFunctionError (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka) If the function returns an error, split the batch in two and retry.
 #' @param MaximumRetryAttempts (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka) Discard records after the specified number of retries. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires.
-#' @param ParallelizationFactor (Kinesis and DynamoDB Streams only) The number of batches to process from each shard concurrently.
-#' @param SourceAccessConfigurations An array of authentication protocols or VPC components required to secure your event source.
 #' @param TumblingWindowInSeconds (Kinesis and DynamoDB Streams only) The duration in seconds of a processing window for DynamoDB and Kinesis Streams event sources. A value of 0 seconds indicates no tumbling window.
+#' @param SourceAccessConfigurations An array of authentication protocols or VPC components required to secure your event source.
 #' @param FunctionResponseTypes (Kinesis, DynamoDB Streams, Amazon MSK, self-managed Apache Kafka, and Amazon SQS) A list of current response type enums applied to the event source mapping.
-#' @param ScalingConfig (Amazon SQS only) The scaling configuration for the event source. For more information, see [Configuring maximum concurrency for Amazon SQS event sources](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-max-concurrency).
 #' @param AmazonManagedKafkaEventSourceConfig Specific configuration settings for an Amazon Managed Streaming for Apache Kafka (Amazon MSK) event source.
 #' @param SelfManagedKafkaEventSourceConfig Specific configuration settings for a self-managed Apache Kafka event source.
 #' @param DocumentDBEventSourceConfig Specific configuration settings for a DocumentDB event source.
-#' @param KMSKeyArn The ARN of the Key Management Service (KMS) customer managed key that Lambda uses to encrypt your function's [filter criteria](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-basics). By default, Lambda does not encrypt your filter criteria object. Specify this property to encrypt data using your own customer managed key.
-#' @param MetricsConfig The metrics configuration for your event source. For more information, see [Event source mapping metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
-#' @param LoggingConfig The function's Amazon CloudWatch Logs configuration settings.
 #' @param ProvisionedPollerConfig (Amazon SQS, Amazon MSK, and self-managed Apache Kafka only) The provisioned mode configuration for the event source. For more information, see [provisioned mode](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode).
 #'
 #' @return
@@ -8149,6 +8435,22 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'         Pattern = "string"
 #'       )
 #'     )
+#'   ),
+#'   FilterCriteriaError = list(
+#'     ErrorCode = "string",
+#'     Message = "string"
+#'   ),
+#'   KMSKeyArn = "string",
+#'   MetricsConfig = list(
+#'     Metrics = list(
+#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
+#'     )
+#'   ),
+#'   LoggingConfig = list(
+#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
+#'   ),
+#'   ScalingConfig = list(
+#'     MaximumConcurrency = 123
 #'   ),
 #'   FunctionArn = "string",
 #'   LastModified = as.POSIXct(
@@ -8227,28 +8529,12 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'       )
 #'     )
 #'   ),
-#'   ScalingConfig = list(
-#'     MaximumConcurrency = 123
-#'   ),
 #'   DocumentDBEventSourceConfig = list(
 #'     DatabaseName = "string",
 #'     CollectionName = "string",
 #'     FullDocument = "UpdateLookup"|"Default"
 #'   ),
-#'   KMSKeyArn = "string",
-#'   FilterCriteriaError = list(
-#'     ErrorCode = "string",
-#'     Message = "string"
-#'   ),
 #'   EventSourceMappingArn = "string",
-#'   MetricsConfig = list(
-#'     Metrics = list(
-#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
-#'     )
-#'   ),
-#'   LoggingConfig = list(
-#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
-#'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
 #'     MaximumPollers = 123,
@@ -8271,7 +8557,20 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'       )
 #'     )
 #'   ),
+#'   KMSKeyArn = "string",
+#'   MetricsConfig = list(
+#'     Metrics = list(
+#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
+#'     )
+#'   ),
+#'   LoggingConfig = list(
+#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
+#'   ),
+#'   ScalingConfig = list(
+#'     MaximumConcurrency = 123
+#'   ),
 #'   MaximumBatchingWindowInSeconds = 123,
+#'   ParallelizationFactor = 123,
 #'   DestinationConfig = list(
 #'     OnSuccess = list(
 #'       Destination = "string"
@@ -8283,19 +8582,15 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'   MaximumRecordAgeInSeconds = 123,
 #'   BisectBatchOnFunctionError = TRUE|FALSE,
 #'   MaximumRetryAttempts = 123,
-#'   ParallelizationFactor = 123,
+#'   TumblingWindowInSeconds = 123,
 #'   SourceAccessConfigurations = list(
 #'     list(
 #'       Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH"|"VIRTUAL_HOST"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
 #'       URI = "string"
 #'     )
 #'   ),
-#'   TumblingWindowInSeconds = 123,
 #'   FunctionResponseTypes = list(
 #'     "ReportBatchItemFailures"
-#'   ),
-#'   ScalingConfig = list(
-#'     MaximumConcurrency = 123
 #'   ),
 #'   AmazonManagedKafkaEventSourceConfig = list(
 #'     ConsumerGroupId = "string",
@@ -8338,15 +8633,6 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'     CollectionName = "string",
 #'     FullDocument = "UpdateLookup"|"Default"
 #'   ),
-#'   KMSKeyArn = "string",
-#'   MetricsConfig = list(
-#'     Metrics = list(
-#'       "EventCount"|"ErrorCount"|"KafkaMetrics"
-#'     )
-#'   ),
-#'   LoggingConfig = list(
-#'     SystemLogLevel = "DEBUG"|"INFO"|"WARN"
-#'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
 #'     MaximumPollers = 123,
@@ -8371,7 +8657,7 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' @rdname lambda_update_event_source_mapping
 #'
 #' @aliases lambda_update_event_source_mapping
-lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL, ScalingConfig = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, LoggingConfig = NULL, ProvisionedPollerConfig = NULL) {
+lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, LoggingConfig = NULL, ScalingConfig = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, TumblingWindowInSeconds = NULL, SourceAccessConfigurations = NULL, FunctionResponseTypes = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, DocumentDBEventSourceConfig = NULL, ProvisionedPollerConfig = NULL) {
   op <- new_operation(
     name = "UpdateEventSourceMapping",
     http_method = "PUT",
@@ -8380,7 +8666,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes, ScalingConfig = ScalingConfig, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, LoggingConfig = LoggingConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
+  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, LoggingConfig = LoggingConfig, ScalingConfig = ScalingConfig, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, TumblingWindowInSeconds = TumblingWindowInSeconds, SourceAccessConfigurations = SourceAccessConfigurations, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
   output <- .lambda$update_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -8407,8 +8693,8 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'
 #' @usage
 #' lambda_update_function_code(FunctionName, ZipFile, S3Bucket, S3Key,
-#'   S3ObjectVersion, ImageUri, Publish, DryRun, RevisionId, Architectures,
-#'   SourceKMSKeyArn, PublishTo)
+#'   S3ObjectVersion, S3ObjectStorageMode, ImageUri, Architectures, Publish,
+#'   PublishTo, DryRun, RevisionId, SourceKMSKeyArn)
 #'
 #' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
@@ -8425,13 +8711,18 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' @param S3Bucket An Amazon S3 bucket in the same Amazon Web Services Region as your function. The bucket can be in a different Amazon Web Services account. Use only with a function defined with a .zip file archive deployment package.
 #' @param S3Key The Amazon S3 key of the deployment package. Use only with a function defined with a .zip file archive deployment package.
 #' @param S3ObjectVersion For versioned objects, the version of the deployment package object to use.
+#' @param S3ObjectStorageMode Specifies how the deployment package is stored. Valid values:
+#' 
+#' -   `COPY` (default) – Uploads a copy of your deployment package to Lambda.
+#' 
+#' -   `REFERENCE` – Lambda references the deployment package from the specified Amazon S3 bucket.
 #' @param ImageUri URI of a container image in the Amazon ECR registry. Do not use for a function defined with a .zip file archive.
+#' @param Architectures The instruction set architecture that the function supports. Enter a string array with one of the valid values (arm64 or x86_64). The default value is `x86_64`.
 #' @param Publish Set to true to publish a new version of the function after updating the code. This has the same effect as calling [`publish_version`][lambda_publish_version] separately.
+#' @param PublishTo Specifies where to publish the function version or configuration.
 #' @param DryRun Set to true to validate the request parameters and access permissions without modifying the function code.
 #' @param RevisionId Update the function only if the revision ID matches the ID that's specified. Use this option to avoid modifying a function that has changed since you last read it.
-#' @param Architectures The instruction set architecture that the function supports. Enter a string array with one of the valid values (arm64 or x86_64). The default value is `x86_64`.
 #' @param SourceKMSKeyArn The ARN of the Key Management Service (KMS) customer managed key that's used to encrypt your function's .zip deployment package. If you don't provide a customer managed key, Lambda uses an Amazon Web Services managed key.
-#' @param PublishTo Specifies where to publish the function version or configuration.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8439,7 +8730,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -8487,16 +8778,18 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'   ),
 #'   State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DrainingDurableExecutions"|"DependencyError",
 #'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DependencyError",
 #'   FileSystemConfigs = list(
 #'     list(
 #'       Arn = "string",
 #'       LocalMountPath = "string"
 #'     )
 #'   ),
+#'   SigningProfileVersionArn = "string",
+#'   SigningJobArn = "string",
 #'   PackageType = "Zip"|"Image",
 #'   ImageConfigResponse = list(
 #'     ImageConfig = list(
@@ -8513,8 +8806,6 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'       Message = "string"
 #'     )
 #'   ),
-#'   SigningProfileVersionArn = "string",
-#'   SigningJobArn = "string",
 #'   Architectures = list(
 #'     "x86_64"|"arm64"
 #'   ),
@@ -8538,6 +8829,9 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'     SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'     LogGroup = "string"
 #'   ),
+#'   TenancyConfig = list(
+#'     TenantIsolationMode = "PER_TENANT"
+#'   ),
 #'   CapacityProviderConfig = list(
 #'     LambdaManagedInstancesCapacityProviderConfig = list(
 #'       CapacityProviderArn = "string",
@@ -8547,11 +8841,9 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'   ),
 #'   ConfigSha256 = "string",
 #'   DurableConfig = list(
+#'     KMSKeyArn = "string",
 #'     RetentionPeriodInDays = 123,
 #'     ExecutionTimeout = 123
-#'   ),
-#'   TenancyConfig = list(
-#'     TenantIsolationMode = "PER_TENANT"
 #'   )
 #' )
 #' ```
@@ -8564,15 +8856,16 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'   S3Bucket = "string",
 #'   S3Key = "string",
 #'   S3ObjectVersion = "string",
+#'   S3ObjectStorageMode = "COPY"|"REFERENCE",
 #'   ImageUri = "string",
-#'   Publish = TRUE|FALSE,
-#'   DryRun = TRUE|FALSE,
-#'   RevisionId = "string",
 #'   Architectures = list(
 #'     "x86_64"|"arm64"
 #'   ),
-#'   SourceKMSKeyArn = "string",
-#'   PublishTo = "LATEST_PUBLISHED"
+#'   Publish = TRUE|FALSE,
+#'   PublishTo = "LATEST_PUBLISHED",
+#'   DryRun = TRUE|FALSE,
+#'   RevisionId = "string",
+#'   SourceKMSKeyArn = "string"
 #' )
 #' ```
 #'
@@ -8593,7 +8886,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' @rdname lambda_update_function_code
 #'
 #' @aliases lambda_update_function_code
-lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket = NULL, S3Key = NULL, S3ObjectVersion = NULL, ImageUri = NULL, Publish = NULL, DryRun = NULL, RevisionId = NULL, Architectures = NULL, SourceKMSKeyArn = NULL, PublishTo = NULL) {
+lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket = NULL, S3Key = NULL, S3ObjectVersion = NULL, S3ObjectStorageMode = NULL, ImageUri = NULL, Architectures = NULL, Publish = NULL, PublishTo = NULL, DryRun = NULL, RevisionId = NULL, SourceKMSKeyArn = NULL) {
   op <- new_operation(
     name = "UpdateFunctionCode",
     http_method = "PUT",
@@ -8602,7 +8895,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$update_function_code_input(FunctionName = FunctionName, ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, S3ObjectVersion = S3ObjectVersion, ImageUri = ImageUri, Publish = Publish, DryRun = DryRun, RevisionId = RevisionId, Architectures = Architectures, SourceKMSKeyArn = SourceKMSKeyArn, PublishTo = PublishTo)
+  input <- .lambda$update_function_code_input(FunctionName = FunctionName, ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, S3ObjectVersion = S3ObjectVersion, S3ObjectStorageMode = S3ObjectStorageMode, ImageUri = ImageUri, Architectures = Architectures, Publish = Publish, PublishTo = PublishTo, DryRun = DryRun, RevisionId = RevisionId, SourceKMSKeyArn = SourceKMSKeyArn)
   output <- .lambda$update_function_code_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -8674,7 +8967,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' @param SnapStart The function's [SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html) setting.
 #' @param LoggingConfig The function's Amazon CloudWatch Logs configuration settings.
 #' @param CapacityProviderConfig Configuration for the capacity provider that manages compute resources for Lambda functions.
-#' @param DurableConfig Configuration settings for durable functions. Allows updating execution timeout and retention period for functions with durability enabled.
+#' @param DurableConfig Configuration settings for [durable functions](https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html), including execution timeout, retention period for execution history, and an optional ARN of the Key Management Service (KMS) customer managed key that is used to encrypt your durable execution's payload data, including input, output, and error payloads.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8682,7 +8975,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -8730,16 +9023,18 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'   ),
 #'   State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DrainingDurableExecutions"|"DependencyError",
 #'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
+#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"ServiceQuotaExceededException"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl"|"DependencyError",
 #'   FileSystemConfigs = list(
 #'     list(
 #'       Arn = "string",
 #'       LocalMountPath = "string"
 #'     )
 #'   ),
+#'   SigningProfileVersionArn = "string",
+#'   SigningJobArn = "string",
 #'   PackageType = "Zip"|"Image",
 #'   ImageConfigResponse = list(
 #'     ImageConfig = list(
@@ -8756,8 +9051,6 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'       Message = "string"
 #'     )
 #'   ),
-#'   SigningProfileVersionArn = "string",
-#'   SigningJobArn = "string",
 #'   Architectures = list(
 #'     "x86_64"|"arm64"
 #'   ),
@@ -8781,6 +9074,9 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'     SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'     LogGroup = "string"
 #'   ),
+#'   TenancyConfig = list(
+#'     TenantIsolationMode = "PER_TENANT"
+#'   ),
 #'   CapacityProviderConfig = list(
 #'     LambdaManagedInstancesCapacityProviderConfig = list(
 #'       CapacityProviderArn = "string",
@@ -8790,11 +9086,9 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'   ),
 #'   ConfigSha256 = "string",
 #'   DurableConfig = list(
+#'     KMSKeyArn = "string",
 #'     RetentionPeriodInDays = 123,
 #'     ExecutionTimeout = 123
-#'   ),
-#'   TenancyConfig = list(
-#'     TenantIsolationMode = "PER_TENANT"
 #'   )
 #' )
 #' ```
@@ -8822,7 +9116,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'       "string"
 #'     )
 #'   ),
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"|"ruby4.0",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"nodejs18.x"|"nodejs20.x"|"nodejs22.x"|"nodejs24.x"|"java8"|"java8.al2"|"java11"|"java17"|"java21"|"java25"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"python3.10"|"python3.11"|"python3.12"|"python3.13"|"python3.14"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"dotnet10"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"ruby4.0"|"provided"|"provided.al2"|"provided.al2023"|"nodejs26.x"|"python3.15"|"java8.al2023"|"java11.al2023"|"java17.al2023",
 #'   DeadLetterConfig = list(
 #'     TargetArn = "string"
 #'   ),
@@ -8869,6 +9163,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'     )
 #'   ),
 #'   DurableConfig = list(
+#'     KMSKeyArn = "string",
 #'     RetentionPeriodInDays = 123,
 #'     ExecutionTimeout = 123
 #'   )

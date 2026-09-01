@@ -1035,7 +1035,7 @@ s3control_create_multi_region_access_point <- function(AccountId, ClientToken, D
 #' 
 #' To use this operation, you must have the permission to perform the `s3:CreateStorageLensGroup` action. If you’re trying to create a Storage Lens group with Amazon Web Services resource tags, you must also have permission to perform the `s3:TagResource` action. For more information about the required Storage Lens Groups permissions, see [Setting account permissions to use S3 Storage Lens groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions).
 #' 
-#' For information about Storage Lens groups errors, see [List of Amazon S3 Storage Lens error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList).
+#' For information about Storage Lens groups errors, see [List of Amazon S3 Storage Lens error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#S3LensErrorCodeList).
 #'
 #' @usage
 #' s3control_create_storage_lens_group(AccountId, StorageLensGroup, Tags)
@@ -1588,7 +1588,7 @@ s3control_delete_access_point_policy_for_object_lambda <- function(AccountId, Na
 #' 
 #' To use this operation, you must have the permission to perform the `s3express:DeleteAccessPointScope` action.
 #' 
-#' For information about REST API errors, see [REST error responses](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses).
+#' For information about REST API errors, see [REST error responses](https://docs.aws.amazon.com/AmazonS3/latest/API/#RESTErrorResponses).
 #'
 #' @usage
 #' s3control_delete_access_point_scope(AccountId, Name)
@@ -2242,7 +2242,7 @@ s3control_delete_storage_lens_configuration_tagging <- function(ConfigId, Accoun
 #' 
 #' To use this operation, you must have the permission to perform the `s3:DeleteStorageLensGroup` action. For more information about the required Storage Lens Groups permissions, see [Setting account permissions to use S3 Storage Lens groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions).
 #' 
-#' For information about Storage Lens groups errors, see [List of Amazon S3 Storage Lens error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList).
+#' For information about Storage Lens groups errors, see [List of Amazon S3 Storage Lens error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#S3LensErrorCodeList).
 #'
 #' @usage
 #' s3control_delete_storage_lens_group(Name, AccountId)
@@ -3552,7 +3552,7 @@ s3control_get_access_point_policy_status_for_object_lambda <- function(AccountId
 #' 
 #' To use this operation, you must have the permission to perform the `s3express:GetAccessPointScope` action.
 #' 
-#' For information about REST API errors, see [REST error responses](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses).
+#' For information about REST API errors, see [REST error responses](https://docs.aws.amazon.com/AmazonS3/latest/API/#RESTErrorResponses).
 #'
 #' @usage
 #' s3control_get_access_point_scope(AccountId, Name)
@@ -4934,7 +4934,7 @@ s3control_get_storage_lens_configuration_tagging <- function(ConfigId, AccountId
 #' 
 #' To use this operation, you must have the permission to perform the `s3:GetStorageLensGroup` action. For more information about the required Storage Lens Groups permissions, see [Setting account permissions to use S3 Storage Lens groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions).
 #' 
-#' For information about Storage Lens groups errors, see [List of Amazon S3 Storage Lens error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList).
+#' For information about Storage Lens groups errors, see [List of Amazon S3 Storage Lens error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#S3LensErrorCodeList).
 #'
 #' @usage
 #' s3control_get_storage_lens_group(Name, AccountId)
@@ -5396,7 +5396,7 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
 #' 
 #' To use this operation, you must have the permission to perform the `s3express:ListAccessPointsForDirectoryBuckets` action.
 #' 
-#' For information about REST API errors, see [REST error responses](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses).
+#' For information about REST API errors, see [REST error responses](https://docs.aws.amazon.com/AmazonS3/latest/API/#RESTErrorResponses).
 #'
 #' @usage
 #' s3control_list_access_points_for_directory_buckets(AccountId,
@@ -5938,7 +5938,7 @@ s3control_list_storage_lens_configurations <- function(AccountId, NextToken = NU
 #' 
 #' To use this operation, you must have the permission to perform the `s3:ListStorageLensGroups` action. For more information about the required Storage Lens Groups permissions, see [Setting account permissions to use S3 Storage Lens groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions).
 #' 
-#' For information about Storage Lens groups errors, see [List of Amazon S3 Storage Lens error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList).
+#' For information about Storage Lens groups errors, see [List of Amazon S3 Storage Lens error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#S3LensErrorCodeList).
 #'
 #' @usage
 #' s3control_list_storage_lens_groups(AccountId, NextToken)
@@ -6025,7 +6025,7 @@ s3control_list_storage_lens_groups <- function(AccountId, NextToken = NULL) {
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is `s3express-control.region.amazonaws.com`.
 #' 
-#' For information about S3 Tagging errors, see [List of Amazon S3 Tagging error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList).
+#' For information about S3 Tagging errors, see [List of Amazon S3 Tagging error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#S3TaggingErrorCodeList).
 #'
 #' @usage
 #' s3control_list_tags_for_resource(AccountId, ResourceArn)
@@ -6340,7 +6340,7 @@ s3control_put_access_point_policy_for_object_lambda <- function(AccountId, Name,
 #' 
 #' To use this operation, you must have the permission to perform the `s3express:PutAccessPointScope` action.
 #' 
-#' For information about REST API errors, see [REST error responses](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses).
+#' For information about REST API errors, see [REST error responses](https://docs.aws.amazon.com/AmazonS3/latest/API/#RESTErrorResponses).
 #'
 #' @usage
 #' s3control_put_access_point_scope(AccountId, Name, Scope)
@@ -7475,7 +7475,7 @@ s3control_submit_multi_region_access_point_routes <- function(AccountId, Mrap, R
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is `s3express-control.region.amazonaws.com`.
 #' 
-#' For information about S3 Tagging errors, see [List of Amazon S3 Tagging error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList).
+#' For information about S3 Tagging errors, see [List of Amazon S3 Tagging error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#S3TaggingErrorCodeList).
 #'
 #' @usage
 #' s3control_tag_resource(AccountId, ResourceArn, Tags)
@@ -7557,7 +7557,7 @@ s3control_tag_resource <- function(AccountId, ResourceArn, Tags) {
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is `s3express-control.region.amazonaws.com`.
 #' 
-#' For information about S3 Tagging errors, see [List of Amazon S3 Tagging error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList).
+#' For information about S3 Tagging errors, see [List of Amazon S3 Tagging error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#S3TaggingErrorCodeList).
 #'
 #' @usage
 #' s3control_untag_resource(AccountId, ResourceArn, TagKeys)
@@ -7824,7 +7824,7 @@ s3control_update_job_status <- function(AccountId, JobId, RequestedJobStatus, St
 #' 
 #' To use this operation, you must have the permission to perform the `s3:UpdateStorageLensGroup` action. For more information about the required Storage Lens Groups permissions, see [Setting account permissions to use S3 Storage Lens groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions).
 #' 
-#' For information about Storage Lens groups errors, see [List of Amazon S3 Storage Lens error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList).
+#' For information about Storage Lens groups errors, see [List of Amazon S3 Storage Lens error codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#S3LensErrorCodeList).
 #'
 #' @usage
 #' s3control_update_storage_lens_group(Name, AccountId, StorageLensGroup)

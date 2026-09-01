@@ -3,6 +3,40 @@
 #' @include eks_service.R
 NULL
 
+#' Activates a successor certificate authority (CA) as the signing
+#' certificate authority for your cluster, completing a CA rotation
+#'
+#' @description
+#' Activates a successor certificate authority (CA) as the signing certificate authority for your cluster, completing a CA rotation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_activate_certificate_authority/](https://www.paws-r-sdk.com/docs/eks_activate_certificate_authority/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param certificateAuthorityId &#91;required&#93; The ID of the certificate authority to activate as the cluster's signing certificate authority. This certificate authority must already exist on the cluster and have a `distributionStatus` of `COMPLETE`.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_activate_certificate_authority
+eks_activate_certificate_authority <- function(clusterName, certificateAuthorityId, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "ActivateCertificateAuthority",
+    http_method = "POST",
+    http_path = "/clusters/{name}/certificate-authorities/{certificateAuthorityId}/activate",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$activate_certificate_authority_input(clusterName = clusterName, certificateAuthorityId = certificateAuthorityId, clientRequestToken = clientRequestToken)
+  output <- .eks$activate_certificate_authority_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$activate_certificate_authority <- eks_activate_certificate_authority
+
 #' Associates an access policy and its scope to an access entry
 #'
 #' @description
@@ -103,6 +137,40 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
   return(response)
 }
 .eks$operations$associate_identity_provider_config <- eks_associate_identity_provider_config
+
+#' Cancels an in-progress update to an Amazon EKS cluster on a best-effort
+#' basis
+#'
+#' @description
+#' Cancels an in-progress update to an Amazon EKS cluster on a best-effort basis. Cancellation is only performed if the update can be cancelled. Currently, this is supported for `VersionRollback` update types on EKS Auto Mode clusters when nodes are rolling back.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_cancel_update/](https://www.paws-r-sdk.com/docs/eks_cancel_update/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the Amazon EKS cluster associated with the update.
+#' @param updateId &#91;required&#93; The ID of the update to cancel.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_cancel_update
+eks_cancel_update <- function(name, updateId, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "CancelUpdate",
+    http_method = "POST",
+    http_path = "/clusters/{name}/updates/{updateId}/cancel-update",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$cancel_update_input(name = name, updateId = updateId, clientRequestToken = clientRequestToken)
+  output <- .eks$cancel_update_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$cancel_update <- eks_cancel_update
 
 #' Creates an access entry
 #'
@@ -269,6 +337,39 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 }
 .eks$operations$create_capability <- eks_create_capability
 
+#' Appends a successor certificate authority (CA) to your cluster,
+#' beginning the CA rotation process
+#'
+#' @description
+#' Appends a successor certificate authority (CA) to your cluster, beginning the CA rotation process.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_create_certificate_authority/](https://www.paws-r-sdk.com/docs/eks_create_certificate_authority/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_create_certificate_authority
+eks_create_certificate_authority <- function(clusterName, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "CreateCertificateAuthority",
+    http_method = "POST",
+    http_path = "/clusters/{name}/certificate-authorities",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$create_certificate_authority_input(clusterName = clusterName, clientRequestToken = clientRequestToken)
+  output <- .eks$create_certificate_authority_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$create_certificate_authority <- eks_create_certificate_authority
+
 #' Creates an Amazon EKS control plane
 #'
 #' @description
@@ -307,11 +408,14 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 #' @param storageConfig Enable or disable the block storage capability of EKS Auto Mode when creating your EKS Auto Mode cluster. If the block storage capability is enabled, EKS Auto Mode will create and delete EBS volumes in your Amazon Web Services account.
 #' @param deletionProtection Indicates whether to enable deletion protection for the cluster. When enabled, the cluster cannot be deleted unless deletion protection is first disabled. This helps prevent accidental cluster deletion. Default value is `false`.
 #' @param controlPlaneScalingConfig The control plane scaling tier configuration. For more information, see EKS Provisioned Control Plane in the Amazon EKS User Guide.
+#' @param kubeApiServerConfig The Kubernetes API server configuration for the new cluster.
+#' @param kubeSchedulerConfig The Kubernetes scheduler configuration for the new cluster.
+#' @param kubeControllerManagerConfig The Kubernetes controller manager configuration for the new cluster.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_create_cluster
-eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL, accessConfig = NULL, bootstrapSelfManagedAddons = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, remoteNetworkConfig = NULL, computeConfig = NULL, storageConfig = NULL, deletionProtection = NULL, controlPlaneScalingConfig = NULL) {
+eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL, accessConfig = NULL, bootstrapSelfManagedAddons = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, remoteNetworkConfig = NULL, computeConfig = NULL, storageConfig = NULL, deletionProtection = NULL, controlPlaneScalingConfig = NULL, kubeApiServerConfig = NULL, kubeSchedulerConfig = NULL, kubeControllerManagerConfig = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -320,7 +424,7 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig, accessConfig = accessConfig, bootstrapSelfManagedAddons = bootstrapSelfManagedAddons, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, remoteNetworkConfig = remoteNetworkConfig, computeConfig = computeConfig, storageConfig = storageConfig, deletionProtection = deletionProtection, controlPlaneScalingConfig = controlPlaneScalingConfig)
+  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig, accessConfig = accessConfig, bootstrapSelfManagedAddons = bootstrapSelfManagedAddons, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, remoteNetworkConfig = remoteNetworkConfig, computeConfig = computeConfig, storageConfig = storageConfig, deletionProtection = deletionProtection, controlPlaneScalingConfig = controlPlaneScalingConfig, kubeApiServerConfig = kubeApiServerConfig, kubeSchedulerConfig = kubeSchedulerConfig, kubeControllerManagerConfig = kubeControllerManagerConfig)
   output <- .eks$create_cluster_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -622,6 +726,39 @@ eks_delete_capability <- function(clusterName, capabilityName) {
   return(response)
 }
 .eks$operations$delete_capability <- eks_delete_capability
+
+#' Deletes a certificate authority (CA) from your cluster
+#'
+#' @description
+#' Deletes a certificate authority (CA) from your cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_delete_certificate_authority/](https://www.paws-r-sdk.com/docs/eks_delete_certificate_authority/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param certificateAuthorityId &#91;required&#93; The ID of the certificate authority to delete. You can't delete the certificate authority that's currently signing certificates for the cluster.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_delete_certificate_authority
+eks_delete_certificate_authority <- function(clusterName, certificateAuthorityId, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "DeleteCertificateAuthority",
+    http_method = "DELETE",
+    http_path = "/clusters/{name}/certificate-authorities/{certificateAuthorityId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$delete_certificate_authority_input(clusterName = clusterName, certificateAuthorityId = certificateAuthorityId, clientRequestToken = clientRequestToken)
+  output <- .eks$delete_certificate_authority_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$delete_certificate_authority <- eks_delete_certificate_authority
 
 #' Deletes an Amazon EKS cluster control plane
 #'
@@ -981,6 +1118,41 @@ eks_describe_capability <- function(clusterName, capabilityName) {
   return(response)
 }
 .eks$operations$describe_capability <- eks_describe_capability
+
+#' Returns detailed information about a certificate authority (CA) in your
+#' cluster, including its validity period, signing and distribution status,
+#' provenance, scheduled auto-activation events, and public certificate
+#' data
+#'
+#' @description
+#' Returns detailed information about a certificate authority (CA) in your cluster, including its validity period, signing and distribution status, provenance, scheduled auto-activation events, and public certificate data.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_certificate_authority/](https://www.paws-r-sdk.com/docs/eks_describe_certificate_authority/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param certificateAuthorityId &#91;required&#93; The ID of the certificate authority to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_certificate_authority
+eks_describe_certificate_authority <- function(clusterName, certificateAuthorityId) {
+  op <- new_operation(
+    name = "DescribeCertificateAuthority",
+    http_method = "GET",
+    http_path = "/clusters/{name}/certificate-authorities/{certificateAuthorityId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$describe_certificate_authority_input(clusterName = clusterName, certificateAuthorityId = certificateAuthorityId)
+  output <- .eks$describe_certificate_authority_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_certificate_authority <- eks_describe_certificate_authority
 
 #' Describes an Amazon EKS cluster
 #'
@@ -1550,6 +1722,41 @@ eks_list_capabilities <- function(clusterName, nextToken = NULL, maxResults = NU
   return(response)
 }
 .eks$operations$list_capabilities <- eks_list_capabilities
+
+#' Lists the certificate authorities (CAs) for your cluster
+#'
+#' @description
+#' Lists the certificate authorities (CAs) for your cluster. A cluster has at most two certificate authorities: the outgoing CA that's currently signing and, during a rotation, one successor CA.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_list_certificate_authorities/](https://www.paws-r-sdk.com/docs/eks_list_certificate_authorities/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param maxResults The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `nextToken` value. If you don't specify a value, the default is 100 results.
+#' @param nextToken The `nextToken` value returned from a previous paginated request, where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is null when there are no more results to return.
+#' 
+#' This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_list_certificate_authorities
+eks_list_certificate_authorities <- function(clusterName, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListCertificateAuthorities",
+    http_method = "GET",
+    http_path = "/clusters/{name}/certificate-authorities",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "certificateAuthorities"),
+    stream_api = FALSE
+  )
+  input <- .eks$list_certificate_authorities_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
+  output <- .eks$list_certificate_authorities_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$list_certificate_authorities <- eks_list_certificate_authorities
 
 #' Lists the Amazon EKS clusters in your Amazon Web Services account in the
 #' specified Amazon Web Services Region
@@ -2132,7 +2339,7 @@ eks_update_capability <- function(clusterName, capabilityName, roleArn = NULL, c
 #' See [https://www.paws-r-sdk.com/docs/eks_update_cluster_config/](https://www.paws-r-sdk.com/docs/eks_update_cluster_config/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
-#' @param resourcesVpcConfig An object representing the VPC configuration to use for an Amazon EKS cluster.
+#' @param resourcesVpcConfig An object representing the VPC configuration to use for the cluster update. You can use this parameter to update the control plane egress mode, the subnets used by the cluster, the security groups, and the endpoint access settings.
 #' @param logging Enable or disable exporting the Kubernetes control plane logs for your cluster to CloudWatch Logs . By default, cluster control plane logs aren't exported to CloudWatch Logs . For more information, see [Amazon EKS cluster control plane logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html) in the *Amazon EKS User Guide* .
 #' 
 #' CloudWatch Logs ingestion, archive storage, and data scanning rates apply to exported control plane logs. For more information, see [CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
@@ -2150,11 +2357,14 @@ eks_update_capability <- function(clusterName, capabilityName, roleArn = NULL, c
 #' @param remoteNetworkConfig The configuration in the cluster for EKS Hybrid Nodes. You can add, change, or remove this configuration after the cluster is created.
 #' @param deletionProtection Specifies whether to enable or disable deletion protection for the cluster. When enabled (`true`), the cluster cannot be deleted until deletion protection is explicitly disabled. When disabled (`false`), the cluster can be deleted normally.
 #' @param controlPlaneScalingConfig The control plane scaling tier configuration. For more information, see EKS Provisioned Control Plane in the Amazon EKS User Guide.
+#' @param kubeApiServerConfig The Kubernetes API server configuration for the updated cluster.
+#' @param kubeSchedulerConfig The Kubernetes scheduler configuration for the updated cluster.
+#' @param kubeControllerManagerConfig The Kubernetes controller manager configuration for the updated cluster.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_update_cluster_config
-eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, computeConfig = NULL, kubernetesNetworkConfig = NULL, storageConfig = NULL, remoteNetworkConfig = NULL, deletionProtection = NULL, controlPlaneScalingConfig = NULL) {
+eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, computeConfig = NULL, kubernetesNetworkConfig = NULL, storageConfig = NULL, remoteNetworkConfig = NULL, deletionProtection = NULL, controlPlaneScalingConfig = NULL, kubeApiServerConfig = NULL, kubeSchedulerConfig = NULL, kubeControllerManagerConfig = NULL) {
   op <- new_operation(
     name = "UpdateClusterConfig",
     http_method = "POST",
@@ -2163,7 +2373,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, computeConfig = computeConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, storageConfig = storageConfig, remoteNetworkConfig = remoteNetworkConfig, deletionProtection = deletionProtection, controlPlaneScalingConfig = controlPlaneScalingConfig)
+  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, computeConfig = computeConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, storageConfig = storageConfig, remoteNetworkConfig = remoteNetworkConfig, deletionProtection = deletionProtection, controlPlaneScalingConfig = controlPlaneScalingConfig, kubeApiServerConfig = kubeApiServerConfig, kubeSchedulerConfig = kubeSchedulerConfig, kubeControllerManagerConfig = kubeControllerManagerConfig)
   output <- .eks$update_cluster_config_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -2183,12 +2393,13 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
 #' @param version &#91;required&#93; The desired Kubernetes version following a successful update.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
-#' @param force Set this value to `true` to override upgrade-blocking readiness checks when updating a cluster.
+#' @param force Set this value to `true` to override upgrade-blocking or rollback-blocking readiness checks when updating a cluster.
+#' @param rollbackConfig The rollback configuration for the cluster version rollback.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_update_cluster_version
-eks_update_cluster_version <- function(name, version, clientRequestToken = NULL, force = NULL) {
+eks_update_cluster_version <- function(name, version, clientRequestToken = NULL, force = NULL, rollbackConfig = NULL) {
   op <- new_operation(
     name = "UpdateClusterVersion",
     http_method = "POST",
@@ -2197,7 +2408,7 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_cluster_version_input(name = name, version = version, clientRequestToken = clientRequestToken, force = force)
+  input <- .eks$update_cluster_version_input(name = name, version = version, clientRequestToken = clientRequestToken, force = force, rollbackConfig = rollbackConfig)
   output <- .eks$update_cluster_version_output()
   config <- get_config()
   svc <- .eks$service(config, op)

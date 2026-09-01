@@ -41,9 +41,7 @@ A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include 
 
 \item{queryString}{[required] The query string to use. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.}
 
-\item{limit}{The maximum number of log events to return in the query. If the query string uses the \code{fields} command, only the specified fields and their values are returned. The default is 10,000.
-
-The maximum value is 100,000.}
+\item{limit}{The maximum number of log events to return from the query. The maximum limit is 100,000. The maximum events returned in a single GetQueryResults API call is 10,000 log events per request. You can retrieve up to 100,000 log event results from a query by paginating with the \code{nextToken}. 100,000 limit is only supported for Logs Insights QL and is currently not supported for PPL and SQL query languages.}
 }
 \description{
 Starts a query of one or more log groups or data sources using CloudWatch Logs Insights. You specify the log groups or data sources and time range to query and the query string to use. You can query up to 10 data sources in a single query.

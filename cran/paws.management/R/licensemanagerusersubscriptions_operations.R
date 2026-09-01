@@ -116,7 +116,7 @@ licensemanagerusersubscriptions_delete_license_server_endpoint <- function(Licen
 #' @param IdentityProvider An object that specifies details for the Active Directory identity provider.
 #' @param Product The name of the user-based subscription product.
 #' 
-#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL` | `OFFICE_PROFESSIONAL_PLUS` | `REMOTE_DESKTOP_SERVICES`
+#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL` | `OFFICE_PROFESSIONAL_PLUS` | `OFFICE_STANDARD` | `REMOTE_DESKTOP_SERVICES`
 #' @param IdentityProviderArn The Amazon Resource Name (ARN) that identifies the identity provider to deregister.
 #'
 #' @keywords internal
@@ -297,7 +297,7 @@ licensemanagerusersubscriptions_list_license_server_endpoints <- function(MaxRes
 #'
 #' @param Product The name of the user-based subscription product.
 #' 
-#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL` | `OFFICE_PROFESSIONAL_PLUS` | `REMOTE_DESKTOP_SERVICES`
+#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL` | `OFFICE_PROFESSIONAL_PLUS` | `OFFICE_STANDARD` | `REMOTE_DESKTOP_SERVICES`
 #' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
 #' @param MaxResults The maximum number of results to return from a single request.
 #' @param Filters You can use the following filters to streamline results:
@@ -413,7 +413,7 @@ licensemanagerusersubscriptions_list_user_associations <- function(InstanceId, I
 #' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider to register.
 #' @param Product &#91;required&#93; The name of the user-based subscription product.
 #' 
-#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL` | `OFFICE_PROFESSIONAL_PLUS` | `REMOTE_DESKTOP_SERVICES`
+#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL` | `OFFICE_PROFESSIONAL_PLUS` | `OFFICE_STANDARD` | `REMOTE_DESKTOP_SERVICES`
 #' @param Settings The registered identity provider’s product related configuration settings such as the subnets to provision VPC endpoints.
 #' @param Tags The tags that apply to the identity provider's registration.
 #'
@@ -451,7 +451,7 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
 #' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
 #' @param Product &#91;required&#93; The name of the user-based subscription product.
 #' 
-#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL` | `OFFICE_PROFESSIONAL_PLUS` | `REMOTE_DESKTOP_SERVICES`
+#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL` | `OFFICE_PROFESSIONAL_PLUS` | `OFFICE_STANDARD` | `REMOTE_DESKTOP_SERVICES`
 #' @param Domain The domain name of the Active Directory that contains the user for whom to start the product subscription.
 #' @param Tags The tags that apply to the product subscription.
 #'
@@ -489,7 +489,7 @@ licensemanagerusersubscriptions_start_product_subscription <- function(Username,
 #' @param IdentityProvider An object that specifies details for the identity provider.
 #' @param Product The name of the user-based subscription product.
 #' 
-#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL` | `OFFICE_PROFESSIONAL_PLUS` | `REMOTE_DESKTOP_SERVICES`
+#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL` | `OFFICE_PROFESSIONAL_PLUS` | `OFFICE_STANDARD` | `REMOTE_DESKTOP_SERVICES`
 #' @param ProductUserArn The Amazon Resource Name (ARN) of the product user.
 #' @param Domain The domain name of the Active Directory that contains the user for whom to stop the product subscription.
 #'
@@ -590,7 +590,7 @@ licensemanagerusersubscriptions_untag_resource <- function(ResourceArn, TagKeys)
 #' @param IdentityProvider Refers to an identity provider.
 #' @param Product The name of the user-based subscription product.
 #' 
-#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL` | `OFFICE_PROFESSIONAL_PLUS` | `REMOTE_DESKTOP_SERVICES`
+#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL` | `OFFICE_PROFESSIONAL_PLUS` | `OFFICE_STANDARD` | `REMOTE_DESKTOP_SERVICES`
 #' @param IdentityProviderArn The Amazon Resource Name (ARN) of the identity provider to update.
 #' @param UpdateSettings &#91;required&#93; Updates the registered identity provider’s product related configuration settings. You can update any combination of settings in a single operation such as the:
 #' 

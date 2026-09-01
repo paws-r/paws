@@ -38,11 +38,14 @@ NULL
 #' -   Send your request to an existing stateful session by specifying the ID of that session.
 #' 
 #' With a stateful session, you can send multiple requests to a stateful model. When you create a session with a stateful model, the model must create the session ID and set the expiration time. The model must also provide that information in the response to your request. You can get the ID and timestamp from the `NewSessionId` response parameter. For any subsequent request where you specify that session ID, SageMaker AI routes the request to the same instance that supports the session.
+#' @param PrefixAwareId An optional, stable identifier that serves as a routing hint for prefix-aware routing. The service routes requests with the same prefix and the same identifier to the same instance. If requests from different applications might have the same prompt prefix, set a different identifier for each application to differentiate their routing decisions.
+#' 
+#' Applies only to endpoints configured with a `RoutingStrategy` of `PREFIX_AWARE`.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemakerruntime_invoke_endpoint
-sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetModel = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL, EnableExplanations = NULL, InferenceComponentName = NULL, SessionId = NULL) {
+sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetModel = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL, EnableExplanations = NULL, InferenceComponentName = NULL, SessionId = NULL, PrefixAwareId = NULL) {
   op <- new_operation(
     name = "InvokeEndpoint",
     http_method = "POST",
@@ -51,7 +54,7 @@ sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, EnableExplanations = EnableExplanations, InferenceComponentName = InferenceComponentName, SessionId = SessionId)
+  input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, EnableExplanations = EnableExplanations, InferenceComponentName = InferenceComponentName, SessionId = SessionId, PrefixAwareId = PrefixAwareId)
   output <- .sagemakerruntime$invoke_endpoint_output()
   config <- get_config()
   svc <- .sagemakerruntime$service(config, op)
@@ -80,16 +83,21 @@ sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = N
 #' 
 #' This feature is currently supported in the Amazon Web Services SDKs but not in the Amazon SageMaker AI Python SDK.
 #' @param InferenceId The identifier for the inference request. Amazon SageMaker AI will generate an identifier for you if none is specified.
-#' @param InputLocation &#91;required&#93; The Amazon S3 URI where the inference request payload is stored.
+#' @param InputLocation The Amazon S3 URI where the inference request payload is stored.
 #' @param S3OutputPathExtension The path extension that is appended to the Amazon S3 output path where the inference response payload is stored.
 #' @param Filename The filename for the inference response payload stored in Amazon S3. If not specified, Amazon SageMaker AI generates a filename based on the inference ID.
 #' @param RequestTTLSeconds Maximum age in seconds a request can be in the queue before it is marked as expired. The default is 6 hours, or 21,600 seconds.
 #' @param InvocationTimeoutSeconds Maximum amount of time in seconds a request can be processed before it is marked as expired. The default is 15 minutes, or 900 seconds.
+#' @param Body Provides inline input data for the inference request, in the format specified in the `ContentType` request header. Use this parameter to send the request payload directly in the API call instead of uploading it to Amazon S3 and referencing it with `InputLocation`. The inline payload can be up to 128,000 bytes.
+#' 
+#' `Body` and `InputLocation` are mutually exclusive. Provide exactly one of them.
+#' 
+#' For information about the format of the request body, see [Common Data Formats-Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html).
 #'
 #' @keywords internal
 #'
 #' @rdname sagemakerruntime_invoke_endpoint_async
-sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, InferenceId = NULL, InputLocation, S3OutputPathExtension = NULL, Filename = NULL, RequestTTLSeconds = NULL, InvocationTimeoutSeconds = NULL) {
+sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, InferenceId = NULL, InputLocation = NULL, S3OutputPathExtension = NULL, Filename = NULL, RequestTTLSeconds = NULL, InvocationTimeoutSeconds = NULL, Body = NULL) {
   op <- new_operation(
     name = "InvokeEndpointAsync",
     http_method = "POST",
@@ -98,7 +106,7 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemakerruntime$invoke_endpoint_async_input(EndpointName = EndpointName, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, InferenceId = InferenceId, InputLocation = InputLocation, S3OutputPathExtension = S3OutputPathExtension, Filename = Filename, RequestTTLSeconds = RequestTTLSeconds, InvocationTimeoutSeconds = InvocationTimeoutSeconds)
+  input <- .sagemakerruntime$invoke_endpoint_async_input(EndpointName = EndpointName, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, InferenceId = InferenceId, InputLocation = InputLocation, S3OutputPathExtension = S3OutputPathExtension, Filename = Filename, RequestTTLSeconds = RequestTTLSeconds, InvocationTimeoutSeconds = InvocationTimeoutSeconds, Body = Body)
   output <- .sagemakerruntime$invoke_endpoint_async_output()
   config <- get_config()
   svc <- .sagemakerruntime$service(config, op)
@@ -136,11 +144,14 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
 #' @param SessionId The ID of a stateful session to handle your request.
 #' 
 #' You can't create a stateful session by using the [`invoke_endpoint_with_response_stream`][sagemakerruntime_invoke_endpoint_with_response_stream] action. Instead, you can create one by using the [`invoke_endpoint`][sagemakerruntime_invoke_endpoint] action. In your request, you specify `NEW_SESSION` for the `SessionId` request parameter. The response to that request provides the session ID for the `NewSessionId` response parameter.
+#' @param PrefixAwareId An optional, stable identifier that serves as a routing hint for prefix-aware routing. The service routes requests with the same prefix and the same identifier to the same instance. If requests from different applications might have the same prompt prefix, set a different identifier for each application to differentiate their routing decisions.
+#' 
+#' Applies only to endpoints configured with a `RoutingStrategy` of `PREFIX_AWARE`.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemakerruntime_invoke_endpoint_with_response_stream
-sagemakerruntime_invoke_endpoint_with_response_stream <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL, InferenceComponentName = NULL, SessionId = NULL) {
+sagemakerruntime_invoke_endpoint_with_response_stream <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL, InferenceComponentName = NULL, SessionId = NULL, PrefixAwareId = NULL) {
   op <- new_operation(
     name = "InvokeEndpointWithResponseStream",
     http_method = "POST",
@@ -149,7 +160,7 @@ sagemakerruntime_invoke_endpoint_with_response_stream <- function(EndpointName, 
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .sagemakerruntime$invoke_endpoint_with_response_stream_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, InferenceComponentName = InferenceComponentName, SessionId = SessionId)
+  input <- .sagemakerruntime$invoke_endpoint_with_response_stream_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, InferenceComponentName = InferenceComponentName, SessionId = SessionId, PrefixAwareId = PrefixAwareId)
   output <- .sagemakerruntime$invoke_endpoint_with_response_stream_output()
   config <- get_config()
   svc <- .sagemakerruntime$service(config, op)

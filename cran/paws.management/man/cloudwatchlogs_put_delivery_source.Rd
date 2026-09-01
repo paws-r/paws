@@ -21,27 +21,31 @@ For the \code{SECURITY_FINDING_LOGS} logType, use a wildcard ARN for the hub res
 
 \item{logType}{[required] Defines the type of log that the source is sending.
 \itemize{
+\item For Application Load Balancer, the valid values are \code{ALB_ACCESS_LOGS}, \code{ALB_CONNECTION_LOGS}, and \code{ALB_HEALTH_CHECK_LOGS}.
 \item For Amazon Bedrock Agents, the valid values are \code{APPLICATION_LOGS} and \code{EVENT_LOGS}.
-\item For Amazon Bedrock Knowledge Bases, the valid value is \code{APPLICATION_LOGS}.
+\item For Amazon Bedrock Knowledge Bases, the valid values are \code{APPLICATION_LOGS} and \code{TRACES}.
 \item For Amazon Bedrock AgentCore Runtime, the valid values are \code{APPLICATION_LOGS}, \code{USAGE_LOGS} and \code{TRACES}.
 \item For Amazon Bedrock AgentCore Tools, the valid values are \code{APPLICATION_LOGS}, \code{USAGE_LOGS} and \code{TRACES}.
 \item For Amazon Bedrock AgentCore Identity, the valid values are \code{APPLICATION_LOGS} and \code{TRACES}.
 \item For Amazon Bedrock AgentCore Memory, the valid values are \code{APPLICATION_LOGS} and \code{TRACES}.
 \item For Amazon Bedrock AgentCore Gateway, the valid values are \code{APPLICATION_LOGS} and \code{TRACES}.
+\item For Amazon Bedrock AgentCore Payments, the valid values are \code{APPLICATION_LOGS} and \code{TRACES}.
 \item For CloudFront, the valid value is \code{ACCESS_LOGS}.
 \item For DevOps Agent, the valid value is \code{APPLICATION_LOGS}.
 \item For Amazon CodeWhisperer, the valid value is \code{EVENT_LOGS}.
 \item For Elemental MediaPackage, the valid values are \code{EGRESS_ACCESS_LOGS} and \code{INGRESS_ACCESS_LOGS}.
 \item For Elemental MediaTailor, the valid values are \code{AD_DECISION_SERVER_LOGS}, \code{MANIFEST_SERVICE_LOGS}, and \code{TRANSCODE_LOGS}.
 \item For Amazon EKS Auto Mode, the valid values are \code{AUTO_MODE_BLOCK_STORAGE_LOGS}, \code{AUTO_MODE_COMPUTE_LOGS}, \code{AUTO_MODE_IPAM_LOGS}, and \code{AUTO_MODE_LOAD_BALANCING_LOGS}.
+\item For Amazon EKS Capability Logs, the valid values are \code{EKS_CAPABILITY_ACK_LOGS}, \code{EKS_CAPABILITY_ARGOCD_APPLICATION_LOGS}, \code{EKS_CAPABILITY_ARGOCD_APPLICATIONSET_LOGS}, \code{EKS_CAPABILITY_ARGOCD_COMMITSERVER_LOGS}, \code{EKS_CAPABILITY_ARGOCD_REPOSERVER_LOGS}, \code{EKS_CAPABILITY_ARGOCD_SERVER_LOGS}, and \code{EKS_CAPABILITY_KRO_LOGS}.
 \item For Entity Resolution, the valid value is \code{WORKFLOW_LOGS}.
 \item For IAM Identity Center, the valid value is \code{ERROR_LOGS}.
 \item For Network Firewall Proxy, the valid values are \code{ALERT_LOGS}, \code{ALLOW_LOGS}, and \code{DENY_LOGS}.
 \item For Network Load Balancer, the valid value is \code{NLB_ACCESS_LOGS}.
 \item For PCS, the valid values are \code{PCS_SCHEDULER_LOGS}, \code{PCS_JOBCOMP_LOGS}, and \code{PCS_SCHEDULER_AUDIT_LOGS}.
-\item For Quick, the valid values are \code{CHAT_LOGS} and \code{FEEDBACK_LOGS}.
+\item For Quick, the valid values are \code{AGENT_HOURS_LOGS}, \code{CHAT_LOGS}, \code{FEEDBACK_LOGS}, and \code{INDEX_USAGE_LOGS}.
 \item For Amazon Web Services RTB Fabric, the valid values is \code{APPLICATION_LOGS}.
 \item For Amazon Q, the valid values are \code{EVENT_LOGS} and \code{SYNC_JOB_LOGS}.
+\item For Amazon S3, the valid value is \code{S3_SERVER_ACCESS_LOGS}.
 \item For Amazon Web Services Security Hub CSPM, the valid value is \code{SECURITY_FINDING_LOGS}.
 \item For Amazon Web Services Security Hub, the valid value is \code{SECURITY_FINDING_LOGS}.
 \item For Amazon SES mail manager, the valid values are \code{APPLICATION_LOGS} and \code{TRAFFIC_POLICY_DEBUG_LOGS}.

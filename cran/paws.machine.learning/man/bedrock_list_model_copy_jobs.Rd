@@ -39,7 +39,7 @@ bedrock_list_model_copy_jobs(
 \item{sortOrder}{Specifies whether to sort the results in ascending or descending order.}
 }
 \description{
-Returns a list of model copy jobs that you have submitted. You can filter the jobs to return based on one or more criteria. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html}{Copy models to be used in other regions} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
+Returns a list of model copy jobs that you have submitted. You can filter the jobs to return based on one or more criteria. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html}{Copy models to be used in other regions} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=awsomedayonlinehk}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_list_model_copy_jobs/} for full documentation.
 }

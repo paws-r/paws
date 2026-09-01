@@ -153,7 +153,17 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
 #'       startOn = "string"
 #'     )
 #'   ),
-#'   partnerInterconnectMacSecCapable = TRUE|FALSE
+#'   rateLimiterStatus = list(
+#'     maxAllowed = 123,
+#'     inUse = 123,
+#'     remaining = 123,
+#'     totalBandwidth = "string"
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'   prefixPoolSizeIpv4 = 123,
+#'   prefixPoolSizeIpv6 = 123,
+#'   prefixPoolUnallocatedCountIpv4 = 123,
+#'   prefixPoolUnallocatedCountIpv6 = 123
 #' )
 #' ```
 #'
@@ -253,7 +263,17 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 #'       startOn = "string"
 #'     )
 #'   ),
-#'   partnerInterconnectMacSecCapable = TRUE|FALSE
+#'   rateLimiterStatus = list(
+#'     maxAllowed = 123,
+#'     inUse = 123,
+#'     remaining = 123,
+#'     totalBandwidth = "string"
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'   prefixPoolSizeIpv4 = 123,
+#'   prefixPoolSizeIpv6 = 123,
+#'   prefixPoolUnallocatedCountIpv4 = 123,
+#'   prefixPoolUnallocatedCountIpv6 = 123
 #' )
 #' ```
 #'
@@ -367,7 +387,10 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
 #'       value = "string"
 #'     )
 #'   ),
-#'   siteLinkEnabled = TRUE|FALSE
+#'   siteLinkEnabled = TRUE|FALSE,
+#'   prefixPoolAllocatedCountIpv4 = 123,
+#'   prefixPoolAllocatedCountIpv6 = 123,
+#'   rateLimit = "string"
 #' )
 #' ```
 #'
@@ -391,7 +414,8 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
 #'         key = "string",
 #'         value = "string"
 #'       )
-#'     )
+#'     ),
+#'     rateLimit = "string"
 #'   )
 #' )
 #' ```
@@ -493,7 +517,10 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
 #'       value = "string"
 #'     )
 #'   ),
-#'   siteLinkEnabled = TRUE|FALSE
+#'   siteLinkEnabled = TRUE|FALSE,
+#'   prefixPoolAllocatedCountIpv4 = 123,
+#'   prefixPoolAllocatedCountIpv6 = 123,
+#'   rateLimit = "string"
 #' )
 #' ```
 #'
@@ -521,7 +548,8 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
 #'         key = "string",
 #'         value = "string"
 #'       )
-#'     )
+#'     ),
+#'     rateLimit = "string"
 #'   )
 #' )
 #' ```
@@ -622,7 +650,10 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 #'         value = "string"
 #'       )
 #'     ),
-#'     siteLinkEnabled = TRUE|FALSE
+#'     siteLinkEnabled = TRUE|FALSE,
+#'     prefixPoolAllocatedCountIpv4 = 123,
+#'     prefixPoolAllocatedCountIpv6 = 123,
+#'     rateLimit = "string"
 #'   )
 #' )
 #' ```
@@ -647,7 +678,8 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 #'         key = "string",
 #'         value = "string"
 #'       )
-#'     )
+#'     ),
+#'     rateLimit = "string"
 #'   )
 #' )
 #' ```
@@ -731,7 +763,17 @@ directconnect_allocate_transit_virtual_interface <- function(connectionId, owner
 #'       startOn = "string"
 #'     )
 #'   ),
-#'   partnerInterconnectMacSecCapable = TRUE|FALSE
+#'   rateLimiterStatus = list(
+#'     maxAllowed = 123,
+#'     inUse = 123,
+#'     remaining = 123,
+#'     totalBandwidth = "string"
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'   prefixPoolSizeIpv4 = 123,
+#'   prefixPoolSizeIpv6 = 123,
+#'   prefixPoolUnallocatedCountIpv4 = 123,
+#'   prefixPoolUnallocatedCountIpv6 = 123
 #' )
 #' ```
 #'
@@ -822,7 +864,17 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
 #'       startOn = "string"
 #'     )
 #'   ),
-#'   partnerInterconnectMacSecCapable = TRUE|FALSE
+#'   rateLimiterStatus = list(
+#'     maxAllowed = 123,
+#'     inUse = 123,
+#'     remaining = 123,
+#'     totalBandwidth = "string"
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'   prefixPoolSizeIpv4 = 123,
+#'   prefixPoolSizeIpv6 = 123,
+#'   prefixPoolUnallocatedCountIpv4 = 123,
+#'   prefixPoolUnallocatedCountIpv6 = 123
 #' )
 #' ```
 #'
@@ -1014,7 +1066,10 @@ directconnect_associate_mac_sec_key <- function(connectionId, secretARN = NULL, 
 #'       value = "string"
 #'     )
 #'   ),
-#'   siteLinkEnabled = TRUE|FALSE
+#'   siteLinkEnabled = TRUE|FALSE,
+#'   prefixPoolAllocatedCountIpv4 = 123,
+#'   prefixPoolAllocatedCountIpv6 = 123,
+#'   rateLimit = "string"
 #' )
 #' ```
 #'
@@ -1391,7 +1446,10 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
 #'         value = "string"
 #'       )
 #'     ),
-#'     siteLinkEnabled = TRUE|FALSE
+#'     siteLinkEnabled = TRUE|FALSE,
+#'     prefixPoolAllocatedCountIpv4 = 123,
+#'     prefixPoolAllocatedCountIpv6 = 123,
+#'     rateLimit = "string"
 #'   )
 #' )
 #' ```
@@ -1501,7 +1559,17 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #'       startOn = "string"
 #'     )
 #'   ),
-#'   partnerInterconnectMacSecCapable = TRUE|FALSE
+#'   rateLimiterStatus = list(
+#'     maxAllowed = 123,
+#'     inUse = 123,
+#'     remaining = 123,
+#'     totalBandwidth = "string"
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'   prefixPoolSizeIpv4 = 123,
+#'   prefixPoolSizeIpv6 = 123,
+#'   prefixPoolUnallocatedCountIpv4 = 123,
+#'   prefixPoolUnallocatedCountIpv6 = 123
 #' )
 #' ```
 #'
@@ -1573,6 +1641,7 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
 #'     ownerAccount = "string",
 #'     directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
 #'     stateChangeError = "string",
+#'     totalPrefixPoolAllocations = 123,
 #'     tags = list(
 #'       list(
 #'         key = "string",
@@ -1998,7 +2067,17 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'           startOn = "string"
 #'         )
 #'       ),
-#'       partnerInterconnectMacSecCapable = TRUE|FALSE
+#'       rateLimiterStatus = list(
+#'         maxAllowed = 123,
+#'         inUse = 123,
+#'         remaining = 123,
+#'         totalBandwidth = "string"
+#'       ),
+#'       partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'       prefixPoolSizeIpv4 = 123,
+#'       prefixPoolSizeIpv6 = 123,
+#'       prefixPoolUnallocatedCountIpv4 = 123,
+#'       prefixPoolUnallocatedCountIpv6 = 123
 #'     )
 #'   ),
 #'   allowsHostedConnections = TRUE|FALSE,
@@ -2020,6 +2099,16 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'       state = "string",
 #'       startOn = "string"
 #'     )
+#'   ),
+#'   prefixPoolSizeIpv4 = 123,
+#'   prefixPoolSizeIpv6 = 123,
+#'   prefixPoolUnallocatedCountIpv4 = 123,
+#'   prefixPoolUnallocatedCountIpv6 = 123,
+#'   rateLimiterStatus = list(
+#'     maxAllowed = 123,
+#'     inUse = 123,
+#'     remaining = 123,
+#'     totalBandwidth = "string"
 #'   )
 #' )
 #' ```
@@ -2140,7 +2229,10 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #'       value = "string"
 #'     )
 #'   ),
-#'   siteLinkEnabled = TRUE|FALSE
+#'   siteLinkEnabled = TRUE|FALSE,
+#'   prefixPoolAllocatedCountIpv4 = 123,
+#'   prefixPoolAllocatedCountIpv6 = 123,
+#'   rateLimit = "string"
 #' )
 #' ```
 #'
@@ -2166,7 +2258,10 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #'         value = "string"
 #'       )
 #'     ),
-#'     enableSiteLink = TRUE|FALSE
+#'     enableSiteLink = TRUE|FALSE,
+#'     prefixPoolAllocatedCountIpv4 = 123,
+#'     prefixPoolAllocatedCountIpv6 = 123,
+#'     rateLimit = "string"
 #'   )
 #' )
 #' ```
@@ -2262,7 +2357,10 @@ directconnect_create_private_virtual_interface <- function(connectionId, newPriv
 #'       value = "string"
 #'     )
 #'   ),
-#'   siteLinkEnabled = TRUE|FALSE
+#'   siteLinkEnabled = TRUE|FALSE,
+#'   prefixPoolAllocatedCountIpv4 = 123,
+#'   prefixPoolAllocatedCountIpv6 = 123,
+#'   rateLimit = "string"
 #' )
 #' ```
 #'
@@ -2289,7 +2387,8 @@ directconnect_create_private_virtual_interface <- function(connectionId, newPriv
 #'         key = "string",
 #'         value = "string"
 #'       )
-#'     )
+#'     ),
+#'     rateLimit = "string"
 #'   )
 #' )
 #' ```
@@ -2388,7 +2487,10 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #'         value = "string"
 #'       )
 #'     ),
-#'     siteLinkEnabled = TRUE|FALSE
+#'     siteLinkEnabled = TRUE|FALSE,
+#'     prefixPoolAllocatedCountIpv4 = 123,
+#'     prefixPoolAllocatedCountIpv6 = 123,
+#'     rateLimit = "string"
 #'   )
 #' )
 #' ```
@@ -2414,7 +2516,10 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #'         value = "string"
 #'       )
 #'     ),
-#'     enableSiteLink = TRUE|FALSE
+#'     enableSiteLink = TRUE|FALSE,
+#'     prefixPoolAllocatedCountIpv4 = 123,
+#'     prefixPoolAllocatedCountIpv6 = 123,
+#'     rateLimit = "string"
 #'   )
 #' )
 #' ```
@@ -2458,16 +2563,24 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #' @param virtualInterfaceId The ID of the virtual interface.
 #' @param asn The autonomous system number (ASN). The valid range is from 1 to 2147483646 for Border Gateway Protocol (BGP) configuration. If you provide a number greater than the maximum, an error is returned. Use `asnLong` instead.
 #' 
-#' You can use `asnLong` or `asn`, but not both. We recommend using `asnLong` as it supports a greater pool of numbers.
-#' 
-#' -   The `asnLong` attribute accepts both ASN and long ASN ranges.
+#' -   You can use `asnLong` or `asn`, but not both. We recommend using `asnLong` as it supports a greater pool of numbers.
 #' 
 #' -   If you provide a value in the same API call for both `asn` and `asnLong`, the API will only accept the value for `asnLong`.
+#' 
+#' -   If you enter a 4-byte ASN for the `asn` parameter, the API returns an error.
+#' 
+#' -   If you are using a 2-byte ASN, the API response will include the 2-byte value for both the `asn` and `asnLong` fields.
 #' @param asnLong The long ASN for the BGP peer to be deleted from a Direct Connect virtual interface. The valid range is from 1 to 4294967294 for BGP configuration.
 #' 
-#' You can use `asnLong` or `asn`, but not both. We recommend using `asnLong` as it supports a greater pool of numbers.
+#' Note the following limitations when using `asnLong`:
 #' 
-#' -   The `asnLong` attribute accepts both ASN and long ASN ranges.
+#' -   You can use `asnLong` or `asn`, but not both. We recommend using `asnLong` as it supports a greater pool of numbers.
+#' 
+#' -   `asnLong` accepts any valid ASN value, regardless if it's 2-byte or 4-byte.
+#' 
+#' -   When using a 4-byte `asnLong`, the API response returns `0` for the legacy `asn` attribute since 4-byte ASN values exceed the maximum supported value of 2,147,483,647.
+#' 
+#' -   If you are using a 2-byte ASN, the API response will include the 2-byte value for both the `asn` and `asnLong` fields.
 #' 
 #' -   If you provide a value in the same API call for both `asn` and `asnLong`, the API will only accept the value for `asnLong`.
 #' @param customerAddress The IP address assigned to the customer interface.
@@ -2527,7 +2640,10 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #'         value = "string"
 #'       )
 #'     ),
-#'     siteLinkEnabled = TRUE|FALSE
+#'     siteLinkEnabled = TRUE|FALSE,
+#'     prefixPoolAllocatedCountIpv4 = 123,
+#'     prefixPoolAllocatedCountIpv6 = 123,
+#'     rateLimit = "string"
 #'   )
 #' )
 #' ```
@@ -2619,7 +2735,17 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
 #'       startOn = "string"
 #'     )
 #'   ),
-#'   partnerInterconnectMacSecCapable = TRUE|FALSE
+#'   rateLimiterStatus = list(
+#'     maxAllowed = 123,
+#'     inUse = 123,
+#'     remaining = 123,
+#'     totalBandwidth = "string"
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'   prefixPoolSizeIpv4 = 123,
+#'   prefixPoolSizeIpv6 = 123,
+#'   prefixPoolUnallocatedCountIpv4 = 123,
+#'   prefixPoolUnallocatedCountIpv6 = 123
 #' )
 #' ```
 #'
@@ -2675,6 +2801,7 @@ directconnect_delete_connection <- function(connectionId) {
 #'     ownerAccount = "string",
 #'     directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
 #'     stateChangeError = "string",
+#'     totalPrefixPoolAllocations = 123,
 #'     tags = list(
 #'       list(
 #'         key = "string",
@@ -2985,7 +3112,17 @@ directconnect_delete_interconnect <- function(interconnectId) {
 #'           startOn = "string"
 #'         )
 #'       ),
-#'       partnerInterconnectMacSecCapable = TRUE|FALSE
+#'       rateLimiterStatus = list(
+#'         maxAllowed = 123,
+#'         inUse = 123,
+#'         remaining = 123,
+#'         totalBandwidth = "string"
+#'       ),
+#'       partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'       prefixPoolSizeIpv4 = 123,
+#'       prefixPoolSizeIpv6 = 123,
+#'       prefixPoolUnallocatedCountIpv4 = 123,
+#'       prefixPoolUnallocatedCountIpv6 = 123
 #'     )
 #'   ),
 #'   allowsHostedConnections = TRUE|FALSE,
@@ -3007,6 +3144,16 @@ directconnect_delete_interconnect <- function(interconnectId) {
 #'       state = "string",
 #'       startOn = "string"
 #'     )
+#'   ),
+#'   prefixPoolSizeIpv4 = 123,
+#'   prefixPoolSizeIpv6 = 123,
+#'   prefixPoolUnallocatedCountIpv4 = 123,
+#'   prefixPoolUnallocatedCountIpv6 = 123,
+#'   rateLimiterStatus = list(
+#'     maxAllowed = 123,
+#'     inUse = 123,
+#'     remaining = 123,
+#'     totalBandwidth = "string"
 #'   )
 #' )
 #' ```
@@ -3208,7 +3355,17 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
 #'           startOn = "string"
 #'         )
 #'       ),
-#'       partnerInterconnectMacSecCapable = TRUE|FALSE
+#'       rateLimiterStatus = list(
+#'         maxAllowed = 123,
+#'         inUse = 123,
+#'         remaining = 123,
+#'         totalBandwidth = "string"
+#'       ),
+#'       partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'       prefixPoolSizeIpv4 = 123,
+#'       prefixPoolSizeIpv6 = 123,
+#'       prefixPoolUnallocatedCountIpv4 = 123,
+#'       prefixPoolUnallocatedCountIpv6 = 123
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -3304,7 +3461,17 @@ directconnect_describe_connections <- function(connectionId = NULL, maxResults =
 #'           startOn = "string"
 #'         )
 #'       ),
-#'       partnerInterconnectMacSecCapable = TRUE|FALSE
+#'       rateLimiterStatus = list(
+#'         maxAllowed = 123,
+#'         inUse = 123,
+#'         remaining = 123,
+#'         totalBandwidth = "string"
+#'       ),
+#'       partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'       prefixPoolSizeIpv4 = 123,
+#'       prefixPoolSizeIpv6 = 123,
+#'       prefixPoolUnallocatedCountIpv4 = 123,
+#'       prefixPoolUnallocatedCountIpv6 = 123
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -3698,6 +3865,7 @@ directconnect_describe_direct_connect_gateway_attachments <- function(directConn
 #'       ownerAccount = "string",
 #'       directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
 #'       stateChangeError = "string",
+#'       totalPrefixPoolAllocations = 123,
 #'       tags = list(
 #'         list(
 #'           key = "string",
@@ -3803,7 +3971,17 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #'           startOn = "string"
 #'         )
 #'       ),
-#'       partnerInterconnectMacSecCapable = TRUE|FALSE
+#'       rateLimiterStatus = list(
+#'         maxAllowed = 123,
+#'         inUse = 123,
+#'         remaining = 123,
+#'         totalBandwidth = "string"
+#'       ),
+#'       partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'       prefixPoolSizeIpv4 = 123,
+#'       prefixPoolSizeIpv6 = 123,
+#'       prefixPoolUnallocatedCountIpv4 = 123,
+#'       prefixPoolUnallocatedCountIpv6 = 123
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -4068,7 +4246,17 @@ directconnect_describe_interconnects <- function(interconnectId = NULL, maxResul
 #'               startOn = "string"
 #'             )
 #'           ),
-#'           partnerInterconnectMacSecCapable = TRUE|FALSE
+#'           rateLimiterStatus = list(
+#'             maxAllowed = 123,
+#'             inUse = 123,
+#'             remaining = 123,
+#'             totalBandwidth = "string"
+#'           ),
+#'           partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'           prefixPoolSizeIpv4 = 123,
+#'           prefixPoolSizeIpv6 = 123,
+#'           prefixPoolUnallocatedCountIpv4 = 123,
+#'           prefixPoolUnallocatedCountIpv6 = 123
 #'         )
 #'       ),
 #'       allowsHostedConnections = TRUE|FALSE,
@@ -4090,6 +4278,16 @@ directconnect_describe_interconnects <- function(interconnectId = NULL, maxResul
 #'           state = "string",
 #'           startOn = "string"
 #'         )
+#'       ),
+#'       prefixPoolSizeIpv4 = 123,
+#'       prefixPoolSizeIpv6 = 123,
+#'       prefixPoolUnallocatedCountIpv4 = 123,
+#'       prefixPoolUnallocatedCountIpv6 = 123,
+#'       rateLimiterStatus = list(
+#'         maxAllowed = 123,
+#'         inUse = 123,
+#'         remaining = 123,
+#'         totalBandwidth = "string"
 #'       )
 #'     )
 #'   ),
@@ -4431,7 +4629,7 @@ directconnect_describe_virtual_gateways <- function() {
 #' 
 #' A virtual interface (VLAN) transmits the traffic between the Direct Connect location and the customer network.
 #' 
-#' -   If you're using an `asn`, the response includes ASN value in both the `asn` and `asnLong` fields.
+#' -   If you're using an `asn`, the response includes the ASN value in both the `asn` and `asnLong` fields.
 #' 
 #' -   If you're using `asnLong`, the response returns a value of `0` (zero) for the `asn` attribute because it exceeds the highest ASN value of 2,147,483,647 that it can support
 #'
@@ -4501,7 +4699,10 @@ directconnect_describe_virtual_gateways <- function() {
 #'           value = "string"
 #'         )
 #'       ),
-#'       siteLinkEnabled = TRUE|FALSE
+#'       siteLinkEnabled = TRUE|FALSE,
+#'       prefixPoolAllocatedCountIpv4 = 123,
+#'       prefixPoolAllocatedCountIpv6 = 123,
+#'       rateLimit = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -4595,7 +4796,17 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 #'       startOn = "string"
 #'     )
 #'   ),
-#'   partnerInterconnectMacSecCapable = TRUE|FALSE
+#'   rateLimiterStatus = list(
+#'     maxAllowed = 123,
+#'     inUse = 123,
+#'     remaining = 123,
+#'     totalBandwidth = "string"
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'   prefixPoolSizeIpv4 = 123,
+#'   prefixPoolSizeIpv6 = 123,
+#'   prefixPoolUnallocatedCountIpv4 = 123,
+#'   prefixPoolUnallocatedCountIpv6 = 123
 #' )
 #' ```
 #'
@@ -4694,6 +4905,105 @@ directconnect_disassociate_mac_sec_key <- function(connectionId, secretARN) {
   return(response)
 }
 .directconnect$operations$disassociate_mac_sec_key <- directconnect_disassociate_mac_sec_key
+
+#' Lists the routes for the specified virtual interface
+#'
+#' @description
+#' Lists the routes for the specified virtual interface.
+#' 
+#' Use the `routeDirection` filter to control which routes are returned:
+#' 
+#' -   `accepted`: routes received from the customer network over the virtual interface.
+#' 
+#' -   `advertised`: routes advertised to the customer network over the virtual interface.
+#'
+#' @usage
+#' directconnect_list_virtual_interface_routes(virtualInterfaceId, filters,
+#'   maxResults, nextToken)
+#'
+#' @param virtualInterfaceId The ID of the virtual interface.
+#' @param filters The filters to apply to the routes returned.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are returned.
+#' @param nextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualInterfaceId = "string",
+#'   routes = list(
+#'     list(
+#'       cidr = "string",
+#'       routeDirection = "accepted"|"advertised",
+#'       addressFamily = "ipv4"|"ipv6",
+#'       asPath = list(
+#'         list(
+#'           pathType = "seq"|"set",
+#'           path = list(
+#'             123
+#'           )
+#'         )
+#'       ),
+#'       communities = list(
+#'         "string"
+#'       ),
+#'       awsLogicalDeviceId = "string",
+#'       routeInstalledAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_virtual_interface_routes(
+#'   virtualInterfaceId = "string",
+#'   filters = list(
+#'     routeDirection = "accepted"|"advertised",
+#'     addressFamily = "ipv4"|"ipv6",
+#'     cidrs = list(
+#'       "string"
+#'     ),
+#'     asPath = list(
+#'       123
+#'     ),
+#'     communities = list(
+#'       "string"
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_list_virtual_interface_routes
+#'
+#' @aliases directconnect_list_virtual_interface_routes
+directconnect_list_virtual_interface_routes <- function(virtualInterfaceId = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListVirtualInterfaceRoutes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directconnect$list_virtual_interface_routes_input(virtualInterfaceId = virtualInterfaceId, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .directconnect$list_virtual_interface_routes_output()
+  config <- get_config()
+  svc <- .directconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$list_virtual_interface_routes <- directconnect_list_virtual_interface_routes
 
 #' Lists the virtual interface failover test history
 #'
@@ -5088,7 +5398,17 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
 #'       startOn = "string"
 #'     )
 #'   ),
-#'   partnerInterconnectMacSecCapable = TRUE|FALSE
+#'   rateLimiterStatus = list(
+#'     maxAllowed = 123,
+#'     inUse = 123,
+#'     remaining = 123,
+#'     totalBandwidth = "string"
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'   prefixPoolSizeIpv4 = 123,
+#'   prefixPoolSizeIpv6 = 123,
+#'   prefixPoolUnallocatedCountIpv4 = 123,
+#'   prefixPoolUnallocatedCountIpv6 = 123
 #' )
 #' ```
 #'
@@ -5148,6 +5468,7 @@ directconnect_update_connection <- function(connectionId, connectionName = NULL,
 #'     ownerAccount = "string",
 #'     directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
 #'     stateChangeError = "string",
+#'     totalPrefixPoolAllocations = 123,
 #'     tags = list(
 #'       list(
 #'         key = "string",
@@ -5364,7 +5685,17 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #'           startOn = "string"
 #'         )
 #'       ),
-#'       partnerInterconnectMacSecCapable = TRUE|FALSE
+#'       rateLimiterStatus = list(
+#'         maxAllowed = 123,
+#'         inUse = 123,
+#'         remaining = 123,
+#'         totalBandwidth = "string"
+#'       ),
+#'       partnerInterconnectMacSecCapable = TRUE|FALSE,
+#'       prefixPoolSizeIpv4 = 123,
+#'       prefixPoolSizeIpv6 = 123,
+#'       prefixPoolUnallocatedCountIpv4 = 123,
+#'       prefixPoolUnallocatedCountIpv6 = 123
 #'     )
 #'   ),
 #'   allowsHostedConnections = TRUE|FALSE,
@@ -5386,6 +5717,16 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #'       state = "string",
 #'       startOn = "string"
 #'     )
+#'   ),
+#'   prefixPoolSizeIpv4 = 123,
+#'   prefixPoolSizeIpv6 = 123,
+#'   prefixPoolUnallocatedCountIpv4 = 123,
+#'   prefixPoolUnallocatedCountIpv6 = 123,
+#'   rateLimiterStatus = list(
+#'     maxAllowed = 123,
+#'     inUse = 123,
+#'     remaining = 123,
+#'     totalBandwidth = "string"
 #'   )
 #' )
 #' ```
@@ -5434,12 +5775,16 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
 #'
 #' @usage
 #' directconnect_update_virtual_interface_attributes(virtualInterfaceId,
-#'   mtu, enableSiteLink, virtualInterfaceName)
+#'   mtu, enableSiteLink, virtualInterfaceName, prefixPoolAllocatedCountIpv4,
+#'   prefixPoolAllocatedCountIpv6, rateLimit)
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual private interface.
 #' @param mtu The maximum transmission unit (MTU), in bytes. The supported values are 1500 and 8500. The default value is 1500.
 #' @param enableSiteLink Indicates whether to enable or disable SiteLink.
 #' @param virtualInterfaceName The name of the virtual private interface.
+#' @param prefixPoolAllocatedCountIpv4 The number of inbound IPv4 route prefixes to allocate to the virtual interface. Not applicable to public virtual interfaces.
+#' @param prefixPoolAllocatedCountIpv6 The number of inbound IPv6 route prefixes to allocate to the virtual interface. Not applicable to public virtual interfaces.
+#' @param rateLimit The rate limit (bandwidth allocation) to apply to the virtual interface. Use this to update the bandwidth allocation on an existing virtual interface.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5494,7 +5839,10 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
 #'       value = "string"
 #'     )
 #'   ),
-#'   siteLinkEnabled = TRUE|FALSE
+#'   siteLinkEnabled = TRUE|FALSE,
+#'   prefixPoolAllocatedCountIpv4 = 123,
+#'   prefixPoolAllocatedCountIpv6 = 123,
+#'   rateLimit = "string"
 #' )
 #' ```
 #'
@@ -5504,7 +5852,10 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
 #'   virtualInterfaceId = "string",
 #'   mtu = 123,
 #'   enableSiteLink = TRUE|FALSE,
-#'   virtualInterfaceName = "string"
+#'   virtualInterfaceName = "string",
+#'   prefixPoolAllocatedCountIpv4 = 123,
+#'   prefixPoolAllocatedCountIpv6 = 123,
+#'   rateLimit = "string"
 #' )
 #' ```
 #'
@@ -5513,7 +5864,7 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
 #' @rdname directconnect_update_virtual_interface_attributes
 #'
 #' @aliases directconnect_update_virtual_interface_attributes
-directconnect_update_virtual_interface_attributes <- function(virtualInterfaceId, mtu = NULL, enableSiteLink = NULL, virtualInterfaceName = NULL) {
+directconnect_update_virtual_interface_attributes <- function(virtualInterfaceId, mtu = NULL, enableSiteLink = NULL, virtualInterfaceName = NULL, prefixPoolAllocatedCountIpv4 = NULL, prefixPoolAllocatedCountIpv6 = NULL, rateLimit = NULL) {
   op <- new_operation(
     name = "UpdateVirtualInterfaceAttributes",
     http_method = "POST",
@@ -5522,7 +5873,7 @@ directconnect_update_virtual_interface_attributes <- function(virtualInterfaceId
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$update_virtual_interface_attributes_input(virtualInterfaceId = virtualInterfaceId, mtu = mtu, enableSiteLink = enableSiteLink, virtualInterfaceName = virtualInterfaceName)
+  input <- .directconnect$update_virtual_interface_attributes_input(virtualInterfaceId = virtualInterfaceId, mtu = mtu, enableSiteLink = enableSiteLink, virtualInterfaceName = virtualInterfaceName, prefixPoolAllocatedCountIpv4 = prefixPoolAllocatedCountIpv4, prefixPoolAllocatedCountIpv6 = prefixPoolAllocatedCountIpv6, rateLimit = rateLimit)
   output <- .directconnect$update_virtual_interface_attributes_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)

@@ -5,12 +5,20 @@
 \title{Returns a description of the specified model package, which is used to
 create SageMaker models or list them on Amazon Web Services Marketplace}
 \usage{
-sagemaker_describe_model_package(ModelPackageName)
+sagemaker_describe_model_package(ModelPackageName, IncludedData = NULL)
 }
 \arguments{
 \item{ModelPackageName}{[required] The name or Amazon Resource Name (ARN) of the model package to describe.
 
 When you specify a name, the name must have 1 to 63 characters. Valid characters are a-z, A-Z, 0-9, and - (hyphen).}
+
+\item{IncludedData}{Specifies the level of model package data to include in the response. Use this parameter to call \code{\link[=sagemaker_describe_model_package]{describe_model_package}} on a model package that has an associated model card without requiring \code{kms:Decrypt} permission on the customer-managed KMS key associated with the embedded model card.
+\itemize{
+\item \code{AllData}: Returns the full model package response, including the unredacted \code{ModelCard.ModelCardContent}. This option requires \code{kms:Decrypt} permission on the customer-managed key, if one is associated with the embedded model card. This is the default.
+\item \code{MetadataOnly}: Returns the full model package response, but with the embedded \code{ModelCard.ModelCardContent} sanitized to include only a small set of unencrypted metadata fields. This option does not require \code{kms:Decrypt} permission. All other top-level response fields, including \code{InferenceSpecification}, \code{ModelMetrics}, \code{DriftCheckBaselines}, and \code{SecurityConfig}, are returned unchanged. For the list of fields preserved within \code{ModelCardContent}, see \href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeModelPackage.html#sagemaker-DescribeModelPackage-response-ModelCard}{ModelCard}.
+}
+
+If you don't specify a value, SageMaker returns \code{AllData}.}
 }
 \description{
 Returns a description of the specified model package, which is used to create SageMaker models or list them on Amazon Web Services Marketplace.

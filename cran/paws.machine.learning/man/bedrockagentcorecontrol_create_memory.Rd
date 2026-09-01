@@ -13,6 +13,7 @@ bedrockagentcorecontrol_create_memory(
   eventExpiryDuration,
   memoryStrategies = NULL,
   indexedKeys = NULL,
+  namespaceKeys = NULL,
   streamDeliveryResources = NULL,
   tags = NULL
 )
@@ -33,6 +34,8 @@ bedrockagentcorecontrol_create_memory(
 \item{memoryStrategies}{The memory strategies to use for this memory. Strategies define how information is extracted, processed, and consolidated.}
 
 \item{indexedKeys}{Metadata keys to index for filtering. Once declared, indexed keys cannot be removed.}
+
+\item{namespaceKeys}{The namespace variable key definitions with optional validation rules. Use these \code{namespaceKeys} in \code{namespaceTemplates} to control namespace hierarchy.}
 
 \item{streamDeliveryResources}{Configuration for streaming memory record data to external resources.}
 

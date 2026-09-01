@@ -16,17 +16,17 @@ imagebuilder_start_resource_state_update(
 )
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Image Builder resource that is updated. The state update might also impact associated resources.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the image build version to update. The image must be in one of these terminal states: \code{AVAILABLE}, \code{DEPRECATED}, \code{DISABLED}, \code{FAILED}, or \code{CANCELLED}. Images with \code{FAILED} or \code{CANCELLED} status can transition only to \code{DELETED}.}
 
-\item{state}{[required] Indicates the lifecycle action to take for this request.}
+\item{state}{[required] Specifies the lifecycle action to take for this request. For AMI-based images, valid values are \code{AVAILABLE}, \code{DEPRECATED}, \code{DISABLED}, and \code{DELETED}. For container-based images, only \code{DELETED} is supported.}
 
 \item{executionRole}{The name or Amazon Resource Name (ARN) of the IAM role that’s used to update image state.}
 
-\item{includeResources}{A list of image resources to update state for.}
+\item{includeResources}{Specifies which image resources to include in the state update. When specified, the lifecycle action applies to underlying resources. These resources include AMIs, snapshots, and containers in addition to the Image Builder image resource. Requires \code{executionRole} to also be specified. To delete an image and its underlying resources, you must specify \code{includeResources}. To delete only the Image Builder image record without affecting underlying resources, use the \code{\link[=imagebuilder_delete_image]{delete_image}} API instead.}
 
 \item{exclusionRules}{Skip action on the image resource and associated resources if specified exclusion rules are met.}
 
-\item{updateAt}{The timestamp that indicates when resources are updated by a lifecycle action.}
+\item{updateAt}{Specifies the timestamp when the state transition takes effect. Use this parameter only when the target status is \code{DEPRECATED}. The value must be a future time.}
 
 \item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }

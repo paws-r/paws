@@ -502,14 +502,15 @@ inspector2_batch_get_finding_details <- function(findingArns) {
 #'       accountId = "string",
 #'       freeTrialInfo = list(
 #'         list(
-#'           type = "EC2"|"ECR"|"LAMBDA"|"LAMBDA_CODE"|"CODE_REPOSITORY",
+#'           type = "EC2"|"ECR"|"LAMBDA"|"LAMBDA_CODE"|"CODE_REPOSITORY"|"VM"|"CONTAINER_IMAGE"|"SERVERLESS_FUNCTION",
 #'           start = as.POSIXct(
 #'             "2015-01-01"
 #'           ),
 #'           end = as.POSIXct(
 #'             "2015-01-01"
 #'           ),
-#'           status = "ACTIVE"|"INACTIVE"
+#'           status = "ACTIVE"|"INACTIVE",
+#'           cloudProvider = "AWS"|"AZURE"|"NOT_APPLICABLE"
 #'         )
 #'       )
 #'     )
@@ -1025,6 +1026,97 @@ inspector2_create_code_security_scan_configuration <- function(name, level, conf
 }
 .inspector2$operations$create_code_security_scan_configuration <- inspector2_create_code_security_scan_configuration
 
+#' Creates a connector that links an external cloud provider to Amazon
+#' Inspector for vulnerability scanning
+#'
+#' @description
+#' Creates a connector that links an external cloud provider to Amazon Inspector for vulnerability scanning.
+#'
+#' @usage
+#' inspector2_create_connector(clientToken, name, provider, description,
+#'   providerDetail, tags)
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request but does not return an error.
+#' @param name &#91;required&#93; The name of the connector.
+#' @param provider &#91;required&#93; The cloud provider for the connector.
+#' @param description A description of the connector.
+#' @param providerDetail &#91;required&#93; The provider-specific configuration details for the connector.
+#' @param tags The tags to apply to the connector.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectorArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_connector(
+#'   clientToken = "string",
+#'   name = "string",
+#'   provider = "AZURE",
+#'   description = "string",
+#'   providerDetail = list(
+#'     azure = list(
+#'       awsConfigConnectorArn = "string",
+#'       scopeConfiguration = list(
+#'         vmScanning = list(
+#'           scopeType = "TENANT"|"SUBSCRIPTION",
+#'           scopeValues = list(
+#'             "string"
+#'           )
+#'         ),
+#'         containerImageScanning = list(
+#'           scopeType = "TENANT"|"SUBSCRIPTION",
+#'           scopeValues = list(
+#'             "string"
+#'           )
+#'         ),
+#'         serverlessScanning = list(
+#'           scopeType = "TENANT"|"SUBSCRIPTION",
+#'           scopeValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       azureRegions = list(
+#'         "string"
+#'       ),
+#'       autoInstallVMScanner = TRUE|FALSE
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_create_connector
+#'
+#' @aliases inspector2_create_connector
+inspector2_create_connector <- function(clientToken = NULL, name, provider, description = NULL, providerDetail, tags = NULL) {
+  op <- new_operation(
+    name = "CreateConnector",
+    http_method = "POST",
+    http_path = "/connector/create",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$create_connector_input(clientToken = clientToken, name = name, provider = provider, description = description, providerDetail = providerDetail, tags = tags)
+  output <- .inspector2$create_connector_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$create_connector <- inspector2_create_connector
+
 #' Creates a filter resource using specified filter criteria
 #'
 #' @description
@@ -1381,6 +1473,132 @@ inspector2_create_code_security_scan_configuration <- function(name, level, conf
 #'       )
 #'     ),
 #'     codeRepositoryProviderType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProvider = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderRegion = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderAccountId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderOrgId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmImageReference = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmNetworkId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmSubnetIds = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageRegistry = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageDigest = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImagePushedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudImageArchitecture = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageLastInUseAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudImageInUseCount = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     cloudServerlessFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionLastModifiedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudServerlessFunctionExecutionRole = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
@@ -1774,6 +1992,132 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
+#'     ),
+#'     cloudProvider = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderRegion = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderAccountId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderOrgId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmImageReference = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmNetworkId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmSubnetIds = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageRegistry = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageDigest = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImagePushedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudImageArchitecture = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageLastInUseAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudImageInUseCount = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     cloudServerlessFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionLastModifiedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudServerlessFunctionExecutionRole = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
 #'     )
 #'   ),
 #'   reportFormat = "CSV"|"JSON",
@@ -1878,6 +2222,74 @@ inspector2_create_findings_report <- function(filterCriteria = NULL, reportForma
 #'       )
 #'     ),
 #'     lambdaFunctionTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProvider = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderAccountId = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderOrgId = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderRegion = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmInstanceTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudContainerImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudContainerRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudContainerRegistryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionTags = list(
 #'       list(
 #'         comparison = "EQUALS",
 #'         key = "string",
@@ -2064,6 +2476,50 @@ inspector2_delete_code_security_scan_configuration <- function(scanConfiguration
   return(response)
 }
 .inspector2$operations$delete_code_security_scan_configuration <- inspector2_delete_code_security_scan_configuration
+
+#' Deletes a connector from your account
+#'
+#' @description
+#' Deletes a connector from your account.
+#'
+#' @usage
+#' inspector2_delete_connector(connectorArn)
+#'
+#' @param connectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the connector to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connector(
+#'   connectorArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_delete_connector
+#'
+#' @aliases inspector2_delete_connector
+inspector2_delete_connector <- function(connectorArn) {
+  op <- new_operation(
+    name = "DeleteConnector",
+    http_method = "POST",
+    http_path = "/connector/delete",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$delete_connector_input(connectorArn = connectorArn)
+  output <- .inspector2$delete_connector_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$delete_connector <- inspector2_delete_connector
 
 #' Deletes a filter resource
 #'
@@ -2767,10 +3223,10 @@ inspector2_get_clusters_for_image <- function(filter, maxResults = NULL, nextTok
 #'   lastUpdateOn = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   authorizationUrl = "string",
 #'   tags = list(
 #'     "string"
-#'   ),
-#'   authorizationUrl = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -2951,15 +3407,15 @@ inspector2_get_code_security_scan_configuration <- function(scanConfigurationArn
 }
 .inspector2$operations$get_code_security_scan_configuration <- inspector2_get_code_security_scan_configuration
 
-#' Retrieves setting configurations for Inspector scans
+#' Retrieves setting configurations for Amazon Inspector scans
 #'
 #' @description
-#' Retrieves setting configurations for Inspector scans.
+#' Retrieves setting configurations for Amazon Inspector scans. If you specify an `accountId`, this operation returns the scan configuration for that member account. You must be the delegated administrator for the specified member account. If you do not specify an `accountId`, this operation returns your own scan configuration.
 #'
 #' @usage
-#' inspector2_get_configuration()
+#' inspector2_get_configuration(accountId)
 #'
-
+#' @param accountId The 12-digit Amazon Web Services account ID of the member account whose scan configuration you want to retrieve. When specified, you must be the delegated administrator for this member account. If not specified, the operation returns your own configuration.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2967,12 +3423,12 @@ inspector2_get_code_security_scan_configuration <- function(scanConfigurationArn
 #' list(
 #'   ecrConfiguration = list(
 #'     rescanDurationState = list(
-#'       rescanDuration = "LIFETIME"|"DAYS_30"|"DAYS_180"|"DAYS_14"|"DAYS_60"|"DAYS_90",
+#'       rescanDuration = "LIFETIME"|"DAYS_30"|"DAYS_180"|"DAYS_14"|"DAYS_60"|"DAYS_90"|"DAYS_3"|"DAYS_7",
 #'       status = "SUCCESS"|"PENDING"|"FAILED",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       pullDateRescanDuration = "DAYS_14"|"DAYS_30"|"DAYS_60"|"DAYS_90"|"DAYS_180",
+#'       pullDateRescanDuration = "DAYS_14"|"DAYS_30"|"DAYS_60"|"DAYS_90"|"DAYS_180"|"DAYS_3"|"DAYS_7",
 #'       pullDateRescanMode = "LAST_PULL_DATE"|"LAST_IN_USE_AT"
 #'     )
 #'   ),
@@ -2980,6 +3436,13 @@ inspector2_get_code_security_scan_configuration <- function(scanConfigurationArn
 #'     scanModeState = list(
 #'       scanMode = "EC2_SSM_AGENT_BASED"|"EC2_HYBRID",
 #'       scanModeStatus = "SUCCESS"|"PENDING"
+#'     ),
+#'     vmScannerState = list(
+#'       activated = TRUE|FALSE,
+#'       activatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "SUCCESS"|"PENDING"|"FAILED"
 #'     )
 #'   )
 #' )
@@ -2987,7 +3450,9 @@ inspector2_get_code_security_scan_configuration <- function(scanConfigurationArn
 #'
 #' @section Request syntax:
 #' ```
-#' svc$get_configuration()
+#' svc$get_configuration(
+#'   accountId = "string"
+#' )
 #' ```
 #'
 #' @keywords internal
@@ -2995,7 +3460,7 @@ inspector2_get_code_security_scan_configuration <- function(scanConfigurationArn
 #' @rdname inspector2_get_configuration
 #'
 #' @aliases inspector2_get_configuration
-inspector2_get_configuration <- function() {
+inspector2_get_configuration <- function(accountId = NULL) {
   op <- new_operation(
     name = "GetConfiguration",
     http_method = "POST",
@@ -3004,7 +3469,7 @@ inspector2_get_configuration <- function() {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$get_configuration_input()
+  input <- .inspector2$get_configuration_input(accountId = accountId)
   output <- .inspector2$get_configuration_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -3143,7 +3608,7 @@ inspector2_get_ec_2_deep_inspection_configuration <- function() {
 #' ```
 #' svc$get_encryption_key(
 #'   scanType = "NETWORK"|"PACKAGE"|"CODE",
-#'   resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY"
+#'   resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY"|"Microsoft.Compute/virtualMachines"|"Microsoft.ContainerRegistry/registry/containerImage"|"Microsoft.Web/sites"
 #' )
 #' ```
 #'
@@ -3525,6 +3990,132 @@ inspector2_get_encryption_key <- function(scanType, resourceType) {
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
+#'     ),
+#'     cloudProvider = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderRegion = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderAccountId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderOrgId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmImageReference = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmNetworkId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmSubnetIds = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageRegistry = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageDigest = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImagePushedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudImageArchitecture = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageLastInUseAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudImageInUseCount = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     cloudServerlessFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionLastModifiedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudServerlessFunctionExecutionRole = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -3686,6 +4277,74 @@ inspector2_get_member <- function(accountId) {
 #'       )
 #'     ),
 #'     lambdaFunctionTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProvider = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderAccountId = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderOrgId = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderRegion = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmInstanceTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudContainerImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudContainerRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudContainerRegistryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionTags = list(
 #'       list(
 #'         comparison = "EQUALS",
 #'         key = "string",
@@ -4337,9 +4996,6 @@ inspector2_list_cis_scans <- function(filterCriteria = NULL, detailLevel = NULL,
 #'       ),
 #'       lastUpdateOn = as.POSIXct(
 #'         "2015-01-01"
-#'       ),
-#'       tags = list(
-#'         "string"
 #'       )
 #'     )
 #'   ),
@@ -4471,9 +5127,6 @@ inspector2_list_code_security_scan_configuration_associations <- function(scanCo
 #'       ),
 #'       scopeSettings = list(
 #'         projectSelectionScope = "ALL"
-#'       ),
-#'       tags = list(
-#'         "string"
 #'       )
 #'     )
 #'   ),
@@ -4513,6 +5166,217 @@ inspector2_list_code_security_scan_configurations <- function(nextToken = NULL, 
 }
 .inspector2$operations$list_code_security_scan_configurations <- inspector2_list_code_security_scan_configurations
 
+#' Lists scan configurations for Amazon Web Services Config connectors
+#'
+#' @description
+#' Lists scan configurations for Amazon Web Services Config connectors. Results are paginated. Use the `nextToken` parameter to retrieve the next page of results.
+#'
+#' @usage
+#' inspector2_list_connector_scan_configurations(awsConfigConnectorArns,
+#'   maxResults, nextToken)
+#'
+#' @param awsConfigConnectorArns The list of Amazon Web Services Config connector ARNs to filter results.
+#' @param maxResults The maximum number of results to return in a single call. Valid range is 1 to 50. To retrieve the remaining results, make another request with the `nextToken` value returned from this request.
+#' @param nextToken A token to use for paginating results. Set this value to null for the first request. For subsequent calls, use the `nextToken` value returned from the previous request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scanConfigurations = list(
+#'     list(
+#'       awsConfigConnectorArn = "string",
+#'       connectorArns = list(
+#'         "string"
+#'       ),
+#'       scanConfiguration = list(
+#'         containerImageScanning = list(
+#'           pushDuration = "LIFETIME"|"DAYS_3"|"DAYS_7"|"DAYS_30"|"DAYS_180"|"DAYS_14"|"DAYS_60"|"DAYS_90",
+#'           pullDuration = "DAYS_3"|"DAYS_7"|"DAYS_14"|"DAYS_30"|"DAYS_60"|"DAYS_90"|"DAYS_180"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_connector_scan_configurations(
+#'   awsConfigConnectorArns = list(
+#'     "string"
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_connector_scan_configurations
+#'
+#' @aliases inspector2_list_connector_scan_configurations
+inspector2_list_connector_scan_configurations <- function(awsConfigConnectorArns = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListConnectorScanConfigurations",
+    http_method = "POST",
+    http_path = "/connectorscanconfigurations/list",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanConfigurations"),
+    stream_api = FALSE
+  )
+  input <- .inspector2$list_connector_scan_configurations_input(awsConfigConnectorArns = awsConfigConnectorArns, maxResults = maxResults, nextToken = nextToken)
+  output <- .inspector2$list_connector_scan_configurations_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_connector_scan_configurations <- inspector2_list_connector_scan_configurations
+
+#' Lists connectors in your account
+#'
+#' @description
+#' Lists connectors in your account. Results are paginated. Use the `nextToken` parameter to retrieve the next page of results.
+#'
+#' @usage
+#' inspector2_list_connectors(maxResults, nextToken, filterCriteria)
+#'
+#' @param maxResults The maximum number of results to return in a single call. To retrieve the remaining results, make another request with the `nextToken` value returned from this request.
+#' @param nextToken A token to use for paginating results. Set this value to null for the first request. For subsequent calls, use the `nextToken` value returned from the previous request.
+#' @param filterCriteria The filter criteria to apply to the list of connectors.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       connectorArn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       provider = "AZURE",
+#'       enablementStatus = "ENABLED"|"PENDING_ENABLEMENT"|"FAILED_TO_ENABLE"|"PENDING_UPDATE"|"FAILED_TO_UPDATE"|"PENDING_DELETION"|"DELETED"|"FAILED_TO_DELETE",
+#'       enablementStatusReason = "string",
+#'       health = list(
+#'         connectorStatus = "CONNECTED"|"DEGRADED"|"FAILED_TO_CONNECT"|"PENDING_AUTHORIZATION"|"PENDING_CONFIGURATION"|"UNKNOWN",
+#'         lastCheckedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         message = "string"
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       azureRegions = list(
+#'         "string"
+#'       ),
+#'       awsConfigConnectorArn = "string",
+#'       scopeConfiguration = list(
+#'         vmScanning = list(
+#'           scopeType = "TENANT"|"SUBSCRIPTION",
+#'           scopeValues = list(
+#'             "string"
+#'           ),
+#'           state = "ACTIVE"|"PENDING"|"ERROR"|"DISABLED",
+#'           stateReason = "string"
+#'         ),
+#'         containerImageScanning = list(
+#'           scopeType = "TENANT"|"SUBSCRIPTION",
+#'           scopeValues = list(
+#'             "string"
+#'           ),
+#'           state = "ACTIVE"|"PENDING"|"ERROR"|"DISABLED",
+#'           stateReason = "string"
+#'         ),
+#'         serverlessScanning = list(
+#'           scopeType = "TENANT"|"SUBSCRIPTION",
+#'           scopeValues = list(
+#'             "string"
+#'           ),
+#'           state = "ACTIVE"|"PENDING"|"ERROR"|"DISABLED",
+#'           stateReason = "string"
+#'         )
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       autoInstallVMScanner = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_connectors(
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   filterCriteria = list(
+#'     connectorArns = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     accounts = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     awsConfigConnectorArns = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     connectorType = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         value = "CUSTOMER_MANAGED"|"SERVICE_LINKED"
+#'       )
+#'     ),
+#'     provider = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         value = "AZURE"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_connectors
+#'
+#' @aliases inspector2_list_connectors
+inspector2_list_connectors <- function(maxResults = NULL, nextToken = NULL, filterCriteria = NULL) {
+  op <- new_operation(
+    name = "ListConnectors",
+    http_method = "POST",
+    http_path = "/connector/list",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .inspector2$list_connectors_input(maxResults = maxResults, nextToken = nextToken, filterCriteria = filterCriteria)
+  output <- .inspector2$list_connectors_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_connectors <- inspector2_list_connectors
+
 #' Lists coverage details for your environment
 #'
 #' @description
@@ -4532,13 +5396,13 @@ inspector2_list_code_security_scan_configurations <- function(nextToken = NULL, 
 #'   nextToken = "string",
 #'   coveredResources = list(
 #'     list(
-#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY",
+#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY"|"Microsoft.Compute/virtualMachines"|"Microsoft.ContainerRegistry/registry/containerImage"|"Microsoft.ContainerRegistry/registry/containerRepository"|"Microsoft.Web/sites"|"Microsoft.ContainerRegistry/registries",
 #'       resourceId = "string",
 #'       accountId = "string",
 #'       scanType = "NETWORK"|"PACKAGE"|"CODE",
 #'       scanStatus = list(
 #'         statusCode = "ACTIVE"|"INACTIVE",
-#'         reason = "PENDING_INITIAL_SCAN"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"UNMANAGED_EC2_INSTANCE"|"UNSUPPORTED_OS"|"SCAN_ELIGIBILITY_EXPIRED"|"RESOURCE_TERMINATED"|"SUCCESSFUL"|"NO_RESOURCES_FOUND"|"IMAGE_SIZE_EXCEEDED"|"SCAN_FREQUENCY_MANUAL"|"SCAN_FREQUENCY_SCAN_ON_PUSH"|"EC2_INSTANCE_STOPPED"|"PENDING_DISABLE"|"NO_INVENTORY"|"STALE_INVENTORY"|"EXCLUDED_BY_TAG"|"UNSUPPORTED_RUNTIME"|"UNSUPPORTED_MEDIA_TYPE"|"UNSUPPORTED_CONFIG_FILE"|"DEEP_INSPECTION_PACKAGE_COLLECTION_LIMIT_EXCEEDED"|"DEEP_INSPECTION_DAILY_SSM_INVENTORY_LIMIT_EXCEEDED"|"DEEP_INSPECTION_COLLECTION_TIME_LIMIT_EXCEEDED"|"DEEP_INSPECTION_NO_INVENTORY"|"AGENTLESS_INSTANCE_STORAGE_LIMIT_EXCEEDED"|"AGENTLESS_INSTANCE_COLLECTION_TIME_LIMIT_EXCEEDED"|"PENDING_REVIVAL_SCAN"|"INTEGRATION_CONNECTION_LOST"|"ACCESS_DENIED_TO_ENCRYPTION_KEY"|"UNSUPPORTED_LANGUAGE"|"NO_SCAN_CONFIGURATION_ASSOCIATED"|"SCAN_IN_PROGRESS"|"IMAGE_ARCHIVED"|"UNSUPPORTED_CODE_ARTIFACTS"
+#'         reason = "PENDING_INITIAL_SCAN"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"UNMANAGED_EC2_INSTANCE"|"UNSUPPORTED_OS"|"SCAN_ELIGIBILITY_EXPIRED"|"RESOURCE_TERMINATED"|"SUCCESSFUL"|"NO_RESOURCES_FOUND"|"IMAGE_SIZE_EXCEEDED"|"SCAN_FREQUENCY_MANUAL"|"SCAN_FREQUENCY_SCAN_ON_PUSH"|"EC2_INSTANCE_STOPPED"|"PENDING_DISABLE"|"NO_INVENTORY"|"STALE_INVENTORY"|"EXCLUDED_BY_TAG"|"UNSUPPORTED_RUNTIME"|"UNSUPPORTED_MEDIA_TYPE"|"UNSUPPORTED_CONFIG_FILE"|"DEEP_INSPECTION_PACKAGE_COLLECTION_LIMIT_EXCEEDED"|"DEEP_INSPECTION_DAILY_SSM_INVENTORY_LIMIT_EXCEEDED"|"DEEP_INSPECTION_COLLECTION_TIME_LIMIT_EXCEEDED"|"DEEP_INSPECTION_NO_INVENTORY"|"AGENTLESS_INSTANCE_STORAGE_LIMIT_EXCEEDED"|"AGENTLESS_INSTANCE_COLLECTION_TIME_LIMIT_EXCEEDED"|"PENDING_REVIVAL_SCAN"|"INTEGRATION_CONNECTION_LOST"|"ACCESS_DENIED_TO_ENCRYPTION_KEY"|"UNSUPPORTED_LANGUAGE"|"NO_SCAN_CONFIGURATION_ASSOCIATED"|"SCAN_IN_PROGRESS"|"IMAGE_ARCHIVED"|"UNSUPPORTED_CODE_ARTIFACTS"|"RESOURCE_UNMANAGED"|"RESOURCE_STOPPED"
 #'       ),
 #'       resourceMetadata = list(
 #'         ecrRepository = list(
@@ -4572,7 +5436,7 @@ inspector2_list_code_security_scan_configurations <- function(nextToken = NULL, 
 #'             "string"
 #'           ),
 #'           functionName = "string",
-#'           runtime = "NODEJS"|"NODEJS_12_X"|"NODEJS_14_X"|"NODEJS_16_X"|"JAVA_8"|"JAVA_8_AL2"|"JAVA_11"|"PYTHON_3_7"|"PYTHON_3_8"|"PYTHON_3_9"|"UNSUPPORTED"|"NODEJS_18_X"|"GO_1_X"|"JAVA_17"|"PYTHON_3_10"|"PYTHON_3_11"|"DOTNETCORE_3_1"|"DOTNET_6"|"DOTNET_7"|"RUBY_2_7"|"RUBY_3_2"|"DOTNET_10"|"NODEJS_24_X"
+#'           runtime = "NODEJS"|"NODEJS_12_X"|"NODEJS_14_X"|"NODEJS_16_X"|"JAVA_8"|"JAVA_8_AL2"|"JAVA_11"|"PYTHON_3_7"|"PYTHON_3_8"|"PYTHON_3_9"|"UNSUPPORTED"|"NODEJS_18_X"|"GO_1_X"|"JAVA_17"|"PYTHON_3_10"|"PYTHON_3_11"|"DOTNETCORE_3_1"|"DOTNET_6"|"DOTNET_7"|"RUBY_2_7"|"RUBY_3_2"|"DOTNET_10"|"NODEJS_24_X"|"NODEJS_22_X"|"JAVA_21"|"JAVA_25"
 #'         ),
 #'         codeRepository = list(
 #'           projectName = "string",
@@ -4605,15 +5469,54 @@ inspector2_list_code_security_scan_configurations <- function(nextToken = NULL, 
 #'             ),
 #'             scanStatus = list(
 #'               statusCode = "ACTIVE"|"INACTIVE",
-#'               reason = "PENDING_INITIAL_SCAN"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"UNMANAGED_EC2_INSTANCE"|"UNSUPPORTED_OS"|"SCAN_ELIGIBILITY_EXPIRED"|"RESOURCE_TERMINATED"|"SUCCESSFUL"|"NO_RESOURCES_FOUND"|"IMAGE_SIZE_EXCEEDED"|"SCAN_FREQUENCY_MANUAL"|"SCAN_FREQUENCY_SCAN_ON_PUSH"|"EC2_INSTANCE_STOPPED"|"PENDING_DISABLE"|"NO_INVENTORY"|"STALE_INVENTORY"|"EXCLUDED_BY_TAG"|"UNSUPPORTED_RUNTIME"|"UNSUPPORTED_MEDIA_TYPE"|"UNSUPPORTED_CONFIG_FILE"|"DEEP_INSPECTION_PACKAGE_COLLECTION_LIMIT_EXCEEDED"|"DEEP_INSPECTION_DAILY_SSM_INVENTORY_LIMIT_EXCEEDED"|"DEEP_INSPECTION_COLLECTION_TIME_LIMIT_EXCEEDED"|"DEEP_INSPECTION_NO_INVENTORY"|"AGENTLESS_INSTANCE_STORAGE_LIMIT_EXCEEDED"|"AGENTLESS_INSTANCE_COLLECTION_TIME_LIMIT_EXCEEDED"|"PENDING_REVIVAL_SCAN"|"INTEGRATION_CONNECTION_LOST"|"ACCESS_DENIED_TO_ENCRYPTION_KEY"|"UNSUPPORTED_LANGUAGE"|"NO_SCAN_CONFIGURATION_ASSOCIATED"|"SCAN_IN_PROGRESS"|"IMAGE_ARCHIVED"|"UNSUPPORTED_CODE_ARTIFACTS"
+#'               reason = "PENDING_INITIAL_SCAN"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"UNMANAGED_EC2_INSTANCE"|"UNSUPPORTED_OS"|"SCAN_ELIGIBILITY_EXPIRED"|"RESOURCE_TERMINATED"|"SUCCESSFUL"|"NO_RESOURCES_FOUND"|"IMAGE_SIZE_EXCEEDED"|"SCAN_FREQUENCY_MANUAL"|"SCAN_FREQUENCY_SCAN_ON_PUSH"|"EC2_INSTANCE_STOPPED"|"PENDING_DISABLE"|"NO_INVENTORY"|"STALE_INVENTORY"|"EXCLUDED_BY_TAG"|"UNSUPPORTED_RUNTIME"|"UNSUPPORTED_MEDIA_TYPE"|"UNSUPPORTED_CONFIG_FILE"|"DEEP_INSPECTION_PACKAGE_COLLECTION_LIMIT_EXCEEDED"|"DEEP_INSPECTION_DAILY_SSM_INVENTORY_LIMIT_EXCEEDED"|"DEEP_INSPECTION_COLLECTION_TIME_LIMIT_EXCEEDED"|"DEEP_INSPECTION_NO_INVENTORY"|"AGENTLESS_INSTANCE_STORAGE_LIMIT_EXCEEDED"|"AGENTLESS_INSTANCE_COLLECTION_TIME_LIMIT_EXCEEDED"|"PENDING_REVIVAL_SCAN"|"INTEGRATION_CONNECTION_LOST"|"ACCESS_DENIED_TO_ENCRYPTION_KEY"|"UNSUPPORTED_LANGUAGE"|"NO_SCAN_CONFIGURATION_ASSOCIATED"|"SCAN_IN_PROGRESS"|"IMAGE_ARCHIVED"|"UNSUPPORTED_CODE_ARTIFACTS"|"RESOURCE_UNMANAGED"|"RESOURCE_STOPPED"
 #'             )
+#'           )
+#'         ),
+#'         vmInstance = list(
+#'           tags = list(
+#'             "string"
+#'           ),
+#'           platform = "WINDOWS"|"LINUX"|"UNKNOWN",
+#'           inventoryHash = "string",
+#'           vmImageReference = "string"
+#'         ),
+#'         containerImage = list(
+#'           imageTags = list(
+#'             "string"
+#'           ),
+#'           imagePulledAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lastInUseAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           inUseCount = 123
+#'         ),
+#'         containerRepository = list(
+#'           name = "string",
+#'           scanFrequency = "string"
+#'         ),
+#'         containerRegistry = list(
+#'           name = "string"
+#'         ),
+#'         serverlessFunction = list(
+#'           serverlessFunctionName = "string",
+#'           runtime = "string",
+#'           functionTags = list(
+#'             "string"
 #'           )
 #'         )
 #'       ),
 #'       lastScannedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       scanMode = "EC2_SSM_AGENT_BASED"|"EC2_AGENTLESS"
+#'       scanMode = "EC2_SSM_AGENT_BASED"|"EC2_AGENTLESS"|"EC2_INSPECTOR_AGENT_BASED"|"VM_INSPECTOR_AGENT_BASED",
+#'       provider = "AWS"|"AZURE",
+#'       providerAccountId = "string",
+#'       providerOrgId = "string",
+#'       providerRegion = "string",
+#'       providerPartition = "string"
 #'     )
 #'   )
 #' )
@@ -4764,6 +5667,74 @@ inspector2_list_code_security_scan_configurations <- function(nextToken = NULL, 
 #'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
+#'     ),
+#'     cloudProvider = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderAccountId = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderRegion = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmInstanceTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudContainerImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudContainerRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudContainerRegistryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderOrgId = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -4812,7 +5783,7 @@ inspector2_list_coverage <- function(maxResults = NULL, nextToken = NULL, filter
 #'   countsByGroup = list(
 #'     list(
 #'       count = 123,
-#'       groupKey = "SCAN_STATUS_CODE"|"SCAN_STATUS_REASON"|"ACCOUNT_ID"|"RESOURCE_TYPE"|"ECR_REPOSITORY_NAME"
+#'       groupKey = "SCAN_STATUS_CODE"|"SCAN_STATUS_REASON"|"ACCOUNT_ID"|"RESOURCE_TYPE"|"ECR_REPOSITORY_NAME"|"PROVIDER"|"PROVIDER_ACCOUNT_ID"|"PROVIDER_REGION"|"PROVIDER_ORG_ID"
 #'     )
 #'   ),
 #'   totalCounts = 123,
@@ -4963,9 +5934,77 @@ inspector2_list_coverage <- function(maxResults = NULL, nextToken = NULL, filter
 #'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
+#'     ),
+#'     cloudProvider = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderAccountId = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderRegion = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmInstanceTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudContainerImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudContainerRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudContainerRegistryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderOrgId = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
 #'     )
 #'   ),
-#'   groupBy = "SCAN_STATUS_CODE"|"SCAN_STATUS_REASON"|"ACCOUNT_ID"|"RESOURCE_TYPE"|"ECR_REPOSITORY_NAME",
+#'   groupBy = "SCAN_STATUS_CODE"|"SCAN_STATUS_REASON"|"ACCOUNT_ID"|"RESOURCE_TYPE"|"ECR_REPOSITORY_NAME"|"PROVIDER"|"PROVIDER_ACCOUNT_ID"|"PROVIDER_REGION"|"PROVIDER_ORG_ID",
 #'   nextToken = "string"
 #' )
 #' ```
@@ -5405,6 +6444,132 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
 #'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'             value = "string"
 #'           )
+#'         ),
+#'         cloudProvider = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         cloudProviderRegion = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         cloudProviderAccountId = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         cloudProviderOrgId = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         cloudVmImageReference = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         cloudVmNetworkId = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         cloudVmSubnetIds = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         cloudImageRepositoryName = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         cloudImageRegistry = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         cloudImageDigest = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         cloudImageTags = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         cloudImagePushedAt = list(
+#'           list(
+#'             startInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             endInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         cloudImageArchitecture = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         cloudImageLastInUseAt = list(
+#'           list(
+#'             startInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             endInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         cloudImageInUseCount = list(
+#'           list(
+#'             upperInclusive = 123.0,
+#'             lowerInclusive = 123.0
+#'           )
+#'         ),
+#'         cloudServerlessFunctionName = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         cloudServerlessFunctionRuntime = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         cloudServerlessFunctionLastModifiedAt = list(
+#'           list(
+#'             startInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             endInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         cloudServerlessFunctionExecutionRole = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
 #'         )
 #'       ),
 #'       action = "NONE"|"SUPPRESS",
@@ -5481,7 +6646,7 @@ inspector2_list_filters <- function(arns = NULL, action = NULL, nextToken = NULL
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   aggregationType = "FINDING_TYPE"|"PACKAGE"|"TITLE"|"REPOSITORY"|"AMI"|"AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER"|"IMAGE_LAYER"|"ACCOUNT"|"AWS_LAMBDA_FUNCTION"|"LAMBDA_LAYER"|"CODE_REPOSITORY",
+#'   aggregationType = "FINDING_TYPE"|"PACKAGE"|"TITLE"|"REPOSITORY"|"AMI"|"AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER"|"IMAGE_LAYER"|"ACCOUNT"|"AWS_LAMBDA_FUNCTION"|"LAMBDA_LAYER"|"CODE_REPOSITORY"|"VM_INSTANCE"|"CONTAINER_IMAGE"|"SERVERLESS_FUNCTION",
 #'   responses = list(
 #'     list(
 #'       accountAggregation = list(
@@ -5498,6 +6663,11 @@ inspector2_list_filters <- function(arns = NULL, action = NULL, nextToken = NULL
 #'       amiAggregation = list(
 #'         ami = "string",
 #'         accountId = "string",
+#'         cloudProvider = "AWS"|"AZURE",
+#'         cloudPartition = "string",
+#'         cloudRegion = "string",
+#'         cloudOrgId = "string",
+#'         cloudAccountId = "string",
 #'         severityCounts = list(
 #'           all = 123,
 #'           medium = 123,
@@ -5551,13 +6721,23 @@ inspector2_list_filters <- function(arns = NULL, action = NULL, nextToken = NULL
 #'           critical = 123
 #'         ),
 #'         exploitAvailableCount = 123,
-#'         fixAvailableCount = 123
+#'         fixAvailableCount = 123,
+#'         cloudProvider = "string",
+#'         cloudAccountId = "string",
+#'         cloudOrgId = "string",
+#'         cloudRegion = "string",
+#'         cloudPartition = "string"
 #'       ),
 #'       imageLayerAggregation = list(
 #'         repository = "string",
 #'         resourceId = "string",
 #'         layerHash = "string",
 #'         accountId = "string",
+#'         cloudProvider = "string",
+#'         cloudAccountId = "string",
+#'         cloudOrgId = "string",
+#'         cloudRegion = "string",
+#'         cloudPartition = "string",
 #'         severityCounts = list(
 #'           all = 123,
 #'           medium = 123,
@@ -5578,6 +6758,11 @@ inspector2_list_filters <- function(arns = NULL, action = NULL, nextToken = NULL
 #'       repositoryAggregation = list(
 #'         repository = "string",
 #'         accountId = "string",
+#'         cloudProvider = "AWS"|"AZURE",
+#'         cloudPartition = "string",
+#'         cloudRegion = "string",
+#'         cloudOrgId = "string",
+#'         cloudAccountId = "string",
 #'         severityCounts = list(
 #'           all = 123,
 #'           medium = 123,
@@ -5640,6 +6825,82 @@ inspector2_list_filters <- function(arns = NULL, action = NULL, nextToken = NULL
 #'         fixAvailableActiveFindingsCount = 123,
 #'         accountId = "string",
 #'         resourceId = "string"
+#'       ),
+#'       vmInstanceAggregation = list(
+#'         resourceId = "string",
+#'         cloudProvider = "AWS"|"AZURE",
+#'         cloudAccountId = "string",
+#'         cloudPartition = "string",
+#'         cloudRegion = "string",
+#'         cloudOrgId = "string",
+#'         vmImageReference = "string",
+#'         operatingSystem = "string",
+#'         tags = list(
+#'           "string"
+#'         ),
+#'         accountId = "string",
+#'         severityCounts = list(
+#'           all = 123,
+#'           medium = 123,
+#'           high = 123,
+#'           critical = 123
+#'         ),
+#'         networkFindings = 123,
+#'         exploitAvailableActiveFindingsCount = 123,
+#'         fixAvailableActiveFindingsCount = 123
+#'       ),
+#'       containerImageAggregation = list(
+#'         resourceId = "string",
+#'         cloudProvider = "AWS"|"AZURE",
+#'         cloudAccountId = "string",
+#'         cloudPartition = "string",
+#'         cloudRegion = "string",
+#'         cloudOrgId = "string",
+#'         imageDigest = "string",
+#'         repository = "string",
+#'         registry = "string",
+#'         architecture = "string",
+#'         imageTags = list(
+#'           "string"
+#'         ),
+#'         accountId = "string",
+#'         severityCounts = list(
+#'           all = 123,
+#'           medium = 123,
+#'           high = 123,
+#'           critical = 123
+#'         ),
+#'         lastInUseAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         inUseCount = 123,
+#'         exploitAvailableActiveFindingsCount = 123,
+#'         fixAvailableActiveFindingsCount = 123
+#'       ),
+#'       serverlessFunctionAggregation = list(
+#'         resourceId = "string",
+#'         cloudProvider = "AWS"|"AZURE",
+#'         cloudAccountId = "string",
+#'         cloudPartition = "string",
+#'         cloudRegion = "string",
+#'         cloudOrgId = "string",
+#'         functionName = "string",
+#'         runtime = "string",
+#'         tags = list(
+#'           "string"
+#'         ),
+#'         accountId = "string",
+#'         severityCounts = list(
+#'           all = 123,
+#'           medium = 123,
+#'           high = 123,
+#'           critical = 123
+#'         ),
+#'         lastModifiedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         exploitAvailableActiveFindingsCount = 123,
+#'         fixAvailableActiveFindingsCount = 123
 #'       )
 #'     )
 #'   ),
@@ -5650,7 +6911,7 @@ inspector2_list_filters <- function(arns = NULL, action = NULL, nextToken = NULL
 #' @section Request syntax:
 #' ```
 #' svc$list_finding_aggregations(
-#'   aggregationType = "FINDING_TYPE"|"PACKAGE"|"TITLE"|"REPOSITORY"|"AMI"|"AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER"|"IMAGE_LAYER"|"ACCOUNT"|"AWS_LAMBDA_FUNCTION"|"LAMBDA_LAYER"|"CODE_REPOSITORY",
+#'   aggregationType = "FINDING_TYPE"|"PACKAGE"|"TITLE"|"REPOSITORY"|"AMI"|"AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER"|"IMAGE_LAYER"|"ACCOUNT"|"AWS_LAMBDA_FUNCTION"|"LAMBDA_LAYER"|"CODE_REPOSITORY"|"VM_INSTANCE"|"CONTAINER_IMAGE"|"SERVERLESS_FUNCTION",
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   accountIds = list(
@@ -5662,7 +6923,7 @@ inspector2_list_filters <- function(arns = NULL, action = NULL, nextToken = NULL
 #'   aggregationRequest = list(
 #'     accountAggregation = list(
 #'       findingType = "NETWORK_REACHABILITY"|"PACKAGE_VULNERABILITY"|"CODE_VULNERABILITY",
-#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY",
+#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY"|"Microsoft.Compute/virtualMachines"|"Microsoft.ContainerRegistry/registry/containerImage"|"Microsoft.Web/sites",
 #'       sortOrder = "ASC"|"DESC",
 #'       sortBy = "CRITICAL"|"HIGH"|"ALL"
 #'     ),
@@ -5757,7 +7018,7 @@ inspector2_list_filters <- function(arns = NULL, action = NULL, nextToken = NULL
 #'     ),
 #'     findingTypeAggregation = list(
 #'       findingType = "NETWORK_REACHABILITY"|"PACKAGE_VULNERABILITY"|"CODE_VULNERABILITY",
-#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY",
+#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY"|"Microsoft.Compute/virtualMachines"|"Microsoft.ContainerRegistry/registry/containerImage"|"Microsoft.Web/sites",
 #'       sortOrder = "ASC"|"DESC",
 #'       sortBy = "CRITICAL"|"HIGH"|"ALL"
 #'     ),
@@ -5775,6 +7036,36 @@ inspector2_list_filters <- function(arns = NULL, action = NULL, nextToken = NULL
 #'         )
 #'       ),
 #'       layerHashes = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudProviders = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudAccountIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudOrgIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudRegions = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudPartitions = list(
 #'         list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
@@ -5816,10 +7107,10 @@ inspector2_list_filters <- function(arns = NULL, action = NULL, nextToken = NULL
 #'           value = "string"
 #'         )
 #'       ),
-#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY",
+#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY"|"Microsoft.Compute/virtualMachines"|"Microsoft.ContainerRegistry/registry/containerImage"|"Microsoft.Web/sites",
+#'       findingType = "NETWORK_REACHABILITY"|"PACKAGE_VULNERABILITY"|"CODE_VULNERABILITY",
 #'       sortOrder = "ASC"|"DESC",
-#'       sortBy = "CRITICAL"|"HIGH"|"ALL",
-#'       findingType = "NETWORK_REACHABILITY"|"PACKAGE_VULNERABILITY"|"CODE_VULNERABILITY"
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL"
 #'     ),
 #'     lambdaLayerAggregation = list(
 #'       functionNames = list(
@@ -5893,6 +7184,210 @@ inspector2_list_filters <- function(arns = NULL, action = NULL, nextToken = NULL
 #'           value = "string"
 #'         )
 #'       )
+#'     ),
+#'     vmInstanceAggregation = list(
+#'       resourceIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       operatingSystems = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       instanceTags = list(
+#'         list(
+#'           comparison = "EQUALS",
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       vmImageReferences = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudProviders = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudPartitions = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudRegions = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudOrgIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudAccountIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       sortOrder = "ASC"|"DESC",
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL"|"NETWORK_FINDINGS"
+#'     ),
+#'     containerImageAggregation = list(
+#'       resourceIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       imageDigests = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       repositories = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       registries = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       architectures = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       imageTags = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudProviders = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudPartitions = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudRegions = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudOrgIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudAccountIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       lastInUseAt = list(
+#'         list(
+#'           startInclusive = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           endInclusive = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       inUseCount = list(
+#'         list(
+#'           upperInclusive = 123.0,
+#'           lowerInclusive = 123.0
+#'         )
+#'       ),
+#'       sortOrder = "ASC"|"DESC",
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL"
+#'     ),
+#'     serverlessFunctionAggregation = list(
+#'       resourceIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       functionNames = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       runtimes = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       functionTags = list(
+#'         list(
+#'           comparison = "EQUALS",
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudProviders = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudPartitions = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudRegions = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudOrgIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       cloudAccountIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       sortOrder = "ASC"|"DESC",
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL"
 #'     )
 #'   )
 #' )
@@ -5967,7 +7462,7 @@ inspector2_list_finding_aggregations <- function(aggregationType, nextToken = NU
 #'       status = "ACTIVE"|"SUPPRESSED"|"CLOSED",
 #'       resources = list(
 #'         list(
-#'           type = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY",
+#'           type = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY"|"Microsoft.Compute/virtualMachines"|"Microsoft.ContainerRegistry/registry/containerImage"|"Microsoft.Web/sites",
 #'           id = "string",
 #'           partition = "string",
 #'           region = "string",
@@ -6013,7 +7508,7 @@ inspector2_list_finding_aggregations <- function(aggregationType, nextToken = NU
 #'             ),
 #'             awsLambdaFunction = list(
 #'               functionName = "string",
-#'               runtime = "NODEJS"|"NODEJS_12_X"|"NODEJS_14_X"|"NODEJS_16_X"|"JAVA_8"|"JAVA_8_AL2"|"JAVA_11"|"PYTHON_3_7"|"PYTHON_3_8"|"PYTHON_3_9"|"UNSUPPORTED"|"NODEJS_18_X"|"GO_1_X"|"JAVA_17"|"PYTHON_3_10"|"PYTHON_3_11"|"DOTNETCORE_3_1"|"DOTNET_6"|"DOTNET_7"|"RUBY_2_7"|"RUBY_3_2"|"DOTNET_10"|"NODEJS_24_X",
+#'               runtime = "NODEJS"|"NODEJS_12_X"|"NODEJS_14_X"|"NODEJS_16_X"|"JAVA_8"|"JAVA_8_AL2"|"JAVA_11"|"PYTHON_3_7"|"PYTHON_3_8"|"PYTHON_3_9"|"UNSUPPORTED"|"NODEJS_18_X"|"GO_1_X"|"JAVA_17"|"PYTHON_3_10"|"PYTHON_3_11"|"DOTNETCORE_3_1"|"DOTNET_6"|"DOTNET_7"|"RUBY_2_7"|"RUBY_3_2"|"DOTNET_10"|"NODEJS_24_X"|"NODEJS_22_X"|"JAVA_21"|"JAVA_25",
 #'               codeSha256 = "string",
 #'               version = "string",
 #'               executionRoleArn = "string",
@@ -6041,8 +7536,77 @@ inspector2_list_finding_aggregations <- function(aggregationType, nextToken = NU
 #'               projectName = "string",
 #'               integrationArn = "string",
 #'               providerType = "GITHUB"|"GITLAB_SELF_MANAGED"
+#'             ),
+#'             vm = list(
+#'               type = "string",
+#'               vmName = "string",
+#'               vmImageReference = "string",
+#'               ipV4Addresses = list(
+#'                 "string"
+#'               ),
+#'               ipV6Addresses = list(
+#'                 "string"
+#'               ),
+#'               networkId = "string",
+#'               subnetIds = list(
+#'                 "string"
+#'               ),
+#'               securityGroupIds = list(
+#'                 "string"
+#'               ),
+#'               launchedAt = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               platform = "string",
+#'               executionRole = "string",
+#'               keyName = "string"
+#'             ),
+#'             image = list(
+#'               repositoryName = "string",
+#'               registry = "string",
+#'               imageTags = list(
+#'                 "string"
+#'               ),
+#'               imageDigest = "string",
+#'               pushedAt = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               architecture = "string",
+#'               author = "string",
+#'               inUseCount = 123,
+#'               lastInUseAt = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               platform = "string"
+#'             ),
+#'             serverlessFunction = list(
+#'               serverlessFunctionName = "string",
+#'               runtime = "string",
+#'               version = "string",
+#'               codeDigest = "string",
+#'               lastModifiedAt = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               networkId = "string",
+#'               subnetIds = list(
+#'                 "string"
+#'               ),
+#'               securityGroupIds = list(
+#'                 "string"
+#'               ),
+#'               executionRole = "string",
+#'               packageType = "IMAGE"|"ZIP",
+#'               architectures = list(
+#'                 "X86_64"|"ARM64"
+#'               ),
+#'               layers = list(
+#'                 "string"
+#'               )
 #'             )
-#'           )
+#'           ),
+#'           provider = "AWS"|"AZURE",
+#'           providerAccountId = "string",
+#'           providerOrgId = "string"
 #'         )
 #'       ),
 #'       inspectorScore = 123.0,
@@ -6490,6 +8054,132 @@ inspector2_list_finding_aggregations <- function(aggregationType, nextToken = NU
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
+#'     ),
+#'     cloudProvider = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderRegion = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderAccountId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderOrgId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmImageReference = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmNetworkId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmSubnetIds = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageRegistry = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageDigest = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImagePushedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudImageArchitecture = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageLastInUseAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudImageInUseCount = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     cloudServerlessFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionLastModifiedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudServerlessFunctionExecutionRole = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
 #'     )
 #'   ),
 #'   sortCriteria = list(
@@ -6660,10 +8350,11 @@ inspector2_list_tags_for_resource <- function(resourceArn) {
 #'       accountId = "string",
 #'       usage = list(
 #'         list(
-#'           type = "EC2_INSTANCE_HOURS"|"ECR_INITIAL_SCAN"|"ECR_RESCAN"|"LAMBDA_FUNCTION_HOURS"|"LAMBDA_FUNCTION_CODE_HOURS"|"CODE_REPOSITORY_SAST"|"CODE_REPOSITORY_IAC"|"CODE_REPOSITORY_SCA"|"EC2_AGENTLESS_INSTANCE_HOURS",
+#'           type = "EC2_INSTANCE_HOURS"|"ECR_INITIAL_SCAN"|"ECR_RESCAN"|"LAMBDA_FUNCTION_HOURS"|"LAMBDA_FUNCTION_CODE_HOURS"|"CODE_REPOSITORY_SAST"|"CODE_REPOSITORY_IAC"|"CODE_REPOSITORY_SCA"|"EC2_AGENTLESS_INSTANCE_HOURS"|"AZURE_CONTAINER_IMAGE_INITIAL_SCAN"|"AZURE_CONTAINER_IMAGE_RESCAN"|"AZURE_VM_AGENT_BASED_INSTANCE_HOURS"|"AZURE_SERVERLESS_FUNCTION_HOURS",
 #'           total = 123.0,
 #'           estimatedMonthlyCost = 123.0,
-#'           currency = "USD"
+#'           currency = "USD",
+#'           cloudProvider = "AWS"|"AZURE"|"NOT_APPLICABLE"
 #'         )
 #'       )
 #'     )
@@ -6724,7 +8415,7 @@ inspector2_list_usage_totals <- function(maxResults = NULL, nextToken = NULL, ac
 #' ```
 #' svc$reset_encryption_key(
 #'   scanType = "NETWORK"|"PACKAGE"|"CODE",
-#'   resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY"
+#'   resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY"|"Microsoft.Compute/virtualMachines"|"Microsoft.ContainerRegistry/registry/containerImage"|"Microsoft.Web/sites"
 #' )
 #' ```
 #'
@@ -7464,16 +9155,19 @@ inspector2_update_code_security_scan_configuration <- function(scanConfiguration
 }
 .inspector2$operations$update_code_security_scan_configuration <- inspector2_update_code_security_scan_configuration
 
-#' Updates setting configurations for your Amazon Inspector account
+#' Updates the scan configuration for your Amazon Inspector account
 #'
 #' @description
-#' Updates setting configurations for your Amazon Inspector account. When you use this API as an Amazon Inspector delegated administrator this updates the setting for all accounts you manage. Member accounts in an organization cannot update this setting.
+#' Updates the scan configuration for your Amazon Inspector account. If you don't specify an `accountId`, this operation updates the delegated administrator's configuration and propagates it to member accounts that have not been individually configured. If you specify an `accountId`, this operation updates that member account's configuration. Only the delegated administrator can specify an `accountId`; member accounts cannot call this operation.
 #'
 #' @usage
-#' inspector2_update_configuration(ecrConfiguration, ec2Configuration)
+#' inspector2_update_configuration(accountId, ecrConfiguration,
+#'   ec2Configuration, updateConfigurationInheritance)
 #'
+#' @param accountId The 12-digit Amazon Web Services account ID of the member account whose scan configuration you want to update. When specified, you must be the delegated administrator for this member account. If not specified, the operation updates your own configuration and propagates changes to any member accounts that have not been individually configured.
 #' @param ecrConfiguration Specifies how the ECR automated re-scan will be updated for your environment.
 #' @param ec2Configuration Specifies how the Amazon EC2 automated scan will be updated for your environment.
+#' @param updateConfigurationInheritance Specifies which scan-type configurations to reset to the delegated administrator's inherited values for the targeted member account. Each member of this structure is independently optional. When specified, `ec2Configuration` and `ecrConfiguration` must be absent, and `accountId` must also be present. Only `INHERIT_FROM_ADMIN` is valid for each member. If not specified, the operation uses the `ec2Configuration` and `ecrConfiguration` parameters instead.
 #'
 #' @return
 #' An empty list.
@@ -7481,13 +9175,19 @@ inspector2_update_code_security_scan_configuration <- function(scanConfiguration
 #' @section Request syntax:
 #' ```
 #' svc$update_configuration(
+#'   accountId = "string",
 #'   ecrConfiguration = list(
-#'     rescanDuration = "LIFETIME"|"DAYS_30"|"DAYS_180"|"DAYS_14"|"DAYS_60"|"DAYS_90",
-#'     pullDateRescanDuration = "DAYS_14"|"DAYS_30"|"DAYS_60"|"DAYS_90"|"DAYS_180",
+#'     rescanDuration = "LIFETIME"|"DAYS_30"|"DAYS_180"|"DAYS_14"|"DAYS_60"|"DAYS_90"|"DAYS_3"|"DAYS_7",
+#'     pullDateRescanDuration = "DAYS_14"|"DAYS_30"|"DAYS_60"|"DAYS_90"|"DAYS_180"|"DAYS_3"|"DAYS_7",
 #'     pullDateRescanMode = "LAST_PULL_DATE"|"LAST_IN_USE_AT"
 #'   ),
 #'   ec2Configuration = list(
-#'     scanMode = "EC2_SSM_AGENT_BASED"|"EC2_HYBRID"
+#'     scanMode = "EC2_SSM_AGENT_BASED"|"EC2_HYBRID",
+#'     activateVMScanner = TRUE|FALSE
+#'   ),
+#'   updateConfigurationInheritance = list(
+#'     ec2Configuration = "INHERIT_FROM_ADMIN",
+#'     ecrConfiguration = "INHERIT_FROM_ADMIN"
 #'   )
 #' )
 #' ```
@@ -7497,7 +9197,7 @@ inspector2_update_code_security_scan_configuration <- function(scanConfiguration
 #' @rdname inspector2_update_configuration
 #'
 #' @aliases inspector2_update_configuration
-inspector2_update_configuration <- function(ecrConfiguration = NULL, ec2Configuration = NULL) {
+inspector2_update_configuration <- function(accountId = NULL, ecrConfiguration = NULL, ec2Configuration = NULL, updateConfigurationInheritance = NULL) {
   op <- new_operation(
     name = "UpdateConfiguration",
     http_method = "POST",
@@ -7506,7 +9206,7 @@ inspector2_update_configuration <- function(ecrConfiguration = NULL, ec2Configur
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$update_configuration_input(ecrConfiguration = ecrConfiguration, ec2Configuration = ec2Configuration)
+  input <- .inspector2$update_configuration_input(accountId = accountId, ecrConfiguration = ecrConfiguration, ec2Configuration = ec2Configuration, updateConfigurationInheritance = updateConfigurationInheritance)
   output <- .inspector2$update_configuration_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -7515,6 +9215,140 @@ inspector2_update_configuration <- function(ecrConfiguration = NULL, ec2Configur
   return(response)
 }
 .inspector2$operations$update_configuration <- inspector2_update_configuration
+
+#' Updates the description or provider-specific configuration details of an
+#' existing connector
+#'
+#' @description
+#' Updates the description or provider-specific configuration details of an existing connector.
+#'
+#' @usage
+#' inspector2_update_connector(connectorArn, description, providerDetail)
+#'
+#' @param connectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the connector to update.
+#' @param description The updated description of the connector.
+#' @param providerDetail The updated provider-specific configuration details for the connector.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectorArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connector(
+#'   connectorArn = "string",
+#'   description = "string",
+#'   providerDetail = list(
+#'     azure = list(
+#'       azureRegions = list(
+#'         "string"
+#'       ),
+#'       scopeConfiguration = list(
+#'         vmScanning = list(
+#'           scopeType = "TENANT"|"SUBSCRIPTION",
+#'           scopeValues = list(
+#'             "string"
+#'           )
+#'         ),
+#'         containerImageScanning = list(
+#'           scopeType = "TENANT"|"SUBSCRIPTION",
+#'           scopeValues = list(
+#'             "string"
+#'           )
+#'         ),
+#'         serverlessScanning = list(
+#'           scopeType = "TENANT"|"SUBSCRIPTION",
+#'           scopeValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       autoInstallVMScanner = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_connector
+#'
+#' @aliases inspector2_update_connector
+inspector2_update_connector <- function(connectorArn, description = NULL, providerDetail = NULL) {
+  op <- new_operation(
+    name = "UpdateConnector",
+    http_method = "POST",
+    http_path = "/connector/update",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$update_connector_input(connectorArn = connectorArn, description = description, providerDetail = providerDetail)
+  output <- .inspector2$update_connector_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_connector <- inspector2_update_connector
+
+#' Updates scan configuration settings for resources associated with an
+#' Amazon Web Services Config connector
+#'
+#' @description
+#' Updates scan configuration settings for resources associated with an Amazon Web Services Config connector.
+#'
+#' @usage
+#' inspector2_update_connector_scan_configuration(awsConfigConnectorArn,
+#'   scanConfiguration)
+#'
+#' @param awsConfigConnectorArn &#91;required&#93; The ARN of the Amazon Web Services Config connector.
+#' @param scanConfiguration &#91;required&#93; The scan configuration settings to apply.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connector_scan_configuration(
+#'   awsConfigConnectorArn = "string",
+#'   scanConfiguration = list(
+#'     containerImageScanning = list(
+#'       pushDuration = "LIFETIME"|"DAYS_3"|"DAYS_7"|"DAYS_30"|"DAYS_180"|"DAYS_14"|"DAYS_60"|"DAYS_90",
+#'       pullDuration = "DAYS_3"|"DAYS_7"|"DAYS_14"|"DAYS_30"|"DAYS_60"|"DAYS_90"|"DAYS_180"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_connector_scan_configuration
+#'
+#' @aliases inspector2_update_connector_scan_configuration
+inspector2_update_connector_scan_configuration <- function(awsConfigConnectorArn, scanConfiguration) {
+  op <- new_operation(
+    name = "UpdateConnectorScanConfiguration",
+    http_method = "POST",
+    http_path = "/connectorscanconfiguration/update",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$update_connector_scan_configuration_input(awsConfigConnectorArn = awsConfigConnectorArn, scanConfiguration = scanConfiguration)
+  output <- .inspector2$update_connector_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_connector_scan_configuration <- inspector2_update_connector_scan_configuration
 
 #' Activates, deactivates Amazon Inspector deep inspection, or updates
 #' custom paths for your account
@@ -7598,7 +9432,7 @@ inspector2_update_ec_2_deep_inspection_configuration <- function(activateDeepIns
 #' svc$update_encryption_key(
 #'   kmsKeyId = "string",
 #'   scanType = "NETWORK"|"PACKAGE"|"CODE",
-#'   resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY"
+#'   resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY"|"Microsoft.Compute/virtualMachines"|"Microsoft.ContainerRegistry/registry/containerImage"|"Microsoft.Web/sites"
 #' )
 #' ```
 #'
@@ -7983,6 +9817,132 @@ inspector2_update_encryption_key <- function(kmsKeyId, scanType, resourceType) {
 #'       )
 #'     ),
 #'     codeRepositoryProviderType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProvider = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderRegion = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderAccountId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudProviderOrgId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmImageReference = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmNetworkId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudVmSubnetIds = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageRegistry = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageDigest = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImagePushedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudImageArchitecture = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudImageLastInUseAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudImageInUseCount = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     cloudServerlessFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     cloudServerlessFunctionLastModifiedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     cloudServerlessFunctionExecutionRole = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"

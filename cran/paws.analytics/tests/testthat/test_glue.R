@@ -8,6 +8,14 @@ test_that("describe_integrations", {
   expect_error(svc$describe_integrations(), NA)
 })
 
+test_that("list_asset_types", {
+  expect_error(svc$list_asset_types(), NA)
+})
+
+test_that("list_asset_types", {
+  expect_error(svc$list_asset_types(MaxResults = 20), NA)
+})
+
 test_that("list_blueprints", {
   expect_error(svc$list_blueprints(), NA)
 })
@@ -106,6 +114,22 @@ test_that("list_dev_endpoints", {
 
 test_that("list_entities", {
   expect_error(svc$list_entities(), NA)
+})
+
+test_that("list_form_types", {
+  expect_error(svc$list_form_types(), NA)
+})
+
+test_that("list_form_types", {
+  expect_error(svc$list_form_types(MaxResults = 20), NA)
+})
+
+test_that("list_glossaries", {
+  expect_error(svc$list_glossaries(), NA)
+})
+
+test_that("list_glossaries", {
+  expect_error(svc$list_glossaries(MaxResults = 20), NA)
 })
 
 test_that("list_integration_resource_properties", {

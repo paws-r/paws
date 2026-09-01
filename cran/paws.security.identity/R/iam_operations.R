@@ -34,6 +34,41 @@ iam_accept_delegation_request <- function(DelegationRequestId) {
 }
 .iam$operations$accept_delegation_request <- iam_accept_delegation_request
 
+#' Creates an IAM role from the specified role template
+#'
+#' @description
+#' Creates an IAM role from the specified role template. The new role takes its configuration—including its name, path, trust policy, inline and managed policies, permissions boundary, tags, and maximum session duration—from the role template version that you specify. For more information about roles, see [IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_acquire_role/](https://www.paws-r-sdk.com/docs/iam_acquire_role/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) of the role template to create the role from.
+#' 
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*.
+#' @param TemplateMinorVersion The minor version of the role template to use. If you do not specify a minor version, the service uses the template's default minor version.
+#' @param ReplacementValues A map of values to substitute for the parameters that are defined in the role template version. Each key is a parameter name from the template, and each value is a structure that contains the replacement values for that parameter.
+#'
+#' @keywords internal
+#'
+#' @rdname iam_acquire_role
+iam_acquire_role <- function(TemplateArn, TemplateMinorVersion = NULL, ReplacementValues = NULL) {
+  op <- new_operation(
+    name = "AcquireRole",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$acquire_role_input(TemplateArn = TemplateArn, TemplateMinorVersion = TemplateMinorVersion, ReplacementValues = ReplacementValues)
+  output <- .iam$acquire_role_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$acquire_role <- iam_acquire_role
+
 #' Adds a new client ID (also known as audience) to the list of client IDs
 #' already registered for the specified IAM OpenID Connect (OIDC) provider
 #' resource
@@ -883,7 +918,9 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
 #' 
 #' This parameter allows (through its [regex pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@@-
 #' @param ServiceName &#91;required&#93; The name of the Amazon Web Services service that is to be associated with the credentials. The service you specify here is the only service that can be accessed using these credentials.
-#' @param CredentialAgeDays The number of days until the service specific credential expires. This field is only valid for Bedrock and CloudWatch Logs API keys and must be a positive integer. When not specified, the credential will not expire.
+#' @param CredentialAgeDays The number of days until the service specific credential expires. This field is only valid for services that support long-term API keys and must be a positive integer. When not specified, the credential will not expire.
+#' 
+#' To see which services support long-term API keys, refer to [API keys for Amazon Web Services services](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_api_keys_for_aws_services.html) in the *IAM User Guide*.
 #'
 #' @keywords internal
 #'
@@ -2230,7 +2267,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' Amazon Web Services services
 #'
 #' @description
-#' Generates a report that includes details about when an IAM resource (user, group, role, or policy) was last used in an attempt to access Amazon Web Services services. Recent activity usually appears within four hours. IAM reports activity for at least the last 400 days, or less if your Region began supporting this feature within the last year. For more information, see [Regions where data is tracked](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html#access-advisor_tracking-period). For more information about services and actions for which action last accessed information is displayed, see [IAM action last accessed information services and actions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed-action-last-accessed.html).
+#' Generates a report that includes details about when an IAM resource (user, group, role, or policy) was last used in an attempt to access Amazon Web Services services. Recent activity usually appears within four hours. IAM reports activity for at least the last 400 days, or less if your Region began supporting this feature within the last year. For more information, see [Regions where data is tracked](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html?refid=a36b7ab9-023a-49dc-b20e-4b845b52d4d0#access-advisor_tracking-period). For more information about services and actions for which action last accessed information is displayed, see [IAM action last accessed information services and actions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed-action-last-accessed.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_generate_service_last_accessed_details/](https://www.paws-r-sdk.com/docs/iam_generate_service_last_accessed_details/) for full documentation.
 #'
@@ -2361,6 +2398,38 @@ iam_get_account_password_policy <- function() {
   return(response)
 }
 .iam$operations$get_account_password_policy <- iam_get_account_password_policy
+
+#' Retrieves the account-level properties for the caller's Amazon Web
+#' Services account
+#'
+#' @description
+#' Retrieves the account-level properties for the caller's Amazon Web Services account. Account properties are configuration settings that control account-wide IAM features such as Role Manager.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_get_account_properties/](https://www.paws-r-sdk.com/docs/iam_get_account_properties/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname iam_get_account_properties
+iam_get_account_properties <- function() {
+  op <- new_operation(
+    name = "GetAccountProperties",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$get_account_properties_input()
+  output <- .iam$get_account_properties_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$get_account_properties <- iam_get_account_properties
 
 #' Retrieves information about IAM entity usage and IAM quotas in the
 #' Amazon Web Services account
@@ -2997,6 +3066,40 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
   return(response)
 }
 .iam$operations$get_role_policy <- iam_get_role_policy
+
+#' Retrieves information about a version of the specified role template
+#'
+#' @description
+#' Retrieves information about a version of the specified role template. Role templates define a reusable configuration—including role name and path patterns, trust policy, inline and managed policies, permissions boundary, tags, and maximum session duration—that you use to create IAM roles with [`acquire_role`][iam_acquire_role].
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_get_role_template_version/](https://www.paws-r-sdk.com/docs/iam_get_role_template_version/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) of the role template whose version you want to retrieve.
+#' 
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*.
+#' @param MinorVersion The minor version of the role template to retrieve. If you do not specify a minor version, the service returns the template's default minor version.
+#'
+#' @keywords internal
+#'
+#' @rdname iam_get_role_template_version
+iam_get_role_template_version <- function(TemplateArn, MinorVersion = NULL) {
+  op <- new_operation(
+    name = "GetRoleTemplateVersion",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$get_role_template_version_input(TemplateArn = TemplateArn, MinorVersion = MinorVersion)
+  output <- .iam$get_role_template_version_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$get_role_template_version <- iam_get_role_template_version
 
 #' Returns the SAML provider metadocument that was uploaded when the IAM
 #' SAML provider resource object was created or updated
@@ -4418,7 +4521,7 @@ iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxIt
 #' with the specified IAM user
 #'
 #' @description
-#' Returns information about the service-specific credentials associated with the specified IAM user. If none exists, the operation returns an empty list. The service-specific credentials returned by this operation are used only for authenticating the IAM user to a specific service. For more information about using service-specific credentials to authenticate to an Amazon Web Services service, see [Set up service-specific credentials](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html) in the CodeCommit User Guide.
+#' Returns information about the service-specific credentials associated with the specified IAM user. If none exists, the operation returns an empty list. The service-specific credentials returned by this operation are used only for authenticating the IAM user to a specific service. For more information about using service-specific credentials to authenticate to an Amazon Web Services service, refer to the following docs:
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_list_service_specific_credentials/](https://www.paws-r-sdk.com/docs/iam_list_service_specific_credentials/) for full documentation.
 #'
@@ -4637,6 +4740,42 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
   return(response)
 }
 .iam$operations$list_virtual_mfa_devices <- iam_list_virtual_mfa_devices
+
+#' Sets account-level properties for the caller's Amazon Web Services
+#' account
+#'
+#' @description
+#' Sets account-level properties for the caller's Amazon Web Services account. Account properties are configuration settings that control account-wide IAM features such as Role Manager.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_put_account_properties/](https://www.paws-r-sdk.com/docs/iam_put_account_properties/) for full documentation.
+#'
+#' @param Properties &#91;required&#93; A map of property key-value pairs to set. All keys must belong to the same namespace.
+#' 
+#' Each key uses the format `Namespace/PropertyName`. The key must contain exactly one `/` separating the namespace from the property name, and cannot start or end with `/`.
+#' 
+#' The service validates each value based on the property key's expected type. For example, boolean properties expect `true` or `false`.
+#'
+#' @keywords internal
+#'
+#' @rdname iam_put_account_properties
+iam_put_account_properties <- function(Properties) {
+  op <- new_operation(
+    name = "PutAccountProperties",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$put_account_properties_input(Properties = Properties)
+  output <- .iam$put_account_properties_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$put_account_properties <- iam_put_account_properties
 
 #' Adds or updates an inline policy document that is embedded in the
 #' specified IAM group
@@ -5209,6 +5348,11 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement character set (through ``U+00FF``)
 #' 
 #' -   The special characters tab (``U+0009``), line feed (``U+000A``), and carriage return (``U+000D``)
+#' @param OrderedOrganizationPolicyInputList An ordered list of service control policies (SCPs) to include in the simulation. Each element represents one level of an Organizations hierarchy, from the organization root to the account.
+#' 
+#' The simulator evaluates SCPs in the order that you provide, consistent with how Organizations enforces SCPs. The first element must represent the organization root, and the last element must represent the account. Any elements between them represent organizational units (OUs) in descending order.
+#' 
+#' Use this parameter to simulate the effect of an SCP hierarchy without calling [`simulate_principal_policy`][iam_simulate_principal_policy].
 #' @param ActionNames &#91;required&#93; A list of names of API operations to evaluate in the simulation. Each operation is evaluated against each resource. Each operation must include the service identifier, such as `iam:CreateUser`. This operation does not support using wildcards (*) in an action name.
 #' @param ResourceArns A list of ARNs of Amazon Web Services resources to include in the simulation. If this parameter is not provided, then the value defaults to `*` (all resources). Each API in the `ActionNames` parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response. You can simulate resources that don't exist in your account.
 #' 
@@ -5235,9 +5379,9 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' @param ResourceOwner An ARN representing the Amazon Web Services account ID that specifies the owner of any simulated resource that does not identify its owner in the resource ARN. Examples of resource ARNs include an S3 bucket or object. If `ResourceOwner` is specified, it is also used as the account owner of any `ResourcePolicy` included in the simulation. If the `ResourceOwner` parameter is not specified, then the owner of the resources and the resource policy defaults to the account of the identity provided in `CallerArn`. This parameter is required only if you specify a resource-based policy and account that owns the resource is different from the account that owns the simulated calling user `CallerArn`.
 #' 
 #' The ARN for an account uses the following syntax: `arn:aws:iam::AWS-account-ID:root`. For example, to represent the account with the 112233445566 ID, use the following ARN: `arn:aws:iam::112233445566-ID:root`.
-#' @param CallerArn The ARN of the IAM user that you want to use as the simulated caller of the API operations. `CallerArn` is required if you include a `ResourcePolicy` so that the policy's `Principal` element has a value to use in evaluating the policy.
+#' @param CallerArn The ARN of the IAM user, group, or role that you want to use as the simulated caller of the API operations. `CallerArn` is required if you include a `ResourcePolicy` so that the policy's `Principal` element has a value to use in evaluating the policy.
 #' 
-#' You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.
+#' You cannot specify the ARN of an assumed role, federated user, or a service principal.
 #' @param ContextEntries A list of context keys and corresponding values for the simulation to use. Whenever a context key is evaluated in one of the simulated IAM permissions policies, the corresponding value is supplied.
 #' @param ResourceHandlingOption Specifies the type of simulation to run. Different API operations that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.
 #' 
@@ -5266,7 +5410,7 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' @keywords internal
 #'
 #' @rdname iam_simulate_custom_policy
-iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolicyInputList = NULL, ActionNames, ResourceArns = NULL, ResourcePolicy = NULL, ResourceOwner = NULL, CallerArn = NULL, ContextEntries = NULL, ResourceHandlingOption = NULL, MaxItems = NULL, Marker = NULL) {
+iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolicyInputList = NULL, OrderedOrganizationPolicyInputList = NULL, ActionNames, ResourceArns = NULL, ResourcePolicy = NULL, ResourceOwner = NULL, CallerArn = NULL, ContextEntries = NULL, ResourceHandlingOption = NULL, MaxItems = NULL, Marker = NULL) {
   op <- new_operation(
     name = "SimulateCustomPolicy",
     http_method = "POST",
@@ -5275,7 +5419,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "EvaluationResults"),
     stream_api = FALSE
   )
-  input <- .iam$simulate_custom_policy_input(PolicyInputList = PolicyInputList, PermissionsBoundaryPolicyInputList = PermissionsBoundaryPolicyInputList, ActionNames = ActionNames, ResourceArns = ResourceArns, ResourcePolicy = ResourcePolicy, ResourceOwner = ResourceOwner, CallerArn = CallerArn, ContextEntries = ContextEntries, ResourceHandlingOption = ResourceHandlingOption, MaxItems = MaxItems, Marker = Marker)
+  input <- .iam$simulate_custom_policy_input(PolicyInputList = PolicyInputList, PermissionsBoundaryPolicyInputList = PermissionsBoundaryPolicyInputList, OrderedOrganizationPolicyInputList = OrderedOrganizationPolicyInputList, ActionNames = ActionNames, ResourceArns = ResourceArns, ResourcePolicy = ResourcePolicy, ResourceOwner = ResourceOwner, CallerArn = CallerArn, ContextEntries = ContextEntries, ResourceHandlingOption = ResourceHandlingOption, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$simulate_custom_policy_output()
   config <- get_config()
   svc <- .iam$service(config, op)
@@ -5319,6 +5463,11 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement character set (through ``U+00FF``)
 #' 
 #' -   The special characters tab (``U+0009``), line feed (``U+000A``), and carriage return (``U+000D``)
+#' @param PolicyExclusionList A list of policies to exclude from the simulation. Use this parameter to test what the simulation result would be if a policy were removed, without changing which policies are actually attached to the principal identified by `PolicySourceArn`.
+#' 
+#' Each entry is a [PolicyIdentifier](https://docs.aws.amazon.com/IAM/latest/APIReference/API_PolicyIdentifier.html) that identifies one or more policies to exclude by policy type, by Amazon Resource Name (ARN), or by the name of an inline policy and the entity it is attached to.
+#' 
+#' Syntactically invalid identifiers, such as malformed ARNs or wildcards in disallowed positions, cause the request to fail with an `InvalidInput` error. Syntactically valid identifiers that don't match any attached policy are ignored. Resource control policies (RCPs) are not supported in this release; identifiers that target RCPs are also ignored.
 #' @param ActionNames &#91;required&#93; A list of names of API operations to evaluate in the simulation. Each operation is evaluated for each resource. Each operation must include the service identifier, such as `iam:CreateUser`.
 #' @param ResourceArns A list of ARNs of Amazon Web Services resources to include in the simulation. If this parameter is not provided, then the value defaults to `*` (all resources). Each API in the `ActionNames` parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response. You can simulate resources that don't exist in your account.
 #' 
@@ -5341,11 +5490,11 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' 
 #' Simulation of resource-based policies isn't supported for IAM roles.
 #' @param ResourceOwner An Amazon Web Services account ID that specifies the owner of any simulated resource that does not identify its owner in the resource ARN. Examples of resource ARNs include an S3 bucket or object. If `ResourceOwner` is specified, it is also used as the account owner of any `ResourcePolicy` included in the simulation. If the `ResourceOwner` parameter is not specified, then the owner of the resources and the resource policy defaults to the account of the identity provided in `CallerArn`. This parameter is required only if you specify a resource-based policy and account that owns the resource is different from the account that owns the simulated calling user `CallerArn`.
-#' @param CallerArn The ARN of the IAM user that you want to specify as the simulated caller of the API operations. If you do not specify a `CallerArn`, it defaults to the ARN of the user that you specify in `PolicySourceArn`, if you specified a user. If you include both a `PolicySourceArn` (for example, `arn:aws:iam::123456789012:user/David`) and a `CallerArn` (for example, `arn:aws:iam::123456789012:user/Bob`), the result is that you simulate calling the API operations as Bob, as if Bob had David's policies.
+#' @param CallerArn The ARN of the IAM user, group, or role that you want to specify as the simulated caller of the API operations. If you do not specify a `CallerArn`, it defaults to the ARN of the user, group, or role that you specify in `PolicySourceArn`. If you include both a `PolicySourceArn` (for example, `arn:aws:iam::123456789012:user/David`) and a `CallerArn` (for example, `arn:aws:iam::123456789012:user/Bob`), the result is that you simulate calling the API operations as Bob, as if Bob had David's policies.
 #' 
-#' You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.
+#' You can specify the ARN of an IAM user, group, or role. You cannot specify the ARN of an assumed role, federated user, or a service principal.
 #' 
-#' `CallerArn` is required if you include a `ResourcePolicy` and the `PolicySourceArn` is not the ARN for an IAM user. This is required so that the resource-based policy's `Principal` element has a value to use in evaluating the policy.
+#' `CallerArn` is required if you include a `ResourcePolicy` and the `PolicySourceArn` is not the ARN for an IAM user, group, or role. This is required so that the resource-based policy's `Principal` element has a value to use in evaluating the policy.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*.
 #' @param ContextEntries A list of context keys and corresponding values for the simulation to use. Whenever a context key is evaluated in one of the simulated IAM permissions policies, the corresponding value is supplied.
@@ -5376,7 +5525,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' @keywords internal
 #'
 #' @rdname iam_simulate_principal_policy
-iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NULL, PermissionsBoundaryPolicyInputList = NULL, ActionNames, ResourceArns = NULL, ResourcePolicy = NULL, ResourceOwner = NULL, CallerArn = NULL, ContextEntries = NULL, ResourceHandlingOption = NULL, MaxItems = NULL, Marker = NULL) {
+iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NULL, PermissionsBoundaryPolicyInputList = NULL, PolicyExclusionList = NULL, ActionNames, ResourceArns = NULL, ResourcePolicy = NULL, ResourceOwner = NULL, CallerArn = NULL, ContextEntries = NULL, ResourceHandlingOption = NULL, MaxItems = NULL, Marker = NULL) {
   op <- new_operation(
     name = "SimulatePrincipalPolicy",
     http_method = "POST",
@@ -5385,7 +5534,7 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "EvaluationResults"),
     stream_api = FALSE
   )
-  input <- .iam$simulate_principal_policy_input(PolicySourceArn = PolicySourceArn, PolicyInputList = PolicyInputList, PermissionsBoundaryPolicyInputList = PermissionsBoundaryPolicyInputList, ActionNames = ActionNames, ResourceArns = ResourceArns, ResourcePolicy = ResourcePolicy, ResourceOwner = ResourceOwner, CallerArn = CallerArn, ContextEntries = ContextEntries, ResourceHandlingOption = ResourceHandlingOption, MaxItems = MaxItems, Marker = Marker)
+  input <- .iam$simulate_principal_policy_input(PolicySourceArn = PolicySourceArn, PolicyInputList = PolicyInputList, PermissionsBoundaryPolicyInputList = PermissionsBoundaryPolicyInputList, PolicyExclusionList = PolicyExclusionList, ActionNames = ActionNames, ResourceArns = ResourceArns, ResourcePolicy = ResourcePolicy, ResourceOwner = ResourceOwner, CallerArn = CallerArn, ContextEntries = ContextEntries, ResourceHandlingOption = ResourceHandlingOption, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$simulate_principal_policy_output()
   config <- get_config()
   svc <- .iam$service(config, op)

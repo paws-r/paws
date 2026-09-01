@@ -111,6 +111,7 @@ NULL
 #'  \link[=cognitoidentityprovider_admin_add_user_to_group]{admin_add_user_to_group} \tab Adds a user to a group\cr
 #'  \link[=cognitoidentityprovider_admin_confirm_sign_up]{admin_confirm_sign_up} \tab Confirms user sign-up as an administrator\cr
 #'  \link[=cognitoidentityprovider_admin_create_user]{admin_create_user} \tab Creates a new user in the specified user pool\cr
+#'  \link[=cognitoidentityprovider_admin_delete_software_token]{admin_delete_software_token} \tab Deletes a user's registered time-based one-time password (TOTP) multi-factor authentication (MFA) factor, also known as a software token\cr
 #'  \link[=cognitoidentityprovider_admin_delete_user]{admin_delete_user} \tab Deletes a user profile in your user pool\cr
 #'  \link[=cognitoidentityprovider_admin_delete_user_attributes]{admin_delete_user_attributes} \tab Deletes attribute values from a user\cr
 #'  \link[=cognitoidentityprovider_admin_disable_provider_for_user]{admin_disable_provider_for_user} \tab Prevents the user from signing in with the specified external (SAML or social) identity provider (IdP)\cr
@@ -119,6 +120,7 @@ NULL
 #'  \link[=cognitoidentityprovider_admin_forget_device]{admin_forget_device} \tab Forgets, or deletes, a remembered device from a user's profile\cr
 #'  \link[=cognitoidentityprovider_admin_get_device]{admin_get_device} \tab Given the device key, returns details for a user's device\cr
 #'  \link[=cognitoidentityprovider_admin_get_user]{admin_get_user} \tab Given a username, returns details about a user profile in a user pool\cr
+#'  \link[=cognitoidentityprovider_admin_get_user_auth_factors]{admin_get_user_auth_factors} \tab Lists the authentication options for a user in a user pool\cr
 #'  \link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth} \tab Starts sign-in for applications with a server-side component, for example a traditional web application\cr
 #'  \link[=cognitoidentityprovider_admin_link_provider_for_user]{admin_link_provider_for_user} \tab Links an existing user account in a user pool, or DestinationUser, to an identity from an external IdP, or SourceUser, based on a specified attribute name and value from the external IdP\cr
 #'  \link[=cognitoidentityprovider_admin_list_devices]{admin_list_devices} \tab Lists a user's registered devices\cr
@@ -149,6 +151,7 @@ NULL
 #'  \link[=cognitoidentityprovider_create_user_pool]{create_user_pool} \tab Creates a new Amazon Cognito user pool\cr
 #'  \link[=cognitoidentityprovider_create_user_pool_client]{create_user_pool_client} \tab Creates an app client in a user pool\cr
 #'  \link[=cognitoidentityprovider_create_user_pool_domain]{create_user_pool_domain} \tab A user pool domain hosts managed login, an authorization server and web server for authentication in your application\cr
+#'  \link[=cognitoidentityprovider_create_user_pool_replica]{create_user_pool_replica} \tab Creates a replica of an existing user pool in a specified Amazon Web Services Region\cr
 #'  \link[=cognitoidentityprovider_delete_group]{delete_group} \tab Deletes a group from the specified user pool\cr
 #'  \link[=cognitoidentityprovider_delete_identity_provider]{delete_identity_provider} \tab Deletes a user pool identity provider (IdP)\cr
 #'  \link[=cognitoidentityprovider_delete_managed_login_branding]{delete_managed_login_branding} \tab Deletes a managed login branding style\cr
@@ -160,6 +163,7 @@ NULL
 #'  \link[=cognitoidentityprovider_delete_user_pool_client]{delete_user_pool_client} \tab Deletes a user pool app client\cr
 #'  \link[=cognitoidentityprovider_delete_user_pool_client_secret]{delete_user_pool_client_secret} \tab Deletes a specific client secret from a user pool app client\cr
 #'  \link[=cognitoidentityprovider_delete_user_pool_domain]{delete_user_pool_domain} \tab Given a user pool ID and domain identifier, deletes a user pool domain\cr
+#'  \link[=cognitoidentityprovider_delete_user_pool_replica]{delete_user_pool_replica} \tab Deletes a secondary replica user pool\cr
 #'  \link[=cognitoidentityprovider_delete_web_authn_credential]{delete_web_authn_credential} \tab Deletes a registered passkey, or WebAuthn, authenticator for the currently signed-in user\cr
 #'  \link[=cognitoidentityprovider_describe_identity_provider]{describe_identity_provider} \tab Given a user pool ID and identity provider (IdP) name, returns details about the IdP\cr
 #'  \link[=cognitoidentityprovider_describe_managed_login_branding]{describe_managed_login_branding} \tab Given the ID of a managed login branding style, returns detailed information about the style\cr
@@ -167,17 +171,20 @@ NULL
 #'  \link[=cognitoidentityprovider_describe_resource_server]{describe_resource_server} \tab Describes a resource server\cr
 #'  \link[=cognitoidentityprovider_describe_risk_configuration]{describe_risk_configuration} \tab Given an app client or user pool ID where threat protection is configured, describes the risk configuration\cr
 #'  \link[=cognitoidentityprovider_describe_terms]{describe_terms} \tab Returns details for the requested terms documents ID\cr
+#'  \link[=cognitoidentityprovider_describe_terms_by_client]{describe_terms_by_client} \tab Returns details for the terms documents that are associated with an app client, identified by the app client ID, user pool ID, and terms name\cr
 #'  \link[=cognitoidentityprovider_describe_user_import_job]{describe_user_import_job} \tab Describes a user import job\cr
 #'  \link[=cognitoidentityprovider_describe_user_pool]{describe_user_pool} \tab Given a user pool ID, returns configuration information\cr
 #'  \link[=cognitoidentityprovider_describe_user_pool_client]{describe_user_pool_client} \tab Given an app client ID, returns configuration information\cr
 #'  \link[=cognitoidentityprovider_describe_user_pool_domain]{describe_user_pool_domain} \tab Given a user pool domain name, returns information about the domain configuration\cr
 #'  \link[=cognitoidentityprovider_forget_device]{forget_device} \tab Given a device key, deletes a remembered device as the currently signed-in user\cr
 #'  \link[=cognitoidentityprovider_forgot_password]{forgot_password} \tab Sends a password-reset confirmation code to the email address or phone number of the requested username\cr
+#'  \link[=cognitoidentityprovider_get_client_token]{get_client_token} \tab Issues an access token for machine-to-machine (M2M) authorization\cr
 #'  \link[=cognitoidentityprovider_get_csv_header]{get_csv_header} \tab Given a user pool ID, generates a comma-separated value (CSV) list populated with available user attributes in the user pool\cr
 #'  \link[=cognitoidentityprovider_get_device]{get_device} \tab Given a device key, returns information about a remembered device for the current user\cr
 #'  \link[=cognitoidentityprovider_get_group]{get_group} \tab Given a user pool ID and a group name, returns information about the user group\cr
 #'  \link[=cognitoidentityprovider_get_identity_provider_by_identifier]{get_identity_provider_by_identifier} \tab Given the identifier of an identity provider (IdP), for example examplecorp, returns information about the user pool configuration for that IdP\cr
 #'  \link[=cognitoidentityprovider_get_log_delivery_configuration]{get_log_delivery_configuration} \tab Given a user pool ID, returns the logging configuration\cr
+#'  \link[=cognitoidentityprovider_get_provisioned_limit]{get_provisioned_limit} \tab Returns the current provisioned limit for a specific API category\cr
 #'  \link[=cognitoidentityprovider_get_signing_certificate]{get_signing_certificate} \tab Given a user pool ID, returns the signing certificate for SAML 2\cr
 #'  \link[=cognitoidentityprovider_get_tokens_from_refresh_token]{get_tokens_from_refresh_token} \tab Given a refresh token, issues new ID, access, and optionally refresh tokens for the user who owns the submitted token\cr
 #'  \link[=cognitoidentityprovider_get_ui_customization]{get_ui_customization} \tab Given a user pool ID or app client, returns information about classic hosted UI branding that you applied, if any\cr
@@ -196,6 +203,7 @@ NULL
 #'  \link[=cognitoidentityprovider_list_user_import_jobs]{list_user_import_jobs} \tab Given a user pool ID, returns user import jobs and their details\cr
 #'  \link[=cognitoidentityprovider_list_user_pool_clients]{list_user_pool_clients} \tab Given a user pool ID, lists app clients\cr
 #'  \link[=cognitoidentityprovider_list_user_pool_client_secrets]{list_user_pool_client_secrets} \tab Lists all client secrets associated with a user pool app client\cr
+#'  \link[=cognitoidentityprovider_list_user_pool_replicas]{list_user_pool_replicas} \tab Lists all replicas for a user pool, including both primary and secondary replicas\cr
 #'  \link[=cognitoidentityprovider_list_user_pools]{list_user_pools} \tab Lists user pools and their details in the current Amazon Web Services account\cr
 #'  \link[=cognitoidentityprovider_list_users]{list_users} \tab Given a user pool ID, returns a list of users and their basic details in a user pool\cr
 #'  \link[=cognitoidentityprovider_list_users_in_group]{list_users_in_group} \tab Given a user pool ID and a group name, returns a list of users in the group\cr
@@ -220,12 +228,14 @@ NULL
 #'  \link[=cognitoidentityprovider_update_group]{update_group} \tab Given the name of a user pool group, updates any of the properties for precedence, IAM role, or description\cr
 #'  \link[=cognitoidentityprovider_update_identity_provider]{update_identity_provider} \tab Modifies the configuration and trust relationship between a third-party identity provider (IdP) and a user pool\cr
 #'  \link[=cognitoidentityprovider_update_managed_login_branding]{update_managed_login_branding} \tab Configures the branding settings for a user pool style\cr
+#'  \link[=cognitoidentityprovider_update_provisioned_limit]{update_provisioned_limit} \tab Sets the provisioned limit for a specific API category\cr
 #'  \link[=cognitoidentityprovider_update_resource_server]{update_resource_server} \tab Updates the name and scopes of a resource server\cr
 #'  \link[=cognitoidentityprovider_update_terms]{update_terms} \tab Modifies existing terms documents for the requested app client\cr
 #'  \link[=cognitoidentityprovider_update_user_attributes]{update_user_attributes} \tab Updates the currently signed-in user's attributes\cr
 #'  \link[=cognitoidentityprovider_update_user_pool]{update_user_pool} \tab Updates the configuration of a user pool\cr
 #'  \link[=cognitoidentityprovider_update_user_pool_client]{update_user_pool_client} \tab Given a user pool app client ID, updates the configuration\cr
 #'  \link[=cognitoidentityprovider_update_user_pool_domain]{update_user_pool_domain} \tab A user pool domain hosts managed login, an authorization server and web server for authentication in your application\cr
+#'  \link[=cognitoidentityprovider_update_user_pool_replica]{update_user_pool_replica} \tab Updates replica-specific settings for a user pool replica\cr
 #'  \link[=cognitoidentityprovider_verify_software_token]{verify_software_token} \tab Registers the current user's time-based one-time password (TOTP) authenticator with a code generated in their authenticator app from a private key that's supplied by your user pool\cr
 #'  \link[=cognitoidentityprovider_verify_user_attribute]{verify_user_attribute} \tab Submits a verification code for a signed-in user who has added or changed a value of an auto-verified attribute
 #' }

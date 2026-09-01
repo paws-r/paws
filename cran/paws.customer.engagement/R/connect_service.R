@@ -5,13 +5,15 @@ NULL
 #' Amazon Connect Service
 #'
 #' @description
-#' -   [Connect Customer actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Service.html)
+#' Amazon Connect now refers to a portfolio of agentic solutions for business functions. The legacy product is now called Amazon Connect Customer, or simply Customer. The legacy name is used interchangeably in this documentation.
 #' 
-#' -   [Connect Customer data types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Service.html)
+#' -   [Connect Customer Customer actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Service.html)
 #' 
-#' Connect Customer is a cloud-based contact center solution that you use to set up and manage a customer contact center and provide reliable customer engagement at any scale.
+#' -   [Connect Customer Customer data types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Service.html)
 #' 
-#' Connect Customer provides metrics and real-time reporting that enable you to optimize contact routing. You can also resolve customer issues more efficiently by getting customers in touch with the appropriate agents.
+#' Connect Customer Customer engages customers at every touchpoint and creates deeper relationships with AI powered capabilities.
+#' 
+#' Build and manage customer communication experiences. Connect customers to agents, enable intelligent routing, and track performance in real-time.
 #' 
 #' There are limits to the number of Connect Customer resources that you can create. There are also limits to the number of requests that you can make per second. For more information, see [Connect Customer Service Quotas](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html) in the *Connect Customer Administrator Guide*.
 #' 
@@ -133,6 +135,8 @@ NULL
 #'  \link[=connect_claim_phone_number]{claim_phone_number} \tab Claims an available phone number to your Connect Customer instance or traffic distribution group\cr
 #'  \link[=connect_complete_attached_file_upload]{complete_attached_file_upload} \tab Allows you to confirm that the attached file has been uploaded using the pre-signed URL provided in the StartAttachedFileUpload API\cr
 #'  \link[=connect_create_agent_status]{create_agent_status} \tab Creates an agent status for the specified Connect Customer instance\cr
+#'  \link[=connect_create_attached_file]{create_attached_file} \tab Creates an attached file for a completed voice contact by copying a recording from a source S3 URI into Connect Customer managed storage\cr
+#'  \link[=connect_create_auth_code]{create_auth_code} \tab Creates an authorization code for the specified Connect Customer instance\cr
 #'  \link[=connect_create_contact]{create_contact} \tab Only the VOICE, EMAIL, and TASK channels are supported\cr
 #'  \link[=connect_create_contact_flow]{create_contact_flow} \tab Creates a flow for the specified Connect Customer instance\cr
 #'  \link[=connect_create_contact_flow_module]{create_contact_flow_module} \tab Creates a flow module for the specified Connect Customer instance\cr
@@ -143,10 +147,12 @@ NULL
 #'  \link[=connect_create_data_table_attribute]{create_data_table_attribute} \tab Adds an attribute to an existing data table\cr
 #'  \link[=connect_create_email_address]{create_email_address} \tab Create new email address in the specified Connect Customer instance\cr
 #'  \link[=connect_create_evaluation_form]{create_evaluation_form} \tab Creates an evaluation form in the specified Connect Customer instance\cr
+#'  \link[=connect_create_extraction_definition]{create_extraction_definition} \tab Creates an extraction definition in the specified Connect Customer instance\cr
 #'  \link[=connect_create_hours_of_operation]{create_hours_of_operation} \tab Creates hours of operation\cr
 #'  \link[=connect_create_hours_of_operation_override]{create_hours_of_operation_override} \tab Creates an hours of operation override in an Connect Customer hours of operation resource\cr
 #'  \link[=connect_create_instance]{create_instance} \tab This API is in preview release for Connect Customer and is subject to change\cr
 #'  \link[=connect_create_integration_association]{create_integration_association} \tab Creates an Amazon Web Services resource association with an Connect Customer instance\cr
+#'  \link[=connect_create_metric]{create_metric} \tab Creates a new metric definition for the specified Connect Customer instance\cr
 #'  \link[=connect_create_notification]{create_notification} \tab Creates a new notification to be delivered to specified recipients\cr
 #'  \link[=connect_create_participant]{create_participant} \tab Adds a new participant into an on-going chat contact or webRTC call\cr
 #'  \link[=connect_create_persistent_contact_association]{create_persistent_contact_association} \tab Enables rehydration of chats for the lifespan of a contact\cr
@@ -171,6 +177,7 @@ NULL
 #'  \link[=connect_create_workspace_page]{create_workspace_page} \tab Associates a view with a page in a workspace, defining what users see when they navigate to that page\cr
 #'  \link[=connect_deactivate_evaluation_form]{deactivate_evaluation_form} \tab Deactivates an evaluation form in the specified Connect Customer instance\cr
 #'  \link[=connect_delete_attached_file]{delete_attached_file} \tab Deletes an attached file along with the underlying S3 Object\cr
+#'  \link[=connect_delete_contact_data]{delete_contact_data} \tab Deletes the specified fields containing personally identifiable information (PII) from a contact in the specified Connect Customer instance\cr
 #'  \link[=connect_delete_contact_evaluation]{delete_contact_evaluation} \tab Deletes a contact evaluation in the specified Connect Customer instance\cr
 #'  \link[=connect_delete_contact_flow]{delete_contact_flow} \tab Deletes a flow for the specified Connect Customer instance\cr
 #'  \link[=connect_delete_contact_flow_module]{delete_contact_flow_module} \tab Deletes the specified flow module\cr
@@ -181,10 +188,12 @@ NULL
 #'  \link[=connect_delete_data_table_attribute]{delete_data_table_attribute} \tab Deletes an attribute and all its values from a data table\cr
 #'  \link[=connect_delete_email_address]{delete_email_address} \tab Deletes email address from the specified Connect Customer instance\cr
 #'  \link[=connect_delete_evaluation_form]{delete_evaluation_form} \tab Deletes an evaluation form in the specified Connect Customer instance\cr
+#'  \link[=connect_delete_extraction_definition]{delete_extraction_definition} \tab Deletes an extraction definition from the specified Connect Customer instance\cr
 #'  \link[=connect_delete_hours_of_operation]{delete_hours_of_operation} \tab Deletes an hours of operation\cr
 #'  \link[=connect_delete_hours_of_operation_override]{delete_hours_of_operation_override} \tab Deletes an hours of operation override in an Connect Customer hours of operation resource\cr
 #'  \link[=connect_delete_instance]{delete_instance} \tab This API is in preview release for Connect Customer and is subject to change\cr
 #'  \link[=connect_delete_integration_association]{delete_integration_association} \tab Deletes an Amazon Web Services resource association from an Connect Customer instance\cr
+#'  \link[=connect_delete_metric]{delete_metric} \tab Deletes an existing metric from the specified Connect Customer instance\cr
 #'  \link[=connect_delete_notification]{delete_notification} \tab Deletes a notification\cr
 #'  \link[=connect_delete_predefined_attribute]{delete_predefined_attribute} \tab Deletes a predefined attribute from the specified Connect Customer instance\cr
 #'  \link[=connect_delete_prompt]{delete_prompt} \tab Deletes a prompt\cr
@@ -194,6 +203,7 @@ NULL
 #'  \link[=connect_delete_routing_profile]{delete_routing_profile} \tab Deletes a routing profile\cr
 #'  \link[=connect_delete_rule]{delete_rule} \tab Deletes a rule for the specified Connect Customer instance\cr
 #'  \link[=connect_delete_security_profile]{delete_security_profile} \tab Deletes a security profile\cr
+#'  \link[=connect_delete_session]{delete_session} \tab Deletes a session for the specified Connect Customer instance\cr
 #'  \link[=connect_delete_task_template]{delete_task_template} \tab Deletes the task template\cr
 #'  \link[=connect_delete_test_case]{delete_test_case} \tab Deletes the test case that has already been created for the specified Amazon Connect instance\cr
 #'  \link[=connect_delete_traffic_distribution_group]{delete_traffic_distribution_group} \tab Deletes a traffic distribution group\cr
@@ -218,11 +228,13 @@ NULL
 #'  \link[=connect_describe_data_table_attribute]{describe_data_table_attribute} \tab Returns detailed information for a specific data table attribute including its configuration, validation rules, and metadata\cr
 #'  \link[=connect_describe_email_address]{describe_email_address} \tab Describe email address form the specified Connect Customer instance\cr
 #'  \link[=connect_describe_evaluation_form]{describe_evaluation_form} \tab Describes an evaluation form in the specified Connect Customer instance\cr
+#'  \link[=connect_describe_extraction_definition]{describe_extraction_definition} \tab Describes an extraction definition in the specified Connect Customer instance\cr
 #'  \link[=connect_describe_hours_of_operation]{describe_hours_of_operation} \tab Describes the hours of operation\cr
 #'  \link[=connect_describe_hours_of_operation_override]{describe_hours_of_operation_override} \tab Describes the hours of operation override\cr
 #'  \link[=connect_describe_instance]{describe_instance} \tab This API is in preview release for Connect Customer and is subject to change\cr
 #'  \link[=connect_describe_instance_attribute]{describe_instance_attribute} \tab This API is in preview release for Connect Customer and is subject to change\cr
 #'  \link[=connect_describe_instance_storage_config]{describe_instance_storage_config} \tab This API is in preview release for Connect Customer and is subject to change\cr
+#'  \link[=connect_describe_metric]{describe_metric} \tab Retrieves the full definition of an existing metric from the specified Connect Customer instance\cr
 #'  \link[=connect_describe_notification]{describe_notification} \tab Retrieves detailed information about a specific notification, including its content, priority, recipients, and metadata\cr
 #'  \link[=connect_describe_phone_number]{describe_phone_number} \tab Gets details and status of a phone number that’s claimed to your Connect Customer instance or traffic distribution group\cr
 #'  \link[=connect_describe_predefined_attribute]{describe_predefined_attribute} \tab Describes a predefined attribute for the specified Connect Customer instance\cr
@@ -263,9 +275,11 @@ NULL
 #'  \link[=connect_get_attached_file]{get_attached_file} \tab Provides a pre-signed URL for download of an approved attached file\cr
 #'  \link[=connect_get_contact_attributes]{get_contact_attributes} \tab Retrieves the contact attributes for the specified contact\cr
 #'  \link[=connect_get_contact_metrics]{get_contact_metrics} \tab Retrieves contact metric data for a specified contact\cr
+#'  \link[=connect_get_cross_region_routing]{get_cross_region_routing} \tab Retrieves the current cross-region routing configuration for an Amazon Connect Global Resiliency instance enabled for global routing\cr
 #'  \link[=connect_get_current_metric_data]{get_current_metric_data} \tab Gets the real-time metric data from the specified Connect Customer instance\cr
 #'  \link[=connect_get_current_user_data]{get_current_user_data} \tab Gets the real-time active user data from the specified Connect Customer instance\cr
 #'  \link[=connect_get_effective_hours_of_operations]{get_effective_hours_of_operations} \tab Get the hours of operations with the effective override applied\cr
+#'  \link[=connect_get_evaluation_form_validation]{get_evaluation_form_validation} \tab Retrieves the status and results of a validation process started by StartEvaluationFormValidation\cr
 #'  \link[=connect_get_federation_token]{get_federation_token} \tab Supports SAML sign-in for Connect Customer\cr
 #'  \link[=connect_get_flow_association]{get_flow_association} \tab Retrieves the flow associated for a given resource\cr
 #'  \link[=connect_get_metric_data]{get_metric_data} \tab Gets historical metric data from the specified Connect Customer instance\cr
@@ -300,6 +314,7 @@ NULL
 #'  \link[=connect_list_entity_security_profiles]{list_entity_security_profiles} \tab Lists all security profiles attached to a Q in Connect AIAgent Entity in an Amazon Connect instance\cr
 #'  \link[=connect_list_evaluation_forms]{list_evaluation_forms} \tab Lists evaluation forms in the specified Connect Customer instance\cr
 #'  \link[=connect_list_evaluation_form_versions]{list_evaluation_form_versions} \tab Lists versions of an evaluation form in the specified Connect Customer instance\cr
+#'  \link[=connect_list_extraction_definitions]{list_extraction_definitions} \tab Lists extraction definitions in the specified Connect Customer instance\cr
 #'  \link[=connect_list_flow_associations]{list_flow_associations} \tab List the flow association based on the filters\cr
 #'  \link[=connect_list_hours_of_operation_overrides]{list_hours_of_operation_overrides} \tab List the hours of operation overrides\cr
 #'  \link[=connect_list_hours_of_operations]{list_hours_of_operations} \tab Provides information about the hours of operation for the specified Connect Customer instance\cr
@@ -309,6 +324,7 @@ NULL
 #'  \link[=connect_list_integration_associations]{list_integration_associations} \tab Provides summary information about the Amazon Web Services resource associations for the specified Connect Customer instance\cr
 #'  \link[=connect_list_lambda_functions]{list_lambda_functions} \tab This API is in preview release for Connect Customer and is subject to change\cr
 #'  \link[=connect_list_lex_bots]{list_lex_bots} \tab This API is in preview release for Connect Customer and is subject to change\cr
+#'  \link[=connect_list_metrics]{list_metrics} \tab Retrieves a paginated list of metric summaries for the specified Connect Customer instance\cr
 #'  \link[=connect_list_notifications]{list_notifications} \tab Retrieves a paginated list of all notifications in the Amazon Connect instance\cr
 #'  \link[=connect_list_phone_numbers]{list_phone_numbers} \tab Provides information about the phone numbers for the specified Connect Customer instance\cr
 #'  \link[=connect_list_phone_numbers_v2]{list_phone_numbers_v2} \tab Lists phone numbers claimed to your Connect Customer instance or traffic distribution group\cr
@@ -363,6 +379,7 @@ NULL
 #'  \link[=connect_search_evaluation_forms]{search_evaluation_forms} \tab Searches evaluation forms in an Connect Customer instance, with optional filtering\cr
 #'  \link[=connect_search_hours_of_operation_overrides]{search_hours_of_operation_overrides} \tab Searches the hours of operation overrides\cr
 #'  \link[=connect_search_hours_of_operations]{search_hours_of_operations} \tab Searches the hours of operation in an Connect Customer instance, with optional filtering\cr
+#'  \link[=connect_search_metrics]{search_metrics} \tab Searches for metrics in the specified Connect Customer instance using search criteria and optional tag-based filters\cr
 #'  \link[=connect_search_notifications]{search_notifications} \tab Searches for notifications based on specified criteria and filters\cr
 #'  \link[=connect_search_predefined_attributes]{search_predefined_attributes} \tab Searches predefined attributes that meet certain criteria\cr
 #'  \link[=connect_search_prompts]{search_prompts} \tab Searches prompts in an Connect Customer instance, with optional filtering\cr
@@ -370,6 +387,7 @@ NULL
 #'  \link[=connect_search_quick_connects]{search_quick_connects} \tab Searches quick connects in an Connect Customer instance, with optional filtering\cr
 #'  \link[=connect_search_resource_tags]{search_resource_tags} \tab Searches tags used in an Connect Customer instance using optional search criteria\cr
 #'  \link[=connect_search_routing_profiles]{search_routing_profiles} \tab Searches routing profiles in an Connect Customer instance, with optional filtering\cr
+#'  \link[=connect_search_rules]{search_rules} \tab Searches rules in an Connect Customer instance, with optional filtering\cr
 #'  \link[=connect_search_security_profiles]{search_security_profiles} \tab Searches security profiles in an Connect Customer instance, with optional filtering\cr
 #'  \link[=connect_search_test_cases]{search_test_cases} \tab Searches for test cases in the specified Amazon Connect instance, with optional filtering\cr
 #'  \link[=connect_search_user_hierarchy_groups]{search_user_hierarchy_groups} \tab Searches UserHierarchyGroups in an Connect Customer instance, with optional filtering\cr
@@ -380,13 +398,17 @@ NULL
 #'  \link[=connect_search_workspaces]{search_workspaces} \tab Searches workspaces based on name, description, visibility, or tags\cr
 #'  \link[=connect_send_chat_integration_event]{send_chat_integration_event} \tab Processes chat integration events from Amazon Web Services or external integrations to Connect Customer\cr
 #'  \link[=connect_send_outbound_email]{send_outbound_email} \tab Send outbound email for outbound campaigns\cr
+#'  \link[=connect_send_outbound_web_notification]{send_outbound_web_notification} \tab Sends an outbound web notification to a customer's web browser for outbound campaigns\cr
+#'  \link[=connect_start_assistant_contact]{start_assistant_contact} \tab Starts a chat contact with an AI agent\cr
 #'  \link[=connect_start_attached_file_upload]{start_attached_file_upload} \tab Provides a pre-signed Amazon S3 URL in response for uploading your content\cr
 #'  \link[=connect_start_chat_contact]{start_chat_contact} \tab Initiates a flow to start a new chat for the customer\cr
+#'  \link[=connect_start_contact_conversational_analytics_job]{start_contact_conversational_analytics_job} \tab Starts a Contact Lens post-call analytics job for the specified contact\cr
 #'  \link[=connect_start_contact_evaluation]{start_contact_evaluation} \tab Starts an empty evaluation in the specified Connect Customer instance, using the given evaluation form for the particular contact\cr
 #'  \link[=connect_start_contact_media_processing]{start_contact_media_processing} \tab Enables in-flight message processing for an ongoing chat session\cr
 #'  \link[=connect_start_contact_recording]{start_contact_recording} \tab Starts recording the contact:\cr
 #'  \link[=connect_start_contact_streaming]{start_contact_streaming} \tab Initiates real-time message streaming for a new chat contact\cr
 #'  \link[=connect_start_email_contact]{start_email_contact} \tab Creates an inbound email contact and initiates a flow to start the email contact for the customer\cr
+#'  \link[=connect_start_evaluation_form_validation]{start_evaluation_form_validation} \tab Starts an asynchronous validation process for an evaluation form version in the specified Connect Customer instance\cr
 #'  \link[=connect_start_outbound_chat_contact]{start_outbound_chat_contact} \tab Initiates a new outbound SMS or WhatsApp contact to a customer\cr
 #'  \link[=connect_start_outbound_email_contact]{start_outbound_email_contact} \tab Initiates a flow to send an agent reply or outbound email contact (created from the CreateContact API) to a customer\cr
 #'  \link[=connect_start_outbound_voice_contact]{start_outbound_voice_contact} \tab Places an outbound call to a contact, and then initiates the flow\cr
@@ -420,15 +442,20 @@ NULL
 #'  \link[=connect_update_contact_flow_name]{update_contact_flow_name} \tab The name of the flow\cr
 #'  \link[=connect_update_contact_routing_data]{update_contact_routing_data} \tab Updates routing priority and age on the contact (QueuePriority and QueueTimeAdjustmentInSeconds)\cr
 #'  \link[=connect_update_contact_schedule]{update_contact_schedule} \tab Updates the scheduled time of a task contact that is already scheduled\cr
+#'  \link[=connect_update_contact_task_template]{update_contact_task_template} \tab Updates the task template association on an existing task contact\cr
+#'  \link[=connect_update_cross_region_routing]{update_cross_region_routing} \tab Updates the cross-region routing configuration for an Amazon Connect Global Resiliency instance enabled for global routing\cr
 #'  \link[=connect_update_data_table_attribute]{update_data_table_attribute} \tab Updates all properties for an attribute using all properties from CreateDataTableAttribute\cr
 #'  \link[=connect_update_data_table_metadata]{update_data_table_metadata} \tab Updates the metadata properties of a data table\cr
 #'  \link[=connect_update_data_table_primary_values]{update_data_table_primary_values} \tab Updates the primary values for a record\cr
 #'  \link[=connect_update_email_address_metadata]{update_email_address_metadata} \tab Updates an email address metadata\cr
 #'  \link[=connect_update_evaluation_form]{update_evaluation_form} \tab Updates details about a specific evaluation form version in the specified Connect Customer instance\cr
+#'  \link[=connect_update_extraction_definition]{update_extraction_definition} \tab Updates an extraction definition in the specified Connect Customer instance\cr
 #'  \link[=connect_update_hours_of_operation]{update_hours_of_operation} \tab Updates the hours of operation\cr
 #'  \link[=connect_update_hours_of_operation_override]{update_hours_of_operation_override} \tab Update the hours of operation override\cr
 #'  \link[=connect_update_instance_attribute]{update_instance_attribute} \tab This API is in preview release for Connect Customer and is subject to change\cr
 #'  \link[=connect_update_instance_storage_config]{update_instance_storage_config} \tab This API is in preview release for Connect Customer and is subject to change\cr
+#'  \link[=connect_update_metric_content]{update_metric_content} \tab Updates the calculation, unit, and/or trend indicator of an existing metric in the specified Connect Customer instance\cr
+#'  \link[=connect_update_metric_metadata]{update_metric_metadata} \tab Updates the name and/or description of an existing metric in the specified Connect Customer instance\cr
 #'  \link[=connect_update_notification_content]{update_notification_content} \tab Updates the localized content of an existing notification\cr
 #'  \link[=connect_update_participant_authentication]{update_participant_authentication} \tab Instructs Connect Customer to resume the authentication process\cr
 #'  \link[=connect_update_participant_role_config]{update_participant_role_config} \tab Updates timeouts for when human chat participants are to be considered idle, and when agents are automatically disconnected from a chat due to idleness\cr

@@ -96,7 +96,7 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=connectcontactlens_list_realtime_contact_analysis_segments]{list_realtime_contact_analysis_segments} \tab Provides a list of analysis segments for a real-time analysis session
+#'  \link[=connectcontactlens_list_realtime_contact_analysis_segments]{list_realtime_contact_analysis_segments} \tab Provides a list of analysis segments for a real-time analysis session for voice
 #' }
 #'
 #' @return

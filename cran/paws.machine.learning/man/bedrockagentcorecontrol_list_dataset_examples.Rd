@@ -14,14 +14,14 @@ bedrockagentcorecontrol_list_dataset_examples(
 \arguments{
 \item{datasetId}{[required] The unique identifier of the dataset.}
 
-\item{datasetVersion}{Version to paginate: "DRAFT" or a version number. Defaults to DRAFT if absent. Only used on the first request (when nextToken is absent). For subsequent pages, the version is extracted from the nextToken and this parameter is ignored.}
+\item{datasetVersion}{Version to paginate: "DRAFT" or a version number. Defaults to DRAFT if absent. Only used on the first request; for subsequent pages, the version is extracted from the pagination token.}
 
-\item{maxResults}{Maximum number of examples to return per page. Default: 1000. Min: 1, max: 1000. Response size is validated against 5 MB limit after reading. For bulk access to all examples, use the \code{downloadUrl} field from GetDataset.}
+\item{maxResults}{Maximum number of examples to return per page.}
 
 \item{nextToken}{The token for the next page of results.}
 }
 \description{
-Returns paginated examples from the dataset.
+Returns paginated examples from the dataset. The server embeds the resolved version in the pagination token. Once pagination begins, all subsequent pages are pinned to that version regardless of concurrent mutations.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_list_dataset_examples/} for full documentation.
 }

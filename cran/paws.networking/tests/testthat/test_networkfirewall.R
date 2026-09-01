@@ -1,5 +1,9 @@
 svc <- paws::networkfirewall()
 
+test_that("describe_container_association", {
+  expect_error(svc$describe_container_association(), NA)
+})
+
 test_that("describe_firewall", {
   expect_error(svc$describe_firewall(), NA)
 })
@@ -50,6 +54,14 @@ test_that("list_analysis_reports", {
 
 test_that("list_analysis_reports", {
   expect_error(svc$list_analysis_reports(MaxResults = 20), NA)
+})
+
+test_that("list_container_associations", {
+  expect_error(svc$list_container_associations(), NA)
+})
+
+test_that("list_container_associations", {
+  expect_error(svc$list_container_associations(MaxResults = 20), NA)
 })
 
 test_that("list_firewall_policies", {

@@ -9,6 +9,7 @@ sagemaker_create_mlflow_app(
   Name,
   ArtifactStoreUri,
   RoleArn,
+  KmsKeyId = NULL,
   ModelRegistrationMode = NULL,
   WeeklyMaintenanceWindowStart = NULL,
   AccountDefaultStatus = NULL,
@@ -22,6 +23,8 @@ sagemaker_create_mlflow_app(
 \item{ArtifactStoreUri}{[required] The S3 URI for a general purpose bucket to use as the MLflow App artifact store.}
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) for an IAM role in your account that the MLflow App uses to access the artifact store in Amazon S3. The role should have the \code{AmazonS3FullAccess} permission.}
+
+\item{KmsKeyId}{The ID of the Amazon Web Services KMS key used to encrypt the data at rest associated with the MLflow App. If you don't specify a value, the MLflow App is not encrypted with a customer-managed key.}
 
 \item{ModelRegistrationMode}{Whether to enable or disable automatic registration of new MLflow models to the SageMaker Model Registry. To enable automatic model registration, set this value to \code{AutoModelRegistrationEnabled}. To disable automatic model registration, set this value to \code{AutoModelRegistrationDisabled}. If not specified, \code{AutomaticModelRegistration} defaults to \code{AutoModelRegistrationDisabled}.}
 

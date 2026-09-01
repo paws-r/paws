@@ -104,6 +104,7 @@ Welcome to the Amazon Bedrock AgentCore Data Plane API reference. Data Plane act
 \link[=bedrockagentcore_create_payment_session]{create_payment_session} \tab Create a new payment session\cr
 \link[=bedrockagentcore_delete_ab_test]{delete_ab_test} \tab Deletes an A/B test and its associated gateway rules\cr
 \link[=bedrockagentcore_delete_batch_evaluation]{delete_batch_evaluation} \tab Deletes a batch evaluation and its associated results\cr
+\link[=bedrockagentcore_delete_capacity_provider_session]{delete_capacity_provider_session} \tab Deletes a session associated with a capacity provider in Amazon Bedrock AgentCore and makes the session unavailable for further use\cr
 \link[=bedrockagentcore_delete_event]{delete_event} \tab Deletes an event from an AgentCore Memory resource\cr
 \link[=bedrockagentcore_delete_memory_record]{delete_memory_record} \tab Deletes a memory record from an AgentCore Memory resource\cr
 \link[=bedrockagentcore_delete_payment_instrument]{delete_payment_instrument} \tab Deletes a payment instrument\cr
@@ -127,6 +128,7 @@ Welcome to the Amazon Bedrock AgentCore Data Plane API reference. Data Plane act
 \link[=bedrockagentcore_get_workload_access_token]{get_workload_access_token} \tab Obtains a workload access token for agentic workloads not acting on behalf of a user\cr
 \link[=bedrockagentcore_get_workload_access_token_for_jwt]{get_workload_access_token_for_jwt} \tab Obtains a workload access token for agentic workloads acting on behalf of a user, using a JWT token\cr
 \link[=bedrockagentcore_get_workload_access_token_for_user_id]{get_workload_access_token_for_user_id} \tab Obtains a workload access token for agentic workloads acting on behalf of a user, using the user's ID\cr
+\link[=bedrockagentcore_ingest_data]{ingest_data} \tab Submits content directly for ingestion to generate long-term memory records in a AgentCore Memory resource\cr
 \link[=bedrockagentcore_invoke_agent_runtime]{invoke_agent_runtime} \tab Sends a request to an agent or tool hosted in an Amazon Bedrock AgentCore Runtime and receives responses in real-time\cr
 \link[=bedrockagentcore_invoke_agent_runtime_command]{invoke_agent_runtime_command} \tab Executes a command in a runtime session container and streams the output back to the caller\cr
 \link[=bedrockagentcore_invoke_browser]{invoke_browser} \tab Invokes an operating system-level action on a browser session in Amazon Bedrock AgentCore\cr

@@ -23,7 +23,7 @@ lexmodelsv2_create_resource_policy_statement(
 
 \item{principal}{[required] An IAM principal, such as an IAM user, IAM role, or Amazon Web Services services that is allowed or denied access to a resource. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html}{Amazon Web Services JSON policy elements: Principal}.}
 
-\item{action}{[required] The Amazon Lex action that this policy either allows or denies. The action must apply to the resource type of the specified ARN. For more information, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonlexv2.html}{Actions, resources, and condition keys for Amazon Lex V2}.}
+\item{action}{[required] The Amazon Lex action that this policy either allows or denies. The action must apply to the resource type of the specified ARN. For more information, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/}{Actions, resources, and condition keys for Amazon Lex V2}.}
 
 \item{condition}{Specifies a condition when the policy is in effect. If the principal of the policy is a service principal, you must provide two condition blocks, one with a SourceAccount global condition key and one with a SourceArn global condition key.
 

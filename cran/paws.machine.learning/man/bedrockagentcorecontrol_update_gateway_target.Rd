@@ -7,7 +7,7 @@
 bedrockagentcorecontrol_update_gateway_target(
   gatewayIdentifier,
   targetId,
-  name,
+  name = NULL,
   description = NULL,
   targetConfiguration,
   credentialProviderConfigurations = NULL,
@@ -20,7 +20,7 @@ bedrockagentcorecontrol_update_gateway_target(
 
 \item{targetId}{[required] The unique identifier of the gateway target to update.}
 
-\item{name}{[required] The updated name for the gateway target.}
+\item{name}{The updated name for the gateway target.}
 
 \item{description}{The updated description for the gateway target.}
 

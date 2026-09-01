@@ -24,7 +24,8 @@ neptune_modify_db_cluster(
   DeletionProtection = NULL,
   CopyTagsToSnapshot = NULL,
   ServerlessV2ScalingConfiguration = NULL,
-  StorageType = NULL
+  StorageType = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -139,6 +140,14 @@ Valid Values:
 \item \strong{\code{iopt1}}   –   Enables \href{https://docs.aws.amazon.com/neptune/latest/userguide/storage-types.html#provisioned-iops-storage}{I/O-Optimized storage} that's designed to meet the needs of I/O-intensive graph workloads that require predictable pricing with low I/O latency and consistent I/O throughput.
 
 Neptune I/O-Optimized storage is only available starting with engine release 1.3.0.0.
+}}
+
+\item{NetworkType}{The network type of the DB cluster.
+
+Valid Values:
+\itemize{
+\item \strong{\code{IPV4}}   –   The DB cluster uses only IPv4 addresses for communication.
+\item \strong{\code{DUAL}}   –   The DB cluster uses both IPv4 and IPv6 addresses for communication. The DB subnet group associated with the cluster must support IPv6.
 }}
 }
 \description{

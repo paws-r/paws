@@ -16,7 +16,8 @@ sesv2_send_email(
   ConfigurationSetName = NULL,
   EndpointId = NULL,
   TenantName = NULL,
-  ListManagementOptions = NULL
+  ListManagementOptions = NULL,
+  ConfigurationOverrides = NULL
 )
 }
 \arguments{
@@ -55,6 +56,8 @@ For more information about sending authorization, see the \href{https://docs.aws
 The email sending operation will only succeed if all referenced resources (identities, configuration sets, and templates) are associated with this tenant.}
 
 \item{ListManagementOptions}{An object used to specify a list or topic to which an email belongs, which will be used when a contact chooses to unsubscribe.}
+
+\item{ConfigurationOverrides}{An object that overrides, for this message only, settings that would otherwise apply to it. Each setting that you don't override keeps the value that already applies.}
 }
 \description{
 Sends an email message. You can use the Amazon SES API v2 to send the following types of messages:

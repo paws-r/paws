@@ -2,17 +2,20 @@
 % Please edit documentation in R/sesv2_operations.R
 \name{sesv2_put_suppressed_destination}
 \alias{sesv2_put_suppressed_destination}
-\title{Adds an email address to the suppression list for your account}
+\title{Adds an email address to the suppression list for your account or for a
+specific tenant}
 \usage{
-sesv2_put_suppressed_destination(EmailAddress, Reason)
+sesv2_put_suppressed_destination(EmailAddress, Reason, TenantName = NULL)
 }
 \arguments{
-\item{EmailAddress}{[required] The email address that should be added to the suppression list for your account.}
+\item{EmailAddress}{[required] The email address that should be added to the suppression list for your account or for the specified tenant.}
 
-\item{Reason}{[required] The factors that should cause the email address to be added to the suppression list for your account.}
+\item{Reason}{[required] The factors that should cause the email address to be added to the suppression list for your account or for the specified tenant.}
+
+\item{TenantName}{The name of the tenant whose suppression list you want to add the address to. If you omit this parameter, the address is added to the account-level suppression list.}
 }
 \description{
-Adds an email address to the suppression list for your account.
+Adds an email address to the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the \code{TenantName} parameter. If you omit \code{TenantName}, the address is added to the account-level suppression list.
 
 See \url{https://www.paws-r-sdk.com/docs/sesv2_put_suppressed_destination/} for full documentation.
 }

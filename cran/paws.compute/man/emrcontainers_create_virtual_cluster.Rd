@@ -9,7 +9,9 @@ emrcontainers_create_virtual_cluster(
   containerProvider,
   clientToken,
   tags = NULL,
-  securityConfigurationId = NULL
+  securityConfigurationId = NULL,
+  sessionEnabled = NULL,
+  schedulerConfiguration = NULL
 )
 }
 \arguments{
@@ -22,9 +24,13 @@ emrcontainers_create_virtual_cluster(
 \item{tags}{The tags assigned to the virtual cluster.}
 
 \item{securityConfigurationId}{The ID of the security configuration.}
+
+\item{sessionEnabled}{Indicates whether the virtual cluster has session support enabled.}
+
+\item{schedulerConfiguration}{The scheduler configuration (concurrency and queue limits) to apply to the virtual cluster at creation time. When omitted, no limits are applied.}
 }
 \description{
-Creates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+Creates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 
 See \url{https://www.paws-r-sdk.com/docs/emrcontainers_create_virtual_cluster/} for full documentation.
 }

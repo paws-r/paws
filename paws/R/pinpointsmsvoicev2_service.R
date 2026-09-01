@@ -130,6 +130,7 @@ NULL
 #'  \link[=pinpointsmsvoicev2_delete_protect_configuration]{delete_protect_configuration} \tab Permanently delete the protect configuration\cr
 #'  \link[=pinpointsmsvoicev2_delete_protect_configuration_rule_set_number_override]{delete_protect_configuration_rule_set_number_override} \tab Permanently delete the protect configuration rule set number override\cr
 #'  \link[=pinpointsmsvoicev2_delete_rcs_agent]{delete_rcs_agent} \tab Deletes an existing RCS agent\cr
+#'  \link[=pinpointsmsvoicev2_delete_rcs_message_spend_limit_override]{delete_rcs_message_spend_limit_override} \tab Deletes an account-level monthly spending limit override for sending RCS messages\cr
 #'  \link[=pinpointsmsvoicev2_delete_registration]{delete_registration} \tab Permanently delete an existing registration from your account\cr
 #'  \link[=pinpointsmsvoicev2_delete_registration_attachment]{delete_registration_attachment} \tab Permanently delete the specified registration attachment\cr
 #'  \link[=pinpointsmsvoicev2_delete_registration_field_value]{delete_registration_field_value} \tab Delete the value in a registration form field\cr
@@ -184,6 +185,7 @@ NULL
 #'  \link[=pinpointsmsvoicev2_send_media_message]{send_media_message} \tab Creates a new multimedia message (MMS) and sends it to a recipient's phone number\cr
 #'  \link[=pinpointsmsvoicev2_send_notify_text_message]{send_notify_text_message} \tab Sends a templated text message through a notify configuration to a recipient's phone number\cr
 #'  \link[=pinpointsmsvoicev2_send_notify_voice_message]{send_notify_voice_message} \tab Sends a templated voice message through a notify configuration to a recipient's phone number\cr
+#'  \link[=pinpointsmsvoicev2_send_rcs_message]{send_rcs_message} \tab Creates a new RCS message and sends it to a recipient's phone number\cr
 #'  \link[=pinpointsmsvoicev2_send_text_message]{send_text_message} \tab Creates a new text message and sends it to a recipient's phone number\cr
 #'  \link[=pinpointsmsvoicev2_send_voice_message]{send_voice_message} \tab Allows you to send a request that sends a voice message\cr
 #'  \link[=pinpointsmsvoicev2_set_account_default_protect_configuration]{set_account_default_protect_configuration} \tab Set a protect configuration as your account default\cr
@@ -192,6 +194,7 @@ NULL
 #'  \link[=pinpointsmsvoicev2_set_default_sender_id]{set_default_sender_id} \tab Sets default sender ID on a configuration set\cr
 #'  \link[=pinpointsmsvoicev2_set_media_message_spend_limit_override]{set_media_message_spend_limit_override} \tab Sets an account level monthly spend limit override for sending MMS messages\cr
 #'  \link[=pinpointsmsvoicev2_set_notify_message_spend_limit_override]{set_notify_message_spend_limit_override} \tab Sets an account level monthly spend limit override for sending notify messages\cr
+#'  \link[=pinpointsmsvoicev2_set_rcs_message_spend_limit_override]{set_rcs_message_spend_limit_override} \tab Sets an account level monthly spend limit override for sending RCS messages\cr
 #'  \link[=pinpointsmsvoicev2_set_text_message_spend_limit_override]{set_text_message_spend_limit_override} \tab Sets an account level monthly spend limit override for sending text messages\cr
 #'  \link[=pinpointsmsvoicev2_set_voice_message_spend_limit_override]{set_voice_message_spend_limit_override} \tab Sets an account level monthly spend limit override for sending voice messages\cr
 #'  \link[=pinpointsmsvoicev2_submit_registration_version]{submit_registration_version} \tab Submit the specified registration for review and approval\cr

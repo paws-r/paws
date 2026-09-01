@@ -32,7 +32,8 @@ neptune_create_db_cluster(
   DeletionProtection = NULL,
   ServerlessV2ScalingConfiguration = NULL,
   GlobalClusterIdentifier = NULL,
-  StorageType = NULL
+  StorageType = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -51,7 +52,7 @@ Constraints:
 
 \item{CopyTagsToSnapshot}{\emph{If set to true, tags are copied to any snapshot of the DB cluster that is created.}}
 
-\item{DatabaseName}{The name for your database of up to 64 alpha-numeric characters. If you do not provide a name, Amazon Neptune will not create a database in the DB cluster you are creating.}
+\item{DatabaseName}{Not supported by Neptune.}
 
 \item{DBClusterIdentifier}{[required] The DB cluster identifier. This parameter is stored as a lowercase string.
 
@@ -163,6 +164,14 @@ Valid Values:
 \item \strong{\code{iopt1}}   –   Enables \href{https://docs.aws.amazon.com/neptune/latest/userguide/storage-types.html#provisioned-iops-storage}{I/O-Optimized storage} that's designed to meet the needs of I/O-intensive graph workloads that require predictable pricing with low I/O latency and consistent I/O throughput.
 
 Neptune I/O-Optimized storage is only available starting with engine release 1.3.0.0.
+}}
+
+\item{NetworkType}{The network type of the DB cluster.
+
+Valid Values:
+\itemize{
+\item \strong{\code{IPV4}}   –   ( \emph{the default} ) The DB cluster uses only IPv4 addresses for communication.
+\item \strong{\code{DUAL}}   –   The DB cluster uses both IPv4 and IPv6 addresses for communication. The DB subnet group associated with the cluster must support IPv6.
 }}
 }
 \description{

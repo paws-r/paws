@@ -11,7 +11,7 @@ cloudwatchapplicationsignals_list_tags_for_resource(ResourceArn)
 
 The ARN format of an Application Signals SLO is \code{arn:aws:cloudwatch:Region:account-id:slo:slo-name }
 
-For more information about ARN format, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies}{Resource Types Defined by Amazon CloudWatch} in the \emph{Amazon Web Services General Reference}.}
+For more information about ARN format, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/#amazoncloudwatch-resources-for-iam-policies}{Resource Types Defined by Amazon CloudWatch} in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Displays the tags associated with a CloudWatch resource. Tags can be assigned to service level objectives.

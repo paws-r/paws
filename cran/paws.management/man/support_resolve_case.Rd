@@ -4,10 +4,12 @@
 \alias{support_resolve_case}
 \title{Resolves a support case}
 \usage{
-support_resolve_case(caseId = NULL)
+support_resolve_case(caseId = NULL, dryRun = NULL)
 }
 \arguments{
-\item{caseId}{The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
+\item{caseId}{The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-exen-2025-c4c1d2bf33c5cf47}}
+
+\item{dryRun}{Specifies whether to validate the request without actually resolving the case. When set to \code{true}, the request is validated but the case isn't resolved, and the operation returns a \code{DryRunOperationException}. When omitted or set to \code{false}, the request runs normally.}
 }
 \description{
 Resolves a support case. This operation takes a \code{caseId} and returns the initial and final state of the case.

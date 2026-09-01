@@ -17,18 +17,21 @@ directconnect_delete_bgp_peer(
 \item{virtualInterfaceId}{The ID of the virtual interface.}
 
 \item{asn}{The autonomous system number (ASN). The valid range is from 1 to 2147483646 for Border Gateway Protocol (BGP) configuration. If you provide a number greater than the maximum, an error is returned. Use \code{asnLong} instead.
-
-You can use \code{asnLong} or \code{asn}, but not both. We recommend using \code{asnLong} as it supports a greater pool of numbers.
 \itemize{
-\item The \code{asnLong} attribute accepts both ASN and long ASN ranges.
+\item You can use \code{asnLong} or \code{asn}, but not both. We recommend using \code{asnLong} as it supports a greater pool of numbers.
 \item If you provide a value in the same API call for both \code{asn} and \code{asnLong}, the API will only accept the value for \code{asnLong}.
+\item If you enter a 4-byte ASN for the \code{asn} parameter, the API returns an error.
+\item If you are using a 2-byte ASN, the API response will include the 2-byte value for both the \code{asn} and \code{asnLong} fields.
 }}
 
 \item{asnLong}{The long ASN for the BGP peer to be deleted from a Direct Connect virtual interface. The valid range is from 1 to 4294967294 for BGP configuration.
 
-You can use \code{asnLong} or \code{asn}, but not both. We recommend using \code{asnLong} as it supports a greater pool of numbers.
+Note the following limitations when using \code{asnLong}:
 \itemize{
-\item The \code{asnLong} attribute accepts both ASN and long ASN ranges.
+\item You can use \code{asnLong} or \code{asn}, but not both. We recommend using \code{asnLong} as it supports a greater pool of numbers.
+\item \code{asnLong} accepts any valid ASN value, regardless if it's 2-byte or 4-byte.
+\item When using a 4-byte \code{asnLong}, the API response returns \code{0} for the legacy \code{asn} attribute since 4-byte ASN values exceed the maximum supported value of 2,147,483,647.
+\item If you are using a 2-byte ASN, the API response will include the 2-byte value for both the \code{asn} and \code{asnLong} fields.
 \item If you provide a value in the same API call for both \code{asn} and \code{asnLong}, the API will only accept the value for \code{asnLong}.
 }}
 

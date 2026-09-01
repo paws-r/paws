@@ -99,9 +99,11 @@ You can automate your entity update process by integrating the AWS Marketplace C
 \link[paws.cost.management:marketplacecatalog_batch_describe_entities]{batch_describe_entities} \tab Returns metadata and content for multiple entities\cr
 \link[paws.cost.management:marketplacecatalog_cancel_change_set]{cancel_change_set} \tab Used to cancel an open change request\cr
 \link[paws.cost.management:marketplacecatalog_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource-based policy on an entity that is identified by its resource ARN\cr
+\link[paws.cost.management:marketplacecatalog_describe_assessment]{describe_assessment} \tab Returns the metadata and detailed results of a single assessment, including the framework that was evaluated, the overall assessment result, and a paginated list of individual control evaluation results\cr
 \link[paws.cost.management:marketplacecatalog_describe_change_set]{describe_change_set} \tab Provides information about a given change set\cr
 \link[paws.cost.management:marketplacecatalog_describe_entity]{describe_entity} \tab Returns the metadata and content of the entity\cr
 \link[paws.cost.management:marketplacecatalog_get_resource_policy]{get_resource_policy} \tab Gets a resource-based policy of an entity that is identified by its resource ARN\cr
+\link[paws.cost.management:marketplacecatalog_list_assessments]{list_assessments} \tab Returns a paginated list of assessments associated with an entity or change set in AWS Marketplace\cr
 \link[paws.cost.management:marketplacecatalog_list_change_sets]{list_change_sets} \tab Returns the list of change sets owned by the account being used to make the call\cr
 \link[paws.cost.management:marketplacecatalog_list_entities]{list_entities} \tab Provides the list of entities of a given type\cr
 \link[paws.cost.management:marketplacecatalog_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags that have been added to a resource (either an entity or change set)\cr

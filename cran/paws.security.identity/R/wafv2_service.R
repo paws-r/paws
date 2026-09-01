@@ -136,6 +136,9 @@ NULL
 #'  \link[=wafv2_get_permission_policy]{get_permission_policy} \tab Returns the IAM policy that is attached to the specified rule group\cr
 #'  \link[=wafv2_get_rate_based_statement_managed_keys]{get_rate_based_statement_managed_keys} \tab Retrieves the IP addresses that are currently blocked by a rate-based rule instance\cr
 #'  \link[=wafv2_get_regex_pattern_set]{get_regex_pattern_set} \tab Retrieves the specified RegexPatternSet\cr
+#'  \link[=wafv2_get_revenue_statistics]{get_revenue_statistics} \tab Retrieves ranked monetization statistics\cr
+#'  \link[=wafv2_get_revenue_statistics_summary]{get_revenue_statistics_summary} \tab Retrieves a summary of monetization revenue for the specified time window\cr
+#'  \link[=wafv2_get_revenue_statistics_time_series]{get_revenue_statistics_time_series} \tab Retrieves time series data for monetization revenue\cr
 #'  \link[=wafv2_get_rule_group]{get_rule_group} \tab Retrieves the specified RuleGroup\cr
 #'  \link[=wafv2_get_sampled_requests]{get_sampled_requests} \tab Gets detailed information about a specified number of requests--a sample--that WAF randomly selects from among the first 5,000 requests that your Amazon Web Services resource received during a time range that you choose\cr
 #'  \link[=wafv2_get_top_path_statistics_by_traffic]{get_top_path_statistics_by_traffic} \tab Retrieves aggregated statistics about the top URI paths accessed by bot traffic for a specified web ACL and time window\cr
@@ -151,6 +154,7 @@ NULL
 #'  \link[=wafv2_list_regex_pattern_sets]{list_regex_pattern_sets} \tab Retrieves an array of RegexPatternSetSummary objects for the regex pattern sets that you manage\cr
 #'  \link[=wafv2_list_resources_for_web_acl]{list_resources_for_web_acl} \tab Retrieves an array of the Amazon Resource Names (ARNs) for the resources that are associated with the specified web ACL\cr
 #'  \link[=wafv2_list_rule_groups]{list_rule_groups} \tab Retrieves an array of RuleGroupSummary objects for the rule groups that you manage\cr
+#'  \link[=wafv2_list_settlement_records]{list_settlement_records} \tab Retrieves individual settlement transaction records for monetization\cr
 #'  \link[=wafv2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the TagInfoForResource for the specified resource\cr
 #'  \link[=wafv2_list_web_ac_ls]{list_web_ac_ls} \tab Retrieves an array of WebACLSummary objects for the web ACLs that you manage\cr
 #'  \link[=wafv2_put_logging_configuration]{put_logging_configuration} \tab Enables the specified LoggingConfiguration, to start logging from a web ACL, according to the configuration provided\cr

@@ -36,6 +36,38 @@ quicksight_batch_create_topic_reviewed_answer <- function(AwsAccountId, TopicId,
 }
 .quicksight$operations$batch_create_topic_reviewed_answer <- quicksight_batch_create_topic_reviewed_answer
 
+#' Deletes one or more knowledge bases
+#'
+#' @description
+#' Deletes one or more knowledge bases.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_batch_delete_knowledge_base/](https://www.paws-r-sdk.com/docs/quicksight_batch_delete_knowledge_base/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the knowledge base.
+#' @param KnowledgeBaseIds &#91;required&#93; A list of knowledge base identifiers to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_batch_delete_knowledge_base
+quicksight_batch_delete_knowledge_base <- function(AwsAccountId, KnowledgeBaseIds) {
+  op <- new_operation(
+    name = "BatchDeleteKnowledgeBase",
+    http_method = "POST",
+    http_path = "/v1/accounts/{AwsAccountId}/knowledge-bases/batch-delete",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$batch_delete_knowledge_base_input(AwsAccountId = AwsAccountId, KnowledgeBaseIds = KnowledgeBaseIds)
+  output <- .quicksight$batch_delete_knowledge_base_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$batch_delete_knowledge_base <- quicksight_batch_delete_knowledge_base
+
 #' Deletes reviewed answers for Q Topic
 #'
 #' @description
@@ -68,6 +100,41 @@ quicksight_batch_delete_topic_reviewed_answer <- function(AwsAccountId, TopicId,
   return(response)
 }
 .quicksight$operations$batch_delete_topic_reviewed_answer <- quicksight_batch_delete_topic_reviewed_answer
+
+#' Describes the effective resource limits for one or more Amazon Quick
+#' Sight users, including the limits that apply to each user based on their
+#' profile assignments
+#'
+#' @description
+#' Describes the effective resource limits for one or more Amazon Quick Sight users, including the limits that apply to each user based on their profile assignments.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_batch_describe_user_limits/](https://www.paws-r-sdk.com/docs/quicksight_batch_describe_user_limits/) for full documentation.
+#'
+#' @param accountId &#91;required&#93; The ID of the Amazon Web Services account that contains the users.
+#' @param users A list of users to describe limits for. Each entry contains a user name and namespace.
+#' @param resourceTypes An optional filter that limits the results to specific resource types. If you don't specify a value, the operation returns limits for all resource types.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_batch_describe_user_limits
+quicksight_batch_describe_user_limits <- function(accountId, users = NULL, resourceTypes = NULL) {
+  op <- new_operation(
+    name = "BatchDescribeUserLimits",
+    http_method = "POST",
+    http_path = "/governance/limits/accounts/{accountId}/user-limits",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$batch_describe_user_limits_input(accountId = accountId, users = users, resourceTypes = resourceTypes)
+  output <- .quicksight$batch_describe_user_limits_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$batch_describe_user_limits <- quicksight_batch_describe_user_limits
 
 #' Cancels an ongoing ingestion of data into SPICE
 #'
@@ -254,6 +321,47 @@ quicksight_create_action_connector <- function(AwsAccountId, ActionConnectorId, 
 }
 .quicksight$operations$create_action_connector <- quicksight_create_action_connector
 
+#' Creates an agent in Amazon QuickSight
+#'
+#' @description
+#' Creates an agent in Amazon QuickSight.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_agent/](https://www.paws-r-sdk.com/docs/quicksight_create_agent/) for full documentation.
+#'
+#' @param Spaces The Amazon Resource Names (ARNs) of the spaces to attach to the agent.
+#' @param ActionConnectors The Amazon Resource Names (ARNs) of the action connectors to attach to the agent.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the agent.
+#' @param AgentId &#91;required&#93; A unique identifier for the agent.
+#' @param Name &#91;required&#93; The name of the agent.
+#' @param Description A description of the agent.
+#' @param IconId The icon identifier for the agent.
+#' @param StarterPrompts A list of starter prompts that are displayed to users when they begin interacting with the agent.
+#' @param WelcomeMessage The welcome message that is displayed when a user starts a conversation with the agent.
+#' @param AgentLifecycle The lifecycle state of the agent. Valid values are `PREVIEW` and `PUBLISHED`.
+#' @param CustomPromptInput The custom prompt configuration for the agent.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_agent
+quicksight_create_agent <- function(Spaces = NULL, ActionConnectors = NULL, AwsAccountId, AgentId, Name, Description = NULL, IconId = NULL, StarterPrompts = NULL, WelcomeMessage = NULL, AgentLifecycle = NULL, CustomPromptInput = NULL) {
+  op <- new_operation(
+    name = "CreateAgent",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/agents",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$create_agent_input(Spaces = Spaces, ActionConnectors = ActionConnectors, AwsAccountId = AwsAccountId, AgentId = AgentId, Name = Name, Description = Description, IconId = IconId, StarterPrompts = StarterPrompts, WelcomeMessage = WelcomeMessage, AgentLifecycle = AgentLifecycle, CustomPromptInput = CustomPromptInput)
+  output <- .quicksight$create_agent_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_agent <- quicksight_create_agent
+
 #' Creates an analysis in Amazon Quick Sight
 #'
 #' @description
@@ -268,7 +376,7 @@ quicksight_create_action_connector <- function(AwsAccountId, ActionConnectorId, 
 #' @param Permissions A structure that describes the principals and the resource-level permissions on an analysis. You can use the `Permissions` structure to grant permissions by providing a list of Identity and Access Management (IAM) action information for each principal listed by Amazon Resource Name (ARN).
 #' 
 #' To specify no permissions, omit `Permissions`.
-#' @param SourceEntity A source entity to use for the analysis that you're creating. This metadata structure contains details that describe a source template and one or more datasets.
+#' @param SourceEntity A source entity to use for the analysis that you're creating. This metadata structure contains details that describe a source template and one or more datasets or topics.
 #' 
 #' Either a `SourceEntity` or a `Definition` must be provided in order for the request to be valid.
 #' @param ThemeArn The ARN for the theme to apply to the analysis that you're creating. To see the theme in the Amazon Quick Sight console, make sure that you have access to it.
@@ -302,6 +410,43 @@ quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
   return(response)
 }
 .quicksight$operations$create_analysis <- quicksight_create_analysis
+
+#' Creates an approval policy in Quick Sight
+#'
+#' @description
+#' Creates an approval policy in Quick Sight.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_approval_policy/](https://www.paws-r-sdk.com/docs/quicksight_create_approval_policy/) for full documentation.
+#'
+#' @param PolicyId &#91;required&#93; The unique identifier to assign to the approval policy. You cannot change this value after you create the policy.
+#' @param Name &#91;required&#93; The name of the approval policy.
+#' @param Description A description of the approval policy.
+#' @param Actions &#91;required&#93; The list of governed actions that trigger the approval workflow.
+#' @param AssetTypes &#91;required&#93; The list of asset types that the approval policy applies to.
+#' @param ApplicableTo &#91;required&#93; The scoping configuration that determines who the approval policy applies to.
+#' @param ApprovalGroups &#91;required&#93; The list of group ARNs whose members can approve requests.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_approval_policy
+quicksight_create_approval_policy <- function(PolicyId, Name, Description = NULL, Actions, AssetTypes, ApplicableTo, ApprovalGroups) {
+  op <- new_operation(
+    name = "CreateApprovalPolicy",
+    http_method = "POST",
+    http_path = "/governance/approvalworkflows/policies",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$create_approval_policy_input(PolicyId = PolicyId, Name = Name, Description = Description, Actions = Actions, AssetTypes = AssetTypes, ApplicableTo = ApplicableTo, ApprovalGroups = ApprovalGroups)
+  output <- .quicksight$create_approval_policy_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_approval_policy <- quicksight_create_approval_policy
 
 #' Creates an Quick Sight brand
 #'
@@ -347,12 +492,13 @@ quicksight_create_brand <- function(AwsAccountId, BrandId, BrandDefinition = NUL
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that you want to create the custom permissions profile in.
 #' @param CustomPermissionsName &#91;required&#93; The name of the custom permissions profile that you want to create.
 #' @param Capabilities A set of actions to include in the custom permissions profile.
+#' @param Governance The governance configuration for the custom permissions profile. When governance controls are defined for a category, any capabilities in that category not explicitly set to `ALLOW` in `Capabilities` are denied. Even newly added capabilities in the category are implicitly disabled when Amazon Quick releases them.
 #' @param Tags The tags to associate with the custom permissions profile.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_create_custom_permissions
-quicksight_create_custom_permissions <- function(AwsAccountId, CustomPermissionsName, Capabilities = NULL, Tags = NULL) {
+quicksight_create_custom_permissions <- function(AwsAccountId, CustomPermissionsName, Capabilities = NULL, Governance = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateCustomPermissions",
     http_method = "POST",
@@ -361,7 +507,7 @@ quicksight_create_custom_permissions <- function(AwsAccountId, CustomPermissions
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .quicksight$create_custom_permissions_input(AwsAccountId = AwsAccountId, CustomPermissionsName = CustomPermissionsName, Capabilities = Capabilities, Tags = Tags)
+  input <- .quicksight$create_custom_permissions_input(AwsAccountId = AwsAccountId, CustomPermissionsName = CustomPermissionsName, Capabilities = Capabilities, Governance = Governance, Tags = Tags)
   output <- .quicksight$create_custom_permissions_output()
   config <- get_config()
   svc <- .quicksight$service(config, op)
@@ -388,7 +534,7 @@ quicksight_create_custom_permissions <- function(AwsAccountId, CustomPermissions
 #' To specify no permissions, omit the permissions list.
 #' @param SourceEntity The entity that you are using as a source when you create the dashboard. In `SourceEntity`, you specify the type of object you're using as source. You can only create a dashboard from a template, so you use a `SourceTemplate` entity. If you need to create a dashboard from an analysis, first convert the analysis to a template by using the [`create_template`][quicksight_create_template] API operation. For `SourceTemplate`, specify the Amazon Resource Name (ARN) of the source template. The `SourceTemplate`ARN can contain any Amazon Web Services account and any Amazon Quick Sight-supported Amazon Web Services Region.
 #' 
-#' Use the `DataSetReferences` entity within `SourceTemplate` to list the replacement datasets for the placeholders listed in the original. The schema in each dataset must match its placeholder.
+#' Use the `DataSetReferences` entity within `SourceTemplate` to list the replacement datasets for the placeholders listed in the original. The schema in each dataset must match its placeholder. Use the `TopicReferences` entity to list the replacement topics for the topic placeholders listed in the original. The schema in each topic must match its placeholder.
 #' 
 #' Either a `SourceEntity` or a `Definition` must be provided in order for the request to be valid.
 #' @param Tags Contains a map of the key-value pairs for the resource tag or tags assigned to the dashboard.
@@ -442,7 +588,7 @@ quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Paramet
 #' Creates a dataset
 #'
 #' @description
-#' Creates a dataset. This operation doesn't support datasets that include uploaded files as a source.
+#' Creates a dataset.
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_create_data_set/](https://www.paws-r-sdk.com/docs/quicksight_create_data_set/) for full documentation.
 #'
@@ -531,6 +677,83 @@ quicksight_create_data_source <- function(AwsAccountId, DataSourceId, Name, Type
   return(response)
 }
 .quicksight$operations$create_data_source <- quicksight_create_data_source
+
+#' Creates a data loss prevention (DLP) setting configuration for an Amazon
+#' Web Services account
+#'
+#' @description
+#' Creates a data loss prevention (DLP) setting configuration for an Amazon Web Services account. A DLP setting defines the DLP provider, the enforcement behavior, and the Quick capabilities that the setting applies to.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_dlp_setting/](https://www.paws-r-sdk.com/docs/quicksight_create_dlp_setting/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account in which to create the DLP setting.
+#' @param DlpSettingId &#91;required&#93; A unique identifier for the DLP setting.
+#' @param Name &#91;required&#93; A human-readable display name for the DLP setting.
+#' @param ProviderType &#91;required&#93; The type of external DLP provider to use for sensitivity label classification. Currently, the only supported value is `MICROSOFT_PURVIEW`.
+#' @param ProviderConfig &#91;required&#93; The provider-specific configuration for the DLP integration. This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
+#' @param ProviderOutageAction &#91;required&#93; The behavior to apply when the DLP provider is unreachable. Valid values are `ALLOW`, `WARN`, and `BLOCK`.
+#' @param Enabled &#91;required&#93; Specifies whether DLP enforcement is active for this setting. Set to `true` to enable enforcement, or `false` to disable it at time of setting creation.
+#' @param Tags A list of resource tags to apply to the DLP setting. You can use tags to manage access to your Amazon Web Services resources.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_dlp_setting
+quicksight_create_dlp_setting <- function(AwsAccountId, DlpSettingId, Name, ProviderType, ProviderConfig, ProviderOutageAction, Enabled, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateDlpSetting",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/data-loss-prevention/settings/{DlpSettingId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$create_dlp_setting_input(AwsAccountId = AwsAccountId, DlpSettingId = DlpSettingId, Name = Name, ProviderType = ProviderType, ProviderConfig = ProviderConfig, ProviderOutageAction = ProviderOutageAction, Enabled = Enabled, Tags = Tags)
+  output <- .quicksight$create_dlp_setting_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_dlp_setting <- quicksight_create_dlp_setting
+
+#' Creates a new flow in the specified Amazon Web Services account
+#'
+#' @description
+#' Creates a new flow in the specified Amazon Web Services account. Creates both a DRAFT and PUBLISHED (auto-published) version.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_flow/](https://www.paws-r-sdk.com/docs/quicksight_create_flow/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account where you want to create the flow.
+#' @param Name &#91;required&#93; The display name for the flow.
+#' @param Description The description for the flow.
+#' @param FlowDefinition &#91;required&#93; The definition of the flow, specifying the steps and configurations. This is the flow definition in Quick Flow's internal format. The format is subject to change.
+#' 
+#' Always derive or depend on the flow definition from the [`describe_flow`][quicksight_describe_flow] operation to ensure you are working with the latest format.
+#' @param Permissions Initial permissions for the flow. If omitted, the flow is created without any permissions.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_flow
+quicksight_create_flow <- function(AwsAccountId, Name, Description = NULL, FlowDefinition, Permissions = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateFlow",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/flows",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$create_flow_input(AwsAccountId = AwsAccountId, Name = Name, Description = Description, FlowDefinition = FlowDefinition, Permissions = Permissions, ClientToken = ClientToken)
+  output <- .quicksight$create_flow_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_flow <- quicksight_create_flow
 
 #' Creates an empty shared folder
 #'
@@ -753,6 +976,87 @@ quicksight_create_ingestion <- function(DataSetId, IngestionId, AwsAccountId, In
 }
 .quicksight$operations$create_ingestion <- quicksight_create_ingestion
 
+#' Creates a knowledge base from a specified data source
+#'
+#' @description
+#' Creates a knowledge base from a specified data source. Supported data source connector types include:
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_knowledge_base/](https://www.paws-r-sdk.com/docs/quicksight_create_knowledge_base/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the knowledge base.
+#' @param KnowledgeBaseId &#91;required&#93; The unique identifier for the knowledge base.
+#' @param Name &#91;required&#93; The name of the knowledge base.
+#' @param DataSourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the data source for the knowledge base.
+#' @param KnowledgeBaseConfiguration &#91;required&#93; The configuration settings for a knowledge base.
+#' @param Description A description for the knowledge base. If you don't specify a description, the knowledge base is created without one.
+#' @param Permissions A list of resource permissions on the knowledge base. Each entry grants a specified Amazon QuickSight principal either owner or viewer access. If you don't specify permissions, only the primary owner (if provided) receives owner access.
+#' @param MediaExtractionConfiguration The configuration for media extraction from knowledge base documents.
+#' @param AccessControlConfiguration The access control configuration for the knowledge base. If you don't specify this parameter, document-level ACLs are disabled.
+#' @param PrimaryOwnerArn The Amazon Resource Name (ARN) of the Amazon QuickSight user or group to set as the primary owner of the knowledge base. The specified principal is always granted owner access, regardless of what is specified in the `Permissions` field.
+#' 
+#' This must be an Amazon QuickSight principal ARN, not an IAM user or role ARN. The API caller is never assigned as the owner automatically. If you don't specify a primary owner and don't grant owner access in `Permissions`, the knowledge base is created without an owner, even when you call the operation as an Amazon QuickSight user.
+#' 
+#' When you call [`create_knowledge_base`][quicksight_create_knowledge_base] as an IAM user or an assumed IAM role, specify `PrimaryOwnerArn` (as an Amazon QuickSight principal ARN) or an owner entry in `Permissions` so that the knowledge base has an owner. Although optional, specifying a primary owner is recommended.
+#' @param Tags The tags to assign to the knowledge base. If you don't specify tags, the knowledge base is created without tags.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_knowledge_base
+quicksight_create_knowledge_base <- function(AwsAccountId, KnowledgeBaseId, Name, DataSourceArn, KnowledgeBaseConfiguration, Description = NULL, Permissions = NULL, MediaExtractionConfiguration = NULL, AccessControlConfiguration = NULL, PrimaryOwnerArn = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateKnowledgeBase",
+    http_method = "POST",
+    http_path = "/v1/accounts/{AwsAccountId}/knowledge-bases",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$create_knowledge_base_input(AwsAccountId = AwsAccountId, KnowledgeBaseId = KnowledgeBaseId, Name = Name, DataSourceArn = DataSourceArn, KnowledgeBaseConfiguration = KnowledgeBaseConfiguration, Description = Description, Permissions = Permissions, MediaExtractionConfiguration = MediaExtractionConfiguration, AccessControlConfiguration = AccessControlConfiguration, PrimaryOwnerArn = PrimaryOwnerArn, Tags = Tags)
+  output <- .quicksight$create_knowledge_base_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_knowledge_base <- quicksight_create_knowledge_base
+
+#' Creates a limits profile that defines resource usage limits for Amazon
+#' Quick Sight users
+#'
+#' @description
+#' Creates a limits profile that defines resource usage limits for Amazon Quick Sight users.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_limits_profile/](https://www.paws-r-sdk.com/docs/quicksight_create_limits_profile/) for full documentation.
+#'
+#' @param accountId &#91;required&#93; The ID of the Amazon Web Services account that contains the limits profile.
+#' @param profileName &#91;required&#93; A display name for the limits profile.
+#' @param description A description for the limits profile.
+#' @param resourceLimits &#91;required&#93; A map of resource types to their limit values for this profile.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_limits_profile
+quicksight_create_limits_profile <- function(accountId, profileName, description = NULL, resourceLimits, clientToken) {
+  op <- new_operation(
+    name = "CreateLimitsProfile",
+    http_method = "POST",
+    http_path = "/governance/limits/accounts/{accountId}/profiles",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$create_limits_profile_input(accountId = accountId, profileName = profileName, description = description, resourceLimits = resourceLimits, clientToken = clientToken)
+  output <- .quicksight$create_limits_profile_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_limits_profile <- quicksight_create_limits_profile
+
 #' (Enterprise edition only) Creates a new namespace for you to use with
 #' Amazon Quick Sight
 #'
@@ -787,6 +1091,48 @@ quicksight_create_namespace <- function(AwsAccountId, Namespace, IdentityStore, 
   return(response)
 }
 .quicksight$operations$create_namespace <- quicksight_create_namespace
+
+#' Creates an OAuthClientApplication
+#'
+#' @description
+#' Creates an OAuthClientApplication.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_o_auth_client_application/](https://www.paws-r-sdk.com/docs/quicksight_create_o_auth_client_application/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param OAuthClientApplicationId &#91;required&#93; An ID for the OAuthClientApplication that you want to create. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.
+#' @param Name &#91;required&#93; The display name for the OAuthClientApplication.
+#' @param OAuthClientAuthenticationType &#91;required&#93; The authentication type to use for the OAuthClientApplication. This determines the OAuth 2.0 grant flow that is used when the data source connects to the identity provider. Valid values are `TOKEN`.
+#' @param ClientId &#91;required&#93; The client ID of the OAuth application that is registered with the identity provider.
+#' @param ClientSecret &#91;required&#93; The client secret of the OAuth application that is registered with the identity provider.
+#' @param OAuthTokenEndpointUrl &#91;required&#93; The token endpoint URL of the identity provider that is used to obtain access tokens.
+#' @param OAuthAuthorizationEndpointUrl The authorization endpoint URL of the identity provider that is used to obtain authorization codes.
+#' @param OAuthScopes The OAuth scopes that are requested when the OAuthClientApplication obtains an access token from the identity provider.
+#' @param DataSourceType The type of data source that the OAuthClientApplication is used with. Valid values are `SNOWFLAKE`.
+#' @param IdentityProviderVpcConnectionProperties VPC connection properties.
+#' @param Tags Contains a map of the key-value pairs for the resource tag or tags assigned to the OAuthClientApplication.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_o_auth_client_application
+quicksight_create_o_auth_client_application <- function(AwsAccountId, OAuthClientApplicationId, Name, OAuthClientAuthenticationType, ClientId, ClientSecret, OAuthTokenEndpointUrl, OAuthAuthorizationEndpointUrl = NULL, OAuthScopes = NULL, DataSourceType = NULL, IdentityProviderVpcConnectionProperties = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateOAuthClientApplication",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/oauth-client-applications",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$create_o_auth_client_application_input(AwsAccountId = AwsAccountId, OAuthClientApplicationId = OAuthClientApplicationId, Name = Name, OAuthClientAuthenticationType = OAuthClientAuthenticationType, ClientId = ClientId, ClientSecret = ClientSecret, OAuthTokenEndpointUrl = OAuthTokenEndpointUrl, OAuthAuthorizationEndpointUrl = OAuthAuthorizationEndpointUrl, OAuthScopes = OAuthScopes, DataSourceType = DataSourceType, IdentityProviderVpcConnectionProperties = IdentityProviderVpcConnectionProperties, Tags = Tags)
+  output <- .quicksight$create_o_auth_client_application_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_o_auth_client_application <- quicksight_create_o_auth_client_application
 
 #' Creates a refresh schedule for a dataset
 #'
@@ -856,6 +1202,40 @@ quicksight_create_role_membership <- function(MemberName, AwsAccountId, Namespac
 }
 .quicksight$operations$create_role_membership <- quicksight_create_role_membership
 
+#' Creates a new Amazon QuickSight space
+#'
+#' @description
+#' Creates a new Amazon QuickSight space. A space is a collection of resources that can be used to organize and manage QuickSight assets.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_space/](https://www.paws-r-sdk.com/docs/quicksight_create_space/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the space.
+#' @param SpaceId &#91;required&#93; The ID of the space. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.
+#' @param Name &#91;required&#93; A display name for the space.
+#' @param Description A description of the space.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_space
+quicksight_create_space <- function(AwsAccountId, SpaceId, Name, Description = NULL) {
+  op <- new_operation(
+    name = "CreateSpace",
+    http_method = "POST",
+    http_path = "/v1/accounts/{AwsAccountId}/spaces",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$create_space_input(AwsAccountId = AwsAccountId, SpaceId = SpaceId, Name = Name, Description = Description)
+  output <- .quicksight$create_space_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_space <- quicksight_create_space
+
 #' Creates a template either from a TemplateDefinition or from an existing
 #' Quick Sight analysis or template
 #'
@@ -870,7 +1250,7 @@ quicksight_create_role_membership <- function(MemberName, AwsAccountId, Namespac
 #' @param Permissions A list of resource permissions to be set on the template.
 #' @param SourceEntity The entity that you are using as a source when you create the template. In `SourceEntity`, you specify the type of object you're using as source: `SourceTemplate` for a template or `SourceAnalysis` for an analysis. Both of these require an Amazon Resource Name (ARN). For `SourceTemplate`, specify the ARN of the source template. For `SourceAnalysis`, specify the ARN of the source analysis. The `SourceTemplate` ARN can contain any Amazon Web Services account and any Quick Sight-supported Amazon Web Services Region.
 #' 
-#' Use the `DataSetReferences` entity within `SourceTemplate` or `SourceAnalysis` to list the replacement datasets for the placeholders listed in the original. The schema in each dataset must match its placeholder.
+#' Use the `DataSetReferences` entity within `SourceTemplate` or `SourceAnalysis` to list the replacement datasets for the placeholders listed in the original. The schema in each dataset must match its placeholder. Use the `TopicReferences` entity to list the replacement topics for the topic placeholders listed in the original. The schema in each topic must match its placeholder.
 #' 
 #' Either a `SourceEntity` or a `Definition` must be provided in order for the request to be valid.
 #' @param Tags Contains a map of the key-value pairs for the resource tag or tags assigned to the resource.
@@ -1081,6 +1461,42 @@ quicksight_create_topic_refresh_schedule <- function(AwsAccountId, TopicId, Data
 }
 .quicksight$operations$create_topic_refresh_schedule <- quicksight_create_topic_refresh_schedule
 
+#' Creates a new Q topic
+#'
+#' @description
+#' Creates a new Q topic.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_topic_v2/](https://www.paws-r-sdk.com/docs/quicksight_create_topic_v2/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that you want to create a topic in.
+#' @param TopicId &#91;required&#93; The ID for the topic that you want to create. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.
+#' @param Topic &#91;required&#93; The definition of a topic to create.
+#' @param Tags Contains a map of the key-value pairs for the resource tag or tags that are assigned to the topic.
+#' @param FolderArns The Amazon Resource Names (ARNs) of the folders that you want the topic to reside in.
+#' @param CustomInstructions Instructions that provide additional guidance and context for response generation.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_topic_v2
+quicksight_create_topic_v2 <- function(AwsAccountId, TopicId, Topic, Tags = NULL, FolderArns = NULL, CustomInstructions = NULL) {
+  op <- new_operation(
+    name = "CreateTopicV2",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/topicsV2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$create_topic_v2_input(AwsAccountId = AwsAccountId, TopicId = TopicId, Topic = Topic, Tags = Tags, FolderArns = FolderArns, CustomInstructions = CustomInstructions)
+  output <- .quicksight$create_topic_v2_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_topic_v2 <- quicksight_create_topic_v2
+
 #' Creates a new VPC connection
 #'
 #' @description
@@ -1247,6 +1663,38 @@ quicksight_delete_action_connector <- function(AwsAccountId, ActionConnectorId) 
 }
 .quicksight$operations$delete_action_connector <- quicksight_delete_action_connector
 
+#' Deletes an agent
+#'
+#' @description
+#' Deletes an agent.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_agent/](https://www.paws-r-sdk.com/docs/quicksight_delete_agent/) for full documentation.
+#'
+#' @param AgentId &#91;required&#93; The unique identifier for the agent to delete.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the agent.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_agent
+quicksight_delete_agent <- function(AgentId, AwsAccountId) {
+  op <- new_operation(
+    name = "DeleteAgent",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/agents/{AgentId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_agent_input(AgentId = AgentId, AwsAccountId = AwsAccountId)
+  output <- .quicksight$delete_agent_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_agent <- quicksight_delete_agent
+
 #' Deletes an analysis from Amazon Quick Sight
 #'
 #' @description
@@ -1280,6 +1728,69 @@ quicksight_delete_analysis <- function(AwsAccountId, AnalysisId, RecoveryWindowI
   return(response)
 }
 .quicksight$operations$delete_analysis <- quicksight_delete_analysis
+
+#' Deletes an app
+#'
+#' @description
+#' Deletes an app.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_app/](https://www.paws-r-sdk.com/docs/quicksight_delete_app/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the app.
+#' @param AppId &#91;required&#93; The ID of the app that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_app
+quicksight_delete_app <- function(AwsAccountId, AppId) {
+  op <- new_operation(
+    name = "DeleteApp",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/apps/{AppId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_app_input(AwsAccountId = AwsAccountId, AppId = AppId)
+  output <- .quicksight$delete_app_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_app <- quicksight_delete_app
+
+#' Deletes an approval policy in Quick Sight
+#'
+#' @description
+#' Deletes an approval policy in Quick Sight.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_approval_policy/](https://www.paws-r-sdk.com/docs/quicksight_delete_approval_policy/) for full documentation.
+#'
+#' @param PolicyId &#91;required&#93; The unique identifier of the approval policy to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_approval_policy
+quicksight_delete_approval_policy <- function(PolicyId) {
+  op <- new_operation(
+    name = "DeleteApprovalPolicy",
+    http_method = "DELETE",
+    http_path = "/governance/approvalworkflows/policies/{PolicyId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_approval_policy_input(PolicyId = PolicyId)
+  output <- .quicksight$delete_approval_policy_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_approval_policy <- quicksight_delete_approval_policy
 
 #' This API permanently deletes the specified Quick Sight brand
 #'
@@ -1538,6 +2049,71 @@ quicksight_delete_default_q_business_application <- function(AwsAccountId, Names
 }
 .quicksight$operations$delete_default_q_business_application <- quicksight_delete_default_q_business_application
 
+#' Deletes a DLP setting configuration from an Amazon Web Services account
+#'
+#' @description
+#' Deletes a DLP setting configuration from an Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_dlp_setting/](https://www.paws-r-sdk.com/docs/quicksight_delete_dlp_setting/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the DLP setting that you want to delete.
+#' @param DlpSettingId &#91;required&#93; The ID of the DLP setting that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_dlp_setting
+quicksight_delete_dlp_setting <- function(AwsAccountId, DlpSettingId) {
+  op <- new_operation(
+    name = "DeleteDlpSetting",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/data-loss-prevention/settings/{DlpSettingId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_dlp_setting_input(AwsAccountId = AwsAccountId, DlpSettingId = DlpSettingId)
+  output <- .quicksight$delete_dlp_setting_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_dlp_setting <- quicksight_delete_dlp_setting
+
+#' Permanently deletes a flow from the specified Amazon Web Services
+#' account
+#'
+#' @description
+#' Permanently deletes a flow from the specified Amazon Web Services account. This operation cannot be undone.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_flow/](https://www.paws-r-sdk.com/docs/quicksight_delete_flow/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the flow that you are deleting.
+#' @param FlowId &#91;required&#93; The unique identifier of the flow to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_flow
+quicksight_delete_flow <- function(AwsAccountId, FlowId) {
+  op <- new_operation(
+    name = "DeleteFlow",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/flows/{FlowId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_flow_input(AwsAccountId = AwsAccountId, FlowId = FlowId)
+  output <- .quicksight$delete_flow_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_flow <- quicksight_delete_flow
+
 #' Deletes an empty folder
 #'
 #' @description
@@ -1739,6 +2315,70 @@ quicksight_delete_identity_propagation_config <- function(AwsAccountId, Service)
 }
 .quicksight$operations$delete_identity_propagation_config <- quicksight_delete_identity_propagation_config
 
+#' Deletes a knowledge base
+#'
+#' @description
+#' Deletes a knowledge base.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_knowledge_base/](https://www.paws-r-sdk.com/docs/quicksight_delete_knowledge_base/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the knowledge base.
+#' @param KnowledgeBaseId &#91;required&#93; The unique identifier for the knowledge base.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_knowledge_base
+quicksight_delete_knowledge_base <- function(AwsAccountId, KnowledgeBaseId) {
+  op <- new_operation(
+    name = "DeleteKnowledgeBase",
+    http_method = "DELETE",
+    http_path = "/v1/accounts/{AwsAccountId}/knowledge-bases/{KnowledgeBaseId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_knowledge_base_input(AwsAccountId = AwsAccountId, KnowledgeBaseId = KnowledgeBaseId)
+  output <- .quicksight$delete_knowledge_base_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_knowledge_base <- quicksight_delete_knowledge_base
+
+#' Deletes a limits profile
+#'
+#' @description
+#' Deletes a limits profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_limits_profile/](https://www.paws-r-sdk.com/docs/quicksight_delete_limits_profile/) for full documentation.
+#'
+#' @param profileId &#91;required&#93; The unique identifier for the limits profile to delete.
+#' @param accountId &#91;required&#93; The ID of the Amazon Web Services account that contains the limits profile.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_limits_profile
+quicksight_delete_limits_profile <- function(profileId, accountId) {
+  op <- new_operation(
+    name = "DeleteLimitsProfile",
+    http_method = "DELETE",
+    http_path = "/governance/limits/accounts/{accountId}/profiles/{profileId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_limits_profile_input(profileId = profileId, accountId = accountId)
+  output <- .quicksight$delete_limits_profile_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_limits_profile <- quicksight_delete_limits_profile
+
 #' Deletes a namespace and the users and groups that are associated with
 #' the namespace
 #'
@@ -1771,6 +2411,38 @@ quicksight_delete_namespace <- function(AwsAccountId, Namespace) {
   return(response)
 }
 .quicksight$operations$delete_namespace <- quicksight_delete_namespace
+
+#' Deletes an OAuthClientApplication
+#'
+#' @description
+#' Deletes an OAuthClientApplication.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_o_auth_client_application/](https://www.paws-r-sdk.com/docs/quicksight_delete_o_auth_client_application/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param OAuthClientApplicationId &#91;required&#93; The ID of the OAuthClientApplication that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_o_auth_client_application
+quicksight_delete_o_auth_client_application <- function(AwsAccountId, OAuthClientApplicationId) {
+  op <- new_operation(
+    name = "DeleteOAuthClientApplication",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/oauth-client-applications/{OAuthClientApplicationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_o_auth_client_application_input(AwsAccountId = AwsAccountId, OAuthClientApplicationId = OAuthClientApplicationId)
+  output <- .quicksight$delete_o_auth_client_application_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_o_auth_client_application <- quicksight_delete_o_auth_client_application
 
 #' Deletes a refresh schedule from a dataset
 #'
@@ -1871,6 +2543,38 @@ quicksight_delete_role_membership <- function(MemberName, Role, AwsAccountId, Na
   return(response)
 }
 .quicksight$operations$delete_role_membership <- quicksight_delete_role_membership
+
+#' Deletes an Amazon QuickSight space
+#'
+#' @description
+#' Deletes an Amazon QuickSight space.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_space/](https://www.paws-r-sdk.com/docs/quicksight_delete_space/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the space.
+#' @param SpaceId &#91;required&#93; The ID of the space that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_space
+quicksight_delete_space <- function(AwsAccountId, SpaceId) {
+  op <- new_operation(
+    name = "DeleteSpace",
+    http_method = "DELETE",
+    http_path = "/v1/accounts/{AwsAccountId}/spaces/{SpaceId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_space_input(AwsAccountId = AwsAccountId, SpaceId = SpaceId)
+  output <- .quicksight$delete_space_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_space <- quicksight_delete_space
 
 #' Deletes a template
 #'
@@ -2071,6 +2775,38 @@ quicksight_delete_topic_refresh_schedule <- function(AwsAccountId, TopicId, Data
   return(response)
 }
 .quicksight$operations$delete_topic_refresh_schedule <- quicksight_delete_topic_refresh_schedule
+
+#' Deletes a Q topic
+#'
+#' @description
+#' Deletes a Q topic.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_topic_v2/](https://www.paws-r-sdk.com/docs/quicksight_delete_topic_v2/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic that you want to delete.
+#' @param TopicId &#91;required&#93; The ID of the topic that you want to delete. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_topic_v2
+quicksight_delete_topic_v2 <- function(AwsAccountId, TopicId) {
+  op <- new_operation(
+    name = "DeleteTopicV2",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/topicsV2/{TopicId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_topic_v2_input(AwsAccountId = AwsAccountId, TopicId = TopicId)
+  output <- .quicksight$delete_topic_v2_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_topic_v2 <- quicksight_delete_topic_v2
 
 #' Deletes the Amazon Quick Sight user that is associated with the identity
 #' of the IAM user or role that's making the call
@@ -2401,6 +3137,70 @@ quicksight_describe_action_connector_permissions <- function(AwsAccountId, Actio
 }
 .quicksight$operations$describe_action_connector_permissions <- quicksight_describe_action_connector_permissions
 
+#' Describes an agent
+#'
+#' @description
+#' Describes an agent.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_agent/](https://www.paws-r-sdk.com/docs/quicksight_describe_agent/) for full documentation.
+#'
+#' @param AgentId &#91;required&#93; The unique identifier for the agent.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the agent.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_agent
+quicksight_describe_agent <- function(AgentId, AwsAccountId) {
+  op <- new_operation(
+    name = "DescribeAgent",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/agents/{AgentId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_agent_input(AgentId = AgentId, AwsAccountId = AwsAccountId)
+  output <- .quicksight$describe_agent_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_agent <- quicksight_describe_agent
+
+#' Describes the resource permissions for an agent
+#'
+#' @description
+#' Describes the resource permissions for an agent.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_agent_permissions/](https://www.paws-r-sdk.com/docs/quicksight_describe_agent_permissions/) for full documentation.
+#'
+#' @param AgentId &#91;required&#93; The unique identifier for the agent.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the agent.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_agent_permissions
+quicksight_describe_agent_permissions <- function(AgentId, AwsAccountId) {
+  op <- new_operation(
+    name = "DescribeAgentPermissions",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/agents/{AgentId}/permissions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_agent_permissions_input(AgentId = AgentId, AwsAccountId = AwsAccountId)
+  output <- .quicksight$describe_agent_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_agent_permissions <- quicksight_describe_agent_permissions
+
 #' Provides a summary of the metadata for an analysis
 #'
 #' @description
@@ -2496,6 +3296,101 @@ quicksight_describe_analysis_permissions <- function(AwsAccountId, AnalysisId) {
   return(response)
 }
 .quicksight$operations$describe_analysis_permissions <- quicksight_describe_analysis_permissions
+
+#' Describes an app
+#'
+#' @description
+#' Describes an app.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_app/](https://www.paws-r-sdk.com/docs/quicksight_describe_app/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the app.
+#' @param AppId &#91;required&#93; The ID of the app that you want to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_app
+quicksight_describe_app <- function(AwsAccountId, AppId) {
+  op <- new_operation(
+    name = "DescribeApp",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/apps/{AppId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_app_input(AwsAccountId = AwsAccountId, AppId = AppId)
+  output <- .quicksight$describe_app_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_app <- quicksight_describe_app
+
+#' Describes the resource permissions for an app
+#'
+#' @description
+#' Describes the resource permissions for an app.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_app_permissions/](https://www.paws-r-sdk.com/docs/quicksight_describe_app_permissions/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the app.
+#' @param AppId &#91;required&#93; The ID of the app.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_app_permissions
+quicksight_describe_app_permissions <- function(AwsAccountId, AppId) {
+  op <- new_operation(
+    name = "DescribeAppPermissions",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/apps/{AppId}/permissions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_app_permissions_input(AwsAccountId = AwsAccountId, AppId = AppId)
+  output <- .quicksight$describe_app_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_app_permissions <- quicksight_describe_app_permissions
+
+#' Describes an approval policy in Quick Sight
+#'
+#' @description
+#' Describes an approval policy in Quick Sight.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_approval_policy/](https://www.paws-r-sdk.com/docs/quicksight_describe_approval_policy/) for full documentation.
+#'
+#' @param PolicyId &#91;required&#93; The unique identifier of the approval policy to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_approval_policy
+quicksight_describe_approval_policy <- function(PolicyId) {
+  op <- new_operation(
+    name = "DescribeApprovalPolicy",
+    http_method = "GET",
+    http_path = "/governance/approvalworkflows/policies/{PolicyId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_approval_policy_input(PolicyId = PolicyId)
+  output <- .quicksight$describe_approval_policy_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_approval_policy <- quicksight_describe_approval_policy
 
 #' Describes an existing export job
 #'
@@ -2927,7 +3822,7 @@ quicksight_describe_dashboards_qa_configuration <- function(AwsAccountId) {
 #' Describes a dataset
 #'
 #' @description
-#' Describes a dataset. This operation doesn't support datasets that include uploaded files as a source.
+#' Describes a dataset.
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_describe_data_set/](https://www.paws-r-sdk.com/docs/quicksight_describe_data_set/) for full documentation.
 #'
@@ -3116,6 +4011,73 @@ quicksight_describe_default_q_business_application <- function(AwsAccountId, Nam
   return(response)
 }
 .quicksight$operations$describe_default_q_business_application <- quicksight_describe_default_q_business_application
+
+#' Describes the full configuration of a DLP setting in an Amazon Web
+#' Services account
+#'
+#' @description
+#' Describes the full configuration of a DLP setting in an Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_dlp_setting/](https://www.paws-r-sdk.com/docs/quicksight_describe_dlp_setting/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the DLP setting that you want to describe.
+#' @param DlpSettingId &#91;required&#93; The ID of the DLP setting that you want to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_dlp_setting
+quicksight_describe_dlp_setting <- function(AwsAccountId, DlpSettingId) {
+  op <- new_operation(
+    name = "DescribeDlpSetting",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/data-loss-prevention/settings/{DlpSettingId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_dlp_setting_input(AwsAccountId = AwsAccountId, DlpSettingId = DlpSettingId)
+  output <- .quicksight$describe_dlp_setting_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_dlp_setting <- quicksight_describe_dlp_setting
+
+#' Returns the full details of a flow for the latest version of the
+#' requested publish state
+#'
+#' @description
+#' Returns the full details of a flow for the latest version of the requested publish state.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_flow/](https://www.paws-r-sdk.com/docs/quicksight_describe_flow/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the flow that you are describing.
+#' @param FlowId &#91;required&#93; The unique identifier of the flow.
+#' @param PublishState &#91;required&#93; The publish state of the flow version to describe. Valid values are `DRAFT`, `PUBLISHED`, or `PENDING_APPROVAL`.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_flow
+quicksight_describe_flow <- function(AwsAccountId, FlowId, PublishState) {
+  op <- new_operation(
+    name = "DescribeFlow",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/flows/{FlowId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_flow_input(AwsAccountId = AwsAccountId, FlowId = FlowId, PublishState = PublishState)
+  output <- .quicksight$describe_flow_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_flow <- quicksight_describe_flow
 
 #' Describes a folder
 #'
@@ -3419,6 +4381,102 @@ quicksight_describe_key_registration <- function(AwsAccountId, DefaultKeyOnly = 
 }
 .quicksight$operations$describe_key_registration <- quicksight_describe_key_registration
 
+#' Describes a knowledge base
+#'
+#' @description
+#' Describes a knowledge base.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_knowledge_base/](https://www.paws-r-sdk.com/docs/quicksight_describe_knowledge_base/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the knowledge base.
+#' @param KnowledgeBaseId &#91;required&#93; The unique identifier for the knowledge base.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_knowledge_base
+quicksight_describe_knowledge_base <- function(AwsAccountId, KnowledgeBaseId) {
+  op <- new_operation(
+    name = "DescribeKnowledgeBase",
+    http_method = "GET",
+    http_path = "/v1/accounts/{AwsAccountId}/knowledge-bases/{KnowledgeBaseId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_knowledge_base_input(AwsAccountId = AwsAccountId, KnowledgeBaseId = KnowledgeBaseId)
+  output <- .quicksight$describe_knowledge_base_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_knowledge_base <- quicksight_describe_knowledge_base
+
+#' Describes the resource permissions for a knowledge base
+#'
+#' @description
+#' Describes the resource permissions for a knowledge base.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_knowledge_base_permissions/](https://www.paws-r-sdk.com/docs/quicksight_describe_knowledge_base_permissions/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the knowledge base.
+#' @param KnowledgeBaseId &#91;required&#93; The unique identifier for the knowledge base.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_knowledge_base_permissions
+quicksight_describe_knowledge_base_permissions <- function(AwsAccountId, KnowledgeBaseId) {
+  op <- new_operation(
+    name = "DescribeKnowledgeBasePermissions",
+    http_method = "GET",
+    http_path = "/v1/accounts/{AwsAccountId}/knowledge-bases/{KnowledgeBaseId}/permissions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_knowledge_base_permissions_input(AwsAccountId = AwsAccountId, KnowledgeBaseId = KnowledgeBaseId)
+  output <- .quicksight$describe_knowledge_base_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_knowledge_base_permissions <- quicksight_describe_knowledge_base_permissions
+
+#' Describes the properties of an existing limits profile
+#'
+#' @description
+#' Describes the properties of an existing limits profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_limits_profile/](https://www.paws-r-sdk.com/docs/quicksight_describe_limits_profile/) for full documentation.
+#'
+#' @param profileId &#91;required&#93; The unique identifier for the limits profile.
+#' @param accountId &#91;required&#93; The ID of the Amazon Web Services account that contains the limits profile.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_limits_profile
+quicksight_describe_limits_profile <- function(profileId, accountId) {
+  op <- new_operation(
+    name = "DescribeLimitsProfile",
+    http_method = "GET",
+    http_path = "/governance/limits/accounts/{accountId}/profiles/{profileId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_limits_profile_input(profileId = profileId, accountId = accountId)
+  output <- .quicksight$describe_limits_profile_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_limits_profile <- quicksight_describe_limits_profile
+
 #' Describes the current namespace
 #'
 #' @description
@@ -3450,6 +4508,38 @@ quicksight_describe_namespace <- function(AwsAccountId, Namespace) {
   return(response)
 }
 .quicksight$operations$describe_namespace <- quicksight_describe_namespace
+
+#' Describes an OAuthClientApplication
+#'
+#' @description
+#' Describes an OAuthClientApplication.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_o_auth_client_application/](https://www.paws-r-sdk.com/docs/quicksight_describe_o_auth_client_application/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param OAuthClientApplicationId &#91;required&#93; The ID of the OAuthClientApplication that you want to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_o_auth_client_application
+quicksight_describe_o_auth_client_application <- function(AwsAccountId, OAuthClientApplicationId) {
+  op <- new_operation(
+    name = "DescribeOAuthClientApplication",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/oauth-client-applications/{OAuthClientApplicationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_o_auth_client_application_input(AwsAccountId = AwsAccountId, OAuthClientApplicationId = OAuthClientApplicationId)
+  output <- .quicksight$describe_o_auth_client_application_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_o_auth_client_application <- quicksight_describe_o_auth_client_application
 
 #' Describes a personalization configuration
 #'
@@ -3610,6 +4700,71 @@ quicksight_describe_self_upgrade_configuration <- function(AwsAccountId, Namespa
   return(response)
 }
 .quicksight$operations$describe_self_upgrade_configuration <- quicksight_describe_self_upgrade_configuration
+
+#' Describes an Amazon QuickSight space
+#'
+#' @description
+#' Describes an Amazon QuickSight space.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_space/](https://www.paws-r-sdk.com/docs/quicksight_describe_space/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the space.
+#' @param SpaceId &#91;required&#93; The ID of the space that you want to describe.
+#' @param MaxContributors The maximum number of contributors to include in the response.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_space
+quicksight_describe_space <- function(AwsAccountId, SpaceId, MaxContributors = NULL) {
+  op <- new_operation(
+    name = "DescribeSpace",
+    http_method = "GET",
+    http_path = "/v1/accounts/{AwsAccountId}/spaces/{SpaceId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_space_input(AwsAccountId = AwsAccountId, SpaceId = SpaceId, MaxContributors = MaxContributors)
+  output <- .quicksight$describe_space_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_space <- quicksight_describe_space
+
+#' Describes the permissions for an Amazon QuickSight space
+#'
+#' @description
+#' Describes the permissions for an Amazon QuickSight space.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_space_permissions/](https://www.paws-r-sdk.com/docs/quicksight_describe_space_permissions/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the space.
+#' @param SpaceId &#91;required&#93; The ID of the space that you want to describe permissions for.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_space_permissions
+quicksight_describe_space_permissions <- function(AwsAccountId, SpaceId) {
+  op <- new_operation(
+    name = "DescribeSpacePermissions",
+    http_method = "GET",
+    http_path = "/v1/accounts/{AwsAccountId}/spaces/{SpaceId}/permissions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_space_permissions_input(AwsAccountId = AwsAccountId, SpaceId = SpaceId)
+  output <- .quicksight$describe_space_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_space_permissions <- quicksight_describe_space_permissions
 
 #' Describes a template's metadata
 #'
@@ -3907,6 +5062,38 @@ quicksight_describe_topic_permissions <- function(AwsAccountId, TopicId) {
 }
 .quicksight$operations$describe_topic_permissions <- quicksight_describe_topic_permissions
 
+#' Describes the permissions of a topic
+#'
+#' @description
+#' Describes the permissions of a topic.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_topic_permissions_v2/](https://www.paws-r-sdk.com/docs/quicksight_describe_topic_permissions_v2/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic that you want described.
+#' @param TopicId &#91;required&#93; The ID of the topic that you want to describe. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_topic_permissions_v2
+quicksight_describe_topic_permissions_v2 <- function(AwsAccountId, TopicId) {
+  op <- new_operation(
+    name = "DescribeTopicPermissionsV2",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/topicsV2/{TopicId}/permissions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_topic_permissions_v2_input(AwsAccountId = AwsAccountId, TopicId = TopicId)
+  output <- .quicksight$describe_topic_permissions_v2_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_topic_permissions_v2 <- quicksight_describe_topic_permissions_v2
+
 #' Describes the status of a topic refresh
 #'
 #' @description
@@ -3972,6 +5159,38 @@ quicksight_describe_topic_refresh_schedule <- function(AwsAccountId, TopicId, Da
   return(response)
 }
 .quicksight$operations$describe_topic_refresh_schedule <- quicksight_describe_topic_refresh_schedule
+
+#' Describes a Q topic
+#'
+#' @description
+#' Describes a Q topic.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_topic_v2/](https://www.paws-r-sdk.com/docs/quicksight_describe_topic_v2/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic that you want to describe.
+#' @param TopicId &#91;required&#93; The ID of the topic that you want to describe. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_topic_v2
+quicksight_describe_topic_v2 <- function(AwsAccountId, TopicId) {
+  op <- new_operation(
+    name = "DescribeTopicV2",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/topicsV2/{TopicId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_topic_v2_input(AwsAccountId = AwsAccountId, TopicId = TopicId)
+  output <- .quicksight$describe_topic_v2_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_topic_v2 <- quicksight_describe_topic_v2
 
 #' Returns information about a user, given the user name
 #'
@@ -4422,6 +5641,39 @@ quicksight_list_action_connectors <- function(AwsAccountId, MaxResults = NULL, N
 }
 .quicksight$operations$list_action_connectors <- quicksight_list_action_connectors
 
+#' Lists all agents in an Amazon QuickSight account
+#'
+#' @description
+#' Lists all agents in an Amazon QuickSight account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_agents/](https://www.paws-r-sdk.com/docs/quicksight_list_agents/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the agents.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next set of results, or null if there are no more results.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_agents
+quicksight_list_agents <- function(AwsAccountId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAgents",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/agents",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_agents_input(AwsAccountId = AwsAccountId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .quicksight$list_agents_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_agents <- quicksight_list_agents
+
 #' Lists Amazon Quick Sight analyses that exist in the specified Amazon Web
 #' Services account
 #'
@@ -4455,6 +5707,71 @@ quicksight_list_analyses <- function(AwsAccountId, NextToken = NULL, MaxResults 
   return(response)
 }
 .quicksight$operations$list_analyses <- quicksight_list_analyses
+
+#' Lists all approval policies in the specified Quick Sight account
+#'
+#' @description
+#' Lists all approval policies in the specified Quick Sight account. The results are paginated. If the response includes a `NextToken` value, pass it in a subsequent call to retrieve the next set of results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_approval_policies/](https://www.paws-r-sdk.com/docs/quicksight_list_approval_policies/) for full documentation.
+#'
+#' @param NextToken The token for the next set of results, or null if there are no more results.
+#' @param MaxResults The maximum number of results to return in a single call. If you don't specify a value, the service returns a default number of results. Use the `NextToken` value in the response to retrieve additional results.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_approval_policies
+quicksight_list_approval_policies <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListApprovalPolicies",
+    http_method = "GET",
+    http_path = "/governance/approvalworkflows/policies",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Policies"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_approval_policies_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$list_approval_policies_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_approval_policies <- quicksight_list_approval_policies
+
+#' Lists the apps in an Amazon Web Services account
+#'
+#' @description
+#' Lists the apps in an Amazon Web Services account. Results are paginated; use the `NextToken` parameter to retrieve additional results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_apps/](https://www.paws-r-sdk.com/docs/quicksight_list_apps/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the apps.
+#' @param MaxResults The maximum number of results to return in a single request. Valid range is 1 to 100. If you don't specify a value, the default is 20.
+#' @param NextToken The token for the next set of results, or null if there are no more results.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_apps
+quicksight_list_apps <- function(AwsAccountId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListApps",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/apps",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AppSummaryList"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_apps_input(AwsAccountId = AwsAccountId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .quicksight$list_apps_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_apps <- quicksight_list_apps
 
 #' Lists all asset bundle export jobs that have been taken place in the
 #' last 14 days
@@ -4725,6 +6042,39 @@ quicksight_list_data_sources <- function(AwsAccountId, NextToken = NULL, MaxResu
   return(response)
 }
 .quicksight$operations$list_data_sources <- quicksight_list_data_sources
+
+#' Lists all DLP settings in an Amazon Web Services account
+#'
+#' @description
+#' Lists all DLP settings in an Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_dlp_settings/](https://www.paws-r-sdk.com/docs/quicksight_list_dlp_settings/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the DLP settings that you want to list.
+#' @param NextToken The token for the next set of results, or null if there are no more results.
+#' @param MaxResults The maximum number of results to return per request.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_dlp_settings
+quicksight_list_dlp_settings <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListDlpSettings",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/data-loss-prevention/settings",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DlpSettingSummaries"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_dlp_settings_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$list_dlp_settings_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_dlp_settings <- quicksight_list_dlp_settings
 
 #' Lists flows in an Amazon Web Services account
 #'
@@ -5070,6 +6420,73 @@ quicksight_list_ingestions <- function(DataSetId, NextToken = NULL, AwsAccountId
 }
 .quicksight$operations$list_ingestions <- quicksight_list_ingestions
 
+#' Lists all knowledge bases in an Amazon QuickSight account
+#'
+#' @description
+#' Lists all knowledge bases in an Amazon QuickSight account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_knowledge_bases/](https://www.paws-r-sdk.com/docs/quicksight_list_knowledge_bases/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the knowledge base.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next set of results, or null if there are no more results.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_knowledge_bases
+quicksight_list_knowledge_bases <- function(AwsAccountId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListKnowledgeBases",
+    http_method = "GET",
+    http_path = "/v1/accounts/{AwsAccountId}/knowledge-bases/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "KnowledgeBaseSummaries"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_knowledge_bases_input(AwsAccountId = AwsAccountId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .quicksight$list_knowledge_bases_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_knowledge_bases <- quicksight_list_knowledge_bases
+
+#' Lists all limits profiles in an Amazon Quick Sight account
+#'
+#' @description
+#' Lists all limits profiles in an Amazon Quick Sight account. Results are paginated. Use the `maxResults` parameter to limit the number of results returned in a single call, and use the `nextToken` parameter to retrieve the next page of results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_limits_profiles/](https://www.paws-r-sdk.com/docs/quicksight_list_limits_profiles/) for full documentation.
+#'
+#' @param accountId &#91;required&#93; The ID of the Amazon Web Services account that contains the limits profiles.
+#' @param resourceType An optional filter that limits the results to profiles that contain the specified resource type. If you don't specify a value, the operation returns all profiles.
+#' @param maxResults The maximum number of results to return in a single call. If you don't specify a value, the service uses the default maximum.
+#' @param nextToken The token for the next set of results, or null if there are no more results.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_limits_profiles
+quicksight_list_limits_profiles <- function(accountId, resourceType = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListLimitsProfiles",
+    http_method = "GET",
+    http_path = "/governance/limits/accounts/{accountId}/profiles",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "profiles"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_limits_profiles_input(accountId = accountId, resourceType = resourceType, maxResults = maxResults, nextToken = nextToken)
+  output <- .quicksight$list_limits_profiles_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_limits_profiles <- quicksight_list_limits_profiles
+
 #' Lists the namespaces for the specified Amazon Web Services account
 #'
 #' @description
@@ -5102,6 +6519,40 @@ quicksight_list_namespaces <- function(AwsAccountId, NextToken = NULL, MaxResult
   return(response)
 }
 .quicksight$operations$list_namespaces <- quicksight_list_namespaces
+
+#' Lists all OAuthClientApplications in the current Amazon Web Services
+#' Region that belong to this Amazon Web Services account
+#'
+#' @description
+#' Lists all OAuthClientApplications in the current Amazon Web Services Region that belong to this Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_o_auth_client_applications/](https://www.paws-r-sdk.com/docs/quicksight_list_o_auth_client_applications/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param NextToken A pagination token that can be used in a subsequent request.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_o_auth_client_applications
+quicksight_list_o_auth_client_applications <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListOAuthClientApplications",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/oauth-client-applications",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OAuthClientApplications"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_o_auth_client_applications_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$list_o_auth_client_applications_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_o_auth_client_applications <- quicksight_list_o_auth_client_applications
 
 #' Lists the refresh schedules of a dataset
 #'
@@ -5203,6 +6654,71 @@ quicksight_list_self_upgrades <- function(AwsAccountId, Namespace, NextToken = N
   return(response)
 }
 .quicksight$operations$list_self_upgrades <- quicksight_list_self_upgrades
+
+#' Lists the resources in an Amazon QuickSight space
+#'
+#' @description
+#' Lists the resources in an Amazon QuickSight space.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_space_resources/](https://www.paws-r-sdk.com/docs/quicksight_list_space_resources/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the space.
+#' @param SpaceId &#91;required&#93; The ID of the space that you want to list resources for.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_space_resources
+quicksight_list_space_resources <- function(AwsAccountId, SpaceId) {
+  op <- new_operation(
+    name = "ListSpaceResources",
+    http_method = "GET",
+    http_path = "/v1/accounts/{AwsAccountId}/spaces/{SpaceId}/resources",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_space_resources_input(AwsAccountId = AwsAccountId, SpaceId = SpaceId)
+  output <- .quicksight$list_space_resources_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_space_resources <- quicksight_list_space_resources
+
+#' Lists all Amazon QuickSight spaces in an Amazon Web Services account
+#'
+#' @description
+#' Lists all Amazon QuickSight spaces in an Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_spaces/](https://www.paws-r-sdk.com/docs/quicksight_list_spaces/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the spaces.
+#' @param NextToken The token for the next set of results, or null if there are no more results.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_spaces
+quicksight_list_spaces <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListSpaces",
+    http_method = "GET",
+    http_path = "/v1/accounts/{AwsAccountId}/spaces",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_spaces_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$list_spaces_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_spaces <- quicksight_list_spaces
 
 #' Lists the tags assigned to a resource
 #'
@@ -5543,6 +7059,40 @@ quicksight_list_topics <- function(AwsAccountId, NextToken = NULL, MaxResults = 
 }
 .quicksight$operations$list_topics <- quicksight_list_topics
 
+#' Lists all of the Q topics in the specified Amazon Web Services account
+#' in an Amazon Web Services Region
+#'
+#' @description
+#' Lists all of the Q topics in the specified Amazon Web Services account in an Amazon Web Services Region.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_topics_v2/](https://www.paws-r-sdk.com/docs/quicksight_list_topics_v2/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topics that you want to list.
+#' @param NextToken The token for the next set of results, or null if there are no more results.
+#' @param MaxResults The maximum number of results to be returned per request.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_topics_v2
+quicksight_list_topics_v2 <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListTopicsV2",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/topicsV2",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TopicSummaryList"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_topics_v2_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$list_topics_v2_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_topics_v2 <- quicksight_list_topics_v2
+
 #' Lists the Amazon Quick Sight groups that an Amazon Quick Sight user is a
 #' member of
 #'
@@ -5613,6 +7163,43 @@ quicksight_list_users <- function(AwsAccountId, NextToken = NULL, MaxResults = N
   return(response)
 }
 .quicksight$operations$list_users <- quicksight_list_users
+
+#' Lists per-user index capacity consumption for an account
+#'
+#' @description
+#' Lists per-user index capacity consumption for an account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_users_index_capacity/](https://www.paws-r-sdk.com/docs/quicksight_list_users_index_capacity/) for full documentation.
+#'
+#' @param awsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the index capacity data.
+#' @param namespace The namespace to scope the user search to. Required when the userNameOrEmail filter is present.
+#' @param filters Filters to apply. Only one filter is supported per request. The userNameOrEmail and totalCapacityBytes filters are mutually exclusive.
+#' @param sortBy The field to sort results by.
+#' @param sortOrder The sort order for results. Defaults to DESC if not specified.
+#' @param maxResults The maximum number of results to return per page.
+#' @param nextToken The token for the next set of results, received from a previous call.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_users_index_capacity
+quicksight_list_users_index_capacity <- function(awsAccountId, namespace = NULL, filters = NULL, sortBy = NULL, sortOrder = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListUsersIndexCapacity",
+    http_method = "POST",
+    http_path = "/accounts/{awsAccountId}/quick-index/user-capacity",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_users_index_capacity_input(awsAccountId = awsAccountId, namespace = namespace, filters = filters, sortBy = sortBy, sortOrder = sortOrder, maxResults = maxResults, nextToken = nextToken)
+  output <- .quicksight$list_users_index_capacity_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_users_index_capacity <- quicksight_list_users_index_capacity
 
 #' Lists all of the VPC connections in the current set Amazon Web Services
 #' Region of an Amazon Web Services account
@@ -5866,6 +7453,40 @@ quicksight_search_action_connectors <- function(AwsAccountId, MaxResults = NULL,
 }
 .quicksight$operations$search_action_connectors <- quicksight_search_action_connectors
 
+#' Searches for agents based on specified filters
+#'
+#' @description
+#' Searches for agents based on specified filters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_search_agents/](https://www.paws-r-sdk.com/docs/quicksight_search_agents/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the agents.
+#' @param Filters &#91;required&#93; The filters to apply when searching agents.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next set of results, or null if there are no more results.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_search_agents
+quicksight_search_agents <- function(AwsAccountId, Filters, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "SearchAgents",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/search/agents",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$search_agents_input(AwsAccountId = AwsAccountId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .quicksight$search_agents_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$search_agents <- quicksight_search_agents
+
 #' Searches for analyses that belong to the user specified in the filter
 #'
 #' @description
@@ -5899,6 +7520,41 @@ quicksight_search_analyses <- function(AwsAccountId, Filters, NextToken = NULL, 
   return(response)
 }
 .quicksight$operations$search_analyses <- quicksight_search_analyses
+
+#' Searches for apps in an Amazon Web Services account using the specified
+#' filters
+#'
+#' @description
+#' Searches for apps in an Amazon Web Services account using the specified filters. This operation is eventually consistent; the results might not reflect very recent updates. Results are paginated; use the `NextToken` parameter to retrieve additional results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_search_apps/](https://www.paws-r-sdk.com/docs/quicksight_search_apps/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the apps to search.
+#' @param Filters &#91;required&#93; The filters to apply to the search.
+#' @param MaxResults The maximum number of results to return in a single request. Valid range is 1 to 100. If you don't specify a value, the default is 20.
+#' @param NextToken The token for the next set of results, or null if there are no more results.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_search_apps
+quicksight_search_apps <- function(AwsAccountId, Filters, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "SearchApps",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/search/apps",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AppSummaryList"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$search_apps_input(AwsAccountId = AwsAccountId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .quicksight$search_apps_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$search_apps <- quicksight_search_apps
 
 #' Searches for dashboards that belong to a user
 #'
@@ -6108,6 +7764,75 @@ quicksight_search_groups <- function(AwsAccountId, NextToken = NULL, MaxResults 
 }
 .quicksight$operations$search_groups <- quicksight_search_groups
 
+#' Searches for a subset of knowledge bases based on specified filters
+#'
+#' @description
+#' Searches for a subset of knowledge bases based on specified filters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_search_knowledge_bases/](https://www.paws-r-sdk.com/docs/quicksight_search_knowledge_bases/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the knowledge base.
+#' @param NextToken The token for the next set of results, or null if there are no more results.
+#' @param MaxResults The maximum number of results to return.
+#' @param Filters The filters to apply when searching knowledge bases.
+#' @param SortBy The sort configuration for the search results.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_search_knowledge_bases
+quicksight_search_knowledge_bases <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL, Filters = NULL, SortBy = NULL) {
+  op <- new_operation(
+    name = "SearchKnowledgeBases",
+    http_method = "POST",
+    http_path = "/v1/accounts/{AwsAccountId}/search/knowledge-bases",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "KnowledgeBaseSummaries"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$search_knowledge_bases_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, SortBy = SortBy)
+  output <- .quicksight$search_knowledge_bases_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$search_knowledge_bases <- quicksight_search_knowledge_bases
+
+#' Searches for Amazon QuickSight spaces that match the specified filters
+#'
+#' @description
+#' Searches for Amazon QuickSight spaces that match the specified filters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_search_spaces/](https://www.paws-r-sdk.com/docs/quicksight_search_spaces/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the spaces.
+#' @param NextToken The token for the next set of results, or null if there are no more results.
+#' @param MaxResults The maximum number of results to return.
+#' @param Filters &#91;required&#93; The filters to apply to the search.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_search_spaces
+quicksight_search_spaces <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL, Filters) {
+  op <- new_operation(
+    name = "SearchSpaces",
+    http_method = "POST",
+    http_path = "/v1/accounts/{AwsAccountId}/search/spaces",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$search_spaces_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
+  output <- .quicksight$search_spaces_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$search_spaces <- quicksight_search_spaces
+
 #' Searches for any Q topic that exists in an Quick account
 #'
 #' @description
@@ -6141,6 +7866,40 @@ quicksight_search_topics <- function(AwsAccountId, Filters, NextToken = NULL, Ma
   return(response)
 }
 .quicksight$operations$search_topics <- quicksight_search_topics
+
+#' Searches for any Q topic that exists in an Amazon Web Services account
+#'
+#' @description
+#' Searches for any Q topic that exists in an Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_search_topics_v2/](https://www.paws-r-sdk.com/docs/quicksight_search_topics_v2/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic that you want to search.
+#' @param Filters &#91;required&#93; The filters that you want to use to search for the topic.
+#' @param NextToken The token for the next set of results, or null if there are no more results.
+#' @param MaxResults The maximum number of results to be returned per request.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_search_topics_v2
+quicksight_search_topics_v2 <- function(AwsAccountId, Filters, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "SearchTopicsV2",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/search/topicsV2",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TopicSummaryList"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$search_topics_v2_input(AwsAccountId = AwsAccountId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$search_topics_v2_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$search_topics_v2 <- quicksight_search_topics_v2
 
 #' Starts an Asset Bundle export job
 #'
@@ -6586,6 +8345,82 @@ quicksight_update_action_connector_permissions <- function(AwsAccountId, ActionC
 }
 .quicksight$operations$update_action_connector_permissions <- quicksight_update_action_connector_permissions
 
+#' Updates an existing agent
+#'
+#' @description
+#' Updates an existing agent.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_agent/](https://www.paws-r-sdk.com/docs/quicksight_update_agent/) for full documentation.
+#'
+#' @param AgentId &#91;required&#93; The unique identifier for the agent to update.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the agent.
+#' @param Name &#91;required&#93; The name of the agent.
+#' @param Description A description of the agent.
+#' @param IconId The icon identifier for the agent.
+#' @param StarterPrompts A list of starter prompts that are displayed to users when they begin interacting with the agent.
+#' @param WelcomeMessage The welcome message that is displayed when a user starts a conversation with the agent.
+#' @param CustomPromptInput The custom prompt configuration for the agent.
+#' @param SpacesToAdd The Amazon Resource Names (ARNs) of the spaces to attach to the agent.
+#' @param SpacesToRemove The Amazon Resource Names (ARNs) of the spaces to detach from the agent.
+#' @param ActionConnectorsToAdd The Amazon Resource Names (ARNs) of the action connectors to attach to the agent.
+#' @param ActionConnectorsToRemove The Amazon Resource Names (ARNs) of the action connectors to detach from the agent.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_agent
+quicksight_update_agent <- function(AgentId, AwsAccountId, Name, Description = NULL, IconId = NULL, StarterPrompts = NULL, WelcomeMessage = NULL, CustomPromptInput = NULL, SpacesToAdd = NULL, SpacesToRemove = NULL, ActionConnectorsToAdd = NULL, ActionConnectorsToRemove = NULL) {
+  op <- new_operation(
+    name = "UpdateAgent",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/agents/{AgentId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_agent_input(AgentId = AgentId, AwsAccountId = AwsAccountId, Name = Name, Description = Description, IconId = IconId, StarterPrompts = StarterPrompts, WelcomeMessage = WelcomeMessage, CustomPromptInput = CustomPromptInput, SpacesToAdd = SpacesToAdd, SpacesToRemove = SpacesToRemove, ActionConnectorsToAdd = ActionConnectorsToAdd, ActionConnectorsToRemove = ActionConnectorsToRemove)
+  output <- .quicksight$update_agent_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_agent <- quicksight_update_agent
+
+#' Updates the resource permissions for an agent
+#'
+#' @description
+#' Updates the resource permissions for an agent.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_agent_permissions/](https://www.paws-r-sdk.com/docs/quicksight_update_agent_permissions/) for full documentation.
+#'
+#' @param AgentId &#91;required&#93; The unique identifier for the agent.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the agent.
+#' @param GrantPermissions The resource permissions that you want to grant on the agent.
+#' @param RevokePermissions The resource permissions that you want to revoke from the agent.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_agent_permissions
+quicksight_update_agent_permissions <- function(AgentId, AwsAccountId, GrantPermissions = NULL, RevokePermissions = NULL) {
+  op <- new_operation(
+    name = "UpdateAgentPermissions",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/agents/{AgentId}/permissions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_agent_permissions_input(AgentId = AgentId, AwsAccountId = AwsAccountId, GrantPermissions = GrantPermissions, RevokePermissions = RevokePermissions)
+  output <- .quicksight$update_agent_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_agent_permissions <- quicksight_update_agent_permissions
+
 #' Updates an analysis in Amazon Quick Sight
 #'
 #' @description
@@ -6597,7 +8432,7 @@ quicksight_update_action_connector_permissions <- function(AwsAccountId, ActionC
 #' @param AnalysisId &#91;required&#93; The ID for the analysis that you're updating. This ID displays in the URL of the analysis.
 #' @param Name &#91;required&#93; A descriptive name for the analysis that you're updating. This name displays for the analysis in the Amazon Quick Sight console.
 #' @param Parameters The parameter names and override values that you want to use. An analysis can have any parameter type, and some parameters might accept multiple values.
-#' @param SourceEntity A source entity to use for the analysis that you're updating. This metadata structure contains details that describe a source template and one or more datasets.
+#' @param SourceEntity A source entity to use for the analysis that you're updating. This metadata structure contains details that describe a source template and one or more datasets or topics.
 #' @param ThemeArn The Amazon Resource Name (ARN) for the theme to apply to the analysis that you're creating. To see the theme in the Amazon Quick Sight console, make sure that you have access to it.
 #' @param Definition The definition of an analysis.
 #' 
@@ -6660,6 +8495,41 @@ quicksight_update_analysis_permissions <- function(AwsAccountId, AnalysisId, Gra
 }
 .quicksight$operations$update_analysis_permissions <- quicksight_update_analysis_permissions
 
+#' Updates the resource permissions for an app
+#'
+#' @description
+#' Updates the resource permissions for an app. You can grant or revoke permissions and, optionally, change the app's visibility.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_app_permissions/](https://www.paws-r-sdk.com/docs/quicksight_update_app_permissions/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the app.
+#' @param AppId &#91;required&#93; The ID of the app.
+#' @param GrantPermissions The permissions that you want to grant on the app.
+#' @param RevokePermissions The permissions that you want to revoke from the app.
+#' @param Visibility The visibility to set for the app. Currently, only `PRIVATE` is accepted, which removes public (anonymous) access from the app. If you don't specify a value, the app's visibility is unchanged. Setting an app to `PUBLIC` through this operation is not supported.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_app_permissions
+quicksight_update_app_permissions <- function(AwsAccountId, AppId, GrantPermissions = NULL, RevokePermissions = NULL, Visibility = NULL) {
+  op <- new_operation(
+    name = "UpdateAppPermissions",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/apps/{AppId}/permissions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_app_permissions_input(AwsAccountId = AwsAccountId, AppId = AppId, GrantPermissions = GrantPermissions, RevokePermissions = RevokePermissions, Visibility = Visibility)
+  output <- .quicksight$update_app_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_app_permissions <- quicksight_update_app_permissions
+
 #' Updates an Quick application with a token exchange grant
 #'
 #' @description
@@ -6691,6 +8561,43 @@ quicksight_update_application_with_token_exchange_grant <- function(AwsAccountId
   return(response)
 }
 .quicksight$operations$update_application_with_token_exchange_grant <- quicksight_update_application_with_token_exchange_grant
+
+#' Updates an approval policy in Quick Sight
+#'
+#' @description
+#' Updates an approval policy in Quick Sight.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_approval_policy/](https://www.paws-r-sdk.com/docs/quicksight_update_approval_policy/) for full documentation.
+#'
+#' @param PolicyId &#91;required&#93; The unique identifier of the approval policy to update.
+#' @param Name The name of the approval policy.
+#' @param Description A description of the approval policy.
+#' @param Actions The list of governed actions that trigger the approval workflow.
+#' @param AssetTypes The list of asset types that the approval policy applies to.
+#' @param ApplicableTo The scoping configuration that determines who the approval policy applies to.
+#' @param ApprovalGroups The list of group ARNs whose members can approve requests.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_approval_policy
+quicksight_update_approval_policy <- function(PolicyId, Name = NULL, Description = NULL, Actions = NULL, AssetTypes = NULL, ApplicableTo = NULL, ApprovalGroups = NULL) {
+  op <- new_operation(
+    name = "UpdateApprovalPolicy",
+    http_method = "PATCH",
+    http_path = "/governance/approvalworkflows/policies/{PolicyId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_approval_policy_input(PolicyId = PolicyId, Name = Name, Description = Description, Actions = Actions, AssetTypes = AssetTypes, ApplicableTo = ApplicableTo, ApprovalGroups = ApprovalGroups)
+  output <- .quicksight$update_approval_policy_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_approval_policy <- quicksight_update_approval_policy
 
 #' Updates a brand
 #'
@@ -6800,11 +8707,12 @@ quicksight_update_brand_published_version <- function(AwsAccountId, BrandId, Ver
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the custom permissions profile that you want to update.
 #' @param CustomPermissionsName &#91;required&#93; The name of the custom permissions profile that you want to update.
 #' @param Capabilities A set of actions to include in the custom permissions profile.
+#' @param Governance The governance configuration for the custom permissions profile. The [`update_custom_permissions`][quicksight_update_custom_permissions] operation replaces all existing `Capabilities` and `Governance` values. If you omit this parameter, Amazon Quick removes governance from the profile and the existing custom permission behavior applies.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_update_custom_permissions
-quicksight_update_custom_permissions <- function(AwsAccountId, CustomPermissionsName, Capabilities = NULL) {
+quicksight_update_custom_permissions <- function(AwsAccountId, CustomPermissionsName, Capabilities = NULL, Governance = NULL) {
   op <- new_operation(
     name = "UpdateCustomPermissions",
     http_method = "PUT",
@@ -6813,7 +8721,7 @@ quicksight_update_custom_permissions <- function(AwsAccountId, CustomPermissions
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .quicksight$update_custom_permissions_input(AwsAccountId = AwsAccountId, CustomPermissionsName = CustomPermissionsName, Capabilities = Capabilities)
+  input <- .quicksight$update_custom_permissions_input(AwsAccountId = AwsAccountId, CustomPermissionsName = CustomPermissionsName, Capabilities = Capabilities, Governance = Governance)
   output <- .quicksight$update_custom_permissions_output()
   config <- get_config()
   svc <- .quicksight$service(config, op)
@@ -6835,7 +8743,7 @@ quicksight_update_custom_permissions <- function(AwsAccountId, CustomPermissions
 #' @param Name &#91;required&#93; The display name of the dashboard.
 #' @param SourceEntity The entity that you are using as a source when you update the dashboard. In `SourceEntity`, you specify the type of object you're using as source. You can only update a dashboard from a template, so you use a `SourceTemplate` entity. If you need to update a dashboard from an analysis, first convert the analysis to a template by using the [`create_template`][quicksight_create_template] API operation. For `SourceTemplate`, specify the Amazon Resource Name (ARN) of the source template. The `SourceTemplate` ARN can contain any Amazon Web Services account and any Amazon Quick Sight-supported Amazon Web Services Region.
 #' 
-#' Use the `DataSetReferences` entity within `SourceTemplate` to list the replacement datasets for the placeholders listed in the original. The schema in each dataset must match its placeholder.
+#' Use the `DataSetReferences` entity within `SourceTemplate` to list the replacement datasets for the placeholders listed in the original. The schema in each dataset must match its placeholder. Use the `TopicReferences` entity to list the replacement topics for the topic placeholders listed in the original. The schema in each topic must match its placeholder.
 #' @param Parameters A structure that contains the parameters of the dashboard. These are parameter overrides for a dashboard. A dashboard can have any type of parameters, and some parameters might accept multiple values.
 #' @param VersionDescription A description for the first version of the dashboard being created.
 #' @param DashboardPublishOptions Options for publishing the dashboard when you create it:
@@ -7016,7 +8924,7 @@ quicksight_update_dashboards_qa_configuration <- function(AwsAccountId, Dashboar
 #' Updates a dataset
 #'
 #' @description
-#' Updates a dataset. This operation doesn't support datasets that include uploaded files as a source. Partial updates are not supported by this operation.
+#' Updates a dataset. Partial updates are not supported by this operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_update_data_set/](https://www.paws-r-sdk.com/docs/quicksight_update_data_set/) for full documentation.
 #'
@@ -7197,6 +9105,82 @@ quicksight_update_default_q_business_application <- function(AwsAccountId, Names
   return(response)
 }
 .quicksight$operations$update_default_q_business_application <- quicksight_update_default_q_business_application
+
+#' Updates an existing DLP setting configuration in an Amazon Web Services
+#' account
+#'
+#' @description
+#' Updates an existing DLP setting configuration in an Amazon Web Services account. Fields that are omitted from the request retain their current values.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_dlp_setting/](https://www.paws-r-sdk.com/docs/quicksight_update_dlp_setting/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the DLP setting that you want to update.
+#' @param DlpSettingId &#91;required&#93; The ID of the DLP setting that you want to update.
+#' @param Name An updated display name for the DLP setting.
+#' @param ProviderType An updated DLP provider type. Currently, the only supported value is `MICROSOFT_PURVIEW`.
+#' @param ProviderConfig An updated provider-specific configuration for the DLP integration. This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
+#' @param ProviderOutageAction An updated behavior to apply when the DLP provider is unreachable. Valid values are `ALLOW`, `WARN`, and `BLOCK`.
+#' @param Enabled Specifies whether DLP enforcement is active for this setting. Set to `true` to enable enforcement, or `false` to disable it.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_dlp_setting
+quicksight_update_dlp_setting <- function(AwsAccountId, DlpSettingId, Name = NULL, ProviderType = NULL, ProviderConfig = NULL, ProviderOutageAction = NULL, Enabled = NULL) {
+  op <- new_operation(
+    name = "UpdateDlpSetting",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/data-loss-prevention/settings/{DlpSettingId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_dlp_setting_input(AwsAccountId = AwsAccountId, DlpSettingId = DlpSettingId, Name = Name, ProviderType = ProviderType, ProviderConfig = ProviderConfig, ProviderOutageAction = ProviderOutageAction, Enabled = Enabled)
+  output <- .quicksight$update_dlp_setting_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_dlp_setting <- quicksight_update_dlp_setting
+
+#' Updates an existing flow
+#'
+#' @description
+#' Updates an existing flow. Supply only the fields you want to change. Updates both DRAFT and PUBLISHED versions. When `FlowDefinition` is provided, all existing steps are replaced with the new definition.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_flow/](https://www.paws-r-sdk.com/docs/quicksight_update_flow/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the flow that you are updating.
+#' @param FlowId &#91;required&#93; The unique identifier of the flow to update.
+#' @param Name Updated display name for the flow. Omit to preserve the existing name.
+#' @param Description Updated description for the flow. Omit to preserve the existing description.
+#' @param FlowDefinition The definition of the flow, specifying the steps and configurations. This is the flow definition in Quick Flow's internal format. The format is subject to change. When provided, all existing steps are replaced. Omit to preserve the existing definition.
+#' 
+#' Always derive or depend on the flow definition from the [`describe_flow`][quicksight_describe_flow] operation to ensure you are working with the latest format.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_flow
+quicksight_update_flow <- function(AwsAccountId, FlowId, Name = NULL, Description = NULL, FlowDefinition = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateFlow",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/flows/{FlowId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_flow_input(AwsAccountId = AwsAccountId, FlowId = FlowId, Name = Name, Description = Description, FlowDefinition = FlowDefinition, ClientToken = ClientToken)
+  output <- .quicksight$update_flow_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_flow <- quicksight_update_flow
 
 #' Updates permissions against principals on a flow
 #'
@@ -7476,6 +9460,153 @@ quicksight_update_key_registration <- function(AwsAccountId, KeyRegistration) {
 }
 .quicksight$operations$update_key_registration <- quicksight_update_key_registration
 
+#' Updates the properties of an existing knowledge base
+#'
+#' @description
+#' Updates the properties of an existing knowledge base.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_knowledge_base/](https://www.paws-r-sdk.com/docs/quicksight_update_knowledge_base/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the knowledge base.
+#' @param KnowledgeBaseId &#91;required&#93; The unique identifier for the knowledge base.
+#' @param Name The name of the knowledge base. If you don't specify a name, the existing name is retained.
+#' @param Description A description for the knowledge base. If you don't specify a description, the existing description is retained.
+#' @param KnowledgeBaseConfiguration The configuration settings for a knowledge base.
+#' @param MediaExtractionConfiguration The configuration for media extraction from knowledge base documents.
+#' @param IsEmailNotificationOptedForIngestionFailures Specifies whether email notifications are enabled for ingestion failures.
+#' @param AccessControlConfiguration The access control configuration for the knowledge base. If you don't specify this parameter, the existing setting is retained.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_knowledge_base
+quicksight_update_knowledge_base <- function(AwsAccountId, KnowledgeBaseId, Name = NULL, Description = NULL, KnowledgeBaseConfiguration = NULL, MediaExtractionConfiguration = NULL, IsEmailNotificationOptedForIngestionFailures = NULL, AccessControlConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateKnowledgeBase",
+    http_method = "POST",
+    http_path = "/v1/accounts/{AwsAccountId}/knowledge-bases/{KnowledgeBaseId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_knowledge_base_input(AwsAccountId = AwsAccountId, KnowledgeBaseId = KnowledgeBaseId, Name = Name, Description = Description, KnowledgeBaseConfiguration = KnowledgeBaseConfiguration, MediaExtractionConfiguration = MediaExtractionConfiguration, IsEmailNotificationOptedForIngestionFailures = IsEmailNotificationOptedForIngestionFailures, AccessControlConfiguration = AccessControlConfiguration)
+  output <- .quicksight$update_knowledge_base_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_knowledge_base <- quicksight_update_knowledge_base
+
+#' Updates the resource permissions for a knowledge base
+#'
+#' @description
+#' Updates the resource permissions for a knowledge base.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_knowledge_base_permissions/](https://www.paws-r-sdk.com/docs/quicksight_update_knowledge_base_permissions/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the knowledge base.
+#' @param KnowledgeBaseId &#91;required&#93; The unique identifier for the knowledge base.
+#' @param GrantPermissions The resource permissions that you want to grant on the knowledge base.
+#' @param RevokePermissions The resource permissions that you want to revoke from the knowledge base.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_knowledge_base_permissions
+quicksight_update_knowledge_base_permissions <- function(AwsAccountId, KnowledgeBaseId, GrantPermissions = NULL, RevokePermissions = NULL) {
+  op <- new_operation(
+    name = "UpdateKnowledgeBasePermissions",
+    http_method = "POST",
+    http_path = "/v1/accounts/{AwsAccountId}/knowledge-bases/{KnowledgeBaseId}/permissions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_knowledge_base_permissions_input(AwsAccountId = AwsAccountId, KnowledgeBaseId = KnowledgeBaseId, GrantPermissions = GrantPermissions, RevokePermissions = RevokePermissions)
+  output <- .quicksight$update_knowledge_base_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_knowledge_base_permissions <- quicksight_update_knowledge_base_permissions
+
+#' Updates the properties of an existing limits profile
+#'
+#' @description
+#' Updates the properties of an existing limits profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_limits_profile/](https://www.paws-r-sdk.com/docs/quicksight_update_limits_profile/) for full documentation.
+#'
+#' @param profileId &#91;required&#93; The unique identifier for the limits profile to update.
+#' @param accountId &#91;required&#93; The ID of the Amazon Web Services account that contains the limits profile.
+#' @param profileName A new display name for the limits profile.
+#' @param description A new description for the limits profile.
+#' @param resourceLimits A map of resource types to their updated limit values.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_limits_profile
+quicksight_update_limits_profile <- function(profileId, accountId, profileName = NULL, description = NULL, resourceLimits = NULL) {
+  op <- new_operation(
+    name = "UpdateLimitsProfile",
+    http_method = "PUT",
+    http_path = "/governance/limits/accounts/{accountId}/profiles/{profileId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_limits_profile_input(profileId = profileId, accountId = accountId, profileName = profileName, description = description, resourceLimits = resourceLimits)
+  output <- .quicksight$update_limits_profile_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_limits_profile <- quicksight_update_limits_profile
+
+#' Updates an OAuthClientApplication
+#'
+#' @description
+#' Updates an OAuthClientApplication.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_o_auth_client_application/](https://www.paws-r-sdk.com/docs/quicksight_update_o_auth_client_application/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param OAuthClientApplicationId &#91;required&#93; The ID of the OAuthClientApplication that you want to update.
+#' @param Name &#91;required&#93; The display name for the OAuthClientApplication.
+#' @param ClientId The client ID of the OAuth application that is registered with the identity provider.
+#' @param ClientSecret The client secret of the OAuth application that is registered with the identity provider.
+#' @param OAuthTokenEndpointUrl The token endpoint URL of the identity provider that is used to obtain access tokens.
+#' @param OAuthAuthorizationEndpointUrl The authorization endpoint URL of the identity provider that is used to obtain authorization codes.
+#' @param OAuthScopes The OAuth scopes that are requested when the OAuthClientApplication obtains an access token from the identity provider.
+#' @param DataSourceType The type of data source that the OAuthClientApplication is used with. Valid values are `SNOWFLAKE`.
+#' @param IdentityProviderVpcConnectionProperties VPC connection properties.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_o_auth_client_application
+quicksight_update_o_auth_client_application <- function(AwsAccountId, OAuthClientApplicationId, Name, ClientId = NULL, ClientSecret = NULL, OAuthTokenEndpointUrl = NULL, OAuthAuthorizationEndpointUrl = NULL, OAuthScopes = NULL, DataSourceType = NULL, IdentityProviderVpcConnectionProperties = NULL) {
+  op <- new_operation(
+    name = "UpdateOAuthClientApplication",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/oauth-client-applications/{OAuthClientApplicationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_o_auth_client_application_input(AwsAccountId = AwsAccountId, OAuthClientApplicationId = OAuthClientApplicationId, Name = Name, ClientId = ClientId, ClientSecret = ClientSecret, OAuthTokenEndpointUrl = OAuthTokenEndpointUrl, OAuthAuthorizationEndpointUrl = OAuthAuthorizationEndpointUrl, OAuthScopes = OAuthScopes, DataSourceType = DataSourceType, IdentityProviderVpcConnectionProperties = IdentityProviderVpcConnectionProperties)
+  output <- .quicksight$update_o_auth_client_application_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_o_auth_client_application <- quicksight_update_o_auth_client_application
+
 #' This API controls public sharing settings for your entire Quick Sight
 #' account, affecting data security and access
 #'
@@ -7744,6 +9875,108 @@ quicksight_update_self_upgrade_configuration <- function(AwsAccountId, Namespace
 }
 .quicksight$operations$update_self_upgrade_configuration <- quicksight_update_self_upgrade_configuration
 
+#' Updates the metadata of an Amazon QuickSight space
+#'
+#' @description
+#' Updates the metadata of an Amazon QuickSight space.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_space/](https://www.paws-r-sdk.com/docs/quicksight_update_space/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the space.
+#' @param SpaceId &#91;required&#93; The ID of the space that you want to update.
+#' @param Name A new display name for the space.
+#' @param Description A new description for the space.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_space
+quicksight_update_space <- function(AwsAccountId, SpaceId, Name = NULL, Description = NULL) {
+  op <- new_operation(
+    name = "UpdateSpace",
+    http_method = "PUT",
+    http_path = "/v1/accounts/{AwsAccountId}/spaces/{SpaceId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_space_input(AwsAccountId = AwsAccountId, SpaceId = SpaceId, Name = Name, Description = Description)
+  output <- .quicksight$update_space_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_space <- quicksight_update_space
+
+#' Updates the permissions for an Amazon QuickSight space
+#'
+#' @description
+#' Updates the permissions for an Amazon QuickSight space.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_space_permissions/](https://www.paws-r-sdk.com/docs/quicksight_update_space_permissions/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the space.
+#' @param SpaceId &#91;required&#93; The ID of the space that you want to update permissions for.
+#' @param GrantPermissions The permissions that you want to grant on the space.
+#' @param RevokePermissions The permissions that you want to revoke from the space.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_space_permissions
+quicksight_update_space_permissions <- function(AwsAccountId, SpaceId, GrantPermissions = NULL, RevokePermissions = NULL) {
+  op <- new_operation(
+    name = "UpdateSpacePermissions",
+    http_method = "PUT",
+    http_path = "/v1/accounts/{AwsAccountId}/spaces/{SpaceId}/permissions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_space_permissions_input(AwsAccountId = AwsAccountId, SpaceId = SpaceId, GrantPermissions = GrantPermissions, RevokePermissions = RevokePermissions)
+  output <- .quicksight$update_space_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_space_permissions <- quicksight_update_space_permissions
+
+#' Adds or removes resources from an Amazon QuickSight space
+#'
+#' @description
+#' Adds or removes resources from an Amazon QuickSight space.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_space_resources/](https://www.paws-r-sdk.com/docs/quicksight_update_space_resources/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the space.
+#' @param SpaceId &#91;required&#93; The ID of the space that you want to update resources for.
+#' @param AddResources A list of resources to add to the space.
+#' @param RemoveResources A list of resources to remove from the space.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_space_resources
+quicksight_update_space_resources <- function(AwsAccountId, SpaceId, AddResources = NULL, RemoveResources = NULL) {
+  op <- new_operation(
+    name = "UpdateSpaceResources",
+    http_method = "PUT",
+    http_path = "/v1/accounts/{AwsAccountId}/spaces/{SpaceId}/resources",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_space_resources_input(AwsAccountId = AwsAccountId, SpaceId = SpaceId, AddResources = AddResources, RemoveResources = RemoveResources)
+  output <- .quicksight$update_space_resources_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_space_resources <- quicksight_update_space_resources
+
 #' Updates a template from an existing Amazon Quick Sight analysis or
 #' another template
 #'
@@ -7756,7 +9989,7 @@ quicksight_update_self_upgrade_configuration <- function(AwsAccountId, Namespace
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #' @param SourceEntity The entity that you are using as a source when you update the template. In `SourceEntity`, you specify the type of object you're using as source: `SourceTemplate` for a template or `SourceAnalysis` for an analysis. Both of these require an Amazon Resource Name (ARN). For `SourceTemplate`, specify the ARN of the source template. For `SourceAnalysis`, specify the ARN of the source analysis. The `SourceTemplate` ARN can contain any Amazon Web Services account and any Quick Sight-supported Amazon Web Services Region;.
 #' 
-#' Use the `DataSetReferences` entity within `SourceTemplate` or `SourceAnalysis` to list the replacement datasets for the placeholders listed in the original. The schema in each dataset must match its placeholder.
+#' Use the `DataSetReferences` entity within `SourceTemplate` or `SourceAnalysis` to list the replacement datasets for the placeholders listed in the original. The schema in each dataset must match its placeholder. Use the `TopicReferences` entity to list the replacement topics for the topic placeholders listed in the original. The schema in each topic must match its placeholder.
 #' @param VersionDescription A description of the current template version that is being updated. Every time you call [`update_template`][quicksight_update_template], you create a new version of the template. Each version of the template maintains a description of the version in the `VersionDescription` field.
 #' @param Name The name for the template.
 #' @param Definition The definition of a template.
@@ -8026,6 +10259,40 @@ quicksight_update_topic_permissions <- function(AwsAccountId, TopicId, GrantPerm
 }
 .quicksight$operations$update_topic_permissions <- quicksight_update_topic_permissions
 
+#' Updates the permissions of a topic
+#'
+#' @description
+#' Updates the permissions of a topic.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_topic_permissions_v2/](https://www.paws-r-sdk.com/docs/quicksight_update_topic_permissions_v2/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic that you want to update the permissions for.
+#' @param TopicId &#91;required&#93; The ID of the topic that you want to modify. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.
+#' @param GrantPermissions The resource permissions that you want to grant to the topic.
+#' @param RevokePermissions The resource permissions that you want to revoke from the topic.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_topic_permissions_v2
+quicksight_update_topic_permissions_v2 <- function(AwsAccountId, TopicId, GrantPermissions = NULL, RevokePermissions = NULL) {
+  op <- new_operation(
+    name = "UpdateTopicPermissionsV2",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/topicsV2/{TopicId}/permissions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_topic_permissions_v2_input(AwsAccountId = AwsAccountId, TopicId = TopicId, GrantPermissions = GrantPermissions, RevokePermissions = RevokePermissions)
+  output <- .quicksight$update_topic_permissions_v2_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_topic_permissions_v2 <- quicksight_update_topic_permissions_v2
+
 #' Updates a topic refresh schedule
 #'
 #' @description
@@ -8059,6 +10326,41 @@ quicksight_update_topic_refresh_schedule <- function(AwsAccountId, TopicId, Data
   return(response)
 }
 .quicksight$operations$update_topic_refresh_schedule <- quicksight_update_topic_refresh_schedule
+
+#' Updates the definition of a Q topic
+#'
+#' @description
+#' Updates the definition of a Q topic.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_topic_v2/](https://www.paws-r-sdk.com/docs/quicksight_update_topic_v2/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic that you want to update.
+#' @param TopicId &#91;required&#93; The ID of the topic that you want to modify. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.
+#' @param Topic &#91;required&#93; The definition of the topic that you want to update.
+#' @param CustomInstructions Instructions that provide additional guidance and context for response generation.
+#' @param PublishOption The publish option for the topic that you want to update.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_topic_v2
+quicksight_update_topic_v2 <- function(AwsAccountId, TopicId, Topic, CustomInstructions = NULL, PublishOption = NULL) {
+  op <- new_operation(
+    name = "UpdateTopicV2",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/topicsV2/{TopicId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_topic_v2_input(AwsAccountId = AwsAccountId, TopicId = TopicId, Topic = Topic, CustomInstructions = CustomInstructions, PublishOption = PublishOption)
+  output <- .quicksight$update_topic_v2_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_topic_v2 <- quicksight_update_topic_v2
 
 #' Updates an Amazon Quick Sight user
 #'

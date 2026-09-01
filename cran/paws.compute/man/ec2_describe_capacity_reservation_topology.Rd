@@ -29,7 +29,7 @@ Default: \code{10}}
 
 Default: Describes all your Capacity Reservations.
 
-Constraints: Maximum 100 explicitly specified Capacity Reservation IDs.}
+Constraints: Maximum 10 explicitly specified Capacity Reservation IDs.}
 
 \item{Filters}{The filters.
 \itemize{

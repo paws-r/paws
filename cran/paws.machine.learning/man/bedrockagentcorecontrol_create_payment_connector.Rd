@@ -10,6 +10,7 @@ bedrockagentcorecontrol_create_payment_connector(
   description = NULL,
   type,
   credentialProviderConfigurations,
+  provisionMode = NULL,
   clientToken = NULL
 )
 }
@@ -23,6 +24,12 @@ bedrockagentcorecontrol_create_payment_connector(
 \item{type}{[required] The type of payment connector, which determines the payment provider integration.}
 
 \item{credentialProviderConfigurations}{[required] The credential provider configurations for the payment connector. These configurations specify how the connector authenticates with the payment provider.}
+
+\item{provisionMode}{The provision mode for creating the payment connector. If you don't specify a value, the default is \code{MANUAL}.
+\itemize{
+\item \code{MANUAL} - You provide the credential provider configurations directly.
+\item \code{QUICK_CREATE} - The service orchestrates OAuth consent and provisions the credential provider for you.
+}}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 }

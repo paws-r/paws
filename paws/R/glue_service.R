@@ -85,13 +85,14 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- glue()
-#' svc$batch_create_partition(
+#' svc$associate_glossary_terms(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=glue_associate_glossary_terms]{associate_glossary_terms} \tab Associates one or more glossary terms with an asset in Glue Data Catalog\cr
 #'  \link[=glue_batch_create_partition]{batch_create_partition} \tab Creates one or more partitions in a batch operation\cr
 #'  \link[=glue_batch_delete_connection]{batch_delete_connection} \tab Deletes a list of connection definitions from the Data Catalog\cr
 #'  \link[=glue_batch_delete_partition]{batch_delete_partition} \tab Deletes one or more partitions in a batch operation\cr
@@ -101,7 +102,9 @@ NULL
 #'  \link[=glue_batch_get_crawlers]{batch_get_crawlers} \tab Returns a list of resource metadata for a given list of crawler names\cr
 #'  \link[=glue_batch_get_custom_entity_types]{batch_get_custom_entity_types} \tab Retrieves the details for the custom patterns specified by a list of names\cr
 #'  \link[=glue_batch_get_data_quality_result]{batch_get_data_quality_result} \tab Retrieves a list of data quality results for the specified result IDs\cr
+#'  \link[=glue_batch_get_data_quality_ruleset_evaluation_run]{batch_get_data_quality_ruleset_evaluation_run} \tab Retrieves the details of multiple evaluation runs in a single request\cr
 #'  \link[=glue_batch_get_dev_endpoints]{batch_get_dev_endpoints} \tab Returns a list of resource metadata for a given list of development endpoint names\cr
+#'  \link[=glue_batch_get_iterable_forms]{batch_get_iterable_forms} \tab Retrieves multiple items from an iterable form on an asset in Glue Data Catalog in a single request\cr
 #'  \link[=glue_batch_get_jobs]{batch_get_jobs} \tab Returns a list of resource metadata for a given list of job names\cr
 #'  \link[=glue_batch_get_partition]{batch_get_partition} \tab Retrieves partitions in a batch request\cr
 #'  \link[=glue_batch_get_table_optimizer]{batch_get_table_optimizer} \tab Returns the configuration for the specified table optimizers\cr
@@ -125,6 +128,8 @@ NULL
 #'  \link[=glue_create_database]{create_database} \tab Creates a new database in a Data Catalog\cr
 #'  \link[=glue_create_data_quality_ruleset]{create_data_quality_ruleset} \tab Creates a data quality ruleset with DQDL rules applied to a specified Glue table\cr
 #'  \link[=glue_create_dev_endpoint]{create_dev_endpoint} \tab Creates a new development endpoint\cr
+#'  \link[=glue_create_glossary]{create_glossary} \tab Creates a business glossary in Glue Data Catalog\cr
+#'  \link[=glue_create_glossary_term]{create_glossary_term} \tab Creates a glossary term within a business glossary in Glue Data Catalog\cr
 #'  \link[=glue_create_glue_identity_center_configuration]{create_glue_identity_center_configuration} \tab Creates a new Glue Identity Center configuration to enable integration between Glue and Amazon Web Services IAM Identity Center for authentication and authorization\cr
 #'  \link[=glue_create_integration]{create_integration} \tab Creates a Zero-ETL integration in the caller's account between two resources with Amazon Resource Names (ARNs): the SourceArn and TargetArn\cr
 #'  \link[=glue_create_integration_resource_property]{create_integration_resource_property} \tab This API can be used for setting up the ResourceProperty of the Glue connection (for the source) or Glue database ARN (for the target)\cr
@@ -144,6 +149,9 @@ NULL
 #'  \link[=glue_create_usage_profile]{create_usage_profile} \tab Creates an Glue usage profile\cr
 #'  \link[=glue_create_user_defined_function]{create_user_defined_function} \tab Creates a new function definition in the Data Catalog\cr
 #'  \link[=glue_create_workflow]{create_workflow} \tab Creates a new workflow\cr
+#'  \link[=glue_delete_asset]{delete_asset} \tab Deletes an asset from Glue Data Catalog\cr
+#'  \link[=glue_delete_asset_type]{delete_asset_type} \tab Deletes an asset type from Glue Data Catalog\cr
+#'  \link[=glue_delete_attachment]{delete_attachment} \tab Deletes a form attachment from an asset in Glue Data Catalog\cr
 #'  \link[=glue_delete_blueprint]{delete_blueprint} \tab Deletes an existing blueprint\cr
 #'  \link[=glue_delete_catalog]{delete_catalog} \tab Removes the specified catalog from the Glue Data Catalog\cr
 #'  \link[=glue_delete_classifier]{delete_classifier} \tab Removes a classifier from the Data Catalog\cr
@@ -157,6 +165,9 @@ NULL
 #'  \link[=glue_delete_database]{delete_database} \tab Removes a specified database from a Data Catalog\cr
 #'  \link[=glue_delete_data_quality_ruleset]{delete_data_quality_ruleset} \tab Deletes a data quality ruleset\cr
 #'  \link[=glue_delete_dev_endpoint]{delete_dev_endpoint} \tab Deletes a specified development endpoint\cr
+#'  \link[=glue_delete_form_type]{delete_form_type} \tab Deletes a form type from Glue Data Catalog\cr
+#'  \link[=glue_delete_glossary]{delete_glossary} \tab Deletes a business glossary from Glue Data Catalog\cr
+#'  \link[=glue_delete_glossary_term]{delete_glossary_term} \tab Deletes a glossary term from Glue Data Catalog\cr
 #'  \link[=glue_delete_glue_identity_center_configuration]{delete_glue_identity_center_configuration} \tab Deletes the existing Glue Identity Center configuration, removing the integration between Glue and Amazon Web Services IAM Identity Center\cr
 #'  \link[=glue_delete_integration]{delete_integration} \tab Deletes the specified Zero-ETL integration\cr
 #'  \link[=glue_delete_integration_resource_property]{delete_integration_resource_property} \tab This API is used for deleting the ResourceProperty of the Glue connection (for the source) or Glue database ARN (for the target)\cr
@@ -182,6 +193,9 @@ NULL
 #'  \link[=glue_describe_entity]{describe_entity} \tab Provides details regarding the entity used with the connection type, with a description of the data model for each field in the selected entity\cr
 #'  \link[=glue_describe_inbound_integrations]{describe_inbound_integrations} \tab Returns a list of inbound integrations for the specified integration\cr
 #'  \link[=glue_describe_integrations]{describe_integrations} \tab The API is used to retrieve a list of integrations\cr
+#'  \link[=glue_disassociate_glossary_terms]{disassociate_glossary_terms} \tab Removes the association of one or more glossary terms from an asset in Glue Data Catalog\cr
+#'  \link[=glue_get_asset]{get_asset} \tab Retrieves the metadata for an asset in Glue Data Catalog, including its forms, additional attachments, and associated glossary terms\cr
+#'  \link[=glue_get_asset_type]{get_asset_type} \tab Retrieves an asset type in Glue Data Catalog by its identifier\cr
 #'  \link[=glue_get_blueprint]{get_blueprint} \tab Retrieves the details of a blueprint\cr
 #'  \link[=glue_get_blueprint_run]{get_blueprint_run} \tab Retrieves the details of a blueprint run\cr
 #'  \link[=glue_get_blueprint_runs]{get_blueprint_runs} \tab Retrieves the details of blueprint runs for a specified blueprint\cr
@@ -201,9 +215,11 @@ NULL
 #'  \link[=glue_get_crawler_metrics]{get_crawler_metrics} \tab Retrieves metrics about specified crawlers\cr
 #'  \link[=glue_get_crawlers]{get_crawlers} \tab Retrieves metadata for all crawlers defined in the customer account\cr
 #'  \link[=glue_get_custom_entity_type]{get_custom_entity_type} \tab Retrieves the details of a custom pattern by specifying its name\cr
+#'  \link[=glue_get_dashboard_url]{get_dashboard_url} \tab Retrieves the URL for the Spark monitoring dashboard for a Glue resource\cr
 #'  \link[=glue_get_database]{get_database} \tab Retrieves the definition of a specified database\cr
 #'  \link[=glue_get_databases]{get_databases} \tab Retrieves all databases defined in a given Data Catalog\cr
 #'  \link[=glue_get_data_catalog_encryption_settings]{get_data_catalog_encryption_settings} \tab Retrieves the security configuration for a specified catalog\cr
+#'  \link[=glue_get_data_catalog_export_configuration]{get_data_catalog_export_configuration} \tab Retrieves the current export configuration for the Glue Data Catalog\cr
 #'  \link[=glue_get_dataflow_graph]{get_dataflow_graph} \tab Transforms a Python script into a directed acyclic graph (DAG)\cr
 #'  \link[=glue_get_data_quality_model]{get_data_quality_model} \tab Retrieve the training status of the model along with more information (CompletedOn, StartedOn, FailureReason)\cr
 #'  \link[=glue_get_data_quality_model_result]{get_data_quality_model_result} \tab Retrieve a statistic's predictions for a given Profile ID\cr
@@ -214,6 +230,9 @@ NULL
 #'  \link[=glue_get_dev_endpoint]{get_dev_endpoint} \tab Retrieves information about a specified development endpoint\cr
 #'  \link[=glue_get_dev_endpoints]{get_dev_endpoints} \tab Retrieves all the development endpoints in this Amazon Web Services account\cr
 #'  \link[=glue_get_entity_records]{get_entity_records} \tab This API is used to query preview data from a given connection type or from a native Amazon S3 based Glue Data Catalog\cr
+#'  \link[=glue_get_form_type]{get_form_type} \tab Retrieves a form type in Glue Data Catalog by its identifier\cr
+#'  \link[=glue_get_glossary]{get_glossary} \tab Retrieves a business glossary in Glue Data Catalog by its identifier\cr
+#'  \link[=glue_get_glossary_term]{get_glossary_term} \tab Retrieves a glossary term in Glue Data Catalog by its identifier\cr
 #'  \link[=glue_get_glue_identity_center_configuration]{get_glue_identity_center_configuration} \tab Retrieves the current Glue Identity Center configuration details, including the associated Identity Center instance and application information\cr
 #'  \link[=glue_get_integration_resource_property]{get_integration_resource_property} \tab This API is used for fetching the ResourceProperty of the Glue connection (for the source) or Glue database ARN (for the target)\cr
 #'  \link[=glue_get_integration_table_properties]{get_integration_table_properties} \tab This API is used to retrieve optional override properties for the tables that need to be replicated\cr
@@ -242,6 +261,7 @@ NULL
 #'  \link[=glue_get_security_configuration]{get_security_configuration} \tab Retrieves a specified security configuration\cr
 #'  \link[=glue_get_security_configurations]{get_security_configurations} \tab Retrieves a list of all security configurations\cr
 #'  \link[=glue_get_session]{get_session} \tab Retrieves the session\cr
+#'  \link[=glue_get_session_endpoint]{get_session_endpoint} \tab Returns the Spark Connect endpoint URL and authentication token for an interactive session\cr
 #'  \link[=glue_get_statement]{get_statement} \tab Retrieves the statement\cr
 #'  \link[=glue_get_table]{get_table} \tab Retrieves the Table definition in a Data Catalog for a specified table\cr
 #'  \link[=glue_get_table_optimizer]{get_table_optimizer} \tab Returns the configuration of all optimizers associated with a specified table\cr
@@ -262,6 +282,7 @@ NULL
 #'  \link[=glue_get_workflow_run_properties]{get_workflow_run_properties} \tab Retrieves the workflow run properties which were set during the run\cr
 #'  \link[=glue_get_workflow_runs]{get_workflow_runs} \tab Retrieves metadata for all runs of a given workflow\cr
 #'  \link[=glue_import_catalog_to_glue]{import_catalog_to_glue} \tab Imports an existing Amazon Athena Data Catalog to Glue\cr
+#'  \link[=glue_list_asset_types]{list_asset_types} \tab Lists the asset types defined in Glue Data Catalog\cr
 #'  \link[=glue_list_blueprints]{list_blueprints} \tab Lists all the blueprint names in an account\cr
 #'  \link[=glue_list_column_statistics_task_runs]{list_column_statistics_task_runs} \tab List all task runs for a particular account\cr
 #'  \link[=glue_list_connection_types]{list_connection_types} \tab The ListConnectionTypes API provides a discovery mechanism to learn available connection types in Glue\cr
@@ -276,7 +297,11 @@ NULL
 #'  \link[=glue_list_data_quality_statistics]{list_data_quality_statistics} \tab Retrieves a list of data quality statistics\cr
 #'  \link[=glue_list_dev_endpoints]{list_dev_endpoints} \tab Retrieves the names of all DevEndpoint resources in this Amazon Web Services account, or the resources with the specified tag\cr
 #'  \link[=glue_list_entities]{list_entities} \tab Returns the available entities supported by the connection type\cr
+#'  \link[=glue_list_form_types]{list_form_types} \tab Lists the form types defined in Glue Data Catalog\cr
+#'  \link[=glue_list_glossaries]{list_glossaries} \tab Lists business glossaries in Glue Data Catalog\cr
+#'  \link[=glue_list_glossary_terms]{list_glossary_terms} \tab Lists glossary terms within a business glossary in Glue Data Catalog\cr
 #'  \link[=glue_list_integration_resource_properties]{list_integration_resource_properties} \tab List integration resource properties for a single customer\cr
+#'  \link[=glue_list_iterable_forms]{list_iterable_forms} \tab Lists the items in an iterable form on an asset in Glue Data Catalog\cr
 #'  \link[=glue_list_jobs]{list_jobs} \tab Retrieves the names of all job resources in this Amazon Web Services account, or the resources with the specified tag\cr
 #'  \link[=glue_list_materialized_view_refresh_task_runs]{list_materialized_view_refresh_task_runs} \tab List all task runs for a particular account\cr
 #'  \link[=glue_list_ml_transforms]{list_ml_transforms} \tab Retrieves a sortable, filterable list of existing Glue machine learning transforms in this Amazon Web Services account, or the resources with the specified tag\cr
@@ -290,8 +315,13 @@ NULL
 #'  \link[=glue_list_usage_profiles]{list_usage_profiles} \tab List all the Glue usage profiles\cr
 #'  \link[=glue_list_workflows]{list_workflows} \tab Lists names of workflows created in the account\cr
 #'  \link[=glue_modify_integration]{modify_integration} \tab Modifies a Zero-ETL integration in the caller's account\cr
+#'  \link[=glue_put_asset]{put_asset} \tab Creates or updates an asset in Glue Data Catalog\cr
+#'  \link[=glue_put_asset_type]{put_asset_type} \tab Creates or updates an asset type in Glue Data Catalog\cr
+#'  \link[=glue_put_attachment]{put_attachment} \tab Attaches a form to an asset or an iterable form item in Glue Data Catalog\cr
 #'  \link[=glue_put_data_catalog_encryption_settings]{put_data_catalog_encryption_settings} \tab Sets the security configuration for a specified catalog\cr
+#'  \link[=glue_put_data_catalog_export_configuration]{put_data_catalog_export_configuration} \tab Creates or updates the export configuration for the Glue Data Catalog\cr
 #'  \link[=glue_put_data_quality_profile_annotation]{put_data_quality_profile_annotation} \tab Annotate all datapoints for a Profile\cr
+#'  \link[=glue_put_form_type]{put_form_type} \tab Creates or updates a form type in Glue Data Catalog\cr
 #'  \link[=glue_put_resource_policy]{put_resource_policy} \tab Sets the Data Catalog resource policy for access control\cr
 #'  \link[=glue_put_schema_version_metadata]{put_schema_version_metadata} \tab Puts the metadata key value pair for a specified schema version ID\cr
 #'  \link[=glue_put_workflow_run_properties]{put_workflow_run_properties} \tab Puts the specified workflow run properties for the given workflow run\cr
@@ -302,6 +332,7 @@ NULL
 #'  \link[=glue_reset_job_bookmark]{reset_job_bookmark} \tab Resets a bookmark entry\cr
 #'  \link[=glue_resume_workflow_run]{resume_workflow_run} \tab Restarts selected nodes of a previous partially completed workflow run and resumes the workflow run\cr
 #'  \link[=glue_run_statement]{run_statement} \tab Executes the statement\cr
+#'  \link[=glue_search_assets]{search_assets} \tab Searches for assets in Glue Data Catalog using full-text search, filters, sorting, and aggregations\cr
 #'  \link[=glue_search_tables]{search_tables} \tab Searches a set of tables based on properties in the table metadata as well as on the parent database\cr
 #'  \link[=glue_start_blueprint_run]{start_blueprint_run} \tab Starts a new run of the specified blueprint\cr
 #'  \link[=glue_start_column_statistics_task_run]{start_column_statistics_task_run} \tab Starts a column statistics task run, for a specified table and columns\cr
@@ -313,7 +344,7 @@ NULL
 #'  \link[=glue_start_export_labels_task_run]{start_export_labels_task_run} \tab Begins an asynchronous task to export all labeled data for a particular transform\cr
 #'  \link[=glue_start_import_labels_task_run]{start_import_labels_task_run} \tab Enables you to provide additional labels (examples of truth) to be used to teach the machine learning transform and improve its quality\cr
 #'  \link[=glue_start_job_run]{start_job_run} \tab Starts a job run using a job definition\cr
-#'  \link[=glue_start_materialized_view_refresh_task_run]{start_materialized_view_refresh_task_run} \tab Starts a materialized view refresh task run, for a specified table and columns\cr
+#'  \link[=glue_start_materialized_view_refresh_task_run]{start_materialized_view_refresh_task_run} \tab Starts a materialized view refresh task run for a specified materialized view\cr
 #'  \link[=glue_start_ml_evaluation_task_run]{start_ml_evaluation_task_run} \tab Starts a task to estimate the quality of the transform\cr
 #'  \link[=glue_start_ml_labeling_set_generation_task_run]{start_ml_labeling_set_generation_task_run} \tab Starts the active learning workflow for your machine learning transform to improve the transform's quality by generating label sets and adding labels\cr
 #'  \link[=glue_start_trigger]{start_trigger} \tab Starts an existing trigger\cr
@@ -322,13 +353,14 @@ NULL
 #'  \link[=glue_stop_column_statistics_task_run_schedule]{stop_column_statistics_task_run_schedule} \tab Stops a column statistics task run schedule\cr
 #'  \link[=glue_stop_crawler]{stop_crawler} \tab If the specified crawler is running, stops the crawl\cr
 #'  \link[=glue_stop_crawler_schedule]{stop_crawler_schedule} \tab Sets the schedule state of the specified crawler to NOT_SCHEDULED, but does not stop the crawler if it is already running\cr
-#'  \link[=glue_stop_materialized_view_refresh_task_run]{stop_materialized_view_refresh_task_run} \tab Stops a materialized view refresh task run, for a specified table and columns\cr
+#'  \link[=glue_stop_materialized_view_refresh_task_run]{stop_materialized_view_refresh_task_run} \tab Stops a materialized view refresh task run for a specified materialized view\cr
 #'  \link[=glue_stop_session]{stop_session} \tab Stops the session\cr
 #'  \link[=glue_stop_trigger]{stop_trigger} \tab Stops a specified trigger\cr
 #'  \link[=glue_stop_workflow_run]{stop_workflow_run} \tab Stops the execution of the specified workflow run\cr
 #'  \link[=glue_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
 #'  \link[=glue_test_connection]{test_connection} \tab Tests a connection to a service to validate the service credentials that you provide\cr
 #'  \link[=glue_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
+#'  \link[=glue_update_asset]{update_asset} \tab Updates the name and description of an existing asset in Glue Data Catalog\cr
 #'  \link[=glue_update_blueprint]{update_blueprint} \tab Updates a registered blueprint\cr
 #'  \link[=glue_update_catalog]{update_catalog} \tab Updates an existing catalog's properties in the Glue Data Catalog\cr
 #'  \link[=glue_update_classifier]{update_classifier} \tab Modifies an existing classifier (a GrokClassifier, an XMLClassifier, a JsonClassifier, or a CsvClassifier, depending on which field is present)\cr
@@ -341,6 +373,8 @@ NULL
 #'  \link[=glue_update_database]{update_database} \tab Updates an existing database definition in a Data Catalog\cr
 #'  \link[=glue_update_data_quality_ruleset]{update_data_quality_ruleset} \tab Updates the specified data quality ruleset\cr
 #'  \link[=glue_update_dev_endpoint]{update_dev_endpoint} \tab Updates a specified development endpoint\cr
+#'  \link[=glue_update_glossary]{update_glossary} \tab Updates a business glossary in Glue Data Catalog\cr
+#'  \link[=glue_update_glossary_term]{update_glossary_term} \tab Updates a glossary term in Glue Data Catalog\cr
 #'  \link[=glue_update_glue_identity_center_configuration]{update_glue_identity_center_configuration} \tab Updates the existing Glue Identity Center configuration, allowing modification of scopes and permissions for the integration\cr
 #'  \link[=glue_update_integration_resource_property]{update_integration_resource_property} \tab This API can be used for updating the ResourceProperty of the Glue connection (for the source) or Glue database ARN (for the target)\cr
 #'  \link[=glue_update_integration_table_properties]{update_integration_table_properties} \tab This API is used to provide optional override properties for the tables that need to be replicated\cr

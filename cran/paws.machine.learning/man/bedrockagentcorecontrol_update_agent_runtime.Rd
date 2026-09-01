@@ -8,7 +8,7 @@ bedrockagentcorecontrol_update_agent_runtime(
   agentRuntimeId,
   agentRuntimeArtifact,
   roleArn,
-  networkConfiguration,
+  networkConfiguration = NULL,
   description = NULL,
   authorizerConfiguration = NULL,
   requestHeaderConfiguration = NULL,
@@ -17,6 +17,7 @@ bedrockagentcorecontrol_update_agent_runtime(
   metadataConfiguration = NULL,
   environmentVariables = NULL,
   filesystemConfigurations = NULL,
+  capacityProviderConfiguration = NULL,
   clientToken = NULL
 )
 }
@@ -27,7 +28,7 @@ bedrockagentcorecontrol_update_agent_runtime(
 
 \item{roleArn}{[required] The updated IAM role ARN that provides permissions for the AgentCore Runtime.}
 
-\item{networkConfiguration}{[required] The updated network configuration for the AgentCore Runtime.}
+\item{networkConfiguration}{The updated network configuration for the AgentCore Runtime.}
 
 \item{description}{The updated description of the AgentCore Runtime.}
 
@@ -44,6 +45,8 @@ bedrockagentcorecontrol_update_agent_runtime(
 \item{environmentVariables}{Updated environment variables to set in the AgentCore Runtime environment.}
 
 \item{filesystemConfigurations}{The updated filesystem configurations to mount into the AgentCore Runtime.}
+
+\item{capacityProviderConfiguration}{The updated capacity provider configuration for the AgentCore Runtime.}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the request.}
 }

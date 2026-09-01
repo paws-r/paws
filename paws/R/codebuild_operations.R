@@ -223,7 +223,8 @@ codebuild_batch_delete_builds <- function(ids) {
 #'             status = "string",
 #'             message = "string"
 #'           )
-#'         )
+#'         ),
+#'         hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'       ),
 #'       serviceRole = "string",
 #'       logConfig = list(
@@ -534,7 +535,8 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'             status = "string",
 #'             message = "string"
 #'           )
-#'         )
+#'         ),
+#'         hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'       ),
 #'       serviceRole = "string",
 #'       logs = list(
@@ -1013,7 +1015,8 @@ codebuild_batch_get_fleets <- function(names) {
 #'             status = "string",
 #'             message = "string"
 #'           )
-#'         )
+#'         ),
+#'         hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'       ),
 #'       serviceRole = "string",
 #'       timeoutInMinutes = 123,
@@ -1455,7 +1458,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'             status = "string",
 #'             message = "string"
 #'           )
-#'         )
+#'         ),
+#'         hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'       ),
 #'       fileSystemLocations = list(
 #'         list(
@@ -2027,7 +2031,8 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'           status = "string",
 #'           message = "string"
 #'         )
-#'       )
+#'       ),
+#'       hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'     ),
 #'     serviceRole = "string",
 #'     timeoutInMinutes = 123,
@@ -2262,7 +2267,8 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'         status = "string",
 #'         message = "string"
 #'       )
-#'     )
+#'     ),
+#'     hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'   ),
 #'   serviceRole = "string",
 #'   timeoutInMinutes = 123,
@@ -4643,7 +4649,8 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'           status = "string",
 #'           message = "string"
 #'         )
-#'       )
+#'       ),
+#'       hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'     ),
 #'     serviceRole = "string",
 #'     logs = list(
@@ -4910,7 +4917,8 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'           status = "string",
 #'           message = "string"
 #'         )
-#'       )
+#'       ),
+#'       hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'     ),
 #'     serviceRole = "string",
 #'     logConfig = list(
@@ -5075,7 +5083,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'   queuedTimeoutInMinutesOverride, encryptionKeyOverride, idempotencyToken,
 #'   logsConfigOverride, registryCredentialOverride,
 #'   imagePullCredentialsTypeOverride, debugSessionEnabled, fleetOverride,
-#'   autoRetryLimitOverride)
+#'   autoRetryLimitOverride, hostKernelOverride)
 #'
 #' @param projectName &#91;required&#93; The name of the CodeBuild build project to start running a build.
 #' @param secondarySourcesOverride An array of `ProjectSource` objects.
@@ -5156,6 +5164,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @param debugSessionEnabled Specifies if session debugging is enabled for this build. For more information, see [Viewing a running build in Session Manager](https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html).
 #' @param fleetOverride A ProjectFleet object specified for this build that overrides the one defined in the build project.
 #' @param autoRetryLimitOverride The maximum number of additional automatic retries after a failed build. For example, if the auto-retry limit is set to 2, CodeBuild will call the [`retry_build`][codebuild_retry_build] API to automatically retry your build for up to 2 additional times.
+#' @param hostKernelOverride The host operating system kernel for this build that overrides the one specified in the build project.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5308,7 +5317,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'           status = "string",
 #'           message = "string"
 #'         )
-#'       )
+#'       ),
+#'       hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'     ),
 #'     serviceRole = "string",
 #'     logs = list(
@@ -5504,7 +5514,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'   fleetOverride = list(
 #'     fleetArn = "string"
 #'   ),
-#'   autoRetryLimitOverride = 123
+#'   autoRetryLimitOverride = 123,
+#'   hostKernelOverride = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #' )
 #' ```
 #'
@@ -5513,7 +5524,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @rdname codebuild_start_build
 #'
 #' @aliases codebuild_start_build
-codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildStatusOverride = NULL, buildStatusConfigOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, timeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL, debugSessionEnabled = NULL, fleetOverride = NULL, autoRetryLimitOverride = NULL) {
+codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildStatusOverride = NULL, buildStatusConfigOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, timeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL, debugSessionEnabled = NULL, fleetOverride = NULL, autoRetryLimitOverride = NULL, hostKernelOverride = NULL) {
   op <- new_operation(
     name = "StartBuild",
     http_method = "POST",
@@ -5522,7 +5533,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codebuild$start_build_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildStatusOverride = reportBuildStatusOverride, buildStatusConfigOverride = buildStatusConfigOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, timeoutInMinutesOverride = timeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, debugSessionEnabled = debugSessionEnabled, fleetOverride = fleetOverride, autoRetryLimitOverride = autoRetryLimitOverride)
+  input <- .codebuild$start_build_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildStatusOverride = reportBuildStatusOverride, buildStatusConfigOverride = buildStatusConfigOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, timeoutInMinutesOverride = timeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, debugSessionEnabled = debugSessionEnabled, fleetOverride = fleetOverride, autoRetryLimitOverride = autoRetryLimitOverride, hostKernelOverride = hostKernelOverride)
   output <- .codebuild$start_build_output()
   config <- get_config()
   svc <- .codebuild$service(config, op)
@@ -5772,7 +5783,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'           status = "string",
 #'           message = "string"
 #'         )
-#'       )
+#'       ),
+#'       hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'     ),
 #'     serviceRole = "string",
 #'     logConfig = list(
@@ -6248,7 +6260,8 @@ codebuild_start_command_execution <- function(sandboxId, command, type = NULL) {
 #'           status = "string",
 #'           message = "string"
 #'         )
-#'       )
+#'       ),
+#'       hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'     ),
 #'     fileSystemLocations = list(
 #'       list(
@@ -6589,7 +6602,8 @@ codebuild_start_sandbox_connection <- function(sandboxId) {
 #'           status = "string",
 #'           message = "string"
 #'         )
-#'       )
+#'       ),
+#'       hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'     ),
 #'     serviceRole = "string",
 #'     logs = list(
@@ -6853,7 +6867,8 @@ codebuild_stop_build <- function(id) {
 #'           status = "string",
 #'           message = "string"
 #'         )
-#'       )
+#'       ),
+#'       hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'     ),
 #'     serviceRole = "string",
 #'     logConfig = list(
@@ -7110,7 +7125,8 @@ codebuild_stop_build_batch <- function(id) {
 #'           status = "string",
 #'           message = "string"
 #'         )
-#'       )
+#'       ),
+#'       hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'     ),
 #'     fileSystemLocations = list(
 #'       list(
@@ -7678,7 +7694,8 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'           status = "string",
 #'           message = "string"
 #'         )
-#'       )
+#'       ),
+#'       hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'     ),
 #'     serviceRole = "string",
 #'     timeoutInMinutes = 123,
@@ -7913,7 +7930,8 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'         status = "string",
 #'         message = "string"
 #'       )
-#'     )
+#'     ),
+#'     hostKernel = "LINUX_KERNEL_4"|"LINUX_KERNEL_6"|"LINUX_KERNEL_LATEST"
 #'   ),
 #'   serviceRole = "string",
 #'   timeoutInMinutes = 123,

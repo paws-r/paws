@@ -10,7 +10,8 @@ ec2_describe_volumes_modifications(
   VolumeIds = NULL,
   Filters = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  IncludeManagedResources = NULL
 )
 }
 \arguments{
@@ -36,6 +37,8 @@ ec2_describe_volumes_modifications(
 \item{NextToken}{The token returned from a previous paginated request. Pagination continues from the end of the items returned by the previous request.}
 
 \item{MaxResults}{The maximum number of results (up to a limit of 500) to be returned in a paginated request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/Query-Requests.html#api-pagination}{Pagination}.}
+
+\item{IncludeManagedResources}{Indicates whether to include managed resources in the output. If this parameter is set to \code{true}, the output includes resources that are managed by Amazon Web Services services, even if managed resource visibility is set to hidden.}
 }
 \description{
 Describes the most recent volume modification request for the specified EBS volumes.

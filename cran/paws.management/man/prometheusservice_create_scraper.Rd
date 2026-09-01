@@ -2,7 +2,7 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_create_scraper}
 \alias{prometheusservice_create_scraper}
-\title{The CreateScraper operation creates a scraper to collect metrics}
+\title{Creates a scraper to collect metrics from Prometheus-compatible sources}
 \usage{
 prometheusservice_create_scraper(
   alias = NULL,
@@ -11,7 +11,8 @@ prometheusservice_create_scraper(
   destination,
   roleConfiguration = NULL,
   clientToken = NULL,
-  tags = NULL
+  tags = NULL,
+  exporters = NULL
 )
 }
 \arguments{
@@ -21,16 +22,18 @@ prometheusservice_create_scraper(
 
 \item{source}{[required] The Amazon EKS or Amazon Web Services cluster from which the scraper will collect metrics.}
 
-\item{destination}{[required] The Amazon Managed Service for Prometheus workspace to send metrics to.}
+\item{destination}{[required] The destination where the scraper sends the collected metrics. Valid destinations are Amazon Managed Service for Prometheus workspaces and CloudWatch datasets.}
 
 \item{roleConfiguration}{Use this structure to enable cross-account access, so that you can use a target account to access Prometheus metrics from source accounts.}
 
 \item{clientToken}{(Optional) A unique, case-sensitive identifier that you can provide to ensure the idempotency of the request.}
 
 \item{tags}{(Optional) The list of tag keys and values to associate with the scraper.}
+
+\item{exporters}{The exporter configurations for the scraper. You can configure at most one Amazon OpenSearch Service domain. If you don't specify a value, the scraper is created without an exporter configuration.}
 }
 \description{
-The \code{\link[=prometheusservice_create_scraper]{create_scraper}} operation creates a scraper to collect metrics. A scraper pulls metrics from Prometheus-compatible sources and sends them to your Amazon Managed Service for Prometheus workspace. You can configure scrapers to collect metrics from Amazon EKS clusters, Amazon MSK clusters, or from VPC-based sources that support DNS-based service discovery. Scrapers are flexible, and can be configured to control what metrics are collected, the frequency of collection, what transformations are applied to the metrics, and more.
+Creates a scraper to collect metrics from Prometheus-compatible sources. The scraper sends the collected metrics to Amazon Managed Service for Prometheus workspaces or CloudWatch datasets. You can configure scrapers to collect metrics from Amazon EKS clusters, Amazon MSK clusters, or from VPC-based sources that support DNS-based service discovery. Scrapers are flexible. You can configure a scraper to control which metrics to collect, the frequency of collection, which transformations to apply to the metrics, and more.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_create_scraper/} for full documentation.
 }

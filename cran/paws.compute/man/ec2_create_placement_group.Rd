@@ -10,6 +10,7 @@ ec2_create_placement_group(
   SpreadLevel = NULL,
   LinkedGroupId = NULL,
   Operator = NULL,
+  ParentGroupId = NULL,
   DryRun = NULL,
   GroupName = NULL,
   Strategy = NULL
@@ -29,6 +30,8 @@ ec2_create_placement_group(
 \item{LinkedGroupId}{Reserved for future use.}
 
 \item{Operator}{Reserved for internal use.}
+
+\item{ParentGroupId}{The ID of a parent placement group. Valid only when \strong{Strategy} is set to \code{cluster}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 

@@ -10,7 +10,7 @@ entityresolution_delete_schema_mapping(schemaName)
 \item{schemaName}{[required] The name of the schema to delete.}
 }
 \description{
-Deletes the \code{SchemaMapping} with a given name. This operation will succeed even if a schema with the given name does not exist. This operation will fail if there is a \code{MatchingWorkflow} object that references the \code{SchemaMapping} in the workflow's \code{InputSourceConfig}.
+Deletes the \code{SchemaMapping} with a given name. This operation returns a \code{ResourceNotFoundException} if a schema with the given name does not exist. This operation will fail if there is a \code{MatchingWorkflow} object that references the \code{SchemaMapping} in the workflow's \code{InputSourceConfig}.
 
 See \url{https://www.paws-r-sdk.com/docs/entityresolution_delete_schema_mapping/} for full documentation.
 }

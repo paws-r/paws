@@ -4,6 +4,10 @@ test_that("describe_account_attributes", {
   expect_error(svc$describe_account_attributes(), NA)
 })
 
+test_that("describe_account_vpc_encryption_control", {
+  expect_error(svc$describe_account_vpc_encryption_control(), NA)
+})
+
 test_that("describe_address_transfers", {
   expect_error(svc$describe_address_transfers(), NA)
 })
@@ -26,6 +30,30 @@ test_that("describe_addresses_attribute", {
 
 test_that("describe_aggregate_id_format", {
   expect_error(svc$describe_aggregate_id_format(), NA)
+})
+
+test_that("describe_application_status", {
+  expect_error(svc$describe_application_status(), NA)
+})
+
+test_that("describe_application_status", {
+  expect_error(svc$describe_application_status(MaxResults = 20), NA)
+})
+
+test_that("describe_application_status_check_associations", {
+  expect_error(svc$describe_application_status_check_associations(), NA)
+})
+
+test_that("describe_application_status_check_associations", {
+  expect_error(svc$describe_application_status_check_associations(MaxResults = 20), NA)
+})
+
+test_that("describe_application_status_checks", {
+  expect_error(svc$describe_application_status_checks(), NA)
+})
+
+test_that("describe_application_status_checks", {
+  expect_error(svc$describe_application_status_checks(MaxResults = 20), NA)
 })
 
 test_that("describe_availability_zones", {
@@ -74,6 +102,14 @@ test_that("describe_capacity_manager_data_exports", {
 
 test_that("describe_capacity_manager_data_exports", {
   expect_error(svc$describe_capacity_manager_data_exports(MaxResults = 20), NA)
+})
+
+test_that("describe_capacity_reservation_cancellation_quotes", {
+  expect_error(svc$describe_capacity_reservation_cancellation_quotes(), NA)
+})
+
+test_that("describe_capacity_reservation_cancellation_quotes", {
+  expect_error(svc$describe_capacity_reservation_cancellation_quotes(MaxResults = 20), NA)
 })
 
 test_that("describe_capacity_reservation_fleets", {
@@ -406,6 +442,14 @@ test_that("describe_ipam_external_resource_verification_tokens", {
 
 test_that("describe_ipam_external_resource_verification_tokens", {
   expect_error(svc$describe_ipam_external_resource_verification_tokens(MaxResults = 20), NA)
+})
+
+test_that("describe_ipam_internet_registry_associations", {
+  expect_error(svc$describe_ipam_internet_registry_associations(), NA)
+})
+
+test_that("describe_ipam_internet_registry_associations", {
+  expect_error(svc$describe_ipam_internet_registry_associations(MaxResults = 20), NA)
 })
 
 test_that("describe_ipam_policies", {

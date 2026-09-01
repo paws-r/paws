@@ -5,12 +5,14 @@
 \title{Removes tags from an Amazon EMR resource, such as a cluster or Amazon
 EMR Studio}
 \usage{
-emr_remove_tags(ResourceId, TagKeys)
+emr_remove_tags(ResourceId, TagKeys, ClusterId = NULL)
 }
 \arguments{
 \item{ResourceId}{[required] The Amazon EMR resource identifier from which tags will be removed. For example, a cluster identifier or an Amazon EMR Studio ID.}
 
 \item{TagKeys}{[required] A list of tag keys to remove from the resource.}
+
+\item{ClusterId}{The ID of the cluster that scopes the tag operation. Required when the resource being untagged is a session-scoped resource.}
 }
 \description{
 Removes tags from an Amazon EMR resource, such as a cluster or Amazon EMR Studio. Tags make it easier to associate resources in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html}{Tag Clusters}.

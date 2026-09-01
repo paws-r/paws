@@ -27,7 +27,7 @@ NULL
 #' 
 #' *BatchMeterUsage*
 #' 
-#' -   Submits the metering record for a set of customers. [`batch_meter_usage`][marketplacemetering_batch_meter_usage] API calls are captured by CloudTrail. You can use CloudTrail to verify that the software as a subscription (SaaS) metering records that you sent are accurate by searching for records with the `eventName` of [`batch_meter_usage`][marketplacemetering_batch_meter_usage]. You can also use CloudTrail to audit records over time. For more information, see the [CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html).
+#' -   Submits the metering record for a set of customers. [`batch_meter_usage`][marketplacemetering_batch_meter_usage] API calls are captured by CloudTrail. You can use CloudTrail to verify that the software as a service (SaaS) metering records that you sent are accurate by searching for records with the `eventName` of [`batch_meter_usage`][marketplacemetering_batch_meter_usage]. You can also use CloudTrail to audit records over time. For more information, see the [CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html).
 #' 
 #' -   Called from: SaaS applications
 #' 
@@ -49,7 +49,7 @@ NULL
 #' 
 #' **Entitlement and metering for paid container products**
 #' 
-#' *RegisteredUsage*
+#' *RegisterUsage*
 #' 
 #' -   Provides software entitlement and metering. Paid container software products sold through Amazon Web Services Marketplace must integrate with the Marketplace Metering Service and call the [`register_usage`][marketplacemetering_register_usage] operation. Free and Bring Your Own License model (BYOL) products for Amazon ECS or Amazon EKS aren't required to call [`register_usage`][marketplacemetering_register_usage]. However, you can do so if you want to receive usage data in your seller reports. For more information about using the [`register_usage`][marketplacemetering_register_usage] operation, see [Container-based products](https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html).
 #' 
@@ -71,7 +71,7 @@ NULL
 #' 
 #' -   Amazon EKS is supported in the following: us-east-1, us-east-2, us-west-1, us-west-2, eu-west-1, eu-central-1, eu-west-2, eu-west-3, eu-north-1, ap-east-1, ap-southeast-1, ap-northeast-1, ap-southeast-2, ap-northeast-2, ap-south-1, ca-central-1, sa-east-1.
 #' 
-#'     For questions about adding Amazon Web Services Regions for metering, contact Amazon Web Services Marketplace Seller Operations.
+#'     For questions about adding Amazon Web Services Regions for metering, contact [Amazon Web Services Marketplace Seller Operations](mailto://aws.amazon.com/marketplace/management/contact-us/).
 #'
 #' @param
 #' config

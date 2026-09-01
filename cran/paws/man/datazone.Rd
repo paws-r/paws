@@ -146,6 +146,7 @@ Amazon DataZone is a data management service that enables you to catalog, discov
 \link[paws.analytics:datazone_delete_form_type]{delete_form_type} \tab Deletes and metadata form type in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_glossary]{delete_glossary} \tab Deletes a business glossary in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_glossary_term]{delete_glossary_term} \tab Deletes a business glossary term in Amazon DataZone\cr
+\link[paws.analytics:datazone_delete_lineage_event]{delete_lineage_event} \tab Deletes the specified lineage event\cr
 \link[paws.analytics:datazone_delete_listing]{delete_listing} \tab Deletes a listing (a record of an asset at a given time)\cr
 \link[paws.analytics:datazone_delete_notebook]{delete_notebook} \tab Deletes a notebook in Amazon SageMaker Unified Studio\cr
 \link[paws.analytics:datazone_delete_project]{delete_project} \tab Deletes a project in Amazon DataZone\cr
@@ -252,6 +253,7 @@ Amazon DataZone is a data management service that enables you to catalog, discov
 \link[paws.analytics:datazone_start_notebook_export]{start_notebook_export} \tab Starts a notebook export in Amazon SageMaker Unified Studio\cr
 \link[paws.analytics:datazone_start_notebook_import]{start_notebook_import} \tab Starts a notebook import in Amazon SageMaker Unified Studio\cr
 \link[paws.analytics:datazone_start_notebook_run]{start_notebook_run} \tab Starts a notebook run in Amazon SageMaker Unified Studio\cr
+\link[paws.analytics:datazone_start_notebook_sync]{start_notebook_sync} \tab Starts a notebook sync in Amazon SageMaker Unified Studio\cr
 \link[paws.analytics:datazone_stop_notebook_run]{stop_notebook_run} \tab Stops a running notebook run in Amazon SageMaker Unified Studio\cr
 \link[paws.analytics:datazone_tag_resource]{tag_resource} \tab Tags a resource in Amazon DataZone\cr
 \link[paws.analytics:datazone_untag_resource]{untag_resource} \tab Untags a resource in Amazon DataZone\cr

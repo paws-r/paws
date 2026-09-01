@@ -5,7 +5,12 @@
 \title{Updates the configuration and settings of an existing OpenSearch
 application}
 \usage{
-opensearchservice_update_application(id, dataSources = NULL, appConfigs = NULL)
+opensearchservice_update_application(
+  id,
+  dataSources = NULL,
+  appConfigs = NULL,
+  iamIdentityCenterOptions = NULL
+)
 }
 \arguments{
 \item{id}{[required] The unique identifier for the OpenSearch application to be updated.}
@@ -13,6 +18,8 @@ opensearchservice_update_application(id, dataSources = NULL, appConfigs = NULL)
 \item{dataSources}{The data sources to associate with the OpenSearch application.}
 
 \item{appConfigs}{The configuration settings to modify for the OpenSearch application.}
+
+\item{iamIdentityCenterOptions}{Configuration settings for integrating IAM Identity Center with the OpenSearch application.}
 }
 \description{
 Updates the configuration and settings of an existing OpenSearch application.

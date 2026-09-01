@@ -98,6 +98,7 @@ Operations for Amazon Web Services Account Management
 \link[paws.security.identity:account_get_contact_information]{get_contact_information} \tab Retrieves the primary contact information of an Amazon Web Services account\cr
 \link[paws.security.identity:account_get_gov_cloud_account_information]{get_gov_cloud_account_information} \tab Retrieves information about the GovCloud account linked to the specified standard account (if it exists) including the GovCloud account ID and state\cr
 \link[paws.security.identity:account_get_primary_email]{get_primary_email} \tab Retrieves the primary email address for the specified account\cr
+\link[paws.security.identity:account_get_primary_email_update_status]{get_primary_email_update_status} \tab Retrieves the status of the most recent primary email update for the specified account\cr
 \link[paws.security.identity:account_get_region_opt_status]{get_region_opt_status} \tab Retrieves the opt-in status of a particular Region\cr
 \link[paws.security.identity:account_list_regions]{list_regions} \tab Lists all the Regions for a given account and their respective opt-in statuses\cr
 \link[paws.security.identity:account_put_account_name]{put_account_name} \tab Updates the account name of the specified account\cr

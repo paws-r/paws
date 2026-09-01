@@ -176,8 +176,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
 #' 
-#' -   description
-#' 
 #' -   id
 #' 
 #' -   partition
@@ -512,10 +510,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   resource.rdsDbInstanceDetails.publiclyAccessible
 #' 
-#' -   resource.rdsDbInstanceDetails.tags.key
-#' 
-#' -   resource.rdsDbInstanceDetails.tags.value
-#' 
 #' -   resource.rdsDbInstanceDetails.vpcId
 #' 
 #' -   resource.rdsDbInstanceDetails.vpcSecurityGroups.status
@@ -613,8 +607,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   schemaVersion
 #' 
 #' -   service.action.actionType
-#' 
-#' -   service.action.awsApiCallAction.affectedResources
 #' 
 #' -   service.action.awsApiCallAction.api
 #' 
@@ -903,10 +895,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   service.archived
 #' 
 #' -   service.count
-#' 
-#' -   service.detection.anomaly.profiles
-#' 
-#' -   service.detection.anomaly.unusual.behavior
 #' 
 #' -   service.detection.sequence.actors.id
 #' 
@@ -1480,8 +1468,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #'     For more information, see [Findings severity levels](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html) in the *Amazon GuardDuty User Guide*.
 #' 
-#' -   title
-#' 
 #' -   type
 #' 
 #' -   updatedAt
@@ -1554,6 +1540,47 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
   return(response)
 }
 .guardduty$operations$create_ip_set <- guardduty_create_ip_set
+
+#' This API is currently available as a preview
+#'
+#' @description
+#' This API is currently available as a preview. During the preview, you can initiate up to 10 investigations per account per day, with a total limit of 100 investigations per account. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_investigation/](https://www.paws-r-sdk.com/docs/guardduty_create_investigation/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector for the account in which the investigation is created.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in the GuardDuty console, or run the [`list_detectors`][guardduty_list_detectors] API.
+#' @param TriggerPrompt &#91;required&#93; A natural-language description of what to investigate. For example:
+#' 
+#' -   `"Investigate finding 1ab2c3d4e5f6a7b8c9d0e1f2a3b4c5d6 in account 123456789012"`
+#' 
+#' -   `"Analyze findings in account with id 123456789012"`
+#' 
+#' -   `"Analyze findings in my organization"`
+#' @param ClientToken The idempotency token for the create request.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_create_investigation
+guardduty_create_investigation <- function(DetectorId, TriggerPrompt, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateInvestigation",
+    http_method = "POST",
+    http_path = "/detector/{DetectorId}/investigation",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$create_investigation_input(DetectorId = DetectorId, TriggerPrompt = TriggerPrompt, ClientToken = ClientToken)
+  output <- .guardduty$create_investigation_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$create_investigation <- guardduty_create_investigation
 
 #' Creates a new Malware Protection plan for the protected resource
 #'
@@ -2707,6 +2734,40 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
 }
 .guardduty$operations$get_ip_set <- guardduty_get_ip_set
 
+#' This API is currently available as a preview
+#'
+#' @description
+#' This API is currently available as a preview. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_investigation/](https://www.paws-r-sdk.com/docs/guardduty_get_investigation/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector associated with the investigation.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in the GuardDuty console, or run the [`list_detectors`][guardduty_list_detectors] API.
+#' @param InvestigationId &#91;required&#93; The unique identifier of the investigation to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_investigation
+guardduty_get_investigation <- function(DetectorId, InvestigationId) {
+  op <- new_operation(
+    name = "GetInvestigation",
+    http_method = "GET",
+    http_path = "/detector/{DetectorId}/investigation/{InvestigationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$get_investigation_input(DetectorId = DetectorId, InvestigationId = InvestigationId)
+  output <- .guardduty$get_investigation_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_investigation <- guardduty_get_investigation
+
 #' Returns the count of all GuardDuty membership invitations that were sent
 #' to the current member account except the currently accepted invitation
 #'
@@ -3466,6 +3527,42 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
 }
 .guardduty$operations$list_ip_sets <- guardduty_list_ip_sets
 
+#' This API is currently available as a preview
+#'
+#' @description
+#' This API is currently available as a preview. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_investigations/](https://www.paws-r-sdk.com/docs/guardduty_list_investigations/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector whose investigations you want to list.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in the GuardDuty console, or run the [`list_detectors`][guardduty_list_detectors] API.
+#' @param SortCriteria Represents the criteria used for sorting investigations.
+#' @param MaxResults You can use this parameter to indicate the maximum number of items you want in the response. The default value is 50.
+#' @param NextToken You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the list action. For subsequent calls to the action, fill nextToken in the request with the value of NextToken from the previous response to continue listing data.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_investigations
+guardduty_list_investigations <- function(DetectorId, SortCriteria = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListInvestigations",
+    http_method = "POST",
+    http_path = "/detector/{DetectorId}/investigation/list",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Investigations"),
+    stream_api = FALSE
+  )
+  input <- .guardduty$list_investigations_input(DetectorId = DetectorId, SortCriteria = SortCriteria, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .guardduty$list_investigations_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_investigations <- guardduty_list_investigations
+
 #' Lists all GuardDuty membership invitations that were sent to the current
 #' Amazon Web Services account
 #'
@@ -4108,8 +4205,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' 
 #'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
 #' 
-#' -   description
-#' 
 #' -   id
 #' 
 #' -   partition
@@ -4444,10 +4539,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' 
 #' -   resource.rdsDbInstanceDetails.publiclyAccessible
 #' 
-#' -   resource.rdsDbInstanceDetails.tags.key
-#' 
-#' -   resource.rdsDbInstanceDetails.tags.value
-#' 
 #' -   resource.rdsDbInstanceDetails.vpcId
 #' 
 #' -   resource.rdsDbInstanceDetails.vpcSecurityGroups.status
@@ -4545,8 +4636,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' -   schemaVersion
 #' 
 #' -   service.action.actionType
-#' 
-#' -   service.action.awsApiCallAction.affectedResources
 #' 
 #' -   service.action.awsApiCallAction.api
 #' 
@@ -4835,10 +4924,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' -   service.archived
 #' 
 #' -   service.count
-#' 
-#' -   service.detection.anomaly.profiles
-#' 
-#' -   service.detection.anomaly.unusual.behavior
 #' 
 #' -   service.detection.sequence.actors.id
 #' 
@@ -5411,8 +5496,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #'     -   **Critical**: `["9", "10"]`
 #' 
 #'     For more information, see [Findings severity levels](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html) in the *Amazon GuardDuty User Guide*.
-#' 
-#' -   title
 #' 
 #' -   type
 #' 

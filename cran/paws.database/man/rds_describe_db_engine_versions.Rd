@@ -29,6 +29,7 @@ Valid Values:
 \item \code{custom-oracle-se2}
 \item \code{custom-oracle-se2-cdb}
 \item \code{db2-ae}
+\item \code{db2-ce}
 \item \code{db2-se}
 \item \code{mariadb}
 \item \code{mysql}
@@ -41,6 +42,7 @@ Valid Values:
 \item \code{sqlserver-se}
 \item \code{sqlserver-ex}
 \item \code{sqlserver-web}
+\item \code{sqlserver-dev-ee}
 }}
 
 \item{EngineVersion}{A specific database engine version to return details for.

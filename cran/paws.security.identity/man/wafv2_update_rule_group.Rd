@@ -12,7 +12,8 @@ wafv2_update_rule_group(
   Rules = NULL,
   VisibilityConfig,
   LockToken,
-  CustomResponseBodies = NULL
+  CustomResponseBodies = NULL,
+  MonetizationConfig = NULL
 )
 }
 \arguments{
@@ -41,6 +42,8 @@ To work with CloudFront, you must also specify the Region US East (N. Virginia) 
 For information about customizing web requests and responses, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html}{Customizing web requests and responses in WAF} in the \emph{WAF Developer Guide}.
 
 For information about the limits on count and size for custom request and response settings, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/limits.html}{WAF quotas} in the \emph{WAF Developer Guide}.}
+
+\item{MonetizationConfig}{The monetization configuration for the rule group. Provide this when any rule in the rule group uses the \code{Monetize} action.}
 }
 \description{
 Updates the specified RuleGroup.

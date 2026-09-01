@@ -26,7 +26,7 @@ quicksight_update_dashboard(
 
 \item{SourceEntity}{The entity that you are using as a source when you update the dashboard. In \code{SourceEntity}, you specify the type of object you're using as source. You can only update a dashboard from a template, so you use a \code{SourceTemplate} entity. If you need to update a dashboard from an analysis, first convert the analysis to a template by using the \code{\link[=quicksight_create_template]{create_template}} API operation. For \code{SourceTemplate}, specify the Amazon Resource Name (ARN) of the source template. The \code{SourceTemplate} ARN can contain any Amazon Web Services account and any Amazon Quick Sight-supported Amazon Web Services Region.
 
-Use the \code{DataSetReferences} entity within \code{SourceTemplate} to list the replacement datasets for the placeholders listed in the original. The schema in each dataset must match its placeholder.}
+Use the \code{DataSetReferences} entity within \code{SourceTemplate} to list the replacement datasets for the placeholders listed in the original. The schema in each dataset must match its placeholder. Use the \code{TopicReferences} entity to list the replacement topics for the topic placeholders listed in the original. The schema in each topic must match its placeholder.}
 
 \item{Parameters}{A structure that contains the parameters of the dashboard. These are parameter overrides for a dashboard. A dashboard can have any type of parameters, and some parameters might accept multiple values.}
 

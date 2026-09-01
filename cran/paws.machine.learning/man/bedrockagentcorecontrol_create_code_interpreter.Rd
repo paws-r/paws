@@ -10,6 +10,7 @@ bedrockagentcorecontrol_create_code_interpreter(
   executionRoleArn = NULL,
   networkConfiguration,
   certificates = NULL,
+  filesystemConfigurations = NULL,
   clientToken = NULL,
   tags = NULL
 )
@@ -24,6 +25,8 @@ bedrockagentcorecontrol_create_code_interpreter(
 \item{networkConfiguration}{[required] The network configuration for the code interpreter. This configuration specifies the network mode for the code interpreter.}
 
 \item{certificates}{A list of certificates to install in the code interpreter.}
+
+\item{filesystemConfigurations}{The file system configurations to mount into the code interpreter. Use these configurations to mount your own Amazon Simple Storage Service (Amazon S3) Files or Amazon Elastic File System (Amazon EFS) access points. Your sessions can then access your data. If you don't specify this field, no file systems are mounted.}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, Amazon Bedrock AgentCore ignores the request but does not return an error.}
 

@@ -898,16 +898,24 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #' @param virtualInterfaceId The ID of the virtual interface.
 #' @param asn The autonomous system number (ASN). The valid range is from 1 to 2147483646 for Border Gateway Protocol (BGP) configuration. If you provide a number greater than the maximum, an error is returned. Use `asnLong` instead.
 #' 
-#' You can use `asnLong` or `asn`, but not both. We recommend using `asnLong` as it supports a greater pool of numbers.
-#' 
-#' -   The `asnLong` attribute accepts both ASN and long ASN ranges.
+#' -   You can use `asnLong` or `asn`, but not both. We recommend using `asnLong` as it supports a greater pool of numbers.
 #' 
 #' -   If you provide a value in the same API call for both `asn` and `asnLong`, the API will only accept the value for `asnLong`.
+#' 
+#' -   If you enter a 4-byte ASN for the `asn` parameter, the API returns an error.
+#' 
+#' -   If you are using a 2-byte ASN, the API response will include the 2-byte value for both the `asn` and `asnLong` fields.
 #' @param asnLong The long ASN for the BGP peer to be deleted from a Direct Connect virtual interface. The valid range is from 1 to 4294967294 for BGP configuration.
 #' 
-#' You can use `asnLong` or `asn`, but not both. We recommend using `asnLong` as it supports a greater pool of numbers.
+#' Note the following limitations when using `asnLong`:
 #' 
-#' -   The `asnLong` attribute accepts both ASN and long ASN ranges.
+#' -   You can use `asnLong` or `asn`, but not both. We recommend using `asnLong` as it supports a greater pool of numbers.
+#' 
+#' -   `asnLong` accepts any valid ASN value, regardless if it's 2-byte or 4-byte.
+#' 
+#' -   When using a 4-byte `asnLong`, the API response returns `0` for the legacy `asn` attribute since 4-byte ASN values exceed the maximum supported value of 2,147,483,647.
+#' 
+#' -   If you are using a 2-byte ASN, the API response will include the 2-byte value for both the `asn` and `asnLong` fields.
 #' 
 #' -   If you provide a value in the same API call for both `asn` and `asnLong`, the API will only accept the value for `asnLong`.
 #' @param customerAddress The IP address assigned to the customer interface.
@@ -1844,6 +1852,42 @@ directconnect_disassociate_mac_sec_key <- function(connectionId, secretARN) {
 }
 .directconnect$operations$disassociate_mac_sec_key <- directconnect_disassociate_mac_sec_key
 
+#' Lists the routes for the specified virtual interface
+#'
+#' @description
+#' Lists the routes for the specified virtual interface.
+#'
+#' See [https://www.paws-r-sdk.com/docs/directconnect_list_virtual_interface_routes/](https://www.paws-r-sdk.com/docs/directconnect_list_virtual_interface_routes/) for full documentation.
+#'
+#' @param virtualInterfaceId The ID of the virtual interface.
+#' @param filters The filters to apply to the routes returned.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are returned.
+#' @param nextToken The token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_list_virtual_interface_routes
+directconnect_list_virtual_interface_routes <- function(virtualInterfaceId = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListVirtualInterfaceRoutes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directconnect$list_virtual_interface_routes_input(virtualInterfaceId = virtualInterfaceId, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .directconnect$list_virtual_interface_routes_output()
+  config <- get_config()
+  svc <- .directconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$list_virtual_interface_routes <- directconnect_list_virtual_interface_routes
+
 #' Lists the virtual interface failover test history
 #'
 #' @description
@@ -2167,11 +2211,14 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
 #' @param mtu The maximum transmission unit (MTU), in bytes. The supported values are 1500 and 8500. The default value is 1500.
 #' @param enableSiteLink Indicates whether to enable or disable SiteLink.
 #' @param virtualInterfaceName The name of the virtual private interface.
+#' @param prefixPoolAllocatedCountIpv4 The number of inbound IPv4 route prefixes to allocate to the virtual interface. Not applicable to public virtual interfaces.
+#' @param prefixPoolAllocatedCountIpv6 The number of inbound IPv6 route prefixes to allocate to the virtual interface. Not applicable to public virtual interfaces.
+#' @param rateLimit The rate limit (bandwidth allocation) to apply to the virtual interface. Use this to update the bandwidth allocation on an existing virtual interface.
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_update_virtual_interface_attributes
-directconnect_update_virtual_interface_attributes <- function(virtualInterfaceId, mtu = NULL, enableSiteLink = NULL, virtualInterfaceName = NULL) {
+directconnect_update_virtual_interface_attributes <- function(virtualInterfaceId, mtu = NULL, enableSiteLink = NULL, virtualInterfaceName = NULL, prefixPoolAllocatedCountIpv4 = NULL, prefixPoolAllocatedCountIpv6 = NULL, rateLimit = NULL) {
   op <- new_operation(
     name = "UpdateVirtualInterfaceAttributes",
     http_method = "POST",
@@ -2180,7 +2227,7 @@ directconnect_update_virtual_interface_attributes <- function(virtualInterfaceId
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$update_virtual_interface_attributes_input(virtualInterfaceId = virtualInterfaceId, mtu = mtu, enableSiteLink = enableSiteLink, virtualInterfaceName = virtualInterfaceName)
+  input <- .directconnect$update_virtual_interface_attributes_input(virtualInterfaceId = virtualInterfaceId, mtu = mtu, enableSiteLink = enableSiteLink, virtualInterfaceName = virtualInterfaceName, prefixPoolAllocatedCountIpv4 = prefixPoolAllocatedCountIpv4, prefixPoolAllocatedCountIpv6 = prefixPoolAllocatedCountIpv6, rateLimit = rateLimit)
   output <- .directconnect$update_virtual_interface_attributes_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)

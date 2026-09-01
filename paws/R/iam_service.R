@@ -117,6 +117,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=iam_accept_delegation_request]{accept_delegation_request} \tab Accepts a delegation request, granting the requested temporary access\cr
+#'  \link[=iam_acquire_role]{acquire_role} \tab Creates an IAM role from the specified role template\cr
 #'  \link[=iam_add_client_id_to_open_id_connect_provider]{add_client_id_to_open_id_connect_provider} \tab Adds a new client ID (also known as audience) to the list of client IDs already registered for the specified IAM OpenID Connect (OIDC) provider resource\cr
 #'  \link[=iam_add_role_to_instance_profile]{add_role_to_instance_profile} \tab Adds the specified IAM role to the specified instance profile\cr
 #'  \link[=iam_add_user_to_group]{add_user_to_group} \tab Adds the specified user to the specified group\cr
@@ -180,6 +181,7 @@ NULL
 #'  \link[=iam_get_access_key_last_used]{get_access_key_last_used} \tab Retrieves information about when the specified access key was last used\cr
 #'  \link[=iam_get_account_authorization_details]{get_account_authorization_details} \tab Retrieves information about all IAM users, groups, roles, and policies in your Amazon Web Services account, including their relationships to one another\cr
 #'  \link[=iam_get_account_password_policy]{get_account_password_policy} \tab Retrieves the password policy for the Amazon Web Services account\cr
+#'  \link[=iam_get_account_properties]{get_account_properties} \tab Retrieves the account-level properties for the caller's Amazon Web Services account\cr
 #'  \link[=iam_get_account_summary]{get_account_summary} \tab Retrieves information about IAM entity usage and IAM quotas in the Amazon Web Services account\cr
 #'  \link[=iam_get_context_keys_for_custom_policy]{get_context_keys_for_custom_policy} \tab Gets a list of all of the context keys referenced in the input policies\cr
 #'  \link[=iam_get_context_keys_for_principal_policy]{get_context_keys_for_principal_policy} \tab Gets a list of all of the context keys referenced in all the IAM policies that are attached to the specified IAM entity\cr
@@ -198,6 +200,7 @@ NULL
 #'  \link[=iam_get_policy_version]{get_policy_version} \tab Retrieves information about the specified version of the specified managed policy, including the policy document\cr
 #'  \link[=iam_get_role]{get_role} \tab Retrieves information about the specified role, including the role's path, GUID, ARN, and the role's trust policy that grants permission to assume the role\cr
 #'  \link[=iam_get_role_policy]{get_role_policy} \tab Retrieves the specified inline policy document that is embedded with the specified IAM role\cr
+#'  \link[=iam_get_role_template_version]{get_role_template_version} \tab Retrieves information about a version of the specified role template\cr
 #'  \link[=iam_get_saml_provider]{get_saml_provider} \tab Returns the SAML provider metadocument that was uploaded when the IAM SAML provider resource object was created or updated\cr
 #'  \link[=iam_get_server_certificate]{get_server_certificate} \tab Retrieves information about the specified server certificate stored in IAM\cr
 #'  \link[=iam_get_service_last_accessed_details]{get_service_last_accessed_details} \tab Retrieves a service last accessed report that was created using the GenerateServiceLastAccessedDetails operation\cr
@@ -242,6 +245,7 @@ NULL
 #'  \link[=iam_list_users]{list_users} \tab Lists the IAM users that have the specified path prefix\cr
 #'  \link[=iam_list_user_tags]{list_user_tags} \tab Lists the tags that are attached to the specified IAM user\cr
 #'  \link[=iam_list_virtual_mfa_devices]{list_virtual_mfa_devices} \tab Lists the virtual MFA devices defined in the Amazon Web Services account by assignment status\cr
+#'  \link[=iam_put_account_properties]{put_account_properties} \tab Sets account-level properties for the caller's Amazon Web Services account\cr
 #'  \link[=iam_put_group_policy]{put_group_policy} \tab Adds or updates an inline policy document that is embedded in the specified IAM group\cr
 #'  \link[=iam_put_role_permissions_boundary]{put_role_permissions_boundary} \tab Adds or updates the policy that is specified as the IAM role's permissions boundary\cr
 #'  \link[=iam_put_role_policy]{put_role_policy} \tab Adds or updates an inline policy document that is embedded in the specified IAM role\cr

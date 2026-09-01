@@ -8,7 +8,7 @@ bedrockagentcorecontrol_create_agent_runtime(
   agentRuntimeName,
   agentRuntimeArtifact,
   roleArn,
-  networkConfiguration,
+  networkConfiguration = NULL,
   clientToken = NULL,
   description = NULL,
   authorizerConfiguration = NULL,
@@ -17,6 +17,7 @@ bedrockagentcorecontrol_create_agent_runtime(
   lifecycleConfiguration = NULL,
   environmentVariables = NULL,
   filesystemConfigurations = NULL,
+  capacityProviderConfiguration = NULL,
   tags = NULL
 )
 }
@@ -27,7 +28,7 @@ bedrockagentcorecontrol_create_agent_runtime(
 
 \item{roleArn}{[required] The IAM role ARN that provides permissions for the AgentCore Runtime.}
 
-\item{networkConfiguration}{[required] The network configuration for the AgentCore Runtime.}
+\item{networkConfiguration}{The network configuration for the AgentCore Runtime.}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the request.}
 
@@ -44,6 +45,8 @@ bedrockagentcorecontrol_create_agent_runtime(
 \item{environmentVariables}{Environment variables to set in the AgentCore Runtime environment.}
 
 \item{filesystemConfigurations}{The filesystem configurations to mount into the AgentCore Runtime. Use filesystem configurations to provide persistent storage to your AgentCore Runtime sessions.}
+
+\item{capacityProviderConfiguration}{The capacity provider configuration for the AgentCore Runtime. Use a capacity provider to run the AgentCore Runtime on the Instances compute type, which provisions Amazon Web Services managed compute in your account.}
 
 \item{tags}{A map of tag keys and values to assign to the agent runtime. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment.}
 }

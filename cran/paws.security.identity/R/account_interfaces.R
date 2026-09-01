@@ -105,6 +105,18 @@ NULL
   return(populate(args, shape))
 }
 
+.account$get_primary_email_update_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.account$get_primary_email_update_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .account$get_region_opt_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

@@ -168,6 +168,102 @@ marketplacecatalog_delete_resource_policy <- function(ResourceArn) {
 }
 .marketplacecatalog$operations$delete_resource_policy <- marketplacecatalog_delete_resource_policy
 
+#' Returns the metadata and detailed results of a single assessment,
+#' including the framework that was evaluated, the overall assessment
+#' result, and a paginated list of individual control evaluation results
+#'
+#' @description
+#' Returns the metadata and detailed results of a single assessment, including the framework that was evaluated, the overall assessment result, and a paginated list of individual control evaluation results.
+#' 
+#' To list available assessments before describing one, use the [`list_assessments`][marketplacecatalog_list_assessments] action.
+#'
+#' @usage
+#' marketplacecatalog_describe_assessment(Catalog, AssessmentIdentifier,
+#'   MaxResults, NextToken)
+#'
+#' @param Catalog &#91;required&#93; The catalog related to the request. Fixed value: `AWSMarketplace`
+#' @param AssessmentIdentifier &#91;required&#93; The unique identifier of the assessment to describe. You can provide either the assessment ID (for example, `assessment-12345`) or the full assessment ARN (for example, `arn:aws:aws-marketplace:us-east-1::AWSMarketplace/Assessment/assessment-12345`).
+#' @param MaxResults Specifies the upper limit of `ControlAssessment` elements returned on a single page. If a value isn't provided, the default value is 50. Valid values range from 1 to 100.
+#' @param NextToken The value of the next token, if it exists. `null` if there are no more results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssessmentArn = "string",
+#'   AssessmentId = "string",
+#'   FrameworkId = "string",
+#'   AssessmentTargetSummary = list(
+#'     EntityId = "string",
+#'     ChangeSetId = "string"
+#'   ),
+#'   FrameworkSummary = list(
+#'     AMISecuritySummary = list(
+#'       DeliveryOptionId = "string"
+#'     ),
+#'     ContainerSecuritySummary = list(
+#'       DeliveryOptionId = "string"
+#'     )
+#'   ),
+#'   AssessmentResult = "PASS"|"FAIL",
+#'   CreatedAt = "string",
+#'   ExpiresAt = "string",
+#'   ControlAssessments = list(
+#'     list(
+#'       ControlId = "string",
+#'       ControlAssessmentResult = "PASS"|"FAIL"|"NOT_EXECUTED"|"EXEMPTION_PASS",
+#'       Errors = list(
+#'         list(
+#'           Code = "string",
+#'           Message = "string",
+#'           Scope = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_assessment(
+#'   Catalog = "string",
+#'   AssessmentIdentifier = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname marketplacecatalog_describe_assessment
+#'
+#' @aliases marketplacecatalog_describe_assessment
+marketplacecatalog_describe_assessment <- function(Catalog, AssessmentIdentifier, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeAssessment",
+    http_method = "POST",
+    http_path = "/DescribeAssessment",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ControlAssessments"),
+    stream_api = FALSE
+  )
+  input <- .marketplacecatalog$describe_assessment_input(Catalog = Catalog, AssessmentIdentifier = AssessmentIdentifier, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .marketplacecatalog$describe_assessment_output()
+  config <- get_config()
+  svc <- .marketplacecatalog$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.marketplacecatalog$operations$describe_assessment <- marketplacecatalog_describe_assessment
+
 #' Provides information about a given change set
 #'
 #' @description
@@ -351,6 +447,103 @@ marketplacecatalog_get_resource_policy <- function(ResourceArn) {
 }
 .marketplacecatalog$operations$get_resource_policy <- marketplacecatalog_get_resource_policy
 
+#' Returns a paginated list of assessments associated with an entity or
+#' change set in AWS Marketplace
+#'
+#' @description
+#' Returns a paginated list of assessments associated with an entity or change set in AWS Marketplace. An *assessment* is the result of evaluating a product or change set against a framework, such as AMI Security or Container Security.
+#' 
+#' Use the `AssessmentTargetFilter` to scope results to a specific entity or change set, and use `FrameworkFilters` to scope results to a single framework. To retrieve detailed control-level results for an individual assessment, use the [`describe_assessment`][marketplacecatalog_describe_assessment] action.
+#' 
+#' Results are sorted by assessment creation time in descending order.
+#'
+#' @usage
+#' marketplacecatalog_list_assessments(Catalog, FrameworkId,
+#'   AssessmentTargetFilter, FrameworkFilters, MaxResults, NextToken)
+#'
+#' @param Catalog &#91;required&#93; The catalog related to the request. Fixed value: `AWSMarketplace`
+#' @param FrameworkId The unique identifier of a framework. When specified, only assessments performed against this framework are returned. For example, `AMISecurity`.
+#' @param AssessmentTargetFilter Filters the list of assessments to those performed against a specific entity or change set.
+#' @param FrameworkFilters Framework-specific filters. Set exactly one member to filter results to assessments performed against that framework.
+#' @param MaxResults Specifies the upper limit of the elements on a single page. If a value isn't provided, the default value is 20. Valid values range from 1 to 100.
+#' @param NextToken The value of the next token, if it exists. `null` if there are no more results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssessmentSummaryList = list(
+#'     list(
+#'       AssessmentArn = "string",
+#'       AssessmentId = "string",
+#'       FrameworkId = "string",
+#'       AssessmentTargetSummary = list(
+#'         EntityId = "string",
+#'         ChangeSetId = "string"
+#'       ),
+#'       FrameworkSummary = list(
+#'         AMISecuritySummary = list(
+#'           DeliveryOptionId = "string"
+#'         ),
+#'         ContainerSecuritySummary = list(
+#'           DeliveryOptionId = "string"
+#'         )
+#'       ),
+#'       AssessmentResult = "PASS"|"FAIL",
+#'       CreatedAt = "string",
+#'       ExpiresAt = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_assessments(
+#'   Catalog = "string",
+#'   FrameworkId = "string",
+#'   AssessmentTargetFilter = list(
+#'     EntityId = "string",
+#'     ChangeSetId = "string"
+#'   ),
+#'   FrameworkFilters = list(
+#'     AMISecurityFilters = list(
+#'       DeliveryOptionId = "string"
+#'     ),
+#'     ContainerSecurityFilters = list(
+#'       DeliveryOptionId = "string"
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname marketplacecatalog_list_assessments
+#'
+#' @aliases marketplacecatalog_list_assessments
+marketplacecatalog_list_assessments <- function(Catalog, FrameworkId = NULL, AssessmentTargetFilter = NULL, FrameworkFilters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAssessments",
+    http_method = "POST",
+    http_path = "/ListAssessments",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AssessmentSummaryList"),
+    stream_api = FALSE
+  )
+  input <- .marketplacecatalog$list_assessments_input(Catalog = Catalog, FrameworkId = FrameworkId, AssessmentTargetFilter = AssessmentTargetFilter, FrameworkFilters = FrameworkFilters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .marketplacecatalog$list_assessments_output()
+  config <- get_config()
+  svc <- .marketplacecatalog$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.marketplacecatalog$operations$list_assessments <- marketplacecatalog_list_assessments
+
 #' Returns the list of change sets owned by the account being used to make
 #' the call
 #'
@@ -496,7 +689,10 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'         Targeting = list(
 #'           "BuyerAccounts"|"ParticipatingPrograms"|"CountryCodes"|"None"
 #'         ),
-#'         OfferSetId = "string"
+#'         OfferSetId = "string",
+#'         TargetAgreementId = "string",
+#'         TargetAgreementIntent = "Renew",
+#'         CreatedBySource = "Seller"|"AwsMarketplace"
 #'       ),
 #'       ResaleAuthorizationSummary = list(
 #'         Name = "string",
@@ -509,7 +705,8 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'         Status = "Draft"|"Active"|"Restricted",
 #'         OfferExtendedStatus = "string",
 #'         CreatedDate = "string",
-#'         AvailabilityEndDate = "string"
+#'         AvailabilityEndDate = "string",
+#'         ResellerRole = "ChannelPartner"|"Distributor"
 #'       ),
 #'       MachineLearningProductSummary = list(
 #'         ProductTitle = "string",
@@ -680,6 +877,21 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'         ValueList = list(
 #'           "string"
 #'         )
+#'       ),
+#'       TargetAgreementId = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       TargetAgreementIntent = list(
+#'         ValueList = list(
+#'           "Renew"
+#'         )
+#'       ),
+#'       CreatedBySource = list(
+#'         ValueList = list(
+#'           "Seller"|"AwsMarketplace"
+#'         )
 #'       )
 #'     ),
 #'     ContainerProductFilters = list(
@@ -787,6 +999,11 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'           AfterValue = "string",
 #'           BeforeValue = "string"
 #'         )
+#'       ),
+#'       ResellerRole = list(
+#'         ValueList = list(
+#'           "ChannelPartner"|"Distributor"
+#'         )
 #'       )
 #'     ),
 #'     MachineLearningProductFilters = list(
@@ -867,7 +1084,7 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'       SortOrder = "ASCENDING"|"DESCENDING"
 #'     ),
 #'     OfferSort = list(
-#'       SortBy = "EntityId"|"Name"|"ProductId"|"ResaleAuthorizationId"|"ReleaseDate"|"AvailabilityEndDate"|"BuyerAccounts"|"State"|"Targeting"|"LastModifiedDate"|"OfferSetId",
+#'       SortBy = "EntityId"|"Name"|"ProductId"|"ResaleAuthorizationId"|"ReleaseDate"|"AvailabilityEndDate"|"BuyerAccounts"|"State"|"Targeting"|"LastModifiedDate"|"OfferSetId"|"TargetAgreementId"|"TargetAgreementIntent"|"CreatedBySource",
 #'       SortOrder = "ASCENDING"|"DESCENDING"
 #'     ),
 #'     ContainerProductSort = list(
@@ -918,7 +1135,7 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
 #' change set)
 #'
 #' @description
-#' Lists all tags that have been added to a resource (either an [entity](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#working-with-change-sets)).
+#' Lists all tags that have been added to a resource (either an [entity](https://docs.aws.amazon.com/marketplace/latest/developerguide/catalog-apis.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace/latest/developerguide/catalog-apis.html#working-with-change-sets)).
 #'
 #' @usage
 #' marketplacecatalog_list_tags_for_resource(ResourceArn)
@@ -1023,7 +1240,7 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
 #' 
 #' For example, you can't start the `ChangeSet` described in the [example](https://docs.aws.amazon.com/marketplace/latest/APIReference/API_StartChangeSet.html#API_StartChangeSet_Examples) later in this topic because it contains two changes to run the same change type (`AddRevisions`) against the same entity (`entity-id@@1`).
 #' 
-#' For more information about working with change sets, see [Working with change sets](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#working-with-change-sets). For information about change types for single-AMI products, see [Working with single-AMI products](https://docs.aws.amazon.com/marketplace/latest/APIReference/work-with-single-ami-products.html#working-with-single-AMI-products). Also, for more information about change types available for container-based products, see [Working with container products](https://docs.aws.amazon.com/marketplace/latest/APIReference/work-with-container-products.html#working-with-container-products).
+#' For more information about working with change sets, see [Working with change sets](https://docs.aws.amazon.com/marketplace/latest/developerguide/catalog-apis.html#working-with-change-sets). For information about change types for single-AMI products, see [Working with single-AMI products](https://docs.aws.amazon.com/marketplace/latest/developerguide/work-with-single-ami-products.html#working-with-single-AMI-products). Also, for more information about change types available for container-based products, see [Working with container products](https://docs.aws.amazon.com/marketplace/latest/developerguide/work-with-container-products.html#working-with-container-products).
 #' 
 #' To download "DetailsDocument" shapes, see [Python](https://github.com/awslabs/aws-marketplace-catalog-api-shapes-for-python) and [Java](https://github.com/awslabs/aws-marketplace-catalog-api-shapes-for-java/tree/main) shapes on GitHub.
 #'
@@ -1036,7 +1253,7 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
 #' @param ChangeSetName Optional case sensitive string of up to 100 ASCII characters. The change set name can be used to filter the list of change sets.
 #' @param ClientRequestToken A unique token to identify the request to ensure idempotency.
 #' @param ChangeSetTags A list of objects specifying each key name and value for the `ChangeSetTags` property.
-#' @param Intent The intent related to the request. The default is `APPLY`. To test your request before applying changes to your entities, use `VALIDATE`. This feature is currently available for adding versions to single-AMI products. For more information, see [Add a new version](https://docs.aws.amazon.com/marketplace/latest/APIReference/work-with-single-ami-products.html#ami-add-version).
+#' @param Intent The intent related to the request. The default is `APPLY`. To test your request before applying changes to your entities, use `VALIDATE`. This feature is currently available for adding versions to single-AMI products. For more information, see [Add a new version](https://docs.aws.amazon.com/marketplace/latest/developerguide/work-with-single-ami-products.html#ami-add-version).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1108,7 +1325,7 @@ marketplacecatalog_start_change_set <- function(Catalog, ChangeSet, ChangeSetNam
 #' Tags a resource (either an entity or change set)
 #'
 #' @description
-#' Tags a resource (either an [entity](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#working-with-change-sets)).
+#' Tags a resource (either an [entity](https://docs.aws.amazon.com/marketplace/latest/developerguide/catalog-apis.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace/latest/developerguide/catalog-apis.html#working-with-change-sets)).
 #'
 #' @usage
 #' marketplacecatalog_tag_resource(ResourceArn, Tags)
@@ -1160,7 +1377,7 @@ marketplacecatalog_tag_resource <- function(ResourceArn, Tags) {
 #' change set)
 #'
 #' @description
-#' Removes a tag or list of tags from a resource (either an [entity](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#working-with-change-sets)).
+#' Removes a tag or list of tags from a resource (either an [entity](https://docs.aws.amazon.com/marketplace/latest/developerguide/catalog-apis.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace/latest/developerguide/catalog-apis.html#working-with-change-sets)).
 #'
 #' @usage
 #' marketplacecatalog_untag_resource(ResourceArn, TagKeys)

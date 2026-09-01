@@ -7,7 +7,8 @@
 cloudwatchlogs_list_scheduled_queries(
   maxResults = NULL,
   nextToken = NULL,
-  state = NULL
+  state = NULL,
+  scheduleType = NULL
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ cloudwatchlogs_list_scheduled_queries(
 \item{nextToken}{The token for the next set of items to return. The token expires after 24 hours.}
 
 \item{state}{Filter scheduled queries by state. Valid values are \code{ENABLED} and \code{DISABLED}. If not specified, all scheduled queries are returned.}
+
+\item{scheduleType}{Filter scheduled queries by schedule type. Valid values are \code{CUSTOMER_MANAGED} and \code{AWS_MANAGED}. If not specified, scheduled queries of all schedule types are returned.}
 }
 \description{
 Lists all scheduled queries in your account and region. You can filter results by state to show only enabled or disabled queries.

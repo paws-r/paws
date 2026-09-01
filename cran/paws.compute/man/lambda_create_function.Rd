@@ -14,6 +14,7 @@ lambda_create_function(
   Timeout = NULL,
   MemorySize = NULL,
   Publish = NULL,
+  PublishTo = NULL,
   VpcConfig = NULL,
   PackageType = NULL,
   DeadLetterConfig = NULL,
@@ -23,16 +24,15 @@ lambda_create_function(
   Tags = NULL,
   Layers = NULL,
   FileSystemConfigs = NULL,
-  ImageConfig = NULL,
   CodeSigningConfigArn = NULL,
+  ImageConfig = NULL,
   Architectures = NULL,
   EphemeralStorage = NULL,
   SnapStart = NULL,
   LoggingConfig = NULL,
+  TenancyConfig = NULL,
   CapacityProviderConfig = NULL,
-  PublishTo = NULL,
-  DurableConfig = NULL,
-  TenancyConfig = NULL
+  DurableConfig = NULL
 )
 }
 \arguments{
@@ -67,6 +67,8 @@ For a list of all currently supported runtimes, see \href{https://docs.aws.amazo
 
 \item{Publish}{Set to true to publish the first version of the function during creation.}
 
+\item{PublishTo}{Specifies where to publish the function version or configuration.}
+
 \item{VpcConfig}{For network connectivity to Amazon Web Services resources in a VPC, specify a list of security groups and subnets in the VPC. When you connect a function to a VPC, it can access resources and the internet only through that VPC. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html}{Configuring a Lambda function to access resources in a VPC}.}
 
 \item{PackageType}{The type of deployment package. Set to \code{Image} for container image and set to \code{Zip} for .zip file archive.}
@@ -93,9 +95,9 @@ If you don't provide a customer managed key, Lambda uses an \href{https://docs.a
 
 \item{FileSystemConfigs}{Connection settings for an Amazon EFS file system or an Amazon S3 Files file system.}
 
-\item{ImageConfig}{Container image \href{https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms}{configuration values} that override the values in the container image Dockerfile.}
-
 \item{CodeSigningConfigArn}{To enable code signing for this function, specify the ARN of a code-signing configuration. A code-signing configuration includes a set of signing profiles, which define the trusted publishers for this function.}
+
+\item{ImageConfig}{Container image \href{https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms}{configuration values} that override the values in the container image Dockerfile.}
 
 \item{Architectures}{The instruction set architecture that the function supports. Enter a string array with one of the valid values (arm64 or x86_64). The default value is \code{x86_64}.}
 
@@ -105,13 +107,11 @@ If you don't provide a customer managed key, Lambda uses an \href{https://docs.a
 
 \item{LoggingConfig}{The function's Amazon CloudWatch Logs configuration settings.}
 
+\item{TenancyConfig}{Configuration for multi-tenant applications that use Lambda functions. Defines tenant isolation settings and resource allocations. Required for functions supporting multiple tenants.}
+
 \item{CapacityProviderConfig}{Configuration for the capacity provider that manages compute resources for Lambda functions.}
 
-\item{PublishTo}{Specifies where to publish the function version or configuration.}
-
 \item{DurableConfig}{Configuration settings for durable functions. Enables creating functions with durability that can remember their state and continue execution even after interruptions.}
-
-\item{TenancyConfig}{Configuration for multi-tenant applications that use Lambda functions. Defines tenant isolation settings and resource allocations. Required for functions supporting multiple tenants.}
 }
 \description{
 Creates a Lambda function. To create a function, you need a \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-zip.html}{deployment package} and an \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role}{execution role}. The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Services services, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.

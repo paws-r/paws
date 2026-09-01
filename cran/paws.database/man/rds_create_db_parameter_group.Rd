@@ -40,6 +40,7 @@ The following are the valid DB engine values:
 \item \code{aurora-mysql}
 \item \code{aurora-postgresql}
 \item \code{db2-ae}
+\item \code{db2-ce}
 \item \code{db2-se}
 \item \code{mysql}
 \item \code{oracle-ee}

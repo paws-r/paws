@@ -21,6 +21,7 @@ configservice_list_tags_for_resource(
 \item \code{ConfigurationAggregator}
 \item \code{AggregationAuthorization}
 \item \code{StoredQuery}
+\item \code{Connector}
 }}
 
 \item{Limit}{The maximum number of tags returned on each page. The limit maximum is 50. You cannot specify a number greater than 50. If you specify 0, Config uses the default.}

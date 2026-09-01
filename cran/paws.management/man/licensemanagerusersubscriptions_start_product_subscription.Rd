@@ -20,7 +20,7 @@ licensemanagerusersubscriptions_start_product_subscription(
 
 \item{Product}{[required] The name of the user-based subscription product.
 
-Valid values: \code{VISUAL_STUDIO_ENTERPRISE} | \code{VISUAL_STUDIO_PROFESSIONAL} | \code{OFFICE_PROFESSIONAL_PLUS} | \code{REMOTE_DESKTOP_SERVICES}}
+Valid values: \code{VISUAL_STUDIO_ENTERPRISE} | \code{VISUAL_STUDIO_PROFESSIONAL} | \code{OFFICE_PROFESSIONAL_PLUS} | \code{OFFICE_STANDARD} | \code{REMOTE_DESKTOP_SERVICES}}
 
 \item{Domain}{The domain name of the Active Directory that contains the user for whom to start the product subscription.}
 

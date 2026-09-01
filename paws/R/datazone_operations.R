@@ -161,6 +161,7 @@ datazone_accept_predictions <- function(domainIdentifier, identifier, revision =
 #'               "string"
 #'             ),
 #'             status = "string",
+#'             scopeName = "string",
 #'             errorMessage = "string"
 #'           ),
 #'           permissions = list(
@@ -841,6 +842,7 @@ datazone_cancel_metadata_generation_run <- function(domainIdentifier, identifier
 #'             "string"
 #'           ),
 #'           status = "string",
+#'           scopeName = "string",
 #'           errorMessage = "string"
 #'         ),
 #'         permissions = list(
@@ -1702,7 +1704,7 @@ datazone_create_asset_type <- function(domainIdentifier, name, description = NUL
 #'       glueConnection = list(
 #'         name = "string",
 #'         description = "string",
-#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC",
+#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC"|"GIT",
 #'         matchCriteria = list(
 #'           "string"
 #'         ),
@@ -1867,6 +1869,21 @@ datazone_create_asset_type <- function(domainIdentifier, name, description = NUL
 #'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
 #'       errorMessage = "string"
 #'     ),
+#'     snowflakeProperties = list(
+#'       snowflakeRole = "string",
+#'       identityMapping = list(
+#'         usernameAttribute = "string",
+#'         prefix = "string"
+#'       ),
+#'       lineageSync = list(
+#'         lineageJobId = "string",
+#'         timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC",
+#'         enabled = TRUE|FALSE,
+#'         schedule = "string"
+#'       ),
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       errorMessage = "string"
+#'     ),
 #'     amazonQProperties = list(
 #'       isEnabled = TRUE|FALSE,
 #'       profileArn = "string",
@@ -1892,9 +1909,16 @@ datazone_create_asset_type <- function(domainIdentifier, name, description = NUL
 #'       glueConnectionNames = list(
 #'         "string"
 #'       )
+#'     ),
+#'     gitProperties = list(
+#'       codeConnectionArn = "string",
+#'       repositoryId = "string",
+#'       defaultBranch = "string",
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       errorMessage = "string"
 #'     )
 #'   ),
-#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC",
+#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC"|"GIT",
 #'   scope = "DOMAIN"|"PROJECT"
 #' )
 #' ```
@@ -2050,6 +2074,81 @@ datazone_create_asset_type <- function(domainIdentifier, name, description = NUL
 #'       s3AccessGrantLocationId = "string",
 #'       registerS3AccessGrantLocation = TRUE|FALSE
 #'     ),
+#'     snowflakeProperties = list(
+#'       connectivityProperties = list(
+#'         connectionProperties = list(
+#'           "string"
+#'         ),
+#'         physicalConnectionRequirements = list(
+#'           subnetId = "string",
+#'           subnetIdList = list(
+#'             "string"
+#'           ),
+#'           securityGroupIdList = list(
+#'             "string"
+#'           ),
+#'           availabilityZone = "string"
+#'         ),
+#'         name = "string",
+#'         description = "string",
+#'         validateCredentials = TRUE|FALSE,
+#'         validateForComputeEnvironments = list(
+#'           "SPARK"|"ATHENA"|"PYTHON"
+#'         ),
+#'         sparkProperties = list(
+#'           "string"
+#'         ),
+#'         athenaProperties = list(
+#'           "string"
+#'         ),
+#'         pythonProperties = list(
+#'           "string"
+#'         ),
+#'         authenticationConfiguration = list(
+#'           authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'           oAuth2Properties = list(
+#'             oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'             oAuth2ClientApplication = list(
+#'               userManagedClientApplicationClientId = "string",
+#'               aWSManagedClientApplicationReference = "string"
+#'             ),
+#'             tokenUrl = "string",
+#'             tokenUrlParametersMap = list(
+#'               "string"
+#'             ),
+#'             authorizationCodeProperties = list(
+#'               authorizationCode = "string",
+#'               redirectUri = "string"
+#'             ),
+#'             oAuth2Credentials = list(
+#'               userManagedClientApplicationClientSecret = "string",
+#'               accessToken = "string",
+#'               refreshToken = "string",
+#'               jwtToken = "string"
+#'             )
+#'           ),
+#'           secretArn = "string",
+#'           kmsKeyArn = "string",
+#'           basicAuthenticationCredentials = list(
+#'             userName = "string",
+#'             password = "string"
+#'           ),
+#'           customAuthenticationCredentials = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       snowflakeRole = "string",
+#'       identityMapping = list(
+#'         usernameAttribute = "string",
+#'         prefix = "string"
+#'       ),
+#'       lineageSync = list(
+#'         timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC",
+#'         enabled = TRUE|FALSE,
+#'         schedule = "string"
+#'       )
+#'     ),
 #'     amazonQProperties = list(
 #'       isEnabled = TRUE|FALSE,
 #'       profileArn = "string",
@@ -2071,6 +2170,11 @@ datazone_create_asset_type <- function(domainIdentifier, name, description = NUL
 #'         "string"
 #'       ),
 #'       securityGroupId = "string"
+#'     ),
+#'     gitProperties = list(
+#'       codeConnectionArn = "string",
+#'       repositoryId = "string",
+#'       defaultBranch = "string"
 #'     )
 #'   ),
 #'   enableTrustedIdentityPropagation = TRUE|FALSE,
@@ -2793,6 +2897,8 @@ datazone_create_domain_unit <- function(domainIdentifier, name, parentDomainUnit
 #' @param environmentAccountIdentifier The ID of the account in which the environment is being created.
 #' @param environmentAccountRegion The region of the account in which the environment is being created.
 #' @param environmentBlueprintIdentifier The ID of the blueprint with which the environment is being created.
+#' 
+#' This parameter is only valid for V1 domains. If provided for a V2 domain, the service returns a ValidationException.
 #' @param deploymentOrder The deployment order of the environment.
 #' @param environmentConfigurationId The configuration ID of the environment.
 #' @param environmentConfigurationName The configuration name of the environment.
@@ -3619,7 +3725,7 @@ datazone_create_listing_change_set <- function(domainIdentifier, entityIdentifie
 #'   cellOrder = list(
 #'     list()
 #'   ),
-#'   status = "ACTIVE"|"ARCHIVED",
+#'   status = "ACTIVE"|"ARCHIVED"|"SYNC_IN_PROGRESS"|"SYNC_FAILED",
 #'   description = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
@@ -3652,6 +3758,17 @@ datazone_create_listing_change_set <- function(domainIdentifier, entityIdentifie
 #'   ),
 #'   error = list(
 #'     message = "string"
+#'   ),
+#'   gitMetadata = list(
+#'     connectionId = "string",
+#'     repository = "string",
+#'     branch = "string",
+#'     commitHash = "string",
+#'     fileName = "string",
+#'     committedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     commitMessage = "string"
 #'   )
 #' )
 #' ```
@@ -4282,6 +4399,7 @@ datazone_create_rule <- function(domainIdentifier, name, target, action, scope, 
 #'           "string"
 #'         ),
 #'         status = "string",
+#'         scopeName = "string",
 #'         errorMessage = "string"
 #'       ),
 #'       permissions = list(
@@ -4431,6 +4549,7 @@ datazone_create_subscription_grant <- function(domainIdentifier, environmentIden
 #'               "string"
 #'             ),
 #'             status = "string",
+#'             scopeName = "string",
 #'             errorMessage = "string"
 #'           ),
 #'           permissions = list(
@@ -5291,11 +5410,13 @@ datazone_delete_data_source <- function(domainIdentifier, identifier, clientToke
 #' Deletes a Amazon DataZone domain.
 #'
 #' @usage
-#' datazone_delete_domain(identifier, clientToken, skipDeletionCheck)
+#' datazone_delete_domain(identifier, clientToken, skipDeletionCheck,
+#'   cascadeDelete)
 #'
 #' @param identifier &#91;required&#93; The identifier of the Amazon Web Services domain that is to be deleted.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the idempotency of the request.
-#' @param skipDeletionCheck Specifies the optional flag to delete all child entities within the domain.
+#' @param skipDeletionCheck Specifies whether to skip the check that prevents deletion of a domain that still contains resources. When you use this parameter, Amazon DataZone deletes the domain but might not remove its associated resources, which can leave orphaned resources behind. To delete a domain and fully clean up its associated resources, use `cascadeDelete` instead. You can't use this parameter together with `cascadeDelete`.
+#' @param cascadeDelete Specifies whether to delete the domain along with all of its associated resources. When you use this parameter, Amazon DataZone deletes the domain and cleanly removes its associated resources without leaving orphaned resources behind. Amazon DataZone reports deletion progress in the `deleteProgress` field. Amazon DataZone reports any resources that it can't delete in the `failureReasons` field of the [`get_domain`][datazone_get_domain] response. You can't use this parameter together with `skipDeletionCheck`. If you don't specify a value, the default is `false`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5310,7 +5431,8 @@ datazone_delete_data_source <- function(domainIdentifier, identifier, clientToke
 #' svc$delete_domain(
 #'   identifier = "string",
 #'   clientToken = "string",
-#'   skipDeletionCheck = TRUE|FALSE
+#'   skipDeletionCheck = TRUE|FALSE,
+#'   cascadeDelete = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -5319,7 +5441,7 @@ datazone_delete_data_source <- function(domainIdentifier, identifier, clientToke
 #' @rdname datazone_delete_domain
 #'
 #' @aliases datazone_delete_domain
-datazone_delete_domain <- function(identifier, clientToken = NULL, skipDeletionCheck = NULL) {
+datazone_delete_domain <- function(identifier, clientToken = NULL, skipDeletionCheck = NULL, cascadeDelete = NULL) {
   op <- new_operation(
     name = "DeleteDomain",
     http_method = "DELETE",
@@ -5328,7 +5450,7 @@ datazone_delete_domain <- function(identifier, clientToken = NULL, skipDeletionC
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$delete_domain_input(identifier = identifier, clientToken = clientToken, skipDeletionCheck = skipDeletionCheck)
+  input <- .datazone$delete_domain_input(identifier = identifier, clientToken = clientToken, skipDeletionCheck = skipDeletionCheck, cascadeDelete = cascadeDelete)
   output <- .datazone$delete_domain_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5791,6 +5913,59 @@ datazone_delete_glossary_term <- function(domainIdentifier, identifier) {
 }
 .datazone$operations$delete_glossary_term <- datazone_delete_glossary_term
 
+#' Deletes the specified lineage event
+#'
+#' @description
+#' Deletes the specified lineage event.
+#'
+#' @usage
+#' datazone_delete_lineage_event(domainIdentifier, identifier)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain.
+#' @param identifier &#91;required&#93; The ID of the lineage event.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   domainId = "string",
+#'   processingStatus = "REQUESTED"|"PROCESSING"|"SUCCESS"|"FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_lineage_event(
+#'   domainIdentifier = "string",
+#'   identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_delete_lineage_event
+#'
+#' @aliases datazone_delete_lineage_event
+datazone_delete_lineage_event <- function(domainIdentifier, identifier) {
+  op <- new_operation(
+    name = "DeleteLineageEvent",
+    http_method = "DELETE",
+    http_path = "/v2/domains/{domainIdentifier}/lineage/events/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$delete_lineage_event_input(domainIdentifier = domainIdentifier, identifier = identifier)
+  output <- .datazone$delete_lineage_event_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$delete_lineage_event <- datazone_delete_lineage_event
+
 #' Deletes a listing (a record of an asset at a given time)
 #'
 #' @description
@@ -6130,6 +6305,7 @@ datazone_delete_rule <- function(domainIdentifier, identifier) {
 #'           "string"
 #'         ),
 #'         status = "string",
+#'         scopeName = "string",
 #'         errorMessage = "string"
 #'       ),
 #'       permissions = list(
@@ -6905,7 +7081,7 @@ datazone_get_asset_type <- function(domainIdentifier, identifier, revision = NUL
 #'       glueConnection = list(
 #'         name = "string",
 #'         description = "string",
-#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC",
+#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC"|"GIT",
 #'         matchCriteria = list(
 #'           "string"
 #'         ),
@@ -7070,6 +7246,21 @@ datazone_get_asset_type <- function(domainIdentifier, identifier, revision = NUL
 #'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
 #'       errorMessage = "string"
 #'     ),
+#'     snowflakeProperties = list(
+#'       snowflakeRole = "string",
+#'       identityMapping = list(
+#'         usernameAttribute = "string",
+#'         prefix = "string"
+#'       ),
+#'       lineageSync = list(
+#'         lineageJobId = "string",
+#'         timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC",
+#'         enabled = TRUE|FALSE,
+#'         schedule = "string"
+#'       ),
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       errorMessage = "string"
+#'     ),
 #'     amazonQProperties = list(
 #'       isEnabled = TRUE|FALSE,
 #'       profileArn = "string",
@@ -7095,9 +7286,16 @@ datazone_get_asset_type <- function(domainIdentifier, identifier, revision = NUL
 #'       glueConnectionNames = list(
 #'         "string"
 #'       )
+#'     ),
+#'     gitProperties = list(
+#'       codeConnectionArn = "string",
+#'       repositoryId = "string",
+#'       defaultBranch = "string",
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       errorMessage = "string"
 #'     )
 #'   ),
-#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC",
+#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC"|"GIT",
 #'   scope = "DOMAIN"|"PROJECT"
 #' )
 #' ```
@@ -7588,7 +7786,16 @@ datazone_get_data_source_run <- function(domainIdentifier, identifier) {
 #'     "string"
 #'   ),
 #'   domainVersion = "V1"|"V2",
-#'   serviceRole = "string"
+#'   serviceRole = "string",
+#'   failureReasons = list(
+#'     list(
+#'       id = "string",
+#'       message = "string"
+#'     )
+#'   ),
+#'   deleteProgress = list(
+#'     successfullyDeletedProjectCount = 123
+#'   )
 #' )
 #' ```
 #'
@@ -9025,7 +9232,7 @@ datazone_get_metadata_generation_run <- function(domainIdentifier, identifier, t
 #'   cellOrder = list(
 #'     list()
 #'   ),
-#'   status = "ACTIVE"|"ARCHIVED",
+#'   status = "ACTIVE"|"ARCHIVED"|"SYNC_IN_PROGRESS"|"SYNC_FAILED",
 #'   description = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
@@ -9058,6 +9265,17 @@ datazone_get_metadata_generation_run <- function(domainIdentifier, identifier, t
 #'   ),
 #'   error = list(
 #'     message = "string"
+#'   ),
+#'   gitMetadata = list(
+#'     connectionId = "string",
+#'     repository = "string",
+#'     branch = "string",
+#'     commitHash = "string",
+#'     fileName = "string",
+#'     committedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     commitMessage = "string"
 #'   )
 #' )
 #' ```
@@ -9679,6 +9897,7 @@ datazone_get_rule <- function(domainIdentifier, identifier, revision = NULL) {
 #'             "string"
 #'           ),
 #'           status = "string",
+#'           scopeName = "string",
 #'           errorMessage = "string"
 #'         ),
 #'         permissions = list(
@@ -9802,6 +10021,7 @@ datazone_get_subscription <- function(domainIdentifier, identifier) {
 #'           "string"
 #'         ),
 #'         status = "string",
+#'         scopeName = "string",
 #'         errorMessage = "string"
 #'       ),
 #'       permissions = list(
@@ -9929,6 +10149,7 @@ datazone_get_subscription_grant <- function(domainIdentifier, identifier) {
 #'               "string"
 #'             ),
 #'             status = "string",
+#'             scopeName = "string",
 #'             errorMessage = "string"
 #'           ),
 #'           permissions = list(
@@ -10582,7 +10803,7 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, nextToke
 #'           glueConnection = list(
 #'             name = "string",
 #'             description = "string",
-#'             connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC",
+#'             connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC"|"GIT",
 #'             matchCriteria = list(
 #'               "string"
 #'             ),
@@ -10747,6 +10968,21 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, nextToke
 #'           status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
 #'           errorMessage = "string"
 #'         ),
+#'         snowflakeProperties = list(
+#'           snowflakeRole = "string",
+#'           identityMapping = list(
+#'             usernameAttribute = "string",
+#'             prefix = "string"
+#'           ),
+#'           lineageSync = list(
+#'             lineageJobId = "string",
+#'             timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC",
+#'             enabled = TRUE|FALSE,
+#'             schedule = "string"
+#'           ),
+#'           status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'           errorMessage = "string"
+#'         ),
 #'         amazonQProperties = list(
 #'           isEnabled = TRUE|FALSE,
 #'           profileArn = "string",
@@ -10772,9 +11008,16 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, nextToke
 #'           glueConnectionNames = list(
 #'             "string"
 #'           )
+#'         ),
+#'         gitProperties = list(
+#'           codeConnectionArn = "string",
+#'           repositoryId = "string",
+#'           defaultBranch = "string",
+#'           status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'           errorMessage = "string"
 #'         )
 #'       ),
-#'       type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC",
+#'       type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC"|"GIT",
 #'       scope = "DOMAIN"|"PROJECT"
 #'     )
 #'   ),
@@ -10793,7 +11036,7 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, nextToke
 #'   name = "string",
 #'   environmentIdentifier = "string",
 #'   projectIdentifier = "string",
-#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC",
+#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC"|"GIT",
 #'   scope = "DOMAIN"|"PROJECT"
 #' )
 #' ```
@@ -12283,7 +12526,7 @@ datazone_list_notebook_runs <- function(domainIdentifier, owningProjectIdentifie
 #'       name = "string",
 #'       owningProjectId = "string",
 #'       domainId = "string",
-#'       status = "ACTIVE"|"ARCHIVED",
+#'       status = "ACTIVE"|"ARCHIVED"|"SYNC_IN_PROGRESS"|"SYNC_FAILED",
 #'       description = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
@@ -12307,7 +12550,7 @@ datazone_list_notebook_runs <- function(domainIdentifier, owningProjectIdentifie
 #'   maxResults = 123,
 #'   sortOrder = "ASCENDING"|"DESCENDING",
 #'   sortBy = "CREATED_AT"|"UPDATED_AT",
-#'   status = "ACTIVE"|"ARCHIVED",
+#'   status = "ACTIVE"|"ARCHIVED"|"SYNC_IN_PROGRESS"|"SYNC_FAILED",
 #'   nextToken = "string"
 #' )
 #' ```
@@ -12988,6 +13231,7 @@ datazone_list_rules <- function(domainIdentifier, targetType, targetIdentifier, 
 #'               "string"
 #'             ),
 #'             status = "string",
+#'             scopeName = "string",
 #'             errorMessage = "string"
 #'           ),
 #'           permissions = list(
@@ -13146,6 +13390,7 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
 #'                   "string"
 #'                 ),
 #'                 status = "string",
+#'                 scopeName = "string",
 #'                 errorMessage = "string"
 #'               ),
 #'               permissions = list(
@@ -13425,6 +13670,7 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
 #'                 "string"
 #'               ),
 #'               status = "string",
+#'               scopeName = "string",
 #'               errorMessage = "string"
 #'             ),
 #'             permissions = list(
@@ -14265,6 +14511,7 @@ datazone_reject_predictions <- function(domainIdentifier, identifier, revision =
 #'               "string"
 #'             ),
 #'             status = "string",
+#'             scopeName = "string",
 #'             errorMessage = "string"
 #'           ),
 #'           permissions = list(
@@ -14566,6 +14813,7 @@ datazone_remove_policy_grant <- function(domainIdentifier, entityType, entityIde
 #'             "string"
 #'           ),
 #'           status = "string",
+#'           scopeName = "string",
 #'           errorMessage = "string"
 #'         ),
 #'         permissions = list(
@@ -15755,7 +16003,7 @@ datazone_start_notebook_export <- function(domainIdentifier, notebookIdentifier,
 #' ```
 #' list(
 #'   notebookId = "string",
-#'   status = "ACTIVE"|"ARCHIVED",
+#'   status = "ACTIVE"|"ARCHIVED"|"SYNC_IN_PROGRESS"|"SYNC_FAILED",
 #'   domainId = "string",
 #'   owningProjectId = "string",
 #'   name = "string",
@@ -15963,6 +16211,105 @@ datazone_start_notebook_run <- function(domainIdentifier, owningProjectIdentifie
   return(response)
 }
 .datazone$operations$start_notebook_run <- datazone_start_notebook_run
+
+#' Starts a notebook sync in Amazon SageMaker Unified Studio
+#'
+#' @description
+#' Starts a notebook sync in Amazon SageMaker Unified Studio. This operation syncs a notebook from a Git repository into a project.
+#'
+#' @usage
+#' datazone_start_notebook_sync(domainIdentifier, owningProjectIdentifier,
+#'   sourceLocation, gitMetadata, notebookId, name, description, clientToken)
+#'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon SageMaker Unified Studio domain in which to sync the notebook.
+#' @param owningProjectIdentifier &#91;required&#93; The identifier of the project that will own the synced notebook.
+#' @param sourceLocation &#91;required&#93; The source location of the notebook to sync. This specifies the Amazon Simple Storage Service URI of the notebook file.
+#' @param gitMetadata The Git metadata for the notebook sync, including repository, branch, and commit information.
+#' @param notebookId The identifier of an existing notebook to sync. If not specified, a new notebook is created.
+#' @param name The name of the notebook. The name must be between 1 and 256 characters.
+#' @param description The description of the notebook.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the request. This field is automatically populated if not provided.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   notebookId = "string",
+#'   status = "ACTIVE"|"ARCHIVED"|"SYNC_IN_PROGRESS"|"SYNC_FAILED",
+#'   domainId = "string",
+#'   owningProjectId = "string",
+#'   sourceLocation = list(
+#'     s3 = "string"
+#'   ),
+#'   gitMetadata = list(
+#'     connectionId = "string",
+#'     repository = "string",
+#'     branch = "string",
+#'     commitHash = "string",
+#'     fileName = "string",
+#'     committedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     commitMessage = "string"
+#'   ),
+#'   name = "string",
+#'   description = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_notebook_sync(
+#'   domainIdentifier = "string",
+#'   owningProjectIdentifier = "string",
+#'   sourceLocation = list(
+#'     s3 = "string"
+#'   ),
+#'   gitMetadata = list(
+#'     connectionId = "string",
+#'     repository = "string",
+#'     branch = "string",
+#'     commitHash = "string",
+#'     fileName = "string",
+#'     committedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     commitMessage = "string"
+#'   ),
+#'   notebookId = "string",
+#'   name = "string",
+#'   description = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_start_notebook_sync
+#'
+#' @aliases datazone_start_notebook_sync
+datazone_start_notebook_sync <- function(domainIdentifier, owningProjectIdentifier, sourceLocation, gitMetadata = NULL, notebookId = NULL, name = NULL, description = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "StartNotebookSync",
+    http_method = "POST",
+    http_path = "/v2/domains/{domainIdentifier}/notebook-syncs",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$start_notebook_sync_input(domainIdentifier = domainIdentifier, owningProjectIdentifier = owningProjectIdentifier, sourceLocation = sourceLocation, gitMetadata = gitMetadata, notebookId = notebookId, name = name, description = description, clientToken = clientToken)
+  output <- .datazone$start_notebook_sync_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$start_notebook_sync <- datazone_start_notebook_sync
 
 #' Stops a running notebook run in Amazon SageMaker Unified Studio
 #'
@@ -16487,7 +16834,7 @@ datazone_update_asset_filter <- function(domainIdentifier, assetIdentifier, iden
 #'       glueConnection = list(
 #'         name = "string",
 #'         description = "string",
-#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC",
+#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC"|"GIT",
 #'         matchCriteria = list(
 #'           "string"
 #'         ),
@@ -16652,6 +16999,21 @@ datazone_update_asset_filter <- function(domainIdentifier, assetIdentifier, iden
 #'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
 #'       errorMessage = "string"
 #'     ),
+#'     snowflakeProperties = list(
+#'       snowflakeRole = "string",
+#'       identityMapping = list(
+#'         usernameAttribute = "string",
+#'         prefix = "string"
+#'       ),
+#'       lineageSync = list(
+#'         lineageJobId = "string",
+#'         timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC",
+#'         enabled = TRUE|FALSE,
+#'         schedule = "string"
+#'       ),
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       errorMessage = "string"
+#'     ),
 #'     amazonQProperties = list(
 #'       isEnabled = TRUE|FALSE,
 #'       profileArn = "string",
@@ -16677,9 +17039,16 @@ datazone_update_asset_filter <- function(domainIdentifier, assetIdentifier, iden
 #'       glueConnectionNames = list(
 #'         "string"
 #'       )
+#'     ),
+#'     gitProperties = list(
+#'       codeConnectionArn = "string",
+#'       repositoryId = "string",
+#'       defaultBranch = "string",
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       errorMessage = "string"
 #'     )
 #'   ),
-#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC",
+#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"S3"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"|"AMAZON_Q"|"MLFLOW"|"VPC"|"GIT",
 #'   scope = "DOMAIN"|"PROJECT"
 #' )
 #' ```
@@ -16763,6 +17132,27 @@ datazone_update_asset_filter <- function(domainIdentifier, assetIdentifier, iden
 #'       s3AccessGrantLocationId = "string",
 #'       registerS3AccessGrantLocation = TRUE|FALSE
 #'     ),
+#'     snowflakeProperties = list(
+#'       connectivityPropertiesPatch = list(
+#'         description = "string",
+#'         connectionProperties = list(
+#'           "string"
+#'         ),
+#'         authenticationConfiguration = list(
+#'           secretArn = "string",
+#'           basicAuthenticationCredentials = list(
+#'             userName = "string",
+#'             password = "string"
+#'           )
+#'         )
+#'       ),
+#'       snowflakeRole = "string",
+#'       lineageSync = list(
+#'         timezone = "UTC"|"AFRICA_JOHANNESBURG"|"AMERICA_MONTREAL"|"AMERICA_SAO_PAULO"|"ASIA_BAHRAIN"|"ASIA_BANGKOK"|"ASIA_CALCUTTA"|"ASIA_DUBAI"|"ASIA_HONG_KONG"|"ASIA_JAKARTA"|"ASIA_KUALA_LUMPUR"|"ASIA_SEOUL"|"ASIA_SHANGHAI"|"ASIA_SINGAPORE"|"ASIA_TAIPEI"|"ASIA_TOKYO"|"AUSTRALIA_MELBOURNE"|"AUSTRALIA_SYDNEY"|"CANADA_CENTRAL"|"CET"|"CST6CDT"|"ETC_GMT"|"ETC_GMT0"|"ETC_GMT_ADD_0"|"ETC_GMT_ADD_1"|"ETC_GMT_ADD_10"|"ETC_GMT_ADD_11"|"ETC_GMT_ADD_12"|"ETC_GMT_ADD_2"|"ETC_GMT_ADD_3"|"ETC_GMT_ADD_4"|"ETC_GMT_ADD_5"|"ETC_GMT_ADD_6"|"ETC_GMT_ADD_7"|"ETC_GMT_ADD_8"|"ETC_GMT_ADD_9"|"ETC_GMT_NEG_0"|"ETC_GMT_NEG_1"|"ETC_GMT_NEG_10"|"ETC_GMT_NEG_11"|"ETC_GMT_NEG_12"|"ETC_GMT_NEG_13"|"ETC_GMT_NEG_14"|"ETC_GMT_NEG_2"|"ETC_GMT_NEG_3"|"ETC_GMT_NEG_4"|"ETC_GMT_NEG_5"|"ETC_GMT_NEG_6"|"ETC_GMT_NEG_7"|"ETC_GMT_NEG_8"|"ETC_GMT_NEG_9"|"EUROPE_DUBLIN"|"EUROPE_LONDON"|"EUROPE_PARIS"|"EUROPE_STOCKHOLM"|"EUROPE_ZURICH"|"ISRAEL"|"MEXICO_GENERAL"|"MST7MDT"|"PACIFIC_AUCKLAND"|"US_CENTRAL"|"US_EASTERN"|"US_MOUNTAIN"|"US_PACIFIC",
+#'         enabled = TRUE|FALSE,
+#'         schedule = "string"
+#'       )
+#'     ),
 #'     amazonQProperties = list(
 #'       isEnabled = TRUE|FALSE,
 #'       profileArn = "string",
@@ -16780,6 +17170,10 @@ datazone_update_asset_filter <- function(domainIdentifier, assetIdentifier, iden
 #'         "string"
 #'       ),
 #'       securityGroupId = "string"
+#'     ),
+#'     gitProperties = list(
+#'       codeConnectionArn = "string",
+#'       defaultBranch = "string"
 #'     )
 #'   )
 #' )
@@ -17907,7 +18301,7 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #'   cellOrder = list(
 #'     list()
 #'   ),
-#'   status = "ACTIVE"|"ARCHIVED",
+#'   status = "ACTIVE"|"ARCHIVED"|"SYNC_IN_PROGRESS"|"SYNC_FAILED",
 #'   description = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
@@ -17940,6 +18334,17 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #'   ),
 #'   error = list(
 #'     message = "string"
+#'   ),
+#'   gitMetadata = list(
+#'     connectionId = "string",
+#'     repository = "string",
+#'     branch = "string",
+#'     commitHash = "string",
+#'     fileName = "string",
+#'     committedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     commitMessage = "string"
 #'   )
 #' )
 #' ```
@@ -17950,7 +18355,7 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #'   domainIdentifier = "string",
 #'   identifier = "string",
 #'   description = "string",
-#'   status = "ACTIVE"|"ARCHIVED",
+#'   status = "ACTIVE"|"ARCHIVED"|"SYNC_IN_PROGRESS"|"SYNC_FAILED",
 #'   name = "string",
 #'   cellOrder = list(
 #'     list()
@@ -18576,6 +18981,7 @@ datazone_update_rule <- function(domainIdentifier, identifier, name = NULL, desc
 #'           "string"
 #'         ),
 #'         status = "string",
+#'         scopeName = "string",
 #'         errorMessage = "string"
 #'       ),
 #'       permissions = list(
@@ -18711,6 +19117,7 @@ datazone_update_subscription_grant_status <- function(domainIdentifier, identifi
 #'               "string"
 #'             ),
 #'             status = "string",
+#'             scopeName = "string",
 #'             errorMessage = "string"
 #'           ),
 #'           permissions = list(

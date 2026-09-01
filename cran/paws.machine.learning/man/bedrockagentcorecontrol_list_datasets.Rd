@@ -12,7 +12,7 @@ bedrockagentcorecontrol_list_datasets(nextToken = NULL, maxResults = NULL)
 \item{maxResults}{The maximum number of datasets to return per page.}
 }
 \description{
-Lists all datasets in the caller's account, paginated. No presigned URLs in list results.
+Lists all datasets in the caller's account, paginated.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_list_datasets/} for full documentation.
 }

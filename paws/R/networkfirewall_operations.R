@@ -385,6 +385,105 @@ networkfirewall_attach_rule_groups_to_proxy_configuration <- function(ProxyConfi
 }
 .networkfirewall$operations$attach_rule_groups_to_proxy_configuration <- networkfirewall_attach_rule_groups_to_proxy_configuration
 
+#' Creates a Network Firewall container association
+#'
+#' @description
+#' Creates a Network Firewall container association. The association monitors container lifecycle events in your Amazon ECS or Amazon EKS clusters and resolves running container addresses for use in firewall rules.
+#'
+#' @usage
+#' networkfirewall_create_container_association(ContainerAssociationName,
+#'   Description, Type, ContainerMonitoringConfigurations, Tags)
+#'
+#' @param ContainerAssociationName &#91;required&#93; The descriptive name of the container association. You can't change the name of a container association after you create it.
+#' @param Description A description of the container association.
+#' @param Type &#91;required&#93; The type of containers to monitor. You can't change the container type after creation. Valid values:
+#' 
+#' -   `ECS` - Amazon Elastic Container Service
+#' 
+#' -   `EKS` - Amazon Elastic Kubernetes Service
+#' @param ContainerMonitoringConfigurations &#91;required&#93; The monitoring configurations for the container association. Each configuration specifies an Amazon ECS or Amazon EKS cluster to monitor and optional attribute filters to narrow which containers are tracked.
+#' @param Tags The key:value pairs to associate with the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContainerAssociationName = "string",
+#'   ContainerAssociationArn = "string",
+#'   Description = "string",
+#'   Type = "ECS"|"EKS",
+#'   ContainerMonitoringConfigurations = list(
+#'     list(
+#'       ClusterArn = "string",
+#'       AttributeFilters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Status = "ACTIVE"|"CREATING"|"DELETING"|"UPDATING",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   UpdateToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_container_association(
+#'   ContainerAssociationName = "string",
+#'   Description = "string",
+#'   Type = "ECS"|"EKS",
+#'   ContainerMonitoringConfigurations = list(
+#'     list(
+#'       ClusterArn = "string",
+#'       AttributeFilters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_create_container_association
+#'
+#' @aliases networkfirewall_create_container_association
+networkfirewall_create_container_association <- function(ContainerAssociationName, Description = NULL, Type, ContainerMonitoringConfigurations, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateContainerAssociation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$create_container_association_input(ContainerAssociationName = ContainerAssociationName, Description = Description, Type = Type, ContainerMonitoringConfigurations = ContainerMonitoringConfigurations, Tags = Tags)
+  output <- .networkfirewall$create_container_association_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$create_container_association <- networkfirewall_create_container_association
+
 #' Creates an Network Firewall Firewall and accompanying FirewallStatus for
 #' a VPC
 #'
@@ -408,7 +507,8 @@ networkfirewall_attach_rule_groups_to_proxy_configuration <- function(ProxyConfi
 #'   SubnetMappings, DeleteProtection, SubnetChangeProtection,
 #'   FirewallPolicyChangeProtection, Description, Tags,
 #'   EncryptionConfiguration, EnabledAnalysisTypes, TransitGatewayId,
-#'   AvailabilityZoneMappings, AvailabilityZoneChangeProtection)
+#'   AvailabilityZoneMappings, AvailabilityZoneChangeProtection,
+#'   NatGatewayMappings, ProxySettings, NoSourcePreservation, VpcEndpoint)
 #'
 #' @param FirewallName &#91;required&#93; The descriptive name of the firewall. You can't change the name of a firewall after you create it.
 #' @param FirewallPolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the FirewallPolicy that you want to use for the firewall.
@@ -434,6 +534,18 @@ networkfirewall_attach_rule_groups_to_proxy_configuration <- function(ProxyConfi
 #' @param AvailabilityZoneChangeProtection Optional. A setting indicating whether the firewall is protected against changes to its Availability Zone configuration. When set to `TRUE`, you cannot add or remove Availability Zones without first disabling this protection using [`update_availability_zone_change_protection`][networkfirewall_update_availability_zone_change_protection].
 #' 
 #' Default value: `FALSE`
+#' @param NatGatewayMappings The NAT gateways that the firewall uses to proxy traffic when `NoSourcePreservation` is `TRUE`. Network Firewall attaches the firewall to each NAT gateway that you specify, so that egress traffic is proxied through the NAT gateway.
+#' @param ProxySettings The listener configuration for a proxy mode firewall, used when `NoSourcePreservation` is `TRUE`. This specifies the ports and protocols on which the firewall's proxy listens for traffic.
+#' @param NoSourcePreservation Optional. Indicates whether the firewall operates in proxy mode, in which the source IP address of the traffic is not preserved. When set to `TRUE`, the firewall proxies traffic through a NAT gateway and the traffic reaching the destination uses the NAT gateway's IP address as the source.
+#' 
+#' When you set this to `TRUE`, you must specify `NatGatewayMappings` and `VpcEndpoint` instead of a top-level `VpcId` and `SubnetMappings`.
+#' 
+#' You can't change this setting after you create the firewall.
+#' 
+#' Default value: `FALSE`
+#' @param VpcEndpoint The VPC and subnets for the firewall endpoint, used when `NoSourcePreservation` is `TRUE`. Network Firewall creates the firewall endpoint in the subnets that you specify here.
+#' 
+#' For proxy mode firewalls, provide the firewall's VPC and endpoint subnets through this parameter instead of the top-level `VpcId` and `SubnetMappings`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -476,10 +588,33 @@ networkfirewall_attach_rule_groups_to_proxy_configuration <- function(ProxyConfi
 #'         AvailabilityZone = "string"
 #'       )
 #'     ),
-#'     AvailabilityZoneChangeProtection = TRUE|FALSE
+#'     AvailabilityZoneChangeProtection = TRUE|FALSE,
+#'     NatGatewayMappings = list(
+#'       list(
+#'         NatGatewayId = "string"
+#'       )
+#'     ),
+#'     ProxySettings = list(
+#'       ListenerProperties = list(
+#'         list(
+#'           Port = 123,
+#'           Type = "HTTP"|"HTTPS"
+#'         )
+#'       )
+#'     ),
+#'     NoSourcePreservation = TRUE|FALSE,
+#'     VpcEndpoint = list(
+#'       VpcId = "string",
+#'       SubnetMappings = list(
+#'         list(
+#'           SubnetId = "string",
+#'           IPAddressType = "DUALSTACK"|"IPV4"|"IPV6"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   FirewallStatus = list(
-#'     Status = "PROVISIONING"|"DELETING"|"READY",
+#'     Status = "PROVISIONING"|"DELETING"|"READY"|"FAILED",
 #'     ConfigurationSyncStateSummary = "PENDING"|"IN_SYNC"|"CAPACITY_CONSTRAINED",
 #'     SyncStates = list(
 #'       list(
@@ -487,12 +622,21 @@ networkfirewall_attach_rule_groups_to_proxy_configuration <- function(ProxyConfi
 #'           SubnetId = "string",
 #'           EndpointId = "string",
 #'           Status = "CREATING"|"DELETING"|"FAILED"|"ERROR"|"SCALING"|"READY",
-#'           StatusMessage = "string"
+#'           StatusMessage = "string",
+#'           DnsName = "string"
 #'         ),
 #'         Config = list(
 #'           list(
 #'             SyncStatus = "PENDING"|"IN_SYNC"|"CAPACITY_CONSTRAINED"|"NOT_SUBSCRIBED"|"DEPRECATED",
 #'             UpdateToken = "string"
+#'           )
+#'         ),
+#'         NatGatewayAttachments = list(
+#'           list(
+#'             NatGatewayId = "string",
+#'             Status = "CREATING"|"READY"|"UPDATING"|"FAILED"|"DELETING",
+#'             StatusMessage = "string",
+#'             DnsName = "string"
 #'           )
 #'         )
 #'       )
@@ -552,7 +696,30 @@ networkfirewall_attach_rule_groups_to_proxy_configuration <- function(ProxyConfi
 #'       AvailabilityZone = "string"
 #'     )
 #'   ),
-#'   AvailabilityZoneChangeProtection = TRUE|FALSE
+#'   AvailabilityZoneChangeProtection = TRUE|FALSE,
+#'   NatGatewayMappings = list(
+#'     list(
+#'       NatGatewayId = "string"
+#'     )
+#'   ),
+#'   ProxySettings = list(
+#'     ListenerProperties = list(
+#'       list(
+#'         Port = 123,
+#'         Type = "HTTP"|"HTTPS"
+#'       )
+#'     )
+#'   ),
+#'   NoSourcePreservation = TRUE|FALSE,
+#'   VpcEndpoint = list(
+#'     VpcId = "string",
+#'     SubnetMappings = list(
+#'       list(
+#'         SubnetId = "string",
+#'         IPAddressType = "DUALSTACK"|"IPV4"|"IPV6"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -561,7 +728,7 @@ networkfirewall_attach_rule_groups_to_proxy_configuration <- function(ProxyConfi
 #' @rdname networkfirewall_create_firewall
 #'
 #' @aliases networkfirewall_create_firewall
-networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, VpcId = NULL, SubnetMappings = NULL, DeleteProtection = NULL, SubnetChangeProtection = NULL, FirewallPolicyChangeProtection = NULL, Description = NULL, Tags = NULL, EncryptionConfiguration = NULL, EnabledAnalysisTypes = NULL, TransitGatewayId = NULL, AvailabilityZoneMappings = NULL, AvailabilityZoneChangeProtection = NULL) {
+networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, VpcId = NULL, SubnetMappings = NULL, DeleteProtection = NULL, SubnetChangeProtection = NULL, FirewallPolicyChangeProtection = NULL, Description = NULL, Tags = NULL, EncryptionConfiguration = NULL, EnabledAnalysisTypes = NULL, TransitGatewayId = NULL, AvailabilityZoneMappings = NULL, AvailabilityZoneChangeProtection = NULL, NatGatewayMappings = NULL, ProxySettings = NULL, NoSourcePreservation = NULL, VpcEndpoint = NULL) {
   op <- new_operation(
     name = "CreateFirewall",
     http_method = "POST",
@@ -570,7 +737,7 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .networkfirewall$create_firewall_input(FirewallName = FirewallName, FirewallPolicyArn = FirewallPolicyArn, VpcId = VpcId, SubnetMappings = SubnetMappings, DeleteProtection = DeleteProtection, SubnetChangeProtection = SubnetChangeProtection, FirewallPolicyChangeProtection = FirewallPolicyChangeProtection, Description = Description, Tags = Tags, EncryptionConfiguration = EncryptionConfiguration, EnabledAnalysisTypes = EnabledAnalysisTypes, TransitGatewayId = TransitGatewayId, AvailabilityZoneMappings = AvailabilityZoneMappings, AvailabilityZoneChangeProtection = AvailabilityZoneChangeProtection)
+  input <- .networkfirewall$create_firewall_input(FirewallName = FirewallName, FirewallPolicyArn = FirewallPolicyArn, VpcId = VpcId, SubnetMappings = SubnetMappings, DeleteProtection = DeleteProtection, SubnetChangeProtection = SubnetChangeProtection, FirewallPolicyChangeProtection = FirewallPolicyChangeProtection, Description = Description, Tags = Tags, EncryptionConfiguration = EncryptionConfiguration, EnabledAnalysisTypes = EnabledAnalysisTypes, TransitGatewayId = TransitGatewayId, AvailabilityZoneMappings = AvailabilityZoneMappings, AvailabilityZoneChangeProtection = AvailabilityZoneChangeProtection, NatGatewayMappings = NatGatewayMappings, ProxySettings = ProxySettings, NoSourcePreservation = NoSourcePreservation, VpcEndpoint = VpcEndpoint)
   output <- .networkfirewall$create_firewall_output()
   config <- get_config()
   svc <- .networkfirewall$service(config, op)
@@ -1829,14 +1996,15 @@ networkfirewall_create_tls_inspection_configuration <- function(TLSInspectionCon
 #'     )
 #'   ),
 #'   VpcEndpointAssociationStatus = list(
-#'     Status = "PROVISIONING"|"DELETING"|"READY",
+#'     Status = "PROVISIONING"|"DELETING"|"READY"|"FAILED",
 #'     AssociationSyncState = list(
 #'       list(
 #'         Attachment = list(
 #'           SubnetId = "string",
 #'           EndpointId = "string",
 #'           Status = "CREATING"|"DELETING"|"FAILED"|"ERROR"|"SCALING"|"READY",
-#'           StatusMessage = "string"
+#'           StatusMessage = "string",
+#'           DnsName = "string"
 #'         )
 #'       )
 #'     )
@@ -1886,6 +2054,64 @@ networkfirewall_create_vpc_endpoint_association <- function(FirewallArn, VpcId, 
   return(response)
 }
 .networkfirewall$operations$create_vpc_endpoint_association <- networkfirewall_create_vpc_endpoint_association
+
+#' Deletes a container association
+#'
+#' @description
+#' Deletes a container association. The resource transitions to a `DELETING` state. Deletion is asynchronous - Network Firewall returns immediately while cleanup proceeds in the background. You can't delete a container association while a rule group references it.
+#'
+#' @usage
+#' networkfirewall_delete_container_association(ContainerAssociationName,
+#'   ContainerAssociationArn)
+#'
+#' @param ContainerAssociationName The descriptive name of the container association.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ContainerAssociationArn The Amazon Resource Name (ARN) of the container association.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContainerAssociationName = "string",
+#'   ContainerAssociationArn = "string",
+#'   Status = "ACTIVE"|"CREATING"|"DELETING"|"UPDATING"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_container_association(
+#'   ContainerAssociationName = "string",
+#'   ContainerAssociationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_delete_container_association
+#'
+#' @aliases networkfirewall_delete_container_association
+networkfirewall_delete_container_association <- function(ContainerAssociationName = NULL, ContainerAssociationArn = NULL) {
+  op <- new_operation(
+    name = "DeleteContainerAssociation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$delete_container_association_input(ContainerAssociationName = ContainerAssociationName, ContainerAssociationArn = ContainerAssociationArn)
+  output <- .networkfirewall$delete_container_association_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$delete_container_association <- networkfirewall_delete_container_association
 
 #' Deletes the specified Firewall and its FirewallStatus
 #'
@@ -1947,10 +2173,33 @@ networkfirewall_create_vpc_endpoint_association <- function(FirewallArn, VpcId, 
 #'         AvailabilityZone = "string"
 #'       )
 #'     ),
-#'     AvailabilityZoneChangeProtection = TRUE|FALSE
+#'     AvailabilityZoneChangeProtection = TRUE|FALSE,
+#'     NatGatewayMappings = list(
+#'       list(
+#'         NatGatewayId = "string"
+#'       )
+#'     ),
+#'     ProxySettings = list(
+#'       ListenerProperties = list(
+#'         list(
+#'           Port = 123,
+#'           Type = "HTTP"|"HTTPS"
+#'         )
+#'       )
+#'     ),
+#'     NoSourcePreservation = TRUE|FALSE,
+#'     VpcEndpoint = list(
+#'       VpcId = "string",
+#'       SubnetMappings = list(
+#'         list(
+#'           SubnetId = "string",
+#'           IPAddressType = "DUALSTACK"|"IPV4"|"IPV6"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   FirewallStatus = list(
-#'     Status = "PROVISIONING"|"DELETING"|"READY",
+#'     Status = "PROVISIONING"|"DELETING"|"READY"|"FAILED",
 #'     ConfigurationSyncStateSummary = "PENDING"|"IN_SYNC"|"CAPACITY_CONSTRAINED",
 #'     SyncStates = list(
 #'       list(
@@ -1958,12 +2207,21 @@ networkfirewall_create_vpc_endpoint_association <- function(FirewallArn, VpcId, 
 #'           SubnetId = "string",
 #'           EndpointId = "string",
 #'           Status = "CREATING"|"DELETING"|"FAILED"|"ERROR"|"SCALING"|"READY",
-#'           StatusMessage = "string"
+#'           StatusMessage = "string",
+#'           DnsName = "string"
 #'         ),
 #'         Config = list(
 #'           list(
 #'             SyncStatus = "PENDING"|"IN_SYNC"|"CAPACITY_CONSTRAINED"|"NOT_SUBSCRIBED"|"DEPRECATED",
 #'             UpdateToken = "string"
+#'           )
+#'         ),
+#'         NatGatewayAttachments = list(
+#'           list(
+#'             NatGatewayId = "string",
+#'             Status = "CREATING"|"READY"|"UPDATING"|"FAILED"|"DELETING",
+#'             StatusMessage = "string",
+#'             DnsName = "string"
 #'           )
 #'         )
 #'       )
@@ -2726,14 +2984,15 @@ networkfirewall_delete_tls_inspection_configuration <- function(TLSInspectionCon
 #'     )
 #'   ),
 #'   VpcEndpointAssociationStatus = list(
-#'     Status = "PROVISIONING"|"DELETING"|"READY",
+#'     Status = "PROVISIONING"|"DELETING"|"READY"|"FAILED",
 #'     AssociationSyncState = list(
 #'       list(
 #'         Attachment = list(
 #'           SubnetId = "string",
 #'           EndpointId = "string",
 #'           Status = "CREATING"|"DELETING"|"FAILED"|"ERROR"|"SCALING"|"READY",
-#'           StatusMessage = "string"
+#'           StatusMessage = "string",
+#'           DnsName = "string"
 #'         )
 #'       )
 #'     )
@@ -2771,6 +3030,88 @@ networkfirewall_delete_vpc_endpoint_association <- function(VpcEndpointAssociati
   return(response)
 }
 .networkfirewall$operations$delete_vpc_endpoint_association <- networkfirewall_delete_vpc_endpoint_association
+
+#' Retrieves the configuration and status of a container association
+#'
+#' @description
+#' Retrieves the configuration and status of a container association.
+#'
+#' @usage
+#' networkfirewall_describe_container_association(ContainerAssociationName,
+#'   ContainerAssociationArn)
+#'
+#' @param ContainerAssociationName The descriptive name of the container association.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ContainerAssociationArn The Amazon Resource Name (ARN) of the container association.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContainerAssociationName = "string",
+#'   ContainerAssociationArn = "string",
+#'   Description = "string",
+#'   Type = "ECS"|"EKS",
+#'   ContainerMonitoringConfigurations = list(
+#'     list(
+#'       ClusterArn = "string",
+#'       AttributeFilters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Status = "ACTIVE"|"CREATING"|"DELETING"|"UPDATING",
+#'   ResolvedCidrCount = 123,
+#'   LastUpdatedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   UpdateToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_container_association(
+#'   ContainerAssociationName = "string",
+#'   ContainerAssociationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_describe_container_association
+#'
+#' @aliases networkfirewall_describe_container_association
+networkfirewall_describe_container_association <- function(ContainerAssociationName = NULL, ContainerAssociationArn = NULL) {
+  op <- new_operation(
+    name = "DescribeContainerAssociation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$describe_container_association_input(ContainerAssociationName = ContainerAssociationName, ContainerAssociationArn = ContainerAssociationArn)
+  output <- .networkfirewall$describe_container_association_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$describe_container_association <- networkfirewall_describe_container_association
 
 #' Returns the data objects for the specified firewall
 #'
@@ -2829,10 +3170,33 @@ networkfirewall_delete_vpc_endpoint_association <- function(VpcEndpointAssociati
 #'         AvailabilityZone = "string"
 #'       )
 #'     ),
-#'     AvailabilityZoneChangeProtection = TRUE|FALSE
+#'     AvailabilityZoneChangeProtection = TRUE|FALSE,
+#'     NatGatewayMappings = list(
+#'       list(
+#'         NatGatewayId = "string"
+#'       )
+#'     ),
+#'     ProxySettings = list(
+#'       ListenerProperties = list(
+#'         list(
+#'           Port = 123,
+#'           Type = "HTTP"|"HTTPS"
+#'         )
+#'       )
+#'     ),
+#'     NoSourcePreservation = TRUE|FALSE,
+#'     VpcEndpoint = list(
+#'       VpcId = "string",
+#'       SubnetMappings = list(
+#'         list(
+#'           SubnetId = "string",
+#'           IPAddressType = "DUALSTACK"|"IPV4"|"IPV6"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   FirewallStatus = list(
-#'     Status = "PROVISIONING"|"DELETING"|"READY",
+#'     Status = "PROVISIONING"|"DELETING"|"READY"|"FAILED",
 #'     ConfigurationSyncStateSummary = "PENDING"|"IN_SYNC"|"CAPACITY_CONSTRAINED",
 #'     SyncStates = list(
 #'       list(
@@ -2840,12 +3204,21 @@ networkfirewall_delete_vpc_endpoint_association <- function(VpcEndpointAssociati
 #'           SubnetId = "string",
 #'           EndpointId = "string",
 #'           Status = "CREATING"|"DELETING"|"FAILED"|"ERROR"|"SCALING"|"READY",
-#'           StatusMessage = "string"
+#'           StatusMessage = "string",
+#'           DnsName = "string"
 #'         ),
 #'         Config = list(
 #'           list(
 #'             SyncStatus = "PENDING"|"IN_SYNC"|"CAPACITY_CONSTRAINED"|"NOT_SUBSCRIBED"|"DEPRECATED",
 #'             UpdateToken = "string"
+#'           )
+#'         ),
+#'         NatGatewayAttachments = list(
+#'           list(
+#'             NatGatewayId = "string",
+#'             Status = "CREATING"|"READY"|"UPDATING"|"FAILED"|"DELETING",
+#'             StatusMessage = "string",
+#'             DnsName = "string"
 #'           )
 #'         )
 #'       )
@@ -2920,7 +3293,7 @@ networkfirewall_describe_firewall <- function(FirewallName = NULL, FirewallArn =
 #'   FirewallArn = "string",
 #'   FirewallPolicyArn = "string",
 #'   Description = "string",
-#'   Status = "PROVISIONING"|"DELETING"|"READY",
+#'   Status = "PROVISIONING"|"DELETING"|"READY"|"FAILED",
 #'   SupportedAvailabilityZones = list(
 #'     list(
 #'       IPAddressType = "DUALSTACK"|"IPV4"|"IPV6"
@@ -4229,14 +4602,15 @@ networkfirewall_describe_tls_inspection_configuration <- function(TLSInspectionC
 #'     )
 #'   ),
 #'   VpcEndpointAssociationStatus = list(
-#'     Status = "PROVISIONING"|"DELETING"|"READY",
+#'     Status = "PROVISIONING"|"DELETING"|"READY"|"FAILED",
 #'     AssociationSyncState = list(
 #'       list(
 #'         Attachment = list(
 #'           SubnetId = "string",
 #'           EndpointId = "string",
 #'           Status = "CREATING"|"DELETING"|"FAILED"|"ERROR"|"SCALING"|"READY",
-#'           StatusMessage = "string"
+#'           StatusMessage = "string",
+#'           DnsName = "string"
 #'         )
 #'       )
 #'     )
@@ -4694,6 +5068,63 @@ networkfirewall_list_analysis_reports <- function(FirewallName = NULL, FirewallA
   return(response)
 }
 .networkfirewall$operations$list_analysis_reports <- networkfirewall_list_analysis_reports
+
+#' Lists the container associations in your account and Region
+#'
+#' @description
+#' Lists the container associations in your account and Region. Use the `NextToken` parameter in subsequent requests to retrieve additional results.
+#'
+#' @usage
+#' networkfirewall_list_container_associations(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of objects that you want Network Firewall to return for this request. If more objects are available, in the response, Network Firewall provides a `NextToken` value that you can use in a subsequent call to get the next batch of objects.
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the number of objects that are still available for retrieval exceeds the maximum you requested, Network Firewall returns a `NextToken` value in the response. To retrieve the next batch of objects, use the token returned from the prior request in your next request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContainerAssociations = list(
+#'     list(
+#'       Arn = "string",
+#'       Name = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_container_associations(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_list_container_associations
+#'
+#' @aliases networkfirewall_list_container_associations
+networkfirewall_list_container_associations <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListContainerAssociations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ContainerAssociations"),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$list_container_associations_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkfirewall$list_container_associations_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$list_container_associations <- networkfirewall_list_container_associations
 
 #' Retrieves the metadata for the firewall policies that you have defined
 #'
@@ -5955,6 +6386,117 @@ networkfirewall_update_availability_zone_change_protection <- function(UpdateTok
 }
 .networkfirewall$operations$update_availability_zone_change_protection <- networkfirewall_update_availability_zone_change_protection
 
+#' Updates the monitoring configurations and description of a container
+#' association
+#'
+#' @description
+#' Updates the monitoring configurations and description of a container association. You can't change the container type after creation. Provide an update token to enable optimistic concurrency control.
+#'
+#' @usage
+#' networkfirewall_update_container_association(ContainerAssociationName,
+#'   ContainerAssociationArn, Description, Type,
+#'   ContainerMonitoringConfigurations, Tags, UpdateToken)
+#'
+#' @param ContainerAssociationName The descriptive name of the container association.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ContainerAssociationArn The Amazon Resource Name (ARN) of the container association.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param Description A description of the container association. When omitted, the existing description remains unchanged. To clear the description, pass an empty string.
+#' @param Type &#91;required&#93; The container type. This value must match the existing type and can't be changed. Valid values:
+#' 
+#' -   `ECS` - Amazon Elastic Container Service
+#' 
+#' -   `EKS` - Amazon Elastic Kubernetes Service
+#' @param ContainerMonitoringConfigurations &#91;required&#93; The updated monitoring configurations for the container association. Each configuration specifies an Amazon ECS or Amazon EKS cluster to monitor and optional attribute filters.
+#' @param Tags The key:value pairs to associate with the resource.
+#' @param UpdateToken &#91;required&#93; A token used for optimistic locking. Network Firewall returns a token to your requests that access the container association. The token marks the state of the container association resource at the time of the request.
+#' 
+#' To make changes to the container association, you provide the token in your request. Network Firewall uses the token to ensure that the container association hasn't changed since you last retrieved it. If it has changed, the operation fails with an `InvalidTokenException`. If this happens, retrieve the container association again to get a current copy of it with a current token. Reapply your changes as needed, then try the operation again using the new token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContainerAssociationName = "string",
+#'   ContainerAssociationArn = "string",
+#'   Description = "string",
+#'   Type = "ECS"|"EKS",
+#'   ContainerMonitoringConfigurations = list(
+#'     list(
+#'       ClusterArn = "string",
+#'       AttributeFilters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Status = "ACTIVE"|"CREATING"|"DELETING"|"UPDATING",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   UpdateToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_container_association(
+#'   ContainerAssociationName = "string",
+#'   ContainerAssociationArn = "string",
+#'   Description = "string",
+#'   Type = "ECS"|"EKS",
+#'   ContainerMonitoringConfigurations = list(
+#'     list(
+#'       ClusterArn = "string",
+#'       AttributeFilters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   UpdateToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_update_container_association
+#'
+#' @aliases networkfirewall_update_container_association
+networkfirewall_update_container_association <- function(ContainerAssociationName = NULL, ContainerAssociationArn = NULL, Description = NULL, Type, ContainerMonitoringConfigurations, Tags = NULL, UpdateToken) {
+  op <- new_operation(
+    name = "UpdateContainerAssociation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$update_container_association_input(ContainerAssociationName = ContainerAssociationName, ContainerAssociationArn = ContainerAssociationArn, Description = Description, Type = Type, ContainerMonitoringConfigurations = ContainerMonitoringConfigurations, Tags = Tags, UpdateToken = UpdateToken)
+  output <- .networkfirewall$update_container_association_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$update_container_association <- networkfirewall_update_container_association
+
 #' Enables specific types of firewall analysis on a specific firewall you
 #' define
 #'
@@ -7031,6 +7573,87 @@ networkfirewall_update_proxy_rule_priorities <- function(ProxyRuleGroupName = NU
   return(response)
 }
 .networkfirewall$operations$update_proxy_rule_priorities <- networkfirewall_update_proxy_rule_priorities
+
+#' Modifies the proxy listener configuration of a proxy mode firewall
+#'
+#' @description
+#' Modifies the proxy listener configuration of a proxy mode firewall. Proxy mode firewalls are created with `NoSourcePreservation` set to `TRUE`. Use this operation to change the ports and protocols on which the firewall's proxy listens for traffic.
+#'
+#' @usage
+#' networkfirewall_update_proxy_settings(FirewallArn, FirewallName,
+#'   UpdateToken, ProxySettings)
+#'
+#' @param FirewallArn The Amazon Resource Name (ARN) of the firewall.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param FirewallName The descriptive name of the firewall. You can't change the name of a firewall after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param UpdateToken An optional token that you can use for optimistic locking. Network Firewall returns a token to your requests that access the firewall. The token marks the state of the firewall resource at the time of the request.
+#' 
+#' To make an unconditional change to the firewall, omit the token in your update request. Without the token, Network Firewall performs your updates regardless of whether the firewall has changed since you last retrieved it.
+#' 
+#' To make a conditional change to the firewall, provide the token in your update request. Network Firewall uses the token to ensure that the firewall hasn't changed since you last retrieved it. If it has changed, the operation fails with an `InvalidTokenException`. If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply your changes as needed, then try the operation again using the new token.
+#' @param ProxySettings The proxy listener configuration to set on the firewall. This specifies the ports and protocols on which the firewall's proxy listens for traffic.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallArn = "string",
+#'   FirewallName = "string",
+#'   UpdateToken = "string",
+#'   ProxySettings = list(
+#'     ListenerProperties = list(
+#'       list(
+#'         Port = 123,
+#'         Type = "HTTP"|"HTTPS"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_proxy_settings(
+#'   FirewallArn = "string",
+#'   FirewallName = "string",
+#'   UpdateToken = "string",
+#'   ProxySettings = list(
+#'     ListenerProperties = list(
+#'       list(
+#'         Port = 123,
+#'         Type = "HTTP"|"HTTPS"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_update_proxy_settings
+#'
+#' @aliases networkfirewall_update_proxy_settings
+networkfirewall_update_proxy_settings <- function(FirewallArn = NULL, FirewallName = NULL, UpdateToken = NULL, ProxySettings = NULL) {
+  op <- new_operation(
+    name = "UpdateProxySettings",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$update_proxy_settings_input(FirewallArn = FirewallArn, FirewallName = FirewallName, UpdateToken = UpdateToken, ProxySettings = ProxySettings)
+  output <- .networkfirewall$update_proxy_settings_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$update_proxy_settings <- networkfirewall_update_proxy_settings
 
 #' Updates the rule settings for the specified rule group
 #'

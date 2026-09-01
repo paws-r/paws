@@ -11,6 +11,8 @@ bedrockagentcore_invoke_agent_runtime(
   mcpSessionId = NULL,
   runtimeSessionId = NULL,
   mcpProtocolVersion = NULL,
+  mcpMethod = NULL,
+  mcpName = NULL,
   runtimeUserId = NULL,
   traceId = NULL,
   traceParent = NULL,
@@ -32,6 +34,15 @@ bedrockagentcore_invoke_agent_runtime(
 \item{runtimeSessionId}{The identifier of the runtime session.}
 
 \item{mcpProtocolVersion}{The version of the MCP protocol being used.}
+
+\item{mcpMethod}{The MCP method being invoked. For example, \code{tools/call}, \code{resources/read}, or \code{prompts/get}.}
+
+\item{mcpName}{The name of the MCP resource, tool, or prompt being accessed. The value depends on the method:
+\itemize{
+\item \code{tools/call} – The tool name.
+\item \code{resources/read} – The resource URI.
+\item \code{prompts/get} – The prompt name.
+}}
 
 \item{runtimeUserId}{The identifier of the runtime user.}
 

@@ -12,6 +12,7 @@ bedrockagentcorecontrol_create_configuration_bundle(
   branchName = NULL,
   commitMessage = NULL,
   createdBy = NULL,
+  kmsKeyArn = NULL,
   tags = NULL
 )
 }
@@ -29,6 +30,8 @@ bedrockagentcorecontrol_create_configuration_bundle(
 \item{commitMessage}{A commit message describing the initial version of the configuration bundle.}
 
 \item{createdBy}{The source that created this version, including the source name and optional ARN.}
+
+\item{kmsKeyArn}{Optional KMS key ARN for encrypting component configurations.}
 
 \item{tags}{A map of tag keys and values to assign to the configuration bundle. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment.}
 }

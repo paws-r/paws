@@ -530,11 +530,17 @@ controltower_list_enabled_baselines <- function(filter = NULL, nextToken = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_list_enabled_controls/](https://www.paws-r-sdk.com/docs/controltower_list_enabled_controls/) for full documentation.
 #'
-#' @param targetIdentifier The ARN of the organizational unit. For information on how to find the `targetIdentifier`, see [the overview page](https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html).
+#' @param targetIdentifier The ARN of the target. The value depends on the target type:
+#' 
+#' -   Organizational unit (OU) – Specify the ARN of the OU.
+#' 
+#' -   Account – Specify the ARN of the account.
+#' 
+#' For information on how to find the `targetIdentifier`, see [the overview page](https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html).
 #' @param nextToken The token to continue the list from a previous API call with the same parameters.
 #' @param maxResults How many results to return per API call.
 #' @param filter An input filter for the [`list_enabled_controls`][controltower_list_enabled_controls] API that lets you select the types of control operations to view.
-#' @param includeChildren A boolean value that determines whether to include enabled controls from child organizational units in the response.
+#' @param includeChildren Specifies whether to include enabled controls from child organizational units and child accounts in the response.
 #'
 #' @keywords internal
 #'

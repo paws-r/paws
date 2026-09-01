@@ -13,6 +13,7 @@ cloudwatchlogs_update_scheduled_query(
   scheduleExpression,
   timezone = NULL,
   startTimeOffset = NULL,
+  endTimeOffset = NULL,
   destinationConfiguration = NULL,
   scheduleStartTime = NULL,
   scheduleEndTime = NULL,
@@ -36,6 +37,8 @@ cloudwatchlogs_update_scheduled_query(
 \item{timezone}{The updated timezone for evaluating the schedule expression.}
 
 \item{startTimeOffset}{The updated time offset in seconds that defines the lookback period for the query.}
+
+\item{endTimeOffset}{The updated time offset in seconds that defines the end of the lookback period for the query.}
 
 \item{destinationConfiguration}{The updated configuration for where to deliver query results.}
 

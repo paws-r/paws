@@ -1,6 +1,6 @@
 Package: paws.security.identity
 Title: 'Amazon Web Services' Security, Identity, & Compliance Services
-Version: 0.10.0
+Version: 0.11.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -22,7 +22,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
 Collate: 
     'accessanalyzer_service.R'
     'accessanalyzer_interfaces.R'

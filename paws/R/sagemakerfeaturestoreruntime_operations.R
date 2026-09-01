@@ -99,6 +99,127 @@ sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers, Expiratio
 }
 .sagemakerfeaturestoreruntime$operations$batch_get_record <- sagemakerfeaturestoreruntime_batch_get_record
 
+#' Writes a batch of Records to one or more FeatureGroups
+#'
+#' @description
+#' Writes a batch of `Records` to one or more `FeatureGroup`s. Use this API for bulk ingestion of records into the `OnlineStore` and `OfflineStore`.
+#' 
+#' You can set the ingested records to expire at a given time to live (TTL) duration after the record's event time by specifying the `TtlDuration` parameter. A request level `TtlDuration` applies to all entries that do not specify their own `TtlDuration`.
+#'
+#' @usage
+#' sagemakerfeaturestoreruntime_batch_write_record(Entries, TtlDuration)
+#'
+#' @param Entries &#91;required&#93; A list of records to write. Each entry specifies the `FeatureGroup`, the record data, and optionally target stores and a TTL duration.
+#' @param TtlDuration Time to live duration applied to all entries in the batch that do not specify their own `TtlDuration`; `ExpiresAt` = `EventTime` + `TtlDuration`. For information on HardDelete, see the [`delete_record`][sagemakerfeaturestoreruntime_delete_record] API in the Amazon SageMaker API Reference guide.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Errors = list(
+#'     list(
+#'       Entry = list(
+#'         FeatureGroupName = "string",
+#'         Record = list(
+#'           list(
+#'             FeatureName = "string",
+#'             ValueAsString = "string",
+#'             ValueAsStringList = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         TargetStores = list(
+#'           "OnlineStore"|"OfflineStore"
+#'         ),
+#'         TtlDuration = list(
+#'           Unit = "Seconds"|"Minutes"|"Hours"|"Days"|"Weeks",
+#'           Value = 123
+#'         )
+#'       ),
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   ),
+#'   UnprocessedEntries = list(
+#'     list(
+#'       FeatureGroupName = "string",
+#'       Record = list(
+#'         list(
+#'           FeatureName = "string",
+#'           ValueAsString = "string",
+#'           ValueAsStringList = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       TargetStores = list(
+#'         "OnlineStore"|"OfflineStore"
+#'       ),
+#'       TtlDuration = list(
+#'         Unit = "Seconds"|"Minutes"|"Hours"|"Days"|"Weeks",
+#'         Value = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_write_record(
+#'   Entries = list(
+#'     list(
+#'       FeatureGroupName = "string",
+#'       Record = list(
+#'         list(
+#'           FeatureName = "string",
+#'           ValueAsString = "string",
+#'           ValueAsStringList = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       TargetStores = list(
+#'         "OnlineStore"|"OfflineStore"
+#'       ),
+#'       TtlDuration = list(
+#'         Unit = "Seconds"|"Minutes"|"Hours"|"Days"|"Weeks",
+#'         Value = 123
+#'       )
+#'     )
+#'   ),
+#'   TtlDuration = list(
+#'     Unit = "Seconds"|"Minutes"|"Hours"|"Days"|"Weeks",
+#'     Value = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemakerfeaturestoreruntime_batch_write_record
+#'
+#' @aliases sagemakerfeaturestoreruntime_batch_write_record
+sagemakerfeaturestoreruntime_batch_write_record <- function(Entries, TtlDuration = NULL) {
+  op <- new_operation(
+    name = "BatchWriteRecord",
+    http_method = "POST",
+    http_path = "/BatchWriteRecord",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemakerfeaturestoreruntime$batch_write_record_input(Entries = Entries, TtlDuration = TtlDuration)
+  output <- .sagemakerfeaturestoreruntime$batch_write_record_output()
+  config <- get_config()
+  svc <- .sagemakerfeaturestoreruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemakerfeaturestoreruntime$operations$batch_write_record <- sagemakerfeaturestoreruntime_batch_write_record
+
 #' Deletes a Record from a FeatureGroup in the OnlineStore
 #'
 #' @description
@@ -110,7 +231,7 @@ sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers, Expiratio
 #' 
 #' -   `HardDelete` returns `EventTime`: `400 ValidationException` to indicate that the delete operation failed. No delete record marker is written to the `OfflineStore`.
 #' 
-#' When a record is deleted from the `OnlineStore`, the deleted record marker is appended to the `OfflineStore`. If you have the Iceberg table format enabled for your `OfflineStore`, you can remove all history of a record from the `OfflineStore` using Amazon Athena or Apache Spark. For information on how to hard delete a record from the `OfflineStore` with the Iceberg table format enabled, see [Delete records from the offline store](https://docs.aws.amazon.com/sagemaker/latest/dg/#feature-store-delete-records-offline-store).
+#' When a record is deleted from the `OnlineStore`, the deleted record marker is appended to the `OfflineStore`. If you have the Iceberg table format enabled for your `OfflineStore`, you can remove all history of a record from the `OfflineStore` using Amazon Athena or Apache Spark. For information on how to hard delete a record from the `OfflineStore` with the Iceberg table format enabled, see [Delete records from the offline store](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-delete-records.html#feature-store-delete-records-offline-store).
 #'
 #' @usage
 #' sagemakerfeaturestoreruntime_delete_record(FeatureGroupName,
@@ -228,6 +349,66 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
   return(response)
 }
 .sagemakerfeaturestoreruntime$operations$get_record <- sagemakerfeaturestoreruntime_get_record
+
+#' Lists the RecordIdentifier values of all records stored in a
+#' FeatureGroup's OnlineStore
+#'
+#' @description
+#' Lists the `RecordIdentifier` values of all records stored in a `FeatureGroup`'s `OnlineStore`. This enables you to discover which records exist without retrieving the full record data.
+#'
+#' @usage
+#' sagemakerfeaturestoreruntime_list_records(FeatureGroupName, MaxResults,
+#'   NextToken, IncludeSoftDeletedRecords)
+#'
+#' @param FeatureGroupName &#91;required&#93; The name or Amazon Resource Name (ARN) of the feature group to list records from.
+#' @param MaxResults The maximum number of record identifiers to return in a single page of results. For the `InMemory` tier, this value is a hint and not a strict requirement. The response may contain more or fewer results than the specified `MaxResults`.
+#' @param NextToken A token to resume pagination of [`list_records`][sagemakerfeaturestoreruntime_list_records] results.
+#' @param IncludeSoftDeletedRecords If set to `true`, the result includes records that have been soft deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecordIdentifiers = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_records(
+#'   FeatureGroupName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   IncludeSoftDeletedRecords = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemakerfeaturestoreruntime_list_records
+#'
+#' @aliases sagemakerfeaturestoreruntime_list_records
+sagemakerfeaturestoreruntime_list_records <- function(FeatureGroupName, MaxResults = NULL, NextToken = NULL, IncludeSoftDeletedRecords = NULL) {
+  op <- new_operation(
+    name = "ListRecords",
+    http_method = "POST",
+    http_path = "/FeatureGroup/{FeatureGroupName}/ListRecords",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecordIdentifiers"),
+    stream_api = FALSE
+  )
+  input <- .sagemakerfeaturestoreruntime$list_records_input(FeatureGroupName = FeatureGroupName, MaxResults = MaxResults, NextToken = NextToken, IncludeSoftDeletedRecords = IncludeSoftDeletedRecords)
+  output <- .sagemakerfeaturestoreruntime$list_records_output()
+  config <- get_config()
+  svc <- .sagemakerfeaturestoreruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemakerfeaturestoreruntime$operations$list_records <- sagemakerfeaturestoreruntime_list_records
 
 #' The PutRecord API is used to ingest a list of Records into your feature
 #' group

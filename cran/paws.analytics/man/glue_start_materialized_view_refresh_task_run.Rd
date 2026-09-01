@@ -2,8 +2,8 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_start_materialized_view_refresh_task_run}
 \alias{glue_start_materialized_view_refresh_task_run}
-\title{Starts a materialized view refresh task run, for a specified table and
-columns}
+\title{Starts a materialized view refresh task run for a specified materialized
+view}
 \usage{
 glue_start_materialized_view_refresh_task_run(
   CatalogId,
@@ -17,12 +17,12 @@ glue_start_materialized_view_refresh_task_run(
 
 \item{DatabaseName}{[required] The name of the database where the table resides.}
 
-\item{TableName}{[required] The name of the table to generate run the materialized view refresh task.}
+\item{TableName}{[required] The name of the materialized view to run the refresh task for.}
 
 \item{FullRefresh}{Specifies whether this is a full refresh of the task run.}
 }
 \description{
-Starts a materialized view refresh task run, for a specified table and columns.
+Starts a materialized view refresh task run for a specified materialized view.
 
 See \url{https://www.paws-r-sdk.com/docs/glue_start_materialized_view_refresh_task_run/} for full documentation.
 }

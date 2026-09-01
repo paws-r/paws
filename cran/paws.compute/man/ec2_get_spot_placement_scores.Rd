@@ -14,7 +14,8 @@ ec2_get_spot_placement_scores(
   InstanceRequirementsWithMetadata = NULL,
   DryRun = NULL,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  IncludeLocalZones = NULL
 )
 }
 \arguments{
@@ -41,6 +42,10 @@ If you specify \code{InstanceRequirementsWithMetadata}, you can't specify \code{
 \item{MaxResults}{The maximum number of items to return for this request. To get the next page of items, make another request with the token returned in the output. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/Query-Requests.html#api-pagination}{Pagination}.}
 
 \item{NextToken}{The token returned from a previous paginated request. Pagination continues from the end of the items returned by the previous request.}
+
+\item{IncludeLocalZones}{Specify \code{true} so that the response returns scores that include Local Zones. Otherwise, the response ignores Local Zones.
+
+When you request regional scores, Local Zone capacity counts toward its parent Region.}
 }
 \description{
 Calculates the Spot placement score for a Region or Availability Zone based on the specified target capacity and compute requirements.

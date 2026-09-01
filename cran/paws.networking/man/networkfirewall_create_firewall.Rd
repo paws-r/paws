@@ -19,7 +19,11 @@ networkfirewall_create_firewall(
   EnabledAnalysisTypes = NULL,
   TransitGatewayId = NULL,
   AvailabilityZoneMappings = NULL,
-  AvailabilityZoneChangeProtection = NULL
+  AvailabilityZoneChangeProtection = NULL,
+  NatGatewayMappings = NULL,
+  ProxySettings = NULL,
+  NoSourcePreservation = NULL,
+  VpcEndpoint = NULL
 )
 }
 \arguments{
@@ -60,6 +64,22 @@ You can modify Availability Zones later using \code{\link[=networkfirewall_assoc
 \item{AvailabilityZoneChangeProtection}{Optional. A setting indicating whether the firewall is protected against changes to its Availability Zone configuration. When set to \code{TRUE}, you cannot add or remove Availability Zones without first disabling this protection using \code{\link[=networkfirewall_update_availability_zone_change_protection]{update_availability_zone_change_protection}}.
 
 Default value: \code{FALSE}}
+
+\item{NatGatewayMappings}{The NAT gateways that the firewall uses to proxy traffic when \code{NoSourcePreservation} is \code{TRUE}. Network Firewall attaches the firewall to each NAT gateway that you specify, so that egress traffic is proxied through the NAT gateway.}
+
+\item{ProxySettings}{The listener configuration for a proxy mode firewall, used when \code{NoSourcePreservation} is \code{TRUE}. This specifies the ports and protocols on which the firewall's proxy listens for traffic.}
+
+\item{NoSourcePreservation}{Optional. Indicates whether the firewall operates in proxy mode, in which the source IP address of the traffic is not preserved. When set to \code{TRUE}, the firewall proxies traffic through a NAT gateway and the traffic reaching the destination uses the NAT gateway's IP address as the source.
+
+When you set this to \code{TRUE}, you must specify \code{NatGatewayMappings} and \code{VpcEndpoint} instead of a top-level \code{VpcId} and \code{SubnetMappings}.
+
+You can't change this setting after you create the firewall.
+
+Default value: \code{FALSE}}
+
+\item{VpcEndpoint}{The VPC and subnets for the firewall endpoint, used when \code{NoSourcePreservation} is \code{TRUE}. Network Firewall creates the firewall endpoint in the subnets that you specify here.
+
+For proxy mode firewalls, provide the firewall's VPC and endpoint subnets through this parameter instead of the top-level \code{VpcId} and \code{SubnetMappings}.}
 }
 \description{
 Creates an Network Firewall Firewall and accompanying FirewallStatus for a VPC.

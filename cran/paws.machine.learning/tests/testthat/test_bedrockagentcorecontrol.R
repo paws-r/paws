@@ -16,6 +16,10 @@ test_that("list_browsers", {
   expect_error(svc$list_browsers(), NA)
 })
 
+test_that("list_capacity_providers", {
+  expect_error(svc$list_capacity_providers(), NA)
+})
+
 test_that("list_code_interpreters", {
   expect_error(svc$list_code_interpreters(), NA)
 })

@@ -95,20 +95,24 @@ Welcome to the Amazon Bedrock AgentCore Control plane API reference. Control pla
 
 \tabular{ll}{
 \link[paws.machine.learning:bedrockagentcorecontrol_add_dataset_examples]{add_dataset_examples} \tab Adds examples to the dataset's DRAFT\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_batch_put_gateway_rate_limits]{batch_put_gateway_rate_limits} \tab Atomically creates or updates multiple rate limits for a gateway\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_agent_runtime]{create_agent_runtime} \tab Creates an Amazon Bedrock AgentCore Runtime\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_agent_runtime_endpoint]{create_agent_runtime_endpoint} \tab Creates an AgentCore Runtime endpoint\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_api_key_credential_provider]{create_api_key_credential_provider} \tab Creates a new API key credential provider\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_browser]{create_browser} \tab Creates a custom browser\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_browser_profile]{create_browser_profile} \tab Creates a browser profile in Amazon Bedrock AgentCore\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_create_capacity_provider]{create_capacity_provider} \tab Creates a capacity provider\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_code_interpreter]{create_code_interpreter} \tab Creates a custom code interpreter\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_configuration_bundle]{create_configuration_bundle} \tab Creates a new configuration bundle resource\cr
-\link[paws.machine.learning:bedrockagentcorecontrol_create_dataset]{create_dataset} \tab Creates a new Dataset resource asynchronously\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_create_dataset]{create_dataset} \tab Creates a new dataset resource asynchronously\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_dataset_version]{create_dataset_version} \tab Publishes the current DRAFT as a new numbered version\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_evaluator]{create_evaluator} \tab Creates a custom evaluator for agent quality assessment\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_gateway]{create_gateway} \tab Creates a gateway for Amazon Bedrock Agent\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_create_gateway_rate_limit]{create_gateway_rate_limit} \tab Creates a rate limit for a gateway\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_gateway_rule]{create_gateway_rule} \tab Creates a rule for a gateway\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_gateway_target]{create_gateway_target} \tab Creates a target for a gateway\cr
-\link[paws.machine.learning:bedrockagentcorecontrol_create_harness]{create_harness} \tab Operation to create a Harness\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_create_harness]{create_harness} \tab Operation to create a harness\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_create_harness_endpoint]{create_harness_endpoint} \tab Operation to create a harness endpoint\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_memory]{create_memory} \tab Creates a new Amazon Bedrock AgentCore Memory resource\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_oauth_2_credential_provider]{create_oauth_2_credential_provider} \tab Creates a new OAuth2 credential provider\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_online_evaluation_config]{create_online_evaluation_config} \tab Creates an online evaluation configuration for continuous monitoring of agent performance\cr
@@ -120,20 +124,23 @@ Welcome to the Amazon Bedrock AgentCore Control plane API reference. Control pla
 \link[paws.machine.learning:bedrockagentcorecontrol_create_registry]{create_registry} \tab Creates a new registry in your Amazon Web Services account\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_registry_record]{create_registry_record} \tab Creates a new registry record within the specified registry\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_create_workload_identity]{create_workload_identity} \tab Creates a new workload identity\cr
-\link[paws.machine.learning:bedrockagentcorecontrol_delete_agent_runtime]{delete_agent_runtime} \tab Deletes an Amazon Bedrock AgentCore Runtime\cr
-\link[paws.machine.learning:bedrockagentcorecontrol_delete_agent_runtime_endpoint]{delete_agent_runtime_endpoint} \tab Deletes an AAgentCore Runtime endpoint\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_delete_agent_runtime]{delete_agent_runtime} \tab Deletes an Amazon Bedrock AgentCore Runtime, or a single version of an AgentCore Runtime when you provide the version qualifier\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_delete_agent_runtime_endpoint]{delete_agent_runtime_endpoint} \tab Deletes an AgentCore Runtime endpoint\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_delete_api_key_credential_provider]{delete_api_key_credential_provider} \tab Deletes an API key credential provider\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_delete_browser]{delete_browser} \tab Deletes a custom browser\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_delete_browser_profile]{delete_browser_profile} \tab Deletes a browser profile\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_delete_capacity_provider]{delete_capacity_provider} \tab Deletes a capacity provider\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_delete_code_interpreter]{delete_code_interpreter} \tab Deletes a custom code interpreter\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_delete_configuration_bundle]{delete_configuration_bundle} \tab Deletes a configuration bundle and all of its versions\cr
-\link[paws.machine.learning:bedrockagentcorecontrol_delete_dataset]{delete_dataset} \tab Deletes a dataset version or an entire dataset (all versions + name claim)\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_delete_dataset]{delete_dataset} \tab Deletes a dataset version or an entire dataset asynchronously\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_delete_dataset_examples]{delete_dataset_examples} \tab Deletes specific examples by ID from DRAFT\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_delete_evaluator]{delete_evaluator} \tab Deletes a custom evaluator\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_delete_gateway]{delete_gateway} \tab Deletes a gateway\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_delete_gateway_rate_limit]{delete_gateway_rate_limit} \tab Deletes a gateway rate limit\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_delete_gateway_rule]{delete_gateway_rule} \tab Deletes a gateway rule\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_delete_gateway_target]{delete_gateway_target} \tab Deletes a gateway target\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_delete_harness]{delete_harness} \tab Operation to delete a Harness\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_delete_harness_endpoint]{delete_harness_endpoint} \tab Operation to delete a harness endpoint\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_delete_memory]{delete_memory} \tab Deletes an Amazon Bedrock AgentCore Memory resource\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_delete_oauth_2_credential_provider]{delete_oauth_2_credential_provider} \tab Deletes an OAuth2 credential provider\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_delete_online_evaluation_config]{delete_online_evaluation_config} \tab Deletes an online evaluation configuration and stops any ongoing evaluation processes associated with it\cr
@@ -151,15 +158,18 @@ Welcome to the Amazon Bedrock AgentCore Control plane API reference. Control pla
 \link[paws.machine.learning:bedrockagentcorecontrol_get_api_key_credential_provider]{get_api_key_credential_provider} \tab Retrieves information about an API key credential provider\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_get_browser]{get_browser} \tab Gets information about a custom browser\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_get_browser_profile]{get_browser_profile} \tab Gets information about a browser profile\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_get_capacity_provider]{get_capacity_provider} \tab Retrieves information about a capacity provider, including its status, permissions configuration, and compute configuration\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_get_code_interpreter]{get_code_interpreter} \tab Gets information about a custom code interpreter\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_get_configuration_bundle]{get_configuration_bundle} \tab Gets the latest version of a configuration bundle\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_get_configuration_bundle_version]{get_configuration_bundle_version} \tab Gets a specific version of a configuration bundle by its version identifier\cr
-\link[paws.machine.learning:bedrockagentcorecontrol_get_dataset]{get_dataset} \tab Retrieves dataset metadata only\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_get_dataset]{get_dataset} \tab Retrieves dataset metadata\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_get_evaluator]{get_evaluator} \tab Retrieves detailed information about an evaluator, including its configuration, status, and metadata\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_get_gateway]{get_gateway} \tab Retrieves information about a specific Gateway\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_get_gateway_rate_limit]{get_gateway_rate_limit} \tab Retrieves information about a gateway rate limit\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_get_gateway_rule]{get_gateway_rule} \tab Retrieves detailed information about a specific gateway rule\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_get_gateway_target]{get_gateway_target} \tab Retrieves information about a specific gateway target\cr
-\link[paws.machine.learning:bedrockagentcorecontrol_get_harness]{get_harness} \tab Operation to get a single Harness\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_get_harness]{get_harness} \tab Operation to get a single harness\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_get_harness_endpoint]{get_harness_endpoint} \tab Operation to get a single harness endpoint\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_get_memory]{get_memory} \tab Retrieve an existing Amazon Bedrock AgentCore Memory resource\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_get_oauth_2_credential_provider]{get_oauth_2_credential_provider} \tab Retrieves information about an OAuth2 credential provider\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_get_online_evaluation_config]{get_online_evaluation_config} \tab Retrieves detailed information about an online evaluation configuration, including its rules, data sources, evaluators, and execution status\cr
@@ -180,9 +190,11 @@ Welcome to the Amazon Bedrock AgentCore Control plane API reference. Control pla
 \link[paws.machine.learning:bedrockagentcorecontrol_list_agent_runtime_endpoints]{list_agent_runtime_endpoints} \tab Lists all endpoints for a specific Amazon Secure Agent\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_agent_runtimes]{list_agent_runtimes} \tab Lists all Amazon Secure Agents in your account\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_agent_runtime_versions]{list_agent_runtime_versions} \tab Lists all versions of a specific Amazon Secure Agent\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_list_agent_runtime_versions_by_capacity_provider]{list_agent_runtime_versions_by_capacity_provider} \tab Lists the agent runtime versions that are associated with a capacity provider\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_api_key_credential_providers]{list_api_key_credential_providers} \tab Lists all API key credential providers in your account\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_browser_profiles]{list_browser_profiles} \tab Lists all browser profiles in your account\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_browsers]{list_browsers} \tab Lists all custom browsers in your account\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_list_capacity_providers]{list_capacity_providers} \tab Lists the capacity providers in your account and returns summary information for each one\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_code_interpreters]{list_code_interpreters} \tab Lists all custom code interpreters in your account\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_configuration_bundles]{list_configuration_bundles} \tab Lists all configuration bundles in the account\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_configuration_bundle_versions]{list_configuration_bundle_versions} \tab Lists all versions of a configuration bundle, with optional filtering by branch name or creation source\cr
@@ -190,10 +202,13 @@ Welcome to the Amazon Bedrock AgentCore Control plane API reference. Control pla
 \link[paws.machine.learning:bedrockagentcorecontrol_list_datasets]{list_datasets} \tab Lists all datasets in the caller's account, paginated\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_dataset_versions]{list_dataset_versions} \tab Lists all published versions of a dataset, sorted by version number descending (newest first)\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_evaluators]{list_evaluators} \tab Lists all available evaluators, including both builtin evaluators provided by the service and custom evaluators created by the user\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_list_gateway_rate_limits]{list_gateway_rate_limits} \tab Lists all rate limits for a gateway\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_gateway_rules]{list_gateway_rules} \tab Lists all rules for a gateway\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_gateways]{list_gateways} \tab Lists all gateways in the account\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_gateway_targets]{list_gateway_targets} \tab Lists all targets for a specific gateway\cr
-\link[paws.machine.learning:bedrockagentcorecontrol_list_harnesses]{list_harnesses} \tab Operation to list Harnesses\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_list_harness_endpoints]{list_harness_endpoints} \tab Operation to list the endpoints of a harness\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_list_harnesses]{list_harnesses} \tab Operation to list harnesses\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_list_harness_versions]{list_harness_versions} \tab Operation to list the versions of a Harness\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_memories]{list_memories} \tab Lists the available Amazon Bedrock AgentCore Memory resources in the current Amazon Web Services Region\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_oauth_2_credential_providers]{list_oauth_2_credential_providers} \tab Lists all OAuth2 credential providers in your account\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_list_online_evaluation_configs]{list_online_evaluation_configs} \tab Lists all online evaluation configurations in the account, providing summary information about each configuration's status and settings\cr
@@ -221,14 +236,17 @@ Welcome to the Amazon Bedrock AgentCore Control plane API reference. Control pla
 \link[paws.machine.learning:bedrockagentcorecontrol_update_agent_runtime]{update_agent_runtime} \tab Updates an existing Amazon Secure Agent\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_update_agent_runtime_endpoint]{update_agent_runtime_endpoint} \tab Updates an existing Amazon Bedrock AgentCore Runtime endpoint\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_update_api_key_credential_provider]{update_api_key_credential_provider} \tab Updates an existing API key credential provider\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_update_capacity_provider]{update_capacity_provider} \tab Updates a capacity provider\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_update_configuration_bundle]{update_configuration_bundle} \tab Updates a configuration bundle by creating a new version with the specified changes\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_update_dataset]{update_dataset} \tab Updates a dataset's metadata\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_update_dataset_examples]{update_dataset_examples} \tab Updates multiple existing examples in-place on DRAFT\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_update_evaluator]{update_evaluator} \tab Updates a custom evaluator's configuration, description, or evaluation level\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_update_gateway]{update_gateway} \tab Updates an existing gateway\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_update_gateway_rate_limit]{update_gateway_rate_limit} \tab Updates the entries of a gateway rate limit\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_update_gateway_rule]{update_gateway_rule} \tab Updates a gateway rule's priority, conditions, actions, or description\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_update_gateway_target]{update_gateway_target} \tab Updates an existing gateway target\cr
-\link[paws.machine.learning:bedrockagentcorecontrol_update_harness]{update_harness} \tab Operation to update a Harness\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_update_harness]{update_harness} \tab Operation to update a harness\cr
+\link[paws.machine.learning:bedrockagentcorecontrol_update_harness_endpoint]{update_harness_endpoint} \tab Operation to update a harness endpoint\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_update_memory]{update_memory} \tab Update an Amazon Bedrock AgentCore Memory resource memory\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_update_oauth_2_credential_provider]{update_oauth_2_credential_provider} \tab Updates an existing OAuth2 credential provider\cr
 \link[paws.machine.learning:bedrockagentcorecontrol_update_online_evaluation_config]{update_online_evaluation_config} \tab Updates an online evaluation configuration's settings, including rules, data sources, evaluators, and execution status\cr

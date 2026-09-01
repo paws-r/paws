@@ -15,6 +15,7 @@ imagebuilder_create_image_recipe(
   workingDirectory = NULL,
   additionalInstanceConfiguration = NULL,
   amiTags = NULL,
+  amiWatermarks = NULL,
   clientToken
 )
 }
@@ -52,6 +53,10 @@ If you enter an AMI ID or an SSM parameter that contains the AMI ID, you must ha
 \item{additionalInstanceConfiguration}{Specify additional settings and launch scripts for your build instances.}
 
 \item{amiTags}{Tags that are applied to the AMI that Image Builder creates during the Build phase prior to image distribution.}
+
+\item{amiWatermarks}{The AMI watermark names to attach to the output AMI from this recipe. AMI watermarks are lineage markers. They automatically propagate to derivative AMIs when the source AMI is copied or distributed across Regions or accounts.
+
+AMI watermarks are supported only for image recipes. AMIs with watermarks cannot be made public.}
 
 \item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }

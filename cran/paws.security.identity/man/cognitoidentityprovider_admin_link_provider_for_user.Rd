@@ -21,9 +21,7 @@ For a native username + password user, the \code{ProviderAttributeValue} for the
 
 The \code{ProviderAttributeName} of the \code{DestinationUser} is ignored.
 
-The \code{ProviderName} should be set to \code{Cognito} for users in Cognito user pools.
-
-All attributes in the DestinationUser profile must be mutable. If you have assigned the user any immutable custom attributes, the operation won't succeed.}
+The \code{ProviderName} should be set to \code{Cognito} for users in Cognito user pools.}
 
 \item{SourceUser}{[required] An external IdP account for a user who doesn't exist yet in the user pool. This user must be a federated user (for example, a SAML or Facebook user), not another native user.
 

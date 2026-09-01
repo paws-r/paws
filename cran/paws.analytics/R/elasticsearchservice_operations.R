@@ -225,11 +225,13 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' Suspending snapshots reduces data protection. You cannot restore your domain to points in time when snapshots are suspended. Use this feature only for short-term operational needs such as migrations or maintenance windows.
 #' 
 #' Maximum suspension duration: 3 days.
+#' @param UseCase The primary use case for the domain. For valid values, see `DomainUseCase`.
+#' @param EngineMode The engine mode for the domain. For valid values and requirements, see `DomainEngineMode`.
 #'
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_create_elasticsearch_domain
-elasticsearchservice_create_elasticsearch_domain <- function(DomainName, ElasticsearchVersion = NULL, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, TagList = NULL, DeploymentStrategyOptions = NULL, AutomatedSnapshotPauseOptions = NULL) {
+elasticsearchservice_create_elasticsearch_domain <- function(DomainName, ElasticsearchVersion = NULL, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, TagList = NULL, DeploymentStrategyOptions = NULL, AutomatedSnapshotPauseOptions = NULL, UseCase = NULL, EngineMode = NULL) {
   op <- new_operation(
     name = "CreateElasticsearchDomain",
     http_method = "POST",
@@ -238,7 +240,7 @@ elasticsearchservice_create_elasticsearch_domain <- function(DomainName, Elastic
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .elasticsearchservice$create_elasticsearch_domain_input(DomainName = DomainName, ElasticsearchVersion = ElasticsearchVersion, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, TagList = TagList, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions)
+  input <- .elasticsearchservice$create_elasticsearch_domain_input(DomainName = DomainName, ElasticsearchVersion = ElasticsearchVersion, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, TagList = TagList, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions, UseCase = UseCase, EngineMode = EngineMode)
   output <- .elasticsearchservice$create_elasticsearch_domain_output()
   config <- get_config()
   svc <- .elasticsearchservice$service(config, op)
@@ -1600,11 +1602,13 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' Suspending snapshots reduces data protection. You cannot restore your domain to points in time when snapshots are suspended. Use this feature only for short-term operational needs such as migrations or maintenance windows.
 #' 
 #' Maximum suspension duration: 3 days.
+#' @param UseCase The primary use case for the domain. For valid values, see `DomainUseCase`.
+#' @param EngineMode The engine mode for the domain. For valid values and requirements, see `DomainEngineMode`.
 #'
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_update_elasticsearch_domain_config
-elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, NodeToNodeEncryptionOptions = NULL, EncryptionAtRestOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DeploymentStrategyOptions = NULL, AutomatedSnapshotPauseOptions = NULL) {
+elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, NodeToNodeEncryptionOptions = NULL, EncryptionAtRestOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DeploymentStrategyOptions = NULL, AutomatedSnapshotPauseOptions = NULL, UseCase = NULL, EngineMode = NULL) {
   op <- new_operation(
     name = "UpdateElasticsearchDomainConfig",
     http_method = "POST",
@@ -1613,7 +1617,7 @@ elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .elasticsearchservice$update_elasticsearch_domain_config_input(DomainName = DomainName, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions)
+  input <- .elasticsearchservice$update_elasticsearch_domain_config_input(DomainName = DomainName, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions, UseCase = UseCase, EngineMode = EngineMode)
   output <- .elasticsearchservice$update_elasticsearch_domain_config_output()
   config <- get_config()
   svc <- .elasticsearchservice$service(config, op)

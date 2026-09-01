@@ -45,17 +45,13 @@ Since Ubuntu 18.04 has ended standard support as of May 31, 2023, we recommend y
 
 \strong{AMI aliases}
 \itemize{
-\item Amazon Linux 2: \code{amazonlinux-2-x86_64}
 \item Amazon Linux 2023 (recommended): \code{amazonlinux-2023-x86_64}
-\item Ubuntu 18.04: \code{ubuntu-18.04-x86_64}
 \item Ubuntu 22.04: \code{ubuntu-22.04-x86_64}
 }
 
 \strong{SSM paths}
 \itemize{
-\item Amazon Linux 2: \verb{resolve:ssm:/aws/service/cloud9/amis/amazonlinux-2-x86_64}
 \item Amazon Linux 2023 (recommended): \verb{resolve:ssm:/aws/service/cloud9/amis/amazonlinux-2023-x86_64}
-\item Ubuntu 18.04: \verb{resolve:ssm:/aws/service/cloud9/amis/ubuntu-18.04-x86_64}
 \item Ubuntu 22.04: \verb{resolve:ssm:/aws/service/cloud9/amis/ubuntu-22.04-x86_64}
 }}
 
