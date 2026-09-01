@@ -144,7 +144,8 @@ bedrockagentcore_batch_create_memory_records <- function(memoryId, records, clie
 #'   memoryId = "string",
 #'   records = list(
 #'     list(
-#'       memoryRecordId = "string"
+#'       memoryRecordId = "string",
+#'       namespace = "string"
 #'     )
 #'   )
 #' )
@@ -225,6 +226,9 @@ bedrockagentcore_batch_delete_memory_records <- function(memoryId, records) {
 #'         text = "string"
 #'       ),
 #'       namespaces = list(
+#'         "string"
+#'       ),
+#'       sourceNamespaces = list(
 #'         "string"
 #'       ),
 #'       memoryStrategyId = "string",
@@ -326,7 +330,8 @@ bedrockagentcore_complete_resource_token_auth <- function(userIdentifier, sessio
 #'
 #' @usage
 #' bedrockagentcore_create_ab_test(name, description, gatewayArn, variants,
-#'   gatewayFilter, evaluationConfig, roleArn, enableOnCreate, clientToken)
+#'   gatewayFilter, evaluationConfig, roleArn, enableOnCreate, clientToken,
+#'   tags)
 #'
 #' @param name &#91;required&#93; The name of the A/B test. Must be unique within your account.
 #' @param description The description of the A/B test.
@@ -337,6 +342,7 @@ bedrockagentcore_complete_resource_token_auth <- function(userIdentifier, sessio
 #' @param roleArn &#91;required&#93; The IAM role ARN that grants permissions for the A/B test to access gateway and evaluation resources.
 #' @param enableOnCreate Whether to enable the A/B test immediately upon creation. If true, traffic splitting begins automatically.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error.
+#' @param tags A map of tag keys and values to associate with the A/B test.
 #'
 #' @return
 #' A list with the following syntax:
@@ -390,7 +396,10 @@ bedrockagentcore_complete_resource_token_auth <- function(userIdentifier, sessio
 #'   ),
 #'   roleArn = "string",
 #'   enableOnCreate = TRUE|FALSE,
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -399,7 +408,7 @@ bedrockagentcore_complete_resource_token_auth <- function(userIdentifier, sessio
 #' @rdname bedrockagentcore_create_ab_test
 #'
 #' @aliases bedrockagentcore_create_ab_test
-bedrockagentcore_create_ab_test <- function(name, description = NULL, gatewayArn, variants, gatewayFilter = NULL, evaluationConfig, roleArn, enableOnCreate = NULL, clientToken = NULL) {
+bedrockagentcore_create_ab_test <- function(name, description = NULL, gatewayArn, variants, gatewayFilter = NULL, evaluationConfig, roleArn, enableOnCreate = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateABTest",
     http_method = "POST",
@@ -408,7 +417,7 @@ bedrockagentcore_create_ab_test <- function(name, description = NULL, gatewayArn
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcore$create_ab_test_input(name = name, description = description, gatewayArn = gatewayArn, variants = variants, gatewayFilter = gatewayFilter, evaluationConfig = evaluationConfig, roleArn = roleArn, enableOnCreate = enableOnCreate, clientToken = clientToken)
+  input <- .bedrockagentcore$create_ab_test_input(name = name, description = description, gatewayArn = gatewayArn, variants = variants, gatewayFilter = gatewayFilter, evaluationConfig = evaluationConfig, roleArn = roleArn, enableOnCreate = enableOnCreate, clientToken = clientToken, tags = tags)
   output <- .bedrockagentcore$create_ab_test_output()
   config <- get_config()
   svc <- .bedrockagentcore$service(config, op)
@@ -429,16 +438,19 @@ bedrockagentcore_create_ab_test <- function(name, description = NULL, gatewayArn
 #'
 #' @usage
 #' bedrockagentcore_create_event(memoryId, actorId, sessionId,
-#'   eventTimestamp, payload, branch, clientToken, metadata)
+#'   eventTimestamp, payload, branch, clientToken, metadata, extractionMode,
+#'   extractionConfig)
 #'
 #' @param memoryId &#91;required&#93; The identifier of the AgentCore Memory resource in which to create the event.
 #' @param actorId &#91;required&#93; The identifier of the actor associated with this event. An actor represents an entity that participates in sessions and generates events.
 #' @param sessionId The identifier of the session in which this event occurs. A session represents a sequence of related events.
 #' @param eventTimestamp &#91;required&#93; The timestamp when the event occurred. If not specified, the current time is used.
-#' @param payload &#91;required&#93; The content payload of the event. This can include conversational data or binary content.
+#' @param payload &#91;required&#93; The content payload of the event. This can include conversational data, JSON data, or binary content.
 #' @param branch The branch information for this event. Branches allow for organizing events into different conversation threads or paths.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, AgentCore ignores the request, but does not return an error.
 #' @param metadata The key-value metadata to attach to the event.
+#' @param extractionMode Controls long-term memory extraction for this event. When set to `SKIP`, the event is stored in short-term memory but is excluded from long-term memory extraction. If not specified, the event is processed for extraction as usual.
+#' @param extractionConfig The extraction configuration for long-term memory records. Use this parameter to specify namespace variable keys and their values for namespace substitution during extraction.
 #'
 #' @return
 #' A list with the following syntax:
@@ -460,7 +472,10 @@ bedrockagentcore_create_ab_test <- function(name, description = NULL, gatewayArn
 #'           ),
 #'           role = "ASSISTANT"|"USER"|"TOOL"|"OTHER"
 #'         ),
-#'         blob = list()
+#'         blob = list(),
+#'         json = list(
+#'           content = list()
+#'         )
 #'       )
 #'     ),
 #'     branch = list(
@@ -493,7 +508,10 @@ bedrockagentcore_create_ab_test <- function(name, description = NULL, gatewayArn
 #'         ),
 #'         role = "ASSISTANT"|"USER"|"TOOL"|"OTHER"
 #'       ),
-#'       blob = list()
+#'       blob = list(),
+#'       json = list(
+#'         content = list()
+#'       )
 #'     )
 #'   ),
 #'   branch = list(
@@ -505,6 +523,12 @@ bedrockagentcore_create_ab_test <- function(name, description = NULL, gatewayArn
 #'     list(
 #'       stringValue = "string"
 #'     )
+#'   ),
+#'   extractionMode = "SKIP",
+#'   extractionConfig = list(
+#'     namespaceVariables = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -514,7 +538,7 @@ bedrockagentcore_create_ab_test <- function(name, description = NULL, gatewayArn
 #' @rdname bedrockagentcore_create_event
 #'
 #' @aliases bedrockagentcore_create_event
-bedrockagentcore_create_event <- function(memoryId, actorId, sessionId = NULL, eventTimestamp, payload, branch = NULL, clientToken = NULL, metadata = NULL) {
+bedrockagentcore_create_event <- function(memoryId, actorId, sessionId = NULL, eventTimestamp, payload, branch = NULL, clientToken = NULL, metadata = NULL, extractionMode = NULL, extractionConfig = NULL) {
   op <- new_operation(
     name = "CreateEvent",
     http_method = "POST",
@@ -523,7 +547,7 @@ bedrockagentcore_create_event <- function(memoryId, actorId, sessionId = NULL, e
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcore$create_event_input(memoryId = memoryId, actorId = actorId, sessionId = sessionId, eventTimestamp = eventTimestamp, payload = payload, branch = branch, clientToken = clientToken, metadata = metadata)
+  input <- .bedrockagentcore$create_event_input(memoryId = memoryId, actorId = actorId, sessionId = sessionId, eventTimestamp = eventTimestamp, payload = payload, branch = branch, clientToken = clientToken, metadata = metadata, extractionMode = extractionMode, extractionConfig = extractionConfig)
   output <- .bedrockagentcore$create_event_output()
   config <- get_config()
   svc <- .bedrockagentcore$service(config, op)
@@ -617,7 +641,7 @@ bedrockagentcore_create_event <- function(memoryId, actorId, sessionId = NULL, e
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     status = "INITIATED"|"ACTIVE"|"FAILED"|"DELETED",
+#'     status = "INITIATED"|"ACTIVE"|"FAILED"|"DELETED"|"BLOCKED",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -907,6 +931,61 @@ bedrockagentcore_delete_batch_evaluation <- function(batchEvaluationId) {
 }
 .bedrockagentcore$operations$delete_batch_evaluation <- bedrockagentcore_delete_batch_evaluation
 
+#' Deletes a session associated with a capacity provider in Amazon Bedrock
+#' AgentCore and makes the session unavailable for further use
+#'
+#' @description
+#' Deletes a session associated with a capacity provider in Amazon Bedrock AgentCore and makes the session unavailable for further use. To delete a capacity provider session, specify both the capacity provider identifier and the session ID. After you delete a session, you cannot restart it.
+#'
+#' @usage
+#' bedrockagentcore_delete_capacity_provider_session(capacityProviderId,
+#'   sessionId)
+#'
+#' @param capacityProviderId &#91;required&#93; The unique identifier of the capacity provider associated with the session.
+#' @param sessionId &#91;required&#93; The unique identifier of the capacity provider session to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   capacityProviderArn = "string",
+#'   sessionId = "string",
+#'   status = "Provisioning"|"Deprovisioning"|"Active"|"Deleting"|"Deleted"|"Stopped"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_capacity_provider_session(
+#'   capacityProviderId = "string",
+#'   sessionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcore_delete_capacity_provider_session
+#'
+#' @aliases bedrockagentcore_delete_capacity_provider_session
+bedrockagentcore_delete_capacity_provider_session <- function(capacityProviderId, sessionId) {
+  op <- new_operation(
+    name = "DeleteCapacityProviderSession",
+    http_method = "DELETE",
+    http_path = "/capacity-providers/{capacityProviderId}/sessions/{sessionId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcore$delete_capacity_provider_session_input(capacityProviderId = capacityProviderId, sessionId = sessionId)
+  output <- .bedrockagentcore$delete_capacity_provider_session_output()
+  config <- get_config()
+  svc <- .bedrockagentcore$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcore$operations$delete_capacity_provider_session <- bedrockagentcore_delete_capacity_provider_session
+
 #' Deletes an event from an AgentCore Memory resource
 #'
 #' @description
@@ -972,10 +1051,12 @@ bedrockagentcore_delete_event <- function(memoryId, sessionId, eventId, actorId)
 #' To use this operation, you must have the `bedrock-agentcore:DeleteMemoryRecord` permission.
 #'
 #' @usage
-#' bedrockagentcore_delete_memory_record(memoryId, memoryRecordId)
+#' bedrockagentcore_delete_memory_record(memoryId, memoryRecordId,
+#'   namespace)
 #'
 #' @param memoryId &#91;required&#93; The identifier of the AgentCore Memory resource from which to delete the memory record.
 #' @param memoryRecordId &#91;required&#93; The identifier of the memory record to delete.
+#' @param namespace The namespace of the memory record to delete. This value is used for IAM condition key authorization.
 #'
 #' @return
 #' A list with the following syntax:
@@ -989,7 +1070,8 @@ bedrockagentcore_delete_event <- function(memoryId, sessionId, eventId, actorId)
 #' ```
 #' svc$delete_memory_record(
 #'   memoryId = "string",
-#'   memoryRecordId = "string"
+#'   memoryRecordId = "string",
+#'   namespace = "string"
 #' )
 #' ```
 #'
@@ -998,7 +1080,7 @@ bedrockagentcore_delete_event <- function(memoryId, sessionId, eventId, actorId)
 #' @rdname bedrockagentcore_delete_memory_record
 #'
 #' @aliases bedrockagentcore_delete_memory_record
-bedrockagentcore_delete_memory_record <- function(memoryId, memoryRecordId) {
+bedrockagentcore_delete_memory_record <- function(memoryId, memoryRecordId, namespace = NULL) {
   op <- new_operation(
     name = "DeleteMemoryRecord",
     http_method = "DELETE",
@@ -1007,7 +1089,7 @@ bedrockagentcore_delete_memory_record <- function(memoryId, memoryRecordId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcore$delete_memory_record_input(memoryId = memoryId, memoryRecordId = memoryRecordId)
+  input <- .bedrockagentcore$delete_memory_record_input(memoryId = memoryId, memoryRecordId = memoryRecordId, namespace = namespace)
   output <- .bedrockagentcore$delete_memory_record_output()
   config <- get_config()
   svc <- .bedrockagentcore$service(config, op)
@@ -1035,7 +1117,7 @@ bedrockagentcore_delete_memory_record <- function(memoryId, memoryRecordId) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   status = "INITIATED"|"ACTIVE"|"FAILED"|"DELETED"
+#'   status = "INITIATED"|"ACTIVE"|"FAILED"|"DELETED"|"BLOCKED"
 #' )
 #' ```
 #'
@@ -1512,6 +1594,11 @@ bedrockagentcore_get_agent_card <- function(runtimeSessionId = NULL, agentRuntim
 #'       evaluatorId = "string"
 #'     )
 #'   ),
+#'   insights = list(
+#'     list(
+#'       insightId = "string"
+#'     )
+#'   ),
 #'   dataSourceConfig = list(
 #'     cloudWatchLogs = list(
 #'       serviceNames = list(
@@ -1531,6 +1618,17 @@ bedrockagentcore_get_agent_card <- function(runtimeSessionId = NULL, agentRuntim
 #'           endTime = as.POSIXct(
 #'             "2015-01-01"
 #'           )
+#'         )
+#'       )
+#'     ),
+#'     onlineEvaluationConfigSource = list(
+#'       onlineEvaluationConfigArn = "string",
+#'       timeRange = list(
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
 #'         )
 #'       )
 #'     )
@@ -1558,13 +1656,97 @@ bedrockagentcore_get_agent_card <- function(runtimeSessionId = NULL, agentRuntim
 #'       )
 #'     )
 #'   ),
+#'   failureAnalysisResult = list(
+#'     failures = list(
+#'       list(
+#'         clusterId = 123,
+#'         name = "string",
+#'         description = "string",
+#'         affectedSessionCount = 123,
+#'         subCategories = list(
+#'           list(
+#'             clusterId = 123,
+#'             name = "string",
+#'             description = "string",
+#'             affectedSessionCount = 123,
+#'             rootCauses = list(
+#'               list(
+#'                 clusterId = 123,
+#'                 name = "string",
+#'                 rootCause = "string",
+#'                 recommendation = "string",
+#'                 affectedSessionCount = 123,
+#'                 affectedSessions = list(
+#'                   list(
+#'                     sessionId = "string",
+#'                     explanation = "string",
+#'                     fixType = "string",
+#'                     recommendation = "string",
+#'                     failureSpans = list(
+#'                       list(
+#'                         spanId = "string",
+#'                         traceId = "string",
+#'                         signals = list(
+#'                           list(
+#'                             category = "execution-error-category-authentication"|"execution-error-category-resource-not-found"|"execution-error-category-service-errors"|"execution-error-category-rate-limiting"|"execution-error-category-formatting"|"execution-error-category-timeout"|"execution-error-category-resource-exhaustion"|"execution-error-category-environment"|"execution-error-category-tool-schema"|"task-instruction-category-non-compliance"|"task-instruction-category-problem-id"|"incorrect-actions-category-tool-selection"|"incorrect-actions-category-poor-information-retrieval"|"incorrect-actions-category-clarification"|"incorrect-actions-category-inappropriate-info-request"|"context-handling-error-category-context-handling-failures"|"hallucination-category-hall-capabilities"|"hallucination-category-hall-misunderstand"|"hallucination-category-hall-usage"|"hallucination-category-hall-history"|"hallucination-category-hall-params"|"hallucination-category-fabricate-tool-outputs"|"repetitive-behavior-category-repetition-tool"|"repetitive-behavior-category-repetition-info"|"repetitive-behavior-category-step-repetition"|"orchestration-related-errors-category-reasoning-mismatch"|"orchestration-related-errors-category-goal-deviation"|"orchestration-related-errors-category-premature-termination"|"orchestration-related-errors-category-unaware-termination"|"llm-output-category-nonsensical"|"configuration-mismatch-category-tool-definition"|"coding-use-case-specific-failure-types-category-edge-case-oversights"|"coding-use-case-specific-failure-types-category-dependency-issues"|"other",
+#'                             evidence = "string",
+#'                             confidence = 123.0
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   userIntentResult = list(
+#'     userIntents = list(
+#'       list(
+#'         clusterId = 123,
+#'         name = "string",
+#'         description = "string",
+#'         affectedSessionCount = 123,
+#'         affectedSessions = list(
+#'           list(
+#'             sessionId = "string",
+#'             userMessages = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   executionSummaryResult = list(
+#'     executionSummaries = list(
+#'       list(
+#'         clusterId = 123,
+#'         name = "string",
+#'         description = "string",
+#'         affectedSessionCount = 123,
+#'         affectedSessions = list(
+#'           list(
+#'             sessionId = "string",
+#'             approachTaken = "string",
+#'             finalOutcome = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   errorDetails = list(
 #'     "string"
 #'   ),
 #'   description = "string",
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -1704,6 +1886,20 @@ bedrockagentcore_get_batch_evaluation <- function(batchEvaluationId) {
 #'       )
 #'     )
 #'   ),
+#'   filesystemConfigurations = list(
+#'     list(
+#'       s3FilesConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
+#'       ),
+#'       efsConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
+#'       )
+#'     )
+#'   ),
 #'   sessionReplayArtifact = "string",
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
@@ -1786,6 +1982,20 @@ bedrockagentcore_get_browser_session <- function(browserIdentifier, sessionId) {
 #'         )
 #'       )
 #'     )
+#'   ),
+#'   filesystemConfigurations = list(
+#'     list(
+#'       s3FilesConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
+#'       ),
+#'       efsConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1858,7 +2068,10 @@ bedrockagentcore_get_code_interpreter_session <- function(codeInterpreterIdentif
 #'           ),
 #'           role = "ASSISTANT"|"USER"|"TOOL"|"OTHER"
 #'         ),
-#'         blob = list()
+#'         blob = list(),
+#'         json = list(
+#'           content = list()
+#'         )
 #'       )
 #'     ),
 #'     branch = list(
@@ -1916,10 +2129,11 @@ bedrockagentcore_get_event <- function(memoryId, sessionId, actorId, eventId) {
 #' To use this operation, you must have the `bedrock-agentcore:GetMemoryRecord` permission.
 #'
 #' @usage
-#' bedrockagentcore_get_memory_record(memoryId, memoryRecordId)
+#' bedrockagentcore_get_memory_record(memoryId, memoryRecordId, namespace)
 #'
 #' @param memoryId &#91;required&#93; The identifier of the AgentCore Memory resource containing the memory record.
 #' @param memoryRecordId &#91;required&#93; The identifier of the memory record to retrieve.
+#' @param namespace The namespace of the memory record to retrieve. This value is used for IAM condition key authorization.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1957,7 +2171,8 @@ bedrockagentcore_get_event <- function(memoryId, sessionId, actorId, eventId) {
 #' ```
 #' svc$get_memory_record(
 #'   memoryId = "string",
-#'   memoryRecordId = "string"
+#'   memoryRecordId = "string",
+#'   namespace = "string"
 #' )
 #' ```
 #'
@@ -1966,7 +2181,7 @@ bedrockagentcore_get_event <- function(memoryId, sessionId, actorId, eventId) {
 #' @rdname bedrockagentcore_get_memory_record
 #'
 #' @aliases bedrockagentcore_get_memory_record
-bedrockagentcore_get_memory_record <- function(memoryId, memoryRecordId) {
+bedrockagentcore_get_memory_record <- function(memoryId, memoryRecordId, namespace = NULL) {
   op <- new_operation(
     name = "GetMemoryRecord",
     http_method = "GET",
@@ -1975,7 +2190,7 @@ bedrockagentcore_get_memory_record <- function(memoryId, memoryRecordId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcore$get_memory_record_input(memoryId = memoryId, memoryRecordId = memoryRecordId)
+  input <- .bedrockagentcore$get_memory_record_input(memoryId = memoryId, memoryRecordId = memoryRecordId, namespace = namespace)
   output <- .bedrockagentcore$get_memory_record_output()
   config <- get_config()
   svc <- .bedrockagentcore$service(config, op)
@@ -2066,7 +2281,7 @@ bedrockagentcore_get_memory_record <- function(memoryId, memoryRecordId) {
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     status = "INITIATED"|"ACTIVE"|"FAILED"|"DELETED",
+#'     status = "INITIATED"|"ACTIVE"|"FAILED"|"DELETED"|"BLOCKED",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -2321,6 +2536,18 @@ bedrockagentcore_get_payment_session <- function(userId = NULL, agentName = NULL
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         batchEvaluation = list(
+#'           batchEvaluationArn = "string"
+#'         ),
+#'         onlineEvaluation = list(
+#'           onlineEvaluationConfigArn = "string",
+#'           startTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           endTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         )
 #'       ),
 #'       evaluationConfig = list(
@@ -2384,6 +2611,18 @@ bedrockagentcore_get_payment_session <- function(userId = NULL, agentName = NULL
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         batchEvaluation = list(
+#'           batchEvaluationArn = "string"
+#'         ),
+#'         onlineEvaluation = list(
+#'           onlineEvaluationConfigArn = "string",
+#'           startTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           endTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2402,6 +2641,7 @@ bedrockagentcore_get_payment_session <- function(userId = NULL, agentName = NULL
 #'         bundleArn = "string",
 #'         versionId = "string"
 #'       ),
+#'       explanation = "string",
 #'       errorCode = "string",
 #'       errorMessage = "string"
 #'     ),
@@ -2409,7 +2649,8 @@ bedrockagentcore_get_payment_session <- function(userId = NULL, agentName = NULL
 #'       tools = list(
 #'         list(
 #'           toolName = "string",
-#'           recommendedToolDescription = "string"
+#'           recommendedToolDescription = "string",
+#'           explanation = "string"
 #'         )
 #'       ),
 #'       configurationBundle = list(
@@ -2419,7 +2660,8 @@ bedrockagentcore_get_payment_session <- function(userId = NULL, agentName = NULL
 #'       errorCode = "string",
 #'       errorMessage = "string"
 #'     )
-#'   )
+#'   ),
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -2825,6 +3067,99 @@ bedrockagentcore_get_workload_access_token_for_user_id <- function(workloadName,
 }
 .bedrockagentcore$operations$get_workload_access_token_for_user_id <- bedrockagentcore_get_workload_access_token_for_user_id
 
+#' Submits content directly for ingestion to generate long-term memory
+#' records in a AgentCore Memory resource
+#'
+#' @description
+#' Submits content directly for ingestion to generate long-term memory records in a AgentCore Memory resource.
+#' 
+#' To use this operation, you must have the `bedrock-agentcore:IngestData` permission.
+#'
+#' @usage
+#' bedrockagentcore_ingest_data(memoryId, source, contentTimestamp,
+#'   actorId, sessionId, extractionConfig, metadata, clientToken)
+#'
+#' @param memoryId &#91;required&#93; The identifier of the AgentCore Memory resource to ingest content into.
+#' @param source &#91;required&#93; The content to ingest. Only inline content is supported.
+#' @param contentTimestamp &#91;required&#93; The timestamp of when the content occurred.
+#' @param actorId &#91;required&#93; The identifier of the actor associated with this content. An actor represents an entity that participates in sessions and generates content.
+#' @param sessionId The identifier of the session that the content belongs to. If not provided, a session identifier is generated and returned in the response.
+#' @param extractionConfig The extraction configuration for long-term memory records. Use this parameter to specify namespace variable keys and their values for namespace substitution during extraction.
+#' @param metadata The key-value metadata to attach to the content.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, AgentCore ignores the request, but does not return an error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   sessionId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$ingest_data(
+#'   memoryId = "string",
+#'   source = list(
+#'     inline = list(
+#'       payload = list(
+#'         list(
+#'           conversational = list(
+#'             content = list(
+#'               text = "string"
+#'             ),
+#'             role = "ASSISTANT"|"USER"|"TOOL"|"OTHER"
+#'           ),
+#'           json = list(
+#'             content = list()
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   contentTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   actorId = "string",
+#'   sessionId = "string",
+#'   extractionConfig = list(
+#'     namespaceVariables = list(
+#'       "string"
+#'     )
+#'   ),
+#'   metadata = list(
+#'     list(
+#'       stringValue = "string"
+#'     )
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcore_ingest_data
+#'
+#' @aliases bedrockagentcore_ingest_data
+bedrockagentcore_ingest_data <- function(memoryId, source, contentTimestamp, actorId, sessionId = NULL, extractionConfig = NULL, metadata = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "IngestData",
+    http_method = "POST",
+    http_path = "/memories/{memoryId}/ingest",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcore$ingest_data_input(memoryId = memoryId, source = source, contentTimestamp = contentTimestamp, actorId = actorId, sessionId = sessionId, extractionConfig = extractionConfig, metadata = metadata, clientToken = clientToken)
+  output <- .bedrockagentcore$ingest_data_output()
+  config <- get_config()
+  svc <- .bedrockagentcore$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcore$operations$ingest_data <- bedrockagentcore_ingest_data
+
 #' Sends a request to an agent or tool hosted in an Amazon Bedrock
 #' AgentCore Runtime and receives responses in real-time
 #'
@@ -2843,15 +3178,23 @@ bedrockagentcore_get_workload_access_token_for_user_id <- function(workloadName,
 #'
 #' @usage
 #' bedrockagentcore_invoke_agent_runtime(contentType, accept, mcpSessionId,
-#'   runtimeSessionId, mcpProtocolVersion, runtimeUserId, traceId,
-#'   traceParent, traceState, baggage, agentRuntimeArn, qualifier, accountId,
-#'   payload)
+#'   runtimeSessionId, mcpProtocolVersion, mcpMethod, mcpName, runtimeUserId,
+#'   traceId, traceParent, traceState, baggage, agentRuntimeArn, qualifier,
+#'   accountId, payload)
 #'
 #' @param contentType The MIME type of the input data in the payload. This tells the agent runtime how to interpret the payload data. Common values include application/json for JSON data.
 #' @param accept The desired MIME type for the response from the agent runtime. This tells the agent runtime what format to use for the response data. Common values include application/json for JSON data.
 #' @param mcpSessionId The identifier of the MCP session.
 #' @param runtimeSessionId The identifier of the runtime session.
 #' @param mcpProtocolVersion The version of the MCP protocol being used.
+#' @param mcpMethod The MCP method being invoked. For example, `tools/call`, `resources/read`, or `prompts/get`.
+#' @param mcpName The name of the MCP resource, tool, or prompt being accessed. The value depends on the method:
+#' 
+#' -   `tools/call` – The tool name.
+#' 
+#' -   `resources/read` – The resource URI.
+#' 
+#' -   `prompts/get` – The prompt name.
 #' @param runtimeUserId The identifier of the runtime user.
 #' @param traceId The trace identifier for request tracking.
 #' @param traceParent The parent trace information for distributed tracing.
@@ -2887,6 +3230,8 @@ bedrockagentcore_get_workload_access_token_for_user_id <- function(workloadName,
 #'   mcpSessionId = "string",
 #'   runtimeSessionId = "string",
 #'   mcpProtocolVersion = "string",
+#'   mcpMethod = "string",
+#'   mcpName = "string",
 #'   runtimeUserId = "string",
 #'   traceId = "string",
 #'   traceParent = "string",
@@ -2904,7 +3249,7 @@ bedrockagentcore_get_workload_access_token_for_user_id <- function(workloadName,
 #' @rdname bedrockagentcore_invoke_agent_runtime
 #'
 #' @aliases bedrockagentcore_invoke_agent_runtime
-bedrockagentcore_invoke_agent_runtime <- function(contentType = NULL, accept = NULL, mcpSessionId = NULL, runtimeSessionId = NULL, mcpProtocolVersion = NULL, runtimeUserId = NULL, traceId = NULL, traceParent = NULL, traceState = NULL, baggage = NULL, agentRuntimeArn, qualifier = NULL, accountId = NULL, payload) {
+bedrockagentcore_invoke_agent_runtime <- function(contentType = NULL, accept = NULL, mcpSessionId = NULL, runtimeSessionId = NULL, mcpProtocolVersion = NULL, mcpMethod = NULL, mcpName = NULL, runtimeUserId = NULL, traceId = NULL, traceParent = NULL, traceState = NULL, baggage = NULL, agentRuntimeArn, qualifier = NULL, accountId = NULL, payload) {
   op <- new_operation(
     name = "InvokeAgentRuntime",
     http_method = "POST",
@@ -2913,7 +3258,7 @@ bedrockagentcore_invoke_agent_runtime <- function(contentType = NULL, accept = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcore$invoke_agent_runtime_input(contentType = contentType, accept = accept, mcpSessionId = mcpSessionId, runtimeSessionId = runtimeSessionId, mcpProtocolVersion = mcpProtocolVersion, runtimeUserId = runtimeUserId, traceId = traceId, traceParent = traceParent, traceState = traceState, baggage = baggage, agentRuntimeArn = agentRuntimeArn, qualifier = qualifier, accountId = accountId, payload = payload)
+  input <- .bedrockagentcore$invoke_agent_runtime_input(contentType = contentType, accept = accept, mcpSessionId = mcpSessionId, runtimeSessionId = runtimeSessionId, mcpProtocolVersion = mcpProtocolVersion, mcpMethod = mcpMethod, mcpName = mcpName, runtimeUserId = runtimeUserId, traceId = traceId, traceParent = traceParent, traceState = traceState, baggage = baggage, agentRuntimeArn = agentRuntimeArn, qualifier = qualifier, accountId = accountId, payload = payload)
   output <- .bedrockagentcore$invoke_agent_runtime_output()
   config <- get_config()
   svc <- .bedrockagentcore$service(config, op)
@@ -3343,12 +3688,19 @@ bedrockagentcore_invoke_code_interpreter <- function(codeInterpreterIdentifier, 
 #' Operation to invoke a Harness.
 #'
 #' @usage
-#' bedrockagentcore_invoke_harness(harnessArn, runtimeSessionId, messages,
+#' bedrockagentcore_invoke_harness(harnessArn, qualifier, runtimeSessionId,
+#'   runtimeUserId, traceParent, traceState, traceId, baggage, messages,
 #'   model, systemPrompt, tools, skills, allowedTools, maxIterations,
 #'   maxTokens, timeoutSeconds, actorId)
 #'
 #' @param harnessArn &#91;required&#93; The ARN of the harness to invoke.
+#' @param qualifier The endpoint name to invoke. If omitted, the DEFAULT endpoint is used.
 #' @param runtimeSessionId &#91;required&#93; The session ID for the invocation. Use the same session ID across requests to continue a conversation.
+#' @param runtimeUserId An identifier for the end user making the request. This value is passed through to the runtime container.
+#' @param traceParent W3C trace context parent header containing version, trace ID, parent span ID, and trace flags.
+#' @param traceState W3C trace context state header for vendor-specific trace information.
+#' @param traceId Trace ID for maintaining observability through the operation.
+#' @param baggage W3C Baggage header for user-defined context propagation. Format: key1=value1,key2=value2
 #' @param messages &#91;required&#93; The messages to send to the agent.
 #' @param model The model configuration to use for this invocation. If specified, overrides the harness default.
 #' @param systemPrompt The system prompt to use for this invocation. If specified, overrides the harness default.
@@ -3400,6 +3752,9 @@ bedrockagentcore_invoke_code_interpreter <- function(codeInterpreterIdentifier, 
 #'           text = "string",
 #'           redactedContent = raw,
 #'           signature = "string"
+#'         ),
+#'         toolResultMetadata = list(
+#'           metadata = "string"
 #'         )
 #'       )
 #'     ),
@@ -3445,7 +3800,13 @@ bedrockagentcore_invoke_code_interpreter <- function(codeInterpreterIdentifier, 
 #' ```
 #' svc$invoke_harness(
 #'   harnessArn = "string",
+#'   qualifier = "string",
 #'   runtimeSessionId = "string",
+#'   runtimeUserId = "string",
+#'   traceParent = "string",
+#'   traceState = "string",
+#'   traceId = "string",
+#'   baggage = "string",
 #'   messages = list(
 #'     list(
 #'       role = "user"|"assistant",
@@ -3486,14 +3847,18 @@ bedrockagentcore_invoke_code_interpreter <- function(codeInterpreterIdentifier, 
 #'       modelId = "string",
 #'       maxTokens = 123,
 #'       temperature = 123.0,
-#'       topP = 123.0
+#'       topP = 123.0,
+#'       apiFormat = "converse_stream"|"responses"|"chat_completions",
+#'       additionalParams = list()
 #'     ),
 #'     openAiModelConfig = list(
 #'       modelId = "string",
 #'       apiKeyArn = "string",
 #'       maxTokens = 123,
 #'       temperature = 123.0,
-#'       topP = 123.0
+#'       topP = 123.0,
+#'       apiFormat = "chat_completions"|"responses",
+#'       additionalParams = list()
 #'     ),
 #'     geminiModelConfig = list(
 #'       modelId = "string",
@@ -3501,7 +3866,17 @@ bedrockagentcore_invoke_code_interpreter <- function(codeInterpreterIdentifier, 
 #'       maxTokens = 123,
 #'       temperature = 123.0,
 #'       topP = 123.0,
-#'       topK = 123
+#'       topK = 123,
+#'       additionalParams = list()
+#'     ),
+#'     liteLlmModelConfig = list(
+#'       modelId = "string",
+#'       apiKeyArn = "string",
+#'       apiBase = "string",
+#'       maxTokens = 123,
+#'       temperature = 123.0,
+#'       topP = 123.0,
+#'       additionalParams = list()
 #'     )
 #'   ),
 #'   systemPrompt = list(
@@ -3553,7 +3928,23 @@ bedrockagentcore_invoke_code_interpreter <- function(codeInterpreterIdentifier, 
 #'   ),
 #'   skills = list(
 #'     list(
-#'       path = "string"
+#'       path = "string",
+#'       s3 = list(
+#'         uri = "string"
+#'       ),
+#'       git = list(
+#'         url = "string",
+#'         path = "string",
+#'         auth = list(
+#'           credentialArn = "string",
+#'           username = "string"
+#'         )
+#'       ),
+#'       awsSkills = list(
+#'         paths = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   allowedTools = list(
@@ -3571,7 +3962,7 @@ bedrockagentcore_invoke_code_interpreter <- function(codeInterpreterIdentifier, 
 #' @rdname bedrockagentcore_invoke_harness
 #'
 #' @aliases bedrockagentcore_invoke_harness
-bedrockagentcore_invoke_harness <- function(harnessArn, runtimeSessionId, messages, model = NULL, systemPrompt = NULL, tools = NULL, skills = NULL, allowedTools = NULL, maxIterations = NULL, maxTokens = NULL, timeoutSeconds = NULL, actorId = NULL) {
+bedrockagentcore_invoke_harness <- function(harnessArn, qualifier = NULL, runtimeSessionId, runtimeUserId = NULL, traceParent = NULL, traceState = NULL, traceId = NULL, baggage = NULL, messages, model = NULL, systemPrompt = NULL, tools = NULL, skills = NULL, allowedTools = NULL, maxIterations = NULL, maxTokens = NULL, timeoutSeconds = NULL, actorId = NULL) {
   op <- new_operation(
     name = "InvokeHarness",
     http_method = "POST",
@@ -3580,7 +3971,7 @@ bedrockagentcore_invoke_harness <- function(harnessArn, runtimeSessionId, messag
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentcore$invoke_harness_input(harnessArn = harnessArn, runtimeSessionId = runtimeSessionId, messages = messages, model = model, systemPrompt = systemPrompt, tools = tools, skills = skills, allowedTools = allowedTools, maxIterations = maxIterations, maxTokens = maxTokens, timeoutSeconds = timeoutSeconds, actorId = actorId)
+  input <- .bedrockagentcore$invoke_harness_input(harnessArn = harnessArn, qualifier = qualifier, runtimeSessionId = runtimeSessionId, runtimeUserId = runtimeUserId, traceParent = traceParent, traceState = traceState, traceId = traceId, baggage = baggage, messages = messages, model = model, systemPrompt = systemPrompt, tools = tools, skills = skills, allowedTools = allowedTools, maxIterations = maxIterations, maxTokens = maxTokens, timeoutSeconds = timeoutSeconds, actorId = actorId)
   output <- .bedrockagentcore$invoke_harness_output()
   config <- get_config()
   svc <- .bedrockagentcore$service(config, op)
@@ -3749,6 +4140,11 @@ bedrockagentcore_list_actors <- function(memoryId, maxResults = NULL, nextToken 
 #'           evaluatorId = "string"
 #'         )
 #'       ),
+#'       insights = list(
+#'         list(
+#'           insightId = "string"
+#'         )
+#'       ),
 #'       evaluationResults = list(
 #'         numberOfSessionsCompleted = 123,
 #'         numberOfSessionsInProgress = 123,
@@ -3769,6 +4165,7 @@ bedrockagentcore_list_actors <- function(memoryId, maxResults = NULL, nextToken 
 #'       errorDetails = list(
 #'         "string"
 #'       ),
+#'       kmsKeyArn = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -4012,7 +4409,10 @@ bedrockagentcore_list_code_interpreter_sessions <- function(codeInterpreterIdent
 #'             ),
 #'             role = "ASSISTANT"|"USER"|"TOOL"|"OTHER"
 #'           ),
-#'           blob = list()
+#'           blob = list(),
+#'           json = list(
+#'             content = list()
+#'           )
 #'         )
 #'       ),
 #'       branch = list(
@@ -4306,7 +4706,7 @@ bedrockagentcore_list_memory_records <- function(memoryId, namespace = NULL, nam
 #'       paymentConnectorId = "string",
 #'       userId = "string",
 #'       paymentInstrumentType = "EMBEDDED_CRYPTO_WALLET",
-#'       status = "INITIATED"|"ACTIVE"|"FAILED"|"DELETED",
+#'       status = "INITIATED"|"ACTIVE"|"FAILED"|"DELETED"|"BLOCKED",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -4599,12 +4999,17 @@ bedrockagentcore_list_sessions <- function(memoryId, actorId, maxResults = NULL,
 #'   paymentManagerArn = "string",
 #'   paymentSessionId = "string",
 #'   paymentInstrumentId = "string",
-#'   paymentType = "CRYPTO_X402",
+#'   paymentType = "CRYPTO_X402"|"MPP",
 #'   status = "PROOF_GENERATED",
 #'   paymentOutput = list(
 #'     cryptoX402 = list(
 #'       version = "string",
 #'       payload = list()
+#'     ),
+#'     mpp = list(
+#'       version = "string",
+#'       selectedPaymentId = "string",
+#'       paymentCredential = "string"
 #'     )
 #'   ),
 #'   createdAt = as.POSIXct(
@@ -4624,11 +5029,19 @@ bedrockagentcore_list_sessions <- function(memoryId, actorId, maxResults = NULL,
 #'   paymentManagerArn = "string",
 #'   paymentSessionId = "string",
 #'   paymentInstrumentId = "string",
-#'   paymentType = "CRYPTO_X402",
+#'   paymentType = "CRYPTO_X402"|"MPP",
 #'   paymentInput = list(
 #'     cryptoX402 = list(
 #'       version = "string",
-#'       payload = list()
+#'       payload = list(),
+#'       permit2AllowanceLimit = "string"
+#'     ),
+#'     mpp = list(
+#'       version = "string",
+#'       wwwAuthenticateHeaders = list(
+#'         "string"
+#'       ),
+#'       buyerPaysGasFees = TRUE|FALSE
 #'     )
 #'   ),
 #'   clientToken = "string"
@@ -4963,13 +5376,17 @@ bedrockagentcore_search_registry_records <- function(searchQuery, registryIds, m
 #'
 #' @usage
 #' bedrockagentcore_start_batch_evaluation(batchEvaluationName, evaluators,
-#'   dataSourceConfig, clientToken, evaluationMetadata, description)
+#'   insights, dataSourceConfig, clientToken, evaluationMetadata, tags,
+#'   kmsKeyArn, description)
 #'
 #' @param batchEvaluationName &#91;required&#93; The name of the batch evaluation. Must be unique within your account.
 #' @param evaluators The list of evaluators to apply during the batch evaluation. Can include both built-in evaluators and custom evaluators. Maximum of 10 evaluators.
+#' @param insights The list of insight analyses to run against sessions during the batch evaluation. Maximum of 10 insights.
 #' @param dataSourceConfig &#91;required&#93; The data source configuration that specifies where to pull agent session traces from for evaluation.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error.
 #' @param evaluationMetadata Optional metadata for the evaluation, including session-specific ground truth data and test scenario identifiers.
+#' @param tags A map of tag keys and values to associate with the batch evaluation.
+#' @param kmsKeyArn The ARN of the KMS key used to encrypt evaluation data. If provided, customer data is encrypted at rest with the specified key.
 #' @param description The description of the batch evaluation.
 #'
 #' @return
@@ -4984,6 +5401,11 @@ bedrockagentcore_search_registry_records <- function(searchQuery, registryIds, m
 #'       evaluatorId = "string"
 #'     )
 #'   ),
+#'   insights = list(
+#'     list(
+#'       insightId = "string"
+#'     )
+#'   ),
 #'   status = "PENDING"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
@@ -4994,6 +5416,10 @@ bedrockagentcore_search_registry_records <- function(searchQuery, registryIds, m
 #'       logStreamName = "string"
 #'     )
 #'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   kmsKeyArn = "string",
 #'   description = "string"
 #' )
 #' ```
@@ -5005,6 +5431,11 @@ bedrockagentcore_search_registry_records <- function(searchQuery, registryIds, m
 #'   evaluators = list(
 #'     list(
 #'       evaluatorId = "string"
+#'     )
+#'   ),
+#'   insights = list(
+#'     list(
+#'       insightId = "string"
 #'     )
 #'   ),
 #'   dataSourceConfig = list(
@@ -5026,6 +5457,17 @@ bedrockagentcore_search_registry_records <- function(searchQuery, registryIds, m
 #'           endTime = as.POSIXct(
 #'             "2015-01-01"
 #'           )
+#'         )
+#'       )
+#'     ),
+#'     onlineEvaluationConfigSource = list(
+#'       onlineEvaluationConfigArn = "string",
+#'       timeRange = list(
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
 #'         )
 #'       )
 #'     )
@@ -5066,6 +5508,10 @@ bedrockagentcore_search_registry_records <- function(searchQuery, registryIds, m
 #'       )
 #'     )
 #'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   kmsKeyArn = "string",
 #'   description = "string"
 #' )
 #' ```
@@ -5075,7 +5521,7 @@ bedrockagentcore_search_registry_records <- function(searchQuery, registryIds, m
 #' @rdname bedrockagentcore_start_batch_evaluation
 #'
 #' @aliases bedrockagentcore_start_batch_evaluation
-bedrockagentcore_start_batch_evaluation <- function(batchEvaluationName, evaluators = NULL, dataSourceConfig, clientToken = NULL, evaluationMetadata = NULL, description = NULL) {
+bedrockagentcore_start_batch_evaluation <- function(batchEvaluationName, evaluators = NULL, insights = NULL, dataSourceConfig, clientToken = NULL, evaluationMetadata = NULL, tags = NULL, kmsKeyArn = NULL, description = NULL) {
   op <- new_operation(
     name = "StartBatchEvaluation",
     http_method = "POST",
@@ -5084,7 +5530,7 @@ bedrockagentcore_start_batch_evaluation <- function(batchEvaluationName, evaluat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcore$start_batch_evaluation_input(batchEvaluationName = batchEvaluationName, evaluators = evaluators, dataSourceConfig = dataSourceConfig, clientToken = clientToken, evaluationMetadata = evaluationMetadata, description = description)
+  input <- .bedrockagentcore$start_batch_evaluation_input(batchEvaluationName = batchEvaluationName, evaluators = evaluators, insights = insights, dataSourceConfig = dataSourceConfig, clientToken = clientToken, evaluationMetadata = evaluationMetadata, tags = tags, kmsKeyArn = kmsKeyArn, description = description)
   output <- .bedrockagentcore$start_batch_evaluation_output()
   config <- get_config()
   svc <- .bedrockagentcore$service(config, op)
@@ -5117,7 +5563,7 @@ bedrockagentcore_start_batch_evaluation <- function(batchEvaluationName, evaluat
 #' bedrockagentcore_start_browser_session(traceId, traceParent,
 #'   browserIdentifier, name, sessionTimeoutSeconds, viewPort, extensions,
 #'   profileConfiguration, proxyConfiguration, enterprisePolicies,
-#'   certificates, clientToken)
+#'   certificates, filesystemConfigurations, clientToken)
 #'
 #' @param traceId The trace identifier for request tracking.
 #' @param traceParent The parent trace information for distributed tracing.
@@ -5130,6 +5576,7 @@ bedrockagentcore_start_batch_evaluation <- function(batchEvaluationName, evaluat
 #' @param proxyConfiguration Optional proxy configuration for routing browser traffic through customer-specified proxy servers. When provided, enables HTTP Basic authentication via Amazon Web Services Secrets Manager and domain-based routing rules. Requires `secretsmanager:GetSecretValue` IAM permission for the specified secret ARNs.
 #' @param enterprisePolicies A list of files containing enterprise policies for the browser.
 #' @param certificates A list of certificates to install in the browser session.
+#' @param filesystemConfigurations The file system configurations to mount into the browser session. Use these configurations to mount your own Amazon Simple Storage Service (Amazon S3) Files or Amazon Elastic File System (Amazon EFS) access points. Your session can then read and write your data. If you don't specify this field, no additional file systems are mounted.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock AgentCore ignores the request, but does not return an error. This parameter helps prevent the creation of duplicate sessions if there are temporary network issues.
 #'
 #' @return
@@ -5223,6 +5670,20 @@ bedrockagentcore_start_batch_evaluation <- function(batchEvaluationName, evaluat
 #'       )
 #'     )
 #'   ),
+#'   filesystemConfigurations = list(
+#'     list(
+#'       s3FilesConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
+#'       ),
+#'       efsConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
+#'       )
+#'     )
+#'   ),
 #'   clientToken = "string"
 #' )
 #' ```
@@ -5232,7 +5693,7 @@ bedrockagentcore_start_batch_evaluation <- function(batchEvaluationName, evaluat
 #' @rdname bedrockagentcore_start_browser_session
 #'
 #' @aliases bedrockagentcore_start_browser_session
-bedrockagentcore_start_browser_session <- function(traceId = NULL, traceParent = NULL, browserIdentifier, name = NULL, sessionTimeoutSeconds = NULL, viewPort = NULL, extensions = NULL, profileConfiguration = NULL, proxyConfiguration = NULL, enterprisePolicies = NULL, certificates = NULL, clientToken = NULL) {
+bedrockagentcore_start_browser_session <- function(traceId = NULL, traceParent = NULL, browserIdentifier, name = NULL, sessionTimeoutSeconds = NULL, viewPort = NULL, extensions = NULL, profileConfiguration = NULL, proxyConfiguration = NULL, enterprisePolicies = NULL, certificates = NULL, filesystemConfigurations = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "StartBrowserSession",
     http_method = "PUT",
@@ -5241,7 +5702,7 @@ bedrockagentcore_start_browser_session <- function(traceId = NULL, traceParent =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcore$start_browser_session_input(traceId = traceId, traceParent = traceParent, browserIdentifier = browserIdentifier, name = name, sessionTimeoutSeconds = sessionTimeoutSeconds, viewPort = viewPort, extensions = extensions, profileConfiguration = profileConfiguration, proxyConfiguration = proxyConfiguration, enterprisePolicies = enterprisePolicies, certificates = certificates, clientToken = clientToken)
+  input <- .bedrockagentcore$start_browser_session_input(traceId = traceId, traceParent = traceParent, browserIdentifier = browserIdentifier, name = name, sessionTimeoutSeconds = sessionTimeoutSeconds, viewPort = viewPort, extensions = extensions, profileConfiguration = profileConfiguration, proxyConfiguration = proxyConfiguration, enterprisePolicies = enterprisePolicies, certificates = certificates, filesystemConfigurations = filesystemConfigurations, clientToken = clientToken)
   output <- .bedrockagentcore$start_browser_session_output()
   config <- get_config()
   svc <- .bedrockagentcore$service(config, op)
@@ -5270,7 +5731,7 @@ bedrockagentcore_start_browser_session <- function(traceId = NULL, traceParent =
 #' @usage
 #' bedrockagentcore_start_code_interpreter_session(traceId, traceParent,
 #'   codeInterpreterIdentifier, name, sessionTimeoutSeconds, certificates,
-#'   clientToken)
+#'   filesystemConfigurations, clientToken)
 #'
 #' @param traceId The trace identifier for request tracking.
 #' @param traceParent The parent trace information for distributed tracing.
@@ -5278,6 +5739,7 @@ bedrockagentcore_start_browser_session <- function(traceId = NULL, traceParent =
 #' @param name The name of the code interpreter session. This name helps you identify and manage the session. The name does not need to be unique.
 #' @param sessionTimeoutSeconds The duration in seconds (time-to-live) after which the session automatically terminates, regardless of ongoing activity. Defaults to 900 seconds (15 minutes). Recommended minimum: 60 seconds. Maximum allowed: 28,800 seconds (8 hours).
 #' @param certificates A list of certificates to install in the code interpreter session.
+#' @param filesystemConfigurations The file system configurations to mount into the code interpreter session. Use these configurations to mount your own Amazon Simple Storage Service (Amazon S3) Files or Amazon Elastic File System (Amazon EFS) access points. Your session can then read and write your data. If you don't specify this field, no additional file systems are mounted.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock AgentCore ignores the request, but does not return an error. This parameter helps prevent the creation of duplicate sessions if there are temporary network issues.
 #'
 #' @return
@@ -5309,6 +5771,20 @@ bedrockagentcore_start_browser_session <- function(traceId = NULL, traceParent =
 #'       )
 #'     )
 #'   ),
+#'   filesystemConfigurations = list(
+#'     list(
+#'       s3FilesConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
+#'       ),
+#'       efsConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
+#'       )
+#'     )
+#'   ),
 #'   clientToken = "string"
 #' )
 #' ```
@@ -5318,7 +5794,7 @@ bedrockagentcore_start_browser_session <- function(traceId = NULL, traceParent =
 #' @rdname bedrockagentcore_start_code_interpreter_session
 #'
 #' @aliases bedrockagentcore_start_code_interpreter_session
-bedrockagentcore_start_code_interpreter_session <- function(traceId = NULL, traceParent = NULL, codeInterpreterIdentifier, name = NULL, sessionTimeoutSeconds = NULL, certificates = NULL, clientToken = NULL) {
+bedrockagentcore_start_code_interpreter_session <- function(traceId = NULL, traceParent = NULL, codeInterpreterIdentifier, name = NULL, sessionTimeoutSeconds = NULL, certificates = NULL, filesystemConfigurations = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "StartCodeInterpreterSession",
     http_method = "PUT",
@@ -5327,7 +5803,7 @@ bedrockagentcore_start_code_interpreter_session <- function(traceId = NULL, trac
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcore$start_code_interpreter_session_input(traceId = traceId, traceParent = traceParent, codeInterpreterIdentifier = codeInterpreterIdentifier, name = name, sessionTimeoutSeconds = sessionTimeoutSeconds, certificates = certificates, clientToken = clientToken)
+  input <- .bedrockagentcore$start_code_interpreter_session_input(traceId = traceId, traceParent = traceParent, codeInterpreterIdentifier = codeInterpreterIdentifier, name = name, sessionTimeoutSeconds = sessionTimeoutSeconds, certificates = certificates, filesystemConfigurations = filesystemConfigurations, clientToken = clientToken)
   output <- .bedrockagentcore$start_code_interpreter_session_output()
   config <- get_config()
   svc <- .bedrockagentcore$service(config, op)
@@ -5406,13 +5882,15 @@ bedrockagentcore_start_memory_extraction_job <- function(memoryId, extractionJob
 #'
 #' @usage
 #' bedrockagentcore_start_recommendation(name, description, type,
-#'   recommendationConfig, clientToken)
+#'   recommendationConfig, kmsKeyArn, clientToken, tags)
 #'
 #' @param name &#91;required&#93; The name of the recommendation. Must be unique within your account.
 #' @param description The description of the recommendation.
 #' @param type &#91;required&#93; The type of recommendation to generate. Valid values are `SYSTEM_PROMPT_RECOMMENDATION` for system prompt optimization or `TOOL_DESCRIPTION_RECOMMENDATION` for tool description optimization.
 #' @param recommendationConfig &#91;required&#93; The configuration for the recommendation, including the input to optimize, agent traces to analyze, and evaluation settings.
+#' @param kmsKeyArn The ARN of the KMS key used to encrypt recommendation data. If provided, customer data is encrypted at rest with the specified key.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error.
+#' @param tags A map of tag keys and values to associate with the recommendation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5462,6 +5940,18 @@ bedrockagentcore_start_memory_extraction_job <- function(memoryId, extractionJob
 #'                 )
 #'               )
 #'             )
+#'           )
+#'         ),
+#'         batchEvaluation = list(
+#'           batchEvaluationArn = "string"
+#'         ),
+#'         onlineEvaluation = list(
+#'           onlineEvaluationConfigArn = "string",
+#'           startTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           endTime = as.POSIXct(
+#'             "2015-01-01"
 #'           )
 #'         )
 #'       ),
@@ -5525,6 +6015,18 @@ bedrockagentcore_start_memory_extraction_job <- function(memoryId, extractionJob
 #'                 )
 #'               )
 #'             )
+#'           )
+#'         ),
+#'         batchEvaluation = list(
+#'           batchEvaluationArn = "string"
+#'         ),
+#'         onlineEvaluation = list(
+#'           onlineEvaluationConfigArn = "string",
+#'           startTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           endTime = as.POSIXct(
+#'             "2015-01-01"
 #'           )
 #'         )
 #'       )
@@ -5586,6 +6088,18 @@ bedrockagentcore_start_memory_extraction_job <- function(memoryId, extractionJob
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         batchEvaluation = list(
+#'           batchEvaluationArn = "string"
+#'         ),
+#'         onlineEvaluation = list(
+#'           onlineEvaluationConfigArn = "string",
+#'           startTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           endTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         )
 #'       ),
 #'       evaluationConfig = list(
@@ -5649,11 +6163,27 @@ bedrockagentcore_start_memory_extraction_job <- function(memoryId, extractionJob
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         batchEvaluation = list(
+#'           batchEvaluationArn = "string"
+#'         ),
+#'         onlineEvaluation = list(
+#'           onlineEvaluationConfigArn = "string",
+#'           startTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           endTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         )
 #'       )
 #'     )
 #'   ),
-#'   clientToken = "string"
+#'   kmsKeyArn = "string",
+#'   clientToken = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -5662,7 +6192,7 @@ bedrockagentcore_start_memory_extraction_job <- function(memoryId, extractionJob
 #' @rdname bedrockagentcore_start_recommendation
 #'
 #' @aliases bedrockagentcore_start_recommendation
-bedrockagentcore_start_recommendation <- function(name, description = NULL, type, recommendationConfig, clientToken = NULL) {
+bedrockagentcore_start_recommendation <- function(name, description = NULL, type, recommendationConfig, kmsKeyArn = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "StartRecommendation",
     http_method = "POST",
@@ -5671,7 +6201,7 @@ bedrockagentcore_start_recommendation <- function(name, description = NULL, type
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcore$start_recommendation_input(name = name, description = description, type = type, recommendationConfig = recommendationConfig, clientToken = clientToken)
+  input <- .bedrockagentcore$start_recommendation_input(name = name, description = description, type = type, recommendationConfig = recommendationConfig, kmsKeyArn = kmsKeyArn, clientToken = clientToken, tags = tags)
   output <- .bedrockagentcore$start_recommendation_output()
   config <- get_config()
   svc <- .bedrockagentcore$service(config, op)

@@ -105,6 +105,7 @@ For more information about the Amazon Redshift Data API and CLI usage examples, 
 \link[paws.database:redshiftdataapiservice_get_statement_result_v2]{get_statement_result_v2} \tab Fetches the temporarily cached result of an SQL statement in CSV format\cr
 \link[paws.database:redshiftdataapiservice_list_databases]{list_databases} \tab List the databases in a cluster\cr
 \link[paws.database:redshiftdataapiservice_list_schemas]{list_schemas} \tab Lists the schemas in a database\cr
+\link[paws.database:redshiftdataapiservice_list_sessions]{list_sessions} \tab Lists the sessions that the caller created in the last 24 hours\cr
 \link[paws.database:redshiftdataapiservice_list_statements]{list_statements} \tab List of SQL statements\cr
 \link[paws.database:redshiftdataapiservice_list_tables]{list_tables} \tab List the tables in a database
 }

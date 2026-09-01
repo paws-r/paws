@@ -12,7 +12,9 @@ bedrockagentcore_create_event(
   payload,
   branch = NULL,
   clientToken = NULL,
-  metadata = NULL
+  metadata = NULL,
+  extractionMode = NULL,
+  extractionConfig = NULL
 )
 }
 \arguments{
@@ -24,13 +26,17 @@ bedrockagentcore_create_event(
 
 \item{eventTimestamp}{[required] The timestamp when the event occurred. If not specified, the current time is used.}
 
-\item{payload}{[required] The content payload of the event. This can include conversational data or binary content.}
+\item{payload}{[required] The content payload of the event. This can include conversational data, JSON data, or binary content.}
 
 \item{branch}{The branch information for this event. Branches allow for organizing events into different conversation threads or paths.}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, AgentCore ignores the request, but does not return an error.}
 
 \item{metadata}{The key-value metadata to attach to the event.}
+
+\item{extractionMode}{Controls long-term memory extraction for this event. When set to \code{SKIP}, the event is stored in short-term memory but is excluded from long-term memory extraction. If not specified, the event is processed for extraction as usual.}
+
+\item{extractionConfig}{The extraction configuration for long-term memory records. Use this parameter to specify namespace variable keys and their values for namespace substitution during extraction.}
 }
 \description{
 Creates an event in an AgentCore Memory resource. Events represent interactions or activities that occur within a session and are associated with specific actors.

@@ -377,7 +377,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'   EncryptionAtRestOptions, NodeToNodeEncryptionOptions, AdvancedOptions,
 #'   LogPublishingOptions, DomainEndpointOptions, AdvancedSecurityOptions,
 #'   AutoTuneOptions, TagList, DeploymentStrategyOptions,
-#'   AutomatedSnapshotPauseOptions)
+#'   AutomatedSnapshotPauseOptions, UseCase, EngineMode)
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains owned by an account within an AWS region. Domain names must start with a lowercase letter and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).
 #' @param ElasticsearchVersion String of format X.Y to specify version for the Elasticsearch domain eg. "1.5" or "2.3". For more information, see <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the *Amazon Elasticsearch Service Developer Guide*.
@@ -401,6 +401,8 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' Suspending snapshots reduces data protection. You cannot restore your domain to points in time when snapshots are suspended. Use this feature only for short-term operational needs such as migrations or maintenance windows.
 #' 
 #' Maximum suspension duration: 3 days.
+#' @param UseCase The primary use case for the domain. For valid values, see `DomainUseCase`.
+#' @param EngineMode The engine mode for the domain. For valid values and requirements, see `DomainEngineMode`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -555,7 +557,9 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'         "2015-01-01"
 #'       ),
 #'       State = "Active"|"Completed"|"Scheduled"|"Disabled"
-#'     )
+#'     ),
+#'     UseCase = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'     EngineMode = "GENERAL"|"OPTIMIZED"
 #'   )
 #' )
 #' ```
@@ -684,7 +688,9 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'     EndTime = as.POSIXct(
 #'       "2015-01-01"
 #'     )
-#'   )
+#'   ),
+#'   UseCase = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'   EngineMode = "GENERAL"|"OPTIMIZED"
 #' )
 #' ```
 #'
@@ -693,7 +699,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' @rdname elasticsearchservice_create_elasticsearch_domain
 #'
 #' @aliases elasticsearchservice_create_elasticsearch_domain
-elasticsearchservice_create_elasticsearch_domain <- function(DomainName, ElasticsearchVersion = NULL, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, TagList = NULL, DeploymentStrategyOptions = NULL, AutomatedSnapshotPauseOptions = NULL) {
+elasticsearchservice_create_elasticsearch_domain <- function(DomainName, ElasticsearchVersion = NULL, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, TagList = NULL, DeploymentStrategyOptions = NULL, AutomatedSnapshotPauseOptions = NULL, UseCase = NULL, EngineMode = NULL) {
   op <- new_operation(
     name = "CreateElasticsearchDomain",
     http_method = "POST",
@@ -702,7 +708,7 @@ elasticsearchservice_create_elasticsearch_domain <- function(DomainName, Elastic
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .elasticsearchservice$create_elasticsearch_domain_input(DomainName = DomainName, ElasticsearchVersion = ElasticsearchVersion, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, TagList = TagList, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions)
+  input <- .elasticsearchservice$create_elasticsearch_domain_input(DomainName = DomainName, ElasticsearchVersion = ElasticsearchVersion, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, TagList = TagList, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions, UseCase = UseCase, EngineMode = EngineMode)
   output <- .elasticsearchservice$create_elasticsearch_domain_output()
   config <- get_config()
   svc <- .elasticsearchservice$service(config, op)
@@ -1109,7 +1115,9 @@ elasticsearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, Clie
 #'         "2015-01-01"
 #'       ),
 #'       State = "Active"|"Completed"|"Scheduled"|"Disabled"
-#'     )
+#'     ),
+#'     UseCase = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'     EngineMode = "GENERAL"|"OPTIMIZED"
 #'   )
 #' )
 #' ```
@@ -1757,7 +1765,9 @@ elasticsearchservice_describe_domain_change_progress <- function(DomainName, Cha
 #'         "2015-01-01"
 #'       ),
 #'       State = "Active"|"Completed"|"Scheduled"|"Disabled"
-#'     )
+#'     ),
+#'     UseCase = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'     EngineMode = "GENERAL"|"OPTIMIZED"
 #'   )
 #' )
 #' ```
@@ -2155,6 +2165,34 @@ elasticsearchservice_describe_elasticsearch_domain <- function(DomainName) {
 #'         State = "RequiresIndexDocuments"|"Processing"|"Active",
 #'         PendingDeletion = TRUE|FALSE
 #'       )
+#'     ),
+#'     UseCase = list(
+#'       Options = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
+#'     ),
+#'     EngineMode = list(
+#'       Options = "GENERAL"|"OPTIMIZED",
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
 #'     )
 #'   )
 #' )
@@ -2357,7 +2395,9 @@ elasticsearchservice_describe_elasticsearch_domain_config <- function(DomainName
 #'           "2015-01-01"
 #'         ),
 #'         State = "Active"|"Completed"|"Scheduled"|"Disabled"
-#'       )
+#'       ),
+#'       UseCase = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'       EngineMode = "GENERAL"|"OPTIMIZED"
 #'     )
 #'   )
 #' )
@@ -4114,7 +4154,8 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'   CognitoOptions, AdvancedOptions, AccessPolicies, LogPublishingOptions,
 #'   DomainEndpointOptions, AdvancedSecurityOptions,
 #'   NodeToNodeEncryptionOptions, EncryptionAtRestOptions, AutoTuneOptions,
-#'   DryRun, DeploymentStrategyOptions, AutomatedSnapshotPauseOptions)
+#'   DryRun, DeploymentStrategyOptions, AutomatedSnapshotPauseOptions,
+#'   UseCase, EngineMode)
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain that you are updating.
 #' @param ElasticsearchClusterConfig The type and number of instances to instantiate for the domain cluster.
@@ -4137,6 +4178,8 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' Suspending snapshots reduces data protection. You cannot restore your domain to points in time when snapshots are suspended. Use this feature only for short-term operational needs such as migrations or maintenance windows.
 #' 
 #' Maximum suspension duration: 3 days.
+#' @param UseCase The primary use case for the domain. For valid values, see `DomainUseCase`.
+#' @param EngineMode The engine mode for the domain. For valid values and requirements, see `DomainEngineMode`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4488,6 +4531,34 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'         State = "RequiresIndexDocuments"|"Processing"|"Active",
 #'         PendingDeletion = TRUE|FALSE
 #'       )
+#'     ),
+#'     UseCase = list(
+#'       Options = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
+#'     ),
+#'     EngineMode = list(
+#'       Options = "GENERAL"|"OPTIMIZED",
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
 #'     )
 #'   ),
 #'   DryRunResults = list(
@@ -4616,7 +4687,9 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'     EndTime = as.POSIXct(
 #'       "2015-01-01"
 #'     )
-#'   )
+#'   ),
+#'   UseCase = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'   EngineMode = "GENERAL"|"OPTIMIZED"
 #' )
 #' ```
 #'
@@ -4625,7 +4698,7 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' @rdname elasticsearchservice_update_elasticsearch_domain_config
 #'
 #' @aliases elasticsearchservice_update_elasticsearch_domain_config
-elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, NodeToNodeEncryptionOptions = NULL, EncryptionAtRestOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DeploymentStrategyOptions = NULL, AutomatedSnapshotPauseOptions = NULL) {
+elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, NodeToNodeEncryptionOptions = NULL, EncryptionAtRestOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DeploymentStrategyOptions = NULL, AutomatedSnapshotPauseOptions = NULL, UseCase = NULL, EngineMode = NULL) {
   op <- new_operation(
     name = "UpdateElasticsearchDomainConfig",
     http_method = "POST",
@@ -4634,7 +4707,7 @@ elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .elasticsearchservice$update_elasticsearch_domain_config_input(DomainName = DomainName, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions)
+  input <- .elasticsearchservice$update_elasticsearch_domain_config_input(DomainName = DomainName, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions, UseCase = UseCase, EngineMode = EngineMode)
   output <- .elasticsearchservice$update_elasticsearch_domain_config_output()
   config <- get_config()
   svc <- .elasticsearchservice$service(config, op)

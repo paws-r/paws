@@ -9,6 +9,7 @@ bedrockagentcorecontrol_create_policy(
   definition,
   description = NULL,
   validationMode = NULL,
+  enforcementMode = NULL,
   policyEngineId,
   clientToken = NULL
 )
@@ -21,6 +22,8 @@ bedrockagentcorecontrol_create_policy(
 \item{description}{A human-readable description of the policy's purpose and functionality (1-4,096 characters). This helps policy administrators understand the policy's intent, business rules, and operational scope. Use this field to document why the policy exists, what business requirement it addresses, and any special considerations for maintenance. Clear descriptions are essential for policy governance, auditing, and troubleshooting.}
 
 \item{validationMode}{The validation mode for the policy creation. Determines how Cedar analyzer validation results are handled during policy creation. FAIL_ON_ANY_FINDINGS (default) runs the Cedar analyzer to validate the policy against the Cedar schema and tool context, failing creation if the analyzer detects any validation issues to ensure strict conformance. IGNORE_ALL_FINDINGS runs the Cedar analyzer but allows policy creation even if validation issues are detected, useful for testing or when the policy schema is evolving. Use FAIL_ON_ANY_FINDINGS for production policies to ensure correctness, and IGNORE_ALL_FINDINGS only when you understand and accept the analyzer findings.}
+
+\item{enforcementMode}{The enforcement mode for the policy. Run this policy in \code{LOG_ONLY} mode to collect data on how it affects your application. Once you are satisfied with the data gathered, switch the policy to \code{ACTIVE}. Defaults to \code{ACTIVE}.}
 
 \item{policyEngineId}{[required] The identifier of the policy engine which contains this policy. Policy engines group related policies and provide the execution context for policy evaluation.}
 

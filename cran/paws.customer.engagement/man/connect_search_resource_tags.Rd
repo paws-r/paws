@@ -30,6 +30,7 @@ connect_search_resource_tags(
 \item contact-flow
 \item flow- module
 \item transfer-destination (also known as quick connect)
+\item metric
 }}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the previous response in the next request to retrieve the next set of results.}

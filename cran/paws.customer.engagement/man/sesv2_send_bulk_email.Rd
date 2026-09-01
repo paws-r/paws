@@ -15,7 +15,8 @@ sesv2_send_bulk_email(
   BulkEmailEntries,
   ConfigurationSetName = NULL,
   EndpointId = NULL,
-  TenantName = NULL
+  TenantName = NULL,
+  ConfigurationOverrides = NULL
 )
 }
 \arguments{
@@ -50,6 +51,8 @@ For more information about sending authorization, see the \href{https://docs.aws
 \item{TenantName}{The name of the tenant through which this bulk email will be sent.
 
 The email sending operation will only succeed if all referenced resources (identities, configuration sets, and templates) are associated with this tenant.}
+
+\item{ConfigurationOverrides}{An object that overrides, for the messages in this request only, settings that would otherwise apply to them. The overrides apply to every message in the request. Each setting that you don't override keeps the value that already applies.}
 }
 \description{
 Composes an email message to multiple destinations.

@@ -2,8 +2,8 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_distribute_image}
 \alias{imagebuilder_distribute_image}
-\title{DistributeImage distributes existing AMIs to additional regions and
-accounts without rebuilding the image}
+\title{Distributes an existing AMI to target Regions and accounts without
+running the full image build process}
 \usage{
 imagebuilder_distribute_image(
   sourceImage,
@@ -15,11 +15,11 @@ imagebuilder_distribute_image(
 )
 }
 \arguments{
-\item{sourceImage}{[required] The source image Amazon Resource Name (ARN) to distribute.}
+\item{sourceImage}{[required] The source image to distribute. Specify an AMI identifier, SSM parameter path, or Image Builder image Amazon Resource Name (ARN). When you specify an Image Builder image Amazon Resource Name (ARN), the image must be in the \code{AVAILABLE} state.}
 
-\item{distributionConfigurationArn}{[required] The Amazon Resource Name (ARN) of the distribution configuration to use.}
+\item{distributionConfigurationArn}{[required] The Amazon Resource Name (ARN) of the distribution configuration. The configuration defines target Regions, accounts, and AMI settings. The distribution configuration must be in the same Region as this operation.}
 
-\item{executionRole}{[required] The IAM role to use for the distribution.}
+\item{executionRole}{[required] The name or Amazon Resource Name (ARN) of the IAM role that Image Builder assumes to distribute the image.}
 
 \item{tags}{The tags to apply to the distributed image.}
 
@@ -28,7 +28,7 @@ imagebuilder_distribute_image(
 \item{loggingConfiguration}{The logging configuration for the distribution.}
 }
 \description{
-DistributeImage distributes existing AMIs to additional regions and accounts without rebuilding the image.
+Distributes an existing AMI to target Regions and accounts without running the full image build process. This operation only runs the distribution phase on an image that has already been built.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_distribute_image/} for full documentation.
 }

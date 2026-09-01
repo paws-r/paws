@@ -6,13 +6,19 @@
 \usage{
 lambda_update_capacity_provider(
   CapacityProviderName,
-  CapacityProviderScalingConfig = NULL
+  CapacityProviderScalingConfig = NULL,
+  PropagateTags = NULL,
+  TelemetryConfig = NULL
 )
 }
 \arguments{
 \item{CapacityProviderName}{[required] The name of the capacity provider to update.}
 
 \item{CapacityProviderScalingConfig}{The updated scaling configuration for the capacity provider.}
+
+\item{PropagateTags}{Configuration for tag propagation to managed resources launched by the capacity provider.}
+
+\item{TelemetryConfig}{The updated telemetry configuration for the capacity provider.}
 }
 \description{
 Updates the configuration of an existing capacity provider.

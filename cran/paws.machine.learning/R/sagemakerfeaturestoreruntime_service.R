@@ -101,8 +101,10 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=sagemakerfeaturestoreruntime_batch_get_record]{batch_get_record} \tab Retrieves a batch of Records from a FeatureGroup\cr
+#'  \link[=sagemakerfeaturestoreruntime_batch_write_record]{batch_write_record} \tab Writes a batch of Records to one or more FeatureGroups\cr
 #'  \link[=sagemakerfeaturestoreruntime_delete_record]{delete_record} \tab Deletes a Record from a FeatureGroup in the OnlineStore\cr
 #'  \link[=sagemakerfeaturestoreruntime_get_record]{get_record} \tab Use for OnlineStore serving from a FeatureStore\cr
+#'  \link[=sagemakerfeaturestoreruntime_list_records]{list_records} \tab Lists the RecordIdentifier values of all records stored in a FeatureGroup's OnlineStore\cr
 #'  \link[=sagemakerfeaturestoreruntime_put_record]{put_record} \tab The PutRecord API is used to ingest a list of Records into your feature group
 #' }
 #'

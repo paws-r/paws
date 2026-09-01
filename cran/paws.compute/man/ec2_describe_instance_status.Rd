@@ -50,6 +50,7 @@ You cannot specify this parameter and the instance IDs parameter in the same req
 \item \code{system-status.reachability} - Filters on system status where the name is \code{reachability} (\code{passed} | \code{failed} | \code{initializing} | \code{insufficient-data}).
 \item \code{system-status.status} - The system status of the instance (\code{ok} | \code{impaired} | \code{initializing} | \code{insufficient-data} | \code{not-applicable}).
 \item \code{attached-ebs-status.status} - The status of the attached EBS volume for the instance (\code{ok} | \code{impaired} | \code{initializing} | \code{insufficient-data} | \code{not-applicable}).
+\item \code{application-status.status} - The application status of the instance (\code{ok} | \code{impaired} | \code{initializing} | \code{insufficient-data} | \code{not-applicable}).
 }}
 
 \item{IncludeAllInstances}{When \code{true}, includes the health status for all instances. When \code{false}, includes the health status for running instances only.

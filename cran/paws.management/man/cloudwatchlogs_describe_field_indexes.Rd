@@ -2,18 +2,33 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_describe_field_indexes}
 \alias{cloudwatchlogs_describe_field_indexes}
-\title{Returns a list of custom and default field indexes which are discovered
-in log data}
+\title{Returns a list of field indexes discovered in log data}
 \usage{
-cloudwatchlogs_describe_field_indexes(logGroupIdentifiers, nextToken = NULL)
+cloudwatchlogs_describe_field_indexes(
+  logGroupIdentifiers,
+  indexCategories = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{logGroupIdentifiers}{[required] An array containing the names or ARNs of the log groups that you want to retrieve field indexes for.}
 
+\item{indexCategories}{The index categories to return. The following values are supported:
+\itemize{
+\item \code{DEFAULT}: Fields that CloudWatch Logs indexes by default. Examples include \verb{@logStream} and \verb{@data_format}.
+\item \code{CUSTOM}: Fields that you added manually to the field index policy. CloudWatch Logs always indexes these fields. These fields count toward the quota of 20 fields for each log group.
+\item \code{AUTO}: Fields that CloudWatch Logs indexes automatically based on your query patterns and usage. These fields do not count toward the field index quota. CloudWatch Logs might update these fields based on changes in your query patterns. To keep a field indexed permanently, add it to an account-level or log-group level field index policy.
+\item \code{INACTIVE}: Fields that CloudWatch Logs indexed before but does not index now. This happens if you remove a field from the field index policy or if CloudWatch Logs automatically selects a different field based on your queries.
+}
+
+If you omit this parameter, the response includes the \code{DEFAULT}, \code{CUSTOM}, and \code{INACTIVE} categories.
+
+For more information about automatically indexed fields and using the \code{AUTO} category, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Field-Indexing-Automatic.html}{Automatically indexed fields}.}
+
 \item{nextToken}{The token for the next set of items to return. The token expires after 24 hours.}
 }
 \description{
-Returns a list of custom and default field indexes which are discovered in log data. For more information about field index policies, see \code{\link[=cloudwatchlogs_put_index_policy]{put_index_policy}}.
+Returns a list of field indexes discovered in log data. By default, the response includes the \code{DEFAULT}, \code{CUSTOM}, and \code{INACTIVE} index categories. To return indexes from other categories, use the \code{indexCategories} parameter.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_field_indexes/} for full documentation.
 }

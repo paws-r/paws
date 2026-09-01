@@ -18,7 +18,7 @@ workdocs_search_resources(
 )
 }
 \arguments{
-\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using Amazon Web Services administrator credentials to access the API.}
+\item{AuthenticationToken}{WorkDocs authentication token. Not required when using Amazon Web Services administrator credentials to access the API.}
 
 \item{QueryText}{The String to search for. Searches across different text fields based on request parameters. Use double quotes around the query string for exact phrase matches.}
 

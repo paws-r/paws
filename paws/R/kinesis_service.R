@@ -93,12 +93,15 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=kinesis_add_tags_to_stream]{add_tags_to_stream} \tab Adds or updates tags for the specified Kinesis data stream\cr
+#'  \link[=kinesis_create_channel]{create_channel} \tab Creates a channel that delivers records from a Kinesis data stream to a destination\cr
 #'  \link[=kinesis_create_stream]{create_stream} \tab Creates a Kinesis data stream\cr
 #'  \link[=kinesis_decrease_stream_retention_period]{decrease_stream_retention_period} \tab Decreases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream\cr
+#'  \link[=kinesis_delete_channel]{delete_channel} \tab Deletes the specified channel\cr
 #'  \link[=kinesis_delete_resource_policy]{delete_resource_policy} \tab Delete a policy for the specified data stream or consumer\cr
 #'  \link[=kinesis_delete_stream]{delete_stream} \tab Deletes a Kinesis data stream and all its shards and data\cr
 #'  \link[=kinesis_deregister_stream_consumer]{deregister_stream_consumer} \tab To deregister a consumer, provide its ARN\cr
 #'  \link[=kinesis_describe_account_settings]{describe_account_settings} \tab Describes the account-level settings for Amazon Kinesis Data Streams\cr
+#'  \link[=kinesis_describe_channel]{describe_channel} \tab Describes the specified channel, including its configuration and current status\cr
 #'  \link[=kinesis_describe_limits]{describe_limits} \tab Describes the shard limits and usage for the account\cr
 #'  \link[=kinesis_describe_stream]{describe_stream} \tab Describes the specified Kinesis data stream\cr
 #'  \link[=kinesis_describe_stream_consumer]{describe_stream_consumer} \tab To get the description of a registered consumer, provide the ARN of the consumer\cr
@@ -109,6 +112,7 @@ NULL
 #'  \link[=kinesis_get_resource_policy]{get_resource_policy} \tab Returns a policy attached to the specified data stream or consumer\cr
 #'  \link[=kinesis_get_shard_iterator]{get_shard_iterator} \tab Gets an Amazon Kinesis shard iterator\cr
 #'  \link[=kinesis_increase_stream_retention_period]{increase_stream_retention_period} \tab Increases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream\cr
+#'  \link[=kinesis_list_channels]{list_channels} \tab Lists the channels in your account\cr
 #'  \link[=kinesis_list_shards]{list_shards} \tab Lists the shards in a stream and provides information about each shard\cr
 #'  \link[=kinesis_list_stream_consumers]{list_stream_consumers} \tab Lists the consumers registered to receive data from a stream using enhanced fan-out, and provides information about each consumer\cr
 #'  \link[=kinesis_list_streams]{list_streams} \tab Lists your Kinesis data streams\cr
@@ -127,6 +131,7 @@ NULL
 #'  \link[=kinesis_tag_resource]{tag_resource} \tab Adds or updates tags for the specified Kinesis resource\cr
 #'  \link[=kinesis_untag_resource]{untag_resource} \tab Removes tags from the specified Kinesis resource\cr
 #'  \link[=kinesis_update_account_settings]{update_account_settings} \tab Updates the account-level settings for Amazon Kinesis Data Streams\cr
+#'  \link[=kinesis_update_channel]{update_channel} \tab Updates the data freshness interval or the Amazon CloudWatch Logs configuration of an existing channel\cr
 #'  \link[=kinesis_update_max_record_size]{update_max_record_size} \tab This allows you to update the MaxRecordSize of a single record that you can write to, and read from a stream\cr
 #'  \link[=kinesis_update_shard_count]{update_shard_count} \tab Updates the shard count of the specified stream to the specified number of shards\cr
 #'  \link[=kinesis_update_stream_mode]{update_stream_mode} \tab Updates the capacity mode of the data stream\cr

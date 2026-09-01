@@ -3,6 +3,18 @@
 #' @include cloudwatchapplicationsignals_service.R
 NULL
 
+.cloudwatchapplicationsignals$batch_delete_instrumentation_configurations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DeletionTarget = structure(list(Scope = structure(list(Service = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), InstrumentationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceArns = structure(list(ResourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstrumentationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchapplicationsignals$batch_delete_instrumentation_configurations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DeletedCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), SuccessfulDeletions = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), SignalType = structure(logical(0), tags = list(type = "string")), LocationHash = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Errors = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudwatchapplicationsignals$batch_get_service_level_objective_budget_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Timestamp = structure(logical(0), tags = list(type = "timestamp")), SloIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -24,6 +36,18 @@ NULL
 .cloudwatchapplicationsignals$batch_update_exclusion_windows_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(SloIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Errors = structure(list(structure(list(SloId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchapplicationsignals$create_instrumentation_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstrumentationType = structure(logical(0), tags = list(type = "string")), Service = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), SignalType = structure(logical(0), tags = list(type = "string")), Location = structure(list(CodeLocation = structure(list(Language = structure(logical(0), tags = list(type = "string")), CodeUnit = structure(logical(0), tags = list(type = "string")), ClassName = structure(logical(0), tags = list(type = "string")), MethodName = structure(logical(0), tags = list(type = "string")), FilePath = structure(logical(0), tags = list(type = "string")), LineNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Description = structure(logical(0), tags = list(type = "string")), ExpiresAt = structure(logical(0), tags = list(type = "timestamp")), AttributeFilters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "list")), CaptureConfiguration = structure(list(CodeCapture = structure(list(CaptureArguments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CaptureReturn = structure(logical(0), tags = list(type = "boolean", box = TRUE)), CaptureStackTrace = structure(logical(0), tags = list(type = "boolean", box = TRUE)), CaptureLocals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CaptureLimits = structure(list(MaxHits = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxStringLength = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxCollectionWidth = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxCollectionDepth = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxStackFrames = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxStackTraceSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxObjectDepth = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxFieldsPerObject = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchapplicationsignals$create_instrumentation_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstrumentationType = structure(logical(0), tags = list(type = "string")), Service = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), SignalType = structure(logical(0), tags = list(type = "string")), Location = structure(list(CodeLocation = structure(list(Language = structure(logical(0), tags = list(type = "string")), CodeUnit = structure(logical(0), tags = list(type = "string")), ClassName = structure(logical(0), tags = list(type = "string")), MethodName = structure(logical(0), tags = list(type = "string")), FilePath = structure(logical(0), tags = list(type = "string")), LineNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), LocationHash = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ExpiresAt = structure(logical(0), tags = list(type = "timestamp")), AttributeFilters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "list")), CaptureConfiguration = structure(list(CodeCapture = structure(list(CaptureArguments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CaptureReturn = structure(logical(0), tags = list(type = "boolean", box = TRUE)), CaptureStackTrace = structure(logical(0), tags = list(type = "boolean", box = TRUE)), CaptureLocals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CaptureLimits = structure(list(MaxHits = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxStringLength = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxCollectionWidth = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxCollectionDepth = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxStackFrames = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxStackTraceSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxObjectDepth = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxFieldsPerObject = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -49,6 +73,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudwatchapplicationsignals$delete_instrumentation_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstrumentationType = structure(logical(0), tags = list(type = "string")), Service = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), SignalType = structure(logical(0), tags = list(type = "string")), LocationIdentifier = structure(list(CodeLocation = structure(list(Language = structure(logical(0), tags = list(type = "string")), CodeUnit = structure(logical(0), tags = list(type = "string")), ClassName = structure(logical(0), tags = list(type = "string")), MethodName = structure(logical(0), tags = list(type = "string")), FilePath = structure(logical(0), tags = list(type = "string")), LineNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), LocationHash = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchapplicationsignals$delete_instrumentation_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DeletionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudwatchapplicationsignals$delete_service_level_objective_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Id = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string"))), tags = list(type = "structure"))
@@ -58,6 +94,30 @@ NULL
 .cloudwatchapplicationsignals$delete_service_level_objective_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchapplicationsignals$get_instrumentation_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstrumentationType = structure(logical(0), tags = list(type = "string")), Service = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), SignalType = structure(logical(0), tags = list(type = "string")), LocationIdentifier = structure(list(CodeLocation = structure(list(Language = structure(logical(0), tags = list(type = "string")), CodeUnit = structure(logical(0), tags = list(type = "string")), ClassName = structure(logical(0), tags = list(type = "string")), MethodName = structure(logical(0), tags = list(type = "string")), FilePath = structure(logical(0), tags = list(type = "string")), LineNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), LocationHash = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchapplicationsignals$get_instrumentation_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Configuration = structure(list(InstrumentationType = structure(logical(0), tags = list(type = "string")), Service = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), SignalType = structure(logical(0), tags = list(type = "string")), Location = structure(list(CodeLocation = structure(list(Language = structure(logical(0), tags = list(type = "string")), CodeUnit = structure(logical(0), tags = list(type = "string")), ClassName = structure(logical(0), tags = list(type = "string")), MethodName = structure(logical(0), tags = list(type = "string")), FilePath = structure(logical(0), tags = list(type = "string")), LineNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), LocationHash = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ExpiresAt = structure(logical(0), tags = list(type = "timestamp")), AttributeFilters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "list")), CaptureConfiguration = structure(list(CodeCapture = structure(list(CaptureArguments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CaptureReturn = structure(logical(0), tags = list(type = "boolean", box = TRUE)), CaptureStackTrace = structure(logical(0), tags = list(type = "boolean", box = TRUE)), CaptureLocals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CaptureLimits = structure(list(MaxHits = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxStringLength = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxCollectionWidth = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxCollectionDepth = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxStackFrames = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxStackTraceSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxObjectDepth = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxFieldsPerObject = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchapplicationsignals$get_instrumentation_configuration_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstrumentationType = structure(logical(0), tags = list(type = "string")), Service = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), SignalType = structure(logical(0), tags = list(type = "string")), LocationIdentifier = structure(list(CodeLocation = structure(list(Language = structure(logical(0), tags = list(type = "string")), CodeUnit = structure(logical(0), tags = list(type = "string")), ClassName = structure(logical(0), tags = list(type = "string")), MethodName = structure(logical(0), tags = list(type = "string")), FilePath = structure(logical(0), tags = list(type = "string")), LineNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), LocationHash = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), Status = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchapplicationsignals$get_instrumentation_configuration_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Service = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), SignalType = structure(logical(0), tags = list(type = "string")), Location = structure(list(CodeLocation = structure(list(Language = structure(logical(0), tags = list(type = "string")), CodeUnit = structure(logical(0), tags = list(type = "string")), ClassName = structure(logical(0), tags = list(type = "string")), MethodName = structure(logical(0), tags = list(type = "string")), FilePath = structure(logical(0), tags = list(type = "string")), LineNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Status = structure(logical(0), tags = list(type = "string")), Events = structure(list(structure(list(Time = structure(logical(0), tags = list(type = "timestamp")), ErrorCause = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -118,6 +178,18 @@ NULL
 .cloudwatchapplicationsignals$list_grouping_attribute_definitions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupingAttributeDefinitions = structure(list(structure(list(GroupingName = structure(logical(0), tags = list(type = "string")), GroupingSourceKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DefaultGroupingValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchapplicationsignals$list_instrumentation_configurations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Service = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), InstrumentationType = structure(logical(0), tags = list(type = "string")), SyncedAt = structure(logical(0), tags = list(type = "timestamp")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchapplicationsignals$list_instrumentation_configurations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Service = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), Changed = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LatestConfigurations = structure(list(structure(list(InstrumentationType = structure(logical(0), tags = list(type = "string")), SignalType = structure(logical(0), tags = list(type = "string")), Location = structure(list(CodeLocation = structure(list(Language = structure(logical(0), tags = list(type = "string")), CodeUnit = structure(logical(0), tags = list(type = "string")), ClassName = structure(logical(0), tags = list(type = "string")), MethodName = structure(logical(0), tags = list(type = "string")), FilePath = structure(logical(0), tags = list(type = "string")), LineNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), LocationHash = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ExpiresAt = structure(logical(0), tags = list(type = "timestamp")), AttributeFilters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "list")), CaptureConfiguration = structure(list(CodeCapture = structure(list(CaptureArguments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CaptureReturn = structure(logical(0), tags = list(type = "boolean", box = TRUE)), CaptureStackTrace = structure(logical(0), tags = list(type = "boolean", box = TRUE)), CaptureLocals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CaptureLimits = structure(list(MaxHits = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxStringLength = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxCollectionWidth = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxCollectionDepth = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxStackFrames = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxStackTraceSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxObjectDepth = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxFieldsPerObject = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SyncedAt = structure(logical(0), tags = list(type = "timestamp")), SyncInterval = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -226,6 +298,18 @@ NULL
 .cloudwatchapplicationsignals$put_grouping_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupingConfiguration = structure(list(GroupingAttributeDefinitions = structure(list(structure(list(GroupingName = structure(logical(0), tags = list(type = "string")), GroupingSourceKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DefaultGroupingValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchapplicationsignals$report_instrumentation_configuration_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Service = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), Configurations = structure(list(structure(list(InstrumentationType = structure(logical(0), tags = list(type = "string")), SignalType = structure(logical(0), tags = list(type = "string")), LocationHash = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Time = structure(logical(0), tags = list(type = "timestamp")), ErrorCause = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchapplicationsignals$report_instrumentation_configuration_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Service = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), UnprocessedStatusEvents = structure(list(structure(list(InstrumentationType = structure(logical(0), tags = list(type = "string")), SignalType = structure(logical(0), tags = list(type = "string")), LocationHash = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Time = structure(logical(0), tags = list(type = "timestamp")), FailedReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

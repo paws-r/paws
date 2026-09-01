@@ -37,7 +37,7 @@ To specify multiple rules and descriptions for the rules, use IP permissions ins
 
 \item{IpPermissions}{The permissions for the security group rules.}
 
-\item{IpProtocol}{The IP protocol name (\code{tcp}, \code{udp}, \code{icmp}) or number (see \href{http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml}{Protocol Numbers}). To specify all protocols, use \code{-1}.
+\item{IpProtocol}{The IP protocol name (\code{tcp}, \code{udp}, \code{icmp}) or number (see \href{http://www.iana.org/assignments/protocol-numbers}{Protocol Numbers}). To specify all protocols, use \code{-1}.
 
 To specify \code{icmpv6}, use IP permissions instead.
 

@@ -33,11 +33,11 @@ route53resolver_delete_firewall_rule(
 \item SPF: Lists the servers authorized to send emails from a domain.
 \item SRV: Application specific values that identify servers.
 \item TXT: Verifies email senders and application-specific values.
-\item A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65334, for example, TYPE28. For more information, see \href{https://en.wikipedia.org/wiki/List_of_DNS_record_types}{List of DNS record types}.
+\item A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPENUMBER, where the NUMBER can be 1-65534, for example, TYPE28. For more information, see \href{https://en.wikipedia.org/wiki/List_of_DNS_record_types}{List of DNS record types}.
 }}
 }
 \description{
-Deletes the specified firewall rule.
+Deletes the specified firewall rule. Identify the rule using either \code{FirewallDomainListId} (for domain-list and DNS Firewall Advanced rules) or \code{FirewallThreatProtectionId} (for partner-managed and DNS Firewall Advanced rules) — together with \code{FirewallRuleGroupId}.
 
 See \url{https://www.paws-r-sdk.com/docs/route53resolver_delete_firewall_rule/} for full documentation.
 }

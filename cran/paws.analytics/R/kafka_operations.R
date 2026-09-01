@@ -35,6 +35,45 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 }
 .kafka$operations$batch_associate_scram_secret <- kafka_batch_associate_scram_secret
 
+#' Creates a Channel that streams records from an Amazon MSK Express
+#' cluster topic to Amazon S3 or Apache Iceberg
+#'
+#' @description
+#' Creates a Channel that streams records from an Amazon MSK Express cluster topic to Amazon S3 or Apache Iceberg.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_create_channel/](https://www.paws-r-sdk.com/docs/kafka_create_channel/) for full documentation.
+#'
+#' @param ChannelName &#91;required&#93; The name of the channel. Must be unique within the cluster.
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param EncryptionConfiguration The encryption configuration applied to the channel.
+#' @param IcebergDestinationConfiguration The Apache Iceberg destination for the channel. Mutually exclusive with s3DestinationConfiguration.
+#' @param S3DestinationConfiguration The Amazon S3 destination for the channel. Mutually exclusive with icebergDestinationConfiguration.
+#' @param Tags The tags attached to the channel.
+#' @param TopicConfigurationList &#91;required&#93; The list of topic configurations for the channel. Currently exactly one topic must be specified.
+#' @param LoggingInfo The destinations to which the channel publishes operational logs.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_create_channel
+kafka_create_channel <- function(ChannelName, ClusterArn, EncryptionConfiguration = NULL, IcebergDestinationConfiguration = NULL, S3DestinationConfiguration = NULL, Tags = NULL, TopicConfigurationList, LoggingInfo = NULL) {
+  op <- new_operation(
+    name = "CreateChannel",
+    http_method = "POST",
+    http_path = "/v1/clusters/{clusterArn}/channels",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafka$create_channel_input(ChannelName = ChannelName, ClusterArn = ClusterArn, EncryptionConfiguration = EncryptionConfiguration, IcebergDestinationConfiguration = IcebergDestinationConfiguration, S3DestinationConfiguration = S3DestinationConfiguration, Tags = Tags, TopicConfigurationList = TopicConfigurationList, LoggingInfo = LoggingInfo)
+  output <- .kafka$create_channel_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$create_channel <- kafka_create_channel
+
 #' Creates a new MSK cluster
 #'
 #' @description
@@ -288,6 +327,39 @@ kafka_delete_cluster <- function(ClusterArn, CurrentVersion = NULL) {
 }
 .kafka$operations$delete_cluster <- kafka_delete_cluster
 
+#' Deletes the channel specified by channelArn from the cluster specified
+#' by clusterArn
+#'
+#' @description
+#' Deletes the channel specified by channelArn from the cluster specified by clusterArn. The channel transitions through DELETING and is removed when the asynchronous delete completes.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_delete_channel/](https://www.paws-r-sdk.com/docs/kafka_delete_channel/) for full documentation.
+#'
+#' @param ChannelArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the channel.
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_delete_channel
+kafka_delete_channel <- function(ChannelArn, ClusterArn) {
+  op <- new_operation(
+    name = "DeleteChannel",
+    http_method = "DELETE",
+    http_path = "/v1/clusters/{clusterArn}/channels/{channelArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafka$delete_channel_input(ChannelArn = ChannelArn, ClusterArn = ClusterArn)
+  output <- .kafka$delete_channel_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$delete_channel <- kafka_delete_channel
+
 #' Deletes the MSK cluster policy specified by the Amazon Resource Name
 #' (ARN) in the request
 #'
@@ -509,6 +581,38 @@ kafka_describe_cluster_v2 <- function(ClusterArn) {
   return(response)
 }
 .kafka$operations$describe_cluster_v2 <- kafka_describe_cluster_v2
+
+#' Returns the current configuration and state of a channel
+#'
+#' @description
+#' Returns the current configuration and state of a channel.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_describe_channel/](https://www.paws-r-sdk.com/docs/kafka_describe_channel/) for full documentation.
+#'
+#' @param ChannelArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the channel.
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_describe_channel
+kafka_describe_channel <- function(ChannelArn, ClusterArn) {
+  op <- new_operation(
+    name = "DescribeChannel",
+    http_method = "GET",
+    http_path = "/v1/clusters/{clusterArn}/channels/{channelArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafka$describe_channel_input(ChannelArn = ChannelArn, ClusterArn = ClusterArn)
+  output <- .kafka$describe_channel_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$describe_channel <- kafka_describe_channel
 
 #' Returns a description of the cluster operation specified by the ARN
 #'
@@ -1027,6 +1131,40 @@ kafka_list_clusters_v2 <- function(ClusterNameFilter = NULL, ClusterTypeFilter =
   return(response)
 }
 .kafka$operations$list_clusters_v2 <- kafka_list_clusters_v2
+
+#' Returns the list of channels in a cluster
+#'
+#' @description
+#' Returns the list of channels in a cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_list_channels/](https://www.paws-r-sdk.com/docs/kafka_list_channels/) for full documentation.
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param MaxResults Maximum number of channels to return in a single response.
+#' @param NextToken If the response of ListChannels is truncated, it returns a nextToken in the response. This nextToken should be sent in the subsequent request to ListChannels.
+#' @param TopicNameFilter Filters results to channels whose topic name matches the specified value.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_list_channels
+kafka_list_channels <- function(ClusterArn, MaxResults = NULL, NextToken = NULL, TopicNameFilter = NULL) {
+  op <- new_operation(
+    name = "ListChannels",
+    http_method = "GET",
+    http_path = "/v1/clusters/{clusterArn}/channels",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafka$list_channels_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken, TopicNameFilter = TopicNameFilter)
+  output <- .kafka$list_channels_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$list_channels <- kafka_list_channels
 
 #' Returns a list of all the MSK configurations in this Region
 #'
@@ -1702,6 +1840,40 @@ kafka_update_connectivity <- function(ClusterArn, ConnectivityInfo = NULL, Curre
   return(response)
 }
 .kafka$operations$update_connectivity <- kafka_update_connectivity
+
+#' Updates the destination configuration of an existing channel
+#'
+#' @description
+#' Updates the destination configuration of an existing channel. Exactly one of icebergDestinationUpdate or s3DestinationUpdate must be supplied.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_update_channel/](https://www.paws-r-sdk.com/docs/kafka_update_channel/) for full documentation.
+#'
+#' @param ChannelArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the channel.
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param IcebergDestinationUpdate Updates fields on an Apache Iceberg destination. Use only when the channel was created with an Iceberg destination.
+#' @param S3DestinationUpdate Updates fields on an Amazon S3 destination. Use only when the channel was created with an Amazon S3 destination.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_channel
+kafka_update_channel <- function(ChannelArn, ClusterArn, IcebergDestinationUpdate = NULL, S3DestinationUpdate = NULL) {
+  op <- new_operation(
+    name = "UpdateChannel",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/channels/{channelArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafka$update_channel_input(ChannelArn = ChannelArn, ClusterArn = ClusterArn, IcebergDestinationUpdate = IcebergDestinationUpdate, S3DestinationUpdate = S3DestinationUpdate)
+  output <- .kafka$update_channel_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_channel <- kafka_update_channel
 
 #' Updates the cluster with the configuration that is specified in the
 #' request body

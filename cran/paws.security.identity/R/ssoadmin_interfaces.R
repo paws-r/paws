@@ -329,7 +329,7 @@ NULL
 
 .ssoadmin$describe_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceArn = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), EncryptionConfigurationDetails = structure(list(KeyType = structure(logical(0), tags = list(type = "string")), KmsKeyArn = structure(logical(0), tags = list(type = "string")), EncryptionStatus = structure(logical(0), tags = list(type = "string")), EncryptionStatusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceArn = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), EncryptionConfigurationDetails = structure(list(KeyType = structure(logical(0), tags = list(type = "string")), KmsKeyArn = structure(logical(0), tags = list(type = "string")), EncryptionStatus = structure(logical(0), tags = list(type = "string")), EncryptionStatusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PermissionSetsEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -665,7 +665,7 @@ NULL
 
 .ssoadmin$list_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Instances = structure(list(structure(list(InstanceArn = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Instances = structure(list(structure(list(InstanceArn = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), PrimaryRegion = structure(logical(0), tags = list(type = "string")), Regions = structure(list(structure(list(RegionName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AddedDate = structure(logical(0), tags = list(type = "timestamp")), IsPrimaryRegion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -893,7 +893,7 @@ NULL
 
 .ssoadmin$update_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(KeyType = structure(logical(0), tags = list(type = "string")), KmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(KeyType = structure(logical(0), tags = list(type = "string")), KmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PermissionSetsEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

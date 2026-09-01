@@ -2,7 +2,7 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_create_connect_client_add_in}
 \alias{workspaces_create_connect_client_add_in}
-\title{Creates a client-add-in for Amazon Connect within a directory}
+\title{Creates a client-add-in for Connect Customer within a directory}
 \usage{
 workspaces_create_connect_client_add_in(ResourceId, Name, URL)
 }
@@ -11,10 +11,10 @@ workspaces_create_connect_client_add_in(ResourceId, Name, URL)
 
 \item{Name}{[required] The name of the client add-in.}
 
-\item{URL}{[required] The endpoint URL of the Amazon Connect client add-in.}
+\item{URL}{[required] The endpoint URL of the Connect Customer client add-in.}
 }
 \description{
-Creates a client-add-in for Amazon Connect within a directory. You can create only one Amazon Connect client add-in within a directory.
+Creates a client-add-in for Connect Customer within a directory. You can create only one Connect Customer client add-in within a directory.
 
 See \url{https://www.paws-r-sdk.com/docs/workspaces_create_connect_client_add_in/} for full documentation.
 }

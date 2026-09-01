@@ -24,6 +24,14 @@ test_that("list_code_security_scan_configurations", {
   expect_error(svc$list_code_security_scan_configurations(), NA)
 })
 
+test_that("list_connector_scan_configurations", {
+  expect_error(svc$list_connector_scan_configurations(), NA)
+})
+
+test_that("list_connectors", {
+  expect_error(svc$list_connectors(), NA)
+})
+
 test_that("list_coverage", {
   expect_error(svc$list_coverage(), NA)
 })

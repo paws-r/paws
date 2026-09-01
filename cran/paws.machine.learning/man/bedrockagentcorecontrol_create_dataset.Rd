@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockagentcorecontrol_operations.R
 \name{bedrockagentcorecontrol_create_dataset}
 \alias{bedrockagentcorecontrol_create_dataset}
-\title{Creates a new Dataset resource asynchronously}
+\title{Creates a new dataset resource asynchronously}
 \usage{
 bedrockagentcorecontrol_create_dataset(
   clientToken = NULL,
@@ -15,9 +15,9 @@ bedrockagentcorecontrol_create_dataset(
 )
 }
 \arguments{
-\item{clientToken}{Optional idempotency token.}
+\item{clientToken}{A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
-\item{datasetName}{[required] Human-readable name for the dataset. Unique within the account (case-insensitive). Immutable after creation.}
+\item{datasetName}{[required] Human-readable name for the dataset. Must be unique within the account. Immutable after creation.}
 
 \item{description}{A description of the dataset.}
 
@@ -25,12 +25,12 @@ bedrockagentcorecontrol_create_dataset(
 
 \item{schemaType}{[required] Versioned schema type governing the structure of examples. Immutable after creation.}
 
-\item{kmsKeyArn}{Optional AWS KMS key ARN for SSE-KMS on service S3 writes.}
+\item{kmsKeyArn}{Optional KMS key ARN for server-side encryption on service Amazon S3 writes.}
 
 \item{tags}{A map of tag keys and values to assign to the dataset.}
 }
 \description{
-Creates a new Dataset resource asynchronously.
+Creates a new dataset resource asynchronously. Returns immediately with status CREATING. Poll \code{\link[=bedrockagentcorecontrol_get_dataset]{get_dataset}} until status transitions to ACTIVE or CREATE_FAILED.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_create_dataset/} for full documentation.
 }

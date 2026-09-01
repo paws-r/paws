@@ -10,7 +10,7 @@ ivs_insert_ad_break(channelArn, durationSeconds)
 \arguments{
 \item{channelArn}{[required] ARN of the channel into which the ad break is inserted.}
 
-\item{durationSeconds}{[required] Maximum duration of the ad break, in seconds.}
+\item{durationSeconds}{[required] Duration of the ad break, in seconds.}
 }
 \description{
 Inserts an ad marker in the playlist for the specified channel and duration using the ad configuration associated with the channel.

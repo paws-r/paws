@@ -1100,7 +1100,7 @@ costexplorer_get_approximate_usage_records <- function(Granularity, Services = N
 #'     SavingsPlansPurchaseAnalysisConfiguration = list(
 #'       AccountScope = "PAYER"|"LINKED",
 #'       AccountId = "string",
-#'       AnalysisType = "MAX_SAVINGS"|"CUSTOM_COMMITMENT",
+#'       AnalysisType = "MAX_SAVINGS"|"CUSTOM_COMMITMENT"|"TARGET_AVERAGE_COVERAGE",
 #'       SavingsPlansToAdd = list(
 #'         list(
 #'           PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
@@ -1118,7 +1118,8 @@ costexplorer_get_approximate_usage_records <- function(Granularity, Services = N
 #'       LookBackTimePeriod = list(
 #'         Start = "string",
 #'         End = "string"
-#'       )
+#'       ),
+#'       SavingsPlansTargetCoverage = 123
 #'     )
 #'   )
 #' )
@@ -4774,7 +4775,7 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
 #'         SavingsPlansPurchaseAnalysisConfiguration = list(
 #'           AccountScope = "PAYER"|"LINKED",
 #'           AccountId = "string",
-#'           AnalysisType = "MAX_SAVINGS"|"CUSTOM_COMMITMENT",
+#'           AnalysisType = "MAX_SAVINGS"|"CUSTOM_COMMITMENT"|"TARGET_AVERAGE_COVERAGE",
 #'           SavingsPlansToAdd = list(
 #'             list(
 #'               PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
@@ -4792,7 +4793,8 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
 #'           LookBackTimePeriod = list(
 #'             Start = "string",
 #'             End = "string"
-#'           )
+#'           ),
+#'           SavingsPlansTargetCoverage = 123
 #'         )
 #'       )
 #'     )
@@ -5314,7 +5316,7 @@ costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
 #'     SavingsPlansPurchaseAnalysisConfiguration = list(
 #'       AccountScope = "PAYER"|"LINKED",
 #'       AccountId = "string",
-#'       AnalysisType = "MAX_SAVINGS"|"CUSTOM_COMMITMENT",
+#'       AnalysisType = "MAX_SAVINGS"|"CUSTOM_COMMITMENT"|"TARGET_AVERAGE_COVERAGE",
 #'       SavingsPlansToAdd = list(
 #'         list(
 #'           PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
@@ -5332,7 +5334,8 @@ costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
 #'       LookBackTimePeriod = list(
 #'         Start = "string",
 #'         End = "string"
-#'       )
+#'       ),
+#'       SavingsPlansTargetCoverage = 123
 #'     )
 #'   )
 #' )

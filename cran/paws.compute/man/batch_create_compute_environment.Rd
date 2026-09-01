@@ -13,7 +13,8 @@ batch_create_compute_environment(
   serviceRole = NULL,
   tags = NULL,
   eksConfiguration = NULL,
-  context = NULL
+  context = NULL,
+  ecsSettings = NULL
 )
 }
 \arguments{
@@ -58,6 +59,8 @@ These tags can be updated or removed using the \code{\link[=batch_tag_resource]{
 To create a compute environment that uses EKS resources, the caller must have permissions to call \code{eks:DescribeCluster}.}
 
 \item{context}{Reserved.}
+
+\item{ecsSettings}{The Amazon ECS settings for the compute environment. These settings control CloudWatch Container Insights collection for the compute environment.}
 }
 \description{
 Creates an Batch compute environment. You can create \code{MANAGED} or \code{UNMANAGED} compute environments. \code{MANAGED} compute environments can use Amazon EC2 or Fargate resources. \code{UNMANAGED} compute environments can only use EC2 resources.

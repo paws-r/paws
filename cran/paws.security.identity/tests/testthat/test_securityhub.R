@@ -84,6 +84,14 @@ test_that("list_configuration_policy_associations", {
   expect_error(svc$list_configuration_policy_associations(MaxResults = 20), NA)
 })
 
+test_that("list_connectors", {
+  expect_error(svc$list_connectors(), NA)
+})
+
+test_that("list_connectors", {
+  expect_error(svc$list_connectors(MaxResults = 20), NA)
+})
+
 test_that("list_connectors_v2", {
   expect_error(svc$list_connectors_v2(), NA)
 })
@@ -106,6 +114,14 @@ test_that("list_finding_aggregators", {
 
 test_that("list_finding_aggregators", {
   expect_error(svc$list_finding_aggregators(MaxResults = 20), NA)
+})
+
+test_that("list_free_trial_statuses_v2", {
+  expect_error(svc$list_free_trial_statuses_v2(), NA)
+})
+
+test_that("list_free_trial_statuses_v2", {
+  expect_error(svc$list_free_trial_statuses_v2(MaxResults = 20), NA)
 })
 
 test_that("list_invitations", {

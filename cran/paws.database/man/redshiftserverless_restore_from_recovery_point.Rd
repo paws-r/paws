@@ -5,12 +5,17 @@
 \title{Restore the data from a recovery point}
 \usage{
 redshiftserverless_restore_from_recovery_point(
+  maintainIntegration = NULL,
   namespaceName,
   recoveryPointId,
   workgroupName
 )
 }
 \arguments{
+\item{maintainIntegration}{If \code{true}, maintain existing data sharing, zero-ETL and S3 event integrations when restoring. Otherwise, integrations will not be maintained after the restore operation. Integrations are only maintained when restored to the same serverless namespace.
+
+Default: true}
+
 \item{namespaceName}{[required] The name of the namespace to restore data into.}
 
 \item{recoveryPointId}{[required] The unique identifier of the recovery point to restore from.}

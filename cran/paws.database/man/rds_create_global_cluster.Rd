@@ -46,7 +46,7 @@ Constraints:
 \item Can't be specified if \code{SourceDBClusterIdentifier} is specified. In this case, Amazon Aurora uses the engine version of the source DB cluster.
 }}
 
-\item{EngineLifecycleSupport}{The life cycle type for this global database cluster.
+\item{EngineLifecycleSupport}{The lifecycle type for this global database cluster.
 
 By default, this value is set to \code{open-source-rds-extended-support}, which enrolls your global cluster into Amazon RDS Extended Support. At the end of standard support, you can avoid charges for Extended Support by setting the value to \code{open-source-rds-extended-support-disabled}. In this case, creating the global cluster will fail if the DB major version is past its end of standard support date.
 

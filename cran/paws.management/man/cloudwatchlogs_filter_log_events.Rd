@@ -14,6 +14,7 @@ cloudwatchlogs_filter_log_events(
   filterPattern = NULL,
   nextToken = NULL,
   limit = NULL,
+  startFromHead = NULL,
   interleaved = NULL,
   unmask = NULL
 )
@@ -35,7 +36,9 @@ If you specify a value for both \code{logStreamNames} and \code{logStreamNamePre
 
 If you specify a value for both \code{logStreamNamePrefix} and \code{logStreamNames}, the action returns an \code{InvalidParameterException} error.}
 
-\item{startTime}{The start of the time range, expressed as the number of milliseconds after \verb{Jan 1, 1970 00:00:00 UTC}. Events with a timestamp before this time are not returned.}
+\item{startTime}{The start of the time range, expressed as the number of milliseconds after \verb{Jan 1, 1970 00:00:00 UTC}. Events with a timestamp before this time are not returned.
+
+Set \code{startTime} explicitly to reduce the chances of empty pages in the response.}
 
 \item{endTime}{The end of the time range, expressed as the number of milliseconds after \verb{Jan 1, 1970 00:00:00 UTC}. Events with a timestamp later than this time are not returned.}
 
@@ -46,6 +49,12 @@ If not provided, all the events are matched.}
 \item{nextToken}{The token for the next set of events to return. (You received this token from a previous call.)}
 
 \item{limit}{The maximum number of events to return. The default is 10,000 events.}
+
+\item{startFromHead}{If the value is true, the earliest log events are returned first. If the value is false, the latest log events are returned first. The default value is true.
+
+The \code{startFromHead} parameter sets the sort direction on the first request. On subsequent requests, the \code{nextToken} determines the sort direction. To continue paginating in the same direction, provide the returned \code{nextToken}. If you provide both \code{nextToken} and \code{startFromHead}, the direction of the \code{nextToken} is used.
+
+Setting \code{startFromHead} to \code{false} is supported only when \code{startTime} is on or after \verb{Jan 1, 2024 00:00:00 UTC}. A request with \code{startFromHead} set to \code{false} and a \code{startTime} before this date returns an \code{InvalidParameterException}.}
 
 \item{interleaved}{If the value is true, the operation attempts to provide responses that contain events from multiple log streams within the log group, interleaved in a single response. If the value is false, all the matched log events in the first log stream are searched first, then those in the next log stream, and so on.
 

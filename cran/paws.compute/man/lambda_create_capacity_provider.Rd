@@ -12,7 +12,9 @@ lambda_create_capacity_provider(
   InstanceRequirements = NULL,
   CapacityProviderScalingConfig = NULL,
   KmsKeyArn = NULL,
-  Tags = NULL
+  Tags = NULL,
+  PropagateTags = NULL,
+  TelemetryConfig = NULL
 )
 }
 \arguments{
@@ -29,6 +31,10 @@ lambda_create_capacity_provider(
 \item{KmsKeyArn}{The ARN of the KMS key used to encrypt data associated with the capacity provider.}
 
 \item{Tags}{A list of tags to associate with the capacity provider.}
+
+\item{PropagateTags}{The tag propagation configuration for the capacity provider. Specifies tags to apply to managed resources at launch.}
+
+\item{TelemetryConfig}{The telemetry configuration for the capacity provider. Specifies logging settings for managed resources.}
 }
 \description{
 Creates a capacity provider that manages compute resources for Lambda functions

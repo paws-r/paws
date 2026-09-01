@@ -4,7 +4,11 @@
 \alias{securityhub_describe_standards}
 \title{Returns a list of the available standards in Security Hub CSPM}
 \usage{
-securityhub_describe_standards(NextToken = NULL, MaxResults = NULL)
+securityhub_describe_standards(
+  NextToken = NULL,
+  MaxResults = NULL,
+  Providers = NULL
+)
 }
 \arguments{
 \item{NextToken}{The token that is required for pagination. On your first call to the \code{\link[=securityhub_describe_standards]{describe_standards}} operation, set the value of this parameter to \code{NULL}.
@@ -12,6 +16,8 @@ securityhub_describe_standards(NextToken = NULL, MaxResults = NULL)
 For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value returned from the previous response.}
 
 \item{MaxResults}{The maximum number of standards to return.}
+
+\item{Providers}{A list of cloud providers to filter the standards by. For example, specify \code{Azure} to return only standards that evaluate Azure resources.}
 }
 \description{
 Returns a list of the available standards in Security Hub CSPM.

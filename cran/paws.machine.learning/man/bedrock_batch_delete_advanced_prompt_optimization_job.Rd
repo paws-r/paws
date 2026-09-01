@@ -2,15 +2,15 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_batch_delete_advanced_prompt_optimization_job}
 \alias{bedrock_batch_delete_advanced_prompt_optimization_job}
-\title{Batch delete the specified advanced prompt optimization jobs}
+\title{Deletes one or more advanced prompt optimization jobs}
 \usage{
 bedrock_batch_delete_advanced_prompt_optimization_job(jobIdentifiers)
 }
 \arguments{
-\item{jobIdentifiers}{[required] List of advanced prompt optimization job identifiers to delete.}
+\item{jobIdentifiers}{[required] A list of advanced prompt optimization job identifiers (ARNs or IDs) to delete.}
 }
 \description{
-Batch delete the specified advanced prompt optimization jobs.
+Deletes one or more advanced prompt optimization jobs.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_batch_delete_advanced_prompt_optimization_job/} for full documentation.
 }

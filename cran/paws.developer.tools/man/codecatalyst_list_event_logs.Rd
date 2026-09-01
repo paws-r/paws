@@ -17,9 +17,9 @@ codecatalyst_list_event_logs(
 \arguments{
 \item{spaceName}{[required] The name of the space.}
 
-\item{startTime}{[required] The date and time when you want to start retrieving events, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.}
+\item{startTime}{[required] The date and time when you want to start retrieving events, in coordinated universal time (UTC) timestamp format as specified in \href{https://www.rfc-editor.org/info/rfc3339/#section-5.6}{RFC 3339}.}
 
-\item{endTime}{[required] The time after which you do not want any events retrieved, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.}
+\item{endTime}{[required] The time after which you do not want any events retrieved, in coordinated universal time (UTC) timestamp format as specified in \href{https://www.rfc-editor.org/info/rfc3339/#section-5.6}{RFC 3339}.}
 
 \item{eventName}{The name of the event.}
 

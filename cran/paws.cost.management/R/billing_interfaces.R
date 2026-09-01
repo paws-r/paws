@@ -51,6 +51,18 @@ NULL
   return(populate(args, shape))
 }
 
+.billing$get_billing_preferences_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), features = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$get_billing_preferences_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(billingPreferences = structure(list(structure(list(feature = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), accountName = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), billingPeriod = structure(list(year = structure(logical(0), tags = list(type = "integer", box = TRUE)), month = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .billing$get_billing_view_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -60,6 +72,54 @@ NULL
 .billing$get_billing_view_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(billingView = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), billingViewType = structure(logical(0), tags = list(type = "string")), ownerAccountId = structure(logical(0), tags = list(type = "string")), sourceAccountId = structure(logical(0), tags = list(type = "string")), dataFilterExpression = structure(list(dimensions = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), costCategories = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), timeRange = structure(list(beginDateInclusive = structure(logical(0), tags = list(type = "timestamp")), endDateInclusive = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), derivedViewCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), sourceViewCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), viewDefinitionLastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), healthStatus = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$get_credit_allocation_history_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(accountId = structure(logical(0), tags = list(type = "string")), creditId = structure(logical(0), tags = list(type = "long", box = TRUE)), startDate = structure(logical(0), tags = list(type = "timestamp")), endDate = structure(logical(0), tags = list(type = "timestamp")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$get_credit_allocation_history_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(creditAllocationHistoryList = structure(list(structure(list(creditId = structure(logical(0), tags = list(type = "string")), creditAmount = structure(list(currencyCode = structure(logical(0), tags = list(type = "string")), currencyAmount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), appliedServiceName = structure(logical(0), tags = list(type = "string")), billingMonth = structure(logical(0), tags = list(type = "string")), isEstimatedBill = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), partialResults = structure(logical(0), tags = list(type = "boolean", box = TRUE)), failedMonths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$get_credits_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(accountId = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "timestamp")), endDate = structure(logical(0), tags = list(type = "timestamp")), payerAccountFlag = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$get_credits_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(credits = structure(list(structure(list(creditId = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), creditType = structure(logical(0), tags = list(type = "string")), initialAmount = structure(list(currencyCode = structure(logical(0), tags = list(type = "string")), currencyAmount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), remainingAmount = structure(list(currencyCode = structure(logical(0), tags = list(type = "string")), currencyAmount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), estimatedAmount = structure(list(currencyCode = structure(logical(0), tags = list(type = "string")), currencyAmount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), applicableProductNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "timestamp")), endDate = structure(logical(0), tags = list(type = "timestamp")), exhaustDate = structure(logical(0), tags = list(type = "timestamp")), applicationType = structure(logical(0), tags = list(type = "string")), shareableAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), accountHasCreditSharingEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), creditConsoleVisibility = structure(logical(0), tags = list(type = "string")), creditSharingType = structure(logical(0), tags = list(type = "string")), costCategoryArn = structure(logical(0), tags = list(type = "string")), ruleName = structure(logical(0), tags = list(type = "string")), creditStatus = structure(logical(0), tags = list(type = "string")), purchaseTypeApplications = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$get_enterprise_support_charge_summary_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(billingMonth = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$get_enterprise_support_charge_summary_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(payerAccountId = structure(logical(0), tags = list(type = "string")), billingMonth = structure(logical(0), tags = list(type = "string")), billingPeriodStartDate = structure(logical(0), tags = list(type = "timestamp")), billingPeriodEndDate = structure(logical(0), tags = list(type = "timestamp")), isEstimated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), billDate = structure(logical(0), tags = list(type = "timestamp")), supportCharge = structure(logical(0), tags = list(type = "string")), totalSupportCharge = structure(logical(0), tags = list(type = "string")), supportDiscount = structure(logical(0), tags = list(type = "string")), totalSupportEligibleSpend = structure(logical(0), tags = list(type = "string")), totalSupportEligibleUsageSpend = structure(logical(0), tags = list(type = "string")), totalSupportEligibleReservedInstanceSpend = structure(logical(0), tags = list(type = "string")), totalSupportEligibleSavingsPlanSpend = structure(logical(0), tags = list(type = "string")), supportChargePercentage = structure(logical(0), tags = list(type = "string")), supportEffectivePricingPlan = structure(list(pricingPlanId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "timestamp")), endDate = structure(logical(0), tags = list(type = "timestamp")), planDiscountPercent = structure(logical(0), tags = list(type = "string")), discountAppliesToMinimumCharge = structure(logical(0), tags = list(type = "boolean", box = TRUE)), minimumCharge = structure(logical(0), tags = list(type = "string")), tiered = structure(logical(0), tags = list(type = "string")), tiers = structure(list(structure(list(tierMinimum = structure(logical(0), tags = list(type = "string")), tierMaximum = structure(logical(0), tags = list(type = "string")), baseCharge = structure(logical(0), tags = list(type = "string")), additionalPercentageOfAggregateCharges = structure(logical(0), tags = list(type = "string")), aggregateChargesAdjustment = structure(logical(0), tags = list(type = "string")), incremental = structure(logical(0), tags = list(type = "boolean", box = TRUE)), increment = structure(logical(0), tags = list(type = "string")), incrementCharge = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$get_enterprise_support_contract_details_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(billingMonth = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$get_enterprise_support_contract_details_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(isContractActive = structure(logical(0), tags = list(type = "boolean", box = TRUE)), supportAllocationMethod = structure(logical(0), tags = list(type = "string")), supportReservedInstanceAmortizationStartDate = structure(logical(0), tags = list(type = "timestamp")), supportReservedInstanceTreatmentMethod = structure(logical(0), tags = list(type = "string")), supportSavingsPlansAmortizationStartDate = structure(logical(0), tags = list(type = "timestamp")), supportSavingsPlansTreatmentMethod = structure(logical(0), tags = list(type = "string")), supportProrateStartDate = structure(logical(0), tags = list(type = "timestamp")), contractPayerAccountIds = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string")), isGdn = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), chargedPayerAccountIds = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string")), chargePercentage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), additionalSupportCharge = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), amount = structure(logical(0), tags = list(type = "string")), chargeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), additionalSupportEligibleUsageSpend = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), amount = structure(logical(0), tags = list(type = "string")), chargeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), pricingPlans = structure(list(structure(list(pricingPlanId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "timestamp")), endDate = structure(logical(0), tags = list(type = "timestamp")), planDiscountPercent = structure(logical(0), tags = list(type = "string")), discountAppliesToMinimumCharge = structure(logical(0), tags = list(type = "boolean", box = TRUE)), minimumCharge = structure(logical(0), tags = list(type = "string")), tiered = structure(logical(0), tags = list(type = "string")), tiers = structure(list(structure(list(tierMinimum = structure(logical(0), tags = list(type = "string")), tierMaximum = structure(logical(0), tags = list(type = "string")), baseCharge = structure(logical(0), tags = list(type = "string")), additionalPercentageOfAggregateCharges = structure(logical(0), tags = list(type = "string")), aggregateChargesAdjustment = structure(logical(0), tags = list(type = "string")), incremental = structure(logical(0), tags = list(type = "boolean", box = TRUE)), increment = structure(logical(0), tags = list(type = "string")), incrementCharge = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -87,6 +147,18 @@ NULL
   return(populate(args, shape))
 }
 
+.billing$list_enterprise_support_linked_account_charges_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(billingMonth = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$list_enterprise_support_linked_account_charges_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(linkedAccount = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string")), payerAccountId = structure(logical(0), tags = list(type = "string")), accountType = structure(logical(0), tags = list(type = "string")), billableSeconds = structure(logical(0), tags = list(type = "long", box = TRUE)), totalSeconds = structure(logical(0), tags = list(type = "long", box = TRUE)), totalSupportEligibleSpend = structure(logical(0), tags = list(type = "string")), proratedTotalSupportEligibleSpend = structure(logical(0), tags = list(type = "string")), linkedTimePeriods = structure(list(structure(list(beginDate = structure(logical(0), tags = list(type = "timestamp")), endDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), subscriptionTimePeriods = structure(list(structure(list(beginDate = structure(logical(0), tags = list(type = "timestamp")), endDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), totalSupportEligibleReservedInstanceSpend = structure(logical(0), tags = list(type = "string")), totalSupportEligibleSavingsPlanSpend = structure(logical(0), tags = list(type = "string")), supportEligibleSpendByService = structure(list(structure(list(serviceCode = structure(logical(0), tags = list(type = "string")), totalSupportEligibleSpend = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .billing$list_source_views_for_billing_view_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -111,6 +183,18 @@ NULL
   return(populate(args, shape))
 }
 
+.billing$redeem_credits_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(promoCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$redeem_credits_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .billing$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), resourceTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -130,6 +214,18 @@ NULL
 }
 
 .billing$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$update_billing_preferences_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(feature = structure(logical(0), tags = list(type = "string")), billingPreferencesPerKey = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$update_billing_preferences_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

@@ -3,7 +3,7 @@
 \name{backup_list_scan_job_summaries}
 \alias{backup_list_scan_job_summaries}
 \title{This is a request for a summary of scan jobs created or running within
-the most recent 30 days}
+the most recent 14 days}
 \usage{
 backup_list_scan_job_summaries(
   AccountId = NULL,
@@ -51,7 +51,7 @@ The value is an integer. Range of accepted values is from 1 to 500.}
 \item{NextToken}{The next item following a partial list of returned items. For example, if a request is made to return \code{MaxResults} number of items, \code{NextToken} allows you to return more items in your list starting at the location pointed to by the next token.}
 }
 \description{
-This is a request for a summary of scan jobs created or running within the most recent 30 days.
+This is a request for a summary of scan jobs created or running within the most recent 14 days.
 
 See \url{https://www.paws-r-sdk.com/docs/backup_list_scan_job_summaries/} for full documentation.
 }

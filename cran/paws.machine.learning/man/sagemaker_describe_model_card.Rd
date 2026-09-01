@@ -5,12 +5,24 @@
 \title{Describes the content, creation time, and security configuration of an
 Amazon SageMaker Model Card}
 \usage{
-sagemaker_describe_model_card(ModelCardName, ModelCardVersion = NULL)
+sagemaker_describe_model_card(
+  ModelCardName,
+  ModelCardVersion = NULL,
+  IncludedData = NULL
+)
 }
 \arguments{
 \item{ModelCardName}{[required] The name or Amazon Resource Name (ARN) of the model card to describe.}
 
 \item{ModelCardVersion}{The version of the model card to describe. If a version is not provided, then the latest version of the model card is described.}
+
+\item{IncludedData}{Specifies the level of model card data to include in the response. Use this parameter to call \code{\link[=sagemaker_describe_model_card]{describe_model_card}} without requiring \code{kms:Decrypt} permission on the customer-managed Amazon Web Services KMS key.
+\itemize{
+\item \code{AllData}: Returns the full model card \code{Content}. This option requires \code{kms:Decrypt} permission on the customer-managed key, if one is associated with the model card. This is the default.
+\item \code{MetadataOnly}: Returns the model card with sanitized \code{Content} that includes only a small set of unencrypted metadata fields. This option does not require \code{kms:Decrypt} permission. For the list of fields preserved in the response, see \code{Content}.
+}
+
+If you don't specify a value, SageMaker returns \code{AllData}.}
 }
 \description{
 Describes the content, creation time, and security configuration of an Amazon SageMaker Model Card.

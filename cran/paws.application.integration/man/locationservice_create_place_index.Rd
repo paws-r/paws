@@ -33,7 +33,7 @@ Valid values include:
 \item \code{Grab} – Grab provides place index functionality for Southeast Asia. For additional information about \href{https://docs.aws.amazon.com/location/previous/developerguide/grab.html}{GrabMaps}' coverage, see \href{https://docs.aws.amazon.com/location/previous/developerguide/grab.html#grab-coverage-area}{GrabMaps countries and areas covered}.
 \item \code{Here} – For additional information about \href{https://docs.aws.amazon.com/location/previous/developerguide/HERE.html}{HERE Technologies}' coverage in your region of interest, see \href{https://docs.here.com/}{HERE details on goecoding coverage}.
 
-If you specify HERE Technologies (\code{Here}) as the data provider, you may not \href{https://docs.aws.amazon.com/location/latest/APIReference/}{store results} for locations in Japan. For more information, see the \href{https://aws.amazon.com/service-terms/}{Amazon Web Services service terms} for Amazon Location Service.
+If you specify HERE Technologies (\code{Here}) as the data provider, you may not store results for locations in Japan. For more information, see the \href{https://aws.amazon.com/service-terms/}{Amazon Web Services service terms} for Amazon Location Service.
 }
 
 For additional information , see \href{https://docs.aws.amazon.com/location/previous/developerguide/what-is-data-provider.html}{Data providers} on the \emph{Amazon Location Service developer guide}.}

@@ -29,7 +29,7 @@ lambda_list_durable_executions_by_function(
 
 \item{StartedBefore}{Filter executions that started before this timestamp (ISO 8601 format).}
 
-\item{ReverseOrder}{Set to true to return results in reverse chronological order (newest first). Default is false.}
+\item{ReverseOrder}{Set to true to return results in chronological order (oldest first). Default is false.}
 
 \item{Marker}{Pagination token from a previous request to continue retrieving results.}
 

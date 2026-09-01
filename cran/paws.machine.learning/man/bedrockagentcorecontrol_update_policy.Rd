@@ -9,7 +9,8 @@ bedrockagentcorecontrol_update_policy(
   policyId,
   description = NULL,
   definition = NULL,
-  validationMode = NULL
+  validationMode = NULL,
+  enforcementMode = NULL
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ bedrockagentcorecontrol_update_policy(
 \item{definition}{The new Cedar policy statement that defines the access control rules. This replaces the existing policy definition with new logic while maintaining the policy's identity.}
 
 \item{validationMode}{The validation mode for the policy update. Determines how Cedar analyzer validation results are handled during policy updates. FAIL_ON_ANY_FINDINGS runs the Cedar analyzer and fails the update if validation issues are detected, ensuring the policy conforms to the Cedar schema and tool context. IGNORE_ALL_FINDINGS runs the Cedar analyzer but allows updates despite validation warnings. Use FAIL_ON_ANY_FINDINGS to ensure policy correctness during updates, especially when modifying policy logic or conditions.}
+
+\item{enforcementMode}{The enforcement mode for the policy. Run this policy in \code{LOG_ONLY} mode to collect data on how it affects your application. Once you are satisfied with the data gathered, switch the policy to \code{ACTIVE}. If you omit this field, the policy's existing enforcement mode is unchanged.}
 }
 \description{
 Updates an existing policy within the AgentCore Policy system. This operation allows modification of the policy description and definition while maintaining the policy's identity. The updated policy is validated against the Cedar schema before being applied. This is an asynchronous operation. Use the \code{\link[=bedrockagentcorecontrol_get_policy]{get_policy}} operation to poll the \code{status} field to track completion.

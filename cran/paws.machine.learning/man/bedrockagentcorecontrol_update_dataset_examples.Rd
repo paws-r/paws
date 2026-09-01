@@ -15,10 +15,10 @@ bedrockagentcorecontrol_update_dataset_examples(
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
-\item{examples}{[required] Examples to update. Each element is a JSON object containing a required \code{exampleId} string field identifying the existing example, plus the replacement fields. The \code{exampleId} is extracted and removed before persistence; the remaining document is validated against the dataset's schemaType. Max 1000 examples per call. Total request body must not exceed 5 MB.}
+\item{examples}{[required] Examples to update. Each element is a JSON object containing a required \code{exampleId} field identifying the existing example, plus the replacement fields. Maximum 1000 examples per call.}
 }
 \description{
-Updates multiple existing examples in-place on DRAFT.
+Updates multiple existing examples in-place on DRAFT. All examples are validated against the dataset's schema type before any writes occur. If any example fails validation, the entire batch is rejected (all-or-nothing semantics).
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_update_dataset_examples/} for full documentation.
 }

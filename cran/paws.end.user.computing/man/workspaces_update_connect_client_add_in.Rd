@@ -2,7 +2,7 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_update_connect_client_add_in}
 \alias{workspaces_update_connect_client_add_in}
-\title{Updates a Amazon Connect client add-in}
+\title{Updates a Connect Customer client add-in}
 \usage{
 workspaces_update_connect_client_add_in(
   AddInId,
@@ -18,10 +18,10 @@ workspaces_update_connect_client_add_in(
 
 \item{Name}{The name of the client add-in.}
 
-\item{URL}{The endpoint URL of the Amazon Connect client add-in.}
+\item{URL}{The endpoint URL of the Connect Customer client add-in.}
 }
 \description{
-Updates a Amazon Connect client add-in. Use this action to update the name and endpoint URL of a Amazon Connect client add-in.
+Updates a Connect Customer client add-in. Use this action to update the name and endpoint URL of a Connect Customer client add-in.
 
 See \url{https://www.paws-r-sdk.com/docs/workspaces_update_connect_client_add_in/} for full documentation.
 }

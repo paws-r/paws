@@ -13,11 +13,11 @@ NULL
 #' 
 #' -   For information about each of the tools that comprise Systems Manager, see [Using Systems Manager tools](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-tools.html) in the *Amazon Web Services Systems Manager User Guide*.
 #' 
-#' -   For details about predefined runbooks for Automation, a tool in Amazon Web Services Systems Manager, see the \emph{\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{Systems Manager Automation Runbook Reference}} .
+#' -   For details about predefined runbooks for Automation, a tool in Amazon Web Services Systems Manager, see the *\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{Systems Manager Automation Runbook Reference}* .
 #' 
-#' -   For information about AppConfig, a tool in Systems Manager, see the \emph{\href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfig API Reference}} .
+#' -   For information about AppConfig, a tool in Systems Manager, see the *\href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfig API Reference}* .
 #' 
-#' -   For information about Incident Manager, a tool in Systems Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{Systems Manager Incident Manager API Reference}} .
+#' -   For information about Incident Manager, a tool in Systems Manager, see the *\href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{Systems Manager Incident Manager API Reference}* .
 #'
 #' @param
 #' config
@@ -109,6 +109,7 @@ NULL
 #'  \link[=ssm_create_activation]{create_activation} \tab Generates an activation code and activation ID you can use to register your on-premises servers, edge devices, or virtual machine (VM) with Amazon Web Services Systems Manager\cr
 #'  \link[=ssm_create_association]{create_association} \tab A State Manager association defines the state that you want to maintain on your managed nodes\cr
 #'  \link[=ssm_create_association_batch]{create_association_batch} \tab Associates the specified Amazon Web Services Systems Manager document (SSM document) with the specified managed nodes or targets\cr
+#'  \link[=ssm_create_cloud_connector]{create_cloud_connector} \tab Creates a cloud connector that establishes a connection between Systems Manager and a third-party cloud environment\cr
 #'  \link[=ssm_create_document]{create_document} \tab Creates a Amazon Web Services Systems Manager (SSM document)\cr
 #'  \link[=ssm_create_maintenance_window]{create_maintenance_window} \tab Creates a new maintenance window\cr
 #'  \link[=ssm_create_ops_item]{create_ops_item} \tab Creates a new OpsItem\cr
@@ -117,6 +118,7 @@ NULL
 #'  \link[=ssm_create_resource_data_sync]{create_resource_data_sync} \tab A resource data sync helps you view data from multiple sources in a single location\cr
 #'  \link[=ssm_delete_activation]{delete_activation} \tab Deletes an activation\cr
 #'  \link[=ssm_delete_association]{delete_association} \tab Disassociates the specified Amazon Web Services Systems Manager document (SSM document) from the specified managed node\cr
+#'  \link[=ssm_delete_cloud_connector]{delete_cloud_connector} \tab Deletes a cloud connector\cr
 #'  \link[=ssm_delete_document]{delete_document} \tab Deletes the Amazon Web Services Systems Manager document (SSM document) and all managed node associations to the document\cr
 #'  \link[=ssm_delete_inventory]{delete_inventory} \tab Delete a custom inventory type or the data associated with a custom Inventory type\cr
 #'  \link[=ssm_delete_maintenance_window]{delete_maintenance_window} \tab Deletes a maintenance window\cr
@@ -168,6 +170,7 @@ NULL
 #'  \link[=ssm_get_access_token]{get_access_token} \tab Returns a credentials set to be used with just-in-time node access\cr
 #'  \link[=ssm_get_automation_execution]{get_automation_execution} \tab Get detailed information about a particular Automation execution\cr
 #'  \link[=ssm_get_calendar_state]{get_calendar_state} \tab Gets the state of a Amazon Web Services Systems Manager change calendar at the current time or a specified time\cr
+#'  \link[=ssm_get_cloud_connector]{get_cloud_connector} \tab Returns detailed information about a cloud connector\cr
 #'  \link[=ssm_get_command_invocation]{get_command_invocation} \tab Returns detailed information about command execution for an invocation or plugin\cr
 #'  \link[=ssm_get_connection_status]{get_connection_status} \tab Retrieves the Session Manager connection status for a managed node to determine whether it is running and ready to receive Session Manager connections\cr
 #'  \link[=ssm_get_default_patch_baseline]{get_default_patch_baseline} \tab Retrieves the default patch baseline\cr
@@ -195,6 +198,7 @@ NULL
 #'  \link[=ssm_label_parameter_version]{label_parameter_version} \tab A parameter label is a user-defined alias to help you manage different versions of a parameter\cr
 #'  \link[=ssm_list_associations]{list_associations} \tab Returns all State Manager associations in the current Amazon Web Services account and Amazon Web Services Region\cr
 #'  \link[=ssm_list_association_versions]{list_association_versions} \tab Retrieves all versions of an association for a specific association ID\cr
+#'  \link[=ssm_list_cloud_connectors]{list_cloud_connectors} \tab Returns a list of cloud connectors in the current Amazon Web Services account and Amazon Web Services Region\cr
 #'  \link[=ssm_list_command_invocations]{list_command_invocations} \tab An invocation is copy of a command sent to a specific managed node\cr
 #'  \link[=ssm_list_commands]{list_commands} \tab Lists the commands requested by users of the Amazon Web Services account\cr
 #'  \link[=ssm_list_compliance_items]{list_compliance_items} \tab For a specified resource ID, this API operation returns a list of compliance statuses for different resource types\cr
@@ -236,6 +240,7 @@ NULL
 #'  \link[=ssm_unlabel_parameter_version]{unlabel_parameter_version} \tab Remove a label or labels from a parameter\cr
 #'  \link[=ssm_update_association]{update_association} \tab Updates an association\cr
 #'  \link[=ssm_update_association_status]{update_association_status} \tab Updates the status of the Amazon Web Services Systems Manager document (SSM document) associated with the specified managed node\cr
+#'  \link[=ssm_update_cloud_connector]{update_cloud_connector} \tab Updates an existing cloud connector with new configuration details\cr
 #'  \link[=ssm_update_document]{update_document} \tab Updates one or more values for an SSM document\cr
 #'  \link[=ssm_update_document_default_version]{update_document_default_version} \tab Set the default version of a document\cr
 #'  \link[=ssm_update_document_metadata]{update_document_metadata} \tab Amazon Web Services Systems Manager Change Manager is no longer open to new customers\cr
@@ -247,7 +252,8 @@ NULL
 #'  \link[=ssm_update_ops_metadata]{update_ops_metadata} \tab Amazon Web Services Systems Manager calls this API operation when you edit OpsMetadata in Application Manager\cr
 #'  \link[=ssm_update_patch_baseline]{update_patch_baseline} \tab Modifies an existing patch baseline\cr
 #'  \link[=ssm_update_resource_data_sync]{update_resource_data_sync} \tab Update a resource data sync\cr
-#'  \link[=ssm_update_service_setting]{update_service_setting} \tab ServiceSetting is an account-level setting for an Amazon Web Services service
+#'  \link[=ssm_update_service_setting]{update_service_setting} \tab ServiceSetting is an account-level setting for an Amazon Web Services service\cr
+#'  \link[=ssm_validate_cloud_connector]{validate_cloud_connector} \tab Validates the configuration and connectivity of a cloud connector
 #' }
 #'
 #' @return

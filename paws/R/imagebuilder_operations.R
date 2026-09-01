@@ -619,7 +619,7 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #' @param imageScanningConfiguration Contains settings for vulnerability scans.
 #' @param workflows Contains an array of workflow configuration objects.
 #' @param executionRole The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions.
-#' @param loggingConfiguration Define logging configuration for the image build process.
+#' @param loggingConfiguration Specifies the logging configuration for the image pipeline. Use this to define custom CloudWatch Logs log groups for your pipeline execution logs and image build logs. The service manages log groups with names starting with `/aws/imagebuilder/` using the service-linked role. For custom log group names outside of this prefix, you must also provide an `executionRole`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -725,7 +725,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' @usage
 #' imagebuilder_create_image_recipe(name, description, semanticVersion,
 #'   components, parentImage, blockDeviceMappings, tags, workingDirectory,
-#'   additionalInstanceConfiguration, amiTags, clientToken)
+#'   additionalInstanceConfiguration, amiTags, amiWatermarks, clientToken)
 #'
 #' @param name &#91;required&#93; The name of the image recipe.
 #' @param description The description of the image recipe.
@@ -753,6 +753,9 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' @param workingDirectory The working directory used during build and test workflows.
 #' @param additionalInstanceConfiguration Specify additional settings and launch scripts for your build instances.
 #' @param amiTags Tags that are applied to the AMI that Image Builder creates during the Build phase prior to image distribution.
+#' @param amiWatermarks The AMI watermark names to attach to the output AMI from this recipe. AMI watermarks are lineage markers. They automatically propagate to derivative AMIs when the source AMI is copied or distributed across Regions or accounts.
+#' 
+#' AMI watermarks are supported only for image recipes. AMIs with watermarks cannot be made public.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @return
@@ -821,6 +824,9 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #'   amiTags = list(
 #'     "string"
 #'   ),
+#'   amiWatermarks = list(
+#'     "string"
+#'   ),
 #'   clientToken = "string"
 #' )
 #' ```
@@ -830,7 +836,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' @rdname imagebuilder_create_image_recipe
 #'
 #' @aliases imagebuilder_create_image_recipe
-imagebuilder_create_image_recipe <- function(name, description = NULL, semanticVersion, components = NULL, parentImage, blockDeviceMappings = NULL, tags = NULL, workingDirectory = NULL, additionalInstanceConfiguration = NULL, amiTags = NULL, clientToken) {
+imagebuilder_create_image_recipe <- function(name, description = NULL, semanticVersion, components = NULL, parentImage, blockDeviceMappings = NULL, tags = NULL, workingDirectory = NULL, additionalInstanceConfiguration = NULL, amiTags = NULL, amiWatermarks = NULL, clientToken) {
   op <- new_operation(
     name = "CreateImageRecipe",
     http_method = "PUT",
@@ -839,7 +845,7 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .imagebuilder$create_image_recipe_input(name = name, description = description, semanticVersion = semanticVersion, components = components, parentImage = parentImage, blockDeviceMappings = blockDeviceMappings, tags = tags, workingDirectory = workingDirectory, additionalInstanceConfiguration = additionalInstanceConfiguration, amiTags = amiTags, clientToken = clientToken)
+  input <- .imagebuilder$create_image_recipe_input(name = name, description = description, semanticVersion = semanticVersion, components = components, parentImage = parentImage, blockDeviceMappings = blockDeviceMappings, tags = tags, workingDirectory = workingDirectory, additionalInstanceConfiguration = additionalInstanceConfiguration, amiTags = amiTags, amiWatermarks = amiWatermarks, clientToken = clientToken)
   output <- .imagebuilder$create_image_recipe_output()
   config <- get_config()
   svc <- .imagebuilder$service(config, op)
@@ -1615,19 +1621,19 @@ imagebuilder_delete_workflow <- function(workflowBuildVersionArn) {
 }
 .imagebuilder$operations$delete_workflow <- imagebuilder_delete_workflow
 
-#' DistributeImage distributes existing AMIs to additional regions and
-#' accounts without rebuilding the image
+#' Distributes an existing AMI to target Regions and accounts without
+#' running the full image build process
 #'
 #' @description
-#' DistributeImage distributes existing AMIs to additional regions and accounts without rebuilding the image.
+#' Distributes an existing AMI to target Regions and accounts without running the full image build process. This operation only runs the distribution phase on an image that has already been built.
 #'
 #' @usage
 #' imagebuilder_distribute_image(sourceImage, distributionConfigurationArn,
 #'   executionRole, tags, clientToken, loggingConfiguration)
 #'
-#' @param sourceImage &#91;required&#93; The source image Amazon Resource Name (ARN) to distribute.
-#' @param distributionConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the distribution configuration to use.
-#' @param executionRole &#91;required&#93; The IAM role to use for the distribution.
+#' @param sourceImage &#91;required&#93; The source image to distribute. Specify an AMI identifier, SSM parameter path, or Image Builder image Amazon Resource Name (ARN). When you specify an Image Builder image Amazon Resource Name (ARN), the image must be in the `AVAILABLE` state.
+#' @param distributionConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the distribution configuration. The configuration defines target Regions, accounts, and AMI settings. The distribution configuration must be in the same Region as this operation.
+#' @param executionRole &#91;required&#93; The name or Amazon Resource Name (ARN) of the IAM role that Image Builder assumes to distribute the image.
 #' @param tags The tags to apply to the distributed image.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #' @param loggingConfiguration The logging configuration for the distribution.
@@ -2206,6 +2212,9 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'       ),
 #'       amiTags = list(
 #'         "string"
+#'       ),
+#'       amiWatermarks = list(
+#'         "string"
 #'       )
 #'     ),
 #'     containerRecipe = list(
@@ -2734,6 +2743,9 @@ imagebuilder_get_image_policy <- function(imageArn) {
 #'       userDataOverride = "string"
 #'     ),
 #'     amiTags = list(
+#'       "string"
+#'     ),
+#'     amiWatermarks = list(
 #'       "string"
 #'     )
 #'   ),
@@ -5876,9 +5888,9 @@ imagebuilder_retry_image <- function(imageBuildVersionArn, clientToken) {
 #'   imageBuildVersionArn, action, reason, clientToken)
 #'
 #' @param stepExecutionId &#91;required&#93; Uniquely identifies the workflow step that sent the step action.
-#' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image build version to send action for.
-#' @param action &#91;required&#93; The action for the image creation process to take while a workflow `WaitForAction` step waits for an asynchronous action to complete.
-#' @param reason The reason why this action is sent.
+#' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image build version associated with the workflow step execution. This value must match the image that owns the waiting step. If the ARN does not correspond to the image running the workflow, then the request fails with a validation error.
+#' @param action &#91;required&#93; The action to perform on the paused workflow step. The workflow step must be in a waiting state to accept an action. The request fails if the step has already timed out or been actioned.
+#' @param reason The reason for the action. This value is stored with the step execution record and is accessible in subsequent workflow steps via step output references.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @return
@@ -5994,12 +6006,12 @@ imagebuilder_start_image_pipeline_execution <- function(imagePipelineArn, client
 #' imagebuilder_start_resource_state_update(resourceArn, state,
 #'   executionRole, includeResources, exclusionRules, updateAt, clientToken)
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Image Builder resource that is updated. The state update might also impact associated resources.
-#' @param state &#91;required&#93; Indicates the lifecycle action to take for this request.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the image build version to update. The image must be in one of these terminal states: `AVAILABLE`, `DEPRECATED`, `DISABLED`, `FAILED`, or `CANCELLED`. Images with `FAILED` or `CANCELLED` status can transition only to `DELETED`.
+#' @param state &#91;required&#93; Specifies the lifecycle action to take for this request. For AMI-based images, valid values are `AVAILABLE`, `DEPRECATED`, `DISABLED`, and `DELETED`. For container-based images, only `DELETED` is supported.
 #' @param executionRole The name or Amazon Resource Name (ARN) of the IAM role that’s used to update image state.
-#' @param includeResources A list of image resources to update state for.
+#' @param includeResources Specifies which image resources to include in the state update. When specified, the lifecycle action applies to underlying resources. These resources include AMIs, snapshots, and containers in addition to the Image Builder image resource. Requires `executionRole` to also be specified. To delete an image and its underlying resources, you must specify `includeResources`. To delete only the Image Builder image record without affecting underlying resources, use the [`delete_image`][imagebuilder_delete_image] API instead.
 #' @param exclusionRules Skip action on the image resource and associated resources if specified exclusion rules are met.
-#' @param updateAt The timestamp that indicates when resources are updated by a lifecycle action.
+#' @param updateAt Specifies the timestamp when the state transition takes effect. Use this parameter only when the target status is `DEPRECATED`. The value must be a future time.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @return

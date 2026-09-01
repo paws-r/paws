@@ -2,15 +2,15 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_stop_advanced_prompt_optimization_job}
 \alias{bedrock_stop_advanced_prompt_optimization_job}
-\title{Stops an in-progress advanced prompt optimization job}
+\title{Stops an advanced prompt optimization job that is in progress}
 \usage{
 bedrock_stop_advanced_prompt_optimization_job(jobIdentifier)
 }
 \arguments{
-\item{jobIdentifier}{[required] ARN or ID of the advanced prompt optimization job to stop.}
+\item{jobIdentifier}{[required] The ARN or ID of the advanced prompt optimization job to stop.}
 }
 \description{
-Stops an in-progress advanced prompt optimization job.
+Stops an advanced prompt optimization job that is in progress.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_stop_advanced_prompt_optimization_job/} for full documentation.
 }

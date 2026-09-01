@@ -409,19 +409,19 @@ workspaces_create_account_link_invitation <- function(TargetAccountId, ClientTok
 }
 .workspaces$operations$create_account_link_invitation <- workspaces_create_account_link_invitation
 
-#' Creates a client-add-in for Amazon Connect within a directory
+#' Creates a client-add-in for Connect Customer within a directory
 #'
 #' @description
-#' Creates a client-add-in for Amazon Connect within a directory. You can create only one Amazon Connect client add-in within a directory.
+#' Creates a client-add-in for Connect Customer within a directory. You can create only one Connect Customer client add-in within a directory.
 #' 
-#' This client add-in allows WorkSpaces users to seamlessly connect to Amazon Connect.
+#' This client add-in allows WorkSpaces users to seamlessly connect to Connect Customer.
 #'
 #' @usage
 #' workspaces_create_connect_client_add_in(ResourceId, Name, URL)
 #'
 #' @param ResourceId &#91;required&#93; The directory identifier for which to configure the client add-in.
 #' @param Name &#91;required&#93; The name of the client add-in.
-#' @param URL &#91;required&#93; The endpoint URL of the Amazon Connect client add-in.
+#' @param URL &#91;required&#93; The endpoint URL of the Connect Customer client add-in.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1019,7 +1019,8 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'           GlobalAccelerator = list(
 #'             Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
 #'             PreferredProtocol = "TCP"|"NONE"|"INHERITED"
-#'           )
+#'           ),
+#'           NestedVirtualizationEnabled = TRUE|FALSE
 #'         ),
 #'         Tags = list(
 #'           list(
@@ -1064,11 +1065,12 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'         GlobalAccelerator = list(
 #'           Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
 #'           PreferredProtocol = "TCP"|"NONE"|"INHERITED"
-#'         )
+#'         ),
+#'         NestedVirtualizationEnabled = TRUE|FALSE
 #'       ),
 #'       ModificationStates = list(
 #'         list(
-#'           Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE"|"PROTOCOL",
+#'           Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE"|"PROTOCOL"|"NESTED_VIRTUALIZATION",
 #'           State = "UPDATE_INITIATED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"
 #'         )
 #'       ),
@@ -1124,7 +1126,8 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'         GlobalAccelerator = list(
 #'           Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
 #'           PreferredProtocol = "TCP"|"NONE"|"INHERITED"
-#'         )
+#'         ),
+#'         NestedVirtualizationEnabled = TRUE|FALSE
 #'       ),
 #'       Tags = list(
 #'         list(
@@ -1163,9 +1166,12 @@ workspaces_create_workspaces <- function(Workspaces) {
 }
 .workspaces$operations$create_workspaces <- workspaces_create_workspaces
 
-#' Creates a pool of WorkSpaces
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
+#' 
 #' Creates a pool of WorkSpaces.
 #'
 #' @usage
@@ -1384,11 +1390,11 @@ workspaces_delete_client_branding <- function(ResourceId, Platforms) {
 }
 .workspaces$operations$delete_client_branding <- workspaces_delete_client_branding
 
-#' Deletes a client-add-in for Amazon Connect that is configured within a
+#' Deletes a client-add-in for Connect Customer that is configured within a
 #' directory
 #'
 #' @description
-#' Deletes a client-add-in for Amazon Connect that is configured within a directory.
+#' Deletes a client-add-in for Connect Customer that is configured within a directory.
 #'
 #' @usage
 #' workspaces_delete_connect_client_add_in(AddInId, ResourceId)
@@ -2255,7 +2261,8 @@ workspaces_describe_client_branding <- function(ResourceId) {
 #'       ResourceId = "string",
 #'       ClientProperties = list(
 #'         ReconnectEnabled = "ENABLED"|"DISABLED",
-#'         LogUploadEnabled = "ENABLED"|"DISABLED"
+#'         LogUploadEnabled = "ENABLED"|"DISABLED",
+#'         ClientExperiencePolicy = "string"
 #'       )
 #'     )
 #'   )
@@ -2295,10 +2302,11 @@ workspaces_describe_client_properties <- function(ResourceIds) {
 }
 .workspaces$operations$describe_client_properties <- workspaces_describe_client_properties
 
-#' Retrieves a list of Amazon Connect client add-ins that have been created
+#' Retrieves a list of Connect Customer client add-ins that have been
+#' created
 #'
 #' @description
-#' Retrieves a list of Amazon Connect client add-ins that have been created.
+#' Retrieves a list of Connect Customer client add-ins that have been created.
 #'
 #' @usage
 #' workspaces_describe_connect_client_add_ins(ResourceId, NextToken,
@@ -3362,11 +3370,12 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #'         GlobalAccelerator = list(
 #'           Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
 #'           PreferredProtocol = "TCP"|"NONE"|"INHERITED"
-#'         )
+#'         ),
+#'         NestedVirtualizationEnabled = TRUE|FALSE
 #'       ),
 #'       ModificationStates = list(
 #'         list(
-#'           Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE"|"PROTOCOL",
+#'           Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE"|"PROTOCOL"|"NESTED_VIRTUALIZATION",
 #'           State = "UPDATE_INITIATED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"
 #'         )
 #'       ),
@@ -3504,10 +3513,12 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
 }
 .workspaces$operations$describe_workspaces_connection_status <- workspaces_describe_workspaces_connection_status
 
-#' Retrieves a list that describes the streaming sessions for a specified
-#' pool
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
+#' 
 #' Retrieves a list that describes the streaming sessions for a specified pool.
 #'
 #' @usage
@@ -3581,9 +3592,12 @@ workspaces_describe_workspaces_pool_sessions <- function(PoolId, UserId = NULL, 
 }
 .workspaces$operations$describe_workspaces_pool_sessions <- workspaces_describe_workspaces_pool_sessions
 
-#' Describes the specified WorkSpaces Pools
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
+#' 
 #' Describes the specified WorkSpaces Pools.
 #'
 #' @usage
@@ -4368,6 +4382,8 @@ workspaces_list_available_management_cidr_ranges <- function(ManagementCidrRange
 #' The migration process recreates the WorkSpace by using a new root volume from the target bundle image and the user volume from the last available snapshot of the original WorkSpace. During migration, the original `D:\\Users%USERNAME%` user profile folder is renamed to `D:\\Users%USERNAME%MMddyyTHHmmss%.NotMigrated`. A new `D:\\Users%USERNAME%\` folder is generated by the new OS. Certain files in the old user profile are moved to the new user profile.
 #' 
 #' For available migration scenarios, details about what happens during migration, and best practices, see [Migrate a WorkSpace](https://docs.aws.amazon.com/workspaces/latest/adminguide/migrate-workspaces.html).
+#' 
+#' If the source WorkSpace has nested virtualization enabled and the target bundle does not support nested virtualization, the migration fails.
 #'
 #' @usage
 #' workspaces_migrate_workspace(SourceWorkspaceId, BundleId)
@@ -4544,7 +4560,8 @@ workspaces_modify_certificate_based_auth_properties <- function(ResourceId, Cert
 #'   ResourceId = "string",
 #'   ClientProperties = list(
 #'     ReconnectEnabled = "ENABLED"|"DISABLED",
-#'     LogUploadEnabled = "ENABLED"|"DISABLED"
+#'     LogUploadEnabled = "ENABLED"|"DISABLED",
+#'     ClientExperiencePolicy = "string"
 #'   )
 #' )
 #' ```
@@ -4959,7 +4976,8 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #'     GlobalAccelerator = list(
 #'       Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
 #'       PreferredProtocol = "TCP"|"NONE"|"INHERITED"
-#'     )
+#'     ),
+#'     NestedVirtualizationEnabled = TRUE|FALSE
 #'   ),
 #'   DataReplication = "NO_REPLICATION"|"PRIMARY_AS_SOURCE"
 #' )
@@ -5468,9 +5486,12 @@ workspaces_start_workspaces <- function(StartWorkspaceRequests) {
 }
 .workspaces$operations$start_workspaces <- workspaces_start_workspaces
 
-#' Starts the specified pool
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
+#' 
 #' Starts the specified pool.
 #' 
 #' You cannot start a pool unless it has a running mode of `AutoStop` and a state of `STOPPED`.
@@ -5575,9 +5596,12 @@ workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
 }
 .workspaces$operations$stop_workspaces <- workspaces_stop_workspaces
 
-#' Stops the specified pool
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
+#' 
 #' Stops the specified pool.
 #' 
 #' You cannot stop a WorkSpace pool unless it has a running mode of `AutoStop` and a state of `AVAILABLE`, `IMPAIRED`, `UNHEALTHY`, or `ERROR`.
@@ -5690,9 +5714,12 @@ workspaces_terminate_workspaces <- function(TerminateWorkspaceRequests) {
 }
 .workspaces$operations$terminate_workspaces <- workspaces_terminate_workspaces
 
-#' Terminates the specified pool
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
+#' 
 #' Terminates the specified pool.
 #'
 #' @usage
@@ -5734,9 +5761,12 @@ workspaces_terminate_workspaces_pool <- function(PoolId) {
 }
 .workspaces$operations$terminate_workspaces_pool <- workspaces_terminate_workspaces_pool
 
-#' Terminates the pool session
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
+#' 
 #' Terminates the pool session.
 #'
 #' @usage
@@ -5778,10 +5808,10 @@ workspaces_terminate_workspaces_pool_session <- function(SessionId) {
 }
 .workspaces$operations$terminate_workspaces_pool_session <- workspaces_terminate_workspaces_pool_session
 
-#' Updates a Amazon Connect client add-in
+#' Updates a Connect Customer client add-in
 #'
 #' @description
-#' Updates a Amazon Connect client add-in. Use this action to update the name and endpoint URL of a Amazon Connect client add-in.
+#' Updates a Connect Customer client add-in. Use this action to update the name and endpoint URL of a Connect Customer client add-in.
 #'
 #' @usage
 #' workspaces_update_connect_client_add_in(AddInId, ResourceId, Name, URL)
@@ -5789,7 +5819,7 @@ workspaces_terminate_workspaces_pool_session <- function(SessionId) {
 #' @param AddInId &#91;required&#93; The identifier of the client add-in to update.
 #' @param ResourceId &#91;required&#93; The directory identifier for which the client add-in is configured.
 #' @param Name The name of the client add-in.
-#' @param URL The endpoint URL of the Amazon Connect client add-in.
+#' @param URL The endpoint URL of the Connect Customer client add-in.
 #'
 #' @return
 #' An empty list.
@@ -6049,9 +6079,12 @@ workspaces_update_workspace_image_permission <- function(ImageId, AllowCopyImage
 }
 .workspaces$operations$update_workspace_image_permission <- workspaces_update_workspace_image_permission
 
-#' Updates the specified pool
+#' End of support notice: On December 31, 2027, Amazon Web Services will
+#' end support for Amazon WorkSpaces Pools
 #'
 #' @description
+#' End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see [Amazon WorkSpaces Pools end of support](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html).
+#' 
 #' Updates the specified pool.
 #'
 #' @usage

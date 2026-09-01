@@ -12,7 +12,8 @@ glue_start_data_quality_rule_recommendation_run(
   Timeout = NULL,
   CreatedRulesetName = NULL,
   DataQualitySecurityConfiguration = NULL,
-  ClientToken = NULL
+  ClientToken = NULL,
+  AdditionalRunOptions = NULL
 )
 }
 \arguments{
@@ -29,6 +30,8 @@ glue_start_data_quality_rule_recommendation_run(
 \item{DataQualitySecurityConfiguration}{The name of the security configuration created with the data quality encryption option.}
 
 \item{ClientToken}{Used for idempotency and is recommended to be set to a random ID (such as a UUID) to avoid creating or starting multiple instances of the same resource.}
+
+\item{AdditionalRunOptions}{Additional run options you can specify for a recommendation run.}
 }
 \description{
 Starts a recommendation run that is used to generate rules when you don't know what rules to write. Glue Data Quality analyzes the data and comes up with recommendations for a potential ruleset. You can then triage the ruleset and modify the generated ruleset to your liking.

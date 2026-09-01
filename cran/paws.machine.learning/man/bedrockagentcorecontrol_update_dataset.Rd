@@ -18,7 +18,7 @@ bedrockagentcorecontrol_update_dataset(
 \item{description}{The updated description for the dataset.}
 }
 \description{
-Updates a dataset's metadata. Synchronous operation. Only provided fields are updated; omitted fields remain unchanged.
+Updates a dataset's metadata. Synchronous operation. Only provided fields are updated; omitted fields remain unchanged. To modify dataset content, use \code{\link[=bedrockagentcorecontrol_add_dataset_examples]{add_dataset_examples}}, \code{\link[=bedrockagentcorecontrol_update_dataset_examples]{update_dataset_examples}}, or \code{\link[=bedrockagentcorecontrol_delete_dataset_examples]{delete_dataset_examples}}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_update_dataset/} for full documentation.
 }

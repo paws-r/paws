@@ -13,7 +13,7 @@ cloudformation_describe_events(
 )
 }
 \arguments{
-\item{StackName}{The name or unique stack ID for which you want to retrieve events.}
+\item{StackName}{The name or unique stack ID for which you want to retrieve events. If you specified the name of a change set, specify the stack name or ID (ARN) of the change set you want to describe.}
 
 \item{ChangeSetName}{The name or Amazon Resource Name (ARN) of the change set for which you want to retrieve events.}
 

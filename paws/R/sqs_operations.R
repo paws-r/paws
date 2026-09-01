@@ -1153,7 +1153,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' 
 #' -   The message body.
 #' 
-#' -   An MD5 digest of the message body. For information about MD5, see [RFC1321](https://www.ietf.org/rfc/rfc1321.txt).
+#' -   An MD5 digest of the message body. For information about MD5, see [RFC1321](https://www.rfc-editor.org/rfc/rfc1321.txt).
 #' 
 #' -   The `MessageId` you received when you sent the message to the queue.
 #' 

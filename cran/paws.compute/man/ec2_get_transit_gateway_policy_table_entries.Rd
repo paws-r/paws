@@ -15,7 +15,18 @@ ec2_get_transit_gateway_policy_table_entries(
 \arguments{
 \item{TransitGatewayPolicyTableId}{[required] The ID of the transit gateway policy table.}
 
-\item{Filters}{The filters associated with the transit gateway policy table.}
+\item{Filters}{One or more filters. The possible values are:
+\itemize{
+\item \code{policy-rule-number} - The rule number for the transit gateway policy table entry.
+\item \code{target-route-table-id} - The ID of the target route table.
+\item \code{policy-rule.source-ip} - The source CIDR block for the policy rule.
+\item \code{policy-rule.destination-ip} - The destination CIDR block for the policy rule.
+\item \code{policy-rule.source-port} - The source port or port range for the policy rule.
+\item \code{policy-rule.destination-port} - The destination port or port range for the policy rule.
+\item \code{policy-rule.protocol} - The protocol for the policy rule.
+\item \code{policy-rule.meta-data.key} - The metadata key for the policy rule.
+\item \code{policy-rule.meta-data.value} - The metadata value for the policy rule.
+}}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned \code{nextToken} value.}
 

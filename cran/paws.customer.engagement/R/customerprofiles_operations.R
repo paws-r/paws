@@ -38,6 +38,46 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 }
 .customerprofiles$operations$add_profile_key <- customerprofiles_add_profile_key
 
+#' Associates an Amazon Kinesis data stream to receive segment membership
+#' events for a given domain
+#'
+#' @description
+#' Associates an Amazon Kinesis data stream to receive segment membership events for a given domain. This is a domain-level configuration that applies to all segment subscriptions within the domain. A domain can have only one associated stream at a time.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_associate_stream_for_segments/](https://www.paws-r-sdk.com/docs/customerprofiles_associate_stream_for_segments/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param DestinationArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Kinesis data stream to deliver segment membership events to. For example, `arn:aws:kinesis:region:account-id:stream/stream-name`.
+#' @param DestinationRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that allows Customer Profiles service principal to assume the role for conducting AWS Key Management Service (KMS) and Amazon Kinesis operations. The role must grant the following Amazon Kinesis permissions to deliver segment membership events to the stream:
+#' 
+#' -   `kinesis:PutRecord`
+#' 
+#' -   `kinesis:PutRecords`
+#' 
+#' -   `kinesis:DescribeStream`
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_associate_stream_for_segments
+customerprofiles_associate_stream_for_segments <- function(DomainName, DestinationArn, DestinationRoleArn) {
+  op <- new_operation(
+    name = "AssociateStreamForSegments",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/segment-streams",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$associate_stream_for_segments_input(DomainName = DomainName, DestinationArn = DestinationArn, DestinationRoleArn = DestinationRoleArn)
+  output <- .customerprofiles$associate_stream_for_segments_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$associate_stream_for_segments <- customerprofiles_associate_stream_for_segments
+
 #' Fetch the possible attribute values given the attribute name
 #'
 #' @description
@@ -103,6 +143,40 @@ customerprofiles_batch_get_profile <- function(DomainName, ProfileIds) {
   return(response)
 }
 .customerprofiles$operations$batch_get_profile <- customerprofiles_batch_get_profile
+
+#' Adds multiple profile objects to a domain of a given ObjectType in a
+#' single API call
+#'
+#' @description
+#' Adds multiple profile objects to a domain of a given ObjectType in a single API call.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_batch_put_profile_object/](https://www.paws-r-sdk.com/docs/customerprofiles_batch_put_profile_object/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
+#' @param Items &#91;required&#93; A list of items to add to the domain.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_batch_put_profile_object
+customerprofiles_batch_put_profile_object <- function(DomainName, ObjectTypeName, Items) {
+  op <- new_operation(
+    name = "BatchPutProfileObject",
+    http_method = "PUT",
+    http_path = "/domains/{DomainName}/profiles/objects/batch-put-profile-object",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$batch_put_profile_object_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Items = Items)
+  output <- .customerprofiles$batch_put_profile_object_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$batch_put_profile_object <- customerprofiles_batch_put_profile_object
 
 #' Creates a new calculated attribute definition
 #'
@@ -1126,6 +1200,38 @@ customerprofiles_delete_segment_definition <- function(DomainName, SegmentDefini
 }
 .customerprofiles$operations$delete_segment_definition <- customerprofiles_delete_segment_definition
 
+#' Deletes a segment subscription for membership events
+#'
+#' @description
+#' Deletes a segment subscription for membership events. All active event notifications for this segment are stopped.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_delete_segment_subscription/](https://www.paws-r-sdk.com/docs/customerprofiles_delete_segment_subscription/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param SegmentDefinitionName &#91;required&#93; The unique name of the segment definition.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_segment_subscription
+customerprofiles_delete_segment_subscription <- function(DomainName, SegmentDefinitionName) {
+  op <- new_operation(
+    name = "DeleteSegmentSubscription",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/segment-definitions/{SegmentDefinitionName}/subscriptions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$delete_segment_subscription_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName)
+  output <- .customerprofiles$delete_segment_subscription_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_segment_subscription <- customerprofiles_delete_segment_subscription
+
 #' Deletes the specified workflow and all its corresponding resources
 #'
 #' @description
@@ -1190,6 +1296,38 @@ customerprofiles_detect_profile_object_type <- function(Objects, DomainName) {
   return(response)
 }
 .customerprofiles$operations$detect_profile_object_type <- customerprofiles_detect_profile_object_type
+
+#' Disassociates the Amazon Kinesis data stream configured for segment
+#' membership events
+#'
+#' @description
+#' Disassociates the Amazon Kinesis data stream configured for segment membership events. All active segment subscriptions delivering events to this stream are eventually stopped.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_disassociate_stream_for_segments/](https://www.paws-r-sdk.com/docs/customerprofiles_disassociate_stream_for_segments/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_disassociate_stream_for_segments
+customerprofiles_disassociate_stream_for_segments <- function(DomainName) {
+  op <- new_operation(
+    name = "DisassociateStreamForSegments",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/segment-streams",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$disassociate_stream_for_segments_input(DomainName = DomainName)
+  output <- .customerprofiles$disassociate_stream_for_segments_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$disassociate_stream_for_segments <- customerprofiles_disassociate_stream_for_segments
 
 #' Tests the auto-merging settings of your Identity Resolution Job without
 #' merging your data
@@ -1699,11 +1837,12 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 #' @param CandidateIds A list of item IDs to rank for the user. Use this when you want to re-rank a specific set of items rather than getting recommendations from the full item catalog. Required for personalized-ranking use cases.
 #' @param MaxResults The maximum number of recommendations to return. The default value is 10.
 #' @param MetadataConfig Configuration for including item metadata in the recommendation response. Use this to specify which metadata columns to return alongside recommended items.
+#' @param DiversityConfig Runtime diversity configuration for this request. Enables diversity-aware recommendations and optionally supplies values for placeholder-based diversity caps configured on the recommender.
 #'
 #' @keywords internal
 #'
 #' @rdname customerprofiles_get_profile_recommendations
-customerprofiles_get_profile_recommendations <- function(DomainName, ProfileId, RecommenderName, Context = NULL, RecommenderFilters = NULL, RecommenderPromotionalFilters = NULL, CandidateIds = NULL, MaxResults = NULL, MetadataConfig = NULL) {
+customerprofiles_get_profile_recommendations <- function(DomainName, ProfileId, RecommenderName, Context = NULL, RecommenderFilters = NULL, RecommenderPromotionalFilters = NULL, CandidateIds = NULL, MaxResults = NULL, MetadataConfig = NULL, DiversityConfig = NULL) {
   op <- new_operation(
     name = "GetProfileRecommendations",
     http_method = "POST",
@@ -1712,7 +1851,7 @@ customerprofiles_get_profile_recommendations <- function(DomainName, ProfileId, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$get_profile_recommendations_input(DomainName = DomainName, ProfileId = ProfileId, RecommenderName = RecommenderName, Context = Context, RecommenderFilters = RecommenderFilters, RecommenderPromotionalFilters = RecommenderPromotionalFilters, CandidateIds = CandidateIds, MaxResults = MaxResults, MetadataConfig = MetadataConfig)
+  input <- .customerprofiles$get_profile_recommendations_input(DomainName = DomainName, ProfileId = ProfileId, RecommenderName = RecommenderName, Context = Context, RecommenderFilters = RecommenderFilters, RecommenderPromotionalFilters = RecommenderPromotionalFilters, CandidateIds = CandidateIds, MaxResults = MaxResults, MetadataConfig = MetadataConfig, DiversityConfig = DiversityConfig)
   output <- .customerprofiles$get_profile_recommendations_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -1949,6 +2088,39 @@ customerprofiles_get_segment_snapshot <- function(DomainName, SegmentDefinitionN
 }
 .customerprofiles$operations$get_segment_snapshot <- customerprofiles_get_segment_snapshot
 
+#' Returns the current subscription configuration, execution schedule, and
+#' status for segment membership events
+#'
+#' @description
+#' Returns the current subscription configuration, execution schedule, and status for segment membership events.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_segment_subscription/](https://www.paws-r-sdk.com/docs/customerprofiles_get_segment_subscription/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param SegmentDefinitionName &#91;required&#93; The unique name of the segment definition.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_segment_subscription
+customerprofiles_get_segment_subscription <- function(DomainName, SegmentDefinitionName) {
+  op <- new_operation(
+    name = "GetSegmentSubscription",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/segment-definitions/{SegmentDefinitionName}/subscriptions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_segment_subscription_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName)
+  output <- .customerprofiles$get_segment_subscription_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_segment_subscription <- customerprofiles_get_segment_subscription
+
 #' Returns a set of profiles that belong to the same matching group using
 #' the matchId or profileId
 #'
@@ -1985,6 +2157,39 @@ customerprofiles_get_similar_profiles <- function(NextToken = NULL, MaxResults =
   return(response)
 }
 .customerprofiles$operations$get_similar_profiles <- customerprofiles_get_similar_profiles
+
+#' Returns information about the segment membership event stream configured
+#' for a specific domain, including the stream state and associated
+#' segments
+#'
+#' @description
+#' Returns information about the segment membership event stream configured for a specific domain, including the stream state and associated segments.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_stream_for_segments/](https://www.paws-r-sdk.com/docs/customerprofiles_get_stream_for_segments/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_stream_for_segments
+customerprofiles_get_stream_for_segments <- function(DomainName) {
+  op <- new_operation(
+    name = "GetStreamForSegments",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/segment-streams",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_stream_for_segments_input(DomainName = DomainName)
+  output <- .customerprofiles$get_stream_for_segments_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_stream_for_segments <- customerprofiles_get_stream_for_segments
 
 #' This API retrieves the details of a specific upload job
 #'
@@ -2894,6 +3099,40 @@ customerprofiles_list_segment_definitions <- function(DomainName, MaxResults = N
 }
 .customerprofiles$operations$list_segment_definitions <- customerprofiles_list_segment_definitions
 
+#' Returns the most recent membership events for a segment
+#'
+#' @description
+#' Returns the most recent membership events for a segment. Each event represents a profile that entered or exited the segment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_segment_subscription_events/](https://www.paws-r-sdk.com/docs/customerprofiles_list_segment_subscription_events/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param SegmentDefinitionName &#91;required&#93; The unique name of the segment definition.
+#' @param MaxResults The maximum number of events to return per page.
+#' @param NextToken The pagination token from the previous call to retrieve the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_segment_subscription_events
+customerprofiles_list_segment_subscription_events <- function(DomainName, SegmentDefinitionName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListSegmentSubscriptionEvents",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/segment-definitions/{SegmentDefinitionName}/subscription-events",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Events"),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_segment_subscription_events_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .customerprofiles$list_segment_subscription_events_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_segment_subscription_events <- customerprofiles_list_segment_subscription_events
+
 #' Displays the tags associated with an Amazon Connect Customer Profiles
 #' resource
 #'
@@ -3181,6 +3420,39 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
   return(response)
 }
 .customerprofiles$operations$put_profile_object_type <- customerprofiles_put_profile_object_type
+
+#' Creates or updates a segment subscription for membership events
+#'
+#' @description
+#' Creates or updates a segment subscription for membership events. When a subscription is created, an initial snapshot is taken and the system begins monitoring for membership changes.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_put_segment_subscription/](https://www.paws-r-sdk.com/docs/customerprofiles_put_segment_subscription/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param SegmentDefinitionName &#91;required&#93; The unique name of the segment definition.
+#' @param ScheduleConfiguration The optional schedule configuration that controls how often membership snapshots are run. If not provided, the subscription defaults to a 24-hour interval.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_put_segment_subscription
+customerprofiles_put_segment_subscription <- function(DomainName, SegmentDefinitionName, ScheduleConfiguration = NULL) {
+  op <- new_operation(
+    name = "PutSegmentSubscription",
+    http_method = "PUT",
+    http_path = "/domains/{DomainName}/segment-definitions/{SegmentDefinitionName}/subscriptions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$put_segment_subscription_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, ScheduleConfiguration = ScheduleConfiguration)
+  output <- .customerprofiles$put_segment_subscription_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$put_segment_subscription <- customerprofiles_put_segment_subscription
 
 #' Searches for profiles within a specific domain using one or more
 #' predefined search keys (e
@@ -3643,11 +3915,12 @@ customerprofiles_update_profile <- function(DomainName, ProfileId, AdditionalInf
 #' @param RecommenderName &#91;required&#93; The name of the recommender to update.
 #' @param Description The new description to assign to the recommender.
 #' @param RecommenderConfig The new configuration settings to apply to the recommender, including updated parameters and settings that define its behavior.
+#' @param RecommenderVersionName The name of a specific recommender version to activate as part of this update (for example, to roll back to a previously trained version).
 #'
 #' @keywords internal
 #'
 #' @rdname customerprofiles_update_recommender
-customerprofiles_update_recommender <- function(DomainName, RecommenderName, Description = NULL, RecommenderConfig = NULL) {
+customerprofiles_update_recommender <- function(DomainName, RecommenderName, Description = NULL, RecommenderConfig = NULL, RecommenderVersionName = NULL) {
   op <- new_operation(
     name = "UpdateRecommender",
     http_method = "PATCH",
@@ -3656,7 +3929,7 @@ customerprofiles_update_recommender <- function(DomainName, RecommenderName, Des
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$update_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName, Description = Description, RecommenderConfig = RecommenderConfig)
+  input <- .customerprofiles$update_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName, Description = Description, RecommenderConfig = RecommenderConfig, RecommenderVersionName = RecommenderVersionName)
   output <- .customerprofiles$update_recommender_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)

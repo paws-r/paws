@@ -12,6 +12,8 @@ bedrockagentcorecontrol_update_online_evaluation_config(
   rule = NULL,
   dataSourceConfig = NULL,
   evaluators = NULL,
+  insights = NULL,
+  clusteringConfig = NULL,
   evaluationExecutionRoleArn = NULL,
   executionStatus = NULL
 )
@@ -28,6 +30,10 @@ bedrockagentcorecontrol_update_online_evaluation_config(
 \item{dataSourceConfig}{The updated data source configuration specifying CloudWatch log groups and service names to monitor.}
 
 \item{evaluators}{The updated list of evaluators to apply during online evaluation.}
+
+\item{insights}{The updated list of insight types to run against agent sessions.}
+
+\item{clusteringConfig}{The updated clustering configuration for periodic batch evaluation.}
 
 \item{evaluationExecutionRoleArn}{The updated Amazon Resource Name (ARN) of the IAM role used for evaluation execution.}
 

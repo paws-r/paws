@@ -6,6 +6,7 @@
 \usage{
 redshiftserverless_restore_from_snapshot(
   adminPasswordSecretKmsKeyId = NULL,
+  maintainIntegration = NULL,
   manageAdminPassword = NULL,
   namespaceName,
   ownerAccount = NULL,
@@ -16,6 +17,10 @@ redshiftserverless_restore_from_snapshot(
 }
 \arguments{
 \item{adminPasswordSecretKmsKeyId}{The ID of the Key Management Service (KMS) key used to encrypt and store the namespace's admin credentials secret.}
+
+\item{maintainIntegration}{If \code{true}, maintain existing data sharing, zero-ETL and S3 event integrations when restoring. Otherwise, integrations will not be maintained after the restore operation. Integrations are only maintained when restored to the same serverless namespace.
+
+Default: true}
 
 \item{manageAdminPassword}{If \code{true}, Amazon Redshift uses Secrets Manager to manage the restored snapshot's admin credentials. If \code{MmanageAdminPassword} is false or not set, Amazon Redshift uses the admin credentials that the namespace or cluster had at the time the snapshot was taken.}
 

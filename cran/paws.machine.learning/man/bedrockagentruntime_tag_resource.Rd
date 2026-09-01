@@ -12,7 +12,7 @@ bedrockagentruntime_tag_resource(resourceArn, tags)
 \item{tags}{[required] An object containing key-value pairs that define the tags to attach to the resource.}
 }
 \description{
-Associate tags with a resource. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Tagging resources} in the Amazon Bedrock User Guide.
+Associate tags with a resource. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=awsomedayonlinehk}{Tagging resources} in the Amazon Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentruntime_tag_resource/} for full documentation.
 }

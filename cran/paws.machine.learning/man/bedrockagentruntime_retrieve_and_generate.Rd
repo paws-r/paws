@@ -9,7 +9,8 @@ bedrockagentruntime_retrieve_and_generate(
   input,
   retrieveAndGenerateConfiguration = NULL,
   sessionConfiguration = NULL,
-  sessionId = NULL
+  sessionId = NULL,
+  userContext = NULL
 )
 }
 \arguments{
@@ -20,6 +21,8 @@ bedrockagentruntime_retrieve_and_generate(
 \item{sessionConfiguration}{Contains details about the session with the knowledge base.}
 
 \item{sessionId}{The unique identifier of the session. When you first make a \code{\link[=bedrockagentruntime_retrieve_and_generate]{retrieve_and_generate}} request, Amazon Bedrock automatically generates this value. You must reuse this value for all subsequent requests in the same conversational session. This value allows Amazon Bedrock to maintain context and knowledge from previous interactions. You can't explicitly set the \code{sessionId} yourself.}
+
+\item{userContext}{Contains information about the user making the request. This is used for access control filtering to ensure that retrieval results only include documents the user is authorized to access.}
 }
 \description{
 Queries a knowledge base and generates responses based on the retrieved results and using the specified foundation model or \href{https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html}{inference profile}. The response only cites sources that are relevant to the query.

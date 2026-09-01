@@ -282,6 +282,7 @@ Valid Values:
 \item \code{custom-sqlserver-web} (for RDS Custom for SQL Server DB instances)
 \item \code{custom-sqlserver-dev} (for RDS Custom for SQL Server DB instances)
 \item \code{db2-ae}
+\item \code{db2-ce}
 \item \code{db2-se}
 \item \code{mariadb}
 \item \code{mysql}
@@ -495,7 +496,7 @@ Valid Values:
 \itemize{
 \item RDS for Db2 - \code{bring-your-own-license | marketplace-license}
 \item RDS for MariaDB - \code{general-public-license}
-\item RDS for Microsoft SQL Server - \code{license-included}
+\item RDS for Microsoft SQL Server - \code{license-included | bring-your-own-media}
 \item RDS for MySQL - \code{general-public-license}
 \item RDS for Oracle - \code{bring-your-own-license | license-included}
 \item RDS for PostgreSQL - \code{postgresql-license}
@@ -825,11 +826,11 @@ Note the following restrictions:
 
 \item{DedicatedLogVolume}{Indicates whether the DB instance has a dedicated log volume (DLV) enabled.}
 
-\item{EngineLifecycleSupport}{The life cycle type for this DB instance.
+\item{EngineLifecycleSupport}{The lifecycle type for this DB instance.
 
 By default, this value is set to \code{open-source-rds-extended-support}, which enrolls your DB instance into Amazon RDS Extended Support. At the end of standard support, you can avoid charges for Extended Support by setting the value to \code{open-source-rds-extended-support-disabled}. In this case, creating the DB instance will fail if the DB major version is past its end of standard support date.
 
-This setting applies only to RDS for MySQL and RDS for PostgreSQL. For Amazon Aurora DB instances, the life cycle type is managed by the DB cluster.
+This setting applies only to RDS for MySQL and RDS for PostgreSQL. For Amazon Aurora DB instances, the engine lifecycle support is managed by the DB cluster.
 
 You can use this setting to enroll your DB instance into Amazon RDS Extended Support. With RDS Extended Support, you can run the selected major engine version on your DB instance past the end of standard support for that engine version. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon RDS} in the \emph{Amazon RDS User Guide}.
 

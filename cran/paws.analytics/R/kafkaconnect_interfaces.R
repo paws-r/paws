@@ -183,6 +183,18 @@ NULL
   return(populate(args, shape))
 }
 
+.kafkaconnect$restart_connector_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(connectorArn = structure(logical(0), tags = list(location = "uri", locationName = "connectorArn", type = "string")), onlyFailedTasks = structure(logical(0), tags = list(location = "querystring", locationName = "onlyFailedTasks", type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kafkaconnect$restart_connector_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(connectorArn = structure(logical(0), tags = list(type = "string")), connectorOperationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .kafkaconnect$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))

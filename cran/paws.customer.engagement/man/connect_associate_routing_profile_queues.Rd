@@ -20,7 +20,7 @@ connect_associate_routing_profile_queues(
 
 \item{ManualAssignmentQueueConfigs}{The manual assignment queues to associate with this routing profile.
 
-Note: Use this config for chat, email, and task contacts. It does not support voice contacts.}
+For voice contacts, manual assignment supports only agent-first callback contacts. Chat, email, and task contacts are fully supported.}
 }
 \description{
 Associates a set of queues with a routing profile.

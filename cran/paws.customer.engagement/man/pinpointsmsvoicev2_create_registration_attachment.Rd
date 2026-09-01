@@ -13,7 +13,7 @@ pinpointsmsvoicev2_create_registration_attachment(
 )
 }
 \arguments{
-\item{AttachmentBody}{The registration file to upload. The maximum file size is 500KB and valid file extensions are PDF, JPEG and PNG.}
+\item{AttachmentBody}{The registration file to upload. The maximum file size is 5MB and valid file extensions are PDF, JPEG and PNG.}
 
 \item{AttachmentUrl}{Registration files have to be stored in an Amazon S3 bucket. The URI to use when sending is in the format \verb{s3://BucketName/FileName}.}
 
@@ -22,7 +22,7 @@ pinpointsmsvoicev2_create_registration_attachment(
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. If you don't specify a client token, a randomly generated token is used for the request to ensure idempotency.}
 }
 \description{
-Create a new registration attachment to use for uploading a file or a URL to a file. The maximum file size is 500KB and valid file extensions are PDF, JPEG and PNG. For example, many sender ID registrations require a signed “letter of authorization” (LOA) to be submitted.
+Create a new registration attachment to use for uploading a file or a URL to a file. The maximum file size is 5MB and valid file extensions are PDF, JPEG and PNG. For example, many sender ID registrations require a signed “letter of authorization” (LOA) to be submitted.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_registration_attachment/} for full documentation.
 }

@@ -27,7 +27,7 @@ elbv2_create_rule(
 \item{Transforms}{The transforms to apply to requests that match this rule. You can add one host header rewrite transform and one URL rewrite transform.}
 }
 \description{
-Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer.
+Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer or a dual-stack Network Load Balancer.
 
 See \url{https://www.paws-r-sdk.com/docs/elbv2_create_rule/} for full documentation.
 }

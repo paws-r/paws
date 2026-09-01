@@ -458,6 +458,43 @@ inspector2_create_code_security_scan_configuration <- function(name, level, conf
 }
 .inspector2$operations$create_code_security_scan_configuration <- inspector2_create_code_security_scan_configuration
 
+#' Creates a connector that links an external cloud provider to Amazon
+#' Inspector for vulnerability scanning
+#'
+#' @description
+#' Creates a connector that links an external cloud provider to Amazon Inspector for vulnerability scanning.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_create_connector/](https://www.paws-r-sdk.com/docs/inspector2_create_connector/) for full documentation.
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request but does not return an error.
+#' @param name &#91;required&#93; The name of the connector.
+#' @param provider &#91;required&#93; The cloud provider for the connector.
+#' @param description A description of the connector.
+#' @param providerDetail &#91;required&#93; The provider-specific configuration details for the connector.
+#' @param tags The tags to apply to the connector.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_create_connector
+inspector2_create_connector <- function(clientToken = NULL, name, provider, description = NULL, providerDetail, tags = NULL) {
+  op <- new_operation(
+    name = "CreateConnector",
+    http_method = "POST",
+    http_path = "/connector/create",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$create_connector_input(clientToken = clientToken, name = name, provider = provider, description = description, providerDetail = providerDetail, tags = tags)
+  output <- .inspector2$create_connector_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$create_connector <- inspector2_create_connector
+
 #' Creates a filter resource using specified filter criteria
 #'
 #' @description
@@ -652,6 +689,37 @@ inspector2_delete_code_security_scan_configuration <- function(scanConfiguration
   return(response)
 }
 .inspector2$operations$delete_code_security_scan_configuration <- inspector2_delete_code_security_scan_configuration
+
+#' Deletes a connector from your account
+#'
+#' @description
+#' Deletes a connector from your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_delete_connector/](https://www.paws-r-sdk.com/docs/inspector2_delete_connector/) for full documentation.
+#'
+#' @param connectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the connector to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_delete_connector
+inspector2_delete_connector <- function(connectorArn) {
+  op <- new_operation(
+    name = "DeleteConnector",
+    http_method = "POST",
+    http_path = "/connector/delete",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$delete_connector_input(connectorArn = connectorArn)
+  output <- .inspector2$delete_connector_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$delete_connector <- inspector2_delete_connector
 
 #' Deletes a filter resource
 #'
@@ -1079,19 +1147,19 @@ inspector2_get_code_security_scan_configuration <- function(scanConfigurationArn
 }
 .inspector2$operations$get_code_security_scan_configuration <- inspector2_get_code_security_scan_configuration
 
-#' Retrieves setting configurations for Inspector scans
+#' Retrieves setting configurations for Amazon Inspector scans
 #'
 #' @description
-#' Retrieves setting configurations for Inspector scans.
+#' Retrieves setting configurations for Amazon Inspector scans. If you specify an `accountId`, this operation returns the scan configuration for that member account. You must be the delegated administrator for the specified member account. If you do not specify an `accountId`, this operation returns your own scan configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_get_configuration/](https://www.paws-r-sdk.com/docs/inspector2_get_configuration/) for full documentation.
 #'
-
+#' @param accountId The 12-digit Amazon Web Services account ID of the member account whose scan configuration you want to retrieve. When specified, you must be the delegated administrator for this member account. If not specified, the operation returns your own configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_get_configuration
-inspector2_get_configuration <- function() {
+inspector2_get_configuration <- function(accountId = NULL) {
   op <- new_operation(
     name = "GetConfiguration",
     http_method = "POST",
@@ -1100,7 +1168,7 @@ inspector2_get_configuration <- function() {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$get_configuration_input()
+  input <- .inspector2$get_configuration_input(accountId = accountId)
   output <- .inspector2$get_configuration_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1572,6 +1640,72 @@ inspector2_list_code_security_scan_configurations <- function(nextToken = NULL, 
   return(response)
 }
 .inspector2$operations$list_code_security_scan_configurations <- inspector2_list_code_security_scan_configurations
+
+#' Lists scan configurations for Amazon Web Services Config connectors
+#'
+#' @description
+#' Lists scan configurations for Amazon Web Services Config connectors. Results are paginated. Use the `nextToken` parameter to retrieve the next page of results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_connector_scan_configurations/](https://www.paws-r-sdk.com/docs/inspector2_list_connector_scan_configurations/) for full documentation.
+#'
+#' @param awsConfigConnectorArns The list of Amazon Web Services Config connector ARNs to filter results.
+#' @param maxResults The maximum number of results to return in a single call. Valid range is 1 to 50. To retrieve the remaining results, make another request with the `nextToken` value returned from this request.
+#' @param nextToken A token to use for paginating results. Set this value to null for the first request. For subsequent calls, use the `nextToken` value returned from the previous request.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_connector_scan_configurations
+inspector2_list_connector_scan_configurations <- function(awsConfigConnectorArns = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListConnectorScanConfigurations",
+    http_method = "POST",
+    http_path = "/connectorscanconfigurations/list",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanConfigurations"),
+    stream_api = FALSE
+  )
+  input <- .inspector2$list_connector_scan_configurations_input(awsConfigConnectorArns = awsConfigConnectorArns, maxResults = maxResults, nextToken = nextToken)
+  output <- .inspector2$list_connector_scan_configurations_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_connector_scan_configurations <- inspector2_list_connector_scan_configurations
+
+#' Lists connectors in your account
+#'
+#' @description
+#' Lists connectors in your account. Results are paginated. Use the `nextToken` parameter to retrieve the next page of results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_connectors/](https://www.paws-r-sdk.com/docs/inspector2_list_connectors/) for full documentation.
+#'
+#' @param maxResults The maximum number of results to return in a single call. To retrieve the remaining results, make another request with the `nextToken` value returned from this request.
+#' @param nextToken A token to use for paginating results. Set this value to null for the first request. For subsequent calls, use the `nextToken` value returned from the previous request.
+#' @param filterCriteria The filter criteria to apply to the list of connectors.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_connectors
+inspector2_list_connectors <- function(maxResults = NULL, nextToken = NULL, filterCriteria = NULL) {
+  op <- new_operation(
+    name = "ListConnectors",
+    http_method = "POST",
+    http_path = "/connector/list",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .inspector2$list_connectors_input(maxResults = maxResults, nextToken = nextToken, filterCriteria = filterCriteria)
+  output <- .inspector2$list_connectors_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_connectors <- inspector2_list_connectors
 
 #' Lists coverage details for your environment
 #'
@@ -2263,20 +2397,22 @@ inspector2_update_code_security_scan_configuration <- function(scanConfiguration
 }
 .inspector2$operations$update_code_security_scan_configuration <- inspector2_update_code_security_scan_configuration
 
-#' Updates setting configurations for your Amazon Inspector account
+#' Updates the scan configuration for your Amazon Inspector account
 #'
 #' @description
-#' Updates setting configurations for your Amazon Inspector account. When you use this API as an Amazon Inspector delegated administrator this updates the setting for all accounts you manage. Member accounts in an organization cannot update this setting.
+#' Updates the scan configuration for your Amazon Inspector account. If you don't specify an `accountId`, this operation updates the delegated administrator's configuration and propagates it to member accounts that have not been individually configured. If you specify an `accountId`, this operation updates that member account's configuration. Only the delegated administrator can specify an `accountId`; member accounts cannot call this operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_update_configuration/](https://www.paws-r-sdk.com/docs/inspector2_update_configuration/) for full documentation.
 #'
+#' @param accountId The 12-digit Amazon Web Services account ID of the member account whose scan configuration you want to update. When specified, you must be the delegated administrator for this member account. If not specified, the operation updates your own configuration and propagates changes to any member accounts that have not been individually configured.
 #' @param ecrConfiguration Specifies how the ECR automated re-scan will be updated for your environment.
 #' @param ec2Configuration Specifies how the Amazon EC2 automated scan will be updated for your environment.
+#' @param updateConfigurationInheritance Specifies which scan-type configurations to reset to the delegated administrator's inherited values for the targeted member account. Each member of this structure is independently optional. When specified, `ec2Configuration` and `ecrConfiguration` must be absent, and `accountId` must also be present. Only `INHERIT_FROM_ADMIN` is valid for each member. If not specified, the operation uses the `ec2Configuration` and `ecrConfiguration` parameters instead.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_update_configuration
-inspector2_update_configuration <- function(ecrConfiguration = NULL, ec2Configuration = NULL) {
+inspector2_update_configuration <- function(accountId = NULL, ecrConfiguration = NULL, ec2Configuration = NULL, updateConfigurationInheritance = NULL) {
   op <- new_operation(
     name = "UpdateConfiguration",
     http_method = "POST",
@@ -2285,7 +2421,7 @@ inspector2_update_configuration <- function(ecrConfiguration = NULL, ec2Configur
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$update_configuration_input(ecrConfiguration = ecrConfiguration, ec2Configuration = ec2Configuration)
+  input <- .inspector2$update_configuration_input(accountId = accountId, ecrConfiguration = ecrConfiguration, ec2Configuration = ec2Configuration, updateConfigurationInheritance = updateConfigurationInheritance)
   output <- .inspector2$update_configuration_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -2294,6 +2430,73 @@ inspector2_update_configuration <- function(ecrConfiguration = NULL, ec2Configur
   return(response)
 }
 .inspector2$operations$update_configuration <- inspector2_update_configuration
+
+#' Updates the description or provider-specific configuration details of an
+#' existing connector
+#'
+#' @description
+#' Updates the description or provider-specific configuration details of an existing connector.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_update_connector/](https://www.paws-r-sdk.com/docs/inspector2_update_connector/) for full documentation.
+#'
+#' @param connectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the connector to update.
+#' @param description The updated description of the connector.
+#' @param providerDetail The updated provider-specific configuration details for the connector.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_connector
+inspector2_update_connector <- function(connectorArn, description = NULL, providerDetail = NULL) {
+  op <- new_operation(
+    name = "UpdateConnector",
+    http_method = "POST",
+    http_path = "/connector/update",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$update_connector_input(connectorArn = connectorArn, description = description, providerDetail = providerDetail)
+  output <- .inspector2$update_connector_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_connector <- inspector2_update_connector
+
+#' Updates scan configuration settings for resources associated with an
+#' Amazon Web Services Config connector
+#'
+#' @description
+#' Updates scan configuration settings for resources associated with an Amazon Web Services Config connector.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_update_connector_scan_configuration/](https://www.paws-r-sdk.com/docs/inspector2_update_connector_scan_configuration/) for full documentation.
+#'
+#' @param awsConfigConnectorArn &#91;required&#93; The ARN of the Amazon Web Services Config connector.
+#' @param scanConfiguration &#91;required&#93; The scan configuration settings to apply.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_connector_scan_configuration
+inspector2_update_connector_scan_configuration <- function(awsConfigConnectorArn, scanConfiguration) {
+  op <- new_operation(
+    name = "UpdateConnectorScanConfiguration",
+    http_method = "POST",
+    http_path = "/connectorscanconfiguration/update",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$update_connector_scan_configuration_input(awsConfigConnectorArn = awsConfigConnectorArn, scanConfiguration = scanConfiguration)
+  output <- .inspector2$update_connector_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_connector_scan_configuration <- inspector2_update_connector_scan_configuration
 
 #' Activates, deactivates Amazon Inspector deep inspection, or updates
 #' custom paths for your account

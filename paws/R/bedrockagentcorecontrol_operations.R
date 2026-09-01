@@ -6,15 +6,7 @@ NULL
 #' Adds examples to the dataset's DRAFT
 #'
 #' @description
-#' Adds examples to the dataset's DRAFT.
-#' 
-#' **Validation:** All examples are validated against the dataset's schemaType before any writes occur. If any example fails validation, the entire batch is rejected with ValidationException — no examples are written (all-or-nothing semantics).
-#' 
-#' **Asynchronous:** Operates in-place on DRAFT. No version bump occurs. Use CreateDatasetVersion to publish DRAFT as a new numbered version.
-#' 
-#' **State guard:** Returns ConflictException (DATASET_NOT_READY) if the dataset status is not in \{DRAFT, ACTIVE\}.
-#' 
-#' **Request size limit:** Max 5 MB total request body. Max 1000 examples per call.
+#' Adds examples to the dataset's DRAFT. All examples are validated against the dataset's schema type before any writes occur. If any example fails validation, the entire batch is rejected (all-or-nothing semantics).
 #'
 #' @usage
 #' bedrockagentcorecontrol_add_dataset_examples(datasetId, clientToken,
@@ -83,6 +75,134 @@ bedrockagentcorecontrol_add_dataset_examples <- function(datasetId, clientToken 
 }
 .bedrockagentcorecontrol$operations$add_dataset_examples <- bedrockagentcorecontrol_add_dataset_examples
 
+#' Atomically creates or updates multiple rate limits for a gateway
+#'
+#' @description
+#' Atomically creates or updates multiple rate limits for a gateway. The operation updates existing limits with matching keys and creates new limits for new keys. If the operation fails, the service applies no changes. Retry the request after resolving the issue.
+#'
+#' @usage
+#' bedrockagentcorecontrol_batch_put_gateway_rate_limits(gatewayIdentifier,
+#'   clientToken, rateLimits)
+#'
+#' @param gatewayIdentifier &#91;required&#93; The unique identifier of the gateway.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param rateLimits &#91;required&#93; The complete set of rate limits for this gateway. This operation replaces all existing rate limits in a single request. If the operation fails, no rate limits are changed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   rateLimits = list(
+#'     list(
+#'       rateLimitId = "string",
+#'       gatewayIdentifier = "string",
+#'       description = "string",
+#'       dimensionKeys = list(
+#'         "string"
+#'       ),
+#'       entries = list(
+#'         list(
+#'           dimensions = list(
+#'             "string"
+#'           ),
+#'           requests = list(
+#'             list(
+#'               rate = 123.0,
+#'               period = "second"|"minute"
+#'             )
+#'           ),
+#'           tokens = list(
+#'             list(
+#'               rate = 123.0,
+#'               period = "second"|"minute"
+#'             )
+#'           ),
+#'           connections = list(
+#'             list(
+#'               rate = 123.0,
+#'               period = "second"|"minute"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_put_gateway_rate_limits(
+#'   gatewayIdentifier = "string",
+#'   clientToken = "string",
+#'   rateLimits = list(
+#'     list(
+#'       rateLimitId = "string",
+#'       description = "string",
+#'       dimensionKeys = list(
+#'         "string"
+#'       ),
+#'       entries = list(
+#'         list(
+#'           dimensions = list(
+#'             "string"
+#'           ),
+#'           requests = list(
+#'             list(
+#'               rate = 123.0,
+#'               period = "second"|"minute"
+#'             )
+#'           ),
+#'           tokens = list(
+#'             list(
+#'               rate = 123.0,
+#'               period = "second"|"minute"
+#'             )
+#'           ),
+#'           connections = list(
+#'             list(
+#'               rate = 123.0,
+#'               period = "second"|"minute"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_batch_put_gateway_rate_limits
+#'
+#' @aliases bedrockagentcorecontrol_batch_put_gateway_rate_limits
+bedrockagentcorecontrol_batch_put_gateway_rate_limits <- function(gatewayIdentifier, clientToken = NULL, rateLimits) {
+  op <- new_operation(
+    name = "BatchPutGatewayRateLimits",
+    http_method = "PUT",
+    http_path = "/gateways/{gatewayIdentifier}/rate-limits/batch",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$batch_put_gateway_rate_limits_input(gatewayIdentifier = gatewayIdentifier, clientToken = clientToken, rateLimits = rateLimits)
+  output <- .bedrockagentcorecontrol$batch_put_gateway_rate_limits_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$batch_put_gateway_rate_limits <- bedrockagentcorecontrol_batch_put_gateway_rate_limits
+
 #' Creates an Amazon Bedrock AgentCore Runtime
 #'
 #' @description
@@ -93,12 +213,12 @@ bedrockagentcorecontrol_add_dataset_examples <- function(datasetId, clientToken 
 #'   agentRuntimeArtifact, roleArn, networkConfiguration, clientToken,
 #'   description, authorizerConfiguration, requestHeaderConfiguration,
 #'   protocolConfiguration, lifecycleConfiguration, environmentVariables,
-#'   filesystemConfigurations, tags)
+#'   filesystemConfigurations, capacityProviderConfiguration, tags)
 #'
 #' @param agentRuntimeName &#91;required&#93; The name of the AgentCore Runtime.
 #' @param agentRuntimeArtifact &#91;required&#93; The artifact of the AgentCore Runtime.
 #' @param roleArn &#91;required&#93; The IAM role ARN that provides permissions for the AgentCore Runtime.
-#' @param networkConfiguration &#91;required&#93; The network configuration for the AgentCore Runtime.
+#' @param networkConfiguration The network configuration for the AgentCore Runtime.
 #' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the request.
 #' @param description The description of the AgentCore Runtime.
 #' @param authorizerConfiguration The authorizer configuration for the AgentCore Runtime.
@@ -107,6 +227,7 @@ bedrockagentcorecontrol_add_dataset_examples <- function(datasetId, clientToken 
 #' @param lifecycleConfiguration The life cycle configuration for the AgentCore Runtime.
 #' @param environmentVariables Environment variables to set in the AgentCore Runtime environment.
 #' @param filesystemConfigurations The filesystem configurations to mount into the AgentCore Runtime. Use filesystem configurations to provide persistent storage to your AgentCore Runtime sessions.
+#' @param capacityProviderConfiguration The capacity provider configuration for the AgentCore Runtime. Use a capacity provider to run the AgentCore Runtime on the Instances compute type, which provisions Amazon Web Services managed compute in your account.
 #' @param tags A map of tag keys and values to assign to the agent runtime. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment.
 #'
 #' @return
@@ -175,6 +296,9 @@ bedrockagentcorecontrol_add_dataset_examples <- function(datasetId, clientToken 
 #'       allowedScopes = list(
 #'         "string"
 #'       ),
+#'       advertisedScopeMapping = list(
+#'         "string"
+#'       ),
 #'       customClaims = list(
 #'         list(
 #'           inboundTokenClaimName = "string",
@@ -232,6 +356,16 @@ bedrockagentcorecontrol_add_dataset_examples <- function(datasetId, clientToken 
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -262,8 +396,15 @@ bedrockagentcorecontrol_add_dataset_examples <- function(datasetId, clientToken 
 #'       efsAccessPoint = list(
 #'         accessPointArn = "string",
 #'         mountPath = "string"
+#'       ),
+#'       capacityProviderVolume = list(
+#'         volumeName = "string",
+#'         mountPath = "string"
 #'       )
 #'     )
+#'   ),
+#'   capacityProviderConfiguration = list(
+#'     capacityProviderArn = "string"
 #'   ),
 #'   tags = list(
 #'     "string"
@@ -276,7 +417,7 @@ bedrockagentcorecontrol_add_dataset_examples <- function(datasetId, clientToken 
 #' @rdname bedrockagentcorecontrol_create_agent_runtime
 #'
 #' @aliases bedrockagentcorecontrol_create_agent_runtime
-bedrockagentcorecontrol_create_agent_runtime <- function(agentRuntimeName, agentRuntimeArtifact, roleArn, networkConfiguration, clientToken = NULL, description = NULL, authorizerConfiguration = NULL, requestHeaderConfiguration = NULL, protocolConfiguration = NULL, lifecycleConfiguration = NULL, environmentVariables = NULL, filesystemConfigurations = NULL, tags = NULL) {
+bedrockagentcorecontrol_create_agent_runtime <- function(agentRuntimeName, agentRuntimeArtifact, roleArn, networkConfiguration = NULL, clientToken = NULL, description = NULL, authorizerConfiguration = NULL, requestHeaderConfiguration = NULL, protocolConfiguration = NULL, lifecycleConfiguration = NULL, environmentVariables = NULL, filesystemConfigurations = NULL, capacityProviderConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateAgentRuntime",
     http_method = "PUT",
@@ -285,7 +426,7 @@ bedrockagentcorecontrol_create_agent_runtime <- function(agentRuntimeName, agent
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$create_agent_runtime_input(agentRuntimeName = agentRuntimeName, agentRuntimeArtifact = agentRuntimeArtifact, roleArn = roleArn, networkConfiguration = networkConfiguration, clientToken = clientToken, description = description, authorizerConfiguration = authorizerConfiguration, requestHeaderConfiguration = requestHeaderConfiguration, protocolConfiguration = protocolConfiguration, lifecycleConfiguration = lifecycleConfiguration, environmentVariables = environmentVariables, filesystemConfigurations = filesystemConfigurations, tags = tags)
+  input <- .bedrockagentcorecontrol$create_agent_runtime_input(agentRuntimeName = agentRuntimeName, agentRuntimeArtifact = agentRuntimeArtifact, roleArn = roleArn, networkConfiguration = networkConfiguration, clientToken = clientToken, description = description, authorizerConfiguration = authorizerConfiguration, requestHeaderConfiguration = requestHeaderConfiguration, protocolConfiguration = protocolConfiguration, lifecycleConfiguration = lifecycleConfiguration, environmentVariables = environmentVariables, filesystemConfigurations = filesystemConfigurations, capacityProviderConfiguration = capacityProviderConfiguration, tags = tags)
   output <- .bedrockagentcorecontrol$create_agent_runtime_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -372,10 +513,12 @@ bedrockagentcorecontrol_create_agent_runtime_endpoint <- function(agentRuntimeId
 #'
 #' @usage
 #' bedrockagentcorecontrol_create_api_key_credential_provider(name, apiKey,
-#'   tags)
+#'   apiKeySecretConfig, apiKeySecretSource, tags)
 #'
 #' @param name &#91;required&#93; The name of the API key credential provider. The name must be unique within your account.
-#' @param apiKey &#91;required&#93; The API key to use for authentication. This value is encrypted and stored securely.
+#' @param apiKey The API key to use for authentication. This value is encrypted and stored securely.
+#' @param apiKeySecretConfig A reference to the Amazon Web Services Secrets Manager secret that stores the API key. This includes the secret ID and the JSON key used to extract the API key value from the secret. Required when `apiKeySecretSource` is set to `EXTERNAL`.
+#' @param apiKeySecretSource The source type of the API key secret. Use `MANAGED` if the secret is managed by the service, or `EXTERNAL` if you manage the secret yourself in Amazon Web Services Secrets Manager.
 #' @param tags A map of tag keys and values to assign to the API key credential provider. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment.
 #'
 #' @return
@@ -385,6 +528,8 @@ bedrockagentcorecontrol_create_agent_runtime_endpoint <- function(agentRuntimeId
 #'   apiKeySecretArn = list(
 #'     secretArn = "string"
 #'   ),
+#'   apiKeySecretJsonKey = "string",
+#'   apiKeySecretSource = "MANAGED"|"EXTERNAL",
 #'   name = "string",
 #'   credentialProviderArn = "string"
 #' )
@@ -395,6 +540,11 @@ bedrockagentcorecontrol_create_agent_runtime_endpoint <- function(agentRuntimeId
 #' svc$create_api_key_credential_provider(
 #'   name = "string",
 #'   apiKey = "string",
+#'   apiKeySecretConfig = list(
+#'     secretId = "string",
+#'     jsonKey = "string"
+#'   ),
+#'   apiKeySecretSource = "MANAGED"|"EXTERNAL",
 #'   tags = list(
 #'     "string"
 #'   )
@@ -406,7 +556,7 @@ bedrockagentcorecontrol_create_agent_runtime_endpoint <- function(agentRuntimeId
 #' @rdname bedrockagentcorecontrol_create_api_key_credential_provider
 #'
 #' @aliases bedrockagentcorecontrol_create_api_key_credential_provider
-bedrockagentcorecontrol_create_api_key_credential_provider <- function(name, apiKey, tags = NULL) {
+bedrockagentcorecontrol_create_api_key_credential_provider <- function(name, apiKey = NULL, apiKeySecretConfig = NULL, apiKeySecretSource = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateApiKeyCredentialProvider",
     http_method = "POST",
@@ -415,7 +565,7 @@ bedrockagentcorecontrol_create_api_key_credential_provider <- function(name, api
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$create_api_key_credential_provider_input(name = name, apiKey = apiKey, tags = tags)
+  input <- .bedrockagentcorecontrol$create_api_key_credential_provider_input(name = name, apiKey = apiKey, apiKeySecretConfig = apiKeySecretConfig, apiKeySecretSource = apiKeySecretSource, tags = tags)
   output <- .bedrockagentcorecontrol$create_api_key_credential_provider_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -433,7 +583,8 @@ bedrockagentcorecontrol_create_api_key_credential_provider <- function(name, api
 #' @usage
 #' bedrockagentcorecontrol_create_browser(name, description,
 #'   executionRoleArn, networkConfiguration, recording, browserSigning,
-#'   enterprisePolicies, certificates, clientToken, tags)
+#'   enterprisePolicies, certificates, filesystemConfigurations, clientToken,
+#'   tags)
 #'
 #' @param name &#91;required&#93; The name of the browser. The name must be unique within your account.
 #' @param description The description of the browser.
@@ -443,6 +594,7 @@ bedrockagentcorecontrol_create_api_key_credential_provider <- function(name, api
 #' @param browserSigning The browser signing configuration that enables cryptographic agent identification using HTTP message signatures for web bot authentication.
 #' @param enterprisePolicies A list of enterprise policy files for the browser.
 #' @param certificates A list of certificates to install in the browser.
+#' @param filesystemConfigurations The file system configurations to mount into the browser. Use these configurations to mount your own Amazon Simple Storage Service (Amazon S3) Files or Amazon Elastic File System (Amazon EFS) access points. Your sessions can then access your data. If you don't specify this field, no file systems are mounted.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, Amazon Bedrock AgentCore ignores the request but does not return an error.
 #' @param tags A map of tag keys and values to assign to the browser. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment.
 #'
@@ -509,6 +661,20 @@ bedrockagentcorecontrol_create_api_key_credential_provider <- function(name, api
 #'       )
 #'     )
 #'   ),
+#'   filesystemConfigurations = list(
+#'     list(
+#'       s3FilesConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
+#'       ),
+#'       efsConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
+#'       )
+#'     )
+#'   ),
 #'   clientToken = "string",
 #'   tags = list(
 #'     "string"
@@ -521,7 +687,7 @@ bedrockagentcorecontrol_create_api_key_credential_provider <- function(name, api
 #' @rdname bedrockagentcorecontrol_create_browser
 #'
 #' @aliases bedrockagentcorecontrol_create_browser
-bedrockagentcorecontrol_create_browser <- function(name, description = NULL, executionRoleArn = NULL, networkConfiguration, recording = NULL, browserSigning = NULL, enterprisePolicies = NULL, certificates = NULL, clientToken = NULL, tags = NULL) {
+bedrockagentcorecontrol_create_browser <- function(name, description = NULL, executionRoleArn = NULL, networkConfiguration, recording = NULL, browserSigning = NULL, enterprisePolicies = NULL, certificates = NULL, filesystemConfigurations = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateBrowser",
     http_method = "PUT",
@@ -530,7 +696,7 @@ bedrockagentcorecontrol_create_browser <- function(name, description = NULL, exe
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$create_browser_input(name = name, description = description, executionRoleArn = executionRoleArn, networkConfiguration = networkConfiguration, recording = recording, browserSigning = browserSigning, enterprisePolicies = enterprisePolicies, certificates = certificates, clientToken = clientToken, tags = tags)
+  input <- .bedrockagentcorecontrol$create_browser_input(name = name, description = description, executionRoleArn = executionRoleArn, networkConfiguration = networkConfiguration, recording = recording, browserSigning = browserSigning, enterprisePolicies = enterprisePolicies, certificates = certificates, filesystemConfigurations = filesystemConfigurations, clientToken = clientToken, tags = tags)
   output <- .bedrockagentcorecontrol$create_browser_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -603,6 +769,157 @@ bedrockagentcorecontrol_create_browser_profile <- function(name, description = N
 }
 .bedrockagentcorecontrol$operations$create_browser_profile <- bedrockagentcorecontrol_create_browser_profile
 
+#' Creates a capacity provider
+#'
+#' @description
+#' Creates a capacity provider. A capacity provider defines the Amazon EC2 infrastructure for AgentCore Runtime, including the operating system, allowed instance types, networking, and storage. It also specifies the IAM permissions that AgentCore uses to manage those instances.
+#' 
+#' The capacity provider name must be unique within your account. After you create the capacity provider, it enters a `CREATING` state and transitions to `READY` when it is available for use.
+#'
+#' @usage
+#' bedrockagentcorecontrol_create_capacity_provider(name, description,
+#'   permissionsConfiguration, clientToken, tags, computeConfiguration)
+#'
+#' @param name &#91;required&#93; The name of the capacity provider. The name must be unique within your account.
+#' @param description An optional description of the capacity provider. If you don't specify a description, the service creates the capacity provider without one.
+#' @param permissionsConfiguration &#91;required&#93; The permissions configuration for the capacity provider. This specifies the IAM role that AgentCore uses to manage the Amazon EC2 instances on your behalf.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param tags A map of tag keys and values to associate with the capacity provider. If you don't specify tags, the capacity provider is created with no tags.
+#' @param computeConfiguration &#91;required&#93; The compute configuration for the capacity provider. This defines the Amazon EC2 compute resources used to launch instances: the operating system, allowed instance types, networking, and storage.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   capacityProviderId = "string",
+#'   capacityProviderArn = "string",
+#'   name = "string",
+#'   status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_capacity_provider(
+#'   name = "string",
+#'   description = "string",
+#'   permissionsConfiguration = list(
+#'     capacityProviderOperatorRoleArn = "string"
+#'   ),
+#'   clientToken = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   computeConfiguration = list(
+#'     ec2Configuration = list(
+#'       launchTemplateSource = list(
+#'         launchParameters = list(
+#'           operatingSystem = "LINUX_X86_64"|"LINUX_ARM64",
+#'           instanceRequirements = list(
+#'             allowedInstanceTypes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ephemeralVolumes = list(
+#'             list(
+#'               deviceName = "string",
+#'               virtualName = "string",
+#'               ebs = list(
+#'                 volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'                 iops = 123,
+#'                 throughput = 123,
+#'                 encrypted = TRUE|FALSE,
+#'                 kmsKeyId = "string",
+#'                 snapshotId = "string",
+#'                 volumeSize = 123,
+#'                 volumeInitializationRate = 123,
+#'                 ebsCardIndex = 123
+#'               )
+#'             )
+#'           ),
+#'           monitoring = "BASIC"|"DETAILED",
+#'           licenseSpecifications = list(
+#'             list(
+#'               licenseConfigurationArn = "string"
+#'             )
+#'           ),
+#'           capacityReservationSpecification = list(
+#'             capacityReservationPreference = "capacity-reservations-only"|"open"|"none",
+#'             capacityReservationTarget = list(
+#'               capacityReservationId = "string",
+#'               capacityReservationResourceGroupArn = "string"
+#'             )
+#'           ),
+#'           sshKeyName = "string",
+#'           instanceProfileArn = "string",
+#'           propagatedTags = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       vpcConfiguration = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         )
+#'       ),
+#'       volumes = list(
+#'         list(
+#'           ebsConfiguration = list(
+#'             name = "string",
+#'             sizeGiB = 123,
+#'             volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'             iops = 123,
+#'             throughput = 123,
+#'             encrypted = TRUE|FALSE,
+#'             kmsKeyId = "string",
+#'             snapshotId = "string"
+#'           )
+#'         )
+#'       ),
+#'       lifecycleConfiguration = list(
+#'         idleInstanceTimeout = 123,
+#'         maxLifetime = 123
+#'       ),
+#'       rootVolume = list(
+#'         volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'         iops = 123,
+#'         throughput = 123,
+#'         encrypted = TRUE|FALSE,
+#'         kmsKeyId = "string",
+#'         freeSpaceGiB = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_create_capacity_provider
+#'
+#' @aliases bedrockagentcorecontrol_create_capacity_provider
+bedrockagentcorecontrol_create_capacity_provider <- function(name, description = NULL, permissionsConfiguration, clientToken = NULL, tags = NULL, computeConfiguration) {
+  op <- new_operation(
+    name = "CreateCapacityProvider",
+    http_method = "PUT",
+    http_path = "/capacity-providers",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$create_capacity_provider_input(name = name, description = description, permissionsConfiguration = permissionsConfiguration, clientToken = clientToken, tags = tags, computeConfiguration = computeConfiguration)
+  output <- .bedrockagentcorecontrol$create_capacity_provider_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$create_capacity_provider <- bedrockagentcorecontrol_create_capacity_provider
+
 #' Creates a custom code interpreter
 #'
 #' @description
@@ -610,13 +927,15 @@ bedrockagentcorecontrol_create_browser_profile <- function(name, description = N
 #'
 #' @usage
 #' bedrockagentcorecontrol_create_code_interpreter(name, description,
-#'   executionRoleArn, networkConfiguration, certificates, clientToken, tags)
+#'   executionRoleArn, networkConfiguration, certificates,
+#'   filesystemConfigurations, clientToken, tags)
 #'
 #' @param name &#91;required&#93; The name of the code interpreter. The name must be unique within your account.
 #' @param description The description of the code interpreter.
 #' @param executionRoleArn The Amazon Resource Name (ARN) of the IAM role that provides permissions for the code interpreter to access Amazon Web Services services.
 #' @param networkConfiguration &#91;required&#93; The network configuration for the code interpreter. This configuration specifies the network mode for the code interpreter.
 #' @param certificates A list of certificates to install in the code interpreter.
+#' @param filesystemConfigurations The file system configurations to mount into the code interpreter. Use these configurations to mount your own Amazon Simple Storage Service (Amazon S3) Files or Amazon Elastic File System (Amazon EFS) access points. Your sessions can then access your data. If you don't specify this field, no file systems are mounted.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, Amazon Bedrock AgentCore ignores the request but does not return an error.
 #' @param tags A map of tag keys and values to assign to the code interpreter. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment.
 #'
@@ -660,6 +979,20 @@ bedrockagentcorecontrol_create_browser_profile <- function(name, description = N
 #'       )
 #'     )
 #'   ),
+#'   filesystemConfigurations = list(
+#'     list(
+#'       s3FilesConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
+#'       ),
+#'       efsConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
+#'       )
+#'     )
+#'   ),
 #'   clientToken = "string",
 #'   tags = list(
 #'     "string"
@@ -672,7 +1005,7 @@ bedrockagentcorecontrol_create_browser_profile <- function(name, description = N
 #' @rdname bedrockagentcorecontrol_create_code_interpreter
 #'
 #' @aliases bedrockagentcorecontrol_create_code_interpreter
-bedrockagentcorecontrol_create_code_interpreter <- function(name, description = NULL, executionRoleArn = NULL, networkConfiguration, certificates = NULL, clientToken = NULL, tags = NULL) {
+bedrockagentcorecontrol_create_code_interpreter <- function(name, description = NULL, executionRoleArn = NULL, networkConfiguration, certificates = NULL, filesystemConfigurations = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateCodeInterpreter",
     http_method = "PUT",
@@ -681,7 +1014,7 @@ bedrockagentcorecontrol_create_code_interpreter <- function(name, description = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$create_code_interpreter_input(name = name, description = description, executionRoleArn = executionRoleArn, networkConfiguration = networkConfiguration, certificates = certificates, clientToken = clientToken, tags = tags)
+  input <- .bedrockagentcorecontrol$create_code_interpreter_input(name = name, description = description, executionRoleArn = executionRoleArn, networkConfiguration = networkConfiguration, certificates = certificates, filesystemConfigurations = filesystemConfigurations, clientToken = clientToken, tags = tags)
   output <- .bedrockagentcorecontrol$create_code_interpreter_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -699,7 +1032,7 @@ bedrockagentcorecontrol_create_code_interpreter <- function(name, description = 
 #' @usage
 #' bedrockagentcorecontrol_create_configuration_bundle(clientToken,
 #'   bundleName, description, components, branchName, commitMessage,
-#'   createdBy, tags)
+#'   createdBy, kmsKeyArn, tags)
 #'
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param bundleName &#91;required&#93; The name for the configuration bundle. Names must be unique within your account.
@@ -708,6 +1041,7 @@ bedrockagentcorecontrol_create_code_interpreter <- function(name, description = 
 #' @param branchName The branch name for version tracking. Defaults to `mainline` if not specified.
 #' @param commitMessage A commit message describing the initial version of the configuration bundle.
 #' @param createdBy The source that created this version, including the source name and optional ARN.
+#' @param kmsKeyArn Optional KMS key ARN for encrypting component configurations.
 #' @param tags A map of tag keys and values to assign to the configuration bundle. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment.
 #'
 #' @return
@@ -740,6 +1074,7 @@ bedrockagentcorecontrol_create_code_interpreter <- function(name, description = 
 #'     name = "string",
 #'     arn = "string"
 #'   ),
+#'   kmsKeyArn = "string",
 #'   tags = list(
 #'     "string"
 #'   )
@@ -751,7 +1086,7 @@ bedrockagentcorecontrol_create_code_interpreter <- function(name, description = 
 #' @rdname bedrockagentcorecontrol_create_configuration_bundle
 #'
 #' @aliases bedrockagentcorecontrol_create_configuration_bundle
-bedrockagentcorecontrol_create_configuration_bundle <- function(clientToken = NULL, bundleName, description = NULL, components, branchName = NULL, commitMessage = NULL, createdBy = NULL, tags = NULL) {
+bedrockagentcorecontrol_create_configuration_bundle <- function(clientToken = NULL, bundleName, description = NULL, components, branchName = NULL, commitMessage = NULL, createdBy = NULL, kmsKeyArn = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateConfigurationBundle",
     http_method = "POST",
@@ -760,7 +1095,7 @@ bedrockagentcorecontrol_create_configuration_bundle <- function(clientToken = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$create_configuration_bundle_input(clientToken = clientToken, bundleName = bundleName, description = description, components = components, branchName = branchName, commitMessage = commitMessage, createdBy = createdBy, tags = tags)
+  input <- .bedrockagentcorecontrol$create_configuration_bundle_input(clientToken = clientToken, bundleName = bundleName, description = description, components = components, branchName = branchName, commitMessage = commitMessage, createdBy = createdBy, kmsKeyArn = kmsKeyArn, tags = tags)
   output <- .bedrockagentcorecontrol$create_configuration_bundle_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -770,23 +1105,21 @@ bedrockagentcorecontrol_create_configuration_bundle <- function(clientToken = NU
 }
 .bedrockagentcorecontrol$operations$create_configuration_bundle <- bedrockagentcorecontrol_create_configuration_bundle
 
-#' Creates a new Dataset resource asynchronously
+#' Creates a new dataset resource asynchronously
 #'
 #' @description
-#' Creates a new Dataset resource asynchronously.
-#' 
-#' Returns immediately with status CREATING. Poll GetDataset until status transitions to ACTIVE or CREATE_FAILED (with failureReason).
+#' Creates a new dataset resource asynchronously. Returns immediately with status CREATING. Poll [`get_dataset`][bedrockagentcorecontrol_get_dataset] until status transitions to ACTIVE or CREATE_FAILED.
 #'
 #' @usage
 #' bedrockagentcorecontrol_create_dataset(clientToken, datasetName,
 #'   description, source, schemaType, kmsKeyArn, tags)
 #'
-#' @param clientToken Optional idempotency token.
-#' @param datasetName &#91;required&#93; Human-readable name for the dataset. Unique within the account (case-insensitive). Immutable after creation.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param datasetName &#91;required&#93; Human-readable name for the dataset. Must be unique within the account. Immutable after creation.
 #' @param description A description of the dataset.
 #' @param source &#91;required&#93; Source of initial examples. Provide either inline examples or an S3 URI pointing to a JSONL file.
 #' @param schemaType &#91;required&#93; Versioned schema type governing the structure of examples. Immutable after creation.
-#' @param kmsKeyArn Optional AWS KMS key ARN for SSE-KMS on service S3 writes.
+#' @param kmsKeyArn Optional KMS key ARN for server-side encryption on service Amazon S3 writes.
 #' @param tags A map of tag keys and values to assign to the dataset.
 #'
 #' @return
@@ -818,7 +1151,7 @@ bedrockagentcorecontrol_create_configuration_bundle <- function(clientToken = NU
 #'       s3Uri = "string"
 #'     )
 #'   ),
-#'   schemaType = "AGENTCORE_EVALUATION_PREDEFINED_V1"|"AGENTCORE_EVALUATION_SIMULATED_V1",
+#'   schemaType = "AGENTCORE_EVALUATION_PREDEFINED_V1"|"AGENTCORE_EVALUATION_SIMULATED_V1"|"THIRD_PARTY_EVALUATION_V1",
 #'   kmsKeyArn = "string",
 #'   tags = list(
 #'     "string"
@@ -853,13 +1186,7 @@ bedrockagentcorecontrol_create_dataset <- function(clientToken = NULL, datasetNa
 #' Publishes the current DRAFT as a new numbered version
 #'
 #' @description
-#' Publishes the current DRAFT as a new numbered version.
-#' 
-#' Snapshots the DRAFT examples as the next version (1, 2, 3, ...). The DRAFT is preserved and remains editable after publishing. Returns immediately with status UPDATING. Poll GetDataset until status transitions to ACTIVE (draftStatus=UNMODIFIED) or UPDATE_FAILED.
-#' 
-#' **State guard:** Returns ConflictException (DATASET_NOT_READY) if status is in \{CREATING, UPDATING, DELETING\}, or DATASET_IN_FAILED_STATE if status is in \{CREATE_FAILED, DELETE_FAILED\}.
-#' 
-#' **Quota:** MAX_VERSIONS_PER_DATASET applies to published versions only (not DRAFT).
+#' Publishes the current DRAFT as a new numbered version. The DRAFT is preserved and remains editable after publishing. Returns immediately with status UPDATING. Poll [`get_dataset`][bedrockagentcorecontrol_get_dataset] until status transitions to ACTIVE or UPDATE_FAILED.
 #'
 #' @usage
 #' bedrockagentcorecontrol_create_dataset_version(datasetId, clientToken)
@@ -979,6 +1306,15 @@ bedrockagentcorecontrol_create_dataset_version <- function(datasetId, clientToke
 #'             )
 #'           ),
 #'           additionalModelRequestFields = list()
+#'         ),
+#'         responsesEvaluatorModelConfig = list(
+#'           modelId = "string",
+#'           maxOutputTokens = 123,
+#'           temperature = 123.0,
+#'           topP = 123.0,
+#'           reasoning = list(
+#'             effort = "string"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -986,6 +1322,32 @@ bedrockagentcorecontrol_create_dataset_version <- function(datasetId, clientToke
 #'       lambdaConfig = list(
 #'         lambdaArn = "string",
 #'         lambdaTimeoutInSeconds = 123
+#'       )
+#'     ),
+#'     derived = list(
+#'       baseEvaluatorId = "string",
+#'       modelConfig = list(
+#'         bedrockEvaluatorModelConfig = list(
+#'           modelId = "string",
+#'           inferenceConfig = list(
+#'             maxTokens = 123,
+#'             temperature = 123.0,
+#'             topP = 123.0,
+#'             stopSequences = list(
+#'               "string"
+#'             )
+#'           ),
+#'           additionalModelRequestFields = list()
+#'         ),
+#'         responsesEvaluatorModelConfig = list(
+#'           modelId = "string",
+#'           maxOutputTokens = 123,
+#'           temperature = 123.0,
+#'           topP = 123.0,
+#'           reasoning = list(
+#'             effort = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1107,6 +1469,9 @@ bedrockagentcorecontrol_create_evaluator <- function(clientToken = NULL, evaluat
 #'       allowedScopes = list(
 #'         "string"
 #'       ),
+#'       advertisedScopeMapping = list(
+#'         "string"
+#'       ),
 #'       customClaims = list(
 #'         list(
 #'           inboundTokenClaimName = "string",
@@ -1164,10 +1529,25 @@ bedrockagentcorecontrol_create_evaluator <- function(clientToken = NULL, evaluat
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
 #'   kmsKeyArn = "string",
+#'   customTransformConfiguration = list(
+#'     lambda = list(
+#'       arn = "string"
+#'     )
+#'   ),
 #'   interceptorConfigurations = list(
 #'     list(
 #'       interceptor = list(
@@ -1179,7 +1559,14 @@ bedrockagentcorecontrol_create_evaluator <- function(clientToken = NULL, evaluat
 #'         "REQUEST"|"RESPONSE"
 #'       ),
 #'       inputConfiguration = list(
-#'         passRequestHeaders = TRUE|FALSE
+#'         passRequestHeaders = TRUE|FALSE,
+#'         payloadFilter = list(
+#'           exclude = list(
+#'             list(
+#'               field = "RESPONSE_BODY"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1190,7 +1577,11 @@ bedrockagentcorecontrol_create_evaluator <- function(clientToken = NULL, evaluat
 #'   workloadIdentityDetails = list(
 #'     workloadIdentityArn = "string"
 #'   ),
-#'   exceptionLevel = "DEBUG"
+#'   exceptionLevel = "DEBUG",
+#'   webAclArn = "string",
+#'   wafConfiguration = list(
+#'     failureMode = "FAIL_CLOSE"|"FAIL_OPEN"
+#'   )
 #' )
 #' ```
 #'
@@ -1230,6 +1621,9 @@ bedrockagentcorecontrol_create_evaluator <- function(clientToken = NULL, evaluat
 #'       allowedScopes = list(
 #'         "string"
 #'       ),
+#'       advertisedScopeMapping = list(
+#'         "string"
+#'       ),
 #'       customClaims = list(
 #'         list(
 #'           inboundTokenClaimName = "string",
@@ -1287,6 +1681,16 @@ bedrockagentcorecontrol_create_evaluator <- function(clientToken = NULL, evaluat
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1302,7 +1706,14 @@ bedrockagentcorecontrol_create_evaluator <- function(clientToken = NULL, evaluat
 #'         "REQUEST"|"RESPONSE"
 #'       ),
 #'       inputConfiguration = list(
-#'         passRequestHeaders = TRUE|FALSE
+#'         passRequestHeaders = TRUE|FALSE,
+#'         payloadFilter = list(
+#'           exclude = list(
+#'             list(
+#'               field = "RESPONSE_BODY"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1340,6 +1751,129 @@ bedrockagentcorecontrol_create_gateway <- function(name, description = NULL, cli
   return(response)
 }
 .bedrockagentcorecontrol$operations$create_gateway <- bedrockagentcorecontrol_create_gateway
+
+#' Creates a rate limit for a gateway
+#'
+#' @description
+#' Creates a rate limit for a gateway. Rate limits define throttling rules for each dimension that control request rates, token consumption rates, and concurrent connections through the gateway.
+#'
+#' @usage
+#' bedrockagentcorecontrol_create_gateway_rate_limit(gatewayIdentifier,
+#'   clientToken, rateLimitId, description, dimensionKeys, entries)
+#'
+#' @param gatewayIdentifier &#91;required&#93; The unique identifier of the gateway to create the rate limit for.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param rateLimitId An optional customer-defined identifier for the rate limit. If not provided, the system generates one.
+#' @param description An optional human-readable description for this rate limit. If not provided, the rate limit is created without a description.
+#' @param dimensionKeys &#91;required&#93; The ordered list of dimension key names that define the scope of this rate limit. Must be unique per gateway—no two rate limits can share the same dimension keys.
+#' @param entries &#91;required&#93; The rule entries that map dimension values to rate configurations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   rateLimitId = "string",
+#'   gatewayIdentifier = "string",
+#'   description = "string",
+#'   dimensionKeys = list(
+#'     "string"
+#'   ),
+#'   entries = list(
+#'     list(
+#'       dimensions = list(
+#'         "string"
+#'       ),
+#'       requests = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       ),
+#'       tokens = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       ),
+#'       connections = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_gateway_rate_limit(
+#'   gatewayIdentifier = "string",
+#'   clientToken = "string",
+#'   rateLimitId = "string",
+#'   description = "string",
+#'   dimensionKeys = list(
+#'     "string"
+#'   ),
+#'   entries = list(
+#'     list(
+#'       dimensions = list(
+#'         "string"
+#'       ),
+#'       requests = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       ),
+#'       tokens = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       ),
+#'       connections = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_create_gateway_rate_limit
+#'
+#' @aliases bedrockagentcorecontrol_create_gateway_rate_limit
+bedrockagentcorecontrol_create_gateway_rate_limit <- function(gatewayIdentifier, clientToken = NULL, rateLimitId = NULL, description = NULL, dimensionKeys, entries) {
+  op <- new_operation(
+    name = "CreateGatewayRateLimit",
+    http_method = "POST",
+    http_path = "/gateways/{gatewayIdentifier}/rate-limits",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$create_gateway_rate_limit_input(gatewayIdentifier = gatewayIdentifier, clientToken = clientToken, rateLimitId = rateLimitId, description = description, dimensionKeys = dimensionKeys, entries = entries)
+  output <- .bedrockagentcorecontrol$create_gateway_rate_limit_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$create_gateway_rate_limit <- bedrockagentcorecontrol_create_gateway_rate_limit
 
 #' Creates a rule for a gateway
 #'
@@ -1547,7 +2081,7 @@ bedrockagentcorecontrol_create_gateway_rule <- function(gatewayIdentifier, clien
 #'   privateEndpoint)
 #'
 #' @param gatewayIdentifier &#91;required&#93; The identifier of the gateway to create a target for.
-#' @param name &#91;required&#93; The name of the gateway target. The name must be unique within the gateway.
+#' @param name The name of the gateway target. The name must be unique within the gateway.
 #' @param description The description of the gateway target.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param targetConfiguration &#91;required&#93; The configuration settings for the target, including endpoint information and schema definitions.
@@ -1659,12 +2193,103 @@ bedrockagentcorecontrol_create_gateway_rule <- function(gatewayIdentifier, clien
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string",
+#'           version = "string"
+#'         ),
+#'         enabled = list(
+#'           "string"
+#'         ),
+#'         configurations = list(
+#'           list(
+#'             name = "string",
+#'             description = "string",
+#'             parameterValues = list(),
+#'             parameterOverrides = list(
+#'               list(
+#'                 path = "string",
+#'                 description = "string",
+#'                 visible = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     http = list(
 #'       agentcoreRuntime = list(
 #'         arn = "string",
-#'         qualifier = "string"
+#'         qualifier = "string",
+#'         schema = list(
+#'           source = list(
+#'             s3 = list(
+#'               uri = "string",
+#'               bucketOwnerAccountId = "string"
+#'             ),
+#'             inlinePayload = "string"
+#'           )
+#'         )
+#'       ),
+#'       passthrough = list(
+#'         endpoint = "string",
+#'         protocolType = "MCP"|"A2A"|"INFERENCE"|"CUSTOM",
+#'         schema = list(
+#'           source = list(
+#'             s3 = list(
+#'               uri = "string",
+#'               bucketOwnerAccountId = "string"
+#'             ),
+#'             inlinePayload = "string"
+#'           )
+#'         ),
+#'         stickinessConfiguration = list(
+#'           identifier = "string",
+#'           timeout = 123,
+#'           compositeIdentifier = list(
+#'             "string"
+#'           )
+#'         ),
+#'         staticQueryParameters = list(
+#'           "string"
+#'         ),
+#'         staticQueryParameterConflictResolution = "CLIENT_OVERRIDE"|"STATIC_OVERRIDE"
+#'       ),
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string"
+#'         ),
+#'         parameters = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     inference = list(
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string"
+#'         )
+#'       ),
+#'       provider = list(
+#'         endpoint = "string",
+#'         modelMapping = list(
+#'           providerPrefix = list(
+#'             strip = TRUE|FALSE,
+#'             separator = "string"
+#'           )
+#'         ),
+#'         operations = list(
+#'           list(
+#'             path = "string",
+#'             providerPath = "string",
+#'             models = list(
+#'               list(
+#'                 model = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1839,12 +2464,103 @@ bedrockagentcorecontrol_create_gateway_rule <- function(gatewayIdentifier, clien
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string",
+#'           version = "string"
+#'         ),
+#'         enabled = list(
+#'           "string"
+#'         ),
+#'         configurations = list(
+#'           list(
+#'             name = "string",
+#'             description = "string",
+#'             parameterValues = list(),
+#'             parameterOverrides = list(
+#'               list(
+#'                 path = "string",
+#'                 description = "string",
+#'                 visible = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     http = list(
 #'       agentcoreRuntime = list(
 #'         arn = "string",
-#'         qualifier = "string"
+#'         qualifier = "string",
+#'         schema = list(
+#'           source = list(
+#'             s3 = list(
+#'               uri = "string",
+#'               bucketOwnerAccountId = "string"
+#'             ),
+#'             inlinePayload = "string"
+#'           )
+#'         )
+#'       ),
+#'       passthrough = list(
+#'         endpoint = "string",
+#'         protocolType = "MCP"|"A2A"|"INFERENCE"|"CUSTOM",
+#'         schema = list(
+#'           source = list(
+#'             s3 = list(
+#'               uri = "string",
+#'               bucketOwnerAccountId = "string"
+#'             ),
+#'             inlinePayload = "string"
+#'           )
+#'         ),
+#'         stickinessConfiguration = list(
+#'           identifier = "string",
+#'           timeout = 123,
+#'           compositeIdentifier = list(
+#'             "string"
+#'           )
+#'         ),
+#'         staticQueryParameters = list(
+#'           "string"
+#'         ),
+#'         staticQueryParameterConflictResolution = "CLIENT_OVERRIDE"|"STATIC_OVERRIDE"
+#'       ),
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string"
+#'         ),
+#'         parameters = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     inference = list(
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string"
+#'         )
+#'       ),
+#'       provider = list(
+#'         endpoint = "string",
+#'         modelMapping = list(
+#'           providerPrefix = list(
+#'             strip = TRUE|FALSE,
+#'             separator = "string"
+#'           )
+#'         ),
+#'         operations = list(
+#'           list(
+#'             path = "string",
+#'             providerPath = "string",
+#'             models = list(
+#'               list(
+#'                 model = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1914,7 +2630,7 @@ bedrockagentcorecontrol_create_gateway_rule <- function(gatewayIdentifier, clien
 #' @rdname bedrockagentcorecontrol_create_gateway_target
 #'
 #' @aliases bedrockagentcorecontrol_create_gateway_target
-bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, name, description = NULL, clientToken = NULL, targetConfiguration, credentialProviderConfigurations = NULL, metadataConfiguration = NULL, privateEndpoint = NULL) {
+bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, name = NULL, description = NULL, clientToken = NULL, targetConfiguration, credentialProviderConfigurations = NULL, metadataConfiguration = NULL, privateEndpoint = NULL) {
   op <- new_operation(
     name = "CreateGatewayTarget",
     http_method = "POST",
@@ -1933,10 +2649,10 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 }
 .bedrockagentcorecontrol$operations$create_gateway_target <- bedrockagentcorecontrol_create_gateway_target
 
-#' Operation to create a Harness
+#' Operation to create a harness
 #'
 #' @description
-#' Operation to create a Harness.
+#' Operation to create a harness.
 #'
 #' @usage
 #' bedrockagentcorecontrol_create_harness(harnessName, clientToken,
@@ -1973,6 +2689,7 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'     harnessName = "string",
 #'     arn = "string",
 #'     status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED",
+#'     harnessVersion = "string",
 #'     executionRoleArn = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
@@ -1985,14 +2702,18 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'         modelId = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "converse_stream"|"responses"|"chat_completions",
+#'         additionalParams = list()
 #'       ),
 #'       openAiModelConfig = list(
 #'         modelId = "string",
 #'         apiKeyArn = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "chat_completions"|"responses",
+#'         additionalParams = list()
 #'       ),
 #'       geminiModelConfig = list(
 #'         modelId = "string",
@@ -2000,7 +2721,17 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'         maxTokens = 123,
 #'         temperature = 123.0,
 #'         topP = 123.0,
-#'         topK = 123
+#'         topK = 123,
+#'         additionalParams = list()
+#'       ),
+#'       liteLlmModelConfig = list(
+#'         modelId = "string",
+#'         apiKeyArn = "string",
+#'         apiBase = "string",
+#'         maxTokens = 123,
+#'         temperature = 123.0,
+#'         topP = 123.0,
+#'         additionalParams = list()
 #'       )
 #'     ),
 #'     systemPrompt = list(
@@ -2052,7 +2783,23 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'     ),
 #'     skills = list(
 #'       list(
-#'         path = "string"
+#'         path = "string",
+#'         s3 = list(
+#'           uri = "string"
+#'         ),
+#'         git = list(
+#'           url = "string",
+#'           path = "string",
+#'           auth = list(
+#'             credentialArn = "string",
+#'             username = "string"
+#'           )
+#'         ),
+#'         awsSkills = list(
+#'           paths = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     allowedTools = list(
@@ -2104,6 +2851,10 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'             efsAccessPoint = list(
 #'               accessPointArn = "string",
 #'               mountPath = "string"
+#'             ),
+#'             capacityProviderVolume = list(
+#'               volumeName = "string",
+#'               mountPath = "string"
 #'             )
 #'           )
 #'         )
@@ -2127,6 +2878,9 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'           "string"
 #'         ),
 #'         allowedScopes = list(
+#'           "string"
+#'         ),
+#'         advertisedScopeMapping = list(
 #'           "string"
 #'         ),
 #'         customClaims = list(
@@ -2186,6 +2940,16 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         allowedWorkloadConfiguration = list(
+#'           hostingEnvironments = list(
+#'             list(
+#'               arn = "string"
+#'             )
+#'           ),
+#'           workloadIdentities = list(
+#'             "string"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -2201,7 +2965,16 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'             strategyId = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       managedMemoryConfiguration = list(
+#'         arn = "string",
+#'         strategies = list(
+#'           "SEMANTIC"|"SUMMARIZATION"|"USER_PREFERENCE"|"EPISODIC"
+#'         ),
+#'         eventExpiryDuration = 123,
+#'         encryptionKeyArn = "string"
+#'       ),
+#'       disabled = list()
 #'     ),
 #'     maxIterations = 123,
 #'     maxTokens = 123,
@@ -2247,6 +3020,10 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'           efsAccessPoint = list(
 #'             accessPointArn = "string",
 #'             mountPath = "string"
+#'           ),
+#'           capacityProviderVolume = list(
+#'             volumeName = "string",
+#'             mountPath = "string"
 #'           )
 #'         )
 #'       )
@@ -2270,6 +3047,9 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'         "string"
 #'       ),
 #'       allowedScopes = list(
+#'         "string"
+#'       ),
+#'       advertisedScopeMapping = list(
 #'         "string"
 #'       ),
 #'       customClaims = list(
@@ -2329,6 +3109,16 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -2337,14 +3127,18 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'       modelId = "string",
 #'       maxTokens = 123,
 #'       temperature = 123.0,
-#'       topP = 123.0
+#'       topP = 123.0,
+#'       apiFormat = "converse_stream"|"responses"|"chat_completions",
+#'       additionalParams = list()
 #'     ),
 #'     openAiModelConfig = list(
 #'       modelId = "string",
 #'       apiKeyArn = "string",
 #'       maxTokens = 123,
 #'       temperature = 123.0,
-#'       topP = 123.0
+#'       topP = 123.0,
+#'       apiFormat = "chat_completions"|"responses",
+#'       additionalParams = list()
 #'     ),
 #'     geminiModelConfig = list(
 #'       modelId = "string",
@@ -2352,7 +3146,17 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'       maxTokens = 123,
 #'       temperature = 123.0,
 #'       topP = 123.0,
-#'       topK = 123
+#'       topK = 123,
+#'       additionalParams = list()
+#'     ),
+#'     liteLlmModelConfig = list(
+#'       modelId = "string",
+#'       apiKeyArn = "string",
+#'       apiBase = "string",
+#'       maxTokens = 123,
+#'       temperature = 123.0,
+#'       topP = 123.0,
+#'       additionalParams = list()
 #'     )
 #'   ),
 #'   systemPrompt = list(
@@ -2404,7 +3208,23 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'   ),
 #'   skills = list(
 #'     list(
-#'       path = "string"
+#'       path = "string",
+#'       s3 = list(
+#'         uri = "string"
+#'       ),
+#'       git = list(
+#'         url = "string",
+#'         path = "string",
+#'         auth = list(
+#'           credentialArn = "string",
+#'           username = "string"
+#'         )
+#'       ),
+#'       awsSkills = list(
+#'         paths = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   allowedTools = list(
@@ -2422,7 +3242,16 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #'           strategyId = "string"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     managedMemoryConfiguration = list(
+#'       arn = "string",
+#'       strategies = list(
+#'         "SEMANTIC"|"SUMMARIZATION"|"USER_PREFERENCE"|"EPISODIC"
+#'       ),
+#'       eventExpiryDuration = 123,
+#'       encryptionKeyArn = "string"
+#'     ),
+#'     disabled = list()
 #'   ),
 #'   truncation = list(
 #'     strategy = "sliding_window"|"summarization"|"none",
@@ -2470,6 +3299,84 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 }
 .bedrockagentcorecontrol$operations$create_harness <- bedrockagentcorecontrol_create_harness
 
+#' Operation to create a harness endpoint
+#'
+#' @description
+#' Operation to create a harness endpoint.
+#'
+#' @usage
+#' bedrockagentcorecontrol_create_harness_endpoint(harnessId, endpointName,
+#'   targetVersion, description, clientToken, tags)
+#'
+#' @param harnessId &#91;required&#93; The ID of the harness to create an endpoint for.
+#' @param endpointName &#91;required&#93; The name of the endpoint. Must start with a letter and contain only alphanumeric characters and underscores.
+#' @param targetVersion The harness version that the endpoint points to and serves invocations from.
+#' @param description A description of the endpoint.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the request.
+#' @param tags Tags to apply to the endpoint resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   endpoint = list(
+#'     harnessId = "string",
+#'     harnessName = "string",
+#'     endpointName = "string",
+#'     arn = "string",
+#'     status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     liveVersion = "string",
+#'     targetVersion = "string",
+#'     description = "string",
+#'     failureReason = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_harness_endpoint(
+#'   harnessId = "string",
+#'   endpointName = "string",
+#'   targetVersion = "string",
+#'   description = "string",
+#'   clientToken = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_create_harness_endpoint
+#'
+#' @aliases bedrockagentcorecontrol_create_harness_endpoint
+bedrockagentcorecontrol_create_harness_endpoint <- function(harnessId, endpointName, targetVersion = NULL, description = NULL, clientToken = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateHarnessEndpoint",
+    http_method = "POST",
+    http_path = "/harnesses/{harnessId}/endpoints",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$create_harness_endpoint_input(harnessId = harnessId, endpointName = endpointName, targetVersion = targetVersion, description = description, clientToken = clientToken, tags = tags)
+  output <- .bedrockagentcorecontrol$create_harness_endpoint_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$create_harness_endpoint <- bedrockagentcorecontrol_create_harness_endpoint
+
 #' Creates a new Amazon Bedrock AgentCore Memory resource
 #'
 #' @description
@@ -2478,7 +3385,8 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #' @usage
 #' bedrockagentcorecontrol_create_memory(clientToken, name, description,
 #'   encryptionKeyArn, memoryExecutionRoleArn, eventExpiryDuration,
-#'   memoryStrategies, indexedKeys, streamDeliveryResources, tags)
+#'   memoryStrategies, indexedKeys, namespaceKeys, streamDeliveryResources,
+#'   tags)
 #'
 #' @param clientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request but does not return an error.
 #' @param name &#91;required&#93; The name of the memory. The name must be unique within your account.
@@ -2488,6 +3396,7 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #' @param eventExpiryDuration &#91;required&#93; The duration after which memory events expire. Specified as an ISO 8601 duration.
 #' @param memoryStrategies The memory strategies to use for this memory. Strategies define how information is extracted, processed, and consolidated.
 #' @param indexedKeys Metadata keys to index for filtering. Once declared, indexed keys cannot be removed.
+#' @param namespaceKeys The namespace variable key definitions with optional validation rules. Use these `namespaceKeys` in `namespaceTemplates` to control namespace hierarchy.
 #' @param streamDeliveryResources Configuration for streaming memory record data to external resources.
 #' @param tags A map of tag keys and values to assign to an AgentCore Memory. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment.
 #'
@@ -2503,7 +3412,7 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #'     encryptionKeyArn = "string",
 #'     memoryExecutionRoleArn = "string",
 #'     eventExpiryDuration = 123,
-#'     status = "CREATING"|"ACTIVE"|"FAILED"|"DELETING",
+#'     status = "CREATING"|"ACTIVE"|"FAILED"|"DELETING"|"UPDATING",
 #'     failureReason = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
@@ -2570,6 +3479,7 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #'                     list(
 #'                       key = "string",
 #'                       type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                       extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                       extractionConfig = list(
 #'                         llmExtractionConfig = list(
 #'                           llmExtractionInstruction = "string",
@@ -2610,6 +3520,7 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #'                   list(
 #'                     key = "string",
 #'                     type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                     extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                     extractionConfig = list(
 #'                       llmExtractionConfig = list(
 #'                         llmExtractionInstruction = "string",
@@ -2678,6 +3589,7 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #'             list(
 #'               key = "string",
 #'               type = "STRING"|"STRINGLIST"|"NUMBER",
+#'               extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'               extractionConfig = list(
 #'                 llmExtractionConfig = list(
 #'                   llmExtractionInstruction = "string",
@@ -2712,6 +3624,17 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #'         type = "STRING"|"STRINGLIST"|"NUMBER"
 #'       )
 #'     ),
+#'     namespaceKeys = list(
+#'       list(
+#'         key = "string",
+#'         validation = list(
+#'           allowedValues = list(
+#'             "string"
+#'           ),
+#'           regexPattern = "string"
+#'         )
+#'       )
+#'     ),
 #'     streamDeliveryResources = list(
 #'       resources = list(
 #'         list(
@@ -2726,7 +3649,8 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     managedByResourceArn = "string"
 #'   )
 #' )
 #' ```
@@ -2756,6 +3680,7 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #'             list(
 #'               key = "string",
 #'               type = "STRING"|"STRINGLIST"|"NUMBER",
+#'               extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'               extractionConfig = list(
 #'                 llmExtractionConfig = list(
 #'                   llmExtractionInstruction = "string",
@@ -2797,6 +3722,7 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #'             list(
 #'               key = "string",
 #'               type = "STRING"|"STRINGLIST"|"NUMBER",
+#'               extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'               extractionConfig = list(
 #'                 llmExtractionConfig = list(
 #'                   llmExtractionInstruction = "string",
@@ -2838,6 +3764,7 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #'             list(
 #'               key = "string",
 #'               type = "STRING"|"STRINGLIST"|"NUMBER",
+#'               extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'               extractionConfig = list(
 #'                 llmExtractionConfig = list(
 #'                   llmExtractionInstruction = "string",
@@ -2924,6 +3851,7 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #'                   list(
 #'                     key = "string",
 #'                     type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                     extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                     extractionConfig = list(
 #'                       llmExtractionConfig = list(
 #'                         llmExtractionInstruction = "string",
@@ -2978,6 +3906,7 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #'             list(
 #'               key = "string",
 #'               type = "STRING"|"STRINGLIST"|"NUMBER",
+#'               extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'               extractionConfig = list(
 #'                 llmExtractionConfig = list(
 #'                   llmExtractionInstruction = "string",
@@ -3026,6 +3955,7 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #'               list(
 #'                 key = "string",
 #'                 type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                 extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                 extractionConfig = list(
 #'                   llmExtractionConfig = list(
 #'                     llmExtractionInstruction = "string",
@@ -3058,6 +3988,7 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #'             list(
 #'               key = "string",
 #'               type = "STRING"|"STRINGLIST"|"NUMBER",
+#'               extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'               extractionConfig = list(
 #'                 llmExtractionConfig = list(
 #'                   llmExtractionInstruction = "string",
@@ -3093,6 +4024,17 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #'       type = "STRING"|"STRINGLIST"|"NUMBER"
 #'     )
 #'   ),
+#'   namespaceKeys = list(
+#'     list(
+#'       key = "string",
+#'       validation = list(
+#'         allowedValues = list(
+#'           "string"
+#'         ),
+#'         regexPattern = "string"
+#'       )
+#'     )
+#'   ),
 #'   streamDeliveryResources = list(
 #'     resources = list(
 #'       list(
@@ -3119,7 +4061,7 @@ bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NU
 #' @rdname bedrockagentcorecontrol_create_memory
 #'
 #' @aliases bedrockagentcorecontrol_create_memory
-bedrockagentcorecontrol_create_memory <- function(clientToken = NULL, name, description = NULL, encryptionKeyArn = NULL, memoryExecutionRoleArn = NULL, eventExpiryDuration, memoryStrategies = NULL, indexedKeys = NULL, streamDeliveryResources = NULL, tags = NULL) {
+bedrockagentcorecontrol_create_memory <- function(clientToken = NULL, name, description = NULL, encryptionKeyArn = NULL, memoryExecutionRoleArn = NULL, eventExpiryDuration, memoryStrategies = NULL, indexedKeys = NULL, namespaceKeys = NULL, streamDeliveryResources = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateMemory",
     http_method = "POST",
@@ -3128,7 +4070,7 @@ bedrockagentcorecontrol_create_memory <- function(clientToken = NULL, name, desc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$create_memory_input(clientToken = clientToken, name = name, description = description, encryptionKeyArn = encryptionKeyArn, memoryExecutionRoleArn = memoryExecutionRoleArn, eventExpiryDuration = eventExpiryDuration, memoryStrategies = memoryStrategies, indexedKeys = indexedKeys, streamDeliveryResources = streamDeliveryResources, tags = tags)
+  input <- .bedrockagentcorecontrol$create_memory_input(clientToken = clientToken, name = name, description = description, encryptionKeyArn = encryptionKeyArn, memoryExecutionRoleArn = memoryExecutionRoleArn, eventExpiryDuration = eventExpiryDuration, memoryStrategies = memoryStrategies, indexedKeys = indexedKeys, namespaceKeys = namespaceKeys, streamDeliveryResources = streamDeliveryResources, tags = tags)
   output <- .bedrockagentcorecontrol$create_memory_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -3159,6 +4101,8 @@ bedrockagentcorecontrol_create_memory <- function(clientToken = NULL, name, desc
 #'   clientSecretArn = list(
 #'     secretArn = "string"
 #'   ),
+#'   clientSecretJsonKey = "string",
+#'   clientSecretSource = "MANAGED"|"EXTERNAL",
 #'   name = "string",
 #'   credentialProviderArn = "string",
 #'   callbackUrl = "string",
@@ -3179,6 +4123,16 @@ bedrockagentcorecontrol_create_memory <- function(clientToken = NULL, name, desc
 #'         )
 #'       ),
 #'       clientId = "string",
+#'       onBehalfOfTokenExchangeConfig = list(
+#'         grantType = "TOKEN_EXCHANGE"|"JWT_AUTHORIZATION_GRANT",
+#'         tokenExchangeGrantTypeConfig = list(
+#'           actorTokenContent = "NONE"|"M2M"|"AWS_IAM_ID_TOKEN_JWT",
+#'           actorTokenScopes = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       clientAuthenticationMethod = "CLIENT_SECRET_BASIC"|"CLIENT_SECRET_POST"|"AWS_IAM_ID_TOKEN_JWT"|"PRIVATE_KEY_JWT",
 #'       privateEndpoint = list(
 #'         selfManagedLatticeResource = list(
 #'           resourceConfigurationIdentifier = "string"
@@ -3222,16 +4176,20 @@ bedrockagentcorecontrol_create_memory <- function(clientToken = NULL, name, desc
 #'           )
 #'         )
 #'       ),
-#'       onBehalfOfTokenExchangeConfig = list(
-#'         grantType = "TOKEN_EXCHANGE"|"JWT_AUTHORIZATION_GRANT",
-#'         tokenExchangeGrantTypeConfig = list(
-#'           actorTokenContent = "NONE"|"M2M"|"AWS_IAM_ID_TOKEN_JWT",
-#'           actorTokenScopes = list(
-#'             "string"
+#'       privateKeyJwtConfig = list(
+#'         privateKeySource = list(
+#'           kmsKeySource = list(
+#'             kmsKeyArn = "string"
 #'           )
+#'         ),
+#'         signingAlgorithm = "RS256"|"PS256"|"ES256",
+#'         additionalHeaderClaims = list(
+#'           "string"
+#'         ),
+#'         additionalPayloadClaims = list(
+#'           "string"
 #'         )
-#'       ),
-#'       clientAuthenticationMethod = "CLIENT_SECRET_BASIC"|"CLIENT_SECRET_POST"|"AWS_IAM_ID_TOKEN_JWT"
+#'       )
 #'     ),
 #'     googleOauth2ProviderConfig = list(
 #'       oauthDiscovery = list(
@@ -3397,6 +4355,35 @@ bedrockagentcorecontrol_create_memory <- function(clientToken = NULL, name, desc
 #'       ),
 #'       clientId = "string",
 #'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL",
+#'       onBehalfOfTokenExchangeConfig = list(
+#'         grantType = "TOKEN_EXCHANGE"|"JWT_AUTHORIZATION_GRANT",
+#'         tokenExchangeGrantTypeConfig = list(
+#'           actorTokenContent = "NONE"|"M2M"|"AWS_IAM_ID_TOKEN_JWT",
+#'           actorTokenScopes = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       clientAuthenticationMethod = "CLIENT_SECRET_BASIC"|"CLIENT_SECRET_POST"|"AWS_IAM_ID_TOKEN_JWT"|"PRIVATE_KEY_JWT",
+#'       privateKeyJwtConfig = list(
+#'         privateKeySource = list(
+#'           kmsKeySource = list(
+#'             kmsKeyArn = "string"
+#'           )
+#'         ),
+#'         signingAlgorithm = "RS256"|"PS256"|"ES256",
+#'         additionalHeaderClaims = list(
+#'           "string"
+#'         ),
+#'         additionalPayloadClaims = list(
+#'           "string"
+#'         )
+#'       ),
 #'       privateEndpoint = list(
 #'         selfManagedLatticeResource = list(
 #'           resourceConfigurationIdentifier = "string"
@@ -3439,50 +4426,80 @@ bedrockagentcorecontrol_create_memory <- function(clientToken = NULL, name, desc
 #'             )
 #'           )
 #'         )
-#'       ),
-#'       onBehalfOfTokenExchangeConfig = list(
-#'         grantType = "TOKEN_EXCHANGE"|"JWT_AUTHORIZATION_GRANT",
-#'         tokenExchangeGrantTypeConfig = list(
-#'           actorTokenContent = "NONE"|"M2M"|"AWS_IAM_ID_TOKEN_JWT",
-#'           actorTokenScopes = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       clientAuthenticationMethod = "CLIENT_SECRET_BASIC"|"CLIENT_SECRET_POST"|"AWS_IAM_ID_TOKEN_JWT"
+#'       )
 #'     ),
 #'     googleOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     githubOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     slackOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     salesforceOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     microsoftOauth2ProviderConfig = list(
 #'       clientId = "string",
 #'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL",
 #'       tenantId = "string"
 #'     ),
 #'     atlassianOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     linkedinOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     includedOauth2ProviderConfig = list(
 #'       clientId = "string",
 #'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL",
 #'       issuer = "string",
 #'       authorizationEndpoint = "string",
 #'       tokenEndpoint = "string"
@@ -3527,14 +4544,17 @@ bedrockagentcorecontrol_create_oauth_2_credential_provider <- function(name, cre
 #' @usage
 #' bedrockagentcorecontrol_create_online_evaluation_config(clientToken,
 #'   onlineEvaluationConfigName, description, rule, dataSourceConfig,
-#'   evaluators, evaluationExecutionRoleArn, enableOnCreate, tags)
+#'   evaluators, insights, clusteringConfig, evaluationExecutionRoleArn,
+#'   enableOnCreate, tags)
 #'
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param onlineEvaluationConfigName &#91;required&#93; The name of the online evaluation configuration. Must be unique within your account.
 #' @param description The description of the online evaluation configuration that explains its monitoring purpose and scope.
 #' @param rule &#91;required&#93; The evaluation rule that defines sampling configuration, filters, and session detection settings for the online evaluation.
 #' @param dataSourceConfig &#91;required&#93; The data source configuration that specifies CloudWatch log groups and service names to monitor for agent traces.
-#' @param evaluators &#91;required&#93; The list of evaluators to apply during online evaluation. Can include both built-in evaluators and custom evaluators created with [`create_evaluator`][bedrockagentcorecontrol_create_evaluator].
+#' @param evaluators The list of evaluators to apply during online evaluation. Can include both built-in evaluators and custom evaluators created with [`create_evaluator`][bedrockagentcorecontrol_create_evaluator].
+#' @param insights The list of insight types to run against agent sessions.
+#' @param clusteringConfig Configuration for periodic batch evaluation clustering of insight results.
 #' @param evaluationExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants permissions to read from CloudWatch logs, write evaluation results, and invoke Amazon Bedrock models for evaluation. If the configuration references evaluators encrypted with a customer managed KMS key, this role must also have `kms:Decrypt` permission on the KMS key. The service validates this permission at configuration creation time. For more information, see [Encryption at rest for AgentCore Evaluations](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/evaluations-encryption.html).
 #' @param enableOnCreate &#91;required&#93; Whether to enable the online evaluation configuration immediately upon creation. If true, evaluation begins automatically.
 #' @param tags A map of tag keys and values to assign to an AgentCore Online Evaluation Config. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment.
@@ -3599,6 +4619,16 @@ bedrockagentcorecontrol_create_oauth_2_credential_provider <- function(name, cre
 #'       evaluatorId = "string"
 #'     )
 #'   ),
+#'   insights = list(
+#'     list(
+#'       insightId = "string"
+#'     )
+#'   ),
+#'   clusteringConfig = list(
+#'     frequencies = list(
+#'       "DAILY"|"WEEKLY"|"MONTHLY"
+#'     )
+#'   ),
 #'   evaluationExecutionRoleArn = "string",
 #'   enableOnCreate = TRUE|FALSE,
 #'   tags = list(
@@ -3612,7 +4642,7 @@ bedrockagentcorecontrol_create_oauth_2_credential_provider <- function(name, cre
 #' @rdname bedrockagentcorecontrol_create_online_evaluation_config
 #'
 #' @aliases bedrockagentcorecontrol_create_online_evaluation_config
-bedrockagentcorecontrol_create_online_evaluation_config <- function(clientToken = NULL, onlineEvaluationConfigName, description = NULL, rule, dataSourceConfig, evaluators, evaluationExecutionRoleArn, enableOnCreate, tags = NULL) {
+bedrockagentcorecontrol_create_online_evaluation_config <- function(clientToken = NULL, onlineEvaluationConfigName, description = NULL, rule, dataSourceConfig, evaluators = NULL, insights = NULL, clusteringConfig = NULL, evaluationExecutionRoleArn, enableOnCreate, tags = NULL) {
   op <- new_operation(
     name = "CreateOnlineEvaluationConfig",
     http_method = "POST",
@@ -3621,7 +4651,7 @@ bedrockagentcorecontrol_create_online_evaluation_config <- function(clientToken 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$create_online_evaluation_config_input(clientToken = clientToken, onlineEvaluationConfigName = onlineEvaluationConfigName, description = description, rule = rule, dataSourceConfig = dataSourceConfig, evaluators = evaluators, evaluationExecutionRoleArn = evaluationExecutionRoleArn, enableOnCreate = enableOnCreate, tags = tags)
+  input <- .bedrockagentcorecontrol$create_online_evaluation_config_input(clientToken = clientToken, onlineEvaluationConfigName = onlineEvaluationConfigName, description = description, rule = rule, dataSourceConfig = dataSourceConfig, evaluators = evaluators, insights = insights, clusteringConfig = clusteringConfig, evaluationExecutionRoleArn = evaluationExecutionRoleArn, enableOnCreate = enableOnCreate, tags = tags)
   output <- .bedrockagentcorecontrol$create_online_evaluation_config_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -3638,13 +4668,19 @@ bedrockagentcorecontrol_create_online_evaluation_config <- function(clientToken 
 #'
 #' @usage
 #' bedrockagentcorecontrol_create_payment_connector(paymentManagerId, name,
-#'   description, type, credentialProviderConfigurations, clientToken)
+#'   description, type, credentialProviderConfigurations, provisionMode,
+#'   clientToken)
 #'
 #' @param paymentManagerId &#91;required&#93; The unique identifier of the payment manager to create the connector for.
 #' @param name &#91;required&#93; The name of the payment connector.
 #' @param description A description of the payment connector.
 #' @param type &#91;required&#93; The type of payment connector, which determines the payment provider integration.
 #' @param credentialProviderConfigurations &#91;required&#93; The credential provider configurations for the payment connector. These configurations specify how the connector authenticates with the payment provider.
+#' @param provisionMode The provision mode for creating the payment connector. If you don't specify a value, the default is `MANUAL`.
+#' 
+#' -   `MANUAL` - You provide the credential provider configurations directly.
+#' 
+#' -   `QUICK_CREATE` - The service orchestrates OAuth consent and provisions the credential provider for you.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #'
 #' @return
@@ -3668,7 +4704,8 @@ bedrockagentcorecontrol_create_online_evaluation_config <- function(clientToken 
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   status = "CREATING"|"UPDATING"|"DELETING"|"READY"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"
+#'   status = "CREATING"|"UPDATING"|"DELETING"|"READY"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"AWS_MARKETPLACE_SUBSCRIPTION_REQUIRED"|"PENDING_AUTHENTICATION"|"PROVISIONING"|"AUTHENTICATION_EXPIRED"|"AUTHENTICATION_FAILED",
+#'   authorizationUrl = "string"
 #' )
 #' ```
 #'
@@ -3689,6 +4726,7 @@ bedrockagentcorecontrol_create_online_evaluation_config <- function(clientToken 
 #'       )
 #'     )
 #'   ),
+#'   provisionMode = "MANUAL"|"QUICK_CREATE",
 #'   clientToken = "string"
 #' )
 #' ```
@@ -3698,7 +4736,7 @@ bedrockagentcorecontrol_create_online_evaluation_config <- function(clientToken 
 #' @rdname bedrockagentcorecontrol_create_payment_connector
 #'
 #' @aliases bedrockagentcorecontrol_create_payment_connector
-bedrockagentcorecontrol_create_payment_connector <- function(paymentManagerId, name, description = NULL, type, credentialProviderConfigurations, clientToken = NULL) {
+bedrockagentcorecontrol_create_payment_connector <- function(paymentManagerId, name, description = NULL, type, credentialProviderConfigurations, provisionMode = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreatePaymentConnector",
     http_method = "POST",
@@ -3707,7 +4745,7 @@ bedrockagentcorecontrol_create_payment_connector <- function(paymentManagerId, n
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$create_payment_connector_input(paymentManagerId = paymentManagerId, name = name, description = description, type = type, credentialProviderConfigurations = credentialProviderConfigurations, clientToken = clientToken)
+  input <- .bedrockagentcorecontrol$create_payment_connector_input(paymentManagerId = paymentManagerId, name = name, description = description, type = type, credentialProviderConfigurations = credentialProviderConfigurations, provisionMode = provisionMode, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$create_payment_connector_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -3746,18 +4784,26 @@ bedrockagentcorecontrol_create_payment_connector <- function(paymentManagerId, n
 #'       apiKeySecretArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       apiKeySecretJsonKey = "string",
+#'       apiKeySecretSource = "MANAGED"|"EXTERNAL",
 #'       walletSecretArn = list(
 #'         secretArn = "string"
-#'       )
+#'       ),
+#'       walletSecretJsonKey = "string",
+#'       walletSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     stripePrivyConfiguration = list(
 #'       appId = "string",
 #'       appSecretArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       appSecretJsonKey = "string",
+#'       appSecretSource = "MANAGED"|"EXTERNAL",
 #'       authorizationPrivateKeyArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       authorizationPrivateKeyJsonKey = "string",
+#'       authorizationPrivateKeySource = "MANAGED"|"EXTERNAL",
 #'       authorizationId = "string"
 #'     )
 #'   )
@@ -3773,12 +4819,32 @@ bedrockagentcorecontrol_create_payment_connector <- function(paymentManagerId, n
 #'     coinbaseCdpConfiguration = list(
 #'       apiKeyId = "string",
 #'       apiKeySecret = "string",
-#'       walletSecret = "string"
+#'       apiKeySecretSource = "MANAGED"|"EXTERNAL",
+#'       apiKeySecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       walletSecret = "string",
+#'       walletSecretSource = "MANAGED"|"EXTERNAL",
+#'       walletSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       )
 #'     ),
 #'     stripePrivyConfiguration = list(
 #'       appId = "string",
 #'       appSecret = "string",
+#'       appSecretSource = "MANAGED"|"EXTERNAL",
+#'       appSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
 #'       authorizationPrivateKey = "string",
+#'       authorizationPrivateKeySource = "MANAGED"|"EXTERNAL",
+#'       authorizationPrivateKeyConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
 #'       authorizationId = "string"
 #'     )
 #'   ),
@@ -3821,7 +4887,8 @@ bedrockagentcorecontrol_create_payment_credential_provider <- function(name, cre
 #'
 #' @usage
 #' bedrockagentcorecontrol_create_payment_manager(name, description,
-#'   authorizerType, authorizerConfiguration, roleArn, clientToken, tags)
+#'   authorizerType, authorizerConfiguration, roleArn, clientToken, tags,
+#'   kmsKeyArn)
 #'
 #' @param name &#91;required&#93; The name of the payment manager.
 #' @param description A description of the payment manager.
@@ -3834,6 +4901,7 @@ bedrockagentcorecontrol_create_payment_credential_provider <- function(name, cre
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that the payment manager assumes to access resources on your behalf.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param tags A map of tag keys and values to assign to the payment manager.
+#' @param kmsKeyArn The Amazon Resource Name (ARN) of the customer managed KMS key to use for encrypting sensitive payment manager data at rest. If you don't specify a key, the data is encrypted with an Amazon Web Services owned key.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3855,6 +4923,9 @@ bedrockagentcorecontrol_create_payment_credential_provider <- function(name, cre
 #'       allowedScopes = list(
 #'         "string"
 #'       ),
+#'       advertisedScopeMapping = list(
+#'         "string"
+#'       ),
 #'       customClaims = list(
 #'         list(
 #'           inboundTokenClaimName = "string",
@@ -3912,6 +4983,16 @@ bedrockagentcorecontrol_create_payment_credential_provider <- function(name, cre
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -3925,7 +5006,8 @@ bedrockagentcorecontrol_create_payment_credential_provider <- function(name, cre
 #'   status = "CREATING"|"UPDATING"|"DELETING"|"READY"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -3947,6 +5029,9 @@ bedrockagentcorecontrol_create_payment_credential_provider <- function(name, cre
 #'       allowedScopes = list(
 #'         "string"
 #'       ),
+#'       advertisedScopeMapping = list(
+#'         "string"
+#'       ),
 #'       customClaims = list(
 #'         list(
 #'           inboundTokenClaimName = "string",
@@ -4004,6 +5089,16 @@ bedrockagentcorecontrol_create_payment_credential_provider <- function(name, cre
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -4011,7 +5106,8 @@ bedrockagentcorecontrol_create_payment_credential_provider <- function(name, cre
 #'   clientToken = "string",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -4020,7 +5116,7 @@ bedrockagentcorecontrol_create_payment_credential_provider <- function(name, cre
 #' @rdname bedrockagentcorecontrol_create_payment_manager
 #'
 #' @aliases bedrockagentcorecontrol_create_payment_manager
-bedrockagentcorecontrol_create_payment_manager <- function(name, description = NULL, authorizerType, authorizerConfiguration = NULL, roleArn, clientToken = NULL, tags = NULL) {
+bedrockagentcorecontrol_create_payment_manager <- function(name, description = NULL, authorizerType, authorizerConfiguration = NULL, roleArn, clientToken = NULL, tags = NULL, kmsKeyArn = NULL) {
   op <- new_operation(
     name = "CreatePaymentManager",
     http_method = "POST",
@@ -4029,7 +5125,7 @@ bedrockagentcorecontrol_create_payment_manager <- function(name, description = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$create_payment_manager_input(name = name, description = description, authorizerType = authorizerType, authorizerConfiguration = authorizerConfiguration, roleArn = roleArn, clientToken = clientToken, tags = tags)
+  input <- .bedrockagentcorecontrol$create_payment_manager_input(name = name, description = description, authorizerType = authorizerType, authorizerConfiguration = authorizerConfiguration, roleArn = roleArn, clientToken = clientToken, tags = tags, kmsKeyArn = kmsKeyArn)
   output <- .bedrockagentcorecontrol$create_payment_manager_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -4043,15 +5139,18 @@ bedrockagentcorecontrol_create_payment_manager <- function(name, description = N
 #'
 #' @description
 #' Creates a policy within the AgentCore Policy system. Policies provide real-time, deterministic control over agentic interactions with AgentCore Gateway. Using the Cedar policy language, you can define fine-grained policies that specify which interactions with Gateway tools are permitted based on input parameters and OAuth claims, ensuring agents operate within defined boundaries and business rules. The policy is validated during creation against the Cedar schema generated from the Gateway's tools' input schemas, which defines the available tools, their parameters, and expected data types. This is an asynchronous operation. Use the [`get_policy`][bedrockagentcorecontrol_get_policy] operation to poll the `status` field to track completion.
+#' 
+#' If the new policy is a temporal policy, creating it invalidates the policy engine's active temporal sessions. For more information about temporal policy sessions, see [session-based temporal policies](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/policy-session-based-temporal.html). The policy engine returns an HTTP 409 `ConflictException` to in-flight sessions. To resume, you must start a new session with a new session ID.
 #'
 #' @usage
 #' bedrockagentcorecontrol_create_policy(name, definition, description,
-#'   validationMode, policyEngineId, clientToken)
+#'   validationMode, enforcementMode, policyEngineId, clientToken)
 #'
 #' @param name &#91;required&#93; The customer-assigned immutable name for the policy. Must be unique within the account. This name is used for policy identification and cannot be changed after creation.
 #' @param definition &#91;required&#93; The Cedar policy statement that defines the access control rules. This contains the actual policy logic written in Cedar policy language, specifying effect (permit or forbid), principals, actions, resources, and conditions for agent behavior control.
 #' @param description A human-readable description of the policy's purpose and functionality (1-4,096 characters). This helps policy administrators understand the policy's intent, business rules, and operational scope. Use this field to document why the policy exists, what business requirement it addresses, and any special considerations for maintenance. Clear descriptions are essential for policy governance, auditing, and troubleshooting.
 #' @param validationMode The validation mode for the policy creation. Determines how Cedar analyzer validation results are handled during policy creation. FAIL_ON_ANY_FINDINGS (default) runs the Cedar analyzer to validate the policy against the Cedar schema and tool context, failing creation if the analyzer detects any validation issues to ensure strict conformance. IGNORE_ALL_FINDINGS runs the Cedar analyzer but allows policy creation even if validation issues are detected, useful for testing or when the policy schema is evolving. Use FAIL_ON_ANY_FINDINGS for production policies to ensure correctness, and IGNORE_ALL_FINDINGS only when you understand and accept the analyzer findings.
+#' @param enforcementMode The enforcement mode for the policy. Run this policy in `LOG_ONLY` mode to collect data on how it affects your application. Once you are satisfied with the data gathered, switch the policy to `ACTIVE`. Defaults to `ACTIVE`.
 #' @param policyEngineId &#91;required&#93; The identifier of the policy engine which contains this policy. Policy engines group related policies and provide the execution context for policy evaluation.
 #' @param clientToken A unique, case-sensitive identifier to ensure the idempotency of the request. The AWS SDK automatically generates this token, so you don't need to provide it in most cases. If you retry a request with the same client token, the service returns the same response without creating a duplicate policy.
 #'
@@ -4070,6 +5169,7 @@ bedrockagentcorecontrol_create_payment_manager <- function(name, description = N
 #'   ),
 #'   policyArn = "string",
 #'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'   enforcementMode = "ACTIVE"|"LOG_ONLY",
 #'   definition = list(
 #'     cedar = list(
 #'       statement = "string"
@@ -4077,6 +5177,9 @@ bedrockagentcorecontrol_create_payment_manager <- function(name, description = N
 #'     policyGeneration = list(
 #'       policyGenerationId = "string",
 #'       policyGenerationAssetId = "string"
+#'     ),
+#'     policy = list(
+#'       statement = "string"
 #'     )
 #'   ),
 #'   description = "string",
@@ -4097,10 +5200,14 @@ bedrockagentcorecontrol_create_payment_manager <- function(name, description = N
 #'     policyGeneration = list(
 #'       policyGenerationId = "string",
 #'       policyGenerationAssetId = "string"
+#'     ),
+#'     policy = list(
+#'       statement = "string"
 #'     )
 #'   ),
 #'   description = "string",
 #'   validationMode = "FAIL_ON_ANY_FINDINGS"|"IGNORE_ALL_FINDINGS",
+#'   enforcementMode = "ACTIVE"|"LOG_ONLY",
 #'   policyEngineId = "string",
 #'   clientToken = "string"
 #' )
@@ -4111,7 +5218,7 @@ bedrockagentcorecontrol_create_payment_manager <- function(name, description = N
 #' @rdname bedrockagentcorecontrol_create_policy
 #'
 #' @aliases bedrockagentcorecontrol_create_policy
-bedrockagentcorecontrol_create_policy <- function(name, definition, description = NULL, validationMode = NULL, policyEngineId, clientToken = NULL) {
+bedrockagentcorecontrol_create_policy <- function(name, definition, description = NULL, validationMode = NULL, enforcementMode = NULL, policyEngineId, clientToken = NULL) {
   op <- new_operation(
     name = "CreatePolicy",
     http_method = "POST",
@@ -4120,7 +5227,7 @@ bedrockagentcorecontrol_create_policy <- function(name, definition, description 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$create_policy_input(name = name, definition = definition, description = description, validationMode = validationMode, policyEngineId = policyEngineId, clientToken = clientToken)
+  input <- .bedrockagentcorecontrol$create_policy_input(name = name, definition = definition, description = description, validationMode = validationMode, enforcementMode = enforcementMode, policyEngineId = policyEngineId, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$create_policy_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -4253,6 +5360,9 @@ bedrockagentcorecontrol_create_policy_engine <- function(name, description = NUL
 #'       allowedScopes = list(
 #'         "string"
 #'       ),
+#'       advertisedScopeMapping = list(
+#'         "string"
+#'       ),
 #'       customClaims = list(
 #'         list(
 #'           inboundTokenClaimName = "string",
@@ -4309,6 +5419,16 @@ bedrockagentcorecontrol_create_policy_engine <- function(name, description = NUL
 #'               routingDomain = "string"
 #'             )
 #'           )
+#'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
 #'         )
 #'       )
 #'     )
@@ -4539,16 +5659,18 @@ bedrockagentcorecontrol_create_workload_identity <- function(name, allowedResour
 }
 .bedrockagentcorecontrol$operations$create_workload_identity <- bedrockagentcorecontrol_create_workload_identity
 
-#' Deletes an Amazon Bedrock AgentCore Runtime
+#' Deletes an Amazon Bedrock AgentCore Runtime, or a single version of an
+#' AgentCore Runtime when you provide the version qualifier
 #'
 #' @description
-#' Deletes an Amazon Bedrock AgentCore Runtime.
+#' Deletes an Amazon Bedrock AgentCore Runtime, or a single version of an AgentCore Runtime when you provide the version qualifier.
 #'
 #' @usage
 #' bedrockagentcorecontrol_delete_agent_runtime(agentRuntimeId,
-#'   clientToken)
+#'   agentRuntimeVersion, clientToken)
 #'
 #' @param agentRuntimeId &#91;required&#93; The unique identifier of the AgentCore Runtime to delete.
+#' @param agentRuntimeVersion The version of the AgentCore Runtime to delete. When you provide this value, only that version is deleted. When you omit it, the entire AgentCore Runtime and all of its versions are deleted.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request but does not return an error.
 #'
 #' @return
@@ -4556,7 +5678,8 @@ bedrockagentcorecontrol_create_workload_identity <- function(name, allowedResour
 #' ```
 #' list(
 #'   status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING",
-#'   agentRuntimeId = "string"
+#'   agentRuntimeId = "string",
+#'   agentRuntimeVersion = "string"
 #' )
 #' ```
 #'
@@ -4564,6 +5687,7 @@ bedrockagentcorecontrol_create_workload_identity <- function(name, allowedResour
 #' ```
 #' svc$delete_agent_runtime(
 #'   agentRuntimeId = "string",
+#'   agentRuntimeVersion = "string",
 #'   clientToken = "string"
 #' )
 #' ```
@@ -4573,7 +5697,7 @@ bedrockagentcorecontrol_create_workload_identity <- function(name, allowedResour
 #' @rdname bedrockagentcorecontrol_delete_agent_runtime
 #'
 #' @aliases bedrockagentcorecontrol_delete_agent_runtime
-bedrockagentcorecontrol_delete_agent_runtime <- function(agentRuntimeId, clientToken = NULL) {
+bedrockagentcorecontrol_delete_agent_runtime <- function(agentRuntimeId, agentRuntimeVersion = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteAgentRuntime",
     http_method = "DELETE",
@@ -4582,7 +5706,7 @@ bedrockagentcorecontrol_delete_agent_runtime <- function(agentRuntimeId, clientT
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$delete_agent_runtime_input(agentRuntimeId = agentRuntimeId, clientToken = clientToken)
+  input <- .bedrockagentcorecontrol$delete_agent_runtime_input(agentRuntimeId = agentRuntimeId, agentRuntimeVersion = agentRuntimeVersion, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$delete_agent_runtime_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -4592,10 +5716,10 @@ bedrockagentcorecontrol_delete_agent_runtime <- function(agentRuntimeId, clientT
 }
 .bedrockagentcorecontrol$operations$delete_agent_runtime <- bedrockagentcorecontrol_delete_agent_runtime
 
-#' Deletes an AAgentCore Runtime endpoint
+#' Deletes an AgentCore Runtime endpoint
 #'
 #' @description
-#' Deletes an AAgentCore Runtime endpoint.
+#' Deletes an AgentCore Runtime endpoint.
 #'
 #' @usage
 #' bedrockagentcorecontrol_delete_agent_runtime_endpoint(agentRuntimeId,
@@ -4806,6 +5930,59 @@ bedrockagentcorecontrol_delete_browser_profile <- function(profileId, clientToke
 }
 .bedrockagentcorecontrol$operations$delete_browser_profile <- bedrockagentcorecontrol_delete_browser_profile
 
+#' Deletes a capacity provider
+#'
+#' @description
+#' Deletes a capacity provider. Before you delete a capacity provider, disassociate all agent runtimes and runtime versions that reference it. If any references remain, the operation fails.
+#'
+#' @usage
+#' bedrockagentcorecontrol_delete_capacity_provider(capacityProviderId,
+#'   clientToken)
+#'
+#' @param capacityProviderId &#91;required&#93; The unique identifier of the capacity provider to delete.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   capacityProviderId = "string",
+#'   status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_capacity_provider(
+#'   capacityProviderId = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_delete_capacity_provider
+#'
+#' @aliases bedrockagentcorecontrol_delete_capacity_provider
+bedrockagentcorecontrol_delete_capacity_provider <- function(capacityProviderId, clientToken = NULL) {
+  op <- new_operation(
+    name = "DeleteCapacityProvider",
+    http_method = "DELETE",
+    http_path = "/capacity-providers/{capacityProviderId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$delete_capacity_provider_input(capacityProviderId = capacityProviderId, clientToken = clientToken)
+  output <- .bedrockagentcorecontrol$delete_capacity_provider_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$delete_capacity_provider <- bedrockagentcorecontrol_delete_capacity_provider
+
 #' Deletes a custom code interpreter
 #'
 #' @description
@@ -4912,35 +6089,16 @@ bedrockagentcorecontrol_delete_configuration_bundle <- function(bundleId) {
 }
 .bedrockagentcorecontrol$operations$delete_configuration_bundle <- bedrockagentcorecontrol_delete_configuration_bundle
 
-#' Deletes a dataset version or an entire dataset (all versions + name
-#' claim)
+#' Deletes a dataset version or an entire dataset asynchronously
 #'
 #' @description
-#' Deletes a dataset version or an entire dataset (all versions + name claim). Asynchronous 202.
-#' 
-#' **State transitions:**
-#' 
-#' -   If `datasetVersion` is absent (full delete): status transitions to DELETING immediately.
-#' -   If `datasetVersion` is provided (version-specific delete): status transitions to UPDATING.
-#' 
-#' **State guard (full delete):** Returns ConflictException (DATASET_NOT_READY) if the dataset status is in \{CREATING, UPDATING\}. Deletion is allowed from ACTIVE, CREATE_FAILED, UPDATE_FAILED, and DELETE_FAILED states.
-#' 
-#' **State guard (version-specific delete):** Returns ConflictException (DATASET_NOT_READY) if the dataset status is not in \{ACTIVE, CREATE_FAILED, UPDATE_FAILED\}.
-#' 
-#' Fails with ConflictException (REFERENCED_BY_EVAL_JOB) if referenced by an active evaluation job (full delete only).
-#' 
-#' If the delete workflow fails after retries, status is set to DELETE_FAILED (full delete) or UPDATE_FAILED (version-specific delete). Calling DeleteDataset on a DELETE_FAILED dataset re-triggers the delete workflow (idempotent retry path).
-#' 
-#' **Version parameter:**
-#' 
-#' -   If `datasetVersion` is absent: deletes ALL versions and the Dataset record itself.
-#' -   If `datasetVersion` is provided: deletes only that specific DatasetVersion. Returns ResourceNotFoundException if the specified version does not exist.
+#' Deletes a dataset version or an entire dataset asynchronously. If `datasetVersion` is absent, deletes all versions and the dataset record itself. If provided, deletes only that specific version.
 #'
 #' @usage
 #' bedrockagentcorecontrol_delete_dataset(datasetId, datasetVersion)
 #'
 #' @param datasetId &#91;required&#93; The unique identifier of the dataset to delete.
-#' @param datasetVersion Optional version to delete. Use "DRAFT" or omit to delete the draft. Returns ResourceNotFoundException if the specified version does not exist.
+#' @param datasetVersion Optional version to delete. If absent, deletes the entire dataset. If provided, deletes only that specific version.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4991,13 +6149,7 @@ bedrockagentcorecontrol_delete_dataset <- function(datasetId, datasetVersion = N
 #' Deletes specific examples by ID from DRAFT
 #'
 #' @description
-#' Deletes specific examples by ID from DRAFT.
-#' 
-#' **Validation:** All example IDs are validated before any deletes occur. If any ID does not exist in DRAFT, the entire batch is rejected with ResourceNotFoundException — no examples are deleted (all-or-nothing semantics).
-#' 
-#' **Asynchronous:** Operates in-place on DRAFT. No version bump occurs. Use CreateDatasetVersion to publish DRAFT as a new numbered version.
-#' 
-#' **State guard:** Returns ConflictException (DATASET_NOT_READY) if the dataset status is not in \{DRAFT, ACTIVE\}.
+#' Deletes specific examples by ID from DRAFT. All example IDs are validated before any deletes occur. If any ID does not exist in DRAFT, the entire batch is rejected (all-or-nothing semantics).
 #'
 #' @usage
 #' bedrockagentcorecontrol_delete_dataset_examples(datasetId, clientToken,
@@ -5160,6 +6312,59 @@ bedrockagentcorecontrol_delete_gateway <- function(gatewayIdentifier) {
 }
 .bedrockagentcorecontrol$operations$delete_gateway <- bedrockagentcorecontrol_delete_gateway
 
+#' Deletes a gateway rate limit
+#'
+#' @description
+#' Deletes a gateway rate limit.
+#'
+#' @usage
+#' bedrockagentcorecontrol_delete_gateway_rate_limit(gatewayIdentifier,
+#'   rateLimitId)
+#'
+#' @param gatewayIdentifier &#91;required&#93; The unique identifier of the gateway.
+#' @param rateLimitId &#91;required&#93; The unique identifier of the rate limit to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   rateLimitId = "string",
+#'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_gateway_rate_limit(
+#'   gatewayIdentifier = "string",
+#'   rateLimitId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_delete_gateway_rate_limit
+#'
+#' @aliases bedrockagentcorecontrol_delete_gateway_rate_limit
+bedrockagentcorecontrol_delete_gateway_rate_limit <- function(gatewayIdentifier, rateLimitId) {
+  op <- new_operation(
+    name = "DeleteGatewayRateLimit",
+    http_method = "DELETE",
+    http_path = "/gateways/{gatewayIdentifier}/rate-limits/{rateLimitId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$delete_gateway_rate_limit_input(gatewayIdentifier = gatewayIdentifier, rateLimitId = rateLimitId)
+  output <- .bedrockagentcorecontrol$delete_gateway_rate_limit_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$delete_gateway_rate_limit <- bedrockagentcorecontrol_delete_gateway_rate_limit
+
 #' Deletes a gateway rule
 #'
 #' @description
@@ -5277,10 +6482,12 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
 #' Operation to delete a Harness.
 #'
 #' @usage
-#' bedrockagentcorecontrol_delete_harness(harnessId, clientToken)
+#' bedrockagentcorecontrol_delete_harness(harnessId, clientToken,
+#'   deleteManagedMemory)
 #'
 #' @param harnessId &#91;required&#93; The ID of the harness to delete.
 #' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the request.
+#' @param deleteManagedMemory Whether to delete the managed memory on harness deletion. Default: true. If false, the memory is disassociated and becomes a regular customer-owned resource.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5291,6 +6498,7 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
 #'     harnessName = "string",
 #'     arn = "string",
 #'     status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED",
+#'     harnessVersion = "string",
 #'     executionRoleArn = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
@@ -5303,14 +6511,18 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
 #'         modelId = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "converse_stream"|"responses"|"chat_completions",
+#'         additionalParams = list()
 #'       ),
 #'       openAiModelConfig = list(
 #'         modelId = "string",
 #'         apiKeyArn = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "chat_completions"|"responses",
+#'         additionalParams = list()
 #'       ),
 #'       geminiModelConfig = list(
 #'         modelId = "string",
@@ -5318,7 +6530,17 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
 #'         maxTokens = 123,
 #'         temperature = 123.0,
 #'         topP = 123.0,
-#'         topK = 123
+#'         topK = 123,
+#'         additionalParams = list()
+#'       ),
+#'       liteLlmModelConfig = list(
+#'         modelId = "string",
+#'         apiKeyArn = "string",
+#'         apiBase = "string",
+#'         maxTokens = 123,
+#'         temperature = 123.0,
+#'         topP = 123.0,
+#'         additionalParams = list()
 #'       )
 #'     ),
 #'     systemPrompt = list(
@@ -5370,7 +6592,23 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
 #'     ),
 #'     skills = list(
 #'       list(
-#'         path = "string"
+#'         path = "string",
+#'         s3 = list(
+#'           uri = "string"
+#'         ),
+#'         git = list(
+#'           url = "string",
+#'           path = "string",
+#'           auth = list(
+#'             credentialArn = "string",
+#'             username = "string"
+#'           )
+#'         ),
+#'         awsSkills = list(
+#'           paths = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     allowedTools = list(
@@ -5422,6 +6660,10 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
 #'             efsAccessPoint = list(
 #'               accessPointArn = "string",
 #'               mountPath = "string"
+#'             ),
+#'             capacityProviderVolume = list(
+#'               volumeName = "string",
+#'               mountPath = "string"
 #'             )
 #'           )
 #'         )
@@ -5445,6 +6687,9 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
 #'           "string"
 #'         ),
 #'         allowedScopes = list(
+#'           "string"
+#'         ),
+#'         advertisedScopeMapping = list(
 #'           "string"
 #'         ),
 #'         customClaims = list(
@@ -5504,6 +6749,16 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         allowedWorkloadConfiguration = list(
+#'           hostingEnvironments = list(
+#'             list(
+#'               arn = "string"
+#'             )
+#'           ),
+#'           workloadIdentities = list(
+#'             "string"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -5519,7 +6774,16 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
 #'             strategyId = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       managedMemoryConfiguration = list(
+#'         arn = "string",
+#'         strategies = list(
+#'           "SEMANTIC"|"SUMMARIZATION"|"USER_PREFERENCE"|"EPISODIC"
+#'         ),
+#'         eventExpiryDuration = 123,
+#'         encryptionKeyArn = "string"
+#'       ),
+#'       disabled = list()
 #'     ),
 #'     maxIterations = 123,
 #'     maxTokens = 123,
@@ -5533,7 +6797,8 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
 #' ```
 #' svc$delete_harness(
 #'   harnessId = "string",
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   deleteManagedMemory = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -5542,7 +6807,7 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
 #' @rdname bedrockagentcorecontrol_delete_harness
 #'
 #' @aliases bedrockagentcorecontrol_delete_harness
-bedrockagentcorecontrol_delete_harness <- function(harnessId, clientToken = NULL) {
+bedrockagentcorecontrol_delete_harness <- function(harnessId, clientToken = NULL, deleteManagedMemory = NULL) {
   op <- new_operation(
     name = "DeleteHarness",
     http_method = "DELETE",
@@ -5551,7 +6816,7 @@ bedrockagentcorecontrol_delete_harness <- function(harnessId, clientToken = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$delete_harness_input(harnessId = harnessId, clientToken = clientToken)
+  input <- .bedrockagentcorecontrol$delete_harness_input(harnessId = harnessId, clientToken = clientToken, deleteManagedMemory = deleteManagedMemory)
   output <- .bedrockagentcorecontrol$delete_harness_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -5561,10 +6826,80 @@ bedrockagentcorecontrol_delete_harness <- function(harnessId, clientToken = NULL
 }
 .bedrockagentcorecontrol$operations$delete_harness <- bedrockagentcorecontrol_delete_harness
 
+#' Operation to delete a harness endpoint
+#'
+#' @description
+#' Operation to delete a harness endpoint.
+#'
+#' @usage
+#' bedrockagentcorecontrol_delete_harness_endpoint(harnessId, endpointName,
+#'   clientToken)
+#'
+#' @param harnessId &#91;required&#93; The ID of the harness that the endpoint belongs to.
+#' @param endpointName &#91;required&#93; The name of the endpoint to delete.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   endpoint = list(
+#'     harnessId = "string",
+#'     harnessName = "string",
+#'     endpointName = "string",
+#'     arn = "string",
+#'     status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     liveVersion = "string",
+#'     targetVersion = "string",
+#'     description = "string",
+#'     failureReason = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_harness_endpoint(
+#'   harnessId = "string",
+#'   endpointName = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_delete_harness_endpoint
+#'
+#' @aliases bedrockagentcorecontrol_delete_harness_endpoint
+bedrockagentcorecontrol_delete_harness_endpoint <- function(harnessId, endpointName, clientToken = NULL) {
+  op <- new_operation(
+    name = "DeleteHarnessEndpoint",
+    http_method = "DELETE",
+    http_path = "/harnesses/{harnessId}/endpoints/{endpointName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$delete_harness_endpoint_input(harnessId = harnessId, endpointName = endpointName, clientToken = clientToken)
+  output <- .bedrockagentcorecontrol$delete_harness_endpoint_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$delete_harness_endpoint <- bedrockagentcorecontrol_delete_harness_endpoint
+
 #' Deletes an Amazon Bedrock AgentCore Memory resource
 #'
 #' @description
-#' Deletes an Amazon Bedrock AgentCore Memory resource.
+#' Deletes an Amazon Bedrock AgentCore Memory resource. When you delete a memory resource, it is permanently removed.
 #'
 #' @usage
 #' bedrockagentcorecontrol_delete_memory(clientToken, memoryId)
@@ -5577,7 +6912,7 @@ bedrockagentcorecontrol_delete_harness <- function(harnessId, clientToken = NULL
 #' ```
 #' list(
 #'   memoryId = "string",
-#'   status = "CREATING"|"ACTIVE"|"FAILED"|"DELETING"
+#'   status = "CREATING"|"ACTIVE"|"FAILED"|"DELETING"|"UPDATING"
 #' )
 #' ```
 #'
@@ -5727,7 +7062,7 @@ bedrockagentcorecontrol_delete_online_evaluation_config <- function(onlineEvalua
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   status = "CREATING"|"UPDATING"|"DELETING"|"READY"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'   status = "CREATING"|"UPDATING"|"DELETING"|"READY"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"AWS_MARKETPLACE_SUBSCRIPTION_REQUIRED"|"PENDING_AUTHENTICATION"|"PROVISIONING"|"AUTHENTICATION_EXPIRED"|"AUTHENTICATION_FAILED",
 #'   paymentConnectorId = "string"
 #' )
 #' ```
@@ -5889,6 +7224,7 @@ bedrockagentcorecontrol_delete_payment_manager <- function(paymentManagerId, cli
 #'   ),
 #'   policyArn = "string",
 #'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'   enforcementMode = "ACTIVE"|"LOG_ONLY",
 #'   definition = list(
 #'     cedar = list(
 #'       statement = "string"
@@ -5896,6 +7232,9 @@ bedrockagentcorecontrol_delete_payment_manager <- function(paymentManagerId, cli
 #'     policyGeneration = list(
 #'       policyGenerationId = "string",
 #'       policyGenerationAssetId = "string"
+#'     ),
+#'     policy = list(
+#'       statement = "string"
 #'     )
 #'   ),
 #'   description = "string",
@@ -6270,6 +7609,9 @@ bedrockagentcorecontrol_delete_workload_identity <- function(name) {
 #'       allowedScopes = list(
 #'         "string"
 #'       ),
+#'       advertisedScopeMapping = list(
+#'         "string"
+#'       ),
 #'       customClaims = list(
 #'         list(
 #'           inboundTokenClaimName = "string",
@@ -6327,6 +7669,16 @@ bedrockagentcorecontrol_delete_workload_identity <- function(name) {
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -6350,8 +7702,15 @@ bedrockagentcorecontrol_delete_workload_identity <- function(name) {
 #'       efsAccessPoint = list(
 #'         accessPointArn = "string",
 #'         mountPath = "string"
+#'       ),
+#'       capacityProviderVolume = list(
+#'         volumeName = "string",
+#'         mountPath = "string"
 #'       )
 #'     )
+#'   ),
+#'   capacityProviderConfiguration = list(
+#'     capacityProviderArn = "string"
 #'   )
 #' )
 #' ```
@@ -6471,6 +7830,8 @@ bedrockagentcorecontrol_get_agent_runtime_endpoint <- function(agentRuntimeId, e
 #'   apiKeySecretArn = list(
 #'     secretArn = "string"
 #'   ),
+#'   apiKeySecretJsonKey = "string",
+#'   apiKeySecretSource = "MANAGED"|"EXTERNAL",
 #'   name = "string",
 #'   credentialProviderArn = "string",
 #'   createdTime = as.POSIXct(
@@ -6573,6 +7934,20 @@ bedrockagentcorecontrol_get_api_key_credential_provider <- function(name) {
 #'         secretsManager = list(
 #'           secretArn = "string"
 #'         )
+#'       )
+#'     )
+#'   ),
+#'   filesystemConfigurations = list(
+#'     list(
+#'       s3FilesConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
+#'       ),
+#'       efsConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
 #'       )
 #'     )
 #'   ),
@@ -6682,6 +8057,154 @@ bedrockagentcorecontrol_get_browser_profile <- function(profileId) {
 }
 .bedrockagentcorecontrol$operations$get_browser_profile <- bedrockagentcorecontrol_get_browser_profile
 
+#' Retrieves information about a capacity provider, including its status,
+#' permissions configuration, and compute configuration
+#'
+#' @description
+#' Retrieves information about a capacity provider, including its status, permissions configuration, and compute configuration.
+#'
+#' @usage
+#' bedrockagentcorecontrol_get_capacity_provider(capacityProviderId)
+#'
+#' @param capacityProviderId &#91;required&#93; The unique identifier of the capacity provider.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   capacityProviderId = "string",
+#'   capacityProviderArn = "string",
+#'   name = "string",
+#'   status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED",
+#'   description = "string",
+#'   statusCode = "VALIDATION_ERROR"|"QUOTA_EXCEEDED"|"THROTTLED"|"INTERNAL_SERVER_EXCEPTION",
+#'   statusReason = "string",
+#'   permissionsConfiguration = list(
+#'     capacityProviderOperatorRoleArn = "string"
+#'   ),
+#'   computeConfiguration = list(
+#'     ec2Configuration = list(
+#'       launchTemplateSource = list(
+#'         launchParameters = list(
+#'           operatingSystem = "LINUX_X86_64"|"LINUX_ARM64",
+#'           instanceRequirements = list(
+#'             allowedInstanceTypes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ephemeralVolumes = list(
+#'             list(
+#'               deviceName = "string",
+#'               virtualName = "string",
+#'               ebs = list(
+#'                 volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'                 iops = 123,
+#'                 throughput = 123,
+#'                 encrypted = TRUE|FALSE,
+#'                 kmsKeyId = "string",
+#'                 snapshotId = "string",
+#'                 volumeSize = 123,
+#'                 volumeInitializationRate = 123,
+#'                 ebsCardIndex = 123
+#'               )
+#'             )
+#'           ),
+#'           monitoring = "BASIC"|"DETAILED",
+#'           licenseSpecifications = list(
+#'             list(
+#'               licenseConfigurationArn = "string"
+#'             )
+#'           ),
+#'           capacityReservationSpecification = list(
+#'             capacityReservationPreference = "capacity-reservations-only"|"open"|"none",
+#'             capacityReservationTarget = list(
+#'               capacityReservationId = "string",
+#'               capacityReservationResourceGroupArn = "string"
+#'             )
+#'           ),
+#'           sshKeyName = "string",
+#'           instanceProfileArn = "string",
+#'           propagatedTags = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       vpcConfiguration = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         )
+#'       ),
+#'       volumes = list(
+#'         list(
+#'           ebsConfiguration = list(
+#'             name = "string",
+#'             sizeGiB = 123,
+#'             volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'             iops = 123,
+#'             throughput = 123,
+#'             encrypted = TRUE|FALSE,
+#'             kmsKeyId = "string",
+#'             snapshotId = "string"
+#'           )
+#'         )
+#'       ),
+#'       lifecycleConfiguration = list(
+#'         idleInstanceTimeout = 123,
+#'         maxLifetime = 123
+#'       ),
+#'       rootVolume = list(
+#'         volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'         iops = 123,
+#'         throughput = 123,
+#'         encrypted = TRUE|FALSE,
+#'         kmsKeyId = "string",
+#'         freeSpaceGiB = 123
+#'       )
+#'     )
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_capacity_provider(
+#'   capacityProviderId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_get_capacity_provider
+#'
+#' @aliases bedrockagentcorecontrol_get_capacity_provider
+bedrockagentcorecontrol_get_capacity_provider <- function(capacityProviderId) {
+  op <- new_operation(
+    name = "GetCapacityProvider",
+    http_method = "GET",
+    http_path = "/capacity-providers/{capacityProviderId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$get_capacity_provider_input(capacityProviderId = capacityProviderId)
+  output <- .bedrockagentcorecontrol$get_capacity_provider_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$get_capacity_provider <- bedrockagentcorecontrol_get_capacity_provider
+
 #' Gets information about a custom code interpreter
 #'
 #' @description
@@ -6720,6 +8243,20 @@ bedrockagentcorecontrol_get_browser_profile <- function(profileId) {
 #'         secretsManager = list(
 #'           secretArn = "string"
 #'         )
+#'       )
+#'     )
+#'   ),
+#'   filesystemConfigurations = list(
+#'     list(
+#'       s3FilesConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
+#'       ),
+#'       efsConfiguration = list(
+#'         accessPointArn = "string",
+#'         mountPath = "string",
+#'         fileSystemArn = "string"
 #'       )
 #'     )
 #'   ),
@@ -6805,7 +8342,8 @@ bedrockagentcorecontrol_get_code_interpreter <- function(codeInterpreterId) {
 #'   ),
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -6884,7 +8422,8 @@ bedrockagentcorecontrol_get_configuration_bundle <- function(bundleId, branchNam
 #'   ),
 #'   versionCreatedAt = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -6920,20 +8459,10 @@ bedrockagentcorecontrol_get_configuration_bundle_version <- function(bundleId, v
 }
 .bedrockagentcorecontrol$operations$get_configuration_bundle_version <- bedrockagentcorecontrol_get_configuration_bundle_version
 
-#' Retrieves dataset metadata only
+#' Retrieves dataset metadata
 #'
 #' @description
-#' Retrieves dataset metadata only.
-#' 
-#' Use `?datasetVersion=DRAFT` or `?datasetVersion=N` to retrieve a specific version's metadata. If absent, defaults to DRAFT (the mutable working copy). Returns ResourceNotFoundException if the specified version is not found.
-#' 
-#' **Initial state after CreateDataset:** When CreateDataset completes successfully (status transitions to ACTIVE), only a DRAFT working copy exists. No published versions exist until CreateDatasetVersion is called. At this point draftStatus is MODIFIED because the DRAFT has content that has never been published.
-#' 
-#' **Default version behavior:** When `datasetVersion` is omitted, the operation returns the DRAFT working copy. To retrieve a specific published version, pass the version number as a string (e.g. `?datasetVersion=1`).
-#' 
-#' **State guard:** Allowed for all statuses including DELETING. Returns the dataset record with its current status so callers can observe the deletion in progress.
-#' 
-#' For paginated example IDs use ListDatasetExamples.
+#' Retrieves dataset metadata. Use the `datasetVersion` query parameter to retrieve a specific version's metadata. If absent, defaults to DRAFT. For paginated example content, use [`list_dataset_examples`][bedrockagentcorecontrol_list_dataset_examples].
 #'
 #' @usage
 #' bedrockagentcorecontrol_get_dataset(datasetId, datasetVersion)
@@ -6953,7 +8482,7 @@ bedrockagentcorecontrol_get_configuration_bundle_version <- function(bundleId, v
 #'   status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
 #'   draftStatus = "MODIFIED"|"UNMODIFIED",
 #'   failureReason = "string",
-#'   schemaType = "AGENTCORE_EVALUATION_PREDEFINED_V1"|"AGENTCORE_EVALUATION_SIMULATED_V1",
+#'   schemaType = "AGENTCORE_EVALUATION_PREDEFINED_V1"|"AGENTCORE_EVALUATION_SIMULATED_V1"|"THIRD_PARTY_EVALUATION_V1",
 #'   kmsKeyArn = "string",
 #'   exampleCount = 123,
 #'   downloadUrl = "string",
@@ -7054,6 +8583,15 @@ bedrockagentcorecontrol_get_dataset <- function(datasetId, datasetVersion = NULL
 #'             )
 #'           ),
 #'           additionalModelRequestFields = list()
+#'         ),
+#'         responsesEvaluatorModelConfig = list(
+#'           modelId = "string",
+#'           maxOutputTokens = 123,
+#'           temperature = 123.0,
+#'           topP = 123.0,
+#'           reasoning = list(
+#'             effort = "string"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -7062,8 +8600,36 @@ bedrockagentcorecontrol_get_dataset <- function(datasetId, datasetVersion = NULL
 #'         lambdaArn = "string",
 #'         lambdaTimeoutInSeconds = 123
 #'       )
+#'     ),
+#'     derived = list(
+#'       baseEvaluatorId = "string",
+#'       modelConfig = list(
+#'         bedrockEvaluatorModelConfig = list(
+#'           modelId = "string",
+#'           inferenceConfig = list(
+#'             maxTokens = 123,
+#'             temperature = 123.0,
+#'             topP = 123.0,
+#'             stopSequences = list(
+#'               "string"
+#'             )
+#'           ),
+#'           additionalModelRequestFields = list()
+#'         ),
+#'         responsesEvaluatorModelConfig = list(
+#'           modelId = "string",
+#'           maxOutputTokens = 123,
+#'           temperature = 123.0,
+#'           topP = 123.0,
+#'           reasoning = list(
+#'             effort = "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
+#'   evaluatorType = "Builtin"|"ThirdParty"|"Custom"|"CustomCode"|"CustomDerived",
+#'   provider = "AWS"|"DeepEval"|"AutoEval"|"Custom",
 #'   level = "TOOL_CALL"|"TRACE"|"SESSION",
 #'   status = "ACTIVE"|"CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"DELETING",
 #'   createdAt = as.POSIXct(
@@ -7168,6 +8734,9 @@ bedrockagentcorecontrol_get_evaluator <- function(evaluatorId, includedData = NU
 #'       allowedScopes = list(
 #'         "string"
 #'       ),
+#'       advertisedScopeMapping = list(
+#'         "string"
+#'       ),
 #'       customClaims = list(
 #'         list(
 #'           inboundTokenClaimName = "string",
@@ -7225,10 +8794,25 @@ bedrockagentcorecontrol_get_evaluator <- function(evaluatorId, includedData = NU
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
 #'   kmsKeyArn = "string",
+#'   customTransformConfiguration = list(
+#'     lambda = list(
+#'       arn = "string"
+#'     )
+#'   ),
 #'   interceptorConfigurations = list(
 #'     list(
 #'       interceptor = list(
@@ -7240,7 +8824,14 @@ bedrockagentcorecontrol_get_evaluator <- function(evaluatorId, includedData = NU
 #'         "REQUEST"|"RESPONSE"
 #'       ),
 #'       inputConfiguration = list(
-#'         passRequestHeaders = TRUE|FALSE
+#'         passRequestHeaders = TRUE|FALSE,
+#'         payloadFilter = list(
+#'           exclude = list(
+#'             list(
+#'               field = "RESPONSE_BODY"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -7251,7 +8842,11 @@ bedrockagentcorecontrol_get_evaluator <- function(evaluatorId, includedData = NU
 #'   workloadIdentityDetails = list(
 #'     workloadIdentityArn = "string"
 #'   ),
-#'   exceptionLevel = "DEBUG"
+#'   exceptionLevel = "DEBUG",
+#'   webAclArn = "string",
+#'   wafConfiguration = list(
+#'     failureMode = "FAIL_CLOSE"|"FAIL_OPEN"
+#'   )
 #' )
 #' ```
 #'
@@ -7285,6 +8880,95 @@ bedrockagentcorecontrol_get_gateway <- function(gatewayIdentifier) {
   return(response)
 }
 .bedrockagentcorecontrol$operations$get_gateway <- bedrockagentcorecontrol_get_gateway
+
+#' Retrieves information about a gateway rate limit
+#'
+#' @description
+#' Retrieves information about a gateway rate limit.
+#'
+#' @usage
+#' bedrockagentcorecontrol_get_gateway_rate_limit(gatewayIdentifier,
+#'   rateLimitId)
+#'
+#' @param gatewayIdentifier &#91;required&#93; The unique identifier of the gateway.
+#' @param rateLimitId &#91;required&#93; The unique identifier of the rate limit to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   rateLimitId = "string",
+#'   gatewayIdentifier = "string",
+#'   description = "string",
+#'   dimensionKeys = list(
+#'     "string"
+#'   ),
+#'   entries = list(
+#'     list(
+#'       dimensions = list(
+#'         "string"
+#'       ),
+#'       requests = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       ),
+#'       tokens = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       ),
+#'       connections = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_gateway_rate_limit(
+#'   gatewayIdentifier = "string",
+#'   rateLimitId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_get_gateway_rate_limit
+#'
+#' @aliases bedrockagentcorecontrol_get_gateway_rate_limit
+bedrockagentcorecontrol_get_gateway_rate_limit <- function(gatewayIdentifier, rateLimitId) {
+  op <- new_operation(
+    name = "GetGatewayRateLimit",
+    http_method = "GET",
+    http_path = "/gateways/{gatewayIdentifier}/rate-limits/{rateLimitId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$get_gateway_rate_limit_input(gatewayIdentifier = gatewayIdentifier, rateLimitId = rateLimitId)
+  output <- .bedrockagentcorecontrol$get_gateway_rate_limit_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$get_gateway_rate_limit <- bedrockagentcorecontrol_get_gateway_rate_limit
 
 #' Retrieves detailed information about a specific gateway rule
 #'
@@ -7528,12 +9212,103 @@ bedrockagentcorecontrol_get_gateway_rule <- function(gatewayIdentifier, ruleId) 
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string",
+#'           version = "string"
+#'         ),
+#'         enabled = list(
+#'           "string"
+#'         ),
+#'         configurations = list(
+#'           list(
+#'             name = "string",
+#'             description = "string",
+#'             parameterValues = list(),
+#'             parameterOverrides = list(
+#'               list(
+#'                 path = "string",
+#'                 description = "string",
+#'                 visible = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     http = list(
 #'       agentcoreRuntime = list(
 #'         arn = "string",
-#'         qualifier = "string"
+#'         qualifier = "string",
+#'         schema = list(
+#'           source = list(
+#'             s3 = list(
+#'               uri = "string",
+#'               bucketOwnerAccountId = "string"
+#'             ),
+#'             inlinePayload = "string"
+#'           )
+#'         )
+#'       ),
+#'       passthrough = list(
+#'         endpoint = "string",
+#'         protocolType = "MCP"|"A2A"|"INFERENCE"|"CUSTOM",
+#'         schema = list(
+#'           source = list(
+#'             s3 = list(
+#'               uri = "string",
+#'               bucketOwnerAccountId = "string"
+#'             ),
+#'             inlinePayload = "string"
+#'           )
+#'         ),
+#'         stickinessConfiguration = list(
+#'           identifier = "string",
+#'           timeout = 123,
+#'           compositeIdentifier = list(
+#'             "string"
+#'           )
+#'         ),
+#'         staticQueryParameters = list(
+#'           "string"
+#'         ),
+#'         staticQueryParameterConflictResolution = "CLIENT_OVERRIDE"|"STATIC_OVERRIDE"
+#'       ),
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string"
+#'         ),
+#'         parameters = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     inference = list(
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string"
+#'         )
+#'       ),
+#'       provider = list(
+#'         endpoint = "string",
+#'         modelMapping = list(
+#'           providerPrefix = list(
+#'             strip = TRUE|FALSE,
+#'             separator = "string"
+#'           )
+#'         ),
+#'         operations = list(
+#'           list(
+#'             path = "string",
+#'             providerPath = "string",
+#'             models = list(
+#'               list(
+#'                 model = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -7647,15 +9422,16 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
 }
 .bedrockagentcorecontrol$operations$get_gateway_target <- bedrockagentcorecontrol_get_gateway_target
 
-#' Operation to get a single Harness
+#' Operation to get a single harness
 #'
 #' @description
-#' Operation to get a single Harness.
+#' Operation to get a single harness.
 #'
 #' @usage
-#' bedrockagentcorecontrol_get_harness(harnessId)
+#' bedrockagentcorecontrol_get_harness(harnessId, harnessVersion)
 #'
 #' @param harnessId &#91;required&#93; The ID of the harness to retrieve.
+#' @param harnessVersion Specific version of the harness to retrieve. If omitted, returns the current Harness configuration, including its status.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7666,6 +9442,7 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
 #'     harnessName = "string",
 #'     arn = "string",
 #'     status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED",
+#'     harnessVersion = "string",
 #'     executionRoleArn = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
@@ -7678,14 +9455,18 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
 #'         modelId = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "converse_stream"|"responses"|"chat_completions",
+#'         additionalParams = list()
 #'       ),
 #'       openAiModelConfig = list(
 #'         modelId = "string",
 #'         apiKeyArn = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "chat_completions"|"responses",
+#'         additionalParams = list()
 #'       ),
 #'       geminiModelConfig = list(
 #'         modelId = "string",
@@ -7693,7 +9474,17 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
 #'         maxTokens = 123,
 #'         temperature = 123.0,
 #'         topP = 123.0,
-#'         topK = 123
+#'         topK = 123,
+#'         additionalParams = list()
+#'       ),
+#'       liteLlmModelConfig = list(
+#'         modelId = "string",
+#'         apiKeyArn = "string",
+#'         apiBase = "string",
+#'         maxTokens = 123,
+#'         temperature = 123.0,
+#'         topP = 123.0,
+#'         additionalParams = list()
 #'       )
 #'     ),
 #'     systemPrompt = list(
@@ -7745,7 +9536,23 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
 #'     ),
 #'     skills = list(
 #'       list(
-#'         path = "string"
+#'         path = "string",
+#'         s3 = list(
+#'           uri = "string"
+#'         ),
+#'         git = list(
+#'           url = "string",
+#'           path = "string",
+#'           auth = list(
+#'             credentialArn = "string",
+#'             username = "string"
+#'           )
+#'         ),
+#'         awsSkills = list(
+#'           paths = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     allowedTools = list(
@@ -7797,6 +9604,10 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
 #'             efsAccessPoint = list(
 #'               accessPointArn = "string",
 #'               mountPath = "string"
+#'             ),
+#'             capacityProviderVolume = list(
+#'               volumeName = "string",
+#'               mountPath = "string"
 #'             )
 #'           )
 #'         )
@@ -7820,6 +9631,9 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
 #'           "string"
 #'         ),
 #'         allowedScopes = list(
+#'           "string"
+#'         ),
+#'         advertisedScopeMapping = list(
 #'           "string"
 #'         ),
 #'         customClaims = list(
@@ -7879,6 +9693,16 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         allowedWorkloadConfiguration = list(
+#'           hostingEnvironments = list(
+#'             list(
+#'               arn = "string"
+#'             )
+#'           ),
+#'           workloadIdentities = list(
+#'             "string"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -7894,7 +9718,16 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
 #'             strategyId = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       managedMemoryConfiguration = list(
+#'         arn = "string",
+#'         strategies = list(
+#'           "SEMANTIC"|"SUMMARIZATION"|"USER_PREFERENCE"|"EPISODIC"
+#'         ),
+#'         eventExpiryDuration = 123,
+#'         encryptionKeyArn = "string"
+#'       ),
+#'       disabled = list()
 #'     ),
 #'     maxIterations = 123,
 #'     maxTokens = 123,
@@ -7907,7 +9740,8 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
 #' @section Request syntax:
 #' ```
 #' svc$get_harness(
-#'   harnessId = "string"
+#'   harnessId = "string",
+#'   harnessVersion = "string"
 #' )
 #' ```
 #'
@@ -7916,7 +9750,7 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
 #' @rdname bedrockagentcorecontrol_get_harness
 #'
 #' @aliases bedrockagentcorecontrol_get_harness
-bedrockagentcorecontrol_get_harness <- function(harnessId) {
+bedrockagentcorecontrol_get_harness <- function(harnessId, harnessVersion = NULL) {
   op <- new_operation(
     name = "GetHarness",
     http_method = "GET",
@@ -7925,7 +9759,7 @@ bedrockagentcorecontrol_get_harness <- function(harnessId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$get_harness_input(harnessId = harnessId)
+  input <- .bedrockagentcorecontrol$get_harness_input(harnessId = harnessId, harnessVersion = harnessVersion)
   output <- .bedrockagentcorecontrol$get_harness_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -7934,6 +9768,73 @@ bedrockagentcorecontrol_get_harness <- function(harnessId) {
   return(response)
 }
 .bedrockagentcorecontrol$operations$get_harness <- bedrockagentcorecontrol_get_harness
+
+#' Operation to get a single harness endpoint
+#'
+#' @description
+#' Operation to get a single harness endpoint.
+#'
+#' @usage
+#' bedrockagentcorecontrol_get_harness_endpoint(harnessId, endpointName)
+#'
+#' @param harnessId &#91;required&#93; The ID of the harness that the endpoint belongs to.
+#' @param endpointName &#91;required&#93; The name of the endpoint to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   endpoint = list(
+#'     harnessId = "string",
+#'     harnessName = "string",
+#'     endpointName = "string",
+#'     arn = "string",
+#'     status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     liveVersion = "string",
+#'     targetVersion = "string",
+#'     description = "string",
+#'     failureReason = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_harness_endpoint(
+#'   harnessId = "string",
+#'   endpointName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_get_harness_endpoint
+#'
+#' @aliases bedrockagentcorecontrol_get_harness_endpoint
+bedrockagentcorecontrol_get_harness_endpoint <- function(harnessId, endpointName) {
+  op <- new_operation(
+    name = "GetHarnessEndpoint",
+    http_method = "GET",
+    http_path = "/harnesses/{harnessId}/endpoints/{endpointName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$get_harness_endpoint_input(harnessId = harnessId, endpointName = endpointName)
+  output <- .bedrockagentcorecontrol$get_harness_endpoint_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$get_harness_endpoint <- bedrockagentcorecontrol_get_harness_endpoint
 
 #' Retrieve an existing Amazon Bedrock AgentCore Memory resource
 #'
@@ -7958,7 +9859,7 @@ bedrockagentcorecontrol_get_harness <- function(harnessId) {
 #'     encryptionKeyArn = "string",
 #'     memoryExecutionRoleArn = "string",
 #'     eventExpiryDuration = 123,
-#'     status = "CREATING"|"ACTIVE"|"FAILED"|"DELETING",
+#'     status = "CREATING"|"ACTIVE"|"FAILED"|"DELETING"|"UPDATING",
 #'     failureReason = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
@@ -8025,6 +9926,7 @@ bedrockagentcorecontrol_get_harness <- function(harnessId) {
 #'                     list(
 #'                       key = "string",
 #'                       type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                       extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                       extractionConfig = list(
 #'                         llmExtractionConfig = list(
 #'                           llmExtractionInstruction = "string",
@@ -8065,6 +9967,7 @@ bedrockagentcorecontrol_get_harness <- function(harnessId) {
 #'                   list(
 #'                     key = "string",
 #'                     type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                     extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                     extractionConfig = list(
 #'                       llmExtractionConfig = list(
 #'                         llmExtractionInstruction = "string",
@@ -8133,6 +10036,7 @@ bedrockagentcorecontrol_get_harness <- function(harnessId) {
 #'             list(
 #'               key = "string",
 #'               type = "STRING"|"STRINGLIST"|"NUMBER",
+#'               extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'               extractionConfig = list(
 #'                 llmExtractionConfig = list(
 #'                   llmExtractionInstruction = "string",
@@ -8167,6 +10071,17 @@ bedrockagentcorecontrol_get_harness <- function(harnessId) {
 #'         type = "STRING"|"STRINGLIST"|"NUMBER"
 #'       )
 #'     ),
+#'     namespaceKeys = list(
+#'       list(
+#'         key = "string",
+#'         validation = list(
+#'           allowedValues = list(
+#'             "string"
+#'           ),
+#'           regexPattern = "string"
+#'         )
+#'       )
+#'     ),
 #'     streamDeliveryResources = list(
 #'       resources = list(
 #'         list(
@@ -8181,7 +10096,8 @@ bedrockagentcorecontrol_get_harness <- function(harnessId) {
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     managedByResourceArn = "string"
 #'   )
 #' )
 #' ```
@@ -8235,6 +10151,8 @@ bedrockagentcorecontrol_get_memory <- function(memoryId, view = NULL) {
 #'   clientSecretArn = list(
 #'     secretArn = "string"
 #'   ),
+#'   clientSecretJsonKey = "string",
+#'   clientSecretSource = "MANAGED"|"EXTERNAL",
 #'   name = "string",
 #'   credentialProviderArn = "string",
 #'   credentialProviderVendor = "GoogleOauth2"|"GithubOauth2"|"SlackOauth2"|"SalesforceOauth2"|"MicrosoftOauth2"|"CustomOauth2"|"AtlassianOauth2"|"LinkedinOauth2"|"XOauth2"|"OktaOauth2"|"OneLoginOauth2"|"PingOneOauth2"|"FacebookOauth2"|"YandexOauth2"|"RedditOauth2"|"ZoomOauth2"|"TwitchOauth2"|"SpotifyOauth2"|"DropboxOauth2"|"NotionOauth2"|"HubspotOauth2"|"CyberArkOauth2"|"FusionAuthOauth2"|"Auth0Oauth2"|"CognitoOauth2",
@@ -8256,6 +10174,16 @@ bedrockagentcorecontrol_get_memory <- function(memoryId, view = NULL) {
 #'         )
 #'       ),
 #'       clientId = "string",
+#'       onBehalfOfTokenExchangeConfig = list(
+#'         grantType = "TOKEN_EXCHANGE"|"JWT_AUTHORIZATION_GRANT",
+#'         tokenExchangeGrantTypeConfig = list(
+#'           actorTokenContent = "NONE"|"M2M"|"AWS_IAM_ID_TOKEN_JWT",
+#'           actorTokenScopes = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       clientAuthenticationMethod = "CLIENT_SECRET_BASIC"|"CLIENT_SECRET_POST"|"AWS_IAM_ID_TOKEN_JWT"|"PRIVATE_KEY_JWT",
 #'       privateEndpoint = list(
 #'         selfManagedLatticeResource = list(
 #'           resourceConfigurationIdentifier = "string"
@@ -8299,16 +10227,20 @@ bedrockagentcorecontrol_get_memory <- function(memoryId, view = NULL) {
 #'           )
 #'         )
 #'       ),
-#'       onBehalfOfTokenExchangeConfig = list(
-#'         grantType = "TOKEN_EXCHANGE"|"JWT_AUTHORIZATION_GRANT",
-#'         tokenExchangeGrantTypeConfig = list(
-#'           actorTokenContent = "NONE"|"M2M"|"AWS_IAM_ID_TOKEN_JWT",
-#'           actorTokenScopes = list(
-#'             "string"
+#'       privateKeyJwtConfig = list(
+#'         privateKeySource = list(
+#'           kmsKeySource = list(
+#'             kmsKeyArn = "string"
 #'           )
+#'         ),
+#'         signingAlgorithm = "RS256"|"PS256"|"ES256",
+#'         additionalHeaderClaims = list(
+#'           "string"
+#'         ),
+#'         additionalPayloadClaims = list(
+#'           "string"
 #'         )
-#'       ),
-#'       clientAuthenticationMethod = "CLIENT_SECRET_BASIC"|"CLIENT_SECRET_POST"|"AWS_IAM_ID_TOKEN_JWT"
+#'       )
 #'     ),
 #'     googleOauth2ProviderConfig = list(
 #'       oauthDiscovery = list(
@@ -8543,6 +10475,16 @@ bedrockagentcorecontrol_get_oauth_2_credential_provider <- function(name) {
 #'       evaluatorId = "string"
 #'     )
 #'   ),
+#'   insights = list(
+#'     list(
+#'       insightId = "string"
+#'     )
+#'   ),
+#'   clusteringConfig = list(
+#'     frequencies = list(
+#'       "DAILY"|"WEEKLY"|"MONTHLY"
+#'     )
+#'   ),
 #'   outputConfig = list(
 #'     cloudWatchConfig = list(
 #'       logGroupName = "string"
@@ -8628,7 +10570,8 @@ bedrockagentcorecontrol_get_online_evaluation_config <- function(onlineEvaluatio
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   status = "CREATING"|"UPDATING"|"DELETING"|"READY"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"
+#'   status = "CREATING"|"UPDATING"|"DELETING"|"READY"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"AWS_MARKETPLACE_SUBSCRIPTION_REQUIRED"|"PENDING_AUTHENTICATION"|"PROVISIONING"|"AUTHENTICATION_EXPIRED"|"AUTHENTICATION_FAILED",
+#'   authorizationUrl = "string"
 #' )
 #' ```
 #'
@@ -8687,18 +10630,26 @@ bedrockagentcorecontrol_get_payment_connector <- function(paymentManagerId, paym
 #'       apiKeySecretArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       apiKeySecretJsonKey = "string",
+#'       apiKeySecretSource = "MANAGED"|"EXTERNAL",
 #'       walletSecretArn = list(
 #'         secretArn = "string"
-#'       )
+#'       ),
+#'       walletSecretJsonKey = "string",
+#'       walletSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     stripePrivyConfiguration = list(
 #'       appId = "string",
 #'       appSecretArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       appSecretJsonKey = "string",
+#'       appSecretSource = "MANAGED"|"EXTERNAL",
 #'       authorizationPrivateKeyArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       authorizationPrivateKeyJsonKey = "string",
+#'       authorizationPrivateKeySource = "MANAGED"|"EXTERNAL",
 #'       authorizationId = "string"
 #'     )
 #'   ),
@@ -8776,6 +10727,9 @@ bedrockagentcorecontrol_get_payment_credential_provider <- function(name) {
 #'       allowedScopes = list(
 #'         "string"
 #'       ),
+#'       advertisedScopeMapping = list(
+#'         "string"
+#'       ),
 #'       customClaims = list(
 #'         list(
 #'           inboundTokenClaimName = "string",
@@ -8833,6 +10787,16 @@ bedrockagentcorecontrol_get_payment_credential_provider <- function(name) {
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -8849,7 +10813,8 @@ bedrockagentcorecontrol_get_payment_credential_provider <- function(name) {
 #'   status = "CREATING"|"UPDATING"|"DELETING"|"READY"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -8911,6 +10876,7 @@ bedrockagentcorecontrol_get_payment_manager <- function(paymentManagerId) {
 #'   ),
 #'   policyArn = "string",
 #'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'   enforcementMode = "ACTIVE"|"LOG_ONLY",
 #'   definition = list(
 #'     cedar = list(
 #'       statement = "string"
@@ -8918,6 +10884,9 @@ bedrockagentcorecontrol_get_payment_manager <- function(paymentManagerId) {
 #'     policyGeneration = list(
 #'       policyGenerationId = "string",
 #'       policyGenerationAssetId = "string"
+#'     ),
+#'     policy = list(
+#'       statement = "string"
 #'     )
 #'   ),
 #'   description = "string",
@@ -9246,7 +11215,8 @@ bedrockagentcorecontrol_get_policy_generation_summary <- function(policyGenerati
 #'     "2015-01-01"
 #'   ),
 #'   policyArn = "string",
-#'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"
+#'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'   enforcementMode = "ACTIVE"|"LOG_ONLY"
 #' )
 #' ```
 #'
@@ -9313,6 +11283,9 @@ bedrockagentcorecontrol_get_policy_summary <- function(policyEngineId, policyId)
 #'       allowedScopes = list(
 #'         "string"
 #'       ),
+#'       advertisedScopeMapping = list(
+#'         "string"
+#'       ),
 #'       customClaims = list(
 #'         list(
 #'           inboundTokenClaimName = "string",
@@ -9369,6 +11342,16 @@ bedrockagentcorecontrol_get_policy_summary <- function(policyEngineId, policyId)
 #'               routingDomain = "string"
 #'             )
 #'           )
+#'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
 #'         )
 #'       )
 #'     )
@@ -9846,6 +11829,68 @@ bedrockagentcorecontrol_list_agent_runtime_versions <- function(agentRuntimeId, 
 }
 .bedrockagentcorecontrol$operations$list_agent_runtime_versions <- bedrockagentcorecontrol_list_agent_runtime_versions
 
+#' Lists the agent runtime versions that are associated with a capacity
+#' provider
+#'
+#' @description
+#' Lists the agent runtime versions that are associated with a capacity provider. Use this operation to identify the runtimes you must disassociate before you can delete the capacity provider. Results are paginated; use the `nextToken` parameter to retrieve additional results.
+#'
+#' @usage
+#' bedrockagentcorecontrol_list_agent_runtime_versions_by_capacity_provider(
+#'   capacityProviderId, maxResults, nextToken)
+#'
+#' @param capacityProviderId &#91;required&#93; The unique identifier of the capacity provider.
+#' @param maxResults The maximum number of results to return in the response. If the total number of results is greater than this value, use the token returned in the response in the `nextToken` field when making another request to return the next batch of results.
+#' @param nextToken If the total number of results is greater than the `maxResults` value provided in the request, enter the token returned in the `nextToken` field in the response in this field to return the next batch of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   agentRuntimes = list(
+#'     list(
+#'       agentRuntimeArn = "string",
+#'       agentRuntimeVersion = "string",
+#'       status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_agent_runtime_versions_by_capacity_provider(
+#'   capacityProviderId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_list_agen_runt_vers_by_capa_prov
+#'
+#' @aliases bedrockagentcorecontrol_list_agent_runtime_versions_by_capacity_provider
+bedrockagentcorecontrol_list_agent_runtime_versions_by_capacity_provider <- function(capacityProviderId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAgentRuntimeVersionsByCapacityProvider",
+    http_method = "POST",
+    http_path = "/capacity-providers/{capacityProviderId}/runtime-versions",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "agentRuntimes"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$list_agent_runtime_versions_by_capacity_provider_input(capacityProviderId = capacityProviderId, maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrockagentcorecontrol$list_agent_runtime_versions_by_capacity_provider_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$list_agent_runtime_versions_by_capacity_provider <- bedrockagentcorecontrol_list_agent_runtime_versions_by_capacity_provider
+
 #' Lists all Amazon Secure Agents in your account
 #'
 #' @description
@@ -10116,6 +12161,69 @@ bedrockagentcorecontrol_list_browsers <- function(maxResults = NULL, nextToken =
 }
 .bedrockagentcorecontrol$operations$list_browsers <- bedrockagentcorecontrol_list_browsers
 
+#' Lists the capacity providers in your account and returns summary
+#' information for each one
+#'
+#' @description
+#' Lists the capacity providers in your account and returns summary information for each one. To retrieve the full configuration for a specific capacity provider, use [`get_capacity_provider`][bedrockagentcorecontrol_get_capacity_provider]. Results are paginated; use the `nextToken` parameter to retrieve additional results.
+#'
+#' @usage
+#' bedrockagentcorecontrol_list_capacity_providers(maxResults, nextToken)
+#'
+#' @param maxResults The maximum number of results to return in the response. If the total number of results is greater than this value, use the token returned in the response in the `nextToken` field when making another request to return the next batch of results.
+#' @param nextToken If the total number of results is greater than the `maxResults` value provided in the request, enter the token returned in the `nextToken` field in the response in this field to return the next batch of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   capacityProviders = list(
+#'     list(
+#'       capacityProviderId = "string",
+#'       capacityProviderArn = "string",
+#'       name = "string",
+#'       status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED",
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_capacity_providers(
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_list_capacity_providers
+#'
+#' @aliases bedrockagentcorecontrol_list_capacity_providers
+bedrockagentcorecontrol_list_capacity_providers <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListCapacityProviders",
+    http_method = "POST",
+    http_path = "/capacity-providers",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "capacityProviders"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$list_capacity_providers_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrockagentcorecontrol$list_capacity_providers_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$list_capacity_providers <- bedrockagentcorecontrol_list_capacity_providers
+
 #' Lists all custom code interpreters in your account
 #'
 #' @description
@@ -10288,7 +12396,10 @@ bedrockagentcorecontrol_list_configuration_bundle_versions <- function(bundleId,
 #'       bundleArn = "string",
 #'       bundleId = "string",
 #'       bundleName = "string",
-#'       description = "string"
+#'       description = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -10330,19 +12441,15 @@ bedrockagentcorecontrol_list_configuration_bundles <- function(nextToken = NULL,
 #' Returns paginated examples from the dataset
 #'
 #' @description
-#' Returns paginated examples from the dataset.
-#' 
-#' **Version-pinned pagination:** The server embeds the resolved version in the `nextToken`. Once pagination begins, all subsequent pages are pinned to that version regardless of concurrent mutations or whether `datasetVersion` is passed on subsequent requests. The `datasetVersion` query parameter is only used for the first request (when `nextToken` is absent); if omitted, defaults to DRAFT.
-#' 
-#' **State guard:** Allowed for all statuses including DELETING.
+#' Returns paginated examples from the dataset. The server embeds the resolved version in the pagination token. Once pagination begins, all subsequent pages are pinned to that version regardless of concurrent mutations.
 #'
 #' @usage
 #' bedrockagentcorecontrol_list_dataset_examples(datasetId, datasetVersion,
 #'   maxResults, nextToken)
 #'
 #' @param datasetId &#91;required&#93; The unique identifier of the dataset.
-#' @param datasetVersion Version to paginate: "DRAFT" or a version number. Defaults to DRAFT if absent. Only used on the first request (when nextToken is absent). For subsequent pages, the version is extracted from the nextToken and this parameter is ignored.
-#' @param maxResults Maximum number of examples to return per page. Default: 1000. Min: 1, max: 1000. Response size is validated against 5 MB limit after reading. For bulk access to all examples, use the `downloadUrl` field from GetDataset.
+#' @param datasetVersion Version to paginate: "DRAFT" or a version number. Defaults to DRAFT if absent. Only used on the first request; for subsequent pages, the version is extracted from the pagination token.
+#' @param maxResults Maximum number of examples to return per page.
 #' @param nextToken The token for the next page of results.
 #'
 #' @return
@@ -10398,8 +12505,6 @@ bedrockagentcorecontrol_list_dataset_examples <- function(datasetId, datasetVers
 #'
 #' @description
 #' Lists all published versions of a dataset, sorted by version number descending (newest first). Does not include the DRAFT working copy.
-#' 
-#' **State guard:** Allowed for all statuses including DELETING.
 #'
 #' @usage
 #' bedrockagentcorecontrol_list_dataset_versions(datasetId, nextToken,
@@ -10462,7 +12567,7 @@ bedrockagentcorecontrol_list_dataset_versions <- function(datasetId, nextToken =
 #' Lists all datasets in the caller's account, paginated
 #'
 #' @description
-#' Lists all datasets in the caller's account, paginated. No presigned URLs in list results.
+#' Lists all datasets in the caller's account, paginated.
 #'
 #' @usage
 #' bedrockagentcorecontrol_list_datasets(nextToken, maxResults)
@@ -10482,7 +12587,7 @@ bedrockagentcorecontrol_list_dataset_versions <- function(datasetId, nextToken =
 #'       description = "string",
 #'       status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
 #'       draftStatus = "MODIFIED"|"UNMODIFIED",
-#'       schemaType = "AGENTCORE_EVALUATION_PREDEFINED_V1"|"AGENTCORE_EVALUATION_SIMULATED_V1",
+#'       schemaType = "AGENTCORE_EVALUATION_PREDEFINED_V1"|"AGENTCORE_EVALUATION_SIMULATED_V1"|"THIRD_PARTY_EVALUATION_V1",
 #'       exampleCount = 123,
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
@@ -10550,7 +12655,8 @@ bedrockagentcorecontrol_list_datasets <- function(nextToken = NULL, maxResults =
 #'       evaluatorId = "string",
 #'       evaluatorName = "string",
 #'       description = "string",
-#'       evaluatorType = "Builtin"|"Custom"|"CustomCode",
+#'       evaluatorType = "Builtin"|"ThirdParty"|"Custom"|"CustomCode"|"CustomDerived",
+#'       provider = "AWS"|"DeepEval"|"AutoEval"|"Custom",
 #'       level = "TOOL_CALL"|"TRACE"|"SESSION",
 #'       status = "ACTIVE"|"CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"DELETING",
 #'       createdAt = as.POSIXct(
@@ -10598,6 +12704,102 @@ bedrockagentcorecontrol_list_evaluators <- function(nextToken = NULL, maxResults
   return(response)
 }
 .bedrockagentcorecontrol$operations$list_evaluators <- bedrockagentcorecontrol_list_evaluators
+
+#' Lists all rate limits for a gateway
+#'
+#' @description
+#' Lists all rate limits for a gateway. Results are paginated. Use the `nextToken` parameter to retrieve additional results.
+#'
+#' @usage
+#' bedrockagentcorecontrol_list_gateway_rate_limits(gatewayIdentifier,
+#'   maxResults, nextToken)
+#'
+#' @param gatewayIdentifier &#91;required&#93; The unique identifier of the gateway.
+#' @param maxResults The maximum number of results to return in the response. If the total number of results is greater than this value, use the token returned in the response in the `nextToken` field when making another request to return the next batch of results.
+#' @param nextToken The token to use to retrieve the next page of results. Use the value returned in a previous [`list_gateway_rate_limits`][bedrockagentcorecontrol_list_gateway_rate_limits] response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   rateLimits = list(
+#'     list(
+#'       rateLimitId = "string",
+#'       gatewayIdentifier = "string",
+#'       description = "string",
+#'       dimensionKeys = list(
+#'         "string"
+#'       ),
+#'       entries = list(
+#'         list(
+#'           dimensions = list(
+#'             "string"
+#'           ),
+#'           requests = list(
+#'             list(
+#'               rate = 123.0,
+#'               period = "second"|"minute"
+#'             )
+#'           ),
+#'           tokens = list(
+#'             list(
+#'               rate = 123.0,
+#'               period = "second"|"minute"
+#'             )
+#'           ),
+#'           connections = list(
+#'             list(
+#'               rate = 123.0,
+#'               period = "second"|"minute"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_gateway_rate_limits(
+#'   gatewayIdentifier = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_list_gateway_rate_limits
+#'
+#' @aliases bedrockagentcorecontrol_list_gateway_rate_limits
+bedrockagentcorecontrol_list_gateway_rate_limits <- function(gatewayIdentifier, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListGatewayRateLimits",
+    http_method = "GET",
+    http_path = "/gateways/{gatewayIdentifier}/rate-limits",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "rateLimits"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$list_gateway_rate_limits_input(gatewayIdentifier = gatewayIdentifier, maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrockagentcorecontrol$list_gateway_rate_limits_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$list_gateway_rate_limits <- bedrockagentcorecontrol_list_gateway_rate_limits
 
 #' Lists all rules for a gateway
 #'
@@ -10763,7 +12965,18 @@ bedrockagentcorecontrol_list_gateway_rules <- function(gatewayIdentifier, maxRes
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       resourcePriority = 123
+#'       resourcePriority = 123,
+#'       lastSynchronizedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       authorizationData = list(
+#'         oauth2 = list(
+#'           authorizationUrl = "string",
+#'           userId = "string"
+#'         )
+#'       ),
+#'       targetType = "OPEN_API_SCHEMA"|"SMITHY_MODEL"|"MCP_SERVER"|"LAMBDA"|"API_GATEWAY"|"CONNECTOR"|"AGENTCORE_RUNTIME"|"PASSTHROUGH"|"PROVIDER"|"HTTP_CONNECTOR",
+#'       listingMode = "DEFAULT"|"DYNAMIC"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -10870,10 +13083,153 @@ bedrockagentcorecontrol_list_gateways <- function(maxResults = NULL, nextToken =
 }
 .bedrockagentcorecontrol$operations$list_gateways <- bedrockagentcorecontrol_list_gateways
 
-#' Operation to list Harnesses
+#' Operation to list the endpoints of a harness
 #'
 #' @description
-#' Operation to list Harnesses.
+#' Operation to list the endpoints of a harness.
+#'
+#' @usage
+#' bedrockagentcorecontrol_list_harness_endpoints(harnessId, maxResults,
+#'   nextToken)
+#'
+#' @param harnessId &#91;required&#93; The ID of the harness whose endpoints are listed.
+#' @param maxResults The maximum number of results to return in a single call.
+#' @param nextToken The token for the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   endpoints = list(
+#'     list(
+#'       harnessId = "string",
+#'       harnessName = "string",
+#'       endpointName = "string",
+#'       arn = "string",
+#'       status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       liveVersion = "string",
+#'       targetVersion = "string",
+#'       description = "string",
+#'       failureReason = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_harness_endpoints(
+#'   harnessId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_list_harness_endpoints
+#'
+#' @aliases bedrockagentcorecontrol_list_harness_endpoints
+bedrockagentcorecontrol_list_harness_endpoints <- function(harnessId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListHarnessEndpoints",
+    http_method = "GET",
+    http_path = "/harnesses/{harnessId}/endpoints",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "endpoints"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$list_harness_endpoints_input(harnessId = harnessId, maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrockagentcorecontrol$list_harness_endpoints_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$list_harness_endpoints <- bedrockagentcorecontrol_list_harness_endpoints
+
+#' Operation to list the versions of a Harness
+#'
+#' @description
+#' Operation to list the versions of a Harness.
+#'
+#' @usage
+#' bedrockagentcorecontrol_list_harness_versions(harnessId, maxResults,
+#'   nextToken)
+#'
+#' @param harnessId &#91;required&#93; The ID of the harness whose versions are listed.
+#' @param maxResults The maximum number of results to return in a single call.
+#' @param nextToken The token for the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   harnessVersions = list(
+#'     list(
+#'       harnessId = "string",
+#'       harnessName = "string",
+#'       arn = "string",
+#'       harnessVersion = "string",
+#'       status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureReason = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_harness_versions(
+#'   harnessId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_list_harness_versions
+#'
+#' @aliases bedrockagentcorecontrol_list_harness_versions
+bedrockagentcorecontrol_list_harness_versions <- function(harnessId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListHarnessVersions",
+    http_method = "GET",
+    http_path = "/harnesses/{harnessId}/versions",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "harnessVersions"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$list_harness_versions_input(harnessId = harnessId, maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrockagentcorecontrol$list_harness_versions_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$list_harness_versions <- bedrockagentcorecontrol_list_harness_versions
+
+#' Operation to list harnesses
+#'
+#' @description
+#' Operation to list harnesses.
 #'
 #' @usage
 #' bedrockagentcorecontrol_list_harnesses(maxResults, nextToken)
@@ -10896,7 +13252,8 @@ bedrockagentcorecontrol_list_gateways <- function(maxResults = NULL, nextToken =
 #'       ),
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       harnessVersion = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -10955,13 +13312,14 @@ bedrockagentcorecontrol_list_harnesses <- function(maxResults = NULL, nextToken 
 #'     list(
 #'       arn = "string",
 #'       id = "string",
-#'       status = "CREATING"|"ACTIVE"|"FAILED"|"DELETING",
+#'       status = "CREATING"|"ACTIVE"|"FAILED"|"DELETING"|"UPDATING",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       managedByResourceArn = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -11096,7 +13454,17 @@ bedrockagentcorecontrol_list_oauth_2_credential_providers <- function(nextToken 
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       failureReason = "string"
+#'       failureReason = "string",
+#'       insights = list(
+#'         list(
+#'           insightId = "string"
+#'         )
+#'       ),
+#'       clusteringConfig = list(
+#'         frequencies = list(
+#'           "DAILY"|"WEEKLY"|"MONTHLY"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -11157,7 +13525,7 @@ bedrockagentcorecontrol_list_online_evaluation_configs <- function(nextToken = N
 #'       paymentConnectorId = "string",
 #'       name = "string",
 #'       type = "CoinbaseCDP"|"StripePrivy",
-#'       status = "CREATING"|"UPDATING"|"DELETING"|"READY"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'       status = "CREATING"|"UPDATING"|"DELETING"|"READY"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"AWS_MARKETPLACE_SUBSCRIPTION_REQUIRED"|"PENDING_AUTHENTICATION"|"PROVISIONING"|"AUTHENTICATION_EXPIRED"|"AUTHENTICATION_FAILED",
 #'       lastUpdatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -11294,7 +13662,8 @@ bedrockagentcorecontrol_list_payment_credential_providers <- function(nextToken 
 #'       ),
 #'       lastUpdatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       kmsKeyArn = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -11364,6 +13733,7 @@ bedrockagentcorecontrol_list_payment_managers <- function(maxResults = NULL, nex
 #'       ),
 #'       policyArn = "string",
 #'       status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'       enforcementMode = "ACTIVE"|"LOG_ONLY",
 #'       definition = list(
 #'         cedar = list(
 #'           statement = "string"
@@ -11371,6 +13741,9 @@ bedrockagentcorecontrol_list_payment_managers <- function(maxResults = NULL, nex
 #'         policyGeneration = list(
 #'           policyGenerationId = "string",
 #'           policyGenerationAssetId = "string"
+#'         ),
+#'         policy = list(
+#'           statement = "string"
 #'         )
 #'       ),
 #'       description = "string",
@@ -11584,6 +13957,9 @@ bedrockagentcorecontrol_list_policy_engines <- function(nextToken = NULL, maxRes
 #'         policyGeneration = list(
 #'           policyGenerationId = "string",
 #'           policyGenerationAssetId = "string"
+#'         ),
+#'         policy = list(
+#'           statement = "string"
 #'         )
 #'       ),
 #'       rawTextFragment = "string",
@@ -11815,7 +14191,8 @@ bedrockagentcorecontrol_list_policy_generations <- function(nextToken = NULL, ma
 #'         "2015-01-01"
 #'       ),
 #'       policyArn = "string",
-#'       status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"
+#'       status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'       enforcementMode = "ACTIVE"|"LOG_ONLY"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -12494,12 +14871,103 @@ bedrockagentcorecontrol_submit_registry_record_for_approval <- function(registry
 #'                 )
 #'               )
 #'             )
+#'           ),
+#'           connector = list(
+#'             source = list(
+#'               connectorId = "string",
+#'               version = "string"
+#'             ),
+#'             enabled = list(
+#'               "string"
+#'             ),
+#'             configurations = list(
+#'               list(
+#'                 name = "string",
+#'                 description = "string",
+#'                 parameterValues = list(),
+#'                 parameterOverrides = list(
+#'                   list(
+#'                     path = "string",
+#'                     description = "string",
+#'                     visible = TRUE|FALSE
+#'                   )
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         http = list(
 #'           agentcoreRuntime = list(
 #'             arn = "string",
-#'             qualifier = "string"
+#'             qualifier = "string",
+#'             schema = list(
+#'               source = list(
+#'                 s3 = list(
+#'                   uri = "string",
+#'                   bucketOwnerAccountId = "string"
+#'                 ),
+#'                 inlinePayload = "string"
+#'               )
+#'             )
+#'           ),
+#'           passthrough = list(
+#'             endpoint = "string",
+#'             protocolType = "MCP"|"A2A"|"INFERENCE"|"CUSTOM",
+#'             schema = list(
+#'               source = list(
+#'                 s3 = list(
+#'                   uri = "string",
+#'                   bucketOwnerAccountId = "string"
+#'                 ),
+#'                 inlinePayload = "string"
+#'               )
+#'             ),
+#'             stickinessConfiguration = list(
+#'               identifier = "string",
+#'               timeout = 123,
+#'               compositeIdentifier = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             staticQueryParameters = list(
+#'               "string"
+#'             ),
+#'             staticQueryParameterConflictResolution = "CLIENT_OVERRIDE"|"STATIC_OVERRIDE"
+#'           ),
+#'           connector = list(
+#'             source = list(
+#'               connectorId = "string"
+#'             ),
+#'             parameters = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         inference = list(
+#'           connector = list(
+#'             source = list(
+#'               connectorId = "string"
+#'             )
+#'           ),
+#'           provider = list(
+#'             endpoint = "string",
+#'             modelMapping = list(
+#'               providerPrefix = list(
+#'                 strip = TRUE|FALSE,
+#'                 separator = "string"
+#'               )
+#'             ),
+#'             operations = list(
+#'               list(
+#'                 path = "string",
+#'                 providerPath = "string",
+#'                 models = list(
+#'                   list(
+#'                     model = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -12728,12 +15196,13 @@ bedrockagentcorecontrol_untag_resource <- function(resourceArn, tagKeys) {
 #'   agentRuntimeArtifact, roleArn, networkConfiguration, description,
 #'   authorizerConfiguration, requestHeaderConfiguration,
 #'   protocolConfiguration, lifecycleConfiguration, metadataConfiguration,
-#'   environmentVariables, filesystemConfigurations, clientToken)
+#'   environmentVariables, filesystemConfigurations,
+#'   capacityProviderConfiguration, clientToken)
 #'
 #' @param agentRuntimeId &#91;required&#93; The unique identifier of the AgentCore Runtime to update.
 #' @param agentRuntimeArtifact &#91;required&#93; The updated artifact of the AgentCore Runtime.
 #' @param roleArn &#91;required&#93; The updated IAM role ARN that provides permissions for the AgentCore Runtime.
-#' @param networkConfiguration &#91;required&#93; The updated network configuration for the AgentCore Runtime.
+#' @param networkConfiguration The updated network configuration for the AgentCore Runtime.
 #' @param description The updated description of the AgentCore Runtime.
 #' @param authorizerConfiguration The updated authorizer configuration for the AgentCore Runtime.
 #' @param requestHeaderConfiguration The updated configuration for HTTP request headers that will be passed through to the runtime.
@@ -12742,6 +15211,7 @@ bedrockagentcorecontrol_untag_resource <- function(resourceArn, tagKeys) {
 #' @param metadataConfiguration The updated configuration for microVM Metadata Service (MMDS) settings for the AgentCore Runtime.
 #' @param environmentVariables Updated environment variables to set in the AgentCore Runtime environment.
 #' @param filesystemConfigurations The updated filesystem configurations to mount into the AgentCore Runtime.
+#' @param capacityProviderConfiguration The updated capacity provider configuration for the AgentCore Runtime.
 #' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @return
@@ -12812,6 +15282,9 @@ bedrockagentcorecontrol_untag_resource <- function(resourceArn, tagKeys) {
 #'       allowedScopes = list(
 #'         "string"
 #'       ),
+#'       advertisedScopeMapping = list(
+#'         "string"
+#'       ),
 #'       customClaims = list(
 #'         list(
 #'           inboundTokenClaimName = "string",
@@ -12869,6 +15342,16 @@ bedrockagentcorecontrol_untag_resource <- function(resourceArn, tagKeys) {
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -12902,8 +15385,15 @@ bedrockagentcorecontrol_untag_resource <- function(resourceArn, tagKeys) {
 #'       efsAccessPoint = list(
 #'         accessPointArn = "string",
 #'         mountPath = "string"
+#'       ),
+#'       capacityProviderVolume = list(
+#'         volumeName = "string",
+#'         mountPath = "string"
 #'       )
 #'     )
+#'   ),
+#'   capacityProviderConfiguration = list(
+#'     capacityProviderArn = "string"
 #'   ),
 #'   clientToken = "string"
 #' )
@@ -12914,7 +15404,7 @@ bedrockagentcorecontrol_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname bedrockagentcorecontrol_update_agent_runtime
 #'
 #' @aliases bedrockagentcorecontrol_update_agent_runtime
-bedrockagentcorecontrol_update_agent_runtime <- function(agentRuntimeId, agentRuntimeArtifact, roleArn, networkConfiguration, description = NULL, authorizerConfiguration = NULL, requestHeaderConfiguration = NULL, protocolConfiguration = NULL, lifecycleConfiguration = NULL, metadataConfiguration = NULL, environmentVariables = NULL, filesystemConfigurations = NULL, clientToken = NULL) {
+bedrockagentcorecontrol_update_agent_runtime <- function(agentRuntimeId, agentRuntimeArtifact, roleArn, networkConfiguration = NULL, description = NULL, authorizerConfiguration = NULL, requestHeaderConfiguration = NULL, protocolConfiguration = NULL, lifecycleConfiguration = NULL, metadataConfiguration = NULL, environmentVariables = NULL, filesystemConfigurations = NULL, capacityProviderConfiguration = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateAgentRuntime",
     http_method = "PUT",
@@ -12923,7 +15413,7 @@ bedrockagentcorecontrol_update_agent_runtime <- function(agentRuntimeId, agentRu
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$update_agent_runtime_input(agentRuntimeId = agentRuntimeId, agentRuntimeArtifact = agentRuntimeArtifact, roleArn = roleArn, networkConfiguration = networkConfiguration, description = description, authorizerConfiguration = authorizerConfiguration, requestHeaderConfiguration = requestHeaderConfiguration, protocolConfiguration = protocolConfiguration, lifecycleConfiguration = lifecycleConfiguration, metadataConfiguration = metadataConfiguration, environmentVariables = environmentVariables, filesystemConfigurations = filesystemConfigurations, clientToken = clientToken)
+  input <- .bedrockagentcorecontrol$update_agent_runtime_input(agentRuntimeId = agentRuntimeId, agentRuntimeArtifact = agentRuntimeArtifact, roleArn = roleArn, networkConfiguration = networkConfiguration, description = description, authorizerConfiguration = authorizerConfiguration, requestHeaderConfiguration = requestHeaderConfiguration, protocolConfiguration = protocolConfiguration, lifecycleConfiguration = lifecycleConfiguration, metadataConfiguration = metadataConfiguration, environmentVariables = environmentVariables, filesystemConfigurations = filesystemConfigurations, capacityProviderConfiguration = capacityProviderConfiguration, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$update_agent_runtime_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -13007,10 +15497,13 @@ bedrockagentcorecontrol_update_agent_runtime_endpoint <- function(agentRuntimeId
 #' Updates an existing API key credential provider.
 #'
 #' @usage
-#' bedrockagentcorecontrol_update_api_key_credential_provider(name, apiKey)
+#' bedrockagentcorecontrol_update_api_key_credential_provider(name, apiKey,
+#'   apiKeySecretConfig, apiKeySecretSource)
 #'
 #' @param name &#91;required&#93; The name of the API key credential provider to update.
-#' @param apiKey &#91;required&#93; The new API key to use for authentication. This value replaces the existing API key and is encrypted and stored securely.
+#' @param apiKey The new API key to use for authentication. This value replaces the existing API key and is encrypted and stored securely.
+#' @param apiKeySecretConfig A reference to the Amazon Web Services Secrets Manager secret that stores the API key. This includes the secret ID and the JSON key used to extract the API key value from the secret. Required when `apiKeySecretSource` is set to `EXTERNAL`.
+#' @param apiKeySecretSource The source type of the API key secret. Use `MANAGED` if the secret is managed by the service, or `EXTERNAL` if you manage the secret yourself in Amazon Web Services Secrets Manager.
 #'
 #' @return
 #' A list with the following syntax:
@@ -13019,6 +15512,8 @@ bedrockagentcorecontrol_update_agent_runtime_endpoint <- function(agentRuntimeId
 #'   apiKeySecretArn = list(
 #'     secretArn = "string"
 #'   ),
+#'   apiKeySecretJsonKey = "string",
+#'   apiKeySecretSource = "MANAGED"|"EXTERNAL",
 #'   name = "string",
 #'   credentialProviderArn = "string",
 #'   createdTime = as.POSIXct(
@@ -13034,7 +15529,12 @@ bedrockagentcorecontrol_update_agent_runtime_endpoint <- function(agentRuntimeId
 #' ```
 #' svc$update_api_key_credential_provider(
 #'   name = "string",
-#'   apiKey = "string"
+#'   apiKey = "string",
+#'   apiKeySecretConfig = list(
+#'     secretId = "string",
+#'     jsonKey = "string"
+#'   ),
+#'   apiKeySecretSource = "MANAGED"|"EXTERNAL"
 #' )
 #' ```
 #'
@@ -13043,7 +15543,7 @@ bedrockagentcorecontrol_update_agent_runtime_endpoint <- function(agentRuntimeId
 #' @rdname bedrockagentcorecontrol_update_api_key_credential_provider
 #'
 #' @aliases bedrockagentcorecontrol_update_api_key_credential_provider
-bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, apiKey) {
+bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, apiKey = NULL, apiKeySecretConfig = NULL, apiKeySecretSource = NULL) {
   op <- new_operation(
     name = "UpdateApiKeyCredentialProvider",
     http_method = "POST",
@@ -13052,7 +15552,7 @@ bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, api
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$update_api_key_credential_provider_input(name = name, apiKey = apiKey)
+  input <- .bedrockagentcorecontrol$update_api_key_credential_provider_input(name = name, apiKey = apiKey, apiKeySecretConfig = apiKeySecretConfig, apiKeySecretSource = apiKeySecretSource)
   output <- .bedrockagentcorecontrol$update_api_key_credential_provider_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -13061,6 +15561,71 @@ bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, api
   return(response)
 }
 .bedrockagentcorecontrol$operations$update_api_key_credential_provider <- bedrockagentcorecontrol_update_api_key_credential_provider
+
+#' Updates a capacity provider
+#'
+#' @description
+#' Updates a capacity provider. Only the description can be changed. To change other configuration, such as instance types, networking, or storage, create a new capacity provider.
+#'
+#' @usage
+#' bedrockagentcorecontrol_update_capacity_provider(capacityProviderId,
+#'   description, clientToken)
+#'
+#' @param capacityProviderId &#91;required&#93; The unique identifier of the capacity provider to update.
+#' @param description The updated description of the capacity provider.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   capacityProviderId = "string",
+#'   capacityProviderArn = "string",
+#'   name = "string",
+#'   status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_capacity_provider(
+#'   capacityProviderId = "string",
+#'   description = list(
+#'     optionalValue = "string"
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_update_capacity_provider
+#'
+#' @aliases bedrockagentcorecontrol_update_capacity_provider
+bedrockagentcorecontrol_update_capacity_provider <- function(capacityProviderId, description = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateCapacityProvider",
+    http_method = "PUT",
+    http_path = "/capacity-providers/{capacityProviderId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$update_capacity_provider_input(capacityProviderId = capacityProviderId, description = description, clientToken = clientToken)
+  output <- .bedrockagentcorecontrol$update_capacity_provider_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$update_capacity_provider <- bedrockagentcorecontrol_update_capacity_provider
 
 #' Updates a configuration bundle by creating a new version with the
 #' specified changes
@@ -13071,7 +15636,7 @@ bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, api
 #' @usage
 #' bedrockagentcorecontrol_update_configuration_bundle(clientToken,
 #'   bundleId, bundleName, description, components, parentVersionIds,
-#'   branchName, commitMessage, createdBy)
+#'   branchName, commitMessage, createdBy, kmsKeyArn)
 #'
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param bundleId &#91;required&#93; The unique identifier of the configuration bundle to update.
@@ -13082,6 +15647,7 @@ bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, api
 #' @param branchName The branch name for this version. If not specified, inherits the parent's branch or defaults to `mainline`.
 #' @param commitMessage A commit message describing the changes in this version.
 #' @param createdBy The source that created this version, including the source name and optional ARN.
+#' @param kmsKeyArn Optional KMS key ARN for encrypting component configurations. If provided, components will be encrypted with this key. If the bundle already has a KMS key, this rotates to the new key.
 #'
 #' @return
 #' A list with the following syntax:
@@ -13116,7 +15682,8 @@ bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, api
 #'   createdBy = list(
 #'     name = "string",
 #'     arn = "string"
-#'   )
+#'   ),
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -13125,7 +15692,7 @@ bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, api
 #' @rdname bedrockagentcorecontrol_update_configuration_bundle
 #'
 #' @aliases bedrockagentcorecontrol_update_configuration_bundle
-bedrockagentcorecontrol_update_configuration_bundle <- function(clientToken = NULL, bundleId, bundleName = NULL, description = NULL, components = NULL, parentVersionIds = NULL, branchName = NULL, commitMessage = NULL, createdBy = NULL) {
+bedrockagentcorecontrol_update_configuration_bundle <- function(clientToken = NULL, bundleId, bundleName = NULL, description = NULL, components = NULL, parentVersionIds = NULL, branchName = NULL, commitMessage = NULL, createdBy = NULL, kmsKeyArn = NULL) {
   op <- new_operation(
     name = "UpdateConfigurationBundle",
     http_method = "PUT",
@@ -13134,7 +15701,7 @@ bedrockagentcorecontrol_update_configuration_bundle <- function(clientToken = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$update_configuration_bundle_input(clientToken = clientToken, bundleId = bundleId, bundleName = bundleName, description = description, components = components, parentVersionIds = parentVersionIds, branchName = branchName, commitMessage = commitMessage, createdBy = createdBy)
+  input <- .bedrockagentcorecontrol$update_configuration_bundle_input(clientToken = clientToken, bundleId = bundleId, bundleName = bundleName, description = description, components = components, parentVersionIds = parentVersionIds, branchName = branchName, commitMessage = commitMessage, createdBy = createdBy, kmsKeyArn = kmsKeyArn)
   output <- .bedrockagentcorecontrol$update_configuration_bundle_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -13147,11 +15714,7 @@ bedrockagentcorecontrol_update_configuration_bundle <- function(clientToken = NU
 #' Updates a dataset's metadata
 #'
 #' @description
-#' Updates a dataset's metadata. Synchronous operation. Only provided fields are updated; omitted fields remain unchanged.
-#' 
-#' To modify dataset content, use AddDatasetExamples, UpdateDatasetExamples, or DeleteDatasetExamples.
-#' 
-#' Cannot update: name, schemaType, kmsKeyArn (immutable after creation).
+#' Updates a dataset's metadata. Synchronous operation. Only provided fields are updated; omitted fields remain unchanged. To modify dataset content, use [`add_dataset_examples`][bedrockagentcorecontrol_add_dataset_examples], [`update_dataset_examples`][bedrockagentcorecontrol_update_dataset_examples], or [`delete_dataset_examples`][bedrockagentcorecontrol_delete_dataset_examples].
 #'
 #' @usage
 #' bedrockagentcorecontrol_update_dataset(datasetId, clientToken,
@@ -13209,17 +15772,7 @@ bedrockagentcorecontrol_update_dataset <- function(datasetId, clientToken = NULL
 #' Updates multiple existing examples in-place on DRAFT
 #'
 #' @description
-#' Updates multiple existing examples in-place on DRAFT.
-#' 
-#' **Validation:** All examples are validated against the dataset's schemaType before any writes occur. If any example fails validation, the entire batch is rejected with ValidationException — no examples are updated (all-or-nothing semantics).
-#' 
-#' **Asynchronous:** Operates in-place on DRAFT. No version bump occurs. Use CreateDatasetVersion to publish DRAFT as a new numbered version.
-#' 
-#' Fails with ResourceNotFoundException if any exampleId does not exist in DRAFT. To add new examples, use AddDatasetExamples instead.
-#' 
-#' **State guard:** Returns ConflictException (DATASET_NOT_READY) if the dataset status is not in \{DRAFT, ACTIVE\}.
-#' 
-#' **Request size limit:** Max 5 MB total request body. Max 1000 examples per call.
+#' Updates multiple existing examples in-place on DRAFT. All examples are validated against the dataset's schema type before any writes occur. If any example fails validation, the entire batch is rejected (all-or-nothing semantics).
 #'
 #' @usage
 #' bedrockagentcorecontrol_update_dataset_examples(datasetId, clientToken,
@@ -13227,7 +15780,7 @@ bedrockagentcorecontrol_update_dataset <- function(datasetId, clientToken = NULL
 #'
 #' @param datasetId &#91;required&#93; The unique identifier of the dataset.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param examples &#91;required&#93; Examples to update. Each element is a JSON object containing a required `exampleId` string field identifying the existing example, plus the replacement fields. The `exampleId` is extracted and removed before persistence; the remaining document is validated against the dataset's schemaType. Max 1000 examples per call. Total request body must not exceed 5 MB.
+#' @param examples &#91;required&#93; Examples to update. Each element is a JSON object containing a required `exampleId` field identifying the existing example, plus the replacement fields. Maximum 1000 examples per call.
 #'
 #' @return
 #' A list with the following syntax:
@@ -13344,6 +15897,15 @@ bedrockagentcorecontrol_update_dataset_examples <- function(datasetId, clientTok
 #'             )
 #'           ),
 #'           additionalModelRequestFields = list()
+#'         ),
+#'         responsesEvaluatorModelConfig = list(
+#'           modelId = "string",
+#'           maxOutputTokens = 123,
+#'           temperature = 123.0,
+#'           topP = 123.0,
+#'           reasoning = list(
+#'             effort = "string"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -13351,6 +15913,32 @@ bedrockagentcorecontrol_update_dataset_examples <- function(datasetId, clientTok
 #'       lambdaConfig = list(
 #'         lambdaArn = "string",
 #'         lambdaTimeoutInSeconds = 123
+#'       )
+#'     ),
+#'     derived = list(
+#'       baseEvaluatorId = "string",
+#'       modelConfig = list(
+#'         bedrockEvaluatorModelConfig = list(
+#'           modelId = "string",
+#'           inferenceConfig = list(
+#'             maxTokens = 123,
+#'             temperature = 123.0,
+#'             topP = 123.0,
+#'             stopSequences = list(
+#'               "string"
+#'             )
+#'           ),
+#'           additionalModelRequestFields = list()
+#'         ),
+#'         responsesEvaluatorModelConfig = list(
+#'           modelId = "string",
+#'           maxOutputTokens = 123,
+#'           temperature = 123.0,
+#'           topP = 123.0,
+#'           reasoning = list(
+#'             effort = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -13392,7 +15980,8 @@ bedrockagentcorecontrol_update_evaluator <- function(clientToken = NULL, evaluat
 #' bedrockagentcorecontrol_update_gateway(gatewayIdentifier, name,
 #'   description, roleArn, protocolType, protocolConfiguration,
 #'   authorizerType, authorizerConfiguration, kmsKeyArn,
-#'   interceptorConfigurations, policyEngineConfiguration, exceptionLevel)
+#'   customTransformConfiguration, interceptorConfigurations,
+#'   policyEngineConfiguration, exceptionLevel, wafConfiguration)
 #'
 #' @param gatewayIdentifier &#91;required&#93; The identifier of the gateway to update.
 #' @param name &#91;required&#93; The name of the gateway. This name must be the same as the one when the gateway was created.
@@ -13403,6 +15992,7 @@ bedrockagentcorecontrol_update_evaluator <- function(clientToken = NULL, evaluat
 #' @param authorizerType &#91;required&#93; The updated authorizer type for the gateway.
 #' @param authorizerConfiguration The updated authorizer configuration for the gateway.
 #' @param kmsKeyArn The updated ARN of the KMS key used to encrypt the gateway.
+#' @param customTransformConfiguration The updated custom transformation configuration for the gateway. This configuration defines how the gateway transforms requests and responses.
 #' @param interceptorConfigurations The updated interceptor configurations for the gateway.
 #' @param policyEngineConfiguration The updated policy engine configuration for the gateway. A policy engine is a collection of policies that evaluates and authorizes agent tool calls. When associated with a gateway, the policy engine intercepts all agent requests and determines whether to allow or deny each action based on the defined policies.
 #' @param exceptionLevel The level of detail in error messages returned when invoking the gateway.
@@ -13410,6 +16000,7 @@ bedrockagentcorecontrol_update_evaluator <- function(clientToken = NULL, evaluat
 #' -   If the value is `DEBUG`, granular exception messages are returned to help a user debug the gateway.
 #' 
 #' -   If the value is omitted, a generic error message is returned to the end user.
+#' @param wafConfiguration The updated Amazon Web Services WAF configuration for the gateway.
 #'
 #' @return
 #' A list with the following syntax:
@@ -13460,6 +16051,9 @@ bedrockagentcorecontrol_update_evaluator <- function(clientToken = NULL, evaluat
 #'       allowedScopes = list(
 #'         "string"
 #'       ),
+#'       advertisedScopeMapping = list(
+#'         "string"
+#'       ),
 #'       customClaims = list(
 #'         list(
 #'           inboundTokenClaimName = "string",
@@ -13517,10 +16111,25 @@ bedrockagentcorecontrol_update_evaluator <- function(clientToken = NULL, evaluat
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
 #'   kmsKeyArn = "string",
+#'   customTransformConfiguration = list(
+#'     lambda = list(
+#'       arn = "string"
+#'     )
+#'   ),
 #'   interceptorConfigurations = list(
 #'     list(
 #'       interceptor = list(
@@ -13532,7 +16141,14 @@ bedrockagentcorecontrol_update_evaluator <- function(clientToken = NULL, evaluat
 #'         "REQUEST"|"RESPONSE"
 #'       ),
 #'       inputConfiguration = list(
-#'         passRequestHeaders = TRUE|FALSE
+#'         passRequestHeaders = TRUE|FALSE,
+#'         payloadFilter = list(
+#'           exclude = list(
+#'             list(
+#'               field = "RESPONSE_BODY"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -13543,7 +16159,11 @@ bedrockagentcorecontrol_update_evaluator <- function(clientToken = NULL, evaluat
 #'   workloadIdentityDetails = list(
 #'     workloadIdentityArn = "string"
 #'   ),
-#'   exceptionLevel = "DEBUG"
+#'   exceptionLevel = "DEBUG",
+#'   webAclArn = "string",
+#'   wafConfiguration = list(
+#'     failureMode = "FAIL_CLOSE"|"FAIL_OPEN"
+#'   )
 #' )
 #' ```
 #'
@@ -13583,6 +16203,9 @@ bedrockagentcorecontrol_update_evaluator <- function(clientToken = NULL, evaluat
 #'       allowedScopes = list(
 #'         "string"
 #'       ),
+#'       advertisedScopeMapping = list(
+#'         "string"
+#'       ),
 #'       customClaims = list(
 #'         list(
 #'           inboundTokenClaimName = "string",
@@ -13640,10 +16263,25 @@ bedrockagentcorecontrol_update_evaluator <- function(clientToken = NULL, evaluat
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
 #'   kmsKeyArn = "string",
+#'   customTransformConfiguration = list(
+#'     lambda = list(
+#'       arn = "string"
+#'     )
+#'   ),
 #'   interceptorConfigurations = list(
 #'     list(
 #'       interceptor = list(
@@ -13655,7 +16293,14 @@ bedrockagentcorecontrol_update_evaluator <- function(clientToken = NULL, evaluat
 #'         "REQUEST"|"RESPONSE"
 #'       ),
 #'       inputConfiguration = list(
-#'         passRequestHeaders = TRUE|FALSE
+#'         passRequestHeaders = TRUE|FALSE,
+#'         payloadFilter = list(
+#'           exclude = list(
+#'             list(
+#'               field = "RESPONSE_BODY"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -13663,7 +16308,10 @@ bedrockagentcorecontrol_update_evaluator <- function(clientToken = NULL, evaluat
 #'     arn = "string",
 #'     mode = "LOG_ONLY"|"ENFORCE"
 #'   ),
-#'   exceptionLevel = "DEBUG"
+#'   exceptionLevel = "DEBUG",
+#'   wafConfiguration = list(
+#'     failureMode = "FAIL_CLOSE"|"FAIL_OPEN"
+#'   )
 #' )
 #' ```
 #'
@@ -13672,7 +16320,7 @@ bedrockagentcorecontrol_update_evaluator <- function(clientToken = NULL, evaluat
 #' @rdname bedrockagentcorecontrol_update_gateway
 #'
 #' @aliases bedrockagentcorecontrol_update_gateway
-bedrockagentcorecontrol_update_gateway <- function(gatewayIdentifier, name, description = NULL, roleArn, protocolType = NULL, protocolConfiguration = NULL, authorizerType, authorizerConfiguration = NULL, kmsKeyArn = NULL, interceptorConfigurations = NULL, policyEngineConfiguration = NULL, exceptionLevel = NULL) {
+bedrockagentcorecontrol_update_gateway <- function(gatewayIdentifier, name, description = NULL, roleArn, protocolType = NULL, protocolConfiguration = NULL, authorizerType, authorizerConfiguration = NULL, kmsKeyArn = NULL, customTransformConfiguration = NULL, interceptorConfigurations = NULL, policyEngineConfiguration = NULL, exceptionLevel = NULL, wafConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateGateway",
     http_method = "PUT",
@@ -13681,7 +16329,7 @@ bedrockagentcorecontrol_update_gateway <- function(gatewayIdentifier, name, desc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$update_gateway_input(gatewayIdentifier = gatewayIdentifier, name = name, description = description, roleArn = roleArn, protocolType = protocolType, protocolConfiguration = protocolConfiguration, authorizerType = authorizerType, authorizerConfiguration = authorizerConfiguration, kmsKeyArn = kmsKeyArn, interceptorConfigurations = interceptorConfigurations, policyEngineConfiguration = policyEngineConfiguration, exceptionLevel = exceptionLevel)
+  input <- .bedrockagentcorecontrol$update_gateway_input(gatewayIdentifier = gatewayIdentifier, name = name, description = description, roleArn = roleArn, protocolType = protocolType, protocolConfiguration = protocolConfiguration, authorizerType = authorizerType, authorizerConfiguration = authorizerConfiguration, kmsKeyArn = kmsKeyArn, customTransformConfiguration = customTransformConfiguration, interceptorConfigurations = interceptorConfigurations, policyEngineConfiguration = policyEngineConfiguration, exceptionLevel = exceptionLevel, wafConfiguration = wafConfiguration)
   output <- .bedrockagentcorecontrol$update_gateway_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -13690,6 +16338,123 @@ bedrockagentcorecontrol_update_gateway <- function(gatewayIdentifier, name, desc
   return(response)
 }
 .bedrockagentcorecontrol$operations$update_gateway <- bedrockagentcorecontrol_update_gateway
+
+#' Updates the entries of a gateway rate limit
+#'
+#' @description
+#' Updates the entries of a gateway rate limit. The dimension keys are immutable after creation.
+#'
+#' @usage
+#' bedrockagentcorecontrol_update_gateway_rate_limit(gatewayIdentifier,
+#'   rateLimitId, description, entries)
+#'
+#' @param gatewayIdentifier &#91;required&#93; The unique identifier of the gateway.
+#' @param rateLimitId &#91;required&#93; The unique identifier of the rate limit to update.
+#' @param description The updated human-readable description for this rate limit.
+#' @param entries &#91;required&#93; The updated rule entries. The dimension keys are immutable after creation and cannot be changed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   rateLimitId = "string",
+#'   gatewayIdentifier = "string",
+#'   description = "string",
+#'   dimensionKeys = list(
+#'     "string"
+#'   ),
+#'   entries = list(
+#'     list(
+#'       dimensions = list(
+#'         "string"
+#'       ),
+#'       requests = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       ),
+#'       tokens = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       ),
+#'       connections = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_gateway_rate_limit(
+#'   gatewayIdentifier = "string",
+#'   rateLimitId = "string",
+#'   description = "string",
+#'   entries = list(
+#'     list(
+#'       dimensions = list(
+#'         "string"
+#'       ),
+#'       requests = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       ),
+#'       tokens = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       ),
+#'       connections = list(
+#'         list(
+#'           rate = 123.0,
+#'           period = "second"|"minute"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_update_gateway_rate_limit
+#'
+#' @aliases bedrockagentcorecontrol_update_gateway_rate_limit
+bedrockagentcorecontrol_update_gateway_rate_limit <- function(gatewayIdentifier, rateLimitId, description = NULL, entries) {
+  op <- new_operation(
+    name = "UpdateGatewayRateLimit",
+    http_method = "PATCH",
+    http_path = "/gateways/{gatewayIdentifier}/rate-limits/{rateLimitId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$update_gateway_rate_limit_input(gatewayIdentifier = gatewayIdentifier, rateLimitId = rateLimitId, description = description, entries = entries)
+  output <- .bedrockagentcorecontrol$update_gateway_rate_limit_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$update_gateway_rate_limit <- bedrockagentcorecontrol_update_gateway_rate_limit
 
 #' Updates a gateway rule's priority, conditions, actions, or description
 #'
@@ -13903,7 +16668,7 @@ bedrockagentcorecontrol_update_gateway_rule <- function(gatewayIdentifier, ruleI
 #'
 #' @param gatewayIdentifier &#91;required&#93; The unique identifier of the gateway associated with the target.
 #' @param targetId &#91;required&#93; The unique identifier of the gateway target to update.
-#' @param name &#91;required&#93; The updated name for the gateway target.
+#' @param name The updated name for the gateway target.
 #' @param description The updated description for the gateway target.
 #' @param targetConfiguration &#91;required&#93; The configuration for a gateway target. This structure defines how the gateway connects to and interacts with the target endpoint.
 #' @param credentialProviderConfigurations The updated credential provider configurations for the gateway target.
@@ -14014,12 +16779,103 @@ bedrockagentcorecontrol_update_gateway_rule <- function(gatewayIdentifier, ruleI
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string",
+#'           version = "string"
+#'         ),
+#'         enabled = list(
+#'           "string"
+#'         ),
+#'         configurations = list(
+#'           list(
+#'             name = "string",
+#'             description = "string",
+#'             parameterValues = list(),
+#'             parameterOverrides = list(
+#'               list(
+#'                 path = "string",
+#'                 description = "string",
+#'                 visible = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     http = list(
 #'       agentcoreRuntime = list(
 #'         arn = "string",
-#'         qualifier = "string"
+#'         qualifier = "string",
+#'         schema = list(
+#'           source = list(
+#'             s3 = list(
+#'               uri = "string",
+#'               bucketOwnerAccountId = "string"
+#'             ),
+#'             inlinePayload = "string"
+#'           )
+#'         )
+#'       ),
+#'       passthrough = list(
+#'         endpoint = "string",
+#'         protocolType = "MCP"|"A2A"|"INFERENCE"|"CUSTOM",
+#'         schema = list(
+#'           source = list(
+#'             s3 = list(
+#'               uri = "string",
+#'               bucketOwnerAccountId = "string"
+#'             ),
+#'             inlinePayload = "string"
+#'           )
+#'         ),
+#'         stickinessConfiguration = list(
+#'           identifier = "string",
+#'           timeout = 123,
+#'           compositeIdentifier = list(
+#'             "string"
+#'           )
+#'         ),
+#'         staticQueryParameters = list(
+#'           "string"
+#'         ),
+#'         staticQueryParameterConflictResolution = "CLIENT_OVERRIDE"|"STATIC_OVERRIDE"
+#'       ),
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string"
+#'         ),
+#'         parameters = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     inference = list(
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string"
+#'         )
+#'       ),
+#'       provider = list(
+#'         endpoint = "string",
+#'         modelMapping = list(
+#'           providerPrefix = list(
+#'             strip = TRUE|FALSE,
+#'             separator = "string"
+#'           )
+#'         ),
+#'         operations = list(
+#'           list(
+#'             path = "string",
+#'             providerPath = "string",
+#'             models = list(
+#'               list(
+#'                 model = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -14194,12 +17050,103 @@ bedrockagentcorecontrol_update_gateway_rule <- function(gatewayIdentifier, ruleI
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string",
+#'           version = "string"
+#'         ),
+#'         enabled = list(
+#'           "string"
+#'         ),
+#'         configurations = list(
+#'           list(
+#'             name = "string",
+#'             description = "string",
+#'             parameterValues = list(),
+#'             parameterOverrides = list(
+#'               list(
+#'                 path = "string",
+#'                 description = "string",
+#'                 visible = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     http = list(
 #'       agentcoreRuntime = list(
 #'         arn = "string",
-#'         qualifier = "string"
+#'         qualifier = "string",
+#'         schema = list(
+#'           source = list(
+#'             s3 = list(
+#'               uri = "string",
+#'               bucketOwnerAccountId = "string"
+#'             ),
+#'             inlinePayload = "string"
+#'           )
+#'         )
+#'       ),
+#'       passthrough = list(
+#'         endpoint = "string",
+#'         protocolType = "MCP"|"A2A"|"INFERENCE"|"CUSTOM",
+#'         schema = list(
+#'           source = list(
+#'             s3 = list(
+#'               uri = "string",
+#'               bucketOwnerAccountId = "string"
+#'             ),
+#'             inlinePayload = "string"
+#'           )
+#'         ),
+#'         stickinessConfiguration = list(
+#'           identifier = "string",
+#'           timeout = 123,
+#'           compositeIdentifier = list(
+#'             "string"
+#'           )
+#'         ),
+#'         staticQueryParameters = list(
+#'           "string"
+#'         ),
+#'         staticQueryParameterConflictResolution = "CLIENT_OVERRIDE"|"STATIC_OVERRIDE"
+#'       ),
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string"
+#'         ),
+#'         parameters = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     inference = list(
+#'       connector = list(
+#'         source = list(
+#'           connectorId = "string"
+#'         )
+#'       ),
+#'       provider = list(
+#'         endpoint = "string",
+#'         modelMapping = list(
+#'           providerPrefix = list(
+#'             strip = TRUE|FALSE,
+#'             separator = "string"
+#'           )
+#'         ),
+#'         operations = list(
+#'           list(
+#'             path = "string",
+#'             providerPath = "string",
+#'             models = list(
+#'               list(
+#'                 model = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -14269,7 +17216,7 @@ bedrockagentcorecontrol_update_gateway_rule <- function(gatewayIdentifier, ruleI
 #' @rdname bedrockagentcorecontrol_update_gateway_target
 #'
 #' @aliases bedrockagentcorecontrol_update_gateway_target
-bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, targetId, name, description = NULL, targetConfiguration, credentialProviderConfigurations = NULL, metadataConfiguration = NULL, privateEndpoint = NULL) {
+bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, targetId, name = NULL, description = NULL, targetConfiguration, credentialProviderConfigurations = NULL, metadataConfiguration = NULL, privateEndpoint = NULL) {
   op <- new_operation(
     name = "UpdateGatewayTarget",
     http_method = "PUT",
@@ -14288,10 +17235,10 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 }
 .bedrockagentcorecontrol$operations$update_gateway_target <- bedrockagentcorecontrol_update_gateway_target
 
-#' Operation to update a Harness
+#' Operation to update a harness
 #'
 #' @description
-#' Operation to update a Harness.
+#' Operation to update a harness.
 #'
 #' @usage
 #' bedrockagentcorecontrol_update_harness(harnessId, clientToken,
@@ -14327,6 +17274,7 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'     harnessName = "string",
 #'     arn = "string",
 #'     status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED",
+#'     harnessVersion = "string",
 #'     executionRoleArn = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
@@ -14339,14 +17287,18 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'         modelId = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "converse_stream"|"responses"|"chat_completions",
+#'         additionalParams = list()
 #'       ),
 #'       openAiModelConfig = list(
 #'         modelId = "string",
 #'         apiKeyArn = "string",
 #'         maxTokens = 123,
 #'         temperature = 123.0,
-#'         topP = 123.0
+#'         topP = 123.0,
+#'         apiFormat = "chat_completions"|"responses",
+#'         additionalParams = list()
 #'       ),
 #'       geminiModelConfig = list(
 #'         modelId = "string",
@@ -14354,7 +17306,17 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'         maxTokens = 123,
 #'         temperature = 123.0,
 #'         topP = 123.0,
-#'         topK = 123
+#'         topK = 123,
+#'         additionalParams = list()
+#'       ),
+#'       liteLlmModelConfig = list(
+#'         modelId = "string",
+#'         apiKeyArn = "string",
+#'         apiBase = "string",
+#'         maxTokens = 123,
+#'         temperature = 123.0,
+#'         topP = 123.0,
+#'         additionalParams = list()
 #'       )
 #'     ),
 #'     systemPrompt = list(
@@ -14406,7 +17368,23 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'     ),
 #'     skills = list(
 #'       list(
-#'         path = "string"
+#'         path = "string",
+#'         s3 = list(
+#'           uri = "string"
+#'         ),
+#'         git = list(
+#'           url = "string",
+#'           path = "string",
+#'           auth = list(
+#'             credentialArn = "string",
+#'             username = "string"
+#'           )
+#'         ),
+#'         awsSkills = list(
+#'           paths = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     allowedTools = list(
@@ -14458,6 +17436,10 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'             efsAccessPoint = list(
 #'               accessPointArn = "string",
 #'               mountPath = "string"
+#'             ),
+#'             capacityProviderVolume = list(
+#'               volumeName = "string",
+#'               mountPath = "string"
 #'             )
 #'           )
 #'         )
@@ -14481,6 +17463,9 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'           "string"
 #'         ),
 #'         allowedScopes = list(
+#'           "string"
+#'         ),
+#'         advertisedScopeMapping = list(
 #'           "string"
 #'         ),
 #'         customClaims = list(
@@ -14540,6 +17525,16 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         allowedWorkloadConfiguration = list(
+#'           hostingEnvironments = list(
+#'             list(
+#'               arn = "string"
+#'             )
+#'           ),
+#'           workloadIdentities = list(
+#'             "string"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -14555,7 +17550,16 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'             strategyId = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       managedMemoryConfiguration = list(
+#'         arn = "string",
+#'         strategies = list(
+#'           "SEMANTIC"|"SUMMARIZATION"|"USER_PREFERENCE"|"EPISODIC"
+#'         ),
+#'         eventExpiryDuration = 123,
+#'         encryptionKeyArn = "string"
+#'       ),
+#'       disabled = list()
 #'     ),
 #'     maxIterations = 123,
 #'     maxTokens = 123,
@@ -14601,6 +17605,10 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'           efsAccessPoint = list(
 #'             accessPointArn = "string",
 #'             mountPath = "string"
+#'           ),
+#'           capacityProviderVolume = list(
+#'             volumeName = "string",
+#'             mountPath = "string"
 #'           )
 #'         )
 #'       )
@@ -14627,6 +17635,9 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'           "string"
 #'         ),
 #'         allowedScopes = list(
+#'           "string"
+#'         ),
+#'         advertisedScopeMapping = list(
 #'           "string"
 #'         ),
 #'         customClaims = list(
@@ -14686,6 +17697,16 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         allowedWorkloadConfiguration = list(
+#'           hostingEnvironments = list(
+#'             list(
+#'               arn = "string"
+#'             )
+#'           ),
+#'           workloadIdentities = list(
+#'             "string"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -14695,14 +17716,18 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'       modelId = "string",
 #'       maxTokens = 123,
 #'       temperature = 123.0,
-#'       topP = 123.0
+#'       topP = 123.0,
+#'       apiFormat = "converse_stream"|"responses"|"chat_completions",
+#'       additionalParams = list()
 #'     ),
 #'     openAiModelConfig = list(
 #'       modelId = "string",
 #'       apiKeyArn = "string",
 #'       maxTokens = 123,
 #'       temperature = 123.0,
-#'       topP = 123.0
+#'       topP = 123.0,
+#'       apiFormat = "chat_completions"|"responses",
+#'       additionalParams = list()
 #'     ),
 #'     geminiModelConfig = list(
 #'       modelId = "string",
@@ -14710,7 +17735,17 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'       maxTokens = 123,
 #'       temperature = 123.0,
 #'       topP = 123.0,
-#'       topK = 123
+#'       topK = 123,
+#'       additionalParams = list()
+#'     ),
+#'     liteLlmModelConfig = list(
+#'       modelId = "string",
+#'       apiKeyArn = "string",
+#'       apiBase = "string",
+#'       maxTokens = 123,
+#'       temperature = 123.0,
+#'       topP = 123.0,
+#'       additionalParams = list()
 #'     )
 #'   ),
 #'   systemPrompt = list(
@@ -14762,7 +17797,23 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'   ),
 #'   skills = list(
 #'     list(
-#'       path = "string"
+#'       path = "string",
+#'       s3 = list(
+#'         uri = "string"
+#'       ),
+#'       git = list(
+#'         url = "string",
+#'         path = "string",
+#'         auth = list(
+#'           credentialArn = "string",
+#'           username = "string"
+#'         )
+#'       ),
+#'       awsSkills = list(
+#'         paths = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   allowedTools = list(
@@ -14781,7 +17832,16 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #'             strategyId = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       managedMemoryConfiguration = list(
+#'         arn = "string",
+#'         strategies = list(
+#'           "SEMANTIC"|"SUMMARIZATION"|"USER_PREFERENCE"|"EPISODIC"
+#'         ),
+#'         eventExpiryDuration = 123,
+#'         encryptionKeyArn = "string"
+#'       ),
+#'       disabled = list()
 #'     )
 #'   ),
 #'   truncation = list(
@@ -14827,6 +17887,80 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 }
 .bedrockagentcorecontrol$operations$update_harness <- bedrockagentcorecontrol_update_harness
 
+#' Operation to update a harness endpoint
+#'
+#' @description
+#' Operation to update a harness endpoint.
+#'
+#' @usage
+#' bedrockagentcorecontrol_update_harness_endpoint(harnessId, endpointName,
+#'   targetVersion, description, clientToken)
+#'
+#' @param harnessId &#91;required&#93; The ID of the harness that the endpoint belongs to.
+#' @param endpointName &#91;required&#93; The name of the endpoint to update.
+#' @param targetVersion The harness version that the endpoint points to. If not specified, the existing value is retained.
+#' @param description A description of the endpoint. If not specified, the existing value is retained.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   endpoint = list(
+#'     harnessId = "string",
+#'     harnessName = "string",
+#'     endpointName = "string",
+#'     arn = "string",
+#'     status = "CREATING"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"READY"|"DELETING"|"DELETE_FAILED",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     liveVersion = "string",
+#'     targetVersion = "string",
+#'     description = "string",
+#'     failureReason = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_harness_endpoint(
+#'   harnessId = "string",
+#'   endpointName = "string",
+#'   targetVersion = "string",
+#'   description = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_update_harness_endpoint
+#'
+#' @aliases bedrockagentcorecontrol_update_harness_endpoint
+bedrockagentcorecontrol_update_harness_endpoint <- function(harnessId, endpointName, targetVersion = NULL, description = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateHarnessEndpoint",
+    http_method = "PATCH",
+    http_path = "/harnesses/{harnessId}/endpoints/{endpointName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentcorecontrol$update_harness_endpoint_input(harnessId = harnessId, endpointName = endpointName, targetVersion = targetVersion, description = description, clientToken = clientToken)
+  output <- .bedrockagentcorecontrol$update_harness_endpoint_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$update_harness_endpoint <- bedrockagentcorecontrol_update_harness_endpoint
+
 #' Update an Amazon Bedrock AgentCore Memory resource memory
 #'
 #' @description
@@ -14835,7 +17969,8 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #' @usage
 #' bedrockagentcorecontrol_update_memory(clientToken, memoryId,
 #'   description, eventExpiryDuration, memoryExecutionRoleArn,
-#'   memoryStrategies, addIndexedKeys, streamDeliveryResources)
+#'   memoryStrategies, addIndexedKeys, namespaceKeys,
+#'   streamDeliveryResources)
 #'
 #' @param clientToken A client token is used for keeping track of idempotent requests. It can contain a session id which can be around 250 chars, combined with a unique AWS identifier.
 #' @param memoryId &#91;required&#93; The unique identifier of the memory to update.
@@ -14844,6 +17979,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #' @param memoryExecutionRoleArn The ARN of the IAM role that provides permissions for the AgentCore Memory resource.
 #' @param memoryStrategies The memory strategies to add, modify, or delete.
 #' @param addIndexedKeys Additional metadata keys to index. Previously indexed keys cannot be removed.
+#' @param namespaceKeys The namespace variable key definitions with validation rules for this memory. This value fully replaces the existing set — any key you omit is removed. Any referenced `namespaceKey` omission will throw ValidationException.
 #' @param streamDeliveryResources Configuration for streaming memory record data to external resources.
 #'
 #' @return
@@ -14858,7 +17994,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'     encryptionKeyArn = "string",
 #'     memoryExecutionRoleArn = "string",
 #'     eventExpiryDuration = 123,
-#'     status = "CREATING"|"ACTIVE"|"FAILED"|"DELETING",
+#'     status = "CREATING"|"ACTIVE"|"FAILED"|"DELETING"|"UPDATING",
 #'     failureReason = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
@@ -14925,6 +18061,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'                     list(
 #'                       key = "string",
 #'                       type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                       extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                       extractionConfig = list(
 #'                         llmExtractionConfig = list(
 #'                           llmExtractionInstruction = "string",
@@ -14965,6 +18102,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'                   list(
 #'                     key = "string",
 #'                     type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                     extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                     extractionConfig = list(
 #'                       llmExtractionConfig = list(
 #'                         llmExtractionInstruction = "string",
@@ -15033,6 +18171,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'             list(
 #'               key = "string",
 #'               type = "STRING"|"STRINGLIST"|"NUMBER",
+#'               extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'               extractionConfig = list(
 #'                 llmExtractionConfig = list(
 #'                   llmExtractionInstruction = "string",
@@ -15067,6 +18206,17 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'         type = "STRING"|"STRINGLIST"|"NUMBER"
 #'       )
 #'     ),
+#'     namespaceKeys = list(
+#'       list(
+#'         key = "string",
+#'         validation = list(
+#'           allowedValues = list(
+#'             "string"
+#'           ),
+#'           regexPattern = "string"
+#'         )
+#'       )
+#'     ),
 #'     streamDeliveryResources = list(
 #'       resources = list(
 #'         list(
@@ -15081,7 +18231,8 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     managedByResourceArn = "string"
 #'   )
 #' )
 #' ```
@@ -15111,6 +18262,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'               list(
 #'                 key = "string",
 #'                 type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                 extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                 extractionConfig = list(
 #'                   llmExtractionConfig = list(
 #'                     llmExtractionInstruction = "string",
@@ -15152,6 +18304,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'               list(
 #'                 key = "string",
 #'                 type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                 extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                 extractionConfig = list(
 #'                   llmExtractionConfig = list(
 #'                     llmExtractionInstruction = "string",
@@ -15193,6 +18346,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'               list(
 #'                 key = "string",
 #'                 type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                 extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                 extractionConfig = list(
 #'                   llmExtractionConfig = list(
 #'                     llmExtractionInstruction = "string",
@@ -15279,6 +18433,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'                     list(
 #'                       key = "string",
 #'                       type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                       extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                       extractionConfig = list(
 #'                         llmExtractionConfig = list(
 #'                           llmExtractionInstruction = "string",
@@ -15333,6 +18488,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'               list(
 #'                 key = "string",
 #'                 type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                 extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                 extractionConfig = list(
 #'                   llmExtractionConfig = list(
 #'                     llmExtractionInstruction = "string",
@@ -15381,6 +18537,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'                 list(
 #'                   key = "string",
 #'                   type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                   extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                   extractionConfig = list(
 #'                     llmExtractionConfig = list(
 #'                       llmExtractionInstruction = "string",
@@ -15413,6 +18570,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'               list(
 #'                 key = "string",
 #'                 type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                 extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                 extractionConfig = list(
 #'                   llmExtractionConfig = list(
 #'                     llmExtractionInstruction = "string",
@@ -15502,6 +18660,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'                   list(
 #'                     key = "string",
 #'                     type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                     extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                     extractionConfig = list(
 #'                       llmExtractionConfig = list(
 #'                         llmExtractionInstruction = "string",
@@ -15544,6 +18703,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'                     list(
 #'                       key = "string",
 #'                       type = "STRING"|"STRINGLIST"|"NUMBER",
+#'                       extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'                       extractionConfig = list(
 #'                         llmExtractionConfig = list(
 #'                           llmExtractionInstruction = "string",
@@ -15599,6 +18759,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'             list(
 #'               key = "string",
 #'               type = "STRING"|"STRINGLIST"|"NUMBER",
+#'               extractionType = "LLM_INFERRED"|"STRICTLY_CONSISTENT",
 #'               extractionConfig = list(
 #'                 llmExtractionConfig = list(
 #'                   llmExtractionInstruction = "string",
@@ -15639,6 +18800,17 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #'       type = "STRING"|"STRINGLIST"|"NUMBER"
 #'     )
 #'   ),
+#'   namespaceKeys = list(
+#'     list(
+#'       key = "string",
+#'       validation = list(
+#'         allowedValues = list(
+#'           "string"
+#'         ),
+#'         regexPattern = "string"
+#'       )
+#'     )
+#'   ),
 #'   streamDeliveryResources = list(
 #'     resources = list(
 #'       list(
@@ -15662,7 +18834,7 @@ bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL
 #' @rdname bedrockagentcorecontrol_update_memory
 #'
 #' @aliases bedrockagentcorecontrol_update_memory
-bedrockagentcorecontrol_update_memory <- function(clientToken = NULL, memoryId, description = NULL, eventExpiryDuration = NULL, memoryExecutionRoleArn = NULL, memoryStrategies = NULL, addIndexedKeys = NULL, streamDeliveryResources = NULL) {
+bedrockagentcorecontrol_update_memory <- function(clientToken = NULL, memoryId, description = NULL, eventExpiryDuration = NULL, memoryExecutionRoleArn = NULL, memoryStrategies = NULL, addIndexedKeys = NULL, namespaceKeys = NULL, streamDeliveryResources = NULL) {
   op <- new_operation(
     name = "UpdateMemory",
     http_method = "PUT",
@@ -15671,7 +18843,7 @@ bedrockagentcorecontrol_update_memory <- function(clientToken = NULL, memoryId, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$update_memory_input(clientToken = clientToken, memoryId = memoryId, description = description, eventExpiryDuration = eventExpiryDuration, memoryExecutionRoleArn = memoryExecutionRoleArn, memoryStrategies = memoryStrategies, addIndexedKeys = addIndexedKeys, streamDeliveryResources = streamDeliveryResources)
+  input <- .bedrockagentcorecontrol$update_memory_input(clientToken = clientToken, memoryId = memoryId, description = description, eventExpiryDuration = eventExpiryDuration, memoryExecutionRoleArn = memoryExecutionRoleArn, memoryStrategies = memoryStrategies, addIndexedKeys = addIndexedKeys, namespaceKeys = namespaceKeys, streamDeliveryResources = streamDeliveryResources)
   output <- .bedrockagentcorecontrol$update_memory_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -15701,6 +18873,8 @@ bedrockagentcorecontrol_update_memory <- function(clientToken = NULL, memoryId, 
 #'   clientSecretArn = list(
 #'     secretArn = "string"
 #'   ),
+#'   clientSecretJsonKey = "string",
+#'   clientSecretSource = "MANAGED"|"EXTERNAL",
 #'   name = "string",
 #'   credentialProviderVendor = "GoogleOauth2"|"GithubOauth2"|"SlackOauth2"|"SalesforceOauth2"|"MicrosoftOauth2"|"CustomOauth2"|"AtlassianOauth2"|"LinkedinOauth2"|"XOauth2"|"OktaOauth2"|"OneLoginOauth2"|"PingOneOauth2"|"FacebookOauth2"|"YandexOauth2"|"RedditOauth2"|"ZoomOauth2"|"TwitchOauth2"|"SpotifyOauth2"|"DropboxOauth2"|"NotionOauth2"|"HubspotOauth2"|"CyberArkOauth2"|"FusionAuthOauth2"|"Auth0Oauth2"|"CognitoOauth2",
 #'   credentialProviderArn = "string",
@@ -15722,6 +18896,16 @@ bedrockagentcorecontrol_update_memory <- function(clientToken = NULL, memoryId, 
 #'         )
 #'       ),
 #'       clientId = "string",
+#'       onBehalfOfTokenExchangeConfig = list(
+#'         grantType = "TOKEN_EXCHANGE"|"JWT_AUTHORIZATION_GRANT",
+#'         tokenExchangeGrantTypeConfig = list(
+#'           actorTokenContent = "NONE"|"M2M"|"AWS_IAM_ID_TOKEN_JWT",
+#'           actorTokenScopes = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       clientAuthenticationMethod = "CLIENT_SECRET_BASIC"|"CLIENT_SECRET_POST"|"AWS_IAM_ID_TOKEN_JWT"|"PRIVATE_KEY_JWT",
 #'       privateEndpoint = list(
 #'         selfManagedLatticeResource = list(
 #'           resourceConfigurationIdentifier = "string"
@@ -15765,16 +18949,20 @@ bedrockagentcorecontrol_update_memory <- function(clientToken = NULL, memoryId, 
 #'           )
 #'         )
 #'       ),
-#'       onBehalfOfTokenExchangeConfig = list(
-#'         grantType = "TOKEN_EXCHANGE"|"JWT_AUTHORIZATION_GRANT",
-#'         tokenExchangeGrantTypeConfig = list(
-#'           actorTokenContent = "NONE"|"M2M"|"AWS_IAM_ID_TOKEN_JWT",
-#'           actorTokenScopes = list(
-#'             "string"
+#'       privateKeyJwtConfig = list(
+#'         privateKeySource = list(
+#'           kmsKeySource = list(
+#'             kmsKeyArn = "string"
 #'           )
+#'         ),
+#'         signingAlgorithm = "RS256"|"PS256"|"ES256",
+#'         additionalHeaderClaims = list(
+#'           "string"
+#'         ),
+#'         additionalPayloadClaims = list(
+#'           "string"
 #'         )
-#'       ),
-#'       clientAuthenticationMethod = "CLIENT_SECRET_BASIC"|"CLIENT_SECRET_POST"|"AWS_IAM_ID_TOKEN_JWT"
+#'       )
 #'     ),
 #'     googleOauth2ProviderConfig = list(
 #'       oauthDiscovery = list(
@@ -15946,6 +19134,35 @@ bedrockagentcorecontrol_update_memory <- function(clientToken = NULL, memoryId, 
 #'       ),
 #'       clientId = "string",
 #'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL",
+#'       onBehalfOfTokenExchangeConfig = list(
+#'         grantType = "TOKEN_EXCHANGE"|"JWT_AUTHORIZATION_GRANT",
+#'         tokenExchangeGrantTypeConfig = list(
+#'           actorTokenContent = "NONE"|"M2M"|"AWS_IAM_ID_TOKEN_JWT",
+#'           actorTokenScopes = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       clientAuthenticationMethod = "CLIENT_SECRET_BASIC"|"CLIENT_SECRET_POST"|"AWS_IAM_ID_TOKEN_JWT"|"PRIVATE_KEY_JWT",
+#'       privateKeyJwtConfig = list(
+#'         privateKeySource = list(
+#'           kmsKeySource = list(
+#'             kmsKeyArn = "string"
+#'           )
+#'         ),
+#'         signingAlgorithm = "RS256"|"PS256"|"ES256",
+#'         additionalHeaderClaims = list(
+#'           "string"
+#'         ),
+#'         additionalPayloadClaims = list(
+#'           "string"
+#'         )
+#'       ),
 #'       privateEndpoint = list(
 #'         selfManagedLatticeResource = list(
 #'           resourceConfigurationIdentifier = "string"
@@ -15988,50 +19205,80 @@ bedrockagentcorecontrol_update_memory <- function(clientToken = NULL, memoryId, 
 #'             )
 #'           )
 #'         )
-#'       ),
-#'       onBehalfOfTokenExchangeConfig = list(
-#'         grantType = "TOKEN_EXCHANGE"|"JWT_AUTHORIZATION_GRANT",
-#'         tokenExchangeGrantTypeConfig = list(
-#'           actorTokenContent = "NONE"|"M2M"|"AWS_IAM_ID_TOKEN_JWT",
-#'           actorTokenScopes = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       clientAuthenticationMethod = "CLIENT_SECRET_BASIC"|"CLIENT_SECRET_POST"|"AWS_IAM_ID_TOKEN_JWT"
+#'       )
 #'     ),
 #'     googleOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     githubOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     slackOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     salesforceOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     microsoftOauth2ProviderConfig = list(
 #'       clientId = "string",
 #'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL",
 #'       tenantId = "string"
 #'     ),
 #'     atlassianOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     linkedinOauth2ProviderConfig = list(
 #'       clientId = "string",
-#'       clientSecret = "string"
+#'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     includedOauth2ProviderConfig = list(
 #'       clientId = "string",
 #'       clientSecret = "string",
+#'       clientSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       clientSecretSource = "MANAGED"|"EXTERNAL",
 #'       issuer = "string",
 #'       authorizationEndpoint = "string",
 #'       tokenEndpoint = "string"
@@ -16073,7 +19320,8 @@ bedrockagentcorecontrol_update_oauth_2_credential_provider <- function(name, cre
 #' @usage
 #' bedrockagentcorecontrol_update_online_evaluation_config(clientToken,
 #'   onlineEvaluationConfigId, description, rule, dataSourceConfig,
-#'   evaluators, evaluationExecutionRoleArn, executionStatus)
+#'   evaluators, insights, clusteringConfig, evaluationExecutionRoleArn,
+#'   executionStatus)
 #'
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param onlineEvaluationConfigId &#91;required&#93; The unique identifier of the online evaluation configuration to update.
@@ -16081,6 +19329,8 @@ bedrockagentcorecontrol_update_oauth_2_credential_provider <- function(name, cre
 #' @param rule The updated evaluation rule containing sampling configuration, filters, and session settings.
 #' @param dataSourceConfig The updated data source configuration specifying CloudWatch log groups and service names to monitor.
 #' @param evaluators The updated list of evaluators to apply during online evaluation.
+#' @param insights The updated list of insight types to run against agent sessions.
+#' @param clusteringConfig The updated clustering configuration for periodic batch evaluation.
 #' @param evaluationExecutionRoleArn The updated Amazon Resource Name (ARN) of the IAM role used for evaluation execution.
 #' @param executionStatus The updated execution status to enable or disable the online evaluation.
 #'
@@ -16139,6 +19389,16 @@ bedrockagentcorecontrol_update_oauth_2_credential_provider <- function(name, cre
 #'       evaluatorId = "string"
 #'     )
 #'   ),
+#'   insights = list(
+#'     list(
+#'       insightId = "string"
+#'     )
+#'   ),
+#'   clusteringConfig = list(
+#'     frequencies = list(
+#'       "DAILY"|"WEEKLY"|"MONTHLY"
+#'     )
+#'   ),
 #'   evaluationExecutionRoleArn = "string",
 #'   executionStatus = "ENABLED"|"DISABLED"
 #' )
@@ -16149,7 +19409,7 @@ bedrockagentcorecontrol_update_oauth_2_credential_provider <- function(name, cre
 #' @rdname bedrockagentcorecontrol_update_online_evaluation_config
 #'
 #' @aliases bedrockagentcorecontrol_update_online_evaluation_config
-bedrockagentcorecontrol_update_online_evaluation_config <- function(clientToken = NULL, onlineEvaluationConfigId, description = NULL, rule = NULL, dataSourceConfig = NULL, evaluators = NULL, evaluationExecutionRoleArn = NULL, executionStatus = NULL) {
+bedrockagentcorecontrol_update_online_evaluation_config <- function(clientToken = NULL, onlineEvaluationConfigId, description = NULL, rule = NULL, dataSourceConfig = NULL, evaluators = NULL, insights = NULL, clusteringConfig = NULL, evaluationExecutionRoleArn = NULL, executionStatus = NULL) {
   op <- new_operation(
     name = "UpdateOnlineEvaluationConfig",
     http_method = "PUT",
@@ -16158,7 +19418,7 @@ bedrockagentcorecontrol_update_online_evaluation_config <- function(clientToken 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$update_online_evaluation_config_input(clientToken = clientToken, onlineEvaluationConfigId = onlineEvaluationConfigId, description = description, rule = rule, dataSourceConfig = dataSourceConfig, evaluators = evaluators, evaluationExecutionRoleArn = evaluationExecutionRoleArn, executionStatus = executionStatus)
+  input <- .bedrockagentcorecontrol$update_online_evaluation_config_input(clientToken = clientToken, onlineEvaluationConfigId = onlineEvaluationConfigId, description = description, rule = rule, dataSourceConfig = dataSourceConfig, evaluators = evaluators, insights = insights, clusteringConfig = clusteringConfig, evaluationExecutionRoleArn = evaluationExecutionRoleArn, executionStatus = executionStatus)
   output <- .bedrockagentcorecontrol$update_online_evaluation_config_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -16206,7 +19466,8 @@ bedrockagentcorecontrol_update_online_evaluation_config <- function(clientToken 
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   status = "CREATING"|"UPDATING"|"DELETING"|"READY"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"
+#'   status = "CREATING"|"UPDATING"|"DELETING"|"READY"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"|"AWS_MARKETPLACE_SUBSCRIPTION_REQUIRED"|"PENDING_AUTHENTICATION"|"PROVISIONING"|"AUTHENTICATION_EXPIRED"|"AUTHENTICATION_FAILED",
+#'   authorizationUrl = "string"
 #' )
 #' ```
 #'
@@ -16282,18 +19543,26 @@ bedrockagentcorecontrol_update_payment_connector <- function(paymentManagerId, p
 #'       apiKeySecretArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       apiKeySecretJsonKey = "string",
+#'       apiKeySecretSource = "MANAGED"|"EXTERNAL",
 #'       walletSecretArn = list(
 #'         secretArn = "string"
-#'       )
+#'       ),
+#'       walletSecretJsonKey = "string",
+#'       walletSecretSource = "MANAGED"|"EXTERNAL"
 #'     ),
 #'     stripePrivyConfiguration = list(
 #'       appId = "string",
 #'       appSecretArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       appSecretJsonKey = "string",
+#'       appSecretSource = "MANAGED"|"EXTERNAL",
 #'       authorizationPrivateKeyArn = list(
 #'         secretArn = "string"
 #'       ),
+#'       authorizationPrivateKeyJsonKey = "string",
+#'       authorizationPrivateKeySource = "MANAGED"|"EXTERNAL",
 #'       authorizationId = "string"
 #'     )
 #'   ),
@@ -16315,12 +19584,32 @@ bedrockagentcorecontrol_update_payment_connector <- function(paymentManagerId, p
 #'     coinbaseCdpConfiguration = list(
 #'       apiKeyId = "string",
 #'       apiKeySecret = "string",
-#'       walletSecret = "string"
+#'       apiKeySecretSource = "MANAGED"|"EXTERNAL",
+#'       apiKeySecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
+#'       walletSecret = "string",
+#'       walletSecretSource = "MANAGED"|"EXTERNAL",
+#'       walletSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       )
 #'     ),
 #'     stripePrivyConfiguration = list(
 #'       appId = "string",
 #'       appSecret = "string",
+#'       appSecretSource = "MANAGED"|"EXTERNAL",
+#'       appSecretConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
 #'       authorizationPrivateKey = "string",
+#'       authorizationPrivateKeySource = "MANAGED"|"EXTERNAL",
+#'       authorizationPrivateKeyConfig = list(
+#'         secretId = "string",
+#'         jsonKey = "string"
+#'       ),
 #'       authorizationId = "string"
 #'     )
 #'   )
@@ -16359,7 +19648,7 @@ bedrockagentcorecontrol_update_payment_credential_provider <- function(name, cre
 #' @usage
 #' bedrockagentcorecontrol_update_payment_manager(paymentManagerId,
 #'   description, authorizerType, authorizerConfiguration, roleArn,
-#'   clientToken)
+#'   clientToken, kmsKeyArn)
 #'
 #' @param paymentManagerId &#91;required&#93; The unique identifier of the payment manager to update.
 #' @param description The updated description of the payment manager.
@@ -16367,6 +19656,7 @@ bedrockagentcorecontrol_update_payment_credential_provider <- function(name, cre
 #' @param authorizerConfiguration The updated authorizer configuration for the payment manager.
 #' @param roleArn The updated Amazon Resource Name (ARN) of the IAM role for the payment manager.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param kmsKeyArn The updated Amazon Resource Name (ARN) of the customer managed KMS key used to encrypt sensitive payment manager data at rest.
 #'
 #' @return
 #' A list with the following syntax:
@@ -16383,7 +19673,8 @@ bedrockagentcorecontrol_update_payment_credential_provider <- function(name, cre
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   status = "CREATING"|"UPDATING"|"DELETING"|"READY"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"
+#'   status = "CREATING"|"UPDATING"|"DELETING"|"READY"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -16403,6 +19694,9 @@ bedrockagentcorecontrol_update_payment_credential_provider <- function(name, cre
 #'         "string"
 #'       ),
 #'       allowedScopes = list(
+#'         "string"
+#'       ),
+#'       advertisedScopeMapping = list(
 #'         "string"
 #'       ),
 #'       customClaims = list(
@@ -16462,11 +19756,22 @@ bedrockagentcorecontrol_update_payment_credential_provider <- function(name, cre
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
 #'   roleArn = "string",
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -16475,7 +19780,7 @@ bedrockagentcorecontrol_update_payment_credential_provider <- function(name, cre
 #' @rdname bedrockagentcorecontrol_update_payment_manager
 #'
 #' @aliases bedrockagentcorecontrol_update_payment_manager
-bedrockagentcorecontrol_update_payment_manager <- function(paymentManagerId, description = NULL, authorizerType = NULL, authorizerConfiguration = NULL, roleArn = NULL, clientToken = NULL) {
+bedrockagentcorecontrol_update_payment_manager <- function(paymentManagerId, description = NULL, authorizerType = NULL, authorizerConfiguration = NULL, roleArn = NULL, clientToken = NULL, kmsKeyArn = NULL) {
   op <- new_operation(
     name = "UpdatePaymentManager",
     http_method = "PATCH",
@@ -16484,7 +19789,7 @@ bedrockagentcorecontrol_update_payment_manager <- function(paymentManagerId, des
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$update_payment_manager_input(paymentManagerId = paymentManagerId, description = description, authorizerType = authorizerType, authorizerConfiguration = authorizerConfiguration, roleArn = roleArn, clientToken = clientToken)
+  input <- .bedrockagentcorecontrol$update_payment_manager_input(paymentManagerId = paymentManagerId, description = description, authorizerType = authorizerType, authorizerConfiguration = authorizerConfiguration, roleArn = roleArn, clientToken = clientToken, kmsKeyArn = kmsKeyArn)
   output <- .bedrockagentcorecontrol$update_payment_manager_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -16498,16 +19803,19 @@ bedrockagentcorecontrol_update_payment_manager <- function(paymentManagerId, des
 #'
 #' @description
 #' Updates an existing policy within the AgentCore Policy system. This operation allows modification of the policy description and definition while maintaining the policy's identity. The updated policy is validated against the Cedar schema before being applied. This is an asynchronous operation. Use the [`get_policy`][bedrockagentcorecontrol_get_policy] operation to poll the `status` field to track completion.
+#' 
+#' If the updated policy is a temporal policy, the policy engine invalidates all active temporal sessions. If the update adds or removes temporal operators, the policy engine also invalidates active temporal sessions. For more information about temporal policy sessions, see [session-based temporal policies](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/policy-session-based-temporal.html). The policy engine returns an HTTP 409 `ConflictException` to in-flight sessions. To resume, you must start a new session with a new session ID.
 #'
 #' @usage
 #' bedrockagentcorecontrol_update_policy(policyEngineId, policyId,
-#'   description, definition, validationMode)
+#'   description, definition, validationMode, enforcementMode)
 #'
 #' @param policyEngineId &#91;required&#93; The identifier of the policy engine that manages the policy to be updated. This ensures the policy is updated within the correct policy engine context.
 #' @param policyId &#91;required&#93; The unique identifier of the policy to be updated. This must be a valid policy ID that exists within the specified policy engine.
 #' @param description The new human-readable description for the policy. This optional field allows updating the policy's documentation while keeping the same policy logic.
 #' @param definition The new Cedar policy statement that defines the access control rules. This replaces the existing policy definition with new logic while maintaining the policy's identity.
 #' @param validationMode The validation mode for the policy update. Determines how Cedar analyzer validation results are handled during policy updates. FAIL_ON_ANY_FINDINGS runs the Cedar analyzer and fails the update if validation issues are detected, ensuring the policy conforms to the Cedar schema and tool context. IGNORE_ALL_FINDINGS runs the Cedar analyzer but allows updates despite validation warnings. Use FAIL_ON_ANY_FINDINGS to ensure policy correctness during updates, especially when modifying policy logic or conditions.
+#' @param enforcementMode The enforcement mode for the policy. Run this policy in `LOG_ONLY` mode to collect data on how it affects your application. Once you are satisfied with the data gathered, switch the policy to `ACTIVE`. If you omit this field, the policy's existing enforcement mode is unchanged.
 #'
 #' @return
 #' A list with the following syntax:
@@ -16524,6 +19832,7 @@ bedrockagentcorecontrol_update_payment_manager <- function(paymentManagerId, des
 #'   ),
 #'   policyArn = "string",
 #'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'   enforcementMode = "ACTIVE"|"LOG_ONLY",
 #'   definition = list(
 #'     cedar = list(
 #'       statement = "string"
@@ -16531,6 +19840,9 @@ bedrockagentcorecontrol_update_payment_manager <- function(paymentManagerId, des
 #'     policyGeneration = list(
 #'       policyGenerationId = "string",
 #'       policyGenerationAssetId = "string"
+#'     ),
+#'     policy = list(
+#'       statement = "string"
 #'     )
 #'   ),
 #'   description = "string",
@@ -16555,9 +19867,13 @@ bedrockagentcorecontrol_update_payment_manager <- function(paymentManagerId, des
 #'     policyGeneration = list(
 #'       policyGenerationId = "string",
 #'       policyGenerationAssetId = "string"
+#'     ),
+#'     policy = list(
+#'       statement = "string"
 #'     )
 #'   ),
-#'   validationMode = "FAIL_ON_ANY_FINDINGS"|"IGNORE_ALL_FINDINGS"
+#'   validationMode = "FAIL_ON_ANY_FINDINGS"|"IGNORE_ALL_FINDINGS",
+#'   enforcementMode = "ACTIVE"|"LOG_ONLY"
 #' )
 #' ```
 #'
@@ -16566,7 +19882,7 @@ bedrockagentcorecontrol_update_payment_manager <- function(paymentManagerId, des
 #' @rdname bedrockagentcorecontrol_update_policy
 #'
 #' @aliases bedrockagentcorecontrol_update_policy
-bedrockagentcorecontrol_update_policy <- function(policyEngineId, policyId, description = NULL, definition = NULL, validationMode = NULL) {
+bedrockagentcorecontrol_update_policy <- function(policyEngineId, policyId, description = NULL, definition = NULL, validationMode = NULL, enforcementMode = NULL) {
   op <- new_operation(
     name = "UpdatePolicy",
     http_method = "PATCH",
@@ -16575,7 +19891,7 @@ bedrockagentcorecontrol_update_policy <- function(policyEngineId, policyId, desc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentcorecontrol$update_policy_input(policyEngineId = policyEngineId, policyId = policyId, description = description, definition = definition, validationMode = validationMode)
+  input <- .bedrockagentcorecontrol$update_policy_input(policyEngineId = policyEngineId, policyId = policyId, description = description, definition = definition, validationMode = validationMode, enforcementMode = enforcementMode)
   output <- .bedrockagentcorecontrol$update_policy_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -16689,6 +20005,9 @@ bedrockagentcorecontrol_update_policy_engine <- function(policyEngineId, descrip
 #'       allowedScopes = list(
 #'         "string"
 #'       ),
+#'       advertisedScopeMapping = list(
+#'         "string"
+#'       ),
 #'       customClaims = list(
 #'         list(
 #'           inboundTokenClaimName = "string",
@@ -16746,6 +20065,16 @@ bedrockagentcorecontrol_update_policy_engine <- function(policyEngineId, descrip
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       allowedWorkloadConfiguration = list(
+#'         hostingEnvironments = list(
+#'           list(
+#'             arn = "string"
+#'           )
+#'         ),
+#'         workloadIdentities = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -16782,6 +20111,9 @@ bedrockagentcorecontrol_update_policy_engine <- function(policyEngineId, descrip
 #'           "string"
 #'         ),
 #'         allowedScopes = list(
+#'           "string"
+#'         ),
+#'         advertisedScopeMapping = list(
 #'           "string"
 #'         ),
 #'         customClaims = list(
@@ -16840,6 +20172,16 @@ bedrockagentcorecontrol_update_policy_engine <- function(policyEngineId, descrip
 #'                 routingDomain = "string"
 #'               )
 #'             )
+#'           )
+#'         ),
+#'         allowedWorkloadConfiguration = list(
+#'           hostingEnvironments = list(
+#'             list(
+#'               arn = "string"
+#'             )
+#'           ),
+#'           workloadIdentities = list(
+#'             "string"
 #'           )
 #'         )
 #'       )

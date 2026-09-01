@@ -22,7 +22,7 @@ paymentcryptographydataplane_generate_auth_request_cryptogram(
 \item{SessionKeyDerivationAttributes}{[required] The attributes and values to use for deriving a session key for ARQC generation within Amazon Web Services Payment Cryptography.}
 }
 \description{
-Generates an Authorization Request Cryptogram (ARQC) for an EMV chip payment card authorization. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/}{Generate auth request cryptogram} in the \emph{Amazon Web Services Payment Cryptography User Guide}.
+Generates an Authorization Request Cryptogram (ARQC) for an EMV chip payment card authorization. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/data-operations.generateauthrequestcryptogram.html}{Generate auth request cryptogram} in the \emph{Amazon Web Services Payment Cryptography User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/paymentcryptographydataplane_generate_auth_request_cryptogram/} for full documentation.
 }

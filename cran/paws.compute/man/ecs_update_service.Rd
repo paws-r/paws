@@ -26,7 +26,8 @@ ecs_update_service(
   serviceRegistries = NULL,
   serviceConnectConfiguration = NULL,
   volumeConfigurations = NULL,
-  vpcLatticeConfigurations = NULL
+  vpcLatticeConfigurations = NULL,
+  monitoring = NULL
 )
 }
 \arguments{
@@ -176,6 +177,8 @@ This parameter triggers a new service deployment.}
 \item{vpcLatticeConfigurations}{An object representing the VPC Lattice configuration for the service being updated.
 
 This parameter triggers a new service deployment.}
+
+\item{monitoring}{The optional monitoring configuration for the service, which defines the resolution for the service-level \code{CPUUtilization} and \code{MemoryUtilization} Amazon CloudWatch metrics. When not specified, Amazon ECS uses the default resolution of \code{60} seconds.}
 }
 \description{
 Modifies the parameters of a service.

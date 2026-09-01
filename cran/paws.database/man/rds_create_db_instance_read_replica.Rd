@@ -225,7 +225,7 @@ For example, if you create an encrypted DB instance in the us-west-1 Amazon Web 
 \item \code{SourceDBInstanceIdentifier} - The DB instance identifier for the encrypted DB instance to be replicated. This identifier must be in the Amazon Resource Name (ARN) format for the source Amazon Web Services Region. For example, if you are creating an encrypted read replica from a DB instance in the us-west-2 Amazon Web Services Region, then your \code{SourceDBInstanceIdentifier} looks like the following example: \code{arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115}.
 }
 
-To learn how to generate a Signature Version 4 signed request, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
+To learn how to generate a Signature Version 4 signed request, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
 
 If you are using an Amazon Web Services SDK tool or the CLI, you can specify \code{SourceRegion} (or \code{--source-region} for the CLI) instead of specifying \code{PreSignedUrl} manually. Specifying \code{SourceRegion} autogenerates a presigned URL that is a valid request for the operation that can run in the source Amazon Web Services Region.
 
@@ -332,7 +332,7 @@ This parameter is only supported for Db2 DB instances and Oracle DB instances.
 
 \strong{Db2}
 
-Standby DB replicas are included in Db2 Advanced Edition (AE) and Db2 Standard Edition (SE). The main use case for standby replicas is cross-Region disaster recovery. Because it doesn't accept user connections, a standby replica can't serve a read-only workload.
+Standby DB replicas are included in Db2 Advanced Edition (AE), Db2 Community Edition (CE), and Db2 Standard Edition (SE). The main use case for standby replicas is cross-Region disaster recovery. Because it doesn't accept user connections, a standby replica can't serve a read-only workload.
 
 You can create a combination of standby and read-only DB replicas for the same primary DB instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/db2-replication.html}{Working with replicas for Amazon RDS for Db2} in the \emph{Amazon RDS User Guide}.
 

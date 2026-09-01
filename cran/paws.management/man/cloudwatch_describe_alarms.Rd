@@ -23,11 +23,13 @@ cloudwatch_describe_alarms(
 
 If this parameter is specified, you cannot specify \code{AlarmNames}.}
 
-\item{AlarmTypes}{Use this parameter to specify whether you want the operation to return metric alarms or composite alarms. If you omit this parameter, only metric alarms are returned, even if composite alarms exist in the account.
+\item{AlarmTypes}{Use this parameter to specify whether you want the operation to return metric alarms, composite alarms, or log alarms. If you omit this parameter, only metric alarms are returned, even if composite alarms or log alarms exist in the account.
 
-For example, if you omit this parameter or specify \code{MetricAlarms}, the operation returns only a list of metric alarms. It does not return any composite alarms, even if composite alarms exist in the account.
+For example, if you omit this parameter or specify \code{MetricAlarms}, the operation returns only a list of metric alarms. It does not return any composite alarms or log alarms, even if they exist in the account.
 
-If you specify \code{CompositeAlarms}, the operation returns only a list of composite alarms, and does not return any metric alarms.}
+If you specify \code{CompositeAlarms}, the operation returns only a list of composite alarms, and does not return any metric alarms or log alarms.
+
+If you specify \code{LogAlarms}, the operation returns only a list of log alarms, and does not return any metric alarms or composite alarms.}
 
 \item{ChildrenOfAlarmName}{If you use this parameter and specify the name of a composite alarm, the operation returns information about the "children" alarms of the alarm you specify. These are the metric alarms and composite alarms referenced in the \code{AlarmRule} field of the composite alarm that you specify in \code{ChildrenOfAlarmName}. Information about the composite alarm that you name in \code{ChildrenOfAlarmName} is not returned.
 

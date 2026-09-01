@@ -23,14 +23,14 @@ locationservice_get_device_position_history(
 
 Default value: \code{null}}
 
-\item{StartTimeInclusive}{Specify the start time for the position history in \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601} format: \code{YYYY-MM-DDThh:mm:ss.sssZ}. By default, the value will be 24 hours prior to the time that the request is made.
+\item{StartTimeInclusive}{Specify the start time for the position history in ISO 8601 format: \code{YYYY-MM-DDThh:mm:ss.sssZ}. By default, the value will be 24 hours prior to the time that the request is made.
 
 Requirement:
 \itemize{
 \item The time specified for \code{StartTimeInclusive} must be before \code{EndTimeExclusive}.
 }}
 
-\item{EndTimeExclusive}{Specify the end time for the position history in \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601} format: \code{YYYY-MM-DDThh:mm:ss.sssZ}. By default, the value will be the time that the request is made.
+\item{EndTimeExclusive}{Specify the end time for the position history in ISO 8601 format: \code{YYYY-MM-DDThh:mm:ss.sssZ}. By default, the value will be the time that the request is made.
 
 Requirement:
 \itemize{

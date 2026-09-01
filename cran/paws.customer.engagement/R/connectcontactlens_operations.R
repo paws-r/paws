@@ -4,9 +4,10 @@
 NULL
 
 #' Provides a list of analysis segments for a real-time analysis session
+#' for voice
 #'
 #' @description
-#' Provides a list of analysis segments for a real-time analysis session.
+#' Provides a list of analysis segments for a real-time analysis session for voice.
 #'
 #' See [https://www.paws-r-sdk.com/docs/connectcontactlens_list_realtime_contact_analysis_segments/](https://www.paws-r-sdk.com/docs/connectcontactlens_list_realtime_contact_analysis_segments/) for full documentation.
 #'

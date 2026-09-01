@@ -698,7 +698,7 @@ vpclattice_create_rule <- function(serviceIdentifier, listenerIdentifier, name, 
 #'
 #' @usage
 #' vpclattice_create_service(clientToken, name, tags, customDomainName,
-#'   certificateArn, authType)
+#'   certificateArn, authType, idleTimeoutSeconds)
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request. If you retry a request that completed successfully using the same client token and parameters, the retry succeeds without performing any actions. If the parameters aren't identical, the retry fails.
 #' @param name &#91;required&#93; The name of the service. The name must be unique within the account. The valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
@@ -710,6 +710,7 @@ vpclattice_create_rule <- function(serviceIdentifier, listenerIdentifier, name, 
 #' -   `NONE`: The resource does not use an IAM policy. This is the default.
 #' 
 #' -   `AWS_IAM`: The resource uses an IAM policy. When this type is used, auth is enabled and an auth policy is required.
+#' @param idleTimeoutSeconds The amount of time, in seconds, that a connection can remain idle (no data sent) before VPC Lattice closes it. The valid range is 60 to 600 seconds. If you don't specify a value, the default is 60 seconds. This setting does not change the maximum connection duration of 10 minutes; connections are still closed when they reach that limit.
 #'
 #' @return
 #' A list with the following syntax:
@@ -722,6 +723,7 @@ vpclattice_create_rule <- function(serviceIdentifier, listenerIdentifier, name, 
 #'   certificateArn = "string",
 #'   status = "ACTIVE"|"CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_FAILED",
 #'   authType = "NONE"|"AWS_IAM",
+#'   idleTimeoutSeconds = 123,
 #'   dnsEntry = list(
 #'     domainName = "string",
 #'     hostedZoneId = "string"
@@ -739,7 +741,8 @@ vpclattice_create_rule <- function(serviceIdentifier, listenerIdentifier, name, 
 #'   ),
 #'   customDomainName = "string",
 #'   certificateArn = "string",
-#'   authType = "NONE"|"AWS_IAM"
+#'   authType = "NONE"|"AWS_IAM",
+#'   idleTimeoutSeconds = 123
 #' )
 #' ```
 #'
@@ -748,7 +751,7 @@ vpclattice_create_rule <- function(serviceIdentifier, listenerIdentifier, name, 
 #' @rdname vpclattice_create_service
 #'
 #' @aliases vpclattice_create_service
-vpclattice_create_service <- function(clientToken = NULL, name, tags = NULL, customDomainName = NULL, certificateArn = NULL, authType = NULL) {
+vpclattice_create_service <- function(clientToken = NULL, name, tags = NULL, customDomainName = NULL, certificateArn = NULL, authType = NULL, idleTimeoutSeconds = NULL) {
   op <- new_operation(
     name = "CreateService",
     http_method = "POST",
@@ -757,7 +760,7 @@ vpclattice_create_service <- function(clientToken = NULL, name, tags = NULL, cus
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_service_input(clientToken = clientToken, name = name, tags = tags, customDomainName = customDomainName, certificateArn = certificateArn, authType = authType)
+  input <- .vpclattice$create_service_input(clientToken = clientToken, name = name, tags = tags, customDomainName = customDomainName, certificateArn = certificateArn, authType = authType, idleTimeoutSeconds = idleTimeoutSeconds)
   output <- .vpclattice$create_service_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -2570,6 +2573,7 @@ vpclattice_get_rule <- function(serviceIdentifier, listenerIdentifier, ruleIdent
 #'   certificateArn = "string",
 #'   status = "ACTIVE"|"CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_FAILED",
 #'   authType = "NONE"|"AWS_IAM",
+#'   idleTimeoutSeconds = 123,
 #'   failureCode = "string",
 #'   failureMessage = "string"
 #' )
@@ -4921,7 +4925,8 @@ vpclattice_update_rule <- function(serviceIdentifier, listenerIdentifier, ruleId
 #' Updates the specified service.
 #'
 #' @usage
-#' vpclattice_update_service(serviceIdentifier, certificateArn, authType)
+#' vpclattice_update_service(serviceIdentifier, certificateArn, authType,
+#'   idleTimeoutSeconds)
 #'
 #' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #' @param certificateArn The Amazon Resource Name (ARN) of the certificate.
@@ -4930,6 +4935,7 @@ vpclattice_update_rule <- function(serviceIdentifier, listenerIdentifier, ruleId
 #' -   `NONE`: The resource does not use an IAM policy. This is the default.
 #' 
 #' -   `AWS_IAM`: The resource uses an IAM policy. When this type is used, auth is enabled and an auth policy is required.
+#' @param idleTimeoutSeconds The amount of time, in seconds, that a connection can remain idle (no data sent) before VPC Lattice closes it. The valid range is 60 to 600 seconds. If you don't specify a value, the default is 60 seconds. This setting does not change the maximum connection duration of 10 minutes; connections are still closed when they reach that limit.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4940,7 +4946,8 @@ vpclattice_update_rule <- function(serviceIdentifier, listenerIdentifier, ruleId
 #'   name = "string",
 #'   customDomainName = "string",
 #'   certificateArn = "string",
-#'   authType = "NONE"|"AWS_IAM"
+#'   authType = "NONE"|"AWS_IAM",
+#'   idleTimeoutSeconds = 123
 #' )
 #' ```
 #'
@@ -4949,7 +4956,8 @@ vpclattice_update_rule <- function(serviceIdentifier, listenerIdentifier, ruleId
 #' svc$update_service(
 #'   serviceIdentifier = "string",
 #'   certificateArn = "string",
-#'   authType = "NONE"|"AWS_IAM"
+#'   authType = "NONE"|"AWS_IAM",
+#'   idleTimeoutSeconds = 123
 #' )
 #' ```
 #'
@@ -4958,7 +4966,7 @@ vpclattice_update_rule <- function(serviceIdentifier, listenerIdentifier, ruleId
 #' @rdname vpclattice_update_service
 #'
 #' @aliases vpclattice_update_service
-vpclattice_update_service <- function(serviceIdentifier, certificateArn = NULL, authType = NULL) {
+vpclattice_update_service <- function(serviceIdentifier, certificateArn = NULL, authType = NULL, idleTimeoutSeconds = NULL) {
   op <- new_operation(
     name = "UpdateService",
     http_method = "PATCH",
@@ -4967,7 +4975,7 @@ vpclattice_update_service <- function(serviceIdentifier, certificateArn = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$update_service_input(serviceIdentifier = serviceIdentifier, certificateArn = certificateArn, authType = authType)
+  input <- .vpclattice$update_service_input(serviceIdentifier = serviceIdentifier, certificateArn = certificateArn, authType = authType, idleTimeoutSeconds = idleTimeoutSeconds)
   output <- .vpclattice$update_service_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -5042,10 +5050,13 @@ vpclattice_update_service_network <- function(serviceNetworkIdentifier, authType
 #'
 #' @usage
 #' vpclattice_update_service_network_vpc_association(
-#'   serviceNetworkVpcAssociationIdentifier, securityGroupIds)
+#'   serviceNetworkVpcAssociationIdentifier, securityGroupIds,
+#'   privateDnsEnabled, dnsOptions)
 #'
 #' @param serviceNetworkVpcAssociationIdentifier &#91;required&#93; The ID or ARN of the association.
-#' @param securityGroupIds &#91;required&#93; The IDs of the security groups.
+#' @param securityGroupIds The IDs of the security groups.
+#' @param privateDnsEnabled Indicates if private DNS is enabled for the VPC association.
+#' @param dnsOptions DNS options for the service network VPC association.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5057,6 +5068,13 @@ vpclattice_update_service_network <- function(serviceNetworkIdentifier, authType
 #'   createdBy = "string",
 #'   securityGroupIds = list(
 #'     "string"
+#'   ),
+#'   privateDnsEnabled = TRUE|FALSE,
+#'   dnsOptions = list(
+#'     privateDnsPreference = "VERIFIED_DOMAINS_ONLY"|"ALL_DOMAINS"|"VERIFIED_DOMAINS_AND_SPECIFIED_DOMAINS"|"SPECIFIED_DOMAINS_ONLY",
+#'     privateDnsSpecifiedDomains = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -5067,6 +5085,13 @@ vpclattice_update_service_network <- function(serviceNetworkIdentifier, authType
 #'   serviceNetworkVpcAssociationIdentifier = "string",
 #'   securityGroupIds = list(
 #'     "string"
+#'   ),
+#'   privateDnsEnabled = TRUE|FALSE,
+#'   dnsOptions = list(
+#'     privateDnsPreference = "VERIFIED_DOMAINS_ONLY"|"ALL_DOMAINS"|"VERIFIED_DOMAINS_AND_SPECIFIED_DOMAINS"|"SPECIFIED_DOMAINS_ONLY",
+#'     privateDnsSpecifiedDomains = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -5076,7 +5101,7 @@ vpclattice_update_service_network <- function(serviceNetworkIdentifier, authType
 #' @rdname vpclattice_update_service_network_vpc_association
 #'
 #' @aliases vpclattice_update_service_network_vpc_association
-vpclattice_update_service_network_vpc_association <- function(serviceNetworkVpcAssociationIdentifier, securityGroupIds) {
+vpclattice_update_service_network_vpc_association <- function(serviceNetworkVpcAssociationIdentifier, securityGroupIds = NULL, privateDnsEnabled = NULL, dnsOptions = NULL) {
   op <- new_operation(
     name = "UpdateServiceNetworkVpcAssociation",
     http_method = "PATCH",
@@ -5085,7 +5110,7 @@ vpclattice_update_service_network_vpc_association <- function(serviceNetworkVpcA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$update_service_network_vpc_association_input(serviceNetworkVpcAssociationIdentifier = serviceNetworkVpcAssociationIdentifier, securityGroupIds = securityGroupIds)
+  input <- .vpclattice$update_service_network_vpc_association_input(serviceNetworkVpcAssociationIdentifier = serviceNetworkVpcAssociationIdentifier, securityGroupIds = securityGroupIds, privateDnsEnabled = privateDnsEnabled, dnsOptions = dnsOptions)
   output <- .vpclattice$update_service_network_vpc_association_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)

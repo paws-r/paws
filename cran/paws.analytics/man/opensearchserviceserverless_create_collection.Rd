@@ -13,6 +13,7 @@ opensearchserviceserverless_create_collection(
   vectorOptions = NULL,
   collectionGroupName = NULL,
   encryptionConfig = NULL,
+  deletionProtection = NULL,
   clientToken = NULL
 )
 }
@@ -32,6 +33,8 @@ opensearchserviceserverless_create_collection(
 \item{collectionGroupName}{The name of the collection group to associate with the collection.}
 
 \item{encryptionConfig}{Encryption settings for the collection.}
+
+\item{deletionProtection}{Indicates whether to enable deletion protection for the collection. When set to \code{ENABLED}, the collection cannot be deleted.}
 
 \item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }

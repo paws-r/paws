@@ -18,7 +18,8 @@ redshiftdataapiservice_execute_statement(
   ClientToken = NULL,
   ResultFormat = NULL,
   SessionKeepAliveSeconds = NULL,
-  SessionId = NULL
+  SessionId = NULL,
+  WaitTimeSeconds = NULL
 )
 }
 \arguments{
@@ -47,6 +48,8 @@ redshiftdataapiservice_execute_statement(
 \item{SessionKeepAliveSeconds}{The number of seconds to keep the session alive after the query finishes. The maximum time a session can keep alive is 24 hours. After 24 hours, the session is forced closed and the query is terminated.}
 
 \item{SessionId}{The session identifier of the query.}
+
+\item{WaitTimeSeconds}{The number of seconds to wait for the SQL statement to complete execution before returning the response. If the SQL statement does not complete within the specified time, the response returns the current status. The maximum value is 30 seconds.}
 }
 \description{
 Runs an SQL statement, which can be data manipulation language (DML) or data definition language (DDL). This statement must be a single SQL statement. Depending on the authorization method, use one of the following combinations of request parameters:

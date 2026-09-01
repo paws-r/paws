@@ -13,7 +13,7 @@ marketplacecatalog_untag_resource(ResourceArn, TagKeys)
 \item{TagKeys}{[required] Required. A list of key names of tags to be removed. Number of strings allowed: 0-256.}
 }
 \description{
-Removes a tag or list of tags from a resource (either an \href{https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#catalog-api-entities}{entity} or \href{https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#working-with-change-sets}{change set}).
+Removes a tag or list of tags from a resource (either an \href{https://docs.aws.amazon.com/marketplace/latest/developerguide/catalog-apis.html#catalog-api-entities}{entity} or \href{https://docs.aws.amazon.com/marketplace/latest/developerguide/catalog-apis.html#working-with-change-sets}{change set}).
 
 See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_untag_resource/} for full documentation.
 }

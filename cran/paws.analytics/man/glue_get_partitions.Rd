@@ -27,7 +27,7 @@ glue_get_partitions(
 
 \item{Expression}{An expression that filters the partitions to be returned.
 
-The expression uses SQL syntax similar to the SQL \code{WHERE} filter clause. The SQL statement parser \href{https://jsqlparser.sourceforge.net/home.php}{JSQLParser} parses the expression.
+The expression uses SQL syntax similar to the SQL \code{WHERE} filter clause. The SQL statement parser JSQLParser parses the expression.
 
 \emph{Operators}: The following are the operators that you can use in the \code{Expression} API call:
 

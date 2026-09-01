@@ -31,7 +31,7 @@ quicksight_create_analysis(
 
 To specify no permissions, omit \code{Permissions}.}
 
-\item{SourceEntity}{A source entity to use for the analysis that you're creating. This metadata structure contains details that describe a source template and one or more datasets.
+\item{SourceEntity}{A source entity to use for the analysis that you're creating. This metadata structure contains details that describe a source template and one or more datasets or topics.
 
 Either a \code{SourceEntity} or a \code{Definition} must be provided in order for the request to be valid.}
 

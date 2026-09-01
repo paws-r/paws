@@ -12,6 +12,7 @@ ec2_allocate_hosts(
   HostMaintenance = NULL,
   AssetIds = NULL,
   AvailabilityZoneId = NULL,
+  CpuOptions = NULL,
   AutoPlacement = NULL,
   ClientToken = NULL,
   InstanceType = NULL,
@@ -43,6 +44,8 @@ If you are allocating the Dedicated Host in a Region, omit this parameter.}
 }}
 
 \item{AvailabilityZoneId}{The ID of the Availability Zone.}
+
+\item{CpuOptions}{The CPU configuration options to apply to the Dedicated Host.}
 
 \item{AutoPlacement}{Indicates whether the host accepts any untargeted instance launches that match its instance type configuration, or if it only accepts Host tenancy instance launches that specify its unique host ID. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#dedicated-hosts-understanding}{Understanding auto-placement and affinity} in the \emph{Amazon EC2 User Guide}.
 

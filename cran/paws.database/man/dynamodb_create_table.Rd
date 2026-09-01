@@ -21,7 +21,8 @@ dynamodb_create_table(
   ResourcePolicy = NULL,
   OnDemandThroughput = NULL,
   GlobalTableSourceArn = NULL,
-  GlobalTableSettingsReplicationMode = NULL
+  GlobalTableSettingsReplicationMode = NULL,
+  VectorIndexes = NULL
 )
 }
 \arguments{
@@ -133,6 +134,16 @@ You need to specify the \code{\link[=dynamodb_create_table]{create_table}} and \
 \item{GlobalTableSourceArn}{The Amazon Resource Name (ARN) of the source table used for the creation of a multi-account global table.}
 
 \item{GlobalTableSettingsReplicationMode}{Controls the settings synchronization mode for the global table. For multi-account global tables, this parameter is required and the only supported value is ENABLED. For same-account global tables, this parameter is set to ENABLED_WITH_OVERRIDES.}
+
+\item{VectorIndexes}{One or more vector indexes to be created on the table. Each vector index enables similarity search on a vector attribute. Each element in the list consists of:
+\itemize{
+\item \code{IndexName} - The name of the vector index. Must be unique within the table.
+\item \code{VectorAttribute} - The attribute that contains vector embeddings. If multiple vector indexes reference the same attribute, they must all use the same number of dimensions.
+\item \code{Dimensions} - The number of dimensions in each vector.
+\item \code{DistanceFunction} - The distance function used to calculate similarity. Valid values: \code{COSINE}, \code{EUCLIDEAN}, \code{DOT_PRODUCT}.
+\item \code{Projection} - Specifies attributes that are copied (projected) from the table into the vector index. The total number of projected non-key attributes is shared across the vector attribute (counts as 1) and \code{INLINE_FILTER} search schema elements (each counts as 1). \code{HASH} search schema elements do not count toward this limit.
+\item \code{SearchSchema} - (Optional) Defines the partition key (\code{HASH}) and inline filter (\code{INLINE_FILTER}) attributes for the vector index.
+}}
 }
 \description{
 The \code{\link[=dynamodb_create_table]{create_table}} operation adds a new table to your account. In an Amazon Web Services account, table names must be unique within each Region. That is, you can have two tables with same name if you create the tables in different Regions.

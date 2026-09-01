@@ -955,7 +955,12 @@ resourceexplorer_get_service_index <- function() {
 #'       )
 #'     ),
 #'     StreamingAccessForService = "string",
-#'     ScopeType = "string"
+#'     ScopeType = "string",
+#'     ServiceLinkedRecorder = list(
+#'       ServicePrincipal = "string",
+#'       RecorderName = "string",
+#'       RecorderType = "AWS"|"THIRD_PARTY"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1291,6 +1296,7 @@ resourceexplorer_list_managed_views <- function(MaxResults = NULL, NextToken = N
 #'       Region = "string",
 #'       ResourceType = "string",
 #'       Service = "string",
+#'       CfnResourceType = "string",
 #'       LastReportedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1546,7 +1552,10 @@ resourceexplorer_list_streaming_access_for_services <- function(MaxResults = NUL
 #'   ResourceTypes = list(
 #'     list(
 #'       Service = "string",
-#'       ResourceType = "string"
+#'       ResourceType = "string",
+#'       CFNResourceTypes = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1734,6 +1743,7 @@ resourceexplorer_list_views <- function(NextToken = NULL, MaxResults = NULL) {
 #'       Region = "string",
 #'       ResourceType = "string",
 #'       Service = "string",
+#'       CfnResourceType = "string",
 #'       LastReportedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),

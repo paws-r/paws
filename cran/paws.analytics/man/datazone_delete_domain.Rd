@@ -7,7 +7,8 @@
 datazone_delete_domain(
   identifier,
   clientToken = NULL,
-  skipDeletionCheck = NULL
+  skipDeletionCheck = NULL,
+  cascadeDelete = NULL
 )
 }
 \arguments{
@@ -15,7 +16,9 @@ datazone_delete_domain(
 
 \item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the idempotency of the request.}
 
-\item{skipDeletionCheck}{Specifies the optional flag to delete all child entities within the domain.}
+\item{skipDeletionCheck}{Specifies whether to skip the check that prevents deletion of a domain that still contains resources. When you use this parameter, Amazon DataZone deletes the domain but might not remove its associated resources, which can leave orphaned resources behind. To delete a domain and fully clean up its associated resources, use \code{cascadeDelete} instead. You can't use this parameter together with \code{cascadeDelete}.}
+
+\item{cascadeDelete}{Specifies whether to delete the domain along with all of its associated resources. When you use this parameter, Amazon DataZone deletes the domain and cleanly removes its associated resources without leaving orphaned resources behind. Amazon DataZone reports deletion progress in the \code{deleteProgress} field. Amazon DataZone reports any resources that it can't delete in the \code{failureReasons} field of the \code{\link[=datazone_get_domain]{get_domain}} response. You can't use this parameter together with \code{skipDeletionCheck}. If you don't specify a value, the default is \code{false}.}
 }
 \description{
 Deletes a Amazon DataZone domain.

@@ -4,12 +4,14 @@
 \alias{bedrockagent_get_flow_version}
 \title{Retrieves information about a version of a flow}
 \usage{
-bedrockagent_get_flow_version(flowIdentifier, flowVersion)
+bedrockagent_get_flow_version(flowIdentifier, flowVersion, includedData = NULL)
 }
 \arguments{
 \item{flowIdentifier}{[required] The unique identifier of the flow for which to get information.}
 
 \item{flowVersion}{[required] The version of the flow for which to get information.}
+
+\item{includedData}{Controls the scope of data returned. Set to \code{METADATA_ONLY} to return only resource metadata. Set to \code{ALL_DATA} or omit this field to return the full response.}
 }
 \description{
 Retrieves information about a version of a flow. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/flows-deploy.html}{Deploy a flow in Amazon Bedrock} in the Amazon Bedrock User Guide.

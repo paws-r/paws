@@ -2,27 +2,33 @@
 % Please edit documentation in R/support_operations.R
 \name{support_add_communication_to_case}
 \alias{support_add_communication_to_case}
-\title{Adds additional customer communication to an Amazon Web Services Support
+\title{Adds additional customer communication to a Amazon Web Services Support
 case}
 \usage{
 support_add_communication_to_case(
   caseId = NULL,
   communicationBody,
   ccEmailAddresses = NULL,
-  attachmentSetId = NULL
+  attachmentSetId = NULL,
+  uploadIds = NULL,
+  dryRun = NULL
 )
 }
 \arguments{
-\item{caseId}{The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
+\item{caseId}{The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-exen-2025-c4c1d2bf33c5cf47}}
 
 \item{communicationBody}{[required] The body of an email communication to add to the support case.}
 
 \item{ccEmailAddresses}{The email addresses in the CC line of an email to be added to the support case.}
 
-\item{attachmentSetId}{The ID of a set of one or more attachments for the communication to add to the case. Create the set by calling \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}}}
+\item{attachmentSetId}{The ID of a set of one or more attachments for the communication to add to the case. Create the set by calling \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}}. Each attachment in the set must be 5 MB or smaller. To attach files larger than 5 MB, use \code{uploadIds}.}
+
+\item{uploadIds}{A list of upload IDs that identify attachments to add to the case. Each \code{uploadId} is returned by the \code{\link[=support_get_attachment_upload_links]{get_attachment_upload_links}} operation. The upload must reach the \code{attachment-ready} state by calling \code{\link[=support_complete_attachment_upload]{complete_attachment_upload}} before it can be passed here. Use \code{uploadIds} to attach files of any supported size, including files larger than 5 MB.}
+
+\item{dryRun}{Specifies whether to validate the request without actually adding the communication to the case. When set to \code{true}, the request is validated but the communication isn't added, and the operation returns a \code{DryRunOperationException}. When omitted or set to \code{false}, the request runs normally.}
 }
 \description{
-Adds additional customer communication to an Amazon Web Services Support case. Use the \code{caseId} parameter to identify the case to which to add communication. You can list a set of email addresses to copy on the communication by using the \code{ccEmailAddresses} parameter. The \code{communicationBody} value contains the text of the communication.
+Adds additional customer communication to a Amazon Web Services Support case. Use the \code{caseId} parameter to identify the case to which to add communication. To list a set of email addresses to copy on the communication, use the \code{ccEmailAddresses} parameter. The \code{communicationBody} value contains the text of the communication.
 
 See \url{https://www.paws-r-sdk.com/docs/support_add_communication_to_case/} for full documentation.
 }

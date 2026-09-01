@@ -11,7 +11,9 @@ bedrockagentcorecontrol_create_online_evaluation_config(
   description = NULL,
   rule,
   dataSourceConfig,
-  evaluators,
+  evaluators = NULL,
+  insights = NULL,
+  clusteringConfig = NULL,
   evaluationExecutionRoleArn,
   enableOnCreate,
   tags = NULL
@@ -28,7 +30,11 @@ bedrockagentcorecontrol_create_online_evaluation_config(
 
 \item{dataSourceConfig}{[required] The data source configuration that specifies CloudWatch log groups and service names to monitor for agent traces.}
 
-\item{evaluators}{[required] The list of evaluators to apply during online evaluation. Can include both built-in evaluators and custom evaluators created with \code{\link[=bedrockagentcorecontrol_create_evaluator]{create_evaluator}}.}
+\item{evaluators}{The list of evaluators to apply during online evaluation. Can include both built-in evaluators and custom evaluators created with \code{\link[=bedrockagentcorecontrol_create_evaluator]{create_evaluator}}.}
+
+\item{insights}{The list of insight types to run against agent sessions.}
+
+\item{clusteringConfig}{Configuration for periodic batch evaluation clustering of insight results.}
 
 \item{evaluationExecutionRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that grants permissions to read from CloudWatch logs, write evaluation results, and invoke Amazon Bedrock models for evaluation. If the configuration references evaluators encrypted with a customer managed KMS key, this role must also have \code{kms:Decrypt} permission on the KMS key. The service validates this permission at configuration creation time. For more information, see \href{https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/evaluations-encryption.html}{Encryption at rest for AgentCore Evaluations}.}
 

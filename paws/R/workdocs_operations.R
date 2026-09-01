@@ -2877,7 +2877,7 @@ workdocs_restore_document_versions <- function(AuthenticationToken = NULL, Docum
 #'   OrganizationId, AdditionalResponseFields, Filters, OrderBy, Limit,
 #'   Marker)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web Services administrator credentials to access the API.
+#' @param AuthenticationToken WorkDocs authentication token. Not required when using Amazon Web Services administrator credentials to access the API.
 #' @param QueryText The String to search for. Searches across different text fields based on request parameters. Use double quotes around the query string for exact phrase matches.
 #' @param QueryScopes Filter based on the text field type. A Folder has only a name and no content. A Comment has only content and no name. A Document or Document Version has a name and content
 #' @param OrganizationId Filters based on the resource owner OrgId. This is a mandatory parameter when using Admin SigV4 credentials.

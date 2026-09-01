@@ -13,6 +13,72 @@ NULL
   list()
 }
 
+.acm$create_acme_domain_validation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), PrevalidationOptions = structure(list(DnsPrevalidation = structure(list(DomainScope = structure(list(ExactDomain = structure(logical(0), tags = list(type = "string")), Subdomains = structure(logical(0), tags = list(type = "string")), Wildcards = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$create_acme_domain_validation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeDomainValidationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$create_acme_endpoint_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), AuthorizationBehavior = structure(logical(0), tags = list(type = "string")), Contact = structure(logical(0), tags = list(type = "string")), CertificateAuthority = structure(list(PublicCertificateAuthority = structure(list(AllowedKeyAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CertificateTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$create_acme_endpoint_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeEndpointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$create_acme_external_account_binding_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), Expiration = structure(list(Value = structure(logical(0), tags = list(type = "long", box = TRUE)), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$create_acme_external_account_binding_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ExternalAccountBinding = structure(list(AcmeExternalAccountBindingArn = structure(logical(0), tags = list(type = "string")), AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ExpiresAt = structure(logical(0), tags = list(type = "timestamp")), RevokedAt = structure(logical(0), tags = list(type = "timestamp")), LastUsedAt = structure(logical(0), tags = list(type = "timestamp")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$delete_acme_domain_validation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeDomainValidationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$delete_acme_domain_validation_output <- function(...) {
+  list()
+}
+
+.acm$delete_acme_endpoint_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeEndpointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$delete_acme_endpoint_output <- function(...) {
+  list()
+}
+
+.acm$delete_acme_external_account_binding_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeExternalAccountBindingArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$delete_acme_external_account_binding_output <- function(...) {
+  list()
+}
+
 .acm$delete_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(CertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -23,6 +89,54 @@ NULL
   list()
 }
 
+.acm$describe_acme_account_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), AccountUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$describe_acme_account_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeAccount = structure(list(AccountUrl = structure(logical(0), tags = list(type = "string")), PublicKeyThumbprint = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), AcmeExternalAccountBindingArn = structure(logical(0), tags = list(type = "string")), Contacts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$describe_acme_domain_validation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeDomainValidationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$describe_acme_domain_validation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeDomainValidation = structure(list(AcmeDomainValidationArn = structure(logical(0), tags = list(type = "string")), AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), PrevalidationType = structure(logical(0), tags = list(type = "string")), PrevalidationDetails = structure(list(DnsPrevalidation = structure(list(DomainScope = structure(list(ExactDomain = structure(logical(0), tags = list(type = "string")), Subdomains = structure(logical(0), tags = list(type = "string")), Wildcards = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HostedZoneId = structure(logical(0), tags = list(type = "string")), ResourceRecord = structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Status = structure(logical(0), tags = list(type = "string")), FailureDetails = structure(list(Reason = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$describe_acme_endpoint_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeEndpointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$describe_acme_endpoint_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeEndpoint = structure(list(AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), EndpointUrl = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string")), AuthorizationBehavior = structure(logical(0), tags = list(type = "string")), Contact = structure(logical(0), tags = list(type = "string")), CertificateAuthority = structure(list(PublicCertificateAuthority = structure(list(AllowedKeyAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), CertificateTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$describe_acme_external_account_binding_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeExternalAccountBindingArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$describe_acme_external_account_binding_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ExternalAccountBinding = structure(list(AcmeExternalAccountBindingArn = structure(logical(0), tags = list(type = "string")), AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ExpiresAt = structure(logical(0), tags = list(type = "timestamp")), RevokedAt = structure(logical(0), tags = list(type = "timestamp")), LastUsedAt = structure(logical(0), tags = list(type = "timestamp")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .acm$describe_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(CertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -31,7 +145,7 @@ NULL
 
 .acm$describe_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Certificate = structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), SubjectAlternativeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ManagedBy = structure(logical(0), tags = list(type = "string")), DomainValidationOptions = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ValidationEmails = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationDomain = structure(logical(0), tags = list(type = "string")), ValidationStatus = structure(logical(0), tags = list(type = "string")), ResourceRecord = structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HttpRedirect = structure(list(RedirectFrom = structure(logical(0), tags = list(type = "string")), RedirectTo = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ValidationMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Serial = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), IssuedAt = structure(logical(0), tags = list(type = "timestamp")), ImportedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), RevokedAt = structure(logical(0), tags = list(type = "timestamp")), RevocationReason = structure(logical(0), tags = list(type = "string")), NotBefore = structure(logical(0), tags = list(type = "timestamp")), NotAfter = structure(logical(0), tags = list(type = "timestamp")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), SignatureAlgorithm = structure(logical(0), tags = list(type = "string")), InUseBy = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FailureReason = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), RenewalSummary = structure(list(RenewalStatus = structure(logical(0), tags = list(type = "string")), DomainValidationOptions = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ValidationEmails = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationDomain = structure(logical(0), tags = list(type = "string")), ValidationStatus = structure(logical(0), tags = list(type = "string")), ResourceRecord = structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HttpRedirect = structure(list(RedirectFrom = structure(logical(0), tags = list(type = "string")), RedirectTo = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ValidationMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RenewalStatusReason = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), KeyUsages = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ExtendedKeyUsages = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), OID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), RenewalEligibility = structure(logical(0), tags = list(type = "string")), Options = structure(list(CertificateTransparencyLoggingPreference = structure(logical(0), tags = list(type = "string")), Export = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Certificate = structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), SubjectAlternativeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ManagedBy = structure(logical(0), tags = list(type = "string")), DomainValidationOptions = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ValidationEmails = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationDomain = structure(logical(0), tags = list(type = "string")), ValidationStatus = structure(logical(0), tags = list(type = "string")), ResourceRecord = structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HttpRedirect = structure(list(RedirectFrom = structure(logical(0), tags = list(type = "string")), RedirectTo = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ValidationMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Serial = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), IssuedAt = structure(logical(0), tags = list(type = "timestamp")), ImportedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), RevokedAt = structure(logical(0), tags = list(type = "timestamp")), RevocationReason = structure(logical(0), tags = list(type = "string")), NotBefore = structure(logical(0), tags = list(type = "timestamp")), NotAfter = structure(logical(0), tags = list(type = "timestamp")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), SignatureAlgorithm = structure(logical(0), tags = list(type = "string")), InUseBy = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FailureReason = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), RenewalSummary = structure(list(RenewalStatus = structure(logical(0), tags = list(type = "string")), DomainValidationOptions = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ValidationEmails = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationDomain = structure(logical(0), tags = list(type = "string")), ValidationStatus = structure(logical(0), tags = list(type = "string")), ResourceRecord = structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HttpRedirect = structure(list(RedirectFrom = structure(logical(0), tags = list(type = "string")), RedirectTo = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ValidationMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RenewalStatusReason = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), KeyUsages = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ExtendedKeyUsages = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), OID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), RenewalEligibility = structure(logical(0), tags = list(type = "string")), Options = structure(list(CertificateTransparencyLoggingPreference = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "Certificate transparency logging opt-out is no longer available.", deprecatedSince = "12th June 2026")), Export = structure(logical(0), tags = list(type = "string")), ValidationMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UpdateSummary = structure(list(Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), DomainValidationMethodUpdateSummary = structure(list(From = structure(logical(0), tags = list(type = "string")), To = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RequestedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), CertificateKeyPairOrigin = structure(logical(0), tags = list(type = "string")), AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), AcmeAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -54,6 +168,18 @@ NULL
 .acm$get_account_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ExpiryEvents = structure(list(DaysBeforeExpiry = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$get_acme_external_account_binding_credentials_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeExternalAccountBindingArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$get_acme_external_account_binding_credentials_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), MacKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -81,15 +207,75 @@ NULL
   return(populate(args, shape))
 }
 
+.acm$list_acme_accounts_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), AcmeEndpointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$list_acme_accounts_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeAccounts = structure(list(structure(list(AccountUrl = structure(logical(0), tags = list(type = "string")), PublicKeyThumbprint = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), AcmeExternalAccountBindingArn = structure(logical(0), tags = list(type = "string")), Contacts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$list_acme_domain_validations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), AcmeEndpointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$list_acme_domain_validations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeDomainValidations = structure(list(structure(list(AcmeDomainValidationArn = structure(logical(0), tags = list(type = "string")), AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), PrevalidationType = structure(logical(0), tags = list(type = "string")), PrevalidationDetails = structure(list(DnsPrevalidation = structure(list(DomainScope = structure(list(ExactDomain = structure(logical(0), tags = list(type = "string")), Subdomains = structure(logical(0), tags = list(type = "string")), Wildcards = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HostedZoneId = structure(logical(0), tags = list(type = "string")), ResourceRecord = structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Status = structure(logical(0), tags = list(type = "string")), FailureDetails = structure(list(Reason = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$list_acme_endpoints_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$list_acme_endpoints_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeEndpoints = structure(list(structure(list(AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), EndpointUrl = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string")), AuthorizationBehavior = structure(logical(0), tags = list(type = "string")), Contact = structure(logical(0), tags = list(type = "string")), CertificateAuthority = structure(list(PublicCertificateAuthority = structure(list(AllowedKeyAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), CertificateTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$list_acme_external_account_bindings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), AcmeEndpointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$list_acme_external_account_bindings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ExternalAccountBindings = structure(list(structure(list(AcmeExternalAccountBindingArn = structure(logical(0), tags = list(type = "string")), AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ExpiresAt = structure(logical(0), tags = list(type = "timestamp")), RevokedAt = structure(logical(0), tags = list(type = "timestamp")), LastUsedAt = structure(logical(0), tags = list(type = "timestamp")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$list_certificate_domain_validations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$list_certificate_domain_validations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainValidationSummaryList = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ActiveValidationConfiguration = structure(list(ValidationMethod = structure(logical(0), tags = list(type = "string")), ValidationChallenge = structure(list(EmailValidationChallenge = structure(list(ValidationEmails = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationDomain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DnsValidationChallenge = structure(list(ResourceRecord = structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), ValidationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RequestedValidationConfiguration = structure(list(ValidationMethod = structure(logical(0), tags = list(type = "string")), ValidationChallenge = structure(list(EmailValidationChallenge = structure(list(ValidationEmails = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationDomain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DnsValidationChallenge = structure(list(ResourceRecord = structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), ValidationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .acm$list_certificates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateStatuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Includes = structure(list(extendedKeyUsage = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), keyUsage = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), keyTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), exportOption = structure(logical(0), tags = list(type = "string")), managedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer", box = TRUE)), SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CertificateStatuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CertificateKeyPairOrigins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Includes = structure(list(extendedKeyUsage = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), keyUsage = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), keyTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), exportOption = structure(logical(0), tags = list(type = "string")), managedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer", box = TRUE)), SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .acm$list_certificates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), CertificateSummaryList = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), SubjectAlternativeNameSummaries = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HasAdditionalSubjectAlternativeNames = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyUsages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ExtendedKeyUsages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ExportOption = structure(logical(0), tags = list(type = "string")), InUse = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Exported = structure(logical(0), tags = list(type = "boolean", box = TRUE)), RenewalEligibility = structure(logical(0), tags = list(type = "string")), NotBefore = structure(logical(0), tags = list(type = "timestamp")), NotAfter = structure(logical(0), tags = list(type = "timestamp")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), IssuedAt = structure(logical(0), tags = list(type = "timestamp")), ImportedAt = structure(logical(0), tags = list(type = "timestamp")), RevokedAt = structure(logical(0), tags = list(type = "timestamp")), ManagedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), CertificateSummaryList = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), SubjectAlternativeNameSummaries = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HasAdditionalSubjectAlternativeNames = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyUsages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ExtendedKeyUsages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ExportOption = structure(logical(0), tags = list(type = "string")), InUse = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Exported = structure(logical(0), tags = list(type = "boolean", box = TRUE)), RenewalEligibility = structure(logical(0), tags = list(type = "string")), NotBefore = structure(logical(0), tags = list(type = "timestamp")), NotAfter = structure(logical(0), tags = list(type = "timestamp")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), IssuedAt = structure(logical(0), tags = list(type = "timestamp")), ImportedAt = structure(logical(0), tags = list(type = "timestamp")), RevokedAt = structure(logical(0), tags = list(type = "timestamp")), ManagedBy = structure(logical(0), tags = list(type = "string")), CertificateKeyPairOrigin = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -100,6 +286,18 @@ NULL
 }
 
 .acm$list_tags_for_certificate_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -137,7 +335,7 @@ NULL
 
 .acm$request_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ValidationMethod = structure(logical(0), tags = list(type = "string")), SubjectAlternativeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(type = "string")), DomainValidationOptions = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ValidationDomain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Options = structure(list(CertificateTransparencyLoggingPreference = structure(logical(0), tags = list(type = "string")), Export = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), ManagedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ValidationMethod = structure(logical(0), tags = list(type = "string")), SubjectAlternativeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(type = "string")), DomainValidationOptions = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ValidationDomain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Options = structure(list(CertificateTransparencyLoggingPreference = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "Certificate transparency logging opt-out is no longer available.", deprecatedSince = "12th June 2026")), Export = structure(logical(0), tags = list(type = "string")), ValidationMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), ManagedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -157,6 +355,26 @@ NULL
   list()
 }
 
+.acm$revoke_acme_account_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), AccountUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$revoke_acme_account_output <- function(...) {
+  list()
+}
+
+.acm$revoke_acme_external_account_binding_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeExternalAccountBindingArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$revoke_acme_external_account_binding_output <- function(...) {
+  list()
+}
+
 .acm$revoke_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), RevocationReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -171,19 +389,59 @@ NULL
 
 .acm$search_certificates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FilterStatement = structure(list(And = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), Or = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), Not = structure(logical(0), tags = list(type = "structure", union = TRUE)), Filter = structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), X509AttributeFilter = structure(list(Subject = structure(list(CommonName = structure(list(Value = structure(logical(0), tags = list(type = "string")), ComparisonOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), SubjectAlternativeName = structure(list(DnsName = structure(list(Value = structure(logical(0), tags = list(type = "string")), ComparisonOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), ExtendedKeyUsage = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), NotAfter = structure(list(Start = structure(logical(0), tags = list(type = "timestamp")), End = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), NotBefore = structure(list(Start = structure(logical(0), tags = list(type = "timestamp")), End = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), AcmCertificateMetadataFilter = structure(list(Status = structure(logical(0), tags = list(type = "string")), RenewalStatus = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), InUse = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Exported = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ExportOption = structure(logical(0), tags = list(type = "string")), ManagedBy = structure(logical(0), tags = list(type = "string")), ValidationMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE)), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(FilterStatement = structure(list(And = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), Or = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), Not = structure(logical(0), tags = list(type = "structure", union = TRUE)), Filter = structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), X509AttributeFilter = structure(list(Subject = structure(list(CommonName = structure(list(Value = structure(logical(0), tags = list(type = "string")), ComparisonOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), SubjectAlternativeName = structure(list(DnsName = structure(list(Value = structure(logical(0), tags = list(type = "string")), ComparisonOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), ExtendedKeyUsage = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), NotAfter = structure(list(Start = structure(logical(0), tags = list(type = "timestamp")), End = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), NotBefore = structure(list(Start = structure(logical(0), tags = list(type = "timestamp")), End = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), AcmCertificateMetadataFilter = structure(list(Status = structure(logical(0), tags = list(type = "string")), RenewalStatus = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), InUse = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Exported = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ExportOption = structure(logical(0), tags = list(type = "string")), ManagedBy = structure(logical(0), tags = list(type = "string")), ValidationMethod = structure(logical(0), tags = list(type = "string")), CertificateKeyPairOrigin = structure(logical(0), tags = list(type = "string")), AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), AcmeAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE)), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .acm$search_certificates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Results = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), X509Attributes = structure(list(Issuer = structure(list(CommonName = structure(logical(0), tags = list(type = "string")), DomainComponents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Country = structure(logical(0), tags = list(type = "string")), CustomAttributes = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DistinguishedNameQualifier = structure(logical(0), tags = list(type = "string")), GenerationQualifier = structure(logical(0), tags = list(type = "string")), GivenName = structure(logical(0), tags = list(type = "string")), Initials = structure(logical(0), tags = list(type = "string")), Locality = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), Pseudonym = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Surname = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Subject = structure(list(CommonName = structure(logical(0), tags = list(type = "string")), DomainComponents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Country = structure(logical(0), tags = list(type = "string")), CustomAttributes = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DistinguishedNameQualifier = structure(logical(0), tags = list(type = "string")), GenerationQualifier = structure(logical(0), tags = list(type = "string")), GivenName = structure(logical(0), tags = list(type = "string")), Initials = structure(logical(0), tags = list(type = "string")), Locality = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), Pseudonym = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Surname = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SubjectAlternativeNames = structure(list(structure(list(DirectoryName = structure(list(CommonName = structure(logical(0), tags = list(type = "string")), DomainComponents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Country = structure(logical(0), tags = list(type = "string")), CustomAttributes = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DistinguishedNameQualifier = structure(logical(0), tags = list(type = "string")), GenerationQualifier = structure(logical(0), tags = list(type = "string")), GivenName = structure(logical(0), tags = list(type = "string")), Initials = structure(logical(0), tags = list(type = "string")), Locality = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), Pseudonym = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Surname = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DnsName = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), OtherName = structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RegisteredId = structure(logical(0), tags = list(type = "string")), Rfc822Name = structure(logical(0), tags = list(type = "string")), UniformResourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), ExtendedKeyUsages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyUsages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SerialNumber = structure(logical(0), tags = list(type = "string")), NotAfter = structure(logical(0), tags = list(type = "timestamp")), NotBefore = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), CertificateMetadata = structure(list(AcmCertificateMetadata = structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Exported = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ImportedAt = structure(logical(0), tags = list(type = "timestamp")), InUse = structure(logical(0), tags = list(type = "boolean", box = TRUE)), IssuedAt = structure(logical(0), tags = list(type = "timestamp")), RenewalEligibility = structure(logical(0), tags = list(type = "string")), RevokedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), RenewalStatus = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ExportOption = structure(logical(0), tags = list(type = "string")), ManagedBy = structure(logical(0), tags = list(type = "string")), ValidationMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Results = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), X509Attributes = structure(list(Issuer = structure(list(CommonName = structure(logical(0), tags = list(type = "string")), DomainComponents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Country = structure(logical(0), tags = list(type = "string")), CustomAttributes = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DistinguishedNameQualifier = structure(logical(0), tags = list(type = "string")), GenerationQualifier = structure(logical(0), tags = list(type = "string")), GivenName = structure(logical(0), tags = list(type = "string")), Initials = structure(logical(0), tags = list(type = "string")), Locality = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), Pseudonym = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Surname = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Subject = structure(list(CommonName = structure(logical(0), tags = list(type = "string")), DomainComponents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Country = structure(logical(0), tags = list(type = "string")), CustomAttributes = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DistinguishedNameQualifier = structure(logical(0), tags = list(type = "string")), GenerationQualifier = structure(logical(0), tags = list(type = "string")), GivenName = structure(logical(0), tags = list(type = "string")), Initials = structure(logical(0), tags = list(type = "string")), Locality = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), Pseudonym = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Surname = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SubjectAlternativeNames = structure(list(structure(list(DirectoryName = structure(list(CommonName = structure(logical(0), tags = list(type = "string")), DomainComponents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Country = structure(logical(0), tags = list(type = "string")), CustomAttributes = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DistinguishedNameQualifier = structure(logical(0), tags = list(type = "string")), GenerationQualifier = structure(logical(0), tags = list(type = "string")), GivenName = structure(logical(0), tags = list(type = "string")), Initials = structure(logical(0), tags = list(type = "string")), Locality = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), Pseudonym = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Surname = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DnsName = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), OtherName = structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RegisteredId = structure(logical(0), tags = list(type = "string")), Rfc822Name = structure(logical(0), tags = list(type = "string")), UniformResourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), ExtendedKeyUsages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyUsages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SerialNumber = structure(logical(0), tags = list(type = "string")), NotAfter = structure(logical(0), tags = list(type = "timestamp")), NotBefore = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), CertificateMetadata = structure(list(AcmCertificateMetadata = structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Exported = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ImportedAt = structure(logical(0), tags = list(type = "timestamp")), InUse = structure(logical(0), tags = list(type = "boolean", box = TRUE)), IssuedAt = structure(logical(0), tags = list(type = "timestamp")), RenewalEligibility = structure(logical(0), tags = list(type = "string")), RevokedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), RenewalStatus = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ExportOption = structure(logical(0), tags = list(type = "string")), ManagedBy = structure(logical(0), tags = list(type = "string")), ValidationMethod = structure(logical(0), tags = list(type = "string")), CertificateKeyPairOrigin = structure(logical(0), tags = list(type = "string")), AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), AcmeAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.acm$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$tag_resource_output <- function(...) {
+  list()
+}
+
+.acm$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$untag_resource_output <- function(...) {
+  list()
+}
+
+.acm$update_acme_domain_validation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeDomainValidationArn = structure(logical(0), tags = list(type = "string")), PrevalidationOptions = structure(list(DnsPrevalidation = structure(list(DomainScope = structure(list(ExactDomain = structure(logical(0), tags = list(type = "string")), Subdomains = structure(logical(0), tags = list(type = "string")), Wildcards = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$update_acme_domain_validation_output <- function(...) {
+  list()
+}
+
+.acm$update_acme_endpoint_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcmeEndpointArn = structure(logical(0), tags = list(type = "string")), AuthorizationBehavior = structure(logical(0), tags = list(type = "string")), Contact = structure(logical(0), tags = list(type = "string")), CertificateAuthority = structure(list(PublicCertificateAuthority = structure(list(AllowedKeyAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$update_acme_endpoint_output <- function(...) {
+  list()
 }
 
 .acm$update_certificate_options_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), Options = structure(list(CertificateTransparencyLoggingPreference = structure(logical(0), tags = list(type = "string")), Export = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), Options = structure(list(CertificateTransparencyLoggingPreference = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "Certificate transparency logging opt-out is no longer available.", deprecatedSince = "12th June 2026")), Export = structure(logical(0), tags = list(type = "string")), ValidationMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

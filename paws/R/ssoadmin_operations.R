@@ -1603,7 +1603,8 @@ ssoadmin_describe_application_provider <- function(ApplicationProviderArn) {
 #'     KmsKeyArn = "string",
 #'     EncryptionStatus = "UPDATING"|"ENABLED"|"UPDATE_FAILED",
 #'     EncryptionStatusReason = "string"
-#'   )
+#'   ),
+#'   PermissionSetsEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3354,7 +3355,18 @@ ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(I
 #'         "2015-01-01"
 #'       ),
 #'       Status = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_IN_PROGRESS"|"ACTIVE",
-#'       StatusReason = "string"
+#'       StatusReason = "string",
+#'       PrimaryRegion = "string",
+#'       Regions = list(
+#'         list(
+#'           RegionName = "string",
+#'           Status = "ACTIVE"|"ADDING"|"REMOVING",
+#'           AddedDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           IsPrimaryRegion = TRUE|FALSE
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4526,13 +4538,25 @@ ssoadmin_update_application <- function(ApplicationArn, Name = NULL, Description
 #'
 #' @description
 #' Update the details for the instance of IAM Identity Center that is owned by the Amazon Web Services account.
+#' 
+#' In a single [`update_instance`][ssoadmin_update_instance] request, you can perform only one of the following operations:
+#' 
+#' -   Update the encryption configuration of the instance by specifying `EncryptionConfiguration`.
+#' 
+#' -   Enable permission sets for the instance by specifying `PermissionSetsEnabled`.
+#' 
+#' A request that specifies both `EncryptionConfiguration` and `PermissionSetsEnabled` returns a `ValidationException`. To perform both operations, call [`update_instance`][ssoadmin_update_instance] separately for each. The two calls can be made in parallel.
 #'
 #' @usage
-#' ssoadmin_update_instance(Name, InstanceArn, EncryptionConfiguration)
+#' ssoadmin_update_instance(Name, InstanceArn, EncryptionConfiguration,
+#'   PermissionSetsEnabled)
 #'
 #' @param Name Updates the instance name.
 #' @param InstanceArn &#91;required&#93; The ARN of the instance of IAM Identity Center under which the operation will run. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param EncryptionConfiguration Specifies the encryption configuration for your IAM Identity Center instance. You can use this to configure customer managed KMS keys or Amazon Web Services owned KMS keys for encrypting your instance data.
+#' @param PermissionSetsEnabled Enables permission sets for this Identity Center instance. The only accepted value is `true `. After permission sets are enabled, they cannot be disabled.
+#' 
+#' You can't set `EncryptionConfiguration` and `PermissionSetsEnabled` in the same request. To configure both, make two separate [`update_instance`][ssoadmin_update_instance] calls. These calls can be made in parallel.
 #'
 #' @return
 #' An empty list.
@@ -4545,7 +4569,8 @@ ssoadmin_update_application <- function(ApplicationArn, Name = NULL, Description
 #'   EncryptionConfiguration = list(
 #'     KeyType = "AWS_OWNED_KMS_KEY"|"CUSTOMER_MANAGED_KEY",
 #'     KmsKeyArn = "string"
-#'   )
+#'   ),
+#'   PermissionSetsEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4554,7 +4579,7 @@ ssoadmin_update_application <- function(ApplicationArn, Name = NULL, Description
 #' @rdname ssoadmin_update_instance
 #'
 #' @aliases ssoadmin_update_instance
-ssoadmin_update_instance <- function(Name = NULL, InstanceArn, EncryptionConfiguration = NULL) {
+ssoadmin_update_instance <- function(Name = NULL, InstanceArn, EncryptionConfiguration = NULL, PermissionSetsEnabled = NULL) {
   op <- new_operation(
     name = "UpdateInstance",
     http_method = "POST",
@@ -4563,7 +4588,7 @@ ssoadmin_update_instance <- function(Name = NULL, InstanceArn, EncryptionConfigu
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$update_instance_input(Name = Name, InstanceArn = InstanceArn, EncryptionConfiguration = EncryptionConfiguration)
+  input <- .ssoadmin$update_instance_input(Name = Name, InstanceArn = InstanceArn, EncryptionConfiguration = EncryptionConfiguration, PermissionSetsEnabled = PermissionSetsEnabled)
   output <- .ssoadmin$update_instance_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)

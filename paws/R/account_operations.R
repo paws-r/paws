@@ -25,7 +25,7 @@ NULL
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   Status = "PENDING"|"ACCEPTED"
+#'   Status = "PENDING"|"ACCEPTED"|"COMPLETED"|"FAILED"
 #' )
 #' ```
 #'
@@ -538,6 +538,63 @@ account_get_primary_email <- function(AccountId) {
 }
 .account$operations$get_primary_email <- account_get_primary_email
 
+#' Retrieves the status of the most recent primary email update for the
+#' specified account
+#'
+#' @description
+#' Retrieves the status of the most recent primary email update for the specified account. For complete details about how to update the primary email address, see [Update the primary email address for your AWS account](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-root-user-email.html).
+#'
+#' @usage
+#' account_get_primary_email_update_status(AccountId)
+#'
+#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services account that you want to access or modify with this operation. To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account. The specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) enabled for the Account Management service, and optionally a [delegated admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
+#' 
+#' This operation can only be called from the management account or the delegated administrator account of an organization for a member account.
+#' 
+#' The management account can't specify its own `AccountId`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "PENDING"|"ACCEPTED"|"COMPLETED"|"FAILED",
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_primary_email_update_status(
+#'   AccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname account_get_primary_email_update_status
+#'
+#' @aliases account_get_primary_email_update_status
+account_get_primary_email_update_status <- function(AccountId = NULL) {
+  op <- new_operation(
+    name = "GetPrimaryEmailUpdateStatus",
+    http_method = "POST",
+    http_path = "/getPrimaryEmailUpdateStatus",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .account$get_primary_email_update_status_input(AccountId = AccountId)
+  output <- .account$get_primary_email_update_status_output()
+  config <- get_config()
+  svc <- .account$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$get_primary_email_update_status <- account_get_primary_email_update_status
+
 #' Retrieves the opt-in status of a particular Region
 #'
 #' @description
@@ -871,7 +928,7 @@ account_put_contact_information <- function(ContactInformation, AccountId = NULL
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   Status = "PENDING"|"ACCEPTED"
+#'   Status = "PENDING"|"ACCEPTED"|"COMPLETED"|"FAILED"
 #' )
 #' ```
 #'

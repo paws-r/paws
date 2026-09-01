@@ -27,7 +27,9 @@ You must include either \code{logGroupIdentifier} or \code{logGroupName}, but no
 
 \item{logStreamName}{[required] The name of the log stream.}
 
-\item{startTime}{The start of the time range, expressed as the number of milliseconds after \verb{Jan 1, 1970 00:00:00 UTC}. Events with a timestamp equal to this time or later than this time are included. Events with a timestamp earlier than this time are not included.}
+\item{startTime}{The start of the time range, expressed as the number of milliseconds after \verb{Jan 1, 1970 00:00:00 UTC}. Events with a timestamp equal to this time or later than this time are included. Events with a timestamp earlier than this time are not included.
+
+Set \code{startTime} explicitly to reduce the chances of empty pages in the response.}
 
 \item{endTime}{The end of the time range, expressed as the number of milliseconds after \verb{Jan 1, 1970 00:00:00 UTC}. Events with a timestamp equal to or later than this time are not included.}
 

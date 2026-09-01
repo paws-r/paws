@@ -1,6 +1,6 @@
 Package: paws.machine.learning
 Title: 'Amazon Web Services' Machine Learning Services
-Version: 0.10.0
+Version: 0.11.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -22,7 +22,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
 Collate: 
     'augmentedairuntime_service.R'
     'augmentedairuntime_interfaces.R'
@@ -84,9 +84,6 @@ Collate:
     'machinelearning_service.R'
     'machinelearning_interfaces.R'
     'machinelearning_operations.R'
-    'panorama_service.R'
-    'panorama_interfaces.R'
-    'panorama_operations.R'
     'personalize_service.R'
     'personalize_interfaces.R'
     'personalize_operations.R'

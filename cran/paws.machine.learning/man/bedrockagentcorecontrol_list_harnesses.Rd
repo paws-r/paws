@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockagentcorecontrol_operations.R
 \name{bedrockagentcorecontrol_list_harnesses}
 \alias{bedrockagentcorecontrol_list_harnesses}
-\title{Operation to list Harnesses}
+\title{Operation to list harnesses}
 \usage{
 bedrockagentcorecontrol_list_harnesses(maxResults = NULL, nextToken = NULL)
 }
@@ -12,7 +12,7 @@ bedrockagentcorecontrol_list_harnesses(maxResults = NULL, nextToken = NULL)
 \item{nextToken}{The token for the next set of results.}
 }
 \description{
-Operation to list Harnesses.
+Operation to list harnesses.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_list_harnesses/} for full documentation.
 }

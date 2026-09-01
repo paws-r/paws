@@ -44,7 +44,9 @@ autoscaling_update_auto_scaling_group(
 
 \item{LaunchTemplate}{The launch template and version to use to specify the updates. If you specify \code{LaunchTemplate} in your update request, you can't specify \code{LaunchConfigurationName} or \code{MixedInstancesPolicy}.}
 
-\item{MixedInstancesPolicy}{The mixed instances policy. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups.html}{Auto Scaling groups with multiple instance types and purchase options} in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+\item{MixedInstancesPolicy}{The mixed instances policy. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups.html}{Auto Scaling groups with multiple instance types and purchase options} in the \emph{Amazon EC2 Auto Scaling User Guide}.
+
+You can remove the Distribution Segments configuration by specifying \code{OnDemandBaseCapacity} or \code{OnDemandPercentageAboveBaseCapacity}. You can also remove it explicitly by specifying an empty list for \code{DistributionSegments}.}
 
 \item{MinSize}{The minimum size of the Auto Scaling group.}
 

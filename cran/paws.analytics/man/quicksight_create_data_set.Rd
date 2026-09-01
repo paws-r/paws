@@ -69,7 +69,7 @@ quicksight_create_data_set(
 \item{SemanticModelConfiguration}{The semantic model configuration for the dataset. This configuration defines how the prepared data is structured for an analysis, including table mappings and row-level security configurations. Required when using the new data preparation experience.}
 }
 \description{
-Creates a dataset. This operation doesn't support datasets that include uploaded files as a source.
+Creates a dataset.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_create_data_set/} for full documentation.
 }

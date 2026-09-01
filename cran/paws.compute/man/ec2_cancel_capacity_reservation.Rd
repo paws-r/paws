@@ -5,12 +5,21 @@
 \title{Cancels the specified Capacity Reservation, releases the reserved
 capacity, and changes the Capacity Reservation's state to cancelled}
 \usage{
-ec2_cancel_capacity_reservation(CapacityReservationId, DryRun = NULL)
+ec2_cancel_capacity_reservation(
+  CapacityReservationId,
+  DryRun = NULL,
+  ApplyCancellationCharges = NULL,
+  QuoteId = NULL
+)
 }
 \arguments{
 \item{CapacityReservationId}{[required] The ID of the Capacity Reservation to be cancelled.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{ApplyCancellationCharges}{Specifies the cancellation charge type to apply when cancelling a future-dated Capacity Reservation during its commitment duration. Possible values include \code{commitment-wind-down}, which continues billing for the remaining commitment duration without delivering capacity.}
+
+\item{QuoteId}{The ID of the cancellation quote to use for the cancellation. You can generate a cancellation quote by using the \code{\link[=ec2_create_capacity_reservation_cancellation_quote]{create_capacity_reservation_cancellation_quote}} action. The cancellation quote must be in an \code{active} state.}
 }
 \description{
 Cancels the specified Capacity Reservation, releases the reserved capacity, and changes the Capacity Reservation's state to \code{cancelled}.

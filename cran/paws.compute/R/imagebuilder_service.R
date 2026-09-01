@@ -110,7 +110,7 @@ NULL
 #'  \link[=imagebuilder_delete_infrastructure_configuration]{delete_infrastructure_configuration} \tab Deletes an infrastructure configuration\cr
 #'  \link[=imagebuilder_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Delete the specified lifecycle policy resource\cr
 #'  \link[=imagebuilder_delete_workflow]{delete_workflow} \tab Deletes a specific workflow resource\cr
-#'  \link[=imagebuilder_distribute_image]{distribute_image} \tab DistributeImage distributes existing AMIs to additional regions and accounts without rebuilding the image\cr
+#'  \link[=imagebuilder_distribute_image]{distribute_image} \tab Distributes an existing AMI to target Regions and accounts without running the full image build process\cr
 #'  \link[=imagebuilder_get_component]{get_component} \tab Gets a component object\cr
 #'  \link[=imagebuilder_get_component_policy]{get_component_policy} \tab Gets a component policy\cr
 #'  \link[=imagebuilder_get_container_recipe]{get_container_recipe} \tab Retrieves a container recipe\cr

@@ -2,20 +2,24 @@
 % Please edit documentation in R/bedrockagentcorecontrol_operations.R
 \name{bedrockagentcorecontrol_delete_agent_runtime}
 \alias{bedrockagentcorecontrol_delete_agent_runtime}
-\title{Deletes an Amazon Bedrock AgentCore Runtime}
+\title{Deletes an Amazon Bedrock AgentCore Runtime, or a single version of an
+AgentCore Runtime when you provide the version qualifier}
 \usage{
 bedrockagentcorecontrol_delete_agent_runtime(
   agentRuntimeId,
+  agentRuntimeVersion = NULL,
   clientToken = NULL
 )
 }
 \arguments{
 \item{agentRuntimeId}{[required] The unique identifier of the AgentCore Runtime to delete.}
 
+\item{agentRuntimeVersion}{The version of the AgentCore Runtime to delete. When you provide this value, only that version is deleted. When you omit it, the entire AgentCore Runtime and all of its versions are deleted.}
+
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request but does not return an error.}
 }
 \description{
-Deletes an Amazon Bedrock AgentCore Runtime.
+Deletes an Amazon Bedrock AgentCore Runtime, or a single version of an AgentCore Runtime when you provide the version qualifier.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_delete_agent_runtime/} for full documentation.
 }

@@ -90,7 +90,7 @@ If you don't provide a customer managed key, Lambda uses an \href{https://docs.a
 
 \item{CapacityProviderConfig}{Configuration for the capacity provider that manages compute resources for Lambda functions.}
 
-\item{DurableConfig}{Configuration settings for durable functions. Allows updating execution timeout and retention period for functions with durability enabled.}
+\item{DurableConfig}{Configuration settings for \href{https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html}{durable functions}, including execution timeout, retention period for execution history, and an optional ARN of the Key Management Service (KMS) customer managed key that is used to encrypt your durable execution's payload data, including input, output, and error payloads.}
 }
 \description{
 Modify the version-specific settings of a Lambda function.

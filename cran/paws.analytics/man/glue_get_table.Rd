@@ -11,7 +11,8 @@ glue_get_table(
   TransactionId = NULL,
   QueryAsOfTime = NULL,
   AuditContext = NULL,
-  IncludeStatusDetails = NULL
+  IncludeStatusDetails = NULL,
+  AttributesToGet = NULL
 )
 }
 \arguments{
@@ -28,6 +29,15 @@ glue_get_table(
 \item{AuditContext}{A structure containing the Lake Formation \href{https://docs.aws.amazon.com/glue/latest/webapi/API_AuditContext.html}{audit context}.}
 
 \item{IncludeStatusDetails}{Specifies whether to include status details related to a request to create or update an Glue Data Catalog view.}
+
+\item{AttributesToGet}{Specifies the table fields returned by the \code{\link[=glue_get_table]{get_table}} call. This parameter doesn't accept an empty list.
+
+The following are the valid combinations of values:
+\itemize{
+\item \code{DEFAULT} - Returns the Hive-style table definition only.
+\item \code{LATEST_ICEBERG_METADATA} - Returns only the latest Apache Iceberg table metadata.
+\item \code{DEFAULT}, \code{LATEST_ICEBERG_METADATA} - Returns both the Hive-style table definition and the latest Apache Iceberg table metadata.
+}}
 }
 \description{
 Retrieves the \code{Table} definition in a Data Catalog for a specified table.

@@ -20,7 +20,8 @@ wafv2_update_web_acl(
   TokenDomains = NULL,
   AssociationConfig = NULL,
   OnSourceDDoSProtectionConfig = NULL,
-  ApplicationConfig = NULL
+  ApplicationConfig = NULL,
+  MonetizationConfig = NULL
 )
 }
 \arguments{
@@ -83,6 +84,8 @@ When using \code{\link[=wafv2_update_web_acl]{update_web_acl}}, \code{Applicatio
 \item If you omit \code{ApplicationConfig} from the request, all existing entries in the web ACL are retained.
 \item If you include \code{ApplicationConfig}, entries must match the existing values exactly. Any attempt to modify existing entries will result in an error.
 }}
+
+\item{MonetizationConfig}{The monetization configuration for the web ACL. Provide this when any rule in the web ACL uses the \code{Monetize} action.}
 }
 \description{
 Updates the specified WebACL. While updating a web ACL, WAF provides continuous coverage to the resources that you have associated with the web ACL.

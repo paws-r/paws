@@ -3,6 +3,93 @@
 #' @include healthlake_service.R
 NULL
 
+#' Creates a data transformation profile in DRAFT state
+#'
+#' @description
+#' Creates a data transformation profile in DRAFT state. Specify a built-in starter profile, an existing profile version, raw profile content, or a sample data file as the source.
+#'
+#' @usage
+#' healthlake_create_data_transformation_profile(SourceFormat, Source,
+#'   KmsKeyId, ProfileDescription, ProfileName, Tags, ClientToken)
+#'
+#' @param SourceFormat &#91;required&#93; The source data format that this profile converts from (Consolidated Clinical Document Architecture (C-CDA) or Comma-separated values (CSV)).
+#' @param Source &#91;required&#93; The source for the initial profile content. Specify a built-in starter profile, an existing profile version to clone, raw profile content for CI/CD workflows, or a sample data file in Amazon S3.
+#' @param KmsKeyId The Amazon Web Services Key Management Service (Amazon Web Services KMS) key identifier used to encrypt the profile content at rest.
+#' @param ProfileDescription A human-readable description of the profile's purpose.
+#' @param ProfileName &#91;required&#93; A name for the data transformation profile.
+#' @param Tags The tags to associate with the profile at creation time.
+#' @param ClientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request but does not return an error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileId = "string",
+#'   Version = 123,
+#'   SourceFormat = "CCDA"|"CSV",
+#'   TargetFormat = "FHIR_R4",
+#'   ProfileName = "string",
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_data_transformation_profile(
+#'   SourceFormat = "CCDA"|"CSV",
+#'   Source = list(
+#'     StarterProfile = list(
+#'       StarterProfileName = "string"
+#'     ),
+#'     ExistingVersionedProfileId = list(
+#'       ProfileId = "string",
+#'       Version = 123
+#'     ),
+#'     ProfileMapping = list(
+#'       ProfileMapping = list(
+#'         "string"
+#'       )
+#'     ),
+#'     SampleData = list(
+#'       S3Uri = "string"
+#'     )
+#'   ),
+#'   KmsKeyId = "string",
+#'   ProfileDescription = "string",
+#'   ProfileName = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_create_data_transformation_profile
+#'
+#' @aliases healthlake_create_data_transformation_profile
+healthlake_create_data_transformation_profile <- function(SourceFormat, Source, KmsKeyId = NULL, ProfileDescription = NULL, ProfileName, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateDataTransformationProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$create_data_transformation_profile_input(SourceFormat = SourceFormat, Source = Source, KmsKeyId = KmsKeyId, ProfileDescription = ProfileDescription, ProfileName = ProfileName, Tags = Tags, ClientToken = ClientToken)
+  output <- .healthlake$create_data_transformation_profile_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$create_data_transformation_profile <- healthlake_create_data_transformation_profile
+
 #' Create a FHIR-enabled data store
 #'
 #' @description
@@ -11,7 +98,8 @@ NULL
 #' @usage
 #' healthlake_create_fhir_datastore(DatastoreName, DatastoreTypeVersion,
 #'   SseConfiguration, PreloadDataConfig, ClientToken, Tags,
-#'   IdentityProviderConfiguration)
+#'   IdentityProviderConfiguration, AnalyticsConfiguration, NlpConfiguration,
+#'   ProfileConfiguration, BackupConfiguration)
 #'
 #' @param DatastoreName The data store name (user-generated).
 #' @param DatastoreTypeVersion &#91;required&#93; The FHIR release version supported by the data store. Current support is for version `R4`.
@@ -20,6 +108,10 @@ NULL
 #' @param ClientToken An optional user-provided token to ensure API idempotency.
 #' @param Tags The resource tags applied to a data store when it is created.
 #' @param IdentityProviderConfiguration The identity provider configuration to use for the data store.
+#' @param AnalyticsConfiguration The analytics configuration for the data store.
+#' @param NlpConfiguration The natural language processing (NLP) configuration for the data store.
+#' @param ProfileConfiguration The profile configuration for the data store.
+#' @param BackupConfiguration The backup configuration for the data store.
 #'
 #' @return
 #' A list with the following syntax:
@@ -27,7 +119,7 @@ NULL
 #' list(
 #'   DatastoreId = "string",
 #'   DatastoreArn = "string",
-#'   DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED",
+#'   DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED",
 #'   DatastoreEndpoint = "string"
 #' )
 #' ```
@@ -58,6 +150,23 @@ NULL
 #'     FineGrainedAuthorizationEnabled = TRUE|FALSE,
 #'     Metadata = "string",
 #'     IdpLambdaArn = "string"
+#'   ),
+#'   AnalyticsConfiguration = list(
+#'     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"|"PAUSING"|"PAUSED"
+#'   ),
+#'   NlpConfiguration = list(
+#'     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
+#'   ),
+#'   ProfileConfiguration = list(
+#'     DefaultProfiles = list(
+#'       "string"
+#'     )
+#'   ),
+#'   BackupConfiguration = list(
+#'     Status = "ENABLED"|"DISABLED",
+#'     BackupType = "CONTINUOUS",
+#'     RetentionPeriodInDays = 123,
+#'     BackupTagsEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -67,7 +176,7 @@ NULL
 #' @rdname healthlake_create_fhir_datastore
 #'
 #' @aliases healthlake_create_fhir_datastore
-healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreTypeVersion, SseConfiguration = NULL, PreloadDataConfig = NULL, ClientToken = NULL, Tags = NULL, IdentityProviderConfiguration = NULL) {
+healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreTypeVersion, SseConfiguration = NULL, PreloadDataConfig = NULL, ClientToken = NULL, Tags = NULL, IdentityProviderConfiguration = NULL, AnalyticsConfiguration = NULL, NlpConfiguration = NULL, ProfileConfiguration = NULL, BackupConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFHIRDatastore",
     http_method = "POST",
@@ -76,7 +185,7 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .healthlake$create_fhir_datastore_input(DatastoreName = DatastoreName, DatastoreTypeVersion = DatastoreTypeVersion, SseConfiguration = SseConfiguration, PreloadDataConfig = PreloadDataConfig, ClientToken = ClientToken, Tags = Tags, IdentityProviderConfiguration = IdentityProviderConfiguration)
+  input <- .healthlake$create_fhir_datastore_input(DatastoreName = DatastoreName, DatastoreTypeVersion = DatastoreTypeVersion, SseConfiguration = SseConfiguration, PreloadDataConfig = PreloadDataConfig, ClientToken = ClientToken, Tags = Tags, IdentityProviderConfiguration = IdentityProviderConfiguration, AnalyticsConfiguration = AnalyticsConfiguration, NlpConfiguration = NlpConfiguration, ProfileConfiguration = ProfileConfiguration, BackupConfiguration = BackupConfiguration)
   output <- .healthlake$create_fhir_datastore_output()
   config <- get_config()
   svc <- .healthlake$service(config, op)
@@ -86,6 +195,60 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
 }
 .healthlake$operations$create_fhir_datastore <- healthlake_create_fhir_datastore
 
+#' Deletes a data transformation profile and all its versions, including
+#' the DRAFT and all published versions
+#'
+#' @description
+#' Deletes a data transformation profile and all its versions, including the DRAFT and all published versions.
+#'
+#' @usage
+#' healthlake_delete_data_transformation_profile(ProfileId)
+#'
+#' @param ProfileId &#91;required&#93; The unique identifier of the profile to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileId = "string",
+#'   ProfileName = "string",
+#'   DeletionTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_data_transformation_profile(
+#'   ProfileId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_delete_data_transformation_profile
+#'
+#' @aliases healthlake_delete_data_transformation_profile
+healthlake_delete_data_transformation_profile <- function(ProfileId) {
+  op <- new_operation(
+    name = "DeleteDataTransformationProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$delete_data_transformation_profile_input(ProfileId = ProfileId)
+  output <- .healthlake$delete_data_transformation_profile_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$delete_data_transformation_profile <- healthlake_delete_data_transformation_profile
+
 #' Delete a FHIR-enabled data store
 #'
 #' @description
@@ -94,7 +257,7 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
 #' @usage
 #' healthlake_delete_fhir_datastore(DatastoreId)
 #'
-#' @param DatastoreId &#91;required&#93; The AWS-generated identifier for the data store to be deleted.
+#' @param DatastoreId &#91;required&#93; The Amazon Web Services-generated identifier for the data store to be deleted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -102,7 +265,7 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
 #' list(
 #'   DatastoreId = "string",
 #'   DatastoreArn = "string",
-#'   DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED",
+#'   DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED",
 #'   DatastoreEndpoint = "string"
 #' )
 #' ```
@@ -138,6 +301,89 @@ healthlake_delete_fhir_datastore <- function(DatastoreId) {
 }
 .healthlake$operations$delete_fhir_datastore <- healthlake_delete_fhir_datastore
 
+#' Describes a data transformation job, including its current status,
+#' configuration, and progress information
+#'
+#' @description
+#' Describes a data transformation job, including its current status, configuration, and progress information.
+#'
+#' @usage
+#' healthlake_describe_data_transformation_job(JobId)
+#'
+#' @param JobId &#91;required&#93; The unique identifier of the data transformation job to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransformationJobProperties = list(
+#'     JobId = "string",
+#'     JobStatus = "SUBMITTED"|"QUEUED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"FAILED",
+#'     InputDataConfig = list(
+#'       S3Uri = "string",
+#'       SourceFormat = "CCDA"|"CSV"
+#'     ),
+#'     OutputDataConfig = list(
+#'       S3Configuration = list(
+#'         S3Uri = "string",
+#'         KmsKeyId = "string"
+#'       )
+#'     ),
+#'     DataAccessRoleArn = "string",
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     JobName = "string",
+#'     ProfileId = "string",
+#'     ProfileName = "string",
+#'     ProfileVersion = 123,
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DriftDetectionEnabled = TRUE|FALSE,
+#'     ProvenanceEnabled = TRUE|FALSE,
+#'     Message = "string",
+#'     JobProgressReport = list(
+#'       TotalFilesScanned = 123,
+#'       TotalFilesConverted = 123,
+#'       TotalFilesFailed = 123,
+#'       TotalResourcesGenerated = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_data_transformation_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_describe_data_transformation_job
+#'
+#' @aliases healthlake_describe_data_transformation_job
+healthlake_describe_data_transformation_job <- function(JobId) {
+  op <- new_operation(
+    name = "DescribeDataTransformationJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$describe_data_transformation_job_input(JobId = JobId)
+  output <- .healthlake$describe_data_transformation_job_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$describe_data_transformation_job <- healthlake_describe_data_transformation_job
+
 #' Get properties for a FHIR-enabled data store
 #'
 #' @description
@@ -156,7 +402,7 @@ healthlake_delete_fhir_datastore <- function(DatastoreId) {
 #'     DatastoreId = "string",
 #'     DatastoreArn = "string",
 #'     DatastoreName = "string",
-#'     DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED",
+#'     DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED",
 #'     CreatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -180,6 +426,37 @@ healthlake_delete_fhir_datastore <- function(DatastoreId) {
 #'     ErrorCause = list(
 #'       ErrorMessage = "string",
 #'       ErrorCategory = "RETRYABLE_ERROR"|"NON_RETRYABLE_ERROR"
+#'     ),
+#'     NlpConfiguration = list(
+#'       Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
+#'     ),
+#'     AnalyticsConfiguration = list(
+#'       Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"|"PAUSING"|"PAUSED"
+#'     ),
+#'     ProfileConfiguration = list(
+#'       DefaultProfiles = list(
+#'         "string"
+#'       )
+#'     ),
+#'     BackupStatusInfo = list(
+#'       Configuration = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         BackupType = "CONTINUOUS",
+#'         RetentionPeriodInDays = 123,
+#'         BackupTagsEnabled = TRUE|FALSE
+#'       ),
+#'       BackupEnabledAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EarliestRestorePoint = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LatestRestorePoint = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ScheduledPermanentDeletionTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -330,7 +607,16 @@ healthlake_describe_fhir_export_job <- function(DatastoreId, JobId) {
 #'       TotalNumberOfResourcesImported = 123,
 #'       TotalNumberOfResourcesWithCustomerError = 123,
 #'       TotalNumberOfFilesReadWithCustomerError = 123,
-#'       Throughput = 123.0
+#'       TotalNumberOfScannedNonFhirFiles = 123,
+#'       TotalSizeOfScannedNonFhirFilesInMB = 123.0,
+#'       TotalNumberOfImportedNonFhirFiles = 123,
+#'       TotalNumberOfNonFhirResourcesScanned = 123,
+#'       TotalNumberOfNonFhirResourcesImported = 123,
+#'       TotalNumberOfNonFhirResourcesWithCustomerError = 123,
+#'       TotalNumberOfNonFhirFilesReadWithCustomerError = 123,
+#'       Throughput = 123.0,
+#'       TotalFilesConverted = 123,
+#'       TotalResourcesGenerated = 123
 #'     ),
 #'     DataAccessRoleArn = "string",
 #'     Message = "string",
@@ -371,6 +657,284 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
 }
 .healthlake$operations$describe_fhir_import_job <- healthlake_describe_fhir_import_job
 
+#' Retrieves a data transformation profile's metadata and profile content
+#' at a specific version
+#'
+#' @description
+#' Retrieves a data transformation profile's metadata and profile content at a specific version. Specify version 0 to retrieve the DRAFT, a version number between 1 and 99 to retrieve a specific published version, or omit the version to retrieve the latest published version.
+#'
+#' @usage
+#' healthlake_get_data_transformation_profile(ProfileId, ProfileVersion)
+#'
+#' @param ProfileId &#91;required&#93; The unique identifier of the profile to retrieve.
+#' @param ProfileVersion The version number to retrieve. Specify 0 to retrieve the DRAFT version. If you omit this parameter, the service returns the latest published version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileId = "string",
+#'   Version = 123,
+#'   SourceFormat = "CCDA"|"CSV",
+#'   TargetFormat = "FHIR_R4",
+#'   ProfileMapping = list(
+#'     "string"
+#'   ),
+#'   ProfileName = "string",
+#'   ProfileDescription = "string",
+#'   ChangeDescription = "string",
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_data_transformation_profile(
+#'   ProfileId = "string",
+#'   ProfileVersion = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_get_data_transformation_profile
+#'
+#' @aliases healthlake_get_data_transformation_profile
+healthlake_get_data_transformation_profile <- function(ProfileId, ProfileVersion = NULL) {
+  op <- new_operation(
+    name = "GetDataTransformationProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$get_data_transformation_profile_input(ProfileId = ProfileId, ProfileVersion = ProfileVersion)
+  output <- .healthlake$get_data_transformation_profile_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$get_data_transformation_profile <- healthlake_get_data_transformation_profile
+
+#' Lists data transformation jobs for your Amazon Web Services account
+#'
+#' @description
+#' Lists data transformation jobs for your Amazon Web Services account. Results can be filtered by status, job name, and submit time window. Results are paginated. Use the `NextToken` parameter to retrieve additional results.
+#'
+#' @usage
+#' healthlake_list_data_transformation_jobs(MaxResults, NextToken,
+#'   JobStatus, JobName, SubmittedAfter, SubmittedBefore)
+#'
+#' @param MaxResults The maximum number of jobs to return per page. If you don't specify a value, the service returns up to 100 results.
+#' @param NextToken The pagination token from a previous response. Pass this value to retrieve the next page of results.
+#' @param JobStatus Filters the results to include only jobs with the specified status.
+#' @param JobName Filters the results to include only jobs with the specified name.
+#' @param SubmittedAfter Filters the results to include only jobs submitted at or after this timestamp.
+#' @param SubmittedBefore Filters the results to include only jobs submitted at or before this timestamp.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       JobId = "string",
+#'       JobStatus = "SUBMITTED"|"QUEUED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"FAILED",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       JobName = "string",
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceFormat = "CCDA"|"CSV"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_data_transformation_jobs(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   JobStatus = "SUBMITTED"|"QUEUED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"FAILED",
+#'   JobName = "string",
+#'   SubmittedAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SubmittedBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_list_data_transformation_jobs
+#'
+#' @aliases healthlake_list_data_transformation_jobs
+healthlake_list_data_transformation_jobs <- function(MaxResults = NULL, NextToken = NULL, JobStatus = NULL, JobName = NULL, SubmittedAfter = NULL, SubmittedBefore = NULL) {
+  op <- new_operation(
+    name = "ListDataTransformationJobs",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .healthlake$list_data_transformation_jobs_input(MaxResults = MaxResults, NextToken = NextToken, JobStatus = JobStatus, JobName = JobName, SubmittedAfter = SubmittedAfter, SubmittedBefore = SubmittedBefore)
+  output <- .healthlake$list_data_transformation_jobs_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$list_data_transformation_jobs <- healthlake_list_data_transformation_jobs
+
+#' Lists all versions of a specific data transformation profile (DRAFT and
+#' published), in reverse chronological order (newest first)
+#'
+#' @description
+#' Lists all versions of a specific data transformation profile (DRAFT and published), in reverse chronological order (newest first). Use [`get_data_transformation_profile`][healthlake_get_data_transformation_profile] to retrieve profile content. Results are paginated. Use the `NextToken` parameter to retrieve additional results.
+#'
+#' @usage
+#' healthlake_list_data_transformation_profile_versions(ProfileId,
+#'   MaxResults, NextToken)
+#'
+#' @param ProfileId &#91;required&#93; The unique identifier of the profile whose versions to list.
+#' @param MaxResults The maximum number of profile versions to return per page. If you don't specify a value, the service returns up to 100 results.
+#' @param NextToken The pagination token from a previous response. Pass this value to retrieve the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ProfileId = "string",
+#'       Version = 123,
+#'       SourceFormat = "CCDA"|"CSV",
+#'       TargetFormat = "FHIR_R4",
+#'       ProfileName = "string",
+#'       ChangeDescription = "string",
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_data_transformation_profile_versions(
+#'   ProfileId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_list_data_transformation_profile_versions
+#'
+#' @aliases healthlake_list_data_transformation_profile_versions
+healthlake_list_data_transformation_profile_versions <- function(ProfileId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListDataTransformationProfileVersions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .healthlake$list_data_transformation_profile_versions_input(ProfileId = ProfileId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .healthlake$list_data_transformation_profile_versions_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$list_data_transformation_profile_versions <- healthlake_list_data_transformation_profile_versions
+
+#' Lists all data transformation profiles in your account, returning the
+#' latest version summary for each
+#'
+#' @description
+#' Lists all data transformation profiles in your account, returning the latest version summary for each. Use [`get_data_transformation_profile`][healthlake_get_data_transformation_profile] to retrieve profile content. Results are paginated. Use the `NextToken` parameter to retrieve additional results.
+#'
+#' @usage
+#' healthlake_list_data_transformation_profiles(SourceFormat, MaxResults,
+#'   NextToken)
+#'
+#' @param SourceFormat &#91;required&#93; Filters the results by source data format.
+#' @param MaxResults The maximum number of profiles to return per page. If you don't specify a value, the service returns up to 100 results.
+#' @param NextToken The pagination token from a previous response. Pass this value to retrieve the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ProfileId = "string",
+#'       Version = 123,
+#'       SourceFormat = "CCDA"|"CSV",
+#'       TargetFormat = "FHIR_R4",
+#'       ProfileName = "string",
+#'       ProfileDescription = "string",
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_data_transformation_profiles(
+#'   SourceFormat = "CCDA"|"CSV",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_list_data_transformation_profiles
+#'
+#' @aliases healthlake_list_data_transformation_profiles
+healthlake_list_data_transformation_profiles <- function(SourceFormat, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListDataTransformationProfiles",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .healthlake$list_data_transformation_profiles_input(SourceFormat = SourceFormat, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .healthlake$list_data_transformation_profiles_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$list_data_transformation_profiles <- healthlake_list_data_transformation_profiles
+
 #' List all FHIR-enabled data stores in a user’s account, regardless of
 #' data store status
 #'
@@ -393,7 +957,7 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
 #'       DatastoreId = "string",
 #'       DatastoreArn = "string",
 #'       DatastoreName = "string",
-#'       DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED",
+#'       DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED",
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -417,6 +981,37 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
 #'       ErrorCause = list(
 #'         ErrorMessage = "string",
 #'         ErrorCategory = "RETRYABLE_ERROR"|"NON_RETRYABLE_ERROR"
+#'       ),
+#'       NlpConfiguration = list(
+#'         Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
+#'       ),
+#'       AnalyticsConfiguration = list(
+#'         Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"|"PAUSING"|"PAUSED"
+#'       ),
+#'       ProfileConfiguration = list(
+#'         DefaultProfiles = list(
+#'           "string"
+#'         )
+#'       ),
+#'       BackupStatusInfo = list(
+#'         Configuration = list(
+#'           Status = "ENABLED"|"DISABLED",
+#'           BackupType = "CONTINUOUS",
+#'           RetentionPeriodInDays = 123,
+#'           BackupTagsEnabled = TRUE|FALSE
+#'         ),
+#'         BackupEnabledAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EarliestRestorePoint = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LatestRestorePoint = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ScheduledPermanentDeletionTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -429,7 +1024,7 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
 #' svc$list_fhir_datastores(
 #'   Filter = list(
 #'     DatastoreName = "string",
-#'     DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED",
+#'     DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED",
 #'     CreatedBefore = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -604,7 +1199,16 @@ healthlake_list_fhir_export_jobs <- function(DatastoreId, NextToken = NULL, MaxR
 #'         TotalNumberOfResourcesImported = 123,
 #'         TotalNumberOfResourcesWithCustomerError = 123,
 #'         TotalNumberOfFilesReadWithCustomerError = 123,
-#'         Throughput = 123.0
+#'         TotalNumberOfScannedNonFhirFiles = 123,
+#'         TotalSizeOfScannedNonFhirFilesInMB = 123.0,
+#'         TotalNumberOfImportedNonFhirFiles = 123,
+#'         TotalNumberOfNonFhirResourcesScanned = 123,
+#'         TotalNumberOfNonFhirResourcesImported = 123,
+#'         TotalNumberOfNonFhirResourcesWithCustomerError = 123,
+#'         TotalNumberOfNonFhirFilesReadWithCustomerError = 123,
+#'         Throughput = 123.0,
+#'         TotalFilesConverted = 123,
+#'         TotalResourcesGenerated = 123
 #'       ),
 #'       DataAccessRoleArn = "string",
 #'       Message = "string",
@@ -710,6 +1314,248 @@ healthlake_list_tags_for_resource <- function(ResourceARN) {
 }
 .healthlake$operations$list_tags_for_resource <- healthlake_list_tags_for_resource
 
+#' Promotes the current DRAFT version of a data transformation profile to a
+#' new immutable published version
+#'
+#' @description
+#' Promotes the current DRAFT version of a data transformation profile to a new immutable published version. Also supports rollback by publishing from a previously published version.
+#'
+#' @usage
+#' healthlake_publish_data_transformation_profile(ProfileId, SourceFormat,
+#'   FromExistingVersion, ChangeDescription)
+#'
+#' @param ProfileId &#91;required&#93; The unique identifier of the profile to publish.
+#' @param SourceFormat &#91;required&#93; The source data format of the profile.
+#' @param FromExistingVersion The version number of a previously published version to republish as the new latest version. Use this parameter for rollback scenarios. If you omit this parameter, the service publishes the current DRAFT version.
+#' @param ChangeDescription A description of what changed or why this version is being published.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileId = "string",
+#'   Version = 123,
+#'   SourceFormat = "CCDA"|"CSV",
+#'   TargetFormat = "FHIR_R4",
+#'   ProfileName = "string",
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$publish_data_transformation_profile(
+#'   ProfileId = "string",
+#'   SourceFormat = "CCDA"|"CSV",
+#'   FromExistingVersion = 123,
+#'   ChangeDescription = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_publish_data_transformation_profile
+#'
+#' @aliases healthlake_publish_data_transformation_profile
+healthlake_publish_data_transformation_profile <- function(ProfileId, SourceFormat, FromExistingVersion = NULL, ChangeDescription = NULL) {
+  op <- new_operation(
+    name = "PublishDataTransformationProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$publish_data_transformation_profile_input(ProfileId = ProfileId, SourceFormat = SourceFormat, FromExistingVersion = FromExistingVersion, ChangeDescription = ChangeDescription)
+  output <- .healthlake$publish_data_transformation_profile_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$publish_data_transformation_profile <- healthlake_publish_data_transformation_profile
+
+#' Restore a backup-enabled data store to a point in time
+#'
+#' @description
+#' Restore a backup-enabled data store to a point in time. Creates a new data store from the backup.
+#'
+#' @usage
+#' healthlake_restore_fhir_datastore(SourceDatastoreId,
+#'   RestoreConfiguration, DatastoreName, SseConfiguration, ClientToken,
+#'   Tags, IdentityProviderConfiguration, AnalyticsConfiguration,
+#'   NlpConfiguration, ProfileConfiguration)
+#'
+#' @param SourceDatastoreId &#91;required&#93; The identifier of the source data store to restore from.
+#' @param RestoreConfiguration &#91;required&#93; The restore configuration specifying the type and parameters for the restore.
+#' @param DatastoreName The name for the restored data store.
+#' @param SseConfiguration The server-side encryption key configuration for the restored data store.
+#' @param ClientToken An optional user-provided token to ensure API idempotency of the restore.
+#' @param Tags The resource tags applied to the restored data store.
+#' @param IdentityProviderConfiguration The identity provider configuration for the restored data store.
+#' @param AnalyticsConfiguration The analytics configuration for the restored data store.
+#' @param NlpConfiguration The NLP configuration for the restored data store.
+#' @param ProfileConfiguration The profile configuration for the restored data store.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatastoreId = "string",
+#'   DatastoreArn = "string",
+#'   DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED",
+#'   DatastoreEndpoint = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$restore_fhir_datastore(
+#'   SourceDatastoreId = "string",
+#'   RestoreConfiguration = list(
+#'     ContinuousBackupRestoreConfiguration = list(
+#'       RestorePointTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   DatastoreName = "string",
+#'   SseConfiguration = list(
+#'     KmsEncryptionConfig = list(
+#'       CmkType = "CUSTOMER_MANAGED_KMS_KEY"|"AWS_OWNED_KMS_KEY",
+#'       KmsKeyId = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   IdentityProviderConfiguration = list(
+#'     AuthorizationStrategy = "SMART_ON_FHIR_V1"|"SMART_ON_FHIR"|"AWS_AUTH",
+#'     FineGrainedAuthorizationEnabled = TRUE|FALSE,
+#'     Metadata = "string",
+#'     IdpLambdaArn = "string"
+#'   ),
+#'   AnalyticsConfiguration = list(
+#'     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"|"PAUSING"|"PAUSED"
+#'   ),
+#'   NlpConfiguration = list(
+#'     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
+#'   ),
+#'   ProfileConfiguration = list(
+#'     DefaultProfiles = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_restore_fhir_datastore
+#'
+#' @aliases healthlake_restore_fhir_datastore
+healthlake_restore_fhir_datastore <- function(SourceDatastoreId, RestoreConfiguration, DatastoreName = NULL, SseConfiguration = NULL, ClientToken = NULL, Tags = NULL, IdentityProviderConfiguration = NULL, AnalyticsConfiguration = NULL, NlpConfiguration = NULL, ProfileConfiguration = NULL) {
+  op <- new_operation(
+    name = "RestoreFHIRDatastore",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$restore_fhir_datastore_input(SourceDatastoreId = SourceDatastoreId, RestoreConfiguration = RestoreConfiguration, DatastoreName = DatastoreName, SseConfiguration = SseConfiguration, ClientToken = ClientToken, Tags = Tags, IdentityProviderConfiguration = IdentityProviderConfiguration, AnalyticsConfiguration = AnalyticsConfiguration, NlpConfiguration = NlpConfiguration, ProfileConfiguration = ProfileConfiguration)
+  output <- .healthlake$restore_fhir_datastore_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$restore_fhir_datastore <- healthlake_restore_fhir_datastore
+
+#' Starts an asynchronous data transformation job that converts source
+#' files from Amazon Simple Storage Service (Amazon S3) and writes the
+#' output to Amazon S3 or HealthLake
+#'
+#' @description
+#' Starts an asynchronous data transformation job that converts source files from Amazon Simple Storage Service (Amazon S3) and writes the output to Amazon S3 or HealthLake.
+#'
+#' @usage
+#' healthlake_start_data_transformation_job(InputDataConfig,
+#'   OutputDataConfig, DataAccessRoleArn, ClientToken, JobName, ProfileId,
+#'   DriftDetectionEnabled, ProvenanceEnabled)
+#'
+#' @param InputDataConfig &#91;required&#93; The Amazon S3 location and format of the source files to transform.
+#' @param OutputDataConfig &#91;required&#93; The Amazon S3 output location and Amazon Web Services Key Management Service (Amazon Web Services KMS) encryption configuration.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services Identity and Access Management (IAM) role that HealthLake assumes to read from and write to the specified Amazon S3 locations.
+#' @param ClientToken &#91;required&#93; A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request but does not return an error.
+#' @param JobName A descriptive name for the data transformation job.
+#' @param ProfileId &#91;required&#93; The unique identifier of the data transformation profile to use for conversion.
+#' @param DriftDetectionEnabled Specifies whether drift detection is enabled for this job. When enabled, HealthLake writes a drift report to the output Amazon S3 location alongside the converted files.
+#' @param ProvenanceEnabled Specifies whether FHIR R4 Provenance resource generation is enabled for this transformation job. When provenance is enabled, the service also generates related DocumentReference and Device resources. If you don't specify a value, the default is `true`. To disable provenance output, set this parameter to `false`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"QUEUED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_data_transformation_job(
+#'   InputDataConfig = list(
+#'     S3Uri = "string",
+#'     SourceFormat = "CCDA"|"CSV"
+#'   ),
+#'   OutputDataConfig = list(
+#'     S3Configuration = list(
+#'       S3Uri = "string",
+#'       KmsKeyId = "string"
+#'     )
+#'   ),
+#'   DataAccessRoleArn = "string",
+#'   ClientToken = "string",
+#'   JobName = "string",
+#'   ProfileId = "string",
+#'   DriftDetectionEnabled = TRUE|FALSE,
+#'   ProvenanceEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_start_data_transformation_job
+#'
+#' @aliases healthlake_start_data_transformation_job
+healthlake_start_data_transformation_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, ClientToken, JobName = NULL, ProfileId, DriftDetectionEnabled = NULL, ProvenanceEnabled = NULL) {
+  op <- new_operation(
+    name = "StartDataTransformationJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$start_data_transformation_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, ClientToken = ClientToken, JobName = JobName, ProfileId = ProfileId, DriftDetectionEnabled = DriftDetectionEnabled, ProvenanceEnabled = ProvenanceEnabled)
+  output <- .healthlake$start_data_transformation_job_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$start_data_transformation_job <- healthlake_start_data_transformation_job
+
 #' Start a FHIR export job
 #'
 #' @description
@@ -783,15 +1629,20 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #' @usage
 #' healthlake_start_fhir_import_job(JobName, InputDataConfig,
 #'   JobOutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken,
-#'   ValidationLevel)
+#'   ValidationLevel, ProfileId, InputFormat, DriftDetectionEnabled,
+#'   ProvenanceEnabled)
 #'
 #' @param JobName The import job name.
 #' @param InputDataConfig &#91;required&#93; The input properties for the import job request.
 #' @param JobOutputDataConfig &#91;required&#93; The output data configuration supplied when the export job was created.
 #' @param DatastoreId &#91;required&#93; The data store identifier.
-#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) that grants access permission to AWS HealthLake.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) that grants access permission to HealthLake.
 #' @param ClientToken The optional user-provided token used for ensuring API idempotency.
 #' @param ValidationLevel The validation level of the import job.
+#' @param ProfileId The data transformation profile identifier to use for the import job.
+#' @param InputFormat The input format of the data to be imported.
+#' @param DriftDetectionEnabled Specifies whether to enable drift detection for the import job.
+#' @param ProvenanceEnabled Specifies whether to enable provenance for the import job.
 #'
 #' @return
 #' A list with the following syntax:
@@ -819,7 +1670,11 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #'   DatastoreId = "string",
 #'   DataAccessRoleArn = "string",
 #'   ClientToken = "string",
-#'   ValidationLevel = "strict"|"structure-only"|"minimal"
+#'   ValidationLevel = "strict"|"structure-only"|"minimal",
+#'   ProfileId = "string",
+#'   InputFormat = "string",
+#'   DriftDetectionEnabled = TRUE|FALSE,
+#'   ProvenanceEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -828,7 +1683,7 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #' @rdname healthlake_start_fhir_import_job
 #'
 #' @aliases healthlake_start_fhir_import_job
-healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, JobOutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken = NULL, ValidationLevel = NULL) {
+healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, JobOutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken = NULL, ValidationLevel = NULL, ProfileId = NULL, InputFormat = NULL, DriftDetectionEnabled = NULL, ProvenanceEnabled = NULL) {
   op <- new_operation(
     name = "StartFHIRImportJob",
     http_method = "POST",
@@ -837,7 +1692,7 @@ healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, Jo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .healthlake$start_fhir_import_job_input(JobName = JobName, InputDataConfig = InputDataConfig, JobOutputDataConfig = JobOutputDataConfig, DatastoreId = DatastoreId, DataAccessRoleArn = DataAccessRoleArn, ClientToken = ClientToken, ValidationLevel = ValidationLevel)
+  input <- .healthlake$start_fhir_import_job_input(JobName = JobName, InputDataConfig = InputDataConfig, JobOutputDataConfig = JobOutputDataConfig, DatastoreId = DatastoreId, DataAccessRoleArn = DataAccessRoleArn, ClientToken = ClientToken, ValidationLevel = ValidationLevel, ProfileId = ProfileId, InputFormat = InputFormat, DriftDetectionEnabled = DriftDetectionEnabled, ProvenanceEnabled = ProvenanceEnabled)
   output <- .healthlake$start_fhir_import_job_output()
   config <- get_config()
   svc <- .healthlake$service(config, op)
@@ -945,3 +1800,274 @@ healthlake_untag_resource <- function(ResourceARN, TagKeys) {
   return(response)
 }
 .healthlake$operations$untag_resource <- healthlake_untag_resource
+
+#' Updates the DRAFT version (version 0) of a data transformation profile
+#' with new profile content
+#'
+#' @description
+#' Updates the DRAFT version (version 0) of a data transformation profile with new profile content. The update replaces all existing DRAFT content.
+#'
+#' @usage
+#' healthlake_update_data_transformation_profile(ProfileId, ProfileMapping,
+#'   ChangeDescription)
+#'
+#' @param ProfileId &#91;required&#93; The unique identifier of the profile to update.
+#' @param ProfileMapping &#91;required&#93; The new profile content for the DRAFT version. This is a full replacement of all profile files.
+#' @param ChangeDescription A description of what changed in this update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileId = "string",
+#'   SourceFormat = "CCDA"|"CSV",
+#'   TargetFormat = "FHIR_R4",
+#'   ProfileName = "string",
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_data_transformation_profile(
+#'   ProfileId = "string",
+#'   ProfileMapping = list(
+#'     "string"
+#'   ),
+#'   ChangeDescription = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_update_data_transformation_profile
+#'
+#' @aliases healthlake_update_data_transformation_profile
+healthlake_update_data_transformation_profile <- function(ProfileId, ProfileMapping, ChangeDescription = NULL) {
+  op <- new_operation(
+    name = "UpdateDataTransformationProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$update_data_transformation_profile_input(ProfileId = ProfileId, ProfileMapping = ProfileMapping, ChangeDescription = ChangeDescription)
+  output <- .healthlake$update_data_transformation_profile_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$update_data_transformation_profile <- healthlake_update_data_transformation_profile
+
+#' Update the properties of a FHIR-enabled data store
+#'
+#' @description
+#' Update the properties of a FHIR-enabled data store.
+#'
+#' @usage
+#' healthlake_update_fhir_datastore(DatastoreId, DatastoreName,
+#'   AnalyticsConfiguration, NlpConfiguration, ProfileConfiguration,
+#'   IdentityProviderConfiguration, BackupConfiguration)
+#'
+#' @param DatastoreId &#91;required&#93; The data store identifier.
+#' @param DatastoreName The data store name.
+#' @param AnalyticsConfiguration The analytics configuration for the data store.
+#' @param NlpConfiguration The natural language processing (NLP) configuration for the data store.
+#' @param ProfileConfiguration The profile configuration for the data store.
+#' @param IdentityProviderConfiguration The identity provider configuration for the data store.
+#' @param BackupConfiguration The backup configuration for the data store.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatastoreProperties = list(
+#'     DatastoreId = "string",
+#'     DatastoreArn = "string",
+#'     DatastoreName = "string",
+#'     DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DatastoreTypeVersion = "R4",
+#'     DatastoreEndpoint = "string",
+#'     SseConfiguration = list(
+#'       KmsEncryptionConfig = list(
+#'         CmkType = "CUSTOMER_MANAGED_KMS_KEY"|"AWS_OWNED_KMS_KEY",
+#'         KmsKeyId = "string"
+#'       )
+#'     ),
+#'     PreloadDataConfig = list(
+#'       PreloadDataType = "SYNTHEA"
+#'     ),
+#'     IdentityProviderConfiguration = list(
+#'       AuthorizationStrategy = "SMART_ON_FHIR_V1"|"SMART_ON_FHIR"|"AWS_AUTH",
+#'       FineGrainedAuthorizationEnabled = TRUE|FALSE,
+#'       Metadata = "string",
+#'       IdpLambdaArn = "string"
+#'     ),
+#'     ErrorCause = list(
+#'       ErrorMessage = "string",
+#'       ErrorCategory = "RETRYABLE_ERROR"|"NON_RETRYABLE_ERROR"
+#'     ),
+#'     NlpConfiguration = list(
+#'       Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
+#'     ),
+#'     AnalyticsConfiguration = list(
+#'       Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"|"PAUSING"|"PAUSED"
+#'     ),
+#'     ProfileConfiguration = list(
+#'       DefaultProfiles = list(
+#'         "string"
+#'       )
+#'     ),
+#'     BackupStatusInfo = list(
+#'       Configuration = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         BackupType = "CONTINUOUS",
+#'         RetentionPeriodInDays = 123,
+#'         BackupTagsEnabled = TRUE|FALSE
+#'       ),
+#'       BackupEnabledAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EarliestRestorePoint = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LatestRestorePoint = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ScheduledPermanentDeletionTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_fhir_datastore(
+#'   DatastoreId = "string",
+#'   DatastoreName = "string",
+#'   AnalyticsConfiguration = list(
+#'     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"|"PAUSING"|"PAUSED"
+#'   ),
+#'   NlpConfiguration = list(
+#'     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
+#'   ),
+#'   ProfileConfiguration = list(
+#'     DefaultProfiles = list(
+#'       "string"
+#'     )
+#'   ),
+#'   IdentityProviderConfiguration = list(
+#'     AuthorizationStrategy = "SMART_ON_FHIR_V1"|"SMART_ON_FHIR"|"AWS_AUTH",
+#'     FineGrainedAuthorizationEnabled = TRUE|FALSE,
+#'     Metadata = "string",
+#'     IdpLambdaArn = "string"
+#'   ),
+#'   BackupConfiguration = list(
+#'     Status = "ENABLED"|"DISABLED",
+#'     BackupType = "CONTINUOUS",
+#'     RetentionPeriodInDays = 123,
+#'     BackupTagsEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_update_fhir_datastore
+#'
+#' @aliases healthlake_update_fhir_datastore
+healthlake_update_fhir_datastore <- function(DatastoreId, DatastoreName = NULL, AnalyticsConfiguration = NULL, NlpConfiguration = NULL, ProfileConfiguration = NULL, IdentityProviderConfiguration = NULL, BackupConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateFHIRDatastore",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$update_fhir_datastore_input(DatastoreId = DatastoreId, DatastoreName = DatastoreName, AnalyticsConfiguration = AnalyticsConfiguration, NlpConfiguration = NlpConfiguration, ProfileConfiguration = ProfileConfiguration, IdentityProviderConfiguration = IdentityProviderConfiguration, BackupConfiguration = BackupConfiguration)
+  output <- .healthlake$update_fhir_datastore_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$update_fhir_datastore <- healthlake_update_fhir_datastore
+
+#' Updates a data transformation profile using chat-based interaction with
+#' an agent
+#'
+#' @description
+#' Updates a data transformation profile using chat-based interaction with an agent. Supports multi-turn conversations for iteratively customizing profiles.
+#'
+#' @usage
+#' healthlake_update_profile_with_agent(ProfileId, SourceFormat,
+#'   InputMessage, ConversationId)
+#'
+#' @param ProfileId &#91;required&#93; The unique identifier of the profile to update via the agent.
+#' @param SourceFormat &#91;required&#93; The source data format for the transformation.
+#' @param InputMessage &#91;required&#93; The message to send to the agent.
+#' @param ConversationId The conversation identifier for multi-turn interactions. Omit to start a new conversation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AgentResponse = list(
+#'     Body = "string",
+#'     Type = "INITIAL_GREETING"|"normal"|"confirmation"|"complete"|"error"|"options"|"choices",
+#'     OptionsList = list(
+#'       "string"
+#'     )
+#'   ),
+#'   ConversationId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_profile_with_agent(
+#'   ProfileId = "string",
+#'   SourceFormat = "CCDA"|"CSV",
+#'   InputMessage = list(
+#'     Body = "string",
+#'     Type = "normal"|"confirmation_response"
+#'   ),
+#'   ConversationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_update_profile_with_agent
+#'
+#' @aliases healthlake_update_profile_with_agent
+healthlake_update_profile_with_agent <- function(ProfileId, SourceFormat, InputMessage, ConversationId = NULL) {
+  op <- new_operation(
+    name = "UpdateProfileWithAgent",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "datatransformation.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .healthlake$update_profile_with_agent_input(ProfileId = ProfileId, SourceFormat = SourceFormat, InputMessage = InputMessage, ConversationId = ConversationId)
+  output <- .healthlake$update_profile_with_agent_output()
+  config <- get_config()
+  svc <- .healthlake$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$update_profile_with_agent <- healthlake_update_profile_with_agent

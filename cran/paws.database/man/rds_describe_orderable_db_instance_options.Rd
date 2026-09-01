@@ -28,6 +28,7 @@ Valid Values:
 \item \code{custom-oracle-se2}
 \item \code{custom-oracle-se2-cdb}
 \item \code{db2-ae}
+\item \code{db2-ce}
 \item \code{db2-se}
 \item \code{mariadb}
 \item \code{mysql}

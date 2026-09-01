@@ -26,7 +26,9 @@ omics_start_run(
   workflowOwnerId = NULL,
   workflowVersionName = NULL,
   networkingMode = NULL,
-  configurationName = NULL
+  scratchStorageMode = NULL,
+  configurationName = NULL,
+  engineSettings = NULL
 )
 }
 \arguments{
@@ -74,7 +76,11 @@ For more information about retention mode, see \href{https://docs.aws.amazon.com
 
 \item{networkingMode}{Optional configuration for run networking behavior. If not specified, this will default to RESTRICTED.}
 
+\item{scratchStorageMode}{Optional configuration for enabling scratch ephemeral storage mounted at /tmp. If not specified, this will default to SHARED. This configuration is applicable only for CPU tasks. For tasks using GPUs, scratch storage is always LOCAL.}
+
 \item{configurationName}{Optional configuration name to use for the workflow run.}
+
+\item{engineSettings}{Engine-specific settings for the workflow run. Use this field to specify configuration options that are specific to the workflow engine (for example, Nextflow profiles).}
 }
 \description{
 Starts a new run and returns details about the run, or duplicates an existing run. A run is a single invocation of a workflow. If you provide request IDs, Amazon Web Services HealthOmics identifies duplicate requests and starts the run only once. Monitor the progress of the run by calling the \code{\link[=omics_get_run]{get_run}} API operation.

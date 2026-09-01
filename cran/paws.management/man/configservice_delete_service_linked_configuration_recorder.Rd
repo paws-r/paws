@@ -4,10 +4,15 @@
 \alias{configservice_delete_service_linked_configuration_recorder}
 \title{Deletes an existing service-linked configuration recorder}
 \usage{
-configservice_delete_service_linked_configuration_recorder(ServicePrincipal)
+configservice_delete_service_linked_configuration_recorder(
+  ServicePrincipal = NULL,
+  Arn = NULL
+)
 }
 \arguments{
-\item{ServicePrincipal}{[required] The service principal of the Amazon Web Services service for the service-linked configuration recorder that you want to delete.}
+\item{ServicePrincipal}{The service principal of the Amazon Web Services service for the service-linked configuration recorder that you want to delete. This field is only supported for Amazon Web Services service principals. For third-party service-linked configuration recorders, use \code{Arn} instead.}
+
+\item{Arn}{The Amazon Resource Name (ARN) of the service-linked configuration recorder that you want to delete. For third-party service-linked configuration recorders, you must use \code{Arn}. You must specify exactly one of \code{Arn} or \code{ServicePrincipal}.}
 }
 \description{
 Deletes an existing service-linked configuration recorder.

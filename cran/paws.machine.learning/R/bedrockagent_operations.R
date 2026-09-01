@@ -248,6 +248,8 @@ bedrockagent_create_agent_alias <- function(agentId, agentAliasName, clientToken
 #' -   DELETE: Deletes all data from your data source that’s converted into vector embeddings upon deletion of a knowledge base or data source resource. Note that the **vector store itself is not deleted**, only the data. This flag is ignored if an Amazon Web Services account is deleted.
 #' 
 #' -   RETAIN: Retains all data from your data source that’s converted into vector embeddings upon deletion of a knowledge base or data source resource. Note that the **vector store itself is not deleted** if you delete a knowledge base or data source resource.
+#' 
+#' For managed knowledge bases, the only supported option is `DELETE`, which is also the default.
 #' @param serverSideEncryptionConfiguration Contains details about the server-side encryption for the data source.
 #' @param vectorIngestionConfiguration Contains details about how to ingest the documents in the data source.
 #'
@@ -849,6 +851,38 @@ bedrockagent_delete_prompt <- function(promptIdentifier, promptVersion = NULL) {
 }
 .bedrockagent$operations$delete_prompt <- bedrockagent_delete_prompt
 
+#' Removes the resource policy associated with a knowledge base
+#'
+#' @description
+#' Removes the resource policy associated with a knowledge base. After deletion, other AWS accounts can no longer access the knowledge base using cross-account permissions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagent_delete_resource_policy/](https://www.paws-r-sdk.com/docs/bedrockagent_delete_resource_policy/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the knowledge base to remove the resource policy from.
+#' @param expectedRevisionId The expected revision identifier of the resource policy. Use this to prevent conflicts when multiple users update the same policy concurrently.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagent_delete_resource_policy
+bedrockagent_delete_resource_policy <- function(resourceArn, expectedRevisionId = NULL) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "DELETE",
+    http_path = "/resourcepolicy/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagent$delete_resource_policy_input(resourceArn = resourceArn, expectedRevisionId = expectedRevisionId)
+  output <- .bedrockagent$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .bedrockagent$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagent$operations$delete_resource_policy <- bedrockagent_delete_resource_policy
+
 #' Disassociates an agent collaborator
 #'
 #' @description
@@ -1149,11 +1183,12 @@ bedrockagent_get_data_source <- function(knowledgeBaseId, dataSourceId) {
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_get_flow/](https://www.paws-r-sdk.com/docs/bedrockagent_get_flow/) for full documentation.
 #'
 #' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
+#' @param includedData Controls the scope of data returned. Set to `METADATA_ONLY` to return only resource metadata. Set to `ALL_DATA` or omit this field to return the full response.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_get_flow
-bedrockagent_get_flow <- function(flowIdentifier) {
+bedrockagent_get_flow <- function(flowIdentifier, includedData = NULL) {
   op <- new_operation(
     name = "GetFlow",
     http_method = "GET",
@@ -1162,7 +1197,7 @@ bedrockagent_get_flow <- function(flowIdentifier) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_flow_input(flowIdentifier = flowIdentifier)
+  input <- .bedrockagent$get_flow_input(flowIdentifier = flowIdentifier, includedData = includedData)
   output <- .bedrockagent$get_flow_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -1213,11 +1248,12 @@ bedrockagent_get_flow_alias <- function(flowIdentifier, aliasIdentifier) {
 #'
 #' @param flowIdentifier &#91;required&#93; The unique identifier of the flow for which to get information.
 #' @param flowVersion &#91;required&#93; The version of the flow for which to get information.
+#' @param includedData Controls the scope of data returned. Set to `METADATA_ONLY` to return only resource metadata. Set to `ALL_DATA` or omit this field to return the full response.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_get_flow_version
-bedrockagent_get_flow_version <- function(flowIdentifier, flowVersion) {
+bedrockagent_get_flow_version <- function(flowIdentifier, flowVersion, includedData = NULL) {
   op <- new_operation(
     name = "GetFlowVersion",
     http_method = "GET",
@@ -1226,7 +1262,7 @@ bedrockagent_get_flow_version <- function(flowIdentifier, flowVersion) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_flow_version_input(flowIdentifier = flowIdentifier, flowVersion = flowVersion)
+  input <- .bedrockagent$get_flow_version_input(flowIdentifier = flowIdentifier, flowVersion = flowVersion, includedData = includedData)
   output <- .bedrockagent$get_flow_version_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -1345,11 +1381,12 @@ bedrockagent_get_knowledge_base_documents <- function(knowledgeBaseId, dataSourc
 #'
 #' @param promptIdentifier &#91;required&#93; The unique identifier of the prompt.
 #' @param promptVersion The version of the prompt about which you want to retrieve information. Omit this field to return information about the working draft of the prompt.
+#' @param includedData Controls the scope of data returned. Set to `METADATA_ONLY` to return only resource metadata. Set to `ALL_DATA` or omit this field to return the full response.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_get_prompt
-bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL) {
+bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL, includedData = NULL) {
   op <- new_operation(
     name = "GetPrompt",
     http_method = "GET",
@@ -1358,7 +1395,7 @@ bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_prompt_input(promptIdentifier = promptIdentifier, promptVersion = promptVersion)
+  input <- .bedrockagent$get_prompt_input(promptIdentifier = promptIdentifier, promptVersion = promptVersion, includedData = includedData)
   output <- .bedrockagent$get_prompt_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -1367,6 +1404,37 @@ bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL) {
   return(response)
 }
 .bedrockagent$operations$get_prompt <- bedrockagent_get_prompt
+
+#' Retrieves the resource policy associated with a knowledge base
+#'
+#' @description
+#' Retrieves the resource policy associated with a knowledge base.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagent_get_resource_policy/](https://www.paws-r-sdk.com/docs/bedrockagent_get_resource_policy/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the knowledge base to retrieve the resource policy for.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagent_get_resource_policy
+bedrockagent_get_resource_policy <- function(resourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "GET",
+    http_path = "/resourcepolicy/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagent$get_resource_policy_input(resourceArn = resourceArn)
+  output <- .bedrockagent$get_resource_policy_output()
+  config <- get_config()
+  svc <- .bedrockagent$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagent$operations$get_resource_policy <- bedrockagent_get_resource_policy
 
 #' Ingests documents directly into the knowledge base that is connected to
 #' the data source
@@ -1970,6 +2038,39 @@ bedrockagent_prepare_flow <- function(flowIdentifier) {
 }
 .bedrockagent$operations$prepare_flow <- bedrockagent_prepare_flow
 
+#' Associates a resource policy with a knowledge base
+#'
+#' @description
+#' Associates a resource policy with a knowledge base. A resource policy allows other AWS accounts to access the knowledge base. For more information, see [Cross-account access for knowledge bases](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-managed-cross-account.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagent_put_resource_policy/](https://www.paws-r-sdk.com/docs/bedrockagent_put_resource_policy/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the knowledge base to attach the resource policy to.
+#' @param policy &#91;required&#93; The JSON-formatted resource policy to associate with the knowledge base.
+#' @param expectedRevisionId The expected revision identifier of the resource policy. Use this to prevent conflicts when multiple users update the same policy concurrently. Specify the `revisionId` from the most recent [`get_resource_policy`][bedrockagent_get_resource_policy] or [`put_resource_policy`][bedrockagent_put_resource_policy] response.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagent_put_resource_policy
+bedrockagent_put_resource_policy <- function(resourceArn, policy, expectedRevisionId = NULL) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "PUT",
+    http_path = "/resourcepolicy/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagent$put_resource_policy_input(resourceArn = resourceArn, policy = policy, expectedRevisionId = expectedRevisionId)
+  output <- .bedrockagent$put_resource_policy_output()
+  config <- get_config()
+  svc <- .bedrockagent$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagent$operations$put_resource_policy <- bedrockagent_put_resource_policy
+
 #' Begins a data ingestion job
 #'
 #' @description
@@ -2040,7 +2141,7 @@ bedrockagent_stop_ingestion_job <- function(knowledgeBaseId, dataSourceId, inges
 #' Associate tags with a resource
 #'
 #' @description
-#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the Amazon Bedrock User Guide.
+#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=awsomedayonlinehk) in the Amazon Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_tag_resource/](https://www.paws-r-sdk.com/docs/bedrockagent_tag_resource/) for full documentation.
 #'

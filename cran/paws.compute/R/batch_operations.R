@@ -77,11 +77,12 @@ batch_cancel_job <- function(jobId, reason) {
 #' 
 #' To create a compute environment that uses EKS resources, the caller must have permissions to call `eks:DescribeCluster`.
 #' @param context Reserved.
+#' @param ecsSettings The Amazon ECS settings for the compute environment. These settings control CloudWatch Container Insights collection for the compute environment.
 #'
 #' @keywords internal
 #'
 #' @rdname batch_create_compute_environment
-batch_create_compute_environment <- function(computeEnvironmentName, type, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, tags = NULL, eksConfiguration = NULL, context = NULL) {
+batch_create_compute_environment <- function(computeEnvironmentName, type, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, tags = NULL, eksConfiguration = NULL, context = NULL, ecsSettings = NULL) {
   op <- new_operation(
     name = "CreateComputeEnvironment",
     http_method = "POST",
@@ -90,7 +91,7 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .batch$create_compute_environment_input(computeEnvironmentName = computeEnvironmentName, type = type, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, tags = tags, eksConfiguration = eksConfiguration, context = context)
+  input <- .batch$create_compute_environment_input(computeEnvironmentName = computeEnvironmentName, type = type, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, tags = tags, eksConfiguration = eksConfiguration, context = context, ecsSettings = ecsSettings)
   output <- .batch$create_compute_environment_output()
   config <- get_config()
   svc <- .batch$service(config, op)
@@ -1189,7 +1190,9 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' If the job runs on Amazon EKS resources, then you must not specify `propagateTags`.
 #' @param timeout The timeout configuration for jobs that are submitted with this job definition, after which Batch terminates your jobs if they have not finished. If a job is terminated due to a timeout, it isn't retried. The minimum value for the timeout is 60 seconds. Any timeout configuration that's specified during a [`submit_job`][batch_submit_job] operation overrides the timeout configuration defined here. For more information, see [Job Timeouts](https://docs.aws.amazon.com/batch/latest/userguide/job_timeouts.html) in the *Batch User Guide*.
 #' @param tags The tags that you apply to the job definition to help you categorize and organize your resources. Each tag consists of a key and an optional value. For more information, see [Tagging Amazon Web Services Resources](https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html) in *Batch User Guide*.
-#' @param platformCapabilities The platform capabilities required by the job definition. If no value is specified, it defaults to `EC2`. To run the job on Fargate resources, specify `FARGATE`.
+#' @param platformCapabilities The platform capabilities required by the job definition. If no value is specified, it defaults to `EC2`. To run the job on Fargate resources, specify `FARGATE`. To run the job on Amazon ECS Managed Instances, specify `MANAGED_INSTANCES`.
+#' 
+#' Jobs with the `MANAGED_INSTANCES` platform capability must use `ecsProperties` (not `containerProperties`) and do not support multi-node parallel jobs.
 #' 
 #' If the job runs on Amazon EKS resources, then you must not specify `platformCapabilities`.
 #' @param eksProperties An object with properties that are specific to Amazon EKS-based jobs. This must not be specified for Amazon ECS based job definitions.
@@ -1474,11 +1477,12 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' Depending on how you created your Batch service role, its ARN might contain the `service-role` path prefix. When you only specify the name of the service role, Batch assumes that your ARN doesn't use the `service-role` path prefix. Because of this, we recommend that you specify the full ARN of your service role when you create compute environments.
 #' @param updatePolicy Specifies the updated infrastructure update policy for the compute environment. For more information about infrastructure updates, see [Updating compute environments](https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html) in the *Batch User Guide*.
 #' @param context Reserved.
+#' @param ecsSettings The Amazon ECS settings for the compute environment. These settings control CloudWatch Container Insights collection for the compute environment.
 #'
 #' @keywords internal
 #'
 #' @rdname batch_update_compute_environment
-batch_update_compute_environment <- function(computeEnvironment, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, updatePolicy = NULL, context = NULL) {
+batch_update_compute_environment <- function(computeEnvironment, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, updatePolicy = NULL, context = NULL, ecsSettings = NULL) {
   op <- new_operation(
     name = "UpdateComputeEnvironment",
     http_method = "POST",
@@ -1487,7 +1491,7 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, u
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .batch$update_compute_environment_input(computeEnvironment = computeEnvironment, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, updatePolicy = updatePolicy, context = context)
+  input <- .batch$update_compute_environment_input(computeEnvironment = computeEnvironment, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, updatePolicy = updatePolicy, context = context, ecsSettings = ecsSettings)
   output <- .batch$update_compute_environment_output()
   config <- get_config()
   svc <- .batch$service(config, op)

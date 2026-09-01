@@ -37,6 +37,45 @@ kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL
 }
 .kinesis$operations$add_tags_to_stream <- kinesis_add_tags_to_stream
 
+#' Creates a channel that delivers records from a Kinesis data stream to a
+#' destination
+#'
+#' @description
+#' Creates a channel that delivers records from a Kinesis data stream to a destination. A channel reads records from the specified stream and writes them to streaming tables on Apache Iceberg (Amazon S3 Tables) or to a general purpose Amazon S3 bucket.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_create_channel/](https://www.paws-r-sdk.com/docs/kinesis_create_channel/) for full documentation.
+#'
+#' @param ChannelName &#91;required&#93; The name of the channel. The name is unique within your Amazon Web Services account and Amazon Web Services Region.
+#' @param ServiceExecutionRoleARN &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that Amazon Kinesis Data Streams assumes to write records to the destination.
+#' @param StreamConfigurationList &#91;required&#93; The source stream configuration for the channel. Currently, one stream is supported per channel.
+#' @param S3DestinationConfiguration The configuration for delivery to a general purpose Amazon S3 bucket. You must specify either `S3DestinationConfiguration` or `S3TablesDestinationConfiguration`, but not both.
+#' @param S3TablesDestinationConfiguration The configuration for delivery to streaming tables on Apache Iceberg in Amazon S3 Tables. You must specify either `S3DestinationConfiguration` or `S3TablesDestinationConfiguration`, but not both.
+#' @param EncryptionConfiguration The server-side encryption configuration that uses an Amazon Web Services KMS key to encrypt data delivered to the destination.
+#' @param Tags A set of key-value pairs to assign to the channel. A tag consists of a required key and an optional value.
+#' @param LoggingConfiguration The Amazon CloudWatch Logs configuration for the channel.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_create_channel
+kinesis_create_channel <- function(ChannelName, ServiceExecutionRoleARN, StreamConfigurationList, S3DestinationConfiguration = NULL, S3TablesDestinationConfiguration = NULL, EncryptionConfiguration = NULL, Tags = NULL, LoggingConfiguration = NULL) {
+  op <- new_operation(
+    name = "CreateChannel",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$create_channel_input(ChannelName = ChannelName, ServiceExecutionRoleARN = ServiceExecutionRoleARN, StreamConfigurationList = StreamConfigurationList, S3DestinationConfiguration = S3DestinationConfiguration, S3TablesDestinationConfiguration = S3TablesDestinationConfiguration, EncryptionConfiguration = EncryptionConfiguration, Tags = Tags, LoggingConfiguration = LoggingConfiguration)
+  output <- .kinesis$create_channel_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$create_channel <- kinesis_create_channel
+
 #' Creates a Kinesis data stream
 #'
 #' @description
@@ -108,6 +147,37 @@ kinesis_decrease_stream_retention_period <- function(StreamName = NULL, Retentio
   return(response)
 }
 .kinesis$operations$decrease_stream_retention_period <- kinesis_decrease_stream_retention_period
+
+#' Deletes the specified channel
+#'
+#' @description
+#' Deletes the specified channel. Deleting a channel stops delivery from the source stream to the destination. Data already delivered to the destination is not deleted.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_delete_channel/](https://www.paws-r-sdk.com/docs/kinesis_delete_channel/) for full documentation.
+#'
+#' @param ChannelARN &#91;required&#93; The Amazon Resource Name (ARN) of the channel to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_delete_channel
+kinesis_delete_channel <- function(ChannelARN) {
+  op <- new_operation(
+    name = "DeleteChannel",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$delete_channel_input(ChannelARN = ChannelARN)
+  output <- .kinesis$delete_channel_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$delete_channel <- kinesis_delete_channel
 
 #' Delete a policy for the specified data stream or consumer
 #'
@@ -239,6 +309,38 @@ kinesis_describe_account_settings <- function() {
   return(response)
 }
 .kinesis$operations$describe_account_settings <- kinesis_describe_account_settings
+
+#' Describes the specified channel, including its configuration and current
+#' status
+#'
+#' @description
+#' Describes the specified channel, including its configuration and current status.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_describe_channel/](https://www.paws-r-sdk.com/docs/kinesis_describe_channel/) for full documentation.
+#'
+#' @param ChannelARN &#91;required&#93; The Amazon Resource Name (ARN) of the channel to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_describe_channel
+kinesis_describe_channel <- function(ChannelARN) {
+  op <- new_operation(
+    name = "DescribeChannel",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$describe_channel_input(ChannelARN = ChannelARN)
+  output <- .kinesis$describe_channel_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$describe_channel <- kinesis_describe_channel
 
 #' Describes the shard limits and usage for the account
 #'
@@ -637,6 +739,39 @@ kinesis_increase_stream_retention_period <- function(StreamName = NULL, Retentio
   return(response)
 }
 .kinesis$operations$increase_stream_retention_period <- kinesis_increase_stream_retention_period
+
+#' Lists the channels in your account
+#'
+#' @description
+#' Lists the channels in your account. You can filter the results by source stream. The results are paginated. Use the `NextToken` value returned in the response to retrieve additional results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_list_channels/](https://www.paws-r-sdk.com/docs/kinesis_list_channels/) for full documentation.
+#'
+#' @param StreamFilter Filters the results to channels associated with the specified streams.
+#' @param MaxResults The maximum number of channels to return in a single call. The default value is 100. If you specify a value greater than 100, at most 100 results are returned.
+#' @param NextToken The pagination token returned by a previous call. Specify this token to retrieve the next page of results. This value is `null` when there are no more results to return.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_list_channels
+kinesis_list_channels <- function(StreamFilter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListChannels",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ChannelSummaries"),
+    stream_api = FALSE
+  )
+  input <- .kinesis$list_channels_input(StreamFilter = StreamFilter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .kinesis$list_channels_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$list_channels <- kinesis_list_channels
 
 #' Lists the shards in a stream and provides information about each shard
 #'
@@ -1314,6 +1449,41 @@ kinesis_update_account_settings <- function(MinimumThroughputBillingCommitment) 
 }
 .kinesis$operations$update_account_settings <- kinesis_update_account_settings
 
+#' Updates the data freshness interval or the Amazon CloudWatch Logs
+#' configuration of an existing channel
+#'
+#' @description
+#' Updates the data freshness interval or the Amazon CloudWatch Logs configuration of an existing channel. You cannot change the destination, source stream, record format, schema, encryption configuration, or service execution role of an existing channel. To change any other setting, delete the channel and create a new one.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_update_channel/](https://www.paws-r-sdk.com/docs/kinesis_update_channel/) for full documentation.
+#'
+#' @param ChannelARN &#91;required&#93; The Amazon Resource Name (ARN) of the channel to update.
+#' @param S3DestinationConfiguration The updated configuration for a general purpose Amazon S3 destination. Only `DataFreshnessInSeconds` can be updated.
+#' @param S3TablesDestinationConfiguration The updated configuration for a streaming table destination. Only `DataFreshnessInSeconds` can be updated.
+#' @param LoggingConfiguration The updated Amazon CloudWatch Logs configuration for the channel.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_update_channel
+kinesis_update_channel <- function(ChannelARN, S3DestinationConfiguration = NULL, S3TablesDestinationConfiguration = NULL, LoggingConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateChannel",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$update_channel_input(ChannelARN = ChannelARN, S3DestinationConfiguration = S3DestinationConfiguration, S3TablesDestinationConfiguration = S3TablesDestinationConfiguration, LoggingConfiguration = LoggingConfiguration)
+  output <- .kinesis$update_channel_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$update_channel <- kinesis_update_channel
+
 #' This allows you to update the MaxRecordSize of a single record that you
 #' can write to, and read from a stream
 #'
@@ -1430,7 +1600,7 @@ kinesis_update_stream_mode <- function(StreamARN, StreamId = NULL, StreamModeDet
 #' Kinesis Data Streams on-demand data stream
 #'
 #' @description
-#' Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream. This operation allows you to proactively scale your on-demand data stream to a specified throughput level, enabling better performance for sudden traffic spikes.
+#' Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream. Updates the warm throughput configuration for the specified on-demand data stream. Use this operation to scale your stream to a specified throughput level before anticipated traffic spikes, or to release excess capacity after traffic has decreased.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesis_update_stream_warm_throughput/](https://www.paws-r-sdk.com/docs/kinesis_update_stream_warm_throughput/) for full documentation.
 #'

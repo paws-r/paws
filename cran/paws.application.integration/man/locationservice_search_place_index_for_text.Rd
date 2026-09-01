@@ -39,7 +39,7 @@ For example, \verb{[-12.7935, -37.4835, -12.0684, -36.9542]} represents a boundi
 
 \item{FilterCountries}{An optional parameter that limits the search results by returning only places that are in a specified list of countries.
 \itemize{
-\item Valid values include \href{https://www.iso.org/iso-3166-country-codes.html}{ISO 3166} 3-digit country codes. For example, Australia uses three upper-case characters: \code{AUS}.
+\item Valid values include ISO 3166 3-digit country codes. For example, Australia uses three upper-case characters: \code{AUS}.
 }}
 
 \item{MaxResults}{An optional parameter. The maximum number of results returned per request.

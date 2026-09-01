@@ -19,7 +19,7 @@ connect_disassociate_hours_of_operations(
 \item{ParentHoursOfOperationIds}{[required] The Amazon Resource Names (ARNs) of the parent hours of operation resources to disassociate with the child hours of operation resource.}
 }
 \description{
-Disassociates a set of hours of operations with another hours of operation. Refer to Administrator Guide \href{https://docs.aws.amazon.com/connect/latest/adminguide/hours-of-operation-overrides.html}{here} for more information on inheriting overrides from parent hours of operation(s).
+Disassociates a set of hours of operations with another hours of operation. For more information about inheriting overrides from parent hours of operation, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/hours-of-operation-overrides.html}{Hours of operation overrides} in the Administrator Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_disassociate_hours_of_operations/} for full documentation.
 }

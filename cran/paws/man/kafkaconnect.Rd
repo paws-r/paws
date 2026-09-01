@@ -109,6 +109,7 @@ Managed Streaming for Kafka Connect
 \link[paws.analytics:kafkaconnect_list_custom_plugins]{list_custom_plugins} \tab Returns a list of all of the custom plugins in this account and Region\cr
 \link[paws.analytics:kafkaconnect_list_tags_for_resource]{list_tags_for_resource} \tab Lists all the tags attached to the specified resource\cr
 \link[paws.analytics:kafkaconnect_list_worker_configurations]{list_worker_configurations} \tab Returns a list of all of the worker configurations in this account and Region\cr
+\link[paws.analytics:kafkaconnect_restart_connector]{restart_connector} \tab Restarts the specified connector\cr
 \link[paws.analytics:kafkaconnect_tag_resource]{tag_resource} \tab Attaches tags to the specified resource\cr
 \link[paws.analytics:kafkaconnect_untag_resource]{untag_resource} \tab Removes tags from the specified resource\cr
 \link[paws.analytics:kafkaconnect_update_connector]{update_connector} \tab Updates the specified connector

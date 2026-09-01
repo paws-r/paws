@@ -9,7 +9,8 @@ cloudformation_rollback_stack(
   StackName,
   RoleARN = NULL,
   ClientRequestToken = NULL,
-  RetainExceptOnCreate = NULL
+  RetainExceptOnCreate = NULL,
+  DeploymentConfig = NULL
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ cloudformation_rollback_stack(
 \item{RetainExceptOnCreate}{When set to \code{true}, newly created resources are deleted when the operation rolls back. This includes newly created resources marked with a deletion policy of \code{Retain}.
 
 Default: \code{false}}
+
+\item{DeploymentConfig}{The deployment configuration for this stack operation, including the deployment mode.}
 }
 \description{
 When specifying \code{\link[=cloudformation_rollback_stack]{rollback_stack}}, you preserve the state of previously provisioned resources when an operation fails. You can check the status of the stack through the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} operation.

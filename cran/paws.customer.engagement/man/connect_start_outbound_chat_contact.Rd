@@ -42,7 +42,7 @@ connect_start_outbound_chat_contact(
 
 \item{ChatDurationInMinutes}{The total duration of the newly started chat session. If not specified, the chat session duration defaults to 25 hour. The minimum configurable time is 60 minutes. The maximum configurable time is 10,080 minutes (7 days).}
 
-\item{ParticipantDetails}{The customer's details.}
+\item{ParticipantDetails}{The details of the participant, including their display name.}
 
 \item{InitialSystemMessage}{A chat message.}
 

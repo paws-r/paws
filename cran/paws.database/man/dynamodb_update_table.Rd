@@ -20,7 +20,8 @@ dynamodb_update_table(
   GlobalTableWitnessUpdates = NULL,
   OnDemandThroughput = NULL,
   WarmThroughput = NULL,
-  GlobalTableSettingsReplicationMode = NULL
+  GlobalTableSettingsReplicationMode = NULL,
+  VectorIndexUpdates = NULL
 )
 }
 \arguments{
@@ -88,6 +89,10 @@ For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/lates
 \item \code{ENABLED}: Defines settings replication on a regional table to be used as a source table for creating Multi-Account Global Table.
 \item \code{DISABLED}: Remove settings replication on a regional table. Settings replication needs to be defined to ENABLED again in order to create a Multi-Account Global Table using this table.
 }}
+
+\item{VectorIndexUpdates}{A list of vector indexes to be added to or removed from the table. You can add or remove one vector index for each \code{\link[=dynamodb_update_table]{update_table}} operation.
+
+To add a vector index, specify \code{IndexName}, \code{VectorAttribute}, \code{Dimensions}, \code{DistanceFunction}, and \code{Projection}. To remove a vector index, specify only the \code{IndexName}.}
 }
 \description{
 Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given table.

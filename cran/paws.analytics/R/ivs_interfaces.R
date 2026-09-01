@@ -41,13 +41,13 @@ NULL
 
 .ivs$create_ad_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), mediaTailorPlaybackConfigurations = structure(list(structure(list(playbackConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), mediaTailorPlaybackConfigurations = structure(list(structure(list(playbackConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), postRollConfiguration = structure(list(durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivs$create_ad_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(adConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), mediaTailorPlaybackConfigurations = structure(list(structure(list(playbackConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(adConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), mediaTailorPlaybackConfigurations = structure(list(structure(list(playbackConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), postRollConfiguration = structure(list(durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -169,7 +169,7 @@ NULL
 
 .ivs$get_ad_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(adConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), mediaTailorPlaybackConfigurations = structure(list(structure(list(playbackConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(adConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), mediaTailorPlaybackConfigurations = structure(list(structure(list(playbackConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), postRollConfiguration = structure(list(durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -289,7 +289,7 @@ NULL
 
 .ivs$list_ad_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(adConfigurations = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), mediaTailorPlaybackConfigurations = structure(list(structure(list(playbackConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(adConfigurations = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), mediaTailorPlaybackConfigurations = structure(list(structure(list(playbackConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), postRollConfiguration = structure(list(durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -444,6 +444,18 @@ NULL
 .ivs$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivs$update_ad_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), mediaTailorPlaybackConfigurations = structure(list(structure(list(playbackConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), postRollConfiguration = structure(list(durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivs$update_ad_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(adConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), mediaTailorPlaybackConfigurations = structure(list(structure(list(playbackConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), postRollConfiguration = structure(list(durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

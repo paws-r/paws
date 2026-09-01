@@ -94,7 +94,7 @@ You can reset this parameter. To do so, specify the \code{no-apply-only-at-cron-
 
 \item{TargetLocations}{A location is a combination of Amazon Web Services Regions and Amazon Web Services accounts where you want to run the association. Use this action to update an association in multiple Regions and multiple accounts.
 
-The \code{IncludeChildOrganizationUnits} parameter is not supported by State Manager.}
+The \code{TargetLocationAlarmConfiguration} parameter is not supported by State Manager.}
 
 \item{ScheduleOffset}{Number of days to wait after the scheduled day to run an association. For example, if you specified a cron schedule of \verb{cron(0 0 ? * THU#2 *)}, you could specify an offset of 3 to run the association each Sunday after the second Thursday of the month. For more information about cron schedules for associations, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/reference-cron-and-rate-expressions.html}{Reference: Cron and rate expressions for Systems Manager} in the \emph{Amazon Web Services Systems Manager User Guide}.
 

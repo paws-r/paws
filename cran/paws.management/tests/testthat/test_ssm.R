@@ -96,6 +96,14 @@ test_that("list_associations", {
   expect_error(svc$list_associations(MaxResults = 20), NA)
 })
 
+test_that("list_cloud_connectors", {
+  expect_error(svc$list_cloud_connectors(), NA)
+})
+
+test_that("list_cloud_connectors", {
+  expect_error(svc$list_cloud_connectors(MaxResults = 20), NA)
+})
+
 test_that("list_command_invocations", {
   expect_error(svc$list_command_invocations(), NA)
 })

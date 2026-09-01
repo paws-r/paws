@@ -17,7 +17,7 @@ The ARN format of a dashboard is \code{arn:aws:cloudwatch::account-id:dashboard/
 
 The ARN format of a metric stream is \code{arn:aws:cloudwatch:Region:account-id:metric-stream/metric-stream-name }
 
-For more information about ARN format, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies}{Resource Types Defined by Amazon CloudWatch} in the \emph{Amazon Web Services General Reference}.}
+For more information about ARN format, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/#amazoncloudwatch-resources-for-iam-policies}{Resource Types Defined by Amazon CloudWatch} in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Displays the tags associated with a CloudWatch resource. Currently, alarms, dashboards, metric streams and Contributor Insights rules support tagging.

@@ -9,7 +9,7 @@ NULL
 #' 
 #' GuardDuty also monitors Amazon Web Services account access behavior for signs of compromise, such as unauthorized infrastructure deployments like EC2 instances deployed in a Region that has never been used, or unusual API calls like a password policy change to reduce password strength.
 #' 
-#' GuardDuty informs you about the status of your Amazon Web Services environment by producing security findings that you can view in the GuardDuty console or through Amazon EventBridge. For more information, see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html}{Amazon GuardDuty User Guide}} .
+#' GuardDuty informs you about the status of your Amazon Web Services environment by producing security findings that you can view in the GuardDuty console or through Amazon EventBridge. For more information, see the *\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html}{Amazon GuardDuty User Guide}* .
 #'
 #' @param
 #' config
@@ -99,6 +99,7 @@ NULL
 #'  \link[=guardduty_archive_findings]{archive_findings} \tab Archives GuardDuty findings that are specified by the list of finding IDs\cr
 #'  \link[=guardduty_create_detector]{create_detector} \tab Creates a single GuardDuty detector\cr
 #'  \link[=guardduty_create_filter]{create_filter} \tab Creates a filter using the specified finding criteria\cr
+#'  \link[=guardduty_create_investigation]{create_investigation} \tab This API is currently available as a preview\cr
 #'  \link[=guardduty_create_ip_set]{create_ip_set} \tab Creates a new IPSet, which is called a trusted IP list in the console user interface\cr
 #'  \link[=guardduty_create_malware_protection_plan]{create_malware_protection_plan} \tab Creates a new Malware Protection plan for the protected resource\cr
 #'  \link[=guardduty_create_members]{create_members} \tab Creates member accounts of the current Amazon Web Services account by specifying a list of Amazon Web Services account IDs\cr
@@ -132,6 +133,7 @@ NULL
 #'  \link[=guardduty_get_filter]{get_filter} \tab Returns the details of the filter specified by the filter name\cr
 #'  \link[=guardduty_get_findings]{get_findings} \tab Describes Amazon GuardDuty findings specified by finding IDs\cr
 #'  \link[=guardduty_get_findings_statistics]{get_findings_statistics} \tab Lists GuardDuty findings statistics for the specified detector ID\cr
+#'  \link[=guardduty_get_investigation]{get_investigation} \tab This API is currently available as a preview\cr
 #'  \link[=guardduty_get_invitations_count]{get_invitations_count} \tab Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation\cr
 #'  \link[=guardduty_get_ip_set]{get_ip_set} \tab Retrieves the IPSet specified by the ipSetId\cr
 #'  \link[=guardduty_get_malware_protection_plan]{get_malware_protection_plan} \tab Retrieves the Malware Protection plan details associated with a Malware Protection plan ID\cr
@@ -151,6 +153,7 @@ NULL
 #'  \link[=guardduty_list_detectors]{list_detectors} \tab Lists detectorIds of all the existing Amazon GuardDuty detector resources\cr
 #'  \link[=guardduty_list_filters]{list_filters} \tab Returns a paginated list of the current filters\cr
 #'  \link[=guardduty_list_findings]{list_findings} \tab Lists GuardDuty findings for the specified detector ID\cr
+#'  \link[=guardduty_list_investigations]{list_investigations} \tab This API is currently available as a preview\cr
 #'  \link[=guardduty_list_invitations]{list_invitations} \tab Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services account\cr
 #'  \link[=guardduty_list_ip_sets]{list_ip_sets} \tab Lists the IPSets of the GuardDuty service specified by the detector ID\cr
 #'  \link[=guardduty_list_malware_protection_plans]{list_malware_protection_plans} \tab Lists the Malware Protection plan IDs associated with the protected resources in your Amazon Web Services account\cr

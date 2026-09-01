@@ -2,7 +2,7 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_delete_connect_client_add_in}
 \alias{workspaces_delete_connect_client_add_in}
-\title{Deletes a client-add-in for Amazon Connect that is configured within a
+\title{Deletes a client-add-in for Connect Customer that is configured within a
 directory}
 \usage{
 workspaces_delete_connect_client_add_in(AddInId, ResourceId)
@@ -13,7 +13,7 @@ workspaces_delete_connect_client_add_in(AddInId, ResourceId)
 \item{ResourceId}{[required] The directory identifier for which the client add-in is configured.}
 }
 \description{
-Deletes a client-add-in for Amazon Connect that is configured within a directory.
+Deletes a client-add-in for Connect Customer that is configured within a directory.
 
 See \url{https://www.paws-r-sdk.com/docs/workspaces_delete_connect_client_add_in/} for full documentation.
 }

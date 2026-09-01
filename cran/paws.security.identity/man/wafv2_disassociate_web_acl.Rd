@@ -19,6 +19,7 @@ The ARN must be in one of the following formats:
 \item For an App Runner service: \code{arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id }
 \item For an Amazon Web Services Verified Access instance: \code{arn:partition:ec2:region:account-id:verified-access-instance/instance-id }
 \item For an Amplify application: \code{arn:partition:amplify:region:account-id:apps/app-id }
+\item For an Amazon Bedrock AgentCore Gateway: \code{arn:partition:bedrock-agentcore:region:account-id:gateway/gateway-id }
 }}
 }
 \description{

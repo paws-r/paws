@@ -8,6 +8,8 @@ NULL
 #' @description
 #' Adds one or more tags to an ACM certificate. Tags are labels that you can use to identify and organize your Amazon Web Services resources. Each tag consists of a `key` and an optional `value`. You specify the certificate on input by its Amazon Resource Name (ARN). You specify the tag by using a key-value pair.
 #' 
+#' This action applies only to the `certificate` resource type. For all other ACM resource types, use [`tag_resource`][acm_tag_resource] instead.
+#' 
 #' You can apply a tag to just one certificate if you want to identify a specific characteristic of that certificate, or you can apply the same tag to multiple certificates if you want to filter for a common relationship among those certificates. Similarly, you can apply the same tag to multiple resources if you want to specify a relationship among those resources. For example, you can add the same tag to an ACM certificate and an Elastic Load Balancing load balancer to indicate that they are both used by the same website. For more information, see [Tagging ACM certificates](https://docs.aws.amazon.com/acm/latest/userguide/tags.html).
 #' 
 #' To remove one or more tags, use the [`remove_tags_from_certificate`][acm_remove_tags_from_certificate] action. To view all of the tags that have been applied to the certificate, use the [`list_tags_for_certificate`][acm_list_tags_for_certificate] action.
@@ -62,6 +64,372 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 }
 .acm$operations$add_tags_to_certificate <- acm_add_tags_to_certificate
 
+#' Creates a domain validation for an ACME endpoint
+#'
+#' @description
+#' Creates a domain validation for an ACME endpoint. Domain validations authorize the endpoint to issue certificates for specified domain names. You configure prevalidation to prove domain ownership.
+#'
+#' @usage
+#' acm_create_acme_domain_validation(IdempotencyToken, AcmeEndpointArn,
+#'   DomainName, PrevalidationOptions, Tags)
+#'
+#' @param IdempotencyToken A unique, case-sensitive identifier to ensure idempotency of the request.
+#' @param AcmeEndpointArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME endpoint.
+#' @param DomainName &#91;required&#93; The domain name to validate.
+#' @param PrevalidationOptions &#91;required&#93; The prevalidation options for the domain.
+#' @param Tags One or more tags to associate with the domain validation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AcmeDomainValidationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_acme_domain_validation(
+#'   IdempotencyToken = "string",
+#'   AcmeEndpointArn = "string",
+#'   DomainName = "string",
+#'   PrevalidationOptions = list(
+#'     DnsPrevalidation = list(
+#'       DomainScope = list(
+#'         ExactDomain = "ENABLED"|"DISABLED",
+#'         Subdomains = "ENABLED"|"DISABLED",
+#'         Wildcards = "ENABLED"|"DISABLED"
+#'       ),
+#'       HostedZoneId = "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_create_acme_domain_validation
+#'
+#' @aliases acm_create_acme_domain_validation
+acm_create_acme_domain_validation <- function(IdempotencyToken = NULL, AcmeEndpointArn, DomainName, PrevalidationOptions, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateAcmeDomainValidation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$create_acme_domain_validation_input(IdempotencyToken = IdempotencyToken, AcmeEndpointArn = AcmeEndpointArn, DomainName = DomainName, PrevalidationOptions = PrevalidationOptions, Tags = Tags)
+  output <- .acm$create_acme_domain_validation_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$create_acme_domain_validation <- acm_create_acme_domain_validation
+
+#' Creates an ACME endpoint, which is a managed ACME server with a unique
+#' endpoint URL
+#'
+#' @description
+#' Creates an ACME endpoint, which is a managed ACME server with a unique endpoint URL. After creation, ACME clients can use the endpoint URL to automate certificate issuance using the ACME protocol.
+#'
+#' @usage
+#' acm_create_acme_endpoint(IdempotencyToken, AuthorizationBehavior,
+#'   Contact, CertificateAuthority, Tags, CertificateTags)
+#'
+#' @param IdempotencyToken A unique, case-sensitive identifier to ensure idempotency of the request.
+#' @param AuthorizationBehavior &#91;required&#93; The authorization behavior for the ACME endpoint.
+#' @param Contact Specifies whether ACME clients must provide contact information during account registration.
+#' @param CertificateAuthority &#91;required&#93; The type of certificate authority to use for issuing certificates through this ACME endpoint.
+#' @param Tags One or more tags to associate with the ACME endpoint.
+#' @param CertificateTags Tags to apply to certificates issued through this ACME endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AcmeEndpointArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_acme_endpoint(
+#'   IdempotencyToken = "string",
+#'   AuthorizationBehavior = "PRE_APPROVED",
+#'   Contact = "REQUIRED"|"NOT_REQUIRED",
+#'   CertificateAuthority = list(
+#'     PublicCertificateAuthority = list(
+#'       AllowedKeyAlgorithms = list(
+#'         "RSA_2048"|"EC_prime256v1"|"EC_secp384r1"
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   CertificateTags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_create_acme_endpoint
+#'
+#' @aliases acm_create_acme_endpoint
+acm_create_acme_endpoint <- function(IdempotencyToken = NULL, AuthorizationBehavior, Contact = NULL, CertificateAuthority, Tags = NULL, CertificateTags = NULL) {
+  op <- new_operation(
+    name = "CreateAcmeEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$create_acme_endpoint_input(IdempotencyToken = IdempotencyToken, AuthorizationBehavior = AuthorizationBehavior, Contact = Contact, CertificateAuthority = CertificateAuthority, Tags = Tags, CertificateTags = CertificateTags)
+  output <- .acm$create_acme_endpoint_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$create_acme_endpoint <- acm_create_acme_endpoint
+
+#' Creates an external account binding (EAB) for an ACME endpoint
+#'
+#' @description
+#' Creates an external account binding (EAB) for an ACME endpoint. An EAB provides credentials that authorize an ACME client to register an account with the endpoint. Each EAB is associated with an IAM role that controls what certificate operations the ACME client can perform.
+#'
+#' @usage
+#' acm_create_acme_external_account_binding(IdempotencyToken,
+#'   AcmeEndpointArn, RoleArn, Expiration, Tags)
+#'
+#' @param IdempotencyToken A unique, case-sensitive identifier to ensure idempotency of the request.
+#' @param AcmeEndpointArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME endpoint.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to associate with the external account binding.
+#' @param Expiration The expiration configuration for the external account binding.
+#' @param Tags One or more tags to associate with the external account binding.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExternalAccountBinding = list(
+#'     AcmeExternalAccountBindingArn = "string",
+#'     AcmeEndpointArn = "string",
+#'     RoleArn = "string",
+#'     ExpiresAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     RevokedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUsedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_acme_external_account_binding(
+#'   IdempotencyToken = "string",
+#'   AcmeEndpointArn = "string",
+#'   RoleArn = "string",
+#'   Expiration = list(
+#'     Value = 123,
+#'     Type = "MINUTES"|"HOURS"|"DAYS"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_create_acme_external_account_binding
+#'
+#' @aliases acm_create_acme_external_account_binding
+acm_create_acme_external_account_binding <- function(IdempotencyToken = NULL, AcmeEndpointArn, RoleArn, Expiration = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateAcmeExternalAccountBinding",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$create_acme_external_account_binding_input(IdempotencyToken = IdempotencyToken, AcmeEndpointArn = AcmeEndpointArn, RoleArn = RoleArn, Expiration = Expiration, Tags = Tags)
+  output <- .acm$create_acme_external_account_binding_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$create_acme_external_account_binding <- acm_create_acme_external_account_binding
+
+#' Deletes a domain validation
+#'
+#' @description
+#' Deletes a domain validation. After deletion, the ACME endpoint can no longer issue certificates for the associated domain.
+#'
+#' @usage
+#' acm_delete_acme_domain_validation(AcmeDomainValidationArn)
+#'
+#' @param AcmeDomainValidationArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME domain validation to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_acme_domain_validation(
+#'   AcmeDomainValidationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_delete_acme_domain_validation
+#'
+#' @aliases acm_delete_acme_domain_validation
+acm_delete_acme_domain_validation <- function(AcmeDomainValidationArn) {
+  op <- new_operation(
+    name = "DeleteAcmeDomainValidation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$delete_acme_domain_validation_input(AcmeDomainValidationArn = AcmeDomainValidationArn)
+  output <- .acm$delete_acme_domain_validation_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$delete_acme_domain_validation <- acm_delete_acme_domain_validation
+
+#' Deletes an ACME endpoint
+#'
+#' @description
+#' Deletes an ACME endpoint. After deletion, the endpoint URL is no longer accessible and ACME clients cannot issue certificates through it. Any existing external account bindings and domain validations associated with the endpoint are also deleted.
+#'
+#' @usage
+#' acm_delete_acme_endpoint(AcmeEndpointArn)
+#'
+#' @param AcmeEndpointArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME endpoint to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_acme_endpoint(
+#'   AcmeEndpointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_delete_acme_endpoint
+#'
+#' @aliases acm_delete_acme_endpoint
+acm_delete_acme_endpoint <- function(AcmeEndpointArn) {
+  op <- new_operation(
+    name = "DeleteAcmeEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$delete_acme_endpoint_input(AcmeEndpointArn = AcmeEndpointArn)
+  output <- .acm$delete_acme_endpoint_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$delete_acme_endpoint <- acm_delete_acme_endpoint
+
+#' Deletes an external account binding
+#'
+#' @description
+#' Deletes an external account binding. Previously fetched credentials for this binding will no longer be usable for account registration. A deleted binding cannot be recovered.
+#'
+#' @usage
+#' acm_delete_acme_external_account_binding(AcmeExternalAccountBindingArn)
+#'
+#' @param AcmeExternalAccountBindingArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME external account binding to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_acme_external_account_binding(
+#'   AcmeExternalAccountBindingArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_delete_acme_external_account_binding
+#'
+#' @aliases acm_delete_acme_external_account_binding
+acm_delete_acme_external_account_binding <- function(AcmeExternalAccountBindingArn) {
+  op <- new_operation(
+    name = "DeleteAcmeExternalAccountBinding",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$delete_acme_external_account_binding_input(AcmeExternalAccountBindingArn = AcmeExternalAccountBindingArn)
+  output <- .acm$delete_acme_external_account_binding_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$delete_acme_external_account_binding <- acm_delete_acme_external_account_binding
+
 #' Deletes a certificate and its associated private key
 #'
 #' @description
@@ -70,6 +438,8 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 #' You cannot delete an ACM certificate that is being used by another Amazon Web Services service. To delete a certificate that is in use, you must first remove the certificate association using the console or the CLI for the associated service.
 #' 
 #' Deleting a certificate issued by a private certificate authority (CA) has no effect on the CA. You will continue to be charged for the CA until it is deleted. For more information, see [Deleting Your Private CA](https://docs.aws.amazon.com/privateca/latest/userguide/PCADeleteCA.html) in the *Private Certificate Authority User Guide*.
+#' 
+#' You cannot delete a certificate with a `CertificateKeyPairOrigin` of `ACME`. ACM automatically deletes these certificates 1 year after they expire.
 #' 
 #' Deleting a certificate issued by a private certificate authority (CA) has no effect on the CA. You will continue to be charged for the CA until it is deleted. For more information, see [Deleting your private CA](https://docs.aws.amazon.com/privateca/latest/userguide/PCADeleteCA.html) in the *Amazon Web Services Private Certificate Authority User Guide*.
 #'
@@ -115,6 +485,299 @@ acm_delete_certificate <- function(CertificateArn) {
   return(response)
 }
 .acm$operations$delete_certificate <- acm_delete_certificate
+
+#' Returns detailed metadata about the specified ACME account, including
+#' its status, public key thumbprint, and associated external account
+#' binding
+#'
+#' @description
+#' Returns detailed metadata about the specified ACME account, including its status, public key thumbprint, and associated external account binding.
+#'
+#' @usage
+#' acm_describe_acme_account(AcmeEndpointArn, AccountUrl)
+#'
+#' @param AcmeEndpointArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME endpoint.
+#' @param AccountUrl &#91;required&#93; The URL of the ACME account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AcmeAccount = list(
+#'     AccountUrl = "string",
+#'     PublicKeyThumbprint = "string",
+#'     Status = "VALID"|"DEACTIVATED"|"REVOKED",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AcmeExternalAccountBindingArn = "string",
+#'     Contacts = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_acme_account(
+#'   AcmeEndpointArn = "string",
+#'   AccountUrl = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_describe_acme_account
+#'
+#' @aliases acm_describe_acme_account
+acm_describe_acme_account <- function(AcmeEndpointArn, AccountUrl) {
+  op <- new_operation(
+    name = "DescribeAcmeAccount",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$describe_acme_account_input(AcmeEndpointArn = AcmeEndpointArn, AccountUrl = AccountUrl)
+  output <- .acm$describe_acme_account_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$describe_acme_account <- acm_describe_acme_account
+
+#' Returns detailed metadata about the specified domain validation,
+#' including its status, domain scope, and DNS resource records required
+#' for validation
+#'
+#' @description
+#' Returns detailed metadata about the specified domain validation, including its status, domain scope, and DNS resource records required for validation.
+#'
+#' @usage
+#' acm_describe_acme_domain_validation(AcmeDomainValidationArn)
+#'
+#' @param AcmeDomainValidationArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME domain validation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AcmeDomainValidation = list(
+#'     AcmeDomainValidationArn = "string",
+#'     AcmeEndpointArn = "string",
+#'     DomainName = "string",
+#'     PrevalidationType = "DNS_PREVALIDATION",
+#'     PrevalidationDetails = list(
+#'       DnsPrevalidation = list(
+#'         DomainScope = list(
+#'           ExactDomain = "ENABLED"|"DISABLED",
+#'           Subdomains = "ENABLED"|"DISABLED",
+#'           Wildcards = "ENABLED"|"DISABLED"
+#'         ),
+#'         HostedZoneId = "string",
+#'         ResourceRecord = list(
+#'           Name = "string",
+#'           Type = "CNAME",
+#'           Value = "string"
+#'         )
+#'       )
+#'     ),
+#'     Status = "VALIDATING"|"VALID"|"INVALID"|"DELETING",
+#'     FailureDetails = list(
+#'       Reason = "ACCESS_DENIED"|"DOMAIN_MISMATCH"|"DOMAIN_NOT_ALLOWED"|"ENDPOINT_NOT_ACTIVE"|"HOSTED_ZONE_NOT_FOUND"|"INTERNAL_FAILURE"|"INVALID_CHANGE_BATCH"|"INVALID_PUBLIC_DOMAIN"|"TIMED_OUT",
+#'       Message = "string"
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_acme_domain_validation(
+#'   AcmeDomainValidationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_describe_acme_domain_validation
+#'
+#' @aliases acm_describe_acme_domain_validation
+acm_describe_acme_domain_validation <- function(AcmeDomainValidationArn) {
+  op <- new_operation(
+    name = "DescribeAcmeDomainValidation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$describe_acme_domain_validation_input(AcmeDomainValidationArn = AcmeDomainValidationArn)
+  output <- .acm$describe_acme_domain_validation_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$describe_acme_domain_validation <- acm_describe_acme_domain_validation
+
+#' Returns detailed metadata about the specified ACME endpoint, including
+#' its status, URL, authorization behavior, and certificate authority
+#' configuration
+#'
+#' @description
+#' Returns detailed metadata about the specified ACME endpoint, including its status, URL, authorization behavior, and certificate authority configuration.
+#'
+#' @usage
+#' acm_describe_acme_endpoint(AcmeEndpointArn)
+#'
+#' @param AcmeEndpointArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AcmeEndpoint = list(
+#'     AcmeEndpointArn = "string",
+#'     EndpointUrl = "string",
+#'     Status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED",
+#'     FailureReason = "string",
+#'     AuthorizationBehavior = "PRE_APPROVED",
+#'     Contact = "REQUIRED"|"NOT_REQUIRED",
+#'     CertificateAuthority = list(
+#'       PublicCertificateAuthority = list(
+#'         AllowedKeyAlgorithms = list(
+#'           "RSA_2048"|"EC_prime256v1"|"EC_secp384r1"
+#'         )
+#'       )
+#'     ),
+#'     CertificateTags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_acme_endpoint(
+#'   AcmeEndpointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_describe_acme_endpoint
+#'
+#' @aliases acm_describe_acme_endpoint
+acm_describe_acme_endpoint <- function(AcmeEndpointArn) {
+  op <- new_operation(
+    name = "DescribeAcmeEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$describe_acme_endpoint_input(AcmeEndpointArn = AcmeEndpointArn)
+  output <- .acm$describe_acme_endpoint_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$describe_acme_endpoint <- acm_describe_acme_endpoint
+
+#' Returns detailed metadata about the specified external account binding,
+#' including the associated IAM role, expiration time, and usage history
+#'
+#' @description
+#' Returns detailed metadata about the specified external account binding, including the associated IAM role, expiration time, and usage history.
+#'
+#' @usage
+#' acm_describe_acme_external_account_binding(
+#'   AcmeExternalAccountBindingArn)
+#'
+#' @param AcmeExternalAccountBindingArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME external account binding.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExternalAccountBinding = list(
+#'     AcmeExternalAccountBindingArn = "string",
+#'     AcmeEndpointArn = "string",
+#'     RoleArn = "string",
+#'     ExpiresAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     RevokedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUsedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_acme_external_account_binding(
+#'   AcmeExternalAccountBindingArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_describe_acme_external_account_binding
+#'
+#' @aliases acm_describe_acme_external_account_binding
+acm_describe_acme_external_account_binding <- function(AcmeExternalAccountBindingArn) {
+  op <- new_operation(
+    name = "DescribeAcmeExternalAccountBinding",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$describe_acme_external_account_binding_input(AcmeExternalAccountBindingArn = AcmeExternalAccountBindingArn)
+  output <- .acm$describe_acme_external_account_binding_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$describe_acme_external_account_binding <- acm_describe_acme_external_account_binding
 
 #' Returns detailed metadata about the specified ACM certificate
 #'
@@ -235,8 +898,26 @@ acm_delete_certificate <- function(CertificateArn) {
 #'     RenewalEligibility = "ELIGIBLE"|"INELIGIBLE",
 #'     Options = list(
 #'       CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED",
-#'       Export = "ENABLED"|"DISABLED"
-#'     )
+#'       Export = "ENABLED"|"DISABLED",
+#'       ValidationMethod = "EMAIL"|"DNS"|"HTTP"
+#'     ),
+#'     UpdateSummary = list(
+#'       Status = "PENDING_DOMAIN_VALIDATION"|"SUCCESS"|"FAILED",
+#'       Type = "DOMAIN_VALIDATION_METHOD",
+#'       DomainValidationMethodUpdateSummary = list(
+#'         From = "EMAIL"|"DNS"|"HTTP",
+#'         To = "EMAIL"|"DNS"|"HTTP"
+#'       ),
+#'       RequestedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     CertificateKeyPairOrigin = "AWS_MANAGED"|"ACME"|"CUSTOMER_PROVIDED",
+#'     AcmeEndpointArn = "string",
+#'     AcmeAccountId = "string"
 #'   )
 #' )
 #' ```
@@ -384,6 +1065,58 @@ acm_get_account_configuration <- function() {
   return(response)
 }
 .acm$operations$get_account_configuration <- acm_get_account_configuration
+
+#' Retrieves the key ID and MAC key credentials for an external account
+#' binding
+#'
+#' @description
+#' Retrieves the key ID and MAC key credentials for an external account binding. These credentials are used by ACME clients during account registration to bind to the endpoint.
+#'
+#' @usage
+#' acm_get_acme_external_account_binding_credentials(
+#'   AcmeExternalAccountBindingArn)
+#'
+#' @param AcmeExternalAccountBindingArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME external account binding.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyId = "string",
+#'   MacKey = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_acme_external_account_binding_credentials(
+#'   AcmeExternalAccountBindingArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_get_acme_external_account_binding_credentials
+#'
+#' @aliases acm_get_acme_external_account_binding_credentials
+acm_get_acme_external_account_binding_credentials <- function(AcmeExternalAccountBindingArn) {
+  op <- new_operation(
+    name = "GetAcmeExternalAccountBindingCredentials",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$get_acme_external_account_binding_credentials_input(AcmeExternalAccountBindingArn = AcmeExternalAccountBindingArn)
+  output <- .acm$get_acme_external_account_binding_credentials_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$get_acme_external_account_binding_credentials <- acm_get_acme_external_account_binding_credentials
 
 #' Retrieves a certificate and its certificate chain
 #'
@@ -533,16 +1266,428 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 }
 .acm$operations$import_certificate <- acm_import_certificate
 
+#' Retrieves a list of ACME accounts registered with the specified ACME
+#' endpoint
+#'
+#' @description
+#' Retrieves a list of ACME accounts registered with the specified ACME endpoint. ACME accounts are created when clients use external account binding credentials to register.
+#'
+#' @usage
+#' acm_list_acme_accounts(NextToken, MaxResults, AcmeEndpointArn)
+#'
+#' @param NextToken A token for pagination.
+#' @param MaxResults The maximum number of results to return.
+#' @param AcmeEndpointArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AcmeAccounts = list(
+#'     list(
+#'       AccountUrl = "string",
+#'       PublicKeyThumbprint = "string",
+#'       Status = "VALID"|"DEACTIVATED"|"REVOKED",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AcmeExternalAccountBindingArn = "string",
+#'       Contacts = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_acme_accounts(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   AcmeEndpointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_list_acme_accounts
+#'
+#' @aliases acm_list_acme_accounts
+acm_list_acme_accounts <- function(NextToken = NULL, MaxResults = NULL, AcmeEndpointArn) {
+  op <- new_operation(
+    name = "ListAcmeAccounts",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AcmeAccounts"),
+    stream_api = FALSE
+  )
+  input <- .acm$list_acme_accounts_input(NextToken = NextToken, MaxResults = MaxResults, AcmeEndpointArn = AcmeEndpointArn)
+  output <- .acm$list_acme_accounts_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$list_acme_accounts <- acm_list_acme_accounts
+
+#' Retrieves a list of domain validations for the specified ACME endpoint
+#'
+#' @description
+#' Retrieves a list of domain validations for the specified ACME endpoint.
+#'
+#' @usage
+#' acm_list_acme_domain_validations(NextToken, MaxResults, AcmeEndpointArn)
+#'
+#' @param NextToken A token for pagination.
+#' @param MaxResults The maximum number of results to return.
+#' @param AcmeEndpointArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AcmeDomainValidations = list(
+#'     list(
+#'       AcmeDomainValidationArn = "string",
+#'       AcmeEndpointArn = "string",
+#'       DomainName = "string",
+#'       PrevalidationType = "DNS_PREVALIDATION",
+#'       PrevalidationDetails = list(
+#'         DnsPrevalidation = list(
+#'           DomainScope = list(
+#'             ExactDomain = "ENABLED"|"DISABLED",
+#'             Subdomains = "ENABLED"|"DISABLED",
+#'             Wildcards = "ENABLED"|"DISABLED"
+#'           ),
+#'           HostedZoneId = "string",
+#'           ResourceRecord = list(
+#'             Name = "string",
+#'             Type = "CNAME",
+#'             Value = "string"
+#'           )
+#'         )
+#'       ),
+#'       Status = "VALIDATING"|"VALID"|"INVALID"|"DELETING",
+#'       FailureDetails = list(
+#'         Reason = "ACCESS_DENIED"|"DOMAIN_MISMATCH"|"DOMAIN_NOT_ALLOWED"|"ENDPOINT_NOT_ACTIVE"|"HOSTED_ZONE_NOT_FOUND"|"INTERNAL_FAILURE"|"INVALID_CHANGE_BATCH"|"INVALID_PUBLIC_DOMAIN"|"TIMED_OUT",
+#'         Message = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_acme_domain_validations(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   AcmeEndpointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_list_acme_domain_validations
+#'
+#' @aliases acm_list_acme_domain_validations
+acm_list_acme_domain_validations <- function(NextToken = NULL, MaxResults = NULL, AcmeEndpointArn) {
+  op <- new_operation(
+    name = "ListAcmeDomainValidations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AcmeDomainValidations"),
+    stream_api = FALSE
+  )
+  input <- .acm$list_acme_domain_validations_input(NextToken = NextToken, MaxResults = MaxResults, AcmeEndpointArn = AcmeEndpointArn)
+  output <- .acm$list_acme_domain_validations_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$list_acme_domain_validations <- acm_list_acme_domain_validations
+
+#' Retrieves a list of ACME endpoints in your account
+#'
+#' @description
+#' Retrieves a list of ACME endpoints in your account. Use this operation to view all configured ACME endpoints and their current status.
+#'
+#' @usage
+#' acm_list_acme_endpoints(NextToken, MaxResults)
+#'
+#' @param NextToken A token for pagination.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AcmeEndpoints = list(
+#'     list(
+#'       AcmeEndpointArn = "string",
+#'       EndpointUrl = "string",
+#'       Status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED",
+#'       FailureReason = "string",
+#'       AuthorizationBehavior = "PRE_APPROVED",
+#'       Contact = "REQUIRED"|"NOT_REQUIRED",
+#'       CertificateAuthority = list(
+#'         PublicCertificateAuthority = list(
+#'           AllowedKeyAlgorithms = list(
+#'             "RSA_2048"|"EC_prime256v1"|"EC_secp384r1"
+#'           )
+#'         )
+#'       ),
+#'       CertificateTags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_acme_endpoints(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_list_acme_endpoints
+#'
+#' @aliases acm_list_acme_endpoints
+acm_list_acme_endpoints <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAcmeEndpoints",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AcmeEndpoints"),
+    stream_api = FALSE
+  )
+  input <- .acm$list_acme_endpoints_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .acm$list_acme_endpoints_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$list_acme_endpoints <- acm_list_acme_endpoints
+
+#' Retrieves a list of external account bindings for the specified ACME
+#' endpoint
+#'
+#' @description
+#' Retrieves a list of external account bindings for the specified ACME endpoint.
+#'
+#' @usage
+#' acm_list_acme_external_account_bindings(NextToken, MaxResults,
+#'   AcmeEndpointArn)
+#'
+#' @param NextToken A token for pagination.
+#' @param MaxResults The maximum number of results to return.
+#' @param AcmeEndpointArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExternalAccountBindings = list(
+#'     list(
+#'       AcmeExternalAccountBindingArn = "string",
+#'       AcmeEndpointArn = "string",
+#'       RoleArn = "string",
+#'       ExpiresAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RevokedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUsedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_acme_external_account_bindings(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   AcmeEndpointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_list_acme_external_account_bindings
+#'
+#' @aliases acm_list_acme_external_account_bindings
+acm_list_acme_external_account_bindings <- function(NextToken = NULL, MaxResults = NULL, AcmeEndpointArn) {
+  op <- new_operation(
+    name = "ListAcmeExternalAccountBindings",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ExternalAccountBindings"),
+    stream_api = FALSE
+  )
+  input <- .acm$list_acme_external_account_bindings_input(NextToken = NextToken, MaxResults = MaxResults, AcmeEndpointArn = AcmeEndpointArn)
+  output <- .acm$list_acme_external_account_bindings_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$list_acme_external_account_bindings <- acm_list_acme_external_account_bindings
+
+#' Returns per-domain validation summaries for an ACM certificate
+#'
+#' @description
+#' Returns per-domain validation summaries for an ACM certificate. Each summary includes the domain name, the active validation configuration, and the requested validation configuration when a validation method migration is in progress. You can use the results to monitor the progress of an email-to-DNS validation migration and to retrieve the CNAME records required for DNS validation.
+#'
+#' @usage
+#' acm_list_certificate_domain_validations(CertificateArn, NextToken,
+#'   MaxItems)
+#'
+#' @param CertificateArn &#91;required&#93; The Amazon Resource Name (ARN) of the certificate for which to list domain validation summaries.
+#' @param NextToken A token returned by a previous call to [`list_certificate_domain_validations`][acm_list_certificate_domain_validations]. If the number of results exceeds `MaxItems`, use this token to retrieve the next page of results.
+#' @param MaxItems The maximum number of domain validation summaries to return. If you don't specify a value, the default is 1000.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainValidationSummaryList = list(
+#'     list(
+#'       DomainName = "string",
+#'       ActiveValidationConfiguration = list(
+#'         ValidationMethod = "EMAIL"|"DNS"|"HTTP",
+#'         ValidationChallenge = list(
+#'           EmailValidationChallenge = list(
+#'             ValidationEmails = list(
+#'               "string"
+#'             ),
+#'             ValidationDomain = "string"
+#'           ),
+#'           DnsValidationChallenge = list(
+#'             ResourceRecord = list(
+#'               Name = "string",
+#'               Type = "CNAME",
+#'               Value = "string"
+#'             )
+#'           )
+#'         ),
+#'         ValidationStatus = "PENDING_VALIDATION"|"SUCCESS"|"FAILED"
+#'       ),
+#'       RequestedValidationConfiguration = list(
+#'         ValidationMethod = "EMAIL"|"DNS"|"HTTP",
+#'         ValidationChallenge = list(
+#'           EmailValidationChallenge = list(
+#'             ValidationEmails = list(
+#'               "string"
+#'             ),
+#'             ValidationDomain = "string"
+#'           ),
+#'           DnsValidationChallenge = list(
+#'             ResourceRecord = list(
+#'               Name = "string",
+#'               Type = "CNAME",
+#'               Value = "string"
+#'             )
+#'           )
+#'         ),
+#'         ValidationStatus = "PENDING_VALIDATION"|"SUCCESS"|"FAILED"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_certificate_domain_validations(
+#'   CertificateArn = "string",
+#'   NextToken = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_list_certificate_domain_validations
+#'
+#' @aliases acm_list_certificate_domain_validations
+acm_list_certificate_domain_validations <- function(CertificateArn, NextToken = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListCertificateDomainValidations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems", result_key = "DomainValidationSummaryList"),
+    stream_api = FALSE
+  )
+  input <- .acm$list_certificate_domain_validations_input(CertificateArn = CertificateArn, NextToken = NextToken, MaxItems = MaxItems)
+  output <- .acm$list_certificate_domain_validations_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$list_certificate_domain_validations <- acm_list_certificate_domain_validations
+
 #' Retrieves a list of certificate ARNs and domain names
 #'
 #' @description
 #' Retrieves a list of certificate ARNs and domain names. You can request that only certificates that match a specific status be listed. You can also filter by specific attributes of the certificate. Default filtering returns only `RSA_2048` certificates. For more information, see Filters.
+#' 
+#' By default, this action does not return certificates with a `CertificateKeyPairOrigin` of `ACME`. To include ACME certificates, specify `ACME` in the `CertificateKeyPairOrigins` filter.
 #'
 #' @usage
-#' acm_list_certificates(CertificateStatuses, Includes, NextToken,
-#'   MaxItems, SortBy, SortOrder)
+#' acm_list_certificates(CertificateStatuses, CertificateKeyPairOrigins,
+#'   Includes, NextToken, MaxItems, SortBy, SortOrder)
 #'
 #' @param CertificateStatuses Filter the certificate list by status value.
+#' @param CertificateKeyPairOrigins Filter the certificate list by certificate key pair origin. Specify one or more `CertificateKeyPairOrigin` values. Default filtering returns only certificates with key pair origin of `AWS_MANAGED` and `CUSTOMER_PROVIDED`.
 #' @param Includes Filter the certificate list. For more information, see the Filters structure.
 #' @param NextToken Use this parameter only when paginating results and only in a subsequent request after you receive a response with truncated results. Set it to the value of `NextToken` from the response you just received.
 #' @param MaxItems Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the `NextToken` element is sent in the response. Use this `NextToken` value in a subsequent request to retrieve additional items.
@@ -593,7 +1738,8 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #'       RevokedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       ManagedBy = "CLOUDFRONT"
+#'       ManagedBy = "CLOUDFRONT",
+#'       CertificateKeyPairOrigin = "AWS_MANAGED"|"ACME"|"CUSTOMER_PROVIDED"
 #'     )
 #'   )
 #' )
@@ -604,6 +1750,9 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #' svc$list_certificates(
 #'   CertificateStatuses = list(
 #'     "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED"
+#'   ),
+#'   CertificateKeyPairOrigins = list(
+#'     "AWS_MANAGED"|"ACME"|"CUSTOMER_PROVIDED"
 #'   ),
 #'   Includes = list(
 #'     extendedKeyUsage = list(
@@ -630,7 +1779,7 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #' @rdname acm_list_certificates
 #'
 #' @aliases acm_list_certificates
-acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, NextToken = NULL, MaxItems = NULL, SortBy = NULL, SortOrder = NULL) {
+acm_list_certificates <- function(CertificateStatuses = NULL, CertificateKeyPairOrigins = NULL, Includes = NULL, NextToken = NULL, MaxItems = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListCertificates",
     http_method = "POST",
@@ -639,7 +1788,7 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems", result_key = "CertificateSummaryList"),
     stream_api = FALSE
   )
-  input <- .acm$list_certificates_input(CertificateStatuses = CertificateStatuses, Includes = Includes, NextToken = NextToken, MaxItems = MaxItems, SortBy = SortBy, SortOrder = SortOrder)
+  input <- .acm$list_certificates_input(CertificateStatuses = CertificateStatuses, CertificateKeyPairOrigins = CertificateKeyPairOrigins, Includes = Includes, NextToken = NextToken, MaxItems = MaxItems, SortBy = SortBy, SortOrder = SortOrder)
   output <- .acm$list_certificates_output()
   config <- get_config()
   svc <- .acm$service(config, op)
@@ -653,6 +1802,8 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
 #'
 #' @description
 #' Lists the tags that have been applied to the ACM certificate. Use the certificate's Amazon Resource Name (ARN) to specify the certificate. To add a tag to an ACM certificate, use the [`add_tags_to_certificate`][acm_add_tags_to_certificate] action. To delete a tag, use the [`remove_tags_from_certificate`][acm_remove_tags_from_certificate] action.
+#' 
+#' This action applies only to the `certificate` resource type. For all other ACM resource types, use [`list_tags_for_resource`][acm_list_tags_for_resource] instead.
 #'
 #' @usage
 #' acm_list_tags_for_certificate(CertificateArn)
@@ -706,6 +1857,64 @@ acm_list_tags_for_certificate <- function(CertificateArn) {
   return(response)
 }
 .acm$operations$list_tags_for_certificate <- acm_list_tags_for_certificate
+
+#' Lists the tags associated with an ACM resource
+#'
+#' @description
+#' Lists the tags associated with an ACM resource.
+#' 
+#' Use this action for all ACM resource types except the `certificate` resource type. For certificate resources, use [`list_tags_for_certificate`][acm_list_tags_for_certificate] instead.
+#' 
+#' To add one or more tags, use the [`tag_resource`][acm_tag_resource] action. To remove one or more tags, use the [`untag_resource`][acm_untag_resource] action.
+#'
+#' @usage
+#' acm_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the ACM resource for which to list tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_list_tags_for_resource
+#'
+#' @aliases acm_list_tags_for_resource
+acm_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .acm$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$list_tags_for_resource <- acm_list_tags_for_resource
 
 #' Adds or modifies account-level configurations in ACM
 #'
@@ -761,6 +1970,8 @@ acm_put_account_configuration <- function(ExpiryEvents = NULL, IdempotencyToken)
 #'
 #' @description
 #' Remove one or more tags from an ACM certificate. A tag consists of a key-value pair. If you do not specify the value portion of the tag when calling this function, the tag will be removed regardless of value. If you specify a value, the tag is removed only if it is associated with the specified value.
+#' 
+#' This action applies only to the `certificate` resource type. For all other ACM resource types, use [`untag_resource`][acm_untag_resource] instead.
 #' 
 #' To add tags to a certificate, use the [`add_tags_to_certificate`][acm_add_tags_to_certificate] action. To view all of the tags that have been applied to a specific ACM certificate, use the [`list_tags_for_certificate`][acm_list_tags_for_certificate] action.
 #'
@@ -894,9 +2105,9 @@ acm_renew_certificate <- function(CertificateArn) {
 #' -   `(63 octets).(63 octets).(63 octets).(62 octets)` is not legal because the total length of the DNS name (63+1+63+1+63+1+62) exceeds 253 octets.
 #' @param IdempotencyToken Customer chosen string that can be used to distinguish between calls to [`request_certificate`][acm_request_certificate]. Idempotency tokens time out after one hour. Therefore, if you call [`request_certificate`][acm_request_certificate] multiple times with the same idempotency token within one hour, ACM recognizes that you are requesting only one certificate and will issue only one. If you change the idempotency token for each call, ACM recognizes that you are requesting multiple certificates.
 #' @param DomainValidationOptions The domain name that you want ACM to use to send you emails so that you can validate domain ownership.
-#' @param Options You can use this parameter to specify whether to add the certificate to a certificate transparency log and export your certificate.
+#' @param Options You can use this parameter to specify whether to export your certificate.
 #' 
-#' Certificate transparency makes it possible to detect SSL/TLS certificates that have been mistakenly or maliciously issued. Certificates that have not been logged typically produce an error message in a browser. For more information, see [Opting Out of Certificate Transparency Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+#' Certificate transparency logging opt-out is no longer available. All public certificates are recorded in a certificate transparency log. For more information, see [Certificate Transparency Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency).
 #' 
 #' You can export public ACM certificates to use with Amazon Web Services services as well as outside the Amazon Web Services Cloud. For more information, see [Certificate Manager exportable public certificate](https://docs.aws.amazon.com/acm/latest/userguide/acm-exportable-certificates.html).
 #' @param CertificateAuthorityArn The Amazon Resource Name (ARN) of the private certificate authority (CA) that will be used to issue the certificate. If you do not provide an ARN and you are trying to request a private certificate, ACM will attempt to issue a public certificate. For more information about private CAs, see the [Amazon Web Services Private Certificate Authority](https://docs.aws.amazon.com/privateca/latest/userguide/PcaWelcome.html) user guide. The ARN must have the following form:
@@ -945,7 +2156,8 @@ acm_renew_certificate <- function(CertificateArn) {
 #'   ),
 #'   Options = list(
 #'     CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED",
-#'     Export = "ENABLED"|"DISABLED"
+#'     Export = "ENABLED"|"DISABLED",
+#'     ValidationMethod = "EMAIL"|"DNS"|"HTTP"
 #'   ),
 #'   CertificateAuthorityArn = "string",
 #'   Tags = list(
@@ -1042,6 +2254,98 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
   return(response)
 }
 .acm$operations$resend_validation_email <- acm_resend_validation_email
+
+#' Revokes an ACME account, preventing it from requesting or revoking
+#' certificates
+#'
+#' @description
+#' Revokes an ACME account, preventing it from requesting or revoking certificates. This operation is irreversible.
+#'
+#' @usage
+#' acm_revoke_acme_account(AcmeEndpointArn, AccountUrl)
+#'
+#' @param AcmeEndpointArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME endpoint.
+#' @param AccountUrl &#91;required&#93; The URL of the ACME account to revoke.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$revoke_acme_account(
+#'   AcmeEndpointArn = "string",
+#'   AccountUrl = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_revoke_acme_account
+#'
+#' @aliases acm_revoke_acme_account
+acm_revoke_acme_account <- function(AcmeEndpointArn, AccountUrl) {
+  op <- new_operation(
+    name = "RevokeAcmeAccount",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$revoke_acme_account_input(AcmeEndpointArn = AcmeEndpointArn, AccountUrl = AccountUrl)
+  output <- .acm$revoke_acme_account_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$revoke_acme_account <- acm_revoke_acme_account
+
+#' Revokes an external account binding, preventing new ACME accounts from
+#' being registered using this binding
+#'
+#' @description
+#' Revokes an external account binding, preventing new ACME accounts from being registered using this binding. Existing ACME accounts that were previously registered using the binding are not affected and must be revoked separately.
+#'
+#' @usage
+#' acm_revoke_acme_external_account_binding(AcmeExternalAccountBindingArn)
+#'
+#' @param AcmeExternalAccountBindingArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME external account binding to revoke.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$revoke_acme_external_account_binding(
+#'   AcmeExternalAccountBindingArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_revoke_acme_external_account_binding
+#'
+#' @aliases acm_revoke_acme_external_account_binding
+acm_revoke_acme_external_account_binding <- function(AcmeExternalAccountBindingArn) {
+  op <- new_operation(
+    name = "RevokeAcmeExternalAccountBinding",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$revoke_acme_external_account_binding_input(AcmeExternalAccountBindingArn = AcmeExternalAccountBindingArn)
+  output <- .acm$revoke_acme_external_account_binding_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$revoke_acme_external_account_binding <- acm_revoke_acme_external_account_binding
 
 #' Revokes a public ACM certificate
 #'
@@ -1246,7 +2550,10 @@ acm_revoke_certificate <- function(CertificateArn, RevocationReason) {
 #'           Type = "IMPORTED"|"AMAZON_ISSUED"|"PRIVATE",
 #'           ExportOption = "ENABLED"|"DISABLED",
 #'           ManagedBy = "CLOUDFRONT",
-#'           ValidationMethod = "EMAIL"|"DNS"|"HTTP"
+#'           ValidationMethod = "EMAIL"|"DNS"|"HTTP",
+#'           CertificateKeyPairOrigin = "AWS_MANAGED"|"ACME"|"CUSTOMER_PROVIDED",
+#'           AcmeEndpointArn = "string",
+#'           AcmeAccountId = "string"
 #'         )
 #'       )
 #'     )
@@ -1310,13 +2617,16 @@ acm_revoke_certificate <- function(CertificateArn, RevocationReason) {
 #'         Exported = TRUE|FALSE,
 #'         ExportOption = "ENABLED"|"DISABLED",
 #'         ManagedBy = "CLOUDFRONT",
-#'         ValidationMethod = "EMAIL"|"DNS"|"HTTP"
+#'         ValidationMethod = "EMAIL"|"DNS"|"HTTP",
+#'         CertificateKeyPairOrigin = "AWS_MANAGED"|"ACME"|"CUSTOMER_PROVIDED",
+#'         AcmeEndpointArn = "string",
+#'         AcmeAccountId = "string"
 #'       )
 #'     )
 #'   ),
 #'   MaxResults = 123,
 #'   NextToken = "string",
-#'   SortBy = "CREATED_AT"|"NOT_AFTER"|"STATUS"|"RENEWAL_STATUS"|"EXPORTED"|"IN_USE"|"NOT_BEFORE"|"KEY_ALGORITHM"|"TYPE"|"CERTIFICATE_ARN"|"COMMON_NAME"|"REVOKED_AT"|"RENEWAL_ELIGIBILITY"|"ISSUED_AT"|"MANAGED_BY"|"EXPORT_OPTION"|"VALIDATION_METHOD"|"IMPORTED_AT",
+#'   SortBy = "CREATED_AT"|"NOT_AFTER"|"STATUS"|"RENEWAL_STATUS"|"EXPORTED"|"IN_USE"|"NOT_BEFORE"|"KEY_ALGORITHM"|"TYPE"|"CERTIFICATE_ARN"|"COMMON_NAME"|"REVOKED_AT"|"RENEWAL_ELIGIBILITY"|"ISSUED_AT"|"MANAGED_BY"|"EXPORT_OPTION"|"VALIDATION_METHOD"|"IMPORTED_AT"|"ACME_ENDPOINT_ARN"|"ACME_ACCOUNT_ID"|"CERTIFICATE_KEY_PAIR_ORIGIN",
 #'   SortOrder = "ASCENDING"|"DESCENDING"
 #' )
 #' ```
@@ -1345,10 +2655,230 @@ acm_search_certificates <- function(FilterStatement = NULL, MaxResults = NULL, N
 }
 .acm$operations$search_certificates <- acm_search_certificates
 
-#' Updates a certificate
+#' Adds one or more tags to an ACM resource
 #'
 #' @description
-#' Updates a certificate. You can use this function to specify whether to opt in to or out of recording your certificate in a certificate transparency log and exporting. For more information, see [Opting Out of Certificate Transparency Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency) and [Certificate Manager Exportable Managed Certificates](https://docs.aws.amazon.com/acm/latest/userguide/acm-exportable-certificates.html).
+#' Adds one or more tags to an ACM resource. Tags are labels that you can use to identify and organize your Amazon Web Services resources. Each tag consists of a `key` and an optional `value`.
+#' 
+#' Use this action for all ACM resource types except the `certificate` resource type. For certificate resources, use [`add_tags_to_certificate`][acm_add_tags_to_certificate] instead.
+#' 
+#' To remove one or more tags, use the [`untag_resource`][acm_untag_resource] action. To view all of the tags that have been applied to a resource, use the [`list_tags_for_resource`][acm_list_tags_for_resource] action.
+#'
+#' @usage
+#' acm_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the ACM resource to which the tag is to be applied.
+#' @param Tags &#91;required&#93; The key-value pair that defines the tag to apply.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_tag_resource
+#'
+#' @aliases acm_tag_resource
+acm_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .acm$tag_resource_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$tag_resource <- acm_tag_resource
+
+#' Removes one or more tags from an ACM resource
+#'
+#' @description
+#' Removes one or more tags from an ACM resource.
+#' 
+#' Use this action for all ACM resource types except the `certificate` resource type. For certificate resources, use [`remove_tags_from_certificate`][acm_remove_tags_from_certificate] instead.
+#' 
+#' To add one or more tags, use the [`tag_resource`][acm_tag_resource] action. To view all of the tags that have been applied to a resource, use the [`list_tags_for_resource`][acm_list_tags_for_resource] action.
+#'
+#' @usage
+#' acm_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the ACM resource from which the tag is to be removed.
+#' @param TagKeys &#91;required&#93; The key of each tag to remove.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_untag_resource
+#'
+#' @aliases acm_untag_resource
+acm_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .acm$untag_resource_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$untag_resource <- acm_untag_resource
+
+#' Updates the prevalidation configuration of an existing domain validation
+#'
+#' @description
+#' Updates the prevalidation configuration of an existing domain validation.
+#'
+#' @usage
+#' acm_update_acme_domain_validation(AcmeDomainValidationArn,
+#'   PrevalidationOptions)
+#'
+#' @param AcmeDomainValidationArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME domain validation to update.
+#' @param PrevalidationOptions The updated prevalidation options.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_acme_domain_validation(
+#'   AcmeDomainValidationArn = "string",
+#'   PrevalidationOptions = list(
+#'     DnsPrevalidation = list(
+#'       DomainScope = list(
+#'         ExactDomain = "ENABLED"|"DISABLED",
+#'         Subdomains = "ENABLED"|"DISABLED",
+#'         Wildcards = "ENABLED"|"DISABLED"
+#'       ),
+#'       HostedZoneId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_update_acme_domain_validation
+#'
+#' @aliases acm_update_acme_domain_validation
+acm_update_acme_domain_validation <- function(AcmeDomainValidationArn, PrevalidationOptions = NULL) {
+  op <- new_operation(
+    name = "UpdateAcmeDomainValidation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$update_acme_domain_validation_input(AcmeDomainValidationArn = AcmeDomainValidationArn, PrevalidationOptions = PrevalidationOptions)
+  output <- .acm$update_acme_domain_validation_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$update_acme_domain_validation <- acm_update_acme_domain_validation
+
+#' Updates the configuration of an existing ACME endpoint
+#'
+#' @description
+#' Updates the configuration of an existing ACME endpoint. You can change the authorization behavior, contact requirement, or certificate authority settings.
+#'
+#' @usage
+#' acm_update_acme_endpoint(AcmeEndpointArn, AuthorizationBehavior,
+#'   Contact, CertificateAuthority)
+#'
+#' @param AcmeEndpointArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACME endpoint to update.
+#' @param AuthorizationBehavior The updated authorization behavior.
+#' @param Contact The updated contact requirement.
+#' @param CertificateAuthority The updated certificate authority configuration.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_acme_endpoint(
+#'   AcmeEndpointArn = "string",
+#'   AuthorizationBehavior = "PRE_APPROVED",
+#'   Contact = "REQUIRED"|"NOT_REQUIRED",
+#'   CertificateAuthority = list(
+#'     PublicCertificateAuthority = list(
+#'       AllowedKeyAlgorithms = list(
+#'         "RSA_2048"|"EC_prime256v1"|"EC_secp384r1"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_update_acme_endpoint
+#'
+#' @aliases acm_update_acme_endpoint
+acm_update_acme_endpoint <- function(AcmeEndpointArn, AuthorizationBehavior = NULL, Contact = NULL, CertificateAuthority = NULL) {
+  op <- new_operation(
+    name = "UpdateAcmeEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$update_acme_endpoint_input(AcmeEndpointArn = AcmeEndpointArn, AuthorizationBehavior = AuthorizationBehavior, Contact = Contact, CertificateAuthority = CertificateAuthority)
+  output <- .acm$update_acme_endpoint_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$update_acme_endpoint <- acm_update_acme_endpoint
+
+#' Updates certificate options
+#'
+#' @description
+#' Updates certificate options. You can use this operation to change the domain validation method or specify whether to export your certificate. For more information, see [Migrate from email to DNS validation](https://docs.aws.amazon.com/acm/latest/userguide/) and [Certificate Manager Exportable Managed Certificates](https://docs.aws.amazon.com/acm/latest/userguide/acm-exportable-certificates.html).
 #'
 #' @usage
 #' acm_update_certificate_options(CertificateArn, Options)
@@ -1356,7 +2886,7 @@ acm_search_certificates <- function(FilterStatement = NULL, MaxResults = NULL, N
 #' @param CertificateArn &#91;required&#93; ARN of the requested certificate to update. This must be of the form:
 #' 
 #' `arn:aws:acm:us-east-1:account:certificate/12345678-1234-1234-1234-123456789012 `
-#' @param Options &#91;required&#93; Use to update the options for your certificate. Currently, you can specify whether to add your certificate to a transparency log or export your certificate. Certificate transparency makes it possible to detect SSL/TLS certificates that have been mistakenly or maliciously issued. Certificates that have not been logged typically produce an error message in a browser.
+#' @param Options &#91;required&#93; Use to update the options for your certificate. Currently, you can change the domain validation method or specify whether to export your certificate. For more information about migrating from email to DNS validation, see [Migrate from email to DNS validation](https://docs.aws.amazon.com/acm/latest/userguide/).
 #'
 #' @return
 #' An empty list.
@@ -1367,7 +2897,8 @@ acm_search_certificates <- function(FilterStatement = NULL, MaxResults = NULL, N
 #'   CertificateArn = "string",
 #'   Options = list(
 #'     CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED",
-#'     Export = "ENABLED"|"DISABLED"
+#'     Export = "ENABLED"|"DISABLED",
+#'     ValidationMethod = "EMAIL"|"DNS"|"HTTP"
 #'   )
 #' )
 #' ```

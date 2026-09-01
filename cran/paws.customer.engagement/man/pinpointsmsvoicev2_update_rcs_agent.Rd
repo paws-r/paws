@@ -11,7 +11,11 @@ pinpointsmsvoicev2_update_rcs_agent(
   SelfManagedOptOutsEnabled = NULL,
   TwoWayChannelArn = NULL,
   TwoWayChannelRole = NULL,
-  TwoWayEnabled = NULL
+  TwoWayEnabled = NULL,
+  TwoWayMediaS3BucketName = NULL,
+  TwoWayMediaS3KeyPrefix = NULL,
+  TwoWayMediaS3Role = NULL,
+  TwoWayRcsEventsEnabled = NULL
 )
 }
 \arguments{
@@ -28,6 +32,14 @@ pinpointsmsvoicev2_update_rcs_agent(
 \item{TwoWayChannelRole}{An optional IAM Role Arn for a service to assume, to be able to post inbound SMS messages.}
 
 \item{TwoWayEnabled}{By default this is set to false. When set to true you can receive incoming text messages from your end recipients.}
+
+\item{TwoWayMediaS3BucketName}{The name of the S3 bucket where inbound RCS media files are stored. Two-way messaging must be enabled on the agent. To remove the media configuration, pass the sentinel value \code{UNSET_RCS_MEDIA_CONFIGURATION} for both this field and TwoWayMediaS3Role.}
+
+\item{TwoWayMediaS3KeyPrefix}{The key prefix used for inbound RCS media objects in the S3 bucket.}
+
+\item{TwoWayMediaS3Role}{The ARN of the IAM role used to write inbound RCS media files to the S3 bucket. The role must have \code{s3:PutObject} permission on the bucket and a trust policy allowing \code{sms-voice.amazonaws.com} to assume it. To remove the media configuration, pass the sentinel value \code{UNSET_RCS_MEDIA_CONFIGURATION} for both this field and TwoWayMediaS3BucketName.}
+
+\item{TwoWayRcsEventsEnabled}{The list of RCS event types to enable for two-way messaging. Pass an empty list to disable all event types. The special value \code{ALL} enables all current and future event types and must be the sole element if used.}
 }
 \description{
 Updates the configuration of an existing RCS agent. You can update the opt-out list, deletion protection, two-way messaging settings, and self-managed opt-outs configuration.

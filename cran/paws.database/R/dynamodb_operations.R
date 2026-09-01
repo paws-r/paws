@@ -345,11 +345,24 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @param OnDemandThroughput Sets the maximum number of read and write units for the specified table in on-demand capacity mode. If you use this parameter, you must specify `MaxReadRequestUnits`, `MaxWriteRequestUnits`, or both.
 #' @param GlobalTableSourceArn The Amazon Resource Name (ARN) of the source table used for the creation of a multi-account global table.
 #' @param GlobalTableSettingsReplicationMode Controls the settings synchronization mode for the global table. For multi-account global tables, this parameter is required and the only supported value is ENABLED. For same-account global tables, this parameter is set to ENABLED_WITH_OVERRIDES.
+#' @param VectorIndexes One or more vector indexes to be created on the table. Each vector index enables similarity search on a vector attribute. Each element in the list consists of:
+#' 
+#' -   `IndexName` - The name of the vector index. Must be unique within the table.
+#' 
+#' -   `VectorAttribute` - The attribute that contains vector embeddings. If multiple vector indexes reference the same attribute, they must all use the same number of dimensions.
+#' 
+#' -   `Dimensions` - The number of dimensions in each vector.
+#' 
+#' -   `DistanceFunction` - The distance function used to calculate similarity. Valid values: `COSINE`, `EUCLIDEAN`, `DOT_PRODUCT`.
+#' 
+#' -   `Projection` - Specifies attributes that are copied (projected) from the table into the vector index. The total number of projected non-key attributes is shared across the vector attribute (counts as 1) and `INLINE_FILTER` search schema elements (each counts as 1). `HASH` search schema elements do not count toward this limit.
+#' 
+#' -   `SearchSchema` - (Optional) Defines the partition key (`HASH`) and inline filter (`INLINE_FILTER`) attributes for the vector index.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_create_table
-dynamodb_create_table <- function(AttributeDefinitions = NULL, TableName, KeySchema = NULL, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, WarmThroughput = NULL, ResourcePolicy = NULL, OnDemandThroughput = NULL, GlobalTableSourceArn = NULL, GlobalTableSettingsReplicationMode = NULL) {
+dynamodb_create_table <- function(AttributeDefinitions = NULL, TableName, KeySchema = NULL, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, WarmThroughput = NULL, ResourcePolicy = NULL, OnDemandThroughput = NULL, GlobalTableSourceArn = NULL, GlobalTableSettingsReplicationMode = NULL, VectorIndexes = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
@@ -358,7 +371,7 @@ dynamodb_create_table <- function(AttributeDefinitions = NULL, TableName, KeySch
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, WarmThroughput = WarmThroughput, ResourcePolicy = ResourcePolicy, OnDemandThroughput = OnDemandThroughput, GlobalTableSourceArn = GlobalTableSourceArn, GlobalTableSettingsReplicationMode = GlobalTableSettingsReplicationMode)
+  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, WarmThroughput = WarmThroughput, ResourcePolicy = ResourcePolicy, OnDemandThroughput = OnDemandThroughput, GlobalTableSourceArn = GlobalTableSourceArn, GlobalTableSettingsReplicationMode = GlobalTableSettingsReplicationMode, VectorIndexes = VectorIndexes)
   output <- .dynamodb$create_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config, op)
@@ -1592,6 +1605,14 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' 
 #' If you specify any attributes that are part of an index key, then the data types for those attributes must match those of the schema in the table's attribute definition.
 #' 
+#' If the table has vector indexes, the following validations apply to write operations. A violation of any of these constraints results in a `ValidationException`:
+#' 
+#' -   The vector attribute must be a list of numbers with dimensions matching the index configuration.
+#' 
+#' -   Vector values must fit in 32-bit IEEE-754 floating point format (f32).
+#' 
+#' -   Partition key and inline filter attributes defined in the search schema must have data types matching the index schema definition.
+#' 
 #' Empty String and Binary attribute values are allowed. Attribute values of type String and Binary must have a length greater than zero if the attribute is used as a key attribute for a table or index.
 #' 
 #' For more information about primary keys, see [Primary Key](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey) in the *Amazon DynamoDB Developer Guide*.
@@ -1927,11 +1948,12 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #' @param ProvisionedThroughputOverride Provisioned throughput settings for the restored table.
 #' @param OnDemandThroughputOverride Overrides the on-demand throughput settings for this replica table. If you don't specify a value for this parameter, it uses the source table's on-demand throughput settings.
 #' @param SSESpecificationOverride The new server-side encryption settings for the restored table.
+#' @param VectorIndexOverride The vector indexes for the restored table. If not specified, all vector indexes from the backup are restored. The indexes provided must match existing vector indexes from the backup. You can choose to exclude some or all of the vector indexes at the time of restore.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_restore_table_from_backup
-dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, BillingModeOverride = NULL, GlobalSecondaryIndexOverride = NULL, LocalSecondaryIndexOverride = NULL, ProvisionedThroughputOverride = NULL, OnDemandThroughputOverride = NULL, SSESpecificationOverride = NULL) {
+dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, BillingModeOverride = NULL, GlobalSecondaryIndexOverride = NULL, LocalSecondaryIndexOverride = NULL, ProvisionedThroughputOverride = NULL, OnDemandThroughputOverride = NULL, SSESpecificationOverride = NULL, VectorIndexOverride = NULL) {
   op <- new_operation(
     name = "RestoreTableFromBackup",
     http_method = "POST",
@@ -1940,7 +1962,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodb$restore_table_from_backup_input(TargetTableName = TargetTableName, BackupArn = BackupArn, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride, OnDemandThroughputOverride = OnDemandThroughputOverride, SSESpecificationOverride = SSESpecificationOverride)
+  input <- .dynamodb$restore_table_from_backup_input(TargetTableName = TargetTableName, BackupArn = BackupArn, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride, OnDemandThroughputOverride = OnDemandThroughputOverride, SSESpecificationOverride = SSESpecificationOverride, VectorIndexOverride = VectorIndexOverride)
   output <- .dynamodb$restore_table_from_backup_output()
   config <- get_config()
   svc <- .dynamodb$service(config, op)
@@ -1965,15 +1987,18 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' @param RestoreDateTime Time in the past to restore the table to.
 #' @param BillingModeOverride The billing mode of the restored table.
 #' @param GlobalSecondaryIndexOverride List of global secondary indexes for the restored table. The indexes provided should match existing secondary indexes. You can choose to exclude some or all of the indexes at the time of restore.
+#' 
+#' The `WarmThroughput` setting is not supported on global secondary indexes when you use [`restore_table_to_point_in_time`][dynamodb_restore_table_to_point_in_time]. Although `WarmThroughput` appears in the shared index definition, including it in a `GlobalSecondaryIndexOverride` entry causes the request to fail with a validation error.
 #' @param LocalSecondaryIndexOverride List of local secondary indexes for the restored table. The indexes provided should match existing secondary indexes. You can choose to exclude some or all of the indexes at the time of restore.
 #' @param ProvisionedThroughputOverride Provisioned throughput settings for the restored table.
 #' @param OnDemandThroughputOverride Overrides the on-demand throughput settings for this replica table. If you don't specify a value for this parameter, it uses the source table's on-demand throughput settings.
 #' @param SSESpecificationOverride The new server-side encryption settings for the restored table.
+#' @param VectorIndexOverride The vector indexes for the restored table. If not specified, all vector indexes from the source table are restored. The indexes provided must match existing vector indexes from the source table. You can choose to exclude some or all of the vector indexes at the time of restore.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_restore_table_to_point_in_time
-dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, SourceTableName = NULL, TargetTableName, UseLatestRestorableTime = NULL, RestoreDateTime = NULL, BillingModeOverride = NULL, GlobalSecondaryIndexOverride = NULL, LocalSecondaryIndexOverride = NULL, ProvisionedThroughputOverride = NULL, OnDemandThroughputOverride = NULL, SSESpecificationOverride = NULL) {
+dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, SourceTableName = NULL, TargetTableName, UseLatestRestorableTime = NULL, RestoreDateTime = NULL, BillingModeOverride = NULL, GlobalSecondaryIndexOverride = NULL, LocalSecondaryIndexOverride = NULL, ProvisionedThroughputOverride = NULL, OnDemandThroughputOverride = NULL, SSESpecificationOverride = NULL, VectorIndexOverride = NULL) {
   op <- new_operation(
     name = "RestoreTableToPointInTime",
     http_method = "POST",
@@ -1982,7 +2007,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodb$restore_table_to_point_in_time_input(SourceTableArn = SourceTableArn, SourceTableName = SourceTableName, TargetTableName = TargetTableName, UseLatestRestorableTime = UseLatestRestorableTime, RestoreDateTime = RestoreDateTime, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride, OnDemandThroughputOverride = OnDemandThroughputOverride, SSESpecificationOverride = SSESpecificationOverride)
+  input <- .dynamodb$restore_table_to_point_in_time_input(SourceTableArn = SourceTableArn, SourceTableName = SourceTableName, TargetTableName = TargetTableName, UseLatestRestorableTime = UseLatestRestorableTime, RestoreDateTime = RestoreDateTime, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride, OnDemandThroughputOverride = OnDemandThroughputOverride, SSESpecificationOverride = SSESpecificationOverride, VectorIndexOverride = VectorIndexOverride)
   output <- .dynamodb$restore_table_to_point_in_time_output()
   config <- get_config()
   svc <- .dynamodb$service(config, op)
@@ -2132,6 +2157,61 @@ dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, L
   return(response)
 }
 .dynamodb$operations$scan <- dynamodb_scan
+
+#' Performs a vector similarity search on a vector index associated with an
+#' Amazon DynamoDB table, and returns the most similar items sorted by
+#' similarity score based on the distance function configured for the index
+#'
+#' @description
+#' Performs a vector similarity search on a vector index associated with an Amazon DynamoDB table, and returns the most similar items sorted by similarity score based on the distance function configured for the index.
+#'
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_search_vectors/](https://www.paws-r-sdk.com/docs/dynamodb_search_vectors/) for full documentation.
+#'
+#' @param TableName &#91;required&#93; The name or Amazon Resource Name (ARN) of the table containing the vector index.
+#' @param IndexName &#91;required&#93; The name of the vector index to search. The index must be in the `ACTIVE` state.
+#' @param ReturnConsumedCapacity Determines the level of detail about either provisioned or on-demand throughput consumption that is returned in the response:
+#' 
+#' -   `INDEXES` - The response includes the aggregate `ConsumedCapacity` for the operation, together with `ConsumedCapacity` for each table and secondary index that was accessed.
+#' 
+#'     Note that some operations, such as [`get_item`][dynamodb_get_item] and [`batch_get_item`][dynamodb_batch_get_item], do not access any indexes at all. In these cases, specifying `INDEXES` will only return `ConsumedCapacity` information for table(s).
+#' 
+#' -   `TOTAL` - The response includes only the aggregate `ConsumedCapacity` for the operation.
+#' 
+#' -   `NONE` - No `ConsumedCapacity` details are included in the response.
+#' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression. Use the `#` character in an expression to dereference an attribute name.
+#' @param ExpressionAttributeValues One or more values that can be substituted in an expression. Use the `:` character in an expression to dereference an attribute value.
+#' @param ProjectionExpression A string that identifies one or more attributes to retrieve from the index. Separate attribute names with commas. If not specified, the operation returns all attributes projected into the vector index.
+#' 
+#' Only attributes projected into the vector index can be retrieved.
+#' @param SearchVector &#91;required&#93; The search vector to compare against the indexed vectors. Each element is a 32-bit IEEE-754 floating point number, provided in DynamoDB list format.
+#' 
+#' The number of dimensions must match the number of dimensions configured for the vector index.
+#' @param SearchConditionExpression A condition expression used to filter the vector search results. The expression can reference attributes defined in the vector index search schema, including `HASH` and `INLINE_FILTER` key elements.
+#' 
+#' Only the equality operator (`=`) is supported for `HASH` attributes. Comparison and range operators are supported for `INLINE_FILTER` attributes. Only top-level attributes from the search schema can be referenced.
+#' @param TopK &#91;required&#93; The number of most similar results to return.
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_search_vectors
+dynamodb_search_vectors <- function(TableName, IndexName, ReturnConsumedCapacity = NULL, ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL, ProjectionExpression = NULL, SearchVector, SearchConditionExpression = NULL, TopK) {
+  op <- new_operation(
+    name = "SearchVectors",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .dynamodb$search_vectors_input(TableName = TableName, IndexName = IndexName, ReturnConsumedCapacity = ReturnConsumedCapacity, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ProjectionExpression = ProjectionExpression, SearchVector = SearchVector, SearchConditionExpression = SearchConditionExpression, TopK = TopK)
+  output <- .dynamodb$search_vectors_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$search_vectors <- dynamodb_search_vectors
 
 #' Associate a set of tags with an Amazon DynamoDB resource
 #'
@@ -2668,11 +2748,14 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' -   `ENABLED`: Defines settings replication on a regional table to be used as a source table for creating Multi-Account Global Table.
 #' 
 #' -   `DISABLED`: Remove settings replication on a regional table. Settings replication needs to be defined to ENABLED again in order to create a Multi-Account Global Table using this table.
+#' @param VectorIndexUpdates A list of vector indexes to be added to or removed from the table. You can add or remove one vector index for each [`update_table`][dynamodb_update_table] operation.
+#' 
+#' To add a vector index, specify `IndexName`, `VectorAttribute`, `Dimensions`, `DistanceFunction`, and `Projection`. To remove a vector index, specify only the `IndexName`.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_table
-dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, MultiRegionConsistency = NULL, GlobalTableWitnessUpdates = NULL, OnDemandThroughput = NULL, WarmThroughput = NULL, GlobalTableSettingsReplicationMode = NULL) {
+dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, MultiRegionConsistency = NULL, GlobalTableWitnessUpdates = NULL, OnDemandThroughput = NULL, WarmThroughput = NULL, GlobalTableSettingsReplicationMode = NULL, VectorIndexUpdates = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
@@ -2681,7 +2764,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, MultiRegionConsistency = MultiRegionConsistency, GlobalTableWitnessUpdates = GlobalTableWitnessUpdates, OnDemandThroughput = OnDemandThroughput, WarmThroughput = WarmThroughput, GlobalTableSettingsReplicationMode = GlobalTableSettingsReplicationMode)
+  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, MultiRegionConsistency = MultiRegionConsistency, GlobalTableWitnessUpdates = GlobalTableWitnessUpdates, OnDemandThroughput = OnDemandThroughput, WarmThroughput = WarmThroughput, GlobalTableSettingsReplicationMode = GlobalTableSettingsReplicationMode, VectorIndexUpdates = VectorIndexUpdates)
   output <- .dynamodb$update_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config, op)

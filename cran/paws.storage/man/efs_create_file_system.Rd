@@ -43,7 +43,7 @@ EFS accepts only symmetric KMS keys. You cannot use asymmetric KMS keys with Ama
 
 Default is \code{bursting}.}
 
-\item{ProvisionedThroughputInMibps}{The throughput, measured in mebibytes per second (MiBps), that you want to provision for a file system that you're creating. Required if \code{ThroughputMode} is set to \code{provisioned}. Valid values are 1-3414 MiBps, with the upper limit depending on Region. To increase this limit, contact Amazon Web ServicesSupport. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits}{Amazon EFS quotas that you can increase} in the \emph{Amazon EFS User Guide}.}
+\item{ProvisionedThroughputInMibps}{The throughput, measured in mebibytes per second (MiBps), that you want to provision for a file system that you're creating. Required if \code{ThroughputMode} is set to \code{provisioned}. Valid values are 1-3414 MiBps, with the upper limit depending on Region. To increase this limit, contact Amazon Web Services Support. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits}{Amazon EFS quotas that you can increase} in the \emph{Amazon EFS User Guide}.}
 
 \item{AvailabilityZoneName}{For One Zone file systems, specify the Amazon Web Services Availability Zone in which to create the file system. Use the format \verb{us-east-1a} to specify the Availability Zone. For more information about One Zone file systems, see \href{https://docs.aws.amazon.com/efs/latest/ug/#file-system-type}{EFS file system types} in the \emph{Amazon EFS User Guide}.
 

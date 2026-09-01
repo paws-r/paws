@@ -55,7 +55,18 @@ NULL
 #'       )
 #'     ),
 #'     recordingScope = "INTERNAL"|"PAID",
-#'     servicePrincipal = "string"
+#'     servicePrincipal = "string",
+#'     connectorArn = "string",
+#'     scopeConfiguration = list(
+#'       scopeType = "string",
+#'       scopeValues = list(
+#'         "string"
+#'       ),
+#'       allRegions = TRUE|FALSE,
+#'       includedRegions = list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -538,6 +549,50 @@ configservice_delete_conformance_pack <- function(ConformancePackName) {
 }
 .configservice$operations$delete_conformance_pack <- configservice_delete_conformance_pack
 
+#' Deletes the specified connector
+#'
+#' @description
+#' Deletes the specified connector.
+#'
+#' @usage
+#' configservice_delete_connector(Arn)
+#'
+#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the connector that you want to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connector(
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_delete_connector
+#'
+#' @aliases configservice_delete_connector
+configservice_delete_connector <- function(Arn) {
+  op <- new_operation(
+    name = "DeleteConnector",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .configservice$delete_connector_input(Arn = Arn)
+  output <- .configservice$delete_connector_output()
+  config <- get_config()
+  svc <- .configservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$delete_connector <- configservice_delete_connector
+
 #' Deletes the delivery channel
 #'
 #' @description
@@ -1014,9 +1069,10 @@ configservice_delete_retention_configuration <- function(RetentionConfigurationN
 #'
 #' @usage
 #' configservice_delete_service_linked_configuration_recorder(
-#'   ServicePrincipal)
+#'   ServicePrincipal, Arn)
 #'
-#' @param ServicePrincipal &#91;required&#93; The service principal of the Amazon Web Services service for the service-linked configuration recorder that you want to delete.
+#' @param ServicePrincipal The service principal of the Amazon Web Services service for the service-linked configuration recorder that you want to delete. This field is only supported for Amazon Web Services service principals. For third-party service-linked configuration recorders, use `Arn` instead.
+#' @param Arn The Amazon Resource Name (ARN) of the service-linked configuration recorder that you want to delete. For third-party service-linked configuration recorders, you must use `Arn`. You must specify exactly one of `Arn` or `ServicePrincipal`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1030,7 +1086,8 @@ configservice_delete_retention_configuration <- function(RetentionConfigurationN
 #' @section Request syntax:
 #' ```
 #' svc$delete_service_linked_configuration_recorder(
-#'   ServicePrincipal = "string"
+#'   ServicePrincipal = "string",
+#'   Arn = "string"
 #' )
 #' ```
 #'
@@ -1039,7 +1096,7 @@ configservice_delete_retention_configuration <- function(RetentionConfigurationN
 #' @rdname configservice_delete_service_linked_configuration_recorder
 #'
 #' @aliases configservice_delete_service_linked_configuration_recorder
-configservice_delete_service_linked_configuration_recorder <- function(ServicePrincipal) {
+configservice_delete_service_linked_configuration_recorder <- function(ServicePrincipal = NULL, Arn = NULL) {
   op <- new_operation(
     name = "DeleteServiceLinkedConfigurationRecorder",
     http_method = "POST",
@@ -1048,7 +1105,7 @@ configservice_delete_service_linked_configuration_recorder <- function(ServicePr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .configservice$delete_service_linked_configuration_recorder_input(ServicePrincipal = ServicePrincipal)
+  input <- .configservice$delete_service_linked_configuration_recorder_input(ServicePrincipal = ServicePrincipal, Arn = Arn)
   output <- .configservice$delete_service_linked_configuration_recorder_output()
   config <- get_config()
   svc <- .configservice$service(config, op)
@@ -1640,11 +1697,11 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 #' Returns details about your Config rules.
 #'
 #' @usage
-#' configservice_describe_config_rules(ConfigRuleNames, NextToken, Filters)
+#' configservice_describe_config_rules(ConfigRuleNames, Filters, NextToken)
 #'
 #' @param ConfigRuleNames The names of the Config rules for which you want details. If you do not specify any names, Config returns details for all your rules.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #' @param Filters Returns a list of Detective or Proactive Config rules. By default, this API returns an unfiltered list. For more information on Detective or Proactive Config rules, see [**Evaluation Mode**](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_components.html) in the *Config Developer Guide*.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1662,7 +1719,10 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 #'         ),
 #'         TagKey = "string",
 #'         TagValue = "string",
-#'         ComplianceResourceId = "string"
+#'         ComplianceResourceId = "string",
+#'         ServicePrincipals = list(
+#'           "string"
+#'         )
 #'       ),
 #'       Source = list(
 #'         Owner = "CUSTOM_LAMBDA"|"AWS"|"CUSTOM_POLICY",
@@ -1688,7 +1748,8 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 #'         list(
 #'           Mode = "DETECTIVE"|"PROACTIVE"
 #'         )
-#'       )
+#'       ),
+#'       RuleEvaluationVisibility = "EXTERNAL"|"INTERNAL"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1701,10 +1762,11 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 #'   ConfigRuleNames = list(
 #'     "string"
 #'   ),
-#'   NextToken = "string",
 #'   Filters = list(
-#'     EvaluationMode = "DETECTIVE"|"PROACTIVE"
-#'   )
+#'     EvaluationMode = "DETECTIVE"|"PROACTIVE",
+#'     RuleEvaluationVisibility = "EXTERNAL"|"INTERNAL"
+#'   ),
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -1713,7 +1775,7 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 #' @rdname configservice_describe_config_rules
 #'
 #' @aliases configservice_describe_config_rules
-configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToken = NULL, Filters = NULL) {
+configservice_describe_config_rules <- function(ConfigRuleNames = NULL, Filters = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeConfigRules",
     http_method = "POST",
@@ -1722,7 +1784,7 @@ configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToke
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ConfigRules"),
     stream_api = FALSE
   )
-  input <- .configservice$describe_config_rules_input(ConfigRuleNames = ConfigRuleNames, NextToken = NextToken, Filters = Filters)
+  input <- .configservice$describe_config_rules_input(ConfigRuleNames = ConfigRuleNames, Filters = Filters, NextToken = NextToken)
   output <- .configservice$describe_config_rules_output()
   config <- get_config()
   svc <- .configservice$service(config, op)
@@ -1930,7 +1992,7 @@ configservice_describe_configuration_aggregators <- function(ConfigurationAggreg
 #' @param ConfigurationRecorderNames The name of the configuration recorder. If the name is not specified, the operation returns the status for the customer managed configuration recorder configured for the account, if applicable.
 #' 
 #' When making a request to this operation, you can only specify one configuration recorder.
-#' @param ServicePrincipal For service-linked configuration recorders, you can use the service principal of the linked Amazon Web Services service to specify the configuration recorder.
+#' @param ServicePrincipal For service-linked configuration recorders, you can use the service principal of the linked Amazon Web Services service to specify the configuration recorder. This field is only supported for Amazon Web Services service principals. For third-party service-linked configuration recorders, use `Arn` instead.
 #' @param Arn The Amazon Resource Name (ARN) of the configuration recorder that you want to specify.
 #'
 #' @return
@@ -2011,7 +2073,7 @@ configservice_describe_configuration_recorder_status <- function(ConfigurationRe
 #' @param ConfigurationRecorderNames A list of names of the configuration recorders that you want to specify.
 #' 
 #' When making a request to this operation, you can only specify one configuration recorder.
-#' @param ServicePrincipal For service-linked configuration recorders, you can use the service principal of the linked Amazon Web Services service to specify the configuration recorder.
+#' @param ServicePrincipal For service-linked configuration recorders, you can use the service principal of the linked Amazon Web Services service to specify the configuration recorder. This field is only supported for Amazon Web Services service principals. For third-party service-linked configuration recorders, use `Arn` instead.
 #' @param Arn The Amazon Resource Name (ARN) of the configuration recorder that you want to specify.
 #'
 #' @return
@@ -2051,7 +2113,18 @@ configservice_describe_configuration_recorder_status <- function(ConfigurationRe
 #'         )
 #'       ),
 #'       recordingScope = "INTERNAL"|"PAID",
-#'       servicePrincipal = "string"
+#'       servicePrincipal = "string",
+#'       connectorArn = "string",
+#'       scopeConfiguration = list(
+#'         scopeType = "string",
+#'         scopeValues = list(
+#'           "string"
+#'         ),
+#'         allRegions = TRUE|FALSE,
+#'         includedRegions = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -3247,7 +3320,18 @@ configservice_describe_retention_configurations <- function(RetentionConfigurati
 #'       )
 #'     ),
 #'     recordingScope = "INTERNAL"|"PAID",
-#'     servicePrincipal = "string"
+#'     servicePrincipal = "string",
+#'     connectorArn = "string",
+#'     scopeConfiguration = list(
+#'       scopeType = "string",
+#'       scopeValues = list(
+#'         "string"
+#'       ),
+#'       allRegions = TRUE|FALSE,
+#'       includedRegions = list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -4169,6 +4253,67 @@ configservice_get_conformance_pack_compliance_summary <- function(ConformancePac
 }
 .configservice$operations$get_conformance_pack_compliance_summary <- configservice_get_conformance_pack_compliance_summary
 
+#' Returns the details of the specified connector
+#'
+#' @description
+#' Returns the details of the specified connector.
+#'
+#' @usage
+#' configservice_get_connector(Arn)
+#'
+#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the connector.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Connector = list(
+#'     name = "string",
+#'     arn = "string",
+#'     connectorConfiguration = list(
+#'       azure = list(
+#'         tenantIdentifier = "string",
+#'         clientIdentifier = "string"
+#'       )
+#'     ),
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_connector(
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_get_connector
+#'
+#' @aliases configservice_get_connector
+configservice_get_connector <- function(Arn) {
+  op <- new_operation(
+    name = "GetConnector",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .configservice$get_connector_input(Arn = Arn)
+  output <- .configservice$get_connector_output()
+  config <- get_config()
+  svc <- .configservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$get_connector <- configservice_get_connector
+
 #' Returns the policy definition containing the logic for your Config
 #' Custom Policy rule
 #'
@@ -4854,7 +4999,8 @@ configservice_list_aggregate_discovered_resources <- function(ConfigurationAggre
 #'       arn = "string",
 #'       name = "string",
 #'       servicePrincipal = "string",
-#'       recordingScope = "INTERNAL"|"PAID"
+#'       recordingScope = "INTERNAL"|"PAID",
+#'       provider = "AZURE"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4979,6 +5125,77 @@ configservice_list_conformance_pack_compliance_scores <- function(Filters = NULL
   return(response)
 }
 .configservice$operations$list_conformance_pack_compliance_scores <- configservice_list_conformance_pack_compliance_scores
+
+#' Returns a list of connectors depending on the filters you specify
+#'
+#' @description
+#' Returns a list of connectors depending on the filters you specify.
+#'
+#' @usage
+#' configservice_list_connectors(MaxResults, NextToken, Filters)
+#'
+#' @param MaxResults The maximum number of results to include in the response.
+#' @param NextToken The `NextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param Filters Filters the results based on a list of `ConnectorFilter` objects that you specify.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectorSummaries = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       provider = "AZURE",
+#'       tenantIdentifier = "string",
+#'       createdTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_connectors(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Filters = list(
+#'     list(
+#'       filterName = "provider",
+#'       filterValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_list_connectors
+#'
+#' @aliases configservice_list_connectors
+configservice_list_connectors <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListConnectors",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ConnectorSummaries"),
+    stream_api = FALSE
+  )
+  input <- .configservice$list_connectors_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  output <- .configservice$list_connectors_output()
+  config <- get_config()
+  svc <- .configservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$list_connectors <- configservice_list_connectors
 
 #' Returns a list of resource resource identifiers for the specified
 #' resource types for the resources of that type
@@ -5233,6 +5450,8 @@ configservice_list_stored_queries <- function(NextToken = NULL, MaxResults = NUL
 #' -   `AggregationAuthorization`
 #' 
 #' -   `StoredQuery`
+#' 
+#' -   `Connector`
 #' @param Limit The maximum number of tags returned on each page. The limit maximum is 50. You cannot specify a number greater than 50. If you specify 0, Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
@@ -5405,7 +5624,10 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #'       ),
 #'       TagKey = "string",
 #'       TagValue = "string",
-#'       ComplianceResourceId = "string"
+#'       ComplianceResourceId = "string",
+#'       ServicePrincipals = list(
+#'         "string"
+#'       )
 #'     ),
 #'     Source = list(
 #'       Owner = "CUSTOM_LAMBDA"|"AWS"|"CUSTOM_POLICY",
@@ -5431,7 +5653,8 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #'       list(
 #'         Mode = "DETECTIVE"|"PROACTIVE"
 #'       )
-#'     )
+#'     ),
+#'     RuleEvaluationVisibility = "EXTERNAL"|"INTERNAL"
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -5685,7 +5908,18 @@ configservice_put_configuration_aggregator <- function(ConfigurationAggregatorNa
 #'       )
 #'     ),
 #'     recordingScope = "INTERNAL"|"PAID",
-#'     servicePrincipal = "string"
+#'     servicePrincipal = "string",
+#'     connectorArn = "string",
+#'     scopeConfiguration = list(
+#'       scopeType = "string",
+#'       scopeValues = list(
+#'         "string"
+#'       ),
+#'       allRegions = TRUE|FALSE,
+#'       includedRegions = list(
+#'         "string"
+#'       )
+#'     )
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -5819,6 +6053,80 @@ configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Ur
   return(response)
 }
 .configservice$operations$put_conformance_pack <- configservice_put_conformance_pack
+
+#' Creates a connector that specifies the connection between a third-party
+#' cloud service provider and Config
+#'
+#' @description
+#' Creates a connector that specifies the connection between a third-party cloud service provider and Config.
+#' 
+#' A connector is required to create a service-linked configuration recorder for a third-party cloud service provider using the [`put_third_party_service_linked_configuration_recorder`][configservice_put_third_party_service_linked_configuration_recorder] operation.
+#' 
+#' This API creates a service-linked role `AWSServiceRoleForConfigThirdParty` in your account. The service-linked role is created only when the role does not exist in your account.
+#' 
+#' **Connectors cannot be updated**
+#' 
+#' To update the connector configuration, you must delete all associated configuration recorders, delete the connector, and recreate it with the updated configuration.
+#' 
+#' **Tags are added at creation and cannot be updated with this operation**
+#' 
+#' Use [`tag_resource`][configservice_tag_resource] and [`untag_resource`][configservice_untag_resource] to update tags after creation.
+#'
+#' @usage
+#' configservice_put_connector(ConnectorConfiguration, Tags)
+#'
+#' @param ConnectorConfiguration &#91;required&#93; The provider-specific configuration for connecting to the third-party cloud service provider.
+#' @param Tags The tags for the connector. Each tag consists of a key and an optional value, both of which you define.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_connector(
+#'   ConnectorConfiguration = list(
+#'     azure = list(
+#'       tenantIdentifier = "string",
+#'       clientIdentifier = "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_put_connector
+#'
+#' @aliases configservice_put_connector
+configservice_put_connector <- function(ConnectorConfiguration, Tags = NULL) {
+  op <- new_operation(
+    name = "PutConnector",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .configservice$put_connector_input(ConnectorConfiguration = ConnectorConfiguration, Tags = Tags)
+  output <- .configservice$put_connector_output()
+  config <- get_config()
+  svc <- .configservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$put_connector <- configservice_put_connector
 
 #' Creates or updates a delivery channel to deliver configuration
 #' information and other compliance information
@@ -6040,13 +6348,14 @@ configservice_put_external_evaluation <- function(ConfigRuleName, ExternalEvalua
 #' @usage
 #' configservice_put_organization_config_rule(OrganizationConfigRuleName,
 #'   OrganizationManagedRuleMetadata, OrganizationCustomRuleMetadata,
-#'   ExcludedAccounts, OrganizationCustomPolicyRuleMetadata)
+#'   ExcludedAccounts, OrganizationCustomPolicyRuleMetadata, Tags)
 #'
 #' @param OrganizationConfigRuleName &#91;required&#93; The name that you assign to an organization Config rule.
 #' @param OrganizationManagedRuleMetadata An `OrganizationManagedRuleMetadata` object. This object specifies organization managed rule metadata such as resource type and ID of Amazon Web Services resource along with the rule identifier. It also provides the frequency with which you want Config to run evaluations for the rule if the trigger type is periodic.
 #' @param OrganizationCustomRuleMetadata An `OrganizationCustomRuleMetadata` object. This object specifies organization custom rule metadata such as resource type, resource ID of Amazon Web Services resource, Lambda function ARN, and organization trigger types that trigger Config to evaluate your Amazon Web Services resources against a rule. It also provides the frequency with which you want Config to run evaluations for the rule if the trigger type is periodic.
 #' @param ExcludedAccounts A comma-separated list of accounts that you want to exclude from an organization Config rule.
 #' @param OrganizationCustomPolicyRuleMetadata An `OrganizationCustomPolicyRuleMetadata` object. This object specifies metadata for your organization's Config Custom Policy rule. The metadata includes the runtime system in use, which accounts have debug logging enabled, and other custom rule metadata, such as resource type, resource ID of Amazon Web Services resource, and organization trigger types that initiate Config to evaluate Amazon Web Services resources against a rule.
+#' @param Tags The tags for the organization Config rule. Each tag consists of a key and an optional value, both of which you define.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6108,6 +6417,12 @@ configservice_put_external_evaluation <- function(ConfigRuleName, ExternalEvalua
 #'     DebugLogDeliveryAccounts = list(
 #'       "string"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -6117,7 +6432,7 @@ configservice_put_external_evaluation <- function(ConfigRuleName, ExternalEvalua
 #' @rdname configservice_put_organization_config_rule
 #'
 #' @aliases configservice_put_organization_config_rule
-configservice_put_organization_config_rule <- function(OrganizationConfigRuleName, OrganizationManagedRuleMetadata = NULL, OrganizationCustomRuleMetadata = NULL, ExcludedAccounts = NULL, OrganizationCustomPolicyRuleMetadata = NULL) {
+configservice_put_organization_config_rule <- function(OrganizationConfigRuleName, OrganizationManagedRuleMetadata = NULL, OrganizationCustomRuleMetadata = NULL, ExcludedAccounts = NULL, OrganizationCustomPolicyRuleMetadata = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutOrganizationConfigRule",
     http_method = "POST",
@@ -6126,7 +6441,7 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .configservice$put_organization_config_rule_input(OrganizationConfigRuleName = OrganizationConfigRuleName, OrganizationManagedRuleMetadata = OrganizationManagedRuleMetadata, OrganizationCustomRuleMetadata = OrganizationCustomRuleMetadata, ExcludedAccounts = ExcludedAccounts, OrganizationCustomPolicyRuleMetadata = OrganizationCustomPolicyRuleMetadata)
+  input <- .configservice$put_organization_config_rule_input(OrganizationConfigRuleName = OrganizationConfigRuleName, OrganizationManagedRuleMetadata = OrganizationManagedRuleMetadata, OrganizationCustomRuleMetadata = OrganizationCustomRuleMetadata, ExcludedAccounts = ExcludedAccounts, OrganizationCustomPolicyRuleMetadata = OrganizationCustomPolicyRuleMetadata, Tags = Tags)
   output <- .configservice$put_organization_config_rule_output()
   config <- get_config()
   svc <- .configservice$service(config, op)
@@ -6160,7 +6475,7 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #' configservice_put_organization_conformance_pack(
 #'   OrganizationConformancePackName, TemplateS3Uri, TemplateBody,
 #'   DeliveryS3Bucket, DeliveryS3KeyPrefix, ConformancePackInputParameters,
-#'   ExcludedAccounts)
+#'   ExcludedAccounts, Tags)
 #'
 #' @param OrganizationConformancePackName &#91;required&#93; Name of the organization conformance pack you want to create.
 #' @param TemplateS3Uri Location of file containing the template body. The uri must point to the conformance pack template (max size: 300 KB).
@@ -6175,6 +6490,7 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #' This field is optional.
 #' @param ConformancePackInputParameters A list of `ConformancePackInputParameter` objects.
 #' @param ExcludedAccounts A list of Amazon Web Services accounts to be excluded from an organization conformance pack while deploying a conformance pack.
+#' @param Tags The tags for the organization conformance pack. Each tag consists of a key and an optional value, both of which you define.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6200,6 +6516,12 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #'   ),
 #'   ExcludedAccounts = list(
 #'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -6209,7 +6531,7 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #' @rdname configservice_put_organization_conformance_pack
 #'
 #' @aliases configservice_put_organization_conformance_pack
-configservice_put_organization_conformance_pack <- function(OrganizationConformancePackName, TemplateS3Uri = NULL, TemplateBody = NULL, DeliveryS3Bucket = NULL, DeliveryS3KeyPrefix = NULL, ConformancePackInputParameters = NULL, ExcludedAccounts = NULL) {
+configservice_put_organization_conformance_pack <- function(OrganizationConformancePackName, TemplateS3Uri = NULL, TemplateBody = NULL, DeliveryS3Bucket = NULL, DeliveryS3KeyPrefix = NULL, ConformancePackInputParameters = NULL, ExcludedAccounts = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutOrganizationConformancePack",
     http_method = "POST",
@@ -6218,7 +6540,7 @@ configservice_put_organization_conformance_pack <- function(OrganizationConforma
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .configservice$put_organization_conformance_pack_input(OrganizationConformancePackName = OrganizationConformancePackName, TemplateS3Uri = TemplateS3Uri, TemplateBody = TemplateBody, DeliveryS3Bucket = DeliveryS3Bucket, DeliveryS3KeyPrefix = DeliveryS3KeyPrefix, ConformancePackInputParameters = ConformancePackInputParameters, ExcludedAccounts = ExcludedAccounts)
+  input <- .configservice$put_organization_conformance_pack_input(OrganizationConformancePackName = OrganizationConformancePackName, TemplateS3Uri = TemplateS3Uri, TemplateBody = TemplateBody, DeliveryS3Bucket = DeliveryS3Bucket, DeliveryS3KeyPrefix = DeliveryS3KeyPrefix, ConformancePackInputParameters = ConformancePackInputParameters, ExcludedAccounts = ExcludedAccounts, Tags = Tags)
   output <- .configservice$put_organization_conformance_pack_output()
   config <- get_config()
   svc <- .configservice$service(config, op)
@@ -6733,6 +7055,91 @@ configservice_put_stored_query <- function(StoredQuery, Tags = NULL) {
 }
 .configservice$operations$put_stored_query <- configservice_put_stored_query
 
+#' Creates or updates a service-linked configuration recorder that is
+#' linked to a third-party cloud service provider based on the ConnectorArn
+#' you specify
+#'
+#' @description
+#' Creates or updates a service-linked configuration recorder that is linked to a third-party cloud service provider based on the `ConnectorArn` you specify.
+#' 
+#' The configuration recorder's `name`, `recordingGroup`, `recordingMode`, and `recordingScope` is set by the service that is linked to the configuration recorder.
+#' 
+#' If a service-linked configuration recorder already exists for the specified service principal and connector, calling this operation again updates the `ScopeConfiguration`.
+#' 
+#' **This operation can only be called by the Amazon Web Services service linked to the configuration recorder**
+#' 
+#' Customers cannot call this operation directly. Only the linked Amazon Web Services service can create or update the service-linked configuration recorder.
+#' 
+#' **Tags are added at creation and cannot be updated with this operation**
+#' 
+#' Use [`tag_resource`][configservice_tag_resource] and [`untag_resource`][configservice_untag_resource] to update tags after creation.
+#'
+#' @usage
+#' configservice_put_third_party_service_linked_configuration_recorder(
+#'   ServicePrincipal, ConnectorArn, ScopeConfiguration, Tags)
+#'
+#' @param ServicePrincipal &#91;required&#93; The service principal of the Amazon Web Services service for the service-linked configuration recorder that you want to create.
+#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the connector that specifies the connection between the third-party cloud service provider and Config. The specified connector must exist.
+#' @param ScopeConfiguration &#91;required&#93; Specifies the scope of resources to record from the third-party cloud service provider.
+#' @param Tags The tags for a service-linked configuration recorder. Each tag consists of a key and an optional value, both of which you define.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_third_party_service_linked_configuration_recorder(
+#'   ServicePrincipal = "string",
+#'   ConnectorArn = "string",
+#'   ScopeConfiguration = list(
+#'     scopeType = "string",
+#'     scopeValues = list(
+#'       "string"
+#'     ),
+#'     allRegions = TRUE|FALSE,
+#'     includedRegions = list(
+#'       "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_put_third_party_servi_linke_confi_recor
+#'
+#' @aliases configservice_put_third_party_service_linked_configuration_recorder
+configservice_put_third_party_service_linked_configuration_recorder <- function(ServicePrincipal, ConnectorArn, ScopeConfiguration, Tags = NULL) {
+  op <- new_operation(
+    name = "PutThirdPartyServiceLinkedConfigurationRecorder",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .configservice$put_third_party_service_linked_configuration_recorder_input(ServicePrincipal = ServicePrincipal, ConnectorArn = ConnectorArn, ScopeConfiguration = ScopeConfiguration, Tags = Tags)
+  output <- .configservice$put_third_party_service_linked_configuration_recorder_output()
+  config <- get_config()
+  svc <- .configservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$put_third_party_service_linked_configuration_recorder <- configservice_put_third_party_service_linked_configuration_recorder
+
 #' Accepts a structured query language (SQL) SELECT command and an
 #' aggregator to query configuration state of Amazon Web Services resources
 #' across multiple accounts and regions, performs the corresponding search,
@@ -7199,6 +7606,8 @@ configservice_stop_configuration_recorder <- function(ConfigurationRecorderName)
 #' -   `AggregationAuthorization`
 #' 
 #' -   `StoredQuery`
+#' 
+#' -   `Connector`
 #' @param Tags &#91;required&#93; An array of tag object.
 #'
 #' @return
@@ -7266,6 +7675,8 @@ configservice_tag_resource <- function(ResourceArn, Tags) {
 #' -   `AggregationAuthorization`
 #' 
 #' -   `StoredQuery`
+#' 
+#' -   `Connector`
 #' @param TagKeys &#91;required&#93; The keys of the tags to be removed.
 #'
 #' @return

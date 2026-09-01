@@ -297,6 +297,18 @@ NULL
   return(populate(args, shape))
 }
 
+.codecommit$get_blob_differences_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), afterBlobId = structure(logical(0), tags = list(type = "string")), beforeBlobId = structure(logical(0), tags = list(type = "string")), contextLines = structure(logical(0), tags = list(type = "integer")), ignoreWhitespace = structure(logical(0), tags = list(type = "boolean")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$get_blob_differences_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(hunks = structure(list(structure(list(beforeStartLine = structure(logical(0), tags = list(type = "integer")), beforeLineCount = structure(logical(0), tags = list(type = "integer")), afterStartLine = structure(logical(0), tags = list(type = "integer")), afterLineCount = structure(logical(0), tags = list(type = "integer")), changes = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), beforeLineNumber = structure(logical(0), tags = list(type = "integer")), afterLineNumber = structure(logical(0), tags = list(type = "integer")), content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), isBinary = structure(logical(0), tags = list(type = "boolean")), beforeBlobSize = structure(logical(0), tags = list(type = "long")), afterBlobSize = structure(logical(0), tags = list(type = "long")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codecommit$get_branch_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), branchName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

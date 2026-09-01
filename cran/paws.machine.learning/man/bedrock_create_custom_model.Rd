@@ -6,7 +6,8 @@
 \usage{
 bedrock_create_custom_model(
   modelName,
-  modelSourceConfig,
+  modelSourceConfig = NULL,
+  customModelDataSource = NULL,
   modelKmsKeyArn = NULL,
   roleArn = NULL,
   modelTags = NULL,
@@ -16,17 +17,23 @@ bedrock_create_custom_model(
 \arguments{
 \item{modelName}{[required] A unique name for the custom model.}
 
-\item{modelSourceConfig}{[required] The data source for the model. The Amazon S3 URI in the model source must be for the Amazon-managed Amazon S3 bucket containing your model artifacts.}
+\item{modelSourceConfig}{The data source for the model. The Amazon S3 URI in the model source must be for the Amazon-managed Amazon S3 bucket containing your model artifacts.}
+
+\item{customModelDataSource}{The data source for the custom model. Use this field to specify a SageMaker AI model package ARN as the source for your custom model. Amazon Bedrock resolves the model package to retrieve the model artifacts.
+
+You can specify either \code{customModelDataSource} or \code{modelSourceConfig}, but not both.}
 
 \item{modelKmsKeyArn}{The Amazon Resource Name (ARN) of the customer managed KMS key to encrypt the custom model. If you don't provide a KMS key, Amazon Bedrock uses an Amazon Web Services-managed KMS key to encrypt the model.
 
 If you provide a customer managed KMS key, your Amazon Bedrock service role must have permissions to use it. For more information see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/encryption-import-model.html}{Encryption of imported models}.}
 
-\item{roleArn}{The Amazon Resource Name (ARN) of an IAM service role that Amazon Bedrock assumes to perform tasks on your behalf. This role must have permissions to access the Amazon S3 bucket containing your model artifacts and the KMS key (if specified). For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-import-iam-role.html}{Setting up an IAM service role for importing models} in the Amazon Bedrock User Guide.}
+\item{roleArn}{The Amazon Resource Name (ARN) of an IAM service role that Amazon Bedrock assumes to perform tasks on your behalf. This role must have permissions to access the Amazon S3 bucket containing your model artifacts and the KMS key (if specified). For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-import-iam-role.html}{Setting up an IAM service role for importing models} in the Amazon Bedrock User Guide.
+
+This field is required when you use \code{modelSourceConfig} with an Amazon S3 data source. It is not required when you use \code{customModelDataSource} with a model package ARN, because Amazon Bedrock uses its own credentials to access the model artifacts.}
 
 \item{modelTags}{A list of key-value pairs to associate with the custom model resource. You can use these tags to organize and identify your resources.
 
-For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html}{Tagging resources} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html}{Tagging resources} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=awsomedayonlinehk}{Amazon Bedrock User Guide}.}
 
 \item{clientRequestToken}{A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 }

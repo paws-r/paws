@@ -12,6 +12,7 @@ bedrockagentcorecontrol_update_memory(
   memoryExecutionRoleArn = NULL,
   memoryStrategies = NULL,
   addIndexedKeys = NULL,
+  namespaceKeys = NULL,
   streamDeliveryResources = NULL
 )
 }
@@ -29,6 +30,8 @@ bedrockagentcorecontrol_update_memory(
 \item{memoryStrategies}{The memory strategies to add, modify, or delete.}
 
 \item{addIndexedKeys}{Additional metadata keys to index. Previously indexed keys cannot be removed.}
+
+\item{namespaceKeys}{The namespace variable key definitions with validation rules for this memory. This value fully replaces the existing set — any key you omit is removed. Any referenced \code{namespaceKey} omission will throw ValidationException.}
 
 \item{streamDeliveryResources}{Configuration for streaming memory record data to external resources.}
 }

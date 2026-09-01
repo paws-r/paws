@@ -11,7 +11,11 @@ healthlake_start_fhir_import_job(
   DatastoreId,
   DataAccessRoleArn,
   ClientToken = NULL,
-  ValidationLevel = NULL
+  ValidationLevel = NULL,
+  ProfileId = NULL,
+  InputFormat = NULL,
+  DriftDetectionEnabled = NULL,
+  ProvenanceEnabled = NULL
 )
 }
 \arguments{
@@ -23,11 +27,19 @@ healthlake_start_fhir_import_job(
 
 \item{DatastoreId}{[required] The data store identifier.}
 
-\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) that grants access permission to AWS HealthLake.}
+\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) that grants access permission to HealthLake.}
 
 \item{ClientToken}{The optional user-provided token used for ensuring API idempotency.}
 
 \item{ValidationLevel}{The validation level of the import job.}
+
+\item{ProfileId}{The data transformation profile identifier to use for the import job.}
+
+\item{InputFormat}{The input format of the data to be imported.}
+
+\item{DriftDetectionEnabled}{Specifies whether to enable drift detection for the import job.}
+
+\item{ProvenanceEnabled}{Specifies whether to enable provenance for the import job.}
 }
 \description{
 Start importing bulk FHIR data into an ACTIVE data store. The import job imports FHIR data found in the \code{InputDataConfig} object and stores processing results in the \code{JobOutputDataConfig} object.

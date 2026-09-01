@@ -11,7 +11,7 @@ bedrock_get_model_import_job(jobIdentifier)
 \item{jobIdentifier}{[required] The identifier of the import job.}
 }
 \description{
-Retrieves the properties associated with import model job, including the status of the job. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html}{Import a customized model} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
+Retrieves the properties associated with import model job, including the status of the job. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html}{Import a customized model} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=awsomedayonlinehk}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_get_model_import_job/} for full documentation.
 }

@@ -63,7 +63,7 @@ NULL
 #' 
 #' For more information:
 #' 
-#' -   Authentication and generating signatures — See [Authenticating Requests (Amazon Web Services Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) in the *Amazon Web Services General Reference*.
+#' -   Authentication and generating signatures — See [Authenticating Requests (Amazon Web Services Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/) in the *Amazon Web Services General Reference*.
 #' 
 #' -   Managing Amazon IVS permissions — See [Identity and Access Management](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html) on the Security page of the *Amazon IVS User Guide*.
 #' 
@@ -192,6 +192,7 @@ NULL
 #'  \link[=ivs_stop_stream]{stop_stream} \tab Disconnects the incoming RTMPS stream for the specified channel\cr
 #'  \link[=ivs_tag_resource]{tag_resource} \tab Adds or updates tags for the Amazon Web Services resource with the specified ARN\cr
 #'  \link[=ivs_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr
+#'  \link[=ivs_update_ad_configuration]{update_ad_configuration} \tab Updates a specified ad configuration\cr
 #'  \link[=ivs_update_channel]{update_channel} \tab Updates a channel's configuration\cr
 #'  \link[=ivs_update_playback_restriction_policy]{update_playback_restriction_policy} \tab Updates a specified playback restriction policy
 #' }

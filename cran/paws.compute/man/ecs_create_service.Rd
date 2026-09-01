@@ -31,7 +31,8 @@ ecs_create_service(
   enableExecuteCommand = NULL,
   serviceConnectConfiguration = NULL,
   volumeConfigurations = NULL,
-  vpcLatticeConfigurations = NULL
+  vpcLatticeConfigurations = NULL,
+  monitoring = NULL
 )
 }
 \arguments{
@@ -165,6 +166,8 @@ Tasks that run in a namespace can use short names to connect to services in the 
 \item{volumeConfigurations}{The configuration for a volume specified in the task definition as a volume that is configured at launch time. Currently, the only supported volume type is an Amazon EBS volume.}
 
 \item{vpcLatticeConfigurations}{The VPC Lattice configuration for the service being created.}
+
+\item{monitoring}{The optional monitoring configuration for the service, which defines the resolution for the service-level \code{CPUUtilization} and \code{MemoryUtilization} Amazon CloudWatch metrics. When not specified, Amazon ECS uses the default resolution of \code{60} seconds.}
 }
 \description{
 Runs and maintains your desired number of tasks from a specified task definition. If the number of tasks running in a service drops below the \code{desiredCount}, Amazon ECS runs another copy of the task in the specified cluster. To update an existing service, use \code{\link[=ecs_update_service]{update_service}}.

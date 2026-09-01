@@ -91,14 +91,20 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=drs_associate_source_network_stack]{associate_source_network_stack} \tab Associate a Source Network to an existing CloudFormation Stack and modify launch templates to use this network\cr
+#'  \link[=drs_cancel_recovery_plan_execution]{cancel_recovery_plan_execution} \tab Cancels an in-progress Recovery Plan execution\cr
 #'  \link[=drs_create_extended_source_server]{create_extended_source_server} \tab Create an extended source server in the target Account based on the source server in staging account\cr
 #'  \link[=drs_create_launch_configuration_template]{create_launch_configuration_template} \tab Creates a new Launch Configuration Template\cr
+#'  \link[=drs_create_recovery_plan]{create_recovery_plan} \tab Creates a Recovery Plan to orchestrate multi-server disaster recovery\cr
+#'  \link[=drs_create_recovery_plan_step]{create_recovery_plan_step} \tab Creates a step in a Recovery Plan\cr
 #'  \link[=drs_create_replication_configuration_template]{create_replication_configuration_template} \tab Creates a new ReplicationConfigurationTemplate\cr
 #'  \link[=drs_create_source_network]{create_source_network} \tab Create a new Source Network resource for a provided VPC ID\cr
 #'  \link[=drs_delete_job]{delete_job} \tab Deletes a single Job by ID\cr
 #'  \link[=drs_delete_launch_action]{delete_launch_action} \tab Deletes a resource launch action\cr
 #'  \link[=drs_delete_launch_configuration_template]{delete_launch_configuration_template} \tab Deletes a single Launch Configuration Template by ID\cr
 #'  \link[=drs_delete_recovery_instance]{delete_recovery_instance} \tab Deletes a single Recovery Instance by ID\cr
+#'  \link[=drs_delete_recovery_plan]{delete_recovery_plan} \tab Deletes a Recovery Plan\cr
+#'  \link[=drs_delete_recovery_plan_execution]{delete_recovery_plan_execution} \tab Deletes a Recovery Plan execution record\cr
+#'  \link[=drs_delete_recovery_plan_step]{delete_recovery_plan_step} \tab Deletes a step from a Recovery Plan\cr
 #'  \link[=drs_delete_replication_configuration_template]{delete_replication_configuration_template} \tab Deletes a single Replication Configuration Template by ID\cr
 #'  \link[=drs_delete_source_network]{delete_source_network} \tab Delete Source Network resource\cr
 #'  \link[=drs_delete_source_server]{delete_source_server} \tab Deletes a single Source Server by ID\cr
@@ -115,17 +121,28 @@ NULL
 #'  \link[=drs_export_source_network_cfn_template]{export_source_network_cfn_template} \tab Export the Source Network CloudFormation template to an S3 bucket\cr
 #'  \link[=drs_get_failback_replication_configuration]{get_failback_replication_configuration} \tab Lists all Failback ReplicationConfigurations, filtered by Recovery Instance ID\cr
 #'  \link[=drs_get_launch_configuration]{get_launch_configuration} \tab Gets a LaunchConfiguration, filtered by Source Server IDs\cr
+#'  \link[=drs_get_recovery_plan]{get_recovery_plan} \tab Gets a Recovery Plan by ARN\cr
+#'  \link[=drs_get_recovery_plan_execution]{get_recovery_plan_execution} \tab Gets the details of a Recovery Plan execution\cr
+#'  \link[=drs_get_recovery_plan_execution_step]{get_recovery_plan_execution_step} \tab Gets the details of a step within a Recovery Plan execution\cr
+#'  \link[=drs_get_recovery_plan_step]{get_recovery_plan_step} \tab Gets a Recovery Plan step by ARN\cr
 #'  \link[=drs_get_replication_configuration]{get_replication_configuration} \tab Gets a ReplicationConfiguration, filtered by Source Server ID\cr
 #'  \link[=drs_initialize_service]{initialize_service} \tab Initialize Elastic Disaster Recovery\cr
 #'  \link[=drs_list_extensible_source_servers]{list_extensible_source_servers} \tab Returns a list of source servers on a staging account that are extensible, which means that: a\cr
 #'  \link[=drs_list_launch_actions]{list_launch_actions} \tab Lists resource launch actions\cr
+#'  \link[=drs_list_recovery_plan_executions]{list_recovery_plan_executions} \tab Lists executions of Recovery Plans, optionally filtered by plan or status\cr
+#'  \link[=drs_list_recovery_plan_execution_steps]{list_recovery_plan_execution_steps} \tab Lists all steps within a Recovery Plan execution\cr
+#'  \link[=drs_list_recovery_plans]{list_recovery_plans} \tab Lists all Recovery Plans in the account\cr
+#'  \link[=drs_list_recovery_plan_steps]{list_recovery_plan_steps} \tab Lists all steps in a Recovery Plan\cr
 #'  \link[=drs_list_staging_accounts]{list_staging_accounts} \tab Returns an array of staging accounts for existing extended source servers\cr
 #'  \link[=drs_list_tags_for_resource]{list_tags_for_resource} \tab List all tags for your Elastic Disaster Recovery resources\cr
 #'  \link[=drs_put_launch_action]{put_launch_action} \tab Puts a resource launch action\cr
+#'  \link[=drs_reorder_recovery_plan_steps]{reorder_recovery_plan_steps} \tab Reorders steps in a Recovery Plan\cr
 #'  \link[=drs_retry_data_replication]{retry_data_replication} \tab WARNING: RetryDataReplication is deprecated\cr
+#'  \link[=drs_retry_recovery_plan_execution_step]{retry_recovery_plan_execution_step} \tab Retries a failed SERVER type execution step\cr
 #'  \link[=drs_reverse_replication]{reverse_replication} \tab Start replication to origin / target region - applies only to protected instances that originated in EC2\cr
 #'  \link[=drs_start_failback_launch]{start_failback_launch} \tab Initiates a Job for launching the machine that is being failed back to from the specified Recovery Instance\cr
 #'  \link[=drs_start_recovery]{start_recovery} \tab Launches Recovery Instances for the specified Source Servers\cr
+#'  \link[=drs_start_recovery_plan_execution]{start_recovery_plan_execution} \tab Starts executing a Recovery Plan in DRILL or RECOVERY mode\cr
 #'  \link[=drs_start_replication]{start_replication} \tab Starts replication for a stopped Source Server\cr
 #'  \link[=drs_start_source_network_recovery]{start_source_network_recovery} \tab Deploy VPC for the specified Source Network and modify launch templates to use this network\cr
 #'  \link[=drs_start_source_network_replication]{start_source_network_replication} \tab Starts replication for a Source Network\cr
@@ -138,6 +155,9 @@ NULL
 #'  \link[=drs_update_failback_replication_configuration]{update_failback_replication_configuration} \tab Allows you to update the failback replication configuration of a Recovery Instance by ID\cr
 #'  \link[=drs_update_launch_configuration]{update_launch_configuration} \tab Updates a LaunchConfiguration by Source Server ID\cr
 #'  \link[=drs_update_launch_configuration_template]{update_launch_configuration_template} \tab Updates an existing Launch Configuration Template by ID\cr
+#'  \link[=drs_update_recovery_plan]{update_recovery_plan} \tab Updates a Recovery Plan's name or description\cr
+#'  \link[=drs_update_recovery_plan_execution_step]{update_recovery_plan_execution_step} \tab Updates an execution step\cr
+#'  \link[=drs_update_recovery_plan_step]{update_recovery_plan_step} \tab Updates a Recovery Plan step's name or configuration\cr
 #'  \link[=drs_update_replication_configuration]{update_replication_configuration} \tab Allows you to update a ReplicationConfiguration by Source Server ID\cr
 #'  \link[=drs_update_replication_configuration_template]{update_replication_configuration_template} \tab Updates a ReplicationConfigurationTemplate by ID
 #' }

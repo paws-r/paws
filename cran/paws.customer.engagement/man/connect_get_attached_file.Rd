@@ -18,7 +18,7 @@ connect_get_attached_file(
 
 \item{UrlExpiryInSeconds}{Optional override for the expiry of the pre-signed S3 URL in seconds. The default value is 300.}
 
-\item{AssociatedResourceArn}{[required] The resource to which the attached file is (being) uploaded to. The supported resources are \href{https://docs.aws.amazon.com/connect/latest/adminguide/cases.html}{Cases} and \href{https://docs.aws.amazon.com/connect/latest/adminguide/setup-email-channel.html}{Email}.
+\item{AssociatedResourceArn}{[required] The resource to which the attached file is (being) uploaded to. The supported resources are \href{https://docs.aws.amazon.com/connect/latest/adminguide/cases.html}{Cases}, \href{https://docs.aws.amazon.com/connect/latest/adminguide/setup-email-channel.html}{Email}, and \href{https://docs.aws.amazon.com/connect/latest/adminguide/concepts-getting-started-tasks.html}{Task}.
 
 This value must be a valid ARN.}
 }

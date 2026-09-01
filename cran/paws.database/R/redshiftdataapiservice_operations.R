@@ -11,24 +11,26 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftdataapiservice_batch_execute_statement/](https://www.paws-r-sdk.com/docs/redshiftdataapiservice_batch_execute_statement/) for full documentation.
 #'
-#' @param Sqls &#91;required&#93; One or more SQL statements to run. The SQL statements are run as a single transaction. They run serially in the order of the array. Subsequent SQL statements don't start until the previous statement in the array completes. If any SQL statement fails, then because they are run as one transaction, all work is rolled back.
+#' @param Sqls &#91;required&#93; One or more SQL statements to run. The SQL statements run serially in the order of the array. Subsequent SQL statements don't start until the previous statement in the array completes. By default, the SQL statements are run as a single transaction. If any SQL statement fails, all work is rolled back. To change this behavior, see the `ExecutionMode` parameter.
 #' @param ClusterIdentifier The cluster identifier. This parameter is required when connecting to a cluster and authenticating using either Secrets Manager or temporary credentials.
 #' @param SecretArn The name or ARN of the secret that enables access to the database. This parameter is required when authenticating using Secrets Manager.
 #' @param DbUser The database user name. This parameter is required when connecting to a cluster as a database user and authenticating using temporary credentials.
 #' @param Database The name of the database. This parameter is required when authenticating using either Secrets Manager or temporary credentials.
 #' @param WithEvent A value that indicates whether to send an event to the Amazon EventBridge event bus after the SQL statements run.
 #' @param StatementName The name of the SQL statements. You can name the SQL statements when you create them to identify the query.
-#' @param Parameters The parameters for the SQL statements. The parameters are shared across all SQL statements in the batch.
+#' @param Parameters The parameters for the SQL statements. The parameters are available to all SQL statements in the batch. Each statement can reference any subset of the provided parameters. Each provided parameter must be referenced by at least one SQL statement in the batch.
 #' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). This parameter is required when connecting to a serverless workgroup and authenticating using either Secrets Manager or temporary credentials.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
 #' @param ResultFormat The data format of the result of the SQL statement. If no format is specified, the default is JSON.
 #' @param SessionKeepAliveSeconds The number of seconds to keep the session alive after the query finishes. The maximum time a session can keep alive is 24 hours. After 24 hours, the session is forced closed and the query is terminated.
 #' @param SessionId The session identifier of the query.
+#' @param ExecutionMode Determines how the SQL statements in the batch are run. If set to `TRANSACTION` (the default), all SQL statements are run as a single transaction and they are committed or rolled back together. If set to `AUTO_COMMIT`, each SQL statement is committed individually, and a failure of one statement does not affect the others.
+#' @param WaitTimeSeconds The number of seconds to wait for all SQL statements in the batch to complete execution before returning the response. If the SQL statements do not complete within the specified time, the response returns the current status. The maximum value is 30 seconds.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_batch_execute_statement
-redshiftdataapiservice_batch_execute_statement <- function(Sqls, ClusterIdentifier = NULL, SecretArn = NULL, DbUser = NULL, Database = NULL, WithEvent = NULL, StatementName = NULL, Parameters = NULL, WorkgroupName = NULL, ClientToken = NULL, ResultFormat = NULL, SessionKeepAliveSeconds = NULL, SessionId = NULL) {
+redshiftdataapiservice_batch_execute_statement <- function(Sqls, ClusterIdentifier = NULL, SecretArn = NULL, DbUser = NULL, Database = NULL, WithEvent = NULL, StatementName = NULL, Parameters = NULL, WorkgroupName = NULL, ClientToken = NULL, ResultFormat = NULL, SessionKeepAliveSeconds = NULL, SessionId = NULL, ExecutionMode = NULL, WaitTimeSeconds = NULL) {
   op <- new_operation(
     name = "BatchExecuteStatement",
     http_method = "POST",
@@ -37,7 +39,7 @@ redshiftdataapiservice_batch_execute_statement <- function(Sqls, ClusterIdentifi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$batch_execute_statement_input(Sqls = Sqls, ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, WithEvent = WithEvent, StatementName = StatementName, Parameters = Parameters, WorkgroupName = WorkgroupName, ClientToken = ClientToken, ResultFormat = ResultFormat, SessionKeepAliveSeconds = SessionKeepAliveSeconds, SessionId = SessionId)
+  input <- .redshiftdataapiservice$batch_execute_statement_input(Sqls = Sqls, ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, WithEvent = WithEvent, StatementName = StatementName, Parameters = Parameters, WorkgroupName = WorkgroupName, ClientToken = ClientToken, ResultFormat = ResultFormat, SessionKeepAliveSeconds = SessionKeepAliveSeconds, SessionId = SessionId, ExecutionMode = ExecutionMode, WaitTimeSeconds = WaitTimeSeconds)
   output <- .redshiftdataapiservice$batch_execute_statement_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)
@@ -87,11 +89,12 @@ redshiftdataapiservice_cancel_statement <- function(Id) {
 #' See [https://www.paws-r-sdk.com/docs/redshiftdataapiservice_describe_statement/](https://www.paws-r-sdk.com/docs/redshiftdataapiservice_describe_statement/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the SQL statement to describe. This value is a universally unique identifier (UUID) generated by Amazon Redshift Data API. A suffix indicates the number of the SQL statement. For example, `d9b6c0c9-0747-4bf4-b142-e8883122f766:2` has a suffix of `:2` that indicates the second SQL statement of a batch query. This identifier is returned by `BatchExecuteStatment`, [`execute_statement`][redshiftdataapiservice_execute_statement], and [`list_statements`][redshiftdataapiservice_list_statements].
+#' @param WaitTimeSeconds The number of seconds to wait for the SQL statement to complete execution before returning the description. The maximum value is 30 seconds.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_describe_statement
-redshiftdataapiservice_describe_statement <- function(Id) {
+redshiftdataapiservice_describe_statement <- function(Id, WaitTimeSeconds = NULL) {
   op <- new_operation(
     name = "DescribeStatement",
     http_method = "POST",
@@ -100,7 +103,7 @@ redshiftdataapiservice_describe_statement <- function(Id) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$describe_statement_input(Id = Id)
+  input <- .redshiftdataapiservice$describe_statement_input(Id = Id, WaitTimeSeconds = WaitTimeSeconds)
   output <- .redshiftdataapiservice$describe_statement_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)
@@ -172,11 +175,12 @@ redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, Secr
 #' @param ResultFormat The data format of the result of the SQL statement. If no format is specified, the default is JSON.
 #' @param SessionKeepAliveSeconds The number of seconds to keep the session alive after the query finishes. The maximum time a session can keep alive is 24 hours. After 24 hours, the session is forced closed and the query is terminated.
 #' @param SessionId The session identifier of the query.
+#' @param WaitTimeSeconds The number of seconds to wait for the SQL statement to complete execution before returning the response. If the SQL statement does not complete within the specified time, the response returns the current status. The maximum value is 30 seconds.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_execute_statement
-redshiftdataapiservice_execute_statement <- function(Sql, ClusterIdentifier = NULL, SecretArn = NULL, DbUser = NULL, Database = NULL, WithEvent = NULL, StatementName = NULL, Parameters = NULL, WorkgroupName = NULL, ClientToken = NULL, ResultFormat = NULL, SessionKeepAliveSeconds = NULL, SessionId = NULL) {
+redshiftdataapiservice_execute_statement <- function(Sql, ClusterIdentifier = NULL, SecretArn = NULL, DbUser = NULL, Database = NULL, WithEvent = NULL, StatementName = NULL, Parameters = NULL, WorkgroupName = NULL, ClientToken = NULL, ResultFormat = NULL, SessionKeepAliveSeconds = NULL, SessionId = NULL, WaitTimeSeconds = NULL) {
   op <- new_operation(
     name = "ExecuteStatement",
     http_method = "POST",
@@ -185,7 +189,7 @@ redshiftdataapiservice_execute_statement <- function(Sql, ClusterIdentifier = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$execute_statement_input(Sql = Sql, ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, WithEvent = WithEvent, StatementName = StatementName, Parameters = Parameters, WorkgroupName = WorkgroupName, ClientToken = ClientToken, ResultFormat = ResultFormat, SessionKeepAliveSeconds = SessionKeepAliveSeconds, SessionId = SessionId)
+  input <- .redshiftdataapiservice$execute_statement_input(Sql = Sql, ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, WithEvent = WithEvent, StatementName = StatementName, Parameters = Parameters, WorkgroupName = WorkgroupName, ClientToken = ClientToken, ResultFormat = ResultFormat, SessionKeepAliveSeconds = SessionKeepAliveSeconds, SessionId = SessionId, WaitTimeSeconds = WaitTimeSeconds)
   output <- .redshiftdataapiservice$execute_statement_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)
@@ -204,11 +208,12 @@ redshiftdataapiservice_execute_statement <- function(Sql, ClusterIdentifier = NU
 #'
 #' @param Id &#91;required&#93; The identifier of the SQL statement whose results are to be fetched. This value is a universally unique identifier (UUID) generated by Amazon Redshift Data API. A suffix indicates then number of the SQL statement. For example, `d9b6c0c9-0747-4bf4-b142-e8883122f766:2` has a suffix of `:2` that indicates the second SQL statement of a batch query. This identifier is returned by `BatchExecuteStatment`, `ExecuteStatment`, and [`list_statements`][redshiftdataapiservice_list_statements].
 #' @param NextToken A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned NextToken value in the next NextToken parameter and retrying the command. If the NextToken field is empty, all response records have been retrieved for the request.
+#' @param WaitTimeSeconds The number of seconds to wait for the SQL statement to complete execution before returning the result. The maximum value is 30 seconds.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_get_statement_result
-redshiftdataapiservice_get_statement_result <- function(Id, NextToken = NULL) {
+redshiftdataapiservice_get_statement_result <- function(Id, NextToken = NULL, WaitTimeSeconds = NULL) {
   op <- new_operation(
     name = "GetStatementResult",
     http_method = "POST",
@@ -217,7 +222,7 @@ redshiftdataapiservice_get_statement_result <- function(Id, NextToken = NULL) {
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Records"),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$get_statement_result_input(Id = Id, NextToken = NextToken)
+  input <- .redshiftdataapiservice$get_statement_result_input(Id = Id, NextToken = NextToken, WaitTimeSeconds = WaitTimeSeconds)
   output <- .redshiftdataapiservice$get_statement_result_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)
@@ -236,11 +241,12 @@ redshiftdataapiservice_get_statement_result <- function(Id, NextToken = NULL) {
 #'
 #' @param Id &#91;required&#93; The identifier of the SQL statement whose results are to be fetched. This value is a universally unique identifier (UUID) generated by Amazon Redshift Data API. A suffix indicates then number of the SQL statement. For example, `d9b6c0c9-0747-4bf4-b142-e8883122f766:2` has a suffix of `:2` that indicates the second SQL statement of a batch query. This identifier is returned by `BatchExecuteStatment`, `ExecuteStatment`, and [`list_statements`][redshiftdataapiservice_list_statements].
 #' @param NextToken A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned NextToken value in the next NextToken parameter and retrying the command. If the NextToken field is empty, all response records have been retrieved for the request.
+#' @param WaitTimeSeconds The number of seconds to wait for the SQL statement to complete execution before returning the result. The maximum value is 30 seconds.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_get_statement_result_v2
-redshiftdataapiservice_get_statement_result_v2 <- function(Id, NextToken = NULL) {
+redshiftdataapiservice_get_statement_result_v2 <- function(Id, NextToken = NULL, WaitTimeSeconds = NULL) {
   op <- new_operation(
     name = "GetStatementResultV2",
     http_method = "POST",
@@ -249,7 +255,7 @@ redshiftdataapiservice_get_statement_result_v2 <- function(Id, NextToken = NULL)
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Records"),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$get_statement_result_v2_input(Id = Id, NextToken = NextToken)
+  input <- .redshiftdataapiservice$get_statement_result_v2_input(Id = Id, NextToken = NextToken, WaitTimeSeconds = WaitTimeSeconds)
   output <- .redshiftdataapiservice$get_statement_result_v2_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)
@@ -334,6 +340,50 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, Secret
   return(response)
 }
 .redshiftdataapiservice$operations$list_schemas <- redshiftdataapiservice_list_schemas
+
+#' Lists the sessions that the caller created in the last 24 hours
+#'
+#' @description
+#' Lists the sessions that the caller created in the last 24 hours. By default, only sessions with a status of `AVAILABLE` or `BUSY` are returned. You can filter the results by session status, compute target (cluster or serverless workgroup), or database. To retrieve the metadata for a single session, provide the `SessionId` parameter. Use `NextToken` to page through the session list.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftdataapiservice_list_sessions/](https://www.paws-r-sdk.com/docs/redshiftdataapiservice_list_sessions/) for full documentation.
+#'
+#' @param NextToken A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned NextToken value in the next NextToken parameter and retrying the command. If the NextToken field is empty, all response records have been retrieved for the request.
+#' @param MaxResults The maximum number of sessions to return in the response. If more sessions exist than fit in one response, the operation returns `NextToken` to paginate the results.
+#' @param SessionId The identifier of a specific session to return metadata for. This value is a universally unique identifier (UUID) generated by Amazon Redshift Data API. When you provide `SessionId`, you can't specify `Status`, `ClusterIdentifier`, `WorkgroupName`, or `Database`.
+#' @param Status The status of the sessions to list. If no status is specified, sessions with a status of `AVAILABLE` or `BUSY` are returned. Status values are defined as follows:
+#' 
+#' -   AVAILABLE – The session is open and ready to run a SQL statement.
+#' 
+#' -   BUSY – The session is currently running a SQL statement.
+#' 
+#' -   CLOSED – The session is closed and can no longer run SQL statements.
+#' @param RoleLevel Specifies whether to return all sessions created by the caller's IAM role, including sessions from previous IAM sessions. If false, only sessions created in the current IAM session are returned. The default is true.
+#' @param ClusterIdentifier The cluster identifier. Only sessions on this cluster are returned. When providing `ClusterIdentifier`, then `WorkgroupName` can't be specified.
+#' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). Only sessions on this workgroup are returned. When providing `WorkgroupName`, then `ClusterIdentifier` can't be specified.
+#' @param Database The name of the database. Only sessions connected to this database are returned.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftdataapiservice_list_sessions
+redshiftdataapiservice_list_sessions <- function(NextToken = NULL, MaxResults = NULL, SessionId = NULL, Status = NULL, RoleLevel = NULL, ClusterIdentifier = NULL, WorkgroupName = NULL, Database = NULL) {
+  op <- new_operation(
+    name = "ListSessions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Sessions"),
+    stream_api = FALSE
+  )
+  input <- .redshiftdataapiservice$list_sessions_input(NextToken = NextToken, MaxResults = MaxResults, SessionId = SessionId, Status = Status, RoleLevel = RoleLevel, ClusterIdentifier = ClusterIdentifier, WorkgroupName = WorkgroupName, Database = Database)
+  output <- .redshiftdataapiservice$list_sessions_output()
+  config <- get_config()
+  svc <- .redshiftdataapiservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftdataapiservice$operations$list_sessions <- redshiftdataapiservice_list_sessions
 
 #' List of SQL statements
 #'

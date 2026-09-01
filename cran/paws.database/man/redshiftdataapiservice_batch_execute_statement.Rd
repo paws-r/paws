@@ -18,11 +18,13 @@ redshiftdataapiservice_batch_execute_statement(
   ClientToken = NULL,
   ResultFormat = NULL,
   SessionKeepAliveSeconds = NULL,
-  SessionId = NULL
+  SessionId = NULL,
+  ExecutionMode = NULL,
+  WaitTimeSeconds = NULL
 )
 }
 \arguments{
-\item{Sqls}{[required] One or more SQL statements to run. The SQL statements are run as a single transaction. They run serially in the order of the array. Subsequent SQL statements don't start until the previous statement in the array completes. If any SQL statement fails, then because they are run as one transaction, all work is rolled back.}
+\item{Sqls}{[required] One or more SQL statements to run. The SQL statements run serially in the order of the array. Subsequent SQL statements don't start until the previous statement in the array completes. By default, the SQL statements are run as a single transaction. If any SQL statement fails, all work is rolled back. To change this behavior, see the \code{ExecutionMode} parameter.}
 
 \item{ClusterIdentifier}{The cluster identifier. This parameter is required when connecting to a cluster and authenticating using either Secrets Manager or temporary credentials.}
 
@@ -36,7 +38,7 @@ redshiftdataapiservice_batch_execute_statement(
 
 \item{StatementName}{The name of the SQL statements. You can name the SQL statements when you create them to identify the query.}
 
-\item{Parameters}{The parameters for the SQL statements. The parameters are shared across all SQL statements in the batch.}
+\item{Parameters}{The parameters for the SQL statements. The parameters are available to all SQL statements in the batch. Each statement can reference any subset of the provided parameters. Each provided parameter must be referenced by at least one SQL statement in the batch.}
 
 \item{WorkgroupName}{The serverless workgroup name or Amazon Resource Name (ARN). This parameter is required when connecting to a serverless workgroup and authenticating using either Secrets Manager or temporary credentials.}
 
@@ -47,6 +49,10 @@ redshiftdataapiservice_batch_execute_statement(
 \item{SessionKeepAliveSeconds}{The number of seconds to keep the session alive after the query finishes. The maximum time a session can keep alive is 24 hours. After 24 hours, the session is forced closed and the query is terminated.}
 
 \item{SessionId}{The session identifier of the query.}
+
+\item{ExecutionMode}{Determines how the SQL statements in the batch are run. If set to \code{TRANSACTION} (the default), all SQL statements are run as a single transaction and they are committed or rolled back together. If set to \code{AUTO_COMMIT}, each SQL statement is committed individually, and a failure of one statement does not affect the others.}
+
+\item{WaitTimeSeconds}{The number of seconds to wait for all SQL statements in the batch to complete execution before returning the response. If the SQL statements do not complete within the specified time, the response returns the current status. The maximum value is 30 seconds.}
 }
 \description{
 Runs one or more SQL statements, which can be data manipulation language (DML) or data definition language (DDL). Depending on the authorization method, use one of the following combinations of request parameters:

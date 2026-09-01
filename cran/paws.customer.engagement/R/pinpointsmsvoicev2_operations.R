@@ -428,11 +428,11 @@ pinpointsmsvoicev2_create_registration_association <- function(RegistrationId, R
 #' URL to a file
 #'
 #' @description
-#' Create a new registration attachment to use for uploading a file or a URL to a file. The maximum file size is 500KB and valid file extensions are PDF, JPEG and PNG. For example, many sender ID registrations require a signed “letter of authorization” (LOA) to be submitted.
+#' Create a new registration attachment to use for uploading a file or a URL to a file. The maximum file size is 5MB and valid file extensions are PDF, JPEG and PNG. For example, many sender ID registrations require a signed “letter of authorization” (LOA) to be submitted.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_registration_attachment/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_registration_attachment/) for full documentation.
 #'
-#' @param AttachmentBody The registration file to upload. The maximum file size is 500KB and valid file extensions are PDF, JPEG and PNG.
+#' @param AttachmentBody The registration file to upload. The maximum file size is 5MB and valid file extensions are PDF, JPEG and PNG.
 #' @param AttachmentUrl Registration files have to be stored in an Amazon S3 bucket. The URI to use when sending is in the format `s3://BucketName/FileName`.
 #' @param Tags An array of tags (key and value pairs) to associate with the registration attachment.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. If you don't specify a client token, a randomly generated token is used for the request to ensure idempotency.
@@ -1004,6 +1004,38 @@ pinpointsmsvoicev2_delete_rcs_agent <- function(RcsAgentId) {
   return(response)
 }
 .pinpointsmsvoicev2$operations$delete_rcs_agent <- pinpointsmsvoicev2_delete_rcs_agent
+
+#' Deletes an account-level monthly spending limit override for sending RCS
+#' messages
+#'
+#' @description
+#' Deletes an account-level monthly spending limit override for sending RCS messages. Deleting a spend limit override sets the `EnforcedLimit` to equal the `MaxLimit`, which is set by Amazon Web Services.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_rcs_message_spend_limit_override/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_rcs_message_spend_limit_override/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_delete_rcs_message_spend_limit_override
+pinpointsmsvoicev2_delete_rcs_message_spend_limit_override <- function() {
+  op <- new_operation(
+    name = "DeleteRcsMessageSpendLimitOverride",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$delete_rcs_message_spend_limit_override_input()
+  output <- .pinpointsmsvoicev2$delete_rcs_message_spend_limit_override_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$delete_rcs_message_spend_limit_override <- pinpointsmsvoicev2_delete_rcs_message_spend_limit_override
 
 #' Permanently delete an existing registration from your account
 #'
@@ -2713,7 +2745,7 @@ pinpointsmsvoicev2_request_phone_number <- function(IsoCountryCode, MessageType,
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_request_sender_id/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_request_sender_id/) for full documentation.
 #'
-#' @param SenderId &#91;required&#93; The sender ID string to request.
+#' @param SenderId &#91;required&#93; The sender ID string to request. The sender ID can be 1-11 alphanumeric characters including letters (A-Z, a-z), numbers (0-9), or hyphens (-). The sender ID must contain at least one letter and cannot start or end with a hyphen.
 #' @param IsoCountryCode &#91;required&#93; The two-character code, in ISO 3166-1 alpha-2 format, for the country or region.
 #' @param MessageTypes The type of message. Valid values are TRANSACTIONAL for messages that are critical or time-sensitive and PROMOTIONAL for messages that aren't critical or time-sensitive.
 #' @param DeletionProtectionEnabled By default this is set to false. When set to true the sender ID can't be deleted.
@@ -2909,6 +2941,48 @@ pinpointsmsvoicev2_send_notify_voice_message <- function(NotifyConfigurationId, 
 }
 .pinpointsmsvoicev2$operations$send_notify_voice_message <- pinpointsmsvoicev2_send_notify_voice_message
 
+#' Creates a new RCS message and sends it to a recipient's phone number
+#'
+#' @description
+#' Creates a new RCS message and sends it to a recipient's phone number. RCS messages support rich content including text, files, rich cards, and carousels with interactive suggested actions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_rcs_message/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_rcs_message/) for full documentation.
+#'
+#' @param DestinationPhoneNumber &#91;required&#93; The destination phone number in E.164 format.
+#' @param OriginationIdentity &#91;required&#93; The origination identity of the message. This can be either the RcsAgentId, RcsAgentArn, PoolId, or PoolArn.
+#' @param RcsMessageContent The content of the RCS message. Contains the message content (text, file, rich card, or carousel) and optional message-level suggested actions.
+#' @param TimeToLive The duration in seconds that the RCS message is valid for delivery. If the message cannot be delivered within this duration, it is considered expired. Valid values are 1 to 172800 (48 hours). If a FallbackConfiguration is provided, the fallback is triggered when the duration expires without delivery confirmation.
+#' @param MessageTrafficType The traffic type of the RCS message. Valid values are AUTHENTICATION, TRANSACTION, PROMOTION, SERVICE_REQUEST, and ACKNOWLEDGEMENT. This field is reserved for future use.
+#' @param FallbackConfiguration Configuration for SMS or MMS fallback when RCS delivery fails. If provided, the service sends a fallback message via the specified channel when the RCS message fails or the TimeToLive expires.
+#' @param ProtectConfigurationId The unique identifier of the protect configuration to use.
+#' @param ConfigurationSetName The name of the configuration set to use. This can be either the ConfigurationSetName or ConfigurationSetArn.
+#' @param MaxPrice The maximum amount that you want to spend, in US dollars, per each RCS message.
+#' @param DryRun When set to true, the message is checked and validated, but isn't sent to the end recipient.
+#' @param Context You can specify custom data in this field. If you do, that data is logged to the event destination.
+#' @param MessageFeedbackEnabled Set to true to enable message feedback for the message. When a user receives the message you need to update the message status using [`put_message_feedback`][pinpointsmsvoicev2_put_message_feedback].
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_send_rcs_message
+pinpointsmsvoicev2_send_rcs_message <- function(DestinationPhoneNumber, OriginationIdentity, RcsMessageContent = NULL, TimeToLive = NULL, MessageTrafficType = NULL, FallbackConfiguration = NULL, ProtectConfigurationId = NULL, ConfigurationSetName = NULL, MaxPrice = NULL, DryRun = NULL, Context = NULL, MessageFeedbackEnabled = NULL) {
+  op <- new_operation(
+    name = "SendRcsMessage",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$send_rcs_message_input(DestinationPhoneNumber = DestinationPhoneNumber, OriginationIdentity = OriginationIdentity, RcsMessageContent = RcsMessageContent, TimeToLive = TimeToLive, MessageTrafficType = MessageTrafficType, FallbackConfiguration = FallbackConfiguration, ProtectConfigurationId = ProtectConfigurationId, ConfigurationSetName = ConfigurationSetName, MaxPrice = MaxPrice, DryRun = DryRun, Context = Context, MessageFeedbackEnabled = MessageFeedbackEnabled)
+  output <- .pinpointsmsvoicev2$send_rcs_message_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$send_rcs_message <- pinpointsmsvoicev2_send_rcs_message
+
 #' Creates a new text message and sends it to a recipient's phone number
 #'
 #' @description
@@ -2917,7 +2991,7 @@ pinpointsmsvoicev2_send_notify_voice_message <- function(NotifyConfigurationId, 
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_text_message/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_text_message/) for full documentation.
 #'
 #' @param DestinationPhoneNumber &#91;required&#93; The destination phone number in E.164 format.
-#' @param OriginationIdentity The origination identity of the message. This can be either the PhoneNumber, PhoneNumberId, PhoneNumberArn, SenderId, SenderIdArn, PoolId, or PoolArn.
+#' @param OriginationIdentity The origination identity of the message. This can be either the PhoneNumber, PhoneNumberId, PhoneNumberArn, RcsAgentId, RcsAgentArn, SenderId, SenderIdArn, PoolId, or PoolArn.
 #' 
 #' If you are using a shared End User Messaging SMS resource then you must use the full Amazon Resource Name(ARN).
 #' @param MessageBody The body of the text message.
@@ -3201,6 +3275,38 @@ pinpointsmsvoicev2_set_notify_message_spend_limit_override <- function(MonthlyLi
 }
 .pinpointsmsvoicev2$operations$set_notify_message_spend_limit_override <- pinpointsmsvoicev2_set_notify_message_spend_limit_override
 
+#' Sets an account level monthly spend limit override for sending RCS
+#' messages
+#'
+#' @description
+#' Sets an account level monthly spend limit override for sending RCS messages. The requested spend limit must be less than or equal to the `MaxLimit`, which is set by Amazon Web Services.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_rcs_message_spend_limit_override/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_rcs_message_spend_limit_override/) for full documentation.
+#'
+#' @param MonthlyLimit &#91;required&#93; The new monthly limit to enforce on RCS message spending.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_set_rcs_message_spend_limit_override
+pinpointsmsvoicev2_set_rcs_message_spend_limit_override <- function(MonthlyLimit) {
+  op <- new_operation(
+    name = "SetRcsMessageSpendLimitOverride",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$set_rcs_message_spend_limit_override_input(MonthlyLimit = MonthlyLimit)
+  output <- .pinpointsmsvoicev2$set_rcs_message_spend_limit_override_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$set_rcs_message_spend_limit_override <- pinpointsmsvoicev2_set_rcs_message_spend_limit_override
+
 #' Sets an account level monthly spend limit override for sending text
 #' messages
 #'
@@ -3408,8 +3514,8 @@ pinpointsmsvoicev2_update_event_destination <- function(ConfigurationSetName, Ev
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_notify_configuration/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_notify_configuration/) for full documentation.
 #'
 #' @param NotifyConfigurationId &#91;required&#93; The identifier of the notify configuration to update. The NotifyConfigurationId can be found using the [`describe_notify_configurations`][pinpointsmsvoicev2_describe_notify_configurations] operation.
-#' @param DefaultTemplateId The template ID to set as the default, or the special value UNSET_DEFAULT_TEMPLATE to clear the current default template.
-#' @param PoolId The pool ID or ARN to associate, or the special value UNSET_DEFAULT_POOL_FOR_NOTIFY to clear the current default pool.
+#' @param DefaultTemplateId The default template identifier to associate with the notify configuration. If specified, this template is used when sending messages without an explicit template identifier. Pass the special value `UNSET_DEFAULT_TEMPLATE` to clear the current default template from the notify configuration.
+#' @param PoolId The pool identifier or Amazon Resource Name (ARN) to associate with the notify configuration. Pass the special value `UNSET_DEFAULT_POOL_FOR_NOTIFY` to clear the current default pool from the notify configuration.
 #' @param EnabledCountries An array of two-character ISO country codes, in ISO 3166-1 alpha-2 format, that are enabled for the notify configuration.
 #' @param EnabledChannels An array of channels to enable for the notify configuration. Supported values include `SMS` and `VOICE`.
 #' @param DeletionProtectionEnabled When set to true the notify configuration can't be deleted.
@@ -3600,11 +3706,15 @@ pinpointsmsvoicev2_update_protect_configuration_country_rule_set <- function(Pro
 #' @param TwoWayChannelArn The Amazon Resource Name (ARN) of the two way channel.
 #' @param TwoWayChannelRole An optional IAM Role Arn for a service to assume, to be able to post inbound SMS messages.
 #' @param TwoWayEnabled By default this is set to false. When set to true you can receive incoming text messages from your end recipients.
+#' @param TwoWayMediaS3BucketName The name of the S3 bucket where inbound RCS media files are stored. Two-way messaging must be enabled on the agent. To remove the media configuration, pass the sentinel value `UNSET_RCS_MEDIA_CONFIGURATION` for both this field and TwoWayMediaS3Role.
+#' @param TwoWayMediaS3KeyPrefix The key prefix used for inbound RCS media objects in the S3 bucket.
+#' @param TwoWayMediaS3Role The ARN of the IAM role used to write inbound RCS media files to the S3 bucket. The role must have `s3:PutObject` permission on the bucket and a trust policy allowing `sms-voice.amazonaws.com` to assume it. To remove the media configuration, pass the sentinel value `UNSET_RCS_MEDIA_CONFIGURATION` for both this field and TwoWayMediaS3BucketName.
+#' @param TwoWayRcsEventsEnabled The list of RCS event types to enable for two-way messaging. Pass an empty list to disable all event types. The special value `ALL` enables all current and future event types and must be the sole element if used.
 #'
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_update_rcs_agent
-pinpointsmsvoicev2_update_rcs_agent <- function(RcsAgentId, DeletionProtectionEnabled = NULL, OptOutListName = NULL, SelfManagedOptOutsEnabled = NULL, TwoWayChannelArn = NULL, TwoWayChannelRole = NULL, TwoWayEnabled = NULL) {
+pinpointsmsvoicev2_update_rcs_agent <- function(RcsAgentId, DeletionProtectionEnabled = NULL, OptOutListName = NULL, SelfManagedOptOutsEnabled = NULL, TwoWayChannelArn = NULL, TwoWayChannelRole = NULL, TwoWayEnabled = NULL, TwoWayMediaS3BucketName = NULL, TwoWayMediaS3KeyPrefix = NULL, TwoWayMediaS3Role = NULL, TwoWayRcsEventsEnabled = NULL) {
   op <- new_operation(
     name = "UpdateRcsAgent",
     http_method = "POST",
@@ -3613,7 +3723,7 @@ pinpointsmsvoicev2_update_rcs_agent <- function(RcsAgentId, DeletionProtectionEn
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .pinpointsmsvoicev2$update_rcs_agent_input(RcsAgentId = RcsAgentId, DeletionProtectionEnabled = DeletionProtectionEnabled, OptOutListName = OptOutListName, SelfManagedOptOutsEnabled = SelfManagedOptOutsEnabled, TwoWayChannelArn = TwoWayChannelArn, TwoWayChannelRole = TwoWayChannelRole, TwoWayEnabled = TwoWayEnabled)
+  input <- .pinpointsmsvoicev2$update_rcs_agent_input(RcsAgentId = RcsAgentId, DeletionProtectionEnabled = DeletionProtectionEnabled, OptOutListName = OptOutListName, SelfManagedOptOutsEnabled = SelfManagedOptOutsEnabled, TwoWayChannelArn = TwoWayChannelArn, TwoWayChannelRole = TwoWayChannelRole, TwoWayEnabled = TwoWayEnabled, TwoWayMediaS3BucketName = TwoWayMediaS3BucketName, TwoWayMediaS3KeyPrefix = TwoWayMediaS3KeyPrefix, TwoWayMediaS3Role = TwoWayMediaS3Role, TwoWayRcsEventsEnabled = TwoWayRcsEventsEnabled)
   output <- .pinpointsmsvoicev2$update_rcs_agent_output()
   config <- get_config()
   svc <- .pinpointsmsvoicev2$service(config, op)

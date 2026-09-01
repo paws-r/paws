@@ -146,6 +146,7 @@ Other Resources:
 \link[=sagemaker_create_inference_component]{create_inference_component} \tab Creates an inference component, which is a SageMaker AI hosting object that you can use to deploy a model to an endpoint\cr
 \link[=sagemaker_create_inference_experiment]{create_inference_experiment} \tab Creates an inference experiment using the configurations specified in the request\cr
 \link[=sagemaker_create_inference_recommendations_job]{create_inference_recommendations_job} \tab Starts a recommendation job\cr
+\link[=sagemaker_create_job]{create_job} \tab Creates a model customization job in Amazon SageMaker\cr
 \link[=sagemaker_create_labeling_job]{create_labeling_job} \tab Creates a job that uses workers to label the data objects in your input dataset\cr
 \link[=sagemaker_create_mlflow_app]{create_mlflow_app} \tab Creates an MLflow Tracking Server using a general purpose Amazon S3 bucket as the artifact store\cr
 \link[=sagemaker_create_mlflow_tracking_server]{create_mlflow_tracking_server} \tab Creates an MLflow Tracking Server using a general purpose Amazon S3 bucket as the artifact store\cr
@@ -214,6 +215,7 @@ Other Resources:
 \link[=sagemaker_delete_image_version]{delete_image_version} \tab Deletes a version of a SageMaker AI image\cr
 \link[=sagemaker_delete_inference_component]{delete_inference_component} \tab Deletes an inference component\cr
 \link[=sagemaker_delete_inference_experiment]{delete_inference_experiment} \tab Deletes an inference experiment\cr
+\link[=sagemaker_delete_job]{delete_job} \tab Deletes a job\cr
 \link[=sagemaker_delete_mlflow_app]{delete_mlflow_app} \tab Deletes an MLflow App\cr
 \link[=sagemaker_delete_mlflow_tracking_server]{delete_mlflow_tracking_server} \tab Deletes an MLflow Tracking Server\cr
 \link[=sagemaker_delete_model]{delete_model} \tab Deletes a model\cr
@@ -281,6 +283,8 @@ Other Resources:
 \link[=sagemaker_describe_inference_component]{describe_inference_component} \tab Returns information about an inference component\cr
 \link[=sagemaker_describe_inference_experiment]{describe_inference_experiment} \tab Returns details about an inference experiment\cr
 \link[=sagemaker_describe_inference_recommendations_job]{describe_inference_recommendations_job} \tab Provides the results of the Inference Recommender job\cr
+\link[=sagemaker_describe_job]{describe_job} \tab Returns detailed information about a job, including its current status, secondary status, configuration, and timestamps\cr
+\link[=sagemaker_describe_job_schema_version]{describe_job_schema_version} \tab Returns the JSON schema for a specified job category and schema version\cr
 \link[=sagemaker_describe_labeling_job]{describe_labeling_job} \tab Gets information about a labeling job\cr
 \link[=sagemaker_describe_lineage_group]{describe_lineage_group} \tab Provides a list of properties for the requested lineage group\cr
 \link[=sagemaker_describe_mlflow_app]{describe_mlflow_app} \tab Returns information about an MLflow App\cr
@@ -370,6 +374,8 @@ Other Resources:
 \link[=sagemaker_list_inference_experiments]{list_inference_experiments} \tab Returns the list of all inference experiments\cr
 \link[=sagemaker_list_inference_recommendations_jobs]{list_inference_recommendations_jobs} \tab Lists recommendation jobs that satisfy various filters\cr
 \link[=sagemaker_list_inference_recommendations_job_steps]{list_inference_recommendations_job_steps} \tab Returns a list of the subtasks for an Inference Recommender job\cr
+\link[=sagemaker_list_jobs]{list_jobs} \tab Lists jobs in a specified category\cr
+\link[=sagemaker_list_job_schema_versions]{list_job_schema_versions} \tab Lists available configuration schema versions for a specified job category\cr
 \link[=sagemaker_list_labeling_jobs]{list_labeling_jobs} \tab Gets a list of labeling jobs\cr
 \link[=sagemaker_list_labeling_jobs_for_workteam]{list_labeling_jobs_for_workteam} \tab Gets a list of labeling jobs assigned to a specified work team\cr
 \link[=sagemaker_list_lineage_groups]{list_lineage_groups} \tab A list of lineage groups shared with your Amazon Web Services account\cr
@@ -442,6 +448,7 @@ Other Resources:
 \link[=sagemaker_stop_hyper_parameter_tuning_job]{stop_hyper_parameter_tuning_job} \tab Stops a running hyperparameter tuning job and all running training jobs that the tuning job launched\cr
 \link[=sagemaker_stop_inference_experiment]{stop_inference_experiment} \tab Stops an inference experiment\cr
 \link[=sagemaker_stop_inference_recommendations_job]{stop_inference_recommendations_job} \tab Stops an Inference Recommender job\cr
+\link[=sagemaker_stop_job]{stop_job} \tab Stops a running job\cr
 \link[=sagemaker_stop_labeling_job]{stop_labeling_job} \tab Stops a running labeling job\cr
 \link[=sagemaker_stop_mlflow_tracking_server]{stop_mlflow_tracking_server} \tab Programmatically stop an MLflow Tracking Server\cr
 \link[=sagemaker_stop_monitoring_schedule]{stop_monitoring_schedule} \tab Stops a previously started monitoring schedule\cr

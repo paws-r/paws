@@ -112,11 +112,12 @@ emr_add_job_flow_steps <- function(JobFlowId, Steps, ExecutionRoleArn = NULL) {
 #'
 #' @param ResourceId &#91;required&#93; The Amazon EMR resource identifier to which tags will be added. For example, a cluster identifier or an Amazon EMR Studio ID.
 #' @param Tags &#91;required&#93; A list of tags to associate with a resource. Tags are user-defined key-value pairs that consist of a required key string with a maximum of 128 characters, and an optional value string with a maximum of 256 characters.
+#' @param ClusterId The ID of the cluster that scopes the tag operation. Required when the resource being tagged is a session-scoped resource.
 #'
 #' @keywords internal
 #'
 #' @rdname emr_add_tags
-emr_add_tags <- function(ResourceId, Tags) {
+emr_add_tags <- function(ResourceId, Tags, ClusterId = NULL) {
   op <- new_operation(
     name = "AddTags",
     http_method = "POST",
@@ -125,7 +126,7 @@ emr_add_tags <- function(ResourceId, Tags) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emr$add_tags_input(ResourceId = ResourceId, Tags = Tags)
+  input <- .emr$add_tags_input(ResourceId = ResourceId, Tags = Tags, ClusterId = ClusterId)
   output <- .emr$add_tags_output()
   config <- get_config()
   svc <- .emr$service(config, op)
@@ -875,6 +876,71 @@ emr_get_persistent_app_ui_presigned_url <- function(PersistentAppUIId, Persisten
 }
 .emr$operations$get_persistent_app_ui_presigned_url <- emr_get_persistent_app_ui_presigned_url
 
+#' Returns detailed information about a session
+#'
+#' @description
+#' Returns detailed information about a session.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emr_get_session/](https://www.paws-r-sdk.com/docs/emr_get_session/) for full documentation.
+#'
+#' @param ClusterId &#91;required&#93; The ID of the cluster that the session belongs to.
+#' @param SessionId &#91;required&#93; The ID of the session.
+#'
+#' @keywords internal
+#'
+#' @rdname emr_get_session
+emr_get_session <- function(ClusterId, SessionId) {
+  op <- new_operation(
+    name = "GetSession",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emr$get_session_input(ClusterId = ClusterId, SessionId = SessionId)
+  output <- .emr$get_session_output()
+  config <- get_config()
+  svc <- .emr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$get_session <- emr_get_session
+
+#' Returns the Spark Connect endpoint URL and a time-limited authentication
+#' token for the specified session
+#'
+#' @description
+#' Returns the Spark Connect endpoint URL and a time-limited authentication token for the specified session. Use the endpoint and token to connect a PySpark client to the session. Call this operation again when the token expires to obtain a new one.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emr_get_session_endpoint/](https://www.paws-r-sdk.com/docs/emr_get_session_endpoint/) for full documentation.
+#'
+#' @param ClusterId &#91;required&#93; The ID of the cluster that the session belongs to.
+#' @param SessionId &#91;required&#93; The ID of the session.
+#'
+#' @keywords internal
+#'
+#' @rdname emr_get_session_endpoint
+emr_get_session_endpoint <- function(ClusterId, SessionId) {
+  op <- new_operation(
+    name = "GetSessionEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emr$get_session_endpoint_input(ClusterId = ClusterId, SessionId = SessionId)
+  output <- .emr$get_session_endpoint_output()
+  config <- get_config()
+  svc <- .emr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$get_session_endpoint <- emr_get_session_endpoint
+
 #' Fetches mapping details for the specified Amazon EMR Studio and identity
 #' (user or group)
 #'
@@ -1202,6 +1268,40 @@ emr_list_security_configurations <- function(Marker = NULL) {
 }
 .emr$operations$list_security_configurations <- emr_list_security_configurations
 
+#' Lists the sessions on a cluster
+#'
+#' @description
+#' Lists the sessions on a cluster. You can filter the results by session state. Newer sessions are returned first.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emr_list_sessions/](https://www.paws-r-sdk.com/docs/emr_list_sessions/) for full documentation.
+#'
+#' @param ClusterId &#91;required&#93; The ID of the cluster to list sessions for.
+#' @param SessionStates An optional filter that limits the results to sessions in the specified states.
+#' @param NextToken The pagination token returned by a previous [`list_sessions`][emr_list_sessions] call. Use it to retrieve the next page of results.
+#' @param MaxResults The maximum number of sessions to return in each page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname emr_list_sessions
+emr_list_sessions <- function(ClusterId, SessionStates = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListSessions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Sessions"),
+    stream_api = FALSE
+  )
+  input <- .emr$list_sessions_input(ClusterId = ClusterId, SessionStates = SessionStates, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .emr$list_sessions_output()
+  config <- get_config()
+  svc <- .emr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$list_sessions <- emr_list_sessions
+
 #' Provides a list of steps for the cluster in reverse order unless you
 #' specify stepIds with the request or filter by StepStates
 #'
@@ -1310,7 +1410,7 @@ emr_list_studios <- function(Marker = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/emr_list_supported_instance_types/](https://www.paws-r-sdk.com/docs/emr_list_supported_instance_types/) for full documentation.
 #'
-#' @param ReleaseLabel &#91;required&#93; The Amazon EMR release label determines the [versions of open-source application packages](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-app-versions-6.x.html) that Amazon EMR has installed on the cluster. Release labels are in the format `emr-x.x.x`, where x.x.x is an Amazon EMR release number such as `emr-6.10.0`. For more information about Amazon EMR releases and their included application versions and features, see the \emph{\href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-components.html}{Amazon EMR Release Guide}} .
+#' @param ReleaseLabel &#91;required&#93; The Amazon EMR release label determines the [versions of open-source application packages](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-app-versions-6.x.html) that Amazon EMR has installed on the cluster. Release labels are in the format `emr-x.x.x`, where x.x.x is an Amazon EMR release number such as `emr-6.10.0`. For more information about Amazon EMR releases and their included application versions and features, see the *\href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-components.html}{Amazon EMR Release Guide}* .
 #' @param Marker The pagination token that marks the next set of results to retrieve.
 #'
 #' @keywords internal
@@ -1673,11 +1773,12 @@ emr_remove_managed_scaling_policy <- function(ClusterId) {
 #'
 #' @param ResourceId &#91;required&#93; The Amazon EMR resource identifier from which tags will be removed. For example, a cluster identifier or an Amazon EMR Studio ID.
 #' @param TagKeys &#91;required&#93; A list of tag keys to remove from the resource.
+#' @param ClusterId The ID of the cluster that scopes the tag operation. Required when the resource being untagged is a session-scoped resource.
 #'
 #' @keywords internal
 #'
 #' @rdname emr_remove_tags
-emr_remove_tags <- function(ResourceId, TagKeys) {
+emr_remove_tags <- function(ResourceId, TagKeys, ClusterId = NULL) {
   op <- new_operation(
     name = "RemoveTags",
     http_method = "POST",
@@ -1686,7 +1787,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emr$remove_tags_input(ResourceId = ResourceId, TagKeys = TagKeys)
+  input <- .emr$remove_tags_input(ResourceId = ResourceId, TagKeys = TagKeys, ClusterId = ClusterId)
   output <- .emr$remove_tags_output()
   config <- get_config()
   svc <- .emr$service(config, op)
@@ -1771,11 +1872,12 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' @param EbsRootVolumeThroughput The throughput, in MiB/s, of the Amazon EBS root device volume of the Linux AMI that is used for each Amazon EC2 instance. Available in Amazon EMR releases 6.15.0 and later.
 #' @param ExtendedSupport Reserved.
 #' @param MonitoringConfiguration Contains CloudWatch log configuration metadata and settings.
+#' @param SessionEnabled Indicates whether Spark Connect sessions are enabled on the cluster. When set to `true`, you can start Spark Connect sessions using the [`start_session`][emr_start_session] operation.
 #'
 #' @keywords internal
 #'
 #' @rdname emr_run_job_flow
-emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, StepExecutionRoleArn = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL, ManagedScalingPolicy = NULL, PlacementGroupConfigs = NULL, AutoTerminationPolicy = NULL, OSReleaseLabel = NULL, EbsRootVolumeIops = NULL, EbsRootVolumeThroughput = NULL, ExtendedSupport = NULL, MonitoringConfiguration = NULL) {
+emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, StepExecutionRoleArn = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL, ManagedScalingPolicy = NULL, PlacementGroupConfigs = NULL, AutoTerminationPolicy = NULL, OSReleaseLabel = NULL, EbsRootVolumeIops = NULL, EbsRootVolumeThroughput = NULL, ExtendedSupport = NULL, MonitoringConfiguration = NULL, SessionEnabled = NULL) {
   op <- new_operation(
     name = "RunJobFlow",
     http_method = "POST",
@@ -1784,7 +1886,7 @@ emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, StepExecutionRoleArn = StepExecutionRoleArn, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy, PlacementGroupConfigs = PlacementGroupConfigs, AutoTerminationPolicy = AutoTerminationPolicy, OSReleaseLabel = OSReleaseLabel, EbsRootVolumeIops = EbsRootVolumeIops, EbsRootVolumeThroughput = EbsRootVolumeThroughput, ExtendedSupport = ExtendedSupport, MonitoringConfiguration = MonitoringConfiguration)
+  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, StepExecutionRoleArn = StepExecutionRoleArn, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy, PlacementGroupConfigs = PlacementGroupConfigs, AutoTerminationPolicy = AutoTerminationPolicy, OSReleaseLabel = OSReleaseLabel, EbsRootVolumeIops = EbsRootVolumeIops, EbsRootVolumeThroughput = EbsRootVolumeThroughput, ExtendedSupport = ExtendedSupport, MonitoringConfiguration = MonitoringConfiguration, SessionEnabled = SessionEnabled)
   output <- .emr$run_job_flow_output()
   config <- get_config()
   svc <- .emr$service(config, op)
@@ -1969,6 +2071,44 @@ emr_start_notebook_execution <- function(EditorId = NULL, RelativePath = NULL, N
 }
 .emr$operations$start_notebook_execution <- emr_start_notebook_execution
 
+#' Creates and starts a new Spark Connect session on the specified cluster
+#'
+#' @description
+#' Creates and starts a new Spark Connect session on the specified cluster. The cluster must be in the `RUNNING` or `WAITING` state and have sessions enabled. This operation is supported in Amazon EMR Spark 8.0.0 and later.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emr_start_session/](https://www.paws-r-sdk.com/docs/emr_start_session/) for full documentation.
+#'
+#' @param Name An optional name for the session.
+#' @param ClusterId &#91;required&#93; The ID of the cluster on which to start the session.
+#' @param ExecutionRoleArn The execution role ARN for the session. Amazon EMR uses this role to access Amazon Web Services resources on your behalf during session execution.
+#' @param EngineConfigurations The configuration overrides for the session. Only runtime configuration overrides are supported.
+#' @param MonitoringConfiguration The monitoring configuration that controls where session logs are published, such as Amazon S3, CloudWatch, or managed logging.
+#' @param SessionIdleTimeoutInMinutes The idle timeout, in minutes. If the session is idle for this duration, Amazon EMR EC2 automatically terminates it.
+#' @param ClientRequestToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request. If you retry a request that completed successfully using the same client request token, the service returns the original response without performing the operation again.
+#' @param Tags The tags to assign to the session.
+#'
+#' @keywords internal
+#'
+#' @rdname emr_start_session
+emr_start_session <- function(Name = NULL, ClusterId, ExecutionRoleArn = NULL, EngineConfigurations = NULL, MonitoringConfiguration = NULL, SessionIdleTimeoutInMinutes = NULL, ClientRequestToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "StartSession",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emr$start_session_input(Name = Name, ClusterId = ClusterId, ExecutionRoleArn = ExecutionRoleArn, EngineConfigurations = EngineConfigurations, MonitoringConfiguration = MonitoringConfiguration, SessionIdleTimeoutInMinutes = SessionIdleTimeoutInMinutes, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  output <- .emr$start_session_output()
+  config <- get_config()
+  svc <- .emr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$start_session <- emr_start_session
+
 #' Stops a notebook execution
 #'
 #' @description
@@ -2030,6 +2170,38 @@ emr_terminate_job_flows <- function(JobFlowIds) {
   return(response)
 }
 .emr$operations$terminate_job_flows <- emr_terminate_job_flows
+
+#' Terminates an active session
+#'
+#' @description
+#' Terminates an active session. After you call this operation, the session enters the `TERMINATING` state and then transitions to `TERMINATED`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emr_terminate_session/](https://www.paws-r-sdk.com/docs/emr_terminate_session/) for full documentation.
+#'
+#' @param ClusterId &#91;required&#93; The ID of the cluster that the session belongs to.
+#' @param SessionId &#91;required&#93; The ID of the session to terminate.
+#'
+#' @keywords internal
+#'
+#' @rdname emr_terminate_session
+emr_terminate_session <- function(ClusterId, SessionId) {
+  op <- new_operation(
+    name = "TerminateSession",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emr$terminate_session_input(ClusterId = ClusterId, SessionId = SessionId)
+  output <- .emr$terminate_session_output()
+  config <- get_config()
+  svc <- .emr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$terminate_session <- emr_terminate_session
 
 #' Updates an Amazon EMR Studio configuration, including attributes such as
 #' name, description, and subnets

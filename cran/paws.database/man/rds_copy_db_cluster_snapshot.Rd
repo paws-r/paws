@@ -57,7 +57,7 @@ The presigned URL must be a valid request for the \code{\link[=rds_copy_db_clust
 \item \code{SourceDBClusterSnapshotIdentifier} - The DB cluster snapshot identifier for the encrypted DB cluster snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source Amazon Web Services Region. For example, if you are copying an encrypted DB cluster snapshot from the us-west-2 Amazon Web Services Region, then your \code{SourceDBClusterSnapshotIdentifier} looks like the following example: \code{arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115}.
 }
 
-To learn how to generate a Signature Version 4 signed request, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
+To learn how to generate a Signature Version 4 signed request, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
 
 If you are using an Amazon Web Services SDK tool or the CLI, you can specify \code{SourceRegion} (or \code{--source-region} for the CLI) instead of specifying \code{PreSignedUrl} manually. Specifying \code{SourceRegion} autogenerates a presigned URL that is a valid request for the operation that can run in the source Amazon Web Services Region.}
 

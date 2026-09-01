@@ -789,6 +789,8 @@ datazone_create_domain_unit <- function(domainIdentifier, name, parentDomainUnit
 #' @param environmentAccountIdentifier The ID of the account in which the environment is being created.
 #' @param environmentAccountRegion The region of the account in which the environment is being created.
 #' @param environmentBlueprintIdentifier The ID of the blueprint with which the environment is being created.
+#' 
+#' This parameter is only valid for V1 domains. If provided for a V2 domain, the service returns a ValidationException.
 #' @param deploymentOrder The deployment order of the environment.
 #' @param environmentConfigurationId The configuration ID of the environment.
 #' @param environmentConfigurationName The configuration name of the environment.
@@ -1712,12 +1714,13 @@ datazone_delete_data_source <- function(domainIdentifier, identifier, clientToke
 #'
 #' @param identifier &#91;required&#93; The identifier of the Amazon Web Services domain that is to be deleted.
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the idempotency of the request.
-#' @param skipDeletionCheck Specifies the optional flag to delete all child entities within the domain.
+#' @param skipDeletionCheck Specifies whether to skip the check that prevents deletion of a domain that still contains resources. When you use this parameter, Amazon DataZone deletes the domain but might not remove its associated resources, which can leave orphaned resources behind. To delete a domain and fully clean up its associated resources, use `cascadeDelete` instead. You can't use this parameter together with `cascadeDelete`.
+#' @param cascadeDelete Specifies whether to delete the domain along with all of its associated resources. When you use this parameter, Amazon DataZone deletes the domain and cleanly removes its associated resources without leaving orphaned resources behind. Amazon DataZone reports deletion progress in the `deleteProgress` field. Amazon DataZone reports any resources that it can't delete in the `failureReasons` field of the [`get_domain`][datazone_get_domain] response. You can't use this parameter together with `skipDeletionCheck`. If you don't specify a value, the default is `false`.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_delete_domain
-datazone_delete_domain <- function(identifier, clientToken = NULL, skipDeletionCheck = NULL) {
+datazone_delete_domain <- function(identifier, clientToken = NULL, skipDeletionCheck = NULL, cascadeDelete = NULL) {
   op <- new_operation(
     name = "DeleteDomain",
     http_method = "DELETE",
@@ -1726,7 +1729,7 @@ datazone_delete_domain <- function(identifier, clientToken = NULL, skipDeletionC
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$delete_domain_input(identifier = identifier, clientToken = clientToken, skipDeletionCheck = skipDeletionCheck)
+  input <- .datazone$delete_domain_input(identifier = identifier, clientToken = clientToken, skipDeletionCheck = skipDeletionCheck, cascadeDelete = cascadeDelete)
   output <- .datazone$delete_domain_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -2025,6 +2028,38 @@ datazone_delete_glossary_term <- function(domainIdentifier, identifier) {
   return(response)
 }
 .datazone$operations$delete_glossary_term <- datazone_delete_glossary_term
+
+#' Deletes the specified lineage event
+#'
+#' @description
+#' Deletes the specified lineage event.
+#'
+#' See [https://www.paws-r-sdk.com/docs/datazone_delete_lineage_event/](https://www.paws-r-sdk.com/docs/datazone_delete_lineage_event/) for full documentation.
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain.
+#' @param identifier &#91;required&#93; The ID of the lineage event.
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_delete_lineage_event
+datazone_delete_lineage_event <- function(domainIdentifier, identifier) {
+  op <- new_operation(
+    name = "DeleteLineageEvent",
+    http_method = "DELETE",
+    http_path = "/v2/domains/{domainIdentifier}/lineage/events/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$delete_lineage_event_input(domainIdentifier = domainIdentifier, identifier = identifier)
+  output <- .datazone$delete_lineage_event_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$delete_lineage_event <- datazone_delete_lineage_event
 
 #' Deletes a listing (a record of an asset at a given time)
 #'
@@ -5697,6 +5732,44 @@ datazone_start_notebook_run <- function(domainIdentifier, owningProjectIdentifie
   return(response)
 }
 .datazone$operations$start_notebook_run <- datazone_start_notebook_run
+
+#' Starts a notebook sync in Amazon SageMaker Unified Studio
+#'
+#' @description
+#' Starts a notebook sync in Amazon SageMaker Unified Studio. This operation syncs a notebook from a Git repository into a project.
+#'
+#' See [https://www.paws-r-sdk.com/docs/datazone_start_notebook_sync/](https://www.paws-r-sdk.com/docs/datazone_start_notebook_sync/) for full documentation.
+#'
+#' @param domainIdentifier &#91;required&#93; The identifier of the Amazon SageMaker Unified Studio domain in which to sync the notebook.
+#' @param owningProjectIdentifier &#91;required&#93; The identifier of the project that will own the synced notebook.
+#' @param sourceLocation &#91;required&#93; The source location of the notebook to sync. This specifies the Amazon Simple Storage Service URI of the notebook file.
+#' @param gitMetadata The Git metadata for the notebook sync, including repository, branch, and commit information.
+#' @param notebookId The identifier of an existing notebook to sync. If not specified, a new notebook is created.
+#' @param name The name of the notebook. The name must be between 1 and 256 characters.
+#' @param description The description of the notebook.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the request. This field is automatically populated if not provided.
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_start_notebook_sync
+datazone_start_notebook_sync <- function(domainIdentifier, owningProjectIdentifier, sourceLocation, gitMetadata = NULL, notebookId = NULL, name = NULL, description = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "StartNotebookSync",
+    http_method = "POST",
+    http_path = "/v2/domains/{domainIdentifier}/notebook-syncs",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$start_notebook_sync_input(domainIdentifier = domainIdentifier, owningProjectIdentifier = owningProjectIdentifier, sourceLocation = sourceLocation, gitMetadata = gitMetadata, notebookId = notebookId, name = name, description = description, clientToken = clientToken)
+  output <- .datazone$start_notebook_sync_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$start_notebook_sync <- datazone_start_notebook_sync
 
 #' Stops a running notebook run in Amazon SageMaker Unified Studio
 #'

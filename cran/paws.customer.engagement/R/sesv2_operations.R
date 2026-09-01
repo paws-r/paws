@@ -79,7 +79,7 @@ sesv2_cancel_export_job <- function(JobId) {
 #' @param ReputationOptions An object that defines whether or not Amazon SES collects reputation metrics for the emails that you send that use the configuration set.
 #' @param SendingOptions An object that defines whether or not Amazon SES can send email that you send using the configuration set.
 #' @param Tags An array of objects that define the tags (keys and values) to associate with the configuration set.
-#' @param SuppressionOptions An object that contains information about the suppression list preferences for your account.
+#' @param SuppressionOptions An object that contains information about the suppression list preferences for the configuration set. You can optionally include a `SuppressionScope` to override the tenant or account suppression scope for emails sent using this configuration set.
 #' @param VdmOptions An object that defines the VDM options for emails that you send using the configuration set.
 #' @param ArchivingOptions An object that defines the MailManager archiving options for emails that you send using the configuration set.
 #'
@@ -525,11 +525,12 @@ sesv2_create_multi_region_endpoint <- function(EndpointName, Details, Tags = NUL
 #'
 #' @param TenantName &#91;required&#93; The name of the tenant to create. The name can contain up to 64 alphanumeric characters, including letters, numbers, hyphens (-) and underscores (_) only.
 #' @param Tags An array of objects that define the tags (keys and values) to associate with the tenant
+#' @param SuppressionAttributes An object that contains information about the suppression list preferences for the tenant. Use this to configure tenant-level suppression at creation time.
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_create_tenant
-sesv2_create_tenant <- function(TenantName, Tags = NULL) {
+sesv2_create_tenant <- function(TenantName, Tags = NULL, SuppressionAttributes = NULL) {
   op <- new_operation(
     name = "CreateTenant",
     http_method = "POST",
@@ -538,7 +539,7 @@ sesv2_create_tenant <- function(TenantName, Tags = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$create_tenant_input(TenantName = TenantName, Tags = Tags)
+  input <- .sesv2$create_tenant_input(TenantName = TenantName, Tags = Tags, SuppressionAttributes = SuppressionAttributes)
   output <- .sesv2$create_tenant_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -896,19 +897,21 @@ sesv2_delete_multi_region_endpoint <- function(EndpointName) {
 }
 .sesv2$operations$delete_multi_region_endpoint <- sesv2_delete_multi_region_endpoint
 
-#' Removes an email address from the suppression list for your account
+#' Removes an email address from the suppression list for your account or
+#' for a specific tenant
 #'
 #' @description
-#' Removes an email address from the suppression list for your account.
+#' Removes an email address from the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the `TenantName` parameter. If you omit `TenantName`, the address is removed from the account-level suppression list.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sesv2_delete_suppressed_destination/](https://www.paws-r-sdk.com/docs/sesv2_delete_suppressed_destination/) for full documentation.
 #'
-#' @param EmailAddress &#91;required&#93; The suppressed email destination to remove from the account suppression list.
+#' @param EmailAddress &#91;required&#93; The suppressed email destination to remove from the suppression list for your account or for the specified tenant.
+#' @param TenantName The name of the tenant whose suppression list you want to remove the address from. If you omit this parameter, the address is removed from the account-level suppression list.
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_delete_suppressed_destination
-sesv2_delete_suppressed_destination <- function(EmailAddress) {
+sesv2_delete_suppressed_destination <- function(EmailAddress, TenantName = NULL) {
   op <- new_operation(
     name = "DeleteSuppressedDestination",
     http_method = "DELETE",
@@ -917,7 +920,7 @@ sesv2_delete_suppressed_destination <- function(EmailAddress) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$delete_suppressed_destination_input(EmailAddress = EmailAddress)
+  input <- .sesv2$delete_suppressed_destination_input(EmailAddress = EmailAddress, TenantName = TenantName)
   output <- .sesv2$delete_suppressed_destination_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -1731,19 +1734,20 @@ sesv2_get_reputation_entity <- function(ReputationEntityReference, ReputationEnt
 .sesv2$operations$get_reputation_entity <- sesv2_get_reputation_entity
 
 #' Retrieves information about a specific email address that's on the
-#' suppression list for your account
+#' suppression list for your account or for a specific tenant
 #'
 #' @description
-#' Retrieves information about a specific email address that's on the suppression list for your account.
+#' Retrieves information about a specific email address that's on the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the `TenantName` parameter. If you omit `TenantName`, the operation targets the account-level suppression list.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sesv2_get_suppressed_destination/](https://www.paws-r-sdk.com/docs/sesv2_get_suppressed_destination/) for full documentation.
 #'
-#' @param EmailAddress &#91;required&#93; The email address that's on the account suppression list.
+#' @param EmailAddress &#91;required&#93; The email address that's on the suppression list for your account or for the specified tenant.
+#' @param TenantName The name of the tenant whose suppression list you want to query. If you omit this parameter, the operation targets the account-level suppression list.
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_get_suppressed_destination
-sesv2_get_suppressed_destination <- function(EmailAddress) {
+sesv2_get_suppressed_destination <- function(EmailAddress, TenantName = NULL) {
   op <- new_operation(
     name = "GetSuppressedDestination",
     http_method = "GET",
@@ -1752,7 +1756,7 @@ sesv2_get_suppressed_destination <- function(EmailAddress) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$get_suppressed_destination_input(EmailAddress = EmailAddress)
+  input <- .sesv2$get_suppressed_destination_input(EmailAddress = EmailAddress, TenantName = TenantName)
   output <- .sesv2$get_suppressed_destination_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -1763,10 +1767,11 @@ sesv2_get_suppressed_destination <- function(EmailAddress) {
 .sesv2$operations$get_suppressed_destination <- sesv2_get_suppressed_destination
 
 #' Get information about a specific tenant, including the tenant's name,
-#' ID, ARN, creation timestamp, tags, and sending status
+#' ID, ARN, creation timestamp, tags, sending status, and suppression
+#' attributes
 #'
 #' @description
-#' Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags, and sending status.
+#' Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags, sending status, and suppression attributes.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sesv2_get_tenant/](https://www.paws-r-sdk.com/docs/sesv2_get_tenant/) for full documentation.
 #'
@@ -2305,14 +2310,15 @@ sesv2_list_resource_tenants <- function(ResourceArn, PageSize = NULL, NextToken 
 .sesv2$operations$list_resource_tenants <- sesv2_list_resource_tenants
 
 #' Retrieves a list of email addresses that are on the suppression list for
-#' your account
+#' your account or for a specific tenant
 #'
 #' @description
-#' Retrieves a list of email addresses that are on the suppression list for your account.
+#' Retrieves a list of email addresses that are on the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the `TenantName` parameter. If you omit `TenantName`, the operation targets the account-level suppression list.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sesv2_list_suppressed_destinations/](https://www.paws-r-sdk.com/docs/sesv2_list_suppressed_destinations/) for full documentation.
 #'
-#' @param Reasons The factors that caused the email address to be added to .
+#' @param TenantName The name of the tenant whose suppression list you want to retrieve. If you omit this parameter, the operation targets the account-level suppression list.
+#' @param Reasons The factors that caused the email address to be added to the suppression list for your account or for a specific tenant.
 #' @param StartDate Used to filter the list of suppressed email destinations so that it only includes addresses that were added to the list after a specific date.
 #' @param EndDate Used to filter the list of suppressed email destinations so that it only includes addresses that were added to the list before a specific date.
 #' @param NextToken A token returned from a previous call to [`list_suppressed_destinations`][sesv2_list_suppressed_destinations] to indicate the position in the list of suppressed email addresses.
@@ -2321,7 +2327,7 @@ sesv2_list_resource_tenants <- function(ResourceArn, PageSize = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname sesv2_list_suppressed_destinations
-sesv2_list_suppressed_destinations <- function(Reasons = NULL, StartDate = NULL, EndDate = NULL, NextToken = NULL, PageSize = NULL) {
+sesv2_list_suppressed_destinations <- function(TenantName = NULL, Reasons = NULL, StartDate = NULL, EndDate = NULL, NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListSuppressedDestinations",
     http_method = "GET",
@@ -2330,7 +2336,7 @@ sesv2_list_suppressed_destinations <- function(Reasons = NULL, StartDate = NULL,
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
-  input <- .sesv2$list_suppressed_destinations_input(Reasons = Reasons, StartDate = StartDate, EndDate = EndDate, NextToken = NextToken, PageSize = PageSize)
+  input <- .sesv2$list_suppressed_destinations_input(TenantName = TenantName, Reasons = Reasons, StartDate = StartDate, EndDate = EndDate, NextToken = NextToken, PageSize = PageSize)
   output <- .sesv2$list_suppressed_destinations_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -2510,6 +2516,45 @@ sesv2_put_account_details <- function(MailType, WebsiteURL, ContactLanguage = NU
   return(response)
 }
 .sesv2$operations$put_account_details <- sesv2_put_account_details
+
+#' Set the pricing plan for your Amazon SES account
+#'
+#' @description
+#' Set the pricing plan for your Amazon SES account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sesv2_put_account_pricing_attributes/](https://www.paws-r-sdk.com/docs/sesv2_put_account_pricing_attributes/) for full documentation.
+#'
+#' @param Plan &#91;required&#93; The pricing plan to apply to your Amazon SES account. For details about each plan, see [Amazon SES Pricing](https://aws.amazon.com/ses/pricing/). Can be one of the following:
+#' 
+#' -   `NONE`
+#' 
+#' -   `ESSENTIALS`
+#' 
+#' -   `PRO`
+#' 
+#' -   `ENTERPRISE`
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_put_account_pricing_attributes
+sesv2_put_account_pricing_attributes <- function(Plan) {
+  op <- new_operation(
+    name = "PutAccountPricingAttributes",
+    http_method = "PUT",
+    http_path = "/v2/email/account/pricing-attributes",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$put_account_pricing_attributes_input(Plan = Plan)
+  output <- .sesv2$put_account_pricing_attributes_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$put_account_pricing_attributes <- sesv2_put_account_pricing_attributes
 
 #' Enable or disable the ability of your account to send email
 #'
@@ -2744,25 +2789,30 @@ sesv2_put_configuration_set_sending_options <- function(ConfigurationSetName, Se
 }
 .sesv2$operations$put_configuration_set_sending_options <- sesv2_put_configuration_set_sending_options
 
-#' Specify the account suppression list preferences for a configuration set
+#' Specify the suppression list preferences for a configuration set
 #'
 #' @description
-#' Specify the account suppression list preferences for a configuration set.
+#' Specify the suppression list preferences for a configuration set. You can also use this operation to specify a `SuppressionScope` to override the suppression scope of the tenant or account for emails sent using this configuration set.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sesv2_put_configuration_set_suppression_options/](https://www.paws-r-sdk.com/docs/sesv2_put_configuration_set_suppression_options/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set to change the suppression list preferences for.
-#' @param SuppressedReasons A list that contains the reasons that email addresses are automatically added to the suppression list for your account. This list can contain any or all of the following:
+#' @param SuppressionScope The suppression scope for the configuration set. This overrides the tenant or account suppression scope for emails sent using this configuration set. Can be one of the following:
 #' 
-#' -   `COMPLAINT` – Amazon SES adds an email address to the suppression list for your account when a message sent to that address results in a complaint.
+#' -   `TENANT` – Use the tenant's suppression list.
 #' 
-#' -   `BOUNCE` – Amazon SES adds an email address to the suppression list for your account when a message sent to that address results in a hard bounce.
+#' -   `ACCOUNT` – Use the account-level suppression list.
+#' @param SuppressedReasons A list that contains the reasons that email addresses are automatically added to the suppression list for your account or for a specific tenant. This list can contain any or all of the following:
+#' 
+#' -   `COMPLAINT` – Amazon SES adds an email address to the suppression list for your account or for a specific tenant when a message sent to that address results in a complaint.
+#' 
+#' -   `BOUNCE` – Amazon SES adds an email address to the suppression list for your account or for a specific tenant when a message sent to that address results in a hard bounce.
 #' @param ValidationOptions An object that contains information about the email address suppression preferences for the configuration set in the current Amazon Web Services Region.
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_put_configuration_set_suppression_options
-sesv2_put_configuration_set_suppression_options <- function(ConfigurationSetName, SuppressedReasons = NULL, ValidationOptions = NULL) {
+sesv2_put_configuration_set_suppression_options <- function(ConfigurationSetName, SuppressionScope = NULL, SuppressedReasons = NULL, ValidationOptions = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetSuppressionOptions",
     http_method = "PUT",
@@ -2771,7 +2821,7 @@ sesv2_put_configuration_set_suppression_options <- function(ConfigurationSetName
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$put_configuration_set_suppression_options_input(ConfigurationSetName = ConfigurationSetName, SuppressedReasons = SuppressedReasons, ValidationOptions = ValidationOptions)
+  input <- .sesv2$put_configuration_set_suppression_options_input(ConfigurationSetName = ConfigurationSetName, SuppressionScope = SuppressionScope, SuppressedReasons = SuppressedReasons, ValidationOptions = ValidationOptions)
   output <- .sesv2$put_configuration_set_suppression_options_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -3160,20 +3210,22 @@ sesv2_put_email_identity_mail_from_attributes <- function(EmailIdentity, MailFro
 }
 .sesv2$operations$put_email_identity_mail_from_attributes <- sesv2_put_email_identity_mail_from_attributes
 
-#' Adds an email address to the suppression list for your account
+#' Adds an email address to the suppression list for your account or for a
+#' specific tenant
 #'
 #' @description
-#' Adds an email address to the suppression list for your account.
+#' Adds an email address to the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the `TenantName` parameter. If you omit `TenantName`, the address is added to the account-level suppression list.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sesv2_put_suppressed_destination/](https://www.paws-r-sdk.com/docs/sesv2_put_suppressed_destination/) for full documentation.
 #'
-#' @param EmailAddress &#91;required&#93; The email address that should be added to the suppression list for your account.
-#' @param Reason &#91;required&#93; The factors that should cause the email address to be added to the suppression list for your account.
+#' @param EmailAddress &#91;required&#93; The email address that should be added to the suppression list for your account or for the specified tenant.
+#' @param Reason &#91;required&#93; The factors that should cause the email address to be added to the suppression list for your account or for the specified tenant.
+#' @param TenantName The name of the tenant whose suppression list you want to add the address to. If you omit this parameter, the address is added to the account-level suppression list.
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_put_suppressed_destination
-sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
+sesv2_put_suppressed_destination <- function(EmailAddress, Reason, TenantName = NULL) {
   op <- new_operation(
     name = "PutSuppressedDestination",
     http_method = "PUT",
@@ -3182,7 +3234,7 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$put_suppressed_destination_input(EmailAddress = EmailAddress, Reason = Reason)
+  input <- .sesv2$put_suppressed_destination_input(EmailAddress = EmailAddress, Reason = Reason, TenantName = TenantName)
   output <- .sesv2$put_suppressed_destination_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -3191,6 +3243,45 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
   return(response)
 }
 .sesv2$operations$put_suppressed_destination <- sesv2_put_suppressed_destination
+
+#' Configure the suppression list preferences for a tenant
+#'
+#' @description
+#' Configure the suppression list preferences for a tenant. Use this operation to enable or disable tenant-level suppression, or to change the suppressed reasons for a tenant.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sesv2_put_tenant_suppression_attributes/](https://www.paws-r-sdk.com/docs/sesv2_put_tenant_suppression_attributes/) for full documentation.
+#'
+#' @param TenantName &#91;required&#93; The name of the tenant to configure suppression list preferences for.
+#' @param SuppressedReasons A list that contains the reasons that email addresses are automatically added to the suppression list for the tenant. This list can contain any or all of the following:
+#' 
+#' -   `COMPLAINT` – Amazon SES adds an email address to the suppression list when a message sent to that address results in a complaint.
+#' 
+#' -   `BOUNCE` – Amazon SES adds an email address to the suppression list when a message sent to that address results in a hard bounce.
+#' @param SuppressionScope The suppression scope for the tenant. Specify `TENANT` to use the tenant's own suppression list, or `ACCOUNT` to use the account-level suppression list.
+#' 
+#' If you don't specify a suppression scope, the tenant defaults to `ACCOUNT` scope and uses the account-level suppression list.
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_put_tenant_suppression_attributes
+sesv2_put_tenant_suppression_attributes <- function(TenantName, SuppressedReasons = NULL, SuppressionScope = NULL) {
+  op <- new_operation(
+    name = "PutTenantSuppressionAttributes",
+    http_method = "POST",
+    http_path = "/v2/email/tenant/suppression",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$put_tenant_suppression_attributes_input(TenantName = TenantName, SuppressedReasons = SuppressedReasons, SuppressionScope = SuppressionScope)
+  output <- .sesv2$put_tenant_suppression_attributes_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$put_tenant_suppression_attributes <- sesv2_put_tenant_suppression_attributes
 
 #' Composes an email message to multiple destinations
 #'
@@ -3220,11 +3311,12 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' @param TenantName The name of the tenant through which this bulk email will be sent.
 #' 
 #' The email sending operation will only succeed if all referenced resources (identities, configuration sets, and templates) are associated with this tenant.
+#' @param ConfigurationOverrides An object that overrides, for the messages in this request only, settings that would otherwise apply to them. The overrides apply to every message in the request. Each setting that you don't override keeps the value that already applies.
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_send_bulk_email
-sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, DefaultEmailTags = NULL, DefaultContent, BulkEmailEntries, ConfigurationSetName = NULL, EndpointId = NULL, TenantName = NULL) {
+sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, DefaultEmailTags = NULL, DefaultContent, BulkEmailEntries, ConfigurationSetName = NULL, EndpointId = NULL, TenantName = NULL, ConfigurationOverrides = NULL) {
   op <- new_operation(
     name = "SendBulkEmail",
     http_method = "POST",
@@ -3233,7 +3325,7 @@ sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdent
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$send_bulk_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, DefaultEmailTags = DefaultEmailTags, DefaultContent = DefaultContent, BulkEmailEntries = BulkEmailEntries, ConfigurationSetName = ConfigurationSetName, EndpointId = EndpointId, TenantName = TenantName)
+  input <- .sesv2$send_bulk_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, DefaultEmailTags = DefaultEmailTags, DefaultContent = DefaultContent, BulkEmailEntries = BulkEmailEntries, ConfigurationSetName = ConfigurationSetName, EndpointId = EndpointId, TenantName = TenantName, ConfigurationOverrides = ConfigurationOverrides)
   output <- .sesv2$send_bulk_email_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -3309,11 +3401,12 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' 
 #' The email sending operation will only succeed if all referenced resources (identities, configuration sets, and templates) are associated with this tenant.
 #' @param ListManagementOptions An object used to specify a list or topic to which an email belongs, which will be used when a contact chooses to unsubscribe.
+#' @param ConfigurationOverrides An object that overrides, for this message only, settings that would otherwise apply to it. Each setting that you don't override keeps the value that already applies.
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_send_email
-sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, Destination = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, Content, EmailTags = NULL, ConfigurationSetName = NULL, EndpointId = NULL, TenantName = NULL, ListManagementOptions = NULL) {
+sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, Destination = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, Content, EmailTags = NULL, ConfigurationSetName = NULL, EndpointId = NULL, TenantName = NULL, ListManagementOptions = NULL, ConfigurationOverrides = NULL) {
   op <- new_operation(
     name = "SendEmail",
     http_method = "POST",
@@ -3322,7 +3415,7 @@ sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityAr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$send_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, Destination = Destination, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, Content = Content, EmailTags = EmailTags, ConfigurationSetName = ConfigurationSetName, EndpointId = EndpointId, TenantName = TenantName, ListManagementOptions = ListManagementOptions)
+  input <- .sesv2$send_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, Destination = Destination, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, Content = Content, EmailTags = EmailTags, ConfigurationSetName = ConfigurationSetName, EndpointId = EndpointId, TenantName = TenantName, ListManagementOptions = ListManagementOptions, ConfigurationOverrides = ConfigurationOverrides)
   output <- .sesv2$send_email_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)

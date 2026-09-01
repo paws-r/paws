@@ -10,7 +10,7 @@ cloudwatch_delete_alarms(AlarmNames)
 \item{AlarmNames}{[required] The alarms to be deleted. Do not enclose the alarm names in quote marks.}
 }
 \description{
-Deletes the specified alarms. You can delete up to 100 alarms in one operation. However, this total can include no more than one composite alarm. For example, you could delete 99 metric alarms and one composite alarms with one operation, but you can't delete two composite alarms with one operation.
+Deletes the specified alarms. You can delete up to 100 alarms in one operation. However, this total can include no more than one composite alarm. For example, you could delete 99 metric alarms and one composite alarms with one operation, but you can't delete two composite alarms with one operation. Log alarms cannot be batch deleted.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatch_delete_alarms/} for full documentation.
 }

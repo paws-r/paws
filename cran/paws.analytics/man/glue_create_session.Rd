@@ -19,7 +19,8 @@ glue_create_session(
   SecurityConfiguration = NULL,
   GlueVersion = NULL,
   Tags = NULL,
-  RequestOrigin = NULL
+  RequestOrigin = NULL,
+  SessionType = NULL
 )
 }
 \arguments{
@@ -59,6 +60,8 @@ glue_create_session(
 \item{Tags}{The map of key value pairs (tags) belonging to the session.}
 
 \item{RequestOrigin}{The origin of the request.}
+
+\item{SessionType}{The type of session to create.}
 }
 \description{
 Creates a new session.
