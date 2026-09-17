@@ -41,12 +41,20 @@ make_operations_files <- function(api, doc_maker) {
   return(result)
 }
 
-# Generate the interfaces.
+# Generate the interfaces, plus the per-service shapes registry (if any)
+# that the generated interface functions look up into.
 make_interfaces_files <- function(api) {
   result <- list()
   interfaces <- make_interfaces(api)
-  filename <- paste0(package_name(api), "_interfaces.R")
-  result[[file.path(CODE_DIR, filename)]] <- interfaces
+  service <- package_name(api)
+  filename <- paste0(service, "_interfaces.R")
+  result[[file.path(CODE_DIR, filename)]] <- interfaces$text
+  if (length(interfaces$shapes) > 0) {
+    shapes <- interfaces$shapes
+    class(shapes) <- "shapes_data"
+    shapes_filename <- paste0(service, "_shapes.rds")
+    result[[file.path(CODE_DIR, shapes_filename)]] <- shapes
+  }
   return(result)
 }
 
@@ -115,7 +123,11 @@ make_docs_files <- function(api) {
 write_dict <- function(dict, dir) {
   for (file in names(dict)) {
     contents <- dict[[file]]
-    if (inherits(contents, "character")) {
+    if (inherits(contents, "shapes_data")) {
+      path <- file.path(dir, file)
+      dir.create(dirname(path), showWarnings = FALSE, recursive = TRUE)
+      saveRDS(unclass(contents), path)
+    } else if (inherits(contents, "character")) {
       write_list(contents, file.path(dir, file))
     } else {
       write_dict(contents, dir)
