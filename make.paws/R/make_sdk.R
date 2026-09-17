@@ -27,7 +27,9 @@ make_sdk <- function(
   # The SDK is separated into categories to fit in CRAN's package size limit.
   categories <- get_categories()
   if (only_cran) {
-    cran <- row.names(utils::available.packages(repos = "https://cran.rstudio.com"))
+    cran <- row.names(utils::available.packages(
+      repos = "https://cran.rstudio.com"
+    ))
     package <- sapply(categories, function(x) get_package_name(x$name))
     parent_package <- sapply(categories, function(x) get_package_name(x$parent))
     categories <- categories[package %in% cran | parent_package %in% cran]
@@ -68,7 +70,13 @@ make_sdk <- function(
 
     # Build categories from sub-categories
     for (cat in names(grp_sub_cats)) {
-      make_category_collection(temp_dir, out_sdk_dir, grp_sub_cats[[cat]], cat, api_names)
+      make_category_collection(
+        temp_dir,
+        out_sdk_dir,
+        grp_sub_cats[[cat]],
+        cat,
+        api_names
+      )
     }
   }
 
@@ -128,6 +136,7 @@ use_description <- function(path, version = "0.0.1") {
       "Storage Service' ('S3'), 'DynamoDB' 'NoSQL' database, and 'Lambda' ",
       "functions-as-a-service."
     ),
+    Depends = "R (>= 3.5.0)",
     License = "Apache License (>= 2.0)",
     Encoding = "UTF-8",
     ByteCompile = "false"

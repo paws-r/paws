@@ -34,6 +34,7 @@ write_description_category <- function(
     Imports = paste(imports, collapse = ","),
     Suggests = "testthat",
     BugReports = "https://github.com/paws-r/paws/issues",
+    Depends = "R (>= 3.5.0)",
     License = "Apache License (>= 2.0)",
     URL = sprintf(
       "https://github.com/paws-r/paws, https://paws-r.r-universe.dev/%s, https://www.paws-r-sdk.com",
@@ -70,7 +71,9 @@ get_description <- function(path) {
 cache_env <- new.env(parent = emptyenv())
 get_version <- function(major = 0, minor = 0, patch = 0) {
   if (is.null(cache_env$version)) {
-    df <- as.data.frame(utils::available.packages(repos = "https://cran.rstudio.com"))
+    df <- as.data.frame(utils::available.packages(
+      repos = "https://cran.rstudio.com"
+    ))
     cache_env$version <- package_version(df[df$Package == "paws", "Version"])
     cache_env$version[[c(1, 1)]] <- cache_env$version$major + major
     cache_env$version[[c(1, 2)]] <- cache_env$version$minor + minor
@@ -83,7 +86,12 @@ get_version <- function(major = 0, minor = 0, patch = 0) {
 clear_files <- function(path, keep) {
   if (dir.exists(path)) {
     files <- list.files(path, full.names = TRUE)
-    delete <- grep(paste(keep, collapse = "|"), files, invert = TRUE, value = TRUE)
+    delete <- grep(
+      paste(keep, collapse = "|"),
+      files,
+      invert = TRUE,
+      value = TRUE
+    )
     unlink(delete, recursive = TRUE)
   }
 }
