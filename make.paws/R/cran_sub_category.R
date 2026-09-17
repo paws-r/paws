@@ -37,6 +37,7 @@ make_category_collection <- function(
     service_names,
     expand_doc_links = TRUE
   )
+  consolidate_shapes(package_dir)
   write_documentation(package_dir)
   write_imports_collection(package_dir, version, get_category_packages(categories))
 }

@@ -13,29 +13,46 @@ interface_file_template <- template(
   `
 )
 
-# Return a list of interfaces for an API.
+# Return a list of interfaces for an API, along with the shapes registry
+# their generated code looks up into.
 make_interfaces <- function(api) {
-  interfaces <- lapply(api$operations, function(op) make_interface_pair(op, api))
-  render(
+  pairs <- lapply(api$operations, function(op) make_interface_pair(op, api))
+  text <- render(
     interface_file_template,
     service = package_name(api),
-    interfaces = paste(interfaces, collapse = "\n\n")
+    interfaces = paste(vapply(pairs, function(p) p$text, character(1)), collapse = "\n\n")
   )
+  shapes <- do.call(c, unname(lapply(pairs, function(p) p$shapes)))
+  list(text = text, shapes = shapes)
 }
 
-# A template for turning users' arguments into the shape to submit to the API.
+# A template for turning users' arguments into the shape to submit to the API,
+# looking the shape up from the per-service shapes registry rather than
+# embedding it as an inline literal.
 interface_template <- template(
   `
   ${name} <- function(...) {
     args <- c(as.list(environment()), list(...))
-    shape <- ${shape}
-    return(populate(args, shape))
+    return(populate(args, ${shapes_var}[["${key}"]]))
   }
   `
 )
 
+# Extract the registry lookup key from a fully-qualified interface function
+# name, e.g. ".glue$batch_create_partition_input" -> "batch_create_partition_input".
+interface_shape_key <- function(name) {
+  sub("^\\.[^$]+\\$", "", name)
+}
+
+# Derive the shapes registry variable name from a fully-qualified interface
+# function name, e.g. ".glue$batch_create_partition_input" -> ".glue_shapes".
+interface_shapes_var <- function(name) {
+  service <- sub("^\\.([^$]+)\\$.*$", "\\1", name)
+  paste0(".", service, "_shapes")
+}
+
 # Returns a function which translates an R object into a given API input/output
-# shape.
+# shape, and the shape object itself for registration in the shapes registry.
 make_interface <- function(name, shape_data, api) {
   shape_name <- shape_data$shape
   if (is.null(shape_name)) {
@@ -49,8 +66,10 @@ make_interface <- function(name, shape_data, api) {
     }
     shape <- tag_add(shape, stats::setNames(shape_data[[key]], key))
   }
-  interface <- render(interface_template, name = name, shape = get_structure(shape))
-  return(interface)
+  shape_key <- interface_shape_key(name)
+  shapes_var <- interface_shapes_var(name)
+  text <- render(interface_template, name = name, shapes_var = shapes_var, key = shape_key)
+  return(list(text = text, key = shape_key, shape = shape))
 }
 
 make_interface_pair <- function(operation, api) {
@@ -62,7 +81,15 @@ make_interface_pair <- function(operation, api) {
   input <- make_interface(input_name, operation$input, api)
   output <- make_interface(output_name, operation$output, api)
 
-  paste(input, output, sep = "\n\n")
+  shapes <- list()
+  if (!is.null(input$shape)) {
+    shapes[[input$key]] <- input$shape
+  }
+  if (!is.null(output$shape)) {
+    shapes[[output$key]] <- output$shape
+  }
+
+  list(text = paste(input$text, output$text, sep = "\n\n"), shapes = shapes)
 }
 
 # Declare variables to avoid R CMD check notes about templates.
@@ -77,7 +104,7 @@ make_empty_interface <- function(name) {
     `
   )
   interface <- render(interface_template, name = name)
-  return(interface)
+  return(list(text = interface, key = NULL, shape = NULL))
 }
 
 #-------------------------------------------------------------------------------

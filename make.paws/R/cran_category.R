@@ -34,7 +34,30 @@ make_category <- function(category, service_names, sdk_dir, out_dir) {
     copy_files(service_names[[service]], from = sdk_dir, to = package_dir)
   }
   copy_files("reexports", from = sdk_dir, to = package_dir)
+  consolidate_shapes(package_dir)
   write_documentation(package_dir)
+}
+
+# Merge every per-service *_shapes.rds produced by copy_files() into one
+# R/sysdata.rda, then remove the intermediate .rds files. R lazy-loads every
+# object in sysdata.rda at package load, so the interface functions in
+# {service}_interfaces.R can look shapes up by name with no NAMESPACE change.
+consolidate_shapes <- function(package_dir) {
+  r_dir <- file.path(package_dir, "R")
+  rds_files <- list.files(r_dir, pattern = "_shapes\\.rds$", full.names = TRUE)
+  if (length(rds_files) == 0) {
+    return(invisible())
+  }
+  env <- new.env()
+  objs <- character(0)
+  for (f in rds_files) {
+    service <- sub("_shapes\\.rds$", "", basename(f))
+    var <- paste0(".", service, "_shapes")
+    assign(var, readRDS(f), envir = env)
+    objs <- c(objs, var)
+  }
+  save(list = objs, envir = env, file = file.path(r_dir, "sysdata.rda"), compress = "xz")
+  fs::file_delete(rds_files)
 }
 
 get_category_package_name <- function(category) {
