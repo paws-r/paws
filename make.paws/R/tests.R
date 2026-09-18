@@ -1,17 +1,41 @@
 #' @include templates.R
 #' @include tests_config.R
+#' @include cran_category.R
 NULL
 
 test_file_template <- template(
   `
-  svc <- paws::${service}()
+  svc <- ${package}::${service}()
 
   ${tests}
   `
 )
 
+testthat_template <- template(
+  `
+  # This file is part of the standard setup for testthat.
+  # It is recommended that you do not modify it.
+  #
+  # Where should you do additional test configuration?
+  # Learn more about the roles of various files in:
+  # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
+  # * https://testthat.r-lib.org/articles/special-files.html
+
+  library(testthat)
+  library(${package})
+
+  test_check("${package}")
+  `
+)
+
+# Write the standard testthat setup file (tests/testthat.R) for a package.
+write_testthat_file <- function(path, package) {
+  contents <- render(testthat_template, package = package)
+  write_utf8(contents, file.path(path, "tests", "testthat.R"))
+}
+
 # Make all tests for a given API.
-make_tests <- function(api) {
+make_tests <- function(api, categories) {
   tests <- list()
   i <- 1
   for (operation in get_testable_operations(api)) {
@@ -22,13 +46,16 @@ make_tests <- function(api) {
     }
   }
   tests <- paste(tests, collapse = "\n\n")
-  render(test_file_template, service = package_name(api), tests = tests)
+  service <- package_name(api)
+  package <- get_service_package_name(service, categories)
+  render(test_file_template, package = package, service = service, tests = tests)
 }
 
 # Make the individual test template.
 test_template <- template(
   `
   test_that("${operation_name}", {
+    skip_on_cran()
     expect_error(svc$${call}, ${outcome})
   })
   `

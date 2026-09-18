@@ -40,7 +40,9 @@ query_unmarshal_meta <- function(request) {
 
 # Unmarshal errors from a Query protocol response.
 query_unmarshal_error <- function(request) {
-  data <- tryCatch(decode_xml(request$http_response$body), error = function(e) NULL)
+  data <- tryCatch(decode_xml(request$http_response$body), error = function(e) {
+    NULL
+  })
 
   if (is.null(data)) {
     request$error <- serialization_error(request)

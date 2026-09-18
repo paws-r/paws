@@ -13,10 +13,7 @@ key <- "<name of the file once it is uploaded into your S3 bucket>"
 #' @param bucket The name of the S3 bucket to be uploaded to, e.g. `my-bucket`.
 #' @param key The name to assign to the file in the S3 bucket, e.g. `path/to/file`.
 upload <- function(client, file, bucket, key) {
-  multipart <- client$create_multipart_upload(
-    Bucket = bucket,
-    Key = key
-  )
+  multipart <- client$create_multipart_upload(Bucket = bucket, Key = key)
   resp <- NULL
   on.exit({
     if (is.null(resp) || inherits(resp, "try-error")) {

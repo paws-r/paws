@@ -1,14 +1,15 @@
 test_that("make_interfaces_files emits an interfaces file and a shapes registry", {
   api <- list(
     metadata = list(serviceAbbreviation = "api"),
-    operations = list(
-      Foo = list(name = "Foo", input = list(shape = "FooShape"))
-    ),
+    operations = list(Foo = list(name = "Foo", input = list(shape = "FooShape"))),
     shapes = list(FooShape = list(type = "string"))
   )
   result <- make_interfaces_files(api)
 
-  expect_named(result, c(file.path("R", "api_interfaces.R"), file.path("R", "api_shapes.rds")))
+  expect_named(
+    result,
+    c(file.path("R", "api_interfaces.R"), file.path("R", "api_shapes.rds"))
+  )
   expect_true(is.character(result[[file.path("R", "api_interfaces.R")]]))
 
   shapes <- result[[file.path("R", "api_shapes.rds")]]

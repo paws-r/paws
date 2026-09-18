@@ -274,7 +274,9 @@ s3_unmarshal_error <- function(request) {
     request$http_response$body,
     request$operation$stream_api
   )
-  data <- tryCatch(decode_xml(request$http_response$body), error = function(e) NULL)
+  data <- tryCatch(decode_xml(request$http_response$body), error = function(e) {
+    NULL
+  })
   # Bucket exists in a different region, and request needs
   # to be made to the correct region.
   if (request$http_response$status_code == 301) {

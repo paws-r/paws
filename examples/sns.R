@@ -17,10 +17,7 @@ sns$subscribe(
 )
 
 # Publish a message to the topic.
-sns$publish(
-  Message = "Hello world!",
-  TopicArn = topic$TopicArn
-)
+sns$publish(Message = "Hello world!", TopicArn = topic$TopicArn)
 
 # Delete the example topic.
 sns$delete_topic(topic$TopicArn)

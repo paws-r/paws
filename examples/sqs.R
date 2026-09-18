@@ -3,26 +3,16 @@
 sqs <- paws::sqs()
 
 # Create a queue.
-sqs <- sqs$create_queue(
-  QueueName = "ExampleQueue"
-)
+sqs <- sqs$create_queue(QueueName = "ExampleQueue")
 
 # Add a message to the queue.
-sqs$send_message(
-  QueueUrl = sqs$QueueUrl,
-  MessageBody = "foo"
-)
+sqs$send_message(QueueUrl = sqs$QueueUrl, MessageBody = "foo")
 
 # Get the queue's attributes.
-sqs$get_queue_attributes(
-  QueueUrl = sqs$QueueUrl,
-  AttributeNames = "All"
-)
+sqs$get_queue_attributes(QueueUrl = sqs$QueueUrl, AttributeNames = "All")
 
 # Get the next message from the queue.
-msg <- sqs$receive_message(
-  QueueUrl = sqs$QueueUrl
-)
+msg <- sqs$receive_message(QueueUrl = sqs$QueueUrl)
 
 # Delete the message.
 sqs$delete_message(
@@ -31,6 +21,4 @@ sqs$delete_message(
 )
 
 # Delete the queue.
-sqs$delete_queue(
-  QueueUrl = sqs$QueueUrl
-)
+sqs$delete_queue(QueueUrl = sqs$QueueUrl)

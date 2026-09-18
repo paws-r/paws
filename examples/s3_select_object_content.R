@@ -6,9 +6,9 @@ library(paws)
 
 client <- s3()
 
-bkt = "paws-dummy-bucket"
-key = "dummy.csv"
-exp = "SELECT * FROM s3object s"
+bkt <- "paws-dummy-bucket"
+key <- "dummy.csv"
+exp <- "SELECT * FROM s3object s"
 
 resp <- client$select_object_content(
   Bucket = bkt,
@@ -16,10 +16,7 @@ resp <- client$select_object_content(
   Expression = exp,
   ExpressionType = "SQL",
   InputSerialization = list(
-    'CSV' = list(
-      'RecordDelimiter' = '\n',
-      'FieldDelimiter' = ','
-    )
+    'CSV' = list('RecordDelimiter' = '\n', 'FieldDelimiter' = ',')
   ),
   OutputSerialization = list(
     'CSV' = list('RecordDelimiter' = '\n', 'FieldDelimiter' = ',')

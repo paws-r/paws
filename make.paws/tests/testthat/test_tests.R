@@ -10,6 +10,7 @@ test_that("make_test no arguments", {
   operation <- list(name = "foo")
   a <- make_test(operation, api, NULL, NA)
   e <- 'test_that("foo", {
+      skip_on_cran()
       expect_error(svc$foo(), NA)
     })
   '
@@ -23,6 +24,7 @@ test_that("make_test with arguments", {
   operation <- list(name = "foo")
   a <- make_test(operation, api, list('"bar"', 123), NA)
   e <- 'test_that("foo", {
+      skip_on_cran()
       expect_error(svc$foo("bar", 123), NA)
     })
   '
@@ -45,18 +47,22 @@ test_that("make_tests", {
       ListBazShape = list(members = list(Qux = list()), required = list("Qux"))
     )
   )
-  a <- make_tests(api)
-  e <- 'svc <- paws::api()
+  categories <- list(list(name = "widgets", services = list("api")))
+  a <- make_tests(api, categories)
+  e <- 'svc <- paws.widgets::api()
 
     test_that("describe_foo", {
+      skip_on_cran()
       expect_error(svc$describe_foo(), NA)
     })
 
     test_that("describe_foo", {
+      skip_on_cran()
       expect_error(svc$describe_foo(MaxResults = 20), NA)
     })
 
     test_that("list_bar", {
+      skip_on_cran()
       expect_error(svc$list_bar(), NA)
     })
   '

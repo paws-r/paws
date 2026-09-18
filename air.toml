@@ -1,2 +1,8 @@
 [format]
-exclude = ["cran/", "paws/"]
+line-width = 90
+indent-width = 2
+indent-style = "space"
+line-ending = "auto"
+persistent-line-breaks = false
+exclude = ["cran/", "paws/", "RcppExports.R", "service_parameter_helper.R"]
+default-exclude = true

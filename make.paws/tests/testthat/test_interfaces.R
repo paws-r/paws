@@ -35,7 +35,10 @@ test_that("make_interfaces", {
   )
   expect_equal(actual$text, expected_text)
   expect_named(actual$shapes, "foo_input")
-  expect_equal(actual$shapes[["foo_input"]], structure(logical(0), tags = list(type = "string")))
+  expect_equal(
+    actual$shapes[["foo_input"]],
+    structure(logical(0), tags = list(type = "string"))
+  )
 })
 
 test_that("make_interface with root-level metadata", {

@@ -4,7 +4,10 @@ library(paws)
 s3_svc <- s3()
 
 # Attempt a request that will certainly fail and catch the error object.
-b1 <- tryCatch(s3_svc$list_objects_v2(Bucket = "not_a_bucket_alskfj", MaxKeys =2), error = function(e) e)
+b1 <- tryCatch(
+  s3_svc$list_objects_v2(Bucket = "not_a_bucket_alskfj", MaxKeys = 2),
+  error = function(e) e
+)
 b1$message
 # > "NoSuchBucket (HTTP 404). The specified bucket does not exist"
 
@@ -34,14 +37,17 @@ attributes(b1)
 # Retry after a 1 second wait on 50X errors:
 response <- NULL
 attempt_count <- 0
-while (is.null(response) | inherits(response, "http_500") | attempt_count < 3){
+while (is.null(response) | inherits(response, "http_500") | attempt_count < 3) {
   attempt_count <- attempt_count + 1
-  response <- tryCatch(s3_svc$list_objects_v2(Bucket = "this-is-a-real-bucket", MaxKeys =2), error = function(e) e)
-  if(inherits(response, "http_500") & attempt_count < 3){
+  response <- tryCatch(
+    s3_svc$list_objects_v2(Bucket = "this-is-a-real-bucket", MaxKeys = 2),
+    error = function(e) e
+  )
+  if (inherits(response, "http_500") & attempt_count < 3) {
     print(paste0("Request failed with 500 error and message: ", response$message))
     print("Retrying after 1 second sleep")
     Sys.sleep(1)
-  } else if (inherits(response, "error")){
+  } else if (inherits(response, "error")) {
     # Re-raise the error object on non-500 error or 500 error with maxed retries
     stop(response)
   }

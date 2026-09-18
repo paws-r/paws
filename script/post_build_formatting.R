@@ -43,11 +43,7 @@ after <- c(
 )
 
 # Format R + Rb files in cran + paws directory
-paws_post_build_format(
-  root = root,
-  patterns_before = before,
-  patterns_after = after
-)
+paws_post_build_format(root = root, patterns_before = before, patterns_after = after)
 
 # Rebuild documentation (this will re-read source files to generate docs)
 paws_pkg_doc_build(in_dir = in_dir)

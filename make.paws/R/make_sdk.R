@@ -27,9 +27,7 @@ make_sdk <- function(
   # The SDK is separated into categories to fit in CRAN's package size limit.
   categories <- get_categories()
   if (only_cran) {
-    cran <- row.names(utils::available.packages(
-      repos = "https://cran.rstudio.com"
-    ))
+    cran <- row.names(utils::available.packages(repos = "https://cran.rstudio.com"))
     package <- sapply(categories, function(x) get_package_name(x$name))
     parent_package <- sapply(categories, function(x) get_package_name(x$parent))
     categories <- categories[package %in% cran | parent_package %in% cran]
@@ -51,7 +49,7 @@ make_sdk <- function(
     write_skeleton(out_doc_dir, version)
     for (api in apis) {
       cat(paste0(api, "\n"))
-      result <- make_sdk_for_api(api, in_dir)
+      result <- make_sdk_for_api(api, in_dir, categories)
       write_dict(result$code, temp_dir)
       write_dict(result$tests, temp_dir)
       write_dict(result$docs, out_doc_dir)
@@ -70,13 +68,7 @@ make_sdk <- function(
 
     # Build categories from sub-categories
     for (cat in names(grp_sub_cats)) {
-      make_category_collection(
-        temp_dir,
-        out_sdk_dir,
-        grp_sub_cats[[cat]],
-        cat,
-        api_names
-      )
+      make_category_collection(temp_dir, out_sdk_dir, grp_sub_cats[[cat]], cat, api_names)
     }
   }
 

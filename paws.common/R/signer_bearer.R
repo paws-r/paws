@@ -20,7 +20,7 @@ get_bearer_auth_supported_services <- function() {
 # This is much simpler than V4 signing - it just sets the Authorization header.
 bearer_sign_request_handler <- function(request) {
   creds <- request$config$credentials$creds
-  signing_name = request$client_info$signing_name
+  signing_name <- request$client_info$signing_name
 
   # Ensure credentials are available
   if (!is_credentials_provided(request$config$credentials$creds)) {

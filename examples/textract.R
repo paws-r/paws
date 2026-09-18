@@ -5,7 +5,7 @@
 # extracting data from PDFs for future processing, using Textract, S3,
 # Relational Database Service (RDS).
 
-# The PDF document is from the Greenbook projections, a set of economic 
+# The PDF document is from the Greenbook projections, a set of economic
 # projections made by the Federal Reserve from 1966 to the present.  They are
 # available as a collection of PDFs from the Philadelphia Federal Reserve at:
 # https://www.philadelphiafed.org/research-and-data/real-time-center/greenbook-data/pdf-data-set
@@ -33,22 +33,17 @@ textract <- paws::textract()
 # --------------------------------------------------
 
 analyze_document <- function(bucket, file) {
-  
   # Start analyzing the PDF.
   resp <- textract$start_document_analysis(
-    DocumentLocation = list(
-      S3Object = list(Bucket = bucket, Name = file)
-    ),
+    DocumentLocation = list(S3Object = list(Bucket = bucket, Name = file)),
     FeatureTypes = "TABLES"
   )
-  
+
   # Check that the analysis is done and get the result.
   count <- 0
   while (count < 30 && (!exists("result") || result$JobStatus == "IN_PROGRESS")) {
     Sys.sleep(1)
-    result <- textract$get_document_analysis(
-      JobId = resp$JobId
-    )
+    result <- textract$get_document_analysis(JobId = resp$JobId)
     # If the result has multiple parts, get the remaining parts.
     next_token <- result$NextToken
     while (length(next_token) > 0) {
@@ -61,7 +56,7 @@ analyze_document <- function(bucket, file) {
     }
     count <- count + 1
   }
-  
+
   return(result)
 }
 
@@ -94,20 +89,18 @@ get_tables <- function(analysis) {
   names(blocks) <- sapply(blocks, function(x) x$Id)
   tables <- list()
   for (block in blocks) {
-    
     if (block$BlockType == "TABLE") {
       cells <- get_children(block, blocks)
       rows <- max(sapply(cells, function(x) x$RowIndex))
       cols <- max(sapply(cells, function(x) x$ColumnIndex))
       table <- matrix(nrow = rows, ncol = cols)
-      
+
       # 1. Go through a table's cells one-by-one
       for (cell in cells) {
-        
         # 2. Get the cell's contents
         words <- get_children(cell, blocks)
         text <- paste(sapply(words, function(x) x$Text), collapse = " ")
-        
+
         # 3. Insert the cell contents into the matrix
         row <- cell$RowIndex
         col <- cell$ColumnIndex
@@ -133,13 +126,16 @@ rds <- paws::rds()
 token <- rds$build_auth_token("myhost:5432", "us-east-1", "david")
 con <- DBI::dbConnect(
   RPostgres::Postgres(),
-  host = "myhost", port = 5432, dbname = "mydb",
-  user = "david", password = token
+  host = "myhost",
+  port = 5432,
+  dbname = "mydb",
+  user = "david",
+  password = token
 )
 
 # Create rows for each table to insert into the database.
 database_rows <- data.frame(
-  document = "GS-1966-01-11.pdf", 
+  document = "GS-1966-01-11.pdf",
   table_num = 1:length(tables),
   data = sapply(tables, jsonlite::toJSON)
 )

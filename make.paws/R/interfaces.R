@@ -68,7 +68,12 @@ make_interface <- function(name, shape_data, api) {
   }
   shape_key <- interface_shape_key(name)
   shapes_var <- interface_shapes_var(name)
-  text <- render(interface_template, name = name, shapes_var = shapes_var, key = shape_key)
+  text <- render(
+    interface_template,
+    name = name,
+    shapes_var = shapes_var,
+    key = shape_key
+  )
   return(list(text = text, key = shape_key, shape = shape))
 }
 

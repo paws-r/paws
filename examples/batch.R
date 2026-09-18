@@ -8,18 +8,14 @@
 
 ec2 <- paws::ec2()
 
-default_vpc <- ec2$describe_vpcs(
-  Filters = "isDefault=true"
-)$Vpcs[[1]]
+default_vpc <- ec2$describe_vpcs(Filters = "isDefault=true")$Vpcs[[1]]
 
 security_group <- ec2$describe_security_groups(
   Filters = sprintf("vpc-id=%s", default_vpc$VpcId),
   GroupNames = "default"
 )$SecurityGroups[[1]]
 
-subnets <- ec2$describe_subnets(
-  Filters = sprintf("vpc-id=%s", default_vpc$VpcId)
-)$Subnets
+subnets <- ec2$describe_subnets(Filters = sprintf("vpc-id=%s", default_vpc$VpcId))$Subnets
 
 #-------------------------------------------------------------------------------
 
@@ -30,15 +26,11 @@ policy_arn <- "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
 
 trust_policy <- list(
   Version = "2012-10-17",
-  Statement = list(
-    list(
-      Effect = "Allow",
-      Principal = list(
-        Service = "batch.amazonaws.com"
-      ),
-      Action = "sts:AssumeRole"
-    )
-  )
+  Statement = list(list(
+    Effect = "Allow",
+    Principal = list(Service = "batch.amazonaws.com"),
+    Action = "sts:AssumeRole"
+  ))
 )
 
 iam <- paws::iam()
@@ -48,10 +40,7 @@ role <- iam$create_role(
   AssumeRolePolicyDocument = jsonlite::toJSON(trust_policy, auto_unbox = TRUE)
 )
 
-iam$attach_role_policy(
-  RoleName = role_name,
-  PolicyArn = policy_arn
-)
+iam$attach_role_policy(RoleName = role_name, PolicyArn = policy_arn)
 
 #-------------------------------------------------------------------------------
 
@@ -78,12 +67,10 @@ batch$create_compute_environment(
 
 # Set up a job queue for the compute environment.
 batch$create_job_queue(
-  computeEnvironmentOrder = list(
-    list(
-      computeEnvironment = "TestComputeEnvironment",
-      order = 1L
-    )
-  ),
+  computeEnvironmentOrder = list(list(
+    computeEnvironment = "TestComputeEnvironment",
+    order = 1L
+  )),
   jobQueueName = "TestJobQueue",
   priority = 1L,
   state = "ENABLED"
@@ -93,10 +80,7 @@ batch$create_job_queue(
 job_def <- batch$register_job_definition(
   type = "container",
   containerProperties = list(
-    command = list(
-      "sleep",
-      "10"
-    ),
+    command = list("sleep", "10"),
     image = "busybox",
     memory = 128L,
     vcpus = 1L
@@ -113,10 +97,7 @@ job <- batch$submit_job(
 print(job)
 
 # List the submitted job(s).
-batch$list_jobs(
-  jobQueue = "TestJobQueue",
-  jobStatus = "SUBMITTED"
-)
+batch$list_jobs(jobQueue = "TestJobQueue", jobStatus = "SUBMITTED")
 
 # Clean up. You may have to wait for some steps to complete.
 batch$deregister_job_definition(jobDefinition = job_def$jobDefinitionArn)

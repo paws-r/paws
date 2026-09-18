@@ -13,15 +13,9 @@ resp <- ec2$run_instances(
   TagSpecifications = list(
     list(
       ResourceType = "instance",
-      Tags = list(
-        list(Key = "webserver", Value = "production"))
+      Tags = list(list(Key = "webserver", Value = "production"))
     ),
-    list(
-      ResourceType = "volume",
-      Tags = list(
-        list(Key = "cost-center", Value = "cc123")
-      )
-    )
+    list(ResourceType = "volume", Tags = list(list(Key = "cost-center", Value = "cc123")))
   )
 )
 
@@ -29,6 +23,4 @@ resp <- ec2$run_instances(
 instances <- ec2$describe_instances()
 
 # Terminate the instance we previously started.
-ec2$terminate_instances(
-  InstanceIds = resp$Instances[[1]]$InstanceId
-)
+ec2$terminate_instances(InstanceIds = resp$Instances[[1]]$InstanceId)
