@@ -10,6 +10,8 @@ make_sdk_for_api(api_name, in_dir)
 \item{api_name}{Name of the API to make a package for.}
 
 \item{in_dir}{Directory containing API files.}
+
+\item{categories}{The AWS service categories, used to determine which package a service's tests belong to.}
 }
 \description{
 Add the SDK for a given API
