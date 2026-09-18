@@ -38,7 +38,9 @@ test_that("get_config optional parameter update", {
 })
 
 test_that("set_config", {
-  svc <- list(f = function() "foo", g = function() 123, h = function() get_config())
+  svc <- list(f = function() "foo", g = function() 123, h = function() {
+    get_config()
+  })
   a <- set_config(svc, list(region = "foo", endpoint = "bar"))
   expect_equal(a$f(), "foo")
   expect_equal(a$g(), 123)

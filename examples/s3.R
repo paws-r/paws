@@ -8,9 +8,7 @@ s3 <- paws::s3()
 bucket_name <- paste0("paws-example-", uuid::UUIDgenerate())
 
 # Create a bucket in us-east-1
-s3$create_bucket(
-  Bucket = bucket_name
-)
+s3$create_bucket(Bucket = bucket_name)
 
 # List your buckets
 s3$list_buckets()
@@ -39,11 +37,7 @@ s3_example <- readBin(read_file, "raw", n = file.size(file_name1))
 close(read_file)
 
 # Upload file to s3
-s3$put_object(
-  Body = s3_example,
-  Bucket = bucket_name,
-  Key = file_name1
-)
+s3$put_object(Body = s3_example, Bucket = bucket_name, Key = file_name1)
 
 ################################################################################
 # For paws.common versions >= 0.3.7 we can pass a file path directly to the    #
@@ -52,11 +46,7 @@ s3$put_object(
 ################################################################################
 
 # Upload file to s3
-s3$put_object(
-  Body = file_name1,
-  Bucket = bucket_name,
-  Key = file_name1
-)
+s3$put_object(Body = file_name1, Bucket = bucket_name, Key = file_name1)
 
 ################################################################################
 
@@ -64,10 +54,7 @@ s3$put_object(
 s3$list_objects(Bucket = bucket_name)
 
 # Download the file and store the output in a variable
-s3_download <- s3$get_object(
-  Bucket = bucket_name,
-  Key = file_name1
-)
+s3_download <- s3$get_object(Bucket = bucket_name, Key = file_name1)
 
 # Write output to file
 file_name2 <- "s3_download.rds"
@@ -89,17 +76,10 @@ file_name3 <- "s3_example.csv"
 write.csv(example_df, file_name3)
 
 # Upload the CSV file to S3.
-s3$put_object(
-  Body = file_name3,
-  Bucket = bucket_name,
-  Key = file_name3
-)
+s3$put_object(Body = file_name3, Bucket = bucket_name, Key = file_name3)
 
 # Get the CSV file from S3.
-s3_download <- s3$get_object(
-  Bucket = bucket_name,
-  Key = file_name3
-)
+s3_download <- s3$get_object(Bucket = bucket_name, Key = file_name3)
 
 # Read the CSV in from disk.
 file_name4 <- "s3_download.csv"

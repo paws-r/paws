@@ -22,15 +22,11 @@ policy_arn <- "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 
 trust_policy <- list(
   Version = "2012-10-17",
-  Statement = list(
-    list(
-      Effect = "Allow",
-      Principal = list(
-        Service = "lambda.amazonaws.com"
-      ),
-      Action = "sts:AssumeRole"
-    )
-  )
+  Statement = list(list(
+    Effect = "Allow",
+    Principal = list(Service = "lambda.amazonaws.com"),
+    Action = "sts:AssumeRole"
+  ))
 )
 
 iam <- paws::iam()
@@ -40,10 +36,7 @@ role <- iam$create_role(
   AssumeRolePolicyDocument = jsonlite::toJSON(trust_policy, auto_unbox = TRUE)
 )
 
-iam$attach_role_policy(
-  RoleName = role_name,
-  PolicyArn = policy_arn
-)
+iam$attach_role_policy(RoleName = role_name, PolicyArn = policy_arn)
 
 #-------------------------------------------------------------------------------
 

@@ -48,12 +48,7 @@ make_tests <- function(api, categories) {
   tests <- paste(tests, collapse = "\n\n")
   service <- package_name(api)
   package <- get_service_package_name(service, categories)
-  render(
-    test_file_template,
-    package = package,
-    service = service,
-    tests = tests
-  )
+  render(test_file_template, package = package, service = service, tests = tests)
 }
 
 # Make the individual test template.
